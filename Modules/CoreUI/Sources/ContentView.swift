@@ -1,5 +1,7 @@
 import SwiftUI
 
+import CoreLogger
+
 public struct Hello: View {
 
 	let name: String
@@ -8,6 +10,11 @@ public struct Hello: View {
 	public init(_ name: String, in color: Color) {
 		self.name = name
 		self.color = color
+
+		CoreLogger.set(module: "CoreUI")
+
+		Log.info("Hello, \(name) in \(color)")
+
 	}
 
     public var body: some View {

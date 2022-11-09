@@ -10,5 +10,6 @@ let workspace = Workspace(
 
 		// MARK: - Modules
 		"Modules/CoreUI",
+        "Modules/CoreLogger",
 	]
 )
