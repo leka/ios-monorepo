@@ -89,12 +89,19 @@ class RobotManager: NSObject, CBCentralManagerDelegate, ObservableObject {
 	}
 
 	func readOSVersion() {
-		if connectedRobot == nil { return }
+		guard let connectedRobot = self.connectedRobot else {
+			return
+		}
 
-		guard let service = connectedRobot!.peripheral.services?.first(where: {$0.uuid == BLESpecs.DeviceInformation.service}) else { return }
-		guard let characteristic = service.characteristics?.first(where: {$0.uuid == BLESpecs.DeviceInformation.Characteristics.osVersion}) else { return }
+		guard let service = connectedRobot.peripheral.services?.first(where: {
+			$0.uuid == BLESpecs.DeviceInformation.service
+		}) else { return }
 
-		connectedRobot!.peripheral.readValue(for: characteristic)
+		guard let characteristic = service.characteristics?.first(where: {
+			$0.uuid == BLESpecs.DeviceInformation.Characteristics.osVersion
+		}) else { return }
+
+		connectedRobot.peripheral.readValue(for: characteristic)
 	}
 
 	var applyingUpdateFail = false
@@ -333,32 +340,31 @@ extension RobotManager: CBPeripheralDelegate {
 	}
 
 	func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
-		if connectedRobot == nil { return }
-		guard let value = characteristic.value else { return }
+		guard
+			self.connectedRobot != nil,
+			let value = characteristic.value,
+			let firstValue = value.first
+		else { return }
 
 		switch characteristic.uuid {
 		case BLESpecs.Battery.Characteristics.level:
-			if value.first != nil {
-				connectedRobot!.battery = value.first!
-			}
+				self.connectedRobot?.battery = firstValue
+
 		case BLESpecs.Monitoring.Characteristics.chargingStatus:
-			if value.first != nil {
-				connectedRobot!.isCharging = (value.first == 0x01)
-			}
+				self.connectedRobot?.isCharging = (firstValue == 0x01)
+
 		case BLESpecs.DeviceInformation.Characteristics.osVersion:
-			if value.first != nil {
-				connectedRobot!.osVersion = String(decoding: value, as: UTF8.self)
-					.replacingOccurrences(of: "\0", with: "")
-			}
+				self.connectedRobot?.osVersion = String(decoding: value, as: UTF8.self)
+				.replacingOccurrences(of: "\0", with: "")
+
 		case BLESpecs.FileExchange.Characteristics.fileSHA256:
-			if value.first != nil {
-				actualSHA256 = value.map { String(format: "%02hhx", $0) }.joined()
-			}
+			actualSHA256 = value.map { String(format: "%02hhx", $0) }.joined()
+
 		default:
 			return
 		}
 
-		if connectedRobot?.osVersion == nil {
+		if self.connectedRobot?.osVersion == nil {
 			readOSVersion()
 		}
 	}
