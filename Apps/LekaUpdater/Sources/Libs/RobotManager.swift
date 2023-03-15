@@ -108,7 +108,7 @@ class RobotManager: NSObject, CBCentralManagerDelegate, ObservableObject {
 	var applyingUpdateFail = false
 
 	func applyUpdate() {
-		if !isUpdateCanBeApplied() { return }
+		guard updateCanBeApplied() else { return }
 
 		applyingUpdateFail = false
 
@@ -126,18 +126,20 @@ class RobotManager: NSObject, CBCentralManagerDelegate, ObservableObject {
 	}
 
 	@Published var errorMessage: String = ""
-	func isUpdateCanBeApplied() -> Bool {
+	func updateCanBeApplied() -> Bool {
 		errorMessage = ""
-		if connectedRobot == nil {
+
+		guard let connectedRobot = self.connectedRobot else {
 			errorMessage = "Robot not connected"
 			return false
 		}
 
-		if connectedRobot!.isCharging == false {
+		guard connectedRobot.isCharging else {
 			errorMessage = "Robot not in charge"
 			return false
 		}
-		if connectedRobot!.battery < 30 {
+
+		guard connectedRobot.battery >= 30 else {
 			errorMessage = "Robot have not enough batteries"
 			return false
 		}
