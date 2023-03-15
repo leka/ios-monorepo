@@ -10,7 +10,7 @@ import CoreBluetooth
 import CryptoKit
 
 class RobotManager: NSObject, CBCentralManagerDelegate, ObservableObject {
-	let osVersion: String = Bundle.main.object(forInfoDictionaryKey: "osVersion") as! String
+	var osVersion: String
 
 	@Published var robots = [RobotModel]()
 	@Published var connectedRobot: RobotModel?
@@ -18,9 +18,15 @@ class RobotManager: NSObject, CBCentralManagerDelegate, ObservableObject {
 	var central: CBCentralManager!
 
 	override init() {
+		guard let osVersion = Bundle.main.object(forInfoDictionaryKey: "os_version") as? String else {
+			fatalError("LekaOS version not found in InfoPlist")
+		}
+
+		self.osVersion = osVersion
+
 		super.init()
 
-		central = CBCentralManager(delegate: self, queue: nil)
+		self.central = CBCentralManager(delegate: self, queue: nil)
 	}
 
 	func centralManagerDidUpdateState(_ central: CBCentralManager) {
