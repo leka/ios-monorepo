@@ -5,7 +5,7 @@ import CoreUI
 struct LekaUpdaterApp: App {
     var body: some Scene {
         WindowGroup {
-			Hello("Leka Updater", in: .blue)
+			ContentView()
         }
     }
 }

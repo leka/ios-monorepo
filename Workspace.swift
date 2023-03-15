@@ -9,6 +9,6 @@ let workspace = Workspace(
 		"Apps/LekaUpdater",
 
 		// MARK: - Modules
-		"Modules/CoreUI",
+		"Modules/CoreUI"
 	]
 )
