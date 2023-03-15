@@ -13,22 +13,22 @@ struct RobotModel: Equatable {
 
 	var name: String
 	var battery: UInt8
-	var is_charging: Bool
-	var os_version: String?
+	var isCharging: Bool
+	var osVersion: String?
 
-	init(peripheral: CBPeripheral, advertising_data adv_data: AdvertisingData) {
+	init(peripheral: CBPeripheral, advertisingData advData: AdvertisingData) {
 		self.peripheral = peripheral
 
-		self.name = adv_data.name
-		self.battery = adv_data.battery
-		self.is_charging = adv_data.is_charging
-		self.os_version = adv_data.os_version
+		self.name = advData.name
+		self.battery = advData.battery
+		self.isCharging = advData.isCharging
+		self.osVersion = advData.osVersion
 	}
 
-	mutating func updateFrom(advertising_data adv_data: AdvertisingData) {
-		self.name = adv_data.name
-		self.battery = adv_data.battery
-		self.is_charging = adv_data.is_charging
-		self.os_version = adv_data.os_version
+	mutating func updateFrom(advertisingData advData: AdvertisingData) {
+		self.name = advData.name
+		self.battery = advData.battery
+		self.isCharging = advData.isCharging
+		self.osVersion = advData.osVersion
 	}
 }
