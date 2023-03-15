@@ -5,9 +5,17 @@ import ProjectDescription
 /// Create your own conventions, e.g: a func that makes sure all shared targets are "static frameworks"
 /// See https://docs.tuist.io/guides/helpers/
 
+let scripts: [TargetScript] = [
+	.swiftLint
+]
+
 extension Project {
+
 	/// Helper function to create the Project for this ExampleApp
-	public static func app(name: String, platform: Platform, dependencies: [TargetDependency], infoPlist: [String: InfoPlist.Value] = [:]) -> Project {
+	public static func app(name: String,
+						   platform: Platform,
+						   dependencies: [TargetDependency],
+						   infoPlist: [String: InfoPlist.Value] = [:]) -> Project {
 		let targets = makeAppTargets(name: name,
 									 platform: platform,
 									 dependencies: dependencies,
@@ -43,6 +51,7 @@ extension Project {
 							 infoPlist: .default,
 							 sources: ["Sources/**"],
 							 resources: ["Resources/**"],
+							 scripts: scripts,
 							 dependencies: dependencies)
 
 		let tests = Target(name: "\(name)Tests",
@@ -52,6 +61,7 @@ extension Project {
 						   infoPlist: .default,
 						   sources: ["Tests/**"],
 						   resources: [],
+						   scripts: scripts,
 						   dependencies: [.target(name: name)])
 
 		return [sources, tests]
@@ -79,6 +89,7 @@ extension Project {
 			infoPlist: .extendingDefault(with: global),
 			sources: ["Sources/**"],
 			resources: ["Resources/**"],
+			scripts: scripts,
 			dependencies: dependencies
 		)
 
@@ -89,6 +100,8 @@ extension Project {
 			bundleId: "io.leka.apf.app.\(name)Tests",
 			infoPlist: .default,
 			sources: ["Tests/**"],
+			resources: [],
+			scripts: scripts,
 			dependencies: [
 				.target(name: "\(name)")
 			])
