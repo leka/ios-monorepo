@@ -7,10 +7,12 @@ import ProjectDescription
 
 extension Project {
     /// Helper function to create the Project for this ExampleApp
-	public static func app(name: String, platform: Platform, dependencies: [TargetDependency]) -> Project {
+	public static func app(name: String, platform: Platform, dependencies: [TargetDependency], infoPlist: [String: InfoPlist.Value] = [:]) -> Project {
 		let targets = makeAppTargets(name: name,
 									 platform: platform,
-									 dependencies: dependencies)
+									 dependencies: dependencies,
+									 infoPlist: infoPlist
+									)
 		return Project(name: name,
 					   organizationName: "leka.io",
 					   targets: targets)
@@ -55,21 +57,23 @@ extension Project {
     }
 
     /// Helper function to create the application target and the unit test target.
-    private static func makeAppTargets(name: String, platform: Platform, dependencies: [TargetDependency]) -> [Target] {
+    private static func makeAppTargets(name: String, platform: Platform, dependencies: [TargetDependency], infoPlist: [String: InfoPlist.Value] = [:]) -> [Target] {
         let platform: Platform = platform
-        let infoPlist: [String: InfoPlist.Value] = [
+        let base: [String: InfoPlist.Value] = [
             "CFBundleShortVersionString": "1.0",
             "CFBundleVersion": "1",
             "UIMainStoryboardFile": "",
             "UILaunchStoryboardName": "LaunchScreen"
             ]
 
+		let global = base.merging(infoPlist) { (_, new) in new }
+
         let mainTarget = Target(
             name: name,
             platform: platform,
             product: .app,
             bundleId: "io.leka.apf.app.\(name)",
-            infoPlist: .extendingDefault(with: infoPlist),
+			infoPlist: .extendingDefault(with: global),
             sources: ["Sources/**"],
             resources: ["Resources/**"],
             dependencies: dependencies
