@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-	let osVersion: String = Bundle.main.object(forInfoDictionaryKey: "os_version") as! String
+	let osVersion: String = Bundle.main.object(forInfoDictionaryKey: "os_version") as? String ?? "LekaOS version not found"
 
 	@StateObject var robotManager = RobotManager()
 

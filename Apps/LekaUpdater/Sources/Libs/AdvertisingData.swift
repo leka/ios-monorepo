@@ -24,7 +24,9 @@ struct AdvertisingData {
 	var osVersion: String?
 
 	init?(_ advertisingData: [String: Any]) {
-		name = advertisingData["kCBAdvDataLocalName"] as! String
+		guard let name = advertisingData["kCBAdvDataLocalName"] as? String else {return nil}
+
+		self.name = name
 
 		guard let serviceData = advertisingData[CBAdvertisementDataServiceDataKey] as? [CBUUID: Data] else {return nil}
 		guard let lekaServiceData = serviceData[BLESpecs.AdvertisingData.service] else {return nil}
