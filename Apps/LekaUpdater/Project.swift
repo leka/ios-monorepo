@@ -9,5 +9,10 @@ import ProjectDescriptionHelpers
 let project = Project.app(name: "LekaUpdater",
 						  platform: .iOS,
 						  dependencies: [
-							.project(target: "CoreUI", path: Path("../../Modules/CoreUI")),
-						  ])
+							.project(target: "CoreUI", path: Path("../../Modules/CoreUI"))
+						  ],
+						  infoPlist: [
+							"os_version": "1.3.0",
+							"NSBluetoothAlwaysUsageDescription": "The Leka Updater app needs to use Bluetooth to connect to the Leka robot."
+						  ]
+						)
