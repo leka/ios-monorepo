@@ -10,7 +10,7 @@ public struct Hello: View {
 		self.color = color
 	}
 
-    public var body: some View {
+	public var body: some View {
 		VStack {
 			Text("Hello, \(name)!")
 				.padding(50)
@@ -21,11 +21,11 @@ public struct Hello: View {
 				.scaledToFit()
 				.frame(width: 200.0)
 		}
-    }
+	}
 }
 
 struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
+	static var previews: some View {
 		Hello("World", in: .pink)
-    }
+	}
 }
