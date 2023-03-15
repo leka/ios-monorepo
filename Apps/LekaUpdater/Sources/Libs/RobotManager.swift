@@ -8,6 +8,7 @@
 import Foundation
 import CoreBluetooth
 import CryptoKit
+import System
 
 class RobotManager: NSObject, CBCentralManagerDelegate, ObservableObject {
 	var osVersion: String
@@ -159,14 +160,15 @@ class RobotManager: NSObject, CBCentralManagerDelegate, ObservableObject {
 	}
 
 	func setDestinationPath() {
-		let directory = "/fs/usr/os"
+		let directory: FilePath = "/fs/usr/os"
 		let filename = "LekaOS-\(osVersion).bin"
-		let destinationPath = directory + "/" + filename
+		let destinationPath = directory.appending(filename)
 
 		guard let service = connectedRobot!.peripheral.services?.first(where: {$0.uuid == BLESpecs.FileExchange.service}) else { return }
 		guard let characteristic = service.characteristics?.first(where: {$0.uuid == BLESpecs.FileExchange.Characteristics.filePath}) else { return }
 
-		connectedRobot!.peripheral.writeValue(destinationPath.data(using: .utf8)!, for: characteristic, type: .withResponse)
+		connectedRobot!.peripheral.writeValue(destinationPath.string.data(using: .utf8)!,
+											  for: characteristic, type: .withResponse)
 	}
 
 	@Published var sendingFileProgression: Float = 0.0
