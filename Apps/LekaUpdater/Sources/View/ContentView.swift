@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct ContentView: View {
-	let os_version: String = Bundle.main.object(forInfoDictionaryKey: "os_version") as! String
+	let osVersion: String = Bundle.main.object(forInfoDictionaryKey: "os_version") as! String
 
-	@StateObject var robot_manager = RobotManager()
+	@StateObject var robotManager = RobotManager()
 
-	@State private var selected_robot_index = 0
+	@State private var selectedRobotIndex = 0
 
 	var body: some View {
 		VStack {
@@ -25,76 +25,76 @@ struct ContentView: View {
 				VStack {
 					HStack {
 						Text("Robot")
-						Picker("Robot", selection: $selected_robot_index, content: {
-							ForEach(0..<robot_manager.robots.count, id: \.self, content: { robot_index in
-								Text(robot_manager.robots[robot_index].name).tag(robot_index)
+						Picker("Robot", selection: $selectedRobotIndex, content: {
+							ForEach(0..<robotManager.robots.count, id: \.self, content: { robotIndex in
+								Text(robotManager.robots[robotIndex].name).tag(robotIndex)
 							})
-						}).disabled(robot_manager.robot_connected != nil)
+						}).disabled(robotManager.connectedRobot != nil)
 						.frame(width: 250)
-						Button(robot_manager.robot_connected == nil ? "Connection" : "Disconnection") {
-							if robot_manager.robot_connected != nil {
-								robot_manager.disconnect()
-							} else if !robot_manager.robots.isEmpty {
-								robot_manager.connect(to: robot_manager.robots[selected_robot_index])
+						Button(robotManager.connectedRobot == nil ? "Connection" : "Disconnection") {
+							if robotManager.connectedRobot != nil {
+								robotManager.disconnect()
+							} else if !robotManager.robots.isEmpty {
+								robotManager.connect(to: robotManager.robots[selectedRobotIndex])
 							}
 						}
-						.disabled(robot_manager.robots.isEmpty)
+						.disabled(robotManager.robots.isEmpty)
 						Text("Connected ✔")
 							.foregroundColor(Color.gray)
-							.opacity(robot_manager.robot_connected == nil ? 0 : 1)
+							.opacity(robotManager.connectedRobot == nil ? 0 : 1)
 					}
 				}.padding()// (ConnectionView)
 
 				VStack {
 					List {
-						Text(robot_manager.robot_connected == nil ?
-								robot_manager.robots.isEmpty ? "Name: -" : "Name: (\(robot_manager.robots[selected_robot_index].name))" :
-								"Name: \(robot_manager.robot_connected!.name)")
-						Text(robot_manager.robot_connected == nil ?
-								robot_manager.robots.isEmpty ? "Battery: -" : "Battery: (\(robot_manager.robots[selected_robot_index].battery))" :
-								"Battery: \(robot_manager.robot_connected!.battery)")
-						Text(robot_manager.robot_connected == nil ?
-								robot_manager.robots.isEmpty ? "In charge: -" : robot_manager.robots[selected_robot_index].is_charging ? "In charge: (yes)" : "In charge: (no)" :
-								robot_manager.robot_connected!.is_charging ? "In charge: yes" : "In charge: no")
-						Text(robot_manager.robot_connected == nil ?
-								robot_manager.robots.isEmpty || robot_manager.robots[selected_robot_index].os_version == nil ? "Version: -" : "Version: (\(robot_manager.robots[selected_robot_index].os_version!))" :
-								robot_manager.robot_connected!.os_version == nil ? "Version: -" :
-								"Version: \(robot_manager.robot_connected!.os_version!)")
+						Text(robotManager.connectedRobot == nil ?
+								robotManager.robots.isEmpty ? "Name: -" : "Name: (\(robotManager.robots[selectedRobotIndex].name))" :
+								"Name: \(robotManager.connectedRobot!.name)")
+						Text(robotManager.connectedRobot == nil ?
+								robotManager.robots.isEmpty ? "Battery: -" : "Battery: (\(robotManager.robots[selectedRobotIndex].battery))" :
+								"Battery: \(robotManager.connectedRobot!.battery)")
+						Text(robotManager.connectedRobot == nil ?
+								robotManager.robots.isEmpty ? "In charge: -" : robotManager.robots[selectedRobotIndex].isCharging ? "In charge: (yes)" : "In charge: (no)" :
+								robotManager.connectedRobot!.isCharging ? "In charge: yes" : "In charge: no")
+						Text(robotManager.connectedRobot == nil ?
+								robotManager.robots.isEmpty || robotManager.robots[selectedRobotIndex].osVersion == nil ? "Version: -" : "Version: (\(robotManager.robots[selectedRobotIndex].osVersion!))" :
+								robotManager.connectedRobot!.osVersion == nil ? "Version: -" :
+								"Version: \(robotManager.connectedRobot!.osVersion!)")
 					}
 				}.padding() // (RobotInformationView)
 
 				VStack {
 					HStack {
-						Button("Start update process (v\(os_version))") {
-							robot_manager.applyUpdate()
+						Button("Start update process (v\(osVersion))") {
+							robotManager.applyUpdate()
 						}
-						.disabled(robot_manager.robot_connected == nil ||
-									robot_manager.robot_connected!.os_version == nil ||
-									robot_manager.robot_connected!.os_version!.compare(os_version, options: .numeric) != .orderedAscending ||
-									robot_manager.sending_file_progression > 0
+						.disabled(robotManager.connectedRobot == nil ||
+									robotManager.connectedRobot!.osVersion == nil ||
+									robotManager.connectedRobot!.osVersion!.compare(osVersion, options: .numeric) != .orderedAscending ||
+									robotManager.sendingFileProgression > 0
 						)
 						.alert(isPresented: Binding<Bool>(
 							get: {() -> Bool in
-								robot_manager.is_sending_file_and_not_charging || robot_manager.applying_update_fail
+								robotManager.isSendingFileAndNotCharging || robotManager.applyingUpdateFail
 							},
 							set: {(_) -> Void in
-								robot_manager.is_sending_file_and_not_charging = false
-								robot_manager.applying_update_fail = false
+								robotManager.isSendingFileAndNotCharging = false
+								robotManager.applyingUpdateFail = false
 							}
 						)) {
-							if robot_manager.is_sending_file_and_not_charging {
+							if robotManager.isSendingFileAndNotCharging {
 								return Alert(title: Text("⚠️ WARNING ⚠️\nRobot not in charge."))
 							} else {
 								return Alert(title: Text("Oops!... 🙁\nSomething's wrong..."),
 											 message: Text("The update process failed, please try again"))
 							}
 						}
-						ProgressView(value: robot_manager.sending_file_progression)
-							.opacity(robot_manager.sending_file_progression > 0 ? 1 : 0)
-						Text(robot_manager.sending_file_is_paused ? "Update paused,\nwill resume shortly" : "Rebooting...")
+						ProgressView(value: robotManager.sendingFileProgression)
+							.opacity(robotManager.sendingFileProgression > 0 ? 1 : 0)
+						Text(robotManager.sendingFileIsPaused ? "Update paused,\nwill resume shortly" : "Rebooting...")
 							.foregroundColor(Color.gray)
 							.multilineTextAlignment(.center)
-							.opacity(robot_manager.sending_file_progression >= 1 || robot_manager.sending_file_is_paused ? 1 : 0 )
+							.opacity(robotManager.sendingFileProgression >= 1 || robotManager.sendingFileIsPaused ? 1 : 0 )
 					}
 					Text("To start the update process, the robot must be charging and have at least 30% of battery.")
 						.foregroundColor(Color.gray)
@@ -102,7 +102,7 @@ struct ContentView: View {
 					Text("⚠️ Please keep the \"Emergency Stop 🛑\" magic card nearby during update process, to reboot the robot in case of failure ⚠️")
 						.foregroundColor(Color.red)
 						.font(.footnote)
-					Text(robot_manager.errorMessage)
+					Text(robotManager.errorMessage)
 						.foregroundColor(Color.red)
 				}.padding() // (UpdateView)
 

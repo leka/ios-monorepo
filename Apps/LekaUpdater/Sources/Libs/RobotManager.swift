@@ -10,10 +10,10 @@ import CoreBluetooth
 import CryptoKit
 
 class RobotManager: NSObject, CBCentralManagerDelegate, ObservableObject {
-	let os_version: String = Bundle.main.object(forInfoDictionaryKey: "os_version") as! String
+	let osVersion: String = Bundle.main.object(forInfoDictionaryKey: "osVersion") as! String
 
 	@Published var robots = [RobotModel]()
-	@Published var robot_connected: RobotModel?
+	@Published var connectedRobot: RobotModel?
 
 	var central: CBCentralManager!
 
@@ -44,20 +44,20 @@ class RobotManager: NSObject, CBCentralManagerDelegate, ObservableObject {
 	}
 
 	func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String: Any], rssi RSSI: NSNumber) {
-		guard let adv_data = AdvertisingData(advertisementData) else {return}
+		guard let advData = AdvertisingData(advertisementData) else {return}
 
 		if let index = robots.firstIndex(where: {$0.peripheral == peripheral}) {
-			robots[index].updateFrom(advertising_data: adv_data)
+			robots[index].updateFrom(advertisingData: advData)
 		} else {
-			robots.append(RobotModel(peripheral: peripheral, advertising_data: adv_data))
+			robots.append(RobotModel(peripheral: peripheral, advertisingData: advData))
 		}
 	}
 
 	func connect(to robot: RobotModel) {
-		robot_connected = robot
+		connectedRobot = robot
 
 		central.stopScan()
-		central.connect(robot_connected!.peripheral)
+		central.connect(connectedRobot!.peripheral)
 	}
 
 	func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
@@ -66,41 +66,42 @@ class RobotManager: NSObject, CBCentralManagerDelegate, ObservableObject {
 	}
 
 	func disconnect() {
-		if robot_connected == nil {
+		if connectedRobot == nil {
 			return
 		}
 
-		central.cancelPeripheralConnection(robot_connected!.peripheral)
+		central.cancelPeripheralConnection(connectedRobot!.peripheral)
 	}
 
 	func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
-		robot_connected = nil
+		connectedRobot = nil
 
 		central.scanForPeripherals(withServices: [BLESpecs.AdvertisingData.service])
 
-		sending_file_progression = 0.0
+		sendingFileProgression = 0.0
 		errorMessage = ""
 	}
 
 	func readOSVersion() {
-		if robot_connected == nil { return }
+		if connectedRobot == nil { return }
 
-		guard let service = robot_connected!.peripheral.services?.first(where: {$0.uuid == BLESpecs.DeviceInformation.service}) else { return }
+		guard let service = connectedRobot!.peripheral.services?.first(where: {$0.uuid == BLESpecs.DeviceInformation.service}) else { return }
 		guard let characteristic = service.characteristics?.first(where: {$0.uuid == BLESpecs.DeviceInformation.Characteristics.osVersion}) else { return }
 
-		robot_connected!.peripheral.readValue(for: characteristic)
+		connectedRobot!.peripheral.readValue(for: characteristic)
 	}
 
-	var applying_update_fail = false
+	var applyingUpdateFail = false
+
 	func applyUpdate() {
 		if !isUpdateCanBeApplied() { return }
 
-		applying_update_fail = false
+		applyingUpdateFail = false
 
-		if robot_connected!.os_version!.compare("1.3.0", options: .numeric) != .orderedAscending {
+		if connectedRobot!.osVersion!.compare("1.3.0", options: .numeric) != .orderedAscending {
 			setRobotInFileExchangeState()
 		}
-		if robot_connected!.os_version!.compare("1.3.0", options: .numeric) == .orderedAscending {
+		if connectedRobot!.osVersion!.compare("1.3.0", options: .numeric) == .orderedAscending {
 			setDestinationPath() // Set path and clear for robot version before 1.3.0
 		} else {
 			setDestinationPath() // Set path only for robot version since 1.3.0
@@ -113,16 +114,16 @@ class RobotManager: NSObject, CBCentralManagerDelegate, ObservableObject {
 	@Published var errorMessage: String = ""
 	func isUpdateCanBeApplied() -> Bool {
 		errorMessage = ""
-		if robot_connected == nil {
+		if connectedRobot == nil {
 			errorMessage = "Robot not connected"
 			return false
 		}
 
-		if robot_connected!.is_charging == false {
+		if connectedRobot!.isCharging == false {
 			errorMessage = "Robot not in charge"
 			return false
 		}
-		if robot_connected!.battery < 30 {
+		if connectedRobot!.battery < 30 {
 			errorMessage = "Robot have not enough batteries"
 			return false
 		}
@@ -131,58 +132,58 @@ class RobotManager: NSObject, CBCentralManagerDelegate, ObservableObject {
 	}
 
 	func setRobotInFileExchangeState() {
-		guard let service = robot_connected!.peripheral.services?.first(where: {$0.uuid == BLESpecs.FileExchange.service}) else { return }
+		guard let service = connectedRobot!.peripheral.services?.first(where: {$0.uuid == BLESpecs.FileExchange.service}) else { return }
 		guard let characteristic = service.characteristics?.first(where: {$0.uuid == BLESpecs.FileExchange.Characteristics.setState}) else { return }
 
-		robot_connected!.peripheral.writeValue(Data([1]), for: characteristic, type: .withResponse)
+		connectedRobot!.peripheral.writeValue(Data([1]), for: characteristic, type: .withResponse)
 	}
 
 	func setClearFile() {
-		guard let service = robot_connected!.peripheral.services?.first(where: {$0.uuid == BLESpecs.FileExchange.service}) else { return }
+		guard let service = connectedRobot!.peripheral.services?.first(where: {$0.uuid == BLESpecs.FileExchange.service}) else { return }
 		guard let characteristic = service.characteristics?.first(where: {$0.uuid == BLESpecs.FileExchange.Characteristics.clearFile}) else { return }
 
-		robot_connected!.peripheral.writeValue(Data([1]), for: characteristic, type: .withResponse)
+		connectedRobot!.peripheral.writeValue(Data([1]), for: characteristic, type: .withResponse)
 	}
 
 	func setDestinationPath() {
 		let directory = "/fs/usr/os"
-		let filename = "LekaOS-\(os_version).bin"
-		let destination_path = directory + "/" + filename
+		let filename = "LekaOS-\(osVersion).bin"
+		let destinationPath = directory + "/" + filename
 
-		guard let service = robot_connected!.peripheral.services?.first(where: {$0.uuid == BLESpecs.FileExchange.service}) else { return }
+		guard let service = connectedRobot!.peripheral.services?.first(where: {$0.uuid == BLESpecs.FileExchange.service}) else { return }
 		guard let characteristic = service.characteristics?.first(where: {$0.uuid == BLESpecs.FileExchange.Characteristics.filePath}) else { return }
 
-		robot_connected!.peripheral.writeValue(destination_path.data(using: .utf8)!, for: characteristic, type: .withResponse)
+		connectedRobot!.peripheral.writeValue(destinationPath.data(using: .utf8)!, for: characteristic, type: .withResponse)
 	}
 
-	@Published var sending_file_progression: Float = 0.0
-	@Published var is_sending_file_and_not_charging: Bool = false
-	@Published var sending_file_is_paused: Bool = false
+	@Published var sendingFileProgression: Float = 0.0
+	@Published var isSendingFileAndNotCharging: Bool = false
+	@Published var sendingFileIsPaused: Bool = false
 
 	var timer: Timer?
-	let maximum_packet_size: Int = 61 // 61 for one packet, 236 for max bytes in multiple packet
+	let maximumPacketSize: Int = 61 // 61 for one packet, 236 for max bytes in multiple packet
 
-	var expected_complete_packets = 0
-	var expected_remaining_bytes = 0
+	var expectedCompletePackets = 0
+	var expectedRemainingBytes = 0
 
 	var data = Data()
-	var current_packet = 0
-	var optimized_delay_in_seconds = 0.07
+	var currentPacket = 0
+	var optimizedDelayInSeconds = 0.07
 
 	func send() {
 		if !loadFile() { return }
 
-		expected_complete_packets = Int(floor(Double(data.count / maximum_packet_size)))
-		expected_remaining_bytes = Int(data.count % maximum_packet_size)
+		expectedCompletePackets = Int(floor(Double(data.count / maximumPacketSize)))
+		expectedRemainingBytes = Int(data.count % maximumPacketSize)
 
-		current_packet = 0
-		sending_file_progression = 0.001
+		currentPacket = 0
+		sendingFileProgression = 0.001
 
-		timer = Timer.scheduledTimer(withTimeInterval: optimized_delay_in_seconds, repeats: true, block: onTick)
+		timer = Timer.scheduledTimer(withTimeInterval: optimizedDelayInSeconds, repeats: true, block: onTick)
 	}
 
 	func loadFile() -> Bool {
-		guard let fileURL = Bundle.main.url(forResource: "LekaOS-\(os_version)", withExtension: "bin") else {
+		guard let fileURL = Bundle.main.url(forResource: "LekaOS-\(osVersion)", withExtension: "bin") else {
 			print("Failed to create URL for file.")
 			return false
 		}
@@ -196,66 +197,66 @@ class RobotManager: NSObject, CBCentralManagerDelegate, ObservableObject {
 	}
 
 	func onTick(timer: Timer) {
-		is_sending_file_and_not_charging = !(robot_connected!.is_charging)
+		isSendingFileAndNotCharging = !(connectedRobot!.isCharging)
 
-		func is_in_critical_section() -> Bool {
-			let is_os_version_concerned = robot_connected!.os_version!.compare("1.3.0", options: .numeric) == .orderedAscending
+		func isBatteryLevelInCriticalSection() -> Bool {
+			let isOsVersionConcerned = connectedRobot!.osVersion!.compare("1.3.0", options: .numeric) == .orderedAscending
 
-			let is_not_charging = !(robot_connected!.is_charging)
+			let isNotCharging = !(connectedRobot!.isCharging)
 
-			let battery_level = robot_connected!.battery
-			let is_near_battery_level_change = 23...27 ~= battery_level || 48...52 ~= battery_level || 73...77 ~= battery_level || 88...92 ~= battery_level
+			let batteryLevel = connectedRobot!.battery
+			let isNearBatteryLevelChange = 23...27 ~= batteryLevel || 48...52 ~= batteryLevel || 73...77 ~= batteryLevel || 88...92 ~= batteryLevel
 
-			return is_os_version_concerned && (is_not_charging || is_near_battery_level_change)
+			return isOsVersionConcerned && (isNotCharging || isNearBatteryLevelChange)
 		}
-		sending_file_is_paused = is_in_critical_section()
-		if sending_file_is_paused {
+		sendingFileIsPaused = isBatteryLevelInCriticalSection()
+		if sendingFileIsPaused {
 			return
 		}
 
-		if current_packet > expected_complete_packets {
+		if currentPacket > expectedCompletePackets {
 			timer.invalidate()
-			is_sending_file_and_not_charging = false
+			isSendingFileAndNotCharging = false
 			Task {await onDataSent()}
-		} else if current_packet < expected_complete_packets {
-			sending_file_progression = Float(current_packet) / Float(expected_complete_packets)
+		} else if currentPacket < expectedCompletePackets {
+			sendingFileProgression = Float(currentPacket) / Float(expectedCompletePackets)
 
-			let start_index = 0 + current_packet * maximum_packet_size
-			let end_index = (maximum_packet_size - 1) + current_packet * maximum_packet_size
-			let data_to_send = data[start_index...end_index]
+			let startIndex = 0 + currentPacket * maximumPacketSize
+			let endIndex = (maximumPacketSize - 1) + currentPacket * maximumPacketSize
+			let dataToSend = data[startIndex...endIndex]
 
-			guard let service = robot_connected!.peripheral.services?.first(where: {$0.uuid == BLESpecs.FileExchange.service}) else { return }
+			guard let service = connectedRobot!.peripheral.services?.first(where: {$0.uuid == BLESpecs.FileExchange.service}) else { return }
 			guard let characteristic = service.characteristics?.first(where: {$0.uuid == BLESpecs.FileExchange.Characteristics.fileReceptionBuffer}) else { return }
 
-			robot_connected!.peripheral.writeValue(data_to_send, for: characteristic, type: .withResponse)
+			connectedRobot!.peripheral.writeValue(dataToSend, for: characteristic, type: .withResponse)
 
-		} else if current_packet == expected_complete_packets {
-			sending_file_progression = Float(current_packet) / Float(expected_complete_packets)
+		} else if currentPacket == expectedCompletePackets {
+			sendingFileProgression = Float(currentPacket) / Float(expectedCompletePackets)
 
-			let start_index = expected_complete_packets * maximum_packet_size
-			let end_index = expected_complete_packets * maximum_packet_size + expected_remaining_bytes - 1
-			let data_to_send = data[start_index...end_index]
+			let startIndex = expectedCompletePackets * maximumPacketSize
+			let endIndex = expectedCompletePackets * maximumPacketSize + expectedRemainingBytes - 1
+			let dataToSend = data[startIndex...endIndex]
 
-			guard let service = robot_connected!.peripheral.services?.first(where: {$0.uuid == BLESpecs.FileExchange.service}) else { return }
+			guard let service = connectedRobot!.peripheral.services?.first(where: {$0.uuid == BLESpecs.FileExchange.service}) else { return }
 			guard let characteristic = service.characteristics?.first(where: {$0.uuid == BLESpecs.FileExchange.Characteristics.fileReceptionBuffer}) else { return }
 
-			robot_connected!.peripheral.writeValue(data_to_send, for: characteristic, type: .withResponse)
+			connectedRobot!.peripheral.writeValue(dataToSend, for: characteristic, type: .withResponse)
 		}
 
-		current_packet += 1
+		currentPacket += 1
 	}
 
-	var actual_sha256: String = ""
+	var actualSHA256: String = ""
 	func isSHA256Correct() async -> Bool {
-		if robot_connected!.os_version!.compare("1.3.0", options: .numeric) != .orderedAscending {
-			actual_sha256 = ""
+		if connectedRobot!.osVersion!.compare("1.3.0", options: .numeric) != .orderedAscending {
+			actualSHA256 = ""
 
-			guard let service = robot_connected!.peripheral.services?.first(where: {$0.uuid == BLESpecs.FileExchange.service}) else { return false }
+			guard let service = connectedRobot!.peripheral.services?.first(where: {$0.uuid == BLESpecs.FileExchange.service}) else { return false }
 			guard let characteristic = service.characteristics?.first(where: {$0.uuid == BLESpecs.FileExchange.Characteristics.fileSHA256}) else { return false }
 
-			robot_connected!.peripheral.readValue(for: characteristic)
+			connectedRobot!.peripheral.readValue(for: characteristic)
 
-			while actual_sha256.isEmpty || actual_sha256 == "0000000000000000000000000000000000000000000000000000000000000000" {
+			while actualSHA256.isEmpty || actualSHA256 == "0000000000000000000000000000000000000000000000000000000000000000" {
 				do {
 					try await Task.sleep(seconds: 0.1)
 				} catch {
@@ -263,47 +264,47 @@ class RobotManager: NSObject, CBCentralManagerDelegate, ObservableObject {
 				}
 			}
 
-			let expected_sha256: String = SHA256.hash(data: data).compactMap { String(format: "%02x", $0) }.joined()
-			return actual_sha256 == expected_sha256
+			let expectedSHA256: String = SHA256.hash(data: data).compactMap { String(format: "%02x", $0) }.joined()
+			return actualSHA256 == expectedSHA256
 		} else {
 			return true
 		}
 	}
 
 	func rebootRobot() {
-		guard let service = robot_connected!.peripheral.services?.first(where: {$0.uuid == BLESpecs.Monitoring.service}) else { return }
+		guard let service = connectedRobot!.peripheral.services?.first(where: {$0.uuid == BLESpecs.Monitoring.service}) else { return }
 		guard let characteristic = service.characteristics?.first(where: {$0.uuid == BLESpecs.Monitoring.Characteristics.softReboot}) else { return }
-		robot_connected!.peripheral.writeValue(Data([1]), for: characteristic, type: .withResponse)
+		connectedRobot!.peripheral.writeValue(Data([1]), for: characteristic, type: .withResponse)
 	}
 
 	func onDataSent() async {
-		let is_not_sha256_correct = await !isSHA256Correct()
-		if is_not_sha256_correct {
+		let isNotSHA256Correct = await !isSHA256Correct()
+		if isNotSHA256Correct {
 			rebootRobot()
-			applying_update_fail = true
-			sending_file_progression = 0.0
+			applyingUpdateFail = true
+			sendingFileProgression = 0.0
 			return
 		}
 
-		let os_version_array = os_version.components(separatedBy: ".")
+		let osVersionArray = osVersion.components(separatedBy: ".")
 
-		let major: UInt8 = UInt8(os_version_array[0])!
-		let minor: UInt8 = UInt8(os_version_array[1])!
-		let revision: UInt16 = UInt16(os_version_array[2])!
+		let major: UInt8 = UInt8(osVersionArray[0])!
+		let minor: UInt8 = UInt8(osVersionArray[1])!
+		let revision: UInt16 = UInt16(osVersionArray[2])!
 
-		guard let service = robot_connected!.peripheral.services?.first(where: {$0.uuid == BLESpecs.FirmwareUpdate.service}) else { return }
+		guard let service = connectedRobot!.peripheral.services?.first(where: {$0.uuid == BLESpecs.FirmwareUpdate.service}) else { return }
 
-		guard let characteristic_major = service.characteristics?.first(where: {$0.uuid == BLESpecs.FirmwareUpdate.Characteristics.versionMajor}) else { return }
-		robot_connected!.peripheral.writeValue(Data([major]), for: characteristic_major, type: .withResponse)
+		guard let characteristicMajor = service.characteristics?.first(where: {$0.uuid == BLESpecs.FirmwareUpdate.Characteristics.versionMajor}) else { return }
+		connectedRobot!.peripheral.writeValue(Data([major]), for: characteristicMajor, type: .withResponse)
 
-		guard let characteristic_minor = service.characteristics?.first(where: {$0.uuid == BLESpecs.FirmwareUpdate.Characteristics.versionMinor}) else { return }
-		robot_connected!.peripheral.writeValue(Data([minor]), for: characteristic_minor, type: .withResponse)
+		guard let characteristicMinor = service.characteristics?.first(where: {$0.uuid == BLESpecs.FirmwareUpdate.Characteristics.versionMinor}) else { return }
+		connectedRobot!.peripheral.writeValue(Data([minor]), for: characteristicMinor, type: .withResponse)
 
-		guard let characteristic_revision = service.characteristics?.first(where: {$0.uuid == BLESpecs.FirmwareUpdate.Characteristics.versionRevision}) else { return }
-		robot_connected!.peripheral.writeValue(Data([UInt8(revision >> 8), UInt8(revision & 0x00FF)]), for: characteristic_revision, type: .withResponse)
+		guard let characteristicRevision = service.characteristics?.first(where: {$0.uuid == BLESpecs.FirmwareUpdate.Characteristics.versionRevision}) else { return }
+		connectedRobot!.peripheral.writeValue(Data([UInt8(revision >> 8), UInt8(revision & 0x00FF)]), for: characteristicRevision, type: .withResponse)
 
 		guard let characteristic = service.characteristics?.first(where: {$0.uuid == BLESpecs.FirmwareUpdate.Characteristics.requestUpdate}) else { return }
-		robot_connected!.peripheral.writeValue(Data([1]), for: characteristic, type: .withResponse)
+		connectedRobot!.peripheral.writeValue(Data([1]), for: characteristic, type: .withResponse)
 	}
 }
 
@@ -326,32 +327,32 @@ extension RobotManager: CBPeripheralDelegate {
 	}
 
 	func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
-		if robot_connected == nil { return }
+		if connectedRobot == nil { return }
 		guard let value = characteristic.value else { return }
 
 		switch characteristic.uuid {
 		case BLESpecs.Battery.Characteristics.level:
 			if value.first != nil {
-				robot_connected!.battery = value.first!
+				connectedRobot!.battery = value.first!
 			}
 		case BLESpecs.Monitoring.Characteristics.chargingStatus:
 			if value.first != nil {
-				robot_connected!.is_charging = (value.first == 0x01)
+				connectedRobot!.isCharging = (value.first == 0x01)
 			}
 		case BLESpecs.DeviceInformation.Characteristics.osVersion:
 			if value.first != nil {
-				robot_connected!.os_version = String(decoding: value, as: UTF8.self)
+				connectedRobot!.osVersion = String(decoding: value, as: UTF8.self)
 					.replacingOccurrences(of: "\0", with: "")
 			}
 		case BLESpecs.FileExchange.Characteristics.fileSHA256:
 			if value.first != nil {
-				actual_sha256 = value.map { String(format: "%02hhx", $0) }.joined()
+				actualSHA256 = value.map { String(format: "%02hhx", $0) }.joined()
 			}
 		default:
 			return
 		}
 
-		if robot_connected?.os_version == nil {
+		if connectedRobot?.osVersion == nil {
 			readOSVersion()
 		}
 	}
