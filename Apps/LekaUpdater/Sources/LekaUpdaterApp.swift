@@ -3,9 +3,9 @@ import CoreUI
 
 @main
 struct LekaUpdaterApp: App {
-    var body: some Scene {
-        WindowGroup {
+	var body: some Scene {
+		WindowGroup {
 			ContentView()
-        }
-    }
+		}
+	}
 }
