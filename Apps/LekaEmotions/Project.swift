@@ -9,5 +9,5 @@ import ProjectDescriptionHelpers
 let project = Project.app(name: "LekaEmotions",
 						  platform: .iOS,
 						  dependencies: [
-							.project(target: "CoreUI", path: Path("../../Modules/CoreUI")),
+							.project(target: "CoreUI", path: Path("../../Modules/CoreUI"))
 						  ])
