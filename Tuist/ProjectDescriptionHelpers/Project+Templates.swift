@@ -39,6 +39,7 @@ extension Project {
                 platform: platform,
 				product: .staticLibrary,
                 bundleId: "io.leka.apf.framework.\(name)",
+				deploymentTarget: .iOS(targetVersion: "16.0", devices: .ipad),
                 infoPlist: .default,
                 sources: ["Sources/**"],
                 resources: ["Resources/**"],
@@ -64,6 +65,7 @@ extension Project {
             "CFBundleVersion": "1",
             "UIMainStoryboardFile": "",
             "UILaunchStoryboardName": "LaunchScreen"
+
             ]
 
 		let global = base.merging(infoPlist) { (_, new) in new }
@@ -73,6 +75,7 @@ extension Project {
             platform: platform,
             product: .app,
             bundleId: "io.leka.apf.app.\(name)",
+			deploymentTarget: .iOS(targetVersion: "16.0", devices: .ipad),
 			infoPlist: .extendingDefault(with: global),
             sources: ["Sources/**"],
             resources: ["Resources/**"],
