@@ -9,4 +9,9 @@ public extension TargetScript {
 		path: Path.relativeToRoot("Scripts/SwiftLintRunScript.sh"),
 		name: "SwiftLint",
 		basedOnDependencyAnalysis: false)
+
+	public static let swiftFormat = TargetScript.pre(
+		path: Path.relativeToRoot("Scripts/SwiftFormatRunScript.sh"),
+		name: "SwiftFormat",
+		basedOnDependencyAnalysis: false)
 }
