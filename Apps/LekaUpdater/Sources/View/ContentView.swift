@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreUI
 
 struct ContentView: View {
 	let osVersion: String = Bundle.main.object(forInfoDictionaryKey: "os_version") as? String ?? "LekaOS version not found"
@@ -16,7 +17,7 @@ struct ContentView: View {
 
 	var body: some View {
 		VStack {
-			Image("leka-logo")
+			Image(uiImage: CoreUIAsset.Assets.lekaLogo.image)
 				.resizable()
 				.aspectRatio(CGSize(width: 1000, height: 715), contentMode: .fit)
 				.frame(maxHeight: 100)
