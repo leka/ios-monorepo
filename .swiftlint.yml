@@ -22,4 +22,15 @@ identifier_name:
     - BLE
     - new
 
+line_length:
+  warning: 130
+  ignores_urls: true
+  ignores_function_declarations: true
+  ignores_interpolated_strings: true
+
+disabled_rules:
+  - trailing_comma
+  - opening_brace
+  - switch_case_alignment
+
 reporter: "emoji"
