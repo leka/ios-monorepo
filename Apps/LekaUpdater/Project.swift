@@ -18,6 +18,7 @@ let project = Project.app(name: "LekaUpdater",
 							"UISupportedInterfaceOrientations~ipad": [
 								"UIInterfaceOrientationPortrait",
 								"UIInterfaceOrientationPortraitUpsideDown"
-							]
+							],
+							"LSApplicationCategoryType": "public.app-category.utilities"
 						  ]
 )
