@@ -5,8 +5,8 @@
 //  Created by Yann LOCATELLI on 29/08/2022.
 //
 
-import Foundation
 import CoreBluetooth
+import Foundation
 
 struct RobotModel: Equatable {
 	var peripheral: CBPeripheral

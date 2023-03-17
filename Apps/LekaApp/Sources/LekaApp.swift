@@ -1,5 +1,5 @@
-import SwiftUI
 import CoreUI
+import SwiftUI
 
 @main
 struct LekaApp: App {
