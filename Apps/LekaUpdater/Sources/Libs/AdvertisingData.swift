@@ -5,8 +5,8 @@
 //  Created by Yann LOCATELLI on 08/12/2022.
 //
 
-import Foundation
 import CoreBluetooth
+import Foundation
 
 struct AdvertisingData {
 	private struct Index {
@@ -24,12 +24,14 @@ struct AdvertisingData {
 	var osVersion: String?
 
 	init?(_ advertisingData: [String: Any]) {
-		guard let name = advertisingData["kCBAdvDataLocalName"] as? String else {return nil}
+		guard let name = advertisingData["kCBAdvDataLocalName"] as? String else { return nil }
 
 		self.name = name
 
-		guard let serviceData = advertisingData[CBAdvertisementDataServiceDataKey] as? [CBUUID: Data] else {return nil}
-		guard let lekaServiceData = serviceData[BLESpecs.AdvertisingData.service] else {return nil}
+		guard let serviceData = advertisingData[CBAdvertisementDataServiceDataKey] as? [CBUUID: Data] else {
+			return nil
+		}
+		guard let lekaServiceData = serviceData[BLESpecs.AdvertisingData.service] else { return nil }
 
 		battery = lekaServiceData[Index.battery]
 		isCharging = lekaServiceData[Index.isCharging] == 0x01
@@ -37,7 +39,8 @@ struct AdvertisingData {
 		if lekaServiceData.count == 6 {
 			let osVersionMajor = lekaServiceData[Index.osVersionMajor]
 			let osVersionMinor = lekaServiceData[Index.osVersionMinor]
-			let osVersionRevision = lekaServiceData[Index.osVersionRevisionHighByte] << 8
+			let osVersionRevision =
+				lekaServiceData[Index.osVersionRevisionHighByte] << 8
 				+ lekaServiceData[Index.osVersionRevisionLowByte]
 
 			osVersion = "\(osVersionMajor).\(osVersionMinor).\(osVersionRevision)"
