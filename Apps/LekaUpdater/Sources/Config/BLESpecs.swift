@@ -5,8 +5,8 @@
 //  Created by Yann LOCATELLI on 22/09/2022.
 //
 
-import Foundation
 import CoreBluetooth
+import Foundation
 
 // swiftlint:disable nesting
 
