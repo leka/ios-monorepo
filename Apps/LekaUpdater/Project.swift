@@ -15,4 +15,4 @@ let project = Project.app(name: "LekaUpdater",
 							"os_version": "1.4.0",
 							"NSBluetoothAlwaysUsageDescription": "The Leka Updater app needs to use Bluetooth to connect to the Leka robot."
 						  ]
-						)
+)
