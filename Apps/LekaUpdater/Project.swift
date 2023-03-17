@@ -13,6 +13,13 @@ let project = Project.app(name: "LekaUpdater",
 						  ],
 						  infoPlist: [
 							"os_version": "1.4.0",
-							"NSBluetoothAlwaysUsageDescription": "The Leka Updater app needs to use Bluetooth to connect to the Leka robot."
+							"NSBluetoothAlwaysUsageDescription": "The Leka Updater app needs to use Bluetooth to connect to the Leka robot.",
+							"UIRequiresFullScreen": "true",
+							"UISupportedInterfaceOrientations": ["UIInterfaceOrientationPortrait"],
+							"UISupportedInterfaceOrientations~ipad": [
+								"UIInterfaceOrientationPortrait",
+								"UIInterfaceOrientationPortraitUpsideDown"
+							],
+							"LSApplicationCategoryType": "public.app-category.utilities"
 						  ]
 )
