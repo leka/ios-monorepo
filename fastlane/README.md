@@ -21,7 +21,23 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 [bundle exec] fastlane ios helloworld
 ```
 
-Push a new release build to the App Store
+Placeholder lane to make sure fastlane's working
+
+### ios sync_certificates
+
+```sh
+[bundle exec] fastlane ios sync_certificates
+```
+
+Sync development certificates
+
+### ios create_certificates
+
+```sh
+[bundle exec] fastlane ios create_certificates
+```
+
+Create development certificates
 
 ----
 

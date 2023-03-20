@@ -1,0 +1,9 @@
+# Leka - iOS Monorepo
+# Copyright 2023 APF Frdance handicap
+# SPDX-License-Identifier: Apache-2.0
+
+git_url("https://github.com/leka/certificates")
+
+storage_mode("git")
+
+type("development")
