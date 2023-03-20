@@ -3,15 +3,57 @@
 # SPDX-License-Identifier: Apache-2.0
 
 # auto update fastlane
-update_fastlane
+# update_fastlane
 
 default_platform(:ios)
+
+ROOT_DIR = "#{File.expand_path("..", Dir.pwd)}"
+SIGNING_DIR = "#{ROOT_DIR}/Tuist/Signing"
 
 platform :ios do
 
   desc "Placeholder lane to make sure fastlane's working"
   lane :helloworld do
-    puts "Hello, Fastlane!"
+    puts "Hello, Fastlane! (from #{Dir.pwd}, root: #{ROOT_DIR})"
+  end
+
+  desc "Sync development certificates"
+  lane :sync_certificates do
+
+    puts "Delete local provisioning profiles"
+    `rm -rf #{SIGNING_DIR}`
+
+    create_keychain({
+      name: "io.leka.fastlane.keychain",
+      unlock: true
+    })
+
+    match(
+      type: "development",
+      readonly: true,
+      output_path: "#{SIGNING_DIR}",
+      keychain_name: "io.leka.fastlane.keychain"
+    )
+
+    puts "Rename provisioning profile"
+    `mv -f #{SIGNING_DIR}/*.mobileprovision #{SIGNING_DIR}/LekaUpdater.Debug.mobileprovision`
+
+  end
+
+  desc "Create development certificates"
+  lane :create_certificates do
+
+    create_keychain({
+      name: "io.leka.fastlane.keychain",
+      unlock: true
+    })
+
+    match(
+      type: "development",
+      force_for_new_devices: true,
+      keychain_name: "io.leka.fastlane.keychain"
+    )
+
   end
 
 end
