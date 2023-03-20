@@ -71,6 +71,9 @@ Derived/
 ### Tuist managed dependencies ###
 Tuist/Dependencies
 
+### Tuist signing - siging is managed by fastlane
+Tuist/Signing
+
 ### Fastlane
 
 # fastlane specific
