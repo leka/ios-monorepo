@@ -10,8 +10,8 @@ fi
 
 export PATH
 
-if which swift-format > /dev/null; then
-	swift-format format -i -r ../../ --configuration ../../.swift-format
-else
-    echo "warning: swift-format not installed, download from https://github.com/apple/swift-format"
-fi
+# if which swift-format > /dev/null; then
+# 	swift-format format -i -r ../../ --configuration ../../.swift-format
+# else
+#     echo "warning: swift-format not installed, download from https://github.com/apple/swift-format"
+# fi

@@ -1,0 +1,96 @@
+title:
+    en_US: Color Quest with 2 colors
+    fr_FR: Loto des couleurs avec 2 couleurs
+
+short_title:
+    en_US: Quest-2
+    fr_FR: Loto-2
+
+uuid: 87925cb8-fe9f-403f-8c07-525441328b2f
+number_of_steps: 10
+random_steps: true
+number_of_elements_per_step: 2
+random_element_position : true
+
+steps:
+
+    - instruction:
+        en_US: Touch the same color as Leka
+        fr_FR: Touche la couleur identique à celle de Leka
+      correct_answer: blue
+      colors_diplayed_on_screen:
+        - red
+        - blue
+
+    - instruction:
+        en_US: Touch the same color as Leka
+        fr_FR: Touche la couleur identique à celle de Leka
+      correct_answer: red
+      colors_diplayed_on_screen:
+        - yellow
+        - red
+
+    - instruction:
+        en_US: Touch the same color as Leka
+        fr_FR: Touche la couleur identique à celle de Leka
+      correct_answer: green
+      colors_diplayed_on_screen:
+        - green
+        - yellow
+
+    - instruction:
+        en_US: Touch the same color as Leka
+        fr_FR: Touche la couleur identique à celle de Leka
+      correct_answer: yellow
+      colors_diplayed_on_screen:
+        - yellow
+        - pink
+
+    - instruction:
+        en_US: Touch the same color as Leka
+        fr_FR: Touche la couleur identique à celle de Leka
+      correct_answer: green
+      colors_diplayed_on_screen:
+        - green
+        - pink
+
+    - instruction:
+        en_US: Touch the same color as Leka
+        fr_FR: Touche la couleur identique à celle de Leka
+      correct_answer: green
+      colors_diplayed_on_screen:
+        - green
+        - blue
+
+    - instruction:
+        en_US: Touch the same color as Leka
+        fr_FR: Touche la couleur identique à celle de Leka
+      correct_answer: pink
+      colors_diplayed_on_screen:
+        - pink
+        - blue
+
+    - instruction:
+        en_US: Touch the same color as Leka
+        fr_FR: Touche la couleur identique à celle de Leka
+      correct_answer: blue
+      colors_diplayed_on_screen:
+        - yellow
+        - blue
+
+    - instruction:
+        en_US: Touch the same color as Leka
+        fr_FR: Touche la couleur identique à celle de Leka
+      correct_answer: red
+      colors_diplayed_on_screen:
+        - pink
+        - red
+
+    - instruction:
+        en_US: Touch the same color as Leka
+        fr_FR: Touche la couleur identique à celle de Leka
+      correct_answer: blue
+      colors_diplayed_on_screen:
+        - blue
+        - pink
+
