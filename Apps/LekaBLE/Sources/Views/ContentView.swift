@@ -2,20 +2,16 @@
 //  ContentView.swift
 //  LekaBLE
 //
-//  Created by Yann LOCATELLI on 20/03/2023.
+//  Created by Yann LOCATELLI on 17/02/2023.
 //
 
 import SwiftUI
 
 struct ContentView: View {
+	@StateObject var robotManager = RobotManager()
+
 	var body: some View {
-		VStack {
-			Image(systemName: "globe")
-				.imageScale(.large)
-				.foregroundColor(.accentColor)
-			Text("Hello, world!")
-		}
-		.padding()
+		ConnectionView(robotManager: robotManager)
 	}
 }
 
