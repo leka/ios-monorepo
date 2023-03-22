@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 # Leka - iOS Monorepo
 # Copyright 2023 APF Frdance handicap
 # SPDX-License-Identifier: Apache-2.0
 
-apple_id("apple.apf@leka.io") # Apple Developer Portal username
-team_id("GKQJXACKX7") # Developer Portal Team ID
-itc_team_id("124055768") # App Store Connect Team ID
+apple_id('apple.apf@leka.io') # Apple Developer Portal username
+team_id('GKQJXACKX7') # Developer Portal Team ID
+itc_team_id('124055768') # App Store Connect Team ID
