@@ -5,5 +5,3 @@
 apple_id("apple.apf@leka.io") # Apple Developer Portal username
 team_id("GKQJXACKX7") # Developer Portal Team ID
 itc_team_id("124055768") # App Store Connect Team ID
-
-app_identifier("io.leka.apf.app.LekaUpdater")

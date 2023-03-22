@@ -10,11 +10,16 @@ default_platform(:ios)
 ROOT_DIR = "#{File.expand_path("..", Dir.pwd)}"
 SIGNING_DIR = "#{ROOT_DIR}/Tuist/Signing"
 
+APP_BUNDLE_IDs = [
+  "io.leka.apf.app.LekaApp",
+  "io.leka.apf.app.LekaUpdater",
+]
+
 platform :ios do
 
   desc "Placeholder lane to make sure fastlane's working"
   lane :helloworld do
-    puts "Hello, Fastlane! (from #{Dir.pwd}, root: #{ROOT_DIR})"
+    puts "Hello, Fastlane! (from #{Dir.pwd}, root: #{ROOT_DIR}, signing: #{SIGNING_DIR})"
   end
 
   desc "Sync development certificates"
@@ -30,13 +35,21 @@ platform :ios do
 
     match(
       type: "development",
+      app_identifier: APP_BUNDLE_IDs,
       readonly: true,
       output_path: "#{SIGNING_DIR}",
       keychain_name: "io.leka.fastlane.keychain"
     )
 
     puts "Rename provisioning profile"
-    `mv -f #{SIGNING_DIR}/*.mobileprovision #{SIGNING_DIR}/LekaUpdater.Debug.mobileprovision`
+    APP_PROFILES = Dir.entries("#{SIGNING_DIR}").select { |f| f.end_with?("mobileprovision") }
+    APP_BUNDLE_IDs.each do |id|
+      name = id.delete_prefix("io.leka.apf.app.")
+      puts "name: #{name}"
+      profile = APP_PROFILES.select { |p| p.include?(name)}.first
+      puts "profile: #{profile}"
+      `mv -f #{SIGNING_DIR}/#{profile} #{SIGNING_DIR}/#{name}.Debug.mobileprovision`
+    end
 
   end
 
@@ -50,6 +63,7 @@ platform :ios do
 
     match(
       type: "development",
+      app_identifier: APP_BUNDLE_IDs,
       force_for_new_devices: true,
       keychain_name: "io.leka.fastlane.keychain"
     )
