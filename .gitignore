@@ -66,6 +66,24 @@ DerivedData/
 graph.dot
 graph.png
 Derived/
+.build
 
 ### Tuist managed dependencies ###
 Tuist/Dependencies
+
+### Tuist signing - siging is managed by fastlane
+Tuist/Signing
+
+### Fastlane
+
+# fastlane specific
+**/fastlane/report.xml
+
+# deliver temporary files
+**/fastlane/Preview.html
+
+# snapshot generated screenshots
+**/fastlane/screenshots
+
+# scan temporary files
+**/fastlane/test_output

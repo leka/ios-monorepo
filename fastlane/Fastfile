@@ -1,0 +1,69 @@
+# frozen_string_literal: true
+
+# Leka - iOS Monorepo
+# Copyright 2023 APF Frdance handicap
+# SPDX-License-Identifier: Apache-2.0
+
+# auto update fastlane
+# update_fastlane
+
+default_platform(:ios)
+
+ROOT_DIR = File.expand_path('..', Dir.pwd).to_s.freeze
+SIGNING_DIR = "#{ROOT_DIR}/Tuist/Signing"
+
+APP_BUNDLE_IDS = [
+  'io.leka.apf.app.LekaApp',
+  'io.leka.apf.app.LekaUpdater'
+].freeze
+
+platform :ios do
+  desc "Placeholder lane to make sure fastlane's working"
+  lane :helloworld do
+    puts "Hello, Fastlane! (from #{Dir.pwd}, root: #{ROOT_DIR}, signing: #{SIGNING_DIR})"
+  end
+
+  desc 'Sync development certificates'
+  lane :sync_certificates do
+    puts 'Delete local provisioning profiles'
+    `rm -rf #{SIGNING_DIR}`
+
+    create_keychain(
+      name: 'io.leka.fastlane.keychain',
+      unlock: true
+    )
+
+    match(
+      type: 'development',
+      app_identifier: APP_BUNDLE_IDS,
+      readonly: true,
+      output_path: SIGNING_DIR.to_s,
+      keychain_name: 'io.leka.fastlane.keychain'
+    )
+
+    puts 'Rename provisioning profile'
+    app_profiles = Dir.entries(SIGNING_DIR.to_s).select { |f| f.end_with?('mobileprovision') }
+    APP_BUNDLE_IDS.each do |id|
+      name = id.delete_prefix('io.leka.apf.app.')
+      puts "name: #{name}"
+      profile = app_profiles.select { |p| p.include?(name) }.first
+      puts "profile: #{profile}"
+      `mv -f #{SIGNING_DIR}/#{profile} #{SIGNING_DIR}/#{name}.Debug.mobileprovision`
+    end
+  end
+
+  desc 'Create development certificates'
+  lane :create_certificates do
+    create_keychain(
+      name: 'io.leka.fastlane.keychain',
+      unlock: true
+    )
+
+    match(
+      type: 'development',
+      app_identifier: APP_BUNDLE_IDS,
+      force_for_new_devices: true,
+      keychain_name: 'io.leka.fastlane.keychain'
+    )
+  end
+end
