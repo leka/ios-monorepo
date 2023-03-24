@@ -17,13 +17,12 @@ enum Page {
 	case game
 }
 
-
 class ViewRouter: ObservableObject {
-    
+
     // if !settings.userIsConnected { .welcome else .home
     // 
     @Published var currentPage: Page = .welcome
-	
+
 	// NavigationStacks Triggers
 	@Published var goToGameFromCurriculums: Bool = false
 	@Published var goToGameFromActivities: Bool = false

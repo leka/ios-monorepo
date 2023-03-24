@@ -9,14 +9,14 @@ import SwiftUI
 import Yams
 
 class CurriculumViewModel: ObservableObject, YamlFileDecodable {
-	
+
 	// MARK: - CurriculumList Published properties
 //	@Published var curriculumFilesList: [String] = [""] // Do I need this??
 	@Published var availableCurriculums: [Curriculum] = []
-	
+
 	// MARK: - Current || selected Curriculum Published properties
 	@Published var currentCurriculum = Curriculum()
-	@Published var currentCurriculumSelectedActivityID: UUID? = nil
+	@Published var currentCurriculumSelectedActivityID: UUID?
 	@Published var selectedCurriculumHeaderTitle: String = ""
 	@Published var selectedCurriculumRank: String = ""
 	@Published var selectedCurriculumIcon: String = ""
@@ -30,8 +30,7 @@ class CurriculumViewModel: ObservableObject, YamlFileDecodable {
 			selectedCurriculumDescription = "Reconnaissance des 5 émotions primaires \n(peur, joie, tristesse, colère et dégoût) \nà travers les photos de 5 personnes différentes." // from Yaml later
 		}
 	}
-	
-	
+
 	// MARK: - CurriculumList related Work
 	func getCurriculumList() -> CurriculumList {
 		do {
@@ -41,14 +40,14 @@ class CurriculumViewModel: ObservableObject, YamlFileDecodable {
 			return CurriculumList()
 		}
 	}
-	
+
 	func populateCurriculumList() {
 //		curriculumFilesList = getCurriculumList().curriculums
 		for item in getCurriculumList().curriculums {
 			availableCurriculums.append(getCurriculum(item))
 		}
 	}
-	
+
 	// MARK: - Curriculum-Specific Work
 	func getCurriculum(_ title: String) -> Curriculum {
 		do {
@@ -58,15 +57,15 @@ class CurriculumViewModel: ObservableObject, YamlFileDecodable {
 			return Curriculum()
 		}
 	}
-	
+
 //	func setCurriculumHeaderInfo() {
 //		selectedCurriculumHeaderTitle = availableCurriculums[selectedCurriculum ?? 0].fullTitle.localized() // fullTitle will become title_l1 etc...
 //	}
-	
+
 	func setCurriculumDetailNavTitle() -> String {
 		return "\(getCurriculumList().sectionTitle.localized()) \(String(describing: (selectedCurriculum ?? 0)+1))/\(availableCurriculums.count)"
 	}
-		
+
 	func setCurriculumIcon(for curriculum: Curriculum) -> String {
 		switch curriculum.id {
 			case "ec6fca8d-ac0f-44f8-b641-c9a96f9195c5": return "parcours_Emotion_Recognition_Pictures"
@@ -77,13 +76,13 @@ class CurriculumViewModel: ObservableObject, YamlFileDecodable {
 			default: return "parcours_Emotion_Recognition_Pictures"
 		}
 	}
-	
+
 	// MARK: - ActivityList -> will not stay here - list activities files from the Bundle instead
-	@Published var activityFilesCompleteList: [String] = [] //will not stay like that - list files instead
+	@Published var activityFilesCompleteList: [String] = [] // will not stay like that - list files instead
 	func getCompleteActivityList() {
 		for curriculum in availableCurriculums {
 			activityFilesCompleteList.append(contentsOf: curriculum.activities)
 		}
 	}
-	
+
 }

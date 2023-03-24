@@ -9,21 +9,21 @@ import SwiftUI
 import Lottie
 
 struct GameView: View {
-	
+
 	@StateObject var gameMetrics = GameMetrics()
 	@EnvironmentObject var viewRouter: ViewRouter
 	@EnvironmentObject var activityVM: ActivityViewModel
 	@EnvironmentObject var settings: SettingsViewModel
 	@Environment(\.dismiss) var dismiss
-	
+
 	@State private var textOffset: CGFloat = -100
 	@State private var textOpacity: Double = 0
 	@State private var offsetGameOverBtn: CGFloat = 0
 	@State private var offsetReplayBtn: CGFloat = 0
 	@State private var initialBtnOffsets: [CGFloat] = []
-	
+
 	@State private var showInstructionModal: Bool = false
-	
+
 	private var infoButton: some View {
 		Button {
 			showInstructionModal.toggle()
@@ -33,14 +33,14 @@ struct GameView: View {
 		}
 		.opacity(showInstructionModal ? 0 : 1)
 	}
-	
+
 	private var successScreen: some View {
 		LottieView(name: "motivator", speed: 0.5,
 				   action: {activityVM.hideMotivator()},
 				   play: $activityVM.showMotivator)
 		.scaleEffect(gameMetrics.motivatorScale, anchor: .center)
 	}
-	
+
 	@ViewBuilder
 	func resultMessage(result: ResultType) -> some View {
 		// Localized Strings
@@ -56,7 +56,7 @@ struct GameView: View {
 					return Text("")
 			}
 		}()
-		
+
 		let bottomMessage: Text = {
 			switch result {
 				case .fail:
@@ -73,7 +73,7 @@ struct GameView: View {
 					return Text("")
 			}
 		}()
-		
+
 		VStack(spacing: gameMetrics.endAnimTextsSpacing) {
 			Group {
 				topMessage
@@ -98,7 +98,7 @@ struct GameView: View {
 						  design: gameMetrics.endAnimFontDesign))
 		}
 	}
-	
+
 	private var cheerScreen: some View {
 		ZStack {
 			LottieView(name: activityVM.percentOfSuccess >= 80 ? "bravo" : "tryAgain", play: $activityVM.showEndAnimation)
@@ -111,7 +111,7 @@ struct GameView: View {
 						offsetReplayBtn = 0
 					}
 				}
-			
+
 			VStack(spacing: 0) {
 				resultMessage(result: activityVM.result)
 				Spacer()
@@ -151,7 +151,7 @@ struct GameView: View {
 			.padding(.vertical, gameMetrics.endAnimBtnPadding)
 		}
 	}
-	
+
 	var body: some View {
 		Color("lekaLightBlue")
 			.edgesIgnoringSafeArea(.all)
@@ -166,7 +166,7 @@ struct GameView: View {
 					}
 					.frame(maxHeight: gameMetrics.headerTotalHeight)
 					.padding(.top, gameMetrics.headerPadding)
-					
+
 					VStack {
 						Spacer()
 						PlayZone(gameMetrics: gameMetrics)

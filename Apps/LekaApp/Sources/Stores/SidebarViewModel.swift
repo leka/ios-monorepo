@@ -8,7 +8,6 @@
 import Foundation
 import SwiftUI
 
-
 class SidebarViewModel: ObservableObject {
     static let educContentSectionLabels: [SectionLabel] = [
         SectionLabel(destination: .curriculums, icon: "curriculums", label: "Parcours", has3Columns: false),
@@ -16,12 +15,12 @@ class SidebarViewModel: ObservableObject {
         SectionLabel(destination: .commands, icon: "commands", label: "Commandes", has3Columns: false),
         SectionLabel(destination: .stories, icon: "stories", label: "Histoires", has3Columns: false)
     ]
-    
+
     static let followUpSectionLabels: [SectionLabel] = [
         SectionLabel(destination: .users, icon: "user", label: "Utilisateurs", has3Columns: true),
         SectionLabel(destination: .teachers, icon: "accompanying", label: "Accompagnants", has3Columns: true)
     ]
-    
+
     @Published var educContentList = ListModel(title: "Contenu Éducatif", sections: educContentSectionLabels)
     @Published var followUpList = ListModel(title: "Suivi", sections: followUpSectionLabels)
     @Published var has3Columns: Bool = false
@@ -30,7 +29,7 @@ class SidebarViewModel: ObservableObject {
     @Published var educContentIsExpanded: Bool = true
     @Published var followUpIsExpanded: Bool = true
     @Published var showSettings: Bool = false
-    
+
     // Overall Navigation from the sidebar
     @Published var currentView: SidebarDestinations = .curriculums
 	// Returned Views & NavigationTitles
@@ -44,7 +43,7 @@ class SidebarViewModel: ObservableObject {
 			case .users: UserDataView()
 		}
 	}
-    
+
     func setNavTitle() -> String {
         switch currentView {
             case .curriculums: return "Parcours"
@@ -55,13 +54,13 @@ class SidebarViewModel: ObservableObject {
             case .users: return "Historique des activités d'Alice"
         }
     }
-	
+
 	// Currently watched profiles in FollowUp (this selection is lost when leaving)
 	// Simulate some change within the data when selected profile is changing
 	@Published var currentlySelectedTeacherProfile = UUID()
 	@Published var currentlySelectedUserProfile = UUID()
 	@Published var successValues: [Double] = [0.86, 0.4, 0.2, 1, 0.56, 0.77, 0.44, 0.48, 1, 0.24, 0.86, 0.4, 0.2, 1, 0.56, 0.77, 0.44, 0.48, 1, 0.24]
-    
+
     // Info Tiles
     @Published var showInfoCurriculums: Bool = true
     @Published var showInfoActivities: Bool = true
@@ -69,7 +68,7 @@ class SidebarViewModel: ObservableObject {
     @Published var showInfoStories: Bool = true
     @Published var showInfoTeachers: Bool = true
     @Published var showInfoUsers: Bool = true
-    
+
     func contextualInfo() -> TileData {
         switch currentView {
             case .curriculums: return .curriculums
@@ -80,7 +79,7 @@ class SidebarViewModel: ObservableObject {
             case .users: return .user
         }
     }
-    
+
     func showInfo() -> Bool {
         switch currentView {
             case .curriculums: return showInfoCurriculums
@@ -91,7 +90,7 @@ class SidebarViewModel: ObservableObject {
             case .users: return showInfoUsers
         }
     }
-    
+
     func updateShowInfo() {
         switch currentView {
             case .curriculums: showInfoCurriculums.toggle()
@@ -102,5 +101,5 @@ class SidebarViewModel: ObservableObject {
             case .users: showInfoUsers.toggle()
         }
     }
-    
+
 }

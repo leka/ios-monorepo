@@ -8,18 +8,18 @@
 import SwiftUI
 
 struct SidebarSections: View {
-    
+
 	@EnvironmentObject var sidebar: SidebarViewModel
 	@EnvironmentObject var company: CompanyViewModel
-    @EnvironmentObject var metrics:  UIMetrics
-	
+    @EnvironmentObject var metrics: UIMetrics
+
 	// Delete when FollowUp is Ready
 	private func simulateChange() {
 		// simulate some change of profile for now
 		sidebar.successValues.shuffle()
 		company.willBeDeleted_FakeFollowUpNumberOfCells = Int.random(in: 0...10)
 	}
-    
+
     var body: some View {
         VStack(spacing: 20) {
             ForEach(NavSections.allCases, id: \.rawValue) { group in
@@ -33,7 +33,7 @@ struct SidebarSections: View {
         .padding(.horizontal)
         .tint(.accentColor)
     }
-	
+
 	func sectionItem(_ item: SectionLabel) -> some View {
 		Button {
 			sidebar.has3Columns = item.has3Columns
@@ -47,7 +47,7 @@ struct SidebarSections: View {
 					company.sortProfiles(.user)
 					sidebar.currentlySelectedUserProfile = company.profilesInUse[.user] ?? UUID()
 				}
-				
+
 				simulateChange()
 			}
 		} label: {
@@ -58,10 +58,10 @@ struct SidebarSections: View {
 					.aspectRatio(contentMode: .fit)
 					.frame(maxWidth: 30, maxHeight: 30)
 					.padding(.leading, 10)
-				
+
 				Text(item.label)
 					.font(metrics.reg17)
-					
+
 				Spacer()
 			}
 			.foregroundColor(sidebar.currentView.rawValue == item.destination.rawValue ? .white : .accentColor)
@@ -71,7 +71,7 @@ struct SidebarSections: View {
 			.contentShape(Rectangle())
 		}
 	}
-	
+
 	func section(isExpanded: Binding<Bool>, content: ListModel) -> some View {
 		DisclosureGroup(isExpanded: isExpanded) {
 			ForEach(content.sections.indices, id: \.self) { item in

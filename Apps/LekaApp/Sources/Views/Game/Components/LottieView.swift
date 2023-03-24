@@ -10,17 +10,17 @@ import Lottie
 
 struct LottieView: UIViewRepresentable {
     typealias UIViewType = UIView
-    
+
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
     }
-    
+
     var name: String!
     var speed: CGFloat
     var reverse: Bool
     var action: () -> Void
     @Binding var play: Bool
-    
+
     public init(
         name: String,
         speed: CGFloat = 1,
@@ -34,40 +34,40 @@ struct LottieView: UIViewRepresentable {
         self.action = action
         self._play = play
     }
-    
+
     var animationView = AnimationView()
-    
+
     class Coordinator: NSObject {
         var parent: LottieView
-        
+
         init(_ animationView: LottieView) {
             self.parent = animationView
             super.init()
         }
     }
-    
+
     func makeUIView(context: UIViewRepresentableContext<LottieView>) -> UIView {
         let view = UIView()
-        
+
         animationView.animation = Animation.named(name)
         animationView.contentMode = .scaleAspectFit
         animationView.animationSpeed = speed
         animationView.loopMode = .playOnce
         animationView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(animationView)
-        
+
         NSLayoutConstraint.activate([
             animationView.widthAnchor.constraint(equalTo: view.widthAnchor),
             animationView.heightAnchor.constraint(equalTo: view.heightAnchor)
         ])
-        
+
         return view
     }
-    
+
     func updateUIView(_ uiView: UIView, context: UIViewRepresentableContext<LottieView>) {
         if play {
             if reverse {
-                context.coordinator.parent.animationView.play(fromProgress: 0.0, toProgress: 1.0, loopMode: .none) { (finished) in
+                context.coordinator.parent.animationView.play(fromProgress: 0.0, toProgress: 1.0, loopMode: .none) { (_) in
                     animationView.pause()
                 }
             } else {
@@ -81,7 +81,7 @@ struct LottieView: UIViewRepresentable {
         } else {
             if reverse {
                 context.coordinator.parent.animationView.animationSpeed = speed*1.5
-                context.coordinator.parent.animationView.play(fromProgress: 1.0, toProgress: 0.0, loopMode: .none) { (finished) in
+                context.coordinator.parent.animationView.play(fromProgress: 1.0, toProgress: 0.0, loopMode: .none) { (_) in
                     context.coordinator.parent.animationView.stop()
                     context.coordinator.parent.animationView.animationSpeed = speed
                 }

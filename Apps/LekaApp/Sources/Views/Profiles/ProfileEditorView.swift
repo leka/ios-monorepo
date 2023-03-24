@@ -8,16 +8,16 @@
 import SwiftUI
 
 struct ProfileEditorView: View {
-    
+
     @EnvironmentObject var company: CompanyViewModel
     @EnvironmentObject var settings: SettingsViewModel
     @EnvironmentObject var viewRouter: ViewRouter
     @EnvironmentObject var metrics: UIMetrics
-    
+
     var body: some View {
         ZStack {
             Color("lekaLightBlue").ignoresSafeArea()
-                
+
             Group {
                 HStack(spacing: 40) {
                     Spacer()
@@ -40,10 +40,10 @@ struct ProfileEditorView: View {
             ToolbarItem(placement: .navigationBarTrailing) { validateButton }
         }
     }
-	
+
 	// Toolbar
 	private var navigationTitle: some View {
-		HStack(spacing:4) {
+		HStack(spacing: 4) {
 			Text("Choisir ou créer de nouveaux profils")
 			if settings.companyIsConnected && settings.exploratoryModeIsOn {
 				Image(systemName: "binoculars.fill")
@@ -52,7 +52,7 @@ struct ProfileEditorView: View {
 		.font(metrics.semi17)
 		.foregroundColor(.accentColor)
 	}
-	
+
 	private var backButton: some View {
 		Button(action: {
 			// Leave without saving new selection
@@ -64,7 +64,7 @@ struct ProfileEditorView: View {
 			}
 		}
 	}
-	
+
 	private var validateButton: some View {
 		Button {
 			if settings.companyIsConnected {
@@ -89,7 +89,6 @@ struct ProfileEditorView: View {
 		.disabled(!company.selectionSetIsCorrect())
 	}
 }
-
 
 struct ProfileEditorView_Previews: PreviewProvider {
     static var previews: some View {

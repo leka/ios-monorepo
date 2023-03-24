@@ -8,24 +8,24 @@
 import SwiftUI
 
 struct BotConnectionIndicator: View {
-	
+
 	@EnvironmentObject var botVM: BotViewModel
 	// Animation
 	@State private var isAnimated: Bool = false
 	@State private var diameter: CGFloat = 0
-	
+
     var body: some View {
 		ZStack {
 			Circle()
 				.fill(botVM.botIsConnected ? Color("lekaGreen") : Color("lekaDarkGray"))
 				.opacity(0.4)
-			
+
 			Image(botVM.botIsConnected ? "bot_on" : "bot_off")
 				.resizable()
 				.renderingMode(.original)
 				.aspectRatio(contentMode: .fit)
 				.frame(width: 44, height: 44, alignment: .center)
-			
+
 			Circle()
 				.stroke(botVM.botIsConnected ? Color("lekaGreen") : Color("lekaDarkGray"),
 						lineWidth: 4)

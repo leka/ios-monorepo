@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct SettingsSection_Profiles: View {
-	
+
 	@EnvironmentObject var company: CompanyViewModel
-	@EnvironmentObject var metrics:  UIMetrics
-	
+	@EnvironmentObject var metrics: UIMetrics
+
 	var body: some View {
 		Section {
 			Group {
@@ -26,7 +26,7 @@ struct SettingsSection_Profiles: View {
 				.headerProminence(.increased)
 		}
 	}
-	
+
 	private func avatar(_ name: String) -> some View {
 		Image(name)
 			.resizable()
@@ -36,7 +36,7 @@ struct SettingsSection_Profiles: View {
 			.clipShape(Circle())
 			.overlay(Circle().stroke(.white, lineWidth: 2))
 	}
-	
+
 	private func remainingProfiles(_ remainder: Int) -> some View {
 		Circle()
 			.fill(Color.accentColor)
@@ -49,7 +49,7 @@ struct SettingsSection_Profiles: View {
 			)
 			.overlay(Circle().stroke(.white, lineWidth: 2))
 	}
-	
+
 	private func avatarsRow(_ type: UserType) -> some View {
 		LabeledContent {
 			HStack(spacing: -10) {
@@ -69,5 +69,3 @@ struct SettingsSection_Profiles: View {
 		}
 	}
 }
-
-

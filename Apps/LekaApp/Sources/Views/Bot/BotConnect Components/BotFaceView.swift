@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct BotFaceView: View {
-    
+
     @Binding var isSelected: Bool
     @Binding var isConnected: Bool
     @Binding var name: String
-    
+
     @State private var rotation: CGFloat = 0.0
-    
+
     var body: some View {
         VStack {
             Image("robot_connexion_bluetooth")
@@ -29,13 +29,13 @@ struct BotFaceView: View {
                         .opacity(isSelected ? 1 : 0)
                         .rotationEffect(.degrees(rotation), anchor: .center)
                         .animation(Animation.linear(duration: 15).repeatForever(autoreverses: false), value: rotation)
-                        .onAppear() {
+                        .onAppear {
                             rotation = 360
                         }
                 })
                 .background(Color("lekaGreen"), in: Circle().inset(by: isConnected ? -26 : 2))
                 .padding(.bottom, 40)
-                
+
             Text(name)
         }
         .animation(.default, value: isConnected)

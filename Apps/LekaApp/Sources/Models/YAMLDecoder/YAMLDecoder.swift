@@ -8,7 +8,6 @@
 import Foundation
 import Yams
 
-
 protocol YamlFileDecodable {
 	func decodeYamlFile<T: Decodable>(withName name: String, toType: T.Type) throws -> T
 }
@@ -31,7 +30,7 @@ extension YamlFileDecodable {
 
 enum CustomError: Error, CustomStringConvertible {
 	case failedToGetFilePath
-	
+
 	var description: String {
 		switch self {
 			case .failedToGetFilePath: return "Unable to get the path to the Yaml file!"
@@ -51,7 +50,6 @@ struct YamlFiles: RawRepresentable, Hashable {
 		self.rawValue = rawValue
 	}
 }
-
 
 extension YamlFiles {
 	static let YAMLCurriculumList = Self("emotion_recognition-curriculums-list")

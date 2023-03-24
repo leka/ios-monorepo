@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct GoToBotConnectButton: View {
-    
+
     @EnvironmentObject var botVM: BotViewModel
     @EnvironmentObject var viewRouter: ViewRouter
-    @EnvironmentObject var metrics:  UIMetrics
-        
+    @EnvironmentObject var metrics: UIMetrics
+
     var body: some View {
         Button {
             viewRouter.currentPage = .bots
@@ -30,7 +30,7 @@ struct GoToBotConnectButton: View {
         }
         .contentShape(Rectangle())
     }
-	
+
 	@ViewBuilder
 	private var ButtonContent: some View {
 		if botVM.botIsConnected {

@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct NoBotTile: View {
-	
+
 	@EnvironmentObject var metrics: UIMetrics
-	
+
 	@State private var navigateToSignup2: Bool = false
-	
+
     var body: some View {
 		HStack(alignment: .center, spacing: 0) {
 			VStack(spacing: 0) {
@@ -43,7 +43,7 @@ struct NoBotTile: View {
 		.background(Color("lekaLightGray"),
 					in: RoundedRectangle(cornerRadius: metrics.tilesRadius, style: .continuous))
     }
-	
+
 	private var accessoryView: some View {
 		Button(action: {
 			navigateToSignup2.toggle()

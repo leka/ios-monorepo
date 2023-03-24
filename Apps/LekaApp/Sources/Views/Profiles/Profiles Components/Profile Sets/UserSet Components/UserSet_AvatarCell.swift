@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct UserSet_AvatarCell: View {
-	
+
 	@EnvironmentObject var company: CompanyViewModel
 	@EnvironmentObject var settings: SettingsViewModel
 	@EnvironmentObject var viewRouter: ViewRouter
-	@EnvironmentObject var metrics:  UIMetrics
-	
+	@EnvironmentObject var metrics: UIMetrics
+
 	let of: User
-	
+
     var body: some View {
 		Button {
 			withAnimation {
@@ -60,7 +60,7 @@ struct UserSet_AvatarCell: View {
 							.aspectRatio(contentMode: .fit)
 							.padding(2)
 							.background(Color("lekaLightGray"), in: Circle())
-						
+
 						Circle()
 							.stroke(.white, lineWidth: 3)
 					}
@@ -69,7 +69,7 @@ struct UserSet_AvatarCell: View {
 				}
 				.frame(height: 108)
 				.padding(10)
-				
+
 				Text(of.name)
 					.font(metrics.reg15)
 					.allowsTightening(true)
@@ -87,7 +87,7 @@ struct UserSet_AvatarCell: View {
 		}
 		.buttonStyle(NoFeedback_ButtonStyle())
     }
-	
+
 	@ViewBuilder
 	private func selectionIndicator(id: UUID) -> some View {
 		Circle()
@@ -106,4 +106,3 @@ struct UserSet_AvatarCell: View {
 			.offset(x: 6, y: -6)
 	}
 }
-

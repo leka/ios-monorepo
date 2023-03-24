@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct CurriculumPillShapedView: View {
-    
-    @EnvironmentObject var metrics:  UIMetrics
-	
+
+    @EnvironmentObject var metrics: UIMetrics
+
 	var curriculum: Curriculum
 	var icon: String
 	var rank: String
-    
+
     var body: some View {
 		ZStack {
 			VStack(spacing: 0) {
@@ -28,7 +28,7 @@ struct CurriculumPillShapedView: View {
 		}
 		.compositingGroup()
     }
-	
+
 	private var iconView: some View {
 		Image(icon)
 			.resizable()
@@ -36,7 +36,7 @@ struct CurriculumPillShapedView: View {
 			.frame(width: 200, height: 66)
 			.offset(y: 5)
 	}
-	
+
 	private var topContent: some View {
 		Rectangle()
 			.fill(Color.accentColor)
@@ -53,7 +53,7 @@ struct CurriculumPillShapedView: View {
 				.foregroundColor(.white)
 			)
 	}
-	
+
 	private var bottomContent: some View {
 		Rectangle()
 			.fill(Color.white)

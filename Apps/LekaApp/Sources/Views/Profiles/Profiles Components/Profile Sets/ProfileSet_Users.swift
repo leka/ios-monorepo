@@ -8,30 +8,30 @@
 import SwiftUI
 
 struct ProfileSet_Users: View {
-	
+
 	@EnvironmentObject var company: CompanyViewModel
 	@EnvironmentObject var settings: SettingsViewModel
 	@EnvironmentObject var viewRouter: ViewRouter
-	@EnvironmentObject var metrics:  UIMetrics
+	@EnvironmentObject var metrics: UIMetrics
 	@Environment(\.dismiss) var dismiss
-	
+
 	@State private var showEditProfileUser: Bool = false
-	
+
 	// check if less than 7 profiles to display in order to adapt Layout (HStack vs. Scrollable Grid)
 	private func sixMax() -> Bool {
 		return company.currentCompany.users.count < 7
 	}
-	
+
 	var body: some View {
 		VStack(spacing: 0) {
 			header
-			
+
 			// Separator
 			Rectangle()
 				.fill(Color.accentColor)
 				.frame(height: 1)
 				.frame(maxWidth: viewRouter.currentPage != .profiles ? 460 : .infinity)
-			
+
 			// Avatars
 			availableProfiles
 		}
@@ -52,7 +52,7 @@ struct ProfileSet_Users: View {
 			Text("Ce mode ne vous permet pas de créer des profils ou d'enregistrer votre utilisation de l'application. \nVoulez-vous vous identifier ?")
 		}
 	}
-	
+
 	private var editButton: some View {
 		Button {
 			if settings.companyIsConnected {
@@ -67,7 +67,7 @@ struct ProfileSet_Users: View {
 		.buttonStyle(CircledIcon_NoFeedback_ButtonStyle(font: metrics.bold16))
 		.disabled(company.getProfileDataFor(.user, id: company.profilesInUse[.user]!)[0] == "question_mark_blue" && !company.profileIsSelected(.user))
 	}
-	
+
 	private var addButton: some View {
 		Button {
 			if settings.companyIsConnected {
@@ -82,7 +82,7 @@ struct ProfileSet_Users: View {
 		}
 		.buttonStyle(CircledIcon_NoFeedback_ButtonStyle(font: metrics.bold16))
 	}
-	
+
 	private var header: some View {
 		HStack(spacing: 20) {
 			if viewRouter.currentPage != .profiles { Spacer() }
@@ -98,13 +98,13 @@ struct ProfileSet_Users: View {
 		}
 		.padding(20)
 	}
-	
+
 	private var usersSet: some View {
 		ForEach(company.currentCompany.users) { user in
 			UserSet_AvatarCell(of: user)
 		}
 	}
-	
+
 	@ViewBuilder
 	private var availableProfiles: some View {
 		if viewRouter.currentPage != .profiles && sixMax() {

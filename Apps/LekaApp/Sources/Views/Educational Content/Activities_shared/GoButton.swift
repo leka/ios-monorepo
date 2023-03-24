@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct GoButton: View {
-	
+
 	@EnvironmentObject var activityVM: ActivityViewModel
 	@EnvironmentObject var company: CompanyViewModel
-	
+
 	var action: () -> Void
-	
+
 	var body: some View {
 		VStack {
 			HStack(alignment: .top) {
@@ -30,7 +30,7 @@ struct GoButton: View {
 			Spacer()
 		}
 	}
-	
+
 	private var goButtonLabel: some View {
 		ZStack {
 			Circle()

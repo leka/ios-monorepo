@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct SignupView: View {
-    
+
     @EnvironmentObject var company: CompanyViewModel
     @EnvironmentObject var settings: SettingsViewModel
-    @EnvironmentObject var metrics:  UIMetrics
-    
+    @EnvironmentObject var metrics: UIMetrics
+
     @FocusState var focusedField: FormField?
     @State private var isEditing = false
     @State private var mail: String = ""
@@ -20,19 +20,19 @@ struct SignupView: View {
     @State private var confirm: String = ""
 	@State private var accountAlreadyExists: Bool = false
 	@State private var navigateToSignup1: Bool = false
-    
+
     func connectIsDisabled() -> Bool {
 		return !mail.isValidEmail() || !passwordsMatch() || mail.isEmpty || password.isEmpty || confirm.isEmpty || accountAlreadyExists
     }
-    
+
     func passwordsMatch() -> Bool {
 		return password == confirm
     }
-    
+
     func checkAccountAvailability() {
 		accountAlreadyExists = (mail == "test@leka.io")
     }
-    
+
     private func submitForm() {
         checkAccountAvailability()
         if accountAlreadyExists {
@@ -45,11 +45,11 @@ struct SignupView: View {
 			navigateToSignup1.toggle()
         }
     }
-    
+
     var body: some View {
         ZStack(alignment: .center) {
             CloudsBGView()
-            
+
             VStack(alignment: .center, spacing: 30) {
                 title
                 Group {
@@ -67,7 +67,7 @@ struct SignupView: View {
 			SignupStep1()
 		}
     }
-	
+
 	@ViewBuilder
 	private var mailTextField: some View {
 		let mailTitle: String = {
@@ -81,11 +81,11 @@ struct SignupView: View {
 				return "Email incorrect"
 			}
 		}()
-		
+
 		let mailLabelColor: Color = {
 			return mail.isValidEmail() || mail.isEmpty  || isEditing ? (accountAlreadyExists ? .red : .accentColor) : .red
 		}()
-		
+
 		LekaTextField(label: mailTitle, entry: $mail, color: mailLabelColor, isEditing: $isEditing, focused: _focusedField) {
 			focusedField = .password
 		}
@@ -95,7 +95,7 @@ struct SignupView: View {
 			}
 		}
 	}
-	
+
 	private var passwordTextField: some View {
 		LekaPasswordField(label: "Mot de passe", entry: $password, focused: _focusedField) {
 			if !password.isEmpty {
@@ -105,7 +105,7 @@ struct SignupView: View {
 			}
 		}
 	}
-	
+
 	@ViewBuilder
 	private var confirmTextField: some View {
 		let confirmTitle: String = {
@@ -115,11 +115,11 @@ struct SignupView: View {
 				return "Les mots de passe ne sont pas identiques"
 			}
 		}()
-		
+
 		let confirmLabelColor: Color = {
 			return passwordsMatch() || confirm.isEmpty ? .accentColor : .red
 		}()
-		
+
 		LekaPasswordField(label: confirmTitle, entry: $confirm, color: confirmLabelColor, type: .confirm, focused: _focusedField) {
 			if confirm.isEmpty || !passwordsMatch() {
 				focusedField = .confirm
@@ -128,14 +128,14 @@ struct SignupView: View {
 			}
 		}
 	}
-	
+
 	private var title: some View {
 		Text("Créer un compte")
 			.textCase(.uppercase)
 			.foregroundColor(.accentColor)
 			.font(metrics.semi20)
 	}
-	
+
 	private var submitButton: some View {
 		Button(action: {
 			submitForm()
@@ -150,7 +150,6 @@ struct SignupView: View {
 		.tint(.accentColor)
 	}
 }
-
 
 struct SignupView_Previews: PreviewProvider {
     static var previews: some View {

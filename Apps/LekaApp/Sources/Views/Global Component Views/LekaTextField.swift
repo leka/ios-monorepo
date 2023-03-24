@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct LekaTextField: View {
-	
-	@EnvironmentObject var metrics:  UIMetrics
-	
+
+	@EnvironmentObject var metrics: UIMetrics
+
 	var label: String
 	@Binding var entry: String
 	var color: Color = .accentColor
@@ -18,7 +18,7 @@ struct LekaTextField: View {
 	var type = FormField.mail
 	@FocusState var focused: FormField?
 	let action: () -> Void
-	
+
 	var body: some View {
 		VStack(alignment: . leading, spacing: 10) {
 			Text(label)
@@ -28,7 +28,7 @@ struct LekaTextField: View {
 			entryField
 		}
 	}
-	
+
 	@ViewBuilder
 	private var entryField: some View {
 		TextField("", text: $entry) { isEditingNow in
@@ -53,18 +53,18 @@ struct LekaTextField: View {
 }
 
 struct LekaPasswordField: View {
-	
-	@EnvironmentObject var metrics:  UIMetrics
-	
+
+	@EnvironmentObject var metrics: UIMetrics
+
 	var label: String
 	@Binding var entry: String
 	var color: Color = .accentColor
-	
+
 	var type = FormField.password
 	@FocusState var focused: FormField?
 	@State private var isSecured: Bool = true
 	let action: () -> Void
-	
+
 	var body: some View {
 		VStack(alignment: . leading, spacing: 10) {
 			Text(label)
@@ -74,7 +74,7 @@ struct LekaPasswordField: View {
 			passwordField
 		}
 	}
-	
+
 	@ViewBuilder
 	private var passwordField: some View {
 		HStack {

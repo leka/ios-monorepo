@@ -1,4 +1,4 @@
-    //
+//
     //  AvatarPickerTriggerButton.swift
     //  LekaTestBucket
     //
@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct AvatarPickerTriggerButton_Users: View {
-	
+
 	@EnvironmentObject var company: CompanyViewModel
-	
+
 	@Binding var navigate: Bool
-	
+
 	var body: some View {
 		Button(action: {
 			navigate.toggle()

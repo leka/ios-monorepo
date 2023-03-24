@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-	
+
 	@EnvironmentObject var sidebar: SidebarViewModel
 	@EnvironmentObject var company: CompanyViewModel
 	@EnvironmentObject var settings: SettingsViewModel
@@ -17,7 +17,7 @@ struct ContentView: View {
 	@EnvironmentObject var curriculumVM: CurriculumViewModel
 	@EnvironmentObject var activityVM: ActivityViewModel
 	@EnvironmentObject var botVM: BotViewModel
-	
+
 	var body: some View {
 		Group {
 			switch viewRouter.currentPage {

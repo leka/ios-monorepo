@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct TeacherSet_AvatarCell: View {
-	
+
 	@EnvironmentObject var company: CompanyViewModel
 	@EnvironmentObject var settings: SettingsViewModel
 	@EnvironmentObject var viewRouter: ViewRouter
-	@EnvironmentObject var metrics:  UIMetrics
-	
+	@EnvironmentObject var metrics: UIMetrics
+
 	let of: Teacher
-	
+
     var body: some View {
 		Button {
 			withAnimation {
@@ -46,7 +46,7 @@ struct TeacherSet_AvatarCell: View {
 				}
 				.frame(height: 108)
 				.padding(10)
-				
+
 				Text(of.name)
 					.font(metrics.reg15)
 					.allowsTightening(true)
@@ -64,7 +64,7 @@ struct TeacherSet_AvatarCell: View {
 		}
 		.buttonStyle(NoFeedback_ButtonStyle())
     }
-	
+
 	private func selectionIndicator(id: UUID) -> some View {
 		Circle()
 			.stroke(Color("lekaSkyBlue"),

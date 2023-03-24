@@ -9,7 +9,7 @@ import SwiftUI
 
 class DiscoveryCompany {
 	let discoveryCompany = Company(mail: "discovery@leka.io", password: "Password1234", teachers: discoveryTeachers, users: discoveryUsers)
-		
+
 	static var discoveryTeachers: [Teacher] =
 	[
 		Teacher(name: "Aurore", avatar: "avatars_leka_cook", jobs: ["Psychomotricien(ne)"]),
@@ -18,7 +18,7 @@ class DiscoveryCompany {
 		Teacher(name: "Jean-Pierre", avatar: "avatars_boy-3c", jobs: ["Pédopsychiatre"]),
 		Teacher(name: "Anne", avatar: "avatars_pictograms-foods-fruits-pineapple_orange-00F9", jobs: ["Accompagnant(e) des élèves en situation de handicap"]),
 	]
-	
+
 	static var discoveryUsers: [User] =
 	[
 		User(name: "Alice", avatar: "avatars_girl-1a", reinforcer: 3),

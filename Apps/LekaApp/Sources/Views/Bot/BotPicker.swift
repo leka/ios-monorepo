@@ -8,16 +8,16 @@
 import SwiftUI
 
 struct BotPicker: View {
-    
+
     @EnvironmentObject var settings: SettingsViewModel
     @EnvironmentObject var viewRouter: ViewRouter
     @EnvironmentObject var metrics: UIMetrics
 	@EnvironmentObject var botVM: BotViewModel
-    
+
     @State private var searchBtnLabel: String = "Rechercher"
     @State private var allBots: Int = 0
 	@State private var navigateToSignup1Final: Bool = false
-    
+
         // TESTs ===========================================
     @State private var showNoBotTile: Bool = false
 	func resetForTests() {
@@ -26,22 +26,22 @@ struct BotPicker: View {
 		botVM.currentlySelectedBotIndex = nil
 	}
         // TESTs ===========================================
-    
+
     var body: some View {
         ZStack(alignment: .center) {
             CloudsBGView()
                 .onTapGesture {
                     botVM.currentlySelectedBotIndex = nil
                 }
-            
+
             VStack {
                 Spacer()
-                
+
 				BotStore(botVM: botVM, allBots: $allBots, showNoBotTile: $showNoBotTile)
-					.onAppear() {
+					.onAppear {
 						allBots = 13 // For the tests
 					}
-                
+
                 HStack(spacing: 60) {
                     Spacer()
                     searchButton
@@ -49,7 +49,7 @@ struct BotPicker: View {
                     Spacer()
                 }
                 .padding(.vertical, 20)
-                
+
                 Spacer()
             }
         }
@@ -66,7 +66,7 @@ struct BotPicker: View {
             }
         }
     }
-	
+
 	private var searchButton: some View {
 		Button(action: {
 // TESTs ===========================================
@@ -114,7 +114,7 @@ struct BotPicker: View {
 		.disabled(searchBtnLabel == "Recherche en cours...")
 
 	}
-	
+
 	private var connectionButton: some View {
 		Button(action: {
 			if botVM.currentlyConnectedBotIndex == botVM.currentlySelectedBotIndex {
@@ -137,14 +137,14 @@ struct BotPicker: View {
 			.font(metrics.bold15)
 			.padding(6)
 			.frame(width: 210)
-			
+
 		})
 		.buttonStyle(.borderedProminent)
 		.tint(botVM.currentlyConnectedBotIndex == botVM.currentlySelectedBotIndex ? Color("lekaOrange") : .accentColor)
 		.disabled(allBots == 0)
 		.disabled(botVM.currentlySelectedBotIndex == nil) // For the tests
 	}
-	
+
 	// Toolbar
 	private var navigationTitle: some View {
 		HStack(spacing: 4) {
@@ -156,7 +156,7 @@ struct BotPicker: View {
 		.font(metrics.semi17)
 		.foregroundColor(.accentColor)
 	}
-	
+
 	private var backButton: some View {
 		Button(action: {
 			viewRouter.currentPage = .home
@@ -168,7 +168,7 @@ struct BotPicker: View {
 		}
 		.tint(.accentColor)
 	}
-	
+
 	private var continueButton: some View {
 //		NavigationLink(value: IdentificationNavDestinations.signup1Final) {
 //			HStack(spacing: 4) {

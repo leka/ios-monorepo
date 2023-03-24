@@ -10,14 +10,14 @@ import SwiftUI
 // Navigation Sets
 enum SidebarDestinations: Int, Identifiable, CaseIterable {
 	case curriculums, activities, commands, stories, teachers, users
-	
+
 	var id: Self { self }
 }
 
 // Sidebar Sections
 enum NavSections: Int, Identifiable, CaseIterable {
 	case educ, followUp
-	
+
 	var id: Self { self }
 }
 

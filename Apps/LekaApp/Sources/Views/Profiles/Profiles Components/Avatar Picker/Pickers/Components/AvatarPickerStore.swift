@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct AvatarPickerStore: View {
-	
-	@EnvironmentObject var metrics:  UIMetrics
-	
+
+	@EnvironmentObject var metrics: UIMetrics
+
 	@Binding var selected: String
-	
+
 	var body: some View {
 		ScrollView(.vertical, showsIndicators: true) {
 			ForEach(AvatarSets.allCases, id: \.id) { category in
@@ -21,7 +21,7 @@ struct AvatarPickerStore: View {
 			}
 		}
 	}
-	
+
 	private func makeAvatarCategoryRow(category: AvatarCategory) -> some View {
 		VStack(alignment: .leading, spacing: 10) {
 			Text(category.category)
@@ -52,4 +52,3 @@ struct AvatarPickerStore: View {
 		.padding(.bottom, 10)
 	}
 }
-

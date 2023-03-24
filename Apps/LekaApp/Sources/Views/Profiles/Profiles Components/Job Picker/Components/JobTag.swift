@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct JobTag: View {
-    
+
     @EnvironmentObject var company: CompanyViewModel
-    @EnvironmentObject var metrics:  UIMetrics
-    
+    @EnvironmentObject var metrics: UIMetrics
+
     @State var job: String
-    
+
     var body: some View {
         HStack(spacing: 12) {
             Text(job)

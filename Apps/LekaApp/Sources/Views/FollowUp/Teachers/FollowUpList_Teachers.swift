@@ -8,25 +8,25 @@
 import SwiftUI
 
 struct FollowUpList_Teachers: View {
-	
+
 	@EnvironmentObject var sidebar: SidebarViewModel
 	@EnvironmentObject var company: CompanyViewModel
 	@EnvironmentObject var metrics: UIMetrics
-	
+
 	// Delete when FollowUp is Ready
 	private func simulateChange() {
 		// simulate some change of profile for now
 		sidebar.successValues.shuffle()
 		company.willBeDeleted_FakeFollowUpNumberOfCells = Int.random(in: 0...10)
 	}
-	
+
 	var body: some View {
 		ScrollViewReader { proxy in
 			List(company.getAllProfilesIDFor(.teacher), id: \.self) { profile in
 				Button {
 					sidebar.currentlySelectedTeacherProfile = profile
 					sidebar.contentVisibility = .detailOnly
-					
+
 					simulateChange()
 				} label: {
 					cellContent(id: profile)
@@ -40,12 +40,12 @@ struct FollowUpList_Teachers: View {
 			.navigationTitle("Suivi")
 			.navigationBarTitleDisplayMode(.large)
 			.tint(.accentColor)
-			.onAppear() {
+			.onAppear {
 				proxy.scrollTo(sidebar.currentlySelectedTeacherProfile, anchor: .center)
 			}
 		}
 	}
-	
+
 	func cellContent(id: UUID) -> some View {
 		HStack(spacing: 10) {
 			Circle()

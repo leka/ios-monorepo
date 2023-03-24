@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct SidebarHeaderView: View {
-    
+
     @EnvironmentObject var metrics: UIMetrics
-    
+
     var body: some View {
         VStack(spacing: 10) {
             logoLeka
@@ -19,7 +19,7 @@ struct SidebarHeaderView: View {
         }
         .frame(minHeight: 350, idealHeight: 350, maxHeight: 371)
     }
-	
+
 	private var logoLeka: some View {
 		Image("lekaLogo_AFH")
 			.resizable()

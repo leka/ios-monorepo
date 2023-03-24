@@ -12,10 +12,10 @@ struct CurriculumList: Codable {
 		case curriculums
 		case sectionTitle = "section_title"
 	}
-	
+
 	var sectionTitle: LocalizedContent
 	var curriculums: [String]
-	
+
 	init(sectionTitle: LocalizedContent = LocalizedContent(),
 		 curriculums: [String] = []
 	) {
@@ -31,14 +31,14 @@ struct Curriculum: Codable, Identifiable {
 		case fullTitle = "full_title"
 		case quantity = "number_of_activities"
 	}
-	
+
 	var id: String
 	var title: LocalizedContent
 	var subtitle: LocalizedContent
 	var fullTitle: LocalizedContent
 	var quantity: Int
 	var activities: [String]
-	
+
 	init(id: String = "",
 		 title: LocalizedContent = LocalizedContent(),
 		 subtitle: LocalizedContent = LocalizedContent(),
@@ -54,4 +54,3 @@ struct Curriculum: Codable, Identifiable {
 		self.activities = activities
 	}
 }
-

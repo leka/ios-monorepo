@@ -9,7 +9,7 @@ import SwiftUI
 
 @main
 struct LekaTestBucketApp: App {
-    
+
     @StateObject var viewRouter = ViewRouter()
     @StateObject var metrics = UIMetrics()
 	@StateObject var sidebar = SidebarViewModel()
@@ -18,7 +18,7 @@ struct LekaTestBucketApp: App {
 	@StateObject var curriculumVM = CurriculumViewModel()
 	@StateObject var activityVM = ActivityViewModel()
 	@StateObject var botVM = BotViewModel()
-    
+
     var body: some Scene {
         WindowGroup {
             ContentView()

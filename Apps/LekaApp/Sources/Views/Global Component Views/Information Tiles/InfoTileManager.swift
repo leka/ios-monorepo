@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct InfoTileManager: View {
-    
+
 	@EnvironmentObject var sidebar: SidebarViewModel
     @EnvironmentObject var settings: SettingsViewModel
-    
+
     var body: some View {
         Group {
             if !settings.companyIsConnected {
