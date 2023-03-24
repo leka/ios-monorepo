@@ -1,0 +1,15 @@
+{
+  "images" : [
+    {
+      "filename" : "emotion_picture_adult_sad_hortense.pdf",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  },
+  "properties" : {
+    "preserves-vector-representation" : true
+  }
+}

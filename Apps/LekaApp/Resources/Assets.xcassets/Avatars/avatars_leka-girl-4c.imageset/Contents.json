@@ -1,0 +1,15 @@
+{
+  "images" : [
+    {
+      "filename" : "avatars_leka-girl-4c.svg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  },
+  "properties" : {
+    "preserves-vector-representation" : true
+  }
+}

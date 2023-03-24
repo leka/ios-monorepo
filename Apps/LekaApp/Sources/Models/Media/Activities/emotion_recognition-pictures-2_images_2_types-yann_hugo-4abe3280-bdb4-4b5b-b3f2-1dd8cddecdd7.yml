@@ -1,0 +1,57 @@
+---
+title:
+  en_US: Recognize the emotions of Hugo and Yann with 2 pictures
+  fr_FR: Reconnaitre les émotions d'Hugo et Yann avec 2 photos
+
+short_title:
+  en_US: Hugo - Yann - 2
+  fr_FR: Hugo - Yann - 2
+
+uuid: 4abe3280-bdb4-4b5b-b3f2-1dd8cddecdd7
+
+number_of_steps: 10
+random_steps: true
+
+number_of_images_per_step: 2
+random_image_position: true
+
+steps:
+  - instruction:
+      en_US: Touch the person who is happy
+      fr_FR: Touche la personne qui est contente
+    correct_answer: emotion_picture_adult_joy_yann
+    images:
+      - emotion_picture_adult_joy_yann
+      - emotion_picture_adult_fear_hugo
+
+  - instruction:
+      en_US: Touch the person who is sad
+      fr_FR: Touche la personne qui est triste
+    correct_answer: emotion_picture_adult_sad_hugo
+    images:
+      - emotion_picture_adult_angry_yann
+      - emotion_picture_adult_sad_hugo
+
+  - instruction:
+      en_US: Touch the person who is disgusted
+      fr_FR: Touche la personne qui est dégoûtée
+    correct_answer: emotion_picture_adult_disgust_yann
+    images:
+      - emotion_picture_adult_joy_hugo
+      - emotion_picture_adult_disgust_yann
+
+  - instruction:
+      en_US: Touch the person who is afraid
+      fr_FR: Touche la personne qui a peur
+    correct_answer: emotion_picture_adult_fear_hugo
+    images:
+      - emotion_picture_adult_fear_hugo
+      - emotion_picture_adult_sad_yann
+
+  - instruction:
+      en_US: Touch the person who is angry
+      fr_FR: Touche la personne qui est en colère
+    correct_answer: emotion_picture_adult_angry_yann
+    images:
+      - emotion_picture_adult_disgust_hugo
+      - emotion_picture_adult_angry_yann

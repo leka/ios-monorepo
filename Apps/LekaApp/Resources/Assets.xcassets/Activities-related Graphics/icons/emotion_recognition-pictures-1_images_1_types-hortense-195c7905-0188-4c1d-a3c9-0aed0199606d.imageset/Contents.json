@@ -1,0 +1,15 @@
+{
+  "images" : [
+    {
+      "filename" : "emotion_recognition-pictures-1_images_1_types-hortense-195c7905-0188-4c1d-a3c9-0aed0199606d.pdf",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  },
+  "properties" : {
+    "preserves-vector-representation" : true
+  }
+}
