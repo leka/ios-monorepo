@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct JobPickerStore: View {
-	
+
 	@Binding var selectedJobs: [String]
 	private func jobSelection(job: String) {
 		if selectedJobs.contains(job) {
@@ -17,7 +17,7 @@ struct JobPickerStore: View {
 			selectedJobs.append(job)
 		}
 	}
-	
+
     var body: some View {
 		ScrollView(showsIndicators: false) {
 			VStack(spacing: 40) {

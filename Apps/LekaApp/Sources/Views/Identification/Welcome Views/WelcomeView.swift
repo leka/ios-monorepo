@@ -7,26 +7,25 @@
 
 import SwiftUI
 
-
 struct WelcomeView: View {
-	
+
 	@EnvironmentObject var company: CompanyViewModel
 	@EnvironmentObject var viewRouter: ViewRouter
-	@EnvironmentObject var metrics:  UIMetrics
-	
+	@EnvironmentObject var metrics: UIMetrics
+
 	var body: some View {
 		NavigationStack {
 			ZStack(alignment: .center) {
 				Color("lekaLightBlue").ignoresSafeArea()
-				
+
 				VStack(spacing: 30) {
 					logoLeka
-					
+
 					NavigationLink("Créer un compte") {
 						SignupView()
 					}
 					.buttonStyle(Connect_ButtonStyle())
-					
+
 					NavigationLink("Se connecter") {
 						LoginView()
 					}
@@ -42,7 +41,7 @@ struct WelcomeView: View {
 			}
 		}
 	}
-	
+
 	private var logoLeka: some View {
 		Image("lekaLogo_AFH")
 			.resizable()
@@ -50,7 +49,7 @@ struct WelcomeView: View {
 			.frame(height: 90)
 			.padding(.bottom, 30)
 	}
-	
+
 	private var skipButton: some View {
 		Button(action: {
 			company.setupDiscoveryCompany()
@@ -63,7 +62,6 @@ struct WelcomeView: View {
 		}
 	}
 }
-
 
 struct WelcomeView_Previews: PreviewProvider {
 	static var previews: some View {

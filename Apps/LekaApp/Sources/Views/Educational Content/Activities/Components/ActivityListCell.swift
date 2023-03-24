@@ -7,17 +7,16 @@
 
 import SwiftUI
 
-
 struct ActivityListCell: View {
-    
-    @EnvironmentObject var metrics:  UIMetrics
-    
+
+    @EnvironmentObject var metrics: UIMetrics
+
 	let activity: Activity
 	let icon: String
 	let iconDiameter: CGFloat = 132
 	let rank: Int
 	let selected: Bool
-    
+
     var body: some View {
         HStack(spacing: 20) {
 			iconView
@@ -29,13 +28,13 @@ struct ActivityListCell: View {
 		.clipShape(RoundedRectangle(cornerRadius: metrics.btnRadius, style: .continuous))
 		.padding(.vertical, 4)
     }
-	
+
 	private var iconView: some View {
 		Image(icon)
 			.ActivityIcon_ImageModifier(diameter: iconDiameter)
 			.padding(.leading, 10)
 	}
-	
+
 	private var cellContent: some View {
 		VStack(alignment: .leading, spacing: 0) {
 			Spacer()

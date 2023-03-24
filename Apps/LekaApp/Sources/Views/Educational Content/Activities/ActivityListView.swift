@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ActivityListView: View {
-	
+
 	@EnvironmentObject var curriculumVM: CurriculumViewModel
 	@EnvironmentObject var activityVM: ActivityViewModel
 	@EnvironmentObject var sidebar: SidebarViewModel
@@ -16,9 +16,9 @@ struct ActivityListView: View {
 	@EnvironmentObject var settings: SettingsViewModel
 	@EnvironmentObject var viewRouter: ViewRouter
 	@EnvironmentObject var metrics: UIMetrics
-	
+
 	@State private var showInstructionModal: Bool = false
-	
+
 	// Data modeled for Search Feature
 	@State var searchQuery = ""
 	var searchResults: [String] {
@@ -34,7 +34,7 @@ struct ActivityListView: View {
 			// later add played/unplayed, last played, sound only etc...
 		}
 	}
-	
+
 	var body: some View {
 		ZStack {
 			Color("lekaLightBlue").ignoresSafeArea()
@@ -55,9 +55,9 @@ struct ActivityListView: View {
 		.searchable(text: $searchQuery,
 					placement: .toolbar,
 					prompt: Text("Media, personnages, ..."))
-		.onAppear() { sidebar.sidebarVisibility = .all }
+		.onAppear { sidebar.sidebarVisibility = .all }
 	}
-	
+
 	private var completeActivityList: some View {
 		ScrollViewReader { proxy in
 			List(searchResults.enumerated().map({ $0 }), id: \.element) { index, item in
@@ -73,7 +73,7 @@ struct ActivityListView: View {
 										 rank: index+1,
 										 selected: activityVM.selectedActivityID == UUID(uuidString: activityVM.getActivity(item).id))
 					}
-					.alignmentGuide(.listRowSeparatorLeading) { viewDimensions in
+					.alignmentGuide(.listRowSeparatorLeading) { _ in
 						return 0
 					}
 					.frame(maxWidth: 600)
@@ -91,7 +91,7 @@ struct ActivityListView: View {
 			.safeAreaInset(edge: .top) {
 				InfoTileManager()
 			}
-			.onAppear() {
+			.onAppear {
 				guard activityVM.selectedActivityID != nil else {
 					return
 				}

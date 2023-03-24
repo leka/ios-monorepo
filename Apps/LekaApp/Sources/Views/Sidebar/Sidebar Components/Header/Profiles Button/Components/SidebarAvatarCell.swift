@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct SidebarAvatarCell: View {
-	
+
 	@EnvironmentObject var company: CompanyViewModel
 	@EnvironmentObject var settings: SettingsViewModel
 	@EnvironmentObject var metrics: UIMetrics
-	
+
 	var type: UserType
 	var badge: Bool = false
-	
+
     var body: some View {
 		HStack {
 			Spacer()
@@ -65,7 +65,7 @@ struct SidebarAvatarCell: View {
 				.frame(height: settings.exploratoryModeIsOn ? 58 : 72)
 				.offset(x: settings.exploratoryModeIsOn ? (type == . teacher ? 26 : -26) : 0)
 				.padding(10)
-				
+
 				if !settings.exploratoryModeIsOn {
 					Text(company.getProfileDataFor(type, id: company.profilesInUse[type]!)[1])
 						.font(metrics.reg15)

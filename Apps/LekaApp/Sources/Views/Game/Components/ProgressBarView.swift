@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct ProgressBarView: View {
-    
+
 	@EnvironmentObject var activityVM: ActivityViewModel
 	@ObservedObject var gameMetrics: GameMetrics
-        
+
     @ViewBuilder
     func stepMarker(_ color: Color) -> some View {
         Circle()
@@ -21,7 +21,7 @@ struct ProgressBarView: View {
             .background(Circle().fill(.white))
 			.padding(gameMetrics.stepMarkerPadding)
     }
-    
+
     var body: some View {
         Capsule()
             .fill(Color("progressBar"))

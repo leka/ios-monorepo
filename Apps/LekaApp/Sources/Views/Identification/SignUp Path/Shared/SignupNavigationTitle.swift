@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct SignupNavigationTitle: View {
-	
+
 	@EnvironmentObject var metrics: UIMetrics
-	
+
     var body: some View {
 		Text("Première connexion")
 			.font(metrics.semi17)

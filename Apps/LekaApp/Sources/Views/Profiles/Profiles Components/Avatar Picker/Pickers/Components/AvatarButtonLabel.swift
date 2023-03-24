@@ -9,12 +9,12 @@ import SwiftUI
 
 // Avatar Buttons within the AvatarPicker()
 struct AvatarButtonLabel: View {
-    
-    @EnvironmentObject var metrics:  UIMetrics
-    
+
+    @EnvironmentObject var metrics: UIMetrics
+
     @Binding var image: String
     @Binding var isSelected: Bool
-    
+
     var body: some View {
         ZStack {
             Image(image)

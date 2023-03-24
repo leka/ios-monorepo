@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct AvatarTriggerImageView: View {
-	
+
 	var img: String
-	
+
 	var body: some View {
 		ZStack {
 			Circle()
@@ -34,9 +34,9 @@ struct AvatarTriggerImageView: View {
 }
 
 struct AvatarTriggerCTAView: View {
-	
-	@EnvironmentObject var metrics:  UIMetrics
-	
+
+	@EnvironmentObject var metrics: UIMetrics
+
 	var body: some View {
 		Text("choisir un avatar")
 			.font(metrics.reg17)

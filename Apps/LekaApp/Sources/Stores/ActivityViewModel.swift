@@ -10,9 +10,9 @@ import UIKit
 import Yams
 import AVFoundation
 
-//@MainActor
+// @MainActor
 class ActivityViewModel: NSObject, ObservableObject, YamlFileDecodable {
-	
+
 	func getActivity(_ title: String) -> Activity {
 		do {
 			return try self.decodeYamlFile(withName: title, toType: Activity.self)
@@ -21,7 +21,7 @@ class ActivityViewModel: NSObject, ObservableObject, YamlFileDecodable {
 			return Activity()
 		}
 	}
-	
+
 	// Temporary Instructions Source
 	func getInstructions() -> String {
 		do {
@@ -31,7 +31,7 @@ class ActivityViewModel: NSObject, ObservableObject, YamlFileDecodable {
 			return Instructions().instructions.localized()
 		}
 	}
-	
+
 	// Unused
 //    func getStep(_ title: String) -> Step {
 //        do {
@@ -41,25 +41,25 @@ class ActivityViewModel: NSObject, ObservableObject, YamlFileDecodable {
 //            return Step()
 //        }
 //    }
-	
+
 	// MARK: - Current Activity's properties
 	@Published var currentActivity = Activity()
-	@Published var selectedActivityID: UUID? = nil // save scroll position
+	@Published var selectedActivityID: UUID? // save scroll position
 	@Published var currentActivityTitle: String = ""
 	@Published var currentActivityType: String = "touch_to_select"
 	@Published var steps: [Step] = []
-	@Published var numberOfSteps : Int = 0
+	@Published var numberOfSteps: Int = 0
 	@Published var currentStep: Int = 0
 	@Published var images: [String] = []
 	@Published var correctIndex: Int = 0
-	
+
 	// AudioPlayer - Media related Activities
 	@Published var sound: String = ""
 	@Published var audioPlayer: AVAudioPlayer!
 	@Published var progress: CGFloat = 0.0
 	@Published var currentMediaHasBeenPlayedOnce: Bool = false
 	@Published var answersAreDisabled: Bool = false
-	
+
 	// MARK: - Game-related animations & Interactions
 	@Published var tapIsDisabled: Bool = false
 	@Published var pressedIndex: Int = 100
@@ -73,9 +73,9 @@ class ActivityViewModel: NSObject, ObservableObject, YamlFileDecodable {
 	@Published var goodAnswers: Int = 0
 	@Published var percentOfSuccess: Int = 0
 	@Published var result: ResultType = .idle
-	
+
 	// MARK: - UI-Based interactions (delegate in Extensions.swift)
-	
+
 	// Here because GameMetrics is @EnvironmentObject
 	@Published var isSpeaking: Bool = false
 	@Published var synth = AVSpeechSynthesizer()
@@ -84,11 +84,11 @@ class ActivityViewModel: NSObject, ObservableObject, YamlFileDecodable {
 		let utterance = AVSpeechUtterance(string: sentence)
 		utterance.rate = 0.40
 		utterance.voice = Locale.current.language.languageCode?.identifier == "fr" ? AVSpeechSynthesisVoice(language: "fr-FR") : AVSpeechSynthesisVoice(language: "en-US")
-		
+
 		isSpeaking = true
 		synth.speak(utterance)
 	}
-	
+
 	// AudioPlayer (delegate in Extensions.swift)
 	func setAudioPlayer() {
 		let path = Bundle.main.path(forResource: sound, ofType: "mp3")!
@@ -101,10 +101,9 @@ class ActivityViewModel: NSObject, ObservableObject, YamlFileDecodable {
 			}
 		}
 	}
-	
-	
+
 	// MARK: - GameEngine Methods
-	
+
 	// fetch selected activity's data + setup and randomize
 	func setupGame(with: Activity) {
 		currentActivityTitle = with.short.localized()
@@ -122,7 +121,7 @@ class ActivityViewModel: NSObject, ObservableObject, YamlFileDecodable {
 		populateMarkerColors()
 		setupCurrentStep()
 	}
-	
+
 	// Randomize steps & prevent 2 identical steps in a row
 	func randomizeSteps() {
 		if currentActivity.isRandom {
@@ -141,7 +140,7 @@ class ActivityViewModel: NSObject, ObservableObject, YamlFileDecodable {
 			steps = store + (store.last == buffer.first ? buffer.reversed() : buffer)
 		}
 	}
-	
+
 	// Initialization of the progressBar with empty Markers
 	func populateMarkerColors() {
 		markerColors = []
@@ -149,7 +148,7 @@ class ActivityViewModel: NSObject, ObservableObject, YamlFileDecodable {
 			markerColors.append(Color.clear)
 		}
 	}
-	
+
 	// setup player and "buttons' overlay" if needed depending on activity type
 	func checkMediaAvailability() {
 		if currentActivityType != "touch_to_select" {
@@ -162,7 +161,7 @@ class ActivityViewModel: NSObject, ObservableObject, YamlFileDecodable {
 			answersAreDisabled = false
 		}
 	}
-	
+
 	// reinitialize step properties & setup for new step
 	func setupCurrentStep() {
 		trials = 0
@@ -182,7 +181,7 @@ class ActivityViewModel: NSObject, ObservableObject, YamlFileDecodable {
 			}
 		}
 	}
-	
+
 	// Prevent multiple taps, deal with success or failure
 	func answerHasBeenPressed(atIndex: Int) {
 		tapIsDisabled.toggle() // true
@@ -194,7 +193,7 @@ class ActivityViewModel: NSObject, ObservableObject, YamlFileDecodable {
 			tryStepAgain()
 		}
 	}
-	
+
 	// After good answer, reward and play next (if available) or show final animation screen
 	func rewardsAnimations() {
 		if currentStep < numberOfSteps-1 {
@@ -220,7 +219,7 @@ class ActivityViewModel: NSObject, ObservableObject, YamlFileDecodable {
 			}
 		}
 	}
-	
+
 	// Show, Then Hide Reinforcer animation + Setup for next Step
 	func runMotivatorScenario() {
 		self.showBlurryBG = true
@@ -233,13 +232,13 @@ class ActivityViewModel: NSObject, ObservableObject, YamlFileDecodable {
 			self.setupCurrentStep()
 		}
 	}
-	
+
 	// Method that runs after the Motivator Lottie animation completes
 	func hideMotivator() {
 		showMotivator = false
 		showBlurryBG = false
 	}
-	
+
 	// Trigger failure animation, Play again after failure(s)
 	func tryStepAgain() {
 		withAnimation {
@@ -253,7 +252,7 @@ class ActivityViewModel: NSObject, ObservableObject, YamlFileDecodable {
 			}
 		}
 	}
-	
+
 	// Update 1 marker in the ProgressBar + goodAnswer's count
 	func setMarkerColor() -> Color {
 		var color: Color = .clear
@@ -267,12 +266,12 @@ class ActivityViewModel: NSObject, ObservableObject, YamlFileDecodable {
 		}
 		return color
 	}
-	
+
 	// Update current Marker after success
 	func updateMarkers(atIndex: Int) {
 		markerColors[atIndex] = setMarkerColor()
 	}
-	
+
 	// Final % of good answers
 	func calculateSuccessPercent() {
 		percentOfSuccess = Int((Double(goodAnswers) * 100) / Double(numberOfSteps).rounded(.toNearestOrAwayFromZero))
@@ -284,7 +283,7 @@ class ActivityViewModel: NSObject, ObservableObject, YamlFileDecodable {
 			result = .medium
 		}
 	}
-	
+
 	// Transition to the beginning of Current activity for replay
 	func replayCurrentActivity() {
 		Task {
@@ -293,7 +292,7 @@ class ActivityViewModel: NSObject, ObservableObject, YamlFileDecodable {
 			showEndAnimation = false
 		}
 	}
-	
+
 	// Set selected activity to empty
 	func resetActivity() {
 		// + reset those 2 properties for next round
@@ -301,6 +300,5 @@ class ActivityViewModel: NSObject, ObservableObject, YamlFileDecodable {
 		showEndAnimation = false
 //		selectedActivity = Activity()
 	}
-	
-}
 
+}

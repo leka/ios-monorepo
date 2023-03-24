@@ -13,8 +13,8 @@ struct HomeView: View {
 	@EnvironmentObject var sidebar: SidebarViewModel
     @EnvironmentObject var settings: SettingsViewModel
     @EnvironmentObject var viewRouter: ViewRouter
-    @EnvironmentObject var metrics:  UIMetrics
-    
+    @EnvironmentObject var metrics: UIMetrics
+
     // delete
 //    private func changeBatteryLevel() {
 //        if botVM.botIsCharging {
@@ -32,10 +32,10 @@ struct HomeView: View {
 //            }
 //        }
 //    }
-    
+
     // Toolbar Items - send those within their views directly, same for the infoButtons
     private var toolbarTitle: some View {
-        HStack(spacing:4) {
+        HStack(spacing: 4) {
             Text(sidebar.setNavTitle())
             if settings.companyIsConnected && settings.exploratoryModeIsOn {
                 Image(systemName: "binoculars.fill")
@@ -44,7 +44,7 @@ struct HomeView: View {
         .font(metrics.semi17)
         .foregroundColor(.accentColor)
     }
-    
+
     private var infoButton: some View {
         Button {
 			sidebar.updateShowInfo()
@@ -54,7 +54,7 @@ struct HomeView: View {
         }
         .opacity(sidebar.showInfo() ? 0 : 1)
     }
-	
+
 	@ViewBuilder
 	private func contentView(_ current: SidebarDestinations) -> some View {
 		if current == .teachers {
@@ -63,7 +63,7 @@ struct HomeView: View {
 			FollowUpList_Users()
 		}
 	}
-    
+
     var body: some View {
         Group {
             if sidebar.has3Columns {
@@ -86,7 +86,7 @@ struct HomeView: View {
 //                                }
 //                        )
                         .navigationBarTitleDisplayMode(.inline)
-                        .onAppear() {
+                        .onAppear {
 							sidebar.contentVisibility = NavigationSplitViewVisibility.all
                         }
                         .toolbar {
@@ -121,13 +121,13 @@ struct HomeView: View {
                                 ToolbarItem(placement: .principal) {
                                     toolbarTitle
                                 }
-                                
+
 //                                ToolbarItem(placement: .navigationBarLeading) {
 //                                    Button(action: { changeBatteryLevel() }, label: {
 //                                        Text("Batterie")
 //                                    })
 //                                }
-                                
+
                                 ToolbarItem(placement: .navigationBarTrailing) {
                                     infoButton
                                 }
@@ -152,7 +152,6 @@ struct HomeView: View {
         }
     }
 }
-
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {

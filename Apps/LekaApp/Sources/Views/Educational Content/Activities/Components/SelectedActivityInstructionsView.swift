@@ -9,14 +9,14 @@ import SwiftUI
 
 // Modal content when picking an activity within the ActivityList
 struct SelectedActivityInstructionsView: View {
-	
+
 	@EnvironmentObject var activityVM: ActivityViewModel
 	@EnvironmentObject var company: CompanyViewModel
 	@EnvironmentObject var settings: SettingsViewModel
 	@EnvironmentObject var viewRouter: ViewRouter
 	@EnvironmentObject var metrics: UIMetrics
 	@Environment(\.dismiss) var dismiss
-	
+
 	private func goButtonAction() {
 		activityVM.setupGame(with: activityVM.currentActivity)
 		dismiss()
@@ -25,15 +25,15 @@ struct SelectedActivityInstructionsView: View {
 		}
 		viewRouter.goToGameFromActivities = true
 	}
-	
+
 	var body: some View {
 		ZStack(alignment: .top) {
 			// NavigationBar color
 			Color("lekaLightBlue").ignoresSafeArea()
-			
+
 			// Background Color (only visible under the header here)
 			Color.accentColor
-			
+
 			VStack(spacing: 0) {
 				activityDetailHeader
 				Rectangle()
@@ -45,7 +45,7 @@ struct SelectedActivityInstructionsView: View {
 		}
 		.preferredColorScheme(.light)
 	}
-	
+
 	private var activityDetailHeader: some View {
 		HStack {
 			Spacer()

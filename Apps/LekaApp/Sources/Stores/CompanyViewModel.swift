@@ -8,31 +8,30 @@
 import SwiftUI
 
 class CompanyViewModel: ObservableObject {
-    
+
     @Published var currentCompany = Company(mail: "", password: "", teachers: [], users: [])
-    @Published var profilesInUse: [UserType : UUID] = [.teacher : UUID(), .user : UUID()]
-    @Published var selectedProfiles: [UserType : UUID] = [.teacher : UUID(), .user : UUID()]
-    
+    @Published var profilesInUse: [UserType: UUID] = [.teacher: UUID(), .user: UUID()]
+    @Published var selectedProfiles: [UserType: UUID] = [.teacher: UUID(), .user: UUID()]
+
     // Buffer profiles to temporarilly store changes
 	@Published var bufferTeacher = Teacher(name: "", avatar: "accompanying_white", jobs: [])
     @Published var bufferUser = User(name: "", avatar: "user_white", reinforcer: 1)
     @Published var editingProfile: Bool = false
-	
+
 	// For the tests
 	@Published var willBeDeleted_FakeFollowUpNumberOfCells: Int = 0
-    
-    
+
     // MARK: - METHODS
-    
+
 // Account Managment
     func disconnect() {
         currentCompany = Company(mail: "", password: "", teachers: [], users: [])
-        profilesInUse = [.teacher : UUID(), .user : UUID()]
-        selectedProfiles = [.teacher : UUID(), .user : UUID()]
+        profilesInUse = [.teacher: UUID(), .user: UUID()]
+        selectedProfiles = [.teacher: UUID(), .user: UUID()]
 		resetBufferProfile(.teacher)
 		resetBufferProfile(.user)
     }
-    
+
 // Profiles Managment Methods
     func assignCurrentProfiles() {
         profilesInUse = selectedProfiles
@@ -41,7 +40,7 @@ class CompanyViewModel: ObservableObject {
 	func preselectCurrentProfiles() {
 		selectedProfiles = profilesInUse
 	}
-    
+
     // Sort profiles (alpabetically + current first) before displaying them in a ProfileSet (Selector || Editor)
     func sortProfiles(_ type: UserType) {
         switch type {
@@ -64,7 +63,6 @@ class CompanyViewModel: ObservableObject {
 //			collection.move(fromOffsets: [i], toOffset: 0)
 //		}
 //	}
-	
 
     func getSelectedProfileAvatar(_ type: UserType) -> String {
         switch type {
@@ -72,7 +70,7 @@ class CompanyViewModel: ObservableObject {
             case .user: return bufferUser.avatar
         }
     }
-	
+
 	func getProfileDataFor(_ type: UserType, id: UUID) -> [String] {
 		switch type {
 			case .teacher:
@@ -100,7 +98,7 @@ class CompanyViewModel: ObservableObject {
 //			}
 //		}
 //	}
-    
+
     func getCurrentUserReinforcer() -> Int {
         if let i = currentCompany.users.firstIndex(where: { $0.id == profilesInUse[.user] }) {
             return currentCompany.users[i].reinforcer
@@ -108,17 +106,17 @@ class CompanyViewModel: ObservableObject {
             return 1
         }
     }
-    
-    func getAllAvatarsOf(_ type: UserType) -> [[UUID : String]] {
+
+    func getAllAvatarsOf(_ type: UserType) -> [[UUID: String]] {
         switch type {
-            case .teacher: return currentCompany.teachers.map { [$0.id : $0.avatar] }
-            case .user: return currentCompany.users.map { [$0.id : $0.avatar] }
+            case .teacher: return currentCompany.teachers.map { [$0.id: $0.avatar] }
+            case .user: return currentCompany.users.map { [$0.id: $0.avatar] }
         }
     }
 //	func getAllAvatarsOf(_ collection: [Profile]) -> [[UUID : String]] {
 //		return collection.map { [$0.id : $0.avatar] }
 //	}
-	
+
 	func getAllProfilesIDFor(_ type: UserType) -> [UUID] {
 		switch type {
 			case .teacher: return currentCompany.teachers.map { $0.id }
@@ -128,45 +126,45 @@ class CompanyViewModel: ObservableObject {
 //	func getAllProfileIDsFor(_ collection: [Profile]) -> [UUID] {
 //		return collection.map { $0.id }
 //	}
-    
+
     func resetBufferProfile(_ type: UserType) {
         switch type {
 			case .teacher: bufferTeacher = Teacher(name: "", avatar: "accompanying_white", jobs: [])
             case .user: bufferUser = User(name: "", avatar: "user_white", reinforcer: 1)
         }
     }
-    
+
     // Selections
     func emptyProfilesSelection() {
         selectedProfiles[.user] = UUID()
         selectedProfiles[.teacher] = UUID()
     }
-    
+
     func profileIsSelected(_ type: UserType) -> Bool {
         switch type {
             case .teacher: return currentCompany.teachers.map { $0.id }.contains(selectedProfiles[.teacher])
             case .user: return currentCompany.users.map { $0.id }.contains(selectedProfiles[.user])
         }
     }
-    
+
     func profileIsCurrent(_ type: UserType, id: UUID) -> Bool {
         switch type {
             case .teacher: return profilesInUse[.teacher] == id
             case .user: return profilesInUse[.user] == id
         }
     }
-    
+
     func profileIsAssigned(_ type: UserType) -> Bool {
         switch type {
             case .teacher: return currentCompany.teachers.map { $0.id }.contains(profilesInUse[.teacher])
             case .user: return currentCompany.users.map { $0.id }.contains(profilesInUse[.user])
         }
     }
-    
+
     func selectionSetIsCorrect() -> Bool {
         return currentCompany.teachers.map { $0.id }.contains(selectedProfiles[.teacher]) && currentCompany.users.map { $0.id }.contains(selectedProfiles[.user])
     }
-    
+
     // Edit selected profile
     func editProfile(_ type: UserType) {
         switch type {
@@ -181,21 +179,21 @@ class CompanyViewModel: ObservableObject {
         }
         editingProfile = true
     }
-	
+
 	func setBufferAvatar(_ img: String, for type: UserType) {
 		switch type {
 			case .teacher: bufferTeacher.avatar = img
 			case .user: bufferUser.avatar = img
 		}
 	}
-	
+
 	func resetBufferAvatar(_ type: UserType) {
 		switch type {
 			case .teacher: bufferTeacher.avatar = ""
 			case .user: bufferUser.avatar = ""
 		}
 	}
-    
+
     // Save profiles changes
     func saveProfileChanges(_ type: UserType) {
         switch type {
@@ -208,7 +206,7 @@ class CompanyViewModel: ObservableObject {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [self] in
                     resetBufferProfile(.teacher)
                 }
-                
+
             case .user:
                 if let i = currentCompany.users.firstIndex(where: { $0.id == bufferUser.id }) {
                     currentCompany.users[i] = bufferUser
@@ -221,7 +219,7 @@ class CompanyViewModel: ObservableObject {
         }
         editingProfile = false
     }
-    
+
     // Add New Profiles
     func addTeacherProfile() {
             if bufferTeacher.avatar == "accompanying_white" {
@@ -230,7 +228,7 @@ class CompanyViewModel: ObservableObject {
             currentCompany.teachers.insert(bufferTeacher, at: 0)
             selectedProfiles[.teacher] = bufferTeacher.id
     }
-    
+
     func addUserProfile() {
             if bufferUser.avatar == "user_white" {
                 bufferUser.avatar = "user_blue"
@@ -238,7 +236,7 @@ class CompanyViewModel: ObservableObject {
             currentCompany.users.insert(bufferUser, at: 0)
             selectedProfiles[.user] = bufferUser.id
     }
-    
+
     // Delete profiles
     func deleteProfile(_ type: UserType) {
         switch type {
@@ -247,7 +245,7 @@ class CompanyViewModel: ObservableObject {
                 profilesInUse[.teacher] = UUID()
                 selectedProfiles[.teacher] = UUID()
                 editingProfile = false
-                
+
             case .user:
                 currentCompany.users.removeAll(where: { bufferUser.id == $0.id })
                 profilesInUse[.user] = UUID()
@@ -255,16 +253,14 @@ class CompanyViewModel: ObservableObject {
                 editingProfile = false
         }
     }
-    
-    
+
     // MARK: - Mock DATA - DiscoveryMode
 	func setupDiscoveryCompany() {
 		currentCompany = DiscoveryCompany().discoveryCompany
 		profilesInUse[.teacher] = currentCompany.teachers[0].id
 		profilesInUse[.user] = currentCompany.users[0].id
 	}
-    
-	
+
 	// DELETE once we fetch from server
     // This will only be used for tests + maybe congresses??
     let leka = Company(mail: "test@leka.io",
@@ -293,5 +289,5 @@ class CompanyViewModel: ObservableObject {
                             User(name: "Simon", avatar: "avatars_leka_marine", reinforcer: 3),
                             User(name: "Jean-Pierre Marie", avatar: "avatars_pictograms-foods-fruits-strawberry_red-00FD", reinforcer: 4),
                         ])
-    
+
 }

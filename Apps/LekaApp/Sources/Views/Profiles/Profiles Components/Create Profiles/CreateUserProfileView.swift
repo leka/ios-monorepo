@@ -1,4 +1,4 @@
-    //
+//
     //  CreateUserProfileView.swift
     //  LekaTestBucket
     //
@@ -7,30 +7,29 @@
 
 import SwiftUI
 
-
 struct CreateUserProfileView: View {
-    
+
     @EnvironmentObject var company: CompanyViewModel
     @EnvironmentObject var settings: SettingsViewModel
     @EnvironmentObject var viewRouter: ViewRouter
-    @EnvironmentObject var metrics:  UIMetrics
+    @EnvironmentObject var metrics: UIMetrics
     @Environment(\.dismiss) var dismiss
-    
+
 	@FocusState private var focusedField: FormField?
     @State private var isEditing = false
     @State private var showDeleteConfirmation: Bool = false
 	@State private var navigateToSignupFinalStep: Bool = false
 	@State private var navigateToAvatarPicker: Bool = false
-    
+
     var body: some View {
         ZStack(alignment: .center) {
             Color.white.edgesIgnoringSafeArea(.top)
-            
+
             ScrollView(showsIndicators: false) {
                 VStack(spacing: 30) {
 					AvatarPickerTriggerButton_Users(navigate: $navigateToAvatarPicker)
                         .padding(.top, 30)
-                    
+
                     nameField
                     ReinforcerPicker()
 					accessoryView
@@ -61,7 +60,7 @@ struct CreateUserProfileView: View {
         }
         .preferredColorScheme(.light)
     }
-	
+
 	private var nameField: some View {
 		LekaTextField(label: "Nom d'utilisateur", entry: $company.bufferUser.name, isEditing: $isEditing, type: .name, focused: _focusedField, action: {
 			focusedField = nil
@@ -70,7 +69,7 @@ struct CreateUserProfileView: View {
 			focusedField = .name
 		}
 	}
-	
+
 	private var alertContent: some View {
 		Button(role: .destructive) {
 			company.deleteProfile(.user)
@@ -81,7 +80,7 @@ struct CreateUserProfileView: View {
 			Text("Supprimer")
 		}
 	}
-	
+
 	@ViewBuilder
 	private var accessoryView: some View {
 		if viewRouter.currentPage == .welcome {
@@ -105,14 +104,14 @@ struct CreateUserProfileView: View {
 			EmptyView()
 		}
 	}
-	
+
 	// Toolbar
 	private var navigationTitle: some View {
 		Text(company.editingProfile ? "Éditer un profil utilisateur" : "Créer un profil utilisateur")
 			.font(metrics.semi17)
 			.foregroundColor(.accentColor)
 	}
-	
+
 	private var adaptativeBackButton: some View {
 		Button {
 			// Leave without saving
@@ -133,7 +132,7 @@ struct CreateUserProfileView: View {
 		}
 		.tint(.accentColor)
 	}
-	
+
 	private var validateButton: some View {
 		Group {
 			if viewRouter.currentPage == .profiles {
@@ -160,7 +159,7 @@ struct CreateUserProfileView: View {
 		}
 		.disabled(company.bufferUser.name.isEmpty)
 	}
-	
+
 	private var validateButtonLabel: some View {
 		HStack(spacing: 4) {
 			Image(systemName: "checkmark.circle")

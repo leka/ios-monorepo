@@ -11,19 +11,19 @@ enum UserType: Int, CaseIterable {
     case user, teacher
 }
 
-//protocol Company_POP {
+// protocol Company_POP {
 //	var id: UUID { get }
 //	var mail: String { get set }
 //	var password: String { get set }
 //	var teachers: [any Profile] { get set }
 //	var users: [any Profile] { get set }
-	
+
 //	func disconnect()
 //	func sortProfiles(for collection: inout [any Profile])
 //	func getNameAndAvatarFor(id: UUID, into: [any Profile]) -> [String]
 //	func getAllAvatarsOf(_ collection: [any Profile]) -> [[UUID : String]]
 //	func getAllProfileIDsFor(_ collection: [any Profile]) -> [UUID]
-//}
+// }
 
 struct Company: Identifiable {
     var id = UUID()
@@ -47,7 +47,7 @@ struct Teacher: Profile {
 	let type = UserType.teacher
     var name: String
 	var avatar: String
-	
+
 	// specific
     var jobs: [String]
 }
@@ -58,16 +58,16 @@ struct User: Profile {
 	let type = UserType.user
     var name: String
     var avatar: String
-	
+
 	// specific
     var reinforcer: Int
 }
 
 enum Professions: String, Identifiable, CaseIterable {
     case educSpe, eje, monit, monitAt, teach, ASC, psychoMot, ergo, ortho, kine, pedopsy, med, psy, infir, soign, AESH, AES, AVDH, auxVieScol, pueri, auxPueri, ludo
-    
+
     var id: Self { self }
-    
+
     var name: String {
         switch self {
             case .educSpe: return "Éducateur(trice) spécialisé(e)"
@@ -95,5 +95,3 @@ enum Professions: String, Identifiable, CaseIterable {
         }
     }
 }
-
-

@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct InstructionButton: View {
-    
+
 	@ObservedObject var gameMetrics: GameMetrics
 	@EnvironmentObject var activityVM: ActivityViewModel
-    
+
     var body: some View {
         HStack(spacing: 0) {
             Spacer()
@@ -63,6 +63,6 @@ struct InstructionButton_Previews: PreviewProvider {
 		InstructionButton(gameMetrics: GameMetrics())
 			.environmentObject(ActivityViewModel())
 			.environmentObject(GameMetrics())
-		
+
     }
 }

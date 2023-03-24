@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct SettingsSection_Credentials: View {
-	
+
 	@EnvironmentObject var company: CompanyViewModel
-	@EnvironmentObject var metrics:  UIMetrics
-	
+	@EnvironmentObject var metrics: UIMetrics
+
     var body: some View {
 		Section {
 			Group {

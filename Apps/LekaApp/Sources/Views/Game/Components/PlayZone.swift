@@ -9,10 +9,10 @@ import SwiftUI
 import AVFoundation
 
 struct PlayZone: View {
-    
+
     @ObservedObject var gameMetrics: GameMetrics
     @EnvironmentObject var activityVM: ActivityViewModel
-    
+
     // Grid configuration
     private var columns: [GridItem] {
         let number = activityVM.currentActivity.numberOfImages
@@ -42,8 +42,8 @@ struct PlayZone: View {
             return [GridItem(.fixed(gameMetrics.playGridBtnCellSize), alignment: .center)]
         }
     }
-    
-    var body: some View {        
+
+    var body: some View {
         HStack {
             Spacer()
             LazyVGrid(columns: columns, spacing: gameMetrics.playGridRowSpacing) {

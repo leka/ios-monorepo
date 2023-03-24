@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct BotBatteryIndicator: View {
-    
+
     @Binding var level: Double
     @Binding var charging: Bool
     private let images: [String] = ["battery_25", "battery_25_2", "battery_50", "battery_75", "battery_100", "battery_50_bolt", "battery_100_bolt"]
-    
+
     @State private var opacity: Double = 1
     private func imageGivenValue() -> String {
         if level < 25 {
@@ -27,7 +27,7 @@ struct BotBatteryIndicator: View {
             return charging ? "battery_100_bolt" : "battery_100"
         }
     }
-    
+
     var body: some View {
         Image(imageGivenValue())
             .resizable()

@@ -10,12 +10,12 @@ import SwiftUI
 // Make data for this screen
 
 struct UserDataCell: View {
-	
+
 	@EnvironmentObject var sidebar: SidebarViewModel
 	@EnvironmentObject var metrics: UIMetrics
-	
+
 	@Binding var successValue: Double
-	
+
 	var body: some View {
 		HStack(spacing: 0) {
 			leadingTimeStatsView
@@ -27,17 +27,17 @@ struct UserDataCell: View {
 		.allowsTightening(true)
 		.contentShape(Rectangle())
 	}
-	
+
 	// the following View will have to be remade after
 	// decvisions have been made about rank, etc...
 	// + We need to create an Activity Object to save and populate from
 	private var mockActivityCell: some View {
 		HStack(spacing: 30) {
 			Spacer()
-			
+
 			Image("emotion_recognition-pictures-1_images_1_types-lucie-3fc7b66e-67a0-4f50-9817-9ef19af7f717")
 				.ActivityIcon_ImageModifier(diameter: 100)
-			
+
 			VStack(alignment: .leading) {
 				VStack(alignment: .leading, spacing: 0) {
 					Text("Reconnaître des émotions")
@@ -54,18 +54,18 @@ struct UserDataCell: View {
 			.foregroundColor(.accentColor)
 			.frame(minWidth: 200)
 			.padding(.vertical, 10)
-			
+
 			Spacer()
 		}
 	}
-	
+
 	private var leadingTimeStatsView: some View {
 		VStack(alignment: .leading, spacing: 10) {
 			Spacer()
 			Text("15/09/22")
 				.font(metrics.reg17)
 				.foregroundColor(.accentColor)
-			
+
 			Group {
 				VStack(alignment: .leading, spacing: 0) {
 					Text("heure de début")
@@ -79,7 +79,7 @@ struct UserDataCell: View {
 		}
 		.padding(.vertical, 4)
 	}
-	
+
 	private var adaptiveStatsView: some View {
 		ViewThatFits {
 			// 1 column
@@ -99,14 +99,14 @@ struct UserDataCell: View {
 						.font(metrics.roundReg14)
 						.offset(y: 5)
 					)
-				
+
 				Gauge(value: successValue) {}
 					.gaugeStyle(SuccessGaugeStyle())
 					.font(metrics.roundReg14)
 					.offset(y: -2)
-				
+
 				Spacer()
-				
+
 				HStack(spacing: 20) {
 					Circle()
 						.overlay(
@@ -116,13 +116,13 @@ struct UserDataCell: View {
 								.clipShape(Circle())
 						)
 						.frame(maxHeight: 58)
-					
+
 					Text("Aurore KIESLER")
 						.font(metrics.reg16)
 						.multilineTextAlignment(.leading)
 				}
 			}
-			
+
 			// 2 columns
 			VStack(spacing: 10) {
 				HStack(spacing: 20) {
@@ -134,12 +134,12 @@ struct UserDataCell: View {
 								.clipShape(Circle())
 						)
 						.frame(maxHeight: 48)
-					
+
 					Text("Aurore KIESLER")
 						.font(metrics.reg16)
 						.multilineTextAlignment(.leading)
 				}
-				
+
 				HStack(alignment: .bottom) {
 					Image("chrono")
 						.resizable()

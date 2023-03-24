@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct SignupFinalStep: View {
-    
+
     @EnvironmentObject var metrics: UIMetrics
     @EnvironmentObject var viewRouter: ViewRouter
-    
+
 	private let data: TileData = .signup_finalStep
-    
+
     var body: some View {
         ZStack {
             Color("lekaLightBlue").ignoresSafeArea()
@@ -26,7 +26,7 @@ struct SignupFinalStep: View {
             }
         }
     }
-	
+
 	private var tile: some View {
 		HStack(alignment: .center, spacing: 0) {
 			VStack(spacing: 0) {
@@ -63,7 +63,7 @@ struct SignupFinalStep: View {
 		.background(.white,
 					in: RoundedRectangle(cornerRadius: metrics.tilesRadius, style: .continuous))
 	}
-	
+
 	private var accessoryView: some View {
 		Button {
 			withAnimation {

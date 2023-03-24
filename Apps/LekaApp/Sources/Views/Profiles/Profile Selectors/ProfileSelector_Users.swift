@@ -8,17 +8,17 @@
 import SwiftUI
 
 struct ProfileSelector_Users: View {
-	
+
 	@EnvironmentObject var company: CompanyViewModel
 	@EnvironmentObject var settings: SettingsViewModel
 	@EnvironmentObject var viewRouter: ViewRouter
 	@EnvironmentObject var metrics: UIMetrics
 	@Environment(\.dismiss) var dismiss
-		
+
 	var body: some View {
 		ZStack {
 			Color("lekaLightBlue").ignoresSafeArea()
-			
+
 			ProfileSet_Users()
 				.padding(.top, 60)
 		}
@@ -31,7 +31,7 @@ struct ProfileSelector_Users: View {
 		.navigationBarBackButtonHidden()
 		.toolbar {
 			ToolbarItem(placement: .principal) {
-				HStack(spacing:4) {
+				HStack(spacing: 4) {
 					if settings.companyIsConnected && settings.exploratoryModeIsOn {
 						Image(systemName: "binoculars.fill")
 					}

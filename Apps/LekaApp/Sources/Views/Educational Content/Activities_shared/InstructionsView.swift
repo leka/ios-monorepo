@@ -9,18 +9,18 @@ import SwiftUI
 import Down
 
 // FAKE DATA ===========================================================
-//struct InstructionData: Identifiable {
+// struct InstructionData: Identifiable {
 //    var id = UUID()
 //    var title: String
 //    var instructions: String
-//}
+// }
 // FAKE DATA ===========================================================
 
 struct InstructionsView: View {
-    
+
 	@EnvironmentObject var activityVM: ActivityViewModel
-    @EnvironmentObject var metrics:  UIMetrics
-    
+    @EnvironmentObject var metrics: UIMetrics
+
 	// FAKE DATA ===========================================================
 //    @State private var instructionData: [InstructionData] =
 //    [
@@ -31,7 +31,7 @@ struct InstructionsView: View {
 //        InstructionData(title: "Validation de la leçon", instructions: "La leçon est valide lorsque **4 images sur les 5** ont été bien mises dans le panier.")
 //    ]
 	// FAKE DATA ===========================================================
-	    
+
     var body: some View {
 		ScrollView(.vertical, showsIndicators: true) {
 //			instructions_OLD
@@ -41,7 +41,7 @@ struct InstructionsView: View {
 			instructionTitle
 		}
     }
-	
+
 	@ViewBuilder
 	private var instructionsMarkdownView: some View {
 //		Text(activityVM.getInstructions())
@@ -51,7 +51,7 @@ struct InstructionsView: View {
 			.padding()
 			.frame(minWidth: 450, maxWidth: 550)
 	}
-	
+
 //	private var instructions_OLD: some View {
 //		VStack(alignment: .leading, spacing: 20) {
 //			ForEach(instructionData) { section in
@@ -66,7 +66,7 @@ struct InstructionsView: View {
 //		.padding()
 //		.frame(minWidth: 450, maxWidth: 550)
 //	}
-	
+
 	private var instructionTitle: some View {
 		HStack {
 			Spacer()

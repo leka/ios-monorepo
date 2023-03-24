@@ -8,16 +8,16 @@
 import SwiftUI
 
 struct CommandListView: View {
-    
+
     @EnvironmentObject var settings: SettingsViewModel
 	@EnvironmentObject var sidebar: SidebarViewModel
-	
+
     private let images: [String] = ["standard-remote", "colored-arrows", "color-remote copy", "big-joystick", "hand-remote"]
-    
+
     var body: some View {
         ZStack {
             Color("lekaLightBlue").ignoresSafeArea()
-            
+
             let columns = Array(repeating: GridItem(), count: 3)
             VStack {
                 LazyVGrid(columns: columns) {
@@ -39,7 +39,7 @@ struct CommandListView: View {
             }
         }
         .animation(.easeOut(duration: 0.4), value: sidebar.showInfo())
-        .onAppear() { sidebar.sidebarVisibility = .all }
+        .onAppear { sidebar.sidebarVisibility = .all }
     }
 }
 

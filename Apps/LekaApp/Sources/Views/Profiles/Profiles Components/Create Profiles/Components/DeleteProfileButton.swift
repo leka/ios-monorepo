@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct DeleteProfileButton: View {
-	
+
 	@EnvironmentObject var company: CompanyViewModel
-	@EnvironmentObject var metrics:  UIMetrics
-	
+	@EnvironmentObject var metrics: UIMetrics
+
 	@Binding var show: Bool
-	
+
     var body: some View {
 		if company.editingProfile {
 			Button {
@@ -27,8 +27,7 @@ struct DeleteProfileButton: View {
 			}
 			.buttonStyle(BorderedCapsule_NoFeedback_ButtonStyle(font: metrics.reg17, color: Color.red))
 			.padding(.vertical, 10)
-		}
-		else {
+		} else {
 			EmptyView()
 		}
     }

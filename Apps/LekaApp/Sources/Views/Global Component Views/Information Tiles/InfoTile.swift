@@ -8,17 +8,17 @@
 import SwiftUI
 
 struct InfoTile: View {
-    
+
     @EnvironmentObject var settings: SettingsViewModel
 	@EnvironmentObject var sidebar: SidebarViewModel
     @EnvironmentObject var viewRouter: ViewRouter
-    @EnvironmentObject var metrics:  UIMetrics
-    
+    @EnvironmentObject var metrics: UIMetrics
+
     let data: TileData
     private var headerColor: Color {
         return data == .discovery ? Color("lekaOrange") : Color.accentColor
     }
-    
+
     var body: some View {
         VStack(spacing: 0) {
             tileHeader
@@ -29,7 +29,7 @@ struct InfoTile: View {
         .background(.white)
         .clipShape(RoundedRectangle(cornerRadius: metrics.tilesRadius, style: .continuous))
     }
-	
+
 	private var tileHeader: some View {
 		ZStack {
 			Text(data.content.title!)
@@ -56,7 +56,7 @@ struct InfoTile: View {
 		.foregroundColor(.white)
 		.background(headerColor)
 	}
-	
+
 	private var tileContent: some View {
 		VStack {
 			Spacer()
@@ -75,7 +75,7 @@ struct InfoTile: View {
 		.frame(maxWidth: 300)
 		.foregroundColor(.accentColor)
 	}
-	
+
 	private var closeButton: some View {
 		Button {
 			sidebar.updateShowInfo()
@@ -84,7 +84,7 @@ struct InfoTile: View {
 				.font(metrics.semi20)
 		}
 	}
-	
+
 	private var connectButton: some View {
 		Button {
 			viewRouter.currentPage = .welcome

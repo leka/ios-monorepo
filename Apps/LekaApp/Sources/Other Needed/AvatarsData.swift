@@ -1,4 +1,4 @@
-    //
+//
     //  AvatarsData.swift
     //  LekaTestBucket
     //
@@ -17,9 +17,9 @@ struct AvatarCategory: Identifiable, Hashable {
     // AvatarPicker Data
 enum AvatarSets: Int, CaseIterable, Hashable {
     case girls, boys, lekaGirls, lekaBoys, jobs, weather, sunglasses, animals, fruits, vegies
-    
+
     var id: Self { self }
-    
+
     var content: AvatarCategory {
         switch self {
             case .girls: return AvatarCategory(category: "Filles", images: ["avatars_girl-1a",

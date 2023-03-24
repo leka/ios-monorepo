@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct BotStore: View {
-	
+
 	@ObservedObject var botVM: BotViewModel
 	@EnvironmentObject var metrics: UIMetrics
-	
+
 	@Binding var allBots: Int
 	@Binding var showNoBotTile: Bool
-	
+
     var body: some View {
 		Group {
 			if allBots < 1 {
@@ -44,7 +44,7 @@ struct BotStore: View {
 						botVM.currentlySelectedBotIndex = nil
 					}
 					._safeAreaInsets(EdgeInsets(top: 0, leading: 110, bottom: 0, trailing: 80))
-					.onAppear() {
+					.onAppear {
 						guard botVM.currentlyConnectedBotIndex != nil else {
 							return
 						}
@@ -55,7 +55,7 @@ struct BotStore: View {
 		}
 		.frame(height: 500)
     }
-	
+
 	private var availableBots: some View {
 		ForEach(1...allBots, id: \.self) { item in
 			Button {
@@ -69,7 +69,7 @@ struct BotStore: View {
 			.id(item)
 		}
 	}
-	
+
 	private var searchInvite: some View {
 		HStack {
 			Spacer()

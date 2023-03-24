@@ -1,4 +1,4 @@
-    //
+//
     //  CreateProfileView.swift
     //  LekaTestBucket
     //
@@ -8,29 +8,29 @@
 import SwiftUI
 
 struct CreateTeacherProfileView: View {
-    
+
     @EnvironmentObject var company: CompanyViewModel
     @EnvironmentObject var settings: SettingsViewModel
     @EnvironmentObject var viewRouter: ViewRouter
-    @EnvironmentObject var metrics:  UIMetrics
+    @EnvironmentObject var metrics: UIMetrics
     @Environment(\.dismiss) var dismiss
-    
+
 	@FocusState private var focusedField: FormField?
     @State private var isEditing = false
     @State private var showDeleteConfirmation: Bool = false
 	@State private var navigateToSignup3: Bool = false
 	@State private var navigateToJobPicker: Bool = false
 	@State private var navigateToAvatarPicker: Bool = false
-    
+
     var body: some View {
         ZStack {
             Color.white.edgesIgnoringSafeArea(.top)
-            
+
             ScrollView(showsIndicators: false) {
                 VStack(spacing: 30) {
 					AvatarPickerTriggerButton_Teachers(navigate: $navigateToAvatarPicker)
                         .padding(.top, 30)
-                    
+
                     Group {
 						nameField
 						JobPickerTrigger(navigate: $navigateToJobPicker)
@@ -66,7 +66,7 @@ struct CreateTeacherProfileView: View {
         }
         .preferredColorScheme(.light)
     }
-	
+
 	private var nameField: some View {
 		LekaTextField(label: "Nom d'accompagnant", entry: $company.bufferTeacher.name, isEditing: $isEditing, type: .name, focused: _focusedField, action: {
 			focusedField = nil
@@ -75,7 +75,7 @@ struct CreateTeacherProfileView: View {
 			focusedField = .name
 		}
 	}
-	
+
 	private var alertContent: some View {
 		Button(role: .destructive) {
 			company.deleteProfile(.teacher)
@@ -86,7 +86,7 @@ struct CreateTeacherProfileView: View {
 			Text("Supprimer")
 		}
 	}
-	
+
 	@ViewBuilder
 	private var accessoryView: some View {
 		if viewRouter.currentPage == .welcome {
@@ -110,14 +110,14 @@ struct CreateTeacherProfileView: View {
 			EmptyView()
 		}
 	}
-	
+
 	// Toolbar
 	private var navigationTitle: some View {
 		Text(company.editingProfile ? "Éditer un profil accompagnant" : "Créer un profil accompagnant")
 			.font(metrics.semi17)
 			.foregroundColor(.accentColor)
 	}
-	
+
 	@ViewBuilder
 	var validateButton: some View {
 		if viewRouter.currentPage == .welcome {
@@ -139,7 +139,7 @@ struct CreateTeacherProfileView: View {
 			.disabled(company.bufferTeacher.name.isEmpty)
 		}
 	}
-	
+
 	private var validateButtonLabel: some View {
 		HStack(spacing: 4) {
 			Image(systemName: "checkmark.circle")
@@ -148,7 +148,7 @@ struct CreateTeacherProfileView: View {
 		.tint(.accentColor)
 		.contentShape(Rectangle())
 	}
-	
+
 	private var adaptiveBackButton: some View {
 		Button {
 			// go back without saving
@@ -170,7 +170,6 @@ struct CreateTeacherProfileView: View {
 		.tint(.accentColor)
 	}
 }
-
 
 struct CreateProfileView_Previews: PreviewProvider {
     static var previews: some View {

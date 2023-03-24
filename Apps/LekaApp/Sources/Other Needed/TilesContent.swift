@@ -1,4 +1,4 @@
-    //
+//
     //  TileViewModel.swift
     //  LekaTestBucket
     //
@@ -19,9 +19,9 @@ struct TileContent {
 
 enum TileData: Int, CaseIterable, Hashable {
     case discovery, curriculums, activities, commands, stories, teacher, user, signup_step1, signup_step1_ble, signup_step1_Final, signup_step2, signup_step3, signup_finalStep, noBot
-    
+
     var id: Self { self }
-    
+
     var content: TileContent {
         switch self {
             // DiscoveryMode Orange Tile

@@ -8,25 +8,25 @@
 import SwiftUI
 
 struct JobPickerTrigger: View {
-	
+
 	@EnvironmentObject var company: CompanyViewModel
-	@EnvironmentObject var metrics:  UIMetrics
-	
+	@EnvironmentObject var metrics: UIMetrics
+
 	@Binding var navigate: Bool
-	
+
     var body: some View {
 		VStack(alignment: .leading, spacing: 10) {
 			Text("Profession(s)")
 				.font(metrics.reg14)
 				.foregroundColor(.accentColor)
 				.padding(.leading, 10)
-			
+
 			Button {
 				navigate.toggle()
 			} label: {
 				buttonLabel
 			}
-			
+
 			if !company.bufferTeacher.jobs.isEmpty {
 				ForEach(company.bufferTeacher.jobs, id: \.self) { tag in
 					JobTag(job: tag)
@@ -35,7 +35,7 @@ struct JobPickerTrigger: View {
 		}
 		.frame(width: 435)
     }
-	
+
 	private var buttonLabel: some View {
 		HStack(spacing: 0) {
 			Text("Sélectionnez")

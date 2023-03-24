@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct ReinforcerPicker: View {
-	
+
 	@EnvironmentObject var company: CompanyViewModel
-	@EnvironmentObject var metrics:  UIMetrics
-	
+	@EnvironmentObject var metrics: UIMetrics
+
     var body: some View {
 		VStack(spacing: 10) {
 			HStack {
@@ -28,7 +28,7 @@ struct ReinforcerPicker: View {
 					.padding(.leading, 10)
 				Spacer()
 			}
-			
+
 			// ReinforcerPicker
 			VStack(spacing: 4) {
 				HStack(spacing: 12) {
@@ -38,7 +38,7 @@ struct ReinforcerPicker: View {
 				}
 				.padding(.horizontal, 10)
 				.frame(height: 114)
-				
+
 				HStack(spacing: 12) {
 					ForEach(4...5, id: \.self) { item in
 						ReinforcerButton(item)
@@ -52,7 +52,7 @@ struct ReinforcerPicker: View {
 		.frame(width: 420)
 		.animation(.default, value: company.bufferUser.reinforcer)
     }
-	
+
 	func ReinforcerButton(_ number: Int) -> some View {
 		Button {
 			company.bufferUser.reinforcer = number

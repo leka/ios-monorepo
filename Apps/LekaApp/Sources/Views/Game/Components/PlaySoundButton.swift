@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct PlaySoundButton: View {
-    
+
 	@EnvironmentObject var activityVM: ActivityViewModel
-    
+
     var body: some View {
         Button(action: {
             activityVM.audioPlayer.play()

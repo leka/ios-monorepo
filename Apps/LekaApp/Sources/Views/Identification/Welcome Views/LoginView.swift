@@ -8,29 +8,29 @@
 import SwiftUI
 
 struct LoginView: View {
-    
+
     @EnvironmentObject var company: CompanyViewModel
     @EnvironmentObject var settings: SettingsViewModel
-    @EnvironmentObject var metrics:  UIMetrics
-    
+    @EnvironmentObject var metrics: UIMetrics
+
 	@FocusState var focusedField: FormField?
     @State private var mail: String = ""
     @State private var password: String = ""
     @State private var isEditing = false
-    
+
 	@State private var navigateToTeacherSelector: Bool = false
-	
+
 	// Make sure you have set up Associated Domains for your app and AutoFill Passwords is enabled in Settings in order to get the strong password proposals etc...
 	// the same applies for both login/signup
 	// re-enable autofill modifiers in LekaTextField when OK (textContentType)
-    
+
     func connectIsDisabled() -> Bool {
 		return !mail.isValidEmail() || mail.isEmpty || password.isEmpty
     }
-    
+
 // TESTS *****************************************************************
     @State private var credentialsAreCorrect: Bool = true
-    
+
     private func submitForm() {
         if mail == company.leka.mail {
             if password != company.leka.password {
@@ -47,11 +47,11 @@ struct LoginView: View {
         }
     }
 // TESTS *****************************************************************
-    
+
     var body: some View {
         ZStack(alignment: .center) {
             CloudsBGView()
-            
+
             VStack(alignment: .center, spacing: 30) {
                 title
                 Group {
@@ -71,14 +71,14 @@ struct LoginView: View {
 			ProfileSelector_Teachers()
 		}
     }
-	
+
 	private var title: some View {
 		Text("Se connecter")
 			.textCase(.uppercase)
 			.foregroundColor(.accentColor)
 			.font(metrics.semi20)
 	}
-	
+
 	private var submitButton: some View {
 		Button(action: {
 			submitForm()
@@ -93,7 +93,7 @@ struct LoginView: View {
 		.tint(.accentColor)
 		.padding(.top, 24)
 	}
-	
+
 	@ViewBuilder
 	private var mailTextField: some View {
 		let mailTitle: String = {
@@ -103,16 +103,16 @@ struct LoginView: View {
 				return "Email incorrect"
 			}
 		}()
-		
+
 		let mailLabelColor: Color = {
 			return mail.isValidEmail() || mail.isEmpty  || isEditing ? .accentColor : .red
 		}()
-		
+
 		LekaTextField(label: mailTitle, entry: $mail, color: mailLabelColor, isEditing: $isEditing, focused: _focusedField) {
 			focusedField = .password
 		}
 	}
-	
+
 	@ViewBuilder
 	private var passwordTextField: some View {
 		let passwordTitle: String = {
@@ -122,11 +122,11 @@ struct LoginView: View {
 				return "Email ou mot de passe incorrect"
 			}
 		}()
-		
+
 		let passwordLabelColor: Color = {
 			return credentialsAreCorrect ? .accentColor : .red
 		}()
-		
+
 		LekaPasswordField(label: passwordTitle, entry: $password, color: passwordLabelColor, focused: _focusedField) {
 			if password.isEmpty {
 				focusedField = .password
@@ -135,7 +135,7 @@ struct LoginView: View {
 			}
 		}
 	}
-	
+
 	private var forgotLink: some View {
 		HStack {
 			Spacer()
@@ -149,7 +149,6 @@ struct LoginView: View {
 		}
 	}
 }
-
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {

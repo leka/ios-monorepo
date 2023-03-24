@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct SettingsSection_Account: View {
-	
+
 	@EnvironmentObject var settings: SettingsViewModel
 	@EnvironmentObject var company: CompanyViewModel
 	@EnvironmentObject var botVM: BotViewModel
 	@EnvironmentObject var viewRouter: ViewRouter
-	
+
     var body: some View {
 		Section {
 			Group {

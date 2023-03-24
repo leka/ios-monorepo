@@ -8,17 +8,17 @@
 import SwiftUI
 
 struct CurriculumListView: View {
-    
+
 	@EnvironmentObject var sidebar: SidebarViewModel
     @EnvironmentObject var viewRouter: ViewRouter
 	@EnvironmentObject var curriculumVM: CurriculumViewModel
-    
+
 	private let columns = Array(repeating: GridItem(), count: 3)
-	
+
     var body: some View {
         ZStack {
             Color("lekaLightBlue").ignoresSafeArea()
-            
+
             ScrollView {
                 LazyVGrid(columns: columns) {
 					allCurriculums
@@ -30,7 +30,7 @@ struct CurriculumListView: View {
         }
         .animation(.easeOut(duration: 0.4), value: sidebar.showInfo())
     }
-	
+
 	private var allCurriculums: some View {
 		ForEach(curriculumVM.availableCurriculums.enumerated().map({ $0 }), id: \.element.id) { index, item in
 			Button {

@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct GoToProfileEditorButton: View {
-    
+
     @EnvironmentObject var company: CompanyViewModel
     @EnvironmentObject var settings: SettingsViewModel
     @EnvironmentObject var viewRouter: ViewRouter
     @EnvironmentObject var metrics: UIMetrics
-    
+
     var body: some View {
         Button {
             if settings.exploratoryModeIsOn {
@@ -30,7 +30,7 @@ struct GoToProfileEditorButton: View {
                     Spacer()
                 }
                 .overlay( TickPic() )
-                
+
                 if settings.exploratoryModeIsOn {
 					exploratoryModeLabel
                 }
@@ -40,7 +40,7 @@ struct GoToProfileEditorButton: View {
         .contentShape(Rectangle())
         .animation(.default, value: settings.exploratoryModeIsOn)
     }
-	
+
 	private var exploratoryModeLabel: some View {
 		Text("Mode exploratoire")
 			.font(metrics.reg17)
@@ -50,7 +50,6 @@ struct GoToProfileEditorButton: View {
 			.background(.white, in: RoundedRectangle(cornerRadius: metrics.btnRadius))
 	}
 }
-
 
 struct GoToProfileEditorButton_Previews: PreviewProvider {
     static var previews: some View {

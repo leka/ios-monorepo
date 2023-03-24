@@ -1,4 +1,4 @@
-    //
+//
     //  JobPicker.swift
     //  LekaTestBucket
     //
@@ -8,22 +8,21 @@
 import SwiftUI
 
 struct JobPicker: View {
-    
+
     @EnvironmentObject var company: CompanyViewModel
-    @EnvironmentObject var metrics:  UIMetrics
+    @EnvironmentObject var metrics: UIMetrics
     @EnvironmentObject var viewRouter: ViewRouter
     @Environment(\.dismiss) var dismiss
-    
+
     @FocusState var focusedField: FormField?
     @State private var otherJobText: String = ""
     @State private var isEditing = false
     @State private var selectedJobs: [String] = []
-	
-    
+
     var body: some View {
         ZStack {
             Color.white.edgesIgnoringSafeArea(.top)
-            
+
 			JobPickerStore(selectedJobs: $selectedJobs)
 				.onAppear {
 					selectedJobs = company.bufferTeacher.jobs
@@ -41,7 +40,7 @@ struct JobPicker: View {
         }
         .toolbarBackground(viewRouter.currentPage == .profiles ? .visible : .automatic, for: .navigationBar)
     }
-	
+
 	private var customJobTextField: some View {
 		VStack(spacing: 0) {
 			Divider()
@@ -60,13 +59,13 @@ struct JobPicker: View {
 				.edgesIgnoringSafeArea(.all)
 		)
 	}
-	
+
 	private var navigationTitle: some  View {
 		Text("Sélectionnez vos professions")
 			.font(metrics.semi17)
 			.foregroundColor(.accentColor)
 	}
-	
+
 	private var adaptiveBackButton: some  View {
 		Button {
 			// go back without saving
@@ -83,7 +82,7 @@ struct JobPicker: View {
 		}
 		.tint(.accentColor)
 	}
-	
+
 	private var validateButton: some  View {
 		Button {
 			company.bufferTeacher.jobs = selectedJobs

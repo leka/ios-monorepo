@@ -8,7 +8,6 @@
 import Foundation
 import SwiftUI
 
-
 // MARK: - Bot (bot connection) Button Style
 struct NoFeedback_ButtonStyle: ButtonStyle {
     func makeBody(configuration: Self.Configuration) -> some View {
@@ -20,12 +19,12 @@ struct NoFeedback_ButtonStyle: ButtonStyle {
 
 // MARK: - Edit Button Style -> avatar picker, profile editor, explorer mode tile
 struct BorderedCapsule_NoFeedback_ButtonStyle: ButtonStyle {
-    
+
     var font: Font
     var color: Color
     var isOpaque: Bool = false
     var width: CGFloat = 280
-    
+
     func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
             .opacity(configuration.isPressed ? 1 : 1)
@@ -45,9 +44,9 @@ struct BorderedCapsule_NoFeedback_ButtonStyle: ButtonStyle {
 }
 
 struct CircledIcon_NoFeedback_ButtonStyle: ButtonStyle {
-    
+
     var font: Font
-    
+
     func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
             .opacity(configuration.isPressed ? 1 : 1)
@@ -65,7 +64,7 @@ struct CircledIcon_NoFeedback_ButtonStyle: ButtonStyle {
 
 // MARK: - Login/Signup Button Style
 struct Connect_ButtonStyle: ButtonStyle {
-	@EnvironmentObject var metrics:  UIMetrics
+	@EnvironmentObject var metrics: UIMetrics
 	var reversed: Bool = false
 	func makeBody(configuration: Self.Configuration) -> some View {
 		configuration.label
@@ -82,7 +81,7 @@ struct Connect_ButtonStyle: ButtonStyle {
 
 // MARK: - Job Picker Toggle Style
 struct JobPickerToggleStyle: ToggleStyle {
-	@EnvironmentObject var metrics:  UIMetrics
+	@EnvironmentObject var metrics: UIMetrics
 	var onImage = "checkmark.circle"
 	var offImage = "circle"
 	var action: () -> Void
@@ -99,12 +98,12 @@ struct JobPickerToggleStyle: ToggleStyle {
 				)
 				.scaleEffect(configuration.isOn ? 1.2 : 1, anchor: .center)
 				.frame(width: 18, height: 18)
-			
+
 			configuration.label
 				.multilineTextAlignment(.leading)
 				.font(metrics.reg16)
 				.foregroundColor(.accentColor)
-			
+
 			Spacer()
 		}
 		.frame(width: 200)
@@ -117,19 +116,18 @@ struct JobPickerToggleStyle: ToggleStyle {
 	}
 }
 
-
 // MARK: - Activity Button Style
-//struct ActivityIcon_Circular_ButtonStyle: ButtonStyle {
+// struct ActivityIcon_Circular_ButtonStyle: ButtonStyle {
 //	func makeBody(configuration: Self.Configuration) -> some View {
 //		configuration.label
 //			.opacity(configuration.isPressed ? 0.95 : 1)
 //			.scaleEffect(configuration.isPressed ? 0.99 : 1, anchor: .center)
 //			.padding()
 //	}
-//}
+// }
 
 // MARK: - ActivityBtn's LabelStyle
-//struct ActivityIcon_Circular_LabelStyle: LabelStyle {
+// struct ActivityIcon_Circular_LabelStyle: LabelStyle {
 //
 //    var backColor: Color = Color.white
 //    var strokeColor: Color = Color("btnLightBlue")
@@ -150,7 +148,7 @@ struct JobPickerToggleStyle: ToggleStyle {
 //                .contentShape(Circle())
 //        }
 //    }
-//}
+// }
 
 // MARK: - Custom Gauge Style (FollowUp stats)
 struct SuccessGaugeStyle: GaugeStyle {
@@ -166,7 +164,7 @@ struct SuccessGaugeStyle: GaugeStyle {
 				return .green
 			}
 		}()
-		
+
 		ZStack {
 			Circle()
 				.stroke(color.opacity(0.4), lineWidth: 6)
@@ -183,9 +181,9 @@ struct SuccessGaugeStyle: GaugeStyle {
 
 // MARK: - Emotion Buttons Style (Gameplay)
 struct ActivityAnswer_ButtonStyle: ButtonStyle {
-	
+
 	var isEnabled: Bool = false
-	
+
 	func makeBody(configuration: Self.Configuration) -> some View {
 		configuration.label
 			.scaleEffect(configuration.isPressed ? 0.98 : 1, anchor: .center)
@@ -205,9 +203,9 @@ struct ActivityAnswer_ButtonStyle: ButtonStyle {
 
 // MARK: - Play Sound Button Style (Gameplay)
 struct PlaySound_ButtonStyle: ButtonStyle {
-	
+
 	var progress: CGFloat
-	
+
 	func makeBody(configuration: Self.Configuration) -> some View {
 		configuration.label
 			.mask(Circle().inset(by: 4))
@@ -228,9 +226,9 @@ struct PlaySound_ButtonStyle: ButtonStyle {
 
 // MARK: - CheerScreen Buttons
 struct BorderedCapsule_ButtonStyle: ButtonStyle {
-	
+
 	var isFilled: Bool = true
-	
+
 	func makeBody(configuration: Self.Configuration) -> some View {
 		configuration.label
 			.font(.system(size: 22, weight: .black, design: .rounded))

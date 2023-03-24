@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct TickPic: View {
-	
+
 	@EnvironmentObject var company: CompanyViewModel
 	@EnvironmentObject var settings: SettingsViewModel
-	
+
 	func imageFromContext() -> Image {
 		if settings.exploratoryModeIsOn {
 			return Image(systemName: "binoculars.fill")
@@ -23,7 +23,7 @@ struct TickPic: View {
 			}
 		}
 	}
-	
+
     var body: some View {
 		HStack(alignment: .top) {
 			imageFromContext()

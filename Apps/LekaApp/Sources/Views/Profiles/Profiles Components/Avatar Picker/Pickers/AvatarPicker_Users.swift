@@ -8,17 +8,17 @@
 import SwiftUI
 
 struct AvatarPicker_Users: View {
-	
+
 	@EnvironmentObject var company: CompanyViewModel
-	@EnvironmentObject var metrics:  UIMetrics
+	@EnvironmentObject var metrics: UIMetrics
 	@EnvironmentObject var viewRouter: ViewRouter
-	
+
 	@State private var selected: String = ""
-	
+
 	var body: some View {
 		ZStack {
 			Color.white.edgesIgnoringSafeArea(.top)
-			
+
 			AvatarPickerStore(selected: $selected)
 				.onAppear {
 					selected = company.bufferUser.avatar

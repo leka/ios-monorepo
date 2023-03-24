@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-
 struct  ActivityCell: Identifiable {
 	var id = UUID()
 	var img: String
@@ -16,7 +15,7 @@ struct  ActivityCell: Identifiable {
 
 struct Instructions: Codable {
 	var instructions: LocalizedContent
-	
+
 	init(instructions: LocalizedContent = LocalizedContent()) {
 		self.instructions = instructions
 	}
@@ -33,7 +32,7 @@ struct Activity: Codable {
 		case numberOfImages = "number_of_images_per_step"
 		case randomImagePosition = "random_image_position"
 	}
-	
+
 	var id: String
 	var title: LocalizedContent
 	var short: LocalizedContent
@@ -43,7 +42,7 @@ struct Activity: Codable {
 	var numberOfImages: Int
 	var randomImagePosition: Bool
 	var steps: [Step]
-	
+
 	init(id: String = "",
 		 title: LocalizedContent = LocalizedContent(),
 		 short: LocalizedContent = LocalizedContent(),
@@ -66,23 +65,22 @@ struct Activity: Codable {
 	}
 }
 
-
 // Step conforms to Equatable because steps are compared when randomized
 struct Step: Codable, Equatable {
 	static func == (lhs: Step, rhs: Step) -> Bool {
 		return lhs.instruction == rhs.instruction
 	}
-	
+
 	enum CodingKeys: String, CodingKey {
 		case instruction, images, sound
 		case correctAnswer = "correct_answer"
 	}
-	
+
 	var instruction: LocalizedContent
 	var correctAnswer: String
 	var images: [String]
 	var sound: [String]?
-	
+
 	init(instruction: LocalizedContent = LocalizedContent(),
 		 correctAnswer: String = "",
 		 images: [String] = [],

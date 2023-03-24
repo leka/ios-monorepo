@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct CurrentGameInstructionView: View {
-    
+
 	@EnvironmentObject var activityVM: ActivityViewModel
 	@ObservedObject var gameMetrics: GameMetrics
 	@Environment(\.dismiss) var dismiss
-		
+
 	private var activityDetailHeader: some View {
 		HStack {
 			Spacer()
@@ -25,7 +25,7 @@ struct CurrentGameInstructionView: View {
 		.frame(height: 70)
 		.padding(.horizontal, 20)
 	}
-	
+
 	private var resumeButton: some View {
 		Button(action: {
 			dismiss()
@@ -37,16 +37,16 @@ struct CurrentGameInstructionView: View {
 			.foregroundColor(.white)
 		}
 	}
-	
+
 	var body: some View {
 		NavigationStack {
 			ZStack(alignment: .top) {
 				// Header color
 				Color.accentColor.ignoresSafeArea()
-				
+
 				// Background Color
 				Color("lekaLightGray").padding(.top, 70)
-				
+
 				VStack(spacing: 0) {
 					activityDetailHeader
 					InstructionsView()
