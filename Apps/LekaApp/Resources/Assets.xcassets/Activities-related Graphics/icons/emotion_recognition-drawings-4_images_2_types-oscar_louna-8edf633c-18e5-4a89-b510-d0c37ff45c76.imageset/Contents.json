@@ -1,0 +1,15 @@
+{
+  "images" : [
+    {
+      "filename" : "emotion_recognition-drawings-4_images_2_types-oscar_louna-8edf633c-18e5-4a89-b510-d0c37ff45c76.pdf",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  },
+  "properties" : {
+    "preserves-vector-representation" : true
+  }
+}

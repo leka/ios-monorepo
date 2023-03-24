@@ -1,0 +1,15 @@
+{
+  "images" : [
+    {
+      "filename" : "emotion_recognition-pictures-2_images_2_types-hortense_yann-ac80e69e-caba-41f6-8001-c359870b8569.pdf",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  },
+  "properties" : {
+    "preserves-vector-representation" : true
+  }
+}

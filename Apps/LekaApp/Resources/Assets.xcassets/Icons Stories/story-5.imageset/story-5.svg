@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100" height="100" viewBox="0 0 100 100">
+  <defs>
+    <clipPath id="clip-story-5">
+      <rect width="100" height="100"/>
+    </clipPath>
+  </defs>
+  <g id="story-5" clip-path="url(#clip-story-5)">
+    <rect width="100" height="100" fill="#fff"/>
+    <g id="Group_9" data-name="Group 9" transform="translate(17 10)">
+      <g id="Group_6" data-name="Group 6">
+        <g id="Group_3" data-name="Group 3">
+          <g id="Group_2" data-name="Group 2">
+            <path id="Rectangle" d="M0,.1,64.5-6.747l-.031-59.728H4.863A4.835,4.835,0,0,0,0-61.668Z" transform="translate(0 66.476)" fill="#c2ecff" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/>
+            <path id="Rectangle_2" data-name="Rectangle 2" d="M0-6.744A6.788,6.788,0,0,0,6.832,0H64.469a11,11,0,0,1-2.744-6.744,11.112,11.112,0,0,1,2.744-6.744H6.832A6.788,6.788,0,0,0,0-6.744Z" transform="translate(0 73.32)" fill="#efeff4" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/>
+            <path id="Rectangle_3" data-name="Rectangle 3" d="M0,0,4.821-2.661,9.642,0V-12.524H0Z" transform="translate(11.749 79.1)" fill="#ff3b30" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/>
+          </g>
+          <path id="Line" d="M0,.963H14.407" transform="translate(9.207 65.13)" fill="none" stroke="#000" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/>
+          <path id="Line_2" data-name="Line 2" d="M1.446,57.323V.482" transform="translate(5.785 0.963)" fill="none" stroke="#000" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/>
+        </g>
+      </g>
+    </g>
+    <g id="Group_23" data-name="Group 23" transform="translate(32.546 18.79)">
+      <g id="Group_22" data-name="Group 22" transform="translate(20.751 0.211) rotate(31)">
+        <g id="Rectangle_18" data-name="Rectangle 18" transform="translate(10.674 7.132)" fill="#9b9b9b" stroke="#000" stroke-miterlimit="10" stroke-width="1.5">
+          <rect width="1.871" height="16.047" rx="0.935" stroke="none"/>
+          <rect x="0.75" y="0.75" width="0.371" height="14.547" rx="0.185" fill="none"/>
+        </g>
+        <g id="Group_21" data-name="Group 21">
+          <path id="Oval_18" data-name="Oval 18" d="M23.219,11.366A11.49,11.49,0,0,0,11.61,0,11.49,11.49,0,0,0,0,11.366a9.831,9.831,0,0,1,3.971-1.114,8.745,8.745,0,0,1,3.816,1.114,9.071,9.071,0,0,1,3.822-1.114,8.413,8.413,0,0,1,3.725,1.114,10.322,10.322,0,0,1,4.049-1.114A8.8,8.8,0,0,1,23.219,11.366Z" fill="#e06064" stroke="#000" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5"/>
+          <path id="Oval_18-2" data-name="Oval 18" d="M0,9.732A7.27,7.27,0,0,1,3.693,8.78a7.521,7.521,0,0,1,3.81.947,56.872,56.872,0,0,0-1.323-5.6A20.989,20.989,0,0,0,3.858,0,20.256,20.256,0,0,0,1.435,4.131C.769,6.1,0,9.732,0,9.732Z" transform="translate(7.853 0.79)" fill="#fff6c7"/>
+        </g>
+      </g>
+      <path id="Oval_19" data-name="Oval 19" d="M28.267,8.275C26.328,5.074,21.214,0,14.5,0,7.77,0,1.923,5.061,0,8.275l4.7,2.811,5.422-1.652,4.312,1.236,4.922-1.236,4.735,1.236Z" transform="translate(0.505 23.682)" fill="#fff46a" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5"/>
+      <path id="Oval_19-2" data-name="Oval 19" d="M0,2.935s2.194,3.85,4.756,3.838,3.373-2.894,5.481-3.059S12.254,6,14.595,6s2.538-2.288,4.976-2.288S21.976,6,24.357,6s4.92-3.067,4.92-3.067L26.661.014S26.722,2.6,24.339,2.6,22.1.234,19.553.306s-2.659,2.551-4.976,2.551S12.73.293,10.219.306,7.437,3.567,4.738,3.42,2.181,0,2.181,0Z" transform="matrix(1, 0.017, -0.017, 1, 0.572, 29.252)" fill="#5bccff" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5"/>
+    </g>
+  </g>
+</svg>

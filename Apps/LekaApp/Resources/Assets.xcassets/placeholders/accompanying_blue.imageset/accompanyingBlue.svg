@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400px" height="400px" viewBox="0 0 400 400" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>avatar_leka_astronaut</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="avatar_leka_astronaut">
+            <rect id="Rectangle" fill="#487DAC" fill-rule="nonzero" x="0" y="0" width="400" height="400"></rect>
+            <g id="accompanying" transform="translate(106.000000, 86.000000)">
+                <g id="Groupe_7047">
+                    <g id="Groupe_7010" transform="translate(21.762048, 157.774848)">
+                        <path d="M144.218905,70.9170739 C143.774598,31.6275097 111.657441,0.08160768 72.3678772,0.2720256 C33.078313,0.01813504 0.96115712,31.6275097 0.51684864,70.9170739" id="Tracé_4219" stroke="#707071" stroke-width="1.360128"></path>
+                        <path d="M144.218905,70.9170739 C143.774598,31.6275097 111.657441,0.08160768 72.3678772,0.2720256 C33.078313,0.01813504 0.96115712,31.6275097 0.51684864,70.9170739" id="Tracé_4220" stroke="#FFFFFF" stroke-width="6.35179776" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </g>
+                    <g id="Groupe_7020">
+                        <g id="Ellipse_464" transform="translate(0.000000, 65.804288)">
+                            <circle id="Oval" cx="12.9484186" cy="12.9652583" r="12.9484186"></circle>
+                            <circle id="Oval" stroke="#FFFFFF" stroke-width="6.347264" cx="12.9484186" cy="12.9652583" r="9.77478656"></circle>
+                        </g>
+                        <g id="Ellipse_465" transform="translate(161.401856, 65.804288)">
+                            <circle id="Oval" cx="13.846103" cy="12.9652583" r="12.9484186"></circle>
+                            <circle id="Oval" stroke="#FFFFFF" stroke-width="6.347264" cx="13.846103" cy="12.9652583" r="9.77478656"></circle>
+                        </g>
+                        <g id="Tracé_4209" transform="translate(18.135040, 0.000000)">
+                            <path d="M75.9314125,0 C117.569464,0 151.209963,33.7039718 151.209963,75.2785511 C151.209963,116.85313 117.505992,150.557102 75.9314125,150.557102 C34.3568333,150.557102 0.65286144,116.85313 0.65286144,75.2785511 C0.65286144,33.7039718 34.3568333,0 75.9314125,0 L75.9314125,0 Z" id="Path"></path>
+                            <path d="M75.9314125,6.347264 C57.5243468,6.347264 40.1963161,13.5196723 27.184425,26.5315636 C14.1725338,39.5434547 7.00012544,56.8714854 7.00012544,75.2785511 C7.00012544,93.6856166 14.1725338,111.013647 27.184425,124.025539 C40.1963161,137.037429 57.5243468,144.209839 75.9314125,144.209839 C94.3384781,144.209839 111.666509,137.037429 124.6784,124.025539 C137.690291,111.013647 144.8627,93.6856166 144.8627,75.2785511 C144.8627,56.8714854 137.690291,39.5434547 124.6784,26.5315636 C111.666509,13.5196723 94.3384781,6.347264 75.9314125,6.347264 M75.9314125,0 C117.505992,0 151.209963,33.7039718 151.209963,75.2785511 C151.209963,116.85313 117.505992,150.557102 75.9314125,150.557102 C34.3568333,150.557102 0.65286144,116.85313 0.65286144,75.2785511 C0.65286144,33.7039718 34.3568333,0 75.9314125,0 Z" id="Shape" fill="#FFFFFF" fill-rule="nonzero"></path>
+                        </g>
+                        <path d="M36.3698227,62.584023 C36.3698227,62.584023 62.5205504,35.0368973 86.0054272,48.1757338 C109.490304,61.3145702 110.12503,40.8763801 110.12503,40.8763801 C111.902264,48.2392064 119.328563,52.7457638 126.627917,50.9685299 C128.659041,50.4607488 130.56322,49.5086592 132.213509,48.1757338 C149.033758,38.0201113 162.363013,54.5864704 162.363013,54.5864704" id="Tracé_1793" stroke="#FFFFFF" stroke-width="6.347264" stroke-linecap="round" stroke-linejoin="round"></path>
+                        <g id="Ellipse_888" transform="translate(110.623744, 69.819904)">
+                            <circle id="Oval" fill="#FFFFFF" fill-rule="nonzero" cx="8.95870976" cy="9.01311488" r="8.69575168"></circle>
+                            <circle id="Oval" stroke="#FFFFFF" stroke-width="6.347264" stroke-linecap="round" stroke-linejoin="round" cx="8.95870976" cy="9.01311488" r="5.52211968"></circle>
+                        </g>
+                        <g id="Ellipse_889" transform="translate(63.472640, 69.819904)">
+                            <circle id="Oval" fill="#FFFFFF" fill-rule="nonzero" cx="9.39395072" cy="9.01311488" r="8.69575168"></circle>
+                            <circle id="Oval" stroke="#FFFFFF" stroke-width="6.347264" stroke-linecap="round" stroke-linejoin="round" cx="9.39395072" cy="9.01311488" r="5.52211968"></circle>
+                        </g>
+                    </g>
+                </g>
+                <circle id="Ellipse_890" stroke="#FFFFFF" stroke-width="6.347264" cx="119.96329" cy="79.3408" r="15.86816"></circle>
+                <circle id="Ellipse_891" stroke="#FFFFFF" stroke-width="6.347264" cx="72.0414464" cy="79.4042726" r="15.86816"></circle>
+                <line x1="133.990743" y1="78.7060736" x2="164.140247" y2="69.0582323" id="Ligne_2" stroke="#FFFFFF" stroke-width="6.347264"></line>
+                <path d="M87.7191884,80.7371981 C90.8928205,76.167168 97.1131392,75.0246605 101.683169,78.1348199 C102.635259,78.7695462 103.460403,79.5946906 104.09513,80.4833075" id="Tracé_4210" stroke="#FFFFFF" stroke-width="6.347264"></path>
+                <line x1="55.4116147" y1="79.4042726" x2="23.9926579" y2="71.2797748" id="Tracé_4211" stroke="#FFFFFF" stroke-width="6.347264"></line>
+            </g>
+        </g>
+    </g>
+</svg>

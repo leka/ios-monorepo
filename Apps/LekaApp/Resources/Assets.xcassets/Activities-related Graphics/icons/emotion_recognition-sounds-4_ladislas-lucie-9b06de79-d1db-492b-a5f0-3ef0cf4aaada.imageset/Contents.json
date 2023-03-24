@@ -1,0 +1,15 @@
+{
+  "images" : [
+    {
+      "filename" : "emotion_recognition-sounds-4_ladislas-lucie-9b06de79-d1db-492b-a5f0-3ef0cf4aaada.pdf",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  },
+  "properties" : {
+    "preserves-vector-representation" : true
+  }
+}

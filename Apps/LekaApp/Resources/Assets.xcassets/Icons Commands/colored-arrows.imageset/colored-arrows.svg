@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100" height="100" viewBox="0 0 100 100">
+  <defs>
+    <clipPath id="clip-colored-arrows">
+      <rect width="100" height="100"/>
+    </clipPath>
+  </defs>
+  <g id="colored-arrows" clip-path="url(#clip-colored-arrows)">
+    <rect width="100" height="100" fill="#fff"/>
+    <g id="Groupe_6475" data-name="Groupe 6475">
+      <path id="Path_30_Copy_2" data-name="Path 30 Copy 2" d="M11.475,0,0,18.169H22.95Z" transform="translate(38.916 13)" fill="#b5ef41" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3"/>
+      <path id="Path_30_Copy_3" data-name="Path 30 Copy 3" d="M11.475,0,0-18.169H22.95Z" transform="translate(38.916 86.169)" fill="#ff3b30" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3"/>
+      <path id="Path_30_Copy_4" data-name="Path 30 Copy 4" d="M11.475,0,0,18.169H22.95Z" transform="translate(12.916 59.95) rotate(-90)" fill="#007aff" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3"/>
+      <path id="Path_30_Copy_5" data-name="Path 30 Copy 5" d="M11.475,0,0-18.169H22.95Z" transform="translate(87.084 59.95) rotate(-90)" fill="#f8e71c" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,15 @@
+{
+  "images" : [
+    {
+      "filename" : "emotion_recognition-drawings-1_images_1_types-zoe-3d3c6b18-1332-4ce2-959a-3dd3343c13c1.pdf",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  },
+  "properties" : {
+    "preserves-vector-representation" : true
+  }
+}

@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100" height="100" viewBox="0 0 100 100">
+  <defs>
+    <clipPath id="clip-story-2">
+      <rect width="100" height="100"/>
+    </clipPath>
+  </defs>
+  <g id="story-2" clip-path="url(#clip-story-2)">
+    <rect width="100" height="100" fill="#fff"/>
+    <g id="Group_9" data-name="Group 9" transform="translate(18 10)">
+      <g id="Group_6" data-name="Group 6">
+        <g id="Group_3" data-name="Group 3">
+          <g id="Group_2" data-name="Group 2">
+            <path id="Rectangle" d="M0,.1,64.5-6.747l-.031-59.728H4.863A4.835,4.835,0,0,0,0-61.668Z" transform="translate(0 66.476)" fill="#d9ffaf" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/>
+            <path id="Rectangle_2" data-name="Rectangle 2" d="M0-6.744A6.788,6.788,0,0,0,6.832,0H64.469a11,11,0,0,1-2.744-6.744,11.112,11.112,0,0,1,2.744-6.744H6.832A6.788,6.788,0,0,0,0-6.744Z" transform="translate(0 73.32)" fill="#efeff4" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/>
+            <path id="Rectangle_3" data-name="Rectangle 3" d="M0,0,4.821-2.661,9.642,0V-12.524H0Z" transform="translate(11.749 79.1)" fill="#ff3b30" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/>
+          </g>
+          <path id="Line" d="M0,.963H14.407" transform="translate(9.207 65.13)" fill="none" stroke="#000" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/>
+          <path id="Line_2" data-name="Line 2" d="M1.446,57.323V.482" transform="translate(5.785 0.963)" fill="none" stroke="#000" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/>
+        </g>
+        <g id="Group" transform="translate(14.746 3.823)">
+          <path id="Line-2" data-name="Line" d="M.74,25.545V.2" transform="translate(15.852 -0.204)" fill="none" stroke="#000" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/>
+          <ellipse id="Oval_10" data-name="Oval 10" cx="8.322" cy="7.952" rx="8.322" ry="7.952" transform="translate(0 16.457)" fill="#fff" stroke="#000" stroke-miterlimit="10" stroke-width="2"/>
+          <ellipse id="Oval_7_Copy_4" data-name="Oval 7 Copy 4" cx="0.793" cy="0.757" rx="0.793" ry="0.757" transform="translate(9.511 24.787)" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/>
+          <ellipse id="Oval_7_Copy_5" data-name="Oval 7 Copy 5" cx="0.793" cy="0.757" rx="0.793" ry="0.757" transform="translate(3.963 24.787)" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/>
+        </g>
+        <g id="Group_5" data-name="Group 5" transform="translate(55.716 9.046)">
+          <g id="Group_4" data-name="Group 4">
+            <path id="Line-3" data-name="Line" d="M1.239,30.47V.3" transform="translate(-1.239)" fill="none" stroke="#000" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/>
+            <path id="Path_29" data-name="Path 29" d="M0,0C.563,2.424,3.233,5.532,4.333,8.792a6.5,6.5,0,0,1-1.839,7.477" transform="translate(0.684)" fill="none" stroke="#000" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/>
+          </g>
+        </g>
+      </g>
+      <g id="Group-2" data-name="Group" transform="translate(30.415 25.166)">
+        <g id="hanna" transform="translate(0 0)">
+          <path id="Rectangle_Copy" data-name="Rectangle Copy" d="M9.317,14.317a4.659,4.659,0,1,1-9.317,0V5.753L4.72.062A3.834,3.834,0,0,1,9.317,4" transform="translate(3.068 10.434)" fill="#f8e71c" stroke="#000" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/>
+          <path id="Rectangle_Copy-2" data-name="Rectangle Copy" d="M-9.317,14.317a4.678,4.678,0,0,0,4.659,4.7A4.677,4.677,0,0,0,0,14.318V6.066l-4.72-6A3.834,3.834,0,0,0-9.317,4" transform="translate(25.04 10.434)" fill="#f8e71c" stroke="#000" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/>
+          <ellipse id="Oval_51" data-name="Oval 51" cx="1.534" cy="1.546" rx="1.534" ry="1.546" transform="translate(0 15.073)" fill="#fee9e8" stroke="#000" stroke-miterlimit="10" stroke-width="2"/>
+          <ellipse id="Oval_10-2" data-name="Oval 10" cx="11.121" cy="11.211" rx="11.121" ry="11.211" transform="translate(3.068 4.635)" fill="#fff"/>
+          <ellipse id="Oval_10-3" data-name="Oval 10" cx="11.121" cy="11.211" rx="11.121" ry="11.211" transform="translate(3.068 4.635)" fill="#fee9e8"/>
+          <path id="Path_3" data-name="Path 3" d="M0,9.348C.006,6.693,5.208,1.543,7.841.915s3.724-1.736,6.917.074a19.5,19.5,0,0,1,3.373,2.086A64.049,64.049,0,0,1,9.243,8.441C5.758,9.936,2.234,10.154,0,9.348Z" transform="translate(14.044 0) rotate(43)" fill="#f8e71c"/>
+          <path id="Path_11" data-name="Path 11" d="M0,8.282A7.481,7.481,0,0,0,4.305,5.166c.312-.921,1.14-3.94.743-4.57A1.126,1.126,0,0,0,4.1,0a6.3,6.3,0,0,0-2.44,2.676A11.524,11.524,0,0,0,0,8.282Z" transform="translate(3.124 7.085)" fill="#f8e71c"/>
+          <ellipse id="Oval_10-4" data-name="Oval 10" cx="11.121" cy="11.211" rx="11.121" ry="11.211" transform="translate(3.068 4.635)" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="2"/>
+          <ellipse id="Oval_7_Copy_4-2" data-name="Oval 7 Copy 4" cx="1.085" cy="1.09" rx="1.085" ry="1.09" transform="translate(16.945 15.846)" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/>
+          <ellipse id="Oval_7_Copy_5-2" data-name="Oval 7 Copy 5" cx="1.085" cy="1.09" rx="1.085" ry="1.09" transform="translate(9.448 15.846)" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/>
+          <path id="Path_6" data-name="Path 6" d="M0,0S2.832,6.4,16.879,7.344" transform="translate(7.842 7.273)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/>
+          <path id="Path_9" data-name="Path 9" d="M4.524,0C5.675,3.4,3.191,6.607,0,7.683" transform="translate(3.437 7.513)" fill="none" stroke="#000" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

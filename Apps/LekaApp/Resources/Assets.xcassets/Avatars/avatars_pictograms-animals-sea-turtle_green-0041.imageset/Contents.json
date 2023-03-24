@@ -1,0 +1,15 @@
+{
+  "images" : [
+    {
+      "filename" : "avatars_pictograms-animals-sea-turtle_green-0041.svg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  },
+  "properties" : {
+    "preserves-vector-representation" : true
+  }
+}

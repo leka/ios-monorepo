@@ -1,0 +1,15 @@
+{
+  "images" : [
+    {
+      "filename" : "avatars_pictograms-animals-farm-rooster_white-006B.svg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  },
+  "properties" : {
+    "preserves-vector-representation" : true
+  }
+}
