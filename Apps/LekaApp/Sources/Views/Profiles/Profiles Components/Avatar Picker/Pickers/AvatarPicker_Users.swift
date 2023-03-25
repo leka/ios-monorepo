@@ -30,9 +30,11 @@ struct AvatarPicker_Users: View {
 					ToolbarItem(placement: .principal) { AvatarPicker_NavigationTitle() }
 					ToolbarItem(placement: .navigationBarLeading) { AvatarPicker_AdaptiveBackButton() }
 					ToolbarItem(placement: .navigationBarTrailing) {
-						AvatarPicker_ValidateButton(selected: $selected, action: {
-							company.setBufferAvatar(selected, for: .user)
-						})
+						AvatarPicker_ValidateButton(
+							selected: $selected,
+							action: {
+								company.setBufferAvatar(selected, for: .user)
+							})
 					}
 				}
 		}

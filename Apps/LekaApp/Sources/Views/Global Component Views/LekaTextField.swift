@@ -20,7 +20,7 @@ struct LekaTextField: View {
 	let action: () -> Void
 
 	var body: some View {
-		VStack(alignment: . leading, spacing: 10) {
+		VStack(alignment: .leading, spacing: 10) {
 			Text(label)
 				.font(metrics.reg17)
 				.foregroundColor(color)
@@ -46,8 +46,9 @@ struct LekaTextField: View {
 		.padding(10)
 		.frame(width: 400, height: 44)
 		.background(Color("lekaLightGray"), in: RoundedRectangle(cornerRadius: metrics.btnRadius))
-		.overlay(RoundedRectangle(cornerRadius: metrics.btnRadius)
-			.stroke(focused == type ? color : .clear, lineWidth: 1)
+		.overlay(
+			RoundedRectangle(cornerRadius: metrics.btnRadius)
+				.stroke(focused == type ? color : .clear, lineWidth: 1)
 		)
 	}
 }
@@ -66,7 +67,7 @@ struct LekaPasswordField: View {
 	let action: () -> Void
 
 	var body: some View {
-		VStack(alignment: . leading, spacing: 10) {
+		VStack(alignment: .leading, spacing: 10) {
 			Text(label)
 				.font(metrics.reg17)
 				.foregroundColor(color)
@@ -103,8 +104,9 @@ struct LekaPasswordField: View {
 		}
 		.frame(width: 400, height: 44)
 		.background(Color("lekaLightGray"), in: RoundedRectangle(cornerRadius: metrics.btnRadius))
-		.overlay(RoundedRectangle(cornerRadius: metrics.btnRadius)
-			.stroke(focused == type ? color : .clear, lineWidth: 1)
+		.overlay(
+			RoundedRectangle(cornerRadius: metrics.btnRadius)
+				.stroke(focused == type ? color : .clear, lineWidth: 1)
 		)
 	}
 }

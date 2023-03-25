@@ -22,12 +22,18 @@ struct ProfileSelector_Users: View {
 			ProfileSet_Users()
 				.padding(.top, 60)
 		}
-		.navigationDestination(isPresented: $viewRouter.goToGameFromCurriculums, destination: {
-			GameView()
-		})
-		.navigationDestination(isPresented: $viewRouter.goToGameFromActivities, destination: {
-			GameView()
-		})
+		.navigationDestination(
+			isPresented: $viewRouter.goToGameFromCurriculums,
+			destination: {
+				GameView()
+			}
+		)
+		.navigationDestination(
+			isPresented: $viewRouter.goToGameFromActivities,
+			destination: {
+				GameView()
+			}
+		)
 		.navigationBarBackButtonHidden()
 		.toolbar {
 			ToolbarItem(placement: .principal) {

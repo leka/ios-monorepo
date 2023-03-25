@@ -49,7 +49,11 @@ struct FollowUpList_Users: View {
 	func cellContent(id: UUID) -> some View {
 		HStack(spacing: 10) {
 			Circle()
-				.fill(Color.accentColor, strokeBorder: sidebar.currentlySelectedUserProfile == id ? .white : Color("lekaLightGray"), lineWidth: 4)
+				.fill(
+					Color.accentColor,
+					strokeBorder: sidebar.currentlySelectedUserProfile == id ? .white : Color("lekaLightGray"),
+					lineWidth: 4
+				)
 				.overlay(
 					Image(company.getProfileDataFor(.user, id: id)[0])
 						.resizable()
@@ -66,8 +70,10 @@ struct FollowUpList_Users: View {
 		}
 		.font(metrics.reg17)
 		.padding(10)
-		.background(sidebar.currentlySelectedUserProfile == id ? Color.accentColor : .clear,
-					in: RoundedRectangle(cornerRadius: metrics.btnRadius, style: .continuous))
+		.background(
+			sidebar.currentlySelectedUserProfile == id ? Color.accentColor : .clear,
+			in: RoundedRectangle(cornerRadius: metrics.btnRadius, style: .continuous)
+		)
 		.contentShape(Rectangle())
 	}
 }

@@ -14,7 +14,7 @@ struct SettingsSection_Account: View {
 	@EnvironmentObject var botVM: BotViewModel
 	@EnvironmentObject var viewRouter: ViewRouter
 
-    var body: some View {
+	var body: some View {
 		Section {
 			Group {
 				Button("Se déconnecter") {
@@ -51,7 +51,9 @@ struct SettingsSection_Account: View {
 				Text("Supprimer")
 			}
 		} message: {
-			Text("Vous êtes sur le point de supprimer votre compte et toutes les données qu'il contient. \nCette action est irreversible. \nVoulez-vous continuer ?")
+			Text(
+				"Vous êtes sur le point de supprimer votre compte et toutes les données qu'il contient. \nCette action est irreversible. \nVoulez-vous continuer ?"
+			)
 		}
-    }
+	}
 }

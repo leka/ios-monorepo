@@ -14,7 +14,7 @@ struct JobPickerTrigger: View {
 
 	@Binding var navigate: Bool
 
-    var body: some View {
+	var body: some View {
 		VStack(alignment: .leading, spacing: 10) {
 			Text("Profession(s)")
 				.font(metrics.reg14)
@@ -34,7 +34,7 @@ struct JobPickerTrigger: View {
 			}
 		}
 		.frame(width: 435)
-    }
+	}
 
 	private var buttonLabel: some View {
 		HStack(spacing: 0) {

@@ -41,15 +41,20 @@ struct ProfileSet_Users: View {
 		.navigationBarTitleDisplayMode(.inline)
 		.preferredColorScheme(.light)
 		.frame(minWidth: 460)
-		.sheet(isPresented: $showEditProfileUser, content: {
-			NavigationStack {
-				CreateUserProfileView()
+		.sheet(
+			isPresented: $showEditProfileUser,
+			content: {
+				NavigationStack {
+					CreateUserProfileView()
+				}
 			}
-		})
+		)
 		.alert("Mode découverte", isPresented: $settings.showConnectInvite) {
 			IdentificationIsNeededAlertLabel()
 		} message: {
-			Text("Ce mode ne vous permet pas de créer des profils ou d'enregistrer votre utilisation de l'application. \nVoulez-vous vous identifier ?")
+			Text(
+				"Ce mode ne vous permet pas de créer des profils ou d'enregistrer votre utilisation de l'application. \nVoulez-vous vous identifier ?"
+			)
 		}
 	}
 
@@ -65,7 +70,9 @@ struct ProfileSet_Users: View {
 			Image(systemName: "pencil")
 		}
 		.buttonStyle(CircledIcon_NoFeedback_ButtonStyle(font: metrics.bold16))
-		.disabled(company.getProfileDataFor(.user, id: company.profilesInUse[.user]!)[0] == "question_mark_blue" && !company.profileIsSelected(.user))
+		.disabled(
+			company.getProfileDataFor(.user, id: company.profilesInUse[.user]!)[0] == "question_mark_blue"
+				&& !company.profileIsSelected(.user))
 	}
 
 	private var addButton: some View {
@@ -118,10 +125,12 @@ struct ProfileSet_Users: View {
 			}
 		} else {
 			ScrollView(showsIndicators: false) {
-				let columns = Array(repeating: GridItem(spacing: 20), count: viewRouter.currentPage == .profiles ? 3 : 6)
+				let columns = Array(
+					repeating: GridItem(spacing: 20), count: viewRouter.currentPage == .profiles ? 3 : 6)
 				LazyVGrid(columns: columns, spacing: 20) {
 					usersSet
-				}.padding(.bottom, 20)
+				}
+				.padding(.bottom, 20)
 			}
 			._safeAreaInsets(EdgeInsets(top: 20, leading: 20, bottom: 20, trailing: 20))
 		}

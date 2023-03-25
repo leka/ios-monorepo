@@ -13,9 +13,9 @@ struct UserDataView: View {
 	@EnvironmentObject var sidebar: SidebarViewModel
 	@EnvironmentObject var company: CompanyViewModel
 
-    var body: some View {
-        ZStack {
-            Color("lekaLightBlue").ignoresSafeArea()
+	var body: some View {
+		ZStack {
+			Color("lekaLightBlue").ignoresSafeArea()
 
 			List(0...company.willBeDeleted_FakeFollowUpNumberOfCells, id: \.self) { item in
 				UserDataCell(successValue: $sidebar.successValues[item])
@@ -30,7 +30,7 @@ struct UserDataView: View {
 			.safeAreaInset(edge: .top) {
 				InfoTileManager()
 			}
-        }
-        .animation(.easeOut(duration: 0.4), value: sidebar.showInfo())
-    }
+		}
+		.animation(.easeOut(duration: 0.4), value: sidebar.showInfo())
+	}
 }

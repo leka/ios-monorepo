@@ -16,7 +16,7 @@ struct UserSet_AvatarCell: View {
 
 	let of: User
 
-    var body: some View {
+	var body: some View {
 		Button {
 			withAnimation {
 				company.selectedProfiles[.user] = of.id
@@ -40,9 +40,11 @@ struct UserSet_AvatarCell: View {
 					selectionIndicator(id: of.id)
 					// Avatar
 					Circle()
-						.fill(Color("lekaLightGray"),
-							  strokeBorder: .white,
-							  lineWidth: 3)
+						.fill(
+							Color("lekaLightGray"),
+							strokeBorder: .white,
+							lineWidth: 3
+						)
 						.overlay(content: {
 							Image(of.avatar)
 								.resizable()
@@ -82,26 +84,35 @@ struct UserSet_AvatarCell: View {
 						RoundedRectangle(cornerRadius: metrics.btnRadius)
 							.stroke(.white, lineWidth: 2)
 					})
-					.background(company.profileIsCurrent(.user, id: of.id) ? Color("lekaSkyBlue") : Color("lekaLightGray"), in: RoundedRectangle(cornerRadius: metrics.btnRadius))
+					.background(
+						company.profileIsCurrent(.user, id: of.id) ? Color("lekaSkyBlue") : Color("lekaLightGray"),
+						in: RoundedRectangle(cornerRadius: metrics.btnRadius))
 			}
 		}
 		.buttonStyle(NoFeedback_ButtonStyle())
-    }
+	}
 
 	@ViewBuilder
 	private func selectionIndicator(id: UUID) -> some View {
 		Circle()
-			.stroke(Color("lekaSkyBlue"),
-					style: StrokeStyle(lineWidth: company.selectedProfiles[.user] == id ? 10 : (company.profileIsCurrent(.user, id: id) ? 10 : 0),
-									   lineCap: .butt,
-									   lineJoin: .round,
-									   dash: [10, (company.profileIsCurrent(.user, id: id) ? 0 : 4)]))
+			.stroke(
+				Color("lekaSkyBlue"),
+				style: StrokeStyle(
+					lineWidth: company.selectedProfiles[.user] == id
+						? 10 : (company.profileIsCurrent(.user, id: id) ? 10 : 0),
+					lineCap: .butt,
+					lineJoin: .round,
+					dash: [10, (company.profileIsCurrent(.user, id: id) ? 0 : 4)]))
 		Circle()
-			.stroke(Color("lekaSkyBlue"),
-					style: StrokeStyle(lineWidth: company.selectedProfiles[.user] == id ? 10 : (company.profileIsCurrent(.user, id: id) ? 10 : 0),
-									   lineCap: .butt,
-									   lineJoin: .round,
-									   dash: [10, (company.profileIsCurrent(.user, id: id) ? 0 : 4)]))
+			.stroke(
+				Color("lekaSkyBlue"),
+				style: StrokeStyle(
+					lineWidth: company.selectedProfiles[.user] == id
+						? 10 : (company.profileIsCurrent(.user, id: id) ? 10 : 0),
+					lineCap: .butt,
+					lineJoin: .round,
+					dash: [10, (company.profileIsCurrent(.user, id: id) ? 0 : 4)])
+			)
 			.frame(maxWidth: 40, maxHeight: 40)
 			.offset(x: 6, y: -6)
 	}

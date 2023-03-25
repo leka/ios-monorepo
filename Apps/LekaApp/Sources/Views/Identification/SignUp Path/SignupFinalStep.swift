@@ -9,23 +9,23 @@ import SwiftUI
 
 struct SignupFinalStep: View {
 
-    @EnvironmentObject var metrics: UIMetrics
-    @EnvironmentObject var viewRouter: ViewRouter
+	@EnvironmentObject var metrics: UIMetrics
+	@EnvironmentObject var viewRouter: ViewRouter
 
 	private let data: TileData = .signup_finalStep
 
-    var body: some View {
-        ZStack {
-            Color("lekaLightBlue").ignoresSafeArea()
+	var body: some View {
+		ZStack {
+			Color("lekaLightBlue").ignoresSafeArea()
 			tile
-        }
-        .edgesIgnoringSafeArea(.top)
-        .toolbar {
-            ToolbarItem(placement: .principal) {
+		}
+		.edgesIgnoringSafeArea(.top)
+		.toolbar {
+			ToolbarItem(placement: .principal) {
 				SignupNavigationTitle()
-            }
-        }
-    }
+			}
+		}
+	}
 
 	private var tile: some View {
 		HStack(alignment: .center, spacing: 0) {
@@ -58,10 +58,13 @@ struct SignupFinalStep: View {
 			.frame(width: 400)
 			.padding(metrics.tileContentPadding)
 		}
-		.frame(width: metrics.tileSize.width,
-			   height: metrics.tileSize.height)
-		.background(.white,
-					in: RoundedRectangle(cornerRadius: metrics.tilesRadius, style: .continuous))
+		.frame(
+			width: metrics.tileSize.width,
+			height: metrics.tileSize.height
+		)
+		.background(
+			.white,
+			in: RoundedRectangle(cornerRadius: metrics.tilesRadius, style: .continuous))
 	}
 
 	private var accessoryView: some View {

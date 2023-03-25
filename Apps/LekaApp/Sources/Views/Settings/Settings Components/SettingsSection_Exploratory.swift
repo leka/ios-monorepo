@@ -12,7 +12,7 @@ struct SettingsSection_Exploratory: View {
 	@EnvironmentObject var settings: SettingsViewModel
 	@EnvironmentObject var metrics: UIMetrics
 
-    var body: some View {
+	var body: some View {
 		Section {
 			LabeledContent {
 				Toggle("Mode exploratoire", isOn: $settings.exploratoryModeIsOn)
@@ -34,5 +34,5 @@ struct SettingsSection_Exploratory: View {
 			.foregroundColor(.accentColor)
 			.headerProminence(.increased)
 		}
-    }
+	}
 }

@@ -15,7 +15,7 @@ struct BotStore: View {
 	@Binding var allBots: Int
 	@Binding var showNoBotTile: Bool
 
-    var body: some View {
+	var body: some View {
 		Group {
 			if allBots < 1 {
 				if showNoBotTile {
@@ -54,16 +54,17 @@ struct BotStore: View {
 			}
 		}
 		.frame(height: 500)
-    }
+	}
 
 	private var availableBots: some View {
 		ForEach(1...allBots, id: \.self) { item in
 			Button {
 				botVM.currentlySelectedBotIndex = item
 			} label: {
-				BotFaceView(isSelected: .constant(botVM.currentlySelectedBotIndex == item),
-							isConnected: .constant(botVM.currentlyConnectedBotIndex == item),
-							name: .constant("LKAL \(item)"))
+				BotFaceView(
+					isSelected: .constant(botVM.currentlySelectedBotIndex == item),
+					isConnected: .constant(botVM.currentlyConnectedBotIndex == item),
+					name: .constant("LKAL \(item)"))
 			}
 			.buttonStyle(NoFeedback_ButtonStyle())
 			.id(item)

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct  ActivityCell: Identifiable {
+struct ActivityCell: Identifiable {
 	var id = UUID()
 	var img: String
 	var texts: [String]
@@ -43,15 +43,16 @@ struct Activity: Codable {
 	var randomImagePosition: Bool
 	var steps: [Step]
 
-	init(id: String = "",
-		 title: LocalizedContent = LocalizedContent(),
-		 short: LocalizedContent = LocalizedContent(),
-		 activityType: String? = "touch_to_select",
-		 stepsAmount: Int = 0,
-		 isRandom: Bool = false,
-		 numberOfImages: Int = 0,
-		 randomImagePosition: Bool = false,
-		 steps: [Step] = []
+	init(
+		id: String = "",
+		title: LocalizedContent = LocalizedContent(),
+		short: LocalizedContent = LocalizedContent(),
+		activityType: String? = "touch_to_select",
+		stepsAmount: Int = 0,
+		isRandom: Bool = false,
+		numberOfImages: Int = 0,
+		randomImagePosition: Bool = false,
+		steps: [Step] = []
 	) {
 		self.id = id
 		self.title = title
@@ -81,10 +82,11 @@ struct Step: Codable, Equatable {
 	var images: [String]
 	var sound: [String]?
 
-	init(instruction: LocalizedContent = LocalizedContent(),
-		 correctAnswer: String = "",
-		 images: [String] = [],
-		 sound: [String]? = []
+	init(
+		instruction: LocalizedContent = LocalizedContent(),
+		correctAnswer: String = "",
+		images: [String] = [],
+		sound: [String]? = []
 	) {
 		self.instruction = instruction
 		self.correctAnswer = correctAnswer

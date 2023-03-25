@@ -44,15 +44,20 @@ struct ProfileSet_Teachers: View {
 		.navigationDestination(isPresented: $navigateToTeacherCreation) {
 			CreateTeacherProfileView()
 		}
-		.sheet(isPresented: $showEditProfileTeacher, content: {
-			NavigationStack {
-				CreateTeacherProfileView()
+		.sheet(
+			isPresented: $showEditProfileTeacher,
+			content: {
+				NavigationStack {
+					CreateTeacherProfileView()
+				}
 			}
-		})
+		)
 		.alert("Mode découverte", isPresented: $settings.showConnectInvite) {
 			IdentificationIsNeededAlertLabel()
 		} message: {
-			Text("Ce mode ne vous permet pas de créer des profils ou d'enregistrer votre utilisation de l'application. \nVoulez-vous vous identifier ?")
+			Text(
+				"Ce mode ne vous permet pas de créer des profils ou d'enregistrer votre utilisation de l'application. \nVoulez-vous vous identifier ?"
+			)
 		}
 	}
 
@@ -73,7 +78,7 @@ struct ProfileSet_Teachers: View {
 	@ViewBuilder
 	private func addButton() -> some View {
 		Button {
-			if viewRouter.currentPage == .welcome  {
+			if viewRouter.currentPage == .welcome {
 				// Existing company is connected, we're in the selector here
 				company.resetBufferProfile(.teacher)
 				navigateToTeacherCreation.toggle()
@@ -127,10 +132,12 @@ struct ProfileSet_Teachers: View {
 			}
 		} else {
 			ScrollView(showsIndicators: false) {
-				let columns = Array(repeating: GridItem(spacing: 20), count: viewRouter.currentPage == .profiles ? 3 : 6)
+				let columns = Array(
+					repeating: GridItem(spacing: 20), count: viewRouter.currentPage == .profiles ? 3 : 6)
 				LazyVGrid(columns: columns, spacing: 20) {
 					teachersSet
-				}.padding(.bottom, 20)
+				}
+				.padding(.bottom, 20)
 			}
 			._safeAreaInsets(EdgeInsets(top: 20, leading: 20, bottom: 20, trailing: 20))
 		}

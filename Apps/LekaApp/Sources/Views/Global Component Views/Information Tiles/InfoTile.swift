@@ -9,26 +9,26 @@ import SwiftUI
 
 struct InfoTile: View {
 
-    @EnvironmentObject var settings: SettingsViewModel
+	@EnvironmentObject var settings: SettingsViewModel
 	@EnvironmentObject var sidebar: SidebarViewModel
-    @EnvironmentObject var viewRouter: ViewRouter
-    @EnvironmentObject var metrics: UIMetrics
+	@EnvironmentObject var viewRouter: ViewRouter
+	@EnvironmentObject var metrics: UIMetrics
 
-    let data: TileData
-    private var headerColor: Color {
-        return data == .discovery ? Color("lekaOrange") : Color.accentColor
-    }
+	let data: TileData
+	private var headerColor: Color {
+		return data == .discovery ? Color("lekaOrange") : Color.accentColor
+	}
 
-    var body: some View {
-        VStack(spacing: 0) {
-            tileHeader
-            tileContent
-            Spacer()
-        }
-        .frame(height: 266)
-        .background(.white)
-        .clipShape(RoundedRectangle(cornerRadius: metrics.tilesRadius, style: .continuous))
-    }
+	var body: some View {
+		VStack(spacing: 0) {
+			tileHeader
+			tileContent
+			Spacer()
+		}
+		.frame(height: 266)
+		.background(.white)
+		.clipShape(RoundedRectangle(cornerRadius: metrics.tilesRadius, style: .continuous))
+	}
 
 	private var tileHeader: some View {
 		ZStack {
@@ -67,7 +67,7 @@ struct InfoTile: View {
 			Text(data.content.message!)
 				.font(metrics.reg13)
 			Spacer()
-			if data == .discovery  {
+			if data == .discovery {
 				connectButton
 			}
 		}
@@ -92,22 +92,24 @@ struct InfoTile: View {
 			Text(data.content.CTALabel!)
 		}
 		.padding(20)
-		.buttonStyle(BorderedCapsule_NoFeedback_ButtonStyle(font: metrics.reg17,
-															color: .accentColor,
-															width: 300))
+		.buttonStyle(
+			BorderedCapsule_NoFeedback_ButtonStyle(
+				font: metrics.reg17,
+				color: .accentColor,
+				width: 300))
 	}
 }
 
 struct InfoTile_Previews: PreviewProvider {
-    static var previews: some View {
-        ZStack {
-            Color.teal.ignoresSafeArea()
-            InfoTile(data: .discovery)
-                .environmentObject(SettingsViewModel())
+	static var previews: some View {
+		ZStack {
+			Color.teal.ignoresSafeArea()
+			InfoTile(data: .discovery)
+				.environmentObject(SettingsViewModel())
 				.environmentObject(SidebarViewModel())
-                .environmentObject(UIMetrics())
-                .environmentObject(ViewRouter())
-                .padding()
-        }
-    }
+				.environmentObject(UIMetrics())
+				.environmentObject(ViewRouter())
+				.padding()
+		}
+	}
 }

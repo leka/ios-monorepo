@@ -49,7 +49,11 @@ struct FollowUpList_Teachers: View {
 	func cellContent(id: UUID) -> some View {
 		HStack(spacing: 10) {
 			Circle()
-				.fill(Color.accentColor, strokeBorder: sidebar.currentlySelectedTeacherProfile == id ? .white : Color("lekaLightGray"), lineWidth: 4)
+				.fill(
+					Color.accentColor,
+					strokeBorder: sidebar.currentlySelectedTeacherProfile == id ? .white : Color("lekaLightGray"),
+					lineWidth: 4
+				)
 				.overlay(
 					Image(company.getProfileDataFor(.teacher, id: id)[0])
 						.resizable()
@@ -66,8 +70,10 @@ struct FollowUpList_Teachers: View {
 		}
 		.font(metrics.reg17)
 		.padding(10)
-		.background(sidebar.currentlySelectedTeacherProfile == id ? Color.accentColor : .clear,
-					in: RoundedRectangle(cornerRadius: metrics.btnRadius, style: .continuous))
+		.background(
+			sidebar.currentlySelectedTeacherProfile == id ? Color.accentColor : .clear,
+			in: RoundedRectangle(cornerRadius: metrics.btnRadius, style: .continuous)
+		)
 		.contentShape(Rectangle())
 	}
 }

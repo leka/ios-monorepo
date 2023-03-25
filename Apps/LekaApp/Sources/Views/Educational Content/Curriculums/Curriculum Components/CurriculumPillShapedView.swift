@@ -9,13 +9,13 @@ import SwiftUI
 
 struct CurriculumPillShapedView: View {
 
-    @EnvironmentObject var metrics: UIMetrics
+	@EnvironmentObject var metrics: UIMetrics
 
 	var curriculum: Curriculum
 	var icon: String
 	var rank: String
 
-    var body: some View {
+	var body: some View {
 		ZStack {
 			VStack(spacing: 0) {
 				topContent
@@ -27,7 +27,7 @@ struct CurriculumPillShapedView: View {
 			iconView
 		}
 		.compositingGroup()
-    }
+	}
 
 	private var iconView: some View {
 		Image(icon)

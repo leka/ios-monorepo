@@ -11,9 +11,9 @@ struct SignupNavigationTitle: View {
 
 	@EnvironmentObject var metrics: UIMetrics
 
-    var body: some View {
+	var body: some View {
 		Text("Première connexion")
 			.font(metrics.semi17)
 			.foregroundColor(.accentColor)
-    }
+	}
 }

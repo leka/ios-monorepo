@@ -16,7 +16,7 @@ struct TeacherSet_AvatarCell: View {
 
 	let of: Teacher
 
-    var body: some View {
+	var body: some View {
 		Button {
 			withAnimation {
 				company.selectedProfiles[.teacher] = of.id
@@ -33,9 +33,11 @@ struct TeacherSet_AvatarCell: View {
 					selectionIndicator(id: of.id)
 					// Avatar
 					Circle()
-						.fill(Color("lekaLightGray"),
-							  strokeBorder: .white,
-							  lineWidth: 3)
+						.fill(
+							Color("lekaLightGray"),
+							strokeBorder: .white,
+							lineWidth: 3
+						)
 						.overlay(content: {
 							Image(of.avatar)
 								.resizable()
@@ -59,18 +61,23 @@ struct TeacherSet_AvatarCell: View {
 						RoundedRectangle(cornerRadius: metrics.btnRadius)
 							.stroke(.white, lineWidth: 2)
 					})
-					.background(company.profileIsCurrent(.teacher, id: of.id) ? Color("lekaSkyBlue") : Color("lekaLightGray"), in: RoundedRectangle(cornerRadius: metrics.btnRadius))
+					.background(
+						company.profileIsCurrent(.teacher, id: of.id) ? Color("lekaSkyBlue") : Color("lekaLightGray"),
+						in: RoundedRectangle(cornerRadius: metrics.btnRadius))
 			}
 		}
 		.buttonStyle(NoFeedback_ButtonStyle())
-    }
+	}
 
 	private func selectionIndicator(id: UUID) -> some View {
 		Circle()
-			.stroke(Color("lekaSkyBlue"),
-					style: StrokeStyle(lineWidth: company.selectedProfiles[.teacher] == id ? 10 : (company.profileIsCurrent(.teacher, id: id) ? 10 : 0),
-									   lineCap: .butt,
-									   lineJoin: .round,
-									   dash: [10, (company.profileIsCurrent(.teacher, id: id) ? 0 : 4)]))
+			.stroke(
+				Color("lekaSkyBlue"),
+				style: StrokeStyle(
+					lineWidth: company.selectedProfiles[.teacher] == id
+						? 10 : (company.profileIsCurrent(.teacher, id: id) ? 10 : 0),
+					lineCap: .butt,
+					lineJoin: .round,
+					dash: [10, (company.profileIsCurrent(.teacher, id: id) ? 0 : 4)]))
 	}
 }

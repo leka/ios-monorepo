@@ -5,10 +5,10 @@
 //  Created by Mathieu Jeannot on 9/2/23.
 //
 
+import AVFoundation
 import SwiftUI
 import UIKit
 import Yams
-import AVFoundation
 
 // @MainActor
 class ActivityViewModel: NSObject, ObservableObject, YamlFileDecodable {
@@ -33,18 +33,18 @@ class ActivityViewModel: NSObject, ObservableObject, YamlFileDecodable {
 	}
 
 	// Unused
-//    func getStep(_ title: String) -> Step {
-//        do {
-//            return try self.decodeYamlFile(withName: title, toType: Step.self)
-//        } catch {
-//            print("Steps: Failed to decode Yaml file with error:", error)
-//            return Step()
-//        }
-//    }
+	//    func getStep(_ title: String) -> Step {
+	//        do {
+	//            return try self.decodeYamlFile(withName: title, toType: Step.self)
+	//        } catch {
+	//            print("Steps: Failed to decode Yaml file with error:", error)
+	//            return Step()
+	//        }
+	//    }
 
 	// MARK: - Current Activity's properties
 	@Published var currentActivity = Activity()
-	@Published var selectedActivityID: UUID? // save scroll position
+	@Published var selectedActivityID: UUID?  // save scroll position
 	@Published var currentActivityTitle: String = ""
 	@Published var currentActivityType: String = "touch_to_select"
 	@Published var steps: [Step] = []
@@ -83,7 +83,9 @@ class ActivityViewModel: NSObject, ObservableObject, YamlFileDecodable {
 		synth.delegate = self
 		let utterance = AVSpeechUtterance(string: sentence)
 		utterance.rate = 0.40
-		utterance.voice = Locale.current.language.languageCode?.identifier == "fr" ? AVSpeechSynthesisVoice(language: "fr-FR") : AVSpeechSynthesisVoice(language: "en-US")
+		utterance.voice =
+			Locale.current.language.languageCode?.identifier == "fr"
+			? AVSpeechSynthesisVoice(language: "fr-FR") : AVSpeechSynthesisVoice(language: "en-US")
 
 		isSpeaking = true
 		synth.speak(utterance)
@@ -175,16 +177,14 @@ class ActivityViewModel: NSObject, ObservableObject, YamlFileDecodable {
 			images.shuffle()
 		}
 		// Pick up Correct answer
-		for (index, answer) in images.enumerated() {
-			if answer == steps[currentStep].correctAnswer {
-				correctIndex = index
-			}
+		for (index, answer) in images.enumerated() where answer == steps[currentStep].correctAnswer {
+			correctIndex = index
 		}
 	}
 
 	// Prevent multiple taps, deal with success or failure
 	func answerHasBeenPressed(atIndex: Int) {
-		tapIsDisabled.toggle() // true
+		tapIsDisabled.toggle()  // true
 		trials += 1
 		pressedIndex = atIndex
 		if pressedIndex == correctIndex {
@@ -196,25 +196,25 @@ class ActivityViewModel: NSObject, ObservableObject, YamlFileDecodable {
 
 	// After good answer, reward and play next (if available) or show final animation screen
 	func rewardsAnimations() {
-		if currentStep < numberOfSteps-1 {
+		if currentStep < numberOfSteps - 1 {
 			withAnimation(.easeOut(duration: 0.8)) {
 				percent = 1.0
 				DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-					self.showMotivator.toggle() // true
+					self.showMotivator.toggle()  // true
 					self.showBlurryBG.toggle()
 					self.runMotivatorScenario()
 				}
 			}
-		} else if currentStep == numberOfSteps-1 {
+		} else if currentStep == numberOfSteps - 1 {
 			withAnimation(.easeOut(duration: 0.8)) {
 				percent = 1.0
 				// Final step updated here to be seen by user & included in the final percent count
 				updateMarkers(atIndex: currentStep)
 				calculateSuccessPercent()
 				DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-					self.showEndAnimation.toggle() // true
+					self.showEndAnimation.toggle()  // true
 					self.showBlurryBG = true
-					self.tapIsDisabled.toggle() // false
+					self.tapIsDisabled.toggle()  // false
 				}
 			}
 		}
@@ -225,7 +225,7 @@ class ActivityViewModel: NSObject, ObservableObject, YamlFileDecodable {
 		self.showBlurryBG = true
 		// Update behind-the-scene during Reinforcer animation
 		DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
-			self.tapIsDisabled.toggle() // false
+			self.tapIsDisabled.toggle()  // false
 			self.pressedIndex = 100
 			self.updateMarkers(atIndex: self.currentStep)
 			self.currentStep += 1
@@ -247,7 +247,7 @@ class ActivityViewModel: NSObject, ObservableObject, YamlFileDecodable {
 				withAnimation {
 					self.overlayOpacity = 0
 				}
-				self.tapIsDisabled.toggle() // false
+				self.tapIsDisabled.toggle()  // false
 				self.pressedIndex = 100
 			}
 		}
@@ -298,7 +298,7 @@ class ActivityViewModel: NSObject, ObservableObject, YamlFileDecodable {
 		// + reset those 2 properties for next round
 		showBlurryBG = false
 		showEndAnimation = false
-//		selectedActivity = Activity()
+		//		selectedActivity = Activity()
 	}
 
 }

@@ -17,7 +17,8 @@ struct CurriculumDetailsView: View {
 	@EnvironmentObject var metrics: UIMetrics
 
 	private func goButtonIsDisabled() -> Bool {
-		return !curriculumVM.currentCurriculum.activities.map({ UUID(uuidString: activityVM.getActivity($0).id) }).contains(curriculumVM.currentCurriculumSelectedActivityID)
+		return !curriculumVM.currentCurriculum.activities.map({ UUID(uuidString: activityVM.getActivity($0).id) })
+			.contains(curriculumVM.currentCurriculumSelectedActivityID)
 	}
 
 	private func goButtonAction() {
@@ -74,7 +75,7 @@ struct CurriculumDetailsView: View {
 				ToolbarItem(placement: .navigationBarLeading) {
 					Button(action: {
 						viewRouter.currentPage = .home
-//						curriculumVM.currentCurriculumSelectedActivityID = nil
+						//						curriculumVM.currentCurriculumSelectedActivityID = nil
 					}) {
 						HStack(spacing: 4) {
 							Image(systemName: "chevron.left")
@@ -115,10 +116,12 @@ struct CurriculumDetailsView: View {
 					curriculumVM.currentCurriculumSelectedActivityID = UUID(uuidString: activityVM.getActivity(item).id)
 					activityVM.currentActivity = activityVM.getActivity(item)
 				} label: {
-					ActivityListCell_Curriculums(activity: activityVM.getActivity(item),
-									 icon: item,
-									 rank: index+1,
-									 selected: curriculumVM.currentCurriculumSelectedActivityID == UUID(uuidString: activityVM.getActivity(item).id))
+					ActivityListCell_Curriculums(
+						activity: activityVM.getActivity(item),
+						icon: item,
+						rank: index + 1,
+						selected: curriculumVM.currentCurriculumSelectedActivityID
+							== UUID(uuidString: activityVM.getActivity(item).id))
 				}
 				.alignmentGuide(.listRowSeparatorLeading) { _ in
 					return 0
