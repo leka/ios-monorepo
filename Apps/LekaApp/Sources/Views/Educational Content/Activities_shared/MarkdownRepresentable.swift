@@ -1,4 +1,3 @@
-import Down
 //
 //  DownAttributedString.swift
 //  Down-SwiftUI-Example
@@ -7,6 +6,9 @@ import Down
 //  Copyright © 2021 Down. All rights reserved.
 //
 import SwiftUI
+
+// TODO(@ladislas): reimport when Down is fixed
+// import Down
 
 class MarkdownObservable: ObservableObject {
 	@Published public var textView = UITextView()
@@ -31,11 +33,15 @@ struct MarkdownRepresentable: UIViewRepresentable {
 
 	func makeUIView(context: Context) -> UITextView {
 
-		let down = Down(markdownString: markdownObject.text)
+		// TODO(@ladislas): reimport when Down is fixed
+		// let down = Down(markdownString: markdownObject.text)
+		// let attributedText = try? down.toAttributedString(styler: DownStyler())//delegate: context.coordinator))
 
-		//        let attributedText = try? down.toAttributedString(styler: DownStyler())//delegate: context.coordinator))
+		// TODO(@ladislas): reimport when Down is fixed
+		// let attributedText = try? down.toAttributedString(styler: DownStyler())
+		let attributedText = NSMutableAttributedString.init(
+			string: "TODO(@ladislas): use real markdown when Down is fixed")
 
-		let attributedText = try? down.toAttributedString(styler: DownStyler())
 		markdownObject.textView.attributedText = attributedText
 		markdownObject.textView.textAlignment = .left
 		markdownObject.textView.isScrollEnabled = false
@@ -45,7 +51,7 @@ struct MarkdownRepresentable: UIViewRepresentable {
 		markdownObject.textView.isEditable = false
 		markdownObject.textView.backgroundColor = .clear
 		markdownObject.textView.textColor = UIColor(named: "darkGray")
-		//		markdownObject.textView.font = UIFont(name: "SF Pro Regular", size: 14)
+		// markdownObject.textView.font = UIFont(name: "SF Pro Regular", size: 14)
 
 		markdownObject.textView.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
 		markdownObject.textView.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
