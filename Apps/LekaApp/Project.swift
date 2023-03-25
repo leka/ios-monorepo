@@ -12,4 +12,5 @@ let project = Project.app(
 	dependencies: [
 		.project(target: "CoreUI", path: Path("../../Modules/CoreUI")),
 		.external(name: "Yams"),
+		.external(name: "Lottie"),
 	])
