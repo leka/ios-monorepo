@@ -14,14 +14,17 @@ struct AvatarPickerTriggerButton_Teachers: View {
 	@Binding var navigate: Bool
 
 	var body: some View {
-		Button(action: {
-			navigate.toggle()
-		}, label: {
-			VStack(spacing: 10) {
-				AvatarTriggerImageView(img: company.getSelectedProfileAvatar(.teacher))
-				AvatarTriggerCTAView()
+		Button(
+			action: {
+				navigate.toggle()
+			},
+			label: {
+				VStack(spacing: 10) {
+					AvatarTriggerImageView(img: company.getSelectedProfileAvatar(.teacher))
+					AvatarTriggerCTAView()
+				}
 			}
-		})
+		)
 		.buttonStyle(NoFeedback_ButtonStyle())
 	}
 }

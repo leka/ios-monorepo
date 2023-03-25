@@ -1,23 +1,23 @@
 //
-    //  AvatarPicker.swift
-    //  LekaTestBucket
-    //
-    //  Created by Mathieu Jeannot on 24/11/22.
-    //
+//  AvatarPicker.swift
+//  LekaTestBucket
+//
+//  Created by Mathieu Jeannot on 24/11/22.
+//
 
 import SwiftUI
 
 struct AvatarPicker_Teachers: View {
 
-    @EnvironmentObject var company: CompanyViewModel
-    @EnvironmentObject var metrics: UIMetrics
-    @EnvironmentObject var viewRouter: ViewRouter
+	@EnvironmentObject var company: CompanyViewModel
+	@EnvironmentObject var metrics: UIMetrics
+	@EnvironmentObject var viewRouter: ViewRouter
 
-    @State private var selected: String = ""
+	@State private var selected: String = ""
 
-    var body: some View {
-        ZStack {
-            Color.white.edgesIgnoringSafeArea(.top)
+	var body: some View {
+		ZStack {
+			Color.white.edgesIgnoringSafeArea(.top)
 
 			AvatarPickerStore(selected: $selected)
 				.onAppear {
@@ -30,13 +30,15 @@ struct AvatarPicker_Teachers: View {
 					ToolbarItem(placement: .principal) { AvatarPicker_NavigationTitle() }
 					ToolbarItem(placement: .navigationBarLeading) { AvatarPicker_AdaptiveBackButton() }
 					ToolbarItem(placement: .navigationBarTrailing) {
-						AvatarPicker_ValidateButton(selected: $selected, action: {
-							company.setBufferAvatar(selected, for: .teacher)
-						})
+						AvatarPicker_ValidateButton(
+							selected: $selected,
+							action: {
+								company.setBufferAvatar(selected, for: .teacher)
+							})
 					}
 				}
-        }
-        .toolbarBackground(viewRouter.currentPage == .profiles ? .visible : .automatic, for: .navigationBar)
-        .preferredColorScheme(.light)
-    }
+		}
+		.toolbarBackground(viewRouter.currentPage == .profiles ? .visible : .automatic, for: .navigationBar)
+		.preferredColorScheme(.light)
+	}
 }

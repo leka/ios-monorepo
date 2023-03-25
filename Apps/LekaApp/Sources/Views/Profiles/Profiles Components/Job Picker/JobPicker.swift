@@ -1,27 +1,27 @@
 //
-    //  JobPicker.swift
-    //  LekaTestBucket
-    //
-    //  Created by Mathieu Jeannot on 15/12/22.
-    //
+//  JobPicker.swift
+//  LekaTestBucket
+//
+//  Created by Mathieu Jeannot on 15/12/22.
+//
 
 import SwiftUI
 
 struct JobPicker: View {
 
-    @EnvironmentObject var company: CompanyViewModel
-    @EnvironmentObject var metrics: UIMetrics
-    @EnvironmentObject var viewRouter: ViewRouter
-    @Environment(\.dismiss) var dismiss
+	@EnvironmentObject var company: CompanyViewModel
+	@EnvironmentObject var metrics: UIMetrics
+	@EnvironmentObject var viewRouter: ViewRouter
+	@Environment(\.dismiss) var dismiss
 
-    @FocusState var focusedField: FormField?
-    @State private var otherJobText: String = ""
-    @State private var isEditing = false
-    @State private var selectedJobs: [String] = []
+	@FocusState var focusedField: FormField?
+	@State private var otherJobText: String = ""
+	@State private var isEditing = false
+	@State private var selectedJobs: [String] = []
 
-    var body: some View {
-        ZStack {
-            Color.white.edgesIgnoringSafeArea(.top)
+	var body: some View {
+		ZStack {
+			Color.white.edgesIgnoringSafeArea(.top)
 
 			JobPickerStore(selectedJobs: $selectedJobs)
 				.onAppear {
@@ -37,9 +37,9 @@ struct JobPicker: View {
 					ToolbarItem(placement: .navigationBarLeading) { adaptiveBackButton }
 					ToolbarItem(placement: .navigationBarTrailing) { validateButton }
 				}
-        }
-        .toolbarBackground(viewRouter.currentPage == .profiles ? .visible : .automatic, for: .navigationBar)
-    }
+		}
+		.toolbarBackground(viewRouter.currentPage == .profiles ? .visible : .automatic, for: .navigationBar)
+	}
 
 	private var customJobTextField: some View {
 		VStack(spacing: 0) {
@@ -60,13 +60,13 @@ struct JobPicker: View {
 		)
 	}
 
-	private var navigationTitle: some  View {
+	private var navigationTitle: some View {
 		Text("Sélectionnez vos professions")
 			.font(metrics.semi17)
 			.foregroundColor(.accentColor)
 	}
 
-	private var adaptiveBackButton: some  View {
+	private var adaptiveBackButton: some View {
 		Button {
 			// go back without saving
 			dismiss()
@@ -83,7 +83,7 @@ struct JobPicker: View {
 		.tint(.accentColor)
 	}
 
-	private var validateButton: some  View {
+	private var validateButton: some View {
 		Button {
 			company.bufferTeacher.jobs = selectedJobs
 			dismiss()
@@ -100,11 +100,11 @@ struct JobPicker: View {
 }
 
 struct JobPicker_Previews: PreviewProvider {
-    static var previews: some View {
-        JobPicker()
-            .environmentObject(CompanyViewModel())
-            .environmentObject(ViewRouter())
-            .environmentObject(UIMetrics())
-            .previewInterfaceOrientation(.landscapeLeft)
-    }
+	static var previews: some View {
+		JobPicker()
+			.environmentObject(CompanyViewModel())
+			.environmentObject(ViewRouter())
+			.environmentObject(UIMetrics())
+			.previewInterfaceOrientation(.landscapeLeft)
+	}
 }

@@ -1,3 +1,4 @@
+import Down
 //
 //  DownAttributedString.swift
 //  Down-SwiftUI-Example
@@ -6,7 +7,6 @@
 //  Copyright © 2021 Down. All rights reserved.
 //
 import SwiftUI
-import Down
 
 class MarkdownObservable: ObservableObject {
 	@Published public var textView = UITextView()
@@ -26,14 +26,14 @@ struct MarkdownRepresentable: UIViewRepresentable {
 	}
 
 	func makeCoordinator() -> Coordinator {
-        Coordinator(text: markdownObject.textView)
-    }
+		Coordinator(text: markdownObject.textView)
+	}
 
 	func makeUIView(context: Context) -> UITextView {
 
 		let down = Down(markdownString: markdownObject.text)
 
-//        let attributedText = try? down.toAttributedString(styler: DownStyler())//delegate: context.coordinator))
+		//        let attributedText = try? down.toAttributedString(styler: DownStyler())//delegate: context.coordinator))
 
 		let attributedText = try? down.toAttributedString(styler: DownStyler())
 		markdownObject.textView.attributedText = attributedText
@@ -45,7 +45,7 @@ struct MarkdownRepresentable: UIViewRepresentable {
 		markdownObject.textView.isEditable = false
 		markdownObject.textView.backgroundColor = .clear
 		markdownObject.textView.textColor = UIColor(named: "darkGray")
-//		markdownObject.textView.font = UIFont(name: "SF Pro Regular", size: 14)
+		//		markdownObject.textView.font = UIFont(name: "SF Pro Regular", size: 14)
 
 		markdownObject.textView.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
 		markdownObject.textView.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
@@ -55,14 +55,19 @@ struct MarkdownRepresentable: UIViewRepresentable {
 
 	func updateUIView(_ uiView: UITextView, context: Context) {
 		DispatchQueue.main.async {
-//			uiView.textColor = UIColor(named: "darkGray")
+			//			uiView.textColor = UIColor(named: "darkGray")
 
-			dynamicHeight = uiView.sizeThatFits(CGSize(width: uiView.bounds.width,
-													   height: CGFloat.greatestFiniteMagnitude)).height
+			dynamicHeight =
+				uiView.sizeThatFits(
+					CGSize(
+						width: uiView.bounds.width,
+						height: CGFloat.greatestFiniteMagnitude)
+				)
+				.height
 		}
 	}
 
-	class Coordinator: NSObject {// }, AsyncImageLoadDelegate {
+	class Coordinator: NSObject {  // }, AsyncImageLoadDelegate {
 
 		public var textView: UITextView
 
@@ -70,16 +75,16 @@ struct MarkdownRepresentable: UIViewRepresentable {
 			textView = text
 		}
 
-//		func textAttachmentDidLoadImage(textAttachment: AsyncImageLoad, displaySizeChanged: Bool)
-//		{
-//			if displaySizeChanged
-//			{
-//				textView.layoutManager.setNeedsLayout(forAttachment: textAttachment)
-//			}
-//
-//			// always re-display, the image might have changed
-//			textView.layoutManager.setNeedsDisplay(forAttachment: textAttachment)
-//		}
+		//		func textAttachmentDidLoadImage(textAttachment: AsyncImageLoad, displaySizeChanged: Bool)
+		//		{
+		//			if displaySizeChanged
+		//			{
+		//				textView.layoutManager.setNeedsLayout(forAttachment: textAttachment)
+		//			}
+		//
+		//			// always re-display, the image might have changed
+		//			textView.layoutManager.setNeedsDisplay(forAttachment: textAttachment)
+		//		}
 	}
 }
 

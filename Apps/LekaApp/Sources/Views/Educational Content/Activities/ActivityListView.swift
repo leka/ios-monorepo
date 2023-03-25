@@ -22,9 +22,7 @@ struct ActivityListView: View {
 	// Data modeled for Search Feature
 	@State var searchQuery = ""
 	var searchResults: [String] {
-		if searchQuery.isEmpty {
-			return curriculumVM.activityFilesCompleteList
-		} else {
+		guard searchQuery.isEmpty else {
 			return curriculumVM.activityFilesCompleteList.filter {
 				activityVM.getActivity($0).title.localized().localizedCaseInsensitiveContains(searchQuery)
 				//				|| $0.texts[1].localizedCaseInsensitiveContains(searchQuery)
@@ -33,6 +31,7 @@ struct ActivityListView: View {
 			// filters are titles & keywords (added later), and in curriculums => subtitle, short
 			// later add played/unplayed, last played, sound only etc...
 		}
+		return curriculumVM.activityFilesCompleteList
 	}
 
 	var body: some View {
@@ -41,20 +40,25 @@ struct ActivityListView: View {
 			completeActivityList
 		}
 		.animation(.easeOut(duration: 0.4), value: sidebar.showInfo())
-		.sheet(isPresented: $showInstructionModal, onDismiss: {
-			if viewRouter.goToGameFromActivities {
-				DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-					withAnimation {
-						viewRouter.currentPage = .game
+		.sheet(
+			isPresented: $showInstructionModal,
+			onDismiss: {
+				if viewRouter.goToGameFromActivities {
+					DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+						withAnimation {
+							viewRouter.currentPage = .game
+						}
 					}
 				}
 			}
-		}) {
+		) {
 			SelectedActivityInstructionsView()
 		}
-		.searchable(text: $searchQuery,
-					placement: .toolbar,
-					prompt: Text("Media, personnages, ..."))
+		.searchable(
+			text: $searchQuery,
+			placement: .toolbar,
+			prompt: Text("Media, personnages, ...")
+		)
 		.onAppear { sidebar.sidebarVisibility = .all }
 	}
 
@@ -68,10 +72,12 @@ struct ActivityListView: View {
 						activityVM.selectedActivityID = UUID(uuidString: activityVM.getActivity(item).id)
 						showInstructionModal.toggle()
 					} label: {
-						ActivityListCell(activity: activityVM.getActivity(item),
-										 icon: item,
-										 rank: index+1,
-										 selected: activityVM.selectedActivityID == UUID(uuidString: activityVM.getActivity(item).id))
+						ActivityListCell(
+							activity: activityVM.getActivity(item),
+							icon: item,
+							rank: index + 1,
+							selected: activityVM.selectedActivityID == UUID(uuidString: activityVM.getActivity(item).id)
+						)
 					}
 					.alignmentGuide(.listRowSeparatorLeading) { _ in
 						return 0

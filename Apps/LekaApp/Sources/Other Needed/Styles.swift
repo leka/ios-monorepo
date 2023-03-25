@@ -10,56 +10,56 @@ import SwiftUI
 
 // MARK: - Bot (bot connection) Button Style
 struct NoFeedback_ButtonStyle: ButtonStyle {
-    func makeBody(configuration: Self.Configuration) -> some View {
-        configuration.label
-            .opacity(configuration.isPressed ? 1 : 1)
+	func makeBody(configuration: Self.Configuration) -> some View {
+		configuration.label
+			.opacity(configuration.isPressed ? 1 : 1)
 			.scaleEffect(configuration.isPressed ? 1 : 1, anchor: .center)
-    }
+	}
 }
 
 // MARK: - Edit Button Style -> avatar picker, profile editor, explorer mode tile
 struct BorderedCapsule_NoFeedback_ButtonStyle: ButtonStyle {
 
-    var font: Font
-    var color: Color
-    var isOpaque: Bool = false
-    var width: CGFloat = 280
+	var font: Font
+	var color: Color
+	var isOpaque: Bool = false
+	var width: CGFloat = 280
 
-    func makeBody(configuration: Self.Configuration) -> some View {
-        configuration.label
-            .opacity(configuration.isPressed ? 1 : 1)
-            .scaleEffect(configuration.isPressed ? 1 : 1, anchor: .center)
-            .font(font)
-            .foregroundColor(color)
-            .padding(.vertical, 10)
-            .padding(.horizontal, 20)
-            .frame(width: width)
-            .overlay(
-                Capsule()
-                    .stroke(color, lineWidth: 1)
-            )
-            .background(isOpaque ? .white : .clear, in: Capsule())
-            .contentShape(Capsule())
-    }
+	func makeBody(configuration: Self.Configuration) -> some View {
+		configuration.label
+			.opacity(configuration.isPressed ? 1 : 1)
+			.scaleEffect(configuration.isPressed ? 1 : 1, anchor: .center)
+			.font(font)
+			.foregroundColor(color)
+			.padding(.vertical, 10)
+			.padding(.horizontal, 20)
+			.frame(width: width)
+			.overlay(
+				Capsule()
+					.stroke(color, lineWidth: 1)
+			)
+			.background(isOpaque ? .white : .clear, in: Capsule())
+			.contentShape(Capsule())
+	}
 }
 
 struct CircledIcon_NoFeedback_ButtonStyle: ButtonStyle {
 
-    var font: Font
+	var font: Font
 
-    func makeBody(configuration: Self.Configuration) -> some View {
-        configuration.label
-            .opacity(configuration.isPressed ? 1 : 1)
-            .scaleEffect(configuration.isPressed ? 1 : 1, anchor: .center)
-            .font(font)
-            .foregroundColor(Color.accentColor)
-            .frame(width: 46, height: 46)
-            .overlay(
-                Circle()
-                    .stroke(Color.accentColor, lineWidth: 1)
-            )
-            .contentShape(Circle())
-    }
+	func makeBody(configuration: Self.Configuration) -> some View {
+		configuration.label
+			.opacity(configuration.isPressed ? 1 : 1)
+			.scaleEffect(configuration.isPressed ? 1 : 1, anchor: .center)
+			.font(font)
+			.foregroundColor(Color.accentColor)
+			.frame(width: 46, height: 46)
+			.overlay(
+				Circle()
+					.stroke(Color.accentColor, lineWidth: 1)
+			)
+			.contentShape(Circle())
+	}
 }
 
 // MARK: - Login/Signup Button Style
@@ -239,9 +239,11 @@ struct BorderedCapsule_ButtonStyle: ButtonStyle {
 			.frame(width: 250)
 			.background(
 				Capsule()
-					.fill(isFilled ? Color("bravoHighlights") : .white,
-						  strokeBorder: (Color("bravoHighlights")),
-						  lineWidth: 1)
+					.fill(
+						isFilled ? Color("bravoHighlights") : .white,
+						strokeBorder: (Color("bravoHighlights")),
+						lineWidth: 1
+					)
 					.shadow(color: .black.opacity(0.1), radius: 2.3, x: 0, y: 1.8)
 			)
 	}

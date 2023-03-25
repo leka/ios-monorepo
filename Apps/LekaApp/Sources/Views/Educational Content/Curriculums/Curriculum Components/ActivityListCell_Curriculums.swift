@@ -22,7 +22,7 @@ struct ActivityListCell_Curriculums: View {
 			cellContent
 			Spacer()
 		}
-		.frame(minWidth: 420, maxHeight: iconDiameter+20)
+		.frame(minWidth: 420, maxHeight: iconDiameter + 20)
 		.background(selected ? Color.accentColor : .white)
 		.clipShape(RoundedRectangle(cornerRadius: metrics.btnRadius, style: .continuous))
 		.padding(.vertical, 4)
@@ -40,10 +40,10 @@ struct ActivityListCell_Curriculums: View {
 			Text(activity.title.localized())
 				.font(metrics.reg19)
 			Spacer()
-			Group{
+			Group {
 				Text("ACTIVITÉ \(rank)")
 					.font(metrics.bold15)
-				+ Text(" - \(activity.short.localized())")
+					+ Text(" - \(activity.short.localized())")
 			}
 			.font(metrics.reg15)
 			.multilineTextAlignment(.leading)

@@ -14,7 +14,7 @@ struct DeleteProfileButton: View {
 
 	@Binding var show: Bool
 
-    var body: some View {
+	var body: some View {
 		if company.editingProfile {
 			Button {
 				show.toggle()
@@ -30,5 +30,5 @@ struct DeleteProfileButton: View {
 		} else {
 			EmptyView()
 		}
-    }
+	}
 }

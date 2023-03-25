@@ -1,70 +1,76 @@
 //
-    //  CreateUserProfileView.swift
-    //  LekaTestBucket
-    //
-    //  Created by Mathieu Jeannot on 15/12/22.
-    //
+//  CreateUserProfileView.swift
+//  LekaTestBucket
+//
+//  Created by Mathieu Jeannot on 15/12/22.
+//
 
 import SwiftUI
 
 struct CreateUserProfileView: View {
 
-    @EnvironmentObject var company: CompanyViewModel
-    @EnvironmentObject var settings: SettingsViewModel
-    @EnvironmentObject var viewRouter: ViewRouter
-    @EnvironmentObject var metrics: UIMetrics
-    @Environment(\.dismiss) var dismiss
+	@EnvironmentObject var company: CompanyViewModel
+	@EnvironmentObject var settings: SettingsViewModel
+	@EnvironmentObject var viewRouter: ViewRouter
+	@EnvironmentObject var metrics: UIMetrics
+	@Environment(\.dismiss) var dismiss
 
 	@FocusState private var focusedField: FormField?
-    @State private var isEditing = false
-    @State private var showDeleteConfirmation: Bool = false
+	@State private var isEditing = false
+	@State private var showDeleteConfirmation: Bool = false
 	@State private var navigateToSignupFinalStep: Bool = false
 	@State private var navigateToAvatarPicker: Bool = false
 
-    var body: some View {
-        ZStack(alignment: .center) {
-            Color.white.edgesIgnoringSafeArea(.top)
+	var body: some View {
+		ZStack(alignment: .center) {
+			Color.white.edgesIgnoringSafeArea(.top)
 
-            ScrollView(showsIndicators: false) {
-                VStack(spacing: 30) {
+			ScrollView(showsIndicators: false) {
+				VStack(spacing: 30) {
 					AvatarPickerTriggerButton_Users(navigate: $navigateToAvatarPicker)
-                        .padding(.top, 30)
+						.padding(.top, 30)
 
-                    nameField
-                    ReinforcerPicker()
+					nameField
+					ReinforcerPicker()
 					accessoryView
-                    Spacer()
+					Spacer()
 					DeleteProfileButton(show: $showDeleteConfirmation)
-                }
-            }
-        }
-        .interactiveDismissDisabled()
-        .navigationBarTitleDisplayMode(.inline)
-        .navigationBarBackButtonHidden(true)
-        .toolbarBackground(viewRouter.currentPage == .profiles ? .visible : .automatic, for: .navigationBar)
+				}
+			}
+		}
+		.interactiveDismissDisabled()
+		.navigationBarTitleDisplayMode(.inline)
+		.navigationBarBackButtonHidden(true)
+		.toolbarBackground(viewRouter.currentPage == .profiles ? .visible : .automatic, for: .navigationBar)
 		.navigationDestination(isPresented: $navigateToAvatarPicker) {
 			AvatarPicker_Users()
 		}
 		.navigationDestination(isPresented: $navigateToSignupFinalStep) {
 			SignupFinalStep()
 		}
-        .alert("Supprimer le profil", isPresented: $showDeleteConfirmation) {
-            alertContent
-        } message: {
-            Text("Vous êtes sur le point de supprimer le profil utilisateur de \(company.bufferUser.name). \nCette action est irreversible.")
-        }
-        .toolbar {
-            ToolbarItem(placement: .principal) { navigationTitle }
-            ToolbarItem(placement: .navigationBarLeading) { adaptativeBackButton }
-            ToolbarItem(placement: .navigationBarTrailing) { validateButton }
-        }
-        .preferredColorScheme(.light)
-    }
+		.alert("Supprimer le profil", isPresented: $showDeleteConfirmation) {
+			alertContent
+		} message: {
+			Text(
+				"Vous êtes sur le point de supprimer le profil utilisateur de \(company.bufferUser.name). \nCette action est irreversible."
+			)
+		}
+		.toolbar {
+			ToolbarItem(placement: .principal) { navigationTitle }
+			ToolbarItem(placement: .navigationBarLeading) { adaptativeBackButton }
+			ToolbarItem(placement: .navigationBarTrailing) { validateButton }
+		}
+		.preferredColorScheme(.light)
+	}
 
 	private var nameField: some View {
-		LekaTextField(label: "Nom d'utilisateur", entry: $company.bufferUser.name, isEditing: $isEditing, type: .name, focused: _focusedField, action: {
-			focusedField = nil
-		})
+		LekaTextField(
+			label: "Nom d'utilisateur", entry: $company.bufferUser.name, isEditing: $isEditing, type: .name,
+			focused: _focusedField,
+			action: {
+				focusedField = nil
+			}
+		)
 		.onAppear {
 			focusedField = .name
 		}
@@ -84,15 +90,18 @@ struct CreateUserProfileView: View {
 	@ViewBuilder
 	private var accessoryView: some View {
 		if viewRouter.currentPage == .welcome {
-			Button(action: {
-				navigateToSignupFinalStep.toggle()
-				DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-					company.addUserProfile()
-					company.assignCurrentProfiles()
+			Button(
+				action: {
+					navigateToSignupFinalStep.toggle()
+					DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+						company.addUserProfile()
+						company.assignCurrentProfiles()
+					}
+				},
+				label: {
+					Text("Enregistrer ce profil")
 				}
-			}, label: {
-				Text("Enregistrer ce profil")
-			})
+			)
 			.disabled(company.bufferTeacher.name.isEmpty)
 			.buttonStyle(
 				BorderedCapsule_NoFeedback_ButtonStyle(
@@ -171,12 +180,12 @@ struct CreateUserProfileView: View {
 }
 
 struct CreateUserProfileView_Previews: PreviewProvider {
-    static var previews: some View {
-        CreateUserProfileView()
-            .environmentObject(CompanyViewModel())
-            .environmentObject(SettingsViewModel())
-            .environmentObject(ViewRouter())
-            .environmentObject(UIMetrics())
-            .previewInterfaceOrientation(.landscapeLeft)
-    }
+	static var previews: some View {
+		CreateUserProfileView()
+			.environmentObject(CompanyViewModel())
+			.environmentObject(SettingsViewModel())
+			.environmentObject(ViewRouter())
+			.environmentObject(UIMetrics())
+			.previewInterfaceOrientation(.landscapeLeft)
+	}
 }

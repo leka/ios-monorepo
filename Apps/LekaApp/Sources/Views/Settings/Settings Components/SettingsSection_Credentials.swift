@@ -12,7 +12,7 @@ struct SettingsSection_Credentials: View {
 	@EnvironmentObject var company: CompanyViewModel
 	@EnvironmentObject var metrics: UIMetrics
 
-    var body: some View {
+	var body: some View {
 		Section {
 			Group {
 				LabeledContent {
@@ -37,5 +37,5 @@ struct SettingsSection_Credentials: View {
 				.headerProminence(.increased)
 				.padding(.top, 20)
 		}
-    }
+	}
 }

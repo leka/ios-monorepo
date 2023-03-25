@@ -16,8 +16,9 @@ struct CurriculumList: Codable {
 	var sectionTitle: LocalizedContent
 	var curriculums: [String]
 
-	init(sectionTitle: LocalizedContent = LocalizedContent(),
-		 curriculums: [String] = []
+	init(
+		sectionTitle: LocalizedContent = LocalizedContent(),
+		curriculums: [String] = []
 	) {
 		self.sectionTitle = sectionTitle
 		self.curriculums = curriculums
@@ -39,12 +40,13 @@ struct Curriculum: Codable, Identifiable {
 	var quantity: Int
 	var activities: [String]
 
-	init(id: String = "",
-		 title: LocalizedContent = LocalizedContent(),
-		 subtitle: LocalizedContent = LocalizedContent(),
-		 fullTitle: LocalizedContent = LocalizedContent(),
-		 quantity: Int = 0,
-		 activities: [String] = []
+	init(
+		id: String = "",
+		title: LocalizedContent = LocalizedContent(),
+		subtitle: LocalizedContent = LocalizedContent(),
+		fullTitle: LocalizedContent = LocalizedContent(),
+		quantity: Int = 0,
+		activities: [String] = []
 	) {
 		self.id = id
 		self.title = title

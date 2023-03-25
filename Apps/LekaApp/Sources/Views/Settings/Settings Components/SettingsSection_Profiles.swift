@@ -64,8 +64,10 @@ struct SettingsSection_Profiles: View {
 			}
 			.frame(minWidth: 320, maxWidth: 320)
 		} label: {
-			Text("Profils \(type == .teacher ? "accompagnants" : "utilisateurs") (\(company.getAllAvatarsOf(type).count))")
-				.foregroundColor(Color("darkGray"))
+			Text(
+				"Profils \(type == .teacher ? "accompagnants" : "utilisateurs") (\(company.getAllAvatarsOf(type).count))"
+			)
+			.foregroundColor(Color("darkGray"))
 		}
 	}
 }

@@ -10,11 +10,11 @@ import SwiftUI
 struct SidebarView: View {
 
 	@EnvironmentObject var sidebar: SidebarViewModel
-    @EnvironmentObject var settings: SettingsViewModel
-    @EnvironmentObject var metrics: UIMetrics
+	@EnvironmentObject var settings: SettingsViewModel
+	@EnvironmentObject var metrics: UIMetrics
 
-    @State private var appVersion: String? = ""
-    @State private var buildNumber: String? = ""
+	@State private var appVersion: String? = ""
+	@State private var buildNumber: String? = ""
 
 	var body: some View {
 		ScrollView {

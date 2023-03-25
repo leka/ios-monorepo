@@ -9,14 +9,14 @@ import SwiftUI
 
 struct LoginView: View {
 
-    @EnvironmentObject var company: CompanyViewModel
-    @EnvironmentObject var settings: SettingsViewModel
-    @EnvironmentObject var metrics: UIMetrics
+	@EnvironmentObject var company: CompanyViewModel
+	@EnvironmentObject var settings: SettingsViewModel
+	@EnvironmentObject var metrics: UIMetrics
 
 	@FocusState var focusedField: FormField?
-    @State private var mail: String = ""
-    @State private var password: String = ""
-    @State private var isEditing = false
+	@State private var mail: String = ""
+	@State private var password: String = ""
+	@State private var isEditing = false
 
 	@State private var navigateToTeacherSelector: Bool = false
 
@@ -24,53 +24,53 @@ struct LoginView: View {
 	// the same applies for both login/signup
 	// re-enable autofill modifiers in LekaTextField when OK (textContentType)
 
-    func connectIsDisabled() -> Bool {
+	func connectIsDisabled() -> Bool {
 		return !mail.isValidEmail() || mail.isEmpty || password.isEmpty
-    }
+	}
 
-// TESTS *****************************************************************
-    @State private var credentialsAreCorrect: Bool = true
+	// TESTS *****************************************************************
+	@State private var credentialsAreCorrect: Bool = true
 
-    private func submitForm() {
-        if mail == company.leka.mail {
-            if password != company.leka.password {
-                credentialsAreCorrect = false
-            } else {
-                credentialsAreCorrect = true
-                settings.companyIsConnected = true
-                company.currentCompany = company.leka
-                settings.companyIsLoggingIn = true
+	private func submitForm() {
+		if mail == company.leka.mail {
+			if password != company.leka.password {
+				credentialsAreCorrect = false
+			} else {
+				credentialsAreCorrect = true
+				settings.companyIsConnected = true
+				company.currentCompany = company.leka
+				settings.companyIsLoggingIn = true
 				navigateToTeacherSelector.toggle()
-            }
-        } else {
-            credentialsAreCorrect = false
-        }
-    }
-// TESTS *****************************************************************
+			}
+		} else {
+			credentialsAreCorrect = false
+		}
+	}
+	// TESTS *****************************************************************
 
-    var body: some View {
-        ZStack(alignment: .center) {
-            CloudsBGView()
+	var body: some View {
+		ZStack(alignment: .center) {
+			CloudsBGView()
 
-            VStack(alignment: .center, spacing: 30) {
-                title
-                Group {
-                    mailTextField
-                    VStack(spacing: 0) {
+			VStack(alignment: .center, spacing: 30) {
+				title
+				Group {
+					mailTextField
+					VStack(spacing: 0) {
 						passwordTextField
-                        forgotLink
-                    }
-                }
-                .frame(width: 400)
-                .disableAutocorrection(true)
-                .onAppear { focusedField = .mail }
+						forgotLink
+					}
+				}
+				.frame(width: 400)
+				.disableAutocorrection(true)
+				.onAppear { focusedField = .mail }
 				submitButton
-            }
-        }
+			}
+		}
 		.navigationDestination(isPresented: $navigateToTeacherSelector) {
 			ProfileSelector_Teachers()
 		}
-    }
+	}
 
 	private var title: some View {
 		Text("Se connecter")
@@ -80,14 +80,17 @@ struct LoginView: View {
 	}
 
 	private var submitButton: some View {
-		Button(action: {
-			submitForm()
-		}, label: {
-			Text("Connexion")
-				.font(metrics.bold15)
-				.padding(6)
-				.frame(width: 210)
-		})
+		Button(
+			action: {
+				submitForm()
+			},
+			label: {
+				Text("Connexion")
+					.font(metrics.bold15)
+					.padding(6)
+					.frame(width: 210)
+			}
+		)
 		.disabled(connectIsDisabled())
 		.buttonStyle(.borderedProminent)
 		.tint(.accentColor)
@@ -97,18 +100,19 @@ struct LoginView: View {
 	@ViewBuilder
 	private var mailTextField: some View {
 		let mailTitle: String = {
-			if mail.isValidEmail() || mail.isEmpty || isEditing {
-				return "Email"
-			} else {
+			guard mail.isValidEmail() || mail.isEmpty || isEditing else {
 				return "Email incorrect"
 			}
+			return "Email"
 		}()
 
 		let mailLabelColor: Color = {
-			return mail.isValidEmail() || mail.isEmpty  || isEditing ? .accentColor : .red
+			return mail.isValidEmail() || mail.isEmpty || isEditing ? .accentColor : .red
 		}()
 
-		LekaTextField(label: mailTitle, entry: $mail, color: mailLabelColor, isEditing: $isEditing, focused: _focusedField) {
+		LekaTextField(
+			label: mailTitle, entry: $mail, color: mailLabelColor, isEditing: $isEditing, focused: _focusedField
+		) {
 			focusedField = .password
 		}
 	}
@@ -116,11 +120,10 @@ struct LoginView: View {
 	@ViewBuilder
 	private var passwordTextField: some View {
 		let passwordTitle: String = {
-			if credentialsAreCorrect {
-				return "Mot de passe"
-			} else {
+			guard credentialsAreCorrect else {
 				return "Email ou mot de passe incorrect"
 			}
+			return "Mot de passe"
 		}()
 
 		let passwordLabelColor: Color = {
@@ -151,12 +154,12 @@ struct LoginView: View {
 }
 
 struct LoginView_Previews: PreviewProvider {
-    static var previews: some View {
-        LoginView()
-            .environmentObject(CompanyViewModel())
-            .environmentObject(SettingsViewModel())
-            .environmentObject(ViewRouter())
-            .environmentObject(UIMetrics())
-            .previewInterfaceOrientation(.landscapeLeft)
-    }
+	static var previews: some View {
+		LoginView()
+			.environmentObject(CompanyViewModel())
+			.environmentObject(SettingsViewModel())
+			.environmentObject(ViewRouter())
+			.environmentObject(UIMetrics())
+			.previewInterfaceOrientation(.landscapeLeft)
+	}
 }

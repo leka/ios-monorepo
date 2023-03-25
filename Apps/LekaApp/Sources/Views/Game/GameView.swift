@@ -5,8 +5,8 @@
 //  Created by Mathieu Jeannot on 30/5/22.
 //
 
-import SwiftUI
 import Lottie
+import SwiftUI
 
 struct GameView: View {
 
@@ -35,9 +35,11 @@ struct GameView: View {
 	}
 
 	private var successScreen: some View {
-		LottieView(name: "motivator", speed: 0.5,
-				   action: {activityVM.hideMotivator()},
-				   play: $activityVM.showMotivator)
+		LottieView(
+			name: "motivator", speed: 0.5,
+			action: { activityVM.hideMotivator() },
+			play: $activityVM.showMotivator
+		)
 		.scaleEffect(gameMetrics.motivatorScale, anchor: .center)
 	}
 
@@ -61,14 +63,16 @@ struct GameView: View {
 			switch result {
 				case .fail:
 					return Text("fail_bottom_message")
-					+ Text("(0%)")
+						+ Text("(0%)")
 						.foregroundColor(Color("bravoHighlights"))
-					+ Text(".")
+						+ Text(".")
 				case .medium, .success:
 					return Text("success_bottom_message")
-					+ Text("success_bottom_result \(activityVM.goodAnswers) \(activityVM.numberOfSteps) \(activityVM.percentOfSuccess)")
+						+ Text(
+							"success_bottom_result \(activityVM.goodAnswers) \(activityVM.numberOfSteps) \(activityVM.percentOfSuccess)"
+						)
 						.foregroundColor(Color("bravoHighlights"))
-					+ Text("!")
+						+ Text("!")
 				default:
 					return Text("")
 			}
@@ -80,37 +84,47 @@ struct GameView: View {
 					.foregroundColor(.accentColor)
 					.offset(y: textOffset)
 					.opacity(textOpacity)
-					.animation(.easeOut(duration: gameMetrics.endAnimDuration).delay(gameMetrics.endAnimDelayTop),
-							   value: textOffset)
-					.animation(.easeOut(duration: gameMetrics.endAnimDuration).delay(gameMetrics.endAnimDelayTop),
-							   value: textOpacity)
+					.animation(
+						.easeOut(duration: gameMetrics.endAnimDuration).delay(gameMetrics.endAnimDelayTop),
+						value: textOffset
+					)
+					.animation(
+						.easeOut(duration: gameMetrics.endAnimDuration).delay(gameMetrics.endAnimDelayTop),
+						value: textOpacity)
 				bottomMessage
 					.foregroundColor(Color("lekaDarkGray"))
 					.offset(y: textOffset)
 					.opacity(textOpacity)
-					.animation(.easeOut(duration: gameMetrics.endAnimDuration).delay(gameMetrics.endAnimDelayBottom),
-							   value: textOffset)
-					.animation(.easeOut(duration: gameMetrics.endAnimDuration).delay(gameMetrics.endAnimDelayBottom),
-							   value: textOpacity)
+					.animation(
+						.easeOut(duration: gameMetrics.endAnimDuration).delay(gameMetrics.endAnimDelayBottom),
+						value: textOffset
+					)
+					.animation(
+						.easeOut(duration: gameMetrics.endAnimDuration).delay(gameMetrics.endAnimDelayBottom),
+						value: textOpacity)
 			}
-			.font(.system(size: gameMetrics.endAnimFontSize,
-						  weight: gameMetrics.endAnimFontWeight,
-						  design: gameMetrics.endAnimFontDesign))
+			.font(
+				.system(
+					size: gameMetrics.endAnimFontSize,
+					weight: gameMetrics.endAnimFontWeight,
+					design: gameMetrics.endAnimFontDesign))
 		}
 	}
 
 	private var cheerScreen: some View {
 		ZStack {
-			LottieView(name: activityVM.percentOfSuccess >= 80 ? "bravo" : "tryAgain", play: $activityVM.showEndAnimation)
-				.onAppear {
-					// Delayed to avoid artifacts on animation... SwiftUI bug
-					DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-						textOffset = 0
-						textOpacity = 1
-						offsetGameOverBtn = 0
-						offsetReplayBtn = 0
-					}
+			LottieView(
+				name: activityVM.percentOfSuccess >= 80 ? "bravo" : "tryAgain", play: $activityVM.showEndAnimation
+			)
+			.onAppear {
+				// Delayed to avoid artifacts on animation... SwiftUI bug
+				DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+					textOffset = 0
+					textOpacity = 1
+					offsetGameOverBtn = 0
+					offsetReplayBtn = 0
 				}
+			}
 
 			VStack(spacing: 0) {
 				resultMessage(result: activityVM.result)
@@ -129,8 +143,9 @@ struct GameView: View {
 					}
 					.buttonStyle(BorderedCapsule_ButtonStyle(isFilled: false))
 					.offset(x: offsetGameOverBtn)
-					.animation(.easeOut(duration: gameMetrics.endAnimBtnDuration).delay(gameMetrics.endAnimGameOverBtnDelay),
-							   value: offsetGameOverBtn)
+					.animation(
+						.easeOut(duration: gameMetrics.endAnimBtnDuration).delay(gameMetrics.endAnimGameOverBtnDelay),
+						value: offsetGameOverBtn)
 					Spacer()
 					Button {
 						activityVM.replayCurrentActivity()
@@ -143,8 +158,9 @@ struct GameView: View {
 					}
 					.buttonStyle(BorderedCapsule_ButtonStyle())
 					.offset(x: offsetReplayBtn)
-					.animation(.easeOut(duration: gameMetrics.endAnimBtnDuration).delay(gameMetrics.endAnimReplayBtnDelay),
-							   value: offsetReplayBtn)
+					.animation(
+						.easeOut(duration: gameMetrics.endAnimBtnDuration).delay(gameMetrics.endAnimReplayBtnDelay),
+						value: offsetReplayBtn)
 					Spacer()
 				}
 			}
@@ -239,8 +255,8 @@ struct GameView: View {
 				GeometryReader { gr in
 					Color.clear
 						.onAppear {
-							offsetGameOverBtn = -gr.frame(in: .local).width/2
-							offsetReplayBtn = gr.frame(in: .local).width/2
+							offsetGameOverBtn = -gr.frame(in: .local).width / 2
+							offsetReplayBtn = gr.frame(in: .local).width / 2
 							initialBtnOffsets = [offsetGameOverBtn, offsetReplayBtn]
 						}
 				})

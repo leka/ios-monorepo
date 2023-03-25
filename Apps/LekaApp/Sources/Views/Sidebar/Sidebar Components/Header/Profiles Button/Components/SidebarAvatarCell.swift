@@ -16,7 +16,7 @@ struct SidebarAvatarCell: View {
 	var type: UserType
 	var badge: Bool = false
 
-    var body: some View {
+	var body: some View {
 		HStack {
 			Spacer()
 			VStack(spacing: 0) {
@@ -63,7 +63,7 @@ struct SidebarAvatarCell: View {
 					}
 				}
 				.frame(height: settings.exploratoryModeIsOn ? 58 : 72)
-				.offset(x: settings.exploratoryModeIsOn ? (type == . teacher ? 26 : -26) : 0)
+				.offset(x: settings.exploratoryModeIsOn ? (type == .teacher ? 26 : -26) : 0)
 				.padding(10)
 
 				if !settings.exploratoryModeIsOn {
@@ -80,5 +80,5 @@ struct SidebarAvatarCell: View {
 			}
 			Spacer()
 		}
-    }
+	}
 }

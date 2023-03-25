@@ -13,7 +13,7 @@ struct NoBotTile: View {
 
 	@State private var navigateToSignup2: Bool = false
 
-    var body: some View {
+	var body: some View {
 		HStack(alignment: .center, spacing: 0) {
 			VStack(spacing: 0) {
 				// Picto
@@ -35,21 +35,27 @@ struct NoBotTile: View {
 			.frame(width: metrics.tileContentWidth)
 			.padding(metrics.tileContentPadding)
 		}
-		.frame(width: metrics.tileSize.width,
-			   height: metrics.tileSize.height)
+		.frame(
+			width: metrics.tileSize.width,
+			height: metrics.tileSize.height
+		)
 		.navigationDestination(isPresented: $navigateToSignup2) {
 			SignupStep2()
 		}
-		.background(Color("lekaLightGray"),
-					in: RoundedRectangle(cornerRadius: metrics.tilesRadius, style: .continuous))
-    }
+		.background(
+			Color("lekaLightGray"),
+			in: RoundedRectangle(cornerRadius: metrics.tilesRadius, style: .continuous))
+	}
 
 	private var accessoryView: some View {
-		Button(action: {
-			navigateToSignup2.toggle()
-		}, label: {
-			Text(TileData.noBot.content.CTALabel!)
-		})
+		Button(
+			action: {
+				navigateToSignup2.toggle()
+			},
+			label: {
+				Text(TileData.noBot.content.CTALabel!)
+			}
+		)
 		.buttonStyle(
 			BorderedCapsule_NoFeedback_ButtonStyle(
 				font: metrics.reg17,

@@ -12,7 +12,7 @@ struct ReinforcerPicker: View {
 	@EnvironmentObject var company: CompanyViewModel
 	@EnvironmentObject var metrics: UIMetrics
 
-    var body: some View {
+	var body: some View {
 		VStack(spacing: 10) {
 			HStack {
 				Text("Choix du renforçateur")
@@ -22,10 +22,12 @@ struct ReinforcerPicker: View {
 				Spacer()
 			}
 			HStack {
-				Text("Le renforçateur est un effet lumineux répétitif du robot que vous pourrez actionner pour récompenser le comportement de l'utilisateur. \nSi votre robot est connecté, vous pouvez tester les renforçateurs avant d'en choisir un.")
-					.font(metrics.reg12)
-					.foregroundColor(.accentColor)
-					.padding(.leading, 10)
+				Text(
+					"Le renforçateur est un effet lumineux répétitif du robot que vous pourrez actionner pour récompenser le comportement de l'utilisateur. \nSi votre robot est connecté, vous pouvez tester les renforçateurs avant d'en choisir un."
+				)
+				.font(metrics.reg12)
+				.foregroundColor(.accentColor)
+				.padding(.leading, 10)
 				Spacer()
 			}
 
@@ -51,7 +53,7 @@ struct ReinforcerPicker: View {
 		}
 		.frame(width: 420)
 		.animation(.default, value: company.bufferUser.reinforcer)
-    }
+	}
 
 	func ReinforcerButton(_ number: Int) -> some View {
 		Button {

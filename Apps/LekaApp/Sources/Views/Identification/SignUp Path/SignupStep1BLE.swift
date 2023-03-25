@@ -9,12 +9,12 @@ import SwiftUI
 
 struct SignupStep1BLE: View {
 
-    @EnvironmentObject var metrics: UIMetrics
+	@EnvironmentObject var metrics: UIMetrics
 
 	private let data: TileData = .signup_step1_ble
 	@State private var navigateToBotPicker: Bool = false
 
-    var body: some View {
+	var body: some View {
 		ZStack {
 			Color("lekaLightBlue").ignoresSafeArea()
 			tile
@@ -28,7 +28,7 @@ struct SignupStep1BLE: View {
 				SignupNavigationTitle()
 			}
 		}
-    }
+	}
 
 	private var tile: some View {
 		HStack(alignment: .center, spacing: 0) {
@@ -59,21 +59,27 @@ struct SignupStep1BLE: View {
 			.frame(width: metrics.tileContentWidth)
 			.padding(.bottom, metrics.tileContentPadding)
 		}
-		.frame(width: metrics.tileSize.width,
-			   height: metrics.tileSize.height)
-		.background(.white,
-					in: RoundedRectangle(cornerRadius: metrics.tilesRadius, style: .continuous))
+		.frame(
+			width: metrics.tileSize.width,
+			height: metrics.tileSize.height
+		)
+		.background(
+			.white,
+			in: RoundedRectangle(cornerRadius: metrics.tilesRadius, style: .continuous))
 	}
 
 	private var accessoryView: some View {
-		Button(action: {
-			navigateToBotPicker.toggle()
-		}, label: {
-			HStack(spacing: 10) {
-				Image(data.content.pictoCTA!)
-				Text(data.content.CTALabel!)
+		Button(
+			action: {
+				navigateToBotPicker.toggle()
+			},
+			label: {
+				HStack(spacing: 10) {
+					Image(data.content.pictoCTA!)
+					Text(data.content.CTALabel!)
+				}
 			}
-		})
+		)
 		.buttonStyle(
 			BorderedCapsule_NoFeedback_ButtonStyle(
 				font: metrics.reg17,

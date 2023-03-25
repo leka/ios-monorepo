@@ -11,7 +11,7 @@ struct SidebarSections: View {
 
 	@EnvironmentObject var sidebar: SidebarViewModel
 	@EnvironmentObject var company: CompanyViewModel
-    @EnvironmentObject var metrics: UIMetrics
+	@EnvironmentObject var metrics: UIMetrics
 
 	// Delete when FollowUp is Ready
 	private func simulateChange() {
@@ -20,19 +20,19 @@ struct SidebarSections: View {
 		company.willBeDeleted_FakeFollowUpNumberOfCells = Int.random(in: 0...10)
 	}
 
-    var body: some View {
-        VStack(spacing: 20) {
-            ForEach(NavSections.allCases, id: \.rawValue) { group in
-                if group == .educ {
-                    section(isExpanded: $sidebar.educContentIsExpanded, content: sidebar.educContentList)
-                } else if group == .followUp {
-                    section(isExpanded: $sidebar.followUpIsExpanded, content: sidebar.followUpList)
-                }
-            }
-        }
-        .padding(.horizontal)
-        .tint(.accentColor)
-    }
+	var body: some View {
+		VStack(spacing: 20) {
+			ForEach(NavSections.allCases, id: \.rawValue) { group in
+				if group == .educ {
+					section(isExpanded: $sidebar.educContentIsExpanded, content: sidebar.educContentList)
+				} else if group == .followUp {
+					section(isExpanded: $sidebar.followUpIsExpanded, content: sidebar.followUpList)
+				}
+			}
+		}
+		.padding(.horizontal)
+		.tint(.accentColor)
+	}
 
 	func sectionItem(_ item: SectionLabel) -> some View {
 		Button {
@@ -66,8 +66,10 @@ struct SidebarSections: View {
 			}
 			.foregroundColor(sidebar.currentView.rawValue == item.destination.rawValue ? .white : .accentColor)
 			.frame(height: 44)
-			.background(sidebar.currentView.rawValue == item.destination.rawValue ? Color.accentColor : .clear,
-						in: RoundedRectangle(cornerRadius: metrics.btnRadius, style: .continuous))
+			.background(
+				sidebar.currentView.rawValue == item.destination.rawValue ? Color.accentColor : .clear,
+				in: RoundedRectangle(cornerRadius: metrics.btnRadius, style: .continuous)
+			)
 			.contentShape(Rectangle())
 		}
 	}

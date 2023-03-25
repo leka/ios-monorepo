@@ -67,7 +67,7 @@ struct WelcomeView_Previews: PreviewProvider {
 	static var previews: some View {
 		WelcomeView()
 			.environmentObject(CompanyViewModel())
-		//            .environmentObject(SettingsViewModel())
+			//            .environmentObject(SettingsViewModel())
 			.environmentObject(ViewRouter())
 			.environmentObject(UIMetrics())
 			.previewInterfaceOrientation(.landscapeLeft)

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SignupStep1Final: View {
 
-    @EnvironmentObject var metrics: UIMetrics
+	@EnvironmentObject var metrics: UIMetrics
 
 	private let data: TileData = .signup_step1_Final
 	@State private var navigateToSignup2: Bool = false
@@ -59,18 +59,24 @@ struct SignupStep1Final: View {
 			.frame(width: metrics.tileContentWidth)
 			.padding(.bottom, metrics.tileContentPadding)
 		}
-		.frame(width: metrics.tileSize.width,
-			   height: metrics.tileSize.height)
-		.background(.white,
-					in: RoundedRectangle(cornerRadius: metrics.tilesRadius, style: .continuous))
+		.frame(
+			width: metrics.tileSize.width,
+			height: metrics.tileSize.height
+		)
+		.background(
+			.white,
+			in: RoundedRectangle(cornerRadius: metrics.tilesRadius, style: .continuous))
 	}
 
 	private var accessoryView: some View {
-		Button(action: {
-			navigateToSignup2.toggle()
-		}, label: {
-			Text(data.content.CTALabel!)
-		})
+		Button(
+			action: {
+				navigateToSignup2.toggle()
+			},
+			label: {
+				Text(data.content.CTALabel!)
+			}
+		)
 		.buttonStyle(
 			BorderedCapsule_NoFeedback_ButtonStyle(
 				font: metrics.reg17,

@@ -13,18 +13,16 @@ struct TickPic: View {
 	@EnvironmentObject var settings: SettingsViewModel
 
 	func imageFromContext() -> Image {
-		if settings.exploratoryModeIsOn {
-			return Image(systemName: "binoculars.fill")
-		} else {
-			if company.profileIsAssigned(.user) || !settings.companyIsConnected {
-				return Image("tick")
-			} else {
+		guard settings.exploratoryModeIsOn else {
+			guard company.profileIsAssigned(.user) || !settings.companyIsConnected else {
 				return Image("cross")
 			}
+			return Image("tick")
 		}
+		return Image(systemName: "binoculars.fill")
 	}
 
-    var body: some View {
+	var body: some View {
 		HStack(alignment: .top) {
 			imageFromContext()
 				.resizable()
@@ -33,7 +31,7 @@ struct TickPic: View {
 				.foregroundColor(.white)
 				.padding(settings.exploratoryModeIsOn ? 20 : 0)
 				.fontWeight(.light)
-				.background(settings.exploratoryModeIsOn ? Color("lekaSkyBlue"): .clear, in: Circle())
+				.background(settings.exploratoryModeIsOn ? Color("lekaSkyBlue") : .clear, in: Circle())
 				.overlay(
 					Circle()
 						.stroke(.white, lineWidth: 3)
@@ -42,5 +40,5 @@ struct TickPic: View {
 				.frame(maxWidth: settings.exploratoryModeIsOn ? 72 : 44)
 				.offset(y: settings.exploratoryModeIsOn ? 4 : -4)
 		}
-    }
+	}
 }
