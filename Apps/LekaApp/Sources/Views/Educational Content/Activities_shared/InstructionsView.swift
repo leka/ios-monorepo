@@ -5,7 +5,8 @@
 //  Created by Mathieu Jeannot on 17/12/22.
 //
 
-import Down
+// TODO(@ladislas): reimport when Down is fixed
+// import Down
 import SwiftUI
 
 // FAKE DATA ===========================================================
