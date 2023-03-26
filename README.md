@@ -20,7 +20,16 @@ curl -Ls https://install.tuist.io | bash
 # install latest version if needed
 tuist update
 
-# generate project
+# install needed tools
+brew upgrade && brew install fastlane swiftlint swift-format
+
+# sync provisioning profiles and certificates
+fastlane sync_certificates
+
+# pull dependencies
+tuist fetch
+
+# generate all projects
 tuist generate
 
 # generate specific target/project
