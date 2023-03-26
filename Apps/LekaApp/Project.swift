@@ -13,4 +13,7 @@ let project = Project.app(
 		.project(target: "CoreUI", path: Path("../../Modules/CoreUI")),
 		.external(name: "Yams"),
 		.external(name: "Lottie"),
+	],
+	infoPlist: [
+		"NSAccentColorName": "AccentColor"
 	])
