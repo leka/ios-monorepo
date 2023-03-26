@@ -1,0 +1,70 @@
+---
+title:
+  en_US: Recognize the sounds of emotions with 3 pictures
+  fr_FR: Reconnaitre les sons des émotions avec 3 photos
+short_title:
+  en_US: Ladislas - Lucie - Hortense
+  fr_FR: Ladislas - Lucie - Hortense
+uuid: 85b0af03-cce2-4794-80b4-99f6f2b586c6
+
+type: listen_then_touch_to_select
+
+number_of_steps: 10
+random_steps: true
+number_of_images_per_step: 3
+random_image_position: true
+steps:
+  - instruction:
+      en_US: Touch the speaker. What is this emotion?
+      fr_FR: Touche le haut-parleur.Quelle est cette émotion ?
+    correct_answer: emotion_picture_adult_joy_lucie
+    images:
+      - emotion_picture_adult_sad_hortense
+      - emotion_picture_adult_disgust_ladislas
+      - emotion_picture_adult_joy_lucie
+    sound:
+      - emotion_sound_adult_joy_lucie
+
+  - instruction:
+      en_US: Touch the speaker. What is this emotion?
+      fr_FR: Touche le haut-parleur. Quelle est cette émotion ?
+    correct_answer: emotion_picture_adult_sad_ladislas
+    images:
+      - emotion_picture_adult_angry_hortense
+      - emotion_picture_adult_joy_lucie
+      - emotion_picture_adult_sad_ladislas
+    sound:
+      - emotion_sound_adult_sad_ladislas
+
+  - instruction:
+      en_US: Touch the speaker. What is this emotion?
+      fr_FR: Touche le haut-parleur. Quelle est cette émotion ?
+    correct_answer: emotion_picture_adult_disgust_hortense
+    images:
+      - emotion_picture_adult_joy_ladislas
+      - emotion_picture_adult_angry_lucie
+      - emotion_picture_adult_disgust_hortense
+    sound:
+      - emotion_sound_adult_disgust_hortense
+
+  - instruction:
+      en_US: Touch the speaker. What is this emotion?
+      fr_FR: Touche le haut-parleur. Quelle est cette émotion ?
+    correct_answer: emotion_picture_adult_fear_ladislas
+    images:
+      - emotion_picture_adult_fear_ladislas
+      - emotion_picture_adult_joy_hortense
+      - emotion_picture_adult_sad_lucie
+    sound:
+      - emotion_sound_adult_fear_ladislas
+
+  - instruction:
+      en_US: Touch the speaker. What is this emotion?
+      fr_FR: Touche le haut-parleur. Quelle est cette émotion ?
+    correct_answer: emotion_picture_adult_angry_hortense
+    images:
+      - emotion_picture_adult_disgust_lucie
+      - emotion_picture_adult_angry_hortense
+      - emotion_picture_adult_sad_ladislas
+    sound:
+      - emotion_sound_adult_angry_hortense

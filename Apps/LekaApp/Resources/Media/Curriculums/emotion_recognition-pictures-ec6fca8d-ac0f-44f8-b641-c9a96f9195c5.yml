@@ -1,0 +1,45 @@
+---
+title:
+  en_US: Emotions recognition
+  fr_FR: Reconnaissance des émotions
+
+subtitle:
+  en_US: using pictures
+  fr_FR: en photos
+  
+full_title:
+  en_US: Emotions recognition using pictures
+  fr_FR: Reconnaissance des émotions en photos
+
+uuid: ec6fca8d-ac0f-44f8-b641-c9a96f9195c5
+
+number_of_activities: 27
+
+activities:
+  - emotion_recognition-pictures-1_images_1_types-hortense-195c7905-0188-4c1d-a3c9-0aed0199606d
+  - emotion_recognition-pictures-1_images_1_types-hugo-30e86d7d-b937-4721-9e5a-3a0d1e8a1ace
+  - emotion_recognition-pictures-1_images_1_types-ladislas-ddc5380e-efc6-4abf-b03b-603b73012e7b
+  - emotion_recognition-pictures-1_images_1_types-lucie-3fc7b66e-67a0-4f50-9817-9ef19af7f717
+  - emotion_recognition-pictures-1_images_1_types-yann-c44a02c1-7ae8-45f8-b6f5-58d39e4e363b
+  - emotion_recognition-pictures-2_images_1_types-hortense-b88f7a94-9e41-4dc6-b8ef-dbc50543e976
+  - emotion_recognition-pictures-2_images_1_types-hugo-0c0ab0f5-ed2f-468f-bb3d-e3bf8b9512c5
+  - emotion_recognition-pictures-2_images_1_types-ladislas-a8590b9f-cd04-447d-a76d-1c2d99ce2615
+  - emotion_recognition-pictures-2_images_1_types-lucie-7d6c0af7-9bc4-434b-b07e-0761d0a4b39e
+  - emotion_recognition-pictures-2_images_1_types-yann-3873d0ba-e98d-44ca-bdf9-b7695e58648e
+  - emotion_recognition-pictures-4_images_1_types-hortense-e64a56b0-0481-4688-b285-80fcf3020bba
+  - emotion_recognition-pictures-4_images_1_types-hugo-ac9c2620-9fba-4a60-aa39-8e5fbdc57d7b
+  - emotion_recognition-pictures-4_images_1_types-ladislas-7c8cc8cb-c6ce-4fed-b656-d98018ad2502
+  - emotion_recognition-pictures-4_images_1_types-lucie-540372bf-1e0d-4969-a49c-61d0bfb7b579
+  - emotion_recognition-pictures-4_images_1_types-yann-1b1cce01-b360-4552-833e-01e05d476008
+  - emotion_recognition-pictures-4_images_1_types-ladislas_lucie_yann_hortense_hugo-46042e54-7d41-4c4c-a40a-0dad3b51b5b0
+  - emotion_recognition-pictures-2_images_2_types-hortense_lucie-01cd2e22-846d-4873-95d5-414366ef0cd5
+  - emotion_recognition-pictures-2_images_2_types-hortense_yann-ac80e69e-caba-41f6-8001-c359870b8569
+  - emotion_recognition-pictures-2_images_2_types-ladislas_hugo-4246413b-2fe4-4b53-aa0b-3b170f053eda
+  - emotion_recognition-pictures-2_images_2_types-lucie_ladislas-b9988679-9d34-49ff-bda9-0802fe83efa9
+  - emotion_recognition-pictures-2_images_2_types-yann_hugo-4abe3280-bdb4-4b5b-b3f2-1dd8cddecdd7
+  - emotion_recognition-pictures-4_images_2_types-hortense_lucie-721a6030-75f0-4731-8ded-2f1a5ba06e69
+  - emotion_recognition-pictures-4_images_2_types-yann_hortense-a22c67a2-28c8-4cd4-a0e7-aec34e6c564f
+  - emotion_recognition-pictures-4_images_2_types-hugo_ladislas-97938c8e-6f21-4fff-a24e-a51ae46baba6
+  - emotion_recognition-pictures-4_images_2_types-ladislas_lucie-53aab2b3-7310-4ba6-b2bd-979d738cd81d
+  - emotion_recognition-pictures-4_images_2_types-hugo_yann-969bc9f7-da53-41ab-ba3a-6b9c5e6773cf
+  - emotion_recognition-pictures-4_images_4_types-lucie_hortense_hugo_ladislas_yann-6dce5dd6-9bc8-4ae3-a6d1-24a531bda2bd
