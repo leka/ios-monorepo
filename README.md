@@ -1,6 +1,6 @@
 # Leka iOS' Monorepo
 
-[![Tuist badge](https://img.shields.io/badge/Powered%20by-Tuist-blue)](https://tuist.io)
+[![Tuist badge](https://img.shields.io/badge/Powered%20by-Tuist-blue)](https://tuist.io) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=leka_ios-monorepo&metric=alert_status&token=ae37dc9610e171e3c40c43642f1697e2e5f05db4)](https://sonarcloud.io/summary/new_code?id=leka_ios-monorepo) [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=leka_ios-monorepo&metric=code_smells&token=ae37dc9610e171e3c40c43642f1697e2e5f05db4)](https://sonarcloud.io/summary/new_code?id=leka_ios-monorepo) [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=leka_ios-monorepo&metric=security_rating&token=ae37dc9610e171e3c40c43642f1697e2e5f05db4)](https://sonarcloud.io/summary/new_code?id=leka_ios-monorepo) [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=leka_ios-monorepo&metric=sqale_rating&token=ae37dc9610e171e3c40c43642f1697e2e5f05db4)](https://sonarcloud.io/summary/new_code?id=leka_ios-monorepo) [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=leka_ios-monorepo&metric=bugs&token=ae37dc9610e171e3c40c43642f1697e2e5f05db4)](https://sonarcloud.io/summary/new_code?id=leka_ios-monorepo)
 
 ## About
 
@@ -30,8 +30,7 @@ tuist generate LekaApp
 tuist edit
 ```
 
-See tuist documentation: https://docs.tuist.io/tutorial/get-started
-
+See tuist documentation: <https://docs.tuist.io/tutorial/get-started>
 
 ## License
 
