@@ -12,8 +12,6 @@ import SwiftUI
 struct NoFeedback_ButtonStyle: ButtonStyle {
 	func makeBody(configuration: Self.Configuration) -> some View {
 		configuration.label
-			.opacity(configuration.isPressed ? 1 : 1)
-			.scaleEffect(configuration.isPressed ? 1 : 1, anchor: .center)
 	}
 }
 
@@ -27,8 +25,6 @@ struct BorderedCapsule_NoFeedback_ButtonStyle: ButtonStyle {
 
 	func makeBody(configuration: Self.Configuration) -> some View {
 		configuration.label
-			.opacity(configuration.isPressed ? 1 : 1)
-			.scaleEffect(configuration.isPressed ? 1 : 1, anchor: .center)
 			.font(font)
 			.foregroundColor(color)
 			.padding(.vertical, 10)
@@ -49,8 +45,6 @@ struct CircledIcon_NoFeedback_ButtonStyle: ButtonStyle {
 
 	func makeBody(configuration: Self.Configuration) -> some View {
 		configuration.label
-			.opacity(configuration.isPressed ? 1 : 1)
-			.scaleEffect(configuration.isPressed ? 1 : 1, anchor: .center)
 			.font(font)
 			.foregroundColor(Color.accentColor)
 			.frame(width: 46, height: 46)
