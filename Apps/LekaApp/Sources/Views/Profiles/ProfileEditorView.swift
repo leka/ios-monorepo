@@ -54,15 +54,17 @@ struct ProfileEditorView: View {
 	}
 
 	private var backButton: some View {
-		Button(action: {
-			// Leave without saving new selection
-			viewRouter.currentPage = .home
-		}) {
-			HStack(spacing: 4) {
-				Image(systemName: "chevron.left")
-				Text("Retour")
-			}
-		}
+		Button(
+			action: {
+				// Leave without saving new selection
+				viewRouter.currentPage = .home
+			},
+			label: {
+				HStack(spacing: 4) {
+					Image(systemName: "chevron.left")
+					Text("Retour")
+				}
+			})
 	}
 
 	private var validateButton: some View {

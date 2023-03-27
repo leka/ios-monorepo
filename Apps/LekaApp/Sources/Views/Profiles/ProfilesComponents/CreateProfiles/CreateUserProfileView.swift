@@ -145,25 +145,29 @@ struct CreateUserProfileView: View {
 	private var validateButton: some View {
 		Group {
 			if viewRouter.currentPage == .profiles {
-				Button(action: {
-					// Save changes and leave
-					company.saveProfileChanges(.user)
-					dismiss()
-				}) {
-					validateButtonLabel
-				}
+				Button(
+					action: {
+						// Save changes and leave
+						company.saveProfileChanges(.user)
+						dismiss()
+					},
+					label: {
+						validateButtonLabel
+					})
 			} else if viewRouter.currentPage == .welcome {
 				EmptyView()
 			} else {
 				// User Selector before launching an activity
-				Button(action: {
-					dismiss()
-					hideKeyboard()
-					company.saveProfileChanges(.user)
-					company.assignCurrentProfiles()
-				}) {
-					validateButtonLabel
-				}
+				Button(
+					action: {
+						dismiss()
+						hideKeyboard()
+						company.saveProfileChanges(.user)
+						company.assignCurrentProfiles()
+					},
+					label: {
+						validateButtonLabel
+					})
 			}
 		}
 		.disabled(company.bufferUser.name.isEmpty)

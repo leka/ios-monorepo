@@ -164,14 +164,17 @@ struct BotPicker: View {
 	}
 
 	private var backButton: some View {
-		Button(action: {
-			viewRouter.currentPage = .home
-		}) {
-			HStack(spacing: 4) {
-				Image(systemName: "chevron.left")
-				Text("Retour")
+		Button(
+			action: {
+				viewRouter.currentPage = .home
+			},
+			label: {
+				HStack(spacing: 4) {
+					Image(systemName: "chevron.left")
+					Text("Retour")
+				}
 			}
-		}
+		)
 		.tint(.accentColor)
 	}
 

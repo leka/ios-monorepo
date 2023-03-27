@@ -49,15 +49,17 @@ struct SettingsView: View {
 					.foregroundColor(.white)
 				}
 				ToolbarItem(placement: .navigationBarLeading) {
-					Button(action: {
-						dismiss()
-					}) {
-						HStack(spacing: 4) {
-							Image(systemName: "chevron.left")
-							Text("Fermer")
-						}
-						.foregroundColor(.white)
-					}
+					Button(
+						action: {
+							dismiss()
+						},
+						label: {
+							HStack(spacing: 4) {
+								Image(systemName: "chevron.left")
+								Text("Fermer")
+							}
+							.foregroundColor(.white)
+						})
 				}
 			}
 		}

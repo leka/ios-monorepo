@@ -51,15 +51,17 @@ struct WelcomeView: View {
 	}
 
 	private var skipButton: some View {
-		Button(action: {
-			company.setupDiscoveryCompany()
-			viewRouter.currentPage = .home
-		}) {
-			HStack(spacing: 4) {
-				Text("Passer cette étape")
-				Image(systemName: "chevron.right")
-			}
-		}
+		Button(
+			action: {
+				company.setupDiscoveryCompany()
+				viewRouter.currentPage = .home
+			},
+			label: {
+				HStack(spacing: 4) {
+					Text("Passer cette étape")
+					Image(systemName: "chevron.right")
+				}
+			})
 	}
 }
 
