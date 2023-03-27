@@ -132,19 +132,22 @@ struct CreateTeacherProfileView: View {
 		if viewRouter.currentPage == .welcome {
 			EmptyView()
 		} else {
-			Button(action: {
-				company.saveProfileChanges(.teacher)
-				if settings.companyIsLoggingIn {
-					company.assignCurrentProfiles()
-					viewRouter.currentPage = .home
-					settings.companyIsLoggingIn = false
-				} else {
-					dismiss()
+			Button(
+				action: {
+					company.saveProfileChanges(.teacher)
+					if settings.companyIsLoggingIn {
+						company.assignCurrentProfiles()
+						viewRouter.currentPage = .home
+						settings.companyIsLoggingIn = false
+					} else {
+						dismiss()
+					}
+					hideKeyboard()
+				},
+				label: {
+					validateButtonLabel
 				}
-				hideKeyboard()
-			}) {
-				validateButtonLabel
-			}
+			)
 			.disabled(company.bufferTeacher.name.isEmpty)
 		}
 	}

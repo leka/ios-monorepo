@@ -73,15 +73,17 @@ struct CurriculumDetailsView: View {
 						.foregroundColor(.accentColor)
 				}
 				ToolbarItem(placement: .navigationBarLeading) {
-					Button(action: {
-						viewRouter.currentPage = .home
-						//						curriculumVM.currentCurriculumSelectedActivityID = nil
-					}) {
-						HStack(spacing: 4) {
-							Image(systemName: "chevron.left")
-							Text("Retour")
-						}
-					}
+					Button(
+						action: {
+							viewRouter.currentPage = .home
+							//						curriculumVM.currentCurriculumSelectedActivityID = nil
+						},
+						label: {
+							HStack(spacing: 4) {
+								Image(systemName: "chevron.left")
+								Text("Retour")
+							}
+						})
 				}
 			}
 		}

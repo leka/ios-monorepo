@@ -47,21 +47,23 @@ struct ProfileSelector_Users: View {
 				.foregroundColor(.accentColor)
 			}
 			ToolbarItem(placement: .navigationBarLeading) {
-				Button(action: {
-					if viewRouter.currentPage == .game {
-						viewRouter.currentPage = .home
-						viewRouter.goToGameFromActivities = false
-					} else {
-						dismiss()
-						viewRouter.goToGameFromCurriculums = false
-					}
-					viewRouter.showUserSelector = false
-				}) {
-					HStack(spacing: 4) {
-						Image(systemName: "chevron.left")
-						Text("Retour")
-					}
-				}
+				Button(
+					action: {
+						if viewRouter.currentPage == .game {
+							viewRouter.currentPage = .home
+							viewRouter.goToGameFromActivities = false
+						} else {
+							dismiss()
+							viewRouter.goToGameFromCurriculums = false
+						}
+						viewRouter.showUserSelector = false
+					},
+					label: {
+						HStack(spacing: 4) {
+							Image(systemName: "chevron.left")
+							Text("Retour")
+						}
+					})
 			}
 		}
 	}

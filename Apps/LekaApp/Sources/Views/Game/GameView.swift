@@ -193,21 +193,24 @@ struct GameView: View {
 			)
 			.toolbar {
 				ToolbarItem(placement: .navigationBarLeading) {
-					Button(action: {
-						activityVM.resetActivity()
-						if viewRouter.currentPage == .curriculumDetail {
-							dismiss()
-							viewRouter.goToGameFromCurriculums = false
-						} else {
-							withAnimation {
-								viewRouter.currentPage = .home
+					Button(
+						action: {
+							activityVM.resetActivity()
+							if viewRouter.currentPage == .curriculumDetail {
+								dismiss()
+								viewRouter.goToGameFromCurriculums = false
+							} else {
+								withAnimation {
+									viewRouter.currentPage = .home
+								}
+								viewRouter.goToGameFromActivities = false
 							}
-							viewRouter.goToGameFromActivities = false
+						},
+						label: {
+							Image(systemName: "chevron.left")
+								.padding(.horizontal)
 						}
-					}) {
-						Image(systemName: "chevron.left")
-							.padding(.horizontal)
-					}
+					)
 					.disabled(activityVM.tapIsDisabled)
 				}
 				ToolbarItem(placement: .principal) {

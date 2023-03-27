@@ -50,10 +50,8 @@ struct ActivityListView: View {
 						}
 					}
 				}
-			}
-		) {
-			SelectedActivityInstructionsView()
-		}
+			}, content: { SelectedActivityInstructionsView() }
+		)
 		.searchable(
 			text: $searchQuery,
 			placement: .toolbar,

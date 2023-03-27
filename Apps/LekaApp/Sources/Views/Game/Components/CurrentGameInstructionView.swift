@@ -27,15 +27,17 @@ struct CurrentGameInstructionView: View {
 	}
 
 	private var resumeButton: some View {
-		Button(action: {
-			dismiss()
-		}) {
-			HStack(spacing: 4) {
-				Image(systemName: "arrow.2.circlepath")
-				Text("Reprendre")
-			}
-			.foregroundColor(.white)
-		}
+		Button(
+			action: {
+				dismiss()
+			},
+			label: {
+				HStack(spacing: 4) {
+					Image(systemName: "arrow.2.circlepath")
+					Text("Reprendre")
+				}
+				.foregroundColor(.white)
+			})
 	}
 
 	var body: some View {
