@@ -110,40 +110,6 @@ struct JobPickerToggleStyle: ToggleStyle {
 	}
 }
 
-// MARK: - Activity Button Style
-// struct ActivityIcon_Circular_ButtonStyle: ButtonStyle {
-//	func makeBody(configuration: Self.Configuration) -> some View {
-//		configuration.label
-//			.opacity(configuration.isPressed ? 0.95 : 1)
-//			.scaleEffect(configuration.isPressed ? 0.99 : 1, anchor: .center)
-//			.padding()
-//	}
-// }
-
-// MARK: - ActivityBtn's LabelStyle
-// struct ActivityIcon_Circular_LabelStyle: LabelStyle {
-//
-//    var backColor: Color = Color.white
-//    var strokeColor: Color = Color("btnLightBlue")
-//    var linewidth: CGFloat = 4
-//
-//    func makeBody(configuration: Self.Configuration) -> some View {
-//        VStack(spacing: 6) {
-//            configuration.icon
-//                .mask(Circle().inset(by: 4))
-//                .background(
-//                    ZStack {
-//                        Circle()
-//                            .shadow(color: .black.opacity(0.2), radius: 2.5, x: 0, y: 2.6)
-//                        Circle()
-//                            .fill(backColor, strokeBorder: strokeColor, lineWidth: linewidth)
-//                    }
-//                )
-//                .contentShape(Circle())
-//        }
-//    }
-// }
-
 // MARK: - Custom Gauge Style (FollowUp stats)
 struct SuccessGaugeStyle: GaugeStyle {
 	func makeBody(configuration: Configuration) -> some View {

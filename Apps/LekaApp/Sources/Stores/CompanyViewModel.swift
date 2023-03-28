@@ -57,12 +57,6 @@ class CompanyViewModel: ObservableObject {
 		}
 		preselectCurrentProfiles()
 	}
-	//	func sortProfiles(for collection: inout [Profile]) {
-	//		collection.sort { $0.name < $1.name }
-	//		if let i = collection.firstIndex(where: { $0.id == profilesInUse[$0.type] }) {
-	//			collection.move(fromOffsets: [i], toOffset: 0)
-	//		}
-	//	}
 
 	func getSelectedProfileAvatar(_ type: UserType) -> String {
 		switch type {
@@ -85,17 +79,6 @@ class CompanyViewModel: ObservableObject {
 				return [currentCompany.users[i].avatar, currentCompany.users[i].name]
 		}
 	}
-	//	func getNameAndAvatarFor(id: UUID, into: [Profile]) -> [String] {
-	//		if let i = into.firstIndex(where: { $0.id == id }) {
-	//			return [into[i].avatar, into[i].name]
-	//		} else {
-	//			let type = into[0].type
-	//			switch type {
-	//				case .teacher: return ["accompanying_blue", "Accompagnant"]
-	//				case .user: return [(!profileIsAssigned(.user) ? "question_mark" : "user_blue"), "Utilisateur"]
-	//			}
-	//		}
-	//	}
 
 	func getCurrentUserReinforcer() -> Int {
 		guard let i = currentCompany.users.firstIndex(where: { $0.id == profilesInUse[.user] }) else {
@@ -110,9 +93,6 @@ class CompanyViewModel: ObservableObject {
 			case .user: return currentCompany.users.map { [$0.id: $0.avatar] }
 		}
 	}
-	//	func getAllAvatarsOf(_ collection: [Profile]) -> [[UUID : String]] {
-	//		return collection.map { [$0.id : $0.avatar] }
-	//	}
 
 	func getAllProfilesIDFor(_ type: UserType) -> [UUID] {
 		switch type {
@@ -120,9 +100,6 @@ class CompanyViewModel: ObservableObject {
 			case .user: return currentCompany.users.map { $0.id }
 		}
 	}
-	//	func getAllProfileIDsFor(_ collection: [Profile]) -> [UUID] {
-	//		return collection.map { $0.id }
-	//	}
 
 	func resetBufferProfile(_ type: UserType) {
 		switch type {

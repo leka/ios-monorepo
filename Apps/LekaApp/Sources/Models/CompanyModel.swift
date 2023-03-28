@@ -11,20 +11,6 @@ enum UserType: Int, CaseIterable {
 	case user, teacher
 }
 
-// protocol Company_POP {
-//	var id: UUID { get }
-//	var mail: String { get set }
-//	var password: String { get set }
-//	var teachers: [any Profile] { get set }
-//	var users: [any Profile] { get set }
-
-//	func disconnect()
-//	func sortProfiles(for collection: inout [any Profile])
-//	func getNameAndAvatarFor(id: UUID, into: [any Profile]) -> [String]
-//	func getAllAvatarsOf(_ collection: [any Profile]) -> [[UUID : String]]
-//	func getAllProfileIDsFor(_ collection: [any Profile]) -> [UUID]
-// }
-
 struct Company: Identifiable {
 	var id = UUID()
 	var mail: String
