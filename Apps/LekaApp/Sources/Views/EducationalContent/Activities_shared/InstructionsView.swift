@@ -22,6 +22,7 @@ struct InstructionsView: View {
 	@EnvironmentObject var activityVM: ActivityViewModel
 	@EnvironmentObject var metrics: UIMetrics
 
+	// swiftlint:disable line_length
 	// FAKE DATA ===========================================================
 	//    @State private var instructionData: [InstructionData] =
 	//    [
@@ -32,6 +33,7 @@ struct InstructionsView: View {
 	//        InstructionData(title: "Validation de la leçon", instructions: "La leçon est valide lorsque **4 images sur les 5** ont été bien mises dans le panier.")
 	//    ]
 	// FAKE DATA ===========================================================
+	// swiftlint:enable line_length
 
 	var body: some View {
 		ScrollView(.vertical, showsIndicators: true) {

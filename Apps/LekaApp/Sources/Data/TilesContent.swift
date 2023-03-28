@@ -8,6 +8,8 @@
 import Foundation
 import SwiftUI
 
+// swiftlint:disable line_length
+
 struct TileContent {
 	var image: String?
 	var title: String?
@@ -130,3 +132,5 @@ enum TileData: Int, CaseIterable, Hashable {
 		}
 	}
 }
+
+// swiftlint:enable line_length
