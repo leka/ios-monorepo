@@ -21,6 +21,10 @@ identifier_name:
     - URL
     - BLE
     - new
+    - img
+    - lhs
+    - rhs
+    - i
 
 line_length:
   warning: 130
