@@ -33,4 +33,8 @@ disabled_rules:
   - opening_brace
   - switch_case_alignment
 
+excluded:
+  - Tuist/Dependencies
+  - ./*/Derived
+
 reporter: "emoji"
