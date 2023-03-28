@@ -10,11 +10,11 @@ import SwiftUI
 struct JobPickerStore: View {
 
 	@Binding var selectedJobs: [String]
-	private func jobSelection(job: String) {
-		if selectedJobs.contains(job) {
-			selectedJobs.removeAll(where: { job == $0 })
+	private func jobSelection(profession: String) {
+		if selectedJobs.contains(profession) {
+			selectedJobs.removeAll(where: { profession == $0 })
 		} else {
-			selectedJobs.append(job)
+			selectedJobs.append(profession)
 		}
 	}
 
@@ -23,13 +23,13 @@ struct JobPickerStore: View {
 			VStack(spacing: 40) {
 				let columns = Array(repeating: GridItem(), count: 3)
 				LazyVGrid(columns: columns, spacing: 40) {
-					ForEach(Professions.allCases) { job in
-						Toggle(isOn: .constant(selectedJobs.contains(job.name))) {
-							Text(job.name)
+					ForEach(Professions.allCases) { profession in
+						Toggle(isOn: .constant(selectedJobs.contains(profession.name))) {
+							Text(profession.name)
 						}
 						.toggleStyle(
 							JobPickerToggleStyle(action: {
-								jobSelection(job: job.name)
+								jobSelection(profession: profession.name)
 							}))
 					}
 				}

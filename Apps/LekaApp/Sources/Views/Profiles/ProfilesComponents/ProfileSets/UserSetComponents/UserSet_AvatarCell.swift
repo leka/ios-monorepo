@@ -14,12 +14,12 @@ struct UserSet_AvatarCell: View {
 	@EnvironmentObject var viewRouter: ViewRouter
 	@EnvironmentObject var metrics: UIMetrics
 
-	let of: User
+	let user: User
 
 	var body: some View {
 		Button {
 			withAnimation {
-				company.selectedProfiles[.user] = of.id
+				company.selectedProfiles[.user] = user.id
 			}
 			// Next context is within the userSelector right before launching a game
 			if viewRouter.currentPage != .profiles {
@@ -37,7 +37,7 @@ struct UserSet_AvatarCell: View {
 			VStack(spacing: 0) {
 				ZStack(alignment: .topTrailing) {
 					// Selection Indicator
-					selectionIndicator(id: of.id)
+					selectionIndicator(id: user.id)
 					// Avatar
 					Circle()
 						.fill(
@@ -46,7 +46,7 @@ struct UserSet_AvatarCell: View {
 							lineWidth: 3
 						)
 						.overlay(content: {
-							Image(of.avatar)
+							Image(user.avatar)
 								.resizable()
 								.aspectRatio(contentMode: .fill)
 								.clipShape(Circle())
@@ -56,7 +56,7 @@ struct UserSet_AvatarCell: View {
 					ZStack(alignment: .topTrailing) {
 						Circle()
 							.fill(Color("lekaLightGray"))
-						Image("reinforcer-\(of.reinforcer)")
+						Image("reinforcer-\(user.reinforcer)")
 							.resizable()
 							.renderingMode(.original)
 							.aspectRatio(contentMode: .fit)
@@ -72,12 +72,12 @@ struct UserSet_AvatarCell: View {
 				.frame(height: 108)
 				.padding(10)
 
-				Text(of.name)
+				Text(user.name)
 					.font(metrics.reg15)
 					.allowsTightening(true)
 					.lineLimit(2)
 					.padding(.horizontal, 14)
-					.foregroundColor(company.profileIsCurrent(.user, id: of.id) ? Color.white : Color("darkGray"))
+					.foregroundColor(company.profileIsCurrent(.user, id: user.id) ? Color.white : Color("darkGray"))
 					.padding(2)
 					.frame(minWidth: 108)
 					.background(content: {
@@ -85,7 +85,7 @@ struct UserSet_AvatarCell: View {
 							.stroke(.white, lineWidth: 2)
 					})
 					.background(
-						company.profileIsCurrent(.user, id: of.id) ? Color("lekaSkyBlue") : Color("lekaLightGray"),
+						company.profileIsCurrent(.user, id: user.id) ? Color("lekaSkyBlue") : Color("lekaLightGray"),
 						in: RoundedRectangle(cornerRadius: metrics.btnRadius))
 			}
 		}

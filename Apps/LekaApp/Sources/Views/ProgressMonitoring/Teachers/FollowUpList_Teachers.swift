@@ -17,7 +17,7 @@ struct FollowUpList_Teachers: View {
 	private func simulateChange() {
 		// simulate some change of profile for now
 		sidebar.successValues.shuffle()
-		company.willBeDeleted_FakeFollowUpNumberOfCells = Int.random(in: 0...10)
+		company.willBeDeletedFakeFollowUpNumberOfCells = Int.random(in: 0...10)
 	}
 
 	var body: some View {

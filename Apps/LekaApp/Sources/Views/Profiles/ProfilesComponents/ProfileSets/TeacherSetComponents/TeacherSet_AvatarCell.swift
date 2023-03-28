@@ -14,12 +14,12 @@ struct TeacherSet_AvatarCell: View {
 	@EnvironmentObject var viewRouter: ViewRouter
 	@EnvironmentObject var metrics: UIMetrics
 
-	let of: Teacher
+	let teacher: Teacher
 
 	var body: some View {
 		Button {
 			withAnimation {
-				company.selectedProfiles[.teacher] = of.id
+				company.selectedProfiles[.teacher] = teacher.id
 			}
 			if settings.companyIsLoggingIn {
 				company.assignCurrentProfiles()
@@ -30,7 +30,7 @@ struct TeacherSet_AvatarCell: View {
 			VStack(spacing: 0) {
 				ZStack(alignment: .topTrailing) {
 					// Selection Indicator
-					selectionIndicator(id: of.id)
+					selectionIndicator(id: teacher.id)
 					// Avatar
 					Circle()
 						.fill(
@@ -39,7 +39,7 @@ struct TeacherSet_AvatarCell: View {
 							lineWidth: 3
 						)
 						.overlay(content: {
-							Image(of.avatar)
+							Image(teacher.avatar)
 								.resizable()
 								.aspectRatio(contentMode: .fill)
 								.clipShape(Circle())
@@ -49,12 +49,14 @@ struct TeacherSet_AvatarCell: View {
 				.frame(height: 108)
 				.padding(10)
 
-				Text(of.name)
+				Text(teacher.name)
 					.font(metrics.reg15)
 					.allowsTightening(true)
 					.lineLimit(2)
 					.padding(.horizontal, 14)
-					.foregroundColor(company.profileIsCurrent(.teacher, id: of.id) ? Color.white : Color("darkGray"))
+					.foregroundColor(
+						company.profileIsCurrent(.teacher, id: teacher.id) ? Color.white : Color("darkGray")
+					)
 					.padding(2)
 					.frame(minWidth: 108)
 					.background(content: {
@@ -62,7 +64,8 @@ struct TeacherSet_AvatarCell: View {
 							.stroke(.white, lineWidth: 2)
 					})
 					.background(
-						company.profileIsCurrent(.teacher, id: of.id) ? Color("lekaSkyBlue") : Color("lekaLightGray"),
+						company.profileIsCurrent(.teacher, id: teacher.id)
+							? Color("lekaSkyBlue") : Color("lekaLightGray"),
 						in: RoundedRectangle(cornerRadius: metrics.btnRadius))
 			}
 		}

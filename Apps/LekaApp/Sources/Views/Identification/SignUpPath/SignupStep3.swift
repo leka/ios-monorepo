@@ -39,7 +39,7 @@ struct SignupStep3: View {
 					.resizable()
 					.renderingMode(.original)
 					.aspectRatio(contentMode: .fit)
-					.frame(height: metrics.tilePictoHeight_medium)
+					.frame(height: metrics.tilePictoHeightMedium)
 					.padding(.vertical, 20)
 
 				// Title

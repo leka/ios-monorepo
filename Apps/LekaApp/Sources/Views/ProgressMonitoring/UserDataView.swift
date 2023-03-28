@@ -17,7 +17,7 @@ struct UserDataView: View {
 		ZStack {
 			Color("lekaLightBlue").ignoresSafeArea()
 
-			List(0...company.willBeDeleted_FakeFollowUpNumberOfCells, id: \.self) { item in
+			List(0...company.willBeDeletedFakeFollowUpNumberOfCells, id: \.self) { item in
 				UserDataCell(successValue: $sidebar.successValues[item])
 					.alignmentGuide(.listRowSeparatorLeading) { _ in
 						return 0

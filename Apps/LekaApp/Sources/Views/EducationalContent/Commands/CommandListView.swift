@@ -25,7 +25,7 @@ struct CommandListView: View {
 				LazyVGrid(columns: columns) {
 					ForEach(images.indices, id: \.self) { item in
 						Image(images[item])
-							.ActivityIcon_ImageModifier(padding: 20)
+							.activityIconImageModifier(padding: 20)
 							.padding()
 					}
 				}

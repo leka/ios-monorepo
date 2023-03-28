@@ -31,7 +31,7 @@ struct ActivityListCell: View {
 
 	private var iconView: some View {
 		Image(icon)
-			.ActivityIcon_ImageModifier(diameter: iconDiameter)
+			.activityIconImageModifier(diameter: iconDiameter)
 			.padding(.leading, 10)
 	}
 

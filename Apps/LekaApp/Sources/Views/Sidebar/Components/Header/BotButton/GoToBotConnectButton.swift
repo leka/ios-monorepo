@@ -19,7 +19,7 @@ struct GoToBotConnectButton: View {
 		} label: {
 			HStack(spacing: 10) {
 				BotConnectionIndicator()
-				ButtonContent
+				buttonContent
 				Spacer()
 			}
 			.padding(.horizontal, 15)
@@ -32,7 +32,7 @@ struct GoToBotConnectButton: View {
 	}
 
 	@ViewBuilder
-	private var ButtonContent: some View {
+	private var buttonContent: some View {
 		if botVM.botIsConnected {
 			VStack(alignment: .leading, spacing: 4) {
 				Text("Connecté à")

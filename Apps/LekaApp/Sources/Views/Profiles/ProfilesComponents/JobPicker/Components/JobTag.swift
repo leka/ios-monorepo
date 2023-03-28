@@ -12,14 +12,14 @@ struct JobTag: View {
 	@EnvironmentObject var company: CompanyViewModel
 	@EnvironmentObject var metrics: UIMetrics
 
-	@State var job: String
+	@State var profession: String
 
 	var body: some View {
 		HStack(spacing: 12) {
-			Text(job)
+			Text(profession)
 				.padding(.leading, 4)
 			Button {
-				company.bufferTeacher.jobs.removeAll(where: { job == $0 })
+				company.bufferTeacher.jobs.removeAll(where: { profession == $0 })
 			} label: {
 				Image(systemName: "multiply.square.fill")
 			}
@@ -35,7 +35,7 @@ struct JobTag: View {
 
 struct JobTag_Previews: PreviewProvider {
 	static var previews: some View {
-		JobTag(job: "Accompagnant des élèves en situation de handicap")
+		JobTag(profession: "Accompagnant des élèves en situation de handicap")
 			.environmentObject(CompanyViewModel())
 			.environmentObject(UIMetrics())
 	}

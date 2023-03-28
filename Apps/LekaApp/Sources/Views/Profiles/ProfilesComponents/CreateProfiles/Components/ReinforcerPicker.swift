@@ -35,7 +35,7 @@ struct ReinforcerPicker: View {
 			VStack(spacing: 4) {
 				HStack(spacing: 12) {
 					ForEach(1...3, id: \.self) { item in
-						ReinforcerButton(item)
+						reinforcerButton(item)
 					}
 				}
 				.padding(.horizontal, 10)
@@ -43,7 +43,7 @@ struct ReinforcerPicker: View {
 
 				HStack(spacing: 12) {
 					ForEach(4...5, id: \.self) { item in
-						ReinforcerButton(item)
+						reinforcerButton(item)
 					}
 				}
 				.padding(.horizontal, 10)
@@ -55,7 +55,7 @@ struct ReinforcerPicker: View {
 		.animation(.default, value: company.bufferUser.reinforcer)
 	}
 
-	func ReinforcerButton(_ number: Int) -> some View {
+	func reinforcerButton(_ number: Int) -> some View {
 		Button {
 			company.bufferUser.reinforcer = number
 		} label: {
