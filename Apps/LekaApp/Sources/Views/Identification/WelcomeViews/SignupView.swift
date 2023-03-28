@@ -82,8 +82,20 @@ struct SignupView: View {
 		}()
 
 		let mailLabelColor: Color = {
-			return mail.isValidEmail() || mail.isEmpty || isEditing
-				? (accountAlreadyExists ? .red : .accentColor) : .red
+			// TODO(@ladislas): review logic in the future
+			var color: Color
+
+			if mail.isValidEmail() || mail.isEmpty || isEditing {
+				if accountAlreadyExists {
+					color = .red
+				} else {
+					color = .accentColor
+				}
+			} else {
+				color = .red
+			}
+
+			return color
 		}()
 
 		LekaTextField(

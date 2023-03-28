@@ -73,14 +73,31 @@ struct TeacherSet_AvatarCell: View {
 	}
 
 	private func selectionIndicator(id: UUID) -> some View {
-		Circle()
+		// TODO(@ladislas): review logic in the future
+		let lineWidth: CGFloat = {
+			guard company.selectedProfiles[.teacher] == id else {
+				guard company.profileIsCurrent(.teacher, id: id) else {
+					return 0
+				}
+				return 10
+			}
+			return 10
+		}()
+
+		let dash: [CGFloat] = {
+			guard company.profileIsCurrent(.teacher, id: id) else {
+				return [10, 4]
+			}
+			return [10, 0]
+		}()
+
+		return Circle()
 			.stroke(
 				Color("lekaSkyBlue"),
 				style: StrokeStyle(
-					lineWidth: company.selectedProfiles[.teacher] == id
-						? 10 : (company.profileIsCurrent(.teacher, id: id) ? 10 : 0),
+					lineWidth: lineWidth,
 					lineCap: .butt,
 					lineJoin: .round,
-					dash: [10, (company.profileIsCurrent(.teacher, id: id) ? 0 : 4)]))
+					dash: dash))
 	}
 }

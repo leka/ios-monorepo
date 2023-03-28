@@ -94,24 +94,40 @@ struct UserSet_AvatarCell: View {
 
 	@ViewBuilder
 	private func selectionIndicator(id: UUID) -> some View {
+		// TODO(@ladislas): review logic in the future
+		let lineWidth: CGFloat = {
+			guard company.selectedProfiles[.teacher] == id else {
+				guard company.profileIsCurrent(.teacher, id: id) else {
+					return 0
+				}
+				return 10
+			}
+			return 10
+		}()
+
+		let dash: [CGFloat] = {
+			guard company.profileIsCurrent(.teacher, id: id) else {
+				return [10, 4]
+			}
+			return [10, 0]
+		}()
+
 		Circle()
 			.stroke(
 				Color("lekaSkyBlue"),
 				style: StrokeStyle(
-					lineWidth: company.selectedProfiles[.user] == id
-						? 10 : (company.profileIsCurrent(.user, id: id) ? 10 : 0),
+					lineWidth: lineWidth,
 					lineCap: .butt,
 					lineJoin: .round,
-					dash: [10, (company.profileIsCurrent(.user, id: id) ? 0 : 4)]))
+					dash: dash))
 		Circle()
 			.stroke(
 				Color("lekaSkyBlue"),
 				style: StrokeStyle(
-					lineWidth: company.selectedProfiles[.user] == id
-						? 10 : (company.profileIsCurrent(.user, id: id) ? 10 : 0),
+					lineWidth: lineWidth,
 					lineCap: .butt,
 					lineJoin: .round,
-					dash: [10, (company.profileIsCurrent(.user, id: id) ? 0 : 4)])
+					dash: dash)
 			)
 			.frame(maxWidth: 40, maxHeight: 40)
 			.offset(x: 6, y: -6)
