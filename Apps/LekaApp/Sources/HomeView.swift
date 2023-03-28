@@ -148,7 +148,7 @@ struct HomeView: View {
 				Text("Quitter")
 			}
 		} message: {
-			Text(
+			Text(  // swiftlint:disable:next line_length
 				"Vous êtes actuellement en mode exploratoire. Ce mode vous permet d'explorer les contenus éducatifs sans que l'utilisation ne soit enregistrée."
 			)
 		}

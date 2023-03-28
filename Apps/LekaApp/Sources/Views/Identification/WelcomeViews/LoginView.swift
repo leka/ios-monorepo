@@ -20,7 +20,8 @@ struct LoginView: View {
 
 	@State private var navigateToTeacherSelector: Bool = false
 
-	// Make sure you have set up Associated Domains for your app and AutoFill Passwords is enabled in Settings in order to get the strong password proposals etc...
+	// Make sure you have set up Associated Domains for your app and AutoFill Passwords
+	// is enabled in Settings in order to get the strong password proposals etc...
 	// the same applies for both login/signup
 	// re-enable autofill modifiers in LekaTextField when OK (textContentType)
 

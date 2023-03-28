@@ -22,7 +22,7 @@ struct ReinforcerPicker: View {
 				Spacer()
 			}
 			HStack {
-				Text(
+				Text(  // swiftlint:disable:next line_length
 					"Le renforçateur est un effet lumineux répétitif du robot que vous pourrez actionner pour récompenser le comportement de l'utilisateur. \nSi votre robot est connecté, vous pouvez tester les renforçateurs avant d'en choisir un."
 				)
 				.font(metrics.reg12)

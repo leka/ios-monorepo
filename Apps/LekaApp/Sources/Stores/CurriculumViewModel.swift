@@ -27,7 +27,7 @@ class CurriculumViewModel: ObservableObject, YamlFileDecodable {
 			selectedCurriculumRank = "\(String(describing: (selectedCurriculum ?? 0)+1))/\(availableCurriculums.count)"
 			selectedCurriculumHeaderTitle = availableCurriculums[selectedCurriculum ?? 0].fullTitle.localized()
 			selectedCurriculumIcon = setCurriculumIcon(for: currentCurriculum)  // from Yaml later
-			selectedCurriculumDescription =
+			selectedCurriculumDescription =  // swiftlint:disable:next line_length
 				"Reconnaissance des 5 émotions primaires \n(peur, joie, tristesse, colère et dégoût) \nà travers les photos de 5 personnes différentes."  // from Yaml later
 		}
 	}
@@ -60,6 +60,7 @@ class CurriculumViewModel: ObservableObject, YamlFileDecodable {
 	}
 
 	//	func setCurriculumHeaderInfo() {
+	// swiftlint:disable:next line_length
 	//		selectedCurriculumHeaderTitle = availableCurriculums[selectedCurriculum ?? 0].fullTitle.localized() // fullTitle will become title_l1 etc...
 	//	}
 
