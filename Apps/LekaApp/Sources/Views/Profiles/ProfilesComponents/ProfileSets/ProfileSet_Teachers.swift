@@ -115,7 +115,7 @@ struct ProfileSet_Teachers: View {
 
 	private var teachersSet: some View {
 		ForEach(company.currentCompany.teachers) { teacher in
-			TeacherSet_AvatarCell(of: teacher)
+			TeacherSet_AvatarCell(teacher: teacher)
 		}
 	}
 

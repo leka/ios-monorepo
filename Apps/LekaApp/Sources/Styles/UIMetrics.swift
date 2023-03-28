@@ -51,9 +51,9 @@ class UIMetrics: ObservableObject {
 	// MARK: - Tiles
 	@Published var tilesRadius: CGFloat = 21
 	@Published var tileBtnWidth: CGFloat = 280
-	@Published var tilePictoHeight_small: CGFloat = 80
-	@Published var tilePictoHeight_medium: CGFloat = 100
-	@Published var tilePictoHeight_big: CGFloat = 120
+	@Published var tilePictoHeightSmall: CGFloat = 80
+	@Published var tilePictoHeightMedium: CGFloat = 100
+	@Published var tilePictoHeightBig: CGFloat = 120
 	@Published var tileContentWidth: CGFloat = 360
 	@Published var tileContentPadding: CGFloat = 25
 	@Published var tileSize = CGSize(width: 843, height: 327)

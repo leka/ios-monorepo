@@ -28,8 +28,8 @@ struct JobPickerTrigger: View {
 			}
 
 			if !company.bufferTeacher.jobs.isEmpty {
-				ForEach(company.bufferTeacher.jobs, id: \.self) { tag in
-					JobTag(job: tag)
+				ForEach(company.bufferTeacher.jobs, id: \.self) { profession in
+					JobTag(profession: profession)
 				}
 			}
 		}

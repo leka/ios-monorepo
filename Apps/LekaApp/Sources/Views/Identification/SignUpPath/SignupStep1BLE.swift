@@ -38,7 +38,7 @@ struct SignupStep1BLE: View {
 					.resizable()
 					.renderingMode(.original)
 					.aspectRatio(contentMode: .fit)
-					.frame(height: metrics.tilePictoHeight_big)
+					.frame(height: metrics.tilePictoHeightBig)
 					.padding(.top, 20)
 					.padding(.bottom, 10)
 

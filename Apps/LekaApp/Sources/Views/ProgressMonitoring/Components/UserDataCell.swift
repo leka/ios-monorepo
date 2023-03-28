@@ -36,7 +36,7 @@ struct UserDataCell: View {
 			Spacer()
 
 			Image("emotion_recognition-pictures-1_images_1_types-lucie-3fc7b66e-67a0-4f50-9817-9ef19af7f717")
-				.ActivityIcon_ImageModifier(diameter: 100)
+				.activityIconImageModifier(diameter: 100)
 
 			VStack(alignment: .leading) {
 				VStack(alignment: .leading, spacing: 0) {

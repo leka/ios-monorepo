@@ -255,11 +255,11 @@ struct GameView: View {
 				.edgesIgnoringSafeArea(.all)
 			)
 			.background(
-				GeometryReader { gr in
+				GeometryReader { reader in
 					Color.clear
 						.onAppear {
-							offsetGameOverBtn = -gr.frame(in: .local).width / 2
-							offsetReplayBtn = gr.frame(in: .local).width / 2
+							offsetGameOverBtn = -reader.frame(in: .local).width / 2
+							offsetReplayBtn = reader.frame(in: .local).width / 2
 							initialBtnOffsets = [offsetGameOverBtn, offsetReplayBtn]
 						}
 				})

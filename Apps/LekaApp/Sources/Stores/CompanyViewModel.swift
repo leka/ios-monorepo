@@ -19,7 +19,7 @@ class CompanyViewModel: ObservableObject {
 	@Published var editingProfile: Bool = false
 
 	// For the tests
-	@Published var willBeDeleted_FakeFollowUpNumberOfCells: Int = 0
+	@Published var willBeDeletedFakeFollowUpNumberOfCells: Int = 0
 
 	// MARK: - METHODS
 

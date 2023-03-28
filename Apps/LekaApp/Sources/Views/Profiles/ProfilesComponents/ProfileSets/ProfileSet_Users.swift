@@ -108,7 +108,7 @@ struct ProfileSet_Users: View {
 
 	private var usersSet: some View {
 		ForEach(company.currentCompany.users) { user in
-			UserSet_AvatarCell(of: user)
+			UserSet_AvatarCell(user: user)
 		}
 	}
 

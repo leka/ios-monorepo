@@ -21,7 +21,7 @@ struct NoBotTile: View {
 					.resizable()
 					.renderingMode(.original)
 					.aspectRatio(contentMode: .fit)
-					.frame(height: metrics.tilePictoHeight_small)
+					.frame(height: metrics.tilePictoHeightSmall)
 				Spacer()
 				// Message
 				Text(TileData.noBot.content.message!)

@@ -80,7 +80,7 @@ struct BotStore: View {
 					.resizable()
 					.renderingMode(.original)
 					.aspectRatio(contentMode: .fit)
-					.frame(height: metrics.tilePictoHeight_small)
+					.frame(height: metrics.tilePictoHeightSmall)
 					.padding(.top, 10)
 				Text("Lancer une recherche pour trouver les robots autour de vous !")
 					.font(metrics.reg17)
