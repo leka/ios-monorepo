@@ -99,13 +99,19 @@ struct ProfileSet_Teachers: View {
 
 	private var header: some View {
 		HStack(spacing: 20) {
-			if viewRouter.currentPage != .profiles { Spacer() }
+			if viewRouter.currentPage != .profiles {
+				Spacer()
+			}
 			Text("Qui êtes-vous ?")
 				.font(metrics.reg17)
 				.foregroundColor(.accentColor)
-			if viewRouter.currentPage == .profiles { Spacer() }
+			if viewRouter.currentPage == .profiles {
+				Spacer()
+			}
 			addButton()
-			if viewRouter.currentPage != .profiles { Spacer() }
+			if viewRouter.currentPage != .profiles {
+				Spacer()
+			}
 			if viewRouter.currentPage == .profiles {
 				editButton
 			}
