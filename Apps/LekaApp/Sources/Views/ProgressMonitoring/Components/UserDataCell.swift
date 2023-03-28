@@ -100,7 +100,7 @@ struct UserDataCell: View {
 						.offset(y: 5)
 					)
 
-				Gauge(value: successValue) {}
+				Gauge(value: successValue) { /* nothing to do */  }
 					.gaugeStyle(SuccessGaugeStyle())
 					.font(metrics.roundReg14)
 					.offset(y: -2)
@@ -157,7 +157,7 @@ struct UserDataCell: View {
 							.offset(y: 5)
 						)
 					Spacer()
-					Gauge(value: successValue) {}
+					Gauge(value: successValue) { /* nothing to do */  }
 						.gaugeStyle(SuccessGaugeStyle())
 						.font(metrics.roundReg14)
 						.offset(y: -2)
