@@ -62,7 +62,7 @@ extension Image {
 #endif
 
 // MARK: - Localized Custom Type for Yaml Translations
-// return "en" if Locale != "fr"
+
 extension LocalizedContent {
 	func localized() -> String {
 		guard let translation = (Locale.current.language.languageCode?.identifier == "fr" ? self.frFR : self.enUS)

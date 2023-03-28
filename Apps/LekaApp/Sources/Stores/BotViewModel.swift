@@ -11,7 +11,7 @@ class BotViewModel: ObservableObject {
 
 	// Bot Connect
 	// Make 'botIsConnected' & 'currentlyConnectedBotIndex' one prop' instead
-	// if currentlyConnectedBotIndex != nil, bot is connected for sure
+	// if currentlyConnectedBotIndex is not nil, bot is connected for sure
 	@Published var currentlySelectedBotIndex: Int?
 	@Published var currentlyConnectedBotIndex: Int?
 

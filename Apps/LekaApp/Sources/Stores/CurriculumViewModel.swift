@@ -11,7 +11,6 @@ import Yams
 class CurriculumViewModel: ObservableObject, YamlFileDecodable {
 
 	// MARK: - CurriculumList Published properties
-	//	@Published var curriculumFilesList: [String] = [""] // Do I need this??
 	@Published var availableCurriculums: [Curriculum] = []
 
 	// MARK: - Current || selected Curriculum Published properties
@@ -43,7 +42,6 @@ class CurriculumViewModel: ObservableObject, YamlFileDecodable {
 	}
 
 	func populateCurriculumList() {
-		//		curriculumFilesList = getCurriculumList().curriculums
 		for item in getCurriculumList().curriculums {
 			availableCurriculums.append(getCurriculum(item))
 		}
@@ -58,11 +56,6 @@ class CurriculumViewModel: ObservableObject, YamlFileDecodable {
 			return Curriculum()
 		}
 	}
-
-	//	func setCurriculumHeaderInfo() {
-	// swiftlint:disable:next line_length
-	//		selectedCurriculumHeaderTitle = availableCurriculums[selectedCurriculum ?? 0].fullTitle.localized() // fullTitle will become title_l1 etc...
-	//	}
 
 	func setCurriculumDetailNavTitle() -> String {
 		return

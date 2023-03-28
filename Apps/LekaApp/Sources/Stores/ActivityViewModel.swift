@@ -32,16 +32,6 @@ class ActivityViewModel: NSObject, ObservableObject, YamlFileDecodable {
 		}
 	}
 
-	// Unused
-	//    func getStep(_ title: String) -> Step {
-	//        do {
-	//            return try self.decodeYamlFile(withName: title, toType: Step.self)
-	//        } catch {
-	//            print("Steps: Failed to decode Yaml file with error:", error)
-	//            return Step()
-	//        }
-	//    }
-
 	// MARK: - Current Activity's properties
 	@Published var currentActivity = Activity()
 	@Published var selectedActivityID: UUID?  // save scroll position

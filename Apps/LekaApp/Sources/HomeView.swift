@@ -15,24 +15,6 @@ struct HomeView: View {
 	@EnvironmentObject var viewRouter: ViewRouter
 	@EnvironmentObject var metrics: UIMetrics
 
-	// delete
-	//    private func changeBatteryLevel() {
-	//        if botVM.botIsCharging {
-	//            if botVM.botChargeLevel == 100 {
-	//                botVM.botIsCharging.toggle() // off
-	//            } else {
-	//                botVM.botChargeLevel += 50
-	//            }
-	//        } else {
-	//            if botVM.botChargeLevel == 0 {
-	//				botVM.botIsCharging.toggle() // on
-	//				botVM.botChargeLevel += 50
-	//            } else {
-	//                botVM.botChargeLevel -= 25
-	//            }
-	//        }
-	//    }
-
 	// Toolbar Items - send those within their views directly, same for the infoButtons
 	private var toolbarTitle: some View {
 		HStack(spacing: 4) {
@@ -74,17 +56,6 @@ struct HomeView: View {
 					contentView(sidebar.currentView)
 				} detail: {
 					sidebar.allSidebarDestinationViews
-						//                        .blur(radius: sidebar.contentVisibility == .all ? 10 : 0)
-						//                        .overlay(
-						//                            Color.accentColor
-						//                                .edgesIgnoringSafeArea(.all)
-						//                                .opacity(sidebar.contentVisibility == .all ? 0.1 : 0)
-						//                                .onTapGesture {
-						//                                    withAnimation(.easeIn) {
-						//										sidebar.contentVisibility = .doubleColumn
-						//                                    }
-						//                                }
-						//                        )
 						.navigationBarTitleDisplayMode(.inline)
 						.onAppear {
 							sidebar.contentVisibility = NavigationSplitViewVisibility.all
@@ -96,15 +67,6 @@ struct HomeView: View {
 							ToolbarItem(placement: .navigationBarTrailing) {
 								infoButton
 							}
-							//                            ToolbarItem(placement: .navigationBarLeading) {
-							//                                Button {
-							//									sidebar.contentVisibility = sidebar.contentVisibility == .detailOnly ? .doubleColumn : .detailOnly
-							//                                } label: {
-							//                                    Image(systemName: "arrow.up.backward.and.arrow.down.forward")
-							//                                        .foregroundColor(.accentColor)
-							//                                }
-							//                                .opacity(sidebar.contentVisibility == .detailOnly ? 0 : 1)
-							//                            }
 						}
 						.background(Color("lekaLightBlue").ignoresSafeArea())
 				}
@@ -121,13 +83,6 @@ struct HomeView: View {
 								ToolbarItem(placement: .principal) {
 									toolbarTitle
 								}
-
-								//                                ToolbarItem(placement: .navigationBarLeading) {
-								//                                    Button(action: { changeBatteryLevel() }, label: {
-								//                                        Text("Batterie")
-								//                                    })
-								//                                }
-
 								ToolbarItem(placement: .navigationBarTrailing) {
 									infoButton
 								}

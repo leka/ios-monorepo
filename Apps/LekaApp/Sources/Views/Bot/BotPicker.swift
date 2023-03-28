@@ -18,14 +18,13 @@ struct BotPicker: View {
 	@State private var allBots: Int = 0
 	@State private var navigateToSignup1Final: Bool = false
 
-	// TESTs ===========================================
+	// ? For testing
 	@State private var showNoBotTile: Bool = false
 	func resetForTests() {
 		botVM.botIsConnected = false
 		botVM.currentlyConnectedBotIndex = nil
 		botVM.currentlySelectedBotIndex = nil
 	}
-	// TESTs ===========================================
 
 	var body: some View {
 		ZStack(alignment: .center) {
@@ -70,7 +69,7 @@ struct BotPicker: View {
 	private var searchButton: some View {
 		Button(
 			action: {
-				// TESTs ===========================================
+				// ? For testing
 				searchBtnLabel = "Recherche en cours..."
 				resetForTests()
 				DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
@@ -103,7 +102,6 @@ struct BotPicker: View {
 						}
 					}
 				}
-				// TESTs ===========================================
 			},
 			label: {
 				Text(searchBtnLabel)
@@ -179,12 +177,6 @@ struct BotPicker: View {
 	}
 
 	private var continueButton: some View {
-		//		NavigationLink(value: IdentificationNavDestinations.signup1Final) {
-		//			HStack(spacing: 4) {
-		//				Text("Continuer")
-		//				Image(systemName: "chevron.right")
-		//			}
-		//		}
 		Button(
 			action: {
 				navigateToSignup1Final.toggle()
