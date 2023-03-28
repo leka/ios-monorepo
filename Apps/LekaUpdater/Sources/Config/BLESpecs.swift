@@ -78,3 +78,5 @@ struct BLESpecs {
 		}
 	}
 }
+
+// swiftlint:enable nesting
