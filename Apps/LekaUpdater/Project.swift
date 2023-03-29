@@ -14,7 +14,7 @@ let project = Project.app(
 	],
 	infoPlist: [
 		"CFBundleShortVersionString": "1.4.0",
-		"os_version": "1.4.0",
+		"LEKA_OS_VERSION": "1.4.0",
 		"NSBluetoothAlwaysUsageDescription":
 			"The Leka Updater app needs to use Bluetooth to connect to the Leka robot.",
 		"UIRequiresFullScreen": "true",
