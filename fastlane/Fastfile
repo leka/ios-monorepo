@@ -20,13 +20,13 @@ APP_BUNDLE_IDS = [
 platform :ios do
   desc "Placeholder lane to make sure fastlane's working"
   lane :helloworld do
-    puts "Hello, Fastlane! (from #{Dir.pwd}, root: #{ROOT_DIR}, signing: #{SIGNING_DIR})"
+    UI.important "Hello, Fastlane! (from #{Dir.pwd}, root: #{ROOT_DIR}, signing: #{SIGNING_DIR})"
   end
 
-  desc 'Sync development certificates'
-  lane :sync_certificates do
-    puts 'Delete local provisioning profiles'
-    `rm -rf #{SIGNING_DIR}`
+  desc 'Sync certificates'
+  lane :sync_certificates do |options|
+    UI.important 'Delete local provisioning profiles'
+    system("rm -rf #{SIGNING_DIR}")
 
     create_keychain(
       name: 'io.leka.fastlane.keychain',
@@ -42,19 +42,31 @@ platform :ios do
       keychain_name: 'io.leka.fastlane.keychain'
     )
 
-    puts 'Rename provisioning profile'
+    if options[:release]
+      match(
+        type: 'appstore',
+        app_identifier: APP_BUNDLE_IDS,
+        readonly: true,
+        output_path: SIGNING_DIR.to_s,
+        keychain_name: 'io.leka.fastlane.keychain'
+      )
+    end
+
+    UI.important 'Rename provisioning profile'
     app_profiles = Dir.entries(SIGNING_DIR.to_s).select { |f| f.end_with?('mobileprovision') }
     APP_BUNDLE_IDS.each do |id|
       name = id.delete_prefix('io.leka.apf.app.')
-      puts "name: #{name}"
-      profile = app_profiles.select { |p| p.include?(name) }.first
-      puts "profile: #{profile}"
-      `mv -f #{SIGNING_DIR}/#{profile} #{SIGNING_DIR}/#{name}.Debug.mobileprovision`
+      UI.message "name: #{name}"
+      app_profiles.select { |p| p.include?(name) }.map do |p|
+        UI.message "profile: #{p}"
+        system("mv -f #{SIGNING_DIR}/#{p} #{SIGNING_DIR}/#{name}.Debug.mobileprovision") if p.include?('Development_')
+        system("mv -f #{SIGNING_DIR}/#{p} #{SIGNING_DIR}/#{name}.Release.mobileprovision") if p.include?('AppStore_')
+      end
     end
   end
 
-  desc 'Create development certificates'
-  lane :create_certificates do
+  desc 'Create certificates'
+  lane :create_certificates do |options|
     create_keychain(
       name: 'io.leka.fastlane.keychain',
       timeout: 0,
@@ -67,5 +79,13 @@ platform :ios do
       force_for_new_devices: true,
       keychain_name: 'io.leka.fastlane.keychain'
     )
+
+    if options[:release]
+      match(
+        type: 'appstore',
+        app_identifier: APP_BUNDLE_IDS,
+        keychain_name: 'io.leka.fastlane.keychain'
+      )
+    end
   end
 end
