@@ -30,6 +30,7 @@ platform :ios do
 
     create_keychain(
       name: 'io.leka.fastlane.keychain',
+      timeout: 0,
       unlock: true
     )
 
@@ -56,6 +57,7 @@ platform :ios do
   lane :create_certificates do
     create_keychain(
       name: 'io.leka.fastlane.keychain',
+      timeout: 0,
       unlock: true
     )
 
