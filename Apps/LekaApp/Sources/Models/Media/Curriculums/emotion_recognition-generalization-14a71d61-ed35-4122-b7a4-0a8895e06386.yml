@@ -1,0 +1,24 @@
+---
+title:
+  en_US: Emotions generalization
+  fr_FR: Généralisation des émotions
+
+subtitle:
+  en_US: with different types of images
+  fr_FR: avec différents types d'images
+  
+full_title:
+  en_US: Emotions generalization with different types of images
+  fr_FR: Généralisation des émotions avec différents types d'images
+
+uuid: 14a71d61-ed35-4122-b7a4-0a8895e06386
+
+number_of_activities: 6
+
+activities:
+  - emotion_recognition-generalization-3_images_2_types-c93c9465-4559-426d-961b-7074e63b4782
+  - emotion_recognition-generalization-3_images_3_types-3875e8e0-97b6-4655-a455-4d5d62f97aa7
+  - emotion_recognition-generalization-4_images_2_types-7c083f94-cc67-418c-8ed2-2b2da3102612
+  - emotion_recognition-generalization-4_images_3_types-0903663b-d062-434a-aa02-ad139509bd46
+  - emotion_recognition-generalization-6_images_2_types-b7f10e00-5d59-48fa-8c30-fa9bbd3c738a
+  - emotion_recognition-generalization-6_images_3_types-46511f38-10ec-4f0a-b84f-18bc8dd876b5

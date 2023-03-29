@@ -1,0 +1,61 @@
+---
+title:
+  en_US: Recognize the sounds of emotions with 1 picture
+  fr_FR: Reconnaitre les sons des émotions avec 1 photo
+short_title:
+  en_US: Lucie
+  fr_FR: Lucie
+uuid: 125ff23b-2fc5-4e28-9eea-15833f014d1e
+
+type: listen_then_touch_to_select
+
+number_of_steps: 10
+random_steps: true
+number_of_images_per_step: 1
+random_image_position: true
+steps:
+  - instruction:
+      en_US: Touch the speaker. What is this emotion?
+      fr_FR: Touche le haut-parleur. Quelle est cette émotion ?
+    correct_answer: emotion_picture_adult_joy_lucie
+    images:
+      - emotion_picture_adult_joy_lucie
+    sound: 
+      - emotion_sound_adult_joy_lucie
+
+  - instruction:
+      en_US: Touch the speaker. What is this emotion?
+      fr_FR: Touche le haut-parleur. Quelle est cette émotion ?
+    correct_answer: emotion_picture_adult_sad_lucie
+    images:
+      - emotion_picture_adult_sad_lucie
+    sound:
+      - emotion_sound_adult_sad_lucie
+
+  - instruction:
+      en_US: Touch the speaker. What is this emotion?
+      fr_FR: Touche le haut-parleur. Quelle est cette émotion ?
+    correct_answer: emotion_picture_adult_disgust_lucie
+    images:
+      - emotion_picture_adult_disgust_lucie
+    sound:
+      - emotion_sound_adult_disgust_lucie
+
+  - instruction:
+      en_US: Touch the speaker. What is this emotion?
+      fr_FR: Touche le haut-parleur. Quelle est cette émotion ?
+    correct_answer: emotion_picture_adult_fear_lucie
+    images:
+      - emotion_picture_adult_fear_lucie
+    sound:
+      - emotion_sound_adult_fear_lucie
+
+  - instruction:
+      en_US: Touch the speaker. What is this emotion?
+      fr_FR: Touche le haut-parleur. Quelle est cette émotion ?
+    correct_answer: emotion_picture_adult_angry_lucie
+    images:
+      - emotion_picture_adult_angry_lucie
+    sound:
+      - emotion_sound_adult_angry_lucie
+

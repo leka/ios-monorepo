@@ -1,0 +1,137 @@
+---
+title:
+  en_US: Generalization - recognize emotions with 2 types of images - 6 elements
+  fr_FR: Généralisation - reconnaitre des émotions avec 2 types d'images - 6 éléments
+
+short_title:
+  en_US: Generalization 2/6
+  fr_FR: Généralisation 2/6
+
+uuid: b7f10e00-5d59-48fa-8c30-fa9bbd3c738a
+
+number_of_steps: 10
+random_steps: true
+
+number_of_images_per_step: 6
+random_image_position: true
+
+steps:
+  - instruction:
+      en_US: Who is happy ?
+      fr_FR: Qui est content ?
+    correct_answer: emotion_picture_adult_joy_ladislas
+    images:
+      - emotion_picture_adult_joy_ladislas
+      - emotion_picture_adult_angry_yann
+      - emotion_picture_adult_disgust_hugo
+      - emotion_drawing_child_sad_moussa
+      - emotion_drawing_child_fear_louna
+      - emotion_drawing_child_angry_zoe
+
+  - instruction:
+      en_US: Who is sad ?
+      fr_FR: Qui est triste ?
+    correct_answer: emotion_picture_adult_sad_hugo
+    images:
+      - emotion_picture_adult_sad_hugo
+      - emotion_picture_adult_joy_hortense
+      - emotion_picture_adult_angry_lucie
+      - emotion_picto_fear_leka
+      - emotion_picto_disgust_leka
+      - emotion_picto_angry_leka
+
+  - instruction:
+      en_US: Who is disgusted ?
+      fr_FR: Qui est dégoûté ?
+    correct_answer: emotion_picture_adult_disgust_hortense
+    images:
+      - emotion_picto_angry_leka
+      - emotion_picto_joy_leka
+      - emotion_picto_sad_leka
+      - emotion_picture_adult_disgust_hortense
+      - emotion_picture_adult_angry_hugo
+      - emotion_picture_adult_sad_ladislas
+
+  - instruction:
+      en_US: Who is afraid ?
+      fr_FR: Qui a peur ?
+    correct_answer: emotion_drawing_child_fear_oscar
+    images:
+      - emotion_picture_adult_sad_hortense
+      - emotion_picture_adult_angry_lucie
+      - emotion_picture_adult_disgust_hugo
+      - emotion_drawing_child_fear_oscar
+      - emotion_drawing_child_angry_zoe
+      - emotion_drawing_child_sad_hugo
+
+  - instruction:
+      en_US: Who is angry ?
+      fr_FR: Qui est en colère ?
+    correct_answer: emotion_drawing_child_angry_louna
+    images:
+      - emotion_drawing_child_angry_louna
+      - emotion_drawing_child_sad_hugo
+      - emotion_drawing_child_disgust_zoe
+      - emotion_picture_adult_joy_yann
+      - emotion_picture_adult_fear_ladislas
+      - emotion_picture_adult_fear_lucie
+
+  - instruction:
+      en_US: Who is happy ?
+      fr_FR: Qui est content ?
+    correct_answer: emotion_drawing_child_joy_hugo
+    images:
+      - emotion_picto_fear_leka
+      - emotion_picto_angry_leka
+      - emotion_picto_sad_leka
+      - emotion_drawing_child_fear_oscar
+      - emotion_drawing_child_sad_zoe
+      - emotion_drawing_child_joy_hugo
+
+  - instruction:
+      en_US: Who is sad ?
+      fr_FR: Qui est triste ?
+    correct_answer: emotion_picto_sad_leka
+    images:
+      - emotion_picture_adult_fear_hortense
+      - emotion_picture_adult_joy_ladislas
+      - emotion_picture_adult_angry_hugo
+      - emotion_picto_sad_leka
+      - emotion_picto_fear_leka
+      - emotion_picto_disgust_leka
+
+  - instruction:
+      en_US: Who is disgusted ?
+      fr_FR: Qui est dégoûté ?
+    correct_answer: emotion_picto_disgust_leka
+    images:
+      - emotion_drawing_child_angry_hugo
+      - emotion_drawing_child_joy_oscar
+      - emotion_drawing_child_sad_louna
+      - emotion_picto_disgust_leka
+      - emotion_picto_fear_leka
+      - emotion_picto_angry_leka
+
+  - instruction:
+      en_US: Who is afraid ?
+      fr_FR: Qui a peur ?
+    correct_answer: emotion_picto_fear_leka
+    images:
+      - emotion_picto_fear_leka
+      - emotion_picto_joy_leka
+      - emotion_picto_angry_leka
+      - emotion_picture_adult_disgust_lucie
+      - emotion_picture_adult_joy_hortense
+      - emotion_picture_adult_angry_yann
+
+  - instruction:
+      en_US: Who is angry ?
+      fr_FR: Qui est en colère ?
+    correct_answer: emotion_picture_adult_angry_hugo
+    images:
+      - emotion_picture_adult_angry_hugo
+      - emotion_picture_adult_sad_ladislas
+      - emotion_picture_adult_joy_lucie
+      - emotion_picto_fear_leka
+      - emotion_picto_sad_leka
+      - emotion_picto_disgust_leka
