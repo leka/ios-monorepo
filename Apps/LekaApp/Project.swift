@@ -15,5 +15,17 @@ let project = Project.app(
 		.external(name: "Lottie"),
 	],
 	infoPlist: [
-		"NSAccentColorName": "AccentColor"
+		"CFBundleShortVersionString": "1.0.0",
+		"NSBluetoothAlwaysUsageDescription":
+			"The Leka App needs to use Bluetooth to connect to the Leka robot.",
+		"UIRequiresFullScreen": "true",
+		"UISupportedInterfaceOrientations": [
+			"UIInterfaceOrientationLandscapeRight",
+			"UIInterfaceOrientationLandscapeLeft",
+		],
+		"UISupportedInterfaceOrientations~ipad": [
+			"UIInterfaceOrientationLandscapeRight",
+			"UIInterfaceOrientationLandscapeLeft",
+		],
+		"NSAccentColorName": "AccentColor",
 	])

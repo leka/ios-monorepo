@@ -13,6 +13,7 @@ let project = Project.app(
 		.project(target: "CoreUI", path: Path("../../Modules/CoreUI"))
 	],
 	infoPlist: [
+		"CFBundleShortVersionString": "1.4.0",
 		"os_version": "1.4.0",
 		"NSBluetoothAlwaysUsageDescription":
 			"The Leka Updater app needs to use Bluetooth to connect to the Leka robot.",

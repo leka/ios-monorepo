@@ -29,7 +29,7 @@ Placeholder lane to make sure fastlane's working
 [bundle exec] fastlane ios sync_certificates
 ```
 
-Sync development certificates
+Sync certificates
 
 ### ios create_certificates
 
@@ -37,7 +37,15 @@ Sync development certificates
 [bundle exec] fastlane ios create_certificates
 ```
 
-Create development certificates
+Create certificates
+
+### ios beta_internal
+
+```sh
+[bundle exec] fastlane ios beta_internal
+```
+
+Submit new internal beta app
 
 ----
 
