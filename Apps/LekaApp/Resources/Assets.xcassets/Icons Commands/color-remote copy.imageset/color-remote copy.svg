@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100" height="100" viewBox="0 0 100 100">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_1813" data-name="Rectangle 1813" width="17.164" height="28.498" transform="translate(0 0)" fill="none" stroke="#000" stroke-width="2.5"/>
+    </clipPath>
+    <clipPath id="clip-path-2">
+      <rect id="Rectangle_1813-2" data-name="Rectangle 1813" width="17.164" height="28.442" fill="none" stroke="#000" stroke-width="2.5"/>
+    </clipPath>
+    <clipPath id="clip-path-3">
+      <rect id="Rectangle_1813-3" data-name="Rectangle 1813" width="17.164" height="28.465" fill="none" stroke="#000" stroke-width="3"/>
+    </clipPath>
+    <clipPath id="clip-path-4">
+      <rect id="Rectangle_1813-4" data-name="Rectangle 1813" width="17.164" height="28.465" transform="translate(0 0)" fill="none" stroke="#000" stroke-width="3"/>
+    </clipPath>
+    <clipPath id="clip-color-remote_copy">
+      <rect width="100" height="100"/>
+    </clipPath>
+  </defs>
+  <g id="color-remote_copy" data-name="color-remote copy" clip-path="url(#clip-color-remote_copy)">
+    <rect width="100" height="100" fill="#fff"/>
+    <path id="Combined_Shape" data-name="Combined Shape" d="M.214,38v0a8.153,8.153,0,0,0,5.639-2.455,8.075,8.075,0,0,0,2.329-5.684A8.172,8.172,0,0,0,0,21.714l.008,0a13.571,13.571,0,0,0,9.635-3.973,13.449,13.449,0,0,0,3.994-9.6A8.182,8.182,0,0,1,30,8.143a29.547,29.547,0,0,1-2.358,11.621,29.751,29.751,0,0,1-6.429,9.49,29.909,29.909,0,0,1-9.536,6.4A29.927,29.927,0,0,1,.214,38Z" transform="translate(50 41)" fill="#007aff"/>
+    <path id="Combined_Shape_Copy_2" data-name="Combined Shape Copy 2" d="M.214,38v0a8.153,8.153,0,0,0,5.639-2.455,8.075,8.075,0,0,0,2.329-5.684A8.172,8.172,0,0,0,0,21.714l.008,0a13.571,13.571,0,0,0,9.635-3.973,13.449,13.449,0,0,0,3.994-9.6A8.182,8.182,0,0,1,30,8.143a29.547,29.547,0,0,1-2.358,11.621,29.751,29.751,0,0,1-6.429,9.49,29.909,29.909,0,0,1-9.536,6.4A29.927,29.927,0,0,1,.214,38Z" transform="translate(42 50) rotate(-90)" fill="#b5ef41"/>
+    <path id="Combined_Shape_Copy_3" data-name="Combined Shape Copy 3" d="M.214,38v0a8.153,8.153,0,0,0,5.639-2.455,8.075,8.075,0,0,0,2.329-5.684A8.172,8.172,0,0,0,0,21.714l.008,0a13.571,13.571,0,0,0,9.635-3.973,13.449,13.449,0,0,0,3.994-9.6A8.182,8.182,0,0,1,30,8.143a29.547,29.547,0,0,1-2.358,11.621,29.751,29.751,0,0,1-6.429,9.49,29.909,29.909,0,0,1-9.536,6.4A29.927,29.927,0,0,1,.214,38Z" transform="translate(51 58) rotate(180)" fill="#f8e71c"/>
+    <path id="Combined_Shape_Copy" data-name="Combined Shape Copy" d="M.214,38v0a8.153,8.153,0,0,0,5.639-2.455,8.075,8.075,0,0,0,2.329-5.684A8.172,8.172,0,0,0,0,21.714l.008,0a13.571,13.571,0,0,0,9.635-3.973,13.449,13.449,0,0,0,3.994-9.6A8.182,8.182,0,0,1,30,8.143a29.547,29.547,0,0,1-2.358,11.621,29.751,29.751,0,0,1-6.429,9.49,29.909,29.909,0,0,1-9.536,6.4A29.927,29.927,0,0,1,.214,38Z" transform="translate(59 49) rotate(90)" fill="#ff4237"/>
+    <g id="Ellipse_880" data-name="Ellipse 880" transform="translate(37 36)" fill="none" stroke="#000" stroke-width="3">
+      <circle cx="13.5" cy="13.5" r="13.5" stroke="none"/>
+      <circle cx="13.5" cy="13.5" r="12" fill="none"/>
+    </g>
+    <g id="Ellipse_881" data-name="Ellipse 881" transform="translate(20 19)" fill="none" stroke="#000" stroke-width="3">
+      <circle cx="30.5" cy="30.5" r="30.5" stroke="none"/>
+      <circle cx="30.5" cy="30.5" r="29" fill="none"/>
+    </g>
+    <g id="Groupe_6481" data-name="Groupe 6481" transform="translate(74.727 72.768)">
+      <g id="Groupe_6480" data-name="Groupe 6480" transform="translate(-37 -58)" clip-path="url(#clip-path)">
+        <path id="Tracé_4155" data-name="Tracé 4155" d="M8.836,17.54h0A8.522,8.522,0,0,1,8.836.5" transform="translate(4.169 5.229)" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="2.5"/>
+      </g>
+    </g>
+    <g id="Groupe_6482" data-name="Groupe 6482" transform="translate(46.836 55.769)">
+      <g id="Groupe_6480-2" data-name="Groupe 6480" transform="translate(0 0)" clip-path="url(#clip-path-2)">
+        <path id="Tracé_4155-2" data-name="Tracé 4155" d="M.5,17.506h0A8.505,8.505,0,0,0,.5.5" transform="translate(3.659 5.218)" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="2.5"/>
+      </g>
+    </g>
+    <g id="Groupe_6483" data-name="Groupe 6483" transform="matrix(0.225, 0.974, -0.974, 0.225, 42.975, 42.22)">
+      <g id="Groupe_6480-3" data-name="Groupe 6480" transform="translate(0 0)" clip-path="url(#clip-path-3)">
+        <path id="Tracé_4155-3" data-name="Tracé 4155" d="M.5,17.52h0A8.512,8.512,0,0,0,.5.5" transform="translate(3.659 5.222)" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="2.5"/>
+      </g>
+    </g>
+    <g id="Groupe_6484" data-name="Groupe 6484" transform="matrix(-0.208, -0.978, 0.978, -0.208, 57.9, 56.917)">
+      <g id="Groupe_6480-4" data-name="Groupe 6480" transform="translate(0 0)" clip-path="url(#clip-path-4)">
+        <path id="Tracé_4155-4" data-name="Tracé 4155" d="M0,0H0A8.5,8.5,0,0,1,8.334,8.663,8.5,8.5,0,0,1,0,17.021" transform="translate(4.159 5.722)" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="2.5"/>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,34 @@
+---
+title:
+  en_US: Emotions recognition
+  fr_FR: Reconnaissance des émotions
+
+subtitle:
+  en_US: with sounds
+  fr_FR: avec des sons
+  
+full_title:
+  en_US: Emotions recognition with sounds
+  fr_FR: Reconnaissance des émotions avec des sons
+
+uuid: a3a4aa6a-1ea5-4a8f-82cd-f3879cfbdc72
+
+number_of_activities: 16
+
+activities:
+  - emotion_recognition-sounds-1_hortense-e631cc65-d3ed-4691-8adf-2290311d055a
+  - emotion_recognition-sounds-1_ladislas-d6144d9c-0bdd-4d65-86ed-a859c48c9de9
+  - emotion_recognition-sounds-1_lucie-125ff23b-2fc5-4e28-9eea-15833f014d1e
+  - emotion_recognition-sounds-2_hortense-1c20ec40-acd6-423c-943c-b5bffc18d74a
+  - emotion_recognition-sounds-2_ladislas-752f66df-8e15-4ef3-947e-d64d5d24f3a9
+  - emotion_recognition-sounds-2_lucie-1a99dda4-c534-4577-a9be-c5683c43fc01
+  - emotion_recognition-sounds-4_hortense-3d16271d-8807-41ea-84f5-1631eeae5fba
+  - emotion_recognition-sounds-4_ladislas-466a969b-5ea2-4153-94f2-33737427b839
+  - emotion_recognition-sounds-4_lucie-0580093a-6e62-465d-bfe8-212d2bdcdb10
+  - emotion_recognition-sounds-2_hortense-ladislas-86c5d826-0f97-403c-a444-febb5060d220
+  - emotion_recognition-sounds-2_hortense-lucie-058a9152-bbdb-482e-9f43-e9dbe898ca37
+  - emotion_recognition-sounds-2_ladislas-lucie-791063d5-6c9a-4540-8495-2a49fa826acb
+  - emotion_recognition-sounds-4_hortense-ladislas-8aeac9b2-6176-4f20-a8e6-6962d24a0e19
+  - emotion_recognition-sounds-4_hortense-lucie-47264ade-a7b7-4ddf-b1d0-38e7eb34fac2
+  - emotion_recognition-sounds-4_ladislas-lucie-9b06de79-d1db-492b-a5f0-3ef0cf4aaada
+  - emotion_recognition-sounds-3_hortense-lucie-ladislas-85b0af03-cce2-4794-80b4-99f6f2b586c6

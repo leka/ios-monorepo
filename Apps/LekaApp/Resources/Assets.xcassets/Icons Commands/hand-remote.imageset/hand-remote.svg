@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100" height="100" viewBox="0 0 100 100">
+  <defs>
+    <clipPath id="clip-hand-remote">
+      <rect width="100" height="100"/>
+    </clipPath>
+  </defs>
+  <g id="hand-remote" clip-path="url(#clip-hand-remote)">
+    <rect width="100" height="100" fill="#fff"/>
+    <g id="Groupe_6477" data-name="Groupe 6477">
+      <circle id="Oval_7" data-name="Oval 7" cx="3" cy="3" r="3" transform="translate(47 16)" fill="#f8e71c" stroke="#000" stroke-miterlimit="10" stroke-width="2"/>
+      <circle id="Oval_7_Copy" data-name="Oval 7 Copy" cx="3" cy="3" r="3" transform="translate(47 78)" fill="#f8e71c" stroke="#000" stroke-miterlimit="10" stroke-width="2"/>
+      <circle id="Oval_7-2" data-name="Oval 7" cx="3" cy="3" r="3" transform="translate(16 53) rotate(-90)" fill="#f8e71c" stroke="#000" stroke-miterlimit="10" stroke-width="2"/>
+      <circle id="Oval_7_Copy-2" data-name="Oval 7 Copy" cx="3" cy="3" r="3" transform="translate(78 53) rotate(-90)" fill="#f8e71c" stroke="#000" stroke-miterlimit="10" stroke-width="2"/>
+      <circle id="Oval_7-3" data-name="Oval 7" cx="3" cy="3" r="3" transform="translate(23.838 28.08) rotate(-45)" fill="#f8e71c" stroke="#000" stroke-miterlimit="10" stroke-width="2"/>
+      <circle id="Oval_7_Copy-3" data-name="Oval 7 Copy" cx="3" cy="3" r="3" transform="translate(67.678 71.92) rotate(-45)" fill="#f8e71c" stroke="#000" stroke-miterlimit="10" stroke-width="2"/>
+      <circle id="Oval_7-4" data-name="Oval 7" cx="3" cy="3" r="3" transform="translate(28.08 76.163) rotate(-135)" fill="#f8e71c" stroke="#000" stroke-miterlimit="10" stroke-width="2"/>
+      <circle id="Oval_7_Copy-4" data-name="Oval 7 Copy" cx="3" cy="3" r="3" transform="translate(71.92 32.322) rotate(-135)" fill="#f8e71c" stroke="#000" stroke-miterlimit="10" stroke-width="2"/>
+      <g id="Group_3" data-name="Group 3" transform="translate(28 28)">
+        <circle id="Oval_6" data-name="Oval 6" cx="22" cy="22" r="22" fill="#d8d8d8" stroke="#000" stroke-miterlimit="10" stroke-width="3"/>
+        <path id="Line" d="M0,0,4,5" transform="translate(10 6)" fill="none" stroke="#000" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3"/>
+        <path id="Line-2" data-name="Line" d="M0,0,4,5" transform="translate(10 6)" fill="none" stroke="#000" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3"/>
+        <path id="Line-3" data-name="Line" d="M0,0,4,5" transform="translate(10 6)" fill="none" stroke="#000" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3"/>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100" height="100" viewBox="0 0 100 100">
+  <defs>
+    <clipPath id="clip-story-4">
+      <rect width="100" height="100"/>
+    </clipPath>
+  </defs>
+  <g id="story-4" clip-path="url(#clip-story-4)">
+    <rect width="100" height="100" fill="#fff"/>
+    <g id="Group_9" data-name="Group 9" transform="translate(18 10)">
+      <g id="Group_6" data-name="Group 6">
+        <g id="Group_3" data-name="Group 3">
+          <g id="Group_2" data-name="Group 2">
+            <path id="Rectangle" d="M0,.1,64.5-6.747l-.031-59.728H4.863A4.835,4.835,0,0,0,0-61.668Z" transform="translate(0 66.476)" fill="#c3ffe2" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/>
+            <path id="Rectangle_2" data-name="Rectangle 2" d="M0-6.744A6.788,6.788,0,0,0,6.832,0H64.469a11,11,0,0,1-2.744-6.744,11.112,11.112,0,0,1,2.744-6.744H6.832A6.788,6.788,0,0,0,0-6.744Z" transform="translate(0 73.32)" fill="#efeff4" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/>
+            <path id="Rectangle_3" data-name="Rectangle 3" d="M0,0,4.821-2.661,9.642,0V-12.524H0Z" transform="translate(11.749 79.1)" fill="#ff3b30" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/>
+          </g>
+          <path id="Line" d="M0,.963H14.407" transform="translate(9.207 65.13)" fill="none" stroke="#000" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/>
+          <path id="Line_2" data-name="Line 2" d="M1.446,57.323V.482" transform="translate(5.785 0.963)" fill="none" stroke="#000" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/>
+        </g>
+      </g>
+    </g>
+    <g id="Group_33" data-name="Group 33" transform="translate(39.847 32.607) rotate(21)">
+      <g id="Rectangle-2" data-name="Rectangle" transform="matrix(1, -0.017, 0.017, 1, 25.238, 3.357)" fill="#9b9b9b" stroke="#000" stroke-miterlimit="10" stroke-width="1.5">
+        <rect width="5.048" height="3.527" rx="1.764" stroke="none"/>
+        <rect x="0.75" y="0.75" width="3.548" height="2.027" rx="1.014" fill="none"/>
+      </g>
+      <path id="Rectangle_69" data-name="Rectangle 69" d="M0,0H28.267a11.1,11.1,0,0,1-8.774,6.411l-5.359.643L8.761,6.41A11.074,11.074,0,0,1,0,0Z" transform="matrix(1, -0.017, 0.017, 1, 0, 4.266)" fill="#ff4a4a" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5"/>
+      <ellipse id="Oval" cx="13.881" cy="2.771" rx="13.881" ry="2.771" transform="matrix(1, -0.017, 0.017, 1, 0, 0.73)" fill="#9b9b9b" stroke="#000" stroke-miterlimit="10" stroke-width="1.5"/>
+      <path id="Oval_Copy" data-name="Oval Copy" d="M23.164,1.411C23.164.632,17.978,0,11.582,0S0,.632,0,1.411L1.757,1.9a86.1,86.1,0,0,0,9.825.617A63.934,63.934,0,0,0,21.3,1.9C23.545,1.61,23.164,1.411,23.164,1.411Z" transform="matrix(1, -0.017, 0.017, 1, 2.524, 3.674)" fill="#9b9b9b" stroke="#000" stroke-miterlimit="10" stroke-width="1.5"/>
+      <path id="Oval_Copy-2" data-name="Oval Copy" d="M23.219,1.512C23.219.677,18.021,0,11.61,0S0,.677,0,1.512" transform="matrix(1, -0.017, 0.017, 1, 2.524, 3.674)" fill="#9b9b9b" stroke="#000" stroke-miterlimit="10" stroke-width="1.5"/>
+      <ellipse id="Oval-2" data-name="Oval" cx="13.881" cy="2.771" rx="13.881" ry="2.771" transform="matrix(1, -0.017, 0.017, 1, 0, 0.73)" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="1.5"/>
+      <g id="Combined_Shape" data-name="Combined Shape" transform="matrix(1, -0.017, 0.017, 1, 27.671, 3.676)" fill="#9b9b9b" stroke-miterlimit="10">
+        <path d="M 9.649800300598145 4.145100116729736 C 9.120030403137207 4.145100116729736 8.626399993896484 3.720870018005371 8.421450614929199 3.089460134506226 L 8.253170013427734 2.571000099182129 L 7.708090305328369 2.571000099182129 L 1.660500288009644 2.571000099182129 C 1.158450245857239 2.571000099182129 0.7500002384185791 2.16254997253418 0.7500002384185791 1.660500049591064 C 0.7500002384185791 1.15845000743866 1.158450245857239 0.7500000596046448 1.660500288009644 0.7500000596046448 L 9.62190055847168 0.7500000596046448 L 9.628520011901855 0.7500400543212891 L 9.634270668029785 0.7500900626182556 L 9.64253044128418 0.7500700354576111 L 9.648480415344238 0.7500200867652893 C 10.38212013244629 0.7500000596046448 10.97790050506592 1.511320114135742 10.97790050506592 2.447100162506104 C 10.97790050506592 3.383380174636841 10.38212013244629 4.145100116729736 9.649800300598145 4.145100116729736 Z" stroke="none"/>
+        <path d="M 9.649800300598145 3.395100116729736 C 9.917140007019043 3.395100116729736 10.22790050506592 2.980990171432495 10.22790050506592 2.447100162506104 C 10.22790050506592 1.915468096733093 9.919185638427734 1.502729535102844 9.652445793151855 1.500014543533325 L 9.633160591125488 1.500090003013611 L 9.62190055847168 1.5 L 1.660500288009644 1.5 C 1.57200026512146 1.5 1.500000238418579 1.572000026702881 1.500000238418579 1.660500049591064 C 1.500000238418579 1.749000072479248 1.57200026512146 1.821000099182129 1.660500288009644 1.821000099182129 L 8.798260688781738 1.821000099182129 L 9.134819984436035 2.857920169830322 C 9.23585033416748 3.169180154800415 9.452430725097656 3.395100116729736 9.649800300598145 3.395100116729736 M 9.649800300598145 4.895100116729736 C 8.763609886169434 4.895100116729736 8.006830215454102 4.241400241851807 7.708090305328369 3.321000099182129 L 1.660500288009644 3.321000099182129 C 0.7434002757072449 3.321000099182129 2.525329705349577e-07 2.577600002288818 2.525329705349577e-07 1.660500049591064 C 2.525329705349577e-07 0.7434000372886658 0.7434002757072449 5.836486849375433e-08 1.660500288009644 5.836486849375433e-08 L 9.62190055847168 5.836486849375433e-08 C 9.631198883056641 5.836486494104065e-08 9.640520095825195 5.836486849375433e-08 9.649800300598145 5.836486849375433e-08 C 10.79730033874512 5.836486849375433e-08 11.72790050506592 1.095300078392029 11.72790050506592 2.447100162506104 C 11.72790050506592 3.798900127410889 10.79730033874512 4.895100116729736 9.649800300598145 4.895100116729736 Z" stroke="none" fill="#000"/>
+      </g>
+    </g>
+    <g id="Group_Copy" data-name="Group Copy" transform="translate(43.113 27.5)">
+      <path id="Oval_12" data-name="Oval 12" d="M9.578,7.894c6.072,0,12.3,2.776,12.3,1.178S15.65,2.1,9.578,2.1,0-1.158,0,.441,3.506,7.894,9.578,7.894Z" transform="translate(0.393 0)" fill="#e1c8a8" stroke="#000" stroke-miterlimit="10" stroke-width="2"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100" height="100" viewBox="0 0 100 100">
+  <defs>
+    <clipPath id="clip-story-6">
+      <rect width="100" height="100"/>
+    </clipPath>
+  </defs>
+  <g id="story-6" clip-path="url(#clip-story-6)">
+    <rect width="100" height="100" fill="#fff"/>
+    <g id="Group_9" data-name="Group 9" transform="translate(17 10)">
+      <g id="Group_6" data-name="Group 6">
+        <g id="Group_3" data-name="Group 3">
+          <g id="Group_2" data-name="Group 2">
+            <path id="Rectangle" d="M0,.1,64.5-6.747l-.031-59.728H4.863A4.835,4.835,0,0,0,0-61.668Z" transform="translate(0 66.476)" fill="#8da3ff" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/>
+            <path id="Rectangle_2" data-name="Rectangle 2" d="M0-6.744A6.788,6.788,0,0,0,6.832,0H64.469a11,11,0,0,1-2.744-6.744,11.112,11.112,0,0,1,2.744-6.744H6.832A6.788,6.788,0,0,0,0-6.744Z" transform="translate(0 73.32)" fill="#efeff4" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/>
+            <path id="Rectangle_3" data-name="Rectangle 3" d="M0,0,4.821-2.661,9.642,0V-12.524H0Z" transform="translate(11.749 79.1)" fill="#ff3b30" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/>
+          </g>
+          <path id="Line" d="M0,.963H14.407" transform="translate(9.207 65.13)" fill="none" stroke="#000" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/>
+          <path id="Line_2" data-name="Line 2" d="M1.446,57.323V.482" transform="translate(5.785 0.963)" fill="none" stroke="#000" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/>
+        </g>
+      </g>
+    </g>
+    <g id="Group_3-2" data-name="Group 3" transform="translate(32 18)">
+      <g id="Group_2-2" data-name="Group 2" transform="translate(0 3.175)">
+        <path id="Path_250" data-name="Path 250" d="M14.433,7.852S8.947,3.4,7.216,2.452L4.725,1.509A3.125,3.125,0,0,0,.565,3.771L0,6.382A58.072,58.072,0,0,0,1.332,18c1.294,7.086,6.551,18.1,6.551,18.1V28.3s-2.845-8.123-3.5-11.478A61.151,61.151,0,0,1,3.348,5.771c.048-3.155,3.678.09,5,1.1A24.056,24.056,0,0,1,11.6,10.486Z" transform="translate(0 -1.305)" fill="#6fa1c9" stroke="#000" stroke-miterlimit="10" stroke-width="1.5"/>
+        <path id="Path_250-2" data-name="Path 250" d="M-87.752,7.852s5.486-4.449,7.216-5.4l2.491-.943a3.125,3.125,0,0,1,4.161,2.262l.565,2.611A58.072,58.072,0,0,1-74.65,18C-75.944,25.089-81.2,36.1-81.2,36.1V28.3s2.845-8.123,3.5-11.478A61.15,61.15,0,0,0-76.666,5.771c-.048-3.155-3.678.09-5,1.1a24.056,24.056,0,0,0-3.254,3.615Z" transform="translate(114.725 -1.305)" fill="#6fa1c9" stroke="#000" stroke-miterlimit="10" stroke-width="1.5"/>
+      </g>
+      <path id="Combined_Shape" data-name="Combined Shape" d="M5.345,11.349A5.352,5.352,0,0,1,0,6V5.345a5.346,5.346,0,0,1,10.691,0V6A5.352,5.352,0,0,1,5.345,11.349Zm0-9.211A3.375,3.375,0,0,0,1.974,5.51V6A3.372,3.372,0,1,0,8.717,6V5.51A3.376,3.376,0,0,0,5.345,2.138Z" transform="translate(15.296 0)" fill="#76a9d4" stroke="#000" stroke-miterlimit="10" stroke-width="1.5"/>
+      <g id="Rectangle_109" data-name="Rectangle 109" transform="translate(5.757 3.947)" fill="#facc7d" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5">
+        <path d="M14.885,0h0A14.885,14.885,0,0,1,29.77,14.885V36.5a2.977,2.977,0,0,1-2.977,2.977H2.977A2.977,2.977,0,0,1,0,36.5V14.885A14.885,14.885,0,0,1,14.885,0Z" stroke="none"/>
+        <path d="M14.885.75h0A14.135,14.135,0,0,1,29.02,14.885v21.1a2.742,2.742,0,0,1-2.742,2.742H3.492A2.742,2.742,0,0,1,.75,35.982v-21.1A14.135,14.135,0,0,1,14.885.75Z" fill="none"/>
+      </g>
+      <g id="Group" transform="translate(11.513 23.684)">
+        <rect id="Rectangle-2" data-name="Rectangle" width="18.257" height="14.309" rx="7.155" fill="#e25f56" stroke="#000" stroke-miterlimit="10" stroke-width="1.5"/>
+        <path id="Rectangle-3" data-name="Rectangle" d="M4.6,0h9.065a4.6,4.6,0,0,1,4.6,4.6v0a0,0,0,0,1,0,0H0a0,0,0,0,1,0,0v0A4.6,4.6,0,0,1,4.6,0Z" fill="#fff" stroke="#000" stroke-miterlimit="10" stroke-width="1.5"/>
+        <path id="Line_38" data-name="Line 38" d="M1.5,0V1.562" transform="translate(13.22 4.934)" fill="none" stroke="#000" stroke-linecap="round" stroke-miterlimit="10" stroke-width="1.5"/>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -21,6 +21,10 @@ identifier_name:
     - URL
     - BLE
     - new
+    - img
+    - lhs
+    - rhs
+    - i
 
 line_length:
   warning: 130
@@ -32,5 +36,10 @@ disabled_rules:
   - trailing_comma
   - opening_brace
   - switch_case_alignment
+  - closure_parameter_position
+
+excluded:
+  - Tuist/Dependencies
+  - ./*/Derived
 
 reporter: "emoji"
