@@ -88,7 +88,7 @@ extension Project {
 			"CFBundleVersion": "1",
 			"UIMainStoryboardFile": "",
 			"UILaunchStoryboardName": "LaunchScreen",
-
+			"ITSAppUsesNonExemptEncryption": "NO",
 		]
 
 		let global = base.merging(infoPlist) { (_, new) in new }
