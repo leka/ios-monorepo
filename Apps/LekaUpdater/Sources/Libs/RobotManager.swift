@@ -19,7 +19,7 @@ class RobotManager: NSObject, CBCentralManagerDelegate, ObservableObject {
 	var central: CBCentralManager!
 
 	override init() {
-		guard let osVersion = Bundle.main.object(forInfoDictionaryKey: "os_version") as? String else {
+		guard let osVersion = Bundle.main.object(forInfoDictionaryKey: "LEKA_OS_VERSION") as? String else {
 			fatalError("LekaOS version not found in InfoPlist")
 		}
 
