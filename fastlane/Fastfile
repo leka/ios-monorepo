@@ -88,4 +88,52 @@ platform :ios do
       )
     end
   end
+
+  desc 'Submit new internal beta app'
+  lane :beta_internal do |options|
+    UI.user_error! 'A target must be specified, for example: LekaApp, LekaUpdater, etc.' if options[:targets].nil?
+
+    apps = []
+
+    if options[:targets] == 'all'
+      UI.important 'All apps will be built'
+      apps = APP_BUNDLE_IDS.map { |app| File.extname(app.to_s).delete('.') }
+    else
+      apps += options[:targets].split(',')
+      UI.important "The following apps will be built: #{apps}"
+    end
+
+    build_date = Time.new.strftime('%Y_%m_%d')
+
+    apps.each do |app|
+      UI.header "Generate, build & upload #{app}"
+      Dir.chdir('..') do
+        sh('tuist', 'generate', '-n', app.to_s)
+      end
+
+      app_id = "io.leka.apf.app.#{app}"
+      app_xcodeproj = "#{ROOT_DIR}/Apps/#{app}/#{app}.xcodeproj"
+
+      version_number = get_local_version(xcodeproj: app_xcodeproj.to_s)
+      build_number = latest_testflight_build_number(app_identifier: app_id.to_s) + 1
+
+      increment_build_number(
+        build_number: build_number,
+        xcodeproj: app_xcodeproj.to_s
+      )
+
+      build_app(
+        workspace: 'ios-monorepo.xcworkspace',
+        scheme: app,
+        output_directory: './.build',
+        output_name: "#{build_date}-#{app}-v#{version_number}-#{build_number}"
+      )
+
+      upload_to_testflight(
+        app_identifier: app_id.to_s,
+        skip_waiting_for_build_processing: true,
+        distribute_external: false
+      )
+    end
+  end
 end
