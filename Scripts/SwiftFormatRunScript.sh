@@ -10,8 +10,14 @@ fi
 
 export PATH
 
+SCRIPT_PATH=$(realpath "$0")
+SCRIPT_DIR=$(dirname "$SCRIPT_PATH")
+ROOT_DIR=$(realpath "$SCRIPT_DIR/..")
+
 if which swift-format > /dev/null; then
-	swift-format format -i -r ../../ --configuration ../../.swift-format
+	echo "ROOT_DIR: $ROOT_DIR"
+	echo "SCRIPT_DIR: $SCRIPT_DIR"
+	swift-format format --configuration $ROOT_DIR/.swift-format --in-place --parallel  --color-diagnostics --recursive $ROOT_DIR
 else
     echo "warning: swift-format not installed, download from https://github.com/apple/swift-format"
 fi
