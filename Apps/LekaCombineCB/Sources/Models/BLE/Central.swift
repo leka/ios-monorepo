@@ -33,14 +33,19 @@ class Central: ObservableObject {
 			.scan(
 				[],
 				{ list, discovery -> [PeripheralDiscovery] in
-					guard !list.contains(where: { $0.id == discovery.id }) else { return list }
-					return list + [discovery]
+					guard let index = list.firstIndex(where: { $0.id == discovery.id }) else {
+						return list + [discovery]
+					}
+					var newList = list
+					newList[index] = discovery
+					return newList
 				}
 			)
 			.receive(on: DispatchQueue.main)
 			.sink(receiveValue: { [weak self] in
 				self?.peripherals = $0
 			})
+
 		self.scanning = centralManager.isScanning
 	}
 
