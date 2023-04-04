@@ -1,0 +1,149 @@
+# Leka - Educational Content
+# Copyright 2023 APF Frdance handicap
+# SPDX-License-Identifier: Apache-2.0
+
+# yaml-language-server: $schema=../Specs/schema/activity/v1.0.0/activity.schema.json
+
+schema:
+  $ref: "../Specs/schema/activity/v1.0.0/activity.schema.json"
+
+uuid: 3ff93edc-576c-450c-acbc-xxxxxxxxxxxx
+name: code_name_of_the_activity
+
+authors:
+  - name: Leka @ APF France handicap
+    email: content@leka.io
+  - name: Aurore Kiesler
+    email: aurore.kiesler@gmail.com
+
+locales:
+  - fr-FR
+  - en-US
+  - fr-CA
+
+l10n:
+  - locale: fr-FR
+    details:
+      icon: name_of_the_activity-icon-fr_FR.svg
+
+      title:
+        line_1: Titre sur une ligne
+        line_2: et sur une deuxième
+
+      description: |
+        Courte description de l'activité sur plusieurs lignes
+        Si besoin!
+        Et en markdown **simple** seulement
+
+      instructions: |
+        ## Longues instructions en markdown
+
+        Lorem markdownum recepta avidum, missa de quam patientia, antris: cum defuit,
+        Titan repetemus nomine, ignare. Quod ad aura, et non quod vidisse utque ulla.
+
+        Haud functo, invictumque refert: verbis in coloris, mergum [fuit](#hae): quoque.
+        Quoque durescit *est*, ingredior manu, carpsere utero, generatus radios fides
+        animae miratur.
+
+        ## Crimina sub sentiet inclite arboris coronatae dissiluit
+
+        Freta dicta pondus inpius rapui: donare nato bracchia esse signa certe flammis.
+        Illi *alasque*. Illi hinc vehebat, raptamque [primum debueram dixit](#ne)
+        loquuntur flecti ossibus sollicitat erat ereptas vox inquit?
+
+        # Titre
+
+        - Pro inposuit tibi orsa tum artes ferox
+        - Acmon plausu qua agrestum situs virgo in
+        - Vacuus a pendens rostro non si pharetrae
+        - Haeremusque quos auxiliaris coniunx
+        - Repulsa impediunt munera teneri fallebat
+        - Bracchia frustra telo Iovis faucibus casus
+
+  - locale: en-US
+    details:
+      icon: name_of_the_activity-icon-en_US.svg
+
+      title:
+        line_1: Title on one line
+        line_2: and on a second
+
+      description: |
+        Short description of the activity on several lines
+        If necessary!
+        And in markdown **simple** only
+
+      instructions: |
+        ## Long instructions in markdown
+
+        Lorem markdownum recepta avidum, missa de quam patientia, antris: cum defuit,
+        Titan repetemus nomine, ignare. Quod ad aura, et non quod vidisse utque ulla.
+
+        Haud functo, invictumque refert: verbis in coloris, mergum [fuit](#hae): quoque.
+        Quoque durescit *est*, ingredior manu, carpsere utero, generatus radios fides
+        animae miratur.
+
+        ## Crimina sub sentiet inclite arboris coronatae dissiluit
+
+        Freta dicta pondus inpius rapui: donare nato bracchia esse signa certe flammis.
+        Illi *alasque*. Illi hinc vehebat, raptamque [primum debueram dixit](#ne)
+        loquuntur flecti ossibus sollicitat erat ereptas vox inquit?
+
+        - Pro inposuit tibi orsa tum artes ferox
+        - Acmon plausu qua agrestum situs virgo in
+        - Vacuus a pendens rostro non si pharetrae
+        - Haeremusque quos auxiliaris coniunx
+        - Repulsa impediunt munera teneri fallebat
+        - Bracchia frustra telo Iovis faucibus casus
+
+gameplay:
+  type: individual # vs collective
+  hmi: tablet_and_robot_as_reinforcer # robot_only tablet_and_robot robot_only_rfid
+
+  skills:
+    - skill_one
+    - skill_two
+
+  shuffled_steps: true
+
+  sequence:
+    - instruction:
+        - locale: fr-FR
+          value: Instruction donnée à l'utilisateur
+        - locale: en-US
+          value: Instruction given to the user
+      items:
+        interaction: listen_then_touch_to_select
+        interface: inline
+        type: image
+        shuffled: false
+        choices:
+          - image_1
+          - image_2
+          - image_3
+        answer:
+          list:
+            - image_2
+          expected: single
+
+    - instruction:
+        - locale: fr-FR
+          value: Instruction donnée à l'utilisateur
+        - locale: en-US
+          value: Instruction given to the user
+      items:
+        interaction: touch_to_select
+        interface: stacked
+        type: color
+        shuffled: true
+        choices:
+          - pink
+          - red
+          - orange
+          - green
+          - blue
+        answers:
+          list:
+            - blue
+            - pink
+          expected: all
