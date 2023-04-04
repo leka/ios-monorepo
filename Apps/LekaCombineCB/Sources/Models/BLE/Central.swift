@@ -62,4 +62,9 @@ class Central: ObservableObject {
 			.receive(on: DispatchQueue.main)
 			.assign(to: &$peripheralConnectResult)
 	}
+
+	func disconnect(_ peripheral: Peripheral) {
+		centralManager.cancelPeripheralConnection(peripheral)
+	}
+
 }

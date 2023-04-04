@@ -13,7 +13,7 @@ struct ConnexionView: View {
 
 	var body: some View {
 		if let device = central.connectedPeripheral {
-			RobotView(central: central, peripheral: device)
+			RobotView(robot: Robot(central: central, blePeripheral: device))
 		} else {
 			Form {
 				Section {

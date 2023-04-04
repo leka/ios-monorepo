@@ -23,21 +23,12 @@ struct ReadOnlyView: View {
 }
 
 struct RobotView: View {
-	@ObservedObject var central: Central
-	var peripheral: Peripheral
+	@StateObject var robot: Robot
 
-	@ObservedObject var robot: Robot
-
-	@State private var isPresented = false
-
-	init(central: Central, peripheral: Peripheral) {
-		self.central = central
-		self.peripheral = peripheral
-		self.robot = Robot(central: central, blePeripheral: peripheral)
-	}
+	@State private var backToConnexionMenu = false
 
 	var body: some View {
-		if isPresented {
+		if backToConnexionMenu {
 			ConnexionView()
 		} else {
 			VStack(alignment: .leading) {
@@ -93,7 +84,10 @@ struct RobotView: View {
 			.padding()
 			.toolbar {
 				Button {
-					isPresented = true
+					guard let connectedPeripheral = robot.central.connectedPeripheral else { return }
+
+					robot.central.disconnect(connectedPeripheral)
+					backToConnexionMenu = true
 				} label: {
 					Text("Connect to another robot")
 				}

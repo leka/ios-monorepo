@@ -18,7 +18,6 @@ class Robot: ObservableObject, Identifiable {
 	var tagIDCBCharacteristic: CBCharacteristic?
 	var tagLanguageCBCharacteristic: CBCharacteristic?
 
-
 	@Published var manufacturer = ""
 	@Published var modelNumber = ""
 	@Published var serialNumber = ""
