@@ -13,6 +13,10 @@ class Robot: ObservableObject, Identifiable {
 
 	var central: Central
 	var blePeripheral: Peripheral
+	var batteryCBCharacteristic: CBCharacteristic?
+	var chargingStatusCBCharacteristic: CBCharacteristic?
+	var tagIDCBCharacteristic: CBCharacteristic?
+	var tagLanguageCBCharacteristic: CBCharacteristic?
 
 	@Published var name = ""
 
@@ -43,10 +47,8 @@ class Robot: ObservableObject, Identifiable {
 		self.blePeripheral = blePeripheral
 		self.central = central
 
+		discover()
 		readRequestAll()
-
-		//		listen(to: BLESpecs.Battery.Characteristics.level, in: BLESpecs.Battery.service)
-		//		listen(to: BLESpecs.Monitoring.Characteristics.chargingStatus, in: BLESpecs.Monitoring.service)
 	}
 
 	// func onAdvertisingDataUpdated(advertisingData: AdvertisementData) {
@@ -65,41 +67,15 @@ class Robot: ObservableObject, Identifiable {
 		readModelNumber()
 		readSerialNumber()
 		readOsVersion()
-		readBatteryLevel()
-		readChargingStatus()
-		readMagicCardId()
-		readMagicCardLanguage()
-
 	}
 
-	// func listen(to characteristicUUID: CBUUID, in serviceUUID: CBUUID) {
-	// 	var char: CBCharacteristic?
-	// 	blePeripheral.discoverCharacteristic(withUUID: characteristicUUID, inServiceWithUUID: serviceUUID)
-	// 		.receive(on: DispatchQueue.main)
-	// 		.sink(
-	// 			receiveCompletion: { _ in },
-	// 			receiveValue: { characteristic in
-	// 				char = characteristic
-	// 			}
-	// 		)
-	// 		.store(in: &central.cancellables)
+	func discover() {
+		guard central.connectedPeripheral == blePeripheral else { return }
 
-	// 	guard let char = char else { return }
-
-	// 	self.blePeripheral.listenForUpdates(on: char)
-	// 		.receive(on: DispatchQueue.main)
-	// 		.sink(
-	// 			receiveCompletion: { _ in
-	// 				// Do nothing
-	// 			},
-	// 			receiveValue: { data in
-	// 				if let value = data?.first {
-	// 					self.isCharging = (value == 0x01)
-	// 				}
-	// 			}
-	// 		)
-	// 		.store(in: &central.cancellables)
-	// }
+		discoverBatteryCBCharacteristic()
+		discoverChargingStatusCBCharacteristic()
+		discoverTagCBCharacteristics()
+	}
 
 	func runReinforcer(_ reinforcer: UInt8) {
 		//		guard isConnected else { return }
@@ -120,6 +96,150 @@ class Robot: ObservableObject, Identifiable {
 			},
 			receiveValue: { _ in
 				// Do nothing
+			}
+		)
+		.store(in: &central.cancellables)
+	}
+
+	//
+	// MARK: - Specific discover functions
+	//
+
+	func discoverBatteryCBCharacteristic() {
+		blePeripheral.discoverCharacteristic(
+			withUUID: BLESpecs.Battery.Characteristics.level, inServiceWithUUID: BLESpecs.Battery.service
+		)
+		.receive(on: DispatchQueue.main)
+		.sink(
+			receiveCompletion: { _ in },
+			receiveValue: { characteristic in
+				self.blePeripheral.setNotifyValue(true, for: characteristic)
+					.assertNoFailure()
+					.sink {
+						self.batteryCBCharacteristic = characteristic
+						self.listenBatteryCharacteristic()
+					}
+					.store(in: &self.central.cancellables)
+			}
+		)
+		.store(in: &central.cancellables)
+	}
+
+	func discoverChargingStatusCBCharacteristic() {
+		blePeripheral.discoverCharacteristic(
+			withUUID: BLESpecs.Monitoring.Characteristics.chargingStatus, inServiceWithUUID: BLESpecs.Monitoring.service
+		)
+		.receive(on: DispatchQueue.main)
+		.sink(
+			receiveCompletion: { _ in },
+			receiveValue: { characteristic in
+				self.blePeripheral.setNotifyValue(true, for: characteristic)
+					.assertNoFailure()
+					.sink {
+						self.chargingStatusCBCharacteristic = characteristic
+						self.listenChargingStatusCharacteristic()
+					}
+					.store(in: &self.central.cancellables)
+			}
+		)
+		.store(in: &central.cancellables)
+	}
+
+	func discoverTagCBCharacteristics() {
+		blePeripheral.discoverCharacteristics(
+			withUUIDs: [BLESpecs.MagicCard.Characteristics.id, BLESpecs.MagicCard.Characteristics.language],
+			inServiceWithUUID: BLESpecs.MagicCard.service
+		)
+		.receive(on: DispatchQueue.main)
+		.sink(
+			receiveCompletion: { _ in },
+			receiveValue: { characteristics in
+				self.blePeripheral.setNotifyValue(true, for: characteristics[0])
+					.assertNoFailure()
+					.sink {
+						self.tagIDCBCharacteristic = characteristics[0]
+						self.listenTagIDCharacteristic()
+					}
+					.store(in: &self.central.cancellables)
+				self.blePeripheral.setNotifyValue(true, for: characteristics[1])
+					.assertNoFailure()
+					.sink {
+						self.tagLanguageCBCharacteristic = characteristics[1]
+						self.listenTagLanguageCharacteristic()
+					}
+					.store(in: &self.central.cancellables)
+			}
+		)
+		.store(in: &central.cancellables)
+	}
+
+	//
+	// MARK: - Specific listen functions
+	//
+
+	func listenBatteryCharacteristic() {
+		guard let batteryCBCharacteristic = batteryCBCharacteristic else { return }
+
+		blePeripheral.listenForUpdates(on: batteryCBCharacteristic)
+			.receive(on: DispatchQueue.main)
+			.sink(
+			receiveCompletion: { _ in
+			},
+			receiveValue: { data in
+					if let value = data?.first {
+						self.battery = Int(value)
+					}
+			}
+		)
+		.store(in: &central.cancellables)
+	}
+
+	func listenChargingStatusCharacteristic() {
+		guard let chargingStatusCBCharacteristic = chargingStatusCBCharacteristic else { return }
+
+		blePeripheral.listenForUpdates(on: chargingStatusCBCharacteristic)
+		.receive(on: DispatchQueue.main)
+		.sink(
+			receiveCompletion: { _ in
+			},
+			receiveValue: { data in
+					if let value = data?.first {
+						self.isCharging = (value == 0x01)
+					}
+			}
+		)
+		.store(in: &central.cancellables)
+	}
+
+	func listenTagIDCharacteristic() {
+		guard let tagIDCBCharacteristic = tagIDCBCharacteristic else { return }
+
+		blePeripheral.listenForUpdates(on: tagIDCBCharacteristic)
+		.receive(on: DispatchQueue.main)
+		.sink(
+			receiveCompletion: { _ in
+			},
+			receiveValue: { data in
+					if let data = data {
+						self.magicCardId = Int(data[1])
+					}
+			}
+		)
+		.store(in: &central.cancellables)
+	}
+
+	func listenTagLanguageCharacteristic() {
+		guard let tagLanguageCBCharacteristic = tagLanguageCBCharacteristic else { return }
+
+		blePeripheral.listenForUpdates(on: tagLanguageCBCharacteristic)
+		.receive(on: DispatchQueue.main)
+		.sink(
+			receiveCompletion: { _ in
+			},
+			receiveValue: { data in
+					if let value = data?.first {
+						self.magicCardLanguage = (value == 0x01 ? "FR" : "EN")
+					}
 			}
 		)
 		.store(in: &central.cancellables)
@@ -200,75 +320,6 @@ class Robot: ObservableObject, Identifiable {
 				guard let data = data else { return }
 				self.osVersion = String(
 					decoding: data, as: UTF8.self)
-			}
-		)
-		.store(in: &central.cancellables)
-	}
-
-	func readBatteryLevel() {
-		blePeripheral.readValue(
-			forCharacteristic: BLESpecs.Battery.Characteristics.level, inService: BLESpecs.Battery.service
-		)
-		.receive(on: DispatchQueue.main)
-		.sink(
-			receiveCompletion: { _ in
-				// Do nothing
-			},
-			receiveValue: { data in
-				guard let value = data?.first else { return }
-				self.battery = Int(value)
-			}
-		)
-		.store(in: &central.cancellables)
-	}
-
-	func readChargingStatus() {
-		blePeripheral.readValue(
-			forCharacteristic: BLESpecs.Monitoring.Characteristics.chargingStatus,
-			inService: BLESpecs.Monitoring.service
-		)
-		.receive(on: DispatchQueue.main)
-		.sink(
-			receiveCompletion: { _ in
-				// Do nothing
-			},
-			receiveValue: { data in
-				guard let value = data?.first else { return }
-				self.isCharging = (value == 0x01)
-			}
-		)
-		.store(in: &central.cancellables)
-	}
-
-	func readMagicCardId() {
-		blePeripheral.readValue(
-			forCharacteristic: BLESpecs.MagicCard.Characteristics.id, inService: BLESpecs.MagicCard.service
-		)
-		.receive(on: DispatchQueue.main)
-		.sink(
-			receiveCompletion: { _ in
-				// Do nothing
-			},
-			receiveValue: { data in
-				guard let data = data else { return }
-				self.magicCardId = Int(data[1])
-			}
-		)
-		.store(in: &central.cancellables)
-	}
-
-	func readMagicCardLanguage() {
-		blePeripheral.readValue(
-			forCharacteristic: BLESpecs.MagicCard.Characteristics.language, inService: BLESpecs.MagicCard.service
-		)
-		.receive(on: DispatchQueue.main)
-		.sink(
-			receiveCompletion: { _ in
-				// Do nothing
-			},
-			receiveValue: { data in
-				guard let value = data?.first else { return }
-				self.magicCardLanguage = (value == 0x01 ? "FR" : "EN")
 			}
 		)
 		.store(in: &central.cancellables)
