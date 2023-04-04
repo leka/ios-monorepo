@@ -1,14 +1,14 @@
 //
-//  PeripheralDemoApp.swift
-//  PeripheralDemo
+//  LekaCombineCBApp.swift
+//  LekaCombineCB
 //
-//  Created by Kevin Lundberg on 3/25/22.
+//  Created by Hugo Pezziardi on 3/27/23.
 //
 
 import SwiftUI
 
 @main
-struct PeripheralDemoApp: App {
+struct LekaCombineCBApp: App {
 	var body: some Scene {
 		WindowGroup {
 			ContentView()
@@ -19,8 +19,8 @@ struct PeripheralDemoApp: App {
 struct ContentView: View {
 	var body: some View {
 		NavigationView {
-			CentralView()
-				.navigationTitle("Central")
+			ConnexionView()
+				.navigationTitle("LekaCombineCBApp")
 		}
 		.navigationViewStyle(StackNavigationViewStyle())
 	}

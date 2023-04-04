@@ -1,19 +1,19 @@
 //
-//  ContentView.swift
-//  CentralDemo
+//  ConnexionView.swift
+//  LekaCombineCB
 //
-//  Created by Kevin Lundberg on 3/27/22.
+//  Created by Hugo Pezziardi on 3/27/23.
 //
 
 import CombineCoreBluetooth
 import SwiftUI
 
-struct CentralView: View {
+struct ConnexionView: View {
 	@StateObject var central: Central = .init()
 
 	var body: some View {
 		if let device = central.connectedPeripheral {
-			RobotView(robot: Robot(central: central, blePeripheral: device))
+			RobotView(central: central, peripheral: device)
 		} else {
 			Form {
 				Section {
