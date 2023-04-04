@@ -22,124 +22,82 @@ struct ReadOnlyView: View {
 	}
 }
 
-struct WriteOnlyEventView: View {
-	var characteristicName: String
+struct RobotView: View {
+	@ObservedObject var central: Central
+	var peripheral: Peripheral
 
-	var body: some View {
-		HStack {
-			Text("\(characteristicName): ")
-				.bold()
-			Button("Apply") {
-				// TODO: do something related to write on char
-			}
-		}
+	@ObservedObject var robot: Robot
+
+	@State private var isPresented = false
+
+	init(central: Central, peripheral: Peripheral) {
+		self.central = central
+		self.peripheral = peripheral
+		self.robot = Robot(central: central, blePeripheral: peripheral)
 	}
-}
-
-struct WriteOnlyBooleanView: View {
-	var characteristicName: String
-	@State var value: Bool
-
-	var body: some View {
-		HStack {
-			Text("\(characteristicName): ")
-				.bold()
-			Button(value ? "On" : "Off") {
-				value.toggle()
-				// TODO: do something related to write on char
-			}
-		}
-	}
-}
-
-struct WriteOnlyMultipleView: View {
-	var characteristicName: String
-	@State var value: String
-
-	var body: some View {
-		HStack {
-			Text("\(characteristicName): ")
-				.bold()
-			TextField("Current value", text: $value).frame(maxWidth: 250.0)
-			Button("Apply") {
-				// TODO: do something related to write on char
-			}
-		}
-	}
-}
 
 	var body: some View {
 		if isPresented {
 			ConnexionView()
 		} else {
-		VStack(alignment: .leading) {
+			VStack(alignment: .leading) {
+				Group {
+					ReadOnlyView(characteristicName: "Manufacturer", characteristicValue: robot.manufacturer)
+					ReadOnlyView(characteristicName: "Model Number", characteristicValue: robot.modelNumber)
+					ReadOnlyView(characteristicName: "Serial Number", characteristicValue: robot.serialNumber)
+					ReadOnlyView(characteristicName: "OS Version", characteristicValue: robot.osVersion)
+				}
 
-			Group {
-				ReadOnlyView(characteristicName: "Manufacturer", characteristicValue: robot.manufacturer)
-				ReadOnlyView(characteristicName: "Model Number", characteristicValue: robot.modelNumber)
-				ReadOnlyView(characteristicName: "Serial Number", characteristicValue: robot.serialNumber)
-				ReadOnlyView(characteristicName: "OS Version", characteristicValue: robot.osVersion)
-			}
+				Group {
+					ReadOnlyView(characteristicName: "Battery", characteristicValue: "\(robot.battery)")
+					ReadOnlyView(
+						characteristicName: "Charging status", characteristicValue: robot.isCharging ? "On" : "Off")
+				}
 
-			Group {
-				ReadOnlyView(characteristicName: "Battery", characteristicValue: "\(robot.battery)")
-				ReadOnlyView(
-					characteristicName: "Charging status", characteristicValue: robot.isCharging ? "On" : "Off")
-			}
+				Group {
+					ReadOnlyView(characteristicName: "Magic Card (ID)", characteristicValue: "\(robot.magicCardId)")
+					ReadOnlyView(
+						characteristicName: "MagicCard (Language)", characteristicValue: robot.magicCardLanguage)
+				}
 
-			Group {
-				ReadOnlyView(characteristicName: "Magic Card (ID)", characteristicValue: "\(robot.magicCardId)")
-				ReadOnlyView(characteristicName: "MagicCard (Language)", characteristicValue: robot.magicCardLanguage)
-			}
-
-			Group {
-				HStack {
-					Button {
-						robot.runReinforcer(robot.commands.command.Motivator.blinkGreen)
-					} label: {
-						Image("reinforcer-1-green-spin")
-					}
-					Button {
-						robot.runReinforcer(robot.commands.command.Motivator.spinBlink)
-					} label: {
-						Image("reinforcer-2-violet_green_blink-spin")
-					}
-					Button {
-						robot.runReinforcer(robot.commands.command.Motivator.fire)
-					} label: {
-						Image("reinforcer-3-fire-static")
-					}
-					Button {
-						robot.runReinforcer(robot.commands.command.Motivator.sprinkles)
-					} label: {
-						Image("reinforcer-4-glitters-static")
-					}
-					Button {
-						robot.runReinforcer(robot.commands.command.Motivator.rainbow)
-					} label: {
-						Image("reinforcer-5-rainbow-static")
+				Group {
+					HStack {
+						Button {
+							robot.runReinforcer(robot.commands.command.Motivator.blinkGreen)
+						} label: {
+							Image("reinforcer-1-green-spin")
+						}
+						Button {
+							robot.runReinforcer(robot.commands.command.Motivator.spinBlink)
+						} label: {
+							Image("reinforcer-2-violet_green_blink-spin")
+						}
+						Button {
+							robot.runReinforcer(robot.commands.command.Motivator.fire)
+						} label: {
+							Image("reinforcer-3-fire-static")
+						}
+						Button {
+							robot.runReinforcer(robot.commands.command.Motivator.sprinkles)
+						} label: {
+							Image("reinforcer-4-glitters-static")
+						}
+						Button {
+							robot.runReinforcer(robot.commands.command.Motivator.rainbow)
+						} label: {
+							Image("reinforcer-5-rainbow-static")
+						}
 					}
 				}
 			}
-
-			Divider()
-
-			Button("Update data") {
-				robot.readRequestAll()
-			}
-		}
-		.padding()
+			.padding()
 			.toolbar {
 				Button {
 					isPresented = true
 				} label: {
 					Text("Connect to another robot")
+				}
+			}
 		}
-	}
-}
-
-struct ContentView_Previews: PreviewProvider {
-	static var previews: some View {
-		CentralView()
 	}
 }

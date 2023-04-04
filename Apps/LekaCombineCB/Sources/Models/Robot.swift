@@ -1,6 +1,6 @@
 //
 //  Robot.swift
-//  LekaBLE
+//  LekaCombineCB
 //
 //  Created by Yann LOCATELLI on 17/02/2023.
 //
@@ -18,26 +18,17 @@ class Robot: ObservableObject, Identifiable {
 	var tagIDCBCharacteristic: CBCharacteristic?
 	var tagLanguageCBCharacteristic: CBCharacteristic?
 
-	@Published var name = ""
-
-	@Published var battery = 0
-	@Published var isCharging = false
-	@Published var osVersion = ""
 
 	@Published var manufacturer = ""
 	@Published var modelNumber = ""
 	@Published var serialNumber = ""
+	@Published var osVersion = ""
 
-	@Published var robotName = ""
+	@Published var battery = 0
+	@Published var isCharging = false
 
 	@Published var magicCardId = 0
 	@Published var magicCardLanguage = ""
-
-	@Published var fileExchangeState = false
-	@Published var clearFile = false
-	@Published var sha256 = ""
-
-	//	@Published var isConnected = false
 
 	let commands = CommandKit()
 
@@ -50,15 +41,6 @@ class Robot: ObservableObject, Identifiable {
 		discover()
 		readRequestAll()
 	}
-
-	// func onAdvertisingDataUpdated(advertisingData: AdvertisementData) {
-	// 	guard let advData = AdvertisingData(advertisingData) else { return }
-
-	// 	name = advData.name
-	// 	battery = advData.battery
-	// 	isCharging = advData.isCharging
-	// 	osVersion = advData.osVersion
-	// }
 
 	func readRequestAll() {
 		guard central.connectedPeripheral == blePeripheral else { return }
@@ -183,66 +165,66 @@ class Robot: ObservableObject, Identifiable {
 		blePeripheral.listenForUpdates(on: batteryCBCharacteristic)
 			.receive(on: DispatchQueue.main)
 			.sink(
-			receiveCompletion: { _ in
-			},
-			receiveValue: { data in
+				receiveCompletion: { _ in
+				},
+				receiveValue: { data in
 					if let value = data?.first {
 						self.battery = Int(value)
 					}
-			}
-		)
-		.store(in: &central.cancellables)
+				}
+			)
+			.store(in: &central.cancellables)
 	}
 
 	func listenChargingStatusCharacteristic() {
 		guard let chargingStatusCBCharacteristic = chargingStatusCBCharacteristic else { return }
 
 		blePeripheral.listenForUpdates(on: chargingStatusCBCharacteristic)
-		.receive(on: DispatchQueue.main)
-		.sink(
-			receiveCompletion: { _ in
-			},
-			receiveValue: { data in
+			.receive(on: DispatchQueue.main)
+			.sink(
+				receiveCompletion: { _ in
+				},
+				receiveValue: { data in
 					if let value = data?.first {
 						self.isCharging = (value == 0x01)
 					}
-			}
-		)
-		.store(in: &central.cancellables)
+				}
+			)
+			.store(in: &central.cancellables)
 	}
 
 	func listenTagIDCharacteristic() {
 		guard let tagIDCBCharacteristic = tagIDCBCharacteristic else { return }
 
 		blePeripheral.listenForUpdates(on: tagIDCBCharacteristic)
-		.receive(on: DispatchQueue.main)
-		.sink(
-			receiveCompletion: { _ in
-			},
-			receiveValue: { data in
+			.receive(on: DispatchQueue.main)
+			.sink(
+				receiveCompletion: { _ in
+				},
+				receiveValue: { data in
 					if let data = data {
 						self.magicCardId = Int(data[1])
 					}
-			}
-		)
-		.store(in: &central.cancellables)
+				}
+			)
+			.store(in: &central.cancellables)
 	}
 
 	func listenTagLanguageCharacteristic() {
 		guard let tagLanguageCBCharacteristic = tagLanguageCBCharacteristic else { return }
 
 		blePeripheral.listenForUpdates(on: tagLanguageCBCharacteristic)
-		.receive(on: DispatchQueue.main)
-		.sink(
-			receiveCompletion: { _ in
-			},
-			receiveValue: { data in
+			.receive(on: DispatchQueue.main)
+			.sink(
+				receiveCompletion: { _ in
+				},
+				receiveValue: { data in
 					if let value = data?.first {
 						self.magicCardLanguage = (value == 0x01 ? "FR" : "EN")
 					}
-			}
-		)
-		.store(in: &central.cancellables)
+				}
+			)
+			.store(in: &central.cancellables)
 	}
 
 	//
