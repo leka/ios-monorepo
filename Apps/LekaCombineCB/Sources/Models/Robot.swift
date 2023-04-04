@@ -61,7 +61,7 @@ class Robot: ObservableObject, Identifiable {
 	// }
 
 	func readRequestAll() {
-		//		guard isConnected else { return }
+		guard central.connectedPeripheral == blePeripheral else { return }
 
 		readManufacturer()
 		readModelNumber()
@@ -78,7 +78,7 @@ class Robot: ObservableObject, Identifiable {
 	}
 
 	func runReinforcer(_ reinforcer: UInt8) {
-		//		guard isConnected else { return }
+		guard central.connectedPeripheral == blePeripheral else { return }
 
 		commands.addMotivator(reinforcer)
 		let data = Data(commands.getCommands())

@@ -68,12 +68,10 @@ struct WriteOnlyMultipleView: View {
 	}
 }
 
-struct RobotView: View {
-	@ObservedObject var robot: Robot
-
-	@State private var name = ""
-
 	var body: some View {
+		if isPresented {
+			ConnexionView()
+		} else {
 		VStack(alignment: .leading) {
 
 			Group {
@@ -131,22 +129,11 @@ struct RobotView: View {
 			}
 		}
 		.padding()
-	}
-
-	func label<T>(for result: Result<T, Error>?) -> some View {
-		Group {
-			switch result {
-				case let .success(value)?:
-					Text("Wrote at \(String(describing: value))")
-				case let .failure(error)?:
-					if let error = error as? LocalizedError, let errorDescription = error.errorDescription {
-						Text("Error: \(errorDescription)")
-					} else {
-						Text("Error: \(String(describing: error))")
-					}
-				case nil:
-					EmptyView()
-			}
+			.toolbar {
+				Button {
+					isPresented = true
+				} label: {
+					Text("Connect to another robot")
 		}
 	}
 }
