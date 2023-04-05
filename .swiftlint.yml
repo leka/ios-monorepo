@@ -51,6 +51,7 @@ disabled_rules:
 
 excluded:
   - Tuist/Dependencies
-  - ./*/Derived
+  - "**/Derived"
+  - "**/Tests"
 
 reporter: "emoji"
