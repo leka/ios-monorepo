@@ -11,13 +11,15 @@ import SwiftUI
 @main
 struct BLEKitExampleApp: App {
 	@StateObject var bleManager: BLEManager = BLEManager(centralManager: CentralManager.live())
-	@StateObject var robot = Robot()
+	@StateObject var robot: Robot = Robot()
+	@StateObject var botVM: BotViewModel = BotViewModel()
 
 	var body: some Scene {
 		WindowGroup {
 			ContentView()
 				.environmentObject(bleManager)
 				.environmentObject(robot)
+				.environmentObject(botVM)
 		}
 	}
 }
@@ -32,7 +34,7 @@ struct ContentView: View {
 				RobotView()
 					.navigationTitle("BLEKitExampleApp")
 			} else {
-				ConnexionView()
+				RobotListView()
 					.navigationTitle("BLEKitExampleApp")
 			}
 		}

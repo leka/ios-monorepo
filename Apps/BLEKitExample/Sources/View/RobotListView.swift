@@ -1,5 +1,5 @@
 //
-//  ConnexionView.swift
+//  RobotListView.swift
 //  BLEKitExample
 //
 //  Created by Hugo Pezziardi on 3/27/23.
@@ -8,51 +8,101 @@
 import CombineCoreBluetooth
 import SwiftUI
 
-struct ConnexionView: View {
+struct RobotListView: View {
 	@EnvironmentObject var bleManager: BLEManager
 	@EnvironmentObject var robot: Robot
+	@EnvironmentObject var botVM: BotViewModel
 
 	var body: some View {
-		Form {
-			Section {
-				if !bleManager.isScanning {
-					Button("Search for peripheral") {
-						bleManager.searchForPeripherals()
-					}
-				} else {
-					Button("Stop searching") {
-						bleManager.stopSearching()
-					}
-				}
+
+		VStack {
+			Spacer()
+
+			BotStore(botVM: botVM)
+
+			HStack(spacing: 60) {
+				Spacer()
+
+				searchButton
+				connectionButton
+
+				Spacer()
 			}
+			.padding(.vertical, 20)
 
-			Section("Discovered peripherals") {
-				ForEach(bleManager.peripherals) { discovery in
-					Button {
-						bleManager.connect(discovery)
-							.sink(
-								receiveCompletion: { _ in },
-								receiveValue: { peripheral in
-									let connectedRobotPeripheral = RobotPeripheral(peripheral: peripheral)
-									robot.robotPeripheral = connectedRobotPeripheral
-								}
-							)
-							.store(in: &bleManager.cancellables)
-					} label: {
-						VStack(alignment: .leading) {
-							if let advertisementData = AdvertisingData(discovery.advertisementData) {
-								Text("Name : \(advertisementData.name)")
-
-								Text("Battery level : \(advertisementData.battery)")
-
-								Text("Charging Status : " + (advertisementData.isCharging ? "On" : "Off"))
-
-								Text("OS Version : \(advertisementData.osVersion)")
-							}
-						}
-					}
-				}
-			}
+			Spacer()
 		}
+	}
+
+	private var searchButton: some View {
+		Button(
+			action: {
+				if !bleManager.isScanning {
+					bleManager.searchForPeripherals()
+				} else {
+					bleManager.stopSearching()
+				}
+			},
+			label: {
+				Group {
+					if !bleManager.isScanning {
+						Text("Search for peripheral")
+							.font(.body)
+							.padding(6)
+							.frame(width: 210)
+					} else {
+						Text("Stop searching")
+							.font(.body)
+							.padding(6)
+							.frame(width: 210)
+					}
+				}
+			}
+		)
+		.buttonStyle(.borderedProminent)
+		.tint(Color(.blue))
+
+	}
+
+	private var connectionButton: some View {
+		Button(
+			action: {
+				if botVM.currentlyConnectedBotIndex == botVM.currentlySelectedBotIndex {
+					bleManager.disconnect()
+
+					botVM.currentlyConnectedBotIndex = nil
+					botVM.currentlyConnectedBotName = ""
+					botVM.botIsConnected = false
+				} else {
+					bleManager.connect(bleManager.peripherals[botVM.currentlySelectedBotIndex!])
+						.sink(
+							receiveCompletion: { _ in },
+							receiveValue: { peripheral in
+								let connectedRobotPeripheral = RobotPeripheral(peripheral: peripheral)
+								robot.robotPeripheral = connectedRobotPeripheral
+							}
+						)
+						.store(in: &bleManager.cancellables)
+					botVM.currentlyConnectedBotIndex = botVM.currentlySelectedBotIndex
+					botVM.currentlyConnectedBotName = "LKAL \(String(describing: botVM.currentlyConnectedBotIndex))"
+					botVM.botIsConnected = true
+				}
+			},
+			label: {
+				Group {
+					if botVM.currentlyConnectedBotIndex == botVM.currentlySelectedBotIndex {
+						Text("Se déconnecter")
+					} else {
+						Text("Se connecter")
+					}
+				}
+				.padding(6)
+				.frame(width: 210)
+			}
+		)
+		.buttonStyle(.borderedProminent)
+		.tint(botVM.currentlyConnectedBotIndex == botVM.currentlySelectedBotIndex ? Color(.orange) : .accentColor)
+		.disabled(bleManager.peripherals.count == 0)
+		.disabled(botVM.currentlySelectedBotIndex == nil)
 	}
 }
