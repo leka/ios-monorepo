@@ -10,11 +10,11 @@ import ProjectDescriptionHelpers
 
 // Creates our project using a helper function defined in ProjectDescriptionHelpers
 let project = Project.app(
-	name: "LekaCombineCB",
+	name: "BLEKitExample",
 	platform: .iOS,
 	dependencies: [
 		.project(target: "CoreUI", path: Path("../../Modules/CoreUI")),
-		.external(name: "CombineCoreBluetooth"),
+		.project(target: "BLEKit", path: Path("../../Modules/BLEKit")),
 	],
 	infoPlist: [
 		"NSBluetoothAlwaysUsageDescription":

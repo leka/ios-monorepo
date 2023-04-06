@@ -5,11 +5,12 @@ let workspace = Workspace(
 	projects: [
 		// MARK: - Apps
 		"Apps/LekaApp",
-		"Apps/LekaCombineCB",
+		"Apps/BLEKitExample",
 		"Apps/LekaEmotions",
 		"Apps/LekaUpdater",
 
-        // MARK: - Modules
-        "Modules/CoreUI",
-    ]
+		// MARK: - Modules
+		"Modules/CoreUI",
+		"Modules/BLEKit",
+	]
 )

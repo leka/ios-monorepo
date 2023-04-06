@@ -1,6 +1,6 @@
 //
-//  Central.swift
-//  LekaCombineCB
+//  BLEManager.swift
+//  BLEKitExample
 //
 //  Created by Hugo Pezziardi on 29/03/2023.
 //  Copyright © 2023 leka.io. All rights reserved.
@@ -8,20 +8,21 @@
 
 import CombineCoreBluetooth
 
-class Central: ObservableObject {
+class BLEManager: ObservableObject {
 	let centralManager: CentralManager
 
+	init(centralManager: CentralManager) {
+		self.centralManager = centralManager
+	}
+
 	@Published var peripherals: [PeripheralDiscovery] = []
-	@Published var peripheralConnectResult: Result<Peripheral, Error>?
-	@Published var scanning: Bool = false
+	@Published var connectedPeripheralResult: Result<Peripheral, Error>?
+	@Published var isScanning: Bool = false
 
 	var scanTask: AnyCancellable?
 	var cancellables: Set<AnyCancellable> = []
 
-	var connectedPeripheral: Peripheral? {
-		guard case let .success(value) = peripheralConnectResult else { return nil }
-		return value
-	}
+	var connectedPeripheral: Peripheral?
 
 	func searchForPeripherals() {
 		scanTask = centralManager.scanForPeripherals(withServices: [BLESpecs.AdvertisingData.service])
@@ -41,25 +42,30 @@ class Central: ObservableObject {
 				self?.peripherals = $0
 			})
 
-		self.scanning = centralManager.isScanning
+		self.isScanning = centralManager.isScanning
 	}
 
 	func stopSearching() {
-		scanTask = nil
+		scanTask?.cancel()
 		peripherals = []
-		self.scanning = centralManager.isScanning
+		self.isScanning = centralManager.isScanning
 	}
 
-	func connect(_ discovery: PeripheralDiscovery) {
-		centralManager.connect(discovery.peripheral)
-			.map(Result.success)
-			.catch({ Just(Result.failure($0)) })
-			.receive(on: DispatchQueue.main)
-			.assign(to: &$peripheralConnectResult)
+	func connect(_ discovery: PeripheralDiscovery) -> AnyPublisher<Peripheral, Error> {
+		return centralManager.connect(discovery.peripheral)
+			.map {
+				self.connectedPeripheral = $0
+				return self.connectedPeripheral!
+			}
+			.eraseToAnyPublisher()
 	}
 
-	func disconnect(_ peripheral: Peripheral) {
-		centralManager.cancelPeripheralConnection(peripheral)
+	func disconnect() {
+		guard let connectedPeripheral = connectedPeripheral else { return }
+
+		centralManager.cancelPeripheralConnection(connectedPeripheral)
+
+		self.connectedPeripheral = nil
 	}
 
 }
