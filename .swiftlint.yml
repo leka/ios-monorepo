@@ -37,6 +37,8 @@ disabled_rules:
   - opening_brace
   - switch_case_alignment
   - closure_parameter_position
+  - identifier_name
+  - force_try
 
 excluded:
   - Tuist/Dependencies

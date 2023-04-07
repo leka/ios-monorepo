@@ -10,5 +10,8 @@ let project = Project.app(
 	name: "LekaActivityGenerator",
 	platform: .iOS,
 	dependencies: [
-		.project(target: "CoreUI", path: Path("../../Modules/CoreUI"))
+		.project(target: "CoreUI", path: Path("../../Modules/CoreUI")),
+		.external(name: "MarkdownUI"),
+		.external(name: "Yams"),
+		.external(name: "Lottie"),
 	])
