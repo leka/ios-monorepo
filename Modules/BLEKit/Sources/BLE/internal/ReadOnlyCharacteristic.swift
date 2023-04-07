@@ -9,22 +9,22 @@
 import CombineCoreBluetooth
 import Foundation
 
-struct ReadOnlyCharacteristic: Hashable {
-	let characteristicUUID: CBUUID
-	let serviceUUID: CBUUID
-	var onNotification: ((_ data: Data?) -> Void)?
+public struct ReadOnlyCharacteristic: Hashable {
+	public let characteristicUUID: CBUUID
+	public let serviceUUID: CBUUID
+	public var onNotification: ((_ data: Data?) -> Void)?
 
-	func hash(into hasher: inout Hasher) {
+	public func hash(into hasher: inout Hasher) {
 		hasher.combine(characteristicUUID)
 		hasher.combine(serviceUUID)
 	}
 
-	static func == (lhs: ReadOnlyCharacteristic, rhs: ReadOnlyCharacteristic) -> Bool {
+	public static func == (lhs: ReadOnlyCharacteristic, rhs: ReadOnlyCharacteristic) -> Bool {
 		return lhs.serviceUUID == rhs.serviceUUID && lhs.characteristicUUID == rhs.characteristicUUID
 	}
 }
 
-var kDefaultReadOnlyCharacteristics: Set<ReadOnlyCharacteristic> = [
+public var kDefaultReadOnlyCharacteristics: Set<ReadOnlyCharacteristic> = [
 	ReadOnlyCharacteristic(
 		characteristicUUID: BLESpecs.DeviceInformation.Characteristics.manufacturer,
 		serviceUUID: BLESpecs.DeviceInformation.service

@@ -8,23 +8,23 @@
 
 import CombineCoreBluetooth
 
-class BLEManager: ObservableObject {
+public class BLEManager: ObservableObject {
 	let centralManager: CentralManager
 
-	init(centralManager: CentralManager) {
+	public init(centralManager: CentralManager) {
 		self.centralManager = centralManager
 	}
 
-	@Published var peripherals: [PeripheralDiscovery] = []
+	@Published public var peripherals: [PeripheralDiscovery] = []
 	@Published var connectedPeripheralResult: Result<Peripheral, Error>?
-	@Published var isScanning: Bool = false
+	@Published public var isScanning: Bool = false
 
-	var scanTask: AnyCancellable?
-	var cancellables: Set<AnyCancellable> = []
+	public var scanTask: AnyCancellable?
+	public var cancellables: Set<AnyCancellable> = []
 
-	var connectedPeripheral: Peripheral?
+	public var connectedPeripheral: Peripheral?
 
-	func searchForPeripherals() {
+	public func searchForPeripherals() {
 		scanTask = centralManager.scanForPeripherals(withServices: [BLESpecs.AdvertisingData.service])
 			.scan(
 				[],
@@ -45,13 +45,13 @@ class BLEManager: ObservableObject {
 		self.isScanning = centralManager.isScanning
 	}
 
-	func stopSearching() {
+	public func stopSearching() {
 		scanTask?.cancel()
 		peripherals = []
 		self.isScanning = centralManager.isScanning
 	}
 
-	func connect(_ discovery: PeripheralDiscovery) -> AnyPublisher<Peripheral, Error> {
+	public func connect(_ discovery: PeripheralDiscovery) -> AnyPublisher<Peripheral, Error> {
 		return centralManager.connect(discovery.peripheral)
 			.map {
 				self.connectedPeripheral = $0
@@ -60,7 +60,7 @@ class BLEManager: ObservableObject {
 			.eraseToAnyPublisher()
 	}
 
-	func disconnect() {
+	public func disconnect() {
 		guard let connectedPeripheral = connectedPeripheral else { return }
 
 		centralManager.cancelPeripheralConnection(connectedPeripheral)

@@ -7,19 +7,19 @@
 import CombineCoreBluetooth
 import Foundation
 
-class RobotPeripheral: ObservableObject {
-	var peripheral: Peripheral
+public class RobotPeripheral: ObservableObject {
+	public var peripheral: Peripheral
 
-	var notifyingCharacteristics: Set<NotifyingCharacteristic> = []
-	var readOnlyCharacteristics: Set<ReadOnlyCharacteristic> = []
+	public var notifyingCharacteristics: Set<NotifyingCharacteristic> = []
+	public var readOnlyCharacteristics: Set<ReadOnlyCharacteristic> = []
 
 	var cancellables: Set<AnyCancellable> = []
 
-	init(peripheral: Peripheral) {
+	public init(peripheral: Peripheral) {
 		self.peripheral = peripheral
 	}
 
-	func updateData() {
+	public func updateData() {
 		for characteristic in readOnlyCharacteristics {
 			readCharacteristic(on: characteristic)
 		}
@@ -27,7 +27,7 @@ class RobotPeripheral: ObservableObject {
 		discoverAndListenCharacteristics()
 	}
 
-	func discoverAndListenCharacteristics() {
+	public func discoverAndListenCharacteristics() {
 		for char in notifyingCharacteristics {
 
 			self.peripheral
@@ -56,7 +56,7 @@ class RobotPeripheral: ObservableObject {
 		}
 	}
 
-	func listenForUpdates(on characteristic: NotifyingCharacteristic) {
+	public func listenForUpdates(on characteristic: NotifyingCharacteristic) {
 
 		peripheral.listenForUpdates(on: characteristic.characteristic!)
 			.receive(on: DispatchQueue.main)
@@ -72,7 +72,7 @@ class RobotPeripheral: ObservableObject {
 			.store(in: &cancellables)
 	}
 
-	func readCharacteristic(on characteristic: ReadOnlyCharacteristic) {
+	public func readCharacteristic(on characteristic: ReadOnlyCharacteristic) {
 
 		peripheral.readValue(
 			forCharacteristic: characteristic.characteristicUUID,
@@ -91,7 +91,7 @@ class RobotPeripheral: ObservableObject {
 		.store(in: &cancellables)
 	}
 
-	func writeData(_ data: Data) {
+	public func writeData(_ data: Data) {
 
 		peripheral.writeValue(
 			data,

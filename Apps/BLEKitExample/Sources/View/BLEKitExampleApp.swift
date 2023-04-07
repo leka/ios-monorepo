@@ -5,6 +5,7 @@
 //  Created by Hugo Pezziardi on 3/27/23.
 //
 
+import BLEKit
 import CombineCoreBluetooth
 import SwiftUI
 

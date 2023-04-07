@@ -5,6 +5,7 @@
 //  Created by Mathieu Jeannot on 21/3/23.
 //
 
+import BLEKit
 import SwiftUI
 
 struct NoFeedback_ButtonStyle: ButtonStyle {

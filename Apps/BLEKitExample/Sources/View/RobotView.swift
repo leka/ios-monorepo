@@ -6,6 +6,7 @@
 //  Copyright © 2023 leka.io. All rights reserved.
 //
 
+import BLEKit
 import CombineCoreBluetooth
 import SwiftUI
 
@@ -82,7 +83,8 @@ struct RobotView: View {
 			Button {
 				bleManager.disconnect()
 			} label: {
-				Text("Connect to another robot")
+				Image(systemName: "chevron.backward")
+				Text("Back")
 			}
 		}
 	}

@@ -7,7 +7,7 @@
 import CoreBluetooth
 import Foundation
 
-struct BLESpecs {
+public struct BLESpecs {
 
 	public struct AdvertisingData {
 		public static let service = CBUUID(string: "0xDFB0")

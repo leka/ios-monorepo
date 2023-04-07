@@ -7,7 +7,7 @@
 import CombineCoreBluetooth
 import Foundation
 
-struct AdvertisingData {
+public struct AdvertisingData {
 	private struct Index {
 		static let battery = 0
 		static let isCharging = 1
@@ -17,12 +17,12 @@ struct AdvertisingData {
 		static let osVersionRevisionLowByte = 5
 	}
 
-	var name: String
-	var battery: Int
-	var isCharging: Bool
-	var osVersion: String
+	public var name: String
+	public var battery: Int
+	public var isCharging: Bool
+	public var osVersion: String
 
-	init?(_ advertisingData: AdvertisementData) {
+	public init?(_ advertisingData: AdvertisementData) {
 		guard let name = advertisingData.localName else { return nil }
 
 		self.name = name

@@ -6,6 +6,7 @@
 //  Copyright © 2023 leka.io. All rights reserved.
 //
 
+import BLEKit
 import CoreBluetooth
 import Foundation
 

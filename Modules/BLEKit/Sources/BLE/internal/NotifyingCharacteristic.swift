@@ -9,23 +9,23 @@
 import CombineCoreBluetooth
 import Foundation
 
-struct NotifyingCharacteristic: Hashable {
-	let characteristicUUID: CBUUID
-	let serviceUUID: CBUUID
-	var characteristic: CBCharacteristic?
-	var onNotification: ((_ data: Data?) -> Void)?
+public struct NotifyingCharacteristic: Hashable {
+	public let characteristicUUID: CBUUID
+	public let serviceUUID: CBUUID
+	public var characteristic: CBCharacteristic?
+	public var onNotification: ((_ data: Data?) -> Void)?
 
-	func hash(into hasher: inout Hasher) {
+	public func hash(into hasher: inout Hasher) {
 		hasher.combine(characteristicUUID)
 		hasher.combine(serviceUUID)
 	}
 
-	static func == (lhs: NotifyingCharacteristic, rhs: NotifyingCharacteristic) -> Bool {
+	public static func == (lhs: NotifyingCharacteristic, rhs: NotifyingCharacteristic) -> Bool {
 		return lhs.serviceUUID == rhs.serviceUUID && lhs.characteristicUUID == rhs.characteristicUUID
 	}
 }
 
-var kDefaultNotifyingCharacteristics: Set<NotifyingCharacteristic> = [
+public var kDefaultNotifyingCharacteristics: Set<NotifyingCharacteristic> = [
 	NotifyingCharacteristic(
 		characteristicUUID: BLESpecs.Battery.Characteristics.level, serviceUUID: BLESpecs.Battery.service
 	),
