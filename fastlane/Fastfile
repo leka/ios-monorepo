@@ -114,7 +114,7 @@ platform :ios do
       app_id = "io.leka.apf.app.#{app}"
       app_xcodeproj = "#{ROOT_DIR}/Apps/#{app}/#{app}.xcodeproj"
 
-      version_number = get_local_version(xcodeproj: app_xcodeproj.to_s)
+      version_number = get_version_number(xcodeproj: app_xcodeproj.to_s)
       build_number = latest_testflight_build_number(app_identifier: app_id.to_s) + 1
 
       increment_build_number(
