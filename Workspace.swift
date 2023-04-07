@@ -7,6 +7,7 @@ let workspace = Workspace(
         "Apps/LekaApp",
         "Apps/LekaEmotions",
         "Apps/LekaUpdater",
+        "Apps/LekaActivityUIExplorer",
 
         // MARK: - Modules
         "Modules/CoreUI",
