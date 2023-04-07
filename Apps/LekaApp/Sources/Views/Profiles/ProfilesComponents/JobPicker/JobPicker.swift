@@ -9,102 +9,102 @@ import SwiftUI
 
 struct JobPicker: View {
 
-	@EnvironmentObject var company: CompanyViewModel
-	@EnvironmentObject var metrics: UIMetrics
-	@EnvironmentObject var viewRouter: ViewRouter
-	@Environment(\.dismiss) var dismiss
+    @EnvironmentObject var company: CompanyViewModel
+    @EnvironmentObject var metrics: UIMetrics
+    @EnvironmentObject var viewRouter: ViewRouter
+    @Environment(\.dismiss) var dismiss
 
-	@FocusState var focusedField: FormField?
-	@State private var otherJobText: String = ""
-	@State private var isEditing = false
-	@State private var selectedJobs: [String] = []
+    @FocusState var focusedField: FormField?
+    @State private var otherJobText: String = ""
+    @State private var isEditing = false
+    @State private var selectedJobs: [String] = []
 
-	var body: some View {
-		ZStack {
-			Color.white.edgesIgnoringSafeArea(.top)
+    var body: some View {
+        ZStack {
+            Color.white.edgesIgnoringSafeArea(.top)
 
-			JobPickerStore(selectedJobs: $selectedJobs)
-				.onAppear {
-					selectedJobs = company.bufferTeacher.jobs
-				}
-				.navigationBarTitleDisplayMode(.inline)
-				.navigationBarBackButtonHidden(true)
-				.safeAreaInset(edge: .bottom) {
-					customJobTextField
-				}
-				.toolbar {
-					ToolbarItem(placement: .principal) { navigationTitle }
-					ToolbarItem(placement: .navigationBarLeading) { adaptiveBackButton }
-					ToolbarItem(placement: .navigationBarTrailing) { validateButton }
-				}
-		}
-		.toolbarBackground(viewRouter.currentPage == .profiles ? .visible : .automatic, for: .navigationBar)
-	}
+            JobPickerStore(selectedJobs: $selectedJobs)
+                .onAppear {
+                    selectedJobs = company.bufferTeacher.jobs
+                }
+                .navigationBarTitleDisplayMode(.inline)
+                .navigationBarBackButtonHidden(true)
+                .safeAreaInset(edge: .bottom) {
+                    customJobTextField
+                }
+                .toolbar {
+                    ToolbarItem(placement: .principal) { navigationTitle }
+                    ToolbarItem(placement: .navigationBarLeading) { adaptiveBackButton }
+                    ToolbarItem(placement: .navigationBarTrailing) { validateButton }
+                }
+        }
+        .toolbarBackground(viewRouter.currentPage == .profiles ? .visible : .automatic, for: .navigationBar)
+    }
 
-	private var customJobTextField: some View {
-		VStack(spacing: 0) {
-			Divider()
-				.padding(.horizontal, 20)
-			LekaTextField(label: "Autre (préciser)", entry: $otherJobText, isEditing: $isEditing, type: .name) {
-				if !otherJobText.isEmpty || !company.bufferTeacher.jobs.contains(otherJobText) {
-					selectedJobs.append(otherJobText)
-				}
-			}
-			.padding(.vertical, 30)
-		}
-		.edgesIgnoringSafeArea(.bottom)
-		.background(
-			Rectangle()
-				.fill(.white)
-				.edgesIgnoringSafeArea(.all)
-		)
-	}
+    private var customJobTextField: some View {
+        VStack(spacing: 0) {
+            Divider()
+                .padding(.horizontal, 20)
+            LekaTextField(label: "Autre (préciser)", entry: $otherJobText, isEditing: $isEditing, type: .name) {
+                if !otherJobText.isEmpty || !company.bufferTeacher.jobs.contains(otherJobText) {
+                    selectedJobs.append(otherJobText)
+                }
+            }
+            .padding(.vertical, 30)
+        }
+        .edgesIgnoringSafeArea(.bottom)
+        .background(
+            Rectangle()
+                .fill(.white)
+                .edgesIgnoringSafeArea(.all)
+        )
+    }
 
-	private var navigationTitle: some View {
-		Text("Sélectionnez vos professions")
-			.font(metrics.semi17)
-			.foregroundColor(.accentColor)
-	}
+    private var navigationTitle: some View {
+        Text("Sélectionnez vos professions")
+            .font(metrics.semi17)
+            .foregroundColor(.accentColor)
+    }
 
-	private var adaptiveBackButton: some View {
-		Button {
-			// go back without saving
-			dismiss()
-		} label: {
-			HStack(spacing: 4) {
-				Image(systemName: "chevron.left")
-				if viewRouter.currentPage == .welcome {
-					Text("Retour")
-				} else {
-					Text("Annuler")
-				}
-			}
-		}
-		.tint(.accentColor)
-	}
+    private var adaptiveBackButton: some View {
+        Button {
+            // go back without saving
+            dismiss()
+        } label: {
+            HStack(spacing: 4) {
+                Image(systemName: "chevron.left")
+                if viewRouter.currentPage == .welcome {
+                    Text("Retour")
+                } else {
+                    Text("Annuler")
+                }
+            }
+        }
+        .tint(.accentColor)
+    }
 
-	private var validateButton: some View {
-		Button {
-			company.bufferTeacher.jobs = selectedJobs
-			dismiss()
-		} label: {
-			HStack(spacing: 4) {
-				Image(systemName: "checkmark.circle")
-				Text("Valider la sélection")
-			}
-			.foregroundColor(.accentColor)
-		}
-		.disabled(selectedJobs.isEmpty)
-		.disabled(isEditing)
-	}
+    private var validateButton: some View {
+        Button {
+            company.bufferTeacher.jobs = selectedJobs
+            dismiss()
+        } label: {
+            HStack(spacing: 4) {
+                Image(systemName: "checkmark.circle")
+                Text("Valider la sélection")
+            }
+            .foregroundColor(.accentColor)
+        }
+        .disabled(selectedJobs.isEmpty)
+        .disabled(isEditing)
+    }
 }
 
 struct JobPicker_Previews: PreviewProvider {
-	static var previews: some View {
-		JobPicker()
-			.environmentObject(CompanyViewModel())
-			.environmentObject(ViewRouter())
-			.environmentObject(UIMetrics())
-			.previewInterfaceOrientation(.landscapeLeft)
-	}
+    static var previews: some View {
+        JobPicker()
+            .environmentObject(CompanyViewModel())
+            .environmentObject(ViewRouter())
+            .environmentObject(UIMetrics())
+            .previewInterfaceOrientation(.landscapeLeft)
+    }
 }

@@ -2,7 +2,7 @@
 # Copyright 2023 APF Frdance handicap
 # SPDX-License-Identifier: Apache-2.0
 
-indentation: tabs
+indentation: spaces
 
 type_name:
   min_length: 4 # only warning
