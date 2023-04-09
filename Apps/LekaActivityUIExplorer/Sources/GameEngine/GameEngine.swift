@@ -155,10 +155,17 @@ class GameEngine: NSObject, ObservableObject {
 
     // AudioPlayer (delegate in Extensions.swift)
     func setAudioPlayer() {
-        let path = Bundle.main.path(forResource: sound, ofType: "mp3")!
-        audioPlayer = try! AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
+        do {
+            let path = Bundle.main.path(forResource: sound, ofType: "mp3")!
+            audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
+        } catch {
+            print("ERROR - mp3 file not found - \(error)")
+            return
+        }
+
         audioPlayer.prepareToPlay()
         audioPlayer.delegate = self
+
         Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { _ in
             if let player = self.audioPlayer {
                 self.progress = CGFloat(player.currentTime / player.duration)
