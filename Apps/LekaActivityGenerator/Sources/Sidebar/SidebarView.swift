@@ -27,6 +27,8 @@ struct SidebarView: View {
 				Button("Éditeur") {
 					navigator.diplaysEditor = true
 					navigator.sidebarVisibility = .detailOnly
+					configuration.preferred3AnswersLayout = .basic
+					configuration.preferred4ansersLayout = .spaced
 					gameEngine.bufferActivity = EmptyDataSets().makeEmptyActivity()
 					gameEngine.resetActivity()
 					configuration.editorIsEmpty = true
@@ -78,8 +80,26 @@ struct SidebarView: View {
 	private func setupTest(withTemplate: Int) {
 		defaults.playGridBtnSize = 200
 		defaults.cellSpacing = 32
+		setupExplorerVariations(forTemplate: withTemplate)
 		gameEngine.bufferActivity = ExplorerActivity(withTemplate: withTemplate).makeActivity()
 		gameEngine.setupGame()
+	}
+	
+	private func setupExplorerVariations(forTemplate: Int) {
+		if forTemplate == 2 {
+			configuration.preferred3AnswersLayout = .basic
+		} else if forTemplate == 3 {
+			configuration.preferred3AnswersLayout = .inline
+		} else if forTemplate == 4 {
+			configuration.preferred4ansersLayout = .basic
+		} else if forTemplate == 5 {
+			configuration.preferred4ansersLayout = .spaced
+		} else if forTemplate == 6 {
+			configuration.preferred4ansersLayout = .inline
+		} else {
+			configuration.preferred3AnswersLayout = .basic
+			configuration.preferred4ansersLayout = .spaced
+		}
 	}
 
 	private var logoLeka: some View {
