@@ -193,7 +193,8 @@ struct ActivityConfigurator: View {
 		configuration.setupEditor(with: gameEngine.bufferActivity)
 		gameEngine.bufferActivity.id = UUID()
 		defaults.playGridBtnSize = 200
-		defaults.cellSpacing = 32
+		defaults.horizontalCellSpacing = 32
+		defaults.verticalCellSpacing = 32
 		configuration.disableEditor = false
 		configuration.testIsDisabled = false
 		configuration.editorIsEmpty = false

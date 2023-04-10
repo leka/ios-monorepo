@@ -12,7 +12,7 @@ struct ThreeAnswersLayout: View {
 	@EnvironmentObject var defaults: GLT_Defaults
 
 	var body: some View {
-		Grid(horizontalSpacing: defaults.cellSpacing, verticalSpacing: defaults.cellSpacing) {
+		Grid(horizontalSpacing: defaults.horizontalCellSpacing, verticalSpacing: defaults.verticalCellSpacing) {
 			GridRow {
 				CircularAnswerButton(answer: 0)
 				Color.clear.gridCellUnsizedAxes([.horizontal, .vertical])
@@ -21,7 +21,6 @@ struct ThreeAnswersLayout: View {
 			GridRow {
 				Color.clear.gridCellUnsizedAxes([.horizontal, .vertical])
 				CircularAnswerButton(answer: 2)
-				//					.gridCellColumns(3)
 				Color.clear.gridCellUnsizedAxes([.horizontal, .vertical])
 			}
 		}

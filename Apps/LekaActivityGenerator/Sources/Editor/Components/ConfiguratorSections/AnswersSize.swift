@@ -13,24 +13,49 @@ struct AnswersSize: View {
 	@EnvironmentObject var defaults: GLT_Defaults
 
 	@State private var size = 0
-	@State private var spacing = 0
+	@State private var hSpacing = 0
+	@State private var vSpacing = 0
 
 	var body: some View {
 		Section {
 			Group {
 				editSize
-				editSpacing
+				editHorizontalSpacing
+				editVerticalSpacing
 			}
 		} header: {
 			Text("Taille & Espacement des réponses")
 				.foregroundColor(.accentColor)
 				.headerProminence(.increased)
+		} footer: {
+			HStack {
+				Spacer()
+				Button(
+					action: {
+						defaults.playGridBtnSize = 200
+						defaults.horizontalCellSpacing = 32
+						defaults.verticalCellSpacing = 32
+						size = 200
+						hSpacing = 32
+						vSpacing = 32
+					},
+					label: {
+						HStack(spacing: 6) {
+							Text("Valeurs par défaut")
+							Image(systemName: "arrow.counterclockwise.circle")
+						}
+						.font(defaults.reg15)
+						.foregroundColor(.accentColor)
+						.contentShape(Rectangle())
+					})
+			}
 		}
 		.onChange(
 			of: gameEngine.bufferActivity,
 			perform: { _ in
 				size = Int(defaults.playGridBtnSize)
-				spacing = Int(defaults.cellSpacing)
+				hSpacing = Int(defaults.horizontalCellSpacing)
+				vSpacing = Int(defaults.verticalCellSpacing)
 			})
 	}
 
@@ -58,9 +83,9 @@ struct AnswersSize: View {
 		.onAppear { size = Int(defaults.playGridBtnSize) }
 	}
 
-	private var editSpacing: some View {
+	private var editHorizontalSpacing: some View {
 		LabeledContent {
-			TextField("", value: $spacing, format: .number)
+			TextField("", value: $hSpacing, format: .number)
 				.keyboardType(.decimalPad)
 				.padding(.horizontal, 10)
 				.frame(height: 34)
@@ -72,13 +97,37 @@ struct AnswersSize: View {
 						.stroke(.gray.opacity(0.2), lineWidth: 1)
 				)
 				.onSubmit {
-					defaults.cellSpacing = CGFloat(spacing)
+					defaults.horizontalCellSpacing = CGFloat(hSpacing)
 				}
 		} label: {
-			Text("Espacement")
+			Text("Espacement horizontal")
 				.foregroundColor(Color("lekaDarkGray"))
 				.padding(.leading, 30)
 		}
-		.onAppear { spacing = Int(defaults.cellSpacing) }
+		.onAppear { hSpacing = Int(defaults.horizontalCellSpacing) }
+	}
+
+	private var editVerticalSpacing: some View {
+		LabeledContent {
+			TextField("", value: $vSpacing, format: .number)
+				.keyboardType(.decimalPad)
+				.padding(.horizontal, 10)
+				.frame(height: 34)
+				.frame(minWidth: 350, maxWidth: 500)
+				.foregroundColor(Color("lekaSkyBlue"))
+				.background(Color("lekaLightGray"), in: RoundedRectangle(cornerRadius: 8))
+				.overlay(
+					RoundedRectangle(cornerRadius: 8)
+						.stroke(.gray.opacity(0.2), lineWidth: 1)
+				)
+				.onSubmit {
+					defaults.verticalCellSpacing = CGFloat(vSpacing)
+				}
+		} label: {
+			Text("Espacement vertical")
+				.foregroundColor(Color("lekaDarkGray"))
+				.padding(.leading, 30)
+		}
+		.onAppear { vSpacing = Int(defaults.verticalCellSpacing) }
 	}
 }

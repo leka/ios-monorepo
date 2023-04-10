@@ -78,13 +78,14 @@ struct SidebarView: View {
 	}
 
 	private func setupTest(withTemplate: Int) {
-		defaults.playGridBtnSize = 200
-		defaults.cellSpacing = 32
+		//		defaults.playGridBtnSize = 200
+		//		defaults.horizontalCellSpacing = 32
+		//		defaults.verticalCellSpacing = 32
 		setupExplorerVariations(forTemplate: withTemplate)
 		gameEngine.bufferActivity = ExplorerActivity(withTemplate: withTemplate).makeActivity()
 		gameEngine.setupGame()
 	}
-	
+
 	private func setupExplorerVariations(forTemplate: Int) {
 		if forTemplate == 2 {
 			configuration.preferred3AnswersLayout = .basic

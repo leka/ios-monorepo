@@ -12,7 +12,7 @@ struct SixAnswersLayout: View {
 	@EnvironmentObject var defaults: GLT_Defaults
 
 	var body: some View {
-		Grid(horizontalSpacing: defaults.cellSpacing, verticalSpacing: defaults.cellSpacing) {
+		Grid(horizontalSpacing: defaults.horizontalCellSpacing, verticalSpacing: defaults.verticalCellSpacing) {
 			GridRow {
 				ForEach(0..<3) { answer in
 					CircularAnswerButton(answer: answer)

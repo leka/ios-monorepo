@@ -12,7 +12,7 @@ struct FourAnswersLayoutInline: View {
 	@EnvironmentObject var defaults: GLT_Defaults
 
 	var body: some View {
-		HStack(spacing: defaults.cellSpacing) {
+		HStack(spacing: defaults.horizontalCellSpacing) {
 			ForEach(0..<4) { answer in
 				CircularAnswerButton(answer: answer)
 			}

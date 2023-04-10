@@ -37,7 +37,8 @@ class GLT_Defaults: ObservableObject {
 	@Published var playGridBtnTrimLineWidth: CGFloat = 6
 
 	// MARK: - Answers Layouts
-	@Published var cellSpacing: CGFloat = 32
+	@Published var horizontalCellSpacing: CGFloat = 32
+	@Published var verticalCellSpacing: CGFloat = 32
 
 	// MARK: - Activity's Instructions Pop-Up
 	@Published var reg18: Font = .system(size: 18, weight: .regular)

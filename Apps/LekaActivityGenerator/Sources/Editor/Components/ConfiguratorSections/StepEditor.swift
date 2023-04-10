@@ -80,7 +80,7 @@ struct StepEditor: View {
 
 	private func answerRow(rank: Int, answer: String) -> some View {
 		LabeledContent {
-			CircularAnswerContent(content: answer, size: 50)
+			CircularPreviewAnswerContent(content: answer)
 		} label: {
 			Text("Réponse #\(rank+1)")
 				.foregroundColor(Color("lekaDarkGray"))

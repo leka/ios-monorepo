@@ -9,6 +9,7 @@ struct ContentView: View {
 
 	@State private var showInstructionModal: Bool = false
 	@State private var navigateToConfigurator: Bool = false
+	@State private var showOptions: Bool = false
 
 	var body: some View {
 		NavigationSplitView(columnVisibility: $navigator.sidebarVisibility) {
@@ -18,12 +19,27 @@ struct ContentView: View {
 				if navigator.diplaysEditor {
 					NavigationStack {
 						GameView()
-							//							.navigationDestination(isPresented: $navigateToConfigurator) { ActivityConfigurator() }
-							.fullScreenCover(isPresented: $navigateToConfigurator, content: { ActivityConfigurator() })
+							.fullScreenCover(
+								isPresented: $navigateToConfigurator, content: { ActivityConfigurator() })
 					}
 
 				} else {
-					GameView()
+					ZStack {
+						GameView()
+						Color.black
+							.opacity(showOptions ? 0.2 : 0.0)
+							.edgesIgnoringSafeArea(.all)
+							.onTapGesture {
+								withAnimation(.easeIn(duration: 0.4)) { showOptions = false }
+							}
+						Group {
+							if showOptions {
+								ExplorerOptionsPanel(closePanel: $showOptions)
+									.transition(.move(edge: .trailing))
+							}
+						}
+						.animation(.easeIn(duration: 0.4), value: showOptions)
+					}
 				}
 			}
 			.navigationBarTitleDisplayMode(.inline)
@@ -47,6 +63,7 @@ struct ContentView: View {
 				configurationButton
 			} else {
 				infoButton
+				optionsButton
 			}
 		}
 	}
@@ -78,6 +95,20 @@ struct ContentView: View {
 			Image(systemName: "paintbrush.fill")
 				.foregroundColor(.accentColor)
 		}
+	}
+
+	private var optionsButton: some View {
+		Button(
+			action: {
+				withAnimation(.easeIn(duration: 0.4)) {
+					showOptions.toggle()
+				}
+				navigator.sidebarVisibility = .detailOnly
+			},
+			label: {
+				Image(systemName: "slider.horizontal.3")
+					.foregroundColor(.accentColor)
+			})
 	}
 }
 

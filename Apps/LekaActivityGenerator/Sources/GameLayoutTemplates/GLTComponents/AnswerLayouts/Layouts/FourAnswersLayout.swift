@@ -12,7 +12,7 @@ struct FourAnswersLayout: View {
 	@EnvironmentObject var defaults: GLT_Defaults
 
 	var body: some View {
-		Grid(horizontalSpacing: defaults.cellSpacing, verticalSpacing: defaults.cellSpacing) {
+		Grid(horizontalSpacing: defaults.horizontalCellSpacing, verticalSpacing: defaults.verticalCellSpacing) {
 			GridRow {
 				CircularAnswerButton(answer: 0)
 				CircularAnswerButton(answer: 1)

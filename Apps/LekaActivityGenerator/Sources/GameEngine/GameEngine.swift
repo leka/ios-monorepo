@@ -5,7 +5,7 @@
 //  Created by Mathieu Jeannot on 24/3/23.
 //
 
-//import Yams
+// import Yams
 import AVFoundation
 import Foundation
 import SwiftUI
@@ -36,7 +36,7 @@ class GameEngine: NSObject, ObservableObject {
 	@Published var currentGroupIndex: Int = 0
 	@Published var currentStepIndex: Int = 0
 	@Published var trials: Int = 0
-	@Published var pressedAnswerIndex: Int? = nil
+	@Published var pressedAnswerIndex: Int?
 
 	// MARK: - Game UI Interactions properties
 	@Published var groupedStepMarkerColors: [[Color]] = [[]]
@@ -74,7 +74,7 @@ class GameEngine: NSObject, ObservableObject {
 			let newSequence = Array(repeating: bufferActivity.stepSequence[0], count: multiplier)
 			bufferActivity.stepSequence[0] = newSequence.flatMap({ $0 })
 			// Make sure each step is identifiable (no common IDs)
-			for (index, _) in bufferActivity.stepSequence[0].enumerated() {
+			for index in bufferActivity.stepSequence[0].indices {
 				bufferActivity.stepSequence[0][index].id = UUID()
 			}
 		}
@@ -94,7 +94,7 @@ class GameEngine: NSObject, ObservableObject {
 	// Randomize steps & prevent 2 identical steps in a row (within BufferActivity)
 	func randomizeSteps() {
 		if bufferActivity.isRandom {
-			for (index, _) in bufferActivity.stepSequence.enumerated() {
+			for index in bufferActivity.stepSequence.indices {
 				bufferActivity.stepSequence[index].shuffle()
 				bufferActivity.stepSequence[index].sort { $0 != $1 }
 			}
@@ -300,7 +300,6 @@ class GameEngine: NSObject, ObservableObject {
 		utterance.voice =
 			Locale.current.language.languageCode?.identifier == "fr"
 			? AVSpeechSynthesisVoice(language: "fr-FR") : AVSpeechSynthesisVoice(language: "en-US")
-
 		isSpeaking = true
 		synth.speak(utterance)
 	}

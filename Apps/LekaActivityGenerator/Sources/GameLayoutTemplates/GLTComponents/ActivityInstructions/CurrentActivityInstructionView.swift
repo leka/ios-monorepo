@@ -36,9 +36,7 @@ struct CurrentActivityInstructionView: View {
 			.toolbarBackground(.hidden, for: .navigationBar)
 			.interactiveDismissDisabled()
 			.toolbar {
-				ToolbarItem(placement: .navigationBarTrailing) {
-					resumeButton
-				}
+				ToolbarItem(placement: .navigationBarTrailing) { resumeButton }
 			}
 		}
 		.preferredColorScheme(.light)
