@@ -18,6 +18,7 @@ public enum ActivityValidator {
 
         case missingLocales(locales: Set<String>)
         case unexpectedLocales(locales: Set<String>)
+        case missingAndUnexpectedLocales(missing: Set<String>, unexpected: Set<String>)
     }
 
     public static func checkSchemaReferences(content: String) -> Status {
@@ -91,6 +92,108 @@ public enum ActivityValidator {
             // TODO(@ladislas): Move print statements to reporter
             print(" - checkLocalesInL10n... ✅")
             return .success
+        }
+
+        if !localesMissing.isEmpty {
+            // TODO(@ladislas): Move print statements to reporter
+            print(" - checkLocalesInL10n... ❌")
+            print("     missing: \(localesMissing)")
+            return .missingLocales(locales: localesMissing)
+        }
+
+        if !localesUnexpected.isEmpty {
+            // TODO(@ladislas): Move print statements to reporter
+            print(" - checkLocalesInL10n... ❌")
+            print("     unexpected: \(localesUnexpected)")
+            return .unexpectedLocales(locales: localesUnexpected)
+        }
+
+        return .success
+    }
+
+    public static func checkLocalesInGameplay(content: String) -> Status {
+        guard let yaml = try? Yams.load(yaml: content) as? [String: Any],
+            let localesExpected = yaml["locales"] as? [String],
+            let gameplay = yaml["gameplay"] as? [String: Any]
+        else {
+            // TODO(@ladislas): Move print statements to reporter
+            print(" - checkLocalesInGameplay... ❌")
+            print("     cannot parse yaml data:\n\(content)")
+            return .cannotParseYamlData(content: content)
+        }
+
+        var localesAvailable: [[String]] = []
+
+        if let sequence = gameplay["sequence"] as? [[String: Any]] {
+            for step in sequence {
+                guard let instruction = step["instruction"] as? [[String: Any]] else {
+                    continue
+                }
+
+                var stepLocales: [String] = []
+
+                for locale in instruction {
+
+                    if let locale = locale["locale"] as? String {
+                        stepLocales.append(locale)
+                    }
+                }
+
+                localesAvailable.append(stepLocales)
+            }
+        } else if let sequences = gameplay["sequences"] as? [[String: Any]] {
+            for sequence in sequences {
+                guard let sequence = sequence["sequence"] as? [[String: Any]] else {
+                    continue
+                }
+
+                for step in sequence {
+                    guard let instruction = step["instruction"] as? [[String: Any]] else {
+                        continue
+                    }
+
+                    var stepLocales: [String] = []
+
+                    for locale in instruction {
+
+                        if let locale = locale["locale"] as? String {
+                            stepLocales.append(locale)
+                        }
+                    }
+
+                    localesAvailable.append(stepLocales)
+                }
+            }
+        } else {
+            // TODO(@ladislas): Move print statements to reporter
+            print(" - checkLocalesInGameplay... ❌")
+            print("     cannot parse yaml data:\n\(content)")
+            return .cannotParseYamlData(content: content)
+        }
+
+        var localesMissing: Set<String> = []
+        var localesUnexpected: Set<String> = []
+
+        for locales in localesAvailable {
+            let missing = Set(localesExpected).subtracting(locales)
+            let unexpected = Set(locales).subtracting(localesExpected)
+
+            localesMissing.formUnion(missing)
+            localesUnexpected.formUnion(unexpected)
+        }
+
+        if localesMissing.isEmpty && localesUnexpected.isEmpty {
+            // TODO(@ladislas): Move print statements to reporter
+            print(" - checkLocalesInL10n... ✅")
+            return .success
+        }
+
+        if !localesMissing.isEmpty && !localesUnexpected.isEmpty {
+            // TODO(@ladislas): Move print statements to reporter
+            print(" - checkLocalesInL10n... ❌")
+            print("     missing: \(localesMissing)")
+            print("     unexpected: \(localesUnexpected)")
+            return .missingAndUnexpectedLocales(missing: localesMissing, unexpected: localesUnexpected)
         }
 
         if !localesMissing.isEmpty {
