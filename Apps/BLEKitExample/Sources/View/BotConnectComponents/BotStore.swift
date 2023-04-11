@@ -57,7 +57,7 @@ struct BotStore: View {
 	}
 
 	private var availableBots: some View {
-		ForEach(1..<bleManager.peripherals.count, id: \.self) { item in
+		ForEach(0..<bleManager.peripherals.count, id: \.self) { item in
 			Button {
 				botVM.currentlySelectedBotIndex = item
 			} label: {
