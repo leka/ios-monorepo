@@ -15,6 +15,9 @@ public enum ActivityValidator {
         case missingYamlLanguageServerSchema
         case badYamlLanguageServerSchemaRegex(regex: String)
         case schemaReferencesAreDifferent(yslSchema: String, ymlSchema: String)
+
+        case missingLocales(locales: Set<String>)
+        case unexpectedLocales(locales: Set<String>)
     }
 
     public static func checkSchemaReferences(content: String) -> Status {
@@ -59,6 +62,50 @@ public enum ActivityValidator {
 
         // TODO(@ladislas): Move print statements to reporter
         print(" - checkSchemaReferences... ✅")
+
+        return .success
+    }
+
+    public static func checkLocalesInL10n(content: String) -> Status {
+        guard let yaml = try? Yams.load(yaml: content) as? [String: Any],
+            let localesExpected = yaml["locales"] as? [String],
+            let l10n = yaml["l10n"] as? [[String: Any]]
+        else {
+            // TODO(@ladislas): Move print statements to reporter
+            print(" - checkLocalesInL10n... ❌")
+            print("     cannot parse yaml data:\n\(content)")
+            return .cannotParseYamlData(content: content)
+        }
+
+        var localesAvailable: [String] = []
+        for localization in l10n {
+            if let locale = localization["locale"] as? String {
+                localesAvailable.append(locale)
+            }
+        }
+
+        let localesMissing = Set(localesExpected).subtracting(localesAvailable)
+        let localesUnexpected = Set(localesAvailable).subtracting(localesExpected)
+
+        if localesExpected.sorted() == localesAvailable.sorted() {
+            // TODO(@ladislas): Move print statements to reporter
+            print(" - checkLocalesInL10n... ✅")
+            return .success
+        }
+
+        if !localesMissing.isEmpty {
+            // TODO(@ladislas): Move print statements to reporter
+            print(" - checkLocalesInL10n... ❌")
+            print("     missing: \(localesMissing)")
+            return .missingLocales(locales: localesMissing)
+        }
+
+        if !localesUnexpected.isEmpty {
+            // TODO(@ladislas): Move print statements to reporter
+            print(" - checkLocalesInL10n... ❌")
+            print("     unexpected: \(localesUnexpected)")
+            return .unexpectedLocales(locales: localesUnexpected)
+        }
 
         return .success
     }
