@@ -10,54 +10,54 @@ import Foundation
 //
 // MARK: - LKCommand
 //
-public enum LKCommand {
+enum LKCommand {
 
 	// swiftlint:disable colon
-	public static let startByte: UInt8 = 0x2A
-	public static let startByteLength: UInt8 = 0x04
-	public static let ledFull: UInt8 = 0x13
-	public static let motor: UInt8 = 0x20
-	public static let motivator: UInt8 = 0x50
+	static let startByte: UInt8 = 0x2A
+	static let startByteLength: UInt8 = 0x04
+	static let ledFull: UInt8 = 0x13
+	static let motor: UInt8 = 0x20
+	static let motivator: UInt8 = 0x50
 
 	//
 	// MARK: - LKCommand Led Full
 	//
-	public enum LedFull {
+	enum LedFull {
 
-		public static let command: UInt8 = 0x13
-		public static let numberOfValues: UInt8 = 1 + 3 + 1  // EAR/BELT + R, G, B + Checksum
-		public static let ears: UInt8 = 0x14
-		public static let belt: UInt8 = 0x15
+		static let command: UInt8 = 0x13
+		static let numberOfValues: UInt8 = 1 + 3 + 1  // EAR/BELT + R, G, B + Checksum
+		static let ears: UInt8 = 0x14
+		static let belt: UInt8 = 0x15
 
 	}
 
 	//
 	// MARK: - LKCommand Motors
 	//
-	public enum Motor {
+	enum Motor {
 
-		public static let command: UInt8 = 0x20
-		public static let numberOfValues: UInt8 = 1 + 2 + 1  // Id + Spin, Speed + Checksum
-		public static let left: UInt8 = 0x21
-		public static let right: UInt8 = 0x22
+		static let command: UInt8 = 0x20
+		static let numberOfValues: UInt8 = 1 + 2 + 1  // Id + Spin, Speed + Checksum
+		static let left: UInt8 = 0x21
+		static let right: UInt8 = 0x22
 
-		public static let forward: UInt8 = 0x01
-		public static let backward: UInt8 = 0x00
+		static let forward: UInt8 = 0x01
+		static let backward: UInt8 = 0x00
 
 	}
 
 	//
 	// MARK: - LKCommand Motivator
 	//
-	public enum Motivator {
+	enum Motivator {
 
-		public static let command: UInt8 = 0x50
-		public static let numberOfValues: UInt8 = 1 + 1  // Motivator + Checksum
-		public static let rainbow: UInt8 = 0x51
-		public static let fire: UInt8 = 0x52
-		public static let sprinkles: UInt8 = 0x53
-		public static let spinBlink: UInt8 = 0x54
-		public static let blinkGreen: UInt8 = 0x55
+		static let command: UInt8 = 0x50
+		static let numberOfValues: UInt8 = 1 + 1  // Motivator + Checksum
+		static let rainbow: UInt8 = 0x51
+		static let fire: UInt8 = 0x52
+		static let sprinkles: UInt8 = 0x53
+		static let spinBlink: UInt8 = 0x54
+		static let blinkGreen: UInt8 = 0x55
 
 	}
 
@@ -79,13 +79,13 @@ func checksum8(_ values: [UInt8]) -> UInt8 {
 //
 // MARK: - CommandKit
 //
-public class CommandKit {
+class CommandKit {
 
 	//
 	// MARK: - Singleton
 	//
 	static let sharedSingleton = CommandKit()
-	public let command = LKCommand.self
+	let command = LKCommand.self
 
 	//
 	// MARK: - Variables
@@ -99,7 +99,7 @@ public class CommandKit {
 	//
 	// MARK: - Initialisation
 	//
-	public init() {
+	init() {
 
 		for _ in 0...LKCommand.startByteLength - 1 {
 			self.startSequence.append(LKCommand.startByte)
@@ -110,7 +110,7 @@ public class CommandKit {
 	//
 	// MARK: - Led Functions
 	//
-	public func addAllLeds(of earOrBelt: UInt8, rgbColor red: UInt8, _ green: UInt8, _ blue: UInt8) {
+	func addAllLeds(of earOrBelt: UInt8, rgbColor red: UInt8, _ green: UInt8, _ blue: UInt8) {
 
 		let array = [command.LedFull.command, earOrBelt, red, green, blue, checksum8([earOrBelt, red, green, blue])]
 
@@ -125,7 +125,7 @@ public class CommandKit {
 	//
 	// MARK: - Motor Functions
 	//
-	public func addMotor(on leftOrRight: UInt8, direction: UInt8, speed: UInt8) {
+	func addMotor(on leftOrRight: UInt8, direction: UInt8, speed: UInt8) {
 
 		let array = [command.Motor.command, leftOrRight, direction, speed, checksum8([leftOrRight, direction, speed])]
 
@@ -140,7 +140,7 @@ public class CommandKit {
 	//
 	// MARK: - Motivator Functions
 	//
-	public func addMotivator(_ motivator: UInt8) {
+	func addMotivator(_ motivator: UInt8) {
 
 		let array = [command.Motivator.command, motivator, checksum8([motivator])]
 
@@ -170,7 +170,7 @@ public class CommandKit {
 
 	}
 
-	public func getCommands() -> [UInt8] {
+	func getCommands() -> [UInt8] {
 
 		var commands: [UInt8] = []
 
@@ -185,7 +185,7 @@ public class CommandKit {
 
 	}
 
-	public func flush() {
+	func flush() {
 
 		self.commandSequence.removeAll()
 		self.numberOfCommands = 0
