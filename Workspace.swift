@@ -10,6 +10,7 @@ func projects() -> [Path] {
         "Apps/LekaApp",
         "Apps/LekaUpdater",
         "Apps/LekaActivityUIExplorer",
+        "Apps/BLEKitExample",
     ]
 
     // MARK: - macOS Apps
@@ -19,7 +20,8 @@ func projects() -> [Path] {
 
     // MARK: - Modules
     let modules: [Path] = [
-        "Modules/DesignKit"
+        "Modules/DesignKit",
+        "Modules/BLEKit",
     ]
 
     // MARK: - iOS Examples
