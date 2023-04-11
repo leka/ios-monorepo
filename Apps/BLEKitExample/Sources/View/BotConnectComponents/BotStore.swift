@@ -20,6 +20,7 @@ struct BotStore: View {
 	@ObservedObject var botVM: BotViewModel
 
 	var body: some View {
+
 		Group {
 			if bleManager.peripherals.count < 1 {
 				searchInvite

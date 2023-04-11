@@ -24,7 +24,7 @@ public struct ReadOnlyCharacteristic: Hashable {
 	}
 }
 
-public var kDefaultReadOnlyCharacteristics: Set<ReadOnlyCharacteristic> = [
+public let kDefaultReadOnlyCharacteristics: Set<ReadOnlyCharacteristic> = [
 	ReadOnlyCharacteristic(
 		characteristicUUID: BLESpecs.DeviceInformation.Characteristics.manufacturer,
 		serviceUUID: BLESpecs.DeviceInformation.service

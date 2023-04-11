@@ -7,7 +7,6 @@
 //
 
 import BLEKit
-import CombineCoreBluetooth
 import SwiftUI
 
 struct ReadOnlyView: View {

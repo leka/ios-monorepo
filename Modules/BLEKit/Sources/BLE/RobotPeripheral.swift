@@ -19,15 +19,7 @@ public class RobotPeripheral: ObservableObject {
 		self.peripheral = peripheral
 	}
 
-	public func updateData() {
-		for characteristic in readOnlyCharacteristics {
-			readCharacteristic(on: characteristic)
-		}
-
-		discoverAndListenCharacteristics()
-	}
-
-	public func discoverAndListenCharacteristics() {
+	public func discoverAndListenForUpdates() {
 		for char in notifyingCharacteristics {
 
 			self.peripheral
@@ -38,7 +30,6 @@ public class RobotPeripheral: ObservableObject {
 				.sink(
 					receiveCompletion: { _ in },
 					receiveValue: { characteristic in
-						print(characteristic)
 						self.peripheral.setNotifyValue(true, for: characteristic)
 							.assertNoFailure()
 							.sink {
@@ -56,7 +47,7 @@ public class RobotPeripheral: ObservableObject {
 		}
 	}
 
-	public func listenForUpdates(on characteristic: NotifyingCharacteristic) {
+	private func listenForUpdates(on characteristic: NotifyingCharacteristic) {
 
 		peripheral.listenForUpdates(on: characteristic.characteristic!)
 			.receive(on: DispatchQueue.main)
@@ -72,26 +63,27 @@ public class RobotPeripheral: ObservableObject {
 			.store(in: &cancellables)
 	}
 
-	public func readCharacteristic(on characteristic: ReadOnlyCharacteristic) {
-
-		peripheral.readValue(
-			forCharacteristic: characteristic.characteristicUUID,
-			inService: characteristic.serviceUUID
-		)
-		.receive(on: DispatchQueue.main)
-		.sink(
-			receiveCompletion: { _ in
-				// Do nothing
-			},
-			receiveValue: { data in
-				guard let data = data else { return }
-				characteristic.onNotification?(data)
-			}
-		)
-		.store(in: &cancellables)
+	public func readReadOnlyCharacteristics() {
+		for characteristic in readOnlyCharacteristics {
+			peripheral.readValue(
+				forCharacteristic: characteristic.characteristicUUID,
+				inService: characteristic.serviceUUID
+			)
+			.receive(on: DispatchQueue.main)
+			.sink(
+				receiveCompletion: { _ in
+					// Do nothing
+				},
+				receiveValue: { data in
+					guard let data = data else { return }
+					characteristic.onNotification?(data)
+				}
+			)
+			.store(in: &cancellables)
+		}
 	}
 
-	public func writeData(_ data: Data) {
+	public func sendCommand(_ data: Data) {
 
 		peripheral.writeValue(
 			data,

@@ -6,12 +6,11 @@
 //
 
 import BLEKit
-import CombineCoreBluetooth
 import SwiftUI
 
 @main
 struct BLEKitExampleApp: App {
-	@StateObject var bleManager: BLEManager = BLEManager(centralManager: CentralManager.live())
+	@StateObject var bleManager: BLEManager = BLEManager.live()
 	@StateObject var robot: Robot = Robot()
 	@StateObject var botVM: BotViewModel = BotViewModel()
 

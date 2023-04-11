@@ -7,13 +7,13 @@
 //
 
 import BLEKit
-import CoreBluetooth
 import Foundation
 
 class Robot: ObservableObject {
 	var robotPeripheral: RobotPeripheral? {
 		didSet {
-			listenForUpdatedData()
+			updateDeviceInformation()
+			subscribeToDeviceUpdates()
 		}
 	}
 
@@ -30,14 +30,20 @@ class Robot: ObservableObject {
 
 	let commands = CommandKit()
 
-	func listenForUpdatedData() {
-
+	func updateDeviceInformation() {
 		guard let robotPeripheral = self.robotPeripheral else { return }
 
 		registerReadOnlyCharacteristicClosures()
+
+		robotPeripheral.readReadOnlyCharacteristics()
+	}
+
+	func subscribeToDeviceUpdates() {
+		guard let robotPeripheral = self.robotPeripheral else { return }
+
 		registerNotifyingCharacteristicClosures()
 
-		robotPeripheral.updateData()
+		robotPeripheral.discoverAndListenForUpdates()
 	}
 
 	func runReinforcer(_ reinforcer: UInt8) {
@@ -46,7 +52,7 @@ class Robot: ObservableObject {
 		commands.addMotivator(reinforcer)
 		let data = Data(commands.getCommands())
 
-		robotPeripheral.writeData(data)
+		robotPeripheral.sendCommand(data)
 	}
 
 	private func registerReadOnlyCharacteristicClosures() {

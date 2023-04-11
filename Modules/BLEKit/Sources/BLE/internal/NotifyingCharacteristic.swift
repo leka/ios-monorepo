@@ -25,7 +25,7 @@ public struct NotifyingCharacteristic: Hashable {
 	}
 }
 
-public var kDefaultNotifyingCharacteristics: Set<NotifyingCharacteristic> = [
+public let kDefaultNotifyingCharacteristics: Set<NotifyingCharacteristic> = [
 	NotifyingCharacteristic(
 		characteristicUUID: BLESpecs.Battery.Characteristics.level, serviceUUID: BLESpecs.Battery.service
 	),

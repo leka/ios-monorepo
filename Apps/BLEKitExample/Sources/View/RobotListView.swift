@@ -6,7 +6,6 @@
 //
 
 import BLEKit
-//import CombineCoreBluetooth
 import SwiftUI
 
 struct RobotListView: View {
@@ -76,6 +75,7 @@ struct RobotListView: View {
 					botVM.botIsConnected = false
 				} else {
 					bleManager.connect(bleManager.peripherals[botVM.currentlySelectedBotIndex!])
+						.receive(on: DispatchQueue.main)
 						.sink(
 							receiveCompletion: { _ in },
 							receiveValue: { peripheral in
@@ -85,7 +85,6 @@ struct RobotListView: View {
 						)
 						.store(in: &bleManager.cancellables)
 					botVM.currentlyConnectedBotIndex = botVM.currentlySelectedBotIndex
-					botVM.currentlyConnectedBotName = "LKAL \(String(describing: botVM.currentlyConnectedBotIndex))"
 					botVM.botIsConnected = true
 				}
 			},

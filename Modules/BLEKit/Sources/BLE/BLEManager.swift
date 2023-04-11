@@ -9,10 +9,14 @@
 import CombineCoreBluetooth
 
 public class BLEManager: ObservableObject {
-	let centralManager: CentralManager
+	var centralManager: CentralManager
 
 	public init(centralManager: CentralManager) {
 		self.centralManager = centralManager
+	}
+
+	public static func live() -> BLEManager {
+		return BLEManager(centralManager: CentralManager.live())
 	}
 
 	@Published public var peripherals: [PeripheralDiscovery] = []
