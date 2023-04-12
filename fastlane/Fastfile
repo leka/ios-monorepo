@@ -7,15 +7,19 @@
 # auto update fastlane
 # update_fastlane
 
+require 'json'
+
 default_platform(:ios)
 
 ROOT_DIR = File.expand_path('..', Dir.pwd).to_s.freeze
 SIGNING_DIR = "#{ROOT_DIR}/Tuist/Signing"
 
-APP_BUNDLE_IDS = [
+RELEASE_BUNDLE_IDS = [
   'io.leka.apf.app.LekaApp',
   'io.leka.apf.app.LekaUpdater'
 ].freeze
+
+DEVELOPMENT_WILDCARD_BUNDLE_ID = 'io.leka.apf.*'
 
 platform :ios do
   desc "Placeholder lane to make sure fastlane's working"
@@ -36,32 +40,76 @@ platform :ios do
 
     match(
       type: 'development',
-      app_identifier: APP_BUNDLE_IDS,
+      app_identifier: DEVELOPMENT_WILDCARD_BUNDLE_ID,
       readonly: true,
-      output_path: SIGNING_DIR.to_s,
+      output_path: "#{SIGNING_DIR}/raw/dev",
       keychain_name: 'io.leka.fastlane.keychain'
     )
 
     if options[:release]
       match(
         type: 'appstore',
-        app_identifier: APP_BUNDLE_IDS,
+        app_identifier: RELEASE_BUNDLE_IDS,
         readonly: true,
-        output_path: SIGNING_DIR.to_s,
+        output_path: "#{SIGNING_DIR}/raw/release",
         keychain_name: 'io.leka.fastlane.keychain'
       )
     end
 
-    UI.important 'Rename provisioning profile'
-    app_profiles = Dir.entries(SIGNING_DIR.to_s).select { |f| f.end_with?('mobileprovision') }
-    APP_BUNDLE_IDS.each do |id|
+    UI.important 'Create development provisioning profile'
+    UI.message 'Generate json graph'
+
+    Dir.chdir('..') do
+      system(
+        'tuist graph ' \
+        '--format json ' \
+        '--skip-test-targets --skip-external-dependencies ' \
+        "--output-path #{SIGNING_DIR}/raw"
+      )
+    end
+
+    UI.message 'Parse json graph'
+    json = File.read("#{SIGNING_DIR}/raw/graph.json")
+    graph = JSON.parse(json)
+    all_apps = graph['projects'].map do |_project_path, project|
+      project['name']
+    end
+
+    UI.message 'Copy wildcard provisioning profile for each app'
+    all_apps.each do |app|
+      UI.message "App: #{app} --> Bundle ID: io.leka.apf.*"
+      system(
+        'cp -f ' \
+        "#{SIGNING_DIR}/raw/dev/Development_io.leka.apf.*.mobileprovision " \
+        "#{SIGNING_DIR}/#{app}.Debug.mobileprovision"
+      )
+    end
+
+    UI.important 'Copy development .cer & .p12 files'
+    dev_certs = Dir.entries("#{SIGNING_DIR}/raw/dev").select { |f| f.end_with?('cer') || f.end_with?('p12') }
+    dev_certs.each do |cert|
+      system("cp -f #{SIGNING_DIR}/raw/dev/#{cert} #{SIGNING_DIR}/#{cert}")
+    end
+
+    UI.important 'Create release provisioning profile'
+    release_profiles = Dir.entries("#{SIGNING_DIR}/raw/release").select { |f| f.end_with?('mobileprovision') }
+    RELEASE_BUNDLE_IDS.each do |id|
       name = id.delete_prefix('io.leka.apf.app.')
-      UI.message "name: #{name}"
-      app_profiles.select { |p| p.include?(name) }.map do |p|
-        UI.message "profile: #{p}"
-        system("mv -f #{SIGNING_DIR}/#{p} #{SIGNING_DIR}/#{name}.Debug.mobileprovision") if p.include?('Development_')
-        system("mv -f #{SIGNING_DIR}/#{p} #{SIGNING_DIR}/#{name}.Release.mobileprovision") if p.include?('AppStore_')
+      UI.message "App: #{name} --> Bundle ID: #{id}"
+      release_profiles.select { |profile| profile.include?(name) }.map do |profile|
+        UI.message "App: #{name} --> Profile: #{profile}"
+        if profile.include?('AppStore_')
+          system("cp -f #{SIGNING_DIR}/raw/release/#{profile} #{SIGNING_DIR}/#{name}.Release.mobileprovision")
+        end
       end
+    end
+
+    UI.important 'Copy release .cer & .p12 files'
+    release_certs = Dir.entries("#{SIGNING_DIR}/raw/release").select do |f|
+      f.end_with?('cer') || f.end_with?('p12')
+    end
+    release_certs.each do |cert|
+      system("cp -f #{SIGNING_DIR}/raw/release/#{cert} #{SIGNING_DIR}/#{cert}")
     end
   end
 
@@ -75,7 +123,7 @@ platform :ios do
 
     match(
       type: 'development',
-      app_identifier: APP_BUNDLE_IDS,
+      app_identifier: DEVELOPMENT_WILDCARD_BUNDLE_ID,
       force_for_new_devices: true,
       keychain_name: 'io.leka.fastlane.keychain'
     )
@@ -83,7 +131,7 @@ platform :ios do
     if options[:release]
       match(
         type: 'appstore',
-        app_identifier: APP_BUNDLE_IDS,
+        app_identifier: RELEASE_BUNDLE_IDS,
         keychain_name: 'io.leka.fastlane.keychain'
       )
     end
@@ -97,7 +145,7 @@ platform :ios do
 
     if options[:targets] == 'all'
       UI.important 'All apps will be built'
-      apps = APP_BUNDLE_IDS.map { |app| File.extname(app.to_s).delete('.') }
+      apps = RELEASE_BUNDLE_IDS.map { |app| File.extname(app.to_s).delete('.') }
     else
       apps += options[:targets].split(',')
       UI.important "The following apps will be built: #{apps}"
