@@ -10,5 +10,5 @@ let dependencies = Dependencies(
         .remote(url: "https://github.com/airbnb/lottie-ios", requirement: .upToNextMajor(from: "4.1.3")),
         .remote(url: "https://github.com/gonzalezreal/swift-markdown-ui", requirement: .upToNextMajor(from: "2.0.2")),
     ],
-    platforms: [.iOS]
+    platforms: [.iOS, .macOS]
 )
