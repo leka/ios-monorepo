@@ -14,7 +14,7 @@ func projects() -> [Path] {
 
     // MARK: - macOS Apps
     let macOSApps: [Path] = [
-        // no apps yet
+        "Tools/ContentValidator"
     ]
 
     // MARK: - Modules
