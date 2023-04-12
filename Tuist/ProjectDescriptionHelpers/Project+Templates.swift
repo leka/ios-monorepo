@@ -12,18 +12,42 @@ import ProjectDescription
 extension Project {
 
     /// Helper function to create the Project for this ExampleApp
-    public static func app(
+    public static func iOSApp(
         name: String,
-        platform: Platform,
+        version: String = "1.0.0",
         dependencies: [TargetDependency],
         infoPlist: [String: InfoPlist.Value] = [:]
     ) -> Project {
-        let targets = makeAppTargets(
+        let appInfoPlist = InfoPlist.base(version: version).merging(infoPlist) { (_, new) in new }
+
+        let mainTarget = Target(
             name: name,
-            platform: platform,
-            dependencies: dependencies,
-            infoPlist: infoPlist
+            platform: .iOS,
+            product: .app,
+            bundleId: "io.leka.apf.app.\(name)",
+            deploymentTarget: .iOS(targetVersion: "16.0", devices: .ipad),
+            infoPlist: .extendingDefault(with: appInfoPlist),
+            sources: ["Sources/**"],
+            resources: ["Resources/**"],
+            scripts: TargetScript.linters,
+            dependencies: dependencies
         )
+
+        let testTarget = Target(
+            name: "\(name)Tests",
+            platform: .iOS,
+            product: .unitTests,
+            bundleId: "io.leka.apf.app.\(name)Tests",
+            infoPlist: .default,
+            sources: ["Tests/**"],
+            resources: [],
+            scripts: TargetScript.linters,
+            dependencies: [
+                .target(name: "\(name)")
+            ])
+
+        let targets = [mainTarget, testTarget]
+
         return Project(
             name: name,
             organizationName: "leka.io",
@@ -31,10 +55,77 @@ extension Project {
     }
 
     /// Helper function to create the Project for this ExampleApp
-    public static func module(name: String, platform: Platform, dependencies: [TargetDependency]) -> Project {
+    public static func macOSApp(
+        name: String,
+        version: String = "1.0.0",
+        dependencies: [TargetDependency]
+    ) -> Project {
+        let mainTarget = Target(
+            name: name,
+            platform: .macOS,
+            product: .app,
+            bundleId: "io.leka.apf.app.\(name)",
+            deploymentTarget: .macOS(targetVersion: "13.0"),
+            sources: ["Sources/**"],
+            resources: ["Resources/**"],
+            scripts: TargetScript.linters,
+            dependencies: dependencies
+        )
+
+        let testTarget = Target(
+            name: "\(name)Tests",
+            platform: .macOS,
+            product: .unitTests,
+            bundleId: "io.leka.apf.app.\(name)Tests",
+            infoPlist: .default,
+            sources: ["Tests/**"],
+            resources: [],
+            scripts: TargetScript.linters,
+            dependencies: [
+                .target(name: "\(name)")
+            ])
+
+        let targets = [mainTarget, testTarget]
+
+        return Project(
+            name: name,
+            organizationName: "leka.io",
+            targets: targets)
+    }
+
+    /// Helper function to create the Project for this ExampleApp
+    public static func cli(
+        name: String,
+        version: String = "1.0.0",
+        dependencies: [TargetDependency]
+    ) -> Project {
+        let mainTarget = Target(
+            name: name,
+            platform: .macOS,
+            product: .commandLineTool,
+            bundleId: "io.leka.apf.cli.\(name)",
+            deploymentTarget: .macOS(targetVersion: "13.0"),
+            sources: ["Sources/**"],
+            scripts: TargetScript.linters,
+            dependencies: dependencies
+        )
+
+        let targets = [mainTarget]
+
+        return Project(
+            name: name,
+            organizationName: "leka.io",
+            targets: targets)
+    }
+
+    /// Helper function to create the Project for this ExampleApp
+    public static func module(
+        name: String, platform: Platform, product: Product = .staticLibrary, dependencies: [TargetDependency]
+    ) -> Project {
         let targets = makeFrameworkTargets(
             name: name,
             platform: platform,
+            product: product,
             dependencies: dependencies)
 
         return Project(
@@ -48,14 +139,16 @@ extension Project {
     //
 
     /// Helper function to create a framework target and an associated unit test target
-    private static func makeFrameworkTargets(name: String, platform: Platform, dependencies: [TargetDependency])
+    private static func makeFrameworkTargets(
+        name: String, platform: Platform, product: Product = .staticLibrary, dependencies: [TargetDependency]
+    )
         -> [Target]
     {
-        let sources = Target(
-            name: name,
+        let sources4iOS = Target(
+            name: "\(name)",
             platform: platform,
-            product: .staticLibrary,
-            bundleId: "io.leka.apf.framework.\(name)",
+            product: product,
+            bundleId: "io.leka.apf.framework.iOS.\(name)",
             deploymentTarget: .iOS(targetVersion: "16.0", devices: .ipad),
             infoPlist: .default,
             sources: ["Sources/**"],
@@ -74,49 +167,49 @@ extension Project {
             scripts: TargetScript.linters,
             dependencies: [.target(name: name)])
 
-        return [sources, tests]
+        return [sources4iOS, tests]
     }
 
-    /// Helper function to create the application target and the unit test target.
-    private static func makeAppTargets(
-        name: String, platform: Platform, dependencies: [TargetDependency], infoPlist: [String: InfoPlist.Value] = [:]
-    ) -> [Target] {
-        let platform: Platform = platform
-        let base: [String: InfoPlist.Value] = [
-            "CFBundleShortVersionString": "1.0",
-            "CFBundleVersion": "1",
-            "UIMainStoryboardFile": "",
-            "UILaunchStoryboardName": "LaunchScreen",
-            "ITSAppUsesNonExemptEncryption": "NO",
-        ]
-
-        let global = base.merging(infoPlist) { (_, new) in new }
-
-        let mainTarget = Target(
-            name: name,
-            platform: platform,
-            product: .app,
-            bundleId: "io.leka.apf.app.\(name)",
-            deploymentTarget: .iOS(targetVersion: "16.0", devices: .ipad),
-            infoPlist: .extendingDefault(with: global),
-            sources: ["Sources/**"],
-            resources: ["Resources/**"],
-            scripts: TargetScript.linters,
-            dependencies: dependencies
-        )
-
-        let testTarget = Target(
-            name: "\(name)Tests",
-            platform: platform,
-            product: .unitTests,
-            bundleId: "io.leka.apf.app.\(name)Tests",
-            infoPlist: .default,
-            sources: ["Tests/**"],
-            resources: [],
-            scripts: TargetScript.linters,
-            dependencies: [
-                .target(name: "\(name)")
-            ])
-        return [mainTarget, testTarget]
-    }
+    //    /// Helper function to create the application target and the unit test target.
+    //    private static func makeAppTargets(
+    //        name: String, platform: Platform, dependencies: [TargetDependency], infoPlist: [String: InfoPlist.Value] = [:]
+    //    ) -> [Target] {
+    //        let platform: Platform = platform
+    //        let base: [String: InfoPlist.Value] = [
+    //            "CFBundleShortVersionString": "1.0",
+    //            "CFBundleVersion": "1",
+    //            "UIMainStoryboardFile": "",
+    //            "UILaunchStoryboardName": "LaunchScreen",
+    //            "ITSAppUsesNonExemptEncryption": "NO",
+    //        ]
+    //
+    //        let global = base.merging(infoPlist) { (_, new) in new }
+    //
+    //        let mainTarget = Target(
+    //            name: name,
+    //            platform: platform,
+    //            product: .app,
+    //            bundleId: "io.leka.apf.app.\(name)",
+    //            deploymentTarget: .iOS(targetVersion: "16.0", devices: .ipad),
+    //            infoPlist: .extendingDefault(with: global),
+    //            sources: ["Sources/**"],
+    //            resources: ["Resources/**"],
+    //            scripts: TargetScript.linters,
+    //            dependencies: dependencies
+    //        )
+    //
+    //        let testTarget = Target(
+    //            name: "\(name)Tests",
+    //            platform: platform,
+    //            product: .unitTests,
+    //            bundleId: "io.leka.apf.app.\(name)Tests",
+    //            infoPlist: .default,
+    //            sources: ["Tests/**"],
+    //            resources: [],
+    //            scripts: TargetScript.linters,
+    //            dependencies: [
+    //                .target(name: "\(name)")
+    //            ])
+    //        return [mainTarget, testTarget]
+    //    }
 }

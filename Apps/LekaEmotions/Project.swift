@@ -6,9 +6,9 @@ import ProjectDescription
 import ProjectDescriptionHelpers
 
 // Creates our project using a helper function defined in ProjectDescriptionHelpers
-let project = Project.app(
+let project = Project.iOSApp(
     name: "LekaEmotions",
-    platform: .iOS,
+    version: "1.0.0",
     dependencies: [
         .project(target: "CoreUI", path: Path("../../Modules/CoreUI"))
     ])
