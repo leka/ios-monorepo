@@ -9,11 +9,6 @@ import ProjectDescription
 /// Create your own conventions, e.g: a func that makes sure all shared targets are "static frameworks"
 /// See https://docs.tuist.io/guides/helpers/
 
-let scripts: [TargetScript] = [
-    .swiftLint,
-    .swiftFormat,
-]
-
 extension Project {
 
     /// Helper function to create the Project for this ExampleApp
@@ -65,7 +60,7 @@ extension Project {
             infoPlist: .default,
             sources: ["Sources/**"],
             resources: ["Resources/**"],
-            scripts: scripts,
+            scripts: TargetScript.linters,
             dependencies: dependencies)
 
         let tests = Target(
@@ -76,7 +71,7 @@ extension Project {
             infoPlist: .default,
             sources: ["Tests/**"],
             resources: [],
-            scripts: scripts,
+            scripts: TargetScript.linters,
             dependencies: [.target(name: name)])
 
         return [sources, tests]
@@ -106,7 +101,7 @@ extension Project {
             infoPlist: .extendingDefault(with: global),
             sources: ["Sources/**"],
             resources: ["Resources/**"],
-            scripts: scripts,
+            scripts: TargetScript.linters,
             dependencies: dependencies
         )
 
@@ -118,7 +113,7 @@ extension Project {
             infoPlist: .default,
             sources: ["Tests/**"],
             resources: [],
-            scripts: scripts,
+            scripts: TargetScript.linters,
             dependencies: [
                 .target(name: "\(name)")
             ])

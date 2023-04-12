@@ -14,4 +14,9 @@ extension TargetScript {
         path: Path.relativeToRoot("Scripts/SwiftFormatRunScript.sh"),
         name: "SwiftFormat",
         basedOnDependencyAnalysis: false)
+
+    public static let linters: [TargetScript] = [
+        .swiftLint,
+        .swiftFormat,
+    ]
 }
