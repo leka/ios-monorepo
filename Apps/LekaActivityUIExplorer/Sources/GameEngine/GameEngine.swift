@@ -5,7 +5,6 @@
 //  Created by Mathieu Jeannot on 24/3/23.
 //
 
-// import Yams
 import AVFoundation
 import Foundation
 import SwiftUI
@@ -75,6 +74,7 @@ class GameEngine: NSObject, ObservableObject {
             bufferActivity.stepSequence[0] = newSequence.flatMap({ $0 })
             // Make sure each step is identifiable (no common IDs)
             for index in bufferActivity.stepSequence[0].indices {
+                // TODO(@macteuts): make sre that using indices works
                 bufferActivity.stepSequence[0][index].id = UUID()
             }
         }
@@ -94,6 +94,7 @@ class GameEngine: NSObject, ObservableObject {
     // Randomize steps & prevent 2 identical steps in a row (within BufferActivity)
     func randomizeSteps() {
         if bufferActivity.isRandom {
+            // TODO(@macteuts): make sre that using indices works
             for index in bufferActivity.stepSequence.indices {
                 bufferActivity.stepSequence[index].shuffle()
                 bufferActivity.stepSequence[index].sort { $0 != $1 }

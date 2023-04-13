@@ -78,23 +78,28 @@ struct ContentView: View {
     }
 
     private var infoButton: some View {
-        Button(action: {
-            showInstructionModal.toggle()
-        }) {
-            Image(systemName: "info.circle")
-                .foregroundColor(.accentColor)
-        }
+        Button(
+            action: {
+                showInstructionModal.toggle()
+            },
+            label: {
+                Image(systemName: "info.circle")
+                    .foregroundColor(.accentColor)
+            }
+        )
         .opacity(showInstructionModal ? 0 : 1)
     }
 
     private var configurationButton: some View {
-        Button(action: {
-            navigateToConfigurator.toggle()
-            navigator.sidebarVisibility = .detailOnly
-        }) {
-            Image(systemName: "paintbrush.fill")
-                .foregroundColor(.accentColor)
-        }
+        Button(
+            action: {
+                navigateToConfigurator.toggle()
+                navigator.sidebarVisibility = .detailOnly
+            },
+            label: {
+                Image(systemName: "paintbrush.fill")
+                    .foregroundColor(.accentColor)
+            })
     }
 
     private var optionsButton: some View {

@@ -119,7 +119,8 @@ class GameLayoutTemplatesConfigurations: ObservableObject {
                 allUsedTemplates = []
                 for (indexG, group) in from.stepSequence.enumerated() {
                     allUsedTemplates.append([group[0].allAnswers.count - 1])
-                    for (indexS, _) in group.enumerated() {
+                    // TODO(@macteuts): make sre that using indices works
+                    for (indexS) in group.indices {
                         allUsedTemplates[indexG].append(group[indexS].allAnswers.count - 1)
                     }
                 }

@@ -119,7 +119,7 @@ struct StepEditor: View {
                 .onSubmit {
                     switch language {
                         case .french: step.instruction.frFR = text
-                        case .english: step.instruction.enUS = text  //gameEngine.bufferActivity.stepSequence[0][0].instruction.enUS = text//
+                        case .english: step.instruction.enUS = text
                     }
                 }
         } label: {

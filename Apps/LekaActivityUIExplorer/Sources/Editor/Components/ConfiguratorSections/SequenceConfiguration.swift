@@ -92,17 +92,19 @@ struct SequenceConfiguration: View {
                                 .stroke(.gray.opacity(0.2), lineWidth: 1)
                         )
 
-                    Button(action: {
-                        configuration.currentlyEditedGroupIndex = rank
-                        goToGroupEditor.toggle()
-                    }) {
-                        Text("Éditer")
-                            .font(defaults.reg15)
-                            .foregroundColor(.white)
-                            .padding(.horizontal, 12)
-                            .frame(height: 34)
-                            .background(Color("lekaSkyBlue"), in: RoundedRectangle(cornerRadius: 8))
-                    }
+                    Button(
+                        action: {
+                            configuration.currentlyEditedGroupIndex = rank
+                            goToGroupEditor.toggle()
+                        },
+                        label: {
+                            Text("Éditer")
+                                .font(defaults.reg15)
+                                .foregroundColor(.white)
+                                .padding(.horizontal, 12)
+                                .frame(height: 34)
+                                .background(Color("lekaSkyBlue"), in: RoundedRectangle(cornerRadius: 8))
+                        })
                 }
                 .frame(width: 220)
             }

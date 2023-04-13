@@ -20,20 +20,23 @@ struct TemplateSelector: View {
         ScrollView(showsIndicators: true) {
             LazyVGrid(columns: columns) {
                 ForEach(configuration.templatesPreviews.indices, id: \.self) { item in
-                    Button(action: {
-                        selected = item
-                        switch configuration.templatesScope {
-                            // Here, assign to configuration.allUsedTemplates following model in there
-                            case .activity: print("activity scope in temp. selector")
-                            case .group: print("group scope in temp. selector")
-                            case .step: print("step scope in temp. selector")
+                    Button(
+                        action: {
+                            selected = item
+                            switch configuration.templatesScope {
+                                // Here, assign to configuration.allUsedTemplates following model in there
+                                case .activity: print("activity scope in temp. selector")
+                                case .group: print("group scope in temp. selector")
+                                case .step: print("step scope in temp. selector")
+                            }
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                                dismiss()
+                            }
+                        },
+                        label: {
+                            previewButton(configuration.templatesPreviews[item])
                         }
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                            dismiss()
-                        }
-                    }) {
-                        previewButton(configuration.templatesPreviews[item])
-                    }
+                    )
                     .buttonStyle(
                         TemplatePreview_ButtonStyle(
                             isSelected: selected == item,

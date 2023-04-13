@@ -22,19 +22,22 @@ struct AlternativeTemplateSelector: View {
         ScrollView(showsIndicators: true) {
             LazyVGrid(columns: columns) {
                 ForEach(previewsArray.indices, id: \.self) { item in
-                    Button(action: {
-                        selected = item
-                        assignAlternatives()
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                            dismiss()
+                    Button(
+                        action: {
+                            selected = item
+                            assignAlternatives()
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                                dismiss()
+                            }
+                        },
+                        label: {
+                            if count == 3 {
+                                previewButton(configuration.templatesPreviewsAlternatives3[item])
+                            } else {
+                                previewButton(configuration.templatesPreviewsAlternatives4[item])
+                            }
                         }
-                    }) {
-                        if count == 3 {
-                            previewButton(configuration.templatesPreviewsAlternatives3[item])
-                        } else {
-                            previewButton(configuration.templatesPreviewsAlternatives4[item])
-                        }
-                    }
+                    )
                     .buttonStyle(
                         TemplatePreview_ButtonStyle(
                             isSelected: selected == item,
