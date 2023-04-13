@@ -9,7 +9,7 @@ import SwiftUI
 
 struct StepMarker: View {
 
-    @EnvironmentObject var defaults: GLT_Defaults
+    @EnvironmentObject var defaults: GameLayoutTemplatesDefaults
     @Binding var color: Color
 
     var body: some View {

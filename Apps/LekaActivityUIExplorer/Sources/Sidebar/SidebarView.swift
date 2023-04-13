@@ -10,9 +10,9 @@ import SwiftUI
 struct SidebarView: View {
 
     @EnvironmentObject var navigator: NavigationManager
-    @EnvironmentObject var configuration: GLT_Configurations
+    @EnvironmentObject var configuration: GameLayoutTemplatesConfigurations
     @EnvironmentObject var gameEngine: GameEngine
-    @EnvironmentObject var defaults: GLT_Defaults
+    @EnvironmentObject var defaults: GameLayoutTemplatesDefaults
 
     @State private var isExpanded: Bool = false
     @State private var selectedTemplate: Int = 0
@@ -121,9 +121,9 @@ struct SidebarView: View {
 struct SidebarView_Previews: PreviewProvider {
     static var previews: some View {
         SidebarView()
-            .environmentObject(GLT_Configurations())
+            .environmentObject(GameLayoutTemplatesConfigurations())
             .environmentObject(NavigationManager())
             .environmentObject(GameEngine())
-            .environmentObject(GLT_Defaults())
+            .environmentObject(GameLayoutTemplatesDefaults())
     }
 }

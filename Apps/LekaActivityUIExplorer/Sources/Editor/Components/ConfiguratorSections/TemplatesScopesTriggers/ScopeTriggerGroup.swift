@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ScopeTriggerGroup: View {
 
-    @EnvironmentObject var configuration: GLT_Configurations
+    @EnvironmentObject var configuration: GameLayoutTemplatesConfigurations
     @EnvironmentObject var gameEngine: GameEngine
 
     @State private var isOn: Bool = false

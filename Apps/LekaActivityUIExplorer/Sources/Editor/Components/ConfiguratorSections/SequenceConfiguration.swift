@@ -9,9 +9,9 @@ import SwiftUI
 
 struct SequenceConfiguration: View {
 
-    @EnvironmentObject var configuration: GLT_Configurations
+    @EnvironmentObject var configuration: GameLayoutTemplatesConfigurations
     @EnvironmentObject var gameEngine: GameEngine
-    @EnvironmentObject var defaults: GLT_Defaults
+    @EnvironmentObject var defaults: GameLayoutTemplatesDefaults
 
     @State private var goToGroupEditor: Bool = false
 

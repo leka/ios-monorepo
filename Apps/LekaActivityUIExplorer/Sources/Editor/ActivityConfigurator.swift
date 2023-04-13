@@ -9,9 +9,9 @@ import SwiftUI
 
 struct ActivityConfigurator: View {
 
-    @EnvironmentObject var configuration: GLT_Configurations
+    @EnvironmentObject var configuration: GameLayoutTemplatesConfigurations
     @EnvironmentObject var gameEngine: GameEngine
-    @EnvironmentObject var defaults: GLT_Defaults
+    @EnvironmentObject var defaults: GameLayoutTemplatesDefaults
     @Environment(\.dismiss) var dismiss
 
     @State private var selectedLanguage: Languages = .french
@@ -205,7 +205,7 @@ struct ActivityConfigurator_Previews: PreviewProvider {
     static var previews: some View {
         ActivityConfigurator()
             .environmentObject(GameEngine())
-            .environmentObject(GLT_Defaults())
-            .environmentObject(GLT_Configurations())
+            .environmentObject(GameLayoutTemplatesDefaults())
+            .environmentObject(GameLayoutTemplatesConfigurations())
     }
 }

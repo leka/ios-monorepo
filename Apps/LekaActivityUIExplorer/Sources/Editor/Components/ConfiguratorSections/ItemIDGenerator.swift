@@ -9,9 +9,9 @@ import SwiftUI
 
 struct ItemIDGenerator: View {
 
-    //	@EnvironmentObject var configuration: GLT_Configurations
+    //	@EnvironmentObject var configuration: GameLayoutTemplatesConfigurations
     @EnvironmentObject var gameEngine: GameEngine
-    @EnvironmentObject var defaults: GLT_Defaults
+    @EnvironmentObject var defaults: GameLayoutTemplatesDefaults
 
     @Binding var forID: UUID
     var label: String

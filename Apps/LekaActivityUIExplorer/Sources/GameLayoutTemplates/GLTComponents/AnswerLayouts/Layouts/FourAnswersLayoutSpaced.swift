@@ -9,7 +9,7 @@ import SwiftUI
 
 struct FourAnswersLayoutSpaced: View {
 
-    @EnvironmentObject var defaults: GLT_Defaults
+    @EnvironmentObject var defaults: GameLayoutTemplatesDefaults
 
     var body: some View {
         Grid(horizontalSpacing: defaults.horizontalCellSpacing, verticalSpacing: defaults.verticalCellSpacing) {
@@ -30,8 +30,8 @@ struct FourAnswersLayoutSpaced: View {
 struct FourAnswersLayoutSpaced_Previews: PreviewProvider {
     static var previews: some View {
         FourAnswersLayoutSpaced()
-            .environmentObject(GLT_Defaults())
-            .environmentObject(GLT_Configurations())
+            .environmentObject(GameLayoutTemplatesDefaults())
+            .environmentObject(GameLayoutTemplatesConfigurations())
             .environmentObject(GameEngine())
     }
 }

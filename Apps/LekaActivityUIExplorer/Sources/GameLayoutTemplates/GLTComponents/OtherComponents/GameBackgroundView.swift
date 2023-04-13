@@ -9,7 +9,7 @@ import SwiftUI
 
 struct GameBackgroundView: View {
 
-    @EnvironmentObject var defaults: GLT_Defaults
+    @EnvironmentObject var defaults: GameLayoutTemplatesDefaults
 
     var body: some View {
         defaults.activitiesBackgroundColor.edgesIgnoringSafeArea(.all)

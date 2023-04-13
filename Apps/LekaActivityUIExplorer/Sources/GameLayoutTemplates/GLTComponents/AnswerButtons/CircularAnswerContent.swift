@@ -10,7 +10,7 @@ import SwiftUI
 struct CircularAnswerContent: View {
 
     @EnvironmentObject var gameEngine: GameEngine
-    @EnvironmentObject var defaults: GLT_Defaults
+    @EnvironmentObject var defaults: GameLayoutTemplatesDefaults
 
     var content: String
 

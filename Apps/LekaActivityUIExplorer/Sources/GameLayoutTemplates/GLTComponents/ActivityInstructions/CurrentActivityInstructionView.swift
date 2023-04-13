@@ -10,7 +10,7 @@ import SwiftUI
 struct CurrentActivityInstructionView: View {
 
     @EnvironmentObject var gameEngine: GameEngine
-    @EnvironmentObject var defaults: GLT_Defaults
+    @EnvironmentObject var defaults: GameLayoutTemplatesDefaults
     @Environment(\.dismiss) var dismiss
 
     @State private var instruction: String = ""

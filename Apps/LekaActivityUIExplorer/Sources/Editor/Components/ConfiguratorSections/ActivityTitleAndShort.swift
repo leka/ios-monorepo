@@ -10,7 +10,7 @@ import SwiftUI
 struct ActivityTitleAndShort: View {
 
     @EnvironmentObject var gameEngine: GameEngine
-    @EnvironmentObject var defaults: GLT_Defaults
+    @EnvironmentObject var defaults: GameLayoutTemplatesDefaults
 
     @Binding var language: Languages
     @State private var title: String = ""

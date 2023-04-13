@@ -1,5 +1,5 @@
 //
-//  GLT_Configurations.swift
+//  GameLayoutTemplatesConfigurations.swift
 //  LekaTestBucket
 //
 //  Created by Mathieu Jeannot on 24/3/23.
@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-class GLT_Configurations: ObservableObject {
+class GameLayoutTemplatesConfigurations: ObservableObject {
 
     @Published var templatesScope: TemplateSelectionScope = .activity
     @Published var allUsedTemplates: [[Int]] = [[0]]

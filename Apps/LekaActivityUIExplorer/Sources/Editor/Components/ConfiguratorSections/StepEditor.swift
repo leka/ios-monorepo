@@ -10,8 +10,8 @@ import SwiftUI
 struct StepEditor: View {
 
     @EnvironmentObject var gameEngine: GameEngine
-    @EnvironmentObject var configuration: GLT_Configurations
-    @EnvironmentObject var defaults: GLT_Defaults
+    @EnvironmentObject var configuration: GameLayoutTemplatesConfigurations
+    @EnvironmentObject var defaults: GameLayoutTemplatesDefaults
 
     @Binding var rank: Int
     @Binding var step: Step

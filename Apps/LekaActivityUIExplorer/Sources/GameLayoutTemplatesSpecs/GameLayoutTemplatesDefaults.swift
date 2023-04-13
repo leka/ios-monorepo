@@ -1,5 +1,5 @@
 //
-//  GLT_Defaults.swift
+//  GameLayoutTemplatesDefaults.swift
 //  LekaTestBucket
 //
 //  Created by Mathieu Jeannot on 24/3/23.
@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-class GLT_Defaults: ObservableObject {
+class GameLayoutTemplatesDefaults: ObservableObject {
 
     // MARK: - Game BG
     @Published var activitiesBackgroundColor: Color = Color("GLT_BackgroundColor_LightGray")

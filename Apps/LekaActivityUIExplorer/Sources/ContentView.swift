@@ -4,8 +4,8 @@ struct ContentView: View {
 
     @EnvironmentObject var navigator: NavigationManager
     @EnvironmentObject var gameEngine: GameEngine
-    @EnvironmentObject var defaults: GLT_Defaults
-    @EnvironmentObject var configuration: GLT_Configurations
+    @EnvironmentObject var defaults: GameLayoutTemplatesDefaults
+    @EnvironmentObject var configuration: GameLayoutTemplatesConfigurations
 
     @State private var showInstructionModal: Bool = false
     @State private var navigateToConfigurator: Bool = false
@@ -117,7 +117,7 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
             .environmentObject(NavigationManager())
             .environmentObject(GameEngine())
-            .environmentObject(GLT_Defaults())
-            .environmentObject(GLT_Configurations())
+            .environmentObject(GameLayoutTemplatesDefaults())
+            .environmentObject(GameLayoutTemplatesConfigurations())
     }
 }

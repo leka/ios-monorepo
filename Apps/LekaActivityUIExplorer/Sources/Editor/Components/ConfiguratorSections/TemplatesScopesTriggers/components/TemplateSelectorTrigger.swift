@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TemplateSelectorTrigger: View {
 
-    //	@EnvironmentObject var configuration: GLT_Configurations
+    //	@EnvironmentObject var configuration: GameLayoutTemplatesConfigurations
 
     var body: some View {
         NavigationLink(destination: TemplateSelector()) {

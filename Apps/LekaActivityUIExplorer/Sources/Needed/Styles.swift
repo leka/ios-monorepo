@@ -11,7 +11,7 @@ import SwiftUI
 // MARK: - Step Instructions Button Style
 struct StepInstructions_ButtonStyle: ButtonStyle {
     @EnvironmentObject var gameEngine: GameEngine
-    @EnvironmentObject var defaults: GLT_Defaults
+    @EnvironmentObject var defaults: GameLayoutTemplatesDefaults
     func makeBody(configuration: Self.Configuration) -> some View {
         HStack(spacing: 0) {
             Spacer()
@@ -144,7 +144,7 @@ struct BorderedCapsule_ButtonStyle: ButtonStyle {
 
 // MARK: - Template Previews
 struct TemplatePreview_ButtonStyle: ButtonStyle {
-    @EnvironmentObject var defaults: GLT_Defaults
+    @EnvironmentObject var defaults: GameLayoutTemplatesDefaults
     var isSelected: Bool
     var name: String
     func makeBody(configuration: Self.Configuration) -> some View {

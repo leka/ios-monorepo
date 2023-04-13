@@ -11,7 +11,7 @@ import SwiftUI
 struct SpacingEditor: View {
 
     @EnvironmentObject var gameEngine: GameEngine
-    @EnvironmentObject var defaults: GLT_Defaults
+    @EnvironmentObject var defaults: GameLayoutTemplatesDefaults
 
     var body: some View {
         Section {

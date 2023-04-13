@@ -10,8 +10,8 @@ import SwiftUI
 struct GroupEditor: View {
 
     @EnvironmentObject var gameEngine: GameEngine
-    @EnvironmentObject var configuration: GLT_Configurations
-    @EnvironmentObject var defaults: GLT_Defaults
+    @EnvironmentObject var configuration: GameLayoutTemplatesConfigurations
+    @EnvironmentObject var defaults: GameLayoutTemplatesDefaults
     @Environment(\.dismiss) var dismiss
 
     @State private var selectedLanguage: Languages = .french
