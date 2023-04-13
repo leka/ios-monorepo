@@ -45,18 +45,6 @@ struct SequenceConfiguration: View {
         .navigationDestination(isPresented: $goToGroupEditor) { GroupEditor() }
     }
 
-    //	private var randomGroupsToggle: some View {
-    //		LabeledContent {
-    //			Toggle("", isOn: $gameEngine.bufferActivity.groupsAreRandom)
-    //				.toggleStyle(SwitchToggleStyle(tint: Color("lekaSkyBlue")))
-    //				.labelsHidden()
-    //		} label: {
-    //			Text("L'ordre des groupes est aléatoire")
-    //				.foregroundColor(Color("lekaDarkGray"))
-    //				.padding(.leading, 30)
-    //		}
-    //	}
-
     @ViewBuilder
     private var addNewGroup: some View {
         Group {

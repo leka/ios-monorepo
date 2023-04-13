@@ -45,23 +45,6 @@ struct StepEditor: View {
 
     @ViewBuilder
     private var editStepAnswers: some View {
-        //		switch configuration.templatesScope {
-        //			case .activity:
-        //				VStack(alignment: .leading, spacing: 10) {
-        //					HStack(spacing: 10) {
-        //						Image(systemName: "exclamationmark.triangle.fill")
-        //						Text("Attention, l'activité est configurée pour utiliser un template unique (\(configuration.templatesPreviews[configuration.activityTemplate])).")
-        //					}
-        //					HStack(spacing: 10) {
-        //						Image(systemName: "lightbulb.fill")
-        //						Text("Modifier ce paramétre ou ajuster le nombre de réponses possibles dans l'étape #\(rank).")
-        //					}
-        //				}
-        //				.font(defaults.reg13)
-        //				.foregroundColor(.red)
-        //			default:
-        //				EmptyView()
-        //		}
         List {
             Section {
                 ForEach(step.allAnswers.enumerated().map({ $0 }), id: \.offset) { index, answer in
