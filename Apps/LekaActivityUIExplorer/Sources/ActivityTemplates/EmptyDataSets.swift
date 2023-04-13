@@ -31,8 +31,8 @@ class EmptyDataSets: ObservableObject {
 
     func emptyInstructions() -> LocalizedContent {
         return LocalizedContent(
-            enUS: markdownInstructionsEN,
-            frFR: markdownInstructionsFR)
+            enUS: String.markdownInstructionsEN,
+            frFR: String.markdownInstructionsFR)
     }
 
     var markdownInstructionsFR: String = """
