@@ -42,11 +42,11 @@ class ExplorerActivity: ObservableObject {
 
     func emptyInstructions() -> LocalizedContent {
         return LocalizedContent(
-            enUS: MDInstructions_EN,
-            frFR: MDInstructions_FR)
+            enUS: markdownInstructionsEN,
+            frFR: markdownInstructionsFR)
     }
 
-    var MDInstructions_FR: String = """
+    var markdownInstructionsFR: String = """
         ## Objectif
 
         L’enfant doit toucher la photo demandée.
@@ -77,7 +77,7 @@ class ExplorerActivity: ObservableObject {
 
         """
 
-    var MDInstructions_EN: String = """
+    var markdownInstructionsEN: String = """
         ## Goal
 
         The child must touch the requested photo.
@@ -142,10 +142,10 @@ class ExplorerActivity: ObservableObject {
 
     func stepInstruction() -> LocalizedContent {
         return LocalizedContent(
-            enUS: stepInstruction_EN,
-            frFR: stepInstruction_FR)
+            enUS: stepInstructionEN,
+            frFR: stepInstructionFR)
     }
 
-    var stepInstruction_FR: String = "Touche le numéro 1"
-    var stepInstruction_EN: String = "Touch the number 1"
+    var stepInstructionFR: String = "Touche le numéro 1"
+    var stepInstructionEN: String = "Touch the number 1"
 }

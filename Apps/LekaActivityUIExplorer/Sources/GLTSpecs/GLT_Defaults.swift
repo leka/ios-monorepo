@@ -14,8 +14,8 @@ class GLT_Defaults: ObservableObject {
     @Published var activitiesBackgroundColor: Color = Color("GLT_BackgroundColor_LightGray")
 
     // MARK: - Step Instruction Button
-    @Published var font_StepInstructionBtn: Font = .system(size: 22, weight: .regular)
-    @Published var frame_StepInstructionBtn: CGSize = CGSize(width: 640, height: 85)
+    @Published var fontStepInstructionBtn: Font = .system(size: 22, weight: .regular)
+    @Published var frameStepInstructionBtn: CGSize = CGSize(width: 640, height: 85)
 
     // MARK: - Progress Bar
     // Step Markers

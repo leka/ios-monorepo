@@ -31,18 +31,18 @@ class EmptyDataSets: ObservableObject {
 
     func emptyInstructions() -> LocalizedContent {
         return LocalizedContent(
-            enUS: MDInstructions_EN,
-            frFR: MDInstructions_FR)
+            enUS: markdownInstructionsEN,
+            frFR: markdownInstructionsFR)
     }
 
-    var MDInstructions_FR: String = """
+    var markdownInstructionsFR: String = """
         ## Activité vide
 
         Sélectionner un modéle dans l'éditeur.
 
         """
 
-    var MDInstructions_EN: String = """
+    var markdownInstructionsEN: String = """
         ## Empty activity
 
         Select a model within the editor.
@@ -64,11 +64,11 @@ class EmptyDataSets: ObservableObject {
 
     func stepInstruction() -> LocalizedContent {
         return LocalizedContent(
-            enUS: stepInstruction_EN,
-            frFR: stepInstruction_FR)
+            enUS: stepInstructionEN,
+            frFR: stepInstructionFR)
     }
 
-    var stepInstruction_FR: String = ""
-    var stepInstruction_EN: String = ""
+    var stepInstructionFR: String = ""
+    var stepInstructionEN: String = ""
 
 }
