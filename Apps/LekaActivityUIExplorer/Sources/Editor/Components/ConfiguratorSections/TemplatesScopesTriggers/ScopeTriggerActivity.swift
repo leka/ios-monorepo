@@ -28,7 +28,9 @@ struct ScopeTriggerActivity: View {
                         .foregroundColor(Color("lekaDarkGray"))
                         .padding(.leading, 30)
                 }
-                if isOn { TemplateSelectorTrigger() }
+                if isOn {
+                    TemplateSelectorTrigger()
+                }
             }
             .onChange(of: isOn) { newValue in
                 if newValue {
