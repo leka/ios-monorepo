@@ -47,7 +47,7 @@ struct SizeEditor: View {
                 value: $defaults.playGridBtnSize,
                 in: 100...300,
                 step: 10,
-                label: {},
+                label: { /* no label */  },
                 minimumValueLabel: {
                     Text("•")
                 },

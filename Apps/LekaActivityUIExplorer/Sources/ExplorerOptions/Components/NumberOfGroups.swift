@@ -31,7 +31,7 @@ struct NumberOfGroups: View {
                 value: $numberOfGroups,
                 in: 1...5,
                 step: 1,
-                label: {},
+                label: { /* no label */  },
                 minimumValueLabel: {
                     Text("•")
                 },

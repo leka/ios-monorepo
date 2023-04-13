@@ -69,7 +69,7 @@ struct ActivityConfigurator: View {
                 }
             }
             .alert("Importer", isPresented: $triggerSoonAlert) {
-                Button("Coming Soon...", action: {})
+                Button("Coming Soon...", action: { /* not implemented yet */  })
             } message: {
                 Text("Importer un fichier yaml (.yml)")
             }

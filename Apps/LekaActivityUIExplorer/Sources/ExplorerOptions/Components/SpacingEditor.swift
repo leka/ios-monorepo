@@ -51,7 +51,7 @@ struct SpacingEditor: View {
                 value: $defaults.horizontalCellSpacing,
                 in: 10...200,
                 step: 10,
-                label: {},
+                label: { /* no label */  },
                 minimumValueLabel: {
                     Text("•")
                 },
@@ -74,7 +74,7 @@ struct SpacingEditor: View {
                 value: $defaults.verticalCellSpacing,
                 in: 10...200,
                 step: 10,
-                label: {},
+                label: { /* no label */  },
                 minimumValueLabel: {
                     Text("•")
                 },
