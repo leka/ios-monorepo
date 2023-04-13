@@ -56,12 +56,14 @@ struct CurrentActivityInstructionView: View {
     }
 
     private var resumeButton: some View {
-        Button(action: {
-            dismiss()
-        }) {
-            Image(systemName: "multiply")
-                .font(defaults.semi20)
-                .foregroundColor(.white)
-        }
+        Button(
+            action: {
+                dismiss()
+            },
+            label: {
+                Image(systemName: "multiply")
+                    .font(defaults.semi20)
+                    .foregroundColor(.white)
+            })
     }
 }

@@ -41,16 +41,19 @@ struct SidebarView: View {
                 DisclosureGroup(isExpanded: $isExpanded) {
                     LazyVGrid(columns: [GridItem()]) {
                         ForEach(configuration.allTemplatesPreviews.indices, id: \.self) { item in
-                            Button(action: {
-                                selectedTemplate = item
-                                navigator.diplaysEditor = false
-                                navigator.sidebarVisibility = .detailOnly
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                                    setupTest(withTemplate: item)
+                            Button(
+                                action: {
+                                    selectedTemplate = item
+                                    navigator.diplaysEditor = false
+                                    navigator.sidebarVisibility = .detailOnly
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                                        setupTest(withTemplate: item)
+                                    }
+                                },
+                                label: {
+                                    previewButton(configuration.allTemplatesPreviews[item])
                                 }
-                            }) {
-                                previewButton(configuration.allTemplatesPreviews[item])
-                            }
+                            )
                             .buttonStyle(
                                 TemplatePreview_ButtonStyle(
                                     isSelected: selectedTemplate == item,
