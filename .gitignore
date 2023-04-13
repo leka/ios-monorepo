@@ -65,6 +65,7 @@ DerivedData/
 ### Tuist derived files ###
 graph.dot
 graph.png
+graph.json
 Derived/
 .build
 
