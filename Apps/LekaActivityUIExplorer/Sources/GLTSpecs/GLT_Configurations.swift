@@ -52,11 +52,11 @@ class GLT_Configurations: ObservableObject {
         templatesPreviews[3] = templatesPreviewsAlternatives4[0]
     }
 
-    func setTemplatesPerScope(for activity: Activity, to: TemplateSelectionScope) {
+    func setTemplatesPerScope(for activity: Activity, to selectionScope: TemplateSelectionScope) {
         switch templatesScope {
             case .activity:
                 let currentTemplate = allUsedTemplates[0]
-                switch to {
+                switch selectionScope {
                     case .activity:
                         print("Not happening...")
                     case .group:
@@ -72,7 +72,7 @@ class GLT_Configurations: ObservableObject {
                 }
             case .group:
                 let currentTemplates = allUsedTemplates
-                switch to {
+                switch selectionScope {
                     case .activity:
                         if uniqueTemplateIsUsed(within: activity) {
                             allUsedTemplates = [[currentTemplates[0][0]]]

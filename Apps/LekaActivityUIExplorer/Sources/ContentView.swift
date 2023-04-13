@@ -45,7 +45,7 @@ struct ContentView: View {
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarBackButtonHidden()
             .toolbar {
-                ToolbarItem(placement: .principal) { NavigationTitle }
+                ToolbarItem(placement: .principal) { navigationTitleView }
                 ToolbarItemGroup(placement: .navigationBarTrailing) { topBarTrailingItems }
             }
             .sheet(isPresented: $showInstructionModal) {
@@ -69,7 +69,7 @@ struct ContentView: View {
     }
 
     @ViewBuilder
-    private var NavigationTitle: some View {
+    private var navigationTitleView: some View {
         HStack(spacing: 4) {
             Text(gameEngine.currentActivity.short.localized())
         }

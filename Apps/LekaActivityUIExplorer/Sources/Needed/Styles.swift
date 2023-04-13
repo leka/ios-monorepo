@@ -17,13 +17,13 @@ struct StepInstructions_ButtonStyle: ButtonStyle {
             Spacer()
             configuration.label
                 .foregroundColor(Color("darkGray"))
-                .font(defaults.font_StepInstructionBtn)
+                .font(defaults.fontStepInstructionBtn)
                 .multilineTextAlignment(.center)
-                .padding(.horizontal, defaults.frame_StepInstructionBtn.height)
+                .padding(.horizontal, defaults.frameStepInstructionBtn.height)
             Spacer()
         }
-        .frame(maxWidth: defaults.frame_StepInstructionBtn.width)
-        .frame(height: defaults.frame_StepInstructionBtn.height, alignment: .center)
+        .frame(maxWidth: defaults.frameStepInstructionBtn.width)
+        .frame(height: defaults.frameStepInstructionBtn.height, alignment: .center)
         .background(backgroundGradient)
         .overlay(buttonStroke)
         .overlay(speachIndicator)

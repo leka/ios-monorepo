@@ -24,7 +24,7 @@ extension Shape {
 // MARK: - Image
 // Used for Activities Icons && Commands/Stories buttons
 extension Image {
-    func ActivityIcon_ImageModifier(diameter: CGFloat = 132, padding: CGFloat = 0) -> some View {
+    func activityIconImageModifier(diameter: CGFloat = 132, padding: CGFloat = 0) -> some View {
         ZStack {
             Circle()
                 .fill(.white)
