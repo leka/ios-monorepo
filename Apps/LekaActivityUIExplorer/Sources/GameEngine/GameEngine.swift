@@ -110,9 +110,14 @@ class GameEngine: NSObject, ObservableObject {
         correctAnswerIndex = 0
         pressedAnswerIndex = nil
         allAnswers = currentActivity.stepSequence[currentGroupIndex][currentStepIndex].allAnswers
+
         checkMediaAvailability()
+
         // Randomize answers
-        if currentActivity.randomAnswerPositions { allAnswers.shuffle() }
+        if currentActivity.randomAnswerPositions {
+            allAnswers.shuffle()
+
+        }
         stepInstruction = currentActivity.stepSequence[currentGroupIndex][currentStepIndex].instruction.localized()
         getCorrectAnswerIndex()
     }
