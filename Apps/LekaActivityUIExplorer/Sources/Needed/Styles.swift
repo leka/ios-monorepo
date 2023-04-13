@@ -161,7 +161,7 @@ struct TemplatePreview_ButtonStyle: ButtonStyle {
                     color: .black.opacity(0.1),
                     radius: configuration.isPressed ? 0 : 4, x: 0, y: configuration.isPressed ? 1 : 4
                 )
-                .scaleEffect((configuration.isPressed ? 0.98 : 1))
+                .scaleEffect(configuration.isPressed ? 0.98 : 1)
 
             HStack(spacing: 6) {
                 Image(systemName: isSelected ? "checkmark.circle" : "circle")
