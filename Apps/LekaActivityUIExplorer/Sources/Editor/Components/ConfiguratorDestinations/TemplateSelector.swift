@@ -9,8 +9,8 @@ import SwiftUI
 
 struct TemplateSelector: View {
 
-    @EnvironmentObject var configuration: GLT_Configurations
-    @EnvironmentObject var defaults: GLT_Defaults
+    @EnvironmentObject var configuration: GameLayoutTemplatesConfigurations
+    @EnvironmentObject var defaults: GameLayoutTemplatesDefaults
     @Environment(\.dismiss) var dismiss
 
     @State var selected: Int = 0

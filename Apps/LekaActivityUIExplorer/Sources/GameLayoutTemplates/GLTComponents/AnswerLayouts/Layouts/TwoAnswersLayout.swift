@@ -2,7 +2,7 @@ import SwiftUI
 
 struct TwoAnswersLayout: View {
 
-    @EnvironmentObject var defaults: GLT_Defaults
+    @EnvironmentObject var defaults: GameLayoutTemplatesDefaults
 
     var body: some View {
         HStack(spacing: defaults.horizontalCellSpacing) {

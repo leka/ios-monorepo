@@ -10,9 +10,9 @@ import SwiftUI
 
 struct InstructionsEditor: View {
 
-    @EnvironmentObject var configuration: GLT_Configurations
+    @EnvironmentObject var configuration: GameLayoutTemplatesConfigurations
     @EnvironmentObject var gameEngine: GameEngine
-    @EnvironmentObject var defaults: GLT_Defaults
+    @EnvironmentObject var defaults: GameLayoutTemplatesDefaults
     @Environment(\.dismiss) var dismiss
 
     @Binding var language: Languages

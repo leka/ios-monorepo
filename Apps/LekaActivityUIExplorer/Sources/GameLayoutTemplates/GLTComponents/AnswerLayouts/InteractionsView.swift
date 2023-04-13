@@ -10,7 +10,7 @@ import SwiftUI
 struct InteractionsView: View {
 
     @EnvironmentObject var gameEngine: GameEngine
-    @EnvironmentObject var configuration: GLT_Configurations
+    @EnvironmentObject var configuration: GameLayoutTemplatesConfigurations
 
     var body: some View {
         VStack {

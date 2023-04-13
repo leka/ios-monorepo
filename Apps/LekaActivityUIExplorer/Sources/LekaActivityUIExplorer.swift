@@ -5,8 +5,8 @@ struct LekaActivityUIExplorerApp: App {
 
     @StateObject var navigator = NavigationManager()
     @StateObject var gameEngine = GameEngine()
-    @StateObject var defaults = GLT_Defaults()
-    @StateObject var configuration = GLT_Configurations()
+    @StateObject var defaults = GameLayoutTemplatesDefaults()
+    @StateObject var configuration = GameLayoutTemplatesConfigurations()
 
     var body: some Scene {
         WindowGroup {

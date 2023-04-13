@@ -12,7 +12,7 @@ struct ExplorerOptionsPanel: View {
 
     //	@EnvironmentObject var configuration: GLT_Configurations
     @EnvironmentObject var gameEngine: GameEngine
-    @EnvironmentObject var defaults: GLT_Defaults
+    @EnvironmentObject var defaults: GameLayoutTemplatesDefaults
 
     @Binding var closePanel: Bool
 

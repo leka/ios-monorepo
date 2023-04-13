@@ -10,7 +10,7 @@ import SwiftUI
 struct AnswersSize: View {
 
     @EnvironmentObject var gameEngine: GameEngine
-    @EnvironmentObject var defaults: GLT_Defaults
+    @EnvironmentObject var defaults: GameLayoutTemplatesDefaults
 
     @State private var size = 0
     @State private var hSpacing = 0

@@ -11,7 +11,7 @@ import SwiftUI
 struct InstructionView: View {
 
     @EnvironmentObject var gameEngine: GameEngine
-    @EnvironmentObject var defaults: GLT_Defaults
+    @EnvironmentObject var defaults: GameLayoutTemplatesDefaults
     @Binding var text: String
 
     var body: some View {
