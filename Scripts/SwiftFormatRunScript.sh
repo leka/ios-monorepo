@@ -1,5 +1,5 @@
 # Leka - iOS Monorepo
-# Copyright 2023 APF Frdance handicap
+# Copyright 2023 APF France handicap
 # SPDX-License-Identifier: Apache-2.0
 
 if test -d "/opt/homebrew/bin"; then

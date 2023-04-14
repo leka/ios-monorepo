@@ -1,10 +1,6 @@
-//
-//  AccessoryManager.swift
-//  LekaActivityGenerator
-//
-//  Created by Mathieu Jeannot on 10/4/23.
-//  Copyright © 2023 leka.io. All rights reserved.
-//
+// Leka - iOS Monorepo
+// Copyright 2023 APF France handicap
+// SPDX-License-Identifier: Apache-2.0
 
 import SwiftUI
 

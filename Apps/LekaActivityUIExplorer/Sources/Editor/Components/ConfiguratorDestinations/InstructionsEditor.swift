@@ -1,9 +1,6 @@
-//
-//  InstructionsEditor.swift
-//  LekaActivityEditor
-//
-//  Created by Mathieu Jeannot on 2/4/23.
-//
+// Leka - iOS Monorepo
+// Copyright 2023 APF France handicap
+// SPDX-License-Identifier: Apache-2.0
 
 import MarkdownUI
 import SwiftUI

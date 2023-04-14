@@ -1,9 +1,6 @@
-//
-//  Robot.swift
-//  LekaOS_BLE_Update
-//
-//  Created by Yann LOCATELLI on 29/08/2022.
-//
+// Leka - iOS Monorepo
+// Copyright 2023 APF France handicap
+// SPDX-License-Identifier: Apache-2.0
 
 import CoreBluetooth
 import Foundation
