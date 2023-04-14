@@ -1,9 +1,6 @@
-//
-//  SidebarOutlineGroups.swift
-//  LekaTestBucket
-//
-//  Created by Mathieu Jeannot on 2/11/22.
-//
+// Leka - iOS Monorepo
+// Copyright 2023 APF France handicap
+// SPDX-License-Identifier: Apache-2.0
 
 import SwiftUI
 

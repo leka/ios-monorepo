@@ -1,9 +1,6 @@
-//
-//  ProfileSet_Users.swift
-//  LekaTestBucket
-//
-//  Created by Mathieu Jeannot on 15/3/23.
-//
+// Leka - iOS Monorepo
+// Copyright 2023 APF France handicap
+// SPDX-License-Identifier: Apache-2.0
 
 import SwiftUI
 
