@@ -1,9 +1,6 @@
-//
-//  YAMLDecoder.swift
-//  LekaTestBucket
-//
-//  Created by Mathieu Jeannot on 18/2/23.
-//
+// Leka - iOS Monorepo
+// Copyright 2023 APF France handicap
+// SPDX-License-Identifier: Apache-2.0
 
 import Foundation
 import Yams

@@ -1,10 +1,6 @@
-//
-//  MarkdownContent.swift
-//  LekaActivityUIExplorer
-//
-//  Created by Ladislas de Toldi on 13/04/2023.
-//  Copyright © 2023 leka.io. All rights reserved.
-//
+// Leka - iOS Monorepo
+// Copyright 2023 APF France handicap
+// SPDX-License-Identifier: Apache-2.0
 
 import Foundation
 

@@ -1,9 +1,6 @@
-//
-//  AvatarsData.swift
-//  LekaTestBucket
-//
-//  Created by Mathieu Jeannot on 12/1/23.
-//
+// Leka - iOS Monorepo
+// Copyright 2023 APF France handicap
+// SPDX-License-Identifier: Apache-2.0
 
 import Foundation
 
