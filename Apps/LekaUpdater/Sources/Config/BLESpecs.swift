@@ -1,9 +1,6 @@
-//
-//  BLESpecs.swift
-//  ios-leka_update
-//
-//  Created by Yann LOCATELLI on 22/09/2022.
-//
+// Leka - iOS Monorepo
+// Copyright 2023 APF France handicap
+// SPDX-License-Identifier: Apache-2.0
 
 import CoreBluetooth
 import Foundation

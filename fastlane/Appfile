@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # Leka - iOS Monorepo
-# Copyright 2023 APF Frdance handicap
+# Copyright 2023 APF France handicap
 # SPDX-License-Identifier: Apache-2.0
 
 apple_id('apple.apf@leka.io') # Apple Developer Portal username
