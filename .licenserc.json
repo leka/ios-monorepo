@@ -22,7 +22,6 @@
     "ignore": [
         "Dependencies/",
         ".build/",
-        "Apps/LekaApp/Resources/Media/",
-        "Apps/LekaApp/Sources/Models/Media/"
+        "Apps/LekaApp/Resources/Media/"
     ]
 }
