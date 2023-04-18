@@ -4,13 +4,22 @@
 
 import SwiftUI
 
-struct ContentView: View {
-    var body: some View {
+public struct HelloView: View {
+
+    var color: Color
+    var name: String
+
+    public init(color: Color, name: String) {
+        self.color = color
+        self.name = name
+    }
+
+    public var body: some View {
         ZStack {
-            Color.purple
+            color
                 .ignoresSafeArea()
 
-            Text("Hello, Dynamic Library Module Example!")
+            Text("Hello, \(name)!")
                 .foregroundColor(.white)
                 .font(.largeTitle)
                 .fontWeight(.bold)
@@ -21,6 +30,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        HelloView(color: .blue, name: "Dynamic Library Module Example")
     }
 }
