@@ -8,7 +8,6 @@ func projects() -> [Path] {
     var projects: [Path] = [
         // MARK: - Apps
         "Apps/LekaApp",
-        "Apps/LekaEmotions",
         "Apps/LekaUpdater",
         "Apps/LekaActivityUIExplorer",
 
