@@ -5,7 +5,7 @@
 import SwiftUI
 
 @main
-struct LekaTestBucketApp: App {
+struct LekaApp: App {
 
     @StateObject var viewRouter = ViewRouter()
     @StateObject var metrics = UIMetrics()
