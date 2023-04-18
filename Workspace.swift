@@ -4,9 +4,8 @@
 
 import ProjectDescription
 
-let workspace = Workspace(
-    name: "ios-monorepo",
-    projects: [
+func projects() -> [Path] {
+    var projects: [Path] = [
         // MARK: - Apps
         "Apps/LekaApp",
         "Apps/LekaEmotions",
@@ -16,4 +15,23 @@ let workspace = Workspace(
         // MARK: - Modules
         "Modules/CoreUI",
     ]
+
+    let generateExamples = Environment.generateExamples.getBoolean(default: false)
+
+    if generateExamples {
+        projects.append(contentsOf: [
+            // MARK: - Examples
+            "Examples/iOSApp",
+            "Examples/macOSApp",
+            "Examples/macOSCli",
+            "Examples/DynamicLibrary",
+        ])
+    }
+
+    return projects
+}
+
+let workspace = Workspace(
+    name: "ios-monorepo",
+    projects: projects()
 )
