@@ -20,6 +20,15 @@ extension Project {
     )
         -> [Target]
     {
+        var product = product
+
+        let generateModulesAsFrameworksForDebug = Environment.generateModulesAsFrameworksForDebug.getBoolean(
+            default: false)
+
+        if generateModulesAsFrameworksForDebug {
+            product = .framework
+        }
+
         let sources4iOS = Target(
             name: "\(name)",
             platform: platform,
