@@ -7,6 +7,8 @@ import ProjectDescriptionHelpers
 
 // Creates our project using a helper function defined in ProjectDescriptionHelpers
 let project = Project.module(
-    name: "CoreUI",
+    name: "DesignKit",
     platform: .iOS,
-    dependencies: [])
+    dependencies: [
+        // no deps
+    ])

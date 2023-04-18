@@ -9,7 +9,7 @@ import ProjectDescriptionHelpers
 let project = Project.iOSApp(
     name: "LekaActivityUIExplorer",
     dependencies: [
-        .project(target: "CoreUI", path: Path("../../Modules/CoreUI")),
+        .project(target: "DesignKit", path: Path("../../Modules/DesignKit")),
         .external(name: "MarkdownUI"),
         .external(name: "Yams"),
         .external(name: "Lottie"),

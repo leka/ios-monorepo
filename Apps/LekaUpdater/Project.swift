@@ -10,7 +10,7 @@ let project = Project.iOSApp(
     name: "LekaUpdater",
     version: "1.4.0",
     dependencies: [
-        .project(target: "CoreUI", path: Path("../../Modules/CoreUI"))
+        .project(target: "DesignKit", path: Path("../../Modules/DesignKit"))
     ],
     infoPlist: [
         "LEKA_OS_VERSION": "1.4.0",

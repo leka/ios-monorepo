@@ -2,7 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
-import CoreUI
+import DesignKit
 import SwiftUI
 
 struct ContentView: View {
@@ -15,7 +15,7 @@ struct ContentView: View {
 
     var body: some View {
         VStack {
-            Image(uiImage: CoreUIAsset.Assets.lekaLogo.image)
+            Image(uiImage: DesignKitAsset.Assets.lekaLogo.image)
                 .resizable()
                 .aspectRatio(CGSize(width: 1000, height: 715), contentMode: .fit)
                 .frame(maxHeight: 100)

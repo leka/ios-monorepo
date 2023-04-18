@@ -12,7 +12,7 @@ func projects() -> [Path] {
         "Apps/LekaActivityUIExplorer",
 
         // MARK: - Modules
-        "Modules/CoreUI",
+        "Modules/DesignKit",
     ]
 
     let generateExamples = Environment.generateExamples.getBoolean(default: false)

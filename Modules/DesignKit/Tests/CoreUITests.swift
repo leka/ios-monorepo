@@ -5,8 +5,8 @@
 import Foundation
 import XCTest
 
-final class CoreUITests: XCTestCase {
+final class DesignKitTests: XCTestCase {
     func test_example() {
-        XCTAssertEqual("CoreUI", "CoreUI")
+        XCTAssertEqual("DesignKit", "DesignKit")
     }
 }

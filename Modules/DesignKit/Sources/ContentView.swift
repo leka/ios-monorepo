@@ -20,7 +20,7 @@ public struct Hello: View {
                 .padding(50)
                 .background(color)
 
-            Image(uiImage: CoreUIAsset.Assets.lekaLogo.image)
+            Image(uiImage: DesignKitAsset.Assets.lekaLogo.image)
                 .resizable()
                 .scaledToFit()
                 .frame(width: 200.0)

@@ -10,7 +10,7 @@ let project = Project.iOSApp(
     name: "LekaApp",
     version: "1.0.0",
     dependencies: [
-        .project(target: "CoreUI", path: Path("../../Modules/CoreUI")),
+        .project(target: "DesignKit", path: Path("../../Modules/DesignKit")),
         .external(name: "Yams"),
         .external(name: "Lottie"),
     ],
