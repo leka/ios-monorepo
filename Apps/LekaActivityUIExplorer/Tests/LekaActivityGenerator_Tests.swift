@@ -5,7 +5,7 @@
 import Foundation
 import XCTest
 
-final class LekaAppTests: XCTestCase {
+final class LekaActivityUIExplorer_Tests: XCTestCase {
     func test_twoPlusTwo_isFour() {
         XCTAssertEqual(2 + 2, 4)
     }
