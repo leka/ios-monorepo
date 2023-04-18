@@ -7,7 +7,7 @@ import ProjectDescriptionHelpers
 
 // Creates our project using a helper function defined in ProjectDescriptionHelpers
 let project = Project.module(
-    name: "DynamicLibrary",
+    name: "Module",
     platform: .iOS,
     dependencies: [
         // no deps

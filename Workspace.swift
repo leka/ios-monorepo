@@ -23,7 +23,7 @@ func projects() -> [Path] {
             "Examples/iOSApp",
             "Examples/macOSApp",
             "Examples/macOSCli",
-            "Examples/DynamicLibrary",
+            "Examples/Module",
         ])
     }
 
