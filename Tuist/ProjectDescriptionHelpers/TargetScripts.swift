@@ -15,8 +15,20 @@ extension TargetScript {
         name: "SwiftFormat",
         basedOnDependencyAnalysis: false)
 
-    public static let linters: [TargetScript] = [
-        .swiftLint,
-        .swiftFormat,
-    ]
+    public static func linters() -> [TargetScript] {
+
+        let turnOffLinters = Environment.turnOffLinters.getBoolean(default: false)
+
+        let defaultLinters: [TargetScript] = [
+            .swiftLint,
+            .swiftFormat,
+        ]
+
+        if turnOffLinters {
+            return []
+        }
+
+        return defaultLinters
+    }
+
 }

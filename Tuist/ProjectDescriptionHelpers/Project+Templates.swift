@@ -29,7 +29,7 @@ extension Project {
             infoPlist: .extendingDefault(with: appInfoPlist),
             sources: ["Sources/**"],
             resources: ["Resources/**"],
-            scripts: TargetScript.linters,
+            scripts: TargetScript.linters(),
             dependencies: dependencies
         )
 
@@ -41,7 +41,7 @@ extension Project {
             infoPlist: .default,
             sources: ["Tests/**"],
             resources: [],
-            scripts: TargetScript.linters,
+            scripts: TargetScript.linters(),
             dependencies: [
                 .target(name: "\(name)")
             ])
@@ -68,7 +68,7 @@ extension Project {
             deploymentTarget: .macOS(targetVersion: "13.0"),
             sources: ["Sources/**"],
             resources: ["Resources/**"],
-            scripts: TargetScript.linters,
+            scripts: TargetScript.linters(),
             dependencies: dependencies
         )
 
@@ -80,7 +80,7 @@ extension Project {
             infoPlist: .default,
             sources: ["Tests/**"],
             resources: [],
-            scripts: TargetScript.linters,
+            scripts: TargetScript.linters(),
             dependencies: [
                 .target(name: "\(name)")
             ])
@@ -106,7 +106,7 @@ extension Project {
             bundleId: "io.leka.apf.cli.\(name)",
             deploymentTarget: .macOS(targetVersion: "13.0"),
             sources: ["Sources/**"],
-            scripts: TargetScript.linters,
+            scripts: TargetScript.linters(),
             dependencies: dependencies
         )
 
@@ -153,7 +153,7 @@ extension Project {
             infoPlist: .default,
             sources: ["Sources/**"],
             resources: ["Resources/**"],
-            scripts: TargetScript.linters,
+            scripts: TargetScript.linters(),
             dependencies: dependencies)
 
         let tests = Target(
@@ -164,7 +164,7 @@ extension Project {
             infoPlist: .default,
             sources: ["Tests/**"],
             resources: [],
-            scripts: TargetScript.linters,
+            scripts: TargetScript.linters(),
             dependencies: [.target(name: name)])
 
         return [sources4iOS, tests]
@@ -194,7 +194,7 @@ extension Project {
     //            infoPlist: .extendingDefault(with: global),
     //            sources: ["Sources/**"],
     //            resources: ["Resources/**"],
-    //            scripts: TargetScript.linters,
+    //            scripts: TargetScript.linters(),
     //            dependencies: dependencies
     //        )
     //
@@ -206,7 +206,7 @@ extension Project {
     //            infoPlist: .default,
     //            sources: ["Tests/**"],
     //            resources: [],
-    //            scripts: TargetScript.linters,
+    //            scripts: TargetScript.linters(),
     //            dependencies: [
     //                .target(name: "\(name)")
     //            ])
