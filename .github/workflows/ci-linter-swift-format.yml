@@ -2,7 +2,7 @@
 # Copyright 2023 APF France handicap
 # SPDX-License-Identifier: Apache-2.0
 
-name: swift-format
+name: Linter - Swift Format
 
 on:
   pull_request:
@@ -10,7 +10,7 @@ on:
 
 jobs:
   swift_format:
-    name: Run swift-format
+    name: lint
     runs-on: [self-hosted, iOS]
 
     steps:
