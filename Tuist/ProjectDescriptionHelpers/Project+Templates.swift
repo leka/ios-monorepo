@@ -20,6 +20,7 @@ extension Project {
     )
         -> [Target]
     {
+        // MARK: - Set product type
         var product = product
 
         let generateModulesAsFrameworksForDebug = Environment.generateModulesAsFrameworksForDebug.getBoolean(
@@ -29,12 +30,22 @@ extension Project {
             product = .framework
         }
 
-        let sources4iOS = Target(
+        // MARK: - Set platform type
+        var platform = platform
+
+        let generateMacOSApps = Environment.generateMacOSApps.getBoolean(default: false)
+
+        if generateMacOSApps {
+            platform = .macOS
+        }
+
+        let module = Target(
             name: "\(name)",
             platform: platform,
             product: product,
-            bundleId: "io.leka.apf.framework.iOS.\(name)",
-            deploymentTarget: .iOS(targetVersion: "16.0", devices: .ipad),
+            bundleId: "io.leka.apf.module.\(name)",
+            deploymentTarget: platform == .iOS
+                ? .iOS(targetVersion: "16.0", devices: .ipad) : .macOS(targetVersion: "13.0"),
             infoPlist: .default,
             sources: ["Sources/**"],
             resources: ["Resources/**"],
@@ -52,7 +63,7 @@ extension Project {
             scripts: TargetScript.linters(),
             dependencies: [.target(name: name)])
 
-        return [sources4iOS, tests]
+        return [module, tests]
     }
 
 }
