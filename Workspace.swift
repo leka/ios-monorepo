@@ -5,26 +5,42 @@
 import ProjectDescription
 
 func projects() -> [Path] {
-    var projects: [Path] = [
-        // MARK: - Apps
+    // MARK: - iOS Apps
+    let iOSApps: [Path] = [
         "Apps/LekaApp",
         "Apps/LekaUpdater",
         "Apps/LekaActivityUIExplorer",
-
-        // MARK: - Modules
-        "Modules/DesignKit",
     ]
 
-    let generateExamples = Environment.generateExamples.getBoolean(default: false)
+    // MARK: - macOS Apps
+    let macOSApps: [Path] = [
+        // no apps yet
+    ]
 
-    if generateExamples {
-        projects.append(contentsOf: [
-            // MARK: - Examples
-            "Examples/iOSApp",
-            "Examples/macOSApp",
-            "Examples/macOSCli",
-            "Examples/Module",
-        ])
+    // MARK: - Modules
+    let modules: [Path] = [
+        "Modules/DesignKit"
+    ]
+
+    // MARK: - iOS Examples
+    let iOSExamples: [Path] = [
+        "Examples/iOSApp",
+        "Examples/Module",
+    ]
+
+    // MARK: - macOS Examples
+    let macOSExamples: [Path] = [
+        "Examples/macOSApp",
+        "Examples/macOSCli",
+        "Examples/Module",
+    ]
+
+    var projects = iOSApps + modules + iOSExamples
+
+    let generateMacOSApps = Environment.generateMacOSApps.getBoolean(default: false)
+
+    if generateMacOSApps {
+        projects = macOSApps + modules + macOSExamples
     }
 
     return projects
