@@ -2,7 +2,7 @@
 # Copyright 2023 APF France handicap
 # SPDX-License-Identifier: Apache-2.0
 
-name: License Checker
+name: Linter - License Checker
 
 on:
   pull_request:
@@ -10,7 +10,7 @@ on:
 
 jobs:
   license_checker:
-    name: License Checker
+    name: lint
     runs-on: ubuntu-22.04
 
     steps:
