@@ -25,7 +25,7 @@ class GameLayoutTemplatesDefaults: ObservableObject {
     // MARK: - GameView Layout
     // Header (ProgressBar + Instruction Button)
     @Published var headerTotalHeight: CGFloat = 155
-    @Published var headerSpacing: CGFloat = 40
+    @Published var headerSpacing: CGFloat = 20
     @Published var headerPadding: CGFloat = 30
     @Published var semi17: Font = .system(size: 17, weight: .semibold)
 
