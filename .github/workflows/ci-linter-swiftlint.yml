@@ -1,0 +1,35 @@
+# Leka - iOS Monorepo
+# Copyright 2023 APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+name: Linter - SwiftLint
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  swift_format:
+    name: lint
+    runs-on: [self-hosted, iOS]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # Fetch all history for all branches and tags
+
+      - name: Run swiftlint
+        run: |
+          echo ""
+          echo "🏃‍♂️ Running swiftlint on modified files 🤵‍♂️"
+
+          git diff --name-status origin/main          \
+            | grep -E "^A|^M" | sed "s/^[AM]\t//g"    \
+            | grep -E "\.swift\$$"                    \
+            || echo "No files added nor modified!"
+
+          git diff --name-status origin/main          \
+            | grep -E "^A|^M" | sed "s/^[AM]\t//g"    \
+            | grep -E "\.swift\$$"                    \
+            | xargs --no-run-if-empty swiftlint lint --quiet --strict --reporter github-actions-logging
