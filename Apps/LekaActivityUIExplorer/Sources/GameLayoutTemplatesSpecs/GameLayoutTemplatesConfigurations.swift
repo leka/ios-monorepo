@@ -50,7 +50,7 @@ class GameLayoutTemplatesConfigurations: ObservableObject {
         templatesPreviews[2] = templatesPreviewsAlternatives3[0]
         templatesPreviews[3] = templatesPreviewsAlternatives4[0]
     }
-    
+
     private func setTemplateForActivityScope(for activity: Activity, to selectionScope: TemplateSelectionScope) {
         let currentTemplate = allUsedTemplates[0]
         switch selectionScope {
@@ -68,7 +68,7 @@ class GameLayoutTemplatesConfigurations: ObservableObject {
                 }
         }
     }
-    
+
     private func setTemplatesForGroupScope(for activity: Activity, to selectionScope: TemplateSelectionScope) {
         let currentTemplates = allUsedTemplates
         switch selectionScope {
