@@ -32,11 +32,11 @@ jobs:
 
       - name: tuist cache warm
         run: |
-          tuist cache warm
+          tuist cache warm -x
 
       - name: tuist generate
         run: |
-          tuist generate -n
+          tuist generate -x -n
 
       - name: tuist test
         run: |
