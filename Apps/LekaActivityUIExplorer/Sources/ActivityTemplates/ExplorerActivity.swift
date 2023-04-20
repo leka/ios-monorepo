@@ -18,7 +18,7 @@ class ExplorerActivity: ObservableObject {
             title: emptyTitle,
             short: emptyShort,
             instructions: emptyInstructions(),
-            activityType: "touch_to_select",
+            activityType: activityType,
             stepsAmount: 10,
             isRandom: false,
             numberOfImages: 1,
@@ -41,6 +41,13 @@ class ExplorerActivity: ObservableObject {
         return LocalizedContent(
             enUS: String.markdownInstructionsEN,
             frFR: String.markdownInstructionsFR)
+    }
+
+    var activityType: String {
+        guard withTemplate == 8 else {
+            return "touch_to_select"
+        }
+        return "xylophone"
     }
 
     func makeEmptyStepArray() -> [[Step]] {
@@ -81,6 +88,16 @@ class ExplorerActivity: ObservableObject {
             frFR: stepInstructionFR)
     }
 
-    var stepInstructionFR: String = "Touche le numéro 1"
-    var stepInstructionEN: String = "Touch the number 1"
+    var stepInstructionFR: String {
+        guard withTemplate == 8 else {
+            return "Touche le numéro 1"
+        }
+        return "Joue du xylophone avec Leka"
+    }
+    var stepInstructionEN: String {
+        guard withTemplate == 8 else {
+            return "Touch the number 1"
+        }
+        return "Play the xylophone with Leka"
+    }
 }

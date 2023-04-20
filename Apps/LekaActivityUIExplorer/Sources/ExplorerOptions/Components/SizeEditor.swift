@@ -11,7 +11,11 @@ struct SizeEditor: View {
 
     var body: some View {
         Section {
-            sizeSlider
+            if gameEngine.currentActivity.activityType != "xylophone" {
+                sizeSlider
+            } else {
+                tileWidthSlider
+            }
         } header: {
             Text("Taille des réponses")
                 .foregroundColor(.accentColor)
@@ -22,7 +26,11 @@ struct SizeEditor: View {
                 Button(
                     action: {
                         withAnimation(.easeIn(duration: 0.3)) {
-                            defaults.playGridBtnSize = 200
+                            if gameEngine.currentActivity.activityType != "xylophone" {
+                                defaults.playGridBtnSize = 200
+                            } else {
+                                defaults.xylophoneTileWidth = 180
+                            }
                         }
                     },
                     label: {
@@ -43,7 +51,9 @@ struct SizeEditor: View {
                 value: $defaults.playGridBtnSize,
                 in: 100...300,
                 step: 10,
-                label: { /* no label */  },
+                label: {
+                    // Unnecessary
+                },
                 minimumValueLabel: {
                     Text("•")
                 },
@@ -55,6 +65,31 @@ struct SizeEditor: View {
             .tint(Color("lekaSkyBlue"))
         } label: {
             Text("Taille")
+                .foregroundColor(Color("lekaDarkGray"))
+                .padding(.leading, 20)
+        }
+    }
+
+    private var tileWidthSlider: some View {
+        LabeledContent {
+            Slider(
+                value: $defaults.xylophoneTileWidth,
+                in: 80...300,
+                step: 1,
+                label: {
+                    // Unnecessary
+                },
+                minimumValueLabel: {
+                    Text("•")
+                },
+                maximumValueLabel: {
+                    Text("\(Int(defaults.xylophoneTileWidth))")
+                }
+            )
+            .frame(maxWidth: 260)
+            .tint(Color("lekaSkyBlue"))
+        } label: {
+            Text("Largeur")
                 .foregroundColor(Color("lekaDarkGray"))
                 .padding(.leading, 20)
         }

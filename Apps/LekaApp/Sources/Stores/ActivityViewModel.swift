@@ -152,7 +152,7 @@ class ActivityViewModel: NSObject, ObservableObject, YamlFileDecodable {
             currentMediaHasBeenPlayedOnce = false
             answersAreDisabled = true
         } else {
-            // property is set to true in order to keep the white overlay hidden upon the answers' buttons when no media is available
+            // keep the white overlay hidden upon answers' buttons when no media is available
             currentMediaHasBeenPlayedOnce = true
             answersAreDisabled = false
         }

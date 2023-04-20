@@ -12,25 +12,29 @@ struct InteractionsView: View {
     var body: some View {
         VStack {
             Spacer()
-            if gameEngine.allAnswers.count == 1 {
-                OneAnswerLayout()
-            } else if gameEngine.allAnswers.count == 2 {
-                TwoAnswersLayout()
-            } else if gameEngine.allAnswers.count == 3 {
-                switch configuration.preferred3AnswersLayout {
-                    case .inline: ThreeAnswersLayoutInline()
-                    default: ThreeAnswersLayout()
-                }
-            } else if gameEngine.allAnswers.count == 4 {
-                switch configuration.preferred4AnswersLayout {
-                    case .inline: FourAnswersLayoutInline()
-                    case .spaced: FourAnswersLayoutSpaced()
-                    default: FourAnswersLayout()
-                }
-            } else if gameEngine.allAnswers.count == 6 {
-                SixAnswersLayout()
+            if gameEngine.currentActivity.activityType == "xylophone" {
+                XylophoneLayout()
             } else {
-                Text("Sélectionner un modèle")
+                if gameEngine.allAnswers.count == 1 {
+                    OneAnswerLayout()
+                } else if gameEngine.allAnswers.count == 2 {
+                    TwoAnswersLayout()
+                } else if gameEngine.allAnswers.count == 3 {
+                    switch configuration.preferred3AnswersLayout {
+                        case .inline: ThreeAnswersLayoutInline()
+                        default: ThreeAnswersLayout()
+                    }
+                } else if gameEngine.allAnswers.count == 4 {
+                    switch configuration.preferred4AnswersLayout {
+                        case .inline: FourAnswersLayoutInline()
+                        case .spaced: FourAnswersLayoutSpaced()
+                        default: FourAnswersLayout()
+                    }
+                } else if gameEngine.allAnswers.count == 6 {
+                    SixAnswersLayout()
+                } else {
+                    Text("Sélectionner un modèle")
+                }
             }
             Spacer()
         }
