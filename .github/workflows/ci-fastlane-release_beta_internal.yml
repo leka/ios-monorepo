@@ -51,3 +51,16 @@ jobs:
       - name: fastlane beta_internal
         run: |
           bundle exec fastlane beta_internal targets:LekaActivityUIExplorer --verbose
+
+      - name: remove label
+        if: always()
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            github.rest.issues.removeLabel({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              name: 'fastlane:release_beta_internal'
+            })
