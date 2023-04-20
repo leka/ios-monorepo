@@ -12,6 +12,11 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
+env:
+  CREATE_KEYCHAIN_PASSWORD: ${{ secrets.CREATE_KEYCHAIN_PASSWORD }}
+  MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+  MATCH_GIT_BASIC_AUTHORIZATION: ${{ secrets.MATCH_GIT_BASIC_AUTHORIZATION }}
+
 jobs:
   internal_beta_release:
     if: ${{ github.event.label.name == 'fastlane:release_beta_internal' }}
@@ -35,3 +40,7 @@ jobs:
       - name: fastlane helloworld
         run: |
           bundle exec fastlane helloworld
+
+      - name: fastlane sync_certificates
+        run: |
+          bundle exec fastlane sync_certificates release:true

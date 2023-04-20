@@ -36,7 +36,8 @@ platform :ios do
     create_keychain(
       name: 'io.leka.fastlane.keychain',
       timeout: 0,
-      unlock: true
+      unlock: true,
+      password: ENV['CREATE_KEYCHAIN_PASSWORD']
     )
 
     match(
