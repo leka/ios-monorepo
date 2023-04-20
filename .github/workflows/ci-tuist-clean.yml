@@ -2,22 +2,20 @@
 # Copyright 2023 APF France handicap
 # SPDX-License-Identifier: Apache-2.0
 
-name: Tuist - Unit Tests
+name: Tuist - Clean
 
 on:
-  push:
-    branches:
-      - main
   pull_request:
-    types: [opened, synchronize, reopened]
+    types: [labeled]
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  unit_tests:
-    name: unit tests
+  clean:
+    if: ${{ github.event.label.name == 'tuist:clean' }}
+    name: clean
     runs-on: [self-hosted, iOS]
 
     steps:
@@ -26,18 +24,10 @@ jobs:
         with:
           fetch-depth: 1 # shallow clone
 
-      - name: tuist fetch
+      - name: tuist clean
         run: |
-          tuist fetch
+          tuist clean
 
-      - name: tuist cache warm
+      - name: Delete Xcode derived data
         run: |
-          tuist cache warm -x
-
-      - name: tuist generate
-        run: |
-          tuist generate -x -n
-
-      - name: tuist test
-        run: |
-          tuist test
+          rm -rf ~/Library/Developer/Xcode/DerivedData
