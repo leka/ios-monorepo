@@ -1,0 +1,33 @@
+# Leka - iOS Monorepo
+# Copyright 2023 APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+name: Tuist - Clean
+
+on:
+  pull_request:
+    types: [labeled]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  clean:
+    if: ${{ github.event.label.name == 'tuist:clean' }}
+    name: clean
+    runs-on: [self-hosted, iOS]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 1 # shallow clone
+
+      - name: tuist clean
+        run: |
+          tuist clean
+
+      - name: Delete Xcode derived data
+        run: |
+          rm -rf ~/Library/Developer/Xcode/DerivedData
