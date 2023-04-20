@@ -50,47 +50,52 @@ class GameLayoutTemplatesConfigurations: ObservableObject {
         templatesPreviews[2] = templatesPreviewsAlternatives3[0]
         templatesPreviews[3] = templatesPreviewsAlternatives4[0]
     }
+    
+    private func setTemplateForActivityScope(for activity: Activity, to selectionScope: TemplateSelectionScope) {
+        let currentTemplate = allUsedTemplates[0]
+        switch selectionScope {
+            case .activity:
+                print("Not happening...")
+            case .group:
+                allUsedTemplates = Array(repeating: currentTemplate, count: activity.stepSequence.count)
+            case .step:
+                allUsedTemplates = []
+                for (indexG, group) in activity.stepSequence.enumerated() {
+                    allUsedTemplates.append([])
+                    for _ in group {
+                        allUsedTemplates[indexG].append(currentTemplate[0])
+                    }
+                }
+        }
+    }
+    
+    private func setTemplatesForGroupScope(for activity: Activity, to selectionScope: TemplateSelectionScope) {
+        let currentTemplates = allUsedTemplates
+        switch selectionScope {
+            case .activity:
+                if uniqueTemplateIsUsed(within: activity) {
+                    allUsedTemplates = [[currentTemplates[0][0]]]
+                } else {
+                    // ask which one?? impose first one??
+                    print("Do that later")
+                }
+            case .group:
+                print("Not happening...")
+            case .step:
+                if uniqueTemplateIsUsed(within: activity) {
+                    allUsedTemplates = [[currentTemplates[0][0]]]
+                } else {
+                    // ask which one per group?? impose first one??
+                    print("Do that later")
+                }
+        }
+    }
 
     func setTemplatesPerScope(for activity: Activity, to selectionScope: TemplateSelectionScope) {
         switch templatesScope {
-            case .activity:
-                let currentTemplate = allUsedTemplates[0]
-                switch selectionScope {
-                    case .activity:
-                        print("Not happening...")
-                    case .group:
-                        allUsedTemplates = Array(repeating: currentTemplate, count: activity.stepSequence.count)
-                    case .step:
-                        allUsedTemplates = []
-                        for (indexG, group) in activity.stepSequence.enumerated() {
-                            allUsedTemplates.append([])
-                            for _ in group {
-                                allUsedTemplates[indexG].append(currentTemplate[0])
-                            }
-                        }
-                }
-            case .group:
-                let currentTemplates = allUsedTemplates
-                switch selectionScope {
-                    case .activity:
-                        if uniqueTemplateIsUsed(within: activity) {
-                            allUsedTemplates = [[currentTemplates[0][0]]]
-                        } else {
-                            // ask which one?? impose first one??
-                            print("Do that later")
-                        }
-                    case .group:
-                        print("Not happening...")
-                    case .step:
-                        if uniqueTemplateIsUsed(within: activity) {
-                            allUsedTemplates = [[currentTemplates[0][0]]]
-                        } else {
-                            // ask which one per group?? impose first one??
-                            print("Do that later")
-                        }
-                }
-            case .step:
-                print("Do that later")
+            case .activity: setTemplateForActivityScope(for: activity, to: selectionScope)
+            case .group: setTemplatesForGroupScope(for: activity, to: selectionScope)
+            case .step: print("Do that later")
         }
     }
 
@@ -118,7 +123,6 @@ class GameLayoutTemplatesConfigurations: ObservableObject {
                 allUsedTemplates = []
                 for (indexG, group) in from.stepSequence.enumerated() {
                     allUsedTemplates.append([group[0].allAnswers.count - 1])
-                    // TODO(@macteuts): make sre that using indices works
                     for (indexS) in group.indices {
                         allUsedTemplates[indexG].append(group[indexS].allAnswers.count - 1)
                     }

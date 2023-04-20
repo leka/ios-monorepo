@@ -51,7 +51,9 @@ struct SizeEditor: View {
                 value: $defaults.playGridBtnSize,
                 in: 100...300,
                 step: 10,
-                label: {},
+                label: {
+                    // Unnecessary
+                },
                 minimumValueLabel: {
                     Text("•")
                 },
@@ -74,7 +76,9 @@ struct SizeEditor: View {
                 value: $defaults.xylophoneTileWidth,
                 in: 80...300,
                 step: 1,
-                label: {},
+                label: {
+                    // Unnecessary
+                },
                 minimumValueLabel: {
                     Text("•")
                 },

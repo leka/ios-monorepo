@@ -1,9 +1,6 @@
-//
-//  TilesFeedbackEditor.swift
-//  LekaActivityEditor
-//
-//  Created by Mathieu Jeannot on 20/4/23.
-//
+// Leka - iOS Monorepo
+// Copyright 2023 APF France handicap
+// SPDX-License-Identifier: Apache-2.0
 
 import SwiftUI
 
@@ -50,7 +47,9 @@ struct TilesFeedbackEditor: View {
                 value: $defaults.xylophoneTilesRotationFeedback,
                 in: -10...10,
                 step: 1,
-                label: {},
+                label: {
+                    // Unnecessary
+                },
                 minimumValueLabel: {
                     Text("•")
                 },
@@ -73,7 +72,9 @@ struct TilesFeedbackEditor: View {
                 value: $defaults.xylophoneTilesScaleFeedback,
                 in: 0.5...1.2,
                 step: 0.01,
-                label: {},
+                label: {
+                    // Unnecessary
+                },
                 minimumValueLabel: {
                     Text("•")
                 },

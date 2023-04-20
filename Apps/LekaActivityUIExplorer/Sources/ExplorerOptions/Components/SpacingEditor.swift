@@ -55,7 +55,9 @@ struct SpacingEditor: View {
                 value: $defaults.horizontalCellSpacing,
                 in: 10...200,
                 step: 10,
-                label: {},
+                label: {
+                    // Unnecessary
+                },
                 minimumValueLabel: {
                     Text("•")
                 },
@@ -78,7 +80,9 @@ struct SpacingEditor: View {
                 value: $defaults.xylophoneTilesSpacing,
                 in: 0...200,
                 step: 1,
-                label: {},
+                label: {
+                    // Unnecessary
+                },
                 minimumValueLabel: {
                     Text("•")
                 },
@@ -101,7 +105,9 @@ struct SpacingEditor: View {
                 value: $defaults.verticalCellSpacing,
                 in: 10...200,
                 step: 10,
-                label: {},
+                label: {
+                    // Unnecessary
+                },
                 minimumValueLabel: {
                     Text("•")
                 },
