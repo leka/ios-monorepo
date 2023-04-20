@@ -4,7 +4,7 @@
 
 import SwiftUI
 
-struct SpacingEditor: View {
+struct TilesFeedbackEditor: View {
 
     @EnvironmentObject var gameEngine: GameEngine
     @EnvironmentObject var defaults: GameLayoutTemplatesDefaults
@@ -12,15 +12,11 @@ struct SpacingEditor: View {
     var body: some View {
         Section {
             Group {
-                if gameEngine.currentActivity.activityType != "xylophone" {
-                    horizontalSpacingSlider
-                    verticalSpacingSlider
-                } else {
-                    horizontalTileSpacingSlider
-                }
+                rotationAngleSlider
+                scaleSlider
             }
         } header: {
-            Text("Espacement des réponses")
+            Text("Feedback des tuiles")
                 .foregroundColor(.accentColor)
                 .headerProminence(.increased)
         } footer: {
@@ -29,12 +25,8 @@ struct SpacingEditor: View {
                 Button(
                     action: {
                         withAnimation(.easeIn(duration: 0.3)) {
-                            if gameEngine.currentActivity.activityType != "xylophone" {
-                                defaults.horizontalCellSpacing = 32
-                                defaults.verticalCellSpacing = 32
-                            } else {
-                                defaults.xylophoneTilesSpacing = 32
-                            }
+                            defaults.xylophoneTilesRotationFeedback = -1
+                            defaults.xylophoneTilesScaleFeedback = 0.98
                         }
                     },
                     label: {
@@ -49,36 +41,11 @@ struct SpacingEditor: View {
         }
     }
 
-    private var horizontalSpacingSlider: some View {
+    private var rotationAngleSlider: some View {
         LabeledContent {
             Slider(
-                value: $defaults.horizontalCellSpacing,
-                in: 10...200,
-                step: 10,
-                label: {
-                    // Unnecessary
-                },
-                minimumValueLabel: {
-                    Text("•")
-                },
-                maximumValueLabel: {
-                    Text("\(Int(defaults.horizontalCellSpacing))")
-                }
-            )
-            .frame(maxWidth: 260)
-            .tint(Color("lekaSkyBlue"))
-        } label: {
-            Text("Horizontal")
-                .foregroundColor(Color("lekaDarkGray"))
-                .padding(.leading, 20)
-        }
-    }
-
-    private var horizontalTileSpacingSlider: some View {
-        LabeledContent {
-            Slider(
-                value: $defaults.xylophoneTilesSpacing,
-                in: 0...200,
+                value: $defaults.xylophoneTilesRotationFeedback,
+                in: -10...10,
                 step: 1,
                 label: {
                     // Unnecessary
@@ -87,24 +54,24 @@ struct SpacingEditor: View {
                     Text("•")
                 },
                 maximumValueLabel: {
-                    Text("\(Int(defaults.xylophoneTilesSpacing))")
+                    Text("\(Int(defaults.xylophoneTilesRotationFeedback))")
                 }
             )
             .frame(maxWidth: 260)
             .tint(Color("lekaSkyBlue"))
         } label: {
-            Text("Horizontal")
+            Text("Rotation")
                 .foregroundColor(Color("lekaDarkGray"))
                 .padding(.leading, 20)
         }
     }
 
-    private var verticalSpacingSlider: some View {
+    private var scaleSlider: some View {
         LabeledContent {
             Slider(
-                value: $defaults.verticalCellSpacing,
-                in: 10...200,
-                step: 10,
+                value: $defaults.xylophoneTilesScaleFeedback,
+                in: 0.5...1.2,
+                step: 0.01,
                 label: {
                     // Unnecessary
                 },
@@ -112,13 +79,13 @@ struct SpacingEditor: View {
                     Text("•")
                 },
                 maximumValueLabel: {
-                    Text("\(Int(defaults.verticalCellSpacing))")
+                    Text(String(format: "%.2f", defaults.xylophoneTilesScaleFeedback))
                 }
             )
             .frame(maxWidth: 260)
             .tint(Color("lekaSkyBlue"))
         } label: {
-            Text("Vertical")
+            Text("Échelle")
                 .foregroundColor(Color("lekaDarkGray"))
                 .padding(.leading, 20)
         }
