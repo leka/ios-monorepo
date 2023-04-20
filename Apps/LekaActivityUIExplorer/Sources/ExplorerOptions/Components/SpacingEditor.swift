@@ -12,8 +12,12 @@ struct SpacingEditor: View {
     var body: some View {
         Section {
             Group {
-                horizontalSpacingSlider
-                verticalSpacingSlider
+                if gameEngine.currentActivity.activityType != "xylophone" {
+                    horizontalSpacingSlider
+                    verticalSpacingSlider
+                } else {
+                    horizontalTileSpacingSlider
+                }
             }
         } header: {
             Text("Espacement des réponses")
@@ -25,8 +29,12 @@ struct SpacingEditor: View {
                 Button(
                     action: {
                         withAnimation(.easeIn(duration: 0.3)) {
-                            defaults.horizontalCellSpacing = 32
-                            defaults.verticalCellSpacing = 32
+                            if gameEngine.currentActivity.activityType != "xylophone" {
+                                defaults.horizontalCellSpacing = 32
+                                defaults.verticalCellSpacing = 32
+                            } else {
+                                defaults.xylophoneTilesSpacing = 32
+                            }
                         }
                     },
                     label: {
@@ -47,12 +55,35 @@ struct SpacingEditor: View {
                 value: $defaults.horizontalCellSpacing,
                 in: 10...200,
                 step: 10,
-                label: { /* no label */  },
+                label: {},
                 minimumValueLabel: {
                     Text("•")
                 },
                 maximumValueLabel: {
                     Text("\(Int(defaults.horizontalCellSpacing))")
+                }
+            )
+            .frame(maxWidth: 260)
+            .tint(Color("lekaSkyBlue"))
+        } label: {
+            Text("Horizontal")
+                .foregroundColor(Color("lekaDarkGray"))
+                .padding(.leading, 20)
+        }
+    }
+
+    private var horizontalTileSpacingSlider: some View {
+        LabeledContent {
+            Slider(
+                value: $defaults.xylophoneTilesSpacing,
+                in: 0...200,
+                step: 1,
+                label: {},
+                minimumValueLabel: {
+                    Text("•")
+                },
+                maximumValueLabel: {
+                    Text("\(Int(defaults.xylophoneTilesSpacing))")
                 }
             )
             .frame(maxWidth: 260)
@@ -70,7 +101,7 @@ struct SpacingEditor: View {
                 value: $defaults.verticalCellSpacing,
                 in: 10...200,
                 step: 10,
-                label: { /* no label */  },
+                label: {},
                 minimumValueLabel: {
                     Text("•")
                 },

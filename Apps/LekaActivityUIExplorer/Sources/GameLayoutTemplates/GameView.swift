@@ -15,7 +15,9 @@ struct GameView: View {
 
             VStack(spacing: 0) {
                 if !gameEngine.currentActivity.stepSequence[0].isEmpty {
-                    ProgressBar().padding(.bottom, defaults.headerSpacing)
+                    if gameEngine.currentActivity.activityType != "xylophone" {
+                        ProgressBar().padding(.bottom, defaults.headerSpacing)
+                    }
                 }
                 StepInstructionsButton()
                 InteractionsView()

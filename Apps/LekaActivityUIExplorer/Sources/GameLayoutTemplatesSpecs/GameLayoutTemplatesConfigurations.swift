@@ -23,11 +23,13 @@ class GameLayoutTemplatesConfigurations: ObservableObject {
     @Published var navigateToAlternativeTemplateSelector: Bool = false
 
     @Published var answerSamples = [
-        "dummy_1", "dummy_2", "dummy_3", "dummy_4", "dummy_5", "dummy_6", "dummy_@", "dummy_&",
+        "dummy_1", "dummy_2", "dummy_3", "dummy_4", "dummy_5", "dummy_6", "dummy_arobase", "dummy_ampersand",
+        "dummy_percent", "dummy_hashtag",
     ]
     @Published var allTemplatesPreviews = [
-        "LayoutTemplate_1", "LayoutTemplate_2", "LayoutTemplate_3", "LayoutTemplate_3_inline", "LayoutTemplate_4",
-        "LayoutTemplate_4_spaced", "LayoutTemplate_4_inline", "LayoutTemplate_6",
+        "LayoutTemplate_1", "LayoutTemplate_2", "LayoutTemplate_3", "LayoutTemplate_3_inline",
+        "LayoutTemplate_4", "LayoutTemplate_4_spaced", "LayoutTemplate_4_inline", "LayoutTemplate_6",
+        "xylophoneTemplate",
     ]
     @Published var templatesPreviews = [
         "LayoutTemplate_1", "LayoutTemplate_2", "LayoutTemplate_3", "LayoutTemplate_4_spaced", "LayoutTemplate_6",

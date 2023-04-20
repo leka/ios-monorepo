@@ -32,6 +32,11 @@ class GameLayoutTemplatesDefaults: ObservableObject {
     // MARK: - Answering Buttons
     @Published var playGridBtnSize: CGFloat = 200
     @Published var playGridBtnTrimLineWidth: CGFloat = 6
+    // Xylophone
+    @Published var xylophoneTileWidth: CGFloat = 180
+    @Published var xylophoneTilesSpacing: CGFloat = 32
+    @Published var xylophoneTilesScaleFeedback: CGFloat = 0.98
+    @Published var xylophoneTilesRotationFeedback: Double = -1
 
     // MARK: - Answers Layouts
     @Published var horizontalCellSpacing: CGFloat = 32

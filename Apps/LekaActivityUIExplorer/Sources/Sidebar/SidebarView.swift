@@ -78,9 +78,6 @@ struct SidebarView: View {
     }
 
     private func setupTest(withTemplate: Int) {
-        //		defaults.playGridBtnSize = 200
-        //		defaults.horizontalCellSpacing = 32
-        //		defaults.verticalCellSpacing = 32
         setupExplorerVariations(forTemplate: withTemplate)
         gameEngine.bufferActivity = ExplorerActivity(withTemplate: withTemplate).makeActivity()
         gameEngine.setupGame()
@@ -115,15 +112,5 @@ struct SidebarView: View {
         Image(imageName)
             .resizable()
             .aspectRatio(contentMode: .fill)
-    }
-}
-
-struct SidebarView_Previews: PreviewProvider {
-    static var previews: some View {
-        SidebarView()
-            .environmentObject(GameLayoutTemplatesConfigurations())
-            .environmentObject(NavigationManager())
-            .environmentObject(GameEngine())
-            .environmentObject(GameLayoutTemplatesDefaults())
     }
 }

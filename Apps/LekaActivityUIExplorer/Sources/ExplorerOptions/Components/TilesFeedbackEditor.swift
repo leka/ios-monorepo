@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct TilesFeedbackEditor: View {
-    
+
     @EnvironmentObject var gameEngine: GameEngine
-    @EnvironmentObject var defaults: GLT_Defaults
+    @EnvironmentObject var defaults: GameLayoutTemplatesDefaults
 
     var body: some View {
         Section {
@@ -66,7 +66,7 @@ struct TilesFeedbackEditor: View {
                 .padding(.leading, 20)
         }
     }
-    
+
     private var scaleSlider: some View {
         LabeledContent {
             Slider(
