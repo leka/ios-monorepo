@@ -11,7 +11,6 @@ on:
   pull_request:
     types: [opened, synchronize, reopened]
 
-
 jobs:
   build:
     name: build
@@ -23,9 +22,18 @@ jobs:
         with:
           fetch-depth: 0 # Fetch all history for all branches and tags
 
-      - name: Run tuist cache warm
+      - name: tuist fetch
         run: |
           tuist fetch
+
+      - name: tuist cache warm
+        run: |
           tuist cache warm
+
+      - name: tuist generate
+        run: |
           tuist generate -n
+
+      - name: tuist build
+        run: |
           tuist build
