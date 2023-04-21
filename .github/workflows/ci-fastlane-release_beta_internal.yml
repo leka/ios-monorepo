@@ -13,7 +13,10 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  CREATE_KEYCHAIN_PASSWORD: ${{ secrets.CREATE_KEYCHAIN_PASSWORD }}
+  APP_STORE_CONNECT_API_KEY_CONTENT: ${{ secrets. APP_STORE_CONNECT_API_KEY_CONTENT }}
+  APP_STORE_CONNECT_ISSUER_ID: ${{ secrets. APP_STORE_CONNECT_ISSUER_ID }}
+  APP_STORE_CONNECT_API_KEY_ID: ${{ secrets. APP_STORE_CONNECT_API_KEY_ID }}
+  FASTLANE_KEYCHAIN_PASSWORD: ${{ secrets.FASTLANE_KEYCHAIN_PASSWORD }}
   MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
   MATCH_GIT_BASIC_AUTHORIZATION: ${{ secrets.MATCH_GIT_BASIC_AUTHORIZATION }}
 
@@ -43,4 +46,8 @@ jobs:
 
       - name: fastlane sync_certificates
         run: |
-          bundle exec fastlane sync_certificates release:true
+          bundle exec fastlane sync_certificates release:true --verbose
+
+      - name: fastlane beta_internal
+        run: |
+          bundle exec fastlane beta_internal targets:LekaActivityUIExplorer --verbose
