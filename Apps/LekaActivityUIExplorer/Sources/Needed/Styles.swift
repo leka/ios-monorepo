@@ -183,10 +183,8 @@ struct TemplatePreview_ButtonStyle: ButtonStyle {
 
 // MARK: - Xylophone Tile Answer Button Style (Gameplay)
 struct XylophoneTileButtonStyle: ButtonStyle {
-
     @EnvironmentObject var defaults: GameLayoutTemplatesDefaults
     var color: Color
-
     func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
             .overlay {
