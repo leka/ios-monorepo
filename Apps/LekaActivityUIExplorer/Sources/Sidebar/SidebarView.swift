@@ -21,52 +21,29 @@ struct SidebarView: View {
                     .padding(.bottom, 50)
                     .padding(.top, 10)
 
-                Button("Éditeur") {
-                    navigator.diplaysEditor = true
-                    navigator.sidebarVisibility = .detailOnly
-                    configuration.preferred3AnswersLayout = .basic
-                    configuration.preferred4AnswersLayout = .spaced
-                    gameEngine.bufferActivity = EmptyDataSets().makeEmptyActivity()
-                    gameEngine.resetActivity()
-                    configuration.editorIsEmpty = true
-                }
-                .frame(height: 32)
-                .frame(maxWidth: .infinity)
-                .background(Color.accentColor, in: RoundedRectangle(cornerRadius: 8))
-                .padding(.horizontal, 20)
-
-                DisclosureGroup(isExpanded: $isExpanded) {
-                    LazyVGrid(columns: [GridItem()]) {
-                        ForEach(configuration.allTemplatesPreviews.indices, id: \.self) { item in
-                            Button(
-                                action: {
-                                    selectedTemplate = item
-                                    navigator.diplaysEditor = false
-                                    navigator.sidebarVisibility = .detailOnly
-                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                                        setupTest(withTemplate: item)
-                                    }
-                                },
-                                label: {
-                                    previewButton(configuration.allTemplatesPreviews[item])
+                LazyVGrid(columns: [GridItem()]) {
+                    ForEach(configuration.allTemplatesPreviews.indices, id: \.self) { item in
+                        Button(
+                            action: {
+                                selectedTemplate = item
+                                navigator.sidebarVisibility = .detailOnly
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                                    setupTest(withTemplate: item)
                                 }
-                            )
-                            .buttonStyle(
-                                TemplatePreview_ButtonStyle(
-                                    isSelected: selectedTemplate == item,
-                                    name: configuration.allTemplatesPreviews[item])
-                            )
-                            .padding(20)
-                        }
+                            },
+                            label: {
+                                previewButton(configuration.allTemplatesPreviews[item])
+                            }
+                        )
+                        .buttonStyle(
+                            TemplatePreview_ButtonStyle(
+                                isSelected: selectedTemplate == item,
+                                name: configuration.allTemplatesPreviews[item])
+                        )
+                        .padding(20)
                     }
-                    .padding(20)
-                } label: {
-                    Text("Explorateur de templates")
-                        .frame(height: 32)
-                        .frame(maxWidth: .infinity)
-                        .background(Color.accentColor, in: RoundedRectangle(cornerRadius: 8))
                 }
-                .padding(.horizontal, 20)
+                .padding(20)
             }
             .frame(maxWidth: .infinity)
             .font(defaults.semi17)
@@ -105,7 +82,7 @@ struct SidebarView: View {
             .resizable()
             .aspectRatio(contentMode: .fit)
             .frame(height: 60)
-            .padding(.top, 20)
+            .padding(.top, 40)
     }
 
     private func previewButton(_ imageName: String) -> some View {
