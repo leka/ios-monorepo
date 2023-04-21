@@ -7,7 +7,6 @@ import SwiftUI
 
 class NavigationManager: ObservableObject {
 
-    @Published var diplaysEditor: Bool = true
     @Published var sidebarVisibility = NavigationSplitViewVisibility.detailOnly
 
 }
