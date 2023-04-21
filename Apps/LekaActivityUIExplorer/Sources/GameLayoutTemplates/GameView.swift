@@ -14,7 +14,9 @@ struct GameView: View {
             GameBackgroundView()
 
             VStack(spacing: 0) {
-                if !gameEngine.currentActivity.stepSequence[0].isEmpty {
+                if !gameEngine.currentActivity.stepSequence[0].isEmpty
+                    && gameEngine.currentActivity.activityType != "xylophone"
+                {
                     ProgressBar()
                         .padding(.bottom, defaults.headerSpacing)
                 }
