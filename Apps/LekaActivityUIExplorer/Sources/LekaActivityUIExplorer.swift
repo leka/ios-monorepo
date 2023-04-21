@@ -21,11 +21,7 @@ struct LekaActivityUIExplorerApp: App {
                 .environmentObject(defaults)
                 .environmentObject(configuration)
                 .onAppear {
-                    gameEngine.bufferActivity = EmptyDataSets().makeEmptyActivity()
-                    configuration.editorIsEmpty = true
-
-                    // For now, because just an explorer
-                    configuration.disableEditor = true
+                    gameEngine.bufferActivity = ExplorerActivity(withTemplate: 0).makeActivity()
                 }
         }
     }

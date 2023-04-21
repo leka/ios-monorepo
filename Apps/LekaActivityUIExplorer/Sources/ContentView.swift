@@ -19,32 +19,21 @@ struct ContentView: View {
         NavigationSplitView(columnVisibility: $navigator.sidebarVisibility) {
             SidebarView()
         } detail: {
-            Group {
-                if navigator.diplaysEditor {
-                    NavigationStack {
-                        GameView()
-                            .fullScreenCover(
-                                isPresented: $navigateToConfigurator, content: { ActivityConfigurator() })
+            ZStack {
+                GameView()
+                Color.black
+                    .opacity(showOptions ? 0.2 : 0.0)
+                    .edgesIgnoringSafeArea(.all)
+                    .onTapGesture {
+                        withAnimation(.easeIn(duration: 0.4)) { showOptions = false }
                     }
-
-                } else {
-                    ZStack {
-                        GameView()
-                        Color.black
-                            .opacity(showOptions ? 0.2 : 0.0)
-                            .edgesIgnoringSafeArea(.all)
-                            .onTapGesture {
-                                withAnimation(.easeIn(duration: 0.4)) { showOptions = false }
-                            }
-                        Group {
-                            if showOptions {
-                                ExplorerOptionsPanel(closePanel: $showOptions)
-                                    .transition(.move(edge: .trailing))
-                            }
-                        }
-                        .animation(.easeIn(duration: 0.4), value: showOptions)
+                Group {
+                    if showOptions {
+                        ExplorerOptionsPanel(closePanel: $showOptions)
+                            .transition(.move(edge: .trailing))
                     }
                 }
+                .animation(.easeIn(duration: 0.4), value: showOptions)
             }
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarBackButtonHidden()
@@ -59,20 +48,13 @@ struct ContentView: View {
         .navigationSplitViewStyle(.prominentDetail)
     }
 
-    @ViewBuilder
     private var topBarTrailingItems: some View {
         Group {
-            if navigator.diplaysEditor {
-                infoButton
-                configurationButton
-            } else {
-                infoButton
-                optionsButton
-            }
+            infoButton
+            optionsButton
         }
     }
 
-    @ViewBuilder
     private var navigationTitleView: some View {
         HStack(spacing: 4) {
             Text(gameEngine.currentActivity.short.localized())
@@ -94,18 +76,6 @@ struct ContentView: View {
         .opacity(showInstructionModal ? 0 : 1)
     }
 
-    private var configurationButton: some View {
-        Button(
-            action: {
-                navigateToConfigurator.toggle()
-                navigator.sidebarVisibility = .detailOnly
-            },
-            label: {
-                Image(systemName: "paintbrush.fill")
-                    .foregroundColor(.accentColor)
-            })
-    }
-
     private var optionsButton: some View {
         Button(
             action: {
@@ -118,15 +88,5 @@ struct ContentView: View {
                 Image(systemName: "slider.horizontal.3")
                     .foregroundColor(.accentColor)
             })
-    }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-            .environmentObject(NavigationManager())
-            .environmentObject(GameEngine())
-            .environmentObject(GameLayoutTemplatesDefaults())
-            .environmentObject(GameLayoutTemplatesConfigurations())
     }
 }
