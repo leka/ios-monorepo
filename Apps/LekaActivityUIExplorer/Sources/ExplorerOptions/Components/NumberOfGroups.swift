@@ -27,7 +27,9 @@ struct NumberOfGroups: View {
                 value: $numberOfGroups,
                 in: 1...5,
                 step: 1,
-                label: { /* no label */  },
+                label: {
+                    // no label
+                },
                 minimumValueLabel: {
                     Text("•")
                 },
@@ -37,13 +39,13 @@ struct NumberOfGroups: View {
                 onEditingChanged: { _ in simulateGroups() }
             )
             .frame(maxWidth: 260)
-            .tint(Color("lekaSkyBlue"))
+            .tint(LekaActivityUIExplorerAsset.Colors.lekaSkyBlue.swiftUIColor)
             .onAppear {
                 numberOfGroups = Float(gameEngine.currentActivity.stepSequence.count)
             }
         } label: {
             Text("Groupes")
-                .foregroundColor(Color("lekaDarkGray"))
+                .foregroundColor(LekaActivityUIExplorerAsset.Colors.lekaDarkGray.swiftUIColor)
                 .padding(.leading, 20)
         }
     }

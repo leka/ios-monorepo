@@ -62,10 +62,10 @@ struct SizeEditor: View {
                 }
             )
             .frame(maxWidth: 260)
-            .tint(Color("lekaSkyBlue"))
+            .tint(LekaActivityUIExplorerAsset.Colors.lekaSkyBlue.swiftUIColor)
         } label: {
             Text("Taille")
-                .foregroundColor(Color("lekaDarkGray"))
+                .foregroundColor(LekaActivityUIExplorerAsset.Colors.lekaDarkGray.swiftUIColor)
                 .padding(.leading, 20)
         }
     }
@@ -87,10 +87,10 @@ struct SizeEditor: View {
                 }
             )
             .frame(maxWidth: 260)
-            .tint(Color("lekaSkyBlue"))
+            .tint(LekaActivityUIExplorerAsset.Colors.lekaSkyBlue.swiftUIColor)
         } label: {
             Text("Largeur")
-                .foregroundColor(Color("lekaDarkGray"))
+                .foregroundColor(LekaActivityUIExplorerAsset.Colors.lekaDarkGray.swiftUIColor)
                 .padding(.leading, 20)
         }
     }

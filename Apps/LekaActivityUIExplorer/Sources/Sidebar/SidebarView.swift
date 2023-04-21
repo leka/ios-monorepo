@@ -50,7 +50,7 @@ struct SidebarView: View {
             .foregroundColor(.white)
         }
         .ignoresSafeArea(.container, edges: .top)
-        .background(Color("lekaLightGray"))
+        .background(LekaActivityUIExplorerAsset.Colors.lekaLightGray.swiftUIColor)
 
     }
 
@@ -78,7 +78,7 @@ struct SidebarView: View {
     }
 
     private var logoLeka: some View {
-        Image("lekaLogo_AFH")
+        LekaActivityUIExplorerAsset.Images.lekaLogo.swiftUIImage
             .resizable()
             .aspectRatio(contentMode: .fit)
             .frame(height: 60)
