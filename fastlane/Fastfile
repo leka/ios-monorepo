@@ -36,7 +36,8 @@ platform :ios do
     create_keychain(
       name: 'io.leka.fastlane.keychain',
       timeout: 0,
-      unlock: true
+      unlock: true,
+      password: ENV.fetch('FASTLANE_KEYCHAIN_PASSWORD', nil)
     )
 
     match(
@@ -112,6 +113,9 @@ platform :ios do
     release_certs.each do |cert|
       system("cp -f #{SIGNING_DIR}/raw/release/#{cert} #{SIGNING_DIR}/#{cert}")
     end
+
+    UI.message 'List newly created certificates and profiles'
+    system("ls -la #{SIGNING_DIR}")
   end
 
   desc 'Create certificates'
@@ -163,26 +167,50 @@ platform :ios do
       app_id = "io.leka.apf.app.#{app}"
       app_xcodeproj = "#{ROOT_DIR}/Apps/#{app}/#{app}.xcodeproj"
 
-      version_number = get_version_number(xcodeproj: app_xcodeproj.to_s)
-      build_number = latest_testflight_build_number(app_identifier: app_id.to_s) + 1
+      begin
+        if is_ci
+          app_store_connect_api_key(
+            key_id: ENV.fetch('APP_STORE_CONNECT_API_KEY_ID', nil),
+            issuer_id: ENV.fetch('APP_STORE_CONNECT_ISSUER_ID', nil),
+            key_content: ENV.fetch('APP_STORE_CONNECT_API_KEY_CONTENT', nil)
+          )
 
-      increment_build_number(
-        build_number: build_number,
-        xcodeproj: app_xcodeproj.to_s
-      )
+          unlock_keychain(
+            path: 'io.leka.fastlane.keychain',
+            password: ENV.fetch('FASTLANE_KEYCHAIN_PASSWORD', nil)
+          )
+          system('security', 'set-key-partition-list', '-S', 'apple-tool:,apple:', '-s', '-k', ENV.fetch('FASTLANE_KEYCHAIN_PASSWORD', nil), 'io.leka.fastlane.keychain')
+        end
 
-      build_app(
-        workspace: 'ios-monorepo.xcworkspace',
-        scheme: app,
-        output_directory: './.build',
-        output_name: "#{build_date}-#{app}-v#{version_number}-#{build_number}"
-      )
 
-      upload_to_testflight(
-        app_identifier: app_id.to_s,
-        skip_waiting_for_build_processing: true,
-        distribute_external: false
-      )
+
+        version_number = get_version_number(xcodeproj: app_xcodeproj.to_s)
+        build_number = latest_testflight_build_number(app_identifier: app_id.to_s) + 1
+
+        increment_build_number(
+          build_number: build_number,
+          xcodeproj: app_xcodeproj.to_s
+        )
+
+        build_app(
+          workspace: 'ios-monorepo.xcworkspace',
+          scheme: app,
+          output_directory: './.build',
+          output_name: "#{build_date}-#{app}-v#{version_number}-#{build_number}"
+        )
+
+        upload_to_testflight(
+          app_identifier: app_id.to_s,
+          skip_waiting_for_build_processing: true,
+          distribute_external: false
+        )
+      ensure
+        next unless is_ci
+
+        delete_keychain(
+          name: 'io.leka.fastlane.keychain'
+        )
+      end
     end
   end
 end
