@@ -15,12 +15,12 @@ struct GameView: View {
 
             VStack(spacing: 0) {
                 if !gameEngine.currentActivity.stepSequence[0].isEmpty {
-                    ProgressBar().padding(.bottom, defaults.headerSpacing)
+                    ProgressBar()
+                        .padding(.bottom, defaults.headerSpacing)
                 }
                 StepInstructionsButton()
                 InteractionsView()
             }
-            .padding(.top, defaults.headerPadding)
         }
     }
 }
