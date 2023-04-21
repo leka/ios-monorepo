@@ -122,7 +122,10 @@ struct ContentView: View {
                         .foregroundColor(Color.gray)
                         .font(.footnote)
                     Text(
-                        "⚠️ Please keep the \"Emergency Stop 🛑\" magic card nearby during update process, to reboot the robot in case of failure ⚠️"
+                        """
+                        ⚠️ Please keep the \"Emergency Stop 🛑\" magic card nearby during update process, \
+                        to reboot the robot in case of failure ⚠️
+                        """
                     )
                     .foregroundColor(Color.red)
                     .font(.footnote)
