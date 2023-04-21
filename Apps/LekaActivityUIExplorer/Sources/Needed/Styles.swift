@@ -13,7 +13,7 @@ struct StepInstructions_ButtonStyle: ButtonStyle {
         HStack(spacing: 0) {
             Spacer()
             configuration.label
-                .foregroundColor(Color("darkGray"))
+                .foregroundColor(LekaActivityUIExplorerAsset.Colors.darkGray.swiftUIColor)
                 .font(defaults.fontStepInstructionBtn)
                 .multilineTextAlignment(.center)
                 .padding(.horizontal, defaults.frameStepInstructionBtn.height)
@@ -59,11 +59,13 @@ struct StepInstructions_ButtonStyle: ButtonStyle {
     private var speachIndicator: some View {
         HStack {
             Spacer()
-            Image("person.wave.2")
+            LekaActivityUIExplorerAsset.Images.personTalking.swiftUIImage
                 .resizable()
                 .renderingMode(.template)
                 .aspectRatio(contentMode: .fit)
-                .foregroundColor(gameEngine.isSpeaking ? .accentColor : Color("progressBar"))
+                .foregroundColor(
+                    gameEngine.isSpeaking ? .accentColor : LekaActivityUIExplorerAsset.Colors.progressBar.swiftUIColor
+                )
                 .padding(10)
         }
     }
@@ -80,7 +82,9 @@ struct ActivityAnswer_ButtonStyle: ButtonStyle {
             .mask(Circle().inset(by: 4))
             .background(
                 Circle()
-                    .fill(Color("gameButtonBorder"), strokeBorder: Color("gameButtonBorder"), lineWidth: 4)
+                    .fill(
+                        LekaActivityUIExplorerAsset.Colors.gameButtonBorder.swiftUIColor,
+                        strokeBorder: LekaActivityUIExplorerAsset.Colors.gameButtonBorder.swiftUIColor, lineWidth: 4)
             )
             .overlay(
                 Circle()
@@ -101,7 +105,10 @@ struct PlaySound_ButtonStyle: ButtonStyle {
             .mask(Circle().inset(by: 4))
             .background(
                 Circle()
-                    .fill(Color.white, strokeBorder: Color("gameButtonBorder"), lineWidth: 4)
+                    .fill(
+                        Color.white, strokeBorder: LekaActivityUIExplorerAsset.Colors.gameButtonBorder.swiftUIColor,
+                        lineWidth: 4
+                    )
                     .overlay(
                         Circle()
                             .trim(from: 0, to: progress)
@@ -122,7 +129,7 @@ struct BorderedCapsule_ButtonStyle: ButtonStyle {
     func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
             .font(.system(size: 22, weight: .black, design: .rounded))
-            .foregroundColor(!isFilled ? Color("bravoHighlights") : .white)
+            .foregroundColor(!isFilled ? LekaActivityUIExplorerAsset.Colors.bravoHighlights.swiftUIColor : .white)
             .opacity(configuration.isPressed ? 0.95 : 1)
             .scaleEffect(configuration.isPressed ? 0.99 : 1, anchor: .center)
             .padding()
@@ -130,8 +137,8 @@ struct BorderedCapsule_ButtonStyle: ButtonStyle {
             .background(
                 Capsule()
                     .fill(
-                        isFilled ? Color("bravoHighlights") : .white,
-                        strokeBorder: (Color("bravoHighlights")),
+                        isFilled ? LekaActivityUIExplorerAsset.Colors.bravoHighlights.swiftUIColor : .white,
+                        strokeBorder: (LekaActivityUIExplorerAsset.Colors.bravoHighlights.swiftUIColor),
                         lineWidth: 1
                     )
                     .shadow(color: .black.opacity(0.1), radius: 2.3, x: 0, y: 1.8)
@@ -191,10 +198,10 @@ struct XylophoneTileButtonStyle: ButtonStyle {
                 VStack {
                     Spacer()
                     Circle()
-                        .fill(Color("xyloAttach"))
+                        .fill(LekaActivityUIExplorerAsset.Colors.xyloAttach.swiftUIColor)
                     Spacer()
                     Circle()
-                        .fill(Color("xyloAttach"))
+                        .fill(LekaActivityUIExplorerAsset.Colors.xyloAttach.swiftUIColor)
                     Spacer()
                 }
                 .frame(width: 44)

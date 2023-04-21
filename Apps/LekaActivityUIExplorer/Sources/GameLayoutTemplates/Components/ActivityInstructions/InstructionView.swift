@@ -24,7 +24,7 @@ struct InstructionView: View {
         Markdown(text)
             .markdownTextStyle(textStyle: {
                 FontProperties(family: .system(), size: 17)
-                ForegroundColor(Color("darkGray"))
+                ForegroundColor(LekaActivityUIExplorerAsset.Colors.darkGray.swiftUIColor)
             })
             .padding(.horizontal, 40)
     }
@@ -34,11 +34,11 @@ struct InstructionView: View {
             Spacer()
             Text("DESCRIPTION & INSTALLATION")
                 .font(defaults.reg18)
-                .foregroundColor(Color("darkGray").opacity(0.8))
+                .foregroundColor(LekaActivityUIExplorerAsset.Colors.darkGray.swiftUIColor.opacity(0.8))
                 .padding(.vertical, 22)
             Spacer()
         }
         .padding(.top, 30)
-        .background(Color("lekaLightGray"))
+        .background(LekaActivityUIExplorerAsset.Colors.lekaLightGray.swiftUIColor)
     }
 }
