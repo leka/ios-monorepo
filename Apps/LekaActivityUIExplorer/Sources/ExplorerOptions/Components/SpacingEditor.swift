@@ -66,10 +66,10 @@ struct SpacingEditor: View {
                 }
             )
             .frame(maxWidth: 260)
-            .tint(Color("lekaSkyBlue"))
+            .tint(LekaActivityUIExplorerAsset.Colors.lekaSkyBlue.swiftUIColor)
         } label: {
             Text("Horizontal")
-                .foregroundColor(Color("lekaDarkGray"))
+                .foregroundColor(LekaActivityUIExplorerAsset.Colors.lekaDarkGray.swiftUIColor)
                 .padding(.leading, 20)
         }
     }
@@ -91,10 +91,10 @@ struct SpacingEditor: View {
                 }
             )
             .frame(maxWidth: 260)
-            .tint(Color("lekaSkyBlue"))
+            .tint(LekaActivityUIExplorerAsset.Colors.lekaSkyBlue.swiftUIColor)
         } label: {
             Text("Horizontal")
-                .foregroundColor(Color("lekaDarkGray"))
+                .foregroundColor(LekaActivityUIExplorerAsset.Colors.lekaDarkGray.swiftUIColor)
                 .padding(.leading, 20)
         }
     }
@@ -116,10 +116,10 @@ struct SpacingEditor: View {
                 }
             )
             .frame(maxWidth: 260)
-            .tint(Color("lekaSkyBlue"))
+            .tint(LekaActivityUIExplorerAsset.Colors.lekaSkyBlue.swiftUIColor)
         } label: {
             Text("Vertical")
-                .foregroundColor(Color("lekaDarkGray"))
+                .foregroundColor(LekaActivityUIExplorerAsset.Colors.lekaDarkGray.swiftUIColor)
                 .padding(.leading, 20)
         }
     }

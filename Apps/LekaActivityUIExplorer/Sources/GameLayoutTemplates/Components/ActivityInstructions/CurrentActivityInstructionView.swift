@@ -19,7 +19,7 @@ struct CurrentActivityInstructionView: View {
                 Color.accentColor.ignoresSafeArea()
 
                 // Background Color
-                Color("lekaLightGray").padding(.top, 70)
+                LekaActivityUIExplorerAsset.Colors.lekaLightGray.swiftUIColor.padding(.top, 70)
 
                 VStack(spacing: 0) {
                     activityDetailHeader

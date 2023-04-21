@@ -58,10 +58,10 @@ struct TilesFeedbackEditor: View {
                 }
             )
             .frame(maxWidth: 260)
-            .tint(Color("lekaSkyBlue"))
+            .tint(LekaActivityUIExplorerAsset.Colors.lekaSkyBlue.swiftUIColor)
         } label: {
             Text("Rotation")
-                .foregroundColor(Color("lekaDarkGray"))
+                .foregroundColor(LekaActivityUIExplorerAsset.Colors.lekaDarkGray.swiftUIColor)
                 .padding(.leading, 20)
         }
     }
@@ -83,10 +83,10 @@ struct TilesFeedbackEditor: View {
                 }
             )
             .frame(maxWidth: 260)
-            .tint(Color("lekaSkyBlue"))
+            .tint(LekaActivityUIExplorerAsset.Colors.lekaSkyBlue.swiftUIColor)
         } label: {
             Text("Échelle")
-                .foregroundColor(Color("lekaDarkGray"))
+                .foregroundColor(LekaActivityUIExplorerAsset.Colors.lekaDarkGray.swiftUIColor)
                 .padding(.leading, 20)
         }
     }

@@ -33,7 +33,7 @@ extension Image {
                 .mask(Circle())
                 .padding(padding)
             Circle()
-                .strokeBorder(Color("btnLightBlue"), lineWidth: 4)
+                .strokeBorder(LekaActivityUIExplorerAsset.Colors.btnLightBlue.swiftUIColor, lineWidth: 4)
         }
         .frame(minWidth: diameter, maxWidth: diameter)
     }
