@@ -6,7 +6,6 @@ import SwiftUI
 
 struct ExplorerOptionsPanel: View {
 
-    //	@EnvironmentObject var configuration: GLT_Configurations
     @EnvironmentObject var gameEngine: GameEngine
     @EnvironmentObject var defaults: GameLayoutTemplatesDefaults
 
@@ -34,10 +33,16 @@ struct ExplorerOptionsPanel: View {
 
                     Form {
                         Group {
-                            NumberOfGroups()
+                            if gameEngine.currentActivity.activityType != "xylophone" {
+                                NumberOfGroups()
+                            }
                             SizeEditor()
                             SpacingEditor()
-                            AccessoryManager()
+                            if gameEngine.currentActivity.activityType != "xylophone" {
+                                AccessoryManager()
+                            } else {
+                                TilesFeedbackEditor()
+                            }
                         }
                         .padding(.top, 6)
                     }

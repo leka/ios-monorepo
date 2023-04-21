@@ -33,7 +33,7 @@ struct AccessoryManager: View {
                     gameEngine.setupGame()
                 }
                 .onAppear {
-                    if gameEngine.currentActivity.activityType == "touch_to_select" {
+                    if gameEngine.currentActivity.activityType != "listen_then_touch_to_select" {
                         displaySound = false
                     } else {
                         displaySound = true
