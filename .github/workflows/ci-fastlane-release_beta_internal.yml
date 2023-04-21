@@ -1,0 +1,66 @@
+# Leka - iOS Monorepo
+# Copyright 2023 APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+name: Fastlane - Internal Beta Release
+
+on:
+  pull_request:
+    types: [labeled]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  APP_STORE_CONNECT_API_KEY_CONTENT: ${{ secrets. APP_STORE_CONNECT_API_KEY_CONTENT }}
+  APP_STORE_CONNECT_ISSUER_ID: ${{ secrets. APP_STORE_CONNECT_ISSUER_ID }}
+  APP_STORE_CONNECT_API_KEY_ID: ${{ secrets. APP_STORE_CONNECT_API_KEY_ID }}
+  FASTLANE_KEYCHAIN_PASSWORD: ${{ secrets.FASTLANE_KEYCHAIN_PASSWORD }}
+  MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+  MATCH_GIT_BASIC_AUTHORIZATION: ${{ secrets.MATCH_GIT_BASIC_AUTHORIZATION }}
+
+jobs:
+  internal_beta_release:
+    if: ${{ github.event.label.name == 'fastlane:release_beta_internal' }}
+    name: fastlane beta_internal
+    runs-on: [self-hosted, iOS]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 1 # shallow clone
+
+      - name: bundle install
+        run: |
+          bundle install
+
+      - name: tuist fetch
+        run: |
+          tuist fetch
+
+      - name: fastlane helloworld
+        run: |
+          bundle exec fastlane helloworld
+
+      - name: fastlane sync_certificates
+        run: |
+          bundle exec fastlane sync_certificates release:true --verbose
+
+      - name: fastlane beta_internal
+        run: |
+          bundle exec fastlane beta_internal targets:LekaActivityUIExplorer --verbose
+
+      - name: remove label
+        if: always()
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            github.rest.issues.removeLabel({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              name: 'fastlane:release_beta_internal'
+            })

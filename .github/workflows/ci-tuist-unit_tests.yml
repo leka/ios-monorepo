@@ -30,13 +30,9 @@ jobs:
         run: |
           tuist fetch
 
-      - name: tuist cache warm
-        run: |
-          tuist cache warm -x
-
       - name: tuist generate
         run: |
-          tuist generate -x -n
+          tuist generate -n
 
       - name: tuist test
         run: |
