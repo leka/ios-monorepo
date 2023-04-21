@@ -22,7 +22,7 @@ struct AccessoryManager: View {
     private var displaySoundToggle: some View {
         LabeledContent {
             Toggle("", isOn: $displaySound)
-                .toggleStyle(SwitchToggleStyle(tint: Color("lekaSkyBlue")))
+                .toggleStyle(SwitchToggleStyle(tint: LekaActivityUIExplorerAsset.Colors.lekaSkyBlue.swiftUIColor))
                 .labelsHidden()
                 .onChange(of: displaySound) { newValue in
                     if newValue {
@@ -41,7 +41,7 @@ struct AccessoryManager: View {
                 }
         } label: {
             Text("Afficher le bouton de lecture")
-                .foregroundColor(Color("lekaDarkGray"))
+                .foregroundColor(LekaActivityUIExplorerAsset.Colors.lekaDarkGray.swiftUIColor)
                 .padding(.leading, 20)
         }
     }

@@ -15,7 +15,7 @@ struct ExplorerOptionsPanel: View {
         HStack {
             Spacer()
             ZStack {
-                Color("lekaLightGray").ignoresSafeArea()
+                LekaActivityUIExplorerAsset.Colors.lekaLightGray.swiftUIColor.ignoresSafeArea()
 
                 VStack(spacing: 0) {
                     Rectangle()
