@@ -179,10 +179,9 @@ platform :ios do
             path: 'io.leka.fastlane.keychain',
             password: ENV.fetch('FASTLANE_KEYCHAIN_PASSWORD', nil)
           )
-          system('security', 'set-key-partition-list', '-S', 'apple-tool:,apple:', '-s', '-k', ENV.fetch('FASTLANE_KEYCHAIN_PASSWORD', nil), 'io.leka.fastlane.keychain')
+          system('security', 'set-key-partition-list', '-S', 'apple-tool:,apple:', '-s', '-k',
+                 ENV.fetch('FASTLANE_KEYCHAIN_PASSWORD', nil), 'io.leka.fastlane.keychain')
         end
-
-
 
         version_number = get_version_number(xcodeproj: app_xcodeproj.to_s)
         build_number = latest_testflight_build_number(app_identifier: app_id.to_s) + 1
