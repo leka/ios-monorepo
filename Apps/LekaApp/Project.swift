@@ -6,16 +6,15 @@ import ProjectDescription
 import ProjectDescriptionHelpers
 
 // Creates our project using a helper function defined in ProjectDescriptionHelpers
-let project = Project.app(
+let project = Project.iOSApp(
     name: "LekaApp",
-    platform: .iOS,
+    version: "1.0.0",
     dependencies: [
-        .project(target: "CoreUI", path: Path("../../Modules/CoreUI")),
+        .project(target: "DesignKit", path: Path("../../Modules/DesignKit")),
         .external(name: "Yams"),
         .external(name: "Lottie"),
     ],
     infoPlist: [
-        "CFBundleShortVersionString": "1.0.0",
         "NSBluetoothAlwaysUsageDescription":
             "The Leka App needs to use Bluetooth to connect to the Leka robot.",
         "UIRequiresFullScreen": "true",

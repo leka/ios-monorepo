@@ -6,11 +6,10 @@ import ProjectDescription
 import ProjectDescriptionHelpers
 
 // Creates our project using a helper function defined in ProjectDescriptionHelpers
-let project = Project.app(
+let project = Project.iOSApp(
     name: "LekaActivityUIExplorer",
-    platform: .iOS,
     dependencies: [
-        .project(target: "CoreUI", path: Path("../../Modules/CoreUI")),
+        .project(target: "DesignKit", path: Path("../../Modules/DesignKit")),
         .external(name: "MarkdownUI"),
         .external(name: "Yams"),
         .external(name: "Lottie"),
