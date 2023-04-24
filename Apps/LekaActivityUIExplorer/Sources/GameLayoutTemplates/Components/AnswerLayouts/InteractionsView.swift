@@ -41,6 +41,8 @@ struct InteractionsView: View {
                                 case .spaced: FourAnswersLayoutSpaced()
                                 default: FourAnswersLayout()
                             }
+                        } else if gameEngine.allAnswers.count == 5 {
+                            FiveAnswersLayout()
                         } else if gameEngine.allAnswers.count == 6 {
                             SixAnswersLayout()
                         } else {
