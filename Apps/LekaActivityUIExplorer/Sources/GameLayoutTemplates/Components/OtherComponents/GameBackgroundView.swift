@@ -6,7 +6,7 @@ import SwiftUI
 
 struct GameBackgroundView: View {
 
-    @EnvironmentObject var defaults: GameLayoutTemplatesDefaults
+    @ObservedObject var defaults: DefaultsTemplate
 
     var body: some View {
         defaults.activitiesBackgroundColor.edgesIgnoringSafeArea(.all)

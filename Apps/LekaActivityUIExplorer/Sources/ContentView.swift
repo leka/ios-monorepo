@@ -11,6 +11,17 @@ struct ContentView: View {
     @EnvironmentObject var defaults: GameLayoutTemplatesDefaults
     @EnvironmentObject var configuration: GameLayoutTemplatesConfigurations
 
+    // Templates defaults
+    @StateObject var xylophoneDefaults = XylophoneTemplatesDefaults()
+    @StateObject var oneDefaults = DefaultsTemplateOne()
+    @StateObject var twoDefaults = DefaultsTemplateTwo()
+    @StateObject var threeDefaults = DefaultsTemplateThree()
+    @StateObject var threeInlineDefaults = DefaultsTemplateThreeInline()
+    @StateObject var fourDefaults = DefaultsTemplateFour()
+    @StateObject var fourInlineDefaults = DefaultsTemplateFourInline()
+    @StateObject var fiveDefaults = DefaultsTemplateFive()
+    @StateObject var sixDefaults = DefaultsTemplateSix()
+
     @State private var showInstructionModal: Bool = false
     @State private var navigateToConfigurator: Bool = false
     @State private var showOptions: Bool = false
@@ -20,7 +31,7 @@ struct ContentView: View {
             SidebarView()
         } detail: {
             ZStack {
-                GameView()
+                GameView(templateDefaults: relevantDefaultsSet())
                 Color.black
                     .opacity(showOptions ? 0.2 : 0.0)
                     .edgesIgnoringSafeArea(.all)
@@ -29,7 +40,7 @@ struct ContentView: View {
                     }
                 Group {
                     if showOptions {
-                        ExplorerOptionsPanel(closePanel: $showOptions)
+                        ExplorerOptionsPanel(templateDefaults: relevantDefaultsSet(), closePanel: $showOptions)
                             .transition(.move(edge: .trailing))
                     }
                 }
@@ -46,6 +57,37 @@ struct ContentView: View {
             }
         }
         .navigationSplitViewStyle(.prominentDetail)
+        .environmentObject(oneDefaults)
+        .environmentObject(twoDefaults)
+        .environmentObject(threeDefaults)
+        .environmentObject(threeInlineDefaults)
+        .environmentObject(fourDefaults)
+        .environmentObject(fourInlineDefaults)
+        .environmentObject(fiveDefaults)
+        .environmentObject(sixDefaults)
+        .environmentObject(xylophoneDefaults)
+    }
+
+    private func relevantDefaultsSet() -> DefaultsTemplate {
+        if gameEngine.allAnswers.count == 1 {
+            return oneDefaults
+        } else if gameEngine.allAnswers.count == 2 {
+            return twoDefaults
+        } else if gameEngine.allAnswers.count == 3 {
+            switch configuration.preferred3AnswersLayout {
+                case .inline: return threeInlineDefaults
+                default: return threeDefaults
+            }
+        } else if gameEngine.allAnswers.count == 4 {
+            switch configuration.preferred4AnswersLayout {
+                case .inline: return fourInlineDefaults
+                default: return fourDefaults
+            }
+        } else if gameEngine.allAnswers.count == 5 {
+            return fiveDefaults
+        } else {
+            return sixDefaults
+        }
     }
 
     private var topBarTrailingItems: some View {

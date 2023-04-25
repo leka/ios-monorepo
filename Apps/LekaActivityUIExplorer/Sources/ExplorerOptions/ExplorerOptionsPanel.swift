@@ -9,6 +9,10 @@ struct ExplorerOptionsPanel: View {
     @EnvironmentObject var gameEngine: GameEngine
     @EnvironmentObject var defaults: GameLayoutTemplatesDefaults
 
+    // Templates defaults
+    @ObservedObject var templateDefaults: DefaultsTemplate
+    @EnvironmentObject var xylophoneDefaults: XylophoneTemplatesDefaults
+
     @Binding var closePanel: Bool
 
     var body: some View {
@@ -35,13 +39,15 @@ struct ExplorerOptionsPanel: View {
                         Group {
                             if gameEngine.currentActivity.activityType != "xylophone" {
                                 NumberOfGroups()
-                            }
-                            SizeEditor()
-                            SpacingEditor()
-                            if gameEngine.currentActivity.activityType != "xylophone" {
-                                AccessoryManager()
+                                SizeEditor(templateDefaults: templateDefaults)
                             } else {
+                                XylophoneSizeEditor(templateDefaults: xylophoneDefaults)
+                            }
+                            if gameEngine.currentActivity.activityType == "xylophone" {
+                                XylophoneSpacingEditor(templateDefaults: xylophoneDefaults)
                                 TilesFeedbackEditor()
+                            } else if gameEngine.allAnswers.count > 1 {
+                                SpacingEditor(templateDefaults: templateDefaults)
                             }
                         }
                         .padding(.top, 6)
