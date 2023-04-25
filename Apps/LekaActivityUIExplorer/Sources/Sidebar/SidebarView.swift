@@ -11,7 +11,9 @@ struct SidebarView: View {
     @EnvironmentObject var gameEngine: GameEngine
     @EnvironmentObject var defaults: GameLayoutTemplatesDefaults
 
-    @State private var isExpanded: Bool = false
+    @State private var touchToSelectIsExpanded: Bool = false
+    @State private var listenThenTouchIsExpanded: Bool = false
+    @State private var miscIsExpanded: Bool = false
     @State private var selectedTemplate: Int = 0
 
     var body: some View {
@@ -21,29 +23,109 @@ struct SidebarView: View {
                     .padding(.bottom, 50)
                     .padding(.top, 10)
 
-                LazyVGrid(columns: [GridItem()]) {
-                    ForEach(configuration.allTemplatesPreviews.indices, id: \.self) { item in
-                        Button(
-                            action: {
-                                selectedTemplate = item
-                                navigator.sidebarVisibility = .detailOnly
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                                    setupTest(withTemplate: item)
+                DisclosureGroup(isExpanded: $touchToSelectIsExpanded) {
+                    LazyVGrid(columns: [GridItem()]) {
+                        ForEach(configuration.touchToSelectPreviews.indices, id: \.self) { item in
+                            Button(
+                                action: {
+                                    selectedTemplate = item
+                                    navigator.sidebarVisibility = .detailOnly
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                                        setupTest(withTemplate: item, type: "touch_to_select")
+                                    }
+                                },
+                                label: {
+                                    previewButton(configuration.touchToSelectPreviews[item])
                                 }
-                            },
-                            label: {
-                                previewButton(configuration.allTemplatesPreviews[item])
-                            }
-                        )
-                        .buttonStyle(
-                            TemplatePreview_ButtonStyle(
-                                isSelected: selectedTemplate == item,
-                                name: configuration.allTemplatesPreviews[item])
-                        )
-                        .padding(20)
+                            )
+                            .buttonStyle(
+                                TemplatePreview_ButtonStyle(
+                                    isSelected: selectedTemplate == item,
+                                    name: configuration.touchToSelectPreviews[item])
+                            )
+                            .padding(20)
+                        }
                     }
+                    .padding(20)
+                } label: {
+                    Text("touch_to_select")
+                        .frame(height: 32)
+                        .frame(maxWidth: .infinity)
+                        .background(Color.accentColor, in: RoundedRectangle(cornerRadius: 8))
                 }
-                .padding(20)
+                .padding(.horizontal, 20)
+
+                DisclosureGroup(isExpanded: $listenThenTouchIsExpanded) {
+                    LazyVGrid(columns: [GridItem()]) {
+                        ForEach(configuration.listenThenTouchToSelectPreviews.indices, id: \.self) { item in
+                            Button(
+                                action: {
+                                    selectedTemplate = item
+                                    navigator.sidebarVisibility = .detailOnly
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                                        setupTest(withTemplate: item, type: "listen_then_touch_to_select")
+                                    }
+                                },
+                                label: {
+                                    ZStack(alignment: .topTrailing) {
+                                        previewButton(configuration.listenThenTouchToSelectPreviews[item])
+                                        Image(systemName: "play.circle")
+                                            .font(defaults.reg18)
+                                            .foregroundColor(
+                                                LekaActivityUIExplorerAsset.Colors.lekaSkyBlue.swiftUIColor
+                                            )
+                                            .padding(4)
+                                    }
+                                }
+                            )
+                            .buttonStyle(
+                                TemplatePreview_ButtonStyle(
+                                    isSelected: selectedTemplate == item,
+                                    name: configuration.listenThenTouchToSelectPreviews[item])
+                            )
+                            .padding(20)
+                        }
+                    }
+                    .padding(20)
+                } label: {
+                    Text("listen_then_touch_to_select")
+                        .frame(height: 32)
+                        .frame(maxWidth: .infinity)
+                        .background(Color.accentColor, in: RoundedRectangle(cornerRadius: 8))
+                }
+                .padding(.horizontal, 20)
+
+                DisclosureGroup(isExpanded: $miscIsExpanded) {
+                    LazyVGrid(columns: [GridItem()]) {
+                        ForEach(configuration.miscPreviews.indices, id: \.self) { item in
+                            Button(
+                                action: {
+                                    selectedTemplate = item
+                                    navigator.sidebarVisibility = .detailOnly
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                                        setupTest(withTemplate: item, type: "xylophone")
+                                    }
+                                },
+                                label: {
+                                    previewButton(configuration.miscPreviews[item])
+                                }
+                            )
+                            .buttonStyle(
+                                TemplatePreview_ButtonStyle(
+                                    isSelected: selectedTemplate == item,
+                                    name: configuration.miscPreviews[item])
+                            )
+                            .padding(20)
+                        }
+                    }
+                    .padding(20)
+                } label: {
+                    Text("xylophone")
+                        .frame(height: 32)
+                        .frame(maxWidth: .infinity)
+                        .background(Color.accentColor, in: RoundedRectangle(cornerRadius: 8))
+                }
+                .padding(.horizontal, 20)
             }
             .frame(maxWidth: .infinity)
             .font(defaults.semi17)
@@ -54,9 +136,9 @@ struct SidebarView: View {
 
     }
 
-    private func setupTest(withTemplate: Int) {
+    private func setupTest(withTemplate: Int, type: String) {
         setupExplorerVariations(forTemplate: withTemplate)
-        gameEngine.bufferActivity = ExplorerActivity(withTemplate: withTemplate).makeActivity()
+        gameEngine.bufferActivity = ExplorerActivity(withTemplate: withTemplate, type: type).makeActivity()
         gameEngine.setupGame()
     }
 
@@ -68,12 +150,7 @@ struct SidebarView: View {
         } else if forTemplate == 4 {
             configuration.preferred4AnswersLayout = .basic
         } else if forTemplate == 5 {
-            configuration.preferred4AnswersLayout = .spaced
-        } else if forTemplate == 6 {
             configuration.preferred4AnswersLayout = .inline
-        } else {
-            configuration.preferred3AnswersLayout = .basic
-            configuration.preferred4AnswersLayout = .spaced
         }
     }
 
