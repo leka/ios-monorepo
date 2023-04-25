@@ -8,6 +8,8 @@ struct FourAnswersLayoutSpaced: View {
 
     @EnvironmentObject var defaults: GameLayoutTemplatesDefaults
 
+    // TODO: (@Macteuts) - Update this when this view is used (defaults etc...)
+
     var body: some View {
         Grid(horizontalSpacing: defaults.horizontalCellSpacing, verticalSpacing: defaults.verticalCellSpacing) {
             GridRow {
@@ -21,14 +23,5 @@ struct FourAnswersLayoutSpaced: View {
                 CircularAnswerButton(answer: 3)
             }
         }
-    }
-}
-
-struct FourAnswersLayoutSpaced_Previews: PreviewProvider {
-    static var previews: some View {
-        FourAnswersLayoutSpaced()
-            .environmentObject(GameLayoutTemplatesDefaults())
-            .environmentObject(GameLayoutTemplatesConfigurations())
-            .environmentObject(GameEngine())
     }
 }

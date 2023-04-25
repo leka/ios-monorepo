@@ -8,14 +8,15 @@ struct XylophoneLayout: View {
 
     @EnvironmentObject var gameEngine: GameEngine
     @EnvironmentObject var defaults: GameLayoutTemplatesDefaults
+    @StateObject var templateDefaults = XylophoneTemplatesDefaults()
 
     @State private var colors: [Color] = [.green, .purple, .red, .yellow, .blue]
     @State private var showAlert: Bool = false
 
     var body: some View {
-        HStack(spacing: defaults.xylophoneTilesSpacing) {
+        HStack(spacing: templateDefaults.xylophoneTilesSpacing) {
             ForEach($colors, id: \.self) { color in
-                XylophoneTile(color: color)
+                XylophoneTile(templateDefaults: templateDefaults, color: color)
             }
         }
         .onAppear {
