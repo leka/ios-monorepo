@@ -38,7 +38,7 @@ struct InteractionsView: View {
                         } else if gameEngine.allAnswers.count == 4 {
                             switch configuration.preferred4AnswersLayout {
                                 case .inline: FourAnswersLayoutInline()
-                                case .spaced: FourAnswersLayoutSpaced()
+                                // case .spaced: FourAnswersLayoutSpaced()
                                 default: FourAnswersLayout()
                             }
                         } else if gameEngine.allAnswers.count == 5 {

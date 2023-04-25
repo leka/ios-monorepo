@@ -9,9 +9,11 @@ struct GameView: View {
     @EnvironmentObject var gameEngine: GameEngine
     @EnvironmentObject var defaults: GameLayoutTemplatesDefaults
 
+    @ObservedObject var templateDefaults: DefaultsTemplate
+
     var body: some View {
         ZStack(alignment: .top) {
-            GameBackgroundView()
+            GameBackgroundView(defaults: templateDefaults)
 
             VStack(spacing: 0) {
                 if !gameEngine.currentActivity.stepSequence[0].isEmpty
