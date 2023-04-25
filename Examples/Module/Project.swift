@@ -11,4 +11,12 @@ let project = Project.module(
     platform: .iOS,
     dependencies: [
         // no deps
+    ],
+    examples: [
+        ModuleExample(name: "ModuleExampleAppOne"),
+        ModuleExample(
+            name: "ModuleExampleAppTwo",
+            infoPlist: [
+                "APP_NAME": "ModuleExampleAppTwo from InfoPlist"
+            ]),
     ])
