@@ -20,6 +20,8 @@ class GameLayoutTemplatesDefaults: ObservableObject {
     @Published var progressBarBackgroundColor: Color = LekaActivityUIExplorerAsset.Colors.progressBar.swiftUIColor
 
     // MARK: - GameView Layout
+    // Game BG
+    @Published var activitiesBackgroundColor: Color = LekaActivityUIExplorerAsset.Colors.lightGray.swiftUIColor
     // Header (ProgressBar + Instruction Button)
     @Published var headerTotalHeight: CGFloat = 155
     @Published var headerSpacing: CGFloat = 20

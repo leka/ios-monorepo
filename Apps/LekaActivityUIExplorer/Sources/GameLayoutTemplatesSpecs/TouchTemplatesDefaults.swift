@@ -5,141 +5,141 @@
 import Foundation
 import SwiftUI
 
-class DefaultsTemplate: ObservableObject {
-    // MARK: - Game BG
-    @Published var activitiesBackgroundColor: Color = LekaActivityUIExplorerAsset.Colors.lightGray.swiftUIColor
+public class BaseDefaults: ObservableObject {
 
-    // MARK: - Answering Buttons
-    @Published var playGridBtnSize: CGFloat = 200
+    // MARK: - Provided Defaults
 
-    // MARK: - Answers Layouts
-    @Published var horizontalCellSpacing: CGFloat = 32
-    @Published var verticalCellSpacing: CGFloat = 32
+    var defaultAnswerSize: CGFloat
+    var defaultHorizontalSpacing: CGFloat
+    var defaultVerticalSpacing: CGFloat
+
+    // MARK: - Custom
+
+    @Published var customAnswerSize: CGFloat
+    @Published var customHorizontalSpacing: CGFloat
+    @Published var customVerticalSpacing: CGFloat
 
     init(
-        activitiesBackgroundColor: Color,
-        playGridBtnSize: CGFloat,
-        horizontalCellSpacing: CGFloat,
-        verticalCellSpacing: CGFloat
+        defaultAnswerSize: CGFloat,
+        defaultHorizontalSpacing: CGFloat,
+        defaultVerticalSpacing: CGFloat
     ) {
-        self.activitiesBackgroundColor = activitiesBackgroundColor
-        self.playGridBtnSize = playGridBtnSize
-        self.horizontalCellSpacing = horizontalCellSpacing
-        self.verticalCellSpacing = verticalCellSpacing
+        self.defaultAnswerSize = defaultAnswerSize
+        self.defaultHorizontalSpacing = defaultHorizontalSpacing
+        self.defaultVerticalSpacing = defaultVerticalSpacing
+
+        self.customAnswerSize = defaultAnswerSize
+        self.customHorizontalSpacing = defaultHorizontalSpacing
+        self.customVerticalSpacing = defaultVerticalSpacing
     }
+
 }
 
-class DefaultsTemplateOne: DefaultsTemplate {
-    init() {
+public class ListenThenTouchToSelectDefaults: BaseDefaults {
+    var defaultListenButtonSize: CGFloat
+
+    @Published var customListenButtonSize: CGFloat
+
+    init(
+        defaultAnswerSize: CGFloat,
+        defaultHorizontalSpacing: CGFloat,
+        defaultVerticalSpacing: CGFloat,
+        defaultListenButtonSize: CGFloat
+    ) {
+        self.defaultListenButtonSize = defaultListenButtonSize
+        self.customListenButtonSize = defaultListenButtonSize
         super
             .init(
-                activitiesBackgroundColor: LekaActivityUIExplorerAsset.Colors.lightGray.swiftUIColor,
-                playGridBtnSize: 300,
-                horizontalCellSpacing: 32,
-                verticalCellSpacing: 32
+                defaultAnswerSize: defaultAnswerSize,
+                defaultHorizontalSpacing: defaultHorizontalSpacing,
+                defaultVerticalSpacing: defaultVerticalSpacing
             )
     }
+
 }
 
-class DefaultsTemplateTwo: DefaultsTemplate {
-    init() {
-        super
-            .init(
-                activitiesBackgroundColor: LekaActivityUIExplorerAsset.Colors.lightGray.swiftUIColor,
-                playGridBtnSize: 300,
-                horizontalCellSpacing: 32,
-                verticalCellSpacing: 32
-            )
-    }
-}
-
-class DefaultsTemplateThree: DefaultsTemplate {
-    init() {
-        super
-            .init(
-                activitiesBackgroundColor: LekaActivityUIExplorerAsset.Colors.lightGray.swiftUIColor,
-                playGridBtnSize: 260,
-                horizontalCellSpacing: 32,
-                verticalCellSpacing: 32
-            )
-    }
-}
-
-class DefaultsTemplateThreeInline: DefaultsTemplate {
-    init() {
-        super
-            .init(
-                activitiesBackgroundColor: LekaActivityUIExplorerAsset.Colors.lightGray.swiftUIColor,
-                playGridBtnSize: 300,
-                horizontalCellSpacing: 60,
-                verticalCellSpacing: 32
-            )
-    }
-}
-
-class DefaultsTemplateFour: DefaultsTemplate {
-    init() {
-        super
-            .init(
-                activitiesBackgroundColor: LekaActivityUIExplorerAsset.Colors.lightGray.swiftUIColor,
-                playGridBtnSize: 240,
-                horizontalCellSpacing: 200,
-                verticalCellSpacing: 40
-            )
-    }
-}
-
-class DefaultsTemplateFourInline: DefaultsTemplate {
-    init() {
-        super
-            .init(
-                activitiesBackgroundColor: LekaActivityUIExplorerAsset.Colors.lightGray.swiftUIColor,
-                playGridBtnSize: 200,
-                horizontalCellSpacing: 70,
-                verticalCellSpacing: 32
-            )
-    }
-}
-
-class DefaultsTemplateFive: DefaultsTemplate {
-    init() {
-        super
-            .init(
-                activitiesBackgroundColor: LekaActivityUIExplorerAsset.Colors.lightGray.swiftUIColor,
-                playGridBtnSize: 200,
-                horizontalCellSpacing: 32,
-                verticalCellSpacing: 32
-            )
-    }
-}
-
-class DefaultsTemplateSix: DefaultsTemplate {
-    init() {
-        super
-            .init(
-                activitiesBackgroundColor: LekaActivityUIExplorerAsset.Colors.lightGray.swiftUIColor,
-                playGridBtnSize: 240,
-                horizontalCellSpacing: 100,
-                verticalCellSpacing: 32
-            )
-    }
-}
-
-class XylophoneTemplatesDefaults: DefaultsTemplate {
+public class XylophoneDefaults: BaseDefaults {
+    var defaultTileWidth: CGFloat = 180
+    var defaultTilesSpacing: CGFloat = 32
+    var defaultTilesScaleFeedback: CGFloat = 0.98
+    var defaultTilesRotationFeedback: Double = -1
+    var defaultTileColors: [Color] = [.green, .purple, .red, .yellow, .blue]
     // MARK: - Answering Tiles
-    @Published var tileWidth: CGFloat = 180
-    @Published var tilesSpacing: CGFloat = 32
-    @Published var tilesScaleFeedback: CGFloat = 0.98
-    @Published var tilesRotationFeedback: Double = -1
-    @Published var colors: [Color] = [.green, .purple, .red, .yellow, .blue]
+    @Published var customTileWidth: CGFloat
+    @Published var customTilesSpacing: CGFloat
+    @Published var customTilesScaleFeedback: CGFloat
+    @Published var customTilesRotationFeedback: Double
+    @Published var customTileColors: [Color]
 
-    init() {
+    init(
+        defaultTileWidth: CGFloat,
+        defaultTilesSpacing: CGFloat,
+        defaultTilesScaleFeedback: CGFloat,
+        defaultTilesRotationFeedback: Double,
+        defaultTileColors: [Color]
+    ) {
+        self.defaultTileWidth = defaultTileWidth
+        self.defaultTilesSpacing = defaultTilesSpacing
+        self.defaultTilesScaleFeedback = defaultTilesScaleFeedback
+        self.defaultTilesRotationFeedback = defaultTilesRotationFeedback
+        self.defaultTileColors = defaultTileColors
+
+        self.customTileWidth = defaultTileWidth
+        self.customTilesSpacing = defaultTilesSpacing
+        self.customTilesScaleFeedback = defaultTilesScaleFeedback
+        self.customTilesRotationFeedback = defaultTilesRotationFeedback
+        self.customTileColors = defaultTileColors
         super
             .init(
-                activitiesBackgroundColor: LekaActivityUIExplorerAsset.Colors.lightGray.swiftUIColor,
-                playGridBtnSize: 0,
-                horizontalCellSpacing: 0,
-                verticalCellSpacing: 0
+                defaultAnswerSize: 0,
+                defaultHorizontalSpacing: 0,
+                defaultVerticalSpacing: 0
             )
     }
 }
+
+// swiftlint:disable identifier_name
+
+public enum TouchToSelect {
+    public static var one = BaseDefaults(
+        defaultAnswerSize: 300, defaultHorizontalSpacing: 32, defaultVerticalSpacing: 32)
+    public static var two = BaseDefaults(
+        defaultAnswerSize: 300, defaultHorizontalSpacing: 32, defaultVerticalSpacing: 32)
+    public static var three = BaseDefaults(
+        defaultAnswerSize: 260, defaultHorizontalSpacing: 32, defaultVerticalSpacing: 32)
+    public static var threeInline = BaseDefaults(
+        defaultAnswerSize: 300, defaultHorizontalSpacing: 60, defaultVerticalSpacing: 32)
+    public static var four = BaseDefaults(
+        defaultAnswerSize: 240, defaultHorizontalSpacing: 200, defaultVerticalSpacing: 40)
+    public static var fourInline = BaseDefaults(
+        defaultAnswerSize: 200, defaultHorizontalSpacing: 70, defaultVerticalSpacing: 32)
+    public static var five = BaseDefaults(
+        defaultAnswerSize: 200, defaultHorizontalSpacing: 32, defaultVerticalSpacing: 32)
+    public static var six = BaseDefaults(
+        defaultAnswerSize: 300, defaultHorizontalSpacing: 100, defaultVerticalSpacing: 32)
+}
+
+public enum ListenThenTouchToSelect {
+    public static var one = ListenThenTouchToSelectDefaults(
+        defaultAnswerSize: 300, defaultHorizontalSpacing: 32, defaultVerticalSpacing: 32, defaultListenButtonSize: 200)
+    public static var two = ListenThenTouchToSelectDefaults(
+        defaultAnswerSize: 300, defaultHorizontalSpacing: 32, defaultVerticalSpacing: 32, defaultListenButtonSize: 200)
+    public static var three = ListenThenTouchToSelectDefaults(
+        defaultAnswerSize: 230, defaultHorizontalSpacing: 32, defaultVerticalSpacing: 32, defaultListenButtonSize: 200)
+    public static var threeInline = ListenThenTouchToSelectDefaults(
+        defaultAnswerSize: 220, defaultHorizontalSpacing: 60, defaultVerticalSpacing: 32, defaultListenButtonSize: 200)
+    public static var four = ListenThenTouchToSelectDefaults(
+        defaultAnswerSize: 240, defaultHorizontalSpacing: 200, defaultVerticalSpacing: 40, defaultListenButtonSize: 200)
+    public static var fourInline = ListenThenTouchToSelectDefaults(
+        defaultAnswerSize: 160, defaultHorizontalSpacing: 50, defaultVerticalSpacing: 32, defaultListenButtonSize: 200)
+    public static var six = ListenThenTouchToSelectDefaults(
+        defaultAnswerSize: 200, defaultHorizontalSpacing: 80, defaultVerticalSpacing: 32, defaultListenButtonSize: 200)
+}
+
+public enum Misc {
+    public static var xylophone = XylophoneDefaults(
+        defaultTileWidth: 180, defaultTilesSpacing: 32, defaultTilesScaleFeedback: 0.98,
+        defaultTilesRotationFeedback: -1, defaultTileColors: [.green, .purple, .red, .yellow, .blue])
+}
+
+// swiftlint:enable identifier_name

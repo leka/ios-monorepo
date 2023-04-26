@@ -190,7 +190,7 @@ struct TemplatePreview_ButtonStyle: ButtonStyle {
 
 // MARK: - Xylophone Tile Answer Button Style (Gameplay)
 struct XylophoneTileButtonStyle: ButtonStyle {
-    @EnvironmentObject var xylophoneDefaults: XylophoneTemplatesDefaults
+    @EnvironmentObject var xylophoneDefaults: XylophoneDefaults
     var color: Color
     func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
@@ -211,13 +211,13 @@ struct XylophoneTileButtonStyle: ButtonStyle {
                     .stroke(.black.opacity(configuration.isPressed ? 0.3 : 0), lineWidth: 20)
             }
             .clipShape(RoundedRectangle(cornerRadius: 7, style: .circular))
-            .frame(width: xylophoneDefaults.tileWidth, height: setSizeFromColor())
+            .frame(width: xylophoneDefaults.customTileWidth, height: setSizeFromColor())
             .scaleEffect(
-                configuration.isPressed ? xylophoneDefaults.tilesScaleFeedback : 1,
+                configuration.isPressed ? xylophoneDefaults.customTilesScaleFeedback : 1,
                 anchor: .center
             )
             .rotationEffect(
-                Angle(degrees: configuration.isPressed ? xylophoneDefaults.tilesRotationFeedback : 0),
+                Angle(degrees: configuration.isPressed ? xylophoneDefaults.customTilesRotationFeedback : 0),
                 anchor: .center)
     }
 

@@ -8,13 +8,13 @@ struct XylophoneLayout: View {
 
     @EnvironmentObject var gameEngine: GameEngine
     @EnvironmentObject var defaults: GameLayoutTemplatesDefaults
-    @EnvironmentObject var templateDefaults: XylophoneTemplatesDefaults
+    @EnvironmentObject var xylophoneDefaults: XylophoneDefaults
 
     @State private var showAlert: Bool = false
 
     var body: some View {
-        HStack(spacing: templateDefaults.tilesSpacing) {
-            ForEach($templateDefaults.colors, id: \.self) { color in
+        HStack(spacing: xylophoneDefaults.customTilesSpacing) {
+            ForEach($xylophoneDefaults.customTileColors, id: \.self) { color in
                 XylophoneTile(color: color)
             }
         }

@@ -6,19 +6,19 @@ import SwiftUI
 
 struct SixAnswersLayout: View {
 
-    @EnvironmentObject var templateDefaults: DefaultsTemplateSix
+    @ObservedObject var templateDefaults: BaseDefaults
 
     var body: some View {
         Grid(
-            horizontalSpacing: templateDefaults.horizontalCellSpacing,
-            verticalSpacing: templateDefaults.verticalCellSpacing
+            horizontalSpacing: templateDefaults.customHorizontalSpacing,
+            verticalSpacing: templateDefaults.customVerticalSpacing
         ) {
             GridRow {
                 ForEach(0..<3) { answer in
                     CircularAnswerButton(answer: answer)
                         .frame(
-                            width: templateDefaults.playGridBtnSize,
-                            height: templateDefaults.playGridBtnSize
+                            width: templateDefaults.customAnswerSize,
+                            height: templateDefaults.customAnswerSize
                         )
                 }
             }
@@ -26,8 +26,8 @@ struct SixAnswersLayout: View {
                 ForEach(3..<6) { answer in
                     CircularAnswerButton(answer: answer)
                         .frame(
-                            width: templateDefaults.playGridBtnSize,
-                            height: templateDefaults.playGridBtnSize
+                            width: templateDefaults.customAnswerSize,
+                            height: templateDefaults.customAnswerSize
                         )
                 }
             }

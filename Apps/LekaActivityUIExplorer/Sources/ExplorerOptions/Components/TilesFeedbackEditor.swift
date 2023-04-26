@@ -8,7 +8,7 @@ struct TilesFeedbackEditor: View {
 
     @EnvironmentObject var gameEngine: GameEngine
     @EnvironmentObject var defaults: GameLayoutTemplatesDefaults
-    @EnvironmentObject var xylophoneDefaults: XylophoneTemplatesDefaults
+    @ObservedObject var templateDefaults: XylophoneDefaults
 
     var body: some View {
         Section {
@@ -26,8 +26,8 @@ struct TilesFeedbackEditor: View {
                 Button(
                     action: {
                         withAnimation(.easeIn(duration: 0.3)) {
-                            xylophoneDefaults.tilesRotationFeedback = -1
-                            xylophoneDefaults.tilesScaleFeedback = 0.98
+                            templateDefaults.customTilesRotationFeedback = templateDefaults.defaultTilesRotationFeedback
+                            templateDefaults.customTilesScaleFeedback = templateDefaults.defaultTilesScaleFeedback
                         }
                     },
                     label: {
@@ -45,7 +45,7 @@ struct TilesFeedbackEditor: View {
     private var rotationAngleSlider: some View {
         LabeledContent {
             Slider(
-                value: $xylophoneDefaults.tilesRotationFeedback,
+                value: $templateDefaults.customTilesRotationFeedback,
                 in: -10...10,
                 step: 1,
                 label: {
@@ -55,7 +55,7 @@ struct TilesFeedbackEditor: View {
                     Text("•")
                 },
                 maximumValueLabel: {
-                    Text("\(Int(xylophoneDefaults.tilesRotationFeedback))")
+                    Text("\(Int(templateDefaults.customTilesRotationFeedback))")
                 }
             )
             .frame(maxWidth: 260)
@@ -70,7 +70,7 @@ struct TilesFeedbackEditor: View {
     private var scaleSlider: some View {
         LabeledContent {
             Slider(
-                value: $xylophoneDefaults.tilesScaleFeedback,
+                value: $templateDefaults.customTilesScaleFeedback,
                 in: 0.5...1.2,
                 step: 0.01,
                 label: {
@@ -80,7 +80,7 @@ struct TilesFeedbackEditor: View {
                     Text("•")
                 },
                 maximumValueLabel: {
-                    Text(String(format: "%.2f", xylophoneDefaults.tilesScaleFeedback))
+                    Text(String(format: "%.2f", templateDefaults.customTilesScaleFeedback))
                 }
             )
             .frame(maxWidth: 260)
