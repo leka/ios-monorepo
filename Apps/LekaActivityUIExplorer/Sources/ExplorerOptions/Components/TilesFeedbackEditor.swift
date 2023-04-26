@@ -26,6 +26,7 @@ struct TilesFeedbackEditor: View {
                 Button(
                     action: {
                         withAnimation(.easeIn(duration: 0.3)) {
+                            // TODO: (@Macteuts) Come up with a solution to revert to contextual defaults
                             xylophoneDefaults.tilesRotationFeedback = -1
                             xylophoneDefaults.tilesScaleFeedback = 0.98
                         }
