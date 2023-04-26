@@ -7,9 +7,6 @@ import SwiftUI
 
 class GameLayoutTemplatesDefaults: ObservableObject {
 
-    // MARK: - Game BG
-    @Published var activitiesBackgroundColor: Color = LekaActivityUIExplorerAsset.Colors.lightGray.swiftUIColor  // DELETE
-
     // MARK: - Step Instruction Button
     @Published var fontStepInstructionBtn: Font = .system(size: 22, weight: .regular)
     @Published var frameStepInstructionBtn: CGSize = CGSize(width: 640, height: 85)
@@ -28,19 +25,8 @@ class GameLayoutTemplatesDefaults: ObservableObject {
     @Published var headerSpacing: CGFloat = 20
     @Published var headerPadding: CGFloat = 30
     @Published var semi17: Font = .system(size: 17, weight: .semibold)
-
-    // MARK: - Answering Buttons
-    @Published var playGridBtnSize: CGFloat = 200  // DELETE
-    @Published var playGridBtnTrimLineWidth: CGFloat = 6  // DELETE
-    // Xylophone
-    @Published var xylophoneTileWidth: CGFloat = 180  // DELETE
-    @Published var xylophoneTilesSpacing: CGFloat = 32  // DELETE
-    @Published var xylophoneTilesScaleFeedback: CGFloat = 0.98  // DELETE
-    @Published var xylophoneTilesRotationFeedback: Double = -1  // DELETE
-
-    // MARK: - Answers Layouts
-    @Published var horizontalCellSpacing: CGFloat = 32  // DELETE
-    @Published var verticalCellSpacing: CGFloat = 32  // DELETE
+    // Answers global properties
+    @Published var playGridBtnTrimLineWidth: CGFloat = 6
 
     // MARK: - Activity's Instructions Pop-Up
     @Published var reg18: Font = .system(size: 18, weight: .regular)

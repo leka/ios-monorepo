@@ -6,11 +6,10 @@ import SwiftUI
 
 struct TwoAnswersLayout: View {
 
-    @EnvironmentObject var defaults: GameLayoutTemplatesDefaults
-    @StateObject var templateDefaults = DefaultsTemplateTwo()
+    @EnvironmentObject var templateDefaults: DefaultsTemplateTwo
 
     var body: some View {
-        HStack(spacing: defaults.horizontalCellSpacing) {
+        HStack(spacing: templateDefaults.horizontalCellSpacing) {
             ForEach(0..<2) { answer in
                 CircularAnswerButton(answer: answer)
                     .frame(

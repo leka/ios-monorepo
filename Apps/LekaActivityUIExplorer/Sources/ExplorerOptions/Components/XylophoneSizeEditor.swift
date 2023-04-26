@@ -1,20 +1,24 @@
-// Leka - iOS Monorepo
-// Copyright 2023 APF France handicap
-// SPDX-License-Identifier: Apache-2.0
+//
+//  XylophoneSizeEditor.swift
+//  LekaActivityUIExplorer
+//
+//  Created by Mathieu Jeannot on 26/4/23.
+//  Copyright © 2023 leka.io. All rights reserved.
+//
 
 import SwiftUI
 
-struct SizeEditor: View {
+struct XylophoneSizeEditor: View {
 
     @EnvironmentObject var gameEngine: GameEngine
     @EnvironmentObject var defaults: GameLayoutTemplatesDefaults
-    @ObservedObject var templateDefaults: DefaultsTemplate
+    @ObservedObject var templateDefaults: XylophoneTemplatesDefaults
 
     // Store Default values
 
     var body: some View {
         Section {
-            sizeSlider
+            tileWidthSlider
         } header: {
             Text("Taille des réponses")
                 .foregroundColor(.accentColor)
@@ -25,7 +29,7 @@ struct SizeEditor: View {
                 Button(
                     action: {
                         withAnimation(.easeIn(duration: 0.3)) {
-                            templateDefaults.playGridBtnSize = 200  // Come up with a solution here
+                            templateDefaults.tileWidth = 180
                         }
                     },
                     label: {
@@ -40,12 +44,12 @@ struct SizeEditor: View {
         }
     }
 
-    private var sizeSlider: some View {
+    private var tileWidthSlider: some View {
         LabeledContent {
             Slider(
-                value: $templateDefaults.playGridBtnSize,
-                in: 100...300,
-                step: 10,
+                value: $templateDefaults.tileWidth,
+                in: 80...300,
+                step: 1,
                 label: {
                     // Unnecessary
                 },
@@ -53,13 +57,13 @@ struct SizeEditor: View {
                     Text("•")
                 },
                 maximumValueLabel: {
-                    Text("\(Int(templateDefaults.playGridBtnSize))")
+                    Text("\(Int(templateDefaults.tileWidth))")
                 }
             )
             .frame(maxWidth: 260)
             .tint(LekaActivityUIExplorerAsset.Colors.lekaSkyBlue.swiftUIColor)
         } label: {
-            Text("Taille")
+            Text("Largeur")
                 .foregroundColor(LekaActivityUIExplorerAsset.Colors.lekaDarkGray.swiftUIColor)
                 .padding(.leading, 20)
         }

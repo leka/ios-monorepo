@@ -6,11 +6,10 @@ import SwiftUI
 
 struct FourAnswersLayoutInline: View {
 
-    @EnvironmentObject var defaults: GameLayoutTemplatesDefaults
-    @StateObject var templateDefaults = DefaultsTemplateFourInline()
+    @EnvironmentObject var templateDefaults: DefaultsTemplateFourInline
 
     var body: some View {
-        HStack(spacing: defaults.horizontalCellSpacing) {
+        HStack(spacing: templateDefaults.horizontalCellSpacing) {
             ForEach(0..<4) { answer in
                 CircularAnswerButton(answer: answer)
                     .frame(

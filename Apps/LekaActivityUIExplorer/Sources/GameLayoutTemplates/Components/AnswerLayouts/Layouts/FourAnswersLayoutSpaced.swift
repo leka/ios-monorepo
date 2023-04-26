@@ -6,20 +6,23 @@ import SwiftUI
 
 struct FourAnswersLayoutSpaced: View {
 
-    @EnvironmentObject var defaults: GameLayoutTemplatesDefaults
+    @EnvironmentObject var templateDefaults: DefaultsTemplateFour
 
     // TODO: (@Macteuts) - Update this when this view is used (defaults etc...)
 
     var body: some View {
-        Grid(horizontalSpacing: defaults.horizontalCellSpacing, verticalSpacing: defaults.verticalCellSpacing) {
+        Grid(
+            horizontalSpacing: templateDefaults.horizontalCellSpacing,
+            verticalSpacing: templateDefaults.verticalCellSpacing
+        ) {
             GridRow {
                 CircularAnswerButton(answer: 0)
-                Color.clear.frame(width: defaults.playGridBtnSize, height: 0)
+                Color.clear.frame(width: templateDefaults.playGridBtnSize, height: 0)
                 CircularAnswerButton(answer: 1)
             }
             GridRow {
                 CircularAnswerButton(answer: 2)
-                Color.clear.frame(width: defaults.playGridBtnSize, height: 0)
+                Color.clear.frame(width: templateDefaults.playGridBtnSize, height: 0)
                 CircularAnswerButton(answer: 3)
             }
         }

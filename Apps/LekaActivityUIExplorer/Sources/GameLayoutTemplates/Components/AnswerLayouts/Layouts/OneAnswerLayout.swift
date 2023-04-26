@@ -6,8 +6,7 @@ import SwiftUI
 
 struct OneAnswerLayout: View {
 
-    @EnvironmentObject var defaults: GameLayoutTemplatesDefaults
-    @StateObject var templateDefaults = DefaultsTemplateOne()
+    @EnvironmentObject var templateDefaults: DefaultsTemplateOne
 
     var body: some View {
         HStack {

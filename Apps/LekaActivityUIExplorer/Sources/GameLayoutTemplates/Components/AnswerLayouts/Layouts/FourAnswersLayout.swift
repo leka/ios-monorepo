@@ -6,11 +6,13 @@ import SwiftUI
 
 struct FourAnswersLayout: View {
 
-    @EnvironmentObject var defaults: GameLayoutTemplatesDefaults
-    @StateObject var templateDefaults = DefaultsTemplateFour()
+    @EnvironmentObject var templateDefaults: DefaultsTemplateFour
 
     var body: some View {
-        Grid(horizontalSpacing: defaults.horizontalCellSpacing, verticalSpacing: defaults.verticalCellSpacing) {
+        Grid(
+            horizontalSpacing: templateDefaults.horizontalCellSpacing,
+            verticalSpacing: templateDefaults.verticalCellSpacing
+        ) {
             GridRow {
                 CircularAnswerButton(answer: 0)
                     .frame(
