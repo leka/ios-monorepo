@@ -6,35 +6,35 @@ import SwiftUI
 
 struct FourAnswersLayout: View {
 
-    @EnvironmentObject var templateDefaults: DefaultsTemplateFour
+    @ObservedObject var templateDefaults: BaseDefaults
 
     var body: some View {
         Grid(
-            horizontalSpacing: templateDefaults.horizontalCellSpacing,
-            verticalSpacing: templateDefaults.verticalCellSpacing
+            horizontalSpacing: templateDefaults.customHorizontalSpacing,
+            verticalSpacing: templateDefaults.customVerticalSpacing
         ) {
             GridRow {
                 CircularAnswerButton(answer: 0)
                     .frame(
-                        width: templateDefaults.playGridBtnSize,
-                        height: templateDefaults.playGridBtnSize
+                        width: templateDefaults.customAnswerSize,
+                        height: templateDefaults.customAnswerSize
                     )
                 CircularAnswerButton(answer: 1)
                     .frame(
-                        width: templateDefaults.playGridBtnSize,
-                        height: templateDefaults.playGridBtnSize
+                        width: templateDefaults.customAnswerSize,
+                        height: templateDefaults.customAnswerSize
                     )
             }
             GridRow {
                 CircularAnswerButton(answer: 2)
                     .frame(
-                        width: templateDefaults.playGridBtnSize,
-                        height: templateDefaults.playGridBtnSize
+                        width: templateDefaults.customAnswerSize,
+                        height: templateDefaults.customAnswerSize
                     )
                 CircularAnswerButton(answer: 3)
                     .frame(
-                        width: templateDefaults.playGridBtnSize,
-                        height: templateDefaults.playGridBtnSize
+                        width: templateDefaults.customAnswerSize,
+                        height: templateDefaults.customAnswerSize
                     )
             }
         }

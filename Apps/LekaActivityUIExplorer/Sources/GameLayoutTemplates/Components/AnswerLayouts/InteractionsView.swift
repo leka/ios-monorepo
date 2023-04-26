@@ -8,6 +8,7 @@ struct InteractionsView: View {
 
     @EnvironmentObject var gameEngine: GameEngine
     @EnvironmentObject var configuration: GameLayoutTemplatesConfigurations
+    @ObservedObject var templateDefaults: BaseDefaults
 
     var body: some View {
         VStack {
@@ -27,29 +28,29 @@ struct InteractionsView: View {
                     Spacer()
                     Group {
                         if gameEngine.allAnswers.count == 1 {
-                            OneAnswerLayout()
+                            OneAnswerLayout(templateDefaults: templateDefaults)
                         } else if gameEngine.allAnswers.count == 2 {
-                            TwoAnswersLayout()
+                            TwoAnswersLayout(templateDefaults: templateDefaults)
                         } else if gameEngine.allAnswers.count == 3 {
-                            switch configuration.preferred3AnswersLayout {
-                                case .inline: ThreeAnswersLayoutInline()
-                                default: ThreeAnswersLayout()
+                            if configuration.preferred3AnswersLayout == .inline {
+                                ThreeAnswersLayoutInline(templateDefaults: templateDefaults)
+                            } else {
+                                ThreeAnswersLayout(templateDefaults: templateDefaults)
                             }
                         } else if gameEngine.allAnswers.count == 4 {
-                            switch configuration.preferred4AnswersLayout {
-                                case .inline: FourAnswersLayoutInline()
-                                // case .spaced: FourAnswersLayoutSpaced()
-                                default: FourAnswersLayout()
+                            if configuration.preferred4AnswersLayout == .inline {
+                                FourAnswersLayoutInline(templateDefaults: templateDefaults)
+                            } else {
+                                FourAnswersLayout(templateDefaults: templateDefaults)
                             }
                         } else if gameEngine.allAnswers.count == 5 {
-                            FiveAnswersLayout()
+                            FiveAnswersLayout(templateDefaults: templateDefaults)
                         } else if gameEngine.allAnswers.count == 6 {
-                            SixAnswersLayout()
+                            SixAnswersLayout(templateDefaults: templateDefaults)
                         } else {
                             Text("Sélectionner un modèle")
                         }
                     }
-                    // .offset(x: gameEngine.currentActivity.activityType == "listen_then_touch_to_select" ? -120 : 0)
                     Spacer()
                 }
             }

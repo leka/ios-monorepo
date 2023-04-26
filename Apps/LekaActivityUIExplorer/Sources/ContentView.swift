@@ -12,81 +12,98 @@ struct ContentView: View {
     @EnvironmentObject var configuration: GameLayoutTemplatesConfigurations
 
     // Templates defaults
-    @StateObject var xylophoneDefaults = XylophoneTemplatesDefaults()
-    @StateObject var oneDefaults = DefaultsTemplateOne()
-    @StateObject var twoDefaults = DefaultsTemplateTwo()
-    @StateObject var threeDefaults = DefaultsTemplateThree()
-    @StateObject var threeInlineDefaults = DefaultsTemplateThreeInline()
-    @StateObject var fourDefaults = DefaultsTemplateFour()
-    @StateObject var fourInlineDefaults = DefaultsTemplateFourInline()
-    @StateObject var fiveDefaults = DefaultsTemplateFive()
-    @StateObject var sixDefaults = DefaultsTemplateSix()
+    @StateObject var xylophoneDefaults = Misc.xylophone
 
     @State private var showInstructionModal: Bool = false
     @State private var navigateToConfigurator: Bool = false
     @State private var showOptions: Bool = false
 
     var body: some View {
-        NavigationSplitView(columnVisibility: $navigator.sidebarVisibility) {
-            SidebarView()
-        } detail: {
-            ZStack {
+        ZStack {
+            NavigationSplitView(columnVisibility: $navigator.sidebarVisibility) {
+                SidebarView()
+            } detail: {
                 GameView(templateDefaults: relevantDefaultsSet())
-                Color.black
-                    .opacity(showOptions ? 0.2 : 0.0)
-                    .edgesIgnoringSafeArea(.all)
-                    .onTapGesture {
-                        withAnimation(.easeIn(duration: 0.4)) { showOptions = false }
+                    .navigationBarTitleDisplayMode(.inline)
+                    .navigationBarBackButtonHidden()
+                    .toolbar {
+                        ToolbarItem(placement: .principal) { navigationTitleView }
+                        ToolbarItemGroup(placement: .navigationBarTrailing) { topBarTrailingItems }
                     }
-                Group {
-                    if showOptions {
-                        ExplorerOptionsPanel(templateDefaults: relevantDefaultsSet(), closePanel: $showOptions)
-                            .transition(.move(edge: .trailing))
+                    .sheet(isPresented: $showInstructionModal) {
+                        CurrentActivityInstructionView()
                     }
+            }
+            Color.black
+                .opacity(showOptions ? 0.2 : 0.0)
+                .edgesIgnoringSafeArea(.all)
+                .onTapGesture {
+                    withAnimation(.easeIn(duration: 0.4)) { showOptions = false }
                 }
-                .animation(.easeIn(duration: 0.4), value: showOptions)
-            }
-            .navigationBarTitleDisplayMode(.inline)
-            .navigationBarBackButtonHidden()
-            .toolbar {
-                ToolbarItem(placement: .principal) { navigationTitleView }
-                ToolbarItemGroup(placement: .navigationBarTrailing) { topBarTrailingItems }
-            }
-            .sheet(isPresented: $showInstructionModal) {
-                CurrentActivityInstructionView()
+            Group {
+                if showOptions {
+                    ExplorerOptionsPanel(
+                        templateDefaults: relevantDefaultsSet(),
+                        xylophoneDefaults: xylophoneDefaults,
+                        closePanel: $showOptions
+                    )
+                    .transition(.move(edge: .trailing))
+                }
             }
         }
+        .animation(.easeIn(duration: 0.4), value: showOptions)
         .navigationSplitViewStyle(.prominentDetail)
-        .environmentObject(oneDefaults)
-        .environmentObject(twoDefaults)
-        .environmentObject(threeDefaults)
-        .environmentObject(threeInlineDefaults)
-        .environmentObject(fourDefaults)
-        .environmentObject(fourInlineDefaults)
-        .environmentObject(fiveDefaults)
-        .environmentObject(sixDefaults)
         .environmentObject(xylophoneDefaults)
     }
 
-    private func relevantDefaultsSet() -> DefaultsTemplate {
-        if gameEngine.allAnswers.count == 1 {
-            return oneDefaults
-        } else if gameEngine.allAnswers.count == 2 {
-            return twoDefaults
+    private func relevantDefaultsSet() -> BaseDefaults {
+        guard gameEngine.currentActivity.activityType != "listen_then_touch_to_select" else {
+            return relevantListenThenTouchToSelectDefaults()
+        }
+        return relevantTouchToSelectDefaults()
+    }
+
+    private func relevantTouchToSelectDefaults() -> BaseDefaults {
+        guard gameEngine.allAnswers.count >= 2 else {
+            return TouchToSelect.one
+        }
+        if gameEngine.allAnswers.count == 2 {
+            return TouchToSelect.two
         } else if gameEngine.allAnswers.count == 3 {
-            switch configuration.preferred3AnswersLayout {
-                case .inline: return threeInlineDefaults
-                default: return threeDefaults
+            guard configuration.preferred3AnswersLayout == .inline else {
+                return TouchToSelect.three
             }
+            return TouchToSelect.threeInline
         } else if gameEngine.allAnswers.count == 4 {
-            switch configuration.preferred4AnswersLayout {
-                case .inline: return fourInlineDefaults
-                default: return fourDefaults
+            guard configuration.preferred4AnswersLayout == .inline else {
+                return TouchToSelect.four
             }
+            return TouchToSelect.fourInline
         } else if gameEngine.allAnswers.count == 5 {
-            return fiveDefaults
+            return TouchToSelect.five
         } else {
-            return sixDefaults
+            return TouchToSelect.six
+        }
+    }
+
+    private func relevantListenThenTouchToSelectDefaults() -> BaseDefaults {
+        guard gameEngine.allAnswers.count >= 2 else {
+            return TouchToSelect.one
+        }
+        if gameEngine.allAnswers.count == 2 {
+            return ListenThenTouchToSelect.two
+        } else if gameEngine.allAnswers.count == 3 {
+            guard configuration.preferred3AnswersLayout == .inline else {
+                return ListenThenTouchToSelect.three
+            }
+            return ListenThenTouchToSelect.threeInline
+        } else if gameEngine.allAnswers.count == 4 {
+            guard configuration.preferred4AnswersLayout == .inline else {
+                return ListenThenTouchToSelect.four
+            }
+            return ListenThenTouchToSelect.fourInline
+        } else {
+            return ListenThenTouchToSelect.six
         }
     }
 

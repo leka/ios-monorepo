@@ -6,7 +6,6 @@ import SwiftUI
 
 @main
 struct LekaActivityUIExplorerApp: App {
-
     @StateObject var navigator = NavigationManager()
     @StateObject var gameEngine = GameEngine()
     @StateObject var defaults = GameLayoutTemplatesDefaults()
