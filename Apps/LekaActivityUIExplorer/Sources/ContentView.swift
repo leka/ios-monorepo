@@ -74,14 +74,16 @@ struct ContentView: View {
         } else if gameEngine.allAnswers.count == 2 {
             return twoDefaults
         } else if gameEngine.allAnswers.count == 3 {
-            switch configuration.preferred3AnswersLayout {
-                case .inline: return threeInlineDefaults
-                default: return threeDefaults
+            if configuration.preferred3AnswersLayout == .inline {
+                return threeInlineDefaults
+            } else {
+                return threeDefaults
             }
         } else if gameEngine.allAnswers.count == 4 {
-            switch configuration.preferred4AnswersLayout {
-                case .inline: return fourInlineDefaults
-                default: return fourDefaults
+            if configuration.preferred4AnswersLayout == .inline {
+                return fourInlineDefaults
+            } else {
+                return fourDefaults
             }
         } else if gameEngine.allAnswers.count == 5 {
             return fiveDefaults

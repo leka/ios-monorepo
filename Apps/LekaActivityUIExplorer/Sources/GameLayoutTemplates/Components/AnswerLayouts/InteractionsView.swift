@@ -31,15 +31,16 @@ struct InteractionsView: View {
                         } else if gameEngine.allAnswers.count == 2 {
                             TwoAnswersLayout()
                         } else if gameEngine.allAnswers.count == 3 {
-                            switch configuration.preferred3AnswersLayout {
-                                case .inline: ThreeAnswersLayoutInline()
-                                default: ThreeAnswersLayout()
+                            if configuration.preferred3AnswersLayout == .inline {
+                                ThreeAnswersLayoutInline()
+                            } else {
+                                ThreeAnswersLayout()
                             }
                         } else if gameEngine.allAnswers.count == 4 {
-                            switch configuration.preferred4AnswersLayout {
-                                case .inline: FourAnswersLayoutInline()
-                                // case .spaced: FourAnswersLayoutSpaced()
-                                default: FourAnswersLayout()
+                            if configuration.preferred4AnswersLayout == .inline {
+                                FourAnswersLayoutInline()
+                            } else {
+                                FourAnswersLayout()
                             }
                         } else if gameEngine.allAnswers.count == 5 {
                             FiveAnswersLayout()
