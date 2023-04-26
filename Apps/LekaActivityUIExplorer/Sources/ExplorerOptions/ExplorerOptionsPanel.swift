@@ -45,11 +45,9 @@ struct ExplorerOptionsPanel: View {
                             }
                             if gameEngine.currentActivity.activityType == "xylophone" {
                                 XylophoneSpacingEditor(templateDefaults: xylophoneDefaults)
+                                TilesFeedbackEditor()
                             } else if gameEngine.allAnswers.count > 1 {
                                 SpacingEditor(templateDefaults: templateDefaults)
-                            }
-                            if gameEngine.currentActivity.activityType == "xylophone" {
-                                TilesFeedbackEditor()
                             }
                         }
                         .padding(.top, 6)
