@@ -4,7 +4,11 @@
 
 ## About
 
-This monorepo contains everything iOS/iPadOS related.
+This monorepo contains everything iOS/iPadOS/macOS related, including:
+
+- iPadOS apps available on the App Store
+- iPadOS tools available only for internal use
+- macOS apps and tools available only for internal use
 
 ## How to
 
@@ -40,6 +44,30 @@ tuist edit
 ```
 
 See tuist documentation: <https://docs.tuist.io/tutorial/get-started>
+
+## `TUIST_*` generation option
+
+Tuist allows for "generation-time configuration" (see documentation for more information: https://docs.tuist.io/guides/environment).
+
+We are leveraging the feature with different options:
+
+- `TUIST_TURN_OFF_LINTERS` - turns off SwiftLint and swift-format, useful for CI or rapid development
+- `TUIST_GENERATE_MODULES_AS_FRAMEWORKS_FOR_DEBUG` - generates modules as frameworks (instead of static libraries), allowing developers to use more Xcode features such as Canvas to preview SwiftUI Views
+- `TUIST_GENERATE_MAC_OS_APPS` - generates only available macOS applications
+
+Example command:
+
+```bash
+TUIST_GENERATE_MODULES_AS_FRAMEWORKS_FOR_DEBUG=TRUE \
+TUIST_GENERATE_MAC_OS_APPS=TRUE \
+tuist generate
+```
+
+## Example projects
+
+Different examples apps/tools (iOS, macOS, cli, module) are available as reference.
+
+For more information, see [`Examples`](./Examples/) directory.
 
 ## License
 

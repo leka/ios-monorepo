@@ -1,0 +1,51 @@
+// Leka - iOS Monorepo
+// Copyright 2023 APF France handicap
+// SPDX-License-Identifier: Apache-2.0
+
+import ProjectDescription
+
+extension Project {
+
+    public static func iOSApp(
+        name: String,
+        version: String = "1.0.0",
+        dependencies: [TargetDependency],
+        infoPlist: [String: InfoPlist.Value] = [:]
+    ) -> Project {
+        let appInfoPlist = InfoPlist.base(version: version).merging(infoPlist) { (_, new) in new }
+
+        let mainTarget = Target(
+            name: name,
+            platform: .iOS,
+            product: .app,
+            bundleId: "io.leka.apf.app.\(name)",
+            deploymentTarget: .iOS(targetVersion: "16.0", devices: .ipad),
+            infoPlist: .extendingDefault(with: appInfoPlist),
+            sources: ["Sources/**"],
+            resources: ["Resources/**"],
+            scripts: TargetScript.linters(),
+            dependencies: dependencies
+        )
+
+        let testTarget = Target(
+            name: "\(name)Tests",
+            platform: .iOS,
+            product: .unitTests,
+            bundleId: "io.leka.apf.app.\(name)Tests",
+            infoPlist: .default,
+            sources: ["Tests/**"],
+            resources: [],
+            scripts: TargetScript.linters(),
+            dependencies: [
+                .target(name: "\(name)")
+            ])
+
+        let targets = [mainTarget, testTarget]
+
+        return Project(
+            name: name,
+            organizationName: "leka.io",
+            targets: targets)
+    }
+
+}

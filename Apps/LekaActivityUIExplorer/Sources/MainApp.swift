@@ -21,7 +21,7 @@ struct LekaActivityUIExplorerApp: App {
                 .environmentObject(defaults)
                 .environmentObject(configuration)
                 .onAppear {
-                    gameEngine.bufferActivity = ExplorerActivity(withTemplate: 0, type: "touch_to_select")
+                  gameEngine.bufferActivity = ExplorerActivity(withTemplate: 0, type: "touch_to_select")
                         .makeActivity()
                 }
         }
