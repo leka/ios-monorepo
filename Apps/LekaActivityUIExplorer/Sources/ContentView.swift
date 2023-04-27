@@ -27,35 +27,35 @@ struct ContentView: View {
     @State private var showOptions: Bool = false
 
     var body: some View {
-        NavigationSplitView(columnVisibility: $navigator.sidebarVisibility) {
-            SidebarView()
-        } detail: {
-            ZStack {
+        ZStack {
+            NavigationSplitView(columnVisibility: $navigator.sidebarVisibility) {
+                SidebarView()
+            } detail: {
                 GameView(templateDefaults: relevantDefaultsSet())
-                Color.black
-                    .opacity(showOptions ? 0.2 : 0.0)
-                    .edgesIgnoringSafeArea(.all)
-                    .onTapGesture {
-                        withAnimation(.easeIn(duration: 0.4)) { showOptions = false }
+                    .navigationBarTitleDisplayMode(.inline)
+                    .navigationBarBackButtonHidden()
+                    .toolbar {
+                        ToolbarItem(placement: .principal) { navigationTitleView }
+                        ToolbarItemGroup(placement: .navigationBarTrailing) { topBarTrailingItems }
                     }
-                Group {
-                    if showOptions {
-                        ExplorerOptionsPanel(templateDefaults: relevantDefaultsSet(), closePanel: $showOptions)
-                            .transition(.move(edge: .trailing))
+                    .sheet(isPresented: $showInstructionModal) {
+                        CurrentActivityInstructionView()
                     }
+            }
+            Color.black
+                .opacity(showOptions ? 0.2 : 0.0)
+                .edgesIgnoringSafeArea(.all)
+                .onTapGesture {
+                    withAnimation(.easeIn(duration: 0.4)) { showOptions = false }
                 }
-                .animation(.easeIn(duration: 0.4), value: showOptions)
-            }
-            .navigationBarTitleDisplayMode(.inline)
-            .navigationBarBackButtonHidden()
-            .toolbar {
-                ToolbarItem(placement: .principal) { navigationTitleView }
-                ToolbarItemGroup(placement: .navigationBarTrailing) { topBarTrailingItems }
-            }
-            .sheet(isPresented: $showInstructionModal) {
-                CurrentActivityInstructionView()
+            Group {
+                if showOptions {
+                    ExplorerOptionsPanel(templateDefaults: relevantDefaultsSet(), closePanel: $showOptions)
+                        .transition(.move(edge: .trailing))
+                }
             }
         }
+        .animation(.easeIn(duration: 0.4), value: showOptions)
         .navigationSplitViewStyle(.prominentDetail)
         .environmentObject(oneDefaults)
         .environmentObject(twoDefaults)
