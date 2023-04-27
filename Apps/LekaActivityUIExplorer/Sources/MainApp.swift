@@ -6,12 +6,12 @@ import SwiftUI
 
 @main
 struct LekaActivityUIExplorerApp: App {
-
+    
     @StateObject var navigator = NavigationManager()
     @StateObject var gameEngine = GameEngine()
     @StateObject var defaults = GameLayoutTemplatesDefaults()
     @StateObject var configuration = GameLayoutTemplatesConfigurations()
-
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
@@ -21,7 +21,7 @@ struct LekaActivityUIExplorerApp: App {
                 .environmentObject(defaults)
                 .environmentObject(configuration)
                 .onAppear {
-                  gameEngine.bufferActivity = ExplorerActivity(withTemplate: 0, type: "touch_to_select")
+                    gameEngine.bufferActivity = ExplorerActivity(withTemplate: 0, type: "touch_to_select")
                         .makeActivity()
                 }
         }
