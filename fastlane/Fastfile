@@ -51,7 +51,7 @@ platform :ios do
     graph = JSON.parse(json)
     all_apps = graph['projects'].values.flat_map do |project|
       project['targets'].filter_map do |target|
-        target['name'] if target['product'] == 'app'
+        target['name'] if target['product'] == 'app' || target['product'] == 'unit_tests'
       end
     end
 
