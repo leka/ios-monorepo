@@ -69,22 +69,23 @@ struct ContentView: View {
     }
 
     private func relevantDefaultsSet() -> DefaultsTemplate {
+        guard !gameEngine.allAnswers.isEmpty else {
+            return oneDefaults
+        }
         if gameEngine.allAnswers.count == 1 {
             return oneDefaults
         } else if gameEngine.allAnswers.count == 2 {
             return twoDefaults
         } else if gameEngine.allAnswers.count == 3 {
-            if configuration.preferred3AnswersLayout == .inline {
-                return threeInlineDefaults
-            } else {
+            guard configuration.preferred3AnswersLayout == .inline else {
                 return threeDefaults
             }
+            return threeInlineDefaults
         } else if gameEngine.allAnswers.count == 4 {
-            if configuration.preferred4AnswersLayout == .inline {
-                return fourInlineDefaults
-            } else {
+            guard configuration.preferred4AnswersLayout == .inline else {
                 return fourDefaults
             }
+            return fourInlineDefaults
         } else if gameEngine.allAnswers.count == 5 {
             return fiveDefaults
         } else {

@@ -13,7 +13,7 @@ struct GameView: View {
 
     var body: some View {
         ZStack(alignment: .top) {
-            GameBackgroundView(defaults: templateDefaults)
+            GameBackgroundView()
 
             VStack(spacing: 0) {
                 if !gameEngine.currentActivity.stepSequence[0].isEmpty

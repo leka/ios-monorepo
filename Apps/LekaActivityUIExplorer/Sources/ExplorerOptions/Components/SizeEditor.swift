@@ -25,8 +25,7 @@ struct SizeEditor: View {
                 Button(
                     action: {
                         withAnimation(.easeIn(duration: 0.3)) {
-                            // TODO: (@Macteuts) Come up with a solution to revert to contextual defaults
-                            templateDefaults.playGridBtnSize = 200
+                            templateDefaults.playGridBtnSize = templateDefaults.defaultSize
                         }
                     },
                     label: {

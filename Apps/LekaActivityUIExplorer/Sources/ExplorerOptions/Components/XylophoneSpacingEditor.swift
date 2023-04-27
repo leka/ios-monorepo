@@ -1,10 +1,6 @@
-//
-//  XylophoneSpacingEditor.swift
-//  LekaActivityUIExplorer
-//
-//  Created by Mathieu Jeannot on 26/4/23.
-//  Copyright © 2023 leka.io. All rights reserved.
-//
+// Leka - iOS Monorepo
+// Copyright 2023 APF France handicap
+// SPDX-License-Identifier: Apache-2.0
 
 import SwiftUI
 
@@ -28,7 +24,6 @@ struct XylophoneSpacingEditor: View {
                 Button(
                     action: {
                         withAnimation(.easeIn(duration: 0.3)) {
-                            // TODO: (@Macteuts) Come up with a solution to revert to contextual defaults
                             templateDefaults.tilesSpacing = 32
                         }
                     },
