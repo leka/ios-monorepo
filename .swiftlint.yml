@@ -29,6 +29,7 @@ identifier_name:
     - lhs
     - rhs
     - i
+    - red
 
 line_length:
   warning: 130
