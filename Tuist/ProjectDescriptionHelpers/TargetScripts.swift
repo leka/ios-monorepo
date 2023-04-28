@@ -20,8 +20,8 @@ extension TargetScript {
         let turnOffLinters = Environment.turnOffLinters.getBoolean(default: false)
 
         let defaultLinters: [TargetScript] = [
-            .swiftLint,
             .swiftFormat,
+            .swiftLint,
         ]
 
         if turnOffLinters {
