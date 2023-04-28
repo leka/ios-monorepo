@@ -34,6 +34,76 @@ class DefaultsTemplate: ObservableObject {
     }
 }
 
+public class BaseDefaults: ObservableObject {
+
+    // MARK: - Provided Defaults
+
+    var defaultAnswerSize: CGFloat
+    var defaultHorizontalSpacing: CGFloat
+    var defaultVerticalSpacing: CGFloat
+
+    // MARK: - Custom
+
+    @Published var customAnswerSize: CGFloat
+    @Published var customHorizontalSpacing: CGFloat
+    @Published var customVerticalSpacing: CGFloat
+
+    init(
+        defaultAnswerSize: CGFloat,
+        defaultHorizontalSpacing: CGFloat,
+        defaultVerticalSpacing: CGFloat
+    ) {
+        self.defaultAnswerSize = defaultAnswerSize
+        self.defaultHorizontalSpacing = defaultHorizontalSpacing
+        self.defaultVerticalSpacing = defaultVerticalSpacing
+
+        self.customAnswerSize = defaultAnswerSize
+        self.customHorizontalSpacing = defaultHorizontalSpacing
+        self.customVerticalSpacing = defaultVerticalSpacing
+    }
+
+}
+
+public class ListenThenTouchToSelectDefaults: BaseDefaults {
+    var defaultListenButtonSize: CGFloat
+
+    @Published var customListenButtonSize: CGFloat
+
+    init(
+        defaultAnswerSize: CGFloat,
+        defaultHorizontalSpacing: CGFloat,
+        defaultVerticalSpacing: CGFloat,
+        defaultListenButtonSize: CGFloat  // <-- le nouveau
+    ) {
+        self.defaultListenButtonSize = defaultListenButtonSize
+        self.customListenButtonSize = defaultListenButtonSize
+        super
+            .init(
+                defaultAnswerSize: defaultAnswerSize,
+                defaultHorizontalSpacing: defaultHorizontalSpacing,
+                defaultVerticalSpacing: defaultVerticalSpacing
+            )
+    }
+
+}
+
+// swiftlint:disable identifier_name
+
+public enum ListenThenTouchToSelect {
+    public static var two = ListenThenTouchToSelectDefaults(
+        defaultAnswerSize: 10, defaultHorizontalSpacing: 30, defaultVerticalSpacing: 30, defaultListenButtonSize: 30)
+    public static var three = ListenThenTouchToSelectDefaults(
+        defaultAnswerSize: 10, defaultHorizontalSpacing: 30, defaultVerticalSpacing: 30, defaultListenButtonSize: 30)
+}
+
+public func myFunc(defaults: BaseDefaults) {
+    print(defaults.defaultAnswerSize)
+}
+
+public func mySecondFunc() {
+    myFunc(defaults: ListenThenTouchToSelect.two)
+}
+
 class DefaultsTemplateOne: DefaultsTemplate {
     init() {
         super
