@@ -161,27 +161,30 @@ platform :ios do
 
     apps = []
 
+    UI.header 'Step: Set targets to build'
     if options[:targets] == 'all'
-      UI.important 'All apps will be built'
       apps = RELEASE_BUNDLE_IDS.map { |app| File.extname(app.to_s).delete('.') }
+      UI.important 'All targets will be built:'
     else
       apps += options[:targets].split(',')
-      UI.important "The following apps will be built: #{apps}"
+      UI.important 'The following targets will be built:'
     end
+    UI.important apps.to_s
 
     build_date = Time.new.strftime('%Y_%m_%d')
 
     apps.each do |app|
-      UI.header "Generate, build & upload #{app}"
+      UI.header "Step: Generate, build & upload target: #{app}"
       Dir.chdir('..') do
-        sh('tuist', 'generate', '-n', app.to_s)
+        ENV['TUIST_TURN_OFF_LINTERS'] = 'TRUE'
+        system('tuist', 'generate', '-n', app.to_s)
       end
 
       app_id = "io.leka.apf.app.#{app}"
       app_xcodeproj = "#{ROOT_DIR}/Apps/#{app}/#{app}.xcodeproj"
 
       begin
-        if is_ci
+        if ENV['CI']
           app_store_connect_api_key(
             key_id: ENV.fetch('APP_STORE_CONNECT_API_KEY_ID', nil),
             issuer_id: ENV.fetch('APP_STORE_CONNECT_ISSUER_ID', nil),
@@ -192,6 +195,8 @@ platform :ios do
             path: 'io.leka.fastlane.keychain',
             password: ENV.fetch('FASTLANE_KEYCHAIN_PASSWORD', nil)
           )
+
+          UI.header 'Step: keychain security set-key-partition-list'
           system('security', 'set-key-partition-list', '-S', 'apple-tool:,apple:', '-s', '-k',
                  ENV.fetch('FASTLANE_KEYCHAIN_PASSWORD', nil), 'io.leka.fastlane.keychain')
         end
@@ -217,7 +222,7 @@ platform :ios do
           distribute_external: false
         )
       ensure
-        next unless is_ci
+        next unless ENV['CI']
 
         delete_keychain(
           name: 'io.leka.fastlane.keychain'
