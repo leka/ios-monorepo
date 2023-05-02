@@ -32,10 +32,10 @@ echo "SCRIPT_PATH: $SCRIPT_PATH"
 echo "ROOT_DIR: $ROOT_DIR"
 echo "SCRIPT_DIR: $SCRIPT_DIR"
 
-which swift-format
+which swiftlint
 which gxargs
 
 git diff --name-status origin/main        \
 | grep -E "^A|^M" | sed "s/^[AM]\t//g"    \
 | grep -E "\.swift\$$"                    \
-| gxargs -I '{}' -d '\n' --no-run-if-empty swiftlint --config $ROOT_DIR/.swift-format --reporter xcode $ROOT_DIR/{}
+| gxargs -I '{}' -d '\n' --no-run-if-empty swiftlint --config $ROOT_DIR/.swiftlint.yml --reporter xcode $ROOT_DIR/{}
