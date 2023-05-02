@@ -20,15 +20,18 @@ public struct RobotAdvertisingData {
     public var isCharging: Bool
     public var osVersion: String
 
-    public init?(_ advertisingData: AdvertisementData) {
-        guard let name = advertisingData.localName else { return nil }
+    public init?(_ advertisementData: AdvertisementData) {
+        guard let name = advertisementData.localName else { return nil }
 
         self.name = name
 
-        guard let serviceData = advertisingData.serviceData else {
+        guard let serviceData = advertisementData.serviceData else {
             return nil
         }
-        guard let lekaServiceData = serviceData[BLESpecs.AdvertisingData.service] else { return nil }
+
+        guard let lekaServiceData = serviceData[BLESpecs.AdvertisingData.service] else {
+            return nil
+        }
 
         battery = Int(lekaServiceData[Index.battery])
         isCharging = lekaServiceData[Index.isCharging] == 0x01
