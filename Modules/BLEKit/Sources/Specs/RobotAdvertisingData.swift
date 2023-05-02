@@ -4,7 +4,7 @@
 
 import CombineCoreBluetooth
 
-public struct AdvertisingData {
+public struct RobotAdvertisingData {
 
     private struct Index {
         static let battery = 0
