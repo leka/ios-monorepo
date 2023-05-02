@@ -8,6 +8,9 @@ opt_in_rules:
 indentation_width:
   indentation_width: 4
 
+trailing_comma:
+  mandatory_comma: true
+
 type_name:
   min_length: 4 # only warning
   max_length: # warning and error
@@ -38,7 +41,6 @@ line_length:
   ignores_interpolated_strings: true
 
 disabled_rules:
-  - trailing_comma
   - opening_brace
   - switch_case_alignment
   - closure_parameter_position
