@@ -9,7 +9,6 @@ import Foundation
 //
 enum LKCommand {
 
-    // swiftlint:disable colon
     static let startByte: UInt8 = 0x2A
     static let startByteLength: UInt8 = 0x04
     static let ledFull: UInt8 = 0x13
@@ -58,7 +57,6 @@ enum LKCommand {
 
     }
 
-    // swiftlint:enable colon
 }
 
 func checksum8(_ values: [UInt8]) -> UInt8 {
