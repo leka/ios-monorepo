@@ -9,7 +9,7 @@ public class BLEManager: ObservableObject {
     // MARK: - @Published variables
 
     // TODO(@ladislas): review published variables --> are they all needed?
-    @Published public var peripherals: [PeripheralDiscovery] = []
+    @Published public var peripheralDiscoveries: [PeripheralDiscovery] = []
     @Published public var isScanning: Bool = false
     @Published public var connectedPeripheral: Peripheral?
 
@@ -48,7 +48,10 @@ public class BLEManager: ObservableObject {
             )
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] in
-                self?.peripherals = $0
+                guard let self = self else {
+                    return
+                }
+                self.peripheralDiscoveries = $0
             })
 
         self.isScanning = centralManager.isScanning
@@ -56,7 +59,7 @@ public class BLEManager: ObservableObject {
 
     public func stopSearching() {
         scanTask?.cancel()
-        peripherals = []
+        peripheralDiscoveries = []
         self.isScanning = centralManager.isScanning
     }
 
