@@ -68,8 +68,14 @@ class ExplorerActivity: ObservableObject {
             return stepAnswers4
         } else if withTemplate == 6 {
             return type == "touch_to_select" ? stepAnswers5 : stepAnswers6
-        } else {
+        } else if withTemplate == 7 {
             return stepAnswers6
+        } else if withTemplate == 8 {
+            return stepAnswers1
+        } else if withTemplate == 9 {
+            return stepAnswers2
+        } else {
+            return stepAnswers3
         }
     }
 
@@ -90,12 +96,19 @@ class ExplorerActivity: ObservableObject {
         guard type == "xylophone" else {
             return "Touche le numéro 1"
         }
+        if type == "color_quest" {
+            return "Touche la couleur verte"
+        }
         return "Joue du xylophone avec Leka"
     }
     var stepInstructionEN: String {
         guard type == "xylophone" else {
             return "Touch the number 1"
         }
+        guard withTemplate > 10 else {
+            return "Touch the green color"
+        }
         return "Play the xylophone with Leka"
     }
+
 }
