@@ -116,6 +116,10 @@ class GameEngine: NSObject, ObservableObject {
         }
         stepInstruction = currentActivity.stepSequence[currentGroupIndex][currentStepIndex].instruction.localized()
         getCorrectAnswerIndex()
+
+        if currentActivity.activityType == "color_quest" {
+            // Show correct answer color on Leka's belt
+        }
     }
 
     // Turn answer strings to color names
