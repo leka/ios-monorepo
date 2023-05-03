@@ -27,5 +27,5 @@ class GameLayoutTemplatesConfigurations: ObservableObject {
     ]
 
     // unused for now
-    // @Published var typesOfActivity: [String] = ["touch_to_select", "listen_then_touch_to_select", "xylophone"]
+    // @Published var typesOfActivity: [String] = ["touch_to_select", "listen_then_touch_to_select", "xylophone", "color_quest"]
 }
