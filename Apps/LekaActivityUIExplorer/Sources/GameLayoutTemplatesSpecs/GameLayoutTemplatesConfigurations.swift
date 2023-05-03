@@ -21,9 +21,10 @@ class GameLayoutTemplatesConfigurations: ObservableObject {
     @Published var listenThenTouchToSelectPreviews = [
         "LayoutTemplate_1", "LayoutTemplate_2", "LayoutTemplate_3", "LayoutTemplate_3_inline",
         "LayoutTemplate_4", "LayoutTemplate_4_inline", "LayoutTemplate_6",
+        "ColorQuest_1", "ColorQuest_2", "ColorQuest_3",
     ]
     @Published var miscPreviews = [
-        "xylophoneTemplate"
+         "xylophoneTemplate"
     ]
 
     // unused for now
