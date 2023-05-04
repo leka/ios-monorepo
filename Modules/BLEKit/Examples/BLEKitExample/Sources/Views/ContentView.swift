@@ -3,14 +3,21 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import BLEKit
-import CombineCoreBluetooth
 import SwiftUI
 
 struct ContentView: View {
 
     // MARK: - Environment variables
 
-    @EnvironmentObject private var robotListViewModel: RobotListViewModel
+    @StateObject private var robotListViewModel: RobotListViewModel
+
+    // MARK: - Public functions
+
+    init(bleManager: BLEManager) {
+        // ? StateObject dependency injection pattern as described here:
+        // https://developer.apple.com/documentation/swiftui/stateobject#Initialize-state-objects-using-external-data
+        self._robotListViewModel = StateObject(wrappedValue: RobotListViewModel(bleManager: bleManager))
+    }
 
     // MARK: - Views
 
@@ -46,13 +53,14 @@ struct ContentView: View {
 
         }
         .navigationTitle("BLEKit Example App")
+        .environmentObject(robotListViewModel)
     }
 
 }
 
 struct ContentView_Previews: PreviewProvider {
+    static let bleManager = BLEManager.live()
     static var previews: some View {
-        ContentView()
-            .environmentObject(RobotListViewModel.mock())
+        ContentView(bleManager: bleManager)
     }
 }

@@ -9,17 +9,11 @@ import SwiftUI
 struct BLEKitExample: App {
 
     var bleManager: BLEManager = BLEManager.live()
-    var robotListViewModel: RobotListViewModel
-
-    init() {
-        self.robotListViewModel = RobotListViewModel(bleManager: bleManager)
-    }
 
     var body: some Scene {
         WindowGroup {
             NavigationStack {
-                ContentView()
-                    .environmentObject(robotListViewModel)
+                ContentView(bleManager: bleManager)
             }
         }
     }
