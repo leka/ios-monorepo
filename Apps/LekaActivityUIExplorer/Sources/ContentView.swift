@@ -57,20 +57,17 @@ struct ContentView: View {
     }
 
     private func relevantDefaultsSet() -> BaseDefaults {
-        guard !gameEngine.allAnswers.isEmpty else {
-            return TouchToSelect.one
-        }
-        if gameEngine.currentActivity.activityType != "listen_then_touch_to_select" {
+        guard gameEngine.currentActivity.activityType != "listen_then_touch_to_select" else {
             return relevantListenThenTouchToSelectDefaults()
-        } else {
-            return relevantTouchToSelectDefaults()
         }
+        return relevantTouchToSelectDefaults()
     }
 
     private func relevantTouchToSelectDefaults() -> BaseDefaults {
-        if gameEngine.allAnswers.count == 1 {
+        guard gameEngine.allAnswers.count >= 2 else {
             return TouchToSelect.one
-        } else if gameEngine.allAnswers.count == 2 {
+        }
+        if gameEngine.allAnswers.count == 2 {
             return TouchToSelect.two
         } else if gameEngine.allAnswers.count == 3 {
             guard configuration.preferred3AnswersLayout == .inline else {
@@ -90,9 +87,10 @@ struct ContentView: View {
     }
 
     private func relevantListenThenTouchToSelectDefaults() -> BaseDefaults {
-        if gameEngine.allAnswers.count == 1 {
-            return ListenThenTouchToSelect.one
-        } else if gameEngine.allAnswers.count == 2 {
+        guard gameEngine.allAnswers.count >= 2 else {
+            return TouchToSelect.one
+        }
+        if gameEngine.allAnswers.count == 2 {
             return ListenThenTouchToSelect.two
         } else if gameEngine.allAnswers.count == 3 {
             guard configuration.preferred3AnswersLayout == .inline else {
