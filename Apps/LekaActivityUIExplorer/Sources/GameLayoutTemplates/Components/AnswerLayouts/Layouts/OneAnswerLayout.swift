@@ -5,10 +5,17 @@
 import SwiftUI
 
 struct OneAnswerLayout: View {
+
+    @ObservedObject var templateDefaults: BaseDefaults
+
     var body: some View {
         HStack {
             Spacer()
             CircularAnswerButton(answer: 0)
+                .frame(
+                    width: templateDefaults.customAnswerSize,
+                    height: templateDefaults.customAnswerSize
+                )
             Spacer()
         }
     }

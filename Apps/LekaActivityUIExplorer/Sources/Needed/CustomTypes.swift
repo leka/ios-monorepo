@@ -39,5 +39,5 @@ enum ResultType {
 
 // MARK: - Alternative Layouts for 3 & 4 answers
 enum AlternativeLayout {
-    case basic, inline, spaced
+    case basic, inline
 }

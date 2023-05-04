@@ -6,18 +6,33 @@ import SwiftUI
 
 struct ThreeAnswersLayout: View {
 
-    @EnvironmentObject var defaults: GameLayoutTemplatesDefaults
+    @ObservedObject var templateDefaults: BaseDefaults
 
     var body: some View {
-        Grid(horizontalSpacing: defaults.horizontalCellSpacing, verticalSpacing: defaults.verticalCellSpacing) {
+        Grid(
+            horizontalSpacing: templateDefaults.customHorizontalSpacing,
+            verticalSpacing: templateDefaults.customVerticalSpacing
+        ) {
             GridRow {
                 CircularAnswerButton(answer: 0)
+                    .frame(
+                        width: templateDefaults.customAnswerSize,
+                        height: templateDefaults.customAnswerSize
+                    )
                 Color.clear.gridCellUnsizedAxes([.horizontal, .vertical])
                 CircularAnswerButton(answer: 1)
+                    .frame(
+                        width: templateDefaults.customAnswerSize,
+                        height: templateDefaults.customAnswerSize
+                    )
             }
             GridRow {
                 Color.clear.gridCellUnsizedAxes([.horizontal, .vertical])
                 CircularAnswerButton(answer: 2)
+                    .frame(
+                        width: templateDefaults.customAnswerSize,
+                        height: templateDefaults.customAnswerSize
+                    )
                 Color.clear.gridCellUnsizedAxes([.horizontal, .vertical])
             }
         }

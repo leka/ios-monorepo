@@ -4,7 +4,7 @@
 
 import SwiftUI
 
-struct FourAnswersLayout: View {
+struct FiveAnswersLayout: View {
 
     @ObservedObject var templateDefaults: BaseDefaults
 
@@ -19,23 +19,33 @@ struct FourAnswersLayout: View {
                         width: templateDefaults.customAnswerSize,
                         height: templateDefaults.customAnswerSize
                     )
+                Color.clear.gridCellUnsizedAxes([.horizontal, .vertical])
                 CircularAnswerButton(answer: 1)
+                    .frame(
+                        width: templateDefaults.customAnswerSize,
+                        height: templateDefaults.customAnswerSize
+                    )
+                Color.clear.gridCellUnsizedAxes([.horizontal, .vertical])
+                CircularAnswerButton(answer: 2)
                     .frame(
                         width: templateDefaults.customAnswerSize,
                         height: templateDefaults.customAnswerSize
                     )
             }
             GridRow {
-                CircularAnswerButton(answer: 2)
-                    .frame(
-                        width: templateDefaults.customAnswerSize,
-                        height: templateDefaults.customAnswerSize
-                    )
+                Color.clear.gridCellUnsizedAxes([.horizontal, .vertical])
                 CircularAnswerButton(answer: 3)
                     .frame(
                         width: templateDefaults.customAnswerSize,
                         height: templateDefaults.customAnswerSize
                     )
+                Color.clear.gridCellUnsizedAxes([.horizontal, .vertical])
+                CircularAnswerButton(answer: 4)
+                    .frame(
+                        width: templateDefaults.customAnswerSize,
+                        height: templateDefaults.customAnswerSize
+                    )
+                Color.clear.gridCellUnsizedAxes([.horizontal, .vertical])
             }
         }
     }
