@@ -60,31 +60,52 @@ struct ContentView: View {
         guard !gameEngine.allAnswers.isEmpty else {
             return TouchToSelect.one
         }
+        if gameEngine.currentActivity.activityType != "listen_then_touch_to_select" {
+            return relevantListenThenTouchToSelectDefaults()
+        } else {
+            return relevantTouchToSelectDefaults()
+        }
+    }
+
+    private func relevantTouchToSelectDefaults() -> BaseDefaults {
         if gameEngine.allAnswers.count == 1 {
-            return gameEngine.currentActivity.activityType == "touch_to_select"
-                ? TouchToSelect.one : ListenThenTouchToSelect.one
+            return TouchToSelect.one
         } else if gameEngine.allAnswers.count == 2 {
-            return gameEngine.currentActivity.activityType == "touch_to_select"
-                ? TouchToSelect.two : ListenThenTouchToSelect.two
+            return TouchToSelect.two
         } else if gameEngine.allAnswers.count == 3 {
             guard configuration.preferred3AnswersLayout == .inline else {
-                return gameEngine.currentActivity.activityType == "touch_to_select"
-                    ? TouchToSelect.three : ListenThenTouchToSelect.three
+                return TouchToSelect.three
             }
-            return gameEngine.currentActivity.activityType == "touch_to_select"
-                ? TouchToSelect.threeInline : ListenThenTouchToSelect.threeInline
+            return TouchToSelect.threeInline
         } else if gameEngine.allAnswers.count == 4 {
             guard configuration.preferred4AnswersLayout == .inline else {
-                return gameEngine.currentActivity.activityType == "touch_to_select"
-                    ? TouchToSelect.four : ListenThenTouchToSelect.four
+                return TouchToSelect.four
             }
-            return gameEngine.currentActivity.activityType == "touch_to_select"
-                ? TouchToSelect.fourInline : ListenThenTouchToSelect.fourInline
+            return TouchToSelect.fourInline
         } else if gameEngine.allAnswers.count == 5 {
             return TouchToSelect.five
         } else {
-            return gameEngine.currentActivity.activityType == "touch_to_select"
-                ? TouchToSelect.six : ListenThenTouchToSelect.six
+            return TouchToSelect.six
+        }
+    }
+
+    private func relevantListenThenTouchToSelectDefaults() -> BaseDefaults {
+        if gameEngine.allAnswers.count == 1 {
+            return ListenThenTouchToSelect.one
+        } else if gameEngine.allAnswers.count == 2 {
+            return ListenThenTouchToSelect.two
+        } else if gameEngine.allAnswers.count == 3 {
+            guard configuration.preferred3AnswersLayout == .inline else {
+                return ListenThenTouchToSelect.three
+            }
+            return ListenThenTouchToSelect.threeInline
+        } else if gameEngine.allAnswers.count == 4 {
+            guard configuration.preferred4AnswersLayout == .inline else {
+                return ListenThenTouchToSelect.four
+            }
+            return ListenThenTouchToSelect.fourInline
+        } else {
+            return ListenThenTouchToSelect.six
         }
     }
 
