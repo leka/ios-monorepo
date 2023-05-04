@@ -8,14 +8,13 @@ struct SizeEditor: View {
 
     @EnvironmentObject var gameEngine: GameEngine
     @EnvironmentObject var defaults: GameLayoutTemplatesDefaults
+    @ObservedObject var templateDefaults: BaseDefaults
+
+    // Store Default values
 
     var body: some View {
         Section {
-            if gameEngine.currentActivity.activityType != "xylophone" {
-                sizeSlider
-            } else {
-                tileWidthSlider
-            }
+            sizeSlider
         } header: {
             Text("Taille des réponses")
                 .foregroundColor(.accentColor)
@@ -26,11 +25,7 @@ struct SizeEditor: View {
                 Button(
                     action: {
                         withAnimation(.easeIn(duration: 0.3)) {
-                            if gameEngine.currentActivity.activityType != "xylophone" {
-                                defaults.playGridBtnSize = 200
-                            } else {
-                                defaults.xylophoneTileWidth = 180
-                            }
+                            templateDefaults.customAnswerSize = templateDefaults.defaultAnswerSize
                         }
                     },
                     label: {
@@ -48,7 +43,7 @@ struct SizeEditor: View {
     private var sizeSlider: some View {
         LabeledContent {
             Slider(
-                value: $defaults.playGridBtnSize,
+                value: $templateDefaults.customAnswerSize,
                 in: 100...300,
                 step: 10,
                 label: {
@@ -58,38 +53,13 @@ struct SizeEditor: View {
                     Text("•")
                 },
                 maximumValueLabel: {
-                    Text("\(Int(defaults.playGridBtnSize))")
+                    Text("\(Int(templateDefaults.customAnswerSize))")
                 }
             )
             .frame(maxWidth: 260)
             .tint(LekaActivityUIExplorerAsset.Colors.lekaSkyBlue.swiftUIColor)
         } label: {
             Text("Taille")
-                .foregroundColor(LekaActivityUIExplorerAsset.Colors.lekaDarkGray.swiftUIColor)
-                .padding(.leading, 20)
-        }
-    }
-
-    private var tileWidthSlider: some View {
-        LabeledContent {
-            Slider(
-                value: $defaults.xylophoneTileWidth,
-                in: 80...300,
-                step: 1,
-                label: {
-                    // Unnecessary
-                },
-                minimumValueLabel: {
-                    Text("•")
-                },
-                maximumValueLabel: {
-                    Text("\(Int(defaults.xylophoneTileWidth))")
-                }
-            )
-            .frame(maxWidth: 260)
-            .tint(LekaActivityUIExplorerAsset.Colors.lekaSkyBlue.swiftUIColor)
-        } label: {
-            Text("Largeur")
                 .foregroundColor(LekaActivityUIExplorerAsset.Colors.lekaDarkGray.swiftUIColor)
                 .padding(.leading, 20)
         }

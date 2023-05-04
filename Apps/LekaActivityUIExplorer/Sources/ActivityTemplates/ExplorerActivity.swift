@@ -7,9 +7,11 @@ import Foundation
 class ExplorerActivity: ObservableObject {
 
     var withTemplate: Int
+    var type: String
 
-    init(withTemplate: Int) {
+    init(withTemplate: Int, type: String) {
         self.withTemplate = withTemplate
+        self.type = type
     }
 
     func makeActivity() -> Activity {
@@ -18,7 +20,7 @@ class ExplorerActivity: ObservableObject {
             title: emptyTitle,
             short: emptyShort,
             instructions: emptyInstructions(),
-            activityType: activityType,
+            activityType: type,
             stepsAmount: 10,
             isRandom: false,
             numberOfImages: 1,
@@ -43,13 +45,6 @@ class ExplorerActivity: ObservableObject {
             frFR: String.markdownInstructionsFR)
     }
 
-    var activityType: String {
-        guard withTemplate == 8 else {
-            return "touch_to_select"
-        }
-        return "xylophone"
-    }
-
     func makeEmptyStepArray() -> [[Step]] {
         return [
             [
@@ -69,8 +64,10 @@ class ExplorerActivity: ObservableObject {
             return stepAnswers2
         } else if 2...3 ~= withTemplate {
             return stepAnswers3
-        } else if 4...6 ~= withTemplate {
+        } else if 4...5 ~= withTemplate {
             return stepAnswers4
+        } else if withTemplate == 6 {
+            return type == "touch_to_select" ? stepAnswers5 : stepAnswers6
         } else {
             return stepAnswers6
         }
@@ -80,6 +77,7 @@ class ExplorerActivity: ObservableObject {
     var stepAnswers2 = ["dummy_1", "dummy_2"]
     var stepAnswers3 = ["dummy_1", "dummy_2", "dummy_3"]
     var stepAnswers4 = ["dummy_1", "dummy_2", "dummy_3", "dummy_4"]
+    var stepAnswers5 = ["dummy_1", "dummy_2", "dummy_3", "dummy_4", "dummy_5"]
     var stepAnswers6 = ["dummy_1", "dummy_2", "dummy_3", "dummy_4", "dummy_5", "dummy_6"]
 
     func stepInstruction() -> LocalizedContent {
@@ -89,13 +87,13 @@ class ExplorerActivity: ObservableObject {
     }
 
     var stepInstructionFR: String {
-        guard withTemplate == 8 else {
+        guard type == "xylophone" else {
             return "Touche le numéro 1"
         }
         return "Joue du xylophone avec Leka"
     }
     var stepInstructionEN: String {
-        guard withTemplate == 8 else {
+        guard type == "xylophone" else {
             return "Touch the number 1"
         }
         return "Play the xylophone with Leka"

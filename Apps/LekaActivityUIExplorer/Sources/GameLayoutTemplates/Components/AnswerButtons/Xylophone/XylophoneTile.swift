@@ -7,7 +7,6 @@ import SwiftUI
 struct XylophoneTile: View {
 
     @EnvironmentObject var gameEngine: GameEngine
-    @EnvironmentObject var defaults: GameLayoutTemplatesDefaults
 
     @Binding var color: Color
 

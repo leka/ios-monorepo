@@ -4,20 +4,18 @@
 
 import SwiftUI
 
-struct TilesFeedbackEditor: View {
+struct XylophoneSpacingEditor: View {
 
     @EnvironmentObject var gameEngine: GameEngine
     @EnvironmentObject var defaults: GameLayoutTemplatesDefaults
+
     @ObservedObject var templateDefaults: XylophoneDefaults
 
     var body: some View {
         Section {
-            Group {
-                rotationAngleSlider
-                scaleSlider
-            }
+            horizontalTileSpacingSlider
         } header: {
-            Text("Feedback des tuiles")
+            Text("Espacement des réponses")
                 .foregroundColor(.accentColor)
                 .headerProminence(.increased)
         } footer: {
@@ -26,8 +24,7 @@ struct TilesFeedbackEditor: View {
                 Button(
                     action: {
                         withAnimation(.easeIn(duration: 0.3)) {
-                            templateDefaults.customTilesRotationFeedback = templateDefaults.defaultTilesRotationFeedback
-                            templateDefaults.customTilesScaleFeedback = templateDefaults.defaultTilesScaleFeedback
+                            templateDefaults.customTilesSpacing = templateDefaults.defaultTilesSpacing
                         }
                     },
                     label: {
@@ -42,11 +39,11 @@ struct TilesFeedbackEditor: View {
         }
     }
 
-    private var rotationAngleSlider: some View {
+    private var horizontalTileSpacingSlider: some View {
         LabeledContent {
             Slider(
-                value: $templateDefaults.customTilesRotationFeedback,
-                in: -10...10,
+                value: $templateDefaults.customTilesSpacing,
+                in: 0...200,
                 step: 1,
                 label: {
                     // Unnecessary
@@ -55,38 +52,13 @@ struct TilesFeedbackEditor: View {
                     Text("•")
                 },
                 maximumValueLabel: {
-                    Text("\(Int(templateDefaults.customTilesRotationFeedback))")
+                    Text("\(Int(templateDefaults.customTilesSpacing))")
                 }
             )
             .frame(maxWidth: 260)
             .tint(LekaActivityUIExplorerAsset.Colors.lekaSkyBlue.swiftUIColor)
         } label: {
-            Text("Rotation")
-                .foregroundColor(LekaActivityUIExplorerAsset.Colors.lekaDarkGray.swiftUIColor)
-                .padding(.leading, 20)
-        }
-    }
-
-    private var scaleSlider: some View {
-        LabeledContent {
-            Slider(
-                value: $templateDefaults.customTilesScaleFeedback,
-                in: 0.5...1.2,
-                step: 0.01,
-                label: {
-                    // Unnecessary
-                },
-                minimumValueLabel: {
-                    Text("•")
-                },
-                maximumValueLabel: {
-                    Text(String(format: "%.2f", templateDefaults.customTilesScaleFeedback))
-                }
-            )
-            .frame(maxWidth: 260)
-            .tint(LekaActivityUIExplorerAsset.Colors.lekaSkyBlue.swiftUIColor)
-        } label: {
-            Text("Échelle")
+            Text("Horizontal")
                 .foregroundColor(LekaActivityUIExplorerAsset.Colors.lekaDarkGray.swiftUIColor)
                 .padding(.leading, 20)
         }

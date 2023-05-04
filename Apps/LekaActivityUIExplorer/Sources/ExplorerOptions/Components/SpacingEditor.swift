@@ -8,15 +8,22 @@ struct SpacingEditor: View {
 
     @EnvironmentObject var gameEngine: GameEngine
     @EnvironmentObject var defaults: GameLayoutTemplatesDefaults
+    @EnvironmentObject var configuration: GameLayoutTemplatesConfigurations
+
+    @ObservedObject var templateDefaults: BaseDefaults
 
     var body: some View {
         Section {
             Group {
-                if gameEngine.currentActivity.activityType != "xylophone" {
-                    horizontalSpacingSlider
-                    verticalSpacingSlider
-                } else {
-                    horizontalTileSpacingSlider
+                horizontalSpacingSlider
+                if gameEngine.allAnswers.count >= 3 {
+                    if gameEngine.allAnswers.count == 3 && configuration.preferred3AnswersLayout == .inline
+                        || gameEngine.allAnswers.count == 4 && configuration.preferred4AnswersLayout == .inline
+                    {
+                        EmptyView()
+                    } else {
+                        verticalSpacingSlider
+                    }
                 }
             }
         } header: {
@@ -29,12 +36,8 @@ struct SpacingEditor: View {
                 Button(
                     action: {
                         withAnimation(.easeIn(duration: 0.3)) {
-                            if gameEngine.currentActivity.activityType != "xylophone" {
-                                defaults.horizontalCellSpacing = 32
-                                defaults.verticalCellSpacing = 32
-                            } else {
-                                defaults.xylophoneTilesSpacing = 32
-                            }
+                            templateDefaults.customHorizontalSpacing = templateDefaults.defaultHorizontalSpacing
+                            templateDefaults.customVerticalSpacing = templateDefaults.defaultVerticalSpacing
                         }
                     },
                     label: {
@@ -52,7 +55,7 @@ struct SpacingEditor: View {
     private var horizontalSpacingSlider: some View {
         LabeledContent {
             Slider(
-                value: $defaults.horizontalCellSpacing,
+                value: $templateDefaults.customHorizontalSpacing,
                 in: 10...200,
                 step: 10,
                 label: {
@@ -62,32 +65,7 @@ struct SpacingEditor: View {
                     Text("•")
                 },
                 maximumValueLabel: {
-                    Text("\(Int(defaults.horizontalCellSpacing))")
-                }
-            )
-            .frame(maxWidth: 260)
-            .tint(LekaActivityUIExplorerAsset.Colors.lekaSkyBlue.swiftUIColor)
-        } label: {
-            Text("Horizontal")
-                .foregroundColor(LekaActivityUIExplorerAsset.Colors.lekaDarkGray.swiftUIColor)
-                .padding(.leading, 20)
-        }
-    }
-
-    private var horizontalTileSpacingSlider: some View {
-        LabeledContent {
-            Slider(
-                value: $defaults.xylophoneTilesSpacing,
-                in: 0...200,
-                step: 1,
-                label: {
-                    // Unnecessary
-                },
-                minimumValueLabel: {
-                    Text("•")
-                },
-                maximumValueLabel: {
-                    Text("\(Int(defaults.xylophoneTilesSpacing))")
+                    Text("\(Int(templateDefaults.customHorizontalSpacing))")
                 }
             )
             .frame(maxWidth: 260)
@@ -102,7 +80,7 @@ struct SpacingEditor: View {
     private var verticalSpacingSlider: some View {
         LabeledContent {
             Slider(
-                value: $defaults.verticalCellSpacing,
+                value: $templateDefaults.customVerticalSpacing,
                 in: 10...200,
                 step: 10,
                 label: {
@@ -112,7 +90,7 @@ struct SpacingEditor: View {
                     Text("•")
                 },
                 maximumValueLabel: {
-                    Text("\(Int(defaults.verticalCellSpacing))")
+                    Text("\(Int(templateDefaults.customVerticalSpacing))")
                 }
             )
             .frame(maxWidth: 260)

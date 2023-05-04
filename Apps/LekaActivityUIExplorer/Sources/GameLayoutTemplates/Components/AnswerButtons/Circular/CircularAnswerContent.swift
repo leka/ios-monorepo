@@ -7,7 +7,6 @@ import SwiftUI
 struct CircularAnswerContent: View {
 
     @EnvironmentObject var gameEngine: GameEngine
-    @EnvironmentObject var defaults: GameLayoutTemplatesDefaults
 
     var content: String
 
@@ -23,6 +22,5 @@ struct CircularAnswerContent: View {
             }
         }
         .clipShape(Circle().inset(by: 2))
-        .frame(width: defaults.playGridBtnSize, height: defaults.playGridBtnSize, alignment: .center)
     }
 }
