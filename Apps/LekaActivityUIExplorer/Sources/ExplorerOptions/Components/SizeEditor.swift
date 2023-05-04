@@ -8,7 +8,7 @@ struct SizeEditor: View {
 
     @EnvironmentObject var gameEngine: GameEngine
     @EnvironmentObject var defaults: GameLayoutTemplatesDefaults
-    @ObservedObject var templateDefaults: DefaultsTemplate
+    @ObservedObject var templateDefaults: BaseDefaults
 
     // Store Default values
 
@@ -25,7 +25,7 @@ struct SizeEditor: View {
                 Button(
                     action: {
                         withAnimation(.easeIn(duration: 0.3)) {
-                            templateDefaults.playGridBtnSize = templateDefaults.defaultSize
+                            templateDefaults.customAnswerSize = templateDefaults.defaultAnswerSize
                         }
                     },
                     label: {
@@ -43,7 +43,7 @@ struct SizeEditor: View {
     private var sizeSlider: some View {
         LabeledContent {
             Slider(
-                value: $templateDefaults.playGridBtnSize,
+                value: $templateDefaults.customAnswerSize,
                 in: 100...300,
                 step: 10,
                 label: {
@@ -53,7 +53,7 @@ struct SizeEditor: View {
                     Text("•")
                 },
                 maximumValueLabel: {
-                    Text("\(Int(templateDefaults.playGridBtnSize))")
+                    Text("\(Int(templateDefaults.customAnswerSize))")
                 }
             )
             .frame(maxWidth: 260)

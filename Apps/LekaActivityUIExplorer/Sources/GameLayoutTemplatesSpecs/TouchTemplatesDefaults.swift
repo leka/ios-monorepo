@@ -5,35 +5,6 @@
 import Foundation
 import SwiftUI
 
-class DefaultsTemplate: ObservableObject {
-    // MARK: - Provided Defaults
-    var defaultSize: CGFloat
-    var defaultSpacingH: CGFloat
-    var defaultSpacingV: CGFloat
-    // MARK: - Size
-    @Published var playGridBtnSize: CGFloat
-
-    // MARK: - Spacing
-    @Published var horizontalCellSpacing: CGFloat
-    @Published var verticalCellSpacing: CGFloat
-
-    init(
-        defaultSize: CGFloat,
-        defaultSpacingH: CGFloat,
-        defaultSpacingV: CGFloat,
-        playGridBtnSize: CGFloat,
-        horizontalCellSpacing: CGFloat,
-        verticalCellSpacing: CGFloat
-    ) {
-        self.defaultSize = defaultSize
-        self.defaultSpacingH = defaultSpacingH
-        self.defaultSpacingV = defaultSpacingV
-        self.playGridBtnSize = playGridBtnSize
-        self.horizontalCellSpacing = horizontalCellSpacing
-        self.verticalCellSpacing = verticalCellSpacing
-    }
-}
-
 public class BaseDefaults: ObservableObject {
 
     // MARK: - Provided Defaults
@@ -73,7 +44,7 @@ public class ListenThenTouchToSelectDefaults: BaseDefaults {
         defaultAnswerSize: CGFloat,
         defaultHorizontalSpacing: CGFloat,
         defaultVerticalSpacing: CGFloat,
-        defaultListenButtonSize: CGFloat  // <-- le nouveau
+        defaultListenButtonSize: CGFloat
     ) {
         self.defaultListenButtonSize = defaultListenButtonSize
         self.customListenButtonSize = defaultListenButtonSize
@@ -87,152 +58,88 @@ public class ListenThenTouchToSelectDefaults: BaseDefaults {
 
 }
 
+public class XylophoneDefaults: BaseDefaults {
+    var defaultTileWidth: CGFloat = 180
+    var defaultTilesSpacing: CGFloat = 32
+    var defaultTilesScaleFeedback: CGFloat = 0.98
+    var defaultTilesRotationFeedback: Double = -1
+    var defaultTileColors: [Color] = [.green, .purple, .red, .yellow, .blue]
+    // MARK: - Answering Tiles
+    @Published var customTileWidth: CGFloat
+    @Published var customTilesSpacing: CGFloat
+    @Published var customTilesScaleFeedback: CGFloat
+    @Published var customTilesRotationFeedback: Double
+    @Published var customTileColors: [Color]
+
+    init(
+        defaultTileWidth: CGFloat,
+        defaultTilesSpacing: CGFloat,
+        defaultTilesScaleFeedback: CGFloat,
+        defaultTilesRotationFeedback: Double,
+        defaultTileColors: [Color]
+    ) {
+        self.defaultTileWidth = defaultTileWidth
+        self.defaultTilesSpacing = defaultTilesSpacing
+        self.defaultTilesScaleFeedback = defaultTilesScaleFeedback
+        self.defaultTilesRotationFeedback = defaultTilesRotationFeedback
+        self.defaultTileColors = defaultTileColors
+
+        self.customTileWidth = defaultTileWidth
+        self.customTilesSpacing = defaultTilesSpacing
+        self.customTilesScaleFeedback = defaultTilesScaleFeedback
+        self.customTilesRotationFeedback = defaultTilesRotationFeedback
+        self.customTileColors = defaultTileColors
+        super
+            .init(
+                defaultAnswerSize: 0,
+                defaultHorizontalSpacing: 0,
+                defaultVerticalSpacing: 0
+            )
+    }
+}
+
 // swiftlint:disable identifier_name
 
+public enum TouchToSelect {
+    public static var one = BaseDefaults(
+        defaultAnswerSize: 300, defaultHorizontalSpacing: 32, defaultVerticalSpacing: 32)
+    public static var two = BaseDefaults(
+        defaultAnswerSize: 300, defaultHorizontalSpacing: 32, defaultVerticalSpacing: 32)
+    public static var three = BaseDefaults(
+        defaultAnswerSize: 260, defaultHorizontalSpacing: 32, defaultVerticalSpacing: 32)
+    public static var threeInline = BaseDefaults(
+        defaultAnswerSize: 300, defaultHorizontalSpacing: 60, defaultVerticalSpacing: 32)
+    public static var four = BaseDefaults(
+        defaultAnswerSize: 240, defaultHorizontalSpacing: 200, defaultVerticalSpacing: 40)
+    public static var fourInline = BaseDefaults(
+        defaultAnswerSize: 200, defaultHorizontalSpacing: 70, defaultVerticalSpacing: 32)
+    public static var five = BaseDefaults(
+        defaultAnswerSize: 200, defaultHorizontalSpacing: 32, defaultVerticalSpacing: 32)
+    public static var six = BaseDefaults(
+        defaultAnswerSize: 300, defaultHorizontalSpacing: 100, defaultVerticalSpacing: 32)
+}
+
 public enum ListenThenTouchToSelect {
+    public static var one = ListenThenTouchToSelectDefaults(
+        defaultAnswerSize: 300, defaultHorizontalSpacing: 32, defaultVerticalSpacing: 32, defaultListenButtonSize: 200)
     public static var two = ListenThenTouchToSelectDefaults(
-        defaultAnswerSize: 10, defaultHorizontalSpacing: 30, defaultVerticalSpacing: 30, defaultListenButtonSize: 30)
+        defaultAnswerSize: 300, defaultHorizontalSpacing: 32, defaultVerticalSpacing: 32, defaultListenButtonSize: 200)
     public static var three = ListenThenTouchToSelectDefaults(
-        defaultAnswerSize: 10, defaultHorizontalSpacing: 30, defaultVerticalSpacing: 30, defaultListenButtonSize: 30)
+        defaultAnswerSize: 230, defaultHorizontalSpacing: 32, defaultVerticalSpacing: 32, defaultListenButtonSize: 200)
+    public static var threeInline = ListenThenTouchToSelectDefaults(
+        defaultAnswerSize: 220, defaultHorizontalSpacing: 60, defaultVerticalSpacing: 32, defaultListenButtonSize: 200)
+    public static var four = ListenThenTouchToSelectDefaults(
+        defaultAnswerSize: 240, defaultHorizontalSpacing: 200, defaultVerticalSpacing: 40, defaultListenButtonSize: 200)
+    public static var fourInline = ListenThenTouchToSelectDefaults(
+        defaultAnswerSize: 160, defaultHorizontalSpacing: 50, defaultVerticalSpacing: 32, defaultListenButtonSize: 200)
+    public static var six = ListenThenTouchToSelectDefaults(
+        defaultAnswerSize: 200, defaultHorizontalSpacing: 80, defaultVerticalSpacing: 32, defaultListenButtonSize: 200)
 }
 
-public func myFunc(defaults: BaseDefaults) {
-    print(defaults.defaultAnswerSize)
+public enum Misc {
+    public static var xylophone = XylophoneDefaults(
+        defaultTileWidth: 180, defaultTilesSpacing: 32, defaultTilesScaleFeedback: 0.98,
+        defaultTilesRotationFeedback: -1, defaultTileColors: [.green, .purple, .red, .yellow, .blue])
 }
 
-public func mySecondFunc() {
-    myFunc(defaults: ListenThenTouchToSelect.two)
-}
-
-class DefaultsTemplateOne: DefaultsTemplate {
-    init() {
-        super
-            .init(
-                defaultSize: 300,
-                defaultSpacingH: 32,
-                defaultSpacingV: 32,
-                playGridBtnSize: 300,
-                horizontalCellSpacing: 32,
-                verticalCellSpacing: 32
-            )
-    }
-}
-
-class DefaultsTemplateTwo: DefaultsTemplate {
-    init() {
-        super
-            .init(
-                defaultSize: 300,
-                defaultSpacingH: 32,
-                defaultSpacingV: 32,
-                playGridBtnSize: 300,
-                horizontalCellSpacing: 32,
-                verticalCellSpacing: 32
-            )
-    }
-}
-
-class DefaultsTemplateThree: DefaultsTemplate {
-    init() {
-        super
-            .init(
-                defaultSize: 260,
-                defaultSpacingH: 32,
-                defaultSpacingV: 32,
-                playGridBtnSize: 260,
-                horizontalCellSpacing: 32,
-                verticalCellSpacing: 32
-            )
-    }
-}
-
-class DefaultsTemplateThreeInline: DefaultsTemplate {
-    init() {
-        super
-            .init(
-                defaultSize: 300,
-                defaultSpacingH: 60,
-                defaultSpacingV: 32,
-                playGridBtnSize: 300,
-                horizontalCellSpacing: 60,
-                verticalCellSpacing: 32
-            )
-    }
-}
-
-class DefaultsTemplateFour: DefaultsTemplate {
-    init() {
-        super
-            .init(
-                defaultSize: 240,
-                defaultSpacingH: 200,
-                defaultSpacingV: 40,
-                playGridBtnSize: 240,
-                horizontalCellSpacing: 200,
-                verticalCellSpacing: 40
-            )
-    }
-}
-
-class DefaultsTemplateFourInline: DefaultsTemplate {
-    init() {
-        super
-            .init(
-                defaultSize: 200,
-                defaultSpacingH: 70,
-                defaultSpacingV: 32,
-                playGridBtnSize: 200,
-                horizontalCellSpacing: 70,
-                verticalCellSpacing: 32
-            )
-    }
-}
-
-class DefaultsTemplateFive: DefaultsTemplate {
-    init() {
-        super
-            .init(
-                defaultSize: 200,
-                defaultSpacingH: 32,
-                defaultSpacingV: 32,
-                playGridBtnSize: 200,
-                horizontalCellSpacing: 32,
-                verticalCellSpacing: 32
-            )
-    }
-}
-
-class DefaultsTemplateSix: DefaultsTemplate {
-    init() {
-        super
-            .init(
-                defaultSize: 300,
-                defaultSpacingH: 100,
-                defaultSpacingV: 32,
-                playGridBtnSize: 240,
-                horizontalCellSpacing: 100,
-                verticalCellSpacing: 32
-            )
-    }
-}
-
-class XylophoneTemplatesDefaults: DefaultsTemplate {
-    // MARK: - Answering Tiles
-    @Published var tileWidth: CGFloat = 180
-    @Published var tilesSpacing: CGFloat = 32
-    @Published var tilesScaleFeedback: CGFloat = 0.98
-    @Published var tilesRotationFeedback: Double = -1
-    @Published var colors: [Color] = [.green, .purple, .red, .yellow, .blue]
-
-    init() {
-        super
-            .init(
-                defaultSize: 300,
-                defaultSpacingH: 32,
-                defaultSpacingV: 32,
-                playGridBtnSize: 0,
-                horizontalCellSpacing: 0,
-                verticalCellSpacing: 0
-            )
-    }
-}
+// swiftlint:enable identifier_name

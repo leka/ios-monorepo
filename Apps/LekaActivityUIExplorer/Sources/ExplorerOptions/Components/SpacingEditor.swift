@@ -10,7 +10,7 @@ struct SpacingEditor: View {
     @EnvironmentObject var defaults: GameLayoutTemplatesDefaults
     @EnvironmentObject var configuration: GameLayoutTemplatesConfigurations
 
-    @ObservedObject var templateDefaults: DefaultsTemplate
+    @ObservedObject var templateDefaults: BaseDefaults
 
     var body: some View {
         Section {
@@ -36,8 +36,8 @@ struct SpacingEditor: View {
                 Button(
                     action: {
                         withAnimation(.easeIn(duration: 0.3)) {
-                            templateDefaults.horizontalCellSpacing = templateDefaults.defaultSpacingH
-                            templateDefaults.verticalCellSpacing = templateDefaults.defaultSpacingV
+                            templateDefaults.customHorizontalSpacing = templateDefaults.defaultHorizontalSpacing
+                            templateDefaults.customVerticalSpacing = templateDefaults.defaultVerticalSpacing
                         }
                     },
                     label: {
@@ -55,7 +55,7 @@ struct SpacingEditor: View {
     private var horizontalSpacingSlider: some View {
         LabeledContent {
             Slider(
-                value: $templateDefaults.horizontalCellSpacing,
+                value: $templateDefaults.customHorizontalSpacing,
                 in: 10...200,
                 step: 10,
                 label: {
@@ -65,7 +65,7 @@ struct SpacingEditor: View {
                     Text("•")
                 },
                 maximumValueLabel: {
-                    Text("\(Int(templateDefaults.horizontalCellSpacing))")
+                    Text("\(Int(templateDefaults.customHorizontalSpacing))")
                 }
             )
             .frame(maxWidth: 260)
@@ -80,7 +80,7 @@ struct SpacingEditor: View {
     private var verticalSpacingSlider: some View {
         LabeledContent {
             Slider(
-                value: $templateDefaults.verticalCellSpacing,
+                value: $templateDefaults.customVerticalSpacing,
                 in: 10...200,
                 step: 10,
                 label: {
@@ -90,7 +90,7 @@ struct SpacingEditor: View {
                     Text("•")
                 },
                 maximumValueLabel: {
-                    Text("\(Int(templateDefaults.verticalCellSpacing))")
+                    Text("\(Int(templateDefaults.customVerticalSpacing))")
                 }
             )
             .frame(maxWidth: 260)

@@ -12,15 +12,7 @@ struct ContentView: View {
     @EnvironmentObject var configuration: GameLayoutTemplatesConfigurations
 
     // Templates defaults
-    @StateObject var xylophoneDefaults = XylophoneTemplatesDefaults()
-    @StateObject var oneDefaults = DefaultsTemplateOne()
-    @StateObject var twoDefaults = DefaultsTemplateTwo()
-    @StateObject var threeDefaults = DefaultsTemplateThree()
-    @StateObject var threeInlineDefaults = DefaultsTemplateThreeInline()
-    @StateObject var fourDefaults = DefaultsTemplateFour()
-    @StateObject var fourInlineDefaults = DefaultsTemplateFourInline()
-    @StateObject var fiveDefaults = DefaultsTemplateFive()
-    @StateObject var sixDefaults = DefaultsTemplateSix()
+    @StateObject var xylophoneDefaults = Misc.xylophone
 
     @State private var showInstructionModal: Bool = false
     @State private var navigateToConfigurator: Bool = false
@@ -50,46 +42,49 @@ struct ContentView: View {
                 }
             Group {
                 if showOptions {
-                    ExplorerOptionsPanel(templateDefaults: relevantDefaultsSet(), closePanel: $showOptions)
-                        .transition(.move(edge: .trailing))
+                    ExplorerOptionsPanel(
+                        templateDefaults: relevantDefaultsSet(),
+                        xylophoneDefaults: xylophoneDefaults,
+                        closePanel: $showOptions
+                    )
+                    .transition(.move(edge: .trailing))
                 }
             }
         }
         .animation(.easeIn(duration: 0.4), value: showOptions)
         .navigationSplitViewStyle(.prominentDetail)
-        .environmentObject(oneDefaults)
-        .environmentObject(twoDefaults)
-        .environmentObject(threeDefaults)
-        .environmentObject(threeInlineDefaults)
-        .environmentObject(fourDefaults)
-        .environmentObject(fourInlineDefaults)
-        .environmentObject(fiveDefaults)
-        .environmentObject(sixDefaults)
         .environmentObject(xylophoneDefaults)
     }
 
-    private func relevantDefaultsSet() -> DefaultsTemplate {
+    private func relevantDefaultsSet() -> BaseDefaults {
         guard !gameEngine.allAnswers.isEmpty else {
-            return oneDefaults
+            return TouchToSelect.one
         }
         if gameEngine.allAnswers.count == 1 {
-            return oneDefaults
+            return gameEngine.currentActivity.activityType == "touch_to_select"
+                ? TouchToSelect.one : ListenThenTouchToSelect.one
         } else if gameEngine.allAnswers.count == 2 {
-            return twoDefaults
+            return gameEngine.currentActivity.activityType == "touch_to_select"
+                ? TouchToSelect.two : ListenThenTouchToSelect.two
         } else if gameEngine.allAnswers.count == 3 {
             guard configuration.preferred3AnswersLayout == .inline else {
-                return threeDefaults
+                return gameEngine.currentActivity.activityType == "touch_to_select"
+                    ? TouchToSelect.three : ListenThenTouchToSelect.three
             }
-            return threeInlineDefaults
+            return gameEngine.currentActivity.activityType == "touch_to_select"
+                ? TouchToSelect.threeInline : ListenThenTouchToSelect.threeInline
         } else if gameEngine.allAnswers.count == 4 {
             guard configuration.preferred4AnswersLayout == .inline else {
-                return fourDefaults
+                return gameEngine.currentActivity.activityType == "touch_to_select"
+                    ? TouchToSelect.four : ListenThenTouchToSelect.four
             }
-            return fourInlineDefaults
+            return gameEngine.currentActivity.activityType == "touch_to_select"
+                ? TouchToSelect.fourInline : ListenThenTouchToSelect.fourInline
         } else if gameEngine.allAnswers.count == 5 {
-            return fiveDefaults
+            return TouchToSelect.five
         } else {
-            return sixDefaults
+            return gameEngine.currentActivity.activityType == "touch_to_select"
+                ? TouchToSelect.six : ListenThenTouchToSelect.six
         }
     }
 

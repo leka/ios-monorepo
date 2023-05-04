@@ -11,10 +11,6 @@ struct LekaActivityUIExplorerApp: App {
     @StateObject var defaults = GameLayoutTemplatesDefaults()
     @StateObject var configuration = GameLayoutTemplatesConfigurations()
 
-    init() {
-        mySecondFunc()
-    }
-
     var body: some Scene {
         WindowGroup {
             ContentView()

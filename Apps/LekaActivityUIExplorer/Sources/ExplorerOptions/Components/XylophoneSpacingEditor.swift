@@ -9,7 +9,7 @@ struct XylophoneSpacingEditor: View {
     @EnvironmentObject var gameEngine: GameEngine
     @EnvironmentObject var defaults: GameLayoutTemplatesDefaults
 
-    @ObservedObject var templateDefaults: XylophoneTemplatesDefaults
+    @ObservedObject var templateDefaults: XylophoneDefaults
 
     var body: some View {
         Section {
@@ -24,7 +24,7 @@ struct XylophoneSpacingEditor: View {
                 Button(
                     action: {
                         withAnimation(.easeIn(duration: 0.3)) {
-                            templateDefaults.tilesSpacing = 32
+                            templateDefaults.customTilesSpacing = templateDefaults.defaultTilesSpacing
                         }
                     },
                     label: {
@@ -42,7 +42,7 @@ struct XylophoneSpacingEditor: View {
     private var horizontalTileSpacingSlider: some View {
         LabeledContent {
             Slider(
-                value: $templateDefaults.tilesSpacing,
+                value: $templateDefaults.customTilesSpacing,
                 in: 0...200,
                 step: 1,
                 label: {
@@ -52,7 +52,7 @@ struct XylophoneSpacingEditor: View {
                     Text("•")
                 },
                 maximumValueLabel: {
-                    Text("\(Int(templateDefaults.tilesSpacing))")
+                    Text("\(Int(templateDefaults.customTilesSpacing))")
                 }
             )
             .frame(maxWidth: 260)

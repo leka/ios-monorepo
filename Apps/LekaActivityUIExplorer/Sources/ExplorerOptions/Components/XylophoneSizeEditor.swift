@@ -8,9 +8,7 @@ struct XylophoneSizeEditor: View {
 
     @EnvironmentObject var gameEngine: GameEngine
     @EnvironmentObject var defaults: GameLayoutTemplatesDefaults
-    @ObservedObject var templateDefaults: XylophoneTemplatesDefaults
-
-    // Store Default values
+    @ObservedObject var templateDefaults: XylophoneDefaults
 
     var body: some View {
         Section {
@@ -25,7 +23,7 @@ struct XylophoneSizeEditor: View {
                 Button(
                     action: {
                         withAnimation(.easeIn(duration: 0.3)) {
-                            templateDefaults.tileWidth = 180
+                            templateDefaults.customTileWidth = templateDefaults.defaultTileWidth
                         }
                     },
                     label: {
@@ -43,7 +41,7 @@ struct XylophoneSizeEditor: View {
     private var tileWidthSlider: some View {
         LabeledContent {
             Slider(
-                value: $templateDefaults.tileWidth,
+                value: $templateDefaults.customTileWidth,
                 in: 80...300,
                 step: 1,
                 label: {
@@ -53,7 +51,7 @@ struct XylophoneSizeEditor: View {
                     Text("•")
                 },
                 maximumValueLabel: {
-                    Text("\(Int(templateDefaults.tileWidth))")
+                    Text("\(Int(templateDefaults.customTileWidth))")
                 }
             )
             .frame(maxWidth: 260)

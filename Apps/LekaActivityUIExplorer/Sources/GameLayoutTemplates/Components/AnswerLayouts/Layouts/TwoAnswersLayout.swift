@@ -6,15 +6,15 @@ import SwiftUI
 
 struct TwoAnswersLayout: View {
 
-    @EnvironmentObject var templateDefaults: DefaultsTemplateTwo
+    @ObservedObject var templateDefaults: BaseDefaults
 
     var body: some View {
-        HStack(spacing: templateDefaults.horizontalCellSpacing) {
+        HStack(spacing: templateDefaults.customHorizontalSpacing) {
             ForEach(0..<2) { answer in
                 CircularAnswerButton(answer: answer)
                     .frame(
-                        width: templateDefaults.playGridBtnSize,
-                        height: templateDefaults.playGridBtnSize
+                        width: templateDefaults.customAnswerSize,
+                        height: templateDefaults.customAnswerSize
                     )
             }
         }
