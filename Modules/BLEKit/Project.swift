@@ -11,4 +11,12 @@ let project = Project.module(
     platform: .iOS,
     dependencies: [
         .external(name: "CombineCoreBluetooth")
+    ],
+    examples: [
+        ModuleExample(
+            name: "BLEKitExample",
+            infoPlist: [
+                "NSBluetoothAlwaysUsageDescription":
+                    "The Leka Updater app needs to use Bluetooth to connect to the Leka robot."
+            ])
     ])
