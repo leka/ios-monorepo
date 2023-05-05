@@ -57,29 +57,3 @@ extension Image {
         }
     }
 #endif
-
-// MARK: - Localized Custom Type for Yaml Translations
-
-extension LocalizedContent {
-    func localized() -> String {
-        guard let translation = (Locale.current.language.languageCode?.identifier == "fr" ? self.frFR : self.enUS)
-        else {
-            print("Nothing to display")
-            return ""
-        }
-        return translation
-    }
-}
-
-extension ActivityViewModel: AVSpeechSynthesizerDelegate {
-    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
-        isSpeaking = false
-    }
-}
-
-extension ActivityViewModel: AVAudioPlayerDelegate {
-    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
-        currentMediaHasBeenPlayedOnce = true
-        answersAreDisabled = false
-    }
-}

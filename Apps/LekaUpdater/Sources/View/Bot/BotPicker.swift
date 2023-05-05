@@ -51,7 +51,7 @@ struct BotPicker: View {
         }
         .navigationBarTitleDisplayMode(.inline)
         .navigationDestination(isPresented: $navigateToSignup1Final) {
-            SignupStep1Final()
+            //            SignupStep1Final()
         }
         .toolbar {
             ToolbarItem(placement: .principal) { navigationTitle }

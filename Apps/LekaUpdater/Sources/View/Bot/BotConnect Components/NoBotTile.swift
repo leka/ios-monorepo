@@ -37,7 +37,7 @@ struct NoBotTile: View {
             height: metrics.tileSize.height
         )
         .navigationDestination(isPresented: $navigateToSignup2) {
-                        SignupStep2()
+            //                        SignupStep2()
         }
         .background(
             Color("lekaLightGray"),
