@@ -4,7 +4,7 @@
 
 import SwiftUI
 
-struct CircularAnswerButton: View {
+struct ColoredAnswerButton: View {
 
     @EnvironmentObject var gameEngine: GameEngine
     @EnvironmentObject var defaults: GameLayoutTemplatesDefaults
@@ -17,19 +17,13 @@ struct CircularAnswerButton: View {
         Button {
             gameEngine.answerHasBeenPressed(atIndex: answer)
         } label: {
-            CircularAnswerContent(content: answerContent)
+            Circle()
+                .foregroundColor(colors[answer])
         }
         .buttonStyle(ActivityAnswer_ButtonStyle(isEnabled: gameEngine.currentMediaHasBeenPlayedOnce))
         .animation(.easeIn(duration: 0.3), value: gameEngine.correctAnswerAnimationPercent)
         .overlay(AnswerFeedback(answer: answer))
         .disabled(gameEngine.tapIsDisabled)
         .disabled(gameEngine.allAnswersAreDisabled)
-    }
-
-    var answerContent: String {
-        guard answer < gameEngine.allAnswers.count else {
-            return gameEngine.answersAreImages ? "dummy_1" : "blue"
-        }
-        return gameEngine.allAnswers[answer]
     }
 }

@@ -22,10 +22,13 @@ class GameLayoutTemplatesConfigurations: ObservableObject {
         "LayoutTemplate_1", "LayoutTemplate_2", "LayoutTemplate_3", "LayoutTemplate_3_inline",
         "LayoutTemplate_4", "LayoutTemplate_4_inline", "LayoutTemplate_6",
     ]
+    @Published var colorQuestPreviews = [
+        "ColorQuest_1", "ColorQuest_2", "ColorQuest_3",
+    ]
     @Published var miscPreviews = [
         "xylophoneTemplate"
     ]
 
     // unused for now
-    // @Published var typesOfActivity: [String] = ["touch_to_select", "listen_then_touch_to_select", "xylophone"]
+    // @Published var typesOfActivity: [String] = ["touch_to_select", "listen_then_touch_to_select", "xylophone", "color_quest"]
 }

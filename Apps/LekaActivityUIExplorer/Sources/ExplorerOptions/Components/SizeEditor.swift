@@ -44,7 +44,7 @@ struct SizeEditor: View {
         LabeledContent {
             Slider(
                 value: $templateDefaults.customAnswerSize,
-                in: 100...300,
+                in: 100...500,
                 step: 10,
                 label: {
                     // Unnecessary

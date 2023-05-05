@@ -13,6 +13,7 @@ struct SidebarView: View {
 
     @State private var touchToSelectIsExpanded: Bool = false
     @State private var listenThenTouchIsExpanded: Bool = false
+    @State private var colorQuestIsExpanded: Bool = false
     @State private var miscIsExpanded: Bool = false
     @State private var selectedTemplate: Int = 0
 
@@ -89,6 +90,46 @@ struct SidebarView: View {
                     .padding(20)
                 } label: {
                     Text("listen_then_touch_to_select")
+                        .frame(height: 32)
+                        .frame(maxWidth: .infinity)
+                        .background(Color.accentColor, in: RoundedRectangle(cornerRadius: 8))
+                }
+                .padding(.horizontal, 20)
+
+                DisclosureGroup(isExpanded: $colorQuestIsExpanded) {
+                    LazyVGrid(columns: [GridItem()]) {
+                        ForEach(configuration.colorQuestPreviews.indices, id: \.self) { item in
+                            Button(
+                                action: {
+                                    selectedTemplate = item
+                                    navigator.sidebarVisibility = .detailOnly
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                                        setupTest(withTemplate: item, type: "color_quest")
+                                    }
+                                },
+                                label: {
+                                    ZStack(alignment: .topTrailing) {
+                                        previewButton(configuration.colorQuestPreviews[item])
+                                        Image(systemName: "play.circle")
+                                            .font(defaults.reg18)
+                                            .foregroundColor(
+                                                LekaActivityUIExplorerAsset.Colors.lekaSkyBlue.swiftUIColor
+                                            )
+                                            .padding(4)
+                                    }
+                                }
+                            )
+                            .buttonStyle(
+                                TemplatePreview_ButtonStyle(
+                                    isSelected: selectedTemplate == item,
+                                    name: configuration.colorQuestPreviews[item])
+                            )
+                            .padding(20)
+                        }
+                    }
+                    .padding(20)
+                } label: {
+                    Text("color_quest")
                         .frame(height: 32)
                         .frame(maxWidth: .infinity)
                         .background(Color.accentColor, in: RoundedRectangle(cornerRadius: 8))

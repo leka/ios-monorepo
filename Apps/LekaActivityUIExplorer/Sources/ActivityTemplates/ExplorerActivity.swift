@@ -68,8 +68,14 @@ class ExplorerActivity: ObservableObject {
             return stepAnswers4
         } else if withTemplate == 6 {
             return type == "touch_to_select" ? stepAnswers5 : stepAnswers6
-        } else {
+        } else if withTemplate == 7 {
             return stepAnswers6
+        } else if withTemplate == 8 {
+            return stepAnswers1
+        } else if withTemplate == 9 {
+            return stepAnswers2
+        } else {
+            return stepAnswers3
         }
     }
 
@@ -87,15 +93,32 @@ class ExplorerActivity: ObservableObject {
     }
 
     var stepInstructionFR: String {
-        guard type == "xylophone" else {
-            return "Touche le numéro 1"
+        switch type {
+            case "touch_to_select":
+                return "Touche le numéro 1"
+            case "listen_then_touch_to_select":
+                return "Touche le numéro 1"
+            case "color_quest":
+                return "Touche la couleur verte"
+            case "xylophone":
+                return "Joue du xylophone avec Leka"
+            default:
+                return ""
         }
-        return "Joue du xylophone avec Leka"
     }
     var stepInstructionEN: String {
-        guard type == "xylophone" else {
-            return "Touch the number 1"
+        switch type {
+            case "touch_to_select":
+                return "Touch the number 1"
+            case "listen_then_touch_to_select":
+                return "Touch the number 1"
+            case "color_quest":
+                return "Touch the green color"
+            case "xylophone":
+                return "Play the xylophone with Leka"
+            default:
+                return ""
         }
-        return "Play the xylophone with Leka"
     }
+
 }
