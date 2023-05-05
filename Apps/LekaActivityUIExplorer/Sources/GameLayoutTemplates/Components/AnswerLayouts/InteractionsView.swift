@@ -17,11 +17,11 @@ struct InteractionsView: View {
                 XylophoneLayout()
             } else if gameEngine.currentActivity.activityType == "color_quest" {
                 if gameEngine.allAnswers.count == 1 {
-                    ColorQuestOneAnswerLayout()
+                    ColorQuestOneAnswerLayout(templateDefaults: templateDefaults)
                 } else if gameEngine.allAnswers.count == 2 {
-                    ColorQuestTwoAnswersLayout()
+                    ColorQuestTwoAnswersLayout(templateDefaults: templateDefaults)
                 } else if gameEngine.allAnswers.count == 3 {
-                    ColorQuestThreeAnswersLayout()
+                    ColorQuestThreeAnswersLayout(templateDefaults: templateDefaults)
                 }
             } else {
                 HStack(spacing: 0) {
