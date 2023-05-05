@@ -4,14 +4,32 @@
 
 import CombineCoreBluetooth
 
-public struct RobotAdvertisingData {
+extension String {
 
-    // MARK: - Private variables
+    public var nilWhenEmpty: String? {
+        return self.isEmpty ? nil : self
+    }
 
-    private let advertisementData: AdvertisementData
-    private let serviceData: Data
+}
+
+public struct RobotAdvertisingData: AdvertisingDataProcotol {
+
+    // MARK: - Public variables
+
+    public let name: String
+    public let battery: Int
+    public let isCharging: Bool
+    public let osVersion: String
 
     // MARK: - Public functions
+
+    public init(name: String?, serviceData: Data) {
+        let serviceData = AdvertisingServiceData(data: serviceData)
+        self.name = name?.nilWhenEmpty ?? "⚠️ NO NAME"
+        self.battery = serviceData.battery
+        self.isCharging = serviceData.isCharging
+        self.osVersion = serviceData.osVersion
+    }
 
     public init?(_ advertisementData: AdvertisementData) {
         guard
@@ -21,47 +39,7 @@ public struct RobotAdvertisingData {
             return nil
         }
 
-        self.advertisementData = advertisementData
-        self.serviceData = robotServiceData
-    }
-
-    // MARK: - Public variables
-
-    public var name: String {
-        return self.advertisementData.localName ?? "⚠️ NO NAME"
-    }
-
-    public var isCharging: Bool {
-        return serviceData[Index.isCharging] == 0x01
-    }
-
-    public var battery: Int {
-        return Int(serviceData[Index.battery])
-    }
-
-    public var osVersion: String {
-        guard self.serviceData.count == 6 else {
-            return "⚠️ NO OS VERSION"
-        }
-
-        let major = self.serviceData[Index.osVersionMajor]
-        let minor = self.serviceData[Index.osVersionMinor]
-        let revision =
-            self.serviceData[Index.osVersionRevisionHighByte] << 8
-            + self.serviceData[Index.osVersionRevisionLowByte]
-
-        return "\(major).\(minor).\(revision)"
-    }
-
-    // MARK: - Misc.
-
-    private enum Index {
-        static let battery = 0
-        static let isCharging = 1
-        static let osVersionMajor = 2
-        static let osVersionMinor = 3
-        static let osVersionRevisionHighByte = 4
-        static let osVersionRevisionLowByte = 5
+        self.init(name: advertisementData.localName, serviceData: robotServiceData)
     }
 
 }
