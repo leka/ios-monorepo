@@ -60,6 +60,9 @@ struct ContentView: View {
         guard gameEngine.currentActivity.activityType != "listen_then_touch_to_select" else {
             return relevantListenThenTouchToSelectDefaults()
         }
+        guard gameEngine.currentActivity.activityType != "color_quest" else {
+            return relevantColorQuestDefaults()
+        }
         return relevantTouchToSelectDefaults()
     }
 
@@ -105,6 +108,16 @@ struct ContentView: View {
         } else {
             return ListenThenTouchToSelect.six
         }
+    }
+
+    private func relevantColorQuestDefaults() -> BaseDefaults {
+        guard gameEngine.allAnswers.count >= 2 else {
+            return ColorQuest.one
+        }
+        if gameEngine.allAnswers.count == 2 {
+            return ColorQuest.two
+        }
+        return ColorQuest.three
     }
 
     private var topBarTrailingItems: some View {

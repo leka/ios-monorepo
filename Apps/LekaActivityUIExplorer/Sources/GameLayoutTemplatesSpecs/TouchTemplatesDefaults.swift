@@ -136,6 +136,15 @@ public enum ListenThenTouchToSelect {
         defaultAnswerSize: 200, defaultHorizontalSpacing: 80, defaultVerticalSpacing: 32, defaultListenButtonSize: 200)
 }
 
+public enum ColorQuest {
+    public static var one = BaseDefaults(
+        defaultAnswerSize: 500, defaultHorizontalSpacing: 32, defaultVerticalSpacing: 32)
+    public static var two = BaseDefaults(
+        defaultAnswerSize: 350, defaultHorizontalSpacing: 70, defaultVerticalSpacing: 32)
+    public static var three = BaseDefaults(
+        defaultAnswerSize: 260, defaultHorizontalSpacing: 70, defaultVerticalSpacing: 32)
+}
+
 public enum Misc {
     public static var xylophone = XylophoneDefaults(
         defaultTileWidth: 180, defaultTilesSpacing: 32, defaultTilesScaleFeedback: 0.98,
