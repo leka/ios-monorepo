@@ -93,22 +93,32 @@ class ExplorerActivity: ObservableObject {
     }
 
     var stepInstructionFR: String {
-        guard type == "xylophone" else {
-            return "Touche le numéro 1"
+        switch type {
+            case "touch_to_select":
+                return "Touche le numéro 1"
+            case "listen_then_touch_to_select":
+                return "Touche le numéro 1"
+            case "color_quest":
+                return "Touche la couleur verte"
+            case "xylophone":
+                return "Joue du xylophone avec Leka"
+            default:
+                return ""
         }
-        if type == "color_quest" {
-            return "Touche la couleur verte"
-        }
-        return "Joue du xylophone avec Leka"
     }
     var stepInstructionEN: String {
-        guard type == "xylophone" else {
-            return "Touch the number 1"
+        switch type {
+            case "touch_to_select":
+                return "Touch the number 1"
+            case "listen_then_touch_to_select":
+                return "Touch the number 1"
+            case "color_quest":
+                return "Touch the green color"
+            case "xylophone":
+                return "Play the xylophone with Leka"
+            default:
+                return ""
         }
-        guard withTemplate > 10 else {
-            return "Touch the green color"
-        }
-        return "Play the xylophone with Leka"
     }
 
 }
