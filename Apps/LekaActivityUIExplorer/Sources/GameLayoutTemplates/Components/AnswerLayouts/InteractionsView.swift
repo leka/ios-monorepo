@@ -15,6 +15,14 @@ struct InteractionsView: View {
             Spacer()
             if gameEngine.currentActivity.activityType == "xylophone" {
                 XylophoneLayout()
+            } else if gameEngine.currentActivity.activityType == "color_quest" {
+                if gameEngine.allAnswers.count == 1 {
+                    ColorQuestOneAnswerLayout(templateDefaults: templateDefaults)
+                } else if gameEngine.allAnswers.count == 2 {
+                    ColorQuestTwoAnswersLayout(templateDefaults: templateDefaults)
+                } else if gameEngine.allAnswers.count == 3 {
+                    ColorQuestThreeAnswersLayout(templateDefaults: templateDefaults)
+                }
             } else {
                 HStack(spacing: 0) {
                     if gameEngine.currentActivity.activityType == "listen_then_touch_to_select" {
