@@ -7,9 +7,20 @@ import SwiftUI
 
 @main
 struct LekaUpdaterApp: App {
+
+    @StateObject var viewRouter = ViewRouter()
+    @StateObject var metrics = UIMetrics()
+    @StateObject var settings = SettingsViewModel()
+    @StateObject var botVM = BotViewModel()
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            //            ContentView()
+            BotPicker()
+                .environmentObject(viewRouter)
+                .environmentObject(metrics)
+                .environmentObject(settings)
+                .environmentObject(botVM)
         }
     }
 }
