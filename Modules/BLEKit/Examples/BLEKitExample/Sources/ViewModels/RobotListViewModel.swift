@@ -34,10 +34,10 @@ public class RobotListViewModel: ObservableObject {
     public func scanForPeripherals() {
         if !bleManager.isScanning {
             print("Start scanning")
-            bleManager.searchForPeripherals()
+            bleManager.scanForRobots()
         } else {
             print("Stop scanning")
-            bleManager.stopSearching()
+            bleManager.stopScanning()
             selectedRobotDiscovery = nil
         }
     }
