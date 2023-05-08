@@ -27,11 +27,6 @@ enum Languages: Hashable, CaseIterable {
     }
 }
 
-// MARK: - Templates Scopes (per activity/group/step || mixed)
-enum TemplateSelectionScope {
-    case activity, group, step
-}
-
 // MARK: - Game States for UI Translations
 enum ResultType {
     case idle, fail, medium, success
