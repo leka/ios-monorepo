@@ -86,7 +86,7 @@ struct ContentView: View {
 
     private func relevantListenThenTouchToSelectDefaults() -> BaseDefaults {
         guard gameEngine.allAnswers.count >= 2 else {
-            return TouchToSelect.one
+            return ListenThenTouchToSelect.one
         }
         if gameEngine.allAnswers.count == 2 {
             return ListenThenTouchToSelect.two
