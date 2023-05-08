@@ -33,7 +33,7 @@ public class BLEManager: ObservableObject {
         return BLEManager(centralManager: CentralManager.live())
     }
 
-    public func searchForPeripherals() {
+    public func scanForRobots() {
         scanTask = centralManager.scanForPeripherals(withServices: [BLESpecs.AdvertisingData.service])
             .scan(
                 [],
@@ -57,7 +57,7 @@ public class BLEManager: ObservableObject {
         self.isScanning = centralManager.isScanning
     }
 
-    public func stopSearching() {
+    public func stopScanning() {
         scanTask?.cancel()
         peripheralDiscoveries = []
         self.isScanning = centralManager.isScanning
