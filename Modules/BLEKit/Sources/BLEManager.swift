@@ -9,9 +9,9 @@ public class BLEManager: ObservableObject {
     // MARK: - @Published variables
 
     // TODO(@ladislas): review published variables --> are they all needed?
-    @Published public var peripheralDiscoveries: [PeripheralDiscovery] = []
+    @Published public var robotDiscoveries: [PeripheralDiscovery] = []
+    @Published public var connectedRobotPeripheral: Peripheral?
     @Published public var isScanning: Bool = false
-    @Published public var connectedPeripheral: Peripheral?
 
     // MARK: - Public variables
 
@@ -51,7 +51,7 @@ public class BLEManager: ObservableObject {
                 guard let self = self else {
                     return
                 }
-                self.peripheralDiscoveries = $0
+                self.robotDiscoveries = $0
             })
 
         self.isScanning = centralManager.isScanning
@@ -59,7 +59,7 @@ public class BLEManager: ObservableObject {
 
     public func stopScanning() {
         scanTask?.cancel()
-        peripheralDiscoveries = []
+        robotDiscoveries = []
         self.isScanning = centralManager.isScanning
     }
 
@@ -67,19 +67,19 @@ public class BLEManager: ObservableObject {
         return centralManager.connect(discovery.peripheral)
             .receive(on: DispatchQueue.main)
             .map {
-                self.connectedPeripheral = $0
+                self.connectedRobotPeripheral = $0
                 // TODO(@ladislas): should we really return? why not just use the Published property to get the update?
-                return self.connectedPeripheral!
+                return self.connectedRobotPeripheral!
             }
             .eraseToAnyPublisher()
     }
 
     public func disconnect() {
-        guard let connectedPeripheral = connectedPeripheral else { return }
+        guard let connectedPeripheral = connectedRobotPeripheral else { return }
 
         centralManager.cancelPeripheralConnection(connectedPeripheral)
 
-        self.connectedPeripheral = nil
+        self.connectedRobotPeripheral = nil
     }
 
 }

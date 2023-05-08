@@ -89,7 +89,7 @@ public class RobotListViewModel: ObservableObject {
     }
 
     private func subscribeToRobotDiscoveries() {
-        bleManager.$peripheralDiscoveries
+        bleManager.$robotDiscoveries
             .receive(on: DispatchQueue.main)
             .sink { [weak self] discoveries in
                 guard let self = self else { return }
@@ -101,7 +101,7 @@ public class RobotListViewModel: ObservableObject {
     }
 
     private func subscribeToRobotPeripheralConnection() {
-        bleManager.$connectedPeripheral
+        bleManager.$connectedRobotPeripheral
             .receive(on: DispatchQueue.main)
             .sink { [weak self] peripheral in
                 guard let self = self, let peripheral = peripheral else {
