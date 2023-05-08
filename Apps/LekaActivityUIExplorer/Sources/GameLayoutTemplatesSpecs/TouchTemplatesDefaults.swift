@@ -59,11 +59,11 @@ public class ListenThenTouchToSelectDefaults: BaseDefaults {
 }
 
 public class XylophoneDefaults: BaseDefaults {
-    var defaultTileWidth: CGFloat = 180
-    var defaultTilesSpacing: CGFloat = 32
-    var defaultTilesScaleFeedback: CGFloat = 0.98
-    var defaultTilesRotationFeedback: Double = -1
-    var defaultTileColors: [Color] = [.green, .purple, .red, .yellow, .blue]
+    var defaultTileWidth: CGFloat
+    var defaultTilesSpacing: CGFloat
+    var defaultTilesScaleFeedback: CGFloat
+    var defaultTilesRotationFeedback: Double
+    var defaultTileColors: [Color]
     // MARK: - Answering Tiles
     @Published var customTileWidth: CGFloat
     @Published var customTilesSpacing: CGFloat

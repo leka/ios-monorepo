@@ -11,9 +11,6 @@ struct ContentView: View {
     @EnvironmentObject var defaults: GameLayoutTemplatesDefaults
     @EnvironmentObject var configuration: GameLayoutTemplatesConfigurations
 
-    // Templates defaults
-    @StateObject var xylophoneDefaults = Misc.xylophone
-
     @State private var showInstructionModal: Bool = false
     @State private var navigateToConfigurator: Bool = false
     @State private var showOptions: Bool = false
@@ -44,7 +41,6 @@ struct ContentView: View {
                 if showOptions {
                     ExplorerOptionsPanel(
                         templateDefaults: relevantDefaultsSet(),
-                        xylophoneDefaults: xylophoneDefaults,
                         closePanel: $showOptions
                     )
                     .transition(.move(edge: .trailing))
@@ -53,7 +49,6 @@ struct ContentView: View {
         }
         .animation(.easeIn(duration: 0.4), value: showOptions)
         .navigationSplitViewStyle(.prominentDetail)
-        .environmentObject(xylophoneDefaults)
     }
 
     private func relevantDefaultsSet() -> BaseDefaults {

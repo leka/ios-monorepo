@@ -8,7 +8,7 @@ struct TilesFeedbackEditor: View {
 
     @EnvironmentObject var gameEngine: GameEngine
     @EnvironmentObject var defaults: GameLayoutTemplatesDefaults
-    @ObservedObject var templateDefaults: XylophoneDefaults
+    @ObservedObject var templateDefaults: XylophoneDefaults = Misc.xylophone
 
     var body: some View {
         Section {
