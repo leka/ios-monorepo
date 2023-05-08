@@ -2,11 +2,6 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
-import BLEKit
-import CombineCoreBluetooth
-import CoreBluetooth
-import CryptoKit
-
 extension RobotDiscovery {
 
     public static func mock() -> RobotDiscovery {
