@@ -2,7 +2,6 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
-import BLEKit
 import CombineCoreBluetooth
 
 public class RobotDiscovery: Identifiable, Equatable {
