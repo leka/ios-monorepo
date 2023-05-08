@@ -43,12 +43,9 @@ public class RobotListViewModel: ObservableObject {
     }
 
     public func connectToSelectedPeripheral() {
-        guard let peripheral = selectedRobotDiscovery?.peripheralDiscovery, let name = selectedRobotDiscovery?.name
-        else {
-            return
-        }
-        print("Connecting to \(name)")
-        bleManager.connect(peripheral)
+        guard let selectedRobotDiscovery = selectedRobotDiscovery else { return }
+        print("Connecting to \(selectedRobotDiscovery.advertisingData.name)")
+        bleManager.connect(selectedRobotDiscovery)
             .receive(on: DispatchQueue.main)
             .sink(
                 receiveCompletion: { _ in
@@ -91,11 +88,9 @@ public class RobotListViewModel: ObservableObject {
     private func subscribeToRobotDiscoveries() {
         bleManager.$robotDiscoveries
             .receive(on: DispatchQueue.main)
-            .sink { [weak self] discoveries in
+            .sink { [weak self] robotDiscoveries in
                 guard let self = self else { return }
-                self.availableRobots = discoveries.map { discovery in
-                    RobotDiscovery(peripheralDiscovery: discovery)
-                }
+                self.availableRobots = robotDiscoveries
             }
             .store(in: &cancellables)
     }
@@ -103,12 +98,12 @@ public class RobotListViewModel: ObservableObject {
     private func subscribeToRobotPeripheralConnection() {
         bleManager.$connectedRobotPeripheral
             .receive(on: DispatchQueue.main)
-            .sink { [weak self] peripheral in
-                guard let self = self, let peripheral = peripheral else {
+            .sink { [weak self] connectedRobotPeripheral in
+                guard let self = self, let connectedRobotPeripheral = connectedRobotPeripheral else {
                     self?.connectedRobotPeripheral = nil
                     return
                 }
-                self.connectedRobotPeripheral = RobotPeripheral(peripheral: peripheral)
+                self.connectedRobotPeripheral = connectedRobotPeripheral
             }
             .store(in: &cancellables)
     }

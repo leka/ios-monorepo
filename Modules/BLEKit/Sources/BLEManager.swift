@@ -9,8 +9,8 @@ public class BLEManager: ObservableObject {
     // MARK: - @Published variables
 
     // TODO(@ladislas): review published variables --> are they all needed?
-    @Published public var robotDiscoveries: [PeripheralDiscovery] = []
-    @Published public var connectedRobotPeripheral: Peripheral?
+    @Published public var robotDiscoveries: [RobotDiscovery] = []
+    @Published public var connectedRobotPeripheral: RobotPeripheral?
     @Published public var isScanning: Bool = false
 
     // MARK: - Public variables
@@ -38,7 +38,11 @@ public class BLEManager: ObservableObject {
             .scan(
                 [],
                 { list, discovery -> [PeripheralDiscovery] in
-                    guard let index = list.firstIndex(where: { $0.id == discovery.id }) else {
+                    guard
+                        let index = list.firstIndex(where: {
+                            return $0.id == discovery.id
+                        })
+                    else {
                         return list + [discovery]
                     }
                     var newList = list
@@ -47,11 +51,24 @@ public class BLEManager: ObservableObject {
                 }
             )
             .receive(on: DispatchQueue.main)
-            .sink(receiveValue: { [weak self] in
+            .sink(receiveValue: { [weak self] peripheralDiscoveries in
                 guard let self = self else {
                     return
                 }
-                self.robotDiscoveries = $0
+                self.robotDiscoveries = peripheralDiscoveries.compactMap { peripheralDiscovery in
+                    guard
+                        let robotAdvertisingData = RobotAdvertisingData(
+                            advertisementData: peripheralDiscovery.advertisementData),
+                        let rssi = peripheralDiscovery.rssi
+                    else {
+                        return nil
+                    }
+
+                    let robotPeripheral = RobotPeripheral(peripheral: peripheralDiscovery.peripheral)
+
+                    return RobotDiscovery(
+                        robotPeripheral: robotPeripheral, advertisingData: robotAdvertisingData, rssi: rssi)
+                }
             })
 
         self.isScanning = centralManager.isScanning
@@ -63,21 +80,22 @@ public class BLEManager: ObservableObject {
         self.isScanning = centralManager.isScanning
     }
 
-    public func connect(_ discovery: PeripheralDiscovery) -> AnyPublisher<Peripheral, Error> {
-        return centralManager.connect(discovery.peripheral)
+    // TODO(@ladislas): why use map + return Publisher? why not sink + @Published value?
+    public func connect(_ discovery: RobotDiscovery) -> AnyPublisher<RobotPeripheral, Error> {
+        return centralManager.connect(discovery.robotPeripheral.peripheral)
             .receive(on: DispatchQueue.main)
-            .map {
-                self.connectedRobotPeripheral = $0
-                // TODO(@ladislas): should we really return? why not just use the Published property to get the update?
+
+            .map { peripheral in
+                self.connectedRobotPeripheral = RobotPeripheral(peripheral: peripheral)
                 return self.connectedRobotPeripheral!
             }
             .eraseToAnyPublisher()
     }
 
     public func disconnect() {
-        guard let connectedPeripheral = connectedRobotPeripheral else { return }
+        guard let peripheral = connectedRobotPeripheral?.peripheral else { return }
 
-        centralManager.cancelPeripheralConnection(connectedPeripheral)
+        centralManager.cancelPeripheralConnection(peripheral)
 
         self.connectedRobotPeripheral = nil
     }
