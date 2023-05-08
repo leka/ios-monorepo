@@ -11,7 +11,6 @@ struct ExplorerOptionsPanel: View {
 
     // Templates defaults
     @ObservedObject var templateDefaults: BaseDefaults
-    @ObservedObject var xylophoneDefaults: XylophoneDefaults
 
     @Binding var closePanel: Bool
 
@@ -44,9 +43,9 @@ struct ExplorerOptionsPanel: View {
                                     SpacingEditor(templateDefaults: templateDefaults)
                                 }
                             } else {
-                                XylophoneSizeEditor(templateDefaults: xylophoneDefaults)
-                                XylophoneSpacingEditor(templateDefaults: xylophoneDefaults)
-                                TilesFeedbackEditor(templateDefaults: xylophoneDefaults)
+                                XylophoneSizeEditor()
+                                XylophoneSpacingEditor()
+                                TilesFeedbackEditor()
                             }
                         }
                         .padding(.top, 6)
