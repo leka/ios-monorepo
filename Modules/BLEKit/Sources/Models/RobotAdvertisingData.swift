@@ -31,7 +31,7 @@ public struct RobotAdvertisingData: AdvertisingDataProcotol {
         self.osVersion = serviceData.osVersion
     }
 
-    public init?(_ advertisementData: AdvertisementData) {
+    public init?(advertisementData: AdvertisementData) {
         guard
             let rawServiceData = advertisementData.serviceData,
             let robotServiceData = rawServiceData[BLESpecs.AdvertisingData.service]

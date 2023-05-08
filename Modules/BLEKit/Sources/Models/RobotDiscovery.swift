@@ -4,57 +4,47 @@
 
 import CombineCoreBluetooth
 
-public class RobotDiscovery: Identifiable, Equatable {
+public struct RobotDiscovery: Identifiable, Equatable {
 
     // MARK: - Public variables
 
-    public internal(set) var name: String
-    public internal(set) var osVersion: String
-    public internal(set) var battery: String
-    public internal(set) var isCharging: Bool
-
-    public let peripheralDiscovery: PeripheralDiscovery?
-
-    // MARK: - Private variables
-
-    internal let advertisingData: RobotAdvertisingData?
+    public let robotPeripheral: RobotPeripheral
+    public var advertisingData: RobotAdvertisingData
+    public let rssi: Double?
 
     // MARK: - Public functions
 
-    public init(peripheralDiscovery: PeripheralDiscovery) {
-        self.peripheralDiscovery = peripheralDiscovery
-        self.advertisingData = RobotAdvertisingData(peripheralDiscovery.advertisementData)
+    public init(robotPeripheral: RobotPeripheral, advertisingData: RobotAdvertisingData, rssi: Double?) {
+        self.robotPeripheral = robotPeripheral
+        self.advertisingData = advertisingData
+        self.rssi = rssi
+    }
 
-        guard let advertisingData = advertisingData else {
-            self.name = "⚠️ NO NAME"
-            self.osVersion = "⚠️ NO OS VERSION"
-            self.battery = "⚠️ NO BATTERY LEVEL"
-            self.isCharging = false
-            return
-        }
+    // MARK: - Identifiable conformance
 
-        self.name = advertisingData.name
-        self.osVersion = advertisingData.osVersion
-        self.battery = "\(advertisingData.battery)%"
-        self.isCharging = advertisingData.isCharging
+    public var id: UUID {
+        robotPeripheral.peripheral.id
     }
 
     // MARK: - Equatable conformance
 
     public static func == (lhs: RobotDiscovery, rhs: RobotDiscovery) -> Bool {
-        lhs.peripheralDiscovery?.id == rhs.peripheralDiscovery?.id
+        return lhs.robotPeripheral.peripheral.id == rhs.robotPeripheral.peripheral.id
     }
 
-    // MARK: - Private functions
+    public static func == (lhs: RobotDiscovery, rhs: RobotDiscovery?) -> Bool {
+        guard let rhs = rhs else {
+            return false
+        }
 
-    internal init(name: String, osVersion: String, battery: Int, isCharging: Bool) {
-        self.peripheralDiscovery = nil
-        self.advertisingData = nil
-
-        self.name = name
-        self.osVersion = osVersion
-        self.battery = "\(battery)%"
-        self.isCharging = isCharging
+        return lhs.robotPeripheral.peripheral.id == rhs.robotPeripheral.peripheral.id
     }
 
+    public static func == (lhs: RobotDiscovery?, rhs: RobotDiscovery) -> Bool {
+        guard let lhs = lhs else {
+            return false
+        }
+
+        return lhs.robotPeripheral.peripheral.id == rhs.robotPeripheral.peripheral.id
+    }
 }
