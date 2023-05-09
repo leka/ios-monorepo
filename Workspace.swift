@@ -21,6 +21,7 @@ func projects() -> [Path] {
     let modules: [Path] = [
         "Modules/DesignKit",
         "Modules/BLEKit",
+        "Modules/RobotKit",
     ]
 
     // MARK: - iOS Examples
