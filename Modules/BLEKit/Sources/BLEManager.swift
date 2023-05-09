@@ -8,13 +8,12 @@ public class BLEManager {
 
     // MARK: - @Published variables
 
-    // TODO(@ladislas): review published variables --> are they all needed?
-    @Published public var connectedRobotPeripheral: RobotPeripheral?
     public let isScanning = CurrentValueSubject<Bool, Never>(false)
 
     // MARK: - Private variables
 
     private var centralManager: CentralManager
+    private var connectedRobotPeripheral: RobotPeripheral?
 
     // MARK: - Public functions
 
@@ -71,24 +70,20 @@ public class BLEManager {
             .eraseToAnyPublisher()
     }
 
-    // TODO(@ladislas): why use map + return Publisher? why not sink + @Published value?
     public func connect(_ discovery: RobotDiscovery) -> AnyPublisher<RobotPeripheral, Error> {
         return centralManager.connect(discovery.robotPeripheral.peripheral)
+            // TODO(@ladislas): check if receive is needed here
             .receive(on: DispatchQueue.main)
-
-            .map { peripheral in
+            .compactMap { peripheral in
                 self.connectedRobotPeripheral = RobotPeripheral(peripheral: peripheral)
-                return self.connectedRobotPeripheral!
+                return self.connectedRobotPeripheral
             }
             .eraseToAnyPublisher()
     }
 
     public func disconnect() {
-        guard let peripheral = connectedRobotPeripheral?.peripheral else { return }
-
-        centralManager.cancelPeripheralConnection(peripheral)
-
-        self.connectedRobotPeripheral = nil
+        guard let connectedPeripheral = self.connectedRobotPeripheral?.peripheral else { return }
+        centralManager.cancelPeripheralConnection(connectedPeripheral)
     }
 
 }
