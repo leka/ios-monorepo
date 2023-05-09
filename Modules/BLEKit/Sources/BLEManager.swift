@@ -4,7 +4,7 @@
 
 import CombineCoreBluetooth
 
-public class BLEManager: ObservableObject {
+public class BLEManager {
 
     // MARK: - @Published variables
 
