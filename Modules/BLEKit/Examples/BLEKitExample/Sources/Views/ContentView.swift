@@ -23,7 +23,7 @@ struct ContentView: View {
 
     var body: some View {
         VStack {
-            List(robotListViewModel.availableRobots) { robotDiscovery in
+            List(robotListViewModel.robotDiscoveries) { robotDiscovery in
                 RobotDiscoveryView(discovery: robotDiscovery)
                     .contentShape(Rectangle())
                     .onTapGesture {

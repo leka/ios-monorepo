@@ -19,7 +19,7 @@ public class RobotListViewModel: ObservableObject {
     @Published var selectedRobotDiscovery: RobotDiscovery?
     @Published var connectedRobotDiscovery: RobotDiscovery?
     @Published var connectedRobotPeripheral: RobotPeripheral?
-    @Published var availableRobots: [RobotDiscovery] = []
+    @Published var robotDiscoveries: [RobotDiscovery] = []
     @Published var isScanning: Bool = false
 
     // MARK: - Public functions
@@ -64,7 +64,7 @@ public class RobotListViewModel: ObservableObject {
         bleManager.disconnect()
         self.connectedRobotDiscovery = nil
         if !isScanning {
-            self.availableRobots = []
+            self.robotDiscoveries = []
         }
     }
 
@@ -72,7 +72,7 @@ public class RobotListViewModel: ObservableObject {
 
     internal init(availableRobots: [RobotDiscovery]) {
         self.bleManager = BLEManager.live()
-        self.availableRobots = availableRobots
+        self.robotDiscoveries = availableRobots
     }
 
     private func subscribeToScanningStatus() {
@@ -90,7 +90,7 @@ public class RobotListViewModel: ObservableObject {
             .receive(on: DispatchQueue.main)
             .sink { [weak self] robotDiscoveries in
                 guard let self = self else { return }
-                self.availableRobots = robotDiscoveries
+                self.robotDiscoveries = robotDiscoveries
             }
             .store(in: &cancellables)
     }
