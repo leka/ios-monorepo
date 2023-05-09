@@ -23,17 +23,17 @@ struct ContentView: View {
 
     var body: some View {
         VStack {
-            List(robotListViewModel.availableRobots) { robot in
-                RobotDiscoveryView(discovery: robot)
+            List(robotListViewModel.robotDiscoveries) { robotDiscovery in
+                RobotDiscoveryView(discovery: robotDiscovery)
                     .contentShape(Rectangle())
                     .onTapGesture {
-                        if robot == self.robotListViewModel.selectedRobotDiscovery {
-                            print("Unselect \(robot)")
+                        if robotDiscovery == self.robotListViewModel.selectedRobotDiscovery {
+                            print("Unselect \(robotDiscovery)")
                             self.robotListViewModel.selectedRobotDiscovery = nil
 
                         } else {
-                            print("Select \(robot.name)")
-                            self.robotListViewModel.selectedRobotDiscovery = robot
+                            print("Select \(robotDiscovery.advertisingData.name)")
+                            self.robotListViewModel.selectedRobotDiscovery = robotDiscovery
                         }
                     }
             }

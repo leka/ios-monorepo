@@ -62,9 +62,12 @@ struct ConnectButton: View {
     private var disconnectedView: some View {
         HStack(spacing: 10) {
             Text(
-                (robotListViewModel.selectedRobotDiscovery?.name != nil)
-                    ? "Connect to \(robotListViewModel.selectedRobotDiscovery?.name ?? "nil")"
-                    : "Select a robot to connect"
+                { () -> String in
+                    guard let name = robotListViewModel.selectedRobotDiscovery?.advertisingData.name else {
+                        return "Select a robot to connect"
+                    }
+                    return "Connect to \(name)"
+                }()
             )
             .monospacedDigit()
             .font(.headline)
