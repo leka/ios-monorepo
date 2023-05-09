@@ -2,11 +2,12 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import BLEKit
 import SwiftUI
 
 struct RobotDiscoveryView: View {
 
-    @State private var discovery: RobotDiscovery
+    private var discovery: RobotDiscovery
 
     // MARK: - Environment variables
 
@@ -45,24 +46,24 @@ struct RobotDiscoveryView: View {
                     return .gray
                 }()
             )
-            .animation(.easeIn(duration: 0.25), value: robotListViewModel.selectedRobotDiscovery == discovery)
+            .animation(.easeIn(duration: 0.25), value: { robotListViewModel.selectedRobotDiscovery == discovery }())
 
             VStack(alignment: .leading, spacing: 10) {
 
                 HStack(spacing: 40) {
 
                     VStack(alignment: .leading) {
-                        Text(discovery.name)
+                        Text(discovery.advertisingData.name)
                             .font(.headline)
-                        Text("Firmware: v\(discovery.osVersion)")
+                        Text("Firmware: v\(discovery.advertisingData.osVersion)")
                     }
 
                     Spacer()
 
                     VStack(alignment: .leading) {
-                        Text("Battery: \(discovery.battery)")
-                        Text("Charging: \(discovery.isCharging ? "Yes" : "No")")
-                            .foregroundColor(discovery.isCharging ? .green : .red)
+                        Text("Battery: \(discovery.advertisingData.battery)")
+                        Text("Charging: \(discovery.advertisingData.isCharging ? "Yes" : "No")")
+                            .foregroundColor(discovery.advertisingData.isCharging ? .green : .red)
                     }
 
                     Spacer()
@@ -73,8 +74,9 @@ struct RobotDiscoveryView: View {
 
 }
 
-struct RobotView_Previews: PreviewProvider {
-    static var previews: some View {
-        RobotDiscoveryView(discovery: RobotDiscovery.mock())
-    }
-}
+// TODO(@ladislas): create protocol and mock RobotDiscovery
+//struct RobotView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        RobotDiscoveryView(discovery: RobotDiscovery.mock())
+//    }
+//}
