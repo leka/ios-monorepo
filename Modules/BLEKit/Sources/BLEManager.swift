@@ -9,18 +9,11 @@ public class BLEManager {
     // MARK: - @Published variables
 
     // TODO(@ladislas): review published variables --> are they all needed?
-    @Published public var robotDiscoveries: [RobotDiscovery] = []
     @Published public var connectedRobotPeripheral: RobotPeripheral?
-    @Published public var isScanning: Bool = false
-
-    // MARK: - Public variables
-
-    // TODO(@ladislas): review its use --> create bags in clases where it's used instead of using this one.
-    public var cancellables: Set<AnyCancellable> = []
+    public let isScanning = CurrentValueSubject<Bool, Never>(false)
 
     // MARK: - Private variables
 
-    private var scanTask: AnyCancellable?
     private var centralManager: CentralManager
 
     // MARK: - Public functions
@@ -33,9 +26,17 @@ public class BLEManager {
         return BLEManager(centralManager: CentralManager.live())
     }
 
-    public func scanForRobots() {
-        scanTask = centralManager.scanForPeripherals(withServices: [BLESpecs.AdvertisingData.service])
-            .scan(
+    public func scanForRobots() -> AnyPublisher<[RobotDiscovery], Error> {
+        return centralManager.scanForPeripherals(withServices: [BLESpecs.AdvertisingData.service])
+            .handleEvents(
+                receiveSubscription: { _ in
+                    self.isScanning.send(true)
+                },
+                receiveCancel: {
+                    self.isScanning.send(false)
+                }
+            )
+            .tryScan(
                 [],
                 { list, discovery -> [PeripheralDiscovery] in
                     guard
@@ -50,12 +51,8 @@ public class BLEManager {
                     return newList
                 }
             )
-            .receive(on: DispatchQueue.main)
-            .sink(receiveValue: { [weak self] peripheralDiscoveries in
-                guard let self = self else {
-                    return
-                }
-                self.robotDiscoveries = peripheralDiscoveries.compactMap { peripheralDiscovery in
+            .compactMap { peripheralDiscoveries in
+                peripheralDiscoveries.compactMap { peripheralDiscovery in
                     guard
                         let robotAdvertisingData = RobotAdvertisingData(
                             advertisementData: peripheralDiscovery.advertisementData),
@@ -69,15 +66,9 @@ public class BLEManager {
                     return RobotDiscovery(
                         robotPeripheral: robotPeripheral, advertisingData: robotAdvertisingData, rssi: rssi)
                 }
-            })
 
-        self.isScanning = centralManager.isScanning
-    }
-
-    public func stopScanning() {
-        scanTask?.cancel()
-        robotDiscoveries = []
-        self.isScanning = centralManager.isScanning
+            }
+            .eraseToAnyPublisher()
     }
 
     // TODO(@ladislas): why use map + return Publisher? why not sink + @Published value?
