@@ -18,6 +18,7 @@ public class RobotListViewModel: ObservableObject {
     // MARK: - Published variables
 
     @Published var selectedRobotDiscovery: RobotDiscovery?
+    // TODO(@ladislas): are they both needed?
     @Published var connectedRobotDiscovery: RobotDiscovery?
     @Published var connectedRobotPeripheral: RobotPeripheral?
     @Published var robotDiscoveries: [RobotDiscovery] = []
@@ -28,7 +29,6 @@ public class RobotListViewModel: ObservableObject {
     public init(bleManager: BLEManager) {
         self.bleManager = bleManager
         subscribeToScanningStatus()
-        subscribeToRobotPeripheralConnection()
     }
 
     public func scanForPeripherals() {
@@ -37,8 +37,10 @@ public class RobotListViewModel: ObservableObject {
             scanForRobotsTask = bleManager.scanForRobots()
                 .receive(on: DispatchQueue.main)
                 .sink(
-                    receiveCompletion: { error in
-                        print("💥 ERROR: \(error)")
+                    receiveCompletion: { completion in
+                        if case .failure(let error) = completion {
+                            print("💥 ERROR: \(error)")
+                        }
                     },
                     receiveValue: { robotDiscoveries in
                         self.robotDiscoveries = robotDiscoveries
@@ -46,6 +48,7 @@ public class RobotListViewModel: ObservableObject {
                 )
         } else {
             print("Stop scanning")
+            // TODO(@ladislas): do not reset to try and connect --> handle errors for real
             robotDiscoveries = []
             scanForRobotsTask?.cancel()
             selectedRobotDiscovery = nil
@@ -58,12 +61,15 @@ public class RobotListViewModel: ObservableObject {
         bleManager.connect(selectedRobotDiscovery)
             .receive(on: DispatchQueue.main)
             .sink(
-                receiveCompletion: { _ in
-                    // nothing to do
+                receiveCompletion: { completion in
+                    if case .failure(let error) = completion {
+                        print("💥 ERROR: \(error)")
+                    }
                 },
-                receiveValue: { [weak self] _ in
+                receiveValue: { [weak self] connectedRobotPeripheral in
                     guard let self = self else { return }
                     self.connectedRobotDiscovery = self.selectedRobotDiscovery
+                    self.connectedRobotPeripheral = connectedRobotPeripheral
                 }
             )
             .store(in: &cancellables)
@@ -73,6 +79,7 @@ public class RobotListViewModel: ObservableObject {
         print("Disconnecting")
         bleManager.disconnect()
         self.connectedRobotDiscovery = nil
+        self.connectedRobotPeripheral = nil
         if !isScanning {
             self.robotDiscoveries = []
         }
@@ -91,19 +98,6 @@ public class RobotListViewModel: ObservableObject {
             .sink { [weak self] status in
                 guard let self = self else { return }
                 self.isScanning = status
-            }
-            .store(in: &cancellables)
-    }
-
-    private func subscribeToRobotPeripheralConnection() {
-        bleManager.$connectedRobotPeripheral
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] connectedRobotPeripheral in
-                guard let self = self, let connectedRobotPeripheral = connectedRobotPeripheral else {
-                    self?.connectedRobotPeripheral = nil
-                    return
-                }
-                self.connectedRobotPeripheral = connectedRobotPeripheral
             }
             .store(in: &cancellables)
     }
