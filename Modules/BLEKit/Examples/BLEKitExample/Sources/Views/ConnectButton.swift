@@ -23,10 +23,8 @@ struct ConnectButton: View {
             }
         } label: {
             if robotListViewModel.connectedRobotPeripheral == nil {
-                //                AnyView(disconnectedView)
                 disconnectedView
             } else {
-                //                AnyView(connectedView)
                 connectedView
             }
         }
