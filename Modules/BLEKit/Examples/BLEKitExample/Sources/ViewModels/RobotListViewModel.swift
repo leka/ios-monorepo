@@ -13,6 +13,7 @@ public class RobotListViewModel: ObservableObject {
 
     internal let bleManager: BLEManager
     internal var cancellables: Set<AnyCancellable> = []
+    internal var scanForRobotsTask: AnyCancellable?
 
     // MARK: - Published variables
 
@@ -27,17 +28,26 @@ public class RobotListViewModel: ObservableObject {
     public init(bleManager: BLEManager) {
         self.bleManager = bleManager
         subscribeToScanningStatus()
-        subscribeToRobotDiscoveries()
         subscribeToRobotPeripheralConnection()
     }
 
     public func scanForPeripherals() {
-        if !bleManager.isScanning {
+        if !bleManager.isScanning.value {
             print("Start scanning")
-            bleManager.scanForRobots()
+            scanForRobotsTask = bleManager.scanForRobots()
+                .receive(on: DispatchQueue.main)
+                .sink(
+                    receiveCompletion: { error in
+                        print("💥 ERROR: \(error)")
+                    },
+                    receiveValue: { robotDiscoveries in
+                        self.robotDiscoveries = robotDiscoveries
+                    }
+                )
         } else {
             print("Stop scanning")
-            bleManager.stopScanning()
+            robotDiscoveries = []
+            scanForRobotsTask?.cancel()
             selectedRobotDiscovery = nil
         }
     }
@@ -76,21 +86,11 @@ public class RobotListViewModel: ObservableObject {
     }
 
     private func subscribeToScanningStatus() {
-        bleManager.$isScanning
+        bleManager.isScanning
             .receive(on: DispatchQueue.main)
             .sink { [weak self] status in
                 guard let self = self else { return }
                 self.isScanning = status
-            }
-            .store(in: &cancellables)
-    }
-
-    private func subscribeToRobotDiscoveries() {
-        bleManager.$robotDiscoveries
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] robotDiscoveries in
-                guard let self = self else { return }
-                self.robotDiscoveries = robotDiscoveries
             }
             .store(in: &cancellables)
     }
