@@ -13,9 +13,23 @@ struct ContentView: View {
     // MARK: - Views
 
     var body: some View {
-        Text("Hello, world!")
-            .font(.largeTitle)
-            .padding()
+        NavigationStack {
+            VStack(spacing: 30) {
+                RobotConnectionView()
+
+                NavigationLink(
+                    destination: {
+                        RobotControlView()
+                            .navigationTitle("Robot Control")
+                    },
+                    label: {
+                        Text("Go to robot control")
+                    }
+                )
+                .contentShape(Rectangle())
+            }
+            .navigationTitle("Robot Connection")
+        }
     }
 
 }
