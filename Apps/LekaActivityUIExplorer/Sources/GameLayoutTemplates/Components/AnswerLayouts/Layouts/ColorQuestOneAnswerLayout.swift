@@ -6,7 +6,7 @@ import SwiftUI
 
 struct ColorQuestOneAnswerLayout: View {
 
-    @ObservedObject var templateDefaults: BaseDefaults
+    @StateObject var templateDefaults: BaseDefaults = ColorQuest.one
 
     var body: some View {
         HStack {

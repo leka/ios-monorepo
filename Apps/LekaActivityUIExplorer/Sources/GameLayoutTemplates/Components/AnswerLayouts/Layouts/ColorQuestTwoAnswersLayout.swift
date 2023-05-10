@@ -6,7 +6,7 @@ import SwiftUI
 
 struct ColorQuestTwoAnswersLayout: View {
 
-    @ObservedObject var templateDefaults: BaseDefaults
+    @StateObject var templateDefaults: BaseDefaults = ColorQuest.two
 
     var body: some View {
         HStack(spacing: templateDefaults.customHorizontalSpacing) {

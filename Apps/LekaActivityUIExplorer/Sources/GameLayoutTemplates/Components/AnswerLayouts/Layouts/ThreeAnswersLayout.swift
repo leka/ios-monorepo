@@ -6,7 +6,7 @@ import SwiftUI
 
 struct ThreeAnswersLayout: View {
 
-    @ObservedObject var templateDefaults: BaseDefaults
+    @StateObject var templateDefaults: BaseDefaults = TouchToSelect.three
 
     var body: some View {
         Grid(
