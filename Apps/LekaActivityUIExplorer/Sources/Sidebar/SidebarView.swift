@@ -21,138 +21,30 @@ struct SidebarView: View {
                     .padding(.top, 10)
 
                 DisclosureGroup {
-                    LazyVGrid(columns: [GridItem()]) {
-                        ForEach(TouchToSelectPreviews.allCases, id: \.rawValue) { item in
-                            Button(
-                                action: {
-                                    selectedTemplate = item.rawValue
-                                    navigator.sidebarVisibility = .detailOnly
-                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                                        setupTest(withTemplate: item.rawValue, type: item.content.type)
-                                    }
-                                },
-                                label: {
-                                    previewButton(item.content.preview)
-                                }
-                            )
-                            .buttonStyle(
-                                TemplatePreview_ButtonStyle(
-                                    isSelected: selectedTemplate == item.rawValue,
-                                    name: item.content.preview)
-                            )
-                            .padding(20)
-                        }
-                    }
-                    .padding(20)
+                    TouchToSelectNavigationGroup(selected: $selectedTemplate) { setupTest() }
                 } label: {
-                    Text("touch_to_select")
-                        .frame(height: 32)
-                        .frame(maxWidth: .infinity)
-                        .background(Color.accentColor, in: RoundedRectangle(cornerRadius: 8))
+                    disclosureGroupLabel("touch_to_select")
                 }
                 .padding(.horizontal, 20)
 
                 DisclosureGroup {
-                    LazyVGrid(columns: [GridItem()]) {
-                        ForEach(ListenThenTouchToSelectPreviews.allCases, id: \.rawValue) { item in
-                            Button(
-                                action: {
-                                    selectedTemplate = item.rawValue
-                                    navigator.sidebarVisibility = .detailOnly
-                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                                        setupTest(withTemplate: item.rawValue, type: item.content.type)
-                                    }
-                                },
-                                label: {
-                                    ZStack(alignment: .topTrailing) {
-                                        previewButton(item.content.preview)
-                                        Image(systemName: "speaker.wave.2.circle")
-                                            .font(defaults.reg18)
-                                            .foregroundColor(
-                                                LekaActivityUIExplorerAsset.Colors.lekaSkyBlue.swiftUIColor
-                                            )
-                                            .padding(4)
-                                    }
-                                }
-                            )
-                            .buttonStyle(
-                                TemplatePreview_ButtonStyle(
-                                    isSelected: selectedTemplate == item.rawValue,
-                                    name: item.content.preview)
-                            )
-                            .padding(20)
-                        }
-                    }
-                    .padding(20)
+                    ListenThenTouchToSelectNavigationGroup(selected: $selectedTemplate) { setupTest() }
                 } label: {
-                    Text("listen_then_touch_to_select")
-                        .frame(height: 32)
-                        .frame(maxWidth: .infinity)
-                        .background(Color.accentColor, in: RoundedRectangle(cornerRadius: 8))
+                    disclosureGroupLabel("listen_then_touch_to_select")
                 }
                 .padding(.horizontal, 20)
 
                 DisclosureGroup {
-                    LazyVGrid(columns: [GridItem()]) {
-                        ForEach(ColorQuestPreviews.allCases, id: \.rawValue) { item in
-                            Button(
-                                action: {
-                                    selectedTemplate = item.rawValue
-                                    navigator.sidebarVisibility = .detailOnly
-                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                                        setupTest(withTemplate: item.rawValue, type: item.content.type)
-                                    }
-                                },
-                                label: {
-                                    previewButton(item.content.preview)
-                                }
-                            )
-                            .buttonStyle(
-                                TemplatePreview_ButtonStyle(
-                                    isSelected: selectedTemplate == item.rawValue,
-                                    name: item.content.preview)
-                            )
-                            .padding(20)
-                        }
-                    }
-                    .padding(20)
+                    ColorQuestNavigationGroup(selected: $selectedTemplate) { setupTest() }
                 } label: {
-                    Text("color_quest")
-                        .frame(height: 32)
-                        .frame(maxWidth: .infinity)
-                        .background(Color.accentColor, in: RoundedRectangle(cornerRadius: 8))
+                    disclosureGroupLabel("color_quest")
                 }
                 .padding(.horizontal, 20)
 
                 DisclosureGroup {
-                    LazyVGrid(columns: [GridItem()]) {
-                        ForEach(MiscPreviews.allCases, id: \.rawValue) { item in
-                            Button(
-                                action: {
-                                    selectedTemplate = item.rawValue
-                                    navigator.sidebarVisibility = .detailOnly
-                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                                        setupTest(withTemplate: item.rawValue, type: item.content.type)
-                                    }
-                                },
-                                label: {
-                                    previewButton(item.content.preview)
-                                }
-                            )
-                            .buttonStyle(
-                                TemplatePreview_ButtonStyle(
-                                    isSelected: selectedTemplate == item.rawValue,
-                                    name: item.content.preview)
-                            )
-                            .padding(20)
-                        }
-                    }
-                    .padding(20)
+                    MiscNavigationGroup(selected: $selectedTemplate) { setupTest() }
                 } label: {
-                    Text("xylophone")
-                        .frame(height: 32)
-                        .frame(maxWidth: .infinity)
-                        .background(Color.accentColor, in: RoundedRectangle(cornerRadius: 8))
+                    disclosureGroupLabel("xylophone")
                 }
                 .padding(.horizontal, 20)
             }
@@ -165,9 +57,13 @@ struct SidebarView: View {
 
     }
 
-    private func setupTest(withTemplate: Int, type: ActivityType) {
-        configuration.setupExplorerVariations(forTemplate: withTemplate)
-        gameEngine.bufferActivity = ExplorerActivity(withTemplate: withTemplate, type: type).makeActivity()
+    private func setupTest() {
+        configuration.setupExplorerVariations(forTemplate: selectedTemplate)
+        gameEngine.bufferActivity = ExplorerActivity(
+            withTemplate: selectedTemplate,
+            type: configuration.currentActivityType
+        )
+        .makeActivity()
         gameEngine.setupGame()
     }
 
@@ -179,9 +75,10 @@ struct SidebarView: View {
             .padding(.top, 40)
     }
 
-    private func previewButton(_ imageName: String) -> some View {
-        Image(imageName)
-            .resizable()
-            .aspectRatio(contentMode: .fill)
+    private func disclosureGroupLabel(_ text: String) -> some View {
+        Text(text)
+            .frame(height: 32)
+            .frame(maxWidth: .infinity)
+            .background(Color.accentColor, in: RoundedRectangle(cornerRadius: 8))
     }
 }
