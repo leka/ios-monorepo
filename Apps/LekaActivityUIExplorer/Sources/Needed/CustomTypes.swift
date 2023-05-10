@@ -36,3 +36,17 @@ enum ResultType {
 enum AlternativeLayout {
     case basic, inline
 }
+
+// MARK: - Templates' related type + Preview Image
+struct TemplateDetails {
+    var preview: String
+    var type: ActivityType
+}
+
+// MARK: - Activity Types Enum
+enum ActivityType: String {
+    case touchToSelect = "touch_to_select"
+    case listenThenTouchToSelect = "listen_then_touch_to_select"
+    case colorQuest = "color_quest"
+    case xylophone = "xylophone"
+}

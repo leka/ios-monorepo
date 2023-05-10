@@ -7,9 +7,9 @@ import Foundation
 class ExplorerActivity: ObservableObject {
 
     var withTemplate: Int
-    var type: String
+    var type: ActivityType
 
-    init(withTemplate: Int, type: String) {
+    init(withTemplate: Int, type: ActivityType) {
         self.withTemplate = withTemplate
         self.type = type
     }
@@ -20,7 +20,7 @@ class ExplorerActivity: ObservableObject {
             title: emptyTitle,
             short: emptyShort,
             instructions: emptyInstructions(),
-            activityType: type,
+            activityType: type.rawValue,
             stepsAmount: 10,
             isRandom: false,
             numberOfImages: 1,
@@ -67,7 +67,7 @@ class ExplorerActivity: ObservableObject {
         } else if 4...5 ~= withTemplate {
             return stepAnswers4
         } else if withTemplate == 6 {
-            return type == "touch_to_select" ? stepAnswers5 : stepAnswers6
+            return type == .touchToSelect ? stepAnswers5 : stepAnswers6
         } else if withTemplate == 7 {
             return stepAnswers6
         } else if withTemplate == 8 {
@@ -94,30 +94,26 @@ class ExplorerActivity: ObservableObject {
 
     var stepInstructionFR: String {
         switch type {
-            case "touch_to_select":
+            case .touchToSelect:
                 return "Touche le numéro 1"
-            case "listen_then_touch_to_select":
+            case .listenThenTouchToSelect:
                 return "Touche le numéro 1"
-            case "color_quest":
+            case .colorQuest:
                 return "Touche la couleur verte"
-            case "xylophone":
+            case .xylophone:
                 return "Joue du xylophone avec Leka"
-            default:
-                return ""
         }
     }
     var stepInstructionEN: String {
         switch type {
-            case "touch_to_select":
+            case .touchToSelect:
                 return "Touch the number 1"
-            case "listen_then_touch_to_select":
+            case .listenThenTouchToSelect:
                 return "Touch the number 1"
-            case "color_quest":
+            case .colorQuest:
                 return "Touch the green color"
-            case "xylophone":
+            case .xylophone:
                 return "Play the xylophone with Leka"
-            default:
-                return ""
         }
     }
 
