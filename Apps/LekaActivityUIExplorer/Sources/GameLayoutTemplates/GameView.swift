@@ -8,7 +8,6 @@ struct GameView: View {
 
     @EnvironmentObject var gameEngine: GameEngine
     @EnvironmentObject var defaults: GameLayoutTemplatesDefaults
-    @ObservedObject var templateDefaults: BaseDefaults
 
     var body: some View {
         ZStack(alignment: .top) {
@@ -22,7 +21,7 @@ struct GameView: View {
                         .padding(.bottom, defaults.headerSpacing)
                 }
                 StepInstructionsButton()
-                InteractionsView(templateDefaults: templateDefaults)
+                InteractionsView()
             }
         }
     }

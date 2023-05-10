@@ -6,7 +6,7 @@ import SwiftUI
 
 struct OneAnswerLayout: View {
 
-    @ObservedObject var templateDefaults: BaseDefaults
+    @StateObject var templateDefaults: BaseDefaults = TouchToSelect.one
 
     var body: some View {
         HStack {

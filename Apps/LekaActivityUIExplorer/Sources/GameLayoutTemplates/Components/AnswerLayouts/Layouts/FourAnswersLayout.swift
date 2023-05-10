@@ -6,7 +6,7 @@ import SwiftUI
 
 struct FourAnswersLayout: View {
 
-    @ObservedObject var templateDefaults: BaseDefaults
+    @StateObject var templateDefaults: BaseDefaults = TouchToSelect.four
 
     var body: some View {
         Grid(
