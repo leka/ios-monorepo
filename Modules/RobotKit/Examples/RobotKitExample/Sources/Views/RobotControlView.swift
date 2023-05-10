@@ -17,5 +17,6 @@ struct RobotControlView: View {
 struct RobotControlView_Previews: PreviewProvider {
     static var previews: some View {
         RobotControlView()
+            .previewInterfaceOrientation(.landscapeLeft)
     }
 }

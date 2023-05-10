@@ -37,5 +37,6 @@ struct RobotConnectionView: View {
 struct RobotListView_Previews: PreviewProvider {
     static var previews: some View {
         RobotConnectionView()
+            .previewInterfaceOrientation(.landscapeLeft)
     }
 }
