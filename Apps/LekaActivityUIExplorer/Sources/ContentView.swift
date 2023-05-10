@@ -37,6 +37,7 @@ struct ContentView: View {
                 .onTapGesture {
                     withAnimation(.easeIn(duration: 0.4)) { showOptions = false }
                 }
+            // TODO: (@Mathieu) - Adapt ExplorerOptionPanel to new Defaults ventilation
             //            Group {
             //                if showOptions {
             //                    ExplorerOptionsPanel(closePanel: $showOptions)
