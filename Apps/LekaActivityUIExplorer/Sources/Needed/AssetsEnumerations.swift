@@ -1,10 +1,6 @@
-//
-//  AssetsEnumerations.swift
-//  LekaActivityUIExplorer
-//
-//  Created by Mathieu Jeannot on 9/5/23.
-//  Copyright © 2023 leka.io. All rights reserved.
-//
+// Leka - iOS Monorepo
+// Copyright 2023 APF France handicap
+// SPDX-License-Identifier: Apache-2.0
 
 import Foundation
 
@@ -65,25 +61,5 @@ enum MiscPreviews: Int, CaseIterable, Hashable {
         }
     }
 }
-
-// Unused for now
-// enum AnswerButtonsImages: Int, CaseIterable, Hashable {
-//     case one, two, three, four, five, six, arobase, ampersand, percent, hashtag
-//
-//     var content: String {
-//         switch self {
-//             case .one: return "LayoutTemplate_1"
-//             case .two: return "LayoutTemplate_2"
-//             case .three: return "LayoutTemplate_3"
-//             case .four: return "LayoutTemplate_4"
-//             case .five: return "LayoutTemplate_5"
-//             case .six: return "LayoutTemplate_6"
-//             case .arobase: return "LayoutTemplate_3"
-//             case .ampersand: return "LayoutTemplate_4"
-//             case .percent: return "LayoutTemplate_5"
-//             case .hashtag: return "LayoutTemplate_6"
-//         }
-//     }
-// }
 
 // swiftlint:enable identifier_name
