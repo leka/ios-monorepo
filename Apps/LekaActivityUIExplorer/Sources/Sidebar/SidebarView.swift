@@ -11,10 +11,6 @@ struct SidebarView: View {
     @EnvironmentObject var gameEngine: GameEngine
     @EnvironmentObject var defaults: GameLayoutTemplatesDefaults
 
-    @State private var touchToSelectIsExpanded: Bool = false
-    @State private var listenThenTouchIsExpanded: Bool = false
-    @State private var colorQuestIsExpanded: Bool = false
-    @State private var miscIsExpanded: Bool = false
     @State private var selectedTemplate: Int = 0
 
     var body: some View {
@@ -24,7 +20,7 @@ struct SidebarView: View {
                     .padding(.bottom, 50)
                     .padding(.top, 10)
 
-                DisclosureGroup(isExpanded: $touchToSelectIsExpanded) {
+                DisclosureGroup {
                     LazyVGrid(columns: [GridItem()]) {
                         ForEach(TouchToSelectPreviews.allCases, id: \.rawValue) { item in
                             Button(
@@ -32,17 +28,17 @@ struct SidebarView: View {
                                     selectedTemplate = item.rawValue
                                     navigator.sidebarVisibility = .detailOnly
                                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                                        setupTest(withTemplate: item.rawValue, type: "touch_to_select")
+                                        setupTest(withTemplate: item.rawValue, type: item.content.type)
                                     }
                                 },
                                 label: {
-                                    previewButton(item.content)
+                                    previewButton(item.content.preview)
                                 }
                             )
                             .buttonStyle(
                                 TemplatePreview_ButtonStyle(
                                     isSelected: selectedTemplate == item.rawValue,
-                                    name: item.content)
+                                    name: item.content.preview)
                             )
                             .padding(20)
                         }
@@ -56,7 +52,7 @@ struct SidebarView: View {
                 }
                 .padding(.horizontal, 20)
 
-                DisclosureGroup(isExpanded: $listenThenTouchIsExpanded) {
+                DisclosureGroup {
                     LazyVGrid(columns: [GridItem()]) {
                         ForEach(ListenThenTouchToSelectPreviews.allCases, id: \.rawValue) { item in
                             Button(
@@ -64,13 +60,13 @@ struct SidebarView: View {
                                     selectedTemplate = item.rawValue
                                     navigator.sidebarVisibility = .detailOnly
                                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                                        setupTest(withTemplate: item.rawValue, type: "listen_then_touch_to_select")
+                                        setupTest(withTemplate: item.rawValue, type: item.content.type)
                                     }
                                 },
                                 label: {
                                     ZStack(alignment: .topTrailing) {
-                                        previewButton(item.content)
-                                        Image(systemName: "play.circle")
+                                        previewButton(item.content.preview)
+                                        Image(systemName: "speaker.wave.2.circle")
                                             .font(defaults.reg18)
                                             .foregroundColor(
                                                 LekaActivityUIExplorerAsset.Colors.lekaSkyBlue.swiftUIColor
@@ -82,7 +78,7 @@ struct SidebarView: View {
                             .buttonStyle(
                                 TemplatePreview_ButtonStyle(
                                     isSelected: selectedTemplate == item.rawValue,
-                                    name: item.content)
+                                    name: item.content.preview)
                             )
                             .padding(20)
                         }
@@ -96,7 +92,7 @@ struct SidebarView: View {
                 }
                 .padding(.horizontal, 20)
 
-                DisclosureGroup(isExpanded: $colorQuestIsExpanded) {
+                DisclosureGroup {
                     LazyVGrid(columns: [GridItem()]) {
                         ForEach(ColorQuestPreviews.allCases, id: \.rawValue) { item in
                             Button(
@@ -104,25 +100,17 @@ struct SidebarView: View {
                                     selectedTemplate = item.rawValue
                                     navigator.sidebarVisibility = .detailOnly
                                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                                        setupTest(withTemplate: item.rawValue, type: "color_quest")
+                                        setupTest(withTemplate: item.rawValue, type: item.content.type)
                                     }
                                 },
                                 label: {
-                                    ZStack(alignment: .topTrailing) {
-                                        previewButton(item.content)
-                                        //                                        Image(systemName: "play.circle")
-                                        //                                            .font(defaults.reg18)
-                                        //                                            .foregroundColor(
-                                        //                                                LekaActivityUIExplorerAsset.Colors.lekaSkyBlue.swiftUIColor
-                                        //                                            )
-                                        //                                            .padding(4)
-                                    }
+                                    previewButton(item.content.preview)
                                 }
                             )
                             .buttonStyle(
                                 TemplatePreview_ButtonStyle(
                                     isSelected: selectedTemplate == item.rawValue,
-                                    name: item.content)
+                                    name: item.content.preview)
                             )
                             .padding(20)
                         }
@@ -136,7 +124,7 @@ struct SidebarView: View {
                 }
                 .padding(.horizontal, 20)
 
-                DisclosureGroup(isExpanded: $miscIsExpanded) {
+                DisclosureGroup {
                     LazyVGrid(columns: [GridItem()]) {
                         ForEach(MiscPreviews.allCases, id: \.rawValue) { item in
                             Button(
@@ -144,17 +132,17 @@ struct SidebarView: View {
                                     selectedTemplate = item.rawValue
                                     navigator.sidebarVisibility = .detailOnly
                                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                                        setupTest(withTemplate: item.rawValue, type: "xylophone")
+                                        setupTest(withTemplate: item.rawValue, type: item.content.type)
                                     }
                                 },
                                 label: {
-                                    previewButton(item.content)
+                                    previewButton(item.content.preview)
                                 }
                             )
                             .buttonStyle(
                                 TemplatePreview_ButtonStyle(
                                     isSelected: selectedTemplate == item.rawValue,
-                                    name: item.content)
+                                    name: item.content.preview)
                             )
                             .padding(20)
                         }
@@ -177,23 +165,10 @@ struct SidebarView: View {
 
     }
 
-    private func setupTest(withTemplate: Int, type: String) {
-        setupExplorerVariations(forTemplate: withTemplate)
+    private func setupTest(withTemplate: Int, type: ActivityType) {
+        configuration.setupExplorerVariations(forTemplate: withTemplate)
         gameEngine.bufferActivity = ExplorerActivity(withTemplate: withTemplate, type: type).makeActivity()
         gameEngine.setupGame()
-    }
-
-    // Move this to configuration
-    private func setupExplorerVariations(forTemplate: Int) {
-        if forTemplate == 2 {
-            configuration.preferred3AnswersLayout = .basic
-        } else if forTemplate == 3 {
-            configuration.preferred3AnswersLayout = .inline
-        } else if forTemplate == 4 {
-            configuration.preferred4AnswersLayout = .basic
-        } else if forTemplate == 5 {
-            configuration.preferred4AnswersLayout = .inline
-        }
     }
 
     private var logoLeka: some View {

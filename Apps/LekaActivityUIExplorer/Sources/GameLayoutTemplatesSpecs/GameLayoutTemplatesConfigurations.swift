@@ -10,4 +10,16 @@ class GameLayoutTemplatesConfigurations: ObservableObject {
     @Published var preferred3AnswersLayout: AlternativeLayout = .basic
     @Published var preferred4AnswersLayout: AlternativeLayout = .basic
 
+    func setupExplorerVariations(forTemplate: Int) {
+        if forTemplate == 2 {
+            preferred3AnswersLayout = .basic
+        } else if forTemplate == 3 {
+            preferred3AnswersLayout = .inline
+        } else if forTemplate == 4 {
+            preferred4AnswersLayout = .basic
+        } else if forTemplate == 5 {
+            preferred4AnswersLayout = .inline
+        }
+    }
+
 }
