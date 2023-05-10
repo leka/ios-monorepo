@@ -10,7 +10,8 @@ let project = Project.module(
     name: "RobotKit",
     platform: .iOS,
     dependencies: [
-        .project(target: "BLEKit", path: Path("../../Modules/BLEKit"))
+        .project(target: "BLEKit", path: Path("../../Modules/BLEKit")),
+        .project(target: "DesignKit", path: Path("../../Modules/DesignKit")),
     ],
     examples: [
         ModuleExample(
