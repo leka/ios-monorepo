@@ -1,0 +1,42 @@
+// Leka - iOS Monorepo
+// Copyright 2023 APF France handicap
+// SPDX-License-Identifier: Apache-2.0
+
+import SwiftUI
+
+struct TwoBeltSectionSelector: View {
+    var body: some View {
+        ZStack {
+            Circle()
+                .fill(.white)
+                .frame(width: 300, height: 300)
+
+            VStack {
+                Image(systemName: "chevron.up")
+                    .foregroundColor(.gray.opacity(0.7))
+                Text("Front")
+                    .foregroundColor(.gray.opacity(0.7))
+
+                Spacer()
+            }
+            .padding(20)
+
+            BeltSectionView(startAngle: .degrees(10), endAngle: .degrees(170), color: .red)
+
+            BeltSectionView(startAngle: .degrees(190), endAngle: .degrees(350), color: .blue)
+
+            HStack(spacing: 50) {
+                EarButton(color: .orange)
+
+                EarButton(color: .blue)
+            }
+        }
+
+    }
+}
+
+struct TwoBeltSectionSelector_Previews: PreviewProvider {
+    static var previews: some View {
+        TwoBeltSectionSelector()
+    }
+}
