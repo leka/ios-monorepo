@@ -14,14 +14,18 @@ struct GameView: View {
             GameBackgroundView()
 
             VStack(spacing: 0) {
-                if !gameEngine.currentActivity.stepSequence[0].isEmpty
-                    && gameEngine.currentActivity.activityType != "xylophone"
-                {
-                    ProgressBar()
-                        .padding(.bottom, defaults.headerSpacing)
+                if gameEngine.currentActivity.activityType == "remote_standard" {
+                    RemoteStandardView(templateDefaults: templateDefaults)
+                } else {
+                    if !gameEngine.currentActivity.stepSequence[0].isEmpty
+                        && gameEngine.currentActivity.activityType != "xylophone"
+                    {
+                        ProgressBar()
+                            .padding(.bottom, defaults.headerSpacing)
+                    }
+                    StepInstructionsButton()
+                    InteractionsView()
                 }
-                StepInstructionsButton()
-                InteractionsView()
             }
         }
     }
