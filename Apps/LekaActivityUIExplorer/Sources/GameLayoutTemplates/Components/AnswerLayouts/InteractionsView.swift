@@ -9,6 +9,8 @@ struct InteractionsView: View {
     @EnvironmentObject var gameEngine: GameEngine
     @EnvironmentObject var configuration: GameLayoutTemplatesConfigurations
 
+    private var launchText: Text = Text("Sélectionner un modèle")
+
     var body: some View {
         VStack {
             Spacer()
@@ -29,7 +31,7 @@ struct InteractionsView: View {
             case 1: ColorQuestOneAnswerLayout()
             case 2: ColorQuestTwoAnswersLayout()
             case 3: ColorQuestThreeAnswersLayout()
-            default: Text("Sélectionner un modèle")
+            default: launchText
         }
     }
 
@@ -52,7 +54,7 @@ struct InteractionsView: View {
                 }
             case 5: FiveAnswersLayout()
             case 6: SixAnswersLayout()
-            default: Text("Sélectionner un modèle")
+            default: launchText
         }
     }
 
@@ -74,7 +76,7 @@ struct InteractionsView: View {
                     ListenFourAnswersLayout()
                 }
             case 6: ListenSixAnswersLayout()
-            default: Text("Sélectionner un modèle")
+            default: launchText
         }
     }
 }
