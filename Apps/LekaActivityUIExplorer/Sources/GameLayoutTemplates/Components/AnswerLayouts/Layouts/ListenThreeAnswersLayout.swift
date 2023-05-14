@@ -28,27 +28,23 @@ struct ListenThreeAnswersLayout: View {
             verticalSpacing: templateDefaults.customVerticalSpacing
         ) {
             GridRow {
-                CircularAnswerButton(answer: 0)
-                    .frame(
-                        width: templateDefaults.customAnswerSize,
-                        height: templateDefaults.customAnswerSize
-                    )
+                makeAnswer(0)
                 Color.clear.gridCellUnsizedAxes([.horizontal, .vertical])
-                CircularAnswerButton(answer: 1)
-                    .frame(
-                        width: templateDefaults.customAnswerSize,
-                        height: templateDefaults.customAnswerSize
-                    )
+                makeAnswer(1)
             }
             GridRow {
                 Color.clear.gridCellUnsizedAxes([.horizontal, .vertical])
-                CircularAnswerButton(answer: 2)
-                    .frame(
-                        width: templateDefaults.customAnswerSize,
-                        height: templateDefaults.customAnswerSize
-                    )
+                makeAnswer(2)
                 Color.clear.gridCellUnsizedAxes([.horizontal, .vertical])
             }
         }
+    }
+
+    private func makeAnswer(_ answer: Int) -> some View {
+        CircularAnswerButton(answer: answer)
+            .frame(
+                width: templateDefaults.customAnswerSize,
+                height: templateDefaults.customAnswerSize
+            )
     }
 }
