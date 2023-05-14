@@ -11,7 +11,7 @@ struct PreviewButton: View {
     @EnvironmentObject var configuration: GameLayoutTemplatesConfigurations
 
     @Binding var item: Previewable
-    var accessory: String? = nil
+    var accessory: String?
     let action: () -> Void
 
     var body: some View {
@@ -19,7 +19,8 @@ struct PreviewButton: View {
             Button(
                 action: {
                     navigator.selectedTemplate = item.index
-                    configuration.currentActivityType = item.content.type
+                    configuration.currentActivityType = item.type
+                    configuration.currentDefaults = item.content.defaults
                     navigator.sidebarVisibility = .detailOnly
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                         action()
@@ -50,7 +51,7 @@ struct PreviewButton: View {
                 .foregroundColor(
                     LekaActivityUIExplorerAsset.Colors.lekaSkyBlue.swiftUIColor
                 )
-                .padding(4)
+                .padding(24)
         } else {
             EmptyView()
         }
