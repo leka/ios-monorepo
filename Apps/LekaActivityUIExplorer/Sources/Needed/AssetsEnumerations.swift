@@ -6,7 +6,16 @@ import Foundation
 
 // swiftlint:disable identifier_name
 
-enum TouchToSelectPreviews: Int, CaseIterable, Hashable {
+protocol Previewable {
+    var index: Int { get }
+    var content: TemplateDetails { get }
+}
+
+extension Previewable where Self: RawRepresentable, RawValue == Int {
+    var index: Int { return self.rawValue }
+}
+
+enum TouchToSelectPreviews: Int, CaseIterable, Previewable {
     case one, two, three, threeInline, four, fourInline, five, six
 
     var content: TemplateDetails {
@@ -23,7 +32,7 @@ enum TouchToSelectPreviews: Int, CaseIterable, Hashable {
     }
 }
 
-enum ListenThenTouchToSelectPreviews: Int, CaseIterable, Hashable {
+enum ListenThenTouchToSelectPreviews: Int, CaseIterable, Previewable {
     case one, two, three, threeInline, four, fourInline, six
 
     var content: TemplateDetails {
@@ -40,7 +49,7 @@ enum ListenThenTouchToSelectPreviews: Int, CaseIterable, Hashable {
     }
 }
 
-enum ColorQuestPreviews: Int, CaseIterable, Hashable {
+enum ColorQuestPreviews: Int, CaseIterable, Previewable {
     case one, two, three
 
     var content: TemplateDetails {
@@ -52,7 +61,7 @@ enum ColorQuestPreviews: Int, CaseIterable, Hashable {
     }
 }
 
-enum MiscPreviews: Int, CaseIterable, Hashable {
+enum MiscPreviews: Int, CaseIterable, Previewable {
     case xylophone
 
     var content: TemplateDetails {

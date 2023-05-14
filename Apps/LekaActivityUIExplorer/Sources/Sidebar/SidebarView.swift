@@ -11,8 +11,6 @@ struct SidebarView: View {
     @EnvironmentObject var gameEngine: GameEngine
     @EnvironmentObject var defaults: GameLayoutTemplatesDefaults
 
-    @State private var selectedTemplate: Int = 0
-
     var body: some View {
         ScrollView {
             VStack(spacing: 30) {
@@ -21,28 +19,28 @@ struct SidebarView: View {
                     .padding(.top, 10)
 
                 DisclosureGroup {
-                    TouchToSelectNavigationGroup(selected: $selectedTemplate) { setupTest() }
+                    TouchToSelectNavigationGroup { setupTest() }
                 } label: {
                     disclosureGroupLabel("touch_to_select")
                 }
                 .padding(.horizontal, 20)
 
                 DisclosureGroup {
-                    ListenThenTouchToSelectNavigationGroup(selected: $selectedTemplate) { setupTest() }
+                    ListenThenTouchToSelectNavigationGroup { setupTest() }
                 } label: {
                     disclosureGroupLabel("listen_then_touch_to_select")
                 }
                 .padding(.horizontal, 20)
 
                 DisclosureGroup {
-                    ColorQuestNavigationGroup(selected: $selectedTemplate) { setupTest() }
+                    ColorQuestNavigationGroup { setupTest() }
                 } label: {
                     disclosureGroupLabel("color_quest")
                 }
                 .padding(.horizontal, 20)
 
                 DisclosureGroup {
-                    MiscNavigationGroup(selected: $selectedTemplate) { setupTest() }
+                    MiscNavigationGroup { setupTest() }
                 } label: {
                     disclosureGroupLabel("xylophone")
                 }
@@ -58,9 +56,9 @@ struct SidebarView: View {
     }
 
     private func setupTest() {
-        configuration.setupExplorerVariations(forTemplate: selectedTemplate)
+        configuration.setupExplorerVariations(forTemplate: navigator.selectedTemplate)
         gameEngine.bufferActivity = ExplorerActivity(
-            withTemplate: selectedTemplate,
+            withTemplate: navigator.selectedTemplate,
             type: configuration.currentActivityType
         )
         .makeActivity()
