@@ -40,7 +40,7 @@ enum AlternativeLayout {
 // MARK: - Templates' related type + Preview Image
 struct TemplateDetails {
     var preview: String
-    var type: ActivityType
+    var defaults: BaseDefaults
 }
 
 // MARK: - Activity Types Enum

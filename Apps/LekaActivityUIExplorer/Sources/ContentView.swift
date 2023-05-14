@@ -37,13 +37,12 @@ struct ContentView: View {
                 .onTapGesture {
                     withAnimation(.easeIn(duration: 0.4)) { showOptions = false }
                 }
-            // TODO: (@Mathieu) - Adapt ExplorerOptionPanel to new Defaults ventilation
-            //            Group {
-            //                if showOptions {
-            //                    ExplorerOptionsPanel(closePanel: $showOptions)
-            //                        .transition(.move(edge: .trailing))
-            //                }
-            //            }
+            Group {
+                if showOptions {
+                    ExplorerOptionsPanel(closePanel: $showOptions)
+                        .transition(.move(edge: .trailing))
+                }
+            }
         }
         .animation(.easeIn(duration: 0.4), value: showOptions)
         .navigationSplitViewStyle(.prominentDetail)

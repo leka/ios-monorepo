@@ -10,6 +10,7 @@ class GameLayoutTemplatesConfigurations: ObservableObject {
     @Published var preferred3AnswersLayout: AlternativeLayout = .basic
     @Published var preferred4AnswersLayout: AlternativeLayout = .basic
     @Published var currentActivityType: ActivityType = .touchToSelect
+    @Published var currentDefaults: BaseDefaults = TouchToSelect.one
 
     func setupExplorerVariations(forTemplate: Int) {
         if forTemplate == 2 {
