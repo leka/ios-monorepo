@@ -5,17 +5,17 @@
 import SwiftUI
 
 enum Reinforcer: String, CaseIterable {
-    case reinforcer1 = "reinforcer-1"
-    case reinforcer2 = "reinforcer-2"
-    case reinforcer3 = "reinforcer-3"
-    case reinforcer4 = "reinforcer-4"
-    case reinforcer5 = "reinforcer-5"
+    case blinkGreen = "reinforcer-1"
+    case spinBlink = "reinforcer-2"
+    case fire = "reinforcer-3"
+    case sparkles = "reinforcer-4"
+    case rainbow = "reinforcer-5"
 }
 
 enum DisplayMode: String, CaseIterable {
-    case oneBeltSection
-    case twoBeltSection
-    case fourBeltSection
+    case fullBelt
+    case twoHalves
+    case fourQuarters
 }
 
 struct RadialLayout: Layout {
@@ -54,7 +54,7 @@ struct RadialLayout: Layout {
 struct RemoteStandardView: View {
 
     @ObservedObject var templateDefaults: BaseDefaults
-    @State private var displayMode = DisplayMode.oneBeltSection
+    @State private var displayMode = DisplayMode.fullBelt
 
     @State private var buttonPressed = false
     @State private var backgroundDimension = 0
@@ -74,12 +74,12 @@ struct RemoteStandardView: View {
 
                 RadialLayout(firstButtonPosX: -120, firstButtonPosY: -200, angle: 90.0) {
                     switch displayMode {
-                        case .oneBeltSection:
-                            OneBeltSectionSelector()
-                        case .twoBeltSection:
-                            TwoBeltSectionSelector()
-                        case .fourBeltSection:
-                            FourBeltSectionSelector()
+                        case .fullBelt:
+                            FullBeltSelector()
+                        case .twoHalves:
+                            TwoHalvesSelector()
+                        case .fourQuarters:
+                            FourQuartersSelector()
                     }
 
                     ForEach(DisplayMode.allCases, id: \.self) { mode in

@@ -1,10 +1,6 @@
-//
-//  DisplayModeButton.swift
-//  LekaActivityUIExplorer
-//
-//  Created by Hugo Pezziardi on 12/05/2023.
-//  Copyright © 2023 leka.io. All rights reserved.
-//
+// Leka - iOS Monorepo
+// Copyright 2023 APF France handicap
+// SPDX-License-Identifier: Apache-2.0
 
 import SwiftUI
 
@@ -19,12 +15,12 @@ struct DisplayModeButton: View {
             displayMode = mode
         } label: {
             switch mode {
-                case .oneBeltSection:
-                    OneBeltSectionImage()
-                case .twoBeltSection:
-                    TwoBeltSectionImage()
-                case .fourBeltSection:
-                    FourBeltSectionImage()
+                case .fullBelt:
+                    FullBeltIcon()
+                case .twoHalves:
+                    TwoHalvesIcon()
+                case .fourQuarters:
+                    FourQuartersIcon()
             }
         }
         .background(DisplayModelFeedback(backgroundDimension: displayMode == mode ? 80 : 0))
@@ -34,6 +30,6 @@ struct DisplayModeButton: View {
 struct DisplayModeButton_Previews: PreviewProvider {
 
     static var previews: some View {
-        DisplayModeButton(mode: .fourBeltSection, displayMode: .constant(.fourBeltSection))
+        DisplayModeButton(mode: .fullBelt, displayMode: .constant(.fullBelt))
     }
 }

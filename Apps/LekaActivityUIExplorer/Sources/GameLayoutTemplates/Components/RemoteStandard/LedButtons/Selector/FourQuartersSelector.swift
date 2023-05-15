@@ -4,7 +4,7 @@
 
 import SwiftUI
 
-struct FourBeltSectionSelector: View {
+struct FourQuartersSelector: View {
     var body: some View {
         ZStack {
             Circle()
@@ -38,8 +38,8 @@ struct FourBeltSectionSelector: View {
     }
 }
 
-struct FourBeltSectionSelector_Previews: PreviewProvider {
+struct FourQuartersSelector_Previews: PreviewProvider {
     static var previews: some View {
-        FourBeltSectionSelector()
+        FourQuartersSelector()
     }
 }

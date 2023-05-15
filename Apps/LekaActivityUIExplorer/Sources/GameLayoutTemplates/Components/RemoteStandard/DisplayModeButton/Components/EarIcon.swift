@@ -4,7 +4,7 @@
 
 import SwiftUI
 
-struct EarImage: View {
+struct EarIcon: View {
     var body: some View {
         Circle()
             .foregroundColor(.black)
@@ -12,8 +12,8 @@ struct EarImage: View {
     }
 }
 
-struct EarImage_Previews: PreviewProvider {
+struct EarIcon_Previews: PreviewProvider {
     static var previews: some View {
-        EarImage()
+        EarIcon()
     }
 }
