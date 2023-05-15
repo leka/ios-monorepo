@@ -4,7 +4,7 @@
 
 import SwiftUI
 
-struct TwoBeltSectionSelector: View {
+struct TwoHalvesSelector: View {
     var body: some View {
         ZStack {
             Circle()
@@ -35,8 +35,8 @@ struct TwoBeltSectionSelector: View {
     }
 }
 
-struct TwoBeltSectionSelector_Previews: PreviewProvider {
+struct TwoHalvesSelector_Previews: PreviewProvider {
     static var previews: some View {
-        TwoBeltSectionSelector()
+        TwoHalvesSelector()
     }
 }

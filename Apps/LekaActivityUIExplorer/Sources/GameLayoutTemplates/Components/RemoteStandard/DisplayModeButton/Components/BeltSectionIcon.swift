@@ -4,7 +4,7 @@
 
 import SwiftUI
 
-struct BeltSectionImage: View {
+struct BeltSectionIcon: View {
     var startAngle: Angle
     var endAngle: Angle
 
@@ -18,8 +18,8 @@ struct BeltSectionImage: View {
     }
 }
 
-struct BeltSectionImage_Previews: PreviewProvider {
+struct BeltSectionIcon_Previews: PreviewProvider {
     static var previews: some View {
-        BeltSectionImage(startAngle: .degrees(10), endAngle: .degrees(100))
+        BeltSectionIcon(startAngle: .degrees(10), endAngle: .degrees(100))
     }
 }

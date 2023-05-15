@@ -4,28 +4,28 @@
 
 import SwiftUI
 
-struct TwoBeltSectionImage: View {
+struct TwoHalvesIcon: View {
     var body: some View {
         ZStack {
             Circle()
                 .fill(.white)
                 .frame(width: 60, height: 60)
 
-            BeltSectionImage(startAngle: .degrees(10), endAngle: .degrees(170))
+            BeltSectionIcon(startAngle: .degrees(10), endAngle: .degrees(170))
 
-            BeltSectionImage(startAngle: .degrees(190), endAngle: .degrees(350))
+            BeltSectionIcon(startAngle: .degrees(190), endAngle: .degrees(350))
 
             HStack {
-                EarImage()
+                EarIcon()
 
-                EarImage()
+                EarIcon()
             }
         }
     }
 }
 
-struct TwoBeltSectionImage_Previews: PreviewProvider {
+struct TwoHalvesIcon_Previews: PreviewProvider {
     static var previews: some View {
-        TwoBeltSectionImage()
+        TwoHalvesIcon()
     }
 }

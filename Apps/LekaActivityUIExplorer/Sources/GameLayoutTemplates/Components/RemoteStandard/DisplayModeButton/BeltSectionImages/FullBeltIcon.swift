@@ -4,22 +4,22 @@
 
 import SwiftUI
 
-struct OneBeltSectionImage: View {
+struct FullBeltIcon: View {
     var body: some View {
         ZStack {
             Circle()
                 .fill(.white)
                 .frame(width: 60, height: 60)
 
-            BeltSectionImage(startAngle: .degrees(0), endAngle: .degrees(360))
+            BeltSectionIcon(startAngle: .degrees(0), endAngle: .degrees(360))
 
-            EarImage()
+            EarIcon()
 
         }
     }
 }
-struct OneBeltSectionImage_Previews: PreviewProvider {
+struct FullBeltIcon_Previews: PreviewProvider {
     static var previews: some View {
-        OneBeltSectionImage()
+        FullBeltIcon()
     }
 }
