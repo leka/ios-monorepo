@@ -5,27 +5,29 @@
 import SwiftUI
 
 struct RobotUpdateAvailableView: View {
-    @State private var isCharging = true
+    @ObservedObject private var robot: DummyRobotModel
+    init(robot: DummyRobotModel) {
+        self._robot = ObservedObject(wrappedValue: robot)
+    }
 
     var body: some View {
         HStack {
-            RequirementsView(battery: .constant(74), isCharging: .constant(false))
+            RequirementsView(robot: robot)
 
-            Button("MAJ") {
-                // Start update here
-            }
-            .padding()
-            .foregroundColor(.black)
-            .background(.cyan)
-            .cornerRadius(.infinity)
-            .border(.black)
+            Button("MAJ", action: robot.startUpdate)
+                .padding()
+                .foregroundColor(.black)
+                .background(.cyan)
+                .cornerRadius(.infinity)
         }
         .padding()
     }
 }
 
 struct RobotUpdateAvailableView_Previews: PreviewProvider {
+    @StateObject static var robot = DummyRobotModel()
+
     static var previews: some View {
-        RobotUpdateAvailableView()
+        RobotUpdateAvailableView(robot: robot)
     }
 }
