@@ -6,25 +6,23 @@ import SwiftUI
 
 struct RobotUpdateAvailableView: View {
     @ObservedObject private var robot: DummyRobotModel
-
-    var robotIsNotReadyToUpdate: Bool {
-        !(robot.battery >= 30 && robot.isCharging)
-    }
+    @StateObject private var requirementsViewModel: RequirementsViewModel
 
     init(robot: DummyRobotModel) {
         self._robot = ObservedObject(wrappedValue: robot)
+        self._requirementsViewModel = StateObject(wrappedValue: RequirementsViewModel(robot: robot))
     }
 
     var body: some View {
         HStack {
-            RequirementsView(robot: robot)
+            RequirementsView(viewModel: requirementsViewModel)
 
             Button("MAJ", action: robot.startUpdate)
                 .padding()
                 .foregroundColor(.black)
                 .background(.cyan)
                 .cornerRadius(.infinity)
-                .disabled(robotIsNotReadyToUpdate)
+                .disabled(requirementsViewModel.robotIsNotReadyToUpdate)
         }
         .padding()
     }
