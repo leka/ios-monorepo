@@ -5,8 +5,8 @@
 import SwiftUI
 
 struct InformationView: View {
-    @State private var robotNeedUpdate = false
     @EnvironmentObject var firmware: FirmwareManager
+    @State private var robotVersion: String = "1.3.0"
 
     var body: some View {
         VStack {
@@ -33,7 +33,7 @@ struct InformationView: View {
                 }
 
                 Section {
-                    if robotNeedUpdate {
+                    if firmware.compareWith(version: robotVersion) == .needsUpdate {
                         RobotUpdateAvailableView()
                     } else {
                         Text("Votre robot est à jour ! Vous n'avez rien à faire 👌")
@@ -50,7 +50,11 @@ struct InformationView: View {
 
             // TODO: Remove this switch
             Button("Switch [DEBUG ONLY]") {
-                robotNeedUpdate.toggle()
+                if robotVersion == "1.3.0" {
+                    robotVersion = "1.4.0"
+                } else {
+                    robotVersion = "1.3.0"
+                }
             }
             .padding()
         }
