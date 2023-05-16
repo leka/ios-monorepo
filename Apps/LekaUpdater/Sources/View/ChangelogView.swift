@@ -5,26 +5,25 @@
 import SwiftUI
 
 struct ChangelogView: View {
-    private var changeLog: String {
-        do {
-            guard let fileURL = Bundle.main.url(forResource: "LekaOS-1.4.0", withExtension: "md") else {
-                return "Changelog not found"
-            }
+    private var changelog: String {
+        // swiftlint:disable:next force_cast
+        let osVersion = Bundle.main.object(forInfoDictionaryKey: "LEKA_OS_VERSION") as! String
+        let fileURL = Bundle.main.url(forResource: "LekaOS-\(osVersion)", withExtension: "md")!
 
-            let contents = try String(contentsOf: fileURL)
-            return contents
+        do {
+            return try String(contentsOf: fileURL)
         } catch {
-            return "ERROR"
+            return "Changelog cannot be loaded"
         }
     }
 
     var body: some View {
         ScrollView {
-            Text(changeLog)
+            Text(changelog)
                 .padding()
         }
         .border(.black)
-        .frame(maxHeight: 300)
+        .frame(idealHeight: 300, maxHeight: 300)
     }
 }
 

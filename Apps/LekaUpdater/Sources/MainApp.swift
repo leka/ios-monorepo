@@ -7,9 +7,14 @@ import SwiftUI
 
 @main
 struct LekaUpdaterApp: App {
+    var firmware = FirmwareManager()
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            VStack {
+                InformationView()
+                    .environmentObject(firmware)
+            }
         }
     }
 }
