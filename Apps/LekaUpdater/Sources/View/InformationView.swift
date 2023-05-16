@@ -6,7 +6,7 @@ import SwiftUI
 
 struct InformationView: View {
     @EnvironmentObject var firmware: FirmwareManager
-    @State private var robotVersion: String = "1.3.0"
+    @EnvironmentObject var robot: DummyRobotModel
 
     var body: some View {
         VStack {
@@ -33,8 +33,8 @@ struct InformationView: View {
                 }
 
                 Section {
-                    if firmware.compareWith(version: robotVersion) == .needsUpdate {
-                        RobotUpdateAvailableView()
+                    if firmware.compareWith(version: robot.osVersion) == .needsUpdate {
+                        RobotUpdateAvailableView(robot: robot)
                     } else {
                         Text("Votre robot est à jour ! Vous n'avez rien à faire 👌")
                             .font(.title2)
@@ -47,24 +47,16 @@ struct InformationView: View {
                         .bold()
                 }
             }
-
-            // TODO: Remove this switch
-            Button("Switch [DEBUG ONLY]") {
-                if robotVersion == "1.3.0" {
-                    robotVersion = "1.4.0"
-                } else {
-                    robotVersion = "1.3.0"
-                }
-            }
-            .padding()
         }
     }
 }
 
 struct InformationView_Previews: PreviewProvider {
     static let firmware = FirmwareManager()
+    static let robot = DummyRobotModel()
     static var previews: some View {
         InformationView()
             .environmentObject(firmware)
+            .environmentObject(robot)
     }
 }

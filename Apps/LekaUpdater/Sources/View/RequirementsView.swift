@@ -5,44 +5,53 @@
 import SwiftUI
 
 struct RequirementsView: View {
-    @Binding var battery: Int
-    @Binding var isCharging: Bool
+    @ObservedObject var robot: DummyRobotModel
 
-    private var batteryImage: String {
-        if battery >= 100 {
-            return "battery.100"
-        } else if battery >= 75 {
-            return "battery.75"
-        } else if battery >= 50 {
-            return "battery.50"
-        } else if battery >= 25 {
-            return "battery.25"
+    var batteryImage: Image {
+        if robot.battery >= 100 {
+            return Image(systemName: "battery.100")
+        } else if robot.battery >= 75 {
+            return Image(systemName: "battery.75")
+        } else if robot.battery >= 50 {
+            return Image(systemName: "battery.50")
+        } else if robot.battery >= 25 {
+            return Image(systemName: "battery.25")
         } else {
-            return "battery.0"
+            return Image(systemName: "battery.0")
         }
+    }
+
+    var batteryForegroundColor: Color {
+        robot.battery >= 30 ? .green : .red
+    }
+
+    var isChargingForegroundColor: Color {
+        robot.isCharging ? .green : .red
     }
 
     var body: some View {
         HStack {
-            Image(systemName: batteryImage)
+            batteryImage
                 .resizable()
                 .scaledToFit()
                 .frame(height: 50)
                 .padding()
-                .foregroundColor(battery >= 30 ? .green : .red)
+                .foregroundColor(batteryForegroundColor)
 
             Image(systemName: "powerplug.fill")
                 .resizable()
                 .scaledToFit()
                 .frame(height: 50)
                 .padding()
-                .foregroundColor(isCharging ? .green : .red)
+                .foregroundColor(isChargingForegroundColor)
         }
     }
 }
 
 struct RequirementsView_Previews: PreviewProvider {
+    @StateObject static var robot = DummyRobotModel()
+
     static var previews: some View {
-        RequirementsView(battery: .constant(74), isCharging: .constant(false))
+        RequirementsView(robot: robot)
     }
 }
