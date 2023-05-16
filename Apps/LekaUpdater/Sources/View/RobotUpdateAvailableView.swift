@@ -6,6 +6,11 @@ import SwiftUI
 
 struct RobotUpdateAvailableView: View {
     @ObservedObject private var robot: DummyRobotModel
+
+    var robotIsNotReadyToUpdate: Bool {
+        !(robot.battery >= 30 && robot.isCharging)
+    }
+
     init(robot: DummyRobotModel) {
         self._robot = ObservedObject(wrappedValue: robot)
     }
@@ -19,6 +24,7 @@ struct RobotUpdateAvailableView: View {
                 .foregroundColor(.black)
                 .background(.cyan)
                 .cornerRadius(.infinity)
+                .disabled(robotIsNotReadyToUpdate)
         }
         .padding()
     }
