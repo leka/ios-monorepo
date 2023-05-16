@@ -6,6 +6,7 @@ import SwiftUI
 
 struct InformationView: View {
     @State private var robotNeedUpdate = false
+    @EnvironmentObject var firmware: FirmwareManager
 
     var body: some View {
         VStack {
@@ -26,7 +27,7 @@ struct InformationView: View {
                 Section {
                     ChangelogView()
                 } header: {
-                    Text("Firmware v1.4.0 Change Log")
+                    Text("Firmware v\(firmware.currentVersion) Change Log")
                         .font(.title3)
                         .bold()
                 }
@@ -57,7 +58,9 @@ struct InformationView: View {
 }
 
 struct InformationView_Previews: PreviewProvider {
+    static let firmware = FirmwareManager()
     static var previews: some View {
         InformationView()
+            .environmentObject(firmware)
     }
 }
