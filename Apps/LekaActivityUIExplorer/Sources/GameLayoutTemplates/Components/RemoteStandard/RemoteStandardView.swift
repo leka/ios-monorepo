@@ -4,14 +4,6 @@
 
 import SwiftUI
 
-enum Reinforcer: String, CaseIterable {
-    case blinkGreen = "reinforcer-1"
-    case spinBlink = "reinforcer-2"
-    case fire = "reinforcer-3"
-    case sparkles = "reinforcer-4"
-    case rainbow = "reinforcer-5"
-}
-
 enum DisplayMode: String, CaseIterable {
     case fullBelt
     case twoHalves
