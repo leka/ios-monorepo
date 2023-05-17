@@ -88,11 +88,11 @@ class ExplorerActivity: ObservableObject {
 
     func stepInstruction() -> LocalizedContent {
         return LocalizedContent(
-            enUS: stepInstructionEN,
-            frFR: stepInstructionFR)
+            enUS: stepInstructions,
+            frFR: stepInstructions)
     }
 
-    var stepInstructionFR: String {
+    var stepInstructions: String {
         switch type {
             case .touchToSelect:
                 return "Touche le numéro 1"
@@ -102,18 +102,6 @@ class ExplorerActivity: ObservableObject {
                 return "Touche la couleur verte"
             case .xylophone:
                 return "Joue du xylophone avec Leka"
-        }
-    }
-    var stepInstructionEN: String {
-        switch type {
-            case .touchToSelect:
-                return "Touch the number 1"
-            case .listenThenTouchToSelect:
-                return "Touch the number 1"
-            case .colorQuest:
-                return "Touch the green color"
-            case .xylophone:
-                return "Play the xylophone with Leka"
         }
     }
 
