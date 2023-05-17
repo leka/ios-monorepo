@@ -41,9 +41,9 @@ struct ExplorerOptionsPanel: View {
                                     SpacingEditor(templateDefaults: configuration.currentDefaults)
                                 }
                             } else {
-                                XylophoneSizeEditor()
-                                XylophoneSpacingEditor()
-                                TilesFeedbackEditor()
+                                XylophoneSizeEditor(templateDefaults: Misc.xylophone)
+                                XylophoneSpacingEditor(templateDefaults: Misc.xylophone)
+                                TilesFeedbackEditor(templateDefaults: Misc.xylophone)
                             }
                         }
                         .padding(.top, 6)
