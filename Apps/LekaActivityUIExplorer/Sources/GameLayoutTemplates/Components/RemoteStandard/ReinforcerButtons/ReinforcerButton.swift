@@ -11,7 +11,7 @@ struct ReinforcerButton: View {
         Button {
             // Reinforcer has been pressed
         } label: {
-            Image(reinforcer.rawValue)
+            reinforcer.icon()
         }
     }
 
