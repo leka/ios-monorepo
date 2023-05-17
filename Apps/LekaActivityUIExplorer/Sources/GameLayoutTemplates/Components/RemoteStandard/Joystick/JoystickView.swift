@@ -6,22 +6,14 @@ import SwiftUI
 import SwiftUIJoystick
 
 struct JoystickView: View {
-
-    @StateObject public var joystickMonitor = JoystickMonitor()
-    @State private var leftMotor: UInt8 = 0
-    @State private var rightMotor: UInt8 = 0
-
-    private let power = 255.0 / 300.0
-
-    private let dragDiameter: CGFloat = 300
-    private let shape: JoystickShape = .circle
+    @StateObject private var joystickViewModel = JoystickViewModel(dragDiameter: 300)
 
     public var body: some View {
         VStack {
             JoystickBuilder(
-                monitor: self.joystickMonitor,
-                width: self.dragDiameter,
-                shape: self.shape,
+                monitor: joystickViewModel.joystickMonitor,
+                width: joystickViewModel.dragDiameter,
+                shape: joystickViewModel.shape,
 
                 background: {
                     ZStack {
@@ -53,29 +45,7 @@ struct JoystickView: View {
                         .fill(.gray)
                 },
                 locksInPlace: false)
-
-//            Text("XY Point = (x: \(joystickMonitor.xyPoint.x), y: \(joystickMonitor.xyPoint.y))")
-//                .fixedSize()
-//            Text("Motor PWM = (left: \(convertPosXToPWM()), right: \(convertPosYToPWM()))")
-//                .fixedSize()
         }
 
     }
-
-    func convertPosXToPWM() -> CGFloat {
-        let leftPWM = 255.0 / dragDiameter * (joystickMonitor.xyPoint.x - joystickMonitor.xyPoint.y)
-
-        return clamp(leftPWM, lower: -255, upper: 255)
-    }
-
-    func convertPosYToPWM() -> CGFloat {
-        let rightPWM = -255 / dragDiameter * (joystickMonitor.xyPoint.x + joystickMonitor.xyPoint.y)
-
-        return clamp(rightPWM, lower: -255, upper: 255)
-    }
-
-    fileprivate func clamp<T: Comparable>(_ value: T, lower: T, upper: T) -> T {
-        return min(max(value, lower), upper)
-    }
-
 }
