@@ -20,14 +20,14 @@ struct PreviewButton: View {
                 action: {
                     navigator.selectedTemplate = item.index
                     configuration.currentActivityType = item.type
-                    configuration.currentDefaults = item.content.defaults
+                    configuration.currentDefaults = item.defaults
                     navigator.sidebarVisibility = .detailOnly
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                         action()
                     }
                 },
                 label: {
-                    Image(item.content.preview)
+                    Image(item.preview)
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                 }
@@ -35,7 +35,7 @@ struct PreviewButton: View {
             .buttonStyle(
                 TemplatePreview_ButtonStyle(
                     isSelected: navigator.selectedTemplate == item.index,
-                    name: item.content.preview)
+                    name: item.preview)
             )
             .padding(20)
 

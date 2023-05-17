@@ -37,12 +37,6 @@ enum AlternativeLayout {
     case basic, inline
 }
 
-// MARK: - Templates' related type + Preview Image
-struct TemplateDetails {
-    var preview: String
-    var defaults: BaseDefaults
-}
-
 // MARK: - Activity Types Enum
 enum ActivityType: String {
     case touchToSelect = "touch_to_select"
