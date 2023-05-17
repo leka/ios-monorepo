@@ -8,11 +8,10 @@ struct BeltSectionIcon: View {
     var startAngle: Angle
     var endAngle: Angle
 
-    @State private var buttonPressed = false
     @State private var backgroundLineWidth = 0
 
     var body: some View {
-        Arc(startAngle: startAngle, endAngle: endAngle, clockwise: true)
+        ArcShape(startAngle: startAngle, endAngle: endAngle, clockwise: true)
             .stroke(.black, style: StrokeStyle(lineWidth: 3, lineCap: .round))
             .frame(width: 60, height: 60)
     }

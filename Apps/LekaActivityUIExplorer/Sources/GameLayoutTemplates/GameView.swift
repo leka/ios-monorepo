@@ -15,7 +15,7 @@ struct GameView: View {
 
             VStack(spacing: 0) {
                 if gameEngine.currentActivity.activityType == "remote_standard" {
-                    RemoteStandardView(templateDefaults: templateDefaults)
+                    RemoteStandardView()
                 } else {
                     if !gameEngine.currentActivity.stepSequence[0].isEmpty
                         && gameEngine.currentActivity.activityType != "xylophone"

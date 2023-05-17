@@ -8,8 +8,6 @@ struct DisplayModeButton: View {
     var mode: DisplayMode
     @Binding var displayMode: DisplayMode
 
-    @State private var buttonPressed = false
-
     var body: some View {
         Button {
             displayMode = mode
@@ -28,7 +26,6 @@ struct DisplayModeButton: View {
 }
 
 struct DisplayModeButton_Previews: PreviewProvider {
-
     static var previews: some View {
         DisplayModeButton(mode: .fullBelt, displayMode: .constant(.fullBelt))
     }

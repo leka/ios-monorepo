@@ -11,15 +11,19 @@ struct TwoHalvesIcon: View {
                 .fill(.white)
                 .frame(width: 60, height: 60)
 
-            BeltSectionIcon(startAngle: .degrees(10), endAngle: .degrees(170))
-
-            BeltSectionIcon(startAngle: .degrees(190), endAngle: .degrees(350))
+            beltSectionIcons
 
             HStack {
                 EarIcon()
-
                 EarIcon()
             }
+        }
+    }
+
+    private var beltSectionIcons: some View {
+        ZStack {
+            BeltSectionIcon(startAngle: .degrees(10), endAngle: .degrees(170))
+            BeltSectionIcon(startAngle: .degrees(190), endAngle: .degrees(350))
         }
     }
 }

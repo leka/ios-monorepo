@@ -12,9 +12,7 @@ struct FullBeltIcon: View {
                 .frame(width: 60, height: 60)
 
             BeltSectionIcon(startAngle: .degrees(0), endAngle: .degrees(360))
-
             EarIcon()
-
         }
     }
 }
