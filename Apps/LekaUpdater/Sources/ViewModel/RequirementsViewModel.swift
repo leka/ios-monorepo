@@ -10,9 +10,12 @@ class RequirementsViewModel: ObservableObject {
 
     let requirementsImage = Image(uiImage: LekaUpdaterAsset.Assets.robotIsCharging.image)
 
+    var robotIsReadyToUpdate: Bool {
+        robot.battery >= 30 && robot.isCharging
+    }
 
     var robotIsNotReadyToUpdate: Bool {
-        !(robot.battery >= 30 && robot.isCharging)
+        !robotIsReadyToUpdate
     }
 
     init(robot: DummyRobotModel) {
