@@ -23,6 +23,7 @@ struct RobotUpdateAvailableView: View {
                 .background(.cyan)
                 .cornerRadius(.infinity)
                 .disabled(requirementsViewModel.robotIsNotReadyToUpdate)
+                .opacity(requirementsViewModel.robotIsNotReadyToUpdate ? 0.0 : 1.0)
         }
         .padding()
     }
