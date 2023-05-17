@@ -11,7 +11,7 @@ struct BeltSectionButtonFeedback: View {
     var lineWidth: Int
 
     var body: some View {
-        Arc(startAngle: startAngle, endAngle: endAngle, clockwise: true)
+        ArcShape(startAngle: startAngle, endAngle: endAngle, clockwise: true)
             .stroke(
                 color.opacity(0.5),
                 style: StrokeStyle(

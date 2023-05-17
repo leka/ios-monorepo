@@ -16,13 +16,11 @@ struct FullBeltSelector: View {
                     .foregroundColor(.gray.opacity(0.7))
                 Text("Front")
                     .foregroundColor(.gray.opacity(0.7))
-
                 Spacer()
             }
             .padding(20)
 
             BeltSectionView(startAngle: .degrees(0), endAngle: .degrees(360), color: .red)
-
             EarButton(color: .blue)
 
         }

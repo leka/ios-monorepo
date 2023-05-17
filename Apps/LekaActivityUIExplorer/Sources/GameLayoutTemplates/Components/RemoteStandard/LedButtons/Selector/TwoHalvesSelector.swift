@@ -21,17 +21,20 @@ struct TwoHalvesSelector: View {
             }
             .padding(20)
 
-            BeltSectionView(startAngle: .degrees(10), endAngle: .degrees(170), color: .red)
-
-            BeltSectionView(startAngle: .degrees(190), endAngle: .degrees(350), color: .blue)
+            beltSectionButtons
 
             HStack(spacing: 50) {
                 EarButton(color: .orange)
-
                 EarButton(color: .blue)
             }
         }
+    }
 
+    private var beltSectionButtons: some View {
+        ZStack {
+            BeltSectionView(startAngle: .degrees(10), endAngle: .degrees(170), color: .red)
+            BeltSectionView(startAngle: .degrees(190), endAngle: .degrees(350), color: .blue)
+        }
     }
 }
 

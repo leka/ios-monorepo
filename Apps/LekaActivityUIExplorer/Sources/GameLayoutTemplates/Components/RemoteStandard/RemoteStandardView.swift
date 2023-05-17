@@ -29,7 +29,7 @@ struct RadialLayout: Layout {
 
     func placeSubviews(in bounds: CGRect, proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) {
 
-        let angle = Angle.degrees(angle / Double(subviews.count - 1)).radians
+        let angleDivision = Angle.degrees(angle / Double(subviews.count - 1)).radians
         let posX = bounds.midX
         let posY = bounds.midY * 4 / 3
 
@@ -40,7 +40,7 @@ struct RadialLayout: Layout {
                 )
             } else {
                 var point = CGPoint(x: firstButtonPosX, y: firstButtonPosY)
-                    .applying(CGAffineTransform(rotationAngle: CGFloat(angle) * CGFloat(index - 1)))
+                    .applying(CGAffineTransform(rotationAngle: CGFloat(angleDivision) * CGFloat(index - 1)))
 
                 point.x += posX
                 point.y += posY
@@ -52,12 +52,7 @@ struct RadialLayout: Layout {
 }
 
 struct RemoteStandardView: View {
-
-    @ObservedObject var templateDefaults: BaseDefaults
     @State private var displayMode = DisplayMode.fullBelt
-
-    @State private var buttonPressed = false
-    @State private var backgroundDimension = 0
 
     var body: some View {
         VStack {

@@ -4,7 +4,7 @@
 
 import SwiftUI
 
-struct Arc: Shape {
+struct ArcShape: Shape {
 
     let startAngle: Angle
     let endAngle: Angle

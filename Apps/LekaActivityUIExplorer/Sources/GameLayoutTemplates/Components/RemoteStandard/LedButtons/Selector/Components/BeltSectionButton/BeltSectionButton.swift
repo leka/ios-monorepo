@@ -13,7 +13,7 @@ struct BeltSectionView: View {
     @State private var backgroundLineWidth = 0
 
     var body: some View {
-        Arc(startAngle: startAngle, endAngle: endAngle, clockwise: true)
+        ArcShape(startAngle: startAngle, endAngle: endAngle, clockwise: true)
             .stroke(color, style: StrokeStyle(lineWidth: 10, lineCap: .round))
             .frame(width: 300, height: 300)
             .onTapGesture {
