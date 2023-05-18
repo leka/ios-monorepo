@@ -14,25 +14,13 @@ struct ThreeAnswersLayout: View {
             verticalSpacing: templateDefaults.customVerticalSpacing
         ) {
             GridRow {
-                CircularAnswerButton(answer: 0)
-                    .frame(
-                        width: templateDefaults.customAnswerSize,
-                        height: templateDefaults.customAnswerSize
-                    )
+                CircularAnswerButton(templateDefaults: templateDefaults, answer: 0)
                 Color.clear.gridCellUnsizedAxes([.horizontal, .vertical])
-                CircularAnswerButton(answer: 1)
-                    .frame(
-                        width: templateDefaults.customAnswerSize,
-                        height: templateDefaults.customAnswerSize
-                    )
+                CircularAnswerButton(templateDefaults: templateDefaults, answer: 1)
             }
             GridRow {
                 Color.clear.gridCellUnsizedAxes([.horizontal, .vertical])
-                CircularAnswerButton(answer: 2)
-                    .frame(
-                        width: templateDefaults.customAnswerSize,
-                        height: templateDefaults.customAnswerSize
-                    )
+                CircularAnswerButton(templateDefaults: templateDefaults, answer: 2)
                 Color.clear.gridCellUnsizedAxes([.horizontal, .vertical])
             }
         }

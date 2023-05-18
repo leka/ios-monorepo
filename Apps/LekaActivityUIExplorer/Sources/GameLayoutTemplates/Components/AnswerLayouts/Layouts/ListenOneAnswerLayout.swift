@@ -17,16 +17,8 @@ struct ListenOneAnswerLayout: View {
                 .frame(maxHeight: 500)
                 .padding(.vertical, 20)
             Spacer()
-            answersLayout
+            CircularAnswerButton(templateDefaults: templateDefaults, answer: 0)
             Spacer()
         }
-    }
-
-    private var answersLayout: some View {
-        CircularAnswerButton(answer: 0)
-            .frame(
-                width: templateDefaults.customAnswerSize,
-                height: templateDefaults.customAnswerSize
-            )
     }
 }

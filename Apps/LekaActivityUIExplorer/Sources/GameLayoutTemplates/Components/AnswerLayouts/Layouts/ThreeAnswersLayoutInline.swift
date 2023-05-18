@@ -11,11 +11,7 @@ struct ThreeAnswersLayoutInline: View {
     var body: some View {
         HStack(spacing: templateDefaults.customHorizontalSpacing) {
             ForEach(0..<3) { answer in
-                CircularAnswerButton(answer: answer)
-                    .frame(
-                        width: templateDefaults.customAnswerSize,
-                        height: templateDefaults.customAnswerSize
-                    )
+                CircularAnswerButton(templateDefaults: templateDefaults, answer: answer)
             }
         }
     }

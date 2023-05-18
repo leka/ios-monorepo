@@ -15,20 +15,12 @@ struct SixAnswersLayout: View {
         ) {
             GridRow {
                 ForEach(0..<3) { answer in
-                    CircularAnswerButton(answer: answer)
-                        .frame(
-                            width: templateDefaults.customAnswerSize,
-                            height: templateDefaults.customAnswerSize
-                        )
+                    CircularAnswerButton(templateDefaults: templateDefaults, answer: answer)
                 }
             }
             GridRow {
                 ForEach(3..<6) { answer in
-                    CircularAnswerButton(answer: answer)
-                        .frame(
-                            width: templateDefaults.customAnswerSize,
-                            height: templateDefaults.customAnswerSize
-                        )
+                    CircularAnswerButton(templateDefaults: templateDefaults, answer: answer)
                 }
             }
         }
