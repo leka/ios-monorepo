@@ -25,11 +25,7 @@ struct ListenFourAnswersLayoutInline: View {
     private var answersLayout: some View {
         HStack(spacing: templateDefaults.customHorizontalSpacing) {
             ForEach(0..<4) { answer in
-                CircularAnswerButton(answer: answer)
-                    .frame(
-                        width: templateDefaults.customAnswerSize,
-                        height: templateDefaults.customAnswerSize
-                    )
+                CircularAnswerButton(templateDefaults: templateDefaults, answer: answer)
             }
         }
     }

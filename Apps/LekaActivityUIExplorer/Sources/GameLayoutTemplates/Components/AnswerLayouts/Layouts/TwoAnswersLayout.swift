@@ -11,11 +11,7 @@ struct TwoAnswersLayout: View {
     var body: some View {
         HStack(spacing: templateDefaults.customHorizontalSpacing) {
             ForEach(0..<2) { answer in
-                CircularAnswerButton(answer: answer)
-                    .frame(
-                        width: templateDefaults.customAnswerSize,
-                        height: templateDefaults.customAnswerSize
-                    )
+                CircularAnswerButton(templateDefaults: templateDefaults, answer: answer)
             }
         }
     }

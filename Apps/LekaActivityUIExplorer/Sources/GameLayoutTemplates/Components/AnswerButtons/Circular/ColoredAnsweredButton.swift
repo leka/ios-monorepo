@@ -8,7 +8,7 @@ struct ColoredAnswerButton: View {
 
     @EnvironmentObject var gameEngine: GameEngine
     @EnvironmentObject var defaults: GameLayoutTemplatesDefaults
-
+    @ObservedObject var templateDefaults: BaseDefaults
     @State private var colors: [Color] = [.green, .purple, .red, .yellow, .blue]
 
     var answer: Int
@@ -25,5 +25,9 @@ struct ColoredAnswerButton: View {
         .overlay(AnswerFeedback(answer: answer))
         .disabled(gameEngine.tapIsDisabled)
         .disabled(gameEngine.allAnswersAreDisabled)
+        .frame(
+            width: templateDefaults.customAnswerSize,
+            height: templateDefaults.customAnswerSize
+        )
     }
 }

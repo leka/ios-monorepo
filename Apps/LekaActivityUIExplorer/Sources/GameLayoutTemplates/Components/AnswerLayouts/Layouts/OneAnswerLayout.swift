@@ -11,11 +11,7 @@ struct OneAnswerLayout: View {
     var body: some View {
         HStack {
             Spacer()
-            CircularAnswerButton(answer: 0)
-                .frame(
-                    width: templateDefaults.customAnswerSize,
-                    height: templateDefaults.customAnswerSize
-                )
+            CircularAnswerButton(templateDefaults: templateDefaults, answer: 0)
             Spacer()
         }
     }

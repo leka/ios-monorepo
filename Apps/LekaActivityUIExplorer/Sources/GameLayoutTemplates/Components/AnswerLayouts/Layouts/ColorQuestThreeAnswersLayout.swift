@@ -11,11 +11,7 @@ struct ColorQuestThreeAnswersLayout: View {
     var body: some View {
         HStack(spacing: templateDefaults.customHorizontalSpacing) {
             ForEach(0..<3) { answer in
-                ColoredAnswerButton(answer: answer)
-                    .frame(
-                        width: templateDefaults.customAnswerSize,
-                        height: templateDefaults.customAnswerSize
-                    )
+                ColoredAnswerButton(templateDefaults: templateDefaults, answer: answer)
             }
         }
     }
