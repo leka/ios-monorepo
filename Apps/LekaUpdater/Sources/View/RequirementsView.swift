@@ -8,20 +8,15 @@ struct RequirementsView: View {
     @StateObject var viewModel: RequirementsViewModel
 
     var body: some View {
-        HStack {
-            viewModel.batteryImage
+        VStack {
+            viewModel.requirementsImage
                 .resizable()
                 .scaledToFit()
-                .frame(height: 50)
-                .padding()
-                .foregroundColor(viewModel.batteryForegroundColor)
+                .frame(height: 150)
 
-            Image(systemName: "powerplug.fill")
-                .resizable()
-                .scaledToFit()
-                .frame(height: 50)
-                .padding()
-                .foregroundColor(viewModel.isChargingForegroundColor)
+            Text("Le robot doit être en charge et sa batterie à au moins 30%.")
+                .bold()
+                .foregroundColor(.red)
         }
     }
 }
