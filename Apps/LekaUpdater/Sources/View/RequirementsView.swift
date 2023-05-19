@@ -9,19 +9,29 @@ struct RequirementsView: View {
 
     var body: some View {
         HStack {
-            viewModel.batteryImage
-                .resizable()
-                .scaledToFit()
-                .frame(height: 50)
-                .padding()
-                .foregroundColor(viewModel.batteryForegroundColor)
+            VStack {
+                viewModel.batteryImage
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: 50)
+                    .padding()
+                    .foregroundColor(viewModel.batteryForegroundColor)
+                Text("Min. 30% de batteries")
+                    .bold()
+                    .foregroundColor(viewModel.batteryForegroundColor)
+            }
 
-            Image(systemName: "powerplug.fill")
-                .resizable()
-                .scaledToFit()
-                .frame(height: 50)
-                .padding()
-                .foregroundColor(viewModel.isChargingForegroundColor)
+            VStack {
+                Image(systemName: "powerplug.fill")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: 50)
+                    .padding()
+                    .foregroundColor(viewModel.isChargingForegroundColor)
+                Text("Robot branché sur le secteur")
+                    .bold()
+                    .foregroundColor(viewModel.isChargingForegroundColor)
+            }
         }
     }
 }
