@@ -4,11 +4,25 @@
 
 import SwiftUI
 
-struct ThreeAnswersLayout: View {
+struct ListenThreeAnswersLayout: View {
 
-    @StateObject var templateDefaults: BaseDefaults = TouchToSelect.three
+    @StateObject var templateDefaults: BaseDefaults = ListenThenTouchToSelect.three
 
     var body: some View {
+        HStack(spacing: 0) {
+            PlaySoundButton()
+                .padding(20)
+            Divider()
+                .opacity(0.4)
+                .frame(maxHeight: 500)
+                .padding(.vertical, 20)
+            Spacer()
+            answersLayout
+            Spacer()
+        }
+    }
+
+    private var answersLayout: some View {
         Grid(
             horizontalSpacing: templateDefaults.customHorizontalSpacing,
             verticalSpacing: templateDefaults.customVerticalSpacing

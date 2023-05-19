@@ -8,7 +8,7 @@ struct XylophoneLayout: View {
 
     @EnvironmentObject var gameEngine: GameEngine
     @EnvironmentObject var defaults: GameLayoutTemplatesDefaults
-    @EnvironmentObject var xylophoneDefaults: XylophoneDefaults
+    @StateObject var xylophoneDefaults: XylophoneDefaults = Misc.xylophone
 
     @State private var showAlert: Bool = false
 

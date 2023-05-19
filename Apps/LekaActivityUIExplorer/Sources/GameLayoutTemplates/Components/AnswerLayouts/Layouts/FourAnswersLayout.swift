@@ -6,7 +6,7 @@ import SwiftUI
 
 struct FourAnswersLayout: View {
 
-    @ObservedObject var templateDefaults: BaseDefaults
+    @StateObject var templateDefaults: BaseDefaults = TouchToSelect.four
 
     var body: some View {
         Grid(
@@ -14,28 +14,12 @@ struct FourAnswersLayout: View {
             verticalSpacing: templateDefaults.customVerticalSpacing
         ) {
             GridRow {
-                CircularAnswerButton(answer: 0)
-                    .frame(
-                        width: templateDefaults.customAnswerSize,
-                        height: templateDefaults.customAnswerSize
-                    )
-                CircularAnswerButton(answer: 1)
-                    .frame(
-                        width: templateDefaults.customAnswerSize,
-                        height: templateDefaults.customAnswerSize
-                    )
+                CircularAnswerButton(templateDefaults: templateDefaults, answer: 0)
+                CircularAnswerButton(templateDefaults: templateDefaults, answer: 1)
             }
             GridRow {
-                CircularAnswerButton(answer: 2)
-                    .frame(
-                        width: templateDefaults.customAnswerSize,
-                        height: templateDefaults.customAnswerSize
-                    )
-                CircularAnswerButton(answer: 3)
-                    .frame(
-                        width: templateDefaults.customAnswerSize,
-                        height: templateDefaults.customAnswerSize
-                    )
+                CircularAnswerButton(templateDefaults: templateDefaults, answer: 2)
+                CircularAnswerButton(templateDefaults: templateDefaults, answer: 3)
             }
         }
     }

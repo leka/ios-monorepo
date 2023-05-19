@@ -6,7 +6,7 @@ import SwiftUI
 
 struct FiveAnswersLayout: View {
 
-    @ObservedObject var templateDefaults: BaseDefaults
+    @StateObject var templateDefaults: BaseDefaults = TouchToSelect.five
 
     var body: some View {
         Grid(
@@ -14,37 +14,17 @@ struct FiveAnswersLayout: View {
             verticalSpacing: templateDefaults.customVerticalSpacing
         ) {
             GridRow {
-                CircularAnswerButton(answer: 0)
-                    .frame(
-                        width: templateDefaults.customAnswerSize,
-                        height: templateDefaults.customAnswerSize
-                    )
+                CircularAnswerButton(templateDefaults: templateDefaults, answer: 0)
                 Color.clear.gridCellUnsizedAxes([.horizontal, .vertical])
-                CircularAnswerButton(answer: 1)
-                    .frame(
-                        width: templateDefaults.customAnswerSize,
-                        height: templateDefaults.customAnswerSize
-                    )
+                CircularAnswerButton(templateDefaults: templateDefaults, answer: 1)
                 Color.clear.gridCellUnsizedAxes([.horizontal, .vertical])
-                CircularAnswerButton(answer: 2)
-                    .frame(
-                        width: templateDefaults.customAnswerSize,
-                        height: templateDefaults.customAnswerSize
-                    )
+                CircularAnswerButton(templateDefaults: templateDefaults, answer: 2)
             }
             GridRow {
                 Color.clear.gridCellUnsizedAxes([.horizontal, .vertical])
-                CircularAnswerButton(answer: 3)
-                    .frame(
-                        width: templateDefaults.customAnswerSize,
-                        height: templateDefaults.customAnswerSize
-                    )
+                CircularAnswerButton(templateDefaults: templateDefaults, answer: 3)
                 Color.clear.gridCellUnsizedAxes([.horizontal, .vertical])
-                CircularAnswerButton(answer: 4)
-                    .frame(
-                        width: templateDefaults.customAnswerSize,
-                        height: templateDefaults.customAnswerSize
-                    )
+                CircularAnswerButton(templateDefaults: templateDefaults, answer: 4)
                 Color.clear.gridCellUnsizedAxes([.horizontal, .vertical])
             }
         }

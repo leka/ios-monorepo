@@ -4,11 +4,25 @@
 
 import SwiftUI
 
-struct SixAnswersLayout: View {
+struct ListenSixAnswersLayout: View {
 
-    @StateObject var templateDefaults: BaseDefaults = TouchToSelect.six
+    @StateObject var templateDefaults: BaseDefaults = ListenThenTouchToSelect.six
 
     var body: some View {
+        HStack(spacing: 0) {
+            PlaySoundButton()
+                .padding(20)
+            Divider()
+                .opacity(0.4)
+                .frame(maxHeight: 500)
+                .padding(.vertical, 20)
+            Spacer()
+            answersLayout
+            Spacer()
+        }
+    }
+
+    private var answersLayout: some View {
         Grid(
             horizontalSpacing: templateDefaults.customHorizontalSpacing,
             verticalSpacing: templateDefaults.customVerticalSpacing

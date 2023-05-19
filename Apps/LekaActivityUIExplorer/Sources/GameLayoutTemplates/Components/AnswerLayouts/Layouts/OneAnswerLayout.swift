@@ -6,16 +6,12 @@ import SwiftUI
 
 struct OneAnswerLayout: View {
 
-    @ObservedObject var templateDefaults: BaseDefaults
+    @StateObject var templateDefaults: BaseDefaults = TouchToSelect.one
 
     var body: some View {
         HStack {
             Spacer()
-            CircularAnswerButton(answer: 0)
-                .frame(
-                    width: templateDefaults.customAnswerSize,
-                    height: templateDefaults.customAnswerSize
-                )
+            CircularAnswerButton(templateDefaults: templateDefaults, answer: 0)
             Spacer()
         }
     }

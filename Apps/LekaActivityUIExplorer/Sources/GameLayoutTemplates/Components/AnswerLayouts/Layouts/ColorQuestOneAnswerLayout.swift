@@ -6,15 +6,11 @@ import SwiftUI
 
 struct ColorQuestOneAnswerLayout: View {
 
-    @ObservedObject var templateDefaults: BaseDefaults
+    @StateObject var templateDefaults: BaseDefaults = ColorQuest.one
 
     var body: some View {
         HStack {
-            ColoredAnswerButton(answer: 0)
-                .frame(
-                    width: templateDefaults.customAnswerSize,
-                    height: templateDefaults.customAnswerSize
-                )
+            ColoredAnswerButton(templateDefaults: templateDefaults, answer: 0)
         }
     }
 }

@@ -27,11 +27,6 @@ enum Languages: Hashable, CaseIterable {
     }
 }
 
-// MARK: - Templates Scopes (per activity/group/step || mixed)
-enum TemplateSelectionScope {
-    case activity, group, step
-}
-
 // MARK: - Game States for UI Translations
 enum ResultType {
     case idle, fail, medium, success
@@ -40,4 +35,12 @@ enum ResultType {
 // MARK: - Alternative Layouts for 3 & 4 answers
 enum AlternativeLayout {
     case basic, inline
+}
+
+// MARK: - Activity Types Enum
+enum ActivityType: String {
+    case touchToSelect = "touch_to_select"
+    case listenThenTouchToSelect = "listen_then_touch_to_select"
+    case colorQuest = "color_quest"
+    case xylophone = "xylophone"
 }
