@@ -13,11 +13,10 @@ public class JoystickViewModel: ObservableObject {
     // MARK: - Published/public variables
     public var joystickMonitor = JoystickMonitor()
 
-    @Published public var posX: CGFloat = 0.0
-    @Published public var posY: CGFloat = 0.0
+    @Published public var position: CGPoint = CGPoint(x: 0.0, y: 0.0)
 
-    @Published public var leftMotor: CGFloat = 0.0
-    @Published public var rightMotor: CGFloat = 0.0
+    @Published public var leftMotor: Float = 0.0
+    @Published public var rightMotor: Float = 0.0
 
     public let dragDiameter: CGFloat
     public let shape: JoystickShape = .circle
@@ -31,11 +30,10 @@ public class JoystickViewModel: ObservableObject {
         self.joystickMonitor.$xyPoint
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: {
-                self.posX = $0.x
-                self.posY = $0.y
+                self.position = $0
 
-                self.leftMotor = convertJoystickPosXToPWM(posX: $0.x, posY: $0.y, maxValue: dragDiameter)
-                self.rightMotor = convertJoystickPosYToPWM(posX: $0.x, posY: $0.y, maxValue: dragDiameter)
+                (self.leftMotor, self.rightMotor) = convertJoystickPosToMotorSpeed(
+                    position: $0, maxValue: dragDiameter)
             })
             .store(in: &cancellables)
     }
