@@ -107,4 +107,19 @@ enum MiscPreviews: Int, CaseIterable, Previewable {
     }
 }
 
+enum RemotePreviews: Int, CaseIterable, Previewable {
+    case standard
+    var type: ActivityType { return .remote }
+    var defaults: BaseDefaults {
+        switch self {
+            case .standard: return Remote.standard
+        }
+    }
+    var preview: String {
+        switch self {
+            case .standard: return "remoteStandard"
+        }
+    }
+}
+
 // swiftlint:enable identifier_name

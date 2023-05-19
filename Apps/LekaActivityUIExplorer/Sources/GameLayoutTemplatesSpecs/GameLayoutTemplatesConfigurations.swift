@@ -23,7 +23,4 @@ class GameLayoutTemplatesConfigurations: ObservableObject {
             preferred4AnswersLayout = .inline
         }
     }
-
-    // unused for now
-    // @Published var typesOfActivity: [String] = ["touch_to_select", "listen_then_touch_to_select", "xylophone", "color_quest"]
 }
