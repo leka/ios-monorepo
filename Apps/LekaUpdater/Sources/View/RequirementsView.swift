@@ -13,7 +13,7 @@ struct RequirementsView: View {
                 viewModel.batteryImage
                     .resizable()
                     .scaledToFit()
-                    .frame(height: 50)
+                    .frame(height: 150)
                     .padding()
                     .foregroundColor(viewModel.batteryForegroundColor)
                 Text("Min. 30% de batteries")
@@ -25,7 +25,7 @@ struct RequirementsView: View {
                 viewModel.chargingImage
                     .resizable()
                     .scaledToFit()
-                    .frame(height: 50)
+                    .frame(height: 150)
                     .padding()
                     .foregroundColor(viewModel.isChargingForegroundColor)
                 Text("Robot branché sur le secteur")

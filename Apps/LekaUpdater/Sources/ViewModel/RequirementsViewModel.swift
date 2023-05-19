@@ -10,20 +10,20 @@ class RequirementsViewModel: ObservableObject {
 
     var batteryImage: Image {
         if robot.battery >= 100 {
-            return Image(systemName: "battery.100")
+            return Image(uiImage: LekaUpdaterAsset.Assets.robotBatteryChargingQuarter4Green.image)
         } else if robot.battery >= 75 {
-            return Image(systemName: "battery.75")
+            return Image(uiImage: LekaUpdaterAsset.Assets.robotBatteryChargingQuarter3Green.image)
         } else if robot.battery >= 50 {
-            return Image(systemName: "battery.50")
+            return Image(uiImage: LekaUpdaterAsset.Assets.robotBatteryChargingQuarter2Orange.image)
         } else if robot.battery >= 25 {
-            return Image(systemName: "battery.25")
+            return Image(uiImage: LekaUpdaterAsset.Assets.robotBatteryChargingQuarter1Red.image)
         } else {
-            return Image(systemName: "battery.0")
+            return Image(uiImage: LekaUpdaterAsset.Assets.robotBatteryChargingEmptyRed.image)
         }
     }
 
     var chargingImage: Image {
-        Image(systemName: "powerplug.fill")
+        Image(uiImage: LekaUpdaterAsset.Assets.robotIsCharging.image)
     }
 
     var batteryForegroundColor: Color {
