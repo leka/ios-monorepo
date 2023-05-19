@@ -34,27 +34,9 @@ public class JoystickViewModel: ObservableObject {
                 self.posX = $0.x
                 self.posY = $0.y
 
-                self.leftMotor = self.convertPosXToPWM(posX: $0.x, posY: $0.y)
-                self.rightMotor = self.convertPosYToPWM(posX: $0.x, posY: $0.y)
+                self.leftMotor = convertJoystickPosXToPWM(posX: $0.x, posY: $0.y, maxValue: dragDiameter)
+                self.rightMotor = convertJoystickPosYToPWM(posX: $0.x, posY: $0.y, maxValue: dragDiameter)
             })
             .store(in: &cancellables)
     }
-
-    private func convertPosXToPWM(posX: CGFloat, posY: CGFloat) -> CGFloat {
-        let leftPWM = 255.0 / dragDiameter * (posX - posY)
-
-        return clamp(leftPWM, lower: -255, upper: 255)
-    }
-
-    private func convertPosYToPWM(posX: CGFloat, posY: CGFloat) -> CGFloat {
-        let rightPWM = -255 / dragDiameter * (posX + posY)
-
-        return clamp(rightPWM, lower: -255, upper: 255)
-    }
-
-    // MARK: - Private functions
-    fileprivate func clamp<T: Comparable>(_ value: T, lower: T, upper: T) -> T {
-        return min(max(value, lower), upper)
-    }
-
 }
