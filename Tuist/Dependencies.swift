@@ -14,6 +14,10 @@ let dependencies = Dependencies(
             url: "https://github.com/StarryInternet/CombineCoreBluetooth", requirement: .upToNextMajor(from: "0.3.1")),
         .remote(
             url: "https://github.com/michael94ellis/SwiftUIJoystick", requirement: .upToNextMajor(from: "1.0.3")),
+        .remote(
+            url: "https://github.com/Tinder/StateMachine", requirement: .upToNextMajor(from: "0.3.0")),
+        .remote(url: "https://github.com/ReactKit/SwiftState", requirement: .upToNextMajor(from: "6.0.0")),
+        .remote(url: "https://github.com/Actomaton/Actomaton", requirement: .upToNextMajor(from: "0.7.0")),
     ],
     platforms: [.iOS, .macOS]
 )
