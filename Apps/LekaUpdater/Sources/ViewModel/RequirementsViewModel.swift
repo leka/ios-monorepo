@@ -22,6 +22,10 @@ class RequirementsViewModel: ObservableObject {
         }
     }
 
+    var chargingImage: Image {
+        Image(systemName: "powerplug.fill")
+    }
+
     var batteryForegroundColor: Color {
         robot.battery >= 30 ? .green : .red
     }

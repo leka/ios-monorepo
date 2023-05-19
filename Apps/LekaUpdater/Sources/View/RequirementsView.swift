@@ -22,7 +22,7 @@ struct RequirementsView: View {
             }
 
             VStack {
-                Image(systemName: "powerplug.fill")
+                viewModel.chargingImage
                     .resizable()
                     .scaledToFit()
                     .frame(height: 50)
