@@ -11,9 +11,6 @@ struct ContentView: View {
     @EnvironmentObject var defaults: GameLayoutTemplatesDefaults
     @EnvironmentObject var configuration: GameLayoutTemplatesConfigurations
 
-    // Templates defaults
-    @StateObject var xylophoneDefaults = Misc.xylophone
-
     @State private var showInstructionModal: Bool = false
     @State private var navigateToConfigurator: Bool = false
     @State private var showOptions: Bool = false
@@ -23,7 +20,7 @@ struct ContentView: View {
             NavigationSplitView(columnVisibility: $navigator.sidebarVisibility) {
                 SidebarView()
             } detail: {
-                GameView(templateDefaults: relevantDefaultsSet())
+                GameView()
                     .navigationBarTitleDisplayMode(.inline)
                     .navigationBarBackButtonHidden()
                     .toolbar {
@@ -42,82 +39,13 @@ struct ContentView: View {
                 }
             Group {
                 if showOptions {
-                    ExplorerOptionsPanel(
-                        templateDefaults: relevantDefaultsSet(),
-                        xylophoneDefaults: xylophoneDefaults,
-                        closePanel: $showOptions
-                    )
-                    .transition(.move(edge: .trailing))
+                    ExplorerOptionsPanel(closePanel: $showOptions)
+                        .transition(.move(edge: .trailing))
                 }
             }
         }
         .animation(.easeIn(duration: 0.4), value: showOptions)
         .navigationSplitViewStyle(.prominentDetail)
-        .environmentObject(xylophoneDefaults)
-    }
-
-    private func relevantDefaultsSet() -> BaseDefaults {
-        guard gameEngine.currentActivity.activityType != "listen_then_touch_to_select" else {
-            return relevantListenThenTouchToSelectDefaults()
-        }
-        guard gameEngine.currentActivity.activityType != "color_quest" else {
-            return relevantColorQuestDefaults()
-        }
-        return relevantTouchToSelectDefaults()
-    }
-
-    private func relevantTouchToSelectDefaults() -> BaseDefaults {
-        guard gameEngine.allAnswers.count >= 2 else {
-            return TouchToSelect.one
-        }
-        if gameEngine.allAnswers.count == 2 {
-            return TouchToSelect.two
-        } else if gameEngine.allAnswers.count == 3 {
-            guard configuration.preferred3AnswersLayout == .inline else {
-                return TouchToSelect.three
-            }
-            return TouchToSelect.threeInline
-        } else if gameEngine.allAnswers.count == 4 {
-            guard configuration.preferred4AnswersLayout == .inline else {
-                return TouchToSelect.four
-            }
-            return TouchToSelect.fourInline
-        } else if gameEngine.allAnswers.count == 5 {
-            return TouchToSelect.five
-        } else {
-            return TouchToSelect.six
-        }
-    }
-
-    private func relevantListenThenTouchToSelectDefaults() -> BaseDefaults {
-        guard gameEngine.allAnswers.count >= 2 else {
-            return TouchToSelect.one
-        }
-        if gameEngine.allAnswers.count == 2 {
-            return ListenThenTouchToSelect.two
-        } else if gameEngine.allAnswers.count == 3 {
-            guard configuration.preferred3AnswersLayout == .inline else {
-                return ListenThenTouchToSelect.three
-            }
-            return ListenThenTouchToSelect.threeInline
-        } else if gameEngine.allAnswers.count == 4 {
-            guard configuration.preferred4AnswersLayout == .inline else {
-                return ListenThenTouchToSelect.four
-            }
-            return ListenThenTouchToSelect.fourInline
-        } else {
-            return ListenThenTouchToSelect.six
-        }
-    }
-
-    private func relevantColorQuestDefaults() -> BaseDefaults {
-        guard gameEngine.allAnswers.count >= 2 else {
-            return ColorQuest.one
-        }
-        if gameEngine.allAnswers.count == 2 {
-            return ColorQuest.two
-        }
-        return ColorQuest.three
     }
 
     private var topBarTrailingItems: some View {

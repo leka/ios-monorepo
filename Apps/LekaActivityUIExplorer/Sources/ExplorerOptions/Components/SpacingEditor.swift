@@ -9,7 +9,6 @@ struct SpacingEditor: View {
     @EnvironmentObject var gameEngine: GameEngine
     @EnvironmentObject var defaults: GameLayoutTemplatesDefaults
     @EnvironmentObject var configuration: GameLayoutTemplatesConfigurations
-
     @ObservedObject var templateDefaults: BaseDefaults
 
     var body: some View {
