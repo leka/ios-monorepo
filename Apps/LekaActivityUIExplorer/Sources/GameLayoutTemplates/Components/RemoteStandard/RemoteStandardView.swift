@@ -48,8 +48,6 @@ struct RemoteStandardView: View {
 
     var body: some View {
         VStack {
-            StepInstructionsButton()
-
             HStack(spacing: 400) {
                 RadialLayout(firstButtonPosX: -100, firstButtonPosY: -250, angle: 120.0) {
                     JoystickView()

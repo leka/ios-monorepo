@@ -45,6 +45,13 @@ struct SidebarView: View {
                     disclosureGroupLabel("xylophone")
                 }
                 .padding(.horizontal, 20)
+
+                DisclosureGroup {
+                    RemoteNavigationGroup { setupTest() }
+                } label: {
+                    disclosureGroupLabel("remote")
+                }
+                .padding(.horizontal, 20)
             }
             .frame(maxWidth: .infinity)
             .font(defaults.semi17)

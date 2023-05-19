@@ -19,6 +19,7 @@ struct InteractionsView: View {
                 case .listenThenTouchToSelect: listenThenTouchToSelectTemplate
                 case .colorQuest: colorQuestTemplate
                 case .xylophone: XylophoneLayout()
+                case .remote: RemoteStandardView()
             }
             Spacer()
         }
