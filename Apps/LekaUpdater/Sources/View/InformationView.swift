@@ -27,7 +27,7 @@ struct InformationView: View {
                 Section {
                     ChangelogView()
                 } header: {
-                    Text("Firmware v\(firmware.currentVersion) Change Log")
+                    Text("Contenu de la dernière mise à jour")
                         .font(.title3)
                         .bold()
                 }
@@ -42,7 +42,7 @@ struct InformationView: View {
                             .padding()
                     }
                 } header: {
-                    Text("Firmware Update")
+                    Text("Démarches à effectuer")
                         .font(.title3)
                         .bold()
                 }
