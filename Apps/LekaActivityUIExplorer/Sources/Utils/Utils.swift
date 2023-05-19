@@ -4,16 +4,19 @@
 
 import Foundation
 
-public func convertJoystickPosXToPWM(posX: CGFloat, posY: CGFloat, maxValue: CGFloat) -> CGFloat {
-    let leftPWM = 255.0 / maxValue * (posX - posY)
+public func convertJoystickPosToMotorSpeed(position: CGPoint, maxValue: CGFloat) -> (
+    leftMotor: Float, rightMotor: Float
+) {
+    let posX = position.x
+    let posY = position.y
 
-    return clamp(leftPWM, lower: -255, upper: 255)
-}
+    let leftMotor = 255.0 / maxValue * (posX - posY)
+    let rightMotor = -255.0 / maxValue * (posX + posY)
 
-public func convertJoystickPosYToPWM(posX: CGFloat, posY: CGFloat, maxValue: CGFloat) -> CGFloat {
-    let rightPWM = -255 / maxValue * (posX + posY)
+    let leftMotorClamped = Float(clamp(leftMotor, lower: -255, upper: 255))
+    let rightMotorClamped = Float(clamp(rightMotor, lower: -255, upper: 255))
 
-    return clamp(rightPWM, lower: -255, upper: 255)
+    return (leftMotorClamped, rightMotorClamped)
 }
 
 func clamp<T: Comparable>(_ value: T, lower: T, upper: T) -> T {
