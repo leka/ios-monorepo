@@ -29,6 +29,7 @@ func projects() -> [Path] {
     let iOSExamples: [Path] = [
         "Examples/iOSApp",
         "Examples/Module",
+        "Examples/StateMachines",
     ]
 
     // MARK: - macOS Examples
