@@ -12,4 +12,5 @@ let project = Project.iOSApp(
     dependencies: [
         .project(target: "Module", path: Path("../../Examples/Module")),
         .external(name: "StateMachine"),
+        .external(name: "SwiftState"),
     ])
