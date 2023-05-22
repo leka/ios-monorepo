@@ -43,4 +43,5 @@ enum ActivityType: String {
     case listenThenTouchToSelect = "listen_then_touch_to_select"
     case colorQuest = "color_quest"
     case xylophone = "xylophone"
+    case remote = "remote_standard"
 }
