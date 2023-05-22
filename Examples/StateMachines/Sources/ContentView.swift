@@ -7,7 +7,24 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        HelloView(color: .mint, name: "iOS App Example")
+        VStack {
+            HStack {
+                VStack(alignment: .trailing) {
+                    Text("Tinder: ")
+                    Text("ReactKit: ")
+                    Text("Actomaton: ")
+                    Text("GameplayKit: ")
+                    Text("PeterRingset: ")
+                }
+                VStack {
+                    TinderView()
+                    ReactKitView()
+                    ActomatonView()
+                    GameplayKitView()
+                    PeterRingsetView()
+                }
+            }
+        }
     }
 }
 
