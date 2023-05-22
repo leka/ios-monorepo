@@ -102,6 +102,8 @@ class ExplorerActivity: ObservableObject {
                 return "Touche la couleur verte"
             case .xylophone:
                 return "Joue du xylophone avec Leka"
+            case .remote:
+                return "Contrôle Leka avec la télécommande et fais le changer de couleur"
         }
     }
 

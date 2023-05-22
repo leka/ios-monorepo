@@ -151,4 +151,9 @@ public enum Misc {
         defaultTilesRotationFeedback: -1, defaultTileColors: [.green, .purple, .red, .yellow, .blue])
 }
 
+public enum Remote {
+    public static var standard = BaseDefaults(
+        defaultAnswerSize: 500, defaultHorizontalSpacing: 32, defaultVerticalSpacing: 32)
+}
+
 // swiftlint:enable identifier_name

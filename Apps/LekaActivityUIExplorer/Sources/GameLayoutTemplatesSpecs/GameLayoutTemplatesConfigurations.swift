@@ -23,5 +23,4 @@ class GameLayoutTemplatesConfigurations: ObservableObject {
             preferred4AnswersLayout = .inline
         }
     }
-
 }

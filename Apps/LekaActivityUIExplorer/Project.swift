@@ -13,6 +13,7 @@ let project = Project.iOSApp(
         .external(name: "MarkdownUI"),
         .external(name: "Yams"),
         .external(name: "Lottie"),
+        .external(name: "SwiftUIJoystick"),
     ],
     infoPlist: [
         "CFBundleShortVersionString": "1.0.0",
