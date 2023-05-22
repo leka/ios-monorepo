@@ -7,6 +7,12 @@ import Foundation
 import SwiftUI
 import SwiftUIJoystick
 
+public enum Rotation: Equatable {
+    case still
+    case clockwise(speed: UInt8)
+    case counterclockwise(speed: UInt8)
+}
+
 @MainActor
 public class JoystickViewModel: ObservableObject {
 
