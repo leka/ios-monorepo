@@ -17,6 +17,7 @@ let dependencies = Dependencies(
         .remote(
             url: "https://github.com/Tinder/StateMachine", requirement: .upToNextMajor(from: "0.3.0")),
         .remote(url: "https://github.com/ReactKit/SwiftState", requirement: .upToNextMajor(from: "6.0.0")),
+        .remote(url: "https://github.com/Actomaton/Actomaton", requirement: .upToNextMajor(from: "0.7.0")),
     ],
     platforms: [.iOS, .macOS]
 )

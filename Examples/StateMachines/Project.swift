@@ -13,4 +13,5 @@ let project = Project.iOSApp(
         .project(target: "Module", path: Path("../../Examples/Module")),
         .external(name: "StateMachine"),
         .external(name: "SwiftState"),
+        .external(name: "Actomaton"),
     ])
