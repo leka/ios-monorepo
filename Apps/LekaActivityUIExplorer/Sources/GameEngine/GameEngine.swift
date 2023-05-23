@@ -117,7 +117,7 @@ class GameEngine: NSObject, ObservableObject {
         stepInstruction = currentActivity.stepSequence[currentGroupIndex][currentStepIndex].instruction.localized()
         getCorrectAnswerIndex()
 
-        if currentActivity.activityType == "color_quest" {
+        if currentActivity.activityType == .colorQuest {
             // Show correct answer color on Leka's belt
         }
     }
@@ -146,7 +146,7 @@ class GameEngine: NSObject, ObservableObject {
     // setup player and "buttons' overlay" if needed depending on activity type
     func checkMediaAvailability() {
         switch currentActivity.activityType {
-            case "listen_then_touch_to_select":
+            case .listenThenTouchToSelect:
                 setAudioPlayer()
                 currentMediaHasBeenPlayedOnce = false
                 allAnswersAreDisabled = true

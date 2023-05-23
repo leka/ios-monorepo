@@ -34,7 +34,7 @@ struct ExplorerOptionsPanel: View {
 
                     Form {
                         Group {
-                            if gameEngine.currentActivity.activityType != "xylophone" {
+                            if gameEngine.currentActivity.activityType != .xylophone {
                                 NumberOfGroups()
                                 SizeEditor(templateDefaults: configuration.currentDefaults)
                                 if gameEngine.allAnswers.count > 1 {

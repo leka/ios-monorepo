@@ -15,6 +15,21 @@ struct LocalizedContent: Codable, Equatable {
     var frFR: String?
 }
 
+// MARK: - Activity Types
+enum ActivityType: String, Codable {
+    case touchToSelect = "touch_to_select"
+    case listenThenTouchToSelect = "listen_then_touch_to_select"
+    case colorQuest = "color_quest"
+    case xylophone = "xylophone"
+    case remote = "remote_standard"
+}
+//struct ActivityType: Codable, Equatable {
+//    enum CodingKeys: String, CodingKey {
+//        case activityType = "type"
+//    }
+//    var activityType: String
+//}
+
 // MARK: - Activity Configurator - Texts's language edition scope
 enum Languages: Hashable, CaseIterable {
     case french, english
@@ -35,13 +50,4 @@ enum ResultType {
 // MARK: - Alternative Layouts for 3 & 4 answers
 enum AlternativeLayout {
     case basic, inline
-}
-
-// MARK: - Activity Types Enum
-enum ActivityType: String {
-    case touchToSelect = "touch_to_select"
-    case listenThenTouchToSelect = "listen_then_touch_to_select"
-    case colorQuest = "color_quest"
-    case xylophone = "xylophone"
-    case remote = "remote_standard"
 }
