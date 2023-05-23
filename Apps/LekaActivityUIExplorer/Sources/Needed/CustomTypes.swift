@@ -23,12 +23,6 @@ enum ActivityType: String, Codable {
     case xylophone = "xylophone"
     case remote = "remote_standard"
 }
-//struct ActivityType: Codable, Equatable {
-//    enum CodingKeys: String, CodingKey {
-//        case activityType = "type"
-//    }
-//    var activityType: String
-//}
 
 // MARK: - Activity Configurator - Texts's language edition scope
 enum Languages: Hashable, CaseIterable {
