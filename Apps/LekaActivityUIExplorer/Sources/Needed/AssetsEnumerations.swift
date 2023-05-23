@@ -109,16 +109,18 @@ enum MiscPreviews: Int, CaseIterable, Previewable {
 }
 
 enum RemotePreviews: Int, CaseIterable, Previewable {
-    case standard
+    case standard, arrow
     var type: ActivityType { return .remote }
     var preview: String {
         switch self {
             case .standard: return "remoteStandard"
+            case .arrow: return "remoteArrow"
         }
     }
     func defaults() -> BaseDefaults? {
         switch self {
             case .standard: return Remote.standard
+            case .arrow: return Remote.arrow
         }
     }
 }
