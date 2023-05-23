@@ -20,7 +20,7 @@ class ExplorerActivity: ObservableObject {
             title: emptyTitle,
             short: emptyShort,
             instructions: emptyInstructions(),
-            activityType: type.rawValue,
+            activityType: type,
             stepsAmount: 10,
             isRandom: false,
             numberOfImages: 1,
