@@ -26,7 +26,7 @@ struct Activity: Codable, Equatable, Identifiable {
     var title: LocalizedContent
     var short: LocalizedContent
     var instructions: LocalizedContent
-    var activityType: String?
+    var activityType: ActivityType
     var stepsAmount: Int
     var isRandom: Bool
     var numberOfImages: Int
@@ -38,7 +38,7 @@ struct Activity: Codable, Equatable, Identifiable {
         title: LocalizedContent = LocalizedContent(),
         short: LocalizedContent = LocalizedContent(),
         instructions: LocalizedContent = LocalizedContent(),
-        activityType: String? = "touch_to_select",
+        activityType: ActivityType = .touchToSelect,
         stepsAmount: Int = 10,
         isRandom: Bool = false,
         numberOfImages: Int = 0,  // this should be in the Step Type
