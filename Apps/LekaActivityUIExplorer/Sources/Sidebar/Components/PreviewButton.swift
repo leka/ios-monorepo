@@ -34,13 +34,18 @@ struct PreviewButton: View {
             )
             .buttonStyle(
                 TemplatePreview_ButtonStyle(
-                    isSelected: navigator.selectedTemplate == item.index,
+                    isSelected: isSelected,
                     name: item.preview)
             )
             .padding(20)
 
             previewButtonAccessory
         }
+    }
+
+    private var isSelected: Bool {
+        return navigator.selectedTemplate == item.index
+            && configuration.currentActivityType == item.type
     }
 
     @ViewBuilder
