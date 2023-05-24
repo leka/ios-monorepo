@@ -9,8 +9,9 @@ import Foundation
 protocol Previewable {
     var index: Int { get }
     var type: ActivityType { get }
-    var defaults: BaseDefaults { get }
     var preview: String { get }
+
+    func defaults() -> BaseDefaults?
 }
 
 extension Previewable where Self: RawRepresentable, RawValue == Int {
@@ -20,18 +21,6 @@ extension Previewable where Self: RawRepresentable, RawValue == Int {
 enum TouchToSelectPreviews: Int, CaseIterable, Previewable {
     case one, two, three, threeInline, four, fourInline, five, six
     var type: ActivityType { return .touchToSelect }
-    var defaults: BaseDefaults {
-        switch self {
-            case .one: return TouchToSelect.one
-            case .two: return TouchToSelect.two
-            case .three: return TouchToSelect.three
-            case .threeInline: return TouchToSelect.threeInline
-            case .four: return TouchToSelect.four
-            case .fourInline: return TouchToSelect.fourInline
-            case .five: return TouchToSelect.five
-            case .six: return TouchToSelect.six
-        }
-    }
     var preview: String {
         switch self {
             case .one: return "LayoutTemplate_1"
@@ -44,22 +33,23 @@ enum TouchToSelectPreviews: Int, CaseIterable, Previewable {
             case .six: return "LayoutTemplate_6"
         }
     }
+    func defaults() -> BaseDefaults? {
+        switch self {
+            case .one: return TouchToSelect.one
+            case .two: return TouchToSelect.two
+            case .three: return TouchToSelect.three
+            case .threeInline: return TouchToSelect.threeInline
+            case .four: return TouchToSelect.four
+            case .fourInline: return TouchToSelect.fourInline
+            case .five: return TouchToSelect.five
+            case .six: return TouchToSelect.six
+        }
+    }
 }
 
 enum ListenThenTouchToSelectPreviews: Int, CaseIterable, Previewable {
     case one, two, three, threeInline, four, fourInline, six
     var type: ActivityType { return .listenThenTouchToSelect }
-    var defaults: BaseDefaults {
-        switch self {
-            case .one: return ListenThenTouchToSelect.one
-            case .two: return ListenThenTouchToSelect.two
-            case .three: return ListenThenTouchToSelect.three
-            case .threeInline: return ListenThenTouchToSelect.threeInline
-            case .four: return ListenThenTouchToSelect.four
-            case .fourInline: return ListenThenTouchToSelect.fourInline
-            case .six: return ListenThenTouchToSelect.six
-        }
-    }
     var preview: String {
         switch self {
             case .one: return "LayoutTemplate_1"
@@ -71,18 +61,22 @@ enum ListenThenTouchToSelectPreviews: Int, CaseIterable, Previewable {
             case .six: return "LayoutTemplate_6"
         }
     }
+    func defaults() -> BaseDefaults? {
+        switch self {
+            case .one: return ListenThenTouchToSelect.one
+            case .two: return ListenThenTouchToSelect.two
+            case .three: return ListenThenTouchToSelect.three
+            case .threeInline: return ListenThenTouchToSelect.threeInline
+            case .four: return ListenThenTouchToSelect.four
+            case .fourInline: return ListenThenTouchToSelect.fourInline
+            case .six: return ListenThenTouchToSelect.six
+        }
+    }
 }
 
 enum ColorQuestPreviews: Int, CaseIterable, Previewable {
     case one, two, three
     var type: ActivityType { return .colorQuest }
-    var defaults: BaseDefaults {
-        switch self {
-            case .one: return ColorQuest.one
-            case .two: return ColorQuest.two
-            case .three: return ColorQuest.three
-        }
-    }
     var preview: String {
         switch self {
             case .one: return "ColorQuest_1"
@@ -90,19 +84,26 @@ enum ColorQuestPreviews: Int, CaseIterable, Previewable {
             case .three: return "ColorQuest_3"
         }
     }
+    func defaults() -> BaseDefaults? {
+        switch self {
+            case .one: return ColorQuest.one
+            case .two: return ColorQuest.two
+            case .three: return ColorQuest.three
+        }
+    }
 }
 
 enum MiscPreviews: Int, CaseIterable, Previewable {
     case xylophone
     var type: ActivityType { return .xylophone }
-    var defaults: BaseDefaults {
-        switch self {
-            case .xylophone: return Misc.xylophone
-        }
-    }
     var preview: String {
         switch self {
             case .xylophone: return "xylophoneTemplate"
+        }
+    }
+    func defaults() -> BaseDefaults? {
+        switch self {
+            case .xylophone: return Misc.xylophone
         }
     }
 }
@@ -110,14 +111,14 @@ enum MiscPreviews: Int, CaseIterable, Previewable {
 enum RemotePreviews: Int, CaseIterable, Previewable {
     case standard
     var type: ActivityType { return .remote }
-    var defaults: BaseDefaults {
-        switch self {
-            case .standard: return Remote.standard
-        }
-    }
     var preview: String {
         switch self {
             case .standard: return "remoteStandard"
+        }
+    }
+    func defaults() -> BaseDefaults? {
+        switch self {
+            case .standard: return Remote.standard
         }
     }
 }

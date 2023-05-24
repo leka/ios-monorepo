@@ -101,59 +101,59 @@ public class XylophoneDefaults: BaseDefaults {
 // swiftlint:disable identifier_name
 
 public enum TouchToSelect {
-    public static var one = BaseDefaults(
+    public static let one = BaseDefaults(
         defaultAnswerSize: 300, defaultHorizontalSpacing: 32, defaultVerticalSpacing: 32)
-    public static var two = BaseDefaults(
+    public static let two = BaseDefaults(
         defaultAnswerSize: 300, defaultHorizontalSpacing: 32, defaultVerticalSpacing: 32)
-    public static var three = BaseDefaults(
+    public static let three = BaseDefaults(
         defaultAnswerSize: 260, defaultHorizontalSpacing: 32, defaultVerticalSpacing: 32)
-    public static var threeInline = BaseDefaults(
+    public static let threeInline = BaseDefaults(
         defaultAnswerSize: 300, defaultHorizontalSpacing: 60, defaultVerticalSpacing: 32)
-    public static var four = BaseDefaults(
+    public static let four = BaseDefaults(
         defaultAnswerSize: 240, defaultHorizontalSpacing: 200, defaultVerticalSpacing: 40)
-    public static var fourInline = BaseDefaults(
+    public static let fourInline = BaseDefaults(
         defaultAnswerSize: 200, defaultHorizontalSpacing: 70, defaultVerticalSpacing: 32)
-    public static var five = BaseDefaults(
+    public static let five = BaseDefaults(
         defaultAnswerSize: 200, defaultHorizontalSpacing: 32, defaultVerticalSpacing: 32)
-    public static var six = BaseDefaults(
+    public static let six = BaseDefaults(
         defaultAnswerSize: 300, defaultHorizontalSpacing: 100, defaultVerticalSpacing: 32)
 }
 
 public enum ListenThenTouchToSelect {
-    public static var one = ListenThenTouchToSelectDefaults(
+    public static let one = ListenThenTouchToSelectDefaults(
         defaultAnswerSize: 300, defaultHorizontalSpacing: 32, defaultVerticalSpacing: 32, defaultListenButtonSize: 200)
-    public static var two = ListenThenTouchToSelectDefaults(
+    public static let two = ListenThenTouchToSelectDefaults(
         defaultAnswerSize: 300, defaultHorizontalSpacing: 32, defaultVerticalSpacing: 32, defaultListenButtonSize: 200)
-    public static var three = ListenThenTouchToSelectDefaults(
+    public static let three = ListenThenTouchToSelectDefaults(
         defaultAnswerSize: 230, defaultHorizontalSpacing: 32, defaultVerticalSpacing: 32, defaultListenButtonSize: 200)
-    public static var threeInline = ListenThenTouchToSelectDefaults(
+    public static let threeInline = ListenThenTouchToSelectDefaults(
         defaultAnswerSize: 220, defaultHorizontalSpacing: 60, defaultVerticalSpacing: 32, defaultListenButtonSize: 200)
-    public static var four = ListenThenTouchToSelectDefaults(
+    public static let four = ListenThenTouchToSelectDefaults(
         defaultAnswerSize: 240, defaultHorizontalSpacing: 200, defaultVerticalSpacing: 40, defaultListenButtonSize: 200)
-    public static var fourInline = ListenThenTouchToSelectDefaults(
+    public static let fourInline = ListenThenTouchToSelectDefaults(
         defaultAnswerSize: 160, defaultHorizontalSpacing: 50, defaultVerticalSpacing: 32, defaultListenButtonSize: 200)
-    public static var six = ListenThenTouchToSelectDefaults(
+    public static let six = ListenThenTouchToSelectDefaults(
         defaultAnswerSize: 200, defaultHorizontalSpacing: 80, defaultVerticalSpacing: 32, defaultListenButtonSize: 200)
 }
 
 public enum ColorQuest {
-    public static var one = BaseDefaults(
+    public static let one = BaseDefaults(
         defaultAnswerSize: 500, defaultHorizontalSpacing: 32, defaultVerticalSpacing: 32)
-    public static var two = BaseDefaults(
+    public static let two = BaseDefaults(
         defaultAnswerSize: 350, defaultHorizontalSpacing: 70, defaultVerticalSpacing: 32)
-    public static var three = BaseDefaults(
+    public static let three = BaseDefaults(
         defaultAnswerSize: 260, defaultHorizontalSpacing: 70, defaultVerticalSpacing: 32)
 }
 
 public enum Misc {
-    public static var xylophone = XylophoneDefaults(
+    public static let xylophone = XylophoneDefaults(
         defaultTileWidth: 180, defaultTilesSpacing: 32, defaultTilesScaleFeedback: 0.98,
         defaultTilesRotationFeedback: -1, defaultTileColors: [.green, .purple, .red, .yellow, .blue])
 }
 
 public enum Remote {
-    public static var standard = BaseDefaults(
-        defaultAnswerSize: 500, defaultHorizontalSpacing: 32, defaultVerticalSpacing: 32)
+    // ? no defaults needed
+    public static let standard: BaseDefaults? = nil
 }
 
 // swiftlint:enable identifier_name
