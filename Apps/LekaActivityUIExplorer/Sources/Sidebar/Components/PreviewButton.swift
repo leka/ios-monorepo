@@ -20,7 +20,7 @@ struct PreviewButton: View {
                 action: {
                     navigator.selectedTemplate = item.index
                     configuration.currentActivityType = item.type
-                    configuration.currentDefaults = item.defaults
+                    configuration.currentDefaults = item.defaults()
                     navigator.sidebarVisibility = .detailOnly
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                         action()

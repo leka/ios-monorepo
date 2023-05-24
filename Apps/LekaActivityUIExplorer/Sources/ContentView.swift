@@ -14,6 +14,7 @@ struct ContentView: View {
     @State private var showInstructionModal: Bool = false
     @State private var navigateToConfigurator: Bool = false
     @State private var showOptions: Bool = false
+    @State private var showNoDefaultsAlert: Bool = false
 
     var body: some View {
         ZStack {
@@ -46,6 +47,11 @@ struct ContentView: View {
         }
         .animation(.easeIn(duration: 0.4), value: showOptions)
         .navigationSplitViewStyle(.prominentDetail)
+        .alert("Valeurs par défaut :", isPresented: $showNoDefaultsAlert) {
+            //
+        } message: {
+            Text("Ce template n'est pas modifiable.")
+        }
     }
 
     private var topBarTrailingItems: some View {
@@ -79,10 +85,14 @@ struct ContentView: View {
     private var optionsButton: some View {
         Button(
             action: {
+                navigator.sidebarVisibility = .detailOnly
+                guard configuration.currentDefaults != nil else {
+                    showNoDefaultsAlert.toggle()
+                    return
+                }
                 withAnimation(.easeIn(duration: 0.4)) {
                     showOptions.toggle()
                 }
-                navigator.sidebarVisibility = .detailOnly
             },
             label: {
                 Image(systemName: "slider.horizontal.3")
