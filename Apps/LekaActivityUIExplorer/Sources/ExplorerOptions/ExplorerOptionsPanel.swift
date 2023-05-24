@@ -36,9 +36,9 @@ struct ExplorerOptionsPanel: View {
                         Group {
                             if gameEngine.currentActivity.activityType != .xylophone {
                                 NumberOfGroups()
-                                SizeEditor(templateDefaults: configuration.currentDefaults)
+                                SizeEditor(templateDefaults: configuration.currentDefaults!)
                                 if gameEngine.allAnswers.count > 1 {
-                                    SpacingEditor(templateDefaults: configuration.currentDefaults)
+                                    SpacingEditor(templateDefaults: configuration.currentDefaults!)
                                 }
                             } else {
                                 XylophoneSizeEditor(templateDefaults: Misc.xylophone)
