@@ -14,7 +14,7 @@ struct InteractionsView: View {
     var body: some View {
         VStack {
             Spacer()
-            switch configuration.currentActivityType {
+            switch gameEngine.currentActivity.activityType {
                 case .touchToSelect: touchToSelectTemplate
                 case .listenThenTouchToSelect: listenThenTouchToSelectTemplate
                 case .colorQuest: colorQuestTemplate
