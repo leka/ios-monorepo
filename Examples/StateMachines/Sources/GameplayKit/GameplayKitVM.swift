@@ -45,6 +45,18 @@ class GameplayKitVM: ObservableObject {
                 print("UNKNOWN TRANSITION")
         }
     }
+
+    func eventB() {
+        guard let stateMachine = stateMachine else { return }
+        guard let state = stateMachine.currentState else { return }
+
+        switch state {
+            case is StateC:
+                stateMachine.enter(StateC.self)
+            default:
+                print("UNKNOWN TRANSITION")
+        }
+    }
 }
 
 extension GameplayKitVM {
