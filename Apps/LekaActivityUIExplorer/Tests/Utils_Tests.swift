@@ -10,83 +10,211 @@ import XCTest
 final class UtilsLeftPWMConversion_Tests: XCTestCase {
     let maxValue: CGFloat = 300
 
-    func test_shouldReturnPWM_equals0_0() {
+    func test_shouldReturnRotations_equalsClockwise_still_still() {
         // Given
         let position = CGPoint(x: 0.0, y: 0.0)
 
         // When
-        let (actualLeftMotor, actualRightMotor) = convertJoystickPosToMotorSpeed(
+        let (actualRotationLeft, actualRotationRight) = convertJoystickPosToMotorSpeed(
             position: position, maxValue: maxValue)
 
         // Then
-        let expectedLeftMotor: Float = 0.0
-        let expectedRightMotor: Float = 0.0
+        let expectedRotationLeft: Rotation = .still
+        let expectedRotationRight: Rotation = .still
 
-        XCTAssertEqual(expectedLeftMotor, actualLeftMotor)
-        XCTAssertEqual(expectedRightMotor, actualRightMotor)
+        XCTAssertEqual(expectedRotationLeft, actualRotationLeft)
+        XCTAssertEqual(expectedRotationRight, actualRotationRight)
     }
 
-    func test_shouldReturnPWM_equals255_255() {
+    func test_shouldReturnRotations_equals_clockwise255_clockwise255() {
         // Given
         let position = CGPoint(x: 0.0, y: -maxValue)
 
         // When
-        let (actualLeftMotor, actualRightMotor) = convertJoystickPosToMotorSpeed(
+        let (actualRotationLeft, actualRotationRight) = convertJoystickPosToMotorSpeed(
             position: position, maxValue: maxValue)
 
         // Then
-        let expectedLeftMotor: Float = 255.0
-        let expectedRightMotor: Float = 255.0
+        let expectedRotationLeft: Rotation = .clockwise(speed: 255)
+        let expectedRotationRight: Rotation = .clockwise(speed: 255)
 
-        XCTAssertEqual(expectedLeftMotor, actualLeftMotor)
-        XCTAssertEqual(expectedRightMotor, actualRightMotor)
+        XCTAssertEqual(expectedRotationLeft, actualRotationLeft)
+        XCTAssertEqual(expectedRotationRight, actualRotationRight)
     }
 
-    func test_shouldReturnPWM_equalsMinus255_minus255() {
+    func test_shouldReturnRotations_equals_counterclockwise255_counterclockwise255() {
         // Given
         let position = CGPoint(x: 0.0, y: maxValue)
 
         // When
-        let (actualLeftMotor, actualRightMotor) = convertJoystickPosToMotorSpeed(
+        let (actualRotationLeft, actualRotationRight) = convertJoystickPosToMotorSpeed(
             position: position, maxValue: maxValue)
 
         // Then
-        let expectedLeftMotor: Float = -255.0
-        let expectedRightMotor: Float = -255.0
+        let expectedRotationLeft: Rotation = .counterclockwise(speed: 255)
+        let expectedRotationRight: Rotation = .counterclockwise(speed: 255)
 
-        XCTAssertEqual(expectedLeftMotor, actualLeftMotor)
-        XCTAssertEqual(expectedRightMotor, actualRightMotor)
+        XCTAssertEqual(expectedRotationLeft, actualRotationLeft)
+        XCTAssertEqual(expectedRotationRight, actualRotationRight)
     }
 
-    func test_shouldReturnPWM_equals255_minus255() {
+    func test_shouldReturnRotations_equals_clockwise255_counterclockwise255() {
         // Given
         let position = CGPoint(x: maxValue, y: 0.0)
 
         // When
-        let (actualLeftMotor, actualRightMotor) = convertJoystickPosToMotorSpeed(
+        let (actualRotationLeft, actualRotationRight) = convertJoystickPosToMotorSpeed(
             position: position, maxValue: maxValue)
 
         // Then
-        let expectedLeftMotor: Float = 255.0
-        let expectedRightMotor: Float = -255.0
+        let expectedRotationLeft: Rotation = .clockwise(speed: 255)
+        let expectedRotationRight: Rotation = .counterclockwise(speed: 255)
 
-        XCTAssertEqual(expectedLeftMotor, actualLeftMotor)
-        XCTAssertEqual(expectedRightMotor, actualRightMotor)
+        XCTAssertEqual(expectedRotationLeft, actualRotationLeft)
+        XCTAssertEqual(expectedRotationRight, actualRotationRight)
     }
 
-    func test_shouldReturnPWM_equalsMinus255_255() {
+    func test_shouldReturnRotations_equals_counterclockwise255_clockwise255() {
         // Given
         let position = CGPoint(x: -maxValue, y: 0.0)
 
         // When
-        let (actualLeftMotor, actualRightMotor) = convertJoystickPosToMotorSpeed(
+        let (actualRotationLeft, actualRotationRight) = convertJoystickPosToMotorSpeed(
             position: position, maxValue: maxValue)
 
         // Then
-        let expectedLeftMotor: Float = -255.0
-        let expectedRightMotor: Float = 255.0
+        let expectedRotationLeft: Rotation = .counterclockwise(speed: 255)
+        let expectedRotationRight: Rotation = .clockwise(speed: 255)
 
-        XCTAssertEqual(expectedLeftMotor, actualLeftMotor)
-        XCTAssertEqual(expectedRightMotor, actualRightMotor)
+        XCTAssertEqual(expectedRotationLeft, actualRotationLeft)
+        XCTAssertEqual(expectedRotationRight, actualRotationRight)
+    }
+
+    func test_shouldReturnRotations_equals_clockwise127_clockwise127() {
+        // Given
+        let position = CGPoint(x: 0.0, y: -maxValue / 2)
+
+        // When
+        let (actualRotationLeft, actualRotationRight) = convertJoystickPosToMotorSpeed(
+            position: position, maxValue: maxValue)
+
+        // Then
+        let expectedRotationLeft: Rotation = .clockwise(speed: 127)
+        let expectedRotationRight: Rotation = .clockwise(speed: 127)
+
+        XCTAssertEqual(expectedRotationLeft, actualRotationLeft)
+        XCTAssertEqual(expectedRotationRight, actualRotationRight)
+    }
+
+    func test_shouldReturnRotations_equals_counterclockwise127_counterclockwise127() {
+        // Given
+        let position = CGPoint(x: 0.0, y: maxValue / 2)
+
+        // When
+        let (actualRotationLeft, actualRotationRight) = convertJoystickPosToMotorSpeed(
+            position: position, maxValue: maxValue)
+
+        // Then
+        let expectedRotationLeft: Rotation = .counterclockwise(speed: 127)
+        let expectedRotationRight: Rotation = .counterclockwise(speed: 127)
+
+        XCTAssertEqual(expectedRotationLeft, actualRotationLeft)
+        XCTAssertEqual(expectedRotationRight, actualRotationRight)
+    }
+
+    func test_shouldReturnRotations_equals_clockwise127_counterclockwise127() {
+        // Given
+        let position = CGPoint(x: maxValue / 2, y: 0.0)
+
+        // When
+        let (actualRotationLeft, actualRotationRight) = convertJoystickPosToMotorSpeed(
+            position: position, maxValue: maxValue)
+
+        // Then
+        let expectedRotationLeft: Rotation = .clockwise(speed: 127)
+        let expectedRotationRight: Rotation = .counterclockwise(speed: 127)
+
+        XCTAssertEqual(expectedRotationLeft, actualRotationLeft)
+        XCTAssertEqual(expectedRotationRight, actualRotationRight)
+    }
+
+    func test_shouldReturnRotations_equals_counterclockwise127_clockwise127() {
+        // Given
+        let position = CGPoint(x: -maxValue / 2, y: 0.0)
+
+        // When
+        let (actualRotationLeft, actualRotationRight) = convertJoystickPosToMotorSpeed(
+            position: position, maxValue: maxValue)
+
+        // Then
+        let expectedRotationLeft: Rotation = .counterclockwise(speed: 127)
+        let expectedRotationRight: Rotation = .clockwise(speed: 127)
+
+        XCTAssertEqual(expectedRotationLeft, actualRotationLeft)
+        XCTAssertEqual(expectedRotationRight, actualRotationRight)
+    }
+
+    func test_shouldReturnRotations_equalsClockwise_still_counterclockwise255() {
+        // Given
+        let position = CGPoint(x: maxValue / 2, y: maxValue / 2)
+
+        // When
+        let (actualRotationLeft, actualRotationRight) = convertJoystickPosToMotorSpeed(
+            position: position, maxValue: maxValue)
+
+        // Then
+        let expectedRotationLeft: Rotation = .still
+        let expectedRotationRight: Rotation = .counterclockwise(speed: 255)
+
+        XCTAssertEqual(expectedRotationLeft, actualRotationLeft)
+        XCTAssertEqual(expectedRotationRight, actualRotationRight)
+    }
+
+    func test_shouldReturnRotations_equalsClockwise_clockwise255_still() {
+        // Given
+        let position = CGPoint(x: maxValue / 2, y: -maxValue / 2)
+
+        // When
+        let (actualRotationLeft, actualRotationRight) = convertJoystickPosToMotorSpeed(
+            position: position, maxValue: maxValue)
+
+        // Then
+        let expectedRotationLeft: Rotation = .clockwise(speed: 255)
+        let expectedRotationRight: Rotation = .still
+
+        XCTAssertEqual(expectedRotationLeft, actualRotationLeft)
+        XCTAssertEqual(expectedRotationRight, actualRotationRight)
+    }
+
+    func test_shouldReturnRotations_equalsCounterclockwise_still_clockwise255() {
+        // Given
+        let position = CGPoint(x: -maxValue / 2, y: -maxValue / 2)
+
+        // When
+        let (actualRotationLeft, actualRotationRight) = convertJoystickPosToMotorSpeed(
+            position: position, maxValue: maxValue)
+
+        // Then
+        let expectedRotationLeft: Rotation = .still
+        let expectedRotationRight: Rotation = .clockwise(speed: 255)
+
+        XCTAssertEqual(expectedRotationLeft, actualRotationLeft)
+        XCTAssertEqual(expectedRotationRight, actualRotationRight)
+    }
+
+    func test_shouldReturnRotations_equalsCounterclockwise_counterclockwise255_still() {
+        // Given
+        let position = CGPoint(x: -maxValue / 2, y: maxValue / 2)
+
+        // When
+        let (actualRotationLeft, actualRotationRight) = convertJoystickPosToMotorSpeed(
+            position: position, maxValue: maxValue)
+
+        // Then
+        let expectedRotationLeft: Rotation = .counterclockwise(speed: 255)
+        let expectedRotationRight: Rotation = .still
+
+        XCTAssertEqual(expectedRotationLeft, actualRotationLeft)
+        XCTAssertEqual(expectedRotationRight, actualRotationRight)
     }
 }
