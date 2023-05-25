@@ -154,6 +154,7 @@ public enum Misc {
 public enum Remote {
     // ? no defaults needed
     public static let standard: BaseDefaults? = nil
+    public static let arrow: BaseDefaults? = nil
 }
 
 // swiftlint:enable identifier_name
