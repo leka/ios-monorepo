@@ -12,6 +12,10 @@ import Foundation
 class PeterRingsetVM: ObservableObject {
     @Published var currentState: String = ""
 
+    private func fooo(on eventType: String) {
+        print("[PeterRingset] fooo called on \(eventType)")
+    }
+
     private let stateMachine = PRStateMachine()
 
     init() {
@@ -19,6 +23,8 @@ class PeterRingsetVM: ObservableObject {
 
         stateMachine.statePublisher
             .sink { state in
+                self.fooo(on: "entering state")
+
                 switch state {
                     case .stateA:
                         self.currentState = "state A"
@@ -29,6 +35,10 @@ class PeterRingsetVM: ObservableObject {
                 }
             }
             .store(in: &stateMachine.stateCancellable)
+
+        stateMachine.onEventSucceded = {
+            self.fooo(on: "transition")
+        }
     }
 }
 

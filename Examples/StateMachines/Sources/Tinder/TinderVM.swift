@@ -11,6 +11,10 @@ import Foundation
 class TinderVM: StateMachineBuilder, ObservableObject {
     @Published var currentState: String = ""
 
+    private func fooo(on eventType: String) {
+        print("[Tinder] fooo called on \(eventType)")
+    }
+
     enum State: StateMachineHashable {
         case stateA, stateB, stateC
     }
@@ -23,32 +27,36 @@ class TinderVM: StateMachineBuilder, ObservableObject {
         case logAtoB, logBtoC, logCtoA
     }
 
-    private let machine = TinderStateMachine<State, Event, SideEffect> {
-        initialState(.stateA)
-        state(.stateA) {
-            on(.eventA) {
-                transition(to: .stateB, emit: .logAtoB)
+    private var machine: TinderStateMachine<State, Event, SideEffect>?
+
+    init() {
+        self.machine = TinderStateMachine<State, Event, SideEffect> {
+            Self.initialState(.stateA)
+            Self.state(.stateA) {
+                Self.on(.eventA) {
+                    Self.transition(to: .stateB, emit: .logAtoB)
+                }
             }
-        }
-        state(.stateB) {
-            on(.eventA) {
-                transition(to: .stateC, emit: .logBtoC)
+            Self.state(.stateB) {
+                Self.on(.eventA) {
+                    Self.transition(to: .stateC, emit: .logBtoC)
+                }
             }
-        }
-        state(.stateC) {
-            on(.eventA) {
-                transition(to: .stateA, emit: .logCtoA)
+            Self.state(.stateC) {
+                Self.on(.eventA) {
+                    Self.transition(to: .stateA, emit: .logCtoA)
+                }
+                Self.on(.eventB) {
+                    Self.transition(to: .stateC)
+                }
             }
-            on(.eventB) {
-                transition(to: .stateC)
-            }
-        }
-        onTransition {
-            guard case let .success(transition) = $0, let sideEffect = transition.sideEffect else { return }
-            switch sideEffect {
-                case .logAtoB: print("Transition from state A to state B")
-                case .logBtoC: print("Transition from state B to state C")
-                case .logCtoA: print("Transition from state C to state A")
+            Self.onTransition {
+                guard case let .success(transition) = $0, let sideEffect = transition.sideEffect else { return }
+                switch sideEffect {
+                    case .logAtoB: self.fooo(on: "transition from state A to state B")
+                    case .logBtoC: self.fooo(on: "transition from state B to state C")
+                    case .logCtoA: self.fooo(on: "transition from state C to state A")
+                }
             }
         }
     }
@@ -56,6 +64,8 @@ class TinderVM: StateMachineBuilder, ObservableObject {
 
 extension TinderVM {
     func setNewState() {
+        guard let machine = machine else { return }
+
         switch machine.state {
             case .stateA:
                 currentState = "state A"
@@ -67,6 +77,8 @@ extension TinderVM {
     }
 
     func somethingHappens() {
+        guard let machine = machine else { return }
+
         do {
             try machine.transition(.eventA)
         } catch {

@@ -33,12 +33,15 @@ class PRStateMachine {
         self.statePublisher = self.stateSubject
             .eraseToAnyPublisher()
     }
+
+    var onEventSucceded: (() -> Void)?
 }
 
 extension PRStateMachine {
 
     func tryEvent(_ event: Event) {
         if let state = nextState(for: event) {
+            self.onEventSucceded?()
             self.state = state
         }
     }

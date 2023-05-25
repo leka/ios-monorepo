@@ -12,6 +12,10 @@ import SwiftState
 class ReactKitVM: ObservableObject {
     @Published var currentState: String = ""
 
+    private func fooo(on eventType: String) {
+        print("[ReactKit] fooo called on \(eventType)")
+    }
+
     enum State: StateType {
         case stateA, stateB, stateC
     }
@@ -20,38 +24,44 @@ class ReactKitVM: ObservableObject {
         case eventA, eventB
     }
 
-    let machine = StateMachine<State, Event>(state: .stateA) { machine in
-        //        machine.addRoute(.stateA => .stateB) { _ in print("Transition from state A to state B") }
-        //        machine.addRoute(.stateB => .stateC) { _ in print("Transition from state A to state B") }
-        //        machine.addRoute(.any => .stateA)
+    var machine: StateMachine<State, Event>?
 
-        machine.addRoutes(
-            event: .eventA,
-            transitions: [
-                .stateA => .stateB,
-                .stateB => .stateC,
-                .stateC => .stateA,
-            ])
+    init() {
+        machine = StateMachine<State, Event>(state: .stateA) { machine in
+            //        machine.addRoute(.stateA => .stateB) { _ in print("Transition from state A to state B") }
+            //        machine.addRoute(.stateB => .stateC) { _ in print("Transition from state A to state B") }
+            //        machine.addRoute(.any => .stateA)
 
-        machine.addRoutes(
-            event: .eventB,
-            transitions: [
-                .stateC => .stateC
-            ])
+            machine.addRoutes(
+                event: .eventA,
+                transitions: [
+                    .stateA => .stateB,
+                    .stateB => .stateC,
+                    .stateC => .stateA,
+                ])
 
-        //        // add handler (`context = (event, fromState, toState, userInfo)`)
-        //        machine.addHandler(.stateC => .stateA) { context in
-        //            print("Transition from state C to state A")
-        //        }
+            machine.addRoutes(
+                event: .eventB,
+                transitions: [
+                    .stateC => .stateC
+                ])
 
-        machine.addHandler(event: .eventA) { _ in
-            print("eventA triggered!")
+            // add handler (`context = (event, fromState, toState, userInfo)`)
+            machine.addHandler(.any => .any) { context in
+                self.fooo(on: "exiting & entering state")
+            }
+
+            machine.addHandler(event: .eventA) { _ in
+                self.fooo(on: "transition")
+            }
         }
     }
 }
 
 extension ReactKitVM {
     func setNewState() {
+        guard let machine = machine else { return }
+
         switch machine.state {
             case .stateA:
                 currentState = "state A"
@@ -63,6 +73,8 @@ extension ReactKitVM {
     }
 
     func somethingHappens() {
+        guard let machine = machine else { return }
+
         machine.tryEvent(.eventA)
         setNewState()
     }
