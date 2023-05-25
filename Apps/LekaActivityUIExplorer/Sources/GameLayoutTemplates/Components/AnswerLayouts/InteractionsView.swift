@@ -19,7 +19,7 @@ struct InteractionsView: View {
                 case .listenThenTouchToSelect: listenThenTouchToSelectTemplate
                 case .colorQuest: colorQuestTemplate
                 case .xylophone: XylophoneLayout()
-                case .remote: RemoteStandardView()
+                case .remote: remoteTemplate
             }
             Spacer()
         }
@@ -78,6 +78,16 @@ struct InteractionsView: View {
                 }
             case 6: ListenSixAnswersLayout()
             default: launchText
+        }
+    }
+
+    @ViewBuilder
+    private var remoteTemplate: some View {
+        switch gameEngine.allAnswers.count {
+            case 1: RemoteStandardView()
+            case 2: RemoteArrowView()
+            default:
+                launchText
         }
     }
 }
