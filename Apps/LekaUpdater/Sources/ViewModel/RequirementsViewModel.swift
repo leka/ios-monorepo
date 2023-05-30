@@ -8,34 +8,18 @@ import SwiftUI
 class RequirementsViewModel: ObservableObject {
     @ObservedObject private var robot: DummyRobotModel
 
-    var batteryImage: Image {
-        if robot.battery >= 100 {
-            return Image(uiImage: LekaUpdaterAsset.Assets.robotBatteryChargingQuarter4Green.image)
-        } else if robot.battery >= 75 {
-            return Image(uiImage: LekaUpdaterAsset.Assets.robotBatteryChargingQuarter3Green.image)
-        } else if robot.battery >= 50 {
-            return Image(uiImage: LekaUpdaterAsset.Assets.robotBatteryChargingQuarter2Orange.image)
-        } else if robot.battery >= 25 {
-            return Image(uiImage: LekaUpdaterAsset.Assets.robotBatteryChargingQuarter1Red.image)
-        } else {
-            return Image(uiImage: LekaUpdaterAsset.Assets.robotBatteryChargingEmptyRed.image)
-        }
-    }
-
     var chargingImage: Image {
         Image(uiImage: LekaUpdaterAsset.Assets.robotIsCharging.image)
     }
 
-    var batteryForegroundColor: Color {
-        robot.battery >= 30 ? .green : .red
-    }
+    let requirementsImage = Image(uiImage: LekaUpdaterAsset.Assets.robotIsCharging.image)
 
-    var isChargingForegroundColor: Color {
-        robot.isCharging ? .green : .red
+    var robotIsReadyToUpdate: Bool {
+        robot.battery >= 30 && robot.isCharging
     }
 
     var robotIsNotReadyToUpdate: Bool {
-        !(robot.battery >= 30 && robot.isCharging)
+        !robotIsReadyToUpdate
     }
 
     init(robot: DummyRobotModel) {

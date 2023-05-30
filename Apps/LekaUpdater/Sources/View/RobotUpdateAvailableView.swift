@@ -16,14 +16,11 @@ struct RobotUpdateAvailableView: View {
     var body: some View {
         HStack {
             RequirementsView(viewModel: requirementsViewModel)
+                .opacity(requirementsViewModel.robotIsReadyToUpdate ? 0.0 : 1.0)
 
-            Button("MAJ", action: robot.startUpdate)
-                .padding()
-                .foregroundColor(.black)
-                .background(.cyan)
-                .cornerRadius(.infinity)
+            Button("Mettre à niveau maintenant", action: robot.startUpdate)
+                .buttonStyle(.borderedProminent)
                 .disabled(requirementsViewModel.robotIsNotReadyToUpdate)
-                .opacity(requirementsViewModel.robotIsNotReadyToUpdate ? 0.0 : 1.0)
         }
         .padding()
     }
