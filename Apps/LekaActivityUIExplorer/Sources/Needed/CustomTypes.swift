@@ -22,6 +22,7 @@ enum ActivityType: String, Codable {
     case colorQuest = "color_quest"
     case xylophone = "xylophone"
     case remote = "remote_standard"
+    case colorQuestGK = "color_quest_GK"
 }
 
 // MARK: - Activity Configurator - Texts's language edition scope

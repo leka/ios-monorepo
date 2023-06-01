@@ -20,6 +20,7 @@ struct InteractionsView: View {
                 case .colorQuest: colorQuestTemplate
                 case .xylophone: XylophoneLayout()
                 case .remote: remoteTemplate
+                case .colorQuestGK: colorQuestGKTemplate
             }
             Spacer()
         }
@@ -88,6 +89,16 @@ struct InteractionsView: View {
             case 2: RemoteArrowView()
             default:
                 launchText
+        }
+    }
+
+    @ViewBuilder
+    private var colorQuestGKTemplate: some View {
+        switch gameEngine.allAnswers.count {
+            case 1: ColorQuestGKOneAnswerLayout()
+            case 2: ColorQuestGKTwoAnswersLayout()
+            case 3: ColorQuestGKThreeAnswersLayout()
+            default: launchText
         }
     }
 }

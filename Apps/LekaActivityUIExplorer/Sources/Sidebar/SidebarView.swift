@@ -9,6 +9,7 @@ struct SidebarView: View {
     @EnvironmentObject var navigator: NavigationManager
     @EnvironmentObject var configuration: GameLayoutTemplatesConfigurations
     @EnvironmentObject var gameEngine: GameEngine
+    @EnvironmentObject var gameEngineGK: GameEngineGK
     @EnvironmentObject var defaults: GameLayoutTemplatesDefaults
 
     var body: some View {
@@ -52,6 +53,13 @@ struct SidebarView: View {
                     disclosureGroupLabel("remote")
                 }
                 .padding(.horizontal, 20)
+
+                DisclosureGroup {
+                    ColorQuestGKNavigationGroup { setupTest() }
+                } label: {
+                    disclosureGroupLabel("color_quest_GK")
+                }
+                .padding(.horizontal, 20)
             }
             .frame(maxWidth: .infinity)
             .font(defaults.semi17)
@@ -70,6 +78,7 @@ struct SidebarView: View {
         )
         .makeActivity()
         gameEngine.setupGame()
+        gameEngineGK.setupGame()
     }
 
     private var logoLeka: some View {

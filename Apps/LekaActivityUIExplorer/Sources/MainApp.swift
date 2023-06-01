@@ -7,6 +7,7 @@ import SwiftUI
 @main
 struct LekaActivityUIExplorerApp: App {
     @StateObject var navigator = NavigationManager()
+    @StateObject var gameEngineGK = GameEngineGK()
     @StateObject var gameEngine = GameEngine()
     @StateObject var defaults = GameLayoutTemplatesDefaults()
     @StateObject var configuration = GameLayoutTemplatesConfigurations()
@@ -16,6 +17,7 @@ struct LekaActivityUIExplorerApp: App {
             ContentView()
                 .preferredColorScheme(.light)
                 .environmentObject(navigator)
+                .environmentObject(gameEngineGK)
                 .environmentObject(gameEngine)
                 .environmentObject(defaults)
                 .environmentObject(configuration)

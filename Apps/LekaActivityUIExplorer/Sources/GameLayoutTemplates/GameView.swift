@@ -14,13 +14,16 @@ struct GameView: View {
             GameBackgroundView()
 
             VStack(spacing: 0) {
-                if !gameEngine.currentActivity.stepSequence[0].isEmpty
-                    && gameEngine.currentActivity.activityType != .xylophone
-                    && gameEngine.currentActivity.activityType != .remote
-                {
-                    ProgressBar()
-                        .padding(.bottom, defaults.headerSpacing)
-                }
+                //                if !gameEngine.currentActivity.stepSequence[0].isEmpty
+                //                    && gameEngine.currentActivity.activityType != .xylophone
+                //                    && gameEngine.currentActivity.activityType != .remote
+                //                {
+                //                    ProgressBar()
+                //                        .padding(.bottom, defaults.headerSpacing)
+                //                }
+
+                ProgressBarGK()
+                    .padding(.bottom, defaults.headerSpacing)
                 StepInstructionsButton()
                 InteractionsView()
             }

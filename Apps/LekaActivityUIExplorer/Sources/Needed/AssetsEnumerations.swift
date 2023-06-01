@@ -125,4 +125,23 @@ enum RemotePreviews: Int, CaseIterable, Previewable {
     }
 }
 
+enum ColorQuestGKPreviews: Int, CaseIterable, Previewable {
+    case one, two, three
+    var type: ActivityType { return .colorQuestGK }
+    var preview: String {
+        switch self {
+            case .one: return "ColorQuest_1"
+            case .two: return "ColorQuest_2"
+            case .three: return "ColorQuest_3"
+        }
+    }
+    func defaults() -> BaseDefaults? {
+        switch self {
+            case .one: return ColorQuest.one
+            case .two: return ColorQuest.two
+            case .three: return ColorQuest.three
+        }
+    }
+}
+
 // swiftlint:enable identifier_name
