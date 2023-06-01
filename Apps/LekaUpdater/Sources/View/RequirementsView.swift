@@ -14,9 +14,14 @@ struct RequirementsView: View {
                 .scaledToFit()
                 .frame(height: 150)
 
-            Text("Le robot doit être en charge et sa batterie à au moins 30%.")
-                .bold()
-                .foregroundColor(.red)
+            Text(
+                """
+                Le robot doit être en charge sur sa base
+                Sa batterie doit être chargée à 30% ou plus.
+                """
+            )
+            .multilineTextAlignment(.center)
+            .foregroundColor(.red)
         }
     }
 }
