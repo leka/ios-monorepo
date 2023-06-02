@@ -5,25 +5,21 @@
 import SwiftUI
 
 struct ChangelogView: View {
-    private var changelog: String {
+    private var changelog: LocalizedStringKey {
         // swiftlint:disable:next force_cast
         let osVersion = Bundle.main.object(forInfoDictionaryKey: "LEKA_OS_VERSION") as! String
         let fileURL = Bundle.main.url(forResource: "LekaOS-\(osVersion)", withExtension: "md")!
 
         do {
-            return try String(contentsOf: fileURL)
+            let content = try String(contentsOf: fileURL)
+            return LocalizedStringKey(stringLiteral: content)
         } catch {
             return "Changelog cannot be loaded"
         }
     }
 
     var body: some View {
-        ScrollView {
-            Text(changelog)
-                .padding()
-        }
-        .border(.black)
-        .frame(idealHeight: 300, maxHeight: 300)
+        Text(changelog)
     }
 }
 

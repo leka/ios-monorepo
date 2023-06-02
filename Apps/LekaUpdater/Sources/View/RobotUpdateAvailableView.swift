@@ -14,15 +14,26 @@ struct RobotUpdateAvailableView: View {
     }
 
     var body: some View {
-        HStack {
-            RequirementsView(viewModel: requirementsViewModel)
+        VStack {
+            Text("⬆️ Une mise à jour est disponible 📦")
+                .font(.title3)
+                .foregroundColor(.gray)
+            Button {
+                robot.startUpdate()
+            } label: {
+                Text("Lancer la mise à jour du robot")
+                    .foregroundColor(.white)
+                    .frame(height: 50)
+                    .frame(maxWidth: .infinity)
+                    .background(.blue)
+                    .cornerRadius(10)
+            }
+            .buttonStyle(.plain)
+            .disabled(requirementsViewModel.robotIsNotReadyToUpdate)
 
-            Button("MAJ", action: robot.startUpdate)
-                .padding()
-                .foregroundColor(.black)
-                .background(.cyan)
-                .cornerRadius(.infinity)
-                .disabled(requirementsViewModel.robotIsNotReadyToUpdate)
+            if !requirementsViewModel.robotIsReadyToUpdate {
+                RequirementsView(viewModel: requirementsViewModel)
+            }
         }
         .padding()
     }
