@@ -19,32 +19,38 @@ struct InformationView: View {
                 Section {
                     RobotInformationView()
                 } header: {
-                    Text("Information du robot")
-                        .font(.title3)
-                        .bold()
+                    Text("Informations du robot")
+                        .textCase(nil)
+                        .font(.title)
                 }
 
                 Section {
-                    ChangelogView()
+                    DisclosureGroup {
+                        ChangelogView()
+                            .padding()
+                    } label: {
+                        Text("Liste des changements apportés")
+                    }
                 } header: {
-                    Text("Firmware v\(firmware.currentVersion) Change Log")
-                        .font(.title3)
-                        .bold()
+                    Text("Informations sur LekaOS v\(firmware.currentVersion)")
+                        .textCase(nil)
+                        .font(.title)
                 }
 
                 Section {
                     if firmware.compareWith(version: robot.osVersion) == .needsUpdate {
                         RobotUpdateAvailableView(robot: robot)
                     } else {
-                        Text("Votre robot est à jour ! Vous n'avez rien à faire 👌")
+                        Text("🤖 Votre robot est à jour ! 🎉 Vous n'avez rien à faire 👌")
                             .font(.title2)
-                            .bold()
-                            .padding()
+                            .foregroundColor(.gray)
+                            .frame(maxWidth: .infinity)
+                            .padding(.vertical)
                     }
                 } header: {
-                    Text("Firmware Update")
-                        .font(.title3)
-                        .bold()
+                    Text("État de mise à jour du robot")
+                        .textCase(nil)
+                        .font(.title)
                 }
             }
         }
