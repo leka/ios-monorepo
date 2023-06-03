@@ -5,9 +5,6 @@
 import SwiftUI
 
 struct RemoteNavigationGroup: View {
-    @EnvironmentObject var navigator: NavigationManager
-    @EnvironmentObject var defaults: GameLayoutTemplatesDefaults
-    @EnvironmentObject var configuration: GameLayoutTemplatesConfigurations
 
     let action: () -> Void
 
