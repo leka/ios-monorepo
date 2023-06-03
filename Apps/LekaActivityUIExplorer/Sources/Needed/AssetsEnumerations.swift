@@ -125,4 +125,19 @@ enum RemotePreviews: Int, CaseIterable, Previewable {
     }
 }
 
+enum DragAndDropPreviews: Int, CaseIterable, Previewable {
+    case basket1
+    var type: ActivityType { return .dragAndDrop }
+    var preview: String {
+        switch self {
+            case .basket1: return "DragAndDrop_basket1"
+        }
+    }
+    func defaults() -> BaseDefaults? {
+        switch self {
+            case .basket1: return DragAndDrop.basket1
+        }
+    }
+}
+
 // swiftlint:enable identifier_name
