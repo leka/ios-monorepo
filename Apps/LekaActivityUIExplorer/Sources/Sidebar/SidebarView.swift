@@ -23,36 +23,38 @@ struct SidebarView: View {
                 } label: {
                     disclosureGroupLabel("touch_to_select")
                 }
-                .padding(.horizontal, 20)
 
                 DisclosureGroup {
                     ListenThenTouchToSelectNavigationGroup { setupTest() }
                 } label: {
                     disclosureGroupLabel("listen_then_touch_to_select")
                 }
-                .padding(.horizontal, 20)
 
                 DisclosureGroup {
                     ColorQuestNavigationGroup { setupTest() }
                 } label: {
                     disclosureGroupLabel("color_quest")
                 }
-                .padding(.horizontal, 20)
+
+                DisclosureGroup {
+                    DragAndDropNavigationGroup { setupTest() }
+                } label: {
+                    disclosureGroupLabel("drag_and_drop")
+                }
 
                 DisclosureGroup {
                     MiscNavigationGroup { setupTest() }
                 } label: {
                     disclosureGroupLabel("xylophone")
                 }
-                .padding(.horizontal, 20)
 
                 DisclosureGroup {
                     RemoteNavigationGroup { setupTest() }
                 } label: {
                     disclosureGroupLabel("remote")
                 }
-                .padding(.horizontal, 20)
             }
+            .padding(.horizontal, 20)
             .frame(maxWidth: .infinity)
             .font(defaults.semi17)
             .foregroundColor(.white)

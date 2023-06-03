@@ -20,6 +20,7 @@ enum ActivityType: String, Codable {
     case touchToSelect = "touch_to_select"
     case listenThenTouchToSelect = "listen_then_touch_to_select"
     case colorQuest = "color_quest"
+    case dragAndDrop = "drag_and_drop"
     case xylophone = "xylophone"
     case remote = "remote_standard"
 }

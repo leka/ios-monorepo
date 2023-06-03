@@ -24,7 +24,7 @@ class ExplorerActivity: ObservableObject {
             stepsAmount: 10,
             isRandom: false,
             numberOfImages: 1,
-            randomAnswerPositions: false,
+            randomAnswerPositions: true,
             stepSequence: makeEmptyStepArray())
     }
 
@@ -47,13 +47,10 @@ class ExplorerActivity: ObservableObject {
 
     func makeEmptyStepArray() -> [[Step]] {
         return [
-            [
-                Step(instruction: stepInstruction(), correctAnswer: "dummy_1", allAnswers: setAnswers(), sound: nil),
-                Step(instruction: stepInstruction(), correctAnswer: "dummy_1", allAnswers: setAnswers(), sound: nil),
-                Step(instruction: stepInstruction(), correctAnswer: "dummy_1", allAnswers: setAnswers(), sound: nil),
-                Step(instruction: stepInstruction(), correctAnswer: "dummy_1", allAnswers: setAnswers(), sound: nil),
-                Step(instruction: stepInstruction(), correctAnswer: "dummy_1", allAnswers: setAnswers(), sound: nil),
-            ]
+            Array(
+                repeating: Step(
+                    instruction: stepInstruction(), correctAnswer: setGoodAnswers()[0], allAnswers: setAnswersPerType(),
+                    sound: nil), count: 5)
         ]
     }
 
@@ -79,12 +76,33 @@ class ExplorerActivity: ObservableObject {
         }
     }
 
+    func setAnswersPerType() -> [String] {
+        switch type {
+            case .dragAndDrop:
+                return dragAndDropAnswers
+            default:
+                return setAnswers()
+        }
+    }
+
+    // ready to work with more than 1 good answers
+    func setGoodAnswers() -> [String] {
+        switch type {
+            case .dragAndDrop:
+                return ["watermelon"]
+            default:
+                return ["dummy_1"]
+        }
+    }
+
     var stepAnswers1 = ["dummy_1"]
     var stepAnswers2 = ["dummy_1", "dummy_2"]
     var stepAnswers3 = ["dummy_1", "dummy_2", "dummy_3"]
     var stepAnswers4 = ["dummy_1", "dummy_2", "dummy_3", "dummy_4"]
     var stepAnswers5 = ["dummy_1", "dummy_2", "dummy_3", "dummy_4", "dummy_5"]
     var stepAnswers6 = ["dummy_1", "dummy_2", "dummy_3", "dummy_4", "dummy_5", "dummy_6"]
+
+    var dragAndDropAnswers = ["watermelon", "banana", "kiwi", "avocado"]
 
     func stepInstruction() -> LocalizedContent {
         return LocalizedContent(
@@ -100,6 +118,8 @@ class ExplorerActivity: ObservableObject {
                 return "Touche le numéro 1"
             case .colorQuest:
                 return "Touche la couleur verte"
+            case .dragAndDrop:
+                return "Fais glisser la pastèque dans le panier"
             case .xylophone:
                 return "Joue du xylophone avec Leka"
             case .remote:
