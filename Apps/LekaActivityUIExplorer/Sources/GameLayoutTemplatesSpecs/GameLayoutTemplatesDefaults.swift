@@ -29,6 +29,19 @@ class GameLayoutTemplatesDefaults: ObservableObject {
     @Published var semi17: Font = .system(size: 17, weight: .semibold)
     // Answers global properties
     @Published var playGridBtnTrimLineWidth: CGFloat = 6
+    // Lottie Screens
+    @Published var motivatorScale: CGFloat = 1.2
+    @Published var endAnimTextsSpacing: CGFloat = 40
+    @Published var endAnimFontSize: CGFloat = 30
+    @Published var endAnimFontWeight: Font.Weight = .black
+    @Published var endAnimFontDesign: Font.Design = .rounded
+    @Published var endAnimDuration: Double = 0.6
+    @Published var endAnimDelayTop: Double = 1.2
+    @Published var endAnimDelayBottom: Double = 1.0
+    @Published var endAnimBtnDuration: Double = 0.25
+    @Published var endAnimGameOverBtnDelay: Double = 1.6
+    @Published var endAnimReplayBtnDelay: Double = 1.7
+    @Published var endAnimBtnPadding: CGFloat = 80
 
     // MARK: - Activity's Instructions Pop-Up
     @Published var reg18: Font = .system(size: 18, weight: .regular)

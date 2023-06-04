@@ -7,6 +7,7 @@ import Foundation
 import SwiftUI
 import UIKit
 
+@MainActor
 class GameEngine: NSObject, ObservableObject {
 
     // MARK: - Current Round configuration
@@ -113,7 +114,6 @@ class GameEngine: NSObject, ObservableObject {
         }
         stepInstruction = currentActivity.stepSequence[currentGroupIndex][currentStepIndex].instruction.localized()
         getCorrectAnswerIndex()
-
         if currentActivity.activityType == .colorQuest {
             // Show correct answer color on Leka's belt
         }
@@ -152,26 +152,6 @@ class GameEngine: NSObject, ObservableObject {
                 // property is set to true in order to keep the white overlay hidden
                 currentMediaHasBeenPlayedOnce = true
                 allAnswersAreDisabled = false
-        }
-    }
-
-    // AudioPlayer (delegate in Extensions.swift)
-    func setAudioPlayer() {
-        do {
-            let path = Bundle.main.path(forResource: sound, ofType: "mp3")!
-            audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
-        } catch {
-            print("ERROR - mp3 file not found - \(error)")
-            return
-        }
-
-        audioPlayer.prepareToPlay()
-        audioPlayer.delegate = self
-
-        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { _ in
-            if let player = self.audioPlayer {
-                self.progress = CGFloat(player.currentTime / player.duration)
-            }
         }
     }
 
@@ -306,9 +286,9 @@ class GameEngine: NSObject, ObservableObject {
         synth.delegate = self
         let utterance = AVSpeechUtterance(string: sentence)
         utterance.rate = 0.40
-        utterance.voice =
-            Locale.current.language.languageCode?.identifier == "fr"
-            ? AVSpeechSynthesisVoice(language: "fr-FR") : AVSpeechSynthesisVoice(language: "en-US")
+        utterance.voice = AVSpeechSynthesisVoice(language: "fr-FR")
+        //            Locale.current.language.languageCode?.identifier == "fr"
+        //            ? AVSpeechSynthesisVoice(language: "fr-FR") : AVSpeechSynthesisVoice(language: "en-US")
         isSpeaking = true
         synth.speak(utterance)
     }
@@ -325,5 +305,24 @@ extension GameEngine: AVAudioPlayerDelegate {
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
         currentMediaHasBeenPlayedOnce = true
         allAnswersAreDisabled = false
+    }
+
+    func setAudioPlayer() {
+        do {
+            let path = Bundle.main.path(forResource: sound, ofType: "mp3")!
+            audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
+        } catch {
+            print("ERROR - mp3 file not found - \(error)")
+            return
+        }
+
+        audioPlayer.prepareToPlay()
+        audioPlayer.delegate = self
+
+        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { _ in
+            if let player = self.audioPlayer {
+                self.progress = CGFloat(player.currentTime / player.duration)
+            }
+        }
     }
 }
