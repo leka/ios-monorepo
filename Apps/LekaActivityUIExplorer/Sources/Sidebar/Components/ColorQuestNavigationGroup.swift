@@ -6,10 +6,6 @@ import SwiftUI
 
 struct ColorQuestNavigationGroup: View {
 
-    @EnvironmentObject var navigator: NavigationManager
-    @EnvironmentObject var defaults: GameLayoutTemplatesDefaults
-    @EnvironmentObject var configuration: GameLayoutTemplatesConfigurations
-
     let action: () -> Void
 
     var body: some View {

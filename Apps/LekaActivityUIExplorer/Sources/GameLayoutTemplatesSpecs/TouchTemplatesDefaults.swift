@@ -157,4 +157,9 @@ public enum Remote {
     public static let arrow: BaseDefaults? = nil
 }
 
+public enum DragAndDrop {
+    // ? no defaults needed
+    public static let basket1: BaseDefaults? = nil
+}
+
 // swiftlint:enable identifier_name
