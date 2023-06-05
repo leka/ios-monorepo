@@ -18,6 +18,7 @@ struct InteractionsView: View {
                 case .touchToSelect: touchToSelectTemplate
                 case .listenThenTouchToSelect: listenThenTouchToSelectTemplate
                 case .colorQuest: colorQuestTemplate
+                case .dragAndDrop: dragAndDropTemplate
                 case .xylophone: XylophoneLayout()
                 case .remote: remoteTemplate
             }
@@ -88,6 +89,14 @@ struct InteractionsView: View {
             case 2: RemoteArrowView()
             default:
                 launchText
+        }
+    }
+
+    @ViewBuilder
+    private var dragAndDropTemplate: some View {
+        switch gameEngine.allAnswers.count {
+            default:
+                DragAndDropSceneView()
         }
     }
 }

@@ -4,13 +4,13 @@
 
 import SwiftUI
 
-struct RemoteNavigationGroup: View {
+struct DragAndDropNavigationGroup: View {
 
     let action: () -> Void
 
     var body: some View {
         LazyVGrid(columns: [GridItem()]) {
-            ForEach(RemotePreviews.allCases, id: \.rawValue) { item in
+            ForEach(DragAndDropPreviews.allCases, id: \.rawValue) { item in
                 PreviewButton(item: .constant(item), action: { action() })
             }
         }

@@ -41,3 +41,8 @@ public func convertJoystickPosToMotorSpeed(position: CGPoint, maxValue: CGFloat)
 func clamp<T: Comparable>(_ value: T, lower: T, upper: T) -> T {
     return min(max(value, lower), upper)
 }
+
+// SpriteKit Animations
+func degreesToRadian(degrees: Double) -> Double {
+    return Double(degrees / 180.0 * .pi)
+}
