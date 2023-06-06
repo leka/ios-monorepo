@@ -43,10 +43,14 @@ class RobotController: Leka_1_0_0_RobotController {
         print("Setting BLE Major Minor Revision Apply...")
     }
 
+    func isRobotUpToDate() -> Bool {
+        return false
+    }
 }
 
 class Leka_1_0_0_ViewModelDemo: ObservableObject {
     @Published public var state: String = "initial"
+    @Published public var error: String = ""
 
     private var cancellables: Set<AnyCancellable> = []
 
@@ -60,6 +64,7 @@ class Leka_1_0_0_ViewModelDemo: ObservableObject {
         self.robotController.raiseEvent = self.controller.raiseEvent
 
         subscribeToStateUpdate()
+        subscribeToErrorUpdate()
     }
 
     public func startUpdate() {
@@ -99,6 +104,24 @@ class Leka_1_0_0_ViewModelDemo: ObservableObject {
             }
             .store(in: &cancellables)
     }
+
+    private func subscribeToErrorUpdate() {
+        self.controller.$error
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] error in
+                guard let self = self else { return }
+
+                switch error {
+                    case .failedToLoadFile:
+                        self.error = "failed to load file"
+                    case .robotNotUpToDate:
+                        self.error = "robot not up to date"
+                    case .none:
+                        self.error = ""
+                }
+            }
+            .store(in: &cancellables)
+    }
 }
 
 struct Leka_1_0_0_ViewDemo: View {
@@ -120,6 +143,10 @@ struct Leka_1_0_0_ViewDemo: View {
                     viewModel.robotDetected()
                 }
             }
+
+            Text("Error: \(viewModel.error)")
+                .foregroundColor(.red)
+                .opacity(viewModel.error.isEmpty ? 0.0 : 1.0)
         }
     }
 }

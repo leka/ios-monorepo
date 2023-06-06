@@ -10,7 +10,7 @@ import Actomaton
 import Foundation
 
 //
-// MARK: - States, events
+// MARK: - States, events, errors
 //
 
 enum Leka_1_0_0_State: Sendable {
@@ -35,6 +35,11 @@ enum Leka_1_0_0_Event: Sendable {
     case robotDetected
 }
 
+enum Leka_1_0_0_Error {
+    case failedToLoadFile
+    case robotNotUpToDate
+}
+
 //
 // MARK: - External controllers
 //
@@ -44,6 +49,8 @@ protocol Leka_1_0_0_RobotController {
     func setBLEDestinationPath()
     func sendFile()
     func setBLEMajorMinorRevisionApply()
+
+    func isRobotUpToDate() -> Bool
 }
 
 //
@@ -51,11 +58,15 @@ protocol Leka_1_0_0_RobotController {
 //
 
 class Leka_1_0_0_Controller {
-    var stateMachine: Actomaton<Leka_1_0_0_Event, Leka_1_0_0_State>
+    var stateMachine: Actomaton<Leka_1_0_0_Event, Leka_1_0_0_State>?
+    var robotController: Leka_1_0_0_RobotController
 
     @Published public var currentState: Leka_1_0_0_State = .initial
+    @Published public var error: Leka_1_0_0_Error?
 
     init(robotController: Leka_1_0_0_RobotController) {
+        self.robotController = robotController
+
         let reducer = Reducer<Leka_1_0_0_Event, Leka_1_0_0_State, Void>({ event, state, _ in
             switch (state, event) {
                 case (.initial, .startUpdateRequested):
@@ -66,6 +77,7 @@ class Leka_1_0_0_Controller {
                     robotController.setBLEDestinationPath()
                 case (.loadingUpdateFile, .failedToLoadFile):
                     state = .final
+                    self.error = .failedToLoadFile
                 case (.settingDestinationPath, .destinationPathSet):
                     state = .sendingFile
                     robotController.sendFile()
@@ -76,6 +88,7 @@ class Leka_1_0_0_Controller {
                     state = .waitingRobotToReboot
                 case (.waitingRobotToReboot, .robotDetected):
                     state = .final
+                    self.checkRobotIsUpToDate()
                 default:
                     print("nothing")
             }
@@ -98,14 +111,24 @@ class Leka_1_0_0_Controller {
 
     private func process(event: Leka_1_0_0_Event) {
         Task {
-            await stateMachine.send(event)
+            await stateMachine?.send(event)
             updateCurrentState()
         }
     }
 
     private func updateCurrentState() {
         Task {
-            currentState = await stateMachine.state
+            if let stateMachine = stateMachine {
+                currentState = await stateMachine.state
+            }
+        }
+    }
+
+    private func checkRobotIsUpToDate() {
+        let isNotUpToDate = !robotController.isRobotUpToDate()
+
+        if isNotUpToDate {
+            self.error = .robotNotUpToDate
         }
     }
 }
