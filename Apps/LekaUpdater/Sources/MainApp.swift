@@ -12,7 +12,7 @@ struct LekaUpdaterApp: App {
 
     var body: some Scene {
         WindowGroup {
-            VStack {
+            NavigationStack {
                 InformationView()
                     .environmentObject(firmware)
                     .environmentObject(connectedRobot)
