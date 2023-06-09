@@ -18,8 +18,8 @@ struct RobotUpdateAvailableView: View {
             Text("⬆️ Une mise à jour est disponible 📦")
                 .font(.title3)
                 .foregroundColor(.gray)
-            Button {
-                robot.startUpdate()
+            NavigationLink {
+                UpdatingView()
             } label: {
                 Text("Lancer la mise à jour du robot")
                     .foregroundColor(.white)
@@ -28,6 +28,7 @@ struct RobotUpdateAvailableView: View {
                     .background(.blue)
                     .cornerRadius(10)
             }
+            .onSubmit(robot.startUpdate)
             .buttonStyle(.plain)
             .disabled(requirementsViewModel.robotIsNotReadyToUpdate)
 
