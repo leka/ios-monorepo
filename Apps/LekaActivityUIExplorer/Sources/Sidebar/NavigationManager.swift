@@ -9,5 +9,6 @@ class NavigationManager: ObservableObject {
 
     @Published var sidebarVisibility = NavigationSplitViewVisibility.detailOnly
     @Published var selectedTemplate: Int = 0
+    @Published var useGameFeedback: Bool = false
 
 }
