@@ -11,6 +11,9 @@ struct ContentView: View {
     @EnvironmentObject var defaults: GameLayoutTemplatesDefaults
     @EnvironmentObject var configuration: GameLayoutTemplatesConfigurations
 
+    @State private var hoverLocation: CGPoint = .zero
+    @State private var isHovering = false
+
     @State private var showInstructionModal: Bool = false
     @State private var navigateToConfigurator: Bool = false
     @State private var showOptions: Bool = false
@@ -52,12 +55,26 @@ struct ContentView: View {
         } message: {
             Text("Ce template n'est pas modifiable.")
         }
+        .overlay(
+            optionalReinforcer
+        )
+    }
+
+    @ViewBuilder
+    private var optionalReinforcer: some View {
+        if navigator.useGameFeedback {
+            // use only this within LekaApp
+            StepCompletionFeedbackView()
+        } else {
+            EmptyView()
+        }
     }
 
     private var topBarTrailingItems: some View {
         Group {
             infoButton
             optionsButton
+            reinforcerButton
         }
     }
 
@@ -98,5 +115,19 @@ struct ContentView: View {
                 Image(systemName: "slider.horizontal.3")
                     .foregroundColor(.accentColor)
             })
+    }
+
+    private var reinforcerButton: some View {
+        Button(
+            action: {
+                navigator.useGameFeedback.toggle()
+                print(gameEngine.showMotivator, "showMot")
+                gameEngine.resetActivity()
+            },
+            label: {
+                Image(systemName: navigator.useGameFeedback ? "livephoto" : "livephoto.slash")
+                    .foregroundColor(.accentColor)
+            }
+        )
     }
 }
