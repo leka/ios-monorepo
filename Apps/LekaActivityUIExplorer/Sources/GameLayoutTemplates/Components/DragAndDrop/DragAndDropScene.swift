@@ -37,9 +37,9 @@ class DragAndDropScene: SKScene {
             let draggableItemShadowNode: DraggableItemShadowNode = DraggableItemShadowNode(
                 draggableItemNode: draggableItemNode)
 
-            // normalize Nodes' sizes - Ignore initial texture's size
-            draggableItemNode.resizeToMax(sizeOf: 170)
-            draggableItemShadowNode.resizeToMax(sizeOf: 170)
+            // normalize Nodes' sizes
+            draggableItemNode.scaleForMax(sizeOf: 170)
+            draggableItemShadowNode.scaleForMax(sizeOf: 170)
 
             // prevent Nodes from going out of bounds
             let xRange = SKRange(lowerLimit: 0, upperLimit: size.width - 120)
@@ -61,9 +61,8 @@ class DragAndDropScene: SKScene {
         expectedItemNode.run(action)
         expectedItemNode.name = expectedItem
         expectedItemNode.texture = texture
-        expectedItemNode.resizeToMax(sizeOf: 170)
+        expectedItemNode.scaleForMax(sizeOf: 136)
         expectedItemNode.position = CGPoint(x: dropArea.position.x + 80, y: 130)
-        expectedItemNode.setScale(0.8)
 
         addChild(expectedItemNode)
     }
@@ -74,7 +73,7 @@ class DragAndDropScene: SKScene {
             SKAction.rotate(byAngle: 0.0, duration: 0.1),
             SKAction.rotate(byAngle: CGFloat(degreesToRadian(degrees: 4)), duration: 0.1),
         ])
-        node.setScale(1.1)
+        node.scaleForMax(sizeOf: 187)
         node.run(SKAction.repeatForever(sequence))
     }
 
@@ -121,7 +120,7 @@ class DragAndDropScene: SKScene {
             let moveAnimation: SKAction = SKAction.move(to: node.defaultPosition!, duration: 0.25)
                 .moveAnimation(.easeOut)
             let group: DispatchGroup = DispatchGroup()
-            node.setScale(1)
+            node.scaleForMax(sizeOf: 170)
 
             // dropped within the bounds of dropArea
             if node.fullyContains(bounds: dropArea.frame) {
@@ -155,7 +154,7 @@ class DragAndDropScene: SKScene {
             }
 
             func dropGoodAnswer() {
-                node.setScale(0.8)
+                node.scaleForMax(sizeOf: 136)
                 node.position = CGPoint(
                     x: dropArea.position.x - 80,
                     y: 130)
