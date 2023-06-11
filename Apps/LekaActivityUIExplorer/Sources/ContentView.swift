@@ -129,5 +129,6 @@ struct ContentView: View {
                     .foregroundColor(.accentColor)
             }
         )
+        .disabled(gameEngine.tapIsDisabled)
     }
 }
