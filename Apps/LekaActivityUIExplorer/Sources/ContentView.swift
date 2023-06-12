@@ -121,7 +121,6 @@ struct ContentView: View {
         Button(
             action: {
                 navigator.useGameFeedback.toggle()
-                print(gameEngine.showMotivator, "showMot")
                 gameEngine.resetActivity()
             },
             label: {
