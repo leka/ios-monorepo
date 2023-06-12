@@ -12,7 +12,7 @@ class DragAndDropScene: SKScene {
     var biggerSide: CGFloat = 170
     var defaultPosition = CGPoint.zero
     var selectedNodes: [UITouch: DraggableItemNode] = [:]
-    var expectedItemNode = [SKSpriteNode]()
+    var expectedItemsNodes = [SKSpriteNode]()
     var dropArea = SKSpriteNode()
 
     override func didMove(to view: SKView) {
@@ -132,7 +132,7 @@ class DragAndDropScene: SKScene {
             if node.fullyContains(bounds: dropArea.frame) {
                 let index = gameEngine!.allAnswers.firstIndex(where: { $0 == node.name })
                 gameEngine?.answerHasBeenPressed(atIndex: index!)
-                guard let _ = expectedItemNode.first(where: { $0.name == node.name }) else {
+                guard let _ = expectedItemsNodes.first(where: { $0.name == node.name }) else {
                     snapBack()
                     break
                 }
