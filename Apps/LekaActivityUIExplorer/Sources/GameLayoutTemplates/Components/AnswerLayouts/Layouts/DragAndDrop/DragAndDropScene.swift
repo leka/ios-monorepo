@@ -8,27 +8,19 @@ class DragAndDropScene: SKScene {
 
     var gameEngine: GameEngine?
 
-    var expectedItemNode: SKSpriteNode = SKSpriteNode()
     var spacer: CGFloat = .zero
+    var biggerSide: CGFloat = 170
     var defaultPosition = CGPoint.zero
-    var dropArea = SKSpriteNode()
     var selectedNodes: [UITouch: DraggableItemNode] = [:]
+    var expectedItemNode = [SKSpriteNode]()
+    var dropArea = SKSpriteNode()
 
     override func didMove(to view: SKView) {
         self.backgroundColor = .clear
         self.reset()
     }
 
-    func reset() {
-        self.removeAllChildren()
-        self.removeAllActions()
-        self.defaultPosition = CGPoint(x: spacer, y: self.size.height)
-
-        // size, position and texture moved to SKView (DragAndDropView)
-        dropArea.name = "drop_area"
-
-        addChild(dropArea)
-
+    func makeAnswers() {
         for choice in gameEngine!.allAnswers {
             let draggableItemNode: DraggableItemNode = DraggableItemNode(
                 texture: SKTexture(imageNamed: choice),
@@ -38,8 +30,8 @@ class DragAndDropScene: SKScene {
                 draggableItemNode: draggableItemNode)
 
             // normalize Nodes' sizes
-            draggableItemNode.scaleForMax(sizeOf: 170)
-            draggableItemShadowNode.scaleForMax(sizeOf: 170)
+            draggableItemNode.scaleForMax(sizeOf: biggerSide)
+            draggableItemShadowNode.scaleForMax(sizeOf: biggerSide)
 
             // prevent Nodes from going out of bounds
             let xRange = SKRange(lowerLimit: 0, upperLimit: size.width - 120)
@@ -53,35 +45,49 @@ class DragAndDropScene: SKScene {
             addChild(draggableItemShadowNode)
             addChild(draggableItemNode)
         }
-
-        // expected answer
-        let expectedItem = gameEngine!.allAnswers[gameEngine!.correctAnswerIndex]
-        let texture = SKTexture(imageNamed: expectedItem)
-        let action = SKAction.setTexture(texture, resize: true)
-        expectedItemNode.run(action)
-        expectedItemNode.name = expectedItem
-        expectedItemNode.texture = texture
-        expectedItemNode.scaleForMax(sizeOf: 136)
-        expectedItemNode.position = CGPoint(x: dropArea.position.x + 80, y: 130)
-
-        addChild(expectedItemNode)
     }
 
-    func onDragAnimation(_ node: SKSpriteNode) {
+    func makeDropArea() {
+        // for destination in gameEngine!.destinations {
+        // let destination = SKSpriteNode()
+        // ...
+        // if gameEngine!.hasSuggestion {
+        //  -> expected answer shit below
+        // }
+        // }
+    }
+
+    func reset() {
+        // if all goodAnswers are used *********************
+        // ...
+        // else *********************************************
+    }
+
+    // behaviors after trials -> right answer
+    func dropGoodAnswer(_ node: DraggableItemNode) {
+        node.scaleForMax(sizeOf: biggerSide * 0.8)
+        node.position = CGPoint(
+            x: dropArea.position.x - 80,
+            y: 130)
+        node.zPosition = 10
+        node.isDraggable = false
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+            self.reset()
+        }
+    }
+
+    // wiggle animation
+    private func onDragAnimation(_ node: SKSpriteNode) {
         let sequence: SKAction = SKAction.sequence([
             SKAction.rotate(byAngle: CGFloat(degreesToRadian(degrees: -4)), duration: 0.1),
             SKAction.rotate(byAngle: 0.0, duration: 0.1),
             SKAction.rotate(byAngle: CGFloat(degreesToRadian(degrees: 4)), duration: 0.1),
         ])
-        node.scaleForMax(sizeOf: 187)
+        node.scaleForMax(sizeOf: biggerSide * 1.1)
         node.run(SKAction.repeatForever(sequence))
     }
 
-    func dropAction(_ node: SKSpriteNode) {
-        node.zRotation = 0  // Reset the zRotation
-        node.removeAllActions()  // Remove wiggle action
-    }
-
+    // overriden Touches states
     override func touchesBegan(_ touches: Set<UITouch>, with: UIEvent?) {
         for touch in touches {
             let location = touch.location(in: self)
@@ -120,24 +126,26 @@ class DragAndDropScene: SKScene {
             let moveAnimation: SKAction = SKAction.move(to: node.defaultPosition!, duration: 0.25)
                 .moveAnimation(.easeOut)
             let group: DispatchGroup = DispatchGroup()
-            node.scaleForMax(sizeOf: 170)
+            node.scaleForMax(sizeOf: biggerSide)
 
             // dropped within the bounds of dropArea
             if node.fullyContains(bounds: dropArea.frame) {
                 let index = gameEngine!.allAnswers.firstIndex(where: { $0 == node.name })
                 gameEngine?.answerHasBeenPressed(atIndex: index!)
-                guard node.name == expectedItemNode.name else {
+                guard let _ = expectedItemNode.first(where: { $0.name == node.name }) else {
                     snapBack()
                     break
                 }
-                dropGoodAnswer()
+                dropGoodAnswer(node)
+                selectedNodes[touch] = nil
+                dropAction(node)
                 break
             }
 
             // dropped outside the bounds of dropArea
             snapBack()
 
-            // Behaviors after trials
+            // behaviors after trials -> wrong answer
             func snapBack() {
                 group.enter()
                 node.run(
@@ -148,23 +156,14 @@ class DragAndDropScene: SKScene {
                         group.leave()
                     })
                 group.notify(queue: .main) {
-                    self.dropAction(node)
+                    dropAction(node)
                 }
                 selectedNodes[touch] = nil
             }
 
-            func dropGoodAnswer() {
-                node.scaleForMax(sizeOf: 136)
-                node.position = CGPoint(
-                    x: dropArea.position.x - 80,
-                    y: 130)
-                node.zPosition = 10
-                node.isDraggable = false
-                selectedNodes[touch] = nil
-                dropAction(node)
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                    self.reset()
-                }
+            func dropAction(_ node: SKSpriteNode) {
+                node.zRotation = 0  // reset the zRotation
+                node.removeAllActions()  // remove wiggle action
             }
         }
     }
