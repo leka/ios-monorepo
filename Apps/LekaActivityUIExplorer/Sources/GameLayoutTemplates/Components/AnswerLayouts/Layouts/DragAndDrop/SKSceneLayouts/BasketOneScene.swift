@@ -4,16 +4,14 @@
 
 import SpriteKit
 
-class BasketFourScene: DragAndDropScene {
-
-    let padding: CGFloat = 185
+class BasketOneScene: DragAndDropScene {
 
     override func reset() {
         self.removeAllChildren()
         self.removeAllActions()
 
-        spacer = (size.width - (padding * 2)) / 3
-        self.defaultPosition = CGPoint(x: padding, y: self.size.height)
+        spacer = size.width / 2
+        self.defaultPosition = CGPoint(x: spacer, y: self.size.height)
 
         makeDropArea()
         makeAnswers()

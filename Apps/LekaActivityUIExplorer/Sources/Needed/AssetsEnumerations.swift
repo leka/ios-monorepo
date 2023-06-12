@@ -127,7 +127,8 @@ enum RemotePreviews: Int, CaseIterable, Previewable {
 
 enum DragAndDropPreviews: Int, CaseIterable, Previewable {
     case basket1, basket2, basket4, emptyBasket
-    // , association4, association6, dropArea1, dropArea2, dropArea1Assets3, dropArea2Assets2, dropArea2Assets6
+    //    case association4, association6
+    //    case dropArea1, dropArea2, dropArea1Assets3, dropArea2Assets2, dropArea2Assets6
     var type: ActivityType { return .dragAndDrop }
     var preview: String {
         switch self {
@@ -158,7 +159,7 @@ enum DragAndDropPreviews: Int, CaseIterable, Previewable {
         //            case .dropArea2Assets2: return DragAndDrop.basket1
         //            case .dropArea2Assets6: return DragAndDrop.basket1
         //        }
-        return DragAndDrop.basket1
+        return DragAndDrop.basket
     }
 }
 

@@ -95,8 +95,12 @@ struct InteractionsView: View {
     @ViewBuilder
     private var dragAndDropTemplate: some View {
         switch gameEngine.allAnswers.count {
+            case 1: DragAndDropSceneView(withTemplate: BasketOneScene())
+            case 2: DragAndDropSceneView(withTemplate: BasketTwoScene())
+            case 3: DragAndDropSceneView(withTemplate: EmptyBasketScene())
+            case 4: DragAndDropSceneView(withTemplate: BasketFourScene())
             default:
-                DragAndDropSceneView(withTemplate: BasketFourScene())
+                launchText
         }
     }
 }
