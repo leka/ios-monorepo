@@ -9,25 +9,9 @@ struct SendingFileView: View {
 
     var body: some View {
         VStack {
-            LekaUpdaterAsset.Assets.lekaUpdaterIcon.swiftUIImage
-                .resizable()
-                .scaledToFit()
-                .frame(height: 250)
-                .padding(.bottom)
-
-            Text("La mise à jour est en cours...")
+            Text("Envoi de la mise à jour vers le robot")
                 .font(.title2)
                 .bold()
-            Text(
-                """
-                Ne débranchez pas votre robot.
-                Veuillez à ce qu'il soit bien positionné sur son socle de recharge.
-                """
-            )
-            .multilineTextAlignment(.center)
-            .padding()
-
-            Text("Étape 1/3")
 
             ProgressView(value: progress)
                 .tint(Color(red: 160 / 255, green: 185 / 255, blue: 49 / 255))
@@ -39,6 +23,15 @@ struct SendingFileView: View {
                         .shadow(radius: 3, y: 4)
                 )
                 .frame(width: 600)
+
+            Text(
+                """
+                Ne débranchez pas votre robot.
+                Ne le sortez pas de son socle de recharge.
+                """
+            )
+            .multilineTextAlignment(.center)
+            .padding()
         }
         .navigationBarBackButtonHidden()
         .toolbar {

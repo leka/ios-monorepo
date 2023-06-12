@@ -7,17 +7,16 @@ import SwiftUI
 struct RebootingView: View {
     var body: some View {
         VStack {
-            LekaUpdaterAsset.Assets.lekaUpdaterIcon.swiftUIImage
-                .resizable()
-                .scaledToFit()
-                .frame(height: 250)
-
-            Text("Votre robot va maintenant redémarrer")
-                .font(.title3)
+            Text("Installation de la mise à jour")
+                .font(.title2)
                 .bold()
 
-            Text("Étape 2/3")
+            ProgressView()
+                .scaleEffect(2)
                 .padding()
+                .padding()
+
+            Text("Votre robot redémarrera dans quelques minutes")
         }
         .navigationBarBackButtonHidden()
         .toolbar {

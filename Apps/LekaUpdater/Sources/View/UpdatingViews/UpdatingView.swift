@@ -5,36 +5,57 @@
 import SwiftUI
 
 struct UpdatingView: View {
-    private enum UpdatingStatus {
+    private enum UpdateStatus {
         case sendingFile
-        case rebootingFile
+        case rebootingRobot
     }
 
-    @State private var updatingStatus: UpdatingStatus = .sendingFile
+    @State private var updatingStatus: UpdateStatus = .sendingFile
+
+    private var stepNumber: Int {
+        guard updatingStatus == .sendingFile else {
+            return 2
+        }
+        return 1
+    }
 
     var body: some View {
         VStack {
-            Spacer()
+            LekaUpdaterAsset.Assets.lekaUpdaterIcon.swiftUIImage
+                .resizable()
+                .scaledToFit()
+                .frame(height: 250)
+                .padding(.bottom)
+                .padding(.bottom)
 
-            switch updatingStatus {
-                case .sendingFile:
-                    SendingFileView()
-                case .rebootingFile:
-                    RebootingView()
-            }
-
-            Spacer()
-            Divider()
-            Button("[DEBUG] Switch views", action: switchView)
+            Text("Étape \(stepNumber)/3")
+                .font(.title)
+                .bold()
+                .monospacedDigit()
                 .padding()
+
+            VStack {
+                switch updatingStatus {
+                    case .sendingFile:
+                        SendingFileView()
+                    case .rebootingRobot:
+                        RebootingView()
+                }
+                Spacer()
+            }
+            .frame(maxWidth: .infinity, maxHeight: 250)
+
+        }
+        .toolbar {  // TODO(@yann): remove when debug is over
+            Button("[DEBUG] Switch views", action: switchView)
         }
     }
 
     func switchView() {
         switch updatingStatus {
             case .sendingFile:
-                updatingStatus = .rebootingFile
-            case .rebootingFile:
+                updatingStatus = .rebootingRobot
+            case .rebootingRobot:
                 updatingStatus = .sendingFile
         }
     }
