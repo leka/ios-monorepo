@@ -11,7 +11,7 @@ class DummyRobotModel: ObservableObject {
 
     @Published var battery = 75
     @Published var isCharging = true
-    @Published var osVersion = "1.3.0"
+    @Published var osVersion = "1.0.0"
 
     public var event = PassthroughSubject<UpdateProcessEvent, Error>()
 

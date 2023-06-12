@@ -12,19 +12,7 @@ struct LekaUpdaterApp: App {
 
     var body: some Scene {
         WindowGroup {
-            NavigationStack {
-                InformationView()
-                    .environmentObject(firmware)
-                    .environmentObject(connectedRobot)
-
-                Button("Switch (debug)") {
-                    if connectedRobot.osVersion == "1.3.0" {
-                        connectedRobot.osVersion = "1.4.0"
-                    } else {
-                        connectedRobot.osVersion = "1.3.0"
-                    }
-                }
-            }
+            UpdateStatusDemoView(robot: connectedRobot)
         }
     }
 }
