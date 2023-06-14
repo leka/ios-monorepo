@@ -38,8 +38,6 @@ struct SendingFileView: View {
 
 struct SendingFileView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationStack {
-            SendingFileView()
-        }
+        SendingFileView()
     }
 }
