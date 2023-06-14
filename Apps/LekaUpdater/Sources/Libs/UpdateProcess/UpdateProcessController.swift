@@ -9,11 +9,19 @@ import Foundation
 
 enum UpdateStatusState {
     case initial
+
+    // LekaOS 1.0.0+
+    case sendingUpdate
+    case installingUpdate
 }
 
 enum UpdateStatusError: Error {
     case unknown
     case updateProcessNotAvailable
+
+    // LekaOS 1.0.0+
+    case failedToLoadFile
+    case robotNotUpToDate
 }
 
 //
@@ -55,6 +63,10 @@ class UpdateProcessController {
             case .failure(let error):
                 var result: UpdateStatusError = .unknown
                 switch error {
+                    case .failedToLoadFile:
+                        result = .failedToLoadFile
+                    case .robotNotUpToDate:
+                        result = .robotNotUpToDate
                     case .notAvailable:
                         result = .updateProcessNotAvailable
                     default:
@@ -70,6 +82,10 @@ class UpdateProcessController {
         switch state {
             case .initial:
                 result = .initial
+            case .loadingUpdateFile, .settingDestinationPathAndClearFile, .sendingFile:
+                result = .sendingUpdate
+            case .applyingUpdate, .waitingRobotToReboot:
+                result = .installingUpdate
         }
         self.currentState.send(result)
     }

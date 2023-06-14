@@ -25,6 +25,14 @@ class UpdateStatusDemoViewModel: ObservableObject {
         updateProcessController.startUpdate()
     }
 
+    public func robotDisconnection() {
+        robot.event.send(.robotDisconnected)
+    }
+
+    public func robotDetected() {
+        robot.event.send(.robotDetected)
+    }
+
     private func subscribeToStateUpdate() {
         self.updateProcessController.currentState
             .receive(on: DispatchQueue.main)
@@ -38,6 +46,10 @@ class UpdateStatusDemoViewModel: ObservableObject {
                         switch error {
                             case .updateProcessNotAvailable:
                                 self.error = "ERROR, this robot cannot be update"
+                            case .failedToLoadFile:
+                                self.error = "ERROR, please reinstall the app"
+                            case .robotNotUpToDate:
+                                self.error = "ERROR, please try again"
                             default:
                                 self.error = "ERROR, unknown"
                         }
@@ -46,6 +58,10 @@ class UpdateStatusDemoViewModel: ObservableObject {
                 switch state {
                     case .initial:
                         self.state = "initialization"
+                    case .sendingUpdate:
+                        self.state = "La mise à jour est en cours..."
+                    case .installingUpdate:
+                        self.state = "Votre robot va maintenant redémarrer"
                 }
             }
             .store(in: &cancellables)
@@ -79,6 +95,16 @@ struct UpdateStatusDemoView: View {
                     Text("Error: \(viewModel.error)")
                         .foregroundColor(.red)
                         .opacity(viewModel.error.isEmpty ? 0.0 : 1.0)
+                }
+                .padding()
+
+                Divider()
+
+                VStack {
+                    HStack {
+                        Button("Robot disconnection", action: viewModel.robotDisconnection)
+                        Button("Robot detected", action: viewModel.robotDetected)
+                    }
                 }
                 .padding()
             }
