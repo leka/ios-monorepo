@@ -9,6 +9,7 @@ struct UpdateStatusView: View {
     private enum UpdateStatus {
         case sendingFile
         case rebootingRobot
+        case updateFinished
     }
 
     @State private var updatingStatus: UpdateStatus = .sendingFile
@@ -19,6 +20,8 @@ struct UpdateStatusView: View {
                 return 1
             case .rebootingRobot:
                 return 2
+            case .updateFinished:
+                return 3
         }
     }
 
@@ -43,6 +46,8 @@ struct UpdateStatusView: View {
                         SendingFileView()
                     case .rebootingRobot:
                         RebootingView()
+                    case .updateFinished:
+                        UpdateFinishedView()
                 }
                 Spacer()
             }
@@ -71,6 +76,8 @@ struct UpdateStatusView: View {
             case .sendingFile:
                 updatingStatus = .rebootingRobot
             case .rebootingRobot:
+                updatingStatus = .updateFinished
+            case .updateFinished:
                 updatingStatus = .sendingFile
         }
     }
