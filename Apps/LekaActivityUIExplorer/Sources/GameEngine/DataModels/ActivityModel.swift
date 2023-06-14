@@ -67,25 +67,25 @@ struct Step: Codable, Equatable, Identifiable {
     enum CodingKeys: String, CodingKey {
         case instruction, id, sound
         case allAnswers = "images"
-        case correctAnswer = "correct_answer"
+        case correctAnswers = "correct_answer"  // pluralize within YAMLs
     }
 
     var id: UUID
     var instruction: LocalizedContent
-    var correctAnswer: String
+    var correctAnswers: [String]
     var allAnswers: [String]
     var sound: [String]?
 
     init(
         id: UUID = UUID(),
         instruction: LocalizedContent = LocalizedContent(),
-        correctAnswer: String = "",
+        correctAnswers: [String] = [],
         allAnswers: [String] = [],
         sound: [String]? = []
     ) {
         self.id = id
         self.instruction = instruction
-        self.correctAnswer = correctAnswer
+        self.correctAnswers = correctAnswers
         self.allAnswers = allAnswers
         self.sound = sound
     }
