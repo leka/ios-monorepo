@@ -6,9 +6,12 @@ import SpriteKit
 
 class EmptyBasketScene: DragAndDropScene {
 
+    private var leftSlotIsFree: Bool = true
+
     override func reset() {
         self.removeAllChildren()
         self.removeAllActions()
+        leftSlotIsFree = true
 
         spacer = size.width / 4
         self.defaultPosition = CGPoint(x: spacer, y: self.size.height)
@@ -24,17 +27,37 @@ class EmptyBasketScene: DragAndDropScene {
         dropArea.name = "drop_area"
         addChild(dropArea)
 
-        // expected answer
-        //        let expectedItem = gameEngine!.allAnswers[gameEngine!.correctAnswerIndex]
-        //        let texture = SKTexture(imageNamed: expectedItem)
-        //        let action = SKAction.setTexture(texture, resize: true)
-        //        expectedItemNode.append(SKSpriteNode())
-        //        expectedItemNode[0].run(action)
-        //        expectedItemNode[0].name = expectedItem
-        //        expectedItemNode[0].texture = texture
-        //        expectedItemNode[0].scaleForMax(sizeOf: biggerSide * 0.8)
-        //        expectedItemNode[0].position = CGPoint(x: dropArea.position.x + 80, y: 130)
-        //
-        //        addChild(expectedItemNode[0])
+        for item in gameEngine!.correctAnswersIndices {
+            let expectedItem = gameEngine!.allAnswers[item]
+            let expectedNode = SKSpriteNode()
+            expectedNode.name = expectedItem
+            expectedItemsNodes.append(expectedNode)
+        }
+    }
+
+    override func dropGoodAnswer(_ node: DraggableItemNode) {
+        node.scaleForMax(sizeOf: biggerSide * 0.8)
+        let finalX = setFinalXPosition()
+        node.position = CGPoint(
+            x: finalX,
+            y: 130)
+        node.zPosition = 10
+        node.isDraggable = false
+        if gameEngine!.allCorrectAnswersWereGiven() {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                self.reset()
+            }
+        }
+
+        func setFinalXPosition() -> CGFloat {
+            guard gameEngine!.rightAnswersGiven.count < 2 else {
+                return dropArea.position.x + (leftSlotIsFree ? -80 : 80)
+            }
+            guard endAbscissa <= size.width / 2 else {
+                return dropArea.position.x + 80
+            }
+            if leftSlotIsFree { leftSlotIsFree.toggle() }
+            return dropArea.position.x - 80
+        }
     }
 }

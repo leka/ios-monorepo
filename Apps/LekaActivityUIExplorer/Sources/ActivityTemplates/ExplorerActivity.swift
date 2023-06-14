@@ -49,7 +49,7 @@ class ExplorerActivity: ObservableObject {
         return [
             Array(
                 repeating: Step(
-                    instruction: stepInstruction(), correctAnswer: setGoodAnswers()[0], allAnswers: setAnswersPerType(),
+                    instruction: stepInstruction(), correctAnswers: setGoodAnswers(), allAnswers: setAnswersPerType(),
                     sound: nil), count: 5)
         ]
     }
@@ -101,7 +101,7 @@ class ExplorerActivity: ObservableObject {
     func setGoodAnswers() -> [String] {
         switch type {
             case .dragAndDrop:
-                return ["watermelon"]
+                return Array(dragAndDropAnswers.prefix(withTemplate == 3 ? 2 : 1))
             default:
                 return ["dummy_1"]
         }
@@ -125,7 +125,10 @@ class ExplorerActivity: ObservableObject {
             case .colorQuest:
                 return "Touche la couleur verte"
             case .dragAndDrop:
-                return "Fais glisser la pastèque dans le panier"
+                guard withTemplate == 3 else {
+                    return "Fais glisser la pastèque dans le panier"
+                }
+                return "Fais glisser la pastèque et la banane dans le panier"
             case .xylophone:
                 return "Joue du xylophone avec Leka"
             case .remote:
