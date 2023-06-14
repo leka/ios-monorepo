@@ -77,8 +77,10 @@ struct UpdateStatusView: View {
 
 }
 
-struct UpdatingView_Previews: PreviewProvider {
+struct UpdatingStatusView_Previews: PreviewProvider {
     static var previews: some View {
-        UpdateStatusView()
+        NavigationStack {
+            UpdateStatusView()
+        }
     }
 }

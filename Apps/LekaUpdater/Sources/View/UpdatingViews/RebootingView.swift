@@ -23,8 +23,6 @@ struct RebootingView: View {
 
 struct RebootingView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationStack {
-            RebootingView()
-        }
+        RebootingView()
     }
 }
