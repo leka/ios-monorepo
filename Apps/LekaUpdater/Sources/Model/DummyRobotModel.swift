@@ -2,6 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import Combine
 import Foundation
 
 class DummyRobotModel: ObservableObject {
@@ -11,6 +12,8 @@ class DummyRobotModel: ObservableObject {
     @Published var battery = 75
     @Published var isCharging = true
     @Published var osVersion = "1.3.0"
+
+    public var event = PassthroughSubject<UpdateProcessEvent, Error>()
 
     var debugTimer: Timer?
 
