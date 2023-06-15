@@ -16,11 +16,7 @@ struct SpacingEditor: View {
             Group {
                 horizontalSpacingSlider
                 if gameEngine.allAnswers.count >= 3 {
-                    if gameEngine.allAnswers.count == 3 && configuration.preferred3AnswersLayout == .inline
-                        || gameEngine.allAnswers.count == 4 && configuration.preferred4AnswersLayout == .inline
-                    {
-                        EmptyView()
-                    } else {
+                    if hasVerticalSpacing() {
                         verticalSpacingSlider
                     }
                 }
@@ -49,6 +45,18 @@ struct SpacingEditor: View {
                     })
             }
         }
+    }
+
+    private func hasVerticalSpacing() -> Bool {
+        guard
+            gameEngine.interface == .touch3Inline
+                || gameEngine.interface == .touch4Inline
+                || gameEngine.interface == .soundTouch3Inline
+                || gameEngine.interface == .soundTouch4Inline
+        else {
+            return true
+        }
+        return false
     }
 
     private var horizontalSpacingSlider: some View {

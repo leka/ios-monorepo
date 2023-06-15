@@ -6,7 +6,7 @@ import SwiftUI
 
 struct SidebarView: View {
 
-    @EnvironmentObject var navigator: NavigationManager
+    //    @EnvironmentObject var navigator: NavigationManager
     @EnvironmentObject var configuration: GameLayoutTemplatesConfigurations
     @EnvironmentObject var gameEngine: GameEngine
     @EnvironmentObject var defaults: GameLayoutTemplatesDefaults
@@ -65,10 +65,9 @@ struct SidebarView: View {
     }
 
     private func setupTest() {
-        configuration.setupExplorerVariations(forTemplate: navigator.selectedTemplate)
         gameEngine.bufferActivity = ExplorerActivity(
-            withTemplate: navigator.selectedTemplate,
-            type: configuration.currentActivityType
+            type: configuration.currentActivityType,
+            interface: configuration.currentInterface
         )
         .makeActivity()
         gameEngine.setupGame()
