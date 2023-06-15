@@ -30,7 +30,7 @@ class UpdateProcessController {
 
         switch currentRobotVersion {
             default:
-                self.currentUpdateProcess = UpdateProcessUnavailable()
+                self.currentUpdateProcess = UpdateProcessTemplate()
         }
         self.currentState = self.currentUpdateProcess.userState
     }

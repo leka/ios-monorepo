@@ -5,7 +5,7 @@
 import Combine
 import Foundation
 
-class UpdateProcessUnavailable: UpdateProcessProtocol {
+class UpdateProcessTemplate: UpdateProcessProtocol {
     private var cancellables: Set<AnyCancellable> = []
 
     var currentState = CurrentValueSubject<UpdateProcessState, UpdateProcessError>(.initial)
