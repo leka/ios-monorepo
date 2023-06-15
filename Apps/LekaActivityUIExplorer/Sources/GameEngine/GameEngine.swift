@@ -17,7 +17,7 @@ class GameEngine: NSObject, ObservableObject {
     // MARK: - Current Step Configuration
     @Published var answersAreImages: Bool = true  // This shouldbe deleted and AnswerContentView updated accordingly
     @Published var allAnswers: [String] = []
-    @Published var interface: GameLayout = .touch_1
+    @Published var interface: GameLayout = .touch1
     @Published var stepInstruction: String = "Nothing to display"
     @Published var correctAnswersIndices: [Int] = []
     @Published var allAnswersAreDisabled: Bool = false

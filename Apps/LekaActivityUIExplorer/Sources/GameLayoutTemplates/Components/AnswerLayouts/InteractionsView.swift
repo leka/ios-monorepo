@@ -9,98 +9,68 @@ struct InteractionsView: View {
     @EnvironmentObject var gameEngine: GameEngine
     @EnvironmentObject var configuration: GameLayoutTemplatesConfigurations
 
-    private var launchText: Text = Text("Sélectionner un modèle")
-
     var body: some View {
         VStack {
             Spacer()
-            switch gameEngine.currentActivity.activityType {
-                case .touchToSelect: touchToSelectTemplate
-                case .listenThenTouchToSelect: listenThenTouchToSelectTemplate
-                case .colorQuest: colorQuestTemplate
-                case .dragAndDrop: dragAndDropTemplate
-                case .xylophone: XylophoneLayout()
-                case .remote: remoteTemplate
-            }
+            interface
             Spacer()
         }
         .frame(maxWidth: .infinity)
     }
 
     @ViewBuilder
-    private var colorQuestTemplate: some View {
-        switch gameEngine.allAnswers.count {
-            case 1: ColorQuestOneAnswerLayout()
-            case 2: ColorQuestTwoAnswersLayout()
-            case 3: ColorQuestThreeAnswersLayout()
-            default: launchText
-        }
-    }
-
-    @ViewBuilder
-    private var touchToSelectTemplate: some View {
-        switch gameEngine.allAnswers.count {
-            case 1: OneAnswerLayout()
-            case 2: TwoAnswersLayout()
-            case 3:
-                if configuration.preferred3AnswersLayout == .inline {
-                    ThreeAnswersLayoutInline()
-                } else {
-                    ThreeAnswersLayout()
-                }
-            case 4:
-                if configuration.preferred4AnswersLayout == .inline {
-                    FourAnswersLayoutInline()
-                } else {
-                    FourAnswersLayout()
-                }
-            case 5: FiveAnswersLayout()
-            case 6: SixAnswersLayout()
-            default: launchText
-        }
-    }
-
-    @ViewBuilder
-    private var listenThenTouchToSelectTemplate: some View {
-        switch gameEngine.allAnswers.count {
-            case 1: ListenOneAnswerLayout()
-            case 2: ListenTwoAnswersLayout()
-            case 3:
-                if configuration.preferred3AnswersLayout == .inline {
-                    ListenThreeAnswersLayoutInline()
-                } else {
-                    ListenThreeAnswersLayout()
-                }
-            case 4:
-                if configuration.preferred4AnswersLayout == .inline {
-                    ListenFourAnswersLayoutInline()
-                } else {
-                    ListenFourAnswersLayout()
-                }
-            case 6: ListenSixAnswersLayout()
-            default: launchText
-        }
-    }
-
-    @ViewBuilder
-    private var remoteTemplate: some View {
-        switch gameEngine.allAnswers.count {
-            case 1: RemoteStandardView()
-            case 2: RemoteArrowView()
-            default:
-                launchText
-        }
-    }
-
-    @ViewBuilder
-    private var dragAndDropTemplate: some View {
-        switch gameEngine.allAnswers.count {
-            case 1: DragAndDropSceneView(withTemplate: BasketOneScene())
-            case 2: DragAndDropSceneView(withTemplate: BasketTwoScene())
-            case 3: DragAndDropSceneView(withTemplate: EmptyBasketScene())
-            case 4: DragAndDropSceneView(withTemplate: BasketFourScene())
-            default:
-                launchText
+    private var interface: some View {
+        switch gameEngine.interface {
+            case .touch1:
+                OneAnswerLayout()
+            case .touch2:
+                TwoAnswersLayout()
+            case .touch3:
+                ThreeAnswersLayout()
+            case .touch3Inline:
+                ThreeAnswersLayoutInline()
+            case .touch4:
+                FourAnswersLayout()
+            case .touch4Inline:
+                FourAnswersLayoutInline()
+            case .touch5:
+                FiveAnswersLayout()
+            case .touch6:
+                SixAnswersLayout()
+            case .soundTouch1:
+                ListenOneAnswerLayout()
+            case .soundTouch2:
+                ListenTwoAnswersLayout()
+            case .soundTouch3:
+                ListenThreeAnswersLayout()
+            case .soundTouch3Inline:
+                ListenThreeAnswersLayoutInline()
+            case .soundTouch4:
+                ListenFourAnswersLayout()
+            case .soundTouch4Inline:
+                ListenFourAnswersLayoutInline()
+            case .soundTouch6:
+                ListenSixAnswersLayout()
+            case .basket1:
+                DragAndDropSceneView(withTemplate: BasketOneScene())
+            case .basket2:
+                DragAndDropSceneView(withTemplate: BasketTwoScene())
+            case .basket4:
+                DragAndDropSceneView(withTemplate: BasketFourScene())
+            case .basketEmpty:
+                DragAndDropSceneView(withTemplate: EmptyBasketScene())
+            case .colorQuest1:
+                ColorQuestOneAnswerLayout()
+            case .colorQuest2:
+                ColorQuestTwoAnswersLayout()
+            case .colorQuest3:
+                ColorQuestThreeAnswersLayout()
+            case .remoteStandard:
+                RemoteStandardView()
+            case .remoteArrow:
+                RemoteArrowView()
+            case .xylophone:
+                XylophoneLayout()
         }
     }
 }

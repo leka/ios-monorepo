@@ -9,7 +9,6 @@ struct ColoredAnswerButton: View {
     @EnvironmentObject var gameEngine: GameEngine
     @EnvironmentObject var defaults: GameLayoutTemplatesDefaults
     @ObservedObject var templateDefaults: BaseDefaults
-    @State private var colors: [Color] = [.green, .purple, .red, .yellow, .blue]
 
     var answer: Int
 
@@ -18,7 +17,7 @@ struct ColoredAnswerButton: View {
             gameEngine.answerHasBeenPressed(atIndex: answer)
         } label: {
             Circle()
-                .foregroundColor(colors[answer])
+                .foregroundColor(gameEngine.stringToColor(from: gameEngine.allAnswers[answer]))
         }
         .buttonStyle(ActivityAnswer_ButtonStyle(isEnabled: gameEngine.currentMediaHasBeenPlayedOnce))
         .animation(.easeIn(duration: 0.3), value: gameEngine.correctAnswerAnimationPercent)
