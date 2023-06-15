@@ -33,12 +33,18 @@ private class InitialState: GKState, StateEventProcessor {
 
 private class LoadingUpdateFileState: GKState, StateEventProcessor {
 
+    private let controller: Controller
+
+    init(controller: Controller) {
+        self.controller = controller
+    }
+
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
         return stateClass is ErrorFailedToLoadFile.Type || stateClass is SettingDestinationPathState.Type
     }
 
     override func didEnter(from previousState: GKState?) {
-        // TODO: controller.loadUpdateFile()
+        controller.loadUpdateFile()
     }
 
     func process(event: UpdateProcessEvent) {
@@ -55,12 +61,18 @@ private class LoadingUpdateFileState: GKState, StateEventProcessor {
 
 private class SettingDestinationPathState: GKState, StateEventProcessor {
 
+    private let controller: Controller
+
+    init(controller: Controller) {
+        self.controller = controller
+    }
+
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
         return stateClass is SendingFileState.Type
     }
 
     override func didEnter(from previousState: GKState?) {
-        // TODO: controller.setBLEDestinationPathAndClearFile()
+        controller.setBLEDestinationPathAndClearFile()
     }
 
     func process(event: UpdateProcessEvent) {
@@ -75,12 +87,18 @@ private class SettingDestinationPathState: GKState, StateEventProcessor {
 
 private class SendingFileState: GKState, StateEventProcessor {
 
+    private let controller: Controller
+
+    init(controller: Controller) {
+        self.controller = controller
+    }
+
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
         return stateClass is ApplyingUpdate.Type
     }
 
     override func didEnter(from previousState: GKState?) {
-        // TODO: controller.sendFile()
+        controller.sendFile()
     }
 
     func process(event: UpdateProcessEvent) {
@@ -95,12 +113,18 @@ private class SendingFileState: GKState, StateEventProcessor {
 
 private class ApplyingUpdate: GKState, StateEventProcessor {
 
+    private let controller: Controller
+
+    init(controller: Controller) {
+        self.controller = controller
+    }
+
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
         return stateClass is WaitingRobotToReboot.Type
     }
 
     override func didEnter(from previousState: GKState?) {
-        // TODO: controller.setBLEMajorMinorRevisionApply()
+        controller.setBLEMajorMinorRevisionApply()
     }
 
     func process(event: UpdateProcessEvent) {
@@ -115,6 +139,12 @@ private class ApplyingUpdate: GKState, StateEventProcessor {
 
 private class WaitingRobotToReboot: GKState, StateEventProcessor {
 
+    private let controller: Controller
+
+    init(controller: Controller) {
+        self.controller = controller
+    }
+
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
         return stateClass is FinalState.Type || stateClass is ErrorRobotNotUpToDate.Type
     }
@@ -122,9 +152,7 @@ private class WaitingRobotToReboot: GKState, StateEventProcessor {
     func process(event: UpdateProcessEvent) {
         switch event {
             case .robotDetected:
-                let isRobotUpToDate = true
-                if isRobotUpToDate {
-                // TODO: if controller.isRobotUpToDate() {
+                if controller.isRobotUpToDate() {
                     self.stateMachine?.enter(FinalState.self)
                 } else {
                     self.stateMachine?.enter(ErrorRobotNotUpToDate.self)
@@ -139,3 +167,40 @@ private class FinalState: GKState {}
 
 private class ErrorFailedToLoadFile: GKState, ErrorState {}
 private class ErrorRobotNotUpToDate: GKState, ErrorState {}
+
+//
+// MARK: Controller
+//
+
+private class Controller {
+    let robot: DummyRobotModel
+
+    init(robot: DummyRobotModel) {
+        self.robot = robot
+    }
+
+    fileprivate func loadUpdateFile() {
+        print("Loading update file...")
+        // TODO: Implement loadUpdateFile
+    }
+
+    fileprivate func setBLEDestinationPathAndClearFile() {
+        print("Setting BLE Destination Path and Clear File...")
+        // TODO: Implement setBLEDestinationPathAndClearFile
+    }
+
+    fileprivate func sendFile() {
+        print("Sending file...")
+        // TODO: Implement sendFile
+    }
+
+    fileprivate func setBLEMajorMinorRevisionApply() {
+        print("Setting BLE Major Minor Revision Apply...")
+        // TODO: Implement setBLEMajorMinorRevisionApply
+    }
+
+    fileprivate func isRobotUpToDate() -> Bool {
+        // TODO: Implement isRobotUpToDate
+        return false
+    }
+}
