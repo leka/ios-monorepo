@@ -5,7 +5,7 @@
 import DesignKit
 import SwiftUI
 
-struct RobotIsUpToDateView: View {
+struct UpdateFinishedIllustration: View {
     var body: some View {
         ZStack {
             Circle().fill(.white)
@@ -35,15 +35,11 @@ struct RobotIsUpToDateView: View {
     }
 }
 
-struct UpdateFinishedView: View {
+struct UpdateFinishedContentView: View {
     @Environment(\.dismiss) var dismiss
 
     var body: some View {
         VStack {
-            Spacer()
-
-            RobotIsUpToDateView()
-
             Text(
                 """
                 Bravo ! 🥳
@@ -103,6 +99,23 @@ struct UpdateFinishedView: View {
 
 struct UpdateFinishedView_Previews: PreviewProvider {
     static var previews: some View {
-        UpdateFinishedView()
+        VStack {
+            UpdateFinishedIllustration()
+                .frame(height: 250)
+                .padding(.bottom)
+                .padding(.bottom)
+
+            Text("Étape 3/3")
+                .font(.title)
+                .bold()
+                .monospacedDigit()
+                .padding()
+
+            VStack {
+                UpdateFinishedContentView()
+                Spacer()
+            }
+            .frame(maxWidth: .infinity, maxHeight: 250)
+        }
     }
 }
