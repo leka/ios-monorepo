@@ -21,7 +21,7 @@ enum UpdateStatusError: Error {
 //
 
 class UpdateProcessController {
-    private var currentStateMachine: any UpdateProcessProtocol
+    private var currentUpdateProcess: any UpdateProcessProtocol
 
     public var currentState = CurrentValueSubject<UpdateStatusState, UpdateStatusError>(.initial)
 
@@ -30,12 +30,12 @@ class UpdateProcessController {
 
         switch currentRobotVersion {
             default:
-                self.currentStateMachine = UpdateProcessUnavailable()
+                self.currentUpdateProcess = UpdateProcessUnavailable()
         }
-        self.currentState = self.currentStateMachine.userState
+        self.currentState = self.currentUpdateProcess.userState
     }
 
     func startUpdate() {
-        currentStateMachine.startUpdate()
+        currentUpdateProcess.startUpdate()
     }
 }
