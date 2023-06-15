@@ -30,7 +30,6 @@ enum UpdateStatusError: Error {
 
 class UpdateProcessController {
     private var currentStateMachine: any UpdateProcessProtocol
-    private var cancellables: Set<AnyCancellable> = []
 
     public var currentState = CurrentValueSubject<UpdateStatusState, UpdateStatusError>(.initial)
 
@@ -43,16 +42,26 @@ class UpdateProcessController {
             default:
                 self.currentStateMachine = UpdateProcessUnavailable()
         }
-
-        subscribeToStateUpdate()
+        self.currentState = self.currentStateMachine.userState
     }
 
     func startUpdate() {
         currentStateMachine.startUpdate()
     }
+}
+
+private class UpdateProcessUnavailable: UpdateProcessProtocol {
+    private var cancellables: Set<AnyCancellable> = []
+
+    var currentState = CurrentValueSubject<UpdateProcessState, UpdateProcessError>(.initial)
+    var userState = CurrentValueSubject<UpdateStatusState, UpdateStatusError>(.initial)
+
+    init() {
+        subscribeToStateUpdate()
+    }
 
     private func subscribeToStateUpdate() {
-        self.currentStateMachine.currentState
+        self.currentState
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: self.convertCompletion, receiveValue: self.convertReceivedValue)
             .store(in: &cancellables)
@@ -61,40 +70,15 @@ class UpdateProcessController {
     private func convertCompletion(completion: Subscribers.Completion<UpdateProcessError>) {
         switch completion {
             case .finished:
-                self.currentState.send(completion: .finished)
+                self.userState.send(completion: .finished)
             case .failure(let error):
-                var result: UpdateStatusError = .unknown
-                switch error {
-                    case .failedToLoadFile:
-                        result = .failedToLoadFile
-                    case .robotNotUpToDate:
-                        result = .robotNotUpToDate
-                    case .notAvailable:
-                        result = .updateProcessNotAvailable
-                    default:
-                        result = .unknown
-                }
-                self.currentState.send(completion: .failure(result))
-
+                self.userState.send(completion: .failure(.updateProcessNotAvailable))  // only available error
         }
     }
 
     private func convertReceivedValue(state: UpdateProcessState) {
-        var result: UpdateStatusState = .initial
-        switch state {
-            case .initial:
-                result = .initial
-            case .loadingUpdateFile, .settingDestinationPathAndClearFile, .sendingFile:
-                result = .sendingUpdate
-            case .applyingUpdate, .waitingRobotToReboot:
-                result = .installingUpdate
-        }
-        self.currentState.send(result)
+        self.userState.send(.initial)  // only available state
     }
-}
-
-private class UpdateProcessUnavailable: UpdateProcessProtocol {
-    var currentState = CurrentValueSubject<UpdateProcessState, UpdateProcessError>(.initial)
 
     func startUpdate() {
         currentState.send(completion: .failure(.notAvailable))

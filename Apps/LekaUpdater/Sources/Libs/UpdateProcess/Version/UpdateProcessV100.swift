@@ -233,6 +233,7 @@ class UpdateProcessV100: UpdateProcessProtocol {
     private var cancellables: Set<AnyCancellable> = []
 
     public var currentState = CurrentValueSubject<UpdateProcessState, UpdateProcessError>(.initial)
+    public var userState = CurrentValueSubject<UpdateStatusState, UpdateStatusError>(.initial)
 
     init(robot: DummyRobotModel) {
         let controller = Controller(robot: robot)
@@ -262,6 +263,8 @@ class UpdateProcessV100: UpdateProcessProtocol {
             FinalState(),
         ])
         self.stateMachine?.enter(InitialState.self)
+
+        subscribeToStateUpdate()
     }
 
     public func startUpdate() {
@@ -317,4 +320,45 @@ class UpdateProcessV100: UpdateProcessProtocol {
                 currentState.send(completion: .failure(.unknown))
         }
     }
+
+    private func subscribeToStateUpdate() {
+        self.currentState
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: self.convertCompletion, receiveValue: self.convertReceivedValue)
+            .store(in: &cancellables)
+    }
+
+    private func convertCompletion(completion: Subscribers.Completion<UpdateProcessError>) {
+        switch completion {
+            case .finished:
+                self.userState.send(completion: .finished)
+            case .failure(let error):
+                var result: UpdateStatusError = .unknown
+                switch error {
+                    case .failedToLoadFile:
+                        result = .failedToLoadFile
+                    case .robotNotUpToDate:
+                        result = .robotNotUpToDate
+                    case .notAvailable:
+                        result = .updateProcessNotAvailable
+                    default:
+                        result = .unknown
+                }
+                self.userState.send(completion: .failure(result))
+        }
+    }
+
+    private func convertReceivedValue(state: UpdateProcessState) {
+        var result: UpdateStatusState = .initial
+        switch state {
+            case .initial:
+                result = .initial
+            case .loadingUpdateFile, .settingDestinationPathAndClearFile, .sendingFile:
+                result = .sendingUpdate
+            case .applyingUpdate, .waitingRobotToReboot:
+                result = .installingUpdate
+        }
+        self.userState.send(result)
+    }
+
 }

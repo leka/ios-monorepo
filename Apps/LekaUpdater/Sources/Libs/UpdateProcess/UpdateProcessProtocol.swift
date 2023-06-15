@@ -46,6 +46,7 @@ enum UpdateProcessError: Error {
 
 protocol UpdateProcessProtocol {
     var currentState: CurrentValueSubject<UpdateProcessState, UpdateProcessError> { get set }
+    var userState: CurrentValueSubject<UpdateStatusState, UpdateStatusError> { get set }
 
     func startUpdate()
 }
