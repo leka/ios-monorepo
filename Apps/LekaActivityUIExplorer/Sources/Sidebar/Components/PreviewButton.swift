@@ -18,10 +18,14 @@ struct PreviewButton: View {
         ZStack(alignment: .topTrailing) {
             Button(
                 action: {
+                    // sidebar & selection
                     navigator.selectedTemplate = item.index
-                    configuration.currentActivityType = item.type
-                    configuration.currentDefaults = item.defaults()
                     navigator.sidebarVisibility = .detailOnly
+
+                    //
+                    configuration.currentActivityType = item.type
+                    configuration.currentInterface = item.interface
+                    configuration.currentDefaults = item.defaults()
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                         action()
                     }

@@ -6,12 +6,12 @@ import Foundation
 
 class ExplorerActivity: ObservableObject {
 
-    var withTemplate: Int
     var type: ActivityType
+    var interface: GameLayout
 
-    init(withTemplate: Int, type: ActivityType) {
-        self.withTemplate = withTemplate
+    init(type: ActivityType, interface: GameLayout) {
         self.type = type
+        self.interface = interface
     }
 
     func makeActivity() -> Activity {
@@ -49,65 +49,76 @@ class ExplorerActivity: ObservableObject {
         return [
             Array(
                 repeating: Step(
-                    instruction: stepInstruction(), correctAnswers: setGoodAnswers(), allAnswers: setAnswersPerType(),
-                    sound: nil), count: 5)
+                    interface: interface,
+                    instruction: stepInstruction(),
+                    correctAnswers: setGoodAnswers(),
+                    allAnswers: setAnswers(),
+                    sound: nil),
+                count: 5)
         ]
     }
 
+    // swiftlint:disable cyclomatic_complexity
     private func setAnswers() -> [String] {
-        if withTemplate == 0 {
-            return Array(stepAnswers.prefix(1))
-        } else if withTemplate == 1 {
-            return Array(stepAnswers.prefix(2))
-        } else if 2...3 ~= withTemplate {
-            return Array(stepAnswers.prefix(3))
-        } else if 4...5 ~= withTemplate {
-            return Array(stepAnswers.prefix(4))
-        } else if withTemplate == 6 {
-            return Array(stepAnswers.prefix(type == .touchToSelect ? 5 : 6))
-        } else if withTemplate == 7 {
-            return Array(stepAnswers.prefix(6))
-        } else if withTemplate == 8 {
-            return Array(stepAnswers.prefix(1))
-        } else if withTemplate == 9 {
-            return Array(stepAnswers.prefix(2))
-        } else {
-            return Array(stepAnswers.prefix(3))
+        switch interface {
+            case .touch1, .soundTouch1:
+                return Array(stepAnswers.prefix(1))
+            case .touch2, .soundTouch2:
+                return Array(stepAnswers.prefix(2))
+            case .touch3, .soundTouch3:
+                return Array(stepAnswers.prefix(3))
+            case .touch3Inline, .soundTouch3Inline:
+                return Array(stepAnswers.prefix(3))
+            case .touch4, .soundTouch4:
+                return Array(stepAnswers.prefix(4))
+            case .touch4Inline, .soundTouch4Inline:
+                return Array(stepAnswers.prefix(4))
+            case .touch5:
+                return Array(stepAnswers.prefix(5))
+            case .touch6, .soundTouch6:
+                return Array(stepAnswers.prefix(6))
+            case .basket1:
+                return Array(dragAndDropAnswers.prefix(1))
+            case .basket2:
+                return Array(dragAndDropAnswers.prefix(2))
+            case .basket4:
+                return Array(dragAndDropAnswers.prefix(4))
+            case .basketEmpty:
+                return Array(dragAndDropAnswers.prefix(3))
+            case .colorQuest1:
+                return Array(colorAnswers.prefix(1))
+            case .colorQuest2:
+                return Array(colorAnswers.prefix(2))
+            case .colorQuest3:
+                return Array(colorAnswers.prefix(3))
+            case .remoteStandard:
+                return []
+            case .remoteArrow:
+                return []
+            case .xylophone:
+                return []
         }
     }
-
-    private func setDragAndDropAnswers() -> [String] {
-        if withTemplate == 0 {
-            return Array(dragAndDropAnswers.prefix(1))
-        } else if withTemplate == 1 {
-            return Array(dragAndDropAnswers.prefix(2))
-        } else if withTemplate == 2 {
-            return Array(dragAndDropAnswers.prefix(4))
-        } else {
-            return Array(dragAndDropAnswers.prefix(3))
-        }
-    }
-
-    func setAnswersPerType() -> [String] {
-        switch type {
-            case .dragAndDrop:
-                return setDragAndDropAnswers()
-            default:
-                return setAnswers()
-        }
-    }
+    // swiftlint:enable cyclomatic_complexity
 
     // ready to work with more than 1 good answers
     func setGoodAnswers() -> [String] {
-        switch type {
-            case .dragAndDrop:
-                return Array(dragAndDropAnswers.prefix(withTemplate == 3 ? 2 : 1))
+        switch interface {
+            case .basket1, .basket2, .basket4:
+                return ["watermelon"]
+            case .basketEmpty:
+                return ["watermelon", "banana"]
+            case .colorQuest1, .colorQuest2, .colorQuest3:
+                return ["green"]
+            case .remoteStandard, .remoteArrow, .xylophone:
+                return []
             default:
                 return ["dummy_1"]
         }
     }
 
     var stepAnswers = ["dummy_1", "dummy_2", "dummy_3", "dummy_4", "dummy_5", "dummy_6"]
+    var colorAnswers = ["green", "purple", "red", "yellow", "blue"]
     var dragAndDropAnswers = ["watermelon", "banana", "kiwi", "avocado", "cherry", "strawberry"]
 
     func stepInstruction() -> LocalizedContent {
@@ -118,14 +129,12 @@ class ExplorerActivity: ObservableObject {
 
     var stepInstructions: String {
         switch type {
-            case .touchToSelect:
-                return "Touche le numéro 1"
-            case .listenThenTouchToSelect:
+            case .touchToSelect, .listenThenTouchToSelect:
                 return "Touche le numéro 1"
             case .colorQuest:
                 return "Touche la couleur verte"
             case .dragAndDrop:
-                guard withTemplate == 3 else {
+                guard interface == .basketEmpty else {
                     return "Fais glisser la pastèque dans le panier"
                 }
                 return "Fais glisser la pastèque et la banane dans le panier"

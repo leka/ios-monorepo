@@ -65,12 +65,13 @@ struct Step: Codable, Equatable, Identifiable {
     }
 
     enum CodingKeys: String, CodingKey {
-        case instruction, id, sound
+        case id, interface, instruction, sound
         case allAnswers = "images"
         case correctAnswers = "correct_answer"  // pluralize within YAMLs
     }
 
     var id: UUID
+    var interface: GameLayout
     var instruction: LocalizedContent
     var correctAnswers: [String]
     var allAnswers: [String]
@@ -78,12 +79,14 @@ struct Step: Codable, Equatable, Identifiable {
 
     init(
         id: UUID = UUID(),
+        interface: GameLayout,
         instruction: LocalizedContent = LocalizedContent(),
         correctAnswers: [String] = [],
         allAnswers: [String] = [],
         sound: [String]? = []
     ) {
         self.id = id
+        self.interface = interface
         self.instruction = instruction
         self.correctAnswers = correctAnswers
         self.allAnswers = allAnswers
