@@ -49,9 +49,6 @@ class DragAndDropScene: SKScene {
     }
 
     func makeDropArea() {
-        // for destination in gameEngine!.destinations {
-        // let destination = SKSpriteNode()
-        // ...
         dropArea.size = CGSize(width: 380, height: 280)
         dropArea.texture = SKTexture(imageNamed: "basket")
         dropArea.position = CGPoint(x: size.width / 2, y: 165)

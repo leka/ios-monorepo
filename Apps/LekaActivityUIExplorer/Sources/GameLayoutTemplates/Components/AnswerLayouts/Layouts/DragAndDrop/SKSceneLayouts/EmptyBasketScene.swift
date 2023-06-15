@@ -56,7 +56,9 @@ class EmptyBasketScene: DragAndDropScene {
             guard endAbscissa <= size.width / 2 else {
                 return dropArea.position.x + 80
             }
-            if leftSlotIsFree { leftSlotIsFree.toggle() }
+            if leftSlotIsFree {
+                leftSlotIsFree.toggle()
+            }
             return dropArea.position.x - 80
         }
     }

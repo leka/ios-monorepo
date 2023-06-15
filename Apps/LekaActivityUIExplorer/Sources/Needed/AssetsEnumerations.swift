@@ -127,8 +127,6 @@ enum RemotePreviews: Int, CaseIterable, Previewable {
 
 enum DragAndDropPreviews: Int, CaseIterable, Previewable {
     case basket1, basket2, basket4, emptyBasket
-    //    case association4, association6
-    //    case dropArea1, dropArea2, dropArea1Assets3, dropArea2Assets2, dropArea2Assets6
     var type: ActivityType { return .dragAndDrop }
     var preview: String {
         switch self {
@@ -136,29 +134,9 @@ enum DragAndDropPreviews: Int, CaseIterable, Previewable {
             case .basket2: return "basket_2"
             case .basket4: return "basket_4"
             case .emptyBasket: return "empty_basket"
-        //            case .association4: return "DragAndDrop_basket1"
-        //            case .association6: return "DragAndDrop_basket1"
-        //            case .dropArea1: return "DragAndDrop_basket1"
-        //            case .dropArea2: return "DragAndDrop_basket1"
-        //            case .dropArea1Assets3: return "DragAndDrop_basket1"
-        //            case .dropArea2Assets2: return "DragAndDrop_basket1"
-        //            case .dropArea2Assets6: return "DragAndDrop_basket1"
         }
     }
     func defaults() -> BaseDefaults? {
-        //        switch self {
-        //            case .basket1: return DragAndDrop.basket1
-        //            case .basket2: return DragAndDrop.basket1
-        //            case .basket4: return DragAndDrop.basket1
-        //            case .emptyBasket: return DragAndDrop.basket1
-        //            case .association4: return DragAndDrop.basket1
-        //            case .association6: return DragAndDrop.basket1
-        //            case .dropArea1: return DragAndDrop.basket1
-        //            case .dropArea2: return DragAndDrop.basket1
-        //            case .dropArea1Assets3: return DragAndDrop.basket1
-        //            case .dropArea2Assets2: return DragAndDrop.basket1
-        //            case .dropArea2Assets6: return DragAndDrop.basket1
-        //        }
         return DragAndDrop.basket
     }
 }
