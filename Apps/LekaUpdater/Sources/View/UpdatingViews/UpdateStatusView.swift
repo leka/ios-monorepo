@@ -27,12 +27,19 @@ struct UpdateStatusView: View {
 
     var body: some View {
         VStack {
-            LekaUpdaterAsset.Assets.lekaUpdaterIcon.swiftUIImage
-                .resizable()
-                .scaledToFit()
-                .frame(height: 250)
-                .padding(.bottom)
-                .padding(.bottom)
+            VStack {
+                switch updatingStatus {
+                    case .sendingFile:
+                        SendingFileIllustration()
+                    case .rebootingRobot:
+                        RebootingIllustration()
+                    case .updateFinished:
+                        UpdateFinishedIllustration()
+                }
+            }
+            .frame(height: 250)
+            .padding(.bottom)
+            .padding(.bottom)
 
             Text("Étape \(stepNumber)/3")
                 .font(.title)
@@ -43,11 +50,11 @@ struct UpdateStatusView: View {
             VStack {
                 switch updatingStatus {
                     case .sendingFile:
-                        SendingFileView()
+                        SendingFileContentView()
                     case .rebootingRobot:
-                        RebootingView()
+                        RebootingContentView()
                     case .updateFinished:
-                        UpdateFinishedView()
+                        UpdateFinishedContentView()
                 }
                 Spacer()
             }
