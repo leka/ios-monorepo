@@ -5,30 +5,10 @@
 import Combine
 import Foundation
 
-//
-// MARK: - States, events, errors
-//
-
-enum UpdateProcessState {
-    case initial
-}
-
-enum UpdateProcessEvent {
-    case startUpdateRequested
-}
-
-enum UpdateProcessError: Error {
-    case unknown
-    case notAvailable
-}
-
-//
-// MARK: - UpdateProcess
-//
-
 protocol UpdateProcessProtocol {
-    var currentState: CurrentValueSubject<UpdateProcessState, UpdateProcessError> { get set }
-    var userState: CurrentValueSubject<UpdateStatusState, UpdateStatusError> { get set }
 
-    func startUpdate()
+    var currentState: CurrentValueSubject<UpdateStatusState, UpdateStatusError> { get set }
+
+    func startProcess()
+
 }

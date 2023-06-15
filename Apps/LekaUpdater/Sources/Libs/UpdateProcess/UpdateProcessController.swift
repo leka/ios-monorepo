@@ -5,7 +5,7 @@
 import Combine
 import Foundation
 
-// MARK: - States, errors
+// MARK: - General (user facing) update process states, errors
 
 enum UpdateStatusState {
     case initial
@@ -16,12 +16,15 @@ enum UpdateStatusError: Error {
     case updateProcessNotAvailable
 }
 
-//
-// MARK: - StateMachine
-//
+// MARK: - Controller
 
 class UpdateProcessController {
+
+    // MARK: - Private variables
+
     private var currentUpdateProcess: any UpdateProcessProtocol
+
+    // MARK: - Public variables
 
     public var currentState = CurrentValueSubject<UpdateStatusState, UpdateStatusError>(.initial)
 
@@ -32,10 +35,11 @@ class UpdateProcessController {
             default:
                 self.currentUpdateProcess = UpdateProcessTemplate()
         }
-        self.currentState = self.currentUpdateProcess.userState
+
+        self.currentState = self.currentUpdateProcess.currentState
     }
 
     func startUpdate() {
-        currentUpdateProcess.startUpdate()
+        currentUpdateProcess.startProcess()
     }
 }

@@ -13,7 +13,8 @@ class DummyRobotModel: ObservableObject {
     @Published var isCharging = true
     @Published var osVersion = "1.3.0"
 
-    public var event = PassthroughSubject<UpdateProcessEvent, Error>()
+    // TODO(@ladislas): replace by function for updated characteristic
+    //    public var event = PassthroughSubject<UpdateProcessEvent, Error>()
 
     var debugTimer: Timer?
 

@@ -6,36 +6,58 @@ import Combine
 import Foundation
 
 class UpdateProcessTemplate: UpdateProcessProtocol {
-    private var cancellables: Set<AnyCancellable> = []
 
-    var currentState = CurrentValueSubject<UpdateProcessState, UpdateProcessError>(.initial)
-    var userState = CurrentValueSubject<UpdateStatusState, UpdateStatusError>(.initial)
+    // MARK: - Internal states, events, errors
+
+    enum UpdateState {
+        case initial
+        case inProgress
+        case success
+    }
+
+    enum UpdateEvent {
+        case startUpdateRequested
+    }
+
+    enum UpdateError: Error {
+        case unknown
+        case notAvailable
+    }
+
+    // MARK: - Private variables
+
+    private var cancellables: Set<AnyCancellable> = []
+    private var currentInternalState = CurrentValueSubject<UpdateState, UpdateError>(.initial)
+
+    // MARK: - Public variables
+
+    public var currentState = CurrentValueSubject<UpdateStatusState, UpdateStatusError>(.initial)
 
     init() {
         subscribeToStateUpdate()
     }
 
     private func subscribeToStateUpdate() {
-        self.currentState
+        self.currentInternalState
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: self.convertCompletion, receiveValue: self.convertReceivedValue)
             .store(in: &cancellables)
     }
 
-    private func convertCompletion(completion: Subscribers.Completion<UpdateProcessError>) {
+    private func convertCompletion(completion: Subscribers.Completion<UpdateError>) {
         switch completion {
             case .finished:
-                self.userState.send(completion: .finished)
+                self.currentState.send(completion: .finished)
             case .failure(let error):
-                self.userState.send(completion: .failure(.updateProcessNotAvailable))  // only available error
+                self.currentState.send(completion: .failure(.updateProcessNotAvailable))  // only available error
         }
     }
 
-    private func convertReceivedValue(state: UpdateProcessState) {
-        self.userState.send(.initial)  // only available state
+    private func convertReceivedValue(state: UpdateState) {
+        self.currentState.send(.initial)  // only available state
     }
 
-    func startUpdate() {
-        currentState.send(completion: .failure(.notAvailable))
+    func startProcess() {
+        currentInternalState.send(completion: .failure(.notAvailable))
     }
 }
