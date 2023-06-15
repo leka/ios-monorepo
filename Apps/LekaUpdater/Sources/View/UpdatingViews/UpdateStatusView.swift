@@ -72,6 +72,13 @@ struct UpdateStatusView: View {
                 }
             }
 
+            ToolbarItem(placement: .bottomBar) {
+                LekaUpdaterAsset.Assets.lekaUpdaterIcon.swiftUIImage
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: 50)
+            }
+
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button("[DEBUG] Switch views", action: switchView)
             }  // TODO(@yann): remove when debug is over
