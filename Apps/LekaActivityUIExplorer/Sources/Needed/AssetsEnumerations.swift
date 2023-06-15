@@ -126,17 +126,18 @@ enum RemotePreviews: Int, CaseIterable, Previewable {
 }
 
 enum DragAndDropPreviews: Int, CaseIterable, Previewable {
-    case basket1
+    case basket1, basket2, basket4, emptyBasket
     var type: ActivityType { return .dragAndDrop }
     var preview: String {
         switch self {
-            case .basket1: return "DragAndDrop_basket1"
+            case .basket1: return "basket_1"
+            case .basket2: return "basket_2"
+            case .basket4: return "basket_4"
+            case .emptyBasket: return "empty_basket"
         }
     }
     func defaults() -> BaseDefaults? {
-        switch self {
-            case .basket1: return DragAndDrop.basket1
-        }
+        return DragAndDrop.basket
     }
 }
 

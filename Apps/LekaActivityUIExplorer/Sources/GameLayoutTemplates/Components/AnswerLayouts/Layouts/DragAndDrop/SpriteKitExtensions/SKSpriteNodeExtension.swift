@@ -20,14 +20,10 @@ extension SKSpriteNode {
     }
 
     // make sure the bigger side of a node measures a max of 170 pts
-    func resizeToMax(sizeOf: CGFloat) {
+    func scaleForMax(sizeOf: CGFloat) {
         let initialSize = self.texture?.size()
         let biggerSide = max(initialSize!.width, initialSize!.height)
-        let scaler = biggerSide / sizeOf
-        let resize = SKAction.resize(
-            toWidth: min(sizeOf, initialSize!.width / scaler),
-            height: min(sizeOf, initialSize!.height / scaler),
-            duration: 0.1)
-        self.run(resize)
+        let scaler = sizeOf / biggerSide
+        self.setScale(scaler)
     }
 }
