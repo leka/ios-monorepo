@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="186px" height="262px" viewBox="0 0 186 262" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>strawberry</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="strawberry" transform="translate(4.000000, 4.000000)" stroke="#4B4B4B" stroke-width="7">
+            <g id="Group_16">
+                <path d="M7.7,152.13 C-15.87,105.55 17.98,50.49 70.18,50.49 L108.03,50.49 C160.22,50.49 193.97,105.67 170.18,152.13 L131.6,227.5 C123.35,243.62 106.76,253.77 88.65,253.77 L88.65,253.77 C70.55,253.77 53.99,243.59 45.82,227.44 L7.71,152.13 L7.7,152.13 Z" id="Rectangle_28" fill="#ED5123" fill-rule="nonzero"></path>
+                <line x1="31.46" y1="109.94" x2="31.46" y2="118.89" id="Line_2" stroke-linecap="round"></line>
+                <line x1="64.7" y1="126.56" x2="64.7" y2="135.51" id="Line_2_Copy_2" stroke-linecap="round"></line>
+                <line x1="87.71" y1="89.48" x2="87.71" y2="98.43" id="Line_2_Copy_3" stroke-linecap="round"></line>
+                <line x1="90.27" y1="161.08" x2="90.27" y2="170.03" id="Line_2_Copy_6" stroke-linecap="round"></line>
+                <line x1="39.13" y1="155.96" x2="39.13" y2="164.91" id="Line_2_Copy_7" stroke-linecap="round"></line>
+                <line x1="63.42" y1="195.6" x2="63.42" y2="204.55" id="Line_2_Copy_8" stroke-linecap="round"></line>
+                <line x1="141.41" y1="155.96" x2="141.41" y2="164.91" id="Line_2_Copy_9" stroke-linecap="round"></line>
+                <line x1="117.12" y1="195.6" x2="117.12" y2="204.55" id="Line_2_Copy_10" stroke-linecap="round"></line>
+                <line x1="90.27" y1="225" x2="90.27" y2="233.95" id="Line_2_Copy_11" stroke-linecap="round"></line>
+                <line x1="115.84" y1="126.56" x2="115.84" y2="135.51" id="Line_2_Copy_4" stroke-linecap="round"></line>
+                <line x1="145.24" y1="109.94" x2="145.24" y2="118.89" id="Line_2_Copy_5" stroke-linecap="round"></line>
+                <g id="Group_7" transform="translate(44.000000, 0.000000)" stroke-linecap="round">
+                    <path d="M46.75,43.9 C35.04,40.47 23.19,37.28 14.01,33.24 C16.68,40.04 21.14,45.99 26.93,50.45 C12.04,56.27 0.74,63.88 0.88,76.44 C12.9,66.95 30.75,65.17 46.82,60.09 C63.11,65.17 81.19,66.95 93.21,76.44 C93.36,63.82 81.75,56.2 66.57,50.36 C72.26,45.89 76.64,39.98 79.28,33.24 C70.1,37.28 58.34,40.47 46.75,43.9 L46.75,43.9 Z" id="Combined_Shape" fill="#85C441" fill-rule="nonzero" stroke-linejoin="round"></path>
+                    <path d="M47.62,46.47 C47.62,46.47 44.32,17.63 56.25,0.23" id="Path_117"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

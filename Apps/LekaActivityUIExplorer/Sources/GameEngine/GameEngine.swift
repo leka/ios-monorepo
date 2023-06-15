@@ -15,10 +15,10 @@ class GameEngine: NSObject, ObservableObject {
     @Published var bufferActivity = Activity()
 
     // MARK: - Current Step Configuration
-    @Published var answersAreImages: Bool = true  // This will change when activity types are sorted out
+    @Published var answersAreImages: Bool = true  // This shouldbe deleted and AnswerContentView updated accordingly
     @Published var allAnswers: [String] = []
     @Published var stepInstruction: String = "Nothing to display"
-    @Published var correctAnswerIndex: Int = 0
+    @Published var correctAnswersIndices: [Int] = []
     @Published var allAnswersAreDisabled: Bool = false
     @Published var tapIsDisabled: Bool = false
 
@@ -32,6 +32,7 @@ class GameEngine: NSObject, ObservableObject {
     // Current Step Stats
     @Published var currentGroupIndex: Int = 0
     @Published var currentStepIndex: Int = 0
+    @Published var rightAnswersGiven: [Int] = []
     @Published var trials: Int = 0
     @Published var pressedAnswerIndex: Int?
 
@@ -104,7 +105,8 @@ class GameEngine: NSObject, ObservableObject {
     func setupCurrentStep() {
         trials = 0
         correctAnswerAnimationPercent = 0
-        correctAnswerIndex = 0
+        correctAnswersIndices = []
+        rightAnswersGiven = []
         pressedAnswerIndex = nil
         allAnswers = currentActivity.stepSequence[currentGroupIndex][currentStepIndex].allAnswers
         checkMediaAvailability()
@@ -113,7 +115,7 @@ class GameEngine: NSObject, ObservableObject {
             allAnswers.shuffle()
         }
         stepInstruction = currentActivity.stepSequence[currentGroupIndex][currentStepIndex].instruction.localized()
-        getCorrectAnswerIndex()
+        getCorrectAnswersIndices()
         if currentActivity.activityType == .colorQuest {
             // Show correct answer color on Leka's belt
         }
@@ -131,12 +133,12 @@ class GameEngine: NSObject, ObservableObject {
         }
     }
 
-    // Pick up Correct answer
-    private func getCorrectAnswerIndex() {
-        if let i = allAnswers.firstIndex(where: {
-            $0 == currentActivity.stepSequence[currentGroupIndex][currentStepIndex].correctAnswer
-        }) {
-            correctAnswerIndex = i
+    // Pick up Correct answers' indices
+    private func getCorrectAnswersIndices() {
+        correctAnswersIndices = []
+        for (index, answer) in allAnswers.enumerated()
+        where currentActivity.stepSequence[currentGroupIndex][currentStepIndex].correctAnswers.contains(answer) {
+            correctAnswersIndices.append(index)
         }
     }
 
@@ -159,13 +161,25 @@ class GameEngine: NSObject, ObservableObject {
     // Prevent multiple taps, deal with success or failure
     func answerHasBeenPressed(atIndex: Int) {
         tapIsDisabled.toggle()  // true
-        trials += 1
         pressedAnswerIndex = atIndex
-        if atIndex == correctAnswerIndex {
-            rewardsAnimations()
+        if correctAnswersIndices.contains(atIndex) {
+            rightAnswersGiven.append(atIndex)
+            if allCorrectAnswersWereGiven() {
+                trials += 1
+                rewardsAnimations()
+            } else {
+                sameStepAgain()
+            }
         } else {
-            tryStepAgain()
+            trials += 1
+            sameStepAgain()
         }
+    }
+
+    func allCorrectAnswersWereGiven() -> Bool {
+        rightAnswersGiven.sort()
+        correctAnswersIndices.sort()
+        return rightAnswersGiven.elementsEqual(correctAnswersIndices)
     }
 
     func rewardsAnimations() {
@@ -221,7 +235,7 @@ class GameEngine: NSObject, ObservableObject {
     }
 
     // Trigger failure animation, Play again after failure(s)
-    func tryStepAgain() {
+    func sameStepAgain() {
         withAnimation {
             overlayOpacity = 0.8
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {

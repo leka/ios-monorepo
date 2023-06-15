@@ -49,37 +49,49 @@ class ExplorerActivity: ObservableObject {
         return [
             Array(
                 repeating: Step(
-                    instruction: stepInstruction(), correctAnswer: setGoodAnswers()[0], allAnswers: setAnswersPerType(),
+                    instruction: stepInstruction(), correctAnswers: setGoodAnswers(), allAnswers: setAnswersPerType(),
                     sound: nil), count: 5)
         ]
     }
 
     private func setAnswers() -> [String] {
         if withTemplate == 0 {
-            return stepAnswers1
+            return Array(stepAnswers.prefix(1))
         } else if withTemplate == 1 {
-            return stepAnswers2
+            return Array(stepAnswers.prefix(2))
         } else if 2...3 ~= withTemplate {
-            return stepAnswers3
+            return Array(stepAnswers.prefix(3))
         } else if 4...5 ~= withTemplate {
-            return stepAnswers4
+            return Array(stepAnswers.prefix(4))
         } else if withTemplate == 6 {
-            return type == .touchToSelect ? stepAnswers5 : stepAnswers6
+            return Array(stepAnswers.prefix(type == .touchToSelect ? 5 : 6))
         } else if withTemplate == 7 {
-            return stepAnswers6
+            return Array(stepAnswers.prefix(6))
         } else if withTemplate == 8 {
-            return stepAnswers1
+            return Array(stepAnswers.prefix(1))
         } else if withTemplate == 9 {
-            return stepAnswers2
+            return Array(stepAnswers.prefix(2))
         } else {
-            return stepAnswers3
+            return Array(stepAnswers.prefix(3))
+        }
+    }
+
+    private func setDragAndDropAnswers() -> [String] {
+        if withTemplate == 0 {
+            return Array(dragAndDropAnswers.prefix(1))
+        } else if withTemplate == 1 {
+            return Array(dragAndDropAnswers.prefix(2))
+        } else if withTemplate == 2 {
+            return Array(dragAndDropAnswers.prefix(4))
+        } else {
+            return Array(dragAndDropAnswers.prefix(3))
         }
     }
 
     func setAnswersPerType() -> [String] {
         switch type {
             case .dragAndDrop:
-                return dragAndDropAnswers
+                return setDragAndDropAnswers()
             default:
                 return setAnswers()
         }
@@ -89,20 +101,14 @@ class ExplorerActivity: ObservableObject {
     func setGoodAnswers() -> [String] {
         switch type {
             case .dragAndDrop:
-                return ["watermelon"]
+                return Array(dragAndDropAnswers.prefix(withTemplate == 3 ? 2 : 1))
             default:
                 return ["dummy_1"]
         }
     }
 
-    var stepAnswers1 = ["dummy_1"]
-    var stepAnswers2 = ["dummy_1", "dummy_2"]
-    var stepAnswers3 = ["dummy_1", "dummy_2", "dummy_3"]
-    var stepAnswers4 = ["dummy_1", "dummy_2", "dummy_3", "dummy_4"]
-    var stepAnswers5 = ["dummy_1", "dummy_2", "dummy_3", "dummy_4", "dummy_5"]
-    var stepAnswers6 = ["dummy_1", "dummy_2", "dummy_3", "dummy_4", "dummy_5", "dummy_6"]
-
-    var dragAndDropAnswers = ["watermelon", "banana", "kiwi", "avocado"]
+    var stepAnswers = ["dummy_1", "dummy_2", "dummy_3", "dummy_4", "dummy_5", "dummy_6"]
+    var dragAndDropAnswers = ["watermelon", "banana", "kiwi", "avocado", "cherry", "strawberry"]
 
     func stepInstruction() -> LocalizedContent {
         return LocalizedContent(
@@ -119,7 +125,10 @@ class ExplorerActivity: ObservableObject {
             case .colorQuest:
                 return "Touche la couleur verte"
             case .dragAndDrop:
-                return "Fais glisser la pastèque dans le panier"
+                guard withTemplate == 3 else {
+                    return "Fais glisser la pastèque dans le panier"
+                }
+                return "Fais glisser la pastèque et la banane dans le panier"
             case .xylophone:
                 return "Joue du xylophone avec Leka"
             case .remote:
