@@ -6,7 +6,7 @@ import SwiftUI
 
 struct SendingFileIllustration: View {
     var body: some View {
-        LekaUpdaterAsset.Assets.lekaUpdaterIcon.swiftUIImage
+        LekaUpdaterAsset.Assets.sendingUpdate.swiftUIImage
             .resizable()
             .scaledToFit()
     }

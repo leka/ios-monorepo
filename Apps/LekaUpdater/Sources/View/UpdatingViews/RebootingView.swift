@@ -6,7 +6,7 @@ import SwiftUI
 
 struct RebootingIllustration: View {
     var body: some View {
-        LekaUpdaterAsset.Assets.lekaUpdaterIcon.swiftUIImage
+        LekaUpdaterAsset.Assets.updateInstallation.swiftUIImage
             .resizable()
             .scaledToFit()
     }
