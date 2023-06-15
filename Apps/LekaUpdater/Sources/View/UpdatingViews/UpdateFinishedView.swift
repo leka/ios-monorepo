@@ -85,14 +85,6 @@ struct UpdateFinishedContentView: View {
             }
             .shadow(radius: 3, y: 4)
             .padding()
-
-            Spacer()
-
-            LekaUpdaterAsset.Assets.lekaUpdaterIcon.swiftUIImage
-                .resizable()
-                .scaledToFit()
-                .frame(height: 70)
-                .padding()
         }
     }
 }
