@@ -2,6 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import Combine
 import Foundation
 import GameplayKit
 
@@ -175,22 +176,40 @@ private class ErrorRobotNotUpToDate: GKState, ErrorState {}
 private class Controller {
     let robot: DummyRobotModel
 
+    public var event = PassthroughSubject<UpdateProcessEvent, Error>()
+
     init(robot: DummyRobotModel) {
         self.robot = robot
+        self.event = robot.event
     }
 
     fileprivate func loadUpdateFile() {
         print("Loading update file...")
+
+        Task {
+            try await Task<Never, Never>.sleep(seconds: 1)
+            event.send(.fileLoaded)
+        }  // TODO: Remove for debug purpose
         // TODO: Implement loadUpdateFile
     }
 
     fileprivate func setBLEDestinationPathAndClearFile() {
         print("Setting BLE Destination Path and Clear File...")
+
+        Task {
+            try await Task<Never, Never>.sleep(seconds: 0.1)
+            event.send(.destinationPathSet)
+        }  // TODO: Remove for debug purpose
         // TODO: Implement setBLEDestinationPathAndClearFile
     }
 
     fileprivate func sendFile() {
         print("Sending file...")
+
+        Task {
+            try await Task<Never, Never>.sleep(seconds: 10)
+            event.send(.fileSent)
+        }  // TODO: Remove for debug purpose
         // TODO: Implement sendFile
     }
 
@@ -202,5 +221,100 @@ private class Controller {
     fileprivate func isRobotUpToDate() -> Bool {
         // TODO: Implement isRobotUpToDate
         return false
+    }
+}
+
+//
+// MARK: - StateMachine
+//
+
+class UpdateProcessV100: UpdateProcessProtocol {
+    private var stateMachine: GKStateMachine?
+    private var cancellables: Set<AnyCancellable> = []
+
+    public var currentState = CurrentValueSubject<UpdateProcessState, UpdateProcessError>(.initial)
+
+    init(robot: DummyRobotModel) {
+        let controller = Controller(robot: robot)
+        controller.event
+            .receive(on: DispatchQueue.main)
+            .sink { _ in
+                // nothing to do
+            } receiveValue: { event in
+                self.raiseEvent(event: event)
+            }
+            .store(in: &cancellables)
+
+        self.stateMachine = GKStateMachine(states: [
+            InitialState(),
+
+            LoadingUpdateFileState(
+                controller: controller),
+            SettingDestinationPathState(controller: controller),
+            SendingFileState(controller: controller),
+            ApplyingUpdate(controller: controller),
+            WaitingRobotToReboot(
+                controller: controller),
+
+            ErrorFailedToLoadFile(),
+            ErrorRobotNotUpToDate(),
+
+            FinalState(),
+        ])
+        self.stateMachine?.enter(InitialState.self)
+    }
+
+    public func startUpdate() {
+        process(event: .startUpdateRequested)
+    }
+
+    public func raiseEvent(event: UpdateProcessEvent) {
+        process(event: event)
+    }
+
+    private func process(event: UpdateProcessEvent) {
+        guard let state = stateMachine?.currentState as? any StateEventProcessor else {
+            return
+        }
+
+        state.process(event: event)
+
+        updateCurrentState()
+    }
+
+    private func updateCurrentState() {
+        guard let state = stateMachine?.currentState else { return }
+
+        switch state {
+            case is InitialState:
+                currentState.send(.initial)
+            case is LoadingUpdateFileState:
+                currentState.send(.loadingUpdateFile)
+            case is SettingDestinationPathState:
+                currentState.send(.settingDestinationPathAndClearFile)
+            case is SendingFileState:
+                currentState.send(.sendingFile)
+            case is ApplyingUpdate:
+                currentState.send(.applyingUpdate)
+            case is WaitingRobotToReboot:
+                currentState.send(.waitingRobotToReboot)
+            case is FinalState:
+                currentState.send(completion: .finished)
+            case is any ErrorState:
+                sendError(state: state)
+            default:
+                currentState.send(completion: .failure(.unknown))
+        }
+    }
+
+    private func sendError(state: GKState) {
+        switch state {
+            case is ErrorFailedToLoadFile:
+                currentState.send(completion: .failure(.failedToLoadFile))
+            case is ErrorRobotNotUpToDate:
+                currentState.send(completion: .failure(.robotNotUpToDate))
+            default:
+                currentState.send(completion: .failure(.unknown))
+        }
     }
 }

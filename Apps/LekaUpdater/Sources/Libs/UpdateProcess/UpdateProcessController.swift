@@ -38,6 +38,8 @@ class UpdateProcessController {
         let currentRobotVersion = robot.osVersion
 
         switch currentRobotVersion {
+            case "1.0.0", "1.1.0":
+                self.currentStateMachine = UpdateProcessV100(robot: robot)
             default:
                 self.currentStateMachine = UpdateProcessUnavailable()
         }
