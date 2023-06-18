@@ -25,6 +25,9 @@ struct LekaActivityUIExplorerApp: App {
                         interface: .touch1
                     )
                     .makeActivity()
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        gameEngine.setupGame()
+                    }
                 }
         }
     }

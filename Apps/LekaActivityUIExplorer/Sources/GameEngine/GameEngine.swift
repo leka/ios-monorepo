@@ -15,11 +15,11 @@ class GameEngine: NSObject, ObservableObject {
     @Published var bufferActivity = Activity()
 
     // MARK: - Current Step Configuration
-    @Published var answersAreImages: Bool = true  // This shouldbe deleted and AnswerContentView updated accordingly
-    @Published var allAnswers: [String] = []
+    //    @Published var answersAreImages: Bool = true  // This should be deleted and AnswerContentView updated accordingly
+    @Published var allAnswers: [String] = ["dummy_1"]
     @Published var interface: GameLayout = .touch1
     @Published var stepInstruction: String = "Nothing to display"
-    @Published var correctAnswersIndices: [Int] = []
+    @Published var correctAnswersIndices: [Int] = [0]
     @Published var allAnswersAreDisabled: Bool = false
     @Published var tapIsDisabled: Bool = false
 
@@ -62,7 +62,7 @@ class GameEngine: NSObject, ObservableObject {
         result = .idle
         goodAnswers = 0
         currentGroupIndex = 0
-        currentStepIndex = 0  // this will probably change to take into account the sequencing of Steps
+        currentStepIndex = 0
         setupCurrentStep()
     }
 
@@ -123,15 +123,14 @@ class GameEngine: NSObject, ObservableObject {
         }
     }
 
-    // Turn answer strings to color names
+    // Turn answer strings to color types
     func stringToColor(from: String) -> Color {
         switch from {
             case "red": return .red
-            case "pink": return .pink
             case "blue": return .blue
-            case "green": return .green
+            case "purple": return .purple
             case "yellow": return .yellow
-            default: return .blue
+            default: return .green
         }
     }
 

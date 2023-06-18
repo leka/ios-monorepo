@@ -7,8 +7,6 @@ import SwiftUI
 
 class GameLayoutTemplatesConfigurations: ObservableObject {
 
-    @Published var currentActivityType: ActivityType = .touchToSelect
-    @Published var currentInterface: GameLayout = .touch1  // put this in defaults?
     @Published var currentDefaults: BaseDefaults? = TouchToSelect.one
 
 }

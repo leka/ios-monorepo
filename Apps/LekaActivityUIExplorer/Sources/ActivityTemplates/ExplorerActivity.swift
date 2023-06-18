@@ -53,7 +53,7 @@ class ExplorerActivity: ObservableObject {
                     instruction: stepInstruction(),
                     correctAnswers: setGoodAnswers(),
                     allAnswers: setAnswers(),
-                    sound: nil),
+                    sound: setSound()),
                 count: 5)
         ]
     }
@@ -65,13 +65,9 @@ class ExplorerActivity: ObservableObject {
                 return Array(stepAnswers.prefix(1))
             case .touch2, .soundTouch2:
                 return Array(stepAnswers.prefix(2))
-            case .touch3, .soundTouch3:
+            case .touch3, .soundTouch3, .touch3Inline, .soundTouch3Inline:
                 return Array(stepAnswers.prefix(3))
-            case .touch3Inline, .soundTouch3Inline:
-                return Array(stepAnswers.prefix(3))
-            case .touch4, .soundTouch4:
-                return Array(stepAnswers.prefix(4))
-            case .touch4Inline, .soundTouch4Inline:
+            case .touch4, .soundTouch4, .touch4Inline, .soundTouch4Inline:
                 return Array(stepAnswers.prefix(4))
             case .touch5:
                 return Array(stepAnswers.prefix(5))
@@ -91,18 +87,14 @@ class ExplorerActivity: ObservableObject {
                 return Array(colorAnswers.prefix(2))
             case .colorQuest3:
                 return Array(colorAnswers.prefix(3))
-            case .remoteStandard:
-                return []
-            case .remoteArrow:
-                return []
-            case .xylophone:
-                return []
+            case .remoteStandard, .remoteArrow, .xylophone:
+                return [""]
         }
     }
     // swiftlint:enable cyclomatic_complexity
 
     // ready to work with more than 1 good answers
-    func setGoodAnswers() -> [String] {
+    private func setGoodAnswers() -> [String] {
         switch interface {
             case .basket1, .basket2, .basket4:
                 return ["watermelon"]
@@ -111,9 +103,18 @@ class ExplorerActivity: ObservableObject {
             case .colorQuest1, .colorQuest2, .colorQuest3:
                 return ["green"]
             case .remoteStandard, .remoteArrow, .xylophone:
-                return []
+                return [""]
             default:
                 return ["dummy_1"]
+        }
+    }
+
+    private func setSound() -> [String]? {
+        switch type {
+            case .listenThenTouchToSelect:
+                return ["guitar"]
+            default:
+                return nil
         }
     }
 
