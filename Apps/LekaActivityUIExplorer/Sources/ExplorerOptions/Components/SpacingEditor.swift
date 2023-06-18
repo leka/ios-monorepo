@@ -15,10 +15,8 @@ struct SpacingEditor: View {
         Section {
             Group {
                 horizontalSpacingSlider
-                if gameEngine.allAnswers.count >= 3 {
-                    if hasVerticalSpacing() {
-                        verticalSpacingSlider
-                    }
+                if gameEngine.allAnswers.count >= 3 && hasVerticalSpacing() {
+                    verticalSpacingSlider
                 }
             }
         } header: {

@@ -6,12 +6,10 @@ import SwiftUI
 
 struct ListenThenTouchToSelectNavigationGroup: View {
 
-    let action: () -> Void
-
     var body: some View {
         LazyVGrid(columns: [GridItem()]) {
             ForEach(ListenThenTouchToSelectPreviews.allCases, id: \.rawValue) { item in
-                PreviewButton(item: .constant(item), accessory: "speaker.wave.2.circle", action: { action() })
+                PreviewButton(item: .constant(item), accessory: "speaker.wave.2.circle")
             }
         }
         .padding(20)
