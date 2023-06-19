@@ -2,7 +2,7 @@
 //// Copyright 2023 APF France handicap
 //// SPDX-License-Identifier: Apache-2.0
 
-// Copied from RobotKit
+// Inspired from RobotKit
 
 import SwiftUI
 
@@ -10,25 +10,19 @@ struct RobotGridView: View {
 
     @EnvironmentObject var robotConnectionViewModel: RobotConnectionViewModel
 
+    private let columns = Array(repeating: GridItem(), count: 2)
+
     var body: some View {
         Group {
             if let robotDiscoveries = robotConnectionViewModel.robotDiscoveries {
                 switch robotDiscoveries.count {
                     case 0:
                         Text("No robots found :(")
-                    case 1...4:
-                        VStack {
-                            HStack(spacing: 120) {
-                                robotDiscoveriesViews
-                            }
-                        }
                     default:
                         VStack(alignment: .trailing) {
-                            ScrollView(.horizontal, showsIndicators: false) {
-                                HStack(spacing: 90) {
-                                    Spacer()
+                            ScrollView(.vertical, showsIndicators: false) {
+                                LazyVGrid(columns: columns) {
                                     robotDiscoveriesViews
-                                    Spacer()
                                 }
                             }
                         }
@@ -77,7 +71,7 @@ struct RobotGridView_Previews: PreviewProvider {
                         return viewModel
                     }())
         }
-        .previewInterfaceOrientation(.landscapeLeft)
+        .previewInterfaceOrientation(.portrait)
 
     }
 }
