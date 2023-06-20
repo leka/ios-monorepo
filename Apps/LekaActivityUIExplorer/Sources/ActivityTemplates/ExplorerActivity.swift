@@ -23,7 +23,7 @@ class ExplorerActivity: ObservableObject {
             activityType: type,
             stepsAmount: 10,
             isRandom: false,
-            numberOfImages: 1,
+            numberOfImages: setAnswers().count,  // unused
             randomAnswerPositions: true,
             stepSequence: makeEmptyStepArray())
     }
@@ -45,6 +45,7 @@ class ExplorerActivity: ObservableObject {
             frFR: String.markdownInstructionsFR)
     }
 
+    // swiftlint:disable trailing_comma
     func makeEmptyStepArray() -> [[Step]] {
         return [
             Array(
@@ -57,6 +58,7 @@ class ExplorerActivity: ObservableObject {
                 count: 5)
         ]
     }
+    // swiftlint:enable trailing_comma
 
     // swiftlint:disable cyclomatic_complexity
     private func setAnswers() -> [String] {
