@@ -5,9 +5,11 @@
 import SwiftUI
 
 struct ConnectionView: View {
+    @StateObject private var viewModel = ConnectionViewModel()
+
     var body: some View {
         VStack {
-            Text("Connection page")
+            RobotConnectionView(robotConnectionViewModel: viewModel.robotConnectionViewModel)
 
             LekaUpdaterAsset.Assets.lekaUpdaterIcon.swiftUIImage
                 .resizable()
