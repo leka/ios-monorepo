@@ -5,6 +5,8 @@
 import SwiftUI
 
 struct ConnectionView: View {
+    @EnvironmentObject var firmware: FirmwareManager
+
     @StateObject private var viewModel = ConnectionViewModel()
 
     var body: some View {
@@ -27,14 +29,31 @@ struct ConnectionView: View {
                 }
                 .foregroundColor(.accentColor)
             }
+
+            ToolbarItem(placement: .navigationBarTrailing) {
+                NavigationLink {
+                    InformationView()
+                        .environmentObject(firmware)
+                        .environmentObject(viewModel.connectedRobot)
+                } label: {
+                    HStack {
+                        Text("Continuer")
+                        Image(systemName: "chevron.forward")
+                    }
+                }
+                .disabled(viewModel.continueButtonDisabled)
+            }
         }
     }
 }
 
 struct ConnectionView_Previews: PreviewProvider {
+    static var firmware = FirmwareManager()
+
     static var previews: some View {
         NavigationStack {
             ConnectionView()
+                .environmentObject(firmware)
         }
     }
 }
