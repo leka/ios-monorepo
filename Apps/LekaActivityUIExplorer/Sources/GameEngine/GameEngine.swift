@@ -68,7 +68,8 @@ class GameEngine: NSObject, ObservableObject {
 
     // If current activity has only one group, multiply steps to get the number of steps indicated in the model
     func multiplyStepsIfNeeded() {
-        if bufferActivity.stepSequence.count == 1 && bufferActivity.stepSequence[0].count < bufferActivity.stepsAmount {
+        if bufferActivity.stepSequence.count == 1 && bufferActivity.stepSequence[0].count <= bufferActivity.stepsAmount
+        {
             let multiplier = bufferActivity.stepsAmount / bufferActivity.stepSequence[0].count
             let newSequence = Array(repeating: bufferActivity.stepSequence[0], count: multiplier)
             bufferActivity.stepSequence[0] = newSequence.flatMap({ $0 })
@@ -203,8 +204,8 @@ class GameEngine: NSObject, ObservableObject {
             withAnimation(.easeOut(duration: 0.8)) {
                 correctAnswerAnimationPercent = 1.0
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                    self.showMotivator.toggle()  // true
-                    self.showBlurryBG.toggle()
+                    self.showMotivator = true
+                    self.showBlurryBG = true
                     self.runMotivatorScenario()
                 }
             }
