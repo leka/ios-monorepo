@@ -15,10 +15,15 @@ struct CircularAnswerButton: View {
         Button {
             gameEngine.answerHasBeenPressed(atIndex: answer)
         } label: {
-            Image(gameEngine.allAnswers[safeAnswer])
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .clipShape(Circle().inset(by: 2))
+            if gameEngine.currentActivity.activityType == .colorQuest {
+                Circle()
+                    .foregroundColor(gameEngine.stringToColor(from: gameEngine.allAnswers[safeAnswer]))
+            } else {
+                Image(gameEngine.allAnswers[safeAnswer])
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .clipShape(Circle().inset(by: 2))
+            }
         }
         .buttonStyle(ActivityAnswer_ButtonStyle(isEnabled: gameEngine.currentMediaHasBeenPlayedOnce))
         .animation(.easeIn(duration: 0.3), value: gameEngine.correctAnswerAnimationPercent)
