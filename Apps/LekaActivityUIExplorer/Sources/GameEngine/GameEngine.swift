@@ -15,7 +15,6 @@ class GameEngine: NSObject, ObservableObject {
     @Published var bufferActivity = Activity()
 
     // MARK: - Current Step Configuration
-    //    @Published var answersAreImages: Bool = true  // This should be deleted and AnswerContentView updated accordingly
     @Published var allAnswers: [String] = ["dummy_1"]
     @Published var interface: GameLayout = .touch1
     @Published var stepInstruction: String = "Nothing to display"
@@ -127,14 +126,17 @@ class GameEngine: NSObject, ObservableObject {
 
     private func prepareAnswers() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            self.allAnswers = self.currentActivity.stepSequence[self.currentGroupIndex][self.currentStepIndex].allAnswers
+            self.allAnswers =
+                self.currentActivity.stepSequence[self.currentGroupIndex][self.currentStepIndex].allAnswers
             self.checkMediaAvailability()
             self.displayAnswer = true
             // Randomize answers
             if self.currentActivity.randomAnswerPositions {
                 self.allAnswers.shuffle()
             }
-            self.stepInstruction = self.currentActivity.stepSequence[self.currentGroupIndex][self.currentStepIndex].instruction.localized()
+            self.stepInstruction =
+                self.currentActivity.stepSequence[self.currentGroupIndex][self.currentStepIndex]
+                .instruction.localized()
             self.getCorrectAnswersIndices()
         }
     }
