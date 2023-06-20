@@ -11,7 +11,7 @@ struct ColorQuestTwoAnswersLayout: View {
     var body: some View {
         HStack(spacing: templateDefaults.customHorizontalSpacing) {
             ForEach(0..<2) { answer in
-                CircularAnswerButton(templateDefaults: templateDefaults, answer: answer)
+                ColoredAnswerButton(templateDefaults: templateDefaults, answer: answer)
             }
         }
     }
