@@ -2,7 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
-// Copied from RobotKit
+// Inspired from RobotKit
 
 import DesignKit
 import SwiftUI
@@ -11,6 +11,8 @@ struct RobotConnectionView: View {
 
     // TODO(@ladislas): review DI - BLEManager, etc.
     @StateObject var robotConnectionViewModel: RobotConnectionViewModel = RobotConnectionViewModel()
+
+    private let bold15: Font = .system(size: 15, weight: .bold)
 
     var body: some View {
         VStack(spacing: 60) {
@@ -39,8 +41,11 @@ struct RobotConnectionView: View {
             label: {
                 HStack {
                     Image(systemName: "magnifyingglass")
-                    Text("Search for robots")
+                    Text("Rechercher")
                 }
+                .font(bold15)
+                .padding(6)
+                .frame(width: 210)
 
             }
         )
@@ -61,12 +66,15 @@ struct RobotConnectionView: View {
                 HStack {
                     Image(systemName: "checkmark.circle")
                     if robotConnectionViewModel.disconnected {
-                        Text("Connect to robot")
+                        Text("Se connecter")
 
                     } else {
-                        Text("Disconnect from robot")
+                        Text("Se déconnecter")
                     }
                 }
+                .font(bold15)
+                .padding(6)
+                .frame(width: 210)
             }
         )
         .buttonStyle(.borderedProminent)
