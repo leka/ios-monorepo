@@ -10,6 +10,10 @@ struct RobotGridView: View {
 
     @EnvironmentObject var robotConnectionViewModel: RobotConnectionViewModel
 
+    private let tileContentWidth: CGFloat = 360
+    private let tilePictoHeightSmall: CGFloat = 80
+    private let reg17: Font = .system(size: 17, weight: .regular)
+
     private let columns = Array(repeating: GridItem(), count: 2)
 
     var body: some View {
@@ -28,8 +32,31 @@ struct RobotGridView: View {
                         }
                 }
             } else {
-                Text("Start searching")
+                searchInvite
             }
+        }
+    }
+
+    private var searchInvite: some View {
+        HStack {
+            Spacer()
+            VStack(spacing: 20) {
+                Spacer()
+                Image(systemName: "magnifyingglass")
+                    .resizable()
+                    .renderingMode(.original)
+                    .aspectRatio(contentMode: .fit)
+                    .frame(height: tilePictoHeightSmall)
+                    .padding(.top, 10)
+                Text("Lancer une recherche pour trouver les robots autour de vous !")
+                    .font(reg17)
+                    .multilineTextAlignment(.center)
+                    .foregroundColor(.accentColor)
+                Spacer()
+            }
+            .frame(width: tileContentWidth)
+            .offset(y: -160)
+            Spacer()
         }
     }
 
