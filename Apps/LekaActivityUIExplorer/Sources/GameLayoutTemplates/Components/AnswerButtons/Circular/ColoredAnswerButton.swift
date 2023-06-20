@@ -19,7 +19,6 @@ struct ColoredAnswerButton: View {
                 .foregroundColor(gameEngine.stringToColor(from: gameEngine.allAnswers[safeAnswer]))
         }
         .buttonStyle(ActivityAnswer_ButtonStyle(isEnabled: gameEngine.currentMediaHasBeenPlayedOnce))
-        .animation(.easeIn(duration: 0.3), value: gameEngine.correctAnswerAnimationPercent)
         .overlay(AnswerFeedback(answer: answer))
         .disabled(gameEngine.tapIsDisabled)
         .disabled(gameEngine.allAnswersAreDisabled)

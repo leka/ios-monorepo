@@ -12,8 +12,8 @@ struct ReinforcerView: View {
     var body: some View {
         LottieView(
             name: "motivator", speed: 0.5,
-            action: { gameEngine.hideMotivator() },
-            play: $gameEngine.showMotivator
+            action: { gameEngine.hideReinforcer() },
+            play: $gameEngine.showReinforcer
         )
         .scaleEffect(defaults.motivatorScale, anchor: .center)
     }
