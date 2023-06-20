@@ -45,7 +45,6 @@ extension LocalizedContent {
     func localized() -> String {
         guard let translation = (Locale.current.language.languageCode?.identifier == "fr" ? self.frFR : self.enUS)
         else {
-            print("Nothing to display")
             return ""
         }
         return translation

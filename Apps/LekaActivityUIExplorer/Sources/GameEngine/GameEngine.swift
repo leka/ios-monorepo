@@ -22,6 +22,7 @@ class GameEngine: NSObject, ObservableObject {
     @Published var correctAnswersIndices: [Int] = [0]
     @Published var allAnswersAreDisabled: Bool = false
     @Published var tapIsDisabled: Bool = false
+    @Published var displayAnswer: Bool = false
 
     // MARK: - Game Statistics
     // Current Round Stats
@@ -110,28 +111,31 @@ class GameEngine: NSObject, ObservableObject {
         correctAnswersIndices = []
         rightAnswersGiven = []
         pressedAnswerIndex = nil
-        allAnswers = currentActivity.stepSequence[currentGroupIndex][currentStepIndex].allAnswers
-        interface = currentActivity.stepSequence[currentGroupIndex][currentStepIndex].interface
-        checkMediaAvailability()
-        // Randomize answers
-        if currentActivity.randomAnswerPositions {
-            allAnswers.shuffle()
+        displayAnswer = false
+        Task {
+            await switchInterface()
+            prepareAnswers()
         }
-        stepInstruction = currentActivity.stepSequence[currentGroupIndex][currentStepIndex].instruction.localized()
-        getCorrectAnswersIndices()
         if currentActivity.activityType == .colorQuest {
             // Show correct answer color on Leka's belt
         }
     }
 
-    // Turn answer strings to color types
-    func stringToColor(from: String) -> Color {
-        switch from {
-            case "red": return .red
-            case "blue": return .blue
-            case "purple": return .purple
-            case "yellow": return .yellow
-            default: return .green
+    private func switchInterface() async {
+        interface = currentActivity.stepSequence[currentGroupIndex][currentStepIndex].interface
+    }
+
+    private func prepareAnswers() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.allAnswers = self.currentActivity.stepSequence[self.currentGroupIndex][self.currentStepIndex].allAnswers
+            self.checkMediaAvailability()
+            self.displayAnswer = true
+            // Randomize answers
+            if self.currentActivity.randomAnswerPositions {
+                self.allAnswers.shuffle()
+            }
+            self.stepInstruction = self.currentActivity.stepSequence[self.currentGroupIndex][self.currentStepIndex].instruction.localized()
+            self.getCorrectAnswersIndices()
         }
     }
 
@@ -218,10 +222,8 @@ class GameEngine: NSObject, ObservableObject {
 
     // Show, Then Hide Reinforcer animation + Setup for next Step
     private func runReinforcerScenario() async {
-        // DispatchQueue here ??? ********************************************************************
         showReinforcer = true
         showBlurryBG = true
-        // DispatchQueue here ??? ********************************************************************
         // Update behind-the-scene during Reinforcer animation
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
             self.tapIsDisabled.toggle()  // false
@@ -318,53 +320,5 @@ class GameEngine: NSObject, ObservableObject {
         //            ? AVSpeechSynthesisVoice(language: "fr-FR") : AVSpeechSynthesisVoice(language: "en-US")
         isSpeaking = true
         synth.speak(utterance)
-    }
-
-}
-
-// MARK: - Extensions
-extension GameEngine: AVSpeechSynthesizerDelegate {
-    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
-        isSpeaking = false
-    }
-}
-
-extension GameEngine: AVAudioPlayerDelegate {
-    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
-        currentMediaHasBeenPlayedOnce = true
-        allAnswersAreDisabled = false
-    }
-
-    func setAudioPlayer() {
-        do {
-            let path = Bundle.main.path(forResource: sound, ofType: "mp3")!
-            audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
-        } catch {
-            print("ERROR - mp3 file not found - \(error)")
-            return
-        }
-
-        audioPlayer.prepareToPlay()
-        audioPlayer.delegate = self
-
-        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { _ in
-            if let player = self.audioPlayer {
-                self.progress = CGFloat(player.currentTime / player.duration)
-            }
-        }
-    }
-}
-
-extension GameEngine {
-    func animate(duration: CGFloat, _ execute: @escaping () -> Void) async {
-        await withCheckedContinuation { continuation in
-            withAnimation(.easeOut(duration: duration)) {
-                execute()
-            }
-
-            DispatchQueue.main.asyncAfter(deadline: .now() + duration) {
-                continuation.resume()
-            }
-        }
     }
 }

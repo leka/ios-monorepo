@@ -10,7 +10,7 @@ struct ColorQuestOneAnswerLayout: View {
 
     var body: some View {
         HStack {
-            CircularAnswerButton(templateDefaults: templateDefaults, answer: 0)
+            ColoredAnswerButton(templateDefaults: templateDefaults, answer: 0)
         }
     }
 }

@@ -15,10 +15,7 @@ struct CircularAnswerButton: View {
         Button {
             gameEngine.answerHasBeenPressed(atIndex: answer)
         } label: {
-            if gameEngine.currentActivity.activityType == .colorQuest {
-                Circle()
-                    .foregroundColor(gameEngine.stringToColor(from: gameEngine.allAnswers[safeAnswer]))
-            } else {
+            if gameEngine.displayAnswer {
                 Image(gameEngine.allAnswers[safeAnswer])
                     .resizable()
                     .aspectRatio(contentMode: .fit)
