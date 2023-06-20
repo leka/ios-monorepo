@@ -21,7 +21,7 @@ class ExplorerActivity: ObservableObject {
             short: emptyShort,
             instructions: emptyInstructions(),
             activityType: type,
-            stepsAmount: 10,
+            stepsAmount: 5,
             isRandom: false,
             numberOfImages: setAnswers().count,  // unused
             randomAnswerPositions: true,

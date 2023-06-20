@@ -10,7 +10,7 @@ struct StepCompletionFeedbackView: View {
 
     var body: some View {
         ZStack {
-            if gameEngine.showMotivator {
+            if gameEngine.showReinforcer {
                 ReinforcerView()
             } else if gameEngine.showEndAnimation {
                 EndOfRoundView()
