@@ -46,15 +46,12 @@ struct SpacingEditor: View {
     }
 
     private func hasVerticalSpacing() -> Bool {
-        guard
-            gameEngine.interface == .touch3Inline
-                || gameEngine.interface == .touch4Inline
-                || gameEngine.interface == .soundTouch3Inline
-                || gameEngine.interface == .soundTouch4Inline
-        else {
-            return true
+        switch gameEngine.interface {
+            case .touch3Inline, .touch4Inline, .soundTouch3Inline, .soundTouch4Inline:
+                return false
+            default:
+                return true
         }
-        return false
     }
 
     private var horizontalSpacingSlider: some View {
