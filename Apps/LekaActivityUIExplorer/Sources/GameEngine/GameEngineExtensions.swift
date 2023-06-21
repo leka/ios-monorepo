@@ -2,11 +2,6 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
-<<<<<<< HEAD
-import Foundation
-import SwiftUI
-=======
->>>>>>> f187281 (:rotating_light: (UIExplorer): Fix sort import statements lexicographically warning)
 import AVFAudio
 import SwiftUI
 
