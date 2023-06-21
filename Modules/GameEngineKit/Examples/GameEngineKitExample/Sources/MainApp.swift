@@ -7,13 +7,12 @@ import SwiftUI
 
 @main
 struct GameEngineKitExample: App {
-
     var body: some Scene {
         WindowGroup {
-            HStack {
-                Text("Salut, monde !")
-                    .font(.title)
+            NavigationView {
+                ContentView()
             }
+            .navigationViewStyle(StackNavigationViewStyle())
         }
     }
 }
