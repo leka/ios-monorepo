@@ -23,7 +23,6 @@ class ExplorerActivity: ObservableObject {
             activityType: type,
             stepsAmount: 5,
             isRandom: false,
-            numberOfImages: setAnswers().count,  // unused
             randomAnswerPositions: true,
             stepSequence: makeEmptyStepArray())
     }

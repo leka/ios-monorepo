@@ -17,7 +17,6 @@ struct Activity: Codable, Equatable, Identifiable {
         case activityType = "type"
         case stepsAmount = "number_of_steps"
         case isRandom = "random_steps"
-        case numberOfImages = "number_of_images_per_step"
         case randomAnswerPositions = "random_image_position"
         case stepSequence = "steps"
     }
@@ -29,7 +28,6 @@ struct Activity: Codable, Equatable, Identifiable {
     var activityType: ActivityType
     var stepsAmount: Int
     var isRandom: Bool
-    var numberOfImages: Int
     var randomAnswerPositions: Bool
     var stepSequence: [[Step]]
 
@@ -41,7 +39,6 @@ struct Activity: Codable, Equatable, Identifiable {
         activityType: ActivityType = .touchToSelect,
         stepsAmount: Int = 10,
         isRandom: Bool = false,
-        numberOfImages: Int = 0,  // this should be in the Step Type
         randomAnswerPositions: Bool = false,
         stepSequence: [[Step]] = [[]]
     ) {
@@ -52,7 +49,6 @@ struct Activity: Codable, Equatable, Identifiable {
         self.activityType = activityType
         self.stepsAmount = stepsAmount
         self.isRandom = isRandom
-        self.numberOfImages = numberOfImages
         self.randomAnswerPositions = randomAnswerPositions
         self.stepSequence = stepSequence
     }
