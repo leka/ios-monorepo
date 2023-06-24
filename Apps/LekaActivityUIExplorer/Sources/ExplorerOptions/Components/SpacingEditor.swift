@@ -15,14 +15,8 @@ struct SpacingEditor: View {
         Section {
             Group {
                 horizontalSpacingSlider
-                if gameEngine.allAnswers.count >= 3 {
-                    if gameEngine.allAnswers.count == 3 && configuration.preferred3AnswersLayout == .inline
-                        || gameEngine.allAnswers.count == 4 && configuration.preferred4AnswersLayout == .inline
-                    {
-                        EmptyView()
-                    } else {
-                        verticalSpacingSlider
-                    }
+                if gameEngine.allAnswers.count >= 3 && hasVerticalSpacing() {
+                    verticalSpacingSlider
                 }
             }
         } header: {
@@ -48,6 +42,15 @@ struct SpacingEditor: View {
                         .foregroundColor(.accentColor)
                     })
             }
+        }
+    }
+
+    private func hasVerticalSpacing() -> Bool {
+        switch gameEngine.interface {
+            case .touch3Inline, .touch4Inline, .soundTouch3Inline, .soundTouch4Inline:
+                return false
+            default:
+                return true
         }
     }
 

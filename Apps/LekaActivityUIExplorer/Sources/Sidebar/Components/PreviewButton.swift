@@ -9,22 +9,28 @@ struct PreviewButton: View {
     @EnvironmentObject var navigator: NavigationManager
     @EnvironmentObject var defaults: GameLayoutTemplatesDefaults
     @EnvironmentObject var configuration: GameLayoutTemplatesConfigurations
+    @EnvironmentObject var gameEngine: GameEngine
 
     @Binding var item: Previewable
     var accessory: String?
-    let action: () -> Void
 
     var body: some View {
         ZStack(alignment: .topTrailing) {
             Button(
                 action: {
-                    navigator.selectedTemplate = item.index
-                    configuration.currentActivityType = item.type
-                    configuration.currentDefaults = item.defaults()
+                    // sidebar & selection
                     navigator.sidebarVisibility = .detailOnly
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                        action()
-                    }
+
+                    // set defaults for editor
+                    configuration.currentDefaults = item.defaults()
+
+                    // set activity
+                    gameEngine.bufferActivity = ExplorerActivity(
+                        type: item.type,
+                        interface: item.interface
+                    )
+                    .makeActivity()
+                    gameEngine.setupGame()
                 },
                 label: {
                     Image(item.preview)
@@ -44,8 +50,7 @@ struct PreviewButton: View {
     }
 
     private var isSelected: Bool {
-        return navigator.selectedTemplate == item.index
-            && configuration.currentActivityType == item.type
+        return item.interface == gameEngine.interface
     }
 
     @ViewBuilder

@@ -15,12 +15,14 @@ class GameEngine: NSObject, ObservableObject {
     @Published var bufferActivity = Activity()
 
     // MARK: - Current Step Configuration
-    @Published var answersAreImages: Bool = true  // This shouldbe deleted and AnswerContentView updated accordingly
-    @Published var allAnswers: [String] = []
+    @Published var allAnswers: [String] = ["dummy_1"]
+    @Published var interface: GameLayout = .touch1
     @Published var stepInstruction: String = "Nothing to display"
-    @Published var correctAnswersIndices: [Int] = []
+    @Published var correctAnswersIndices: [Int] = [0]
     @Published var allAnswersAreDisabled: Bool = false
     @Published var tapIsDisabled: Bool = false
+    @Published var displayAnswer: Bool = false
+    var synth = AVSpeechSynthesizer()
 
     // MARK: - Game Statistics
     // Current Round Stats
@@ -40,7 +42,7 @@ class GameEngine: NSObject, ObservableObject {
     @Published var groupedStepMarkerColors: [[Color]] = [[]]
     @Published var isSpeaking: Bool = false
     @Published var overlayOpacity: Double = 0
-    @Published var showMotivator: Bool = false
+    @Published var showReinforcer: Bool = false
     @Published var showBlurryBG: Bool = false
     @Published var showEndAnimation: Bool = false
 
@@ -61,13 +63,14 @@ class GameEngine: NSObject, ObservableObject {
         result = .idle
         goodAnswers = 0
         currentGroupIndex = 0
-        currentStepIndex = 0  // this will probably change to take into account the sequencing of Steps
+        currentStepIndex = 0
         setupCurrentStep()
     }
 
     // If current activity has only one group, multiply steps to get the number of steps indicated in the model
-    func multiplyStepsIfNeeded() {
-        if bufferActivity.stepSequence.count == 1 && bufferActivity.stepSequence[0].count < bufferActivity.stepsAmount {
+    private func multiplyStepsIfNeeded() {
+        if bufferActivity.stepSequence.count == 1 && bufferActivity.stepSequence[0].count <= bufferActivity.stepsAmount
+        {
             let multiplier = bufferActivity.stepsAmount / bufferActivity.stepSequence[0].count
             let newSequence = Array(repeating: bufferActivity.stepSequence[0], count: multiplier)
             bufferActivity.stepSequence[0] = newSequence.flatMap({ $0 })
@@ -79,7 +82,7 @@ class GameEngine: NSObject, ObservableObject {
     }
 
     // Initialization of the progressBar with empty Markers (on BufferActivity)
-    func resetStepMarkers() {
+    private func resetStepMarkers() {
         groupedStepMarkerColors.removeAll()
         for group in bufferActivity.stepSequence.indices {
             groupedStepMarkerColors.append([])
@@ -90,7 +93,7 @@ class GameEngine: NSObject, ObservableObject {
     }
 
     // Randomize steps & prevent 2 identical steps in a row (within BufferActivity)
-    func randomizeSteps() {
+    private func randomizeSteps() {
         if bufferActivity.isRandom {
             for index in bufferActivity.stepSequence.indices {
                 bufferActivity.stepSequence[index].shuffle()
@@ -108,29 +111,44 @@ class GameEngine: NSObject, ObservableObject {
         correctAnswersIndices = []
         rightAnswersGiven = []
         pressedAnswerIndex = nil
-        allAnswers = currentActivity.stepSequence[currentGroupIndex][currentStepIndex].allAnswers
-        checkMediaAvailability()
-        // Randomize answers
-        if currentActivity.randomAnswerPositions {
-            allAnswers.shuffle()
+        displayAnswer = false
+        Task {
+            await switchInterface()
+            switch currentActivity.activityType {
+                case .dragAndDrop, .listenThenTouchToSelect:
+                    prepareAnswers()
+                default:
+                    prepareAnswersOnMainQueue()
+            }
         }
-        stepInstruction = currentActivity.stepSequence[currentGroupIndex][currentStepIndex].instruction.localized()
-        getCorrectAnswersIndices()
         if currentActivity.activityType == .colorQuest {
             // Show correct answer color on Leka's belt
         }
     }
 
-    // Turn answer strings to color names
-    func stringToColor(from: String) -> Color {
-        switch from {
-            case "red": return .red
-            case "pink": return .pink
-            case "blue": return .blue
-            case "green": return .green
-            case "yellow": return .yellow
-            default: return .blue
+    private func switchInterface() async {
+        interface = currentActivity.stepSequence[currentGroupIndex][currentStepIndex].interface
+    }
+
+    private func prepareAnswersOnMainQueue() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.prepareAnswers()
         }
+    }
+
+    private func prepareAnswers() {
+        allAnswers =
+            currentActivity.stepSequence[currentGroupIndex][currentStepIndex].allAnswers
+        checkMediaAvailability()
+        displayAnswer = true
+        // Randomize answers
+        if currentActivity.randomAnswerPositions {
+            allAnswers.shuffle()
+        }
+        stepInstruction =
+            currentActivity.stepSequence[currentGroupIndex][currentStepIndex]
+            .instruction.localized()
+        getCorrectAnswersIndices()
     }
 
     // Pick up Correct answers' indices
@@ -143,7 +161,7 @@ class GameEngine: NSObject, ObservableObject {
     }
 
     // setup player and "buttons' overlay" if needed depending on activity type
-    func checkMediaAvailability() {
+    private func checkMediaAvailability() {
         switch currentActivity.activityType {
             case .listenThenTouchToSelect:
                 setAudioPlayer()
@@ -182,37 +200,42 @@ class GameEngine: NSObject, ObservableObject {
         return rightAnswersGiven.elementsEqual(correctAnswersIndices)
     }
 
-    func rewardsAnimations() {
+    private func rewardsAnimations() {
         if currentActivity.stepSequence[currentGroupIndex][currentStepIndex].id
             == currentActivity.stepSequence.flatMap({ $0 }).last?.id
         {
-            withAnimation(.easeOut(duration: 0.8)) {
-                correctAnswerAnimationPercent = 1.0
-                // Final step updated here to be seen by user & included in the final percent count
-                setMarkerColor(forGroup: currentGroupIndex, atIndex: currentStepIndex)
-                calculateSuccessPercent()
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                    self.showEndAnimation.toggle()  // true
-                    self.showBlurryBG = true
-                    self.tapIsDisabled.toggle()  // false
+            Task {
+                await animate(duration: 0.8) {
+                    self.correctAnswerAnimationPercent = 1.0
                 }
-                print("EndGame")
+                // Final step updated here to be seen by user & included in the final percent count
+                await endGame()
             }
         } else {
-            withAnimation(.easeOut(duration: 0.8)) {
-                correctAnswerAnimationPercent = 1.0
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                    self.showMotivator.toggle()  // true
-                    self.showBlurryBG.toggle()
-                    self.runMotivatorScenario()
+            Task {
+                await animate(duration: 0.8) {
+                    self.correctAnswerAnimationPercent = 1.0
                 }
+                await runReinforcerScenario()
             }
         }
     }
 
+    private func endGame() async {
+        setMarkerColor(forGroup: currentGroupIndex, atIndex: currentStepIndex)
+        calculateSuccessPercent()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            self.showEndAnimation = true
+            self.showBlurryBG = true
+            self.tapIsDisabled = false
+        }
+        print("EndGame")
+    }
+
     // Show, Then Hide Reinforcer animation + Setup for next Step
-    func runMotivatorScenario() {
-        self.showBlurryBG = true
+    private func runReinforcerScenario() async {
+        showReinforcer = true
+        showBlurryBG = true
         // Update behind-the-scene during Reinforcer animation
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
             self.tapIsDisabled.toggle()  // false
@@ -228,29 +251,33 @@ class GameEngine: NSObject, ObservableObject {
         }
     }
 
-    // Motivator - Lottie animation completion
-    func hideMotivator() {
-        showMotivator = false
+    // Reinforcer - Lottie animation completion
+    func hideReinforcer() {
+        showReinforcer = false
         showBlurryBG = false
     }
 
     // Trigger failure animation, Play again after failure(s)
-    func sameStepAgain() {
-        withAnimation {
-            overlayOpacity = 0.8
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
-                withAnimation {
-                    self.overlayOpacity = 0
-                }
-                self.tapIsDisabled.toggle()  // false
-                self.pressedAnswerIndex = nil
+    private func sameStepAgain() {
+        Task {
+            await animate(duration: 0.8) {
+                self.overlayOpacity = 0.8
             }
+            await animate(duration: 0.3) {
+                self.overlayOpacity = 0
+            }
+            await resumeAfterFail()
         }
+    }
+
+    private func resumeAfterFail() async {
+        tapIsDisabled = false
+        pressedAnswerIndex = nil
     }
 
     // MARK: - End current round
     // Final % of good answers
-    func calculateSuccessPercent() {
+    private func calculateSuccessPercent() {
         percentOfSuccess = Int(
             (Double(goodAnswers) * 100) / Double(currentActivity.stepsAmount).rounded(.toNearestOrAwayFromZero))
         if percentOfSuccess == 0 {
@@ -281,7 +308,7 @@ class GameEngine: NSObject, ObservableObject {
     }
 
     // MARK: - ProgressBar & Markers for currentActivity
-    func setMarkerColor(forGroup: Int, atIndex: Int) {
+    private func setMarkerColor(forGroup: Int, atIndex: Int) {
         if trials == 1 {
             goodAnswers += 1
             groupedStepMarkerColors[forGroup][atIndex] = .green
@@ -291,52 +318,6 @@ class GameEngine: NSObject, ObservableObject {
             groupedStepMarkerColors[forGroup][atIndex] = .red
         } else {
             groupedStepMarkerColors[forGroup][atIndex] = .clear
-        }
-    }
-
-    // MARK: - Speech Synthesis - Step Instructions Button
-    var synth = AVSpeechSynthesizer()
-    func speak(sentence: String) {
-        synth.delegate = self
-        let utterance = AVSpeechUtterance(string: sentence)
-        utterance.rate = 0.40
-        utterance.voice = AVSpeechSynthesisVoice(language: "fr-FR")
-        //            Locale.current.language.languageCode?.identifier == "fr"
-        //            ? AVSpeechSynthesisVoice(language: "fr-FR") : AVSpeechSynthesisVoice(language: "en-US")
-        isSpeaking = true
-        synth.speak(utterance)
-    }
-
-}
-
-extension GameEngine: AVSpeechSynthesizerDelegate {
-    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
-        isSpeaking = false
-    }
-}
-
-extension GameEngine: AVAudioPlayerDelegate {
-    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
-        currentMediaHasBeenPlayedOnce = true
-        allAnswersAreDisabled = false
-    }
-
-    func setAudioPlayer() {
-        do {
-            let path = Bundle.main.path(forResource: sound, ofType: "mp3")!
-            audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
-        } catch {
-            print("ERROR - mp3 file not found - \(error)")
-            return
-        }
-
-        audioPlayer.prepareToPlay()
-        audioPlayer.delegate = self
-
-        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { _ in
-            if let player = self.audioPlayer {
-                self.progress = CGFloat(player.currentTime / player.duration)
-            }
         }
     }
 }

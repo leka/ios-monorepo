@@ -25,6 +25,15 @@ enum ActivityType: String, Codable {
     case remote = "remote_standard"
 }
 
+enum GameLayout: Codable {
+    case touch1, touch2, touch3, touch3Inline, touch4, touch4Inline, touch5, touch6
+    case soundTouch1, soundTouch2, soundTouch3, soundTouch3Inline, soundTouch4, soundTouch4Inline, soundTouch6
+    case basket1, basket2, basket4, basketEmpty
+    case colorQuest1, colorQuest2, colorQuest3
+    case remoteStandard, remoteArrow
+    case xylophone
+}
+
 // MARK: - Activity Configurator - Texts's language edition scope
 enum Languages: Hashable, CaseIterable {
     case french, english

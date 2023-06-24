@@ -37,7 +37,9 @@ struct EndOfRoundView: View {
                     Spacer()
                     Button {
                         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                            gameEngine.resetActivity()
+                            // gameEngine.resetActivity()
+                            // within LekaApp, use above instead
+                            gameEngine.replayCurrentActivity()
                         }
                     } label: {
                         Text("gameOver_button")

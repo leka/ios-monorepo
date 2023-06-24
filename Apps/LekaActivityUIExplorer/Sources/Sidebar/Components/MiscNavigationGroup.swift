@@ -6,12 +6,10 @@ import SwiftUI
 
 struct MiscNavigationGroup: View {
 
-    let action: () -> Void
-
     var body: some View {
         LazyVGrid(columns: [GridItem()]) {
             ForEach(MiscPreviews.allCases, id: \.rawValue) { item in
-                PreviewButton(item: .constant(item), action: { action() })
+                PreviewButton(item: .constant(item))
             }
         }
         .padding(20)
