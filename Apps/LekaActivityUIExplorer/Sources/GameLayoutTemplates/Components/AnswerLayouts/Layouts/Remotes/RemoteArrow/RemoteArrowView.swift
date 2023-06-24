@@ -30,14 +30,10 @@ struct CircleLayout: Layout {
 struct RemoteArrowView: View {
     var body: some View {
         CircleLayout {
-            TriangleButtonView(color: .yellow)
-                .rotationEffect(.degrees(0))
-            TriangleButtonView(color: .blue)
-                .rotationEffect(.degrees(90))
-            TriangleButtonView(color: .red)
-                .rotationEffect(.degrees(180))
-            TriangleButtonView(color: .green)
-                .rotationEffect(.degrees(270))
+            RemoteArrowButtonView(image: "arrow.up", color: .blue)
+            RemoteArrowButtonView(image: "arrow.clockwise", color: .red)
+            RemoteArrowButtonView(image: "arrow.down", color: .green)
+            RemoteArrowButtonView(image: "arrow.counterclockwise", color: .yellow)
         }
     }
 }
