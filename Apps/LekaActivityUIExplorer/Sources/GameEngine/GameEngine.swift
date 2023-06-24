@@ -22,6 +22,7 @@ class GameEngine: NSObject, ObservableObject {
     @Published var allAnswersAreDisabled: Bool = false
     @Published var tapIsDisabled: Bool = false
     @Published var displayAnswer: Bool = false
+    var synth = AVSpeechSynthesizer()
 
     // MARK: - Game Statistics
     // Current Round Stats
@@ -113,7 +114,12 @@ class GameEngine: NSObject, ObservableObject {
         displayAnswer = false
         Task {
             await switchInterface()
-            prepareAnswers()
+            switch currentActivity.activityType {
+                case .dragAndDrop, .listenThenTouchToSelect:
+                    prepareAnswers()
+                default:
+                    prepareAnswersOnMainQueue()
+            }
         }
         if currentActivity.activityType == .colorQuest {
             // Show correct answer color on Leka's belt
@@ -124,21 +130,25 @@ class GameEngine: NSObject, ObservableObject {
         interface = currentActivity.stepSequence[currentGroupIndex][currentStepIndex].interface
     }
 
-    private func prepareAnswers() {
+    private func prepareAnswersOnMainQueue() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            self.allAnswers =
-                self.currentActivity.stepSequence[self.currentGroupIndex][self.currentStepIndex].allAnswers
-            self.checkMediaAvailability()
-            self.displayAnswer = true
-            // Randomize answers
-            if self.currentActivity.randomAnswerPositions {
-                self.allAnswers.shuffle()
-            }
-            self.stepInstruction =
-                self.currentActivity.stepSequence[self.currentGroupIndex][self.currentStepIndex]
-                .instruction.localized()
-            self.getCorrectAnswersIndices()
+            self.prepareAnswers()
         }
+    }
+
+    private func prepareAnswers() {
+        allAnswers =
+            currentActivity.stepSequence[currentGroupIndex][currentStepIndex].allAnswers
+        checkMediaAvailability()
+        displayAnswer = true
+        // Randomize answers
+        if currentActivity.randomAnswerPositions {
+            allAnswers.shuffle()
+        }
+        stepInstruction =
+            currentActivity.stepSequence[currentGroupIndex][currentStepIndex]
+            .instruction.localized()
+        getCorrectAnswersIndices()
     }
 
     // Pick up Correct answers' indices
@@ -309,18 +319,5 @@ class GameEngine: NSObject, ObservableObject {
         } else {
             groupedStepMarkerColors[forGroup][atIndex] = .clear
         }
-    }
-
-    // MARK: - Speech Synthesis - Step Instructions Button
-    private var synth = AVSpeechSynthesizer()
-    func speak(sentence: String) {
-        synth.delegate = self
-        let utterance = AVSpeechUtterance(string: sentence)
-        utterance.rate = 0.40
-        utterance.voice = AVSpeechSynthesisVoice(language: "fr-FR")
-        //            Locale.current.language.languageCode?.identifier == "fr"
-        //            ? AVSpeechSynthesisVoice(language: "fr-FR") : AVSpeechSynthesisVoice(language: "en-US")
-        isSpeaking = true
-        synth.speak(utterance)
     }
 }

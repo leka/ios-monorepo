@@ -60,4 +60,16 @@ extension GameEngine {
             default: return .green
         }
     }
+
+    // MARK: - Speech Synthesis - Step Instructions Button
+    func speak(sentence: String) {
+        synth.delegate = self
+        let utterance = AVSpeechUtterance(string: sentence)
+        utterance.rate = 0.40
+        utterance.voice = AVSpeechSynthesisVoice(language: "fr-FR")
+        //            Locale.current.language.languageCode?.identifier == "fr"
+        //            ? AVSpeechSynthesisVoice(language: "fr-FR") : AVSpeechSynthesisVoice(language: "en-US")
+        isSpeaking = true
+        synth.speak(utterance)
+    }
 }
