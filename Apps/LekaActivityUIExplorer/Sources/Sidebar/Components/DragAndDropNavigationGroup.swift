@@ -6,12 +6,10 @@ import SwiftUI
 
 struct DragAndDropNavigationGroup: View {
 
-    let action: () -> Void
-
     var body: some View {
         LazyVGrid(columns: [GridItem()]) {
             ForEach(DragAndDropPreviews.allCases, id: \.rawValue) { item in
-                PreviewButton(item: .constant(item), action: { action() })
+                PreviewButton(item: .constant(item))
             }
         }
         .padding(20)

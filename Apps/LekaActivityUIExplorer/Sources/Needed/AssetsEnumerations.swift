@@ -9,6 +9,7 @@ import Foundation
 protocol Previewable {
     var index: Int { get }
     var type: ActivityType { get }
+    var interface: GameLayout { get }
     var preview: String { get }
 
     func defaults() -> BaseDefaults?
@@ -21,6 +22,18 @@ extension Previewable where Self: RawRepresentable, RawValue == Int {
 enum TouchToSelectPreviews: Int, CaseIterable, Previewable {
     case one, two, three, threeInline, four, fourInline, five, six
     var type: ActivityType { return .touchToSelect }
+    var interface: GameLayout {
+        switch self {
+            case .one: return .touch1
+            case .two: return .touch2
+            case .three: return .touch3
+            case .threeInline: return .touch3Inline
+            case .four: return .touch4
+            case .fourInline: return .touch4Inline
+            case .five: return .touch5
+            case .six: return .touch6
+        }
+    }
     var preview: String {
         switch self {
             case .one: return "LayoutTemplate_1"
@@ -50,6 +63,17 @@ enum TouchToSelectPreviews: Int, CaseIterable, Previewable {
 enum ListenThenTouchToSelectPreviews: Int, CaseIterable, Previewable {
     case one, two, three, threeInline, four, fourInline, six
     var type: ActivityType { return .listenThenTouchToSelect }
+    var interface: GameLayout {
+        switch self {
+            case .one: return .soundTouch1
+            case .two: return .soundTouch2
+            case .three: return .soundTouch3
+            case .threeInline: return .soundTouch3Inline
+            case .four: return .soundTouch4
+            case .fourInline: return .soundTouch4Inline
+            case .six: return .soundTouch6
+        }
+    }
     var preview: String {
         switch self {
             case .one: return "LayoutTemplate_1"
@@ -77,6 +101,13 @@ enum ListenThenTouchToSelectPreviews: Int, CaseIterable, Previewable {
 enum ColorQuestPreviews: Int, CaseIterable, Previewable {
     case one, two, three
     var type: ActivityType { return .colorQuest }
+    var interface: GameLayout {
+        switch self {
+            case .one: return .colorQuest1
+            case .two: return .colorQuest2
+            case .three: return .colorQuest3
+        }
+    }
     var preview: String {
         switch self {
             case .one: return "ColorQuest_1"
@@ -96,6 +127,7 @@ enum ColorQuestPreviews: Int, CaseIterable, Previewable {
 enum MiscPreviews: Int, CaseIterable, Previewable {
     case xylophone
     var type: ActivityType { return .xylophone }
+    var interface: GameLayout { return .xylophone }
     var preview: String {
         switch self {
             case .xylophone: return "xylophoneTemplate"
@@ -111,6 +143,12 @@ enum MiscPreviews: Int, CaseIterable, Previewable {
 enum RemotePreviews: Int, CaseIterable, Previewable {
     case standard, arrow
     var type: ActivityType { return .remote }
+    var interface: GameLayout {
+        switch self {
+            case .standard: return .remoteStandard
+            case .arrow: return .remoteArrow
+        }
+    }
     var preview: String {
         switch self {
             case .standard: return "remoteStandard"
@@ -128,6 +166,14 @@ enum RemotePreviews: Int, CaseIterable, Previewable {
 enum DragAndDropPreviews: Int, CaseIterable, Previewable {
     case basket1, basket2, basket4, emptyBasket
     var type: ActivityType { return .dragAndDrop }
+    var interface: GameLayout {
+        switch self {
+            case .basket1: return .basket1
+            case .basket2: return .basket2
+            case .basket4: return .basket4
+            case .emptyBasket: return .basketEmpty
+        }
+    }
     var preview: String {
         switch self {
             case .basket1: return "basket_1"

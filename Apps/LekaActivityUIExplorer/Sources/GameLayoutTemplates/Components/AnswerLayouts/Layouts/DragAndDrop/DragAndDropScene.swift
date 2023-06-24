@@ -56,17 +56,20 @@ class DragAndDropScene: SKScene {
         addChild(dropArea)
 
         // expected answer
-        let expectedItem = gameEngine!.allAnswers[gameEngine!.correctAnswersIndices[0]]
-        let texture = SKTexture(imageNamed: expectedItem)
-        let action = SKAction.setTexture(texture, resize: true)
-        expectedItemsNodes.append(SKSpriteNode())
-        expectedItemsNodes[0].run(action)
-        expectedItemsNodes[0].name = expectedItem
-        expectedItemsNodes[0].texture = texture
-        expectedItemsNodes[0].scaleForMax(sizeOf: biggerSide * 0.8)
-        expectedItemsNodes[0].position = CGPoint(x: dropArea.position.x + 80, y: 130)
-
-        addChild(expectedItemsNodes[0])
+        for item in gameEngine!.correctAnswersIndices {
+            let expectedItem = gameEngine!.allAnswers[item]
+            let expectedNode = SKSpriteNode()
+            let texture = SKTexture(imageNamed: expectedItem)
+            let action = SKAction.setTexture(texture, resize: true)
+            expectedNode.run(action)
+            expectedNode.name = expectedItem
+            expectedNode.name = expectedItem
+            expectedNode.texture = texture
+            expectedNode.scaleForMax(sizeOf: biggerSide * 0.8)
+            expectedNode.position = CGPoint(x: dropArea.position.x + 80, y: 130)
+            expectedItemsNodes.append(expectedNode)
+            addChild(expectedNode)
+        }
     }
 
     func reset() {
@@ -142,7 +145,7 @@ class DragAndDropScene: SKScene {
             if node.fullyContains(bounds: dropArea.frame) {
                 let index = gameEngine!.allAnswers.firstIndex(where: { $0 == node.name })
                 gameEngine?.answerHasBeenPressed(atIndex: index!)
-                guard let _ = expectedItemsNodes.first(where: { $0.name == node.name }) else {
+                guard expectedItemsNodes.first(where: { $0.name == node.name }) != nil else {
                     snapBack()
                     break
                 }

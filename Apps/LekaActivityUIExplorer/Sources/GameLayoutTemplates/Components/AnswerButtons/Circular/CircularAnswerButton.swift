@@ -7,9 +7,7 @@ import SwiftUI
 struct CircularAnswerButton: View {
 
     @EnvironmentObject var gameEngine: GameEngine
-    @EnvironmentObject var defaults: GameLayoutTemplatesDefaults
     @ObservedObject var templateDefaults: BaseDefaults
-    @State private var colors: [Color] = [.green, .purple, .red, .yellow, .blue]
 
     var answer: Int
 
@@ -17,10 +15,14 @@ struct CircularAnswerButton: View {
         Button {
             gameEngine.answerHasBeenPressed(atIndex: answer)
         } label: {
-            CircularAnswerContent(content: answerContent)
+            if gameEngine.displayAnswer {
+                Image(gameEngine.allAnswers[safeAnswer])
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .clipShape(Circle().inset(by: 2))
+            }
         }
         .buttonStyle(ActivityAnswer_ButtonStyle(isEnabled: gameEngine.currentMediaHasBeenPlayedOnce))
-        .animation(.easeIn(duration: 0.3), value: gameEngine.correctAnswerAnimationPercent)
         .overlay(AnswerFeedback(answer: answer))
         .disabled(gameEngine.tapIsDisabled)
         .disabled(gameEngine.allAnswersAreDisabled)
@@ -30,10 +32,10 @@ struct CircularAnswerButton: View {
         )
     }
 
-    var answerContent: String {
+    var safeAnswer: Int {
         guard answer < gameEngine.allAnswers.count else {
-            return gameEngine.answersAreImages ? "dummy_1" : "blue"
+            return 0
         }
-        return gameEngine.allAnswers[answer]
+        return answer
     }
 }

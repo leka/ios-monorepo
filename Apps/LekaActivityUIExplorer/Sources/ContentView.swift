@@ -121,7 +121,7 @@ struct ContentView: View {
         Button(
             action: {
                 navigator.useGameFeedback.toggle()
-                gameEngine.resetActivity()
+                gameEngine.currentActivity = gameEngine.bufferActivity
             },
             label: {
                 Image(systemName: navigator.useGameFeedback ? "livephoto" : "livephoto.slash")

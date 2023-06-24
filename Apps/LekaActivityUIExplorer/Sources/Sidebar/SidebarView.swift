@@ -6,8 +6,6 @@ import SwiftUI
 
 struct SidebarView: View {
 
-    @EnvironmentObject var navigator: NavigationManager
-    @EnvironmentObject var configuration: GameLayoutTemplatesConfigurations
     @EnvironmentObject var gameEngine: GameEngine
     @EnvironmentObject var defaults: GameLayoutTemplatesDefaults
 
@@ -19,37 +17,37 @@ struct SidebarView: View {
                     .padding(.top, 10)
 
                 DisclosureGroup {
-                    TouchToSelectNavigationGroup { setupTest() }
+                    TouchToSelectNavigationGroup()
                 } label: {
                     disclosureGroupLabel("touch_to_select")
                 }
 
                 DisclosureGroup {
-                    ListenThenTouchToSelectNavigationGroup { setupTest() }
+                    ListenThenTouchToSelectNavigationGroup()
                 } label: {
                     disclosureGroupLabel("listen_then_touch_to_select")
                 }
 
                 DisclosureGroup {
-                    ColorQuestNavigationGroup { setupTest() }
+                    ColorQuestNavigationGroup()
                 } label: {
                     disclosureGroupLabel("color_quest")
                 }
 
                 DisclosureGroup {
-                    DragAndDropNavigationGroup { setupTest() }
+                    DragAndDropNavigationGroup()
                 } label: {
                     disclosureGroupLabel("drag_and_drop")
                 }
 
                 DisclosureGroup {
-                    MiscNavigationGroup { setupTest() }
+                    MiscNavigationGroup()
                 } label: {
                     disclosureGroupLabel("xylophone")
                 }
 
                 DisclosureGroup {
-                    RemoteNavigationGroup { setupTest() }
+                    RemoteNavigationGroup()
                 } label: {
                     disclosureGroupLabel("remote")
                 }
@@ -62,16 +60,6 @@ struct SidebarView: View {
         .ignoresSafeArea(.container, edges: .top)
         .background(LekaActivityUIExplorerAsset.Colors.lekaLightGray.swiftUIColor)
 
-    }
-
-    private func setupTest() {
-        configuration.setupExplorerVariations(forTemplate: navigator.selectedTemplate)
-        gameEngine.bufferActivity = ExplorerActivity(
-            withTemplate: navigator.selectedTemplate,
-            type: configuration.currentActivityType
-        )
-        .makeActivity()
-        gameEngine.setupGame()
     }
 
     private var logoLeka: some View {

@@ -20,8 +20,14 @@ struct LekaActivityUIExplorerApp: App {
                 .environmentObject(defaults)
                 .environmentObject(configuration)
                 .onAppear {
-                    gameEngine.bufferActivity = ExplorerActivity(withTemplate: 0, type: .touchToSelect)
-                        .makeActivity()
+                    gameEngine.bufferActivity = ExplorerActivity(
+                        type: .touchToSelect,
+                        interface: .touch1
+                    )
+                    .makeActivity()
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        gameEngine.setupGame()
+                    }
                 }
         }
     }
