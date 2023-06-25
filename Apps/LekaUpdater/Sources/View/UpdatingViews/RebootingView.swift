@@ -4,7 +4,15 @@
 
 import SwiftUI
 
-struct RebootingView: View {
+struct RebootingIllustration: View {
+    var body: some View {
+        LekaUpdaterAsset.Assets.lekaUpdaterIcon.swiftUIImage
+            .resizable()
+            .scaledToFit()
+    }
+}
+
+struct RebootingContentView: View {
     var body: some View {
         VStack {
             Text("Installation de la mise à jour")
@@ -23,8 +31,23 @@ struct RebootingView: View {
 
 struct RebootingView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationStack {
-            RebootingView()
+        VStack {
+            RebootingIllustration()
+                .frame(height: 250)
+                .padding(.bottom)
+                .padding(.bottom)
+
+            Text("Étape 2/3")
+                .font(.title)
+                .bold()
+                .monospacedDigit()
+                .padding()
+
+            VStack {
+                RebootingContentView()
+                Spacer()
+            }
+            .frame(maxWidth: .infinity, maxHeight: 250)
         }
     }
 }

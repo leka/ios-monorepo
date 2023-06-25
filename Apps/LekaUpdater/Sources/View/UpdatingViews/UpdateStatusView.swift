@@ -9,6 +9,7 @@ struct UpdateStatusView: View {
     private enum UpdateStatus {
         case sendingFile
         case rebootingRobot
+        case updateFinished
     }
 
     @State private var updatingStatus: UpdateStatus = .sendingFile
@@ -19,17 +20,26 @@ struct UpdateStatusView: View {
                 return 1
             case .rebootingRobot:
                 return 2
+            case .updateFinished:
+                return 3
         }
     }
 
     var body: some View {
         VStack {
-            LekaUpdaterAsset.Assets.lekaUpdaterIcon.swiftUIImage
-                .resizable()
-                .scaledToFit()
-                .frame(height: 250)
-                .padding(.bottom)
-                .padding(.bottom)
+            VStack {
+                switch updatingStatus {
+                    case .sendingFile:
+                        SendingFileIllustration()
+                    case .rebootingRobot:
+                        RebootingIllustration()
+                    case .updateFinished:
+                        UpdateFinishedIllustration()
+                }
+            }
+            .frame(height: 250)
+            .padding(.bottom)
+            .padding(.bottom)
 
             Text("Étape \(stepNumber)/3")
                 .font(.title)
@@ -40,9 +50,11 @@ struct UpdateStatusView: View {
             VStack {
                 switch updatingStatus {
                     case .sendingFile:
-                        SendingFileView()
+                        SendingFileContentView()
                     case .rebootingRobot:
-                        RebootingView()
+                        RebootingContentView()
+                    case .updateFinished:
+                        UpdateFinishedContentView()
                 }
                 Spacer()
             }
@@ -71,14 +83,18 @@ struct UpdateStatusView: View {
             case .sendingFile:
                 updatingStatus = .rebootingRobot
             case .rebootingRobot:
+                updatingStatus = .updateFinished
+            case .updateFinished:
                 updatingStatus = .sendingFile
         }
     }
 
 }
 
-struct UpdatingView_Previews: PreviewProvider {
+struct UpdatingStatusView_Previews: PreviewProvider {
     static var previews: some View {
-        UpdateStatusView()
+        NavigationStack {
+            UpdateStatusView()
+        }
     }
 }
