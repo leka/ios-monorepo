@@ -4,7 +4,15 @@
 
 import SwiftUI
 
-struct SendingFileView: View {
+struct SendingFileIllustration: View {
+    var body: some View {
+        LekaUpdaterAsset.Assets.lekaUpdaterIcon.swiftUIImage
+            .resizable()
+            .scaledToFit()
+    }
+}
+
+struct SendingFileContentView: View {
     @State private var progress = 0.66
 
     var body: some View {
@@ -38,8 +46,23 @@ struct SendingFileView: View {
 
 struct SendingFileView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationStack {
-            SendingFileView()
+        VStack {
+            SendingFileIllustration()
+                .frame(height: 250)
+                .padding(.bottom)
+                .padding(.bottom)
+
+            Text("Étape 1/3")
+                .font(.title)
+                .bold()
+                .monospacedDigit()
+                .padding()
+
+            VStack {
+                SendingFileContentView()
+                Spacer()
+            }
+            .frame(maxWidth: .infinity, maxHeight: 250)
         }
     }
 }
