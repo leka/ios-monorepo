@@ -27,6 +27,9 @@ struct UpdateStatusView: View {
 
     var body: some View {
         VStack {
+            Spacer()
+            Spacer()
+
             VStack {
                 switch updatingStatus {
                     case .sendingFile:
@@ -60,6 +63,14 @@ struct UpdateStatusView: View {
             }
             .frame(maxWidth: .infinity, maxHeight: 250)
 
+            Spacer()
+
+            LekaUpdaterAsset.Assets.lekaUpdaterIcon.swiftUIImage
+                .resizable()
+                .scaledToFit()
+                .frame(height: 70)
+                .padding(35)
+
         }
         .navigationBarBackButtonHidden()
         .toolbar {
@@ -70,13 +81,6 @@ struct UpdateStatusView: View {
                         .bold()
                     Text("L'application pour mettre à jour vos robots Leka !")
                 }
-            }
-
-            ToolbarItem(placement: .bottomBar) {
-                LekaUpdaterAsset.Assets.lekaUpdaterIcon.swiftUIImage
-                    .resizable()
-                    .scaledToFit()
-                    .frame(height: 50)
             }
 
             ToolbarItem(placement: .navigationBarTrailing) {
