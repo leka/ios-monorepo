@@ -27,6 +27,9 @@ struct UpdateStatusView: View {
 
     var body: some View {
         VStack {
+            Spacer()
+            Spacer()
+
             VStack {
                 switch updatingStatus {
                     case .sendingFile:
@@ -59,6 +62,14 @@ struct UpdateStatusView: View {
                 Spacer()
             }
             .frame(maxWidth: .infinity, maxHeight: 250)
+
+            Spacer()
+
+            LekaUpdaterAsset.Assets.lekaUpdaterIcon.swiftUIImage
+                .resizable()
+                .scaledToFit()
+                .frame(height: 70)
+                .padding(35)
 
         }
         .navigationBarBackButtonHidden()
