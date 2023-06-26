@@ -74,13 +74,13 @@ class ExplorerActivity: ObservableObject {
                 return Array(stepAnswers.prefix(5))
             case .touch6, .soundTouch6:
                 return Array(stepAnswers.prefix(6))
-            case .basket1:
+            case .basket1, .dropArea1:
                 return Array(dragAndDropAnswers.prefix(1))
             case .basket2:
                 return Array(dragAndDropAnswers.prefix(2))
             case .basket4:
                 return Array(dragAndDropAnswers.prefix(4))
-            case .basketEmpty:
+            case .basketEmpty, .dropArea3:
                 return Array(dragAndDropAnswers.prefix(3))
             case .colorQuest1:
                 return Array(colorAnswers.prefix(1))
@@ -97,7 +97,7 @@ class ExplorerActivity: ObservableObject {
     // ready to work with more than 1 good answers
     private func setGoodAnswers() -> [String] {
         switch interface {
-            case .basket1, .basket2, .basket4:
+            case .basket1, .basket2, .basket4, .dropArea1, .dropArea3:
                 return ["watermelon"]
             case .basketEmpty:
                 return ["watermelon", "banana"]
