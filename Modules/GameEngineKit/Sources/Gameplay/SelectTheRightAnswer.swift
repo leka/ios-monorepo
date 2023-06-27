@@ -24,6 +24,7 @@ public class SelectTheRightAnswer: GameplayProtocol {
             if let index = choices.firstIndex(where: { $0.id == choice.id }) {
                 self.choices[index].status = .playingRightAnimation
 
+                // TO DO (@hugo)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                     self.choices[index].status = .notSelected
                 }

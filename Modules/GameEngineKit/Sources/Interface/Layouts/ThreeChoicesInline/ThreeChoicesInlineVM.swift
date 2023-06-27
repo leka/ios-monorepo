@@ -9,15 +9,12 @@ public class ThreeChoicesInlineVM: Identifiable, ObservableObject {
     public let name = "Three choices"
     public var gameplay: any GameplayProtocol
 
-    @Published public var types: [DataType]
-
     @Published public var choices: [ChoiceViewModel]
     @Published public var isFinished = false
 
     private var cancellables: Set<AnyCancellable> = []
 
-    public init(types: [DataType], gameplay: any GameplayProtocol) {
-        self.types = types
+    public init(gameplay: any GameplayProtocol) {
         self.gameplay = gameplay
         guard self.gameplay.choices.count == 3 else { fatalError("Wrong size of array") }
         self.choices = self.gameplay.choices
