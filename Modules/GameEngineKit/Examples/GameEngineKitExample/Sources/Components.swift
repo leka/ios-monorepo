@@ -5,37 +5,38 @@
 import GameEngineKit
 import SwiftUI
 
-public let gameplayOneRightAnswerThreeInline = SelectTheRightAnswer(
-    choices: ChoiceViewModel.listThreeChoices, rightAnswers: [ChoiceViewModel.listThreeChoices[1]])
+let threeRawItems = ["red", "blue", "yellow"]
+let threeTypes = [DataType.color, DataType.text, DataType.color]
 
-public let gameplayAllRightAnswerThreeInline = SelectAllRightAnswers(
-    choices: ChoiceViewModel.listThreeChoices,
-    rightAnswers: [ChoiceViewModel.listThreeChoices[1], ChoiceViewModel.listThreeChoices[2]])
+let sixRawItems = ["red", "blue", "yellow", "dummy_1", "yellow", "pink"]
+let sixTypes = [DataType.color, DataType.text, DataType.color, DataType.image, DataType.color, DataType.text]
 
-public let gameplaySomeRightAnswerThreeInline = SelectSomeRightAnswers(
-    choices: ChoiceViewModel.listThreeChoices,
-    rightAnswers: [ChoiceViewModel.listThreeChoices[1], ChoiceViewModel.listThreeChoices[2]],
-    rightAnswersToFound: 2)
+public let listThreeChoices = threeRawItems.map { item in
+    ChoiceViewModel(item: item)
+}
 
-public let gameplayOneRightAnswerSixGrid = SelectTheRightAnswer(
-    choices: ChoiceViewModel.listSixChoices, rightAnswers: [ChoiceViewModel.listSixChoices[1]])
+public let listSixChoices = sixRawItems.map { item in
+    ChoiceViewModel(item: item)
+}
 
-public let gameplayAllRightAnswerSixGrid = SelectAllRightAnswers(
-    choices: ChoiceViewModel.listSixChoices,
-    rightAnswers: [
-        ChoiceViewModel.listSixChoices[1], ChoiceViewModel.listSixChoices[5], ChoiceViewModel.listSixChoices[3],
-    ])
+public let dataThree = Data(
+    choices: listThreeChoices,
+    rightAnswers: [listThreeChoices[1]],
+    types: threeTypes)
 
-public let gameplaySomeRightAnswerSixGrid = SelectSomeRightAnswers(
-    choices: ChoiceViewModel.listSixChoices,
-    rightAnswers: [
-        ChoiceViewModel.listSixChoices[1], ChoiceViewModel.listSixChoices[4], ChoiceViewModel.listSixChoices[3],
-    ], rightAnswersToFound: 2)
+public let gameplayOneRightAnswerThreeInlineData = SelectTheRightAnswer(
+    choices: dataThree.choices, rightAnswers: dataThree.rightAnswers)
 
-public let oneAnswerThreeInlineVM = ThreeChoicesInlineVM(gameplay: gameplayOneRightAnswerThreeInline)
-public let allAnswersThreeInlineVM = ThreeChoicesInlineVM(gameplay: gameplayAllRightAnswerThreeInline)
-public let someAnswersThreeInlineVM = ThreeChoicesInlineVM(gameplay: gameplaySomeRightAnswerThreeInline)
+public let oneAnswerThreeInlineVMData = ThreeChoicesInlineVM(
+    types: dataThree.types, gameplay: gameplayOneRightAnswerThreeInlineData)
 
-public let oneAnswerSixGridVM = SixChoicesGridVM(gameplay: gameplayOneRightAnswerSixGrid)
-public let allAnswersSixGridVM = SixChoicesGridVM(gameplay: gameplayAllRightAnswerSixGrid)
-public let someAnswersSixGridVM = SixChoicesGridVM(gameplay: gameplaySomeRightAnswerSixGrid)
+public let dataSix = Data(
+    choices: listSixChoices,
+    rightAnswers: [listSixChoices[2], listSixChoices[3], listSixChoices[4]],
+    types: sixTypes)
+
+public let gameplaySomeRightAnswerSixGridData = SelectSomeRightAnswers(
+    choices: dataSix.choices, rightAnswers: dataSix.rightAnswers, rightAnswersToFind: 2)
+
+public let oneAnswerSixGridVM = SixChoicesGridVM(
+    types: dataSix.types, gameplay: gameplaySomeRightAnswerSixGridData)
