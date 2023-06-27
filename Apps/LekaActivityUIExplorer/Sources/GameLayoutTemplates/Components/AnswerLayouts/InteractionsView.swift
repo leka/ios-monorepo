@@ -62,6 +62,8 @@ struct InteractionsView: View {
                 DragAndDropSceneView(withTemplate: DropAreaOne())
             case .dropArea3:
                 DragAndDropSceneView(withTemplate: DropAreaThree())
+            case .dropArea2Asset1:
+                DragAndDropSceneView(withTemplate: DropAreaTwoAssetOne())
             case .colorQuest1:
                 ColorQuestOneAnswerLayout()
             case .colorQuest2:

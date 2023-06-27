@@ -56,7 +56,7 @@ class DragAndDropScene: SKScene {
         addChild(dropArea)
 
         // expected answer
-        for item in gameEngine!.correctAnswersIndices {
+        for item in gameEngine!.correctAnswersIndices[0] {
             let expectedItem = gameEngine!.allAnswers[item]
             let expectedNode = SKSpriteNode()
             let texture = SKTexture(imageNamed: expectedItem)
