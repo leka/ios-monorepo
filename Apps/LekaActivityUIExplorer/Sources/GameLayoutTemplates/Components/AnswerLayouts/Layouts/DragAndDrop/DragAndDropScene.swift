@@ -89,6 +89,25 @@ class DragAndDropScene: SKScene {
         }
     }
 
+    // wrong answer behavior
+    func snapBack(node: DraggableItemNode, touch: UITouch) {
+        let moveAnimation: SKAction = SKAction.move(to: node.defaultPosition!, duration: 0.25)
+            .moveAnimation(.easeOut)
+        let group: DispatchGroup = DispatchGroup()
+        group.enter()
+        node.run(
+            moveAnimation,
+            completion: {
+                node.position = node.defaultPosition!
+                node.zPosition -= 100
+                group.leave()
+            })
+        group.notify(queue: .main) {
+            self.dropAction(node)
+        }
+        selectedNodes[touch] = nil
+    }
+
     // wiggle animation
     private func onDragAnimation(_ node: SKSpriteNode) {
         let sequence: SKAction = SKAction.sequence([
@@ -100,6 +119,13 @@ class DragAndDropScene: SKScene {
         node.run(SKAction.repeatForever(sequence))
     }
 
+    // remove wiggle animation
+    func dropAction(_ node: SKSpriteNode) {
+        node.zRotation = 0  // reset the zRotation
+        node.removeAllActions()  // remove wiggle action
+    }
+
+    // MARK: - Touches
     // overriden Touches states
     override func touchesBegan(_ touches: Set<UITouch>, with: UIEvent?) {
         for touch in touches {
@@ -136,9 +162,6 @@ class DragAndDropScene: SKScene {
             }
             endAbscissa = touch.location(in: self).x
             let node: DraggableItemNode = selectedNodes[touch]!
-            let moveAnimation: SKAction = SKAction.move(to: node.defaultPosition!, duration: 0.25)
-                .moveAnimation(.easeOut)
-            let group: DispatchGroup = DispatchGroup()
             node.scaleForMax(sizeOf: biggerSide)
 
             // dropped within the bounds of dropArea
@@ -146,7 +169,7 @@ class DragAndDropScene: SKScene {
                 let index = gameEngine!.allAnswers.firstIndex(where: { $0 == node.name })
                 gameEngine?.answerHasBeenPressed(atIndex: index!)
                 guard expectedItemsNodes.first(where: { $0.name == node.name }) != nil else {
-                    snapBack()
+                    snapBack(node: node, touch: touch)
                     break
                 }
                 dropGoodAnswer(node)
@@ -156,28 +179,7 @@ class DragAndDropScene: SKScene {
             }
 
             // dropped outside the bounds of dropArea
-            snapBack()
-
-            // behaviors after trials -> wrong answer
-            func snapBack() {
-                group.enter()
-                node.run(
-                    moveAnimation,
-                    completion: {
-                        node.position = node.defaultPosition!
-                        node.zPosition -= 100
-                        group.leave()
-                    })
-                group.notify(queue: .main) {
-                    dropAction(node)
-                }
-                selectedNodes[touch] = nil
-            }
-
-            func dropAction(_ node: SKSpriteNode) {
-                node.zRotation = 0  // reset the zRotation
-                node.removeAllActions()  // remove wiggle action
-            }
+            snapBack(node: node, touch: touch)
         }
     }
 }
