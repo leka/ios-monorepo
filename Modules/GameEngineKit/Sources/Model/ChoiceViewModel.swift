@@ -4,6 +4,10 @@
 
 import SwiftUI
 
+public enum DataType {
+    case color, image, text
+}
+
 public enum ChoiceViewStatus {
     case notSelected
     case selected
@@ -18,10 +22,12 @@ public struct ChoiceViewModel: Identifiable, Equatable, Comparable {
 
     public let id: UUID = UUID()
     public let item: String
+    public var type: DataType
     public var status: ChoiceViewStatus
 
-    public init(item: String, status: ChoiceViewStatus = .notSelected) {
+    public init(item: String, type: DataType, status: ChoiceViewStatus = .notSelected) {
         self.item = item
+        self.type = type
         self.status = status
     }
 }

@@ -21,7 +21,7 @@ public struct SixChoicesGridView: View {
                     let item = viewModel.choices[index].item
                     let choice = viewModel.choices[index]
 
-                    switch viewModel.types[index] {
+                    switch choice.type {
                         case .color:
                             ColoredAnswerView(color: item, status: choice.status)
                                 .simultaneousGesture(
@@ -54,7 +54,7 @@ public struct SixChoicesGridView: View {
                     let item = viewModel.choices[index].item
                     let choice = viewModel.choices[index]
 
-                    switch viewModel.types[index] {
+                    switch choice.type {
                         case .color:
                             ColoredAnswerView(color: item, status: choice.status)
                                 .simultaneousGesture(
