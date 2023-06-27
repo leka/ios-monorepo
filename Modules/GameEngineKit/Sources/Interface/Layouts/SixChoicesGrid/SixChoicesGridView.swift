@@ -17,23 +17,69 @@ public struct SixChoicesGridView: View {
             verticalSpacing: 30
         ) {
             GridRow {
-                ForEach(viewModel.choices[0..<3]) { choice in
-                    ColoredAnswerView(color: choice.color, status: choice.status)
-                        .simultaneousGesture(
-                            TapGesture()
-                                .onEnded {
-                                    viewModel.onChoiceTapped(choice: choice)
-                                })
+                ForEach(0..<3) { index in
+                    let item = viewModel.choices[index].item
+                    let choice = viewModel.choices[index]
+
+                    switch viewModel.types[index] {
+                        case .color:
+                            ColoredAnswerView(color: item, status: choice.status)
+                                .simultaneousGesture(
+                                    TapGesture()
+                                        .onEnded {
+                                            viewModel.onChoiceTapped(choice: choice)
+                                        }
+                                )
+                        case .image:
+                            ImageAnswerView(image: item, status: choice.status)
+                                .simultaneousGesture(
+                                    TapGesture()
+                                        .onEnded {
+                                            viewModel.onChoiceTapped(choice: choice)
+                                        }
+                                )
+                        case .text:
+                            TextAnswerView(text: item, status: choice.status)
+                                .simultaneousGesture(
+                                    TapGesture()
+                                        .onEnded {
+                                            viewModel.onChoiceTapped(choice: choice)
+                                        }
+                                )
+                    }
                 }
             }
             GridRow {
-                ForEach(viewModel.choices[3..<6]) { choice in
-                    ColoredAnswerView(color: choice.color, status: choice.status)
-                        .simultaneousGesture(
-                            TapGesture()
-                                .onEnded {
-                                    viewModel.onChoiceTapped(choice: choice)
-                                })
+                ForEach(3..<6) { index in
+                    let item = viewModel.choices[index].item
+                    let choice = viewModel.choices[index]
+
+                    switch viewModel.types[index] {
+                        case .color:
+                            ColoredAnswerView(color: item, status: choice.status)
+                                .simultaneousGesture(
+                                    TapGesture()
+                                        .onEnded {
+                                            viewModel.onChoiceTapped(choice: choice)
+                                        }
+                                )
+                        case .image:
+                            ImageAnswerView(image: item, status: choice.status)
+                                .simultaneousGesture(
+                                    TapGesture()
+                                        .onEnded {
+                                            viewModel.onChoiceTapped(choice: choice)
+                                        }
+                                )
+                        case .text:
+                            TextAnswerView(text: item, status: choice.status)
+                                .simultaneousGesture(
+                                    TapGesture()
+                                        .onEnded {
+                                            viewModel.onChoiceTapped(choice: choice)
+                                        }
+                                )
+                    }
                 }
             }
 
