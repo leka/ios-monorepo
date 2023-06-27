@@ -76,7 +76,7 @@ class ExplorerActivity: ObservableObject {
                 return Array(stepAnswers.prefix(6))
             case .basket1, .dropArea1, .dropArea2Asset1:
                 return Array(dragAndDropAnswers.prefix(1))
-            case .basket2:
+            case .basket2:  // , .dropArea2Asset2
                 return Array(dragAndDropAnswers.prefix(2))
             case .basket4:
                 return Array(dragAndDropAnswers.prefix(4))
@@ -99,6 +99,8 @@ class ExplorerActivity: ObservableObject {
         switch interface {
             case .basket1, .basket2, .basket4, .dropArea1, .dropArea3, .dropArea2Asset1:
                 return [["watermelon"]]
+            // case .dropArea2Asset2:
+            //     return [["watermelon"], ["banana"]]
             case .basketEmpty:
                 return [["watermelon", "banana"]]
             case .colorQuest1, .colorQuest2, .colorQuest3:
@@ -141,10 +143,10 @@ class ExplorerActivity: ObservableObject {
                 switch interface {
                     case .basketEmpty:
                         return "Fais glisser la pastèque et la banane dans le panier"
-                    case .dropArea1, .dropArea3:
+                    case .dropArea1, .dropArea3, .dropArea2Asset1:
                         return "Fais glisser la pastèque dans la cuisine"
-                    case .dropArea2Asset1:
-                        return "Fais glisser chaque objet sur l'image correspodante"
+                    // case .dropArea2Asset2:
+                    //     return "Fais glisser chaque objet sur l'image qui convient"
                     default:
                         return "Fais glisser la pastèque dans le panier"
                 }

@@ -8,6 +8,8 @@ import SpriteKit
 class DropAreaTwoAssetOne: DragAndDropScene {
 
     var rightSideDropArea = SKSpriteNode()
+    // take these from yaml later & move this array to GameEngine
+    var dropAreas: [SKSpriteNode] = []
 
     override func reset() {
         self.removeAllChildren()
@@ -31,6 +33,8 @@ class DropAreaTwoAssetOne: DragAndDropScene {
         rightSideDropArea.position = CGPoint(x: (size.width / 2) + 275, y: 190)
         rightSideDropArea.name = "left_side_drop_area"
 
+        dropAreas = [dropArea, rightSideDropArea]
+
         addChild(dropArea)
         addChild(rightSideDropArea)
 
@@ -50,6 +54,39 @@ class DropAreaTwoAssetOne: DragAndDropScene {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                 self.reset()
             }
+        }
+    }
+
+    override func touchesEnded(_ touches: Set<UITouch>, with: UIEvent?) {
+        for touch in touches {
+            if !selectedNodes.keys.contains(touch) {
+                break
+            }
+            //            endAbscissa = touch.location(in: self).x
+            let node: DraggableItemNode = selectedNodes[touch]!
+            node.scaleForMax(sizeOf: biggerSide)
+
+            let index = gameEngine!.allAnswers.firstIndex(where: { $0 == node.name })
+
+            // dropped within the bounds of one of the dropAreas
+            if node.fullyContains(bounds: dropAreas[0].frame) {
+                gameEngine?.answerHasBeenPressed(atIndex: index!)
+                guard expectedItemsNodes.first(where: { $0.name == node.name }) != nil else {
+                    snapBack(node: node, touch: touch)
+                    break
+                }
+                dropGoodAnswer(node)
+                selectedNodes[touch] = nil
+                dropAction(node)
+                break
+            } else if node.fullyContains(bounds: dropAreas[1].frame) {
+                gameEngine?.trials += 1
+                snapBack(node: node, touch: touch)
+                break
+            }
+
+            // dropped outside the bounds of dropArea
+            snapBack(node: node, touch: touch)
         }
     }
 }
