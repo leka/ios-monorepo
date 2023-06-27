@@ -4,24 +4,23 @@
 
 import SwiftUI
 
+public enum DataType {
+    case color, image, text
+}
+
 public class Data {
     public var choices: [ChoiceViewModel]
     public var rightAnswers: [ChoiceViewModel]
+    public var types: [DataType]
     public var answersNumber: Int?
-    public var colors: [Color]?
-    public var images: [Image]?
-    public var texts: [String]?
 
     public init(
-        choices: [ChoiceViewModel], rightAnswers: [ChoiceViewModel], answersNumber: Int? = nil, colors: [Color]? = nil,
-        images: [Image]? = nil,
-        texts: [String]? = nil
+        choices: [ChoiceViewModel], rightAnswers: [ChoiceViewModel], types: [DataType],
+        answersNumber: Int? = nil
     ) {
         self.choices = choices
         self.rightAnswers = rightAnswers
+        self.types = types
         self.answersNumber = answersNumber
-        self.colors = colors
-        self.images = images
-        self.texts = texts
     }
 }
