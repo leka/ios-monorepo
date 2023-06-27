@@ -17,26 +17,11 @@ public struct ChoiceViewModel: Identifiable, Equatable, Comparable {
     }
 
     public let id: UUID = UUID()
-    public let color: Color
+    public let item: String
     public var status: ChoiceViewStatus
 
-    init(color: Color, status: ChoiceViewStatus = .notSelected) {
-        self.color = color
+    public init(item: String, status: ChoiceViewStatus = .notSelected) {
+        self.item = item
         self.status = status
     }
-
-    static public let listThreeChoices: [ChoiceViewModel] = [
-        ChoiceViewModel(color: .red),
-        ChoiceViewModel(color: .blue),
-        ChoiceViewModel(color: .yellow),
-    ]
-
-    static public let listSixChoices: [ChoiceViewModel] = [
-        ChoiceViewModel(color: .red),
-        ChoiceViewModel(color: .blue),
-        ChoiceViewModel(color: .green),
-        ChoiceViewModel(color: .purple),
-        ChoiceViewModel(color: .yellow),
-        ChoiceViewModel(color: .pink),
-    ]
 }
