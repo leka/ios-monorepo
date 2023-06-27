@@ -7,8 +7,7 @@ import Foundation
 
 public class SelectAllRightAnswers: GameplayProtocol {
     public let name = "Select All Right Answers"
-
-    public var rightAnswers: [ChoiceViewModel]
+    public let rightAnswers: [ChoiceViewModel]
     @Published public var choices: [ChoiceViewModel]
     @Published public var isFinished: Bool = false
 
@@ -23,13 +22,12 @@ public class SelectAllRightAnswers: GameplayProtocol {
     }
 
     public func process(choice: ChoiceViewModel) {
-        if rightAnswers.contains(where: { choice.id == $0.id }) {
+        if rightAnswers.contains(where: { choice.item == $0.item }) {
             if let index = choices.firstIndex(where: { $0.id == choice.id && $0.status != .playingRightAnimation }) {
                 self.choices[index].status = .playingRightAnimation
 
                 rightAnswersGiven.append(self.choices[index])
             }
-
         } else {
             if let index = choices.firstIndex(where: { $0.id == choice.id }) {
                 self.choices[index].status = .playingWrongAnimation
@@ -50,6 +48,7 @@ public class SelectAllRightAnswers: GameplayProtocol {
                     self.choices[index].status = .notSelected
                 }
             }
+            rightAnswersGiven.removeAll()
             self.isFinished = true
         }
     }

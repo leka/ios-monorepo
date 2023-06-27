@@ -20,7 +20,7 @@ public class SelectTheRightAnswer: GameplayProtocol {
     }
 
     public func process(choice: ChoiceViewModel) {
-        if choice.id == rightAnswers[0].id {
+        if choice.item == rightAnswers[0].item {
             if let index = choices.firstIndex(where: { $0.id == choice.id }) {
                 self.choices[index].status = .playingRightAnimation
 
