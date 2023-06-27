@@ -74,7 +74,7 @@ class ExplorerActivity: ObservableObject {
                 return Array(stepAnswers.prefix(5))
             case .touch6, .soundTouch6:
                 return Array(stepAnswers.prefix(6))
-            case .basket1, .dropArea1:
+            case .basket1, .dropArea1, .dropArea2Asset1:
                 return Array(dragAndDropAnswers.prefix(1))
             case .basket2:
                 return Array(dragAndDropAnswers.prefix(2))
@@ -95,18 +95,18 @@ class ExplorerActivity: ObservableObject {
     // swiftlint:enable cyclomatic_complexity
 
     // ready to work with more than 1 good answers
-    private func setGoodAnswers() -> [String] {
+    private func setGoodAnswers() -> [[String]] {
         switch interface {
-            case .basket1, .basket2, .basket4, .dropArea1, .dropArea3:
-                return ["watermelon"]
+            case .basket1, .basket2, .basket4, .dropArea1, .dropArea3, .dropArea2Asset1:
+                return [["watermelon"]]
             case .basketEmpty:
-                return ["watermelon", "banana"]
+                return [["watermelon", "banana"]]
             case .colorQuest1, .colorQuest2, .colorQuest3:
-                return ["green"]
-            case .remoteStandard, .remoteArrow, .xylophone:
-                return [""]
+                return [["green"]]
+            case .remoteStandard, .remoteArrow, .xylophone, .danceFreeze:
+                return [[""]]
             default:
-                return ["dummy_1"]
+                return [["dummy_1"]]
         }
     }
 
@@ -138,10 +138,16 @@ class ExplorerActivity: ObservableObject {
             case .colorQuest:
                 return "Touche la couleur verte"
             case .dragAndDrop:
-                guard interface == .basketEmpty else {
-                    return "Fais glisser la pastèque dans le panier"
+                switch interface {
+                    case .basketEmpty:
+                        return "Fais glisser la pastèque et la banane dans le panier"
+                    case .dropArea1, .dropArea3:
+                        return "Fais glisser la pastèque dans la cuisine"
+                    case .dropArea2Asset1:
+                        return "Fais glisser chaque objet sur l'image correspodante"
+                    default:
+                        return "Fais glisser la pastèque dans le panier"
                 }
-                return "Fais glisser la pastèque et la banane dans le panier"
             case .xylophone:
                 return "Joue du xylophone avec Leka"
             case .remote:

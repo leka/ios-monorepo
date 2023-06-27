@@ -5,7 +5,9 @@
 import Foundation
 import SpriteKit
 
-class DropAreaOne: DragAndDropScene {
+class DropAreaTwoAssetOne: DragAndDropScene {
+
+    var rightSideDropArea = SKSpriteNode()
 
     override func reset() {
         self.removeAllChildren()
@@ -21,9 +23,16 @@ class DropAreaOne: DragAndDropScene {
     override func makeDropArea() {
         dropArea.size = CGSize(width: 450, height: 350)
         dropArea.texture = SKTexture(imageNamed: "kitchen_asset_1")
-        dropArea.position = CGPoint(x: size.width / 2, y: 190)
-        dropArea.name = "drop_area"
+        dropArea.position = CGPoint(x: (size.width / 2) - 275, y: 190)
+        dropArea.name = "left_side_drop_area"
+
+        rightSideDropArea.size = CGSize(width: 450, height: 350)
+        rightSideDropArea.texture = SKTexture(imageNamed: "bathroom_asset_1")
+        rightSideDropArea.position = CGPoint(x: (size.width / 2) + 275, y: 190)
+        rightSideDropArea.name = "left_side_drop_area"
+
         addChild(dropArea)
+        addChild(rightSideDropArea)
 
         for item in gameEngine!.correctAnswersIndices[0] {
             let expectedItem = gameEngine!.allAnswers[item]

@@ -69,7 +69,7 @@ struct Step: Codable, Equatable, Identifiable {
     var id: UUID
     var interface: GameLayout
     var instruction: LocalizedContent
-    var correctAnswers: [String]
+    var correctAnswers: [[String]]
     var allAnswers: [String]
     var sound: [String]?
 
@@ -77,7 +77,7 @@ struct Step: Codable, Equatable, Identifiable {
         id: UUID = UUID(),
         interface: GameLayout,
         instruction: LocalizedContent = LocalizedContent(),
-        correctAnswers: [String] = [],
+        correctAnswers: [[String]] = [],
         allAnswers: [String] = [],
         sound: [String]? = []
     ) {

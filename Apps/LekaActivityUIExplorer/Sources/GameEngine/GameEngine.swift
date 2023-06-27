@@ -18,7 +18,7 @@ class GameEngine: NSObject, ObservableObject {
     @Published var allAnswers: [String] = ["dummy_1"]
     @Published var interface: GameLayout = .touch1
     @Published var stepInstruction: String = "Nothing to display"
-    @Published var correctAnswersIndices: [Int] = [0]
+    @Published var correctAnswersIndices: [[Int]] = [[0]]
     @Published var allAnswersAreDisabled: Bool = false
     @Published var tapIsDisabled: Bool = false
     @Published var displayAnswer: Bool = false
@@ -81,17 +81,6 @@ class GameEngine: NSObject, ObservableObject {
         }
     }
 
-    // Initialization of the progressBar with empty Markers (on BufferActivity)
-    private func resetStepMarkers() {
-        groupedStepMarkerColors.removeAll()
-        for group in bufferActivity.stepSequence.indices {
-            groupedStepMarkerColors.append([])
-            for _ in bufferActivity.stepSequence[group] {
-                groupedStepMarkerColors[group].append(.clear)
-            }
-        }
-    }
-
     // Randomize steps & prevent 2 identical steps in a row (within BufferActivity)
     private func randomizeSteps() {
         if bufferActivity.isRandom {
@@ -108,7 +97,7 @@ class GameEngine: NSObject, ObservableObject {
     func setupCurrentStep() {
         trials = 0
         correctAnswerAnimationPercent = 0
-        correctAnswersIndices = []
+        correctAnswersIndices = [[0]]
         rightAnswersGiven = []
         pressedAnswerIndex = nil
         displayAnswer = false
@@ -152,12 +141,20 @@ class GameEngine: NSObject, ObservableObject {
     }
 
     // Pick up Correct answers' indices
-    private func getCorrectAnswersIndices() {
+    private func getCorrectAnswersIndices() {  // HERE
         correctAnswersIndices = []
-        for (index, answer) in allAnswers.enumerated()
-        where currentActivity.stepSequence[currentGroupIndex][currentStepIndex].correctAnswers.contains(answer) {
-            correctAnswersIndices.append(index)
+        for (indexG, group) in currentActivity.stepSequence[currentGroupIndex][currentStepIndex].correctAnswers
+            .enumerated()
+        {
+            correctAnswersIndices.append([])
+            for (indexA, answer) in allAnswers.enumerated() where group.contains(answer) {
+                correctAnswersIndices[indexG].append(indexA)
+            }
         }
+        // for (index, answer) in allAnswers.enumerated()
+        // where currentActivity.stepSequence[currentGroupIndex][currentStepIndex].correctAnswers.contains(answer) {
+        //     correctAnswersIndices.append(index)
+        // }
     }
 
     // setup player and "buttons' overlay" if needed depending on activity type
@@ -181,10 +178,10 @@ class GameEngine: NSObject, ObservableObject {
 
     // MARK: - Answering Logic
     // Prevent multiple taps, deal with success or failure
-    func answerHasBeenPressed(atIndex: Int) {
-        tapIsDisabled.toggle()  // true
+    func answerHasBeenPressed(atIndex: Int) {  // HERE
+        tapIsDisabled = true
         pressedAnswerIndex = atIndex
-        if correctAnswersIndices.contains(atIndex) {
+        if correctAnswersIndices[0].contains(atIndex) {
             rightAnswersGiven.append(atIndex)
             if allCorrectAnswersWereGiven() {
                 trials += 1
@@ -198,10 +195,12 @@ class GameEngine: NSObject, ObservableObject {
         }
     }
 
-    func allCorrectAnswersWereGiven() -> Bool {
+    func allCorrectAnswersWereGiven() -> Bool {  // HERE
         rightAnswersGiven.sort()
-        correctAnswersIndices.sort()
-        return rightAnswersGiven.elementsEqual(correctAnswersIndices)
+        // correctAnswersIndices.sort()
+        var flattenedCorrectAnswersIndices = correctAnswersIndices.flatMap({ $0 })
+        flattenedCorrectAnswersIndices.sort()
+        return rightAnswersGiven.elementsEqual(flattenedCorrectAnswersIndices)
     }
 
     private func rewardsAnimations() {
@@ -223,17 +222,6 @@ class GameEngine: NSObject, ObservableObject {
                 await runReinforcerScenario()
             }
         }
-    }
-
-    private func endGame() async {
-        setMarkerColor(forGroup: currentGroupIndex, atIndex: currentStepIndex)
-        calculateSuccessPercent()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            self.showEndAnimation = true
-            self.showBlurryBG = true
-            self.tapIsDisabled = false
-        }
-        print("EndGame")
     }
 
     // Show, Then Hide Reinforcer animation + Setup for next Step
@@ -277,51 +265,5 @@ class GameEngine: NSObject, ObservableObject {
     private func resumeAfterFail() async {
         tapIsDisabled = false
         pressedAnswerIndex = nil
-    }
-
-    // MARK: - End current round
-    // Final % of good answers
-    private func calculateSuccessPercent() {
-        percentOfSuccess = Int(
-            (Double(goodAnswers) * 100) / Double(currentActivity.stepsAmount).rounded(.toNearestOrAwayFromZero))
-        if percentOfSuccess == 0 {
-            result = .fail
-        } else if percentOfSuccess >= 80 {
-            result = .success
-        } else {
-            result = .medium
-        }
-    }
-
-    // MARK: - Reset Activity
-    func resetActivity() {
-        showBlurryBG = false
-        showEndAnimation = false
-        currentActivity = Activity()
-        allAnswers = []
-        stepInstruction = "Nothing to display"
-    }
-
-    // Transition to the beginning of Current activity for replay
-    func replayCurrentActivity() {
-        Task {
-            setupGame()
-            showBlurryBG = false
-            showEndAnimation = false
-        }
-    }
-
-    // MARK: - ProgressBar & Markers for currentActivity
-    private func setMarkerColor(forGroup: Int, atIndex: Int) {
-        if trials == 1 {
-            goodAnswers += 1
-            groupedStepMarkerColors[forGroup][atIndex] = .green
-        } else if trials == 2 {
-            groupedStepMarkerColors[forGroup][atIndex] = .orange
-        } else if trials > 2 {
-            groupedStepMarkerColors[forGroup][atIndex] = .red
-        } else {
-            groupedStepMarkerColors[forGroup][atIndex] = .clear
-        }
     }
 }
