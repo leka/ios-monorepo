@@ -25,18 +25,11 @@ public let dataThree = Data(
     choices: listThreeChoices,
     rightAnswers: [listThreeChoices[1]])
 
-public let gameplayOneRightAnswerThreeInlineData = SelectTheRightAnswer(
-    choices: dataThree.choices, rightAnswers: dataThree.rightAnswers)
-
-public let oneAnswerThreeInlineVMData = ThreeChoicesInlineVM(
-    gameplay: gameplayOneRightAnswerThreeInlineData)
-
 public let dataSix = Data(
     choices: listSixChoices,
     rightAnswers: [listSixChoices[2], listSixChoices[3], listSixChoices[4]])
 
-public let gameplaySomeRightAnswerSixGridData = SelectSomeRightAnswers(
-    choices: dataSix.choices, rightAnswers: dataSix.rightAnswers, rightAnswersToFind: 2)
+public var gameEngineThree = GameEngine(
+    data: dataThree, gameplay: .selectTheRightAnswer)
 
-public let oneAnswerSixGridVM = SixChoicesGridVM(
-    gameplay: gameplaySomeRightAnswerSixGridData)
+public var gameEngineSix = GameEngine(data: dataSix, gameplay: .selectAllRightAnswers)
