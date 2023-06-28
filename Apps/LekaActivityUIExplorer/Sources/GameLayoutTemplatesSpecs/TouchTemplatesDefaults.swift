@@ -164,6 +164,7 @@ public enum DragAndDrop {
     public static let dropArea3: BaseDefaults? = nil
     public static let dropArea2Asset1: BaseDefaults? = nil
     public static let dropArea2Assets2: BaseDefaults? = nil
+    public static let dropArea2Assets6: BaseDefaults? = nil
 }
 
 public enum DanceFreeze {
