@@ -59,9 +59,9 @@ struct InteractionsView: View {
             case .basketEmpty:
                 DragAndDropSceneView(withTemplate: EmptyBasketScene())
             case .dropArea1:
-                DragAndDropSceneView(withTemplate: DropAreaOne())
+                DragAndDropSceneView(withTemplate: DropAreaOneAssetOne())
             case .dropArea3:
-                DragAndDropSceneView(withTemplate: DropAreaThree())
+                DragAndDropSceneView(withTemplate: DropAreaOneAssetsThree())
             case .dropArea2Asset1:
                 DragAndDropSceneView(withTemplate: DropAreaTwoAssetOne())
             case .dropArea2Assets2:

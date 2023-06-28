@@ -5,7 +5,7 @@
 import Foundation
 import SpriteKit
 
-class DropAreaThree: DropAreaOne {
+class DropAreaOneAssetsThree: DropAreaOneAssetOne {
 
     override func reset() {
         self.removeAllChildren()
