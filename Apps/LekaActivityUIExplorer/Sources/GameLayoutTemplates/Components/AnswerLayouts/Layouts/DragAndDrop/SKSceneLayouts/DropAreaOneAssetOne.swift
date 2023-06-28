@@ -5,7 +5,7 @@
 import Foundation
 import SpriteKit
 
-class DropAreaOne: DragAndDropScene {
+class DropAreaOneAssetOne: DragAndDropScene {
 
     override func reset() {
         self.removeAllChildren()
