@@ -5,9 +5,9 @@
 import SwiftUI
 
 public struct SixChoicesGridView: View {
-    @ObservedObject private var viewModel: SixChoicesGridVM
+    @ObservedObject private var viewModel: GenericViewModel
 
-    public init(viewModel: SixChoicesGridVM) {
+    public init(viewModel: GenericViewModel) {
         self.viewModel = viewModel
     }
 

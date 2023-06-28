@@ -5,9 +5,9 @@
 import SwiftUI
 
 public struct ThreeChoicesInlineView: View {
-    @ObservedObject private var viewModel: ThreeChoicesInlineVM
+    @ObservedObject private var viewModel: GenericViewModel
 
-    public init(viewModel: ThreeChoicesInlineVM) {
+    public init(viewModel: GenericViewModel) {
         self.viewModel = viewModel
     }
 
