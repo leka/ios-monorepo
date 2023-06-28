@@ -5,6 +5,7 @@
 import Combine
 import SwiftUI
 
+// Useless if GenericViewModel is used 
 public class SixChoicesGridVM: Identifiable, ObservableObject {
     public let name = "Six choices"
     public var gameplay: any GameplayProtocol

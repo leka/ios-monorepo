@@ -5,19 +5,19 @@
 import Combine
 import SwiftUI
 
-// Useless if GenericViewModel is used 
-public class ThreeChoicesInlineVM: Identifiable, ObservableObject {
-    public let name = "Three choices"
+public class GenericViewModel: Identifiable, ObservableObject {
     public var gameplay: any GameplayProtocol
 
     @Published public var choices: [ChoiceViewModel]
     @Published public var isFinished = false
 
+    public var choicesPublisher: Published<[ChoiceViewModel]>.Publisher { $choices }
+    public var isFinishedPublisher: Published<Bool>.Publisher { $isFinished }
+
     private var cancellables: Set<AnyCancellable> = []
 
     public init(gameplay: any GameplayProtocol) {
         self.gameplay = gameplay
-        guard self.gameplay.choices.count == 3 else { fatalError("Wrong size of array") }
         self.choices = self.gameplay.choices
         self.gameplay.choicesPublisher
             .receive(on: DispatchQueue.main)
