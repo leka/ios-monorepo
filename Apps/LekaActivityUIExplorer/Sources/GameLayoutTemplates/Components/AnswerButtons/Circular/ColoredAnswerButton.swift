@@ -13,7 +13,7 @@ struct ColoredAnswerButton: View {
 
     var body: some View {
         Button {
-            gameEngine.answerHasBeenPressed(atIndex: answer)
+            gameEngine.answerHasBeenGiven(atIndex: answer)
         } label: {
             Circle()
                 .foregroundColor(gameEngine.stringToColor(from: gameEngine.allAnswers[safeAnswer]))

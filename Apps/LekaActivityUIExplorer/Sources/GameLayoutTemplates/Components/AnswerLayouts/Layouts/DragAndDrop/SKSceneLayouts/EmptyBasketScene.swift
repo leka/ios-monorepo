@@ -27,11 +27,12 @@ class EmptyBasketScene: DragAndDropScene {
         dropArea.name = "drop_area"
         addChild(dropArea)
 
+        expectedItemsNodes.append([])
         for item in gameEngine!.correctAnswersIndices[0] {
             let expectedItem = gameEngine!.allAnswers[item]
             let expectedNode = SKSpriteNode()
             expectedNode.name = expectedItem
-            expectedItemsNodes.append(expectedNode)
+            expectedItemsNodes[0].append(expectedNode)
         }
     }
 
