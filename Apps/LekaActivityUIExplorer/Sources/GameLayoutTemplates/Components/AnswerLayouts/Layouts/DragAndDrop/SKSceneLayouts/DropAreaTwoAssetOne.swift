@@ -38,11 +38,19 @@ class DropAreaTwoAssetOne: DragAndDropScene {
         addChild(dropArea)
         addChild(rightSideDropArea)
 
-        for item in gameEngine!.correctAnswersIndices[0] {
-            let expectedItem = gameEngine!.allAnswers[item]
-            let expectedNode = SKSpriteNode()
-            expectedNode.name = expectedItem
-            expectedItemsNodes.append(expectedNode)
+        getExpectedItems()
+    }
+
+    override func getExpectedItems() {
+        // expected answer
+        for (indexG, group) in gameEngine!.correctAnswersIndices.enumerated() {
+            expectedItemsNodes.append([])
+            for item in group {
+                let expectedItem = gameEngine!.allAnswers[item]
+                let expectedNode = SKSpriteNode()
+                expectedNode.name = expectedItem
+                expectedItemsNodes[indexG].append(expectedNode)
+            }
         }
     }
 
@@ -62,7 +70,6 @@ class DropAreaTwoAssetOne: DragAndDropScene {
             if !selectedNodes.keys.contains(touch) {
                 break
             }
-            //            endAbscissa = touch.location(in: self).x
             let node: DraggableItemNode = selectedNodes[touch]!
             node.scaleForMax(sizeOf: biggerSide)
 
@@ -70,8 +77,8 @@ class DropAreaTwoAssetOne: DragAndDropScene {
 
             // dropped within the bounds of one of the dropAreas
             if node.fullyContains(bounds: dropAreas[0].frame) {
-                gameEngine?.answerHasBeenPressed(atIndex: index!)
-                guard expectedItemsNodes.first(where: { $0.name == node.name }) != nil else {
+                gameEngine?.answerHasBeenGiven(atIndex: index!)
+                guard expectedItemsNodes[0].first(where: { $0.name == node.name }) != nil else {
                     snapBack(node: node, touch: touch)
                     break
                 }
@@ -80,7 +87,7 @@ class DropAreaTwoAssetOne: DragAndDropScene {
                 dropAction(node)
                 break
             } else if node.fullyContains(bounds: dropAreas[1].frame) {
-                gameEngine?.trials += 1
+                gameEngine?.answerHasBeenGiven(atIndex: index!, withinGroup: 1)
                 snapBack(node: node, touch: touch)
                 break
             }

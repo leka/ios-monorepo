@@ -164,7 +164,7 @@ enum RemotePreviews: Int, CaseIterable, Previewable {
 }
 
 enum DragAndDropPreviews: Int, CaseIterable, Previewable {
-    case basket1, basket2, basket4, emptyBasket, dropArea1, dropArea3, dropArea2Asset1
+    case basket1, basket2, basket4, emptyBasket, dropArea1, dropArea3, dropArea2Asset1, dropArea2Assets2
     var type: ActivityType { return .dragAndDrop }
     var interface: GameLayout {
         switch self {
@@ -175,6 +175,7 @@ enum DragAndDropPreviews: Int, CaseIterable, Previewable {
             case .dropArea1: return .dropArea1
             case .dropArea3: return .dropArea3
             case .dropArea2Asset1: return .dropArea2Asset1
+            case .dropArea2Assets2: return .dropArea2Assets2
         }
     }
     var preview: String {
@@ -186,6 +187,7 @@ enum DragAndDropPreviews: Int, CaseIterable, Previewable {
             case .dropArea1: return "drop_area_1"
             case .dropArea3: return "drop_area_1_assets_3"
             case .dropArea2Asset1: return "drop_area_2"
+            case .dropArea2Assets2: return "drop_area_2_assets_2"
         }
     }
     func defaults() -> BaseDefaults? {
@@ -193,6 +195,7 @@ enum DragAndDropPreviews: Int, CaseIterable, Previewable {
             case .dropArea1: return DragAndDrop.dropArea1
             case .dropArea3: return DragAndDrop.dropArea3
             case .dropArea2Asset1: return DragAndDrop.dropArea2Asset1
+            case .dropArea2Assets2: return DragAndDrop.dropArea2Assets2
             default: return DragAndDrop.basket
         }
     }

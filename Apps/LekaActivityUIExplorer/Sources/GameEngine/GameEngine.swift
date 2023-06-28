@@ -141,7 +141,7 @@ class GameEngine: NSObject, ObservableObject {
     }
 
     // Pick up Correct answers' indices
-    private func getCorrectAnswersIndices() {  // HERE
+    private func getCorrectAnswersIndices() {
         correctAnswersIndices = []
         for (indexG, group) in currentActivity.stepSequence[currentGroupIndex][currentStepIndex].correctAnswers
             .enumerated()
@@ -151,10 +151,6 @@ class GameEngine: NSObject, ObservableObject {
                 correctAnswersIndices[indexG].append(indexA)
             }
         }
-        // for (index, answer) in allAnswers.enumerated()
-        // where currentActivity.stepSequence[currentGroupIndex][currentStepIndex].correctAnswers.contains(answer) {
-        //     correctAnswersIndices.append(index)
-        // }
     }
 
     // setup player and "buttons' overlay" if needed depending on activity type
@@ -178,10 +174,15 @@ class GameEngine: NSObject, ObservableObject {
 
     // MARK: - Answering Logic
     // Prevent multiple taps, deal with success or failure
-    func answerHasBeenPressed(atIndex: Int) {  // HERE
+    func answerHasBeenGiven(atIndex: Int, withinGroup: Int = 0) {
         tapIsDisabled = true
         pressedAnswerIndex = atIndex
-        if correctAnswersIndices[0].contains(atIndex) {
+        guard withinGroup <= correctAnswersIndices.count - 1 else {
+            trials += 1
+            sameStepAgain()
+            return
+        }
+        if correctAnswersIndices[withinGroup].contains(atIndex) {
             rightAnswersGiven.append(atIndex)
             if allCorrectAnswersWereGiven() {
                 trials += 1
@@ -195,9 +196,8 @@ class GameEngine: NSObject, ObservableObject {
         }
     }
 
-    func allCorrectAnswersWereGiven() -> Bool {  // HERE
+    func allCorrectAnswersWereGiven() -> Bool {
         rightAnswersGiven.sort()
-        // correctAnswersIndices.sort()
         var flattenedCorrectAnswersIndices = correctAnswersIndices.flatMap({ $0 })
         flattenedCorrectAnswersIndices.sort()
         return rightAnswersGiven.elementsEqual(flattenedCorrectAnswersIndices)
