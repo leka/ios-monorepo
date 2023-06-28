@@ -8,14 +8,8 @@ import SwiftUI
 struct ContentView: View {
 
     var body: some View {
-        //        ThreeChoicesInlineView(viewModel: oneAnswerThreeInlineVM)
+        //        ThreeChoicesInlineView(viewModel: gameEngineThree.viewModel)
 
-        SixChoicesGridView(viewModel: oneAnswerSixGridVM)
-    }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
+        SixChoicesGridView(viewModel: gameEngineSix.viewModel)
     }
 }
