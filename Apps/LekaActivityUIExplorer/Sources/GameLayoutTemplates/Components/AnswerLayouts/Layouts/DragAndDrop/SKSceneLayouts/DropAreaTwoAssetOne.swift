@@ -31,7 +31,7 @@ class DropAreaTwoAssetOne: DragAndDropScene {
         rightSideDropArea.size = CGSize(width: 450, height: 350)
         rightSideDropArea.texture = SKTexture(imageNamed: "bathroom_asset_1")
         rightSideDropArea.position = CGPoint(x: (size.width / 2) + 275, y: 190)
-        rightSideDropArea.name = "left_side_drop_area"
+        rightSideDropArea.name = "right_side_drop_area"
 
         dropAreas = [dropArea, rightSideDropArea]
 

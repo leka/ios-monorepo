@@ -73,7 +73,7 @@ class ExplorerActivity: ObservableObject {
             case .touch5:
                 return Array(stepAnswers.prefix(5))
             case .touch6, .soundTouch6:
-                return Array(stepAnswers.prefix(6))
+                return stepAnswers
             case .basket1, .dropArea1, .dropArea2Asset1:
                 return Array(dragAndDropAnswers.prefix(1))
             case .basket2, .dropArea2Assets2:
@@ -82,6 +82,8 @@ class ExplorerActivity: ObservableObject {
                 return Array(dragAndDropAnswers.prefix(4))
             case .basketEmpty, .dropArea3:
                 return Array(dragAndDropAnswers.prefix(3))
+            case .dropArea2Assets6:
+                return dragAndDropAnswers
             case .colorQuest1:
                 return Array(colorAnswers.prefix(1))
             case .colorQuest2:
@@ -99,10 +101,12 @@ class ExplorerActivity: ObservableObject {
         switch interface {
             case .basket1, .basket2, .basket4, .dropArea1, .dropArea3, .dropArea2Asset1:
                 return [["watermelon"]]
-            case .dropArea2Assets2:
-                return [["watermelon"], ["banana"]]
             case .basketEmpty:
                 return [["watermelon", "banana"]]
+            case .dropArea2Assets2:
+                return [["watermelon"], ["banana"]]
+            case .dropArea2Assets6:
+                return [["watermelon", "banana", "kiwi"], ["avocado", "cherry", "strawberry"]]
             case .colorQuest1, .colorQuest2, .colorQuest3:
                 return [["green"]]
             case .remoteStandard, .remoteArrow, .xylophone, .danceFreeze:
@@ -145,7 +149,7 @@ class ExplorerActivity: ObservableObject {
                         return "Fais glisser la pastèque et la banane dans le panier"
                     case .dropArea1, .dropArea3, .dropArea2Asset1:
                         return "Fais glisser la pastèque dans la cuisine"
-                    case .dropArea2Assets2:
+                    case .dropArea2Assets2, .dropArea2Assets6:
                         return "Fais glisser chaque objet sur l'image qui convient"
                     default:
                         return "Fais glisser la pastèque dans le panier"

@@ -30,7 +30,8 @@ enum ActivityType: String, Codable {
 enum GameLayout: Codable {
     case touch1, touch2, touch3, touch3Inline, touch4, touch4Inline, touch5, touch6
     case soundTouch1, soundTouch2, soundTouch3, soundTouch3Inline, soundTouch4, soundTouch4Inline, soundTouch6
-    case basket1, basket2, basket4, basketEmpty, dropArea1, dropArea3, dropArea2Asset1, dropArea2Assets2
+    case basket1, basket2, basket4, basketEmpty
+    case dropArea1, dropArea3, dropArea2Asset1, dropArea2Assets2, dropArea2Assets6
     case colorQuest1, colorQuest2, colorQuest3
     case remoteStandard, remoteArrow
     case xylophone
