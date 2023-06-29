@@ -9,6 +9,8 @@ import Foundation
 
 enum UpdateProcessStage {
     case initial
+    case sendingUpdate
+    case installingUpdate
 }
 
 enum UpdateStatusError: Error {
@@ -20,7 +22,7 @@ enum UpdateStatusError: Error {
 
 class UpdateProcessController {
 
-    // MARK: - Private variables 
+    // MARK: - Private variables
 
     private var currentUpdateProcess: any UpdateProcessProtocol
 
