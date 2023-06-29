@@ -31,7 +31,7 @@ class UpdateProcessTemplate: UpdateProcessProtocol {
 
     // MARK: - Public variables
 
-    public var currentStage = CurrentValueSubject<UpdateProcessStage, UpdateStatusError>(.initial)
+    public var currentStage = CurrentValueSubject<UpdateProcessStage, UpdateProcessError>(.initial)
 
     init() {
         subscribeToStateUpdate()

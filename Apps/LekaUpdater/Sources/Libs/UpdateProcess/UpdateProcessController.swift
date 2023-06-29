@@ -13,7 +13,7 @@ enum UpdateProcessStage {
     case installingUpdate
 }
 
-enum UpdateStatusError: Error {
+enum UpdateProcessError: Error {
     case unknown
     case updateProcessNotAvailable
 }
@@ -28,7 +28,7 @@ class UpdateProcessController {
 
     // MARK: - Public variables
 
-    public var currentStage = CurrentValueSubject<UpdateProcessStage, UpdateStatusError>(.initial)
+    public var currentStage = CurrentValueSubject<UpdateProcessStage, UpdateProcessError>(.initial)
 
     init(robot: DummyRobotModel) {
         let currentRobotVersion = robot.osVersion
