@@ -5,10 +5,10 @@
 import SwiftUI
 
 public struct SixChoicesGridView: View {
-    @ObservedObject private var viewModel: GenericViewModel
+    @ObservedObject private var viewModel: SixChoicesGridViewModel
 
-    public init(viewModel: GenericViewModel) {
-        self.viewModel = viewModel
+    public init(gameplay: any GameplayProtocol) {
+        self.viewModel = SixChoicesGridViewModel(gameplay: gameplay)
     }
 
     public var body: some View {
@@ -18,68 +18,28 @@ public struct SixChoicesGridView: View {
         ) {
             GridRow {
                 ForEach(0..<3) { index in
-                    let item = viewModel.choices[index].item
                     let choice = viewModel.choices[index]
 
-                    switch choice.type {
-                        case .color:
-                            ColoredAnswerView(color: item, status: choice.status)
-                                .simultaneousGesture(
-                                    TapGesture()
-                                        .onEnded {
-                                            viewModel.onChoiceTapped(choice: choice)
-                                        }
-                                )
-                        case .image:
-                            ImageAnswerView(image: item, status: choice.status)
-                                .simultaneousGesture(
-                                    TapGesture()
-                                        .onEnded {
-                                            viewModel.onChoiceTapped(choice: choice)
-                                        }
-                                )
-                        case .text:
-                            TextAnswerView(text: item, status: choice.status)
-                                .simultaneousGesture(
-                                    TapGesture()
-                                        .onEnded {
-                                            viewModel.onChoiceTapped(choice: choice)
-                                        }
-                                )
-                    }
+                    ChoiceView(choice: choice)
+                        .simultaneousGesture(
+                            TapGesture()
+                                .onEnded {
+                                    viewModel.onChoiceTapped(choice: choice)
+                                }
+                        )
                 }
             }
             GridRow {
                 ForEach(3..<6) { index in
-                    let item = viewModel.choices[index].item
                     let choice = viewModel.choices[index]
 
-                    switch choice.type {
-                        case .color:
-                            ColoredAnswerView(color: item, status: choice.status)
-                                .simultaneousGesture(
-                                    TapGesture()
-                                        .onEnded {
-                                            viewModel.onChoiceTapped(choice: choice)
-                                        }
-                                )
-                        case .image:
-                            ImageAnswerView(image: item, status: choice.status)
-                                .simultaneousGesture(
-                                    TapGesture()
-                                        .onEnded {
-                                            viewModel.onChoiceTapped(choice: choice)
-                                        }
-                                )
-                        case .text:
-                            TextAnswerView(text: item, status: choice.status)
-                                .simultaneousGesture(
-                                    TapGesture()
-                                        .onEnded {
-                                            viewModel.onChoiceTapped(choice: choice)
-                                        }
-                                )
-                    }
+                    ChoiceView(choice: choice)
+                        .simultaneousGesture(
+                            TapGesture()
+                                .onEnded {
+                                    viewModel.onChoiceTapped(choice: choice)
+                                }
+                        )
                 }
             }
 

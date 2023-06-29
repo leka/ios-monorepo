@@ -5,45 +5,25 @@
 import SwiftUI
 
 public struct ThreeChoicesInlineView: View {
-    @ObservedObject private var viewModel: GenericViewModel
+    @ObservedObject private var viewModel: ThreeChoicesInlineViewModel
 
-    public init(viewModel: GenericViewModel) {
-        self.viewModel = viewModel
+    public init(gameplay: any GameplayProtocol) {
+        self.viewModel = ThreeChoicesInlineViewModel(gameplay: gameplay)
     }
 
     public var body: some View {
         VStack(spacing: 50) {
             HStack(spacing: 100) {
                 ForEach(0..<3) { index in
-                    let item = viewModel.choices[index].item
                     let choice = viewModel.choices[index]
 
-                    switch choice.type {
-                        case .color:
-                            ColoredAnswerView(color: item, status: choice.status)
-                                .simultaneousGesture(
-                                    TapGesture()
-                                        .onEnded {
-                                            viewModel.onChoiceTapped(choice: choice)
-                                        }
-                                )
-                        case .image:
-                            ImageAnswerView(image: item, status: choice.status)
-                                .simultaneousGesture(
-                                    TapGesture()
-                                        .onEnded {
-                                            viewModel.onChoiceTapped(choice: choice)
-                                        }
-                                )
-                        case .text:
-                            TextAnswerView(text: item, status: choice.status)
-                                .simultaneousGesture(
-                                    TapGesture()
-                                        .onEnded {
-                                            viewModel.onChoiceTapped(choice: choice)
-                                        }
-                                )
-                    }
+                    ChoiceView(choice: choice)
+                        .simultaneousGesture(
+                            TapGesture()
+                                .onEnded {
+                                    viewModel.onChoiceTapped(choice: choice)
+                                }
+                        )
                 }
             }
 
