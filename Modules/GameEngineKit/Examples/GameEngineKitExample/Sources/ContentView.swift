@@ -6,8 +6,10 @@ import GameEngineKit
 import SwiftUI
 
 struct ContentView: View {
-    let threeInlineVM = [oneAnswerThreeInlineVM, allAnswersThreeInlineVM, someAnswersThreeInlineVM]
-    let sixGridVM = [oneAnswerSixGridVM, allAnswersSixGridVM, someAnswersSixGridVM]
+    let threeInlineGameplay = [
+        oneAnswerThreeInlineGameplay, allAnswersThreeInlineGameplay, someAnswersThreeInlineGameplay,
+    ]
+    let sixGridGameplay = [oneAnswerSixGridGameplay, allAnswersSixGridGameplay, someAnswersSixGridGameplay]
 
     var body: some View {
         Grid(
@@ -15,19 +17,19 @@ struct ContentView: View {
             verticalSpacing: 30
         ) {
             GridRow {
-                ForEach(threeInlineVM) { viewModel in
+                ForEach(threeInlineGameplay, id: \.name) { gameplay in
                     NavigationLink {
-                        Text(viewModel.gameplay.name)
+                        Text(gameplay.name)
                             .font(.title)
 
-                        ThreeChoicesInlineView(viewModel: viewModel)
+                        ThreeChoicesInlineView(gameplay: gameplay)
                     } label: {
                         VStack {
-                            Text("Type d'interfaces : \n \(viewModel.name)")
+                            Text("Type d'interfaces : \n Three Choices Inline")
                                 .font(.title2)
                                 .foregroundColor(.black)
                                 .padding(5)
-                            Text("Gameplay : \n \(viewModel.gameplay.name)")
+                            Text("Gameplay : \n \(gameplay.name)")
                                 .font(.title2)
                                 .foregroundColor(.black)
                                 .padding(5)
@@ -44,19 +46,19 @@ struct ContentView: View {
             }
 
             GridRow {
-                ForEach(sixGridVM) { viewModel in
+                ForEach(sixGridGameplay, id: \.name) { gameplay in
                     NavigationLink {
-                        Text(viewModel.gameplay.name)
+                        Text(gameplay.name)
                             .font(.title)
 
-                        SixChoicesGridView(viewModel: viewModel)
+                        SixChoicesGridView(gameplay: gameplay)
                     } label: {
                         VStack {
-                            Text("Type d'interfaces : \n \(viewModel.name)")
+                            Text("Type d'interfaces : \n Six Choices Grid")
                                 .font(.title2)
                                 .foregroundColor(.black)
                                 .padding(5)
-                            Text("Gameplay : \n \(viewModel.gameplay.name)")
+                            Text("Gameplay : \n \(gameplay.name)")
                                 .font(.title2)
                                 .foregroundColor(.black)
                                 .padding(5)
@@ -71,11 +73,5 @@ struct ContentView: View {
                 }
             }
         }
-    }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
     }
 }

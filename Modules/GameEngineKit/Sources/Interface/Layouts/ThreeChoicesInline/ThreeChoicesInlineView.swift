@@ -5,17 +5,19 @@
 import SwiftUI
 
 public struct ThreeChoicesInlineView: View {
-    @ObservedObject private var viewModel: ThreeChoicesInlineVM
+    @ObservedObject private var viewModel: ThreeChoicesInlineViewModel
 
-    public init(viewModel: ThreeChoicesInlineVM) {
-        self.viewModel = viewModel
+    public init(gameplay: any GameplayProtocol) {
+        self.viewModel = ThreeChoicesInlineViewModel(gameplay: gameplay)
     }
 
     public var body: some View {
         VStack(spacing: 50) {
             HStack(spacing: 100) {
-                ForEach(viewModel.choices) { choice in
-                    ColoredAnswerView(color: choice.color, status: choice.status)
+                ForEach(0..<3) { index in
+                    let choice = viewModel.choices[index]
+
+                    ChoiceView(choice: choice)
                         .simultaneousGesture(
                             TapGesture()
                                 .onEnded {
