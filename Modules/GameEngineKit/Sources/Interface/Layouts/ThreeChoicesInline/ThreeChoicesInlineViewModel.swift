@@ -5,9 +5,8 @@
 import Combine
 import SwiftUI
 
-// Useless if GenericViewModel is used 
-public class SixChoicesGridVM: Identifiable, ObservableObject {
-    public let name = "Six choices"
+public class ThreeChoicesInlineViewModel: Identifiable, ObservableObject {
+    public let name = "Three choices"
     public var gameplay: any GameplayProtocol
 
     @Published public var choices: [ChoiceViewModel]
@@ -17,7 +16,7 @@ public class SixChoicesGridVM: Identifiable, ObservableObject {
 
     public init(gameplay: any GameplayProtocol) {
         self.gameplay = gameplay
-        guard self.gameplay.choices.count == 6 else { fatalError("Wrong size of array") }
+        guard self.gameplay.choices.count == 3 else { fatalError("Wrong size of array") }
         self.choices = self.gameplay.choices
         self.gameplay.choicesPublisher
             .receive(on: DispatchQueue.main)

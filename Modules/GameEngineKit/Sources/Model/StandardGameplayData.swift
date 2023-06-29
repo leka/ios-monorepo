@@ -4,7 +4,7 @@
 
 import SwiftUI
 
-public class Data {
+public class StandardGameplayData {
     public var choices: [ChoiceViewModel]
     public var rightAnswers: [ChoiceViewModel]
     public var answersNumber: Int?

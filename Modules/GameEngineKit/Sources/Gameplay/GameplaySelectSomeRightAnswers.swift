@@ -5,7 +5,7 @@
 import Combine
 import Foundation
 
-public class SelectSomeRightAnswers: GameplayProtocol {
+public class GameplaySelectSomeRightAnswers: GameplayProtocol {
     public let name = "Select Some Right Answers"
     public let rightAnswers: [ChoiceViewModel]
     @Published public var choices: [ChoiceViewModel]
