@@ -31,7 +31,7 @@ class UpdateProcessTemplate: UpdateProcessProtocol {
 
     // MARK: - Public variables
 
-    public var currentState = CurrentValueSubject<UpdateStatusState, UpdateStatusError>(.initial)
+    public var currentStage = CurrentValueSubject<UpdateProcessStage, UpdateStatusError>(.initial)
 
     init() {
         subscribeToStateUpdate()
@@ -47,14 +47,14 @@ class UpdateProcessTemplate: UpdateProcessProtocol {
     private func convertCompletion(completion: Subscribers.Completion<UpdateError>) {
         switch completion {
             case .finished:
-                self.currentState.send(completion: .finished)
+                self.currentStage.send(completion: .finished)
             case .failure(let error):
-                self.currentState.send(completion: .failure(.updateProcessNotAvailable))  // only available error
+                self.currentStage.send(completion: .failure(.updateProcessNotAvailable))  // only available error
         }
     }
 
     private func convertReceivedValue(state: UpdateState) {
-        self.currentState.send(.initial)  // only available state
+        self.currentStage.send(.initial)  // only available state
     }
 
     func startProcess() {

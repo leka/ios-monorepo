@@ -26,7 +26,7 @@ class UpdateStatusDemoViewModel: ObservableObject {
     }
 
     private func subscribeToStateUpdate() {
-        self.updateProcessController.currentState
+        self.updateProcessController.currentStage
             .receive(on: DispatchQueue.main)
             .sink { completion in
                 switch completion {

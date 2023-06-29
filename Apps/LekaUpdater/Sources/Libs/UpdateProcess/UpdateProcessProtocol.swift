@@ -7,7 +7,7 @@ import Foundation
 
 protocol UpdateProcessProtocol {
 
-    var currentState: CurrentValueSubject<UpdateStatusState, UpdateStatusError> { get set }
+    var currentStage: CurrentValueSubject<UpdateProcessStage, UpdateStatusError> { get set }
 
     func startProcess()
 
