@@ -4,8 +4,8 @@
 
 import SwiftUI
 
-struct ColoredAnswerView: View {
-    private let color: Color
+struct TextAnswerView: View {
+    private let text: String
     private let status: ChoiceState
 
     @State private var animationPercent: CGFloat = .zero
@@ -13,12 +13,17 @@ struct ColoredAnswerView: View {
 
     @ViewBuilder
     var view: some View {
-        let circle = Circle()
-            .foregroundColor(color)
-            .frame(
-                width: 260,
-                height: 260
-            )
+		let circle = ZStack {
+			Circle()
+				.fill(.gray.opacity(0.8))
+				.frame(
+					width: 260,
+					height: 260
+				)
+
+			Text(text.uppercased())
+				.font(.title.bold())
+		}
 
         switch status {
             case .notSelected:
@@ -51,21 +56,9 @@ struct ColoredAnswerView: View {
         }
     }
 
-    init(color: String, status: ChoiceState = .notSelected) {
-        self.color = ColoredAnswerView.stringToColor(from: color)
+    init(text: String, status: ChoiceState = .notSelected) {
+        self.text = text
         self.status = status
-    }
-
-    static func stringToColor(from: String) -> Color {
-        switch from {
-            case "red": return .red
-            case "pink": return .pink
-            case "purple": return .purple
-            case "blue": return .blue
-            case "green": return .green
-            case "yellow": return .yellow
-            default: return .blue
-        }
     }
 
     var body: some View {

@@ -4,7 +4,11 @@
 
 import SwiftUI
 
-public enum ChoiceViewStatus {
+public enum ChoiceDataType {
+    case color, image, text
+}
+
+public enum ChoiceState {
     case notSelected
     case selected
     case playingRightAnimation
@@ -17,26 +21,13 @@ public struct ChoiceViewModel: Identifiable, Equatable, Comparable {
     }
 
     public let id: UUID = UUID()
-    public let color: Color
-    public var status: ChoiceViewStatus
+    public let item: String
+    public var type: ChoiceDataType
+    public var status: ChoiceState
 
-    init(color: Color, status: ChoiceViewStatus = .notSelected) {
-        self.color = color
+    public init(item: String, type: ChoiceDataType, status: ChoiceState = .notSelected) {
+        self.item = item
+        self.type = type
         self.status = status
     }
-
-    static public let listThreeChoices: [ChoiceViewModel] = [
-        ChoiceViewModel(color: .red),
-        ChoiceViewModel(color: .blue),
-        ChoiceViewModel(color: .yellow),
-    ]
-
-    static public let listSixChoices: [ChoiceViewModel] = [
-        ChoiceViewModel(color: .red),
-        ChoiceViewModel(color: .blue),
-        ChoiceViewModel(color: .green),
-        ChoiceViewModel(color: .purple),
-        ChoiceViewModel(color: .yellow),
-        ChoiceViewModel(color: .pink),
-    ]
 }

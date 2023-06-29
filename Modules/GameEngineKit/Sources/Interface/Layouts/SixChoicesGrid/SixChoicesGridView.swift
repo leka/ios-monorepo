@@ -5,10 +5,10 @@
 import SwiftUI
 
 public struct SixChoicesGridView: View {
-    @ObservedObject private var viewModel: SixChoicesGridVM
+    @ObservedObject private var viewModel: SixChoicesGridViewModel
 
-    public init(viewModel: SixChoicesGridVM) {
-        self.viewModel = viewModel
+    public init(gameplay: any GameplayProtocol) {
+        self.viewModel = SixChoicesGridViewModel(gameplay: gameplay)
     }
 
     public var body: some View {
@@ -17,23 +17,29 @@ public struct SixChoicesGridView: View {
             verticalSpacing: 30
         ) {
             GridRow {
-                ForEach(viewModel.choices[0..<3]) { choice in
-                    ColoredAnswerView(color: choice.color, status: choice.status)
+                ForEach(0..<3) { index in
+                    let choice = viewModel.choices[index]
+
+                    ChoiceView(choice: choice)
                         .simultaneousGesture(
                             TapGesture()
                                 .onEnded {
                                     viewModel.onChoiceTapped(choice: choice)
-                                })
+                                }
+                        )
                 }
             }
             GridRow {
-                ForEach(viewModel.choices[3..<6]) { choice in
-                    ColoredAnswerView(color: choice.color, status: choice.status)
+                ForEach(3..<6) { index in
+                    let choice = viewModel.choices[index]
+
+                    ChoiceView(choice: choice)
                         .simultaneousGesture(
                             TapGesture()
                                 .onEnded {
                                     viewModel.onChoiceTapped(choice: choice)
-                                })
+                                }
+                        )
                 }
             }
 

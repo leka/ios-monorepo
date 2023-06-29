@@ -5,30 +5,27 @@
 import Combine
 import Foundation
 
-public class SelectSomeRightAnswers: GameplayProtocol {
-    public let name = "Select Some Right Answers"
-
+public class GameplaySelectAllRightAnswers: GameplayProtocol {
+    public let name = "Select All Right Answers"
     public let rightAnswers: [ChoiceViewModel]
     @Published public var choices: [ChoiceViewModel]
     @Published public var isFinished: Bool = false
 
     private var rightAnswersGiven: [ChoiceViewModel] = []
 
-    public var rightAnswersToFind: Int
-
     public var choicesPublisher: Published<[ChoiceViewModel]>.Publisher { $choices }
     public var isFinishedPublisher: Published<Bool>.Publisher { $isFinished }
 
-    public init(choices: [ChoiceViewModel], rightAnswers: [ChoiceViewModel], rightAnswersToFound: Int) {
+    public init(choices: [ChoiceViewModel], rightAnswers: [ChoiceViewModel]) {
         self.choices = choices
         self.rightAnswers = rightAnswers
-        self.rightAnswersToFind = rightAnswersToFound
     }
 
     public func process(choice: ChoiceViewModel) {
-        if rightAnswers.contains(where: { choice.id == $0.id }) {
+        if rightAnswers.contains(where: { choice.item == $0.item }) {
             if let index = choices.firstIndex(where: { $0.id == choice.id && $0.status != .playingRightAnimation }) {
                 self.choices[index].status = .playingRightAnimation
+
                 rightAnswersGiven.append(self.choices[index])
             }
         } else {
@@ -41,19 +38,18 @@ public class SelectSomeRightAnswers: GameplayProtocol {
             }
         }
 
-        if rightAnswersToFind == rightAnswersGiven.count {
-            let rightAnswersGivenID = rightAnswersGiven.sorted().map({ $0.id })
-            let rightAnswersID = rightAnswers.sorted().map({ $0.id })
+        let rightAnswersGivenID = rightAnswersGiven.sorted().map({ $0.id })
+        let rightAnswersID = rightAnswers.sorted().map({ $0.id })
 
-            if rightAnswersGivenID.allSatisfy({ rightAnswersID.contains($0) }) {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                    for choice in self.choices.filter({ $0.status == .playingRightAnimation }) {
-                        guard let index = self.choices.firstIndex(where: { $0.id == choice.id }) else { return }
-                        self.choices[index].status = .notSelected
-                    }
+        if rightAnswersGivenID == rightAnswersID {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                for choice in self.choices.filter({ $0.status == .playingRightAnimation }) {
+                    guard let index = self.choices.firstIndex(where: { $0.id == choice.id }) else { return }
+                    self.choices[index].status = .notSelected
                 }
-                self.isFinished = true
             }
+            rightAnswersGiven.removeAll()
+            self.isFinished = true
         }
     }
 }
