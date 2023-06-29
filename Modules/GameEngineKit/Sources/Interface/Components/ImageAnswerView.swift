@@ -6,7 +6,7 @@ import SwiftUI
 
 struct ImageAnswerView: View {
     private let image: String
-    private let status: ChoiceViewStatus
+    private let status: ChoiceState
 
     @State private var animationPercent: CGFloat = .zero
     @State private var overlayOpacity: CGFloat = .zero
@@ -53,7 +53,7 @@ struct ImageAnswerView: View {
         }
     }
 
-    init(image: String, status: ChoiceViewStatus = .notSelected) {
+    init(image: String, status: ChoiceState = .notSelected) {
         self.image = image
         self.status = status
     }

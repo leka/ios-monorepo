@@ -5,7 +5,7 @@
 import Combine
 import Foundation
 
-public class SelectTheRightAnswer: GameplayProtocol {
+public class GameplaySelectTheRightAnswer: GameplayProtocol {
     public let name = "Select The Right Answer"
     public let rightAnswers: [ChoiceViewModel]
     @Published public var choices: [ChoiceViewModel]
@@ -24,7 +24,7 @@ public class SelectTheRightAnswer: GameplayProtocol {
             if let index = choices.firstIndex(where: { $0.id == choice.id }) {
                 self.choices[index].status = .playingRightAnimation
 
-                // TO DO (@hugo)
+                // TO DO (@hugo) asyncAwait
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                     self.choices[index].status = .notSelected
                 }
@@ -34,6 +34,7 @@ public class SelectTheRightAnswer: GameplayProtocol {
             if let index = choices.firstIndex(where: { $0.id == choice.id }) {
                 self.choices[index].status = .playingWrongAnimation
 
+				// TO DO (@hugo) asyncAwait
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
                     self.choices[index].status = .notSelected
                 }
