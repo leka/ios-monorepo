@@ -5,47 +5,60 @@
 import GameEngineKit
 import SwiftUI
 
-let listThreeChoices = [
+let listThreeChoicesOneRight = [
     ChoiceViewModel(item: "red", type: .color),
-    ChoiceViewModel(item: "blue", type: .text),
+    ChoiceViewModel(item: "blue", type: .text, rightAnswer: true),
     ChoiceViewModel(item: "yellow", type: .color),
 ]
 
-let listSixChoices = [
+let listThreeChoicesTwoRight = [
     ChoiceViewModel(item: "red", type: .color),
-    ChoiceViewModel(item: "blue", type: .text),
+    ChoiceViewModel(item: "blue", type: .text, rightAnswer: true),
+    ChoiceViewModel(item: "yellow", type: .color, rightAnswer: true),
+]
+
+let listSixChoicesOneRight = [
+    ChoiceViewModel(item: "red", type: .color),
+    ChoiceViewModel(item: "blue", type: .text, rightAnswer: true),
     ChoiceViewModel(item: "yellow", type: .color),
     ChoiceViewModel(item: "purple", type: .color),
     ChoiceViewModel(item: "blue", type: .color),
     ChoiceViewModel(item: "pink", type: .text),
 ]
 
+let listSixChoicesFourRight = [
+    ChoiceViewModel(item: "red", type: .color),
+    ChoiceViewModel(item: "blue", type: .text, rightAnswer: true),
+    ChoiceViewModel(item: "yellow", type: .color),
+    ChoiceViewModel(item: "purple", type: .color, rightAnswer: true),
+    ChoiceViewModel(item: "blue", type: .color, rightAnswer: true),
+    ChoiceViewModel(item: "pink", type: .text, rightAnswer: true),
+]
+
 public let dataThree1 = StandardGameplayData(
-    choices: listThreeChoices,
-    rightAnswers: [listThreeChoices[1]])
+    choices: listThreeChoicesOneRight
+)
 
 public let dataThree2 = StandardGameplayData(
-    choices: listThreeChoices,
-    rightAnswers: [listThreeChoices[1], listThreeChoices[2]])
+    choices: listThreeChoicesTwoRight
+)
 
 public let dataThree3 = StandardGameplayData(
-    choices: listThreeChoices,
-    rightAnswers: [listThreeChoices[1], listThreeChoices[2]],
-    answersNumber: 2
+    choices: listThreeChoicesTwoRight,
+    answersNumber: 1
 )
 
 public let dataSix1 = StandardGameplayData(
-    choices: listSixChoices,
-    rightAnswers: [listSixChoices[2]])
+    choices: listSixChoicesOneRight
+)
 
 public let dataSix2 = StandardGameplayData(
-    choices: listSixChoices,
-    rightAnswers: [listSixChoices[1], listSixChoices[3], listSixChoices[4]])
+    choices: listSixChoicesFourRight
+)
 
 public let dataSix3 = StandardGameplayData(
-    choices: listSixChoices,
-    rightAnswers: [listSixChoices[1], listSixChoices[3], listSixChoices[4]],
-    answersNumber: 2
+    choices: listSixChoicesFourRight,
+    answersNumber: 3
 )
 
 public var oneAnswerThreeInlineGameplay = gameplaySelector(type: .selectTheRightAnswer, data: dataThree1)
