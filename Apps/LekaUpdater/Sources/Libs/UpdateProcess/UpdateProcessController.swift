@@ -9,6 +9,8 @@ import Foundation
 
 enum UpdateProcessStage {
     case initial
+
+    // LekaOS 1.0.0+
     case sendingUpdate
     case installingUpdate
 }
@@ -16,6 +18,10 @@ enum UpdateProcessStage {
 enum UpdateProcessError: Error {
     case unknown
     case updateProcessNotAvailable
+
+    // LekaOS 1.0.0+
+    case failedToLoadFile
+    case robotNotUpToDate
 }
 
 // MARK: - Controller
