@@ -7,7 +7,6 @@ import Foundation
 
 public class GameplaySelectSomeRightAnswers: GameplayProtocol {
     public let name = "Select Some Right Answers"
-    public let rightAnswers: [ChoiceViewModel]
     @Published public var choices: [ChoiceViewModel]
     @Published public var isFinished: Bool = false
 
@@ -18,14 +17,13 @@ public class GameplaySelectSomeRightAnswers: GameplayProtocol {
     public var choicesPublisher: Published<[ChoiceViewModel]>.Publisher { $choices }
     public var isFinishedPublisher: Published<Bool>.Publisher { $isFinished }
 
-    public init(choices: [ChoiceViewModel], rightAnswers: [ChoiceViewModel], rightAnswersToFind: Int) {
+    public init(choices: [ChoiceViewModel], rightAnswersToFind: Int) {
         self.choices = choices
-        self.rightAnswers = rightAnswers
         self.rightAnswersToFind = rightAnswersToFind
     }
 
     public func process(choice: ChoiceViewModel) {
-        if rightAnswers.contains(where: { choice.item == $0.item }) {
+        if choice.rightAnswer {
             if let index = choices.firstIndex(where: { $0.id == choice.id && $0.status != .playingRightAnimation }) {
                 self.choices[index].status = .playingRightAnimation
 
@@ -43,7 +41,11 @@ public class GameplaySelectSomeRightAnswers: GameplayProtocol {
 
         if rightAnswersToFind == rightAnswersGiven.count {
             let rightAnswersGivenID = rightAnswersGiven.sorted().map({ $0.id })
-            let rightAnswersID = rightAnswers.sorted().map({ $0.id })
+            let rightAnswersID =
+                choices.filter { choice in
+                    choice.rightAnswer
+                }
+                .sorted().map({ $0.id })
 
             if rightAnswersGivenID.allSatisfy({ rightAnswersID.contains($0) }) {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
