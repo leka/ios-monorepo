@@ -5,28 +5,33 @@
 import Foundation
 
 class DummyRobotModel: ObservableObject {
-    @Published var name = "Leka"
-    @Published var serialNumber = "LK-2206.."
+    @Published var name: String
+    @Published var serialNumber: String
 
-    @Published var battery = 75
-    @Published var isCharging = true
-    @Published var osVersion = "1.3.0"
-
-    var debugTimer: Timer?
+    @Published var battery: Int
+    @Published var isCharging: Bool
+    @Published var osVersion: String
 
     func startUpdate() {
         // Start update process here
         print("Start Update")
     }
 
-    init() {
-        self.debugTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: onTick)
+    init(
+        name: String = "Leka", serialNumber: String = "LK-2206..", battery: Int = 75, isCharging: Bool = false,
+        osVersion: String = "1.3.0"
+    ) {
+        self.name = name
+        self.serialNumber = serialNumber
+
+        self.battery = battery
+        self.isCharging = isCharging
+        self.osVersion = osVersion
     }
 
-    func onTick(timer: Timer) {
-        battery = battery < 100 ? battery + 1 : 0
-        if battery % 10 == 0 {
-            isCharging.toggle()
-        }
+    convenience init(robotDiscoveryViewModel: RobotDiscoveryViewModel) {
+        self.init(
+            name: robotDiscoveryViewModel.name, battery: robotDiscoveryViewModel.battery,
+            isCharging: robotDiscoveryViewModel.isCharging, osVersion: robotDiscoveryViewModel.osVersion)
     }
 }

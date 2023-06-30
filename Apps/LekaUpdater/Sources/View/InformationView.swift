@@ -53,6 +53,14 @@ struct InformationView: View {
                         .font(.title)
                 }
             }
+
+            Button("Switch (debug)") {
+                if robot.osVersion == "1.3.0" {
+                    robot.osVersion = "1.4.0"
+                } else {
+                    robot.osVersion = "1.3.0"
+                }
+            }  // TODO: Remove DEBUG
         }
     }
 }

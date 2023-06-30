@@ -23,5 +23,6 @@ let project = Project.iOSApp(
             "UIInterfaceOrientationPortraitUpsideDown",
         ],
         "LSApplicationCategoryType": "public.app-category.utilities",
+        "NSAccentColorName": "AccentColor",
     ]
 )
