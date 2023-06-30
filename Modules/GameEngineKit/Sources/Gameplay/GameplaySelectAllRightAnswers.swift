@@ -7,7 +7,6 @@ import Foundation
 
 public class GameplaySelectAllRightAnswers: GameplayProtocol {
     public let name = "Select All Right Answers"
-    public let rightAnswers: [ChoiceViewModel]
     @Published public var choices: [ChoiceViewModel]
     @Published public var isFinished: Bool = false
 
@@ -16,13 +15,12 @@ public class GameplaySelectAllRightAnswers: GameplayProtocol {
     public var choicesPublisher: Published<[ChoiceViewModel]>.Publisher { $choices }
     public var isFinishedPublisher: Published<Bool>.Publisher { $isFinished }
 
-    public init(choices: [ChoiceViewModel], rightAnswers: [ChoiceViewModel]) {
+    public init(choices: [ChoiceViewModel]) {
         self.choices = choices
-        self.rightAnswers = rightAnswers
     }
 
     public func process(choice: ChoiceViewModel) {
-        if rightAnswers.contains(where: { choice.item == $0.item }) {
+        if choice.rightAnswer {
             if let index = choices.firstIndex(where: { $0.id == choice.id && $0.status != .playingRightAnimation }) {
                 self.choices[index].status = .playingRightAnimation
 
@@ -39,7 +37,11 @@ public class GameplaySelectAllRightAnswers: GameplayProtocol {
         }
 
         let rightAnswersGivenID = rightAnswersGiven.sorted().map({ $0.id })
-        let rightAnswersID = rightAnswers.sorted().map({ $0.id })
+        let rightAnswersID =
+            choices.filter { choice in
+                choice.rightAnswer
+            }
+            .sorted().map({ $0.id })
 
         if rightAnswersGivenID == rightAnswersID {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
