@@ -40,6 +40,8 @@ class UpdateProcessController {
         let currentRobotVersion = robot.osVersion
 
         switch currentRobotVersion {
+            case "1.0.0", "1.1.0":
+                self.currentUpdateProcess = UpdateProcessV100()
             default:
                 self.currentUpdateProcess = UpdateProcessTemplate()
         }
