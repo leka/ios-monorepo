@@ -18,7 +18,7 @@ class GameEngine: NSObject, ObservableObject {
     @Published var allAnswers: [String] = ["dummy_1"]
     @Published var interface: GameLayout = .touch1
     @Published var stepInstruction: String = "Nothing to display"
-    @Published var correctAnswersIndices: [[Int]] = [[0]]
+    @Published var correctAnswersIndices: [String: [Int]] = ["context": []]
     @Published var allAnswersAreDisabled: Bool = false
     @Published var tapIsDisabled: Bool = false
     @Published var displayAnswer: Bool = false
@@ -97,7 +97,7 @@ class GameEngine: NSObject, ObservableObject {
     func setupCurrentStep() {
         trials = 0
         correctAnswerAnimationPercent = 0
-        correctAnswersIndices = [[0]]
+        correctAnswersIndices = ["context": []]
         rightAnswersGiven = []
         pressedAnswerIndex = nil
         displayAnswer = false
@@ -142,13 +142,15 @@ class GameEngine: NSObject, ObservableObject {
 
     // Pick up Correct answers' indices
     private func getCorrectAnswersIndices() {
-        correctAnswersIndices = []
-        for (indexG, group) in currentActivity.stepSequence[currentGroupIndex][currentStepIndex].correctAnswers
-            .enumerated()
-        {
-            correctAnswersIndices.append([])
-            for (indexA, answer) in allAnswers.enumerated() where group.contains(answer) {
-                correctAnswersIndices[indexG].append(indexA)
+        correctAnswersIndices = [:]
+        let contextualCorrectAnswers = currentActivity.stepSequence[currentGroupIndex][currentStepIndex].correctAnswers
+        for context in contextualCorrectAnswers {
+            //            correctAnswersIndices[group.context] = [Int]
+            for (indexA, answer) in allAnswers.enumerated()
+            where context.answers.contains(answer) {
+                //                var indices: [Int] = []
+                //                indices.append(indexA)
+                (correctAnswersIndices[context.context, default: []]).append(indexA)
             }
         }
     }
@@ -174,15 +176,10 @@ class GameEngine: NSObject, ObservableObject {
 
     // MARK: - Answering Logic
     // Prevent multiple taps, deal with success or failure
-    func answerHasBeenGiven(atIndex: Int, withinGroup: Int = 0) {
+    func answerHasBeenGiven(atIndex: Int, withinContext: String = "context") {
         tapIsDisabled = true
         pressedAnswerIndex = atIndex
-        guard withinGroup <= correctAnswersIndices.count - 1 else {
-            trials += 1
-            sameStepAgain()
-            return
-        }
-        if correctAnswersIndices[withinGroup].contains(atIndex) {
+        if (correctAnswersIndices[withinContext, default: []]).contains(atIndex) {
             rightAnswersGiven.append(atIndex)
             if allCorrectAnswersWereGiven() {
                 trials += 1
@@ -198,7 +195,7 @@ class GameEngine: NSObject, ObservableObject {
 
     func allCorrectAnswersWereGiven() -> Bool {
         rightAnswersGiven.sort()
-        var flattenedCorrectAnswersIndices = correctAnswersIndices.flatMap({ $0 })
+        var flattenedCorrectAnswersIndices = Array(correctAnswersIndices.map({ $0.value }).joined())
         flattenedCorrectAnswersIndices.sort()
         return rightAnswersGiven.elementsEqual(flattenedCorrectAnswersIndices)
     }

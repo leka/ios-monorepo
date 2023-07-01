@@ -8,7 +8,6 @@ import SpriteKit
 class DropAreaTwoAssetOne: DragAndDropScene {
 
     var rightSideDropArea = SKSpriteNode()
-    // take these from yaml later & move this array to GameEngine
     var dropAreas: [SKSpriteNode] = []
 
     override func reset() {
@@ -23,33 +22,35 @@ class DropAreaTwoAssetOne: DragAndDropScene {
     }
 
     override func makeDropArea() {
+        makeTwoDropAreas()
+        getExpectedItems()
+    }
+
+    func makeTwoDropAreas() {
         dropArea.size = CGSize(width: 450, height: 350)
         dropArea.texture = SKTexture(imageNamed: "kitchen_asset_1")
         dropArea.position = CGPoint(x: (size.width / 2) - 275, y: 190)
-        dropArea.name = "left_side_drop_area"
+        dropArea.name = "kitchen_asset_1"
 
         rightSideDropArea.size = CGSize(width: 450, height: 350)
         rightSideDropArea.texture = SKTexture(imageNamed: "bathroom_asset_1")
         rightSideDropArea.position = CGPoint(x: (size.width / 2) + 275, y: 190)
-        rightSideDropArea.name = "right_side_drop_area"
-
-        dropAreas = [dropArea, rightSideDropArea]
+        rightSideDropArea.name = "bathroom_asset_1"
 
         addChild(dropArea)
         addChild(rightSideDropArea)
 
-        getExpectedItems()
+        dropAreas = [dropArea, rightSideDropArea]
     }
 
     override func getExpectedItems() {
         // expected answer
-        for (indexG, group) in gameEngine!.correctAnswersIndices.enumerated() {
-            expectedItemsNodes.append([])
-            for item in group {
+        for group in gameEngine!.correctAnswersIndices {
+            for item in group.value {
                 let expectedItem = gameEngine!.allAnswers[item]
                 let expectedNode = SKSpriteNode()
                 expectedNode.name = expectedItem
-                expectedItemsNodes[indexG].append(expectedNode)
+                expectedItemsNodes[group.key, default: []].append(expectedNode)
             }
         }
     }
@@ -58,6 +59,7 @@ class DropAreaTwoAssetOne: DragAndDropScene {
         node.scaleForMax(sizeOf: biggerSide * 0.8)
         node.zPosition = 10
         node.isDraggable = false
+        dropAction(node)
         if gameEngine!.allCorrectAnswersWereGiven() {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                 self.reset()
@@ -77,8 +79,8 @@ class DropAreaTwoAssetOne: DragAndDropScene {
 
             // dropped within the bounds of one of the dropAreas
             if node.fullyContains(bounds: dropAreas[0].frame) {
-                gameEngine?.answerHasBeenGiven(atIndex: index!)
-                guard expectedItemsNodes[0].first(where: { $0.name == node.name }) != nil else {
+                gameEngine?.answerHasBeenGiven(atIndex: index!, withinContext: dropAreas[0].name!)
+                guard expectedItemsNodes[dropAreas[0].name!]!.first(where: { $0.name == node.name }) != nil else {
                     snapBack(node: node, touch: touch)
                     break
                 }
@@ -87,7 +89,7 @@ class DropAreaTwoAssetOne: DragAndDropScene {
                 dropAction(node)
                 break
             } else if node.fullyContains(bounds: dropAreas[1].frame) {
-                gameEngine?.answerHasBeenGiven(atIndex: index!, withinGroup: 1)
+                gameEngine?.answerHasBeenGiven(atIndex: index!, withinContext: dropAreas[1].name!)
                 snapBack(node: node, touch: touch)
                 break
             }

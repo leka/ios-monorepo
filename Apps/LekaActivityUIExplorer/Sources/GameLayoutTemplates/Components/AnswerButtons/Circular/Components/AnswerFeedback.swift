@@ -12,7 +12,7 @@ struct AnswerFeedback: View {
     var answer: Int
 
     var body: some View {
-        if gameEngine.correctAnswersIndices[0].contains(answer) {
+        if gameEngine.correctAnswersIndices["context", default: []].contains(answer) {
             Circle()
                 .trim(from: 0, to: gameEngine.correctAnswerAnimationPercent)
                 .stroke(

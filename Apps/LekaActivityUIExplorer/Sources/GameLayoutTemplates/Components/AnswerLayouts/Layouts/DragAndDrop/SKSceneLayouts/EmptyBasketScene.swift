@@ -24,15 +24,14 @@ class EmptyBasketScene: DragAndDropScene {
         dropArea.size = CGSize(width: 380, height: 280)
         dropArea.texture = SKTexture(imageNamed: "basket")
         dropArea.position = CGPoint(x: size.width / 2, y: 165)
-        dropArea.name = "drop_area"
+        dropArea.name = "basket"
         addChild(dropArea)
 
-        expectedItemsNodes.append([])
-        for item in gameEngine!.correctAnswersIndices[0] {
+        for item in gameEngine!.correctAnswersIndices["basket"]! {
             let expectedItem = gameEngine!.allAnswers[item]
             let expectedNode = SKSpriteNode()
             expectedNode.name = expectedItem
-            expectedItemsNodes[0].append(expectedNode)
+            expectedItemsNodes["basket", default: []].append(expectedNode)
         }
     }
 
@@ -44,6 +43,7 @@ class EmptyBasketScene: DragAndDropScene {
             y: 130)
         node.zPosition = 10
         node.isDraggable = false
+        dropAction(node)
         if gameEngine!.allCorrectAnswersWereGiven() {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                 self.reset()
