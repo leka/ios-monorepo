@@ -97,22 +97,35 @@ class ExplorerActivity: ObservableObject {
     // swiftlint:enable cyclomatic_complexity
 
     // ready to work with more than 1 good answers
-    private func setGoodAnswers() -> [[String]] {
+    private func setGoodAnswers() -> [CorrectAnswers] {
         switch interface {
-            case .basket1, .basket2, .basket4, .dropArea1, .dropArea3, .dropArea2Asset1:
-                return [["watermelon"]]
+            case .basket1, .basket2, .basket4:
+                return [CorrectAnswers(context: "basket", answers: ["watermelon"])]
+            case .dropArea1, .dropArea3:
+                return [CorrectAnswers(context: "kitchen_asset_1", answers: ["watermelon"])]
+            case .dropArea2Asset1:
+                return [
+                    CorrectAnswers(context: "kitchen_asset_1", answers: ["watermelon"]),
+                    CorrectAnswers(context: "bathroom_asset_1", answers: []),
+                ]
             case .basketEmpty:
-                return [["watermelon", "banana"]]
+                return [CorrectAnswers(context: "basket", answers: ["watermelon", "banana"])]
             case .dropArea2Assets2:
-                return [["watermelon"], ["banana"]]
+                return [
+                    CorrectAnswers(context: "kitchen_asset_1", answers: ["watermelon"]),
+                    CorrectAnswers(context: "bathroom_asset_1", answers: ["banana"]),
+                ]
             case .dropArea2Assets6:
-                return [["watermelon", "banana", "kiwi"], ["avocado", "cherry", "strawberry"]]
+                return [
+                    CorrectAnswers(context: "kitchen_assets_3", answers: ["watermelon", "banana", "kiwi"]),
+                    CorrectAnswers(context: "bathroom_assets_3", answers: ["avocado", "cherry", "strawberry"]),
+                ]
             case .colorQuest1, .colorQuest2, .colorQuest3:
-                return [["green"]]
+                return [CorrectAnswers(context: "context", answers: ["green"])]
             case .remoteStandard, .remoteArrow, .xylophone, .danceFreeze:
-                return [[""]]
+                return [CorrectAnswers(context: "context", answers: [])]
             default:
-                return [["dummy_1"]]
+                return [CorrectAnswers(context: "context", answers: ["dummy_1"])]
         }
     }
 

@@ -63,13 +63,13 @@ struct Step: Codable, Equatable, Identifiable {
     enum CodingKeys: String, CodingKey {
         case id, interface, instruction, sound
         case allAnswers = "images"
-        case correctAnswers = "correct_answer"  // pluralize within YAMLs
+        case correctAnswers = "correct_answers"  // pluralize within YAMLs
     }
 
     var id: UUID
     var interface: GameLayout
     var instruction: LocalizedContent
-    var correctAnswers: [[String]]
+    var correctAnswers: [CorrectAnswers]
     var allAnswers: [String]
     var sound: [String]?
 
@@ -77,7 +77,7 @@ struct Step: Codable, Equatable, Identifiable {
         id: UUID = UUID(),
         interface: GameLayout,
         instruction: LocalizedContent = LocalizedContent(),
-        correctAnswers: [[String]] = [],
+        correctAnswers: [CorrectAnswers] = [],
         allAnswers: [String] = [],
         sound: [String]? = []
     ) {

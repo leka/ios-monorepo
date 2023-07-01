@@ -13,7 +13,7 @@ class DragAndDropScene: SKScene {
     var defaultPosition = CGPoint.zero
     var selectedNodes: [UITouch: DraggableItemNode] = [:]
     var endAbscissa: CGFloat = .zero
-    var expectedItemsNodes = [[SKSpriteNode]]()
+    var expectedItemsNodes = [String: [SKSpriteNode]]()
     var dropArea = SKSpriteNode()
 
     override func didMove(to view: SKView) {
@@ -52,7 +52,7 @@ class DragAndDropScene: SKScene {
         dropArea.size = CGSize(width: 380, height: 280)
         dropArea.texture = SKTexture(imageNamed: "basket")
         dropArea.position = CGPoint(x: size.width / 2, y: 165)
-        dropArea.name = "drop_area"
+        dropArea.name = "basket"
         addChild(dropArea)
 
         getExpectedItems()
@@ -60,20 +60,18 @@ class DragAndDropScene: SKScene {
 
     func getExpectedItems() {
         // expected answer
-        for (indexG, group) in gameEngine!.correctAnswersIndices.enumerated() {
-            expectedItemsNodes.append([])
-            for item in group {
+        for group in gameEngine!.correctAnswersIndices {
+            for item in group.value {
                 let expectedItem = gameEngine!.allAnswers[item]
                 let expectedNode = SKSpriteNode()
                 let texture = SKTexture(imageNamed: expectedItem)
                 let action = SKAction.setTexture(texture, resize: true)
                 expectedNode.run(action)
                 expectedNode.name = expectedItem
-                expectedNode.name = expectedItem
                 expectedNode.texture = texture
                 expectedNode.scaleForMax(sizeOf: biggerSide * 0.8)
                 expectedNode.position = CGPoint(x: dropArea.position.x + 80, y: 130)
-                expectedItemsNodes[indexG].append(expectedNode)
+                (expectedItemsNodes[group.key, default: []]).append(expectedNode)
                 addChild(expectedNode)
             }
         }
@@ -91,6 +89,7 @@ class DragAndDropScene: SKScene {
             y: 130)
         node.zPosition = 10
         node.isDraggable = false
+        dropAction(node)
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
             self.reset()
         }
@@ -174,14 +173,14 @@ class DragAndDropScene: SKScene {
             // dropped within the bounds of dropArea
             if node.fullyContains(bounds: dropArea.frame) {
                 let index = gameEngine!.allAnswers.firstIndex(where: { $0 == node.name })
-                gameEngine?.answerHasBeenGiven(atIndex: index!)
-                guard expectedItemsNodes[0].first(where: { $0.name == node.name }) != nil else {
+                gameEngine?.answerHasBeenGiven(atIndex: index!, withinContext: dropArea.name!)
+                guard expectedItemsNodes[dropArea.name!, default: []].first(where: { $0.name == node.name }) != nil
+                else {
                     snapBack(node: node, touch: touch)
                     break
                 }
                 dropGoodAnswer(node)
                 selectedNodes[touch] = nil
-                dropAction(node)
                 break
             }
 

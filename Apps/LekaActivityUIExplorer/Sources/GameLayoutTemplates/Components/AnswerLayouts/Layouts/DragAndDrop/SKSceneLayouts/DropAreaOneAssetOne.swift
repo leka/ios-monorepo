@@ -22,15 +22,15 @@ class DropAreaOneAssetOne: DragAndDropScene {
         dropArea.size = CGSize(width: 450, height: 350)
         dropArea.texture = SKTexture(imageNamed: "kitchen_asset_1")
         dropArea.position = CGPoint(x: size.width / 2, y: 190)
-        dropArea.name = "drop_area"
+        dropArea.name = "kitchen_asset_1"
         addChild(dropArea)
 
-        expectedItemsNodes.append([])
-        for item in gameEngine!.correctAnswersIndices[0] {
+        //        expectedItemsNodes.append([])
+        for item in gameEngine!.correctAnswersIndices["kitchen_asset_1"]! {
             let expectedItem = gameEngine!.allAnswers[item]
             let expectedNode = SKSpriteNode()
             expectedNode.name = expectedItem
-            expectedItemsNodes[0].append(expectedNode)
+            expectedItemsNodes["kitchen_asset_1", default: []].append(expectedNode)
         }
     }
 
@@ -38,6 +38,7 @@ class DropAreaOneAssetOne: DragAndDropScene {
         node.scaleForMax(sizeOf: biggerSide * 0.8)
         node.zPosition = 10
         node.isDraggable = false
+        dropAction(node)
         if gameEngine!.allCorrectAnswersWereGiven() {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                 self.reset()
