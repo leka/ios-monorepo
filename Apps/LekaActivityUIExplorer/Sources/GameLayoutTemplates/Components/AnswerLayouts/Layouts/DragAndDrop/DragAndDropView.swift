@@ -8,7 +8,7 @@ import SwiftUI
 struct DragAndDropSceneView: View {
 
     @EnvironmentObject var gameEngine: GameEngine
-    var withTemplate: DragAndDropScene
+    var withTemplate: SKScene
 
     var body: some View {
         GeometryReader { proxy in
@@ -22,10 +22,13 @@ struct DragAndDropSceneView: View {
     }
 
     private func makeScene(size: CGSize) -> SKScene {
-        let dragAndDropScene: DragAndDropScene = withTemplate
-        dragAndDropScene.gameEngine = gameEngine
-        dragAndDropScene.size = CGSize(width: size.width, height: size.height)
+        let dragAndDropScene: SKScene = withTemplate
+        guard let properScene = dragAndDropScene as? DragAndDropSceneProtocol else {
+            return SKScene()
+        }
+        properScene.gameEngine = gameEngine
+        properScene.size = CGSize(width: size.width, height: size.height)
 
-        return dragAndDropScene
+        return properScene
     }
 }
