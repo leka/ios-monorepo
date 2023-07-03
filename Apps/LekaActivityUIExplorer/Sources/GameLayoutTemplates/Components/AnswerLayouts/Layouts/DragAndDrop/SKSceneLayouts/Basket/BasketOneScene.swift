@@ -30,7 +30,7 @@ class BasketOneScene: SKScene, DragAndDropSceneProtocol {
         let dropArea = SKSpriteNode()
         dropArea.size = CGSize(width: 380, height: 280)
         dropArea.texture = SKTexture(imageNamed: "basket")
-        dropArea.position = CGPoint(x: size.width / 2, y: 165)
+        dropArea.position = CGPoint(x: size.width / 2, y: 145)
         dropArea.name = "basket"
         addChild(dropArea)
 
@@ -50,8 +50,8 @@ class BasketOneScene: SKScene, DragAndDropSceneProtocol {
                 expectedNode.run(action)
                 expectedNode.name = expectedItem
                 expectedNode.texture = texture
-                expectedNode.scaleForMax(sizeOf: biggerSide * 0.8)
-                expectedNode.position = CGPoint(x: dropAreas[0].position.x + 80, y: 130)
+                expectedNode.scaleForMax(sizeOf: biggerSide * 0.9)
+                expectedNode.position = CGPoint(x: dropAreas[0].position.x + 80, y: 110)
                 (expectedItemsNodes[group.key, default: []]).append(expectedNode)
                 addChild(expectedNode)
             }
@@ -60,10 +60,10 @@ class BasketOneScene: SKScene, DragAndDropSceneProtocol {
 
     // behaviors after trials -> right answer
     func dropGoodAnswer(_ node: DraggableItemNode) {
-        node.scaleForMax(sizeOf: biggerSide * 0.8)
+        node.scaleForMax(sizeOf: biggerSide * 0.9)
         node.position = CGPoint(
             x: dropAreas[0].position.x - 80,
-            y: 130)
+            y: 110)
         node.zPosition = 10
         node.isDraggable = false
         dropAction(node)

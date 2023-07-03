@@ -37,15 +37,15 @@ class DropAreaTwoAssetsSix: SKScene, DragAndDropSceneProtocol {
 
     func makeTwoDropAreas() {
         let dropArea = SKSpriteNode()
-        dropArea.size = CGSize(width: 450, height: 350)
+        dropArea.size = CGSize(width: 385, height: 300)
         dropArea.texture = SKTexture(imageNamed: "kitchen_assets_3")
-        dropArea.position = CGPoint(x: (size.width / 2) - 275, y: 190)
+        dropArea.position = CGPoint(x: (size.width / 2) - 275, y: 150)
         dropArea.name = "kitchen_assets_3"
 
         let rightSideDropArea = SKSpriteNode()
-        rightSideDropArea.size = CGSize(width: 450, height: 350)
+        rightSideDropArea.size = CGSize(width: 385, height: 300)
         rightSideDropArea.texture = SKTexture(imageNamed: "bathroom_assets_3")
-        rightSideDropArea.position = CGPoint(x: (size.width / 2) + 275, y: 190)
+        rightSideDropArea.position = CGPoint(x: (size.width / 2) + 275, y: 150)
         rightSideDropArea.name = "bathroom_assets_3"
 
         addChild(dropArea)

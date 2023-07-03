@@ -5,23 +5,27 @@
 import Foundation
 import SpriteKit
 
-class DropAreaTwoAssetsTwo: SKScene, DragAndDropSceneProtocol {
+class AssociationSix: SKScene, DragAndDropSceneProtocol {
 
     // protocol requirements
     var gameEngine: GameEngine?
     var spacer: CGFloat = .zero
+    var biggerSide: CGFloat = 195
     var defaultPosition = CGPoint.zero
     var selectedNodes: [UITouch: DraggableItemNode] = [:]
     var expectedItemsNodes = [String: [SKSpriteNode]]()
     var dropAreas: [SKSpriteNode] = []
+
+    // internals
+    let padding: CGFloat = 100
 
     // protocol methods
     func reset() {
         self.removeAllChildren()
         self.removeAllActions()
 
-        spacer = size.width / 3
-        self.defaultPosition = CGPoint(x: spacer, y: self.size.height)
+        spacer = (size.width - (padding * 2)) / 5
+        self.defaultPosition = CGPoint(x: padding, y: self.size.height)
 
         makeDropArea()
         makeAnswers()
@@ -34,16 +38,16 @@ class DropAreaTwoAssetsTwo: SKScene, DragAndDropSceneProtocol {
 
     func makeTwoDropAreas() {
         let dropArea = SKSpriteNode()
-        dropArea.size = CGSize(width: 385, height: 300)
-        dropArea.texture = SKTexture(imageNamed: "kitchen_asset_1")
-        dropArea.position = CGPoint(x: (size.width / 2) - 275, y: 150)
-        dropArea.name = "kitchen_asset_1"
+        dropArea.size = CGSize(width: 450, height: 350)
+        dropArea.texture = SKTexture(imageNamed: "kitchen_assets_3")
+        dropArea.position = CGPoint(x: (size.width / 2) - 275, y: 190)
+        dropArea.name = "kitchen_assets_3"
 
         let rightSideDropArea = SKSpriteNode()
-        rightSideDropArea.size = CGSize(width: 385, height: 300)
-        rightSideDropArea.texture = SKTexture(imageNamed: "bathroom_asset_1")
-        rightSideDropArea.position = CGPoint(x: (size.width / 2) + 275, y: 150)
-        rightSideDropArea.name = "bathroom_asset_1"
+        rightSideDropArea.size = CGSize(width: 450, height: 350)
+        rightSideDropArea.texture = SKTexture(imageNamed: "bathroom_assets_3")
+        rightSideDropArea.position = CGPoint(x: (size.width / 2) + 275, y: 190)
+        rightSideDropArea.name = "bathroom_assets_3"
 
         addChild(dropArea)
         addChild(rightSideDropArea)

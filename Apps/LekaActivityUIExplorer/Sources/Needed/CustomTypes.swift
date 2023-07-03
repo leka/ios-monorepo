@@ -34,6 +34,7 @@ enum GameLayout: Codable {
     case soundTouch1, soundTouch2, soundTouch3, soundTouch3Inline, soundTouch4, soundTouch4Inline, soundTouch6
     case basket1, basket2, basket4, basketEmpty
     case dropArea1, dropArea3, dropArea2Asset1, dropArea2Assets2, dropArea2Assets6
+    case association4, association6
     case colorQuest1, colorQuest2, colorQuest3
     case remoteStandard, remoteArrow
     case xylophone

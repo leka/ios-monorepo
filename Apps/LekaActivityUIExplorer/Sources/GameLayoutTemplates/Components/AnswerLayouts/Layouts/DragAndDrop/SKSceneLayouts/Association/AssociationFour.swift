@@ -5,54 +5,72 @@
 import Foundation
 import SpriteKit
 
-class DropAreaTwoAssetsTwo: SKScene, DragAndDropSceneProtocol {
+class AssociationFour: SKScene, DragAndDropSceneProtocol {
 
     // protocol requirements
     var gameEngine: GameEngine?
-    var spacer: CGFloat = .zero
+    var spacer: CGFloat = 455
+    var biggerSide: CGFloat = 195
     var defaultPosition = CGPoint.zero
     var selectedNodes: [UITouch: DraggableItemNode] = [:]
     var expectedItemsNodes = [String: [SKSpriteNode]]()
     var dropAreas: [SKSpriteNode] = []
+
+    // internals
+    var initialNodeX: CGFloat = .zero
+    var verticalSpacing: CGFloat = .zero
 
     // protocol methods
     func reset() {
         self.removeAllChildren()
         self.removeAllActions()
 
-        spacer = size.width / 3
-        self.defaultPosition = CGPoint(x: spacer, y: self.size.height)
-
         makeDropArea()
         makeAnswers()
     }
 
     func makeDropArea() {
-        makeTwoDropAreas()
+        initialNodeX = (size.width - spacer) / 2
+        verticalSpacing = self.size.height / 3
+        defaultPosition = CGPoint(x: initialNodeX, y: verticalSpacing)
+
         getExpectedItems()
     }
 
-    func makeTwoDropAreas() {
-        let dropArea = SKSpriteNode()
-        dropArea.size = CGSize(width: 385, height: 300)
-        dropArea.texture = SKTexture(imageNamed: "kitchen_asset_1")
-        dropArea.position = CGPoint(x: (size.width / 2) - 275, y: 150)
-        dropArea.name = "kitchen_asset_1"
+    @MainActor func makeAnswers() {
+        for (index, choice) in gameEngine!.allAnswers.enumerated() {
+            let draggableItemNode: DraggableItemNode = DraggableItemNode(
+                texture: SKTexture(imageNamed: choice),
+                name: choice,
+                position: self.defaultPosition)
+            let draggableItemShadowNode: DraggableItemShadowNode = DraggableItemShadowNode(
+                draggableItemNode: draggableItemNode)
 
-        let rightSideDropArea = SKSpriteNode()
-        rightSideDropArea.size = CGSize(width: 385, height: 300)
-        rightSideDropArea.texture = SKTexture(imageNamed: "bathroom_asset_1")
-        rightSideDropArea.position = CGPoint(x: (size.width / 2) + 275, y: 150)
-        rightSideDropArea.name = "bathroom_asset_1"
+            // normalize Nodes' sizes
+            draggableItemNode.scaleForMax(sizeOf: biggerSide)
+            draggableItemShadowNode.scaleForMax(sizeOf: biggerSide)
 
-        addChild(dropArea)
-        addChild(rightSideDropArea)
+            // prevent Nodes from going out of bounds
+            let xRange = SKRange(lowerLimit: 0, upperLimit: size.width - 120)
+            let yRange = SKRange(lowerLimit: 0, upperLimit: size.height - 120)
+            draggableItemNode.constraints = [SKConstraint.positionX(xRange, y: yRange)]
+            draggableItemShadowNode.constraints = [SKConstraint.positionX(xRange, y: yRange)]
 
-        dropAreas = [dropArea, rightSideDropArea]
+            // spacing between columns and/or rows
+            if [0, 2].contains(index) {
+                defaultPosition.x += spacer
+            } else {
+                defaultPosition.x = initialNodeX
+                defaultPosition.y += verticalSpacing
+            }
+
+            addChild(draggableItemShadowNode)
+            addChild(draggableItemNode)
+        }
     }
 
     func getExpectedItems() {
-        // expected answer
+        // expected answers
         for group in gameEngine!.correctAnswersIndices {
             for item in group.value {
                 let expectedItem = gameEngine!.allAnswers[item]
@@ -63,7 +81,7 @@ class DropAreaTwoAssetsTwo: SKScene, DragAndDropSceneProtocol {
         }
     }
 
-    func dropGoodAnswer(_ node: DraggableItemNode) {
+    func dropGoodAnswer(_ node: DraggableItemNode) {  // place left/right down with endAbscissa
         node.scaleForMax(sizeOf: biggerSide * 0.8)
         node.zPosition = 10
         node.isDraggable = false
@@ -76,7 +94,7 @@ class DropAreaTwoAssetsTwo: SKScene, DragAndDropSceneProtocol {
     }
 
     // MARK: - SKScene specifics
-    // init
+    // set/reset scene
     override func didMove(to view: SKView) {
         self.backgroundColor = .clear
         self.reset()
@@ -122,7 +140,7 @@ class DropAreaTwoAssetsTwo: SKScene, DragAndDropSceneProtocol {
             let index = gameEngine!.allAnswers.firstIndex(where: { $0 == node.name })
 
             // dropped within the bounds of one of the dropAreas
-            if node.fullyContains(bounds: dropAreas[0].frame) {
+            if node.fullyContains(bounds: dropAreas[0].frame) {  // any of group[0]
                 gameEngine?.answerHasBeenGiven(atIndex: index!, withinContext: dropAreas[0].name!)
                 guard expectedItemsNodes[dropAreas[0].name!]!.first(where: { $0.name == node.name }) != nil else {
                     snapBack(node: node, touch: touch)
@@ -131,7 +149,7 @@ class DropAreaTwoAssetsTwo: SKScene, DragAndDropSceneProtocol {
                 dropGoodAnswer(node)
                 selectedNodes[touch] = nil
                 break
-            } else if node.fullyContains(bounds: dropAreas[1].frame) {
+            } else if node.fullyContains(bounds: dropAreas[1].frame) {  // any of group[1]
                 gameEngine?.answerHasBeenGiven(atIndex: index!, withinContext: dropAreas[1].name!)
                 guard expectedItemsNodes[dropAreas[1].name!]!.first(where: { $0.name == node.name }) != nil else {
                     snapBack(node: node, touch: touch)

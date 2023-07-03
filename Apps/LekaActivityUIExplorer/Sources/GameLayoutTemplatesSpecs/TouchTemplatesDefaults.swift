@@ -152,19 +152,19 @@ public enum Misc {
 }
 
 public enum Remote {
-    // ? no defaults needed
     public static let standard: BaseDefaults? = nil
     public static let arrow: BaseDefaults? = nil
 }
 
 public enum DragAndDrop {
-    // ? no defaults needed
     public static let basket: BaseDefaults? = nil
     public static let dropArea1: BaseDefaults? = nil
     public static let dropArea3: BaseDefaults? = nil
     public static let dropArea2Asset1: BaseDefaults? = nil
     public static let dropArea2Assets2: BaseDefaults? = nil
     public static let dropArea2Assets6: BaseDefaults? = nil
+    public static let association4: BaseDefaults? = nil
+    public static let association6: BaseDefaults? = nil
 }
 
 public enum DanceFreeze {

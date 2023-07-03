@@ -18,7 +18,7 @@ struct DragAndDropSceneView: View {
             )
             .frame(width: proxy.size.width, height: proxy.size.height)
         }
-        .edgesIgnoringSafeArea([.bottom, .horizontal])
+        .edgesIgnoringSafeArea([.vertical, .horizontal])
     }
 
     private func makeScene(size: CGSize) -> SKScene {

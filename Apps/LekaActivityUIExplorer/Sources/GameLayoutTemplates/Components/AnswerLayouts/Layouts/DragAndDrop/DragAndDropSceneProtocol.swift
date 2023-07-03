@@ -25,7 +25,7 @@ protocol DragAndDropSceneProtocol: SKScene {
 
 extension DragAndDropSceneProtocol {
 
-    var biggerSide: CGFloat { return 170 }
+    var biggerSide: CGFloat { return 130 }
 
     @MainActor func makeAnswers() {
         for choice in gameEngine!.allAnswers {
@@ -41,8 +41,8 @@ extension DragAndDropSceneProtocol {
             draggableItemShadowNode.scaleForMax(sizeOf: biggerSide)
 
             // prevent Nodes from going out of bounds
-            let xRange = SKRange(lowerLimit: 0, upperLimit: size.width - 120)
-            let yRange = SKRange(lowerLimit: 0, upperLimit: size.height - 120)
+            let xRange = SKRange(lowerLimit: 0, upperLimit: size.width - 80)
+            let yRange = SKRange(lowerLimit: 0, upperLimit: size.height - 80)
             draggableItemNode.constraints = [SKConstraint.positionX(xRange, y: yRange)]
             draggableItemShadowNode.constraints = [SKConstraint.positionX(xRange, y: yRange)]
 

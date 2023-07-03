@@ -35,7 +35,7 @@ class EmptyBasketScene: SKScene, DragAndDropSceneProtocol {
         let dropArea = SKSpriteNode()
         dropArea.size = CGSize(width: 380, height: 280)
         dropArea.texture = SKTexture(imageNamed: "basket")
-        dropArea.position = CGPoint(x: size.width / 2, y: 165)
+        dropArea.position = CGPoint(x: size.width / 2, y: 145)
         dropArea.name = "basket"
         addChild(dropArea)
 
@@ -55,11 +55,11 @@ class EmptyBasketScene: SKScene, DragAndDropSceneProtocol {
     }
 
     func dropGoodAnswer(_ node: DraggableItemNode) {
-        node.scaleForMax(sizeOf: biggerSide * 0.8)
+        node.scaleForMax(sizeOf: biggerSide * 0.9)
         let finalX = setFinalXPosition()
         node.position = CGPoint(
             x: finalX,
-            y: 130)
+            y: 110)
         node.zPosition = 10
         node.isDraggable = false
         dropAction(node)
