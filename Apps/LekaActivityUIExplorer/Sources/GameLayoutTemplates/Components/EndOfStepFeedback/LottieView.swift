@@ -15,6 +15,7 @@ struct LottieView: UIViewRepresentable {
     var name: String!
     var speed: CGFloat
     var reverse: Bool
+    var loopMode: LottieLoopMode
     var action: () -> Void
     @Binding var play: Bool
 
@@ -22,6 +23,7 @@ struct LottieView: UIViewRepresentable {
         name: String,
         speed: CGFloat = 1,
         reverse: Bool = false,
+        loopMode: LottieLoopMode = .playOnce,
         action: @escaping () -> Void = {
             // empty default implementation
         },
@@ -30,6 +32,7 @@ struct LottieView: UIViewRepresentable {
         self.name = name
         self.speed = speed
         self.reverse = reverse
+        self.loopMode = loopMode
         self.action = action
         self._play = play
     }
@@ -51,7 +54,7 @@ struct LottieView: UIViewRepresentable {
         animationView.animation = LottieAnimation.named(name)
         animationView.contentMode = .scaleAspectFit
         animationView.animationSpeed = speed
-        animationView.loopMode = .playOnce
+        animationView.loopMode = loopMode
         animationView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(animationView)
 
