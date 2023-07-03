@@ -70,6 +70,8 @@ struct InteractionsView: View {
                 RemoteArrowView()
             case .xylophone:
                 XylophoneLayout()
+            case .danceFreeze:
+                DanceFreezeLauncher()
         }
     }
 }
