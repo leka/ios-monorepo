@@ -187,4 +187,20 @@ enum DragAndDropPreviews: Int, CaseIterable, Previewable {
     }
 }
 
+enum DanceFreezePreviews: Int, CaseIterable, Previewable {
+    case danceFreeze
+    var type: ActivityType { return .danceFreeze }
+    var interface: GameLayout { return .danceFreeze }
+    var preview: String {
+        switch self {
+            case .danceFreeze: return "danceFreeze"
+        }
+    }
+    func defaults() -> BaseDefaults? {
+        switch self {
+            case .danceFreeze: return DanceFreeze.standard
+        }
+    }
+}
+
 // swiftlint:enable identifier_name
