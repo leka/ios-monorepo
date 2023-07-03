@@ -84,6 +84,10 @@ class ExplorerActivity: ObservableObject {
                 return Array(dragAndDropAnswers.prefix(3))
             case .dropArea2Assets6:
                 return dragAndDropAnswers
+            case .association4:
+                return association4Answers
+            case .association6:
+                return association6Answers
             case .colorQuest1:
                 return Array(colorAnswers.prefix(1))
             case .colorQuest2:
@@ -94,9 +98,7 @@ class ExplorerActivity: ObservableObject {
                 return [""]
         }
     }
-    // swiftlint:enable cyclomatic_complexity
 
-    // ready to work with more than 1 good answers
     private func setGoodAnswers() -> [CorrectAnswers] {
         switch interface {
             case .basket1, .basket2, .basket4:
@@ -120,6 +122,16 @@ class ExplorerActivity: ObservableObject {
                     CorrectAnswers(context: "kitchen_assets_3", answers: ["watermelon", "banana", "kiwi"]),
                     CorrectAnswers(context: "bathroom_assets_3", answers: ["avocado", "cherry", "strawberry"]),
                 ]
+            case .association4:
+                return [
+                    CorrectAnswers(context: "watermelon", answers: ["watermelon", "watermelon1"]),
+                    CorrectAnswers(context: "banana", answers: ["banana", "banana1"]),
+                ]
+            case .association6:
+                return [
+                    CorrectAnswers(context: "watermelon", answers: ["watermelon", "watermelon1", "watermelon2"]),
+                    CorrectAnswers(context: "banana", answers: ["banana", "banana1", "banana2"]),
+                ]
             case .colorQuest1, .colorQuest2, .colorQuest3:
                 return [CorrectAnswers(context: "context", answers: ["green"])]
             case .remoteStandard, .remoteArrow, .xylophone, .danceFreeze:
@@ -128,6 +140,7 @@ class ExplorerActivity: ObservableObject {
                 return [CorrectAnswers(context: "context", answers: ["dummy_1"])]
         }
     }
+    // swiftlint:enable cyclomatic_complexity
 
     private func setSound() -> [String]? {
         switch type {
@@ -143,6 +156,8 @@ class ExplorerActivity: ObservableObject {
     var stepAnswers = ["dummy_1", "dummy_2", "dummy_3", "dummy_4", "dummy_5", "dummy_6"]
     var colorAnswers = ["green", "purple", "red", "yellow", "blue"]
     var dragAndDropAnswers = ["watermelon", "banana", "kiwi", "avocado", "cherry", "strawberry"]
+    var association4Answers = ["watermelon", "watermelon1", "banana", "banana1"]
+    var association6Answers = ["watermelon", "watermelon1", "watermelon2", "banana", "banana1", "banana2"]
 
     func stepInstruction() -> LocalizedContent {
         return LocalizedContent(
@@ -164,6 +179,10 @@ class ExplorerActivity: ObservableObject {
                         return "Fais glisser la pastèque dans la cuisine"
                     case .dropArea2Assets2, .dropArea2Assets6:
                         return "Fais glisser chaque objet sur l'image qui convient"
+                    case .association4:
+                        return "Fais le tri en catégories de 2 images"
+                    case .association6:
+                        return "Fais le tri en catégories de 3 images"
                     default:
                         return "Fais glisser la pastèque dans le panier"
                 }
