@@ -7,7 +7,6 @@ import Foundation
 
 public protocol GameplayProtocol: ObservableObject {
     var name: String { get }
-    var rightAnswers: [ChoiceViewModel] { get }
     var choices: [ChoiceViewModel] { get set }
     var isFinished: Bool { get set }
 

@@ -24,10 +24,12 @@ public struct ChoiceViewModel: Identifiable, Equatable, Comparable {
     public let item: String
     public var type: ChoiceDataType
     public var status: ChoiceState
+    public var rightAnswer: Bool
 
-    public init(item: String, type: ChoiceDataType, status: ChoiceState = .notSelected) {
+    public init(item: String, type: ChoiceDataType, status: ChoiceState = .notSelected, rightAnswer: Bool = false) {
         self.item = item
         self.type = type
         self.status = status
+        self.rightAnswer = rightAnswer
     }
 }

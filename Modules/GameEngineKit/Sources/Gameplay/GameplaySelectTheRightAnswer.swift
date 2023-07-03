@@ -7,20 +7,18 @@ import Foundation
 
 public class GameplaySelectTheRightAnswer: GameplayProtocol {
     public let name = "Select The Right Answer"
-    public let rightAnswers: [ChoiceViewModel]
     @Published public var choices: [ChoiceViewModel]
     @Published public var isFinished: Bool = false
 
     public var choicesPublisher: Published<[ChoiceViewModel]>.Publisher { $choices }
     public var isFinishedPublisher: Published<Bool>.Publisher { $isFinished }
 
-    public init(choices: [ChoiceViewModel], rightAnswers: [ChoiceViewModel]) {
+    public init(choices: [ChoiceViewModel]) {
         self.choices = choices
-        self.rightAnswers = rightAnswers
     }
 
     public func process(choice: ChoiceViewModel) {
-        if choice.item == rightAnswers[0].item {
+        if choice.rightAnswer {
             if let index = choices.firstIndex(where: { $0.id == choice.id }) {
                 self.choices[index].status = .playingRightAnimation
 
@@ -34,7 +32,7 @@ public class GameplaySelectTheRightAnswer: GameplayProtocol {
             if let index = choices.firstIndex(where: { $0.id == choice.id }) {
                 self.choices[index].status = .playingWrongAnimation
 
-				// TO DO (@hugo) asyncAwait
+                // TO DO (@hugo) asyncAwait
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
                     self.choices[index].status = .notSelected
                 }
