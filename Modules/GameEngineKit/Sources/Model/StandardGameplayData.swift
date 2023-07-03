@@ -6,15 +6,13 @@ import SwiftUI
 
 public class StandardGameplayData {
     public var choices: [ChoiceViewModel]
-    public var rightAnswers: [ChoiceViewModel]
     public var answersNumber: Int?
 
     public init(
-        choices: [ChoiceViewModel], rightAnswers: [ChoiceViewModel],
+        choices: [ChoiceViewModel],
         answersNumber: Int? = nil
     ) {
         self.choices = choices
-        self.rightAnswers = rightAnswers
         self.answersNumber = answersNumber
     }
 }
