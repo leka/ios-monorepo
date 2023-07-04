@@ -47,7 +47,8 @@ private class StateLoadingUpdateFile: GKState, StateEventProcessor {
     }
 
     override func didEnter(from previousState: GKState?) {
-        // TODO: load update file
+        print("StateLoadingUpdateFile")  // TODO: load update file
+        process(event: .fileLoaded)  // TODO: remove when todo above is done
     }
 
     func process(event: UpdateEvent) {
@@ -69,7 +70,8 @@ private class StateSettingDestinationPath: GKState, StateEventProcessor {
     }
 
     override func didEnter(from previousState: GKState?) {
-        // TODO: set BLE destination path and clear file
+        print("StateSettingDestinationPath")  // TODO: set BLE destination path and clear file
+        process(event: .destinationPathSet)  // TODO: remove when todo above is done
     }
 
     func process(event: UpdateEvent) {
@@ -89,7 +91,8 @@ private class StateSendingFile: GKState, StateEventProcessor {
     }
 
     override func didEnter(from previousState: GKState?) {
-        // TODO: send file
+        print("StateSendingFile")  // TODO: send file
+        process(event: .fileSent)  // TODO: remove when todo above is done
     }
 
     func process(event: UpdateEvent) {
@@ -109,7 +112,8 @@ private class StateApplyingUpdate: GKState, StateEventProcessor {
     }
 
     override func didEnter(from previousState: GKState?) {
-        // TODO: set BLE major, minor and revision apply
+        print("StateApplyingUpdate")  // TODO: set BLE major, minor and revision apply
+        process(event: .robotDisconnected)  // TODO: remove when todo above is done
     }
 
     func process(event: UpdateEvent) {
@@ -126,6 +130,11 @@ private class StateWaitingForRobotToReboot: GKState, StateEventProcessor {
 
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
         return stateClass is StateFinal.Type || stateClass is StateErrorRobotNotUpToDate.Type
+    }
+
+    override func didEnter(from previousState: GKState?) {
+        print("StateWaitingForRobotToReboot")  // TODO: remove when robotDisconnected implemented
+        process(event: .robotDetected)  // TODO: remove when todo above is done
     }
 
     func process(event: UpdateEvent) {
