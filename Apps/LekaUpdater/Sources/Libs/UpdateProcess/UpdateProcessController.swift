@@ -9,6 +9,8 @@ import Foundation
 
 enum UpdateProcessStage {
     case initial
+
+    // LekaOS 1.0.0+
     case sendingUpdate
     case installingUpdate
 }
@@ -16,6 +18,10 @@ enum UpdateProcessStage {
 enum UpdateProcessError: Error {
     case unknown
     case updateProcessNotAvailable
+
+    // LekaOS 1.0.0+
+    case failedToLoadFile
+    case robotNotUpToDate
 }
 
 // MARK: - Controller
@@ -34,6 +40,8 @@ class UpdateProcessController {
         let currentRobotVersion = robot.osVersion
 
         switch currentRobotVersion {
+            case "1.0.0", "1.1.0":
+                self.currentUpdateProcess = UpdateProcessV100()
             default:
                 self.currentUpdateProcess = UpdateProcessTemplate()
         }
