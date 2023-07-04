@@ -2,9 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
-// Copied from RobotKit
-
-//import BLEKit
+import BLEKit
 import Combine
 import SwiftUI
 
@@ -18,6 +16,8 @@ public class RobotConnectionViewModel: ObservableObject {
 
     @Published public var selectedRobotDiscovery: RobotDiscoveryViewModel?
     @Published public var connectedRobotDiscovery: RobotDiscoveryViewModel?
+
+    @Published public var scanForRobotsTask: AnyCancellable?
 
     public var connectionButtonDisabled: Bool {
         if connected {
@@ -36,6 +36,7 @@ public class RobotConnectionViewModel: ObservableObject {
 
     // MARK: - Private variables
 
+    private let bleManager = BLEManager.live()
     private var cancellables: Set<AnyCancellable> = []
 
     // MARK: - Public functions
@@ -46,19 +47,28 @@ public class RobotConnectionViewModel: ObservableObject {
     }
 
     public func scanForRobots() {
-        // TODO(@ladislas): replace by BLEManager implementation
-        self.robotDiscoveries = (1...5)
-            .map {
-                RobotDiscoveryViewModel(
-                    name: "Leka \($0)", battery: Int.random(in: 0...100),
-                    isCharging: Bool.random(), osVersion: "1.2.3", status: .unselected)
-            }
+        scanForRobotsTask = bleManager.scanForRobots()
+            .receive(on: DispatchQueue.main)
+            .sink(
+                receiveCompletion: { _ in
+                    // nothing to do
+                },
+                receiveValue: { robotDiscoveryList in
+                    self.robotDiscoveries = robotDiscoveryList.map { robotDiscovery in
+                        RobotDiscoveryViewModel(
+                            name: robotDiscovery.advertisingData.name, battery: robotDiscovery.advertisingData.battery,
+                            isCharging: robotDiscovery.advertisingData.isCharging,
+                            osVersion: robotDiscovery.advertisingData.osVersion, status: .unselected)
+                    }
+                })
     }
 
     public func connectToSelectedRobot() {
         guard let selectedRobotDiscovery = selectedRobotDiscovery else {
             return
         }
+
+        scanForRobotsTask?.cancel()
 
         self.connectedRobotDiscovery = selectedRobotDiscovery
         self.selectedRobotDiscovery = nil
