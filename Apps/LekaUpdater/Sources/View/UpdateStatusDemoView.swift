@@ -38,6 +38,10 @@ class UpdateStatusDemoViewModel: ObservableObject {
                         switch error {
                             case .updateProcessNotAvailable:
                                 self.error = "ERROR, this robot cannot be update"
+                            case .failedToLoadFile:
+                                self.error = "ERROR, please reinstall the app"
+                            case .robotNotUpToDate:
+                                self.error = "ERROR, please try again"
                             default:
                                 self.error = "ERROR, unknown"
                         }
