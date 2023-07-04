@@ -115,7 +115,7 @@ class ExplorerActivity: ObservableObject {
             case .listenThenTouchToSelect:
                 return ["guitar"]
             case .danceFreeze:
-                return ["guitar"]
+                return ["nyan"]
             default:
                 return nil
         }
