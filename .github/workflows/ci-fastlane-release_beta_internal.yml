@@ -23,8 +23,8 @@ env:
 
 jobs:
   internal_beta_release:
-    if: ${{ github.event.label.name == 'fastlane:release_beta_internal' }}
-    name: fastlane beta_internal
+    if: contains(github.event.label.name, 'fastlane:rbi')
+    name: fastlane release beta_internal
     runs-on: [self-hosted, iOS]
 
     steps:
@@ -49,9 +49,25 @@ jobs:
         run: |
           bundle exec fastlane sync_certificates release:true --verbose
 
-      - name: fastlane beta_internal
+      - name: fastlane beta_internal LekaApp
+        if: contains(github.event.label.name, 'LekaApp')
+        run: |
+          bundle exec fastlane beta_internal targets:LekaApp --verbose
+
+      - name: fastlane beta_internal LekaActivityUIExplorer
+        if: contains(github.event.label.name, 'LekaActivityUIExplorer')
         run: |
           bundle exec fastlane beta_internal targets:LekaActivityUIExplorer --verbose
+
+      - name: fastlane beta_internal LekaUpdater
+        if: contains(github.event.label.name, 'LekaUpdater')
+        run: |
+          bundle exec fastlane beta_internal targets:LekaUpdater --verbose
+
+      - name: fastlane beta_internal all
+        if: contains(github.event.label.name, 'all')
+        run: |
+          bundle exec fastlane beta_internal targets:all --verbose
 
       - name: remove label
         if: always()
@@ -59,9 +75,12 @@ jobs:
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
+            const { LABEL_NAME } = process.env
             github.rest.issues.removeLabel({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              name: 'fastlane:release_beta_internal'
+              name: LABEL_NAME
             })
+        env:
+          LABEL_NAME: ${{ github.event.label.name }}
