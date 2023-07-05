@@ -28,11 +28,6 @@ class AssociationFour: SKScene, DragAndDropSceneProtocol {
         self.removeAllActions()
 
         dropDestinations = []
-        // FIRST: delay reset() for all Dnd Templates
-        // SECOND: do Not launch another step when EndGame
-        // ||-> Check that allStepsWerePlayed() -- round isn't finishing properly (cf reinforcer methods)
-        // Finish dropGoodAnswer() to layout nodes
-        // Make Association_6
 
         makeDropArea()
         makeAnswers()
