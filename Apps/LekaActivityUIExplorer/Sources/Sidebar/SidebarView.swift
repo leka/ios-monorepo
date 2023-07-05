@@ -51,6 +51,12 @@ struct SidebarView: View {
                 } label: {
                     disclosureGroupLabel("remote")
                 }
+
+                DisclosureGroup {
+                    DanceFreezeNavigationGroup()
+                } label: {
+                    disclosureGroupLabel("dance_freeze")
+                }
             }
             .padding(.horizontal, 20)
             .frame(maxWidth: .infinity)

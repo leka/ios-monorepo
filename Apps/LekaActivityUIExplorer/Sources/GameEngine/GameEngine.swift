@@ -168,6 +168,10 @@ class GameEngine: NSObject, ObservableObject {
                 currentMediaHasBeenPlayedOnce = false
                 allAnswersAreDisabled = true
                 sound = currentActivity.stepSequence[currentGroupIndex][currentStepIndex].sound?[0] ?? ""
+            case .danceFreeze:
+                sound = currentActivity.stepSequence[currentGroupIndex][currentStepIndex].sound?[0] ?? ""
+                setAudioPlayer()
+
             default:
                 // property is set to true in order to keep the white overlay hidden
                 currentMediaHasBeenPlayedOnce = true

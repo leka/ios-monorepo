@@ -162,4 +162,9 @@ public enum DragAndDrop {
     public static let basket: BaseDefaults? = nil
 }
 
+public enum DanceFreeze {
+    // ? no defaults needed
+    public static let standard: BaseDefaults? = nil
+}
+
 // swiftlint:enable identifier_name

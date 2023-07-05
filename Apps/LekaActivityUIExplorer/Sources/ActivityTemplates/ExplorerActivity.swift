@@ -88,7 +88,7 @@ class ExplorerActivity: ObservableObject {
                 return Array(colorAnswers.prefix(2))
             case .colorQuest3:
                 return Array(colorAnswers.prefix(3))
-            case .remoteStandard, .remoteArrow, .xylophone:
+            case .remoteStandard, .remoteArrow, .xylophone, .danceFreeze:
                 return [""]
         }
     }
@@ -103,7 +103,7 @@ class ExplorerActivity: ObservableObject {
                 return ["watermelon", "banana"]
             case .colorQuest1, .colorQuest2, .colorQuest3:
                 return ["green"]
-            case .remoteStandard, .remoteArrow, .xylophone:
+            case .remoteStandard, .remoteArrow, .xylophone, .danceFreeze:
                 return [""]
             default:
                 return ["dummy_1"]
@@ -114,6 +114,8 @@ class ExplorerActivity: ObservableObject {
         switch type {
             case .listenThenTouchToSelect:
                 return ["guitar"]
+            case .danceFreeze:
+                return ["nyan"]
             default:
                 return nil
         }
@@ -144,6 +146,9 @@ class ExplorerActivity: ObservableObject {
                 return "Joue du xylophone avec Leka"
             case .remote:
                 return "Contrôle Leka avec la télécommande et fais le changer de couleur"
+            case .danceFreeze:
+                return
+                    "Danse avec Leka au rythme de la musique et fais la statue lorsqu’il s’arrête"
         }
     }
 
