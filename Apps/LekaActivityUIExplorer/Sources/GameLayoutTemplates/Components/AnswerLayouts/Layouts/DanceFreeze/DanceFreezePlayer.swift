@@ -5,6 +5,8 @@
 import SwiftUI
 
 struct DanceFreezePlayer: View {
+    @EnvironmentObject var gameEngine: GameEngine
+
     @State var isAuto: Bool
     @State private var isDancing: Bool = true
 
@@ -14,6 +16,12 @@ struct DanceFreezePlayer: View {
         } label: {
             if isDancing {
                 DanceView()
+                    .onAppear {
+                        gameEngine.audioPlayer.play()
+                    }
+                    .onDisappear {
+                        gameEngine.audioPlayer.pause()
+                    }
             } else {
                 FreezeView()
             }
