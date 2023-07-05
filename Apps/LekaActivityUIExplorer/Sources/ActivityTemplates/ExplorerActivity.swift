@@ -22,7 +22,7 @@ class ExplorerActivity: ObservableObject {
             instructions: emptyInstructions(),
             activityType: type,
             stepsAmount: 5,
-            isRandom: false,
+            isRandom: true,
             randomAnswerPositions: true,
             stepSequence: makeEmptyStepArray())
     }
@@ -124,13 +124,13 @@ class ExplorerActivity: ObservableObject {
                 ]
             case .association4:
                 return [
-                    CorrectAnswers(context: "watermelon", answers: ["watermelon", "watermelon1"]),
-                    CorrectAnswers(context: "banana", answers: ["banana", "banana1"]),
+                    CorrectAnswers(context: "watermelon", answers: ["watermelon", "watermelon2"]),
+                    CorrectAnswers(context: "banana", answers: ["banana", "banana2"]),
                 ]
             case .association6:
                 return [
-                    CorrectAnswers(context: "watermelon", answers: ["watermelon", "watermelon1", "watermelon2"]),
-                    CorrectAnswers(context: "banana", answers: ["banana", "banana1", "banana2"]),
+                    CorrectAnswers(context: "watermelon", answers: ["watermelon", "watermelon2", "watermelon3"]),
+                    CorrectAnswers(context: "banana", answers: ["banana", "banana2", "banana3"]),
                 ]
             case .colorQuest1, .colorQuest2, .colorQuest3:
                 return [CorrectAnswers(context: "context", answers: ["green"])]
@@ -156,8 +156,8 @@ class ExplorerActivity: ObservableObject {
     var stepAnswers = ["dummy_1", "dummy_2", "dummy_3", "dummy_4", "dummy_5", "dummy_6"]
     var colorAnswers = ["green", "purple", "red", "yellow", "blue"]
     var dragAndDropAnswers = ["watermelon", "banana", "kiwi", "avocado", "cherry", "strawberry"]
-    var association4Answers = ["watermelon", "watermelon1", "banana", "banana1"]
-    var association6Answers = ["watermelon", "watermelon1", "watermelon2", "banana", "banana1", "banana2"]
+    var association4Answers = ["watermelon", "watermelon2", "banana", "banana2"]
+    var association6Answers = ["watermelon", "watermelon2", "watermelon3", "banana", "banana2", "banana3"]
 
     func stepInstruction() -> LocalizedContent {
         return LocalizedContent(
