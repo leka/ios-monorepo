@@ -61,13 +61,24 @@ public class RobotConnectionViewModel: ObservableObject {
     }
 
     public func connectToSelectedRobot() {
-        guard let selectedRobotDiscovery = selectedRobotDiscovery else {
+        guard let selectedRobotDiscovery = selectedRobotDiscovery?.robotDiscovery else {
             return
         }
 
         scanForRobotsTask?.cancel()
+        bleManager.connect(selectedRobotDiscovery)
+            .receive(on: DispatchQueue.main)
+            .sink(
+                receiveCompletion: { _ in
+                    // do nothing
+                },
+                receiveValue: { _ in
+                    // do nothing
+                }
+            )
+            .store(in: &cancellables)
 
-        self.connectedRobotDiscovery = selectedRobotDiscovery
+        self.connectedRobotDiscovery = self.selectedRobotDiscovery
         self.selectedRobotDiscovery = nil
     }
 
