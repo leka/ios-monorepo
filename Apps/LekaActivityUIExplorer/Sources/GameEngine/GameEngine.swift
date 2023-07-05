@@ -148,8 +148,6 @@ class GameEngine: NSObject, ObservableObject {
             //            correctAnswersIndices[group.context] = [Int]
             for (indexA, answer) in allAnswers.enumerated()
             where context.answers.contains(answer) {
-                //                var indices: [Int] = []
-                //                indices.append(indexA)
                 (correctAnswersIndices[context.context, default: []]).append(indexA)
             }
         }

@@ -17,19 +17,29 @@ class AssociationFour: SKScene, DragAndDropSceneProtocol {
     var dropAreas: [SKSpriteNode] = []
 
     // internals
-    var initialNodeX: CGFloat = .zero
-    var verticalSpacing: CGFloat = .zero
+    private var initialNodeX: CGFloat = .zero
+    private var verticalSpacing: CGFloat = .zero
+    private var dropDestinations: [DraggableItemNode] = []
+    private var dropDestinationAnchor: CGPoint = .zero
 
     // protocol methods
     func reset() {
         self.removeAllChildren()
         self.removeAllActions()
 
+        dropDestinations = []
+        // FIRST: delay reset() for all Dnd Templates
+        // SECOND: do Not launch another step when EndGame
+        // ||-> Check that allStepsWerePlayed() -- round isn't finishing properly (cf reinforcer methods)
+        // Finish dropGoodAnswer() to layout nodes
+        // Make Association_6
+
         makeDropArea()
         makeAnswers()
     }
 
     func makeDropArea() {
+        // Create grid pattern's origin in this template
         initialNodeX = (size.width - spacer) / 2
         verticalSpacing = self.size.height / 3
         defaultPosition = CGPoint(x: initialNodeX, y: verticalSpacing)
@@ -66,6 +76,8 @@ class AssociationFour: SKScene, DragAndDropSceneProtocol {
 
             addChild(draggableItemShadowNode)
             addChild(draggableItemNode)
+
+            dropDestinations.append(draggableItemNode)
         }
     }
 
@@ -81,8 +93,11 @@ class AssociationFour: SKScene, DragAndDropSceneProtocol {
         }
     }
 
-    func dropGoodAnswer(_ node: DraggableItemNode) {  // place left/right down with endAbscissa
+    func dropGoodAnswer(_ node: DraggableItemNode) {
         node.scaleForMax(sizeOf: biggerSide * 0.8)
+        node.position = CGPoint(
+            x: dropDestinationAnchor.x - 100,
+            y: dropDestinationAnchor.y - 60)
         node.zPosition = 10
         node.isDraggable = false
         dropAction(node)
@@ -137,31 +152,49 @@ class AssociationFour: SKScene, DragAndDropSceneProtocol {
             let node: DraggableItemNode = selectedNodes[touch]!
             node.scaleForMax(sizeOf: biggerSide)
 
-            let index = gameEngine!.allAnswers.firstIndex(where: { $0 == node.name })
+            // make dropArea out of target node
+            let dropAreaIndex = dropDestinations.firstIndex(where: {
+                $0.frame.contains(touch.location(in: self)) && $0.name != node.name
+            })
 
-            // dropped within the bounds of one of the dropAreas
-            if node.fullyContains(bounds: dropAreas[0].frame) {  // any of group[0]
-                gameEngine?.answerHasBeenGiven(atIndex: index!, withinContext: dropAreas[0].name!)
-                guard expectedItemsNodes[dropAreas[0].name!]!.first(where: { $0.name == node.name }) != nil else {
-                    snapBack(node: node, touch: touch)
-                    break
-                }
-                dropGoodAnswer(node)
-                selectedNodes[touch] = nil
-                break
-            } else if node.fullyContains(bounds: dropAreas[1].frame) {  // any of group[1]
-                gameEngine?.answerHasBeenGiven(atIndex: index!, withinContext: dropAreas[1].name!)
-                guard expectedItemsNodes[dropAreas[1].name!]!.first(where: { $0.name == node.name }) != nil else {
-                    snapBack(node: node, touch: touch)
-                    break
-                }
-                dropGoodAnswer(node)
-                selectedNodes[touch] = nil
+            // dropped outside the bounds of any dropArea
+            guard dropAreaIndex != nil else {
+                snapBack(node: node, touch: touch)
                 break
             }
 
-            // dropped outside the bounds of dropArea
-            snapBack(node: node, touch: touch)
+            let dropArea = dropDestinations[dropAreaIndex!]
+            dropDestinationAnchor = dropArea.position
+
+            // define contexts
+            var rightContext = String()
+            var wrongContext = String()
+            for context in expectedItemsNodes {
+                for item in context.value where item.name == node.name {
+                    rightContext = context.key
+                }
+            }
+            for context in expectedItemsNodes where context.key != rightContext {
+                wrongContext = context.key
+            }
+
+            let index = gameEngine!.allAnswers.firstIndex(where: { $0 == node.name })
+            let destinationIndex = gameEngine!.allAnswers.firstIndex(where: { $0 == dropArea.name })
+
+            guard (gameEngine?.correctAnswersIndices[rightContext, default: []].contains(destinationIndex!))!
+            else {
+                // dropped within the bounds of the wrong sibling
+                gameEngine?.answerHasBeenGiven(atIndex: index!, withinContext: wrongContext)
+                snapBack(node: node, touch: touch)
+                break
+            }
+            // dropped within the bounds of the proper sibling
+            dropDestinations[dropAreaIndex!].isDraggable = false
+            gameEngine?.answerHasBeenGiven(atIndex: index!, withinContext: rightContext)
+            gameEngine?.answerHasBeenGiven(atIndex: destinationIndex!, withinContext: rightContext)
+            dropGoodAnswer(node)
+            selectedNodes[touch] = nil
+            break
         }
     }
 }
