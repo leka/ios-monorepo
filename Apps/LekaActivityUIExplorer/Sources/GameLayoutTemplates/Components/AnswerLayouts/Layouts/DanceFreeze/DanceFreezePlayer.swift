@@ -27,7 +27,6 @@ struct DanceFreezePlayer: View {
             }
         }
         .disabled(isAuto)
-        .aspectRatio(contentMode: .fit)
         .onAppear {
             if isAuto {
                 randomSwitch()
