@@ -12,10 +12,13 @@ struct DanceFreezePlayer: View {
 
     var body: some View {
         Button {
-            isDancing.toggle()
+            withAnimation {
+                isDancing.toggle()
+            }
         } label: {
             if isDancing {
                 DanceView()
+                    .transition(.scale)
                     .onAppear {
                         gameEngine.audioPlayer.play()
                     }
@@ -24,6 +27,7 @@ struct DanceFreezePlayer: View {
                     }
             } else {
                 FreezeView()
+                    .transition(.scale)
             }
         }
         .disabled(isAuto)

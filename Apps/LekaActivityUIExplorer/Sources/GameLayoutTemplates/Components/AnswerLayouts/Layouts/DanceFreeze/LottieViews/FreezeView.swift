@@ -5,29 +5,11 @@
 import SwiftUI
 
 struct FreezeView: View {
-
-    enum Stage {
-        case transition
-        case freeze
-    }
-
-    @State var stage: Stage = .transition
-
     var body: some View {
-        switch stage {
-            case .transition:
-                LottieView(
-                    name: "freeze-transition", speed: 0.5,
-                    action: {
-                        stage = .freeze
-                    }
-                )
-            case .freeze:
-                LottieView(
-                    name: "freeze", speed: 0.5,
-                    loopMode: .loop
-                )
-        }
+        LottieView(
+            name: "freeze", speed: 0.5,
+            loopMode: .loop
+        )
     }
 }
 
