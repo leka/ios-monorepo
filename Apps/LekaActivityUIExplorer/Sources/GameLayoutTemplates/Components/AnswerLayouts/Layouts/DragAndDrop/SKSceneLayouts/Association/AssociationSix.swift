@@ -9,7 +9,7 @@ class AssociationSix: SKScene, DragAndDropSceneProtocol {
 
     // protocol requirements
     var gameEngine: GameEngine?
-    var spacer: CGFloat = .zero
+    var spacer: CGFloat = 455  // spaces + 1 node width worth
     var biggerSide: CGFloat = 195
     var defaultPosition = CGPoint.zero
     var selectedNodes: [UITouch: DraggableItemNode] = [:]
@@ -17,46 +17,70 @@ class AssociationSix: SKScene, DragAndDropSceneProtocol {
     var dropAreas: [SKSpriteNode] = []
 
     // internals
-    let padding: CGFloat = 100
+    private var initialNodeX: CGFloat = .zero
+    private var verticalSpacing: CGFloat = .zero
+    private var dropDestinations: [DraggableItemNode] = []
+    private var dropDestinationAnchor: CGPoint = .zero
 
     // protocol methods
     func reset() {
         self.removeAllChildren()
         self.removeAllActions()
 
-        spacer = (size.width - (padding * 2)) / 5
-        self.defaultPosition = CGPoint(x: padding, y: self.size.height)
+        dropDestinations = []
+        // FIRST: delay reset() for all Dnd Templates
+        // SECOND: do Not launch another step when EndGame
+        // ||-> Check that allStepsWerePlayed() -- round isn't finishing properly (cf reinforcer methods)
 
         makeDropArea()
         makeAnswers()
     }
 
     func makeDropArea() {
-        makeTwoDropAreas()
+        // Create grid pattern's origin in this template
+        initialNodeX = (size.width - spacer) / 2
+        verticalSpacing = self.size.height / 3
+        defaultPosition = CGPoint(x: initialNodeX, y: verticalSpacing)
+
         getExpectedItems()
     }
 
-    func makeTwoDropAreas() {
-        let dropArea = SKSpriteNode()
-        dropArea.size = CGSize(width: 450, height: 350)
-        dropArea.texture = SKTexture(imageNamed: "kitchen_assets_3")
-        dropArea.position = CGPoint(x: (size.width / 2) - 275, y: 190)
-        dropArea.name = "kitchen_assets_3"
+    @MainActor func makeAnswers() {
+        for (index, choice) in gameEngine!.allAnswers.enumerated() {
+            let draggableItemNode: DraggableItemNode = DraggableItemNode(
+                texture: SKTexture(imageNamed: choice),
+                name: choice,
+                position: self.defaultPosition)
+            let draggableItemShadowNode: DraggableItemShadowNode = DraggableItemShadowNode(
+                draggableItemNode: draggableItemNode)
 
-        let rightSideDropArea = SKSpriteNode()
-        rightSideDropArea.size = CGSize(width: 450, height: 350)
-        rightSideDropArea.texture = SKTexture(imageNamed: "bathroom_assets_3")
-        rightSideDropArea.position = CGPoint(x: (size.width / 2) + 275, y: 190)
-        rightSideDropArea.name = "bathroom_assets_3"
+            // normalize Nodes' sizes
+            draggableItemNode.scaleForMax(sizeOf: biggerSide)
+            draggableItemShadowNode.scaleForMax(sizeOf: biggerSide)
 
-        addChild(dropArea)
-        addChild(rightSideDropArea)
+            // prevent Nodes from going out of bounds
+            let xRange = SKRange(lowerLimit: 0, upperLimit: size.width - 120)
+            let yRange = SKRange(lowerLimit: 0, upperLimit: size.height - 120)
+            draggableItemNode.constraints = [SKConstraint.positionX(xRange, y: yRange)]
+            draggableItemShadowNode.constraints = [SKConstraint.positionX(xRange, y: yRange)]
 
-        dropAreas = [dropArea, rightSideDropArea]
+            // spacing between columns and/or rows
+            if [0, 2].contains(index) {
+                defaultPosition.x += spacer
+            } else {
+                defaultPosition.x = initialNodeX
+                defaultPosition.y += verticalSpacing
+            }
+
+            addChild(draggableItemShadowNode)
+            addChild(draggableItemNode)
+
+            dropDestinations.append(draggableItemNode)
+        }
     }
 
     func getExpectedItems() {
-        // expected answer
+        // expected answers
         for group in gameEngine!.correctAnswersIndices {
             for item in group.value {
                 let expectedItem = gameEngine!.allAnswers[item]
@@ -69,6 +93,9 @@ class AssociationSix: SKScene, DragAndDropSceneProtocol {
 
     func dropGoodAnswer(_ node: DraggableItemNode) {
         node.scaleForMax(sizeOf: biggerSide * 0.8)
+        node.position = CGPoint(
+            x: dropDestinationAnchor.x - 100,
+            y: dropDestinationAnchor.y - 60)
         node.zPosition = 10
         node.isDraggable = false
         dropAction(node)
@@ -80,7 +107,7 @@ class AssociationSix: SKScene, DragAndDropSceneProtocol {
     }
 
     // MARK: - SKScene specifics
-    // init
+    // set/reset scene
     override func didMove(to view: SKView) {
         self.backgroundColor = .clear
         self.reset()
@@ -123,31 +150,49 @@ class AssociationSix: SKScene, DragAndDropSceneProtocol {
             let node: DraggableItemNode = selectedNodes[touch]!
             node.scaleForMax(sizeOf: biggerSide)
 
-            let index = gameEngine!.allAnswers.firstIndex(where: { $0 == node.name })
+            // make dropArea out of target node
+            let dropAreaIndex = dropDestinations.firstIndex(where: {
+                $0.frame.contains(touch.location(in: self)) && $0.name != node.name
+            })
 
-            // dropped within the bounds of one of the dropAreas
-            if node.fullyContains(bounds: dropAreas[0].frame) {
-                gameEngine?.answerHasBeenGiven(atIndex: index!, withinContext: dropAreas[0].name!)
-                guard expectedItemsNodes[dropAreas[0].name!]!.first(where: { $0.name == node.name }) != nil else {
-                    snapBack(node: node, touch: touch)
-                    break
-                }
-                dropGoodAnswer(node)
-                selectedNodes[touch] = nil
-                break
-            } else if node.fullyContains(bounds: dropAreas[1].frame) {
-                gameEngine?.answerHasBeenGiven(atIndex: index!, withinContext: dropAreas[1].name!)
-                guard expectedItemsNodes[dropAreas[1].name!]!.first(where: { $0.name == node.name }) != nil else {
-                    snapBack(node: node, touch: touch)
-                    break
-                }
-                dropGoodAnswer(node)
-                selectedNodes[touch] = nil
+            // dropped outside the bounds of any dropArea
+            guard dropAreaIndex != nil else {
+                snapBack(node: node, touch: touch)
                 break
             }
 
-            // dropped outside the bounds of dropArea
-            snapBack(node: node, touch: touch)
+            let dropArea = dropDestinations[dropAreaIndex!]
+            dropDestinationAnchor = dropArea.position
+
+            // define contexts
+            var rightContext = String()
+            var wrongContext = String()
+            for context in expectedItemsNodes {
+                for item in context.value where item.name == node.name {
+                    rightContext = context.key
+                }
+            }
+            for context in expectedItemsNodes where context.key != rightContext {
+                wrongContext = context.key
+            }
+
+            let index = gameEngine!.allAnswers.firstIndex(where: { $0 == node.name })
+            let destinationIndex = gameEngine!.allAnswers.firstIndex(where: { $0 == dropArea.name })
+
+            guard (gameEngine?.correctAnswersIndices[rightContext, default: []].contains(destinationIndex!))!
+            else {
+                // dropped within the bounds of the wrong sibling
+                gameEngine?.answerHasBeenGiven(atIndex: index!, withinContext: wrongContext)
+                snapBack(node: node, touch: touch)
+                break
+            }
+            // dropped within the bounds of the proper sibling
+            dropDestinations[dropAreaIndex!].isDraggable = false
+            gameEngine?.answerHasBeenGiven(atIndex: index!, withinContext: rightContext)
+            gameEngine?.answerHasBeenGiven(atIndex: destinationIndex!, withinContext: rightContext)
+            dropGoodAnswer(node)
+            selectedNodes[touch] = nil
+            break
         }
     }
 }
