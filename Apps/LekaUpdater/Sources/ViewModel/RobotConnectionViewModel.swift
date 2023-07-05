@@ -83,6 +83,8 @@ public class RobotConnectionViewModel: ObservableObject {
     }
 
     public func disconnectFromRobot() {
+        bleManager.disconnect()
+
         self.connectedRobotDiscovery = nil
     }
 
