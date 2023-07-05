@@ -4,13 +4,14 @@
 
 import SwiftUI
 
-enum FreezingStage {
-    case transition
-    case freeze
-}
-
 struct FreezeView: View {
-    @State var stage: FreezingStage = .transition
+
+    enum Stage {
+        case transition
+        case freeze
+    }
+
+    @State var stage: Stage = .transition
 
     var body: some View {
         switch stage {
