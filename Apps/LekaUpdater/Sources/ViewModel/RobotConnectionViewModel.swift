@@ -55,10 +55,7 @@ public class RobotConnectionViewModel: ObservableObject {
                 },
                 receiveValue: { robotDiscoveryList in
                     self.robotDiscoveries = robotDiscoveryList.map { robotDiscovery in
-                        RobotDiscoveryViewModel(
-                            name: robotDiscovery.advertisingData.name, battery: robotDiscovery.advertisingData.battery,
-                            isCharging: robotDiscovery.advertisingData.isCharging,
-                            osVersion: robotDiscovery.advertisingData.osVersion, status: .unselected)
+                        RobotDiscoveryViewModel(robotDiscovery: robotDiscovery)
                     }
                 })
     }
