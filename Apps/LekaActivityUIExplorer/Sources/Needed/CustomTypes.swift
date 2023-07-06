@@ -26,6 +26,7 @@ enum ActivityType: String, Codable {
     case remote = "remote_standard"
     case danceFreeze = "dance_freeze"
     case hideAndSeek = "hide_and_seek"
+    case melody = "melody"
 }
 
 // Interfaces
@@ -40,6 +41,7 @@ enum GameLayout: Codable {
     case xylophone
     case danceFreeze
     case hideAndSeek
+    case melody1
 }
 
 // Good answers with or without dropAreas

@@ -94,6 +94,8 @@ class ExplorerActivity: ObservableObject {
                 return Array(colorAnswers.prefix(2))
             case .colorQuest3:
                 return Array(colorAnswers.prefix(3))
+            case .melody1:
+                return melodyAnswers
             case .remoteStandard, .remoteArrow, .xylophone, .danceFreeze, .hideAndSeek:
                 return [""]
         }
@@ -134,6 +136,8 @@ class ExplorerActivity: ObservableObject {
                 ]
             case .colorQuest1, .colorQuest2, .colorQuest3:
                 return [CorrectAnswers(context: "context", answers: ["green"])]
+            case .melody1:
+                return [CorrectAnswers(context: "context", answers: ["green"])]
             case .remoteStandard, .remoteArrow, .xylophone, .danceFreeze:
                 return [CorrectAnswers(context: "context", answers: [])]
             default:
@@ -158,6 +162,7 @@ class ExplorerActivity: ObservableObject {
     var dragAndDropAnswers = ["watermelon", "banana", "kiwi", "avocado", "cherry", "strawberry"]
     var association4Answers = ["watermelon", "watermelon2", "banana", "banana2"]
     var association6Answers = ["watermelon", "watermelon2", "watermelon3", "banana", "banana2", "banana3"]
+    var melodyAnswers = ["pink", "red", "orange", "yellow", "green", "blue", "purple"]
 
     func stepInstruction() -> LocalizedContent {
         return LocalizedContent(
@@ -192,6 +197,8 @@ class ExplorerActivity: ObservableObject {
                 return "Contrôle Leka avec la télécommande et fais le changer de couleur"
             case .danceFreeze:
                 return "Danse avec Leka au rythme de la musique et faits la statue lorsqu’il s’arrête"
+            case .melody:
+                return "Touche la même couleur que celle de Leka"
             case .hideAndSeek:
                 return "Cache le robot quelque part dans la pièce. Suis ensuite les instructions. "
         }

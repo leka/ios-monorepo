@@ -177,4 +177,10 @@ public enum HideAndSeek {
     public static let standard: BaseDefaults? = nil
 }
 
+public enum Melody {
+    public static let one = XylophoneDefaults(
+        defaultTileWidth: 130, defaultTilesSpacing: 16, defaultTilesScaleFeedback: 0.98,
+        defaultTilesRotationFeedback: -1, defaultTileColors: [.pink, .red, .orange, .yellow, .green, .blue, .purple])
+}
+
 // swiftlint:enable identifier_name
