@@ -9,7 +9,7 @@ class AssociationSix: SKScene, DragAndDropSceneProtocol {
 
     // protocol requirements
     var gameEngine: GameEngine?
-    var spacer: CGFloat = 455  // spaces + 1 node width worth
+    var spacer: CGFloat = 375
     var biggerSide: CGFloat = 195
     var defaultPosition = CGPoint.zero
     var selectedNodes: [UITouch: DraggableItemNode] = [:]
@@ -20,7 +20,12 @@ class AssociationSix: SKScene, DragAndDropSceneProtocol {
     private var initialNodeX: CGFloat = .zero
     private var verticalSpacing: CGFloat = .zero
     private var dropDestinations: [DraggableItemNode] = []
+    private var answeredButNotTurnedToDropArea: [Int] = []
+    // answers layout
     private var dropDestinationAnchor: CGPoint = .zero
+    private var freeSlots: [String: [Bool]] = [:]
+    private var endAbscissa: CGFloat = .zero
+    private var finalXPosition: CGFloat = .zero
 
     // protocol methods
     func reset() {
@@ -28,9 +33,8 @@ class AssociationSix: SKScene, DragAndDropSceneProtocol {
         self.removeAllActions()
 
         dropDestinations = []
-        // FIRST: delay reset() for all Dnd Templates
-        // SECOND: do Not launch another step when EndGame
-        // ||-> Check that allStepsWerePlayed() -- round isn't finishing properly (cf reinforcer methods)
+        answeredButNotTurnedToDropArea = []
+        freeSlots = [:]
 
         makeDropArea()
         makeAnswers()
@@ -38,11 +42,24 @@ class AssociationSix: SKScene, DragAndDropSceneProtocol {
 
     func makeDropArea() {
         // Create grid pattern's origin in this template
-        initialNodeX = (size.width - spacer) / 2
+        initialNodeX = (size.width - (spacer * 2)) / 2
         verticalSpacing = self.size.height / 3
         defaultPosition = CGPoint(x: initialNodeX, y: verticalSpacing)
 
         getExpectedItems()
+    }
+
+    func getExpectedItems() {
+        // expected answers
+        for group in gameEngine!.correctAnswersIndices {
+            for item in group.value {
+                let expectedItem = gameEngine!.allAnswers[item]
+                let expectedNode = SKSpriteNode()
+                expectedNode.name = expectedItem
+                expectedItemsNodes[group.key, default: []].append(expectedNode)
+                freeSlots[group.key] = [true, true]
+            }
+        }
     }
 
     @MainActor func makeAnswers() {
@@ -65,7 +82,7 @@ class AssociationSix: SKScene, DragAndDropSceneProtocol {
             draggableItemShadowNode.constraints = [SKConstraint.positionX(xRange, y: yRange)]
 
             // spacing between columns and/or rows
-            if [0, 2].contains(index) {
+            if [0, 1, 3, 4].contains(index) {
                 defaultPosition.x += spacer
             } else {
                 defaultPosition.x = initialNodeX
@@ -79,22 +96,10 @@ class AssociationSix: SKScene, DragAndDropSceneProtocol {
         }
     }
 
-    func getExpectedItems() {
-        // expected answers
-        for group in gameEngine!.correctAnswersIndices {
-            for item in group.value {
-                let expectedItem = gameEngine!.allAnswers[item]
-                let expectedNode = SKSpriteNode()
-                expectedNode.name = expectedItem
-                expectedItemsNodes[group.key, default: []].append(expectedNode)
-            }
-        }
-    }
-
     func dropGoodAnswer(_ node: DraggableItemNode) {
         node.scaleForMax(sizeOf: biggerSide * 0.8)
         node.position = CGPoint(
-            x: dropDestinationAnchor.x - 100,
+            x: finalXPosition,
             y: dropDestinationAnchor.y - 60)
         node.zPosition = 10
         node.isDraggable = false
@@ -104,6 +109,29 @@ class AssociationSix: SKScene, DragAndDropSceneProtocol {
                 self.reset()
             }
         }
+    }
+
+    // prepare answer's layout
+    private func setFinalXPosition(_in context: String) {
+        guard endAbscissa <= dropDestinationAnchor.x else {
+            finalXPosition = {
+                guard freeSlots[context]![1] else {
+                    freeSlots[context]![0] = false
+                    return dropDestinationAnchor.x - 100
+                }
+                freeSlots[context]![1] = false
+                return dropDestinationAnchor.x + 100
+            }()
+            return
+        }
+        finalXPosition = {
+            guard freeSlots[context]![0] else {
+                freeSlots[context]![1] = false
+                return dropDestinationAnchor.x + 100
+            }
+            freeSlots[context]![0] = false
+            return dropDestinationAnchor.x - 100
+        }()
     }
 
     // MARK: - SKScene specifics
@@ -147,6 +175,7 @@ class AssociationSix: SKScene, DragAndDropSceneProtocol {
             if !selectedNodes.keys.contains(touch) {
                 break
             }
+
             let node: DraggableItemNode = selectedNodes[touch]!
             node.scaleForMax(sizeOf: biggerSide)
 
@@ -156,13 +185,16 @@ class AssociationSix: SKScene, DragAndDropSceneProtocol {
             })
 
             // dropped outside the bounds of any dropArea
-            guard dropAreaIndex != nil else {
+            guard let newDestinationIndex = dropAreaIndex else {
                 snapBack(node: node, touch: touch)
                 break
             }
-
-            let dropArea = dropDestinations[dropAreaIndex!]
-            dropDestinationAnchor = dropArea.position
+            // check if destination is valid dropArea
+            guard !answeredButNotTurnedToDropArea.contains(newDestinationIndex) else {
+                snapBack(node: node, touch: touch)
+                break
+            }
+            let dropArea = dropDestinations[newDestinationIndex]
 
             // define contexts
             var rightContext = String()
@@ -176,23 +208,33 @@ class AssociationSix: SKScene, DragAndDropSceneProtocol {
                 wrongContext = context.key
             }
 
+            // define played indices (answer + dropArea)
             let index = gameEngine!.allAnswers.firstIndex(where: { $0 == node.name })
             let destinationIndex = gameEngine!.allAnswers.firstIndex(where: { $0 == dropArea.name })
 
+            // play in given context
             guard (gameEngine?.correctAnswersIndices[rightContext, default: []].contains(destinationIndex!))!
             else {
-                // dropped within the bounds of the wrong sibling
+                // dropped within the wrong context
                 gameEngine?.answerHasBeenGiven(atIndex: index!, withinContext: wrongContext)
                 snapBack(node: node, touch: touch)
                 break
             }
-            // dropped within the bounds of the proper sibling
-            dropDestinations[dropAreaIndex!].isDraggable = false
+            // dropped within the bounds of some proper sibling + keep track of answer
+            let nodeIndex = dropDestinations.firstIndex(where: { $0.name == node.name })
+            answeredButNotTurnedToDropArea.append(nodeIndex!)
+            dropDestinations[newDestinationIndex].isDraggable = false
             gameEngine?.answerHasBeenGiven(atIndex: index!, withinContext: rightContext)
             gameEngine?.answerHasBeenGiven(atIndex: destinationIndex!, withinContext: rightContext)
+
+            // prepare answer's layout
+            dropDestinationAnchor = dropArea.position
+            endAbscissa = touch.location(in: self).x
+            setFinalXPosition(_in: rightContext)
+
+            // layout answer
             dropGoodAnswer(node)
             selectedNodes[touch] = nil
-            break
         }
     }
 }

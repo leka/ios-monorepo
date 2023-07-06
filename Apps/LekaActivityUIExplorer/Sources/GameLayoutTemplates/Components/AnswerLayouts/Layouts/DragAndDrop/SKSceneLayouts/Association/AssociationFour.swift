@@ -189,7 +189,6 @@ class AssociationFour: SKScene, DragAndDropSceneProtocol {
             gameEngine?.answerHasBeenGiven(atIndex: destinationIndex!, withinContext: rightContext)
             dropGoodAnswer(node)
             selectedNodes[touch] = nil
-            break
         }
     }
 }

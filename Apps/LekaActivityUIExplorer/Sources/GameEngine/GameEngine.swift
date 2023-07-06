@@ -161,10 +161,6 @@ class GameEngine: NSObject, ObservableObject {
                 currentMediaHasBeenPlayedOnce = false
                 allAnswersAreDisabled = true
                 sound = currentActivity.stepSequence[currentGroupIndex][currentStepIndex].sound?[0] ?? ""
-            case .danceFreeze:
-                sound = currentActivity.stepSequence[currentGroupIndex][currentStepIndex].sound?[0] ?? ""
-                setAudioPlayer()
-
             default:
                 // property is set to true in order to keep the white overlay hidden
                 currentMediaHasBeenPlayedOnce = true
@@ -177,7 +173,10 @@ class GameEngine: NSObject, ObservableObject {
     func answerHasBeenGiven(atIndex: Int, withinContext: String = "context") {
         tapIsDisabled = true
         pressedAnswerIndex = atIndex
-        if (correctAnswersIndices[withinContext, default: []]).contains(atIndex) {
+        evaluateAnswer: if (correctAnswersIndices[withinContext, default: []]).contains(atIndex) {
+            guard !rightAnswersGiven.contains(atIndex) else {
+                break evaluateAnswer
+            }
             rightAnswersGiven.append(atIndex)
             if allCorrectAnswersWereGiven() {
                 trials += 1
@@ -203,6 +202,10 @@ class GameEngine: NSObject, ObservableObject {
             == currentActivity.stepSequence.flatMap({ $0 }).last?.id
         {
             Task {
+                guard currentActivity.activityType != .dragAndDrop else {
+                    await endGame()
+                    return
+                }
                 await animate(duration: 0.8) {
                     self.correctAnswerAnimationPercent = 1.0
                 }
