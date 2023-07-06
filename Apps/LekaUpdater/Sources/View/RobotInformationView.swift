@@ -5,12 +5,12 @@
 import SwiftUI
 
 struct RobotInformationView: View {
-    @EnvironmentObject var robot: DummyRobotModel
+    @EnvironmentObject var robot: RobotPeripheralViewModel
 
     var body: some View {
         List {
             Text("Nom: \(robot.name)")
-            Text("N° série: \(robot.serialNumber)")
+            Text("N° série: \(robot.serialNumber ?? "(n/a)")")
             Text("Battery: \(robot.battery)")
             Text("Version: \(robot.osVersion)")
         }
@@ -18,9 +18,13 @@ struct RobotInformationView: View {
 }
 
 struct RobotInformationView_Previews: PreviewProvider {
-    static let robot = DummyRobotModel()
+    static let robotWithoutSerialNumber = RobotPeripheralViewModel()
+    static let robotWithSerialNumber = RobotPeripheralViewModel(serialNumber: "LK-2206...")
+
     static var previews: some View {
         RobotInformationView()
-            .environmentObject(robot)
+            .environmentObject(robotWithoutSerialNumber)
+        RobotInformationView()
+            .environmentObject(robotWithSerialNumber)
     }
 }

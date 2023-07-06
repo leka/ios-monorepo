@@ -5,10 +5,10 @@
 import SwiftUI
 
 struct RobotUpdateAvailableView: View {
-    @ObservedObject private var robot: DummyRobotModel
+    @ObservedObject private var robot: RobotPeripheralViewModel
     @StateObject private var requirementsViewModel: RequirementsViewModel
 
-    init(robot: DummyRobotModel) {
+    init(robot: RobotPeripheralViewModel) {
         self._robot = ObservedObject(wrappedValue: robot)
         self._requirementsViewModel = StateObject(wrappedValue: RequirementsViewModel(robot: robot))
     }
@@ -28,7 +28,7 @@ struct RobotUpdateAvailableView: View {
                     .background(.blue)
                     .cornerRadius(10)
             }
-            .onSubmit(robot.startUpdate)
+            //            .onSubmit(robot.startUpdate) // TODO: Use UpdateProcess
             .buttonStyle(.plain)
             .disabled(requirementsViewModel.robotIsNotReadyToUpdate)
 
@@ -41,9 +41,11 @@ struct RobotUpdateAvailableView: View {
 }
 
 struct RobotUpdateAvailableView_Previews: PreviewProvider {
-    @StateObject static var robot = DummyRobotModel()
+    @StateObject static var robotIsReady = RobotPeripheralViewModel(battery: 100, isCharging: true)
+    @StateObject static var robotIsNotReady = RobotPeripheralViewModel(battery: 0, isCharging: false)
 
     static var previews: some View {
-        RobotUpdateAvailableView(robot: robot)
+        RobotUpdateAvailableView(robot: robotIsReady)
+        RobotUpdateAvailableView(robot: robotIsNotReady)
     }
 }
