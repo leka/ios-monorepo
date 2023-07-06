@@ -216,8 +216,8 @@ class AssociationSix: SKScene, DragAndDropSceneProtocol {
             let dropArea = dropDestinations[newDestinationIndex]
 
             // define contexts
-            var rightContext = getRightContext(node: node)
-            var wrongContext = getWrongContext(comparedTo: rightContext)
+            let rightContext = getRightContext(node: node)
+            let wrongContext = getWrongContext(comparedTo: rightContext)
 
             // define played indices (answer + dropArea)
             let index = gameEngine!.allAnswers.firstIndex(where: { $0 == node.name })
