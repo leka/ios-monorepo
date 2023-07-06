@@ -72,6 +72,8 @@ struct InteractionsView: View {
                 XylophoneLayout()
             case .danceFreeze:
                 DanceFreezeLauncher()
+            case .hideAndSeek:
+                HideAndSeekLauncher()
         }
     }
 }

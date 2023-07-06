@@ -24,6 +24,7 @@ enum ActivityType: String, Codable {
     case xylophone = "xylophone"
     case remote = "remote_standard"
     case danceFreeze = "dance_freeze"
+    case hideAndSeek = "hide_and_seek"
 }
 
 enum GameLayout: Codable {
@@ -34,6 +35,7 @@ enum GameLayout: Codable {
     case remoteStandard, remoteArrow
     case xylophone
     case danceFreeze
+    case hideAndSeek
 }
 
 // MARK: - Activity Configurator - Texts's language edition scope
