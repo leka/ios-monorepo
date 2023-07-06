@@ -190,8 +190,8 @@ struct TemplatePreview_ButtonStyle: ButtonStyle {
 
 // MARK: - Xylophone Tile Answer Button Style (Gameplay)
 struct XylophoneTileButtonStyle: ButtonStyle {
-    @ObservedObject var xylophoneDefaults: XylophoneDefaults = Misc.xylophone
-    var color: Color
+    @ObservedObject var xylophoneDefaults: XylophoneDefaults
+    let index: Int
     func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
             .overlay {
@@ -211,7 +211,7 @@ struct XylophoneTileButtonStyle: ButtonStyle {
                     .stroke(.black.opacity(configuration.isPressed ? 0.3 : 0), lineWidth: 20)
             }
             .clipShape(RoundedRectangle(cornerRadius: 7, style: .circular))
-            .frame(width: xylophoneDefaults.customTileWidth, height: setSizeFromColor())
+            .frame(width: xylophoneDefaults.customTileWidth, height: setSizeFromIndex())
             .scaleEffect(
                 configuration.isPressed ? xylophoneDefaults.customTilesScaleFeedback : 1,
                 anchor: .center
@@ -221,13 +221,10 @@ struct XylophoneTileButtonStyle: ButtonStyle {
                 anchor: .center)
     }
 
-    private func setSizeFromColor() -> CGFloat {
-        switch color {
-            case .blue: return 240
-            case .yellow: return 300
-            case .red: return 365
-            case .purple: return 425
-            default: return 490
-        }
+    private func setSizeFromIndex() -> CGFloat {
+        let sizeDiff = 250 / xylophoneDefaults.customTileColors.count
+        let tileHeight = 500 - index * sizeDiff
+
+        return CGFloat(tileHeight)
     }
 }

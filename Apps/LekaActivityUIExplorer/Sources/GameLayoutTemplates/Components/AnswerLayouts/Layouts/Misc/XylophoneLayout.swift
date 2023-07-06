@@ -12,8 +12,8 @@ struct XylophoneLayout: View {
 
     var body: some View {
         HStack(spacing: xylophoneDefaults.customTilesSpacing) {
-            ForEach($xylophoneDefaults.customTileColors, id: \.self) { color in
-                XylophoneTile(color: color)
+			ForEach(xylophoneDefaults.customTileColors.indices, id: \.self) { index in
+                XylophoneTile(xylophoneDefaults: xylophoneDefaults, index: index)
             }
         }
         .robotNeededAlert()

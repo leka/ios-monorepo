@@ -5,18 +5,17 @@
 import SwiftUI
 
 struct XylophoneTile: View {
+    @ObservedObject var xylophoneDefaults: XylophoneDefaults
 
-    @EnvironmentObject var gameEngine: GameEngine
-
-    @Binding var color: Color
+    var index: Int
 
     var body: some View {
-        Button(
-            action: {
-                // Play Sound HERE
-            }, label: { color }
-        )
-        .buttonStyle(XylophoneTileButtonStyle(color: color))
+		Button {
+			print("Play music")
+		} label: {
+			xylophoneDefaults.customTileColors[index]
+		}
+        .buttonStyle(XylophoneTileButtonStyle(xylophoneDefaults: xylophoneDefaults, index: index))
         .compositingGroup()
     }
 }
