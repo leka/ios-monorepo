@@ -12,7 +12,7 @@ class ConnectionViewModel: ObservableObject {
     //    }
     @Published public var continueButtonDisabled = false
 
-    @Published public var connectedRobot = DummyRobotModel()
+    @Published public var connectedRobot = RobotPeripheralViewModel()
     @Published public var robotConnectionViewModel = RobotConnectionViewModel()
 
     private var cancellables: Set<AnyCancellable> = []
@@ -29,8 +29,8 @@ class ConnectionViewModel: ObservableObject {
     }
 
     private func onConnectedRobotDiscoveryChanged(robot: RobotDiscoveryViewModel?) {
-        if let robot = robot {
-            self.connectedRobot = DummyRobotModel(robotDiscoveryViewModel: robot)
+        if let robotDiscovery = robot?.robotDiscovery {
+            self.connectedRobot = RobotPeripheralViewModel(robotDiscovery: robotDiscovery)
             continueButtonDisabled = false
         } else {
             continueButtonDisabled = true

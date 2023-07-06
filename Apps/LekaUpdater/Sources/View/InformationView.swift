@@ -6,7 +6,7 @@ import SwiftUI
 
 struct InformationView: View {
     @EnvironmentObject var firmware: FirmwareManager
-    @EnvironmentObject var robot: DummyRobotModel
+    @EnvironmentObject var robot: RobotPeripheralViewModel
 
     var body: some View {
         VStack {
@@ -67,7 +67,8 @@ struct InformationView: View {
 
 struct InformationView_Previews: PreviewProvider {
     static let firmware = FirmwareManager()
-    static let robot = DummyRobotModel()
+    static let robot = RobotPeripheralViewModel(battery: 75, isCharging: true, osVersion: "1.3.0")
+
     static var previews: some View {
         InformationView()
             .environmentObject(firmware)

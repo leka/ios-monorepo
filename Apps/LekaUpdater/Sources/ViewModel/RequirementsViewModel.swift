@@ -6,7 +6,7 @@ import Foundation
 import SwiftUI
 
 class RequirementsViewModel: ObservableObject {
-    @ObservedObject private var robot: DummyRobotModel
+    @ObservedObject private var robot: RobotPeripheralViewModel
 
     let requirementsImage = Image(uiImage: LekaUpdaterAsset.Assets.robotIsCharging.image)
 
@@ -18,7 +18,7 @@ class RequirementsViewModel: ObservableObject {
         !robotIsReadyToUpdate
     }
 
-    init(robot: DummyRobotModel) {
+    init(robot: RobotPeripheralViewModel) {
         self._robot = ObservedObject(wrappedValue: robot)
     }
 }
