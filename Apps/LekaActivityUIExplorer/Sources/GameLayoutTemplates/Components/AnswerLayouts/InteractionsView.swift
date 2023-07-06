@@ -19,9 +19,18 @@ struct InteractionsView: View {
 
     @ViewBuilder
     private var interface: some View {
+        switch gameEngine.currentActivity.activityType {
+            case .touchToSelect: touchToSelectInterfaces
+            case .listenThenTouchToSelect: listenThenTouchToSelectInterfaces
+            case .dragAndDrop: dragAndDropInterfaces
+            case .colorQuest: colorQuestInterfaces
+            case .xylophone, .remote, .danceFreeze: otherInterfaces
+        }
+    }
+
+    @ViewBuilder
+    private var touchToSelectInterfaces: some View {
         switch gameEngine.interface {
-            case .touch1:
-                OneAnswerLayout()
             case .touch2:
                 TwoAnswersLayout()
             case .touch3:
@@ -36,8 +45,14 @@ struct InteractionsView: View {
                 FiveAnswersLayout()
             case .touch6:
                 SixAnswersLayout()
-            case .soundTouch1:
-                ListenOneAnswerLayout()
+            default:
+                OneAnswerLayout()
+        }
+    }
+
+    @ViewBuilder
+    private var listenThenTouchToSelectInterfaces: some View {
+        switch gameEngine.interface {
             case .soundTouch2:
                 ListenTwoAnswersLayout()
             case .soundTouch3:
@@ -50,8 +65,14 @@ struct InteractionsView: View {
                 ListenFourAnswersLayoutInline()
             case .soundTouch6:
                 ListenSixAnswersLayout()
-            case .basket1:
-                DragAndDropSceneView(withTemplate: BasketOneScene())
+            default:
+                ListenOneAnswerLayout()
+        }
+    }
+
+    @ViewBuilder
+    private var dragAndDropInterfaces: some View {
+        switch gameEngine.interface {
             case .basket2:
                 DragAndDropSceneView(withTemplate: BasketTwoScene())
             case .basket4:
@@ -72,22 +93,34 @@ struct InteractionsView: View {
                 DragAndDropSceneView(withTemplate: AssociationFour())
             case .association6:
                 DragAndDropSceneView(withTemplate: AssociationSix())
-            case .colorQuest1:
-                ColorQuestOneAnswerLayout()
+            default:
+                DragAndDropSceneView(withTemplate: BasketOneScene())
+        }
+    }
+
+    @ViewBuilder
+    private var colorQuestInterfaces: some View {
+        switch gameEngine.interface {
             case .colorQuest2:
                 ColorQuestTwoAnswersLayout()
             case .colorQuest3:
                 ColorQuestThreeAnswersLayout()
+            default:
+                ColorQuestOneAnswerLayout()
+        }
+    }
+
+    @ViewBuilder
+    private var otherInterfaces: some View {
+        switch gameEngine.interface {
             case .remoteStandard:
                 RemoteStandardView()
             case .remoteArrow:
                 RemoteArrowView()
-            case .xylophone:
-                XylophoneLayout()
             case .danceFreeze:
                 DanceFreezeLauncher()
-            case .hideAndSeek:
-                HideAndSeekLauncher()
+            default:
+                XylophoneLayout()
         }
     }
 }

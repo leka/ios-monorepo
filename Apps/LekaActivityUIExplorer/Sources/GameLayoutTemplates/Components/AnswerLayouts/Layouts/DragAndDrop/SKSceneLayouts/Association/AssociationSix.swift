@@ -112,7 +112,7 @@ class AssociationSix: SKScene, DragAndDropSceneProtocol {
     }
 
     // prepare answer's layout
-    private func setFinalXPosition(_in context: String) {
+    private func setFinalXPosition(context: String) {
         guard endAbscissa <= dropDestinationAnchor.x else {
             finalXPosition = {
                 guard freeSlots[context]![1] else {
@@ -132,6 +132,25 @@ class AssociationSix: SKScene, DragAndDropSceneProtocol {
             freeSlots[context]![0] = false
             return dropDestinationAnchor.x - 100
         }()
+    }
+
+    // get adequat contexts for currently evaluated answer
+    private func getRightContext(node: DraggableItemNode) -> String {
+        var contextName = String()
+        for context in expectedItemsNodes {
+            for item in context.value where item.name == node.name {
+                contextName = context.key
+            }
+        }
+        return contextName
+    }
+
+    private func getWrongContext(comparedTo: String) -> String {
+        var contextName = String()
+        for context in expectedItemsNodes where context.key != comparedTo {
+            contextName = context.key
+        }
+        return contextName
     }
 
     // MARK: - SKScene specifics
@@ -197,16 +216,8 @@ class AssociationSix: SKScene, DragAndDropSceneProtocol {
             let dropArea = dropDestinations[newDestinationIndex]
 
             // define contexts
-            var rightContext = String()
-            var wrongContext = String()
-            for context in expectedItemsNodes {
-                for item in context.value where item.name == node.name {
-                    rightContext = context.key
-                }
-            }
-            for context in expectedItemsNodes where context.key != rightContext {
-                wrongContext = context.key
-            }
+            var rightContext = getRightContext(node: node)
+            var wrongContext = getWrongContext(comparedTo: rightContext)
 
             // define played indices (answer + dropArea)
             let index = gameEngine!.allAnswers.firstIndex(where: { $0 == node.name })
@@ -230,7 +241,7 @@ class AssociationSix: SKScene, DragAndDropSceneProtocol {
             // prepare answer's layout
             dropDestinationAnchor = dropArea.position
             endAbscissa = touch.location(in: self).x
-            setFinalXPosition(_in: rightContext)
+            setFinalXPosition(context: rightContext)
 
             // layout answer
             dropGoodAnswer(node)
