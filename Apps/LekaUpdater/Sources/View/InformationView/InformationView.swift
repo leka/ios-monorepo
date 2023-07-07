@@ -10,10 +10,12 @@ struct InformationView: View {
 
     var body: some View {
         VStack {
-            LekaUpdaterAsset.Assets.lekaUpdaterIcon.swiftUIImage
-                .resizable()
-                .scaledToFit()
-                .frame(height: 120)
+                if firmware.compareWith(version: robot.osVersion) == .needsUpdate {
+                    RobotNeedsUpdateIllustration(size: 200)
+                } else {
+                    RobotUpToDateIllustration(size: 200)
+                }
+            
 
             Form {
                 Section {
