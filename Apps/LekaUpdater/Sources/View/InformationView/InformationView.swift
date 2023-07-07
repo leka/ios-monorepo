@@ -53,6 +53,12 @@ struct InformationView: View {
                         .font(.title)
                 }
             }
+            
+            LekaUpdaterAsset.Assets.lekaUpdaterIcon.swiftUIImage
+                .resizable()
+                .scaledToFit()
+                .frame(height: 70)
+                .padding(35)
 
             Button("Switch (debug)") {
                 if robot.osVersion == "1.3.0" {
