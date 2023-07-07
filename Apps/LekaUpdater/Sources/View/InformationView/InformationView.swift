@@ -68,6 +68,17 @@ struct InformationView: View {
                 }
             }  // TODO: Remove DEBUG
         }
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                VStack {
+                    Text("Leka Updater")
+                        .font(.title2)
+                        .bold()
+                    Text("L'application pour mettre à jour vos robots Leka !")
+                }
+                .foregroundColor(.accentColor)
+            }
+        }
     }
 }
 
