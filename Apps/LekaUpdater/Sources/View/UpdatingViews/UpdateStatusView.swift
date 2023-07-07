@@ -54,6 +54,7 @@ struct UpdateStatusView: View {
                 .padding(35)
 
         }
+        .onAppear(perform: viewModel.startUpdate)
         .navigationBarBackButtonHidden()
         .toolbar {
             ToolbarItem(placement: .principal) {
