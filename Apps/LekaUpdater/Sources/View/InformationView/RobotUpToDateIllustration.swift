@@ -64,6 +64,14 @@ struct RobotUpToDateIllustration: View {
 
 struct RobotUpToDateIllustration_Previews: PreviewProvider {
     static var previews: some View {
-        RobotUpToDateIllustration(size: 600)
+        Form {
+            Section {
+                Group {
+                    RobotUpToDateIllustration(size: 600)
+                }
+                .frame(maxWidth: .infinity, alignment: .center)
+            }
+            .listRowBackground(Color.clear)
+        }
     }
 }
