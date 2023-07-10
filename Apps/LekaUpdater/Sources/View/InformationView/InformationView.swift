@@ -89,8 +89,10 @@ struct InformationView_Previews: PreviewProvider {
     static let robot = RobotPeripheralViewModel(battery: 75, isCharging: true, osVersion: "1.3.0")
 
     static var previews: some View {
-        InformationView()
-            .environmentObject(firmware)
-            .environmentObject(robot)
+        NavigationStack {
+            InformationView()
+                .environmentObject(firmware)
+                .environmentObject(robot)
+        }
     }
 }
