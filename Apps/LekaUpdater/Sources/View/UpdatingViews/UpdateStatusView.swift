@@ -5,25 +5,7 @@
 import SwiftUI
 
 struct UpdateStatusView: View {
-
-    private enum UpdateStatus {
-        case sendingFile
-        case rebootingRobot
-        case updateFinished
-    }
-
-    @State private var updatingStatus: UpdateStatus = .sendingFile
-
-    private var stepNumber: Int {
-        switch updatingStatus {
-            case .sendingFile:
-                return 1
-            case .rebootingRobot:
-                return 2
-            case .updateFinished:
-                return 3
-        }
-    }
+    @StateObject private var viewModel = UpdateStatusViewModel()
 
     var body: some View {
         VStack {
@@ -31,7 +13,7 @@ struct UpdateStatusView: View {
             Spacer()
 
             VStack {
-                switch updatingStatus {
+                switch viewModel.updatingStatus {
                     case .sendingFile:
                         SendingFileIllustration()
                     case .rebootingRobot:
@@ -44,14 +26,14 @@ struct UpdateStatusView: View {
             .padding(.bottom)
             .padding(.bottom)
 
-            Text("Étape \(stepNumber)/3")
+            Text("Étape \(viewModel.stepNumber)/3")
                 .font(.title)
                 .bold()
                 .monospacedDigit()
                 .padding()
 
             VStack {
-                switch updatingStatus {
+                switch viewModel.updatingStatus {
                     case .sendingFile:
                         SendingFileContentView()
                     case .rebootingRobot:
@@ -72,6 +54,7 @@ struct UpdateStatusView: View {
                 .padding(35)
 
         }
+        .onAppear(perform: viewModel.startUpdate)
         .navigationBarBackButtonHidden()
         .toolbar {
             ToolbarItem(placement: .principal) {
@@ -90,13 +73,13 @@ struct UpdateStatusView: View {
     }
 
     func switchView() {
-        switch updatingStatus {
+        switch viewModel.updatingStatus {
             case .sendingFile:
-                updatingStatus = .rebootingRobot
+                viewModel.updatingStatus = .rebootingRobot
             case .rebootingRobot:
-                updatingStatus = .updateFinished
+                viewModel.updatingStatus = .updateFinished
             case .updateFinished:
-                updatingStatus = .sendingFile
+                viewModel.updatingStatus = .sendingFile
         }
     }
 

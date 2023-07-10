@@ -28,7 +28,6 @@ struct RobotUpdateAvailableView: View {
                     .background(.blue)
                     .cornerRadius(10)
             }
-            //            .onSubmit(robot.startUpdate) // TODO: Use UpdateProcess
             .buttonStyle(.plain)
             .disabled(requirementsViewModel.robotIsNotReadyToUpdate)
 
