@@ -5,7 +5,11 @@
 import SwiftUI
 
 struct UpdateStatusView: View {
-    @StateObject private var viewModel = UpdateStatusViewModel()
+    @StateObject private var viewModel: UpdateStatusViewModel
+
+    init(robot: RobotPeripheralViewModel) {
+        self._viewModel = StateObject(wrappedValue: UpdateStatusViewModel(robot: robot))
+    }
 
     var body: some View {
         VStack {
@@ -86,9 +90,10 @@ struct UpdateStatusView: View {
 }
 
 struct UpdatingStatusView_Previews: PreviewProvider {
+    static var robot = RobotPeripheralViewModel()
     static var previews: some View {
         NavigationStack {
-            UpdateStatusView()
+            UpdateStatusView(robot: robot)
         }
     }
 }
