@@ -10,12 +10,20 @@ struct InformationView: View {
 
     var body: some View {
         VStack {
-            LekaUpdaterAsset.Assets.lekaUpdaterIcon.swiftUIImage
-                .resizable()
-                .scaledToFit()
-                .frame(height: 120)
-
             Form {
+                Section {
+                    Group {
+                        if firmware.compareWith(version: robot.osVersion) == .needsUpdate {
+                            RobotNeedsUpdateIllustration(size: 200)
+                        } else {
+                            RobotUpToDateIllustration(size: 200)
+                        }
+                    }
+                    .frame(maxWidth: .infinity, alignment: .center)
+                }
+                .listRowBackground(Color.clear)
+
+
                 Section {
                     RobotInformationView()
                 } header: {
@@ -52,15 +60,38 @@ struct InformationView: View {
                         .textCase(nil)
                         .font(.title)
                 }
-            }
 
-            Button("Switch (debug)") {
-                if robot.osVersion == "1.3.0" {
-                    robot.osVersion = "1.4.0"
-                } else {
-                    robot.osVersion = "1.3.0"
+                Section {
+                    VStack {
+                        LekaUpdaterAsset.Assets.lekaUpdaterIcon.swiftUIImage
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height: 70)
+                            .padding(35)
+
+                        Button("Switch (debug)") {
+                            if robot.osVersion == "1.3.0" {
+                                robot.osVersion = "1.4.0"
+                            } else {
+                                robot.osVersion = "1.3.0"
+                            }
+                        }  // TODO: Remove DEBUG
+                    }
+                    .frame(maxWidth: .infinity, alignment: .center)
                 }
-            }  // TODO: Remove DEBUG
+                .listRowBackground(Color.clear)
+            }
+        }
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                VStack {
+                    Text("Leka Updater")
+                        .font(.title2)
+                        .bold()
+                    Text("L'application pour mettre à jour vos robots Leka !")
+                }
+                .foregroundColor(.accentColor)
+            }
         }
     }
 }
@@ -70,8 +101,10 @@ struct InformationView_Previews: PreviewProvider {
     static let robot = RobotPeripheralViewModel(battery: 75, isCharging: true, osVersion: "1.3.0")
 
     static var previews: some View {
-        InformationView()
-            .environmentObject(firmware)
-            .environmentObject(robot)
+        NavigationStack {
+            InformationView()
+                .environmentObject(firmware)
+                .environmentObject(robot)
+        }
     }
 }
