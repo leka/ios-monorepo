@@ -30,11 +30,15 @@ struct RobotUpToDateIllustration: View {
 
     var body: some View {
         ZStack {
-            Circle().fill(.white)
+            Circle()
+                .fill(.white)
+                .frame(width: illustrationSize)
 
             Circle()
                 .strokeBorder(
-                    DesignKitAsset.Colors.lekaUpdaterRobotUpToDate.swiftUIColor, lineWidth: circleLineWidth)
+                    DesignKitAsset.Colors.lekaUpdaterRobotUpToDate.swiftUIColor, lineWidth: circleLineWidth
+                )
+                .frame(width: circleSize)
 
             LekaUpdaterAsset.Assets.robotOnBase.swiftUIImage
                 .resizable()
