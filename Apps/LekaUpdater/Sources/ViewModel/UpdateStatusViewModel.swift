@@ -17,6 +17,7 @@ class UpdateStatusViewModel: ObservableObject {
 
     private var updateProcessController = UpdateProcessController(robot: DummyRobotModel(osVersion: "1.0.0"))
     // TODO: Replace DummyRobotModel by RobotPeripheralViewModel
+    private var robot: RobotPeripheralViewModel
 
     private var cancellables: Set<AnyCancellable> = []
 
@@ -35,7 +36,9 @@ class UpdateStatusViewModel: ObservableObject {
         }
     }
 
-    init() {
+    init(robot: RobotPeripheralViewModel) {
+        self.robot = robot
+
         subscribeToStateUpdate()
     }
 

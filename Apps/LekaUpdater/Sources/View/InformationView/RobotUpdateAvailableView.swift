@@ -19,7 +19,7 @@ struct RobotUpdateAvailableView: View {
                 .font(.title3)
                 .foregroundColor(.gray)
             NavigationLink {
-                UpdateStatusView()
+                UpdateStatusView(robot: robot)
             } label: {
                 Text("Lancer la mise à jour du robot")
                     .foregroundColor(.white)
