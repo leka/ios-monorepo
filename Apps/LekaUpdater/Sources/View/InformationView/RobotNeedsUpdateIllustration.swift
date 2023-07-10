@@ -34,7 +34,7 @@ struct RobotNeedsUpdateIllustration: View {
 
             Circle()
                 .strokeBorder(
-                    DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor,
+                    .yellow,
                     style: StrokeStyle(lineWidth: circleLineWidth, lineCap: .round, dash: [dashSpacer, dashSpacer]))
 
             LekaUpdaterAsset.Assets.robotOnBase.swiftUIImage
@@ -49,9 +49,9 @@ struct RobotNeedsUpdateIllustration: View {
                     Circle().fill(.white)
                         .frame(height: checkmarkSize)
 
-                    Image(systemName: "checkmark.circle")
+                    Image(systemName: "exclamationmark.circle")
                         .font(.system(size: checkmarkSize))
-                        .foregroundColor(DesignKitAsset.Colors.lekaLightGray.swiftUIColor)
+                        .foregroundColor(.yellow)
                 }
             }
         }
