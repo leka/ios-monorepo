@@ -15,14 +15,22 @@ struct InformationView: View {
                     Group {
                         if firmware.compareWith(version: robot.osVersion) == .needsUpdate {
                             RobotNeedsUpdateIllustration(size: 200)
+
+                            Text("⬆️ Une mise à jour est disponible 📦")
+                                .font(.title2)
+                                .foregroundColor(.gray)
                         } else {
                             RobotUpToDateIllustration(size: 200)
+
+                            Text("🤖 Votre robot est à jour ! 🎉 Vous n'avez rien à faire 👌")
+                                .font(.title2)
+                                .foregroundColor(.gray)
                         }
                     }
                     .frame(maxWidth: .infinity, alignment: .center)
+                    .listRowSeparator(.hidden)
                 }
                 .listRowBackground(Color.clear)
-
 
                 Section {
                     RobotInformationView()
@@ -45,20 +53,14 @@ struct InformationView: View {
                         .font(.title)
                 }
 
-                Section {
-                    if firmware.compareWith(version: robot.osVersion) == .needsUpdate {
+                if firmware.compareWith(version: robot.osVersion) == .needsUpdate {
+                    Section {
                         RobotUpdateAvailableView(robot: robot)
-                    } else {
-                        Text("🤖 Votre robot est à jour ! 🎉 Vous n'avez rien à faire 👌")
-                            .font(.title2)
-                            .foregroundColor(.gray)
-                            .frame(maxWidth: .infinity)
-                            .padding(.vertical)
+                    } header: {
+                        Text("État de mise à jour du robot")
+                            .textCase(nil)
+                            .font(.title)
                     }
-                } header: {
-                    Text("État de mise à jour du robot")
-                        .textCase(nil)
-                        .font(.title)
                 }
 
                 Section {
