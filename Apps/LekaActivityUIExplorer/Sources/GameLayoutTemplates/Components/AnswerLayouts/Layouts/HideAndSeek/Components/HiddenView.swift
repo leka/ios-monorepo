@@ -10,8 +10,6 @@ struct HiddenView: View {
             Color(.black)
 
             VStack {
-                Spacer()
-
                 Text(
                     """
                     Incites la personne accompagnée à chercher Leka.
@@ -23,12 +21,13 @@ struct HiddenView: View {
                 .font(.title3)
                 .foregroundColor(.white)
                 .multilineTextAlignment(.center)
-                .padding(.vertical, 10)
+                .padding(.top, 30)
 
-                LottieView(name: "hidden", speed: 0.5)
+                Spacer()
             }
+
+            LottieView(name: "hidden", speed: 0.5)
         }
-        .frame(width: 800, height: 500)
     }
 }
 

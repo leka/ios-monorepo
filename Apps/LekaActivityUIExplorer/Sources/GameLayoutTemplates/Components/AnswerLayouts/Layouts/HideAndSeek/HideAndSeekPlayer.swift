@@ -8,28 +8,32 @@ struct HideAndSeekPlayer: View {
     @Binding var stage: HideAndSeekStage
 
     var body: some View {
-        VStack {
+        ZStack {
+            HiddenView()
+                .padding(.horizontal, 30)
+
             HStack {
                 Spacer()
-
-                HiddenView()
 
                 VStack(spacing: 30) {
                     ForEach(Reinforcer.allCases, id: \.self) { reinforcer in
                         reinforcerButton(reinforcer.icon())
                     }
                 }
-                .padding(20)
-
+                .padding(.trailing, 60)
             }
 
-            Button {
-                stage = .toHide
-            } label: {
-                HideAndSeekModeButtonLabel("Trouvé !", color: .cyan)
+            VStack {
+                Spacer()
+
+                Button {
+                    stage = .toHide
+                } label: {
+                    HideAndSeekModeButtonLabel("Trouvé !", color: .cyan)
+                }
+                .padding(.vertical, 30)
             }
         }
-        .padding(10)
     }
 
     func reinforcerButton(_ reinforcer: Image) -> some View {
@@ -54,5 +58,6 @@ struct HideAndSeekPlayer: View {
 struct HideAndSeekPlayer_Previews: PreviewProvider {
     static var previews: some View {
         HideAndSeekPlayer(stage: .constant(.hidden))
+            .previewInterfaceOrientation(.landscapeLeft)
     }
 }
