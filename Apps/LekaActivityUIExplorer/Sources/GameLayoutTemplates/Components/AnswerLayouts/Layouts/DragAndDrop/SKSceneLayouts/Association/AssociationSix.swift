@@ -14,12 +14,12 @@ class AssociationSix: SKScene, DragAndDropSceneProtocol {
     var defaultPosition = CGPoint.zero
     var selectedNodes: [UITouch: DraggableItemNode] = [:]
     var expectedItemsNodes = [String: [SKSpriteNode]]()
-    var dropAreas: [SKSpriteNode] = []
 
     // internals
     private var initialNodeX: CGFloat = .zero
     private var verticalSpacing: CGFloat = .zero
     private var dropDestinations: [DraggableItemNode] = []
+    private var answersTurnedToDropAreas: [String: DraggableItemNode] = [:]
     private var answeredButNotTurnedToDropArea: [Int] = []
     // answers layout
     private var dropDestinationAnchor: CGPoint = .zero
@@ -33,6 +33,7 @@ class AssociationSix: SKScene, DragAndDropSceneProtocol {
         self.removeAllActions()
 
         dropDestinations = []
+        answersTurnedToDropAreas = [:]
         answeredButNotTurnedToDropArea = []
         freeSlots = [:]
 
@@ -198,18 +199,12 @@ class AssociationSix: SKScene, DragAndDropSceneProtocol {
             let node: DraggableItemNode = selectedNodes[touch]!
             node.scaleForMax(sizeOf: biggerSide)
 
-            // make dropArea out of target node
+            // make dropArea out of destination touch
             let dropAreaIndex = dropDestinations.firstIndex(where: {
                 $0.frame.contains(touch.location(in: self)) && $0.name != node.name
             })
-
-            // dropped outside the bounds of any dropArea
             guard let newDestinationIndex = dropAreaIndex else {
-                snapBack(node: node, touch: touch)
-                break
-            }
-            // check if destination is valid dropArea
-            guard !answeredButNotTurnedToDropArea.contains(newDestinationIndex) else {
+                // dropped outside the bounds of any dropArea
                 snapBack(node: node, touch: touch)
                 break
             }
@@ -231,16 +226,27 @@ class AssociationSix: SKScene, DragAndDropSceneProtocol {
                 snapBack(node: node, touch: touch)
                 break
             }
-            // dropped within the bounds of some proper sibling + keep track of answer
-            let nodeIndex = dropDestinations.firstIndex(where: { $0.name == node.name })
-            answeredButNotTurnedToDropArea.append(nodeIndex!)
             dropDestinations[newDestinationIndex].isDraggable = false
             gameEngine?.answerHasBeenGiven(atIndex: index!, withinContext: rightContext)
             gameEngine?.answerHasBeenGiven(atIndex: destinationIndex!, withinContext: rightContext)
 
-            // prepare answer's layout
-            dropDestinationAnchor = dropArea.position
+            // dropped within the bounds of some proper sibling + keep track of answer
             endAbscissa = touch.location(in: self).x
+            guard !answeredButNotTurnedToDropArea.contains(newDestinationIndex) else {
+                // a dropArea already exists in this context
+                dropDestinationAnchor = answersTurnedToDropAreas[rightContext]!.position
+                setFinalXPosition(context: rightContext)
+
+                // layout answer
+                dropGoodAnswer(node)
+                selectedNodes[touch] = nil
+                break
+            }
+            // no dropAreas exist yet in this context
+            let nodeIndex = dropDestinations.firstIndex(where: { $0.name == node.name })
+            answeredButNotTurnedToDropArea.append(nodeIndex!)
+            answersTurnedToDropAreas[rightContext] = dropArea
+            dropDestinationAnchor = dropArea.position
             setFinalXPosition(context: rightContext)
 
             // layout answer
