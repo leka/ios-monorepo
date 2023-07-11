@@ -52,6 +52,7 @@ struct InformationView: View {
                             .padding()
                     } label: {
                         Text("Liste des changements apportés")
+                            .foregroundStyle(.blue)
                     }
                 } header: {
                     Text("Informations sur LekaOS v\(firmware.currentVersion)")
