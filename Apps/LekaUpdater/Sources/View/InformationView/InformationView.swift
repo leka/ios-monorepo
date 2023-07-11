@@ -16,11 +16,17 @@ struct InformationView: View {
                         if firmware.compareWith(version: robot.osVersion) == .needsUpdate {
                             RobotNeedsUpdateIllustration(size: 200)
 
+                            Text(robot.name)
+                                .font(.title3)
+
                             Text("⬆️ Une mise à jour est disponible 📦")
                                 .font(.title2)
                                 .foregroundColor(.gray)
                         } else {
                             RobotUpToDateIllustration(size: 200)
+
+                            Text(robot.name)
+                                .font(.title3)
 
                             Text("🤖 Votre robot est à jour ! 🎉 Vous n'avez rien à faire 👌")
                                 .font(.title2)
