@@ -173,21 +173,21 @@ class GameEngine: NSObject, ObservableObject {
     func answerHasBeenGiven(atIndex: Int, withinContext: String = "context") {
         tapIsDisabled = true
         pressedAnswerIndex = atIndex
-        evaluateAnswer: if (correctAnswersIndices[withinContext, default: []]).contains(atIndex) {
-            guard !rightAnswersGiven.contains(atIndex) else {
-                break evaluateAnswer
-            }
-            rightAnswersGiven.append(atIndex)
-            if allCorrectAnswersWereGiven() {
-                trials += 1
-                rewardsAnimations()
-            } else {
-                sameStepAgain()
-            }
-        } else {
+        guard (correctAnswersIndices[withinContext, default: []]).contains(atIndex) else {
             trials += 1
             sameStepAgain()
+            return
         }
+        guard !rightAnswersGiven.contains(atIndex) else {
+            return
+        }
+        rightAnswersGiven.append(atIndex)
+        guard allCorrectAnswersWereGiven() else {
+            sameStepAgain()
+            return
+        }
+        trials += 1
+        rewardsAnimations()
     }
 
     func allCorrectAnswersWereGiven() -> Bool {
