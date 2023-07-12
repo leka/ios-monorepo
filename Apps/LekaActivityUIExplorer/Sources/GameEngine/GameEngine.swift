@@ -18,7 +18,7 @@ class GameEngine: NSObject, ObservableObject {
     @Published var allAnswers: [String] = ["dummy_1"]
     @Published var interface: GameLayout = .touch1
     @Published var stepInstruction: String = "Nothing to display"
-    @Published var correctAnswersIndices: [Int] = [0]
+    @Published var correctAnswersIndices: [String: [Int]] = ["context": []]
     @Published var allAnswersAreDisabled: Bool = false
     @Published var tapIsDisabled: Bool = false
     @Published var displayAnswer: Bool = false
@@ -81,17 +81,6 @@ class GameEngine: NSObject, ObservableObject {
         }
     }
 
-    // Initialization of the progressBar with empty Markers (on BufferActivity)
-    private func resetStepMarkers() {
-        groupedStepMarkerColors.removeAll()
-        for group in bufferActivity.stepSequence.indices {
-            groupedStepMarkerColors.append([])
-            for _ in bufferActivity.stepSequence[group] {
-                groupedStepMarkerColors[group].append(.clear)
-            }
-        }
-    }
-
     // Randomize steps & prevent 2 identical steps in a row (within BufferActivity)
     private func randomizeSteps() {
         if bufferActivity.isRandom {
@@ -108,7 +97,7 @@ class GameEngine: NSObject, ObservableObject {
     func setupCurrentStep() {
         trials = 0
         correctAnswerAnimationPercent = 0
-        correctAnswersIndices = []
+        correctAnswersIndices = ["context": []]
         rightAnswersGiven = []
         pressedAnswerIndex = nil
         displayAnswer = false
@@ -153,10 +142,14 @@ class GameEngine: NSObject, ObservableObject {
 
     // Pick up Correct answers' indices
     private func getCorrectAnswersIndices() {
-        correctAnswersIndices = []
-        for (index, answer) in allAnswers.enumerated()
-        where currentActivity.stepSequence[currentGroupIndex][currentStepIndex].correctAnswers.contains(answer) {
-            correctAnswersIndices.append(index)
+        correctAnswersIndices = [:]
+        let contextualCorrectAnswers = currentActivity.stepSequence[currentGroupIndex][currentStepIndex].correctAnswers
+        for context in contextualCorrectAnswers {
+            //            correctAnswersIndices[group.context] = [Int]
+            for (indexA, answer) in allAnswers.enumerated()
+            where context.answers.contains(answer) {
+                (correctAnswersIndices[context.context, default: []]).append(indexA)
+            }
         }
     }
 
@@ -168,10 +161,6 @@ class GameEngine: NSObject, ObservableObject {
                 currentMediaHasBeenPlayedOnce = false
                 allAnswersAreDisabled = true
                 sound = currentActivity.stepSequence[currentGroupIndex][currentStepIndex].sound?[0] ?? ""
-            case .danceFreeze:
-                sound = currentActivity.stepSequence[currentGroupIndex][currentStepIndex].sound?[0] ?? ""
-                setAudioPlayer()
-
             default:
                 // property is set to true in order to keep the white overlay hidden
                 currentMediaHasBeenPlayedOnce = true
@@ -181,27 +170,31 @@ class GameEngine: NSObject, ObservableObject {
 
     // MARK: - Answering Logic
     // Prevent multiple taps, deal with success or failure
-    func answerHasBeenPressed(atIndex: Int) {
-        tapIsDisabled.toggle()  // true
+    func answerHasBeenGiven(atIndex: Int, withinContext: String = "context") {
+        tapIsDisabled = true
         pressedAnswerIndex = atIndex
-        if correctAnswersIndices.contains(atIndex) {
-            rightAnswersGiven.append(atIndex)
-            if allCorrectAnswersWereGiven() {
-                trials += 1
-                rewardsAnimations()
-            } else {
-                sameStepAgain()
-            }
-        } else {
+        guard (correctAnswersIndices[withinContext, default: []]).contains(atIndex) else {
             trials += 1
             sameStepAgain()
+            return
         }
+        guard !rightAnswersGiven.contains(atIndex) else {
+            return
+        }
+        rightAnswersGiven.append(atIndex)
+        guard allCorrectAnswersWereGiven() else {
+            sameStepAgain()
+            return
+        }
+        trials += 1
+        rewardsAnimations()
     }
 
     func allCorrectAnswersWereGiven() -> Bool {
         rightAnswersGiven.sort()
-        correctAnswersIndices.sort()
-        return rightAnswersGiven.elementsEqual(correctAnswersIndices)
+        var flattenedCorrectAnswersIndices = Array(correctAnswersIndices.map({ $0.value }).joined())
+        flattenedCorrectAnswersIndices.sort()
+        return rightAnswersGiven.elementsEqual(flattenedCorrectAnswersIndices)
     }
 
     private func rewardsAnimations() {
@@ -209,6 +202,10 @@ class GameEngine: NSObject, ObservableObject {
             == currentActivity.stepSequence.flatMap({ $0 }).last?.id
         {
             Task {
+                guard currentActivity.activityType != .dragAndDrop else {
+                    await endGame()
+                    return
+                }
                 await animate(duration: 0.8) {
                     self.correctAnswerAnimationPercent = 1.0
                 }
@@ -223,17 +220,6 @@ class GameEngine: NSObject, ObservableObject {
                 await runReinforcerScenario()
             }
         }
-    }
-
-    private func endGame() async {
-        setMarkerColor(forGroup: currentGroupIndex, atIndex: currentStepIndex)
-        calculateSuccessPercent()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            self.showEndAnimation = true
-            self.showBlurryBG = true
-            self.tapIsDisabled = false
-        }
-        print("EndGame")
     }
 
     // Show, Then Hide Reinforcer animation + Setup for next Step
@@ -277,51 +263,5 @@ class GameEngine: NSObject, ObservableObject {
     private func resumeAfterFail() async {
         tapIsDisabled = false
         pressedAnswerIndex = nil
-    }
-
-    // MARK: - End current round
-    // Final % of good answers
-    private func calculateSuccessPercent() {
-        percentOfSuccess = Int(
-            (Double(goodAnswers) * 100) / Double(currentActivity.stepsAmount).rounded(.toNearestOrAwayFromZero))
-        if percentOfSuccess == 0 {
-            result = .fail
-        } else if percentOfSuccess >= 80 {
-            result = .success
-        } else {
-            result = .medium
-        }
-    }
-
-    // MARK: - Reset Activity
-    func resetActivity() {
-        showBlurryBG = false
-        showEndAnimation = false
-        currentActivity = Activity()
-        allAnswers = []
-        stepInstruction = "Nothing to display"
-    }
-
-    // Transition to the beginning of Current activity for replay
-    func replayCurrentActivity() {
-        Task {
-            setupGame()
-            showBlurryBG = false
-            showEndAnimation = false
-        }
-    }
-
-    // MARK: - ProgressBar & Markers for currentActivity
-    private func setMarkerColor(forGroup: Int, atIndex: Int) {
-        if trials == 1 {
-            goodAnswers += 1
-            groupedStepMarkerColors[forGroup][atIndex] = .green
-        } else if trials == 2 {
-            groupedStepMarkerColors[forGroup][atIndex] = .orange
-        } else if trials > 2 {
-            groupedStepMarkerColors[forGroup][atIndex] = .red
-        } else {
-            groupedStepMarkerColors[forGroup][atIndex] = .clear
-        }
     }
 }

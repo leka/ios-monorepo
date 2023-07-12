@@ -5,7 +5,8 @@
 import Foundation
 import SwiftUI
 
-// MARK: - Localized Custom Type for Yaml Translations
+// MARK: - Yaml Custom Types
+// Localized Content for Yaml Translations
 struct LocalizedContent: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case enUS = "en_US"
@@ -15,7 +16,7 @@ struct LocalizedContent: Codable, Equatable {
     var frFR: String?
 }
 
-// MARK: - Activity Types
+// Activity Types
 enum ActivityType: String, Codable {
     case touchToSelect = "touch_to_select"
     case listenThenTouchToSelect = "listen_then_touch_to_select"
@@ -27,15 +28,28 @@ enum ActivityType: String, Codable {
     case hideAndSeek = "hide_and_seek"
 }
 
+// Interfaces
 enum GameLayout: Codable {
     case touch1, touch2, touch3, touch3Inline, touch4, touch4Inline, touch5, touch6
     case soundTouch1, soundTouch2, soundTouch3, soundTouch3Inline, soundTouch4, soundTouch4Inline, soundTouch6
     case basket1, basket2, basket4, basketEmpty
+    case dropArea1, dropArea3, dropArea2Asset1, dropArea2Assets2, dropArea2Assets6
+    case association4, association6
     case colorQuest1, colorQuest2, colorQuest3
     case remoteStandard, remoteArrow
     case xylophone
     case danceFreeze
     case hideAndSeek
+}
+
+// Good answers with or without dropAreas
+struct CorrectAnswers: Codable {
+    enum CodingKeys: String, CodingKey {
+        case context = "context"
+        case answers = "correct_answers"
+    }
+    var context: String = "context"
+    var answers: [String]
 }
 
 // MARK: - Activity Configurator - Texts's language edition scope

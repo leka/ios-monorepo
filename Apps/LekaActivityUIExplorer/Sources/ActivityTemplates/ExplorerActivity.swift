@@ -22,7 +22,7 @@ class ExplorerActivity: ObservableObject {
             instructions: emptyInstructions(),
             activityType: type,
             stepsAmount: 5,
-            isRandom: false,
+            isRandom: true,
             randomAnswerPositions: true,
             stepSequence: makeEmptyStepArray())
     }
@@ -73,15 +73,21 @@ class ExplorerActivity: ObservableObject {
             case .touch5:
                 return Array(stepAnswers.prefix(5))
             case .touch6, .soundTouch6:
-                return Array(stepAnswers.prefix(6))
-            case .basket1:
+                return stepAnswers
+            case .basket1, .dropArea1, .dropArea2Asset1:
                 return Array(dragAndDropAnswers.prefix(1))
-            case .basket2:
+            case .basket2, .dropArea2Assets2:
                 return Array(dragAndDropAnswers.prefix(2))
             case .basket4:
                 return Array(dragAndDropAnswers.prefix(4))
-            case .basketEmpty:
+            case .basketEmpty, .dropArea3:
                 return Array(dragAndDropAnswers.prefix(3))
+            case .dropArea2Assets6:
+                return dragAndDropAnswers
+            case .association4:
+                return association4Answers
+            case .association6:
+                return association6Answers
             case .colorQuest1:
                 return Array(colorAnswers.prefix(1))
             case .colorQuest2:
@@ -92,23 +98,49 @@ class ExplorerActivity: ObservableObject {
                 return [""]
         }
     }
-    // swiftlint:enable cyclomatic_complexity
 
-    // ready to work with more than 1 good answers
-    private func setGoodAnswers() -> [String] {
+    private func setGoodAnswers() -> [CorrectAnswers] {
         switch interface {
             case .basket1, .basket2, .basket4:
-                return ["watermelon"]
+                return [CorrectAnswers(context: "basket", answers: ["watermelon"])]
+            case .dropArea1, .dropArea3:
+                return [CorrectAnswers(context: "kitchen_asset_1", answers: ["watermelon"])]
+            case .dropArea2Asset1:
+                return [
+                    CorrectAnswers(context: "kitchen_asset_1", answers: ["watermelon"]),
+                    CorrectAnswers(context: "bathroom_asset_1", answers: []),
+                ]
             case .basketEmpty:
-                return ["watermelon", "banana"]
+                return [CorrectAnswers(context: "basket", answers: ["watermelon", "banana"])]
+            case .dropArea2Assets2:
+                return [
+                    CorrectAnswers(context: "kitchen_asset_1", answers: ["watermelon"]),
+                    CorrectAnswers(context: "bathroom_asset_1", answers: ["banana"]),
+                ]
+            case .dropArea2Assets6:
+                return [
+                    CorrectAnswers(context: "kitchen_assets_3", answers: ["watermelon", "banana", "kiwi"]),
+                    CorrectAnswers(context: "bathroom_assets_3", answers: ["avocado", "cherry", "strawberry"]),
+                ]
+            case .association4:
+                return [
+                    CorrectAnswers(context: "watermelon", answers: ["watermelon", "watermelon2"]),
+                    CorrectAnswers(context: "banana", answers: ["banana", "banana2"]),
+                ]
+            case .association6:
+                return [
+                    CorrectAnswers(context: "watermelon", answers: ["watermelon", "watermelon2", "watermelon3"]),
+                    CorrectAnswers(context: "banana", answers: ["banana", "banana2", "banana3"]),
+                ]
             case .colorQuest1, .colorQuest2, .colorQuest3:
-                return ["green"]
-            case .remoteStandard, .remoteArrow, .xylophone:
-                return [""]
+                return [CorrectAnswers(context: "context", answers: ["green"])]
+            case .remoteStandard, .remoteArrow, .xylophone, .danceFreeze:
+                return [CorrectAnswers(context: "context", answers: [])]
             default:
-                return ["dummy_1"]
+                return [CorrectAnswers(context: "context", answers: ["dummy_1"])]
         }
     }
+    // swiftlint:enable cyclomatic_complexity
 
     private func setSound() -> [String]? {
         switch type {
@@ -124,6 +156,8 @@ class ExplorerActivity: ObservableObject {
     var stepAnswers = ["dummy_1", "dummy_2", "dummy_3", "dummy_4", "dummy_5", "dummy_6"]
     var colorAnswers = ["green", "purple", "red", "yellow", "blue"]
     var dragAndDropAnswers = ["watermelon", "banana", "kiwi", "avocado", "cherry", "strawberry"]
+    var association4Answers = ["watermelon", "watermelon2", "banana", "banana2"]
+    var association6Answers = ["watermelon", "watermelon2", "watermelon3", "banana", "banana2", "banana3"]
 
     func stepInstruction() -> LocalizedContent {
         return LocalizedContent(
@@ -138,10 +172,20 @@ class ExplorerActivity: ObservableObject {
             case .colorQuest:
                 return "Touche la couleur verte"
             case .dragAndDrop:
-                guard interface == .basketEmpty else {
-                    return "Fais glisser la pastèque dans le panier"
+                switch interface {
+                    case .basketEmpty:
+                        return "Fais glisser la pastèque et la banane dans le panier"
+                    case .dropArea1, .dropArea3, .dropArea2Asset1:
+                        return "Fais glisser la pastèque dans la cuisine"
+                    case .dropArea2Assets2, .dropArea2Assets6:
+                        return "Fais glisser chaque objet sur l'image qui convient"
+                    case .association4:
+                        return "Fais le tri en catégories de 2 images"
+                    case .association6:
+                        return "Fais le tri en catégories de 3 images"
+                    default:
+                        return "Fais glisser la pastèque dans le panier"
                 }
-                return "Fais glisser la pastèque et la banane dans le panier"
             case .xylophone:
                 return "Joue du xylophone avec Leka"
             case .remote:
