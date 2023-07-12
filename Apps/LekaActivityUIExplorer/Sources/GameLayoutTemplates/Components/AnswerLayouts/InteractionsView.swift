@@ -24,7 +24,7 @@ struct InteractionsView: View {
             case .listenThenTouchToSelect: listenThenTouchToSelectInterfaces
             case .dragAndDrop: dragAndDropInterfaces
             case .colorQuest: colorQuestInterfaces
-            case .xylophone, .remote, .danceFreeze: otherInterfaces
+            case .xylophone, .remote, .danceFreeze, .hideAndSeek: otherInterfaces
         }
     }
 
