@@ -117,6 +117,8 @@ struct InteractionsView: View {
                 RemoteArrowView()
             case .danceFreeze:
                 DanceFreezeLauncher()
+            case .hideAndSeek:
+                HideAndSeekLauncher()
             case .melody1:
                 MelodyLayout()
             default:
