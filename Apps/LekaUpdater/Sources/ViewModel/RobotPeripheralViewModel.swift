@@ -34,4 +34,10 @@ public class RobotPeripheralViewModel: ObservableObject {
         self.robotPeripheral = robotDiscovery.robotPeripheral
     }
 
+    public func subscribeToCharacteristicsNotifications() {
+
+        self.robotPeripheral?.discoverAndListenForUpdates()
+
+        // TODO: Get OS Version & Serial Number
+    }
 }

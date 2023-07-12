@@ -91,6 +91,7 @@ struct InformationView: View {
             }
         }
         .foregroundColor(DesignKitAsset.Colors.darkGray.swiftUIColor)
+        .onAppear(perform: robot.subscribeToCharacteristicsNotifications)
         .toolbar {
             ToolbarItem(placement: .principal) {
                 VStack {
