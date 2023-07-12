@@ -14,6 +14,7 @@ struct MelodyLayout: View {
     var body: some View {
         VStack {
             ContinuousProgressBar(progress: progress)
+                .padding(.horizontal, 30)
 
             HStack(spacing: xylophoneDefaults.customTilesSpacing) {
                 ForEach(xylophoneDefaults.customTileColors.indices, id: \.self) { index in
@@ -22,6 +23,7 @@ struct MelodyLayout: View {
             }
             .robotNeededAlert()
         }
+        .padding()
 
     }
 }
