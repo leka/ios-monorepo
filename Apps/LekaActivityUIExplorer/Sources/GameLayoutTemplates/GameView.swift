@@ -30,3 +30,36 @@ struct GameView: View {
         }
     }
 }
+
+struct GameView_Previews: PreviewProvider {
+    static var preferredColumn: NavigationSplitViewVisibility = .detailOnly
+
+    static var gameEngine: GameEngine {
+        let gameEngine = GameEngine()
+        gameEngine.interface = .melody1
+        return gameEngine
+    }
+
+    static var previews: some View {
+        NavigationSplitView(columnVisibility: .constant(preferredColumn)) {
+            Text("Hello")
+        } detail: {
+            GameView()
+                .environmentObject(gameEngine)
+                .environmentObject(GameLayoutTemplatesDefaults())
+                .navigationBarTitleDisplayMode(.inline)
+                .navigationBarBackButtonHidden()
+                .toolbar {
+                    ToolbarItem(placement: .principal) {
+                        HStack(spacing: 4) {
+                            Text("Hello, World")
+                        }
+                        .font(.system(size: 17, weight: .semibold))
+                        .foregroundColor(.accentColor)
+                    }
+                }
+        }
+        .previewDevice(PreviewDevice(rawValue: "iPad (9th generation)"))
+        .previewInterfaceOrientation(.landscapeLeft)
+    }
+}

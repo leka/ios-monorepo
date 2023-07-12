@@ -10,9 +10,7 @@ struct InteractionsView: View {
 
     var body: some View {
         VStack {
-            Spacer()
             interface
-            Spacer()
         }
         .frame(maxWidth: .infinity)
     }
@@ -125,5 +123,20 @@ struct InteractionsView: View {
                 XylophoneLayout()
 
         }
+    }
+}
+
+struct InteractionsView_Previews: PreviewProvider {
+    static var gameEngine: GameEngine {
+        let gameEngine = GameEngine()
+        gameEngine.interface = .melody1
+        return gameEngine
+    }
+
+    static var previews: some View {
+        InteractionsView()
+            .environmentObject(gameEngine)
+            .environmentObject(GameLayoutTemplatesDefaults())
+            .previewInterfaceOrientation(.landscapeLeft)
     }
 }
