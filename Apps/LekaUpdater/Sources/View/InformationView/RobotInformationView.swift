@@ -9,7 +9,6 @@ struct RobotInformationView: View {
 
     var body: some View {
         List {
-            Text("Nom: \(robot.name)")
             Text("N° série: \(robot.serialNumber ?? "(n/a)")")
             Text("Battery: \(robot.battery)")
             Text("Version: \(robot.osVersion)")
