@@ -23,7 +23,6 @@ struct ContinuousProgressBar: View {
                 }
                 .position(x: geometry.frame(in: .local).midX, y: geometry.frame(in: .local).midY)
         }
-        .frame(maxWidth: 1100, maxHeight: 100)
     }
 }
 
