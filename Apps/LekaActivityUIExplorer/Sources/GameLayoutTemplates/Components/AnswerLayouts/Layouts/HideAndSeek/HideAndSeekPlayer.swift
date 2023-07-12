@@ -4,6 +4,20 @@
 
 import SwiftUI
 
+enum Stimulation: String, CaseIterable {
+    case light
+    case motion
+
+    public func icon() -> Image {
+        switch self {
+            case .light:
+                return Image("pictogram_leka_light")
+            case .motion:
+                return Image("pictogram_leka_motion")
+        }
+    }
+}
+
 struct HideAndSeekPlayer: View {
     @Binding var stage: HideAndSeekStage
 
@@ -15,10 +29,12 @@ struct HideAndSeekPlayer: View {
             HStack {
                 Spacer()
 
-                VStack(spacing: 30) {
-                    ForEach(Reinforcer.allCases, id: \.self) { reinforcer in
-                        reinforcerButton(reinforcer.icon())
-                    }
+                VStack(spacing: 70) {
+
+                    stimulationButton(Stimulation.light)
+
+                    stimulationButton(Stimulation.motion)
+
                 }
                 .padding(.trailing, 60)
             }
@@ -36,16 +52,21 @@ struct HideAndSeekPlayer: View {
         }
     }
 
-    func reinforcerButton(_ reinforcer: Image) -> some View {
+    func stimulationButton(_ stimulation: Stimulation) -> some View {
         Button {
-            // Trigger Reinforcer
+            switch stimulation {
+                case .light:
+                    print("Trigger light")
+                case .motion:
+                    print("Trigger motion")
+            }
         } label: {
-            reinforcer
+            stimulation.icon()
                 .resizable()
                 .renderingMode(.original)
                 .aspectRatio(contentMode: .fit)
                 .frame(maxWidth: 108, maxHeight: 108)
-                .padding(10)
+                .padding(20)
         }
         .background(
             Circle()
