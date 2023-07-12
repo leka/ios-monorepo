@@ -242,4 +242,18 @@ enum HideAndSeekPreviews: Int, CaseIterable, Previewable {
     }
 }
 
+enum MelodyPreviews: Int, CaseIterable, Previewable {
+    case melody1
+    var type: ActivityType { return .melody }
+    var interface: GameLayout { return .melody1 }
+    var preview: String {
+        return "melody"
+    }
+    func defaults() -> BaseDefaults? {
+        switch self {
+            case .melody1: return Melody.one
+        }
+    }
+}
+
 // swiftlint:enable identifier_name

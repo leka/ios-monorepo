@@ -63,6 +63,12 @@ struct SidebarView: View {
                 } label: {
                     disclosureGroupLabel("hide_and_seek")
                 }
+
+                DisclosureGroup {
+                    MelodyNavigationGroup()
+                } label: {
+                    disclosureGroupLabel("melody")
+                }
             }
             .padding(.horizontal, 20)
             .frame(maxWidth: .infinity)

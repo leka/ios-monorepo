@@ -24,7 +24,7 @@ struct InteractionsView: View {
             case .listenThenTouchToSelect: listenThenTouchToSelectInterfaces
             case .dragAndDrop: dragAndDropInterfaces
             case .colorQuest: colorQuestInterfaces
-            case .xylophone, .remote, .danceFreeze, .hideAndSeek: otherInterfaces
+            case .xylophone, .remote, .danceFreeze, .hideAndSeek, .melody: otherInterfaces
         }
     }
 
@@ -119,8 +119,11 @@ struct InteractionsView: View {
                 RemoteArrowView()
             case .danceFreeze:
                 DanceFreezeLauncher()
+            case .melody1:
+                MelodyLayout()
             default:
                 XylophoneLayout()
+
         }
     }
 }
