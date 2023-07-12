@@ -203,4 +203,18 @@ enum DanceFreezePreviews: Int, CaseIterable, Previewable {
     }
 }
 
+enum HideAndSeekPreviews: Int, CaseIterable, Previewable {
+    case hideAndSeek
+    var type: ActivityType { return .hideAndSeek }
+    var interface: GameLayout {
+        return .hideAndSeek
+    }
+    var preview: String {
+        return "hideAndSeek"
+    }
+    func defaults() -> BaseDefaults? {
+        return HideAndSeek.standard
+    }
+}
+
 // swiftlint:enable identifier_name

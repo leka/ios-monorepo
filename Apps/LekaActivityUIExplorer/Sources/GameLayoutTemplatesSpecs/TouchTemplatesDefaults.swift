@@ -167,4 +167,9 @@ public enum DanceFreeze {
     public static let standard: BaseDefaults? = nil
 }
 
+public enum HideAndSeek {
+    // ? no defaults needed
+    public static let standard: BaseDefaults? = nil
+}
+
 // swiftlint:enable identifier_name

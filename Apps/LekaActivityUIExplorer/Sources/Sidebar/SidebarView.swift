@@ -57,6 +57,12 @@ struct SidebarView: View {
                 } label: {
                     disclosureGroupLabel("dance_freeze")
                 }
+
+                DisclosureGroup {
+                    HideAndSeekNavigationGroup()
+                } label: {
+                    disclosureGroupLabel("hide_and_seek")
+                }
             }
             .padding(.horizontal, 20)
             .frame(maxWidth: .infinity)

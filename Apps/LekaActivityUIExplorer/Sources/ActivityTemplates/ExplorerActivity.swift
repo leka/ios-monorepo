@@ -88,7 +88,7 @@ class ExplorerActivity: ObservableObject {
                 return Array(colorAnswers.prefix(2))
             case .colorQuest3:
                 return Array(colorAnswers.prefix(3))
-            case .remoteStandard, .remoteArrow, .xylophone, .danceFreeze:
+            case .remoteStandard, .remoteArrow, .xylophone, .danceFreeze, .hideAndSeek:
                 return [""]
         }
     }
@@ -103,7 +103,7 @@ class ExplorerActivity: ObservableObject {
                 return ["watermelon", "banana"]
             case .colorQuest1, .colorQuest2, .colorQuest3:
                 return ["green"]
-            case .remoteStandard, .remoteArrow, .xylophone, .danceFreeze:
+            case .remoteStandard, .remoteArrow, .xylophone:
                 return [""]
             default:
                 return ["dummy_1"]
@@ -147,8 +147,9 @@ class ExplorerActivity: ObservableObject {
             case .remote:
                 return "Contrôle Leka avec la télécommande et fais le changer de couleur"
             case .danceFreeze:
-                return
-                    "Danse avec Leka au rythme de la musique et fais la statue lorsqu’il s’arrête"
+                return "Danse avec Leka au rythme de la musique et faits la statue lorsqu’il s’arrête"
+            case .hideAndSeek:
+                return "Cache le robot quelque part dans la pièce. Suis ensuite les instructions. "
         }
     }
 

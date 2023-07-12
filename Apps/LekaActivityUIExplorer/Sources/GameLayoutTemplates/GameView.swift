@@ -18,6 +18,7 @@ struct GameView: View {
                     && gameEngine.currentActivity.activityType != .xylophone
                     && gameEngine.currentActivity.activityType != .remote
                     && gameEngine.currentActivity.activityType != .danceFreeze
+                    && gameEngine.currentActivity.activityType != .hideAndSeek
                 {
                     ProgressBar()
                         .padding(.bottom, defaults.headerSpacing)
