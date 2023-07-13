@@ -145,7 +145,6 @@ class GameEngine: NSObject, ObservableObject {
         correctAnswersIndices = [:]
         let contextualCorrectAnswers = currentActivity.stepSequence[currentGroupIndex][currentStepIndex].correctAnswers
         for context in contextualCorrectAnswers {
-            //            correctAnswersIndices[group.context] = [Int]
             for (indexA, answer) in allAnswers.enumerated()
             where context.answers.contains(answer) {
                 (correctAnswersIndices[context.context, default: []]).append(indexA)
