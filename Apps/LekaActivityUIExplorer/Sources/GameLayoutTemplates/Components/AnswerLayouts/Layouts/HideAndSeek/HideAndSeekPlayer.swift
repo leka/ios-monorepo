@@ -68,11 +68,13 @@ struct HideAndSeekPlayer: View {
                 .frame(maxWidth: 108, maxHeight: 108)
                 .padding(20)
         }
+
         .background(
             Circle()
                 .fill(.white)
-                .shadow(color: .black.opacity(0.2), radius: 4, x: 0, y: 4)
+                .shadow(color: .white.opacity(0.9), radius: 7, x: 0, y: 4)
         )
+
     }
 }
 
