@@ -70,6 +70,7 @@ struct UpdateStatusView: View {
                         .bold()
                     Text("L'application pour mettre à jour vos robots Leka !")
                 }
+                .foregroundColor(.accentColor)
             }
 
             ToolbarItem(placement: .navigationBarTrailing) {
