@@ -9,10 +9,8 @@ struct InteractionsView: View {
     @EnvironmentObject var gameEngine: GameEngine
 
     var body: some View {
-        VStack {
-            interface
-        }
-        .frame(maxWidth: .infinity)
+        interface
+            .frame(maxWidth: .infinity)
     }
 
     @ViewBuilder
@@ -117,26 +115,13 @@ struct InteractionsView: View {
                 RemoteArrowView()
             case .danceFreeze:
                 DanceFreezeLauncher()
+            case .hideAndSeek:
+                HideAndSeekLauncher()
             case .melody1:
                 MelodyLayout()
             default:
                 XylophoneLayout()
 
         }
-    }
-}
-
-struct InteractionsView_Previews: PreviewProvider {
-    static var gameEngine: GameEngine {
-        let gameEngine = GameEngine()
-        gameEngine.interface = .melody1
-        return gameEngine
-    }
-
-    static var previews: some View {
-        InteractionsView()
-            .environmentObject(gameEngine)
-            .environmentObject(GameLayoutTemplatesDefaults())
-            .previewInterfaceOrientation(.landscapeLeft)
     }
 }

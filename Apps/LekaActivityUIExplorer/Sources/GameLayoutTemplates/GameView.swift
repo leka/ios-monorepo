@@ -25,7 +25,9 @@ struct GameView: View {
                         .padding(.bottom, defaults.headerSpacing)
                 }
                 StepInstructionsButton()
+                Spacer()
                 InteractionsView()
+                Spacer()
             }
         }
     }

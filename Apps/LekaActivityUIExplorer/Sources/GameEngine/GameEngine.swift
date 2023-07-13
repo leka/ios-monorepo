@@ -101,27 +101,10 @@ class GameEngine: NSObject, ObservableObject {
         rightAnswersGiven = []
         pressedAnswerIndex = nil
         displayAnswer = false
-        Task {
-            await switchInterface()
-            switch currentActivity.activityType {
-                case .dragAndDrop, .listenThenTouchToSelect:
-                    prepareAnswers()
-                default:
-                    prepareAnswersOnMainQueue()
-            }
-        }
+        interface = currentActivity.stepSequence[currentGroupIndex][currentStepIndex].interface
+        prepareAnswers()
         if currentActivity.activityType == .colorQuest {
             // Show correct answer color on Leka's belt
-        }
-    }
-
-    private func switchInterface() async {
-        interface = currentActivity.stepSequence[currentGroupIndex][currentStepIndex].interface
-    }
-
-    private func prepareAnswersOnMainQueue() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            self.prepareAnswers()
         }
     }
 
@@ -145,7 +128,6 @@ class GameEngine: NSObject, ObservableObject {
         correctAnswersIndices = [:]
         let contextualCorrectAnswers = currentActivity.stepSequence[currentGroupIndex][currentStepIndex].correctAnswers
         for context in contextualCorrectAnswers {
-            //            correctAnswersIndices[group.context] = [Int]
             for (indexA, answer) in allAnswers.enumerated()
             where context.answers.contains(answer) {
                 (correctAnswersIndices[context.context, default: []]).append(indexA)
@@ -161,6 +143,9 @@ class GameEngine: NSObject, ObservableObject {
                 currentMediaHasBeenPlayedOnce = false
                 allAnswersAreDisabled = true
                 sound = currentActivity.stepSequence[currentGroupIndex][currentStepIndex].sound?[0] ?? ""
+            case .danceFreeze:
+                sound = currentActivity.stepSequence[currentGroupIndex][currentStepIndex].sound?[0] ?? ""
+                setAudioPlayer()
             default:
                 // property is set to true in order to keep the white overlay hidden
                 currentMediaHasBeenPlayedOnce = true
