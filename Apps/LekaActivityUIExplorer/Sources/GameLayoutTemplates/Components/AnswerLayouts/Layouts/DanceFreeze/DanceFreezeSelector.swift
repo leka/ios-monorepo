@@ -29,25 +29,41 @@ struct DanceFreezeSelector: View {
     @Binding var mode: DanceFreezeStage
 
     var body: some View {
-        VStack {
-            Image("danceFreeze")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 400, height: 400)
+        VStack(spacing: 100) {
+            HStack(spacing: 0) {
+                Image("danceFreeze")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .padding(.trailing, 50)
 
-            HStack(spacing: 70) {
+                SongSelector()
+                    .frame(maxHeight: 250)
+
+            }
+            .padding(.horizontal, 100)
+
+            HStack(spacing: 20) {
                 Button {
                     mode = .manualMode
                 } label: {
-                    DanceFreezeModeButtonLabel("Jouer manuellement", color: .cyan)
+                    DanceFreezeModeButtonLabel("Jouer - mode manuel", color: .cyan)
                 }
 
                 Button {
                     mode = .automaticMode
                 } label: {
-                    DanceFreezeModeButtonLabel("Jouer automatiquement", color: .mint)
+                    DanceFreezeModeButtonLabel("Jouer - mode auto", color: .mint)
                 }
             }
         }
+    }
+}
+
+struct DanceFreezeSelector_Previews: PreviewProvider {
+    static var previews: some View {
+        DanceFreezeSelector(mode: .constant(.waitingForSelection))
+            .environmentObject(GameLayoutTemplatesDefaults())
+            .previewDevice(PreviewDevice(rawValue: "iPad (9th generation)"))
+            .previewInterfaceOrientation(.landscapeLeft)
     }
 }
