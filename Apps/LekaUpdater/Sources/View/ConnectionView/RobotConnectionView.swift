@@ -44,6 +44,7 @@ struct RobotConnectionView: View {
                     Text("Rechercher")
                 }
                 .font(bold15)
+                .foregroundColor(.white)
                 .padding(6)
                 .frame(width: 210)
 
@@ -73,6 +74,7 @@ struct RobotConnectionView: View {
                     }
                 }
                 .font(bold15)
+                .foregroundColor(.white)
                 .padding(6)
                 .frame(width: 210)
             }
@@ -86,6 +88,7 @@ struct RobotConnectionView: View {
 struct RobotListView_Previews: PreviewProvider {
     static var previews: some View {
         RobotConnectionView()
+            .foregroundColor(DesignKitAsset.Colors.darkGray.swiftUIColor)
             .previewInterfaceOrientation(.landscapeLeft)
     }
 }

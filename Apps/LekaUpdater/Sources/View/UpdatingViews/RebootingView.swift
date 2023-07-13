@@ -2,6 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import DesignKit
 import SwiftUI
 
 struct RebootingIllustration: View {
@@ -47,6 +48,7 @@ struct RebootingView_Previews: PreviewProvider {
                 RebootingContentView()
                 Spacer()
             }
+            .foregroundColor(DesignKitAsset.Colors.darkGray.swiftUIColor)
             .frame(maxWidth: .infinity, maxHeight: 250)
         }
     }

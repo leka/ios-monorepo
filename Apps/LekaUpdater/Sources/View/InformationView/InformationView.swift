@@ -2,6 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import DesignKit
 import SwiftUI
 
 struct InformationView: View {
@@ -21,7 +22,6 @@ struct InformationView: View {
 
                             Text("⬆️ Une mise à jour est disponible 📦")
                                 .font(.title2)
-                                .foregroundColor(.gray)
                         } else {
                             RobotUpToDateIllustration(size: 200)
 
@@ -30,7 +30,6 @@ struct InformationView: View {
 
                             Text("🤖 Votre robot est à jour ! 🎉 Vous n'avez rien à faire 👌")
                                 .font(.title2)
-                                .foregroundColor(.gray)
                         }
                     }
                     .frame(maxWidth: .infinity, alignment: .center)
@@ -91,6 +90,7 @@ struct InformationView: View {
                 .listRowBackground(Color.clear)
             }
         }
+        .foregroundColor(DesignKitAsset.Colors.darkGray.swiftUIColor)
         .toolbar {
             ToolbarItem(placement: .principal) {
                 VStack {

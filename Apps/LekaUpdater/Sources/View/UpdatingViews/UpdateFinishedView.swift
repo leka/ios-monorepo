@@ -107,6 +107,7 @@ struct UpdateFinishedView_Previews: PreviewProvider {
                 UpdateFinishedContentView()
                 Spacer()
             }
+            .foregroundColor(DesignKitAsset.Colors.darkGray.swiftUIColor)
             .frame(maxWidth: .infinity, maxHeight: 250)
         }
     }
