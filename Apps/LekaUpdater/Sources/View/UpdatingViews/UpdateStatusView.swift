@@ -2,6 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import DesignKit
 import SwiftUI
 
 struct UpdateStatusView: View {
@@ -58,6 +59,7 @@ struct UpdateStatusView: View {
                 .padding(35)
 
         }
+        .foregroundColor(DesignKitAsset.Colors.darkGray.swiftUIColor)
         .onAppear(perform: viewModel.startUpdate)
         .navigationBarBackButtonHidden()
         .toolbar {

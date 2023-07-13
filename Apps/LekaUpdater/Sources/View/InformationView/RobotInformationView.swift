@@ -2,6 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import DesignKit
 import SwiftUI
 
 struct RobotInformationView: View {
@@ -22,8 +23,10 @@ struct RobotInformationView_Previews: PreviewProvider {
 
     static var previews: some View {
         RobotInformationView()
+            .foregroundColor(DesignKitAsset.Colors.darkGray.swiftUIColor)
             .environmentObject(robotWithoutSerialNumber)
         RobotInformationView()
+            .foregroundColor(DesignKitAsset.Colors.darkGray.swiftUIColor)
             .environmentObject(robotWithSerialNumber)
     }
 }

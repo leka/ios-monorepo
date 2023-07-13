@@ -152,6 +152,7 @@ struct RobotGridCellView_Previews: PreviewProvider {
 
     static var previews: some View {
         RobotGridCellViewWithViewModels()
+            .foregroundColor(DesignKitAsset.Colors.darkGray.swiftUIColor)
             .previewInterfaceOrientation(.landscapeLeft)
     }
 }

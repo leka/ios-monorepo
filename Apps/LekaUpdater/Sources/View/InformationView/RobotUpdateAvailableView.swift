@@ -2,6 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import DesignKit
 import SwiftUI
 
 struct RobotUpdateAvailableView: View {
@@ -17,7 +18,6 @@ struct RobotUpdateAvailableView: View {
         VStack {
             Text("⬆️ Une mise à jour est disponible 📦")
                 .font(.title3)
-                .foregroundColor(.gray)
             NavigationLink {
                 UpdateStatusView(robot: robot)
             } label: {
@@ -45,6 +45,8 @@ struct RobotUpdateAvailableView_Previews: PreviewProvider {
 
     static var previews: some View {
         RobotUpdateAvailableView(robot: robotIsReady)
+            .foregroundColor(DesignKitAsset.Colors.darkGray.swiftUIColor)
         RobotUpdateAvailableView(robot: robotIsNotReady)
+            .foregroundColor(DesignKitAsset.Colors.darkGray.swiftUIColor)
     }
 }

@@ -2,6 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import DesignKit
 import SwiftUI
 
 struct ConnectionView: View {
@@ -19,6 +20,7 @@ struct ConnectionView: View {
                 .frame(height: 70)
                 .padding(35)
         }
+        .foregroundColor(DesignKitAsset.Colors.darkGray.swiftUIColor)
         .toolbar {
             ToolbarItem(placement: .principal) {
                 VStack {

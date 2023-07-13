@@ -2,6 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import DesignKit
 import SwiftUI
 
 struct ChangelogView: View {
@@ -26,5 +27,6 @@ struct ChangelogView: View {
 struct ChangelogView_Previews: PreviewProvider {
     static var previews: some View {
         ChangelogView()
+            .foregroundColor(DesignKitAsset.Colors.darkGray.swiftUIColor)
     }
 }

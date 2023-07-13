@@ -2,8 +2,7 @@
 //// Copyright 2023 APF France handicap
 //// SPDX-License-Identifier: Apache-2.0
 
-// Inspired from RobotKit
-
+import DesignKit
 import SwiftUI
 
 struct RobotGridView: View {
@@ -21,7 +20,7 @@ struct RobotGridView: View {
             if let robotDiscoveries = robotConnectionViewModel.robotDiscoveries {
                 switch robotDiscoveries.count {
                     case 0:
-                        Text("No robots found :(")
+                        Text("Aucun robot trouvé :(")
                     default:
                         VStack(alignment: .trailing) {
                             ScrollView(.vertical, showsIndicators: false) {
@@ -51,7 +50,6 @@ struct RobotGridView: View {
                 Text("Lancer une recherche pour trouver les robots autour de vous !")
                     .font(reg17)
                     .multilineTextAlignment(.center)
-                    .foregroundColor(.accentColor)
                 Spacer()
             }
             .frame(width: tileContentWidth)
@@ -98,6 +96,7 @@ struct RobotGridView_Previews: PreviewProvider {
                         return viewModel
                     }())
         }
+        .foregroundColor(DesignKitAsset.Colors.darkGray.swiftUIColor)
         .previewInterfaceOrientation(.portrait)
 
     }
