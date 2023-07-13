@@ -9,8 +9,8 @@ class AssociationSix: SKScene, DragAndDropSceneProtocol {
 
     // protocol requirements
     var gameEngine: GameEngine?
-    var spacer: CGFloat = 375
-    var biggerSide: CGFloat = 195
+    var spacer: CGFloat = 340
+    var biggerSide: CGFloat = 150
     var defaultPosition = CGPoint.zero
     var selectedNodes: [UITouch: DraggableItemNode] = [:]
     var expectedItemsNodes = [String: [SKSpriteNode]]()
@@ -45,7 +45,7 @@ class AssociationSix: SKScene, DragAndDropSceneProtocol {
         // Create grid pattern's origin in this template
         initialNodeX = (size.width - (spacer * 2)) / 2
         verticalSpacing = self.size.height / 3
-        defaultPosition = CGPoint(x: initialNodeX, y: verticalSpacing)
+        defaultPosition = CGPoint(x: initialNodeX, y: verticalSpacing - 30)
 
         getExpectedItems()
     }
@@ -87,7 +87,7 @@ class AssociationSix: SKScene, DragAndDropSceneProtocol {
                 defaultPosition.x += spacer
             } else {
                 defaultPosition.x = initialNodeX
-                defaultPosition.y += verticalSpacing
+                defaultPosition.y += verticalSpacing + 60
             }
 
             addChild(draggableItemShadowNode)
@@ -118,20 +118,20 @@ class AssociationSix: SKScene, DragAndDropSceneProtocol {
             finalXPosition = {
                 guard freeSlots[context]![1] else {
                     freeSlots[context]![0] = false
-                    return dropDestinationAnchor.x - 100
+                    return dropDestinationAnchor.x - 80
                 }
                 freeSlots[context]![1] = false
-                return dropDestinationAnchor.x + 100
+                return dropDestinationAnchor.x + 80
             }()
             return
         }
         finalXPosition = {
             guard freeSlots[context]![0] else {
                 freeSlots[context]![1] = false
-                return dropDestinationAnchor.x + 100
+                return dropDestinationAnchor.x + 80
             }
             freeSlots[context]![0] = false
-            return dropDestinationAnchor.x - 100
+            return dropDestinationAnchor.x - 80
         }()
     }
 

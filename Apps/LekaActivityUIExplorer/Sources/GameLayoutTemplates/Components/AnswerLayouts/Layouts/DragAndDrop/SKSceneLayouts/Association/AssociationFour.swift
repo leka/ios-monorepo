@@ -10,7 +10,7 @@ class AssociationFour: SKScene, DragAndDropSceneProtocol {
     // protocol requirements
     var gameEngine: GameEngine?
     var spacer: CGFloat = 455
-    var biggerSide: CGFloat = 195
+    var biggerSide: CGFloat = 150
     var defaultPosition = CGPoint.zero
     var selectedNodes: [UITouch: DraggableItemNode] = [:]
     var expectedItemsNodes = [String: [SKSpriteNode]]()
@@ -36,7 +36,7 @@ class AssociationFour: SKScene, DragAndDropSceneProtocol {
         // Create grid pattern's origin in this template
         initialNodeX = (size.width - spacer) / 2
         verticalSpacing = self.size.height / 3
-        defaultPosition = CGPoint(x: initialNodeX, y: verticalSpacing)
+        defaultPosition = CGPoint(x: initialNodeX, y: verticalSpacing - 30)
 
         getExpectedItems()
     }
@@ -65,7 +65,7 @@ class AssociationFour: SKScene, DragAndDropSceneProtocol {
                 defaultPosition.x += spacer
             } else {
                 defaultPosition.x = initialNodeX
-                defaultPosition.y += verticalSpacing
+                defaultPosition.y += verticalSpacing + 60
             }
 
             addChild(draggableItemShadowNode)
@@ -90,7 +90,7 @@ class AssociationFour: SKScene, DragAndDropSceneProtocol {
     func dropGoodAnswer(_ node: DraggableItemNode) {
         node.scaleForMax(sizeOf: biggerSide * 0.8)
         node.position = CGPoint(
-            x: dropDestinationAnchor.x - 100,
+            x: dropDestinationAnchor.x - 60,
             y: dropDestinationAnchor.y - 60)
         node.zPosition = 10
         node.isDraggable = false
