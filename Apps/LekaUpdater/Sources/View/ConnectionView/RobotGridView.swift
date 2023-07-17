@@ -60,7 +60,7 @@ struct RobotGridView: View {
 
     private var robotDiscoveriesViews: some View {
         self.robotConnectionViewModel.robotDiscoveries.map { discoveries in
-            ForEach(discoveries, id: \.name) { discovery in
+            ForEach(discoveries) { discovery in
                 RobotDiscoveryView(discovery: discovery)
                     .onTapGesture {
                         print("tapped: \(discovery.name)")
