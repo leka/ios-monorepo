@@ -39,8 +39,10 @@ public class RobotPeripheralViewModel: ObservableObject {
         self.registerChargingStatusNotificationCallback()
 
         self.robotPeripheral?.discoverAndListenForUpdates()
+    }
 
-        // TODO: Get OS Version & Serial Number
+    public func readReadOnlyCharacteristics() {
+        self.robotPeripheral?.readReadOnlyCharacteristics()
     }
 
     private func registerBatteryCharacteristicNotificationCallback() {
