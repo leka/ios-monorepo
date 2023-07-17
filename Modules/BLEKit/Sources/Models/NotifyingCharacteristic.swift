@@ -11,6 +11,11 @@ public struct NotifyingCharacteristic: Hashable {
     public var characteristic: CBCharacteristic?
     public var onNotification: ((_ data: Data?) -> Void)?
 
+    public init(characteristicUUID: CBUUID, serviceUUID: CBUUID) {
+        self.characteristicUUID = characteristicUUID
+        self.serviceUUID = serviceUUID
+    }
+
     public func hash(into hasher: inout Hasher) {
         hasher.combine(characteristicUUID)
         hasher.combine(serviceUUID)

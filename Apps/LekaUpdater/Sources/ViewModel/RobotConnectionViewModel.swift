@@ -70,16 +70,14 @@ public class RobotConnectionViewModel: ObservableObject {
             .receive(on: DispatchQueue.main)
             .sink(
                 receiveCompletion: { _ in
-                    // do nothing
+                    self.connectedRobotDiscovery = self.selectedRobotDiscovery
+                    self.selectedRobotDiscovery = nil
                 },
                 receiveValue: { _ in
                     // do nothing
                 }
             )
             .store(in: &cancellables)
-
-        self.connectedRobotDiscovery = self.selectedRobotDiscovery
-        self.selectedRobotDiscovery = nil
     }
 
     public func disconnectFromRobot() {
