@@ -9,7 +9,7 @@ public class BLEManager {
     // MARK: - @Published variables
 
     public let isScanning = CurrentValueSubject<Bool, Never>(false)
-    public let didDisconnect = PassthroughSubject<Bool, Never>()
+    public let didDisconnect = PassthroughSubject<Void, Never>()
 
     // MARK: - Private variables
 
@@ -97,7 +97,7 @@ public class BLEManager {
         self.centralManager.didDisconnectPeripheral
             .receive(on: DispatchQueue.main)
             .sink { _ in
-                self.didDisconnect.send(true)
+                self.didDisconnect.send()
             }
             .store(in: &cancellables)
     }
