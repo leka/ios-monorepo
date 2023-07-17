@@ -9,6 +9,7 @@ public class BLEManager {
     // MARK: - @Published variables
 
     public let isScanning = CurrentValueSubject<Bool, Never>(false)
+    public let didConnect = PassthroughSubject<RobotPeripheral, Never>()
     public let didDisconnect = PassthroughSubject<Void, Never>()
 
     // MARK: - Private variables
@@ -24,6 +25,7 @@ public class BLEManager {
         self.centralManager = centralManager
 
         self.subscribeToDidDisconnect()
+        self.subscribeToDidConnect()
     }
 
     public static func live() -> BLEManager {
@@ -92,6 +94,15 @@ public class BLEManager {
     }
 
     // MARK: - Private functions
+
+    private func subscribeToDidConnect() {
+        self.centralManager.didConnectPeripheral
+            .receive(on: DispatchQueue.main)
+            .sink { peripheral in
+                self.didConnect.send(RobotPeripheral(peripheral: peripheral))
+            }
+            .store(in: &cancellables)
+    }
 
     private func subscribeToDidDisconnect() {
         self.centralManager.didDisconnectPeripheral
