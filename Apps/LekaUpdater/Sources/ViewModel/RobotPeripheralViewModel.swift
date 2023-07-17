@@ -42,6 +42,8 @@ public class RobotPeripheralViewModel: ObservableObject {
     }
 
     public func readReadOnlyCharacteristics() {
+        self.registerOSVersionReadCallback()
+
         self.robotPeripheral?.readReadOnlyCharacteristics()
     }
 
@@ -73,6 +75,22 @@ public class RobotPeripheralViewModel: ObservableObject {
         }
 
         self.robotPeripheral?.notifyingCharacteristics.insert(characteristic)
+    }
+
+    private func registerOSVersionReadCallback() {
+        var characteristic = ReadOnlyCharacteristic(
+            characteristicUUID: BLESpecs.DeviceInformation.Characteristics.osVersion,
+            serviceUUID: BLESpecs.DeviceInformation.service
+        )
+
+        characteristic.onRead = { data in
+            if let data = data {
+                self.osVersion = String(decoding: data, as: UTF8.self)
+                    .replacingOccurrences(of: "\0", with: "")
+            }
+        }
+
+        self.robotPeripheral?.readOnlyCharacteristics.insert(characteristic)
     }
 
 }
