@@ -77,6 +77,14 @@ private class StateLoadingUpdateFile: GKState, StateEventProcessor {
 
 private class StateSettingDestinationPath: GKState, StateEventProcessor {
 
+    private var firmware: FirmwareManager
+    private var robot: RobotPeripheralViewModel
+
+    init(firmware: FirmwareManager, robot: RobotPeripheralViewModel) {
+        self.firmware = firmware
+        self.robot = robot
+    }
+
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
         return stateClass is StateSendingFile.Type
     }
@@ -97,6 +105,14 @@ private class StateSettingDestinationPath: GKState, StateEventProcessor {
 }
 
 private class StateSendingFile: GKState, StateEventProcessor {
+
+    private var firmware: FirmwareManager
+    private var robot: RobotPeripheralViewModel
+
+    init(firmware: FirmwareManager, robot: RobotPeripheralViewModel) {
+        self.firmware = firmware
+        self.robot = robot
+    }
 
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
         return stateClass is StateApplyingUpdate.Type
@@ -119,6 +135,14 @@ private class StateSendingFile: GKState, StateEventProcessor {
 
 private class StateApplyingUpdate: GKState, StateEventProcessor {
 
+    private var firmware: FirmwareManager
+    private var robot: RobotPeripheralViewModel
+
+    init(firmware: FirmwareManager, robot: RobotPeripheralViewModel) {
+        self.firmware = firmware
+        self.robot = robot
+    }
+
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
         return stateClass is StateWaitingForRobotToReboot.Type
     }
@@ -139,6 +163,12 @@ private class StateApplyingUpdate: GKState, StateEventProcessor {
 }
 
 private class StateWaitingForRobotToReboot: GKState, StateEventProcessor {
+
+    private var robot: RobotPeripheralViewModel
+
+    init(robot: RobotPeripheralViewModel) {
+        self.robot = robot
+    }
 
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
         return stateClass is StateFinal.Type || stateClass is StateErrorRobotNotUpToDate.Type
@@ -190,15 +220,15 @@ class UpdateProcessV100: UpdateProcessProtocol {
 
     public var currentStage = CurrentValueSubject<UpdateProcessStage, UpdateProcessError>(.initial)
 
-    init() {
+    init(robot: RobotPeripheralViewModel) {
         self.stateMachine = GKStateMachine(states: [
             StateInitial(),
 
             StateLoadingUpdateFile(firmware: firmware),
-            StateSettingDestinationPath(),
-            StateSendingFile(),
-            StateApplyingUpdate(),
-            StateWaitingForRobotToReboot(),
+            StateSettingDestinationPath(firmware: firmware, robot: robot),
+            StateSendingFile(firmware: firmware, robot: robot),
+            StateApplyingUpdate(firmware: firmware, robot: robot),
+            StateWaitingForRobotToReboot(robot: robot),
 
             StateFinal(),
 
