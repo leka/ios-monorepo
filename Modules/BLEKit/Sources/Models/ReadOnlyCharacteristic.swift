@@ -8,7 +8,7 @@ public struct ReadOnlyCharacteristic: Hashable {
 
     public let characteristicUUID: CBUUID
     public let serviceUUID: CBUUID
-    public var onNotification: ((_ data: Data?) -> Void)?
+    public var onRead: ((_ data: Data?) -> Void)?
 
     public init(characteristicUUID: CBUUID, serviceUUID: CBUUID) {
         self.characteristicUUID = characteristicUUID
