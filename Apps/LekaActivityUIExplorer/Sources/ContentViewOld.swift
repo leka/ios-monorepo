@@ -4,7 +4,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct ContentViewOld: View {
 
     @EnvironmentObject var router: Router
     @EnvironmentObject var navigator: NavigationManager
@@ -19,9 +19,20 @@ struct ContentView: View {
 
     var body: some View {
         ZStack {
-            NavigationStack {
-                Color("lekaLightBlue").ignoresSafeArea()
-                // List here
+            NavigationSplitView(columnVisibility: $navigator.sidebarVisibility) {
+                SidebarView()
+            } detail: {
+                GameView()
+                    .navigationBarTitleDisplayMode(.inline)
+                    .navigationBarBackButtonHidden()
+                    .toolbar {
+                        ToolbarItem(placement: .navigationBarLeading, content: { backButton })
+                        ToolbarItem(placement: .principal) { navigationTitleView }
+                        ToolbarItemGroup(placement: .navigationBarTrailing) { topBarTrailingItems }
+                    }
+                    .sheet(isPresented: $showInstructionModal) {
+                        CurrentActivityInstructionView()
+                    }
             }
             Color.black
                 .opacity(showOptions ? 0.2 : 0.0)
@@ -102,8 +113,7 @@ struct ContentView: View {
             label: {
                 Image(systemName: "slider.horizontal.3")
                     .foregroundColor(.accentColor)
-            }
-        )
+            })
     }
 
     private var reinforcerButton: some View {
@@ -135,9 +145,3 @@ struct ContentView: View {
         .tint(.accentColor)
     }
 }
-
-//struct ContentView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ContentView()
-//    }
-//}
