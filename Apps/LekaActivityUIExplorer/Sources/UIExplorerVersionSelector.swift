@@ -47,14 +47,14 @@ struct UIExplorerVersionSelector: View {
 
     var body: some View {
         VStack(spacing: 0) {
-            Spacer()
+            Spacer().frame(height: 40)
             VStack(spacing: 20) {
                 Text("Leka Activity UI Explorer")
                     .font(.largeTitle)
                 Text("VERSION SELECTOR")
                     .font(.headline)
             }
-
+            Spacer()
             HStack {
                 Spacer()
                 Button {
@@ -82,7 +82,8 @@ struct UIExplorerVersionSelector: View {
                 }
                 Spacer()
             }
-            
+            .frame(maxHeight: 300)
+            Spacer()
             logoLeka
         }
         .foregroundColor(Color("lekaBlue"))
