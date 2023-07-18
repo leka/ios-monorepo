@@ -10,7 +10,7 @@ let project = Project.module(
     name: "GameEngineKit",
     platform: .iOS,
     dependencies: [
-        // no deps
+        .project(target: "DesignKit", path: Path("../../Modules/DesignKit"))
     ],
     examples: [
         ModuleExample(
