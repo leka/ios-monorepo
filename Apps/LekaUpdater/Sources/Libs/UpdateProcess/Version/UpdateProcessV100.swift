@@ -42,13 +42,25 @@ private class StateInitial: GKState, StateEventProcessor {
 
 private class StateLoadingUpdateFile: GKState, StateEventProcessor {
 
+    private var firmware: FirmwareManager
+
+    init(firmware: FirmwareManager) {
+        self.firmware = firmware
+    }
+
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
         return stateClass is StateErrorFailedToLoadFile.Type || stateClass is StateSettingDestinationPath.Type
     }
 
     override func didEnter(from previousState: GKState?) {
-        print("StateLoadingUpdateFile")  // TODO: load update file
-        process(event: .fileLoaded)  // TODO: remove when todo above is done
+
+        let isLoaded = firmware.load()
+
+        if isLoaded {
+            process(event: .fileLoaded)
+        } else {
+            process(event: .failedToLoadFile)
+        }
     }
 
     func process(event: UpdateEvent) {
@@ -172,6 +184,8 @@ class UpdateProcessV100: UpdateProcessProtocol {
 
     private var cancellables: Set<AnyCancellable> = []
 
+    private var firmware = FirmwareManager()
+
     // MARK: - Public variables
 
     public var currentStage = CurrentValueSubject<UpdateProcessStage, UpdateProcessError>(.initial)
@@ -180,7 +194,7 @@ class UpdateProcessV100: UpdateProcessProtocol {
         self.stateMachine = GKStateMachine(states: [
             StateInitial(),
 
-            StateLoadingUpdateFile(),
+            StateLoadingUpdateFile(firmware: firmware),
             StateSettingDestinationPath(),
             StateSendingFile(),
             StateApplyingUpdate(),
