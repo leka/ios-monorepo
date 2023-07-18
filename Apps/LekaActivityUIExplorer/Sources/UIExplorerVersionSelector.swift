@@ -46,7 +46,7 @@ struct UIExplorerVersionSelector: View {
     @EnvironmentObject var router: Router
 
     var body: some View {
-        VStack {
+        VStack(spacing: 0) {
             Spacer()
             VStack(spacing: 20) {
                 Text("Leka Activity UI Explorer")
@@ -54,25 +54,35 @@ struct UIExplorerVersionSelector: View {
                 Text("VERSION SELECTOR")
                     .font(.headline)
             }
+
             HStack {
                 Spacer()
                 Button {
                     router.currentVersion = .oldVersion
                 } label: {
-                    Image("dummy_1")
-                        .resizable(resizingMode: .stretch)
-                        .activityIconImageModifier(diameter: 250, padding: 0)
+                    VStack(spacing: 20) {
+                        Image("dummy_1")
+                            .resizable(resizingMode: .stretch)
+                            .activityIconImageModifier(diameter: 250, padding: 0)
+                        Text("Ancienne Version")
+                            .font(.body)
+                    }
                 }
                 Spacer()
                 Button {
                     router.currentVersion = .newVersion
                 } label: {
-                    Image("dummy_2")
-                        .resizable()
-                        .activityIconImageModifier(diameter: 250, padding: 0)
+                    VStack(spacing: 20) {
+                        Image("dummy_2")
+                            .resizable()
+                            .activityIconImageModifier(diameter: 250, padding: 0)
+                        Text("Nouvelle Version")
+                            .font(.body)
+                    }
                 }
                 Spacer()
             }
+            
             logoLeka
         }
         .foregroundColor(Color("lekaBlue"))
