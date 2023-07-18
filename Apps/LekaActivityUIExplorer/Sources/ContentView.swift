@@ -13,35 +13,47 @@ struct ContentView: View {
     @EnvironmentObject var configuration: GameLayoutTemplatesConfigurations
 
     @State private var showInstructionModal: Bool = false
-    @State private var navigateToConfigurator: Bool = false
-    @State private var showOptions: Bool = false
-    @State private var showNoDefaultsAlert: Bool = false
 
     var body: some View {
         ZStack {
+            Color("lekaLightBlue").ignoresSafeArea()
+
             NavigationStack {
-                Color("lekaLightBlue").ignoresSafeArea()
-                // List here
-            }
-            Color.black
-                .opacity(showOptions ? 0.2 : 0.0)
-                .edgesIgnoringSafeArea(.all)
-                .onTapGesture {
-                    withAnimation(.easeIn(duration: 0.4)) { showOptions = false }
+                let columns = Array(repeating: GridItem(), count: 3)
+                ScrollView {
+                    LazyVGrid(columns: columns) {
+                        ForEach(Interfaces.allCases, id: \.self) { interface in
+                            NavigationLink {
+                                GameView()
+                            } label: {
+                                VStack(spacing: 20) {
+                                    Image(interface.rawValue)
+                                        .activityIconImageModifier(padding: 20)
+                                    Text(interface.rawValue)
+                                        .font(defaults.reg17)
+                                        .foregroundColor(.accentColor)
+                                        .multilineTextAlignment(.center)
+                                }
+                                .frame(maxWidth: 200)
+                                .padding(.bottom, 40)
+                            }
+                        }
+                    }
+                    .safeAreaInset(edge: .top) {
+                        Color.clear
+                            .frame(height: 40)
+                    }
                 }
-            Group {
-                if showOptions {
-                    ExplorerOptionsPanel(closePanel: $showOptions)
-                        .transition(.move(edge: .trailing))
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading, content: { backButton })
+                    ToolbarItem(placement: .principal) { navigationTitleView }
+                    ToolbarItemGroup(placement: .navigationBarTrailing) { topBarTrailingItems }
+                }
+                .sheet(isPresented: $showInstructionModal) {
+                    CurrentActivityInstructionView()
                 }
             }
-        }
-        .animation(.easeIn(duration: 0.4), value: showOptions)
-        .navigationSplitViewStyle(.prominentDetail)
-        .alert("Valeurs par défaut :", isPresented: $showNoDefaultsAlert) {
-            //
-        } message: {
-            Text("Ce template n'est pas modifiable.")
         }
         .overlay(
             optionalReinforcer
@@ -61,7 +73,6 @@ struct ContentView: View {
     private var topBarTrailingItems: some View {
         Group {
             infoButton
-            optionsButton
             reinforcerButton
         }
     }
@@ -85,25 +96,6 @@ struct ContentView: View {
             }
         )
         .opacity(showInstructionModal ? 0 : 1)
-    }
-
-    private var optionsButton: some View {
-        Button(
-            action: {
-                navigator.sidebarVisibility = .detailOnly
-                guard configuration.currentDefaults != nil else {
-                    showNoDefaultsAlert.toggle()
-                    return
-                }
-                withAnimation(.easeIn(duration: 0.4)) {
-                    showOptions.toggle()
-                }
-            },
-            label: {
-                Image(systemName: "slider.horizontal.3")
-                    .foregroundColor(.accentColor)
-            }
-        )
     }
 
     private var reinforcerButton: some View {
@@ -136,8 +128,14 @@ struct ContentView: View {
     }
 }
 
-//struct ContentView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ContentView()
-//    }
-//}
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+            .environmentObject(Router())
+            .environmentObject(NavigationManager())
+            .environmentObject(GameEngine())
+            .environmentObject(GameLayoutTemplatesDefaults())
+            .environmentObject(GameLayoutTemplatesConfigurations())
+            .previewInterfaceOrientation(.landscapeLeft)
+    }
+}
