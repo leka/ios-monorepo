@@ -6,7 +6,7 @@ import BLEKit
 import Foundation
 
 // TODO(@ladisals): maybe move to simple model/struct --> is it needed to @Publish? -- test charging status change
-public class RobotDiscoveryViewModel: ObservableObject, Equatable {
+public class RobotDiscoveryViewModel: ObservableObject, Equatable, Identifiable {
     @Published var name: String
     @Published var battery: Int
     @Published var isCharging: Bool
@@ -33,7 +33,7 @@ public class RobotDiscoveryViewModel: ObservableObject, Equatable {
     }
 
     public static func == (lhs: RobotDiscoveryViewModel, rhs: RobotDiscoveryViewModel) -> Bool {
-        lhs.name == rhs.name
+        return lhs.robotDiscovery?.id == rhs.robotDiscovery?.id && lhs.name == rhs.name
     }
 
 }
