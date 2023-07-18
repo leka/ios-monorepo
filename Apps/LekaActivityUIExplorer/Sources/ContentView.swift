@@ -15,44 +15,41 @@ struct ContentView: View {
     @State private var showInstructionModal: Bool = false
 
     var body: some View {
-        ZStack {
-            Color("lekaLightBlue").ignoresSafeArea()
-
-            NavigationStack {
-                let columns = Array(repeating: GridItem(), count: 3)
-                ScrollView {
-                    LazyVGrid(columns: columns) {
-                        ForEach(Interfaces.allCases, id: \.self) { interface in
-                            NavigationLink {
-                                GameView()
-                            } label: {
-                                VStack(spacing: 20) {
-                                    Image(interface.rawValue)
-                                        .activityIconImageModifier(padding: 20)
-                                    Text(interface.rawValue)
-                                        .font(defaults.reg17)
-                                        .foregroundColor(.accentColor)
-                                        .multilineTextAlignment(.center)
-                                }
-                                .frame(maxWidth: 200)
-                                .padding(.bottom, 40)
+        NavigationStack {
+            let columns = Array(repeating: GridItem(), count: 3)
+            ScrollView {
+                LazyVGrid(columns: columns) {
+                    ForEach(Interfaces.allCases, id: \.self) { interface in
+                        NavigationLink {
+                            GameView()
+                        } label: {
+                            VStack(spacing: 20) {
+                                Image(interface.rawValue)
+                                    .activityIconImageModifier(padding: 20)
+                                Text(interface.rawValue)
+                                    .font(defaults.reg17)
+                                    .foregroundColor(.accentColor)
+                                    .multilineTextAlignment(.center)
                             }
+                            .frame(maxWidth: 200)
+                            .padding(.bottom, 40)
                         }
                     }
-                    .safeAreaInset(edge: .top) {
-                        Color.clear
-                            .frame(height: 40)
-                    }
                 }
-                .navigationBarTitleDisplayMode(.inline)
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarLeading, content: { backButton })
-                    ToolbarItem(placement: .principal) { navigationTitleView }
-                    ToolbarItemGroup(placement: .navigationBarTrailing) { topBarTrailingItems }
+                .safeAreaInset(edge: .top) {
+                    Color.clear
+                        .frame(height: 40)
                 }
-                .sheet(isPresented: $showInstructionModal) {
-                    CurrentActivityInstructionView()
-                }
+            }
+            .background(Color("lekaLightBlue"))
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading, content: { backButton })
+                ToolbarItem(placement: .principal) { navigationTitleView }
+                ToolbarItemGroup(placement: .navigationBarTrailing) { topBarTrailingItems }
+            }
+            .sheet(isPresented: $showInstructionModal) {
+                CurrentActivityInstructionView()
             }
         }
         .overlay(
