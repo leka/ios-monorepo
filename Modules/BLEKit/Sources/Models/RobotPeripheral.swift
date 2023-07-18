@@ -65,7 +65,7 @@ public class RobotPeripheral {
                 },
                 receiveValue: { data in
                     guard let data = data else { return }
-                    characteristic.onNotification?(data)
+                    characteristic.onRead?(data)
                 }
             )
             .store(in: &cancellables)

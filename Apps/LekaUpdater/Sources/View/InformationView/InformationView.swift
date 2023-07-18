@@ -91,7 +91,10 @@ struct InformationView: View {
             }
         }
         .foregroundColor(DesignKitAsset.Colors.darkGray.swiftUIColor)
-        .onAppear(perform: robot.subscribeToCharacteristicsNotifications)
+        .onAppear {
+            robot.readReadOnlyCharacteristics()
+            robot.subscribeToCharacteristicsNotifications()
+        }
         .toolbar {
             ToolbarItem(placement: .principal) {
                 VStack {

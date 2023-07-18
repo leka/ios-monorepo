@@ -39,8 +39,13 @@ public class RobotPeripheralViewModel: ObservableObject {
         self.registerChargingStatusNotificationCallback()
 
         self.robotPeripheral?.discoverAndListenForUpdates()
+    }
 
-        // TODO: Get OS Version & Serial Number
+    public func readReadOnlyCharacteristics() {
+        self.registerOSVersionReadCallback()
+        self.registerSerialNumberReadCallback()
+
+        self.robotPeripheral?.readReadOnlyCharacteristics()
     }
 
     private func registerBatteryCharacteristicNotificationCallback() {
@@ -71,6 +76,38 @@ public class RobotPeripheralViewModel: ObservableObject {
         }
 
         self.robotPeripheral?.notifyingCharacteristics.insert(characteristic)
+    }
+
+    private func registerOSVersionReadCallback() {
+        var characteristic = ReadOnlyCharacteristic(
+            characteristicUUID: BLESpecs.DeviceInformation.Characteristics.osVersion,
+            serviceUUID: BLESpecs.DeviceInformation.service
+        )
+
+        characteristic.onRead = { data in
+            if let data = data {
+                self.osVersion = String(decoding: data, as: UTF8.self)
+                    .replacingOccurrences(of: "\0", with: "")
+            }
+        }
+
+        self.robotPeripheral?.readOnlyCharacteristics.insert(characteristic)
+    }
+
+    private func registerSerialNumberReadCallback() {
+        var characteristic = ReadOnlyCharacteristic(
+            characteristicUUID: BLESpecs.DeviceInformation.Characteristics.serialNumber,
+            serviceUUID: BLESpecs.DeviceInformation.service
+        )
+
+        characteristic.onRead = { data in
+            if let data = data {
+                self.serialNumber = String(decoding: data, as: UTF8.self)
+                    .replacingOccurrences(of: "\0", with: "")
+            }
+        }
+
+        self.robotPeripheral?.readOnlyCharacteristics.insert(characteristic)
     }
 
 }
