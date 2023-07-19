@@ -20,4 +20,9 @@ let kListOfAvailablesActivities: [ActivityModel] = [
         instructions: "Play the song with Leka",
         view: AnyView(MelodyActivity())
     ),
+    ActivityModel(
+        title: "Hide and Seek",
+        instructions: "Cache le robot quelque part dans la pièce. Suis ensuite les instructions. ",
+        view: AnyView(HideAndSeekActivity())
+    ),
 ]
