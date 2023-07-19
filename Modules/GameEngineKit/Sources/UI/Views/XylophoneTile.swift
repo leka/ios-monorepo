@@ -20,10 +20,12 @@ struct XylophoneTileButtonStyle: ButtonStyle {
                 VStack {
                     Spacer()
                     Circle()
-                        .fill(GameEngineKitAsset.Colors.xyloAttach.swiftUIColor)
+                        .fill(.brown)
+                    //                        .fill(GameEngineKitAsset.Colors.xyloAttach.swiftUIColor)
                     Spacer()
                     Circle()
-                        .fill(GameEngineKitAsset.Colors.xyloAttach.swiftUIColor)
+                        .fill(.brown)
+                    //                        .fill(GameEngineKitAsset.Colors.xyloAttach.swiftUIColor)
                     Spacer()
                 }
                 .frame(width: 44)
