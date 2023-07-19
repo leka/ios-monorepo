@@ -11,7 +11,7 @@ struct ContentView: View {
     @EnvironmentObject var gameEngine: GameEngine
     @EnvironmentObject var defaults: GameLayoutTemplatesDefaults
 
-    private var testActivity: [String] = ["Test Activity"]
+    private var testActivity: [CurrentActivity] = [.test, .melody]
 
     var body: some View {
         NavigationStack {
@@ -20,12 +20,12 @@ struct ContentView: View {
                 LazyVGrid(columns: columns) {
                     ForEach(testActivity, id: \.self) { activity in
                         NavigationLink {
-                            TestActivity()
+                            ActivitySelector(activity: activity)
                         } label: {
                             VStack(spacing: 20) {
-                                Image(activity)
+                                Image(activity.title())
                                     .activityIconImageModifier(padding: 20)
-                                Text(activity)
+                                Text(activity.title())
                                     .font(defaults.reg17)
                                     .foregroundColor(.accentColor)
                                     .multilineTextAlignment(.center)
