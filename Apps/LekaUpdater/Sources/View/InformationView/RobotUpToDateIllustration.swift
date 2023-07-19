@@ -36,7 +36,7 @@ struct RobotUpToDateIllustration: View {
 
             Circle()
                 .strokeBorder(
-                    DesignKitAsset.Colors.lekaUpdaterRobotUpToDate.swiftUIColor, lineWidth: circleLineWidth
+                    DesignKitAsset.Colors.lekaGreen.swiftUIColor, lineWidth: circleLineWidth
                 )
                 .frame(width: circleSize)
 
@@ -54,7 +54,7 @@ struct RobotUpToDateIllustration: View {
 
                     Image(systemName: "checkmark.circle")
                         .font(.system(size: checkmarkSize))
-                        .foregroundColor(DesignKitAsset.Colors.lekaUpdaterRobotUpToDate.swiftUIColor)
+                        .foregroundColor(DesignKitAsset.Colors.lekaGreen.swiftUIColor)
                 }
             }
         }

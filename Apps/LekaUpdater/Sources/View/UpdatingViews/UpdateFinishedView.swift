@@ -10,7 +10,7 @@ struct UpdateFinishedIllustration: View {
         ZStack {
             Circle().fill(.white)
 
-            Circle().strokeBorder(DesignKitAsset.Colors.lekaUpdaterRobotUpToDate.swiftUIColor, lineWidth: 5)
+            Circle().strokeBorder(DesignKitAsset.Colors.lekaGreen.swiftUIColor, lineWidth: 5)
 
             LekaUpdaterAsset.Assets.robotOnBase.swiftUIImage
                 .resizable()
@@ -26,7 +26,7 @@ struct UpdateFinishedIllustration: View {
 
                     Image(systemName: "checkmark.circle")
                         .font(.system(size: 56))
-                        .foregroundColor(DesignKitAsset.Colors.lekaUpdaterRobotUpToDate.swiftUIColor)
+                        .foregroundColor(DesignKitAsset.Colors.lekaGreen.swiftUIColor)
                 }
             }
         }
