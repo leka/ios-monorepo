@@ -8,8 +8,6 @@ import SwiftUI
 class RequirementsViewModel: ObservableObject {
     @ObservedObject private var robot: RobotPeripheralViewModel
 
-    let requirementsImage = Image(uiImage: LekaUpdaterAsset.Assets.robotIsCharging.image)
-
     let requirementsInstructionText = "Pour lancer la mise à jour, veillez à ce que :"
 
     let chargingBasePluggedImage = LekaUpdaterAsset.Assets.chargingBasePlugged.swiftUIImage
