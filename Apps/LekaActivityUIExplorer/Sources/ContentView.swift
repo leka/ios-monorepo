@@ -2,6 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import DesignKit
 import SwiftUI
 
 struct ContentView: View {
@@ -39,7 +40,7 @@ struct ContentView: View {
                         .frame(height: 40)
                 }
             }
-            .background(Color("lekaLightBlue"))
+            .background(DesignKitAsset.Colors.lekaLightBlue.swiftUIColor)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading, content: { backButton })

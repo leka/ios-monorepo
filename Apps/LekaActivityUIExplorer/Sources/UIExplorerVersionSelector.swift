@@ -2,6 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import DesignKit
 import SwiftUI
 
 enum Version {
@@ -86,7 +87,7 @@ struct UIExplorerVersionSelector: View {
             Spacer()
             logoLeka
         }
-        .foregroundColor(Color("lekaBlue"))
+        .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
     }
 
     private var logoLeka: some View {
