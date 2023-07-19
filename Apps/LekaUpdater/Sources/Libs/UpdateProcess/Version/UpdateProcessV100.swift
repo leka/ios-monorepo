@@ -146,12 +146,22 @@ private class StateSendingFile: GKState, StateEventProcessor {
 
 private class StateApplyingUpdate: GKState, StateEventProcessor {
 
+    private var firmware: FirmwareManager
+    private var robot: RobotPeripheral?
+
+    init(firmware: FirmwareManager, robot: RobotPeripheral?) {
+        self.firmware = firmware
+        self.robot = robot
+    }
+
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
         return stateClass is StateWaitingForRobotToReboot.Type
     }
 
     override func didEnter(from previousState: GKState?) {
-        print("StateApplyingUpdate")  // TODO: set BLE major, minor and revision apply
+        setMajorMinorRevision()
+        applyUpdate()
+
         process(event: .robotDisconnected)  // TODO: remove when todo above is done
     }
 
@@ -162,6 +172,46 @@ private class StateApplyingUpdate: GKState, StateEventProcessor {
             default:
                 return
         }
+    }
+
+    private func setMajorMinorRevision() {
+        let majorData = Data([firmware.major])
+
+        let majorCharacteristic = WriteOnlyCharacteristic(
+            characteristicUUID: BLESpecs.FirmwareUpdate.Characteristics.versionMajor,
+            serviceUUID: BLESpecs.FirmwareUpdate.service
+        )
+
+        robot?.send(majorData, forCharacteristic: majorCharacteristic)
+
+        let minorData = Data([firmware.minor])
+
+        let minorCharacteristic = WriteOnlyCharacteristic(
+            characteristicUUID: BLESpecs.FirmwareUpdate.Characteristics.versionMinor,
+            serviceUUID: BLESpecs.FirmwareUpdate.service
+        )
+
+        robot?.send(minorData, forCharacteristic: minorCharacteristic)
+
+        let revisionData = Data([UInt8(firmware.revision >> 8), UInt8(firmware.revision & 0x00FF)])
+
+        let revisionCharacteristic = WriteOnlyCharacteristic(
+            characteristicUUID: BLESpecs.FirmwareUpdate.Characteristics.versionRevision,
+            serviceUUID: BLESpecs.FirmwareUpdate.service
+        )
+
+        robot?.send(revisionData, forCharacteristic: revisionCharacteristic)
+    }
+
+    private func applyUpdate() {
+        let applyValue = Data([1])
+
+        let characteristic = WriteOnlyCharacteristic(
+            characteristicUUID: BLESpecs.FirmwareUpdate.Characteristics.requestUpdate,
+            serviceUUID: BLESpecs.FirmwareUpdate.service
+        )
+
+        robot?.send(applyValue, forCharacteristic: characteristic)
     }
 }
 
@@ -223,7 +273,7 @@ class UpdateProcessV100: UpdateProcessProtocol {
 
             StateLoadingUpdateFile(firmware: firmware),
             StateSendingFile(),
-            StateApplyingUpdate(),
+            StateApplyingUpdate(firmware: firmware, robot: robot),
             StateWaitingForRobotToReboot(),
             StateSettingDestinationPath(firmware: firmware, robot: robot),
 
