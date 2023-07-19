@@ -11,7 +11,7 @@ struct ContentView: View {
     @EnvironmentObject var gameEngine: GameEngine
     @EnvironmentObject var defaults: GameLayoutTemplatesDefaults
 
-    private var testActivity: [CurrentActivity] = [.test, .melody]
+    private var testActivity: [CurrentActivity] = [.test, .melody, .hideAndSeek]
 
     var body: some View {
         NavigationStack {
