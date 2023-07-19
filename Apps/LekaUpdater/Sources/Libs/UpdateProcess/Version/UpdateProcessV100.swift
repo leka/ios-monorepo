@@ -193,7 +193,7 @@ private class StateApplyingUpdate: GKState, StateEventProcessor {
 
         robot?.send(minorData, forCharacteristic: minorCharacteristic)
 
-        let revisionData = Data([UInt8(firmware.revision >> 8), UInt8(firmware.revision & 0x00FF)])
+        let revisionData = firmware.revision.data
 
         let revisionCharacteristic = WriteOnlyCharacteristic(
             characteristicUUID: BLESpecs.FirmwareUpdate.Characteristics.versionRevision,
