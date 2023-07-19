@@ -6,7 +6,7 @@ import DesignKit
 import SwiftUI
 
 enum CurrentActivity {
-    case test, melody
+    case test, melody, hideAndSeek
 
     func title() -> String {
         switch self {
@@ -14,6 +14,8 @@ enum CurrentActivity {
                 return "Test activity"
             case .melody:
                 return "Melody"
+            case .hideAndSeek:
+                return "Hide and Seek"
         }
     }
 }
@@ -27,6 +29,8 @@ struct ActivitySelector: View {
                 TestActivity()
             case .melody:
                 MelodyActivity()
+            case .hideAndSeek:
+                HideAndSeekActivity()
         }
     }
 }
