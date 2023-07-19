@@ -12,6 +12,9 @@ class RequirementsViewModel: ObservableObject {
 
     let requirementsInstructionText = "Pour lancer la mise à jour, veillez à ce que :"
 
+    let chargingBasePluggedImage = LekaUpdaterAsset.Assets.chargingBasePlugged.swiftUIImage
+    let chargingBasePluggedText = "Le robot soit posé sur son socle et que le socle soit branché au secteur"
+
     var robotIsReadyToUpdate: Bool {
         robot.battery >= 30 && robot.isCharging
     }

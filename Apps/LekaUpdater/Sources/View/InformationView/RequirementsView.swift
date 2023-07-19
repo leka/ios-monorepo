@@ -16,11 +16,8 @@ struct RequirementsView: View {
 
             HStack(alignment: .top) {
                 RequirementView(
-                    image: viewModel.requirementsImage,
-                    text: """
-                        Le robot doit être en charge sur sa base
-                        Sa batterie doit être chargée à 30% ou plus.
-                        """,
+                    image: viewModel.chargingBasePluggedImage,
+                    text: viewModel.chargingBasePluggedText,
                     stepNumber: 1)
             }
         }
