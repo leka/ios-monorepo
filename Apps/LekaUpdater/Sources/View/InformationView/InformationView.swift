@@ -51,8 +51,9 @@ struct InformationView: View {
                             .padding()
                     } label: {
                         Text("Liste des changements apportés")
-                            .foregroundStyle(.blue)
+                            .foregroundStyle(DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor)
                     }
+                    .accentColor(DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor)
                 } header: {
                     Text("Informations sur LekaOS v\(firmware.currentVersion)")
                         .textCase(nil)

@@ -56,14 +56,14 @@ struct UpdateFinishedContentView: View {
                 } label: {
                     Text("Voir les infos de ce robot")
                         .padding(.horizontal)
-                        .foregroundColor(DesignKitAsset.Colors.lekaUpdaterBtnPrincipal.swiftUIColor)
+                        .foregroundColor(DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor)
                         .frame(height: 50)
                         .background(
                             ZStack {
                                 RoundedRectangle(cornerRadius: 10).fill(.white)
                                 RoundedRectangle(cornerRadius: 10)
                                     .strokeBorder(
-                                        DesignKitAsset.Colors.lekaUpdaterBtnPrincipal.swiftUIColor, lineWidth: 2)
+                                        DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor, lineWidth: 2)
                             }
                         )
                         .cornerRadius(10)
@@ -77,7 +77,7 @@ struct UpdateFinishedContentView: View {
                         .padding(.horizontal)
                         .foregroundColor(.white)
                         .frame(height: 50)
-                        .background(DesignKitAsset.Colors.lekaUpdaterBtnPrincipal.swiftUIColor)
+                        .background(DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor)
                         .cornerRadius(10)
                 }
                 .buttonStyle(.plain)
