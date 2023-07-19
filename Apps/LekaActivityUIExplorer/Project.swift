@@ -10,6 +10,7 @@ let project = Project.iOSApp(
     name: "LekaActivityUIExplorer",
     dependencies: [
         .project(target: "DesignKit", path: Path("../../Modules/DesignKit")),
+        .project(target: "GameEngineKit", path: Path("../../Modules/GameEngineKit")),
         .external(name: "MarkdownUI"),
         .external(name: "Yams"),
         .external(name: "Lottie"),
