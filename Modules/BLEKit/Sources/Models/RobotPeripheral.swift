@@ -91,6 +91,25 @@ public class RobotPeripheral {
         .store(in: &cancellables)
     }
 
+    public func send(_ data: Data, forCharacteristic characteristic: WriteOnlyCharacteristic) {
+        peripheral.writeValue(
+            data,
+            writeType: .withoutResponse,
+            forCharacteristic: characteristic.characteristicUUID,
+            inService: characteristic.serviceUUID
+        )
+        .receive(on: DispatchQueue.main)
+        .sink(
+            receiveCompletion: { _ in
+                characteristic.onWrite?()
+            },
+            receiveValue: { _ in
+                // nothing to do
+            }
+        )
+        .store(in: &cancellables)
+    }
+
     // MARK: - Private functions
 
     private func listenForUpdates(on characteristic: NotifyingCharacteristic) {
