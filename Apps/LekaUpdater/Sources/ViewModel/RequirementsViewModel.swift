@@ -18,6 +18,9 @@ class RequirementsViewModel: ObservableObject {
     let chargingBaseGreenLEDImage = LekaUpdaterAsset.Assets.chargingBaseGreenLED.swiftUIImage
     let chargingBaseGreenLEDText = "La LED de charge soit verte indiquant le bon positionnement sur le socle"
 
+    let robotBatteryQuarter1Image = LekaUpdaterAsset.Assets.robotBatteryQuarter1.swiftUIImage
+    let robotBatteryQuarter1Text = "Votre robot soit chargé à 30% ou plus"
+
     var robotIsReadyToUpdate: Bool {
         robot.battery >= 30 && robot.isCharging
     }

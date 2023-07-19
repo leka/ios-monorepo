@@ -24,6 +24,11 @@ struct RequirementsView: View {
                     image: viewModel.chargingBaseGreenLEDImage,
                     text: viewModel.chargingBaseGreenLEDText,
                     stepNumber: 2)
+
+                RequirementView(
+                    image: viewModel.robotBatteryQuarter1Image,
+                    text: viewModel.robotBatteryQuarter1Text,
+                    stepNumber: 3)
             }
         }
         .padding()
