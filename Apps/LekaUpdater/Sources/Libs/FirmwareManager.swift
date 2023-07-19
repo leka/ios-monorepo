@@ -13,6 +13,16 @@ class FirmwareManager: ObservableObject {
     // swiftlint:disable:next force_cast
     let currentVersion = Bundle.main.object(forInfoDictionaryKey: "LEKA_OS_VERSION") as! String
 
+    public var major: UInt8 {
+        UInt8(currentVersion.components(separatedBy: ".")[0])!
+    }
+    public var minor: UInt8 {
+        UInt8(currentVersion.components(separatedBy: ".")[1])!
+    }
+    public var revision: UInt16 {
+        UInt16(currentVersion.components(separatedBy: ".")[2])!
+    }
+
     public var data = Data()
 
     func compareWith(version: String) -> RobotUpdateStatus {
