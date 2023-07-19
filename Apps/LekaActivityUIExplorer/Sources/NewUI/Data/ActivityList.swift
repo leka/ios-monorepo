@@ -6,9 +6,9 @@ import SwiftUI
 
 let kListOfAvailablesActivities: [ActivityModel] = [
     ActivityModel(
-        title: "Test Activity #1",
-        instructions: "This is just a test",
-        view: AnyView(TestActivity())
+        title: "Melody",
+        instructions: "Play the right melody",
+        view: AnyView(MelodyActivity())
     ),
     ActivityModel(
         title: "Text Activity #2",
