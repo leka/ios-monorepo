@@ -2,6 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import BLEKit
 import Combine
 import Foundation
 import GameplayKit
@@ -77,13 +78,20 @@ private class StateLoadingUpdateFile: GKState, StateEventProcessor {
 
 private class StateSettingDestinationPath: GKState, StateEventProcessor {
 
+    private var firmware: FirmwareManager
+    private var robot: RobotPeripheral?
+
+    init(firmware: FirmwareManager, robot: RobotPeripheral?) {
+        self.firmware = firmware
+        self.robot = robot
+    }
+
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
         return stateClass is StateSendingFile.Type
     }
 
     override func didEnter(from previousState: GKState?) {
-        print("StateSettingDestinationPath")  // TODO: set BLE destination path and clear file
-        process(event: .destinationPathSet)  // TODO: remove when todo above is done
+        setDestinationPath()
     }
 
     func process(event: UpdateEvent) {
@@ -93,6 +101,25 @@ private class StateSettingDestinationPath: GKState, StateEventProcessor {
             default:
                 return
         }
+    }
+
+    private func setDestinationPath() {
+        let osVersion = firmware.currentVersion
+
+        let directory = "/fs/usr/os"
+        let filename = "LekaOS-\(osVersion).bin"
+        let destinationPath = directory + "/" + filename
+
+        var characteristic = WriteOnlyCharacteristic(
+            characteristicUUID: BLESpecs.FileExchange.Characteristics.filePath,
+            serviceUUID: BLESpecs.FileExchange.service
+        )
+
+        characteristic.onWrite = {
+            self.process(event: .destinationPathSet)
+        }
+
+        robot?.send(destinationPath.data(using: .utf8)!, forCharacteristic: characteristic)
     }
 }
 
@@ -190,15 +217,15 @@ class UpdateProcessV100: UpdateProcessProtocol {
 
     public var currentStage = CurrentValueSubject<UpdateProcessStage, UpdateProcessError>(.initial)
 
-    init() {
+    init(robot: RobotPeripheral?) {
         self.stateMachine = GKStateMachine(states: [
             StateInitial(),
 
             StateLoadingUpdateFile(firmware: firmware),
-            StateSettingDestinationPath(),
             StateSendingFile(),
             StateApplyingUpdate(),
             StateWaitingForRobotToReboot(),
+            StateSettingDestinationPath(firmware: firmware, robot: robot),
 
             StateFinal(),
 
