@@ -8,24 +8,22 @@ import SwiftUI
 struct ContentView: View {
 
     @EnvironmentObject var router: Router
-    @EnvironmentObject var gameEngine: GameEngine
+    @EnvironmentObject var gameEngine: GameEngine 
     @EnvironmentObject var defaults: GameLayoutTemplatesDefaults
-
-    private var testActivity: [CurrentActivity] = [.test, .melody]
 
     var body: some View {
         NavigationStack {
             let columns = Array(repeating: GridItem(), count: 3)
             ScrollView {
                 LazyVGrid(columns: columns) {
-                    ForEach(testActivity, id: \.self) { activity in
+                    ForEach(kListOfAvailablesActivities) { activity in
                         NavigationLink {
-                            ActivitySelector(activity: activity)
+                            activity.view
                         } label: {
                             VStack(spacing: 20) {
-                                Image(activity.title())
+                                Image(systemName: "ellipsis.curlybraces")
                                     .activityIconImageModifier(padding: 20)
-                                Text(activity.title())
+                                Text(activity.title)
                                     .font(defaults.reg17)
                                     .foregroundColor(.accentColor)
                                     .multilineTextAlignment(.center)
