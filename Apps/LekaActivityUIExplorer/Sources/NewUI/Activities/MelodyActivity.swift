@@ -5,14 +5,11 @@
 import GameEngineKit
 import SwiftUI
 
-let notes: [MusicalColor] = [.la, .si, .do, .re, .fa]
-let melodyData = MusicalGameplayData(notes: notes)
-
 struct MelodyActivity: View {
-    let gameplay = GameplaySelectTheRightMelody(rightAnswers: melodyData.colors)
+    let gameplay = MelodyGameplay(song: kListOfMelodySongsAvailable[0])
 
     var body: some View {
-        SevenTilesXylophoneView(gameplay: gameplay)
+        MelodyView(gameplay: gameplay)
     }
 }
 
