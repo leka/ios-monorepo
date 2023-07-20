@@ -2,6 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import DesignKit
 import SwiftUI
 
 struct XylophoneTileButtonStyle: ButtonStyle {
@@ -20,10 +21,10 @@ struct XylophoneTileButtonStyle: ButtonStyle {
                 VStack {
                     Spacer()
                     Circle()
-                        .fill(GameEngineKitAsset.Colors.xyloAttach.swiftUIColor)
+                        .fill(DesignKitAsset.Colors.xyloAttach.swiftUIColor)
                     Spacer()
                     Circle()
-                        .fill(GameEngineKitAsset.Colors.xyloAttach.swiftUIColor)
+                        .fill(DesignKitAsset.Colors.xyloAttach.swiftUIColor)
                     Spacer()
                 }
                 .frame(width: 44)
