@@ -50,3 +50,12 @@ public struct MelodyView: View {
         }
     }
 }
+
+struct MelodyView_Previews:
+    PreviewProvider
+{
+    static var previews: some View {
+        MelodyView(gameplay: MelodyGameplay(song: kListOfMelodySongsAvailable[0]))
+            .previewInterfaceOrientation(.landscapeLeft)
+    }
+}

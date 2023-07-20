@@ -22,10 +22,10 @@ struct XylophoneTileButtonStyle: ButtonStyle {
                 VStack {
                     Spacer()
                     Circle()
-                        .fill(DesignKitAsset.Colors.xyloAttach.swiftUIColor)
+                        .fill(xyloAttachColor)
                     Spacer()
                     Circle()
-                        .fill(DesignKitAsset.Colors.xyloAttach.swiftUIColor)
+                        .fill(xyloAttachColor)
                     Spacer()
                 }
                 .frame(width: 44)
@@ -50,5 +50,18 @@ struct XylophoneTileButtonStyle: ButtonStyle {
         let tileHeight = defaultMaxTileHeight - index * sizeDiff
 
         return CGFloat(tileHeight)
+    }
+}
+
+struct XylophoneTileButtonStyle_Previews:
+    PreviewProvider
+{
+    static var previews: some View {
+        Button {
+            // Nothing to do
+        } label: {
+            Color(.red)
+        }
+        .buttonStyle(XylophoneTileButtonStyle(index: 0, tilesNumber: 1))
     }
 }
