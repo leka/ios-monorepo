@@ -5,6 +5,7 @@
 import SwiftUI
 
 struct DanceFreezePlayer: View {
+    @EnvironmentObject var viewModel: DanceFreezeViewModel
 
     @State var isAuto: Bool
     @State private var isDancing: Bool = true
@@ -18,6 +19,7 @@ struct DanceFreezePlayer: View {
             withAnimation {
                 isDancing.toggle()
             }
+            viewModel.onDanceFreezeToggle()
         } label: {
             if isDancing {
                 DanceView()
@@ -29,6 +31,7 @@ struct DanceFreezePlayer: View {
         }
         .disabled(isAuto)
         .onAppear {
+            viewModel.onDanceFreezeToggle()
             if isAuto {
                 randomSwitch()
             }
@@ -40,6 +43,7 @@ struct DanceFreezePlayer: View {
 
         DispatchQueue.main.asyncAfter(deadline: .now() + rand) {
             isDancing.toggle()
+            viewModel.onDanceFreezeToggle()
         }
     }
 }
