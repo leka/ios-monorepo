@@ -25,7 +25,7 @@ struct RobotUpdateAvailableView: View {
                     .foregroundColor(.white)
                     .frame(height: 50)
                     .frame(maxWidth: .infinity)
-                    .background(.blue)
+                    .background(DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor)
                     .cornerRadius(10)
             }
             .buttonStyle(.plain)
