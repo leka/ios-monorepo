@@ -6,6 +6,7 @@ import DesignKit
 import SwiftUI
 
 struct XylophoneTileButtonStyle: ButtonStyle {
+    let xyloAttachColor = Color(red: 0.87, green: 0.65, blue: 0.54)
     let defaultMaxTileHeight: Int = 500
     let defaultTileHeightGap: Int = 250
     let defaultTileWidth: CGFloat = 130
