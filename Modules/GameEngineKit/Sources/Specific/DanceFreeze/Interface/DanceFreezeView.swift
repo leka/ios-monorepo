@@ -25,11 +25,13 @@ public struct DanceFreezeView: View {
                     DanceFreezeLauncher(mode: $mode)
                         .alertWhenRobotIsNeeded()
                 case .automaticMode:
+                    ContinuousProgressBar(progress: viewModel.progress)
                     DanceFreezePlayer(isAuto: true)
                         .onDisappear {
                             viewModel.setSong(song: SongModel(name: "", file: ""))
                         }
                 case .manualMode:
+                    ContinuousProgressBar(progress: viewModel.progress)
                     DanceFreezePlayer(isAuto: false)
                         .onDisappear {
                             viewModel.setSong(song: SongModel(name: "", file: ""))
