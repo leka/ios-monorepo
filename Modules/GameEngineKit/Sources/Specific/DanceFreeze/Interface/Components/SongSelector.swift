@@ -21,6 +21,7 @@ private let kAvailableSongs: [SongModel] = [
 ]
 
 struct SongSelector: View {
+    @EnvironmentObject private var viewModel: DanceFreezeViewModel
     @State private var selectedSong: SongModel = kAvailableSongs.first!
 
     let columns = [
@@ -43,6 +44,7 @@ struct SongSelector: View {
                     ForEach(kAvailableSongs, id: \.self) { song in
                         Button {
                             selectedSong = song
+                            viewModel.setSong(song: selectedSong)
                         } label: {
                             HStack {
                                 Image(systemName: song == selectedSong ? "checkmark.circle.fill" : "circle")
@@ -64,5 +66,8 @@ struct SongSelector: View {
         .background(.white)
         .foregroundColor(DesignKitAsset.Colors.lekaDarkGray.swiftUIColor)
         .clipShape(RoundedRectangle(cornerRadius: 30))
+        .onAppear {
+            viewModel.setSong(song: kAvailableSongs[0])
+        }
     }
 }
