@@ -12,15 +12,31 @@ enum DanceFreezeStage {
 
 public struct DanceFreezeView: View {
     @State private var mode = DanceFreezeStage.waitingForSelection
+    @ObservedObject private var viewModel: DanceFreezeViewModel
+
+    public init(gameplay: GameplayPlayMusic) {
+        self.viewModel = DanceFreezeViewModel(gameplay: gameplay)
+    }
 
     public var body: some View {
+        NavigationStack {
             switch mode {
                 case .waitingForSelection:
                     DanceFreezeLauncher(mode: $mode)
                         .alertWhenRobotIsNeeded()
                 case .automaticMode:
                     DanceFreezePlayer(isAuto: true)
+                        .onDisappear {
+                            viewModel.setSong(song: SongModel(name: "", file: ""))
+                        }
                 case .manualMode:
                     DanceFreezePlayer(isAuto: false)
+                        .onDisappear {
+                            viewModel.setSong(song: SongModel(name: "", file: ""))
+                        }
+            }
+        }
+        .navigationViewStyle(StackNavigationViewStyle())
+        .environmentObject(viewModel)
     }
 }
