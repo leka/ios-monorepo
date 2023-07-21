@@ -94,14 +94,19 @@ public class RobotPeripheral {
     public func send(_ data: Data, forCharacteristic characteristic: WriteOnlyCharacteristic) {
         peripheral.writeValue(
             data,
-            writeType: .withoutResponse,
+            writeType: .withResponse,
             forCharacteristic: characteristic.characteristicUUID,
             inService: characteristic.serviceUUID
         )
         .receive(on: DispatchQueue.main)
         .sink(
-            receiveCompletion: { _ in
-                characteristic.onWrite?()
+            receiveCompletion: { completion in
+                switch completion {
+                    case .finished:
+                        characteristic.onWrite?()
+                    case .failure(let error):
+                        print("💥 ERROR: \(error)")
+                }
             },
             receiveValue: { _ in
                 // nothing to do
