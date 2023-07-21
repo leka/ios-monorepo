@@ -6,18 +6,20 @@ import Combine
 import SwiftUI
 
 public class DanceFreezeViewModel: Identifiable, ObservableObject {
-    public let name = "Dance Freeze"
-    private var gameplay: GameplayPlayMusic
+    private var gameplay: DanceFreezeGameplay
 
-    @Published public var progress: CGFloat = 0.0
-    @Published public var isFinished = false
+    @Published public var progress: CGFloat
+    @Published public var state: GameplayState
 
     private var cancellables: Set<AnyCancellable> = []
 
-    public init(gameplay: GameplayPlayMusic) {
+    public init(gameplay: DanceFreezeGameplay) {
         self.gameplay = gameplay
 
-        self.gameplay.progressPublisher
+        self.progress = self.gameplay.progress
+        self.state = self.gameplay.state
+
+        self.gameplay.$progress
             .receive(on: DispatchQueue.main)
             .sink { [weak self] in
                 guard let self = self else { return }
@@ -25,11 +27,11 @@ public class DanceFreezeViewModel: Identifiable, ObservableObject {
             }
             .store(in: &cancellables)
 
-        self.gameplay.isFinishedPublisher
+        self.gameplay.$state
             .receive(on: DispatchQueue.main)
             .sink { [weak self] in
                 guard let self = self else { return }
-                self.isFinished = $0
+                self.state = $0
             }
             .store(in: &cancellables)
     }

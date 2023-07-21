@@ -6,23 +6,19 @@ import AVFAudio
 import Combine
 import SwiftUI
 
-public class GameplayPlayMusic: NSObject, AVAudioPlayerDelegate {
-    public let name = "Play music"
+public class DanceFreezeGameplay: NSObject, AVAudioPlayerDelegate {
     @Published var audioPlayer: AVAudioPlayer!
-    @Published private var isPlaying = false
+    @Published private var audioPlaying = false
     @Published public var progress: CGFloat = 0.0
-    @Published public var isFinished: Bool = false
-
-    public var progressPublisher: Published<CGFloat>.Publisher { $progress }
-    public var isFinishedPublisher: Published<Bool>.Publisher { $isFinished }
+    @Published public var state: GameplayState = .idle
 
     func process() {
-        if isPlaying {
+        if audioPlaying {
             audioPlayer.pause()
-            isPlaying.toggle()
+            audioPlaying.toggle()
         } else {
             audioPlayer.play()
-            isPlaying.toggle()
+            audioPlaying.toggle()
         }
     }
 

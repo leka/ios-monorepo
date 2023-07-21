@@ -6,7 +6,7 @@ import GameEngineKit
 import SwiftUI
 
 struct DanceFreezeActivity: View {
-    let gameplay = GameplayPlayMusic()
+    let gameplay = DanceFreezeGameplay()
 
     var body: some View {
         DanceFreezeView(gameplay: gameplay)

@@ -14,7 +14,7 @@ public struct DanceFreezeView: View {
     @State private var mode = DanceFreezeStage.waitingForSelection
     @ObservedObject private var viewModel: DanceFreezeViewModel
 
-    public init(gameplay: GameplayPlayMusic) {
+    public init(gameplay: DanceFreezeGameplay) {
         self.viewModel = DanceFreezeViewModel(gameplay: gameplay)
     }
 
