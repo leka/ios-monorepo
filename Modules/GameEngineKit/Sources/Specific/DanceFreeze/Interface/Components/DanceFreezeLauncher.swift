@@ -31,7 +31,7 @@ struct DanceFreezeLauncher: View {
     var body: some View {
         VStack(spacing: 100) {
             HStack(spacing: 0) {
-                Image("danceFreeze")
+                Image(GameEngineKitAsset.Assets.danceFreeze.name)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .padding(.trailing, 50)
