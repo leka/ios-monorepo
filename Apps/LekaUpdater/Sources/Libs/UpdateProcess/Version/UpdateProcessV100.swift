@@ -146,6 +146,8 @@ private class StateSendingFile: GKState, StateEventProcessor {
 
 private class StateApplyingUpdate: GKState, StateEventProcessor {
 
+    private var cancellables: Set<AnyCancellable> = []
+
     private var firmware: FirmwareManager
     private var robot: RobotPeripheral?
 
@@ -159,10 +161,15 @@ private class StateApplyingUpdate: GKState, StateEventProcessor {
     }
 
     override func didEnter(from previousState: GKState?) {
+        registerDidDisconnect()
+
         setMajorMinorRevision()
         applyUpdate()
 
-        process(event: .robotDisconnected)  // TODO: remove when todo above is done
+    }
+
+    override func willExit(to nextState: GKState) {
+        cancellables.removeAll()
     }
 
     func process(event: UpdateEvent) {
@@ -172,6 +179,15 @@ private class StateApplyingUpdate: GKState, StateEventProcessor {
             default:
                 return
         }
+    }
+
+    private func registerDidDisconnect() {
+        globalBleManager.didDisconnect
+            .receive(on: DispatchQueue.main)
+            .sink {
+                self.process(event: .robotDisconnected)
+            }
+            .store(in: &cancellables)
     }
 
     private func setMajorMinorRevision() {
