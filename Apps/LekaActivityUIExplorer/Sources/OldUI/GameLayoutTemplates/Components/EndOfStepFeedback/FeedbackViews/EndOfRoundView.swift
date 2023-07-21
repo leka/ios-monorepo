@@ -18,7 +18,7 @@ struct EndOfRoundView: View {
     var body: some View {
         ZStack {
             LottieView(
-                name: gameEngine.percentOfSuccess >= 80 ? "bravo" : "tryAgain", play: $gameEngine.showEndAnimation
+                name: gameEngine.percentOfSuccess >= 80 ? "activity_end-success" : "activity_end-try_again", play: $gameEngine.showEndAnimation
             )
             .onAppear {
                 // Delayed to avoid artifacts on animation... SwiftUI bug

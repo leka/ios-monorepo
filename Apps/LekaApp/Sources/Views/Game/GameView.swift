@@ -111,7 +111,7 @@ struct GameView: View {
     private var cheerScreen: some View {
         ZStack {
             LottieView(
-                name: activityVM.percentOfSuccess >= 80 ? "bravo" : "tryAgain", play: $activityVM.showEndAnimation
+                name: activityVM.percentOfSuccess >= 80 ? "activity_end-success" : "activity_end-try_again", play: $activityVM.showEndAnimation
             )
             .onAppear {
                 // Delayed to avoid artifacts on animation... SwiftUI bug
