@@ -27,3 +27,12 @@ struct HiddenView: View {
         .clipShape(RoundedRectangle(cornerRadius: 20))
     }
 }
+
+struct HiddenView_Previews:
+    PreviewProvider
+{
+    static var previews: some View {
+        HiddenView()
+            .previewInterfaceOrientation(.landscapeLeft)
+    }
+}

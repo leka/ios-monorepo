@@ -46,3 +46,12 @@ struct HideAndSeekLauncher: View {
         .alertWhenRobotIsNeeded()
     }
 }
+
+struct HideAndSeekLauncher_Previews:
+    PreviewProvider
+{
+    static var previews: some View {
+        HideAndSeekLauncher(stage: .constant(.toHide))
+            .previewInterfaceOrientation(.landscapeLeft)
+    }
+}

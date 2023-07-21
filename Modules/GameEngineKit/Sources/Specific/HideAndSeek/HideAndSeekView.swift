@@ -25,3 +25,12 @@ public struct HideAndSeekView: View {
         }
     }
 }
+
+struct HideAndSeekView_Previews:
+    PreviewProvider
+{
+    static var previews: some View {
+        HideAndSeekView()
+            .previewInterfaceOrientation(.landscapeLeft)
+    }
+}
