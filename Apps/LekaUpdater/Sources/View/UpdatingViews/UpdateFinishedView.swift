@@ -70,8 +70,8 @@ struct UpdateFinishedContentView: View {
                 }
                 .padding(.trailing)
 
-                Button {
-                    // TODO: Go to connection page
+                NavigationLink {
+                    ConnectionView()
                 } label: {
                     Text("Mettre à jour un autre robot")
                         .padding(.horizontal)
