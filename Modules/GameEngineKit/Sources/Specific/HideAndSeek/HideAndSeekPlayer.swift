@@ -11,9 +11,9 @@ enum Stimulation: String, CaseIterable {
     public func icon() -> Image {
         switch self {
             case .light:
-                return Image("pictogram_leka_light")
+                return Image(GameEngineKitAsset.Assets.pictogramLekaLight.name)
             case .motion:
-                return Image("pictogram_leka_motion")
+                return Image(GameEngineKitAsset.Assets.pictogramLekaMotion.name)
         }
     }
 }
