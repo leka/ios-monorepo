@@ -6,6 +6,8 @@ import DesignKit
 import SwiftUI
 
 struct RobotUpdateAvailableView: View {
+    @EnvironmentObject var coordinator: NavigationCoordinator
+
     @ObservedObject private var robot: RobotPeripheralViewModel
     @StateObject private var requirementsViewModel: RequirementsViewModel
 

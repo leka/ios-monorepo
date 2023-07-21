@@ -6,6 +6,8 @@ import DesignKit
 import SwiftUI
 
 struct UpdateStatusView: View {
+    @EnvironmentObject var coordinator: NavigationCoordinator
+
     @StateObject private var viewModel: UpdateStatusViewModel
 
     init(robot: RobotPeripheralViewModel) {
@@ -60,7 +62,10 @@ struct UpdateStatusView: View {
 
         }
         .foregroundColor(DesignKitAsset.Colors.darkGray.swiftUIColor)
-        .onAppear(perform: viewModel.startUpdate)
+        .onAppear {
+            coordinator.path.append("UpdatingView")
+            viewModel.startUpdate()
+        }
         .navigationBarBackButtonHidden()
         .toolbar {
             ToolbarItem(placement: .principal) {

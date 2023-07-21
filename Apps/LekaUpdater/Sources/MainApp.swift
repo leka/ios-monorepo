@@ -10,13 +10,15 @@ var globalBleManager = BLEManager.live()
 
 @main
 struct LekaUpdaterApp: App {
+    @StateObject var coordinator = NavigationCoordinator()
     var firmware = FirmwareManager()
 
     var body: some Scene {
         WindowGroup {
-            NavigationStack {
+            NavigationStack(path: $coordinator.path) {
                 ConnectionView()
             }
+            .environmentObject(coordinator)
             .environmentObject(firmware)
         }
     }

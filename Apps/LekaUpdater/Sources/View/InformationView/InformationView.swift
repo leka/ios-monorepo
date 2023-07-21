@@ -6,6 +6,7 @@ import DesignKit
 import SwiftUI
 
 struct InformationView: View {
+    @EnvironmentObject var coordinator: NavigationCoordinator
     @EnvironmentObject var firmware: FirmwareManager
     @EnvironmentObject var robot: RobotPeripheralViewModel
 
@@ -93,6 +94,7 @@ struct InformationView: View {
         }
         .foregroundColor(DesignKitAsset.Colors.darkGray.swiftUIColor)
         .onAppear {
+            coordinator.path.append("InformationView")
             robot.readReadOnlyCharacteristics()
             robot.subscribeToCharacteristicsNotifications()
         }
