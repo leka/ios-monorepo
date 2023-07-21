@@ -10,5 +10,5 @@ let project = Project.module(
     name: "DesignKit",
     platform: .iOS,
     dependencies: [
-        // no deps
+		.external(name: "Lottie"),
     ])
