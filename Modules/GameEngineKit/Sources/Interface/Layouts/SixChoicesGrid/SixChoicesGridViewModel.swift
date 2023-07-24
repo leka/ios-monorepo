@@ -9,7 +9,7 @@ public class SixChoicesGridViewModel: Identifiable, ObservableObject {
     public var gameplay: any GameplayProtocol
 
     @Published public var choices: [ChoiceViewModel]
-    @Published public var isFinished = false
+    @Published public var state: GameplayState
 
     private var cancellables: Set<AnyCancellable> = []
 
@@ -17,6 +17,7 @@ public class SixChoicesGridViewModel: Identifiable, ObservableObject {
         self.gameplay = gameplay
         guard self.gameplay.choices.count == 6 else { fatalError("Wrong size of array") }
         self.choices = self.gameplay.choices
+        self.state = self.gameplay.state
         self.gameplay.choicesPublisher
             .receive(on: DispatchQueue.main)
             .sink { [weak self] in
@@ -25,11 +26,11 @@ public class SixChoicesGridViewModel: Identifiable, ObservableObject {
             }
             .store(in: &cancellables)
 
-        self.gameplay.isFinishedPublisher
+        self.gameplay.statePublisher
             .receive(on: DispatchQueue.main)
             .sink { [weak self] in
                 guard let self = self else { return }
-                self.isFinished = $0
+                self.state = $0
             }
             .store(in: &cancellables)
     }

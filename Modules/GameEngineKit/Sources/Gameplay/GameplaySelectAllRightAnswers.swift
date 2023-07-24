@@ -7,15 +7,16 @@ import Foundation
 
 public class GameplaySelectAllRightAnswers: GameplayProtocol {
     @Published public var choices: [ChoiceViewModel]
-    @Published public var isFinished: Bool = false
+    @Published public var state: GameplayState = .idle
+
+    public var choicesPublisher: Published<[ChoiceViewModel]>.Publisher { $choices }
+    public var statePublisher: Published<GameplayState>.Publisher { $state }
 
     private var rightAnswersGiven: [ChoiceViewModel] = []
 
-    public var choicesPublisher: Published<[ChoiceViewModel]>.Publisher { $choices }
-    public var isFinishedPublisher: Published<Bool>.Publisher { $isFinished }
-
     public init(choices: [ChoiceViewModel]) {
         self.choices = choices
+        self.state = .playing
     }
 
     public func process(choice: ChoiceViewModel) {
@@ -46,6 +47,8 @@ public class GameplaySelectAllRightAnswers: GameplayProtocol {
                 await resetAllRightChoicesStatus()
             }
             rightAnswersGiven.removeAll()
+            self.state = .finished
+            // Run reinforcers and lottie animation
         }
     }
 

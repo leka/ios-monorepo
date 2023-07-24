@@ -7,13 +7,14 @@ import Foundation
 
 public class GameplaySelectTheRightAnswer: GameplayProtocol {
     @Published public var choices: [ChoiceViewModel]
-    @Published public var isFinished: Bool = false
+    @Published public var state: GameplayState = .idle
 
     public var choicesPublisher: Published<[ChoiceViewModel]>.Publisher { $choices }
-    public var isFinishedPublisher: Published<Bool>.Publisher { $isFinished }
+    public var statePublisher: Published<GameplayState>.Publisher { $state }
 
     public init(choices: [ChoiceViewModel]) {
         self.choices = choices
+        self.state = .playing
     }
 
     public func process(choice: ChoiceViewModel) {
@@ -23,7 +24,8 @@ public class GameplaySelectTheRightAnswer: GameplayProtocol {
                 Task {
                     await resetChoicesStatus(index: index)
                 }
-                self.isFinished = true
+                self.state = .finished
+                // Run reinforcers and lottie animation
             }
         } else {
             if let index = choices.firstIndex(where: { $0.id == choice.id }) {
