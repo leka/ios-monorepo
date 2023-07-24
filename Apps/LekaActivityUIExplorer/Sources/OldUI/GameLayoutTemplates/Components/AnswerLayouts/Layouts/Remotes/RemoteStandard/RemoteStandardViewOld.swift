@@ -43,7 +43,7 @@ struct RadialLayout: Layout {
     }
 }
 
-struct RemoteStandardView: View {
+struct RemoteStandardViewOld: View {
     @State private var displayMode = DisplayMode.fullBelt
 
     var body: some View {

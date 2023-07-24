@@ -110,7 +110,7 @@ struct InteractionsView: View {
     private var otherInterfaces: some View {
         switch gameEngine.interface {
             case .remoteStandard:
-                RemoteStandardView()
+                RemoteStandardViewOld()
             case .remoteArrow:
                 RemoteArrowView()
             case .danceFreeze:
