@@ -28,9 +28,8 @@ public class GameplaySelectAllRightAnswers: GameplayProtocol {
         } else {
             if let index = choices.firstIndex(where: { $0.id == choice.id }) {
                 self.choices[index].status = .playingWrongAnimation
-
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
-                    self.choices[index].status = .notSelected
+                Task {
+                    await resetChoicesStatus(index: index)
                 }
             }
         }
@@ -43,14 +42,25 @@ public class GameplaySelectAllRightAnswers: GameplayProtocol {
             .sorted().map({ $0.id })
 
         if rightAnswersGivenID == rightAnswersID {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                for choice in self.choices.filter({ $0.status == .playingRightAnimation }) {
-                    guard let index = self.choices.firstIndex(where: { $0.id == choice.id }) else { return }
-                    self.choices[index].status = .notSelected
-                }
+            Task {
+                await resetAllRightChoicesStatus()
             }
             rightAnswersGiven.removeAll()
-            self.isFinished = true
+        }
+    }
+
+    public func resetChoicesStatus(index: Int) async {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+            self.choices[index].status = .notSelected
+        }
+    }
+
+    public func resetAllRightChoicesStatus() async {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            for choice in self.choices.filter({ $0.status == .playingRightAnimation }) {
+                guard let index = self.choices.firstIndex(where: { $0.id == choice.id }) else { return }
+                self.choices[index].status = .notSelected
+            }
         }
     }
 }
