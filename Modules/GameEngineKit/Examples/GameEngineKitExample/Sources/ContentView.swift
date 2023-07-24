@@ -17,19 +17,17 @@ struct ContentView: View {
             verticalSpacing: 30
         ) {
             GridRow {
-                ForEach(threeInlineGameplay, id: \.name) { gameplay in
+                ForEach(0..<3) { index in
                     NavigationLink {
-                        Text(gameplay.name)
-                            .font(.title)
 
-                        ThreeChoicesInlineView(gameplay: gameplay)
+                        ThreeChoicesInlineView(gameplay: threeInlineGameplay[index])
                     } label: {
                         VStack {
                             Text("Type d'interfaces : \n Three Choices Inline")
                                 .font(.title2)
                                 .foregroundColor(.black)
                                 .padding(5)
-                            Text("Gameplay : \n \(gameplay.name)")
+                            Text("Gameplay : \(index)")
                                 .font(.title2)
                                 .foregroundColor(.black)
                                 .padding(5)
@@ -46,19 +44,17 @@ struct ContentView: View {
             }
 
             GridRow {
-                ForEach(sixGridGameplay, id: \.name) { gameplay in
+                ForEach(0..<3) { index in
                     NavigationLink {
-                        Text(gameplay.name)
-                            .font(.title)
 
-                        SixChoicesGridView(gameplay: gameplay)
+                        SixChoicesGridView(gameplay: sixGridGameplay[index])
                     } label: {
                         VStack {
                             Text("Type d'interfaces : \n Six Choices Grid")
                                 .font(.title2)
                                 .foregroundColor(.black)
                                 .padding(5)
-                            Text("Gameplay : \n \(gameplay.name)")
+                            Text("Gameplay : \(index)")
                                 .font(.title2)
                                 .foregroundColor(.black)
                                 .padding(5)
