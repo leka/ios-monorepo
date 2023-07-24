@@ -112,7 +112,7 @@ struct InteractionsView: View {
             case .remoteStandard:
                 RemoteStandardViewOld()
             case .remoteArrow:
-                RemoteArrowView()
+                RemoteArrowViewOld()
             case .danceFreeze:
                 DanceFreezeLauncher()
             case .hideAndSeek:
