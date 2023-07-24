@@ -35,6 +35,8 @@ public class SixChoicesGridViewModel: Identifiable, ObservableObject {
     }
 
     public func onChoiceTapped(choice: ChoiceViewModel) {
-        gameplay.process(choice: choice)
+        Task {
+            await gameplay.process(choice: choice)
+        }
     }
 }

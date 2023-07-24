@@ -16,26 +16,25 @@ public class GameplaySelectTheRightAnswer: GameplayProtocol {
         self.choices = choices
     }
 
-    public func process(choice: ChoiceViewModel) {
+    public func process(choice: ChoiceViewModel) async {
         if choice.rightAnswer {
             if let index = choices.firstIndex(where: { $0.id == choice.id }) {
                 self.choices[index].status = .playingRightAnimation
-
-                // TO DO (@hugo) asyncAwait
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                    self.choices[index].status = .notSelected
-                }
+                await resetChoicesStatus(index: index)
                 self.isFinished = true
+                // Run reinforcers and lottie animation
             }
         } else {
             if let index = choices.firstIndex(where: { $0.id == choice.id }) {
                 self.choices[index].status = .playingWrongAnimation
-
-                // TO DO (@hugo) asyncAwait
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
-                    self.choices[index].status = .notSelected
-                }
+                await resetChoicesStatus(index: index)
             }
+        }
+    }
+
+    public func resetChoicesStatus(index: Int) async {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            self.choices[index].status = .notSelected
         }
     }
 }

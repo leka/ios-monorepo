@@ -12,5 +12,5 @@ public protocol GameplayProtocol: ObservableObject {
     var choicesPublisher: Published<[ChoiceViewModel]>.Publisher { get }
     var isFinishedPublisher: Published<Bool>.Publisher { get }
 
-    func process(choice: ChoiceViewModel)
+    func process(choice: ChoiceViewModel) async
 }
