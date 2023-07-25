@@ -47,7 +47,7 @@ public struct RemoteStandardView: View {
     @State private var displayMode = DisplayMode.fullBelt
 
 	public init() {
-		// Nothing to do 
+		// Nothing to do
 	}
 
 	public var body: some View {

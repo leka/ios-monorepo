@@ -27,7 +27,7 @@ struct CircleLayout: Layout {
     }
 }
 
-struct RemoteArrowView: View {
+struct RemoteArrowViewOld: View {
     var body: some View {
         CircleLayout {
             RemoteArrowButtonView(image: "arrow.up", color: .blue)
@@ -40,6 +40,6 @@ struct RemoteArrowView: View {
 
 struct RemoteArrowView_Previews: PreviewProvider {
     static var previews: some View {
-        RemoteArrowView()
+        RemoteArrowViewOld()
     }
 }

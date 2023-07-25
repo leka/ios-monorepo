@@ -30,4 +30,9 @@ let kListOfAvailablesActivities: [ActivityModel] = [
         instructions: "Contrôle Leka avec la télécommande et fais le changer de couleur",
         view: AnyView(RemoteStandardActivity())
     ),
+    ActivityModel(
+        title: "Remote Arrow",
+        instructions: "Contrôle Leka avec la télécommande et fais le changer de couleur",
+        view: AnyView(RemoteArrowActivity())
+    ),
 ]
