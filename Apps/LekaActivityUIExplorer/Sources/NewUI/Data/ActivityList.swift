@@ -25,4 +25,9 @@ let kListOfAvailablesActivities: [ActivityModel] = [
         instructions: "Cache le robot quelque part dans la pièce. Suis ensuite les instructions. ",
         view: AnyView(HideAndSeekActivity())
     ),
+    ActivityModel(
+        title: "Remote Standard",
+        instructions: "Contrôle Leka avec la télécommande et fais le changer de couleur",
+        view: AnyView(RemoteStandardActivity())
+    ),
 ]
