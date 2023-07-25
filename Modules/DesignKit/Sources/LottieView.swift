@@ -5,10 +5,10 @@
 import Lottie
 import SwiftUI
 
-struct LottieView: UIViewRepresentable {
-	typealias UIViewType = UIView
+public struct LottieView: UIViewRepresentable {
+	public typealias UIViewType = UIView
 
-	func makeCoordinator() -> Coordinator {
+	public func makeCoordinator() -> Coordinator {
 		Coordinator(self)
 	}
 
@@ -39,7 +39,7 @@ struct LottieView: UIViewRepresentable {
 
 	var animationView = LottieAnimationView()
 
-	class Coordinator: NSObject {
+	public class Coordinator: NSObject {
 		var parent: LottieView
 
 		init(_ animationView: LottieView) {
@@ -48,7 +48,7 @@ struct LottieView: UIViewRepresentable {
 		}
 	}
 
-	func makeUIView(context: UIViewRepresentableContext<LottieView>) -> UIView {
+	public func makeUIView(context: UIViewRepresentableContext<LottieView>) -> UIView {
 		let view = UIView()
 
 		animationView.animation = LottieAnimation.named(name)
@@ -66,7 +66,7 @@ struct LottieView: UIViewRepresentable {
 		return view
 	}
 
-	func updateUIView(_ uiView: UIView, context: UIViewRepresentableContext<LottieView>) {
+	public func updateUIView(_ uiView: UIView, context: UIViewRepresentableContext<LottieView>) {
 		if play {
 			if reverse {
 				context.coordinator.parent.animationView.play(fromProgress: 0.0, toProgress: 1.0, loopMode: .none) {
