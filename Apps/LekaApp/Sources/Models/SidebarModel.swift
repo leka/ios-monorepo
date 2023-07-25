@@ -6,14 +6,14 @@ import SwiftUI
 
 // Navigation Sets
 enum SidebarDestinations: Int, Identifiable, CaseIterable {
-    case curriculums, activities, commands, stories, teachers, users
+    case curriculums, activities, commands
 
     var id: Self { self }
 }
 
-// Sidebar Sections
+// Sidebar Sections // useless
 enum NavSections: Int, Identifiable, CaseIterable {
-    case educ, followUp
+    case educ
 
     var id: Self { self }
 }
@@ -24,7 +24,6 @@ struct SectionLabel: Identifiable, Hashable {
     let destination: SidebarDestinations
     let icon: String
     let label: String
-    let has3Columns: Bool
 }
 
 struct ListModel: Identifiable, Hashable {

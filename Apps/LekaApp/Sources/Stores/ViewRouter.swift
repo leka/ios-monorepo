@@ -6,7 +6,6 @@ import SwiftUI
 
 enum Page {
     case welcome
-    //    case identificationPaths
     case profiles
     case bots
     case home
@@ -16,8 +15,6 @@ enum Page {
 
 class ViewRouter: ObservableObject {
 
-    // if !settings.userIsConnected { .welcome else .home
-    //
     @Published var currentPage: Page = .welcome
 
     // NavigationStacks Triggers
