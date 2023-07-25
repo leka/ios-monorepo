@@ -6,6 +6,7 @@ import DesignKit
 import SwiftUI
 
 struct ConnectionView: View {
+    @EnvironmentObject var router: ViewRouter
     @EnvironmentObject var firmware: FirmwareManager
 
     @StateObject private var viewModel = ConnectionViewModel()
@@ -33,9 +34,8 @@ struct ConnectionView: View {
             }
 
             ToolbarItem(placement: .navigationBarTrailing) {
-                NavigationLink {
-                    InformationView()
-                        .environmentObject(viewModel.connectedRobot)
+                Button {
+                    router.currentPage = .information
                 } label: {
                     HStack {
                         Text("Continuer")
@@ -43,6 +43,7 @@ struct ConnectionView: View {
                     }
                 }
                 .disabled(viewModel.continueButtonDisabled)
+                .environmentObject(viewModel.connectedRobot)
             }
         }
     }
