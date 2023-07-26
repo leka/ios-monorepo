@@ -14,10 +14,8 @@ struct LekaUpdaterApp: App {
 
     var body: some Scene {
         WindowGroup {
-            NavigationStack {
-                ConnectionView()
-                    .environmentObject(firmware)
-            }
+            ContentView()
+                .environmentObject(firmware)
         }
     }
 }

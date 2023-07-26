@@ -5,8 +5,16 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var connectedRobot: RobotPeripheralViewModel?
+    @Binding var isRobotConnected: Bool {
+        connectedRobot != nil
+    }
+    
     var body: some View {
-        Text("LekaUpdater")
+        InformationView()
+            .fullScreenCover(isPresented: $isRobotConnected) {
+                ConnectionView()
+            }
     }
 }
 
