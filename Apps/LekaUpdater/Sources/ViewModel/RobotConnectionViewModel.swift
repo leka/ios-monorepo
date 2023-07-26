@@ -36,7 +36,7 @@ public class RobotConnectionViewModel: ObservableObject {
 
     // MARK: - Private variables
 
-    private let bleManager = BLEManager.live()
+    private let bleManager = globalBleManager
     private var cancellables: Set<AnyCancellable> = []
 
     // MARK: - Public functions
