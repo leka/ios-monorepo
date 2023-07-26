@@ -6,15 +6,18 @@ import Foundation
 import SwiftUI
 
 class SidebarViewModel: ObservableObject {
-    static let educContentSectionLabels: [SectionLabel] = [  // Clean-ups all of this logic, enum instead for destinations
+
+    // sidebar utils
+    @Published var sidebarVisibility = NavigationSplitViewVisibility.all
+    @Published var showSettings: Bool = false
+
+    // Educative Content section data
+    static let educContentSectionLabels: [SectionLabel] = [
         SectionLabel(destination: .curriculums, icon: "curriculums", label: "Parcours"),
         SectionLabel(destination: .activities, icon: "activities", label: "Activités"),
         SectionLabel(destination: .commands, icon: "commands", label: "Commandes"),
     ]
-
     @Published var educContentList = ListModel(title: "Contenu Éducatif", sections: educContentSectionLabels)
-    @Published var sidebarVisibility = NavigationSplitViewVisibility.all
-    @Published var showSettings: Bool = false
 
     // Overall Navigation from the sidebar
     @Published var currentView: SidebarDestinations = .curriculums
@@ -35,12 +38,7 @@ class SidebarViewModel: ObservableObject {
         }
     }
 
-    // Currently watched profiles in FollowUp (this selection is lost when leaving)
-    // Simulate some change within the data when selected profile is changing
-    //    @Published var currentlySelectedTeacherProfile = UUID()
-    //    @Published var currentlySelectedUserProfile = UUID()
-
-    // Info Tiles
+    // Info Tiles triggers
     @Published var showInfoCurriculums: Bool = true
     @Published var showInfoActivities: Bool = true
     @Published var showInfoCommands: Bool = true

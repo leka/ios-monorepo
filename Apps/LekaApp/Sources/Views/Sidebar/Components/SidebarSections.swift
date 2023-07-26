@@ -11,11 +11,9 @@ struct SidebarSections: View {
     @EnvironmentObject var metrics: UIMetrics
 
     var body: some View {
-        VStack(spacing: 20) {
-            section(content: sidebar.educContentList)
-        }
-        .padding(.horizontal)
-        .tint(.accentColor)
+        section(content: sidebar.educContentList)
+            .padding(.horizontal)
+            .tint(.accentColor)
     }
 
     func sectionItem(_ item: SectionLabel) -> some View {
@@ -46,17 +44,20 @@ struct SidebarSections: View {
     }
 
     func section(content: ListModel) -> some View {
-        DisclosureGroup(isExpanded: .constant(false)) {
+        Section {
             ForEach(content.sections.indices, id: \.self) { item in
                 NavigationLink(destination: sidebar.allSidebarDestinationViews) {
                     sectionItem(content.sections[item])
                 }
                 .isDetailLink(true)
             }
-        } label: {
-            Text(content.title)
-                .font(metrics.semi20)
-                .padding(.vertical, 10)
+        } header: {
+            VStack(alignment: .leading, spacing: 6) {
+                Text(content.title)
+                    .font(metrics.semi20)
+                    .padding(.vertical, 10)
+                Divider()
+            }
         }
     }
 }
