@@ -93,8 +93,8 @@ struct UserSet_AvatarCell: View {
     private func selectionIndicator(id: UUID) -> some View {
         // TODO(@ladislas): review logic in the future
         let lineWidth: CGFloat = {
-            guard company.selectedProfiles[.teacher] == id else {
-                guard company.profileIsCurrent(.teacher, id: id) else {
+            guard company.selectedProfiles[.user] == id else {
+                guard company.profileIsCurrent(.user, id: id) else {
                     return 0
                 }
                 return 10
@@ -103,7 +103,7 @@ struct UserSet_AvatarCell: View {
         }()
 
         let dash: [CGFloat] = {
-            guard company.profileIsCurrent(.teacher, id: id) else {
+            guard company.profileIsCurrent(.user, id: id) else {
                 return [10, 4]
             }
             return [10, 0]
