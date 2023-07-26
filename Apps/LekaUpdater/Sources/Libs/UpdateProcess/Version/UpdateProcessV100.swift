@@ -146,6 +146,8 @@ private class StateSendingFile: GKState, StateEventProcessor {
 
 private class StateApplyingUpdate: GKState, StateEventProcessor {
 
+    private var cancellables: Set<AnyCancellable> = []
+
     private var firmware: FirmwareManager
     private var robot: RobotPeripheral?
 
@@ -159,10 +161,15 @@ private class StateApplyingUpdate: GKState, StateEventProcessor {
     }
 
     override func didEnter(from previousState: GKState?) {
+        registerDidDisconnect()
+
         setMajorMinorRevision()
         applyUpdate()
 
-        process(event: .robotDisconnected)  // TODO: remove when todo above is done
+    }
+
+    override func willExit(to nextState: GKState) {
+        cancellables.removeAll()
     }
 
     func process(event: UpdateEvent) {
@@ -172,6 +179,15 @@ private class StateApplyingUpdate: GKState, StateEventProcessor {
             default:
                 return
         }
+    }
+
+    private func registerDidDisconnect() {
+        globalBleManager.didDisconnect
+            .receive(on: DispatchQueue.main)
+            .sink {
+                self.process(event: .robotDisconnected)
+            }
+            .store(in: &cancellables)
     }
 
     private func setMajorMinorRevision() {
@@ -217,18 +233,31 @@ private class StateApplyingUpdate: GKState, StateEventProcessor {
 
 private class StateWaitingForRobotToReboot: GKState, StateEventProcessor {
 
+    private var scanForRobotsTask: AnyCancellable?
+
+    private var firmware: FirmwareManager
+    private var robot: RobotPeripheral?
+
+    private var isRobotUpToDate: Bool = false
+
+    init(firmware: FirmwareManager, robot: RobotPeripheral?) {
+        self.firmware = firmware
+        self.robot = robot
+    }
+
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
         return stateClass is StateFinal.Type || stateClass is StateErrorRobotNotUpToDate.Type
     }
 
     override func didEnter(from previousState: GKState?) {
-        print("StateWaitingForRobotToReboot")  // TODO: remove when robotDisconnected implemented
-        process(event: .robotDetected)  // TODO: remove when todo above is done
+        registerScanForRobot()
+    }
+
+    override func willExit(to nextState: GKState) {
+        scanForRobotsTask?.cancel()
     }
 
     func process(event: UpdateEvent) {
-        let isRobotUpToDate = Bool.random()  // TODO: check robot is up to date
-
         switch event {
             case .robotDetected:
                 if isRobotUpToDate {
@@ -239,6 +268,25 @@ private class StateWaitingForRobotToReboot: GKState, StateEventProcessor {
             default:
                 return
         }
+    }
+
+    private func registerScanForRobot() {
+        scanForRobotsTask = globalBleManager.scanForRobots()
+            .receive(on: DispatchQueue.main)
+            .sink(
+                receiveCompletion: { _ in
+                    // nothing to do
+                },
+                receiveValue: { robotDiscoveryList in
+                    let robotDetected = robotDiscoveryList.first { robotDiscovery in
+                        robotDiscovery.robotPeripheral == self.robot
+                    }
+                    if robotDetected != nil {
+                        self.isRobotUpToDate = robotDetected?.advertisingData.osVersion == self.firmware.currentVersion
+
+                        self.process(event: .robotDetected)
+                    }
+                })
     }
 }
 
@@ -274,7 +322,7 @@ class UpdateProcessV100: UpdateProcessProtocol {
             StateLoadingUpdateFile(firmware: firmware),
             StateSendingFile(),
             StateApplyingUpdate(firmware: firmware, robot: robot),
-            StateWaitingForRobotToReboot(),
+            StateWaitingForRobotToReboot(firmware: firmware, robot: robot),
             StateSettingDestinationPath(firmware: firmware, robot: robot),
 
             StateFinal(),

@@ -4,7 +4,7 @@
 
 import CombineCoreBluetooth
 
-public class RobotPeripheral {
+public class RobotPeripheral: Equatable {
 
     // MARK: - Public variables
 
@@ -21,6 +21,10 @@ public class RobotPeripheral {
 
     public init(peripheral: Peripheral) {
         self.peripheral = peripheral
+    }
+
+    public static func == (lhs: RobotPeripheral, rhs: RobotPeripheral) -> Bool {
+        lhs.peripheral.id == rhs.peripheral.id
     }
 
     public func discoverAndListenForUpdates() {
