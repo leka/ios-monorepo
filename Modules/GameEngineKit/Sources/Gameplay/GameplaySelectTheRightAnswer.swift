@@ -6,7 +6,6 @@ import Combine
 import Foundation
 
 public class GameplaySelectTheRightAnswer: GameplayProtocol {
-    public let name = "Select The Right Answer"
     @Published public var choices: [ChoiceViewModel]
     @Published public var isFinished: Bool = false
 
