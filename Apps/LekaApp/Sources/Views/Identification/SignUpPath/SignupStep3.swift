@@ -9,7 +9,7 @@ struct SignupStep3: View {
     @EnvironmentObject var company: CompanyViewModel
     @EnvironmentObject var metrics: UIMetrics
 
-    private let data: TileData = .signup_step3
+    private let data: TileData = .signupStep2
     @State private var navigateToUserCreation: Bool = false
 
     var body: some View {
@@ -18,13 +18,13 @@ struct SignupStep3: View {
             tile
         }
         .edgesIgnoringSafeArea(.top)
+        .navigationDestination(isPresented: $navigateToUserCreation) {
+            CreateUserProfileView()
+        }
         .toolbar {
             ToolbarItem(placement: .principal) {
                 SignupNavigationTitle()
             }
-        }
-        .navigationDestination(isPresented: $navigateToUserCreation) {
-            CreateUserProfileView()
         }
     }
 

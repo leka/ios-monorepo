@@ -10,16 +10,11 @@ struct BotStore: View {
     @EnvironmentObject var metrics: UIMetrics
 
     @Binding var allBots: Int
-    @Binding var showNoBotTile: Bool
 
     var body: some View {
         Group {
             if allBots < 1 {
-                if showNoBotTile {
-                    NoBotTile()
-                } else {
-                    searchInvite
-                }
+                searchInvite
             } else if 1...3 ~= allBots {
                 HStack(spacing: 160) {
                     Spacer()

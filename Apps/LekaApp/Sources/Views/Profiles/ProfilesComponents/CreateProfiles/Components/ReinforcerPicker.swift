@@ -10,46 +10,50 @@ struct ReinforcerPicker: View {
     @EnvironmentObject var metrics: UIMetrics
 
     var body: some View {
-        VStack(spacing: 10) {
-            HStack {
-                Text("Choix du renforçateur")
-                    .font(metrics.reg17)
+        if company.editingProfile {
+            VStack(spacing: 10) {
+                HStack {
+                    Text("Choix du renforçateur")
+                        .font(metrics.reg17)
+                        .foregroundColor(.accentColor)
+                        .padding(.leading, 10)
+                    Spacer()
+                }
+                HStack {
+                    Text(  // swiftlint:disable:next line_length
+                        "Le renforçateur est un effet lumineux répétitif du robot que vous pourrez actionner pour récompenser le comportement de l'utilisateur. \nSi votre robot est connecté, vous pouvez tester les renforçateurs avant d'en choisir un."
+                    )
+                    .font(metrics.reg12)
                     .foregroundColor(.accentColor)
                     .padding(.leading, 10)
-                Spacer()
-            }
-            HStack {
-                Text(  // swiftlint:disable:next line_length
-                    "Le renforçateur est un effet lumineux répétitif du robot que vous pourrez actionner pour récompenser le comportement de l'utilisateur. \nSi votre robot est connecté, vous pouvez tester les renforçateurs avant d'en choisir un."
-                )
-                .font(metrics.reg12)
-                .foregroundColor(.accentColor)
-                .padding(.leading, 10)
-                Spacer()
-            }
-
-            // ReinforcerPicker
-            VStack(spacing: 4) {
-                HStack(spacing: 12) {
-                    ForEach(1...3, id: \.self) { item in
-                        reinforcerButton(item)
-                    }
+                    Spacer()
                 }
-                .padding(.horizontal, 10)
-                .frame(height: 114)
 
-                HStack(spacing: 12) {
-                    ForEach(4...5, id: \.self) { item in
-                        reinforcerButton(item)
+                // ReinforcerPicker
+                VStack(spacing: 4) {
+                    HStack(spacing: 12) {
+                        ForEach(1...3, id: \.self) { item in
+                            reinforcerButton(item)
+                        }
                     }
+                    .padding(.horizontal, 10)
+                    .frame(height: 114)
+
+                    HStack(spacing: 12) {
+                        ForEach(4...5, id: \.self) { item in
+                            reinforcerButton(item)
+                        }
+                    }
+                    .padding(.horizontal, 10)
+                    .frame(height: 114)
                 }
-                .padding(.horizontal, 10)
-                .frame(height: 114)
+                .frame(width: 410, height: 271, alignment: .center)
             }
-            .frame(width: 410, height: 271, alignment: .center)
+            .frame(width: 420)
+            .animation(.default, value: company.bufferUser.reinforcer)
+        } else {
+            EmptyView()
         }
-        .frame(width: 420)
-        .animation(.default, value: company.bufferUser.reinforcer)
     }
 
     func reinforcerButton(_ number: Int) -> some View {

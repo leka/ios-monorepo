@@ -9,7 +9,7 @@ struct SignupFinalStep: View {
     @EnvironmentObject var metrics: UIMetrics
     @EnvironmentObject var viewRouter: ViewRouter
 
-    private let data: TileData = .signup_finalStep
+    private let data: TileData = .signupFinalStep
 
     var body: some View {
         ZStack {
@@ -37,7 +37,6 @@ struct SignupFinalStep: View {
                     Text(data.content.message!)
                         .padding(.bottom, 10)
                     VStack(alignment: .leading, spacing: 8) {
-                        Text("✅ Vous connecter au robot")
                         Text("✅ Créer votre profil de professionnel")
                         Text("✅ Créer votre 1er profil de personne accompagnée")
                         Text("Vous allez maintenant pouvoir découvrir l'univers Leka et le contenu éducatif.")

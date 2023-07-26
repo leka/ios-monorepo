@@ -8,7 +8,7 @@ struct SignupStep2: View {
 
     @EnvironmentObject var metrics: UIMetrics
 
-    private let data: TileData = .signup_step2
+    private let data: TileData = .signupStep1
     @State private var navigateToTeacherCreation: Bool = false
 
     var body: some View {

@@ -41,14 +41,11 @@ struct ProfileSet_Teachers: View {
         .navigationDestination(isPresented: $navigateToTeacherCreation) {
             CreateTeacherProfileView()
         }
-        .sheet(
-            isPresented: $showEditProfileTeacher,
-            content: {
-                NavigationStack {
-                    CreateTeacherProfileView()
-                }
+        .sheet(isPresented: $showEditProfileTeacher) {
+            NavigationStack {
+                CreateTeacherProfileView()
             }
-        )
+        }
         .alert("Mode découverte", isPresented: $settings.showConnectInvite) {
             IdentificationIsNeededAlertLabel()
         } message: {

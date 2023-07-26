@@ -17,10 +17,9 @@ struct TileContent {
 }
 
 enum TileData: Int, CaseIterable, Hashable {
-    // swiftlint:disable identifier_name
-    case discovery, curriculums, activities, commands, stories, teacher, user, signup_step1, signup_step1_ble,
-        signup_step1_Final, signup_step2, signup_step3, signup_finalStep, noBot
-    // swiftlint:enable identifier_name
+
+    case discovery, curriculums, activities, commands
+    case signupBravo, signupStep1, signupStep2, signupFinalStep
 
     var id: Self { self }
 
@@ -59,75 +58,31 @@ enum TileData: Int, CaseIterable, Hashable {
                     message:
                         "Vous pouvez télécommander Leka, le faire tourner, lancer un renforçateur ou encore allumer ses leds dans la couleur souhaitée ! \nL'objectif des commandes est de vous permettre de créer votre propre activité avec l'utilisateur et d'entrer en interaction avec lui."
                 )
-            case .stories:
-                return TileContent(
-                    image: "stories",
-                    title: "Les histoires",
-                    subtitle: "Les histoires sont interactives !",
-                    message:
-                        "Vous allez pouvoir lire les aventures de Leka durant vos séances tout en intégrant des activités à réaliser au cours de l'histoire !"
-                )
-            case .teacher:
-                return TileContent(
-                    image: "accompanying",
-                    title: "Le suivi",
-                    subtitle: "Le suivi permet de garder en mémoire l'utilisation de Leka avec chaque profil.",
-                    message:
-                        "Le suivi se présente sous la forme d'un historique. Vous y trouverez l'ensemble des activités réalisées de la plus récente à la plus ancienne."
-                )
-            case .user:
-                return TileContent(
-                    image: "user",
-                    title: "Le suivi",
-                    subtitle: "Le suivi permet de garder en mémoire l'utilisation de Leka avec chaque profil.",
-                    message:
-                        "Le suivi se présente sous la forme d'un historique. Vous y trouverez l'ensemble des activités réalisées de la plus récente à la plus ancienne."
-                )
             // New company signup path
-            case .signup_step1:
+            case .signupBravo:
                 return TileContent(
                     image: "welcome",
                     title: "Félicitations ! 🎉 \nVous venez de créer votre compte Leka !",
                     message: "Nous allons maintenant découvrir l'application \nensemble. Vous êtes prêt ?",
                     CTALabel: "👉 C'est parti !")
-            case .signup_step1_ble:
-                return TileContent(
-                    image: "bluetooth_off",
-                    title: "ÉTAPE 1 :",
-                    message:
-                        "Pour commencer nous allons connecter votre \nLeka en Bluetooth Low Energy (BLE) à votre \niPad et à l'application.",
-                    CTALabel: "Lancer la connexion",
-                    pictoCTA: "bluetooth_picto")
-            case .signup_step1_Final:
-                return TileContent(
-                    image: "bluetooth_on",
-                    title: "ÉTAPE 1 :",
-                    message: "Bravo ! L'application, votre iPad et votre Leka \nsont maintenant connectés ! \n🤝",
-                    CTALabel: "Continuer")
-            case .signup_step2:
+            case .signupStep1:
                 return TileContent(
                     image: "accompagnant_picto",
-                    title: "ÉTAPE 2 :",
-                    message: "Nous allons maintenant créer votre profil accompagnant.",
+                    title: "ÉTAPE 1 :",
+                    message: "Nous allons créer votre profil accompagnant.",
                     CTALabel: "Créer")
-            case .signup_step3:
+            case .signupStep2:
                 return TileContent(
                     image: "user",
-                    title: "ÉTAPE 3 :",
+                    title: "ÉTAPE 2 :",
                     message:
                         "Nous allons maintenant créer votre premier \nprofil utilisateur (le profil d'une personne que \nvous accompagnez).",
                     CTALabel: "Créer")
-            case .signup_finalStep:
+            case .signupFinalStep:
                 return TileContent(
                     title: "🎉 Encore bravo ! 👏",
-                    message: "Vous avez réalisé ces 3 étapes avec brio :",
+                    message: "Vous avez réalisé ces 2 étapes avec brio :",
                     CTALabel: "Découvrir le contenu !")
-            // BotConnect View tile
-            case .noBot:
-                return TileContent(
-                    image: "no_bot_found",
-                    message: "Aucun robot n'a été trouvé. \nSouhaitez-vous passer cette étape ?",
-                    CTALabel: "👉 Passer")
         }
     }
 }

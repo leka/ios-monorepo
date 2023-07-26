@@ -8,8 +8,8 @@ struct SignupStep1: View {
 
     @EnvironmentObject var metrics: UIMetrics
 
-    private let data: TileData = .signup_step1
-    @State private var navigateToSignup1BLE: Bool = false
+    private let data: TileData = .signupBravo
+    @State private var navigateToSignup2: Bool = false
 
     var body: some View {
         ZStack {
@@ -17,8 +17,8 @@ struct SignupStep1: View {
             tile
         }
         .edgesIgnoringSafeArea(.top)
-        .navigationDestination(isPresented: $navigateToSignup1BLE) {
-            SignupStep1BLE()
+        .navigationDestination(isPresented: $navigateToSignup2) {
+            SignupStep2()
         }
         .toolbar {
             ToolbarItem(placement: .principal) {
@@ -67,7 +67,7 @@ struct SignupStep1: View {
     private var accessoryView: some View {
         Button(
             action: {
-                navigateToSignup1BLE.toggle()
+                navigateToSignup2.toggle()
             },
             label: {
                 Text(data.content.CTALabel!)
