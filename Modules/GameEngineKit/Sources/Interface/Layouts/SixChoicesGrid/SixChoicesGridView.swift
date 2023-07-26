@@ -42,11 +42,6 @@ public struct SixChoicesGridView: View {
                         )
                 }
             }
-
-            if viewModel.isFinished {
-                Text("Well done !")
-                    .font(.title)
-            }
         }
     }
 }
