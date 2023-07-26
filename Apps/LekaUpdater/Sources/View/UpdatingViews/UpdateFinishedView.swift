@@ -36,8 +36,6 @@ struct UpdateFinishedIllustration: View {
 }
 
 struct UpdateFinishedContentView: View {
-    @EnvironmentObject var coordinator: NavigationCoordinator
-
     @Environment(\.dismiss) var dismiss
 
     var body: some View {
@@ -54,7 +52,7 @@ struct UpdateFinishedContentView: View {
 
             HStack {
                 Button {
-                    coordinator.path.removeLast()
+                    dismiss()
                 } label: {
                     Text("Voir les infos de ce robot")
                         .padding(.horizontal)
@@ -72,8 +70,8 @@ struct UpdateFinishedContentView: View {
                 }
                 .padding(.trailing)
 
-                Button {
-                    coordinator.path.removeAll()
+                NavigationLink {
+                    ConnectionView()
                 } label: {
                     Text("Mettre à jour un autre robot")
                         .padding(.horizontal)
