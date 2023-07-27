@@ -15,27 +15,32 @@ struct DanceFreezePlayer: View {
     }
 
     var body: some View {
-        Button {
-            withAnimation {
-                isDancing.toggle()
+        VStack {
+            ContinuousProgressBar(progress: viewModel.progress)
+
+            Button {
+                withAnimation {
+                    isDancing.toggle()
+                }
+                viewModel.onDanceFreezeToggle()
+            } label: {
+                if isDancing {
+                    DanceView()
+                        .transition(.scale)
+                } else {
+                    FreezeView()
+                        .transition(.scale)
+                }
             }
-            viewModel.onDanceFreezeToggle()
-        } label: {
-            if isDancing {
-                DanceView()
-                    .transition(.scale)
-            } else {
-                FreezeView()
-                    .transition(.scale)
+            .disabled(isAuto)
+            .onAppear {
+                viewModel.onDanceFreezeToggle()
+                if isAuto {
+                    randomSwitch()
+                }
             }
         }
-        .disabled(isAuto)
-        .onAppear {
-            viewModel.onDanceFreezeToggle()
-            if isAuto {
-                randomSwitch()
-            }
-        }
+
     }
 
     private func randomSwitch() {
