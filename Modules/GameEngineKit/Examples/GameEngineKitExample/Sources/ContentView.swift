@@ -6,10 +6,17 @@ import GameEngineKit
 import SwiftUI
 
 struct ContentView: View {
-    let threeInlineGameplay = [
-        oneAnswerThreeInlineGameplay, allAnswersThreeInlineGameplay, someAnswersThreeInlineGameplay,
+    let threeChoicesViews = [
+        AnyView(OneAnswerThreeChoicesActivity()),
+        AnyView(AllAnswersThreeChoicesActivity()),
+        AnyView(SomeAnswersThreeChoicesActivity()),
     ]
-    let sixGridGameplay = [oneAnswerSixGridGameplay, allAnswersSixGridGameplay, someAnswersSixGridGameplay]
+
+    let sixChoicesViews = [
+        AnyView(OneAnswerSixChoicesActivity()),
+        AnyView(AllAnswersSixChoicesActivity()),
+        AnyView(SomeAnswersSixChoicesActivity()),
+    ]
 
     var body: some View {
         Grid(
@@ -19,8 +26,7 @@ struct ContentView: View {
             GridRow {
                 ForEach(0..<3) { index in
                     NavigationLink {
-
-                        ThreeChoicesInlineView(gameplay: threeInlineGameplay[index])
+                        threeChoicesViews[index]
                     } label: {
                         VStack {
                             Text("Type d'interfaces : \n Three Choices Inline")
@@ -46,8 +52,7 @@ struct ContentView: View {
             GridRow {
                 ForEach(0..<3) { index in
                     NavigationLink {
-
-                        SixChoicesGridView(gameplay: sixGridGameplay[index])
+                        sixChoicesViews[index]
                     } label: {
                         VStack {
                             Text("Type d'interfaces : \n Six Choices Grid")
