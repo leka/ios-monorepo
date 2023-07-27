@@ -5,7 +5,7 @@
 import BLEKit
 import Foundation
 
-public class RobotPeripheralViewModel: ObservableObject {
+public class RobotPeripheralViewModel: ObservableObject, Equatable {
     @Published var name: String
     @Published var serialNumber: String?
     @Published var battery: Int
@@ -108,6 +108,10 @@ public class RobotPeripheralViewModel: ObservableObject {
         }
 
         self.robotPeripheral?.readOnlyCharacteristics.insert(characteristic)
+    }
+
+    public static func == (lhs: RobotPeripheralViewModel, rhs: RobotPeripheralViewModel) -> Bool {
+        return lhs.robotPeripheral?.peripheral.id == rhs.robotPeripheral?.peripheral.id && lhs.name == rhs.name
     }
 
 }
