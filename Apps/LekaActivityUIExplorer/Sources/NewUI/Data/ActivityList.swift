@@ -26,6 +26,11 @@ let kListOfAvailablesActivities: [ActivityModel] = [
         view: AnyView(HideAndSeekActivity())
     ),
     ActivityModel(
+        title: "Dance Freeze",
+        instructions: "Danse avec Leka au rythme de la musique et faits la statue lorsqu’il s’arrête ",
+        view: AnyView(DanceFreezeActivity())
+    ),
+    ActivityModel(
         title: "Remote Standard",
         instructions: "Contrôle Leka avec la télécommande et fais le changer de couleur",
         view: AnyView(RemoteStandardActivity())
