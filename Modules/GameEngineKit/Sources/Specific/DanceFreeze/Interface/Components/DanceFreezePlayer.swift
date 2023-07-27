@@ -52,3 +52,12 @@ struct DanceFreezePlayer: View {
         }
     }
 }
+
+struct DanceFreezePlayer_Previews:
+    PreviewProvider
+{
+    static var previews: some View {
+        DanceFreezePlayer(isAuto: true)
+            .previewInterfaceOrientation(.landscapeLeft)
+    }
+}

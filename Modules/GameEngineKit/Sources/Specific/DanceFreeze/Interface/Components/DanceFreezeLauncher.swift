@@ -58,3 +58,12 @@ struct DanceFreezeLauncher: View {
         }
     }
 }
+
+struct DanceFreezeLauncher_Previews:
+    PreviewProvider
+{
+    static var previews: some View {
+        DanceFreezeLauncher(mode: .constant(.waitingForSelection))
+            .previewInterfaceOrientation(.landscapeLeft)
+    }
+}
