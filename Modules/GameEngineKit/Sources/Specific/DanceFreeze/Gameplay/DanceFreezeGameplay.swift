@@ -6,19 +6,17 @@ import AVFAudio
 import Combine
 import SwiftUI
 
-public class DanceFreezeGameplay: NSObject, AVAudioPlayerDelegate {
-    @Published var audioPlayer: AVAudioPlayer!
-    @Published private var audioPlaying = false
+    var audioPlayer: AVAudioPlayer!
     @Published public var progress: CGFloat = 0.0
     @Published public var state: GameplayState = .idle
 
+    var cancellables: Set<AnyCancellable> = []
+
     func process() {
-        if audioPlaying {
+        if audioPlayer.isPlaying {
             audioPlayer.pause()
-            audioPlaying.toggle()
         } else {
             audioPlayer.play()
-            audioPlaying.toggle()
         }
     }
 
@@ -35,10 +33,14 @@ public class DanceFreezeGameplay: NSObject, AVAudioPlayerDelegate {
         audioPlayer.prepareToPlay()
         audioPlayer.delegate = self
 
-        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { _ in
-            if let player = self.audioPlayer {
-                self.progress = CGFloat(player.currentTime / player.duration)
-            }
-        }
+        Timer.publish(every: 0.1, on: .main, in: .default)
+            .autoconnect()
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { _ in
+                if let player = self.audioPlayer {
+                    self.progress = CGFloat(player.currentTime / player.duration)
+                }
+            })
+            .store(in: &cancellables)
     }
 }
