@@ -13,7 +13,7 @@ struct SidebarSections: View {
     var body: some View {
         section(content: sidebar.educContentList)
             .padding(.horizontal)
-            .tint(.accentColor)
+            .foregroundColor(.accentColor)
     }
 
     func sectionItem(_ item: SectionLabel) -> some View {

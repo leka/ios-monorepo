@@ -9,6 +9,7 @@ struct CurriculumListView: View {
     @EnvironmentObject var sidebar: SidebarViewModel
     @EnvironmentObject var viewRouter: ViewRouter
     @EnvironmentObject var curriculumVM: CurriculumViewModel
+    @EnvironmentObject var metrics: UIMetrics
 
     private let columns = Array(repeating: GridItem(), count: 3)
 
@@ -16,21 +17,36 @@ struct CurriculumListView: View {
         ZStack {
             Color("lekaLightBlue").ignoresSafeArea()
 
-            ScrollView {
-                LazyVGrid(columns: columns) {
-                    allCurriculums
+            ScrollViewReader { proxy in
+                ScrollView {
+                    LazyVGrid(columns: columns, pinnedViews: .sectionHeaders) {
+                        ForEach(CurriculumCategories.allCases, id: \.self) { category in
+                            Section {
+                                allCurriculums(_in: category)
+                            } header: {
+                                headerViews(title: curriculumVM.getCurriculumList(category: category).sectionTitle)
+                            }
+                        }
+                    }
+                }
+                .animation(.easeOut(duration: 0.4), value: sidebar.showInfo())
+                .safeAreaInset(edge: .top) {
+                    InfoTileManager()
+                }
+                .onAppear {
+                    withAnimation { proxy.scrollTo(curriculumVM.currentCurriculumCategory, anchor: .top) }
                 }
             }
-            .safeAreaInset(edge: .top) {
-                InfoTileManager()
-            }
         }
-        .animation(.easeOut(duration: 0.4), value: sidebar.showInfo())
     }
 
-    private var allCurriculums: some View {
-        ForEach(curriculumVM.availableCurriculums.enumerated().map({ $0 }), id: \.element.id) { index, item in
+    @ViewBuilder
+    private func allCurriculums(_in category: CurriculumCategories) -> some View {
+        let list: [Curriculum] = curriculumVM.getCurriculumsFrom(category: category)
+        ForEach(list.enumerated().map({ $0 }), id: \.element.id) { index, item in
             Button {
+                curriculumVM.currentCurriculumCategory = category
+                curriculumVM.populateCurriculumList(_in: category)
                 curriculumVM.selectedCurriculum = index
                 viewRouter.currentPage = .curriculumDetail
             } label: {
@@ -41,6 +57,20 @@ struct CurriculumListView: View {
             }
             .padding()
         }
+    }
+
+    private func headerViews(title: LocalizedContent) -> some View {
+        HStack(spacing: 0) {
+            Text(title.localized())
+                .font(metrics.semi17)
+                .padding(10)
+                .foregroundColor(.accentColor)
+                .background(Color("lekaLightBlue"))
+                .clipShape(Capsule(style: .continuous))
+                .padding(.leading, 20)
+            Spacer()
+        }
+        .padding(.vertical, 6)
     }
 }
 

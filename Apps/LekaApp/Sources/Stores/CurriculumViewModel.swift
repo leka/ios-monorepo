@@ -8,6 +8,7 @@ import Yams
 class CurriculumViewModel: ObservableObject, YamlFileDecodable {
 
     // MARK: - CurriculumList Published properties
+    @Published var currentCurriculumCategory: CurriculumCategories = .emotionRecognition
     @Published var availableCurriculums: [Curriculum] = []
 
     // MARK: - Current || selected Curriculum Published properties
@@ -29,19 +30,28 @@ class CurriculumViewModel: ObservableObject, YamlFileDecodable {
     }
 
     // MARK: - CurriculumList related Work
-    func getCurriculumList() -> CurriculumList {
+    func getCurriculumList(category: CurriculumCategories) -> CurriculumList {
         do {
-            return try self.decodeYamlFile(withName: YamlFiles.YAMLCurriculumList.rawValue, toType: CurriculumList.self)
+            return try self.decodeYamlFile(withName: category.rawValue, toType: CurriculumList.self)
         } catch {
             print("Failed to decode Yaml file with error:", error)
             return CurriculumList()
         }
     }
 
-    func populateCurriculumList() {
-        for item in getCurriculumList().curriculums {
+    func populateCurriculumList(_in category: CurriculumCategories) {
+        availableCurriculums.removeAll()
+        for item in getCurriculumList(category: category).curriculums {
             availableCurriculums.append(getCurriculum(item))
         }
+    }
+
+    func getCurriculumsFrom(category: CurriculumCategories) -> [Curriculum] {
+        var curriculums = [Curriculum]()
+        for item in getCurriculumList(category: category).curriculums {
+            curriculums.append(getCurriculum(item))
+        }
+        return curriculums
     }
 
     // MARK: - Curriculum-Specific Work
@@ -56,7 +66,7 @@ class CurriculumViewModel: ObservableObject, YamlFileDecodable {
 
     func setCurriculumDetailNavTitle() -> String {
         return
-            "\(getCurriculumList().sectionTitle.localized()) \(String(describing: (selectedCurriculum ?? 0)+1))/\(availableCurriculums.count)"
+            "\(getCurriculumList(category: currentCurriculumCategory).sectionTitle.localized()) \(String(describing: (selectedCurriculum ?? 0)+1))/\(availableCurriculums.count)"
     }
 
     func setCurriculumIcon(for curriculum: Curriculum) -> String {
