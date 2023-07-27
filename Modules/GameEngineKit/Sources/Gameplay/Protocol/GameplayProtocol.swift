@@ -6,11 +6,8 @@ import Combine
 import Foundation
 
 public protocol GameplayProtocol: ObservableObject {
-    var choices: [ChoiceViewModel] { get set }
-    var isFinished: Bool { get set }
-
-    var choicesPublisher: Published<[ChoiceViewModel]>.Publisher { get }
-    var isFinishedPublisher: Published<Bool>.Publisher { get }
+    var choices: CurrentValueSubject<[ChoiceViewModel], Never> { get set }
+    var state: CurrentValueSubject<GameplayState, Never> { get set }
 
     func process(choice: ChoiceViewModel)
 }

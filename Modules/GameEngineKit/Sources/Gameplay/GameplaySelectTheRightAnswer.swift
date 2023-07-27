@@ -6,34 +6,32 @@ import Combine
 import Foundation
 
 public class GameplaySelectTheRightAnswer: GameplayProtocol {
-    @Published public var choices: [ChoiceViewModel]
-    @Published public var isFinished: Bool = false
-
-    public var choicesPublisher: Published<[ChoiceViewModel]>.Publisher { $choices }
-    public var isFinishedPublisher: Published<Bool>.Publisher { $isFinished }
+    public var choices = CurrentValueSubject<[ChoiceViewModel], Never>([])
+    public var state = CurrentValueSubject<GameplayState, Never>(.idle)
 
     public init(choices: [ChoiceViewModel]) {
-        self.choices = choices
+        self.choices.send(choices)
+        self.state.send(.playing)
     }
 
     public func process(choice: ChoiceViewModel) {
         if choice.rightAnswer {
-            if let index = choices.firstIndex(where: { $0.id == choice.id }) {
-                self.choices[index].status = .playingRightAnimation
+            if let index = choices.value.firstIndex(where: { $0.id == choice.id }) {
+                self.choices.value[index].status = .playingRightAnimation
 
                 // TO DO (@hugo) asyncAwait
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                    self.choices[index].status = .notSelected
+                    self.choices.value[index].status = .notSelected
                 }
-                self.isFinished = true
+                self.state.send(.finished)
             }
         } else {
-            if let index = choices.firstIndex(where: { $0.id == choice.id }) {
-                self.choices[index].status = .playingWrongAnimation
+            if let index = choices.value.firstIndex(where: { $0.id == choice.id }) {
+                self.choices.value[index].status = .playingWrongAnimation
 
                 // TO DO (@hugo) asyncAwait
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
-                    self.choices[index].status = .notSelected
+                    self.choices.value[index].status = .notSelected
                 }
             }
         }

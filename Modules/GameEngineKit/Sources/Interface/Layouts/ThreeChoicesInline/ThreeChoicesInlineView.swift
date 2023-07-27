@@ -26,11 +26,6 @@ public struct ThreeChoicesInlineView: View {
                         )
                 }
             }
-
-            if viewModel.isFinished {
-                Text("Well done !")
-                    .font(.title)
-            }
         }
     }
 }
