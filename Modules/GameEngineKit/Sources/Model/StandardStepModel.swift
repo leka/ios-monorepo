@@ -4,15 +4,18 @@
 
 import SwiftUI
 
-public class StandardGameplayData {
+public class StandardStepModel {
     public var choices: [ChoiceViewModel]
+	public var gameplay : GameplayType
     public var answersNumber: Int?
 
     public init(
         choices: [ChoiceViewModel],
+		gameplay : GameplayType,
         answersNumber: Int? = nil
     ) {
         self.choices = choices
+		self.gameplay = gameplay
         self.answersNumber = answersNumber
     }
 }
