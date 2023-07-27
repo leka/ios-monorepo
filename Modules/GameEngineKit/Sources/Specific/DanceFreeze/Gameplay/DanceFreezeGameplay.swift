@@ -6,11 +6,16 @@ import AVFAudio
 import Combine
 import SwiftUI
 
+public class DanceFreezeGameplay {
     var audioPlayer: AVAudioPlayer!
     @Published public var progress: CGFloat = 0.0
     @Published public var state: GameplayState = .idle
 
     var cancellables: Set<AnyCancellable> = []
+
+    public init() {
+        // Nothing to do
+    }
 
     func process() {
         if audioPlayer.isPlaying {
@@ -31,7 +36,6 @@ import SwiftUI
         }
 
         audioPlayer.prepareToPlay()
-        audioPlayer.delegate = self
 
         Timer.publish(every: 0.1, on: .main, in: .default)
             .autoconnect()
