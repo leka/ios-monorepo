@@ -12,12 +12,13 @@ struct SongModel: Hashable, Equatable {
 }
 
 private let kAvailableSongs: [SongModel] = [
+    // TO DO : (@hugo) Replace nyan by validated free use music
     SongModel(name: "Frère Jacques", file: "nyan"),
-    SongModel(name: "Dansons la Capucine", file: "song_2"),
-    SongModel(name: "Petit Escargot", file: "song_3"),
-    SongModel(name: "Stairway to Heaven", file: "song_4"),
-    SongModel(name: "Can you feel the love tonight", file: "song_5"),
-    SongModel(name: "Cette année là", file: "song_6"),
+    SongModel(name: "Dansons la Capucine", file: "nyan"),
+    SongModel(name: "Petit Escargot", file: "nyan"),
+    SongModel(name: "Stairway to Heaven", file: "nyan"),
+    SongModel(name: "Can you feel the love tonight", file: "nyan"),
+    SongModel(name: "Cette année là", file: "nyan"),
 ]
 
 struct SongSelector: View {
