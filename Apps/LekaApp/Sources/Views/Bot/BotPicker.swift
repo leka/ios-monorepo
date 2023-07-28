@@ -10,6 +10,7 @@ struct BotPicker: View {
     @EnvironmentObject var viewRouter: ViewRouter
     @EnvironmentObject var metrics: UIMetrics
     @EnvironmentObject var botVM: BotViewModel
+    @Environment(\.dismiss) var dismiss
 
     @State private var searchBtnLabel: String = "Rechercher"
     @State private var allBots: Int = 0
@@ -50,7 +51,7 @@ struct BotPicker: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .principal) { navigationTitle }
-            ToolbarItem(placement: .navigationBarLeading) { backButton }
+            ToolbarItem(placement: .navigationBarTrailing) { closeButton }
         }
     }
 
@@ -137,16 +138,13 @@ struct BotPicker: View {
         .foregroundColor(.accentColor)
     }
 
-    private var backButton: some View {
+    private var closeButton: some View {
         Button(
             action: {
-                viewRouter.currentPage = .home
+                dismiss()
             },
             label: {
-                HStack(spacing: 4) {
-                    Image(systemName: "chevron.left")
-                    Text("Retour")
-                }
+                Text("Fermer")
             }
         )
         .tint(.accentColor)

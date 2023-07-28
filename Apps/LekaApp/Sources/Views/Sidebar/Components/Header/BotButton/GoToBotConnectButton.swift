@@ -10,9 +10,11 @@ struct GoToBotConnectButton: View {
     @EnvironmentObject var viewRouter: ViewRouter
     @EnvironmentObject var metrics: UIMetrics
 
+    @State private var showRobotPicker: Bool = false
+
     var body: some View {
         Button {
-            viewRouter.currentPage = .bots
+            showRobotPicker.toggle()
         } label: {
             HStack(spacing: 10) {
                 BotConnectionIndicator()
@@ -26,6 +28,11 @@ struct GoToBotConnectButton: View {
             .frame(height: 100)
         }
         .contentShape(Rectangle())
+        .fullScreenCover(isPresented: $showRobotPicker) {
+            NavigationStack {
+                BotPicker()
+            }
+        }
     }
 
     @ViewBuilder
