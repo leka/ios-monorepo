@@ -20,6 +20,7 @@ struct LekaApp: App {
         WindowGroup {
             ContentView()
                 .task {
+                    curriculumVM.populateCurriculumList(category: .emotionRecognition)
                     curriculumVM.getCompleteActivityList()
                 }
                 .environmentObject(viewRouter)

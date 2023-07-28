@@ -10,6 +10,7 @@ struct ProfileEditorView: View {
     @EnvironmentObject var settings: SettingsViewModel
     @EnvironmentObject var viewRouter: ViewRouter
     @EnvironmentObject var metrics: UIMetrics
+    @Environment(\.dismiss) var dismiss
 
     var body: some View {
         ZStack {
@@ -33,7 +34,7 @@ struct ProfileEditorView: View {
         }
         .toolbar {
             ToolbarItem(placement: .principal) { navigationTitle }
-            ToolbarItem(placement: .navigationBarLeading) { backButton }
+            ToolbarItem(placement: .navigationBarLeading) { closeButton }
             ToolbarItem(placement: .navigationBarTrailing) { validateButton }
         }
     }
@@ -50,17 +51,14 @@ struct ProfileEditorView: View {
         .foregroundColor(.accentColor)
     }
 
-    private var backButton: some View {
+    private var closeButton: some View {
         Button(
             action: {
                 // Leave without saving new selection
-                viewRouter.currentPage = .home
+                dismiss()
             },
             label: {
-                HStack(spacing: 4) {
-                    Image(systemName: "chevron.left")
-                    Text("Retour")
-                }
+                Text("Fermer")
             })
     }
 
@@ -72,7 +70,7 @@ struct ProfileEditorView: View {
                 } else {
                     // Save new selection and leave
                     company.assignCurrentProfiles()
-                    viewRouter.currentPage = .home
+                    dismiss()
                 }
             } else {
                 settings.showConnectInvite.toggle()

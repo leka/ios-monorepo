@@ -17,10 +17,17 @@ struct SelectedActivityInstructionsView: View {
     private func goButtonAction() {
         activityVM.setupGame(with: activityVM.currentActivity)
         dismiss()
-        if settings.companyIsConnected && !company.selectionSetIsCorrect() {
-            viewRouter.showUserSelector = true
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            guard settings.companyIsConnected else {
+                viewRouter.goToGameFromActivities = true
+                return
+            }
+            guard company.selectionSetIsCorrect() else {
+                viewRouter.showUserSelector = true
+                return
+            }
+            viewRouter.goToGameFromActivities = true
         }
-        viewRouter.goToGameFromActivities = true
     }
 
     var body: some View {

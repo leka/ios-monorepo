@@ -9,6 +9,7 @@ struct JobPicker: View {
     @EnvironmentObject var company: CompanyViewModel
     @EnvironmentObject var metrics: UIMetrics
     @EnvironmentObject var viewRouter: ViewRouter
+    @EnvironmentObject var sidebar: SidebarViewModel
     @Environment(\.dismiss) var dismiss
 
     @FocusState var focusedField: FormField?
@@ -35,7 +36,7 @@ struct JobPicker: View {
                     ToolbarItem(placement: .navigationBarTrailing) { validateButton }
                 }
         }
-        .toolbarBackground(viewRouter.currentPage == .profiles ? .visible : .automatic, for: .navigationBar)
+        .toolbarBackground(sidebar.showProfileEditor ? .visible : .automatic, for: .navigationBar)
     }
 
     private var customJobTextField: some View {

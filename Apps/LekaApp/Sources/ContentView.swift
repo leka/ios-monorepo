@@ -20,11 +20,6 @@ struct ContentView: View {
                 case .welcome:
                     WelcomeView()
                         .transition(.opacity)
-                case .profiles:
-                    NavigationStack {
-                        ProfileEditorView()
-                    }
-                    .transition(.move(edge: .trailing))
                 case .home:
                     HomeView()
                         .transition(.opacity)

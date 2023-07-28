@@ -51,7 +51,7 @@ struct BotPicker: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .principal) { navigationTitle }
-            ToolbarItem(placement: .navigationBarTrailing) { closeButton }
+            ToolbarItem(placement: .navigationBarLeading) { closeButton }
         }
     }
 

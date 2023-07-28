@@ -6,7 +6,6 @@ import SwiftUI
 
 enum Page {
     case welcome
-    case profiles
     case home
     case curriculumDetail
     case game

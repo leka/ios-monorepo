@@ -10,6 +10,8 @@ class SidebarViewModel: ObservableObject {
     // sidebar utils
     @Published var sidebarVisibility = NavigationSplitViewVisibility.all
     @Published var showSettings: Bool = false
+    @Published var showProfileEditor: Bool = false
+    @Published var showRobotPicker: Bool = false
 
     // Educative Content section data
     static let educContentSectionLabels: [SectionLabel] = [
