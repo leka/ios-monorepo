@@ -5,8 +5,15 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var isPresented = true
+
     var body: some View {
         Text("LekaUpdater")
+            .fullScreenCover(isPresented: $isPresented) {
+                NavigationStack {
+                    ConnectionView()
+                }  // TODO: Remove NavigationStack and set Title and Continue button correctly
+            }
     }
 }
 
