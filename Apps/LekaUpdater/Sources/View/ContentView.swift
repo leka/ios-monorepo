@@ -5,18 +5,15 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var connectedRobot: RobotPeripheralViewModel?
-    @State var isRobotNotConnected = true
+    @StateObject var robot = RobotPeripheralViewModel()
 
     var body: some View {
         //        InformationView()
         Text("hello")
-            .fullScreenCover(isPresented: $isRobotNotConnected) {
+            .fullScreenCover(isPresented: $robot.isDisconnected) {
                 NavigationStack {
                     ConnectionView()
-                        .onChange(of: connectedRobot) { connectedRobot in
-                            self.isRobotNotConnected = connectedRobot == nil
-                        }
+                        .environmentObject(robot)
                 }
             }
     }

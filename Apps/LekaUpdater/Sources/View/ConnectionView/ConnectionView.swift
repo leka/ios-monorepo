@@ -6,6 +6,7 @@ import DesignKit
 import SwiftUI
 
 struct ConnectionView: View {
+    @EnvironmentObject var connectedRobot: RobotPeripheralViewModel
     @EnvironmentObject var firmware: FirmwareManager
 
     @StateObject private var viewModel = ConnectionViewModel()
@@ -33,10 +34,12 @@ struct ConnectionView: View {
             }
 
             ToolbarItem(placement: .navigationBarTrailing) {
-                NavigationLink {
-                    InformationView()
-                        .environmentObject(firmware)
-                        .environmentObject(viewModel.connectedRobot)
+                Button {
+//                    InformationView()
+//                        .environmentObject(firmware)
+//                        .environmentObject(viewModel.connectedRobot)
+                    connectedRobot = viewModel.connectedRobot
+                    connectedRobot.isDisconnected = false
                 } label: {
                     HStack {
                         Text("Continuer")
