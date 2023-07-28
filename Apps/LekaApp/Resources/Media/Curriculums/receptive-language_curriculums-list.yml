@@ -1,0 +1,11 @@
+---
+section_title:
+  en_US: Receptive language
+  fr_FR: Langage réceptif
+
+curriculums:
+  - emotion_recognition-generalization-14a71d61-ed35-4122-b7a4-0a8895e06386
+  - emotion_recognition-sounds-a3a4aa6a-1ea5-4a8f-82cd-f3879cfbdc72
+  - emotion_recognition-pictures-ec6fca8d-ac0f-44f8-b641-c9a96f9195c5
+  - emotion_recognition-drawings-7859be5a-9fa5-11ec-b909-0242ac120002
+  - emotion_recognition-pictograms-6d41484b-71ff-4556-a821-ad85ad107c80

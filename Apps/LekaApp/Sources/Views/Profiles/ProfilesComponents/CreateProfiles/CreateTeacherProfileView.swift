@@ -74,6 +74,7 @@ struct CreateTeacherProfileView: View {
                 focusedField = nil
             }
         )
+        .padding(2)
         .onAppear {
             focusedField = .name
         }

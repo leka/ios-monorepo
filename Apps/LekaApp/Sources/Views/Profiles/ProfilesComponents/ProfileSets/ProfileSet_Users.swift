@@ -38,14 +38,11 @@ struct ProfileSet_Users: View {
         .navigationBarTitleDisplayMode(.inline)
         .preferredColorScheme(.light)
         .frame(minWidth: 460)
-        .sheet(
-            isPresented: $showEditProfileUser,
-            content: {
-                NavigationStack {
-                    CreateUserProfileView()
-                }
+        .sheet(isPresented: $showEditProfileUser) {
+            NavigationStack {
+                CreateUserProfileView()
             }
-        )
+        }
         .alert("Mode découverte", isPresented: $settings.showConnectInvite) {
             IdentificationIsNeededAlertLabel()
         } message: {

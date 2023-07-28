@@ -13,10 +13,8 @@ struct BotPicker: View {
 
     @State private var searchBtnLabel: String = "Rechercher"
     @State private var allBots: Int = 0
-    @State private var navigateToSignup1Final: Bool = false
 
     // ? For testing
-    @State private var showNoBotTile: Bool = false
     func resetForTests() {
         botVM.botIsConnected = false
         botVM.currentlyConnectedBotIndex = nil
@@ -33,7 +31,7 @@ struct BotPicker: View {
             VStack {
                 Spacer()
 
-                BotStore(botVM: botVM, allBots: $allBots, showNoBotTile: $showNoBotTile)
+                BotStore(botVM: botVM, allBots: $allBots)
                     .onAppear {
                         allBots = 13  // For the tests
                     }
@@ -50,16 +48,9 @@ struct BotPicker: View {
             }
         }
         .navigationBarTitleDisplayMode(.inline)
-        .navigationDestination(isPresented: $navigateToSignup1Final) {
-            SignupStep1Final()
-        }
         .toolbar {
             ToolbarItem(placement: .principal) { navigationTitle }
-            if viewRouter.currentPage == .bots {
-                ToolbarItem(placement: .navigationBarLeading) { backButton }
-            } else {
-                ToolbarItem(placement: .navigationBarTrailing) { continueButton }
-            }
+            ToolbarItem(placement: .navigationBarLeading) { backButton }
         }
     }
 
@@ -70,19 +61,7 @@ struct BotPicker: View {
                 searchBtnLabel = "Recherche en cours..."
                 resetForTests()
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                    if allBots == 0 {
-                        if viewRouter.currentPage == .welcome {
-                            if showNoBotTile {
-                                allBots += 1
-                            }
-                            showNoBotTile.toggle()
-                        } else {
-                            allBots += 1
-                        }
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                            searchBtnLabel = "Rechercher"
-                        }
-                    } else if allBots < 3 {
+                    if allBots < 3 {
                         allBots += 1
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                             searchBtnLabel = "Rechercher"
@@ -167,21 +146,6 @@ struct BotPicker: View {
                 HStack(spacing: 4) {
                     Image(systemName: "chevron.left")
                     Text("Retour")
-                }
-            }
-        )
-        .tint(.accentColor)
-    }
-
-    private var continueButton: some View {
-        Button(
-            action: {
-                navigateToSignup1Final.toggle()
-            },
-            label: {
-                HStack(spacing: 4) {
-                    Text("Continuer")
-                    Image(systemName: "chevron.right")
                 }
             }
         )

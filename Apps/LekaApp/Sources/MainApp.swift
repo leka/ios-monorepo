@@ -20,7 +20,6 @@ struct LekaApp: App {
         WindowGroup {
             ContentView()
                 .task {
-                    curriculumVM.populateCurriculumList()
                     curriculumVM.getCompleteActivityList()
                 }
                 .environmentObject(viewRouter)

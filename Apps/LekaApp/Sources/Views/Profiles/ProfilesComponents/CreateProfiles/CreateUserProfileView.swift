@@ -19,7 +19,7 @@ struct CreateUserProfileView: View {
     @State private var navigateToAvatarPicker: Bool = false
 
     var body: some View {
-        ZStack(alignment: .center) {
+        ZStack {
             Color.white.edgesIgnoringSafeArea(.top)
 
             ScrollView(showsIndicators: false) {
@@ -68,6 +68,7 @@ struct CreateUserProfileView: View {
                 focusedField = nil
             }
         )
+        .padding(2)
         .onAppear {
             focusedField = .name
         }

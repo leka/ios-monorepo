@@ -48,6 +48,8 @@ struct YamlFiles: RawRepresentable, Hashable {
     }
 }
 
-extension YamlFiles {
-    static let YAMLCurriculumList = Self("emotion_recognition-curriculums-list")
+enum CurriculumCategories: String, CaseIterable {
+    case emotionRecognition = "emotion_recognition-curriculums-list"
+    case categorization = "categorization_curriculums-list"
+    case receptiveLanguage = "receptive-language_curriculums-list"
 }
