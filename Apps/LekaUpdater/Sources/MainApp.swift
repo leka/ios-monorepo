@@ -14,9 +14,7 @@ var globalRobotManager = RobotManager()
 struct LekaUpdaterApp: App {
     var body: some Scene {
         WindowGroup {
-            NavigationStack {
-                ConnectionView()
-            }
+            ContentView()
         }
     }
 }
