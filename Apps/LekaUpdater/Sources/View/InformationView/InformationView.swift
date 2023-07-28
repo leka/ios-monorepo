@@ -85,7 +85,7 @@ struct InformationView: View {
             }
         }
         .foregroundColor(DesignKitAsset.Colors.darkGray.swiftUIColor)
-        .onAppear(perform: viewModel.onAppear)
+        .onAppear(perform: viewModel.onAppear)  // TODO: Does not work anymore
         .toolbar {
             ToolbarItem(placement: .principal) {
                 VStack {
