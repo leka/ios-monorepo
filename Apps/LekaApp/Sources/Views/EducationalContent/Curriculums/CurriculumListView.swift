@@ -19,7 +19,7 @@ struct CurriculumListView: View {
 
             ScrollViewReader { proxy in
                 ScrollView {
-                    LazyVGrid(columns: columns, pinnedViews: .sectionHeaders) {
+                    LazyVGrid(columns: columns) {
                         ForEach(CurriculumCategories.allCases, id: \.self) { category in
                             Section {
                                 allCurriculums(category: category)
@@ -60,17 +60,14 @@ struct CurriculumListView: View {
     }
 
     private func headerViews(title: LocalizedContent) -> some View {
-        HStack(spacing: 0) {
+        HStack {
             Text(title.localized())
                 .font(metrics.semi17)
-                .padding(10)
+                .padding(16)
                 .foregroundColor(.accentColor)
-                .background(Color("lekaLightBlue"))
-                .clipShape(Capsule(style: .continuous))
                 .padding(.leading, 20)
             Spacer()
         }
-        .padding(.vertical, 6)
     }
 }
 
