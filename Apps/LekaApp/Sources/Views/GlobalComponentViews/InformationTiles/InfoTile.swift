@@ -86,7 +86,7 @@ struct InfoTile: View {
         Button {
             viewRouter.currentPage = .welcome
         } label: {
-            Text(data.content.CTALabel!)
+            Text(data.content.callToActionLabel!)
         }
         .padding(20)
         .buttonStyle(

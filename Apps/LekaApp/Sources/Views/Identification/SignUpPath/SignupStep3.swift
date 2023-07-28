@@ -71,7 +71,7 @@ struct SignupStep3: View {
                 navigateToUserCreation.toggle()
             },
             label: {
-                Text(data.content.CTALabel!)
+                Text(data.content.callToActionLabel!)
             }
         )
         .buttonStyle(

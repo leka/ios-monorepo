@@ -69,7 +69,7 @@ struct SignupFinalStep: View {
                 viewRouter.currentPage = .home
             }
         } label: {
-            Text(data.content.CTALabel!)
+            Text(data.content.callToActionLabel!)
         }
         .buttonStyle(
             BorderedCapsule_NoFeedback_ButtonStyle(

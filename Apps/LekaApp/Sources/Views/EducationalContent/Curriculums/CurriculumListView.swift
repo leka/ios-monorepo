@@ -46,7 +46,7 @@ struct CurriculumListView: View {
         ForEach(list.enumerated().map({ $0 }), id: \.element.id) { index, item in
             Button {
                 curriculumVM.currentCurriculumCategory = category
-                curriculumVM.populateCurriculumList(_in: category)
+                curriculumVM.populateCurriculumList(category: category)
                 curriculumVM.selectedCurriculum = index
                 viewRouter.currentPage = .curriculumDetail
             } label: {

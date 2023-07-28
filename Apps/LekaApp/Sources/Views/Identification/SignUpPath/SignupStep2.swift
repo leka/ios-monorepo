@@ -70,7 +70,7 @@ struct SignupStep2: View {
                 navigateToTeacherCreation.toggle()
             },
             label: {
-                Text(data.content.CTALabel!)
+                Text(data.content.callToActionLabel!)
             }
         )
         .buttonStyle(
