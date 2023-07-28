@@ -95,7 +95,7 @@ struct InformationView: View {
         .onAppear {
             robot.readReadOnlyCharacteristics()
             robot.subscribeToCharacteristicsNotifications()
-        }
+        }  // TODO: Does not work anymore
         .toolbar {
             ToolbarItem(placement: .principal) {
                 VStack {
