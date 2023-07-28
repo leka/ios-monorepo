@@ -5,6 +5,7 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject var robot = RobotPeripheralViewModel()
     @State var isPresented = true
 
     var body: some View {
@@ -14,6 +15,7 @@ struct ContentView: View {
                     ConnectionView()
                 }  // TODO: Remove NavigationStack and set Title and Continue button correctly
             }
+            .environmentObject(robot)
     }
 }
 

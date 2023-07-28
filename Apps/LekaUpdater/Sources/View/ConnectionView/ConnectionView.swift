@@ -7,8 +7,11 @@ import SwiftUI
 
 struct ConnectionView: View {
     @EnvironmentObject var firmware: FirmwareManager
+    @EnvironmentObject var connectedRobot: RobotPeripheralViewModel
 
     @StateObject private var viewModel = ConnectionViewModel()
+
+    @Environment(\.dismiss) var dismiss
 
     var body: some View {
         VStack {
@@ -33,10 +36,9 @@ struct ConnectionView: View {
             }
 
             ToolbarItem(placement: .navigationBarTrailing) {
-                NavigationLink {
-                    InformationView()
-                        .environmentObject(firmware)
-                        .environmentObject(viewModel.connectedRobot)
+                Button {
+                    connectedRobot.copy(from: viewModel.connectedRobot)
+                    dismiss()
                 } label: {
                     HStack {
                         Text("Continuer")

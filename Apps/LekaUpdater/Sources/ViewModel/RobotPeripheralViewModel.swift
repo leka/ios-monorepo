@@ -34,6 +34,15 @@ public class RobotPeripheralViewModel: ObservableObject {
         self.robotPeripheral = robotDiscovery.robotPeripheral
     }
 
+    public func copy(from robot: RobotPeripheralViewModel) {
+        self.name = robot.name
+        self.battery = robot.battery
+        self.isCharging = robot.isCharging
+        self.osVersion = robot.osVersion
+
+        self.robotPeripheral = robot.robotPeripheral
+    }
+
     public func subscribeToCharacteristicsNotifications() {
         self.registerBatteryCharacteristicNotificationCallback()
         self.registerChargingStatusNotificationCallback()
