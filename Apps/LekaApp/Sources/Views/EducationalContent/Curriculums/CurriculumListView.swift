@@ -22,7 +22,7 @@ struct CurriculumListView: View {
                     LazyVGrid(columns: columns, pinnedViews: .sectionHeaders) {
                         ForEach(CurriculumCategories.allCases, id: \.self) { category in
                             Section {
-                                allCurriculums(_in: category)
+                                allCurriculums(category: category)
                             } header: {
                                 headerViews(title: curriculumVM.getCurriculumList(category: category).sectionTitle)
                             }
@@ -41,7 +41,7 @@ struct CurriculumListView: View {
     }
 
     @ViewBuilder
-    private func allCurriculums(_in category: CurriculumCategories) -> some View {
+    private func allCurriculums(category: CurriculumCategories) -> some View {
         let list: [Curriculum] = curriculumVM.getCurriculumsFrom(category: category)
         ForEach(list.enumerated().map({ $0 }), id: \.element.id) { index, item in
             Button {
