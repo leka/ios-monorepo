@@ -10,6 +10,7 @@ struct CreateTeacherProfileView: View {
     @EnvironmentObject var settings: SettingsViewModel
     @EnvironmentObject var viewRouter: ViewRouter
     @EnvironmentObject var metrics: UIMetrics
+    @EnvironmentObject var sidebar: SidebarViewModel
     @Environment(\.dismiss) var dismiss
 
     @FocusState private var focusedField: FormField?
@@ -41,7 +42,7 @@ struct CreateTeacherProfileView: View {
         .interactiveDismissDisabled()
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)
-        .toolbarBackground(viewRouter.currentPage == .profiles ? .visible : .automatic, for: .navigationBar)
+        .toolbarBackground(sidebar.showProfileEditor ? .visible : .automatic, for: .navigationBar)
         .navigationDestination(isPresented: $navigateToAvatarPicker) {
             AvatarPicker_Teachers()
         }
@@ -170,7 +171,7 @@ struct CreateTeacherProfileView: View {
         } label: {
             HStack(spacing: 4) {
                 Image(systemName: "chevron.left")
-                if viewRouter.currentPage == .profiles {
+                if sidebar.showProfileEditor {
                     Text("Annuler")
                 } else {
                     Text("Retour")

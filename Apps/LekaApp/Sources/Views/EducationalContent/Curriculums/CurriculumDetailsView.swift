@@ -20,9 +20,14 @@ struct CurriculumDetailsView: View {
 
     private func goButtonAction() {
         activityVM.setupGame(with: activityVM.currentActivity)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            if settings.companyIsConnected && !company.selectionSetIsCorrect() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            guard settings.companyIsConnected else {
+                viewRouter.goToGameFromCurriculums = true
+                return
+            }
+            guard company.selectionSetIsCorrect() else {
                 viewRouter.showUserSelector = true
+                return
             }
             viewRouter.goToGameFromCurriculums = true
         }
@@ -55,11 +60,10 @@ struct CurriculumDetailsView: View {
             }
             .preferredColorScheme(.light)
             .navigationDestination(isPresented: $viewRouter.goToGameFromCurriculums) {
-                if viewRouter.showUserSelector {
-                    ProfileSelector_Users()
-                } else {
-                    GameView()
-                }
+                GameView()
+            }
+            .navigationDestination(isPresented: $viewRouter.showUserSelector) {
+                ProfileSelector_Users()
             }
             .navigationBarTitleDisplayMode(.inline)
             .toolbarBackground(.automatic, for: .navigationBar)
@@ -73,7 +77,6 @@ struct CurriculumDetailsView: View {
                     Button(
                         action: {
                             viewRouter.currentPage = .home
-                            //						curriculumVM.currentCurriculumSelectedActivityID = nil
                         },
                         label: {
                             HStack(spacing: 4) {

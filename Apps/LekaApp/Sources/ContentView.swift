@@ -13,7 +13,6 @@ struct ContentView: View {
     @EnvironmentObject var viewRouter: ViewRouter
     @EnvironmentObject var curriculumVM: CurriculumViewModel
     @EnvironmentObject var activityVM: ActivityViewModel
-    @EnvironmentObject var botVM: BotViewModel
 
     var body: some View {
         Group {
@@ -21,16 +20,6 @@ struct ContentView: View {
                 case .welcome:
                     WelcomeView()
                         .transition(.opacity)
-                case .profiles:
-                    NavigationStack {
-                        ProfileEditorView()
-                    }
-                    .transition(.move(edge: .trailing))
-                case .bots:
-                    NavigationStack {
-                        BotPicker()
-                    }
-                    .transition(.move(edge: .trailing))
                 case .home:
                     HomeView()
                         .transition(.opacity)

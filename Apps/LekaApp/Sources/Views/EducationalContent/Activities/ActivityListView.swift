@@ -40,7 +40,7 @@ struct ActivityListView: View {
         .sheet(
             isPresented: $showInstructionModal,
             onDismiss: {
-                if viewRouter.goToGameFromActivities {
+                if viewRouter.goToGameFromActivities || viewRouter.showUserSelector {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                         withAnimation {
                             viewRouter.currentPage = .game

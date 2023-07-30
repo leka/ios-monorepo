@@ -6,9 +6,6 @@ import SwiftUI
 
 struct GoButton: View {
 
-    @EnvironmentObject var activityVM: ActivityViewModel
-    @EnvironmentObject var company: CompanyViewModel
-
     var action: () -> Void
 
     var body: some View {

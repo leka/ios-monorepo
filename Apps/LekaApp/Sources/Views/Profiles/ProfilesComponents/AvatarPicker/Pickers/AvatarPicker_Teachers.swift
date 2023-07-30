@@ -8,7 +8,7 @@ struct AvatarPicker_Teachers: View {
 
     @EnvironmentObject var company: CompanyViewModel
     @EnvironmentObject var metrics: UIMetrics
-    @EnvironmentObject var viewRouter: ViewRouter
+    @EnvironmentObject var sidebar: SidebarViewModel
 
     @State private var selected: String = ""
 
@@ -35,7 +35,7 @@ struct AvatarPicker_Teachers: View {
                     }
                 }
         }
-        .toolbarBackground(viewRouter.currentPage == .profiles ? .visible : .automatic, for: .navigationBar)
+        .toolbarBackground(sidebar.showProfileEditor ? .visible : .automatic, for: .navigationBar)
         .preferredColorScheme(.light)
     }
 }

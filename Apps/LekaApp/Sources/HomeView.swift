@@ -37,6 +37,16 @@ struct HomeView: View {
         .sheet(isPresented: $sidebar.showSettings) {
             SettingsView()
         }
+        .fullScreenCover(isPresented: $sidebar.showProfileEditor) {
+            NavigationStack {
+                ProfileEditorView()
+            }
+        }
+        .fullScreenCover(isPresented: $sidebar.showRobotPicker) {
+            NavigationStack {
+                BotPicker()
+            }
+        }
         .alert("Voulez-vous quitter le mode exploratoire ?", isPresented: $settings.showSwitchOffExploratoryAlert) {
             Button(role: .destructive) {
                 settings.exploratoryModeIsOn.toggle()

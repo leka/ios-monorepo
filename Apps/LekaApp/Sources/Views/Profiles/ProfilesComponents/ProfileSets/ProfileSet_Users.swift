@@ -8,8 +8,8 @@ struct ProfileSet_Users: View {
 
     @EnvironmentObject var company: CompanyViewModel
     @EnvironmentObject var settings: SettingsViewModel
-    @EnvironmentObject var viewRouter: ViewRouter
     @EnvironmentObject var metrics: UIMetrics
+    @EnvironmentObject var sidebar: SidebarViewModel
     @Environment(\.dismiss) var dismiss
 
     @State private var showEditProfileUser: Bool = false
@@ -27,7 +27,7 @@ struct ProfileSet_Users: View {
             Rectangle()
                 .fill(Color.accentColor)
                 .frame(height: 1)
-                .frame(maxWidth: viewRouter.currentPage != .profiles ? 460 : .infinity)
+                .frame(maxWidth: sidebar.showProfileEditor ? .infinity : 460)
 
             // Avatars
             availableProfiles
@@ -86,20 +86,20 @@ struct ProfileSet_Users: View {
 
     private var header: some View {
         HStack(spacing: 20) {
-            if viewRouter.currentPage != .profiles {
+            if !sidebar.showProfileEditor {
                 Spacer()
             }
             Text("Qui accompagnez-vous?")
                 .font(metrics.reg17)
                 .foregroundColor(.accentColor)
-            if viewRouter.currentPage == .profiles {
+            if sidebar.showProfileEditor {
                 Spacer()
             }
             addButton
-            if viewRouter.currentPage != .profiles {
+            if !sidebar.showProfileEditor {
                 Spacer()
             }
-            if viewRouter.currentPage == .profiles {
+            if sidebar.showProfileEditor {
                 editButton
             }
         }
@@ -114,7 +114,7 @@ struct ProfileSet_Users: View {
 
     @ViewBuilder
     private var availableProfiles: some View {
-        if viewRouter.currentPage != .profiles && sixMax() {
+        if !sidebar.showProfileEditor && sixMax() {
             VStack {
                 Spacer()
                 HStack(spacing: 40) {
@@ -126,7 +126,7 @@ struct ProfileSet_Users: View {
         } else {
             ScrollView(showsIndicators: false) {
                 let columns = Array(
-                    repeating: GridItem(spacing: 20), count: viewRouter.currentPage == .profiles ? 3 : 6)
+                    repeating: GridItem(spacing: 20), count: sidebar.showProfileEditor ? 3 : 6)
                 LazyVGrid(columns: columns, spacing: 20) {
                     usersSet
                 }
