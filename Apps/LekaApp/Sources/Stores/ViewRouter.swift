@@ -19,4 +19,6 @@ class ViewRouter: ObservableObject {
     @Published var goToGameFromCurriculums: Bool = false
     @Published var goToGameFromActivities: Bool = false
     @Published var showUserSelector: Bool = false
+
+    @Published var path: [PathsToGame] = []
 }

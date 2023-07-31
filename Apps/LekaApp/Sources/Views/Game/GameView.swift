@@ -194,8 +194,9 @@ struct GameView: View {
                         action: {
                             activityVM.resetActivity()
                             if viewRouter.currentPage == .curriculumDetail {
-                                dismiss()
-                                viewRouter.goToGameFromCurriculums = false
+                                viewRouter.path = .init()
+                                //                                dismiss()
+                                //                                viewRouter.goToGameFromCurriculums = false
                             } else {
                                 withAnimation {
                                     viewRouter.currentPage = .home

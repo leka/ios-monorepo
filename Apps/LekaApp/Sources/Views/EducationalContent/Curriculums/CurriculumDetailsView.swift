@@ -4,6 +4,10 @@
 
 import SwiftUI
 
+enum PathsToGame: Hashable {
+    case userSelect, game
+}
+
 struct CurriculumDetailsView: View {
 
     @EnvironmentObject var curriculumVM: CurriculumViewModel
@@ -22,69 +26,82 @@ struct CurriculumDetailsView: View {
         activityVM.setupGame(with: activityVM.currentActivity)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
             guard settings.companyIsConnected else {
-                viewRouter.goToGameFromCurriculums = true
+                //                viewRouter.goToGameFromCurriculums = true
+                viewRouter.path.append(.game)
                 return
             }
             guard company.selectionSetIsCorrect() else {
-                viewRouter.showUserSelector = true
+                //                viewRouter.showUserSelector = true
+                viewRouter.path.append(.userSelect)
                 return
             }
-            viewRouter.goToGameFromCurriculums = true
+            //            viewRouter.goToGameFromCurriculums = true
+            viewRouter.path.append(.game)
         }
     }
 
     var body: some View {
-        NavigationStack {
-            ZStack(alignment: .top) {
-                // NavigationBar color
-                Color("lekaLightBlue").ignoresSafeArea()
-
-                // Background Color (only visible under the header here)
-                Color.accentColor
-
-                VStack(spacing: 0) {
-                    curriculumDetailHeader
-                    HStack(spacing: 0) {
-                        curriculumActivityList
-                        // Instructions + GoBtn
-                        Rectangle()
-                            .fill(Color("lekaLightGray"))
-                            .edgesIgnoringSafeArea(.bottom)
-                            .overlay { InstructionsView() }
-                            .overlay {
-                                GoButton { goButtonAction() }
-                                    .disabled(goButtonIsDisabled())
-                            }
+        NavigationStack(path: $viewRouter.path) {
+            curriculumDetailContent
+                .navigationDestination(for: PathsToGame.self) { destination in
+                    switch destination {
+                        case .userSelect: ProfileSelector_Users()
+                        case .game: GameView()
                     }
                 }
-            }
-            .preferredColorScheme(.light)
-            .navigationDestination(isPresented: $viewRouter.goToGameFromCurriculums) {
-                GameView()
-            }
-            .navigationDestination(isPresented: $viewRouter.showUserSelector) {
-                ProfileSelector_Users()
-            }
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbarBackground(.automatic, for: .navigationBar)
-            .toolbar {
-                ToolbarItem(placement: .principal) {
-                    Text(curriculumVM.setCurriculumDetailNavTitle())
-                        .font(metrics.semi17)
-                        .foregroundColor(.accentColor)
+            //                .navigationDestination(isPresented: $viewRouter.goToGameFromCurriculums) {
+            //                    GameView()
+            //                }
+            //                .navigationDestination(isPresented: $viewRouter.showUserSelector) {
+            //                    ProfileSelector_Users()
+            //                }
+        }
+    }
+
+    private var curriculumDetailContent: some View {
+        ZStack(alignment: .top) {
+            // NavigationBar color
+            Color("lekaLightBlue").ignoresSafeArea()
+
+            // Background Color (only visible under the header here)
+            Color.accentColor
+
+            VStack(spacing: 0) {
+                curriculumDetailHeader
+                HStack(spacing: 0) {
+                    curriculumActivityList
+                    // Instructions + GoBtn
+                    Rectangle()
+                        .fill(Color("lekaLightGray"))
+                        .edgesIgnoringSafeArea(.bottom)
+                        .overlay { InstructionsView() }
+                        .overlay {
+                            GoButton { goButtonAction() }
+                                .disabled(goButtonIsDisabled())
+                        }
                 }
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button(
-                        action: {
-                            viewRouter.currentPage = .home
-                        },
-                        label: {
-                            HStack(spacing: 4) {
-                                Image(systemName: "chevron.left")
-                                Text("Retour")
-                            }
-                        })
-                }
+            }
+        }
+        .preferredColorScheme(.light)
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbarBackground(.automatic, for: .navigationBar)
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                Text(curriculumVM.setCurriculumDetailNavTitle())
+                    .font(metrics.semi17)
+                    .foregroundColor(.accentColor)
+            }
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button(
+                    action: {
+                        viewRouter.currentPage = .home
+                    },
+                    label: {
+                        HStack(spacing: 4) {
+                            Image(systemName: "chevron.left")
+                            Text("Retour")
+                        }
+                    })
             }
         }
     }

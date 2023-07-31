@@ -23,7 +23,8 @@ struct UserSet_AvatarCell: View {
             if !sidebar.showProfileEditor {
                 company.assignCurrentProfiles()
                 if viewRouter.currentPage == .curriculumDetail {
-                    viewRouter.goToGameFromCurriculums = true
+                    //                    viewRouter.goToGameFromCurriculums = true
+                    viewRouter.path.append(.game)
                 } else {
                     viewRouter.goToGameFromActivities = true
                 }

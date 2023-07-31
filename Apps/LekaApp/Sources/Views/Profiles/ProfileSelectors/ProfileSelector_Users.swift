@@ -19,9 +19,15 @@ struct ProfileSelector_Users: View {
             ProfileSet_Users()
                 .padding(.top, 60)
         }
-        .navigationDestination(isPresented: $viewRouter.goToGameFromActivities) {
-            GameView()
-        }
+        .navigationDestination(
+            for: PathsToGame.self,
+            destination: { destination in
+                GameView()
+            }
+        )
+        //        .navigationDestination(isPresented: $viewRouter.goToGameFromActivities) {
+        //            GameView()
+        //        }
         .navigationBarBackButtonHidden()
         .toolbar {
             ToolbarItem(placement: .principal) {
