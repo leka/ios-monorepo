@@ -38,7 +38,7 @@ struct InformationView: View {
                 .listRowBackground(Color.clear)
 
                 Section {
-                    RobotInformationView()
+                    RobotInformationView(robotManager: robotManager)
                 } header: {
                     Text("Informations du robot")
                         .textCase(nil)

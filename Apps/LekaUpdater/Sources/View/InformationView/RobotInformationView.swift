@@ -6,13 +6,28 @@ import DesignKit
 import SwiftUI
 
 struct RobotInformationView: View {
-    @EnvironmentObject var robotManager: RobotManager
+    @ObservedObject var robotManager: RobotManager
+
+    private var robotSerialNumber: String {
+        robotManager.serialNumber ?? "n/a"
+    }
+
+    private var robotBattery: String {
+        guard let robotBattery = robotManager.battery else {
+            return "n/a"
+        }
+        return "\(robotBattery)"
+    }
+
+    private var robotOsVersion: String {
+        robotManager.osVersion ?? "n/a"
+    }
 
     var body: some View {
         List {
-            Text("N° série: \(robotManager.serialNumber ?? "(n/a)")")
-            Text(robotManager.battery == nil ? "Battery: (n/a)" : "Battery: \(robotManager.battery!)")
-            Text("Version: \(robotManager.osVersion ?? "(n/a)")")
+            Text("N° série: \(robotSerialNumber)")
+            Text("Battery: \(robotBattery)")
+            Text("Version: \(robotOsVersion)")
         }
     }
 }
@@ -24,14 +39,11 @@ struct RobotInformationView_Previews: PreviewProvider {
         serialNumber: "LK-2206...", battery: 42, osVersion: "1.0.0")
 
     static var previews: some View {
-        RobotInformationView()
-            .foregroundColor(DesignKitAsset.Colors.darkGray.swiftUIColor)
-            .environmentObject(robotNotConnected)
-        RobotInformationView()
-            .foregroundColor(DesignKitAsset.Colors.darkGray.swiftUIColor)
-            .environmentObject(robotWithoutSerialNumber)
-        RobotInformationView()
-            .foregroundColor(DesignKitAsset.Colors.darkGray.swiftUIColor)
-            .environmentObject(robotWithSerialNumber)
+        Group {
+            RobotInformationView(robotManager: robotNotConnected)
+            RobotInformationView(robotManager: robotWithoutSerialNumber)
+            RobotInformationView(robotManager: robotWithSerialNumber)
+        }
+        .foregroundColor(DesignKitAsset.Colors.darkGray.swiftUIColor)
     }
 }
