@@ -11,14 +11,17 @@ enum Page {
     case game
 }
 
+enum PathsToGame: Hashable {
+    case userSelect, game
+}
+
+enum PathsToGameFromActivity: Hashable {
+    case game
+}
+
 class ViewRouter: ObservableObject {
 
     @Published var currentPage: Page = .welcome
-
-    // NavigationStacks Triggers
-    @Published var goToGameFromCurriculums: Bool = false
-    @Published var goToGameFromActivities: Bool = false
-    @Published var showUserSelector: Bool = false
-
-    @Published var path: [PathsToGame] = []
+    @Published var pathFromCurriculum: [PathsToGame] = []
+    @Published var pathFromActivity: [PathsToGameFromActivity] = []
 }

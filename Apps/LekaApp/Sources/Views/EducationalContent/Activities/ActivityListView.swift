@@ -37,18 +37,9 @@ struct ActivityListView: View {
             completeActivityList
         }
         .animation(.easeOut(duration: 0.4), value: sidebar.showInfo())
-        .sheet(
-            isPresented: $showInstructionModal,
-            onDismiss: {
-                if viewRouter.goToGameFromActivities || viewRouter.showUserSelector {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                        withAnimation {
-                            viewRouter.currentPage = .game
-                        }
-                    }
-                }
-            }, content: { SelectedActivityInstructionsView() }
-        )
+        .sheet(isPresented: $showInstructionModal) {
+            SelectedActivityInstructionsView()
+        }
         .searchable(
             text: $searchQuery,
             placement: .toolbar,

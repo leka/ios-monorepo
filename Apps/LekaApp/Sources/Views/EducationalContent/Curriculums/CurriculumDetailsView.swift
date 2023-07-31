@@ -4,10 +4,6 @@
 
 import SwiftUI
 
-enum PathsToGame: Hashable {
-    case userSelect, game
-}
-
 struct CurriculumDetailsView: View {
 
     @EnvironmentObject var curriculumVM: CurriculumViewModel
@@ -26,35 +22,28 @@ struct CurriculumDetailsView: View {
         activityVM.setupGame(with: activityVM.currentActivity)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
             guard settings.companyIsConnected else {
-                //                viewRouter.goToGameFromCurriculums = true
-                viewRouter.path.append(.game)
+                viewRouter.pathFromCurriculum.append(.game)
                 return
             }
             guard company.selectionSetIsCorrect() else {
-                //                viewRouter.showUserSelector = true
-                viewRouter.path.append(.userSelect)
+                viewRouter.pathFromCurriculum.append(.userSelect)
                 return
             }
-            //            viewRouter.goToGameFromCurriculums = true
-            viewRouter.path.append(.game)
+            viewRouter.pathFromCurriculum.append(.game)
         }
     }
 
     var body: some View {
-        NavigationStack(path: $viewRouter.path) {
+        NavigationStack(path: $viewRouter.pathFromCurriculum) {
             curriculumDetailContent
                 .navigationDestination(for: PathsToGame.self) { destination in
                     switch destination {
-                        case .userSelect: ProfileSelector_Users()
-                        case .game: GameView()
+                        case .userSelect:
+                            ProfileSelector_Users()
+                        case .game:
+                            GameView()
                     }
                 }
-            //                .navigationDestination(isPresented: $viewRouter.goToGameFromCurriculums) {
-            //                    GameView()
-            //                }
-            //                .navigationDestination(isPresented: $viewRouter.showUserSelector) {
-            //                    ProfileSelector_Users()
-            //                }
         }
     }
 

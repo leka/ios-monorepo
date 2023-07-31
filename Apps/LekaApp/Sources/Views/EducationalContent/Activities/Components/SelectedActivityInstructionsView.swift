@@ -19,14 +19,20 @@ struct SelectedActivityInstructionsView: View {
         dismiss()
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
             guard settings.companyIsConnected else {
-                viewRouter.goToGameFromActivities = true
+                viewRouter.pathFromActivity.append(.game)
+                viewRouter.currentPage = .game
+                print("case #1")
                 return
             }
             guard company.selectionSetIsCorrect() else {
-                viewRouter.showUserSelector = true
+                viewRouter.pathFromActivity = .init()
+                viewRouter.currentPage = .game
+                print("case #2")
                 return
             }
-            viewRouter.goToGameFromActivities = true
+            viewRouter.pathFromActivity.append(.game)
+            viewRouter.currentPage = .game
+            print("case #3")
         }
     }
 
