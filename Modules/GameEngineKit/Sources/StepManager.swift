@@ -12,13 +12,13 @@ public enum GameplayType {
 }
 
 public class StepManager {
-    public var stepModel: StandardStepModel
+    public var stepModel: any StepModelProtocol
     public var gameplay: any GameplayProtocol
     public var state = CurrentValueSubject<GameplayState, Never>(.idle)
 
     var cancellables = Set<AnyCancellable>()
 
-    public init(stepModel: StandardStepModel, state: GameplayState = .idle) {
+    public init(stepModel: any StepModelProtocol, state: GameplayState = .idle) {
         self.stepModel = stepModel
         self.gameplay = StepManager.gameplaySelector(stepModel: stepModel)
         self.gameplay.state
@@ -30,7 +30,7 @@ public class StepManager {
             .store(in: &cancellables)
     }
 
-    public static func gameplaySelector(stepModel: StandardStepModel) -> any GameplayProtocol {
+    public static func gameplaySelector(stepModel: any StepModelProtocol) -> any GameplayProtocol {
         switch stepModel.gameplay {
             case .selectTheRightAnswer:
                 return GameplaySelectTheRightAnswer(choices: stepModel.choices)
