@@ -4,7 +4,7 @@
 
 import SwiftUI
 
-struct BotFaceView: View {
+struct RobotFaceView: View {
 
     @Binding var isSelected: Bool
     @Binding var isConnected: Bool
@@ -42,8 +42,8 @@ struct BotFaceView: View {
     }
 }
 
-struct BotFaceView_Previews: PreviewProvider {
+struct RobotFaceView_Previews: PreviewProvider {
     static var previews: some View {
-        BotFaceView(isSelected: .constant(true), isConnected: .constant(true), name: .constant("LKAL 007"))
+        RobotFaceView(isSelected: .constant(true), isConnected: .constant(true), name: .constant("LKAL 007"))
     }
 }

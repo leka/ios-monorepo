@@ -12,7 +12,7 @@ struct SidebarHeaderView: View {
         VStack(spacing: 10) {
             logoLeka
             GoToProfileEditorButton()
-            GoToBotConnectButton()
+            GoToRobotConnectButton()
         }
         .frame(minHeight: 350, idealHeight: 350, maxHeight: 371)
     }

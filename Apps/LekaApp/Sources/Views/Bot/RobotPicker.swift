@@ -4,37 +4,37 @@
 
 import SwiftUI
 
-struct BotPicker: View {
+struct RobotPicker: View {
 
     @EnvironmentObject var settings: SettingsViewModel
     @EnvironmentObject var viewRouter: ViewRouter
     @EnvironmentObject var metrics: UIMetrics
-    @EnvironmentObject var botVM: BotViewModel
+    @EnvironmentObject var robotVM: RobotViewModel
     @Environment(\.dismiss) var dismiss
 
     @State private var searchBtnLabel: String = "Rechercher"
-    @State private var allBots: Int = 0
+    @State private var allRobots: Int = 0
 
     // ? For testing
     func resetForTests() {
-        botVM.botIsConnected = false
-        botVM.currentlyConnectedBotIndex = nil
-        botVM.currentlySelectedBotIndex = nil
+        robotVM.robotIsConnected = false
+        robotVM.currentlyConnectedRobotIndex = nil
+        robotVM.currentlySelectedRobotIndex = nil
     }
 
     var body: some View {
         ZStack(alignment: .center) {
             CloudsBGView()
                 .onTapGesture {
-                    botVM.currentlySelectedBotIndex = nil
+                    robotVM.currentlySelectedRobotIndex = nil
                 }
 
             VStack {
                 Spacer()
 
-                BotStore(botVM: botVM, allBots: $allBots)
+                RobotStore(robotVM: robotVM, allRobots: $allRobots)
                     .onAppear {
-                        allBots = 13  // For the tests
+                        allRobots = 13  // For the tests
                     }
 
                 HStack(spacing: 60) {
@@ -62,18 +62,18 @@ struct BotPicker: View {
                 searchBtnLabel = "Recherche en cours..."
                 resetForTests()
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                    if allBots < 3 {
-                        allBots += 1
+                    if allRobots < 3 {
+                        allRobots += 1
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                             searchBtnLabel = "Rechercher"
                         }
-                    } else if allBots == 3 {
-                        allBots = 13
+                    } else if allRobots == 3 {
+                        allRobots = 13
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                             searchBtnLabel = "Rechercher"
                         }
                     } else {
-                        allBots = 0
+                        allRobots = 0
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                             searchBtnLabel = "Rechercher"
                         }
@@ -96,19 +96,19 @@ struct BotPicker: View {
     private var connectionButton: some View {
         Button(
             action: {
-                if botVM.currentlyConnectedBotIndex == botVM.currentlySelectedBotIndex {
-                    botVM.currentlyConnectedBotIndex = nil
-                    botVM.currentlyConnectedBotName = ""
-                    botVM.botIsConnected = false
+                if robotVM.currentlyConnectedRobotIndex == robotVM.currentlySelectedRobotIndex {
+                    robotVM.currentlyConnectedRobotIndex = nil
+                    robotVM.currentlyConnectedRobotName = ""
+                    robotVM.robotIsConnected = false
                 } else {
-                    botVM.currentlyConnectedBotIndex = botVM.currentlySelectedBotIndex
-                    botVM.currentlyConnectedBotName = "LKAL \(String(describing: botVM.currentlyConnectedBotIndex))"
-                    botVM.botIsConnected = true
+                    robotVM.currentlyConnectedRobotIndex = robotVM.currentlySelectedRobotIndex
+                    robotVM.currentlyConnectedRobotName = "LKAL \(String(describing: robotVM.currentlyConnectedRobotIndex))"
+                    robotVM.robotIsConnected = true
                 }
             },
             label: {
                 Group {
-                    if botVM.currentlyConnectedBotIndex == botVM.currentlySelectedBotIndex {
+                    if robotVM.currentlyConnectedRobotIndex == robotVM.currentlySelectedRobotIndex {
                         Text("Se déconnecter")
                     } else {
                         Text("Se connecter")
@@ -121,9 +121,9 @@ struct BotPicker: View {
             }
         )
         .buttonStyle(.borderedProminent)
-        .tint(botVM.currentlyConnectedBotIndex == botVM.currentlySelectedBotIndex ? Color("lekaOrange") : .accentColor)
-        .disabled(allBots == 0)
-        .disabled(botVM.currentlySelectedBotIndex == nil)  // For the tests
+        .tint(robotVM.currentlyConnectedRobotIndex == robotVM.currentlySelectedRobotIndex ? Color("lekaOrange") : .accentColor)
+        .disabled(allRobots == 0)
+        .disabled(robotVM.currentlySelectedRobotIndex == nil)  // For the tests
     }
 
     // Toolbar
@@ -151,10 +151,10 @@ struct BotPicker: View {
     }
 }
 
-struct BotsConnectView_Previews: PreviewProvider {
+struct RobotsConnectView_Previews: PreviewProvider {
     static var previews: some View {
-        BotPicker()
-            .environmentObject(BotViewModel())
+        RobotPicker()
+            .environmentObject(RobotViewModel())
             .environmentObject(SettingsViewModel())
             .environmentObject(UIMetrics())
             .environmentObject(ViewRouter())

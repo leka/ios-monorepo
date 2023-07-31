@@ -14,7 +14,7 @@ struct LekaApp: App {
     @StateObject var settings = SettingsViewModel()
     @StateObject var curriculumVM = CurriculumViewModel()
     @StateObject var activityVM = ActivityViewModel()
-    @StateObject var botVM = BotViewModel()
+    @StateObject var robotVM = RobotViewModel()
 
     var body: some Scene {
         WindowGroup {
@@ -30,7 +30,7 @@ struct LekaApp: App {
                 .environmentObject(settings)
                 .environmentObject(curriculumVM)
                 .environmentObject(activityVM)
-                .environmentObject(botVM)
+                .environmentObject(robotVM)
         }
     }
 }

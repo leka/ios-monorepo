@@ -4,7 +4,7 @@
 
 import SwiftUI
 
-struct BotBatteryIndicator: View {
+struct RobotBatteryIndicator: View {
 
     @Binding var level: Double
     @Binding var charging: Bool
@@ -49,8 +49,8 @@ struct BotBatteryIndicator: View {
     }
 }
 
-struct BotBatteryIndicator_Previews: PreviewProvider {
+struct RobotBatteryIndicator_Previews: PreviewProvider {
     static var previews: some View {
-        BotBatteryIndicator(level: .constant(98), charging: .constant(true))
+        RobotBatteryIndicator(level: .constant(98), charging: .constant(true))
     }
 }

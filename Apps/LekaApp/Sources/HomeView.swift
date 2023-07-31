@@ -6,7 +6,7 @@ import SwiftUI
 
 struct HomeView: View {
 
-    @EnvironmentObject var botVM: BotViewModel
+    @EnvironmentObject var robotVM: RobotViewModel
     @EnvironmentObject var sidebar: SidebarViewModel
     @EnvironmentObject var settings: SettingsViewModel
     @EnvironmentObject var viewRouter: ViewRouter
@@ -44,7 +44,7 @@ struct HomeView: View {
         }
         .fullScreenCover(isPresented: $sidebar.showRobotPicker) {
             NavigationStack {
-                BotPicker()
+                RobotPicker()
             }
         }
         .alert("Voulez-vous quitter le mode exploratoire ?", isPresented: $settings.showSwitchOffExploratoryAlert) {
@@ -93,7 +93,7 @@ struct HomeView_Previews: PreviewProvider {
             .environmentObject(ViewRouter())
             .environmentObject(CurriculumViewModel())
             .environmentObject(ActivityViewModel())
-            .environmentObject(BotViewModel())
+            .environmentObject(RobotViewModel())
             .previewInterfaceOrientation(.landscapeLeft)
     }
 }

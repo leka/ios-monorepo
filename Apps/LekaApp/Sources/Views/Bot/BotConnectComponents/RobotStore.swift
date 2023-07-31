@@ -4,43 +4,43 @@
 
 import SwiftUI
 
-struct BotStore: View {
+struct RobotStore: View {
 
-    @ObservedObject var botVM: BotViewModel
+    @ObservedObject var robotVM: RobotViewModel
     @EnvironmentObject var metrics: UIMetrics
 
-    @Binding var allBots: Int
+    @Binding var allRobots: Int
 
     var body: some View {
         Group {
-            if allBots < 1 {
+            if allRobots < 1 {
                 searchInvite
-            } else if 1...3 ~= allBots {
+            } else if 1...3 ~= allRobots {
                 HStack(spacing: 160) {
                     Spacer()
-                    availableBots
+                    availableRobots
                     Spacer()
                 }
                 .onTapGesture {
-                    botVM.currentlySelectedBotIndex = nil
+                    robotVM.currentlySelectedRobotIndex = nil
                 }
             } else {
                 let rows = Array(repeating: GridItem(), count: 2)
                 ScrollViewReader { proxy in
                     ScrollView(.horizontal) {
                         LazyHGrid(rows: rows, spacing: 200) {
-                            availableBots
+                            availableRobots
                         }
                     }
                     .onTapGesture {
-                        botVM.currentlySelectedBotIndex = nil
+                        robotVM.currentlySelectedRobotIndex = nil
                     }
                     ._safeAreaInsets(EdgeInsets(top: 0, leading: 110, bottom: 0, trailing: 80))
                     .onAppear {
-                        guard botVM.currentlyConnectedBotIndex != nil else {
+                        guard robotVM.currentlyConnectedRobotIndex != nil else {
                             return
                         }
-                        withAnimation { proxy.scrollTo(botVM.currentlyConnectedBotIndex, anchor: .center) }
+                        withAnimation { proxy.scrollTo(robotVM.currentlyConnectedRobotIndex, anchor: .center) }
                     }
                 }
             }
@@ -48,14 +48,14 @@ struct BotStore: View {
         .frame(height: 500)
     }
 
-    private var availableBots: some View {
-        ForEach(1...allBots, id: \.self) { item in
+    private var availableRobots: some View {
+        ForEach(1...allRobots, id: \.self) { item in
             Button {
-                botVM.currentlySelectedBotIndex = item
+                robotVM.currentlySelectedRobotIndex = item
             } label: {
-                BotFaceView(
-                    isSelected: .constant(botVM.currentlySelectedBotIndex == item),
-                    isConnected: .constant(botVM.currentlyConnectedBotIndex == item),
+                RobotFaceView(
+                    isSelected: .constant(robotVM.currentlySelectedRobotIndex == item),
+                    isConnected: .constant(robotVM.currentlyConnectedRobotIndex == item),
                     name: .constant("LKAL \(item)"))
             }
             .buttonStyle(NoFeedback_ButtonStyle())

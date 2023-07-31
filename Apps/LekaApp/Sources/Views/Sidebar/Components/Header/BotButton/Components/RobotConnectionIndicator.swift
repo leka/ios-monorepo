@@ -4,9 +4,9 @@
 
 import SwiftUI
 
-struct BotConnectionIndicator: View {
+struct RobotConnectionIndicator: View {
 
-    @EnvironmentObject var botVM: BotViewModel
+    @EnvironmentObject var robotVM: RobotViewModel
     // Animation
     @State private var isAnimated: Bool = false
     @State private var diameter: CGFloat = 0
@@ -14,10 +14,12 @@ struct BotConnectionIndicator: View {
     var body: some View {
         ZStack {
             Circle()
-                .fill(botVM.botIsConnected ? Color("lekaGreen") : Color("lekaDarkGray"))
+                .fill(robotVM.robotIsConnected ? Color("lekaGreen") : Color("lekaDarkGray"))
                 .opacity(0.4)
 
-            Image(botVM.botIsConnected ? "bot_on" : "bot_off")
+            Image(robotVM.robotIsConnected ?
+                  LekaAppAsset.Assets.robotConnected.name : LekaAppAsset.Assets.robotDisconnected.name
+            )
                 .resizable()
                 .renderingMode(.original)
                 .aspectRatio(contentMode: .fit)
@@ -25,7 +27,7 @@ struct BotConnectionIndicator: View {
 
             Circle()
                 .stroke(
-                    botVM.botIsConnected ? Color("lekaGreen") : Color("lekaDarkGray"),
+                    robotVM.robotIsConnected ? Color("lekaGreen") : Color("lekaDarkGray"),
                     lineWidth: 4
                 )
                 .frame(width: 44, height: 44)
@@ -39,7 +41,7 @@ struct BotConnectionIndicator: View {
                 .animation(
                     Animation.easeInOut(duration: 1.5).delay(5).repeatForever(autoreverses: false), value: diameter
                 )
-                .opacity(botVM.botIsConnected ? 1 : 0.0)
+                .opacity(robotVM.robotIsConnected ? 1 : 0.0)
         )
         .onAppear {
             isAnimated = true
