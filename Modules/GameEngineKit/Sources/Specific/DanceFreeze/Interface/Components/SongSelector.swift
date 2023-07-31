@@ -5,12 +5,6 @@
 import DesignKit
 import SwiftUI
 
-struct SongModel: Hashable, Equatable {
-    let id: UUID = UUID()
-    let name: String
-    let file: String
-}
-
 private let kAvailableSongs: [SongModel] = [
     // TO DO : (@hugo) Replace nyan by validated free use music
     SongModel(name: "Frère Jacques", file: "nyan"),
