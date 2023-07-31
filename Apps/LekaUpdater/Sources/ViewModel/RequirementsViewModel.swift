@@ -20,7 +20,11 @@ class RequirementsViewModel: ObservableObject {
     let robotBatteryQuarter1Text = "Votre robot soit chargé à 30% ou plus"
 
     var robotIsReadyToUpdate: Bool {
-        robotManager.battery >= 30 && robotManager.isCharging
+        if let battery = robotManager.battery, let isCharging = robotManager.isCharging {
+            return battery >= 30 && isCharging
+        }
+
+        return false
     }
 
     var robotIsNotReadyToUpdate: Bool {

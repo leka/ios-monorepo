@@ -14,10 +14,10 @@ struct InformationView: View {
             Form {
                 Section {
                     Group {
-                        if firmware.compareWith(version: robotManager.osVersion) == .needsUpdate {
+                        if firmware.compareWith(version: robotManager.osVersion ?? "1.0.0") == .needsUpdate {
                             RobotNeedsUpdateIllustration(size: 200)
 
-                            Text(robotManager.name)
+                            Text(robotManager.name ?? "(n/a)")
                                 .font(.title3)
 
                             Text("⬆️ Une mise à jour est disponible 📦")
@@ -25,7 +25,7 @@ struct InformationView: View {
                         } else {
                             RobotUpToDateIllustration(size: 200)
 
-                            Text(robotManager.name)
+                            Text(robotManager.name ?? "(n/a)")
                                 .font(.title3)
 
                             Text("🤖 Votre robot est à jour ! 🎉 Vous n'avez rien à faire 👌")
@@ -60,7 +60,7 @@ struct InformationView: View {
                         .font(.title)
                 }
 
-                if firmware.compareWith(version: robotManager.osVersion) == .needsUpdate {
+                if firmware.compareWith(version: robotManager.osVersion ?? "1.0.0") == .needsUpdate {
                     Section {
                         RobotUpdateAvailableView(robotManager: robotManager)
                     } header: {
