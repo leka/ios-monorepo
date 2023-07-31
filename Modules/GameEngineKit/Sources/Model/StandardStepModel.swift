@@ -4,7 +4,7 @@
 
 import SwiftUI
 
-public class StandardStepModel {
+public class StandardStepModel : StepModelProtocol{
     public var choices: [ChoiceViewModel]
 	public var gameplay : GameplayType
     public var answersNumber: Int?
