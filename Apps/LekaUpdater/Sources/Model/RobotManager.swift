@@ -5,7 +5,7 @@
 import BLEKit
 import Foundation
 
-public class RobotPeripheralViewModel: ObservableObject {
+public class RobotManager: ObservableObject {
     @Published var name: String
     @Published var serialNumber: String?
     @Published var battery: Int

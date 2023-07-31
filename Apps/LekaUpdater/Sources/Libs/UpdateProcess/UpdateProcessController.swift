@@ -36,12 +36,12 @@ class UpdateProcessController {
 
     public var currentStage = CurrentValueSubject<UpdateProcessStage, UpdateProcessError>(.initial)
 
-    init(robot: RobotPeripheralViewModel) {
-        let currentRobotVersion = robot.osVersion
+    init(robotManager: RobotManager) {
+        let currentRobotVersion = robotManager.osVersion
 
         switch currentRobotVersion {
             case "1.0.0", "1.1.0":
-                self.currentUpdateProcess = UpdateProcessV100(robot: robot.robotPeripheral)
+                self.currentUpdateProcess = UpdateProcessV100(robot: robotManager.robotPeripheral)
             default:
                 self.currentUpdateProcess = UpdateProcessTemplate()
         }

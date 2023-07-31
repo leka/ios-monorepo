@@ -34,8 +34,8 @@ class UpdateStatusViewModel: ObservableObject {
         }
     }
 
-    init(robot: RobotPeripheralViewModel) {
-        self.updateProcessController = UpdateProcessController(robot: robot)
+    init(robotManager: RobotManager) {
+        self.updateProcessController = UpdateProcessController(robotManager: robotManager)
 
         subscribeToStateUpdate()
     }

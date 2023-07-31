@@ -7,17 +7,17 @@ import SwiftUI
 
 struct InformationView: View {
     @EnvironmentObject var firmware: FirmwareManager
-    @EnvironmentObject var robot: RobotPeripheralViewModel
+    @EnvironmentObject var robotManager: RobotManager
 
     var body: some View {
         VStack {
             Form {
                 Section {
                     Group {
-                        if firmware.compareWith(version: robot.osVersion) == .needsUpdate {
+                        if firmware.compareWith(version: robotManager.osVersion) == .needsUpdate {
                             RobotNeedsUpdateIllustration(size: 200)
 
-                            Text(robot.name)
+                            Text(robotManager.name)
                                 .font(.title3)
 
                             Text("⬆️ Une mise à jour est disponible 📦")
@@ -25,7 +25,7 @@ struct InformationView: View {
                         } else {
                             RobotUpToDateIllustration(size: 200)
 
-                            Text(robot.name)
+                            Text(robotManager.name)
                                 .font(.title3)
 
                             Text("🤖 Votre robot est à jour ! 🎉 Vous n'avez rien à faire 👌")
@@ -60,9 +60,9 @@ struct InformationView: View {
                         .font(.title)
                 }
 
-                if firmware.compareWith(version: robot.osVersion) == .needsUpdate {
+                if firmware.compareWith(version: robotManager.osVersion) == .needsUpdate {
                     Section {
-                        RobotUpdateAvailableView(robot: robot)
+                        RobotUpdateAvailableView(robotManager: robotManager)
                     } header: {
                         Text("État de mise à jour du robot")
                             .textCase(nil)
@@ -79,10 +79,10 @@ struct InformationView: View {
                             .padding(35)
 
                         Button("Switch (debug)") {
-                            if robot.osVersion == "1.3.0" {
-                                robot.osVersion = "1.4.0"
+                            if robotManager.osVersion == "1.3.0" {
+                                robotManager.osVersion = "1.4.0"
                             } else {
-                                robot.osVersion = "1.3.0"
+                                robotManager.osVersion = "1.3.0"
                             }
                         }  // TODO: Remove DEBUG
                     }
@@ -93,8 +93,8 @@ struct InformationView: View {
         }
         .foregroundColor(DesignKitAsset.Colors.darkGray.swiftUIColor)
         .onAppear {
-            robot.readReadOnlyCharacteristics()
-            robot.subscribeToCharacteristicsNotifications()
+            robotManager.readReadOnlyCharacteristics()
+            robotManager.subscribeToCharacteristicsNotifications()
         }
         .toolbar {
             ToolbarItem(placement: .principal) {
@@ -112,13 +112,13 @@ struct InformationView: View {
 
 struct InformationView_Previews: PreviewProvider {
     static let firmware = FirmwareManager()
-    static let robot = RobotPeripheralViewModel(battery: 75, isCharging: true, osVersion: "1.3.0")
+    static let robotManager = RobotManager(name: "Leka", battery: 75, isCharging: true, osVersion: "1.3.0")
 
     static var previews: some View {
         NavigationStack {
             InformationView()
                 .environmentObject(firmware)
-                .environmentObject(robot)
+                .environmentObject(robotManager)
         }
     }
 }
