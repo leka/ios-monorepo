@@ -8,7 +8,11 @@ import SwiftUI
 struct ConnectionView: View {
     @EnvironmentObject var firmware: FirmwareManager
 
-    @StateObject private var viewModel = ConnectionViewModel()
+    @StateObject private var viewModel: ConnectionViewModel
+
+    init(robotManager: RobotManager) {
+        self._viewModel = StateObject(wrappedValue: ConnectionViewModel(robotManager: robotManager))
+    }
 
     var body: some View {
         VStack {
@@ -36,7 +40,7 @@ struct ConnectionView: View {
                 NavigationLink {
                     InformationView()
                         .environmentObject(firmware)
-                        .environmentObject(viewModel.connectedRobot)
+                        .environmentObject(viewModel.robotManager)
                 } label: {
                     HStack {
                         Text("Continuer")
@@ -50,11 +54,12 @@ struct ConnectionView: View {
 }
 
 struct ConnectionView_Previews: PreviewProvider {
+    static var robotManager = RobotManager()
     static var firmware = FirmwareManager()
 
     static var previews: some View {
         NavigationStack {
-            ConnectionView()
+            ConnectionView(robotManager: robotManager)
                 .environmentObject(firmware)
         }
     }
