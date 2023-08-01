@@ -12,6 +12,25 @@ struct HomeView: View {
     @EnvironmentObject var viewRouter: ViewRouter
     @EnvironmentObject var metrics: UIMetrics
 
+    private func changeBatteryLevel() {
+        if robotVM.robotIsCharging {
+            if robotVM.robotChargeLevel == 100 {
+                robotVM.robotIsCharging.toggle()  // off
+            } else if robotVM.robotChargeLevel == 10 {
+                robotVM.robotChargeLevel += 15
+            } else {
+                robotVM.robotChargeLevel += 25
+            }
+        } else {
+            if robotVM.robotChargeLevel == 0 {
+                robotVM.robotIsCharging.toggle()  // on
+                robotVM.robotChargeLevel = 10  // trick to trigger change
+            } else {
+                robotVM.robotChargeLevel -= 25
+            }
+        }
+    }
+
     var body: some View {
         Group {
             // Educ Content
@@ -24,6 +43,13 @@ struct HomeView: View {
                         .toolbar {
                             ToolbarItem(placement: .principal) {
                                 toolbarTitle
+                            }
+                            ToolbarItem(placement: .navigationBarLeading) {
+                                Button(
+                                    action: { changeBatteryLevel() },
+                                    label: {
+                                        Text("Batterie")
+                                    })
                             }
                             ToolbarItem(placement: .navigationBarTrailing) {
                                 infoButton
