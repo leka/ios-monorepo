@@ -6,7 +6,7 @@ import Foundation
 import SwiftUI
 
 class RequirementsViewModel: ObservableObject {
-    @ObservedObject private var robot: RobotPeripheralViewModel
+    @ObservedObject private var robotManager: RobotManager
 
     let requirementsInstructionText = "Pour lancer la mise à jour, veillez à ce que :"
 
@@ -20,14 +20,18 @@ class RequirementsViewModel: ObservableObject {
     let robotBatteryQuarter1Text = "Votre robot soit chargé à 30% ou plus"
 
     var robotIsReadyToUpdate: Bool {
-        robot.battery >= 30 && robot.isCharging
+        if let battery = robotManager.battery, let isCharging = robotManager.isCharging {
+            return battery >= 30 && isCharging
+        }
+
+        return false
     }
 
     var robotIsNotReadyToUpdate: Bool {
         !robotIsReadyToUpdate
     }
 
-    init(robot: RobotPeripheralViewModel) {
-        self._robot = ObservedObject(wrappedValue: robot)
+    init(robotManager: RobotManager) {
+        self._robotManager = ObservedObject(wrappedValue: robotManager)
     }
 }

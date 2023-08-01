@@ -6,12 +6,12 @@ import DesignKit
 import SwiftUI
 
 struct RobotUpdateAvailableView: View {
-    @ObservedObject private var robot: RobotPeripheralViewModel
+    @ObservedObject private var robotManager: RobotManager
     @StateObject private var requirementsViewModel: RequirementsViewModel
 
-    init(robot: RobotPeripheralViewModel) {
-        self._robot = ObservedObject(wrappedValue: robot)
-        self._requirementsViewModel = StateObject(wrappedValue: RequirementsViewModel(robot: robot))
+    init(robotManager: RobotManager) {
+        self._robotManager = ObservedObject(wrappedValue: robotManager)
+        self._requirementsViewModel = StateObject(wrappedValue: RequirementsViewModel(robotManager: robotManager))
     }
 
     var body: some View {
@@ -19,7 +19,7 @@ struct RobotUpdateAvailableView: View {
             Text("⬆️ Une mise à jour est disponible 📦")
                 .font(.title3)
             NavigationLink {
-                UpdateStatusView(robot: robot)
+                UpdateStatusView(robotManager: robotManager)
             } label: {
                 Text("Lancer la mise à jour du robot")
                     .foregroundColor(.white)
@@ -40,13 +40,13 @@ struct RobotUpdateAvailableView: View {
 }
 
 struct RobotUpdateAvailableView_Previews: PreviewProvider {
-    @StateObject static var robotIsReady = RobotPeripheralViewModel(battery: 100, isCharging: true)
-    @StateObject static var robotIsNotReady = RobotPeripheralViewModel(battery: 0, isCharging: false)
+    @StateObject static var robotIsReady = RobotManager(battery: 100, isCharging: true)
+    @StateObject static var robotIsNotReady = RobotManager(battery: 0, isCharging: false)
 
     static var previews: some View {
-        RobotUpdateAvailableView(robot: robotIsReady)
+        RobotUpdateAvailableView(robotManager: robotIsReady)
             .foregroundColor(DesignKitAsset.Colors.darkGray.swiftUIColor)
-        RobotUpdateAvailableView(robot: robotIsNotReady)
+        RobotUpdateAvailableView(robotManager: robotIsNotReady)
             .foregroundColor(DesignKitAsset.Colors.darkGray.swiftUIColor)
     }
 }

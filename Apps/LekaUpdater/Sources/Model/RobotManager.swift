@@ -5,33 +5,36 @@
 import BLEKit
 import Foundation
 
-public class RobotPeripheralViewModel: ObservableObject {
-    @Published var name: String
+public class RobotManager: ObservableObject {
+    @Published var robotPeripheral: RobotPeripheral?
+    
+    @Published var name: String?
     @Published var serialNumber: String?
-    @Published var battery: Int
-    @Published var isCharging: Bool
-    @Published var osVersion: String
+    @Published var battery: Int?
+    @Published var isCharging: Bool?
+    @Published var osVersion: String?
 
-    public var robotPeripheral: RobotPeripheral?
-
-    init(
-        name: String = "Leka", serialNumber: String? = nil, battery: Int? = nil, isCharging: Bool? = nil,
-        osVersion: String = "1.2.3"
+    init(robotPeripheral: RobotPeripheral? = nil, name: String? = nil, serialNumber: String? = nil, battery: Int? = nil, isCharging: Bool? = nil,
+        osVersion: String? = nil
     ) {
+        self.robotPeripheral = robotPeripheral
+        
         self.name = name
         self.serialNumber = serialNumber
-        self.battery = battery ?? Int.random(in: 0...100)
-        self.isCharging = isCharging ?? Bool.random()
+        self.battery = battery
+        self.isCharging = isCharging
         self.osVersion = osVersion
+        
     }
 
     init(robotDiscovery: RobotDiscovery) {
+        self.robotPeripheral = robotDiscovery.robotPeripheral
+        
         self.name = robotDiscovery.advertisingData.name
         self.battery = robotDiscovery.advertisingData.battery
         self.isCharging = robotDiscovery.advertisingData.isCharging
         self.osVersion = robotDiscovery.advertisingData.osVersion
 
-        self.robotPeripheral = robotDiscovery.robotPeripheral
     }
 
     public func subscribeToCharacteristicsNotifications() {

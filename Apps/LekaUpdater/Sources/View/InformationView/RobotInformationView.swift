@@ -6,22 +6,27 @@ import DesignKit
 import SwiftUI
 
 struct RobotInformationView: View {
-    @EnvironmentObject var robot: RobotPeripheralViewModel
+    @EnvironmentObject var robotManager: RobotManager
 
     var body: some View {
         List {
-            Text("N° série: \(robot.serialNumber ?? "(n/a)")")
-            Text("Battery: \(robot.battery)")
-            Text("Version: \(robot.osVersion)")
+            Text("N° série: \(robotManager.serialNumber ?? "(n/a)")")
+            Text(robotManager.battery == nil ? "Battery: (n/a)" : "Battery: \(robotManager.battery!)")
+            Text("Version: \(robotManager.osVersion ?? "(n/a)")")
         }
     }
 }
 
 struct RobotInformationView_Previews: PreviewProvider {
-    static let robotWithoutSerialNumber = RobotPeripheralViewModel()
-    static let robotWithSerialNumber = RobotPeripheralViewModel(serialNumber: "LK-2206...")
+    static let robotNotConnected = RobotManager()
+    static let robotWithoutSerialNumber = RobotManager(battery: 42, osVersion: "1.0.0")
+    static let robotWithSerialNumber = RobotManager(
+        serialNumber: "LK-2206...", battery: 42, osVersion: "1.0.0")
 
     static var previews: some View {
+        RobotInformationView()
+            .foregroundColor(DesignKitAsset.Colors.darkGray.swiftUIColor)
+            .environmentObject(robotNotConnected)
         RobotInformationView()
             .foregroundColor(DesignKitAsset.Colors.darkGray.swiftUIColor)
             .environmentObject(robotWithoutSerialNumber)

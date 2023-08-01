@@ -8,8 +8,8 @@ import SwiftUI
 struct UpdateStatusView: View {
     @StateObject private var viewModel: UpdateStatusViewModel
 
-    init(robot: RobotPeripheralViewModel) {
-        self._viewModel = StateObject(wrappedValue: UpdateStatusViewModel(robot: robot))
+    init(robotManager: RobotManager) {
+        self._viewModel = StateObject(wrappedValue: UpdateStatusViewModel(robotManager: robotManager))
     }
 
     var body: some View {
@@ -93,10 +93,10 @@ struct UpdateStatusView: View {
 }
 
 struct UpdatingStatusView_Previews: PreviewProvider {
-    static var robot = RobotPeripheralViewModel()
+    static var robotManager = RobotManager()
     static var previews: some View {
         NavigationStack {
-            UpdateStatusView(robot: robot)
+            UpdateStatusView(robotManager: robotManager)
         }
     }
 }

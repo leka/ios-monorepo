@@ -67,8 +67,8 @@ private struct RequirementView: View {
 }
 
 struct RequirementsView_Previews: PreviewProvider {
-    static var robot = RobotPeripheralViewModel()
-    @StateObject static var viewModel = RequirementsViewModel(robot: robot)
+    static var robotManager = RobotManager()
+    @StateObject static var viewModel = RequirementsViewModel(robotManager: robotManager)
 
     static var previews: some View {
         RequirementsView(viewModel: viewModel)
