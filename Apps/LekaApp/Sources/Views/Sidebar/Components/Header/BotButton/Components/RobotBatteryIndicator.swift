@@ -10,6 +10,7 @@ struct RobotBatteryIndicator: View {
     @Binding var charging: Bool
 
     @State private var opacity: Double = 1
+    private let battery100Bolt = "battery.100.bolt"
 
     var body: some View {
         Image(systemName: imageGivenValue())
@@ -36,15 +37,15 @@ struct RobotBatteryIndicator: View {
 
     private func imageGivenValue() -> String {
         if level < 25 {
-            return charging ? "battery.100.bolt" : "battery.25"
+            return charging ? battery100Bolt : "battery.25"
         } else if 25..<50 ~= level {
-            return charging ? "battery.100.bolt" : "battery.25"
+            return charging ? battery100Bolt : "battery.25"
         } else if 50..<75 ~= level {
-            return charging ? "battery.100.bolt" : "battery.50"
+            return charging ? battery100Bolt : "battery.50"
         } else if 75..<100 ~= level {
-            return charging ? "battery.100.bolt" : "battery.75"
+            return charging ? battery100Bolt : "battery.75"
         } else {
-            return charging ? "battery.100.bolt" : "battery.100"
+            return charging ? battery100Bolt : "battery.100"
         }
     }
 
