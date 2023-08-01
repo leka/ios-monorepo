@@ -26,9 +26,14 @@ class FirmwareManager: ObservableObject {
     public var data = Data()
 
     func compareWith(version: String) -> RobotUpdateStatus {
+        guard version.contains(".") else {
+            return .needsUpdate
+        }
+
         guard version.compare(currentVersion, options: .numeric) == .orderedAscending else {
             return .upToDate
         }
+
         return .needsUpdate
     }
 
