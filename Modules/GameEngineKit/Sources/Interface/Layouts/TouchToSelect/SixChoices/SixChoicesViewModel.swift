@@ -5,7 +5,7 @@
 import Combine
 import SwiftUI
 
-public class SixChoicesGridViewModel: Identifiable, ObservableObject {
+public class SixChoicesViewModel: Identifiable, ObservableObject {
     public var gameplay: any GameplayProtocol
 
     @Published public var choices: [ChoiceViewModel]

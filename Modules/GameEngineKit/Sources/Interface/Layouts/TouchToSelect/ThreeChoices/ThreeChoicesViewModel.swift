@@ -5,7 +5,7 @@
 import Combine
 import SwiftUI
 
-public class ThreeChoicesInlineViewModel: Identifiable, ObservableObject {
+public class ThreeChoicesViewModel: Identifiable, ObservableObject {
     public var gameplay: any GameplayProtocol
 
     @Published public var choices: [ChoiceViewModel]
