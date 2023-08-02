@@ -21,12 +21,9 @@ public struct SixChoicesGridView: View {
                     let choice = viewModel.choices[index]
 
                     ChoiceView(choice: choice)
-                        .simultaneousGesture(
-                            TapGesture()
-                                .onEnded {
-                                    viewModel.onChoiceTapped(choice: choice)
-                                }
-                        )
+                        .onTapGesture {
+                            viewModel.onChoiceTapped(choice: choice)
+                        }
                 }
             }
             GridRow {
@@ -34,12 +31,9 @@ public struct SixChoicesGridView: View {
                     let choice = viewModel.choices[index]
 
                     ChoiceView(choice: choice)
-                        .simultaneousGesture(
-                            TapGesture()
-                                .onEnded {
-                                    viewModel.onChoiceTapped(choice: choice)
-                                }
-                        )
+                        .onTapGesture {
+                            viewModel.onChoiceTapped(choice: choice)
+                        }
                 }
             }
         }
