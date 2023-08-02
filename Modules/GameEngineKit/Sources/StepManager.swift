@@ -63,10 +63,22 @@ public class StepManager: ObservableObject {
         switch currentInterface {
             case .undefined:
                 StepErrorView()
-            case .sixChoices:
-                SixChoicesGridView(gameplay: currentGameplay)
+            case .oneChoice:
+                OneChoiceView(gameplay: currentGameplay)
+            case .twoChoices:
+                TwoChoicesView(gameplay: currentGameplay)
             case .threeChoices:
+                ThreeChoicesView(gameplay: currentGameplay)
+            case .threeChoicesInline:
                 ThreeChoicesInlineView(gameplay: currentGameplay)
+            case .fourChoices:
+                FourChoicesView(gameplay: currentGameplay)
+            case .fourChoicesInline:
+                FourChoicesInlineView(gameplay: currentGameplay)
+            case .fiveChoices:
+                FiveChoicesView(gameplay: currentGameplay)
+            case .sixChoices:
+                SixChoicesView(gameplay: currentGameplay)
         }
     }
 

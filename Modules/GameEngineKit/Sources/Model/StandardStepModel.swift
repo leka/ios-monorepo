@@ -13,8 +13,14 @@ public enum GameplayType {
 
 public enum InterfaceType {
     case undefined
-    case sixChoices
+    case oneChoice
+    case twoChoices
     case threeChoices
+    case threeChoicesInline
+    case fourChoices
+    case fourChoicesInline
+    case fiveChoices
+    case sixChoices
 }
 
 public struct StandardStepModel {
