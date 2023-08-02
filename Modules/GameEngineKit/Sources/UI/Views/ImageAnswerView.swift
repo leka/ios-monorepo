@@ -6,6 +6,7 @@ import SwiftUI
 
 struct ImageAnswerView: View {
     private let image: String
+    private let size: CGFloat
     private let status: ChoiceState
 
     @State private var animationPercent: CGFloat = .zero
@@ -15,12 +16,12 @@ struct ImageAnswerView: View {
     var view: some View {
         let circle = Image(image)
             .resizable()
-			.aspectRatio(contentMode: .fit)
-			.frame(
-				width: 260,
-				height: 260
-			)
-			.clipShape(Circle().inset(by: 2))
+            .aspectRatio(contentMode: .fit)
+            .frame(
+                width: size,
+                height: size
+            )
+            .clipShape(Circle().inset(by: 2))
 
         switch status {
             case .notSelected:
@@ -53,8 +54,9 @@ struct ImageAnswerView: View {
         }
     }
 
-    init(image: String, status: ChoiceState = .notSelected) {
+    init(image: String, size: CGFloat, status: ChoiceState = .notSelected) {
         self.image = image
+        self.size = size
         self.status = status
     }
 

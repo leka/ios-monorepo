@@ -6,6 +6,7 @@ import SwiftUI
 
 struct ColoredAnswerView: View {
     private let color: Color
+    private let size: CGFloat
     private let status: ChoiceState
 
     @State private var animationPercent: CGFloat = .zero
@@ -16,8 +17,8 @@ struct ColoredAnswerView: View {
         let circle = Circle()
             .foregroundColor(color)
             .frame(
-                width: 260,
-                height: 260
+                width: size,
+                height: size
             )
 
         switch status {
@@ -51,8 +52,9 @@ struct ColoredAnswerView: View {
         }
     }
 
-    init(color: String, status: ChoiceState = .notSelected) {
+    init(color: String, size: CGFloat, status: ChoiceState = .notSelected) {
         self.color = ColoredAnswerView.stringToColor(from: color)
+        self.size = size
         self.status = status
     }
 
