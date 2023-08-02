@@ -9,17 +9,23 @@ class InformationViewModel: ObservableObject {
 
     private var cancellables: Set<AnyCancellable> = []
 
+    @Published var robotConnectedChange: Bool = false
+
     @Published var showRobotNeedsUpdate: Bool = true
     @Published var robotName: String = "n/a"
 
     @Published var firmwareVersion = globalFirmwareManager.currentVersion
 
     init() {
+        self.subscribeToRobotPeripheral()
+
         self.subscribeToRobotNameUpdates()
         self.subscribeToRobotOsVersionUpdates()
     }
 
-    public func onAppear() {
+    public func onViewReappear() {
+        self.robotName = globalRobotManager.name ?? "n/a"
+
         globalRobotManager.readReadOnlyCharacteristics()
         globalRobotManager.subscribeToCharacteristicsNotifications()
     }
@@ -31,6 +37,17 @@ class InformationViewModel: ObservableObject {
             globalRobotManager.osVersion = "1.3.0"
         }
     }  // TODO: Remove DEBUG
+
+    private func subscribeToRobotPeripheral() {
+        globalRobotManager.$robotPeripheral
+            .receive(on: DispatchQueue.main)
+            .sink { robot in
+                if robot != nil {
+                    self.robotConnectedChange.toggle()
+                }
+            }
+            .store(in: &cancellables)
+    }
 
     private func subscribeToRobotNameUpdates() {
         globalRobotManager.$name

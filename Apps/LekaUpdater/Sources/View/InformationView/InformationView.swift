@@ -85,7 +85,12 @@ struct InformationView: View {
             }
         }
         .foregroundColor(DesignKitAsset.Colors.darkGray.swiftUIColor)
-        .onAppear(perform: viewModel.onAppear)  // TODO: Does not work anymore
+        .onChange(
+            of: viewModel.robotConnectedChange,
+            perform: { _ in
+                viewModel.onViewReappear()
+            }
+        )
         .toolbar {
             ToolbarItem(placement: .principal) {
                 VStack {

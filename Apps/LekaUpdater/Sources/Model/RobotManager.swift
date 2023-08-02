@@ -26,17 +26,15 @@ public class RobotManager: ObservableObject {
         self.battery = battery
         self.isCharging = isCharging
         self.osVersion = osVersion
-
     }
 
-    init(robotDiscovery: RobotDiscovery) {
+    public func copyFrom(robotDiscovery: RobotDiscovery) {
         self.robotPeripheral = robotDiscovery.robotPeripheral
 
         self.name = robotDiscovery.advertisingData.name
         self.battery = robotDiscovery.advertisingData.battery
         self.isCharging = robotDiscovery.advertisingData.isCharging
         self.osVersion = robotDiscovery.advertisingData.osVersion
-
     }
 
     public func subscribeToCharacteristicsNotifications() {
