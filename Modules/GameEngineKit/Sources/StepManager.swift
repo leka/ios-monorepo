@@ -79,6 +79,13 @@ public class StepManager: ObservableObject {
                 FiveChoicesView(gameplay: currentGameplay)
             case .sixChoices:
                 SixChoicesView(gameplay: currentGameplay)
+            case .listenSixChoices:
+                if let actionStepModel = steps[currentStepIndex] as? ActionStepModel {
+                    let song = SongModel(name: actionStepModel.action.name, file: actionStepModel.action.name)
+                    ListenSixChoicesView(gameplay: currentGameplay, song: song)
+                } else {
+                    StepErrorView()
+                }
         }
     }
 
