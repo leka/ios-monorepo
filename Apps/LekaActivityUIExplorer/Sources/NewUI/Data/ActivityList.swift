@@ -40,4 +40,14 @@ let kListOfAvailablesActivities: [ActivityModel] = [
         instructions: "Contrôle Leka avec la télécommande et fais le changer de couleur",
         view: AnyView(RemoteArrowActivity())
     ),
+    ActivityModel(
+        title: "TouchToSelectThree",
+        instructions: "Touch the right answer",
+        view: AnyView(TouchToSelectThreeInlineActivity())
+    ),
+    ActivityModel(
+        title: "TouchToSelectSix",
+        instructions: "Touch the right answer",
+        view: AnyView(TouchToSelectSixActivity())
+    ),
 ]
