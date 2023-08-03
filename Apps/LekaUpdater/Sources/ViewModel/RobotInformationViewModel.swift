@@ -34,6 +34,8 @@ class RobotInformationViewModel: ObservableObject {
             .sink { robotBattery in
                 if let robotBattery = robotBattery {
                     self.robotBattery = "\(robotBattery)"
+                } else {
+                    self.robotBattery = "n/a"
                 }
             }
             .store(in: &cancellables)

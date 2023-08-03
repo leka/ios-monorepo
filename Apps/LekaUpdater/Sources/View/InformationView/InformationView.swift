@@ -104,6 +104,12 @@ struct InformationView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
             InformationView()
+                .onAppear {
+                    globalRobotManager.name = "Leka"
+                    globalRobotManager.battery = 75
+                    globalRobotManager.isCharging = true
+                    globalRobotManager.osVersion = "1.3.0"
+                }
         }
     }
 }
