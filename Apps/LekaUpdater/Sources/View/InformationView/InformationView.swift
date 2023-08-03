@@ -6,12 +6,7 @@ import DesignKit
 import SwiftUI
 
 struct InformationView: View {
-    @StateObject var viewModel: InformationViewModel
-
-    init(firmware: FirmwareManager) {
-        self._viewModel = StateObject(
-            wrappedValue: InformationViewModel(firmware: firmware))
-    }
+    @StateObject var viewModel = InformationViewModel()
 
     var body: some View {
         VStack {
@@ -106,11 +101,9 @@ struct InformationView: View {
 }
 
 struct InformationView_Previews: PreviewProvider {
-    static let firmware = FirmwareManager()
-
     static var previews: some View {
         NavigationStack {
-            InformationView(firmware: firmware)
+            InformationView()
         }
     }
 }
