@@ -6,8 +6,6 @@ import DesignKit
 import SwiftUI
 
 struct ConnectionView: View {
-    @EnvironmentObject var firmware: FirmwareManager
-
     @StateObject private var viewModel = ConnectionViewModel()
 
     var body: some View {
@@ -34,7 +32,7 @@ struct ConnectionView: View {
 
             ToolbarItem(placement: .navigationBarTrailing) {
                 NavigationLink {
-                    InformationView(firmware: firmware)
+                    InformationView()
                 } label: {
                     HStack {
                         Text("Continuer")
@@ -48,12 +46,9 @@ struct ConnectionView: View {
 }
 
 struct ConnectionView_Previews: PreviewProvider {
-    static var firmware = FirmwareManager()
-
     static var previews: some View {
         NavigationStack {
             ConnectionView()
-                .environmentObject(firmware)
         }
     }
 }

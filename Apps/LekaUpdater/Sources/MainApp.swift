@@ -6,18 +6,16 @@ import BLEKit
 import DesignKit
 import SwiftUI
 
+var globalFirmwareManager = FirmwareManager()
 var globalBleManager = BLEManager.live()
 var globalRobotManager = RobotManager()
 
 @main
 struct LekaUpdaterApp: App {
-    var firmware = FirmwareManager()
-
     var body: some Scene {
         WindowGroup {
             NavigationStack {
                 ConnectionView()
-                    .environmentObject(firmware)
             }
         }
     }

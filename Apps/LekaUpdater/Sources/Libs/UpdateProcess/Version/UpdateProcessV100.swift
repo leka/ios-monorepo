@@ -43,19 +43,13 @@ private class StateInitial: GKState, StateEventProcessor {
 
 private class StateLoadingUpdateFile: GKState, StateEventProcessor {
 
-    private var firmware: FirmwareManager
-
-    init(firmware: FirmwareManager) {
-        self.firmware = firmware
-    }
-
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
         return stateClass is StateErrorFailedToLoadFile.Type || stateClass is StateSettingDestinationPath.Type
     }
 
     override func didEnter(from previousState: GKState?) {
 
-        let isLoaded = firmware.load()
+        let isLoaded = globalFirmwareManager.load()
 
         if isLoaded {
             process(event: .fileLoaded)
@@ -78,12 +72,6 @@ private class StateLoadingUpdateFile: GKState, StateEventProcessor {
 
 private class StateSettingDestinationPath: GKState, StateEventProcessor {
 
-    private var firmware: FirmwareManager
-
-    init(firmware: FirmwareManager) {
-        self.firmware = firmware
-    }
-
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
         return stateClass is StateSendingFile.Type
     }
@@ -102,7 +90,7 @@ private class StateSettingDestinationPath: GKState, StateEventProcessor {
     }
 
     private func setDestinationPath() {
-        let osVersion = firmware.currentVersion
+        let osVersion = globalFirmwareManager.currentVersion
 
         let directory = "/fs/usr/os"
         let filename = "LekaOS-\(osVersion).bin"
@@ -146,12 +134,6 @@ private class StateApplyingUpdate: GKState, StateEventProcessor {
 
     private var cancellables: Set<AnyCancellable> = []
 
-    private var firmware: FirmwareManager
-
-    init(firmware: FirmwareManager) {
-        self.firmware = firmware
-    }
-
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
         return stateClass is StateWaitingForRobotToReboot.Type
     }
@@ -187,7 +169,7 @@ private class StateApplyingUpdate: GKState, StateEventProcessor {
     }
 
     private func setMajorMinorRevision() {
-        let majorData = Data([firmware.major])
+        let majorData = Data([globalFirmwareManager.major])
 
         let majorCharacteristic = WriteOnlyCharacteristic(
             characteristicUUID: BLESpecs.FirmwareUpdate.Characteristics.versionMajor,
@@ -196,7 +178,7 @@ private class StateApplyingUpdate: GKState, StateEventProcessor {
 
         globalRobotManager.robotPeripheral?.send(majorData, forCharacteristic: majorCharacteristic)
 
-        let minorData = Data([firmware.minor])
+        let minorData = Data([globalFirmwareManager.minor])
 
         let minorCharacteristic = WriteOnlyCharacteristic(
             characteristicUUID: BLESpecs.FirmwareUpdate.Characteristics.versionMinor,
@@ -205,7 +187,7 @@ private class StateApplyingUpdate: GKState, StateEventProcessor {
 
         globalRobotManager.robotPeripheral?.send(minorData, forCharacteristic: minorCharacteristic)
 
-        let revisionData = firmware.revision.data
+        let revisionData = globalFirmwareManager.revision.data
 
         let revisionCharacteristic = WriteOnlyCharacteristic(
             characteristicUUID: BLESpecs.FirmwareUpdate.Characteristics.versionRevision,
@@ -231,13 +213,7 @@ private class StateWaitingForRobotToReboot: GKState, StateEventProcessor {
 
     private var scanForRobotsTask: AnyCancellable?
 
-    private var firmware: FirmwareManager
-
     private var isRobotUpToDate: Bool = false
-
-    init(firmware: FirmwareManager) {
-        self.firmware = firmware
-    }
 
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
         return stateClass is StateFinal.Type || stateClass is StateErrorRobotNotUpToDate.Type
@@ -276,7 +252,8 @@ private class StateWaitingForRobotToReboot: GKState, StateEventProcessor {
                         robotDiscovery.robotPeripheral == globalRobotManager.robotPeripheral
                     }
                     if robotDetected != nil {
-                        self.isRobotUpToDate = robotDetected?.advertisingData.osVersion == self.firmware.currentVersion
+                        self.isRobotUpToDate =
+                            robotDetected?.advertisingData.osVersion == globalFirmwareManager.currentVersion
 
                         self.process(event: .robotDetected)
                     }
@@ -303,8 +280,6 @@ class UpdateProcessV100: UpdateProcessProtocol {
 
     private var cancellables: Set<AnyCancellable> = []
 
-    private var firmware = FirmwareManager()
-
     // MARK: - Public variables
 
     public var currentStage = CurrentValueSubject<UpdateProcessStage, UpdateProcessError>(.initial)
@@ -313,11 +288,11 @@ class UpdateProcessV100: UpdateProcessProtocol {
         self.stateMachine = GKStateMachine(states: [
             StateInitial(),
 
-            StateLoadingUpdateFile(firmware: firmware),
+            StateLoadingUpdateFile(),
             StateSendingFile(),
-            StateApplyingUpdate(firmware: firmware),
-            StateWaitingForRobotToReboot(firmware: firmware),
-            StateSettingDestinationPath(firmware: firmware),
+            StateApplyingUpdate(),
+            StateWaitingForRobotToReboot(),
+            StateSettingDestinationPath(),
 
             StateFinal(),
 

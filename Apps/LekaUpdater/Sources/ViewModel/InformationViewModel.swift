@@ -7,18 +7,14 @@ import Foundation
 
 class InformationViewModel: ObservableObject {
 
-    private var firmware: FirmwareManager
     private var cancellables: Set<AnyCancellable> = []
 
     @Published var showRobotNeedsUpdate: Bool = true
     @Published var robotName: String = "n/a"
 
-    @Published var firmwareVersion: String
+    @Published var firmwareVersion = globalFirmwareManager.currentVersion
 
-    init(firmware: FirmwareManager) {
-        self.firmware = firmware
-        self.firmwareVersion = firmware.currentVersion
-
+    init() {
         self.subscribeToRobotNameUpdates()
         self.subscribeToRobotOsVersionUpdates()
     }
@@ -56,7 +52,7 @@ class InformationViewModel: ObservableObject {
 
     private func updateShowRobotNeedsUpdate(robotOsVersion: String?) {
         if let robotOsVersion = robotOsVersion {
-            showRobotNeedsUpdate = firmware.compareWith(version: robotOsVersion) == .needsUpdate
+            showRobotNeedsUpdate = globalFirmwareManager.compareWith(version: robotOsVersion) == .needsUpdate
         } else {
             showRobotNeedsUpdate = false
         }
