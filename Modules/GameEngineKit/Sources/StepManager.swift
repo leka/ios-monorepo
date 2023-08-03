@@ -9,17 +9,17 @@ public class StepManager: ObservableObject {
     @Published public var currentInterface: InterfaceType
 
     public var currentStepIndex: Int = 0
-    public var steps: [StandardStepModel]
-    public var currentStep: StandardStepModel
+    public var steps: [any StepModelProtocol]
+    public var currentStep: any StepModelProtocol
     public var currentGameplay: any GameplayProtocol
     public var state = CurrentValueSubject<GameplayState, Never>(.idle)
 
     var cancellables = Set<AnyCancellable>()
 
-    public init(steps: [StandardStepModel], state: GameplayState = .idle) {
+    public init(steps: [any StepModelProtocol], state: GameplayState = .idle) {
         self.steps = steps
         guard let firstStep = steps.first else {
-            self.currentStep = StandardStepModel(choices: [], gameplay: .undefined, interface: .undefined)
+			self.currentStep = StandardStepModel(choices: [], gameplay: .undefined, interface: .undefined)
             self.currentGameplay = GameplayError()
             self.currentInterface = .undefined
             return
@@ -45,7 +45,7 @@ public class StepManager: ObservableObject {
             .store(in: &cancellables)
     }
 
-    public static func gameplaySelector(stepModel: StandardStepModel) -> any GameplayProtocol {
+    public static func gameplaySelector(stepModel: any StepModelProtocol) -> any GameplayProtocol {
         switch stepModel.gameplay {
             case .undefined:
                 return GameplayError()
