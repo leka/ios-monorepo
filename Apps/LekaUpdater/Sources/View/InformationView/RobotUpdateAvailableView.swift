@@ -35,7 +35,27 @@ struct RobotUpdateAvailableView: View {
 
 struct RobotUpdateAvailableView_Previews: PreviewProvider {
     static var previews: some View {
-        RobotUpdateAvailableView()
-            .foregroundColor(DesignKitAsset.Colors.darkGray.swiftUIColor)
+        VStack {
+            Spacer()
+
+            RobotUpdateAvailableView()
+                .foregroundColor(DesignKitAsset.Colors.darkGray.swiftUIColor)
+
+            Spacer()
+
+            Button("Change example") {
+                let isReady = Bool.random()
+
+                if isReady {
+                    print("Robot is ready to update")
+                    globalRobotManager.battery = 100
+                    globalRobotManager.isCharging = true
+                } else {
+                    print("Robot is NOT ready to update")
+                    globalRobotManager.battery = 0
+                    globalRobotManager.isCharging = false
+                }
+            }
+        }
     }
 }
