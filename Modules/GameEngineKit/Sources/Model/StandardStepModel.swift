@@ -6,7 +6,7 @@ import SwiftUI
 
 
 
-public struct StandardStepModel {
+public struct StandardStepModel : StepModelProtocol {
     public var choices: [ChoiceViewModel]
     public var gameplay: GameplayType
     public var interface: InterfaceType
