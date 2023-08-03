@@ -19,7 +19,7 @@ public class StepManager: ObservableObject {
     public init(steps: [any StepModelProtocol], state: GameplayState = .idle) {
         self.steps = steps
         guard let firstStep = steps.first else {
-			self.currentStep = StandardStepModel(choices: [], gameplay: .undefined, interface: .undefined)
+            self.currentStep = StandardStepModel(choices: [], gameplay: .undefined, interface: .undefined)
             self.currentGameplay = GameplayError()
             self.currentInterface = .undefined
             return
@@ -79,13 +79,8 @@ public class StepManager: ObservableObject {
                 FiveChoicesView(gameplay: currentGameplay)
             case .sixChoices:
                 SixChoicesView(gameplay: currentGameplay)
-            case .listenSixChoices:
-                if let actionStepModel = steps[currentStepIndex] as? ActionStepModel {
-                    let song = SongModel(name: actionStepModel.action.name, file: actionStepModel.action.name)
-                    ListenSixChoicesView(gameplay: currentGameplay, song: song)
-                } else {
-                    StepErrorView()
-                }
+            case .listenSixChoices(let song):
+                ListenSixChoicesView(gameplay: currentGameplay, song: song)
         }
     }
 
