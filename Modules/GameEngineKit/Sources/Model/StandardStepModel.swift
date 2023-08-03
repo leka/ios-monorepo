@@ -4,24 +4,7 @@
 
 import SwiftUI
 
-public enum GameplayType {
-    case undefined
-    case selectTheRightAnswer
-    case selectAllRightAnswers
-    case selectSomeRightAnswers(Int)
-}
 
-public enum InterfaceType {
-    case undefined
-    case oneChoice
-    case twoChoices
-    case threeChoices
-    case threeChoicesInline
-    case fourChoices
-    case fourChoicesInline
-    case fiveChoices
-    case sixChoices
-}
 
 public struct StandardStepModel {
     public var choices: [ChoiceViewModel]
