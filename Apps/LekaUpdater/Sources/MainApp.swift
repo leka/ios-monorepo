@@ -7,6 +7,7 @@ import DesignKit
 import SwiftUI
 
 var globalBleManager = BLEManager.live()
+var globalRobotManager = RobotManager()
 
 @main
 struct LekaUpdaterApp: App {

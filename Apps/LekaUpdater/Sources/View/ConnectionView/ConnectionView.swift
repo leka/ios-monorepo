@@ -34,9 +34,7 @@ struct ConnectionView: View {
 
             ToolbarItem(placement: .navigationBarTrailing) {
                 NavigationLink {
-                    InformationView()
-                        .environmentObject(firmware)
-                        .environmentObject(viewModel.connectedRobot)
+                    InformationView(firmware: firmware)
                 } label: {
                     HStack {
                         Text("Continuer")

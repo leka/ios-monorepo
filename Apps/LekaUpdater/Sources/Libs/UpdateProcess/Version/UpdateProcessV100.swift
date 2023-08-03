@@ -79,11 +79,9 @@ private class StateLoadingUpdateFile: GKState, StateEventProcessor {
 private class StateSettingDestinationPath: GKState, StateEventProcessor {
 
     private var firmware: FirmwareManager
-    private var robot: RobotPeripheral?
 
-    init(firmware: FirmwareManager, robot: RobotPeripheral?) {
+    init(firmware: FirmwareManager) {
         self.firmware = firmware
-        self.robot = robot
     }
 
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
@@ -119,7 +117,7 @@ private class StateSettingDestinationPath: GKState, StateEventProcessor {
             self.process(event: .destinationPathSet)
         }
 
-        robot?.send(destinationPath.data(using: .utf8)!, forCharacteristic: characteristic)
+        globalRobotManager.robotPeripheral?.send(destinationPath.data(using: .utf8)!, forCharacteristic: characteristic)
     }
 }
 
@@ -149,11 +147,9 @@ private class StateApplyingUpdate: GKState, StateEventProcessor {
     private var cancellables: Set<AnyCancellable> = []
 
     private var firmware: FirmwareManager
-    private var robot: RobotPeripheral?
 
-    init(firmware: FirmwareManager, robot: RobotPeripheral?) {
+    init(firmware: FirmwareManager) {
         self.firmware = firmware
-        self.robot = robot
     }
 
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
@@ -198,7 +194,7 @@ private class StateApplyingUpdate: GKState, StateEventProcessor {
             serviceUUID: BLESpecs.FirmwareUpdate.service
         )
 
-        robot?.send(majorData, forCharacteristic: majorCharacteristic)
+        globalRobotManager.robotPeripheral?.send(majorData, forCharacteristic: majorCharacteristic)
 
         let minorData = Data([firmware.minor])
 
@@ -207,7 +203,7 @@ private class StateApplyingUpdate: GKState, StateEventProcessor {
             serviceUUID: BLESpecs.FirmwareUpdate.service
         )
 
-        robot?.send(minorData, forCharacteristic: minorCharacteristic)
+        globalRobotManager.robotPeripheral?.send(minorData, forCharacteristic: minorCharacteristic)
 
         let revisionData = firmware.revision.data
 
@@ -216,7 +212,7 @@ private class StateApplyingUpdate: GKState, StateEventProcessor {
             serviceUUID: BLESpecs.FirmwareUpdate.service
         )
 
-        robot?.send(revisionData, forCharacteristic: revisionCharacteristic)
+        globalRobotManager.robotPeripheral?.send(revisionData, forCharacteristic: revisionCharacteristic)
     }
 
     private func applyUpdate() {
@@ -227,7 +223,7 @@ private class StateApplyingUpdate: GKState, StateEventProcessor {
             serviceUUID: BLESpecs.FirmwareUpdate.service
         )
 
-        robot?.send(applyValue, forCharacteristic: characteristic)
+        globalRobotManager.robotPeripheral?.send(applyValue, forCharacteristic: characteristic)
     }
 }
 
@@ -236,13 +232,11 @@ private class StateWaitingForRobotToReboot: GKState, StateEventProcessor {
     private var scanForRobotsTask: AnyCancellable?
 
     private var firmware: FirmwareManager
-    private var robot: RobotPeripheral?
 
     private var isRobotUpToDate: Bool = false
 
-    init(firmware: FirmwareManager, robot: RobotPeripheral?) {
+    init(firmware: FirmwareManager) {
         self.firmware = firmware
-        self.robot = robot
     }
 
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
@@ -279,7 +273,7 @@ private class StateWaitingForRobotToReboot: GKState, StateEventProcessor {
                 },
                 receiveValue: { robotDiscoveryList in
                     let robotDetected = robotDiscoveryList.first { robotDiscovery in
-                        robotDiscovery.robotPeripheral == self.robot
+                        robotDiscovery.robotPeripheral == globalRobotManager.robotPeripheral
                     }
                     if robotDetected != nil {
                         self.isRobotUpToDate = robotDetected?.advertisingData.osVersion == self.firmware.currentVersion
@@ -315,15 +309,15 @@ class UpdateProcessV100: UpdateProcessProtocol {
 
     public var currentStage = CurrentValueSubject<UpdateProcessStage, UpdateProcessError>(.initial)
 
-    init(robot: RobotPeripheral?) {
+    init() {
         self.stateMachine = GKStateMachine(states: [
             StateInitial(),
 
             StateLoadingUpdateFile(firmware: firmware),
             StateSendingFile(),
-            StateApplyingUpdate(firmware: firmware, robot: robot),
-            StateWaitingForRobotToReboot(firmware: firmware, robot: robot),
-            StateSettingDestinationPath(firmware: firmware, robot: robot),
+            StateApplyingUpdate(firmware: firmware),
+            StateWaitingForRobotToReboot(firmware: firmware),
+            StateSettingDestinationPath(firmware: firmware),
 
             StateFinal(),
 

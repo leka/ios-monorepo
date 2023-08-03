@@ -6,7 +6,6 @@ import Combine
 import SwiftUI
 
 class UpdateStatusDemoViewModel: ObservableObject {
-    private var robotManager: RobotManager
     private var updateProcessController: UpdateProcessController
 
     @Published public var state = ""
@@ -14,9 +13,8 @@ class UpdateStatusDemoViewModel: ObservableObject {
 
     private var cancellables: Set<AnyCancellable> = []
 
-    init(robotManager: RobotManager) {
-        self.robotManager = robotManager
-        self.updateProcessController = UpdateProcessController(robotManager: robotManager)
+    init() {
+        self.updateProcessController = UpdateProcessController()
 
         subscribeToStateUpdate()
     }
@@ -61,11 +59,7 @@ class UpdateStatusDemoViewModel: ObservableObject {
 }
 
 struct UpdateStatusDemoView: View {
-    @StateObject private var viewModel: UpdateStatusDemoViewModel
-
-    init(robotManager: RobotManager) {
-        self._viewModel = StateObject(wrappedValue: UpdateStatusDemoViewModel(robotManager: robotManager))
-    }
+    @StateObject private var viewModel = UpdateStatusDemoViewModel()
 
     var body: some View {
         VStack {
@@ -97,9 +91,7 @@ struct UpdateStatusDemoView: View {
 }
 
 struct UpdateStatusDemoView_Previews: PreviewProvider {
-    @StateObject static var robotManager = RobotManager()
-
     static var previews: some View {
-        UpdateStatusDemoView(robotManager: robotManager)
+        UpdateStatusDemoView()
     }
 }
