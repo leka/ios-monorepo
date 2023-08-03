@@ -5,13 +5,13 @@
 import SwiftUI
 
 public struct SixChoicesView: View {
-    @ObservedObject private var viewModel: SixChoicesViewModel
+    @ObservedObject private var viewModel: GenericViewModel
 	let horizontalSpacing: CGFloat = 100
 	let verticalSpacing: CGFloat = 32
 	let answerSize: CGFloat = 300
 
     public init(gameplay: any GameplayProtocol) {
-        self.viewModel = SixChoicesViewModel(gameplay: gameplay)
+        self.viewModel = GenericViewModel(gameplay: gameplay)
     }
 
     public var body: some View {

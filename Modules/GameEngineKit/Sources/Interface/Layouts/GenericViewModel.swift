@@ -5,7 +5,7 @@
 import Combine
 import SwiftUI
 
-public class SixChoicesViewModel: Identifiable, ObservableObject {
+public class GenericViewModel: Identifiable, ObservableObject {
     public var gameplay: any GameplayProtocol
 
     @Published public var choices: [ChoiceViewModel]
@@ -15,7 +15,6 @@ public class SixChoicesViewModel: Identifiable, ObservableObject {
 
     public init(gameplay: any GameplayProtocol) {
         self.gameplay = gameplay
-        guard self.gameplay.choices.value.count == 6 else { fatalError("Wrong size of array") }
         self.choices = self.gameplay.choices.value
         self.gameplay.choices
             .receive(on: DispatchQueue.main)
