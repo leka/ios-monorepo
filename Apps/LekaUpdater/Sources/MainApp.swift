@@ -7,16 +7,16 @@ import DesignKit
 import SwiftUI
 
 var globalBleManager = BLEManager.live()
+var globalRobotManager = RobotManager()
 
 @main
 struct LekaUpdaterApp: App {
-    @StateObject var robotManager = RobotManager()
     var firmware = FirmwareManager()
 
     var body: some Scene {
         WindowGroup {
             NavigationStack {
-                ConnectionView(robotManager: robotManager)
+                ConnectionView()
                     .environmentObject(firmware)
             }
         }

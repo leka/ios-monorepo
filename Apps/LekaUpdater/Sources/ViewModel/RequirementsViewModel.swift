@@ -2,11 +2,13 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import Combine
 import Foundation
 import SwiftUI
 
 class RequirementsViewModel: ObservableObject {
-    @ObservedObject private var robotManager: RobotManager
+
+    private var cancellables: Set<AnyCancellable> = []
 
     let requirementsInstructionText = "Pour lancer la mise à jour, veillez à ce que :"
 
@@ -19,19 +21,39 @@ class RequirementsViewModel: ObservableObject {
     let robotBatteryQuarter1Image = LekaUpdaterAsset.Assets.robotBatteryQuarter1.swiftUIImage
     let robotBatteryQuarter1Text = "Votre robot soit chargé à 30% ou plus"
 
-    var robotIsReadyToUpdate: Bool {
-        if let battery = robotManager.battery, let isCharging = robotManager.isCharging {
-            return battery >= 30 && isCharging
+    @Published var robotIsReadyToUpdate = false
+    @Published var robotIsNotReadyToUpdate = true
+
+    init() {
+        subscribeToRobotBatteryUpdates()
+        subscribeToRobotIsChargingUpdates()
+    }
+
+    private func subscribeToRobotBatteryUpdates() {
+        globalRobotManager.$battery
+            .receive(on: DispatchQueue.main)
+            .sink { robotBattery in
+                self.updateRobotIsReadyToUpdate(
+                    robotBattery: robotBattery, robotIsCharging: globalRobotManager.isCharging)
+            }
+            .store(in: &cancellables)
+    }
+
+    private func subscribeToRobotIsChargingUpdates() {
+        globalRobotManager.$isCharging
+            .receive(on: DispatchQueue.main)
+            .sink { robotIsCharging in
+                self.updateRobotIsReadyToUpdate(
+                    robotBattery: globalRobotManager.battery, robotIsCharging: robotIsCharging)
+            }
+            .store(in: &cancellables)
+    }
+
+    private func updateRobotIsReadyToUpdate(robotBattery: Int?, robotIsCharging: Bool?) {
+        if let battery = robotBattery, let isCharging = robotIsCharging {
+            robotIsReadyToUpdate = battery >= 30 && isCharging
+            robotIsNotReadyToUpdate = !robotIsReadyToUpdate
         }
-
-        return false
     }
 
-    var robotIsNotReadyToUpdate: Bool {
-        !robotIsReadyToUpdate
-    }
-
-    init(robotManager: RobotManager) {
-        self._robotManager = ObservedObject(wrappedValue: robotManager)
-    }
 }

@@ -8,9 +8,9 @@ import SwiftUI
 struct InformationView: View {
     @StateObject var viewModel: InformationViewModel
 
-    init(robotManager: RobotManager, firmware: FirmwareManager) {
+    init(firmware: FirmwareManager) {
         self._viewModel = StateObject(
-            wrappedValue: InformationViewModel(robotManager: robotManager, firmware: firmware))
+            wrappedValue: InformationViewModel(firmware: firmware))
     }
 
     var body: some View {
@@ -42,7 +42,7 @@ struct InformationView: View {
                 .listRowBackground(Color.clear)
 
                 Section {
-                    RobotInformationView(robotManager: viewModel.robotManager)
+                    RobotInformationView()
                 } header: {
                     Text("Informations du robot")
                         .textCase(nil)
@@ -66,7 +66,7 @@ struct InformationView: View {
 
                 if viewModel.showRobotNeedsUpdate {
                     Section {
-                        RobotUpdateAvailableView(robotManager: viewModel.robotManager)
+                        RobotUpdateAvailableView()
                     } header: {
                         Text("État de mise à jour du robot")
                             .textCase(nil)
@@ -107,11 +107,10 @@ struct InformationView: View {
 
 struct InformationView_Previews: PreviewProvider {
     static let firmware = FirmwareManager()
-    static let robotManager = RobotManager(name: "Leka", battery: 75, isCharging: true, osVersion: "1.3.0")
 
     static var previews: some View {
         NavigationStack {
-            InformationView(robotManager: robotManager, firmware: firmware)
+            InformationView(firmware: firmware)
         }
     }
 }

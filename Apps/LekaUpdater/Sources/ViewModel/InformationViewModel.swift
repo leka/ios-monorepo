@@ -10,38 +10,43 @@ class InformationViewModel: ObservableObject {
     private var firmware: FirmwareManager
     private var cancellables: Set<AnyCancellable> = []
 
-    @Published var robotManager: RobotManager
-
     @Published var showRobotNeedsUpdate: Bool = true
-    @Published var robotName: String
+    @Published var robotName: String = "n/a"
 
     @Published var firmwareVersion: String
 
-    init(robotManager: RobotManager, firmware: FirmwareManager) {
-        self.robotManager = robotManager
+    init(firmware: FirmwareManager) {
         self.firmware = firmware
-
-        self.robotName = robotManager.name ?? "n/a"
         self.firmwareVersion = firmware.currentVersion
 
+        self.subscribeToRobotNameUpdates()
         self.subscribeToRobotOsVersionUpdates()
     }
 
     public func onAppear() {
-        robotManager.readReadOnlyCharacteristics()
-        robotManager.subscribeToCharacteristicsNotifications()
+        globalRobotManager.readReadOnlyCharacteristics()
+        globalRobotManager.subscribeToCharacteristicsNotifications()
     }
 
     public func switchRobotVersionForDebug() {
-        if robotManager.osVersion == "1.3.0" {
-            robotManager.osVersion = "1.4.0"
+        if globalRobotManager.osVersion == "1.3.0" {
+            globalRobotManager.osVersion = "1.4.0"
         } else {
-            robotManager.osVersion = "1.3.0"
+            globalRobotManager.osVersion = "1.3.0"
         }
     }  // TODO: Remove DEBUG
 
+    private func subscribeToRobotNameUpdates() {
+        globalRobotManager.$name
+            .receive(on: DispatchQueue.main)
+            .sink { robotName in
+                self.robotName = robotName ?? "n/a"
+            }
+            .store(in: &cancellables)
+    }
+
     private func subscribeToRobotOsVersionUpdates() {
-        robotManager.$osVersion
+        globalRobotManager.$osVersion
             .receive(on: DispatchQueue.main)
             .sink { robotOsVersion in
                 self.updateShowRobotNeedsUpdate(robotOsVersion: robotOsVersion)
