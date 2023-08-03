@@ -6,6 +6,7 @@ import SwiftUI
 
 struct TextAnswerView: View {
     private let text: String
+    private let size: CGFloat
     private let status: ChoiceState
 
     @State private var animationPercent: CGFloat = .zero
@@ -13,17 +14,17 @@ struct TextAnswerView: View {
 
     @ViewBuilder
     var view: some View {
-		let circle = ZStack {
-			Circle()
-				.fill(.gray.opacity(0.8))
-				.frame(
-					width: 260,
-					height: 260
-				)
+        let circle = ZStack {
+            Circle()
+                .fill(.gray.opacity(0.8))
+                .frame(
+                    width: size,
+                    height: size
+                )
 
-			Text(text.uppercased())
-				.font(.title.bold())
-		}
+            Text(text.uppercased())
+                .font(.title.bold())
+        }
 
         switch status {
             case .notSelected:
@@ -56,8 +57,9 @@ struct TextAnswerView: View {
         }
     }
 
-    init(text: String, status: ChoiceState = .notSelected) {
+    init(text: String, size: CGFloat, status: ChoiceState = .notSelected) {
         self.text = text
+        self.size = size
         self.status = status
     }
 

@@ -6,15 +6,16 @@ import SwiftUI
 
 struct ChoiceView: View {
     var choice: ChoiceViewModel
+    let size: CGFloat
 
     var body: some View {
         switch choice.type {
             case .color:
-                ColoredAnswerView(color: choice.item, status: choice.status)
+                ColoredAnswerView(color: choice.item, size: size, status: choice.status)
             case .image:
-                ImageAnswerView(image: choice.item, status: choice.status)
+                ImageAnswerView(image: choice.item, size: size, status: choice.status)
             case .text:
-                TextAnswerView(text: choice.item, status: choice.status)
+                TextAnswerView(text: choice.item, size: size, status: choice.status)
         }
     }
 }

@@ -4,23 +4,26 @@
 
 import SwiftUI
 
-public struct SixChoicesGridView: View {
-    @ObservedObject private var viewModel: SixChoicesGridViewModel
+public struct SixChoicesView: View {
+    @ObservedObject private var viewModel: GenericViewModel
+	let horizontalSpacing: CGFloat = 100
+	let verticalSpacing: CGFloat = 32
+	let answerSize: CGFloat = 300
 
     public init(gameplay: any GameplayProtocol) {
-        self.viewModel = SixChoicesGridViewModel(gameplay: gameplay)
+        self.viewModel = GenericViewModel(gameplay: gameplay)
     }
 
     public var body: some View {
         Grid(
-            horizontalSpacing: 30,
-            verticalSpacing: 30
+            horizontalSpacing: horizontalSpacing,
+            verticalSpacing: verticalSpacing
         ) {
             GridRow {
                 ForEach(0..<3) { index in
                     let choice = viewModel.choices[index]
 
-                    ChoiceView(choice: choice)
+                    ChoiceView(choice: choice, size: answerSize)
                         .onTapGesture {
                             viewModel.onChoiceTapped(choice: choice)
                         }
@@ -30,7 +33,7 @@ public struct SixChoicesGridView: View {
                 ForEach(3..<6) { index in
                     let choice = viewModel.choices[index]
 
-                    ChoiceView(choice: choice)
+                    ChoiceView(choice: choice, size: answerSize)
                         .onTapGesture {
                             viewModel.onChoiceTapped(choice: choice)
                         }

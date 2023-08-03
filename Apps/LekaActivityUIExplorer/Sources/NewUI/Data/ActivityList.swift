@@ -41,13 +41,43 @@ let kListOfAvailablesActivities: [ActivityModel] = [
         view: AnyView(RemoteArrowActivity())
     ),
     ActivityModel(
+        title: "TouchToSelectOne",
+        instructions: "Touch the right answer",
+        view: AnyView(TouchToSelectOneChoiceActivity())
+    ),
+    ActivityModel(
+        title: "TouchToSelectTwo",
+        instructions: "Touch the right answer",
+        view: AnyView(TouchToSelectTwoChoicesActivity())
+    ),
+    ActivityModel(
         title: "TouchToSelectThree",
         instructions: "Touch the right answer",
-        view: AnyView(TouchToSelectThreeInlineActivity())
+        view: AnyView(TouchToSelectThreeChoicesActivity())
+    ),
+    ActivityModel(
+        title: "TouchToSelectThreeInline",
+        instructions: "Touch the right answer",
+        view: AnyView(TouchToSelectThreeChoicesInlineActivity())
+    ),
+    ActivityModel(
+        title: "TouchToSelectFour",
+        instructions: "Touch the right answer",
+        view: AnyView(TouchToSelectFourChoicesActivity())
+    ),
+    ActivityModel(
+        title: "TouchToSelectFourInline",
+        instructions: "Touch the right answer",
+        view: AnyView(TouchToSelectFourChoicesInlineActivity())
+    ),
+    ActivityModel(
+        title: "TouchToSelectFive",
+        instructions: "Touch the right answer",
+        view: AnyView(TouchToSelectFiveChoicesActivity())
     ),
     ActivityModel(
         title: "TouchToSelectSix",
         instructions: "Touch the right answer",
-        view: AnyView(TouchToSelectSixActivity())
+        view: AnyView(TouchToSelectSixChoicesActivity())
     ),
 ]
