@@ -52,8 +52,7 @@ struct CurriculumListView: View {
             } label: {
                 CurriculumPillShapedView(
                     curriculum: item,  // Integrate rank and icon within curriculum Type, delete following properties
-                    icon: curriculumVM.setCurriculumIcon(for: item),
-                    rank: "\(index+1)/\(curriculumVM.availableCurriculums.count)")
+                    icon: curriculumVM.setCurriculumIcon(for: item))
             }
             .padding()
         }

@@ -10,64 +10,44 @@ struct CurriculumPillShapedView: View {
 
     var curriculum: Curriculum
     var icon: String
-    var rank: String
 
     var body: some View {
-        ZStack {
-            VStack(spacing: 0) {
-                topContent
-                bottomContent
-            }
-            .frame(width: 200, height: 240)
-            .clipShape(RoundedRectangle(cornerRadius: metrics.pillRadius, style: .continuous))
-            .shadow(color: .black.opacity(0.1), radius: 1, x: 0, y: 1)
-            iconView
+        VStack(spacing: 0) {
+            topContent
+            bottomContent
         }
+        .frame(width: 200, height: 240)
+        .background(Color.accentColor, in: Rectangle())
+        .clipShape(RoundedRectangle(cornerRadius: metrics.pillRadius, style: .continuous))
+        .shadow(color: .black.opacity(0.1), radius: 1, x: 0, y: 1)
         .compositingGroup()
+    }
+
+    private var topContent: some View {
+        Text(curriculum.fullTitle.localized())
+            .multilineTextAlignment(.center)
+            .font(metrics.med16)
+            .frame(maxWidth: 136, minHeight: 120)
+            .foregroundColor(.white)
+    }
+
+    private var bottomContent: some View {
+        VStack(alignment: .center, spacing: 0) {
+            Spacer()
+            iconView
+            Spacer()
+            Text("\(curriculum.activities.count) activités")
+                .font(metrics.med12)
+                .foregroundColor(Color("darkGray"))
+                .padding(.bottom, 12)
+        }
+        .background(Color.white, in: Rectangle())
     }
 
     private var iconView: some View {
         Image(icon)
             .resizable()
             .aspectRatio(contentMode: .fit)
-            .frame(width: 200, height: 66)
-            .offset(y: 5)
-    }
-
-    private var topContent: some View {
-        Rectangle()
-            .fill(Color.accentColor)
-            .overlay(
-                ZStack(alignment: .top) {
-                    VStack {
-                        Spacer()
-                        Text(curriculum.title.localized())
-                            .multilineTextAlignment(.center)
-                            .font(metrics.med16)
-                            .padding(.bottom, 40)
-                    }
-                }
-                .foregroundColor(.white)
-            )
-    }
-
-    private var bottomContent: some View {
-        Rectangle()
-            .fill(Color.white)
-            .overlay(
-                VStack {
-                    Text(curriculum.subtitle.localized())
-                        .multilineTextAlignment(.center)
-                        .allowsTightening(true)
-                        .font(metrics.med14)
-                        .padding(.top, 50)
-                        .padding(.horizontal, 10)
-                    Spacer()
-                    Text(rank)
-                        .font(metrics.med12)
-                        .padding(.bottom, 12)
-                }
-                .foregroundColor(Color("darkGray"))
-            )
+            .frame(width: 200, height: 70)
     }
 }
