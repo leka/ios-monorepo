@@ -8,6 +8,8 @@ import SwiftUI
 struct UpdateStatusView: View {
     @StateObject private var viewModel = UpdateStatusViewModel()
 
+    @Binding var isConnectionViewPresented: Bool
+
     var body: some View {
         NavigationStack {
             VStack {
@@ -41,7 +43,7 @@ struct UpdateStatusView: View {
                         case .rebootingRobot:
                             RebootingContentView()
                         case .updateFinished:
-                            UpdateFinishedContentView()
+                            UpdateFinishedContentView(isConnectionViewPresented: $isConnectionViewPresented)
                     }
                     Spacer()
                 }
@@ -90,9 +92,11 @@ struct UpdateStatusView: View {
 }
 
 struct UpdatingStatusView_Previews: PreviewProvider {
+    @State static var isConnectionViewPresented = false
+
     static var previews: some View {
         NavigationStack {
-            UpdateStatusView()
+            UpdateStatusView(isConnectionViewPresented: $isConnectionViewPresented)
         }
     }
 }

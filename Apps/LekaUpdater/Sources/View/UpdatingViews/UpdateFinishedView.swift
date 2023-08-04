@@ -38,6 +38,8 @@ struct UpdateFinishedIllustration: View {
 struct UpdateFinishedContentView: View {
     @Environment(\.dismiss) var dismiss
 
+    @Binding var isConnectionViewPresented: Bool
+
     var body: some View {
         VStack {
             Text(
@@ -71,7 +73,8 @@ struct UpdateFinishedContentView: View {
                 .padding(.trailing)
 
                 Button {
-                    // TODO: Go to connection page
+                    dismiss()
+                    isConnectionViewPresented = true
                 } label: {
                     Text("Mettre à jour un autre robot")
                         .padding(.horizontal)
@@ -90,6 +93,8 @@ struct UpdateFinishedContentView: View {
 }
 
 struct UpdateFinishedView_Previews: PreviewProvider {
+    @State static var isConnectionViewPresented = false
+
     static var previews: some View {
         VStack {
             UpdateFinishedIllustration()
@@ -104,7 +109,7 @@ struct UpdateFinishedView_Previews: PreviewProvider {
                 .padding()
 
             VStack {
-                UpdateFinishedContentView()
+                UpdateFinishedContentView(isConnectionViewPresented: $isConnectionViewPresented)
                 Spacer()
             }
             .foregroundColor(DesignKitAsset.Colors.darkGray.swiftUIColor)

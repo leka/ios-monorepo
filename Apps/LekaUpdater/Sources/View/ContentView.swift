@@ -17,7 +17,7 @@ struct ContentView: View {
             ConnectionView()
         }
         .fullScreenCover(isPresented: $isUpdateStatusViewPresented) {
-            UpdateStatusView()
+            UpdateStatusView(isConnectionViewPresented: $isConnectionViewPresented)
         }
     }
 }
