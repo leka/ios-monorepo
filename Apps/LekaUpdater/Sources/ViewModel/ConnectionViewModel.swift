@@ -29,7 +29,7 @@ class ConnectionViewModel: ObservableObject {
 
     private func onConnectedRobotDiscoveryChanged(robot: RobotDiscoveryViewModel?) {
         if let robotDiscovery = robot?.robotDiscovery {
-            globalRobotManager = RobotManager(robotDiscovery: robotDiscovery)
+            globalRobotManager.setRobotPeripheral(from: robotDiscovery)
             continueButtonDisabled = false
         } else {
             continueButtonDisabled = true
