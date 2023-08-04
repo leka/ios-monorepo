@@ -8,10 +8,11 @@ import SwiftUI
 struct InformationView: View {
     @StateObject var viewModel = InformationViewModel()
     @Binding var isConnectionViewPresented: Bool
+    @Binding var isUpdateStatusViewPresented: Bool
 
     private var isViewVisible: Bool {
-        !self.isConnectionViewPresented
-    }  // TODO: Add isUpdateStatusViewPresented later
+        !self.isConnectionViewPresented && !self.isUpdateStatusViewPresented
+    }
 
     var body: some View {
         NavigationStack {
@@ -67,7 +68,7 @@ struct InformationView: View {
 
                     if viewModel.showRobotNeedsUpdate {
                         Section {
-                            RobotUpdateAvailableView()
+                            RobotUpdateAvailableView(isUpdateStatusViewPresented: $isUpdateStatusViewPresented)
                         } header: {
                             Text("État de mise à jour du robot")
                                 .textCase(nil)
@@ -122,14 +123,18 @@ struct InformationView: View {
 
 struct InformationView_Previews: PreviewProvider {
     @State static var isConnectionViewPresented = false
+    @State static var isUpdateStatusViewPresented = false
 
     static var previews: some View {
-        InformationView(isConnectionViewPresented: $isConnectionViewPresented)
-            .onAppear {
-                globalRobotManager.name = "Leka"
-                globalRobotManager.battery = 75
-                globalRobotManager.isCharging = true
-                globalRobotManager.osVersion = "1.3.0"
-            }
+        InformationView(
+            isConnectionViewPresented: $isConnectionViewPresented,
+            isUpdateStatusViewPresented: $isUpdateStatusViewPresented
+        )
+        .onAppear {
+            globalRobotManager.name = "Leka"
+            globalRobotManager.battery = 75
+            globalRobotManager.isCharging = true
+            globalRobotManager.osVersion = "1.3.0"
+        }
     }
 }

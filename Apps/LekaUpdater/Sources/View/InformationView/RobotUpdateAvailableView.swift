@@ -8,12 +8,14 @@ import SwiftUI
 struct RobotUpdateAvailableView: View {
     @StateObject private var requirementsViewModel = RequirementsViewModel()
 
+    @Binding var isUpdateStatusViewPresented: Bool
+
     var body: some View {
         VStack {
             Text("⬆️ Une mise à jour est disponible 📦")
                 .font(.title3)
-            NavigationLink {
-                UpdateStatusView()
+            Button {
+                isUpdateStatusViewPresented = true
             } label: {
                 Text("Lancer la mise à jour du robot")
                     .foregroundColor(.white)
@@ -34,11 +36,13 @@ struct RobotUpdateAvailableView: View {
 }
 
 struct RobotUpdateAvailableView_Previews: PreviewProvider {
+    @State static var isUpdateStatusViewPresented = false
+
     static var previews: some View {
         VStack {
             Spacer()
 
-            RobotUpdateAvailableView()
+            RobotUpdateAvailableView(isUpdateStatusViewPresented: $isUpdateStatusViewPresented)
                 .foregroundColor(DesignKitAsset.Colors.darkGray.swiftUIColor)
 
             Spacer()

@@ -9,13 +9,16 @@ struct ContentView: View {
     @State var isUpdateStatusViewPresented = false
 
     var body: some View {
-        InformationView(isConnectionViewPresented: $isConnectionViewPresented)
-            .fullScreenCover(isPresented: $isConnectionViewPresented) {
-                ConnectionView()
-            }
-            .fullScreenCover(isPresented: $isUpdateStatusViewPresented) {
-                UpdateStatusView()
-            }
+        InformationView(
+            isConnectionViewPresented: $isConnectionViewPresented,
+            isUpdateStatusViewPresented: $isUpdateStatusViewPresented
+        )
+        .fullScreenCover(isPresented: $isConnectionViewPresented) {
+            ConnectionView()
+        }
+        .fullScreenCover(isPresented: $isUpdateStatusViewPresented) {
+            UpdateStatusView()
+        }
     }
 }
 
