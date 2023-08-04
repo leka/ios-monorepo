@@ -7,6 +7,11 @@ import SwiftUI
 
 struct InformationView: View {
     @StateObject var viewModel = InformationViewModel()
+    @Binding var isConnectionViewPresented: Bool
+
+    private var isViewVisible: Bool {
+        !self.isConnectionViewPresented
+    }  // TODO: Add isUpdateStatusViewPresented later
 
     var body: some View {
         NavigationStack {
@@ -86,7 +91,9 @@ struct InformationView: View {
                 }
             }
             .foregroundColor(DesignKitAsset.Colors.darkGray.swiftUIColor)
-            .onAppear(perform: viewModel.onAppear)
+            .onChange(of: isViewVisible) { isVisible in
+                if isVisible { viewModel.onViewReappear() }
+            }
             .toolbar {
                 ToolbarItem(placement: .principal) {
                     VStack {
@@ -103,8 +110,10 @@ struct InformationView: View {
 }
 
 struct InformationView_Previews: PreviewProvider {
+    @State static var isConnectionViewPresented = false
+
     static var previews: some View {
-        InformationView()
+        InformationView(isConnectionViewPresented: $isConnectionViewPresented)
             .onAppear {
                 globalRobotManager.name = "Leka"
                 globalRobotManager.battery = 75

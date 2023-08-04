@@ -8,7 +8,7 @@ struct ContentView: View {
     @State var isConnectionViewPresented = true
 
     var body: some View {
-        InformationView()
+        InformationView(isConnectionViewPresented: $isConnectionViewPresented)
             .fullScreenCover(isPresented: $isConnectionViewPresented) {
                 ConnectionView()
             }
