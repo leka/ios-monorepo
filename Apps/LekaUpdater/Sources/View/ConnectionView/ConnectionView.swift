@@ -11,37 +11,39 @@ struct ConnectionView: View {
     @Environment(\.dismiss) var dismiss
 
     var body: some View {
-        VStack {
-            RobotConnectionView(robotConnectionViewModel: viewModel.robotConnectionViewModel)
+        NavigationStack {
+            VStack {
+                RobotConnectionView(robotConnectionViewModel: viewModel.robotConnectionViewModel)
 
-            LekaUpdaterAsset.Assets.lekaUpdaterIcon.swiftUIImage
-                .resizable()
-                .scaledToFit()
-                .frame(height: 70)
-                .padding(35)
-        }
-        .foregroundColor(DesignKitAsset.Colors.darkGray.swiftUIColor)
-        .toolbar {
-            ToolbarItem(placement: .principal) {
-                VStack {
-                    Text("Leka Updater")
-                        .font(.title2)
-                        .bold()
-                    Text("L'application pour mettre à jour vos robots Leka !")
-                }
-                .foregroundColor(.accentColor)
+                LekaUpdaterAsset.Assets.lekaUpdaterIcon.swiftUIImage
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: 70)
+                    .padding(35)
             }
-
-            ToolbarItem(placement: .navigationBarTrailing) {
-                Button {
-                    dismiss()
-                } label: {
-                    HStack {
-                        Text("Continuer")
-                        Image(systemName: "chevron.forward")
+            .foregroundColor(DesignKitAsset.Colors.darkGray.swiftUIColor)
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    VStack {
+                        Text("Leka Updater")
+                            .font(.title2)
+                            .bold()
+                        Text("L'application pour mettre à jour vos robots Leka !")
                     }
+                    .foregroundColor(.accentColor)
                 }
-                .disabled(viewModel.continueButtonDisabled)
+
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        dismiss()
+                    } label: {
+                        HStack {
+                            Text("Continuer")
+                            Image(systemName: "chevron.forward")
+                        }
+                    }
+                    .disabled(viewModel.continueButtonDisabled)
+                }
             }
         }
     }
@@ -49,8 +51,6 @@ struct ConnectionView: View {
 
 struct ConnectionView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationStack {
-            ConnectionView()
-        }
+        ConnectionView()
     }
 }
