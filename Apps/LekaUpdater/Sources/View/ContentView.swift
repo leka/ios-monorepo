@@ -5,8 +5,13 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var isConnectionViewPresented = true
+
     var body: some View {
         Text("LekaUpdater")
+            .fullScreenCover(isPresented: $isConnectionViewPresented) {
+                ConnectionView()
+            }
     }
 }
 
