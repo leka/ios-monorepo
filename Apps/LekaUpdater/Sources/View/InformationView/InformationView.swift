@@ -104,6 +104,17 @@ struct InformationView: View {
                     }
                     .foregroundColor(.accentColor)
                 }
+
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button {
+                        isConnectionViewPresented = true
+                    } label: {
+                        HStack {
+                            Image(systemName: "chevron.backward")
+                            Text("Connexion")
+                        }
+                    }
+                }
             }
         }
     }
