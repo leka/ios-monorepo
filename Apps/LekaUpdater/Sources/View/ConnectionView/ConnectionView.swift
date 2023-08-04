@@ -8,6 +8,8 @@ import SwiftUI
 struct ConnectionView: View {
     @StateObject private var viewModel = ConnectionViewModel()
 
+    @Environment(\.dismiss) var dismiss
+
     var body: some View {
         VStack {
             RobotConnectionView(robotConnectionViewModel: viewModel.robotConnectionViewModel)
@@ -31,8 +33,8 @@ struct ConnectionView: View {
             }
 
             ToolbarItem(placement: .navigationBarTrailing) {
-                NavigationLink {
-                    InformationView()
+                Button {
+                    dismiss()
                 } label: {
                     HStack {
                         Text("Continuer")
