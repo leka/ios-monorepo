@@ -50,7 +50,7 @@ struct RobotConnectionView: View {
 
             }
         )
-        .onAppear(perform: robotConnectionViewModel.scanForRobots)
+        .onAppear(perform: robotConnectionViewModel.onAppear)
         .buttonStyle(.borderedProminent)
         .tint(DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor)
     }
