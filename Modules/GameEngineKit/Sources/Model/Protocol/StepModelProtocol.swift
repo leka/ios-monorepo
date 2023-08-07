@@ -21,7 +21,7 @@ public enum InterfaceType {
     case fourChoicesInline
     case fiveChoices
     case sixChoices
-    case listenSixChoices(SongModel)
+    case listenSixChoices(AudioRecordingModel)
 }
 
 public protocol StepModelProtocol {

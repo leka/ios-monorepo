@@ -27,12 +27,12 @@ public struct DanceFreezeView: View {
                 case .automaticMode:
                     DanceFreezePlayer(isAuto: true)
                         .onDisappear {
-                            viewModel.setSong(song: SongModel(name: "", file: ""))
+                            viewModel.setSong(song: AudioRecordingModel(name: "", file: ""))
                         }
                 case .manualMode:
                     DanceFreezePlayer(isAuto: false)
                         .onDisappear {
-                            viewModel.setSong(song: SongModel(name: "", file: ""))
+                            viewModel.setSong(song: AudioRecordingModel(name: "", file: ""))
                         }
             }
         }

@@ -40,7 +40,7 @@ public class DanceFreezeViewModel: Identifiable, ObservableObject {
         gameplay.process()
     }
 
-    func setSong(song: SongModel) {
+    func setSong(song: AudioRecordingModel) {
         gameplay.setAudioPlayer(song: song)
     }
 }
