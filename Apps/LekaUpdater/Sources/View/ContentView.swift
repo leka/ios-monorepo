@@ -6,12 +6,19 @@ import SwiftUI
 
 struct ContentView: View {
     @State var isConnectionViewPresented = true
+    @State var isUpdateStatusViewPresented = false
 
     var body: some View {
-        InformationView(isConnectionViewPresented: $isConnectionViewPresented)
-            .fullScreenCover(isPresented: $isConnectionViewPresented) {
-                ConnectionView()
-            }
+        InformationView(
+            isConnectionViewPresented: $isConnectionViewPresented,
+            isUpdateStatusViewPresented: $isUpdateStatusViewPresented
+        )
+        .fullScreenCover(isPresented: $isConnectionViewPresented) {
+            ConnectionView()
+        }
+        .fullScreenCover(isPresented: $isUpdateStatusViewPresented) {
+            UpdateStatusView(isConnectionViewPresented: $isConnectionViewPresented)
+        }
     }
 }
 

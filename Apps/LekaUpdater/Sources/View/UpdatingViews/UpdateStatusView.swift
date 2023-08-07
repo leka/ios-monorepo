@@ -8,70 +8,73 @@ import SwiftUI
 struct UpdateStatusView: View {
     @StateObject private var viewModel = UpdateStatusViewModel()
 
+    @Binding var isConnectionViewPresented: Bool
+
     var body: some View {
-        VStack {
-            Spacer()
-            Spacer()
-
+        NavigationStack {
             VStack {
-                switch viewModel.updatingStatus {
-                    case .sendingFile:
-                        SendingFileIllustration()
-                    case .rebootingRobot:
-                        RebootingIllustration()
-                    case .updateFinished:
-                        UpdateFinishedIllustration()
-                }
-            }
-            .frame(height: 250)
-            .padding(.bottom)
-            .padding(.bottom)
-
-            Text("Étape \(viewModel.stepNumber)/3")
-                .font(.title)
-                .bold()
-                .monospacedDigit()
-                .padding()
-
-            VStack {
-                switch viewModel.updatingStatus {
-                    case .sendingFile:
-                        SendingFileContentView()
-                    case .rebootingRobot:
-                        RebootingContentView()
-                    case .updateFinished:
-                        UpdateFinishedContentView()
-                }
                 Spacer()
-            }
-            .frame(maxWidth: .infinity, maxHeight: 250)
+                Spacer()
 
-            Spacer()
-
-            LekaUpdaterAsset.Assets.lekaUpdaterIcon.swiftUIImage
-                .resizable()
-                .scaledToFit()
-                .frame(height: 70)
-                .padding(35)
-
-        }
-        .foregroundColor(DesignKitAsset.Colors.darkGray.swiftUIColor)
-        .onAppear(perform: viewModel.startUpdate)
-        .navigationBarBackButtonHidden()
-        .toolbar {
-            ToolbarItem(placement: .principal) {
                 VStack {
-                    Text("Leka Updater")
-                        .font(.title2)
-                        .bold()
-                    Text("L'application pour mettre à jour vos robots Leka !")
+                    switch viewModel.updatingStatus {
+                        case .sendingFile:
+                            SendingFileIllustration()
+                        case .rebootingRobot:
+                            RebootingIllustration()
+                        case .updateFinished:
+                            UpdateFinishedIllustration()
+                    }
                 }
-                .foregroundColor(.accentColor)
-            }
+                .frame(height: 250)
+                .padding(.bottom)
+                .padding(.bottom)
 
-            ToolbarItem(placement: .navigationBarTrailing) {
-                Button("[DEBUG] Switch views", action: switchView)
-            }  // TODO(@yann): remove when debug is over
+                Text("Étape \(viewModel.stepNumber)/3")
+                    .font(.title)
+                    .bold()
+                    .monospacedDigit()
+                    .padding()
+
+                VStack {
+                    switch viewModel.updatingStatus {
+                        case .sendingFile:
+                            SendingFileContentView()
+                        case .rebootingRobot:
+                            RebootingContentView()
+                        case .updateFinished:
+                            UpdateFinishedContentView(isConnectionViewPresented: $isConnectionViewPresented)
+                    }
+                    Spacer()
+                }
+                .frame(maxWidth: .infinity, maxHeight: 250)
+
+                Spacer()
+
+                LekaUpdaterAsset.Assets.lekaUpdaterIcon.swiftUIImage
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: 70)
+                    .padding(35)
+
+            }
+            .foregroundColor(DesignKitAsset.Colors.darkGray.swiftUIColor)
+            .onAppear(perform: viewModel.startUpdate)
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    VStack {
+                        Text("Leka Updater")
+                            .font(.title2)
+                            .bold()
+                        Text("L'application pour mettre à jour vos robots Leka !")
+                    }
+                    .foregroundColor(.accentColor)
+                }
+
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("[DEBUG] Switch views", action: switchView)
+                }  // TODO(@yann): remove when debug is over
+            }
         }
     }
 
@@ -89,9 +92,11 @@ struct UpdateStatusView: View {
 }
 
 struct UpdatingStatusView_Previews: PreviewProvider {
+    @State static var isConnectionViewPresented = false
+
     static var previews: some View {
         NavigationStack {
-            UpdateStatusView()
+            UpdateStatusView(isConnectionViewPresented: $isConnectionViewPresented)
         }
     }
 }
