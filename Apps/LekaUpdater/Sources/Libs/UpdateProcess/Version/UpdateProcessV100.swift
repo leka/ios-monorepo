@@ -236,6 +236,7 @@ private class StateApplyingUpdate: GKState, StateEventProcessor {
         registerDidDisconnect()
 
         setMajorMinorRevision()
+        sleep(1)
         applyUpdate()
 
     }
