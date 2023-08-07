@@ -19,7 +19,9 @@ class InformationViewModel: ObservableObject {
         self.subscribeToRobotOsVersionUpdates()
     }
 
-    public func onAppear() {
+    public func onViewReappear() {
+        self.robotName = globalRobotManager.name ?? "n/a"
+
         globalRobotManager.readReadOnlyCharacteristics()
         globalRobotManager.subscribeToCharacteristicsNotifications()
     }
