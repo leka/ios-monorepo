@@ -15,7 +15,7 @@ extension Shape {
     }
 }
 
-struct PlaySound_ButtonStyle: ButtonStyle {
+struct Play_ButtonStyle: ButtonStyle {
     var progress: CGFloat
 
     func makeBody(configuration: Self.Configuration) -> some View {
@@ -39,7 +39,7 @@ struct PlaySound_ButtonStyle: ButtonStyle {
     }
 }
 
-struct PlaySoundButton: View {
+struct PlayButton: View {
     @ObservedObject var audioPlayer: AudioPlayer
 
     var body: some View {
@@ -53,7 +53,7 @@ struct PlaySoundButton: View {
         }
         .frame(width: 200)
         .disabled(audioPlayer.player.isPlaying)
-        .buttonStyle(PlaySound_ButtonStyle(progress: audioPlayer.progress))
+        .buttonStyle(Play_ButtonStyle(progress: audioPlayer.progress))
         .scaleEffect(audioPlayer.player.isPlaying ? 1.0 : 0.8, anchor: .center)
         .shadow(
             color: .accentColor.opacity(0.2),

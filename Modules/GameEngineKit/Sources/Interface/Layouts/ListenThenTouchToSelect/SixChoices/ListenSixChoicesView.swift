@@ -46,7 +46,7 @@ public struct ListenSixChoicesView: View {
 
     public var body: some View {
         HStack(spacing: 0) {
-            PlaySoundButton(audioPlayer: audioPlayer)
+            PlayButton(audioPlayer: audioPlayer)
                 .padding(20)
             Divider()
                 .opacity(0.4)
