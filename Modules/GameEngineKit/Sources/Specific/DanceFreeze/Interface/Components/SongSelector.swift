@@ -5,7 +5,7 @@
 import DesignKit
 import SwiftUI
 
-private let kAvailableSongs: [AudioRecordingModel] = [
+public let kAvailableSongs: [AudioRecordingModel] = [
     // TO DO : (@hugo) Replace nyan by validated free use music
     AudioRecordingModel(name: "Frère Jacques", file: "nyan"),
     AudioRecordingModel(name: "Dansons la Capucine", file: "nyan"),
