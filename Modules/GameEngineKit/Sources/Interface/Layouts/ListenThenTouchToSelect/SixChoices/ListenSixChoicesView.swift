@@ -4,15 +4,6 @@
 
 import SwiftUI
 
-extension View {
-    func onTapGestureIf(_ condition: Bool, closure: @escaping () -> Void) -> some View {
-        self.allowsHitTesting(condition)
-            .onTapGesture {
-                closure()
-            }
-    }
-}
-
 struct DeactivableChoiceView: View {
     var choice: ChoiceViewModel
     let size: CGFloat

@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import Foundation
+import SwiftUI
 
 public func convertJoystickPosToMotorSpeed(position: CGPoint, maxValue: CGFloat) -> (
     rotationLeft: Rotation, rotationRight: Rotation
@@ -40,4 +41,23 @@ public func convertJoystickPosToMotorSpeed(position: CGPoint, maxValue: CGFloat)
 
 func clamp<T: Comparable>(_ value: T, lower: T, upper: T) -> T {
     return min(max(value, lower), upper)
+}
+
+extension View {
+    func onTapGestureIf(_ condition: Bool, closure: @escaping () -> Void) -> some View {
+        self.allowsHitTesting(condition)
+            .onTapGesture {
+                closure()
+            }
+    }
+}
+
+extension Shape {
+    func fill<Fill: ShapeStyle, Stroke: ShapeStyle>(
+        _ fillStyle: Fill, strokeBorder strokeStyle: Stroke, lineWidth: CGFloat = 1
+    ) -> some View {
+        self
+            .stroke(strokeStyle, lineWidth: lineWidth)
+            .background(self.fill(fillStyle))
+    }
 }
