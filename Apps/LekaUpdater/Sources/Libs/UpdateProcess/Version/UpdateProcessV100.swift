@@ -114,7 +114,6 @@ private class StateSendingFile: GKState, StateEventProcessor {
     private var cancellables: Set<AnyCancellable> = []
 
     private let maximumPacketSize: Int = 61
-    private let optimizedDelayInSeconds = 0.075
 
     private var currentPacket: Int = 0
     private var expectedCompletePackets: Int
@@ -178,16 +177,17 @@ private class StateSendingFile: GKState, StateEventProcessor {
     }
 
     private func sendFile() {
-        Timer.publish(every: optimizedDelayInSeconds, on: .main, in: .default)
-            .autoconnect()
-            .sink { _ in
-                self.onTick()
-            }
-            .store(in: &cancellables)
+        characteristic.onWrite = {
+            self.currentPacket += 1
+            self.tryToSendNextPacket()
+        }
+
+        tryToSendNextPacket()
     }
 
-    private func onTick() {
+    private func tryToSendNextPacket() {
         if isInCriticalSection() {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: self.tryToSendNextPacket)
             return
         }
 
@@ -219,8 +219,6 @@ private class StateSendingFile: GKState, StateEventProcessor {
         let dataToSend = globalFirmwareManager.data[startIndex...endIndex]
 
         globalRobotManager.robotPeripheral?.send(dataToSend, forCharacteristic: characteristic)
-
-        currentPacket += 1
     }
 }
 
