@@ -117,8 +117,8 @@ private class StateSendingFile: GKState, StateEventProcessor {
     private let optimizedDelayInSeconds = 0.075
 
     private var currentPacket: Int = 0
-    private var expectedCompletePackets: Int = Int(floor(Double(globalFirmwareManager.data.count / 61)))
-    private var expectedRemainingBytes: Int = Int(globalFirmwareManager.data.count % 61)
+    private var expectedCompletePackets: Int
+    private var expectedRemainingBytes: Int
     private var expectedPackets: Int {
         expectedRemainingBytes == 0 ? expectedCompletePackets : expectedCompletePackets + 1
     }
@@ -130,6 +130,31 @@ private class StateSendingFile: GKState, StateEventProcessor {
         characteristicUUID: BLESpecs.FileExchange.Characteristics.fileReceptionBuffer,
         serviceUUID: BLESpecs.FileExchange.service
     )
+
+    override init() {
+        let dataSize = globalFirmwareManager.data.count
+
+        self.expectedCompletePackets = Int(floor(Double(dataSize / maximumPacketSize)))
+        self.expectedRemainingBytes = Int(dataSize % maximumPacketSize)
+
+        self.currentPacket = 0
+
+        super.init()
+
+        self.subscribeToFirmwareDataUpdates()
+    }
+
+    private func subscribeToFirmwareDataUpdates() {
+        globalFirmwareManager.$data
+            .receive(on: DispatchQueue.main)
+            .sink { data in
+                let dataSize = data.count
+
+                self.expectedCompletePackets = Int(floor(Double(dataSize / self.maximumPacketSize)))
+                self.expectedRemainingBytes = Int(dataSize % self.maximumPacketSize)
+            }
+            .store(in: &cancellables)
+    }
 
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
         return stateClass is StateApplyingUpdate.Type
