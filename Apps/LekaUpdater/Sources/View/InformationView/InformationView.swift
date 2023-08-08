@@ -45,6 +45,11 @@ struct InformationView: View {
 
                     Section {
                         RobotInformationView()
+                            .padding()
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 20)
+                                    .stroke(DesignKitAsset.Colors.lightGray.swiftUIColor, lineWidth: 3)
+                            )
                     } header: {
                         Text("Informations du robot")
                             .textCase(nil)
@@ -52,6 +57,7 @@ struct InformationView: View {
                     }
 
                     Section {
+                        VStack {
                         DisclosureGroup {
                             ChangelogView()
                                 .padding()
@@ -60,6 +66,12 @@ struct InformationView: View {
                                 .foregroundStyle(DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor)
                         }
                         .accentColor(DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor)
+                        }
+                        .padding()
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 20)
+                                .stroke(DesignKitAsset.Colors.lightGray.swiftUIColor, lineWidth: 3)
+                        )
                     } header: {
                         Text("Informations sur LekaOS v\(viewModel.firmwareVersion)")
                             .textCase(nil)
