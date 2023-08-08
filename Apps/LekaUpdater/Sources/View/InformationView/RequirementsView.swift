@@ -11,7 +11,6 @@ struct RequirementsView: View {
     var body: some View {
         VStack {
             Text(viewModel.requirementsInstructionText)
-                .font(.caption)
                 .foregroundColor(DesignKitAsset.Colors.darkGray.swiftUIColor)
 
             HStack(alignment: .top) {
