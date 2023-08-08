@@ -91,6 +91,8 @@ struct InformationView: View {
                     }
                     .listRowBackground(Color.clear)
                 }
+                .scrollContentBackground(.hidden)
+                .background(Color.white)
             }
             .foregroundColor(DesignKitAsset.Colors.darkGray.swiftUIColor)
             .onChange(of: isViewVisible) { isVisible in
