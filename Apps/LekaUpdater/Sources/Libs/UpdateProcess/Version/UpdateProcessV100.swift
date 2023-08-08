@@ -393,6 +393,8 @@ class UpdateProcessV100: UpdateProcessProtocol {
             StateErrorRobotNotUpToDate(),
         ])
         self.stateMachine?.enter(StateInitial.self)
+
+        self.startRoutineToUpdateCurrentState()
     }
 
     public func startProcess() {
@@ -407,6 +409,15 @@ class UpdateProcessV100: UpdateProcessProtocol {
         state.process(event: event)
 
         updateCurrentState()
+    }
+
+    private func startRoutineToUpdateCurrentState() {
+        Timer.publish(every: 1, on: .main, in: .default)
+            .autoconnect()
+            .sink { _ in
+                self.updateCurrentState()
+            }
+            .store(in: &cancellables)
     }
 
     private func updateCurrentState() {
