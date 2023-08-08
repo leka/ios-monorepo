@@ -80,4 +80,9 @@ let kListOfAvailablesActivities: [ActivityModel] = [
         instructions: "Touch the right answer",
         view: AnyView(TouchToSelectSixChoicesActivity())
     ),
+    ActivityModel(
+        title: "ListenThenTouchToSelectSix",
+        instructions: "Listen then touch the right answer",
+        view: AnyView(ListenThenTouchToSelectSixChoicesActivity())
+    ),
 ]

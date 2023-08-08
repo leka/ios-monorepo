@@ -5,19 +5,19 @@
 import DesignKit
 import SwiftUI
 
-private let kAvailableSongs: [SongModel] = [
+private let kAvailableSongs: [AudioRecordingModel] = [
     // TO DO : (@hugo) Replace nyan by validated free use music
-    SongModel(name: "Frère Jacques", file: "nyan"),
-    SongModel(name: "Dansons la Capucine", file: "nyan"),
-    SongModel(name: "Petit Escargot", file: "nyan"),
-    SongModel(name: "Stairway to Heaven", file: "nyan"),
-    SongModel(name: "Can you feel the love tonight", file: "nyan"),
-    SongModel(name: "Cette année là", file: "nyan"),
+    AudioRecordingModel(name: "Frère Jacques", file: "nyan"),
+    AudioRecordingModel(name: "Dansons la Capucine", file: "nyan"),
+    AudioRecordingModel(name: "Petit Escargot", file: "nyan"),
+    AudioRecordingModel(name: "Stairway to Heaven", file: "nyan"),
+    AudioRecordingModel(name: "Can you feel the love tonight", file: "nyan"),
+    AudioRecordingModel(name: "Cette année là", file: "nyan"),
 ]
 
 struct SongSelector: View {
     @EnvironmentObject private var viewModel: DanceFreezeViewModel
-    @State private var selectedSong: SongModel = kAvailableSongs.first!
+    @State private var selectedSong: AudioRecordingModel = kAvailableSongs.first!
 
     let columns = [
         GridItem(.flexible()),

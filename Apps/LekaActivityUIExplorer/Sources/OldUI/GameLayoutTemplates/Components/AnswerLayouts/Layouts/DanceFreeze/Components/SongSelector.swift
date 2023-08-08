@@ -4,23 +4,23 @@
 
 import SwiftUI
 
-struct SongModel: Hashable, Equatable {
+struct SongModelOld: Hashable, Equatable {
     let id: UUID = UUID()
     let name: String
     let file: String
 }
 
-private let kAvailableSongs: [SongModel] = [
-    SongModel(name: "Frère Jacques", file: "song_1.mp3"),
-    SongModel(name: "Dansons la Capucine", file: "song_2.mp3"),
-    SongModel(name: "Petit Escargot", file: "song_3.mp3"),
-    SongModel(name: "Stairway to Heaven", file: "song_4.mp3"),
-    SongModel(name: "Can you feel the love tonight", file: "song_5.mp3"),
-    SongModel(name: "Cette année là", file: "song_6.mp3"),
+private let kAvailableSongs: [SongModelOld] = [
+    SongModelOld(name: "Frère Jacques", file: "song_1.mp3"),
+    SongModelOld(name: "Dansons la Capucine", file: "song_2.mp3"),
+    SongModelOld(name: "Petit Escargot", file: "song_3.mp3"),
+    SongModelOld(name: "Stairway to Heaven", file: "song_4.mp3"),
+    SongModelOld(name: "Can you feel the love tonight", file: "song_5.mp3"),
+    SongModelOld(name: "Cette année là", file: "song_6.mp3"),
 ]
 
 struct SongSelector: View {
-    @State private var selectedSong: SongModel = kAvailableSongs.first!
+    @State private var selectedSong: SongModelOld = kAvailableSongs.first!
 
     let columns = [
         GridItem(.flexible()),

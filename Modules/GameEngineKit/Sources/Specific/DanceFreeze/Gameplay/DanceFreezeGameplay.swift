@@ -25,7 +25,7 @@ public class DanceFreezeGameplay {
         }
     }
 
-    func setAudioPlayer(song: SongModel) {
+    func setAudioPlayer(song: AudioRecordingModel) {
         do {
             let path = Bundle.main.path(forResource: song.file, ofType: "mp3")!
             audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
