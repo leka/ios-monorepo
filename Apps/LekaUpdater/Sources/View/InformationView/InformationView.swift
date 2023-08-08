@@ -84,7 +84,8 @@ struct InformationView: View {
                                 .frame(height: 70)
                                 .padding(35)
 
-                            Button("Switch (debug)", action: viewModel.switchRobotVersionForDebug)  // TODO: Remove DEBUG
+                            // TODO(@YannL): Remove DEBUG
+                            Button("Switch (debug)", action: viewModel.switchRobotVersionForDebug)
                         }
                         .frame(maxWidth: .infinity, alignment: .center)
                     }
