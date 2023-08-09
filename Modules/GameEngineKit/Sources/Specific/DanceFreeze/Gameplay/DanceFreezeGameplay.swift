@@ -13,7 +13,7 @@ public class DanceFreezeGameplay {
     var cancellables: Set<AnyCancellable> = []
 
     public init() {
-        self.audioPlayer = AudioPlayer(song: kAvailableSongs[0])
+        self.audioPlayer = AudioPlayer(audioRecording: kAvailableSongs[0])
         self.audioPlayer.$progress
             .receive(on: DispatchQueue.main)
             .sink { [weak self] in
@@ -31,7 +31,7 @@ public class DanceFreezeGameplay {
         }
     }
 
-    func setAudioPlayer(song: AudioRecordingModel) {
-        audioPlayer.setAudioPlayer(song: song)
+    func setAudioPlayer(audioRecording: AudioRecordingModel) {
+        audioPlayer.setAudioPlayer(audioRecording: audioRecording)
     }
 }
