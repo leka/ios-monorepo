@@ -53,6 +53,8 @@ public class RobotConnectionViewModel: ObservableObject {
     }
 
     public func scanForRobots() {
+        scanForRobotsTask?.cancel()
+
         scanForRobotsTask = bleManager.scanForRobots()
             .receive(on: DispatchQueue.main)
             .sink(
