@@ -24,7 +24,7 @@ public class StepManager: ObservableObject {
             self.currentInterface = .undefined
             return
         }
-        self.currentStep = steps[currentStepIndex]
+        self.currentStep = firstStep
         self.currentGameplay = StepManager.gameplaySelector(stepModel: currentStep)
         self.currentInterface = currentStep.interface
         subscribeToGameplayState()
@@ -79,8 +79,20 @@ public class StepManager: ObservableObject {
                 FiveChoicesView(gameplay: currentGameplay)
             case .sixChoices:
                 SixChoicesView(gameplay: currentGameplay)
-            case .listenSixChoices(let song):
-                ListenSixChoicesView(gameplay: currentGameplay, song: song)
+            case .listenOneChoice(let audioRecording):
+                ListenOneChoiceView(gameplay: currentGameplay, audioRecording: audioRecording)
+            case .listenTwoChoices(let audioRecording):
+                ListenTwoChoicesView(gameplay: currentGameplay, audioRecording: audioRecording)
+            case .listenThreeChoices(let audioRecording):
+                ListenThreeChoicesView(gameplay: currentGameplay, audioRecording: audioRecording)
+            case .listenThreeChoicesInline(let audioRecording):
+                ListenThreeChoicesInlineView(gameplay: currentGameplay, audioRecording: audioRecording)
+            case .listenFourChoices(let audioRecording):
+                ListenFourChoicesView(gameplay: currentGameplay, audioRecording: audioRecording)
+            case .listenFourChoicesInline(let audioRecording):
+                ListenFourChoicesInlineView(gameplay: currentGameplay, audioRecording: audioRecording)
+            case .listenSixChoices(let audioRecording):
+                ListenSixChoicesView(gameplay: currentGameplay, audioRecording: audioRecording)
         }
     }
 
