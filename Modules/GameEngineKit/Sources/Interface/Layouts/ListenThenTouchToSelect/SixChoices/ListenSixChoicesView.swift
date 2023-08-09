@@ -4,25 +4,6 @@
 
 import SwiftUI
 
-struct DeactivableChoiceView: View {
-    var choice: ChoiceViewModel
-    let size: CGFloat
-    @ObservedObject var audioPlayer: AudioPlayer
-    @ObservedObject var viewModel: GenericViewModel
-
-    var body: some View {
-        ChoiceView(choice: choice, size: size)
-            .onTapGestureIf(audioPlayer.audioHasBeenPlayed) {
-                viewModel.onChoiceTapped(choice: choice)
-            }
-            .overlay(
-                Circle()
-                    .fill(audioPlayer.audioHasBeenPlayed ? .clear : .white.opacity(0.6))
-            )
-            .animation(.easeOut(duration: 0.3), value: audioPlayer.audioHasBeenPlayed)
-    }
-}
-
 public struct ListenSixChoicesView: View {
     @ObservedObject private var viewModel: GenericViewModel
     @ObservedObject private var audioPlayer: AudioPlayer
@@ -58,16 +39,24 @@ public struct ListenSixChoicesView: View {
                 ForEach(0..<3) { index in
                     let choice = viewModel.choices[index]
 
-                    DeactivableChoiceView(
-                        choice: choice, size: answerSize, audioPlayer: audioPlayer, viewModel: viewModel)
+                    ChoiceView(
+                        choice: choice, size: answerSize, isTappable: audioPlayer.audioHasBeenPlayed
+                    )
+                    .onTapGestureIf(audioPlayer.audioHasBeenPlayed) {
+                        viewModel.onChoiceTapped(choice: choice)
+                    }
                 }
             }
             GridRow {
                 ForEach(3..<6) { index in
                     let choice = viewModel.choices[index]
 
-                    DeactivableChoiceView(
-                        choice: choice, size: answerSize, audioPlayer: audioPlayer, viewModel: viewModel)
+                    ChoiceView(
+                        choice: choice, size: answerSize, isTappable: audioPlayer.audioHasBeenPlayed
+                    )
+                    .onTapGestureIf(audioPlayer.audioHasBeenPlayed) {
+                        viewModel.onChoiceTapped(choice: choice)
+                    }
                 }
             }
         }
