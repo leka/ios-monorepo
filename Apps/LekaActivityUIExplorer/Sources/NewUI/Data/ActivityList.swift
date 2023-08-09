@@ -81,6 +81,36 @@ let kListOfAvailablesActivities: [ActivityModel] = [
         view: AnyView(TouchToSelectSixChoicesActivity())
     ),
     ActivityModel(
+        title: "ListenThenTouchToSelectOne",
+        instructions: "Listen then touch the right answer",
+        view: AnyView(ListenThenTouchToSelectOneChoiceActivity())
+    ),
+    ActivityModel(
+        title: "ListenThenTouchToSelectTwo",
+        instructions: "Listen then touch the right answer",
+        view: AnyView(ListenThenTouchToSelectTwoChoicesActivity())
+    ),
+    ActivityModel(
+        title: "ListenThenTouchToSelectThree",
+        instructions: "Listen then touch the right answer",
+        view: AnyView(ListenThenTouchToSelectThreeChoicesActivity())
+    ),
+    ActivityModel(
+        title: "ListenThenTouchToSelectThreeInline",
+        instructions: "Listen then touch the right answer",
+        view: AnyView(ListenThenTouchToSelectThreeChoicesInlineActivity())
+    ),
+    ActivityModel(
+        title: "ListenThenTouchToSelectFour",
+        instructions: "Listen then touch the right answer",
+        view: AnyView(ListenThenTouchToSelectFourChoicesActivity())
+    ),
+    ActivityModel(
+        title: "ListenThenTouchToSelectFourInline",
+        instructions: "Listen then touch the right answer",
+        view: AnyView(ListenThenTouchToSelectFourChoicesInlineActivity())
+    ),
+    ActivityModel(
         title: "ListenThenTouchToSelectSix",
         instructions: "Listen then touch the right answer",
         view: AnyView(ListenThenTouchToSelectSixChoicesActivity())
