@@ -307,7 +307,7 @@ private class StateApplyingUpdate: GKState, StateEventProcessor {
 
 private class StateWaitingForRobotToReboot: GKState, StateEventProcessor {
 
-    private var scanForRobotsTask: AnyCancellable?
+    private var cancellables: Set<AnyCancellable> = []
 
     private var isRobotUpToDate: Bool = false
 
@@ -320,7 +320,7 @@ private class StateWaitingForRobotToReboot: GKState, StateEventProcessor {
     }
 
     override func willExit(to nextState: GKState) {
-        scanForRobotsTask?.cancel()
+        cancellables.removeAll()
     }
 
     func process(event: UpdateEvent) {
@@ -337,7 +337,7 @@ private class StateWaitingForRobotToReboot: GKState, StateEventProcessor {
     }
 
     private func registerScanForRobot() {
-        scanForRobotsTask = globalBleManager.scanForRobots()
+        globalBleManager.scanForRobots()
             .receive(on: DispatchQueue.main)
             .sink(
                 receiveCompletion: { _ in
@@ -347,13 +347,15 @@ private class StateWaitingForRobotToReboot: GKState, StateEventProcessor {
                     let robotDetected = robotDiscoveryList.first { robotDiscovery in
                         robotDiscovery.robotPeripheral == globalRobotManager.robotPeripheral
                     }
-                    if robotDetected != nil {
+                    if let robotDetected = robotDetected {
                         self.isRobotUpToDate =
-                            robotDetected?.advertisingData.osVersion == globalFirmwareManager.currentVersion
+                            robotDetected.advertisingData.osVersion == globalFirmwareManager.currentVersion
 
                         self.process(event: .robotDetected)
                     }
-                })
+                }
+            )
+            .store(in: &cancellables)
     }
 }
 
