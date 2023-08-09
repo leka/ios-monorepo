@@ -49,7 +49,9 @@ public class RobotConnectionViewModel: ObservableObject {
     public func onAppear() {
         globalBleManager.disconnect()
 
-        scanForRobots()  // TODO: Might fail if appear too fast, fix edge case
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.scanForRobots()
+        }
     }
 
     public func scanForRobots() {
