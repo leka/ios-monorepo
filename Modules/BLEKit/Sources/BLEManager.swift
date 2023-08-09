@@ -36,7 +36,11 @@ public class BLEManager {
         return centralManager.scanForPeripherals(withServices: [BLESpecs.AdvertisingData.service])
             .handleEvents(
                 receiveSubscription: { _ in
-                    self.isScanning.send(true)
+                    if self.centralManager.state == .poweredOn {
+                        self.isScanning.send(true)
+                    } else {
+                        self.isScanning.send(false)
+                    }
                 },
                 receiveCancel: {
                     self.isScanning.send(false)
