@@ -13,14 +13,14 @@ public class AudioPlayer: ObservableObject {
 
     private var cancellables: Set<AnyCancellable> = []
 
-    public init(song: AudioRecordingModel) {
-        setAudioPlayer(song: song)
+    public init(audioRecording: AudioRecordingModel) {
+        setAudioPlayer(audioRecording: audioRecording)
         audioHasBeenPlayed = false
     }
 
-    func setAudioPlayer(song: AudioRecordingModel) {
+    func setAudioPlayer(audioRecording: AudioRecordingModel) {
         do {
-            let path = Bundle.main.path(forResource: song.file, ofType: "mp3")!
+            let path = Bundle.main.path(forResource: audioRecording.file, ofType: "mp3")!
             player = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
         } catch {
             print("ERROR - mp3 file not found - \(error)")

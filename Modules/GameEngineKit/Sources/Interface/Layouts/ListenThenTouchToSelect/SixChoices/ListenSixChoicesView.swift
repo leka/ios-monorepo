@@ -30,9 +30,9 @@ public struct ListenSixChoicesView: View {
     let verticalSpacing: CGFloat = 32
     let answerSize: CGFloat = 200
 
-    public init(gameplay: any GameplayProtocol, song: AudioRecordingModel) {
+    public init(gameplay: any GameplayProtocol, audioRecording: AudioRecordingModel) {
         self.viewModel = GenericViewModel(gameplay: gameplay)
-        self.audioPlayer = AudioPlayer(song: song)
+        self.audioPlayer = AudioPlayer(audioRecording: audioRecording)
     }
 
     public var body: some View {
