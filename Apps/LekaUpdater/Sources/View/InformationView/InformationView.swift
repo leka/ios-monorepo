@@ -39,50 +39,32 @@ struct InformationView: View {
                     }
                     .padding([.bottom], 10)
 
-                    VStack(alignment: .leading) {
-                        Text("Informations du robot")
-                            .textCase(nil)
-                            .font(.title)
-
-                        RobotInformationView()
-                            .padding()
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 20)
-                                    .stroke(DesignKitAsset.Colors.lightGray.swiftUIColor, lineWidth: 3)
-                            )
-                    }
-                    .padding([.vertical], 10)
-
-                    VStack(alignment: .leading) {
-                        Text("Informations sur LekaOS v\(viewModel.firmwareVersion)")
-                            .textCase(nil)
-                            .font(.title)
-
-                        DisclosureGroup {
-                            ChangelogView()
-                                .padding()
-                        } label: {
-                            Text("Liste des changements apportés")
-                                .foregroundStyle(DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor)
-                        }
-                        .accentColor(DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor)
+                    RobotInformationView()
                         .padding()
                         .overlay(
                             RoundedRectangle(cornerRadius: 20)
                                 .stroke(DesignKitAsset.Colors.lightGray.swiftUIColor, lineWidth: 3)
                         )
+                        .padding([.vertical], 10)
+
+                    DisclosureGroup {
+                        ChangelogView()
+                            .padding()
+                    } label: {
+                        Text("Liste des changements apportés")
+                            .foregroundStyle(DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor)
                     }
+                    .accentColor(DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor)
+                    .padding()
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 20)
+                            .stroke(DesignKitAsset.Colors.lightGray.swiftUIColor, lineWidth: 3)
+                    )
                     .padding([.vertical], 10)
 
                     if viewModel.showRobotNeedsUpdate {
-                        VStack(alignment: .leading) {
-                            Text("État de mise à jour du robot")
-                                .textCase(nil)
-                                .font(.title)
-
-                            RobotUpdateAvailableView(isUpdateStatusViewPresented: $isUpdateStatusViewPresented)
-                        }
-                        .padding([.vertical], 10)
+                        RobotUpdateAvailableView(isUpdateStatusViewPresented: $isUpdateStatusViewPresented)
+                            .padding([.vertical], 10)
                     }
 
                     VStack {

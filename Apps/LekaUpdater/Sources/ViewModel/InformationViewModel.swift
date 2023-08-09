@@ -12,8 +12,6 @@ class InformationViewModel: ObservableObject {
     @Published var showRobotNeedsUpdate: Bool = true
     @Published var robotName: String = "n/a"
 
-    @Published var firmwareVersion = globalFirmwareManager.currentVersion
-
     init() {
         self.subscribeToRobotNameUpdates()
         self.subscribeToRobotOsVersionUpdates()
