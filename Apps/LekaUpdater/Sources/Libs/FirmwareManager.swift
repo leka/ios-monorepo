@@ -23,7 +23,7 @@ class FirmwareManager: ObservableObject {
         UInt16(currentVersion.components(separatedBy: ".")[2])!
     }
 
-    public var data = Data()
+    @Published public var data = Data()
 
     func compareWith(version: String) -> RobotUpdateStatus {
         guard version.contains(".") else {

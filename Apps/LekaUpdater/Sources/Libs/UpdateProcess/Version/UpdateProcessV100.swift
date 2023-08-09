@@ -111,13 +111,60 @@ private class StateSettingDestinationPath: GKState, StateEventProcessor {
 
 private class StateSendingFile: GKState, StateEventProcessor {
 
+    private var cancellables: Set<AnyCancellable> = []
+
+    private let maximumPacketSize: Int = 61
+
+    private var currentPacket: Int = 0
+    private var expectedCompletePackets: Int
+    private var expectedRemainingBytes: Int
+    private var expectedPackets: Int {
+        expectedRemainingBytes == 0 ? expectedCompletePackets : expectedCompletePackets + 1
+    }
+    private var progression: Float {
+        Float(currentPacket) / Float(expectedPackets)
+    }
+
+    private var characteristic = WriteOnlyCharacteristic(
+        characteristicUUID: BLESpecs.FileExchange.Characteristics.fileReceptionBuffer,
+        serviceUUID: BLESpecs.FileExchange.service
+    )
+
+    override init() {
+        let dataSize = globalFirmwareManager.data.count
+
+        self.expectedCompletePackets = Int(floor(Double(dataSize / maximumPacketSize)))
+        self.expectedRemainingBytes = Int(dataSize % maximumPacketSize)
+
+        self.currentPacket = 0
+
+        super.init()
+
+        self.subscribeToFirmwareDataUpdates()
+    }
+
+    private func subscribeToFirmwareDataUpdates() {
+        globalFirmwareManager.$data
+            .receive(on: DispatchQueue.main)
+            .sink { data in
+                let dataSize = data.count
+
+                self.expectedCompletePackets = Int(floor(Double(dataSize / self.maximumPacketSize)))
+                self.expectedRemainingBytes = Int(dataSize % self.maximumPacketSize)
+            }
+            .store(in: &cancellables)
+    }
+
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
         return stateClass is StateApplyingUpdate.Type
     }
 
     override func didEnter(from previousState: GKState?) {
-        print("StateSendingFile")  // TODO: send file
-        process(event: .fileSent)  // TODO: remove when todo above is done
+        sendFile()
+    }
+
+    override func willExit(to nextState: GKState) {
+        cancellables.removeAll()
     }
 
     func process(event: UpdateEvent) {
@@ -127,6 +174,51 @@ private class StateSendingFile: GKState, StateEventProcessor {
             default:
                 return
         }
+    }
+
+    private func sendFile() {
+        characteristic.onWrite = {
+            self.currentPacket += 1
+            self.tryToSendNextPacket()
+        }
+
+        tryToSendNextPacket()
+    }
+
+    private func tryToSendNextPacket() {
+        if isInCriticalSection() {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: self.tryToSendNextPacket)
+            return
+        }
+
+        if progression < 1.0 {
+            sendNextPacket()
+        } else {
+            process(event: .fileSent)
+        }
+    }
+
+    private func isInCriticalSection() -> Bool {
+        guard let battery = globalRobotManager.battery, let isCharging = globalRobotManager.isCharging else {
+            return true
+        }
+
+        let isNotCharging = !isCharging
+        let isNearBatteryLevelChange =
+            23...27 ~= battery || 48...52 ~= battery || 73...77 ~= battery || 88...92 ~= battery
+
+        return isNotCharging || isNearBatteryLevelChange
+    }
+
+    private func sendNextPacket() {
+        let startIndex = currentPacket * maximumPacketSize
+        let endIndex =
+            currentPacket < expectedCompletePackets
+            ? startIndex + maximumPacketSize - 1 : startIndex + expectedRemainingBytes - 1
+
+        let dataToSend = globalFirmwareManager.data[startIndex...endIndex]
+
+        globalRobotManager.robotPeripheral?.send(dataToSend, forCharacteristic: characteristic)
     }
 }
 
@@ -142,6 +234,7 @@ private class StateApplyingUpdate: GKState, StateEventProcessor {
         registerDidDisconnect()
 
         setMajorMinorRevision()
+        sleep(1)
         applyUpdate()
 
     }
