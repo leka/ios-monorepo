@@ -12,6 +12,7 @@ let project = Project.module(
     dependencies: [
         .project(target: "DesignKit", path: Path("../../Modules/DesignKit")),
         .external(name: "SwiftUIJoystick"),
+        .external(name: "AudioKit"),
     ],
     examples: [
         ModuleExample(
