@@ -26,6 +26,7 @@ public class BLEManager {
 
         self.subscribeToDidDisconnect()
         self.subscribeToDidConnect()
+        //        self.subscribeToWillRestoreState()
     }
 
     public static func live() -> BLEManager {
@@ -116,4 +117,13 @@ public class BLEManager {
             }
             .store(in: &cancellables)
     }
+
+    //    private func subscribeToWillRestoreState() {
+    //        self.centralManager.willRestoreState
+    //            .receive(on: DispatchQueue.main)
+    //            .sink { _ in
+    //                debugPrint("still alive")
+    //            }
+    //            .store(in: &cancellables)
+    //    }
 }

@@ -111,10 +111,14 @@ private class StateSettingDestinationPath: GKState, StateEventProcessor {
 
 private class StateSendingFile: GKState, StateEventProcessor {
 
+    //    private let dispatchQueue = DispatchQueue(label: "SendFile", qos: .background)
     private var cancellables: Set<AnyCancellable> = []
 
     private let maximumPacketSize: Int = 61
 
+    private var previousPacket: Int = 0
+    private var previousProgression: Float = -1
+    private var cumulatedSameProgression: Int = 0
     private var currentPacket: Int = 0
     private var expectedCompletePackets: Int
     private var expectedRemainingBytes: Int
@@ -161,6 +165,25 @@ private class StateSendingFile: GKState, StateEventProcessor {
 
     override func didEnter(from previousState: GKState?) {
         sendFile()
+
+        Timer.publish(every: 1, on: .main, in: .default)
+            .autoconnect()
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { _ in
+                //                self.tryToSendNextPacket()
+                //                self.currentPacket += 1
+                debugPrint(
+                    "still alive | previous: \(self.previousPacket) | currentPacket: \(self.currentPacket) | progression: \(self.progression * 100) % | cumulated: \(self.cumulatedSameProgression)"
+                )
+                //
+                if self.previousPacket == self.currentPacket {
+                    //                    debugPrint("sending")
+                    self.tryToSendNextPacket()
+                }
+                self.previousPacket = self.currentPacket
+            })
+            .store(in: &cancellables)
+
     }
 
     override func willExit(to nextState: GKState) {
@@ -179,15 +202,35 @@ private class StateSendingFile: GKState, StateEventProcessor {
     private func sendFile() {
         characteristic.onWrite = {
             self.currentPacket += 1
+            //            DispatchQueue.main.asyncAfter(deadline: .now() + 0.005) {
             self.tryToSendNextPacket()
+            //            }  // TODO: Might be solution for bug 0 < t < 0.05
         }
 
         tryToSendNextPacket()
     }
 
     private func tryToSendNextPacket() {
+//        let backgroundTask = UIApplication.shared.beginBackgroundTask {
+//            debugPrint("is stopped")
+//            //            self?.endBackgroundTaskIfActive()
+//        }
+
+        //        debugPrint("currentPacket: \(self.currentPacket)")
+        //        self.currentPacket += 1
+        //        self.dispatchQueue.asyncAfter(deadline: .now() + 1, execute: self.tryToSendNextPacket)
+        //        //        UIApplication.shared.endBackgroundTask(backgroundTask)
+        //        return
+
+        if previousProgression == progression {
+            cumulatedSameProgression += 1
+//            return
+        }
+        //        debugPrint("progression: \(self.progression * 100) %")
+        previousProgression = self.progression
+
         if isInCriticalSection() {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: self.tryToSendNextPacket)
+            //            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: self.tryToSendNextPacket)
             return
         }
 
@@ -196,6 +239,8 @@ private class StateSendingFile: GKState, StateEventProcessor {
         } else {
             process(event: .fileSent)
         }
+
+//        UIApplication.shared.endBackgroundTask(backgroundTask)
     }
 
     private func isInCriticalSection() -> Bool {
@@ -231,6 +276,7 @@ private class StateApplyingUpdate: GKState, StateEventProcessor {
     }
 
     override func didEnter(from previousState: GKState?) {
+        debugPrint("Enter StateApplyingUpdate")
         registerDidDisconnect()
 
         setMajorMinorRevision()
