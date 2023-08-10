@@ -25,5 +25,8 @@ let project = Project.iOSApp(
         ],
         "LSApplicationCategoryType": "public.app-category.utilities",
         "NSAccentColorName": "AccentColor",
+        "UIBackgroundModes": [
+            "external-accessory", "bluetooth-central", "bluetooth-peripheral", "fetch", "processing",
+        ],
     ]
 )
