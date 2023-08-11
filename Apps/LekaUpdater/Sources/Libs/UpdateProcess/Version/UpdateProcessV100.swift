@@ -121,7 +121,7 @@ private class StateSendingFile: GKState, StateEventProcessor {
     private var expectedPackets: Int {
         expectedRemainingBytes == 0 ? expectedCompletePackets : expectedCompletePackets + 1
     }
-    private var progression: Float {
+    private var _progression: Float {
         Float(currentPacket) / Float(expectedPackets)
     }
 
@@ -129,6 +129,8 @@ private class StateSendingFile: GKState, StateEventProcessor {
         characteristicUUID: BLESpecs.FileExchange.Characteristics.fileReceptionBuffer,
         serviceUUID: BLESpecs.FileExchange.service
     )
+
+    public var progression = CurrentValueSubject<Float, Never>(0.0)
 
     override init() {
         let dataSize = globalFirmwareManager.data.count
@@ -191,7 +193,8 @@ private class StateSendingFile: GKState, StateEventProcessor {
             return
         }
 
-        if progression < 1.0 {
+        progression.send(_progression)
+        if _progression < 1.0 {
             sendNextPacket()
         } else {
             process(event: .fileSent)
@@ -370,19 +373,21 @@ class UpdateProcessV100: UpdateProcessProtocol {
     // MARK: - Private variables
 
     private var stateMachine: GKStateMachine?
+    private var stateSendingFile = StateSendingFile()
 
     private var cancellables: Set<AnyCancellable> = []
 
     // MARK: - Public variables
 
     public var currentStage = CurrentValueSubject<UpdateProcessStage, UpdateProcessError>(.initial)
+    public var sendingFileProgression = CurrentValueSubject<Float, Never>(0.0)
 
     init() {
         self.stateMachine = GKStateMachine(states: [
             StateInitial(),
 
             StateLoadingUpdateFile(),
-            StateSendingFile(),
+            stateSendingFile,
             StateApplyingUpdate(),
             StateWaitingForRobotToReboot(),
             StateSettingDestinationPath(),
@@ -395,6 +400,7 @@ class UpdateProcessV100: UpdateProcessProtocol {
         self.stateMachine?.enter(StateInitial.self)
 
         self.startRoutineToUpdateCurrentState()
+        self.sendingFileProgression = self.stateSendingFile.progression
     }
 
     public func startProcess() {

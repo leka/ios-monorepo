@@ -37,6 +37,7 @@ class UpdateStatusViewModel: ObservableObject {
 
     init() {
         subscribeToStateUpdate()
+        subscribeToSendingFileProgressionUpdate()
     }
 
     private func subscribeToStateUpdate() {
@@ -55,6 +56,15 @@ class UpdateStatusViewModel: ObservableObject {
                         self.updatingStatus = .rebootingRobot
                 }
             }
+            .store(in: &cancellables)
+    }
+
+    private func subscribeToSendingFileProgressionUpdate() {
+        self.updateProcessController.sendingFileProgression
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { progression in
+                self.sendingFileProgression = progression
+            })
             .store(in: &cancellables)
     }
 
