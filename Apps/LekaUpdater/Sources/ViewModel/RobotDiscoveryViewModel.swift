@@ -10,7 +10,7 @@ public class RobotDiscoveryViewModel: ObservableObject, Equatable, Identifiable 
     @Published var name: String
     @Published var battery: Int
     @Published var isCharging: Bool
-    @Published var osVersion: String
+    @Published var osVersion: String?
     @Published var status: RobotGridViewStatus
 
     public var robotDiscovery: RobotDiscovery?
