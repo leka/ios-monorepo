@@ -39,7 +39,7 @@ struct UpdateStatusView: View {
                 VStack {
                     switch viewModel.updatingStatus {
                         case .sendingFile:
-                            SendingFileContentView()
+                            SendingFileContentView(progress: $viewModel.sendingFileProgression)
                         case .rebootingRobot:
                             RebootingContentView()
                         case .updateFinished:

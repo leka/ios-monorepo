@@ -22,6 +22,7 @@ class UpdateStatusViewModel: ObservableObject {
     // MARK: - Public variables
 
     @Published public var updatingStatus: UpdateStatus = .sendingFile
+    @Published public var sendingFileProgression: Float = 0.0
 
     public var stepNumber: Int {
         switch updatingStatus {

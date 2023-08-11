@@ -14,7 +14,7 @@ struct SendingFileIllustration: View {
 }
 
 struct SendingFileContentView: View {
-    @State private var progress = 0.66
+    @Binding var progress: Float
 
     var body: some View {
         VStack {
@@ -46,6 +46,8 @@ struct SendingFileContentView: View {
 }
 
 struct SendingFileView_Previews: PreviewProvider {
+    @State static private var progress: Float = 0.66
+
     static var previews: some View {
         VStack {
             SendingFileIllustration()
@@ -60,7 +62,7 @@ struct SendingFileView_Previews: PreviewProvider {
                 .padding()
 
             VStack {
-                SendingFileContentView()
+                SendingFileContentView(progress: $progress)
                 Spacer()
             }
             .foregroundColor(DesignKitAsset.Colors.darkGray.swiftUIColor)
