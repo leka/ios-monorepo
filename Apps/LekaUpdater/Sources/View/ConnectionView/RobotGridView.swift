@@ -63,7 +63,6 @@ struct RobotGridView: View {
             ForEach(discoveries) { discovery in
                 RobotDiscoveryView(discovery: discovery)
                     .onTapGesture {
-                        print("tapped: \(discovery.name)")
                         switch discovery.status {
                             case .connected:
                                 return
