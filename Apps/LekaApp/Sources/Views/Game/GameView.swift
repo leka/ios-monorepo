@@ -199,7 +199,6 @@ struct GameView: View {
                                 withAnimation {
                                     viewRouter.currentPage = .home
                                 }
-                                viewRouter.pathFromActivity = .init()
                             } else {
                                 viewRouter.pathFromCurriculum = .init()
                             }

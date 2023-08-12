@@ -14,7 +14,7 @@ struct ActivityListView: View {
     @EnvironmentObject var viewRouter: ViewRouter
     @EnvironmentObject var metrics: UIMetrics
 
-    @State private var showInstructionModal: Bool = false
+    @State private var navigateToInstructionsView: Bool = false
 
     // Data modeled for Search Feature
     @State var searchQuery = ""
@@ -37,9 +37,12 @@ struct ActivityListView: View {
             completeActivityList
         }
         .animation(.easeOut(duration: 0.4), value: sidebar.showInfo())
-        .sheet(isPresented: $showInstructionModal) {
-            SelectedActivityInstructionsView()
-        }
+        .navigationDestination(
+            isPresented: $navigateToInstructionsView,
+            destination: {
+                SelectedActivityInstructionsView()
+            }
+        )
         .searchable(
             text: $searchQuery,
             placement: .toolbar,
@@ -56,7 +59,7 @@ struct ActivityListView: View {
                     Button {
                         activityVM.currentActivity = activityVM.getActivity(item)
                         activityVM.selectedActivityID = UUID(uuidString: activityVM.getActivity(item).id)
-                        showInstructionModal.toggle()
+                        navigateToInstructionsView.toggle()
                     } label: {
                         ActivityListCell(
                             activity: activityVM.getActivity(item),

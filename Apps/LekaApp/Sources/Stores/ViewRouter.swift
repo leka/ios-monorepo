@@ -11,7 +11,7 @@ enum Page {
     case game
 }
 
-enum PathsToGame: Hashable {
+enum PathsToGameFromCurriculum: Hashable {
     case userSelect, game
 }
 
@@ -22,6 +22,6 @@ enum PathsToGameFromActivity: Hashable {
 class ViewRouter: ObservableObject {
 
     @Published var currentPage: Page = .welcome
-    @Published var pathFromCurriculum: [PathsToGame] = []
+    @Published var pathFromCurriculum: [PathsToGameFromCurriculum] = []
     @Published var pathFromActivity: [PathsToGameFromActivity] = []
 }

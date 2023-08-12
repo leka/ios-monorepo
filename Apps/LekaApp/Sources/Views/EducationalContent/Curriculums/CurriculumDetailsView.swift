@@ -36,7 +36,7 @@ struct CurriculumDetailsView: View {
     var body: some View {
         NavigationStack(path: $viewRouter.pathFromCurriculum) {
             curriculumDetailContent
-                .navigationDestination(for: PathsToGame.self) { destination in
+                .navigationDestination(for: PathsToGameFromCurriculum.self) { destination in
                     switch destination {
                         case .userSelect:
                             ProfileSelector_Users()
