@@ -228,6 +228,8 @@ private class StateSendingFile: GKState, StateEventProcessor {
 
 private class StateVerifyingFile: GKState, StateEventProcessor {
 
+    private var cancellables: Set<AnyCancellable> = []
+
     private var isFileValid = false
 
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
@@ -236,6 +238,10 @@ private class StateVerifyingFile: GKState, StateEventProcessor {
 
     override func didEnter(from previousState: GKState?) {
         startFileVerification()
+    }
+
+    override func willExit(to nextState: GKState) {
+        cancellables.removeAll()
     }
 
     func process(event: UpdateEvent) {
