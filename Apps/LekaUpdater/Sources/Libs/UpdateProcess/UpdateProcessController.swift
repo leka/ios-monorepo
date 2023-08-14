@@ -43,6 +43,8 @@ class UpdateProcessController {
         switch currentRobotVersion {
             case "1.0.0", "1.1.0":
                 self.currentUpdateProcess = UpdateProcessV100()
+            case "1.3.0", "1.4.0":
+                self.currentUpdateProcess = UpdateProcessV130()
             default:
                 self.currentUpdateProcess = UpdateProcessTemplate()
         }
