@@ -228,23 +228,34 @@ private class StateSendingFile: GKState, StateEventProcessor {
 
 private class StateVerifyingFile: GKState, StateEventProcessor {
 
+    private var isFileValid = false
+
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
-        return stateClass is StateApplyingUpdate.Type
+        return stateClass is StateApplyingUpdate.Type || stateClass is StateErrorFailedToVerifyFile.Type
     }
 
     override func didEnter(from previousState: GKState?) {
-        process(event: .fileVerificationReceived)
+        startFileVerification()
     }
 
     func process(event: UpdateEvent) {
         switch event {
             case .fileVerificationReceived:
+            if isFileValid {
                 self.stateMachine?.enter(StateApplyingUpdate.self)
+            } else {
+                self.stateMachine?.enter(StateErrorFailedToVerifyFile.self)
+            }
             default:
                 return
         }
     }
 
+    private func startFileVerification() {
+        // TODO: Implement by requesting SHA256 and compare it to file
+        isFileValid = true
+        process(event: .fileVerificationReceived)
+    }
 }
 
 private class StateApplyingUpdate: GKState, StateEventProcessor {
