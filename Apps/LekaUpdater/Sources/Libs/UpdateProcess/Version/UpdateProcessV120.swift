@@ -79,6 +79,7 @@ private class StateSettingDestinationPath: GKState, StateEventProcessor {
 
     override func didEnter(from previousState: GKState?) {
         setDestinationPath()
+//        process(event: .destinationPathSet)
     }
 
     func process(event: UpdateEvent) {
@@ -164,6 +165,8 @@ private class StateSendingFile: GKState, StateEventProcessor {
 
     override func didEnter(from previousState: GKState?) {
         sendFile()
+        
+//            process(event: .fileSent)
     }
 
     override func willExit(to nextState: GKState) {
@@ -182,6 +185,7 @@ private class StateSendingFile: GKState, StateEventProcessor {
     private func sendFile() {
         characteristic.onWrite = {
             self.currentPacket += 1
+//            self.process(event: .fileSent)
             self.tryToSendNextPacket()
         }
 
@@ -189,6 +193,7 @@ private class StateSendingFile: GKState, StateEventProcessor {
     }
 
     private func tryToSendNextPacket() {
+        debugPrint("Progression: \(self.progression.value * 100)%")
         if isInCriticalSection() {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: self.tryToSendNextPacket)
             return
@@ -232,12 +237,15 @@ private class StateVerifyingFile: GKState, StateEventProcessor {
 
     private var isFileValid = false
 
+    @Published private var actualSHA256: String = ""
+
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
         return stateClass is StateApplyingUpdate.Type || stateClass is StateErrorFailedToVerifyFile.Type
     }
 
     override func didEnter(from previousState: GKState?) {
-        startFileVerification()
+        DispatchQueue.main.asyncAfter(deadline: .now()+30, execute: startFileVerification)
+//        startFileVerification()
     }
 
     override func willExit(to nextState: GKState) {
@@ -258,9 +266,54 @@ private class StateVerifyingFile: GKState, StateEventProcessor {
     }
 
     private func startFileVerification() {
-        // TODO: Implement by requesting SHA256 and compare it to file
-        isFileValid = true
-        process(event: .fileVerificationReceived)
+        subscribeActualSHA256Updates()
+        readRequestSHA256()
+    }
+    
+    private func subscribeActualSHA256Updates() {
+        self.$actualSHA256.receive(on: DispatchQueue.main)
+            .sink { value in
+                debugPrint("Value is: \(value)") // TODO: Remove debug
+                debugPrint("ExpectedValue is: \(globalFirmwareManager.sha256)") // TODO: Remove debug
+                
+                self.isFileValid = value == globalFirmwareManager.sha256 // TODO: Validated?
+//                self.process(event: .fileVerificationReceived)// TODO: Validated?
+                
+                debugPrint("is valid: \(self.isFileValid)") // TODO: Remove debug
+                
+            }
+            .store(in: &cancellables)
+    }
+
+    private func readRequestSHA256() {
+        // TODO: Subscribe to SHA256
+        // TODO: Read SH256 (request)
+
+        
+//            var characteristic = ReadOnlyCharacteristic(
+//                characteristicUUID: BLESpecs.DeviceInformation.Characteristics.osVersion,
+//                serviceUUID: BLESpecs.DeviceInformation.service
+//            )
+//
+//            characteristic.onRead = { data in
+//                if let data = data {
+//                    self.actualSHA256 = data.map { String(format: "%02hhx", $0) }.joined()
+//                }
+//            }
+        //            self.robotPeripheral?.readOnlyCharacteristics.insert(characteristic)
+        
+        globalRobotManager.robotPeripheral?.peripheral.readValue(forCharacteristic: BLESpecs.FileExchange.Characteristics.fileSHA256, inService: BLESpecs.FileExchange.service)
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { _ in
+                // nothing to do
+            }, receiveValue: { data in
+                debugPrint("Receive value for SHA256")
+                if let data = data {
+                    self.actualSHA256 = data.map { String(format: "%02hhx", $0) }.joined()
+                }
+            })
+            .store(in: &cancellables)
+        // TODO: Add function to BLEKit
     }
 }
 
