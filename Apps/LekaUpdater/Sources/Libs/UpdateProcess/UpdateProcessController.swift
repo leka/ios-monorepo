@@ -22,6 +22,9 @@ enum UpdateProcessError: Error {
     // LekaOS 1.0.0+
     case failedToLoadFile
     case robotNotUpToDate
+
+    // LekaOS 1.3.0+
+    case failedToVerifyFile
 }
 
 // MARK: - Controller

@@ -17,6 +17,7 @@ private enum UpdateEvent {
     case destinationPathSet
     case fileCleared
     case fileSent
+    case fileVerificationReceived
     case robotDisconnected
     case robotDetected
 }
@@ -230,7 +231,7 @@ private class StateSendingFile: GKState, StateEventProcessor {
     }
 
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
-        return stateClass is StateApplyingUpdate.Type
+        return stateClass is StateVerifyingFile.Type
     }
 
     override func didEnter(from previousState: GKState?) {
@@ -244,7 +245,7 @@ private class StateSendingFile: GKState, StateEventProcessor {
     func process(event: UpdateEvent) {
         switch event {
             case .fileSent:
-                self.stateMachine?.enter(StateApplyingUpdate.self)
+                self.stateMachine?.enter(StateVerifyingFile.self)
             default:
                 return
         }
@@ -295,6 +296,71 @@ private class StateSendingFile: GKState, StateEventProcessor {
 
         globalRobotManager.robotPeripheral?.send(dataToSend, forCharacteristic: characteristic)
     }
+}
+
+private class StateVerifyingFile: GKState, StateEventProcessor {
+
+    private var cancellables: Set<AnyCancellable> = []
+
+    private var isFileValid = false
+
+    override func isValidNextState(_ stateClass: AnyClass) -> Bool {
+        return stateClass is StateApplyingUpdate.Type || stateClass is StateErrorFailedToVerifyFile.Type
+    }
+
+    override func didEnter(from previousState: GKState?) {
+        DispatchQueue.main.asyncAfter(deadline: .now()+1, execute: startFileVerification)
+    }
+
+    override func willExit(to nextState: GKState) {
+        cancellables.removeAll()
+    }
+
+    func process(event: UpdateEvent) {
+        switch event {
+            case .fileVerificationReceived:
+            if isFileValid {
+                self.stateMachine?.enter(StateApplyingUpdate.self)
+            } else {
+                self.stateMachine?.enter(StateErrorFailedToVerifyFile.self)
+            }
+            default:
+                return
+        }
+    }
+
+    private func startFileVerification() {
+        subscribeActualSHA256Updates()
+        readRequestSHA256()
+    }
+    
+    private func subscribeActualSHA256Updates() {
+        globalRobotManager.$sha256
+            .receive(on: DispatchQueue.main)
+            .sink { value in
+                guard let value = value else { return }
+
+                if value == "0000000000000000000000000000000000000000000000000000000000000000" {
+                    return
+                }
+
+                self.isFileValid = value == globalFirmwareManager.sha256
+                self.process(event: .fileVerificationReceived)
+            }
+            .store(in: &cancellables)
+    }
+
+    private func readRequestSHA256() {
+        globalRobotManager.robotPeripheral?.peripheral.readValue(forCharacteristic: BLESpecs.FileExchange.Characteristics.fileSHA256, inService: BLESpecs.FileExchange.service)
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { _ in
+                // nothing to do
+            }, receiveValue: { data in
+                // nothing to do
+            })
+            .store(in: &cancellables)
+    }
+
 }
 
 private class StateApplyingUpdate: GKState, StateEventProcessor {
@@ -438,6 +504,7 @@ private class StateFinal: GKState {}
 private protocol StateError {}
 
 private class StateErrorFailedToLoadFile: GKState, StateError {}
+private class StateErrorFailedToVerifyFile: GKState, StateError {}
 private class StateErrorRobotNotUpToDate: GKState, StateError {}
 
 // MARK: - StateMachine
@@ -465,6 +532,7 @@ class UpdateProcessV130: UpdateProcessProtocol {
             StateSettingDestinationPath(),
             StateSettingClearFile(),
             stateSendingFile,
+            StateVerifyingFile(),
             StateApplyingUpdate(),
             StateWaitingForRobotToReboot(),
 
@@ -510,7 +578,7 @@ class UpdateProcessV130: UpdateProcessProtocol {
                 currentStage.send(.initial)
             case is StateLoadingUpdateFile, is StateSettingDestinationPath, is StateSettingClearFile, is StateSendingFile:
                 currentStage.send(.sendingUpdate)
-            case is StateApplyingUpdate, is StateWaitingForRobotToReboot:
+            case is StateVerifyingFile, is StateApplyingUpdate, is StateWaitingForRobotToReboot:
                 currentStage.send(.installingUpdate)
             case is StateFinal:
                 currentStage.send(completion: .finished)
@@ -525,6 +593,8 @@ class UpdateProcessV130: UpdateProcessProtocol {
         switch state {
             case is StateErrorFailedToLoadFile:
                 currentStage.send(completion: .failure(.failedToLoadFile))
+            case is StateErrorFailedToVerifyFile:
+                currentStage.send(completion: .failure(.failedToVerifyFile))
             case is StateErrorRobotNotUpToDate:
                 currentStage.send(completion: .failure(.robotNotUpToDate))
             default:
