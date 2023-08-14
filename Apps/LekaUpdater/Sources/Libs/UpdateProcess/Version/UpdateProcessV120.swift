@@ -388,6 +388,7 @@ private class StateFinal: GKState {}
 private protocol StateError {}
 
 private class StateErrorFailedToLoadFile: GKState, StateError {}
+private class StateErrorFailedToVerifyFile: GKState, StateError {}
 private class StateErrorRobotNotUpToDate: GKState, StateError {}
 
 // MARK: - StateMachine
@@ -474,6 +475,8 @@ class UpdateProcessV120: UpdateProcessProtocol {
         switch state {
             case is StateErrorFailedToLoadFile:
                 currentStage.send(completion: .failure(.failedToLoadFile))
+            case is StateErrorFailedToVerifyFile:
+                currentStage.send(completion: .failure(.failedToVerifyFile))
             case is StateErrorRobotNotUpToDate:
                 currentStage.send(completion: .failure(.robotNotUpToDate))
             default:
