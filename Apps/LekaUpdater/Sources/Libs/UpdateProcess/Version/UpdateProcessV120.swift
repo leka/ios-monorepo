@@ -370,7 +370,7 @@ private class StateErrorRobotNotUpToDate: GKState, StateError {}
 
 // MARK: - StateMachine
 
-class UpdateProcessV100: UpdateProcessProtocol {
+class UpdateProcessV120: UpdateProcessProtocol {
 
     // MARK: - Private variables
 
