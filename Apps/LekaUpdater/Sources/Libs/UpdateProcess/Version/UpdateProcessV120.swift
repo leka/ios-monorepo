@@ -15,6 +15,7 @@ private enum UpdateEvent {
     case fileLoaded, failedToLoadFile
     case destinationPathSet
     case fileSent
+    case fileVerificationReceived
     case robotDisconnected
     case robotDetected
 }
@@ -158,7 +159,7 @@ private class StateSendingFile: GKState, StateEventProcessor {
     }
 
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
-        return stateClass is StateApplyingUpdate.Type
+        return stateClass is StateVerifyingFile.Type
     }
 
     override func didEnter(from previousState: GKState?) {
@@ -172,7 +173,7 @@ private class StateSendingFile: GKState, StateEventProcessor {
     func process(event: UpdateEvent) {
         switch event {
             case .fileSent:
-                self.stateMachine?.enter(StateApplyingUpdate.self)
+                self.stateMachine?.enter(StateVerifyingFile.self)
             default:
                 return
         }
@@ -223,6 +224,27 @@ private class StateSendingFile: GKState, StateEventProcessor {
 
         globalRobotManager.robotPeripheral?.send(dataToSend, forCharacteristic: characteristic)
     }
+}
+
+private class StateVerifyingFile: GKState, StateEventProcessor {
+
+    override func isValidNextState(_ stateClass: AnyClass) -> Bool {
+        return stateClass is StateApplyingUpdate.Type
+    }
+
+    override func didEnter(from previousState: GKState?) {
+        process(event: .fileVerificationReceived)
+    }
+
+    func process(event: UpdateEvent) {
+        switch event {
+            case .fileVerificationReceived:
+                self.stateMachine?.enter(StateApplyingUpdate.self)
+            default:
+                return
+        }
+    }
+
 }
 
 private class StateApplyingUpdate: GKState, StateEventProcessor {
@@ -390,6 +412,7 @@ class UpdateProcessV120: UpdateProcessProtocol {
 
             StateLoadingUpdateFile(),
             stateSendingFile,
+            StateVerifyingFile(),
             StateApplyingUpdate(),
             StateWaitingForRobotToReboot(),
             StateSettingDestinationPath(),
@@ -436,7 +459,7 @@ class UpdateProcessV120: UpdateProcessProtocol {
                 currentStage.send(.initial)
             case is StateLoadingUpdateFile, is StateSettingDestinationPath, is StateSendingFile:
                 currentStage.send(.sendingUpdate)
-            case is StateApplyingUpdate, is StateWaitingForRobotToReboot:
+            case is StateVerifyingFile, is StateApplyingUpdate, is StateWaitingForRobotToReboot:
                 currentStage.send(.installingUpdate)
             case is StateFinal:
                 currentStage.send(completion: .finished)
