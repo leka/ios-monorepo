@@ -45,3 +45,18 @@ final class FirmwareManager_Tests_compareVersion: XCTestCase {
     }
 
 }
+
+final class FirmwareManager_Tests_sha256: XCTestCase {
+
+    func test_shouldReturnRobotNeedUpdate_invalidVersion() {
+        let firmwareManager = FirmwareManager()
+        _ = firmwareManager.load()
+
+        // shasum -a 256 LekaOS-1.4.0.bin
+        let expectedSHA256 = "e061ee13041fe73667e4e9ca8f84189fb4cbc8f3d8710f8841fb41cf0df9e1e1"
+        let actualSHA256 = firmwareManager.sha256
+
+        XCTAssertEqual(expectedSHA256, actualSHA256)
+    }
+
+}

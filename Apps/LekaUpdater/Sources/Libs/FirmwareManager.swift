@@ -2,6 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import CryptoKit
 import Foundation
 
 enum RobotUpdateStatus {
@@ -24,6 +25,10 @@ class FirmwareManager: ObservableObject {
     }
 
     @Published public var data = Data()
+
+    public var sha256: String {
+        SHA256.hash(data: data).compactMap { String(format: "%02x", $0) }.joined()
+    }
 
     func compareWith(version: String) -> RobotUpdateStatus {
         guard version.contains(".") else {
