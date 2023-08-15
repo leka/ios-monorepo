@@ -37,25 +37,25 @@ public struct ListenThreeChoicesView: View {
         ) {
             GridRow {
                 ChoiceView(
-                    choice: viewModel.choices[0], size: answerSize, isTappable: audioPlayer.audioHasBeenPlayed
+                    choice: viewModel.choices[0], size: answerSize, isTappable: audioPlayer.didFinishPlaying
                 )
-                .onTapGestureIf(audioPlayer.audioHasBeenPlayed) {
+                .onTapGestureIf(audioPlayer.didFinishPlaying) {
                     viewModel.onChoiceTapped(choice: viewModel.choices[0])
                 }
                 Color.clear.gridCellUnsizedAxes([.horizontal, .vertical])
                 ChoiceView(
-                    choice: viewModel.choices[1], size: answerSize, isTappable: audioPlayer.audioHasBeenPlayed
+                    choice: viewModel.choices[1], size: answerSize, isTappable: audioPlayer.didFinishPlaying
                 )
-                .onTapGestureIf(audioPlayer.audioHasBeenPlayed) {
+                .onTapGestureIf(audioPlayer.didFinishPlaying) {
                     viewModel.onChoiceTapped(choice: viewModel.choices[1])
                 }
             }
             GridRow {
                 Color.clear.gridCellUnsizedAxes([.horizontal, .vertical])
                 ChoiceView(
-                    choice: viewModel.choices[2], size: answerSize, isTappable: audioPlayer.audioHasBeenPlayed
+                    choice: viewModel.choices[2], size: answerSize, isTappable: audioPlayer.didFinishPlaying
                 )
-                .onTapGestureIf(audioPlayer.audioHasBeenPlayed) {
+                .onTapGestureIf(audioPlayer.didFinishPlaying) {
                     viewModel.onChoiceTapped(choice: viewModel.choices[2])
                 }
                 Color.clear.gridCellUnsizedAxes([.horizontal, .vertical])

@@ -26,12 +26,12 @@ public struct ListenOneChoiceView: View {
                 .padding(.vertical, 20)
             Spacer()
             ChoiceView(
-                choice: viewModel.choices[0], size: answerSize, isTappable: audioPlayer.audioHasBeenPlayed
+                choice: viewModel.choices[0], size: answerSize, isTappable: audioPlayer.didFinishPlaying
             )
-            .onTapGestureIf(audioPlayer.audioHasBeenPlayed) {
+            .onTapGestureIf(audioPlayer.didFinishPlaying) {
                 viewModel.onChoiceTapped(choice: viewModel.choices[0])
             }
-            .animation(.easeOut(duration: 0.3), value: audioPlayer.audioHasBeenPlayed)
+            .animation(.easeOut(duration: 0.3), value: audioPlayer.didFinishPlaying)
             Spacer()
         }
     }

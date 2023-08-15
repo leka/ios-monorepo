@@ -8,7 +8,7 @@ import Foundation
 
 public class AudioPlayer: NSObject, ObservableObject {
     @Published var progress: CGFloat = 0.0
-    @Published var audioHasBeenPlayed = false
+    @Published var didFinishPlaying = false
 
     private var player: AVAudioPlayer!
 
@@ -17,7 +17,7 @@ public class AudioPlayer: NSObject, ObservableObject {
     public init(audioRecording: AudioRecordingModel) {
         super.init()
         setAudioPlayer(audioRecording: audioRecording)
-        audioHasBeenPlayed = false
+        didFinishPlaying = false
     }
 
     func setAudioPlayer(audioRecording: AudioRecordingModel) {
@@ -45,7 +45,7 @@ public class AudioPlayer: NSObject, ObservableObject {
 
     func play() {
         player.play()
-        audioHasBeenPlayed = false
+        didFinishPlaying = false
     }
 
     func pause() {
@@ -65,7 +65,7 @@ public class AudioPlayer: NSObject, ObservableObject {
 extension AudioPlayer: AVAudioPlayerDelegate {
 
     public func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully: Bool) {
-        audioHasBeenPlayed = true
+        didFinishPlaying = true
     }
 
 }

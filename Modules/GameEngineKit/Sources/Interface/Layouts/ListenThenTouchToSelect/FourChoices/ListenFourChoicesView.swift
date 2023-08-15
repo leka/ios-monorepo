@@ -40,9 +40,9 @@ public struct ListenFourChoicesView: View {
                     let choice = viewModel.choices[index]
 
                     ChoiceView(
-                        choice: choice, size: answerSize, isTappable: audioPlayer.audioHasBeenPlayed
+                        choice: choice, size: answerSize, isTappable: audioPlayer.didFinishPlaying
                     )
-                    .onTapGestureIf(audioPlayer.audioHasBeenPlayed) {
+                    .onTapGestureIf(audioPlayer.didFinishPlaying) {
                         viewModel.onChoiceTapped(choice: choice)
                     }
                 }
@@ -52,9 +52,9 @@ public struct ListenFourChoicesView: View {
                     let choice = viewModel.choices[index]
 
                     ChoiceView(
-                        choice: choice, size: answerSize, isTappable: audioPlayer.audioHasBeenPlayed
+                        choice: choice, size: answerSize, isTappable: audioPlayer.didFinishPlaying
                     )
-                    .onTapGestureIf(audioPlayer.audioHasBeenPlayed) {
+                    .onTapGestureIf(audioPlayer.didFinishPlaying) {
                         viewModel.onChoiceTapped(choice: choice)
                     }
                 }
