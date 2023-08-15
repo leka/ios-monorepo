@@ -7,9 +7,10 @@ import Combine
 import Foundation
 
 public class AudioPlayer: NSObject, ObservableObject {
-    @Published var player: AVAudioPlayer!
     @Published var progress: CGFloat = 0.0
     @Published var audioHasBeenPlayed = false
+
+    private var player: AVAudioPlayer!
 
     private var cancellables: Set<AnyCancellable> = []
 
@@ -54,6 +55,11 @@ public class AudioPlayer: NSObject, ObservableObject {
     func stop() {
         player.stop()
     }
+
+    var isPlaying: Bool {
+        self.player.isPlaying
+    }
+
 }
 
 extension AudioPlayer: AVAudioPlayerDelegate {
