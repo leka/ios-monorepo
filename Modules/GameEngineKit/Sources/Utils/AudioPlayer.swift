@@ -6,7 +6,7 @@ import AVFAudio
 import Combine
 import Foundation
 
-public class AudioPlayer: ObservableObject {
+public class AudioPlayer: NSObject, ObservableObject {
     @Published var player: AVAudioPlayer!
     @Published var progress: CGFloat = 0.0
     @Published var audioHasBeenPlayed = false
@@ -14,6 +14,7 @@ public class AudioPlayer: ObservableObject {
     private var cancellables: Set<AnyCancellable> = []
 
     public init(audioRecording: AudioRecordingModel) {
+        super.init()
         setAudioPlayer(audioRecording: audioRecording)
         audioHasBeenPlayed = false
     }
@@ -22,6 +23,7 @@ public class AudioPlayer: ObservableObject {
         do {
             let path = Bundle.main.path(forResource: audioRecording.file, ofType: "mp3")!
             player = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
+            player.delegate = self
         } catch {
             print("ERROR - mp3 file not found - \(error)")
             return
@@ -42,7 +44,7 @@ public class AudioPlayer: ObservableObject {
 
     func play() {
         player.play()
-        audioHasBeenPlayed = true
+        audioHasBeenPlayed = false
     }
 
     func pause() {
@@ -52,4 +54,12 @@ public class AudioPlayer: ObservableObject {
     func stop() {
         player.stop()
     }
+}
+
+extension AudioPlayer: AVAudioPlayerDelegate {
+
+    public func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully: Bool) {
+        audioHasBeenPlayed = true
+    }
+
 }
