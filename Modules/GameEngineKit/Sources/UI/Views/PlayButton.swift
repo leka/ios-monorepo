@@ -42,13 +42,13 @@ struct PlayButton: View {
                 .padding(40)
         }
         .frame(width: 200)
-        .disabled(audioPlayer.player.isPlaying)
+        .disabled(audioPlayer.isPlaying)
         .buttonStyle(Play_ButtonStyle(progress: audioPlayer.progress))
-        .scaleEffect(audioPlayer.player.isPlaying ? 1.0 : 0.8, anchor: .center)
+        .scaleEffect(audioPlayer.isPlaying ? 1.0 : 0.8, anchor: .center)
         .shadow(
             color: .accentColor.opacity(0.2),
-            radius: audioPlayer.player.isPlaying ? 6 : 3, x: 0, y: 3
+            radius: audioPlayer.isPlaying ? 6 : 3, x: 0, y: 3
         )
-        .animation(.spring(response: 0.3, dampingFraction: 0.45), value: audioPlayer.player.isPlaying)
+        .animation(.spring(response: 0.3, dampingFraction: 0.45), value: audioPlayer.isPlaying)
     }
 }

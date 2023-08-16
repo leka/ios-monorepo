@@ -4,12 +4,12 @@
 
 import SwiftUI
 
-public struct ListenSixChoicesView: View {
+public struct ListenFourChoicesView: View {
     @ObservedObject private var viewModel: GenericViewModel
     @ObservedObject private var audioPlayer: AudioPlayer
-    let horizontalSpacing: CGFloat = 80
+    let horizontalSpacing: CGFloat = 200
     let verticalSpacing: CGFloat = 32
-    let answerSize: CGFloat = 200
+    let answerSize: CGFloat = 240
 
     public init(gameplay: any GameplayProtocol, audioRecording: AudioRecordingModel) {
         self.viewModel = GenericViewModel(gameplay: gameplay)
@@ -36,7 +36,7 @@ public struct ListenSixChoicesView: View {
             verticalSpacing: verticalSpacing
         ) {
             GridRow {
-                ForEach(0..<3) { index in
+                ForEach(0..<2) { index in
                     let choice = viewModel.choices[index]
 
                     ChoiceView(
@@ -48,7 +48,7 @@ public struct ListenSixChoicesView: View {
                 }
             }
             GridRow {
-                ForEach(3..<6) { index in
+                ForEach(2..<4) { index in
                     let choice = viewModel.choices[index]
 
                     ChoiceView(
