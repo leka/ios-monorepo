@@ -30,4 +30,5 @@ let project = Project.iOSApp(
             "UIInterfaceOrientationLandscapeLeft",
         ],
         "NSAccentColorName": "AccentColor",
+        "UIBackgroundModes": ["audio"],
     ])
