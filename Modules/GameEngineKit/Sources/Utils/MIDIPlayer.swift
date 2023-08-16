@@ -8,12 +8,15 @@ import SwiftUI
 
 class MIDIPlayer: ObservableObject {
     let engine = AudioEngine()
-    var instrument: MIDISampler
+    private var instrument: MIDISampler
+    private var sequencer = AppleSequencer()
+    private var MIDICallback = MIDICallbackInstrument()
 
     init(name: String, samples: [MIDISample]) {
         self.instrument = MIDISampler(name: name)
         engine.output = instrument
         loadInstrument(samples: samples)
+        try? engine.start()
     }
 
     func loadInstrument(samples: [MIDISample]) {
@@ -28,7 +31,30 @@ class MIDIPlayer: ObservableObject {
         }
     }
 
-    func noteOn(number: MIDINoteNumber) {
-        instrument.play(noteNumber: number, velocity: 90, channel: 0)
+    func loadMIDIFile(fileUrl: URL, tempo: Double) {
+        sequencer.loadMIDIFile(fromURL: fileUrl)
+        sequencer.setGlobalMIDIOutput(MIDICallback.midiIn)
+        sequencer.setTempo(tempo)
+    }
+
+    func setMIDICallback(callback: @escaping MIDICallback) {
+        MIDICallback.callback = callback
+    }
+
+    func noteOn(number: MIDINoteNumber, velocity: MIDIVelocity = 90) {
+        instrument.play(noteNumber: number, velocity: velocity, channel: 0)
+    }
+
+    func play() {
+        sequencer.rewind()
+        sequencer.play()
+    }
+
+    func getSequenceTrack() -> [MIDINoteData] {
+        sequencer.tracks[1].getMIDINoteData()
+    }
+
+    func getDuration() -> Double {
+        sequencer.tracks[1].length
     }
 }
