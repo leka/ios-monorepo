@@ -5,23 +5,24 @@
 import SwiftUI
 
 public struct MelodySongModel {
-    var midiFile: String  // Change to URL
-    var title: String
-    var colors: [Color]
-    var duration: Int
+    let midiFile: URL
+    let title: String
+    let tempo: Double
+    let octaveGap: UInt8
 
-    public init(midiFile: String, title: String, colors: [Color]) {
+    public init(midiFile: URL, title: String, tempo: Double, octaveGap: UInt8) {
         self.midiFile = midiFile
         self.title = title
-        self.colors = colors
-        self.duration = colors.count
-
+        self.tempo = tempo
+        self.octaveGap = octaveGap
     }
 }
 
 public let kListOfMelodySongsAvailable: [MelodySongModel] = [
-    MelodySongModel(midiFile: "melody_1", title: "First song title", colors: [.red, .green, .purple, .pink]),
     MelodySongModel(
-        midiFile: "melody_2", title: "Second song title", colors: [.purple, .blue, .red, .pink, .red, .blue]),
-    MelodySongModel(midiFile: "melody_3", title: "Third song title", colors: [.pink, .pink, .red, .red, .red, .blue]),
+        midiFile: Bundle.module.url(forResource: "AuClairDeLaLune", withExtension: "mid")!,
+        title: "Au Clair de la Lune",
+        tempo: 140,
+        octaveGap: 36
+    )
 ]
