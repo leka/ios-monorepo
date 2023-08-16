@@ -16,10 +16,7 @@ public class MelodyGameplay {
         self.state = .playing
     }
 
-    func process(tile: Tile) {
-        guard step < song.duration else { return }
-        if tile.color == song.colors[step] {
-            print("Play music")
+    func process(tile: XylophoneTile) {
             step += 1
             progress = CGFloat(step) / CGFloat(song.duration)
         }
