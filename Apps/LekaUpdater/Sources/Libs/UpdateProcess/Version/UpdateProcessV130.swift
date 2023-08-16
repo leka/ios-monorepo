@@ -262,6 +262,8 @@ private class StateSendingFile: GKState, StateEventProcessor {
     }
 
     private func tryToSendNextPacket() {
+        debugPrint("Progression: \(self.progression.value * 100)%")
+
         progression.send(_progression)
         if _progression < 1.0 {
             sendNextPacket()
@@ -323,6 +325,8 @@ private class StateVerifyingFile: GKState, StateEventProcessor {
             .receive(on: DispatchQueue.main)
             .sink { value in
                 guard let value = value else { return }
+
+                debugPrint("New sha256 received: \(value)")
 
                 if value == "0000000000000000000000000000000000000000000000000000000000000000" {
                     return
