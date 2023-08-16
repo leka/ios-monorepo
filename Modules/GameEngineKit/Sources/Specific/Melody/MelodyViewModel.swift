@@ -36,7 +36,7 @@ public class MelodyViewModel: Identifiable, ObservableObject {
             .store(in: &cancellables)
     }
 
-    public func onTileTapped(tile: Tile) {
+    public func onTileTapped(tile: XylophoneTile) {
         gameplay.process(tile: tile)
     }
 }

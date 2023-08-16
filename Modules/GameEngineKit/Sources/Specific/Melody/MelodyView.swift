@@ -4,20 +4,14 @@
 
 import SwiftUI
 
-public struct Tile: Identifiable, Hashable {
-    public var id: Int
-    var note: String  // Change when MIDI
-    var color: Color
-}
-
-public let kListOfTiles: [Tile] = [
-    Tile(id: 0, note: "do", color: .pink),
-    Tile(id: 1, note: "re", color: .red),
-    Tile(id: 2, note: "mi", color: .orange),
-    Tile(id: 3, note: "fa", color: .yellow),
-    Tile(id: 4, note: "sol", color: .green),
-    Tile(id: 5, note: "la", color: .blue),
-    Tile(id: 6, note: "si", color: .purple),
+public let kListOfTiles: [XylophoneTile] = [
+    XylophoneTile(id: 0, note: 24, color: .pink),
+    XylophoneTile(id: 1, note: 26, color: .red),
+    XylophoneTile(id: 2, note: 28, color: .orange),
+    XylophoneTile(id: 3, note: 29, color: .yellow),
+    XylophoneTile(id: 4, note: 31, color: .green),
+    XylophoneTile(id: 5, note: 33, color: .blue),
+    XylophoneTile(id: 6, note: 35, color: .purple),
 ]
 
 public struct MelodyView: View {
