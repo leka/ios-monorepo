@@ -7,14 +7,18 @@ import AudioKit
 import SwiftUI
 
 class MIDIPlayer: ObservableObject {
-    let engine = AudioEngine()
-    var instrument: MIDISampler
+
+    private let engine = AudioEngine()
+    private var sampler: MIDISampler
+    private var sequencer = AppleSequencer()
+    private var midiCallback = MIDICallbackInstrument()
 
     init(name: String, samples: [MIDISample]) {
-        self.instrument = MIDISampler(name: name)
-        engine.output = instrument
+        self.sampler = MIDISampler(name: name)
+        engine.output = sampler
         startAudioEngine()
         loadInstrument(samples: samples)
+        try? engine.start()
     }
 
     func startAudioEngine() {
@@ -30,13 +34,36 @@ class MIDIPlayer: ObservableObject {
             let files = samples.compactMap {
                 $0.audioFile
             }
-            try instrument.loadAudioFiles(files)
+            try sampler.loadAudioFiles(files)
         } catch {
             print("Could not load file")
         }
     }
 
-    func noteOn(number: MIDINoteNumber) {
-        instrument.play(noteNumber: number, velocity: 60, channel: 0)
+    func loadMIDIFile(fileUrl: URL, tempo: Double) {
+        sequencer.loadMIDIFile(fromURL: fileUrl)
+        sequencer.setGlobalMIDIOutput(midiCallback.midiIn)
+        sequencer.setTempo(tempo)
+    }
+
+    func setMIDICallback(callback: @escaping MIDICallback) {
+        midiCallback.callback = callback
+    }
+
+    func noteOn(number: MIDINoteNumber, velocity: MIDIVelocity = 60) {
+        sampler.play(noteNumber: number, velocity: velocity, channel: 0)
+    }
+
+    func play() {
+        sequencer.rewind()
+        sequencer.play()
+    }
+
+    func getSequenceTrack() -> [MIDINoteData] {
+        sequencer.tracks[1].getMIDINoteData()
+    }
+
+    func getDuration() -> Double {
+        sequencer.tracks[1].length
     }
 }
