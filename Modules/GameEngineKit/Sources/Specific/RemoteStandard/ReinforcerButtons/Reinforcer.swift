@@ -22,7 +22,7 @@ enum Reinforcer: String, CaseIterable {
             case .sparkles:
                 return GameEngineKitAsset.Assets.reinforcer4.swiftUIImage
             case .rainbow:
-                return GameEngineKitAsset.Assets.reinforcer4.swiftUIImage
+                return GameEngineKitAsset.Assets.reinforcer5.swiftUIImage
         }
     }
 }
