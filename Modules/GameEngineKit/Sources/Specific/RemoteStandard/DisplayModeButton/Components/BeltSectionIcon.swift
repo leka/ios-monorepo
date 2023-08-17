@@ -11,7 +11,7 @@ struct BeltSectionIcon: View {
     @State private var backgroundLineWidth = 0
 
     var body: some View {
-        ArcShape(startAngle: startAngle, endAngle: endAngle, clockwise: true)
+        ArcShape(startAngle: startAngle, endAngle: endAngle)
             .stroke(.black, style: StrokeStyle(lineWidth: 3, lineCap: .round))
             .frame(width: 60, height: 60)
     }

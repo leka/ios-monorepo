@@ -5,10 +5,8 @@
 import SwiftUI
 
 struct ArcShape: Shape {
-
     let startAngle: Angle
     let endAngle: Angle
-    let clockwise: Bool
 
     func path(in rect: CGRect) -> Path {
         let rotationAdjustment = Angle.degrees(90)
@@ -19,7 +17,7 @@ struct ArcShape: Shape {
 
         path.addArc(
             center: CGPoint(x: rect.midX, y: rect.midY), radius: rect.width / 2, startAngle: modifiedStart,
-            endAngle: modifiedEnd, clockwise: !clockwise)
+            endAngle: modifiedEnd, clockwise: false)
 
         return path
     }
