@@ -32,8 +32,8 @@ struct TwoHalvesSelector: View {
 
     private var beltSectionButtons: some View {
         ZStack {
-            BeltSectionView(startAngle: .degrees(10), endAngle: .degrees(170), color: .red)
-            BeltSectionView(startAngle: .degrees(190), endAngle: .degrees(350), color: .blue)
+            BeltSectionButton(section: .right, color: .red)
+            BeltSectionButton(section: .left, color: .blue)
         }
     }
 }
