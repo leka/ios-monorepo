@@ -115,7 +115,8 @@ private class StateSettingDestinationPath: GKState, StateEventProcessor {
     }
 
     override func didEnter(from previousState: GKState?) {
-        setDestinationPath()
+        DispatchQueue.main.asyncAfter(deadline: .now()+1, execute: setDestinationPath)
+//        setDestinationPath()
     }
 
     func process(event: UpdateEvent) {
