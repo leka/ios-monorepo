@@ -34,10 +34,10 @@ public struct RemoteArrowView: View {
 
     public var body: some View {
         CircleLayout {
-            RemoteArrowButtonView(image: "arrow.up", color: .blue)
-            RemoteArrowButtonView(image: "arrow.clockwise", color: .red)
-            RemoteArrowButtonView(image: "arrow.down", color: .green)
-            RemoteArrowButtonView(image: "arrow.counterclockwise", color: .yellow)
+            ArrowButton(arrow: .up)
+            ArrowButton(arrow: .right)
+            ArrowButton(arrow: .down)
+            ArrowButton(arrow: .left)
         }
     }
 }
