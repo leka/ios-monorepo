@@ -77,7 +77,7 @@ private class StateSettingDestinationPath: GKState, StateEventProcessor {
     }
 
     override func didEnter(from previousState: GKState?) {
-        setDestinationPath()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: setDestinationPath)
     }
 
     func process(event: UpdateEvent) {
@@ -162,7 +162,7 @@ private class StateSendingFile: GKState, StateEventProcessor {
     }
 
     override func didEnter(from previousState: GKState?) {
-        sendFile()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: sendFile)
     }
 
     override func willExit(to nextState: GKState) {
@@ -236,9 +236,8 @@ private class StateApplyingUpdate: GKState, StateEventProcessor {
     override func didEnter(from previousState: GKState?) {
         registerDidDisconnect()
 
-        setMajorMinorRevision()
-        sleep(1)
-        applyUpdate()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: setMajorMinorRevision)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: applyUpdate)
 
     }
 
