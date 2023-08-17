@@ -40,7 +40,22 @@ struct ArrowButton: View {
 
     var body: some View {
 		Button {
-            print("touched \(image)")
+			switch arrow {
+				case .up:
+					// TODO(@ladislas): Go forward
+					print("Go forward")
+				case .right:
+					// TODO(@ladislas): Turn right
+					print("Turn right")
+				case .down:
+					// TODO(@ladislas): Go backward
+					print("Go backward")
+				case .left:
+					// TODO(@ladislas): Turn left
+					print("Turn left")
+			}
+			// TODO(@ladislas): Lights up Leka in "arrow.color()"
+			print("Show \(arrow.color())")
 		} label: {
 			Circle()
 				.fill(.white)

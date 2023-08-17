@@ -11,6 +11,7 @@ struct DisplayModeButton: View {
     var body: some View {
         Button {
             displayMode = mode
+            // TODO(@ladislas): Turn off all leds
         } label: {
             switch mode {
                 case .fullBelt:

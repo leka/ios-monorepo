@@ -61,6 +61,13 @@ struct BeltSectionButton: View {
             .frame(width: 300, height: 300)
             .onTapGesture {
                 buttonPressed.toggle()
+                if buttonPressed {
+                    // TODO(@ladislas): Turn on lights from "section.ledRange().start" to "section.ledRange().end" in "color"
+                    print("Leds \(section.ledRange().start) to \(section.ledRange().end) are in \(color)")
+                } else {
+                    // TODO(@ladislas): Turn off lights from "section.ledRange().start" to "section.ledRange().end"
+                    print("Leds \(section.ledRange().start) to \(section.ledRange().end) are in off")
+                }
                 backgroundLineWidth = buttonPressed ? 25 : 0
             }
             .background(

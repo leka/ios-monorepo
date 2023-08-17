@@ -24,7 +24,32 @@ struct EarButton: View {
             .frame(width: 50, height: 50)
             .onTapGesture {
                 buttonPressed.toggle()
-                backgroundDimension = buttonPressed ? 60 : 0
+                if buttonPressed {
+                    switch selectedEar {
+                        case .all:
+                            // TODO(@ladislas): Turn on the two ears in "color"
+                            print("All ears are \(color)")
+                        case .right:
+                            // TODO(@ladislas): Turn on the right ear in "color"
+                            print("Right ear is \(color)")
+                        case .left:
+                            // TODO(@ladislas): Turn on the left ear in "color"
+                            print("Left ear is \(color)")
+                    }
+                } else {
+                    switch selectedEar {
+                        case .all:
+                            // TODO(@ladislas): Turn off the two ears
+                            print("All ears are off")
+                        case .right:
+                            // TODO(@ladislas): Turn off the right ear
+                            print("Right ear is off")
+                        case .left:
+                            // TODO(@ladislas): Turn off the left ear
+                            print("Left ear is off")
+                    }
+                }
+                backgroundDimension = buttonPressed ? 65 : 0
             }
             .background(
                 EarButtonFeedback(color: color, backgroundDimension: backgroundDimension)
