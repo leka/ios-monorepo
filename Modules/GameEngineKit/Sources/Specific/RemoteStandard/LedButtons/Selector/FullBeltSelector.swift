@@ -21,7 +21,7 @@ struct FullBeltSelector: View {
             .padding(20)
 
             BeltSectionButton(section: .full, color: .red)
-            EarButton(color: .blue)
+            EarButton(selectedEar: .all, color: .blue)
 
         }
         .padding()

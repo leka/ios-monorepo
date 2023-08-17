@@ -24,8 +24,8 @@ struct FourQuartersSelector: View {
             beltSectionButtons
 
             HStack(spacing: 50) {
-                EarButton(color: .orange)
-                EarButton(color: .blue)
+                EarButton(selectedEar: .left, color: .orange)
+                EarButton(selectedEar: .right, color: .blue)
             }
         }
     }

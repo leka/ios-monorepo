@@ -4,7 +4,15 @@
 
 import SwiftUI
 
+// swiftlint:disable identifier_name
+enum Ear {
+    case all
+    case right, left
+}
+// swiftlint:enable identifier_name
+
 struct EarButton: View {
+    var selectedEar: Ear
     var color: Color
 
     @State private var buttonPressed = false
@@ -27,6 +35,6 @@ struct EarButton: View {
 
 struct EarButton_Previews: PreviewProvider {
     static var previews: some View {
-        EarButton(color: .red)
+        EarButton(selectedEar: .all, color: .red)
     }
 }
