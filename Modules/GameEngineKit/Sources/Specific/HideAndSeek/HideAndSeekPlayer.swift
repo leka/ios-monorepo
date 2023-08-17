@@ -53,8 +53,10 @@ struct HideAndSeekPlayer: View {
         Button {
             switch stimulation {
                 case .light:
+                    // TODO(@ladislas): Run a LED animation
                     print("Trigger light")
                 case .motion:
+                    // TODO(@ladislas): Run a motor animation
                     print("Trigger motion")
             }
         } label: {

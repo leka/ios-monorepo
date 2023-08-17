@@ -26,8 +26,10 @@ public class DanceFreezeGameplay {
     func process() {
         if audioPlayer.isPlaying {
             audioPlayer.pause()
+            // TODO(@ladislas): Stop motors and lights
         } else {
             audioPlayer.play()
+            // TODO(@ladislas): Run motors and lights to dance
         }
     }
 

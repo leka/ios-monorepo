@@ -51,6 +51,7 @@ public class GameplaySelectAllRightAnswers: GameplayProtocol {
             }
             rightAnswersGiven.removeAll()
             self.state.send(.finished)
+            // TODO(@ladislas): Run reinforcers and lottie animation
         }
     }
 }
