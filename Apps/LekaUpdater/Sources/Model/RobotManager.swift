@@ -13,6 +13,7 @@ public class RobotManager: ObservableObject {
     @Published var battery: Int?
     @Published var isCharging: Bool?
     @Published var osVersion: String?
+    @Published var sha256: String?
 
     init(
         robotPeripheral: RobotPeripheral? = nil, name: String? = nil, serialNumber: String? = nil, battery: Int? = nil,
@@ -42,6 +43,7 @@ public class RobotManager: ObservableObject {
     public func subscribeToCharacteristicsNotifications() {
         self.registerBatteryCharacteristicNotificationCallback()
         self.registerChargingStatusNotificationCallback()
+        self.registerSHA256CharacteristicNotificationCallback()
 
         self.robotPeripheral?.discoverAndListenForUpdates()
     }
@@ -63,6 +65,21 @@ public class RobotManager: ObservableObject {
         characteristic.onNotification = { data in
             if let value = data?.first {
                 self.battery = Int(value)
+            }
+        }
+
+        self.robotPeripheral?.notifyingCharacteristics.insert(characteristic)
+    }
+
+    private func registerSHA256CharacteristicNotificationCallback() {
+        var characteristic = NotifyingCharacteristic(
+            characteristicUUID: BLESpecs.FileExchange.Characteristics.fileSHA256,
+            serviceUUID: BLESpecs.FileExchange.service
+        )
+
+        characteristic.onNotification = { data in
+            if let data = data {
+                self.sha256 = data.map { String(format: "%02hhx", $0) }.joined()
             }
         }
 
