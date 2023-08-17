@@ -61,12 +61,12 @@ struct BeltSectionButton: View {
             .frame(width: 300, height: 300)
             .onTapGesture {
                 buttonPressed.toggle()
-                backgroundLineWidth = buttonPressed ? 20 : 0
+                backgroundLineWidth = buttonPressed ? 25 : 0
             }
             .background(
                 BeltSectionButtonFeedback(section: section, color: color, lineWidth: backgroundLineWidth)
             )
-            .animation(.easeIn(duration: 0.2), value: backgroundLineWidth)
+            .animation(.easeInOut(duration: 0.2), value: backgroundLineWidth)
     }
 }
 

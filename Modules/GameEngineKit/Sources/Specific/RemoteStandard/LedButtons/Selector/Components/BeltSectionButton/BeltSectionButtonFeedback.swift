@@ -12,7 +12,7 @@ struct BeltSectionButtonFeedback: View {
     var body: some View {
         ArcShape(section: section)
             .stroke(
-                color.opacity(0.5),
+                color.opacity(0.3),
                 style: StrokeStyle(
                     lineWidth: CGFloat(lineWidth),
                     lineCap: .round,

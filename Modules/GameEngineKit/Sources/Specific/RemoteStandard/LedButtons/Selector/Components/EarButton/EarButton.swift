@@ -29,7 +29,7 @@ struct EarButton: View {
             .background(
                 EarButtonFeedback(color: color, backgroundDimension: backgroundDimension)
             )
-            .animation(.easeIn(duration: 0.2), value: backgroundDimension)
+            .animation(.easeInOut(duration: 0.2), value: backgroundDimension)
     }
 }
 
