@@ -29,7 +29,7 @@ class UpdateStatusDemoViewModel: ObservableObject {
             .sink { completion in
                 switch completion {
                     case .finished:
-                        self.state = "Votre robot est maintenant à jour!"
+                        self.state = "Your robot is now up to date!"
                     case .failure(let error):
                         self.state = "Oops, something wrong happened"
 

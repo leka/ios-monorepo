@@ -12,12 +12,12 @@ struct RobotUpdateAvailableView: View {
 
     var body: some View {
         VStack {
-            Text("⬆️ Une mise à jour est disponible 📦")
+            Text("⬆️ An update is available 📦")
                 .font(.title3)
             Button {
                 isUpdateStatusViewPresented = true
             } label: {
-                Text("Lancer la mise à jour du robot")
+                Text("Start robot update")
                     .foregroundColor(.white)
                     .frame(height: 50)
                     .frame(maxWidth: .infinity)

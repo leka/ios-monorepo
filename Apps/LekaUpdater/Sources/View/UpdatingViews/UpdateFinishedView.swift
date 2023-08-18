@@ -45,7 +45,7 @@ struct UpdateFinishedContentView: View {
             Text(
                 """
                 Bravo ! 🥳
-                Votre robot est maintenant à jour
+                Your robot is now up to date
                 """
             )
             .multilineTextAlignment(.center)
@@ -56,7 +56,7 @@ struct UpdateFinishedContentView: View {
                 Button {
                     dismiss()
                 } label: {
-                    Text("Voir les infos de ce robot")
+                    Text("See the info of this robot")
                         .padding(.horizontal)
                         .foregroundColor(DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor)
                         .frame(height: 50)
@@ -76,7 +76,7 @@ struct UpdateFinishedContentView: View {
                     dismiss()
                     isConnectionViewPresented = true
                 } label: {
-                    Text("Mettre à jour un autre robot")
+                    Text("Update another robot")
                         .padding(.horizontal)
                         .foregroundColor(.white)
                         .frame(height: 50)
@@ -102,7 +102,7 @@ struct UpdateFinishedView_Previews: PreviewProvider {
                 .padding(.bottom)
                 .padding(.bottom)
 
-            Text("Étape 3/3")
+            Text("Step 3/3")
                 .font(.title)
                 .bold()
                 .monospacedDigit()

@@ -16,7 +16,7 @@ struct RebootingIllustration: View {
 struct RebootingContentView: View {
     var body: some View {
         VStack {
-            Text("Installation de la mise à jour")
+            Text("Installing the update")
                 .font(.title2)
                 .bold()
 
@@ -25,7 +25,7 @@ struct RebootingContentView: View {
                 .padding()
                 .padding()
 
-            Text("Votre robot redémarrera dans quelques minutes")
+            Text("Your robot will restart in a few minutes")
         }
     }
 }
@@ -38,7 +38,7 @@ struct RebootingView_Previews: PreviewProvider {
                 .padding(.bottom)
                 .padding(.bottom)
 
-            Text("Étape 2/3")
+            Text("Step 2/3")
                 .font(.title)
                 .bold()
                 .monospacedDigit()

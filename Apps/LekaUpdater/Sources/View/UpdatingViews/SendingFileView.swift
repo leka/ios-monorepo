@@ -18,7 +18,7 @@ struct SendingFileContentView: View {
 
     var body: some View {
         VStack {
-            Text("Envoi de la mise à jour vers le robot")
+            Text("Sending the update to the robot")
                 .font(.title2)
                 .bold()
 
@@ -35,8 +35,8 @@ struct SendingFileContentView: View {
 
             Text(
                 """
-                Ne débranchez pas votre robot.
-                Ne le sortez pas de son socle de recharge.
+                Do not unplug your robot.
+                Do not take it out of its charging base.
                 """
             )
             .multilineTextAlignment(.center)
@@ -53,7 +53,7 @@ struct SendingFileView_Previews: PreviewProvider {
                 .padding(.bottom)
                 .padding(.bottom)
 
-            Text("Étape 1/3")
+            Text("Step 1/3")
                 .font(.title)
                 .bold()
                 .monospacedDigit()

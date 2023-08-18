@@ -28,7 +28,7 @@ struct ConnectionView: View {
                         Text("Leka Updater")
                             .font(.title2)
                             .bold()
-                        Text("L'application pour mettre à jour vos robots Leka !")
+                        Text("The app to update your Leka robots!")
                     }
                     .foregroundColor(.accentColor)
                 }
@@ -38,7 +38,7 @@ struct ConnectionView: View {
                         dismiss()
                     } label: {
                         HStack {
-                            Text("Continuer")
+                            Text("Continue")
                             Image(systemName: "chevron.forward")
                         }
                     }

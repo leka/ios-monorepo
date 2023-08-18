@@ -41,7 +41,7 @@ struct RobotConnectionView: View {
             label: {
                 HStack {
                     Image(systemName: "magnifyingglass")
-                    Text("Rechercher")
+                    Text("Scan")
                 }
                 .font(bold15)
                 .foregroundColor(.white)
@@ -68,10 +68,10 @@ struct RobotConnectionView: View {
                 HStack {
                     Image(systemName: "checkmark.circle")
                     if robotConnectionViewModel.disconnected {
-                        Text("Se connecter")
+                        Text("Connect")
 
                     } else {
-                        Text("Se déconnecter")
+                        Text("Disconnect")
                     }
                 }
                 .font(bold15)

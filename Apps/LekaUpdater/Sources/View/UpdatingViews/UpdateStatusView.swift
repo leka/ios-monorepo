@@ -30,7 +30,7 @@ struct UpdateStatusView: View {
                 .padding(.bottom)
                 .padding(.bottom)
 
-                Text("Étape \(viewModel.stepNumber)/3")
+                Text("Step \(viewModel.stepNumber)/3")
                     .font(.title)
                     .bold()
                     .monospacedDigit()
@@ -66,7 +66,7 @@ struct UpdateStatusView: View {
                         Text("Leka Updater")
                             .font(.title2)
                             .bold()
-                        Text("L'application pour mettre à jour vos robots Leka !")
+                        Text("The app to update your Leka robots!")
                     }
                     .foregroundColor(.accentColor)
                 }

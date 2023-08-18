@@ -26,7 +26,7 @@ struct InformationView: View {
                                 Text(viewModel.robotName)
                                     .font(.title3)
 
-                                Text("⬆️ Une mise à jour est disponible 📦")
+                                Text("⬆️ An update is available 📦")
                                     .font(.title2)
                             } else {
                                 RobotUpToDateIllustration(size: 200)
@@ -34,7 +34,7 @@ struct InformationView: View {
                                 Text(viewModel.robotName)
                                     .font(.title3)
 
-                                Text("🤖 Votre robot est à jour ! 🎉 Vous n'avez rien à faire 👌")
+                                Text("🤖 Your robot is up to date ! 🎉 You don't have to do anything 👌")
                                     .font(.title2)
                             }
                         }
@@ -46,7 +46,7 @@ struct InformationView: View {
                     Section {
                         RobotInformationView()
                     } header: {
-                        Text("Informations du robot")
+                        Text("Robot information")
                             .textCase(nil)
                             .font(.title)
                     }
@@ -56,12 +56,12 @@ struct InformationView: View {
                             ChangelogView()
                                 .padding()
                         } label: {
-                            Text("Liste des changements apportés")
+                            Text("List of changes made")
                                 .foregroundStyle(DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor)
                         }
                         .accentColor(DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor)
                     } header: {
-                        Text("Informations sur LekaOS v\(viewModel.firmwareVersion)")
+                        Text("Information about LekaOS v\(viewModel.firmwareVersion)")
                             .textCase(nil)
                             .font(.title)
                     }
@@ -70,7 +70,7 @@ struct InformationView: View {
                         Section {
                             RobotUpdateAvailableView(isUpdateStatusViewPresented: $isUpdateStatusViewPresented)
                         } header: {
-                            Text("État de mise à jour du robot")
+                            Text("Robot update status")
                                 .textCase(nil)
                                 .font(.title)
                         }
@@ -102,7 +102,7 @@ struct InformationView: View {
                         Text("Leka Updater")
                             .font(.title2)
                             .bold()
-                        Text("L'application pour mettre à jour vos robots Leka !")
+                        Text("The app to update your Leka robots!")
                     }
                     .foregroundColor(.accentColor)
                 }
@@ -113,7 +113,7 @@ struct InformationView: View {
                     } label: {
                         HStack {
                             Image(systemName: "chevron.backward")
-                            Text("Connexion")
+                            Text("Connection")
                         }
                     }
                 }
