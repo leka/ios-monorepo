@@ -1,1 +1,108 @@
+/* No comment provided by engineer. */
+"%@" = "%@";
+
+/* No comment provided by engineer. */
+"%@%" = "%1$@%2$";
+
+/* No comment provided by engineer. */
+"⬆️ An update is available 📦" = "⬆️ Une mise à jour est disponible 📦";
+
+/* No comment provided by engineer. */
+"🤖 Your robot is up to date ! 🎉 You don't have to do anything 👌" = "🤖 Votre robot est à jour ! 🎉 Vous n'avez rien à faire 👌";
+
+/* No comment provided by engineer. */
+"Battery: %@" = "Batterie: %@";
+
+/* No comment provided by engineer. */
+"Bravo ! 🥳\nYour robot is now up to date" = "Bravo ! 🥳\nVotre robot est maintenant à jour";
+
+/* No comment provided by engineer. */
+"Connect" = "Se connecter";
+
+/* No comment provided by engineer. */
+"Connection" = "Connexion";
+
+/* No comment provided by engineer. */
+"Continue" = "Continuer";
+
+/* No comment provided by engineer. */
+"Disconnect" = "Se déconnecter";
+
+/* No comment provided by engineer. */
+"Do not unplug your robot.\nDo not take it out of its charging base." = "Ne débranchez pas votre robot.\nNe le sortez pas de son socle de recharge.";
+
+/* No comment provided by engineer. */
+"Error: %@" = "Erreur: %@";
+
+/* No comment provided by engineer. */
+"Information about LekaOS v%@" = "Informations sur LekaOS v%@";
+
+/* No comment provided by engineer. */
+"Installing the update" = "Installation de la mise à jour";
+
+/* No comment provided by engineer. */
+"Launch a search to find the robots around you!" = "Lancer une recherche pour trouver les robots autour de vous !";
+
+/* No comment provided by engineer. */
+"Leka Updater" = "Leka Updater";
+
+/* No comment provided by engineer. */
+"LekaOS v%@" = "LekaOS v%@";
+
+/* No comment provided by engineer. */
+"List of changes made" = "Liste des changements apportés";
+
+/* No comment provided by engineer. */
+"No robots found :(" = "Aucun robot trouvé :(";
+
+/* No comment provided by engineer. */
+"Robot information" = "Informations du robot";
+
+/* No comment provided by engineer. */
+"Robot update status" = "État de mise à jour du robot";
+
+/* No comment provided by engineer. */
+"Scan" = "Rechercher";
+
+/* No comment provided by engineer. */
+"See the info of this robot" = "Voir les infos de ce robot";
+
+/* No comment provided by engineer. */
+"Sending the update to the robot" = "Envoi de la mise à jour vers le robot";
+
+/* No comment provided by engineer. */
+"Serial Number: %@" = "N° série: %@";
+
+/* No comment provided by engineer. */
+"Start robot update" = "Lancer la mise à jour du robot";
+
+/* No comment provided by engineer. */
+"Step %@/3" = "Étape %@/3";
+
+/* No comment provided by engineer. */
+"Step 1/3" = "Étape 1/3";
+
+/* No comment provided by engineer. */
+"Step 2/3" = "Étape 2/3";
+
+/* No comment provided by engineer. */
+"Step 3/3" = "Étape 3/3";
+
+/* No comment provided by engineer. */
+"The app to update your Leka robots!" = "L'application pour mettre à jour vos robots Leka !";
+
+/* No comment provided by engineer. */
+"Update another robot" = "Mettre à jour un autre robot";
+
+/* No comment provided by engineer. */
+"Update Status Demo" = "Update Status Demo";
+
+/* No comment provided by engineer. */
+"User state is: %@" = "État utilisateur: %@";
+
+/* No comment provided by engineer. */
+"Version: %@" = "Version: %@";
+
+/* No comment provided by engineer. */
+"Your robot will restart in a few minutes" = "Votre robot redémarrera dans quelques minutes";
 
