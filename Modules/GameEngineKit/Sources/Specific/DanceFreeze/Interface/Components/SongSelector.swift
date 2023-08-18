@@ -5,7 +5,7 @@
 import DesignKit
 import SwiftUI
 
-private let kAvailableSongs: [AudioRecordingModel] = [
+public let kAvailableSongs: [AudioRecordingModel] = [
     // TO DO : (@hugo) Replace nyan by validated free use music
     AudioRecordingModel(name: "Frère Jacques", file: "nyan"),
     AudioRecordingModel(name: "Dansons la Capucine", file: "nyan"),
@@ -17,7 +17,7 @@ private let kAvailableSongs: [AudioRecordingModel] = [
 
 struct SongSelector: View {
     @EnvironmentObject private var viewModel: DanceFreezeViewModel
-    @State private var selectedSong: AudioRecordingModel = kAvailableSongs.first!
+    @State private var selectedAudioRecording: AudioRecordingModel = kAvailableSongs.first!
 
     let columns = [
         GridItem(.flexible()),
@@ -36,19 +36,22 @@ struct SongSelector: View {
 
             ScrollView {
                 LazyVGrid(columns: columns, alignment: .leading, spacing: 20) {
-                    ForEach(kAvailableSongs, id: \.self) { song in
+                    ForEach(kAvailableSongs, id: \.self) { audioRecording in
                         Button {
-                            selectedSong = song
-                            viewModel.setSong(song: selectedSong)
+                            selectedAudioRecording = audioRecording
+                            viewModel.setAudioRecording(audioRecording: selectedAudioRecording)
                         } label: {
                             HStack {
-                                Image(systemName: song == selectedSong ? "checkmark.circle.fill" : "circle")
-                                    .imageScale(.large)
-                                    .foregroundColor(
-                                        song == selectedSong
-                                            ? .green : DesignKitAsset.Colors.lekaDarkGray.swiftUIColor
-                                    )
-                                Text(song.name)
+                                Image(
+                                    systemName: audioRecording == selectedAudioRecording
+                                        ? "checkmark.circle.fill" : "circle"
+                                )
+                                .imageScale(.large)
+                                .foregroundColor(
+                                    audioRecording == selectedAudioRecording
+                                        ? .green : DesignKitAsset.Colors.lekaDarkGray.swiftUIColor
+                                )
+                                Text(audioRecording.name)
                                     .multilineTextAlignment(.leading)
                             }
                         }
@@ -62,7 +65,7 @@ struct SongSelector: View {
         .foregroundColor(DesignKitAsset.Colors.lekaDarkGray.swiftUIColor)
         .clipShape(RoundedRectangle(cornerRadius: 30))
         .onAppear {
-            viewModel.setSong(song: kAvailableSongs[0])
+            viewModel.setAudioRecording(audioRecording: kAvailableSongs[0])
         }
     }
 }
