@@ -21,24 +21,24 @@ struct AlertWhenRobotIsNeeded: ViewModifier {
 
     private var alertContent: some View {
         Group {
-			Button(
-				role: .destructive,
-				action: {
-					showAlert.toggle()
-				},
-				label: {
-					Text("Continuer sans le robot")
-				})
-			Button(
-				role: .none,
-				action: {
-					showAlert.toggle()
-				},
-				label: {
-					Text("Se connecter")
-						.font(.system(size: 17, weight: .semibold))
-						.foregroundColor(.accentColor)
-				})
+            Button(
+                role: .destructive,
+                action: {
+                    showAlert.toggle()
+                },
+                label: {
+                    Text("Continuer sans le robot")
+                })
+            Button(
+                role: .none,
+                action: {
+                    showAlert.toggle()
+                },
+                label: {
+                    Text("Se connecter")
+                        .font(.system(size: 17, weight: .semibold))
+                        .foregroundColor(.accentColor)
+                })
         }
     }
 }

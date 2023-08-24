@@ -6,9 +6,9 @@ import SwiftUI
 
 public struct FourChoicesView: View {
     @ObservedObject private var viewModel: GenericViewModel
-	let horizontalSpacing: CGFloat = 200
-	let verticalSpacing: CGFloat = 40
-	let answerSize: CGFloat = 240
+    let horizontalSpacing: CGFloat = 200
+    let verticalSpacing: CGFloat = 40
+    let answerSize: CGFloat = 240
 
     public init(gameplay: any GameplayProtocol) {
         self.viewModel = GenericViewModel(gameplay: gameplay)
