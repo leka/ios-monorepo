@@ -28,10 +28,10 @@ struct CircleLayout: Layout {
 }
 
 public struct RemoteArrowView: View {
-	public init() {
-		// Nothing to do
-	}
-	
+    public init() {
+        // Nothing to do
+    }
+
     public var body: some View {
         CircleLayout {
             RemoteArrowButtonView(image: "arrow.up", color: .blue)

@@ -10,11 +10,11 @@ struct XylophoneTile: View {
     var index: Int
 
     var body: some View {
-		Button {
-			print("Play music")
-		} label: {
-			xylophoneDefaults.customTileColors[index]
-		}
+        Button {
+            print("Play music")
+        } label: {
+            xylophoneDefaults.customTileColors[index]
+        }
         .buttonStyle(XylophoneTileButtonStyle(xylophoneDefaults: xylophoneDefaults, index: index))
         .compositingGroup()
     }

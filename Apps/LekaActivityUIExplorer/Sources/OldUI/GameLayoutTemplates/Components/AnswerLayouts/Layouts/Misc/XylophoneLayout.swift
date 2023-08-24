@@ -12,7 +12,7 @@ struct XylophoneLayout: View {
 
     var body: some View {
         HStack(spacing: xylophoneDefaults.customTilesSpacing) {
-			ForEach(xylophoneDefaults.customTileColors.indices, id: \.self) { index in
+            ForEach(xylophoneDefaults.customTileColors.indices, id: \.self) { index in
                 XylophoneTile(xylophoneDefaults: xylophoneDefaults, index: index)
             }
         }

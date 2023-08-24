@@ -46,11 +46,11 @@ struct RadialLayout: Layout {
 public struct RemoteStandardView: View {
     @State private var displayMode = DisplayMode.fullBelt
 
-	public init() {
-		// Nothing to do
-	}
+    public init() {
+        // Nothing to do
+    }
 
-	public var body: some View {
+    public var body: some View {
         VStack {
             HStack(spacing: 400) {
                 RadialLayout(firstButtonPosX: -100, firstButtonPosY: -250, angle: 120.0) {
@@ -82,10 +82,10 @@ public struct RemoteStandardView: View {
 }
 
 struct RemoteStandardView_Previews:
-	PreviewProvider
+    PreviewProvider
 {
-	static var previews: some View {
-		RemoteStandardView()
-			.previewInterfaceOrientation(.landscapeLeft)
-	}
+    static var previews: some View {
+        RemoteStandardView()
+            .previewInterfaceOrientation(.landscapeLeft)
+    }
 }

@@ -34,7 +34,7 @@ final class FirmwareManager_Tests_compareVersion: XCTestCase {
         let actual = firmwareManager.compareWith(version: robotVersion)
         XCTAssertEqual(expected, actual)
     }
-    
+
     func test_shouldReturnRobotNeedUpdate_invalidVersion() {
         let firmwareManager = FirmwareManager()
         let robotVersion = "⚠️ NO OS VERSION"
