@@ -31,9 +31,10 @@ public struct MelodyView: View {
     }
 
     public var body: some View {
-        VStack {
+        VStack(spacing: 50) {
             ContinuousProgressBar(progress: viewModel.progress)
                 .animation(.easeOut, value: viewModel.progress)
+                .padding(.horizontal)
 
             HStack(spacing: defaultTilesSpacing) {
                 ForEach(kListOfTiles) { tile in
