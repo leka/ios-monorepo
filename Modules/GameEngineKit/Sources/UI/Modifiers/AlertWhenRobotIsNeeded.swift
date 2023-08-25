@@ -19,6 +19,10 @@ struct AlertWhenRobotIsNeeded: ViewModifier {
             }
     }
 
+    public init() {
+        // nothing to do
+    }
+
     private var alertContent: some View {
         Group {
             Button(
@@ -44,7 +48,7 @@ struct AlertWhenRobotIsNeeded: ViewModifier {
 }
 
 extension View {
-    func alertWhenRobotIsNeeded() -> some View {
+    public func alertWhenRobotIsNeeded() -> some View {
         modifier(AlertWhenRobotIsNeeded())
     }
 }
