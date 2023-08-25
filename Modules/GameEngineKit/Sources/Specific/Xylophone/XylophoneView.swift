@@ -2,8 +2,9 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
-import AudioKit
 import SwiftUI
+import AudioKit
+import DesignKit
 
 public struct XylophoneTile: Identifiable, Hashable {
     public var id: Int

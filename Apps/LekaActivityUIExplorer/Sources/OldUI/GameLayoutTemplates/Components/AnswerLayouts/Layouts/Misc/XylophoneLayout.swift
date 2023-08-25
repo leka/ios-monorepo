@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import SwiftUI
+import DesignKit
 
 struct XylophoneLayout: View {
 
@@ -16,6 +17,6 @@ struct XylophoneLayout: View {
                 XylophoneTile(xylophoneDefaults: xylophoneDefaults, index: index)
             }
         }
-        .robotNeededAlert()
+        .alertWhenRobotIsNeeded()
     }
 }

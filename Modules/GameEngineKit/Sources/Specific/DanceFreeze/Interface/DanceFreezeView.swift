@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import SwiftUI
+import DesignKit
 
 enum DanceFreezeStage {
     case waitingForSelection

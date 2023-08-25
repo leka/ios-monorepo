@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import SwiftUI
+import DesignKit
 
 enum HideAndSeekStage {
     case toHide
@@ -50,7 +51,7 @@ struct HideAndSeekLauncher: View {
                     }
                 }
                 .scaledToFill()
-                .robotNeededAlert()
+                .alertWhenRobotIsNeeded()
             case .hidden:
                 HideAndSeekPlayer(stage: $stage)
         }

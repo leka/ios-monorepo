@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import SwiftUI
+import DesignKit
 
 struct MelodyLayout: View {
     @EnvironmentObject var gameEngine: GameEngine
@@ -21,7 +22,7 @@ struct MelodyLayout: View {
                     XylophoneTile(xylophoneDefaults: xylophoneDefaults, index: index)
                 }
             }
-            .robotNeededAlert()
+            .alertWhenRobotIsNeeded()
         }
         .padding()
 

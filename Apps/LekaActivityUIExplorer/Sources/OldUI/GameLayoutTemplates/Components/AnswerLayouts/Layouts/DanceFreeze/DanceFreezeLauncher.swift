@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import SwiftUI
+import DesignKit
 
 enum DanceFreezeStage {
     case waitingForSelection
@@ -17,7 +18,7 @@ struct DanceFreezeLauncher: View {
         switch mode {
             case .waitingForSelection:
                 DanceFreezeSelector(mode: $mode)
-                    .robotNeededAlert()
+                    .alertWhenRobotIsNeeded()
             case .automaticMode:
                 DanceFreezePlayer(isAuto: true)
             case .manualMode:

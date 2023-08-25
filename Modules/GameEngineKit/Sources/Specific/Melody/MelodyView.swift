@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import SwiftUI
+import DesignKit
 
 public let kListOfTiles: [XylophoneTile] = [
     XylophoneTile(id: 0, noteNumber: 24, color: .pink),
