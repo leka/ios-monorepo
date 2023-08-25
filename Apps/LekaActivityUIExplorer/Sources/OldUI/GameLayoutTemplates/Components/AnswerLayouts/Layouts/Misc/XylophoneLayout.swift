@@ -2,8 +2,8 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
-import SwiftUI
 import DesignKit
+import SwiftUI
 
 struct XylophoneLayout: View {
 
