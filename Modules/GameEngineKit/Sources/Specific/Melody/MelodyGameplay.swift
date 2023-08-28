@@ -22,9 +22,7 @@ public class MelodyGameplay {
         self.xyloPlayer.loadMIDIFile(fileUrl: song.midiFile, tempo: song.tempo)
         self.sequenceTrack = xyloPlayer.getSequenceTrack()
         self.currentNote = sequenceTrack[step].noteNumber - song.octaveGap
-        self.xyloPlayer.setInstrumentCallback(callback: { _, note, velocity in
-            self.xyloPlayer.noteOn(number: note - song.octaveGap, velocity: velocity)
-        })
+
         // TODO(@ladislas): Light on Leka lights with the following color getter
         print(getColorFromMIDINote())
     }
@@ -44,6 +42,10 @@ public class MelodyGameplay {
         }
 
         if progress == 1.0 {
+            self.xyloPlayer.setInstrumentCallback(callback: { _, note, velocity in
+                self.xyloPlayer.noteOn(number: note - self.song.octaveGap, velocity: velocity)
+            })
+
             xyloPlayer.play()
             DispatchQueue.main.asyncAfter(deadline: .now() + xyloPlayer.getDuration()) {
                 self.state = .finished
