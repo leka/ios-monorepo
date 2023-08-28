@@ -7,14 +7,16 @@ import AudioKit
 import SwiftUI
 
 class MIDIPlayer: ObservableObject {
+    public let name: String
 
     private let engine = AudioEngine()
-    private var sampler: MIDISampler
-    private var sequencer = AppleSequencer()
-    private var instrument = MIDICallbackInstrument()
+    private let sampler = MIDISampler()
+    private let sequencer = AppleSequencer()
+    private let instrument = MIDICallbackInstrument()
 
     init(name: String, samples: [MIDISample]) {
-        self.sampler = MIDISampler(name: name)
+        self.name = name
+
         engine.output = sampler
 
         loadInstrument(samples: samples)
