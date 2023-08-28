@@ -7,14 +7,16 @@ import Combine
 import SwiftUI
 
 public class MelodyGameplay {
-    private let song: MelodySongModel
-    private var midiNotes: [MIDINoteData] = []
-
-    @Published private var currentNoteNumber: MIDINoteNumber = 0
-    @Published private var currentNoteIndex = 0
     @Published public var progress: CGFloat = 0.0
     @Published public var state: GameplayState = .idle
-    @Published var xyloPlayer = MIDIPlayer(name: "Xylophone", samples: xyloSamples)
+
+    private let xyloPlayer = MIDIPlayer(name: "Xylophone", samples: xyloSamples)
+
+    private let song: MelodySongModel
+
+    private var midiNotes: [MIDINoteData] = []
+    private var currentNoteNumber: MIDINoteNumber = 0
+    private var currentNoteIndex: Int = 0
 
     public init(song: MelodySongModel) {
         self.song = song
