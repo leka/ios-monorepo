@@ -23,8 +23,8 @@ struct FourQuartersIcon: View {
     private var beltSectionIcons: some View {
         ZStack {
             BeltSectionIcon(section: .frontRight)
-            BeltSectionIcon(section: .rearRight)
-            BeltSectionIcon(section: .rearLeft)
+            BeltSectionIcon(section: .backRight)
+            BeltSectionIcon(section: .backLeft)
             BeltSectionIcon(section: .frontLeft)
         }
     }

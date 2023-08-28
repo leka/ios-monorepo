@@ -7,7 +7,7 @@ import SwiftUI
 enum BeltSection {
     case full
     case right, left
-    case frontRight, rearRight, rearLeft, frontLeft
+    case frontRight, backRight, backLeft, frontLeft
 
     func angles() -> (startAngle: Angle, endAngle: Angle) {
         switch self {
@@ -19,9 +19,9 @@ enum BeltSection {
                 return (startAngle: .degrees(190), endAngle: .degrees(350))
             case .frontRight:
                 return (startAngle: .degrees(10), endAngle: .degrees(80))
-            case .rearRight:
+            case .backRight:
                 return (startAngle: .degrees(100), endAngle: .degrees(170))
-            case .rearLeft:
+            case .backLeft:
                 return (startAngle: .degrees(190), endAngle: .degrees(260))
             case .frontLeft:
                 return (startAngle: .degrees(280), endAngle: .degrees(350))
@@ -38,9 +38,9 @@ enum BeltSection {
                 return (start: 0, end: 9)
             case .frontRight:
                 return (start: 15, end: 19)
-            case .rearRight:
+            case .backRight:
                 return (start: 10, end: 14)
-            case .rearLeft:
+            case .backLeft:
                 return (start: 5, end: 9)
             case .frontLeft:
                 return (start: 0, end: 4)
@@ -79,6 +79,6 @@ struct BeltSectionButton: View {
 
 struct BeltSectionButton_Previews: PreviewProvider {
     static var previews: some View {
-        BeltSectionButton(section: .rearLeft, color: .red)
+        BeltSectionButton(section: .backLeft, color: .red)
     }
 }

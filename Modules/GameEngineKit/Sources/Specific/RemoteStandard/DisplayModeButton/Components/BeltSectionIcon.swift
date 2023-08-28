@@ -18,6 +18,6 @@ struct BeltSectionIcon: View {
 
 struct BeltSectionIcon_Previews: PreviewProvider {
     static var previews: some View {
-        BeltSectionIcon(section: .rearLeft)
+        BeltSectionIcon(section: .backLeft)
     }
 }

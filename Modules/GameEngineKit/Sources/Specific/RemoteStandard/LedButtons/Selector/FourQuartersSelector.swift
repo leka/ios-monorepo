@@ -33,8 +33,8 @@ struct FourQuartersSelector: View {
     private var beltSectionButtons: some View {
         ZStack {
             BeltSectionButton(section: .frontRight, color: .green)
-            BeltSectionButton(section: .rearRight, color: .blue)
-            BeltSectionButton(section: .rearLeft, color: .red)
+            BeltSectionButton(section: .backRight, color: .blue)
+            BeltSectionButton(section: .backLeft, color: .red)
             BeltSectionButton(section: .frontLeft, color: .yellow)
         }
     }
