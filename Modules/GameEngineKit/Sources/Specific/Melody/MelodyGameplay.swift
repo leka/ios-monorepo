@@ -46,12 +46,18 @@ public class MelodyGameplay {
                 self.xyloPlayer.noteOn(number: note - self.song.octaveGap, velocity: velocity)
             })
 
-            xyloPlayer.play()
-            DispatchQueue.main.asyncAfter(deadline: .now() + xyloPlayer.getDuration()) {
-                self.state = .finished
-                self.step = 0
-                self.progress = 0
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                print("Replay song")
+                self.xyloPlayer.play()
+
+                DispatchQueue.main.asyncAfter(deadline: .now() + self.xyloPlayer.getDuration()) {
+                    print("Reset UI")
+                    self.state = .finished
+                    self.step = 0
+                    self.progress = 0
+                }
             }
+
         }
     }
 
