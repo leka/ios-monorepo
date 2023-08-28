@@ -22,7 +22,7 @@ public let kListOfMelodySongsAvailable: [MelodySongModel] = [
     MelodySongModel(
         midiFile: Bundle.module.url(forResource: "AuClairDeLaLune", withExtension: "mid")!,
         title: "Au Clair de la Lune",
-        tempo: 140,
+        tempo: 200,
         octaveGap: 36
     )
 ]
