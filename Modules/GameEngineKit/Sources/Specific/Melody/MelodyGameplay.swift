@@ -8,10 +8,10 @@ import SwiftUI
 
 public class MelodyGameplay {
     private let song: MelodySongModel
-    private var sequenceTrack: [MIDINoteData] = []
+    private var midiNotes: [MIDINoteData] = []
 
-    @Published private var currentNote: UInt8 = 0
-    @Published private var step = 0
+    @Published private var currentNoteNumber: MIDINoteNumber = 0
+    @Published private var currentNoteIndex = 0
     @Published public var progress: CGFloat = 0.0
     @Published public var state: GameplayState = .idle
     @Published var xyloPlayer = MIDIPlayer(name: "Xylophone", samples: xyloSamples)
@@ -20,25 +20,25 @@ public class MelodyGameplay {
         self.song = song
         self.state = .playing
         self.xyloPlayer.loadMIDIFile(fileUrl: song.midiFile, tempo: song.tempo)
-        self.sequenceTrack = xyloPlayer.getSequenceTrack()
-        self.currentNote = sequenceTrack[step].noteNumber - song.octaveGap
+        self.midiNotes = xyloPlayer.getMidiNotes()
+        self.currentNoteNumber = midiNotes[currentNoteIndex].noteNumber - song.octaveGap
 
         // TODO(@ladislas): Light on Leka lights with the following color getter
         print(getColorFromMIDINote())
     }
 
     func process(tile: XylophoneTile) {
-        guard step < sequenceTrack.count else { return }
+        guard currentNoteIndex < midiNotes.count else { return }
 
-        if tile.note == currentNote {
+        if tile.noteNumber == currentNoteNumber {
             xyloPlayer.noteOn(
-                number: currentNote, velocity: sequenceTrack[step].velocity)
-            step += 1
-            if step < sequenceTrack.count {
-                currentNote = sequenceTrack[step].noteNumber - song.octaveGap
+                number: currentNoteNumber, velocity: midiNotes[currentNoteIndex].velocity)
+            currentNoteIndex += 1
+            if currentNoteIndex < midiNotes.count {
+                currentNoteNumber = midiNotes[currentNoteIndex].noteNumber - song.octaveGap
                 print(getColorFromMIDINote())
             }
-            progress = CGFloat(step) / CGFloat(sequenceTrack.count)
+            progress = CGFloat(currentNoteIndex) / CGFloat(midiNotes.count)
         }
 
         if progress == 1.0 {
@@ -54,7 +54,7 @@ public class MelodyGameplay {
                 DispatchQueue.main.asyncAfter(deadline: .now() + self.xyloPlayer.getDuration()) {
                     print("Reset UI")
                     self.state = .finished
-                    self.step = 0
+                    self.currentNoteIndex = 0
                     self.progress = 0
                 }
             }
@@ -64,7 +64,7 @@ public class MelodyGameplay {
 
     func getColorFromMIDINote() -> Color {
         let index = kListOfTiles.firstIndex(where: {
-            $0.note == currentNote
+            $0.noteNumber == currentNoteNumber
         })
         return kListOfTiles[index!].color
     }

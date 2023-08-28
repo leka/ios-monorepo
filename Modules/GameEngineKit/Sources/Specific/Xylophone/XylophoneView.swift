@@ -7,16 +7,16 @@ import SwiftUI
 
 public struct XylophoneTile: Identifiable, Hashable {
     public var id: Int
-    var note: MIDINoteNumber
+    var noteNumber: MIDINoteNumber
     var color: Color
 }
 
 let kListOfXylophoneTiles: [XylophoneTile] = [
-    XylophoneTile(id: 0, note: 24, color: .green),
-    XylophoneTile(id: 1, note: 26, color: .purple),
-    XylophoneTile(id: 2, note: 28, color: .red),
-    XylophoneTile(id: 3, note: 29, color: .yellow),
-    XylophoneTile(id: 4, note: 31, color: .blue),
+    XylophoneTile(id: 0, noteNumber: 24, color: .green),
+    XylophoneTile(id: 1, noteNumber: 26, color: .purple),
+    XylophoneTile(id: 2, noteNumber: 28, color: .red),
+    XylophoneTile(id: 3, noteNumber: 29, color: .yellow),
+    XylophoneTile(id: 4, noteNumber: 31, color: .blue),
 ]
 
 public struct XylophoneView: View {
@@ -32,7 +32,7 @@ public struct XylophoneView: View {
         HStack(spacing: defaultTilesSpacing) {
             ForEach(kListOfXylophoneTiles) { tile in
                 Button {
-                    xyloPlayer.noteOn(number: tile.note)
+                    xyloPlayer.noteOn(number: tile.noteNumber)
                 } label: {
                     tile.color
                 }

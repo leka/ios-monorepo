@@ -5,13 +5,13 @@
 import SwiftUI
 
 public let kListOfTiles: [XylophoneTile] = [
-    XylophoneTile(id: 0, note: 24, color: .pink),
-    XylophoneTile(id: 1, note: 26, color: .red),
-    XylophoneTile(id: 2, note: 28, color: .orange),
-    XylophoneTile(id: 3, note: 29, color: .yellow),
-    XylophoneTile(id: 4, note: 31, color: .green),
-    XylophoneTile(id: 5, note: 33, color: .blue),
-    XylophoneTile(id: 6, note: 35, color: .purple),
+    XylophoneTile(id: 0, noteNumber: 24, color: .pink),
+    XylophoneTile(id: 1, noteNumber: 26, color: .red),
+    XylophoneTile(id: 2, noteNumber: 28, color: .orange),
+    XylophoneTile(id: 3, noteNumber: 29, color: .yellow),
+    XylophoneTile(id: 4, noteNumber: 31, color: .green),
+    XylophoneTile(id: 5, noteNumber: 33, color: .blue),
+    XylophoneTile(id: 6, noteNumber: 35, color: .purple),
 ]
 
 public struct MelodyView: View {

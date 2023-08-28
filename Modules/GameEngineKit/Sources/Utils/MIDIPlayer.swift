@@ -59,7 +59,7 @@ class MIDIPlayer: ObservableObject {
         sequencer.play()
     }
 
-    func getSequenceTrack() -> [MIDINoteData] {
+    func getMidiNotes() -> [MIDINoteData] {
         sequencer.tracks[1].getMIDINoteData()
     }
 
