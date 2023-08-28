@@ -56,7 +56,7 @@ struct BeltSectionButton: View {
     @State private var backgroundLineWidth = 0
 
     var body: some View {
-		ArcShape(section: section)
+        ArcShape(section: section)
             .stroke(color, style: StrokeStyle(lineWidth: 10, lineCap: .round))
             .frame(width: 300, height: 300)
             .onTapGesture {

@@ -5,12 +5,12 @@
 import SwiftUI
 
 struct ArcShape: Shape {
-	let section: BeltSection
+    let section: BeltSection
 
     func path(in rect: CGRect) -> Path {
         let rotationAdjustment = Angle.degrees(90)
-		let modifiedStart = section.angles().startAngle - rotationAdjustment
-		let modifiedEnd = section.angles().endAngle - rotationAdjustment
+        let modifiedStart = section.angles().startAngle - rotationAdjustment
+        let modifiedEnd = section.angles().endAngle - rotationAdjustment
 
         var path = Path()
 
