@@ -11,7 +11,7 @@ class MIDIPlayer: ObservableObject {
     private let engine = AudioEngine()
     private var sampler: MIDISampler
     private var sequencer = AppleSequencer()
-    private var midiCallback = MIDICallbackInstrument()
+    private var instrument = MIDICallbackInstrument()
 
     init(name: String, samples: [MIDISample]) {
         self.sampler = MIDISampler(name: name)
@@ -42,12 +42,12 @@ class MIDIPlayer: ObservableObject {
 
     func loadMIDIFile(fileUrl: URL, tempo: Double) {
         sequencer.loadMIDIFile(fromURL: fileUrl)
-        sequencer.setGlobalMIDIOutput(midiCallback.midiIn)
+        sequencer.setGlobalMIDIOutput(instrument.midiIn)
         sequencer.setTempo(tempo)
     }
 
-    func setMIDICallback(callback: @escaping MIDICallback) {
-        midiCallback.callback = callback
+    func setInstrumentCallback(callback: @escaping MIDICallback) {
+        instrument.callback = callback
     }
 
     func noteOn(number: MIDINoteNumber, velocity: MIDIVelocity = 60) {

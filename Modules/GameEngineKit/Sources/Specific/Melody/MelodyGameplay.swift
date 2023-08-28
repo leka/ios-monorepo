@@ -22,7 +22,7 @@ public class MelodyGameplay {
         self.xyloPlayer.loadMIDIFile(fileUrl: song.midiFile, tempo: song.tempo)
         self.sequenceTrack = xyloPlayer.getSequenceTrack()
         self.currentNote = sequenceTrack[step].noteNumber - song.octaveGap
-        self.xyloPlayer.setMIDICallback(callback: { _, note, velocity in
+        self.xyloPlayer.setInstrumentCallback(callback: { _, note, velocity in
             self.xyloPlayer.noteOn(number: note - song.octaveGap, velocity: velocity)
         })
         // TODO(@ladislas): Light on Leka lights with the following color getter
