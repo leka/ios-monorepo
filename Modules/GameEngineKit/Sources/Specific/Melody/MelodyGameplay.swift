@@ -50,6 +50,7 @@ public class MelodyGameplay {
                 print("Replay song")
                 self.xyloPlayer.play()
 
+                // TODO(@hugo): BUG - length is not correct, it returns 32 seconds but the track is ~12 secondes long
                 DispatchQueue.main.asyncAfter(deadline: .now() + self.xyloPlayer.getDuration()) {
                     print("Reset UI")
                     self.state = .finished

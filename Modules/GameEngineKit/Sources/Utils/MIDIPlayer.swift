@@ -64,6 +64,7 @@ class MIDIPlayer: ObservableObject {
     }
 
     func getDuration() -> Double {
+        // TODO(@hugo): BUG - length is not correct, it returns 32 seconds but the track is ~12 secondes long
         sequencer.tracks[1].length
     }
 }
