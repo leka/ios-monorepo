@@ -34,9 +34,9 @@ public struct RemoteArrowView: View {
 
     public var body: some View {
         CircleLayout {
-            ArrowButton(arrow: .up)
+            ArrowButton(arrow: .forward)
             ArrowButton(arrow: .right)
-            ArrowButton(arrow: .down)
+            ArrowButton(arrow: .backward)
             ArrowButton(arrow: .left)
         }
     }

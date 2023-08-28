@@ -5,15 +5,15 @@
 import SwiftUI
 
 enum Arrow {
-    case up, right, down, left
+    case forward, right, backward, left
 
     func name() -> String {
         switch self {
-            case .up:
+            case .forward:
                 return "arrow.up"
             case .right:
                 return "arrow.clockwise"
-            case .down:
+            case .backward:
                 return "arrow.down"
             case .left:
                 return "arrow.counterclockwise"
@@ -22,11 +22,11 @@ enum Arrow {
 
     func color() -> Color {
         switch self {
-            case .up:
+            case .forward:
                 return .blue
             case .right:
                 return .red
-            case .down:
+            case .backward:
                 return .green
             case .left:
                 return .yellow
@@ -41,13 +41,13 @@ struct ArrowButton: View {
     var body: some View {
         Button {
             switch arrow {
-                case .up:
+                case .forward:
                     // TODO(@ladislas): Go forward
                     print("Go forward")
                 case .right:
                     // TODO(@ladislas): Turn right
                     print("Turn right")
-                case .down:
+                case .backward:
                     // TODO(@ladislas): Go backward
                     print("Go backward")
                 case .left:
@@ -75,7 +75,7 @@ struct ArrowButtonView_Previews:
     PreviewProvider
 {
     static var previews: some View {
-        ArrowButton(arrow: .up)
+        ArrowButton(arrow: .forward)
             .previewInterfaceOrientation(.landscapeLeft)
     }
 }
