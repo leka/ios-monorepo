@@ -7,17 +7,23 @@ import AudioKit
 import SwiftUI
 
 class MIDIPlayer: ObservableObject {
-    let engine = AudioEngine()
-    var instrument: MIDISampler
+    public let name: String
+
+    private let engine = AudioEngine()
+    private let sampler = MIDISampler()
+    private let sequencer = AppleSequencer()
+    private let instrument = MIDICallbackInstrument()
 
     init(name: String, samples: [MIDISample]) {
-        self.instrument = MIDISampler(name: name)
-        engine.output = instrument
-        startAudioEngine()
+        self.name = name
+
+        engine.output = sampler
+
         loadInstrument(samples: samples)
+        startAudioEngine()
     }
 
-    func startAudioEngine() {
+    private func startAudioEngine() {
         do {
             try engine.start()
         } catch {
@@ -25,18 +31,42 @@ class MIDIPlayer: ObservableObject {
         }
     }
 
-    func loadInstrument(samples: [MIDISample]) {
+    private func loadInstrument(samples: [MIDISample]) {
         do {
             let files = samples.compactMap {
                 $0.audioFile
             }
-            try instrument.loadAudioFiles(files)
+            try sampler.loadAudioFiles(files)
         } catch {
             print("Could not load file")
         }
     }
 
-    func noteOn(number: MIDINoteNumber) {
-        instrument.play(noteNumber: number, velocity: 60, channel: 0)
+    func loadMIDIFile(fileUrl: URL, tempo: Double) {
+        sequencer.loadMIDIFile(fromURL: fileUrl)
+        sequencer.setGlobalMIDIOutput(instrument.midiIn)
+        sequencer.setTempo(tempo)
+    }
+
+    func setInstrumentCallback(callback: @escaping MIDICallback) {
+        instrument.callback = callback
+    }
+
+    func noteOn(number: MIDINoteNumber, velocity: MIDIVelocity = 60) {
+        sampler.play(noteNumber: number, velocity: velocity, channel: 0)
+    }
+
+    func play() {
+        sequencer.rewind()
+        sequencer.play()
+    }
+
+    func getMidiNotes() -> [MIDINoteData] {
+        sequencer.tracks[1].getMIDINoteData()
+    }
+
+    func getDuration() -> Double {
+        // TODO(@hugo): BUG - length is not correct, it returns 32 seconds but the track is ~12 secondes long
+        sequencer.tracks[1].length
     }
 }
