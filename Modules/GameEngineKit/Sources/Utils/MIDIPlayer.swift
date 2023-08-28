@@ -16,12 +16,12 @@ class MIDIPlayer: ObservableObject {
     init(name: String, samples: [MIDISample]) {
         self.sampler = MIDISampler(name: name)
         engine.output = sampler
-        startAudioEngine()
+
         loadInstrument(samples: samples)
-        try? engine.start()
+        startAudioEngine()
     }
 
-    func startAudioEngine() {
+    private func startAudioEngine() {
         do {
             try engine.start()
         } catch {
@@ -29,7 +29,7 @@ class MIDIPlayer: ObservableObject {
         }
     }
 
-    func loadInstrument(samples: [MIDISample]) {
+    private func loadInstrument(samples: [MIDISample]) {
         do {
             let files = samples.compactMap {
                 $0.audioFile
