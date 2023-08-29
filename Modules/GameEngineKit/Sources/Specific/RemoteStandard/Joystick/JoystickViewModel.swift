@@ -40,6 +40,8 @@ public class JoystickViewModel: ObservableObject {
 
                 (self.rotationLeft, self.rotationRight) = convertJoystickPosToMotorSpeed(
                     position: $0, maxValue: dragDiameter)
+
+                // TODO(@ladislas): Run motors w/ rotationLeft & Right
             })
             .store(in: &cancellables)
     }

@@ -24,6 +24,7 @@ public class GameplaySelectTheRightAnswer: GameplayProtocol {
                     self.choices.value[index].status = .notSelected
                 }
                 self.state.send(.finished)
+                // TODO(@ladislas): Run reinforcers and lottie animation
             }
         } else {
             if let index = choices.value.firstIndex(where: { $0.id == choice.id }) {
