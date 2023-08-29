@@ -9,8 +9,8 @@ struct ArcShape: Shape {
 
     func path(in rect: CGRect) -> Path {
         let rotationAdjustment = Angle.degrees(90)
-        let modifiedStart = section.angles().startAngle - rotationAdjustment
-        let modifiedEnd = section.angles().endAngle - rotationAdjustment
+        let modifiedStart = section.arcAngle.start - rotationAdjustment
+        let modifiedEnd = section.arcAngle.end - rotationAdjustment
 
         var path = Path()
 

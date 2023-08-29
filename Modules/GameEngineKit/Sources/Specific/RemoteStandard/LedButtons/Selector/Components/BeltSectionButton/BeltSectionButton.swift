@@ -9,41 +9,41 @@ enum BeltSection {
     case right, left
     case frontRight, backRight, backLeft, frontLeft
 
-    func angles() -> (startAngle: Angle, endAngle: Angle) {
+    public var arcAngle: (start: Angle, end: Angle) {
         switch self {
             case .full:
-                return (startAngle: .degrees(0), endAngle: .degrees(360))
+                return (start: .degrees(0), end: .degrees(360))
             case .right:
-                return (startAngle: .degrees(10), endAngle: .degrees(170))
+                return (start: .degrees(10), end: .degrees(170))
             case .left:
-                return (startAngle: .degrees(190), endAngle: .degrees(350))
+                return (start: .degrees(190), end: .degrees(350))
             case .frontRight:
-                return (startAngle: .degrees(10), endAngle: .degrees(80))
+                return (start: .degrees(10), end: .degrees(80))
             case .backRight:
-                return (startAngle: .degrees(100), endAngle: .degrees(170))
+                return (start: .degrees(100), end: .degrees(170))
             case .backLeft:
-                return (startAngle: .degrees(190), endAngle: .degrees(260))
+                return (start: .degrees(190), end: .degrees(260))
             case .frontLeft:
-                return (startAngle: .degrees(280), endAngle: .degrees(350))
+                return (start: .degrees(280), end: .degrees(350))
         }
     }
 
-    func ledRange() -> (start: UInt8, end: UInt8) {
+    public var ledRange: (first: UInt8, last: UInt8) {
         switch self {
             case .full:
-                return (start: 0, end: 19)
+                return (first: 0, last: 19)
             case .right:
-                return (start: 10, end: 19)
+                return (first: 10, last: 19)
             case .left:
-                return (start: 0, end: 9)
+                return (first: 0, last: 9)
             case .frontRight:
-                return (start: 15, end: 19)
+                return (first: 15, last: 19)
             case .backRight:
-                return (start: 10, end: 14)
+                return (first: 10, last: 14)
             case .backLeft:
-                return (start: 5, end: 9)
+                return (first: 5, last: 9)
             case .frontLeft:
-                return (start: 0, end: 4)
+                return (first: 0, last: 4)
         }
     }
 }
@@ -62,11 +62,11 @@ struct BeltSectionButton: View {
             .onTapGesture {
                 buttonPressed.toggle()
                 if buttonPressed {
-                    // TODO(@ladislas): Turn on lights from "section.ledRange().start" to "section.ledRange().end" in "color"
-                    print("Leds \(section.ledRange().start) to \(section.ledRange().end) are in \(color)")
+                    // TODO(@ladislas): Turn on lights from "section.ledRange.start" to "section.ledRange.last" in "color"
+                    print("Leds \(section.ledRange.first) to \(section.ledRange.last) are in \(color)")
                 } else {
-                    // TODO(@ladislas): Turn off lights from "section.ledRange().start" to "section.ledRange().end"
-                    print("Leds \(section.ledRange().start) to \(section.ledRange().end) are in off")
+                    // TODO(@ladislas): Turn off lights from "section.ledRange.first" to "section.ledRange.last"
+                    print("Leds \(section.ledRange.first) to \(section.ledRange.last) are in off")
                 }
                 backgroundLineWidth = buttonPressed ? 25 : 0
             }
