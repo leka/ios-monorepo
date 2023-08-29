@@ -23,11 +23,10 @@ struct UserSet_AvatarCell: View {
             if !sidebar.showProfileEditor {
                 company.assignCurrentProfiles()
                 if viewRouter.currentPage == .curriculumDetail {
-                    viewRouter.goToGameFromCurriculums = true
+                    viewRouter.pathFromCurriculum.append(.game)
                 } else {
-                    viewRouter.goToGameFromActivities = true
+                    viewRouter.pathFromActivity.append(.game)
                 }
-                viewRouter.showUserSelector = false
             }
         } label: {
             VStack(spacing: 0) {

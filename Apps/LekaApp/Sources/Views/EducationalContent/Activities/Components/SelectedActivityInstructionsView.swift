@@ -12,22 +12,21 @@ struct SelectedActivityInstructionsView: View {
     @EnvironmentObject var settings: SettingsViewModel
     @EnvironmentObject var viewRouter: ViewRouter
     @EnvironmentObject var metrics: UIMetrics
-    @Environment(\.dismiss) var dismiss
 
     private func goButtonAction() {
         activityVM.setupGame(with: activityVM.currentActivity)
-        dismiss()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-            guard settings.companyIsConnected else {
-                viewRouter.goToGameFromActivities = true
-                return
-            }
-            guard company.selectionSetIsCorrect() else {
-                viewRouter.showUserSelector = true
-                return
-            }
-            viewRouter.goToGameFromActivities = true
+        guard settings.companyIsConnected else {
+            viewRouter.pathFromActivity.append(.game)
+            viewRouter.currentPage = .game
+            return
         }
+        guard company.selectionSetIsCorrect() else {
+            viewRouter.pathFromActivity = .init()
+            viewRouter.currentPage = .game
+            return
+        }
+        viewRouter.pathFromActivity.append(.game)
+        viewRouter.currentPage = .game
     }
 
     var body: some View {

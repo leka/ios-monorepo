@@ -132,6 +132,8 @@ struct GameView: View {
                         withAnimation {
                             viewRouter.currentPage = .home
                         }
+                        viewRouter.pathFromActivity = .init()
+                        viewRouter.pathFromCurriculum = .init()
                         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                             activityVM.resetActivity()
                         }
@@ -193,14 +195,12 @@ struct GameView: View {
                     Button(
                         action: {
                             activityVM.resetActivity()
-                            if viewRouter.currentPage == .curriculumDetail {
-                                dismiss()
-                                viewRouter.goToGameFromCurriculums = false
-                            } else {
+                            if viewRouter.currentPage == .game {
                                 withAnimation {
                                     viewRouter.currentPage = .home
                                 }
-                                viewRouter.goToGameFromActivities = false
+                            } else {
+                                viewRouter.pathFromCurriculum = .init()
                             }
                         },
                         label: {

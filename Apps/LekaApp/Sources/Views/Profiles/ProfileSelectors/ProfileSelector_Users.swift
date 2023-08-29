@@ -19,9 +19,6 @@ struct ProfileSelector_Users: View {
             ProfileSet_Users()
                 .padding(.top, 60)
         }
-        .navigationDestination(isPresented: $viewRouter.goToGameFromActivities) {
-            GameView()
-        }
         .navigationBarBackButtonHidden()
         .toolbar {
             ToolbarItem(placement: .principal) {
@@ -38,13 +35,12 @@ struct ProfileSelector_Users: View {
                 Button(
                     action: {
                         if viewRouter.currentPage == .game {
-                            viewRouter.currentPage = .home
-                            viewRouter.goToGameFromActivities = false
-                        } else {
-                            dismiss()
-                            viewRouter.goToGameFromCurriculums = false
+                            withAnimation {
+                                viewRouter.currentPage = .home
+                            }
+                            viewRouter.pathFromActivity = .init()
                         }
-                        viewRouter.showUserSelector = false
+                        viewRouter.pathFromCurriculum = .init()
                     },
                     label: {
                         HStack(spacing: 4) {

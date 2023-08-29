@@ -27,12 +27,11 @@ struct ContentView: View {
                     CurriculumDetailsView()
                         .transition(.move(edge: .trailing))
                 case .game:
-                    NavigationStack {
-                        if viewRouter.showUserSelector {
-                            ProfileSelector_Users()
-                        } else {
-                            GameView()
-                        }
+                    NavigationStack(path: $viewRouter.pathFromActivity) {
+                        ProfileSelector_Users()
+                            .navigationDestination(for: PathsToGameFromActivity.self) { _ in
+                                GameView()
+                            }
                     }
                     .transition(.move(edge: .trailing))
             }
