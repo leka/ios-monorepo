@@ -6,11 +6,30 @@ import SwiftUI
 
 struct HomeView: View {
 
-    @EnvironmentObject var botVM: BotViewModel
+    @EnvironmentObject var robotVM: RobotViewModel
     @EnvironmentObject var sidebar: SidebarViewModel
     @EnvironmentObject var settings: SettingsViewModel
     @EnvironmentObject var viewRouter: ViewRouter
     @EnvironmentObject var metrics: UIMetrics
+
+    private func changeBatteryLevel() {
+        if robotVM.robotIsCharging {
+            if robotVM.robotChargeLevel == 100 {
+                robotVM.robotIsCharging.toggle()  // off
+            } else if robotVM.robotChargeLevel == 10 {
+                robotVM.robotChargeLevel += 15
+            } else {
+                robotVM.robotChargeLevel += 25
+            }
+        } else {
+            if robotVM.robotChargeLevel == 0 {
+                robotVM.robotIsCharging.toggle()  // on
+                robotVM.robotChargeLevel = 10  // trick to trigger change
+            } else {
+                robotVM.robotChargeLevel -= 25
+            }
+        }
+    }
 
     var body: some View {
         Group {
@@ -24,6 +43,13 @@ struct HomeView: View {
                         .toolbar {
                             ToolbarItem(placement: .principal) {
                                 toolbarTitle
+                            }
+                            ToolbarItem(placement: .navigationBarLeading) {
+                                Button(
+                                    action: { changeBatteryLevel() },
+                                    label: {
+                                        Text("Batterie")
+                                    })
                             }
                             ToolbarItem(placement: .navigationBarTrailing) {
                                 infoButton
@@ -44,7 +70,7 @@ struct HomeView: View {
         }
         .fullScreenCover(isPresented: $sidebar.showRobotPicker) {
             NavigationStack {
-                BotPicker()
+                RobotPicker()
             }
         }
         .alert("Voulez-vous quitter le mode exploratoire ?", isPresented: $settings.showSwitchOffExploratoryAlert) {
@@ -93,7 +119,7 @@ struct HomeView_Previews: PreviewProvider {
             .environmentObject(ViewRouter())
             .environmentObject(CurriculumViewModel())
             .environmentObject(ActivityViewModel())
-            .environmentObject(BotViewModel())
+            .environmentObject(RobotViewModel())
             .previewInterfaceOrientation(.landscapeLeft)
     }
 }

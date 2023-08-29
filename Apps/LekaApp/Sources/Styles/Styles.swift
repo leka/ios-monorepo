@@ -5,7 +5,7 @@
 import Foundation
 import SwiftUI
 
-// MARK: - Bot (bot connection) Button Style
+// MARK: - Robot (robot connection) Button Style
 struct NoFeedback_ButtonStyle: ButtonStyle {
     func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label

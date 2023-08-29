@@ -8,7 +8,7 @@ struct SettingsSection_Account: View {
 
     @EnvironmentObject var settings: SettingsViewModel
     @EnvironmentObject var company: CompanyViewModel
-    @EnvironmentObject var botVM: BotViewModel
+    @EnvironmentObject var robotVM: RobotViewModel
     @EnvironmentObject var viewRouter: ViewRouter
 
     var body: some View {
@@ -29,7 +29,7 @@ struct SettingsSection_Account: View {
             Button(role: .destructive) {
                 viewRouter.currentPage = .welcome
                 company.disconnect()
-                botVM.disconnect()
+                robotVM.disconnect()
                 settings.companyIsConnected = false
             } label: {
                 Text("Se déconnecter")
@@ -42,7 +42,7 @@ struct SettingsSection_Account: View {
                 // For now...
                 viewRouter.currentPage = .welcome
                 company.disconnect()
-                botVM.disconnect()
+                robotVM.disconnect()
                 settings.companyIsConnected = false
             } label: {
                 Text("Supprimer")

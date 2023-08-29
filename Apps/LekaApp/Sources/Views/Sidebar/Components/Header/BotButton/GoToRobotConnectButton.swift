@@ -4,9 +4,9 @@
 
 import SwiftUI
 
-struct GoToBotConnectButton: View {
+struct GoToRobotConnectButton: View {
 
-    @EnvironmentObject var botVM: BotViewModel
+    @EnvironmentObject var robotVM: RobotViewModel
     @EnvironmentObject var viewRouter: ViewRouter
     @EnvironmentObject var metrics: UIMetrics
     @EnvironmentObject var sidebar: SidebarViewModel
@@ -16,7 +16,7 @@ struct GoToBotConnectButton: View {
             sidebar.showRobotPicker.toggle()
         } label: {
             HStack(spacing: 10) {
-                BotConnectionIndicator()
+                RobotConnectionIndicator()
                 buttonContent
                 Spacer()
             }
@@ -31,16 +31,16 @@ struct GoToBotConnectButton: View {
 
     @ViewBuilder
     private var buttonContent: some View {
-        if botVM.botIsConnected {
+        if robotVM.robotIsConnected {
             VStack(alignment: .leading, spacing: 4) {
                 Text("Connecté à")
-                Text(botVM.currentlyConnectedBotName)
+                Text(robotVM.currentlyConnectedRobotName)
                     .font(metrics.reg16)
                 HStack(spacing: 4) {
-                    BotBatteryIndicator(
-                        level: $botVM.botChargeLevel,
-                        charging: $botVM.botIsCharging)
-                    Text(botVM.botOSVersion)
+                    RobotBatteryIndicator(
+                        level: $robotVM.robotChargeLevel,
+                        charging: $robotVM.robotIsCharging)
+                    Text(robotVM.robotOSVersion)
                         .foregroundColor(Color("darkGray"))
                 }
             }
