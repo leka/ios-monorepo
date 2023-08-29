@@ -9,7 +9,7 @@ struct ReinforcerButton: View {
 
     var body: some View {
         Button {
-            // Reinforcer has been pressed
+            reinforcer.run()
         } label: {
             reinforcer.icon()
         }

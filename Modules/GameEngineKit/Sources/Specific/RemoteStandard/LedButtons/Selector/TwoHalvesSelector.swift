@@ -24,16 +24,16 @@ struct TwoHalvesSelector: View {
             beltSectionButtons
 
             HStack(spacing: 50) {
-                EarButton(color: .orange)
-                EarButton(color: .blue)
+                EarButton(selectedEar: .left, color: .orange)
+                EarButton(selectedEar: .right, color: .blue)
             }
         }
     }
 
     private var beltSectionButtons: some View {
         ZStack {
-            BeltSectionView(startAngle: .degrees(10), endAngle: .degrees(170), color: .red)
-            BeltSectionView(startAngle: .degrees(190), endAngle: .degrees(350), color: .blue)
+            BeltSectionButton(section: .right, color: .red)
+            BeltSectionButton(section: .left, color: .blue)
         }
     }
 }

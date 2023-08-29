@@ -24,18 +24,18 @@ struct FourQuartersSelector: View {
             beltSectionButtons
 
             HStack(spacing: 50) {
-                EarButton(color: .orange)
-                EarButton(color: .blue)
+                EarButton(selectedEar: .left, color: .orange)
+                EarButton(selectedEar: .right, color: .blue)
             }
         }
     }
 
     private var beltSectionButtons: some View {
         ZStack {
-            BeltSectionView(startAngle: .degrees(10), endAngle: .degrees(80), color: .green)
-            BeltSectionView(startAngle: .degrees(100), endAngle: .degrees(170), color: .blue)
-            BeltSectionView(startAngle: .degrees(190), endAngle: .degrees(260), color: .red)
-            BeltSectionView(startAngle: .degrees(280), endAngle: .degrees(350), color: .yellow)
+            BeltSectionButton(section: .frontRight, color: .green)
+            BeltSectionButton(section: .backRight, color: .blue)
+            BeltSectionButton(section: .backLeft, color: .red)
+            BeltSectionButton(section: .frontLeft, color: .yellow)
         }
     }
 }

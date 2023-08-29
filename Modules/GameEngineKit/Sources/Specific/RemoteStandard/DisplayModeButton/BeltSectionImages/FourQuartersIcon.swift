@@ -22,10 +22,10 @@ struct FourQuartersIcon: View {
 
     private var beltSectionIcons: some View {
         ZStack {
-            BeltSectionIcon(startAngle: .degrees(10), endAngle: .degrees(80))
-            BeltSectionIcon(startAngle: .degrees(100), endAngle: .degrees(170))
-            BeltSectionIcon(startAngle: .degrees(190), endAngle: .degrees(260))
-            BeltSectionIcon(startAngle: .degrees(280), endAngle: .degrees(350))
+            BeltSectionIcon(section: .frontRight)
+            BeltSectionIcon(section: .backRight)
+            BeltSectionIcon(section: .backLeft)
+            BeltSectionIcon(section: .frontLeft)
         }
     }
 }

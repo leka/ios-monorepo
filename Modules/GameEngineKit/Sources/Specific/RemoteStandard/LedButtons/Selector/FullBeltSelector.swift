@@ -20,8 +20,8 @@ struct FullBeltSelector: View {
             }
             .padding(20)
 
-            BeltSectionView(startAngle: .degrees(0), endAngle: .degrees(360), color: .red)
-            EarButton(color: .blue)
+            BeltSectionButton(section: .full, color: .red)
+            EarButton(selectedEar: .all, color: .blue)
 
         }
         .padding()

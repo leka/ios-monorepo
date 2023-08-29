@@ -5,15 +5,14 @@
 import SwiftUI
 
 struct BeltSectionButtonFeedback: View {
-    var startAngle: Angle
-    var endAngle: Angle
+    var section: BeltSection
     var color: Color
     var lineWidth: Int
 
     var body: some View {
-        ArcShape(startAngle: startAngle, endAngle: endAngle, clockwise: true)
+        ArcShape(section: section)
             .stroke(
-                color.opacity(0.5),
+                color.opacity(0.3),
                 style: StrokeStyle(
                     lineWidth: CGFloat(lineWidth),
                     lineCap: .round,
@@ -26,6 +25,6 @@ struct BeltSectionButtonFeedback: View {
 
 struct BeltSectionButtonFeedback_Previews: PreviewProvider {
     static var previews: some View {
-        BeltSectionButtonFeedback(startAngle: .degrees(0), endAngle: .degrees(180), color: .red, lineWidth: 20)
+        BeltSectionButtonFeedback(section: .frontRight, color: .red, lineWidth: 20)
     }
 }

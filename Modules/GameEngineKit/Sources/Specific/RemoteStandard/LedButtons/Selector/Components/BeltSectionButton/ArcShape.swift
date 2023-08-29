@@ -5,21 +5,18 @@
 import SwiftUI
 
 struct ArcShape: Shape {
-
-    let startAngle: Angle
-    let endAngle: Angle
-    let clockwise: Bool
+    let section: BeltSection
 
     func path(in rect: CGRect) -> Path {
         let rotationAdjustment = Angle.degrees(90)
-        let modifiedStart = startAngle - rotationAdjustment
-        let modifiedEnd = endAngle - rotationAdjustment
+        let modifiedStart = section.arcAngle.start - rotationAdjustment
+        let modifiedEnd = section.arcAngle.end - rotationAdjustment
 
         var path = Path()
 
         path.addArc(
             center: CGPoint(x: rect.midX, y: rect.midY), radius: rect.width / 2, startAngle: modifiedStart,
-            endAngle: modifiedEnd, clockwise: !clockwise)
+            endAngle: modifiedEnd, clockwise: false)
 
         return path
     }
