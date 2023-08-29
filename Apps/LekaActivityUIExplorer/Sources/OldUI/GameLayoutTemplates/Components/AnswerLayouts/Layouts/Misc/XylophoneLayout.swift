@@ -2,6 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import DesignKit
 import SwiftUI
 
 struct XylophoneLayout: View {
@@ -16,6 +17,6 @@ struct XylophoneLayout: View {
                 XylophoneTile(xylophoneDefaults: xylophoneDefaults, index: index)
             }
         }
-        .robotNeededAlert()
+        .alertWhenRobotIsNeeded()
     }
 }

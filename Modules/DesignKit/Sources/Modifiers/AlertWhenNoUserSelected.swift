@@ -4,7 +4,7 @@
 
 import SwiftUI
 
-struct AlertWhenRobotIsNeeded: ViewModifier {
+struct AlertWhenNoUserSelected: ViewModifier {
     @State private var showAlert: Bool = false
 
     func body(content: Content) -> some View {
@@ -12,11 +12,15 @@ struct AlertWhenRobotIsNeeded: ViewModifier {
             .onAppear {
                 showAlert = true
             }
-            .alert("Cette activité nécessite l'utilisation du robot !", isPresented: $showAlert) {
+            .alert("Aucun utilisateur sélectionné pour cette activité.", isPresented: $showAlert) {
                 alertContent
             } message: {
-                Text("Avant de commencer l'activité, connectez-vous en Bluetooth à votre robot.")
+                Text("Avant de commencer l'activité, sélectionnez un utilisateur.")
             }
+    }
+
+    public init() {
+        // nothing to do
     }
 
     private var alertContent: some View {
@@ -27,7 +31,7 @@ struct AlertWhenRobotIsNeeded: ViewModifier {
                     showAlert.toggle()
                 },
                 label: {
-                    Text("Continuer sans le robot")
+                    Text("Continuer sans utilisateur")
                 })
             Button(
                 role: .none,
@@ -35,7 +39,7 @@ struct AlertWhenRobotIsNeeded: ViewModifier {
                     showAlert.toggle()
                 },
                 label: {
-                    Text("Se connecter")
+                    Text("Sélectionner un utilisateur")
                         .font(.system(size: 17, weight: .semibold))
                         .foregroundColor(.accentColor)
                 })
@@ -44,7 +48,7 @@ struct AlertWhenRobotIsNeeded: ViewModifier {
 }
 
 extension View {
-    func alertWhenRobotIsNeeded() -> some View {
-        modifier(AlertWhenRobotIsNeeded())
+    public func alertWhenNoUserSelected() -> some View {
+        modifier(AlertWhenNoUserSelected())
     }
 }

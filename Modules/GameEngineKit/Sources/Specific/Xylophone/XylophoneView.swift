@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import AudioKit
+import DesignKit
 import SwiftUI
 
 public struct XylophoneTile: Identifiable, Hashable {

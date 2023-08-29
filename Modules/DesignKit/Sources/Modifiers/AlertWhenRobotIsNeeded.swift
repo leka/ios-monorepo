@@ -4,8 +4,7 @@
 
 import SwiftUI
 
-struct RobotNeededAlert: ViewModifier {
-    @EnvironmentObject var defaults: GameLayoutTemplatesDefaults
+struct AlertWhenRobotIsNeeded: ViewModifier {
     @State private var showAlert: Bool = false
 
     func body(content: Content) -> some View {
@@ -20,6 +19,10 @@ struct RobotNeededAlert: ViewModifier {
             }
     }
 
+    public init() {
+        // nothing to do
+    }
+
     private var alertContent: some View {
         Group {
             Button(
@@ -28,26 +31,16 @@ struct RobotNeededAlert: ViewModifier {
                     showAlert.toggle()
                 },
                 label: {
-                    Text("Annuler")
+                    Text("Continuer sans le robot")
                 })
-
             Button(
                 role: .none,
                 action: {
                     showAlert.toggle()
                 },
                 label: {
-                    Text("Continuer sans le robot")
-                })
-
-            Button(
-                role: .cancel,
-                action: {
-                    showAlert.toggle()
-                },
-                label: {
-                    Text("Me connecter")
-                        .font(defaults.semi17)
+                    Text("Se connecter")
+                        .font(.system(size: 17, weight: .semibold))
                         .foregroundColor(.accentColor)
                 })
         }
@@ -55,7 +48,7 @@ struct RobotNeededAlert: ViewModifier {
 }
 
 extension View {
-    func robotNeededAlert() -> some View {
-        modifier(RobotNeededAlert())
+    public func alertWhenRobotIsNeeded() -> some View {
+        modifier(AlertWhenRobotIsNeeded())
     }
 }

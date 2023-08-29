@@ -2,6 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import DesignKit
 import SwiftUI
 
 enum HideAndSeekStage {
@@ -50,7 +51,7 @@ struct HideAndSeekLauncher: View {
                     }
                 }
                 .scaledToFill()
-                .robotNeededAlert()
+                .alertWhenRobotIsNeeded()
             case .hidden:
                 HideAndSeekPlayer(stage: $stage)
         }

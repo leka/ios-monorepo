@@ -2,6 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import DesignKit
 import SwiftUI
 
 enum DanceFreezeStage {
@@ -17,7 +18,7 @@ struct DanceFreezeLauncher: View {
         switch mode {
             case .waitingForSelection:
                 DanceFreezeSelector(mode: $mode)
-                    .robotNeededAlert()
+                    .alertWhenRobotIsNeeded()
             case .automaticMode:
                 DanceFreezePlayer(isAuto: true)
             case .manualMode:
