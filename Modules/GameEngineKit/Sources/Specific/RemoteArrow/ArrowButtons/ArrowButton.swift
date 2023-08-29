@@ -7,7 +7,7 @@ import SwiftUI
 enum Arrow {
     case forward, right, backward, left
 
-    func name() -> String {
+    public var name: String {
         switch self {
             case .forward:
                 return "arrow.up"
@@ -20,7 +20,7 @@ enum Arrow {
         }
     }
 
-    func color() -> Color {
+    public var color: Color {
         switch self {
             case .forward:
                 return .blue
@@ -55,15 +55,15 @@ struct ArrowButton: View {
                     print("Turn left")
             }
             // TODO(@ladislas): Lights up Leka in "arrow.color()"
-            print("Show \(arrow.color())")
+            print("Show \(arrow.color)")
         } label: {
             Circle()
                 .fill(.white)
                 .frame(width: 200, height: 200)
                 .overlay {
-                    Image(systemName: arrow.name())
+                    Image(systemName: arrow.name)
                         .resizable()
-                        .foregroundColor(arrow.color())
+                        .foregroundColor(arrow.color)
                         .frame(width: 80, height: 100)
                 }
                 .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: 0)
