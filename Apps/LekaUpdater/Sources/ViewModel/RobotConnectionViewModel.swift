@@ -65,7 +65,13 @@ public class RobotConnectionViewModel: ObservableObject {
                 },
                 receiveValue: { robotDiscoveryList in
                     self.robotDiscoveries = robotDiscoveryList.map { robotDiscovery in
-                        RobotDiscoveryViewModel(robotDiscovery: robotDiscovery)
+                        let existingRobotDiscovery = self.robotDiscoveries?
+                            .first(where: { viewModel in
+                                viewModel.robotDiscovery == robotDiscovery
+                            })
+                        let robotDiscoveryStatus = existingRobotDiscovery?.status ?? .unselected
+
+                        return RobotDiscoveryViewModel(robotDiscovery: robotDiscovery, status: robotDiscoveryStatus)
                     }
                 })
     }
