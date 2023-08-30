@@ -49,6 +49,7 @@ public class RobotManager: ObservableObject {
     public func readReadOnlyCharacteristics() {
         self.registerOSVersionReadCallback()
         self.registerSerialNumberReadCallback()
+        self.registerChargingStatusReadCallback()
 
         self.robotPeripheral?.readReadOnlyCharacteristics()
     }
@@ -66,6 +67,21 @@ public class RobotManager: ObservableObject {
         }
 
         self.robotPeripheral?.notifyingCharacteristics.insert(characteristic)
+    }
+
+    private func registerChargingStatusReadCallback() {
+        var characteristic = ReadOnlyCharacteristic(
+            characteristicUUID: BLESpecs.Monitoring.Characteristics.chargingStatus,
+            serviceUUID: BLESpecs.Monitoring.service
+        )
+
+        characteristic.onRead = { data in
+            if let value = data?.first {
+                self.isCharging = value == 1
+            }
+        }
+
+        self.robotPeripheral?.readOnlyCharacteristics.insert(characteristic)
     }
 
     private func registerChargingStatusNotificationCallback() {
