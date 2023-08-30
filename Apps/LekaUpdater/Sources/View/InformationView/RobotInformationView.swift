@@ -9,11 +9,15 @@ struct RobotInformationView: View {
     @StateObject private var viewModel = RobotInformationViewModel()
 
     var body: some View {
-        List {
+        VStack(alignment: .leading) {
             Text("N° série: \(viewModel.robotSerialNumber)")
+            Divider()
             Text("Battery: \(viewModel.robotBattery)")
+            Divider()
             Text("Version: \(viewModel.robotOsVersion)")
         }
+        .padding()
+
     }
 }
 

@@ -14,15 +14,19 @@ struct RobotUpdateAvailableView: View {
         VStack {
             Text("⬆️ Une mise à jour est disponible 📦")
                 .font(.title3)
+                .padding([.bottom])
+
             Button {
                 isUpdateStatusViewPresented = true
             } label: {
                 Text("Lancer la mise à jour du robot")
                     .foregroundColor(.white)
-                    .frame(height: 50)
-                    .frame(maxWidth: .infinity)
+                    .font(.title2)
+                    .padding([.horizontal], 50)
+                    .padding([.vertical], 30)
                     .background(DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor)
                     .cornerRadius(10)
+                    .frame(maxWidth: .infinity)
             }
             .buttonStyle(.plain)
             .disabled(requirementsViewModel.robotIsNotReadyToUpdate)

@@ -17,80 +17,69 @@ struct InformationView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                Form {
-                    Section {
-                        Group {
-                            if viewModel.showRobotNeedsUpdate {
-                                RobotNeedsUpdateIllustration(size: 200)
+                ScrollView {
+                    VStack(alignment: .center, spacing: 10) {
+                        if viewModel.showRobotNeedsUpdate {
+                            RobotNeedsUpdateIllustration(size: 200)
 
-                                Text(viewModel.robotName)
-                                    .font(.title3)
+                            Text(viewModel.robotName)
+                                .font(.title3)
 
-                                Text("⬆️ Une mise à jour est disponible 📦")
-                                    .font(.title2)
-                            } else {
-                                RobotUpToDateIllustration(size: 200)
+                            Text("⬆️ Une mise à jour est disponible 📦")
+                                .font(.title2)
+                        } else {
+                            RobotUpToDateIllustration(size: 200)
 
-                                Text(viewModel.robotName)
-                                    .font(.title3)
+                            Text(viewModel.robotName)
+                                .font(.title3)
 
-                                Text("🤖 Votre robot est à jour ! 🎉 Vous n'avez rien à faire 👌")
-                                    .font(.title2)
-                            }
+                            Text("🤖 Votre robot est à jour ! 🎉 Vous n'avez rien à faire 👌")
+                                .font(.title2)
                         }
-                        .frame(maxWidth: .infinity, alignment: .center)
-                        .listRowSeparator(.hidden)
                     }
-                    .listRowBackground(Color.clear)
+                    .padding([.bottom], 10)
 
-                    Section {
-                        RobotInformationView()
-                    } header: {
-                        Text("Informations du robot")
-                            .textCase(nil)
-                            .font(.title)
-                    }
+                    RobotInformationView()
+                        .padding()
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 20)
+                                .stroke(DesignKitAsset.Colors.lightGray.swiftUIColor, lineWidth: 3)
+                        )
+                        .padding([.vertical], 10)
 
-                    Section {
-                        DisclosureGroup {
-                            ChangelogView()
-                                .padding()
-                        } label: {
-                            Text("Liste des changements apportés")
-                                .foregroundStyle(DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor)
-                        }
-                        .accentColor(DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor)
-                    } header: {
-                        Text("Informations sur LekaOS v\(viewModel.firmwareVersion)")
-                            .textCase(nil)
-                            .font(.title)
+                    DisclosureGroup {
+                        ChangelogView()
+                            .padding()
+                    } label: {
+                        Text("Liste des changements apportés")
+                            .foregroundStyle(DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor)
                     }
+                    .accentColor(DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor)
+                    .padding()
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 20)
+                            .stroke(DesignKitAsset.Colors.lightGray.swiftUIColor, lineWidth: 3)
+                    )
+                    .padding([.vertical], 10)
 
                     if viewModel.showRobotNeedsUpdate {
-                        Section {
-                            RobotUpdateAvailableView(isUpdateStatusViewPresented: $isUpdateStatusViewPresented)
-                        } header: {
-                            Text("État de mise à jour du robot")
-                                .textCase(nil)
-                                .font(.title)
-                        }
+                        RobotUpdateAvailableView(isUpdateStatusViewPresented: $isUpdateStatusViewPresented)
+                            .padding([.vertical], 10)
                     }
 
-                    Section {
-                        VStack {
-                            LekaUpdaterAsset.Assets.lekaUpdaterIcon.swiftUIImage
-                                .resizable()
-                                .scaledToFit()
-                                .frame(height: 70)
-                                .padding(35)
+                    VStack {
+                        LekaUpdaterAsset.Assets.lekaUpdaterIcon.swiftUIImage
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height: 70)
+                            .padding(35)
 
-                            // TODO(@YannL): Remove DEBUG
-                            Button("Switch (debug)", action: viewModel.switchRobotVersionForDebug)
-                        }
-                        .frame(maxWidth: .infinity, alignment: .center)
+                        // TODO(@YannL): Remove DEBUG
+                        Button("Switch (debug)", action: viewModel.switchRobotVersionForDebug)
                     }
-                    .listRowBackground(Color.clear)
                 }
+                .padding([.horizontal], 20)
+                .background(Color.white)
             }
             .foregroundColor(DesignKitAsset.Colors.darkGray.swiftUIColor)
             .onChange(of: isViewVisible) { isVisible in
