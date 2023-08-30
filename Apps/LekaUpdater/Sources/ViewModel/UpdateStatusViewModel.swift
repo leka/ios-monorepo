@@ -22,6 +22,7 @@ class UpdateStatusViewModel: ObservableObject {
     // MARK: - Public variables
 
     @Published public var updatingStatus: UpdateStatus = .sendingFile
+    @Published public var sendingFileProgression: Float = 0.0
 
     public var stepNumber: Int {
         switch updatingStatus {
@@ -36,6 +37,7 @@ class UpdateStatusViewModel: ObservableObject {
 
     init() {
         subscribeToStateUpdate()
+        subscribeToSendingFileProgressionUpdate()
     }
 
     private func subscribeToStateUpdate() {
@@ -54,6 +56,15 @@ class UpdateStatusViewModel: ObservableObject {
                         self.updatingStatus = .rebootingRobot
                 }
             }
+            .store(in: &cancellables)
+    }
+
+    private func subscribeToSendingFileProgressionUpdate() {
+        self.updateProcessController.sendingFileProgression
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { progression in
+                self.sendingFileProgression = progression
+            })
             .store(in: &cancellables)
     }
 

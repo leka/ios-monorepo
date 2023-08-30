@@ -35,6 +35,7 @@ class UpdateProcessController {
     // MARK: - Public variables
 
     public var currentStage = CurrentValueSubject<UpdateProcessStage, UpdateProcessError>(.initial)
+    public var sendingFileProgression = CurrentValueSubject<Float, Never>(0.0)
 
     init() {
         let currentRobotVersion = globalRobotManager.osVersion
@@ -47,6 +48,7 @@ class UpdateProcessController {
         }
 
         self.currentStage = self.currentUpdateProcess.currentStage
+        self.sendingFileProgression = self.currentUpdateProcess.sendingFileProgression
     }
 
     func startUpdate() {
