@@ -28,9 +28,9 @@ internal struct AdvertisingServiceData {
         return data[Index.isCharging] == 0x01
     }
 
-    public var osVersion: String {
+    public var osVersion: String? {
         guard data.count == 6 else {
-            return "⚠️ NO OS VERSION"
+            return nil
         }
 
         let major = data[Index.osVersionMajor]

@@ -5,7 +5,7 @@
 protocol AdvertisingDataProcotol {
 
     var name: String { get }
-    var osVersion: String { get }
+    var osVersion: String? { get }
     var battery: Int { get }
     var isCharging: Bool { get }
 

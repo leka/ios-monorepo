@@ -19,7 +19,7 @@ public struct RobotAdvertisingData: AdvertisingDataProcotol {
     public let name: String
     public let battery: Int
     public let isCharging: Bool
-    public let osVersion: String
+    public let osVersion: String?
 
     // MARK: - Public functions
 

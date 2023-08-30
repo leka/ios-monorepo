@@ -13,6 +13,13 @@ struct RobotDiscoveryView: View {
 
     @EnvironmentObject private var robotListViewModel: RobotListViewModel
 
+    private var osVersionText: String {
+        guard let osVersion = discovery.advertisingData.osVersion else {
+            return "⚠️ NO OS VERSION"
+        }
+        return "Firmware: v\(osVersion)"
+    }
+
     public init(discovery: RobotDiscovery) {
         self.discovery = discovery
     }
@@ -55,7 +62,7 @@ struct RobotDiscoveryView: View {
                     VStack(alignment: .leading) {
                         Text(discovery.advertisingData.name)
                             .font(.headline)
-                        Text("Firmware: v\(discovery.advertisingData.osVersion)")
+                        Text(osVersionText)
                     }
 
                     Spacer()
