@@ -11,6 +11,7 @@ class UpdateStatusViewModel: ObservableObject {
         case sendingFile
         case rebootingRobot
         case updateFinished
+        case error
     }
 
     // MARK: - Private variables
@@ -24,6 +25,9 @@ class UpdateStatusViewModel: ObservableObject {
     @Published public var updatingStatus: UpdateStatus = .sendingFile
     @Published public var sendingFileProgression: Float = 0.0
 
+    @Published public var errorDescription: String = ""
+    @Published public var errorInstruction: String = ""
+
     public var stepNumber: Int {
         switch updatingStatus {
             case .sendingFile:
@@ -32,6 +36,8 @@ class UpdateStatusViewModel: ObservableObject {
                 return 2
             case .updateFinished:
                 return 3
+            case .error:
+                return -1
         }
     }
 
@@ -44,9 +50,26 @@ class UpdateStatusViewModel: ObservableObject {
         self.updateProcessController.currentStage
             .receive(on: DispatchQueue.main)
             .sink { completion in
-                // TODO: Handle errors
-                if completion == .finished {
-                    self.updatingStatus = .updateFinished
+                switch completion {
+                    case .finished:
+                        self.updatingStatus = .updateFinished
+                    case .failure(let error):
+                        self.updatingStatus = .error
+
+                        switch error {
+                            case .failedToLoadFile:
+                                self.errorDescription = "Impossible de charger le logiciel robot"
+                                self.errorInstruction = "Réinstaller l'application"
+                            case .robotNotUpToDate:
+                                self.errorDescription = "Echec de la mise à jour"
+                                self.errorInstruction = "Essayer à nouveau"
+                            case .updateProcessNotAvailable:
+                                self.errorDescription = "Le robot ne peut pas être mis à jour"
+                                self.errorInstruction = "Contacter le support technique"
+                            default:
+                                self.errorDescription = "Erreur inconnue"
+                                self.errorInstruction = "Contacter le support technique"
+                        }
                 }
             } receiveValue: { state in
                 switch state {
