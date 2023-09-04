@@ -15,9 +15,12 @@ struct ErrorIllustration: View {
 }
 
 struct ErrorContentView: View {
+    @Environment(\.dismiss) var dismiss
 
     public let errorDescription: String
     public let errorInstruction: String
+
+    @Binding var isConnectionViewPresented: Bool
 
     var body: some View {
         VStack {
@@ -28,11 +31,31 @@ struct ErrorContentView: View {
             Text(errorInstruction)
                 .multilineTextAlignment(.center)
                 .padding()
+
+            HStack {
+                Button {
+                    dismiss()
+                    isConnectionViewPresented = true
+                } label: {
+                    Text("Revenir à la page de connexion")
+                        .padding(.horizontal)
+                        .foregroundColor(.white)
+                        .frame(height: 50)
+                        .background(DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor)
+                        .cornerRadius(10)
+                }
+                .buttonStyle(.plain)
+                .padding(.leading)
+            }
+            .shadow(radius: 3, y: 4)
+            .padding()
         }
     }
 }
 
 struct ErrorView_Previews: PreviewProvider {
+
+    @State static var isConnectionViewPresented = false
 
     static let errorDescription = "Erreur inconnue"
     static let errorActionRequired = "Contacter le support technique"
@@ -51,7 +74,9 @@ struct ErrorView_Previews: PreviewProvider {
                 .padding()
 
             VStack {
-                ErrorContentView(errorDescription: errorDescription, errorInstruction: errorActionRequired)
+                ErrorContentView(
+                    errorDescription: errorDescription, errorInstruction: errorActionRequired,
+                    isConnectionViewPresented: $isConnectionViewPresented)
                 Spacer()
             }
             .foregroundColor(DesignKitAsset.Colors.darkGray.swiftUIColor)
