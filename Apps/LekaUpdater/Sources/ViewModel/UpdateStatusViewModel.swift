@@ -77,6 +77,15 @@ class UpdateStatusViewModel: ObservableObject {
                                     (Code erreur #0003)
                                     """
                                 self.errorInstruction = "Contactez le support technique"
+                            case .robotUnexpectedDisconnection:
+                                self.errorDescription = """
+                                    Le robot s'est déconnecté de manière inattendue
+                                    (Code erreur #0004)
+                                    """
+                                self.errorInstruction = """
+                                    Redémarrer le robot à l'aide de la carte \"Arrêt d'urgence\",
+                                    reconnectez le robot et relancez le processus
+                                    """
                             default:
                                 self.errorDescription = """
                                     Une erreur inconnue s'est produite
