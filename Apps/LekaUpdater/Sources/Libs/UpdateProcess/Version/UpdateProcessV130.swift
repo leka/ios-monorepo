@@ -15,6 +15,7 @@ private enum UpdateEvent {
     case fileLoaded, failedToLoadFile
     case fileExchangeStateSet
     case destinationPathSet
+    case fileCleared
     case fileSent
     case robotDisconnected
     case robotDetected
@@ -109,7 +110,7 @@ private class StateSettingFileExchangeState: GKState, StateEventProcessor {
 private class StateSettingDestinationPath: GKState, StateEventProcessor {
 
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
-        return stateClass is StateSendingFile.Type
+        return stateClass is StateClearingFile.Type
     }
 
     override func didEnter(from previousState: GKState?) {
@@ -119,7 +120,7 @@ private class StateSettingDestinationPath: GKState, StateEventProcessor {
     func process(event: UpdateEvent) {
         switch event {
             case .destinationPathSet:
-                self.stateMachine?.enter(StateSendingFile.self)
+                self.stateMachine?.enter(StateClearingFile.self)
             default:
                 return
         }
@@ -142,6 +143,41 @@ private class StateSettingDestinationPath: GKState, StateEventProcessor {
         }
 
         globalRobotManager.robotPeripheral?.send(destinationPath.data(using: .utf8)!, forCharacteristic: characteristic)
+    }
+}
+
+private class StateClearingFile: GKState, StateEventProcessor {
+
+    override func isValidNextState(_ stateClass: AnyClass) -> Bool {
+        return stateClass is StateSendingFile.Type
+    }
+
+    override func didEnter(from previousState: GKState?) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: setClearPath)
+    }
+
+    func process(event: UpdateEvent) {
+        switch event {
+            case .fileCleared:
+                self.stateMachine?.enter(StateSendingFile.self)
+            default:
+                return
+        }
+    }
+
+    private func setClearPath() {
+        let data = Data([1])
+
+        var characteristic = WriteOnlyCharacteristic(
+            characteristicUUID: BLESpecs.FileExchange.Characteristics.clearFile,
+            serviceUUID: BLESpecs.FileExchange.service
+        )
+
+        characteristic.onWrite = {
+            self.process(event: .fileCleared)
+        }
+
+        globalRobotManager.robotPeripheral?.send(data, forCharacteristic: characteristic)
     }
 }
 
@@ -434,10 +470,11 @@ class UpdateProcessV130: UpdateProcessProtocol {
 
             StateLoadingUpdateFile(),
             StateSettingFileExchangeState(),
+            StateSettingDestinationPath(),
+            StateClearingFile(),
             stateSendingFile,
             StateApplyingUpdate(),
             StateWaitingForRobotToReboot(),
-            StateSettingDestinationPath(),
 
             StateFinal(),
 
@@ -480,6 +517,7 @@ class UpdateProcessV130: UpdateProcessProtocol {
             case is StateInitial:
                 currentStage.send(.initial)
             case is StateLoadingUpdateFile, is StateSettingFileExchangeState, is StateSettingDestinationPath,
+                is StateClearingFile,
                 is StateSendingFile:
                 currentStage.send(.sendingUpdate)
             case is StateApplyingUpdate, is StateWaitingForRobotToReboot:
