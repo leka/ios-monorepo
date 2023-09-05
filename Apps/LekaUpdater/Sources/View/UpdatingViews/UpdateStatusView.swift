@@ -24,17 +24,26 @@ struct UpdateStatusView: View {
                             RebootingIllustration()
                         case .updateFinished:
                             UpdateFinishedIllustration()
+                        case .error:
+                            ErrorIllustration()
                     }
                 }
                 .frame(height: 250)
                 .padding(.bottom)
                 .padding(.bottom)
 
-                Text("Étape \(viewModel.stepNumber)/3")
-                    .font(.title)
-                    .bold()
-                    .monospacedDigit()
-                    .padding()
+                if viewModel.updatingStatus == .error {
+                    Text("Une erreur s'est produite")
+                        .font(.title)
+                        .bold()
+                        .padding()
+                } else {
+                    Text("Étape \(viewModel.stepNumber)/3")
+                        .font(.title)
+                        .bold()
+                        .monospacedDigit()
+                        .padding()
+                }
 
                 VStack {
                     switch viewModel.updatingStatus {
@@ -44,6 +53,10 @@ struct UpdateStatusView: View {
                             RebootingContentView()
                         case .updateFinished:
                             UpdateFinishedContentView(isConnectionViewPresented: $isConnectionViewPresented)
+                        case .error:
+                            ErrorContentView(
+                                errorDescription: viewModel.errorDescription,
+                                errorInstruction: viewModel.errorInstruction)
                     }
                     Spacer()
                 }
@@ -86,6 +99,8 @@ struct UpdateStatusView: View {
                 viewModel.updatingStatus = .updateFinished
             case .updateFinished:
                 viewModel.updatingStatus = .sendingFile
+            case .error:
+                viewModel.updatingStatus = .error
         }
     }
 
