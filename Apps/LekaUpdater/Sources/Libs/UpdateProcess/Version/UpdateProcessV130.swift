@@ -13,6 +13,7 @@ private enum UpdateEvent {
     case startUpdateRequested
 
     case fileLoaded, failedToLoadFile
+    case fileExchangeStateSet
     case destinationPathSet
     case fileSent
     case robotDisconnected
@@ -44,7 +45,7 @@ private class StateInitial: GKState, StateEventProcessor {
 private class StateLoadingUpdateFile: GKState, StateEventProcessor {
 
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
-        return stateClass is StateErrorFailedToLoadFile.Type || stateClass is StateSettingDestinationPath.Type
+        return stateClass is StateErrorFailedToLoadFile.Type || stateClass is StateSettingFileExchangeState.Type
     }
 
     override func didEnter(from previousState: GKState?) {
@@ -61,12 +62,47 @@ private class StateLoadingUpdateFile: GKState, StateEventProcessor {
     func process(event: UpdateEvent) {
         switch event {
             case .fileLoaded:
-                self.stateMachine?.enter(StateSettingDestinationPath.self)
+                self.stateMachine?.enter(StateSettingFileExchangeState.self)
             case .failedToLoadFile:
                 self.stateMachine?.enter(StateErrorFailedToLoadFile.self)
             default:
                 return
         }
+    }
+}
+
+private class StateSettingFileExchangeState: GKState, StateEventProcessor {
+
+    override func isValidNextState(_ stateClass: AnyClass) -> Bool {
+        return stateClass is StateSettingDestinationPath.Type
+    }
+
+    override func didEnter(from previousState: GKState?) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: setFileExchangeState)
+    }
+
+    func process(event: UpdateEvent) {
+        switch event {
+            case .fileExchangeStateSet:
+                self.stateMachine?.enter(StateSettingDestinationPath.self)
+            default:
+                return
+        }
+    }
+
+    private func setFileExchangeState() {
+        let data = Data([1])
+
+        var characteristic = WriteOnlyCharacteristic(
+            characteristicUUID: BLESpecs.FileExchange.Characteristics.setState,
+            serviceUUID: BLESpecs.FileExchange.service
+        )
+
+        characteristic.onWrite = {
+            self.process(event: .fileExchangeStateSet)
+        }
+
+        globalRobotManager.robotPeripheral?.send(data, forCharacteristic: characteristic)
     }
 }
 
@@ -397,6 +433,7 @@ class UpdateProcessV130: UpdateProcessProtocol {
             StateInitial(),
 
             StateLoadingUpdateFile(),
+            StateSettingFileExchangeState(),
             stateSendingFile,
             StateApplyingUpdate(),
             StateWaitingForRobotToReboot(),
@@ -442,7 +479,8 @@ class UpdateProcessV130: UpdateProcessProtocol {
         switch state {
             case is StateInitial:
                 currentStage.send(.initial)
-            case is StateLoadingUpdateFile, is StateSettingDestinationPath, is StateSendingFile:
+            case is StateLoadingUpdateFile, is StateSettingFileExchangeState, is StateSettingDestinationPath,
+                is StateSendingFile:
                 currentStage.send(.sendingUpdate)
             case is StateApplyingUpdate, is StateWaitingForRobotToReboot:
                 currentStage.send(.installingUpdate)
