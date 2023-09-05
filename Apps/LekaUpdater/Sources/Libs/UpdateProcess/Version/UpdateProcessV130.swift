@@ -188,29 +188,12 @@ private class StateSendingFile: GKState, StateEventProcessor {
     }
 
     private func tryToSendNextPacket() {
-        if isInCriticalSection() {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: self.tryToSendNextPacket)
-            return
-        }
-
         progression.send(_progression)
         if _progression < 1.0 {
             sendNextPacket()
         } else {
             process(event: .fileSent)
         }
-    }
-
-    private func isInCriticalSection() -> Bool {
-        guard let battery = globalRobotManager.battery, let isCharging = globalRobotManager.isCharging else {
-            return true
-        }
-
-        let isNotCharging = !isCharging
-        let isNearBatteryLevelChange =
-            23...27 ~= battery || 48...52 ~= battery || 73...77 ~= battery || 88...92 ~= battery
-
-        return isNotCharging || isNearBatteryLevelChange
     }
 
     private func sendNextPacket() {
