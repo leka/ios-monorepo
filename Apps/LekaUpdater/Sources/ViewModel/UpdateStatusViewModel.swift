@@ -58,17 +58,29 @@ class UpdateStatusViewModel: ObservableObject {
 
                         switch error {
                             case .failedToLoadFile:
-                                self.errorDescription = "Impossible de charger le logiciel robot"
-                                self.errorInstruction = "Réinstaller l'application"
+                                self.errorDescription = """
+                                    Le fichier de mise à jour du robot ne peut pas être ouvert
+                                    (Code erreur #0001)
+                                    """
+                                self.errorInstruction = "Veuillez réinstaller l'application"
                             case .robotNotUpToDate:
-                                self.errorDescription = "Echec de la mise à jour"
-                                self.errorInstruction = "Essayer à nouveau"
+                                self.errorDescription = """
+                                    Echec de la mise à jour
+                                    (Code erreur #0002)
+                                    """
+                                self.errorInstruction = "Reconnectez le robot et relancez le processus"
                             case .updateProcessNotAvailable:
-                                self.errorDescription = "Le robot ne peut pas être mis à jour"
-                                self.errorInstruction = "Contacter le support technique"
+                                self.errorDescription = """
+                                    Processus de mise à jour non disponible ou inconnu
+                                    (Code erreur #0003)
+                                    """
+                                self.errorInstruction = "Contactez le support technique"
                             default:
-                                self.errorDescription = "Erreur inconnue"
-                                self.errorInstruction = "Contacter le support technique"
+                                self.errorDescription = """
+                                    Une erreur inconnue s'est produite
+                                    (Code erreur #0000)
+                                    """
+                                self.errorInstruction = "Contactez le support technique"
                         }
                 }
             } receiveValue: { state in
