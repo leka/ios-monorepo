@@ -27,6 +27,7 @@ struct ErrorContentView: View {
             Text(errorDescription)
                 .font(.title2)
                 .bold()
+                .multilineTextAlignment(.center)
 
             Text(errorInstruction)
                 .multilineTextAlignment(.center)
