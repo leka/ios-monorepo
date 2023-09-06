@@ -23,7 +23,7 @@ struct ErrorContentView: View {
     @Binding var isConnectionViewPresented: Bool
 
     var body: some View {
-        VStack {
+        VStack(spacing: 15) {
             Text(errorDescription)
                 .font(.title2)
                 .bold()
@@ -31,57 +31,47 @@ struct ErrorContentView: View {
 
             Text(errorInstruction)
                 .multilineTextAlignment(.center)
-                .padding()
 
-            HStack {
-                Button {
-                    dismiss()
-                    isConnectionViewPresented = true
-                } label: {
-                    Text("Revenir à la page de connexion")
-                        .padding(.horizontal)
-                        .foregroundColor(.white)
-                        .frame(height: 50)
-                        .background(DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor)
-                        .cornerRadius(10)
-                }
-                .buttonStyle(.plain)
-                .padding(.leading)
+            Button {
+                dismiss()
+                isConnectionViewPresented = true
+            } label: {
+                Text("Revenir à la page de connexion")
+                    .padding(.horizontal)
+                    .foregroundColor(.white)
+                    .frame(height: 50)
+                    .background(DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor)
+                    .cornerRadius(10)
             }
+            .buttonStyle(.plain)
+            .padding(.top)
             .shadow(radius: 3, y: 4)
-            .padding()
+
         }
     }
 }
 
 struct ErrorView_Previews: PreviewProvider {
-
     @State static var isConnectionViewPresented = false
 
     static let errorDescription = "Erreur inconnue"
     static let errorActionRequired = "Contacter le support technique"
 
     static var previews: some View {
-        VStack {
+        VStack(spacing: 40) {
             ErrorIllustration()
                 .frame(height: 250)
-                .padding(.bottom)
-                .padding(.bottom)
 
             Text("Une erreur s'est produite")
                 .font(.title)
                 .bold()
                 .monospacedDigit()
-                .padding()
 
-            VStack {
-                ErrorContentView(
-                    errorDescription: errorDescription, errorInstruction: errorActionRequired,
-                    isConnectionViewPresented: $isConnectionViewPresented)
-                Spacer()
-            }
+            ErrorContentView(
+                errorDescription: errorDescription, errorInstruction: errorActionRequired,
+                isConnectionViewPresented: $isConnectionViewPresented
+            )
             .foregroundColor(DesignKitAsset.Colors.darkGray.swiftUIColor)
-            .frame(maxWidth: .infinity, maxHeight: 250)
         }
     }
 }
