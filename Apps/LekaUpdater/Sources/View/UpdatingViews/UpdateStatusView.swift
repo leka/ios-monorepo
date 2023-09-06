@@ -43,6 +43,21 @@ struct UpdateStatusView: View {
                         .bold()
                         .monospacedDigit()
                         .padding()
+                        .alert(isPresented: $viewModel.showAlert) {
+                            Alert(
+                                title: Text(
+                                    """
+                                    ⚠️ ATTENTION ⚡
+                                    Le robot n'est plus en charge
+                                    """
+                                ),
+                                message: Text(
+                                    """
+                                    Veuillez reposer Leka sur sa base
+                                    et/ou vérifier le branchement
+                                    """
+                                ))
+                        }
                 }
 
                 VStack {

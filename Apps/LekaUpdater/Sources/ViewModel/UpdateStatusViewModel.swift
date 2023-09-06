@@ -24,6 +24,7 @@ class UpdateStatusViewModel: ObservableObject {
 
     @Published public var updatingStatus: UpdateStatus = .sendingFile
     @Published public var sendingFileProgression: Float = 0.0
+    @Published public var showAlert: Bool = false
 
     @Published public var errorDescription: String = ""
     @Published public var errorInstruction: String = ""
@@ -44,6 +45,7 @@ class UpdateStatusViewModel: ObservableObject {
     init() {
         subscribeToStateUpdate()
         subscribeToSendingFileProgressionUpdate()
+        subscribeToRobotIsChargingUpdates()
     }
 
     private func subscribeToStateUpdate() {
@@ -100,6 +102,18 @@ class UpdateStatusViewModel: ObservableObject {
             .sink(receiveValue: { progression in
                 self.sendingFileProgression = progression
             })
+            .store(in: &cancellables)
+    }
+
+    private func subscribeToRobotIsChargingUpdates() {
+        globalRobotManager.$isCharging
+            .receive(on: DispatchQueue.main)
+            .sink { robotIsCharging in
+                let robotShouldBeInCharge =
+                    self.updatingStatus == .sendingFile || self.updatingStatus == .rebootingRobot
+
+                self.showAlert = robotShouldBeInCharge && robotIsCharging == false
+            }
             .store(in: &cancellables)
     }
 
