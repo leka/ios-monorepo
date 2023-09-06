@@ -56,7 +56,8 @@ struct UpdateStatusView: View {
                         case .error:
                             ErrorContentView(
                                 errorDescription: viewModel.errorDescription,
-                                errorInstruction: viewModel.errorInstruction)
+                                errorInstruction: viewModel.errorInstruction,
+                                isConnectionViewPresented: $isConnectionViewPresented)
                     }
                     Spacer()
                 }
