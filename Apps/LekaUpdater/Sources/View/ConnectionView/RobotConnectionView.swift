@@ -28,8 +28,6 @@ struct RobotConnectionView: View {
                 Spacer()
             }
             .padding(.vertical, 20)
-
-            Spacer()
         }
     }
 
