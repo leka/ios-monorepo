@@ -565,6 +565,7 @@ class UpdateProcessV130: UpdateProcessProtocol {
             StateFinal(),
 
             StateErrorFailedToLoadFile(),
+            StateErrorFailedToVerifyFile(),
             StateErrorRobotNotUpToDate(),
             StateErrorRobotUnexpectedDisconnection(),
         ])
