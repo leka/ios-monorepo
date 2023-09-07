@@ -28,13 +28,15 @@ private protocol StateEventProcessor {
 private class StateInitial: GKState, StateEventProcessor {
 
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
-        return stateClass is StateLoadingUpdateFile.Type
+        return stateClass is StateLoadingUpdateFile.Type || stateClass is StateErrorRobotUnexpectedDisconnection.Type
     }
 
     func process(event: UpdateEvent) {
         switch event {
             case .startUpdateRequested:
                 self.stateMachine?.enter(StateLoadingUpdateFile.self)
+            case .robotDisconnected:
+                self.stateMachine?.enter(StateErrorRobotUnexpectedDisconnection.self)
             default:
                 return
         }
@@ -45,6 +47,7 @@ private class StateLoadingUpdateFile: GKState, StateEventProcessor {
 
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
         return stateClass is StateErrorFailedToLoadFile.Type || stateClass is StateSettingDestinationPath.Type
+            || stateClass is StateErrorRobotUnexpectedDisconnection.Type
     }
 
     override func didEnter(from previousState: GKState?) {
@@ -64,6 +67,8 @@ private class StateLoadingUpdateFile: GKState, StateEventProcessor {
                 self.stateMachine?.enter(StateSettingDestinationPath.self)
             case .failedToLoadFile:
                 self.stateMachine?.enter(StateErrorFailedToLoadFile.self)
+            case .robotDisconnected:
+                self.stateMachine?.enter(StateErrorRobotUnexpectedDisconnection.self)
             default:
                 return
         }
@@ -73,7 +78,7 @@ private class StateLoadingUpdateFile: GKState, StateEventProcessor {
 private class StateSettingDestinationPath: GKState, StateEventProcessor {
 
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
-        return stateClass is StateSendingFile.Type
+        return stateClass is StateSendingFile.Type || stateClass is StateErrorRobotUnexpectedDisconnection.Type
     }
 
     override func didEnter(from previousState: GKState?) {
@@ -84,6 +89,8 @@ private class StateSettingDestinationPath: GKState, StateEventProcessor {
         switch event {
             case .destinationPathSet:
                 self.stateMachine?.enter(StateSendingFile.self)
+            case .robotDisconnected:
+                self.stateMachine?.enter(StateErrorRobotUnexpectedDisconnection.self)
             default:
                 return
         }
@@ -158,7 +165,7 @@ private class StateSendingFile: GKState, StateEventProcessor {
     }
 
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
-        return stateClass is StateApplyingUpdate.Type
+        return stateClass is StateApplyingUpdate.Type || stateClass is StateErrorRobotUnexpectedDisconnection.Type
     }
 
     override func didEnter(from previousState: GKState?) {
@@ -173,6 +180,8 @@ private class StateSendingFile: GKState, StateEventProcessor {
         switch event {
             case .fileSent:
                 self.stateMachine?.enter(StateApplyingUpdate.self)
+            case .robotDisconnected:
+                self.stateMachine?.enter(StateErrorRobotUnexpectedDisconnection.self)
             default:
                 return
         }
@@ -234,7 +243,6 @@ private class StateApplyingUpdate: GKState, StateEventProcessor {
     }
 
     override func didEnter(from previousState: GKState?) {
-        registerDidDisconnect()
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: setMajorMinorRevision)
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: applyUpdate)
@@ -252,15 +260,6 @@ private class StateApplyingUpdate: GKState, StateEventProcessor {
             default:
                 return
         }
-    }
-
-    private func registerDidDisconnect() {
-        globalBleManager.didDisconnect
-            .receive(on: DispatchQueue.main)
-            .sink {
-                self.process(event: .robotDisconnected)
-            }
-            .store(in: &cancellables)
     }
 
     private func setMajorMinorRevision() {
@@ -313,6 +312,7 @@ private class StateWaitingForRobotToReboot: GKState, StateEventProcessor {
 
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
         return stateClass is StateFinal.Type || stateClass is StateErrorRobotNotUpToDate.Type
+            || stateClass is StateErrorRobotUnexpectedDisconnection.Type
     }
 
     override func didEnter(from previousState: GKState?) {
@@ -332,6 +332,8 @@ private class StateWaitingForRobotToReboot: GKState, StateEventProcessor {
                 } else {
                     self.stateMachine?.enter(StateErrorRobotNotUpToDate.self)
                 }
+            case .robotDisconnected:
+                self.stateMachine?.enter(StateErrorRobotUnexpectedDisconnection.self)
             default:
                 return
         }
@@ -392,6 +394,7 @@ private protocol StateError {}
 
 private class StateErrorFailedToLoadFile: GKState, StateError {}
 private class StateErrorRobotNotUpToDate: GKState, StateError {}
+private class StateErrorRobotUnexpectedDisconnection: GKState, StateError {}
 
 // MARK: - StateMachine
 
@@ -423,10 +426,12 @@ class UpdateProcessV100: UpdateProcessProtocol {
 
             StateErrorFailedToLoadFile(),
             StateErrorRobotNotUpToDate(),
+            StateErrorRobotUnexpectedDisconnection(),
         ])
         self.stateMachine?.enter(StateInitial.self)
 
         self.startRoutineToUpdateCurrentState()
+        self.registerDidDisconnect()
         self.sendingFileProgression = self.stateSendingFile.progression
     }
 
@@ -442,6 +447,15 @@ class UpdateProcessV100: UpdateProcessProtocol {
         state.process(event: event)
 
         updateCurrentState()
+    }
+
+    private func registerDidDisconnect() {
+        globalBleManager.didDisconnect
+            .receive(on: DispatchQueue.main)
+            .sink {
+                self.process(event: .robotDisconnected)
+            }
+            .store(in: &cancellables)
     }
 
     private func startRoutineToUpdateCurrentState() {
@@ -478,6 +492,8 @@ class UpdateProcessV100: UpdateProcessProtocol {
                 currentStage.send(completion: .failure(.failedToLoadFile))
             case is StateErrorRobotNotUpToDate:
                 currentStage.send(completion: .failure(.robotNotUpToDate))
+            case is StateErrorRobotUnexpectedDisconnection:
+                currentStage.send(completion: .failure(.robotUnexpectedDisconnection))
             default:
                 currentStage.send(completion: .failure(.unknown))
         }
