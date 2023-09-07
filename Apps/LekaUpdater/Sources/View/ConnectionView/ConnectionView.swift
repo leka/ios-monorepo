@@ -32,18 +32,6 @@ struct ConnectionView: View {
                     }
                     .foregroundColor(.accentColor)
                 }
-
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        dismiss()
-                    } label: {
-                        HStack {
-                            Text("Continuer")
-                            Image(systemName: "chevron.forward")
-                        }
-                    }
-                    .disabled(viewModel.continueButtonDisabled)
-                }
             }
         }
     }
