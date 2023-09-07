@@ -86,6 +86,12 @@ class UpdateStatusViewModel: ObservableObject {
                                     Redémarrer le robot à l'aide de la carte \"Arrêt d'urgence\",
                                     reconnectez le robot et relancez le processus
                                     """
+                            case .failedToVerifyFile:
+                                self.errorDescription = """
+                                    Echec de la réception de la mise à jour
+                                    (Code erreur #0005)
+                                    """
+                                self.errorInstruction = "Reconnectez le robot et relancez le processus"
                             default:
                                 self.errorDescription = """
                                     Une erreur inconnue s'est produite
