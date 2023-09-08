@@ -52,6 +52,8 @@ class UpdateStatusViewModel: ObservableObject {
         self.updateProcessController.currentStage
             .receive(on: DispatchQueue.main)
             .sink { completion in
+                self.showAlert = false
+
                 switch completion {
                     case .finished:
                         self.updatingStatus = .updateFinished
