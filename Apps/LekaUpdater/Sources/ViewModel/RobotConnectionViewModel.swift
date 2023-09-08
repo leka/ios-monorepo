@@ -11,7 +11,6 @@ public class RobotConnectionViewModel: ObservableObject {
 
     // MARK: - Published/public variables
 
-    // TODO(@ladislas): replace by RobotDiscovery model
     @Published public var robotDiscoveries: [RobotDiscoveryViewModel]?
 
     @Published public var selectedRobotDiscovery: RobotDiscoveryViewModel?

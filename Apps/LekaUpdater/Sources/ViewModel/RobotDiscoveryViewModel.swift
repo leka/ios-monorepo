@@ -5,7 +5,6 @@
 import BLEKit
 import Foundation
 
-// TODO(@ladisals): maybe move to simple model/struct --> is it needed to @Publish? -- test charging status change
 public class RobotDiscoveryViewModel: ObservableObject, Equatable, Identifiable {
     @Published var name: String
     @Published var battery: Int
