@@ -24,14 +24,6 @@ class InformationViewModel: ObservableObject {
         globalRobotManager.subscribeToCharacteristicsNotifications()
     }
 
-    public func switchRobotVersionForDebug() {
-        if globalRobotManager.osVersion == "1.3.0" {
-            globalRobotManager.osVersion = "1.4.0"
-        } else {
-            globalRobotManager.osVersion = "1.3.0"
-        }
-    }  // TODO: Remove DEBUG
-
     private func subscribeToRobotNameUpdates() {
         globalRobotManager.$name
             .receive(on: DispatchQueue.main)
