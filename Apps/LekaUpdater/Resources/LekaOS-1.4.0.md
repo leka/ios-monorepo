@@ -1,18 +1,8 @@
 **Nouveautés de la mise à jour**
 
-- ✨ nouvelles émotions du robot
-- ✨ positionnement automatique du robot sur son socle
-- ⚡️ charge du robot plus rapide
-- 🐛 le bug qui empêchait le robot de s'éteindre a été réparé
-
-Lorem markdownum liliaque **nullo**, Elin fertur: ut vires virtusque et de
-plaudat animum: vetitorum. Ganymedis facto, inmedicabile dextra et **terga**
-traho tamen, meliore Scirone tibi chlamydem. Quid saniemque ea arva defuerunt
-spe limus postquam, illa mihi, tremoribus non. Expers ibis Aeolia habent, sua
-cervix; et vir tenent quinquennia utroque! Invidiosa ales Emathides potest
-terror iubent.
-
-*Rege vitae* ad virgo ipse habeant, quem fugientibus nobis protervas interea,
-aurem bene manibus valet. Me visa, nec petitum acervos columnae cum hara rauco
-poscimur et multi vires superi! Potentia te germana tristis orbem enim feto
-traditur, voles silent, cruori suis nec.
+- ⚡️ Le robot a une meilleure stabilité dans son déplacement
+- ⚡️ Le robot a une meilleure précision dans ses rotations
+- 🌐 Le menu des activités autonomes s'affiche en anglais lorsque la carte "Dice" est détectée par le robot
+- ✨ Les cartes magiques détectées par le robot sont désormais disponibles sur la tablette
+- ✨ Il sera possible de nommer le robot depuis la tablette
+- 🐛 Le robot quitte les activités autonomes au bout de 10min d'inactivité
