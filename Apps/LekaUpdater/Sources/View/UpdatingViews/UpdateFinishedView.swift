@@ -55,25 +55,6 @@ struct UpdateFinishedContentView: View {
             HStack {
                 Button {
                     dismiss()
-                } label: {
-                    Text("Voir les infos de ce robot")
-                        .padding(.horizontal)
-                        .foregroundColor(DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor)
-                        .frame(height: 50)
-                        .background(
-                            ZStack {
-                                RoundedRectangle(cornerRadius: 10).fill(.white)
-                                RoundedRectangle(cornerRadius: 10)
-                                    .strokeBorder(
-                                        DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor, lineWidth: 2)
-                            }
-                        )
-                        .cornerRadius(10)
-                }
-                .padding(.trailing)
-
-                Button {
-                    dismiss()
                     isConnectionViewPresented = true
                 } label: {
                     Text("Mettre à jour un autre robot")
