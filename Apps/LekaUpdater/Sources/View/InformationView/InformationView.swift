@@ -73,9 +73,6 @@ struct InformationView: View {
                             .scaledToFit()
                             .frame(height: 70)
                             .padding(35)
-
-                        // TODO(@YannL): Remove DEBUG
-                        Button("Switch (debug)", action: viewModel.switchRobotVersionForDebug)
                     }
                 }
                 .padding([.horizontal], 20)
