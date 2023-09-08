@@ -25,5 +25,12 @@ let project = Project.iOSApp(
         ],
         "LSApplicationCategoryType": "public.app-category.utilities",
         "NSAccentColorName": "AccentColor",
+        "CFBundleURLTypes": [
+            [
+                "CFBundleTypeRole": "Editor",
+                "CFBundleURLName": "io.leka.apf.LekaUpdater",
+                "CFBundleURLSchemes": ["LekaUpdater"],
+            ]
+        ],
     ]
 )
