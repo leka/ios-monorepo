@@ -72,6 +72,19 @@ struct UpdateFinishedContentView: View {
                         .cornerRadius(10)
                 }
                 .padding(.trailing)
+
+                Button {
+                    // TODO: Go to LekaApp
+                } label: {
+                    Text("Lancer LekaApp 🚀")
+                        .padding(.horizontal)
+                        .foregroundColor(.white)
+                        .frame(height: 50)
+                        .background(DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor)
+                        .cornerRadius(10)
+                }
+                .buttonStyle(.plain)
+                .padding(.leading)
             }
             .shadow(radius: 3, y: 4)
             .padding()
