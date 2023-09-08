@@ -9,7 +9,6 @@ import SwiftUI
 
 struct RobotConnectionView: View {
 
-    // TODO(@ladislas): review DI - BLEManager, etc.
     @StateObject var robotConnectionViewModel: RobotConnectionViewModel = RobotConnectionViewModel()
 
     private let bold15: Font = .system(size: 15, weight: .bold)

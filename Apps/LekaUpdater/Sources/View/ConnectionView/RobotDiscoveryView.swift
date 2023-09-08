@@ -11,7 +11,6 @@ struct RobotDiscoveryView: View {
 
     // MARK: - Private variables
 
-    // TODO (@ladislas): try with simple object, not state, as data comes from above
     @StateObject private var discovery: RobotDiscoveryViewModel
     @State private var rotation: CGFloat = 0.0
 
