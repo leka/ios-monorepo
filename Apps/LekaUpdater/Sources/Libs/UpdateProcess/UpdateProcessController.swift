@@ -45,7 +45,7 @@ class UpdateProcessController {
         let currentRobotVersion = globalRobotManager.osVersion
 
         switch currentRobotVersion {
-            case "1.0.0", "1.1.0":
+            case "1.0.0", "1.1.0", "1.2.0":
                 self.currentUpdateProcess = UpdateProcessV100()
             case "1.3.0", "1.4.0":
                 self.currentUpdateProcess = UpdateProcessV130()
