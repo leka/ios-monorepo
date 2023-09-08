@@ -59,13 +59,19 @@ struct UpdateFinishedContentView: View {
                 } label: {
                     Text("Mettre à jour un autre robot")
                         .padding(.horizontal)
-                        .foregroundColor(.white)
+                        .foregroundColor(DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor)
                         .frame(height: 50)
-                        .background(DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor)
+                        .background(
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 10).fill(.white)
+                                RoundedRectangle(cornerRadius: 10)
+                                    .strokeBorder(
+                                        DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor, lineWidth: 2)
+                            }
+                        )
                         .cornerRadius(10)
                 }
-                .buttonStyle(.plain)
-                .padding(.leading)
+                .padding(.trailing)
             }
             .shadow(radius: 3, y: 4)
             .padding()
