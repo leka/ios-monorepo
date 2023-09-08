@@ -37,6 +37,7 @@ struct SendingFileContentView: View {
                 """
                 Ne débranchez pas votre robot.
                 Ne le sortez pas de son socle de recharge.
+                Ne fermez pas l'application.
                 """
             )
             .multilineTextAlignment(.center)
