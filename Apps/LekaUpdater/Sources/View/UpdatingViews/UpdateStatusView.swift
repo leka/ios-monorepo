@@ -99,27 +99,9 @@ struct UpdateStatusView: View {
                     }
                     .foregroundColor(.accentColor)
                 }
-
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("[DEBUG] Switch views", action: switchView)
-                }  // TODO(@yann): remove when debug is over
             }
         }
     }
-
-    func switchView() {
-        switch viewModel.updatingStatus {
-            case .sendingFile:
-                viewModel.updatingStatus = .rebootingRobot
-            case .rebootingRobot:
-                viewModel.updatingStatus = .updateFinished
-            case .updateFinished:
-                viewModel.updatingStatus = .sendingFile
-            case .error:
-                viewModel.updatingStatus = .error
-        }
-    }
-
 }
 
 struct UpdatingStatusView_Previews: PreviewProvider {
