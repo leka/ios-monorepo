@@ -74,7 +74,14 @@ struct UpdateFinishedContentView: View {
                 .padding(.trailing)
 
                 Button {
-                    // TODO: Go to LekaApp
+                    let appURL = URL(string: "LekaApp://")
+                    let appStoreURL = URL(string: "https://apps.apple.com/fr/app/mon-leka-alpha/id1607862221")!
+
+                    if let appURL = appURL, UIApplication.shared.canOpenURL(appURL) {
+                        UIApplication.shared.open(appURL, options: [:], completionHandler: nil)
+                    } else {
+                        UIApplication.shared.open(appStoreURL, options: [:], completionHandler: nil)
+                    }
                 } label: {
                     Text("Lancer LekaApp 🚀")
                         .padding(.horizontal)
