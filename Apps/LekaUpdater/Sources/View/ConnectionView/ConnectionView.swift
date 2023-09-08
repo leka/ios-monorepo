@@ -8,12 +8,16 @@ import SwiftUI
 struct ConnectionView: View {
     @StateObject private var viewModel = ConnectionViewModel()
 
+    private let bold15: Font = .system(size: 15, weight: .bold)
+
     @Environment(\.dismiss) var dismiss
 
     var body: some View {
         NavigationStack {
             VStack {
                 RobotConnectionView(robotConnectionViewModel: viewModel.robotConnectionViewModel)
+
+                continueButton
 
                 LekaUpdaterAsset.Assets.lekaUpdaterIcon.swiftUIImage
                     .resizable()
@@ -32,20 +36,29 @@ struct ConnectionView: View {
                     }
                     .foregroundColor(.accentColor)
                 }
-
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        dismiss()
-                    } label: {
-                        HStack {
-                            Text("Continuer")
-                            Image(systemName: "chevron.forward")
-                        }
-                    }
-                    .disabled(viewModel.continueButtonDisabled)
-                }
             }
         }
+    }
+
+    private var continueButton: some View {
+        Button(
+            action: {
+                dismiss()
+            },
+            label: {
+                HStack {
+                    Text("Continuer")
+                    Image(systemName: "arrow.forward.circle.fill")
+                }
+                .font(bold15)
+                .foregroundColor(.white)
+                .padding(6)
+                .frame(width: 210)
+            }
+        )
+        .buttonStyle(.borderedProminent)
+        .tint(DesignKitAsset.Colors.lekaGreen.swiftUIColor)
+        .disabled(viewModel.continueButtonDisabled)
     }
 }
 
