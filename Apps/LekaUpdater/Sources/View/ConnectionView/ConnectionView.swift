@@ -48,7 +48,7 @@ struct ConnectionView: View {
             label: {
                 HStack {
                     Text("Continuer")
-                    Image(systemName: "arrow.forward.circle.fill")
+                    Image(systemName: "arrow.forward.circle")
                 }
                 .font(bold15)
                 .foregroundColor(.white)
