@@ -34,4 +34,5 @@ let project = Project.iOSApp(
                 "CFBundleURLSchemes": ["LekaApp"],
             ]
         ],
+        "LSApplicationQueriesSchemes": ["LekaUpdater"],
     ])
