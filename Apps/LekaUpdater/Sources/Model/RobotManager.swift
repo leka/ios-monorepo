@@ -40,10 +40,29 @@ public class RobotManager: ObservableObject {
 
     }
 
+    private func isSHA256Compatible() -> Bool {
+
+        let startingVersion: String = "1.3.0"
+
+        guard let osVersion = self.osVersion, osVersion.contains(".") else {
+            return false
+        }
+
+        let osVersionIsSame = osVersion.compare(startingVersion, options: .numeric) == .orderedSame
+        let osVersionIsNewer = osVersion.compare(startingVersion, options: .numeric) == .orderedDescending
+        let osVersionIsSameOrNewer = osVersionIsSame || osVersionIsNewer
+
+        return osVersionIsSameOrNewer
+
+    }
+
     public func subscribeToCharacteristicsNotifications() {
         self.registerBatteryCharacteristicNotificationCallback()
         self.registerChargingStatusNotificationCallback()
-        self.registerSHA256CharacteristicNotificationCallback()
+
+        if isSHA256Compatible() {
+            self.registerSHA256CharacteristicNotificationCallback()
+        }
 
         self.robotPeripheral?.discoverAndListenForUpdates()
     }
