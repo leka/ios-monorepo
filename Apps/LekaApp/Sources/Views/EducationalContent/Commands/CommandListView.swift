@@ -14,31 +14,33 @@ struct CommandListView: View {
     ]
 
     var body: some View {
-        ZStack {
-            Color("lekaLightBlue").ignoresSafeArea()
+        NavigationStack {
+            ZStack {
+                Color("lekaLightBlue").ignoresSafeArea()
 
-            let columns = Array(repeating: GridItem(), count: 3)
-            VStack {
-                LazyVGrid(columns: columns) {
-                    ForEach(images.indices, id: \.self) { item in
-                        Image(images[item])
-                            .activityIconImageModifier(padding: 20)
-                            .padding()
+                let columns = Array(repeating: GridItem(), count: 3)
+                VStack {
+                    LazyVGrid(columns: columns) {
+                        ForEach(images.indices, id: \.self) { item in
+                            Image(images[item])
+                                .activityIconImageModifier(padding: 20)
+                                .padding()
+                        }
                     }
-                }
-                .safeAreaInset(edge: .top) {
-                    if settings.companyIsConnected && !sidebar.showInfo() {
-                        Color.clear
-                            .frame(height: settings.companyIsConnected ? 40 : 0)
-                    } else {
-                        InfoTileManager()
+                    .safeAreaInset(edge: .top) {
+                        if settings.companyIsConnected && !sidebar.showInfo() {
+                            Color.clear
+                                .frame(height: settings.companyIsConnected ? 40 : 0)
+                        } else {
+                            InfoTileManager()
+                        }
                     }
+                    Spacer()
                 }
-                Spacer()
             }
+            .animation(.easeOut(duration: 0.4), value: sidebar.showInfo())
+            .onAppear { sidebar.sidebarVisibility = .all }
         }
-        .animation(.easeOut(duration: 0.4), value: sidebar.showInfo())
-        .onAppear { sidebar.sidebarVisibility = .all }
     }
 }
 

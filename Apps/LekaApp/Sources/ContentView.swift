@@ -27,11 +27,8 @@ struct ContentView: View {
                     CurriculumDetailsView()
                         .transition(.move(edge: .trailing))
                 case .game:
-                    NavigationStack(path: $viewRouter.pathFromActivity) {
-                        ProfileSelector_Users()
-                            .navigationDestination(for: PathsToGameFromActivity.self) { _ in
-                                GameView()
-                            }
+                    NavigationStack {
+                        GameView()
                     }
                     .transition(.move(edge: .trailing))
             }

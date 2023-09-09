@@ -14,7 +14,8 @@ struct ActivityListView: View {
     @EnvironmentObject var viewRouter: ViewRouter
     @EnvironmentObject var metrics: UIMetrics
 
-    @State private var navigateToInstructionsView: Bool = false
+    //    @State private var navigateToInstructionsView: Bool = false
+    @State private var navigationPath: [String] = []
 
     // Data modeled for Search Feature
     @State var searchQuery = ""
@@ -32,23 +33,25 @@ struct ActivityListView: View {
     }
 
     var body: some View {
-        ZStack {
-            Color("lekaLightBlue").ignoresSafeArea()
-            completeActivityList
-        }
-        .animation(.easeOut(duration: 0.4), value: sidebar.showInfo())
-        .navigationDestination(
-            isPresented: $navigateToInstructionsView,
-            destination: {
-                SelectedActivityInstructionsView()
+        NavigationStack(path: $navigationPath) {
+            ZStack {
+                Color("lekaLightBlue").ignoresSafeArea()
+                completeActivityList
             }
-        )
-        .searchable(
-            text: $searchQuery,
-            placement: .toolbar,
-            prompt: Text("Media, personnages, ...")
-        )
-        .onAppear { sidebar.sidebarVisibility = .all }
+            .animation(.easeOut(duration: 0.4), value: sidebar.showInfo())
+            .navigationDestination(
+                for: String.self,
+                destination: { _ in
+                    SelectedActivityInstructionsView()
+                }
+            )
+            .searchable(
+                text: $searchQuery,
+                placement: .toolbar,
+                prompt: Text("Media, personnages, ...")
+            )
+            .onAppear { sidebar.sidebarVisibility = .all }
+        }
     }
 
     private var completeActivityList: some View {
@@ -59,7 +62,7 @@ struct ActivityListView: View {
                     Button {
                         activityVM.currentActivity = activityVM.getActivity(item)
                         activityVM.selectedActivityID = UUID(uuidString: activityVM.getActivity(item).id)
-                        navigateToInstructionsView.toggle()
+                        navigationPath.append("instructionView")
                     } label: {
                         ActivityListCell(
                             activity: activityVM.getActivity(item),

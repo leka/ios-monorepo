@@ -132,7 +132,6 @@ struct GameView: View {
                         withAnimation {
                             viewRouter.currentPage = .home
                         }
-                        viewRouter.pathFromActivity = .init()
                         viewRouter.pathFromCurriculum = .init()
                         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                             activityVM.resetActivity()

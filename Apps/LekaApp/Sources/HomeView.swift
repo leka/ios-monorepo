@@ -37,26 +37,24 @@ struct HomeView: View {
             NavigationSplitView(columnVisibility: $sidebar.sidebarVisibility) {
                 SidebarView()
             } detail: {
-                NavigationStack {
-                    sidebar.allSidebarDestinationViews
-                        .navigationBarTitleDisplayMode(.inline)
-                        .toolbar {
-                            ToolbarItem(placement: .principal) {
-                                toolbarTitle
-                            }
-                            ToolbarItem(placement: .navigationBarLeading) {
-                                Button(
-                                    action: { changeBatteryLevel() },
-                                    label: {
-                                        Text("Batterie")
-                                    })
-                            }
-                            ToolbarItem(placement: .navigationBarTrailing) {
-                                infoButton
-                            }
+                sidebar.allSidebarDestinationViews
+                    .navigationBarTitleDisplayMode(.inline)
+                    .toolbar {
+                        ToolbarItem(placement: .principal) {
+                            toolbarTitle
                         }
-                        .background(Color("lekaLightBlue").ignoresSafeArea())
-                }
+                        ToolbarItem(placement: .navigationBarLeading) {
+                            Button(
+                                action: { changeBatteryLevel() },
+                                label: {
+                                    Text("Batterie")
+                                })
+                        }
+                        ToolbarItem(placement: .navigationBarTrailing) {
+                            infoButton
+                        }
+                    }
+                    .background(Color("lekaLightBlue").ignoresSafeArea())
             }
         }
         .preferredColorScheme(.light)

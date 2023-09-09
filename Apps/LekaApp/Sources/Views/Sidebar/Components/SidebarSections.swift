@@ -46,10 +46,11 @@ struct SidebarSections: View {
     func section(content: ListModel) -> some View {
         Section {
             ForEach(content.sections.indices, id: \.self) { item in
-                NavigationLink(destination: sidebar.allSidebarDestinationViews) {
-                    sectionItem(content.sections[item])
-                }
-                .isDetailLink(true)
+                //                NavigationLink(destination: sidebar.allSidebarDestinationViews) {
+                //                    sectionItem(content.sections[item])
+                //                }
+                //                .isDetailLink(true)
+                sectionItem(content.sections[item])
             }
         } header: {
             VStack(alignment: .leading, spacing: 6) {

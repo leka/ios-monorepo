@@ -38,7 +38,6 @@ struct ProfileSelector_Users: View {
                             withAnimation {
                                 viewRouter.currentPage = .home
                             }
-                            viewRouter.pathFromActivity = .init()
                         }
                         viewRouter.pathFromCurriculum = .init()
                     },

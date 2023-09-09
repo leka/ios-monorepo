@@ -25,7 +25,7 @@ struct UserSet_AvatarCell: View {
                 if viewRouter.currentPage == .curriculumDetail {
                     viewRouter.pathFromCurriculum.append(.game)
                 } else {
-                    viewRouter.pathFromActivity.append(.game)
+                    viewRouter.currentPage = .game
                 }
             }
         } label: {

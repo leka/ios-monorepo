@@ -9,6 +9,7 @@ struct SelectedActivityInstructionsView: View {
 
     @EnvironmentObject var activityVM: ActivityViewModel
     @EnvironmentObject var company: CompanyViewModel
+    @EnvironmentObject var robotVM: RobotViewModel
     @EnvironmentObject var settings: SettingsViewModel
     @EnvironmentObject var viewRouter: ViewRouter
     @EnvironmentObject var metrics: UIMetrics
@@ -16,16 +17,18 @@ struct SelectedActivityInstructionsView: View {
     private func goButtonAction() {
         activityVM.setupGame(with: activityVM.currentActivity)
         guard settings.companyIsConnected else {
-            viewRouter.pathFromActivity.append(.game)
             viewRouter.currentPage = .game
+            return
+        }
+        guard robotVM.robotIsConnected else {
+            // trigger robot FSC
             return
         }
         guard company.selectionSetIsCorrect() else {
-            viewRouter.pathFromActivity = .init()
-            viewRouter.currentPage = .game
+            // trigger user selector FSC
             return
         }
-        viewRouter.pathFromActivity.append(.game)
+        // trigger fullscreensavers here
         viewRouter.currentPage = .game
     }
 
