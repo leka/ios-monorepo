@@ -52,15 +52,14 @@ struct UpdateFinishedContentView: View {
             .font(.title2)
             .bold()
 
-            HStack {
+            VStack(spacing: 20) {
                 Button {
                     dismiss()
                     isConnectionViewPresented = true
                 } label: {
                     Text("Mettre à jour un autre robot")
-                        .padding(.horizontal)
                         .foregroundColor(DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor)
-                        .frame(height: 50)
+                        .frame(maxWidth: .infinity, maxHeight: 50)
                         .background(
                             ZStack {
                                 RoundedRectangle(cornerRadius: 10).fill(.white)
@@ -71,23 +70,21 @@ struct UpdateFinishedContentView: View {
                         )
                         .cornerRadius(10)
                 }
-                .padding(.trailing)
 
                 Button {
                     // TODO: Go to LekaApp
                 } label: {
                     Text("Lancer LekaApp 🚀")
-                        .padding(.horizontal)
                         .foregroundColor(.white)
-                        .frame(height: 50)
+                        .frame(maxWidth: .infinity, maxHeight: 50)
                         .background(DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor)
                         .cornerRadius(10)
                 }
                 .buttonStyle(.plain)
-                .padding(.leading)
             }
             .shadow(radius: 3, y: 4)
-            .padding()
+            .padding(.top)
+            .padding(.horizontal, 200)
         }
     }
 }
