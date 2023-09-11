@@ -14,29 +14,27 @@ struct CurriculumListView: View {
     private let columns = Array(repeating: GridItem(), count: 3)
 
     var body: some View {
-        NavigationStack {
-            ZStack {
-                Color("lekaLightBlue").ignoresSafeArea()
+        ZStack {
+            Color("lekaLightBlue").ignoresSafeArea()
 
-                ScrollViewReader { proxy in
-                    ScrollView {
-                        LazyVGrid(columns: columns) {
-                            ForEach(CurriculumCategories.allCases, id: \.self) { category in
-                                Section {
-                                    allCurriculums(category: category)
-                                } header: {
-                                    headerViews(title: curriculumVM.getCurriculumList(category: category).sectionTitle)
-                                }
+            ScrollViewReader { proxy in
+                ScrollView {
+                    LazyVGrid(columns: columns) {
+                        ForEach(CurriculumCategories.allCases, id: \.self) { category in
+                            Section {
+                                allCurriculums(category: category)
+                            } header: {
+                                headerViews(title: curriculumVM.getCurriculumList(category: category).sectionTitle)
                             }
                         }
                     }
-                    .animation(.easeOut(duration: 0.4), value: sidebar.showInfo())
-                    .safeAreaInset(edge: .top) {
-                        InfoTileManager()
-                    }
-                    .onAppear {
-                        withAnimation { proxy.scrollTo(curriculumVM.currentCurriculumCategory, anchor: .top) }
-                    }
+                }
+                .animation(.easeOut(duration: 0.4), value: sidebar.showInfo())
+                .safeAreaInset(edge: .top) {
+                    InfoTileManager()
+                }
+                .onAppear {
+                    withAnimation { proxy.scrollTo(curriculumVM.currentCurriculumCategory, anchor: .top) }
                 }
             }
         }
@@ -50,7 +48,7 @@ struct CurriculumListView: View {
                 curriculumVM.currentCurriculumCategory = category
                 curriculumVM.populateCurriculumList(category: category)
                 curriculumVM.selectedCurriculum = index
-                viewRouter.currentPage = .curriculumDetail
+                viewRouter.currentPage = .curriculumDetail  // delete this
             } label: {
                 CurriculumPillShapedView(
                     curriculum: item,  // Integrate rank and icon within curriculum Type, delete following properties

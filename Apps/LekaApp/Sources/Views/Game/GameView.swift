@@ -8,7 +8,8 @@ import SwiftUI
 struct GameView: View {
 
     @StateObject var gameMetrics = GameMetrics()
-    @EnvironmentObject var viewRouter: ViewRouter
+    @EnvironmentObject var viewRouter: ViewRouter  // delete this
+    @EnvironmentObject var sidebar: SidebarViewModel
     @EnvironmentObject var activityVM: ActivityViewModel
     @EnvironmentObject var settings: SettingsViewModel
     @Environment(\.dismiss) var dismiss
@@ -188,19 +189,19 @@ struct GameView: View {
                         Spacer()
                     }
                 }
+                .onDisappear {
+                    sidebar.pathsFromHome = NavigationPath()
+                }
             )
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button(
                         action: {
                             activityVM.resetActivity()
-                            if viewRouter.currentPage == .game {
-                                withAnimation {
-                                    viewRouter.currentPage = .home
-                                }
-                            } else {
-                                viewRouter.pathFromCurriculum = .init()
-                            }
+                            sidebar.showActivitiesFullScreenCover = false
+                            // show alert to inform about losing the progress??
+                            sidebar.pathToGame = .init()
+                            viewRouter.pathFromCurriculum = .init()
                         },
                         label: {
                             Image(systemName: "chevron.left")

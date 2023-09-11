@@ -9,7 +9,6 @@ struct HomeView: View {
     @EnvironmentObject var robotVM: RobotViewModel
     @EnvironmentObject var sidebar: SidebarViewModel
     @EnvironmentObject var settings: SettingsViewModel
-    @EnvironmentObject var viewRouter: ViewRouter
     @EnvironmentObject var metrics: UIMetrics
 
     private func changeBatteryLevel() {
@@ -37,24 +36,26 @@ struct HomeView: View {
             NavigationSplitView(columnVisibility: $sidebar.sidebarVisibility) {
                 SidebarView()
             } detail: {
-                sidebar.allSidebarDestinationViews
-                    .navigationBarTitleDisplayMode(.inline)
-                    .toolbar {
-                        ToolbarItem(placement: .principal) {
-                            toolbarTitle
+                NavigationStack(path: $sidebar.pathsFromHome) {
+                    sidebar.allSidebarDestinationViews
+                        .navigationBarTitleDisplayMode(.inline)
+                        .toolbar {
+                            ToolbarItem(placement: .principal) {
+                                toolbarTitle
+                            }
+                            ToolbarItem(placement: .navigationBarLeading) {
+                                Button(
+                                    action: { changeBatteryLevel() },
+                                    label: {
+                                        Text("Batterie")
+                                    })
+                            }
+                            ToolbarItem(placement: .navigationBarTrailing) {
+                                infoButton
+                            }
                         }
-                        ToolbarItem(placement: .navigationBarLeading) {
-                            Button(
-                                action: { changeBatteryLevel() },
-                                label: {
-                                    Text("Batterie")
-                                })
-                        }
-                        ToolbarItem(placement: .navigationBarTrailing) {
-                            infoButton
-                        }
-                    }
-                    .background(Color("lekaLightBlue").ignoresSafeArea())
+                        .background(Color("lekaLightBlue").ignoresSafeArea())
+                }
             }
         }
         .preferredColorScheme(.light)
@@ -114,7 +115,6 @@ struct HomeView_Previews: PreviewProvider {
             .environmentObject(CompanyViewModel())
             .environmentObject(SettingsViewModel())
             .environmentObject(UIMetrics())
-            .environmentObject(ViewRouter())
             .environmentObject(CurriculumViewModel())
             .environmentObject(ActivityViewModel())
             .environmentObject(RobotViewModel())

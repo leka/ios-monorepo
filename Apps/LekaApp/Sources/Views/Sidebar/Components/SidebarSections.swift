@@ -19,6 +19,8 @@ struct SidebarSections: View {
     func sectionItem(_ item: SectionLabel) -> some View {
         Button {
             sidebar.currentView = item.destination
+            // emty navigation Stacks
+            sidebar.pathsFromHome = .init()
         } label: {
             HStack(spacing: 10) {
                 Image(item.icon)

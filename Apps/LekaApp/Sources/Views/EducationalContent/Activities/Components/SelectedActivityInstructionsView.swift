@@ -4,32 +4,34 @@
 
 import SwiftUI
 
-// Modal content when picking an activity within the ActivityList
 struct SelectedActivityInstructionsView: View {
 
     @EnvironmentObject var activityVM: ActivityViewModel
     @EnvironmentObject var company: CompanyViewModel
+    @EnvironmentObject var sidebar: SidebarViewModel
     @EnvironmentObject var robotVM: RobotViewModel
     @EnvironmentObject var settings: SettingsViewModel
-    @EnvironmentObject var viewRouter: ViewRouter
     @EnvironmentObject var metrics: UIMetrics
 
     private func goButtonAction() {
         activityVM.setupGame(with: activityVM.currentActivity)
-        guard settings.companyIsConnected else {
-            viewRouter.currentPage = .game
+        guard robotVM.robotIsConnected else {
+            sidebar.pathToGame = NavigationPath([PathsToGame.robot])
+            sidebar.showActivitiesFullScreenCover = true
             return
         }
-        guard robotVM.robotIsConnected else {
-            // trigger robot FSC
+        guard settings.companyIsConnected else {
+            sidebar.pathToGame = NavigationPath([PathsToGame.game])
+            sidebar.showActivitiesFullScreenCover = true
             return
         }
         guard company.selectionSetIsCorrect() else {
-            // trigger user selector FSC
+            sidebar.pathToGame = NavigationPath([PathsToGame.user])
+            sidebar.showActivitiesFullScreenCover = true
             return
         }
-        // trigger fullscreensavers here
-        viewRouter.currentPage = .game
+        sidebar.pathToGame = NavigationPath([PathsToGame.game])
+        sidebar.showActivitiesFullScreenCover = true
     }
 
     var body: some View {
@@ -50,6 +52,9 @@ struct SelectedActivityInstructionsView: View {
             }
         }
         .preferredColorScheme(.light)
+        .fullScreenCover(isPresented: $sidebar.showActivitiesFullScreenCover) {
+            FullScreenCoverToGameView()
+        }
     }
 
     private var activityDetailHeader: some View {

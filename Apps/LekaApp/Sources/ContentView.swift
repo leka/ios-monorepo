@@ -26,11 +26,6 @@ struct ContentView: View {
                 case .curriculumDetail:
                     CurriculumDetailsView()
                         .transition(.move(edge: .trailing))
-                case .game:
-                    NavigationStack {
-                        GameView()
-                    }
-                    .transition(.move(edge: .trailing))
             }
         }
         .animation(.default, value: viewRouter.currentPage)

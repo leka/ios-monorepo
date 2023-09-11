@@ -8,7 +8,7 @@ struct UserSet_AvatarCell: View {
 
     @EnvironmentObject var company: CompanyViewModel
     @EnvironmentObject var settings: SettingsViewModel
-    @EnvironmentObject var viewRouter: ViewRouter
+    @EnvironmentObject var viewRouter: ViewRouter  // Delete this
     @EnvironmentObject var metrics: UIMetrics
     @EnvironmentObject var sidebar: SidebarViewModel
 
@@ -23,9 +23,9 @@ struct UserSet_AvatarCell: View {
             if !sidebar.showProfileEditor {
                 company.assignCurrentProfiles()
                 if viewRouter.currentPage == .curriculumDetail {
-                    viewRouter.pathFromCurriculum.append(.game)
+                    viewRouter.pathFromCurriculum.append(.game)  // Delete this & the condition
                 } else {
-                    viewRouter.currentPage = .game
+                    sidebar.pathToGame.append(PathsToGame.game)
                 }
             }
         } label: {
