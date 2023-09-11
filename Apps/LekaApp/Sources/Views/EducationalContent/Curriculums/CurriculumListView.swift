@@ -37,6 +37,13 @@ struct CurriculumListView: View {
                 }
             }
         }
+        .onAppear { sidebar.sidebarVisibility = .all }
+        .navigationDestination(
+            for: String.self,
+            destination: { _ in
+                CurriculumDetailsView()
+            }
+        )
     }
 
     @ViewBuilder
@@ -47,7 +54,7 @@ struct CurriculumListView: View {
                 curriculumVM.currentCurriculumCategory = category
                 curriculumVM.populateCurriculumList(category: category)
                 curriculumVM.selectedCurriculum = index
-
+                sidebar.pathsFromHome.append("curriculumDetail")
             } label: {
                 CurriculumPillShapedView(
                     curriculum: item,  // Integrate rank and icon within curriculum Type, delete following properties

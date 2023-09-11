@@ -40,6 +40,12 @@ struct ActivityListView: View {
             prompt: Text("Media, personnages, ...")
         )
         .onAppear { sidebar.sidebarVisibility = .all }
+        .navigationDestination(
+            for: String.self,
+            destination: { _ in
+                SelectedActivityInstructionsView()
+            }
+        )
     }
 
     private var completeActivityList: some View {

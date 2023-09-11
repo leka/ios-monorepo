@@ -10,7 +10,7 @@ struct CurriculumDetailsView: View {
     @EnvironmentObject var activityVM: ActivityViewModel
     @EnvironmentObject var company: CompanyViewModel
     @EnvironmentObject var settings: SettingsViewModel
-    @EnvironmentObject var viewRouter: ViewRouter
+    @EnvironmentObject var sidebar: SidebarViewModel
     @EnvironmentObject var metrics: UIMetrics
 
     private func goButtonIsDisabled() -> Bool {
@@ -34,17 +34,7 @@ struct CurriculumDetailsView: View {
     }
 
     var body: some View {
-        NavigationStack(path: $viewRouter.pathFromCurriculum) {
-            curriculumDetailContent
-                .navigationDestination(for: PathsToGameFromCurriculum.self) { destination in
-                    switch destination {
-                        case .userSelect:
-                            ProfileSelector_Users()
-                        case .game:
-                            GameView()
-                    }
-                }
-        }
+        curriculumDetailContent
     }
 
     private var curriculumDetailContent: some View {
@@ -74,24 +64,25 @@ struct CurriculumDetailsView: View {
         .preferredColorScheme(.light)
         .navigationBarTitleDisplayMode(.inline)
         .toolbarBackground(.automatic, for: .navigationBar)
+        .onAppear { sidebar.sidebarVisibility = .detailOnly }
         .toolbar {
             ToolbarItem(placement: .principal) {
                 Text(curriculumVM.setCurriculumDetailNavTitle())
                     .font(metrics.semi17)
                     .foregroundColor(.accentColor)
             }
-            ToolbarItem(placement: .navigationBarLeading) {
-                Button(
-                    action: {
-                        viewRouter.currentPage = .home
-                    },
-                    label: {
-                        HStack(spacing: 4) {
-                            Image(systemName: "chevron.left")
-                            Text("Retour")
-                        }
-                    })
-            }
+//            ToolbarItem(placement: .navigationBarLeading) {
+//                Button(
+//                    action: {
+//                        sidebar.pathsFromHome = .init()
+//                    },
+//                    label: {
+//                        HStack(spacing: 4) {
+//                            Image(systemName: "chevron.left")
+//                            Text("Retour")
+//                        }
+//                    })
+//            }
         }
     }
 
@@ -160,7 +151,7 @@ struct ContextualActivitiesDetailsView_Previews: PreviewProvider {
             .environmentObject(CurriculumViewModel())
             .environmentObject(ActivityViewModel())
             .environmentObject(UIMetrics())
-            .environmentObject(ViewRouter())
+            .environmentObject(SidebarViewModel())
             .previewInterfaceOrientation(.landscapeLeft)
     }
 }
