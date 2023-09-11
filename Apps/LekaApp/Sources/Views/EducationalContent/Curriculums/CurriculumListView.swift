@@ -7,7 +7,6 @@ import SwiftUI
 struct CurriculumListView: View {
 
     @EnvironmentObject var sidebar: SidebarViewModel
-    @EnvironmentObject var viewRouter: ViewRouter
     @EnvironmentObject var curriculumVM: CurriculumViewModel
     @EnvironmentObject var metrics: UIMetrics
 
@@ -48,7 +47,7 @@ struct CurriculumListView: View {
                 curriculumVM.currentCurriculumCategory = category
                 curriculumVM.populateCurriculumList(category: category)
                 curriculumVM.selectedCurriculum = index
-                viewRouter.currentPage = .curriculumDetail  // delete this
+
             } label: {
                 CurriculumPillShapedView(
                     curriculum: item,  // Integrate rank and icon within curriculum Type, delete following properties
@@ -76,7 +75,6 @@ struct CurriculumListView_Previews: PreviewProvider {
             .environmentObject(SidebarViewModel())
             .environmentObject(CurriculumViewModel())
             .environmentObject(UIMetrics())
-            .environmentObject(ViewRouter())
             .environmentObject(SettingsViewModel())
             .previewInterfaceOrientation(.landscapeLeft)
     }

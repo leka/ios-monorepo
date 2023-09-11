@@ -34,12 +34,6 @@ struct ActivityListView: View {
             completeActivityList
         }
         .animation(.easeOut(duration: 0.4), value: sidebar.showInfo())
-        .navigationDestination(
-            for: String.self,
-            destination: { _ in
-                SelectedActivityInstructionsView()
-            }
-        )
         .searchable(
             text: $searchQuery,
             placement: .toolbar,

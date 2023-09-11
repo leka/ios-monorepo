@@ -8,7 +8,6 @@ import SwiftUI
 struct GameView: View {
 
     @StateObject var gameMetrics = GameMetrics()
-    @EnvironmentObject var viewRouter: ViewRouter  // delete this
     @EnvironmentObject var sidebar: SidebarViewModel
     @EnvironmentObject var robotVM: RobotViewModel
     @EnvironmentObject var activityVM: ActivityViewModel
@@ -133,7 +132,6 @@ struct GameView: View {
                     Button {
                         sidebar.showActivitiesFullScreenCover = false
                         robotVM.userChoseToPlayWithoutRobot = false
-                        viewRouter.pathFromCurriculum = .init()  // delete this
                         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                             activityVM.resetActivity()
                         }
@@ -189,9 +187,6 @@ struct GameView: View {
                         Spacer()
                     }
                 }
-                .onDisappear {
-                    sidebar.pathsFromHome = .init()
-                }
             )
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
@@ -201,7 +196,6 @@ struct GameView: View {
                             sidebar.showActivitiesFullScreenCover = false
                             robotVM.userChoseToPlayWithoutRobot = false
                             // show alert to inform about losing the progress??
-                            viewRouter.pathFromCurriculum = .init()  // delete this
                         },
                         label: {
                             Image(systemName: "chevron.left")

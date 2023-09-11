@@ -20,17 +20,17 @@ struct CurriculumDetailsView: View {
 
     private func goButtonAction() {
         activityVM.setupGame(with: activityVM.currentActivity)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-            guard settings.companyIsConnected else {
-                viewRouter.pathFromCurriculum.append(.game)
-                return
-            }
-            guard company.selectionSetIsCorrect() else {
-                viewRouter.pathFromCurriculum.append(.userSelect)
-                return
-            }
-            viewRouter.pathFromCurriculum.append(.game)
-        }
+        //        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+        //            guard settings.companyIsConnected else {
+        //                viewRouter.pathFromCurriculum.append(.game)
+        //                return
+        //            }
+        //            guard company.selectionSetIsCorrect() else {
+        //                viewRouter.pathFromCurriculum.append(.userSelect)
+        //                return
+        //            }
+        //            viewRouter.pathFromCurriculum.append(.game)
+        //        }
     }
 
     var body: some View {

@@ -9,7 +9,6 @@ struct ProfileSelector_Users: View {
     @EnvironmentObject var company: CompanyViewModel
     @EnvironmentObject var settings: SettingsViewModel
     @EnvironmentObject var sidebar: SidebarViewModel
-    @EnvironmentObject var viewRouter: ViewRouter  // delete this
     @EnvironmentObject var metrics: UIMetrics
     @Environment(\.dismiss) var dismiss
 
@@ -37,7 +36,6 @@ struct ProfileSelector_Users: View {
                     action: {
                         sidebar.showActivitiesFullScreenCover = false
                         sidebar.pathToGame = .init()
-                        viewRouter.pathFromCurriculum = .init()  // delete this
                     },
                     label: {
                         HStack(spacing: 4) {

@@ -23,9 +23,6 @@ struct ContentView: View {
                 case .home:
                     HomeView()
                         .transition(.opacity)
-                case .curriculumDetail:
-                    CurriculumDetailsView()
-                        .transition(.move(edge: .trailing))
             }
         }
         .animation(.default, value: viewRouter.currentPage)

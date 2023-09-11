@@ -55,6 +55,12 @@ struct HomeView: View {
                             }
                         }
                         .background(Color("lekaLightBlue").ignoresSafeArea())
+                        .navigationDestination(
+                            for: String.self,
+                            destination: { _ in
+                                SelectedActivityInstructionsView()
+                            }
+                        )
                 }
             }
         }
