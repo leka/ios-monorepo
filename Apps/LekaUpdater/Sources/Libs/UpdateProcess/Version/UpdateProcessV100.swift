@@ -308,7 +308,6 @@ private class StateWaitingForRobotToReboot: GKState, StateEventProcessor {
     private var cancellables: Set<AnyCancellable> = []
 
     private var isRobotUpToDate: Bool = false
-    private var isReconnected = PassthroughSubject<Void, Never>()
 
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
         return stateClass is StateFinal.Type || stateClass is StateErrorRobotNotUpToDate.Type
@@ -317,7 +316,6 @@ private class StateWaitingForRobotToReboot: GKState, StateEventProcessor {
 
     override func didEnter(from previousState: GKState?) {
         registerScanForRobot()
-        registerIsReconnected()
     }
 
     override func willExit(to nextState: GKState) {
@@ -354,34 +352,10 @@ private class StateWaitingForRobotToReboot: GKState, StateEventProcessor {
                         self.isRobotUpToDate =
                             robotDetected.advertisingData.osVersion == globalFirmwareManager.currentVersion
 
-                        self.reconnect(to: robotDetected)
+                        self.process(event: .robotDetected)
                     }
                 }
             )
-            .store(in: &cancellables)
-    }
-
-    private func reconnect(to robot: RobotDiscovery) {
-        globalBleManager.connect(robot)
-            .receive(on: DispatchQueue.main)
-            .sink(
-                receiveCompletion: { _ in
-                    globalRobotManager.setRobotPeripheral(from: robot)
-                    self.isReconnected.send()
-                },
-                receiveValue: { _ in
-                    // do nothing
-                }
-            )
-            .store(in: &cancellables)
-    }
-
-    private func registerIsReconnected() {
-        self.isReconnected
-            .receive(on: DispatchQueue.main)
-            .sink {
-                self.process(event: .robotDetected)
-            }
             .store(in: &cancellables)
     }
 }
