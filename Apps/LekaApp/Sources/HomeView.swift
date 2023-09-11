@@ -72,6 +72,9 @@ struct HomeView: View {
                 RobotPicker()
             }
         }
+        .fullScreenCover(isPresented: $sidebar.showActivitiesFullScreenCover) {
+            FullScreenCoverToGameView()
+        }
         .alert("Voulez-vous quitter le mode exploratoire ?", isPresented: $settings.showSwitchOffExploratoryAlert) {
             Button(role: .destructive) {
                 settings.exploratoryModeIsOn.toggle()

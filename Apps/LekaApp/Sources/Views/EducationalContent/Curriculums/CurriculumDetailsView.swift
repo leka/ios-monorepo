@@ -8,29 +8,12 @@ struct CurriculumDetailsView: View {
 
     @EnvironmentObject var curriculumVM: CurriculumViewModel
     @EnvironmentObject var activityVM: ActivityViewModel
-    @EnvironmentObject var company: CompanyViewModel
-    @EnvironmentObject var settings: SettingsViewModel
     @EnvironmentObject var sidebar: SidebarViewModel
     @EnvironmentObject var metrics: UIMetrics
 
     private func goButtonIsDisabled() -> Bool {
         return !curriculumVM.currentCurriculum.activities.map({ UUID(uuidString: activityVM.getActivity($0).id) })
             .contains(curriculumVM.currentCurriculumSelectedActivityID)
-    }
-
-    private func goButtonAction() {
-        activityVM.setupGame(with: activityVM.currentActivity)
-        //        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-        //            guard settings.companyIsConnected else {
-        //                viewRouter.pathFromCurriculum.append(.game)
-        //                return
-        //            }
-        //            guard company.selectionSetIsCorrect() else {
-        //                viewRouter.pathFromCurriculum.append(.userSelect)
-        //                return
-        //            }
-        //            viewRouter.pathFromCurriculum.append(.game)
-        //        }
     }
 
     var body: some View {
@@ -55,7 +38,7 @@ struct CurriculumDetailsView: View {
                         .edgesIgnoringSafeArea(.bottom)
                         .overlay { InstructionsView() }
                         .overlay {
-                            GoButton { goButtonAction() }
+                            GoButton()
                                 .disabled(goButtonIsDisabled())
                         }
                 }
@@ -63,6 +46,7 @@ struct CurriculumDetailsView: View {
         }
         .preferredColorScheme(.light)
         .navigationBarTitleDisplayMode(.inline)
+        .navigationBarBackButtonHidden()
         .toolbarBackground(.automatic, for: .navigationBar)
         .onAppear { sidebar.sidebarVisibility = .detailOnly }
         .toolbar {
@@ -71,18 +55,19 @@ struct CurriculumDetailsView: View {
                     .font(metrics.semi17)
                     .foregroundColor(.accentColor)
             }
-//            ToolbarItem(placement: .navigationBarLeading) {
-//                Button(
-//                    action: {
-//                        sidebar.pathsFromHome = .init()
-//                    },
-//                    label: {
-//                        HStack(spacing: 4) {
-//                            Image(systemName: "chevron.left")
-//                            Text("Retour")
-//                        }
-//                    })
-//            }
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button(
+                    action: {
+                        sidebar.pathsFromHome = .init()
+                        sidebar.sidebarVisibility = .all
+                    },
+                    label: {
+                        HStack(spacing: 4) {
+                            Image(systemName: "chevron.left")
+                            Text("Retour")
+                        }
+                    })
+            }
         }
     }
 
@@ -146,8 +131,6 @@ struct CurriculumDetailsView: View {
 struct ContextualActivitiesDetailsView_Previews: PreviewProvider {
     static var previews: some View {
         CurriculumDetailsView()
-            .environmentObject(CompanyViewModel())
-            .environmentObject(SettingsViewModel())
             .environmentObject(CurriculumViewModel())
             .environmentObject(ActivityViewModel())
             .environmentObject(UIMetrics())
