@@ -15,13 +15,6 @@ enum PathsToGame: Hashable {
     case robot, user, game
 }
 
-// Sidebar Sections - useless while only 1 section
-// enum NavSections: Int, Identifiable, CaseIterable {
-//     case educ
-//
-//     var id: Self { self }
-// }
-
 // Sidebar UI Models
 struct SectionLabel: Identifiable, Hashable {
     let id = UUID()
