@@ -10,6 +10,7 @@ struct GameView: View {
     @StateObject var gameMetrics = GameMetrics()
     @EnvironmentObject var viewRouter: ViewRouter  // delete this
     @EnvironmentObject var sidebar: SidebarViewModel
+    @EnvironmentObject var robotVM: RobotViewModel
     @EnvironmentObject var activityVM: ActivityViewModel
     @EnvironmentObject var settings: SettingsViewModel
     @Environment(\.dismiss) var dismiss
@@ -130,10 +131,9 @@ struct GameView: View {
                 HStack {
                     Spacer()
                     Button {
-                        withAnimation {
-                            viewRouter.currentPage = .home
-                        }
-                        viewRouter.pathFromCurriculum = .init()
+                        sidebar.showActivitiesFullScreenCover = false
+                        robotVM.userChoseToPlayWithoutRobot = false
+                        viewRouter.pathFromCurriculum = .init()  // delete this
                         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                             activityVM.resetActivity()
                         }
@@ -190,7 +190,7 @@ struct GameView: View {
                     }
                 }
                 .onDisappear {
-                    sidebar.pathsFromHome = NavigationPath()
+                    sidebar.pathsFromHome = .init()
                 }
             )
             .toolbar {
@@ -199,9 +199,9 @@ struct GameView: View {
                         action: {
                             activityVM.resetActivity()
                             sidebar.showActivitiesFullScreenCover = false
+                            robotVM.userChoseToPlayWithoutRobot = false
                             // show alert to inform about losing the progress??
-                            sidebar.pathToGame = .init()
-                            viewRouter.pathFromCurriculum = .init()
+                            viewRouter.pathFromCurriculum = .init()  // delete this
                         },
                         label: {
                             Image(systemName: "chevron.left")

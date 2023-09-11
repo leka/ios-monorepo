@@ -14,6 +14,7 @@ class RobotViewModel: ObservableObject {
 
     // robot Advertised Information
     @Published var robotIsConnected: Bool = false
+    @Published var userChoseToPlayWithoutRobot: Bool = false
     @Published var robotChargeLevel: Double = 100
     @Published var robotIsCharging: Bool = false
     @Published var currentlyConnectedRobotName: String = ""

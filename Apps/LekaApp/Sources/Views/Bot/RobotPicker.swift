@@ -120,6 +120,7 @@ struct RobotPicker: View {
                             // or confirmation to play without robot
                             return
                         }
+                        robotVM.userChoseToPlayWithoutRobot = false
                         sidebar.showActivitiesFullScreenCover.toggle()
                     }
                 }
@@ -166,7 +167,7 @@ struct RobotPicker: View {
                     dismiss()
                     return
                 }
-                sidebar.showActivitiesFullScreenCover.toggle()
+                sidebar.showActivitiesFullScreenCover = false
             },
             label: {
                 Text("Fermer")
@@ -178,13 +179,16 @@ struct RobotPicker: View {
     private var continueButton: some View {
         Button(
             action: {
-                sidebar.pathToGame.append(PathsToGame.game)
+                robotVM.userChoseToPlayWithoutRobot = true
+                sidebar.showActivitiesFullScreenCover = false
             },
             label: {
                 Text("Continuer sans le robot")
             }
         )
         .tint(.accentColor)
+        .opacity(robotVM.robotIsConnected ? 0 : 1)
+        .animation(.default, value: robotVM.robotIsConnected)
     }
 }
 

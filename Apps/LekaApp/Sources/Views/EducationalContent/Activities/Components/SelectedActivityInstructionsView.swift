@@ -15,7 +15,7 @@ struct SelectedActivityInstructionsView: View {
 
     private func goButtonAction() {
         activityVM.setupGame(with: activityVM.currentActivity)
-        guard robotVM.robotIsConnected else {
+        guard robotVM.robotIsConnected || robotVM.userChoseToPlayWithoutRobot else {
             sidebar.pathToGame = NavigationPath([PathsToGame.robot])
             sidebar.showActivitiesFullScreenCover = true
             return
