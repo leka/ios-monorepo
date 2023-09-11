@@ -42,7 +42,6 @@ public struct MelodyView: View {
                     .compositingGroup()
                 }
             }
-            .alertWhenRobotIsNeeded()
         }
     }
 }

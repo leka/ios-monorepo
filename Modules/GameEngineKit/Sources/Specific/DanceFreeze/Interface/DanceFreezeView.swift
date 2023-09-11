@@ -24,7 +24,6 @@ public struct DanceFreezeView: View {
             switch mode {
                 case .waitingForSelection:
                     DanceFreezeLauncher(mode: $mode)
-                        .alertWhenRobotIsNeeded()
                 case .automaticMode:
                     DanceFreezePlayer(isAuto: true)
                         .onDisappear {
