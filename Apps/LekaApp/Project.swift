@@ -27,4 +27,12 @@ let project = Project.iOSApp(
             "UIInterfaceOrientationLandscapeLeft",
         ],
         "NSAccentColorName": "AccentColor",
+        "CFBundleURLTypes": [
+            [
+                "CFBundleTypeRole": "Editor",
+                "CFBundleURLName": "io.leka.apf.app.LekaApp",
+                "CFBundleURLSchemes": ["LekaApp"],
+            ]
+        ],
+        "LSApplicationQueriesSchemes": ["LekaUpdater"],
     ])
