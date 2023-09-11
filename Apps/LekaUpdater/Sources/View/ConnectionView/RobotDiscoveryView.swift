@@ -113,7 +113,7 @@ struct RobotDiscoveryView: View {
 
     private var osVersionText: String {
         guard let osVersion = discovery.osVersion else {
-            return "⚠️ NO OS VERSION"
+            return "n/a"
         }
         return "LekaOS-v\(osVersion)"
     }
