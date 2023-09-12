@@ -7,6 +7,7 @@ import SwiftUI
 struct SidebarSections: View {
 
     @EnvironmentObject var navigationVM: NavigationViewModel
+    @EnvironmentObject var robotVM: RobotViewModel
     @EnvironmentObject var company: CompanyViewModel
     @EnvironmentObject var metrics: UIMetrics
 
@@ -21,6 +22,8 @@ struct SidebarSections: View {
             navigationVM.currentView = item.destination
             // emty navigation Stacks
             navigationVM.pathsFromHome = .init()
+            // reset user's choice to work without robot
+            robotVM.userChoseToPlayWithoutRobot = false
         } label: {
             HStack(spacing: 10) {
                 Image(item.icon)
@@ -48,10 +51,6 @@ struct SidebarSections: View {
     func section(content: ListModel) -> some View {
         Section {
             ForEach(content.sections.indices, id: \.self) { item in
-                //                NavigationLink(destination: navigationVM.allSidebarDestinationViews) {
-                //                    sectionItem(content.sections[item])
-                //                }
-                //                .isDetailLink(true)
                 sectionItem(content.sections[item])
             }
         } header: {
