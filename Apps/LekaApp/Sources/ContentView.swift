@@ -6,13 +6,7 @@ import SwiftUI
 
 struct ContentView: View {
 
-    @EnvironmentObject var navigationVM: NavigationViewModel
-    @EnvironmentObject var company: CompanyViewModel
-    @EnvironmentObject var settings: SettingsViewModel
-    @EnvironmentObject var metrics: UIMetrics
     @EnvironmentObject var viewRouter: ViewRouter
-    @EnvironmentObject var curriculumVM: CurriculumViewModel
-    @EnvironmentObject var activityVM: ActivityViewModel
 
     var body: some View {
         Group {
