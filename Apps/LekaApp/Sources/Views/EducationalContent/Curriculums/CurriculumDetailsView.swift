@@ -59,7 +59,6 @@ struct CurriculumDetailsView: View {
                 Button(
                     action: {
                         sidebar.pathsFromHome = .init()
-                        sidebar.sidebarVisibility = .all
                     },
                     label: {
                         HStack(spacing: 4) {

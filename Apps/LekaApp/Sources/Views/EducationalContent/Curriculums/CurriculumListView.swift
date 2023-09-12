@@ -37,7 +37,6 @@ struct CurriculumListView: View {
                 }
             }
         }
-        .onAppear { sidebar.sidebarVisibility = .all }
         .navigationDestination(
             for: String.self,
             destination: { _ in

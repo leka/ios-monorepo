@@ -35,7 +35,7 @@ struct ProfileSelector_Users: View {
                 Button(
                     action: {
                         sidebar.showActivitiesFullScreenCover = false
-                        sidebar.pathToGame = .init()
+                        //                        sidebar.pathToGame = .init()
                     },
                     label: {
                         HStack(spacing: 4) {
