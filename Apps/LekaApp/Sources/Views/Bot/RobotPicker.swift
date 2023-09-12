@@ -116,8 +116,6 @@ struct RobotPicker: View {
                     }
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                         guard robotVM.robotIsConnected else {
-                            // display some alert for unsuccessful connexion
-                            // or confirmation to play without robot
                             return
                         }
                         robotVM.userChoseToPlayWithoutRobot = false

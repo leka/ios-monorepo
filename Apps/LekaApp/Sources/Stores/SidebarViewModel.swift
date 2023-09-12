@@ -43,7 +43,7 @@ class SidebarViewModel: ObservableObject {
     // Navigation within FullScreenCover to GameView()
     @Published var pathsFromHome = NavigationPath()
     @Published var showActivitiesFullScreenCover: Bool = false
-    @Published var pathToGame = NavigationPath()  //: [PathsToGame] = []
+    @Published var pathToGame = NavigationPath()
 
     // Info Tiles triggers
     @Published var showInfoCurriculums: Bool = true
