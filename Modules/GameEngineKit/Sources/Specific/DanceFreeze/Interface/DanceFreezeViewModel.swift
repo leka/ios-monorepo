@@ -10,6 +10,7 @@ public class DanceFreezeViewModel: Identifiable, ObservableObject {
 
     @Published public var progress: CGFloat
     @Published public var state: GameplayState
+    @Published public var isDancing: Bool = false
 
     private var cancellables: Set<AnyCancellable> = []
 
@@ -32,6 +33,14 @@ public class DanceFreezeViewModel: Identifiable, ObservableObject {
             .sink { [weak self] in
                 guard let self = self else { return }
                 self.state = $0
+            }
+            .store(in: &cancellables)
+
+        self.gameplay.$isDancing
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] in
+                guard let self = self else { return }
+                self.isDancing = $0
             }
             .store(in: &cancellables)
     }
