@@ -8,7 +8,7 @@ struct ProfileSelector_Users: View {
 
     @EnvironmentObject var company: CompanyViewModel
     @EnvironmentObject var settings: SettingsViewModel
-    @EnvironmentObject var sidebar: SidebarViewModel
+    @EnvironmentObject var navigationVM: NavigationViewModel
     @EnvironmentObject var metrics: UIMetrics
     @Environment(\.dismiss) var dismiss
 
@@ -34,7 +34,7 @@ struct ProfileSelector_Users: View {
             ToolbarItem(placement: .navigationBarLeading) {
                 Button(
                     action: {
-                        sidebar.showActivitiesFullScreenCover = false
+                        navigationVM.showActivitiesFullScreenCover = false
                     },
                     label: {
                         HStack(spacing: 4) {

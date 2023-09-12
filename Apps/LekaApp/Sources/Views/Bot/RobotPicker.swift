@@ -7,7 +7,7 @@ import SwiftUI
 struct RobotPicker: View {
 
     @EnvironmentObject var settings: SettingsViewModel
-    @EnvironmentObject var sidebar: SidebarViewModel
+    @EnvironmentObject var navigationVM: NavigationViewModel
     @EnvironmentObject var metrics: UIMetrics
     @EnvironmentObject var robotVM: RobotViewModel
     @Environment(\.dismiss) var dismiss
@@ -53,7 +53,7 @@ struct RobotPicker: View {
         .toolbar {
             ToolbarItem(placement: .principal) { navigationTitle }
             ToolbarItem(placement: .navigationBarLeading) { closeButton }
-            if sidebar.showActivitiesFullScreenCover {
+            if navigationVM.showActivitiesFullScreenCover {
                 ToolbarItem(placement: .navigationBarTrailing) { continueButton }
             }
         }
@@ -111,7 +111,7 @@ struct RobotPicker: View {
                     robotVM.robotIsConnected = true
 
                     // delayed for now
-                    guard sidebar.showActivitiesFullScreenCover else {
+                    guard navigationVM.showActivitiesFullScreenCover else {
                         return
                     }
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
@@ -119,7 +119,7 @@ struct RobotPicker: View {
                             return
                         }
                         robotVM.userChoseToPlayWithoutRobot = false
-                        sidebar.showActivitiesFullScreenCover.toggle()
+                        navigationVM.showActivitiesFullScreenCover.toggle()
                     }
                 }
             },
@@ -161,11 +161,11 @@ struct RobotPicker: View {
     private var closeButton: some View {
         Button(
             action: {
-                guard sidebar.showActivitiesFullScreenCover else {
+                guard navigationVM.showActivitiesFullScreenCover else {
                     dismiss()
                     return
                 }
-                sidebar.showActivitiesFullScreenCover = false
+                navigationVM.showActivitiesFullScreenCover = false
             },
             label: {
                 Text("Fermer")
@@ -178,7 +178,7 @@ struct RobotPicker: View {
         Button(
             action: {
                 robotVM.userChoseToPlayWithoutRobot = true
-                sidebar.showActivitiesFullScreenCover = false
+                navigationVM.showActivitiesFullScreenCover = false
             },
             label: {
                 Text("Continuer sans le robot")
@@ -196,7 +196,7 @@ struct RobotsConnectView_Previews: PreviewProvider {
             .environmentObject(RobotViewModel())
             .environmentObject(SettingsViewModel())
             .environmentObject(UIMetrics())
-            .environmentObject(SidebarViewModel())
+            .environmentObject(NavigationViewModel())
             .previewInterfaceOrientation(.landscapeLeft)
     }
 }

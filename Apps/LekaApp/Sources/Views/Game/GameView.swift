@@ -8,7 +8,7 @@ import SwiftUI
 struct GameView: View {
 
     @StateObject var gameMetrics = GameMetrics()
-    @EnvironmentObject var sidebar: SidebarViewModel
+    @EnvironmentObject var navigationVM: NavigationViewModel
     @EnvironmentObject var robotVM: RobotViewModel
     @EnvironmentObject var activityVM: ActivityViewModel
     @EnvironmentObject var settings: SettingsViewModel
@@ -130,7 +130,7 @@ struct GameView: View {
                 HStack {
                     Spacer()
                     Button {
-                        sidebar.showActivitiesFullScreenCover = false
+                        navigationVM.showActivitiesFullScreenCover = false
                         robotVM.userChoseToPlayWithoutRobot = false
                         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                             activityVM.resetActivity()
@@ -193,7 +193,7 @@ struct GameView: View {
                     Button(
                         action: {
                             activityVM.resetActivity()
-                            sidebar.showActivitiesFullScreenCover = false
+                            navigationVM.showActivitiesFullScreenCover = false
                             robotVM.userChoseToPlayWithoutRobot = false
                             // show alert to inform about losing the progress??
                         },

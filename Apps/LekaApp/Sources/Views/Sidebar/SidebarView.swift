@@ -6,7 +6,7 @@ import SwiftUI
 
 struct SidebarView: View {
 
-    @EnvironmentObject var sidebar: SidebarViewModel
+    @EnvironmentObject var navigationVM: NavigationViewModel
     @EnvironmentObject var settings: SettingsViewModel
     @EnvironmentObject var metrics: UIMetrics
 
@@ -39,7 +39,7 @@ struct SidebarView: View {
     private var settingsButton: some View {
         if settings.companyIsConnected {
             Button {
-                sidebar.showSettings.toggle()
+                navigationVM.showSettings.toggle()
             } label: {
                 HStack {
                     Image(systemName: "gear")

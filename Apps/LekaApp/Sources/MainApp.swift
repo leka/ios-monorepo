@@ -9,7 +9,7 @@ struct LekaApp: App {
 
     @StateObject var viewRouter = ViewRouter()
     @StateObject var metrics = UIMetrics()
-    @StateObject var sidebar = SidebarViewModel()
+    @StateObject var navigationVM = NavigationViewModel()
     @StateObject var company = CompanyViewModel()
     @StateObject var settings = SettingsViewModel()
     @StateObject var curriculumVM = CurriculumViewModel()
@@ -25,7 +25,7 @@ struct LekaApp: App {
                 }
                 .environmentObject(viewRouter)
                 .environmentObject(metrics)
-                .environmentObject(sidebar)
+                .environmentObject(navigationVM)
                 .environmentObject(company)
                 .environmentObject(settings)
                 .environmentObject(curriculumVM)

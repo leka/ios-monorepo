@@ -8,7 +8,7 @@ struct GoButton: View {
 
     @EnvironmentObject var company: CompanyViewModel
     @EnvironmentObject var activityVM: ActivityViewModel
-    @EnvironmentObject var sidebar: SidebarViewModel
+    @EnvironmentObject var navigationVM: NavigationViewModel
     @EnvironmentObject var robotVM: RobotViewModel
     @EnvironmentObject var settings: SettingsViewModel
 
@@ -32,22 +32,22 @@ struct GoButton: View {
     private func goButtonAction() {
         activityVM.setupGame(with: activityVM.currentActivity)
         guard robotVM.robotIsConnected || robotVM.userChoseToPlayWithoutRobot else {
-            sidebar.pathToGame = NavigationPath([PathsToGame.robot])
-            sidebar.showActivitiesFullScreenCover = true
+            navigationVM.pathToGame = NavigationPath([PathsToGame.robot])
+            navigationVM.showActivitiesFullScreenCover = true
             return
         }
         guard settings.companyIsConnected else {
-            sidebar.pathToGame = NavigationPath([PathsToGame.game])
-            sidebar.showActivitiesFullScreenCover = true
+            navigationVM.pathToGame = NavigationPath([PathsToGame.game])
+            navigationVM.showActivitiesFullScreenCover = true
             return
         }
         guard company.selectionSetIsCorrect() else {
-            sidebar.pathToGame = NavigationPath([PathsToGame.user])
-            sidebar.showActivitiesFullScreenCover = true
+            navigationVM.pathToGame = NavigationPath([PathsToGame.user])
+            navigationVM.showActivitiesFullScreenCover = true
             return
         }
-        sidebar.pathToGame = NavigationPath([PathsToGame.game])
-        sidebar.showActivitiesFullScreenCover = true
+        navigationVM.pathToGame = NavigationPath([PathsToGame.game])
+        navigationVM.showActivitiesFullScreenCover = true
     }
 
     private var goButtonLabel: some View {

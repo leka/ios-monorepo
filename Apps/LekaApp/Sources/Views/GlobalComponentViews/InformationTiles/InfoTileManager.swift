@@ -6,7 +6,7 @@ import SwiftUI
 
 struct InfoTileManager: View {
 
-    @EnvironmentObject var sidebar: SidebarViewModel
+    @EnvironmentObject var navigationVM: NavigationViewModel
     @EnvironmentObject var settings: SettingsViewModel
 
     var body: some View {
@@ -14,12 +14,12 @@ struct InfoTileManager: View {
             if !settings.companyIsConnected {
                 HStack(spacing: 15) {
                     InfoTile(data: .discovery)
-                    InfoTile(data: sidebar.contextualInfo())
+                    InfoTile(data: navigationVM.contextualInfo())
                 }
                 .padding(.horizontal, 20)
                 .padding(.vertical, 10)
-            } else if sidebar.showInfo() {
-                InfoTile(data: sidebar.contextualInfo())
+            } else if navigationVM.showInfo() {
+                InfoTile(data: navigationVM.contextualInfo())
                     .transition(.move(edge: .top).combined(with: .opacity))
                     .padding(.horizontal, 20)
                     .padding(.vertical, 10)
@@ -27,7 +27,7 @@ struct InfoTileManager: View {
                 EmptyView()
             }
         }
-        .animation(.easeOut(duration: 0.4), value: sidebar.showInfo())
+        .animation(.easeOut(duration: 0.4), value: navigationVM.showInfo())
         .shadow(color: .black.opacity(0.1), radius: 3, x: 0, y: 2)
     }
 }

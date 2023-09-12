@@ -8,7 +8,7 @@ struct ActivityListView: View {
 
     @EnvironmentObject var curriculumVM: CurriculumViewModel
     @EnvironmentObject var activityVM: ActivityViewModel
-    @EnvironmentObject var sidebar: SidebarViewModel
+    @EnvironmentObject var navigationVM: NavigationViewModel
     @EnvironmentObject var company: CompanyViewModel
     @EnvironmentObject var settings: SettingsViewModel
     @EnvironmentObject var metrics: UIMetrics
@@ -33,13 +33,13 @@ struct ActivityListView: View {
             Color("lekaLightBlue").ignoresSafeArea()
             completeActivityList
         }
-        .animation(.easeOut(duration: 0.4), value: sidebar.showInfo())
+        .animation(.easeOut(duration: 0.4), value: navigationVM.showInfo())
         .searchable(
             text: $searchQuery,
             placement: .toolbar,
             prompt: Text("Media, personnages, ...")
         )
-        .onAppear { sidebar.sidebarVisibility = .all }
+        .onAppear { navigationVM.sidebarVisibility = .all }
         .navigationDestination(
             for: String.self,
             destination: { _ in
@@ -56,7 +56,7 @@ struct ActivityListView: View {
                     Button {
                         activityVM.currentActivity = activityVM.getActivity(item)
                         activityVM.selectedActivityID = UUID(uuidString: activityVM.getActivity(item).id)
-                        sidebar.pathsFromHome.append("instructions")
+                        navigationVM.pathsFromHome.append("instructions")
                     } label: {
                         ActivityListCell(
                             activity: activityVM.getActivity(item),

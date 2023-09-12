@@ -9,7 +9,7 @@ struct UserSet_AvatarCell: View {
     @EnvironmentObject var company: CompanyViewModel
     @EnvironmentObject var settings: SettingsViewModel
     @EnvironmentObject var metrics: UIMetrics
-    @EnvironmentObject var sidebar: SidebarViewModel
+    @EnvironmentObject var navigationVM: NavigationViewModel
 
     let user: User
 
@@ -19,9 +19,9 @@ struct UserSet_AvatarCell: View {
                 company.selectedProfiles[.user] = user.id
             }
             // Next context is within the userSelector right before launching a game
-            if !sidebar.showProfileEditor {
+            if !navigationVM.showProfileEditor {
                 company.assignCurrentProfiles()
-                sidebar.pathToGame.append(PathsToGame.game)
+                navigationVM.pathToGame.append(PathsToGame.game)
             }
         } label: {
             VStack(spacing: 0) {

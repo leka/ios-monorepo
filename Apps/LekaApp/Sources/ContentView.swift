@@ -6,7 +6,7 @@ import SwiftUI
 
 struct ContentView: View {
 
-    @EnvironmentObject var sidebar: SidebarViewModel
+    @EnvironmentObject var navigationVM: NavigationViewModel
     @EnvironmentObject var company: CompanyViewModel
     @EnvironmentObject var settings: SettingsViewModel
     @EnvironmentObject var metrics: UIMetrics

@@ -8,7 +8,7 @@ struct CurriculumDetailsView: View {
 
     @EnvironmentObject var curriculumVM: CurriculumViewModel
     @EnvironmentObject var activityVM: ActivityViewModel
-    @EnvironmentObject var sidebar: SidebarViewModel
+    @EnvironmentObject var navigationVM: NavigationViewModel
     @EnvironmentObject var metrics: UIMetrics
 
     private func goButtonIsDisabled() -> Bool {
@@ -48,7 +48,7 @@ struct CurriculumDetailsView: View {
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden()
         .toolbarBackground(.automatic, for: .navigationBar)
-        .onAppear { sidebar.sidebarVisibility = .detailOnly }
+        .onAppear { navigationVM.sidebarVisibility = .detailOnly }
         .toolbar {
             ToolbarItem(placement: .principal) {
                 Text(curriculumVM.setCurriculumDetailNavTitle())
@@ -58,7 +58,7 @@ struct CurriculumDetailsView: View {
             ToolbarItem(placement: .navigationBarLeading) {
                 Button(
                     action: {
-                        sidebar.pathsFromHome = .init()
+                        navigationVM.pathsFromHome = .init()
                     },
                     label: {
                         HStack(spacing: 4) {
@@ -133,7 +133,7 @@ struct ContextualActivitiesDetailsView_Previews: PreviewProvider {
             .environmentObject(CurriculumViewModel())
             .environmentObject(ActivityViewModel())
             .environmentObject(UIMetrics())
-            .environmentObject(SidebarViewModel())
+            .environmentObject(NavigationViewModel())
             .previewInterfaceOrientation(.landscapeLeft)
     }
 }

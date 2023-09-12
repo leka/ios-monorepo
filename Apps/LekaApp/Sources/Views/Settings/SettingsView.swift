@@ -72,7 +72,7 @@ struct SettingsView_Previews: PreviewProvider {
             .ignoresSafeArea()
             .sheet(isPresented: $open) {
                 SettingsView()
-                    .environmentObject(SidebarViewModel())
+                    .environmentObject(NavigationViewModel())
                     .environmentObject(SettingsViewModel())
                     .environmentObject(CompanyViewModel())
                     .environmentObject(ViewRouter())

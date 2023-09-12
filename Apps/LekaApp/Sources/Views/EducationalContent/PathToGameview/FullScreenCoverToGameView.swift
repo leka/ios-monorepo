@@ -6,10 +6,10 @@ import SwiftUI
 
 struct FullScreenCoverToGameView: View {
 
-    @EnvironmentObject var sidebar: SidebarViewModel
+    @EnvironmentObject var navigationVM: NavigationViewModel
 
     var body: some View {
-        NavigationStack(path: $sidebar.pathToGame) {
+        NavigationStack(path: $navigationVM.pathToGame) {
             EmptyView()
                 .navigationDestination(
                     for: PathsToGame.self,
@@ -28,6 +28,6 @@ struct FullScreenCoverToGameView: View {
 struct FullScreenCoverToGameView_Previews: PreviewProvider {
     static var previews: some View {
         FullScreenCoverToGameView()
-            .environmentObject(SidebarViewModel())
+            .environmentObject(NavigationViewModel())
     }
 }

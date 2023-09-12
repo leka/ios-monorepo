@@ -5,7 +5,7 @@
 import Foundation
 import SwiftUI
 
-class SidebarViewModel: ObservableObject {
+class NavigationViewModel: ObservableObject {
 
     // sidebar utils
     @Published var sidebarVisibility = NavigationSplitViewVisibility.all

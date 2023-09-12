@@ -10,7 +10,7 @@ struct ProfileSet_Teachers: View {
     @EnvironmentObject var settings: SettingsViewModel
     @EnvironmentObject var viewRouter: ViewRouter
     @EnvironmentObject var metrics: UIMetrics
-    @EnvironmentObject var sidebar: SidebarViewModel
+    @EnvironmentObject var navigationVM: NavigationViewModel
 
     @State private var showEditProfileTeacher: Bool = false
     @State private var navigateToTeacherCreation: Bool = false
@@ -28,7 +28,7 @@ struct ProfileSet_Teachers: View {
             Rectangle()
                 .fill(Color.accentColor)
                 .frame(height: 1)
-                .frame(maxWidth: sidebar.showProfileEditor ? .infinity : 460)
+                .frame(maxWidth: navigationVM.showProfileEditor ? .infinity : 460)
 
             // Avatars
             availableProfiles
@@ -94,20 +94,20 @@ struct ProfileSet_Teachers: View {
 
     private var header: some View {
         HStack(spacing: 20) {
-            if !sidebar.showProfileEditor {
+            if !navigationVM.showProfileEditor {
                 Spacer()
             }
             Text("Qui êtes-vous ?")
                 .font(metrics.reg17)
                 .foregroundColor(.accentColor)
-            if sidebar.showProfileEditor {
+            if navigationVM.showProfileEditor {
                 Spacer()
             }
             addButton()
-            if !sidebar.showProfileEditor {
+            if !navigationVM.showProfileEditor {
                 Spacer()
             }
-            if sidebar.showProfileEditor {
+            if navigationVM.showProfileEditor {
                 editButton
             }
         }
@@ -122,7 +122,7 @@ struct ProfileSet_Teachers: View {
 
     @ViewBuilder
     private var availableProfiles: some View {
-        if !sidebar.showProfileEditor && sixMax() {
+        if !navigationVM.showProfileEditor && sixMax() {
             VStack {
                 Spacer()
                 HStack(spacing: 40) {
@@ -134,7 +134,7 @@ struct ProfileSet_Teachers: View {
         } else {
             ScrollView(showsIndicators: false) {
                 let columns = Array(
-                    repeating: GridItem(spacing: 20), count: sidebar.showProfileEditor ? 3 : 6)
+                    repeating: GridItem(spacing: 20), count: navigationVM.showProfileEditor ? 3 : 6)
                 LazyVGrid(columns: columns, spacing: 20) {
                     teachersSet
                 }
