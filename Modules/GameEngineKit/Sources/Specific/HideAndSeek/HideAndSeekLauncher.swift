@@ -44,7 +44,6 @@ struct HideAndSeekLauncher: View {
             }
         }
         .scaledToFill()
-        .alertWhenRobotIsNeeded()
     }
 }
 
