@@ -7,8 +7,7 @@ import SwiftUI
 struct DanceFreezePlayer: View {
     @EnvironmentObject var viewModel: DanceFreezeViewModel
 
-    @State var isAuto: Bool
-    @State private var isDancing: Bool = true
+    let isAuto: Bool
 
     public init(isAuto: Bool) {
         self.isAuto = isAuto
@@ -17,19 +16,15 @@ struct DanceFreezePlayer: View {
     var body: some View {
         VStack {
             ContinuousProgressBar(progress: viewModel.progress)
+                .padding(20)
 
             Button {
-                withAnimation {
-                    isDancing.toggle()
-                }
                 viewModel.onDanceFreezeToggle()
             } label: {
-                if isDancing {
+                if viewModel.isDancing {
                     DanceView()
-                        .transition(.scale)
                 } else {
                     FreezeView()
-                        .transition(.scale)
                 }
             }
             .disabled(isAuto)
@@ -39,16 +34,21 @@ struct DanceFreezePlayer: View {
                     randomSwitch()
                 }
             }
+            .onDisappear {
+                viewModel.state = .finished
+            }
         }
 
     }
 
-    private func randomSwitch() {
-        let rand = Double.random(in: 2..<10)
+    func randomSwitch() {
+        if viewModel.progress < 1.0 && viewModel.state != .finished {
+            let rand = Double.random(in: 2..<10)
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + rand) {
-            isDancing.toggle()
-            viewModel.onDanceFreezeToggle()
+            DispatchQueue.main.asyncAfter(deadline: .now() + rand) {
+                viewModel.onDanceFreezeToggle()
+                randomSwitch()
+            }
         }
     }
 }

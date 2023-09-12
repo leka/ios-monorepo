@@ -9,6 +9,7 @@ public class DanceFreezeGameplay {
     var audioPlayer: AudioPlayer
     @Published public var progress: CGFloat = 0.0
     @Published public var state: GameplayState = .idle
+    @Published public var isDancing: Bool = false
 
     var cancellables: Set<AnyCancellable> = []
 
@@ -24,11 +25,17 @@ public class DanceFreezeGameplay {
     }
 
     func process() {
+        if progress == 1.0 {
+            state = .finished
+            return
+        }
         if audioPlayer.isPlaying {
             audioPlayer.pause()
+            isDancing = false
             // TODO(@ladislas): Stop motors and lights
         } else {
             audioPlayer.play()
+            isDancing = true
             // TODO(@ladislas): Run motors and lights to dance
         }
     }

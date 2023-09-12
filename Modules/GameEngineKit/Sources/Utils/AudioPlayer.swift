@@ -21,6 +21,9 @@ public class AudioPlayer: NSObject, ObservableObject {
     }
 
     func setAudioPlayer(audioRecording: AudioRecordingModel) {
+        progress = 0.0
+        didFinishPlaying = false
+
         do {
             let path = Bundle.main.path(forResource: audioRecording.file, ofType: "mp3")!
             player = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
@@ -37,7 +40,12 @@ public class AudioPlayer: NSObject, ObservableObject {
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { _ in
                 if let player = self.player {
-                    self.progress = CGFloat(player.currentTime / player.duration)
+                    let newProgress = CGFloat(player.currentTime / player.duration)
+                    if self.progress > newProgress {
+                        self.progress = 1.0
+                    } else {
+                        self.progress = newProgress
+                    }
                 }
             })
             .store(in: &cancellables)
@@ -54,6 +62,7 @@ public class AudioPlayer: NSObject, ObservableObject {
 
     func stop() {
         player.stop()
+        didFinishPlaying = true
     }
 
     var isPlaying: Bool {
