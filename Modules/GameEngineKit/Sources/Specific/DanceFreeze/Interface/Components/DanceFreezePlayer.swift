@@ -16,6 +16,7 @@ struct DanceFreezePlayer: View {
     var body: some View {
         VStack {
             ContinuousProgressBar(progress: viewModel.progress)
+                .padding(20)
 
             Button {
                 viewModel.onDanceFreezeToggle()
