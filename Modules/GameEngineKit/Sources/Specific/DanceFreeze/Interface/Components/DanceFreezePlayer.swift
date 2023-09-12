@@ -23,10 +23,8 @@ struct DanceFreezePlayer: View {
             } label: {
                 if viewModel.isDancing {
                     DanceView()
-                        .transition(.scale)
                 } else {
                     FreezeView()
-                        .transition(.scale)
                 }
             }
             .disabled(isAuto)
