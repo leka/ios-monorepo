@@ -115,4 +115,9 @@ let kListOfAvailablesActivities: [ActivityModel] = [
         instructions: "Play xylophone with Leka",
         view: AnyView(XylophoneActivity())
     ),
+    ActivityModel(
+        title: "Pairing",
+        instructions: "Start sequence and observe the user's behavior interacting with Leka",
+        view: AnyView(PairingActivity())
+    ),
 ]
