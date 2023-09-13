@@ -7,7 +7,7 @@ import SwiftUI
 struct RobotPicker: View {
 
     @EnvironmentObject var settings: SettingsViewModel
-    @EnvironmentObject var viewRouter: ViewRouter
+    @EnvironmentObject var navigationVM: NavigationViewModel
     @EnvironmentObject var metrics: UIMetrics
     @EnvironmentObject var robotVM: RobotViewModel
     @Environment(\.dismiss) var dismiss
@@ -49,9 +49,13 @@ struct RobotPicker: View {
             }
         }
         .navigationBarTitleDisplayMode(.inline)
+        .navigationBarBackButtonHidden()
         .toolbar {
             ToolbarItem(placement: .principal) { navigationTitle }
             ToolbarItem(placement: .navigationBarLeading) { closeButton }
+            if navigationVM.showActivitiesFullScreenCover {
+                ToolbarItem(placement: .navigationBarTrailing) { continueButton }
+            }
         }
     }
 
@@ -102,8 +106,21 @@ struct RobotPicker: View {
                     robotVM.robotIsConnected = false
                 } else {
                     robotVM.currentlyConnectedRobotIndex = robotVM.currentlySelectedRobotIndex
-                    robotVM.currentlyConnectedRobotName = "LKAL \(String(describing: robotVM.currentlyConnectedRobotIndex))"
+                    robotVM.currentlyConnectedRobotName =
+                        "LKAL \(String(describing: robotVM.currentlyConnectedRobotIndex))"
                     robotVM.robotIsConnected = true
+
+                    // delayed for now
+                    guard navigationVM.showActivitiesFullScreenCover else {
+                        return
+                    }
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        guard robotVM.robotIsConnected else {
+                            return
+                        }
+                        robotVM.userChoseToPlayWithoutRobot = false
+                        navigationVM.showActivitiesFullScreenCover.toggle()
+                    }
                 }
             },
             label: {
@@ -121,7 +138,10 @@ struct RobotPicker: View {
             }
         )
         .buttonStyle(.borderedProminent)
-        .tint(robotVM.currentlyConnectedRobotIndex == robotVM.currentlySelectedRobotIndex ? Color("lekaOrange") : .accentColor)
+        .tint(
+            robotVM.currentlyConnectedRobotIndex == robotVM.currentlySelectedRobotIndex
+                ? Color("lekaOrange") : .accentColor
+        )
         .disabled(allRobots == 0)
         .disabled(robotVM.currentlySelectedRobotIndex == nil)  // For the tests
     }
@@ -141,13 +161,32 @@ struct RobotPicker: View {
     private var closeButton: some View {
         Button(
             action: {
-                dismiss()
+                guard navigationVM.showActivitiesFullScreenCover else {
+                    dismiss()
+                    return
+                }
+                navigationVM.showActivitiesFullScreenCover = false
             },
             label: {
                 Text("Fermer")
             }
         )
         .tint(.accentColor)
+    }
+
+    private var continueButton: some View {
+        Button(
+            action: {
+                robotVM.userChoseToPlayWithoutRobot = true
+                navigationVM.showActivitiesFullScreenCover = false
+            },
+            label: {
+                Text("Continuer sans le robot")
+            }
+        )
+        .tint(.accentColor)
+        .opacity(robotVM.robotIsConnected ? 0 : 1)
+        .animation(.default, value: robotVM.robotIsConnected)
     }
 }
 
@@ -157,7 +196,7 @@ struct RobotsConnectView_Previews: PreviewProvider {
             .environmentObject(RobotViewModel())
             .environmentObject(SettingsViewModel())
             .environmentObject(UIMetrics())
-            .environmentObject(ViewRouter())
+            .environmentObject(NavigationViewModel())
             .previewInterfaceOrientation(.landscapeLeft)
     }
 }

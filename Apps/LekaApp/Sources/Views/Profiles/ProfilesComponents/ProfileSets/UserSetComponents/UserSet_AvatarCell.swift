@@ -8,9 +8,8 @@ struct UserSet_AvatarCell: View {
 
     @EnvironmentObject var company: CompanyViewModel
     @EnvironmentObject var settings: SettingsViewModel
-    @EnvironmentObject var viewRouter: ViewRouter
     @EnvironmentObject var metrics: UIMetrics
-    @EnvironmentObject var sidebar: SidebarViewModel
+    @EnvironmentObject var navigationVM: NavigationViewModel
 
     let user: User
 
@@ -20,13 +19,9 @@ struct UserSet_AvatarCell: View {
                 company.selectedProfiles[.user] = user.id
             }
             // Next context is within the userSelector right before launching a game
-            if !sidebar.showProfileEditor {
+            if !navigationVM.showProfileEditor {
                 company.assignCurrentProfiles()
-                if viewRouter.currentPage == .curriculumDetail {
-                    viewRouter.pathFromCurriculum.append(.game)
-                } else {
-                    viewRouter.pathFromActivity.append(.game)
-                }
+                navigationVM.pathToGame.append(PathsToGame.game)
             }
         } label: {
             VStack(spacing: 0) {

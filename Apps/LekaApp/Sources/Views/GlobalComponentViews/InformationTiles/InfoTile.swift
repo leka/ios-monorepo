@@ -7,7 +7,7 @@ import SwiftUI
 struct InfoTile: View {
 
     @EnvironmentObject var settings: SettingsViewModel
-    @EnvironmentObject var sidebar: SidebarViewModel
+    @EnvironmentObject var navigationVM: NavigationViewModel
     @EnvironmentObject var viewRouter: ViewRouter
     @EnvironmentObject var metrics: UIMetrics
 
@@ -75,7 +75,7 @@ struct InfoTile: View {
 
     private var closeButton: some View {
         Button {
-            sidebar.updateShowInfo()
+            navigationVM.updateShowInfo()
         } label: {
             Image(systemName: "multiply")
                 .font(metrics.semi20)
@@ -103,7 +103,7 @@ struct InfoTile_Previews: PreviewProvider {
             Color.teal.ignoresSafeArea()
             InfoTile(data: .discovery)
                 .environmentObject(SettingsViewModel())
-                .environmentObject(SidebarViewModel())
+                .environmentObject(NavigationViewModel())
                 .environmentObject(UIMetrics())
                 .environmentObject(ViewRouter())
                 .padding()

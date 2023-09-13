@@ -5,7 +5,7 @@
 import Foundation
 import SwiftUI
 
-class SidebarViewModel: ObservableObject {
+class NavigationViewModel: ObservableObject {
 
     // sidebar utils
     @Published var sidebarVisibility = NavigationSplitViewVisibility.all
@@ -39,6 +39,11 @@ class SidebarViewModel: ObservableObject {
             case .commands: return "Commandes"
         }
     }
+
+    // Navigation within FullScreenCover to GameView()
+    @Published var pathsFromHome = NavigationPath()
+    @Published var showActivitiesFullScreenCover: Bool = false
+    @Published var pathToGame = NavigationPath()
 
     // Info Tiles triggers
     @Published var showInfoCurriculums: Bool = true

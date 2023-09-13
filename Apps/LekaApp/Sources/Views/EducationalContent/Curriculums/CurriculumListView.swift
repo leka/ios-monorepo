@@ -6,8 +6,7 @@ import SwiftUI
 
 struct CurriculumListView: View {
 
-    @EnvironmentObject var sidebar: SidebarViewModel
-    @EnvironmentObject var viewRouter: ViewRouter
+    @EnvironmentObject var navigationVM: NavigationViewModel
     @EnvironmentObject var curriculumVM: CurriculumViewModel
     @EnvironmentObject var metrics: UIMetrics
 
@@ -29,7 +28,7 @@ struct CurriculumListView: View {
                         }
                     }
                 }
-                .animation(.easeOut(duration: 0.4), value: sidebar.showInfo())
+                .animation(.easeOut(duration: 0.4), value: navigationVM.showInfo())
                 .safeAreaInset(edge: .top) {
                     InfoTileManager()
                 }
@@ -38,6 +37,12 @@ struct CurriculumListView: View {
                 }
             }
         }
+        .navigationDestination(
+            for: String.self,
+            destination: { _ in
+                CurriculumDetailsView()
+            }
+        )
     }
 
     @ViewBuilder
@@ -48,7 +53,7 @@ struct CurriculumListView: View {
                 curriculumVM.currentCurriculumCategory = category
                 curriculumVM.populateCurriculumList(category: category)
                 curriculumVM.selectedCurriculum = index
-                viewRouter.currentPage = .curriculumDetail
+                navigationVM.pathsFromHome.append("curriculumDetail")
             } label: {
                 CurriculumPillShapedView(
                     curriculum: item,  // Integrate rank and icon within curriculum Type, delete following properties
@@ -73,10 +78,9 @@ struct CurriculumListView: View {
 struct CurriculumListView_Previews: PreviewProvider {
     static var previews: some View {
         CurriculumListView()
-            .environmentObject(SidebarViewModel())
+            .environmentObject(NavigationViewModel())
             .environmentObject(CurriculumViewModel())
             .environmentObject(UIMetrics())
-            .environmentObject(ViewRouter())
             .environmentObject(SettingsViewModel())
             .previewInterfaceOrientation(.landscapeLeft)
     }

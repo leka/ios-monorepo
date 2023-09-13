@@ -10,14 +10,14 @@ struct GoToProfileEditorButton: View {
     @EnvironmentObject var settings: SettingsViewModel
     @EnvironmentObject var viewRouter: ViewRouter
     @EnvironmentObject var metrics: UIMetrics
-    @EnvironmentObject var sidebar: SidebarViewModel
+    @EnvironmentObject var navigationVM: NavigationViewModel
 
     var body: some View {
         Button {
             if settings.exploratoryModeIsOn {
                 settings.showSwitchOffExploratoryAlert.toggle()
             } else {
-                sidebar.showProfileEditor.toggle()
+                navigationVM.showProfileEditor.toggle()
             }
         } label: {
             VStack(spacing: 5) {

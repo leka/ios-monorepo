@@ -10,7 +10,7 @@ struct CreateUserProfileView: View {
     @EnvironmentObject var settings: SettingsViewModel
     @EnvironmentObject var viewRouter: ViewRouter
     @EnvironmentObject var metrics: UIMetrics
-    @EnvironmentObject var sidebar: SidebarViewModel
+    @EnvironmentObject var navigationVM: NavigationViewModel
     @Environment(\.dismiss) var dismiss
 
     @FocusState private var focusedField: FormField?
@@ -39,7 +39,7 @@ struct CreateUserProfileView: View {
         .interactiveDismissDisabled()
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)
-        .toolbarBackground(sidebar.showProfileEditor ? .visible : .automatic, for: .navigationBar)
+        .toolbarBackground(navigationVM.showProfileEditor ? .visible : .automatic, for: .navigationBar)
         .navigationDestination(isPresented: $navigateToAvatarPicker) {
             AvatarPicker_Users()
         }
@@ -143,7 +143,7 @@ struct CreateUserProfileView: View {
 
     private var validateButton: some View {
         Group {
-            if sidebar.showProfileEditor {
+            if navigationVM.showProfileEditor {
                 Button(
                     action: {
                         // Save changes and leave

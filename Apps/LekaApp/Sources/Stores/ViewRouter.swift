@@ -7,21 +7,10 @@ import SwiftUI
 enum Page {
     case welcome
     case home
-    case curriculumDetail
-    case game
-}
-
-enum PathsToGameFromCurriculum: Hashable {
-    case userSelect, game
-}
-
-enum PathsToGameFromActivity: Hashable {
-    case game
 }
 
 class ViewRouter: ObservableObject {
 
     @Published var currentPage: Page = .welcome
-    @Published var pathFromCurriculum: [PathsToGameFromCurriculum] = []
-    @Published var pathFromActivity: [PathsToGameFromActivity] = []
+
 }

@@ -4,30 +4,10 @@
 
 import SwiftUI
 
-// Modal content when picking an activity within the ActivityList
 struct SelectedActivityInstructionsView: View {
 
     @EnvironmentObject var activityVM: ActivityViewModel
-    @EnvironmentObject var company: CompanyViewModel
-    @EnvironmentObject var settings: SettingsViewModel
-    @EnvironmentObject var viewRouter: ViewRouter
     @EnvironmentObject var metrics: UIMetrics
-
-    private func goButtonAction() {
-        activityVM.setupGame(with: activityVM.currentActivity)
-        guard settings.companyIsConnected else {
-            viewRouter.pathFromActivity.append(.game)
-            viewRouter.currentPage = .game
-            return
-        }
-        guard company.selectionSetIsCorrect() else {
-            viewRouter.pathFromActivity = .init()
-            viewRouter.currentPage = .game
-            return
-        }
-        viewRouter.pathFromActivity.append(.game)
-        viewRouter.currentPage = .game
-    }
 
     var body: some View {
         ZStack(alignment: .top) {
@@ -43,7 +23,7 @@ struct SelectedActivityInstructionsView: View {
                     .fill(Color("lekaLightGray"))
                     .edgesIgnoringSafeArea(.bottom)
                     .overlay { InstructionsView() }
-                    .overlay { GoButton { goButtonAction() } }
+                    .overlay { GoButton() }
             }
         }
         .preferredColorScheme(.light)

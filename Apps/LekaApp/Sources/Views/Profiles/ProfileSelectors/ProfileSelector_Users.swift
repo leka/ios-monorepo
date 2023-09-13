@@ -8,7 +8,7 @@ struct ProfileSelector_Users: View {
 
     @EnvironmentObject var company: CompanyViewModel
     @EnvironmentObject var settings: SettingsViewModel
-    @EnvironmentObject var viewRouter: ViewRouter
+    @EnvironmentObject var navigationVM: NavigationViewModel
     @EnvironmentObject var metrics: UIMetrics
     @Environment(\.dismiss) var dismiss
 
@@ -34,13 +34,7 @@ struct ProfileSelector_Users: View {
             ToolbarItem(placement: .navigationBarLeading) {
                 Button(
                     action: {
-                        if viewRouter.currentPage == .game {
-                            withAnimation {
-                                viewRouter.currentPage = .home
-                            }
-                            viewRouter.pathFromActivity = .init()
-                        }
-                        viewRouter.pathFromCurriculum = .init()
+                        navigationVM.showActivitiesFullScreenCover = false
                     },
                     label: {
                         HStack(spacing: 4) {

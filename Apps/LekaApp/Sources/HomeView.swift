@@ -7,9 +7,8 @@ import SwiftUI
 struct HomeView: View {
 
     @EnvironmentObject var robotVM: RobotViewModel
-    @EnvironmentObject var sidebar: SidebarViewModel
+    @EnvironmentObject var navigationVM: NavigationViewModel
     @EnvironmentObject var settings: SettingsViewModel
-    @EnvironmentObject var viewRouter: ViewRouter
     @EnvironmentObject var metrics: UIMetrics
 
     private func changeBatteryLevel() {
@@ -34,11 +33,11 @@ struct HomeView: View {
     var body: some View {
         Group {
             // Educ Content
-            NavigationSplitView(columnVisibility: $sidebar.sidebarVisibility) {
+            NavigationSplitView(columnVisibility: $navigationVM.sidebarVisibility) {
                 SidebarView()
             } detail: {
-                NavigationStack {
-                    sidebar.allSidebarDestinationViews
+                NavigationStack(path: $navigationVM.pathsFromHome) {
+                    navigationVM.allSidebarDestinationViews
                         .navigationBarTitleDisplayMode(.inline)
                         .toolbar {
                             ToolbarItem(placement: .principal) {
@@ -60,18 +59,21 @@ struct HomeView: View {
             }
         }
         .preferredColorScheme(.light)
-        .sheet(isPresented: $sidebar.showSettings) {
+        .sheet(isPresented: $navigationVM.showSettings) {
             SettingsView()
         }
-        .fullScreenCover(isPresented: $sidebar.showProfileEditor) {
+        .fullScreenCover(isPresented: $navigationVM.showProfileEditor) {
             NavigationStack {
                 ProfileEditorView()
             }
         }
-        .fullScreenCover(isPresented: $sidebar.showRobotPicker) {
+        .fullScreenCover(isPresented: $navigationVM.showRobotPicker) {
             NavigationStack {
                 RobotPicker()
             }
+        }
+        .fullScreenCover(isPresented: $navigationVM.showActivitiesFullScreenCover) {
+            FullScreenCoverToGameView()
         }
         .alert("Voulez-vous quitter le mode exploratoire ?", isPresented: $settings.showSwitchOffExploratoryAlert) {
             Button(role: .destructive) {
@@ -89,7 +91,7 @@ struct HomeView: View {
 
     private var toolbarTitle: some View {
         HStack(spacing: 4) {
-            Text(sidebar.setNavTitle())
+            Text(navigationVM.setNavTitle())
             if settings.companyIsConnected && settings.exploratoryModeIsOn {
                 Image(systemName: "binoculars.fill")
             }
@@ -100,23 +102,22 @@ struct HomeView: View {
 
     private var infoButton: some View {
         Button {
-            sidebar.updateShowInfo()
+            navigationVM.updateShowInfo()
         } label: {
             Image(systemName: "info.circle")
                 .foregroundColor(.accentColor)
         }
-        .opacity(sidebar.showInfo() ? 0 : 1)
+        .opacity(navigationVM.showInfo() ? 0 : 1)
     }
 }
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
-            .environmentObject(SidebarViewModel())
+            .environmentObject(NavigationViewModel())
             .environmentObject(CompanyViewModel())
             .environmentObject(SettingsViewModel())
             .environmentObject(UIMetrics())
-            .environmentObject(ViewRouter())
             .environmentObject(CurriculumViewModel())
             .environmentObject(ActivityViewModel())
             .environmentObject(RobotViewModel())

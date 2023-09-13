@@ -8,13 +8,10 @@ struct ActivityListView: View {
 
     @EnvironmentObject var curriculumVM: CurriculumViewModel
     @EnvironmentObject var activityVM: ActivityViewModel
-    @EnvironmentObject var sidebar: SidebarViewModel
+    @EnvironmentObject var navigationVM: NavigationViewModel
     @EnvironmentObject var company: CompanyViewModel
     @EnvironmentObject var settings: SettingsViewModel
-    @EnvironmentObject var viewRouter: ViewRouter
     @EnvironmentObject var metrics: UIMetrics
-
-    @State private var navigateToInstructionsView: Bool = false
 
     // Data modeled for Search Feature
     @State var searchQuery = ""
@@ -36,19 +33,19 @@ struct ActivityListView: View {
             Color("lekaLightBlue").ignoresSafeArea()
             completeActivityList
         }
-        .animation(.easeOut(duration: 0.4), value: sidebar.showInfo())
-        .navigationDestination(
-            isPresented: $navigateToInstructionsView,
-            destination: {
-                SelectedActivityInstructionsView()
-            }
-        )
+        .animation(.easeOut(duration: 0.4), value: navigationVM.showInfo())
         .searchable(
             text: $searchQuery,
             placement: .toolbar,
             prompt: Text("Media, personnages, ...")
         )
-        .onAppear { sidebar.sidebarVisibility = .all }
+        .onAppear { navigationVM.sidebarVisibility = .all }
+        .navigationDestination(
+            for: String.self,
+            destination: { _ in
+                SelectedActivityInstructionsView()
+            }
+        )
     }
 
     private var completeActivityList: some View {
@@ -59,7 +56,7 @@ struct ActivityListView: View {
                     Button {
                         activityVM.currentActivity = activityVM.getActivity(item)
                         activityVM.selectedActivityID = UUID(uuidString: activityVM.getActivity(item).id)
-                        navigateToInstructionsView.toggle()
+                        navigationVM.pathsFromHome.append("instructions")
                     } label: {
                         ActivityListCell(
                             activity: activityVM.getActivity(item),

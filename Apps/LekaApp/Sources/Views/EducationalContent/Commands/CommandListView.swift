@@ -7,7 +7,7 @@ import SwiftUI
 struct CommandListView: View {
 
     @EnvironmentObject var settings: SettingsViewModel
-    @EnvironmentObject var sidebar: SidebarViewModel
+    @EnvironmentObject var navigationVM: NavigationViewModel
 
     private let images: [String] = [
         "standard-remote", "colored-arrows", "color-remote copy", "big-joystick", "hand-remote",
@@ -27,7 +27,7 @@ struct CommandListView: View {
                     }
                 }
                 .safeAreaInset(edge: .top) {
-                    if settings.companyIsConnected && !sidebar.showInfo() {
+                    if settings.companyIsConnected && !navigationVM.showInfo() {
                         Color.clear
                             .frame(height: settings.companyIsConnected ? 40 : 0)
                     } else {
@@ -37,15 +37,15 @@ struct CommandListView: View {
                 Spacer()
             }
         }
-        .animation(.easeOut(duration: 0.4), value: sidebar.showInfo())
-        .onAppear { sidebar.sidebarVisibility = .all }
+        .animation(.easeOut(duration: 0.4), value: navigationVM.showInfo())
+        .onAppear { navigationVM.sidebarVisibility = .all }
     }
 }
 
 struct CommandListView_Previews: PreviewProvider {
     static var previews: some View {
         CommandListView()
-            .environmentObject(SidebarViewModel())
+            .environmentObject(NavigationViewModel())
             .environmentObject(SettingsViewModel())
             .environmentObject(UIMetrics())
     }

@@ -9,11 +9,11 @@ struct GoToRobotConnectButton: View {
     @EnvironmentObject var robotVM: RobotViewModel
     @EnvironmentObject var viewRouter: ViewRouter
     @EnvironmentObject var metrics: UIMetrics
-    @EnvironmentObject var sidebar: SidebarViewModel
+    @EnvironmentObject var navigationVM: NavigationViewModel
 
     var body: some View {
         Button {
-            sidebar.showRobotPicker.toggle()
+            navigationVM.showRobotPicker.toggle()
         } label: {
             HStack(spacing: 10) {
                 RobotConnectionIndicator()

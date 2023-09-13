@@ -6,14 +6,18 @@ import SwiftUI
 
 struct GoButton: View {
 
-    var action: () -> Void
+    @EnvironmentObject var company: CompanyViewModel
+    @EnvironmentObject var activityVM: ActivityViewModel
+    @EnvironmentObject var navigationVM: NavigationViewModel
+    @EnvironmentObject var robotVM: RobotViewModel
+    @EnvironmentObject var settings: SettingsViewModel
 
     var body: some View {
         VStack {
             HStack(alignment: .top) {
                 Spacer()
                 Button {
-                    action()
+                    goButtonAction()
                 } label: {
                     goButtonLabel
                 }
@@ -23,6 +27,27 @@ struct GoButton: View {
             .offset(y: -40)
             Spacer()
         }
+    }
+
+    private func goButtonAction() {
+        activityVM.setupGame(with: activityVM.currentActivity)
+        guard robotVM.robotIsConnected || robotVM.userChoseToPlayWithoutRobot else {
+            navigationVM.pathToGame = NavigationPath([PathsToGame.robot])
+            navigationVM.showActivitiesFullScreenCover = true
+            return
+        }
+        guard settings.companyIsConnected else {
+            navigationVM.pathToGame = NavigationPath([PathsToGame.game])
+            navigationVM.showActivitiesFullScreenCover = true
+            return
+        }
+        guard company.selectionSetIsCorrect() else {
+            navigationVM.pathToGame = NavigationPath([PathsToGame.user])
+            navigationVM.showActivitiesFullScreenCover = true
+            return
+        }
+        navigationVM.pathToGame = NavigationPath([PathsToGame.game])
+        navigationVM.showActivitiesFullScreenCover = true
     }
 
     private var goButtonLabel: some View {
