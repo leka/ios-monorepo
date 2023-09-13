@@ -6,7 +6,7 @@ import SwiftUI
 
 public struct FiveChoicesView: View {
     @ObservedObject private var viewModel: GenericViewModel
-    let horizontalSpacing: CGFloat = 32
+    let horizontalSpacing: CGFloat = 6
     let verticalSpacing: CGFloat = 32
     let answerSize: CGFloat = 200
 
@@ -49,5 +49,6 @@ public struct FiveChoicesView: View {
                 Color.clear.gridCellUnsizedAxes([.horizontal, .vertical])
             }
         }
+
     }
 }
