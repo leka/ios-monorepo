@@ -106,11 +106,6 @@ let kListOfAvailablesActivities: [ActivityModel] = [
         view: AnyView(ListenThenTouchToSelectFourChoicesActivity())
     ),
     ActivityModel(
-        title: "ListenThenTouchToSelectFourInline",
-        instructions: "Listen then touch the right answer",
-        view: AnyView(ListenThenTouchToSelectFourChoicesInlineActivity())
-    ),
-    ActivityModel(
         title: "ListenThenTouchToSelectSix",
         instructions: "Listen then touch the right answer",
         view: AnyView(ListenThenTouchToSelectSixChoicesActivity())

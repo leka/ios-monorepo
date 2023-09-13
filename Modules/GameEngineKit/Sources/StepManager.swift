@@ -89,8 +89,6 @@ public class StepManager: ObservableObject {
                 ListenThreeChoicesInlineView(gameplay: currentGameplay, audioRecording: audioRecording)
             case .listenFourChoices(let audioRecording):
                 ListenFourChoicesView(gameplay: currentGameplay, audioRecording: audioRecording)
-            case .listenFourChoicesInline(let audioRecording):
-                ListenFourChoicesInlineView(gameplay: currentGameplay, audioRecording: audioRecording)
             case .listenSixChoices(let audioRecording):
                 ListenSixChoicesView(gameplay: currentGameplay, audioRecording: audioRecording)
         }
