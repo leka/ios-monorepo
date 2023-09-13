@@ -26,7 +26,6 @@ public enum InterfaceType {
     case listenThreeChoices(AudioRecordingModel)
     case listenThreeChoicesInline(AudioRecordingModel)
     case listenFourChoices(AudioRecordingModel)
-    case listenFourChoicesInline(AudioRecordingModel)
     case listenSixChoices(AudioRecordingModel)
 }
 
