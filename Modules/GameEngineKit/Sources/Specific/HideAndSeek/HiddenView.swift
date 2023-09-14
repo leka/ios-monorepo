@@ -26,6 +26,7 @@ struct HiddenView: View {
         }
         .background(.black)
         .clipShape(RoundedRectangle(cornerRadius: 20))
+        .padding(10)
     }
 }
 
