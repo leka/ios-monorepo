@@ -27,6 +27,9 @@ jobs:
     name: fastlane release beta_internal
     runs-on: [self-hosted, iOS]
 
+    env:
+      PR_NUMBER: ${{ github.event.pull_request.number }}
+
     steps:
       - name: Checkout
         uses: actions/checkout@v3
