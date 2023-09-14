@@ -8,4 +8,4 @@ source 'https://rubygems.org'
 
 gem 'fastlane'
 
-gem 'rubocop', '~> 1.42'
+gem 'rubocop'
