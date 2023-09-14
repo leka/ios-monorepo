@@ -202,12 +202,9 @@ platform :ios do
         end
 
         version_number = get_version_number(xcodeproj: app_xcodeproj.to_s)
-        build_number = latest_testflight_build_number(app_identifier: app_id.to_s) + 1
-
-        increment_build_number(
-          build_number: build_number,
-          xcodeproj: app_xcodeproj.to_s
-        )
+        pr_number = ENV.fetch('PR_NUMBER', nil)
+        last_commit_sha = last_git_commit[:abbreviated_commit_hash]
+        build_number = "pr:#{pr_number or 'none'}+#{last_commit_sha}"
 
         build_app(
           workspace: 'ios-monorepo.xcworkspace',
