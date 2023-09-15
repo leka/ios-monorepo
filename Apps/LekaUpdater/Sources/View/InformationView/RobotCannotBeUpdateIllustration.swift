@@ -5,7 +5,7 @@
 import DesignKit
 import SwiftUI
 
-struct RobotCannotBeUpdateIllustration: View {
+struct RobotCannotBeUpdatedIllustration: View {
     public var illustrationSize: CGFloat = 300
 
     private var circleSize: CGFloat {
@@ -36,7 +36,7 @@ struct RobotCannotBeUpdateIllustration: View {
 
             Circle()
                 .strokeBorder(
-                    .yellow,
+                    .gray,
                     style: StrokeStyle(lineWidth: circleLineWidth, lineCap: .round, dash: [dashSpacer, dashSpacer])
                 )
                 .frame(width: circleSize)
@@ -53,9 +53,9 @@ struct RobotCannotBeUpdateIllustration: View {
                     Circle().fill(.white)
                         .frame(height: checkmarkSize)
 
-                    Image(systemName: "exclamationmark.circle")
+                    Image(systemName: "xmark.circle")
                         .font(.system(size: checkmarkSize))
-                        .foregroundColor(.yellow)
+                        .foregroundColor(.gray)
                 }
             }
         }
@@ -63,12 +63,12 @@ struct RobotCannotBeUpdateIllustration: View {
     }
 }
 
-struct RobotCannotBeUpdateIllustration_Previews: PreviewProvider {
+struct RobotCannotBeUpdatedIllustration_Previews: PreviewProvider {
     static var previews: some View {
         Form {
             Section {
                 Group {
-                    RobotCannotBeUpdateIllustration(size: 600)
+                    RobotCannotBeUpdatedIllustration(size: 600)
                 }
                 .frame(maxWidth: .infinity, alignment: .center)
             }

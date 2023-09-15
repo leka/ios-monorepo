@@ -19,7 +19,21 @@ struct InformationView: View {
             VStack {
                 ScrollView {
                     VStack(alignment: .center, spacing: 10) {
-                        if viewModel.showRobotNeedsUpdate {
+                        if viewModel.showRobotCannotBeUpdated {
+                            RobotCannotBeUpdatedIllustration(size: 200)
+
+                            Text(viewModel.robotName)
+                                .font(.title3)
+
+                            Text(
+                                """
+                                🚧 DEV - Processus de mise à jour non reconnu ou inexistant (LekaOS v\(viewModel.robotOSVersion))
+                                (Code erreur #0003)
+                                """
+                            )
+                            .font(.title2)
+                            .multilineTextAlignment(.center)
+                        } else if viewModel.showRobotNeedsUpdate {
                             RobotNeedsUpdateIllustration(size: 200)
 
                             Text(viewModel.robotName)
