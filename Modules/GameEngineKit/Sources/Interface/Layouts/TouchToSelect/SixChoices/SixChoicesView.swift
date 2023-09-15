@@ -8,7 +8,7 @@ public struct SixChoicesView: View {
     @ObservedObject private var viewModel: GenericViewModel
     let horizontalSpacing: CGFloat = 100
     let verticalSpacing: CGFloat = 32
-    let answerSize: CGFloat = 300
+    let answerSize: CGFloat = 250
 
     public init(gameplay: any GameplayProtocol) {
         self.viewModel = GenericViewModel(gameplay: gameplay)

@@ -8,7 +8,6 @@ public struct ListenThreeChoicesInlineView: View {
     @ObservedObject private var viewModel: GenericViewModel
     @ObservedObject private var audioPlayer: AudioPlayer
     let horizontalSpacing: CGFloat = 60
-    let verticalSpacing: CGFloat = 32
     let answerSize: CGFloat = 220
 
     public init(gameplay: any GameplayProtocol, audioRecording: AudioRecordingModel) {
