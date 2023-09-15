@@ -6,13 +6,12 @@ import DesignKit
 import SwiftUI
 
 public let kAvailableSongs: [AudioRecordingModel] = [
-    // TO DO : (@hugo) Replace nyan by validated free use music
-    AudioRecordingModel(name: "Frère Jacques", file: "nyan"),
-    AudioRecordingModel(name: "Dansons la Capucine", file: "nyan"),
-    AudioRecordingModel(name: "Petit Escargot", file: "nyan"),
-    AudioRecordingModel(name: "Stairway to Heaven", file: "nyan"),
-    AudioRecordingModel(name: "Can you feel the love tonight", file: "nyan"),
-    AudioRecordingModel(name: "Cette année là", file: "nyan"),
+    AudioRecordingModel(name: "Giggly Squirrel", file: "Giggly_Squirrel"),
+    AudioRecordingModel(name: "Empty Page", file: "Empty_Page"),
+    AudioRecordingModel(name: "Early Bird", file: "Early_Bird"),
+    AudioRecordingModel(name: "Hands On", file: "Hands_On"),
+    AudioRecordingModel(name: "In The Game", file: "In_The_Game"),
+    AudioRecordingModel(name: "Little by Little", file: "Little_by_little"),
 ]
 
 struct SongSelector: View {
