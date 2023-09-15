@@ -201,7 +201,7 @@ platform :ios do
                  ENV.fetch('FASTLANE_KEYCHAIN_PASSWORD', nil), 'io.leka.fastlane.keychain')
         end
 
-        latest_build_number = latest_testflight_build_number(app_identifier: app_id.to_s)
+        latest_build_number = latest_testflight_build_number(app_identifier: app_id.to_s).to_s
         next_build_number = latest_build_number.split('.').first.to_i + 1
         pr_number = ENV.fetch('PR_NUMBER', `gh pr view --json number -q .number`.strip)
         last_commit_sha_hex = last_git_commit[:abbreviated_commit_hash].to_i(16)
