@@ -6,12 +6,12 @@ import DesignKit
 import SwiftUI
 
 public let kAvailableSongs: [AudioRecordingModel] = [
-    AudioRecordingModel(name: "Giggly squirrel", file: "Giggly_Squirrel"),
-    AudioRecordingModel(name: "Empty page", file: "Empty_Page"),
-    AudioRecordingModel(name: "Early bird", file: "Early_Bird"),
-    AudioRecordingModel(name: "Hands on", file: "Hands_On"),
-    AudioRecordingModel(name: "In the game", file: "In_The_Game"),
-    AudioRecordingModel(name: "Little by little", file: "Little_by_little"),
+    AudioRecordingModel(name: "Giggly Squirrel", file: "Giggly_Squirrel"),
+    AudioRecordingModel(name: "Empty Page", file: "Empty_Page"),
+    AudioRecordingModel(name: "Early Bird", file: "Early_Bird"),
+    AudioRecordingModel(name: "Hands On", file: "Hands_On"),
+    AudioRecordingModel(name: "In The Game", file: "In_The_Game"),
+    AudioRecordingModel(name: "Little by Little", file: "Little_by_little"),
 ]
 
 struct SongSelector: View {
