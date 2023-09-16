@@ -119,7 +119,7 @@ private class StateSettingFileExchangeState: GKState, StateEventProcessor {
 private class StateSettingDestinationPath: GKState, StateEventProcessor {
 
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
-        return stateClass is StateClearingFile.Type || stateClass is StateErrorRobotUnexpectedDisconnection.Type
+        return stateClass is StateVerifyingFile.Type || stateClass is StateErrorRobotUnexpectedDisconnection.Type
     }
 
     override func didEnter(from previousState: GKState?) {
@@ -129,7 +129,7 @@ private class StateSettingDestinationPath: GKState, StateEventProcessor {
     func process(event: UpdateEvent) {
         switch event {
             case .destinationPathSet:
-                self.stateMachine?.enter(StateClearingFile.self)
+                self.stateMachine?.enter(StateVerifyingFile.self)
             case .robotDisconnected:
                 self.stateMachine?.enter(StateErrorRobotUnexpectedDisconnection.self)
             default:
@@ -301,12 +301,19 @@ private class StateVerifyingFile: GKState, StateEventProcessor {
 
     private var isFileValid = false
 
+    private var nextStateIsClearingFile = false
+
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
-        return stateClass is StateApplyingUpdate.Type || stateClass is StateErrorFailedToVerifyFile.Type
+        return stateClass is StateClearingFile.Type || stateClass is StateApplyingUpdate.Type
+            || stateClass is StateErrorFailedToVerifyFile.Type
             || stateClass is StateErrorRobotUnexpectedDisconnection.Type
     }
 
     override func didEnter(from previousState: GKState?) {
+        if previousState is StateSettingDestinationPath {
+            nextStateIsClearingFile = true
+        }
+
         DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: startFileVerification)
     }
 
@@ -319,6 +326,8 @@ private class StateVerifyingFile: GKState, StateEventProcessor {
             case .fileVerificationReceived:
                 if isFileValid {
                     self.stateMachine?.enter(StateApplyingUpdate.self)
+                } else if nextStateIsClearingFile {
+                    self.stateMachine?.enter(StateClearingFile.self)
                 } else {
                     self.stateMachine?.enter(StateErrorFailedToVerifyFile.self)
                 }
@@ -589,10 +598,9 @@ class UpdateProcessV130: UpdateProcessProtocol {
             case is StateInitial:
                 currentStage.send(.initial)
             case is StateLoadingUpdateFile, is StateSettingFileExchangeState, is StateSettingDestinationPath,
-                is StateClearingFile,
-                is StateSendingFile:
+                is StateClearingFile, is StateSendingFile, is StateVerifyingFile:
                 currentStage.send(.sendingUpdate)
-            case is StateVerifyingFile, is StateApplyingUpdate, is StateWaitingForRobotToReboot:
+            case is StateApplyingUpdate, is StateWaitingForRobotToReboot:
                 currentStage.send(.installingUpdate)
             case is StateFinal:
                 currentStage.send(completion: .finished)
