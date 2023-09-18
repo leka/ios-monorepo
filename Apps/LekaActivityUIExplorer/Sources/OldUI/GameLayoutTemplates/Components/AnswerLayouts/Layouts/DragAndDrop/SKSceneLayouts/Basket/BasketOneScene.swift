@@ -11,7 +11,7 @@ class BasketOneScene: SKScene, DragAndDropSceneProtocol {
     var spacer: CGFloat = .zero
     var defaultPosition = CGPoint.zero
     var selectedNodes: [UITouch: DraggableItemNode] = [:]
-    var expectedItemsNodes = [String: [SKSpriteNode]]()
+    var expectedItemsNodes: [String: [SKSpriteNode]] = [:]
     var dropAreas: [SKSpriteNode] = []
 
     // protocol methods

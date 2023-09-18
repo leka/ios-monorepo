@@ -47,7 +47,7 @@ class CurriculumViewModel: ObservableObject, YamlFileDecodable {
     }
 
     func getCurriculumsFrom(category: CurriculumCategories) -> [Curriculum] {
-        var curriculums = [Curriculum]()
+        var curriculums: [Curriculum] = []
         for item in getCurriculumList(category: category).curriculums {
             curriculums.append(getCurriculum(item))
         }
