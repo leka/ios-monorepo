@@ -38,6 +38,14 @@ class UpdateProcessController {
 
     // MARK: - Public variables
 
+    public static let availableVersions = [
+        "1.0.0",
+        "1.1.0",
+        "1.2.0",
+        "1.3.0",
+        "1.4.0",
+    ]
+
     public var currentStage = CurrentValueSubject<UpdateProcessStage, UpdateProcessError>(.initial)
     public var sendingFileProgression = CurrentValueSubject<Float, Never>(0.0)
 
