@@ -112,6 +112,14 @@ struct RobotDiscoveryView: View {
 
     private var osVersionText: String {
         guard let osVersion = discovery.osVersion else {
+            if discovery.name == "Leka" {
+                return "LekaOS-v1.0.0"
+            } else if discovery.name.contains("LK-") && discovery.name.contains("xx") {
+                return "LekaOS-v1.1.0"
+            } else if discovery.name.contains("LK-") {
+                return "LekaOS-v1.2.0"
+            }
+
             return "n/a"
         }
         return "LekaOS-v\(osVersion)"
