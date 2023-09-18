@@ -25,8 +25,8 @@ protocol DragAndDropSceneProtocol: SKScene {
 
 extension DragAndDropSceneProtocol {
 
-    var biggerSide: CGFloat { return 130 }
-    var dropAreas: [SKSpriteNode] { return [] }
+    var biggerSide: CGFloat { 130 }
+    var dropAreas: [SKSpriteNode] { [] }
 
     @MainActor func makeAnswers() {
         for choice in gameEngine!.allAnswers {

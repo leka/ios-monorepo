@@ -21,7 +21,7 @@ public struct ReadOnlyCharacteristic: Hashable {
     }
 
     public static func == (lhs: ReadOnlyCharacteristic, rhs: ReadOnlyCharacteristic) -> Bool {
-        return lhs.serviceUUID == rhs.serviceUUID && lhs.characteristicUUID == rhs.characteristicUUID
+        lhs.serviceUUID == rhs.serviceUUID && lhs.characteristicUUID == rhs.characteristicUUID
     }
 
 }

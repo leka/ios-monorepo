@@ -23,7 +23,7 @@ struct LoginView: View {
     // re-enable autofill modifiers in LekaTextField when OK (textContentType)
 
     func connectIsDisabled() -> Bool {
-        return !mail.isValidEmail() || mail.isEmpty || password.isEmpty
+        !mail.isValidEmail() || mail.isEmpty || password.isEmpty
     }
 
     // TESTS *****************************************************************

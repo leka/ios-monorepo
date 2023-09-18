@@ -47,7 +47,7 @@ class CurriculumViewModel: ObservableObject, YamlFileDecodable {
     }
 
     func getCurriculumsFrom(category: CurriculumCategories) -> [Curriculum] {
-        var curriculums = [Curriculum]()
+        var curriculums: [Curriculum] = []
         for item in getCurriculumList(category: category).curriculums {
             curriculums.append(getCurriculum(item))
         }
@@ -65,8 +65,8 @@ class CurriculumViewModel: ObservableObject, YamlFileDecodable {
     }
 
     func setCurriculumDetailNavTitle() -> String {
-        return
-            "\(getCurriculumList(category: currentCurriculumCategory).sectionTitle.localized()) \(String(describing: (selectedCurriculum ?? 0)+1))/\(availableCurriculums.count)"
+
+        "\(getCurriculumList(category: currentCurriculumCategory).sectionTitle.localized()) \(String(describing: (selectedCurriculum ?? 0)+1))/\(availableCurriculums.count)"
     }
 
     func setCurriculumIcon(for curriculum: Curriculum) -> String {

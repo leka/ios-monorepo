@@ -22,7 +22,7 @@ public struct NotifyingCharacteristic: Hashable {
     }
 
     public static func == (lhs: NotifyingCharacteristic, rhs: NotifyingCharacteristic) -> Bool {
-        return lhs.serviceUUID == rhs.serviceUUID && lhs.characteristicUUID == rhs.characteristicUUID
+        lhs.serviceUUID == rhs.serviceUUID && lhs.characteristicUUID == rhs.characteristicUUID
     }
 
 }

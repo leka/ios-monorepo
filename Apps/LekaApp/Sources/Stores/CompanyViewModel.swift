@@ -133,7 +133,7 @@ class CompanyViewModel: ObservableObject {
     }
 
     func selectionSetIsCorrect() -> Bool {
-        return currentCompany.teachers.map { $0.id }.contains(selectedProfiles[.teacher])
+        currentCompany.teachers.map { $0.id }.contains(selectedProfiles[.teacher])
             && currentCompany.users.map { $0.id }.contains(selectedProfiles[.user])
     }
 

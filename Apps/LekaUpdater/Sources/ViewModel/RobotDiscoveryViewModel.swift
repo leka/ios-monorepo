@@ -32,7 +32,7 @@ public class RobotDiscoveryViewModel: ObservableObject, Equatable, Identifiable 
     }
 
     public static func == (lhs: RobotDiscoveryViewModel, rhs: RobotDiscoveryViewModel) -> Bool {
-        return lhs.robotDiscovery?.id == rhs.robotDiscovery?.id && lhs.name == rhs.name
+        lhs.robotDiscovery?.id == rhs.robotDiscovery?.id && lhs.name == rhs.name
     }
 
 }

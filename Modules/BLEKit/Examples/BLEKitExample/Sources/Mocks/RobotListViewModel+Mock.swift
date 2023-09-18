@@ -10,7 +10,7 @@ extension RobotListViewModel {
 
     // TODO(@ladislas): create protocol and mock RobotDiscovery
     public static func mock() -> RobotListViewModel {
-        return RobotListViewModel(availableRobots: [
+        RobotListViewModel(availableRobots: [
             // RobotDiscovery.mock(),
             // RobotDiscovery.mock(),
             // RobotDiscovery.mock(),

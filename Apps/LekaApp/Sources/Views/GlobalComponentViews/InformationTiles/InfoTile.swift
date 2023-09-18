@@ -13,7 +13,7 @@ struct InfoTile: View {
 
     let data: TileData
     private var headerColor: Color {
-        return data == .discovery ? Color("lekaOrange") : Color.accentColor
+        data == .discovery ? Color("lekaOrange") : Color.accentColor
     }
 
     var body: some View {

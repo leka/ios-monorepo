@@ -31,7 +31,7 @@ private protocol StateEventProcessor {
 private class StateInitial: GKState, StateEventProcessor {
 
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
-        return stateClass is StateLoadingUpdateFile.Type || stateClass is StateErrorRobotUnexpectedDisconnection.Type
+        stateClass is StateLoadingUpdateFile.Type || stateClass is StateErrorRobotUnexpectedDisconnection.Type
     }
 
     func process(event: UpdateEvent) {
@@ -49,7 +49,7 @@ private class StateInitial: GKState, StateEventProcessor {
 private class StateLoadingUpdateFile: GKState, StateEventProcessor {
 
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
-        return stateClass is StateErrorFailedToLoadFile.Type || stateClass is StateSettingFileExchangeState.Type
+        stateClass is StateErrorFailedToLoadFile.Type || stateClass is StateSettingFileExchangeState.Type
             || stateClass is StateErrorRobotUnexpectedDisconnection.Type
     }
 
@@ -81,7 +81,7 @@ private class StateLoadingUpdateFile: GKState, StateEventProcessor {
 private class StateSettingFileExchangeState: GKState, StateEventProcessor {
 
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
-        return stateClass is StateSettingDestinationPath.Type
+        stateClass is StateSettingDestinationPath.Type
             || stateClass is StateErrorRobotUnexpectedDisconnection.Type
     }
 
@@ -119,7 +119,7 @@ private class StateSettingFileExchangeState: GKState, StateEventProcessor {
 private class StateSettingDestinationPath: GKState, StateEventProcessor {
 
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
-        return stateClass is StateVerifyingFile.Type || stateClass is StateErrorRobotUnexpectedDisconnection.Type
+        stateClass is StateVerifyingFile.Type || stateClass is StateErrorRobotUnexpectedDisconnection.Type
     }
 
     override func didEnter(from previousState: GKState?) {
@@ -160,7 +160,7 @@ private class StateSettingDestinationPath: GKState, StateEventProcessor {
 private class StateClearingFile: GKState, StateEventProcessor {
 
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
-        return stateClass is StateSendingFile.Type || stateClass is StateErrorRobotUnexpectedDisconnection.Type
+        stateClass is StateSendingFile.Type || stateClass is StateErrorRobotUnexpectedDisconnection.Type
     }
 
     override func didEnter(from previousState: GKState?) {
@@ -243,7 +243,7 @@ private class StateSendingFile: GKState, StateEventProcessor {
     }
 
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
-        return stateClass is StateVerifyingFile.Type || stateClass is StateErrorRobotUnexpectedDisconnection.Type
+        stateClass is StateVerifyingFile.Type || stateClass is StateErrorRobotUnexpectedDisconnection.Type
     }
 
     override func didEnter(from previousState: GKState?) {
@@ -304,7 +304,7 @@ private class StateVerifyingFile: GKState, StateEventProcessor {
     private var nextStateIsClearingFile = false
 
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
-        return stateClass is StateClearingFile.Type || stateClass is StateApplyingUpdate.Type
+        stateClass is StateClearingFile.Type || stateClass is StateApplyingUpdate.Type
             || stateClass is StateErrorFailedToVerifyFile.Type
             || stateClass is StateErrorRobotUnexpectedDisconnection.Type
     }
@@ -384,7 +384,7 @@ private class StateApplyingUpdate: GKState, StateEventProcessor {
     private var cancellables: Set<AnyCancellable> = []
 
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
-        return stateClass is StateWaitingForRobotToReboot.Type
+        stateClass is StateWaitingForRobotToReboot.Type
     }
 
     override func didEnter(from previousState: GKState?) {
@@ -455,7 +455,7 @@ private class StateWaitingForRobotToReboot: GKState, StateEventProcessor {
     private var isRobotUpToDate: Bool = false
 
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
-        return stateClass is StateFinal.Type || stateClass is StateErrorRobotNotUpToDate.Type
+        stateClass is StateFinal.Type || stateClass is StateErrorRobotNotUpToDate.Type
             || stateClass is StateErrorRobotUnexpectedDisconnection.Type
     }
 

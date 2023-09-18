@@ -13,7 +13,7 @@ class AssociationFour: SKScene, DragAndDropSceneProtocol {
     var biggerSide: CGFloat = 150
     var defaultPosition = CGPoint.zero
     var selectedNodes: [UITouch: DraggableItemNode] = [:]
-    var expectedItemsNodes = [String: [SKSpriteNode]]()
+    var expectedItemsNodes: [String: [SKSpriteNode]] = [:]
 
     // internals
     private var initialNodeX: CGFloat = .zero
