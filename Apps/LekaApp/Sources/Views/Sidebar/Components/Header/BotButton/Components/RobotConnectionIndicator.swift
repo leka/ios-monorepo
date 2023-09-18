@@ -17,13 +17,14 @@ struct RobotConnectionIndicator: View {
                 .fill(robotVM.robotIsConnected ? Color("lekaGreen") : Color("lekaDarkGray"))
                 .opacity(0.4)
 
-            Image(robotVM.robotIsConnected ?
-                  LekaAppAsset.Assets.robotConnected.name : LekaAppAsset.Assets.robotDisconnected.name
+            Image(
+                robotVM.robotIsConnected
+                    ? LekaAppAsset.Assets.robotConnected.name : LekaAppAsset.Assets.robotDisconnected.name
             )
-                .resizable()
-                .renderingMode(.original)
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 44, height: 44, alignment: .center)
+            .resizable()
+            .renderingMode(.original)
+            .aspectRatio(contentMode: .fit)
+            .frame(width: 44, height: 44, alignment: .center)
 
             Circle()
                 .stroke(
