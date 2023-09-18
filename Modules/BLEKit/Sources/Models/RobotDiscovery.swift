@@ -29,7 +29,7 @@ public struct RobotDiscovery: Identifiable, Equatable {
     // MARK: - Equatable conformance
 
     public static func == (lhs: RobotDiscovery, rhs: RobotDiscovery) -> Bool {
-        return lhs.robotPeripheral.peripheral.id == rhs.robotPeripheral.peripheral.id
+        lhs.robotPeripheral.peripheral.id == rhs.robotPeripheral.peripheral.id
     }
 
     public static func == (lhs: RobotDiscovery, rhs: RobotDiscovery?) -> Bool {

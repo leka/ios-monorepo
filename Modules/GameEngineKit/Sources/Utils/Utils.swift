@@ -40,7 +40,7 @@ public func convertJoystickPosToMotorSpeed(position: CGPoint, maxValue: CGFloat)
 }
 
 func clamp<T: Comparable>(_ value: T, lower: T, upper: T) -> T {
-    return min(max(value, lower), upper)
+    min(max(value, lower), upper)
 }
 
 extension View {

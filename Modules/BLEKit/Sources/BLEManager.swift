@@ -29,11 +29,11 @@ public class BLEManager {
     }
 
     public static func live() -> BLEManager {
-        return BLEManager(centralManager: CentralManager.live())
+        BLEManager(centralManager: CentralManager.live())
     }
 
     public func scanForRobots() -> AnyPublisher<[RobotDiscovery], Error> {
-        return centralManager.scanForPeripherals(withServices: [BLESpecs.AdvertisingData.service])
+        centralManager.scanForPeripherals(withServices: [BLESpecs.AdvertisingData.service])
             .handleEvents(
                 receiveSubscription: { _ in
                     if self.centralManager.state == .poweredOn {
@@ -51,7 +51,7 @@ public class BLEManager {
                 { list, discovery -> [PeripheralDiscovery] in
                     guard
                         let index = list.firstIndex(where: {
-                            return $0.id == discovery.id
+                            $0.id == discovery.id
                         })
                     else {
                         return list + [discovery]
@@ -82,7 +82,7 @@ public class BLEManager {
     }
 
     public func connect(_ discovery: RobotDiscovery) -> AnyPublisher<RobotPeripheral, Error> {
-        return centralManager.connect(discovery.robotPeripheral.peripheral)
+        centralManager.connect(discovery.robotPeripheral.peripheral)
             // TODO(@ladislas): check if receive is needed here
             .receive(on: DispatchQueue.main)
             .compactMap { peripheral in

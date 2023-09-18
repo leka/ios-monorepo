@@ -21,11 +21,11 @@ internal struct AdvertisingServiceData {
     }
 
     public var battery: Int {
-        return Int(data[Index.battery])
+        Int(data[Index.battery])
     }
 
     public var isCharging: Bool {
-        return data[Index.isCharging] == 0x01
+        data[Index.isCharging] == 0x01
     }
 
     public var osVersion: String? {

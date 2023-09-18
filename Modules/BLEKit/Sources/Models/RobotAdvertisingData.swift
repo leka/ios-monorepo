@@ -7,7 +7,7 @@ import CombineCoreBluetooth
 extension String {
 
     public var nilWhenEmpty: String? {
-        return self.isEmpty ? nil : self
+        self.isEmpty ? nil : self
     }
 
 }

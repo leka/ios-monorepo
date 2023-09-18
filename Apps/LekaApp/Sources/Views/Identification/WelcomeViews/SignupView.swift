@@ -19,12 +19,12 @@ struct SignupView: View {
     @State private var navigateToSignup1: Bool = false
 
     func connectIsDisabled() -> Bool {
-        return !mail.isValidEmail() || !passwordsMatch() || mail.isEmpty || password.isEmpty || confirm.isEmpty
+        !mail.isValidEmail() || !passwordsMatch() || mail.isEmpty || password.isEmpty || confirm.isEmpty
             || accountAlreadyExists
     }
 
     func passwordsMatch() -> Bool {
-        return password == confirm
+        password == confirm
     }
 
     func checkAccountAvailability() {

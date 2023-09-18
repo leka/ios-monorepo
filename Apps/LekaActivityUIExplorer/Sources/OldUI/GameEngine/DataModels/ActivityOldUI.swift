@@ -7,7 +7,7 @@ import SwiftUI
 struct Activity: Codable, Equatable, Identifiable {
 
     static func == (lhs: Activity, rhs: Activity) -> Bool {
-        return lhs.id == rhs.id
+        lhs.id == rhs.id
     }
 
     enum CodingKeys: String, CodingKey {
@@ -57,7 +57,7 @@ struct Activity: Codable, Equatable, Identifiable {
 // Step conforms to Equatable because steps are compared when randomized
 struct Step: Codable, Equatable, Identifiable {
     static func == (lhs: Step, rhs: Step) -> Bool {
-        return lhs.instruction == rhs.instruction
+        lhs.instruction == rhs.instruction
     }
 
     enum CodingKeys: String, CodingKey {

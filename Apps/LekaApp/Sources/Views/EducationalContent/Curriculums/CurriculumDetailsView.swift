@@ -12,7 +12,7 @@ struct CurriculumDetailsView: View {
     @EnvironmentObject var metrics: UIMetrics
 
     private func goButtonIsDisabled() -> Bool {
-        return !curriculumVM.currentCurriculum.activities.map({ UUID(uuidString: activityVM.getActivity($0).id) })
+        !curriculumVM.currentCurriculum.activities.map({ UUID(uuidString: activityVM.getActivity($0).id) })
             .contains(curriculumVM.currentCurriculumSelectedActivityID)
     }
 

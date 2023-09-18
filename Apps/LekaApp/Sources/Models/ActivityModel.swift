@@ -66,7 +66,7 @@ struct Activity: Codable {
 // Step conforms to Equatable because steps are compared when randomized
 struct Step: Codable, Equatable {
     static func == (lhs: Step, rhs: Step) -> Bool {
-        return lhs.instruction == rhs.instruction
+        lhs.instruction == rhs.instruction
     }
 
     enum CodingKeys: String, CodingKey {

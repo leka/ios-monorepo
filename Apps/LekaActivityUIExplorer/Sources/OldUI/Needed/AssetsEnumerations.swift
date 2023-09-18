@@ -16,12 +16,12 @@ protocol Previewable {
 }
 
 extension Previewable where Self: RawRepresentable, RawValue == Int {
-    var index: Int { return self.rawValue }
+    var index: Int { self.rawValue }
 }
 
 enum TouchToSelectPreviews: Int, CaseIterable, Previewable {
     case one, two, three, threeInline, four, fourInline, five, six
-    var type: ActivityType { return .touchToSelect }
+    var type: ActivityType { .touchToSelect }
     var interface: GameLayout {
         switch self {
             case .one: return .touch1
@@ -62,7 +62,7 @@ enum TouchToSelectPreviews: Int, CaseIterable, Previewable {
 
 enum ListenThenTouchToSelectPreviews: Int, CaseIterable, Previewable {
     case one, two, three, threeInline, four, fourInline, six
-    var type: ActivityType { return .listenThenTouchToSelect }
+    var type: ActivityType { .listenThenTouchToSelect }
     var interface: GameLayout {
         switch self {
             case .one: return .soundTouch1
@@ -100,7 +100,7 @@ enum ListenThenTouchToSelectPreviews: Int, CaseIterable, Previewable {
 
 enum ColorQuestPreviews: Int, CaseIterable, Previewable {
     case one, two, three
-    var type: ActivityType { return .colorQuest }
+    var type: ActivityType { .colorQuest }
     var interface: GameLayout {
         switch self {
             case .one: return .colorQuest1
@@ -126,8 +126,8 @@ enum ColorQuestPreviews: Int, CaseIterable, Previewable {
 
 enum MiscPreviews: Int, CaseIterable, Previewable {
     case xylophone
-    var type: ActivityType { return .xylophone }
-    var interface: GameLayout { return .xylophone }
+    var type: ActivityType { .xylophone }
+    var interface: GameLayout { .xylophone }
     var preview: String {
         switch self {
             case .xylophone: return "xylophoneTemplate"
@@ -142,7 +142,7 @@ enum MiscPreviews: Int, CaseIterable, Previewable {
 
 enum RemotePreviews: Int, CaseIterable, Previewable {
     case standard, arrow
-    var type: ActivityType { return .remote }
+    var type: ActivityType { .remote }
     var interface: GameLayout {
         switch self {
             case .standard: return .remoteStandard
@@ -167,7 +167,7 @@ enum DragAndDropPreviews: Int, CaseIterable, Previewable {
     case basket1, basket2, basket4, emptyBasket
     case dropArea1, dropArea3, dropArea2Asset1, dropArea2Assets2, dropArea2Assets6
     case association4, association6
-    var type: ActivityType { return .dragAndDrop }
+    var type: ActivityType { .dragAndDrop }
     var interface: GameLayout {
         switch self {
             case .basket1: return .basket1
@@ -214,8 +214,8 @@ enum DragAndDropPreviews: Int, CaseIterable, Previewable {
 
 enum DanceFreezePreviews: Int, CaseIterable, Previewable {
     case danceFreeze
-    var type: ActivityType { return .danceFreeze }
-    var interface: GameLayout { return .danceFreeze }
+    var type: ActivityType { .danceFreeze }
+    var interface: GameLayout { .danceFreeze }
     var preview: String {
         switch self {
             case .danceFreeze: return "danceFreeze"
@@ -230,24 +230,24 @@ enum DanceFreezePreviews: Int, CaseIterable, Previewable {
 
 enum HideAndSeekPreviews: Int, CaseIterable, Previewable {
     case hideAndSeek
-    var type: ActivityType { return .hideAndSeek }
+    var type: ActivityType { .hideAndSeek }
     var interface: GameLayout {
-        return .hideAndSeek
+        .hideAndSeek
     }
     var preview: String {
-        return "hideAndSeek"
+        "hideAndSeek"
     }
     func defaults() -> BaseDefaults? {
-        return HideAndSeek.standard
+        HideAndSeek.standard
     }
 }
 
 enum MelodyPreviews: Int, CaseIterable, Previewable {
     case melody1
-    var type: ActivityType { return .melody }
-    var interface: GameLayout { return .melody1 }
+    var type: ActivityType { .melody }
+    var interface: GameLayout { .melody1 }
     var preview: String {
-        return "melody"
+        "melody"
     }
     func defaults() -> BaseDefaults? {
         switch self {

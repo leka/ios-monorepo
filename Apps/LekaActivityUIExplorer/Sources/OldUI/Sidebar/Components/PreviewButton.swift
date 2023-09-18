@@ -50,7 +50,7 @@ struct PreviewButton: View {
     }
 
     private var isSelected: Bool {
-        return item.interface == gameEngine.interface
+        item.interface == gameEngine.interface
     }
 
     @ViewBuilder

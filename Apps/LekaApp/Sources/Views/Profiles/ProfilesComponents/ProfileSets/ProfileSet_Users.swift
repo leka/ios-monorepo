@@ -16,7 +16,7 @@ struct ProfileSet_Users: View {
 
     // check if less than 7 profiles to display in order to adapt Layout (HStack vs. Scrollable Grid)
     private func sixMax() -> Bool {
-        return company.currentCompany.users.count < 7
+        company.currentCompany.users.count < 7
     }
 
     var body: some View {

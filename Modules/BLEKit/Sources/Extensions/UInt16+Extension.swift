@@ -7,15 +7,15 @@ import Foundation
 extension UInt16 {
 
     public var highByte: UInt8 {
-        return UInt8(self >> 8)
+        UInt8(self >> 8)
     }
 
     public var lowByte: UInt8 {
-        return UInt8(self & 0xff)
+        UInt8(self & 0xff)
     }
 
     public var data: Data {
-        return Data([self.highByte, self.lowByte])
+        Data([self.highByte, self.lowByte])
     }
 
 }

@@ -15,7 +15,7 @@ class ExplorerActivity: ObservableObject {
     }
 
     func makeActivity() -> Activity {
-        return Activity(
+        Activity(
             id: UUID(),
             title: emptyTitle,
             short: emptyShort,
@@ -39,14 +39,14 @@ class ExplorerActivity: ObservableObject {
     )
 
     func emptyInstructions() -> LocalizedContent {
-        return LocalizedContent(
+        LocalizedContent(
             enUS: String.markdownInstructionsEN,
             frFR: String.markdownInstructionsFR)
     }
 
     // swiftlint:disable trailing_comma
     func makeEmptyStepArray() -> [[Step]] {
-        return [
+        [
             Array(
                 repeating: Step(
                     interface: interface,
@@ -165,7 +165,7 @@ class ExplorerActivity: ObservableObject {
     var melodyAnswers = ["pink", "red", "orange", "yellow", "green", "blue", "purple"]
 
     func stepInstruction() -> LocalizedContent {
-        return LocalizedContent(
+        LocalizedContent(
             enUS: stepInstructions,
             frFR: stepInstructions)
     }
