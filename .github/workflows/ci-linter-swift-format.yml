@@ -29,6 +29,8 @@ jobs:
           echo ""
           echo "🏃‍♂️ Running swift-format on modified files 🤵‍♂️"
 
+          swift-format --version
+
           git diff --name-status origin/main          \
             | grep -E "^A|^M" | sed "s/^[AM]\t//g"    \
             | grep -E "\.swift\$$"                    \
