@@ -13,6 +13,7 @@
     "lineBreakBeforeEachGenericRequirement": false,
     "lineLength": 120,
     "maximumBlankLines": 1,
+    "multiElementCollectionTrailingCommas": true,
     "prioritizeKeepingFunctionOutputTogether": false,
     "respectsExistingLineBreaks": true,
     "rules": {
