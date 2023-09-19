@@ -6,16 +6,34 @@ import ProjectDescription
 
 let dependencies = Dependencies(
     swiftPackageManager: [
-        .remote(url: "https://github.com/jpsim/Yams", requirement: .upToNextMajor(from: "5.0.5")),
-        .remote(url: "https://github.com/airbnb/lottie-ios", requirement: .upToNextMajor(from: "4.1.3")),
-        .remote(url: "https://github.com/gonzalezreal/swift-markdown-ui", requirement: .upToNextMajor(from: "2.0.2")),
-        .remote(url: "https://github.com/apple/swift-argument-parser", requirement: .upToNextMajor(from: "1.2.2")),
         .remote(
-            url: "https://github.com/StarryInternet/CombineCoreBluetooth", requirement: .upToNextMajor(from: "0.3.1")),
+            url: "https://github.com/jpsim/Yams",
+            requirement: .exact("5.0.6")
+        ),
         .remote(
-            url: "https://github.com/michael94ellis/SwiftUIJoystick", requirement: .upToNextMajor(from: "1.0.3")),
+            url: "https://github.com/airbnb/lottie-ios",
+            requirement: .exact("4.3.0")
+        ),
         .remote(
-            url: "https://github.com/AudioKit/AudioKit", requirement: .upToNextMajor(from: "5.6.0")),
+            url: "https://github.com/gonzalezreal/swift-markdown-ui",
+            requirement: .exact("2.2.0")
+        ),
+        .remote(
+            url: "https://github.com/apple/swift-argument-parser",
+            requirement: .exact("1.2.3")
+        ),
+        .remote(
+            url: "https://github.com/StarryInternet/CombineCoreBluetooth",
+            requirement: .exact("0.6.0")
+        ),
+        .remote(
+            url: "https://github.com/michael94ellis/SwiftUIJoystick",
+            requirement: .exact("1.5.0")
+        ),
+        .remote(
+            url: "https://github.com/AudioKit/AudioKit",
+            requirement: .exact("5.6.0")
+        ),
     ],
     platforms: [.iOS, .macOS]
 )
