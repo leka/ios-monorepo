@@ -111,6 +111,11 @@ let kListOfAvailablesActivities: [ActivityModel] = [
         view: AnyView(ListenThenTouchToSelectSixChoicesActivity())
     ),
     ActivityModel(
+        title: "BasketOne",
+        instructions: "Fais glisser la pastèque dans le panier",
+        view: AnyView(DragAndDropBasketOneChoiceActivity())
+    ),
+    ActivityModel(
         title: "Xylophone",
         instructions: "Play xylophone with Leka",
         view: AnyView(XylophoneActivity())
