@@ -75,3 +75,12 @@ struct ColoredAnswerView: View {
         view
     }
 }
+
+struct ColoredAnswerView_Previews:
+    PreviewProvider
+{
+    static var previews: some View {
+        ColoredAnswerView(color: "red", size: 500, status: .playingRightAnimation)
+            .previewInterfaceOrientation(.landscapeLeft)
+    }
+}

@@ -70,3 +70,12 @@ struct TextAnswerView: View {
         view
     }
 }
+
+struct TextAnswerView_Previews:
+    PreviewProvider
+{
+    static var previews: some View {
+        TextAnswerView(text: "Hello", size: 500, status: .playingRightAnimation)
+            .previewInterfaceOrientation(.landscapeLeft)
+    }
+}
