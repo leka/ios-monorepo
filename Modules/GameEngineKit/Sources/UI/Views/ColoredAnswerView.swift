@@ -14,11 +14,12 @@ struct ColoredAnswerView: View {
 
     @ViewBuilder
     var view: some View {
-        let circle = Circle()
-            .foregroundColor(color)
+        let circle = Image(systemName: "circle.fill")
+            .foregroundStyle(color)
+            .font(.system(size: size))
             .frame(
-                width: size,
-                height: size
+                width: size * 1.05,
+                height: size * 1.05
             )
 
         switch status {
