@@ -10,13 +10,13 @@ struct RobotControlView: View {
         VStack {
             Text("Remote control the robot")
         }
+        .navigationTitle("Robot Control")
     }
 
 }
 
-struct RobotControlView_Previews: PreviewProvider {
-    static var previews: some View {
+#Preview {
+    NavigationStack {
         RobotControlView()
-            .previewInterfaceOrientation(.landscapeLeft)
     }
 }
