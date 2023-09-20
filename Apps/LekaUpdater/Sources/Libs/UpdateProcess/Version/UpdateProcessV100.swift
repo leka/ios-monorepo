@@ -82,7 +82,7 @@ private class StateSettingDestinationPath: GKState, StateEventProcessor {
     }
 
     override func didEnter(from previousState: GKState?) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: setDestinationPath)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: setDestinationPath)
     }
 
     func process(event: UpdateEvent) {
@@ -169,7 +169,7 @@ private class StateSendingFile: GKState, StateEventProcessor {
     }
 
     override func didEnter(from previousState: GKState?) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: sendFile)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: sendFile)
     }
 
     override func willExit(to nextState: GKState) {
@@ -198,7 +198,7 @@ private class StateSendingFile: GKState, StateEventProcessor {
 
     private func tryToSendNextPacket() {
         if isInCriticalSection() {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: self.tryToSendNextPacket)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: self.tryToSendNextPacket)
             return
         }
 
@@ -244,8 +244,8 @@ private class StateApplyingUpdate: GKState, StateEventProcessor {
 
     override func didEnter(from previousState: GKState?) {
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: setMajorMinorRevision)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: applyUpdate)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: setMajorMinorRevision)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: applyUpdate)
 
     }
 
