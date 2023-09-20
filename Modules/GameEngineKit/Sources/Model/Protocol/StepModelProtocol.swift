@@ -9,6 +9,7 @@ public enum GameplayType {
     case selectTheRightAnswer
     case selectAllRightAnswers
     case selectSomeRightAnswers(Int)
+    case colorQuest
 }
 
 public enum InterfaceType {

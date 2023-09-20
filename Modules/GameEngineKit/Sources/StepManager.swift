@@ -56,6 +56,8 @@ public class StepManager: ObservableObject {
             case .selectSomeRightAnswers(let answersNumber):
                 return GameplaySelectSomeRightAnswers(
                     choices: stepModel.choices, rightAnswersToFind: answersNumber)
+            case .colorQuest:
+                return ColorQuestGameplay(choices: stepModel.choices)
         }
     }
 
