@@ -2,6 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import DesignKit
 import SwiftUI
 
 struct TextAnswerView: View {
@@ -15,15 +16,17 @@ struct TextAnswerView: View {
     @ViewBuilder
     var view: some View {
         let circle = ZStack {
-            Circle()
-                .fill(.gray.opacity(0.8))
+            Image(systemName: "circle.fill")
+                .foregroundStyle(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
+                .font(.system(size: size))
                 .frame(
-                    width: size,
-                    height: size
+                    width: size * 1.05,
+                    height: size * 1.05
                 )
 
             Text(text.uppercased())
-                .font(.title.bold())
+                .font(.largeTitle.uppercaseSmallCaps())
+                .foregroundColor(.white)
         }
 
         switch status {
@@ -65,5 +68,14 @@ struct TextAnswerView: View {
 
     var body: some View {
         view
+    }
+}
+
+struct TextAnswerView_Previews:
+    PreviewProvider
+{
+    static var previews: some View {
+        TextAnswerView(text: "Hello", size: 500, status: .playingRightAnimation)
+            .previewInterfaceOrientation(.landscapeLeft)
     }
 }
