@@ -14,6 +14,7 @@ public struct ListenSixChoicesView: View {
     public init(gameplay: any GameplayProtocol, audioRecording: AudioRecordingModel) {
         self.viewModel = GenericViewModel(gameplay: gameplay)
         self.audioPlayer = AudioPlayer(audioRecording: audioRecording)
+        gameplay.setup()
     }
 
     public var body: some View {

@@ -16,6 +16,10 @@ public class GameplaySelectAllRightAnswers: GameplayProtocol {
         self.state.send(.playing)
     }
 
+	public func setup() {
+		// Nothing to do
+	}
+
     public func process(choice: ChoiceViewModel) {
         if choice.rightAnswer {
             if let index = choices.value.firstIndex(where: { $0.id == choice.id && $0.status != .playingRightAnimation }

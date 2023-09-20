@@ -11,6 +11,7 @@ public struct OneChoiceView: View {
 
     public init(gameplay: any GameplayProtocol) {
         self.viewModel = GenericViewModel(gameplay: gameplay)
+        gameplay.setup()
     }
 
     public var body: some View {

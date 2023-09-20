@@ -24,7 +24,9 @@ public class MelodyGameplay {
         self.xyloPlayer.loadMIDIFile(fileUrl: song.midiFile, tempo: song.tempo)
         self.midiNotes = xyloPlayer.getMidiNotes()
         self.currentNoteNumber = midiNotes[currentNoteIndex].noteNumber - song.octaveGap
+    }
 
+    func setup() {
         // TODO(@ladislas): Light on Leka lights with the following color getter
         print(getColorFromMIDINote())
     }

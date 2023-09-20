@@ -9,5 +9,6 @@ public protocol GameplayProtocol: ObservableObject {
     var choices: CurrentValueSubject<[ChoiceViewModel], Never> { get set }
     var state: CurrentValueSubject<GameplayState, Never> { get set }
 
+    func setup()
     func process(choice: ChoiceViewModel)
 }
