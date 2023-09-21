@@ -34,6 +34,8 @@ public struct XylophoneView: View {
             ForEach(kListOfXylophoneTiles) { tile in
                 Button {
                     xyloPlayer.noteOn(number: tile.noteNumber)
+                    // TODO(@ladislas): Light on Leka lights with tile.color
+                    print("Leka is \(tile.color)")
                 } label: {
                     tile.color
                 }
