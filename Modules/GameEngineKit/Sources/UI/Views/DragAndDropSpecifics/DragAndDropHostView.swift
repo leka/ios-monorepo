@@ -7,8 +7,8 @@ import SwiftUI
 
 struct DragAndDropHostView: View {
 
-//    @EnvironmentObject var gameEngine: GameEngine
-    @ObservedObject var viewModel: GenericViewModel
+    //    @EnvironmentObject var gameEngine: GameEngine
+    //    @ObservedObject var viewModel: GenericViewModel
     var scene: SKScene
 
     var body: some View {
@@ -27,8 +27,8 @@ struct DragAndDropHostView: View {
         guard let properScene = dragAndDropScene as? DragAndDropSceneProtocol else {
             return SKScene()
         }
-//        properScene.gameEngine = gameEngine
-//        properScene.vi
+        //        properScene.gameEngine = gameEngine
+        //        properScene.viewModel = viewModel
         properScene.size = CGSize(width: size.width, height: size.height)
 
         return properScene

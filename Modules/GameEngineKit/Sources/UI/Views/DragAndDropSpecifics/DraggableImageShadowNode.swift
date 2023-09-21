@@ -6,18 +6,21 @@ import SpriteKit
 
 class DraggableImageShadowNode: SKSpriteNode {
 
-    init(draggableItemNode: DraggableImageAnswerNode) {
-        super.init(texture: draggableItemNode.texture, color: draggableItemNode.color, size: draggableItemNode.size)
+    init(draggableImageAnswerNode: DraggableImageAnswerNode) {
+        super
+            .init(
+                texture: draggableImageAnswerNode.texture, color: draggableImageAnswerNode.color,
+                size: draggableImageAnswerNode.size)
 
-        let actionShadow = SKAction.setTexture(draggableItemNode.texture!, resize: true)
+        let actionShadow = SKAction.setTexture(draggableImageAnswerNode.texture!, resize: true)
         self.run(actionShadow)
 
         self.blendMode = SKBlendMode.alpha
         self.colorBlendFactor = 1.0
         self.color = .black
         self.alpha = 0.15
-        self.setScale(draggableItemNode.xScale)
-        self.position = draggableItemNode.position
+        self.setScale(draggableImageAnswerNode.xScale)
+        self.position = draggableImageAnswerNode.position
     }
 
     required init?(coder aDecoder: NSCoder) {

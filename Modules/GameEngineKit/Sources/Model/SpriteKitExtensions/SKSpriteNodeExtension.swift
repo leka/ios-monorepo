@@ -7,13 +7,13 @@ import SwiftUI
 
 extension SKSpriteNode {
     func fullyContains(bounds: CGRect) -> Bool {
-        return (self.position.x - (self.size.width / 2) >= bounds.minX)
+        (self.position.x - (self.size.width / 2) >= bounds.minX)
             && (self.position.y - (self.size.height / 2) >= bounds.minY)
             && (self.position.x + (self.size.width / 2) <= bounds.maxX)
             && (self.position.y + (self.size.height / 2) <= bounds.maxY)
     }
     func fullyContains(location: CGPoint, bounds: CGRect) -> Bool {
-        return (location.x - (self.size.width / 3) >= bounds.minX)
+        (location.x - (self.size.width / 3) >= bounds.minX)
             && (location.y - (self.size.height / 3) >= bounds.minY)
             && (location.x + (self.size.width / 3) <= bounds.maxX)
             && (location.y + (self.size.height / 3) <= bounds.maxY)

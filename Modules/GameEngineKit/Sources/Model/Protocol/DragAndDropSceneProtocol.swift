@@ -5,11 +5,14 @@
 import SpriteKit
 
 protocol DragAndDropSceneProtocol: SKScene {
-    var gameEngine: GameEngine? { get set }
+    //    var gameEngine: GameEngine? { get set }
+    //    var viewModel: GenericViewModel? { get set }
+    var choices: [ChoiceViewModel] { get }
+    var contexts: [ContextModel] { get set }
     var spacer: CGFloat { get }
     var biggerSide: CGFloat { get }
     var defaultPosition: CGPoint { get set }
-    var selectedNodes: [UITouch: DraggableItemNode] { get set }
+    var selectedNodes: [UITouch: DraggableImageAnswerNode] { get set }
     var expectedItemsNodes: [String: [SKSpriteNode]] { get }
     var dropAreas: [SKSpriteNode] { get }
 
@@ -17,46 +20,46 @@ protocol DragAndDropSceneProtocol: SKScene {
     func makeDropArea()
     func getExpectedItems()
     func reset()
-    func dropGoodAnswer(_ node: DraggableItemNode)
-    func snapBack(node: DraggableItemNode, touch: UITouch)
+    func dropGoodAnswer(_ node: DraggableImageAnswerNode)
+    func snapBack(node: DraggableImageAnswerNode, touch: UITouch)
     func onDragAnimation(_ node: SKSpriteNode)
     func dropAction(_ node: SKSpriteNode)
 }
 
 extension DragAndDropSceneProtocol {
 
-    var biggerSide: CGFloat { return 130 }
-    var dropAreas: [SKSpriteNode] { return [] }
+    var biggerSide: CGFloat { 130 }
+    var dropAreas: [SKSpriteNode] { [] }
 
     @MainActor func makeAnswers() {
-        for choice in gameEngine!.allAnswers {
-            let draggableItemNode: DraggableItemNode = DraggableItemNode(
-                texture: SKTexture(imageNamed: choice),
-                name: choice,
+        for choice in choices {
+            let draggableImageAnswerNode: DraggableImageAnswerNode = DraggableImageAnswerNode(
+                texture: SKTexture(imageNamed: choice.item),
+                name: choice.item,
                 position: self.defaultPosition)
-            let draggableItemShadowNode: DraggableItemShadowNode = DraggableItemShadowNode(
-                draggableItemNode: draggableItemNode)
+            let draggableImageShadowNode: DraggableImageShadowNode = DraggableImageShadowNode(
+                draggableImageAnswerNode: draggableImageAnswerNode)
 
             // normalize Nodes' sizes
-            draggableItemNode.scaleForMax(sizeOf: biggerSide)
-            draggableItemShadowNode.scaleForMax(sizeOf: biggerSide)
+            draggableImageAnswerNode.scaleForMax(sizeOf: biggerSide)
+            draggableImageShadowNode.scaleForMax(sizeOf: biggerSide)
 
             // prevent Nodes from going out of bounds
             let xRange = SKRange(lowerLimit: 0, upperLimit: size.width - 80)
             let yRange = SKRange(lowerLimit: 0, upperLimit: size.height - 80)
-            draggableItemNode.constraints = [SKConstraint.positionX(xRange, y: yRange)]
-            draggableItemShadowNode.constraints = [SKConstraint.positionX(xRange, y: yRange)]
+            draggableImageAnswerNode.constraints = [SKConstraint.positionX(xRange, y: yRange)]
+            draggableImageShadowNode.constraints = [SKConstraint.positionX(xRange, y: yRange)]
 
             // spacing between items
             self.defaultPosition.x += spacer
 
-            addChild(draggableItemShadowNode)
-            addChild(draggableItemNode)
+            addChild(draggableImageShadowNode)
+            addChild(draggableImageAnswerNode)
         }
     }
 
     // wrong answer behavior
-    func snapBack(node: DraggableItemNode, touch: UITouch) {
+    func snapBack(node: DraggableImageAnswerNode, touch: UITouch) {
         let moveAnimation: SKAction = SKAction.move(to: node.defaultPosition!, duration: 0.25)
             .moveAnimation(.easeOut)
         let group: DispatchGroup = DispatchGroup()

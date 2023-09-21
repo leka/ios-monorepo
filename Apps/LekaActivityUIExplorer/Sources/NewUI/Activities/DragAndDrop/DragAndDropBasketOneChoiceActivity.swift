@@ -23,15 +23,31 @@ private let choicesStep4 = [
 
 private let choicesStep5 = [
     ChoiceViewModel(item: "watermelon", type: .image, rightAnswer: true)
-
 ]
 
+private let context = ContextModel(name: "basket", file: "basket", rightAnswers: ["watermelon"])
+
 private var steps: [StandardStepModel] = [
-    StandardStepModel(choices: choicesStep1, gameplay: .selectTheRightAnswer, interface: .oneChoice),
-    StandardStepModel(choices: choicesStep2, gameplay: .selectTheRightAnswer, interface: .oneChoice),
-    StandardStepModel(choices: choicesStep3, gameplay: .selectTheRightAnswer, interface: .oneChoice),
-    StandardStepModel(choices: choicesStep4, gameplay: .selectTheRightAnswer, interface: .oneChoice),
-    StandardStepModel(choices: choicesStep5, gameplay: .selectTheRightAnswer, interface: .oneChoice),
+    StandardStepModel(
+        choices: choicesStep1,
+        gameplay: .selectTheRightAnswer,
+        interface: .dragAndDropOneChoiceOneArea(context)),
+    StandardStepModel(
+        choices: choicesStep2,
+        gameplay: .selectTheRightAnswer,
+        interface: .dragAndDropOneChoiceOneArea(context)),
+    StandardStepModel(
+        choices: choicesStep3,
+        gameplay: .selectTheRightAnswer,
+        interface: .dragAndDropOneChoiceOneArea(context)),
+    StandardStepModel(
+        choices: choicesStep4,
+        gameplay: .selectTheRightAnswer,
+        interface: .dragAndDropOneChoiceOneArea(context)),
+    StandardStepModel(
+        choices: choicesStep5,
+        gameplay: .selectTheRightAnswer,
+        interface: .dragAndDropOneChoiceOneArea(context)),
 ]
 
 struct DragAndDropBasketOneChoiceActivity: View {

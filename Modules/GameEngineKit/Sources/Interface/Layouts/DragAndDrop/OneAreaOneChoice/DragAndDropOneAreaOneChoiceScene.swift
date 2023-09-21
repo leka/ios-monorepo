@@ -7,12 +7,25 @@ import SpriteKit
 class DragAndDropOneAreaOneChoiceScene: SKScene, DragAndDropSceneProtocol {
 
     // protocol requirements
-//    var gameEngine: GameEngine?
+    //    var gameEngine: GameEngine?
+    //    var viewModel: GenericViewModel?
+    var choices: [ChoiceViewModel]
+    var contexts: [ContextModel]
     var spacer: CGFloat = .zero
     var defaultPosition = CGPoint.zero
     var selectedNodes: [UITouch: DraggableImageAnswerNode] = [:]
-    var expectedItemsNodes = [String: [SKSpriteNode]]()
+    var expectedItemsNodes: [String: [SKSpriteNode]] = [:]
     var dropAreas: [SKSpriteNode] = []
+
+    public init(choices: [ChoiceViewModel], contexts: [ContextModel]) {
+        self.choices = choices
+        self.contexts = contexts
+        super.init(size: CGSize.zero)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     // protocol methods
     func reset() {
@@ -32,7 +45,7 @@ class DragAndDropOneAreaOneChoiceScene: SKScene, DragAndDropSceneProtocol {
         let dropArea = SKSpriteNode()
         dropArea.size = CGSize(width: 380, height: 280)
         dropArea.texture = SKTexture(imageNamed: "basket")
-        dropArea.position = CGPoint(x: size.width / 2, y: 145)
+        dropArea.position = CGPoint(x: size.width / 2, y: 145)  // y: dropArea.size.height/2 + 5
         dropArea.name = "basket"
         addChild(dropArea)
 
@@ -48,20 +61,18 @@ class DragAndDropOneAreaOneChoiceScene: SKScene, DragAndDropSceneProtocol {
     // Maybe don't put the entire gameEngine replacement
     func getExpectedItems() {
         // expected answer(s)
-        for group in gameEngine!.correctAnswersIndices {
-            for item in group.value {
-                let expectedItem = gameEngine!.allAnswers[item]
-                let expectedNode = SKSpriteNode()
-                let texture = SKTexture(imageNamed: expectedItem)
-                let action = SKAction.setTexture(texture, resize: true)
-                expectedNode.run(action)
-                expectedNode.name = expectedItem
-                expectedNode.texture = texture
-                expectedNode.scaleForMax(sizeOf: biggerSide * 0.9)
-                expectedNode.position = CGPoint(x: dropAreas[0].position.x + 80, y: 110)
-                (expectedItemsNodes[group.key, default: []]).append(expectedNode)
-                addChild(expectedNode)
-            }
+        for choice in choices where choice.rightAnswer {
+            let expectedItem = choice.item
+            let expectedNode = SKSpriteNode()
+            let texture = SKTexture(imageNamed: expectedItem)
+            let action = SKAction.setTexture(texture, resize: true)
+            expectedNode.run(action)
+            expectedNode.name = expectedItem
+            expectedNode.texture = texture
+            expectedNode.scaleForMax(sizeOf: biggerSide * 0.9)
+            expectedNode.position = CGPoint(x: dropAreas[0].position.x + 80, y: 110)
+            (expectedItemsNodes[contexts[0].name, default: []]).append(expectedNode)
+            addChild(expectedNode)
         }
     }
 
@@ -95,7 +106,7 @@ class DragAndDropOneAreaOneChoiceScene: SKScene, DragAndDropSceneProtocol {
         for touch in touches {
             let location = touch.location(in: self)
             if let node = self.atPoint(location) as? DraggableImageAnswerNode {
-                for choice in gameEngine!.allAnswers where node.name == choice && node.isDraggable {
+                for choice in choices where node.name == choice.item && node.isDraggable {
                     selectedNodes[touch] = node
                     onDragAnimation(node)
                     node.zPosition += 100
@@ -131,8 +142,8 @@ class DragAndDropOneAreaOneChoiceScene: SKScene, DragAndDropSceneProtocol {
 
             // dropped within the bounds of dropArea
             if node.fullyContains(bounds: dropAreas[0].frame) {
-                let index = gameEngine!.allAnswers.firstIndex(where: { $0 == node.name })
-                gameEngine?.answerHasBeenGiven(atIndex: index!, withinContext: dropAreas[0].name!)
+                let index = choices.firstIndex(where: { $0.item == node.name })
+                //                gameEngine?.answerHasBeenGiven(atIndex: index!, withinContext: dropAreas[0].name!)
                 guard expectedItemsNodes[dropAreas[0].name!, default: []].first(where: { $0.name == node.name }) != nil
                 else {
                     snapBack(node: node, touch: touch)
