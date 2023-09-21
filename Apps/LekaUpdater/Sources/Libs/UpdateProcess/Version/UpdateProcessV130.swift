@@ -312,6 +312,8 @@ private class StateVerifyingFile: GKState, StateEventProcessor {
     override func didEnter(from previousState: GKState?) {
         if previousState is StateSettingDestinationPath {
             nextStateIsClearingFile = true
+        } else {
+            nextStateIsClearingFile = false
         }
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: startFileVerification)
