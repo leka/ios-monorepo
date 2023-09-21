@@ -13,11 +13,11 @@ public struct XylophoneTile: Identifiable, Hashable {
 }
 
 let kListOfXylophoneTiles: [XylophoneTile] = [
-    XylophoneTile(id: 0, noteNumber: 24, color: .green),
-    XylophoneTile(id: 1, noteNumber: 26, color: .purple),
-    XylophoneTile(id: 2, noteNumber: 28, color: .red),
-    XylophoneTile(id: 3, noteNumber: 29, color: .yellow),
-    XylophoneTile(id: 4, noteNumber: 31, color: .blue),
+    XylophoneTile(id: 0, noteNumber: 24, color: DesignKitAsset.Colors.lekaActivityGreen.swiftUIColor),
+    XylophoneTile(id: 1, noteNumber: 26, color: DesignKitAsset.Colors.lekaActivityPurple.swiftUIColor),
+    XylophoneTile(id: 2, noteNumber: 28, color: DesignKitAsset.Colors.lekaActivityRed.swiftUIColor),
+    XylophoneTile(id: 3, noteNumber: 29, color: DesignKitAsset.Colors.lekaActivityYellow.swiftUIColor),
+    XylophoneTile(id: 4, noteNumber: 31, color: DesignKitAsset.Colors.lekaActivityBlue.swiftUIColor),
 ]
 
 public struct XylophoneView: View {

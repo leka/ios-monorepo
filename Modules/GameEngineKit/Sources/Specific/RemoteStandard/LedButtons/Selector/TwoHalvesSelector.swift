@@ -2,6 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import DesignKit
 import SwiftUI
 
 struct TwoHalvesSelector: View {
@@ -24,16 +25,16 @@ struct TwoHalvesSelector: View {
             beltSectionButtons
 
             HStack(spacing: 50) {
-                EarButton(selectedEar: .left, color: .orange)
-                EarButton(selectedEar: .right, color: .blue)
+                EarButton(selectedEar: .left, color: DesignKitAsset.Colors.lekaActivityOrange.swiftUIColor)
+                EarButton(selectedEar: .right, color: DesignKitAsset.Colors.lekaActivityBlue.swiftUIColor)
             }
         }
     }
 
     private var beltSectionButtons: some View {
         ZStack {
-            BeltSectionButton(section: .right, color: .red)
-            BeltSectionButton(section: .left, color: .blue)
+            BeltSectionButton(section: .right, color: DesignKitAsset.Colors.lekaActivityRed.swiftUIColor)
+            BeltSectionButton(section: .left, color: DesignKitAsset.Colors.lekaActivityBlue.swiftUIColor)
         }
     }
 }

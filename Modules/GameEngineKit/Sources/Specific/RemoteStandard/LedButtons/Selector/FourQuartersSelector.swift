@@ -2,6 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import DesignKit
 import SwiftUI
 
 struct FourQuartersSelector: View {
@@ -24,18 +25,18 @@ struct FourQuartersSelector: View {
             beltSectionButtons
 
             HStack(spacing: 50) {
-                EarButton(selectedEar: .left, color: .orange)
-                EarButton(selectedEar: .right, color: .blue)
+                EarButton(selectedEar: .left, color: DesignKitAsset.Colors.lekaActivityOrange.swiftUIColor)
+                EarButton(selectedEar: .right, color: DesignKitAsset.Colors.lekaActivityBlue.swiftUIColor)
             }
         }
     }
 
     private var beltSectionButtons: some View {
         ZStack {
-            BeltSectionButton(section: .frontRight, color: .green)
-            BeltSectionButton(section: .backRight, color: .blue)
-            BeltSectionButton(section: .backLeft, color: .red)
-            BeltSectionButton(section: .frontLeft, color: .yellow)
+            BeltSectionButton(section: .frontRight, color: DesignKitAsset.Colors.lekaActivityGreen.swiftUIColor)
+            BeltSectionButton(section: .backRight, color: DesignKitAsset.Colors.lekaActivityBlue.swiftUIColor)
+            BeltSectionButton(section: .backLeft, color: DesignKitAsset.Colors.lekaActivityRed.swiftUIColor)
+            BeltSectionButton(section: .frontLeft, color: DesignKitAsset.Colors.lekaActivityYellow.swiftUIColor)
         }
     }
 }

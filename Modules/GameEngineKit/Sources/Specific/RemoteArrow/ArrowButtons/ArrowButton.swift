@@ -2,6 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import DesignKit
 import SwiftUI
 
 enum Arrow {
@@ -23,13 +24,13 @@ enum Arrow {
     public var color: Color {
         switch self {
             case .forward:
-                return .blue
+                return DesignKitAsset.Colors.lekaActivityBlue.swiftUIColor
             case .right:
-                return .red
+                return DesignKitAsset.Colors.lekaActivityRed.swiftUIColor
             case .backward:
-                return .green
+                return DesignKitAsset.Colors.lekaActivityGreen.swiftUIColor
             case .left:
-                return .yellow
+                return DesignKitAsset.Colors.lekaActivityYellow.swiftUIColor
         }
     }
 }

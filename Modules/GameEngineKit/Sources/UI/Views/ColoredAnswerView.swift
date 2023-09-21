@@ -2,6 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import DesignKit
 import SwiftUI
 
 struct ColoredAnswerView: View {
@@ -61,13 +62,14 @@ struct ColoredAnswerView: View {
 
     static func stringToColor(from: String) -> Color {
         switch from {
-            case "red": return .red
-            case "pink": return .pink
-            case "purple": return .purple
-            case "blue": return .blue
-            case "green": return .green
-            case "yellow": return .yellow
-            default: return .blue
+            case "red": return DesignKitAsset.Colors.lekaActivityRed.swiftUIColor
+            case "orange": return DesignKitAsset.Colors.lekaActivityOrange.swiftUIColor
+            case "yellow": return DesignKitAsset.Colors.lekaActivityYellow.swiftUIColor
+            case "green": return DesignKitAsset.Colors.lekaActivityGreen.swiftUIColor
+            case "blue": return DesignKitAsset.Colors.lekaActivityBlue.swiftUIColor
+            case "pink": return DesignKitAsset.Colors.lekaActivityPink.swiftUIColor
+            case "purple": return DesignKitAsset.Colors.lekaActivityPurple.swiftUIColor
+            default: return .black
         }
     }
 
