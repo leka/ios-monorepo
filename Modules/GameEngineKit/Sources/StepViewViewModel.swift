@@ -51,6 +51,8 @@ public class StepViewViewModel: ObservableObject {
                     choices: stepModel.choices, rightAnswersToFind: answersNumber)
             case .colorBingo:
                 return ColorBingoGameplay(choices: stepModel.choices)
+            case .superSimon(let answerIndexOrder):
+                return SuperSimonGameplay(choices: stepModel.choices, answerIndexOrder: answerIndexOrder)
         }
     }
 

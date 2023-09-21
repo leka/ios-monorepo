@@ -10,6 +10,7 @@ public enum GameplayType {
     case selectAllRightAnswers
     case selectSomeRightAnswers(Int)
     case colorBingo
+    case superSimon([Int])
 }
 
 public enum InterfaceType {
