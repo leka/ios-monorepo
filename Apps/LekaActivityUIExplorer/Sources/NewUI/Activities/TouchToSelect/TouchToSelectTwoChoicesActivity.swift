@@ -39,7 +39,7 @@ private var steps: [StandardStepModel] = [
 ]
 
 struct TouchToSelectTwoChoicesActivity: View {
-    @ObservedObject private var stepManager = StepManager(steps: steps)
+    @StateObject private var stepManager = StepManager(steps: steps)
 
     var body: some View {
         stepManager.interface

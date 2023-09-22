@@ -6,7 +6,7 @@ import AudioKit
 import Combine
 import SwiftUI
 
-public class MelodyGameplay {
+public class MelodyGameplay: ObservableObject {
     @Published public var progress: CGFloat = 0.0
     @Published public var state: GameplayState = .idle
 

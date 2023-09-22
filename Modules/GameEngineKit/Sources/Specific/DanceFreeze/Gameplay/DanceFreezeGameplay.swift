@@ -5,7 +5,7 @@
 import Combine
 import SwiftUI
 
-public class DanceFreezeGameplay {
+public class DanceFreezeGameplay: ObservableObject {
     var audioPlayer: AudioPlayer
     @Published public var progress: CGFloat = 0.0
     @Published public var state: GameplayState = .idle
