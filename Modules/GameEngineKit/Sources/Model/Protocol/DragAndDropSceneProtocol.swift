@@ -5,9 +5,7 @@
 import SpriteKit
 
 protocol DragAndDropSceneProtocol: SKScene {
-    //    var gameEngine: GameEngine? { get set }
-    //    var viewModel: GenericViewModel? { get set }
-    var choices: [ChoiceViewModel] { get }
+    var viewModel: GenericViewModel { get }
     var contexts: [ContextModel] { get set }
     var spacer: CGFloat { get }
     var biggerSide: CGFloat { get }
@@ -32,13 +30,14 @@ extension DragAndDropSceneProtocol {
     var dropAreas: [SKSpriteNode] { [] }
 
     @MainActor func makeAnswers() {
-        for choice in choices {
-            let draggableImageAnswerNode: DraggableImageAnswerNode = DraggableImageAnswerNode(
-                texture: SKTexture(imageNamed: choice.item),
-                name: choice.item,
-                position: self.defaultPosition)
-            let draggableImageShadowNode: DraggableImageShadowNode = DraggableImageShadowNode(
-                draggableImageAnswerNode: draggableImageAnswerNode)
+        for choice in viewModel.choices {
+            let draggableImageAnswerNode = DraggableImageAnswerNode(
+                choice: choice,
+                position: self.defaultPosition
+            )
+            let draggableImageShadowNode = DraggableImageShadowNode(
+                draggableImageAnswerNode: draggableImageAnswerNode
+            )
 
             // normalize Nodes' sizes
             draggableImageAnswerNode.scaleForMax(sizeOf: biggerSide)

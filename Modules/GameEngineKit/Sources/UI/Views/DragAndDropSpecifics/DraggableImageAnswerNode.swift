@@ -9,13 +9,13 @@ class DraggableImageAnswerNode: SKSpriteNode {
     var isDraggable: Bool = true
     var defaultPosition: CGPoint?
 
-    init(texture: SKTexture, name: String, scale: CGFloat = 1, position: CGPoint) {
-        super.init(texture: texture, color: .clear, size: CGSize.zero)
+    init(choice: ChoiceViewModel, scale: CGFloat = 1, position: CGPoint) {
+        super.init(texture: SKTexture(imageNamed: choice.item), color: .clear, size: CGSize.zero)
 
-        let action = SKAction.setTexture(texture, resize: true)
+        let action = SKAction.setTexture(texture!, resize: true)
         self.run(action)
 
-        self.name = name
+        self.name = choice.item
         self.texture = texture
         self.setScale(scale)
         self.size = size

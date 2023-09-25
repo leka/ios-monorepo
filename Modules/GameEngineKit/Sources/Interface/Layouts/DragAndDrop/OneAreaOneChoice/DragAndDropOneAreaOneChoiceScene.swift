@@ -7,9 +7,8 @@ import SpriteKit
 class DragAndDropOneAreaOneChoiceScene: SKScene, DragAndDropSceneProtocol {
 
     // protocol requirements
-    //    var gameEngine: GameEngine?
-    //    var viewModel: GenericViewModel?
-    var choices: [ChoiceViewModel]
+    //    var choices: [ChoiceViewModel]
+    var viewModel: GenericViewModel
     var contexts: [ContextModel]
     var spacer: CGFloat = .zero
     var defaultPosition = CGPoint.zero
@@ -17,8 +16,13 @@ class DragAndDropOneAreaOneChoiceScene: SKScene, DragAndDropSceneProtocol {
     var expectedItemsNodes: [String: [SKSpriteNode]] = [:]
     var dropAreas: [SKSpriteNode] = []
 
-    public init(choices: [ChoiceViewModel], contexts: [ContextModel]) {
-        self.choices = choices
+    //    public init(choices: [ChoiceViewModel], contexts: [ContextModel]) {
+    //        self.choices = choices
+    //        self.contexts = contexts
+    //        super.init(size: CGSize.zero)
+    //    }
+    public init(viewModel: GenericViewModel, contexts: [ContextModel]) {
+        self.viewModel = viewModel
         self.contexts = contexts
         super.init(size: CGSize.zero)
     }
@@ -39,14 +43,12 @@ class DragAndDropOneAreaOneChoiceScene: SKScene, DragAndDropSceneProtocol {
         makeAnswers()
     }
 
-    // Make the following a standalone View
-    // put size as parameter
     func makeDropArea() {
         let dropArea = SKSpriteNode()
-        dropArea.size = CGSize(width: 380, height: 280)
-        dropArea.texture = SKTexture(imageNamed: "basket")
-        dropArea.position = CGPoint(x: size.width / 2, y: 145)  // y: dropArea.size.height/2 + 5
-        dropArea.name = "basket"
+        dropArea.size = contexts[0].size
+        dropArea.texture = SKTexture(imageNamed: contexts[0].file)
+        dropArea.position = CGPoint(x: size.width / 2, y: contexts[0].size.height / 2)
+        dropArea.name = contexts[0].name
         addChild(dropArea)
 
         dropAreas.append(dropArea)
@@ -54,14 +56,9 @@ class DragAndDropOneAreaOneChoiceScene: SKScene, DragAndDropSceneProtocol {
         getExpectedItems()
     }
 
-    // Include this within the makeDroppAreaView above...
-    // there is a version of this without added child (like empty basket etc...)
-    // AND a version where I just get the expected answers
-    // This just need the correct Answers from the Choices
-    // Maybe don't put the entire gameEngine replacement
     func getExpectedItems() {
         // expected answer(s)
-        for choice in choices where choice.rightAnswer {
+        for choice in viewModel.choices where choice.rightAnswer {
             let expectedItem = choice.item
             let expectedNode = SKSpriteNode()
             let texture = SKTexture(imageNamed: expectedItem)
@@ -87,11 +84,17 @@ class DragAndDropOneAreaOneChoiceScene: SKScene, DragAndDropSceneProtocol {
             y: 110)
         node.zPosition = 10
         node.isDraggable = false
+        //        node.choice.status = .notSelected // triggers below
         dropAction(node)
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
             self.reset()
         }
     }
+    //
+    //
+    //
+    //
+    // The scene itself will use the triggers (statuses) and dispatch them
 
     // MARK: - SKScene specifics
     // init
@@ -101,15 +104,15 @@ class DragAndDropOneAreaOneChoiceScene: SKScene, DragAndDropSceneProtocol {
     }
 
     // overriden Touches states
-    // this just needs the Choices, not the entire GameEngine
     override func touchesBegan(_ touches: Set<UITouch>, with: UIEvent?) {
         for touch in touches {
             let location = touch.location(in: self)
             if let node = self.atPoint(location) as? DraggableImageAnswerNode {
-                for choice in choices where node.name == choice.item && node.isDraggable {
+                for choice in viewModel.choices where node.name == choice.item && node.isDraggable {
                     selectedNodes[touch] = node
                     onDragAnimation(node)
                     node.zPosition += 100
+                    //                    choice.status = .selected
                 }
             }
         }
@@ -125,6 +128,7 @@ class DragAndDropOneAreaOneChoiceScene: SKScene, DragAndDropSceneProtocol {
                     node.position = location
                 } else {
                     self.touchesEnded(touches, with: event)
+                    //                    choice.status = .notSelected
                 }
             }
         }
@@ -139,18 +143,21 @@ class DragAndDropOneAreaOneChoiceScene: SKScene, DragAndDropSceneProtocol {
             }
             let node: DraggableImageAnswerNode = selectedNodes[touch]!
             node.scaleForMax(sizeOf: biggerSide)
+            let index = viewModel.choices.firstIndex(where: { $0.item == node.name })
+            let choice = viewModel.choices[index!]
 
             // dropped within the bounds of dropArea
             if node.fullyContains(bounds: dropAreas[0].frame) {
-                let index = choices.firstIndex(where: { $0.item == node.name })
-                //                gameEngine?.answerHasBeenGiven(atIndex: index!, withinContext: dropAreas[0].name!)
-                guard expectedItemsNodes[dropAreas[0].name!, default: []].first(where: { $0.name == node.name }) != nil
-                else {
-                    snapBack(node: node, touch: touch)
-                    break
-                }
+                //                guard expectedItemsNodes[dropAreas[0].name!, default: []].first(where: { $0.name == node.name }) != nil
+                //                else {
+                //                    snapBack(node: node, touch: touch)
+                //                    viewModel.onChoiceTapped(choice: choice)
+                //                    break
+                //                }
+                viewModel.onChoiceTapped(choice: choice)
                 dropGoodAnswer(node)
                 selectedNodes[touch] = nil
+
                 break
             }
 

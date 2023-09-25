@@ -17,19 +17,8 @@ public struct DragAndDropOneAreaOneChoiceView: View {
     }
 
     public var body: some View {
-        //        HStack(spacing: horizontalSpacing) {
-        //            let choice = viewModel.choices[0]
-        //
-        //            ChoiceView(choice: choice, size: answerSize)
-        //                .onTapGesture {
-        //                    viewModel.onChoiceTapped(choice: choice)
-        //                }
-        //        }
-        let choices = viewModel.choices
-
         DragAndDropHostView(
-            scene: DragAndDropOneAreaOneChoiceScene(choices: choices, contexts: [context])
+            scene: DragAndDropOneAreaOneChoiceScene(viewModel: viewModel, contexts: [context])
         )
-        // add .onChoiceTapped equivalent here, maybe with binded action()
     }
 }

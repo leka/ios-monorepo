@@ -19,7 +19,7 @@ struct DragAndDropHostView: View {
             )
             .frame(width: proxy.size.width, height: proxy.size.height)
         }
-        .edgesIgnoringSafeArea([.vertical, .horizontal])
+        .edgesIgnoringSafeArea(.horizontal)
     }
 
     private func makeScene(size: CGSize) -> SKScene {
@@ -27,8 +27,6 @@ struct DragAndDropHostView: View {
         guard let properScene = dragAndDropScene as? DragAndDropSceneProtocol else {
             return SKScene()
         }
-        //        properScene.gameEngine = gameEngine
-        //        properScene.viewModel = viewModel
         properScene.size = CGSize(width: size.width, height: size.height)
 
         return properScene

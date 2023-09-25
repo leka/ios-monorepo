@@ -25,7 +25,11 @@ private let choicesStep5 = [
     ChoiceViewModel(item: "watermelon", type: .image, rightAnswer: true)
 ]
 
-private let context = ContextModel(name: "basket", file: "basket", rightAnswers: ["watermelon"])
+private let context = ContextModel(
+    name: "basket",
+    file: "basket",
+    size: CGSize(width: 380, height: 280),
+    rightAnswers: ["watermelon"])
 
 private var steps: [StandardStepModel] = [
     StandardStepModel(
