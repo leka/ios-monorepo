@@ -6,7 +6,7 @@ import GameEngineKit
 import SwiftUI
 
 struct MelodyActivity: View {
-    let gameplay = MelodyGameplay(song: kListOfMelodySongsAvailable[0])
+    @StateObject private var gameplay = MelodyGameplay(song: kListOfMelodySongsAvailable[0])
 
     var body: some View {
         MelodyView(gameplay: gameplay)
