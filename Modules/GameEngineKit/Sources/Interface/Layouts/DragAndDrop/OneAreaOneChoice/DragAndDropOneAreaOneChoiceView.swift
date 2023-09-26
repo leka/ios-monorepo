@@ -7,18 +7,16 @@ import SwiftUI
 
 public struct DragAndDropOneAreaOneChoiceView: View {
     @ObservedObject private var viewModel: GenericViewModel
-    let context: ContextModel
-    //    let horizontalSpacing: CGFloat = 32
-    //    let answerSize: CGFloat = 300
+    let contexts: [ContextModel]
 
-    public init(gameplay: any GameplayProtocol, context: ContextModel) {
+    public init(gameplay: any GameplayProtocol, contexts: [ContextModel]) {
         self.viewModel = GenericViewModel(gameplay: gameplay)
-        self.context = context
+        self.contexts = contexts
     }
 
     public var body: some View {
         DragAndDropHostView(
-            scene: DragAndDropOneAreaOneChoiceScene(viewModel: viewModel, contexts: [context])
+            scene: DragAndDropOneAreaOneChoiceScene(viewModel: viewModel, contexts: contexts)
         )
     }
 }

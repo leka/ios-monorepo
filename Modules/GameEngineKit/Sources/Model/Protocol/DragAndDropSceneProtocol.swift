@@ -12,12 +12,14 @@ protocol DragAndDropSceneProtocol: SKScene {
     var defaultPosition: CGPoint { get set }
     var selectedNodes: [UITouch: DraggableImageAnswerNode] { get set }
     var expectedItemsNodes: [String: [SKSpriteNode]] { get }
-    var dropAreas: [SKSpriteNode] { get }
+    var dropAreas: [SKSpriteNode] { get set }
 
+    func reset()
+    func layoutFirstAnswer()
     func makeAnswers()
+    func layoutNextAnswer()
     func makeDropArea()
     func getExpectedItems()
-    func reset()
     func dropGoodAnswer(_ node: DraggableImageAnswerNode)
     func snapBack(node: DraggableImageAnswerNode, touch: UITouch)
     func onDragAnimation(_ node: SKSpriteNode)
@@ -28,6 +30,17 @@ extension DragAndDropSceneProtocol {
 
     var biggerSide: CGFloat { 130 }
     var dropAreas: [SKSpriteNode] { [] }
+
+    func reset() {
+        self.backgroundColor = .clear
+        self.removeAllChildren()
+        self.removeAllActions()
+
+        layoutFirstAnswer()
+        makeDropArea()
+        getExpectedItems()
+        makeAnswers()
+    }
 
     @MainActor func makeAnswers() {
         for choice in viewModel.choices {
@@ -49,12 +62,42 @@ extension DragAndDropSceneProtocol {
             draggableImageAnswerNode.constraints = [SKConstraint.positionX(xRange, y: yRange)]
             draggableImageShadowNode.constraints = [SKConstraint.positionX(xRange, y: yRange)]
 
-            // spacing between items
-            self.defaultPosition.x += spacer
+            layoutNextAnswer()
 
             addChild(draggableImageShadowNode)
             addChild(draggableImageAnswerNode)
         }
+    }
+
+    func makeDropArea() {
+        let dropArea = SKSpriteNode()
+        dropArea.size = contexts[0].size
+        dropArea.texture = SKTexture(imageNamed: contexts[0].file)
+        dropArea.position = CGPoint(x: size.width / 2, y: contexts[0].size.height / 2)
+        dropArea.name = contexts[0].name
+        addChild(dropArea)
+
+        dropAreas.append(dropArea)
+    }
+
+    func layoutNextAnswer() {
+        // spacing between items
+        self.defaultPosition.x += spacer
+    }
+
+    // good answer behavior
+    func dropGoodAnswer(_ node: DraggableImageAnswerNode) {
+        node.scaleForMax(sizeOf: biggerSide * 0.8)
+        node.zPosition = 10
+        node.isDraggable = false
+        dropAction(node)
+        // How to track endGame??
+        // + below condition is for other gameplays ("...SelectAllTheGoodAnswers")
+        //        if viewModel.gameplay.state.value == .finished {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+            self.reset()
+        }
+        //        }
     }
 
     // wrong answer behavior

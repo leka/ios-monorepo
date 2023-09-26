@@ -111,11 +111,6 @@ let kListOfAvailablesActivities: [ActivityModel] = [
         view: AnyView(ListenThenTouchToSelectSixChoicesActivity())
     ),
     ActivityModel(
-        title: "BasketOne",
-        instructions: "Fais glisser la pastèque dans le panier",
-        view: AnyView(DragAndDropBasketOneChoiceActivity())
-    ),
-    ActivityModel(
         title: "Xylophone",
         instructions: "Play xylophone with Leka",
         view: AnyView(XylophoneActivity())
@@ -124,5 +119,15 @@ let kListOfAvailablesActivities: [ActivityModel] = [
         title: "Pairing",
         instructions: "Start sequence and observe the user's behavior interacting with Leka",
         view: AnyView(PairingActivity())
+    ),
+    ActivityModel(
+        title: "BasketOne",
+        instructions: "Fais glisser la pastèque dans le panier",  // will this become more general?
+        view: AnyView(DragAndDropBasketOneChoiceActivity())
+    ),
+    ActivityModel(
+        title: "DragAndDropOneAreaOneChoice",
+        instructions: "Fais glisser la banane dans la cuisine",
+        view: AnyView(DragAndDropOneAreaOneChoiceActivity())
     ),
 ]

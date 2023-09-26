@@ -7,8 +7,6 @@ import SwiftUI
 
 struct DragAndDropHostView: View {
 
-    //    @EnvironmentObject var gameEngine: GameEngine
-    //    @ObservedObject var viewModel: GenericViewModel
     var scene: SKScene
 
     var body: some View {

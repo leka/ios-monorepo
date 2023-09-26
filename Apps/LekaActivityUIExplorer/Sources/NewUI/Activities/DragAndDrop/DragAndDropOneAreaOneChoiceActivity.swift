@@ -6,32 +6,39 @@ import GameEngineKit
 import SwiftUI
 
 private let choicesStep1 = [
-    ChoiceViewModel(item: "watermelon", type: .image, rightAnswer: true)
+    ChoiceViewModel(item: "banana", type: .image, rightAnswer: true)
 ]
 
 private let choicesStep2 = [
-    ChoiceViewModel(item: "watermelon", type: .image, rightAnswer: true)
+    ChoiceViewModel(item: "kiwi", type: .image, rightAnswer: true)
 ]
 
 private let choicesStep3 = [
-    ChoiceViewModel(item: "watermelon", type: .image, rightAnswer: true)
+    ChoiceViewModel(item: "banana", type: .image, rightAnswer: true)
 ]
 
 private let choicesStep4 = [
-    ChoiceViewModel(item: "watermelon", type: .image, rightAnswer: true)
+    ChoiceViewModel(item: "kiwi", type: .image, rightAnswer: true)
 ]
 
 private let choicesStep5 = [
-    ChoiceViewModel(item: "watermelon", type: .image, rightAnswer: true)
+    ChoiceViewModel(item: "banana", type: .image, rightAnswer: true)
 ]
 
 private let context = [
     ContextModel(
-        name: "basket",
-        file: "basket",
-        size: CGSize(width: 380, height: 280),
-        hints: true,
-        rightAnswers: ["watermelon"])
+    name: "bathroom_asset_1",
+    file: "bathroom_asset_1",
+    size: CGSize(width: 385, height: 300),
+    rightAnswers: ["banana"]),
+]
+
+private let context2 = [
+    ContextModel(
+    name: "bathroom_asset_1",
+    file: "bathroom_asset_1",
+    size: CGSize(width: 385, height: 300),
+    rightAnswers: ["kiwi"]),
 ]
 
 private var steps: [StandardStepModel] = [
@@ -42,7 +49,7 @@ private var steps: [StandardStepModel] = [
     StandardStepModel(
         choices: choicesStep2,
         gameplay: .selectTheRightAnswer,
-        interface: .dragAndDropOneChoiceOneArea(context)),
+        interface: .dragAndDropOneChoiceOneArea(context2)),
     StandardStepModel(
         choices: choicesStep3,
         gameplay: .selectTheRightAnswer,
@@ -50,14 +57,14 @@ private var steps: [StandardStepModel] = [
     StandardStepModel(
         choices: choicesStep4,
         gameplay: .selectTheRightAnswer,
-        interface: .dragAndDropOneChoiceOneArea(context)),
+        interface: .dragAndDropOneChoiceOneArea(context2)),
     StandardStepModel(
         choices: choicesStep5,
         gameplay: .selectTheRightAnswer,
         interface: .dragAndDropOneChoiceOneArea(context)),
 ]
 
-struct DragAndDropBasketOneChoiceActivity: View {
+struct DragAndDropOneAreaOneChoiceActivity: View {
     @ObservedObject private var stepManager = StepManager(steps: steps)
 
     var body: some View {
@@ -65,9 +72,9 @@ struct DragAndDropBasketOneChoiceActivity: View {
     }
 }
 
-struct DragAndDropBasketOneChoiceActivity_Previews: PreviewProvider {
+struct DragAndDropOneAreaOneChoiceActivity_Previews: PreviewProvider {
     static var previews: some View {
-        DragAndDropBasketOneChoiceActivity()
+        DragAndDropOneAreaOneChoiceActivity()
             .previewInterfaceOrientation(.landscapeLeft)
     }
 }
