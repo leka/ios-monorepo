@@ -4,20 +4,6 @@
 
 import SwiftUI
 
-struct RobotControlStopButton: View {
-    var body: some View {
-        Button {
-            print("STOP ROBOT")
-            // TODO(@ladislas): Add command
-        } label: {
-            Image(systemName: "exclamationmark.octagon.fill")
-            Text("STOP")
-                .bold()
-        }
-        .buttonStyle(.robotControlPlainButtonStyle(foreground: .white, background: .red))
-    }
-}
-
 struct RobotControlActionButton: View {
 
     private let title: String
@@ -34,7 +20,6 @@ struct RobotControlActionButton: View {
 
     var body: some View {
         Button {
-            print(title)
             action()
         } label: {
             Image(systemName: image)
@@ -43,4 +28,12 @@ struct RobotControlActionButton: View {
         .buttonStyle(.robotControlBorderedButtonStyle(foreground: tint, border: tint))
     }
 
+}
+
+#Preview {
+    VStack {
+        RobotControlActionButton(title: "Say hello", image: "ellipsis.message", tint: .teal) {
+            print("Hello!")
+        }
+    }
 }

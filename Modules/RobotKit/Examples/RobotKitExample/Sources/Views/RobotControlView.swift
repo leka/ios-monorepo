@@ -93,9 +93,21 @@ struct RobotControlView: View {
         .navigationTitle("Robot Control")
         .toolbar {
             ToolbarItemGroup(placement: .topBarTrailing) {
-                RobotControlStopButton()
+                stopButton
             }
         }
+    }
+
+    var stopButton: some View {
+        Button {
+            print("STOP ROBOT")
+            // TODO(@ladislas): Add command
+        } label: {
+            Image(systemName: "exclamationmark.octagon.fill")
+            Text("STOP")
+                .bold()
+        }
+        .buttonStyle(.robotControlPlainButtonStyle(foreground: .white, background: .red))
     }
 
 }
