@@ -6,6 +6,12 @@ import Combine
 
 public class Robot {
 
+    public static var shared: Robot = Robot()
+
+    private init() {
+        // nothing to do yet
+    }
+
     // MARK: - General
 
     public func stop() {
