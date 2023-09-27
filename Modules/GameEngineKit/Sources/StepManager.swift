@@ -91,7 +91,7 @@ public class StepManager: ObservableObject {
                 ListenFourChoicesView(gameplay: currentGameplay, audioRecording: audioRecording)
             case .listenSixChoices(let audioRecording):
                 ListenSixChoicesView(gameplay: currentGameplay, audioRecording: audioRecording)
-            case .dragAndDropOneChoiceOneArea(let contexts):
+            case .dragAndDropOneAreaOneChoice(let contexts):
                 DragAndDropOneAreaOneChoiceView(gameplay: currentGameplay, contexts: contexts)
         }
     }

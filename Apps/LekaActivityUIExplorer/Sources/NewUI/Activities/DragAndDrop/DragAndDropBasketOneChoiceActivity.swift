@@ -31,34 +31,34 @@ private let context = [
         file: "basket",
         size: CGSize(width: 380, height: 280),
         hints: true,
-        rightAnswers: ["watermelon"]),
+        rightAnswers: ["watermelon"])
 ]
 
 private var steps: [StandardStepModel] = [
     StandardStepModel(
         choices: choicesStep1,
         gameplay: .selectTheRightAnswer,
-        interface: .dragAndDropOneChoiceOneArea(context)),
+        interface: .dragAndDropOneAreaOneChoice(context)),
     StandardStepModel(
         choices: choicesStep2,
         gameplay: .selectTheRightAnswer,
-        interface: .dragAndDropOneChoiceOneArea(context)),
+        interface: .dragAndDropOneAreaOneChoice(context)),
     StandardStepModel(
         choices: choicesStep3,
         gameplay: .selectTheRightAnswer,
-        interface: .dragAndDropOneChoiceOneArea(context)),
+        interface: .dragAndDropOneAreaOneChoice(context)),
     StandardStepModel(
         choices: choicesStep4,
         gameplay: .selectTheRightAnswer,
-        interface: .dragAndDropOneChoiceOneArea(context)),
+        interface: .dragAndDropOneAreaOneChoice(context)),
     StandardStepModel(
         choices: choicesStep5,
         gameplay: .selectTheRightAnswer,
-        interface: .dragAndDropOneChoiceOneArea(context)),
+        interface: .dragAndDropOneAreaOneChoice(context)),
 ]
 
 struct DragAndDropBasketOneChoiceActivity: View {
-    @ObservedObject private var stepManager = StepManager(steps: steps)
+    @StateObject private var stepManager = StepManager(steps: steps)
 
     var body: some View {
         stepManager.interface

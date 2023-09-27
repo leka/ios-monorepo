@@ -30,7 +30,7 @@ private let context = [
         name: "bathroom_asset_1",
         file: "bathroom_asset_1",
         size: CGSize(width: 385, height: 300),
-        rightAnswers: ["banana"]),
+        rightAnswers: ["banana"])
 ]
 
 private let context2 = [
@@ -38,34 +38,34 @@ private let context2 = [
         name: "bathroom_asset_1",
         file: "bathroom_asset_1",
         size: CGSize(width: 385, height: 300),
-        rightAnswers: ["kiwi"]),
+        rightAnswers: ["kiwi"])
 ]
 
 private var steps: [StandardStepModel] = [
     StandardStepModel(
         choices: choicesStep1,
         gameplay: .selectTheRightAnswer,
-        interface: .dragAndDropOneChoiceOneArea(context)),
+        interface: .dragAndDropOneAreaOneChoice(context)),
     StandardStepModel(
         choices: choicesStep2,
         gameplay: .selectTheRightAnswer,
-        interface: .dragAndDropOneChoiceOneArea(context2)),
+        interface: .dragAndDropOneAreaOneChoice(context2)),
     StandardStepModel(
         choices: choicesStep3,
         gameplay: .selectTheRightAnswer,
-        interface: .dragAndDropOneChoiceOneArea(context)),
+        interface: .dragAndDropOneAreaOneChoice(context)),
     StandardStepModel(
         choices: choicesStep4,
         gameplay: .selectTheRightAnswer,
-        interface: .dragAndDropOneChoiceOneArea(context2)),
+        interface: .dragAndDropOneAreaOneChoice(context2)),
     StandardStepModel(
         choices: choicesStep5,
         gameplay: .selectTheRightAnswer,
-        interface: .dragAndDropOneChoiceOneArea(context)),
+        interface: .dragAndDropOneAreaOneChoice(context)),
 ]
 
 struct DragAndDropOneAreaOneChoiceActivity: View {
-    @ObservedObject private var stepManager = StepManager(steps: steps)
+    @StateObject private var stepManager = StepManager(steps: steps)
 
     var body: some View {
         stepManager.interface
