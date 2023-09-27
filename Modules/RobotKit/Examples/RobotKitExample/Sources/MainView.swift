@@ -2,6 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import RobotKit
 import SwiftUI
 
 struct MainView: View {
@@ -24,7 +25,7 @@ struct MainView: View {
 
                 NavigationLink(
                     destination: {
-                        RobotControlView()
+                        RobotControlView(viewModel: RobotControlViewModel(robot: Robot.shared))
                     },
                     label: {
                         Text("Go to robot control")

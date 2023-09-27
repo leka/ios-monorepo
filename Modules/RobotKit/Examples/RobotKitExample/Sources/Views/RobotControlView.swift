@@ -2,9 +2,19 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import Combine
+import RobotKit
 import SwiftUI
 
 struct RobotControlView: View {
+
+    @StateObject var viewModel: RobotControlViewModel
+
+    private let robot = Robot.shared
+
+    init(viewModel: RobotControlViewModel) {
+        self._viewModel = StateObject(wrappedValue: viewModel)
+    }
 
     var body: some View {
         VStack {
@@ -14,21 +24,21 @@ struct RobotControlView: View {
                         .font(.title)
                     HStack {
                         RobotControlActionButton(title: "Move forward", image: "arrow.up", tint: .orange) {
-                            // TODO(@ladislas): Add command
+                            robot.move(.forward, speed: 1.0)
                         }
                         RobotControlActionButton(title: "Move backward", image: "arrow.down", tint: .green) {
-                            // TODO(@ladislas): Add command
+                            robot.move(.backward, speed: 0.5)
                         }
                         RobotControlActionButton(title: "Spin clockwise", image: "arrow.clockwise", tint: .indigo) {
-                            // TODO(@ladislas): Add command
+                            robot.spin(.clockwise, speed: 0.7)
                         }
                         RobotControlActionButton(
                             title: "Spin counterclockwise", image: "arrow.counterclockwise", tint: .teal
                         ) {
-                            // TODO(@ladislas): Add command
+                            robot.spin(.counterclockwise, speed: 1.0)
                         }
                         RobotControlActionButton(title: "Stop motion", image: "xmark", tint: .red) {
-                            // TODO(@ladislas): Add command
+                            robot.stopMotion()
                         }
                     }
                 }
@@ -38,19 +48,19 @@ struct RobotControlView: View {
                         .font(.title)
                     HStack {
                         RobotControlActionButton(title: "Individual LEDs", image: "light.max", tint: .orange) {
-                            // TODO(@ladislas): Add command
+                            robot.shine(.spot(ids: [0, 4, 8, 10, 12]), color: .red)
                         }
                         RobotControlActionButton(title: "Quarters", image: "light.max", tint: .green) {
-                            // TODO(@ladislas): Add command
+                            robot.shine(.quarterBackLeft, color: .blue)
                         }
                         RobotControlActionButton(title: "Halves", image: "light.max", tint: .indigo) {
-                            // TODO(@ladislas): Add command
+                            robot.shine(.halfRight, color: .green)
                         }
-                        RobotControlActionButton(title: "Full counterclockwise", image: "light.max", tint: .teal) {
-                            // TODO(@ladislas): Add command
+                        RobotControlActionButton(title: "Full", image: "light.max", tint: .teal) {
+                            robot.shine(.full, color: .blue)
                         }
                         RobotControlActionButton(title: "Turn off lights", image: "xmark", tint: .red) {
-                            // TODO(@ladislas): Add command
+                            robot.stopLights()
                         }
                     }
                 }
@@ -60,16 +70,16 @@ struct RobotControlView: View {
                         .font(.title)
                     HStack {
                         RobotControlActionButton(title: "Rainbow", image: "number.circle", tint: .orange) {
-                            // TODO(@ladislas): Add command
+                            robot.run(.rainbow)
                         }
                         RobotControlActionButton(title: "Fire", image: "number.circle", tint: .green) {
-                            // TODO(@ladislas): Add command
+                            robot.run(.fire)
                         }
                         RobotControlActionButton(title: "Spin 1", image: "number.circle", tint: .indigo) {
-                            // TODO(@ladislas): Add command
+                            robot.run(.spinBlinkGreenOff)
                         }
                         RobotControlActionButton(title: "Spin 2", image: "number.circle", tint: .teal) {
-                            // TODO(@ladislas): Add command
+                            robot.run(.spinBlinkBlueViolet)
                         }
                     }
                 }
@@ -78,10 +88,9 @@ struct RobotControlView: View {
                     Text("Magic Cards")
                         .font(.title)
                     HStack(alignment: .center, spacing: 30) {
-                        Text("ID: 0x\(String(0xDEAD_BEEF, radix: 16, uppercase: true))")
+                        Text("ID: 0x\(String(format: "%04X", viewModel.magicCard.id))")
                             .monospacedDigit()
-                        // TODO(@ladislas): Display image of magic card read by the robot
-                        Image(systemName: "photo")
+                        viewModel.magicCardImage
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(height: 180)
@@ -100,8 +109,7 @@ struct RobotControlView: View {
 
     var stopButton: some View {
         Button {
-            print("STOP ROBOT")
-            // TODO(@ladislas): Add command
+            robot.stop()
         } label: {
             Image(systemName: "exclamationmark.octagon.fill")
             Text("STOP")
@@ -113,7 +121,9 @@ struct RobotControlView: View {
 }
 
 #Preview {
-    NavigationStack {
-        RobotControlView()
+    let viewModel = RobotControlViewModel(robot: Robot.shared)
+
+    return NavigationStack {
+        RobotControlView(viewModel: viewModel)
     }
 }
