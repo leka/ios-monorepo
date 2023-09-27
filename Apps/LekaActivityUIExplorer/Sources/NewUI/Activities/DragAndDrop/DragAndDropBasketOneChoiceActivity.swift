@@ -31,7 +31,7 @@ private let context = [
         file: "basket",
         size: CGSize(width: 380, height: 280),
         hints: true,
-        rightAnswers: ["watermelon"])
+        rightAnswers: ["watermelon"]),
 ]
 
 private var steps: [StandardStepModel] = [

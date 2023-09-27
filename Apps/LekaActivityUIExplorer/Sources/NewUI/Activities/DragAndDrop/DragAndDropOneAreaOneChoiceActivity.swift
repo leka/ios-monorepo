@@ -27,18 +27,18 @@ private let choicesStep5 = [
 
 private let context = [
     ContextModel(
-    name: "bathroom_asset_1",
-    file: "bathroom_asset_1",
-    size: CGSize(width: 385, height: 300),
-    rightAnswers: ["banana"]),
+        name: "bathroom_asset_1",
+        file: "bathroom_asset_1",
+        size: CGSize(width: 385, height: 300),
+        rightAnswers: ["banana"]),
 ]
 
 private let context2 = [
     ContextModel(
-    name: "bathroom_asset_1",
-    file: "bathroom_asset_1",
-    size: CGSize(width: 385, height: 300),
-    rightAnswers: ["kiwi"]),
+        name: "bathroom_asset_1",
+        file: "bathroom_asset_1",
+        size: CGSize(width: 385, height: 300),
+        rightAnswers: ["kiwi"]),
 ]
 
 private var steps: [StandardStepModel] = [

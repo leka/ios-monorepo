@@ -31,30 +31,6 @@ class DragAndDropOneAreaOneChoiceScene: SKScene, DragAndDropSceneProtocol {
         defaultPosition = CGPoint(x: spacer, y: self.size.height)
     }
 
-    func getExpectedItems() {
-        // expected answer(s)
-        for choice in viewModel.choices where choice.rightAnswer {
-            let expectedItem = choice.item
-            let expectedNode = SKSpriteNode()
-
-            guard contexts[0].hints else {
-                expectedNode.name = expectedItem
-                (expectedItemsNodes[contexts[0].name, default: []]).append(expectedNode)
-                return
-            }
-            let texture = SKTexture(imageNamed: expectedItem)
-            let action = SKAction.setTexture(texture, resize: true)
-            expectedNode.run(action)
-            expectedNode.name = expectedItem
-            expectedNode.texture = texture
-            expectedNode.scaleForMax(sizeOf: biggerSide * 0.8)
-            expectedNode.position = CGPoint(x: dropAreas[0].position.x + 80, y: 110)
-            (expectedItemsNodes[contexts[0].name, default: []]).append(expectedNode)
-
-            addChild(expectedNode)
-        }
-    }
-
     // MARK: - SKScene specifics
     // init
     override func didMove(to view: SKView) {

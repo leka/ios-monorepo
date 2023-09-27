@@ -11,7 +11,7 @@ protocol DragAndDropSceneProtocol: SKScene {
     var biggerSide: CGFloat { get }
     var defaultPosition: CGPoint { get set }
     var selectedNodes: [UITouch: DraggableImageAnswerNode] { get set }
-    var expectedItemsNodes: [String: [SKSpriteNode]] { get }
+    var expectedItemsNodes: [String: [SKSpriteNode]] { get set }
     var dropAreas: [SKSpriteNode] { get set }
 
     func reset()
@@ -69,6 +69,11 @@ extension DragAndDropSceneProtocol {
         }
     }
 
+    func layoutNextAnswer() {
+        // spacing between items
+        self.defaultPosition.x += spacer
+    }
+
     func makeDropArea() {
         let dropArea = SKSpriteNode()
         dropArea.size = contexts[0].size
@@ -80,15 +85,40 @@ extension DragAndDropSceneProtocol {
         dropAreas.append(dropArea)
     }
 
-    func layoutNextAnswer() {
-        // spacing between items
-        self.defaultPosition.x += spacer
+    func getExpectedItems() {
+        // expected answer(s)
+        for choice in viewModel.choices where choice.rightAnswer {
+            let expectedItem = choice.item
+            let expectedNode = SKSpriteNode()
+
+            guard contexts[0].hints else {
+                // no hints, hence no nodes added to the drop area
+                expectedNode.name = expectedItem
+                (expectedItemsNodes[contexts[0].name, default: []]).append(expectedNode)
+                return
+            }
+            // hints superimposed onto the drop area
+            let texture = SKTexture(imageNamed: expectedItem)
+            let action = SKAction.setTexture(texture, resize: true)
+            expectedNode.run(action)
+            expectedNode.name = expectedItem
+            expectedNode.texture = texture
+            expectedNode.scaleForMax(sizeOf: biggerSide * 0.8)
+            expectedNode.position = CGPoint(x: dropAreas[0].position.x + 80, y: 110)
+            (expectedItemsNodes[contexts[0].name, default: []]).append(expectedNode)
+
+            addChild(expectedNode)
+        }
     }
 
     // good answer behavior
     func dropGoodAnswer(_ node: DraggableImageAnswerNode) {
         node.scaleForMax(sizeOf: biggerSide * 0.8)
         node.zPosition = 10
+        // placed - 1 item
+//        node.position = CGPoint(
+//            x: dropAreas[0].position.x - 80,
+//            y: 110)
         node.isDraggable = false
         dropAction(node)
         // How to track endGame??
@@ -99,6 +129,35 @@ extension DragAndDropSceneProtocol {
         }
         //        }
     }
+    // Placed when 2 items in basket
+//    func dropGoodAnswer(_ node: DraggableItemNode) {
+//        node.scaleForMax(sizeOf: biggerSide * 0.9)
+//        let finalX = setFinalXPosition()
+//        node.position = CGPoint(
+//            x: finalX,
+//            y: 110)
+//        node.zPosition = 10
+//        node.isDraggable = false
+//        dropAction(node)
+//        if gameEngine!.allCorrectAnswersWereGiven() {
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+//                self.reset()
+//            }
+//        }
+//
+//        func setFinalXPosition() -> CGFloat {
+//            guard gameEngine!.rightAnswersGiven.count < 2 else {
+//                return dropAreas[0].position.x + (leftSlotIsFree ? -80 : 80)
+//            }
+//            guard endAbscissa <= size.width / 2 else {
+//                return dropAreas[0].position.x + 80
+//            }
+//            if leftSlotIsFree {
+//                leftSlotIsFree.toggle()
+//            }
+//            return dropAreas[0].position.x - 80
+//        }
+//    }
 
     // wrong answer behavior
     func snapBack(node: DraggableImageAnswerNode, touch: UITouch) {
