@@ -8,14 +8,14 @@ class DragAndDropOneAreaOneChoiceScene: SKScene, DragAndDropSceneProtocol {
 
     // protocol requirements
     var viewModel: GenericViewModel
-    var contexts: [ContextModel]
+    var contexts: [ContextViewModel]
     var spacer: CGFloat = .zero
     var defaultPosition = CGPoint.zero
     var selectedNodes: [UITouch: DraggableImageAnswerNode] = [:]
     var expectedItemsNodes: [String: [SKSpriteNode]] = [:]
     var dropAreas: [SKSpriteNode] = []
 
-    public init(viewModel: GenericViewModel, contexts: [ContextModel]) {
+    public init(viewModel: GenericViewModel, contexts: [ContextViewModel]) {
         self.viewModel = viewModel
         self.contexts = contexts
         super.init(size: CGSize.zero)
@@ -78,12 +78,6 @@ class DragAndDropOneAreaOneChoiceScene: SKScene, DragAndDropSceneProtocol {
 
             // dropped within the bounds of dropArea
             if node.fullyContains(bounds: dropAreas[0].frame) {
-                //                guard expectedItemsNodes[dropAreas[0].name!, default: []].first(where: { $0.name == node.name }) != nil
-                //                else {
-                //                    snapBack(node: node, touch: touch)
-                //                    viewModel.onChoiceTapped(choice: choice)
-                //                    break
-                //                }
                 viewModel.onChoiceTapped(choice: choice)
                 dropGoodAnswer(node)
                 selectedNodes[touch] = nil
