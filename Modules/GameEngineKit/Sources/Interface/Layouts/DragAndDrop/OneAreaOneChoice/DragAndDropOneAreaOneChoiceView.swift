@@ -7,9 +7,9 @@ import SwiftUI
 
 public struct DragAndDropOneAreaOneChoiceView: View {
     @ObservedObject private var viewModel: GenericViewModel
-    let contexts: [ContextModel]
+    let contexts: [ContextViewModel]
 
-    public init(gameplay: any GameplayProtocol, contexts: [ContextModel]) {
+    public init(gameplay: any GameplayProtocol, contexts: [ContextViewModel]) {
         self.viewModel = GenericViewModel(gameplay: gameplay)
         self.contexts = contexts
     }

@@ -120,4 +120,9 @@ let kListOfAvailablesActivities: [ActivityModel] = [
         instructions: "Start sequence and observe the user's behavior interacting with Leka",
         view: AnyView(PairingActivity())
     ),
+    ActivityModel(
+        title: "DragAndDropOneAreaOneChoice",
+        instructions: "Drag and drop the fruit in the basket",
+        view: AnyView(DragAndDropOneAreaOneChoiceActivity())
+    ),
 ]

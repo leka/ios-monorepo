@@ -115,10 +115,6 @@ extension DragAndDropSceneProtocol {
     func dropGoodAnswer(_ node: DraggableImageAnswerNode) {
         node.scaleForMax(sizeOf: biggerSide * 0.8)
         node.zPosition = 10
-        // placed - 1 item
-        //        node.position = CGPoint(
-        //            x: dropAreas[0].position.x - 80,
-        //            y: 110)
         node.isDraggable = false
         dropAction(node)
         // How to track endGame??
@@ -129,35 +125,6 @@ extension DragAndDropSceneProtocol {
         }
         //        }
     }
-    // Placed when 2 items in basket
-    //    func dropGoodAnswer(_ node: DraggableItemNode) {
-    //        node.scaleForMax(sizeOf: biggerSide * 0.9)
-    //        let finalX = setFinalXPosition()
-    //        node.position = CGPoint(
-    //            x: finalX,
-    //            y: 110)
-    //        node.zPosition = 10
-    //        node.isDraggable = false
-    //        dropAction(node)
-    //        if gameEngine!.allCorrectAnswersWereGiven() {
-    //            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-    //                self.reset()
-    //            }
-    //        }
-    //
-    //        func setFinalXPosition() -> CGFloat {
-    //            guard gameEngine!.rightAnswersGiven.count < 2 else {
-    //                return dropAreas[0].position.x + (leftSlotIsFree ? -80 : 80)
-    //            }
-    //            guard endAbscissa <= size.width / 2 else {
-    //                return dropAreas[0].position.x + 80
-    //            }
-    //            if leftSlotIsFree {
-    //                leftSlotIsFree.toggle()
-    //            }
-    //            return dropAreas[0].position.x - 80
-    //        }
-    //    }
 
     // wrong answer behavior
     func snapBack(node: DraggableImageAnswerNode, touch: UITouch) {
