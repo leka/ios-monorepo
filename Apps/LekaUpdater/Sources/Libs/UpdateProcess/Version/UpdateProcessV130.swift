@@ -304,6 +304,7 @@ private class StateVerifyingFile: GKState, StateEventProcessor {
     private var cancellables: Set<AnyCancellable> = []
 
     private var isFileValid = false
+    private let kDefaultValue = "0000000000000000000000000000000000000000000000000000000000000000"
     private var lastValue = "0000000000000000000000000000000000000000000000000000000000000000"
 
     private var nextStateIsClearingFile = false
@@ -371,10 +372,17 @@ private class StateVerifyingFile: GKState, StateEventProcessor {
                     return
                 }
 
-                if value == self.lastValue {
+                if value == self.kDefaultValue {
                     print("🔵 StateVerifyingFile - subscribeActualSHA256Updates - 3")
+                    self.process(event: .fileVerificationReceived)
                     return
                 }
+
+                if value == self.lastValue {
+                    print("🔵 StateVerifyingFile - subscribeActualSHA256Updates - 4")
+                    return
+                }
+
                 self.lastValue = value
 
                 self.isFileValid = value == globalFirmwareManager.sha256
