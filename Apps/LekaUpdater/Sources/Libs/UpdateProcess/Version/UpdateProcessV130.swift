@@ -374,12 +374,12 @@ private class StateVerifyingFile: GKState, StateEventProcessor {
 
                 if value == self.kDefaultValue {
                     print("🔵 StateVerifyingFile - subscribeActualSHA256Updates - 3")
-                    self.process(event: .fileVerificationReceived)
                     return
                 }
 
                 if value == self.lastValue {
                     print("🔵 StateVerifyingFile - subscribeActualSHA256Updates - 4")
+                    self.process(event: .fileVerificationReceived)
                     return
                 }
 
