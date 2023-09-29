@@ -113,6 +113,7 @@ private class StateSettingFileExchangeState: GKState, StateEventProcessor {
         }
 
         globalRobotManager.robotPeripheral?.send(data, forCharacteristic: characteristic)
+        print("🔵 StateSettingFileExchangeState - did setFileExchangeState")
     }
 }
 
@@ -154,6 +155,7 @@ private class StateSettingDestinationPath: GKState, StateEventProcessor {
         }
 
         globalRobotManager.robotPeripheral?.send(destinationPath.data(using: .utf8)!, forCharacteristic: characteristic)
+        print("🔵 StateSettingDestinationPath - did setDestinationPath")
     }
 }
 
@@ -191,6 +193,7 @@ private class StateClearingFile: GKState, StateEventProcessor {
         }
 
         globalRobotManager.robotPeripheral?.send(data, forCharacteristic: characteristic)
+        print("🔵 StateClearingFile - did setClearPath")
     }
 }
 
@@ -278,6 +281,7 @@ private class StateSendingFile: GKState, StateEventProcessor {
         progression.send(_progression)
         if _progression < 1.0 {
             sendNextPacket()
+            print("🔵 StateSendingFile - did sendNextPacket - \(_progression)")
         } else {
             process(event: .fileSent)
         }
@@ -313,8 +317,10 @@ private class StateVerifyingFile: GKState, StateEventProcessor {
     override func didEnter(from previousState: GKState?) {
         if previousState is StateSettingDestinationPath {
             nextStateIsClearingFile = true
+            print("🔵 StateVerifyingFile - didEnter - previousState is StateSettingDestinationPath == true")
         } else {
             nextStateIsClearingFile = false
+            print("🔵 StateVerifyingFile - didEnter - previousState is StateSettingDestinationPath == false")
         }
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: startFileVerification)
@@ -325,40 +331,55 @@ private class StateVerifyingFile: GKState, StateEventProcessor {
     }
 
     func process(event: UpdateEvent) {
+        print("🔵 StateVerifyingFile - process \(event)")
         switch event {
             case .fileVerificationReceived:
                 if isFileValid {
+                    print("🔵 StateVerifyingFile - process - case fileVerificationReceived - 1")
                     self.stateMachine?.enter(StateApplyingUpdate.self)
                 } else if nextStateIsClearingFile {
+                    print("🔵 StateVerifyingFile - process - case fileVerificationReceived - 2")
                     self.stateMachine?.enter(StateClearingFile.self)
                 } else {
+                    print("🔵 StateVerifyingFile - process - case fileVerificationReceived - 3")
                     self.stateMachine?.enter(StateErrorFailedToVerifyFile.self)
                 }
             case .robotDisconnected:
+                print("🔵 StateVerifyingFile - process - case robotDisconnected ")
                 self.stateMachine?.enter(StateErrorRobotUnexpectedDisconnection.self)
             default:
+                print("🔵 StateVerifyingFile - process - default ")
                 return
         }
     }
 
     private func startFileVerification() {
+        print("🔵 StateVerifyingFile - startFileVerification")
         subscribeActualSHA256Updates()
+        print("🔵 StateVerifyingFile - did subscribeActualSHA256Updates")
         readRequestSHA256()
+        print("🔵 StateVerifyingFile - did readRequestSHA256")
     }
 
     private func subscribeActualSHA256Updates() {
         globalRobotManager.$sha256
             .receive(on: DispatchQueue.main)
             .sink { value in
-                guard let value = value else { return }
+                print("🔵 StateVerifyingFile - subscribeActualSHA256Updates - 1")
+                guard let value = value else {
+                    print("🔵 StateVerifyingFile - subscribeActualSHA256Updates - 2")
+                    return
+                }
 
                 if value == self.lastValue {
+                    print("🔵 StateVerifyingFile - subscribeActualSHA256Updates - 3")
                     return
                 }
                 self.lastValue = value
 
                 self.isFileValid = value == globalFirmwareManager.sha256
                 self.process(event: .fileVerificationReceived)
+                print("🔵 StateVerifyingFile - subscribeActualSHA256Updates - 4")
             }
             .store(in: &cancellables)
     }
@@ -371,11 +392,13 @@ private class StateVerifyingFile: GKState, StateEventProcessor {
             )
             .receive(on: DispatchQueue.main)
             .sink(
-                receiveCompletion: { _ in
+                receiveCompletion: { completion in
                     // nothing to do
+                    print("🔵 StateVerifyingFile - readRequestSHA256 - 1 - \(completion)")
                 },
                 receiveValue: { data in
                     // nothing to do
+                    print("🔵 StateVerifyingFile - readRequestSHA256 - 2 - \(String(describing: data))")
                 }
             )
             .store(in: &cancellables)
@@ -441,6 +464,7 @@ private class StateApplyingUpdate: GKState, StateEventProcessor {
     }
 
     private func applyUpdate() {
+        print("🔵 StateApplyingUpdate - will applyUpdate")
         let applyValue = Data([1])
 
         let characteristic = WriteOnlyCharacteristic(
@@ -449,6 +473,7 @@ private class StateApplyingUpdate: GKState, StateEventProcessor {
         )
 
         globalRobotManager.robotPeripheral?.send(applyValue, forCharacteristic: characteristic)
+        print("🔵 StateApplyingUpdate - did applyUpdate")
     }
 }
 
