@@ -2,7 +2,6 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
-// TODO(@ladislas): create protocol and mock RobotDiscovery
 extension RobotDiscoveryModel {
 
     public static func mock() -> RobotDiscoveryModel {
