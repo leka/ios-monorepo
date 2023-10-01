@@ -4,7 +4,7 @@
 
 import CombineCoreBluetooth
 
-public struct RobotAdvertisingData: AdvertisingDataProcotol {
+public struct RobotAdvertisingData {
 
     // MARK: - Public variables
 
