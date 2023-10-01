@@ -4,14 +4,6 @@
 
 import CombineCoreBluetooth
 
-extension String {
-
-    public var nilWhenEmpty: String? {
-        self.isEmpty ? nil : self
-    }
-
-}
-
 public struct RobotAdvertisingData: AdvertisingDataProcotol {
 
     // MARK: - Public variables
