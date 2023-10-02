@@ -30,7 +30,7 @@ public class RobotManager: ObservableObject {
 
     }
 
-    func setRobotPeripheral(from robotDiscovery: RobotDiscovery) {
+    func setRobotPeripheral(from robotDiscovery: RobotDiscoveryModel) {
         self.robotPeripheral = robotDiscovery.robotPeripheral
 
         self.name = robotDiscovery.name

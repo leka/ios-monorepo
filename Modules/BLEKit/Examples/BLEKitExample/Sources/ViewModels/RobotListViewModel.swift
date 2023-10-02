@@ -17,11 +17,11 @@ public class RobotListViewModel: ObservableObject {
 
     // MARK: - Published variables
 
-    @Published var selectedRobotDiscovery: RobotDiscovery?
+    @Published var selectedRobotDiscovery: RobotDiscoveryModel?
     // TODO(@ladislas): are they both needed?
-    @Published var connectedRobotDiscovery: RobotDiscovery?
+    @Published var connectedRobotDiscovery: RobotDiscoveryModel?
     @Published var connectedRobotPeripheral: RobotPeripheral?
-    @Published var robotDiscoveries: [RobotDiscovery] = []
+    @Published var robotDiscoveries: [RobotDiscoveryModel] = []
     @Published var isScanning: Bool = false
 
     // MARK: - Public functions
@@ -87,7 +87,7 @@ public class RobotListViewModel: ObservableObject {
 
     // MARK: - Private functions
 
-    internal init(availableRobots: [RobotDiscovery]) {
+    internal init(availableRobots: [RobotDiscoveryModel]) {
         self.bleManager = BLEManager.live()
         self.robotDiscoveries = availableRobots
     }

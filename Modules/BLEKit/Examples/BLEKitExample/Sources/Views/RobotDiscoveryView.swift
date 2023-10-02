@@ -7,13 +7,13 @@ import SwiftUI
 
 struct RobotDiscoveryView: View {
 
-    private var discovery: RobotDiscovery
+    private var discovery: RobotDiscoveryModel
 
     // MARK: - Environment variables
 
     @EnvironmentObject private var robotListViewModel: RobotListViewModel
 
-    public init(discovery: RobotDiscovery) {
+    public init(discovery: RobotDiscoveryModel) {
         self.discovery = discovery
     }
 
