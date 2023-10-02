@@ -3,9 +3,10 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import SpriteKit
+import SwiftUI
 
 protocol DragAndDropSceneProtocol: SKScene {
-    var viewModel: GenericViewModel { get }
+    var viewModel: GenericViewModel? { get set }
     var contexts: [ContextViewModel] { get set }
     var spacer: CGFloat { get }
     var biggerSide: CGFloat { get }
@@ -21,7 +22,7 @@ protocol DragAndDropSceneProtocol: SKScene {
     func makeDropArea()
     func getExpectedItems()
     func dropGoodAnswer(_ node: DraggableImageAnswerNode)
-    func snapBack(node: DraggableImageAnswerNode, touch: UITouch)
+    func snapBack(_ node: DraggableImageAnswerNode)
     func onDragAnimation(_ node: SKSpriteNode)
     func dropAction(_ node: SKSpriteNode)
 }
@@ -43,7 +44,7 @@ extension DragAndDropSceneProtocol {
     }
 
     @MainActor func makeAnswers() {
-        for choice in viewModel.choices {
+        for choice in viewModel!.choices {
             let draggableImageAnswerNode = DraggableImageAnswerNode(
                 choice: choice,
                 position: self.defaultPosition
@@ -87,7 +88,7 @@ extension DragAndDropSceneProtocol {
 
     func getExpectedItems() {
         // expected answer(s)
-        for choice in viewModel.choices where choice.rightAnswer {
+        for choice in viewModel!.choices where choice.rightAnswer {
             let expectedItem = choice.item
             let expectedNode = SKSpriteNode()
 
@@ -117,17 +118,15 @@ extension DragAndDropSceneProtocol {
         node.zPosition = 10
         node.isDraggable = false
         dropAction(node)
-        // How to track endGame??
-        // + below condition is for other gameplays ("...SelectAllTheGoodAnswers")
-        //        if viewModel.gameplay.state.value == .finished {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-            self.reset()
+        if viewModel!.gameplay.state.value == .finished {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [self] in
+                self.reset()
+            }
         }
-        //        }
     }
 
     // wrong answer behavior
-    func snapBack(node: DraggableImageAnswerNode, touch: UITouch) {
+    func snapBack(_ node: DraggableImageAnswerNode) {
         let moveAnimation: SKAction = SKAction.move(to: node.defaultPosition!, duration: 0.25)
             .moveAnimation(.easeOut)
         let group: DispatchGroup = DispatchGroup()
@@ -136,16 +135,15 @@ extension DragAndDropSceneProtocol {
             moveAnimation,
             completion: {
                 node.position = node.defaultPosition!
-                node.zPosition -= 100
+                node.zPosition = 10
                 group.leave()
             })
         group.notify(queue: .main) {
             self.dropAction(node)
         }
-        selectedNodes[touch] = nil
     }
 
-    // wiggle animation
+    // wiggle animation .selected??
     func onDragAnimation(_ node: SKSpriteNode) {
         let sequence: SKAction = SKAction.sequence([
             SKAction.rotate(byAngle: CGFloat(degreesToRadian(degrees: -4)), duration: 0.1),
@@ -156,9 +154,10 @@ extension DragAndDropSceneProtocol {
         node.run(SKAction.repeatForever(sequence))
     }
 
-    // remove wiggle animation
+    // remove wiggle animation .notSelected??
     func dropAction(_ node: SKSpriteNode) {
         node.zRotation = 0  // reset the zRotation
         node.removeAllActions()  // remove wiggle action
+        selectedNodes = [:]
     }
 }

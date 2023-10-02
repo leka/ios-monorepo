@@ -2,12 +2,15 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import Combine
 import SpriteKit
+import SwiftUI
 
 class DragAndDropOneAreaOneChoiceScene: SKScene, DragAndDropSceneProtocol {
 
     // protocol requirements
-    var viewModel: GenericViewModel
+    //    @ObservedObject var viewModel: GenericViewModel
+    var viewModel: GenericViewModel?
     var contexts: [ContextViewModel]
     var spacer: CGFloat = .zero
     var defaultPosition = CGPoint.zero
@@ -15,8 +18,10 @@ class DragAndDropOneAreaOneChoiceScene: SKScene, DragAndDropSceneProtocol {
     var expectedItemsNodes: [String: [SKSpriteNode]] = [:]
     var dropAreas: [SKSpriteNode] = []
 
-    public init(viewModel: GenericViewModel, contexts: [ContextViewModel]) {
-        self.viewModel = viewModel
+    private var playedNode: DraggableImageAnswerNode?
+
+    public init( /*viewModel: GenericViewModel, */contexts: [ContextViewModel]) {
+        //        self.viewModel = viewModel
         self.contexts = contexts
         super.init(size: CGSize.zero)
     }
@@ -37,12 +42,22 @@ class DragAndDropOneAreaOneChoiceScene: SKScene, DragAndDropSceneProtocol {
         self.reset()
     }
 
+    override func update(_ currentTime: TimeInterval) {
+        for choice in viewModel!.choices where choice.item == playedNode?.name {
+            if choice.status == .playingRightAnimation {
+                dropGoodAnswer(playedNode!)
+            } else if choice.status == .playingWrongAnimation {
+                snapBack(playedNode!)
+            }
+        }
+    }
+
     // overriden Touches states
     override func touchesBegan(_ touches: Set<UITouch>, with: UIEvent?) {
         for touch in touches {
             let location = touch.location(in: self)
             if let node = self.atPoint(location) as? DraggableImageAnswerNode {
-                for choice in viewModel.choices where node.name == choice.item && node.isDraggable {
+                for choice in viewModel!.choices where node.name == choice.item && node.isDraggable {
                     selectedNodes[touch] = node
                     onDragAnimation(node)
                     node.zPosition += 100
@@ -71,22 +86,18 @@ class DragAndDropOneAreaOneChoiceScene: SKScene, DragAndDropSceneProtocol {
             if !selectedNodes.keys.contains(touch) {
                 break
             }
-            let node: DraggableImageAnswerNode = selectedNodes[touch]!
-            node.scaleForMax(sizeOf: biggerSide)
-            let index = viewModel.choices.firstIndex(where: { $0.item == node.name })
-            let choice = viewModel.choices[index!]
+            playedNode = selectedNodes[touch]!
+            playedNode!.scaleForMax(sizeOf: biggerSide)
+            let choice = viewModel!.choices.first(where: { $0.item == playedNode!.name })
 
             // dropped within the bounds of dropArea
-            if node.fullyContains(bounds: dropAreas[0].frame) {
-                viewModel.onChoiceTapped(choice: choice)
-                dropGoodAnswer(node)
-                selectedNodes[touch] = nil
-
+            if playedNode!.fullyContains(bounds: dropAreas[0].frame) {
+                viewModel!.onChoiceTapped(choice: choice!)
                 break
             }
 
             // dropped outside the bounds of dropArea
-            snapBack(node: node, touch: touch)
+            snapBack(playedNode!)
         }
     }
 }
