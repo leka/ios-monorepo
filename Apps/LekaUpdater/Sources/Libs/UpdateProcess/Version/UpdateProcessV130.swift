@@ -103,14 +103,13 @@ private class StateSettingFileExchangeState: GKState, StateEventProcessor {
     private func setFileExchangeState() {
         let data = Data([1])
 
-        var characteristic = CharacteristicModelWriteOnly(
+        let characteristic = CharacteristicModelWriteOnly(
             characteristicUUID: BLESpecs.FileExchange.Characteristics.setState,
-            serviceUUID: BLESpecs.FileExchange.service
+            serviceUUID: BLESpecs.FileExchange.service,
+            onWrite: {
+                self.process(event: .fileExchangeStateSet)
+            }
         )
-
-        characteristic.onWrite = {
-            self.process(event: .fileExchangeStateSet)
-        }
 
         globalRobotManager.robotPeripheral?.send(data, forCharacteristic: characteristic)
     }
@@ -144,14 +143,13 @@ private class StateSettingDestinationPath: GKState, StateEventProcessor {
         let filename = "LekaOS-\(osVersion).bin"
         let destinationPath = directory + "/" + filename
 
-        var characteristic = CharacteristicModelWriteOnly(
+        let characteristic = CharacteristicModelWriteOnly(
             characteristicUUID: BLESpecs.FileExchange.Characteristics.filePath,
-            serviceUUID: BLESpecs.FileExchange.service
+            serviceUUID: BLESpecs.FileExchange.service,
+            onWrite: {
+                self.process(event: .destinationPathSet)
+            }
         )
-
-        characteristic.onWrite = {
-            self.process(event: .destinationPathSet)
-        }
 
         globalRobotManager.robotPeripheral?.send(destinationPath.data(using: .utf8)!, forCharacteristic: characteristic)
     }
@@ -181,14 +179,13 @@ private class StateClearingFile: GKState, StateEventProcessor {
     private func setClearPath() {
         let data = Data([1])
 
-        var characteristic = CharacteristicModelWriteOnly(
+        let characteristic = CharacteristicModelWriteOnly(
             characteristicUUID: BLESpecs.FileExchange.Characteristics.clearFile,
-            serviceUUID: BLESpecs.FileExchange.service
+            serviceUUID: BLESpecs.FileExchange.service,
+            onWrite: {
+                self.process(event: .fileCleared)
+            }
         )
-
-        characteristic.onWrite = {
-            self.process(event: .fileCleared)
-        }
 
         globalRobotManager.robotPeripheral?.send(data, forCharacteristic: characteristic)
     }
@@ -266,10 +263,16 @@ private class StateSendingFile: GKState, StateEventProcessor {
     }
 
     private func sendFile() {
-        characteristic.onWrite = {
-            self.currentPacket += 1
-            self.tryToSendNextPacket()
-        }
+        let newCharacteristic = CharacteristicModelWriteOnly(
+            characteristicUUID: characteristic.characteristicUUID,
+            serviceUUID: characteristic.serviceUUID,
+            onWrite: {
+                self.currentPacket += 1
+                self.tryToSendNextPacket()
+            }
+        )
+
+        characteristic = newCharacteristic
 
         tryToSendNextPacket()
     }
