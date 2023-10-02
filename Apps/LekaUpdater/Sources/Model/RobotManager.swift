@@ -76,7 +76,7 @@ public class RobotManager: ObservableObject {
     }
 
     private func registerBatteryCharacteristicNotificationCallback() {
-        var characteristic = NotifyingCharacteristic(
+        var characteristic = CharacteristicModelNotifying(
             characteristicUUID: BLESpecs.Battery.Characteristics.level,
             serviceUUID: BLESpecs.Battery.service
         )
@@ -91,7 +91,7 @@ public class RobotManager: ObservableObject {
     }
 
     private func registerSHA256CharacteristicNotificationCallback() {
-        var characteristic = NotifyingCharacteristic(
+        var characteristic = CharacteristicModelNotifying(
             characteristicUUID: BLESpecs.FileExchange.Characteristics.fileSHA256,
             serviceUUID: BLESpecs.FileExchange.service
         )
@@ -120,7 +120,7 @@ public class RobotManager: ObservableObject {
     }
 
     private func registerChargingStatusNotificationCallback() {
-        var characteristic = NotifyingCharacteristic(
+        var characteristic = CharacteristicModelNotifying(
             characteristicUUID: BLESpecs.Monitoring.Characteristics.chargingStatus,
             serviceUUID: BLESpecs.Monitoring.service
         )

@@ -10,7 +10,7 @@ public class RobotPeripheral: Equatable {
 
     // TODO(@ladislas): should they be published? maybe, need to investigate
     public var peripheral: Peripheral
-    public var notifyingCharacteristics: Set<NotifyingCharacteristic> = []
+    public var notifyingCharacteristics: Set<CharacteristicModelNotifying> = []
     public var readOnlyCharacteristics: Set<CharacteristicModelReadOnly> = []
 
     // MARK: - Private variables
@@ -121,7 +121,7 @@ public class RobotPeripheral: Equatable {
 
     // MARK: - Private functions
 
-    private func listenForUpdates(on characteristic: NotifyingCharacteristic) {
+    private func listenForUpdates(on characteristic: CharacteristicModelNotifying) {
         peripheral.listenForUpdates(on: characteristic.characteristic!)
             .receive(on: DispatchQueue.main)
             .sink(
