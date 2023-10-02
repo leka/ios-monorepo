@@ -76,31 +76,29 @@ public class RobotManager: ObservableObject {
     }
 
     private func registerBatteryCharacteristicNotificationCallback() {
-        var characteristic = CharacteristicModelNotifying(
+        let characteristic = CharacteristicModelNotifying(
             characteristicUUID: BLESpecs.Battery.Characteristics.level,
-            serviceUUID: BLESpecs.Battery.service
-        )
-
-        characteristic.onNotification = { data in
-            if let value = data?.first {
-                self.battery = Int(value)
+            serviceUUID: BLESpecs.Battery.service,
+            onNotification: { data in
+                if let value = data?.first {
+                    self.battery = Int(value)
+                }
             }
-        }
+        )
 
         self.robotPeripheral?.notifyingCharacteristics.insert(characteristic)
     }
 
     private func registerSHA256CharacteristicNotificationCallback() {
-        var characteristic = CharacteristicModelNotifying(
+        let characteristic = CharacteristicModelNotifying(
             characteristicUUID: BLESpecs.FileExchange.Characteristics.fileSHA256,
-            serviceUUID: BLESpecs.FileExchange.service
-        )
-
-        characteristic.onNotification = { data in
-            if let data = data {
-                self.sha256 = data.map { String(format: "%02hhx", $0) }.joined()
+            serviceUUID: BLESpecs.FileExchange.service,
+            onNotification: { data in
+                if let data = data {
+                    self.sha256 = data.map { String(format: "%02hhx", $0) }.joined()
+                }
             }
-        }
+        )
 
         self.robotPeripheral?.notifyingCharacteristics.insert(characteristic)
     }
@@ -120,16 +118,15 @@ public class RobotManager: ObservableObject {
     }
 
     private func registerChargingStatusNotificationCallback() {
-        var characteristic = CharacteristicModelNotifying(
+        let characteristic = CharacteristicModelNotifying(
             characteristicUUID: BLESpecs.Monitoring.Characteristics.chargingStatus,
-            serviceUUID: BLESpecs.Monitoring.service
-        )
-
-        characteristic.onNotification = { data in
-            if let value = data?.first {
-                self.isCharging = value == 1
+            serviceUUID: BLESpecs.Monitoring.service,
+            onNotification: { data in
+                if let value = data?.first {
+                    self.isCharging = value == 1
+                }
             }
-        }
+        )
 
         self.robotPeripheral?.notifyingCharacteristics.insert(characteristic)
     }

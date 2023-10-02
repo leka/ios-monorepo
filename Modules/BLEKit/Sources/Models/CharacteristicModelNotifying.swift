@@ -4,17 +4,25 @@
 
 import CombineCoreBluetooth
 
-public struct CharacteristicModelNotifying: Hashable {
+public struct CharacteristicModelNotifying {
+
+    public typealias Callback = ((_ data: Data?) -> Void)
 
     public let characteristicUUID: CBUUID
     public let serviceUUID: CBUUID
-    public var characteristic: CBCharacteristic?
-    public var onNotification: ((_ data: Data?) -> Void)?
+    public let cbCharacteristic: CBCharacteristic?
+    public let onNotification: Callback?
 
-    public init(characteristicUUID: CBUUID, serviceUUID: CBUUID) {
+    public init(characteristicUUID: CBUUID, serviceUUID: CBUUID, cbCharacteristic: CBCharacteristic? = nil, onNotification: Callback? = nil ) {
         self.characteristicUUID = characteristicUUID
         self.serviceUUID = serviceUUID
+        self.cbCharacteristic = cbCharacteristic
+        self.onNotification = onNotification
     }
+
+}
+
+extension CharacteristicModelNotifying: Hashable {
 
     public func hash(into hasher: inout Hasher) {
         hasher.combine(characteristicUUID)

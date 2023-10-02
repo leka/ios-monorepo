@@ -42,12 +42,17 @@ public class RobotPeripheral: Equatable {
                         self.peripheral.setNotifyValue(true, for: characteristic)
                             .assertNoFailure()
                             .sink {
-                                var newChar = char
-                                newChar.characteristic = characteristic
-                                self.notifyingCharacteristics.remove(char)
-                                self.notifyingCharacteristics.insert(newChar)
+                                let newCharacteristic = CharacteristicModelNotifying(
+                                    characteristicUUID: char.characteristicUUID,
+                                    serviceUUID: char.serviceUUID,
+                                    cbCharacteristic: characteristic,
+                                    onNotification: char.onNotification
+                                )
 
-                                self.listenForUpdates(on: newChar)
+                                self.notifyingCharacteristics.remove(char)
+                                self.notifyingCharacteristics.insert(newCharacteristic)
+
+                                self.listenForUpdates(on: newCharacteristic)
                             }
                             .store(in: &self.cancellables)
                     }
@@ -122,7 +127,7 @@ public class RobotPeripheral: Equatable {
     // MARK: - Private functions
 
     private func listenForUpdates(on characteristic: CharacteristicModelNotifying) {
-        peripheral.listenForUpdates(on: characteristic.characteristic!)
+        peripheral.listenForUpdates(on: characteristic.cbCharacteristic!)
             .receive(on: DispatchQueue.main)
             .sink(
                 receiveCompletion: { _ in
