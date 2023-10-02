@@ -33,10 +33,10 @@ public class RobotManager: ObservableObject {
     func setRobotPeripheral(from robotDiscovery: RobotDiscovery) {
         self.robotPeripheral = robotDiscovery.robotPeripheral
 
-        self.name = robotDiscovery.advertisingData.name
-        self.battery = robotDiscovery.advertisingData.battery
-        self.isCharging = robotDiscovery.advertisingData.isCharging
-        self.osVersion = robotDiscovery.advertisingData.osVersion
+        self.name = robotDiscovery.name
+        self.battery = robotDiscovery.battery
+        self.isCharging = robotDiscovery.isCharging
+        self.osVersion = robotDiscovery.osVersion
 
     }
 

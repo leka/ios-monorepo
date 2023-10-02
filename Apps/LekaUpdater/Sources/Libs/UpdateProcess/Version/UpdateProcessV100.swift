@@ -350,7 +350,7 @@ private class StateWaitingForRobotToReboot: GKState, StateEventProcessor {
                     }
                     if let robotDetected = robotDetected {
                         self.isRobotUpToDate =
-                            robotDetected.advertisingData.osVersion == globalFirmwareManager.currentVersion
+                            robotDetected.osVersion == globalFirmwareManager.currentVersion
 
                         self.process(event: .robotDetected)
                     }

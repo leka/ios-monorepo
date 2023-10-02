@@ -61,7 +61,7 @@ struct ConnectButton: View {
         HStack(spacing: 10) {
             Text(
                 { () -> String in
-                    guard let name = robotListViewModel.selectedRobotDiscovery?.advertisingData.name else {
+                    guard let name = robotListViewModel.selectedRobotDiscovery?.name else {
                         return "Select a robot to connect"
                     }
                     return "Connect to \(name)"

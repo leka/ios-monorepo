@@ -57,7 +57,7 @@ public class RobotListViewModel: ObservableObject {
 
     public func connectToSelectedPeripheral() {
         guard let selectedRobotDiscovery = selectedRobotDiscovery else { return }
-        print("Connecting to \(selectedRobotDiscovery.advertisingData.name)")
+        print("Connecting to \(selectedRobotDiscovery.name)")
         bleManager.connect(selectedRobotDiscovery)
             .receive(on: DispatchQueue.main)
             .sink(

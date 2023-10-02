@@ -32,7 +32,7 @@ struct ContentView: View {
                             self.robotListViewModel.selectedRobotDiscovery = nil
 
                         } else {
-                            print("Select \(robotDiscovery.advertisingData.name)")
+                            print("Select \(robotDiscovery)")
                             self.robotListViewModel.selectedRobotDiscovery = robotDiscovery
                         }
                     }

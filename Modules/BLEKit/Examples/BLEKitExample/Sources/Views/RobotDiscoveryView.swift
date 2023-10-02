@@ -13,13 +13,6 @@ struct RobotDiscoveryView: View {
 
     @EnvironmentObject private var robotListViewModel: RobotListViewModel
 
-    private var osVersionText: String {
-        guard let osVersion = discovery.advertisingData.osVersion else {
-            return "⚠️ NO OS VERSION"
-        }
-        return "Firmware: v\(osVersion)"
-    }
-
     public init(discovery: RobotDiscovery) {
         self.discovery = discovery
     }
@@ -60,17 +53,17 @@ struct RobotDiscoveryView: View {
                 HStack(spacing: 40) {
 
                     VStack(alignment: .leading) {
-                        Text(discovery.advertisingData.name)
+                        Text(discovery.name)
                             .font(.headline)
-                        Text(osVersionText)
+                        Text(discovery.osVersion)
                     }
 
                     Spacer()
 
                     VStack(alignment: .leading) {
-                        Text("Battery: \(discovery.advertisingData.battery)")
-                        Text("Charging: \(discovery.advertisingData.isCharging ? "Yes" : "No")")
-                            .foregroundColor(discovery.advertisingData.isCharging ? .green : .red)
+                        Text("Battery: \(discovery.battery)")
+                        Text("Charging: \(discovery.isCharging ? "Yes" : "No")")
+                            .foregroundColor(discovery.isCharging ? .green : .red)
                     }
 
                     Spacer()
