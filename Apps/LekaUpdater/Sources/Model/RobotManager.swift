@@ -106,7 +106,7 @@ public class RobotManager: ObservableObject {
     }
 
     private func registerChargingStatusReadCallback() {
-        var characteristic = ReadOnlyCharacteristic(
+        var characteristic = CharacteristicModelReadOnly(
             characteristicUUID: BLESpecs.Monitoring.Characteristics.chargingStatus,
             serviceUUID: BLESpecs.Monitoring.service
         )
@@ -136,7 +136,7 @@ public class RobotManager: ObservableObject {
     }
 
     private func registerOSVersionReadCallback() {
-        var characteristic = ReadOnlyCharacteristic(
+        var characteristic = CharacteristicModelReadOnly(
             characteristicUUID: BLESpecs.DeviceInformation.Characteristics.osVersion,
             serviceUUID: BLESpecs.DeviceInformation.service
         )
@@ -152,7 +152,7 @@ public class RobotManager: ObservableObject {
     }
 
     private func registerSerialNumberReadCallback() {
-        var characteristic = ReadOnlyCharacteristic(
+        var characteristic = CharacteristicModelReadOnly(
             characteristicUUID: BLESpecs.DeviceInformation.Characteristics.serialNumber,
             serviceUUID: BLESpecs.DeviceInformation.service
         )

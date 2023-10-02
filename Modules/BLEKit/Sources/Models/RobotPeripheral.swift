@@ -11,7 +11,7 @@ public class RobotPeripheral: Equatable {
     // TODO(@ladislas): should they be published? maybe, need to investigate
     public var peripheral: Peripheral
     public var notifyingCharacteristics: Set<NotifyingCharacteristic> = []
-    public var readOnlyCharacteristics: Set<ReadOnlyCharacteristic> = []
+    public var readOnlyCharacteristics: Set<CharacteristicModelReadOnly> = []
 
     // MARK: - Private variables
 
