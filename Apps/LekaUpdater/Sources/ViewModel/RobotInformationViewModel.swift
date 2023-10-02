@@ -12,11 +12,13 @@ class RobotInformationViewModel: ObservableObject {
     @Published var robotSerialNumber = "n/a"
     @Published var robotBattery = "n/a"
     @Published var robotOsVersion = "n/a"
+    @Published var robotIsCharging = false
 
     init() {
         subscribeToRobotSerialNumberUpdates()
         subscribeToRobotBatteryUpdates()
         subscribeToRobotOsVersionUpdates()
+        subscribeToRobotChargingStatusUpdates()
     }
 
     private func subscribeToRobotSerialNumberUpdates() {
@@ -46,6 +48,15 @@ class RobotInformationViewModel: ObservableObject {
             .receive(on: DispatchQueue.main)
             .sink { robotOsVersion in
                 self.robotOsVersion = robotOsVersion ?? "n/a"
+            }
+            .store(in: &cancellables)
+    }
+
+    private func subscribeToRobotChargingStatusUpdates() {
+        globalRobotManager.$isCharging
+            .receive(on: DispatchQueue.main)
+            .sink {
+                self.robotIsCharging = $0 ?? false
             }
             .store(in: &cancellables)
     }

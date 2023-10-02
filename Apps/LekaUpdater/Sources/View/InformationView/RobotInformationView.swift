@@ -15,6 +15,8 @@ struct RobotInformationView: View {
             Text("Battery: \(viewModel.robotBattery)")
             Divider()
             Text("Version: \(viewModel.robotOsVersion)")
+            Divider()
+            Text("En charge: \(viewModel.robotIsCharging ? "yes" : "no")")
         }
         .padding()
 
