@@ -4,7 +4,7 @@
 
 import CombineCoreBluetooth
 
-public struct WriteOnlyCharacteristic {
+public struct CharacteristicModelWriteOnly {
 
     public let characteristicUUID: CBUUID
     public let serviceUUID: CBUUID

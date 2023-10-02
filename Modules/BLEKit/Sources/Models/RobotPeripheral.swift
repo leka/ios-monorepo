@@ -95,7 +95,7 @@ public class RobotPeripheral: Equatable {
         .store(in: &cancellables)
     }
 
-    public func send(_ data: Data, forCharacteristic characteristic: WriteOnlyCharacteristic) {
+    public func send(_ data: Data, forCharacteristic characteristic: CharacteristicModelWriteOnly) {
         peripheral.writeValue(
             data,
             writeType: .withResponse,

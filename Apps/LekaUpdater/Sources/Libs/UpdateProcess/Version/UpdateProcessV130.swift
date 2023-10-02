@@ -103,7 +103,7 @@ private class StateSettingFileExchangeState: GKState, StateEventProcessor {
     private func setFileExchangeState() {
         let data = Data([1])
 
-        var characteristic = WriteOnlyCharacteristic(
+        var characteristic = CharacteristicModelWriteOnly(
             characteristicUUID: BLESpecs.FileExchange.Characteristics.setState,
             serviceUUID: BLESpecs.FileExchange.service
         )
@@ -144,7 +144,7 @@ private class StateSettingDestinationPath: GKState, StateEventProcessor {
         let filename = "LekaOS-\(osVersion).bin"
         let destinationPath = directory + "/" + filename
 
-        var characteristic = WriteOnlyCharacteristic(
+        var characteristic = CharacteristicModelWriteOnly(
             characteristicUUID: BLESpecs.FileExchange.Characteristics.filePath,
             serviceUUID: BLESpecs.FileExchange.service
         )
@@ -181,7 +181,7 @@ private class StateClearingFile: GKState, StateEventProcessor {
     private func setClearPath() {
         let data = Data([1])
 
-        var characteristic = WriteOnlyCharacteristic(
+        var characteristic = CharacteristicModelWriteOnly(
             characteristicUUID: BLESpecs.FileExchange.Characteristics.clearFile,
             serviceUUID: BLESpecs.FileExchange.service
         )
@@ -210,7 +210,7 @@ private class StateSendingFile: GKState, StateEventProcessor {
         Float(currentPacket) / Float(expectedPackets)
     }
 
-    private var characteristic = WriteOnlyCharacteristic(
+    private var characteristic = CharacteristicModelWriteOnly(
         characteristicUUID: BLESpecs.FileExchange.Characteristics.fileReceptionBuffer,
         serviceUUID: BLESpecs.FileExchange.service
     )
@@ -414,7 +414,7 @@ private class StateApplyingUpdate: GKState, StateEventProcessor {
     private func setMajorMinorRevision() {
         let majorData = Data([globalFirmwareManager.major])
 
-        let majorCharacteristic = WriteOnlyCharacteristic(
+        let majorCharacteristic = CharacteristicModelWriteOnly(
             characteristicUUID: BLESpecs.FirmwareUpdate.Characteristics.versionMajor,
             serviceUUID: BLESpecs.FirmwareUpdate.service
         )
@@ -423,7 +423,7 @@ private class StateApplyingUpdate: GKState, StateEventProcessor {
 
         let minorData = Data([globalFirmwareManager.minor])
 
-        let minorCharacteristic = WriteOnlyCharacteristic(
+        let minorCharacteristic = CharacteristicModelWriteOnly(
             characteristicUUID: BLESpecs.FirmwareUpdate.Characteristics.versionMinor,
             serviceUUID: BLESpecs.FirmwareUpdate.service
         )
@@ -432,7 +432,7 @@ private class StateApplyingUpdate: GKState, StateEventProcessor {
 
         let revisionData = globalFirmwareManager.revision.data
 
-        let revisionCharacteristic = WriteOnlyCharacteristic(
+        let revisionCharacteristic = CharacteristicModelWriteOnly(
             characteristicUUID: BLESpecs.FirmwareUpdate.Characteristics.versionRevision,
             serviceUUID: BLESpecs.FirmwareUpdate.service
         )
@@ -443,7 +443,7 @@ private class StateApplyingUpdate: GKState, StateEventProcessor {
     private func applyUpdate() {
         let applyValue = Data([1])
 
-        let characteristic = WriteOnlyCharacteristic(
+        let characteristic = CharacteristicModelWriteOnly(
             characteristicUUID: BLESpecs.FirmwareUpdate.Characteristics.requestUpdate,
             serviceUUID: BLESpecs.FirmwareUpdate.service
         )
