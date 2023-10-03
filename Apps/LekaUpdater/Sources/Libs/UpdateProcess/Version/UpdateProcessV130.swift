@@ -302,7 +302,6 @@ private class StateVerifyingFile: GKState, StateEventProcessor {
 
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
         stateClass is StateClearingFile.Type || stateClass is StateApplyingUpdate.Type
-            || stateClass is StateErrorFailedToVerifyFile.Type
             || stateClass is StateErrorRobotUnexpectedDisconnection.Type
     }
 
@@ -328,8 +327,6 @@ private class StateVerifyingFile: GKState, StateEventProcessor {
                     self.stateMachine?.enter(StateApplyingUpdate.self)
                 } else if nextStateIsClearingFile {
                     self.stateMachine?.enter(StateClearingFile.self)
-                } else {
-                    self.stateMachine?.enter(StateErrorFailedToVerifyFile.self)
                 }
             case .robotDisconnected:
                 self.stateMachine?.enter(StateErrorRobotUnexpectedDisconnection.self)
@@ -513,7 +510,6 @@ private class StateFinal: GKState {}
 private protocol StateError {}
 
 private class StateErrorFailedToLoadFile: GKState, StateError {}
-private class StateErrorFailedToVerifyFile: GKState, StateError {}
 private class StateErrorRobotNotUpToDate: GKState, StateError {}
 private class StateErrorRobotUnexpectedDisconnection: GKState, StateError {}
 
@@ -550,7 +546,6 @@ class UpdateProcessV130: UpdateProcessProtocol {
             StateFinal(),
 
             StateErrorFailedToLoadFile(),
-            StateErrorFailedToVerifyFile(),
             StateErrorRobotNotUpToDate(),
             StateErrorRobotUnexpectedDisconnection(),
         ])
@@ -617,8 +612,6 @@ class UpdateProcessV130: UpdateProcessProtocol {
         switch state {
             case is StateErrorFailedToLoadFile:
                 currentStage.send(completion: .failure(.failedToLoadFile))
-            case is StateErrorFailedToVerifyFile:
-                currentStage.send(completion: .failure(.failedToVerifyFile))
             case is StateErrorRobotNotUpToDate:
                 currentStage.send(completion: .failure(.robotNotUpToDate))
             case is StateErrorRobotUnexpectedDisconnection:
