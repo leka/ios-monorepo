@@ -296,7 +296,7 @@ private class StateVerifyingFile: GKState, StateEventProcessor {
     private var cancellables: Set<AnyCancellable> = []
 
     private var isFileValid = false
-    private var lastValue = "0000000000000000000000000000000000000000000000000000000000000000"
+    private let defaultValue = "0000000000000000000000000000000000000000000000000000000000000000"
 
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
         stateClass is StateClearingFile.Type || stateClass is StateApplyingUpdate.Type
@@ -338,10 +338,9 @@ private class StateVerifyingFile: GKState, StateEventProcessor {
             .sink { value in
                 guard let value = value else { return }
 
-                if value == self.lastValue {
+                if value == self.defaultValue {
                     return
                 }
-                self.lastValue = value
 
                 self.isFileValid = value == globalFirmwareManager.sha256
                 self.process(event: .fileVerificationReceived)
