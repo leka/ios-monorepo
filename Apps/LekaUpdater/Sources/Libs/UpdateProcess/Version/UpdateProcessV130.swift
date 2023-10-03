@@ -298,20 +298,12 @@ private class StateVerifyingFile: GKState, StateEventProcessor {
     private var isFileValid = false
     private var lastValue = "0000000000000000000000000000000000000000000000000000000000000000"
 
-    private var nextStateIsClearingFile = false
-
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
         stateClass is StateClearingFile.Type || stateClass is StateApplyingUpdate.Type
             || stateClass is StateErrorRobotUnexpectedDisconnection.Type
     }
 
     override func didEnter(from previousState: GKState?) {
-        if previousState is StateSettingDestinationPath {
-            nextStateIsClearingFile = true
-        } else {
-            nextStateIsClearingFile = false
-        }
-
         DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: startFileVerification)
     }
 
@@ -325,7 +317,7 @@ private class StateVerifyingFile: GKState, StateEventProcessor {
             case .fileVerificationReceived:
                 if isFileValid {
                     self.stateMachine?.enter(StateApplyingUpdate.self)
-                } else if nextStateIsClearingFile {
+                } else {
                     self.stateMachine?.enter(StateClearingFile.self)
                 }
             case .robotDisconnected:
