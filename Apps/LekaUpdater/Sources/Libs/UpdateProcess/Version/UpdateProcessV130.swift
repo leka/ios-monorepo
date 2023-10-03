@@ -339,8 +339,8 @@ private class StateVerifyingFile: GKState, StateEventProcessor {
     }
 
     private func startFileVerification() {
-        subscribeActualSHA256Updates()
-        readRequestSHA256()
+        DispatchQueue.main.asyncAfter(deadline: .now(), execute: subscribeActualSHA256Updates)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: readRequestSHA256)
     }
 
     private func subscribeActualSHA256Updates() {
