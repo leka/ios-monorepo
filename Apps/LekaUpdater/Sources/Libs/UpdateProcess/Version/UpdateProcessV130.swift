@@ -207,7 +207,14 @@ private class StateSendingFile: GKState, StateEventProcessor {
         Float(currentPacket) / Float(expectedPackets)
     }
 
-    private var characteristic: CharacteristicModelWriteOnly!
+    lazy private var characteristic: CharacteristicModelWriteOnly = CharacteristicModelWriteOnly(
+        characteristicUUID: BLESpecs.FileExchange.Characteristics.fileReceptionBuffer,
+        serviceUUID: BLESpecs.FileExchange.service,
+        onWrite: {
+            self.currentPacket += 1
+            self.tryToSendNextPacket()
+        }
+    )
 
     public var progression = CurrentValueSubject<Float, Never>(0.0)
 
@@ -220,15 +227,6 @@ private class StateSendingFile: GKState, StateEventProcessor {
         self.currentPacket = 0
 
         super.init()
-
-        self.characteristic = CharacteristicModelWriteOnly(
-            characteristicUUID: BLESpecs.FileExchange.Characteristics.fileReceptionBuffer,
-            serviceUUID: BLESpecs.FileExchange.service,
-            onWrite: {
-                self.currentPacket += 1
-                self.tryToSendNextPacket()
-            }
-        )
 
         self.subscribeToFirmwareDataUpdates()
     }
