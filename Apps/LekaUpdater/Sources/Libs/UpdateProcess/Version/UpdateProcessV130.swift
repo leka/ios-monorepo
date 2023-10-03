@@ -244,7 +244,7 @@ private class StateSendingFile: GKState, StateEventProcessor {
     }
 
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
-        stateClass is StateVerifyingFile.Type || stateClass is StateErrorRobotUnexpectedDisconnection.Type
+        stateClass is StateApplyingUpdate.Type || stateClass is StateErrorRobotUnexpectedDisconnection.Type
     }
 
     override func didEnter(from previousState: GKState?) {
@@ -258,7 +258,7 @@ private class StateSendingFile: GKState, StateEventProcessor {
     func process(event: UpdateEvent) {
         switch event {
             case .fileSent:
-                self.stateMachine?.enter(StateVerifyingFile.self)
+                self.stateMachine?.enter(StateApplyingUpdate.self)
             case .robotDisconnected:
                 self.stateMachine?.enter(StateErrorRobotUnexpectedDisconnection.self)
             default:
