@@ -318,6 +318,7 @@ private class StateVerifyingFile: GKState, StateEventProcessor {
 
     override func willExit(to nextState: GKState) {
         cancellables.removeAll()
+        globalRobotManager.sha256 = nil
     }
 
     func process(event: UpdateEvent) {
