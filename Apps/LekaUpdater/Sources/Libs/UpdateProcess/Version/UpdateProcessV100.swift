@@ -103,14 +103,13 @@ private class StateSettingDestinationPath: GKState, StateEventProcessor {
         let filename = "LekaOS-\(osVersion).bin"
         let destinationPath = directory + "/" + filename
 
-        var characteristic = WriteOnlyCharacteristic(
+        let characteristic = CharacteristicModelWriteOnly(
             characteristicUUID: BLESpecs.FileExchange.Characteristics.filePath,
-            serviceUUID: BLESpecs.FileExchange.service
+            serviceUUID: BLESpecs.FileExchange.service,
+            onWrite: {
+                self.process(event: .destinationPathSet)
+            }
         )
-
-        characteristic.onWrite = {
-            self.process(event: .destinationPathSet)
-        }
 
         globalRobotManager.robotPeripheral?.send(destinationPath.data(using: .utf8)!, forCharacteristic: characteristic)
     }
@@ -132,9 +131,13 @@ private class StateSendingFile: GKState, StateEventProcessor {
         Float(currentPacket) / Float(expectedPackets)
     }
 
-    private var characteristic = WriteOnlyCharacteristic(
+    lazy private var characteristic: CharacteristicModelWriteOnly = CharacteristicModelWriteOnly(
         characteristicUUID: BLESpecs.FileExchange.Characteristics.fileReceptionBuffer,
-        serviceUUID: BLESpecs.FileExchange.service
+        serviceUUID: BLESpecs.FileExchange.service,
+        onWrite: {
+            self.currentPacket += 1
+            self.tryToSendNextPacket()
+        }
     )
 
     public var progression = CurrentValueSubject<Float, Never>(0.0)
@@ -188,11 +191,6 @@ private class StateSendingFile: GKState, StateEventProcessor {
     }
 
     private func sendFile() {
-        characteristic.onWrite = {
-            self.currentPacket += 1
-            self.tryToSendNextPacket()
-        }
-
         tryToSendNextPacket()
     }
 
@@ -265,7 +263,7 @@ private class StateApplyingUpdate: GKState, StateEventProcessor {
     private func setMajorMinorRevision() {
         let majorData = Data([globalFirmwareManager.major])
 
-        let majorCharacteristic = WriteOnlyCharacteristic(
+        let majorCharacteristic = CharacteristicModelWriteOnly(
             characteristicUUID: BLESpecs.FirmwareUpdate.Characteristics.versionMajor,
             serviceUUID: BLESpecs.FirmwareUpdate.service
         )
@@ -274,7 +272,7 @@ private class StateApplyingUpdate: GKState, StateEventProcessor {
 
         let minorData = Data([globalFirmwareManager.minor])
 
-        let minorCharacteristic = WriteOnlyCharacteristic(
+        let minorCharacteristic = CharacteristicModelWriteOnly(
             characteristicUUID: BLESpecs.FirmwareUpdate.Characteristics.versionMinor,
             serviceUUID: BLESpecs.FirmwareUpdate.service
         )
@@ -283,7 +281,7 @@ private class StateApplyingUpdate: GKState, StateEventProcessor {
 
         let revisionData = globalFirmwareManager.revision.data
 
-        let revisionCharacteristic = WriteOnlyCharacteristic(
+        let revisionCharacteristic = CharacteristicModelWriteOnly(
             characteristicUUID: BLESpecs.FirmwareUpdate.Characteristics.versionRevision,
             serviceUUID: BLESpecs.FirmwareUpdate.service
         )
@@ -294,7 +292,7 @@ private class StateApplyingUpdate: GKState, StateEventProcessor {
     private func applyUpdate() {
         let applyValue = Data([1])
 
-        let characteristic = WriteOnlyCharacteristic(
+        let characteristic = CharacteristicModelWriteOnly(
             characteristicUUID: BLESpecs.FirmwareUpdate.Characteristics.requestUpdate,
             serviceUUID: BLESpecs.FirmwareUpdate.service
         )
@@ -350,7 +348,7 @@ private class StateWaitingForRobotToReboot: GKState, StateEventProcessor {
                     }
                     if let robotDetected = robotDetected {
                         self.isRobotUpToDate =
-                            robotDetected.advertisingData.osVersion == globalFirmwareManager.currentVersion
+                            robotDetected.osVersion == globalFirmwareManager.currentVersion
 
                         self.process(event: .robotDetected)
                     }

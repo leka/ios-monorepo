@@ -4,43 +4,51 @@
 
 import CombineCoreBluetooth
 
-public struct NotifyingCharacteristic: Hashable {
+public struct CharacteristicModelNotifying {
+
+    public typealias Callback = ((_ data: Data?) -> Void)
 
     public let characteristicUUID: CBUUID
     public let serviceUUID: CBUUID
-    public var characteristic: CBCharacteristic?
-    public var onNotification: ((_ data: Data?) -> Void)?
+    public let cbCharacteristic: CBCharacteristic?
+    public let onNotification: Callback?
 
-    public init(characteristicUUID: CBUUID, serviceUUID: CBUUID) {
+    public init(characteristicUUID: CBUUID, serviceUUID: CBUUID, cbCharacteristic: CBCharacteristic? = nil, onNotification: Callback? = nil ) {
         self.characteristicUUID = characteristicUUID
         self.serviceUUID = serviceUUID
+        self.cbCharacteristic = cbCharacteristic
+        self.onNotification = onNotification
     }
+
+}
+
+extension CharacteristicModelNotifying: Hashable {
 
     public func hash(into hasher: inout Hasher) {
         hasher.combine(characteristicUUID)
         hasher.combine(serviceUUID)
     }
 
-    public static func == (lhs: NotifyingCharacteristic, rhs: NotifyingCharacteristic) -> Bool {
+    public static func == (lhs: CharacteristicModelNotifying, rhs: CharacteristicModelNotifying) -> Bool {
         lhs.serviceUUID == rhs.serviceUUID && lhs.characteristicUUID == rhs.characteristicUUID
     }
 
 }
 
-public let kDefaultNotifyingCharacteristics: Set<NotifyingCharacteristic> = [
-    NotifyingCharacteristic(
+public let kDefaultNotifyingCharacteristics: Set<CharacteristicModelNotifying> = [
+    CharacteristicModelNotifying(
         characteristicUUID: BLESpecs.Battery.Characteristics.level,
         serviceUUID: BLESpecs.Battery.service
     ),
-    NotifyingCharacteristic(
+    CharacteristicModelNotifying(
         characteristicUUID: BLESpecs.Monitoring.Characteristics.chargingStatus,
         serviceUUID: BLESpecs.Monitoring.service
     ),
-    NotifyingCharacteristic(
+    CharacteristicModelNotifying(
         characteristicUUID: BLESpecs.MagicCard.Characteristics.id,
         serviceUUID: BLESpecs.MagicCard.service
     ),
-    NotifyingCharacteristic(
+    CharacteristicModelNotifying(
         characteristicUUID: BLESpecs.MagicCard.Characteristics.language,
         serviceUUID: BLESpecs.MagicCard.service
     ),

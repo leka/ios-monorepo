@@ -5,41 +5,46 @@
 import Foundation
 
 internal struct AdvertisingServiceData {
-    enum Index {
-        static let battery = 0
-        static let isCharging = 1
-        static let osVersionMajor = 2
-        static let osVersionMinor = 3
-        static let osVersionRevisionHighByte = 4
-        static let osVersionRevisionLowByte = 5
-    }
 
-    private let data: Data
+    let battery: Int
+    let isCharging: Bool
+    let osVersion: String?
 
     init(data: Data) {
-        self.data = data
+        self.battery = getBattery(data: data)
+        self.isCharging = getChargingState(data: data)
+        self.osVersion = getOsVersion(data: data)
     }
 
-    public var battery: Int {
-        Int(data[Index.battery])
+}
+
+private enum AdvertisingServiceDataIndex {
+    static let battery = 0
+    static let isCharging = 1
+    static let osVersionMajor = 2
+    static let osVersionMinor = 3
+    static let osVersionRevisionHighByte = 4
+    static let osVersionRevisionLowByte = 5
+}
+
+private func getBattery(data: Data) -> Int {
+    Int(data[AdvertisingServiceDataIndex.battery])
+}
+
+private func getChargingState(data: Data) -> Bool {
+    data[AdvertisingServiceDataIndex.isCharging] == 0x01
+}
+
+private func getOsVersion(data: Data) -> String? {
+    guard data.count == 6 else {
+        return nil
     }
 
-    public var isCharging: Bool {
-        data[Index.isCharging] == 0x01
-    }
+    let major = data[AdvertisingServiceDataIndex.osVersionMajor]
+    let minor = data[AdvertisingServiceDataIndex.osVersionMinor]
+    let revision =
+        Int(data[AdvertisingServiceDataIndex.osVersionRevisionHighByte]) << 8
+        + Int(data[AdvertisingServiceDataIndex.osVersionRevisionLowByte])
 
-    public var osVersion: String? {
-        guard data.count == 6 else {
-            return nil
-        }
-
-        let major = data[Index.osVersionMajor]
-        let minor = data[Index.osVersionMinor]
-        let revision =
-            Int(data[Index.osVersionRevisionHighByte]) << 8
-            + Int(data[Index.osVersionRevisionLowByte])
-
-        return "\(major).\(minor).\(revision)"
-    }
-
+    return "\(major).\(minor).\(revision)"
 }

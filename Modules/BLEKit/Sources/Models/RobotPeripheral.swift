@@ -10,8 +10,8 @@ public class RobotPeripheral: Equatable {
 
     // TODO(@ladislas): should they be published? maybe, need to investigate
     public var peripheral: Peripheral
-    public var notifyingCharacteristics: Set<NotifyingCharacteristic> = []
-    public var readOnlyCharacteristics: Set<ReadOnlyCharacteristic> = []
+    public var notifyingCharacteristics: Set<CharacteristicModelNotifying> = []
+    public var readOnlyCharacteristics: Set<CharacteristicModelReadOnly> = []
 
     // MARK: - Private variables
 
@@ -42,12 +42,17 @@ public class RobotPeripheral: Equatable {
                         self.peripheral.setNotifyValue(true, for: characteristic)
                             .assertNoFailure()
                             .sink {
-                                var newChar = char
-                                newChar.characteristic = characteristic
-                                self.notifyingCharacteristics.remove(char)
-                                self.notifyingCharacteristics.insert(newChar)
+                                let newCharacteristic = CharacteristicModelNotifying(
+                                    characteristicUUID: char.characteristicUUID,
+                                    serviceUUID: char.serviceUUID,
+                                    cbCharacteristic: characteristic,
+                                    onNotification: char.onNotification
+                                )
 
-                                self.listenForUpdates(on: newChar)
+                                self.notifyingCharacteristics.remove(char)
+                                self.notifyingCharacteristics.insert(newCharacteristic)
+
+                                self.listenForUpdates(on: newCharacteristic)
                             }
                             .store(in: &self.cancellables)
                     }
@@ -95,7 +100,7 @@ public class RobotPeripheral: Equatable {
         .store(in: &cancellables)
     }
 
-    public func send(_ data: Data, forCharacteristic characteristic: WriteOnlyCharacteristic) {
+    public func send(_ data: Data, forCharacteristic characteristic: CharacteristicModelWriteOnly) {
         peripheral.writeValue(
             data,
             writeType: .withResponse,
@@ -121,8 +126,8 @@ public class RobotPeripheral: Equatable {
 
     // MARK: - Private functions
 
-    private func listenForUpdates(on characteristic: NotifyingCharacteristic) {
-        peripheral.listenForUpdates(on: characteristic.characteristic!)
+    private func listenForUpdates(on characteristic: CharacteristicModelNotifying) {
+        peripheral.listenForUpdates(on: characteristic.cbCharacteristic!)
             .receive(on: DispatchQueue.main)
             .sink(
                 receiveCompletion: { _ in

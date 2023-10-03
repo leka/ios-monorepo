@@ -32,7 +32,7 @@ public class BLEManager {
         BLEManager(centralManager: CentralManager.live())
     }
 
-    public func scanForRobots() -> AnyPublisher<[RobotDiscovery], Error> {
+    public func scanForRobots() -> AnyPublisher<[RobotDiscoveryModel], Error> {
         centralManager.scanForPeripherals(withServices: [BLESpecs.AdvertisingData.service])
             .handleEvents(
                 receiveSubscription: { _ in
@@ -73,7 +73,7 @@ public class BLEManager {
 
                     let robotPeripheral = RobotPeripheral(peripheral: peripheralDiscovery.peripheral)
 
-                    return RobotDiscovery(
+                    return RobotDiscoveryModel(
                         robotPeripheral: robotPeripheral, advertisingData: robotAdvertisingData, rssi: rssi)
                 }
 
@@ -81,7 +81,7 @@ public class BLEManager {
             .eraseToAnyPublisher()
     }
 
-    public func connect(_ discovery: RobotDiscovery) -> AnyPublisher<RobotPeripheral, Error> {
+    public func connect(_ discovery: RobotDiscoveryModel) -> AnyPublisher<RobotPeripheral, Error> {
         centralManager.connect(discovery.robotPeripheral.peripheral)
             // TODO(@ladislas): check if receive is needed here
             .receive(on: DispatchQueue.main)

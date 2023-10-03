@@ -9,10 +9,10 @@ public class RobotDiscoveryViewModel: ObservableObject, Equatable, Identifiable 
     @Published var name: String
     @Published var battery: Int
     @Published var isCharging: Bool
-    @Published var osVersion: String?
+    @Published var osVersion: String
     @Published var status: RobotGridViewStatus
 
-    public var robotDiscovery: RobotDiscovery?
+    public var robotDiscovery: RobotDiscoveryModel?
 
     init(name: String, battery: Int, isCharging: Bool, osVersion: String, status: RobotGridViewStatus = .unselected) {
         self.name = name
@@ -22,11 +22,11 @@ public class RobotDiscoveryViewModel: ObservableObject, Equatable, Identifiable 
         self.status = status
     }
 
-    init(robotDiscovery: RobotDiscovery, status: RobotGridViewStatus = .unselected) {
-        self.name = robotDiscovery.advertisingData.name
-        self.battery = robotDiscovery.advertisingData.battery
-        self.isCharging = robotDiscovery.advertisingData.isCharging
-        self.osVersion = robotDiscovery.advertisingData.osVersion
+    init(robotDiscovery: RobotDiscoveryModel, status: RobotGridViewStatus = .unselected) {
+        self.name = robotDiscovery.name
+        self.battery = robotDiscovery.battery
+        self.isCharging = robotDiscovery.isCharging
+        self.osVersion = robotDiscovery.osVersion
         self.status = status
         self.robotDiscovery = robotDiscovery
     }
