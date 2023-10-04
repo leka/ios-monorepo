@@ -91,9 +91,7 @@ public class StepViewViewModel: ObservableObject {
                 guard let self = self else { return }
                 self.state = $0
                 if $0 == .finished {
-					Task {
-						await self.stepManager.nextStep()
-					}
+                    self.stepManager.nextStep()
                 }
             })
             .store(in: &cancellables)

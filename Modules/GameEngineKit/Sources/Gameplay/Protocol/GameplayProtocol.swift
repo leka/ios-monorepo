@@ -5,7 +5,7 @@
 import Combine
 import Foundation
 
-public protocol GameplayProtocol: ObservableObject {
+public protocol GameplayProtocol {
     var choices: CurrentValueSubject<[ChoiceViewModel], Never> { get set }
     var state: CurrentValueSubject<GameplayState, Never> { get set }
 

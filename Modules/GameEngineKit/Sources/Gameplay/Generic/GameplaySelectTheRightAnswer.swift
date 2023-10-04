@@ -22,8 +22,9 @@ public class GameplaySelectTheRightAnswer: GameplayProtocol {
                 // TO DO (@hugo) asyncAwait
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                     self.choices.value[index].status = .notSelected
+                    self.state.send(.finished)
                 }
-                self.state.send(.finished)
+
                 // TODO(@ladislas): Run reinforcers and lottie animation
             }
         } else {
