@@ -2,14 +2,12 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
-import Combine
 import SpriteKit
 import SwiftUI
 
 class DragAndDropOneAreaOneChoiceScene: SKScene, DragAndDropSceneProtocol {
 
     // protocol requirements
-    //    @ObservedObject var viewModel: GenericViewModel
     var viewModel: GenericViewModel?
     var contexts: [ContextViewModel]
     var spacer: CGFloat = .zero
@@ -20,8 +18,7 @@ class DragAndDropOneAreaOneChoiceScene: SKScene, DragAndDropSceneProtocol {
 
     private var playedNode: DraggableImageAnswerNode?
 
-    public init( /*viewModel: GenericViewModel, */contexts: [ContextViewModel]) {
-        //        self.viewModel = viewModel
+    public init(contexts: [ContextViewModel]) {
         self.contexts = contexts
         super.init(size: CGSize.zero)
     }
@@ -43,7 +40,10 @@ class DragAndDropOneAreaOneChoiceScene: SKScene, DragAndDropSceneProtocol {
     }
 
     override func update(_ currentTime: TimeInterval) {
-        for choice in viewModel!.choices where choice.item == playedNode?.name {
+        guard let VModel = viewModel else {
+            return
+        }
+        for choice in VModel.choices where choice.item == playedNode?.name {
             if choice.status == .playingRightAnimation {
                 dropGoodAnswer(playedNode!)
             } else if choice.status == .playingWrongAnimation {
@@ -89,7 +89,6 @@ class DragAndDropOneAreaOneChoiceScene: SKScene, DragAndDropSceneProtocol {
             playedNode = selectedNodes[touch]!
             playedNode!.scaleForMax(sizeOf: biggerSide)
             let choice = viewModel!.choices.first(where: { $0.item == playedNode!.name })
-
             // dropped within the bounds of dropArea
             if playedNode!.fullyContains(bounds: dropAreas[0].frame) {
                 viewModel!.onChoiceTapped(choice: choice!)

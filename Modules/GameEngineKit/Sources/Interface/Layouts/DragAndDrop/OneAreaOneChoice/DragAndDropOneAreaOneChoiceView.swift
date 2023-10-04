@@ -7,47 +7,39 @@ import SwiftUI
 
 public struct DragAndDropOneAreaOneChoiceView: View {
     @ObservedObject private var viewModel: GenericViewModel
-    let contexts: [ContextViewModel]
-    @State private var scene = SKScene()
+    //    @StateObject private var scene: DragAndDropOneAreaOneChoiceScene
+    @State private var scene: SKScene = SKScene()
+    var contexts: [ContextViewModel]
+    @State private var id = UUID()
 
     public init(gameplay: any GameplayProtocol, contexts: [ContextViewModel]) {
+        //        self._scene = StateObject(wrappedValue: DragAndDropOneAreaOneChoiceScene(contexts: contexts))
         self.viewModel = GenericViewModel(gameplay: gameplay)
         self.contexts = contexts
     }
 
     public var body: some View {
-        //        DragAndDropHostView(
-        //            viewModel: viewModel,
-        //            scene: $scene
-        //        )
         GeometryReader { proxy in
             SpriteView(
                 scene: makeScene(size: proxy.size),
                 options: [.allowsTransparency]
             )
+            .id(id)
             .frame(width: proxy.size.width, height: proxy.size.height)
-            .onReceive(viewModel.$state) { state in
-                switch state {
-                    case .playing:
-                        print(viewModel.choices[0].item, "playing")
-                    case .finished:
-                        print(viewModel.choices[0].item, "finished")
-                    case .idle:
-                        print(viewModel.choices[0].item, "idle")
-                        scene = DragAndDropOneAreaOneChoiceScene(contexts: contexts)
-                }
+            .onAppear {
+                scene = DragAndDropOneAreaOneChoiceScene(contexts: contexts)
             }
         }
         .edgesIgnoringSafeArea(.horizontal)
     }
 
     private func makeScene(size: CGSize) -> SKScene {
-        guard let properScene = scene as? DragAndDropSceneProtocol else {
+        guard let finalScene = scene as? DragAndDropSceneProtocol else {
             return SKScene()
         }
-        properScene.size = CGSize(width: size.width, height: size.height)
-        properScene.viewModel = viewModel
+        finalScene.size = CGSize(width: size.width, height: size.height)
+        finalScene.viewModel = viewModel
 
-        return properScene
+        return finalScene
     }
 }
