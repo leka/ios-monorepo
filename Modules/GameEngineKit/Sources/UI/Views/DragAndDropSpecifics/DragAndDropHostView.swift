@@ -8,7 +8,7 @@ import SwiftUI
 struct DragAndDropHostView: View {
 
     @ObservedObject var viewModel: GenericViewModel
-    @Binding var scene: SKScene
+    var scene: SKScene
 
     var body: some View {
         GeometryReader { proxy in
@@ -17,19 +17,20 @@ struct DragAndDropHostView: View {
                 options: [.allowsTransparency]
             )
             .frame(width: proxy.size.width, height: proxy.size.height)
+            .onAppear {
+                scene.size = CGSize(width: proxy.size.width, height: proxy.size.height)
+            }
         }
         .edgesIgnoringSafeArea(.horizontal)
     }
 
     private func makeScene(size: CGSize) -> SKScene {
-        //    func makeScene(size: CGSize) -> SKScene {
-        let dragAndDropScene: SKScene = scene
-        guard let properScene = dragAndDropScene as? DragAndDropSceneProtocol else {
+        guard let finalScene = scene as? DragAndDropSceneProtocol else {
             return SKScene()
         }
-        properScene.size = CGSize(width: size.width, height: size.height)
-        properScene.viewModel = viewModel
+        finalScene.size = CGSize(width: size.width, height: size.height)
+        finalScene.viewModel = viewModel
 
-        return properScene
+        return finalScene
     }
 }

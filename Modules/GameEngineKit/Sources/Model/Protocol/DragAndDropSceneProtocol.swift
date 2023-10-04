@@ -44,7 +44,10 @@ extension DragAndDropSceneProtocol {
     }
 
     @MainActor func makeAnswers() {
-        for choice in viewModel!.choices {
+        guard let VModel = viewModel else {
+            return
+        }
+        for choice in VModel.choices {
             let draggableImageAnswerNode = DraggableImageAnswerNode(
                 choice: choice,
                 position: self.defaultPosition
@@ -88,7 +91,10 @@ extension DragAndDropSceneProtocol {
 
     func getExpectedItems() {
         // expected answer(s)
-        for choice in viewModel!.choices where choice.rightAnswer {
+        guard let VModel = viewModel else {
+            return
+        }
+        for choice in VModel.choices where choice.rightAnswer {
             let expectedItem = choice.item
             let expectedNode = SKSpriteNode()
 
