@@ -10,13 +10,11 @@ public struct ContextViewModel: Identifiable, Equatable {
     public let file: String
     public let size: CGSize
     public let hints: Bool
-    public var rightAnswers: [String]
 
-    public init(name: String, file: String, size: CGSize, hints: Bool = false, rightAnswers: [String]) {
-        self.name = name
+    public init(file: String, size: CGSize, hints: Bool = false) {
         self.file = file
+        self.name = file
         self.size = size
         self.hints = hints
-        self.rightAnswers = rightAnswers
     }
 }

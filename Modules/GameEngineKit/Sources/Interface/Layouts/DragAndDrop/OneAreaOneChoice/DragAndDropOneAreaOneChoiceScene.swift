@@ -9,7 +9,7 @@ class DragAndDropOneAreaOneChoiceScene: SKScene, DragAndDropSceneProtocol {
 
     // protocol requirements
     var viewModel: GenericViewModel?
-    var contexts: [ContextViewModel]
+    var contexts: [ContextViewModel]?
     var spacer: CGFloat = .zero
     var defaultPosition = CGPoint.zero
     var selectedNodes: [UITouch: DraggableImageAnswerNode] = [:]

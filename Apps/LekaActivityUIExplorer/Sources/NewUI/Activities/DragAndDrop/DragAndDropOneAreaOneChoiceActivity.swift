@@ -26,48 +26,23 @@ private let choicesStep5 = [
 ]
 
 private let context1 = [
-    ContextViewModel(
-        name: "basket",
-        file: "basket",
-        size: CGSize(width: 380, height: 280),
-        hints: true,
-        rightAnswers: ["watermelon"])
+    ContextViewModel(file: "basket", size: CGSize(width: 380, height: 280), hints: true)
 ]
 
 private let context2 = [
-    ContextViewModel(
-        name: "basket",
-        file: "basket",
-        size: CGSize(width: 380, height: 280),
-        hints: true,
-        rightAnswers: ["banana"])
+    ContextViewModel(file: "kitchen_asset_1", size: CGSize(width: 380, height: 280), hints: false)
 ]
 
 private let context3 = [
-    ContextViewModel(
-        name: "basket",
-        file: "basket",
-        size: CGSize(width: 380, height: 280),
-        hints: true,
-        rightAnswers: ["kiwi"])
+    ContextViewModel(file: "basket", size: CGSize(width: 380, height: 280), hints: true)
 ]
 
 private let context4 = [
-    ContextViewModel(
-        name: "basket",
-        file: "basket",
-        size: CGSize(width: 380, height: 280),
-        hints: true,
-        rightAnswers: ["cherry"])
+    ContextViewModel(file: "basket", size: CGSize(width: 380, height: 280), hints: true)
 ]
 
 private let context5 = [
-    ContextViewModel(
-        name: "basket",
-        file: "basket",
-        size: CGSize(width: 380, height: 280),
-        hints: true,
-        rightAnswers: ["avocado"])
+    ContextViewModel(file: "basket", size: CGSize(width: 380, height: 280), hints: true)
 ]
 
 private var steps: [StandardStepModel] = [

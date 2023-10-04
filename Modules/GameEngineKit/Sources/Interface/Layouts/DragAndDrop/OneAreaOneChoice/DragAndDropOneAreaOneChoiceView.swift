@@ -9,13 +9,13 @@ public struct DragAndDropOneAreaOneChoiceView: View {
     @ObservedObject private var viewModel: GenericViewModel
     //    @StateObject private var scene: DragAndDropOneAreaOneChoiceScene
     @State private var scene: SKScene = SKScene()
-    var contexts: [ContextViewModel]
+    @State var contexts: [ContextViewModel]
     @State private var id = UUID()
 
     public init(gameplay: any GameplayProtocol, contexts: [ContextViewModel]) {
         //        self._scene = StateObject(wrappedValue: DragAndDropOneAreaOneChoiceScene(contexts: contexts))
         self.viewModel = GenericViewModel(gameplay: gameplay)
-        self.contexts = contexts
+        self._contexts = State(wrappedValue: contexts)
     }
 
     public var body: some View {
@@ -24,12 +24,13 @@ public struct DragAndDropOneAreaOneChoiceView: View {
                 scene: makeScene(size: proxy.size),
                 options: [.allowsTransparency]
             )
-            .id(id)
+
             .frame(width: proxy.size.width, height: proxy.size.height)
             .onAppear {
                 scene = DragAndDropOneAreaOneChoiceScene(contexts: contexts)
             }
         }
+        .id(id)
         .edgesIgnoringSafeArea(.horizontal)
     }
 
@@ -39,6 +40,8 @@ public struct DragAndDropOneAreaOneChoiceView: View {
         }
         finalScene.size = CGSize(width: size.width, height: size.height)
         finalScene.viewModel = viewModel
+        finalScene.contexts = contexts
+        print(contexts[0].name)
 
         return finalScene
     }
