@@ -33,12 +33,9 @@ public class StepManager {
         self.currentStep.send(CurrentStep(0, step: firstStep))
     }
 
-    func nextStep() async {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [weak self] in
-            guard let self = self else { return }
-            let currentStepIndex = self.currentStep.value.index + 1
-            guard currentStepIndex < self.steps.count else { return }
-            self.currentStep.send(CurrentStep(currentStepIndex, step: self.steps[currentStepIndex]))
-        }
+    func nextStep() {
+        let currentStepIndex = self.currentStep.value.index + 1
+        guard currentStepIndex < self.steps.count else { return }
+        self.currentStep.send(CurrentStep(currentStepIndex, step: self.steps[currentStepIndex]))
     }
 }
