@@ -12,6 +12,6 @@ public struct StepView: View {
     }
 
     public var body: some View {
-        viewModel.currentView
+        viewModel.interfaceView.id(viewModel.currentIndex)
     }
 }
