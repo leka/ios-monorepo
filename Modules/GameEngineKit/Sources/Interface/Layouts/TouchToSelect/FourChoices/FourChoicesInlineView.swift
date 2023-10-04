@@ -5,12 +5,12 @@
 import SwiftUI
 
 public struct FourChoicesInlineView: View {
-    @ObservedObject private var viewModel: GenericViewModel
+    @StateObject private var viewModel: GenericViewModel
     let horizontalSpacing: CGFloat = 70
     let answerSize: CGFloat = 200
 
     public init(gameplay: any GameplayProtocol) {
-        self.viewModel = GenericViewModel(gameplay: gameplay)
+        self._viewModel = StateObject(wrappedValue: GenericViewModel(gameplay: gameplay))
     }
 
     public var body: some View {

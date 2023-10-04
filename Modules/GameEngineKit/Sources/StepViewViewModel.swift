@@ -16,6 +16,7 @@ public class StepViewViewModel: ObservableObject {
 
     public init(stepManager: StepManager) {
         self.stepManager = stepManager
+		self.currentIndex = stepManager.currentStep.value.index
         let step = stepManager.currentStep.value.step
         self.currentGameplay = StepViewViewModel.gameplaySelector(stepModel: step)
 		self.currentInterface = step.interface
@@ -27,6 +28,7 @@ public class StepViewViewModel: ObservableObject {
                 guard let self = self else { return }
                 let step = $0.step
 
+				self.currentIndex = $0.index
                 self.currentGameplay = StepViewViewModel.gameplaySelector(stepModel: step)
 				self.currentInterface = step.interface
                 subscribeToGameplayState()
