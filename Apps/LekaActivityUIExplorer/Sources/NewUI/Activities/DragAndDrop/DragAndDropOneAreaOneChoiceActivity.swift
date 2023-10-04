@@ -70,9 +70,10 @@ private var steps: [StandardStepModel] = [
 
 struct DragAndDropOneAreaOneChoiceActivity: View {
     @StateObject private var stepManager = StepManager(steps: steps)
+    @State private var id = UUID()
 
     var body: some View {
-        stepManager.interface
+        stepManager.interface.id(id)
     }
 }
 
