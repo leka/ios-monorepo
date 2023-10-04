@@ -60,10 +60,10 @@ private var steps: [StandardStepModel] = [
 ]
 
 struct TouchToSelectSixChoicesActivity: View {
-    @StateObject private var stepManager = StepManager(steps: steps)
+    private var stepManager = StepManager(steps: steps)
 
     var body: some View {
-        stepManager.interface
+        StepView(stepManager: stepManager)
     }
 }
 

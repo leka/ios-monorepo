@@ -59,9 +59,9 @@ private var steps: [StandardStepModel] = [
 ]
 
 struct OneAnswerSixChoicesActivity: View {
-    @ObservedObject private var stepManager = StepManager(steps: steps)
+    private var stepManager = StepManager(steps: steps)
 
     var body: some View {
-        stepManager.interface
+        StepView(stepManager: stepManager)
     }
 }
