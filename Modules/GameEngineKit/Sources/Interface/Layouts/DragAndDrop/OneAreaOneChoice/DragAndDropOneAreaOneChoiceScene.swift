@@ -2,6 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import Combine
 import SpriteKit
 import SwiftUI
 
@@ -15,6 +16,7 @@ class DragAndDropOneAreaOneChoiceScene: SKScene, DragAndDropSceneProtocol {
     var selectedNodes: [UITouch: DraggableImageAnswerNode] = [:]
     var expectedItemsNodes: [String: [SKSpriteNode]] = [:]
     var dropAreas: [SKSpriteNode] = []
+    var cancellables: Set<AnyCancellable> = []
 
     private var playedNode: DraggableImageAnswerNode?
 
@@ -22,6 +24,19 @@ class DragAndDropOneAreaOneChoiceScene: SKScene, DragAndDropSceneProtocol {
         self.viewModel = viewModel
         self.contexts = contexts
         super.init(size: CGSize.zero)
+
+        self.viewModel.$choices
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: {
+                for choice in $0 where choice.item == self.playedNode?.name {
+                    if choice.status == .playingRightAnimation {
+                        self.dropGoodAnswer(self.playedNode!)
+                    } else if choice.status == .playingWrongAnimation {
+                        self.snapBack(self.playedNode!)
+                    }
+                }
+            })
+            .store(in: &cancellables)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -38,19 +53,6 @@ class DragAndDropOneAreaOneChoiceScene: SKScene, DragAndDropSceneProtocol {
     // init
     override func didMove(to view: SKView) {
         self.reset()
-    }
-
-    override func update(_ currentTime: TimeInterval) {
-        guard let vModel = viewModel else {
-            return
-        }
-        for choice in vModel.choices where choice.item == playedNode?.name {
-            if choice.status == .playingRightAnimation {
-                dropGoodAnswer(playedNode!)
-            } else if choice.status == .playingWrongAnimation {
-                snapBack(playedNode!)
-            }
-        }
     }
 
     // overriden Touches states
