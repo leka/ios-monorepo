@@ -6,7 +6,7 @@ import SpriteKit
 import SwiftUI
 
 protocol DragAndDropSceneProtocol: SKScene {
-    var viewModel: GenericViewModel? { get set }
+    var viewModel: GenericViewModel { get set }
     var contexts: [ContextViewModel]? { get set }
     var spacer: CGFloat { get }
     var biggerSide: CGFloat { get }
@@ -44,10 +44,7 @@ extension DragAndDropSceneProtocol {
     }
 
     @MainActor func makeAnswers() {
-        guard let vModel = viewModel else {
-            return
-        }
-        for choice in vModel.choices {
+        for choice in viewModel.choices {
             let draggableImageAnswerNode = DraggableImageAnswerNode(
                 choice: choice,
                 position: self.defaultPosition
@@ -94,10 +91,7 @@ extension DragAndDropSceneProtocol {
 
     func getExpectedItems() {
         // expected answer(s)
-        guard let vModel = viewModel else {
-            return
-        }
-        for choice in vModel.choices where choice.rightAnswer {
+        for choice in viewModel.choices where choice.rightAnswer {
             let expectedItem = choice.item
             let expectedNode = SKSpriteNode()
 
@@ -130,7 +124,7 @@ extension DragAndDropSceneProtocol {
         node.zPosition = 10
         node.isDraggable = false
         dropAction(node)
-        if viewModel!.gameplay.state.value == .finished {
+        if viewModel.gameplay.state.value == .finished {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [self] in
                 self.reset()
             }

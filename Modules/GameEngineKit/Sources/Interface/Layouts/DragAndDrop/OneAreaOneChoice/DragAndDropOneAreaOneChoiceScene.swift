@@ -8,7 +8,7 @@ import SwiftUI
 class DragAndDropOneAreaOneChoiceScene: SKScene, DragAndDropSceneProtocol {
 
     // protocol requirements
-    var viewModel: GenericViewModel?
+    var viewModel: GenericViewModel
     var contexts: [ContextViewModel]?
     var spacer: CGFloat = .zero
     var defaultPosition = CGPoint.zero
@@ -18,7 +18,8 @@ class DragAndDropOneAreaOneChoiceScene: SKScene, DragAndDropSceneProtocol {
 
     private var playedNode: DraggableImageAnswerNode?
 
-    public init(contexts: [ContextViewModel]) {
+    public init(viewModel: GenericViewModel, contexts: [ContextViewModel]) {
+        self.viewModel = viewModel
         self.contexts = contexts
         super.init(size: CGSize.zero)
     }
@@ -57,7 +58,7 @@ class DragAndDropOneAreaOneChoiceScene: SKScene, DragAndDropSceneProtocol {
         for touch in touches {
             let location = touch.location(in: self)
             if let node = self.atPoint(location) as? DraggableImageAnswerNode {
-                for choice in viewModel!.choices where node.name == choice.item && node.isDraggable {
+                for choice in viewModel.choices where node.name == choice.item && node.isDraggable {
                     selectedNodes[touch] = node
                     onDragAnimation(node)
                     node.zPosition += 100
@@ -88,10 +89,10 @@ class DragAndDropOneAreaOneChoiceScene: SKScene, DragAndDropSceneProtocol {
             }
             playedNode = selectedNodes[touch]!
             playedNode!.scaleForMax(sizeOf: biggerSide)
-            let choice = viewModel!.choices.first(where: { $0.item == playedNode!.name })
+            let choice = viewModel.choices.first(where: { $0.item == playedNode!.name })
             // dropped within the bounds of dropArea
             if playedNode!.fullyContains(bounds: dropAreas[0].frame) {
-                viewModel!.onChoiceTapped(choice: choice!)
+                viewModel.onChoiceTapped(choice: choice!)
                 break
             }
 

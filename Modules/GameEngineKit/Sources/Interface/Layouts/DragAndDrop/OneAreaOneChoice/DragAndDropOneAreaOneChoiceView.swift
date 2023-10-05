@@ -23,7 +23,7 @@ public struct DragAndDropOneAreaOneChoiceView: View {
             )
             .frame(width: proxy.size.width, height: proxy.size.height)
             .onAppear {
-                scene = DragAndDropOneAreaOneChoiceScene(contexts: contexts)
+                scene = DragAndDropOneAreaOneChoiceScene(viewModel: viewModel, contexts: contexts)
             }
         }
         .edgesIgnoringSafeArea(.horizontal)
