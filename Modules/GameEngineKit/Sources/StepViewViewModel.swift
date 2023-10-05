@@ -29,9 +29,11 @@ public class StepViewViewModel: ObservableObject {
                 let step = $0.step
 
                 self.currentIndex = $0.index
-                self.currentGameplay = StepViewViewModel.gameplaySelector(stepModel: step)
-                self.currentInterface = step.interface
-                subscribeToGameplayState()
+                if $0.index > 0 {
+                    self.currentGameplay = StepViewViewModel.gameplaySelector(stepModel: step)
+                    self.currentInterface = step.interface
+                    subscribeToGameplayState()
+                }
             })
             .store(in: &cancellables)
     }

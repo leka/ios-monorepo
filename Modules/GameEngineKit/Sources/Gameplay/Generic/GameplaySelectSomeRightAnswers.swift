@@ -50,9 +50,9 @@ public class GameplaySelectSomeRightAnswers: GameplayProtocol {
                     for choice in self.choices.value.filter({ $0.status == .playingRightAnimation }) {
                         guard let index = self.choices.value.firstIndex(where: { $0.id == choice.id }) else { return }
                         self.choices.value[index].status = .notSelected
-                        self.rightAnswersGiven.removeAll()
-                        self.state.send(.finished)
                     }
+                    self.rightAnswersGiven.removeAll()
+                    self.state.send(.finished)
                 }
 
                 // TODO(@ladislas): Run reinforcers and lottie animation
