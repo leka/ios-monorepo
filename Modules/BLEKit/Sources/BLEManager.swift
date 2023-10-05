@@ -6,6 +6,8 @@ import CombineCoreBluetooth
 
 public class BLEManager {
 
+    public static var shared: BLEManager = BLEManager(centralManager: .live())
+
     // MARK: - @Published variables
 
     public let isScanning = CurrentValueSubject<Bool, Never>(false)
