@@ -6,14 +6,12 @@ import Foundation
 
 public struct ContextViewModel: Identifiable, Equatable {
     public let id: UUID = UUID()
-    public let name: String
     public let file: String
     public let size: CGSize
     public let hints: Bool
 
     public init(file: String, size: CGSize, hints: Bool = false) {
         self.file = file
-        self.name = file
         self.size = size
         self.hints = hints
     }

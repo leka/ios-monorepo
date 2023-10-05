@@ -6,13 +6,13 @@ import SpriteKit
 import SwiftUI
 
 public struct DragAndDropOneAreaOneChoiceView: View {
-    @ObservedObject private var viewModel: GenericViewModel
+    @StateObject private var viewModel: GenericViewModel
     @State private var scene: SKScene = SKScene()
-    @State var contexts: [ContextViewModel]
+    var contexts: [ContextViewModel]
 
     public init(gameplay: any GameplayProtocol, contexts: [ContextViewModel]) {
-        self.viewModel = GenericViewModel(gameplay: gameplay)
-        self._contexts = State(wrappedValue: contexts)
+        self._viewModel = StateObject(wrappedValue: GenericViewModel(gameplay: gameplay))
+        self.contexts = contexts
     }
 
     public var body: some View {
@@ -36,8 +36,6 @@ public struct DragAndDropOneAreaOneChoiceView: View {
         finalScene.size = CGSize(width: size.width, height: size.height)
         finalScene.viewModel = viewModel
         finalScene.contexts = contexts
-        print(contexts[0].name)
-
         return finalScene
     }
 }

@@ -40,10 +40,10 @@ class DragAndDropOneAreaOneChoiceScene: SKScene, DragAndDropSceneProtocol {
     }
 
     override func update(_ currentTime: TimeInterval) {
-        guard let VModel = viewModel else {
+        guard let vModel = viewModel else {
             return
         }
-        for choice in VModel.choices where choice.item == playedNode?.name {
+        for choice in vModel.choices where choice.item == playedNode?.name {
             if choice.status == .playingRightAnimation {
                 dropGoodAnswer(playedNode!)
             } else if choice.status == .playingWrongAnimation {

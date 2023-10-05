@@ -44,10 +44,10 @@ extension DragAndDropSceneProtocol {
     }
 
     @MainActor func makeAnswers() {
-        guard let VModel = viewModel else {
+        guard let vModel = viewModel else {
             return
         }
-        for choice in VModel.choices {
+        for choice in vModel.choices {
             let draggableImageAnswerNode = DraggableImageAnswerNode(
                 choice: choice,
                 position: self.defaultPosition
@@ -86,7 +86,7 @@ extension DragAndDropSceneProtocol {
         dropArea.size = currentContexts[0].size
         dropArea.texture = SKTexture(imageNamed: currentContexts[0].file)
         dropArea.position = CGPoint(x: size.width / 2, y: currentContexts[0].size.height / 2)
-        dropArea.name = currentContexts[0].name
+        dropArea.name = currentContexts[0].file
         addChild(dropArea)
 
         dropAreas.append(dropArea)
@@ -94,10 +94,10 @@ extension DragAndDropSceneProtocol {
 
     func getExpectedItems() {
         // expected answer(s)
-        guard let VModel = viewModel else {
+        guard let vModel = viewModel else {
             return
         }
-        for choice in VModel.choices where choice.rightAnswer {
+        for choice in vModel.choices where choice.rightAnswer {
             let expectedItem = choice.item
             let expectedNode = SKSpriteNode()
 
@@ -107,7 +107,7 @@ extension DragAndDropSceneProtocol {
             guard currentContexts[0].hints else {
                 // no hints, hence no nodes added to the drop area
                 expectedNode.name = expectedItem
-                (expectedItemsNodes[currentContexts[0].name, default: []]).append(expectedNode)
+                (expectedItemsNodes[currentContexts[0].file, default: []]).append(expectedNode)
                 return
             }
             // hints superimposed onto the drop area
@@ -118,7 +118,7 @@ extension DragAndDropSceneProtocol {
             expectedNode.texture = texture
             expectedNode.scaleForMax(sizeOf: biggerSide * 0.8)
             expectedNode.position = CGPoint(x: dropAreas[0].position.x + 80, y: 110)
-            (expectedItemsNodes[currentContexts[0].name, default: []]).append(expectedNode)
+            (expectedItemsNodes[currentContexts[0].file, default: []]).append(expectedNode)
 
             addChild(expectedNode)
         }
