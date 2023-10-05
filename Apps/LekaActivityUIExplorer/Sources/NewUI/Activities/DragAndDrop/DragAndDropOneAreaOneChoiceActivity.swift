@@ -33,39 +33,32 @@ private let context2 = [
     ContextViewModel(file: "kitchen_asset_1", size: CGSize(width: 380, height: 280), hints: false)
 ]
 
-private let context3 = [
-    ContextViewModel(file: "basket", size: CGSize(width: 380, height: 280), hints: true)
-]
-
-private let context4 = [
-    ContextViewModel(file: "basket", size: CGSize(width: 380, height: 280), hints: true)
-]
-
-private let context5 = [
-    ContextViewModel(file: "basket", size: CGSize(width: 380, height: 280), hints: true)
-]
-
-private var steps: [StandardStepModel] = [
-    StandardStepModel(
+private var steps: [DragAndDropStepModel] = [
+    DragAndDropStepModel(
         choices: choicesStep1,
         gameplay: .selectTheRightAnswer,
-        interface: .dragAndDropOneAreaOneChoice(context1)),
-    StandardStepModel(
+        interface: .dragAndDropOneAreaOneChoice(context1),
+        contexts: context1),
+    DragAndDropStepModel(
         choices: choicesStep2,
         gameplay: .selectTheRightAnswer,
-        interface: .dragAndDropOneAreaOneChoice(context2)),
-    StandardStepModel(
+        interface: .dragAndDropOneAreaOneChoice(context2),
+        contexts: context2),
+    DragAndDropStepModel(
         choices: choicesStep3,
         gameplay: .selectTheRightAnswer,
-        interface: .dragAndDropOneAreaOneChoice(context3)),
-    StandardStepModel(
+        interface: .dragAndDropOneAreaOneChoice(context1),
+        contexts: context1),
+    DragAndDropStepModel(
         choices: choicesStep4,
         gameplay: .selectTheRightAnswer,
-        interface: .dragAndDropOneAreaOneChoice(context4)),
-    StandardStepModel(
+        interface: .dragAndDropOneAreaOneChoice(context2),
+        contexts: context2),
+    DragAndDropStepModel(
         choices: choicesStep5,
         gameplay: .selectTheRightAnswer,
-        interface: .dragAndDropOneAreaOneChoice(context5)),
+        interface: .dragAndDropOneAreaOneChoice(context1),
+        contexts: context1),
 ]
 
 struct DragAndDropOneAreaOneChoiceActivity: View {
