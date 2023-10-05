@@ -6,15 +6,12 @@ import SpriteKit
 import SwiftUI
 
 public struct DragAndDropOneAreaOneChoiceView: View {
-    @ObservedObject private var viewModel: GenericViewModel
-    //    @StateObject private var scene: DragAndDropOneAreaOneChoiceScene
+    @StateObject private var viewModel: GenericViewModel
     @State private var scene: SKScene = SKScene()
     var contexts: [ContextViewModel]
-    @State private var id = UUID()
 
     public init(gameplay: any GameplayProtocol, contexts: [ContextViewModel]) {
-        //        self._scene = StateObject(wrappedValue: DragAndDropOneAreaOneChoiceScene(contexts: contexts))
-        self.viewModel = GenericViewModel(gameplay: gameplay)
+        self._viewModel = StateObject(wrappedValue: GenericViewModel(gameplay: gameplay))
         self.contexts = contexts
     }
 
@@ -24,10 +21,9 @@ public struct DragAndDropOneAreaOneChoiceView: View {
                 scene: makeScene(size: proxy.size),
                 options: [.allowsTransparency]
             )
-            .id(id)
             .frame(width: proxy.size.width, height: proxy.size.height)
             .onAppear {
-                scene = DragAndDropOneAreaOneChoiceScene(contexts: contexts)
+                scene = DragAndDropOneAreaOneChoiceScene(viewModel: viewModel, contexts: contexts)
             }
         }
         .edgesIgnoringSafeArea(.horizontal)
