@@ -23,9 +23,17 @@ struct XylophoneTileButtonStyle: ButtonStyle {
                     Spacer()
                     Circle()
                         .fill(xyloAttachColor)
+                        .shadow(
+                            color: .black.opacity(0.4),
+                            radius: 3, x: 0, y: 3
+                        )
                     Spacer()
                     Circle()
                         .fill(xyloAttachColor)
+                        .shadow(
+                            color: .black.opacity(0.4),
+                            radius: 3, x: 0, y: 3
+                        )
                     Spacer()
                 }
                 .frame(width: 44)
@@ -42,7 +50,12 @@ struct XylophoneTileButtonStyle: ButtonStyle {
             )
             .rotationEffect(
                 Angle(degrees: configuration.isPressed ? defaultTilesRotationFeedback : 0),
-                anchor: .center)
+                anchor: .center
+            )
+            .shadow(
+                color: .black.opacity(0.4),
+                radius: 3, x: 0, y: 3
+            )
     }
 
     private func setSizeFromIndex() -> CGFloat {
