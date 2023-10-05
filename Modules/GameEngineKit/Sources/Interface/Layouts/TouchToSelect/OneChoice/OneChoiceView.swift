@@ -5,12 +5,12 @@
 import SwiftUI
 
 public struct OneChoiceView: View {
-    @ObservedObject private var viewModel: GenericViewModel
+    @StateObject private var viewModel: GenericViewModel
     let horizontalSpacing: CGFloat = 32
     let answerSize: CGFloat = 300
 
     public init(gameplay: any GameplayProtocol) {
-        self.viewModel = GenericViewModel(gameplay: gameplay)
+        self._viewModel = StateObject(wrappedValue: GenericViewModel(gameplay: gameplay))
     }
 
     public var body: some View {

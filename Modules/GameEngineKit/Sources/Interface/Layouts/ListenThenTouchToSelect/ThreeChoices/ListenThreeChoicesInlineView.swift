@@ -5,13 +5,13 @@
 import SwiftUI
 
 public struct ListenThreeChoicesInlineView: View {
-    @ObservedObject private var viewModel: GenericViewModel
+    @StateObject private var viewModel: GenericViewModel
     @ObservedObject private var audioPlayer: AudioPlayer
     let horizontalSpacing: CGFloat = 60
     let answerSize: CGFloat = 220
 
     public init(gameplay: any GameplayProtocol, audioRecording: AudioRecordingModel) {
-        self.viewModel = GenericViewModel(gameplay: gameplay)
+        self._viewModel = StateObject(wrappedValue: GenericViewModel(gameplay: gameplay))
         self.audioPlayer = AudioPlayer(audioRecording: audioRecording)
     }
 
