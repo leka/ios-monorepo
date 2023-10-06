@@ -171,13 +171,13 @@ extension DragAndDropSceneProtocol {
     }
 
     func onDragAnimation(_ node: SKSpriteNode) {
-        let sequence: SKAction = SKAction.sequence([
+        let wiggleAnimation: SKAction = SKAction.sequence([
             SKAction.rotate(byAngle: CGFloat(degreesToRadian(degrees: -4)), duration: 0.1),
             SKAction.rotate(byAngle: 0.0, duration: 0.1),
             SKAction.rotate(byAngle: CGFloat(degreesToRadian(degrees: 4)), duration: 0.1),
         ])
         node.scaleForMax(sizeOf: biggerSide * 1.1)
-        node.run(SKAction.repeatForever(sequence))
+        node.run(SKAction.repeatForever(wiggleAnimation))
     }
 
     func onDropAction(_ node: SKSpriteNode) {

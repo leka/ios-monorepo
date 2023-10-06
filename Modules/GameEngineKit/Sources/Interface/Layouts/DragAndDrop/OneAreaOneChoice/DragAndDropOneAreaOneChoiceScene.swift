@@ -31,14 +31,7 @@ class DragAndDropOneAreaOneChoiceScene: SKScene {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // protocol methods
-    //    func layoutFirstAnswer() {
-    //        spacer = size.width / 2
-    //        defaultPosition = CGPoint(x: spacer, y: self.size.height)
-    //    }
-
     // MARK: - SKScene specifics
-    // init
     override func didMove(to view: SKView) {
         self.reset()
     }

@@ -64,7 +64,7 @@ struct DragAndDropOneAreaOneChoiceActivity: View {
     }
 }
 
-struct DDragAndDropOneAreaOneChoiceActivity_Previews: PreviewProvider {
+struct DragAndDropOneAreaOneChoiceActivity_Previews: PreviewProvider {
     static var previews: some View {
         DragAndDropOneAreaOneChoiceActivity()
             .previewInterfaceOrientation(.landscapeLeft)
