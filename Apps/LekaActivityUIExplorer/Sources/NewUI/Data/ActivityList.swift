@@ -120,4 +120,19 @@ let kListOfAvailablesActivities: [ActivityModel] = [
         instructions: "Start sequence and observe the user's behavior interacting with Leka",
         view: AnyView(PairingActivity())
     ),
+    ActivityModel(
+        title: "ColorBingo - Lvl 1",
+        instructions: "Touch the right color",
+        view: AnyView(ColorBingoLevelOne())
+    ),
+    ActivityModel(
+        title: "ColorBingo - Lvl 2",
+        instructions: "Touch the right color",
+        view: AnyView(ColorBingoLevelTwo())
+    ),
+    ActivityModel(
+        title: "ColorBingo - Lvl 3",
+        instructions: "Touch the right color",
+        view: AnyView(ColorBingoLevelThree())
+    ),
 ]

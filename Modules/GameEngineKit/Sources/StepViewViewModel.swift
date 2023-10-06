@@ -49,6 +49,8 @@ public class StepViewViewModel: ObservableObject {
             case .selectSomeRightAnswers(let answersNumber):
                 return GameplaySelectSomeRightAnswers(
                     choices: stepModel.choices, rightAnswersToFind: answersNumber)
+            case .colorBingo:
+                return ColorBingoGameplay(choices: stepModel.choices)
         }
     }
 
