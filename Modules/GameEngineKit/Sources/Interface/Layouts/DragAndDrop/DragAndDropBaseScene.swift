@@ -9,14 +9,14 @@ import SwiftUI
 class DragAndDropBaseScene: SKScene {
     var viewModel: GenericViewModel
     var dropAreas: [DropAreaModel]
-    var spacer: CGFloat = .zero
     var biggerSide: CGFloat = 130
-    var defaultPosition = CGPoint.zero
     var selectedNodes: [UITouch: DraggableImageAnswerNode] = [:]
     var playedNode: DraggableImageAnswerNode?
-    var expectedItemsNodes: [String: [SKSpriteNode]] = [:]
     var dropAreasNode: [SKSpriteNode] = []
-    var cancellables: Set<AnyCancellable> = []
+    private var spacer: CGFloat = .zero
+    private var defaultPosition = CGPoint.zero
+    private var expectedItemsNodes: [String: [SKSpriteNode]] = [:]
+    private var cancellables: Set<AnyCancellable> = []
 
     init(viewModel: GenericViewModel, dropAreas: DropAreaModel...) {
         self.viewModel = viewModel
