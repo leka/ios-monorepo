@@ -6,45 +6,37 @@ import Combine
 import SpriteKit
 import SwiftUI
 
-protocol DragAndDropSceneProtocol: SKScene {
-    var viewModel: GenericViewModel { get set }
-    var contexts: [ContextViewModel] { get set }
-    var spacer: CGFloat { get }
-    var biggerSide: CGFloat { get }
-    var defaultPosition: CGPoint { get set }
-    var selectedNodes: [UITouch: DraggableImageAnswerNode] { get set }
-    var playedNode: DraggableImageAnswerNode? { get set }
-    var expectedItemsNodes: [String: [SKSpriteNode]] { get set }
-    var dropAreas: [SKSpriteNode] { get set }
-    var cancellables: Set<AnyCancellable> { get set }
+class DragAndDropBaseScene: SKScene {
+    var viewModel: GenericViewModel
+    var dropAreas: [DropAreaViewModel]
+    var spacer: CGFloat = .zero
+    var biggerSide: CGFloat = 130
+    var defaultPosition = CGPoint.zero
+    var selectedNodes: [UITouch: DraggableImageAnswerNode] = [:]
+    var playedNode: DraggableImageAnswerNode?
+    var expectedItemsNodes: [String: [SKSpriteNode]] = [:]
+    var dropAreasNode: [SKSpriteNode] = []
+    var cancellables: Set<AnyCancellable> = []
 
-    func reset()
-    func subscribeToChoicesUpdates()
-    func layoutFirstAnswer()
-    func makeAnswers()
-    func normalizeAnswerNodesSize(_ nodes: [SKSpriteNode])
-    func bindNodesToSafeArea(_ nodes: [SKSpriteNode], limit: CGFloat)
-    func layoutNextAnswer()
-    func makeDropArea()
-    func getExpectedItems()
-    func goodAnswerBehavior(_ node: DraggableImageAnswerNode)
-    func wrongAnswerBehavior(_ node: DraggableImageAnswerNode)
-    func onDragAnimation(_ node: SKSpriteNode)
-    func onDropAction(_ node: SKSpriteNode)
-}
-
-extension DragAndDropSceneProtocol {
-
-    var biggerSide: CGFloat { 130 }
-    var dropAreas: [SKSpriteNode] { [] }
-
+    init(viewModel: GenericViewModel, dropAreas: DropAreaViewModel...) {
+        self.viewModel = viewModel
+        self.dropAreas = dropAreas
+        super.init(size: CGSize.zero)
+        self.spacer = size.width / CGFloat(viewModel.choices.count + 1)
+        self.defaultPosition = CGPoint(x: spacer, y: self.size.height)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     func reset() {
         self.backgroundColor = .clear
         self.removeAllChildren()
         self.removeAllActions()
 
-        layoutFirstAnswer()
-        makeDropArea()
+        setFirstAnswerPosition()
+        layoutDropAreas()
         getExpectedItems()
         makeAnswers()
     }
@@ -76,7 +68,7 @@ extension DragAndDropSceneProtocol {
 
             normalizeAnswerNodesSize([draggableImageAnswerNode, draggableImageShadowNode])
             bindNodesToSafeArea([draggableImageAnswerNode, draggableImageShadowNode])
-            layoutNextAnswer()
+            setNextAnswerPosition()
 
             addChild(draggableImageShadowNode)
             addChild(draggableImageAnswerNode)
@@ -97,20 +89,25 @@ extension DragAndDropSceneProtocol {
         }
     }
 
-    func layoutNextAnswer() {
+    func setFirstAnswerPosition() {
+        spacer = size.width / CGFloat(viewModel.choices.count + 1)
+        defaultPosition = CGPoint(x: spacer, y: self.size.height)
+    }
+
+    func setNextAnswerPosition() {
         self.defaultPosition.x += spacer
     }
 
-    func makeDropArea() {
-        for context in contexts {
-            let dropArea = SKSpriteNode()
-            dropArea.size = context.size
-            dropArea.texture = SKTexture(imageNamed: context.file)
-            dropArea.position = CGPoint(x: size.width / 2, y: context.size.height / 2)
-            dropArea.name = context.file
-            addChild(dropArea)
+    func layoutDropAreas() {
+        for dropArea in dropAreas {
+            let dropAreaNode = SKSpriteNode()
+            dropAreaNode.size = dropArea.size
+            dropAreaNode.texture = SKTexture(imageNamed: dropArea.file)
+            dropAreaNode.position = CGPoint(x: size.width / CGFloat(dropAreas.count + 1), y: dropArea.size.height / 2)
+            dropAreaNode.name = dropArea.file
+            addChild(dropAreaNode)
 
-            dropAreas.append(dropArea)
+            dropAreasNode.append(dropAreaNode)
         }
     }
 
@@ -119,9 +116,9 @@ extension DragAndDropSceneProtocol {
             let expectedItem = choice.item
             let expectedNode = SKSpriteNode()
 
-            guard contexts[0].hints else {
+            guard dropAreas[0].hints else {
                 expectedNode.name = expectedItem
-                (expectedItemsNodes[contexts[0].file, default: []]).append(expectedNode)
+                (expectedItemsNodes[dropAreas[0].file, default: []]).append(expectedNode)
                 return
             }
             let texture = SKTexture(imageNamed: expectedItem)
@@ -130,8 +127,8 @@ extension DragAndDropSceneProtocol {
             expectedNode.name = expectedItem
             expectedNode.texture = texture
             expectedNode.scaleForMax(sizeOf: biggerSide * 0.8)
-            expectedNode.position = CGPoint(x: dropAreas[0].position.x + 80, y: 110)
-            (expectedItemsNodes[contexts[0].file, default: []]).append(expectedNode)
+            expectedNode.position = CGPoint(x: dropAreasNode[0].position.x + 80, y: 110)
+            (expectedItemsNodes[dropAreas[0].file, default: []]).append(expectedNode)
 
             addChild(expectedNode)
         }

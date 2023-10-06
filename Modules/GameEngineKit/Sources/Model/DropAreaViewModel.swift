@@ -4,7 +4,7 @@
 
 import Foundation
 
-public struct ContextViewModel: Identifiable, Equatable {
+public struct DropAreaViewModel: Identifiable, Equatable {
     public let id: UUID = UUID()
     public let file: String
     public let size: CGSize
