@@ -8,7 +8,7 @@ import SwiftUI
 
 protocol DragAndDropSceneProtocol: SKScene {
     var viewModel: GenericViewModel { get set }
-    var contexts: [ContextViewModel]? { get set }
+    var contexts: [ContextViewModel] { get set }
     var spacer: CGFloat { get }
     var biggerSide: CGFloat { get }
     var defaultPosition: CGPoint { get set }
@@ -102,17 +102,16 @@ extension DragAndDropSceneProtocol {
     }
 
     func makeDropArea() {
-        guard let currentContexts = contexts else {
-            return
-        }
-        let dropArea = SKSpriteNode()
-        dropArea.size = currentContexts[0].size
-        dropArea.texture = SKTexture(imageNamed: currentContexts[0].file)
-        dropArea.position = CGPoint(x: size.width / 2, y: currentContexts[0].size.height / 2)
-        dropArea.name = currentContexts[0].file
-        addChild(dropArea)
+        for context in contexts {
+            let dropArea = SKSpriteNode()
+            dropArea.size = context.size
+            dropArea.texture = SKTexture(imageNamed: context.file)
+            dropArea.position = CGPoint(x: size.width / 2, y: context.size.height / 2)
+            dropArea.name = context.file
+            addChild(dropArea)
 
-        dropAreas.append(dropArea)
+            dropAreas.append(dropArea)
+        }
     }
 
     func getExpectedItems() {
@@ -120,12 +119,9 @@ extension DragAndDropSceneProtocol {
             let expectedItem = choice.item
             let expectedNode = SKSpriteNode()
 
-            guard let currentContexts = contexts else {
-                return
-            }
-            guard currentContexts[0].hints else {
+            guard contexts[0].hints else {
                 expectedNode.name = expectedItem
-                (expectedItemsNodes[currentContexts[0].file, default: []]).append(expectedNode)
+                (expectedItemsNodes[contexts[0].file, default: []]).append(expectedNode)
                 return
             }
             let texture = SKTexture(imageNamed: expectedItem)
@@ -135,7 +131,7 @@ extension DragAndDropSceneProtocol {
             expectedNode.texture = texture
             expectedNode.scaleForMax(sizeOf: biggerSide * 0.8)
             expectedNode.position = CGPoint(x: dropAreas[0].position.x + 80, y: 110)
-            (expectedItemsNodes[currentContexts[0].file, default: []]).append(expectedNode)
+            (expectedItemsNodes[contexts[0].file, default: []]).append(expectedNode)
 
             addChild(expectedNode)
         }
