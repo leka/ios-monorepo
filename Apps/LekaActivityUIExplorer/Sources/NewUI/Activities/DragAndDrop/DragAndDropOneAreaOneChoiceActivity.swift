@@ -25,9 +25,9 @@ private let choicesStep5 = [
     ChoiceViewModel(item: "avocado", type: .image, rightAnswer: true)
 ]
 
-private let dropArea1 = DropAreaViewModel(file: "basket", size: CGSize(width: 380, height: 280), hints: true)
+private let dropArea1 = DropAreaModel(file: "basket", size: CGSize(width: 380, height: 280), hints: true)
 
-private let dropArea2 = DropAreaViewModel(file: "kitchen_asset_1", size: CGSize(width: 380, height: 280), hints: false)
+private let dropArea2 = DropAreaModel(file: "kitchen_asset_1", size: CGSize(width: 380, height: 280), hints: false)
 
 private var steps: [StandardStepModel] = [
     StandardStepModel(

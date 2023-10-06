@@ -8,7 +8,7 @@ import SwiftUI
 
 class DragAndDropOneAreaOneChoiceScene: DragAndDropBaseScene {
 
-    public init(viewModel: GenericViewModel, dropArea: DropAreaViewModel) {
+    public init(viewModel: GenericViewModel, dropArea: DropAreaModel) {
         super.init(viewModel: viewModel, dropAreas: dropArea)
 
         subscribeToChoicesUpdates()

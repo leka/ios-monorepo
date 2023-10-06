@@ -8,7 +8,7 @@ import SwiftUI
 
 class DragAndDropBaseScene: SKScene {
     var viewModel: GenericViewModel
-    var dropAreas: [DropAreaViewModel]
+    var dropAreas: [DropAreaModel]
     var spacer: CGFloat = .zero
     var biggerSide: CGFloat = 130
     var defaultPosition = CGPoint.zero
@@ -18,7 +18,7 @@ class DragAndDropBaseScene: SKScene {
     var dropAreasNode: [SKSpriteNode] = []
     var cancellables: Set<AnyCancellable> = []
 
-    init(viewModel: GenericViewModel, dropAreas: DropAreaViewModel...) {
+    init(viewModel: GenericViewModel, dropAreas: DropAreaModel...) {
         self.viewModel = viewModel
         self.dropAreas = dropAreas
         super.init(size: CGSize.zero)

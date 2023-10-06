@@ -8,9 +8,9 @@ import SwiftUI
 public struct DragAndDropOneAreaOneChoiceView: View {
     @StateObject private var viewModel: GenericViewModel
     @State private var scene: SKScene = SKScene()
-    var dropArea: DropAreaViewModel
+    var dropArea: DropAreaModel
 
-    public init(gameplay: any GameplayProtocol, dropArea: DropAreaViewModel) {
+    public init(gameplay: any GameplayProtocol, dropArea: DropAreaModel) {
         self._viewModel = StateObject(wrappedValue: GenericViewModel(gameplay: gameplay))
         self.dropArea = dropArea
     }

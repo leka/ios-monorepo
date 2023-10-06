@@ -4,7 +4,7 @@
 
 import Foundation
 
-public struct DropAreaViewModel: Identifiable, Equatable {
+public struct DropAreaModel: Identifiable, Equatable {
     public let id: UUID = UUID()
     public let file: String
     public let size: CGSize
