@@ -135,4 +135,19 @@ let kListOfAvailablesActivities: [ActivityModel] = [
         instructions: "Touch the right color",
         view: AnyView(ColorBingoLevelThree())
     ),
+    ActivityModel(
+        title: "SuperSimon - Lvl 1",
+        instructions: "Touch the right color sequence",
+        view: AnyView(SuperSimonLevelOne())
+    ),
+    ActivityModel(
+        title: "SuperSimon - Lvl 2",
+        instructions: "Touch the right color sequence",
+        view: AnyView(SuperSimonLevelTwo())
+    ),
+    ActivityModel(
+        title: "SuperSimon - Lvl 3",
+        instructions: "Touch the right color sequence",
+        view: AnyView(SuperSimonLevelThree())
+    ),
 ]
