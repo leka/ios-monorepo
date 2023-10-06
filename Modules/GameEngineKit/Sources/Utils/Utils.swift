@@ -61,3 +61,8 @@ extension Shape {
             .background(self.fill(fillStyle))
     }
 }
+
+// rotation animations
+func degreesToRadian(degrees: Double) -> Double {
+    Double(degrees / 180.0 * .pi)
+}

@@ -150,4 +150,9 @@ let kListOfAvailablesActivities: [ActivityModel] = [
         instructions: "Touch the right color sequence",
         view: AnyView(SuperSimonLevelThree())
     ),
+    ActivityModel(
+        title: "DragAndDropOneAreaOneChoice",
+        instructions: "Drag and drop the fruit in the basket",
+        view: AnyView(DragAndDropOneAreaOneChoiceActivity())
+    ),
 ]
