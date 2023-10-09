@@ -8,7 +8,7 @@ public struct RobotDiscoveryModel: Identifiable {
 
     // MARK: - Public variables
 
-    public let robotPeripheral: RobotPeripheral
+    public let robotPeripheral: RobotPeripheral!
     public let rssi: Double?
 
     public let id: UUID
@@ -18,6 +18,16 @@ public struct RobotDiscoveryModel: Identifiable {
     public let osVersion: String
 
     // MARK: - Public functions
+
+    public init(name: String, isCharging: Bool, battery: Int, osVersion: String) {
+        self.robotPeripheral = nil
+        self.rssi = nil
+        self.id = UUID()
+        self.name = name
+        self.isCharging = isCharging
+        self.battery = battery
+        self.osVersion = osVersion
+    }
 
     public init(robotPeripheral: RobotPeripheral, advertisingData: RobotAdvertisingData, rssi: Double?) {
         self.robotPeripheral = robotPeripheral
