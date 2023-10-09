@@ -5,7 +5,7 @@
 import SpriteKit
 import SwiftUI
 
-public struct DragAndDropOneAreaOneChoiceView: View {
+public struct DragAndDropOneAreaOneOrMoreChoicesView: View {
     @StateObject private var viewModel: GenericViewModel
     @State private var scene: SKScene = SKScene()
     var dropArea: DropAreaModel
@@ -23,7 +23,7 @@ public struct DragAndDropOneAreaOneChoiceView: View {
             )
             .frame(width: proxy.size.width, height: proxy.size.height)
             .onAppear {
-                scene = DragAndDropOneAreaOneChoiceScene(viewModel: viewModel, dropArea: dropArea)
+                scene = DragAndDropOneAreaOneOrMoreChoicesScene(viewModel: viewModel, dropArea: dropArea)
             }
         }
         .edgesIgnoringSafeArea(.horizontal)
