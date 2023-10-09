@@ -14,6 +14,10 @@ public class BLEManager {
     public let didConnect = PassthroughSubject<RobotPeripheral, Never>()
     public let didDisconnect = PassthroughSubject<Void, Never>()
 
+    public var isConnected: Bool {
+        connectedRobotPeripheral != nil ? true : false
+    }
+
     // MARK: - Private variables
 
     private var centralManager: CentralManager
