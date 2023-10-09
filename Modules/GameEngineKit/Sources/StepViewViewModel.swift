@@ -90,6 +90,8 @@ public class StepViewViewModel: ObservableObject {
                 ListenSixChoicesView(gameplay: currentGameplay, audioRecording: audioRecording)
             case .dragAndDropOneAreaOneChoice(let dropArea):
                 DragAndDropOneAreaOneChoiceView(gameplay: currentGameplay, dropArea: dropArea)
+            case .dragAndDropAssociationFoutChoices:
+                DragAndDropAssociationFourChoicesView(gameplay: currentGameplay)
         }
     }
 

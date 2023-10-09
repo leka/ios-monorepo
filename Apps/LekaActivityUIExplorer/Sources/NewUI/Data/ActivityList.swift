@@ -155,4 +155,9 @@ let kListOfAvailablesActivities: [ActivityModel] = [
         instructions: "Drag and drop the fruit in the basket",
         view: AnyView(DragAndDropOneAreaOneChoiceActivity())
     ),
+    ActivityModel(
+        title: "DragAndDropAssociationFourChoices",
+        instructions: "Group the items by categories of 2",
+        view: AnyView(DragAndDropAssociationFourChoicesActivity())
+    ),
 ]
