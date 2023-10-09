@@ -6,28 +6,28 @@ import GameEngineKit
 import SwiftUI
 
 private let choicesStep1 = [
-    ChoiceViewModel(item: "red", type: .color),
-    ChoiceViewModel(item: "green", type: .color, rightAnswer: true),
+    ChoiceModel(item: "red", type: .color),
+    ChoiceModel(item: "green", type: .color, rightAnswer: true),
 ]
 
 private let choicesStep2 = [
-    ChoiceViewModel(item: "purple", type: .color),
-    ChoiceViewModel(item: "blue", type: .color, rightAnswer: true),
+    ChoiceModel(item: "purple", type: .color),
+    ChoiceModel(item: "blue", type: .color, rightAnswer: true),
 ]
 
 private let choicesStep3 = [
-    ChoiceViewModel(item: "yellow", type: .color, rightAnswer: true),
-    ChoiceViewModel(item: "red", type: .color),
+    ChoiceModel(item: "yellow", type: .color, rightAnswer: true),
+    ChoiceModel(item: "red", type: .color),
 ]
 
 private let choicesStep4 = [
-    ChoiceViewModel(item: "pink", type: .color),
-    ChoiceViewModel(item: "yellow", type: .color, rightAnswer: true),
+    ChoiceModel(item: "pink", type: .color),
+    ChoiceModel(item: "yellow", type: .color, rightAnswer: true),
 ]
 
 private let choicesStep5 = [
-    ChoiceViewModel(item: "red", type: .color, rightAnswer: true),
-    ChoiceViewModel(item: "green", type: .color),
+    ChoiceModel(item: "red", type: .color, rightAnswer: true),
+    ChoiceModel(item: "green", type: .color),
 ]
 
 private var steps: [StandardStepModel] = [

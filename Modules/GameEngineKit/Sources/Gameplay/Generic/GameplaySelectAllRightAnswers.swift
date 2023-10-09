@@ -6,17 +6,17 @@ import Combine
 import Foundation
 
 public class GameplaySelectAllRightAnswers: GameplayProtocol {
-    public var choices = CurrentValueSubject<[ChoiceViewModel], Never>([])
+    public var choices = CurrentValueSubject<[ChoiceModel], Never>([])
     public var state = CurrentValueSubject<GameplayState, Never>(.idle)
 
-    private var rightAnswersGiven: [ChoiceViewModel] = []
+    private var rightAnswersGiven: [ChoiceModel] = []
 
-    public init(choices: [ChoiceViewModel]) {
+    public init(choices: [ChoiceModel]) {
         self.choices.send(choices)
         self.state.send(.playing)
     }
 
-    public func process(choice: ChoiceViewModel) {
+    public func process(choice: ChoiceModel) {
         if choice.rightAnswer {
             if let index = choices.value.firstIndex(where: { $0.id == choice.id && $0.status != .playingRightAnimation }
             ) {

@@ -4,25 +4,10 @@
 
 import SwiftUI
 
-public enum ChoiceDataType {
-    case color, image, text
-}
-
-public enum ChoiceState {
-    case notSelected
-    case selected
-    case playingRightAnimation
-    case playingWrongAnimation
-}
-
-public struct ChoiceViewModel: Identifiable, Equatable, Comparable {
-    public static func < (lhs: ChoiceViewModel, rhs: ChoiceViewModel) -> Bool {
-        lhs.id.uuidString < rhs.id.uuidString
-    }
-
+public struct ChoiceModel : ChoiceModelProtocol {
     public let id: UUID = UUID()
     public let item: String
-    public var type: ChoiceDataType
+    public let type: ChoiceDataType
     public var status: ChoiceState
     public var rightAnswer: Bool
 
@@ -33,3 +18,11 @@ public struct ChoiceViewModel: Identifiable, Equatable, Comparable {
         self.rightAnswer = rightAnswer
     }
 }
+
+extension ChoiceModel : Equatable, Comparable {
+    public static func < (lhs: ChoiceModel, rhs: ChoiceModel) -> Bool {
+        lhs.id.uuidString < rhs.id.uuidString
+    }
+}
+
+

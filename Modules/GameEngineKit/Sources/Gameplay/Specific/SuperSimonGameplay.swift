@@ -6,13 +6,13 @@ import Combine
 import Foundation
 
 public class SuperSimonGameplay: GameplayProtocol {
-    public var choices = CurrentValueSubject<[ChoiceViewModel], Never>([])
+    public var choices = CurrentValueSubject<[ChoiceModel], Never>([])
     public var state = CurrentValueSubject<GameplayState, Never>(.idle)
 
-    private var rightAnswersGiven: [ChoiceViewModel] = []
+    private var rightAnswersGiven: [ChoiceModel] = []
     private var answerIndexOrder: [Int]
 
-    public init(choices: [ChoiceViewModel], answerIndexOrder: [Int]) {
+    public init(choices: [ChoiceModel], answerIndexOrder: [Int]) {
         self.choices.send(choices)
         self.state.send(.playing)
         self.answerIndexOrder = answerIndexOrder
@@ -27,7 +27,7 @@ public class SuperSimonGameplay: GameplayProtocol {
         }
     }
 
-    public func process(choice: ChoiceViewModel) {
+    public func process(choice: ChoiceModel) {
         if rightAnswersGiven.count == answerIndexOrder.count {
             return
         }

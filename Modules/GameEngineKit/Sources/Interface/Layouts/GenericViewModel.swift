@@ -8,7 +8,7 @@ import SwiftUI
 public class GenericViewModel: Identifiable, ObservableObject {
     public var gameplay: any GameplayProtocol
 
-    @Published public var choices: [ChoiceViewModel]
+    @Published public var choices: [ChoiceModel]
     @Published public var state: GameplayState = .idle
 
     private var cancellables: Set<AnyCancellable> = []
@@ -33,7 +33,7 @@ public class GenericViewModel: Identifiable, ObservableObject {
             .store(in: &cancellables)
     }
 
-    public func onChoiceTapped(choice: ChoiceViewModel) {
+    public func onChoiceTapped(choice: ChoiceModel) {
         gameplay.process(choice: choice)
     }
 }
