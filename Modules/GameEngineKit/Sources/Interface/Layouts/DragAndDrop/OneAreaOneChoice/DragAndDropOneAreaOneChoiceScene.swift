@@ -6,23 +6,10 @@ import Combine
 import SpriteKit
 import SwiftUI
 
-class DragAndDropOneAreaOneChoiceScene: SKScene {
+class DragAndDropOneAreaOneChoiceScene: DragAndDropBaseScene {
 
-    // protocol requirements
-    var viewModel: GenericViewModel
-    var contexts: [ContextViewModel]
-    var spacer: CGFloat = .zero
-    var defaultPosition = CGPoint.zero
-    var selectedNodes: [UITouch: DraggableImageAnswerNode] = [:]
-    var playedNode: DraggableImageAnswerNode?
-    var expectedItemsNodes: [String: [SKSpriteNode]] = [:]
-    var dropAreas: [SKSpriteNode] = []
-    var cancellables: Set<AnyCancellable> = []
-
-    public init(viewModel: GenericViewModel, contexts: [ContextViewModel]) {
-        self.viewModel = viewModel
-        self.contexts = contexts
-        super.init(size: CGSize.zero)
+    public init(viewModel: GenericViewModel, dropArea: DropAreaModel) {
+        super.init(viewModel: viewModel, dropAreas: dropArea)
 
         subscribeToChoicesUpdates()
     }
@@ -73,18 +60,11 @@ class DragAndDropOneAreaOneChoiceScene: SKScene {
             playedNode = selectedNodes[touch]!
             playedNode!.scaleForMax(sizeOf: biggerSide)
             let choice = viewModel.choices.first(where: { $0.item == playedNode!.name })
-            if playedNode!.fullyContains(bounds: dropAreas[0].frame) {
+            if playedNode!.fullyContains(bounds: dropAreasNode[0].frame) {
                 viewModel.onChoiceTapped(choice: choice!)
                 break
             }
             wrongAnswerBehavior(playedNode!)
         }
-    }
-}
-
-extension DragAndDropOneAreaOneChoiceScene: DragAndDropSceneProtocol {
-    func layoutFirstAnswer() {
-        spacer = size.width / 2
-        defaultPosition = CGPoint(x: spacer, y: self.size.height)
     }
 }

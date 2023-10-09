@@ -8,11 +8,11 @@ import SwiftUI
 public struct DragAndDropOneAreaOneChoiceView: View {
     @StateObject private var viewModel: GenericViewModel
     @State private var scene: SKScene = SKScene()
-    var contexts: [ContextViewModel]
+    var dropArea: DropAreaModel
 
-    public init(gameplay: any GameplayProtocol, contexts: [ContextViewModel]) {
+    public init(gameplay: any GameplayProtocol, dropArea: DropAreaModel) {
         self._viewModel = StateObject(wrappedValue: GenericViewModel(gameplay: gameplay))
-        self.contexts = contexts
+        self.dropArea = dropArea
     }
 
     public var body: some View {
@@ -23,19 +23,19 @@ public struct DragAndDropOneAreaOneChoiceView: View {
             )
             .frame(width: proxy.size.width, height: proxy.size.height)
             .onAppear {
-                scene = DragAndDropOneAreaOneChoiceScene(viewModel: viewModel, contexts: contexts)
+                scene = DragAndDropOneAreaOneChoiceScene(viewModel: viewModel, dropArea: dropArea)
             }
         }
         .edgesIgnoringSafeArea(.horizontal)
     }
 
     private func makeScene(size: CGSize) -> SKScene {
-        guard let finalScene = scene as? DragAndDropSceneProtocol else {
+        guard let finalScene = scene as? DragAndDropBaseScene else {
             return SKScene()
         }
         finalScene.size = CGSize(width: size.width, height: size.height)
         finalScene.viewModel = viewModel
-        finalScene.contexts = contexts
+        finalScene.dropAreas = [dropArea]
         return finalScene
     }
 }
