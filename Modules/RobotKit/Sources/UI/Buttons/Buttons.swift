@@ -4,21 +4,21 @@
 
 import SwiftUI
 
-struct RobotControlActionButton: View {
+public struct RobotControlActionButton: View {
 
     private let title: String
     private let image: String
     private let tint: Color
     private let action: () -> Void
 
-    init(title: String, image: String, tint: Color, action: @escaping () -> Void) {
+    public init(title: String, image: String, tint: Color, action: @escaping () -> Void) {
         self.title = title
         self.image = image
         self.tint = tint
         self.action = action
     }
 
-    var body: some View {
+    public var body: some View {
         Button {
             action()
         } label: {

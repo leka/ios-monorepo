@@ -2,11 +2,15 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import BLEKit
 import Combine
+import Foundation
 
 public class Robot {
 
     public static var shared: Robot = Robot()
+
+    public var connectedPeripheral: RobotPeripheral?
 
     private init() {
         // nothing to do yet
@@ -58,6 +62,8 @@ public class Robot {
 
     public func run(_ reinforcer: Reinforcer) {
         print("🤖 RUN reinforcer \(reinforcer)")
+        connectedPeripheral?
+            .sendCommand(Data([0x2A, 0x2A, 0x2A, 0x2A, 0x01, 0x50, 0x51, 0x51]))
     }
 
     // MARK: - Magic Cards

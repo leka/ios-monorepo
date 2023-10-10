@@ -6,11 +6,17 @@ import CombineCoreBluetooth
 
 public class BLEManager {
 
+    public static var shared: BLEManager = BLEManager(centralManager: .live())
+
     // MARK: - @Published variables
 
     public let isScanning = CurrentValueSubject<Bool, Never>(false)
     public let didConnect = PassthroughSubject<RobotPeripheral, Never>()
     public let didDisconnect = PassthroughSubject<Void, Never>()
+
+    public var isConnected: Bool {
+        connectedRobotPeripheral != nil ? true : false
+    }
 
     // MARK: - Private variables
 
