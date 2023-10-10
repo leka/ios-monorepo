@@ -6,9 +6,9 @@ import Combine
 import SpriteKit
 import SwiftUI
 
-class DragAndDropAssociationFourChoicesScene: DragAndDropBaseScene {
+class DragAndDropAssociationFourChoicesScene: DragAndDropAssociationScene {
 
-    public init(viewModel: GenericViewModel) {
+    public override init(viewModel: GenericViewModel) {
         super.init(viewModel: viewModel)
 
         subscribeToChoicesUpdates()
@@ -60,55 +60,31 @@ class DragAndDropAssociationFourChoicesScene: DragAndDropBaseScene {
             playedNode = selectedNodes[touch]!
             playedNode!.scaleForMax(sizeOf: biggerSide)
 
-            ////////
             // make dropArea out of target node
-//            let dropAreaIndex = dropDestinations.firstIndex(where: {
-//                $0.frame.contains(touch.location(in: self)) && $0.name != playedNode!.name
-//            })
-//            // dropped outside the bounds of any dropArea
-//            guard dropAreaIndex != nil else {
-//                wrongAnswerBehavior(playedNode!)
-//                break
-//            }
-//            let dropArea = dropDestinations[dropAreaIndex!]
-//            dropDestinationAnchor = dropArea.position
-//            // define contexts
-//            var rightContext = String()
-//            var wrongContext = String()
-//            for context in expectedItemsNodes {
-//                for item in context.value where item.name == playedNode!.name {
-//                    rightContext = context.key
-//                }
-//            }
-//            for context in expectedItemsNodes where context.key != rightContext {
-//                wrongContext = context.key
-//            }
-//            let index = viewModel.choices.firstIndex(where: { $0.item == playedNode!.name })
-//            let destinationIndex = viewModel.choices.firstIndex(where: { $0.item == dropArea.name })
-//
-//            //            guard (gameEngine?.correctAnswersIndices[rightContext, default: []].contains(destinationIndex!))!
-//            guard playedNode!.fullyContains(bounds: dropArea.frame)
-//            else {
-//                // dropped within the bounds of the wrong sibling
-//                //                gameEngine?.answerHasBeenGiven(atIndex: index!, withinContext: wrongContext)
-//                wrongAnswerBehavior(playedNode!)
-//                break
-//            }
-//            // dropped within the bounds of the proper sibling
-//            dropDestinations[dropAreaIndex!].isDraggable = false
-//            //            gameEngine?.answerHasBeenGiven(atIndex: index!, withinContext: rightContext)
-//            //            gameEngine?.answerHasBeenGiven(atIndex: destinationIndex!, withinContext: rightContext)
-//            let choice = viewModel.choices.first(where: { $0.item == playedNode!.name })
-//            viewModel.onChoiceTapped(choice: choice!)
-            ////////
+            guard let destinationNode = dropDestinations.first(where: {
+                    $0.frame.contains(touch.location(in: self)) && $0.name != playedNode!.name
+                })
+            else {
+                wrongAnswerBehavior(playedNode!)
+                break
+            }
 
-            // from working other
-//            let choice = viewModel.choices.first(where: { $0.item == playedNode!.name })
-//            if playedNode!.fullyContains(bounds: dropAreasNode[0].frame) {
-//                viewModel.onChoiceTapped(choice: choice!)
-//                break
-//            }
-//            wrongAnswerBehavior(playedNode!)
+            guard
+                let destination = viewModel.choices.first(where: { $0.item == destinationNode.name }) as? CategoryModel
+            else { return }
+            guard let choice = viewModel.choices.first(where: { $0.item == playedNode!.name }) as? CategoryModel
+            else { return }
+
+            print("dest category:", destination.category)
+            print("choice category:", choice.category)
+            guard choice.category == destination.category else {
+                wrongAnswerBehavior(playedNode!)
+                break
+            }
+            // dropped within the bounds of the proper sibling
+            destinationNode.isDraggable = false
+            viewModel.onChoiceTapped(choice: choice)
+//            viewModel.onChoiceTapped(choice: destination) // ?????
         }
     }
 }

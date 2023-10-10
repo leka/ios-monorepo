@@ -16,8 +16,8 @@ class DragAndDropAssociationScene: SKScene {
     var spacer: CGFloat = 455
     var defaultPosition = CGPoint.zero
     var expectedItemsNodes: [String: [SKSpriteNode]] = [:]
-    var dropDestinations: [DraggableImageAnswerNode] = []  // is this dropAreasNode?
-    var dropDestinationAnchor: CGPoint = .zero
+    var dropDestinations: [DraggableImageAnswerNode] = []
+    private var dropDestinationAnchor: CGPoint = .zero
     private var initialNodeX: CGFloat = .zero
     private var verticalSpacing: CGFloat = .zero
     private var cancellables: Set<AnyCancellable> = []
@@ -39,21 +39,23 @@ class DragAndDropAssociationScene: SKScene {
         self.removeAllActions()
 
         dropDestinations = []
-        //        dropAreasNode = []
 
         setFirstAnswerPosition()
-        //        getExpectedItems()
         makeAnswers()
     }
 
-    func subscribeToChoicesUpdates() {
+    func subscribeToChoicesUpdates() { // Create Gameplay
         self.viewModel.$choices
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: {
+                print("receives")
                 for choice in $0 where choice.item == self.playedNode?.name {
+                    print(choice.item, "item")
                     if choice.status == .playingRightAnimation {
+                        print("should play right anim")
                         self.goodAnswerBehavior(self.playedNode!)
                     } else if choice.status == .playingWrongAnimation {
+                        print("should play wrong anim")
                         self.wrongAnswerBehavior(self.playedNode!)
                     }
                 }
@@ -100,8 +102,6 @@ class DragAndDropAssociationScene: SKScene {
         initialNodeX = (size.width - spacer) / 2
         verticalSpacing = self.size.height / 3
         defaultPosition = CGPoint(x: initialNodeX, y: verticalSpacing - 30)
-
-        //        getExpectedItems()
     }
 
     func setNextAnswerPosition(_ index: Int) {
@@ -113,30 +113,8 @@ class DragAndDropAssociationScene: SKScene {
         }
     }
 
-    //    func getExpectedItemssss() {
-    //        // expected answers
-    //        for group in gameEngine!.correctAnswersIndices {
-    //            for item in group.value {
-    //                let expectedItem = gameEngine!.allAnswers[item]
-    //                let expectedNode = SKSpriteNode()
-    //                expectedNode.name = expectedItem
-    //                expectedItemsNodes[group.key, default: []].append(expectedNode)
-    //            }
-    //        }
-    //    }
-    //    func getExpectedItems() {
-    //        for choice in viewModel.choices where choice.rightAnswer {
-    //            let expectedItem = choice.item
-    //            let expectedNode = SKSpriteNode()
-    //
-    //            expectedNode.name = expectedItem
-    //            (expectedItemsNodes[dropAreas[0].file, default: []]).append(expectedNode)
-    //        }
-    //    }
-
     func goodAnswerBehavior(_ node: DraggableImageAnswerNode) {
         node.scaleForMax(sizeOf: biggerSide * 0.8)
-        // placed ???
         node.position = CGPoint(
             x: dropDestinationAnchor.x - 60,
             y: dropDestinationAnchor.y - 60)

@@ -30,7 +30,7 @@ public enum InterfaceType {
     case listenFourChoices(AudioRecordingModel)
     case listenSixChoices(AudioRecordingModel)
     case dragAndDropOneAreaOneChoice(DropAreaModel)
-    case dragAndDropAssociationFoutChoices
+    case dragAndDropAssociationFourChoices
 }
 
 public protocol StepModelProtocol {
