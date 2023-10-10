@@ -13,7 +13,7 @@ public class RobotConnectionViewModel: ObservableObject {
 
     @Published var connectedDiscovery: RobotDiscoveryModel? {
         didSet {
-            connected = connectedDiscovery != nil ? true : false
+            connected = connectedDiscovery != nil
         }
     }
 
