@@ -5,12 +5,11 @@
 import BLEKit
 import Combine
 import DesignKit
-import RobotKit
 import SwiftUI
 
 // TODO(@ladislas): Move to RobotKit to be available for all apps
 
-struct RobotConnectionView: View {
+public struct RobotConnectionView: View {
 
     @StateObject var viewModel: RobotConnectionViewModel
 
@@ -26,7 +25,7 @@ struct RobotConnectionView: View {
         GridItem(),
     ]
 
-    var body: some View {
+    public var body: some View {
         NavigationStack {
             VStack(spacing: 10) {
                 switch viewModel.robotDiscoveries.count {

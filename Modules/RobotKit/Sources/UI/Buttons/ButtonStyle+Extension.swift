@@ -8,16 +8,20 @@ import SwiftUI
 // MARK: - Public ButtonStyle extensions
 //
 
-extension ButtonStyle where Self == RobotControlPlainButtonStyle {
+public extension ButtonStyle where Self == RobotControlPlainButtonStyle {
+
     static func robotControlPlainButtonStyle(foreground: Color? = nil, background: Color? = nil) -> Self {
         .init(foreground: foreground, background: background)
     }
+
 }
 
-extension ButtonStyle where Self == RobotControlBorderedButtonStyle {
+public extension ButtonStyle where Self == RobotControlBorderedButtonStyle {
+
     static func robotControlBorderedButtonStyle(foreground: Color? = nil, border: Color? = nil) -> Self {
         .init(foreground: foreground, border: border)
     }
+
 }
 
 //

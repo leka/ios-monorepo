@@ -5,9 +5,8 @@
 import BLEKit
 import Combine
 import Foundation
-import RobotKit
 
-class RobotConnectionViewModel: ObservableObject {
+public class RobotConnectionViewModel: ObservableObject {
 
     @Published var robotDiscoveries: [RobotDiscoveryModel] = []
     @Published var selectedDiscovery: RobotDiscoveryModel?
@@ -24,7 +23,7 @@ class RobotConnectionViewModel: ObservableObject {
 
     private var cancellables: Set<AnyCancellable> = []
 
-    init() {
+    public init() {
         self.connected = bleManager.isConnected
     }
 
