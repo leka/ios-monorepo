@@ -3,44 +3,73 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import Combine
+import RobotKit
 import SwiftUI
 
 class ConnectedRobotInformationViewModel: ObservableObject {
 
-    public var name: String = ""
-    public var serialNumber: String = ""
-    public var osVersion: String = ""
+    @Published var name: String = "(n/a)"
+    @Published var serialNumber: String = "(n/a)"
+    @Published var osVersion: String = "(n/a)"
 
-    @State var battery: Int = 0
-    @State var charging: Bool = false
+    @Published var battery: Int = 0
+    @Published var isCharging: Bool = false
 
-    init(name: String, serialNumber: String, osVersion: String, battery: Int, charging: Bool) {
-        self.name = name
-        self.serialNumber = serialNumber
-        self.osVersion = osVersion
-        self.battery = battery
-        self.charging = charging
+    let robot = Robot.shared
+
+    private var cancellables: Set<AnyCancellable> = []
+
+    init() {
+        getRobotInformation()
     }
 
-    static var mockConnected: ConnectedRobotInformationViewModel {
-        .init(
-            name: "Mock Robot",
-            serialNumber: "LK-22XXMCKRBT",
-            osVersion: "1.4.0",
-            battery: 52,
-            charging: false
-        )
-    }
+    private func getRobotInformation() {
+        robot.isConnected
+            .receive(on: DispatchQueue.main)
+            .sink { isConnected in
+                guard !isConnected else { return }
+                self.name = "(not connected)"
+                self.serialNumber = ""
+                self.osVersion = ""
+                self.battery = 0
+                self.isCharging = false
+            }
+            .store(in: &cancellables)
 
-    // TODO(@ladislas): implement connected/disconnected logic
-    static var mockDisconnected: ConnectedRobotInformationViewModel {
-        .init(
-            name: "n/a",
-            serialNumber: "n/a",
-            osVersion: "n/a",
-            battery: 0,
-            charging: false
-        )
+        robot.name
+            .receive(on: DispatchQueue.main)
+            .sink {
+                self.name = $0
+            }
+            .store(in: &cancellables)
+
+        robot.osVersion
+            .receive(on: DispatchQueue.main)
+            .sink {
+                self.osVersion = $0
+            }
+            .store(in: &cancellables)
+
+        robot.battery
+            .receive(on: DispatchQueue.main)
+            .sink {
+                self.battery = $0
+            }
+            .store(in: &cancellables)
+
+        robot.isCharging
+            .receive(on: DispatchQueue.main)
+            .sink {
+                self.isCharging = $0
+            }
+            .store(in: &cancellables)
+
+        robot.serialNumber
+            .receive(on: DispatchQueue.main)
+            .sink {
+                self.serialNumber = $0
+            }
+            .store(in: &cancellables)
     }
 
 }
