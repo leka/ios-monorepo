@@ -75,9 +75,7 @@ class DragAndDropAssociationFourChoicesScene: DragAndDropAssociationScene {
             else { return }
             guard let choice = viewModel.choices.first(where: { $0.item == playedNode!.name }) as? CategoryModel
             else { return }
-
-            print("dest category:", destination.category)
-            print("choice category:", choice.category)
+            
             guard choice.category == destination.category else {
                 wrongAnswerBehavior(playedNode!)
                 break
@@ -85,8 +83,8 @@ class DragAndDropAssociationFourChoicesScene: DragAndDropAssociationScene {
             // dropped within the bounds of the proper sibling
             destinationNode.isDraggable = false
             dropDestinationAnchor = destinationNode.position
+            viewModel.onChoiceTapped(choice: destination)
             viewModel.onChoiceTapped(choice: choice)
-            // viewModel.onChoiceTapped(choice: destination)
         }
     }
 }

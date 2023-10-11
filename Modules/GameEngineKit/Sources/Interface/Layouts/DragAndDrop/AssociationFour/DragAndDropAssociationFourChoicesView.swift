@@ -8,11 +8,9 @@ import SwiftUI
 public struct DragAndDropAssociationFourChoicesView: View {
     @StateObject private var viewModel: GenericViewModel
     @State private var scene: SKScene = SKScene()
-    //    var dropArea: DropAreaModel
 
-    public init(gameplay: any GameplayProtocol /*, dropArea: DropAreaModel*/) {
+    public init(gameplay: any GameplayProtocol) {
         self._viewModel = StateObject(wrappedValue: GenericViewModel(gameplay: gameplay))
-        //        self.dropArea = dropArea
     }
 
     public var body: some View {
@@ -23,7 +21,7 @@ public struct DragAndDropAssociationFourChoicesView: View {
             )
             .frame(width: proxy.size.width, height: proxy.size.height)
             .onAppear {
-                scene = DragAndDropAssociationFourChoicesScene(viewModel: viewModel /*, dropArea: dropArea*/)
+                scene = DragAndDropAssociationFourChoicesScene(viewModel: viewModel)
             }
         }
         .edgesIgnoringSafeArea(.horizontal)
@@ -35,7 +33,6 @@ public struct DragAndDropAssociationFourChoicesView: View {
         }
         finalScene.size = CGSize(width: size.width, height: size.height)
         finalScene.viewModel = viewModel
-        //        finalScene.dropAreas = [dropArea]
         return finalScene
     }
 }

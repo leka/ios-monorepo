@@ -36,12 +36,7 @@ public class GameplayAssociation: GameplayProtocol {
         //        }
 
         let rightAnswersGivenID = rightAnswersGiven.sorted().map({ $0.id })
-        let rightAnswersID =
-            choices.value
-            .filter { choice in
-                choice.rightAnswer
-            }
-            .sorted().map({ $0.id })
+        let rightAnswersID = choices.value.sorted().map({ $0.id })
 
         if rightAnswersGivenID == rightAnswersID {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
