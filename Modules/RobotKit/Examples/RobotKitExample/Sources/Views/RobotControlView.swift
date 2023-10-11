@@ -51,13 +51,18 @@ struct RobotControlView: View {
                             robot.shine(.spot(.belt, ids: [0, 4, 8, 10, 12]), color: .red)
                         }
                         RobotControlActionButton(title: "Quarters", image: "light.max", tint: .green) {
-                            robot.shine(.quarterBackLeft, color: .blue)
+                            robot.shine(.quarterFrontLeft, color: .blue)
+                            robot.shine(.quarterFrontRight, color: .red)
+                            robot.shine(.quarterBackLeft, color: .red)
+                            robot.shine(.quarterBackRight, color: .blue)
                         }
                         RobotControlActionButton(title: "Halves", image: "light.max", tint: .indigo) {
                             robot.shine(.halfRight, color: .green)
+                            robot.shine(.halfLeft, color: .red)
                         }
-                        RobotControlActionButton(title: "Full belt", image: "light.max", tint: .teal) {
-                            robot.shine(.belt, color: .blue)
+                        RobotControlActionButton(title: "Full belt + ears", image: "light.max", tint: .teal) {
+                            robot.shine(.full(.belt), color: .blue)
+                            robot.shine(.full(.ears), color: .green)
                         }
                         RobotControlActionButton(title: "Turn off lights", image: "xmark", tint: .red) {
                             robot.stopLights()
