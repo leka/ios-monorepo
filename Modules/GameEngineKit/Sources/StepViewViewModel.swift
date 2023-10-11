@@ -38,7 +38,8 @@ public class StepViewViewModel: ObservableObject {
             .store(in: &cancellables)
     }
 
-    public static func gameplaySelector(stepModel: any StepModelProtocol) -> any GameplayProtocol {
+    // swiftlint:disable force_cast
+    public static func gameplaySelector(stepModel: any StepModelProtocol) -> any BaseGameplayProtocol {
         switch stepModel.gameplay {
             case .undefined:
                 return GameplayError()
@@ -61,37 +62,46 @@ public class StepViewViewModel: ObservableObject {
             case .undefined:
                 StepErrorView()
             case .oneChoice:
-                OneChoiceView(gameplay: currentGameplay)
+                OneChoiceView(gameplay: currentGameplay as! ChoiceGameplayProtocol)
             case .twoChoices:
-                TwoChoicesView(gameplay: currentGameplay)
+                TwoChoicesView(gameplay: currentGameplay as! ChoiceGameplayProtocol)
             case .threeChoices:
-                ThreeChoicesView(gameplay: currentGameplay)
+                ThreeChoicesView(gameplay: currentGameplay as! ChoiceGameplayProtocol)
             case .threeChoicesInline:
-                ThreeChoicesInlineView(gameplay: currentGameplay)
+                ThreeChoicesInlineView(gameplay: currentGameplay as! ChoiceGameplayProtocol)
             case .fourChoices:
-                FourChoicesView(gameplay: currentGameplay)
+                FourChoicesView(gameplay: currentGameplay as! ChoiceGameplayProtocol)
             case .fourChoicesInline:
-                FourChoicesInlineView(gameplay: currentGameplay)
+                FourChoicesInlineView(gameplay: currentGameplay as! ChoiceGameplayProtocol)
             case .fiveChoices:
-                FiveChoicesView(gameplay: currentGameplay)
+                FiveChoicesView(gameplay: currentGameplay as! ChoiceGameplayProtocol)
             case .sixChoices:
-                SixChoicesView(gameplay: currentGameplay)
+                SixChoicesView(gameplay: currentGameplay as! ChoiceGameplayProtocol)
             case .listenOneChoice(let audioRecording):
-                ListenOneChoiceView(gameplay: currentGameplay, audioRecording: audioRecording)
+                ListenOneChoiceView(
+                    gameplay: currentGameplay as! ChoiceGameplayProtocol, audioRecording: audioRecording)
             case .listenTwoChoices(let audioRecording):
-                ListenTwoChoicesView(gameplay: currentGameplay, audioRecording: audioRecording)
+                ListenTwoChoicesView(
+                    gameplay: currentGameplay as! ChoiceGameplayProtocol, audioRecording: audioRecording)
             case .listenThreeChoices(let audioRecording):
-                ListenThreeChoicesView(gameplay: currentGameplay, audioRecording: audioRecording)
+                ListenThreeChoicesView(
+                    gameplay: currentGameplay as! ChoiceGameplayProtocol, audioRecording: audioRecording)
             case .listenThreeChoicesInline(let audioRecording):
-                ListenThreeChoicesInlineView(gameplay: currentGameplay, audioRecording: audioRecording)
+                ListenThreeChoicesInlineView(
+                    gameplay: currentGameplay as! ChoiceGameplayProtocol, audioRecording: audioRecording)
             case .listenFourChoices(let audioRecording):
-                ListenFourChoicesView(gameplay: currentGameplay, audioRecording: audioRecording)
+                ListenFourChoicesView(
+                    gameplay: currentGameplay as! ChoiceGameplayProtocol, audioRecording: audioRecording)
             case .listenSixChoices(let audioRecording):
-                ListenSixChoicesView(gameplay: currentGameplay, audioRecording: audioRecording)
-            case .dragAndDropOneAreaOneChoice(let dropArea):
-                DragAndDropOneAreaOneChoiceView(gameplay: currentGameplay, dropArea: dropArea)
+                ListenSixChoicesView(
+                    gameplay: currentGameplay as! ChoiceGameplayProtocol, audioRecording: audioRecording)
+            case .dragAndDropOneAreaOneOrMoreChoices:
+                DragAndDropOneAreaOneOrMoreChoicesView(gameplay: currentGameplay as! DragAndDropGameplayProtocol)
+            case .dragAndDropTwoAreasOneOrMoreChoices:
+                DragAndDropTwoAreasOneOrMoreChoicesView(gameplay: currentGameplay as! DragAndDropGameplayProtocol)
         }
     }
+    // swiftlint:enable force_cast
 
     private func subscribeToGameplayState() {
         self.currentGameplay.state

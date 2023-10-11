@@ -6,14 +6,14 @@ import Combine
 import SwiftUI
 
 public class GenericViewModel: Identifiable, ObservableObject {
-    public var gameplay: any GameplayProtocol
+    public var gameplay: any ChoiceGameplayProtocol
 
     @Published public var choices: [ChoiceModel]
     @Published public var state: GameplayState = .idle
 
     private var cancellables: Set<AnyCancellable> = []
 
-    public init(gameplay: any GameplayProtocol) {
+    public init(gameplay: any ChoiceGameplayProtocol) {
         self.gameplay = gameplay
         self.choices = self.gameplay.choices.value
         self.gameplay.choices

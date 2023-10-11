@@ -5,9 +5,6 @@
 import Combine
 import Foundation
 
-public protocol GameplayProtocol {
-    var choices: CurrentValueSubject<[ChoiceViewModel], Never> { get set }
+public protocol BaseGameplayProtocol {
     var state: CurrentValueSubject<GameplayState, Never> { get set }
-
-    func process(choice: ChoiceViewModel)
 }

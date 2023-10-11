@@ -5,11 +5,11 @@
 import Combine
 import Foundation
 
-public class ColorBingoGameplay: GameplayProtocol {
-    public var choices = CurrentValueSubject<[ChoiceViewModel], Never>([])
+public class ColorBingoGameplay: ChoiceGameplayProtocol {
+    public var choices = CurrentValueSubject<[ChoiceModel], Never>([])
     public var state = CurrentValueSubject<GameplayState, Never>(.idle)
 
-    public init(choices: [ChoiceViewModel]) {
+    public init(choices: [ChoiceModel]) {
         self.choices.send(choices)
         self.state.send(.playing)
 
@@ -19,7 +19,7 @@ public class ColorBingoGameplay: GameplayProtocol {
         print("Leka is \(color)")
     }
 
-    public func process(choice: ChoiceViewModel) {
+    public func process(choice: ChoiceModel) {
         if choice.rightAnswer {
             if let index = choices.value.firstIndex(where: { $0.id == choice.id }) {
                 self.choices.value[index].status = .playingRightAnimation

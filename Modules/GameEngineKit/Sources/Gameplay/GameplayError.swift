@@ -5,7 +5,7 @@
 import Combine
 import Foundation
 
-public class GameplayError: GameplayProtocol {
+public class GameplayError: BaseGameplayProtocol {
     public var choices = CurrentValueSubject<[ChoiceModel], Never>([])
     public var state = CurrentValueSubject<GameplayState, Never>(.idle)
 
