@@ -48,7 +48,7 @@ struct RobotControlView: View {
                         .font(.title)
                     HStack {
                         RobotControlActionButton(title: "Individual LEDs", image: "light.max", tint: .orange) {
-                            robot.shine(.spot(ids: [0, 4, 8, 10, 12]), color: .red)
+                            robot.shine(.spot(.belt, ids: [0, 4, 8, 10, 12]), color: .red)
                         }
                         RobotControlActionButton(title: "Quarters", image: "light.max", tint: .green) {
                             robot.shine(.quarterBackLeft, color: .blue)
@@ -56,8 +56,8 @@ struct RobotControlView: View {
                         RobotControlActionButton(title: "Halves", image: "light.max", tint: .indigo) {
                             robot.shine(.halfRight, color: .green)
                         }
-                        RobotControlActionButton(title: "Full", image: "light.max", tint: .teal) {
-                            robot.shine(.full, color: .blue)
+                        RobotControlActionButton(title: "Full belt", image: "light.max", tint: .teal) {
+                            robot.shine(.belt, color: .blue)
                         }
                         RobotControlActionButton(title: "Turn off lights", image: "xmark", tint: .red) {
                             robot.stopLights()

@@ -68,20 +68,6 @@ public class Robot {
         print("🤖 STOP 🛑 - Motion")
     }
 
-    // MARK: - Lights
-
-    public func shine(_ lights: Lights, color: Color) {
-        print("🤖 SHINE \(lights) in \(color)")
-    }
-
-    public func blacken(_ lights: Lights) {
-        print("🤖 BLACKEN \(lights)")
-    }
-
-    public func stopLights() {
-        print("🤖 STOP 🛑 - Lights")
-    }
-
     // MARK: - Magic Cards
 
     public func onMagicCard() -> AnyPublisher<MagicCard, Never> {
