@@ -5,7 +5,7 @@
 import SwiftUI
 
 struct ChoiceView: View {
-    var choice: ChoiceViewModel
+    var choice: ChoiceModel
     let size: CGFloat
     var isTappable = true
 
