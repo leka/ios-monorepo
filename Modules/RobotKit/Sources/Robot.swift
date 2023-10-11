@@ -82,14 +82,6 @@ public class Robot {
         print("🤖 STOP 🛑 - Lights")
     }
 
-    // MARK: - Reinforcers
-
-    public func run(_ reinforcer: Reinforcer) {
-        print("🤖 RUN reinforcer \(reinforcer)")
-        connectedPeripheral?
-            .sendCommand(Data([0x2A, 0x2A, 0x2A, 0x2A, 0x01, 0x50, 0x51, 0x51]))
-    }
-
     // MARK: - Magic Cards
 
     public func onMagicCard() -> AnyPublisher<MagicCard, Never> {
