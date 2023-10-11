@@ -41,7 +41,7 @@ class DragAndDropAssociationScene: SKScene {
         makeAnswers()
     }
 
-    func subscribeToChoicesUpdates() { 
+    func subscribeToChoicesUpdates() {
         // Create Gameplay
         self.viewModel.$choices
             .receive(on: DispatchQueue.main)

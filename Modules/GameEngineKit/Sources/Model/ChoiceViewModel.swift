@@ -4,37 +4,37 @@
 
 // MARK: - HERE -----------------
 
-//import SwiftUI
-//
-//public enum ChoiceDataType {
-//    case color, image, text
-//}
-//
-//public enum ChoiceState {
-//    case notSelected
-//    case selected
-//    case playingRightAnimation
-//    case playingWrongAnimation
-//}
-//
-//public struct ChoiceViewModel: Identifiable, Equatable, Comparable {
-//    public static func < (lhs: ChoiceViewModel, rhs: ChoiceViewModel) -> Bool {
-//        lhs.id.uuidString < rhs.id.uuidString
-//    }
-//
-//    public let id: UUID = UUID()
-//    public let item: String
-//    public var type: ChoiceDataType
-//    public var status: ChoiceState
-//    public var rightAnswer: Bool
-//
-//    public init(item: String, type: ChoiceDataType, status: ChoiceState = .notSelected, rightAnswer: Bool = false) {
-//        self.item = item
-//        self.type = type
-//        self.status = status
-//        self.rightAnswer = rightAnswer
-//    }
-//}
+// import SwiftUI
+
+// public enum ChoiceDataType {
+//     case color, image, text
+// }
+
+// public enum ChoiceState {
+//     case notSelected
+//     case selected
+//     case playingRightAnimation
+//     case playingWrongAnimation
+// }
+
+// public struct ChoiceViewModel: Identifiable, Equatable, Comparable {
+//     public static func < (lhs: ChoiceViewModel, rhs: ChoiceViewModel) -> Bool {
+//         lhs.id.uuidString < rhs.id.uuidString
+//     }
+
+//     public let id: UUID = UUID()
+//     public let item: String
+//     public var type: ChoiceDataType
+//     public var status: ChoiceState
+//     public var rightAnswer: Bool
+
+//     public init(item: String, type: ChoiceDataType, status: ChoiceState = .notSelected, rightAnswer: Bool = false) {
+//         self.item = item
+//         self.type = type
+//         self.status = status
+//         self.rightAnswer = rightAnswer
+//     }
+// }
 
 // MARK: - HERE -----------------
 
@@ -62,7 +62,7 @@ public class ChoiceViewModel: Identifiable, Equatable, Comparable, ChoiceProtoco
     public static func == (lhs: ChoiceViewModel, rhs: ChoiceViewModel) -> Bool {
         lhs.id.uuidString == rhs.id.uuidString
     }
-
+    
     public static func < (lhs: ChoiceViewModel, rhs: ChoiceViewModel) -> Bool {
         lhs.id.uuidString < rhs.id.uuidString
     }
