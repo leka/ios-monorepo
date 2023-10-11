@@ -42,7 +42,7 @@ private var steps: [StandardStepModel] = [
         interface: .dragAndDropAssociationFourChoices),
 ]
 
-struct DragAndDropAssociationFourChoicesActivity: View {
+struct DragAndDropAssociationFourActivity: View {
     private var stepManager = StepManager(steps: steps)
 
     var body: some View {
@@ -50,9 +50,9 @@ struct DragAndDropAssociationFourChoicesActivity: View {
     }
 }
 
-struct DragAndDropAssociationFourChoicesActivity_Previews: PreviewProvider {
+struct DragAndDropAssociationFourActivity_Previews: PreviewProvider {
     static var previews: some View {
-        DragAndDropAssociationFourChoicesActivity()
+        DragAndDropAssociationFourActivity()
             .previewInterfaceOrientation(.landscapeLeft)
     }
 }

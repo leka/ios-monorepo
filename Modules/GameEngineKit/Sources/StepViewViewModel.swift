@@ -10,10 +10,10 @@ public class StepViewViewModel: ObservableObject {
     @Published var currentGameplay: any GameplayProtocol
     @Published var currentIndex: Int
     @Published var state: GameplayState = .idle
-
+    
     private var stepManager: StepManager
     private var cancellables: Set<AnyCancellable> = []
-
+    
     public init(stepManager: StepManager) {
         self.stepManager = stepManager
         self.currentIndex = stepManager.currentStep.value.index
@@ -21,13 +21,13 @@ public class StepViewViewModel: ObservableObject {
         self.currentGameplay = StepViewViewModel.gameplaySelector(stepModel: step)
         self.currentInterface = step.interface
         subscribeToGameplayState()
-
+        
         self.stepManager.currentStep
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] in
                 guard let self = self else { return }
                 let step = $0.step
-
+                
                 self.currentIndex = $0.index
                 if $0.index > 0 {
                     self.currentGameplay = StepViewViewModel.gameplaySelector(stepModel: step)
@@ -37,7 +37,7 @@ public class StepViewViewModel: ObservableObject {
             })
             .store(in: &cancellables)
     }
-
+    
     public static func gameplaySelector(stepModel: any StepModelProtocol) -> any GameplayProtocol {
         switch stepModel.gameplay {
             case .undefined:
@@ -55,7 +55,7 @@ public class StepViewViewModel: ObservableObject {
                 return SuperSimonGameplay(choices: stepModel.choices, answerIndexOrder: answerIndexOrder)
         }
     }
-
+    
     @ViewBuilder public var interfaceView: some View {
         switch currentInterface {
             case .undefined:
@@ -94,7 +94,7 @@ public class StepViewViewModel: ObservableObject {
                 DragAndDropAssociationFourChoicesView(gameplay: currentGameplay)
         }
     }
-
+    
     private func subscribeToGameplayState() {
         self.currentGameplay.state
             .receive(on: DispatchQueue.main)

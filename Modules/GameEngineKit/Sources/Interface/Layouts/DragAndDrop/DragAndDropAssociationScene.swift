@@ -8,11 +8,9 @@ import SwiftUI
 
 class DragAndDropAssociationScene: SKScene {
     var viewModel: GenericViewModel
-    //    var dropAreas: [DropAreaModel] = []
     var biggerSide: CGFloat = 150
     var selectedNodes: [UITouch: DraggableImageAnswerNode] = [:]
     var playedNode: DraggableImageAnswerNode?
-    //    var dropAreasNode: [SKSpriteNode] = []
     var spacer: CGFloat = 455
     var defaultPosition = CGPoint.zero
     var expectedItemsNodes: [String: [SKSpriteNode]] = [:]
@@ -22,9 +20,8 @@ class DragAndDropAssociationScene: SKScene {
     private var verticalSpacing: CGFloat = .zero
     private var cancellables: Set<AnyCancellable> = []
 
-    init(viewModel: GenericViewModel /*, dropAreas: DropAreaModel...*/) {
+    init(viewModel: GenericViewModel) {
         self.viewModel = viewModel
-        //        self.dropAreas = dropAreas
         super.init(size: CGSize.zero)
         self.defaultPosition = CGPoint(x: spacer, y: self.size.height)
     }
@@ -44,7 +41,8 @@ class DragAndDropAssociationScene: SKScene {
         makeAnswers()
     }
 
-    func subscribeToChoicesUpdates() { // Create Gameplay
+    func subscribeToChoicesUpdates() { 
+        // Create Gameplay
         self.viewModel.$choices
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: {

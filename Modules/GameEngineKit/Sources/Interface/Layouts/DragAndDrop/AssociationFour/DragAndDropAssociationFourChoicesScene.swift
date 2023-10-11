@@ -84,7 +84,7 @@ class DragAndDropAssociationFourChoicesScene: DragAndDropAssociationScene {
             // dropped within the bounds of the proper sibling
             destinationNode.isDraggable = false
             viewModel.onChoiceTapped(choice: choice)
-//            viewModel.onChoiceTapped(choice: destination) // ?????
+            // viewModel.onChoiceTapped(choice: destination)
         }
     }
 }
