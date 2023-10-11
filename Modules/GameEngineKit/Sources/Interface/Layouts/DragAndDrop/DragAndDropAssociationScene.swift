@@ -15,7 +15,7 @@ class DragAndDropAssociationScene: SKScene {
     var defaultPosition = CGPoint.zero
     var expectedItemsNodes: [String: [SKSpriteNode]] = [:]
     var dropDestinations: [DraggableImageAnswerNode] = []
-    private var dropDestinationAnchor: CGPoint = .zero
+    var dropDestinationAnchor: CGPoint = .zero
     private var initialNodeX: CGFloat = .zero
     private var verticalSpacing: CGFloat = .zero
     private var cancellables: Set<AnyCancellable> = []
@@ -46,14 +46,10 @@ class DragAndDropAssociationScene: SKScene {
         self.viewModel.$choices
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: {
-                print("receives")
                 for choice in $0 where choice.item == self.playedNode?.name {
-                    print(choice.item, "item")
                     if choice.status == .playingRightAnimation {
-                        print("should play right anim")
                         self.goodAnswerBehavior(self.playedNode!)
                     } else if choice.status == .playingWrongAnimation {
-                        print("should play wrong anim")
                         self.wrongAnswerBehavior(self.playedNode!)
                     }
                 }

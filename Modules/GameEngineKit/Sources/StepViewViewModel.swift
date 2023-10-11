@@ -49,6 +49,8 @@ public class StepViewViewModel: ObservableObject {
             case .selectSomeRightAnswers(let answersNumber):
                 return GameplaySelectSomeRightAnswers(
                     choices: stepModel.choices, rightAnswersToFind: answersNumber)
+            case .association:
+                return GameplayAssociation(choices: stepModel.choices)
             case .colorBingo:
                 return ColorBingoGameplay(choices: stepModel.choices)
             case .superSimon(let answerIndexOrder):
@@ -94,7 +96,7 @@ public class StepViewViewModel: ObservableObject {
                 DragAndDropAssociationFourChoicesView(gameplay: currentGameplay)
         }
     }
-    
+
     private func subscribeToGameplayState() {
         self.currentGameplay.state
             .receive(on: DispatchQueue.main)

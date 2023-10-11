@@ -61,7 +61,8 @@ class DragAndDropAssociationFourChoicesScene: DragAndDropAssociationScene {
             playedNode!.scaleForMax(sizeOf: biggerSide)
 
             // make dropArea out of target node
-            guard let destinationNode = dropDestinations.first(where: {
+            guard
+                let destinationNode = dropDestinations.first(where: {
                     $0.frame.contains(touch.location(in: self)) && $0.name != playedNode!.name
                 })
             else {
@@ -83,6 +84,7 @@ class DragAndDropAssociationFourChoicesScene: DragAndDropAssociationScene {
             }
             // dropped within the bounds of the proper sibling
             destinationNode.isDraggable = false
+            dropDestinationAnchor = destinationNode.position
             viewModel.onChoiceTapped(choice: choice)
             // viewModel.onChoiceTapped(choice: destination)
         }

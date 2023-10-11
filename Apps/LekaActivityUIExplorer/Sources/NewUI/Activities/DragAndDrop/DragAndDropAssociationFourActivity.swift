@@ -22,23 +22,23 @@ private let choicesStep2 = [
 private var steps: [StandardStepModel] = [
     StandardStepModel(
         choices: choicesStep1,
-        gameplay: .selectAllRightAnswers,
+        gameplay: .association,
         interface: .dragAndDropAssociationFourChoices),
     StandardStepModel(
         choices: choicesStep2,
-        gameplay: .selectAllRightAnswers,
+        gameplay: .association,
         interface: .dragAndDropAssociationFourChoices),
     StandardStepModel(
         choices: choicesStep1,
-        gameplay: .selectAllRightAnswers,
+        gameplay: .association,
         interface: .dragAndDropAssociationFourChoices),
     StandardStepModel(
         choices: choicesStep2,
-        gameplay: .selectAllRightAnswers,
+        gameplay: .association,
         interface: .dragAndDropAssociationFourChoices),
     StandardStepModel(
         choices: choicesStep1,
-        gameplay: .selectAllRightAnswers,
+        gameplay: .association,
         interface: .dragAndDropAssociationFourChoices),
 ]
 

@@ -62,7 +62,7 @@ public class ChoiceViewModel: Identifiable, Equatable, Comparable, ChoiceProtoco
     public static func == (lhs: ChoiceViewModel, rhs: ChoiceViewModel) -> Bool {
         lhs.id.uuidString == rhs.id.uuidString
     }
-    
+
     public static func < (lhs: ChoiceViewModel, rhs: ChoiceViewModel) -> Bool {
         lhs.id.uuidString < rhs.id.uuidString
     }
