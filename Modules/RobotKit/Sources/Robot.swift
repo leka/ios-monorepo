@@ -10,11 +10,35 @@ public class Robot {
 
     public static var shared: Robot = Robot()
 
-    public var connectedPeripheral: RobotPeripheral?
+    // MARK: - Internal properties
+
+    var connectedPeripheral: RobotPeripheral? {
+        didSet {
+            registerBatteryCharacteristicNotificationCallback()
+            registerChargingStatusNotificationCallback()
+            registerOSVersionReadCallback()
+            registerSerialNumberReadCallback()
+
+            connectedPeripheral?.discoverAndListenForUpdates()
+            connectedPeripheral?.readReadOnlyCharacteristics()
+        }
+    }
+
+    var cancellables: Set<AnyCancellable> = []
 
     private init() {
-        // nothing to do yet
+        subscribeToBLEConnectionUpdates()
     }
+
+    // MARK: - Information
+
+    public var isConnected: CurrentValueSubject<Bool, Never> = CurrentValueSubject(false)
+
+    public var name: CurrentValueSubject<String, Never> = CurrentValueSubject("(robot not connected)")
+    public var osVersion: CurrentValueSubject<String, Never> = CurrentValueSubject("(n/a)")
+    public var serialNumber: CurrentValueSubject<String, Never> = CurrentValueSubject("(n/a)")
+    public var isCharging: CurrentValueSubject<Bool, Never> = CurrentValueSubject(false)
+    public var battery: CurrentValueSubject<Int, Never> = CurrentValueSubject(0)
 
     // MARK: - General
 

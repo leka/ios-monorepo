@@ -2,12 +2,12 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import Combine
 import SwiftUI
 
 struct ConnectedRobotInformationView: View {
 
-    // TODO(@ladislas): replace by real implementation
-    @StateObject var viewModel: ConnectedRobotInformationViewModel = .mockDisconnected
+    @StateObject var viewModel: ConnectedRobotInformationViewModel = ConnectedRobotInformationViewModel()
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
@@ -34,12 +34,10 @@ struct ConnectedRobotInformationView: View {
                 }
                 GridRow {
                     Text("Charging:")
-                    Text(viewModel.charging ? "yes" : "no")
+                    Text(viewModel.isCharging ? "yes" : "no")
                 }
             }
-
         }
-
     }
 
 }
