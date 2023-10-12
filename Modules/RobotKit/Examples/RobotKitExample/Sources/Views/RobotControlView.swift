@@ -24,18 +24,18 @@ struct RobotControlView: View {
                         .font(.title)
                     HStack {
                         RobotControlActionButton(title: "Move forward", image: "arrow.up", tint: .orange) {
-                            robot.move(.forward, speed: 1.0)
+                            robot.move(.forward(speed: 1.0))
                         }
                         RobotControlActionButton(title: "Move backward", image: "arrow.down", tint: .green) {
-                            robot.move(.backward, speed: 0.5)
+                            robot.move(.backward(speed: 0.5))
                         }
                         RobotControlActionButton(title: "Spin clockwise", image: "arrow.clockwise", tint: .indigo) {
-                            robot.spin(.clockwise, speed: 0.7)
+                            robot.move(.spin(.clockwise, speed: 0.7))
                         }
                         RobotControlActionButton(
                             title: "Spin counterclockwise", image: "arrow.counterclockwise", tint: .teal
                         ) {
-                            robot.spin(.counterclockwise, speed: 1.0)
+                            robot.move(.spin(.counterclockwise, speed: 0.7))
                         }
                         RobotControlActionButton(title: "Stop motion", image: "xmark", tint: .red) {
                             robot.stopMotion()

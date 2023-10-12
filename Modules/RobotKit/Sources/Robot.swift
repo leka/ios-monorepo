@@ -50,24 +50,6 @@ public class Robot {
         print("🤖 REBOOT 💫")
     }
 
-    // MARK: - Motion
-
-    public func move(_ direction: Direction, speed: Float) {
-        print("🤖 MOVE \(direction) at \(speed)")
-    }
-
-    public func move(left speedLeft: Float, right speedRight: Float) {
-        print("🤖 MOVE left motor at \(speedLeft) and right motor at \(speedRight)")
-    }
-
-    public func spin(_ rotation: Rotation, speed: Float) {
-        print("🤖 SPIN \(rotation) at \(speed)")
-    }
-
-    public func stopMotion() {
-        print("🤖 STOP 🛑 - Motion")
-    }
-
     // MARK: - Magic Cards
 
     public func onMagicCard() -> AnyPublisher<MagicCard, Never> {
