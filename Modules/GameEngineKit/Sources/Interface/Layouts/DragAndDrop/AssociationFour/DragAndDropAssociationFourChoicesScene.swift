@@ -71,9 +71,9 @@ class DragAndDropAssociationFourChoicesScene: DragAndDropAssociationScene {
             }
 
             guard
-                let destination = viewModel.choices.first(where: { $0.item == destinationNode.name }) as? CategoryModel
+                let destination = viewModel.choices.first(where: { $0.item == destinationNode.name }) as? AssociationModel
             else { return }
-            guard let choice = viewModel.choices.first(where: { $0.item == playedNode!.name }) as? CategoryModel
+            guard let choice = viewModel.choices.first(where: { $0.item == playedNode!.name }) as? AssociationModel
             else { return }
             
             guard choice.category == destination.category else {

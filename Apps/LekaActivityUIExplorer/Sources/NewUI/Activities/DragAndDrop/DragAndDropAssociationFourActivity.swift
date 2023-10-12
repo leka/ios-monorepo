@@ -6,17 +6,17 @@ import GameEngineKit
 import SwiftUI
 
 private let choicesStep1 = [
-    CategoryModel(item: "watermelon", category: "watermelon", type: .image),
-    CategoryModel(item: "watermelon2", category: "watermelon", type: .image),
-    CategoryModel(item: "banana", category: "banana", type: .image),
-    CategoryModel(item: "banana2", category: "banana", type: .image),
+    AssociationModel(item: "watermelon", category: "watermelon", type: .image),
+    AssociationModel(item: "watermelon2", category: "watermelon", type: .image),
+    AssociationModel(item: "banana", category: "banana", type: .image),
+    AssociationModel(item: "banana2", category: "banana", type: .image),
 ]
 
 private let choicesStep2 = [
-    CategoryModel(item: "watermelon3", category: "watermelon", type: .image),
-    CategoryModel(item: "watermelon2", category: "watermelon", type: .image),
-    CategoryModel(item: "banana3", category: "banana", type: .image),
-    CategoryModel(item: "banana2", category: "banana", type: .image),
+    AssociationModel(item: "watermelon3", category: "watermelon", type: .image),
+    AssociationModel(item: "watermelon2", category: "watermelon", type: .image),
+    AssociationModel(item: "banana3", category: "banana", type: .image),
+    AssociationModel(item: "banana2", category: "banana", type: .image),
 ]
 
 private var steps: [StandardStepModel] = [
