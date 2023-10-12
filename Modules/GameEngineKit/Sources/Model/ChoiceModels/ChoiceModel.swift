@@ -9,13 +9,13 @@ public struct ChoiceModel: ChoiceModelProtocol {
     public let value: String
     public let type: ChoiceDataType
     public var status: ChoiceState
-    public var rightAnswer: Bool
+    public var isRightAnswer: Bool
 
     public init(value: String, type: ChoiceDataType, status: ChoiceState = .notSelected, rightAnswer: Bool = false) {
         self.value = value
         self.type = type
         self.status = status
-        self.rightAnswer = rightAnswer
+        self.isRightAnswer = rightAnswer
     }
 }
 
@@ -24,5 +24,3 @@ extension ChoiceModel: Comparable {
         lhs.id.uuidString < rhs.id.uuidString
     }
 }
-
-

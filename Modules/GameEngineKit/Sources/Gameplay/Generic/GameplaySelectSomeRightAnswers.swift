@@ -19,7 +19,7 @@ public class GameplaySelectSomeRightAnswers: SelectionGameplayProtocol {
     }
 
     public func process(choice: ChoiceModel) {
-        if choice.rightAnswer {
+        if choice.isRightAnswer {
             if let index = choices.value.firstIndex(where: { $0.id == choice.id && $0.status != .rightAnswer }
             ) {
                 self.choices.value[index].status = .rightAnswer
@@ -41,7 +41,7 @@ public class GameplaySelectSomeRightAnswers: SelectionGameplayProtocol {
             let rightAnswersID =
                 choices.value
                 .filter { choice in
-                    choice.rightAnswer
+                    choice.isRightAnswer
                 }
                 .sorted().map({ $0.id })
 

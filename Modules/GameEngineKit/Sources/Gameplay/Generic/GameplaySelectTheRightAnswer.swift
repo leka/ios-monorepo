@@ -15,7 +15,7 @@ public class GameplaySelectTheRightAnswer: SelectionGameplayProtocol {
     }
 
     public func process(choice: ChoiceModel) {
-        if choice.rightAnswer {
+        if choice.isRightAnswer {
             if let index = choices.value.firstIndex(where: { $0.id == choice.id }) {
                 self.choices.value[index].status = .rightAnswer
 
