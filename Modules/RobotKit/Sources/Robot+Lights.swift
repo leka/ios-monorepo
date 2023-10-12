@@ -154,7 +154,7 @@ extension Robot {
                 id,
             ])
 
-            payload.append(contentsOf: color.data)
+            payload.append(contentsOf: color.robot)
             payload.append(payload.checksum8)
 
             payload.insert(Spot.id, at: 0)
@@ -169,7 +169,7 @@ extension Robot {
                 position.rawValue
             ])
 
-            payload.append(contentsOf: color.data)
+            payload.append(contentsOf: color.robot)
             payload.append(payload.checksum8)
 
             payload.insert(Full.id, at: 0)
@@ -186,7 +186,7 @@ extension Robot {
                 end,
             ])
 
-            payload.append(contentsOf: color.data)
+            payload.append(contentsOf: color.robot)
             payload.append(payload.checksum8)
 
             payload.insert(Range.id, at: 0)
