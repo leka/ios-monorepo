@@ -4,7 +4,7 @@
 
 import SwiftUI
 
-public struct ChoiceModel: ChoiceModelProtocol {
+public struct ChoiceModel: DataModelProtocol {
     public let id: UUID = UUID()
     public let value: String
     public let type: ChoiceDataType

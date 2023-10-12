@@ -4,7 +4,7 @@
 
 import SwiftUI
 
-public struct DragAndDropZoneModel: ChoiceModelProtocol {
+public struct DragAndDropZoneModel: DataModelProtocol {
     public let id: UUID = UUID()
     public let value: String
     public let size: CGSize

@@ -15,6 +15,6 @@ public enum ChoiceState {
     case wrongAnswer
 }
 
-public protocol ChoiceModelProtocol: Identifiable, Equatable {
+public protocol DataModelProtocol: Identifiable, Equatable {
     var id: UUID { get }
 }
