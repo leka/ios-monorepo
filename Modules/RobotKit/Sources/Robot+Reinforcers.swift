@@ -4,12 +4,33 @@
 
 extension Robot {
 
-    public enum Reinforcer {
-        case spinBlinkGreenOff
-        case spinBlinkBlueViolet
-        case fire
-        case sprinkles
-        case rainbow
+    public enum Reinforcer: UInt8 {
+        case rainbow = 0x51
+        case fire = 0x52
+        case sprinkles = 0x53
+        case spinBlinkBlueViolet = 0x54
+        case spinBlinkGreenOff = 0x55
+
+        static let id: UInt8 = 0x50
+
+        var cmd: [UInt8] {
+            let output: [UInt8] = [
+                Self.id,
+                self.rawValue,
+                [self.rawValue].checksum8,
+            ]
+
+            return output
+        }
+    }
+
+    public func run(_ reinforcer: Reinforcer) {
+        print("🤖 RUN reinforcer \(reinforcer)")
+
+        let output = commandGenerator(commands: reinforcer.cmd)
+
+        connectedPeripheral?
+            .sendCommand(output)
     }
 
 }

@@ -24,18 +24,18 @@ struct RobotControlView: View {
                         .font(.title)
                     HStack {
                         RobotControlActionButton(title: "Move forward", image: "arrow.up", tint: .orange) {
-                            robot.move(.forward, speed: 1.0)
+                            robot.move(.forward(speed: 1.0))
                         }
                         RobotControlActionButton(title: "Move backward", image: "arrow.down", tint: .green) {
-                            robot.move(.backward, speed: 0.5)
+                            robot.move(.backward(speed: 0.5))
                         }
                         RobotControlActionButton(title: "Spin clockwise", image: "arrow.clockwise", tint: .indigo) {
-                            robot.spin(.clockwise, speed: 0.7)
+                            robot.move(.spin(.clockwise, speed: 0.7))
                         }
                         RobotControlActionButton(
                             title: "Spin counterclockwise", image: "arrow.counterclockwise", tint: .teal
                         ) {
-                            robot.spin(.counterclockwise, speed: 1.0)
+                            robot.move(.spin(.counterclockwise, speed: 0.7))
                         }
                         RobotControlActionButton(title: "Stop motion", image: "xmark", tint: .red) {
                             robot.stopMotion()
@@ -48,16 +48,21 @@ struct RobotControlView: View {
                         .font(.title)
                     HStack {
                         RobotControlActionButton(title: "Individual LEDs", image: "light.max", tint: .orange) {
-                            robot.shine(.spot(ids: [0, 4, 8, 10, 12]), color: .red)
+                            robot.shine(.spot(.belt, ids: [0, 4, 8, 10, 12], in: .red))
                         }
                         RobotControlActionButton(title: "Quarters", image: "light.max", tint: .green) {
-                            robot.shine(.quarterBackLeft, color: .blue)
+                            robot.shine(.quarterFrontLeft(in: .blue))
+                            robot.shine(.quarterFrontRight(in: .red))
+                            robot.shine(.quarterBackLeft(in: .red))
+                            robot.shine(.quarterBackRight(in: .blue))
                         }
                         RobotControlActionButton(title: "Halves", image: "light.max", tint: .indigo) {
-                            robot.shine(.halfRight, color: .green)
+                            robot.shine(.halfRight(in: .green))
+                            robot.shine(.halfLeft(in: .red))
                         }
-                        RobotControlActionButton(title: "Full", image: "light.max", tint: .teal) {
-                            robot.shine(.full, color: .blue)
+                        RobotControlActionButton(title: "Full belt + ears", image: "light.max", tint: .teal) {
+                            robot.shine(.full(.belt, in: .blue))
+                            robot.shine(.full(.ears, in: .green))
                         }
                         RobotControlActionButton(title: "Turn off lights", image: "xmark", tint: .red) {
                             robot.stopLights()

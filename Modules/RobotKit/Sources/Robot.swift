@@ -50,46 +50,6 @@ public class Robot {
         print("🤖 REBOOT 💫")
     }
 
-    // MARK: - Motion
-
-    public func move(_ direction: Direction, speed: Float) {
-        print("🤖 MOVE \(direction) at \(speed)")
-    }
-
-    public func move(left speedLeft: Float, right speedRight: Float) {
-        print("🤖 MOVE left motor at \(speedLeft) and right motor at \(speedRight)")
-    }
-
-    public func spin(_ rotation: Rotation, speed: Float) {
-        print("🤖 SPIN \(rotation) at \(speed)")
-    }
-
-    public func stopMotion() {
-        print("🤖 STOP 🛑 - Motion")
-    }
-
-    // MARK: - Lights
-
-    public func shine(_ lights: Lights, color: Color) {
-        print("🤖 SHINE \(lights) in \(color)")
-    }
-
-    public func blacken(_ lights: Lights) {
-        print("🤖 BLACKEN \(lights)")
-    }
-
-    public func stopLights() {
-        print("🤖 STOP 🛑 - Lights")
-    }
-
-    // MARK: - Reinforcers
-
-    public func run(_ reinforcer: Reinforcer) {
-        print("🤖 RUN reinforcer \(reinforcer)")
-        connectedPeripheral?
-            .sendCommand(Data([0x2A, 0x2A, 0x2A, 0x2A, 0x01, 0x50, 0x51, 0x51]))
-    }
-
     // MARK: - Magic Cards
 
     public func onMagicCard() -> AnyPublisher<MagicCard, Never> {

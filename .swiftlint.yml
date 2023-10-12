@@ -22,17 +22,19 @@ identifier_name:
   min_length: # only min_length
     error: 4 # only error
   excluded:
+    - ble
+    - BLE
+    - cmd
+    - i
     - id
+    - img
+    - lhs
+    - new
+    - red
+    - rhs
     - rx
     - tx
     - URL
-    - BLE
-    - new
-    - img
-    - lhs
-    - rhs
-    - i
-    - red
 
 line_length:
   warning: 130
