@@ -4,6 +4,8 @@
 
 import SwiftUI
 
+// swiftlint:disable nesting
+
 extension Robot {
 
     public struct Color {
@@ -18,6 +20,51 @@ extension Robot {
             self.screenRGB = sRGB
         }
 
+        private enum ColorString: String {
+
+            case black
+            case white
+            case red
+            case green
+            case blue
+            case lightBlue
+            case orange
+            case purple
+            case pink
+            case yellow
+
+            public var color: Robot.Color {
+                switch self {
+                    case .black:
+                        return .black
+                    case .white:
+                        return .white
+                    case .red:
+                        return .red
+                    case .green:
+                        return .green
+                    case .blue:
+                        return .blue
+                    case .lightBlue:
+                        return .lightBlue
+                    case .orange:
+                        return .orange
+                    case .purple:
+                        return .purple
+                    case .pink:
+                        return .pink
+                    case .yellow:
+                        return .yellow
+                }
+            }
+
+        }
+
+        public init(from value: String) {
+            guard let color = ColorString(rawValue: value)?.color else { fatalError() }
+            self = color
+        }
+
         public var robot: [UInt8] {
             robotRGB
         }
@@ -29,20 +76,24 @@ extension Robot {
                 blue: Double(screenRGB[2]) / 255.0
             )
         }
-
-        public static let black: Color = Color(robot: 0, 0, 0, screen: 0, 0, 0)
-        public static let white: Color = Color(robot: 255, 255, 255, screen: 255, 255, 255)
-
-        public static let red: Color = Color(robot: 255, 0, 0, screen: 255, 0, 0)
-        public static let green: Color = Color(robot: 0, 150, 0, screen: 0, 226, 0)
-        public static let blue: Color = Color(robot: 0, 0, 255, screen: 0, 121, 255)
-
-        public static let lightBlue: Color = Color(robot: 0, 121, 255, screen: 70, 194, 248)
-        public static let orange: Color = Color(robot: 248, 100, 0, screen: 255, 143, 0)
-        public static let purple: Color = Color(robot: 20, 0, 80, screen: 173, 73, 247)
-        public static let pink: Color = Color(robot: 255, 0, 127, screen: 252, 103, 178)
-        public static let yellow: Color = Color(robot: 255, 255, 0, screen: 251, 232, 0)
-
     }
+}
+
+extension Robot.Color {
+
+    public static let black: Robot.Color = .init(robot: 0, 0, 0, screen: 0, 0, 0)
+    public static let white: Robot.Color = .init(robot: 255, 255, 255, screen: 255, 255, 255)
+
+    public static let red: Robot.Color = .init(robot: 255, 0, 0, screen: 255, 0, 0)
+    public static let green: Robot.Color = .init(robot: 0, 150, 0, screen: 0, 226, 0)
+    public static let blue: Robot.Color = .init(robot: 0, 0, 255, screen: 0, 121, 255)
+
+    public static let lightBlue: Robot.Color = .init(robot: 0, 121, 255, screen: 70, 194, 248)
+    public static let orange: Robot.Color = .init(robot: 248, 100, 0, screen: 255, 143, 0)
+    public static let purple: Robot.Color = .init(robot: 20, 0, 80, screen: 173, 73, 247)
+    public static let pink: Robot.Color = .init(robot: 255, 0, 127, screen: 252, 103, 178)
+    public static let yellow: Robot.Color = .init(robot: 255, 255, 0, screen: 251, 232, 0)
 
 }
+
+// swiftlint:enable nesting
