@@ -6,8 +6,8 @@ import Combine
 import SpriteKit
 import SwiftUI
 
-final class DragAndDropTwoAreasOneOrMoreChoicesScene: DragAndDropBaseScene {
-    override func layoutDropAreas(dropZones: [DragAndDropZoneModel]) {
+final class DragAndDropTwoZonesOneOrMoreChoicesScene: DragAndDropBaseScene {
+    override func layoutDropZones(dropZones: [DragAndDropZoneModel]) {
         let dropAreaSpacer = size.width / 4
         var dropAreaPosition = dropAreaSpacer
         for dropArea in dropZones {
@@ -18,7 +18,7 @@ final class DragAndDropTwoAreasOneOrMoreChoicesScene: DragAndDropBaseScene {
             dropAreaNode.name = dropArea.value
             addChild(dropAreaNode)
 
-            dropAreasNode.append(dropAreaNode)
+            dropZonesNode.append(dropAreaNode)
 
             dropAreaPosition += 2 * dropAreaSpacer
         }

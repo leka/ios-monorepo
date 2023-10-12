@@ -55,13 +55,13 @@ public class StepViewViewModel: ObservableObject {
             case .superSimon(let answerIndexOrder):
                 return SuperSimonGameplay(choices: stepModel.choices, answerIndexOrder: answerIndexOrder)
             case .dragAndDropOneAnswerOnTheRightZone:
-                let dropZoneStepModel = stepModel as! DragAndDropZoneStepModel
+                let dragAndDropZoneStepModel = stepModel as! DragAndDropZoneStepModel
                 return GameplayDragAndDropOneAnswerOnTheRightZone(
-                    choices: dropZoneStepModel.choices, dropZones: dropZoneStepModel.dropZones)
+                    choices: dragAndDropZoneStepModel.choices, dropZones: dragAndDropZoneStepModel.dropZones)
             case .dragAndDropAllAnswersOnTheRightZone:
-                let dropZoneStepModel = stepModel as! DragAndDropZoneStepModel
+                let dragAndDropZoneStepModel = stepModel as! DragAndDropZoneStepModel
                 return GameplayDragAndDropAllAnswersOnTheRightZone(
-                    choices: dropZoneStepModel.choices, dropZones: dropZoneStepModel.dropZones)
+                    choices: dragAndDropZoneStepModel.choices, dropZones: dragAndDropZoneStepModel.dropZones)
         }
     }
 
@@ -103,10 +103,10 @@ public class StepViewViewModel: ObservableObject {
             case .listenSixChoices(let audioRecording):
                 ListenSixChoicesView(
                     gameplay: currentGameplay as! SelectionGameplayProtocol, audioRecording: audioRecording)
-            case .dragAndDropOneAreaOneOrMoreChoices:
-                DragAndDropOneAreaOneOrMoreChoicesView(gameplay: currentGameplay as! DragAndDropGameplayProtocol)
-            case .dragAndDropTwoAreasOneOrMoreChoices:
-                DragAndDropTwoAreasOneOrMoreChoicesView(gameplay: currentGameplay as! DragAndDropGameplayProtocol)
+            case .dragAndDropOneZoneOneOrMoreChoices:
+                DragAndDropOneZoneOneOrMoreChoicesView(gameplay: currentGameplay as! DragAndDropGameplayProtocol)
+            case .dragAndDropTwoZonesOneOrMoreChoices:
+                DragAndDropTwoZonesOneOrMoreChoicesView(gameplay: currentGameplay as! DragAndDropGameplayProtocol)
         }
     }
     // swiftlint:enable force_cast

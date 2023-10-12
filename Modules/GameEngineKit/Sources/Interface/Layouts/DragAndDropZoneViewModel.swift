@@ -5,7 +5,7 @@
 import Combine
 import SwiftUI
 
-public class DropZoneViewModel: Identifiable, ObservableObject {
+public class DragAndDropZoneViewModel: Identifiable, ObservableObject {
     public var gameplay: any DragAndDropGameplayProtocol
 
     @Published public var choices: [ChoiceModel]

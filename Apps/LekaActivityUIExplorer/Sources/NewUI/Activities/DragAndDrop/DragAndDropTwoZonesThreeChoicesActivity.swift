@@ -128,22 +128,22 @@ private let dropZonesStep5 = [
 private var steps: [DragAndDropZoneStepModel] = [
     DragAndDropZoneStepModel(
         dropZones: dropZonesStep1, choices: choicesStep1, gameplay: .dragAndDropAllAnswersOnTheRightZone,
-        interface: .dragAndDropTwoAreasOneOrMoreChoices),
+        interface: .dragAndDropTwoZonesOneOrMoreChoices),
     DragAndDropZoneStepModel(
         dropZones: dropZonesStep2, choices: choicesStep2, gameplay: .dragAndDropAllAnswersOnTheRightZone,
-        interface: .dragAndDropTwoAreasOneOrMoreChoices),
+        interface: .dragAndDropTwoZonesOneOrMoreChoices),
     DragAndDropZoneStepModel(
         dropZones: dropZonesStep3, choices: choicesStep3, gameplay: .dragAndDropAllAnswersOnTheRightZone,
-        interface: .dragAndDropTwoAreasOneOrMoreChoices),
+        interface: .dragAndDropTwoZonesOneOrMoreChoices),
     DragAndDropZoneStepModel(
         dropZones: dropZonesStep4, choices: choicesStep4, gameplay: .dragAndDropAllAnswersOnTheRightZone,
-        interface: .dragAndDropTwoAreasOneOrMoreChoices),
+        interface: .dragAndDropTwoZonesOneOrMoreChoices),
     DragAndDropZoneStepModel(
         dropZones: dropZonesStep5, choices: choicesStep5, gameplay: .dragAndDropAllAnswersOnTheRightZone,
-        interface: .dragAndDropTwoAreasOneOrMoreChoices),
+        interface: .dragAndDropTwoZonesOneOrMoreChoices),
 ]
 
-struct DragAndDropTwoAreasThreeChoicesActivity: View {
+struct DragAndDropTwoZonesThreeChoicesActivity: View {
     private var stepManager = StepManager(steps: steps)
 
     var body: some View {
@@ -151,9 +151,9 @@ struct DragAndDropTwoAreasThreeChoicesActivity: View {
     }
 }
 
-struct DragAndDropTwoAreasThreeChoicesActivity_Previews: PreviewProvider {
+struct DragAndDropTwoZonesThreeChoicesActivity_Previews: PreviewProvider {
     static var previews: some View {
-        DragAndDropTwoAreasThreeChoicesActivity()
+        DragAndDropTwoZonesThreeChoicesActivity()
             .previewInterfaceOrientation(.landscapeLeft)
     }
 }

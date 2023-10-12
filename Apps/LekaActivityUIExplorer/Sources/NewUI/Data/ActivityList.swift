@@ -151,28 +151,28 @@ let kListOfAvailablesActivities: [ActivityModel] = [
         view: AnyView(SuperSimonLevelThree())
     ),
     ActivityModel(
-        title: "DragAndDropOneAreaOneChoice",
+        title: "DragAndDropOneZoneOneChoice",
         instructions: "Drag and drop the fruit in the basket",
-        view: AnyView(DragAndDropOneAreaOneChoiceActivity())
+        view: AnyView(DragAndDropOneZoneOneChoiceActivity())
     ),
     ActivityModel(
-        title: "DragAndDropOneAreaTwoChoices",
+        title: "DragAndDropOneZoneTwoChoices",
         instructions: "Drag and drop the fruit in the basket",
-        view: AnyView(DragAndDropOneAreaTwoChoicesActivity())
+        view: AnyView(DragAndDropOneZoneTwoChoicesActivity())
     ),
     ActivityModel(
-        title: "DragAndDropOneAreaThreeChoices",
+        title: "DragAndDropOneZoneThreeChoices",
         instructions: "Drag and drop the fruit in the basket",
-        view: AnyView(DragAndDropOneAreaThreeChoicesActivity())
+        view: AnyView(DragAndDropOneZoneThreeChoicesActivity())
     ),
     ActivityModel(
-        title: "DragAndDropOneAreaFourChoices",
+        title: "DragAndDropOneZoneFourChoices",
         instructions: "Drag and drop the fruit in the basket",
-        view: AnyView(DragAndDropOneAreaFourChoicesActivity())
+        view: AnyView(DragAndDropOneZoneFourChoicesActivity())
     ),
     ActivityModel(
-        title: "DragAndDropTwoAreasThreeChoices",
-        instructions: "Drag and drop the fruit in the right place",
-        view: AnyView(DragAndDropTwoAreasThreeChoicesActivity())
+        title: "DragAndDropTwoZonesThreeChoices",
+        instructions: "Drag and drop all the fruits in the right place",
+        view: AnyView(DragAndDropTwoZonesThreeChoicesActivity())
     ),
 ]

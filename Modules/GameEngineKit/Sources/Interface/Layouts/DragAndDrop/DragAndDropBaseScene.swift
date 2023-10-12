@@ -7,17 +7,17 @@ import SpriteKit
 import SwiftUI
 
 class DragAndDropBaseScene: SKScene {
-    var viewModel: DropZoneViewModel
+    var viewModel: DragAndDropZoneViewModel
     var biggerSide: CGFloat = 130
     var selectedNodes: [UITouch: DraggableImageAnswerNode] = [:]
     var playedNode: DraggableImageAnswerNode?
-    var dropAreasNode: [SKSpriteNode] = []
+    var dropZonesNode: [SKSpriteNode] = []
     private var spacer: CGFloat = .zero
     private var defaultPosition = CGPoint.zero
     private var expectedItemsNodes: [String: [SKSpriteNode]] = [:]
     private var cancellables: Set<AnyCancellable> = []
 
-    init(viewModel: DropZoneViewModel) {
+    init(viewModel: DragAndDropZoneViewModel) {
         self.viewModel = viewModel
         super.init(size: CGSize.zero)
         self.spacer = size.width / CGFloat(viewModel.choices.count + 1)
@@ -36,7 +36,7 @@ class DragAndDropBaseScene: SKScene {
         self.removeAllActions()
 
         setFirstAnswerPosition()
-        layoutDropAreas(dropZones: viewModel.dropZones)
+        layoutDropZones(dropZones: viewModel.dropZones)
         getExpectedItems()
         layoutAnswers()
     }
@@ -100,7 +100,7 @@ class DragAndDropBaseScene: SKScene {
         self.defaultPosition.x += spacer
     }
 
-    func layoutDropAreas(dropZones: [DragAndDropZoneModel]) {
+    func layoutDropZones(dropZones: [DragAndDropZoneModel]) {
         // To specify in final classes
     }
 
@@ -121,7 +121,7 @@ class DragAndDropBaseScene: SKScene {
                 expectedNode.name = expectedItem
                 expectedNode.texture = texture
                 expectedNode.scaleForMax(sizeOf: biggerSide * 0.8)
-                expectedNode.position = CGPoint(x: dropAreasNode[0].position.x + 80, y: 110)
+                expectedNode.position = CGPoint(x: dropZonesNode[0].position.x + 80, y: 110)
                 (expectedItemsNodes[dropZone.value, default: []]).append(expectedNode)
 
                 addChild(expectedNode)
@@ -215,8 +215,8 @@ class DragAndDropBaseScene: SKScene {
             playedNode = selectedNodes[touch]!
             playedNode!.scaleForMax(sizeOf: biggerSide)
             let choice = viewModel.choices.first(where: { $0.value == playedNode!.name })
-            for dropAreaNode in dropAreasNode where playedNode!.fullyContains(bounds: dropAreaNode.frame) {
-                viewModel.onChoiceTapped(choice: choice!, dropZoneName: dropAreaNode.name!)
+            for dropZoneNode in dropZonesNode where playedNode!.fullyContains(bounds: dropZoneNode.frame) {
+                viewModel.onChoiceTapped(choice: choice!, dropZoneName: dropZoneNode.name!)
                 break
             }
 
