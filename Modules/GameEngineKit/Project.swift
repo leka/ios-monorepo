@@ -11,6 +11,7 @@ let project = Project.module(
     platform: .iOS,
     dependencies: [
         .project(target: "DesignKit", path: Path("../../Modules/DesignKit")),
+        .project(target: "RobotKit", path: Path("../../Modules/RobotKit")),
         .external(name: "SwiftUIJoystick"),
         .external(name: "AudioKit"),
     ],
