@@ -5,7 +5,7 @@
 import Combine
 import Foundation
 
-public class ColorBingoGameplay: ChoiceGameplayProtocol {
+public class ColorBingoGameplay: SelectionGameplayProtocol {
     public var choices = CurrentValueSubject<[ChoiceModel], Never>([])
     public var state = CurrentValueSubject<GameplayState, Never>(.idle)
 
@@ -14,13 +14,13 @@ public class ColorBingoGameplay: ChoiceGameplayProtocol {
         self.state.send(.playing)
 
         // TODO(@ladislas): Show the right answer color on Leka's belt
-        let index = self.choices.value.firstIndex(where: { $0.rightAnswer })!
+        let index = self.choices.value.firstIndex(where: { $0.isRightAnswer })!
         let color = self.choices.value[index].value
         print("Leka is \(color)")
     }
 
     public func process(choice: ChoiceModel) {
-        if choice.rightAnswer {
+        if choice.isRightAnswer {
             if let index = choices.value.firstIndex(where: { $0.id == choice.id }) {
                 self.choices.value[index].status = .rightAnswer
 

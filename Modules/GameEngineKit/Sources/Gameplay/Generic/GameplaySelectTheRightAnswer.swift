@@ -5,7 +5,7 @@
 import Combine
 import Foundation
 
-public class GameplaySelectTheRightAnswer: ChoiceGameplayProtocol {
+public class GameplaySelectTheRightAnswer: SelectionGameplayProtocol {
     public var choices = CurrentValueSubject<[ChoiceModel], Never>([])
     public var state = CurrentValueSubject<GameplayState, Never>(.idle)
 

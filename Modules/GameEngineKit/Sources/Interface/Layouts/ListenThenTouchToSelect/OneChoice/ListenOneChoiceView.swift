@@ -10,7 +10,7 @@ public struct ListenOneChoiceView: View {
     let horizontalSpacing: CGFloat = 32
     let answerSize: CGFloat = 300
 
-    public init(gameplay: any ChoiceGameplayProtocol, audioRecording: AudioRecordingModel) {
+    public init(gameplay: any SelectionGameplayProtocol, audioRecording: AudioRecordingModel) {
         self._viewModel = StateObject(wrappedValue: GenericViewModel(gameplay: gameplay))
         self._audioPlayer = StateObject(wrappedValue: AudioPlayer(audioRecording: audioRecording))
     }
