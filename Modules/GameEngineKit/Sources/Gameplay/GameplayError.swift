@@ -5,11 +5,11 @@
 import Combine
 import Foundation
 
-public class GameplayError: GameplayProtocol {
-    public var choices = CurrentValueSubject<[ChoiceViewModel], Never>([])
+public class GameplayError: BaseGameplayProtocol {
+    public var choices = CurrentValueSubject<[ChoiceModel], Never>([])
     public var state = CurrentValueSubject<GameplayState, Never>(.idle)
 
-    public func process(choice: ChoiceViewModel) {
+    public func process(choice: ChoiceModel) {
         // Nothing to do
     }
 }

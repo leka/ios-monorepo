@@ -7,7 +7,7 @@ import SwiftUI
 
 public class StepViewViewModel: ObservableObject {
     @Published var currentInterface: InterfaceType
-    @Published var currentGameplay: any GameplayProtocol
+    @Published var currentGameplay: any BaseGameplayProtocol
     @Published var currentIndex: Int
     @Published var state: GameplayState = .idle
 
@@ -38,7 +38,8 @@ public class StepViewViewModel: ObservableObject {
             .store(in: &cancellables)
     }
 
-    public static func gameplaySelector(stepModel: any StepModelProtocol) -> any GameplayProtocol {
+    // swiftlint:disable force_cast
+    public static func gameplaySelector(stepModel: any StepModelProtocol) -> any BaseGameplayProtocol {
         switch stepModel.gameplay {
             case .undefined:
                 return GameplayError()
@@ -53,6 +54,14 @@ public class StepViewViewModel: ObservableObject {
                 return ColorBingoGameplay(choices: stepModel.choices)
             case .superSimon(let answerIndexOrder):
                 return SuperSimonGameplay(choices: stepModel.choices, answerIndexOrder: answerIndexOrder)
+            case .dragAndDropOneAnswerOnTheRightZone:
+                let dragAndDropZoneStepModel = stepModel as! DragAndDropZoneStepModel
+                return GameplayDragAndDropOneAnswerOnTheRightZone(
+                    choices: dragAndDropZoneStepModel.choices, dropZones: dragAndDropZoneStepModel.dropZones)
+            case .dragAndDropAllAnswersOnTheRightZone:
+                let dragAndDropZoneStepModel = stepModel as! DragAndDropZoneStepModel
+                return GameplayDragAndDropAllAnswersOnTheRightZone(
+                    choices: dragAndDropZoneStepModel.choices, dropZones: dragAndDropZoneStepModel.dropZones)
         }
     }
 
@@ -61,37 +70,46 @@ public class StepViewViewModel: ObservableObject {
             case .undefined:
                 StepErrorView()
             case .oneChoice:
-                OneChoiceView(gameplay: currentGameplay)
+                OneChoiceView(gameplay: currentGameplay as! SelectionGameplayProtocol)
             case .twoChoices:
-                TwoChoicesView(gameplay: currentGameplay)
+                TwoChoicesView(gameplay: currentGameplay as! SelectionGameplayProtocol)
             case .threeChoices:
-                ThreeChoicesView(gameplay: currentGameplay)
+                ThreeChoicesView(gameplay: currentGameplay as! SelectionGameplayProtocol)
             case .threeChoicesInline:
-                ThreeChoicesInlineView(gameplay: currentGameplay)
+                ThreeChoicesInlineView(gameplay: currentGameplay as! SelectionGameplayProtocol)
             case .fourChoices:
-                FourChoicesView(gameplay: currentGameplay)
+                FourChoicesView(gameplay: currentGameplay as! SelectionGameplayProtocol)
             case .fourChoicesInline:
-                FourChoicesInlineView(gameplay: currentGameplay)
+                FourChoicesInlineView(gameplay: currentGameplay as! SelectionGameplayProtocol)
             case .fiveChoices:
-                FiveChoicesView(gameplay: currentGameplay)
+                FiveChoicesView(gameplay: currentGameplay as! SelectionGameplayProtocol)
             case .sixChoices:
-                SixChoicesView(gameplay: currentGameplay)
+                SixChoicesView(gameplay: currentGameplay as! SelectionGameplayProtocol)
             case .listenOneChoice(let audioRecording):
-                ListenOneChoiceView(gameplay: currentGameplay, audioRecording: audioRecording)
+                ListenOneChoiceView(
+                    gameplay: currentGameplay as! SelectionGameplayProtocol, audioRecording: audioRecording)
             case .listenTwoChoices(let audioRecording):
-                ListenTwoChoicesView(gameplay: currentGameplay, audioRecording: audioRecording)
+                ListenTwoChoicesView(
+                    gameplay: currentGameplay as! SelectionGameplayProtocol, audioRecording: audioRecording)
             case .listenThreeChoices(let audioRecording):
-                ListenThreeChoicesView(gameplay: currentGameplay, audioRecording: audioRecording)
+                ListenThreeChoicesView(
+                    gameplay: currentGameplay as! SelectionGameplayProtocol, audioRecording: audioRecording)
             case .listenThreeChoicesInline(let audioRecording):
-                ListenThreeChoicesInlineView(gameplay: currentGameplay, audioRecording: audioRecording)
+                ListenThreeChoicesInlineView(
+                    gameplay: currentGameplay as! SelectionGameplayProtocol, audioRecording: audioRecording)
             case .listenFourChoices(let audioRecording):
-                ListenFourChoicesView(gameplay: currentGameplay, audioRecording: audioRecording)
+                ListenFourChoicesView(
+                    gameplay: currentGameplay as! SelectionGameplayProtocol, audioRecording: audioRecording)
             case .listenSixChoices(let audioRecording):
-                ListenSixChoicesView(gameplay: currentGameplay, audioRecording: audioRecording)
-            case .dragAndDropOneAreaOneChoice(let dropArea):
-                DragAndDropOneAreaOneChoiceView(gameplay: currentGameplay, dropArea: dropArea)
+                ListenSixChoicesView(
+                    gameplay: currentGameplay as! SelectionGameplayProtocol, audioRecording: audioRecording)
+            case .dragAndDropOneZoneOneOrMoreChoices:
+                DragAndDropOneZoneOneOrMoreChoicesView(gameplay: currentGameplay as! DragAndDropGameplayProtocol)
+            case .dragAndDropTwoZonesOneOrMoreChoices:
+                DragAndDropTwoZonesOneOrMoreChoicesView(gameplay: currentGameplay as! DragAndDropGameplayProtocol)
         }
     }
+    // swiftlint:enable force_cast
 
     private func subscribeToGameplayState() {
         self.currentGameplay.state

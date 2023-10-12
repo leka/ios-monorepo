@@ -5,19 +5,19 @@
 import Combine
 import Foundation
 
-public class GameplaySelectTheRightAnswer: GameplayProtocol {
-    public var choices = CurrentValueSubject<[ChoiceViewModel], Never>([])
+public class GameplaySelectTheRightAnswer: SelectionGameplayProtocol {
+    public var choices = CurrentValueSubject<[ChoiceModel], Never>([])
     public var state = CurrentValueSubject<GameplayState, Never>(.idle)
 
-    public init(choices: [ChoiceViewModel]) {
+    public init(choices: [ChoiceModel]) {
         self.choices.send(choices)
         self.state.send(.playing)
     }
 
-    public func process(choice: ChoiceViewModel) {
-        if choice.rightAnswer {
+    public func process(choice: ChoiceModel) {
+        if choice.isRightAnswer {
             if let index = choices.value.firstIndex(where: { $0.id == choice.id }) {
-                self.choices.value[index].status = .playingRightAnimation
+                self.choices.value[index].status = .rightAnswer
 
                 // TO DO (@hugo) asyncAwait
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
@@ -29,7 +29,7 @@ public class GameplaySelectTheRightAnswer: GameplayProtocol {
             }
         } else {
             if let index = choices.value.firstIndex(where: { $0.id == choice.id }) {
-                self.choices.value[index].status = .playingWrongAnimation
+                self.choices.value[index].status = .wrongAnswer
 
                 // TO DO (@hugo) asyncAwait
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {

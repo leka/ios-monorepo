@@ -41,7 +41,7 @@ struct TextAnswerView: View {
             case .selected:
                 circle
                     .overlay(.black)
-            case .playingRightAnimation:
+            case .rightAnswer:
                 circle
                     .overlay(RightAnswerFeedback(animationPercent: animationPercent))
                     .onAppear {
@@ -49,7 +49,7 @@ struct TextAnswerView: View {
                             animationPercent = 1.0
                         }
                     }
-            case .playingWrongAnimation:
+            case .wrongAnswer:
                 circle
                     .overlay(WrongAnswerFeedback(overlayOpacity: overlayOpacity))
                     .onAppear {
@@ -75,7 +75,7 @@ struct TextAnswerView_Previews:
     PreviewProvider
 {
     static var previews: some View {
-        TextAnswerView(text: "Hello", size: 500, status: .playingRightAnimation)
+        TextAnswerView(text: "Hello", size: 500, status: .rightAnswer)
             .previewInterfaceOrientation(.landscapeLeft)
     }
 }

@@ -7,38 +7,38 @@ import GameEngineKit
 import SwiftUI
 
 private let choicesStep1 = [
-    ChoiceViewModel(item: "cow", type: .text, rightAnswer: true),
-    ChoiceViewModel(item: "sheep", type: .text),
-    ChoiceViewModel(item: "sheep", type: .text),
-    ChoiceViewModel(item: "kangaroo", type: .text),
+    ChoiceModel(value: "cow", type: .text, rightAnswer: true),
+    ChoiceModel(value: "sheep", type: .text),
+    ChoiceModel(value: "sheep", type: .text),
+    ChoiceModel(value: "kangaroo", type: .text),
 ]
 
 private let choicesStep2 = [
-    ChoiceViewModel(item: "cat", type: .text),
-    ChoiceViewModel(item: "frog", type: .text),
-    ChoiceViewModel(item: "chinchilla", type: .text, rightAnswer: true),
-    ChoiceViewModel(item: "horse", type: .text),
+    ChoiceModel(value: "cat", type: .text),
+    ChoiceModel(value: "frog", type: .text),
+    ChoiceModel(value: "chinchilla", type: .text, rightAnswer: true),
+    ChoiceModel(value: "horse", type: .text),
 ]
 
 private let choicesStep3 = [
-    ChoiceViewModel(item: "dog", type: .text, rightAnswer: true),
-    ChoiceViewModel(item: "sheep", type: .text),
-    ChoiceViewModel(item: "lama", type: .text),
-    ChoiceViewModel(item: "cow", type: .text),
+    ChoiceModel(value: "dog", type: .text, rightAnswer: true),
+    ChoiceModel(value: "sheep", type: .text),
+    ChoiceModel(value: "lama", type: .text),
+    ChoiceModel(value: "cow", type: .text),
 ]
 
 private let choicesStep4 = [
-    ChoiceViewModel(item: "frog", type: .text),
-    ChoiceViewModel(item: "panda", type: .text, rightAnswer: true),
-    ChoiceViewModel(item: "bird", type: .text),
-    ChoiceViewModel(item: "cow", type: .text),
+    ChoiceModel(value: "frog", type: .text),
+    ChoiceModel(value: "panda", type: .text, rightAnswer: true),
+    ChoiceModel(value: "bird", type: .text),
+    ChoiceModel(value: "cow", type: .text),
 ]
 
 private let choicesStep5 = [
-    ChoiceViewModel(item: "horse", type: .text),
-    ChoiceViewModel(item: "cow", type: .text),
-    ChoiceViewModel(item: "sheep", type: .text, rightAnswer: true),
-    ChoiceViewModel(item: "horse", type: .text),
+    ChoiceModel(value: "horse", type: .text),
+    ChoiceModel(value: "cow", type: .text),
+    ChoiceModel(value: "sheep", type: .text, rightAnswer: true),
+    ChoiceModel(value: "horse", type: .text),
 ]
 
 private var steps: [StandardStepModel] = [

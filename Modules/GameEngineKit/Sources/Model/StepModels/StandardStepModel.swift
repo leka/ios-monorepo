@@ -5,12 +5,12 @@
 import SwiftUI
 
 public struct StandardStepModel: StepModelProtocol {
-    public var choices: [ChoiceViewModel]
+    public var choices: [ChoiceModel]
     public var gameplay: GameplayType
     public var interface: InterfaceType
 
     public init(
-        choices: [ChoiceViewModel],
+        choices: [ChoiceModel],
         gameplay: GameplayType,
         interface: InterfaceType
     ) {

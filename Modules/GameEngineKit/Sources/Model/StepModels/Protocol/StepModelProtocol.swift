@@ -11,6 +11,8 @@ public enum GameplayType {
     case selectSomeRightAnswers(Int)
     case colorBingo
     case superSimon([Int])
+    case dragAndDropOneAnswerOnTheRightZone
+    case dragAndDropAllAnswersOnTheRightZone
 }
 
 public enum InterfaceType {
@@ -29,11 +31,12 @@ public enum InterfaceType {
     case listenThreeChoicesInline(AudioRecordingModel)
     case listenFourChoices(AudioRecordingModel)
     case listenSixChoices(AudioRecordingModel)
-    case dragAndDropOneAreaOneChoice(DropAreaModel)
+    case dragAndDropOneZoneOneOrMoreChoices
+    case dragAndDropTwoZonesOneOrMoreChoices
 }
 
 public protocol StepModelProtocol {
-    var choices: [ChoiceViewModel] { get set }
+    var choices: [ChoiceModel] { get set}
     var gameplay: GameplayType { get set }
     var interface: InterfaceType { get set }
 }

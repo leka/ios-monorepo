@@ -5,28 +5,28 @@
 import Combine
 import Foundation
 
-public class GameplaySelectAllRightAnswers: GameplayProtocol {
-    public var choices = CurrentValueSubject<[ChoiceViewModel], Never>([])
+public class GameplaySelectAllRightAnswers: SelectionGameplayProtocol {
+    public var choices = CurrentValueSubject<[ChoiceModel], Never>([])
     public var state = CurrentValueSubject<GameplayState, Never>(.idle)
 
-    private var rightAnswersGiven: [ChoiceViewModel] = []
+    private var rightAnswersGiven: [ChoiceModel] = []
 
-    public init(choices: [ChoiceViewModel]) {
+    public init(choices: [ChoiceModel]) {
         self.choices.send(choices)
         self.state.send(.playing)
     }
 
-    public func process(choice: ChoiceViewModel) {
-        if choice.rightAnswer {
-            if let index = choices.value.firstIndex(where: { $0.id == choice.id && $0.status != .playingRightAnimation }
+    public func process(choice: ChoiceModel) {
+        if choice.isRightAnswer {
+            if let index = choices.value.firstIndex(where: { $0.id == choice.id && $0.status != .rightAnswer }
             ) {
-                self.choices.value[index].status = .playingRightAnimation
+                self.choices.value[index].status = .rightAnswer
 
                 rightAnswersGiven.append(self.choices.value[index])
             }
         } else {
             if let index = choices.value.firstIndex(where: { $0.id == choice.id }) {
-                self.choices.value[index].status = .playingWrongAnimation
+                self.choices.value[index].status = .wrongAnswer
 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
                     self.choices.value[index].status = .notSelected
@@ -38,13 +38,13 @@ public class GameplaySelectAllRightAnswers: GameplayProtocol {
         let rightAnswersID =
             choices.value
             .filter { choice in
-                choice.rightAnswer
+                choice.isRightAnswer
             }
             .sorted().map({ $0.id })
 
         if rightAnswersGivenID == rightAnswersID {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                for choice in self.choices.value.filter({ $0.status == .playingRightAnimation }) {
+                for choice in self.choices.value.filter({ $0.status == .rightAnswer }) {
                     guard let index = self.choices.value.firstIndex(where: { $0.id == choice.id }) else { return }
                     self.choices.value[index].status = .notSelected
                 }
