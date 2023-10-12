@@ -47,8 +47,9 @@ class DragAndDropBaseScene: SKScene {
             .sink(receiveValue: {
                 for dropZone in $0 {
                     for choice in dropZone.choices where choice.value == self.playedNode?.name {
+                        if choice.status == .rightAnswer {
                             self.goodAnswerBehavior(self.playedNode!)
-                        } else if choice.status == .playingWrongAnimation {
+                        } else if choice.status == .wrongAnswer {
                             self.wrongAnswerBehavior(self.playedNode!)
                         }
                     }

@@ -23,7 +23,7 @@ public class GameplayDragAndDropAllAnswersOnTheRightZone: DragAndDropGameplayPro
             if let rightDropChoiceindex = dropZones.value[dropZoneIndex].choices
                 .firstIndex(where: { $0.id == choice.id })
             {
-                self.dropZones.value[dropZoneIndex].choices[rightDropChoiceindex].status = .playingRightAnimation
+                self.dropZones.value[dropZoneIndex].choices[rightDropChoiceindex].status = .rightAnswer
 
                 if let index = choices.value.firstIndex(where: { $0.id == choice.id }) {
                     rightAnswersGiven.append(self.choices.value[index])
@@ -37,7 +37,7 @@ public class GameplayDragAndDropAllAnswersOnTheRightZone: DragAndDropGameplayPro
                 for dropZone in dropZones.value {
                     if let wrongDropChoiceindex = dropZone.choices.firstIndex(where: { $0.id == choice.id }) {
                         self.dropZones.value[dropZoneIndex].choices[wrongDropChoiceindex].status =
-                            .playingWrongAnimation
+                            .wrongAnswer
 
                         // TO DO (@hugo) asyncAwait
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
@@ -55,7 +55,7 @@ public class GameplayDragAndDropAllAnswersOnTheRightZone: DragAndDropGameplayPro
 
         if rightAnswersGivenID == rightAnswersID {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                for choice in self.choices.value.filter({ $0.status == .playingRightAnimation }) {
+                for choice in self.choices.value.filter({ $0.status == .rightAnswer }) {
                     guard let index = self.choices.value.firstIndex(where: { $0.id == choice.id }) else { return }
                     self.choices.value[index].status = .notSelected
                 }

@@ -23,8 +23,7 @@ public class GameplayDragAndDropOneAnswerOnTheRightZone: DragAndDropGameplayProt
             if let rightDropChoiceindex = dropZones.value[dropZoneIndex].choices
                 .firstIndex(where: { $0.id == choice.id })
             {
-                self.dropZones.value[dropZoneIndex].choices[rightDropChoiceindex].status = .playingRightAnimation
-
+                self.dropZones.value[dropZoneIndex].choices[rightDropChoiceindex].status = .rightAnswer
                 // TODO(@ladislas): Run reinforcers and lottie animation
 
                 // TO DO (@hugo) asyncAwait
@@ -36,7 +35,7 @@ public class GameplayDragAndDropOneAnswerOnTheRightZone: DragAndDropGameplayProt
                 for dropZone in dropZones.value {
                     if let wrongDropChoiceindex = dropZone.choices.firstIndex(where: { $0.id == choice.id }) {
                         self.dropZones.value[dropZoneIndex].choices[wrongDropChoiceindex].status =
-                            .playingWrongAnimation
+                            .wrongAnswer
 
                         // TO DO (@hugo) asyncAwait
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {

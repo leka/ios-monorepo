@@ -22,7 +22,7 @@ public class ColorBingoGameplay: ChoiceGameplayProtocol {
     public func process(choice: ChoiceModel) {
         if choice.rightAnswer {
             if let index = choices.value.firstIndex(where: { $0.id == choice.id }) {
-                self.choices.value[index].status = .playingRightAnimation
+                self.choices.value[index].status = .rightAnswer
 
                 // TO DO (@hugo) asyncAwait
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
@@ -33,7 +33,7 @@ public class ColorBingoGameplay: ChoiceGameplayProtocol {
             }
         } else {
             if let index = choices.value.firstIndex(where: { $0.id == choice.id }) {
-                self.choices.value[index].status = .playingWrongAnimation
+                self.choices.value[index].status = .wrongAnswer
 
                 // TO DO (@hugo) asyncAwait
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {

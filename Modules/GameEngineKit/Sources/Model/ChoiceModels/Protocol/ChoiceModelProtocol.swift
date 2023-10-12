@@ -11,8 +11,8 @@ public enum ChoiceDataType {
 public enum ChoiceState {
     case notSelected
     case selected
-    case playingRightAnimation
-    case playingWrongAnimation
+    case rightAnswer
+    case wrongAnswer
 }
 
 public protocol ChoiceModelProtocol: Identifiable, Equatable {

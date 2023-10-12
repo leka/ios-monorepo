@@ -20,15 +20,15 @@ public class GameplaySelectSomeRightAnswers: ChoiceGameplayProtocol {
 
     public func process(choice: ChoiceModel) {
         if choice.rightAnswer {
-            if let index = choices.value.firstIndex(where: { $0.id == choice.id && $0.status != .playingRightAnimation }
+            if let index = choices.value.firstIndex(where: { $0.id == choice.id && $0.status != .rightAnswer }
             ) {
-                self.choices.value[index].status = .playingRightAnimation
+                self.choices.value[index].status = .rightAnswer
 
                 rightAnswersGiven.append(self.choices.value[index])
             }
         } else {
             if let index = choices.value.firstIndex(where: { $0.id == choice.id }) {
-                self.choices.value[index].status = .playingWrongAnimation
+                self.choices.value[index].status = .wrongAnswer
 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
                     self.choices.value[index].status = .notSelected
@@ -47,7 +47,7 @@ public class GameplaySelectSomeRightAnswers: ChoiceGameplayProtocol {
 
             if rightAnswersGivenID.allSatisfy({ rightAnswersID.contains($0) }) {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                    for choice in self.choices.value.filter({ $0.status == .playingRightAnimation }) {
+                    for choice in self.choices.value.filter({ $0.status == .rightAnswer }) {
                         guard let index = self.choices.value.firstIndex(where: { $0.id == choice.id }) else { return }
                         self.choices.value[index].status = .notSelected
                     }

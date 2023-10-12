@@ -35,7 +35,7 @@ struct ImageAnswerView: View {
             case .selected:
                 circle
                     .overlay(.black)
-            case .playingRightAnimation:
+            case .rightAnswer:
                 circle
                     .overlay(RightAnswerFeedback(animationPercent: animationPercent))
                     .onAppear {
@@ -43,7 +43,7 @@ struct ImageAnswerView: View {
                             animationPercent = 1.0
                         }
                     }
-            case .playingWrongAnimation:
+            case .wrongAnswer:
                 circle
                     .overlay(WrongAnswerFeedback(overlayOpacity: overlayOpacity))
                     .onAppear {

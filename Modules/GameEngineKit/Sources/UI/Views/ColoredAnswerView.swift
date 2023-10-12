@@ -34,7 +34,7 @@ struct ColoredAnswerView: View {
             case .selected:
                 circle
                     .overlay(.black)
-            case .playingRightAnimation:
+            case .rightAnswer:
                 circle
                     .overlay(RightAnswerFeedback(animationPercent: animationPercent))
                     .onAppear {
@@ -42,7 +42,7 @@ struct ColoredAnswerView: View {
                             animationPercent = 1.0
                         }
                     }
-            case .playingWrongAnimation:
+            case .wrongAnswer:
                 circle
                     .overlay(WrongAnswerFeedback(overlayOpacity: overlayOpacity))
                     .onAppear {
@@ -80,7 +80,7 @@ struct ColoredAnswerView_Previews:
     PreviewProvider
 {
     static var previews: some View {
-        ColoredAnswerView(color: "red", size: 500, status: .playingRightAnimation)
+        ColoredAnswerView(color: "red", size: 500, status: .rightAnswer)
             .previewInterfaceOrientation(.landscapeLeft)
     }
 }
