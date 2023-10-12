@@ -7,57 +7,57 @@ import GameEngineKit
 import SwiftUI
 
 private let choicesStep1 = [
-    ChoiceModel(item: "pink", type: .color),
-    ChoiceModel(item: "blue", type: .color),
-    ChoiceModel(item: "purple", type: .color),
-    ChoiceModel(item: "yellow", type: .color),
-    ChoiceModel(item: "green", type: .color),
-    ChoiceModel(item: "red", type: .color),
+    ChoiceModel(value: "pink", type: .color),
+    ChoiceModel(value: "blue", type: .color),
+    ChoiceModel(value: "purple", type: .color),
+    ChoiceModel(value: "yellow", type: .color),
+    ChoiceModel(value: "green", type: .color),
+    ChoiceModel(value: "red", type: .color),
 ]
 
 private let choicesStep2 = [
-    ChoiceModel(item: "pink", type: .color),
-    ChoiceModel(item: "blue", type: .color),
-    ChoiceModel(item: "purple", type: .color),
-    ChoiceModel(item: "yellow", type: .color),
-    ChoiceModel(item: "green", type: .color),
-    ChoiceModel(item: "red", type: .color),
+    ChoiceModel(value: "pink", type: .color),
+    ChoiceModel(value: "blue", type: .color),
+    ChoiceModel(value: "purple", type: .color),
+    ChoiceModel(value: "yellow", type: .color),
+    ChoiceModel(value: "green", type: .color),
+    ChoiceModel(value: "red", type: .color),
 ]
 
 private let choicesStep3 = [
-    ChoiceModel(item: "pink", type: .color),
-    ChoiceModel(item: "blue", type: .color),
-    ChoiceModel(item: "purple", type: .color),
-    ChoiceModel(item: "yellow", type: .color),
-    ChoiceModel(item: "green", type: .color),
-    ChoiceModel(item: "red", type: .color),
+    ChoiceModel(value: "pink", type: .color),
+    ChoiceModel(value: "blue", type: .color),
+    ChoiceModel(value: "purple", type: .color),
+    ChoiceModel(value: "yellow", type: .color),
+    ChoiceModel(value: "green", type: .color),
+    ChoiceModel(value: "red", type: .color),
 ]
 
 private let choicesStep4 = [
-    ChoiceModel(item: "pink", type: .color),
-    ChoiceModel(item: "blue", type: .color),
-    ChoiceModel(item: "purple", type: .color),
-    ChoiceModel(item: "yellow", type: .color),
-    ChoiceModel(item: "green", type: .color),
-    ChoiceModel(item: "red", type: .color),
+    ChoiceModel(value: "pink", type: .color),
+    ChoiceModel(value: "blue", type: .color),
+    ChoiceModel(value: "purple", type: .color),
+    ChoiceModel(value: "yellow", type: .color),
+    ChoiceModel(value: "green", type: .color),
+    ChoiceModel(value: "red", type: .color),
 ]
 
 private let choicesStep5 = [
-    ChoiceModel(item: "pink", type: .color),
-    ChoiceModel(item: "blue", type: .color),
-    ChoiceModel(item: "purple", type: .color),
-    ChoiceModel(item: "yellow", type: .color),
-    ChoiceModel(item: "green", type: .color),
-    ChoiceModel(item: "red", type: .color),
+    ChoiceModel(value: "pink", type: .color),
+    ChoiceModel(value: "blue", type: .color),
+    ChoiceModel(value: "purple", type: .color),
+    ChoiceModel(value: "yellow", type: .color),
+    ChoiceModel(value: "green", type: .color),
+    ChoiceModel(value: "red", type: .color),
 ]
 
 private let choicesStep6 = [
-    ChoiceModel(item: "pink", type: .color),
-    ChoiceModel(item: "blue", type: .color),
-    ChoiceModel(item: "purple", type: .color),
-    ChoiceModel(item: "yellow", type: .color),
-    ChoiceModel(item: "green", type: .color),
-    ChoiceModel(item: "red", type: .color),
+    ChoiceModel(value: "pink", type: .color),
+    ChoiceModel(value: "blue", type: .color),
+    ChoiceModel(value: "purple", type: .color),
+    ChoiceModel(value: "yellow", type: .color),
+    ChoiceModel(value: "green", type: .color),
+    ChoiceModel(value: "red", type: .color),
 ]
 
 private var steps: [StandardStepModel] = [

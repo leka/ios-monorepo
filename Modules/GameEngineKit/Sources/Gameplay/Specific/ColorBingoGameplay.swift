@@ -15,7 +15,7 @@ public class ColorBingoGameplay: ChoiceGameplayProtocol {
 
         // TODO(@ladislas): Show the right answer color on Leka's belt
         let index = self.choices.value.firstIndex(where: { $0.rightAnswer })!
-        let color = self.choices.value[index].item
+        let color = self.choices.value[index].value
         print("Leka is \(color)")
     }
 

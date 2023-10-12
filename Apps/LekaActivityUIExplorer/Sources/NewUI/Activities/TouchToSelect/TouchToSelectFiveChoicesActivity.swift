@@ -7,43 +7,43 @@ import GameEngineKit
 import SwiftUI
 
 private let choicesStep1 = [
-    ChoiceModel(item: "cow", type: .text, rightAnswer: true),
-    ChoiceModel(item: "sheep", type: .text),
-    ChoiceModel(item: "horse", type: .text),
-    ChoiceModel(item: "sheep", type: .text),
-    ChoiceModel(item: "kangaroo", type: .text),
+    ChoiceModel(value: "cow", type: .text, rightAnswer: true),
+    ChoiceModel(value: "sheep", type: .text),
+    ChoiceModel(value: "horse", type: .text),
+    ChoiceModel(value: "sheep", type: .text),
+    ChoiceModel(value: "kangaroo", type: .text),
 ]
 
 private let choicesStep2 = [
-    ChoiceModel(item: "cat", type: .text),
-    ChoiceModel(item: "frog", type: .text),
-    ChoiceModel(item: "chinchilla", type: .text, rightAnswer: true),
-    ChoiceModel(item: "bird", type: .text),
-    ChoiceModel(item: "horse", type: .text),
+    ChoiceModel(value: "cat", type: .text),
+    ChoiceModel(value: "frog", type: .text),
+    ChoiceModel(value: "chinchilla", type: .text, rightAnswer: true),
+    ChoiceModel(value: "bird", type: .text),
+    ChoiceModel(value: "horse", type: .text),
 ]
 
 private let choicesStep3 = [
-    ChoiceModel(item: "dog", type: .text, rightAnswer: true),
-    ChoiceModel(item: "sheep", type: .text),
-    ChoiceModel(item: "lama", type: .text),
-    ChoiceModel(item: "cow", type: .text),
-    ChoiceModel(item: "horse", type: .text),
+    ChoiceModel(value: "dog", type: .text, rightAnswer: true),
+    ChoiceModel(value: "sheep", type: .text),
+    ChoiceModel(value: "lama", type: .text),
+    ChoiceModel(value: "cow", type: .text),
+    ChoiceModel(value: "horse", type: .text),
 ]
 
 private let choicesStep4 = [
-    ChoiceModel(item: "frog", type: .text),
-    ChoiceModel(item: "panda", type: .text),
-    ChoiceModel(item: "cow", type: .text),
-    ChoiceModel(item: "sheep", type: .text, rightAnswer: true),
-    ChoiceModel(item: "horse", type: .text),
+    ChoiceModel(value: "frog", type: .text),
+    ChoiceModel(value: "panda", type: .text),
+    ChoiceModel(value: "cow", type: .text),
+    ChoiceModel(value: "sheep", type: .text, rightAnswer: true),
+    ChoiceModel(value: "horse", type: .text),
 ]
 
 private let choicesStep5 = [
-    ChoiceModel(item: "lama", type: .text),
-    ChoiceModel(item: "horse", type: .text),
-    ChoiceModel(item: "cow", type: .text),
-    ChoiceModel(item: "sheep", type: .text, rightAnswer: true),
-    ChoiceModel(item: "horse", type: .text),
+    ChoiceModel(value: "lama", type: .text),
+    ChoiceModel(value: "horse", type: .text),
+    ChoiceModel(value: "cow", type: .text),
+    ChoiceModel(value: "sheep", type: .text, rightAnswer: true),
+    ChoiceModel(value: "horse", type: .text),
 ]
 
 private var steps: [StandardStepModel] = [

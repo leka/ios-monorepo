@@ -6,13 +6,13 @@ import GameEngineKit
 import SwiftUI
 
 private let choicesStep1 = [
-    ChoiceModel(item: "red", type: .color),
-    ChoiceModel(item: "green", type: .color),
+    ChoiceModel(value: "red", type: .color),
+    ChoiceModel(value: "green", type: .color),
 ]
 
 private let choicesStep2 = [
-    ChoiceModel(item: "red", type: .color),
-    ChoiceModel(item: "green", type: .color),
+    ChoiceModel(value: "red", type: .color),
+    ChoiceModel(value: "green", type: .color),
 ]
 
 private var steps: [StandardStepModel] = [

@@ -21,7 +21,7 @@ public class SuperSimonGameplay: ChoiceGameplayProtocol {
         for index in 0..<answerIndexOrder.count {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.5 * Double(index)) {
                 let choiceIndex = self.answerIndexOrder[index]
-                let color = self.choices.value[choiceIndex].item
+                let color = self.choices.value[choiceIndex].value
                 print("Leka is \(color)")
             }
         }

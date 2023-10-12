@@ -13,9 +13,9 @@ final class DragAndDropTwoAreasOneOrMoreChoicesScene: DragAndDropBaseScene {
         for dropArea in dropZones {
             let dropAreaNode = SKSpriteNode()
             dropAreaNode.size = dropArea.size
-            dropAreaNode.texture = SKTexture(imageNamed: dropArea.item)
+            dropAreaNode.texture = SKTexture(imageNamed: dropArea.value)
             dropAreaNode.position = CGPoint(x: dropAreaPosition, y: dropArea.size.height / 2)
-            dropAreaNode.name = dropArea.item
+            dropAreaNode.name = dropArea.value
             addChild(dropAreaNode)
 
             dropAreasNode.append(dropAreaNode)

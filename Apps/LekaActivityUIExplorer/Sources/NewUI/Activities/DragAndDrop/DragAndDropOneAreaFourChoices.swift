@@ -6,43 +6,43 @@ import GameEngineKit
 import SwiftUI
 
 private let choicesStep1 = [
-    ChoiceModel(item: "kiwi", type: .image),
-    ChoiceModel(item: "watermelon", type: .image),
-    ChoiceModel(item: "cherry", type: .image),
-    ChoiceModel(item: "banana", type: .image),
+    ChoiceModel(value: "kiwi", type: .image),
+    ChoiceModel(value: "watermelon", type: .image),
+    ChoiceModel(value: "cherry", type: .image),
+    ChoiceModel(value: "banana", type: .image),
 ]
 
 private let choicesStep2 = [
-    ChoiceModel(item: "watermelon", type: .image),
-    ChoiceModel(item: "cherry", type: .image),
-    ChoiceModel(item: "avocado", type: .image),
-    ChoiceModel(item: "banana", type: .image),
+    ChoiceModel(value: "watermelon", type: .image),
+    ChoiceModel(value: "cherry", type: .image),
+    ChoiceModel(value: "avocado", type: .image),
+    ChoiceModel(value: "banana", type: .image),
 ]
 
 private let choicesStep3 = [
-    ChoiceModel(item: "cherry", type: .image),
-    ChoiceModel(item: "avocado", type: .image),
-    ChoiceModel(item: "kiwi", type: .image),
-    ChoiceModel(item: "watermelon", type: .image),
+    ChoiceModel(value: "cherry", type: .image),
+    ChoiceModel(value: "avocado", type: .image),
+    ChoiceModel(value: "kiwi", type: .image),
+    ChoiceModel(value: "watermelon", type: .image),
 ]
 
 private let choicesStep4 = [
-    ChoiceModel(item: "banana", type: .image),
-    ChoiceModel(item: "cherry", type: .image),
-    ChoiceModel(item: "avocado", type: .image),
-    ChoiceModel(item: "kiwi", type: .image),
+    ChoiceModel(value: "banana", type: .image),
+    ChoiceModel(value: "cherry", type: .image),
+    ChoiceModel(value: "avocado", type: .image),
+    ChoiceModel(value: "kiwi", type: .image),
 ]
 
 private let choicesStep5 = [
-    ChoiceModel(item: "watermelon", type: .image),
-    ChoiceModel(item: "cherry", type: .image),
-    ChoiceModel(item: "avocado", type: .image),
-    ChoiceModel(item: "kiwi", type: .image),
+    ChoiceModel(value: "watermelon", type: .image),
+    ChoiceModel(value: "cherry", type: .image),
+    ChoiceModel(value: "avocado", type: .image),
+    ChoiceModel(value: "kiwi", type: .image),
 ]
 
 private let dropZonesStep1 = [
     DragAndDropZoneModel(
-        item: "basket",
+        value: "basket",
         size: CGSize(width: 380, height: 280),
         hints: true,
         choices: [
@@ -52,7 +52,7 @@ private let dropZonesStep1 = [
 
 private let dropZonesStep2 = [
     DragAndDropZoneModel(
-        item: "basket",
+        value: "basket",
         size: CGSize(width: 380, height: 280),
         hints: true,
         choices: [
@@ -62,7 +62,7 @@ private let dropZonesStep2 = [
 
 private let dropZonesStep3 = [
     DragAndDropZoneModel(
-        item: "basket",
+        value: "basket",
         size: CGSize(width: 380, height: 280),
         hints: true,
         choices: [
@@ -72,7 +72,7 @@ private let dropZonesStep3 = [
 
 private let dropZonesStep4 = [
     DragAndDropZoneModel(
-        item: "basket",
+        value: "basket",
         size: CGSize(width: 380, height: 280),
         hints: true,
         choices: [
@@ -82,7 +82,7 @@ private let dropZonesStep4 = [
 
 private let dropZonesStep5 = [
     DragAndDropZoneModel(
-        item: "basket",
+        value: "basket",
         size: CGSize(width: 380, height: 280),
         hints: true,
         choices: [

@@ -46,11 +46,7 @@ class DragAndDropBaseScene: SKScene {
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: {
                 for dropZone in $0 {
-                    print($0.description)
-                    print("\(String(describing: self.playedNode?.name))")
-                    for choice in dropZone.choices where choice.item == self.playedNode?.name {
-                        print("in the loop !!")
-                        if choice.status == .playingRightAnimation {
+                    for choice in dropZone.choices where choice.value == self.playedNode?.name {
                             self.goodAnswerBehavior(self.playedNode!)
                         } else if choice.status == .playingWrongAnimation {
                             self.wrongAnswerBehavior(self.playedNode!)
@@ -110,12 +106,12 @@ class DragAndDropBaseScene: SKScene {
     func getExpectedItems() {
         for dropZone in viewModel.dropZones {
             for choice in dropZone.choices {
-                let expectedItem = choice.item
+                let expectedItem = choice.value
                 let expectedNode = SKSpriteNode()
 
                 guard dropZone.hints else {
                     expectedNode.name = expectedItem
-                    (expectedItemsNodes[dropZone.item, default: []]).append(expectedNode)
+                    (expectedItemsNodes[dropZone.value, default: []]).append(expectedNode)
                     return
                 }
                 let texture = SKTexture(imageNamed: expectedItem)
@@ -125,7 +121,7 @@ class DragAndDropBaseScene: SKScene {
                 expectedNode.texture = texture
                 expectedNode.scaleForMax(sizeOf: biggerSide * 0.8)
                 expectedNode.position = CGPoint(x: dropAreasNode[0].position.x + 80, y: 110)
-                (expectedItemsNodes[dropZone.item, default: []]).append(expectedNode)
+                (expectedItemsNodes[dropZone.value, default: []]).append(expectedNode)
 
                 addChild(expectedNode)
             }
@@ -186,7 +182,7 @@ class DragAndDropBaseScene: SKScene {
         for touch in touches {
             let location = touch.location(in: self)
             if let node = self.atPoint(location) as? DraggableImageAnswerNode {
-                for choice in viewModel.choices where node.name == choice.item && node.isDraggable {
+                for choice in viewModel.choices where node.name == choice.value && node.isDraggable {
                     selectedNodes[touch] = node
                     onDragAnimation(node)
                     node.zPosition += 100
@@ -217,9 +213,8 @@ class DragAndDropBaseScene: SKScene {
             }
             playedNode = selectedNodes[touch]!
             playedNode!.scaleForMax(sizeOf: biggerSide)
-            let choice = viewModel.choices.first(where: { $0.item == playedNode!.name })
+            let choice = viewModel.choices.first(where: { $0.value == playedNode!.name })
             for dropAreaNode in dropAreasNode where playedNode!.fullyContains(bounds: dropAreaNode.frame) {
-                print("touches Ended and fully contains")
                 viewModel.onChoiceTapped(choice: choice!, dropZoneName: dropAreaNode.name!)
                 break
             }

@@ -6,28 +6,28 @@ import GameEngineKit
 import SwiftUI
 
 private let choicesStep1 = [
-    ChoiceModel(item: "watermelon", type: .image, rightAnswer: true)
+    ChoiceModel(value: "watermelon", type: .image)
 ]
 
 private let choicesStep2 = [
-    ChoiceModel(item: "banana", type: .image, rightAnswer: true)
+    ChoiceModel(value: "banana", type: .image)
 ]
 
 private let choicesStep3 = [
-    ChoiceModel(item: "kiwi", type: .image, rightAnswer: true)
+    ChoiceModel(value: "kiwi", type: .image)
 ]
 
 private let choicesStep4 = [
-    ChoiceModel(item: "cherry", type: .image, rightAnswer: true)
+    ChoiceModel(value: "cherry", type: .image)
 ]
 
 private let choicesStep5 = [
-    ChoiceModel(item: "avocado", type: .image, rightAnswer: true)
+    ChoiceModel(value: "avocado", type: .image)
 ]
 
 private let dropZonesStep1 = [
     DragAndDropZoneModel(
-        item: "basket",
+        value: "basket",
         size: CGSize(width: 380, height: 280),
         hints: true,
         choices: [
@@ -37,7 +37,7 @@ private let dropZonesStep1 = [
 
 private let dropZonesStep2 = [
     DragAndDropZoneModel(
-        item: "basket",
+        value: "basket",
         size: CGSize(width: 380, height: 280),
         hints: true,
         choices: [
@@ -47,7 +47,7 @@ private let dropZonesStep2 = [
 
 private let dropZonesStep3 = [
     DragAndDropZoneModel(
-        item: "basket",
+        value: "basket",
         size: CGSize(width: 380, height: 280),
         hints: true,
         choices: [
@@ -57,7 +57,7 @@ private let dropZonesStep3 = [
 
 private let dropZonesStep4 = [
     DragAndDropZoneModel(
-        item: "basket",
+        value: "basket",
         size: CGSize(width: 380, height: 280),
         hints: true,
         choices: [
@@ -67,7 +67,7 @@ private let dropZonesStep4 = [
 
 private let dropZonesStep5 = [
     DragAndDropZoneModel(
-        item: "basket",
+        value: "basket",
         size: CGSize(width: 380, height: 280),
         hints: true,
         choices: [

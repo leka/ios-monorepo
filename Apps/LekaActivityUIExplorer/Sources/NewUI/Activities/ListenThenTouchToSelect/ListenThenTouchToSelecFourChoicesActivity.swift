@@ -6,38 +6,38 @@ import GameEngineKit
 import SwiftUI
 
 private let choiceStep1 = [
-    ChoiceModel(item: "guitar", type: .text, rightAnswer: true),
-    ChoiceModel(item: "xylophone", type: .text),
-    ChoiceModel(item: "flute", type: .text),
-    ChoiceModel(item: "saxophone", type: .text),
+    ChoiceModel(value: "guitar", type: .text, rightAnswer: true),
+    ChoiceModel(value: "xylophone", type: .text),
+    ChoiceModel(value: "flute", type: .text),
+    ChoiceModel(value: "saxophone", type: .text),
 ]
 
 private let choiceStep2 = [
-    ChoiceModel(item: "bass", type: .text),
-    ChoiceModel(item: "harmonica", type: .text),
-    ChoiceModel(item: "violin", type: .text),
-    ChoiceModel(item: "guitar", type: .text, rightAnswer: true),
+    ChoiceModel(value: "bass", type: .text),
+    ChoiceModel(value: "harmonica", type: .text),
+    ChoiceModel(value: "violin", type: .text),
+    ChoiceModel(value: "guitar", type: .text, rightAnswer: true),
 ]
 
 private let choiceStep3 = [
-    ChoiceModel(item: "flute", type: .text),
-    ChoiceModel(item: "piano", type: .text),
-    ChoiceModel(item: "guitar", type: .text, rightAnswer: true),
-    ChoiceModel(item: "clarinet", type: .text),
+    ChoiceModel(value: "flute", type: .text),
+    ChoiceModel(value: "piano", type: .text),
+    ChoiceModel(value: "guitar", type: .text, rightAnswer: true),
+    ChoiceModel(value: "clarinet", type: .text),
 ]
 
 private let choiceStep4 = [
-    ChoiceModel(item: "violin", type: .text),
-    ChoiceModel(item: "guitar", type: .text, rightAnswer: true),
-    ChoiceModel(item: "piano", type: .text),
-    ChoiceModel(item: "harmonica", type: .text),
+    ChoiceModel(value: "violin", type: .text),
+    ChoiceModel(value: "guitar", type: .text, rightAnswer: true),
+    ChoiceModel(value: "piano", type: .text),
+    ChoiceModel(value: "harmonica", type: .text),
 ]
 
 private let choiceStep5 = [
-    ChoiceModel(item: "guitar", type: .text, rightAnswer: true),
-    ChoiceModel(item: "trumpet", type: .text),
-    ChoiceModel(item: "piano", type: .text),
-    ChoiceModel(item: "battery", type: .text),
+    ChoiceModel(value: "guitar", type: .text, rightAnswer: true),
+    ChoiceModel(value: "trumpet", type: .text),
+    ChoiceModel(value: "piano", type: .text),
+    ChoiceModel(value: "battery", type: .text),
 ]
 
 private var steps: [StandardStepModel] = [

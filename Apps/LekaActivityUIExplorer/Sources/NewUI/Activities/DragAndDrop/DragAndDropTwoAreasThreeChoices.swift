@@ -6,38 +6,38 @@ import GameEngineKit
 import SwiftUI
 
 private let choicesStep1 = [
-    ChoiceModel(item: "banana", type: .image, rightAnswer: true),
-    ChoiceModel(item: "cherry", type: .image),
-    ChoiceModel(item: "watermelon", type: .image),
+    ChoiceModel(value: "banana", type: .image, rightAnswer: true),
+    ChoiceModel(value: "cherry", type: .image),
+    ChoiceModel(value: "watermelon", type: .image),
 ]
 
 private let choicesStep2 = [
-    ChoiceModel(item: "cherry", type: .image),
-    ChoiceModel(item: "avocado", type: .image),
-    ChoiceModel(item: "banana", type: .image, rightAnswer: true),
+    ChoiceModel(value: "cherry", type: .image),
+    ChoiceModel(value: "avocado", type: .image),
+    ChoiceModel(value: "banana", type: .image, rightAnswer: true),
 ]
 
 private let choicesStep3 = [
-    ChoiceModel(item: "avocado", type: .image),
-    ChoiceModel(item: "kiwi", type: .image, rightAnswer: true),
-    ChoiceModel(item: "watermelon", type: .image),
+    ChoiceModel(value: "avocado", type: .image),
+    ChoiceModel(value: "kiwi", type: .image, rightAnswer: true),
+    ChoiceModel(value: "watermelon", type: .image),
 ]
 
 private let choicesStep4 = [
-    ChoiceModel(item: "banana", type: .image),
-    ChoiceModel(item: "cherry", type: .image, rightAnswer: true),
-    ChoiceModel(item: "avocado", type: .image),
+    ChoiceModel(value: "banana", type: .image),
+    ChoiceModel(value: "cherry", type: .image, rightAnswer: true),
+    ChoiceModel(value: "avocado", type: .image),
 ]
 
 private let choicesStep5 = [
-    ChoiceModel(item: "cherry", type: .image),
-    ChoiceModel(item: "avocado", type: .image, rightAnswer: true),
-    ChoiceModel(item: "kiwi", type: .image),
+    ChoiceModel(value: "cherry", type: .image),
+    ChoiceModel(value: "avocado", type: .image, rightAnswer: true),
+    ChoiceModel(value: "kiwi", type: .image),
 ]
 
 private let dropZonesStep1 = [
     DragAndDropZoneModel(
-        item: "kitchen_asset_1",
+        value: "kitchen_asset_1",
         size: CGSize(width: 380, height: 280),
         hints: false,
         choices: [
@@ -45,7 +45,7 @@ private let dropZonesStep1 = [
             choicesStep1[0],
         ]),
     DragAndDropZoneModel(
-        item: "bathroom_asset_1",
+        value: "bathroom_asset_1",
         size: CGSize(width: 380, height: 280),
         hints: false,
         choices: [
@@ -55,14 +55,14 @@ private let dropZonesStep1 = [
 
 private let dropZonesStep2 = [
     DragAndDropZoneModel(
-        item: "bathroom_asset_1",
+        value: "bathroom_asset_1",
         size: CGSize(width: 380, height: 280),
         hints: false,
         choices: [
             choicesStep2[1]
         ]),
     DragAndDropZoneModel(
-        item: "kitchen_asset_1",
+        value: "kitchen_asset_1",
         size: CGSize(width: 380, height: 280),
         hints: false,
         choices: [
@@ -73,14 +73,14 @@ private let dropZonesStep2 = [
 
 private let dropZonesStep3 = [
     DragAndDropZoneModel(
-        item: "kitchen_asset_1",
+        value: "kitchen_asset_1",
         size: CGSize(width: 380, height: 280),
         hints: false,
         choices: [
             choicesStep3[0]
         ]),
     DragAndDropZoneModel(
-        item: "bathroom_asset_1",
+        value: "bathroom_asset_1",
         size: CGSize(width: 380, height: 280),
         hints: false,
         choices: [
@@ -91,7 +91,7 @@ private let dropZonesStep3 = [
 
 private let dropZonesStep4 = [
     DragAndDropZoneModel(
-        item: "kitchen_asset_1",
+        value: "kitchen_asset_1",
         size: CGSize(width: 380, height: 280),
         hints: false,
         choices: [
@@ -99,7 +99,7 @@ private let dropZonesStep4 = [
             choicesStep4[0],
         ]),
     DragAndDropZoneModel(
-        item: "bathroom_asset_1",
+        value: "bathroom_asset_1",
         size: CGSize(width: 380, height: 280),
         hints: false,
         choices: [
@@ -109,7 +109,7 @@ private let dropZonesStep4 = [
 
 private let dropZonesStep5 = [
     DragAndDropZoneModel(
-        item: "kitchen_asset_1",
+        value: "kitchen_asset_1",
         size: CGSize(width: 380, height: 280),
         hints: false,
         choices: [
@@ -117,7 +117,7 @@ private let dropZonesStep5 = [
             choicesStep5[1],
         ]),
     DragAndDropZoneModel(
-        item: "bathroom_asset_1",
+        value: "bathroom_asset_1",
         size: CGSize(width: 380, height: 280),
         hints: false,
         choices: [

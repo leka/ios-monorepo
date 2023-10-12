@@ -6,13 +6,13 @@ import SwiftUI
 
 public struct DragAndDropZoneModel: ChoiceModelProtocol {
     public let id: UUID = UUID()
-    public let item: String
+    public let value: String
     public let size: CGSize
     public let hints: Bool
     public var choices: [ChoiceModel]
 
-    public init(item: String, size: CGSize, hints: Bool, choices: [ChoiceModel]) {
-        self.item = item
+    public init(value: String, size: CGSize, hints: Bool, choices: [ChoiceModel]) {
+        self.value = value
         self.size = size
         self.hints = hints
         self.choices = choices

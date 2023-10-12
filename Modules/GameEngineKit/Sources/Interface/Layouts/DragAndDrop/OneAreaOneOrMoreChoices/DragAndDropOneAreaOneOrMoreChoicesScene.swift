@@ -10,9 +10,9 @@ final class DragAndDropOneAreaOneOrMoreChoicesScene: DragAndDropBaseScene {
     override func layoutDropAreas(dropZones: [DragAndDropZoneModel]) {
         let dropAreaNode = SKSpriteNode()
         dropAreaNode.size = dropZones[0].size
-        dropAreaNode.texture = SKTexture(imageNamed: dropZones[0].item)
+        dropAreaNode.texture = SKTexture(imageNamed: dropZones[0].value)
         dropAreaNode.position = CGPoint(x: size.width / 2, y: dropZones[0].size.height / 2)
-        dropAreaNode.name = dropZones[0].item
+        dropAreaNode.name = dropZones[0].value
         addChild(dropAreaNode)
 
         dropAreasNode.append(dropAreaNode)

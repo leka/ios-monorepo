@@ -19,7 +19,7 @@ public class GameplayDragAndDropOneAnswerOnTheRightZone: DragAndDropGameplayProt
     }
 
     public func process(choice: ChoiceModel, dropZoneName: String) {
-        if let dropZoneIndex = dropZones.value.firstIndex(where: { $0.item == dropZoneName }) {
+        if let dropZoneIndex = dropZones.value.firstIndex(where: { $0.value == dropZoneName }) {
             if let rightDropChoiceindex = dropZones.value[dropZoneIndex].choices
                 .firstIndex(where: { $0.id == choice.id })
             {
