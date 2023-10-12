@@ -7,7 +7,7 @@ import SwiftUI
 
 public class StepViewViewModel: ObservableObject {
     @Published var currentInterface: InterfaceType
-    @Published var currentGameplay: any GameplayProtocol
+    @Published var currentGameplay: any BaseGameplayProtocol
     @Published var currentIndex: Int
     @Published var state: GameplayState = .idle
 
@@ -57,6 +57,10 @@ public class StepViewViewModel: ObservableObject {
             case .dragAndDropOneAnswerOnTheRightZone:
                 let dropZoneStepModel = stepModel as! DragAndDropZoneStepModel
                 return GameplayDragAndDropOneAnswerOnTheRightZone(
+                    choices: dropZoneStepModel.choices, dropZones: dropZoneStepModel.dropZones)
+            case .dragAndDropAllAnswersOnTheRightZone:
+                let dropZoneStepModel = stepModel as! DragAndDropZoneStepModel
+                return GameplayDragAndDropAllAnswersOnTheRightZone(
                     choices: dropZoneStepModel.choices, dropZones: dropZoneStepModel.dropZones)
         }
     }

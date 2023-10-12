@@ -12,6 +12,7 @@ public enum GameplayType {
     case colorBingo
     case superSimon([Int])
     case dragAndDropOneAnswerOnTheRightZone
+    case dragAndDropAllAnswersOnTheRightZone
 }
 
 public enum InterfaceType {
@@ -31,6 +32,7 @@ public enum InterfaceType {
     case listenFourChoices(AudioRecordingModel)
     case listenSixChoices(AudioRecordingModel)
     case dragAndDropOneAreaOneOrMoreChoices
+    case dragAndDropTwoAreasOneOrMoreChoices
 }
 
 public protocol StepModelProtocol {
