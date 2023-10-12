@@ -48,21 +48,21 @@ struct RobotControlView: View {
                         .font(.title)
                     HStack {
                         RobotControlActionButton(title: "Individual LEDs", image: "light.max", tint: .orange) {
-                            robot.shine(.spot(.belt, ids: [0, 4, 8, 10, 12]), color: .red)
+                            robot.shine(.spot(.belt, ids: [0, 4, 8, 10, 12], in: .red))
                         }
                         RobotControlActionButton(title: "Quarters", image: "light.max", tint: .green) {
-                            robot.shine(.quarterFrontLeft, color: .blue)
-                            robot.shine(.quarterFrontRight, color: .red)
-                            robot.shine(.quarterBackLeft, color: .red)
-                            robot.shine(.quarterBackRight, color: .blue)
+                            robot.shine(.quarterFrontLeft(in: .blue))
+                            robot.shine(.quarterFrontRight(in: .red))
+                            robot.shine(.quarterBackLeft(in: .red))
+                            robot.shine(.quarterBackRight(in: .blue))
                         }
                         RobotControlActionButton(title: "Halves", image: "light.max", tint: .indigo) {
-                            robot.shine(.halfRight, color: .green)
-                            robot.shine(.halfLeft, color: .red)
+                            robot.shine(.halfRight(in: .green))
+                            robot.shine(.halfLeft(in: .red))
                         }
                         RobotControlActionButton(title: "Full belt + ears", image: "light.max", tint: .teal) {
-                            robot.shine(.full(.belt), color: .blue)
-                            robot.shine(.full(.ears), color: .green)
+                            robot.shine(.full(.belt, in: .blue))
+                            robot.shine(.full(.ears, in: .green))
                         }
                         RobotControlActionButton(title: "Turn off lights", image: "xmark", tint: .red) {
                             robot.stopLights()

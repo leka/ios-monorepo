@@ -32,95 +32,112 @@ extension Robot {
             }
         }
 
-        case all
+        public enum Blacken {
+            case all
+            case full(_ position: Full.Position)
+            case halfLeft
+            case halfRight
+            case quarterFrontLeft
+            case quarterFrontRight
+            case quarterBackLeft
+            case quarterBackRight
 
-        case full(_ position: Full.Position)
+            case earLeft
+            case earRight
 
-        case halfLeft
-        case halfRight
-        case quarterFrontLeft
-        case quarterFrontRight
-        case quarterBackLeft
-        case quarterBackRight
-
-        case earLeft
-        case earRight
-
-        case spot(Spot.Position, ids: [UInt8])
-        case range(start: UInt8, end: UInt8)
-
-        static func spot(on position: Spot.Position, ids: UInt8...) -> Self {
-            .spot(position, ids: ids)
+            case spot(Spot.Position, ids: [UInt8])
+            case range(start: UInt8, end: UInt8)
         }
 
-        static func range(startId: UInt8, endId: UInt8) -> Self {
-            .range(start: startId, end: endId)
+        case all(in: Color)
+
+        case full(_ position: Full.Position, in: Color)
+
+        case halfLeft(in: Color)
+        case halfRight(in: Color)
+        case quarterFrontLeft(in: Color)
+        case quarterFrontRight(in: Color)
+        case quarterBackLeft(in: Color)
+        case quarterBackRight(in: Color)
+
+        case earLeft(in: Color)
+        case earRight(in: Color)
+
+        case spot(Spot.Position, ids: [UInt8], in: Color)
+        case range(start: UInt8, end: UInt8, in: Color)
+
+        static func spot(on position: Spot.Position, ids: UInt8..., in color: Color) -> Self {
+            .spot(position, ids: ids, in: color)
         }
 
-        func cmd(color: Color) -> [[UInt8]] {
+        static func range(startId: UInt8, endId: UInt8, in color: Color) -> Self {
+            .range(start: startId, end: endId, in: color)
+        }
+
+        var cmd: [[UInt8]] {
             var output: [[UInt8]] = [[]]
 
             switch self {
-                case .all:
+                case .all(let color):
                     let ears = shineFull(.ears, in: color)
                     let belt = shineFull(.belt, in: color)
                     output.append(contentsOf: [ears, belt])
 
-                case .spot(_: let position, let ids):
+                case .spot(_: let position, let ids, let color):
                     for id in ids {
                         let payload = shineSpot(id, on: position, in: color)
                         output.append(payload)
                     }
 
-                case .full(let position):
+                case .full(let position, let color):
                     let payload = shineFull(position, in: color)
                     output.append(payload)
 
-                case .range(let start, let end):
+                case .range(let start, let end, let color):
                     let payload = shineRange(from: start, to: end, in: color)
                     output.append(payload)
 
-                case .halfLeft:
+                case .halfLeft(let color):
                     let start: UInt8 = 0
                     let end: UInt8 = 9
                     let payload = shineRange(from: start, to: end, in: color)
                     output.append(payload)
 
-                case .halfRight:
+                case .halfRight(let color):
                     let start: UInt8 = 10
                     let end: UInt8 = 19
                     let payload = shineRange(from: start, to: end, in: color)
                     output.append(payload)
 
-                case .quarterFrontLeft:
+                case .quarterFrontLeft(let color):
                     let start: UInt8 = 0
                     let end: UInt8 = 4
                     let payload = shineRange(from: start, to: end, in: color)
                     output.append(payload)
 
-                case .quarterFrontRight:
+                case .quarterFrontRight(let color):
                     let start: UInt8 = 15
                     let end: UInt8 = 19
                     let payload = shineRange(from: start, to: end, in: color)
                     output.append(payload)
 
-                case .quarterBackLeft:
+                case .quarterBackLeft(let color):
                     let start: UInt8 = 5
                     let end: UInt8 = 9
                     let payload = shineRange(from: start, to: end, in: color)
                     output.append(payload)
 
-                case .quarterBackRight:
+                case .quarterBackRight(let color):
                     let start: UInt8 = 10
                     let end: UInt8 = 14
                     let payload = shineRange(from: start, to: end, in: color)
                     output.append(payload)
 
-                case .earLeft:
+                case .earLeft(let color):
                     let payload = shineSpot(0, on: .ears, in: color)
                     output.append(payload)
 
-                case .earRight:
+                case .earRight(let color):
                     let payload = shineSpot(1, on: .ears, in: color)
                     output.append(payload)
 
@@ -179,26 +196,48 @@ extension Robot {
 
     }
 
-    public func shine(_ lights: Lights, color: Color) {
-        print("🤖 SHINE \(lights) in \(color)")
+    public func shine(_ lights: Lights) {
+        print("🤖 SHINE \(lights)")
 
-        let output = commandGenerator(commands: lights.cmd(color: color))
+        let output = commandGenerator(commands: lights.cmd)
 
         connectedPeripheral?
             .sendCommand(output)
-
-        // TODO(@ladislas): remove when done
-        dump(output)
     }
 
-    public func blacken(_ lights: Lights) {
+    public func blacken(_ lights: Lights.Blacken) {
         print("🤖 BLACKEN \(lights)")
-        shine(lights, color: .black)
+        switch lights {
+            case .all:
+                shine(.all(in: .black))
+            case .full(let position):
+                shine(.full(position, in: .black))
+            case .halfLeft:
+                shine(.halfLeft(in: .black))
+            case .halfRight:
+                shine(.halfRight(in: .black))
+            case .quarterFrontLeft:
+                shine(.quarterFrontLeft(in: .black))
+            case .quarterFrontRight:
+                shine(.quarterFrontRight(in: .black))
+            case .quarterBackLeft:
+                shine(.quarterBackLeft(in: .black))
+            case .quarterBackRight:
+                shine(.quarterBackRight(in: .black))
+            case .earLeft:
+                shine(.earLeft(in: .black))
+            case .earRight:
+                shine(.earRight(in: .black))
+            case .spot(let postion, let ids):
+                shine(.spot(postion, ids: ids, in: .black))
+            case .range(let start, let end):
+                shine(.range(start: start, end: end, in: .black))
+        }
     }
 
     public func stopLights() {
         print("🤖 STOP 🛑 - Lights")
-        shine(.all, color: .black)
+        shine(.all(in: .black))
     }
 
 }
