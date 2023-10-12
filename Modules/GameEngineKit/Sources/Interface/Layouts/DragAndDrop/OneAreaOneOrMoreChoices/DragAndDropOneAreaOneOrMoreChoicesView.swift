@@ -5,14 +5,12 @@
 import SpriteKit
 import SwiftUI
 
-public struct DragAndDropOneAreaOneChoiceView: View {
-    @StateObject private var viewModel: GenericViewModel
+public struct DragAndDropOneAreaOneOrMoreChoicesView: View {
+    @StateObject private var viewModel: DropZoneViewModel
     @State private var scene: SKScene = SKScene()
-    var dropArea: DropAreaModel
 
-    public init(gameplay: any GameplayProtocol, dropArea: DropAreaModel) {
-        self._viewModel = StateObject(wrappedValue: GenericViewModel(gameplay: gameplay))
-        self.dropArea = dropArea
+    public init(gameplay: any DragAndDropGameplayProtocol) {
+        self._viewModel = StateObject(wrappedValue: DropZoneViewModel(gameplay: gameplay))
     }
 
     public var body: some View {
@@ -23,7 +21,7 @@ public struct DragAndDropOneAreaOneChoiceView: View {
             )
             .frame(width: proxy.size.width, height: proxy.size.height)
             .onAppear {
-                scene = DragAndDropOneAreaOneChoiceScene(viewModel: viewModel, dropArea: dropArea)
+                scene = DragAndDropOneAreaOneOrMoreChoicesScene(viewModel: viewModel)
             }
         }
         .edgesIgnoringSafeArea(.horizontal)
@@ -35,7 +33,6 @@ public struct DragAndDropOneAreaOneChoiceView: View {
         }
         finalScene.size = CGSize(width: size.width, height: size.height)
         finalScene.viewModel = viewModel
-        finalScene.dropAreas = [dropArea]
         return finalScene
     }
 }

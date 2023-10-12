@@ -6,32 +6,37 @@ import GameEngineKit
 import SwiftUI
 
 private let choicesStep1 = [
-    ChoiceModel(item: "watermelon", type: .image, rightAnswer: true)
+    ChoiceModel(item: "watermelon", type: .image, rightAnswer: true),
+    ChoiceModel(item: "banana", type: .image),
 ]
 
 private let choicesStep2 = [
-    ChoiceModel(item: "banana", type: .image, rightAnswer: true)
+    ChoiceModel(item: "cherry", type: .image),
+    ChoiceModel(item: "banana", type: .image, rightAnswer: true),
 ]
 
 private let choicesStep3 = [
-    ChoiceModel(item: "kiwi", type: .image, rightAnswer: true)
+    ChoiceModel(item: "kiwi", type: .image, rightAnswer: true),
+    ChoiceModel(item: "watermelon", type: .image),
 ]
 
 private let choicesStep4 = [
-    ChoiceModel(item: "cherry", type: .image, rightAnswer: true)
+    ChoiceModel(item: "cherry", type: .image, rightAnswer: true),
+    ChoiceModel(item: "avocado", type: .image),
 ]
 
 private let choicesStep5 = [
-    ChoiceModel(item: "avocado", type: .image, rightAnswer: true)
+    ChoiceModel(item: "avocado", type: .image, rightAnswer: true),
+    ChoiceModel(item: "kiwi", type: .image),
 ]
 
 private let dropZonesStep1 = [
     DragAndDropZoneModel(
         item: "basket",
         size: CGSize(width: 380, height: 280),
-        hints: true,
+        hints: false,
         choices: [
-            choicesStep1[0]
+            choicesStep1[1]
         ])
 ]
 
@@ -39,7 +44,7 @@ private let dropZonesStep2 = [
     DragAndDropZoneModel(
         item: "basket",
         size: CGSize(width: 380, height: 280),
-        hints: true,
+        hints: false,
         choices: [
             choicesStep2[0]
         ])
@@ -49,7 +54,7 @@ private let dropZonesStep3 = [
     DragAndDropZoneModel(
         item: "basket",
         size: CGSize(width: 380, height: 280),
-        hints: true,
+        hints: false,
         choices: [
             choicesStep3[0]
         ])
@@ -59,9 +64,9 @@ private let dropZonesStep4 = [
     DragAndDropZoneModel(
         item: "basket",
         size: CGSize(width: 380, height: 280),
-        hints: true,
+        hints: false,
         choices: [
-            choicesStep4[0]
+            choicesStep4[1]
         ])
 ]
 
@@ -69,7 +74,7 @@ private let dropZonesStep5 = [
     DragAndDropZoneModel(
         item: "basket",
         size: CGSize(width: 380, height: 280),
-        hints: true,
+        hints: false,
         choices: [
             choicesStep5[0]
         ])
@@ -93,7 +98,7 @@ private var steps: [DragAndDropZoneStepModel] = [
         interface: .dragAndDropOneAreaOneOrMoreChoices),
 ]
 
-struct DragAndDropOneAreaOneChoiceActivity: View {
+struct DragAndDropOneAreaTwoChoicesActivity: View {
     private var stepManager = StepManager(steps: steps)
 
     var body: some View {
@@ -101,9 +106,9 @@ struct DragAndDropOneAreaOneChoiceActivity: View {
     }
 }
 
-struct DragAndDropOneAreaOneChoiceActivity_Previews: PreviewProvider {
+struct DragAndDropOneAreaTwoChoicesActivity_Previews: PreviewProvider {
     static var previews: some View {
-        DragAndDropOneAreaOneChoiceActivity()
+        DragAndDropOneAreaTwoChoicesActivity()
             .previewInterfaceOrientation(.landscapeLeft)
     }
 }

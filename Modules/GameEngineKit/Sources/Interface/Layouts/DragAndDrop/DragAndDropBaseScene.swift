@@ -7,8 +7,7 @@ import SpriteKit
 import SwiftUI
 
 class DragAndDropBaseScene: SKScene {
-    var viewModel: GenericViewModel
-    var dropAreas: [DropAreaModel]
+    var viewModel: DropZoneViewModel
     var biggerSide: CGFloat = 130
     var selectedNodes: [UITouch: DraggableImageAnswerNode] = [:]
     var playedNode: DraggableImageAnswerNode?
@@ -18,45 +17,51 @@ class DragAndDropBaseScene: SKScene {
     private var expectedItemsNodes: [String: [SKSpriteNode]] = [:]
     private var cancellables: Set<AnyCancellable> = []
 
-    init(viewModel: GenericViewModel, dropAreas: DropAreaModel...) {
+    init(viewModel: DropZoneViewModel) {
         self.viewModel = viewModel
-        self.dropAreas = dropAreas
         super.init(size: CGSize.zero)
         self.spacer = size.width / CGFloat(viewModel.choices.count + 1)
         self.defaultPosition = CGPoint(x: spacer, y: self.size.height)
+
+        subscribeToChoicesUpdates()
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     func reset() {
         self.backgroundColor = .clear
         self.removeAllChildren()
         self.removeAllActions()
 
         setFirstAnswerPosition()
-        layoutDropAreas()
+        layoutDropAreas(dropZones: viewModel.dropZones)
         getExpectedItems()
-        makeAnswers()
+        layoutAnswers()
     }
 
     func subscribeToChoicesUpdates() {
-        self.viewModel.$choices
+        self.viewModel.$dropZones
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: {
-                for choice in $0 where choice.item == self.playedNode?.name {
-                    if choice.status == .playingRightAnimation {
-                        self.goodAnswerBehavior(self.playedNode!)
-                    } else if choice.status == .playingWrongAnimation {
-                        self.wrongAnswerBehavior(self.playedNode!)
+                for dropZone in $0 {
+                    print($0.description)
+                    print("\(String(describing: self.playedNode?.name))")
+                    for choice in dropZone.choices where choice.item == self.playedNode?.name {
+                        print("in the loop !!")
+                        if choice.status == .playingRightAnimation {
+                            self.goodAnswerBehavior(self.playedNode!)
+                        } else if choice.status == .playingWrongAnimation {
+                            self.wrongAnswerBehavior(self.playedNode!)
+                        }
                     }
                 }
             })
             .store(in: &cancellables)
     }
 
-    @MainActor func makeAnswers() {
+    @MainActor func layoutAnswers() {
         for choice in viewModel.choices {
             let draggableImageAnswerNode = DraggableImageAnswerNode(
                 choice: choice,
@@ -98,39 +103,32 @@ class DragAndDropBaseScene: SKScene {
         self.defaultPosition.x += spacer
     }
 
-    func layoutDropAreas() {
-        for dropArea in dropAreas {
-            let dropAreaNode = SKSpriteNode()
-            dropAreaNode.size = dropArea.size
-            dropAreaNode.texture = SKTexture(imageNamed: dropArea.file)
-            dropAreaNode.position = CGPoint(x: size.width / CGFloat(dropAreas.count + 1), y: dropArea.size.height / 2)
-            dropAreaNode.name = dropArea.file
-            addChild(dropAreaNode)
-
-            dropAreasNode.append(dropAreaNode)
-        }
+    func layoutDropAreas(dropZones: [DragAndDropZoneModel]) {
+        // To specify in final classes
     }
 
     func getExpectedItems() {
-        for choice in viewModel.choices where choice.rightAnswer {
-            let expectedItem = choice.item
-            let expectedNode = SKSpriteNode()
+        for dropZone in viewModel.dropZones {
+            for choice in dropZone.choices {
+                let expectedItem = choice.item
+                let expectedNode = SKSpriteNode()
 
-            guard dropAreas[0].hints else {
+                guard dropZone.hints else {
+                    expectedNode.name = expectedItem
+                    (expectedItemsNodes[dropZone.item, default: []]).append(expectedNode)
+                    return
+                }
+                let texture = SKTexture(imageNamed: expectedItem)
+                let action = SKAction.setTexture(texture, resize: true)
+                expectedNode.run(action)
                 expectedNode.name = expectedItem
-                (expectedItemsNodes[dropAreas[0].file, default: []]).append(expectedNode)
-                return
-            }
-            let texture = SKTexture(imageNamed: expectedItem)
-            let action = SKAction.setTexture(texture, resize: true)
-            expectedNode.run(action)
-            expectedNode.name = expectedItem
-            expectedNode.texture = texture
-            expectedNode.scaleForMax(sizeOf: biggerSide * 0.8)
-            expectedNode.position = CGPoint(x: dropAreasNode[0].position.x + 80, y: 110)
-            (expectedItemsNodes[dropAreas[0].file, default: []]).append(expectedNode)
+                expectedNode.texture = texture
+                expectedNode.scaleForMax(sizeOf: biggerSide * 0.8)
+                expectedNode.position = CGPoint(x: dropAreasNode[0].position.x + 80, y: 110)
+                (expectedItemsNodes[dropZone.item, default: []]).append(expectedNode)
 
-            addChild(expectedNode)
+                addChild(expectedNode)
+            }
         }
     }
 
@@ -177,5 +175,56 @@ class DragAndDropBaseScene: SKScene {
         node.zRotation = 0
         node.removeAllActions()
         selectedNodes = [:]
+    }
+
+    override func didMove(to view: SKView) {
+        self.reset()
+    }
+
+    // overriden Touches states
+    override func touchesBegan(_ touches: Set<UITouch>, with: UIEvent?) {
+        for touch in touches {
+            let location = touch.location(in: self)
+            if let node = self.atPoint(location) as? DraggableImageAnswerNode {
+                for choice in viewModel.choices where node.name == choice.item && node.isDraggable {
+                    selectedNodes[touch] = node
+                    onDragAnimation(node)
+                    node.zPosition += 100
+                }
+            }
+        }
+    }
+
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for touch in touches {
+            let location = touch.location(in: self)
+            if let node = selectedNodes[touch] {
+                let bounds: CGRect = self.view!.bounds
+                if node.fullyContains(location: location, bounds: bounds) {
+                    node.run(SKAction.move(to: location, duration: 0.05).moveAnimation(.linear))
+                    node.position = location
+                } else {
+                    self.touchesEnded(touches, with: event)
+                }
+            }
+        }
+    }
+
+    override func touchesEnded(_ touches: Set<UITouch>, with: UIEvent?) {
+        for touch in touches {
+            guard selectedNodes.keys.contains(touch) else {
+                break
+            }
+            playedNode = selectedNodes[touch]!
+            playedNode!.scaleForMax(sizeOf: biggerSide)
+            let choice = viewModel.choices.first(where: { $0.item == playedNode!.name })
+            for dropAreaNode in dropAreasNode where playedNode!.fullyContains(bounds: dropAreaNode.frame) {
+                print("touches Ended and fully contains")
+                viewModel.onChoiceTapped(choice: choice!, dropZoneName: dropAreaNode.name!)
+                break
+            }
+
+            wrongAnswerBehavior(playedNode!)
+        }
     }
 }

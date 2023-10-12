@@ -54,6 +54,10 @@ public class StepViewViewModel: ObservableObject {
                 return ColorBingoGameplay(choices: stepModel.choices)
             case .superSimon(let answerIndexOrder):
                 return SuperSimonGameplay(choices: stepModel.choices, answerIndexOrder: answerIndexOrder)
+            case .dragAndDropOneAnswerOnTheRightZone:
+                let dropZoneStepModel = stepModel as! DragAndDropZoneStepModel
+                return GameplayDragAndDropOneAnswerOnTheRightZone(
+                    choices: dropZoneStepModel.choices, dropZones: dropZoneStepModel.dropZones)
         }
     }
 
