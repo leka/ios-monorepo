@@ -12,9 +12,10 @@ final class DragAndDropTwoZonesOneOrMoreChoicesScene: DragAndDropBaseScene {
         var dropAreaPosition = dropAreaSpacer
         for dropArea in dropZones {
             let dropAreaNode = SKSpriteNode()
-            dropAreaNode.size = dropArea.size
+            let dropZoneSize = CGSize(width: 380, height: 280)
+            dropAreaNode.size = dropZoneSize
             dropAreaNode.texture = SKTexture(imageNamed: dropArea.value)
-            dropAreaNode.position = CGPoint(x: dropAreaPosition, y: dropArea.size.height / 2)
+            dropAreaNode.position = CGPoint(x: dropAreaPosition, y: dropZoneSize.height / 2)
             dropAreaNode.name = dropArea.value
             addChild(dropAreaNode)
 

@@ -31,12 +31,12 @@ public enum InterfaceType {
     case listenThreeChoicesInline(AudioRecordingModel)
     case listenFourChoices(AudioRecordingModel)
     case listenSixChoices(AudioRecordingModel)
-    case dragAndDropOneZoneOneOrMoreChoices
-    case dragAndDropTwoZonesOneOrMoreChoices
+    case dragAndDropOneZoneOneOrMoreChoices(hints: Bool)
+    case dragAndDropTwoZonesOneOrMoreChoices(hints: Bool)
 }
 
 public protocol StepModelProtocol {
-    var choices: [ChoiceModel] { get set}
+    var choices: [ChoiceModel] { get set }
     var gameplay: GameplayType { get set }
     var interface: InterfaceType { get set }
 }
