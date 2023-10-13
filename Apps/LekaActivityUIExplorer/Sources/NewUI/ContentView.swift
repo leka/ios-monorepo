@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import DesignKit
+import RobotKit
 import SwiftUI
 
 struct ContentView: View {
@@ -11,9 +12,15 @@ struct ContentView: View {
     @EnvironmentObject var gameEngine: GameEngine
     @EnvironmentObject var defaults: GameLayoutTemplatesDefaults
 
+    @State var presentRobotConnection: Bool = false
+
     var body: some View {
         NavigationStack {
             let columns = Array(repeating: GridItem(), count: 3)
+            Button("Connect Robot") {
+                print("connect robot")
+                presentRobotConnection.toggle()
+            }
             ScrollView {
                 LazyVGrid(columns: columns) {
                     ForEach(kListOfAvailablesActivities) { activity in
@@ -44,6 +51,9 @@ struct ContentView: View {
                 ToolbarItem(placement: .navigationBarLeading, content: { backButton })
                 ToolbarItem(placement: .principal) { navigationTitleView }
             }
+        }
+        .fullScreenCover(isPresented: $presentRobotConnection) {
+            RobotConnectionView(viewModel: RobotConnectionViewModel())
         }
     }
 

@@ -29,7 +29,7 @@ public class GameplayDragAndDropAllAnswersOnTheRightZone: DragAndDropGameplayPro
                     rightAnswersGiven.append(self.choices.value[index])
                 }
 
-                // TO DO (@hugo) asyncAwait
+                // TODO(@HPezz) asyncAwait
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                     self.dropZones.value[dropZoneIndex].choices[rightDropChoiceindex].status = .notSelected
                 }
@@ -39,7 +39,7 @@ public class GameplayDragAndDropAllAnswersOnTheRightZone: DragAndDropGameplayPro
                         self.dropZones.value[dropZoneIndex].choices[wrongDropChoiceindex].status =
                             .wrongAnswer
 
-                        // TO DO (@hugo) asyncAwait
+                        // TODO(@HPezz) asyncAwait
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
                             self.dropZones.value[dropZoneIndex].choices[wrongDropChoiceindex].status = .notSelected
                         }

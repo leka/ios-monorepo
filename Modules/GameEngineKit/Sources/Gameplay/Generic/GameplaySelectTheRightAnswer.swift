@@ -19,7 +19,7 @@ public class GameplaySelectTheRightAnswer: SelectionGameplayProtocol {
             if let index = choices.value.firstIndex(where: { $0.id == choice.id }) {
                 self.choices.value[index].status = .rightAnswer
 
-                // TO DO (@hugo) asyncAwait
+                // TODO(@HPezz) asyncAwait
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                     self.choices.value[index].status = .notSelected
                     self.state.send(.finished)
@@ -31,7 +31,7 @@ public class GameplaySelectTheRightAnswer: SelectionGameplayProtocol {
             if let index = choices.value.firstIndex(where: { $0.id == choice.id }) {
                 self.choices.value[index].status = .wrongAnswer
 
-                // TO DO (@hugo) asyncAwait
+                // TODO(@HPezz) asyncAwait
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
                     self.choices.value[index].status = .notSelected
                 }

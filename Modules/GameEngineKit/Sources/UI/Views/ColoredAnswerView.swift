@@ -2,20 +2,27 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import RobotKit
 import SwiftUI
 
 struct ColoredAnswerView: View {
-    private let color: Color
+    private let color: Robot.Color
     private let size: CGFloat
     private let status: ChoiceState
 
     @State private var animationPercent: CGFloat = .zero
     @State private var overlayOpacity: CGFloat = .zero
 
+    init(color: String, size: CGFloat, status: ChoiceState = .notSelected) {
+        self.color = .init(from: color)
+        self.size = size
+        self.status = status
+    }
+
     @ViewBuilder
     var view: some View {
         let circle = Image(systemName: "circle.fill")
-            .foregroundStyle(color)
+            .foregroundStyle(color.screen)
             .font(.system(size: size))
             .frame(
                 width: size * 1.05,
@@ -50,24 +57,6 @@ struct ColoredAnswerView: View {
                             overlayOpacity = 0.8
                         }
                     }
-        }
-    }
-
-    init(color: String, size: CGFloat, status: ChoiceState = .notSelected) {
-        self.color = ColoredAnswerView.stringToColor(from: color)
-        self.size = size
-        self.status = status
-    }
-
-    static func stringToColor(from: String) -> Color {
-        switch from {
-            case "red": return .red
-            case "pink": return .pink
-            case "purple": return .purple
-            case "blue": return .blue
-            case "green": return .green
-            case "yellow": return .yellow
-            default: return .blue
         }
     }
 

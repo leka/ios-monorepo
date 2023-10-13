@@ -26,7 +26,7 @@ public class GameplayDragAndDropOneAnswerOnTheRightZone: DragAndDropGameplayProt
                 self.dropZones.value[dropZoneIndex].choices[rightDropChoiceindex].status = .rightAnswer
                 // TODO(@ladislas): Run reinforcers and lottie animation
 
-                // TO DO (@hugo) asyncAwait
+                // TODO(@HPezz) asyncAwait
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                     self.dropZones.value[dropZoneIndex].choices[rightDropChoiceindex].status = .notSelected
                     self.state.send(.finished)
@@ -37,7 +37,7 @@ public class GameplayDragAndDropOneAnswerOnTheRightZone: DragAndDropGameplayProt
                         self.dropZones.value[dropZoneIndex].choices[wrongDropChoiceindex].status =
                             .wrongAnswer
 
-                        // TO DO (@hugo) asyncAwait
+                        // TODO(@HPezz) asyncAwait
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
                             self.dropZones.value[dropZoneIndex].choices[wrongDropChoiceindex].status = .notSelected
                         }
