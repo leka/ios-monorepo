@@ -407,6 +407,8 @@ private class StateApplyingUpdate: GKState, StateEventProcessor {
 
         globalRobotManager.robotPeripheral?.send(majorData, forCharacteristic: majorCharacteristic)
 
+        sleep(1)
+
         let minorData = Data([globalFirmwareManager.minor])
 
         let minorCharacteristic = CharacteristicModelWriteOnly(
@@ -415,6 +417,8 @@ private class StateApplyingUpdate: GKState, StateEventProcessor {
         )
 
         globalRobotManager.robotPeripheral?.send(minorData, forCharacteristic: minorCharacteristic)
+
+        sleep(1)
 
         let revisionData = globalFirmwareManager.revision.data
 
