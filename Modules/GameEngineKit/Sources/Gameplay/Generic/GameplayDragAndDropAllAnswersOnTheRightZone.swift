@@ -34,14 +34,14 @@ public class GameplayDragAndDropAllAnswersOnTheRightZone: DragAndDropGameplayPro
                     self.dropZones.value[dropZoneIndex].choices[rightDropChoiceindex].status = .notSelected
                 }
             } else {
-                for dropZone in dropZones.value {
+                for (index, dropZone) in dropZones.value.enumerated() {
                     if let wrongDropChoiceindex = dropZone.choices.firstIndex(where: { $0.id == choice.id }) {
-                        self.dropZones.value[dropZoneIndex].choices[wrongDropChoiceindex].status =
+                        self.dropZones.value[index].choices[wrongDropChoiceindex].status =
                             .wrongAnswer
 
                         // TODO(@HPezz) asyncAwait
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
-                            self.dropZones.value[dropZoneIndex].choices[wrongDropChoiceindex].status = .notSelected
+                            self.dropZones.value[index].choices[wrongDropChoiceindex].status = .notSelected
                         }
                     }
                 }
