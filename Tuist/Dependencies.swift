@@ -38,6 +38,10 @@ let dependencies = Dependencies(
             url: "https://github.com/apple/swift-log",
             requirement: .exact("1.5.3")
         ),
+        .remote(
+            url: "https://github.com/mxcl/Version",
+            requirement: .exact("2.0.1")
+        ),
     ],
     platforms: [.iOS, .macOS]
 )
