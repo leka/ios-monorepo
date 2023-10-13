@@ -55,7 +55,7 @@ struct RobotDiscoveryView: View {
                     VStack(alignment: .leading) {
                         Text(discovery.name)
                             .font(.headline)
-                        Text(discovery.osVersion)
+                        Text("v\(discovery.osVersion)")
                     }
 
                     Spacer()

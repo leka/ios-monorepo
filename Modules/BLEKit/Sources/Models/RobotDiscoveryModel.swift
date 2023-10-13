@@ -51,15 +51,15 @@ extension RobotDiscoveryModel: Equatable {
 
 private func computeVersion(version: String?, name: String) -> String {
     if let version = version {
-        return "v\(version)"
+        return "\(version)"
     }
 
     if name == "Leka" {
-        return "v1.0.0"
+        return "1.0.0"
     } else if name.contains("LK-") && name.contains("xx") {
-        return "v1.1.0"
+        return "1.1.0"
     } else if name.contains("LK-") {
-        return "v1.2.0"
+        return "1.2.0"
     } else {
         return "(n/a)"
     }
