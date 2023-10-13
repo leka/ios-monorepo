@@ -380,7 +380,7 @@ private class StateApplyingUpdate: GKState, StateEventProcessor {
     override func didEnter(from previousState: GKState?) {
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: setMajorMinorRevision)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: applyUpdate)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: applyUpdate)
 
     }
 
