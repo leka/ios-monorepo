@@ -4,6 +4,7 @@
 
 import CryptoKit
 import Foundation
+import Version
 
 enum RobotUpdateStatus {
     case upToDate
@@ -31,11 +32,11 @@ class FirmwareManager: ObservableObject {
     }
 
     func compareWith(version: String) -> RobotUpdateStatus {
-        guard version.contains(".") else {
+        guard let version = Version(version) else {
             return .needsUpdate
         }
 
-        guard version.compare(currentVersion, options: .numeric) == .orderedAscending else {
+        if version >= Version(currentVersion)! {
             return .upToDate
         }
 

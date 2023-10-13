@@ -4,6 +4,7 @@
 
 import BLEKit
 import Foundation
+import Version
 
 public class RobotManager: ObservableObject {
     @Published var robotPeripheral: RobotPeripheral?
@@ -44,17 +45,17 @@ public class RobotManager: ObservableObject {
 
     private func isSHA256Compatible() -> Bool {
 
-        let startingVersion: String = "1.3.0"
+        let startingVersion = Version(1, 3, 0)
 
-        guard let osVersion = self.osVersion, osVersion.contains(".") else {
+        guard let osVersionString = self.osVersion else {
             return false
         }
 
-        let osVersionIsSame = osVersion.compare(startingVersion, options: .numeric) == .orderedSame
-        let osVersionIsNewer = osVersion.compare(startingVersion, options: .numeric) == .orderedDescending
-        let osVersionIsSameOrNewer = osVersionIsSame || osVersionIsNewer
+        guard let osVersion = Version(osVersionString) else {
+            return false
+        }
 
-        return osVersionIsSameOrNewer
+        return osVersion >= startingVersion
 
     }
 
