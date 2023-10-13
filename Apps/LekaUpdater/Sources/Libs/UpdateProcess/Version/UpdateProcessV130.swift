@@ -155,6 +155,83 @@ private class StateSettingDestinationPath: GKState, StateEventProcessor {
     }
 }
 
+private class StateVerifyingFile: GKState, StateEventProcessor {
+
+    private var cancellables: Set<AnyCancellable> = []
+
+    private var isFileValid = false
+    private let defaultValue = "0000000000000000000000000000000000000000000000000000000000000000"
+
+    override func isValidNextState(_ stateClass: AnyClass) -> Bool {
+        stateClass is StateClearingFile.Type || stateClass is StateApplyingUpdate.Type
+            || stateClass is StateErrorRobotUnexpectedDisconnection.Type
+    }
+
+    override func didEnter(from previousState: GKState?) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: startFileVerification)
+    }
+
+    override func willExit(to nextState: GKState) {
+        cancellables.removeAll()
+        globalRobotManager.sha256 = nil
+    }
+
+    func process(event: UpdateEvent) {
+        switch event {
+            case .fileVerificationReceived:
+                if isFileValid {
+                    self.stateMachine?.enter(StateApplyingUpdate.self)
+                } else {
+                    self.stateMachine?.enter(StateClearingFile.self)
+                }
+            case .robotDisconnected:
+                self.stateMachine?.enter(StateErrorRobotUnexpectedDisconnection.self)
+            default:
+                return
+        }
+    }
+
+    private func startFileVerification() {
+        DispatchQueue.main.asyncAfter(deadline: .now(), execute: subscribeActualSHA256Updates)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: readRequestSHA256)
+    }
+
+    private func subscribeActualSHA256Updates() {
+        globalRobotManager.$sha256
+            .receive(on: DispatchQueue.main)
+            .sink { value in
+                guard let value = value else { return }
+
+                if value == self.defaultValue {
+                    return
+                }
+
+                self.isFileValid = value == globalFirmwareManager.sha256
+                self.process(event: .fileVerificationReceived)
+            }
+            .store(in: &cancellables)
+    }
+
+    private func readRequestSHA256() {
+        globalRobotManager.robotPeripheral?.peripheral
+            .readValue(
+                forCharacteristic: BLESpecs.FileExchange.Characteristics.fileSHA256,
+                inService: BLESpecs.FileExchange.service
+            )
+            .receive(on: DispatchQueue.main)
+            .sink(
+                receiveCompletion: { _ in
+                    // nothing to do
+                },
+                receiveValue: { data in
+                    // nothing to do
+                }
+            )
+            .store(in: &cancellables)
+    }
+
+}
+
 private class StateClearingFile: GKState, StateEventProcessor {
 
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
@@ -244,7 +321,7 @@ private class StateSendingFile: GKState, StateEventProcessor {
     }
 
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
-        stateClass is StateVerifyingFile.Type || stateClass is StateErrorRobotUnexpectedDisconnection.Type
+        stateClass is StateApplyingUpdate.Type || stateClass is StateErrorRobotUnexpectedDisconnection.Type
     }
 
     override func didEnter(from previousState: GKState?) {
@@ -258,7 +335,7 @@ private class StateSendingFile: GKState, StateEventProcessor {
     func process(event: UpdateEvent) {
         switch event {
             case .fileSent:
-                self.stateMachine?.enter(StateVerifyingFile.self)
+                self.stateMachine?.enter(StateApplyingUpdate.self)
             case .robotDisconnected:
                 self.stateMachine?.enter(StateErrorRobotUnexpectedDisconnection.self)
             default:
@@ -289,94 +366,6 @@ private class StateSendingFile: GKState, StateEventProcessor {
 
         globalRobotManager.robotPeripheral?.send(dataToSend, forCharacteristic: characteristic)
     }
-}
-
-private class StateVerifyingFile: GKState, StateEventProcessor {
-
-    private var cancellables: Set<AnyCancellable> = []
-
-    private var isFileValid = false
-    private var lastValue = "0000000000000000000000000000000000000000000000000000000000000000"
-
-    private var nextStateIsClearingFile = false
-
-    override func isValidNextState(_ stateClass: AnyClass) -> Bool {
-        stateClass is StateClearingFile.Type || stateClass is StateApplyingUpdate.Type
-            || stateClass is StateErrorFailedToVerifyFile.Type
-            || stateClass is StateErrorRobotUnexpectedDisconnection.Type
-    }
-
-    override func didEnter(from previousState: GKState?) {
-        if previousState is StateSettingDestinationPath {
-            nextStateIsClearingFile = true
-        } else {
-            nextStateIsClearingFile = false
-        }
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: startFileVerification)
-    }
-
-    override func willExit(to nextState: GKState) {
-        cancellables.removeAll()
-    }
-
-    func process(event: UpdateEvent) {
-        switch event {
-            case .fileVerificationReceived:
-                if isFileValid {
-                    self.stateMachine?.enter(StateApplyingUpdate.self)
-                } else if nextStateIsClearingFile {
-                    self.stateMachine?.enter(StateClearingFile.self)
-                } else {
-                    self.stateMachine?.enter(StateErrorFailedToVerifyFile.self)
-                }
-            case .robotDisconnected:
-                self.stateMachine?.enter(StateErrorRobotUnexpectedDisconnection.self)
-            default:
-                return
-        }
-    }
-
-    private func startFileVerification() {
-        subscribeActualSHA256Updates()
-        readRequestSHA256()
-    }
-
-    private func subscribeActualSHA256Updates() {
-        globalRobotManager.$sha256
-            .receive(on: DispatchQueue.main)
-            .sink { value in
-                guard let value = value else { return }
-
-                if value == self.lastValue {
-                    return
-                }
-                self.lastValue = value
-
-                self.isFileValid = value == globalFirmwareManager.sha256
-                self.process(event: .fileVerificationReceived)
-            }
-            .store(in: &cancellables)
-    }
-
-    private func readRequestSHA256() {
-        globalRobotManager.robotPeripheral?.peripheral
-            .readValue(
-                forCharacteristic: BLESpecs.FileExchange.Characteristics.fileSHA256,
-                inService: BLESpecs.FileExchange.service
-            )
-            .receive(on: DispatchQueue.main)
-            .sink(
-                receiveCompletion: { _ in
-                    // nothing to do
-                },
-                receiveValue: { data in
-                    // nothing to do
-                }
-            )
-            .store(in: &cancellables)
-    }
-
 }
 
 private class StateApplyingUpdate: GKState, StateEventProcessor {
@@ -512,7 +501,6 @@ private class StateFinal: GKState {}
 private protocol StateError {}
 
 private class StateErrorFailedToLoadFile: GKState, StateError {}
-private class StateErrorFailedToVerifyFile: GKState, StateError {}
 private class StateErrorRobotNotUpToDate: GKState, StateError {}
 private class StateErrorRobotUnexpectedDisconnection: GKState, StateError {}
 
@@ -549,7 +537,6 @@ class UpdateProcessV130: UpdateProcessProtocol {
             StateFinal(),
 
             StateErrorFailedToLoadFile(),
-            StateErrorFailedToVerifyFile(),
             StateErrorRobotNotUpToDate(),
             StateErrorRobotUnexpectedDisconnection(),
         ])
@@ -616,8 +603,6 @@ class UpdateProcessV130: UpdateProcessProtocol {
         switch state {
             case is StateErrorFailedToLoadFile:
                 currentStage.send(completion: .failure(.failedToLoadFile))
-            case is StateErrorFailedToVerifyFile:
-                currentStage.send(completion: .failure(.failedToVerifyFile))
             case is StateErrorRobotNotUpToDate:
                 currentStage.send(completion: .failure(.robotNotUpToDate))
             case is StateErrorRobotUnexpectedDisconnection:

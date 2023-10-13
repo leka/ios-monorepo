@@ -27,6 +27,7 @@ public class RobotManager: ObservableObject {
         self.battery = battery
         self.isCharging = isCharging
         self.osVersion = osVersion
+        self.sha256 = nil
 
     }
 
@@ -37,6 +38,7 @@ public class RobotManager: ObservableObject {
         self.battery = robotDiscovery.battery
         self.isCharging = robotDiscovery.isCharging
         self.osVersion = robotDiscovery.osVersion
+        self.sha256 = nil
 
     }
 
