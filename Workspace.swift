@@ -23,6 +23,7 @@ func projects() -> [Path] {
         "Modules/BLEKit",
         "Modules/RobotKit",
         "Modules/GameEngineKit",
+        "Modules/LogKit",
     ]
 
     // MARK: - iOS Examples
