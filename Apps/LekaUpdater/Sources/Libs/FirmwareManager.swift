@@ -13,16 +13,16 @@ enum RobotUpdateStatus {
 
 class FirmwareManager: ObservableObject {
     // swiftlint:disable:next force_cast
-    let currentVersion = Bundle.main.object(forInfoDictionaryKey: "LEKA_OS_VERSION") as! String
+    let currentVersion = Version(Bundle.main.object(forInfoDictionaryKey: "LEKA_OS_VERSION") as! String)!
 
     public var major: UInt8 {
-        UInt8(currentVersion.components(separatedBy: ".")[0])!
+        UInt8(currentVersion.major)
     }
     public var minor: UInt8 {
-        UInt8(currentVersion.components(separatedBy: ".")[1])!
+        UInt8(currentVersion.minor)
     }
     public var revision: UInt16 {
-        UInt16(currentVersion.components(separatedBy: ".")[2])!
+        UInt16(currentVersion.patch)
     }
 
     @Published public var data = Data()
@@ -36,7 +36,7 @@ class FirmwareManager: ObservableObject {
             return .needsUpdate
         }
 
-        if version >= Version(currentVersion)! {
+        if version >= currentVersion {
             return .upToDate
         }
 

@@ -6,6 +6,7 @@ import BLEKit
 import Combine
 import Foundation
 import GameplayKit
+import Version
 
 // MARK: - events
 
@@ -484,7 +485,7 @@ private class StateWaitingForRobotToReboot: GKState, StateEventProcessor {
                     }
                     if let robotDetected = robotDetected {
                         self.isRobotUpToDate =
-                            robotDetected.osVersion == globalFirmwareManager.currentVersion
+                            Version(robotDetected.osVersion) == globalFirmwareManager.currentVersion
 
                         self.process(event: .robotDetected)
                     }
