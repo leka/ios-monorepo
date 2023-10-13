@@ -4,6 +4,7 @@
 
 import DesignKit
 import SwiftUI
+import Version
 
 struct RobotInformationView: View {
     @StateObject private var viewModel = RobotInformationViewModel()
@@ -36,12 +37,12 @@ struct RobotInformationView_Previews: PreviewProvider {
                         print("Robot just connected (not received serial number yet)")
                         globalRobotManager.serialNumber = nil
                         globalRobotManager.battery = Int.random(in: 0...100)
-                        globalRobotManager.osVersion = "1.0.0"
+                        globalRobotManager.osVersion = Version(1, 0, 0)
                     case 2:
                         print("Robot connected")
                         globalRobotManager.serialNumber = "LK-2206..."
                         globalRobotManager.battery = Int.random(in: 0...100)
-                        globalRobotManager.osVersion = "1.0.0"
+                        globalRobotManager.osVersion = Version(1, 0, 0)
                     default:
                         print("Robot not connected")
                         globalRobotManager.serialNumber = nil

@@ -31,8 +31,8 @@ class FirmwareManager: ObservableObject {
         SHA256.hash(data: data).compactMap { String(format: "%02x", $0) }.joined()
     }
 
-    func compareWith(version: String) -> RobotUpdateStatus {
-        guard let version = Version(version) else {
+    func compareWith(version: Version?) -> RobotUpdateStatus {
+        guard let version = version else {
             return .needsUpdate
         }
 

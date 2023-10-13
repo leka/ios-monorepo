@@ -47,7 +47,7 @@ class RobotInformationViewModel: ObservableObject {
         globalRobotManager.$osVersion
             .receive(on: DispatchQueue.main)
             .sink { robotOsVersion in
-                self.robotOsVersion = robotOsVersion ?? "n/a"
+                self.robotOsVersion = robotOsVersion?.description ?? "n/a"
             }
             .store(in: &cancellables)
     }
