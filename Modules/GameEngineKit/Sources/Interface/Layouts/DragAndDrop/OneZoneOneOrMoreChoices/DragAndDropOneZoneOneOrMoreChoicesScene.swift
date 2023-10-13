@@ -9,9 +9,10 @@ import SwiftUI
 final class DragAndDropOneZoneOneOrMoreChoicesScene: DragAndDropBaseScene {
     override func layoutDropZones(dropZones: [DragAndDropZoneModel]) {
         let dropZoneNode = SKSpriteNode()
-        dropZoneNode.size = dropZones[0].size
+        let dropAreaSize = CGSize(width: 380, height: 280)
+        dropZoneNode.size = dropAreaSize
         dropZoneNode.texture = SKTexture(imageNamed: dropZones[0].value)
-        dropZoneNode.position = CGPoint(x: size.width / 2, y: dropZones[0].size.height / 2)
+        dropZoneNode.position = CGPoint(x: size.width / 2, y: dropAreaSize.height / 2)
         dropZoneNode.name = dropZones[0].value
         addChild(dropZoneNode)
 

@@ -6,8 +6,8 @@ import Combine
 import Foundation
 
 public protocol DragAndDropGameplayProtocol: BaseGameplayProtocol {
-    var choices: CurrentValueSubject<[ChoiceModel], Never> { get set }
-    var dropZones: CurrentValueSubject<[DragAndDropZoneModel], Never> { get set }
+    var choices: CurrentValueSubject<[DragAndDropChoiceModel], Never> { get set }
+//    var dropZones: CurrentValueSubject<[DragAndDropZoneModel], Never> { get set }
 
-    func process(choice: ChoiceModel, dropZoneName: String)
+    func process(choice: DragAndDropChoiceModel, dropZoneName: String)
 }

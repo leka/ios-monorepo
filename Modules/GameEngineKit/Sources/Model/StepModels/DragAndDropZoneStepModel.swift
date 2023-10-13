@@ -6,13 +6,13 @@ import SwiftUI
 
 public struct DragAndDropZoneStepModel: StepModelProtocol {
     public var dropZones: [DragAndDropZoneModel]
-    public var choices: [ChoiceModel]
+    public var choices: [DragAndDropChoiceModel]
     public var gameplay: GameplayType
     public var interface: InterfaceType
 
     public init(
         dropZones: [DragAndDropZoneModel],
-        choices: [ChoiceModel],
+        choices: [DragAndDropChoiceModel],
         gameplay: GameplayType,
         interface: InterfaceType
     ) {

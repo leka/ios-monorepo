@@ -103,10 +103,10 @@ public class StepViewViewModel: ObservableObject {
             case .listenSixChoices(let audioRecording):
                 ListenSixChoicesView(
                     gameplay: currentGameplay as! SelectionGameplayProtocol, audioRecording: audioRecording)
-            case .dragAndDropOneZoneOneOrMoreChoices:
-                DragAndDropOneZoneOneOrMoreChoicesView(gameplay: currentGameplay as! DragAndDropGameplayProtocol)
-            case .dragAndDropTwoZonesOneOrMoreChoices:
-                DragAndDropTwoZonesOneOrMoreChoicesView(gameplay: currentGameplay as! DragAndDropGameplayProtocol)
+            case .dragAndDropOneZoneOneOrMoreChoices(let hints):
+                DragAndDropOneZoneOneOrMoreChoicesView(gameplay: currentGameplay as! DragAndDropGameplayProtocol, hints: hints)
+            case .dragAndDropTwoZonesOneOrMoreChoices(let hints):
+                DragAndDropTwoZonesOneOrMoreChoicesView(gameplay: currentGameplay as! DragAndDropGameplayProtocol, hints: hints)
         }
     }
     // swiftlint:enable force_cast

@@ -6,19 +6,26 @@ import Combine
 import Foundation
 
 public class GameplayDragAndDropAllAnswersOnTheRightZone: DragAndDropGameplayProtocol {
-    public var choices = CurrentValueSubject<[ChoiceModel], Never>([])
-    public var dropZones = CurrentValueSubject<[DragAndDropZoneModel], Never>([])
+    
+    public var choices = CurrentValueSubject<[DragAndDropChoiceModel], Never>([])
+    private let dropZones: [DragAndDropZoneModel]
     public var state = CurrentValueSubject<GameplayState, Never>(.idle)
 
-    private var rightAnswersGiven: [ChoiceModel] = []
+    private var rightAnswersGiven: [DragAndDropChoiceModel] = []
 
-    public init(choices: [ChoiceModel], dropZones: [DragAndDropZoneModel]) {
+    public init(choices: [DragAndDropChoiceModel], dropZones: [DragAndDropZoneModel]) {
         self.choices.send(choices)
-        self.dropZones.send(dropZones)
+        self.dropZones = dropZones
         self.state.send(.playing)
     }
 
-    public func process(choice: ChoiceModel, dropZoneName: String) {
+    public func process(choice: DragAndDropChoiceModel, dropZoneName: String) {
+        if dropZones[choice.dropZone.rawValue].value == dropZoneName {
+            // Version enum .none, .first, .second
+        }
+        if choice.dropZone == dropZoneName {
+            // Version enum .none, .first, .second avec name updated directement dans le model
+        }
         if let dropZoneIndex = dropZones.value.firstIndex(where: { $0.value == dropZoneName }) {
             if let rightDropChoiceindex = dropZones.value[dropZoneIndex].choices
                 .firstIndex(where: { $0.id == choice.id })
