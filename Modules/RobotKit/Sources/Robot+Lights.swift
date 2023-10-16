@@ -199,7 +199,7 @@ extension Robot {
     public func shine(_ lights: Lights) {
         log.trace("🤖 SHINE \(lights)")
 
-        let output = commandGenerator(commands: lights.cmd)
+        let output = Self.commandGenerator(commands: lights.cmd)
 
         connectedPeripheral?
             .sendCommand(output)
