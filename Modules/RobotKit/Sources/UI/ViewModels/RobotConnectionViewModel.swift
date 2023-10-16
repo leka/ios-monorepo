@@ -23,6 +23,7 @@ public class RobotConnectionViewModel: ObservableObject {
     private let bleManager = BLEManager.shared
 
     private var cancellables: Set<AnyCancellable> = []
+    private var scanCancellable: AnyCancellable?
 
     public init() {
         self.connected = bleManager.isConnected
@@ -40,7 +41,8 @@ public class RobotConnectionViewModel: ObservableObject {
     }
 
     public func scanForRobots() {
-        bleManager.scanForRobots()
+        log.info("🔵 BLE - Start scanning for robots")
+        scanCancellable = bleManager.scanForRobots()
             .receive(on: DispatchQueue.main)
             .sink { _ in
                 // nothing to do
@@ -49,7 +51,11 @@ public class RobotConnectionViewModel: ObservableObject {
                 self.robotDiscoveries = discoveries
                 log.trace("🔵 BLE - Discoveries found: \(discoveries)")
             }
-            .store(in: &cancellables)
+    }
+
+    public func stopScanning() {
+        log.info("🔵 BLE - Stop scanning for robots")
+        scanCancellable = nil
     }
 
     public func connectToRobot() {
