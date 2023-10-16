@@ -17,6 +17,9 @@ let project = Project.iOSApp(
     infoPlist: [
         "NSBluetoothAlwaysUsageDescription":
             "The Leka App needs to use Bluetooth to connect to the Leka robot.",
+        "UIBackgroundModes": [
+            "bluetooth-central"
+        ],
         "UIRequiresFullScreen": "true",
         "UISupportedInterfaceOrientations": [
             "UIInterfaceOrientationLandscapeRight",

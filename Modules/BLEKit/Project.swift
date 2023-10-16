@@ -17,6 +17,9 @@ let project = Project.module(
             name: "BLEKitExample",
             infoPlist: [
                 "NSBluetoothAlwaysUsageDescription":
-                    "The Leka Updater app needs to use Bluetooth to connect to the Leka robot."
+                    "The Leka Updater app needs to use Bluetooth to connect to the Leka robot.",
+                "UIBackgroundModes": [
+                    "bluetooth-central"
+                ],
             ])
     ])
