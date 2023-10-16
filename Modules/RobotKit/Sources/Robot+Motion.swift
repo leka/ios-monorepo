@@ -139,7 +139,7 @@ extension Robot {
     }
 
     public func move(_ motion: Motion) {
-        print("🤖 MOVE \(motion)")
+        log.trace("🤖 MOVE \(motion)")
         let output = commandGenerator(commands: motion.cmd)
 
         connectedPeripheral?
@@ -147,7 +147,7 @@ extension Robot {
     }
 
     public func stopMotion() {
-        print("🤖 STOP 🛑 - Motion")
+        log.trace("🤖 STOP 🛑 - Motion")
         move(.stop)
     }
 }

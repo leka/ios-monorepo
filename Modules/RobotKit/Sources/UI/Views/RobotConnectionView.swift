@@ -85,7 +85,6 @@ public struct RobotConnectionView: View {
                         .contentShape(Rectangle())
                         .onTapGesture {
                             withAnimation {
-                                print("tapped \(discovery.id)")
                                 viewModel.select(discovery: discovery)
                             }
                         }
@@ -122,7 +121,7 @@ public struct RobotConnectionView: View {
             }
             .frame(minWidth: 200)
         } action: {
-            print("🔵 BLE - Searching for robots")
+            // TODO(@ladislas): implement in the future
         }
     }
 
@@ -135,7 +134,6 @@ public struct RobotConnectionView: View {
             .frame(minWidth: 200)
         } action: {
             withAnimation {
-                print("🔵 BLE - connecting to \(viewModel.selectedDiscovery?.name ?? "n/a")")
                 viewModel.connectToRobot()
             }
         }
@@ -152,7 +150,6 @@ public struct RobotConnectionView: View {
         } action: {
             let animation = Animation.easeOut(duration: 0.5)
             withAnimation(animation) {
-                print("🔵 BLE - disconnecting from \(viewModel.connectedDiscovery?.name ?? "n/a")")
                 viewModel.disconnectFromRobot()
             }
         }
@@ -168,7 +165,6 @@ public struct RobotConnectionView: View {
                 }
                 .frame(minWidth: 200)
             } action: {
-                print("Dismissing connection view")
                 dismiss()
             }
             .disabled(false)
@@ -180,8 +176,7 @@ public struct RobotConnectionView: View {
                 }
                 .frame(minWidth: 200)
             } action: {
-                print("Dismissing connection view")
-                dismiss()
+                // nothing to do
             }
             .disabled(true)
         }
