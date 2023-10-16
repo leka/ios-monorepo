@@ -6,7 +6,9 @@ import CombineCoreBluetooth
 
 public class BLEManager {
 
-    public static var shared: BLEManager = BLEManager(centralManager: .live())
+    public static var shared: BLEManager = BLEManager(
+        centralManager: .live(
+            ManagerCreationOptions(showPowerAlert: true, restoreIdentifierKey: "io.leka.module.BLEKit.Manager.live")))
 
     // MARK: - @Published variables
 

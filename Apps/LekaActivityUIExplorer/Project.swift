@@ -21,6 +21,10 @@ let project = Project.iOSApp(
         "CFBundleShortVersionString": "1.0.0",
         "NSBluetoothAlwaysUsageDescription":
             "The Leka App needs to use Bluetooth to connect to the Leka robot.",
+        "UIBackgroundModes": [
+            "bluetooth-central",
+            "audio",
+        ],
         "UIRequiresFullScreen": "true",
         "UISupportedInterfaceOrientations": [
             "UIInterfaceOrientationLandscapeRight",
@@ -31,5 +35,4 @@ let project = Project.iOSApp(
             "UIInterfaceOrientationLandscapeLeft",
         ],
         "NSAccentColorName": "AccentColor",
-        "UIBackgroundModes": ["audio"],
     ])

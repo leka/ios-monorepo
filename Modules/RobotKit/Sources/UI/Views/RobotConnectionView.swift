@@ -55,6 +55,9 @@ public struct RobotConnectionView: View {
             .onAppear {
                 viewModel.scanForRobots()
             }
+            .onDisappear {
+                viewModel.stopScanning()
+            }
             .navigationTitle("Choose a robot")
             .toolbar {
                 ToolbarItemGroup(placement: .topBarTrailing) {

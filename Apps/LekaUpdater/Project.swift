@@ -17,6 +17,9 @@ let project = Project.iOSApp(
         "LEKA_OS_VERSION": "1.4.0",
         "NSBluetoothAlwaysUsageDescription":
             "The Leka Updater app needs to use Bluetooth to connect to the Leka robot.",
+        "UIBackgroundModes": [
+            "bluetooth-central"
+        ],
         "UIRequiresFullScreen": "true",
         "UISupportedInterfaceOrientations": ["UIInterfaceOrientationPortrait"],
         "UISupportedInterfaceOrientations~ipad": [

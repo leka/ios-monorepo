@@ -140,7 +140,7 @@ extension Robot {
 
     public func move(_ motion: Motion) {
         log.trace("🤖 MOVE \(motion)")
-        let output = commandGenerator(commands: motion.cmd)
+        let output = Self.commandGenerator(commands: motion.cmd)
 
         connectedPeripheral?
             .sendCommand(output)

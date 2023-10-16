@@ -8,11 +8,11 @@ extension Robot {
 
     static let kHeaderPattern: [UInt8] = [0x2A, 0x2A, 0x2A, 0x2A]
 
-    func commandGenerator(commands: [UInt8]...) -> Data {
+    static func commandGenerator(commands: [UInt8]...) -> Data {
         commandGenerator(commands: commands)
     }
 
-    func commandGenerator(commands: [[UInt8]]) -> Data {
+    static func commandGenerator(commands: [[UInt8]]) -> Data {
         let commands = commands.filter { $0 != [] }
         var output: [UInt8] = []
 

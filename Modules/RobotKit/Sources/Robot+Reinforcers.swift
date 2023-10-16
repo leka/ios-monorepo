@@ -27,7 +27,7 @@ extension Robot {
     public func run(_ reinforcer: Reinforcer) {
         log.trace("🤖 RUN reinforcer \(reinforcer)")
 
-        let output = commandGenerator(commands: reinforcer.cmd)
+        let output = Self.commandGenerator(commands: reinforcer.cmd)
 
         connectedPeripheral?
             .sendCommand(output)
