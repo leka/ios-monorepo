@@ -8,9 +8,11 @@ import SwiftUI
 public struct DragAndDropOneZoneOneOrMoreChoicesView: View {
     @StateObject private var viewModel: DragAndDropZoneViewModel
     @State private var scene: SKScene = SKScene()
+    let hints: Bool
 
-    public init(gameplay: any DragAndDropGameplayProtocol) {
+    public init(gameplay: any DragAndDropGameplayProtocol, hints: Bool) {
         self._viewModel = StateObject(wrappedValue: DragAndDropZoneViewModel(gameplay: gameplay))
+        self.hints = hints
     }
 
     public var body: some View {
@@ -21,7 +23,7 @@ public struct DragAndDropOneZoneOneOrMoreChoicesView: View {
             )
             .frame(width: proxy.size.width, height: proxy.size.height)
             .onAppear {
-                scene = DragAndDropOneZoneOneOrMoreChoicesScene(viewModel: viewModel)
+                scene = DragAndDropOneZoneOneOrMoreChoicesScene(viewModel: viewModel, hints: hints)
             }
         }
         .edgesIgnoringSafeArea(.horizontal)

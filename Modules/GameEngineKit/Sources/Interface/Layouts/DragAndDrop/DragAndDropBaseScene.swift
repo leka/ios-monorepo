@@ -8,6 +8,7 @@ import SwiftUI
 
 class DragAndDropBaseScene: SKScene {
     var viewModel: DragAndDropZoneViewModel
+    var hints: Bool
     var biggerSide: CGFloat = 130
     var selectedNodes: [UITouch: DraggableImageAnswerNode] = [:]
     var playedNode: DraggableImageAnswerNode?
@@ -17,8 +18,9 @@ class DragAndDropBaseScene: SKScene {
     private var expectedItemsNodes: [String: [SKSpriteNode]] = [:]
     private var cancellables: Set<AnyCancellable> = []
 
-    init(viewModel: DragAndDropZoneViewModel) {
+    init(viewModel: DragAndDropZoneViewModel, hints: Bool) {
         self.viewModel = viewModel
+        self.hints = hints
         super.init(size: CGSize.zero)
         self.spacer = size.width / CGFloat(viewModel.choices.count + 1)
         self.defaultPosition = CGPoint(x: spacer, y: self.size.height)
@@ -110,7 +112,7 @@ class DragAndDropBaseScene: SKScene {
                 let expectedItem = choice.value
                 let expectedNode = SKSpriteNode()
 
-                guard dropZone.hints else {
+                guard hints else {
                     expectedNode.name = expectedItem
                     (expectedItemsNodes[dropZone.value, default: []]).append(expectedNode)
                     return
