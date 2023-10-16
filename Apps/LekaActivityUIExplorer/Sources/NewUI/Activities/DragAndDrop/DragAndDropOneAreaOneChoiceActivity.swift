@@ -6,23 +6,23 @@ import GameEngineKit
 import SwiftUI
 
 private let choicesStep1 = [
-    ChoiceViewModel(item: "watermelon", type: .image, rightAnswer: true)
+    ChoiceModel(item: "watermelon", type: .image, rightAnswer: true)
 ]
 
 private let choicesStep2 = [
-    ChoiceViewModel(item: "banana", type: .image, rightAnswer: true)
+    ChoiceModel(item: "banana", type: .image, rightAnswer: true)
 ]
 
 private let choicesStep3 = [
-    ChoiceViewModel(item: "kiwi", type: .image, rightAnswer: true)
+    ChoiceModel(item: "kiwi", type: .image, rightAnswer: true)
 ]
 
 private let choicesStep4 = [
-    ChoiceViewModel(item: "cherry", type: .image, rightAnswer: true)
+    ChoiceModel(item: "cherry", type: .image, rightAnswer: true)
 ]
 
 private let choicesStep5 = [
-    ChoiceViewModel(item: "avocado", type: .image, rightAnswer: true)
+    ChoiceModel(item: "avocado", type: .image, rightAnswer: true)
 ]
 
 private let dropArea1 = DropAreaModel(file: "basket", size: CGSize(width: 380, height: 280), hints: true)

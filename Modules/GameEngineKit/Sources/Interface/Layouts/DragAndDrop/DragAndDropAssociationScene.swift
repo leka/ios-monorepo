@@ -7,7 +7,7 @@ import SpriteKit
 import SwiftUI
 
 class DragAndDropAssociationScene: SKScene {
-    var viewModel: GenericViewModel
+    var viewModel: AssociationViewModel
     var biggerSide: CGFloat = 150
     var selectedNodes: [UITouch: DraggableImageAnswerNode] = [:]
     var playedNode: DraggableImageAnswerNode?
@@ -20,7 +20,7 @@ class DragAndDropAssociationScene: SKScene {
     private var verticalSpacing: CGFloat = .zero
     private var cancellables: Set<AnyCancellable> = []
 
-    init(viewModel: GenericViewModel) {
+    init(viewModel: AssociationViewModel) {
         self.viewModel = viewModel
         super.init(size: CGSize.zero)
         self.defaultPosition = CGPoint(x: spacer, y: self.size.height)

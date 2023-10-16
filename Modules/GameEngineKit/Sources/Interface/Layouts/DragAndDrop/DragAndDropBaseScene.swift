@@ -25,11 +25,11 @@ class DragAndDropBaseScene: SKScene {
         self.spacer = size.width / CGFloat(viewModel.choices.count + 1)
         self.defaultPosition = CGPoint(x: spacer, y: self.size.height)
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     func reset() {
         self.backgroundColor = .clear
         self.removeAllChildren()

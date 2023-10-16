@@ -9,7 +9,7 @@ public struct FourChoicesInlineView: View {
     let horizontalSpacing: CGFloat = 70
     let answerSize: CGFloat = 200
 
-    public init(gameplay: any GameplayProtocol) {
+    public init(gameplay: any GameplayProtocol<ChoiceModel>) {
         self._viewModel = StateObject(wrappedValue: GenericViewModel(gameplay: gameplay))
     }
 

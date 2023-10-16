@@ -35,7 +35,7 @@ public enum InterfaceType {
 }
 
 public protocol StepModelProtocol {
-    var choices: [ChoiceViewModel] { get set }
+    var choices: [any ChoiceProtocol] { get set }
     var gameplay: GameplayType { get set }
     var interface: InterfaceType { get set }
 }

@@ -43,18 +43,19 @@ public class StepViewViewModel: ObservableObject {
             case .undefined:
                 return GameplayError()
             case .selectTheRightAnswer:
-                return GameplaySelectTheRightAnswer(choices: stepModel.choices)
+                return GameplaySelectTheRightAnswer(choices: (stepModel.choices as? [ChoiceModel])!)
             case .selectAllRightAnswers:
-                return GameplaySelectAllRightAnswers(choices: stepModel.choices)
+                return GameplaySelectAllRightAnswers(choices: (stepModel.choices as? [ChoiceModel])!)
             case .selectSomeRightAnswers(let answersNumber):
                 return GameplaySelectSomeRightAnswers(
-                    choices: stepModel.choices, rightAnswersToFind: answersNumber)
+                    choices: (stepModel.choices as? [ChoiceModel])!, rightAnswersToFind: answersNumber)
             case .association:
-                return GameplayAssociation(choices: stepModel.choices)
+                return GameplayAssociation(choices: (stepModel.choices as? [AssociationChoiceModel])!)
             case .colorBingo:
-                return ColorBingoGameplay(choices: stepModel.choices)
+                return ColorBingoGameplay(choices: (stepModel.choices as? [ChoiceModel])!)
             case .superSimon(let answerIndexOrder):
-                return SuperSimonGameplay(choices: stepModel.choices, answerIndexOrder: answerIndexOrder)
+                return SuperSimonGameplay(
+                    choices: (stepModel.choices as? [ChoiceModel])!, answerIndexOrder: answerIndexOrder)
         }
     }
 
@@ -63,37 +64,45 @@ public class StepViewViewModel: ObservableObject {
             case .undefined:
                 StepErrorView()
             case .oneChoice:
-                OneChoiceView(gameplay: currentGameplay)
+                OneChoiceView(gameplay: (currentGameplay as? any GameplayProtocol<ChoiceModel>)!)
             case .twoChoices:
-                TwoChoicesView(gameplay: currentGameplay)
+                TwoChoicesView(gameplay: (currentGameplay as? any GameplayProtocol<ChoiceModel>)!)
             case .threeChoices:
-                ThreeChoicesView(gameplay: currentGameplay)
+                ThreeChoicesView(gameplay: (currentGameplay as? any GameplayProtocol<ChoiceModel>)!)
             case .threeChoicesInline:
-                ThreeChoicesInlineView(gameplay: currentGameplay)
+                ThreeChoicesInlineView(gameplay: (currentGameplay as? any GameplayProtocol<ChoiceModel>)!)
             case .fourChoices:
-                FourChoicesView(gameplay: currentGameplay)
+                FourChoicesView(gameplay: (currentGameplay as? any GameplayProtocol<ChoiceModel>)!)
             case .fourChoicesInline:
-                FourChoicesInlineView(gameplay: currentGameplay)
+                FourChoicesInlineView(gameplay: (currentGameplay as? any GameplayProtocol<ChoiceModel>)!)
             case .fiveChoices:
-                FiveChoicesView(gameplay: currentGameplay)
+                FiveChoicesView(gameplay: (currentGameplay as? any GameplayProtocol<ChoiceModel>)!)
             case .sixChoices:
-                SixChoicesView(gameplay: currentGameplay)
+                SixChoicesView(gameplay: (currentGameplay as? any GameplayProtocol<ChoiceModel>)!)
             case .listenOneChoice(let audioRecording):
-                ListenOneChoiceView(gameplay: currentGameplay, audioRecording: audioRecording)
+                ListenOneChoiceView(
+                    gameplay: (currentGameplay as? any GameplayProtocol<ChoiceModel>)!, audioRecording: audioRecording)
             case .listenTwoChoices(let audioRecording):
-                ListenTwoChoicesView(gameplay: currentGameplay, audioRecording: audioRecording)
+                ListenTwoChoicesView(
+                    gameplay: (currentGameplay as? any GameplayProtocol<ChoiceModel>)!, audioRecording: audioRecording)
             case .listenThreeChoices(let audioRecording):
-                ListenThreeChoicesView(gameplay: currentGameplay, audioRecording: audioRecording)
+                ListenThreeChoicesView(
+                    gameplay: (currentGameplay as? any GameplayProtocol<ChoiceModel>)!, audioRecording: audioRecording)
             case .listenThreeChoicesInline(let audioRecording):
-                ListenThreeChoicesInlineView(gameplay: currentGameplay, audioRecording: audioRecording)
+                ListenThreeChoicesInlineView(
+                    gameplay: (currentGameplay as? any GameplayProtocol<ChoiceModel>)!, audioRecording: audioRecording)
             case .listenFourChoices(let audioRecording):
-                ListenFourChoicesView(gameplay: currentGameplay, audioRecording: audioRecording)
+                ListenFourChoicesView(
+                    gameplay: (currentGameplay as? any GameplayProtocol<ChoiceModel>)!, audioRecording: audioRecording)
             case .listenSixChoices(let audioRecording):
-                ListenSixChoicesView(gameplay: currentGameplay, audioRecording: audioRecording)
+                ListenSixChoicesView(
+                    gameplay: (currentGameplay as? any GameplayProtocol<ChoiceModel>)!, audioRecording: audioRecording)
             case .dragAndDropOneAreaOneChoice(let dropArea):
-                DragAndDropOneAreaOneChoiceView(gameplay: currentGameplay, dropArea: dropArea)
+                DragAndDropOneAreaOneChoiceView(
+                    gameplay: (currentGameplay as? any GameplayProtocol<ChoiceModel>)!, dropArea: dropArea)
             case .dragAndDropAssociationFourChoices:
-                DragAndDropAssociationFourChoicesView(gameplay: currentGameplay)
+                DragAndDropAssociationFourChoicesView(
+                    gameplay: (currentGameplay as? any GameplayProtocol<AssociationChoiceModel>)!)
         }
     }
 

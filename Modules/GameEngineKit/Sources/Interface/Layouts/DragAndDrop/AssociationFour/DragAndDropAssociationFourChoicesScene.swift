@@ -8,7 +8,7 @@ import SwiftUI
 
 class DragAndDropAssociationFourChoicesScene: DragAndDropAssociationScene {
 
-    public override init(viewModel: GenericViewModel) {
+    public override init(viewModel: AssociationViewModel) {
         super.init(viewModel: viewModel)
 
         subscribeToChoicesUpdates()
@@ -71,11 +71,13 @@ class DragAndDropAssociationFourChoicesScene: DragAndDropAssociationScene {
             }
 
             guard
-                let destination = viewModel.choices.first(where: { $0.item == destinationNode.name }) as? AssociationModel
+                let destination = viewModel.choices.first(where: { $0.item == destinationNode.name })
+                    as? AssociationChoiceModel
             else { return }
-            guard let choice = viewModel.choices.first(where: { $0.item == playedNode!.name }) as? AssociationModel
+            guard
+                let choice = viewModel.choices.first(where: { $0.item == playedNode!.name }) as? AssociationChoiceModel
             else { return }
-            
+
             guard choice.category == destination.category else {
                 wrongAnswerBehavior(playedNode!)
                 break

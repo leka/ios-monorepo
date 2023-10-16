@@ -6,28 +6,28 @@ import GameEngineKit
 import SwiftUI
 
 private let choiceStep1 = [
-    ChoiceViewModel(item: "guitar", type: .text, rightAnswer: true),
-    ChoiceViewModel(item: "xylophone", type: .text),
+    ChoiceModel(item: "guitar", type: .text, rightAnswer: true),
+    ChoiceModel(item: "xylophone", type: .text),
 ]
 
 private let choiceStep2 = [
-    ChoiceViewModel(item: "violin", type: .text),
-    ChoiceViewModel(item: "guitar", type: .text, rightAnswer: true),
+    ChoiceModel(item: "violin", type: .text),
+    ChoiceModel(item: "guitar", type: .text, rightAnswer: true),
 ]
 
 private let choiceStep3 = [
-    ChoiceViewModel(item: "guitar", type: .text, rightAnswer: true),
-    ChoiceViewModel(item: "clarinet", type: .text),
+    ChoiceModel(item: "guitar", type: .text, rightAnswer: true),
+    ChoiceModel(item: "clarinet", type: .text),
 ]
 
 private let choiceStep4 = [
-    ChoiceViewModel(item: "violin", type: .text),
-    ChoiceViewModel(item: "guitar", type: .text, rightAnswer: true),
+    ChoiceModel(item: "violin", type: .text),
+    ChoiceModel(item: "guitar", type: .text, rightAnswer: true),
 ]
 
 private let choiceStep5 = [
-    ChoiceViewModel(item: "guitar", type: .text, rightAnswer: true),
-    ChoiceViewModel(item: "trumpet", type: .text),
+    ChoiceModel(item: "guitar", type: .text, rightAnswer: true),
+    ChoiceModel(item: "trumpet", type: .text),
 ]
 
 private var steps: [StandardStepModel] = [

@@ -10,7 +10,7 @@ public struct DragAndDropOneAreaOneChoiceView: View {
     @State private var scene: SKScene = SKScene()
     var dropArea: DropAreaModel
 
-    public init(gameplay: any GameplayProtocol, dropArea: DropAreaModel) {
+    public init(gameplay: any GameplayProtocol<ChoiceModel>, dropArea: DropAreaModel) {
         self._viewModel = StateObject(wrappedValue: GenericViewModel(gameplay: gameplay))
         self.dropArea = dropArea
     }

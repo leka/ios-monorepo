@@ -10,7 +10,7 @@ public struct ThreeChoicesView: View {
     let verticalSpacing: CGFloat = 32
     let answerSize: CGFloat = 260
 
-    public init(gameplay: any GameplayProtocol) {
+    public init(gameplay: any GameplayProtocol<ChoiceModel>) {
         self._viewModel = StateObject(wrappedValue: GenericViewModel(gameplay: gameplay))
     }
 

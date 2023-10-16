@@ -15,14 +15,21 @@ public enum ChoiceState {
     case playingWrongAnimation
 }
 
-public struct ChoiceModel: Identifiable, Equatable, Comparable {
+public protocol ChoiceProtocol {
+    var id: UUID { get }
+    var item: String { get }
+    var type: ChoiceDataType { get }
+    var status: ChoiceState { get set }
+}
+
+public struct ChoiceModel: Identifiable, Equatable, Comparable, ChoiceProtocol {
     public static func < (lhs: ChoiceModel, rhs: ChoiceModel) -> Bool {
         lhs.id.uuidString < rhs.id.uuidString
     }
 
     public let id: UUID = UUID()
     public let item: String
-    public var type: ChoiceDataType
+    public let type: ChoiceDataType
     public var status: ChoiceState
     public var rightAnswer: Bool
 
@@ -34,13 +41,20 @@ public struct ChoiceModel: Identifiable, Equatable, Comparable {
     }
 }
 
+public struct AssociationChoiceModel: Identifiable, Equatable, Comparable, ChoiceProtocol {
+    public static func < (lhs: AssociationChoiceModel, rhs: AssociationChoiceModel) -> Bool {
+        lhs.id.uuidString < rhs.id.uuidString
+    }
 
-public class AssociationModel: ChoiceModel {
+    public let id: UUID = UUID()
+    public let item: String
     public let category: String
+    public let type: ChoiceDataType
+    public var status: ChoiceState
 
     public init(item: String, category: String, type: ChoiceDataType, status: ChoiceState = .notSelected) {
+        self.item = item
         self.category = category
-        super.init(item: item, type: type)
         self.type = type
         self.status = status
     }

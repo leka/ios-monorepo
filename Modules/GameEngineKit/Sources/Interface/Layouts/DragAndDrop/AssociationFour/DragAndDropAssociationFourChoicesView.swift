@@ -6,11 +6,11 @@ import SpriteKit
 import SwiftUI
 
 public struct DragAndDropAssociationFourChoicesView: View {
-    @StateObject private var viewModel: GenericViewModel
+    @StateObject private var viewModel: AssociationViewModel
     @State private var scene: SKScene = SKScene()
 
-    public init(gameplay: any GameplayProtocol) {
-        self._viewModel = StateObject(wrappedValue: GenericViewModel(gameplay: gameplay))
+    public init(gameplay: any GameplayProtocol<AssociationChoiceModel>) {
+        self._viewModel = StateObject(wrappedValue: AssociationViewModel(gameplay: gameplay))
     }
 
     public var body: some View {
@@ -22,6 +22,7 @@ public struct DragAndDropAssociationFourChoicesView: View {
             .frame(width: proxy.size.width, height: proxy.size.height)
             .onAppear {
                 scene = DragAndDropAssociationFourChoicesScene(viewModel: viewModel)
+                print("scene appears")
             }
         }
         .edgesIgnoringSafeArea(.horizontal)

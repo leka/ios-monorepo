@@ -6,23 +6,22 @@ import Combine
 import Foundation
 
 public class GameplayAssociation: GameplayProtocol {
-    public var choices = CurrentValueSubject<[ChoiceViewModel], Never>([])
+    public var choices = CurrentValueSubject<[AssociationChoiceModel], Never>([])
     public var state = CurrentValueSubject<GameplayState, Never>(.idle)
 
-    private var rightAnswersGiven: [ChoiceViewModel] = []
+    private var rightAnswersGiven: [AssociationChoiceModel] = []
 
-    public init(choices: [ChoiceViewModel]) {
+    public init(choices: [AssociationChoiceModel]) {
         self.choices.send(choices)
         self.state.send(.playing)
     }
 
-    public func process(choice: ChoiceViewModel) {
+    public func process(choice: AssociationChoiceModel) {
         //        if choice.rightAnswer {
         if let index = choices.value.firstIndex(where: { $0.id == choice.id && $0.status != .playingRightAnimation }
         ) {
             self.choices.value[index].status = .playingRightAnimation
-            self.choices.send(self.choices.value)
-
+            print(rightAnswersGiven.count)
             rightAnswersGiven.append(self.choices.value[index])
         }
         //        } else {
