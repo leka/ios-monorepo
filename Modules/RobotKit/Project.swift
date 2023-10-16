@@ -12,6 +12,7 @@ let project = Project.module(
     dependencies: [
         .project(target: "BLEKit", path: Path("../../Modules/BLEKit")),
         .project(target: "DesignKit", path: Path("../../Modules/DesignKit")),
+        .project(target: "LogKit", path: Path("../../Modules/LogKit")),
     ],
     examples: [
         ModuleExample(

@@ -25,7 +25,7 @@ extension Robot {
     }
 
     public func run(_ reinforcer: Reinforcer) {
-        print("🤖 RUN reinforcer \(reinforcer)")
+        log.trace("🤖 RUN reinforcer \(reinforcer)")
 
         let output = commandGenerator(commands: reinforcer.cmd)
 

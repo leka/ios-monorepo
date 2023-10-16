@@ -14,7 +14,7 @@ extension Robot {
             onNotification: { data in
                 if let value = data?.first {
                     self.battery.send(Int(value))
-                    print("🤖 INFO - battery \(self.battery.value)")
+                    log.trace("🤖 battery: \(self.battery.value)%")
                 }
             }
         )
@@ -29,7 +29,7 @@ extension Robot {
             onNotification: { data in
                 if let value = data?.first {
                     self.isCharging.send(value == 1)
-                    print("🤖 INFO - isCharging \(self.isCharging.value)")
+                    log.trace("🤖 isCharging: \(self.isCharging.value)")
                 }
             }
         )
@@ -46,7 +46,8 @@ extension Robot {
                     self.osVersion.send(
                         String(decoding: data, as: UTF8.self)
                             .replacingOccurrences(of: "\0", with: ""))
-                    print("🤖 INFO - osVersion \(self.osVersion.value)")
+                    log.trace("🤖 osVersion: \(self.osVersion.value)")
+
                 }
             }
         )
@@ -63,7 +64,7 @@ extension Robot {
                     self.serialNumber.send(
                         String(decoding: data, as: UTF8.self)
                             .replacingOccurrences(of: "\0", with: ""))
-                    print("🤖 INFO - serialNumber \(self.serialNumber.value)")
+                    log.trace("🤖 serialNumber: \(self.serialNumber.value)")
                 }
             }
         )

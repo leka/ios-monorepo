@@ -34,6 +34,10 @@ let dependencies = Dependencies(
             url: "https://github.com/AudioKit/AudioKit",
             requirement: .exact("5.6.0")
         ),
+        .remote(
+            url: "https://github.com/apple/swift-log",
+            requirement: .exact("1.5.3")
+        ),
     ],
     platforms: [.iOS, .macOS]
 )

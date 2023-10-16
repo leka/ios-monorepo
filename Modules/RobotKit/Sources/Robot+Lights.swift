@@ -197,7 +197,7 @@ extension Robot {
     }
 
     public func shine(_ lights: Lights) {
-        print("🤖 SHINE \(lights)")
+        log.trace("🤖 SHINE \(lights)")
 
         let output = commandGenerator(commands: lights.cmd)
 
@@ -206,7 +206,7 @@ extension Robot {
     }
 
     public func blacken(_ lights: Lights.Blacken) {
-        print("🤖 BLACKEN \(lights)")
+        log.trace("🤖 BLACKEN \(lights)")
         switch lights {
             case .all:
                 shine(.all(in: .black))
@@ -236,7 +236,7 @@ extension Robot {
     }
 
     public func stopLights() {
-        print("🤖 STOP 🛑 - Lights")
+        log.trace("🤖 STOP 🛑 - Lights")
         shine(.all(in: .black))
     }
 

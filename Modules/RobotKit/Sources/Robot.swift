@@ -5,6 +5,9 @@
 import BLEKit
 import Combine
 import Foundation
+import LogKit
+
+let log = LogKit.createLoggerFor(module: "RobotKit")
 
 public class Robot {
 
@@ -43,11 +46,11 @@ public class Robot {
     // MARK: - General
 
     public func stop() {
-        print("🤖 STOP 🛑 - Everything")
+        log.trace("🤖 STOP 🛑 - Everything")
     }
 
     public func reboot() {
-        print("🤖 REBOOT 💫")
+        log.trace("🤖 REBOOT 💫")
     }
 
     // MARK: - Magic Cards

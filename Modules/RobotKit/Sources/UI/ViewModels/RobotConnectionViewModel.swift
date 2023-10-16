@@ -19,6 +19,7 @@ public class RobotConnectionViewModel: ObservableObject {
 
     @Published var connected: Bool = false
 
+    private let robot = Robot.shared
     private let bleManager = BLEManager.shared
 
     private var cancellables: Set<AnyCancellable> = []
@@ -30,12 +31,12 @@ public class RobotConnectionViewModel: ObservableObject {
     public func select(discovery: RobotDiscoveryModel) {
         if selectedDiscovery == discovery {
             selectedDiscovery = nil
-            print("unselect \(discovery.id)")
+            log.trace("Unselected: \(discovery.id)")
             return
         }
 
         selectedDiscovery = discovery
-        print("select \(discovery.id)")
+        log.trace("Selected: \(discovery.id)")
     }
 
     public func scanForRobots() {
@@ -46,6 +47,7 @@ public class RobotConnectionViewModel: ObservableObject {
             } receiveValue: { [weak self] discoveries in
                 guard let self = self else { return }
                 self.robotDiscoveries = discoveries
+                log.trace("🔵 BLE - Discoveries found: \(discoveries)")
             }
             .store(in: &cancellables)
     }
@@ -60,15 +62,16 @@ public class RobotConnectionViewModel: ObservableObject {
                 // nothing to do
             } receiveValue: { [weak self] peripheral in
                 guard let self = self else { return }
-                let robot = Robot.shared
                 robot.connectedPeripheral = peripheral
                 self.connectedDiscovery = discovery
                 self.selectedDiscovery = nil
+                log.info("🔵 BLE - Connected to \(robot.name.value)")
             }
             .store(in: &cancellables)
     }
 
     public func disconnectFromRobot() {
+        log.info("🔵 BLE - Disconnecting from \(robot.name.value)")
         bleManager.disconnect()
         connectedDiscovery = nil
     }
