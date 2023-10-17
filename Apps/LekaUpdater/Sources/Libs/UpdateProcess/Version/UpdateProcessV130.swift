@@ -290,7 +290,7 @@ private class StateSendingFile: GKState, StateEventProcessor {
         serviceUUID: BLESpecs.FileExchange.service,
         onWrite: {
             self.currentPacket += 1
-            self.tryToSendNextPacket()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.04, execute: self.tryToSendNextPacket)
         }
     )
 
