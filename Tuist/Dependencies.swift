@@ -12,7 +12,7 @@ let dependencies = Dependencies(
         ),
         .remote(
             url: "https://github.com/airbnb/lottie-ios",
-            requirement: .exact("4.3.0")
+            requirement: .exact("4.3.3")
         ),
         .remote(
             url: "https://github.com/gonzalezreal/swift-markdown-ui",
@@ -24,7 +24,7 @@ let dependencies = Dependencies(
         ),
         .remote(
             url: "https://github.com/StarryInternet/CombineCoreBluetooth",
-            requirement: .exact("0.6.0")
+            requirement: .exact("0.7.0")
         ),
         .remote(
             url: "https://github.com/michael94ellis/SwiftUIJoystick",
