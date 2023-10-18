@@ -123,7 +123,7 @@ private class StateSettingDestinationPath: GKState, StateEventProcessor {
     }
 
     override func didEnter(from previousState: GKState?) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: setDestinationPath)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: setDestinationPath)
     }
 
     func process(event: UpdateEvent) {
@@ -290,7 +290,7 @@ private class StateSendingFile: GKState, StateEventProcessor {
         serviceUUID: BLESpecs.FileExchange.service,
         onWrite: {
             self.currentPacket += 1
-            self.tryToSendNextPacket()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.04, execute: self.tryToSendNextPacket)
         }
     )
 
@@ -380,7 +380,7 @@ private class StateApplyingUpdate: GKState, StateEventProcessor {
     override func didEnter(from previousState: GKState?) {
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: setMajorMinorRevision)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: applyUpdate)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: applyUpdate)
 
     }
 
@@ -407,6 +407,8 @@ private class StateApplyingUpdate: GKState, StateEventProcessor {
 
         globalRobotManager.robotPeripheral?.send(majorData, forCharacteristic: majorCharacteristic)
 
+        sleep(1)
+
         let minorData = Data([globalFirmwareManager.minor])
 
         let minorCharacteristic = CharacteristicModelWriteOnly(
@@ -415,6 +417,8 @@ private class StateApplyingUpdate: GKState, StateEventProcessor {
         )
 
         globalRobotManager.robotPeripheral?.send(minorData, forCharacteristic: minorCharacteristic)
+
+        sleep(1)
 
         let revisionData = globalFirmwareManager.revision.data
 
