@@ -4,6 +4,7 @@
 
 import CryptoKit
 import Foundation
+import Version
 
 enum RobotUpdateStatus {
     case upToDate
@@ -12,16 +13,16 @@ enum RobotUpdateStatus {
 
 class FirmwareManager: ObservableObject {
     // swiftlint:disable:next force_cast
-    let currentVersion = Bundle.main.object(forInfoDictionaryKey: "LEKA_OS_VERSION") as! String
+    let currentVersion = Version(Bundle.main.object(forInfoDictionaryKey: "LEKA_OS_VERSION") as! String)!
 
     public var major: UInt8 {
-        UInt8(currentVersion.components(separatedBy: ".")[0])!
+        UInt8(currentVersion.major)
     }
     public var minor: UInt8 {
-        UInt8(currentVersion.components(separatedBy: ".")[1])!
+        UInt8(currentVersion.minor)
     }
     public var revision: UInt16 {
-        UInt16(currentVersion.components(separatedBy: ".")[2])!
+        UInt16(currentVersion.patch)
     }
 
     @Published public var data = Data()
@@ -30,12 +31,12 @@ class FirmwareManager: ObservableObject {
         SHA256.hash(data: data).compactMap { String(format: "%02x", $0) }.joined()
     }
 
-    func compareWith(version: String) -> RobotUpdateStatus {
-        guard version.contains(".") else {
+    func compareWith(version: Version?) -> RobotUpdateStatus {
+        guard let version = version else {
             return .needsUpdate
         }
 
-        guard version.compare(currentVersion, options: .numeric) == .orderedAscending else {
+        if version >= currentVersion {
             return .upToDate
         }
 

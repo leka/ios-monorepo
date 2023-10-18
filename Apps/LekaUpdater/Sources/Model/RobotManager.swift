@@ -4,6 +4,7 @@
 
 import BLEKit
 import Foundation
+import Version
 
 public class RobotManager: ObservableObject {
     @Published var robotPeripheral: RobotPeripheral?
@@ -12,7 +13,7 @@ public class RobotManager: ObservableObject {
     @Published var serialNumber: String?
     @Published var battery: Int?
     @Published var isCharging: Bool?
-    @Published var osVersion: String?
+    @Published var osVersion: Version?
     @Published var sha256: String?
 
     init(
@@ -26,7 +27,7 @@ public class RobotManager: ObservableObject {
         self.serialNumber = serialNumber
         self.battery = battery
         self.isCharging = isCharging
-        self.osVersion = osVersion
+        self.osVersion = Version(osVersion ?? "")
         self.sha256 = nil
 
     }
@@ -37,24 +38,20 @@ public class RobotManager: ObservableObject {
         self.name = robotDiscovery.name
         self.battery = robotDiscovery.battery
         self.isCharging = robotDiscovery.isCharging
-        self.osVersion = robotDiscovery.osVersion
+        self.osVersion = Version(robotDiscovery.osVersion)
         self.sha256 = nil
 
     }
 
     private func isSHA256Compatible() -> Bool {
 
-        let startingVersion: String = "1.3.0"
+        let startingVersion = Version(1, 3, 0)
 
-        guard let osVersion = self.osVersion, osVersion.contains(".") else {
+        guard let osVersion = self.osVersion else {
             return false
         }
 
-        let osVersionIsSame = osVersion.compare(startingVersion, options: .numeric) == .orderedSame
-        let osVersionIsNewer = osVersion.compare(startingVersion, options: .numeric) == .orderedDescending
-        let osVersionIsSameOrNewer = osVersionIsSame || osVersionIsNewer
-
-        return osVersionIsSameOrNewer
+        return osVersion >= startingVersion
 
     }
 
@@ -139,8 +136,9 @@ public class RobotManager: ObservableObject {
             serviceUUID: BLESpecs.DeviceInformation.service,
             onRead: { data in
                 if let data = data {
-                    self.osVersion = String(decoding: data, as: UTF8.self)
-                        .replacingOccurrences(of: "\0", with: "")
+                    self.osVersion = Version(
+                        String(decoding: data, as: UTF8.self)
+                            .replacingOccurrences(of: "\0", with: ""))
                 }
             }
         )

@@ -4,6 +4,7 @@
 
 import Combine
 import Foundation
+import Version
 
 // MARK: - General (user facing) update process states, errors
 
@@ -36,11 +37,11 @@ class UpdateProcessController {
     // MARK: - Public variables
 
     public static let availableVersions = [
-        "1.0.0",
-        "1.1.0",
-        "1.2.0",
-        "1.3.0",
-        "1.4.0",
+        Version(1, 0, 0),
+        Version(1, 1, 0),
+        Version(1, 2, 0),
+        Version(1, 3, 0),
+        Version(1, 4, 0),
     ]
 
     public var currentStage = CurrentValueSubject<UpdateProcessStage, UpdateProcessError>(.initial)
@@ -50,9 +51,9 @@ class UpdateProcessController {
         let currentRobotVersion = globalRobotManager.osVersion
 
         switch currentRobotVersion {
-            case "1.0.0", "1.1.0", "1.2.0":
+            case Version(1, 0, 0), Version(1, 1, 0), Version(1, 2, 0):
                 self.currentUpdateProcess = UpdateProcessV100()
-            case "1.3.0", "1.4.0":
+            case Version(1, 3, 0), Version(1, 4, 0):
                 self.currentUpdateProcess = UpdateProcessV130()
             default:
                 self.currentUpdateProcess = UpdateProcessTemplate()

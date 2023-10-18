@@ -12,6 +12,7 @@ let project = Project.iOSApp(
     dependencies: [
         .project(target: "DesignKit", path: Path("../../Modules/DesignKit")),
         .project(target: "BLEKit", path: Path("../../Modules/BLEKit")),
+        .external(name: "Version"),
     ],
     infoPlist: [
         "LEKA_OS_VERSION": "1.4.0",

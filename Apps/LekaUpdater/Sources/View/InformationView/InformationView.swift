@@ -4,6 +4,7 @@
 
 import DesignKit
 import SwiftUI
+import Version
 
 struct InformationView: View {
     @StateObject var viewModel = InformationViewModel()
@@ -135,7 +136,7 @@ struct InformationView_Previews: PreviewProvider {
             globalRobotManager.name = "Leka"
             globalRobotManager.battery = 75
             globalRobotManager.isCharging = true
-            globalRobotManager.osVersion = "1.3.0"
+            globalRobotManager.osVersion = Version(1, 3, 0)
         }
     }
 }

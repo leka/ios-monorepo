@@ -2,6 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import Version
 import XCTest
 
 @testable import LekaUpdater
@@ -10,7 +11,7 @@ final class FirmwareManager_Tests_compareVersion: XCTestCase {
 
     func test_shouldReturnRobotNeedUpdate_lowerVersion() {
         let firmwareManager = FirmwareManager()
-        let robotVersion = "1.0.0"
+        let robotVersion = Version(1, 0, 0)
 
         let expected = RobotUpdateStatus.needsUpdate
         let actual = firmwareManager.compareWith(version: robotVersion)
@@ -28,7 +29,7 @@ final class FirmwareManager_Tests_compareVersion: XCTestCase {
 
     func test_shouldReturnRobotIsUpToDate_higherVersion() {
         let firmwareManager = FirmwareManager()
-        let robotVersion = "99.99.999"
+        let robotVersion = Version(99, 99, 999)
 
         let expected = RobotUpdateStatus.upToDate
         let actual = firmwareManager.compareWith(version: robotVersion)
@@ -37,7 +38,7 @@ final class FirmwareManager_Tests_compareVersion: XCTestCase {
 
     func test_shouldReturnRobotNeedUpdate_invalidVersion() {
         let firmwareManager = FirmwareManager()
-        let robotVersion = "⚠️ NO OS VERSION"
+        let robotVersion = Version("⚠️ NO OS VERSION")
 
         let expected = RobotUpdateStatus.needsUpdate
         let actual = firmwareManager.compareWith(version: robotVersion)

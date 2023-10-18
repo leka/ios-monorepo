@@ -4,6 +4,7 @@
 
 import Combine
 import Foundation
+import Version
 
 class InformationViewModel: ObservableObject {
 
@@ -41,19 +42,19 @@ class InformationViewModel: ObservableObject {
             .sink { robotOsVersion in
                 self.updateShowRobotCannotBeUpdated(robotOsVersion: robotOsVersion)
                 self.updateShowRobotNeedsUpdate(robotOsVersion: robotOsVersion)
-                self.robotOSVersion = robotOsVersion ?? ""
+                self.robotOSVersion = robotOsVersion?.description ?? ""
             }
             .store(in: &cancellables)
     }
 
-    private func updateShowRobotCannotBeUpdated(robotOsVersion: String?) {
+    private func updateShowRobotCannotBeUpdated(robotOsVersion: Version?) {
         guard let robotOsVersion = robotOsVersion else { return }
 
         let isUpdateProcessAvailable = UpdateProcessController.availableVersions.contains(robotOsVersion)
         showRobotCannotBeUpdated = !isUpdateProcessAvailable
     }
 
-    private func updateShowRobotNeedsUpdate(robotOsVersion: String?) {
+    private func updateShowRobotNeedsUpdate(robotOsVersion: Version?) {
         if let robotOsVersion = robotOsVersion {
             let isUpdateProcessAvailable = UpdateProcessController.availableVersions.contains(robotOsVersion)
             let isRobotNeedsUpdate = globalFirmwareManager.compareWith(version: robotOsVersion) == .needsUpdate
