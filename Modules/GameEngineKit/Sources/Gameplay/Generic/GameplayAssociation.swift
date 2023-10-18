@@ -21,7 +21,6 @@ public class GameplayAssociation: GameplayProtocol {
         if let index = choices.value.firstIndex(where: { $0.id == choice.id && $0.status != .playingRightAnimation }
         ) {
             self.choices.value[index].status = .playingRightAnimation
-            print(rightAnswersGiven.count)
             rightAnswersGiven.append(self.choices.value[index])
         }
         //        } else {
