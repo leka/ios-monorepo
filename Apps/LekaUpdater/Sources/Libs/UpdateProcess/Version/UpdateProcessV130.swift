@@ -119,7 +119,7 @@ private class StateSettingFileExchangeState: GKState, StateEventProcessor {
 private class StateSettingDestinationPath: GKState, StateEventProcessor {
 
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
-        stateClass is StateVerifyingFile.Type || stateClass is StateErrorRobotUnexpectedDisconnection.Type
+        stateClass is StateClearingFile.Type || stateClass is StateErrorRobotUnexpectedDisconnection.Type
     }
 
     override func didEnter(from previousState: GKState?) {
@@ -129,7 +129,7 @@ private class StateSettingDestinationPath: GKState, StateEventProcessor {
     func process(event: UpdateEvent) {
         switch event {
             case .destinationPathSet:
-                self.stateMachine?.enter(StateVerifyingFile.self)
+                self.stateMachine?.enter(StateClearingFile.self)
             case .robotDisconnected:
                 self.stateMachine?.enter(StateErrorRobotUnexpectedDisconnection.self)
             default:
@@ -154,83 +154,6 @@ private class StateSettingDestinationPath: GKState, StateEventProcessor {
 
         globalRobotManager.robotPeripheral?.send(destinationPath.data(using: .utf8)!, forCharacteristic: characteristic)
     }
-}
-
-private class StateVerifyingFile: GKState, StateEventProcessor {
-
-    private var cancellables: Set<AnyCancellable> = []
-
-    private var isFileValid = false
-    private let defaultValue = "0000000000000000000000000000000000000000000000000000000000000000"
-
-    override func isValidNextState(_ stateClass: AnyClass) -> Bool {
-        stateClass is StateClearingFile.Type || stateClass is StateApplyingUpdate.Type
-            || stateClass is StateErrorRobotUnexpectedDisconnection.Type
-    }
-
-    override func didEnter(from previousState: GKState?) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: startFileVerification)
-    }
-
-    override func willExit(to nextState: GKState) {
-        cancellables.removeAll()
-        globalRobotManager.sha256 = nil
-    }
-
-    func process(event: UpdateEvent) {
-        switch event {
-            case .fileVerificationReceived:
-                if isFileValid {
-                    self.stateMachine?.enter(StateApplyingUpdate.self)
-                } else {
-                    self.stateMachine?.enter(StateClearingFile.self)
-                }
-            case .robotDisconnected:
-                self.stateMachine?.enter(StateErrorRobotUnexpectedDisconnection.self)
-            default:
-                return
-        }
-    }
-
-    private func startFileVerification() {
-        DispatchQueue.main.asyncAfter(deadline: .now(), execute: subscribeActualSHA256Updates)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: readRequestSHA256)
-    }
-
-    private func subscribeActualSHA256Updates() {
-        globalRobotManager.$sha256
-            .receive(on: DispatchQueue.main)
-            .sink { value in
-                guard let value = value else { return }
-
-                if value == self.defaultValue {
-                    return
-                }
-
-                self.isFileValid = value == globalFirmwareManager.sha256
-                self.process(event: .fileVerificationReceived)
-            }
-            .store(in: &cancellables)
-    }
-
-    private func readRequestSHA256() {
-        globalRobotManager.robotPeripheral?.peripheral
-            .readValue(
-                forCharacteristic: BLESpecs.FileExchange.Characteristics.fileSHA256,
-                inService: BLESpecs.FileExchange.service
-            )
-            .receive(on: DispatchQueue.main)
-            .sink(
-                receiveCompletion: { _ in
-                    // nothing to do
-                },
-                receiveValue: { data in
-                    // nothing to do
-                }
-            )
-            .store(in: &cancellables)
-    }
-
 }
 
 private class StateClearingFile: GKState, StateEventProcessor {
@@ -517,7 +440,6 @@ class UpdateProcessV130: UpdateProcessProtocol {
 
     private var stateMachine: GKStateMachine?
     private var stateSendingFile = StateSendingFile()
-    private var stateVerifyingFile = StateVerifyingFile()
 
     private var cancellables: Set<AnyCancellable> = []
 
@@ -535,7 +457,6 @@ class UpdateProcessV130: UpdateProcessProtocol {
             StateSettingDestinationPath(),
             StateClearingFile(),
             stateSendingFile,
-            stateVerifyingFile,
             StateApplyingUpdate(),
             StateWaitingForRobotToReboot(),
 
@@ -591,7 +512,7 @@ class UpdateProcessV130: UpdateProcessProtocol {
             case is StateInitial:
                 currentStage.send(.initial)
             case is StateLoadingUpdateFile, is StateSettingFileExchangeState, is StateSettingDestinationPath,
-                is StateClearingFile, is StateSendingFile, is StateVerifyingFile:
+                is StateClearingFile, is StateSendingFile:
                 currentStage.send(.sendingUpdate)
             case is StateApplyingUpdate, is StateWaitingForRobotToReboot:
                 currentStage.send(.installingUpdate)
