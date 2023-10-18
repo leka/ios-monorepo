@@ -7,7 +7,6 @@ import SwiftUI
 struct CreateUserProfileView: View {
 
     @EnvironmentObject var company: CompanyViewModel
-    @EnvironmentObject var settings: SettingsViewModel
     @EnvironmentObject var viewRouter: ViewRouter
     @EnvironmentObject var metrics: UIMetrics
     @EnvironmentObject var navigationVM: NavigationViewModel
@@ -186,7 +185,6 @@ struct CreateUserProfileView_Previews: PreviewProvider {
     static var previews: some View {
         CreateUserProfileView()
             .environmentObject(CompanyViewModel())
-            .environmentObject(SettingsViewModel())
             .environmentObject(ViewRouter())
             .environmentObject(UIMetrics())
             .previewInterfaceOrientation(.landscapeLeft)
