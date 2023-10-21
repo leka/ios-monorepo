@@ -12,7 +12,6 @@ struct GameEngineKitExample: App {
             NavigationView {
                 ContentView()
             }
-            .navigationViewStyle(StackNavigationViewStyle())
         }
     }
 }
