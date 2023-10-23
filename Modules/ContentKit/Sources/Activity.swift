@@ -24,6 +24,7 @@ public enum ExerciseType: String, Codable {
     case dragAndDrop
 }
 
+// TODO(@ladislas): remove the need to specify the number, let the data do the talking
 public enum UIInteractionType: String, Codable {
     case touchToSelectOne
     case touchToSelectTwo
@@ -42,6 +43,10 @@ public struct Exercise: Codable {
     public let interface: UIInteractionType
     public let gameplay: Gameplay
     public let payload: ExercisePayload
+
+    public enum Interface: String, Codable {
+        case touchToSelect
+    }
 }
 
 public enum ExercisePayload: Codable {
