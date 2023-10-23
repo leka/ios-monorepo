@@ -36,8 +36,8 @@ jobs:
 
       - name: tuist generate
         run: |
-          tuist generate -n
+          tuist generate -n --verbose
 
       - name: tuist build
         run: |
-          tuist build
+          tuist build --verbose
