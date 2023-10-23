@@ -61,7 +61,9 @@ extension Robot {
         }
 
         public init(from value: String) {
-            guard let color = ColorString(rawValue: value)?.color else { fatalError() }
+            guard let color = ColorString(rawValue: value)?.color else {
+                fatalError("Invalid color string \(value)")
+            }
             self = color
         }
 
