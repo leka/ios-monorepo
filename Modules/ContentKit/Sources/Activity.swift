@@ -89,9 +89,15 @@ public struct SelectionPayload: Codable {
     public let choices: [SelectionChoice]
 }
 
+public enum UIElementType: String, Codable {
+    case image
+    case text
+    case color
+}
+
 public struct SelectionChoice: Codable {
     public let value: String
-    public let type: String
+    public let type: UIElementType
     public let isRightAnswer: Bool
 
     private enum CodingKeys: String, CodingKey {
@@ -101,7 +107,7 @@ public struct SelectionChoice: Codable {
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         value = try container.decode(String.self, forKey: .value)
-        type = try container.decode(String.self, forKey: .type)
+        type = try container.decode(UIElementType.self, forKey: .type)
         isRightAnswer = try container.decodeIfPresent(Bool.self, forKey: .isRightAnswer) ?? false
     }
 }
@@ -114,12 +120,12 @@ public struct DragAndDropPayload: Codable {
 
 public struct DropZoneDetails: Codable {
     public let value: String
-    public let type: String
+    public let type: UIElementType
 }
 
 public struct DragAndDropChoice: Codable {
     public let value: String
-    public let type: String
+    public let type: UIElementType
     public let dropZone: ChoiceDropZone
 
     public enum ChoiceDropZone: String, Codable {
