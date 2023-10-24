@@ -10,7 +10,7 @@ sequence:
   - exercises:
       - instructions: Touche le bleu
         type: selection
-        interface: touchToSelectOne
+        interface: touchToSelect
         gameplay: selectAllRightAnswers
         payload:
           choices:
@@ -20,7 +20,7 @@ sequence:
 
       - instructions: Touche le vert
         type: selection
-        interface: touchToSelectOne
+        interface: touchToSelect
         gameplay: selectAllRightAnswers
         payload:
           choices:
@@ -30,7 +30,7 @@ sequence:
 
       - instructions: Touche le rouge
         type: selection
-        interface: touchToSelectOne
+        interface: touchToSelect
         gameplay: selectAllRightAnswers
         payload:
           choices:

@@ -58,7 +58,7 @@ public struct ActivityView: View {
 
     @ViewBuilder
     private func currentExerciseInterface() -> some View {
-        switch viewModel.currentInterface {
+        switch viewModel.currentExerciseInterface {
             case .touchToSelect:
                 TouchToSelectView(exercise: viewModel.currentExercise)
                     .id(viewModel.currentExerciseIndexInSequence)
