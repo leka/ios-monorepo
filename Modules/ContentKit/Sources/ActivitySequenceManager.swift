@@ -2,40 +2,39 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
-import ContentKit
+public class ActivitySequenceManager {
 
-class ActivitySequenceManager {
     private let activity: Activity
 
-    var currentSequenceIndex: Int = 0
-    var currentExerciseIndexInSequence: Int = 0
+    public var currentSequenceIndex: Int = 0
+    public var currentExerciseIndexInSequence: Int = 0
 
-    init(activity: Activity) {
+    public init(activity: Activity) {
         self.activity = activity
     }
 
-    var totalSequences: Int {
+    public var totalSequences: Int {
         activity.sequence.count
     }
 
-    var totalExercisesInCurrentSequence: Int {
+    public var totalExercisesInCurrentSequence: Int {
         activity.sequence[currentSequenceIndex].exercises.count
     }
 
-    var currentExercise: Exercise {
+    public var currentExercise: Exercise {
         activity.sequence[currentSequenceIndex].exercises[currentExerciseIndexInSequence]
     }
 
-    var isFirstExercise: Bool {
+    public var isFirstExercise: Bool {
         currentExerciseIndexInSequence == 0 && currentSequenceIndex == 0
     }
 
-    var isLastExercise: Bool {
+    public var isLastExercise: Bool {
         currentExerciseIndexInSequence == activity.sequence[currentSequenceIndex].exercises.count - 1
             && currentSequenceIndex == activity.sequence.count - 1
     }
 
-    func moveToNextExercise() {
+    public func moveToNextExercise() {
         if currentExerciseIndexInSequence < activity.sequence[currentSequenceIndex].exercises.count - 1 {
             currentExerciseIndexInSequence += 1
         } else if currentSequenceIndex < activity.sequence.count - 1 {
@@ -44,7 +43,7 @@ class ActivitySequenceManager {
         }
     }
 
-    func moveToPreviousExercise() {
+    public func moveToPreviousExercise() {
         if currentExerciseIndexInSequence > 0 {
             currentExerciseIndexInSequence -= 1
         } else if currentSequenceIndex > 0 {
