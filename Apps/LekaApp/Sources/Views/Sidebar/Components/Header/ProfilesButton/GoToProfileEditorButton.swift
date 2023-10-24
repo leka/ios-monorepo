@@ -21,8 +21,8 @@ struct GoToProfileEditorButton: View {
             VStack(spacing: 5) {
                 HStack(alignment: .top) {
                     Spacer()
-                    SidebarAvatarCell(type: .teacher)
-                    SidebarAvatarCell(type: .user, badge: !settings.companyIsConnected)
+                    TeacherSidebarAvatarCell()
+                    UserSidebarAvatarCell()
                     Spacer()
                 }
                 .overlay(TickPic())
