@@ -67,6 +67,6 @@ public struct ActivityView: View {
 }
 
 #Preview {
-    let activity = ContentKit.decodeActivity("activity-seq1-selection")
+    let activity = ContentKit.ActivityList.seq1Selection
     return ActivityView(viewModel: ActivityViewViewModel(activity: activity))
 }
