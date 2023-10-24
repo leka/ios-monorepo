@@ -24,7 +24,7 @@ public struct ListenOneChoiceView: View {
                 .frame(maxHeight: 500)
                 .padding(.vertical, 20)
             Spacer()
-            ChoiceView(
+            ChoiceViewDeprecated(
                 choice: viewModel.choices[0], size: answerSize, isTappable: audioPlayer.didFinishPlaying
             )
             .onTapGestureIf(audioPlayer.didFinishPlaying) {

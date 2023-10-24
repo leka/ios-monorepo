@@ -36,14 +36,14 @@ public struct ListenThreeChoicesView: View {
             verticalSpacing: verticalSpacing
         ) {
             GridRow {
-                ChoiceView(
+                ChoiceViewDeprecated(
                     choice: viewModel.choices[0], size: answerSize, isTappable: audioPlayer.didFinishPlaying
                 )
                 .onTapGestureIf(audioPlayer.didFinishPlaying) {
                     viewModel.onChoiceTapped(choice: viewModel.choices[0])
                 }
                 Color.clear.gridCellUnsizedAxes([.horizontal, .vertical])
-                ChoiceView(
+                ChoiceViewDeprecated(
                     choice: viewModel.choices[1], size: answerSize, isTappable: audioPlayer.didFinishPlaying
                 )
                 .onTapGestureIf(audioPlayer.didFinishPlaying) {
@@ -52,7 +52,7 @@ public struct ListenThreeChoicesView: View {
             }
             GridRow {
                 Color.clear.gridCellUnsizedAxes([.horizontal, .vertical])
-                ChoiceView(
+                ChoiceViewDeprecated(
                     choice: viewModel.choices[2], size: answerSize, isTappable: audioPlayer.didFinishPlaying
                 )
                 .onTapGestureIf(audioPlayer.didFinishPlaying) {

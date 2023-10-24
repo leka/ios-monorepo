@@ -23,7 +23,7 @@ public struct SixChoicesView: View {
                 ForEach(0..<3) { index in
                     let choice = viewModel.choices[index]
 
-                    ChoiceView(choice: choice, size: answerSize)
+                    ChoiceViewDeprecated(choice: choice, size: answerSize)
                         .onTapGesture {
                             viewModel.onChoiceTapped(choice: choice)
                         }
@@ -33,7 +33,7 @@ public struct SixChoicesView: View {
                 ForEach(3..<6) { index in
                     let choice = viewModel.choices[index]
 
-                    ChoiceView(choice: choice, size: answerSize)
+                    ChoiceViewDeprecated(choice: choice, size: answerSize)
                         .onTapGesture {
                             viewModel.onChoiceTapped(choice: choice)
                         }

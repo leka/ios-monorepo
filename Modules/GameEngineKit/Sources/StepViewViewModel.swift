@@ -46,7 +46,7 @@ public class StepViewViewModel: ObservableObject {
             case .selectTheRightAnswer:
                 return GameplaySelectTheRightAnswer(choices: stepModel.choices)
             case .selectAllRightAnswers:
-                return GameplaySelectAllRightAnswers(choices: stepModel.choices)
+                return GameplaySelectAllRightAnswersDeprecated(choices: stepModel.choices)
             case .selectSomeRightAnswers(let answersNumber):
                 return GameplaySelectSomeRightAnswers(
                     choices: stepModel.choices, rightAnswersToFind: answersNumber)

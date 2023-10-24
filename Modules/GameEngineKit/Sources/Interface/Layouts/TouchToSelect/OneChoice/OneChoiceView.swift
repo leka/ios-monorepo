@@ -17,7 +17,7 @@ public struct OneChoiceView: View {
         HStack(spacing: horizontalSpacing) {
             let choice = viewModel.choices[0]
 
-            ChoiceView(choice: choice, size: answerSize)
+            ChoiceViewDeprecated(choice: choice, size: answerSize)
                 .onTapGesture {
                     viewModel.onChoiceTapped(choice: choice)
                 }
