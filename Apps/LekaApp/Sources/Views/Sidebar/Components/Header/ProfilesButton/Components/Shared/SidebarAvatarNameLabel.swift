@@ -1,10 +1,6 @@
-//
-//  SidebarAvatarNameLabel.swift
-//  LekaApp
-//
-//  Created by Mathieu Jeannot on 24/10/23.
-//  Copyright © 2023 leka.io. All rights reserved.
-//
+// Leka - iOS Monorepo
+// Copyright 2023 APF France handicap
+// SPDX-License-Identifier: Apache-2.0
 
 import SwiftUI
 
