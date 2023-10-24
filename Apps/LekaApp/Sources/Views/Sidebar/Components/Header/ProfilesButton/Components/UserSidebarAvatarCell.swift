@@ -30,8 +30,7 @@ struct UserSidebarAvatarCell: View {
     }
 
     @ViewBuilder private var avatarAccessoryView: some View {
-        if !settings.companyIsConnected ||
-            (!company.profileIsAssigned(.user) && !settings.exploratoryModeIsOn) {
+        if !settings.companyIsConnected || (!company.profileIsAssigned(.user) && !settings.exploratoryModeIsOn) {
             Image("button_notification")
                 .resizable()
                 .renderingMode(.original)
