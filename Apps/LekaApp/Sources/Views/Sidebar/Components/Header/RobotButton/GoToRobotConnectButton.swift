@@ -48,6 +48,7 @@ struct GoToRobotConnectButton: View {
         } else {
             Text("Connectez vous à votre LEKA.")
                 .font(metrics.reg16)
+                .multilineTextAlignment(.leading)
                 .foregroundColor(.accentColor)
         }
     }
