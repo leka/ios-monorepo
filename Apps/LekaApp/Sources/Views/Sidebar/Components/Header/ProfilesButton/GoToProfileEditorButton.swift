@@ -6,9 +6,7 @@ import SwiftUI
 
 struct GoToProfileEditorButton: View {
 
-    @EnvironmentObject var company: CompanyViewModel
     @EnvironmentObject var settings: SettingsViewModel
-    @EnvironmentObject var viewRouter: ViewRouter
     @EnvironmentObject var metrics: UIMetrics
     @EnvironmentObject var navigationVM: NavigationViewModel
 
@@ -23,8 +21,8 @@ struct GoToProfileEditorButton: View {
             VStack(spacing: 5) {
                 HStack(alignment: .top) {
                     Spacer()
-                    SidebarAvatarCell(type: .teacher)
-                    SidebarAvatarCell(type: .user, badge: !settings.companyIsConnected)
+                    TeacherSidebarAvatarCell()
+                    UserSidebarAvatarCell()
                     Spacer()
                 }
                 .overlay(TickPic())
@@ -52,9 +50,8 @@ struct GoToProfileEditorButton: View {
 struct GoToProfileEditorButton_Previews: PreviewProvider {
     static var previews: some View {
         GoToProfileEditorButton()
-            .environmentObject(CompanyViewModel())
             .environmentObject(SettingsViewModel())
-            .environmentObject(ViewRouter())
             .environmentObject(UIMetrics())
+            .environmentObject(NavigationViewModel())
     }
 }

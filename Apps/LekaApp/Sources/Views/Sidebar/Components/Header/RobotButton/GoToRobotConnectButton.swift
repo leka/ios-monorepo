@@ -7,7 +7,6 @@ import SwiftUI
 struct GoToRobotConnectButton: View {
 
     @EnvironmentObject var robotVM: RobotViewModel
-    @EnvironmentObject var viewRouter: ViewRouter
     @EnvironmentObject var metrics: UIMetrics
     @EnvironmentObject var navigationVM: NavigationViewModel
 
@@ -49,6 +48,7 @@ struct GoToRobotConnectButton: View {
         } else {
             Text("Connectez vous à votre LEKA.")
                 .font(metrics.reg16)
+                .multilineTextAlignment(.leading)
                 .foregroundColor(.accentColor)
         }
     }

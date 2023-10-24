@@ -8,7 +8,6 @@ struct ProfileEditorView: View {
 
     @EnvironmentObject var company: CompanyViewModel
     @EnvironmentObject var settings: SettingsViewModel
-    @EnvironmentObject var viewRouter: ViewRouter
     @EnvironmentObject var metrics: UIMetrics
     @Environment(\.dismiss) var dismiss
 
@@ -92,7 +91,6 @@ struct ProfileEditorView_Previews: PreviewProvider {
         ProfileEditorView()
             .environmentObject(CompanyViewModel())
             .environmentObject(SettingsViewModel())
-            .environmentObject(ViewRouter())
             .environmentObject(UIMetrics())
             .previewInterfaceOrientation(.landscapeLeft)
     }

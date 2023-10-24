@@ -51,11 +51,8 @@ struct SettingsView: View {
                             dismiss()
                         },
                         label: {
-                            HStack(spacing: 4) {
-                                Image(systemName: "chevron.left")
-                                Text("Fermer")
-                            }
-                            .foregroundColor(.white)
+                            Text("Fermer")
+                                .foregroundColor(.white)
                         })
                 }
             }
@@ -72,10 +69,7 @@ struct SettingsView_Previews: PreviewProvider {
             .ignoresSafeArea()
             .sheet(isPresented: $open) {
                 SettingsView()
-                    .environmentObject(NavigationViewModel())
                     .environmentObject(SettingsViewModel())
-                    .environmentObject(CompanyViewModel())
-                    .environmentObject(ViewRouter())
                     .environmentObject(UIMetrics())
             }
             .previewInterfaceOrientation(.landscapeLeft)

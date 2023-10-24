@@ -34,6 +34,7 @@ struct RobotPicker: View {
 
                 RobotStore(robotVM: robotVM, allRobots: $allRobots)
                     .onAppear {
+                        robotVM.currentlySelectedRobotIndex = nil
                         allRobots = 13  // For the tests
                     }
 
@@ -102,6 +103,7 @@ struct RobotPicker: View {
             action: {
                 if robotVM.currentlyConnectedRobotIndex == robotVM.currentlySelectedRobotIndex {
                     robotVM.currentlyConnectedRobotIndex = nil
+                    robotVM.currentlySelectedRobotIndex = nil
                     robotVM.currentlyConnectedRobotName = ""
                     robotVM.robotIsConnected = false
                 } else {

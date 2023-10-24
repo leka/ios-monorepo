@@ -6,29 +6,9 @@ import SwiftUI
 
 struct HomeView: View {
 
-    @EnvironmentObject var robotVM: RobotViewModel
     @EnvironmentObject var navigationVM: NavigationViewModel
     @EnvironmentObject var settings: SettingsViewModel
     @EnvironmentObject var metrics: UIMetrics
-
-    private func changeBatteryLevel() {
-        if robotVM.robotIsCharging {
-            if robotVM.robotChargeLevel == 100 {
-                robotVM.robotIsCharging.toggle()  // off
-            } else if robotVM.robotChargeLevel == 10 {
-                robotVM.robotChargeLevel += 15
-            } else {
-                robotVM.robotChargeLevel += 25
-            }
-        } else {
-            if robotVM.robotChargeLevel == 0 {
-                robotVM.robotIsCharging.toggle()  // on
-                robotVM.robotChargeLevel = 10  // trick to trigger change
-            } else {
-                robotVM.robotChargeLevel -= 25
-            }
-        }
-    }
 
     var body: some View {
         Group {
@@ -42,13 +22,6 @@ struct HomeView: View {
                         .toolbar {
                             ToolbarItem(placement: .principal) {
                                 toolbarTitle
-                            }
-                            ToolbarItem(placement: .navigationBarLeading) {
-                                Button(
-                                    action: { changeBatteryLevel() },
-                                    label: {
-                                        Text("Batterie")
-                                    })
                             }
                             ToolbarItem(placement: .navigationBarTrailing) {
                                 infoButton
@@ -115,12 +88,8 @@ struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
             .environmentObject(NavigationViewModel())
-            .environmentObject(CompanyViewModel())
             .environmentObject(SettingsViewModel())
             .environmentObject(UIMetrics())
-            .environmentObject(CurriculumViewModel())
-            .environmentObject(ActivityViewModel())
-            .environmentObject(RobotViewModel())
             .previewInterfaceOrientation(.landscapeLeft)
     }
 }
