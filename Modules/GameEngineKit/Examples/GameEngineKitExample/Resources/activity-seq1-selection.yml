@@ -1,0 +1,39 @@
+# Leka - iOS Monorepo
+# Copyright 2023 APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+id: 38e454a0-81b9-4344-991b-357c6b96aee2
+name: Reconnaitre les couleurs
+description: L'objectif est de trouver la bonne couleur ou des les rassembler par famille
+image: activity_color_recognition_1
+sequence:
+  - exercises:
+      - instructions: Touche le bleu
+        type: selection
+        interface: touchToSelectOne
+        gameplay: selectAllRightAnswers
+        payload:
+          choices:
+            - value: blue
+              type: color
+              isRightAnswer: true
+
+      - instructions: Touche le vert
+        type: selection
+        interface: touchToSelectOne
+        gameplay: selectAllRightAnswers
+        payload:
+          choices:
+            - value: green
+              type: color
+              isRightAnswer: true
+
+      - instructions: Touche le rouge
+        type: selection
+        interface: touchToSelectOne
+        gameplay: selectAllRightAnswers
+        payload:
+          choices:
+            - value: red
+              type: color
+              isRightAnswer: true

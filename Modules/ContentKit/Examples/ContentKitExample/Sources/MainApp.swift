@@ -2,14 +2,16 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
-import GameEngineKit
+import ContentKit
 import SwiftUI
 
 @main
-struct GameEngineKitExample: App {
+struct ContentKitExample: App {
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainView()
         }
     }
+
 }

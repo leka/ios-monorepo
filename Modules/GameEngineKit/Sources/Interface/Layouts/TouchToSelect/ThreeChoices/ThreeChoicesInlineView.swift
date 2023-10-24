@@ -18,7 +18,7 @@ public struct ThreeChoicesInlineView: View {
             ForEach(0..<3) { index in
                 let choice = viewModel.choices[index]
 
-                ChoiceView(choice: choice, size: answerSize)
+                ChoiceViewDeprecated(choice: choice, size: answerSize)
                     .onTapGesture {
                         viewModel.onChoiceTapped(choice: choice)
                     }

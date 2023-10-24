@@ -20,19 +20,19 @@ public struct ThreeChoicesView: View {
             verticalSpacing: verticalSpacing
         ) {
             GridRow {
-                ChoiceView(choice: viewModel.choices[0], size: answerSize)
+                ChoiceViewDeprecated(choice: viewModel.choices[0], size: answerSize)
                     .onTapGesture {
                         viewModel.onChoiceTapped(choice: viewModel.choices[0])
                     }
                 Color.clear.gridCellUnsizedAxes([.horizontal, .vertical])
-                ChoiceView(choice: viewModel.choices[1], size: answerSize)
+                ChoiceViewDeprecated(choice: viewModel.choices[1], size: answerSize)
                     .onTapGesture {
                         viewModel.onChoiceTapped(choice: viewModel.choices[1])
                     }
             }
             GridRow {
                 Color.clear.gridCellUnsizedAxes([.horizontal, .vertical])
-                ChoiceView(choice: viewModel.choices[2], size: answerSize)
+                ChoiceViewDeprecated(choice: viewModel.choices[2], size: answerSize)
                     .onTapGesture {
                         viewModel.onChoiceTapped(choice: viewModel.choices[2])
                     }

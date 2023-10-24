@@ -2,77 +2,18 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import ContentKit
 import GameEngineKit
 import SwiftUI
 
 struct ContentView: View {
-    let threeChoicesViews = [
-        AnyView(OneAnswerThreeChoicesActivity()),
-        AnyView(AllAnswersThreeChoicesActivity()),
-        AnyView(SomeAnswersThreeChoicesActivity()),
-    ]
 
-    let sixChoicesViews = [
-        AnyView(OneAnswerSixChoicesActivity()),
-        AnyView(AllAnswersSixChoicesActivity()),
-        AnyView(SomeAnswersSixChoicesActivity()),
-    ]
+    //    let activity = ContentKit.decodeActivity("activity-mixed")
+    let activity = ContentKit.decodeActivity("activity-seq1-selection")
 
     var body: some View {
-        Grid(
-            horizontalSpacing: 30,
-            verticalSpacing: 30
-        ) {
-            GridRow {
-                ForEach(0..<3) { index in
-                    NavigationLink {
-                        threeChoicesViews[index]
-                    } label: {
-                        VStack {
-                            Text("Type d'interfaces : \n Three Choices Inline")
-                                .font(.title2)
-                                .foregroundColor(.black)
-                                .padding(5)
-                            Text("Gameplay : \(index)")
-                                .font(.title2)
-                                .foregroundColor(.black)
-                                .padding(5)
-                        }
-                        .background(.blue.opacity(0.5))
-                        .clipShape(RoundedRectangle(cornerRadius: 10))
-
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 10)
-                                .stroke(.primary)
-                        )
-                    }
-                }
-            }
-
-            GridRow {
-                ForEach(0..<3) { index in
-                    NavigationLink {
-                        sixChoicesViews[index]
-                    } label: {
-                        VStack {
-                            Text("Type d'interfaces : \n Six Choices Grid")
-                                .font(.title2)
-                                .foregroundColor(.black)
-                                .padding(5)
-                            Text("Gameplay : \(index)")
-                                .font(.title2)
-                                .foregroundColor(.black)
-                                .padding(5)
-                        }
-                        .background(.blue.opacity(0.5))
-                        .clipShape(RoundedRectangle(cornerRadius: 10))
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 10)
-                                .stroke(.primary)
-                        )
-                    }
-                }
-            }
+        VStack {
+            ActivityView(viewModel: ActivityViewViewModel(activity: activity))
         }
     }
 }

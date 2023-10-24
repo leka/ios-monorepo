@@ -34,7 +34,7 @@ public struct ListenThreeChoicesInlineView: View {
             ForEach(0..<3) { index in
                 let choice = viewModel.choices[index]
 
-                ChoiceView(
+                ChoiceViewDeprecated(
                     choice: choice, size: answerSize, isTappable: audioPlayer.didFinishPlaying
                 )
                 .onTapGestureIf(audioPlayer.didFinishPlaying) {

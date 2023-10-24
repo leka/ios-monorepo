@@ -4,7 +4,7 @@
 
 import SwiftUI
 
-struct ChoiceView: View {
+struct ChoiceViewDeprecated: View {
     var choice: ChoiceModel
     let size: CGFloat
     var isTappable = true

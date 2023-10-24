@@ -12,6 +12,7 @@ let project = Project.module(
     dependencies: [
         .project(target: "DesignKit", path: Path("../../Modules/DesignKit")),
         .project(target: "RobotKit", path: Path("../../Modules/RobotKit")),
+        .project(target: "ContentKit", path: Path("../../Modules/ContentKit")),
         .external(name: "SwiftUIJoystick"),
         .external(name: "AudioKit"),
     ],

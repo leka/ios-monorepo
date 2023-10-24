@@ -39,7 +39,7 @@ public struct ListenFourChoicesView: View {
                 ForEach(0..<2) { index in
                     let choice = viewModel.choices[index]
 
-                    ChoiceView(
+                    ChoiceViewDeprecated(
                         choice: choice, size: answerSize, isTappable: audioPlayer.didFinishPlaying
                     )
                     .onTapGestureIf(audioPlayer.didFinishPlaying) {
@@ -51,7 +51,7 @@ public struct ListenFourChoicesView: View {
                 ForEach(2..<4) { index in
                     let choice = viewModel.choices[index]
 
-                    ChoiceView(
+                    ChoiceViewDeprecated(
                         choice: choice, size: answerSize, isTappable: audioPlayer.didFinishPlaying
                     )
                     .onTapGestureIf(audioPlayer.didFinishPlaying) {
