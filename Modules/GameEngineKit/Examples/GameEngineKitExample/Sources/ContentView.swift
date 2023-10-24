@@ -8,12 +8,12 @@ import SwiftUI
 
 struct ContentView: View {
 
-    //    let activity = ContentKit.decodeActivity("activity-mixed")
-    let activity = ContentKit.decodeActivity("activity-seq1-selection")
+    let activity = ContentKit.ActivityList.seq1Selection
 
     var body: some View {
         VStack {
             ActivityView(viewModel: ActivityViewViewModel(activity: activity))
         }
     }
+
 }
