@@ -27,6 +27,8 @@ sequence:
             - value: green
               type: color
               isRightAnswer: true
+            - value: blue
+              type: color
 
       - instructions: Touche le rouge
         type: selection
@@ -37,3 +39,61 @@ sequence:
             - value: red
               type: color
               isRightAnswer: true
+            - value: green
+              type: color
+            - value: blue
+              type: color
+
+      - instructions: Touche le jaune
+        type: selection
+        interface: touchToSelect
+        gameplay: selectAllRightAnswers
+        payload:
+          choices:
+            - value: yellow
+              type: color
+              isRightAnswer: true
+            - value: red
+              type: color
+            - value: green
+              type: color
+            - value: blue
+              type: color
+
+      - instructions: Touche le orange
+        type: selection
+        interface: touchToSelect
+        gameplay: selectAllRightAnswers
+        payload:
+          choices:
+            - value: orange
+              type: color
+              isRightAnswer: true
+            - value: yellow
+              type: color
+            - value: red
+              type: color
+            - value: green
+              type: color
+            - value: blue
+              type: color
+
+      - instructions: Touche le violet
+        type: selection
+        interface: touchToSelect
+        gameplay: selectAllRightAnswers
+        payload:
+          choices:
+            - value: purple
+              type: color
+              isRightAnswer: true
+            - value: orange
+              type: color
+            - value: yellow
+              type: color
+            - value: red
+              type: color
+            - value: green
+              type: color
+            - value: blue
+              type: color
