@@ -5,7 +5,7 @@
 import ContentKit
 import SwiftUI
 
-struct ChoiceView: View {
+struct SelectionChoiceView: View {
 
     let choice: SelectionChoice
     let state: GameplayChoiceState
@@ -13,11 +13,15 @@ struct ChoiceView: View {
     let size: CGFloat
     var isTappable = true
 
-    init(choice: SelectionChoice, state: GameplayChoiceState, size: CGFloat, isTappable: Bool = true) {
+    private init(choice: SelectionChoice, state: GameplayChoiceState, size: CGFloat, isTappable: Bool = true) {
         self.choice = choice
         self.state = state
         self.size = size
         self.isTappable = isTappable
+    }
+
+    init(choice: GameplaySelectionChoiceModel, size: CGFloat, isTappable: Bool = true) {
+        self.init(choice: choice.choice, state: choice.state, size: size, isTappable: isTappable)
     }
 
     var body: some View {

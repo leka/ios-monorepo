@@ -15,7 +15,7 @@ extension TouchToSelectView {
 
         var body: some View {
             let choice = viewModel.choices[0]
-            ChoiceView(choice: choice.choice, state: choice.state, size: kAnswerSize)
+            SelectionChoiceView(choice: choice, size: kAnswerSize)
                 .onTapGesture {
                     viewModel.onChoiceTapped(choice: choice)
                 }

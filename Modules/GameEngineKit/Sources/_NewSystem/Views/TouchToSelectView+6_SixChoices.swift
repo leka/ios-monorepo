@@ -19,7 +19,7 @@ extension TouchToSelectView {
             VStack(spacing: kVerticalSpacing) {
                 HStack(spacing: kHorizontalSpacing) {
                     ForEach(viewModel.choices[0...2]) { choice in
-                        ChoiceView(choice: choice.choice, state: choice.state, size: kAnswerSize)
+                        SelectionChoiceView(choice: choice, size: kAnswerSize)
                             .onTapGesture {
                                 viewModel.onChoiceTapped(choice: choice)
                             }
@@ -28,7 +28,7 @@ extension TouchToSelectView {
 
                 HStack(spacing: kHorizontalSpacing) {
                     ForEach(viewModel.choices[3...5]) { choice in
-                        ChoiceView(choice: choice.choice, state: choice.state, size: kAnswerSize)
+                        SelectionChoiceView(choice: choice, size: kAnswerSize)
                             .onTapGesture {
                                 viewModel.onChoiceTapped(choice: choice)
                             }
