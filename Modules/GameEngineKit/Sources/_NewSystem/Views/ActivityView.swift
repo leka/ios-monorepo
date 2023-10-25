@@ -13,30 +13,32 @@ public struct ActivityView: View {
     }
 
     public var body: some View {
-        VStack(spacing: 20) {
+        ZStack(alignment: .bottom) {
+            VStack {
+                HStack {
+                    Text("S(\(viewModel.currentSequenceIndex + 1)/\(viewModel.totalSequences))")
+                    Text(
+                        "E(\(viewModel.currentExerciseIndexInSequence + 1)/\(viewModel.totalExercisesInCurrentSequence))"
+                    )
+                }
+                .font(.headline)
+                .monospacedDigit()
 
-            HStack {
-                Text("S(\(viewModel.currentSequenceIndex + 1)/\(viewModel.totalSequences))")
-                Text(
-                    "E(\(viewModel.currentExerciseIndexInSequence + 1)/\(viewModel.totalExercisesInCurrentSequence))"
-                )
+                ActivityProgressBar(viewModel: viewModel)
+
+                Text(viewModel.currentExercise.instructions)
+                    .font(.title)
+                    .padding(40)
+                    .background(.gray)
+                    .cornerRadius(10)
+                    .padding(.top)
+
+                Spacer()
+
+                currentExerciseInterface()
+
+                Spacer()
             }
-            .font(.headline)
-            .monospacedDigit()
-
-            ActivityProgressBar(viewModel: viewModel)
-
-            Text(viewModel.currentExercise.instructions)
-                .font(.title)
-                .padding(40)
-                .background(.gray)
-                .cornerRadius(10)
-
-            Spacer()
-
-            currentExerciseInterface()
-
-            Spacer()
 
             HStack {
                 Button(action: viewModel.moveToPreviousExercise) {
@@ -52,13 +54,13 @@ public struct ActivityView: View {
                 .disabled(viewModel.isLastExercise)
             }
             .padding(.horizontal, 40)
+            .padding(.bottom, 40)
         }
-        .padding()
     }
 
     @ViewBuilder
     private func currentExerciseInterface() -> some View {
-        switch viewModel.currentInterface {
+        switch viewModel.currentExerciseInterface {
             case .touchToSelect:
                 TouchToSelectView(exercise: viewModel.currentExercise)
                     .id(viewModel.currentExerciseIndexInSequence)

@@ -4,9 +4,9 @@
 
 import SwiftUI
 
-public struct TwoChoicesView: View {
+public struct ThreeChoicesInlineViewDeprecated: View {
     @StateObject private var viewModel: GenericViewModel
-    let horizontalSpacing: CGFloat = 150
+    let horizontalSpacing: CGFloat = 60
     let answerSize: CGFloat = 300
 
     public init(gameplay: any SelectionGameplayProtocol) {
@@ -15,7 +15,7 @@ public struct TwoChoicesView: View {
 
     public var body: some View {
         HStack(spacing: horizontalSpacing) {
-            ForEach(0..<2) { index in
+            ForEach(0..<3) { index in
                 let choice = viewModel.choices[index]
 
                 ChoiceViewDeprecated(choice: choice, size: answerSize)

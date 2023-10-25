@@ -4,10 +4,10 @@
 
 import SwiftUI
 
-public struct OneChoiceView: View {
+public struct FourChoicesInlineViewDeprecated: View {
     @StateObject private var viewModel: GenericViewModel
-    let horizontalSpacing: CGFloat = 32
-    let answerSize: CGFloat = 300
+    let horizontalSpacing: CGFloat = 70
+    let answerSize: CGFloat = 200
 
     public init(gameplay: any SelectionGameplayProtocol) {
         self._viewModel = StateObject(wrappedValue: GenericViewModel(gameplay: gameplay))
@@ -15,12 +15,14 @@ public struct OneChoiceView: View {
 
     public var body: some View {
         HStack(spacing: horizontalSpacing) {
-            let choice = viewModel.choices[0]
+            ForEach(0..<4) { index in
+                let choice = viewModel.choices[index]
 
-            ChoiceViewDeprecated(choice: choice, size: answerSize)
-                .onTapGesture {
-                    viewModel.onChoiceTapped(choice: choice)
-                }
+                ChoiceViewDeprecated(choice: choice, size: answerSize)
+                    .onTapGesture {
+                        viewModel.onChoiceTapped(choice: choice)
+                    }
+            }
         }
     }
 }

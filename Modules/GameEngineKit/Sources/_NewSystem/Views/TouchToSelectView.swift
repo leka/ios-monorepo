@@ -8,10 +8,16 @@ import SwiftUI
 
 public struct TouchToSelectView: View {
 
-    @StateObject private var viewModel: TouchToSelectViewViewModel
+    enum Interface: Int {
+        case oneChoice = 1
+        case twoChoices
+        case threeChoices
+        case fourChoices
+        case fiveChoices
+        case sixChoices
+    }
 
-    let kHorizontalSpacing: CGFloat = 32
-    let kAnswerSize: CGFloat = 300
+    @StateObject private var viewModel: TouchToSelectViewViewModel
 
     public init(choices: [SelectionChoice]) {
         self._viewModel = StateObject(wrappedValue: TouchToSelectViewViewModel(choices: choices))
@@ -26,14 +32,29 @@ public struct TouchToSelectView: View {
     }
 
     public var body: some View {
-        HStack(spacing: kHorizontalSpacing) {
+        let interface = Interface(rawValue: viewModel.choices.count)
 
-            ForEach(viewModel.choices) { choice in
-                ChoiceView(choice: choice.choice, state: choice.state, size: kAnswerSize)
-                    .onTapGesture {
-                        viewModel.onChoiceTapped(choice: choice)
-                    }
-            }
+        switch interface {
+            case .oneChoice:
+                OneChoiceView(viewModel: viewModel)
+
+            case .twoChoices:
+                TwoChoicesView(viewModel: viewModel)
+
+            case .threeChoices:
+                ThreeChoicesView(viewModel: viewModel)
+
+            case .fourChoices:
+                FourChoicesView(viewModel: viewModel)
+
+            case .fiveChoices:
+                FiveChoicesView(viewModel: viewModel)
+
+            case .sixChoices:
+                SixChoicesView(viewModel: viewModel)
+
+            default:
+                Text("❌ Interface not available for \(viewModel.choices.count) choices")
         }
     }
 

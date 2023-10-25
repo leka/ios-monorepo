@@ -6,31 +6,29 @@ import ContentKit
 import SwiftUI
 
 public class ActivityViewViewModel: ObservableObject {
+
     private let sequenceManager: ActivitySequenceManager
 
-    @Published var currentExercise: Exercise
-    @Published var currentSequenceIndex: Int
     @Published var totalSequences: Int
-    @Published var currentExerciseIndexInSequence: Int
-    @Published var totalExercisesInCurrentSequence: Int
+    @Published var currentSequenceIndex: Int
 
-    @Published var currentInterface: Exercise.Interface
+    @Published var totalExercisesInCurrentSequence: Int
+    @Published var currentExerciseIndexInSequence: Int
+
+    @Published var currentExercise: Exercise
+    @Published var currentExerciseInterface: Exercise.Interface
 
     public init(activity: Activity) {
         self.sequenceManager = ActivitySequenceManager(activity: activity)
-        self.currentExercise = sequenceManager.currentExercise
-        self.currentSequenceIndex = sequenceManager.currentSequenceIndex
-        self.totalSequences = sequenceManager.totalSequences
-        self.currentExerciseIndexInSequence = sequenceManager.currentExerciseIndexInSequence
-        self.totalExercisesInCurrentSequence = sequenceManager.totalExercisesInCurrentSequence
 
-        // TODO(@ladisals): refactor to use Exercise.Interface and move logic to TouchToSelectView
-        switch sequenceManager.currentExercise.interface {
-            case .touchToSelectOne, .touchToSelectTwo, .touchToSelectFour, .touchToSelectSix:
-                self.currentInterface = .touchToSelect
-            default:
-                self.currentInterface = .touchToSelect
-        }
+        self.totalSequences = sequenceManager.totalSequences
+        self.currentSequenceIndex = sequenceManager.currentSequenceIndex
+
+        self.totalExercisesInCurrentSequence = sequenceManager.totalExercisesInCurrentSequence
+        self.currentExerciseIndexInSequence = sequenceManager.currentExerciseIndexInSequence
+
+        self.currentExercise = sequenceManager.currentExercise
+        self.currentExerciseInterface = sequenceManager.currentExercise.interface
     }
 
     func moveToNextExercise() {
@@ -58,4 +56,5 @@ public class ActivityViewViewModel: ObservableObject {
         currentExerciseIndexInSequence = sequenceManager.currentExerciseIndexInSequence
         totalExercisesInCurrentSequence = sequenceManager.totalExercisesInCurrentSequence
     }
+
 }

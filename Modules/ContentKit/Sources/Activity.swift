@@ -24,15 +24,6 @@ public enum ExerciseType: String, Codable {
     case dragAndDrop
 }
 
-// TODO(@ladislas): remove the need to specify the number, let the data do the talking
-public enum UIInteractionType: String, Codable {
-    case touchToSelectOne
-    case touchToSelectTwo
-    case touchToSelectFour
-    case touchToSelectSix
-    case dragAndDropZoneOneChoicesSix
-}
-
 public enum Gameplay: String, Codable {
     case selectAllRightAnswers
 }
@@ -40,7 +31,7 @@ public enum Gameplay: String, Codable {
 public struct Exercise: Codable {
     public let instructions: String
     public let type: ExerciseType
-    public let interface: UIInteractionType
+    public let interface: Interface
     public let gameplay: Gameplay
     public let payload: ExercisePayload
 
@@ -114,6 +105,12 @@ public struct SelectionChoice: Codable {
         value = try container.decode(String.self, forKey: .value)
         type = try container.decode(UIElementType.self, forKey: .type)
         isRightAnswer = try container.decodeIfPresent(Bool.self, forKey: .isRightAnswer) ?? false
+    }
+
+    public init(value: String, type: UIElementType, isRightAnswer: Bool = false) {
+        self.value = value
+        self.type = type
+        self.isRightAnswer = isRightAnswer
     }
 }
 
