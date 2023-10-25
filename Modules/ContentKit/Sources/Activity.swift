@@ -106,6 +106,12 @@ public struct SelectionChoice: Codable {
         type = try container.decode(UIElementType.self, forKey: .type)
         isRightAnswer = try container.decodeIfPresent(Bool.self, forKey: .isRightAnswer) ?? false
     }
+
+    public init(value: String, type: UIElementType, isRightAnswer: Bool = false) {
+        self.value = value
+        self.type = type
+        self.isRightAnswer = isRightAnswer
+    }
 }
 
 public struct DragAndDropPayload: Codable {
