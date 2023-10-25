@@ -4,11 +4,11 @@
 
 import SwiftUI
 
-public struct ThreeChoicesView: View {
+public struct FiveChoicesViewDeprecated: View {
     @StateObject private var viewModel: GenericViewModel
-    let horizontalSpacing: CGFloat = 32
+    let horizontalSpacing: CGFloat = 6
     let verticalSpacing: CGFloat = 32
-    let answerSize: CGFloat = 260
+    let answerSize: CGFloat = 200
 
     public init(gameplay: any SelectionGameplayProtocol) {
         self._viewModel = StateObject(wrappedValue: GenericViewModel(gameplay: gameplay))
@@ -29,15 +29,26 @@ public struct ThreeChoicesView: View {
                     .onTapGesture {
                         viewModel.onChoiceTapped(choice: viewModel.choices[1])
                     }
-            }
-            GridRow {
                 Color.clear.gridCellUnsizedAxes([.horizontal, .vertical])
                 ChoiceViewDeprecated(choice: viewModel.choices[2], size: answerSize)
                     .onTapGesture {
                         viewModel.onChoiceTapped(choice: viewModel.choices[2])
                     }
+            }
+            GridRow {
+                Color.clear.gridCellUnsizedAxes([.horizontal, .vertical])
+                ChoiceViewDeprecated(choice: viewModel.choices[3], size: answerSize)
+                    .onTapGesture {
+                        viewModel.onChoiceTapped(choice: viewModel.choices[3])
+                    }
+                Color.clear.gridCellUnsizedAxes([.horizontal, .vertical])
+                ChoiceViewDeprecated(choice: viewModel.choices[4], size: answerSize)
+                    .onTapGesture {
+                        viewModel.onChoiceTapped(choice: viewModel.choices[4])
+                    }
                 Color.clear.gridCellUnsizedAxes([.horizontal, .vertical])
             }
         }
+
     }
 }

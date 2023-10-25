@@ -70,21 +70,21 @@ public class StepViewViewModel: ObservableObject {
             case .undefined:
                 StepErrorView()
             case .oneChoice:
-                OneChoiceView(gameplay: currentGameplay as! SelectionGameplayProtocol)
+                OneChoiceViewDeprecated(gameplay: currentGameplay as! SelectionGameplayProtocol)
             case .twoChoices:
-                TwoChoicesView(gameplay: currentGameplay as! SelectionGameplayProtocol)
+                TwoChoicesViewDeprecated(gameplay: currentGameplay as! SelectionGameplayProtocol)
             case .threeChoices:
-                ThreeChoicesView(gameplay: currentGameplay as! SelectionGameplayProtocol)
+                ThreeChoicesViewDeprecated(gameplay: currentGameplay as! SelectionGameplayProtocol)
             case .threeChoicesInline:
-                ThreeChoicesInlineView(gameplay: currentGameplay as! SelectionGameplayProtocol)
+                ThreeChoicesInlineViewDeprecated(gameplay: currentGameplay as! SelectionGameplayProtocol)
             case .fourChoices:
-                FourChoicesView(gameplay: currentGameplay as! SelectionGameplayProtocol)
+                FourChoicesViewDeprecated(gameplay: currentGameplay as! SelectionGameplayProtocol)
             case .fourChoicesInline:
-                FourChoicesInlineView(gameplay: currentGameplay as! SelectionGameplayProtocol)
+                FourChoicesInlineViewDeprecated(gameplay: currentGameplay as! SelectionGameplayProtocol)
             case .fiveChoices:
-                FiveChoicesView(gameplay: currentGameplay as! SelectionGameplayProtocol)
+                FiveChoicesViewDeprecated(gameplay: currentGameplay as! SelectionGameplayProtocol)
             case .sixChoices:
-                SixChoicesView(gameplay: currentGameplay as! SelectionGameplayProtocol)
+                SixChoicesViewDeprecated(gameplay: currentGameplay as! SelectionGameplayProtocol)
             case .listenOneChoice(let audioRecording):
                 ListenOneChoiceView(
                     gameplay: currentGameplay as! SelectionGameplayProtocol, audioRecording: audioRecording)

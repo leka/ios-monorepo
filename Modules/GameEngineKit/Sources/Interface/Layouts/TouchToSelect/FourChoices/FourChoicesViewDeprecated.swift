@@ -4,11 +4,11 @@
 
 import SwiftUI
 
-public struct SixChoicesView: View {
+public struct FourChoicesViewDeprecated: View {
     @StateObject private var viewModel: GenericViewModel
-    let horizontalSpacing: CGFloat = 100
-    let verticalSpacing: CGFloat = 32
-    let answerSize: CGFloat = 250
+    let horizontalSpacing: CGFloat = 200
+    let verticalSpacing: CGFloat = 40
+    let answerSize: CGFloat = 240
 
     public init(gameplay: any SelectionGameplayProtocol) {
         self._viewModel = StateObject(wrappedValue: GenericViewModel(gameplay: gameplay))
@@ -20,7 +20,7 @@ public struct SixChoicesView: View {
             verticalSpacing: verticalSpacing
         ) {
             GridRow {
-                ForEach(0..<3) { index in
+                ForEach(0..<2) { index in
                     let choice = viewModel.choices[index]
 
                     ChoiceViewDeprecated(choice: choice, size: answerSize)
@@ -30,7 +30,7 @@ public struct SixChoicesView: View {
                 }
             }
             GridRow {
-                ForEach(3..<6) { index in
+                ForEach(2..<4) { index in
                     let choice = viewModel.choices[index]
 
                     ChoiceViewDeprecated(choice: choice, size: answerSize)
