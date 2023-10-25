@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: Apache-2.0
 
 id: 38e454a0-81b9-4344-991b-357c6b96aee2
-name: Reconnaitre les couleurs
+name: Selection - One Right Answer
 description: L'objectif est de trouver la bonne couleur ou des les rassembler par famille
 image: activity_color_recognition_1
 sequence:

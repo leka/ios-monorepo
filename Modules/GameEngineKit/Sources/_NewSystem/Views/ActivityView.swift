@@ -67,8 +67,3 @@ public struct ActivityView: View {
         }
     }
 }
-
-#Preview {
-    let activity = ContentKit.ActivityList.seq1Selection
-    return ActivityView(viewModel: ActivityViewViewModel(activity: activity))
-}
