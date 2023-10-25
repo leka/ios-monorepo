@@ -5,7 +5,7 @@
 import ContentKit
 import SwiftUI
 
-struct ChoiceView: View {
+struct SelectionChoiceView: View {
 
     let choice: SelectionChoice
     let state: GameplayChoiceState
