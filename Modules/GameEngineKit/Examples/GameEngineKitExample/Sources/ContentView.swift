@@ -6,10 +6,37 @@ import ContentKit
 import GameEngineKit
 import SwiftUI
 
-public enum ActivityList {
-    public static let mixed: Activity = ContentKit.decodeActivity("activity-mixed")
-    public static let touchToSelectOneAnswer: Activity = ContentKit.decodeActivity("activity-seq1-selection")
-}
+let kActivities: [Activity] = [
+    // ? Filename format
+    // ? touchToSelect: activity-touchToSelect-<number_of_answers>-<answer_type>
+    // ? dragAndDrop:   activity-dragAndDrop-<number_of_zones>-<number_of_answers>-<answer_type>
+
+    ContentKit.decodeActivity("activity-touchToSelect-one_right_answer-colors"),
+    // ContentKit.decodeActivity("activity-touchToSelect-one_right_answer-image"),
+    // ContentKit.decodeActivity("activity-touchToSelect-multipe_right_answers-mixed"),
+    // ContentKit.decodeActivity("activity-touchToSelect-multipe_right_answers-colors"),
+    // ContentKit.decodeActivity("activity-touchToSelect-multipe_right_answers-images"),
+    // ContentKit.decodeActivity("activity-touchToSelect-multipe_right_answers-mixed"),
+
+    // ContentKit.decodeActivity("activity-listenThenTouchToSelect-mixed-images"),
+    // ContentKit.decodeActivity("activity-observeThenTouchToSelect-mixed-mixed"),
+
+    // ContentKit.decodeActivity("activity-dragAndDrop-one_zone-one_right_answer-image"),
+    // ContentKit.decodeActivity("activity-dragAndDrop-one_zone-one_right_answer-colors"),
+    // ContentKit.decodeActivity("activity-dragAndDrop-one_zone-one_right_answer-mixed"),
+    // ContentKit.decodeActivity("activity-dragAndDrop-one_zone-multiple_right_answer-images"),
+    // ContentKit.decodeActivity("activity-dragAndDrop-one_zone-multiple_right_answer-colors"),
+    // ContentKit.decodeActivity("activity-dragAndDrop-one_zone-multiple_right_answer-mixed"),
+
+    // ContentKit.decodeActivity("activity-dragAndDrop-two_zones-one_right_answer-image"),
+    // ContentKit.decodeActivity("activity-dragAndDrop-two_zones-one_right_answer-colors"),
+    // ContentKit.decodeActivity("activity-dragAndDrop-two_zones-one_right_answer-mixed"),
+    // ContentKit.decodeActivity("activity-dragAndDrop-two_zones-multiple_right_answer-images"),
+    // ContentKit.decodeActivity("activity-dragAndDrop-two_zones-multiple_right_answer-colors"),
+    // ContentKit.decodeActivity("activity-dragAndDrop-two_zones-multiple_right_answer-mixed"),
+
+    ContentKit.decodeActivity("activity-medley"),
+]
 
 struct ContentView: View {
 
@@ -17,17 +44,10 @@ struct ContentView: View {
 
     var body: some View {
         VStack(spacing: 30) {
-            Button("Touch to select one answer") {
-                currentActivity = ActivityList.touchToSelectOneAnswer
-            }
-
-            Button("Touch to select multple answers") {
-                // TODO(@ladislas): change when implemented
-                currentActivity = ActivityList.touchToSelectOneAnswer
-            }
-
-            Button("Mix of interfaces") {
-                currentActivity = ActivityList.mixed
+            ForEach(kActivities, id: \.id) { activity in
+                Button(activity.name) {
+                    currentActivity = activity
+                }
             }
         }
         .fullScreenCover(item: $currentActivity) {
