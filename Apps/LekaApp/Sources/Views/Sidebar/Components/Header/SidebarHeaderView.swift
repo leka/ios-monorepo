@@ -2,6 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import DesignKit
 import SwiftUI
 
 struct SidebarHeaderView: View {
@@ -18,7 +19,7 @@ struct SidebarHeaderView: View {
     }
 
     private var logoLeka: some View {
-        Image("lekaLogo_AFH")
+        Image(DesignKitAsset.Assets.lekaLogo.name)
             .resizable()
             .aspectRatio(contentMode: .fit)
             .frame(height: 60)
