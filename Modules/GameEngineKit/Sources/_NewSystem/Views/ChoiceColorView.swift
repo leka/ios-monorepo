@@ -12,6 +12,7 @@ struct ChoiceColorView: View {
     private let color: Robot.Color
     private let size: CGFloat
     private let state: GameplayChoiceState
+    private let kOverLayScaleFactor: CGFloat = 1.08
 
     @State private var animationPercent: CGFloat = .zero
     @State private var overlayOpacity: CGFloat = .zero
@@ -22,16 +23,17 @@ struct ChoiceColorView: View {
         self.state = state
     }
 
-    @ViewBuilder
-    var view: some View {
-        let circle = Image(systemName: "circle.fill")
-            .foregroundStyle(color.screen)
-            .font(.system(size: size))
+    // TODO(@ladislas): handle case of color white, add colored border?
+    var circle: some View {
+        color.screen
             .frame(
-                width: size * 1.05,
-                height: size * 1.05
+                width: size,
+                height: size
             )
+            .clipShape(Circle())
+    }
 
+    var body: some View {
         switch state {
             case .idle:
                 circle
@@ -44,7 +46,13 @@ struct ChoiceColorView: View {
 
             case .rightAnswer:
                 circle
-                    .overlay(RightAnswerFeedback(animationPercent: animationPercent))
+                    .overlay {
+                        RightAnswerFeedback(animationPercent: animationPercent)
+                            .frame(
+                                width: size * kOverLayScaleFactor,
+                                height: size * kOverLayScaleFactor
+                            )
+                    }
                     .onAppear {
                         withAnimation {
                             animationPercent = 1.0
@@ -53,17 +61,42 @@ struct ChoiceColorView: View {
 
             case .wrongAnswer:
                 circle
-                    .overlay(WrongAnswerFeedback(overlayOpacity: overlayOpacity))
+                    .overlay {
+                        WrongAnswerFeedback(overlayOpacity: overlayOpacity)
+                            .frame(
+                                width: size * kOverLayScaleFactor,
+                                height: size * kOverLayScaleFactor
+                            )
+                    }
                     .onAppear {
                         withAnimation {
                             overlayOpacity = 0.8
                         }
                     }
         }
+
     }
 
-    var body: some View {
-        view
-    }
+}
 
+#Preview {
+    VStack(spacing: 50) {
+        HStack(spacing: 50) {
+            ChoiceColorView(color: "red", size: 200)
+            ChoiceColorView(color: "red", size: 200, state: .rightAnswer)
+            ChoiceColorView(color: "red", size: 200, state: .wrongAnswer)
+        }
+
+        HStack(spacing: 50) {
+            ChoiceColorView(color: "green", size: 200)
+            ChoiceColorView(color: "green", size: 200, state: .rightAnswer)
+            ChoiceColorView(color: "green", size: 200, state: .wrongAnswer)
+        }
+
+        HStack(spacing: 50) {
+            ChoiceColorView(color: "blue", size: 200)
+            ChoiceColorView(color: "blue", size: 200, state: .rightAnswer)
+            ChoiceColorView(color: "blue", size: 200, state: .wrongAnswer)
+        }
+    }
 }
