@@ -6,6 +6,9 @@ import ContentKit
 import SwiftUI
 
 public struct ActivityView: View {
+
+    @Environment(\.dismiss) var dismiss
+
     @ObservedObject var viewModel: ActivityViewViewModel
 
     public init(viewModel: ActivityViewViewModel) {
@@ -13,48 +16,62 @@ public struct ActivityView: View {
     }
 
     public var body: some View {
-        ZStack(alignment: .bottom) {
-            VStack {
-                HStack {
-                    Text("S(\(viewModel.currentSequenceIndex + 1)/\(viewModel.totalSequences))")
-                    Text(
-                        "E(\(viewModel.currentExerciseIndexInSequence + 1)/\(viewModel.totalExercisesInCurrentSequence))"
-                    )
+        NavigationStack {
+            ZStack(alignment: .bottomTrailing) {
+                VStack {
+                    VStack(spacing: 15) {
+                        ActivityProgressBar(viewModel: viewModel)
+
+                        Text(viewModel.currentExercise.instructions)
+                            .font(.title)
+                            .padding(40)
+                            .background(.gray)
+                            .cornerRadius(10)
+                    }
+
+                    VStack {
+                        Spacer()
+                        currentExerciseInterface()
+                        Spacer()
+                    }
                 }
-                .font(.headline)
-                .monospacedDigit()
 
-                ActivityProgressBar(viewModel: viewModel)
-
-                Text(viewModel.currentExercise.instructions)
-                    .font(.title)
-                    .padding(40)
-                    .background(.gray)
-                    .cornerRadius(10)
-                    .padding(.top)
-
-                Spacer()
-
-                currentExerciseInterface()
-
-                Spacer()
+                Button("Continuer") {
+                    viewModel.moveToNextExercise()
+                }
+                .buttonStyle(.borderedProminent)
+                .tint(.green)
+                .padding()
             }
-
-            HStack {
-                Button(action: viewModel.moveToPreviousExercise) {
-                    Text("Previous")
+            .ignoresSafeArea(.all, edges: .bottom)
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Text(viewModel.currentActivity.name)
+                        .font(.headline)
                 }
-                .disabled(viewModel.isFirstExercise)
-
-                Spacer()
-
-                Button(action: viewModel.moveToNextExercise) {
-                    Text("Next")
+                ToolbarItem(placement: .topBarLeading) {
+                    Button {
+                        viewModel.moveToPreviousExercise()
+                    } label: {
+                        Image(systemName: "chevron.backward")
+                    }
+                    .disabled(viewModel.isFirstExercise)
                 }
-                .disabled(viewModel.isLastExercise)
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button("Dismiss") {
+                        dismiss()
+                    }
+                }
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        viewModel.moveToNextExercise()
+                    } label: {
+                        Image(systemName: "chevron.forward")
+                    }
+                    .disabled(viewModel.isLastExercise)
+                }
             }
-            .padding(.horizontal, 40)
-            .padding(.bottom, 40)
         }
     }
 
@@ -66,4 +83,10 @@ public struct ActivityView: View {
                     .id(viewModel.currentExerciseIndexInSequence)
         }
     }
+
+}
+
+#Preview {
+    let activity = ContentKit.decodeActivity("activity-sample")
+    return ActivityView(viewModel: ActivityViewViewModel(activity: activity))
 }
