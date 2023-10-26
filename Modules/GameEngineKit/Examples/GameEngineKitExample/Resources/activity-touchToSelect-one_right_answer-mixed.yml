@@ -1,0 +1,193 @@
+# Leka - iOS Monorepo
+# Copyright 2023 APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+id: 9a5431d4a5084ce4abc48109f90b8504
+name: Touch To Select - One Right Answer - Mixed
+description: L'objectif est de trouver la bonne réponse ou des les rassembler par famille
+image: activity_mixed_recognition_1
+sequence:
+  - exercises:
+      - instructions: Touche le bleu
+        type: selection
+        interface: touchToSelect
+        gameplay: selectAllRightAnswers
+        payload:
+          choices:
+            - value: blue
+              type: color
+              isRightAnswer: true
+
+      - instructions: Touche le numéro 1
+        type: selection
+        interface: touchToSelect
+        gameplay: selectAllRightAnswers
+        payload:
+          choices:
+            - value: dummy_1
+              type: image
+              isRightAnswer: true
+
+      - instructions: Touche le vert
+        type: selection
+        interface: touchToSelect
+        gameplay: selectAllRightAnswers
+        payload:
+          choices:
+            - value: green
+              type: color
+              isRightAnswer: true
+            - value: blue
+              type: color
+
+      - instructions: Touche le numéro 2
+        type: selection
+        interface: touchToSelect
+        gameplay: selectAllRightAnswers
+        payload:
+          choices:
+            - value: dummy_1
+              type: image
+            - value: dummy_2
+              type: image
+              isRightAnswer: true
+
+      - instructions: Touche le rouge
+        type: selection
+        interface: touchToSelect
+        gameplay: selectAllRightAnswers
+        payload:
+          choices:
+            - value: red
+              type: color
+              isRightAnswer: true
+            - value: green
+              type: color
+            - value: blue
+              type: color
+
+      - instructions: Touche le numéro 1
+        type: selection
+        interface: touchToSelect
+        gameplay: selectAllRightAnswers
+        payload:
+          choices:
+            - value: dummy_1
+              type: image
+              isRightAnswer: true
+            - value: dummy_2
+              type: image
+            - value: dummy_3
+              type: image
+
+
+      - instructions: Touche le jaune
+        type: selection
+        interface: touchToSelect
+        gameplay: selectAllRightAnswers
+        payload:
+          choices:
+            - value: yellow
+              type: color
+              isRightAnswer: true
+            - value: red
+              type: color
+            - value: green
+              type: color
+            - value: blue
+              type: color
+
+      - instructions: Touche le numéro 3
+        type: selection
+        interface: touchToSelect
+        gameplay: selectAllRightAnswers
+        payload:
+          choices:
+            - value: dummy_1
+              type: image
+            - value: dummy_2
+              type: image
+            - value: dummy_3
+              type: image
+              isRightAnswer: true
+            - value: dummy_4
+              type: image
+
+
+      - instructions: Touche le orange
+        type: selection
+        interface: touchToSelect
+        gameplay: selectAllRightAnswers
+        payload:
+          choices:
+            - value: orange
+              type: color
+              isRightAnswer: true
+            - value: yellow
+              type: color
+            - value: red
+              type: color
+            - value: green
+              type: color
+            - value: blue
+              type: color
+
+      - instructions: Touche le numéro 2
+        type: selection
+        interface: touchToSelect
+        gameplay: selectAllRightAnswers
+        payload:
+          choices:
+            - value: dummy_1
+              type: image
+            - value: dummy_2
+              type: image
+              isRightAnswer: true
+            - value: dummy_3
+              type: image
+            - value: dummy_4
+              type: image
+            - value: dummy_5
+              type: image
+
+
+      - instructions: Touche le violet
+        type: selection
+        interface: touchToSelect
+        gameplay: selectAllRightAnswers
+        payload:
+          choices:
+            - value: purple
+              type: color
+              isRightAnswer: true
+            - value: orange
+              type: color
+            - value: yellow
+              type: color
+            - value: red
+              type: color
+            - value: green
+              type: color
+            - value: blue
+              type: color
+
+      - instructions: Touche le numéro 5
+        type: selection
+        interface: touchToSelect
+        gameplay: selectAllRightAnswers
+        payload:
+          choices:
+            - value: dummy_1
+              type: image
+            - value: dummy_2
+              type: image
+            - value: dummy_3
+              type: image
+            - value: dummy_4
+              type: image
+            - value: dummy_5
+              type: image
+              isRightAnswer: true
+            - value: dummy_6
+              type: image
+
