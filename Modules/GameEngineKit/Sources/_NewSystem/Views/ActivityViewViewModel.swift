@@ -9,6 +9,8 @@ public class ActivityViewViewModel: ObservableObject {
 
     private let sequenceManager: ActivitySequenceManager
 
+    @Published var currentActivity: Activity
+
     @Published var totalSequences: Int
     @Published var currentSequenceIndex: Int
 
@@ -20,6 +22,8 @@ public class ActivityViewViewModel: ObservableObject {
 
     public init(activity: Activity) {
         self.sequenceManager = ActivitySequenceManager(activity: activity)
+
+        self.currentActivity = activity
 
         self.totalSequences = sequenceManager.totalSequences
         self.currentSequenceIndex = sequenceManager.currentSequenceIndex

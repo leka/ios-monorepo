@@ -54,9 +54,6 @@ struct ContentView: View {
             currentActivity = nil
         } content: { activity in
             ActivityView(viewModel: ActivityViewViewModel(activity: activity))
-                .onLongPressGesture {
-                    currentActivity = nil
-                }
         }
         .buttonStyle(.borderedProminent)
     }
