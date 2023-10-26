@@ -2,8 +2,8 @@
 # Copyright 2023 APF France handicap
 # SPDX-License-Identifier: Apache-2.0
 
-id: 38e454a0-81b9-4344-991b-357c6b96aee2
-name: Reconnaitre les couleurs
+id: 12e4a69e978640568fe86a67f5f5f601
+name: Touch To Select - One Right Answer - Colors
 description: L'objectif est de trouver la bonne couleur ou des les rassembler par famille
 image: activity_color_recognition_1
 sequence:
