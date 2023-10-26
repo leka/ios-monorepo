@@ -11,28 +11,16 @@ extension TouchToSelectView {
 
         @ObservedObject var viewModel: TouchToSelectViewViewModel
 
-        private let kHorizontalSpacing: CGFloat = 200
-        private let kVerticalSpacing: CGFloat = 20
-        private let kAnswerSize: CGFloat = 260
+        private let kHorizontalSpacing: CGFloat = 80
+        private let kAnswerSize: CGFloat = 280
 
         var body: some View {
-            VStack(spacing: kVerticalSpacing) {
-                HStack(spacing: kHorizontalSpacing) {
-                    ForEach(viewModel.choices[0...1]) { choice in
-                        SelectionChoiceView(choice: choice, size: kAnswerSize)
-                            .onTapGesture {
-                                viewModel.onChoiceTapped(choice: choice)
-                            }
-                    }
-                }
-
-                HStack {
-                    ForEach(viewModel.choices[2...2]) { choice in
-                        SelectionChoiceView(choice: choice, size: kAnswerSize)
-                            .onTapGesture {
-                                viewModel.onChoiceTapped(choice: choice)
-                            }
-                    }
+            HStack(spacing: kHorizontalSpacing) {
+                ForEach(viewModel.choices[0...2]) { choice in
+                    SelectionChoiceView(choice: choice, size: kAnswerSize)
+                        .onTapGesture {
+                            viewModel.onChoiceTapped(choice: choice)
+                        }
                 }
             }
         }
