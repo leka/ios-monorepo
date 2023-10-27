@@ -53,3 +53,66 @@ struct ListenButton: View {
     }
 }
 
+struct ObserveButton: View {
+    let image: String
+    @Binding var imageHasBeenObserved: Bool
+    @State private var animationPercent: CGFloat = 0.0
+
+    var body: some View {
+        Button {
+            withAnimation {
+                imageHasBeenObserved = true
+                animationPercent = 1.0
+            }
+        } label: {
+            if let uiImage = UIImage(named: image) {
+                Image(uiImage: uiImage)
+                    .resizable()
+                    .scaledToFill()
+                    .clipShape(Circle())
+                    .frame(
+                        width: 200,
+                        height: 200
+                    )
+                    .overlay {
+                        LinearGradient(
+                            gradient: Gradient(colors: [
+                                Color.black.opacity(0.7), Color.black.opacity(0.3), Color.black.opacity(0.7),
+                            ]), startPoint: .top, endPoint: .bottom
+                        )
+                        .opacity(1 - animationPercent)
+
+                        VStack {
+                            Image(systemName: "hand.tap")
+                                .resizable()
+                                .frame(width: 50, height: 50)
+                                .foregroundColor(.white)
+                            Text("Tap to reveal")
+                                .font(.headline)
+                                .foregroundColor(.white)
+                        }
+                        .opacity(1 - animationPercent)
+                    }
+            } else {
+                Text("❌\nImage not found:\n\(image)")
+                    .multilineTextAlignment(.center)
+                    .overlay {
+                        Circle()
+                            .stroke(Color.red, lineWidth: 5)
+                    }
+                    .frame(
+                        width: 200,
+                        height: 200
+                    )
+            }
+        }
+        .disabled(imageHasBeenObserved)
+        .buttonStyle(Media_ButtonStyle(progress: animationPercent))
+        .scaleEffect(imageHasBeenObserved ? 1.0 : 0.8, anchor: .center)
+        .shadow(
+            color: .accentColor.opacity(0.2),
+            radius: imageHasBeenObserved ? 6 : 3, x: 0, y: 3
+        )
+        .animation(.spring(response: 1, dampingFraction: 0.45), value: imageHasBeenObserved)
+    }
+}

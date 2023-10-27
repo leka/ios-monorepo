@@ -20,7 +20,7 @@ let kActivities: [Activity] = [
     // ContentKit.decodeActivity("activity-touchToSelect-multipe_right_answers-mixed"),
 
     ContentKit.decodeActivity("activity-listenThenTouchToSelect-mixed-images"),
-    // ContentKit.decodeActivity("activity-observeThenTouchToSelect-mixed-mixed"),
+    ContentKit.decodeActivity("activity-observeThenTouchToSelect-mixed-colors"),
 
     // ContentKit.decodeActivity("activity-dragAndDrop-one_zone-one_right_answer-image"),
     // ContentKit.decodeActivity("activity-dragAndDrop-one_zone-one_right_answer-colors"),

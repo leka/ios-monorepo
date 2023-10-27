@@ -1,0 +1,108 @@
+# Leka - iOS Monorepo
+# Copyright 2023 APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+id: 9ca18e0909564421a4a8ba835b7183d6
+name: Observe Then Touch To Select - Mixed - Color
+description: L'objectif est de trouver la bonne couleur associée à l'image
+image: activity_image_recognition_1
+sequence:
+  - exercises:
+      - instructions: Regarde l'image puis touche la bonne réponse
+        type: selection
+        interface: observeThenTouchToSelect
+        gameplay: selectAllRightAnswers
+        payload:
+          media: image-landscape-blue
+          choices:
+            - value: blue
+              type: color
+              isRightAnswer: true
+
+      - instructions: Regarde l'image puis touche la bonne réponse
+        type: selection
+        interface: observeThenTouchToSelect
+        gameplay: selectAllRightAnswers
+        payload:
+          media: image-landscape-red
+          choices:
+            - value: blue
+              type: color
+            - value: red
+              type: color
+              isRightAnswer: true
+
+      - instructions: Regarde l'image puis touche les bonnes réponses
+        type: selection
+        interface: observeThenTouchToSelect
+        gameplay: selectAllRightAnswers
+        payload:
+          media: image-landscape-purple
+          choices:
+            - value: purple
+              type: color
+              isRightAnswer: true
+            - value: red
+              type: color
+            - value: purple
+              type: color
+              isRightAnswer: true
+
+      - instructions: Regarde l'image puis touche la bonne réponse
+        type: selection
+        interface: observeThenTouchToSelect
+        gameplay: selectAllRightAnswers
+        payload:
+          media: image-landscape-yellow
+          choices:
+            - value: blue
+              type: color
+            - value: red
+              type: color
+            - value: yellow
+              type: color
+              isRightAnswer: true
+            - value: purple
+              type: color
+
+      - instructions: Regarde l'image puis touche les bonnes réponses
+        type: selection
+        interface: observeThenTouchToSelect
+        gameplay: selectAllRightAnswers
+        payload:
+          media: image-landscape-green
+          choices:
+            - value: yellow
+              type: color
+            - value: green
+              type: color
+              isRightAnswer: true
+            - value: green
+              type: color
+              isRightAnswer: true
+            - value: blue
+              type: color
+            - value: green
+              type: color
+              isRightAnswer: true
+
+      - instructions: Regarde l'image puis touche la bonne réponse
+        type: selection
+        interface: observeThenTouchToSelect
+        gameplay: selectAllRightAnswers
+        payload:
+          media: image-landscape-red
+          choices:
+            - value: yellow
+              type: color
+            - value: green
+              type: color
+            - value: blue
+              type: color
+            - value: purple
+              type: color
+            - value: red
+              type: color
+              isRightAnswer: true
+            - value: green
+              type: color

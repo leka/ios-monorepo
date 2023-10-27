@@ -36,6 +36,7 @@ public struct Exercise: Codable {
     public enum Interface: String, Codable {
         case touchToSelect
         case listenThenTouchToSelect
+        case observeThenTouchToSelect
     }
 }
 
