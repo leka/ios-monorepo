@@ -44,9 +44,12 @@ struct RobotConnectionIndicator: View {
                 )
                 .opacity(robotVM.robotIsConnected ? 1 : 0.0)
         )
-        .overlay(alignment: .topTrailing, content: {
-            badgeView
-        })
+        .overlay(
+            alignment: .topTrailing,
+            content: {
+                badgeView
+            }
+        )
         .onAppear {
             isAnimated = true
             diameter = isAnimated ? 100 : 0
@@ -60,7 +63,7 @@ struct RobotConnectionIndicator: View {
                 .renderingMode(.original)
                 .aspectRatio(contentMode: .fit)
                 .frame(maxWidth: 22, maxHeight: 22)
-//                .offset(x: 2, y: -2)
+            //                .offset(x: 2, y: -2)
         }
     }
 }

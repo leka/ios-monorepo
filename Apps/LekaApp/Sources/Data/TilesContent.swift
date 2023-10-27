@@ -29,6 +29,7 @@ enum TileData: Int, CaseIterable, Hashable {
             // DiscoveryMode Orange Tile
             case .discovery:
                 return TileContent(
+                    image: "exclamationmark.triangle",
                     title: "Le mode découverte",
                     subtitle: "Vous utilisez actuellement votre application en mode découverte !",
                     message: "Vous ne pouvez pas créer de profils et aucune donnée ne sera enregistrée.",
@@ -36,7 +37,7 @@ enum TileData: Int, CaseIterable, Hashable {
             // Blue Information tiles
             case .curriculums:
                 return TileContent(
-                    image: "curriculums", // TODO(@Mathieu): replace with SF Symbols
+                    image: "graduationcap",
                     title: "Les parcours",
                     subtitle: "Les parcours sont des compilations d'activités dont la difficulté est évolutive.",
                     message:
@@ -44,7 +45,7 @@ enum TileData: Int, CaseIterable, Hashable {
                 )
             case .activities:
                 return TileContent(
-                    image: "activities", // TODO(@Mathieu): replace with SF Symbols
+                    image: "dice",
                     title: "Les activités",
                     subtitle: "Les activités vous permettent de travailler des compétences variées !",
                     message:
@@ -52,7 +53,7 @@ enum TileData: Int, CaseIterable, Hashable {
                 )
             case .commands:
                 return TileContent(
-                    image: "commands", // TODO(@Mathieu): replace with SF Symbols
+                    image: "gamecontroller",
                     title: "Les commandes",
                     subtitle:
                         "Les commandes vous permettent de créer des activités en utilisant Leka comme médiateur !",

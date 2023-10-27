@@ -31,14 +31,15 @@ struct InfoTile: View {
         ZStack {
             Text(data.content.title!)
             HStack {
-                if data == .discovery {
-                    Image(systemName: "exclamationmark.triangle")
-                        .font(metrics.semi20)
-                } else {
-                    Image(data.content.image!)
-                        .resizable()
-                        .renderingMode(.template)
-                        .aspectRatio(contentMode: .fit)
+                switch data {
+                    case .discovery, .curriculums, .activities, .commands:
+                        Image(systemName: data.content.image!)
+                            .font(metrics.reg19)
+                    default:
+                        Image(data.content.image!)
+                            .resizable()
+                            .renderingMode(.template)
+                            .aspectRatio(contentMode: .fit)
                 }
                 Spacer()
                 if data != .discovery && settings.companyIsConnected {

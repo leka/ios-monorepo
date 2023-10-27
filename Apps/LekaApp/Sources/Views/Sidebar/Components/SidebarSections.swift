@@ -26,10 +26,8 @@ struct SidebarSections: View {
             robotVM.userChoseToPlayWithoutRobot = false
         } label: {
             HStack(spacing: 10) {
-                Image(item.icon) // TODO(@Mathieu): replace with SF Symbols
-                    .resizable()
-                    .renderingMode(.template)
-                    .aspectRatio(contentMode: .fit)
+                Image(systemName: item.icon)
+                    .font(metrics.Reg24)
                     .frame(maxWidth: 30, maxHeight: 30)
                     .padding(.leading, 10)
 

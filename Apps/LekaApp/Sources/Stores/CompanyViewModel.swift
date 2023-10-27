@@ -69,17 +69,16 @@ class CompanyViewModel: ObservableObject {
                 guard let i = currentCompany.teachers.firstIndex(where: { $0.id == id }) else {
                     return [
                         DesignKitAsset.Avatars.accompanyingBlue.name,
-                        DesignKitAsset.Avatars.accompanyingWhite.name
+                        DesignKitAsset.Avatars.accompanyingWhite.name,
                     ]
                 }
                 return [currentCompany.teachers[i].avatar, currentCompany.teachers[i].name]
             case .user:
                 guard let i = currentCompany.users.firstIndex(where: { $0.id == id }) else {
                     return [
-                        (
-                            !profileIsAssigned(.user) ? DesignKitAsset.Avatars.questionMark.name : DesignKitAsset.Avatars.userBlue.name
-                        ),
-                        DesignKitAsset.Avatars.userWhite.name
+                        (!profileIsAssigned(.user)
+                            ? DesignKitAsset.Avatars.questionMark.name : DesignKitAsset.Avatars.userBlue.name),
+                        DesignKitAsset.Avatars.userWhite.name,
                     ]
                 }
                 return [currentCompany.users[i].avatar, currentCompany.users[i].name]
@@ -109,16 +108,18 @@ class CompanyViewModel: ObservableObject {
 
     func resetBufferProfile(_ type: UserType) {
         switch type {
-            case .teacher: bufferTeacher = Teacher(
-                name: "",
-                avatar: DesignKitAsset.Avatars.accompanyingWhite.name,
-                jobs: []
-            )
-            case .user: bufferUser = User(
-                name: "",
-                avatar: DesignKitAsset.Avatars.userWhite.name,
-                reinforcer: 1
-            )
+            case .teacher:
+                bufferTeacher = Teacher(
+                    name: "",
+                    avatar: DesignKitAsset.Avatars.accompanyingWhite.name,
+                    jobs: []
+                )
+            case .user:
+                bufferUser = User(
+                    name: "",
+                    avatar: DesignKitAsset.Avatars.userWhite.name,
+                    reinforcer: 1
+                )
         }
     }
 

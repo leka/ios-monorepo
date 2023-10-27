@@ -15,11 +15,26 @@ class NavigationViewModel: ObservableObject {
 
     // Educative Content section data
     static let educContentSectionLabels: [SectionLabel] = [
-        SectionLabel(destination: .curriculums, icon: "curriculums", label: "Parcours"),
-        SectionLabel(destination: .activities, icon: "activities", label: "Activités"),
-        SectionLabel(destination: .commands, icon: "commands", label: "Commandes"),
+        SectionLabel(
+            destination: .curriculums,
+            icon: "graduationcap",
+            label: "Parcours"
+        ),
+        SectionLabel(
+            destination: .activities,
+            icon: "dice",
+            label: "Activités"
+        ),
+        SectionLabel(
+            destination: .commands,
+            icon: "gamecontroller",
+            label: "Commandes"
+        ),
     ]
-    @Published var educContentList = ListModel(title: "Contenu Éducatif", sections: educContentSectionLabels)
+    @Published var educContentList = ListModel(
+        title: "Contenu Éducatif",
+        sections: educContentSectionLabels
+    )
 
     // Overall Navigation from the sidebar
     @Published var currentView: SidebarDestinations = .curriculums
