@@ -92,6 +92,16 @@ class CompanyViewModel: ObservableObject {
         return currentCompany.users[i].reinforcer
     }
 
+    func getReinforcerNameFor(index: Int) -> String {
+        switch index {
+            case 2: return DesignKitAsset.Assets.reinforcer2.name
+            case 3: return DesignKitAsset.Assets.reinforcer3.name
+            case 4: return DesignKitAsset.Assets.reinforcer4.name
+            case 5: return DesignKitAsset.Assets.reinforcer5.name
+            default: return DesignKitAsset.Assets.reinforcer1.name
+        }
+    }
+
     func getAllAvatarsOf(_ type: UserType) -> [[UUID: String]] {
         switch type {
             case .teacher: return currentCompany.teachers.map { [$0.id: $0.avatar] }
