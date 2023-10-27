@@ -43,7 +43,7 @@ extension ListenThenTouchToSelectView {
 }
 
 #Preview {
-    var choices: [SelectionChoice] = [
+    let choices: [SelectionChoice] = [
         SelectionChoice(value: "red", type: .color, isRightAnswer: true),
         SelectionChoice(value: "blue", type: .color, isRightAnswer: false),
         SelectionChoice(value: "green", type: .color, isRightAnswer: false),
@@ -51,7 +51,6 @@ extension ListenThenTouchToSelectView {
         SelectionChoice(value: "purple", type: .color, isRightAnswer: false),
     ]
 
-    let viewModel = SelectionViewViewModel(choices: choices)
-
-    return TouchToSelectView.FiveChoicesView(viewModel: viewModel)
+    return ListenThenTouchToSelectView(
+        choices: choices, audioRecording: AudioRecordingModel(name: "drums", file: "drums"))
 }

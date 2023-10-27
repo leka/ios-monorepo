@@ -27,11 +27,10 @@ extension ListenThenTouchToSelectView {
 }
 
 #Preview {
-    var choices: [SelectionChoice] = [
+    let choices: [SelectionChoice] = [
         SelectionChoice(value: "red", type: .color, isRightAnswer: true)
     ]
 
-    let viewModel = SelectionViewViewModel(choices: choices)
-
-    return TouchToSelectView.OneChoiceView(viewModel: viewModel)
+    return ListenThenTouchToSelectView(
+        choices: choices, audioRecording: AudioRecordingModel(name: "drums", file: "drums"))
 }
