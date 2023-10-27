@@ -45,16 +45,19 @@ struct InstructionButton: View {
         .overlay(
             HStack {
                 Spacer()
-                Image(DesignKitAsset.Images.personWave2.name)
-                    .resizable()
-                    .renderingMode(.template)
-                    .aspectRatio(contentMode: .fit)
-                    .foregroundColor(
-                        activityVM.isSpeaking
-                            ? DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor
-                            : DesignKitAsset.Colors.progressBar.swiftUIColor
-                    )
-                    .padding(10)
+                Image(
+                    DesignKitAsset.Images.personWave2.name,
+                    bundle: Bundle(for: DesignKitResources.self)
+                )
+                .resizable()
+                .renderingMode(.template)
+                .aspectRatio(contentMode: .fit)
+                .foregroundColor(
+                    activityVM.isSpeaking
+                        ? DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor
+                        : DesignKitAsset.Colors.progressBar.swiftUIColor
+                )
+                .padding(10)
             }
         )
         .clipShape(RoundedRectangle(cornerRadius: gameMetrics.roundedCorner, style: .circular))

@@ -32,12 +32,15 @@ struct SignupStep2: View {
         HStack(alignment: .center, spacing: 0) {
             VStack(spacing: 0) {
                 // Picto
-                Image(data.content.image!)
-                    .resizable()
-                    .renderingMode(.original)
-                    .aspectRatio(contentMode: .fit)
-                    .frame(height: metrics.tilePictoHeightMedium)
-                    .padding(.top, 20)
+                Image(
+                    data.content.image!,
+                    bundle: Bundle(for: DesignKitResources.self)
+                )
+                .resizable()
+                .renderingMode(.original)
+                .aspectRatio(contentMode: .fit)
+                .frame(height: metrics.tilePictoHeightMedium)
+                .padding(.top, 20)
                 Spacer()
                 // Title
                 Text(data.content.title!)

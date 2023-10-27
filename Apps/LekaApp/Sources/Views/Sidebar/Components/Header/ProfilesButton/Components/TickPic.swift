@@ -13,9 +13,9 @@ struct TickPic: View {
     func imageFromContext() -> Image {
         guard settings.exploratoryModeIsOn else {
             guard company.profileIsAssigned(.user) || !settings.companyIsConnected else {
-                return Image(DesignKitAsset.Images.cross.name)
+                return DesignKitAsset.Images.cross.swiftUIImage
             }
-            return Image(DesignKitAsset.Images.tick.name)
+            return DesignKitAsset.Images.tick.swiftUIImage
         }
         return Image(systemName: "binoculars.fill")
     }

@@ -37,7 +37,7 @@ struct UserSet_AvatarCell: View {
                             lineWidth: 3
                         )
                         .overlay(content: {
-                            Image(user.avatar)
+                            Image(user.avatar, bundle: Bundle(for: DesignKitResources.self))
                                 .resizable()
                                 .aspectRatio(contentMode: .fill)
                                 .clipShape(Circle())
@@ -47,7 +47,7 @@ struct UserSet_AvatarCell: View {
                     ZStack(alignment: .topTrailing) {
                         Circle()
                             .fill(DesignKitAsset.Colors.lekaLightGray.swiftUIColor)
-                        Image(company.getReinforcerNameFor(index: user.reinforcer))
+                        Image(uiImage: company.getReinforcerFor(index: user.reinforcer))
                             .resizable()
                             .renderingMode(.original)
                             .aspectRatio(contentMode: .fit)

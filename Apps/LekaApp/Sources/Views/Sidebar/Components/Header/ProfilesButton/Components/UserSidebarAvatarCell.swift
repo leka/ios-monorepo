@@ -39,7 +39,7 @@ struct UserSidebarAvatarCell: View {
                 .frame(maxWidth: 22, maxHeight: 22)
                 .offset(x: 2, y: -2)
         } else if company.profileIsAssigned(.user) {
-            Image(company.getReinforcerNameFor(index: company.getCurrentUserReinforcer()))
+            Image(uiImage: company.getReinforcerFor(index: company.getCurrentUserReinforcer()))
                 .resizable()
                 .renderingMode(.original)
                 .aspectRatio(contentMode: .fit)

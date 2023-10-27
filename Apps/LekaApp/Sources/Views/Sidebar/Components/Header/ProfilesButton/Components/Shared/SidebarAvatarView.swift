@@ -20,7 +20,8 @@ struct SidebarAvatarView: View {
                     company.getProfileDataFor(
                         type,
                         id: company.profilesInUse[type]!
-                    )[0]
+                    )[0],
+                    bundle: Bundle(for: DesignKitResources.self)
                 )
                 .resizable()
                 .aspectRatio(contentMode: .fill)

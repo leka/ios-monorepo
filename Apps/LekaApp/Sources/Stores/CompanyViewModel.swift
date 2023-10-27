@@ -64,7 +64,7 @@ class CompanyViewModel: ObservableObject {
                 guard let i = currentCompany.teachers.firstIndex(where: { $0.id == id }) else {
                     return [
                         DesignKitAsset.Avatars.accompanyingBlue.name,
-                        DesignKitAsset.Avatars.accompanyingWhite.name,
+                        "Accompagnant",
                     ]
                 }
                 return [currentCompany.teachers[i].avatar, currentCompany.teachers[i].name]
@@ -73,7 +73,7 @@ class CompanyViewModel: ObservableObject {
                     return [
                         (!profileIsAssigned(.user)
                             ? DesignKitAsset.Avatars.questionMark.name : DesignKitAsset.Avatars.userBlue.name),
-                        DesignKitAsset.Avatars.userWhite.name,
+                        "Utilisateur",
                     ]
                 }
                 return [currentCompany.users[i].avatar, currentCompany.users[i].name]
@@ -87,13 +87,13 @@ class CompanyViewModel: ObservableObject {
         return currentCompany.users[i].reinforcer
     }
 
-    func getReinforcerNameFor(index: Int) -> String {
+    func getReinforcerFor(index: Int) -> UIImage {
         switch index {
-            case 2: return DesignKitAsset.Assets.reinforcer2.name
-            case 3: return DesignKitAsset.Assets.reinforcer3.name
-            case 4: return DesignKitAsset.Assets.reinforcer4.name
-            case 5: return DesignKitAsset.Assets.reinforcer5.name
-            default: return DesignKitAsset.Assets.reinforcer1.name
+            case 2: return DesignKitAsset.Assets.reinforcer2.image
+            case 3: return DesignKitAsset.Assets.reinforcer3.image
+            case 4: return DesignKitAsset.Assets.reinforcer4.image
+            case 5: return DesignKitAsset.Assets.reinforcer5.image
+            default: return DesignKitAsset.Assets.reinforcer1.image
         }
     }
 

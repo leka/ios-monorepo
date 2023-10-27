@@ -41,11 +41,14 @@ struct WelcomeView: View {
     }
 
     private var logoLeka: some View {
-        Image(DesignKitAsset.Assets.lekaLogo.name)
-            .resizable()
-            .aspectRatio(contentMode: .fit)
-            .frame(height: 90)
-            .padding(.bottom, 30)
+        Image(
+            DesignKitAsset.Assets.lekaLogo.name,
+            bundle: Bundle(for: DesignKitResources.self)
+        )
+        .resizable()
+        .aspectRatio(contentMode: .fit)
+        .frame(height: 90)
+        .padding(.bottom, 30)
     }
 
     private var skipButton: some View {

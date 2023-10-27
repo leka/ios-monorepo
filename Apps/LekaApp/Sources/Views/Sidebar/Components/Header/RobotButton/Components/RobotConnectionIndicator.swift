@@ -23,8 +23,9 @@ struct RobotConnectionIndicator: View {
                 .opacity(0.4)
 
             Image(
-                robotVM.robotIsConnected
-                    ? DesignKitAsset.Images.robotConnected.name : DesignKitAsset.Images.robotDisconnected.name
+                uiImage:
+                    robotVM.robotIsConnected
+                    ? DesignKitAsset.Images.robotConnected.image : DesignKitAsset.Images.robotDisconnected.image
             )
             .resizable()
             .renderingMode(.original)

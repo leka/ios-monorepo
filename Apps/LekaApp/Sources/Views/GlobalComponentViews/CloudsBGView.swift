@@ -7,7 +7,7 @@ import SwiftUI
 
 struct CloudsBGView: View {
     var body: some View {
-        Image(DesignKitAsset.Images.interfaceCloud.name)
+        Image(uiImage: DesignKitAsset.Images.interfaceCloud.image)
             .resizable()
             .renderingMode(.original)
             .aspectRatio(contentMode: .fill)

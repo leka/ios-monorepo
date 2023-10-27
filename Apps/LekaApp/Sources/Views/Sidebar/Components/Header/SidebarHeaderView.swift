@@ -19,7 +19,7 @@ struct SidebarHeaderView: View {
     }
 
     private var logoLeka: some View {
-        Image(DesignKitAsset.Assets.lekaLogo.name)
+        DesignKitAsset.Assets.lekaLogo.swiftUIImage
             .resizable()
             .aspectRatio(contentMode: .fit)
             .frame(height: 60)

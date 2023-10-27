@@ -15,7 +15,7 @@ struct AvatarTriggerImageView: View {
                 .fill(.white)
                 .shadow(color: .black.opacity(0.2), radius: 4, x: 0, y: 4)
             Group {
-                Image(img)
+                Image(img, bundle: Bundle(for: DesignKitResources.self))
                     .resizable()
                     .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
                     .aspectRatio(contentMode: .fit)

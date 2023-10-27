@@ -15,7 +15,7 @@ struct AvatarButtonLabel: View {
 
     var body: some View {
         ZStack {
-            Image(image)
+            Image(image, bundle: Bundle(for: DesignKitResources.self))
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(maxWidth: metrics.diameter, maxHeight: metrics.diameter)

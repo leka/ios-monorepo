@@ -15,7 +15,7 @@ struct RobotFaceView: View {
 
     var body: some View {
         VStack {
-            Image(DesignKitAsset.Images.robotFaceSimple.name)
+            DesignKitAsset.Images.robotFaceSimple.swiftUIImage
                 .overlay(content: {
                     Circle()
                         .inset(by: -10)

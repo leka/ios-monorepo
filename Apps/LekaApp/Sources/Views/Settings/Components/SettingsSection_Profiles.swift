@@ -26,7 +26,7 @@ struct SettingsSection_Profiles: View {
     }
 
     private func avatar(_ name: String) -> some View {
-        Image(name)
+        Image(name, bundle: Bundle(for: DesignKitResources.self))
             .resizable()
             .aspectRatio(contentMode: .fill)
             .frame(maxWidth: 30)

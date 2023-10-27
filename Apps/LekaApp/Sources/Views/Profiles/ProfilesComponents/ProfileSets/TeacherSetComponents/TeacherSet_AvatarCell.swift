@@ -37,7 +37,7 @@ struct TeacherSet_AvatarCell: View {
                             lineWidth: 3
                         )
                         .overlay(content: {
-                            Image(teacher.avatar)
+                            Image(teacher.avatar, bundle: Bundle(for: DesignKitResources.self))
                                 .resizable()
                                 .aspectRatio(contentMode: .fill)
                                 .clipShape(Circle())
