@@ -17,10 +17,10 @@ public struct TouchToSelectView: View {
         case sixChoices
     }
 
-    @StateObject private var viewModel: TouchToSelectViewViewModel
+    @StateObject private var viewModel: SelectionViewViewModel
 
     public init(choices: [SelectionChoice]) {
-        self._viewModel = StateObject(wrappedValue: TouchToSelectViewViewModel(choices: choices))
+        self._viewModel = StateObject(wrappedValue: SelectionViewViewModel(choices: choices))
     }
 
     public init(exercise: Exercise) {
@@ -28,7 +28,7 @@ public struct TouchToSelectView: View {
             fatalError("Exercise payload is not .selection")
         }
 
-        self._viewModel = StateObject(wrappedValue: TouchToSelectViewViewModel(choices: payload.choices))
+        self._viewModel = StateObject(wrappedValue: SelectionViewViewModel(choices: payload.choices))
     }
 
     public var body: some View {

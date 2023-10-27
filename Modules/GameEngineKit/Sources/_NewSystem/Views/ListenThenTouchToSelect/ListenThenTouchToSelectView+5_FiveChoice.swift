@@ -5,21 +5,22 @@
 import ContentKit
 import SwiftUI
 
-extension TouchToSelectView {
+extension ListenThenTouchToSelectView {
 
-    struct FourChoicesView: View {
+    struct FiveChoicesView: View {
 
-        @ObservedObject var viewModel: TouchToSelectViewViewModel
+        @ObservedObject var viewModel: SelectionViewViewModel
+        let isTappable: Bool
 
-        private let kHorizontalSpacing: CGFloat = 200
+        private let kHorizontalSpacing: CGFloat = 60
         private let kVerticalSpacing: CGFloat = 40
         private let kAnswerSize: CGFloat = 240
 
         var body: some View {
             VStack(spacing: kVerticalSpacing) {
                 HStack(spacing: kHorizontalSpacing) {
-                    ForEach(viewModel.choices[0...1]) { choice in
-                        SelectionChoiceView(choice: choice, size: kAnswerSize)
+                    ForEach(viewModel.choices[0...2]) { choice in
+                        SelectionChoiceView(choice: choice, size: kAnswerSize, isTappable: isTappable)
                             .onTapGesture {
                                 viewModel.onChoiceTapped(choice: choice)
                             }
@@ -27,8 +28,8 @@ extension TouchToSelectView {
                 }
 
                 HStack(spacing: kHorizontalSpacing) {
-                    ForEach(viewModel.choices[2...3]) { choice in
-                        SelectionChoiceView(choice: choice, size: kAnswerSize)
+                    ForEach(viewModel.choices[3...4]) { choice in
+                        SelectionChoiceView(choice: choice, size: kAnswerSize, isTappable: isTappable)
                             .onTapGesture {
                                 viewModel.onChoiceTapped(choice: choice)
                             }
@@ -42,14 +43,14 @@ extension TouchToSelectView {
 }
 
 #Preview {
-    var choices: [SelectionChoice] = [
+    let choices: [SelectionChoice] = [
         SelectionChoice(value: "red", type: .color, isRightAnswer: true),
         SelectionChoice(value: "blue", type: .color, isRightAnswer: false),
         SelectionChoice(value: "green", type: .color, isRightAnswer: false),
         SelectionChoice(value: "yellow", type: .color, isRightAnswer: false),
+        SelectionChoice(value: "purple", type: .color, isRightAnswer: false),
     ]
 
-    let viewModel = TouchToSelectViewViewModel(choices: choices)
-
-    return TouchToSelectView.FourChoicesView(viewModel: viewModel)
+    return ListenThenTouchToSelectView(
+        choices: choices, audioRecording: AudioRecordingModel(name: "drums", file: "drums"))
 }

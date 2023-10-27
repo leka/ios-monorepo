@@ -6,7 +6,7 @@ import Combine
 import ContentKit
 import SwiftUI
 
-class TouchToSelectViewViewModel: ObservableObject {
+class SelectionViewViewModel: ObservableObject {
 
     @Published var choices: [GameplaySelectionChoiceModel] = []
 

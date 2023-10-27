@@ -9,7 +9,7 @@ extension TouchToSelectView {
 
     struct OneChoiceView: View {
 
-        @ObservedObject var viewModel: TouchToSelectViewViewModel
+        @ObservedObject var viewModel: SelectionViewViewModel
 
         private let kAnswerSize: CGFloat = 300
 
@@ -20,17 +20,14 @@ extension TouchToSelectView {
                     viewModel.onChoiceTapped(choice: choice)
                 }
         }
-
     }
 
 }
 
 #Preview {
-    var choices: [SelectionChoice] = [
+    let choices: [SelectionChoice] = [
         SelectionChoice(value: "red", type: .color, isRightAnswer: true)
     ]
 
-    let viewModel = TouchToSelectViewViewModel(choices: choices)
-
-    return TouchToSelectView.OneChoiceView(viewModel: viewModel)
+    return TouchToSelectView(choices: choices)
 }

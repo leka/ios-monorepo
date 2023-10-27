@@ -35,6 +35,8 @@ public struct Exercise: Codable {
 
     public enum Interface: String, Codable {
         case touchToSelect
+        case listenThenTouchToSelect
+        case observeThenTouchToSelect
     }
 }
 
@@ -47,7 +49,12 @@ public enum ExercisePayload: Codable {
 
         if container.allKeys.contains(.choices) {
             let choices = try container.decode([SelectionChoice].self, forKey: .choices)
-            self = .selection(SelectionPayload(choices: choices))
+            if container.allKeys.contains(.media) {
+                let media = try container.decode(String.self, forKey: .media)
+                self = .selection(SelectionPayload(choices: choices, media: media))
+                return
+            }
+            self = .selection(SelectionPayload(choices: choices, media: nil))
             return
         }
 
@@ -75,12 +82,13 @@ public enum ExercisePayload: Codable {
     }
 
     private enum CustomKeys: String, CodingKey {
-        case choices, dropZoneA, payload
+        case choices, dropZoneA, payload, media
     }
 }
 
 public struct SelectionPayload: Codable {
     public let choices: [SelectionChoice]
+    public let media: String?
 }
 
 public enum UIElementType: String, Codable {

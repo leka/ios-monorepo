@@ -5,11 +5,12 @@
 import ContentKit
 import SwiftUI
 
-extension TouchToSelectView {
+extension ListenThenTouchToSelectView {
 
     struct TwoChoicesView: View {
 
-        @ObservedObject var viewModel: TouchToSelectViewViewModel
+        @ObservedObject var viewModel: SelectionViewViewModel
+        let isTappable: Bool
 
         private let kHorizontalSpacing: CGFloat = 150
         private let kAnswerSize: CGFloat = 300
@@ -17,7 +18,7 @@ extension TouchToSelectView {
         var body: some View {
             HStack(spacing: kHorizontalSpacing) {
                 ForEach(viewModel.choices) { choice in
-                    SelectionChoiceView(choice: choice, size: kAnswerSize)
+                    SelectionChoiceView(choice: choice, size: kAnswerSize, isTappable: isTappable)
                         .onTapGesture {
                             viewModel.onChoiceTapped(choice: choice)
                         }
@@ -30,12 +31,11 @@ extension TouchToSelectView {
 }
 
 #Preview {
-    var choices: [SelectionChoice] = [
+    let choices: [SelectionChoice] = [
         SelectionChoice(value: "red", type: .color, isRightAnswer: true),
         SelectionChoice(value: "blue", type: .color, isRightAnswer: false),
     ]
 
-    let viewModel = TouchToSelectViewViewModel(choices: choices)
-
-    return TouchToSelectView.TwoChoicesView(viewModel: viewModel)
+    return ListenThenTouchToSelectView(
+        choices: choices, audioRecording: AudioRecordingModel(name: "drums", file: "drums"))
 }
