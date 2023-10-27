@@ -7,18 +7,18 @@ import SwiftUI
 
 extension TouchToSelectView {
 
-    struct FiveChoicesView: View {
+    struct FourChoicesView: View {
 
-        @ObservedObject var viewModel: TouchToSelectViewViewModel
+        @ObservedObject var viewModel: SelectionViewViewModel
 
-        private let kHorizontalSpacing: CGFloat = 60
+        private let kHorizontalSpacing: CGFloat = 200
         private let kVerticalSpacing: CGFloat = 40
         private let kAnswerSize: CGFloat = 240
 
         var body: some View {
             VStack(spacing: kVerticalSpacing) {
                 HStack(spacing: kHorizontalSpacing) {
-                    ForEach(viewModel.choices[0...2]) { choice in
+                    ForEach(viewModel.choices[0...1]) { choice in
                         SelectionChoiceView(choice: choice, size: kAnswerSize)
                             .onTapGesture {
                                 viewModel.onChoiceTapped(choice: choice)
@@ -27,7 +27,7 @@ extension TouchToSelectView {
                 }
 
                 HStack(spacing: kHorizontalSpacing) {
-                    ForEach(viewModel.choices[3...4]) { choice in
+                    ForEach(viewModel.choices[2...3]) { choice in
                         SelectionChoiceView(choice: choice, size: kAnswerSize)
                             .onTapGesture {
                                 viewModel.onChoiceTapped(choice: choice)
@@ -47,10 +47,9 @@ extension TouchToSelectView {
         SelectionChoice(value: "blue", type: .color, isRightAnswer: false),
         SelectionChoice(value: "green", type: .color, isRightAnswer: false),
         SelectionChoice(value: "yellow", type: .color, isRightAnswer: false),
-        SelectionChoice(value: "purple", type: .color, isRightAnswer: false),
     ]
 
-    let viewModel = TouchToSelectViewViewModel(choices: choices)
+    let viewModel = SelectionViewViewModel(choices: choices)
 
-    return TouchToSelectView.FiveChoicesView(viewModel: viewModel)
+    return TouchToSelectView.FourChoicesView(viewModel: viewModel)
 }

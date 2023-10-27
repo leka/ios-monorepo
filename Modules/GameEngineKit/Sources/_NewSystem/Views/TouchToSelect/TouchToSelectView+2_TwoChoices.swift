@@ -9,7 +9,7 @@ extension TouchToSelectView {
 
     struct TwoChoicesView: View {
 
-        @ObservedObject var viewModel: TouchToSelectViewViewModel
+        @ObservedObject var viewModel: SelectionViewViewModel
 
         private let kHorizontalSpacing: CGFloat = 150
         private let kAnswerSize: CGFloat = 300
@@ -35,7 +35,7 @@ extension TouchToSelectView {
         SelectionChoice(value: "blue", type: .color, isRightAnswer: false),
     ]
 
-    let viewModel = TouchToSelectViewViewModel(choices: choices)
+    let viewModel = SelectionViewViewModel(choices: choices)
 
     return TouchToSelectView.TwoChoicesView(viewModel: viewModel)
 }
