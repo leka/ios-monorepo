@@ -96,7 +96,11 @@ struct SignupView: View {
         }()
 
         LekaTextField(
-            label: mailTitle, entry: $mail, color: mailLabelColor, isEditing: $isEditing, focused: _focusedField
+            label: mailTitle,
+            entry: $mail,
+            color: mailLabelColor,
+            isEditing: $isEditing,
+            focused: _focusedField
         ) {
             focusedField = .password
         }
@@ -108,7 +112,11 @@ struct SignupView: View {
     }
 
     private var passwordTextField: some View {
-        LekaPasswordField(label: "Mot de passe", entry: $password, focused: _focusedField) {
+        LekaPasswordField(
+            label: "Mot de passe",
+            entry: $password,
+            focused: _focusedField
+        ) {
             if !password.isEmpty {
                 focusedField = .confirm
             } else {
@@ -131,7 +139,11 @@ struct SignupView: View {
         }()
 
         LekaPasswordField(
-            label: confirmTitle, entry: $confirm, color: confirmLabelColor, type: .confirm, focused: _focusedField
+            label: confirmTitle,
+            entry: $confirm,
+            color: confirmLabelColor,
+            type: .confirm,
+            focused: _focusedField
         ) {
             if confirm.isEmpty || !passwordsMatch() {
                 focusedField = .confirm
@@ -171,7 +183,6 @@ struct SignupView_Previews: PreviewProvider {
         SignupView()
             .environmentObject(CompanyViewModel())
             .environmentObject(SettingsViewModel())
-            .environmentObject(ViewRouter())
             .environmentObject(UIMetrics())
             .previewInterfaceOrientation(.landscapeLeft)
     }

@@ -187,6 +187,7 @@ struct CreateProfileView_Previews: PreviewProvider {
         CreateTeacherProfileView()
             .environmentObject(CompanyViewModel())
             .environmentObject(SettingsViewModel())
+            .environmentObject(NavigationViewModel())
             .environmentObject(ViewRouter())
             .environmentObject(UIMetrics())
             .previewInterfaceOrientation(.landscapeLeft)

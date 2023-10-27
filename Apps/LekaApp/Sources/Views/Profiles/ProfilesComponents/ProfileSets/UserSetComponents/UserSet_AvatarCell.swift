@@ -2,6 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import DesignKit
 import SwiftUI
 
 struct UserSet_AvatarCell: View {
@@ -46,7 +47,7 @@ struct UserSet_AvatarCell: View {
                     ZStack(alignment: .topTrailing) {
                         Circle()
                             .fill(Color("lekaLightGray"))
-                        Image("reinforcer-\(user.reinforcer)")
+                        Image(GetReinforcerName())
                             .resizable()
                             .renderingMode(.original)
                             .aspectRatio(contentMode: .fit)
@@ -80,6 +81,16 @@ struct UserSet_AvatarCell: View {
             }
         }
         .buttonStyle(NoFeedback_ButtonStyle())
+    }
+
+    private func GetReinforcerName() -> String {
+        switch user.reinforcer {
+            case 2: return DesignKitAsset.Assets.reinforcer2.name
+            case 3: return DesignKitAsset.Assets.reinforcer3.name
+            case 4: return DesignKitAsset.Assets.reinforcer4.name
+            case 5: return DesignKitAsset.Assets.reinforcer5.name
+            default: return DesignKitAsset.Assets.reinforcer1.name
+        }
     }
 
     @ViewBuilder

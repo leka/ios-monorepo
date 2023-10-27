@@ -186,6 +186,7 @@ struct CreateUserProfileView_Previews: PreviewProvider {
         CreateUserProfileView()
             .environmentObject(CompanyViewModel())
             .environmentObject(ViewRouter())
+            .environmentObject(NavigationViewModel())
             .environmentObject(UIMetrics())
             .previewInterfaceOrientation(.landscapeLeft)
     }

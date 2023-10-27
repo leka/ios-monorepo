@@ -109,7 +109,11 @@ struct LoginView: View {
         }()
 
         LekaTextField(
-            label: mailTitle, entry: $mail, color: mailLabelColor, isEditing: $isEditing, focused: _focusedField
+            label: mailTitle,
+            entry: $mail,
+            color: mailLabelColor,
+            isEditing: $isEditing,
+            focused: _focusedField
         ) {
             focusedField = .password
         }
@@ -128,7 +132,12 @@ struct LoginView: View {
             return credentialsAreCorrect ? .accentColor : .red
         }()
 
-        LekaPasswordField(label: passwordTitle, entry: $password, color: passwordLabelColor, focused: _focusedField) {
+        LekaPasswordField(
+            label: passwordTitle,
+            entry: $password,
+            color: passwordLabelColor,
+            focused: _focusedField
+        ) {
             if password.isEmpty {
                 focusedField = .password
             } else {
@@ -156,7 +165,6 @@ struct LoginView_Previews: PreviewProvider {
         LoginView()
             .environmentObject(CompanyViewModel())
             .environmentObject(SettingsViewModel())
-            .environmentObject(ViewRouter())
             .environmentObject(UIMetrics())
             .previewInterfaceOrientation(.landscapeLeft)
     }
