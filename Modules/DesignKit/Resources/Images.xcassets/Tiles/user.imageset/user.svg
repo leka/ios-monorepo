@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="143px" height="176px" viewBox="0 0 143 176" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>user</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="user" transform="translate(2.000000, 2.000000)">
+            <g id="Groupe_7011" transform="translate(10.655172, 115.862069)" stroke-width="4.82758621">
+                <g id="Groupe_7010" transform="translate(-0.000000, 0.000000)">
+                    <path d="M110.013793,54.7241379 C109.675862,24.8413793 85.2482759,0.848275862 55.3655172,0.993103448 C25.4827586,0.8 1.05517241,24.8413793 0.717241379,54.7241379" id="Tracé_4219" stroke="#707071"></path>
+                    <path d="M110.013793,54.7241379 C109.675862,24.8413793 85.2482759,0.848275862 55.3655172,0.993103448 C25.4827586,0.8 1.05517241,24.8413793 0.717241379,54.7241379" id="Tracé_4220" stroke="#08579B" stroke-linecap="round" stroke-linejoin="round"></path>
+                </g>
+            </g>
+            <g id="Groupe_1353">
+                <circle id="Oval_51" stroke="#08579B" stroke-width="4.82758621" cx="7.84827586" cy="58.0068966" r="7.43448276"></circle>
+                <circle id="Oval_51_Copy" stroke="#08579B" stroke-width="4.82758621" cx="130.468966" cy="58.0068966" r="7.43448276"></circle>
+                <circle id="Oval_10" stroke="#08579B" stroke-width="4.82758621" cx="69.1586207" cy="54.2896552" r="53.8758621"></circle>
+                <circle id="Oval_7_Copy_4" fill="#08579B" fill-rule="nonzero" cx="87.7931034" cy="59.5517241" r="5.26206897"></circle>
+                <circle id="Oval_7_Copy_5" fill="#08579B" fill-rule="nonzero" cx="51.4413793" cy="59.5517241" r="5.26206897"></circle>
+                <path d="M38.4068966,13.1103448 C38.4068966,13.1103448 52.1172414,43.862069 120.186207,48.4" id="Path_6" stroke="#08579B" stroke-width="4.82758621" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M38.9862069,14.2689655 C44.5862069,30.6344828 32.5172414,46.0344828 17.0689655,51.2" id="Path_9" stroke="#08579B" stroke-width="4.82758621" stroke-linecap="round"></path>
+                <path d="M79.4413793,76.7862069 C79.4413793,81.5172414 75.6275862,85.3310345 70.8965517,85.3310345 L70.8965517,85.3310345 C66.1655172,85.3310345 62.3517241,81.5655172 62.3034483,76.8344828 C62.3034483,76.8344828 62.3034483,76.8344828 62.3034483,76.8344828" id="Oval_7_Copy_6" stroke="#08579B" stroke-width="4.82758621" stroke-linecap="round" stroke-linejoin="round"></path>
+            </g>
+        </g>
+    </g>
+</svg>
