@@ -2,6 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import DesignKit
 import Foundation
 import SwiftUI
 
@@ -35,7 +36,7 @@ enum TileData: Int, CaseIterable, Hashable {
             // Blue Information tiles
             case .curriculums:
                 return TileContent(
-                    image: "curriculums",
+                    image: "curriculums", // TODO(@Mathieu): replace with SF Symbols
                     title: "Les parcours",
                     subtitle: "Les parcours sont des compilations d'activités dont la difficulté est évolutive.",
                     message:
@@ -43,7 +44,7 @@ enum TileData: Int, CaseIterable, Hashable {
                 )
             case .activities:
                 return TileContent(
-                    image: "activities",
+                    image: "activities", // TODO(@Mathieu): replace with SF Symbols
                     title: "Les activités",
                     subtitle: "Les activités vous permettent de travailler des compétences variées !",
                     message:
@@ -51,7 +52,7 @@ enum TileData: Int, CaseIterable, Hashable {
                 )
             case .commands:
                 return TileContent(
-                    image: "commands",
+                    image: "commands", // TODO(@Mathieu): replace with SF Symbols
                     title: "Les commandes",
                     subtitle:
                         "Les commandes vous permettent de créer des activités en utilisant Leka comme médiateur !",
@@ -61,19 +62,19 @@ enum TileData: Int, CaseIterable, Hashable {
             // New company signup path
             case .signupBravo:
                 return TileContent(
-                    image: "welcome",
+                    image: DesignKitAsset.Images.welcome.name,
                     title: "Félicitations ! 🎉 \nVous venez de créer votre compte Leka !",
                     message: "Nous allons maintenant découvrir l'application \nensemble. Vous êtes prêt ?",
                     callToActionLabel: "👉 C'est parti !")
             case .signupStep1:
                 return TileContent(
-                    image: "accompagnant_picto",
+                    image: DesignKitAsset.Images.accompagnantPicto.name,
                     title: "ÉTAPE 1 :",
                     message: "Nous allons créer votre profil accompagnant.",
                     callToActionLabel: "Créer")
             case .signupStep2:
                 return TileContent(
-                    image: "user",
+                    image: DesignKitAsset.Images.user.name,
                     title: "ÉTAPE 2 :",
                     message:
                         "Nous allons maintenant créer votre premier \nprofil utilisateur (le profil d'une personne que \nvous accompagnez).",
