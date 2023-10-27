@@ -17,7 +17,7 @@ concurrency:
 
 jobs:
   upgrade_tools:
-    if: contains(github.event.label.name, 'ci:upgrade_tools')
+    if: ${{ contains(github.event.label.name, 'ci:upgrade_tools') || contains(github.event_name, 'schedule') }} 
     name: Upgrade tools
     runs-on: [self-hosted, iOS]
 
