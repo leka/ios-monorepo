@@ -81,6 +81,9 @@ public struct ActivityView: View {
             case .touchToSelect:
                 TouchToSelectView(exercise: viewModel.currentExercise)
                     .id(viewModel.currentExerciseIndexInSequence)
+            case .listenThenTouchToSelect:
+                ListenThenTouchToSelectView(exercise: viewModel.currentExercise)
+                    .id(viewModel.currentExerciseIndexInSequence)
         }
     }
 
