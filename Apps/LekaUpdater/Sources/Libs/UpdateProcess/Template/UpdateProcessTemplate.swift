@@ -35,10 +35,10 @@ class UpdateProcessTemplate: UpdateProcessProtocol {
     public var sendingFileProgression = CurrentValueSubject<Float, Never>(0.0)
 
     init() {
-        subscribeToStateUpdate()
+        subscribeToStateUpdates()
     }
 
-    private func subscribeToStateUpdate() {
+    private func subscribeToStateUpdates() {
         self.currentInternalState
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: self.convertCompletion, receiveValue: self.convertReceivedValue)

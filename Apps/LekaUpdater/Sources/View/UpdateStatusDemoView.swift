@@ -16,14 +16,14 @@ class UpdateStatusDemoViewModel: ObservableObject {
     init() {
         self.updateProcessController = UpdateProcessController()
 
-        subscribeToStateUpdate()
+        subscribeToStateUpdates()
     }
 
     public func startUpdate() {
         updateProcessController.startUpdate()
     }
 
-    private func subscribeToStateUpdate() {
+    private func subscribeToStateUpdates() {
         self.updateProcessController.currentStage
             .receive(on: DispatchQueue.main)
             .sink { completion in

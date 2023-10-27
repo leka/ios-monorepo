@@ -43,12 +43,12 @@ class UpdateStatusViewModel: ObservableObject {
     }
 
     init() {
-        subscribeToStateUpdate()
-        subscribeToSendingFileProgressionUpdate()
+        subscribeToStateUpdates()
+        subscribeToSendingFileProgressionUpdates()
         subscribeToRobotIsChargingUpdates()
     }
 
-    private func subscribeToStateUpdate() {
+    private func subscribeToStateUpdates() {
         self.updateProcessController.currentStage
             .receive(on: DispatchQueue.main)
             .sink { completion in
@@ -107,7 +107,7 @@ class UpdateStatusViewModel: ObservableObject {
             .store(in: &cancellables)
     }
 
-    private func subscribeToSendingFileProgressionUpdate() {
+    private func subscribeToSendingFileProgressionUpdates() {
         self.updateProcessController.sendingFileProgression
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { progression in

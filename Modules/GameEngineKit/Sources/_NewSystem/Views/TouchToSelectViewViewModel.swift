@@ -16,14 +16,14 @@ class TouchToSelectViewViewModel: ObservableObject {
     init(choices: [SelectionChoice]) {
         self.gameplay = GameplaySelectAllRightAnswers(
             choices: choices.map { GameplaySelectionChoiceModel(choice: $0) })
-        subscribeToGameplaySelectionChoicesUpdate()
+        subscribeToGameplaySelectionChoicesUpdates()
     }
 
     public func onChoiceTapped(choice: GameplaySelectionChoiceModel) {
         gameplay.process(choice)
     }
 
-    private func subscribeToGameplaySelectionChoicesUpdate() {
+    private func subscribeToGameplaySelectionChoicesUpdates() {
         gameplay.choices
             .receive(on: DispatchQueue.main)
             .sink {
