@@ -5,7 +5,7 @@
 import DesignKit
 import SwiftUI
 
-struct Media_ButtonStyle: ButtonStyle {
+struct ActionButtonStyle: ButtonStyle {
     var progress: CGFloat
 
     func makeBody(configuration: Self.Configuration) -> some View {
@@ -29,7 +29,7 @@ struct Media_ButtonStyle: ButtonStyle {
     }
 }
 
-struct ListenButton: View {
+struct ActionListenButton: View {
     @ObservedObject var audioPlayer: AudioPlayer
 
     var body: some View {
@@ -43,7 +43,7 @@ struct ListenButton: View {
         }
         .frame(width: 200)
         .disabled(audioPlayer.isPlaying)
-        .buttonStyle(Media_ButtonStyle(progress: audioPlayer.progress))
+        .buttonStyle(ActionButtonStyle(progress: audioPlayer.progress))
         .scaleEffect(audioPlayer.isPlaying ? 1.0 : 0.8, anchor: .center)
         .shadow(
             color: .accentColor.opacity(0.2),
@@ -53,7 +53,7 @@ struct ListenButton: View {
     }
 }
 
-struct ObserveButton: View {
+struct ActionObserveButton: View {
     let image: String
     @Binding var imageHasBeenObserved: Bool
     @State private var animationPercent: CGFloat = 0.0
@@ -107,12 +107,20 @@ struct ObserveButton: View {
             }
         }
         .disabled(imageHasBeenObserved)
-        .buttonStyle(Media_ButtonStyle(progress: animationPercent))
+        .buttonStyle(ActionButtonStyle(progress: animationPercent))
         .scaleEffect(imageHasBeenObserved ? 1.0 : 0.8, anchor: .center)
         .shadow(
             color: .accentColor.opacity(0.2),
             radius: imageHasBeenObserved ? 6 : 3, x: 0, y: 3
         )
         .animation(.spring(response: 1, dampingFraction: 0.45), value: imageHasBeenObserved)
+    }
+}
+
+#Preview {
+    HStack {
+        ActionListenButton(audioPlayer: AudioPlayer(audioRecording: AudioRecordingModel(name: "drums", file: "drums")))
+        ActionObserveButton(image: "image-instrument-drums", imageHasBeenObserved: .constant(false))
+        ActionObserveButton(image: "image-instrument-drums", imageHasBeenObserved: .constant(true))
     }
 }

@@ -42,7 +42,7 @@ public struct ObserveThenTouchToSelectView: View {
         let interface = Interface(rawValue: viewModel.choices.count)
 
         HStack(spacing: 0) {
-            ObserveButton(image: image, imageHasBeenObserved: $imageHasBeenObserved)
+            ActionObserveButton(image: image, imageHasBeenObserved: $imageHasBeenObserved)
                 .padding(20)
 
             Divider()
