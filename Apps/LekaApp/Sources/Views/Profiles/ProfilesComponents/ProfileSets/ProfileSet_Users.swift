@@ -2,6 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import DesignKit
 import SwiftUI
 
 struct ProfileSet_Users: View {
@@ -65,8 +66,12 @@ struct ProfileSet_Users: View {
         }
         .buttonStyle(CircledIcon_NoFeedback_ButtonStyle(font: metrics.bold16))
         .disabled(
-            company.getProfileDataFor(.user, id: company.profilesInUse[.user]!)[0] == "question_mark_blue"
-                && !company.profileIsSelected(.user))
+            company.getProfileDataFor(
+                .user,
+                id: company.profilesInUse[.user]!
+            )[0] == DesignKitAsset.Avatars.questionMarkBlue.name
+            && !company.profileIsSelected(.user)
+        )
     }
 
     private var addButton: some View {
