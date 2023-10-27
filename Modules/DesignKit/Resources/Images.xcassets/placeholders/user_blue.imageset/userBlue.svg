@@ -1,25 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="400px" height="400px" viewBox="0 0 400 400" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>avatar_leka_astronaut</title>
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="avatar_leka_astronaut">
-            <rect id="Rectangle" fill="#487DAC" fill-rule="nonzero" x="0" y="0" width="400" height="400"></rect>
-            <g id="user" transform="translate(106.000000, 84.000000)">
-                <g id="Groupe_7010" transform="translate(15.463918, 158.558764)">
-                    <path d="M148.66132,73.4603122 C148.201691,32.8159355 114.977047,0.182243752 74.3326702,0.379227807 C33.6882935,0.1165824 0.46364954,32.8159355 0.00402008234,73.4603122" id="Tracé_4219" stroke="#707071" stroke-width="1.360128"></path>
-                    <path d="M148.66132,73.4603122 C148.201691,32.8159355 114.977047,0.182243752 74.3326702,0.379227807 C33.6882935,0.1165824 0.46364954,32.8159355 0.00402008234,73.4603122" id="Tracé_4220" stroke="#FFFFFF" stroke-width="6.35179776" stroke-linecap="round" stroke-linejoin="round"></path>
-                </g>
-                <g id="Groupe_1353">
-                    <circle id="Oval_51" stroke="#FFFFFF" stroke-width="6.56613518" cx="10.6746597" cy="78.8968043" r="10.1118482"></circle>
-                    <circle id="Oval_51_Copy" stroke="#FFFFFF" stroke-width="6.56613518" cx="177.454494" cy="78.8968043" r="10.1118482"></circle>
-                    <circle id="Oval_10" stroke="#FFFFFF" stroke-width="6.56613518" cx="94.0645765" cy="73.8408801" r="73.2780686"></circle>
-                    <circle id="Oval_7_Copy_4" fill="#FFFFFF" fill-rule="nonzero" cx="119.409858" cy="80.9979674" r="7.15708734"></circle>
-                    <circle id="Oval_7_Copy_5" fill="#FFFFFF" fill-rule="nonzero" cx="69.9668603" cy="80.9979674" r="7.15708734"></circle>
-                    <path d="M52.2382955,17.8317471 C52.2382955,17.8317471 70.8861193,59.6580282 163.468625,65.8301952" id="Path_6" stroke="#FFFFFF" stroke-width="6.56613518" stroke-linecap="round" stroke-linejoin="round"></path>
-                    <path d="M53.0262316,19.4076195 C60.6429484,41.6668178 44.2276105,62.612789 23.2159779,69.6385536" id="Path_9" stroke="#FFFFFF" stroke-width="6.56613518" stroke-linecap="round"></path>
-                    <path d="M108.050444,104.43907 C108.050444,110.873883 102.863198,116.061129 96.4283851,116.061129 L96.4283851,116.061129 C89.9935726,116.061129 84.8063258,110.939544 84.7406645,104.504731 C84.7406645,104.504731 84.7406645,104.504731 84.7406645,104.504731" id="Oval_7_Copy_6" stroke="#FFFFFF" stroke-width="6.56613518" stroke-linecap="round" stroke-linejoin="round"></path>
-                </g>
-            </g>
-        </g>
-    </g>
-</svg>
+version https://git-lfs.github.com/spec/v1
+oid sha256:c0ff73dc498b26daedc8f859d700edde0f4f702946bfadbda049721a6c5ac3bd
+size 2836
