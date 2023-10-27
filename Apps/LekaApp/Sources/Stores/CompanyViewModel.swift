@@ -16,11 +16,7 @@ class CompanyViewModel: ObservableObject {
     @Published var bufferUser = User(name: "", avatar: DesignKitAsset.Avatars.userWhite.name, reinforcer: 1)
     @Published var editingProfile: Bool = false
 
-    // For the tests
-    @Published var willBeDeletedFakeFollowUpNumberOfCells: Int = 0
-
     // MARK: - METHODS
-
     // Account Managment
     func disconnect() {
         currentCompany = Company(mail: "", password: "", teachers: [], users: [])
@@ -30,11 +26,10 @@ class CompanyViewModel: ObservableObject {
         resetBufferProfile(.user)
     }
 
-    // Profiles Managment Methods
     func assignCurrentProfiles() {
         profilesInUse = selectedProfiles
     }
-    // add this after sorting if POP
+
     func preselectCurrentProfiles() {
         selectedProfiles = profilesInUse
     }
@@ -133,7 +128,6 @@ class CompanyViewModel: ObservableObject {
         }
     }
 
-    // Selections
     func emptyProfilesSelection() {
         selectedProfiles[.user] = UUID()
         selectedProfiles[.teacher] = UUID()
@@ -165,7 +159,6 @@ class CompanyViewModel: ObservableObject {
             && currentCompany.users.map { $0.id }.contains(selectedProfiles[.user])
     }
 
-    // Edit selected profile
     func editProfile(_ type: UserType) {
         switch type {
             case .teacher:
@@ -194,7 +187,6 @@ class CompanyViewModel: ObservableObject {
         }
     }
 
-    // Save profiles changes
     func saveProfileChanges(_ type: UserType) {
         switch type {
             case .teacher:
@@ -220,7 +212,6 @@ class CompanyViewModel: ObservableObject {
         editingProfile = false
     }
 
-    // Add New Profiles
     func addTeacherProfile() {
         if bufferTeacher.avatar == DesignKitAsset.Avatars.accompanyingWhite.name {
             bufferTeacher.avatar = DesignKitAsset.Avatars.accompanyingBlue.name
@@ -237,7 +228,6 @@ class CompanyViewModel: ObservableObject {
         selectedProfiles[.user] = bufferUser.id
     }
 
-    // Delete profiles
     func deleteProfile(_ type: UserType) {
         switch type {
             case .teacher:
@@ -254,112 +244,11 @@ class CompanyViewModel: ObservableObject {
         }
     }
 
-    // MARK: - Mock DATA - DiscoveryMode
+    // MARK: - DiscoveryMode
     func setupDiscoveryCompany() {
         currentCompany = DiscoveryCompany().discoveryCompany
         profilesInUse[.teacher] = currentCompany.teachers[0].id
         profilesInUse[.user] = currentCompany.users[0].id
     }
-
-    // DELETE once we fetch from server
-    // This will only be used for tests + maybe congresses??
-    let leka = Company(
-        mail: "test@leka.io",
-        password: "lekaleka",
-        teachers: [
-            Teacher(
-                name: "Ladislas",
-                avatar: DesignKitAsset.Avatars.avatarsPictogramsFoodsFruitsBananaYellow00FB.name,
-                jobs: ["CEO"]
-            ),
-            Teacher(
-                name: "Hortense",
-                avatar: DesignKitAsset.Avatars.avatarsLekaExplorer.name,
-                jobs: ["Designer"]
-            ),
-            Teacher(
-                name: "Lucie",
-                avatar: DesignKitAsset.Avatars.avatarsLekaGirl6a.name,
-                jobs: ["COO"]
-            ),
-            Teacher(
-                name: "Mathieu",
-                avatar: DesignKitAsset.Avatars.avatarsPictogramsAnimalsSeaCrabRed003E.name,
-                jobs: ["Developer"]
-            ),
-            Teacher(
-                name: "Jean-Christophe B.",
-                avatar: DesignKitAsset.Avatars.avatarsLekaMoon.name,
-                jobs: ["Pédopsychiatre"]
-            ),
-        ],
-        users: [
-            User(
-                name: "Alice",
-                avatar: DesignKitAsset.Avatars.avatarsLekaSunglassesBlue.name,
-                reinforcer: 3
-            ),
-            User(
-                name: "Olivia",
-                avatar: DesignKitAsset.Avatars.avatarsLekaStar.name,
-                reinforcer: 5
-            ),
-            User(
-                name: "Elessa",
-                avatar: DesignKitAsset.Avatars.avatarsGirl3e62.name,
-                reinforcer: 1
-            ),
-            User(
-                name: "Lucas",
-                avatar: DesignKitAsset.Avatars.avatarsPictogramsAnimalsFarmRoosterWhite006B.name,
-                reinforcer: 2
-            ),
-            User(
-                name: "Maximilien",
-                avatar: DesignKitAsset.Avatars.avatarsPictogramsFoodsVegetablesCornYellow00E3.name,
-                reinforcer: 4
-            ),
-            User(
-                name: "Stéphane",
-                avatar: DesignKitAsset.Avatars.avatarsPictogramsAnimalsSeaTurtleGreen0041.name,
-                reinforcer: 3
-            ),
-            User(
-                name: "Lila",
-                avatar: DesignKitAsset.Avatars.avatarsPictogramsAnimalsSeaCrabRed003E.name,
-                reinforcer: 2
-            ),
-            User(
-                name: "Pierre",
-                avatar: DesignKitAsset.Avatars.avatarsBoy2d.name,
-                reinforcer: 1
-            ),
-            User(
-                name: "Baptiste",
-                avatar: DesignKitAsset.Avatars.avatarsPictogramsAnimalsForestHedgehogBrown0062.name,
-                reinforcer: 5
-            ),
-            User(
-                name: "Éloïse",
-                avatar: DesignKitAsset.Avatars.avatarsSun.name,
-                reinforcer: 4
-            ),
-            User(
-                name: "Clément",
-                avatar: DesignKitAsset.Avatars.avatarsLekaBoy2d.name,
-                reinforcer: 2
-            ),
-            User(
-                name: "Simon",
-                avatar: DesignKitAsset.Avatars.avatarsLekaMarine.name,
-                reinforcer: 3
-            ),
-            User(
-                name: "Jean-Pierre Marie",
-                avatar: DesignKitAsset.Avatars.avatarsPictogramsFoodsFruitsStrawberryRed00FD.name,
-                reinforcer: 4
-            ),
-        ]
-    )
 
 }

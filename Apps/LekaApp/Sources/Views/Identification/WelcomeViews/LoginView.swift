@@ -31,13 +31,13 @@ struct LoginView: View {
     @State private var credentialsAreCorrect: Bool = true
 
     private func submitForm() {
-        if mail == company.leka.mail {
-            if password != company.leka.password {
+        if mail == LekaCompany().lekaCompany.mail {
+            if password != LekaCompany().lekaCompany.password {
                 credentialsAreCorrect = false
             } else {
                 credentialsAreCorrect = true
                 settings.companyIsConnected = true
-                company.currentCompany = company.leka
+                company.currentCompany = LekaCompany().lekaCompany
                 settings.companyIsLoggingIn = true
                 navigateToTeacherSelector.toggle()
             }
@@ -106,7 +106,8 @@ struct LoginView: View {
         }()
 
         let mailLabelColor: Color = {
-            return mail.isValidEmail() || mail.isEmpty || isEditing ? DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor : .red
+            return mail.isValidEmail() || mail.isEmpty || isEditing
+                ? DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor : .red
         }()
 
         LekaTextField(

@@ -70,7 +70,7 @@ struct ProfileSet_Users: View {
                 .user,
                 id: company.profilesInUse[.user]!
             )[0] == DesignKitAsset.Avatars.questionMarkBlue.name
-            && !company.profileIsSelected(.user)
+                && !company.profileIsSelected(.user)
         )
     }
 

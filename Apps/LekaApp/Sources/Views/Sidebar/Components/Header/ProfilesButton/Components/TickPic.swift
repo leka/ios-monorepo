@@ -29,7 +29,9 @@ struct TickPic: View {
                 .foregroundColor(.white)
                 .padding(settings.exploratoryModeIsOn ? 20 : 0)
                 .fontWeight(.light)
-                .background(settings.exploratoryModeIsOn ? DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor : .clear, in: Circle())
+                .background(
+                    settings.exploratoryModeIsOn ? DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor : .clear, in: Circle()
+                )
                 .overlay(
                     Circle()
                         .stroke(.white, lineWidth: 3)

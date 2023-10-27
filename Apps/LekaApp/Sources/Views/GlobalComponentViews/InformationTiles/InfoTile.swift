@@ -14,7 +14,8 @@ struct InfoTile: View {
 
     let data: TileData
     private var headerColor: Color {
-        data == .discovery ? DesignKitAsset.Colors.lekaOrange.swiftUIColor : DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor
+        data == .discovery
+            ? DesignKitAsset.Colors.lekaOrange.swiftUIColor : DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor
     }
 
     var body: some View {

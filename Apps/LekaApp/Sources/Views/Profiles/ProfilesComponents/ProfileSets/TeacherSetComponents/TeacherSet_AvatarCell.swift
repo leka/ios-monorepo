@@ -53,7 +53,8 @@ struct TeacherSet_AvatarCell: View {
                     .lineLimit(2)
                     .padding(.horizontal, 14)
                     .foregroundColor(
-                        company.profileIsCurrent(.teacher, id: teacher.id) ? Color.white : DesignKitAsset.Colors.lekaDarkGray.swiftUIColor
+                        company.profileIsCurrent(.teacher, id: teacher.id)
+                            ? Color.white : DesignKitAsset.Colors.lekaDarkGray.swiftUIColor
                     )
                     .padding(2)
                     .frame(minWidth: 108)
@@ -63,7 +64,8 @@ struct TeacherSet_AvatarCell: View {
                     })
                     .background(
                         company.profileIsCurrent(.teacher, id: teacher.id)
-                            ? DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor : DesignKitAsset.Colors.lekaLightGray.swiftUIColor,
+                            ? DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor
+                            : DesignKitAsset.Colors.lekaLightGray.swiftUIColor,
                         in: RoundedRectangle(cornerRadius: metrics.btnRadius))
             }
         }

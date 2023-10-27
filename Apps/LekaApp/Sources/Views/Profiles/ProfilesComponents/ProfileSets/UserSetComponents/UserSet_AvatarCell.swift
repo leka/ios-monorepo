@@ -68,7 +68,10 @@ struct UserSet_AvatarCell: View {
                     .allowsTightening(true)
                     .lineLimit(2)
                     .padding(.horizontal, 14)
-                    .foregroundColor(company.profileIsCurrent(.user, id: user.id) ? Color.white : DesignKitAsset.Colors.lekaDarkGray.swiftUIColor)
+                    .foregroundColor(
+                        company.profileIsCurrent(.user, id: user.id)
+                            ? Color.white : DesignKitAsset.Colors.lekaDarkGray.swiftUIColor
+                    )
                     .padding(2)
                     .frame(minWidth: 108)
                     .background(content: {
@@ -76,7 +79,9 @@ struct UserSet_AvatarCell: View {
                             .stroke(.white, lineWidth: 2)
                     })
                     .background(
-                        company.profileIsCurrent(.user, id: user.id) ? DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor : DesignKitAsset.Colors.lekaLightGray.swiftUIColor,
+                        company.profileIsCurrent(.user, id: user.id)
+                            ? DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor
+                            : DesignKitAsset.Colors.lekaLightGray.swiftUIColor,
                         in: RoundedRectangle(cornerRadius: metrics.btnRadius))
             }
         }

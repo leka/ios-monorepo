@@ -73,6 +73,8 @@ struct ReinforcerPicker: View {
                 .fill(.white)
                 .shadow(color: .black.opacity(0.2), radius: 4, x: 0, y: 4)
         )
-        .background(DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor, in: Circle().inset(by: company.bufferUser.reinforcer == number ? -6 : 2))
+        .background(
+            DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor,
+            in: Circle().inset(by: company.bufferUser.reinforcer == number ? -6 : 2))
     }
 }

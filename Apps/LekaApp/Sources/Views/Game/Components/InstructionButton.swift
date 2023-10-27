@@ -49,7 +49,11 @@ struct InstructionButton: View {
                     .resizable()
                     .renderingMode(.template)
                     .aspectRatio(contentMode: .fit)
-                    .foregroundColor(activityVM.isSpeaking ? DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor : DesignKitAsset.Colors.progressBar.swiftUIColor)
+                    .foregroundColor(
+                        activityVM.isSpeaking
+                            ? DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor
+                            : DesignKitAsset.Colors.progressBar.swiftUIColor
+                    )
                     .padding(10)
             }
         )

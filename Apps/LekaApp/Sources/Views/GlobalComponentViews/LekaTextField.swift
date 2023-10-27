@@ -34,7 +34,6 @@ struct LekaTextField: View {
                 isEditing = isEditingNow
             }
         }
-        .focused($focused, equals: type)
         .keyboardType(type == .mail ? .emailAddress : .default)
         .textContentType(type == .mail ? .emailAddress : .name)
         .submitLabel(type == .mail ? .next : .done)
@@ -43,7 +42,9 @@ struct LekaTextField: View {
         .autocorrectionDisabled()
         .padding(10)
         .frame(width: 400, height: 44)
-        .background(DesignKitAsset.Colors.lekaLightGray.swiftUIColor, in: RoundedRectangle(cornerRadius: metrics.btnRadius))
+        .background(
+            DesignKitAsset.Colors.lekaLightGray.swiftUIColor, in: RoundedRectangle(cornerRadius: metrics.btnRadius)
+        )
         .overlay(
             RoundedRectangle(cornerRadius: metrics.btnRadius)
                 .stroke(focused == type ? color : .clear, lineWidth: 1)
@@ -101,7 +102,9 @@ struct LekaPasswordField: View {
             .disabled(entry.isEmpty)
         }
         .frame(width: 400, height: 44)
-        .background(DesignKitAsset.Colors.lekaLightGray.swiftUIColor, in: RoundedRectangle(cornerRadius: metrics.btnRadius))
+        .background(
+            DesignKitAsset.Colors.lekaLightGray.swiftUIColor, in: RoundedRectangle(cornerRadius: metrics.btnRadius)
+        )
         .overlay(
             RoundedRectangle(cornerRadius: metrics.btnRadius)
                 .stroke(focused == type ? color : .clear, lineWidth: 1)

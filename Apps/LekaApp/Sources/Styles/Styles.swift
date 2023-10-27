@@ -181,7 +181,10 @@ struct PlaySound_ButtonStyle: ButtonStyle {
                     .overlay(
                         Circle()
                             .trim(from: 0, to: progress)
-                            .stroke(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor, style: StrokeStyle(lineWidth: 10, lineCap: .round))
+                            .stroke(
+                                DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor,
+                                style: StrokeStyle(lineWidth: 10, lineCap: .round)
+                            )
                             .rotationEffect(.degrees(-90))
                             .animation(.easeOut(duration: 0.2), value: progress)
                     )

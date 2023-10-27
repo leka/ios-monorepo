@@ -37,10 +37,14 @@ struct SidebarSections: View {
 
                 Spacer()
             }
-            .foregroundColor(navigationVM.currentView.rawValue == item.destination.rawValue ? .white : DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
+            .foregroundColor(
+                navigationVM.currentView.rawValue == item.destination.rawValue
+                    ? .white : DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor
+            )
             .frame(height: 44)
             .background(
-                navigationVM.currentView.rawValue == item.destination.rawValue ? DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor : .clear,
+                navigationVM.currentView.rawValue == item.destination.rawValue
+                    ? DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor : .clear,
                 in: RoundedRectangle(cornerRadius: metrics.btnRadius, style: .continuous)
             )
             .contentShape(Rectangle())

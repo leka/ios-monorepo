@@ -46,6 +46,7 @@ struct JobPickerTrigger: View {
                 .padding(10)
         }
         .frame(width: 400, height: 44)
-        .background(DesignKitAsset.Colors.lekaLightGray.swiftUIColor, in: RoundedRectangle(cornerRadius: metrics.btnRadius))
+        .background(
+            DesignKitAsset.Colors.lekaLightGray.swiftUIColor, in: RoundedRectangle(cornerRadius: metrics.btnRadius))
     }
 }
