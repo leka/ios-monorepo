@@ -25,10 +25,17 @@ struct SelectionChoiceView: View {
     }
 
     var body: some View {
-        // TODO(@ladislas): Add image and text
+        // TODO(@ladislas): Add text
         switch choice.type {
             case .color:
                 ChoiceColorView(color: choice.value, size: size, state: state)
+                    .overlay(
+                        Circle()
+                            .fill(isTappable ? .clear : .white.opacity(0.6))
+                    )
+                    .animation(.easeOut(duration: 0.3), value: isTappable)
+            case .image:
+                ChoiceImageView(image: choice.value, size: size, state: state)
                     .overlay(
                         Circle()
                             .fill(isTappable ? .clear : .white.opacity(0.6))
