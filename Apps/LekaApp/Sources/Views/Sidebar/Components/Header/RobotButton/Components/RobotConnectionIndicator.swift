@@ -2,11 +2,13 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import DesignKit
 import SwiftUI
 
 struct RobotConnectionIndicator: View {
 
     @EnvironmentObject var robotVM: RobotViewModel
+    @EnvironmentObject var metrics: UIMetrics
     // Animation
     @State private var isAnimated: Bool = false
     @State private var diameter: CGFloat = 0
@@ -19,7 +21,7 @@ struct RobotConnectionIndicator: View {
 
             Image(
                 robotVM.robotIsConnected
-                    ? LekaAppAsset.Assets.robotConnected.name : LekaAppAsset.Assets.robotDisconnected.name
+                    ? DesignKitAsset.Images.robotConnected.name : DesignKitAsset.Images.robotDisconnected.name
             )
             .resizable()
             .renderingMode(.original)
@@ -58,12 +60,11 @@ struct RobotConnectionIndicator: View {
 
     @ViewBuilder private var badgeView: some View {
         if !robotVM.robotIsConnected {
-            Image("button_notification")
-                .resizable()
-                .renderingMode(.original)
-                .aspectRatio(contentMode: .fit)
+            Image(systemName: "exclamationmark.circle.fill")
+                .symbolRenderingMode(.palette)
+                .foregroundStyle(.white, .red)
+                .font(metrics.reg19)
                 .frame(maxWidth: 22, maxHeight: 22)
-            //                .offset(x: 2, y: -2)
         }
     }
 }
