@@ -7,7 +7,7 @@ import Foundation
 
 public class GameplayError: BaseGameplayProtocol {
     public var choices = CurrentValueSubject<[ChoiceModel], Never>([])
-    public var state = CurrentValueSubject<GameplayState, Never>(.idle)
+    public var state = CurrentValueSubject<GameplayStateDeprecated, Never>(.idle)
 
     public func process(choice: ChoiceModel) {
         // Nothing to do

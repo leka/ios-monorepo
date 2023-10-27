@@ -4,7 +4,7 @@
 
 import Foundation
 
-public enum GameplayState {
+public enum GameplayStateDeprecated {
     case idle
     case playing
     case finished

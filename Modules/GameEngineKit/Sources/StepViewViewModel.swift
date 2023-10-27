@@ -9,7 +9,7 @@ public class StepViewViewModel: ObservableObject {
     @Published var currentInterface: InterfaceType
     @Published var currentGameplay: any BaseGameplayProtocol
     @Published var currentIndex: Int
-    @Published var state: GameplayState = .idle
+    @Published var state: GameplayStateDeprecated = .idle
 
     private var stepManager: StepManager
     private var cancellables: Set<AnyCancellable> = []

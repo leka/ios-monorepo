@@ -9,7 +9,7 @@ public class DanceFreezeViewModel: Identifiable, ObservableObject {
     private var gameplay: DanceFreezeGameplay
 
     @Published public var progress: CGFloat
-    @Published public var state: GameplayState
+    @Published public var state: GameplayStateDeprecated
     @Published public var isDancing: Bool = false
 
     private var cancellables: Set<AnyCancellable> = []

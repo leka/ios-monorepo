@@ -9,7 +9,7 @@ public class GenericViewModel: Identifiable, ObservableObject {
     public var gameplay: any SelectionGameplayProtocol
 
     @Published public var choices: [ChoiceModel]
-    @Published public var state: GameplayState = .idle
+    @Published public var state: GameplayStateDeprecated = .idle
 
     private var cancellables: Set<AnyCancellable> = []
 

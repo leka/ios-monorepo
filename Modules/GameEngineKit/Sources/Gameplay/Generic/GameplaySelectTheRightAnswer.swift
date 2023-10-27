@@ -7,7 +7,7 @@ import Foundation
 
 public class GameplaySelectTheRightAnswer: SelectionGameplayProtocol {
     public var choices = CurrentValueSubject<[ChoiceModel], Never>([])
-    public var state = CurrentValueSubject<GameplayState, Never>(.idle)
+    public var state = CurrentValueSubject<GameplayStateDeprecated, Never>(.idle)
 
     public init(choices: [ChoiceModel]) {
         self.choices.send(choices)

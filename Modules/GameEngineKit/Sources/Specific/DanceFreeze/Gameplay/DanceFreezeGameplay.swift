@@ -8,7 +8,7 @@ import SwiftUI
 public class DanceFreezeGameplay: ObservableObject {
     var audioPlayer: AudioPlayer
     @Published public var progress: CGFloat = 0.0
-    @Published public var state: GameplayState = .idle
+    @Published public var state: GameplayStateDeprecated = .idle
     @Published public var isDancing: Bool = false
 
     var cancellables: Set<AnyCancellable> = []

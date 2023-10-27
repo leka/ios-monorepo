@@ -8,7 +8,7 @@ import RobotKit
 
 public class ColorBingoGameplay: SelectionGameplayProtocol {
     public var choices = CurrentValueSubject<[ChoiceModel], Never>([])
-    public var state = CurrentValueSubject<GameplayState, Never>(.idle)
+    public var state = CurrentValueSubject<GameplayStateDeprecated, Never>(.idle)
 
     private let robot = Robot.shared
 

@@ -10,7 +10,7 @@ public class DragAndDropZoneViewModel: Identifiable, ObservableObject {
 
     @Published public var choices: [ChoiceModel]
     @Published public var dropZones: [DragAndDropZoneModel]
-    @Published public var state: GameplayState = .idle
+    @Published public var state: GameplayStateDeprecated = .idle
 
     private var cancellables: Set<AnyCancellable> = []
 

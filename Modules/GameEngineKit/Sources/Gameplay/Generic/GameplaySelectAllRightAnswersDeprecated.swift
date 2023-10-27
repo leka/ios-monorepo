@@ -7,7 +7,7 @@ import Foundation
 
 public class GameplaySelectAllRightAnswersDeprecated: SelectionGameplayProtocol {
     public var choices = CurrentValueSubject<[ChoiceModel], Never>([])
-    public var state = CurrentValueSubject<GameplayState, Never>(.idle)
+    public var state = CurrentValueSubject<GameplayStateDeprecated, Never>(.idle)
 
     private var rightAnswersGiven: [ChoiceModel] = []
 
