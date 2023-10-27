@@ -2,6 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import DesignKit
 import SwiftUI
 
 struct ProfileSet_Teachers: View {
@@ -26,7 +27,7 @@ struct ProfileSet_Teachers: View {
 
             // Separator
             Rectangle()
-                .fill(Color.accentColor)
+                .fill(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
                 .frame(height: 1)
                 .frame(maxWidth: navigationVM.showProfileEditor ? .infinity : 460)
 
@@ -99,7 +100,7 @@ struct ProfileSet_Teachers: View {
             }
             Text("Qui êtes-vous ?")
                 .font(metrics.reg17)
-                .foregroundColor(.accentColor)
+                .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
             if navigationVM.showProfileEditor {
                 Spacer()
             }

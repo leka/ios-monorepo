@@ -2,6 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import DesignKit
 import SwiftUI
 
 struct ReinforcerPicker: View {
@@ -15,7 +16,7 @@ struct ReinforcerPicker: View {
                 HStack {
                     Text("Choix du renforçateur")
                         .font(metrics.reg17)
-                        .foregroundColor(.accentColor)
+                        .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
                         .padding(.leading, 10)
                     Spacer()
                 }
@@ -24,7 +25,7 @@ struct ReinforcerPicker: View {
                         "Le renforçateur est un effet lumineux répétitif du robot que vous pourrez actionner pour récompenser le comportement de l'utilisateur. \nSi votre robot est connecté, vous pouvez tester les renforçateurs avant d'en choisir un."
                     )
                     .font(metrics.reg12)
-                    .foregroundColor(.accentColor)
+                    .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
                     .padding(.leading, 10)
                     Spacer()
                 }
@@ -72,6 +73,6 @@ struct ReinforcerPicker: View {
                 .fill(.white)
                 .shadow(color: .black.opacity(0.2), radius: 4, x: 0, y: 4)
         )
-        .background(Color("lekaSkyBlue"), in: Circle().inset(by: company.bufferUser.reinforcer == number ? -6 : 2))
+        .background(DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor, in: Circle().inset(by: company.bufferUser.reinforcer == number ? -6 : 2))
     }
 }

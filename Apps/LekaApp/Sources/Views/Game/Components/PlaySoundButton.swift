@@ -2,6 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import DesignKit
 import SwiftUI
 
 struct PlaySoundButton: View {
@@ -16,7 +17,7 @@ struct PlaySoundButton: View {
             label: {
                 Image(systemName: "speaker.2")
                     .font(.system(size: 100, weight: .medium))
-                    .foregroundColor(.accentColor)
+                    .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
                     .padding(40)
             }
         )
@@ -28,7 +29,7 @@ struct PlaySoundButton: View {
         )
         .scaleEffect(activityVM.audioPlayer.isPlaying ? 1.0 : 0.8, anchor: .center)
         .shadow(
-            color: .accentColor.opacity(0.2),
+            color: DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor.opacity(0.2),
             radius: activityVM.audioPlayer.isPlaying ? 6 : 3, x: 0, y: 3
         )
         .animation(.spring(response: 0.3, dampingFraction: 0.45), value: activityVM.audioPlayer.isPlaying)

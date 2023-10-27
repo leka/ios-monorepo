@@ -2,6 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import DesignKit
 import SwiftUI
 
 struct HomeView: View {
@@ -27,7 +28,7 @@ struct HomeView: View {
                                 infoButton
                             }
                         }
-                        .background(Color("lekaLightBlue").ignoresSafeArea())
+                        .background(DesignKitAsset.Colors.lekaLightBlue.swiftUIColor.ignoresSafeArea())
                 }
             }
         }
@@ -70,7 +71,7 @@ struct HomeView: View {
             }
         }
         .font(metrics.semi17)
-        .foregroundColor(.accentColor)
+        .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
     }
 
     private var infoButton: some View {
@@ -78,7 +79,7 @@ struct HomeView: View {
             navigationVM.updateShowInfo()
         } label: {
             Image(systemName: "info.circle")
-                .foregroundColor(.accentColor)
+                .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
         }
         .opacity(navigationVM.showInfo() ? 0 : 1)
     }

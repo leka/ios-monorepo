@@ -2,6 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import DesignKit
 import SwiftUI
 
 struct GoButton: View {
@@ -21,7 +22,7 @@ struct GoButton: View {
                 } label: {
                     goButtonLabel
                 }
-                .background(Color("lekaLightGray"), in: Circle())
+                .background(DesignKitAsset.Colors.lekaLightGray.swiftUIColor, in: Circle())
                 .padding(.trailing, 40)
             }
             .offset(y: -40)
@@ -54,11 +55,11 @@ struct GoButton: View {
         ZStack {
             Circle()
                 .inset(by: 6)
-                .fill(Color("btnLightBlue"))
+                .fill(DesignKitAsset.Colors.lekaLightBlue.swiftUIColor)
                 .shadow(color: .black.opacity(0.1), radius: 2.5, x: 0, y: 2.5)
             Circle()
                 .inset(by: 8)
-                .fill(Color.accentColor)
+                .fill(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
                 .shadow(color: .black.opacity(0.2), radius: 2.5, x: 0, y: 2.6)
             Circle()
                 .inset(by: 15)

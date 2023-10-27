@@ -2,6 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import DesignKit
 import SwiftUI
 
 struct LekaTextField: View {
@@ -10,7 +11,7 @@ struct LekaTextField: View {
 
     var label: String
     @Binding var entry: String
-    var color: Color = .accentColor
+    var color: Color = DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor
     @Binding var isEditing: Bool
     var type = FormField.mail
     @FocusState var focused: FormField?
@@ -42,7 +43,7 @@ struct LekaTextField: View {
         .autocorrectionDisabled()
         .padding(10)
         .frame(width: 400, height: 44)
-        .background(Color("lekaLightGray"), in: RoundedRectangle(cornerRadius: metrics.btnRadius))
+        .background(DesignKitAsset.Colors.lekaLightGray.swiftUIColor, in: RoundedRectangle(cornerRadius: metrics.btnRadius))
         .overlay(
             RoundedRectangle(cornerRadius: metrics.btnRadius)
                 .stroke(focused == type ? color : .clear, lineWidth: 1)
@@ -56,7 +57,7 @@ struct LekaPasswordField: View {
 
     var label: String
     @Binding var entry: String
-    var color: Color = .accentColor
+    var color: Color = DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor
 
     var type = FormField.password
     @FocusState var focused: FormField?
@@ -94,13 +95,13 @@ struct LekaPasswordField: View {
                 isSecured.toggle()
             } label: {
                 Image(systemName: isSecured ? "eye" : "eye.slash")
-                    .foregroundColor(.accentColor)
+                    .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
                     .padding(10)
             }
             .disabled(entry.isEmpty)
         }
         .frame(width: 400, height: 44)
-        .background(Color("lekaLightGray"), in: RoundedRectangle(cornerRadius: metrics.btnRadius))
+        .background(DesignKitAsset.Colors.lekaLightGray.swiftUIColor, in: RoundedRectangle(cornerRadius: metrics.btnRadius))
         .overlay(
             RoundedRectangle(cornerRadius: metrics.btnRadius)
                 .stroke(focused == type ? color : .clear, lineWidth: 1)

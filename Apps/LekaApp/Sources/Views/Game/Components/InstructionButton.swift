@@ -2,6 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import DesignKit
 import SwiftUI
 
 struct InstructionButton: View {
@@ -13,7 +14,7 @@ struct InstructionButton: View {
         HStack(spacing: 0) {
             Spacer()
             Text(activityVM.steps[activityVM.currentStep].instruction.localized())
-                .foregroundColor(Color("darkGray"))
+                .foregroundColor(DesignKitAsset.Colors.lekaDarkGray.swiftUIColor)
                 .font(.system(size: gameMetrics.instructionFontSize, weight: gameMetrics.instructionFontWeight))
                 .multilineTextAlignment(.center)
                 .padding(.horizontal, gameMetrics.instructionFrame.height)
@@ -44,17 +45,17 @@ struct InstructionButton: View {
         .overlay(
             HStack {
                 Spacer()
-                Image("person.wave.2")
+                Image(DesignKitAsset.Images.personWave2.name)
                     .resizable()
                     .renderingMode(.template)
                     .aspectRatio(contentMode: .fit)
-                    .foregroundColor(activityVM.isSpeaking ? .accentColor : Color("progressBar"))
+                    .foregroundColor(activityVM.isSpeaking ? DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor : DesignKitAsset.Colors.progressBar.swiftUIColor)
                     .padding(10)
             }
         )
         .clipShape(RoundedRectangle(cornerRadius: gameMetrics.roundedCorner, style: .circular))
         .shadow(
-            color: .accentColor.opacity(0.2),
+            color: DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor.opacity(0.2),
             radius: activityVM.isSpeaking ? 0 : 4, x: 0, y: activityVM.isSpeaking ? 1 : 4
         )
         .scaleEffect(activityVM.isSpeaking ? 0.98 : 1)

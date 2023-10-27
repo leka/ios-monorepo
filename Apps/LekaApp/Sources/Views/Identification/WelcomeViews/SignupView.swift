@@ -2,6 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import DesignKit
 import SwiftUI
 
 struct SignupView: View {
@@ -86,7 +87,7 @@ struct SignupView: View {
                 if accountAlreadyExists {
                     color = .red
                 } else {
-                    color = .accentColor
+                    color = DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor
                 }
             } else {
                 color = .red
@@ -135,7 +136,7 @@ struct SignupView: View {
         }()
 
         let confirmLabelColor: Color = {
-            return passwordsMatch() || confirm.isEmpty ? .accentColor : .red
+            return passwordsMatch() || confirm.isEmpty ? DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor : .red
         }()
 
         LekaPasswordField(
@@ -156,7 +157,7 @@ struct SignupView: View {
     private var title: some View {
         Text("Créer un compte")
             .textCase(.uppercase)
-            .foregroundColor(.accentColor)
+            .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
             .font(metrics.semi20)
     }
 
@@ -174,7 +175,7 @@ struct SignupView: View {
         )
         .disabled(connectIsDisabled())
         .buttonStyle(.borderedProminent)
-        .tint(.accentColor)
+        .tint(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
     }
 }
 

@@ -16,7 +16,7 @@ struct RobotConnectionIndicator: View {
     var body: some View {
         ZStack {
             Circle()
-                .fill(robotVM.robotIsConnected ? Color("lekaGreen") : Color("lekaDarkGray"))
+                .fill(robotVM.robotIsConnected ? DesignKitAsset.Colors.lekaGreen.swiftUIColor : DesignKitAsset.Colors.lekaDarkGray.swiftUIColor)
                 .opacity(0.4)
 
             Image(
@@ -30,7 +30,7 @@ struct RobotConnectionIndicator: View {
 
             Circle()
                 .stroke(
-                    robotVM.robotIsConnected ? Color("lekaGreen") : Color("lekaDarkGray"),
+                    robotVM.robotIsConnected ? DesignKitAsset.Colors.lekaGreen.swiftUIColor : DesignKitAsset.Colors.lekaDarkGray.swiftUIColor,
                     lineWidth: 4
                 )
                 .frame(width: 44, height: 44)
@@ -38,7 +38,7 @@ struct RobotConnectionIndicator: View {
         .frame(width: 67, height: 67, alignment: .center)
         .background(
             Circle()
-                .fill(Color("lekaGreen"))
+                .fill(DesignKitAsset.Colors.lekaGreen.swiftUIColor)
                 .frame(width: diameter, height: diameter)
                 .opacity(isAnimated ? 0.0 : 0.8)
                 .animation(

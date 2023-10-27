@@ -2,6 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import DesignKit
 import SwiftUI
 
 struct EndOfRoundView: View {
@@ -88,14 +89,14 @@ struct EndOfRoundView: View {
             case .fail:
                 return Text("fail_bottom_message")
                     + Text("(0%)")
-                    .foregroundColor(Color("bravoHighlights"))
+                    .foregroundColor(DesignKitAsset.Colors.bravoHighlights.swiftUIColor)
                     + Text(".")
             case .medium, .success:
                 return Text("success_bottom_message")
                     + Text(
                         "success_bottom_result \(gameEngine.goodAnswers) \(gameEngine.currentActivity.stepsAmount) \(gameEngine.percentOfSuccess)"
                     )
-                    .foregroundColor(Color("bravoHighlights"))
+                    .foregroundColor(DesignKitAsset.Colors.bravoHighlights.swiftUIColor)
                     + Text("!")
             default:
                 return Text("")
@@ -119,7 +120,7 @@ struct EndOfRoundView: View {
                         value: textOpacity
                     )
                 makeBottomMessage(result: result)
-                    .foregroundColor(Color("lekaDarkGray"))
+                    .foregroundColor(DesignKitAsset.Colors.lekaDarkGray.swiftUIColor)
                     .offset(y: textOffset)
                     .opacity(textOpacity)
                     .animation(

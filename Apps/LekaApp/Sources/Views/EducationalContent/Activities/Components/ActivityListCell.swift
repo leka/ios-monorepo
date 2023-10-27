@@ -2,6 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import DesignKit
 import SwiftUI
 
 struct ActivityListCell: View {
@@ -21,7 +22,7 @@ struct ActivityListCell: View {
             Spacer()
         }
         .frame(minWidth: 420, maxHeight: iconDiameter + 20)
-        .background(selected ? Color.accentColor : .white)
+        .background(selected ? DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor : .white)
         .clipShape(RoundedRectangle(cornerRadius: metrics.btnRadius, style: .continuous))
         .padding(.vertical, 4)
     }
@@ -47,6 +48,6 @@ struct ActivityListCell: View {
             .multilineTextAlignment(.leading)
             .padding(.bottom, 10)
         }
-        .foregroundColor(selected ? .white : .accentColor)
+        .foregroundColor(selected ? .white : DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
     }
 }

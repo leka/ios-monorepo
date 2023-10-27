@@ -2,6 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import DesignKit
 import SwiftUI
 
 struct GoToRobotConnectButton: View {
@@ -40,16 +41,16 @@ struct GoToRobotConnectButton: View {
                         level: $robotVM.robotChargeLevel,
                         charging: $robotVM.robotIsCharging)
                     Text(robotVM.robotOSVersion)
-                        .foregroundColor(Color("darkGray"))
+                        .foregroundColor(DesignKitAsset.Colors.lekaDarkGray.swiftUIColor)
                 }
             }
             .font(metrics.reg12)
-            .foregroundColor(.accentColor)
+            .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
         } else {
             Text("Connectez vous à votre LEKA.")
                 .font(metrics.reg16)
                 .multilineTextAlignment(.leading)
-                .foregroundColor(.accentColor)
+                .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
         }
     }
 }

@@ -2,6 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import DesignKit
 import SwiftUI
 
 struct SidebarAvatarView: View {
@@ -13,7 +14,7 @@ struct SidebarAvatarView: View {
 
     var body: some View {
         Circle()
-            .fill(Color.accentColor)
+            .fill(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
             .overlay(
                 Image(
                     company.getProfileDataFor(

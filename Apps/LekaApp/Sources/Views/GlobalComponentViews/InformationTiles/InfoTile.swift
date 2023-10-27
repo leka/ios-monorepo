@@ -2,6 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import DesignKit
 import SwiftUI
 
 struct InfoTile: View {
@@ -13,7 +14,7 @@ struct InfoTile: View {
 
     let data: TileData
     private var headerColor: Color {
-        data == .discovery ? Color("lekaOrange") : Color.accentColor
+        data == .discovery ? DesignKitAsset.Colors.lekaOrange.swiftUIColor : DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor
     }
 
     var body: some View {
@@ -71,7 +72,7 @@ struct InfoTile: View {
         }
         .multilineTextAlignment(.center)
         .frame(maxWidth: 300)
-        .foregroundColor(.accentColor)
+        .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
     }
 
     private var closeButton: some View {
@@ -93,7 +94,7 @@ struct InfoTile: View {
         .buttonStyle(
             BorderedCapsule_NoFeedback_ButtonStyle(
                 font: metrics.reg17,
-                color: .accentColor,
+                color: DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor,
                 width: 300))
     }
 }

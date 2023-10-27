@@ -2,6 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import DesignKit
 import SwiftUI
 
 struct RobotPicker: View {
@@ -93,7 +94,7 @@ struct RobotPicker: View {
             }
         )
         .buttonStyle(.borderedProminent)
-        .tint(Color("lekaSkyBlue"))
+        .tint(DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor)
         .disabled(searchBtnLabel == "Recherche en cours...")
 
     }
@@ -142,7 +143,7 @@ struct RobotPicker: View {
         .buttonStyle(.borderedProminent)
         .tint(
             robotVM.currentlyConnectedRobotIndex == robotVM.currentlySelectedRobotIndex
-                ? Color("lekaOrange") : .accentColor
+                ? DesignKitAsset.Colors.lekaOrange.swiftUIColor : DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor
         )
         .disabled(allRobots == 0)
         .disabled(robotVM.currentlySelectedRobotIndex == nil)  // For the tests
@@ -157,7 +158,7 @@ struct RobotPicker: View {
             }
         }
         .font(metrics.semi17)
-        .foregroundColor(.accentColor)
+        .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
     }
 
     private var closeButton: some View {
@@ -173,7 +174,7 @@ struct RobotPicker: View {
                 Text("Fermer")
             }
         )
-        .tint(.accentColor)
+        .tint(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
     }
 
     private var continueButton: some View {
@@ -186,7 +187,7 @@ struct RobotPicker: View {
                 Text("Continuer sans le robot")
             }
         )
-        .tint(.accentColor)
+        .tint(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
         .opacity(robotVM.robotIsConnected ? 0 : 1)
         .animation(.default, value: robotVM.robotIsConnected)
     }

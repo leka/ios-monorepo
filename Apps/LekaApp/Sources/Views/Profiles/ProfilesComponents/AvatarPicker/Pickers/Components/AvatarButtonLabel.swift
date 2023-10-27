@@ -2,6 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import DesignKit
 import SwiftUI
 
 // Avatar Buttons within the AvatarPicker()
@@ -21,11 +22,11 @@ struct AvatarButtonLabel: View {
                 .background(.white)
                 .mask(Circle())
             Circle()
-                .strokeBorder(Color("lekaLightGray"), lineWidth: 2)
+                .strokeBorder(DesignKitAsset.Colors.lekaLightGray.swiftUIColor, lineWidth: 2)
         }
         .frame(minWidth: metrics.diameter, maxWidth: metrics.diameter)
         .background(
-            Color("lekaSkyBlue"),
+            DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor,
             in: Circle().inset(by: isSelected ? -7 : 2)
         )
         .animation(.default, value: isSelected)

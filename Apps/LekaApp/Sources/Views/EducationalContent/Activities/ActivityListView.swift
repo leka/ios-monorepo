@@ -2,6 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import DesignKit
 import SwiftUI
 
 struct ActivityListView: View {
@@ -30,7 +31,7 @@ struct ActivityListView: View {
 
     var body: some View {
         ZStack {
-            Color("lekaLightBlue").ignoresSafeArea()
+            DesignKitAsset.Colors.lekaLightBlue.swiftUIColor.ignoresSafeArea()
             completeActivityList
         }
         .animation(.easeOut(duration: 0.4), value: navigationVM.showInfo())

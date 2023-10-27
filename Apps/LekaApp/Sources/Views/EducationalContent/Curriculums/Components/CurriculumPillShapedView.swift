@@ -2,6 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import DesignKit
 import SwiftUI
 
 struct CurriculumPillShapedView: View {
@@ -17,7 +18,7 @@ struct CurriculumPillShapedView: View {
             bottomContent
         }
         .frame(width: 200, height: 240)
-        .background(Color.accentColor, in: Rectangle())
+        .background(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor, in: Rectangle())
         .clipShape(RoundedRectangle(cornerRadius: metrics.pillRadius, style: .continuous))
         .shadow(color: .black.opacity(0.1), radius: 1, x: 0, y: 1)
         .compositingGroup()
@@ -38,7 +39,7 @@ struct CurriculumPillShapedView: View {
             Spacer()
             Text("\(curriculum.activities.count) activités")
                 .font(metrics.med12)
-                .foregroundColor(Color("darkGray"))
+                .foregroundColor(DesignKitAsset.Colors.darkGray.swiftUIColor)
                 .padding(.bottom, 12)
         }
         .background(Color.white, in: Rectangle())

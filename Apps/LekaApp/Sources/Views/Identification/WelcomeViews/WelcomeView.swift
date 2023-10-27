@@ -14,7 +14,7 @@ struct WelcomeView: View {
     var body: some View {
         NavigationStack {
             ZStack(alignment: .center) {
-                Color("lekaLightBlue").ignoresSafeArea()
+                DesignKitAsset.Colors.lekaLightBlue.swiftUIColor.ignoresSafeArea()
 
                 VStack(spacing: 30) {
                     logoLeka

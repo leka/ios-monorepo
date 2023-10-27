@@ -2,6 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import DesignKit
 import SwiftUI
 
 struct SettingsSection_Profiles: View {
@@ -19,7 +20,7 @@ struct SettingsSection_Profiles: View {
         } header: {
             Text("Profils")
                 .font(metrics.reg15)
-                .foregroundColor(.accentColor)
+                .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
                 .headerProminence(.increased)
         }
     }
@@ -29,14 +30,14 @@ struct SettingsSection_Profiles: View {
             .resizable()
             .aspectRatio(contentMode: .fill)
             .frame(maxWidth: 30)
-            .background(Color.accentColor)
+            .background(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
             .clipShape(Circle())
             .overlay(Circle().stroke(.white, lineWidth: 2))
     }
 
     private func remainingProfiles(_ remainder: Int) -> some View {
         Circle()
-            .fill(Color.accentColor)
+            .fill(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
             .frame(maxWidth: 30)
             .overlay(
                 Text("+\(remainder)")
@@ -64,7 +65,7 @@ struct SettingsSection_Profiles: View {
             Text(
                 "Profils \(type == .teacher ? "accompagnants" : "utilisateurs") (\(company.getAllAvatarsOf(type).count))"
             )
-            .foregroundColor(Color("darkGray"))
+            .foregroundColor(DesignKitAsset.Colors.lekaDarkGray.swiftUIColor)
         }
     }
 }

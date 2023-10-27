@@ -2,6 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import DesignKit
 import SwiftUI
 
 struct RobotStore: View {
@@ -77,7 +78,7 @@ struct RobotStore: View {
                 Text("Lancer une recherche pour trouver les robots autour de vous !")
                     .font(metrics.reg17)
                     .multilineTextAlignment(.center)
-                    .foregroundColor(.accentColor)
+                    .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
                 Spacer()
             }
             .frame(width: metrics.tileContentWidth)

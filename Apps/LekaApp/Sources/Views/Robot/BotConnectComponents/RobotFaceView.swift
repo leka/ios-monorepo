@@ -20,7 +20,7 @@ struct RobotFaceView: View {
                     Circle()
                         .inset(by: -10)
                         .stroke(
-                            Color("lekaGreen"),
+                            DesignKitAsset.Colors.lekaGreen.swiftUIColor,
                             style: StrokeStyle(
                                 lineWidth: 2,
                                 lineCap: .butt,
@@ -34,7 +34,7 @@ struct RobotFaceView: View {
                             rotation = 360
                         }
                 })
-                .background(Color("lekaGreen"), in: Circle().inset(by: isConnected ? -26 : 2))
+                .background(DesignKitAsset.Colors.lekaGreen.swiftUIColor, in: Circle().inset(by: isConnected ? -26 : 2))
                 .padding(.bottom, 40)
 
             Text(name)

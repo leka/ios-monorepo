@@ -26,7 +26,7 @@ struct ProfileSet_Users: View {
 
             // Separator
             Rectangle()
-                .fill(Color.accentColor)
+                .fill(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
                 .frame(height: 1)
                 .frame(maxWidth: navigationVM.showProfileEditor ? .infinity : 460)
 
@@ -96,7 +96,7 @@ struct ProfileSet_Users: View {
             }
             Text("Qui accompagnez-vous?")
                 .font(metrics.reg17)
-                .foregroundColor(.accentColor)
+                .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
             if navigationVM.showProfileEditor {
                 Spacer()
             }

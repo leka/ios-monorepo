@@ -2,15 +2,9 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
-//
-//  InstructionView.swift
-//  LekaTestBucket
-//
-//  Created by Mathieu Jeannot on 17/12/22.
-//
-
 // TODO(@ladislas): reimport when Down is fixed
 // import Down
+import DesignKit
 import SwiftUI
 
 struct InstructionsView: View {
@@ -43,12 +37,12 @@ struct InstructionsView: View {
             Spacer()
             Text("DESCRIPTION & INSTALLATION")
                 .font(metrics.reg18)
-                .foregroundColor(Color("darkGray").opacity(0.8))
+                .foregroundColor(DesignKitAsset.Colors.darkGray.swiftUIColor.opacity(0.8))
                 .padding(.vertical, 22)
             Spacer()
         }
         .padding(.top, 30)
-        .background(Color("lekaLightGray"))
+        .background(DesignKitAsset.Colors.lekaLightGray.swiftUIColor)
     }
 }
 

@@ -2,6 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import DesignKit
 import SwiftUI
 
 struct ProfileEditorView: View {
@@ -13,7 +14,7 @@ struct ProfileEditorView: View {
 
     var body: some View {
         ZStack {
-            Color("lekaLightBlue").ignoresSafeArea()
+            DesignKitAsset.Colors.lekaLightBlue.swiftUIColor.ignoresSafeArea()
 
             Group {
                 HStack(spacing: 40) {
@@ -47,7 +48,7 @@ struct ProfileEditorView: View {
             }
         }
         .font(metrics.semi17)
-        .foregroundColor(.accentColor)
+        .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
     }
 
     private var closeButton: some View {
@@ -79,7 +80,7 @@ struct ProfileEditorView: View {
                 Image(systemName: "checkmark.circle")
                 Text("Valider la sélection")
             }
-            .foregroundColor(.accentColor)
+            .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
         }
         .disabled(!settings.companyIsConnected)
         .disabled(!company.selectionSetIsCorrect())

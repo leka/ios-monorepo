@@ -2,6 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import DesignKit
 import SwiftUI
 
 struct SidebarSections: View {
@@ -14,7 +15,7 @@ struct SidebarSections: View {
     var body: some View {
         section(content: navigationVM.educContentList)
             .padding(.horizontal)
-            .foregroundColor(.accentColor)
+            .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
     }
 
     func sectionItem(_ item: SectionLabel) -> some View {
@@ -36,10 +37,10 @@ struct SidebarSections: View {
 
                 Spacer()
             }
-            .foregroundColor(navigationVM.currentView.rawValue == item.destination.rawValue ? .white : .accentColor)
+            .foregroundColor(navigationVM.currentView.rawValue == item.destination.rawValue ? .white : DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
             .frame(height: 44)
             .background(
-                navigationVM.currentView.rawValue == item.destination.rawValue ? Color.accentColor : .clear,
+                navigationVM.currentView.rawValue == item.destination.rawValue ? DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor : .clear,
                 in: RoundedRectangle(cornerRadius: metrics.btnRadius, style: .continuous)
             )
             .contentShape(Rectangle())

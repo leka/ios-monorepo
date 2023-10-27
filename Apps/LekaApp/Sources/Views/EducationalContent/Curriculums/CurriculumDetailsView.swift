@@ -2,6 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import DesignKit
 import SwiftUI
 
 struct CurriculumDetailsView: View {
@@ -23,10 +24,10 @@ struct CurriculumDetailsView: View {
     private var curriculumDetailContent: some View {
         ZStack(alignment: .top) {
             // NavigationBar color
-            Color("lekaLightBlue").ignoresSafeArea()
+            DesignKitAsset.Colors.lekaLightBlue.swiftUIColor.ignoresSafeArea()
 
             // Background Color (only visible under the header here)
-            Color.accentColor
+            DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor
 
             VStack(spacing: 0) {
                 curriculumDetailHeader
@@ -34,7 +35,7 @@ struct CurriculumDetailsView: View {
                     curriculumActivityList
                     // Instructions + GoBtn
                     Rectangle()
-                        .fill(Color("lekaLightGray"))
+                        .fill(DesignKitAsset.Colors.lekaLightGray.swiftUIColor)
                         .edgesIgnoringSafeArea(.bottom)
                         .overlay { InstructionsView() }
                         .overlay {
@@ -53,7 +54,7 @@ struct CurriculumDetailsView: View {
             ToolbarItem(placement: .principal) {
                 Text(curriculumVM.setCurriculumDetailNavTitle())
                     .font(metrics.semi17)
-                    .foregroundColor(.accentColor)
+                    .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
             }
             ToolbarItem(placement: .navigationBarLeading) {
                 Button(

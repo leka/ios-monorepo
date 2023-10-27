@@ -2,6 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import DesignKit
 import SwiftUI
 
 struct JobTag: View {
@@ -25,7 +26,7 @@ struct JobTag: View {
         .foregroundColor(.white)
         .padding(5)
         .background(
-            Color.accentColor,
+            DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor,
             in: RoundedRectangle(cornerRadius: 6, style: .circular))
     }
 }
