@@ -27,11 +27,9 @@ extension ObserveThenTouchToSelectView {
 }
 
 #Preview {
-    var choices: [SelectionChoice] = [
+    let choices: [SelectionChoice] = [
         SelectionChoice(value: "red", type: .color, isRightAnswer: true)
     ]
 
-    let viewModel = SelectionViewViewModel(choices: choices)
-
-    return TouchToSelectView.OneChoiceView(viewModel: viewModel)
+    return ObserveThenTouchToSelectView(choices: choices, image: "image-landscape-blue")
 }
