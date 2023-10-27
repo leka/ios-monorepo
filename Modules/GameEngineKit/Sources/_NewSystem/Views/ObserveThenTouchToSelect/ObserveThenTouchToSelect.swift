@@ -26,7 +26,7 @@ public struct ObserveThenTouchToSelectView: View {
         self.image = image
     }
 
-    public init(exercise: Exercise) {
+    public init(exercise: Exercise, data: ExerciseSharedData? = nil) {
         guard case .selection(let payload) = exercise.payload else {
             fatalError("Exercise payload is not .selection")
         }
@@ -34,8 +34,10 @@ public struct ObserveThenTouchToSelectView: View {
             fatalError("Exercise payload has no media")
         }
 
-        self._viewModel = StateObject(wrappedValue: SelectionViewViewModel(choices: payload.choices))
         self.image = media
+
+        self._viewModel = StateObject(
+            wrappedValue: SelectionViewViewModel(choices: payload.choices, shared: data))
     }
 
     public var body: some View {

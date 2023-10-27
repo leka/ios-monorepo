@@ -25,16 +25,20 @@ public struct ListenThenTouchToSelectView: View {
         self._audioPlayer = StateObject(wrappedValue: AudioPlayer(audioRecording: audioRecording))
     }
 
-    public init(exercise: Exercise) {
+    public init(exercise: Exercise, data: ExerciseSharedData? = nil) {
         guard case .selection(let payload) = exercise.payload else {
             fatalError("Exercise payload is not .selection")
         }
         guard let media = payload.media else {
             fatalError("Exercise payload has no media")
         }
+
         let audioRecording = AudioRecordingModel(name: media, file: media)
-        self._viewModel = StateObject(wrappedValue: SelectionViewViewModel(choices: payload.choices))
         self._audioPlayer = StateObject(wrappedValue: AudioPlayer(audioRecording: audioRecording))
+
+        self._viewModel = StateObject(wrappedValue: SelectionViewViewModel(choices: payload.choices))
+        self._viewModel = StateObject(
+            wrappedValue: SelectionViewViewModel(choices: payload.choices, shared: data))
     }
 
     public var body: some View {
