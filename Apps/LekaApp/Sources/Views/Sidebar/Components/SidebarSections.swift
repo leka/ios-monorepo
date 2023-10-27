@@ -28,7 +28,7 @@ struct SidebarSections: View {
         } label: {
             HStack(spacing: 10) {
                 Image(systemName: item.icon)
-                    .font(metrics.reg24)
+                    .font(metrics.light24)
                     .frame(maxWidth: 30, maxHeight: 30)
                     .padding(.leading, 10)
 
