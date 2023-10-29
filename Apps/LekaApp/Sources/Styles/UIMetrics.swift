@@ -12,6 +12,7 @@ class UIMetrics: ObservableObject {
     @Published var semi20: Font = .system(size: 20, weight: .semibold)
     @Published var bold15: Font = .system(size: 15, weight: .bold)
     @Published var bold16: Font = .system(size: 16, weight: .bold)  // Instructions, ProfileSet
+    @Published var light24: Font = .system(size: 24, weight: .light)  // sidebar items
     @Published var btnRadius: CGFloat = 10
 
     // MARK: - Curriculums
@@ -54,7 +55,5 @@ class UIMetrics: ObservableObject {
     @Published var tileContentWidth: CGFloat = 360
     @Published var tileContentPadding: CGFloat = 25
     @Published var tileSize = CGSize(width: 843, height: 327)
-
-    // MARK: - Shared interactions
 
 }

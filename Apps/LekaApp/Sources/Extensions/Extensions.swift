@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import AVFoundation
+import DesignKit
 import Foundation
 import SwiftUI
 
@@ -43,7 +44,7 @@ extension Image {
                 .mask(Circle())
                 .padding(padding)
             Circle()
-                .strokeBorder(Color("btnLightBlue"), lineWidth: 4)
+                .strokeBorder(DesignKitAsset.Colors.btnLightBlue.swiftUIColor, lineWidth: 4)
         }
         .frame(minWidth: diameter, maxWidth: diameter)
     }

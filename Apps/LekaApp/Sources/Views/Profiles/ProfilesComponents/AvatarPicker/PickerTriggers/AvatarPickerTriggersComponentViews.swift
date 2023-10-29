@@ -2,6 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import DesignKit
 import SwiftUI
 
 struct AvatarTriggerImageView: View {
@@ -14,9 +15,9 @@ struct AvatarTriggerImageView: View {
                 .fill(.white)
                 .shadow(color: .black.opacity(0.2), radius: 4, x: 0, y: 4)
             Group {
-                Image(img)
+                Image(img, bundle: Bundle(for: DesignKitResources.self))
                     .resizable()
-                    .foregroundColor(.accentColor)
+                    .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
                     .aspectRatio(contentMode: .fit)
                     .clipShape(Circle())
                     .padding(10)
@@ -24,7 +25,7 @@ struct AvatarTriggerImageView: View {
             .shadow(color: .black.opacity(0.2), radius: 3, x: 0, y: 2)
             Circle()
                 .inset(by: 10)
-                .strokeBorder(Color.accentColor, lineWidth: 4, antialiased: true)
+                .strokeBorder(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor, lineWidth: 4, antialiased: true)
         }
         .frame(width: 170, height: 170)
     }
@@ -37,12 +38,12 @@ struct AvatarTriggerCTAView: View {
     var body: some View {
         Text("choisir un avatar")
             .font(metrics.reg17)
-            .foregroundColor(Color.accentColor)
+            .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
             .padding(.vertical, 4)
             .padding(.horizontal, 20)
             .overlay(
                 Capsule()
-                    .stroke(Color.accentColor, lineWidth: 1)
+                    .stroke(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor, lineWidth: 1)
             )
             .background(.white, in: Capsule())
             .padding(10)

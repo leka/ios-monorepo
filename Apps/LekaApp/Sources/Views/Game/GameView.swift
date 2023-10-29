@@ -2,6 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import DesignKit
 import Lottie
 import SwiftUI
 
@@ -27,7 +28,7 @@ struct GameView: View {
             showInstructionModal.toggle()
         } label: {
             Image(systemName: "info.circle")
-                .foregroundColor(.accentColor)
+                .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
         }
         .opacity(showInstructionModal ? 0 : 1)
     }
@@ -62,14 +63,14 @@ struct GameView: View {
                 case .fail:
                     return Text("fail_bottom_message")
                         + Text("(0%)")
-                        .foregroundColor(Color("bravoHighlights"))
+                        .foregroundColor(DesignKitAsset.Colors.bravoHighlights.swiftUIColor)
                         + Text(".")
                 case .medium, .success:
                     return Text("success_bottom_message")
                         + Text(
                             "success_bottom_result \(activityVM.goodAnswers) \(activityVM.numberOfSteps) \(activityVM.percentOfSuccess)"
                         )
-                        .foregroundColor(Color("bravoHighlights"))
+                        .foregroundColor(DesignKitAsset.Colors.bravoHighlights.swiftUIColor)
                         + Text("!")
                 default:
                     return Text("")
@@ -79,7 +80,7 @@ struct GameView: View {
         VStack(spacing: gameMetrics.endAnimTextsSpacing) {
             Group {
                 topMessage
-                    .foregroundColor(.accentColor)
+                    .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
                     .offset(y: textOffset)
                     .opacity(textOpacity)
                     .animation(
@@ -90,7 +91,7 @@ struct GameView: View {
                         .easeOut(duration: gameMetrics.endAnimDuration).delay(gameMetrics.endAnimDelayTop),
                         value: textOpacity)
                 bottomMessage
-                    .foregroundColor(Color("lekaDarkGray"))
+                    .foregroundColor(DesignKitAsset.Colors.lekaDarkGray.swiftUIColor)
                     .offset(y: textOffset)
                     .opacity(textOpacity)
                     .animation(
@@ -166,11 +167,11 @@ struct GameView: View {
     }
 
     var body: some View {
-        Color("lekaLightBlue")
+        DesignKitAsset.Colors.lekaLightBlue.swiftUIColor
             .edgesIgnoringSafeArea(.all)
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarBackButtonHidden()
-            .tint(.accentColor)
+            .tint(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
             .overlay(
                 VStack(spacing: 0) {
                     VStack(spacing: gameMetrics.headerSpacing) {
@@ -212,7 +213,7 @@ struct GameView: View {
                         }
                     }
                     .font(gameMetrics.semi17)
-                    .foregroundColor(.accentColor)
+                    .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     infoButton

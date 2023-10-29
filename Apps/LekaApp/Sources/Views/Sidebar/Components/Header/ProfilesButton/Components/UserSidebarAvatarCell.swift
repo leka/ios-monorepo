@@ -8,6 +8,7 @@ struct UserSidebarAvatarCell: View {
 
     @EnvironmentObject var company: CompanyViewModel
     @EnvironmentObject var settings: SettingsViewModel
+    @EnvironmentObject var metrics: UIMetrics
 
     var body: some View {
         HStack {
@@ -31,14 +32,14 @@ struct UserSidebarAvatarCell: View {
 
     @ViewBuilder private var avatarAccessoryView: some View {
         if !settings.companyIsConnected || (!company.profileIsAssigned(.user) && !settings.exploratoryModeIsOn) {
-            Image("button_notification")
-                .resizable()
-                .renderingMode(.original)
-                .aspectRatio(contentMode: .fit)
+            Image(systemName: "exclamationmark.circle.fill")
+                .symbolRenderingMode(.palette)
+                .foregroundStyle(.white, .red)
+                .font(metrics.reg19)
                 .frame(maxWidth: 22, maxHeight: 22)
                 .offset(x: 2, y: -2)
         } else if company.profileIsAssigned(.user) {
-            Image("reinforcer-\(company.getCurrentUserReinforcer())")
+            Image(uiImage: company.getReinforcerFor(index: company.getCurrentUserReinforcer()))
                 .resizable()
                 .renderingMode(.original)
                 .aspectRatio(contentMode: .fit)

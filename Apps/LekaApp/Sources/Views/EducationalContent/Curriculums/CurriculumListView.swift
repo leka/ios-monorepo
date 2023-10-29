@@ -2,6 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import DesignKit
 import SwiftUI
 
 struct CurriculumListView: View {
@@ -14,7 +15,7 @@ struct CurriculumListView: View {
 
     var body: some View {
         ZStack {
-            Color("lekaLightBlue").ignoresSafeArea()
+            DesignKitAsset.Colors.lekaLightBlue.swiftUIColor.ignoresSafeArea()
 
             ScrollViewReader { proxy in
                 ScrollView {
@@ -68,7 +69,7 @@ struct CurriculumListView: View {
             Text(title.localized())
                 .font(metrics.semi17)
                 .padding(16)
-                .foregroundColor(.accentColor)
+                .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
                 .padding(.leading, 20)
             Spacer()
         }

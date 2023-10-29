@@ -2,6 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import DesignKit
 import SwiftUI
 
 struct SettingsSection_Exploratory: View {
@@ -13,12 +14,12 @@ struct SettingsSection_Exploratory: View {
         Section {
             LabeledContent {
                 Toggle("Mode exploratoire", isOn: $settings.exploratoryModeIsOn)
-                    .toggleStyle(SwitchToggleStyle(tint: Color("lekaSkyBlue")))
+                    .toggleStyle(SwitchToggleStyle(tint: DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor))
                     .labelsHidden()
             } label: {
                 Text("Le mode exploratoire vous permet de découvrir les contenus sans enregistrer l'utilisation")
                     .font(metrics.reg13)
-                    .foregroundColor(Color("lekaDarkGray"))
+                    .foregroundColor(DesignKitAsset.Colors.lekaDarkGray.swiftUIColor)
                     .frame(maxWidth: 300)
             }
             .frame(maxHeight: 52)
@@ -28,7 +29,7 @@ struct SettingsSection_Exploratory: View {
                 Text("Mode exploratoire")
             }
             .font(metrics.reg15)
-            .foregroundColor(.accentColor)
+            .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
             .headerProminence(.increased)
         }
     }

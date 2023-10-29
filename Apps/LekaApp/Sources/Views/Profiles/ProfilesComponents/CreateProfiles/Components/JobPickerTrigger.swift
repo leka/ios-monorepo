@@ -2,6 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import DesignKit
 import SwiftUI
 
 struct JobPickerTrigger: View {
@@ -15,7 +16,7 @@ struct JobPickerTrigger: View {
         VStack(alignment: .leading, spacing: 10) {
             Text("Profession(s)")
                 .font(metrics.reg14)
-                .foregroundColor(.accentColor)
+                .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
                 .padding(.leading, 10)
 
             Button {
@@ -41,10 +42,11 @@ struct JobPickerTrigger: View {
                 .padding(10)
             Spacer()
             Image(systemName: "chevron.down")
-                .foregroundColor(.accentColor)
+                .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
                 .padding(10)
         }
         .frame(width: 400, height: 44)
-        .background(Color("lekaLightGray"), in: RoundedRectangle(cornerRadius: metrics.btnRadius))
+        .background(
+            DesignKitAsset.Colors.lekaLightGray.swiftUIColor, in: RoundedRectangle(cornerRadius: metrics.btnRadius))
     }
 }

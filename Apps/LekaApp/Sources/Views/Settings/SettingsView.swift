@@ -2,6 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import DesignKit
 import SwiftUI
 
 struct SettingsView: View {
@@ -13,7 +14,7 @@ struct SettingsView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                Color("lekaLightGray").ignoresSafeArea()
+                DesignKitAsset.Colors.lekaLightGray.swiftUIColor.ignoresSafeArea()
 
                 Form {
                     Group {
@@ -27,13 +28,13 @@ struct SettingsView: View {
                 .scrollDisabled(true)
                 .padding(.horizontal, 10)
                 .formStyle(.grouped)
-                .foregroundColor(.accentColor)
+                .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
                 .font(metrics.reg17)
             }
             .interactiveDismissDisabled()
             .navigationBarTitleDisplayMode(.inline)
             .toolbarBackground(.visible, for: .navigationBar)
-            .toolbarBackground(Color.accentColor, for: .navigationBar)
+            .toolbarBackground(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor, for: .navigationBar)
             .toolbar {
                 ToolbarItem(placement: .principal) {
                     HStack(spacing: 4) {
@@ -65,7 +66,7 @@ struct SettingsView_Previews: PreviewProvider {
     @State static var open: Bool = true
 
     static var previews: some View {
-        Color("lekaLightBlue")
+        DesignKitAsset.Colors.lekaLightBlue.swiftUIColor
             .ignoresSafeArea()
             .sheet(isPresented: $open) {
                 SettingsView()

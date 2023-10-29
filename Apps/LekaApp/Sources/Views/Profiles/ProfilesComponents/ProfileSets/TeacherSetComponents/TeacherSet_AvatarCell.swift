@@ -2,6 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import DesignKit
 import SwiftUI
 
 struct TeacherSet_AvatarCell: View {
@@ -31,12 +32,12 @@ struct TeacherSet_AvatarCell: View {
                     // Avatar
                     Circle()
                         .fill(
-                            Color("lekaLightGray"),
+                            DesignKitAsset.Colors.lekaLightGray.swiftUIColor,
                             strokeBorder: .white,
                             lineWidth: 3
                         )
                         .overlay(content: {
-                            Image(teacher.avatar)
+                            Image(teacher.avatar, bundle: Bundle(for: DesignKitResources.self))
                                 .resizable()
                                 .aspectRatio(contentMode: .fill)
                                 .clipShape(Circle())
@@ -52,7 +53,8 @@ struct TeacherSet_AvatarCell: View {
                     .lineLimit(2)
                     .padding(.horizontal, 14)
                     .foregroundColor(
-                        company.profileIsCurrent(.teacher, id: teacher.id) ? Color.white : Color("darkGray")
+                        company.profileIsCurrent(.teacher, id: teacher.id)
+                            ? Color.white : DesignKitAsset.Colors.lekaDarkGray.swiftUIColor
                     )
                     .padding(2)
                     .frame(minWidth: 108)
@@ -62,7 +64,8 @@ struct TeacherSet_AvatarCell: View {
                     })
                     .background(
                         company.profileIsCurrent(.teacher, id: teacher.id)
-                            ? Color("lekaSkyBlue") : Color("lekaLightGray"),
+                            ? DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor
+                            : DesignKitAsset.Colors.lekaLightGray.swiftUIColor,
                         in: RoundedRectangle(cornerRadius: metrics.btnRadius))
             }
         }
@@ -90,7 +93,7 @@ struct TeacherSet_AvatarCell: View {
 
         return Circle()
             .stroke(
-                Color("lekaSkyBlue"),
+                DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor,
                 style: StrokeStyle(
                     lineWidth: lineWidth,
                     lineCap: .butt,

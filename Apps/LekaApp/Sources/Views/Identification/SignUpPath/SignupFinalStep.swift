@@ -2,6 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import DesignKit
 import SwiftUI
 
 struct SignupFinalStep: View {
@@ -13,7 +14,7 @@ struct SignupFinalStep: View {
 
     var body: some View {
         ZStack {
-            Color("lekaLightBlue").ignoresSafeArea()
+            DesignKitAsset.Colors.lekaLightBlue.swiftUIColor.ignoresSafeArea()
             tile
         }
         .edgesIgnoringSafeArea(.top)
@@ -30,7 +31,7 @@ struct SignupFinalStep: View {
                 // Title
                 Text(data.content.title!)
                     .font(metrics.semi17)
-                    .foregroundColor(Color("lekaOrange"))
+                    .foregroundColor(DesignKitAsset.Colors.lekaOrange.swiftUIColor)
                 Spacer()
                 // Message
                 VStack(spacing: 10) {
@@ -50,7 +51,7 @@ struct SignupFinalStep: View {
                 accessoryView
             }
             .multilineTextAlignment(.center)
-            .foregroundColor(.accentColor)
+            .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
             .frame(width: 400)
             .padding(metrics.tileContentPadding)
         }
@@ -74,7 +75,7 @@ struct SignupFinalStep: View {
         .buttonStyle(
             BorderedCapsule_NoFeedback_ButtonStyle(
                 font: metrics.reg17,
-                color: Color.accentColor)
+                color: DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
         )
     }
 }

@@ -2,6 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import DesignKit
 import SwiftUI
 
 struct CreateUserProfileView: View {
@@ -104,7 +105,7 @@ struct CreateUserProfileView: View {
             .buttonStyle(
                 BorderedCapsule_NoFeedback_ButtonStyle(
                     font: metrics.reg17,
-                    color: .accentColor,
+                    color: DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor,
                     width: metrics.tileBtnWidth)
             )
         } else {
@@ -116,7 +117,7 @@ struct CreateUserProfileView: View {
     private var navigationTitle: some View {
         Text(company.editingProfile ? "Éditer un profil utilisateur" : "Créer un profil utilisateur")
             .font(metrics.semi17)
-            .foregroundColor(.accentColor)
+            .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
     }
 
     private var adaptativeBackButton: some View {
@@ -137,7 +138,7 @@ struct CreateUserProfileView: View {
                 }
             }
         }
-        .tint(.accentColor)
+        .tint(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
     }
 
     private var validateButton: some View {
@@ -176,7 +177,7 @@ struct CreateUserProfileView: View {
             Image(systemName: "checkmark.circle")
             Text("Enregistrer")
         }
-        .tint(.accentColor)
+        .tint(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
         .contentShape(Rectangle())
     }
 }
@@ -186,6 +187,7 @@ struct CreateUserProfileView_Previews: PreviewProvider {
         CreateUserProfileView()
             .environmentObject(CompanyViewModel())
             .environmentObject(ViewRouter())
+            .environmentObject(NavigationViewModel())
             .environmentObject(UIMetrics())
             .previewInterfaceOrientation(.landscapeLeft)
     }

@@ -2,6 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import DesignKit
 import SwiftUI
 
 struct ProfileSelector_Teachers: View {
@@ -12,7 +13,7 @@ struct ProfileSelector_Teachers: View {
 
     var body: some View {
         ZStack {
-            Color("lekaLightBlue").ignoresSafeArea()
+            DesignKitAsset.Colors.lekaLightBlue.swiftUIColor.ignoresSafeArea()
 
             ProfileSet_Teachers()
                 .padding(.top, 60)
@@ -26,7 +27,7 @@ struct ProfileSelector_Teachers: View {
                     Text("Choisir ou créer de nouveaux profils")
                 }
                 .font(metrics.semi17)
-                .foregroundColor(.accentColor)
+                .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
             }
         }
     }

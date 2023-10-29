@@ -2,6 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import DesignKit
 import SwiftUI
 
 struct CurrentGameInstructionView: View {
@@ -41,10 +42,10 @@ struct CurrentGameInstructionView: View {
         NavigationStack {
             ZStack(alignment: .top) {
                 // Header color
-                Color.accentColor.ignoresSafeArea()
+                DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor.ignoresSafeArea()
 
                 // Background Color
-                Color("lekaLightGray").padding(.top, 70)
+                DesignKitAsset.Colors.lekaLightGray.swiftUIColor.padding(.top, 70)
 
                 VStack(spacing: 0) {
                     activityDetailHeader

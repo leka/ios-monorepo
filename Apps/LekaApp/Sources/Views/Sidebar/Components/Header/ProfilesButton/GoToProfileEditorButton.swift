@@ -2,6 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import DesignKit
 import SwiftUI
 
 struct GoToProfileEditorButton: View {
@@ -40,7 +41,7 @@ struct GoToProfileEditorButton: View {
     private var exploratoryModeLabel: some View {
         Text("Mode exploratoire")
             .font(metrics.reg17)
-            .foregroundColor(Color("lekaSkyBlue"))
+            .foregroundColor(DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor)
             .padding(.vertical, 2)
             .padding(.horizontal, 6)
             .background(.white, in: RoundedRectangle(cornerRadius: metrics.btnRadius))

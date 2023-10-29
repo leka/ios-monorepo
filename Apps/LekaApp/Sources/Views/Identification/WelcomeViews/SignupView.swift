@@ -2,6 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import DesignKit
 import SwiftUI
 
 struct SignupView: View {
@@ -86,7 +87,7 @@ struct SignupView: View {
                 if accountAlreadyExists {
                     color = .red
                 } else {
-                    color = .accentColor
+                    color = DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor
                 }
             } else {
                 color = .red
@@ -96,7 +97,11 @@ struct SignupView: View {
         }()
 
         LekaTextField(
-            label: mailTitle, entry: $mail, color: mailLabelColor, isEditing: $isEditing, focused: _focusedField
+            label: mailTitle,
+            entry: $mail,
+            color: mailLabelColor,
+            isEditing: $isEditing,
+            focused: _focusedField
         ) {
             focusedField = .password
         }
@@ -108,7 +113,11 @@ struct SignupView: View {
     }
 
     private var passwordTextField: some View {
-        LekaPasswordField(label: "Mot de passe", entry: $password, focused: _focusedField) {
+        LekaPasswordField(
+            label: "Mot de passe",
+            entry: $password,
+            focused: _focusedField
+        ) {
             if !password.isEmpty {
                 focusedField = .confirm
             } else {
@@ -127,11 +136,15 @@ struct SignupView: View {
         }()
 
         let confirmLabelColor: Color = {
-            return passwordsMatch() || confirm.isEmpty ? .accentColor : .red
+            return passwordsMatch() || confirm.isEmpty ? DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor : .red
         }()
 
         LekaPasswordField(
-            label: confirmTitle, entry: $confirm, color: confirmLabelColor, type: .confirm, focused: _focusedField
+            label: confirmTitle,
+            entry: $confirm,
+            color: confirmLabelColor,
+            type: .confirm,
+            focused: _focusedField
         ) {
             if confirm.isEmpty || !passwordsMatch() {
                 focusedField = .confirm
@@ -144,7 +157,7 @@ struct SignupView: View {
     private var title: some View {
         Text("Créer un compte")
             .textCase(.uppercase)
-            .foregroundColor(.accentColor)
+            .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
             .font(metrics.semi20)
     }
 
@@ -162,7 +175,7 @@ struct SignupView: View {
         )
         .disabled(connectIsDisabled())
         .buttonStyle(.borderedProminent)
-        .tint(.accentColor)
+        .tint(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
     }
 }
 
@@ -171,7 +184,6 @@ struct SignupView_Previews: PreviewProvider {
         SignupView()
             .environmentObject(CompanyViewModel())
             .environmentObject(SettingsViewModel())
-            .environmentObject(ViewRouter())
             .environmentObject(UIMetrics())
             .previewInterfaceOrientation(.landscapeLeft)
     }

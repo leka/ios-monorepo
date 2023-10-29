@@ -2,6 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import DesignKit
 import SwiftUI
 
 struct ProgressBarView: View {
@@ -23,7 +24,7 @@ struct ProgressBarView: View {
 
     var body: some View {
         Capsule()
-            .fill(Color("progressBar"))
+            .fill(DesignKitAsset.Colors.progressBar.swiftUIColor)
             .frame(maxHeight: gameMetrics.progressViewHeight)
             .frame(maxWidth: 760)  // this will change
             .overlay(

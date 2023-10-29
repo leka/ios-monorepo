@@ -2,6 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import DesignKit
 import SwiftUI
 
 struct SidebarAvatarNameLabel: View {
@@ -21,7 +22,7 @@ struct SidebarAvatarNameLabel: View {
         .font(metrics.reg15)
         .allowsTightening(true)
         .lineLimit(2)
-        .foregroundColor(.accentColor)
+        .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
         .padding(.vertical, 2)
         .padding(.horizontal, 6)
         .frame(minWidth: 100)

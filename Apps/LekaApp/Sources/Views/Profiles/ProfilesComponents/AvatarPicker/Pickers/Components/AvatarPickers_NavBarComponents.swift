@@ -2,6 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import DesignKit
 import SwiftUI
 
 struct AvatarPicker_NavigationTitle: View {
@@ -12,7 +13,7 @@ struct AvatarPicker_NavigationTitle: View {
     var body: some View {
         Text("Quel est ton avatar ?")
             .font(metrics.semi17)
-            .foregroundColor(.accentColor)
+            .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
     }
 }
 
@@ -35,7 +36,7 @@ struct AvatarPicker_AdaptiveBackButton: View {
                 }
             }
         }
-        .tint(.accentColor)
+        .tint(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
     }
 }
 
@@ -56,7 +57,7 @@ struct AvatarPicker_ValidateButton: View {
                 Image(systemName: "checkmark.circle")
                 Text("Valider la sélection")
             }
-            .foregroundColor(.accentColor)
+            .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
         }
         .disabled(selected.isEmpty)
     }

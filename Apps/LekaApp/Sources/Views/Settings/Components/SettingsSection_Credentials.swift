@@ -2,6 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import DesignKit
 import SwiftUI
 
 struct SettingsSection_Credentials: View {
@@ -16,10 +17,10 @@ struct SettingsSection_Credentials: View {
                     Text(company.currentCompany.mail)
                         .font(metrics.reg14)
                         .multilineTextAlignment(.leading)
-                        .foregroundColor(Color("lekaDarkGray"))
+                        .foregroundColor(DesignKitAsset.Colors.lekaDarkGray.swiftUIColor)
                 } label: {
                     Text("Adresse mail du compte")
-                        .foregroundColor(Color("darkGray"))
+                        .foregroundColor(DesignKitAsset.Colors.lekaDarkGray.swiftUIColor)
                 }
                 Link(destination: URL(string: "https://leka.io")!) {
                     Text("Modifier l'email et le mot de passe")
@@ -30,7 +31,7 @@ struct SettingsSection_Credentials: View {
         } header: {
             Text("Compte")
                 .font(metrics.reg15)
-                .foregroundColor(.accentColor)
+                .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
                 .headerProminence(.increased)
                 .padding(.top, 20)
         }

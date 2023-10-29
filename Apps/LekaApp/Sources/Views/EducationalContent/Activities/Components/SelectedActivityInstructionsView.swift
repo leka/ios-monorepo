@@ -2,6 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import DesignKit
 import SwiftUI
 
 struct SelectedActivityInstructionsView: View {
@@ -12,15 +13,15 @@ struct SelectedActivityInstructionsView: View {
     var body: some View {
         ZStack(alignment: .top) {
             // NavigationBar color
-            Color("lekaLightBlue").ignoresSafeArea()
+            DesignKitAsset.Colors.lekaLightBlue.swiftUIColor.ignoresSafeArea()
 
             // Background Color (only visible under the header here)
-            Color.accentColor
+            DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor
 
             VStack(spacing: 0) {
                 activityDetailHeader
                 Rectangle()
-                    .fill(Color("lekaLightGray"))
+                    .fill(DesignKitAsset.Colors.lekaLightGray.swiftUIColor)
                     .edgesIgnoringSafeArea(.bottom)
                     .overlay { InstructionsView() }
                     .overlay { GoButton() }

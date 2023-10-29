@@ -2,6 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import DesignKit
 import SwiftUI
 
 struct JobPicker: View {
@@ -61,7 +62,7 @@ struct JobPicker: View {
     private var navigationTitle: some View {
         Text("Sélectionnez vos professions")
             .font(metrics.semi17)
-            .foregroundColor(.accentColor)
+            .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
     }
 
     private var adaptiveBackButton: some View {
@@ -78,7 +79,7 @@ struct JobPicker: View {
                 }
             }
         }
-        .tint(.accentColor)
+        .tint(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
     }
 
     private var validateButton: some View {
@@ -90,7 +91,7 @@ struct JobPicker: View {
                 Image(systemName: "checkmark.circle")
                 Text("Valider la sélection")
             }
-            .foregroundColor(.accentColor)
+            .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
         }
         .disabled(selectedJobs.isEmpty)
         .disabled(isEditing)

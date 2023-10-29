@@ -2,6 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import DesignKit
 import SwiftUI
 
 struct CreateTeacherProfileView: View {
@@ -111,7 +112,7 @@ struct CreateTeacherProfileView: View {
             .buttonStyle(
                 BorderedCapsule_NoFeedback_ButtonStyle(
                     font: metrics.reg17,
-                    color: .accentColor,
+                    color: DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor,
                     width: metrics.tileBtnWidth)
             )
         } else {
@@ -123,7 +124,7 @@ struct CreateTeacherProfileView: View {
     private var navigationTitle: some View {
         Text(company.editingProfile ? "Éditer un profil accompagnant" : "Créer un profil accompagnant")
             .font(metrics.semi17)
-            .foregroundColor(.accentColor)
+            .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
     }
 
     @ViewBuilder
@@ -156,7 +157,7 @@ struct CreateTeacherProfileView: View {
             Image(systemName: "checkmark.circle")
             Text("Enregistrer")
         }
-        .tint(.accentColor)
+        .tint(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
         .contentShape(Rectangle())
     }
 
@@ -178,7 +179,7 @@ struct CreateTeacherProfileView: View {
                 }
             }
         }
-        .tint(.accentColor)
+        .tint(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
     }
 }
 
@@ -187,6 +188,7 @@ struct CreateProfileView_Previews: PreviewProvider {
         CreateTeacherProfileView()
             .environmentObject(CompanyViewModel())
             .environmentObject(SettingsViewModel())
+            .environmentObject(NavigationViewModel())
             .environmentObject(ViewRouter())
             .environmentObject(UIMetrics())
             .previewInterfaceOrientation(.landscapeLeft)

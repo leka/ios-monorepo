@@ -2,6 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import DesignKit
 import SwiftUI
 
 struct LoginView: View {
@@ -30,13 +31,13 @@ struct LoginView: View {
     @State private var credentialsAreCorrect: Bool = true
 
     private func submitForm() {
-        if mail == company.leka.mail {
-            if password != company.leka.password {
+        if mail == LekaCompany().lekaCompany.mail {
+            if password != LekaCompany().lekaCompany.password {
                 credentialsAreCorrect = false
             } else {
                 credentialsAreCorrect = true
                 settings.companyIsConnected = true
-                company.currentCompany = company.leka
+                company.currentCompany = LekaCompany().lekaCompany
                 settings.companyIsLoggingIn = true
                 navigateToTeacherSelector.toggle()
             }
@@ -73,7 +74,7 @@ struct LoginView: View {
     private var title: some View {
         Text("Se connecter")
             .textCase(.uppercase)
-            .foregroundColor(.accentColor)
+            .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
             .font(metrics.semi20)
     }
 
@@ -91,7 +92,7 @@ struct LoginView: View {
         )
         .disabled(connectIsDisabled())
         .buttonStyle(.borderedProminent)
-        .tint(.accentColor)
+        .tint(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
         .padding(.top, 24)
     }
 
@@ -105,11 +106,16 @@ struct LoginView: View {
         }()
 
         let mailLabelColor: Color = {
-            return mail.isValidEmail() || mail.isEmpty || isEditing ? .accentColor : .red
+            return mail.isValidEmail() || mail.isEmpty || isEditing
+                ? DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor : .red
         }()
 
         LekaTextField(
-            label: mailTitle, entry: $mail, color: mailLabelColor, isEditing: $isEditing, focused: _focusedField
+            label: mailTitle,
+            entry: $mail,
+            color: mailLabelColor,
+            isEditing: $isEditing,
+            focused: _focusedField
         ) {
             focusedField = .password
         }
@@ -125,10 +131,15 @@ struct LoginView: View {
         }()
 
         let passwordLabelColor: Color = {
-            return credentialsAreCorrect ? .accentColor : .red
+            return credentialsAreCorrect ? DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor : .red
         }()
 
-        LekaPasswordField(label: passwordTitle, entry: $password, color: passwordLabelColor, focused: _focusedField) {
+        LekaPasswordField(
+            label: passwordTitle,
+            entry: $password,
+            color: passwordLabelColor,
+            focused: _focusedField
+        ) {
             if password.isEmpty {
                 focusedField = .password
             } else {
@@ -144,7 +155,7 @@ struct LoginView: View {
                 Text("Mot de passe oublié")
                     .font(metrics.reg14)
                     .underline()
-                    .foregroundColor(.accentColor)
+                    .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
                     .padding([.top, .trailing], 10)
             }
         }
@@ -156,7 +167,6 @@ struct LoginView_Previews: PreviewProvider {
         LoginView()
             .environmentObject(CompanyViewModel())
             .environmentObject(SettingsViewModel())
-            .environmentObject(ViewRouter())
             .environmentObject(UIMetrics())
             .previewInterfaceOrientation(.landscapeLeft)
     }

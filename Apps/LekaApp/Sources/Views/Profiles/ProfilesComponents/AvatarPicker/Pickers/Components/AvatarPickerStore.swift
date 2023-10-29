@@ -2,6 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import DesignKit
 import SwiftUI
 
 struct AvatarPickerStore: View {
@@ -23,7 +24,7 @@ struct AvatarPickerStore: View {
         VStack(alignment: .leading, spacing: 10) {
             Text(category.category)
                 .font(metrics.med16)
-                .foregroundColor(.accentColor)
+                .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
                 .padding(.leading, 40)
             ScrollView(.horizontal, showsIndicators: true) {
                 LazyHGrid(rows: [GridItem()], spacing: 50) {

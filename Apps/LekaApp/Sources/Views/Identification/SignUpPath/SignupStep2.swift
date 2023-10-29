@@ -2,6 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import DesignKit
 import SwiftUI
 
 struct SignupStep2: View {
@@ -13,7 +14,7 @@ struct SignupStep2: View {
 
     var body: some View {
         ZStack {
-            Color("lekaLightBlue").ignoresSafeArea()
+            DesignKitAsset.Colors.lekaLightBlue.swiftUIColor.ignoresSafeArea()
             tile
         }
         .edgesIgnoringSafeArea(.top)
@@ -31,17 +32,20 @@ struct SignupStep2: View {
         HStack(alignment: .center, spacing: 0) {
             VStack(spacing: 0) {
                 // Picto
-                Image(data.content.image!)
-                    .resizable()
-                    .renderingMode(.original)
-                    .aspectRatio(contentMode: .fit)
-                    .frame(height: metrics.tilePictoHeightMedium)
-                    .padding(.top, 20)
+                Image(
+                    data.content.image!,
+                    bundle: Bundle(for: DesignKitResources.self)
+                )
+                .resizable()
+                .renderingMode(.original)
+                .aspectRatio(contentMode: .fit)
+                .frame(height: metrics.tilePictoHeightMedium)
+                .padding(.top, 20)
                 Spacer()
                 // Title
                 Text(data.content.title!)
                     .font(metrics.semi17)
-                    .foregroundColor(Color("lekaOrange"))
+                    .foregroundColor(DesignKitAsset.Colors.lekaOrange.swiftUIColor)
                     .padding(.vertical, 20)
                 // Message
                 Text(data.content.message!)
@@ -51,7 +55,7 @@ struct SignupStep2: View {
                 accessoryView
             }
             .multilineTextAlignment(.center)
-            .foregroundColor(.accentColor)
+            .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
             .frame(width: metrics.tileContentWidth)
             .padding(.bottom, metrics.tileContentPadding)
         }
@@ -76,7 +80,7 @@ struct SignupStep2: View {
         .buttonStyle(
             BorderedCapsule_NoFeedback_ButtonStyle(
                 font: metrics.reg17,
-                color: .accentColor,
+                color: DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor,
                 width: metrics.tileBtnWidth)
         )
     }

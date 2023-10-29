@@ -2,11 +2,12 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import DesignKit
 import SwiftUI
 
 struct CloudsBGView: View {
     var body: some View {
-        Image("interface_cloud")
+        Image(uiImage: DesignKitAsset.Images.interfaceCloud.image)
             .resizable()
             .renderingMode(.original)
             .aspectRatio(contentMode: .fill)

@@ -2,6 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import DesignKit
 import SwiftUI
 
 struct UserSet_AvatarCell: View {
@@ -31,12 +32,12 @@ struct UserSet_AvatarCell: View {
                     // Avatar
                     Circle()
                         .fill(
-                            Color("lekaLightGray"),
+                            DesignKitAsset.Colors.lekaLightGray.swiftUIColor,
                             strokeBorder: .white,
                             lineWidth: 3
                         )
                         .overlay(content: {
-                            Image(user.avatar)
+                            Image(user.avatar, bundle: Bundle(for: DesignKitResources.self))
                                 .resizable()
                                 .aspectRatio(contentMode: .fill)
                                 .clipShape(Circle())
@@ -45,13 +46,13 @@ struct UserSet_AvatarCell: View {
                     // Reinforcer Badge
                     ZStack(alignment: .topTrailing) {
                         Circle()
-                            .fill(Color("lekaLightGray"))
-                        Image("reinforcer-\(user.reinforcer)")
+                            .fill(DesignKitAsset.Colors.lekaLightGray.swiftUIColor)
+                        Image(uiImage: company.getReinforcerFor(index: user.reinforcer))
                             .resizable()
                             .renderingMode(.original)
                             .aspectRatio(contentMode: .fit)
                             .padding(2)
-                            .background(Color("lekaLightGray"), in: Circle())
+                            .background(DesignKitAsset.Colors.lekaLightGray.swiftUIColor, in: Circle())
 
                         Circle()
                             .stroke(.white, lineWidth: 3)
@@ -67,7 +68,10 @@ struct UserSet_AvatarCell: View {
                     .allowsTightening(true)
                     .lineLimit(2)
                     .padding(.horizontal, 14)
-                    .foregroundColor(company.profileIsCurrent(.user, id: user.id) ? Color.white : Color("darkGray"))
+                    .foregroundColor(
+                        company.profileIsCurrent(.user, id: user.id)
+                            ? Color.white : DesignKitAsset.Colors.lekaDarkGray.swiftUIColor
+                    )
                     .padding(2)
                     .frame(minWidth: 108)
                     .background(content: {
@@ -75,7 +79,9 @@ struct UserSet_AvatarCell: View {
                             .stroke(.white, lineWidth: 2)
                     })
                     .background(
-                        company.profileIsCurrent(.user, id: user.id) ? Color("lekaSkyBlue") : Color("lekaLightGray"),
+                        company.profileIsCurrent(.user, id: user.id)
+                            ? DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor
+                            : DesignKitAsset.Colors.lekaLightGray.swiftUIColor,
                         in: RoundedRectangle(cornerRadius: metrics.btnRadius))
             }
         }
@@ -104,7 +110,7 @@ struct UserSet_AvatarCell: View {
 
         Circle()
             .stroke(
-                Color("lekaSkyBlue"),
+                DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor,
                 style: StrokeStyle(
                     lineWidth: lineWidth,
                     lineCap: .butt,
@@ -112,7 +118,7 @@ struct UserSet_AvatarCell: View {
                     dash: dash))
         Circle()
             .stroke(
-                Color("lekaSkyBlue"),
+                DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor,
                 style: StrokeStyle(
                     lineWidth: lineWidth,
                     lineCap: .butt,

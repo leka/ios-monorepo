@@ -2,6 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import DesignKit
 import SwiftUI
 
 struct WelcomeView: View {
@@ -13,7 +14,7 @@ struct WelcomeView: View {
     var body: some View {
         NavigationStack {
             ZStack(alignment: .center) {
-                Color("lekaLightBlue").ignoresSafeArea()
+                DesignKitAsset.Colors.lekaLightBlue.swiftUIColor.ignoresSafeArea()
 
                 VStack(spacing: 30) {
                     logoLeka
@@ -40,11 +41,14 @@ struct WelcomeView: View {
     }
 
     private var logoLeka: some View {
-        Image("lekaLogo_AFH")
-            .resizable()
-            .aspectRatio(contentMode: .fit)
-            .frame(height: 90)
-            .padding(.bottom, 30)
+        Image(
+            DesignKitAsset.Assets.lekaLogo.name,
+            bundle: Bundle(for: DesignKitResources.self)
+        )
+        .resizable()
+        .aspectRatio(contentMode: .fit)
+        .frame(height: 90)
+        .padding(.bottom, 30)
     }
 
     private var skipButton: some View {
@@ -66,7 +70,6 @@ struct WelcomeView_Previews: PreviewProvider {
     static var previews: some View {
         WelcomeView()
             .environmentObject(CompanyViewModel())
-            //            .environmentObject(SettingsViewModel())
             .environmentObject(ViewRouter())
             .environmentObject(UIMetrics())
             .previewInterfaceOrientation(.landscapeLeft)

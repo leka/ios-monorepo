@@ -2,6 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import DesignKit
 import SwiftUI
 
 struct TickPic: View {
@@ -12,9 +13,9 @@ struct TickPic: View {
     func imageFromContext() -> Image {
         guard settings.exploratoryModeIsOn else {
             guard company.profileIsAssigned(.user) || !settings.companyIsConnected else {
-                return Image("cross")
+                return DesignKitAsset.Images.cross.swiftUIImage
             }
-            return Image("tick")
+            return DesignKitAsset.Images.tick.swiftUIImage
         }
         return Image(systemName: "binoculars.fill")
     }
@@ -28,7 +29,9 @@ struct TickPic: View {
                 .foregroundColor(.white)
                 .padding(settings.exploratoryModeIsOn ? 20 : 0)
                 .fontWeight(.light)
-                .background(settings.exploratoryModeIsOn ? Color("lekaSkyBlue") : .clear, in: Circle())
+                .background(
+                    settings.exploratoryModeIsOn ? DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor : .clear, in: Circle()
+                )
                 .overlay(
                     Circle()
                         .stroke(.white, lineWidth: 3)

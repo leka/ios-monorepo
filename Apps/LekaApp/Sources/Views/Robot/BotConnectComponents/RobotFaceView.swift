@@ -2,6 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import DesignKit
 import SwiftUI
 
 struct RobotFaceView: View {
@@ -14,12 +15,12 @@ struct RobotFaceView: View {
 
     var body: some View {
         VStack {
-            Image("robot_connexion_bluetooth")
+            DesignKitAsset.Images.robotFaceSimple.swiftUIImage
                 .overlay(content: {
                     Circle()
                         .inset(by: -10)
                         .stroke(
-                            Color("lekaGreen"),
+                            DesignKitAsset.Colors.lekaGreen.swiftUIColor,
                             style: StrokeStyle(
                                 lineWidth: 2,
                                 lineCap: .butt,
@@ -33,7 +34,7 @@ struct RobotFaceView: View {
                             rotation = 360
                         }
                 })
-                .background(Color("lekaGreen"), in: Circle().inset(by: isConnected ? -26 : 2))
+                .background(DesignKitAsset.Colors.lekaGreen.swiftUIColor, in: Circle().inset(by: isConnected ? -26 : 2))
                 .padding(.bottom, 40)
 
             Text(name)
@@ -44,6 +45,10 @@ struct RobotFaceView: View {
 
 struct RobotFaceView_Previews: PreviewProvider {
     static var previews: some View {
-        RobotFaceView(isSelected: .constant(true), isConnected: .constant(true), name: .constant("LKAL 007"))
+        RobotFaceView(
+            isSelected: .constant(true),
+            isConnected: .constant(true),
+            name: .constant("LKAL 007")
+        )
     }
 }
