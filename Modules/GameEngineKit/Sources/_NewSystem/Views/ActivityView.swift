@@ -36,13 +36,7 @@ public struct ActivityView: View {
                     }
                 }
 
-                Button("Continuer") {
-                    viewModel.moveToNextExercise()
-                }
-                .buttonStyle(.borderedProminent)
-                .tint(.green)
-                .padding()
-                .disabled(viewModel.currentExerciseSharedData.state != .completed)
+                continueButton
             }
             .ignoresSafeArea(.all, edges: .bottom)
             .navigationBarTitleDisplayMode(.inline)
@@ -99,6 +93,23 @@ public struct ActivityView: View {
                     data: viewModel.currentExerciseSharedData
                 )
                 .id(viewModel.currentExerciseIndexInSequence)
+        }
+    }
+
+    @ViewBuilder
+    private var continueButton: some View {
+        let state = viewModel.currentExerciseSharedData.state
+
+        if state != .completed {
+            EmptyView()
+        } else {
+            Button("Continuer") {
+                viewModel.isLastExercise ? dismiss() : viewModel.moveToNextExercise()
+            }
+            .buttonStyle(.borderedProminent)
+            .tint(.green)
+            .padding()
+            .transition(.asymmetric(insertion: .opacity.animation(.snappy.delay(2)), removal: .identity))
         }
     }
 
