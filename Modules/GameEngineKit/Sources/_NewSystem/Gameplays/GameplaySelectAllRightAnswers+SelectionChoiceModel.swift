@@ -14,6 +14,7 @@ extension GameplaySelectAllRightAnswers where ChoiceModelType == GameplaySelecti
     func process(_ choice: ChoiceModelType) {
         if choice.choice.isRightAnswer {
             updateChoice(choice, state: .rightAnswer)
+            state.send(.completed)
         } else {
             updateChoice(choice, state: .wrongAnswer)
         }

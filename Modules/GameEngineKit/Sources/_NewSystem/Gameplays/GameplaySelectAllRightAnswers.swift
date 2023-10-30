@@ -6,10 +6,11 @@ import Combine
 import ContentKit
 import Foundation
 
-class GameplaySelectAllRightAnswers<ChoiceModelType>
+class GameplaySelectAllRightAnswers<ChoiceModelType>: StatefulGameplayProtocol
 where ChoiceModelType: GameplayChoiceModelProtocol {
 
     var choices: CurrentValueSubject<[ChoiceModelType], Never> = .init([])
+    var state: CurrentValueSubject<ExerciseState, Never> = .init(.idle)
 
     func updateChoice(_ choice: ChoiceModelType, state: GameplayChoiceState) {
         guard let index = choices.value.firstIndex(where: { $0.id == choice.id }) else {

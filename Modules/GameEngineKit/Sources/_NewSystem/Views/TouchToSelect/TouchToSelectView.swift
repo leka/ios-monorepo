@@ -23,12 +23,13 @@ public struct TouchToSelectView: View {
         self._viewModel = StateObject(wrappedValue: SelectionViewViewModel(choices: choices))
     }
 
-    public init(exercise: Exercise) {
+    public init(exercise: Exercise, data: ExerciseSharedData? = nil) {
         guard case .selection(let payload) = exercise.payload else {
             fatalError("Exercise payload is not .selection")
         }
 
-        self._viewModel = StateObject(wrappedValue: SelectionViewViewModel(choices: payload.choices))
+        self._viewModel = StateObject(
+            wrappedValue: SelectionViewViewModel(choices: payload.choices, shared: data))
     }
 
     public var body: some View {

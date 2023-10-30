@@ -9,7 +9,7 @@ public class MelodyViewModel: Identifiable, ObservableObject {
     public var gameplay: MelodyGameplay
 
     @Published public var progress: CGFloat
-    @Published public var state: GameplayState
+    @Published public var state: GameplayStateDeprecated
 
     private var cancellables: Set<AnyCancellable> = []
 

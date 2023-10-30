@@ -6,5 +6,5 @@ import Combine
 import Foundation
 
 public protocol BaseGameplayProtocol {
-    var state: CurrentValueSubject<GameplayState, Never> { get set }
+    var state: CurrentValueSubject<GameplayStateDeprecated, Never> { get set }
 }

@@ -8,7 +8,7 @@ import Foundation
 public class GameplayDragAndDropAllAnswersOnTheRightZone: DragAndDropGameplayProtocol {
     public var choices = CurrentValueSubject<[ChoiceModel], Never>([])
     public var dropZones = CurrentValueSubject<[DragAndDropZoneModel], Never>([])
-    public var state = CurrentValueSubject<GameplayState, Never>(.idle)
+    public var state = CurrentValueSubject<GameplayStateDeprecated, Never>(.idle)
 
     private var rightAnswersGiven: [ChoiceModel] = []
 

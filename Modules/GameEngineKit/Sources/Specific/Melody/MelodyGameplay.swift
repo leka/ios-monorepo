@@ -8,7 +8,7 @@ import SwiftUI
 
 public class MelodyGameplay: ObservableObject {
     @Published public var progress: CGFloat = 0.0
-    @Published public var state: GameplayState = .idle
+    @Published public var state: GameplayStateDeprecated = .idle
 
     private let xyloPlayer = MIDIPlayer(name: "Xylophone", samples: xyloSamples)
 

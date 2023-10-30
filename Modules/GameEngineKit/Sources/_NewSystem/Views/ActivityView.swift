@@ -42,6 +42,7 @@ public struct ActivityView: View {
                 .buttonStyle(.borderedProminent)
                 .tint(.green)
                 .padding()
+                .disabled(viewModel.currentExerciseSharedData.state != .completed)
             }
             .ignoresSafeArea(.all, edges: .bottom)
             .navigationBarTitleDisplayMode(.inline)
@@ -79,14 +80,25 @@ public struct ActivityView: View {
     private func currentExerciseInterface() -> some View {
         switch viewModel.currentExerciseInterface {
             case .touchToSelect:
-                TouchToSelectView(exercise: viewModel.currentExercise)
-                    .id(viewModel.currentExerciseIndexInSequence)
+                TouchToSelectView(
+                    exercise: viewModel.currentExercise,
+                    data: viewModel.currentExerciseSharedData
+                )
+                .id(viewModel.currentExerciseIndexInSequence)
+
             case .listenThenTouchToSelect:
-                ListenThenTouchToSelectView(exercise: viewModel.currentExercise)
-                    .id(viewModel.currentExerciseIndexInSequence)
+                ListenThenTouchToSelectView(
+                    exercise: viewModel.currentExercise,
+                    data: viewModel.currentExerciseSharedData
+                )
+                .id(viewModel.currentExerciseIndexInSequence)
+
             case .observeThenTouchToSelect:
-                ObserveThenTouchToSelectView(exercise: viewModel.currentExercise)
-                    .id(viewModel.currentExerciseIndexInSequence)
+                ObserveThenTouchToSelectView(
+                    exercise: viewModel.currentExercise,
+                    data: viewModel.currentExerciseSharedData
+                )
+                .id(viewModel.currentExerciseIndexInSequence)
         }
     }
 

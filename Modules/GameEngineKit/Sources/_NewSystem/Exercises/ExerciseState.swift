@@ -2,10 +2,8 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
-import Foundation
-
-public enum GameplayState {
+enum ExerciseState {
     case idle
     case playing
-    case finished
+    case completed
 }

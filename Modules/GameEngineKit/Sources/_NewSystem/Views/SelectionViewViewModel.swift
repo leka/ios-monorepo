@@ -9,14 +9,18 @@ import SwiftUI
 class SelectionViewViewModel: ObservableObject {
 
     @Published var choices: [GameplaySelectionChoiceModel] = []
+    @ObservedObject var exercicesSharedData: ExerciseSharedData
 
     private let gameplay: GameplaySelectAllRightAnswers<GameplaySelectionChoiceModel>
     private var cancellables: Set<AnyCancellable> = []
 
-    init(choices: [SelectionChoice]) {
+    init(choices: [SelectionChoice], shared: ExerciseSharedData? = nil) {
         self.gameplay = GameplaySelectAllRightAnswers(
             choices: choices.map { GameplaySelectionChoiceModel(choice: $0) })
+        self.exercicesSharedData = shared ?? ExerciseSharedData()
+
         subscribeToGameplaySelectionChoicesUpdates()
+        subscribeToGameplayStateUpdates()
     }
 
     public func onChoiceTapped(choice: GameplaySelectionChoiceModel) {
@@ -28,6 +32,15 @@ class SelectionViewViewModel: ObservableObject {
             .receive(on: DispatchQueue.main)
             .sink {
                 self.choices = $0
+            }
+            .store(in: &cancellables)
+    }
+
+    private func subscribeToGameplayStateUpdates() {
+        gameplay.state
+            .receive(on: DispatchQueue.main)
+            .sink {
+                self.exercicesSharedData.state = $0
             }
             .store(in: &cancellables)
     }

@@ -2,12 +2,15 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import Combine
 import ContentKit
 import SwiftUI
 
 public class ActivityViewViewModel: ObservableObject {
 
     private let sequenceManager: ActivitySequenceManager
+
+    private var cancellables: Set<AnyCancellable> = []
 
     @Published var currentActivity: Activity
 
@@ -19,6 +22,7 @@ public class ActivityViewViewModel: ObservableObject {
 
     @Published var currentExercise: Exercise
     @Published var currentExerciseInterface: Exercise.Interface
+    @Published var currentExerciseSharedData = ExerciseSharedData()
 
     public init(activity: Activity) {
         self.sequenceManager = ActivitySequenceManager(activity: activity)
@@ -33,6 +37,8 @@ public class ActivityViewViewModel: ObservableObject {
 
         self.currentExercise = sequenceManager.currentExercise
         self.currentExerciseInterface = sequenceManager.currentExercise.interface
+
+        subscribeToCurrentExerciseSharedDataUpdates()
     }
 
     func moveToNextExercise() {
@@ -59,6 +65,15 @@ public class ActivityViewViewModel: ObservableObject {
         totalSequences = sequenceManager.totalSequences
         currentExerciseIndexInSequence = sequenceManager.currentExerciseIndexInSequence
         totalExercisesInCurrentSequence = sequenceManager.totalExercisesInCurrentSequence
+    }
+
+    private func subscribeToCurrentExerciseSharedDataUpdates() {
+        self.currentExerciseSharedData.objectWillChange
+            .receive(on: DispatchQueue.main)
+            .sink {
+                self.objectWillChange.send()
+            }
+            .store(in: &cancellables)
     }
 
 }
