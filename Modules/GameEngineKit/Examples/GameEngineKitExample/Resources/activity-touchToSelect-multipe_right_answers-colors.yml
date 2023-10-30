@@ -1,0 +1,66 @@
+# Leka - iOS Monorepo
+# Copyright 2023 APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+id: 9f48d9f3ca224fa68c04d48436577486
+name: Touch To Select - Multiple Right Answers - Colors
+description: L'objectif est de trouver la bonne couleur ou des les rassembler par famille
+image: activity_color_recognition_1
+sequence:
+  - exercises:
+      - instructions: Touche tous les ronds verts
+        type: selection
+        interface: touchToSelect
+        gameplay: selectAllRightAnswers
+        payload:
+          choices:
+            - value: green
+              type: color
+              isRightAnswer: true
+            - value: green
+              type: color
+              isRightAnswer: true
+            - value: blue
+              type: color
+            - value: red
+              type: color
+
+      - instructions: Touche le rond rouge et le rond jaune
+        type: selection
+        interface: touchToSelect
+        gameplay: selectAllRightAnswers
+        payload:
+          choices:
+            - value: red
+              type: color
+              isRightAnswer: true
+            - value: yellow
+              type: color
+              isRightAnswer: true
+            - value: green
+              type: color
+
+      - instructions: Touche tous les ronds violets
+        type: selection
+        interface: touchToSelect
+        gameplay: selectAllRightAnswers
+        payload:
+          choices:
+            - value: purple
+              type: color
+              isRightAnswer: true
+            - value: purple
+              type: color
+              isRightAnswer: true
+            - value: purple
+              type: color
+              isRightAnswer: true
+            - value: purple
+              type: color
+              isRightAnswer: true
+            - value: purple
+              type: color
+              isRightAnswer: true
+            - value: purple
+              type: color
+              isRightAnswer: true

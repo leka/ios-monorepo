@@ -9,14 +9,24 @@ extension GameplaySelectAllRightAnswers where ChoiceModelType == GameplaySelecti
     convenience init(choices: [GameplaySelectionChoiceModel]) {
         self.init()
         self.choices.send(choices)
+        self.rightAnswers = choices.filter { $0.choice.isRightAnswer }
+        self.state.send(.playing)
     }
 
     func process(_ choice: ChoiceModelType) {
-        if choice.choice.isRightAnswer {
+        guard rightAnswers.isNotEmpty else {
+            return
+        }
+
+        if choice.choice.isRightAnswer && rightAnswers.isNotEmpty {
             updateChoice(choice, state: .rightAnswer)
-            state.send(.completed)
+            rightAnswers.removeAll { $0.id == choice.id }
         } else {
             updateChoice(choice, state: .wrongAnswer)
+        }
+
+        if rightAnswers.isEmpty {
+            state.send(.completed)
         }
     }
 
