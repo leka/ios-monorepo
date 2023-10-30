@@ -87,7 +87,7 @@ jobs:
           bundle --version
 
       - name: Remove label
-        if: always()
+        if: contains(github.event.label.name, 'ci:upgrade_tools')
         uses: actions/github-script@v6
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
