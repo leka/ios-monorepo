@@ -91,8 +91,6 @@ public class BLEManager {
 
     public func connect(_ discovery: RobotDiscoveryModel) -> AnyPublisher<RobotPeripheral, Error> {
         centralManager.connect(discovery.robotPeripheral.peripheral)
-            // TODO(@ladislas): check if receive is needed here
-            .receive(on: DispatchQueue.main)
             .compactMap { peripheral in
                 self.connectedRobotPeripheral = RobotPeripheral(peripheral: peripheral)
                 return self.connectedRobotPeripheral
@@ -109,7 +107,6 @@ public class BLEManager {
 
     private func subscribeToDidConnect() {
         self.centralManager.didConnectPeripheral
-            .receive(on: DispatchQueue.main)
             .sink { peripheral in
                 self.didConnect.send(RobotPeripheral(peripheral: peripheral))
             }
@@ -118,7 +115,6 @@ public class BLEManager {
 
     private func subscribeToDidDisconnect() {
         self.centralManager.didDisconnectPeripheral
-            .receive(on: DispatchQueue.main)
             .sink { _ in
                 self.didDisconnect.send()
             }
