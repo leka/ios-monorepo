@@ -32,7 +32,7 @@ let dependencies = Dependencies(
         ),
         .remote(
             url: "https://github.com/AudioKit/AudioKit",
-            requirement: .exact("5.6.0")
+            requirement: .exact("5.6.2")
         ),
         .remote(
             url: "https://github.com/apple/swift-log",
