@@ -24,7 +24,7 @@ let dependencies = Dependencies(
         ),
         .remote(
             url: "https://github.com/StarryInternet/CombineCoreBluetooth",
-            requirement: .exact("0.7.0")
+            requirement: .exact("0.7.1")
         ),
         .remote(
             url: "https://github.com/michael94ellis/SwiftUIJoystick",
@@ -32,7 +32,7 @@ let dependencies = Dependencies(
         ),
         .remote(
             url: "https://github.com/AudioKit/AudioKit",
-            requirement: .exact("5.6.0")
+            requirement: .exact("5.6.2")
         ),
         .remote(
             url: "https://github.com/apple/swift-log",
