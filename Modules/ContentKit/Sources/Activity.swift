@@ -60,12 +60,9 @@ public enum ExercisePayload: Codable {
         // ? Selection
         if container.allKeys.contains(.choices) {
             let choices = try container.decode([SelectionChoice].self, forKey: .choices)
-            if container.allKeys.contains(.media) {
-                let media = try container.decode(String.self, forKey: .media)
-                self = .selection(SelectionPayload(choices: choices, media: media))
-                return
-            }
-            self = .selection(SelectionPayload(choices: choices, media: nil))
+            let media = try? container.decode(String.self, forKey: .media)
+
+            self = .selection(SelectionPayload(choices: choices, media: media))
             return
         }
 
