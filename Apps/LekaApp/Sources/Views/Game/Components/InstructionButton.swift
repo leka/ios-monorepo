@@ -46,7 +46,7 @@ struct InstructionButton: View {
             HStack {
                 Spacer()
                 Image(
-                    DesignKitAsset.Images.personWave2.name,
+                    DesignKitAsset.Images.personTalking.name,
                     bundle: Bundle(for: DesignKitResources.self)
                 )
                 .resizable()
