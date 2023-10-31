@@ -30,7 +30,7 @@ public struct TouchToSelectView: View {
 
         self._viewModel = StateObject(
             wrappedValue: SelectionViewViewModel(
-                choices: payload.choices, shuffle: payload.shuffle, shared: data))
+                choices: payload.choices, shuffle: payload.shuffleChoices, shared: data))
     }
 
     public var body: some View {
