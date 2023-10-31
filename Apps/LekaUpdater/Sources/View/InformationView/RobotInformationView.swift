@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import DesignKit
+import LocalizationKit
 import SwiftUI
 import Version
 
@@ -11,16 +12,15 @@ struct RobotInformationView: View {
 
     var body: some View {
         VStack(alignment: .leading) {
-            Text("N° série: \(viewModel.robotSerialNumber)")
+            Text(l10n.information.robot.serialNumber(viewModel.robotSerialNumber))
             Divider()
-            Text("Battery: \(viewModel.robotBattery)")
+            Text(l10n.information.robot.battery(viewModel.robotBattery))
             Divider()
-            Text("Version: \(viewModel.robotOsVersion)")
+            Text(l10n.information.robot.version(viewModel.robotOsVersion))
             Divider()
-            Text("En charge: \(viewModel.robotIsCharging ? "yes" : "no")")
+            Text(l10n.information.robot.isCharging(viewModel.robotIsCharging))
         }
         .padding()
-
     }
 }
 
@@ -38,18 +38,22 @@ struct RobotInformationView_Previews: PreviewProvider {
                         globalRobotManager.serialNumber = nil
                         globalRobotManager.battery = Int.random(in: 0...100)
                         globalRobotManager.osVersion = Version(1, 0, 0)
+                        globalRobotManager.isCharging = false
                     case 2:
                         print("Robot connected")
-                        globalRobotManager.serialNumber = "LK-2206..."
+                        globalRobotManager.serialNumber = "LK-2206DHQFLQJZ139813JJQ - connected"
                         globalRobotManager.battery = Int.random(in: 0...100)
                         globalRobotManager.osVersion = Version(1, 0, 0)
+                        globalRobotManager.isCharging = true
                     default:
                         print("Robot not connected")
                         globalRobotManager.serialNumber = nil
                         globalRobotManager.battery = nil
                         globalRobotManager.osVersion = nil
+                        globalRobotManager.isCharging = nil
                 }
             }
         }
+        .environment(\.locale, .init(identifier: "fr"))
     }
 }

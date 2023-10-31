@@ -4,6 +4,7 @@
 
 import Combine
 import Foundation
+import LocalizationKit
 
 class UpdateStatusViewModel: ObservableObject {
 
@@ -27,7 +28,7 @@ class UpdateStatusViewModel: ObservableObject {
     @Published public var showAlert: Bool = false
 
     @Published public var errorDescription: String = ""
-    @Published public var errorInstruction: String = ""
+    @Published public var errorInstructions: String = ""
 
     public var stepNumber: Int {
         switch updatingStatus {
@@ -62,38 +63,30 @@ class UpdateStatusViewModel: ObservableObject {
 
                         switch error {
                             case .failedToLoadFile:
-                                self.errorDescription = """
-                                    Le fichier de mise à jour du robot ne peut pas être ouvert
-                                    (Code erreur #0001)
-                                    """
-                                self.errorInstruction = "Veuillez réinstaller l'application"
+                                self.errorDescription = String(l10n.update.error.failedToLoadFileDescription.characters)
+                                self.errorInstructions = String(
+                                    l10n.update.error.failedToLoadFileInstructions.characters)
+
                             case .robotNotUpToDate:
-                                self.errorDescription = """
-                                    Echec de la mise à jour
-                                    (Code erreur #0002)
-                                    """
-                                self.errorInstruction = "Reconnectez le robot et relancez le processus"
+                                self.errorDescription = String(l10n.update.error.robotNotUpToDateDescription.characters)
+                                self.errorInstructions = String(
+                                    l10n.update.error.robotNotUpToDateInstructions.characters)
+
                             case .updateProcessNotAvailable:
-                                self.errorDescription = """
-                                    Processus de mise à jour non disponible ou inconnu
-                                    (Code erreur #0003)
-                                    """
-                                self.errorInstruction = "Contactez le support technique"
+                                self.errorDescription = String(
+                                    l10n.update.error.updateProcessNotAvailableDescription.characters)
+                                self.errorInstructions = String(
+                                    l10n.update.error.updateProcessNotAvailableInstructions.characters)
+
                             case .robotUnexpectedDisconnection:
-                                self.errorDescription = """
-                                    Le robot s'est déconnecté de manière inattendue
-                                    (Code erreur #0004)
-                                    """
-                                self.errorInstruction = """
-                                    Redémarrer le robot à l'aide de la carte \"Arrêt d'urgence\",
-                                    reconnectez le robot et relancez le processus
-                                    """
+                                self.errorDescription = String(
+                                    l10n.update.error.robotUnexpectedDisconnectionDescription.characters)
+                                self.errorInstructions = String(
+                                    l10n.update.error.robotUnexpectedDisconnectionInstructions.characters)
+
                             default:
-                                self.errorDescription = """
-                                    Une erreur inconnue s'est produite
-                                    (Code erreur #0000)
-                                    """
-                                self.errorInstruction = "Contactez le support technique"
+                                self.errorDescription = String(l10n.update.error.unknownErrorDescription.characters)
+                                self.errorInstructions = String(l10n.update.error.unknownErrorInstructions.characters)
                         }
                 }
             } receiveValue: { state in

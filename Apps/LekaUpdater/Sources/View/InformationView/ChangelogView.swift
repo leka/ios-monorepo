@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import DesignKit
+import LocalizationKit
 import SwiftUI
 
 struct ChangelogView: View {
@@ -15,7 +16,7 @@ struct ChangelogView: View {
             let content = try String(contentsOf: fileURL)
             return LocalizedStringKey(stringLiteral: content)
         } catch {
-            return "Changelog cannot be loaded"
+            return "\(l10n.information.changelogNotFoundText)"
         }
     }
 
