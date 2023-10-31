@@ -61,8 +61,9 @@ public enum ExercisePayload: Codable {
         if container.allKeys.contains(.choices) {
             let choices = try container.decode([SelectionChoice].self, forKey: .choices)
             let media = try? container.decode(String.self, forKey: .media)
+            let shuffle = try container.decodeIfPresent(Bool.self, forKey: .shuffle) ?? false
 
-            self = .selection(SelectionPayload(choices: choices, media: media))
+            self = .selection(SelectionPayload(choices: choices, media: media, shuffle: shuffle))
             return
         }
 
@@ -83,13 +84,14 @@ public enum ExercisePayload: Codable {
     }
 
     private enum CustomKeys: String, CodingKey {
-        case choices, dropZoneA, payload, media
+        case choices, dropZoneA, payload, media, shuffle
     }
 }
 
 public struct SelectionPayload: Codable {
     public let choices: [SelectionChoice]
     public let media: String?
+    public let shuffle: Bool
 }
 
 public enum UIElementType: String, Codable {
