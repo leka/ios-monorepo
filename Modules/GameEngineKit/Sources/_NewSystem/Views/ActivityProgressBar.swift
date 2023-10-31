@@ -28,7 +28,8 @@ struct ActivityProgressBar: View {
                         }()
                         ActivityProgressBarMarker(
                             color: dotColor,
-                            isCurrent: exerciseIndex == viewModel.currentExerciseIndexInSequence
+                            isCurrent: sequenceIndex == viewModel.currentSequenceIndex
+                                && exerciseIndex == viewModel.currentExerciseIndexInSequence
                         )
                         .padding(6)
 
