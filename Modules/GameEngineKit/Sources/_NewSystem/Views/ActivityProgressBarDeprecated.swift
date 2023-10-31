@@ -7,7 +7,7 @@ import SwiftUI
 
 // ? ChatGPT: Just for fun implementation -- not working correclty
 // TODO(@ladislas): to be removed and replaced by real implementation
-struct ActivityProgressBar: View {
+struct ActivityProgressBarDeprecated: View {
     @ObservedObject var viewModel: ActivityViewViewModel
 
     var body: some View {
