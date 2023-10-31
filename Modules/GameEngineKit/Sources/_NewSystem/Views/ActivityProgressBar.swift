@@ -45,6 +45,5 @@ struct ActivityProgressBar: View {
             }
             Spacer()
         }
-        .id(viewModel.currentExerciseIndexInSequence)
     }
 }

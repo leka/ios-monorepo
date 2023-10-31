@@ -21,6 +21,7 @@ public struct ActivityView: View {
                 VStack {
                     VStack(spacing: 15) {
                         ActivityProgressBar(viewModel: viewModel)
+                            .id(viewModel.currentExerciseIndexInSequence)
 
                         ExerciseInstructionsButton(instructions: viewModel.currentExercise.instructions)
                             .id(viewModel.currentExerciseIndexInSequence)
