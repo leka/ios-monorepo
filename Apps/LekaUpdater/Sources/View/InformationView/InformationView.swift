@@ -91,7 +91,6 @@ struct InformationView: View {
                     }
                 }
                 .padding([.horizontal], 20)
-                .background(Color.white)
             }
             .foregroundColor(DesignKitAsset.Colors.darkGray.swiftUIColor)
             .onChange(of: isViewVisible) { isVisible in
