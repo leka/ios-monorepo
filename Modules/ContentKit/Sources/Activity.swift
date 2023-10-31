@@ -44,25 +44,26 @@ public enum ExercisePayload: Codable {
     case selection(SelectionPayload)
     case dragAndDrop(DragAndDropPayload)
 
+    // TODO(@ladislas): see if we can decode based on interface in Exercise
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CustomKeys.self)
 
-        if container.allKeys.contains(.choices) {
-            let choices = try container.decode([SelectionChoice].self, forKey: .choices)
-            if container.allKeys.contains(.media) {
-                let media = try container.decode(String.self, forKey: .media)
-                self = .selection(SelectionPayload(choices: choices, media: media))
-                return
-            }
-            self = .selection(SelectionPayload(choices: choices, media: nil))
-            return
-        }
-
+        // ? Drag and drop
+        // TODO(@ladislas): not working, implement real logic
         if container.allKeys.contains(.dropZoneA) {
             if let payload = try? container.decode(DragAndDropPayload.self, forKey: .dropZoneA) {
                 self = .dragAndDrop(payload)
                 return
             }
+        }
+
+        // ? Selection
+        if container.allKeys.contains(.choices) {
+            let choices = try container.decode([SelectionChoice].self, forKey: .choices)
+            let media = try? container.decode(String.self, forKey: .media)
+
+            self = .selection(SelectionPayload(choices: choices, media: media))
+            return
         }
 
         throw DecodingError.dataCorruptedError(
