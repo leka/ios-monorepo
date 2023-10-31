@@ -208,7 +208,7 @@ private class StateSendingFile: GKState, StateEventProcessor {
         Float(currentPacket) / Float(expectedPackets)
     }
 
-    lazy private var characteristic: CharacteristicModelWriteOnly = CharacteristicModelWriteOnly(
+    lazy private var characteristic: CharacteristicModelWriteOnly? = CharacteristicModelWriteOnly(
         characteristicUUID: BLESpecs.FileExchange.Characteristics.fileReceptionBuffer,
         serviceUUID: BLESpecs.FileExchange.service,
         onWrite: {
@@ -254,6 +254,7 @@ private class StateSendingFile: GKState, StateEventProcessor {
 
     override func willExit(to nextState: GKState) {
         cancellables.removeAll()
+        characteristic = nil
     }
 
     func process(event: UpdateEvent) {
@@ -288,7 +289,9 @@ private class StateSendingFile: GKState, StateEventProcessor {
 
         let dataToSend = globalFirmwareManager.data[startIndex...endIndex]
 
-        globalRobotManager.robotPeripheral?.send(dataToSend, forCharacteristic: characteristic)
+        if let characteristic = characteristic {
+            globalRobotManager.robotPeripheral?.send(dataToSend, forCharacteristic: characteristic)
+        }
     }
 }
 
