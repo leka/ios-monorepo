@@ -10,6 +10,10 @@ public class ActivitySequenceManager {
     public var currentExerciseIndexInSequence: Int = 0
 
     public init(activity: Activity) {
+        var activity = activity
+        if activity.shuffleSequences {
+            activity.sequence.shuffle()
+        }
         self.activity = activity
     }
 
