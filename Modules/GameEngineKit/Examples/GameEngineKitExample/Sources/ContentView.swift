@@ -12,6 +12,7 @@ let kActivities: [Activity] = [
     // ? dragAndDrop:   activity-dragAndDrop-<number_of_zones>-<number_of_answers>-<answer_type>
 
     ContentKit.decodeActivity("activity-touchToSelect-one_right_answer-colors"),
+    ContentKit.decodeActivity("activity-touchToSelect-one_right_answer-colors-shuffle_choices"),
     ContentKit.decodeActivity("activity-touchToSelect-one_right_answer-image"),
     ContentKit.decodeActivity("activity-touchToSelect-one_right_answer-mixed"),
     // ContentKit.decodeActivity("activity-touchToSelect-multipe_right_answers-mixed"),

@@ -6,9 +6,9 @@ import Foundation
 
 extension GameplaySelectAllRightAnswers where ChoiceModelType == GameplaySelectionChoiceModel {
 
-    convenience init(choices: [GameplaySelectionChoiceModel]) {
+    convenience init(choices: [GameplaySelectionChoiceModel], shuffle: Bool = false) {
         self.init()
-        self.choices.send(choices)
+        self.choices.send(shuffle ? choices.shuffled() : choices)
         self.rightAnswers = choices.filter { $0.choice.isRightAnswer }
         self.state.send(.playing)
     }

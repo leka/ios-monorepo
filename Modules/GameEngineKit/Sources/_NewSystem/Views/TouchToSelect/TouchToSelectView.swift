@@ -19,8 +19,8 @@ public struct TouchToSelectView: View {
 
     @StateObject private var viewModel: SelectionViewViewModel
 
-    public init(choices: [SelectionChoice]) {
-        self._viewModel = StateObject(wrappedValue: SelectionViewViewModel(choices: choices))
+    public init(choices: [SelectionChoice], shuffle: Bool = false) {
+        self._viewModel = StateObject(wrappedValue: SelectionViewViewModel(choices: choices, shuffle: shuffle))
     }
 
     public init(exercise: Exercise, data: ExerciseSharedData? = nil) {
@@ -29,7 +29,8 @@ public struct TouchToSelectView: View {
         }
 
         self._viewModel = StateObject(
-            wrappedValue: SelectionViewViewModel(choices: payload.choices, shared: data))
+            wrappedValue: SelectionViewViewModel(
+                choices: payload.choices, shuffle: payload.shuffleChoices, shared: data))
     }
 
     public var body: some View {
