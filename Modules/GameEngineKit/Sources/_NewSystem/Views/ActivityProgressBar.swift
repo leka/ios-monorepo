@@ -8,6 +8,7 @@ import SwiftUI
 struct ActivityProgressBar: View {
 
     @ObservedObject var viewModel: ActivityViewViewModel
+    let height: CGFloat = 30
 
     var body: some View {
         HStack(spacing: 0) {
@@ -36,7 +37,7 @@ struct ActivityProgressBar: View {
                         }
                     }
                 }
-                .frame(height: 30)
+                .frame(height: height)
                 .background(DesignKitAsset.Colors.progressBar.swiftUIColor, in: Capsule())
 
                 if sequenceIndex < viewModel.totalSequences - 1 {
