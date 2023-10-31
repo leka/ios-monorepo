@@ -22,11 +22,8 @@ public struct ActivityView: View {
                     VStack(spacing: 15) {
                         ActivityProgressBar(viewModel: viewModel)
 
-                        Text(viewModel.currentExercise.instructions)
-                            .font(.title)
-                            .padding(40)
-                            .background(.gray)
-                            .cornerRadius(10)
+                        ExerciseInstructionsButton(instructions: viewModel.currentExercise.instructions)
+                            .id(viewModel.currentExerciseIndexInSequence)
                     }
 
                     VStack {
