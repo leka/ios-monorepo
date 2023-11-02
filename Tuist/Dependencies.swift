@@ -5,7 +5,7 @@
 import ProjectDescription
 
 let dependencies = Dependencies(
-    swiftPackageManager: [
+    swiftPackageManager: SwiftPackageManagerDependencies([
         .remote(
             url: "https://github.com/jpsim/Yams",
             requirement: .exact("5.0.6")
@@ -42,6 +42,6 @@ let dependencies = Dependencies(
             url: "https://github.com/mxcl/Version",
             requirement: .exact("2.0.1")
         ),
-    ],
+    ]),
     platforms: [.iOS, .macOS]
 )
