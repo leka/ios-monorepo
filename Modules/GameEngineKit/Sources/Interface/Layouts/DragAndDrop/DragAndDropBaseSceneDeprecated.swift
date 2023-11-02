@@ -6,12 +6,12 @@ import Combine
 import SpriteKit
 import SwiftUI
 
-class DragAndDropBaseScene: SKScene {
+class DragAndDropBaseSceneDeprecated: SKScene {
     var viewModel: DragAndDropZoneViewModel
     var hints: Bool
     var biggerSide: CGFloat = 130
-    var selectedNodes: [UITouch: DraggableImageAnswerNode] = [:]
-    var playedNode: DraggableImageAnswerNode?
+    var selectedNodes: [UITouch: DraggableImageAnswerNodeDeprecated] = [:]
+    var playedNode: DraggableImageAnswerNodeDeprecated?
     var dropZonesNode: [SKSpriteNode] = []
     private var spacer: CGFloat = .zero
     private var defaultPosition = CGPoint.zero
@@ -62,11 +62,11 @@ class DragAndDropBaseScene: SKScene {
 
     @MainActor func layoutAnswers() {
         for choice in viewModel.choices {
-            let draggableImageAnswerNode = DraggableImageAnswerNode(
+            let draggableImageAnswerNode = DraggableImageAnswerNodeDeprecated(
                 choice: choice,
                 position: self.defaultPosition
             )
-            let draggableImageShadowNode = DraggableImageShadowNode(
+            let draggableImageShadowNode = DraggableImageShadowNodeDeprecated(
                 draggableImageAnswerNode: draggableImageAnswerNode
             )
 
@@ -131,7 +131,7 @@ class DragAndDropBaseScene: SKScene {
         }
     }
 
-    func goodAnswerBehavior(_ node: DraggableImageAnswerNode) {
+    func goodAnswerBehavior(_ node: DraggableImageAnswerNodeDeprecated) {
         node.scaleForMax(sizeOf: biggerSide * 0.8)
         node.zPosition = 10
         node.isDraggable = false
@@ -143,7 +143,7 @@ class DragAndDropBaseScene: SKScene {
         }
     }
 
-    func wrongAnswerBehavior(_ node: DraggableImageAnswerNode) {
+    func wrongAnswerBehavior(_ node: DraggableImageAnswerNodeDeprecated) {
         let moveAnimation: SKAction = SKAction.move(to: node.defaultPosition!, duration: 0.25)
             .moveAnimation(.easeOut)
         let group: DispatchGroup = DispatchGroup()
@@ -184,7 +184,7 @@ class DragAndDropBaseScene: SKScene {
     override func touchesBegan(_ touches: Set<UITouch>, with: UIEvent?) {
         for touch in touches {
             let location = touch.location(in: self)
-            if let node = self.atPoint(location) as? DraggableImageAnswerNode {
+            if let node = self.atPoint(location) as? DraggableImageAnswerNodeDeprecated {
                 for choice in viewModel.choices where node.name == choice.value && node.isDraggable {
                     selectedNodes[touch] = node
                     onDragAnimation(node)

@@ -104,10 +104,10 @@ public class StepViewViewModel: ObservableObject {
                 ListenSixChoicesView(
                     gameplay: currentGameplay as! SelectionGameplayProtocol, audioRecording: audioRecording)
             case .dragAndDropOneZoneOneOrMoreChoices(let hints):
-                DragAndDropOneZoneOneOrMoreChoicesView(
+                DragAndDropOneZoneOneOrMoreChoicesViewDeprecated(
                     gameplay: currentGameplay as! DragAndDropGameplayProtocol, hints: hints)
             case .dragAndDropTwoZonesOneOrMoreChoices(let hints):
-                DragAndDropTwoZonesOneOrMoreChoicesView(
+                DragAndDropTwoZonesOneOrMoreChoicesViewDeprecated(
                     gameplay: currentGameplay as! DragAndDropGameplayProtocol, hints: hints)
         }
     }

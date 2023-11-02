@@ -4,7 +4,7 @@
 
 import SpriteKit
 
-class DraggableImageAnswerNode: SKSpriteNode {
+class DraggableImageAnswerNodeDeprecated: SKSpriteNode {
 
     var isDraggable: Bool = true
     var defaultPosition: CGPoint?
