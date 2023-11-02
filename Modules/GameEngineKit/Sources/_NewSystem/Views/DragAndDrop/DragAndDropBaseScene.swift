@@ -2,25 +2,30 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import ContentKit
 import Combine
 import SpriteKit
 import SwiftUI
 
 class DragAndDropBaseScene: SKScene {
-    var viewModel: DragAndDropZoneViewModel
+    var viewModel: DragAndDropViewViewModel
     var hints: Bool
+    var dropZoneA: DropZoneDetails
+    var dropZoneB: DropZoneDetails?
     var biggerSide: CGFloat = 130
     var selectedNodes: [UITouch: DraggableImageAnswerNode] = [:]
     var playedNode: DraggableImageAnswerNode?
-    var dropZonesNode: [SKSpriteNode] = []
+    var dropZoneNodes: [SKSpriteNode] = []
     private var spacer: CGFloat = .zero
     private var defaultPosition = CGPoint.zero
     private var expectedItemsNodes: [String: [SKSpriteNode]] = [:]
     private var cancellables: Set<AnyCancellable> = []
 
-    init(viewModel: DragAndDropZoneViewModel, hints: Bool) {
+    init(viewModel: DragAndDropViewViewModel, hints: Bool, dropZoneA: DropZoneDetails, dropZoneB: DropZoneDetails? = nil) {
         self.viewModel = viewModel
         self.hints = hints
+        self.dropZoneA = dropZoneA
+        self.dropZoneB = dropZoneB
         super.init(size: CGSize.zero)
         self.spacer = size.width / CGFloat(viewModel.choices.count + 1)
         self.defaultPosition = CGPoint(x: spacer, y: self.size.height)
@@ -37,23 +42,26 @@ class DragAndDropBaseScene: SKScene {
         self.removeAllChildren()
         self.removeAllActions()
 
+
         setFirstAnswerPosition()
-        layoutDropZones(dropZones: viewModel.dropZones)
+        if let dropZoneB = dropZoneB {
+            layoutDropZones(dropZones: dropZoneA, dropZoneB)
+        } else {
+            layoutDropZones(dropZones: dropZoneA)
+        }
         getExpectedItems()
         layoutAnswers()
     }
 
     func subscribeToChoicesUpdates() {
-        self.viewModel.$dropZones
+        self.viewModel.$choices
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: {
-                for dropZone in $0 {
-                    for choice in dropZone.choices where choice.value == self.playedNode?.name {
-                        if choice.status == .rightAnswer {
-                            self.goodAnswerBehavior(self.playedNode!)
-                        } else if choice.status == .wrongAnswer {
-                            self.wrongAnswerBehavior(self.playedNode!)
-                        }
+                for gameplayChoiceModel in $0 where gameplayChoiceModel.choice.value == self.playedNode?.name {
+                    if gameplayChoiceModel.state == .rightAnswer {
+                        self.goodAnswerBehavior(self.playedNode!)
+                    } else if gameplayChoiceModel.state == .wrongAnswer {
+                        self.wrongAnswerBehavior(self.playedNode!)
                     }
                 }
             })
@@ -61,9 +69,9 @@ class DragAndDropBaseScene: SKScene {
     }
 
     @MainActor func layoutAnswers() {
-        for choice in viewModel.choices {
+        for gameplayChoiceModel in viewModel.choices {
             let draggableImageAnswerNode = DraggableImageAnswerNode(
-                choice: choice,
+                choice: gameplayChoiceModel.choice,
                 position: self.defaultPosition
             )
             let draggableImageShadowNode = DraggableImageShadowNode(
@@ -102,33 +110,31 @@ class DragAndDropBaseScene: SKScene {
         self.defaultPosition.x += spacer
     }
 
-    func layoutDropZones(dropZones: [DragAndDropZoneModel]) {
-        // To specify in final classes
+    func layoutDropZones(dropZones: DropZoneDetails...) {
+        fatalError("layoutDropZones(dropZones:) has not been implemented")
     }
 
     func getExpectedItems() {
-        for dropZone in viewModel.dropZones {
-            for choice in dropZone.choices {
-                let expectedItem = choice.value
-                let expectedNode = SKSpriteNode()
+        let index = viewModel.choices.firstIndex(where: { $0.choice.dropZone == .zoneA })!
+        let gameplayChoiceModel = viewModel.choices[index]
+        let expectedItem = gameplayChoiceModel.choice.value
+        let expectedNode = SKSpriteNode()
 
-                guard hints else {
-                    expectedNode.name = expectedItem
-                    (expectedItemsNodes[dropZone.value, default: []]).append(expectedNode)
-                    return
-                }
-                let texture = SKTexture(imageNamed: expectedItem)
-                let action = SKAction.setTexture(texture, resize: true)
-                expectedNode.run(action)
-                expectedNode.name = expectedItem
-                expectedNode.texture = texture
-                expectedNode.scaleForMax(sizeOf: biggerSide * 0.8)
-                expectedNode.position = CGPoint(x: dropZonesNode[0].position.x + 80, y: 110)
-                (expectedItemsNodes[dropZone.value, default: []]).append(expectedNode)
-
-                addChild(expectedNode)
-            }
+        guard hints else {
+            expectedNode.name = expectedItem
+            (expectedItemsNodes[dropZoneA.value, default: []]).append(expectedNode)
+            return
         }
+        let texture = SKTexture(image: UIImage(named: expectedItem)!)
+        let action = SKAction.setTexture(texture, resize: true)
+        expectedNode.run(action)
+        expectedNode.name = expectedItem
+        expectedNode.texture = texture
+        expectedNode.scaleForMax(sizeOf: biggerSide * 0.8)
+        expectedNode.position = CGPoint(x: dropZoneNodes[0].position.x + 80, y: 110)
+        (expectedItemsNodes[dropZoneA.value, default: []]).append(expectedNode)
+
+        addChild(expectedNode)
     }
 
     func goodAnswerBehavior(_ node: DraggableImageAnswerNode) {
@@ -136,7 +142,7 @@ class DragAndDropBaseScene: SKScene {
         node.zPosition = 10
         node.isDraggable = false
         onDropAction(node)
-        if viewModel.gameplay.state.value == .finished {
+        if viewModel.exercicesSharedData.state == .completed {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [self] in
                 self.reset()
             }
@@ -185,7 +191,7 @@ class DragAndDropBaseScene: SKScene {
         for touch in touches {
             let location = touch.location(in: self)
             if let node = self.atPoint(location) as? DraggableImageAnswerNode {
-                for choice in viewModel.choices where node.name == choice.value && node.isDraggable {
+                for gameplayChoiceModel in viewModel.choices where node.name == gameplayChoiceModel.choice.value && node.isDraggable {
                     selectedNodes[touch] = node
                     onDragAnimation(node)
                     node.zPosition += 100
@@ -216,10 +222,18 @@ class DragAndDropBaseScene: SKScene {
             }
             playedNode = selectedNodes[touch]!
             playedNode!.scaleForMax(sizeOf: biggerSide)
-            let choice = viewModel.choices.first(where: { $0.value == playedNode!.name })
-            for dropZoneNode in dropZonesNode where playedNode!.fullyContains(bounds: dropZoneNode.frame) {
-                viewModel.onChoiceTapped(choice: choice!, dropZoneName: dropZoneNode.name!)
+            let gameplayChoiceModel = viewModel.choices.first(where: { $0.choice.value == playedNode!.name })
+
+            if playedNode!.fullyContains(bounds: dropZoneNodes[0].frame) {
+                viewModel.onChoiceTapped(choice: gameplayChoiceModel!, dropZone: .zoneA)
                 break
+            }
+
+            if dropZoneB != nil {
+                if playedNode!.fullyContains(bounds: dropZoneNodes[1].frame) {
+                    viewModel.onChoiceTapped(choice: gameplayChoiceModel!, dropZone: .zoneB)
+                    break
+                }
             }
 
             wrongAnswerBehavior(playedNode!)

@@ -2,6 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import ContentKit
 import Foundation
 
 extension GameplaySelectAllRightAnswers where ChoiceModelType == GameplayDragAndDropChoiceModel {
@@ -9,15 +10,24 @@ extension GameplaySelectAllRightAnswers where ChoiceModelType == GameplayDragAnd
     convenience init(choices: [GameplayDragAndDropChoiceModel]) {
         self.init()
         self.choices.send(choices)
+        self.rightAnswers = choices.filter { $0.choice.dropZone != .none }
+        self.state.send(.playing)
     }
 
-    func process(_ choice: ChoiceModelType) {
-        if choice.choice.dropZone == .zoneA {
-            // do something
-            log.info("Right answer")
+    func process(_ choice: ChoiceModelType, _ dropZone: DragAndDropChoice.ChoiceDropZone) {
+        guard rightAnswers.isNotEmpty else {
+            return
+        }
+
+        if choice.choice.dropZone == dropZone {
+            updateChoice(choice, state: .rightAnswer)
+            rightAnswers.removeAll { $0.id == choice.id }
         } else {
-            // do something
-            log.info("Wrong answer")
+            updateChoice(choice, state: .wrongAnswer)
+        }
+
+        if rightAnswers.isEmpty {
+            state.send(.completed)
         }
     }
 

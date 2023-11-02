@@ -5,7 +5,7 @@
 import SpriteKit
 import SwiftUI
 
-public struct DragAndDropOneZoneOneOrMoreChoicesView: View {
+public struct DragAndDropTwoZonesOneOrMoreChoicesViewDeprecated: View {
     @StateObject private var viewModel: DragAndDropZoneViewModel
     @State private var scene: SKScene = SKScene()
     let hints: Bool
@@ -23,14 +23,14 @@ public struct DragAndDropOneZoneOneOrMoreChoicesView: View {
             )
             .frame(width: proxy.size.width, height: proxy.size.height)
             .onAppear {
-                scene = DragAndDropOneZoneOneOrMoreChoicesScene(viewModel: viewModel, hints: hints)
+                scene = DragAndDropTwoZonesOneOrMoreChoicesSceneDeprecated(viewModel: viewModel, hints: hints)
             }
         }
         .edgesIgnoringSafeArea(.horizontal)
     }
 
     private func makeScene(size: CGSize) -> SKScene {
-        guard let finalScene = scene as? DragAndDropBaseScene else {
+        guard let finalScene = scene as? DragAndDropBaseSceneDeprecated else {
             return SKScene()
         }
         finalScene.size = CGSize(width: size.width, height: size.height)

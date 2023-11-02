@@ -6,7 +6,7 @@ import Combine
 import SpriteKit
 import SwiftUI
 
-final class DragAndDropOneZoneOneOrMoreChoicesScene: DragAndDropBaseScene {
+final class DragAndDropOneZoneOneOrMoreChoicesSceneDeprecated: DragAndDropBaseSceneDeprecated {
     override func layoutDropZones(dropZones: [DragAndDropZoneModel]) {
         let dropZoneNode = SKSpriteNode()
         let dropZoneSize = CGSize(width: 380, height: 280)

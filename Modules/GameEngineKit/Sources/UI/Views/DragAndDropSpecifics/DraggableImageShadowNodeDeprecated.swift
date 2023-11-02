@@ -4,9 +4,9 @@
 
 import SpriteKit
 
-class DraggableImageShadowNode: SKSpriteNode {
+class DraggableImageShadowNodeDeprecated: SKSpriteNode {
 
-    init(draggableImageAnswerNode: DraggableImageAnswerNode) {
+    init(draggableImageAnswerNode: DraggableImageAnswerNodeDeprecated) {
         super
             .init(
                 texture: draggableImageAnswerNode.texture, color: draggableImageAnswerNode.color,
