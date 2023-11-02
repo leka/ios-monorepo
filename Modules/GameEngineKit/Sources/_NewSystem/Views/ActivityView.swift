@@ -93,6 +93,13 @@ public struct ActivityView: View {
                     data: viewModel.currentExerciseSharedData
                 )
                 .id(viewModel.currentExerciseIndexInSequence)
+
+            case .dragAndDrop:
+                DragAndDropView(
+                    exercise: viewModel.currentExercise,
+                    data: viewModel.currentExerciseSharedData
+                )
+                .id(viewModel.currentExerciseIndexInSequence)
         }
     }
 

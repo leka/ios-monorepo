@@ -55,6 +55,7 @@ public struct Exercise: Codable {
         case touchToSelect
         case listenThenTouchToSelect
         case observeThenTouchToSelect
+        case dragAndDrop
     }
 }
 
@@ -66,13 +67,13 @@ public enum ExercisePayload: Codable {
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CustomKeys.self)
 
-        // ? Drag and drop
-        // TODO(@ladislas): not working, implement real logic
         if container.allKeys.contains(.dropZoneA) {
-            if let payload = try? container.decode(DragAndDropPayload.self, forKey: .dropZoneA) {
-                self = .dragAndDrop(payload)
-                return
-            }
+            let dropZoneA = try container.decode(DropZoneDetails.self, forKey: .dropZoneA)
+            let dropZoneB = try container.decodeIfPresent(DropZoneDetails.self, forKey: .dropZoneB)
+            let choices = try container.decode([DragAndDropChoice].self, forKey: .choices)
+
+            self = .dragAndDrop(DragAndDropPayload(dropZoneA: dropZoneA, dropZoneB: dropZoneB, choices: choices))
+            return
         }
 
         // ? Selection
@@ -102,7 +103,7 @@ public enum ExercisePayload: Codable {
     }
 
     private enum CustomKeys: String, CodingKey {
-        case choices, dropZoneA, payload, media
+        case choices, dropZoneA, dropZoneB, payload, media
         case shuffleChoices = "shuffle_choices"
     }
 }
@@ -156,7 +157,7 @@ public struct DropZoneDetails: Codable {
 public struct DragAndDropChoice: Codable {
     public let value: String
     public let type: UIElementType
-    public let dropZone: ChoiceDropZone
+    public let dropZone: ChoiceDropZone?
 
     public enum ChoiceDropZone: String, Codable {
         case zoneA

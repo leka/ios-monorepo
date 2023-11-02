@@ -24,7 +24,7 @@ let kActivities: [Activity] = [
     ContentKit.decodeActivity("activity-listenThenTouchToSelect-mixed-images"),
     ContentKit.decodeActivity("activity-observeThenTouchToSelect-mixed-colors"),
 
-    // ContentKit.decodeActivity("activity-dragAndDrop-one_zone-one_right_answer-image"),
+    ContentKit.decodeActivity("activity-dragAndDrop-one_zone-one_right_answer-image"),
     // ContentKit.decodeActivity("activity-dragAndDrop-one_zone-one_right_answer-colors"),
     // ContentKit.decodeActivity("activity-dragAndDrop-one_zone-one_right_answer-mixed"),
     // ContentKit.decodeActivity("activity-dragAndDrop-one_zone-multiple_right_answer-images"),
@@ -34,7 +34,7 @@ let kActivities: [Activity] = [
     // ContentKit.decodeActivity("activity-dragAndDrop-two_zones-one_right_answer-image"),
     // ContentKit.decodeActivity("activity-dragAndDrop-two_zones-one_right_answer-colors"),
     // ContentKit.decodeActivity("activity-dragAndDrop-two_zones-one_right_answer-mixed"),
-    // ContentKit.decodeActivity("activity-dragAndDrop-two_zones-multiple_right_answer-images"),
+    ContentKit.decodeActivity("activity-dragAndDrop-two_zones-multiple_right_answers-images"),
     // ContentKit.decodeActivity("activity-dragAndDrop-two_zones-multiple_right_answer-colors"),
     // ContentKit.decodeActivity("activity-dragAndDrop-two_zones-multiple_right_answer-mixed"),
 
