@@ -2,8 +2,8 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
-import ContentKit
 import Combine
+import ContentKit
 import SpriteKit
 import SwiftUI
 
@@ -14,6 +14,7 @@ class DragAndDropBaseScene: SKScene {
     var dropZoneB: DropZoneDetails?
     var biggerSide: CGFloat = 130
     var selectedNodes: [UITouch: DraggableImageAnswerNode] = [:]
+    var answerNodes: [DraggableImageAnswerNode] = []
     var playedNode: DraggableImageAnswerNode?
     var dropZoneNodes: [SKSpriteNode] = []
     private var spacer: CGFloat = .zero
@@ -21,7 +22,9 @@ class DragAndDropBaseScene: SKScene {
     private var expectedItemsNodes: [String: [SKSpriteNode]] = [:]
     private var cancellables: Set<AnyCancellable> = []
 
-    init(viewModel: DragAndDropViewViewModel, hints: Bool, dropZoneA: DropZoneDetails, dropZoneB: DropZoneDetails? = nil) {
+    init(
+        viewModel: DragAndDropViewViewModel, hints: Bool, dropZoneA: DropZoneDetails, dropZoneB: DropZoneDetails? = nil
+    ) {
         self.viewModel = viewModel
         self.hints = hints
         self.dropZoneA = dropZoneA
@@ -42,7 +45,6 @@ class DragAndDropBaseScene: SKScene {
         self.removeAllChildren()
         self.removeAllActions()
 
-
         setFirstAnswerPosition()
         if let dropZoneB = dropZoneB {
             layoutDropZones(dropZones: dropZoneA, dropZoneB)
@@ -51,6 +53,12 @@ class DragAndDropBaseScene: SKScene {
         }
         getExpectedItems()
         layoutAnswers()
+    }
+
+    func exerciseCompletedBehavior() {
+        for node in answerNodes {
+            node.isDraggable = false
+        }
     }
 
     func subscribeToChoicesUpdates() {
@@ -81,6 +89,8 @@ class DragAndDropBaseScene: SKScene {
             normalizeAnswerNodesSize([draggableImageAnswerNode, draggableImageShadowNode])
             bindNodesToSafeArea([draggableImageAnswerNode, draggableImageShadowNode])
             setNextAnswerPosition()
+
+            answerNodes.append(draggableImageAnswerNode)
 
             addChild(draggableImageShadowNode)
             addChild(draggableImageAnswerNode)
@@ -144,7 +154,7 @@ class DragAndDropBaseScene: SKScene {
         onDropAction(node)
         if viewModel.exercicesSharedData.state == .completed {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [self] in
-                self.reset()
+                exerciseCompletedBehavior()
             }
         }
     }
@@ -154,6 +164,7 @@ class DragAndDropBaseScene: SKScene {
             .moveAnimation(.easeOut)
         let group: DispatchGroup = DispatchGroup()
         group.enter()
+        node.scaleForMax(sizeOf: biggerSide)
         node.run(
             moveAnimation,
             completion: {
@@ -191,7 +202,8 @@ class DragAndDropBaseScene: SKScene {
         for touch in touches {
             let location = touch.location(in: self)
             if let node = self.atPoint(location) as? DraggableImageAnswerNode {
-                for gameplayChoiceModel in viewModel.choices where node.name == gameplayChoiceModel.choice.value && node.isDraggable {
+                for gameplayChoiceModel in viewModel.choices
+                where node.name == gameplayChoiceModel.choice.value && node.isDraggable {
                     selectedNodes[touch] = node
                     onDragAnimation(node)
                     node.zPosition += 100
