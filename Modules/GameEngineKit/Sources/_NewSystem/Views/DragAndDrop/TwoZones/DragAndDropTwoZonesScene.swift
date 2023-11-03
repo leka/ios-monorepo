@@ -2,28 +2,36 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
-import ContentKit
 import SpriteKit
-import SwiftUI
 
 final class DragAndDropTwoZonesScene: DragAndDropBaseScene {
-    override func layoutDropZones(dropZones: DropZoneDetails...) {
-        // TODO(@hugo): Add type declaration
-        let dropZoneSpacer = size.width / 4
-        var dropZonePosition = dropZoneSpacer
-        for dropZone in dropZones {
-            let dropZoneNode = SKSpriteNode()
-            // TODO(@hugo): Adapt size to final images given by the Design team
-            let dropZoneSize = CGSize(width: 280, height: 280)
-            dropZoneNode.size = dropZoneSize
-            dropZoneNode.texture = SKTexture(imageNamed: dropZone.value)
-            dropZoneNode.position = CGPoint(x: dropZonePosition, y: dropZoneSize.height / 2)
-            dropZoneNode.name = dropZone.value
-            addChild(dropZoneNode)
-
-            dropZoneNodes.append(dropZoneNode)
-
-            dropZonePosition += 2 * dropZoneSpacer
+    override func layoutDropZones() {
+        guard let unwrappedDropZoneB = dropZoneB else {
+            fatalError("No dropZoneB provided")
         }
+
+        // TODO(@hugo): Add type declaration
+        let dropZoneNodeA = SKSpriteNode()
+        let dropZoneNodeB = SKSpriteNode()
+
+        // TODO(@hugo): Adapt size to final images given by the Design team
+        let dropZoneSize = CGSize(width: 280, height: 280)
+        dropZoneNodeA.size = dropZoneSize
+        dropZoneNodeB.size = dropZoneSize
+
+        dropZoneNodeA.texture = SKTexture(imageNamed: dropZoneA.details.value)
+        dropZoneNodeB.texture = SKTexture(imageNamed: unwrappedDropZoneB.details.value)
+
+        let dropZonePosition = size.width / 4
+        dropZoneNodeA.position = CGPoint(x: dropZonePosition, y: dropZoneSize.height / 2)
+        dropZoneNodeB.position = CGPoint(x: dropZonePosition * 3, y: dropZoneSize.height / 2)
+
+        dropZoneNodeA.name = dropZoneA.details.value
+        dropZoneNodeB.name = unwrappedDropZoneB.details.value
+        addChild(dropZoneNodeA)
+        addChild(dropZoneNodeB)
+
+        dropZoneA.node = dropZoneNodeA
+        dropZoneB?.node = dropZoneNodeB
     }
 }

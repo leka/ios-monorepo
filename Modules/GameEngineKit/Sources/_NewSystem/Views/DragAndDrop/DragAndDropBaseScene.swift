@@ -7,16 +7,21 @@ import ContentKit
 import SpriteKit
 import SwiftUI
 
+struct DropZoneNode {
+    let details: DropZoneDetails
+    var node: SKSpriteNode = SKSpriteNode()
+    let zone: DragAndDropChoice.ChoiceDropZone
+}
+
 class DragAndDropBaseScene: SKScene {
     var viewModel: DragAndDropViewViewModel
-    var hints: Bool
-    var dropZoneA: DropZoneDetails
-    var dropZoneB: DropZoneDetails?
-    var biggerSide: CGFloat = 130
-    var selectedNodes: [UITouch: DraggableImageAnswerNode] = [:]
-    var answerNodes: [DraggableImageAnswerNode] = []
-    var playedNode: DraggableImageAnswerNode?
-    var dropZoneNodes: [SKSpriteNode] = []
+    var dropZoneA: DropZoneNode
+    var dropZoneB: DropZoneNode?
+    private var hints: Bool
+    private var biggerSide: CGFloat = 130
+    private var selectedNodes: [UITouch: DraggableImageAnswerNode] = [:]
+    private var answerNodes: [DraggableImageAnswerNode] = []
+    private var playedNode: DraggableImageAnswerNode?
     private var spacer: CGFloat = .zero
     private var defaultPosition = CGPoint.zero
     private var expectedItemsNodes: [String: [SKSpriteNode]] = [:]
@@ -27,8 +32,10 @@ class DragAndDropBaseScene: SKScene {
     ) {
         self.viewModel = viewModel
         self.hints = hints
-        self.dropZoneA = dropZoneA
-        self.dropZoneB = dropZoneB
+        self.dropZoneA = DropZoneNode(details: dropZoneA, zone: .zoneA)
+        if let dropZoneB = dropZoneB {
+            self.dropZoneB = DropZoneNode(details: dropZoneB, zone: .zoneB)
+        }
         super.init(size: CGSize.zero)
         self.spacer = size.width / CGFloat(viewModel.choices.count + 1)
         self.defaultPosition = CGPoint(x: spacer, y: self.size.height)
@@ -46,11 +53,7 @@ class DragAndDropBaseScene: SKScene {
         self.removeAllActions()
 
         setFirstAnswerPosition()
-        if let dropZoneB = dropZoneB {
-            layoutDropZones(dropZones: dropZoneA, dropZoneB)
-        } else {
-            layoutDropZones(dropZones: dropZoneA)
-        }
+        layoutDropZones()
         getExpectedItems()
         layoutAnswers()
     }
@@ -120,7 +123,7 @@ class DragAndDropBaseScene: SKScene {
         self.defaultPosition.x += spacer
     }
 
-    func layoutDropZones(dropZones: DropZoneDetails...) {
+    func layoutDropZones() {
         fatalError("layoutDropZones(dropZones:) has not been implemented")
     }
 
@@ -132,7 +135,7 @@ class DragAndDropBaseScene: SKScene {
 
         guard hints else {
             expectedNode.name = expectedItem
-            (expectedItemsNodes[dropZoneA.value, default: []]).append(expectedNode)
+            (expectedItemsNodes[dropZoneA.details.value, default: []]).append(expectedNode)
             return
         }
         let texture = SKTexture(image: UIImage(named: expectedItem)!)
@@ -141,8 +144,8 @@ class DragAndDropBaseScene: SKScene {
         expectedNode.name = expectedItem
         expectedNode.texture = texture
         expectedNode.scaleForMax(sizeOf: biggerSide * 0.8)
-        expectedNode.position = CGPoint(x: dropZoneNodes[0].position.x + 80, y: 110)
-        (expectedItemsNodes[dropZoneA.value, default: []]).append(expectedNode)
+        expectedNode.position = CGPoint(x: dropZoneA.node.position.x + 80, y: 110)
+        (expectedItemsNodes[dropZoneA.details.value, default: []]).append(expectedNode)
 
         addChild(expectedNode)
     }
@@ -245,14 +248,14 @@ class DragAndDropBaseScene: SKScene {
             playedNode!.scaleForMax(sizeOf: biggerSide)
             let gameplayChoiceModel = viewModel.choices.first(where: { $0.choice.value == playedNode!.name })
 
-            if playedNode!.fullyContains(bounds: dropZoneNodes[0].frame) {
-                viewModel.onChoiceTapped(choice: gameplayChoiceModel!, dropZone: .zoneA)
+            if playedNode!.fullyContains(bounds: dropZoneA.node.frame) {
+                viewModel.onChoiceTapped(choice: gameplayChoiceModel!, dropZone: dropZoneA.zone)
                 break
             }
 
-            if dropZoneB != nil {
-                if playedNode!.fullyContains(bounds: dropZoneNodes[1].frame) {
-                    viewModel.onChoiceTapped(choice: gameplayChoiceModel!, dropZone: .zoneB)
+            if let dropZoneB = dropZoneB {
+                if playedNode!.fullyContains(bounds: dropZoneB.node.frame) {
+                    viewModel.onChoiceTapped(choice: gameplayChoiceModel!, dropZone: dropZoneB.zone)
                     break
                 }
             }
