@@ -66,6 +66,10 @@ let package = Package(
             url: "https://github.com/SvenTiigi/YouTubePlayerKit",
             exact: "1.8.0"
         ),
+        .package(
+            url: "https://github.com/lukepistrol/SFSymbolsMacro",
+            exact: "0.5.2"
+        ),
     ]
 )
 

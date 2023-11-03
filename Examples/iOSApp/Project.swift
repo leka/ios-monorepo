@@ -11,5 +11,6 @@ let project = Project.app(
     name: "iOSApp",
     dependencies: [
         .project(target: "Module", path: Path("../../Examples/Module")),
+        .external(name: "SFSymbolsMacro"),
     ]
 )
