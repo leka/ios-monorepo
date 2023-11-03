@@ -175,6 +175,7 @@ class DragAndDropBaseScene: SKScene {
         group.notify(queue: .main) {
             self.onDropAction(node)
         }
+        disableWrongAnswer(node)
     }
 
     func onDragAnimation(_ node: SKSpriteNode) {
@@ -191,6 +192,14 @@ class DragAndDropBaseScene: SKScene {
         node.zRotation = 0
         node.removeAllActions()
         selectedNodes = [:]
+    }
+
+    private func disableWrongAnswer(_ node: DraggableImageAnswerNode) {
+        let gameplayChoiceModel = viewModel.choices.first(where: { $0.choice.value == node.name })!
+        if gameplayChoiceModel.choice.dropZone == nil {
+            node.colorBlendFactor = 0.4
+            node.isDraggable = false
+        }
     }
 
     override func didMove(to view: SKView) {
