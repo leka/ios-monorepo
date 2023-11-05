@@ -1,7 +1,24 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "default_string" : {
 
+    },
+    "ns_localized_string_NO_default" : {
+
+    },
+    "ns_localized_string_WITH_default" : {
+      "comment" : "NSLocalizedString with default",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "👋 DEFAULT ns_localized_string_WITH_default"
+          }
+        }
+      }
+    }
   },
   "version" : "1.0"
 }
