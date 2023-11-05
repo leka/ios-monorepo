@@ -4,6 +4,31 @@
     "default_string" : {
 
     },
+    "fun_localized_interpolation" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "👋 DEFAULT fun_localized_interpolation - test: %1$@ - int: %2$lld - float: %3$f "
+          }
+        }
+      }
+    },
+    "func_localized_NO_default" : {
+
+    },
+    "func_localized_WITH_default" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "👋 DEFAULT func_localized_WITH_default"
+          }
+        }
+      }
+    },
     "ns_localized_string_NO_default" : {
 
     },
