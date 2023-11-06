@@ -2,7 +2,20 @@
   "sourceLanguage" : "en",
   "strings" : {
     "default_string" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🇬🇧 ADDED default_string"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🇫🇷 ADDED default_string"
+          }
+        }
+      }
     },
     "fun_localized_interpolation" : {
       "extractionState" : "extracted_with_value",
@@ -12,11 +25,30 @@
             "state" : "new",
             "value" : "👋 DEFAULT fun_localized_interpolation - test: %1$@ - int: %2$lld - float: %3$f "
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🇫🇷 ADDED fun_localized_interpolation - test: %1$@ - int: %2$lld - float: %3$f "
+          }
         }
       }
     },
     "func_localized_NO_default" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🇬🇧 ADDED func_localized_NO_default"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🇫🇷 ADDED func_localized_NO_default"
+          }
+        }
+      }
     },
     "func_localized_WITH_default" : {
       "extractionState" : "extracted_with_value",
@@ -26,11 +58,30 @@
             "state" : "new",
             "value" : "👋 DEFAULT func_localized_WITH_default"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🇫🇷 ADDED func_localized_WITH_default"
+          }
         }
       }
     },
     "ns_localized_string_NO_default" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🇬🇧 ADDED ns_localized_string_NO_default"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🇫🇷 ADDED ns_localized_string_NO_default"
+          }
+        }
+      }
     },
     "ns_localized_string_WITH_default" : {
       "comment" : "NSLocalizedString with default",
@@ -40,6 +91,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "👋 DEFAULT ns_localized_string_WITH_default"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🇫🇷 ADDED ns_localized_string_WITH_default"
           }
         }
       }
