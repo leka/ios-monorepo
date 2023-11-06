@@ -8,9 +8,6 @@ import SwiftUI
 
 struct ContentView: View {
 
-    @EnvironmentObject var gameEngine: GameEngine
-    @EnvironmentObject var defaults: GameLayoutTemplatesDefaults
-
     @State var presentRobotConnection: Bool = false
 
     var body: some View {
@@ -33,7 +30,7 @@ struct ContentView: View {
                                 Image(systemName: "photo")
                                     .activityIconImageModifier(padding: 20)
                                 Text(activity.title)
-                                    .font(defaults.reg17)
+                                    .font(.system(size: 17, weight: .regular))
                                     .foregroundColor(.accentColor)
                                     .multilineTextAlignment(.center)
                             }
@@ -60,9 +57,9 @@ struct ContentView: View {
 
     private var navigationTitleView: some View {
         HStack(spacing: 4) {
-            Text(gameEngine.currentActivity.short.localized())
+            Text("Leka Activity UI Explorer")
         }
-        .font(defaults.semi17)
+        .font(.system(size: 17, weight: .bold))
         .foregroundColor(.accentColor)
     }
 }
@@ -70,8 +67,6 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-            .environmentObject(GameEngine())
-            .environmentObject(GameLayoutTemplatesDefaults())
             .previewInterfaceOrientation(.landscapeLeft)
     }
 }

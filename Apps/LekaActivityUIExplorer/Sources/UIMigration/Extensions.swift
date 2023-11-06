@@ -2,21 +2,8 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
-import AVFoundation
 import Foundation
 import SwiftUI
-
-// MARK: - Shape
-// Fill & Stroke with 1 modifier
-extension Shape {
-    func fill<Fill: ShapeStyle, Stroke: ShapeStyle>(
-        _ fillStyle: Fill, strokeBorder strokeStyle: Stroke, lineWidth: CGFloat = 1
-    ) -> some View {
-        self
-            .stroke(strokeStyle, lineWidth: lineWidth)
-            .background(self.fill(fillStyle))
-    }
-}
 
 // MARK: - Image
 // Used for Activities Icons && Commands/Stories buttons
@@ -36,17 +23,5 @@ extension Image {
                 .strokeBorder(LekaActivityUIExplorerAsset.Colors.btnLightBlue.swiftUIColor, lineWidth: 4)
         }
         .frame(minWidth: diameter, maxWidth: diameter)
-    }
-}
-
-// MARK: - Localized Custom Type for Yaml Translations
-// Must return "en" if Locale != "fr"
-extension LocalizedContent {
-    func localized() -> String {
-        guard let translation = (Locale.current.language.languageCode?.identifier == "fr" ? self.frFR : self.enUS)
-        else {
-            return ""
-        }
-        return translation
     }
 }

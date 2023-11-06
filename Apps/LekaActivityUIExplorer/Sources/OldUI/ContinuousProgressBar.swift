@@ -5,14 +5,14 @@
 import SwiftUI
 
 struct ContinuousProgressBar: View {
-    @EnvironmentObject var defaults: GameLayoutTemplatesDefaults
+//    @EnvironmentObject var defaults: GameLayoutTemplatesDefaults
 
     @State var progress: CGFloat
 
     var body: some View {
         GeometryReader { geometry in
             Capsule()
-                .fill(defaults.progressBarBackgroundColor)
+                .fill(LekaActivityUIExplorerAsset.Colors.progressBar.swiftUIColor)
                 .frame(height: 30)
                 .frame(width: geometry.size.width)
                 .overlay(alignment: .leading) {
@@ -29,7 +29,6 @@ struct ContinuousProgressBar: View {
 struct ContinuousProgressBar_Previews: PreviewProvider {
     static var previews: some View {
         ContinuousProgressBar(progress: 0.4)
-            .environmentObject(GameLayoutTemplatesDefaults())
             .previewInterfaceOrientation(.landscapeLeft)
     }
 }
