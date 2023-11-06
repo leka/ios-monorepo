@@ -1,0 +1,129 @@
+# Leka - iOS Monorepo
+# Copyright 2023 APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+id: 4c32759202294558a6e09cafb5703bc6
+name: Color Bingo
+description: L'objectif est de toucher la couleur affichée sur Leka
+image: activity_color_recognition_1
+sequence:
+  - exercises:
+      - instructions: Touche la couleur de Leka
+        type: selection
+        interface: robotThenTouchToSelect
+        gameplay: selectAllRightAnswers
+        payload:
+          action:
+            type: robot
+            value:
+              type: color
+              value: blue
+          choices:
+            - value: blue
+              type: color
+              isRightAnswer: true
+
+      - instructions: Touche la couleur de Leka
+        type: selection
+        interface: robotThenTouchToSelect
+        gameplay: selectAllRightAnswers
+        payload:
+          action:
+            type: robot
+            value:
+              type: color
+              value: green
+          choices:
+            - value: green
+              type: color
+              isRightAnswer: true
+            - value: blue
+              type: color
+
+      - instructions: Touche la couleur de Leka
+        type: selection
+        interface: robotThenTouchToSelect
+        gameplay: selectAllRightAnswers
+        payload:
+          action:
+            type: robot
+            value:
+              type: color
+              value: red
+          choices:
+            - value: red
+              type: color
+              isRightAnswer: true
+            - value: green
+              type: color
+            - value: blue
+              type: color
+
+      - instructions: Touche la couleur de Leka
+        type: selection
+        interface: robotThenTouchToSelect
+        gameplay: selectAllRightAnswers
+        payload:
+          action:
+            type: robot
+            value:
+              type: color
+              value: yellow
+          choices:
+            - value: yellow
+              type: color
+              isRightAnswer: true
+            - value: red
+              type: color
+            - value: green
+              type: color
+            - value: blue
+              type: color
+
+      - instructions: Touche la couleur de Leka
+        type: selection
+        interface: robotThenTouchToSelect
+        gameplay: selectAllRightAnswers
+        payload:
+          action:
+            type: robot
+            value:
+              type: color
+              value: orange
+          choices:
+            - value: orange
+              type: color
+              isRightAnswer: true
+            - value: yellow
+              type: color
+            - value: red
+              type: color
+            - value: green
+              type: color
+            - value: blue
+              type: color
+
+      - instructions: Touche la couleur de Leka
+        type: selection
+        interface: robotThenTouchToSelect
+        gameplay: selectAllRightAnswers
+        payload:
+          action:
+            type: robot
+            value:
+              type: color
+              value: yellow
+          choices:
+            - value: purple
+              type: color
+            - value: orange
+              type: color
+            - value: yellow
+              type: color
+              isRightAnswer: true
+            - value: red
+              type: color
+            - value: green
+              type: color
+            - value: blue
+              type: color
