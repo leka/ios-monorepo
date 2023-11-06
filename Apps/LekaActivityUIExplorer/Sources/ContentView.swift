@@ -8,6 +8,7 @@ import SwiftUI
 
 struct ContentView: View {
 
+    @EnvironmentObject var router: Router
     @State var presentRobotConnection: Bool = false
 
     var body: some View {
@@ -47,6 +48,7 @@ struct ContentView: View {
             .background(DesignKitAsset.Colors.lekaLightBlue.swiftUIColor)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
+                ToolbarItem(placement: .navigationBarLeading, content: { backButton })
                 ToolbarItem(placement: .principal) { navigationTitleView }
             }
         }
@@ -62,6 +64,21 @@ struct ContentView: View {
         .font(.system(size: 17, weight: .bold))
         .foregroundColor(.accentColor)
     }
+
+    private var backButton: some View {
+            Button(
+                action: {
+                    router.currentVersion = .versionSelector
+                },
+                label: {
+                    HStack(spacing: 4) {
+                        Image(systemName: "chevron.left")
+                        Text("Retour")
+                    }
+                }
+            )
+            .tint(.accentColor)
+        }
 }
 
 struct ContentView_Previews: PreviewProvider {
