@@ -21,7 +21,9 @@ extension Project {
         platform: Platform,
         product: Product = .staticLibrary,
         dependencies: [TargetDependency],
-        examples: [ModuleExample] = []
+        examples: [ModuleExample] = [],
+        options: Options = .options(),
+        schemes: [Scheme] = []
     ) -> Project {
         let frameworkTargets = makeFrameworkTargets(
             name: name,
@@ -59,7 +61,11 @@ extension Project {
         return Project(
             name: name,
             organizationName: "leka.io",
-            targets: frameworkTargets + exampleTargets)
+            options: options,
+            targets: frameworkTargets + exampleTargets,
+            schemes: schemes
+        )
+
     }
 
 }

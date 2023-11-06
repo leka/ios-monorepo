@@ -10,7 +10,9 @@ extension Project {
         name: String,
         version: String = "1.0.0",
         dependencies: [TargetDependency],
-        infoPlist: [String: InfoPlist.Value] = [:]
+        infoPlist: [String: InfoPlist.Value] = [:],
+        options: Options = .options(),
+        schemes: [Scheme] = []
     ) -> Project {
         let appInfoPlist = InfoPlist.base(version: version).merging(infoPlist) { (_, new) in new }
 
@@ -53,7 +55,10 @@ extension Project {
         return Project(
             name: name,
             organizationName: "leka.io",
-            targets: targets)
+            options: options,
+            targets: targets,
+            schemes: schemes
+        )
     }
 
 }
