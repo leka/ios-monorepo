@@ -9,21 +9,26 @@ import Foundation
 
 public enum l10n {
 
-    public static func LocalizedString(_ key: StaticString, value: String.LocalizationValue, comment: StaticString)
-        -> String
+    public static func LocalizedString(
+        _ key: StaticString, value: String.LocalizationValue, comment: StaticString
+    )
+        -> AttributedString
     {
-        String(localized: key, defaultValue: value, comment: comment)
+        let string = String(localized: key, defaultValue: value, comment: comment)
+        let markdown = (try? AttributedString(markdown: string)) ?? AttributedString(string)
+        return markdown
     }
 
     public static func LocalizedStringInterpolation(
         _ key: StaticString, value: String.LocalizationValue, comment: StaticString
     ) -> (
-        (CVarArg...) -> String
+        (CVarArg...) -> AttributedString
     ) {
-        func localizedArgsOnly(_ arguments: CVarArg...) -> String {
+        func localizedArgsOnly(_ arguments: CVarArg...) -> AttributedString {
             let format = String(localized: key, defaultValue: value, comment: comment)
             let string = String(format: format, arguments: arguments)
-            return string
+            let markdown = (try? AttributedString(markdown: string)) ?? AttributedString(string)
+            return markdown
         }
 
         return localizedArgsOnly
