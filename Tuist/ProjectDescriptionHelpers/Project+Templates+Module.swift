@@ -42,7 +42,15 @@ extension Project {
                 sources: ["Examples/\(example.name)/Sources/**"],
                 resources: ["Examples/\(example.name)/Resources/**"],
                 scripts: TargetScript.linters(),
-                dependencies: [.target(name: name)]
+                dependencies: [.target(name: name)],
+                settings: .settings(base: [
+                    "LOCALIZED_STRING_MACRO_NAMES": [
+                        "NSLocalizedString",
+                        "CFCopyLocalizedString",
+                        "LocalizedString",
+                        "LocalizedStringInterpolation",
+                    ]
+                ])
             )
 
             return target
