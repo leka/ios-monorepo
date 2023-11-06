@@ -23,12 +23,16 @@ identifier_name:
     error: 4 # only error
   excluded:
     - app
+    - args
     - ble
     - BLE
     - cmd
     - i
+    - i18n
     - id
     - img
+    - key
+    - l10n
     - lhs
     - log
     - new
