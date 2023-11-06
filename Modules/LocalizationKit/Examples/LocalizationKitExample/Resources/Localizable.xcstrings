@@ -13,7 +13,14 @@
       }
     },
     "localized_string_NO_default" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🇺🇸 ADDED localized_string_NO_default"
+          }
+        }
+      }
     },
     "localized_string_WITH_default" : {
       "extractionState" : "extracted_with_value",
