@@ -10,6 +10,8 @@ struct ActivityProgressBar: View {
     @ObservedObject var viewModel: ActivityViewViewModel
     let height: CGFloat = 30
 
+    @State private var currentColor: Color = .white
+
     var body: some View {
         HStack(spacing: 0) {
             Spacer()
@@ -26,12 +28,25 @@ struct ActivityProgressBar: View {
                             }
                             return .green
                         }()
-                        ActivityProgressBarMarker(
-                            color: dotColor,
-                            isCurrent: sequenceIndex == viewModel.currentSequenceIndex
+                        let isCurrentExercise: Bool = {
+                            return sequenceIndex == viewModel.currentSequenceIndex
                                 && exerciseIndex == viewModel.currentExerciseIndexInSequence
+                                && viewModel.currentExerciseSharedData.state != .completed
+                        }()
+                        ActivityProgressBarMarker(
+                            color: (sequenceIndex == viewModel.currentSequenceIndex
+                                && exerciseIndex == viewModel.currentExerciseIndexInSequence)
+                                ? $currentColor : .constant(dotColor),
+                            isCurrent: .constant(isCurrentExercise)
                         )
                         .padding(6)
+                        .onChange(of: viewModel.currentExerciseSharedData.state) { newValue in
+                            if newValue == .completed {
+                                withAnimation(.snappy.delay(2)) {
+                                    currentColor = .green
+                                }
+                            }
+                        }
 
                         if exerciseIndex < viewModel.totalExercisesInCurrentSequence - 1 {
                             Spacer().frame(maxWidth: 100)

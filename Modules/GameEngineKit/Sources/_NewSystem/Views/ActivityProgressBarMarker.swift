@@ -7,33 +7,19 @@ import SwiftUI
 
 struct ActivityProgressBarMarker: View {
 
-    @State var color: Color = .white
-    @State var isCurrent: Bool
-
-    @State private var scale: CGFloat = 0
+    @Binding var color: Color
+    @Binding var isCurrent: Bool
 
     var body: some View {
         Circle()
             .stroke(Color.white, lineWidth: 3)
             .background(color, in: Circle())
             .overlay {
-                currentExerciseIndicator
-                    .scaleEffect(scale)
-                    .onAppear {
-                        withAnimation(Animation.easeIn(duration: 0.5).delay(0.5)) {
-                            scale = 1
-                        }
-                    }
+                Circle()
+                    .fill(DesignKitAsset.Colors.chevron.swiftUIColor)
+                    .padding(4)
+                    .scaleEffect(isCurrent ? 1 : 0.01)
+                    .animation(.easeIn(duration: 0.5).delay(0.2), value: isCurrent)
             }
-    }
-
-    @ViewBuilder private var currentExerciseIndicator: some View {
-        if isCurrent {
-            Circle()
-                .fill(DesignKitAsset.Colors.chevron.swiftUIColor)
-                .padding(4)
-        } else {
-            EmptyView()
-        }
     }
 }
