@@ -24,7 +24,15 @@ extension Project {
             sources: ["Sources/**"],
             resources: ["Resources/**"],
             scripts: TargetScript.linters(),
-            dependencies: dependencies
+            dependencies: dependencies,
+            settings: .settings(base: [
+                "LOCALIZED_STRING_MACRO_NAMES": [
+                    "NSLocalizedString",
+                    "CFCopyLocalizedString",
+                    "LocalizedString",
+                    "LocalizedStringInterpolation",
+                ]
+            ])
         )
 
         let testTarget = Target(
