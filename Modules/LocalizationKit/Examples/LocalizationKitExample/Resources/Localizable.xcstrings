@@ -9,6 +9,12 @@
             "state" : "new",
             "value" : "⛳ DEFAULT localized_string_interpolation - text: %1$@ - int: %2$lld - float: %3$f"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🇫🇷 ADDED localized_string_interpolation - text: %1$@ - int: %2$lld - float: %3$f"
+          }
         }
       }
     },
@@ -18,6 +24,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "🇺🇸 ADDED localized_string_NO_default"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🇫🇷 ADDED localized_string_NO_default"
           }
         }
       }
@@ -29,6 +41,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "⛳ DEFAULT localized_string_WITH_default"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🇫🇷 ADDED localized_string_WITH_default"
           }
         }
       }
