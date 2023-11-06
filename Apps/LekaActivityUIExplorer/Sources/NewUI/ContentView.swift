@@ -21,6 +21,9 @@ struct ContentView: View {
                 print("connect robot")
                 presentRobotConnection.toggle()
             }
+            .foregroundStyle(.green)
+            .font(.title3)
+
             ScrollView {
                 LazyVGrid(columns: columns) {
                     ForEach(kListOfAvailablesActivities) { activity in
