@@ -48,28 +48,19 @@ struct UIExplorerVersionSelector: View {
 
     var body: some View {
         VStack(spacing: 0) {
+
             Spacer().frame(height: 40)
+
             VStack(spacing: 20) {
                 Text("Leka Activity UI Explorer")
                     .font(.largeTitle)
                 Text("VERSION SELECTOR")
                     .font(.headline)
             }
+
             Spacer()
+
             HStack {
-                Spacer()
-                Button {
-                    router.currentVersion = .oldVersion
-                } label: {
-                    VStack(spacing: 20) {
-                        Image("dummy_1")
-                            .resizable(resizingMode: .stretch)
-                            .activityIconImageModifier(diameter: 250, padding: 0)
-                        Text("Ancienne Version")
-                            .font(.body)
-                    }
-                }
-                Spacer()
                 Button {
                     router.currentVersion = .newVersion
                 } label: {
@@ -81,10 +72,11 @@ struct UIExplorerVersionSelector: View {
                             .font(.body)
                     }
                 }
-                Spacer()
             }
             .frame(maxHeight: 300)
+
             Spacer()
+
             logoLeka
         }
         .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
