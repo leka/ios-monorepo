@@ -5,7 +5,7 @@
 import Foundation
 import XCTest
 
-@testable import LekaActivityUIExplorer
+@testable import GameEngineKit
 
 final class UtilsLeftPWMConversion_Tests: XCTestCase {
     let maxValue: CGFloat = 300
