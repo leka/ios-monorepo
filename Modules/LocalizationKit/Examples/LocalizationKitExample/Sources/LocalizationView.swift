@@ -16,13 +16,22 @@ extension l10n {
         "localized_string_interpolation",
         value: "⛳ DEFAULT localized_string_interpolation - text: %@ - int: %lld - float: %f", comment: "")
 
+    static let localizedStringWithMarkdown = LocalizedString(
+        "localized_string_with_markdown", value: "⛳ **DEFAULT** *localized_string_with_markdown*", comment: "")
+
+    static let localizedStringInterpolationWithMarkdown = LocalizedStringInterpolation(
+        "localized_string_interpolation_with_markdown",
+        value:
+            "⛳ **DEFAULT** *localized_string_interpolation_with_markdown* - **text: %@** - *int: %lld* - ***float: %f***",
+        comment: "")
+
 }
 
 struct LocalizationView: View {
 
     @Environment(\.locale) var locale
 
-    let nameValue = "John Doe"
+    let nameValue = "John *Doe* [link]"
     let intValue = 42
     let floatValue = 3.14
 
@@ -47,6 +56,18 @@ struct LocalizationView: View {
                 Text(verbatim: "localized_string_interpolation")
                     .bold()
                 Text(l10n.localizedStringInterpolation(nameValue, intValue, floatValue))
+            }
+
+            VStack(alignment: .leading) {
+                Text(verbatim: "localized_string_with_markdown")
+                    .bold()
+                Text(l10n.localizedStringWithMarkdown)
+            }
+
+            VStack(alignment: .leading) {
+                Text(verbatim: "localized_string_interpolation_with_markdown")
+                    .bold()
+                Text(l10n.localizedStringInterpolationWithMarkdown(nameValue, intValue, floatValue))
             }
         }
     }
