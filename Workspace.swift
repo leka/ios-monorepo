@@ -4,7 +4,7 @@
 
 import ProjectDescription
 
-func projects() -> [Path] {
+var projects: [Path] {
     // MARK: - iOS Apps
     let iOSApps: [Path] = [
         "Apps/LekaApp",
@@ -54,5 +54,5 @@ func projects() -> [Path] {
 
 let workspace = Workspace(
     name: "ios-monorepo",
-    projects: projects()
+    projects: projects
 )
