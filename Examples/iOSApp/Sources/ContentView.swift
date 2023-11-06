@@ -19,11 +19,11 @@ extension String {
 
 }
 
-func Localized(_ key: StaticString, value: String.LocalizationValue, comment: StaticString) -> String {
+func LocalizedString(_ key: StaticString, value: String.LocalizationValue, comment: StaticString) -> String {
     String(localized: key, defaultValue: value, comment: comment)
 }
 
-func LocalizedInterpolation(_ key: StaticString, value: String.LocalizationValue, comment: StaticString) -> (
+func LocalizedStringInterpolation(_ key: StaticString, value: String.LocalizationValue, comment: StaticString) -> (
     (CVarArg...) -> String
 ) {
     func localizedArgsOnly(_ arguments: CVarArg...) -> String {
@@ -54,12 +54,12 @@ enum l10n {
     static let StringLocalizedInitWithDefault = String(
         localized: "string_localized_init_WITH_default", defaultValue: "👋 DEFAULT string_localized_init_WITH_default")
 
-    static let FuncLocalizedNoDefault = Localized("func_localized_NO_default", value: "", comment: "")
+    static let FuncLocalizedNoDefault = LocalizedString("func_localized_NO_default", value: "", comment: "")
 
-    static let FuncLocalizedWithDefault = Localized(
+    static let FuncLocalizedWithDefault = LocalizedString(
         "func_localized_WITH_default", value: "👋 DEFAULT func_localized_WITH_default", comment: "")
 
-    static let FuncLocalizedInterpolation = LocalizedInterpolation(
+    static let FuncLocalizedStringInterpolation = LocalizedStringInterpolation(
         "fun_localized_interpolation",
         value: "👋 DEFAULT fun_localized_interpolation - test: %@ - int: %lld - float: %f ", comment: "")
 
@@ -140,7 +140,7 @@ struct ContentView: View {
             VStack(alignment: .leading) {
                 Text(verbatim: "fun_localized_interpolation")
                     .bold()
-                Text(l10n.FuncLocalizedInterpolation(nameValue, intValue, floatValue))
+                Text(l10n.FuncLocalizedStringInterpolation(nameValue, intValue, floatValue))
             }
 
         }
@@ -148,15 +148,12 @@ struct ContentView: View {
 }
 
 #Preview {
-    HStack(spacing: 80) {
-        ContentView()
-            .environment(\.locale, .init(identifier: "en"))
-
-        Divider()
-
-        ContentView()
-            .environment(\.locale, .init(identifier: "fr"))
-    }
+    ContentView()
+        .environment(\.locale, .init(identifier: "en"))
+}
+#Preview {
+    ContentView()
+        .environment(\.locale, .init(identifier: "fr"))
 }
 
 // swiftlint:enable type_name nesting line_length identifier_name
