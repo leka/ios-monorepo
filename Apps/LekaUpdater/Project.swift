@@ -37,5 +37,10 @@ let project = Project.iOSApp(
             ]
         ],
         "LSApplicationQueriesSchemes": ["LekaApp"],
+    ],
+    options: .options(automaticSchemesOptions: .disabled),
+    schemes: [
+        SchemeList.l10nFR(name: "LekaUpdater"),
+        SchemeList.l10nEN(name: "LekaUpdater"),
     ]
 )

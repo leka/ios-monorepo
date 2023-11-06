@@ -16,4 +16,9 @@ let project = Project.module(
             infoPlist: [
                 "NSAccentColorName": "AccentColor"
             ])
-    ])
+    ],
+    schemes: [
+        SchemeList.l10nFR(name: "LocalizationKitExample"),
+        SchemeList.l10nEN(name: "LocalizationKitExample"),
+    ]
+)
