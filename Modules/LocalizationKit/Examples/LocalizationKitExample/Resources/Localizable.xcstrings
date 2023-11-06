@@ -1,7 +1,31 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "localized_string_interpolation" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "⛳ DEFAULT localized_string_interpolation - text: %1$@ - int: %2$lld - float: %3$f"
+          }
+        }
+      }
+    },
+    "localized_string_NO_default" : {
 
+    },
+    "localized_string_WITH_default" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "⛳ DEFAULT localized_string_WITH_default"
+          }
+        }
+      }
+    }
   },
   "version" : "1.0"
 }
