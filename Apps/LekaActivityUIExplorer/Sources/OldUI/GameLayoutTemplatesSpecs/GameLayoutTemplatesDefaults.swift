@@ -7,15 +7,15 @@ import SwiftUI
 
 class GameLayoutTemplatesDefaults: ObservableObject {
 
-    // MARK: - Step Instruction Button
-    @Published var fontStepInstructionBtn: Font = .system(size: 22, weight: .regular)
-    @Published var frameStepInstructionBtn: CGSize = CGSize(width: 640, height: 85)
+    //    // MARK: - Step Instruction Button
+    //    @Published var fontStepInstructionBtn: Font = .system(size: 22, weight: .regular)
+    //    @Published var frameStepInstructionBtn: CGSize = CGSize(width: 640, height: 85)
 
     // MARK: - Progress Bar
     // Step Markers
-    @Published var stepMarkerBorderWidth: CGFloat = 3
-    @Published var stepMarkerPadding: CGFloat = 6
-    // Progress Bar
+    //    @Published var stepMarkerBorderWidth: CGFloat = 3
+    //    @Published var stepMarkerPadding: CGFloat = 6
+    //    // Progress Bar
     @Published var progressBarHeight: CGFloat = 30
     @Published var progressBarBackgroundColor: Color = LekaActivityUIExplorerAsset.Colors.progressBar.swiftUIColor
 

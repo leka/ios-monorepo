@@ -70,8 +70,3 @@ enum Languages: Hashable, CaseIterable {
 enum ResultType {
     case idle, fail, medium, success
 }
-
-// MARK: - Alternative Layouts for 3 & 4 answers
-enum AlternativeLayout {
-    case basic, inline
-}

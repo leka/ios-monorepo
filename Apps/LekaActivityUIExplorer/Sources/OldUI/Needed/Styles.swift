@@ -5,72 +5,6 @@
 import Foundation
 import SwiftUI
 
-// MARK: - Step Instructions Button Style
-struct StepInstructions_ButtonStyle: ButtonStyle {
-    @EnvironmentObject var gameEngine: GameEngine
-    @EnvironmentObject var defaults: GameLayoutTemplatesDefaults
-    func makeBody(configuration: Self.Configuration) -> some View {
-        HStack(spacing: 0) {
-            Spacer()
-            configuration.label
-                .foregroundColor(LekaActivityUIExplorerAsset.Colors.darkGray.swiftUIColor)
-                .font(defaults.fontStepInstructionBtn)
-                .multilineTextAlignment(.center)
-                .padding(.horizontal, defaults.frameStepInstructionBtn.height)
-            Spacer()
-        }
-        .frame(maxWidth: defaults.frameStepInstructionBtn.width)
-        .frame(height: defaults.frameStepInstructionBtn.height, alignment: .center)
-        .background(backgroundGradient)
-        .overlay(buttonStroke)
-        .overlay(speachIndicator)
-        .clipShape(RoundedRectangle(cornerRadius: defaults.roundedCorner, style: .circular))
-        .shadow(
-            color: .black.opacity(0.1),
-            radius: gameEngine.isSpeaking ? 0 : 4, x: 0, y: gameEngine.isSpeaking ? 1 : 4
-        )
-        .scaleEffect(gameEngine.isSpeaking ? 0.98 : 1)
-        .disabled(gameEngine.isSpeaking)
-        .animation(.easeOut(duration: 0.2), value: gameEngine.isSpeaking)
-    }
-
-    private var backgroundGradient: some View {
-        ZStack {
-            Color.white
-            LinearGradient(
-                gradient: Gradient(colors: [.black.opacity(0.1), .black.opacity(0.0), .black.opacity(0.0)]),
-                startPoint: .top, endPoint: .center
-            )
-            .opacity(gameEngine.isSpeaking ? 1 : 0)
-        }
-    }
-
-    private var buttonStroke: some View {
-        RoundedRectangle(cornerRadius: defaults.roundedCorner, style: .circular)
-            .fill(
-                .clear,
-                strokeBorder: LinearGradient(
-                    gradient: Gradient(colors: [.black.opacity(0.2), .black.opacity(0.05)]),
-                    startPoint: .bottom, endPoint: .top), lineWidth: 4
-            )
-            .opacity(gameEngine.isSpeaking ? 0.5 : 0)
-    }
-
-    private var speachIndicator: some View {
-        HStack {
-            Spacer()
-            LekaActivityUIExplorerAsset.Images.personTalking.swiftUIImage
-                .resizable()
-                .renderingMode(.template)
-                .aspectRatio(contentMode: .fit)
-                .foregroundColor(
-                    gameEngine.isSpeaking ? .accentColor : LekaActivityUIExplorerAsset.Colors.progressBar.swiftUIColor
-                )
-                .padding(10)
-        }
-    }
-}
-
 // MARK: - Circular Answer Buttons Style (Gameplay)
 struct ActivityAnswer_ButtonStyle: ButtonStyle {
 
@@ -94,8 +28,6 @@ struct ActivityAnswer_ButtonStyle: ButtonStyle {
             .animation(.easeOut(duration: 0.3), value: isEnabled)
     }
 }
-
-// .buttonStyle(ActivityAnswer_ButtonStyle(isEnabled: gameEngine.currentMediaHasBeenPlayedOnce))
 
 // MARK: - Play Sound Button Style (Gameplay)
 struct PlaySound_ButtonStyle: ButtonStyle {

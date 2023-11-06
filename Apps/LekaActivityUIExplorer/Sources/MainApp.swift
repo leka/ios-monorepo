@@ -8,7 +8,6 @@ import SwiftUI
 struct LekaActivityUIExplorerApp: App {
     @StateObject var gameEngine = GameEngine()
     @StateObject var defaults = GameLayoutTemplatesDefaults()
-    @StateObject var configuration = GameLayoutTemplatesConfigurations()
 
     var body: some Scene {
         WindowGroup {
@@ -16,7 +15,6 @@ struct LekaActivityUIExplorerApp: App {
                 .preferredColorScheme(.light)
                 .environmentObject(gameEngine)
                 .environmentObject(defaults)
-                .environmentObject(configuration)
                 .onAppear {
                     gameEngine.bufferActivity = ExplorerActivity(
                         type: .touchToSelect,
