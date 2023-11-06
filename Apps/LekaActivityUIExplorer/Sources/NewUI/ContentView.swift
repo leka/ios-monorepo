@@ -8,7 +8,6 @@ import SwiftUI
 
 struct ContentView: View {
 
-    @EnvironmentObject var router: Router
     @EnvironmentObject var gameEngine: GameEngine
     @EnvironmentObject var defaults: GameLayoutTemplatesDefaults
 
@@ -51,7 +50,6 @@ struct ContentView: View {
             .background(DesignKitAsset.Colors.lekaLightBlue.swiftUIColor)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .navigationBarLeading, content: { backButton })
                 ToolbarItem(placement: .principal) { navigationTitleView }
             }
         }
@@ -67,27 +65,11 @@ struct ContentView: View {
         .font(defaults.semi17)
         .foregroundColor(.accentColor)
     }
-
-    private var backButton: some View {
-        Button(
-            action: {
-                router.currentVersion = .versionSelector
-            },
-            label: {
-                HStack(spacing: 4) {
-                    Image(systemName: "chevron.left")
-                    Text("Retour")
-                }
-            }
-        )
-        .tint(.accentColor)
-    }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-            .environmentObject(Router())
             .environmentObject(GameEngine())
             .environmentObject(GameLayoutTemplatesDefaults())
             .previewInterfaceOrientation(.landscapeLeft)

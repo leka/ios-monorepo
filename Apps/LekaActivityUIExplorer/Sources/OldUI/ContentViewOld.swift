@@ -6,7 +6,7 @@ import SwiftUI
 
 struct ContentViewOld: View {
 
-    @EnvironmentObject var router: Router
+    //    @EnvironmentObject var router: Router
     @EnvironmentObject var navigator: NavigationManager
     @EnvironmentObject var gameEngine: GameEngine
     @EnvironmentObject var defaults: GameLayoutTemplatesDefaults
@@ -26,7 +26,7 @@ struct ContentViewOld: View {
                     .navigationBarTitleDisplayMode(.inline)
                     .navigationBarBackButtonHidden()
                     .toolbar {
-                        ToolbarItem(placement: .navigationBarLeading, content: { backButton })
+                        //                        ToolbarItem(placement: .navigationBarLeading, content: { backButton })
                         ToolbarItem(placement: .principal) { navigationTitleView }
                         ToolbarItemGroup(placement: .navigationBarTrailing) { topBarTrailingItems }
                     }
@@ -130,18 +130,18 @@ struct ContentViewOld: View {
         .disabled(gameEngine.tapIsDisabled)
     }
 
-    private var backButton: some View {
-        Button(
-            action: {
-                router.currentVersion = .versionSelector
-            },
-            label: {
-                HStack(spacing: 4) {
-                    Image(systemName: "chevron.left")
-                    Text("Retour")
-                }
-            }
-        )
-        .tint(.accentColor)
-    }
+    //    private var backButton: some View {
+    //        Button(
+    //            action: {
+    //                router.currentVersion = .versionSelector
+    //            },
+    //            label: {
+    //                HStack(spacing: 4) {
+    //                    Image(systemName: "chevron.left")
+    //                    Text("Retour")
+    //                }
+    //            }
+    //        )
+    //        .tint(.accentColor)
+    //    }
 }
