@@ -18,6 +18,23 @@ let project = Project.module(
     ],
     examples: [
         ModuleExample(
-            name: "GameEngineKitExample"
+            name: "GameEngineKitExample",
+            infoPlist: [
+                "NSBluetoothAlwaysUsageDescription":
+                    "The Leka Updater app needs to use Bluetooth to connect to the Leka robot.",
+                "UIBackgroundModes": [
+                    "bluetooth-central"
+                ],
+                "UIRequiresFullScreen": "true",
+                "UISupportedInterfaceOrientations": [
+                    "UIInterfaceOrientationLandscapeRight",
+                    "UIInterfaceOrientationLandscapeLeft",
+                ],
+                "UISupportedInterfaceOrientations~ipad": [
+                    "UIInterfaceOrientationLandscapeRight",
+                    "UIInterfaceOrientationLandscapeLeft",
+                ],
+                "NSAccentColorName": "AccentColor",
+            ]
         )
     ])
