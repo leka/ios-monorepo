@@ -7,7 +7,6 @@ import SwiftUI
 
 enum Version {
     case versionSelector
-    case oldVersion
     case newVersion
 }
 
@@ -18,19 +17,12 @@ class Router: ObservableObject {
 struct SwitchBoard: View {
 
     @EnvironmentObject var router: Router
-    @EnvironmentObject var navigator: NavigationManager
-    @EnvironmentObject var gameEngine: GameEngine
-    @EnvironmentObject var defaults: GameLayoutTemplatesDefaults
-    @EnvironmentObject var configuration: GameLayoutTemplatesConfigurations
 
     var body: some View {
         Group {
             switch router.currentVersion {
                 case .versionSelector:
                     UIExplorerVersionSelector()
-                        .transition(.opacity)
-                case .oldVersion:
-                    ContentViewOld()
                         .transition(.opacity)
                 case .newVersion:
                     ContentView()
@@ -59,22 +51,10 @@ struct UIExplorerVersionSelector: View {
             HStack {
                 Spacer()
                 Button {
-                    router.currentVersion = .oldVersion
-                } label: {
-                    VStack(spacing: 20) {
-                        Image("dummy_1")
-                            .resizable(resizingMode: .stretch)
-                            .activityIconImageModifier(diameter: 250, padding: 0)
-                        Text("Ancienne Version")
-                            .font(.body)
-                    }
-                }
-                Spacer()
-                Button {
                     router.currentVersion = .newVersion
                 } label: {
                     VStack(spacing: 20) {
-                        Image("dummy_2")
+                        LekaActivityUIExplorerAsset.Answers.dummy2.swiftUIImage
                             .resizable()
                             .activityIconImageModifier(diameter: 250, padding: 0)
                         Text("Nouvelle Version")
@@ -91,7 +71,7 @@ struct UIExplorerVersionSelector: View {
     }
 
     private var logoLeka: some View {
-        LekaActivityUIExplorerAsset.Images.lekaLogo.swiftUIImage
+        DesignKitAsset.Assets.lekaLogo.swiftUIImage
             .resizable()
             .aspectRatio(contentMode: .fit)
             .frame(height: 60)

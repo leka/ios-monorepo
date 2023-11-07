@@ -32,7 +32,7 @@ struct HideAndSeekLauncher: View {
     var body: some View {
         VStack {
             Text("Appuyer sur **OK** lorsque Leka est caché")
-            Image(GameEngineKitAsset.Assets.hideAndSeek.name)
+            GameEngineKitAsset.Assets.hideAndSeek.swiftUIImage
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 500, height: 500)
