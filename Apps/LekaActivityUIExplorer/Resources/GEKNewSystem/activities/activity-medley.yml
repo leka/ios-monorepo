@@ -1,0 +1,25 @@
+# Leka - iOS Monorepo
+# Copyright 2023 APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+id: d82c2ee629034950a056433975fd41e8
+name: Medley
+description: Cette activité rassemble toutes les interfaces disponibles
+image: activity_color_recognition_1
+sequence:
+  - exercises:
+      - instructions: Touche le bleu
+        type: selection
+        interface: touchToSelect
+        gameplay: selectAllRightAnswers
+        payload:
+          choices:
+            - value: blue
+              type: color
+              isRightAnswer: true
+            - value: red
+              type: color
+            - value: green
+              type: color
+            - value: yellow
+              type: color
