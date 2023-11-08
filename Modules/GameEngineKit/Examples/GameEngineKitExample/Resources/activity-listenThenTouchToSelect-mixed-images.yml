@@ -13,9 +13,13 @@ sequence:
         interface: listenThenTouchToSelect
         gameplay: selectAllRightAnswers
         payload:
-          media: guitar
+          action:
+            type: ipad
+            value:
+              type: audio
+              value: guitar
           choices:
-            - value: image-instrument-guitar
+            - value: image-instrument-guitar-no_background
               type: image
               isRightAnswer: true
 
@@ -24,12 +28,16 @@ sequence:
         interface: listenThenTouchToSelect
         gameplay: selectAllRightAnswers
         payload:
-          media: violin
+          action:
+            type: ipad
+            value:
+              type: audio
+              value: violin
           choices:
-            - value: image-instrument-violin
+            - value: image-instrument-violin-no_background
               type: image
               isRightAnswer: true
-            - value: image-instrument-drums
+            - value: image-instrument-drums-no_background
               type: image
 
       - instructions: Écoute le son puis touche le bon instrument
@@ -37,52 +45,18 @@ sequence:
         interface: listenThenTouchToSelect
         gameplay: selectAllRightAnswers
         payload:
-          media: saxophone
+          action:
+            type: ipad
+            value:
+              type: audio
+              value: saxophone
           choices:
-            - value: image-instrument-saxophone
+            - value: image-instrument-saxophone-no_background
               type: image
               isRightAnswer: true
-            - value: image-instrument-piano
+            - value: image-instrument-piano-no_background
               type: image
-            - value: image-instrument-saxophone
-              type: image
-              isRightAnswer: true
-
-      - instructions: Écoute le son puis touche le bon instrument
-        type: selection
-        interface: listenThenTouchToSelect
-        gameplay: selectAllRightAnswers
-        payload:
-          media: piano
-          choices:
-            - value: image-instrument-harmonica
-              type: image
-            - value: image-instrument-flute
-              type: image
-            - value: image-instrument-piano
-              type: image
-              isRightAnswer: true
-            - value: image-instrument-drums
-              type: image
-
-      - instructions: Écoute le son puis touche le bon instrument
-        type: selection
-        interface: listenThenTouchToSelect
-        gameplay: selectAllRightAnswers
-        payload:
-          media: flute
-          choices:
-            - value: image-instrument-violin
-              type: image
-            - value: image-instrument-flute
-              type: image
-              isRightAnswer: true
-            - value: image-instrument-flute
-              type: image
-              isRightAnswer: true
-            - value: image-instrument-piano
-              type: image
-            - value: image-instrument-flute
+            - value: image-instrument-saxophone-no_background
               type: image
               isRightAnswer: true
 
@@ -91,18 +65,68 @@ sequence:
         interface: listenThenTouchToSelect
         gameplay: selectAllRightAnswers
         payload:
-          media: drums
+          action:
+            type: ipad
+            value:
+              type: audio
+              value: piano
           choices:
-            - value: image-instrument-drums
+            - value: image-instrument-harmonica-no_background
+              type: image
+            - value: image-instrument-flute-no_background
+              type: image
+            - value: image-instrument-piano-no_background
               type: image
               isRightAnswer: true
-            - value: image-instrument-saxophone
+            - value: image-instrument-drums-no_background
               type: image
-            - value: image-instrument-flute
+
+      - instructions: Écoute le son puis touche le bon instrument
+        type: selection
+        interface: listenThenTouchToSelect
+        gameplay: selectAllRightAnswers
+        payload:
+          action:
+            type: ipad
+            value:
+              type: audio
+              value: flute
+          choices:
+            - value: image-instrument-violin-no_background
               type: image
-            - value: image-instrument-guitar
+            - value: image-instrument-flute-no_background
               type: image
-            - value: image-instrument-violin
+              isRightAnswer: true
+            - value: image-instrument-flute-no_background
               type: image
-            - value: image-instrument-harmonica
+              isRightAnswer: true
+            - value: image-instrument-piano-no_background
+              type: image
+            - value: image-instrument-flute-no_background
+              type: image
+              isRightAnswer: true
+
+      - instructions: Écoute le son puis touche le bon instrument
+        type: selection
+        interface: listenThenTouchToSelect
+        gameplay: selectAllRightAnswers
+        payload:
+          action:
+            type: ipad
+            value:
+              type: audio
+              value: drums
+          choices:
+            - value: image-instrument-drums-no_background
+              type: image
+              isRightAnswer: true
+            - value: image-instrument-saxophone-no_background
+              type: image
+            - value: image-instrument-flute-no_background
+              type: image
+            - value: image-instrument-guitar-no_background
+              type: image
+            - value: image-instrument-violin-no_background
+              type: image
+            - value: image-instrument-harmonica-no_background
               type: image
