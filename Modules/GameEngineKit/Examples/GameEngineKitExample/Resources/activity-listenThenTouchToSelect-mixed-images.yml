@@ -19,7 +19,7 @@ sequence:
               type: audio
               value: guitar
           choices:
-            - value: image-instrument-guitar
+            - value: image-instrument-guitar-no_background
               type: image
               isRightAnswer: true
 
@@ -34,10 +34,10 @@ sequence:
               type: audio
               value: violin
           choices:
-            - value: image-instrument-violin
+            - value: image-instrument-violin-no_background
               type: image
               isRightAnswer: true
-            - value: image-instrument-drums
+            - value: image-instrument-drums-no_background
               type: image
 
       - instructions: Écoute le son puis touche le bon instrument
@@ -51,12 +51,12 @@ sequence:
               type: audio
               value: saxophone
           choices:
-            - value: image-instrument-saxophone
+            - value: image-instrument-saxophone-no_background
               type: image
               isRightAnswer: true
-            - value: image-instrument-piano
+            - value: image-instrument-piano-no_background
               type: image
-            - value: image-instrument-saxophone
+            - value: image-instrument-saxophone-no_background
               type: image
               isRightAnswer: true
 
@@ -71,14 +71,14 @@ sequence:
               type: audio
               value: piano
           choices:
-            - value: image-instrument-harmonica
+            - value: image-instrument-harmonica-no_background
               type: image
-            - value: image-instrument-flute
+            - value: image-instrument-flute-no_background
               type: image
-            - value: image-instrument-piano
+            - value: image-instrument-piano-no_background
               type: image
               isRightAnswer: true
-            - value: image-instrument-drums
+            - value: image-instrument-drums-no_background
               type: image
 
       - instructions: Écoute le son puis touche le bon instrument
@@ -92,17 +92,17 @@ sequence:
               type: audio
               value: flute
           choices:
-            - value: image-instrument-violin
+            - value: image-instrument-violin-no_background
               type: image
-            - value: image-instrument-flute
-              type: image
-              isRightAnswer: true
-            - value: image-instrument-flute
+            - value: image-instrument-flute-no_background
               type: image
               isRightAnswer: true
-            - value: image-instrument-piano
+            - value: image-instrument-flute-no_background
               type: image
-            - value: image-instrument-flute
+              isRightAnswer: true
+            - value: image-instrument-piano-no_background
+              type: image
+            - value: image-instrument-flute-no_background
               type: image
               isRightAnswer: true
 
@@ -117,16 +117,16 @@ sequence:
               type: audio
               value: drums
           choices:
-            - value: image-instrument-drums
+            - value: image-instrument-drums-no_background
               type: image
               isRightAnswer: true
-            - value: image-instrument-saxophone
+            - value: image-instrument-saxophone-no_background
               type: image
-            - value: image-instrument-flute
+            - value: image-instrument-flute-no_background
               type: image
-            - value: image-instrument-guitar
+            - value: image-instrument-guitar-no_background
               type: image
-            - value: image-instrument-violin
+            - value: image-instrument-violin-no_background
               type: image
-            - value: image-instrument-harmonica
+            - value: image-instrument-harmonica-no_background
               type: image
