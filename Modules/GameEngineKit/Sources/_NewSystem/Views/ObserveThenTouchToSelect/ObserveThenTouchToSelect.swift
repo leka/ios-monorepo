@@ -30,11 +30,11 @@ public struct ObserveThenTouchToSelectView: View {
         guard case .selection(let payload) = exercise.payload else {
             fatalError("Exercise payload is not .selection")
         }
-        guard let media = payload.media else {
-            fatalError("Exercise payload has no media")
+        guard case .ipad(type: .image(name: let name)) = payload.action else {
+            fatalError("Exercise payload does not contain an iPad image action")
         }
 
-        self.image = media
+        self.image = name
 
         self._viewModel = StateObject(
             wrappedValue: SelectionViewViewModel(choices: payload.choices, shared: data))

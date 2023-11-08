@@ -13,7 +13,11 @@ sequence:
         interface: observeThenTouchToSelect
         gameplay: selectAllRightAnswers
         payload:
-          media: image-landscape-blue
+          action:
+            type: ipad
+            value:
+              type: image
+              value: image-landscape-blue
           choices:
             - value: blue
               type: color
@@ -24,7 +28,11 @@ sequence:
         interface: observeThenTouchToSelect
         gameplay: selectAllRightAnswers
         payload:
-          media: image-landscape-red
+          action:
+            type: ipad
+            value:
+              type: image
+              value: image-landscape-red
           choices:
             - value: blue
               type: color
@@ -37,7 +45,11 @@ sequence:
         interface: observeThenTouchToSelect
         gameplay: selectAllRightAnswers
         payload:
-          media: image-landscape-purple
+          action:
+            type: ipad
+            value:
+              type: image
+              value: image-landscape-purple
           choices:
             - value: purple
               type: color
@@ -53,7 +65,11 @@ sequence:
         interface: observeThenTouchToSelect
         gameplay: selectAllRightAnswers
         payload:
-          media: image-landscape-yellow
+          action:
+            type: ipad
+            value:
+              type: image
+              value: image-landscape-yellow
           choices:
             - value: blue
               type: color
@@ -70,7 +86,11 @@ sequence:
         interface: observeThenTouchToSelect
         gameplay: selectAllRightAnswers
         payload:
-          media: image-landscape-green
+          action:
+            type: ipad
+            value:
+              type: image
+              value: image-landscape-green
           choices:
             - value: yellow
               type: color
@@ -91,7 +111,11 @@ sequence:
         interface: observeThenTouchToSelect
         gameplay: selectAllRightAnswers
         payload:
-          media: image-landscape-red
+          action:
+            type: ipad
+            value:
+              type: image
+              value: image-landscape-red
           choices:
             - value: yellow
               type: color
