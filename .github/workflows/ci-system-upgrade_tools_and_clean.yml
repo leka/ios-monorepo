@@ -17,7 +17,9 @@ concurrency:
 
 jobs:
   upgrade_tools:
-    if: ${{ contains(github.event.label.name, 'ci:upgrade_tools') || contains(github.event_name, 'schedule') }} 
+    if: |
+      (github.event_name == 'pull_request' && github.event.label.name == 'ci:upgrade_tools') ||
+      contains(github.event_name, 'schedule')
     name: Upgrade tools
     runs-on: [self-hosted, iOS]
 
@@ -87,7 +89,7 @@ jobs:
           bundle --version
 
       - name: Remove label
-        if: contains(github.event.label.name, 'ci:upgrade_tools')
+        if: github.event_name == 'pull_request' && github.event.label.name == 'ci:upgrade_tools'
         uses: actions/github-script@v6
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
