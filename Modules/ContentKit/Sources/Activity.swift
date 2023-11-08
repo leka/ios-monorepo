@@ -38,6 +38,7 @@ public struct ExerciseSequence: Codable {
 public enum ExerciseType: String, Codable {
     case selection
     case dragAndDrop
+    case association
 }
 
 public enum Gameplay: String, Codable {
@@ -56,17 +57,31 @@ public struct Exercise: Codable {
         case listenThenTouchToSelect
         case observeThenTouchToSelect
         case dragAndDrop
+        case association
     }
 }
 
 public enum ExercisePayload: Codable {
     case selection(SelectionPayload)
     case dragAndDrop(DragAndDropPayload)
+    case association(AssociationPayload)
 
     // TODO(@ladislas): see if we can decode based on interface in Exercise
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CustomKeys.self)
 
+        // association
+        if container.allKeys.contains(.category) {
+            let category = try container.decode(String.self, forKey: .category)
+            let choices = try container.decode([AssociationChoice].self, forKey: .choices)
+            let shuffleChoices = try container.decodeIfPresent(Bool.self, forKey: .shuffleChoices) ?? false
+
+            self = .association(
+                AssociationPayload(category: category, choices: choices, shuffleChoices: shuffleChoices))
+            return
+        }
+
+        // drag and drop
         if container.allKeys.contains(.dropZoneA) {
             let dropZoneA = try container.decode(DropZoneDetails.self, forKey: .dropZoneA)
             let dropZoneB = try container.decodeIfPresent(DropZoneDetails.self, forKey: .dropZoneB)
@@ -99,11 +114,13 @@ public enum ExercisePayload: Codable {
                 try container.encode(payload)
             case .dragAndDrop(let payload):
                 try container.encode(payload)
+            case .association(let payload):
+                try container.encode(payload)
         }
     }
 
     private enum CustomKeys: String, CodingKey {
-        case choices, dropZoneA, dropZoneB, payload, media
+        case category, choices, dropZoneA, dropZoneB, media, payload
         case shuffleChoices = "shuffle_choices"
     }
 }
@@ -163,4 +180,33 @@ public struct DragAndDropChoice: Codable {
         case zoneA
         case zoneB
     }
+}
+
+public struct AssociationChoice: Codable {
+    public let value: String
+    public let type: UIElementType
+    public let category: String
+
+    private enum CodingKeys: String, CodingKey {
+        case value, type, category
+    }
+
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        value = try container.decode(String.self, forKey: .value)
+        type = try container.decode(UIElementType.self, forKey: .type)
+        category = try container.decode(String.self, forKey: .category)
+    }
+
+    public init(value: String, type: UIElementType, category: String) {
+        self.value = value
+        self.type = type
+        self.category = category
+    }
+}
+
+public struct AssociationPayload: Codable {
+    public let category: String
+    public let choices: [AssociationChoice]
+    public let shuffleChoices: Bool
 }

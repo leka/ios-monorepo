@@ -39,7 +39,7 @@ let kActivities: [Activity] = [
     // ContentKit.decodeActivity("activity-dragAndDrop-two_zones-multiple_right_answer-mixed"),
 
     ContentKit.decodeActivity("activity-medley"),
-    ContentKit.decodeActivity("activity-association-two_categories-ultiple_right_answers-images")
+    ContentKit.decodeActivity("activity-association-two_categories-ultiple_right_answers-images"),
 ]
 
 struct ContentView: View {
