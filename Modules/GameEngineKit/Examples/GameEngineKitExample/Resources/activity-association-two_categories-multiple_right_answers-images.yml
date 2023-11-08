@@ -11,7 +11,7 @@ sequence:
       - instructions: Rassemble les instruments par familles d'instruments
         type: association
         interface: association
-        gameplay: selectAllRightAnswers
+        gameplay: association
         payload:
           choices:
             - value: image-instrument-violin-no_background
@@ -31,7 +31,7 @@ sequence:
       - instructions: Rassemble les instruments par familles d'instruments
         type: association
         interface: association
-        gameplay: selectAllRightAnswers
+        gameplay: association
         payload:
           choices:
             - value: image-instrument-harmonica-no_background
@@ -51,7 +51,7 @@ sequence:
       - instructions: Rassemble les instruments par familles d'instruments
         type: association
         interface: association
-        gameplay: selectAllRightAnswers
+        gameplay: association
         payload:
           choices:
             - value: image-instrument-piano-no_background
