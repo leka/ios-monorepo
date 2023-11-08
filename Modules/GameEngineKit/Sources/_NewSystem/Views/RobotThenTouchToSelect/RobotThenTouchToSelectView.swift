@@ -19,7 +19,6 @@ public struct RobotThenTouchToSelectView: View {
     }
 
     @StateObject private var viewModel: SelectionViewViewModel
-    @State private var animationProgress: CGFloat = 0.0
     @State private var didSendCommandToRobot = false
 
     private let color: String
@@ -62,30 +61,14 @@ public struct RobotThenTouchToSelectView: View {
                 robot.shine(.all(in: .init(from: color)))
                 withAnimation {
                     didSendCommandToRobot = true
-                    animationProgress = 1.0
                 }
             } label: {
-                ZStack {
-                    LinearGradient(
-                        gradient: Gradient(colors: [
-                            Color.black.opacity(0.7), Color.black.opacity(0.3), Color.black.opacity(0.7),
-                        ]), startPoint: .top, endPoint: .bottom
-                    )
-
-                    VStack {
-                        Image(systemName: "hand.tap")
-                            .resizable()
-                            .frame(width: 50, height: 50)
-                            .foregroundColor(.white)
-                        Text("Tap to show")
-                            .font(.headline)
-                            .foregroundColor(.white)
-                    }
-                }
-                .frame(width: 200)
+                Image("pictogram_leka_action")
+                    .resizable()
+                    .frame(width: 200, height: 200)
+                    .padding()
             }
             .disabled(didSendCommandToRobot)
-            .buttonStyle(ActionButtonStyle(progress: animationProgress))
             .scaleEffect(didSendCommandToRobot ? 1.0 : 0.8, anchor: .center)
             .shadow(
                 color: .accentColor.opacity(0.2),
