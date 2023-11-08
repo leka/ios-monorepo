@@ -7,7 +7,7 @@ import SwiftUI
 
 enum Version {
     case versionSelector
-    case newVersion
+    case firstActivityModelIteration
 }
 
 class Router: ObservableObject {
@@ -24,8 +24,8 @@ struct SwitchBoard: View {
                 case .versionSelector:
                     UIExplorerVersionSelector()
                         .transition(.opacity)
-                case .newVersion:
-                    ContentView()
+                case .firstActivityModelIteration:
+                    FirstActivityModelIterationView()
                         .transition(.opacity)
             }
         }
@@ -51,7 +51,7 @@ struct UIExplorerVersionSelector: View {
             HStack {
                 Spacer()
                 Button {
-                    router.currentVersion = .newVersion
+                    router.currentVersion = .firstActivityModelIteration
                 } label: {
                     VStack(spacing: 20) {
                         LekaActivityUIExplorerAsset.Answers.dummy2.swiftUIImage
