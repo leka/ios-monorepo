@@ -98,6 +98,9 @@ public struct ActivityView: View {
                     data: viewModel.currentExerciseSharedData
                 )
                 .id(viewModel.currentExerciseIndexInSequence)
+            case .association:
+                Text("association")
+                    .id(viewModel.currentExerciseIndexInSequence)
         }
     }
 
