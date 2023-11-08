@@ -13,6 +13,7 @@ sequence:
         interface: association
         gameplay: association
         payload:
+          shuffle_choices: true
           choices:
             - value: image-instrument-violin-no_background
               type: image
@@ -33,6 +34,7 @@ sequence:
         interface: association
         gameplay: association
         payload:
+          shuffle_choices: true
           choices:
             - value: image-instrument-harmonica-no_background
               type: image
@@ -53,6 +55,7 @@ sequence:
         interface: association
         gameplay: association
         payload:
+          shuffle_choices: true
           choices:
             - value: image-instrument-piano-no_background
               type: image
