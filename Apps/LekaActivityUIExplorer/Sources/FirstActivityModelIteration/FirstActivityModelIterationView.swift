@@ -6,7 +6,7 @@ import DesignKit
 import RobotKit
 import SwiftUI
 
-struct ContentView: View {
+struct FirstActivityModelIterationView: View {
 
     @EnvironmentObject var router: Router
     @State var presentRobotConnection: Bool = false
@@ -83,7 +83,7 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        FirstActivityModelIterationView()
             .previewInterfaceOrientation(.landscapeLeft)
     }
 }
