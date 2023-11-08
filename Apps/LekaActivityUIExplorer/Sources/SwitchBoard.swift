@@ -8,6 +8,7 @@ import SwiftUI
 enum Version {
     case versionSelector
     case firstActivityModelIteration
+    case gameEngineKitNewSystem
 }
 
 class Router: ObservableObject {
@@ -26,6 +27,9 @@ struct SwitchBoard: View {
                         .transition(.opacity)
                 case .firstActivityModelIteration:
                     FirstActivityModelIterationView()
+                        .transition(.opacity)
+                case .gameEngineKitNewSystem:
+                    GameEngineKitNewSystemView()
                         .transition(.opacity)
             }
         }
@@ -48,20 +52,29 @@ struct UIExplorerVersionSelector: View {
                     .font(.headline)
             }
             Spacer()
-            HStack {
-                Spacer()
+            HStack(spacing: 200) {
                 Button {
                     router.currentVersion = .firstActivityModelIteration
                 } label: {
                     VStack(spacing: 20) {
-                        LekaActivityUIExplorerAsset.Answers.dummy2.swiftUIImage
+                        Image(systemName: "1.circle")
                             .resizable()
                             .activityIconImageModifier(diameter: 250, padding: 0)
-                        Text("Nouvelle Version")
+                        Text("First Acvitivy\nModel Iteration")
                             .font(.body)
                     }
                 }
-                Spacer()
+                Button {
+                    router.currentVersion = .gameEngineKitNewSystem
+                } label: {
+                    VStack(spacing: 20) {
+                        Image(systemName: "2.circle")
+                            .resizable()
+                            .activityIconImageModifier(diameter: 250, padding: 0)
+                        Text("New GameEngineKit\nSystem")
+                            .font(.body)
+                    }
+                }
             }
             .frame(maxHeight: 300)
             Spacer()
@@ -77,4 +90,9 @@ struct UIExplorerVersionSelector: View {
             .frame(height: 60)
             .padding(.bottom, 40)
     }
+}
+
+#Preview {
+    SwitchBoard()
+        .environmentObject(Router())
 }
