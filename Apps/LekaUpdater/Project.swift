@@ -5,6 +5,21 @@
 import ProjectDescription
 import ProjectDescriptionHelpers
 
+private var schemes: [Scheme] {
+    var schemeList: [Scheme] = []
+
+    if Environment.createLocalizationSchemes.getBoolean(
+        default: false)
+    {
+        schemeList.append(contentsOf: [
+            SchemeList.l10nFR(name: "LekaUpdater"),
+            SchemeList.l10nEN(name: "LekaUpdater"),
+        ])
+    }
+
+    return schemeList
+}
+
 // Creates our project using a helper function defined in ProjectDescriptionHelpers
 let project = Project.iOSApp(
     name: "LekaUpdater",
@@ -38,9 +53,5 @@ let project = Project.iOSApp(
         ],
         "LSApplicationQueriesSchemes": ["LekaApp"],
     ],
-    options: .options(automaticSchemesOptions: .disabled),
-    schemes: [
-        SchemeList.l10nFR(name: "LekaUpdater"),
-        SchemeList.l10nEN(name: "LekaUpdater"),
-    ]
+    schemes: schemes
 )
