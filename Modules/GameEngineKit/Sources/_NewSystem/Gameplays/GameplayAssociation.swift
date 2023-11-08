@@ -6,7 +6,8 @@ import Combine
 import ContentKit
 import Foundation
 
-class GameplayAssociation<ChoiceModelType>: StatefulGameplayProtocol {
+class GameplayAssociation<ChoiceModelType>: StatefulGameplayProtocol
+where ChoiceModelType: GameplayChoiceModelProtocol {
 
     var state: CurrentValueSubject<ExerciseState, Never> = .init(.idle)
 
