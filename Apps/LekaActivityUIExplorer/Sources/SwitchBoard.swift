@@ -29,7 +29,7 @@ struct SwitchBoard: View {
                     FirstActivityModelIterationView()
                         .transition(.opacity)
                 case .gameEngineKitNewSystem:
-                    GameEngineKitNewSystemView()
+                    GEKNewSystemView()
                         .transition(.opacity)
             }
         }
