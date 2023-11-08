@@ -13,7 +13,11 @@ sequence:
         interface: listenThenTouchToSelect
         gameplay: selectAllRightAnswers
         payload:
-          media: guitar
+          action:
+            type: ipad
+            value:
+              type: audio
+              value: guitar
           choices:
             - value: image-instrument-guitar
               type: image
@@ -24,7 +28,11 @@ sequence:
         interface: listenThenTouchToSelect
         gameplay: selectAllRightAnswers
         payload:
-          media: violin
+          action:
+            type: ipad
+            value:
+              type: audio
+              value: violin
           choices:
             - value: image-instrument-violin
               type: image
@@ -37,7 +45,11 @@ sequence:
         interface: listenThenTouchToSelect
         gameplay: selectAllRightAnswers
         payload:
-          media: saxophone
+          action:
+            type: ipad
+            value:
+              type: audio
+              value: saxophone
           choices:
             - value: image-instrument-saxophone
               type: image
@@ -53,7 +65,11 @@ sequence:
         interface: listenThenTouchToSelect
         gameplay: selectAllRightAnswers
         payload:
-          media: piano
+          action:
+            type: ipad
+            value:
+              type: audio
+              value: piano
           choices:
             - value: image-instrument-harmonica
               type: image
@@ -70,7 +86,11 @@ sequence:
         interface: listenThenTouchToSelect
         gameplay: selectAllRightAnswers
         payload:
-          media: flute
+          action:
+            type: ipad
+            value:
+              type: audio
+              value: flute
           choices:
             - value: image-instrument-violin
               type: image
@@ -91,7 +111,11 @@ sequence:
         interface: listenThenTouchToSelect
         gameplay: selectAllRightAnswers
         payload:
-          media: drums
+          action:
+            type: ipad
+            value:
+              type: audio
+              value: drums
           choices:
             - value: image-instrument-drums
               type: image

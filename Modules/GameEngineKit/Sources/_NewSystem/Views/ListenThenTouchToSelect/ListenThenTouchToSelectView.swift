@@ -29,11 +29,11 @@ public struct ListenThenTouchToSelectView: View {
         guard case .selection(let payload) = exercise.payload else {
             fatalError("Exercise payload is not .selection")
         }
-        guard let media = payload.media else {
-            fatalError("Exercise payload has no media")
+        guard case .ipad(type: .audio(name: let name)) = payload.action else {
+            fatalError("Exercise payload has no iPad audio action")
         }
 
-        let audioRecording = AudioRecordingModel(name: media, file: media)
+        let audioRecording = AudioRecordingModel(name: name, file: name)
         self._audioPlayer = StateObject(wrappedValue: AudioPlayer(audioRecording: audioRecording))
 
         self._viewModel = StateObject(wrappedValue: SelectionViewViewModel(choices: payload.choices))
