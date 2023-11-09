@@ -73,12 +73,13 @@ public enum ExercisePayload: Codable {
 
         // association
         // TODO(@ladislas): Add PayloadType to Payload
-        if container.allKeys.count == 2 {
+        if container.allKeys.contains(.association) {
+            let type = try container.decode(ExerciseType.self, forKey: .association)
             let choices = try container.decode([AssociationChoice].self, forKey: .choices)
             let shuffleChoices = try container.decodeIfPresent(Bool.self, forKey: .shuffleChoices) ?? false
 
             self = .association(
-                AssociationPayload(choices: choices, shuffleChoices: shuffleChoices))
+                AssociationPayload(type: type, choices: choices, shuffleChoices: shuffleChoices))
             return
         }
 
@@ -121,7 +122,7 @@ public enum ExercisePayload: Codable {
     }
 
     private enum CustomKeys: String, CodingKey {
-        case choices, dropZoneA, dropZoneB, payload, action
+        case choices, dropZoneA, dropZoneB, payload, action, association
         case shuffleChoices = "shuffle_choices"
     }
 }
@@ -322,6 +323,7 @@ public struct AssociationChoice: Codable {
 }
 
 public struct AssociationPayload: Codable {
+    public let type: ExerciseType
     public let choices: [AssociationChoice]
     public let shuffleChoices: Bool
 }
