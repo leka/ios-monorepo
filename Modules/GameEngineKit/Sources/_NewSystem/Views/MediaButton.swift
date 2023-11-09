@@ -68,17 +68,14 @@ struct ActionObserveButton: View {
             if let uiImage = UIImage(named: image) {
                 Image(uiImage: uiImage)
                     .resizable()
-                    .scaledToFill()
-                    .clipShape(Circle())
-                    .frame(
-                        width: 200,
-                        height: 200
-                    )
                     .overlay {
-                        LinearGradient(
+                        RadialGradient(
                             gradient: Gradient(colors: [
-                                Color.black.opacity(0.7), Color.black.opacity(0.3), Color.black.opacity(0.7),
-                            ]), startPoint: .top, endPoint: .bottom
+                                Color.black.opacity(0.6), Color.black.opacity(0.9), Color.black.opacity(1),
+                            ]),
+                            center: .center,
+                            startRadius: 50,
+                            endRadius: 300
                         )
                         .opacity(1 - animationPercent)
 
@@ -93,6 +90,12 @@ struct ActionObserveButton: View {
                         }
                         .opacity(1 - animationPercent)
                     }
+                    .clipShape(RoundedRectangle(cornerRadius: 8))
+                    .frame(
+                        width: 460,
+                        height: 460
+                    )
+
             } else {
                 Text("❌\nImage not found:\n\(image)")
                     .multilineTextAlignment(.center)
@@ -101,19 +104,17 @@ struct ActionObserveButton: View {
                             .stroke(Color.red, lineWidth: 5)
                     }
                     .frame(
-                        width: 200,
-                        height: 200
+                        width: 460,
+                        height: 460
                     )
             }
         }
         .disabled(imageHasBeenObserved)
-        .buttonStyle(ActionButtonStyle(progress: animationPercent))
-        .scaleEffect(imageHasBeenObserved ? 1.0 : 0.8, anchor: .center)
         .shadow(
             color: .accentColor.opacity(0.2),
             radius: imageHasBeenObserved ? 6 : 3, x: 0, y: 3
         )
-        .animation(.spring(response: 1, dampingFraction: 0.45), value: imageHasBeenObserved)
+        .animation(.bouncy, value: animationPercent)
     }
 }
 
