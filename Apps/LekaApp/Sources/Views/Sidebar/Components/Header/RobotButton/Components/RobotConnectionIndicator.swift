@@ -3,13 +3,15 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import DesignKit
+import RobotKit
 import SwiftUI
 
 struct RobotConnectionIndicator: View {
 
-    @EnvironmentObject var robotVM: RobotViewModel
     @EnvironmentObject var metrics: UIMetrics
-    // Animation
+
+    @StateObject var robotViewModel: ConnectedRobotInformationViewModel = ConnectedRobotInformationViewModel()
+
     @State private var isAnimated: Bool = false
     @State private var diameter: CGFloat = 0
 
@@ -17,14 +19,14 @@ struct RobotConnectionIndicator: View {
         ZStack {
             Circle()
                 .fill(
-                    robotVM.robotIsConnected
+                    robotViewModel.isConnected
                         ? DesignKitAsset.Colors.lekaGreen.swiftUIColor : DesignKitAsset.Colors.lekaDarkGray.swiftUIColor
                 )
                 .opacity(0.4)
 
             Image(
                 uiImage:
-                    robotVM.robotIsConnected
+                    robotViewModel.isConnected
                     ? DesignKitAsset.Images.robotConnected.image : DesignKitAsset.Images.robotDisconnected.image
             )
             .resizable()
@@ -34,7 +36,7 @@ struct RobotConnectionIndicator: View {
 
             Circle()
                 .stroke(
-                    robotVM.robotIsConnected
+                    robotViewModel.isConnected
                         ? DesignKitAsset.Colors.lekaGreen.swiftUIColor
                         : DesignKitAsset.Colors.lekaDarkGray.swiftUIColor,
                     lineWidth: 4
@@ -50,7 +52,7 @@ struct RobotConnectionIndicator: View {
                 .animation(
                     Animation.easeInOut(duration: 1.5).delay(5).repeatForever(autoreverses: false), value: diameter
                 )
-                .opacity(robotVM.robotIsConnected ? 1 : 0.0)
+                .opacity(robotViewModel.isConnected ? 1 : 0.0)
         )
         .overlay(
             alignment: .topTrailing,
@@ -65,7 +67,7 @@ struct RobotConnectionIndicator: View {
     }
 
     @ViewBuilder private var badgeView: some View {
-        if !robotVM.robotIsConnected {
+        if !robotViewModel.isConnected {
             Image(systemName: "exclamationmark.circle.fill")
                 .symbolRenderingMode(.palette)
                 .foregroundStyle(.white, .red)

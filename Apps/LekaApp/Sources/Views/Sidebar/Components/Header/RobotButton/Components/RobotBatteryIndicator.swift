@@ -6,7 +6,7 @@ import SwiftUI
 
 struct RobotBatteryIndicator: View {
 
-    @Binding var level: Double
+    @Binding var level: Int
     @Binding var charging: Bool
 
     @State private var opacity: Double = 1
