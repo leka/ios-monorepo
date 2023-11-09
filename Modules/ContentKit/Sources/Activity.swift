@@ -73,14 +73,32 @@ public enum ExercisePayload: Codable {
 
         // association
         // TODO(@ladislas): Check PayloadType in association Yaml
-        if container.allKeys.contains(.type) {
-            let type = try container.decode(ExerciseType.self, forKey: .type)
-            let choices = try container.decode([AssociationChoice].self, forKey: .choices)
-            let shuffleChoices = try container.decodeIfPresent(Bool.self, forKey: .shuffleChoices) ?? false
+        let payloadType = try? container.decodeIfPresent(ExerciseType.self, forKey: .type)
+        switch payloadType {
+            case .association:
+                let type = try container.decode(ExerciseType.self, forKey: .type)
+                let choices = try container.decode([AssociationChoice].self, forKey: .choices)
+                let shuffleChoices = try container.decodeIfPresent(Bool.self, forKey: .shuffleChoices) ?? false
 
-            self = .association(
-                AssociationPayload(type: type, choices: choices, shuffleChoices: shuffleChoices))
-            return
+                self = .association(
+                    AssociationPayload(type: type, choices: choices, shuffleChoices: shuffleChoices))
+                return
+            case .dragAndDrop:
+                let dropZoneA = try container.decode(DropZoneDetails.self, forKey: .dropZoneA)
+                let dropZoneB = try container.decodeIfPresent(DropZoneDetails.self, forKey: .dropZoneB)
+                let choices = try container.decode([DragAndDropChoice].self, forKey: .choices)
+
+                self = .dragAndDrop(DragAndDropPayload(dropZoneA: dropZoneA, dropZoneB: dropZoneB, choices: choices))
+                return
+            case .selection:
+                let choices = try container.decode([SelectionChoice].self, forKey: .choices)
+                let action = try? container.decode(Action.self, forKey: .action)
+                let shuffleChoices = try container.decodeIfPresent(Bool.self, forKey: .shuffleChoices) ?? false
+
+                self = .selection(SelectionPayload(choices: choices, action: action, shuffleChoices: shuffleChoices))
+                return
+            case .none:
+                print("Payload Type is missing")
         }
 
         // drag and drop

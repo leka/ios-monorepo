@@ -99,6 +99,9 @@ public struct ActivityView: View {
                     exercise: viewModel.currentExercise,
                     data: viewModel.currentExerciseSharedData
                 )
+
+            case .association:
+                Text("association")
         }
     }
 
