@@ -78,6 +78,13 @@ public struct ActivityView: View {
                 )
                 .id(viewModel.currentExerciseIndexInSequence)
 
+            case .robotThenTouchToSelect:
+                RobotThenTouchToSelectView(
+                    exercise: viewModel.currentExercise,
+                    data: viewModel.currentExerciseSharedData
+                )
+                .id(viewModel.currentExerciseIndexInSequence)
+
             case .listenThenTouchToSelect:
                 ListenThenTouchToSelectView(
                     exercise: viewModel.currentExercise,
