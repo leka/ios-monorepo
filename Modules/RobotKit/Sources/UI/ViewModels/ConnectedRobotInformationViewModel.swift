@@ -7,6 +7,14 @@ import SwiftUI
 
 public class ConnectedRobotInformationViewModel: ObservableObject {
 
+    @Published public var isConnected: Bool = false {
+        didSet {
+            self.isNotConnected = !isConnected
+        }
+    }
+
+    @Published public var isNotConnected: Bool = true
+
     @Published public var name: String = "(n/a)"
     @Published public var serialNumber: String = "(n/a)"
     @Published public var osVersion: String = "(n/a)"
@@ -26,7 +34,8 @@ public class ConnectedRobotInformationViewModel: ObservableObject {
         robot.isConnected
             .receive(on: DispatchQueue.main)
             .sink { isConnected in
-                guard !isConnected else { return }
+                self.isConnected = isConnected
+                guard self.isNotConnected else { return }
                 self.name = "(not connected)"
                 self.serialNumber = ""
                 self.osVersion = ""
