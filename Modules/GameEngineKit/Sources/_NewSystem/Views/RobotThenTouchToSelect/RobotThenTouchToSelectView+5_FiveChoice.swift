@@ -14,7 +14,7 @@ extension RobotThenTouchToSelectView {
 
         private let kHorizontalSpacing: CGFloat = 60
         private let kVerticalSpacing: CGFloat = 40
-        private let kAnswerSize: CGFloat = 240
+        private let kAnswerSize: CGFloat = 200
 
         var body: some View {
             VStack(spacing: kVerticalSpacing) {
