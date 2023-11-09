@@ -38,8 +38,8 @@ let kActivities: [Activity] = [
     // ContentKit.decodeActivity("activity-dragAndDrop-two_zones-multiple_right_answer-colors"),
     // ContentKit.decodeActivity("activity-dragAndDrop-two_zones-multiple_right_answer-mixed"),
 
-    ContentKit.decodeActivity("activity-medley"),
-    ContentKit.decodeActivity("activity-colorBingo"),
+    //    ContentKit.decodeActivity("activity-medley"),
+    //    ContentKit.decodeActivity("activity-colorBingo"),
     ContentKit.decodeActivity("activity-association-two_categories-multiple_right_answers-images"),
 ]
 

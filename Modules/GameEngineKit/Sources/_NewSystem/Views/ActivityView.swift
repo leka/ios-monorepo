@@ -76,11 +76,11 @@ public struct ActivityView: View {
                     data: viewModel.currentExerciseSharedData
                 )
 
-            case .robotThenTouchToSelect:
-                RobotThenTouchToSelectView(
-                    exercise: viewModel.currentExercise,
-                    data: viewModel.currentExerciseSharedData
-                )
+            //            case .robotThenTouchToSelect:
+            //                RobotThenTouchToSelectView(
+            //                    exercise: viewModel.currentExercise,
+            //                    data: viewModel.currentExerciseSharedData
+            //                )
 
             case .listenThenTouchToSelect:
                 ListenThenTouchToSelectView(
