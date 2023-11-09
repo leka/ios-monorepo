@@ -12,8 +12,8 @@ extension ObserveThenTouchToSelectView {
         @ObservedObject var viewModel: SelectionViewViewModel
         let isTappable: Bool
 
-        private let kHorizontalSpacing: CGFloat = 150
-        private let kAnswerSize: CGFloat = 300
+        private let kHorizontalSpacing: CGFloat = 60
+        private let kAnswerSize: CGFloat = 180
 
         var body: some View {
             HStack(spacing: kHorizontalSpacing) {

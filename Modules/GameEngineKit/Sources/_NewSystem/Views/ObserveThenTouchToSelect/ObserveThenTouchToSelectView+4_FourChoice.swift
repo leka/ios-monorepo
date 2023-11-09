@@ -12,9 +12,9 @@ extension ObserveThenTouchToSelectView {
         @ObservedObject var viewModel: SelectionViewViewModel
         let isTappable: Bool
 
-        private let kHorizontalSpacing: CGFloat = 200
+        private let kHorizontalSpacing: CGFloat = 60
         private let kVerticalSpacing: CGFloat = 40
-        private let kAnswerSize: CGFloat = 240
+        private let kAnswerSize: CGFloat = 180
 
         var body: some View {
             VStack(spacing: kVerticalSpacing) {
