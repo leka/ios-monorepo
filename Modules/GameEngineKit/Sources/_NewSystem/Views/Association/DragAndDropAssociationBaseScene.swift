@@ -38,7 +38,7 @@ class DragAndDropAssociationBaseScene: SKScene {
 
         setFirstAnswerPosition()
         //        layoutDropZones()
-//        getExpectedItems()
+        //        getExpectedItems()
         layoutAnswers()
     }
 
@@ -107,28 +107,28 @@ class DragAndDropAssociationBaseScene: SKScene {
         self.defaultPosition.x += spacer
     }
 
-//    func getExpectedItems() {
-//        let index = viewModel.choices.firstIndex(where: { $0.choice.dropZone == .zoneA })!
-//        let gameplayChoiceModel = viewModel.choices[index]
-//        let expectedItem = gameplayChoiceModel.choice.value
-//        let expectedNode = SKSpriteNode()
-//
-//                guard hints else {
-//                    expectedNode.name = expectedItem
-//                    (expectedItemsNodes[dropZoneA.details.value, default: []]).append(expectedNode)
-//                    return
-//                }
-//                let texture = SKTexture(image: UIImage(named: expectedItem)!)
-//                let action = SKAction.setTexture(texture, resize: true)
-//                expectedNode.run(action)
-//                expectedNode.name = expectedItem
-//                expectedNode.texture = texture
-//                expectedNode.scaleForMax(sizeOf: biggerSide * 0.8)
-//                expectedNode.position = CGPoint(x: dropZoneA.node.position.x + 80, y: 110)
-//                (expectedItemsNodes[dropZoneA.details.value, default: []]).append(expectedNode)
-//        
-//                addChild(expectedNode)
-//    }
+    //    func getExpectedItems() {
+    //        let index = viewModel.choices.firstIndex(where: { $0.choice.dropZone == .zoneA })!
+    //        let gameplayChoiceModel = viewModel.choices[index]
+    //        let expectedItem = gameplayChoiceModel.choice.value
+    //        let expectedNode = SKSpriteNode()
+    //
+    //                guard hints else {
+    //                    expectedNode.name = expectedItem
+    //                    (expectedItemsNodes[dropZoneA.details.value, default: []]).append(expectedNode)
+    //                    return
+    //                }
+    //                let texture = SKTexture(image: UIImage(named: expectedItem)!)
+    //                let action = SKAction.setTexture(texture, resize: true)
+    //                expectedNode.run(action)
+    //                expectedNode.name = expectedItem
+    //                expectedNode.texture = texture
+    //                expectedNode.scaleForMax(sizeOf: biggerSide * 0.8)
+    //                expectedNode.position = CGPoint(x: dropZoneA.node.position.x + 80, y: 110)
+    //                (expectedItemsNodes[dropZoneA.details.value, default: []]).append(expectedNode)
+    //
+    //                addChild(expectedNode)
+    //    }
 
     func goodAnswerBehavior(_ node: DraggableImageAnswerNode) {
         node.scaleForMax(sizeOf: biggerSide * 0.8)
@@ -158,7 +158,7 @@ class DragAndDropAssociationBaseScene: SKScene {
         group.notify(queue: .main) {
             self.onDropAction(node)
         }
-//        disableWrongAnswer(node)
+        //        disableWrongAnswer(node)
     }
 
     func onDragAnimation(_ node: SKSpriteNode) {
@@ -177,13 +177,13 @@ class DragAndDropAssociationBaseScene: SKScene {
         selectedNodes = [:]
     }
 
-//    private func disableWrongAnswer(_ node: DraggableImageAnswerNode) {
-//        let gameplayChoiceModel = viewModel.choices.first(where: { $0.choice.value == node.name })!
-//        if gameplayChoiceModel.choice.dropZone == nil {
-//            node.colorBlendFactor = 0.4
-//            node.isDraggable = false
-//        }
-//    }
+    //    private func disableWrongAnswer(_ node: DraggableImageAnswerNode) {
+    //        let gameplayChoiceModel = viewModel.choices.first(where: { $0.choice.value == node.name })!
+    //        if gameplayChoiceModel.choice.dropZone == nil {
+    //            node.colorBlendFactor = 0.4
+    //            node.isDraggable = false
+    //        }
+    //    }
 
     override func didMove(to view: SKView) {
         self.reset()

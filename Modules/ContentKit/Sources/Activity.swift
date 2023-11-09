@@ -282,7 +282,12 @@ public struct DropZoneDetails: Codable {
     public let type: UIElementType
 }
 
-public struct DragAndDropChoice: Codable {
+public protocol DraggableChoice {
+    var value: String { get }
+    var type: UIElementType { get }
+}
+
+public struct DragAndDropChoice: Codable, DraggableChoice {
     public let value: String
     public let type: UIElementType
     public let dropZone: ChoiceDropZone?
@@ -293,7 +298,7 @@ public struct DragAndDropChoice: Codable {
     }
 }
 
-public struct AssociationChoice: Codable {
+public struct AssociationChoice: Codable, DraggableChoice {
     public let value: String
     public let type: UIElementType
     public let category: AssociationCategory

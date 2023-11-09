@@ -1,5 +1,3 @@
-
-
 // Leka - iOS Monorepo
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
@@ -27,7 +25,7 @@ class DragAndDropAssociationViewViewModel: ObservableObject {
     }
 
     public func onChoiceTapped(choice: GameplayAssociationChoiceModel) {
-//        gameplay.process(choice)
+        //        gameplay.process(choice)
     }
 
     private func subscribeToGameplayDragAndDropChoicesUpdates() {
@@ -49,4 +47,3 @@ class DragAndDropAssociationViewViewModel: ObservableObject {
     }
 
 }
-

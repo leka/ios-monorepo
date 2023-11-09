@@ -20,7 +20,7 @@ public struct DragAndDropAssociationView: View {
 
     public init(exercise: Exercise, data: ExerciseSharedData? = nil) {
         guard case .association(let payload) = exercise.payload else {
-            fatalError("Exercise payload is not .dragAndDrop")
+            fatalError("Exercise payload is not .association")
         }
 
         self._viewModel = StateObject(wrappedValue: DragAndDropAssociationViewViewModel(choices: payload.choices))
