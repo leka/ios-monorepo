@@ -3,23 +3,22 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import Combine
-import RobotKit
 import SwiftUI
 
-class ConnectedRobotInformationViewModel: ObservableObject {
+public class ConnectedRobotInformationViewModel: ObservableObject {
 
-    @Published var name: String = "(n/a)"
-    @Published var serialNumber: String = "(n/a)"
-    @Published var osVersion: String = "(n/a)"
+    @Published public var name: String = "(n/a)"
+    @Published public var serialNumber: String = "(n/a)"
+    @Published public var osVersion: String = "(n/a)"
 
-    @Published var battery: Int = 0
-    @Published var isCharging: Bool = false
+    @Published public var battery: Int = 0
+    @Published public var isCharging: Bool = false
 
     let robot = Robot.shared
 
     private var cancellables: Set<AnyCancellable> = []
 
-    init() {
+    public init() {
         getRobotInformation()
     }
 
