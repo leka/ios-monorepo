@@ -47,11 +47,6 @@ public struct ObserveThenTouchToSelectView: View {
             ActionObserveButton(image: image, imageHasBeenObserved: $imageHasBeenObserved)
                 .padding(20)
 
-            Divider()
-                .opacity(0.4)
-                .frame(maxHeight: 500)
-                .padding(.vertical, 20)
-
             Spacer()
 
             switch interface {
