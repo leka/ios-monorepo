@@ -12,7 +12,7 @@ extension ListenThenTouchToSelectView {
         @ObservedObject var viewModel: SelectionViewViewModel
         let isTappable: Bool
 
-        private let kHorizontalSpacing: CGFloat = 150
+        private let kHorizontalSpacing: CGFloat = 100
         private let kAnswerSize: CGFloat = 300
 
         var body: some View {
