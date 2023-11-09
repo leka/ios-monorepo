@@ -7,8 +7,6 @@ import Combine
 import DesignKit
 import SwiftUI
 
-// TODO(@ladislas): Move to RobotKit to be available for all apps
-
 public struct RobotConnectionView: View {
 
     @StateObject var viewModel: RobotConnectionViewModel
@@ -52,6 +50,7 @@ public struct RobotConnectionView: View {
                 .padding(.top, 15)
                 .padding(.bottom, 40)
             }
+            .background(backgroundView.ignoresSafeArea(.all))
             .onAppear {
                 viewModel.scanForRobots()
             }
@@ -183,6 +182,10 @@ public struct RobotConnectionView: View {
             }
             .disabled(true)
         }
+    }
+
+    var backgroundView: some View {
+        Image(uiImage: DesignKitAsset.Images.interfaceCloud.image)
     }
 
 }
