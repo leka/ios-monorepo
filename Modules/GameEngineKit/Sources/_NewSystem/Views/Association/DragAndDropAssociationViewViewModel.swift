@@ -6,6 +6,7 @@ import Combine
 import ContentKit
 import SwiftUI
 
+// TODO(@macteuts): adapt this to Association
 class DragAndDropAssociationViewViewModel: ObservableObject {
 
     @Published var choices: [GameplayAssociationChoiceModel] = []
