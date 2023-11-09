@@ -7,12 +7,6 @@ import SwiftUI
 
 public struct RobotDiscoveryViewModel: Identifiable {
 
-    public struct Battery: Equatable {
-        let value: Int
-        let name: String
-        let color: Color
-    }
-
     public enum Status: CaseIterable {
         case connected
         case unselected
@@ -24,7 +18,7 @@ public struct RobotDiscoveryViewModel: Identifiable {
     public let status: Status
     public let isCharging: Bool
     public let osVersion: String
-    public let battery: Battery
+    public let battery: BatteryViewModel
 
     init(
         name: String, battery: Int, isCharging: Bool, osVersion: String, status: Status = .unselected
@@ -34,7 +28,7 @@ public struct RobotDiscoveryViewModel: Identifiable {
         self.status = status
         self.isCharging = isCharging
         self.osVersion = "LekaOS \(osVersion)"
-        self.battery = computeBatteryImage(for: battery)
+        self.battery = BatteryViewModel(level: battery)
     }
 
     init(discovery: RobotDiscoveryModel, status: Status = .unselected) {
@@ -43,7 +37,7 @@ public struct RobotDiscoveryViewModel: Identifiable {
         self.status = status
         self.isCharging = discovery.isCharging
         self.osVersion = "LekaOS \(discovery.osVersion)"
-        self.battery = computeBatteryImage(for: discovery.battery)
+        self.battery = BatteryViewModel(level: discovery.battery)
     }
 
 }
@@ -56,21 +50,4 @@ extension RobotDiscoveryViewModel: Equatable {
             && lhs.battery == rhs.battery
     }
 
-}
-
-private func computeBatteryImage(for value: Int) -> RobotDiscoveryViewModel.Battery {
-    switch value {
-        case 0..<10:
-            RobotDiscoveryViewModel.Battery(value: value, name: "battery.0", color: .red)
-        case 10..<25:
-            RobotDiscoveryViewModel.Battery(value: value, name: "battery.25", color: .red)
-        case 25..<45:
-            RobotDiscoveryViewModel.Battery(value: value, name: "battery.25", color: .orange)
-        case 45..<70:
-            RobotDiscoveryViewModel.Battery(value: value, name: "battery.50", color: .yellow)
-        case 70..<95:
-            RobotDiscoveryViewModel.Battery(value: value, name: "battery.75", color: .green)
-        default:
-            RobotDiscoveryViewModel.Battery(value: value, name: "battery.100", color: .green)
-    }
 }
