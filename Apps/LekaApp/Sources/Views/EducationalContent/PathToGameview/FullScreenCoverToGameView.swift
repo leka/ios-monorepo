@@ -2,6 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import RobotKit
 import SwiftUI
 
 struct FullScreenCoverToGameView: View {
@@ -15,7 +16,7 @@ struct FullScreenCoverToGameView: View {
                     for: PathsToGame.self,
                     destination: { destination in
                         switch destination {
-                            case .robot: RobotPickerDeprecated()
+                            case .robot: RobotConnectionView()
                             case .user: ProfileSelector_Users()
                             case .game: GameView()
                         }
