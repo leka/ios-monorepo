@@ -15,7 +15,7 @@ public struct RobotConnectionView: View {
 
     @Environment(\.dismiss) var dismiss
 
-    public init(viewModel: RobotConnectionViewModel) {
+    public init(viewModel: RobotConnectionViewModel = RobotConnectionViewModel()) {
         self._viewModel = StateObject(wrappedValue: viewModel)
     }
 
