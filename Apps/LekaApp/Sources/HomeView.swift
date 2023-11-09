@@ -43,7 +43,7 @@ struct HomeView: View {
         }
         .fullScreenCover(isPresented: $navigationVM.showRobotPicker) {
             NavigationStack {
-                RobotPicker()
+                RobotPickerDeprecated()
             }
         }
         .fullScreenCover(isPresented: $navigationVM.showActivitiesFullScreenCover) {

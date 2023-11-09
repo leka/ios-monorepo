@@ -5,7 +5,7 @@
 import DesignKit
 import SwiftUI
 
-struct RobotPicker: View {
+struct RobotPickerDeprecated: View {
 
     @EnvironmentObject var settings: SettingsViewModel
     @EnvironmentObject var navigationVM: NavigationViewModel
@@ -195,7 +195,7 @@ struct RobotPicker: View {
 
 struct RobotsConnectView_Previews: PreviewProvider {
     static var previews: some View {
-        RobotPicker()
+        RobotPickerDeprecated()
             .environmentObject(RobotViewModel())
             .environmentObject(SettingsViewModel())
             .environmentObject(UIMetrics())
