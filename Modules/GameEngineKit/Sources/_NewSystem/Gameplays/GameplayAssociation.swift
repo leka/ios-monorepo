@@ -9,6 +9,7 @@ import Foundation
 class GameplayAssociation<ChoiceModelType>: StatefulGameplayProtocol
 where ChoiceModelType: GameplayChoiceModelProtocol {
 
+    var choices: CurrentValueSubject<[GameplayAssociationChoiceModel], Never> = .init([])
     var state: CurrentValueSubject<ExerciseState, Never> = .init(.idle)
 
 }

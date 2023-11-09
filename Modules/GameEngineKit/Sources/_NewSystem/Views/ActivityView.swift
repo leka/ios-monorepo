@@ -100,8 +100,11 @@ public struct ActivityView: View {
                 .id(viewModel.currentExerciseIndexInSequence)
 
             case .association:
-                Text("association")
-                    .id(viewModel.currentExerciseIndexInSequence)
+                DragAndDropAssociationView(
+                    exercise: viewModel.currentExercise,
+                    data: viewModel.currentExerciseSharedData
+                )
+                .id(viewModel.currentExerciseIndexInSequence)
         }
     }
 
