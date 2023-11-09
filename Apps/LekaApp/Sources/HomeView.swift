@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import DesignKit
+import RobotKit
 import SwiftUI
 
 struct HomeView: View {
@@ -43,7 +44,7 @@ struct HomeView: View {
         }
         .fullScreenCover(isPresented: $navigationVM.showRobotPicker) {
             NavigationStack {
-                RobotPicker()
+                RobotConnectionView()
             }
         }
         .fullScreenCover(isPresented: $navigationVM.showActivitiesFullScreenCover) {
