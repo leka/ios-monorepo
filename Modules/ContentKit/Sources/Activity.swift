@@ -72,6 +72,7 @@ public enum ExercisePayload: Codable {
         let container = try decoder.container(keyedBy: CustomKeys.self)
 
         // association
+        // TODO(@ladislas): Check PayloadType in association Yaml
         if container.allKeys.contains(.type) {
             let type = try container.decode(ExerciseType.self, forKey: .type)
             let choices = try container.decode([AssociationChoice].self, forKey: .choices)
@@ -83,6 +84,7 @@ public enum ExercisePayload: Codable {
         }
 
         // drag and drop
+        // TODO(@ladislas): Add PayloadType to Yaml
         if container.allKeys.contains(.dropZoneA) {
             let dropZoneA = try container.decode(DropZoneDetails.self, forKey: .dropZoneA)
             let dropZoneB = try container.decodeIfPresent(DropZoneDetails.self, forKey: .dropZoneB)
@@ -93,6 +95,7 @@ public enum ExercisePayload: Codable {
         }
 
         // ? Selection
+        // TODO(@ladislas): Add PayloadType to Yaml
         if container.allKeys.contains(.choices) {
             let choices = try container.decode([SelectionChoice].self, forKey: .choices)
             let action = try? container.decode(Action.self, forKey: .action)
