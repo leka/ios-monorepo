@@ -20,10 +20,6 @@ public struct Exercise: Codable {
     }
 }
 
-public struct ExerciseSequence: Codable {
-    public let exercises: [Exercise]
-}
-
 public enum ExerciseType: String, Codable {
     case selection
     case dragAndDrop

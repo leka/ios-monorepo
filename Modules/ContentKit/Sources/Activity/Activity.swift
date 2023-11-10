@@ -11,7 +11,7 @@ public struct Activity: Codable, Identifiable {
     public let description: String
     public let image: String
     public let shuffleSequences: Bool
-    public var sequence: [ExerciseSequence]
+    public var sequence: [Exercise.Sequence]
 
     private enum CodingKeys: String, CodingKey {
         case id, name, description, image, sequence
@@ -25,7 +25,7 @@ public struct Activity: Codable, Identifiable {
         self.name = try container.decode(String.self, forKey: .name)
         self.description = try container.decode(String.self, forKey: .description)
         self.image = try container.decode(String.self, forKey: .image)
-        self.sequence = try container.decode([ExerciseSequence].self, forKey: .sequence)
+        self.sequence = try container.decode([Exercise.Sequence].self, forKey: .sequence)
 
         self.shuffleSequences = try container.decodeIfPresent(Bool.self, forKey: .shuffleSequences) ?? false
     }
