@@ -5,7 +5,7 @@
 import DesignKit
 import SwiftUI
 
-struct ActionListenButton: View {
+struct ActionButtonListen: View {
     @ObservedObject var audioPlayer: AudioPlayer
 
     var body: some View {
@@ -30,5 +30,5 @@ struct ActionListenButton: View {
 }
 
 #Preview {
-    ActionListenButton(audioPlayer: AudioPlayer(audioRecording: AudioRecordingModel(name: "drums", file: "drums")))
+    ActionButtonListen(audioPlayer: AudioPlayer(audioRecording: AudioRecordingModel(name: "drums", file: "drums")))
 }

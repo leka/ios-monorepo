@@ -5,7 +5,7 @@
 import DesignKit
 import SwiftUI
 
-struct ActionObserveButton: View {
+struct ActionButtonObserve: View {
     let image: String
     @Binding var imageWasTapped: Bool
     @State private var animationPercent: CGFloat = 0.0
@@ -75,7 +75,7 @@ struct ActionObserveButton: View {
     struct ActionObserveButtonContainer: View {
         @State var imageWasTapped = false
         var body: some View {
-            ActionObserveButton(
+            ActionButtonObserve(
                 image: "placeholder-observe_then_touch_to_select", imageWasTapped: $imageWasTapped)
         }
     }
