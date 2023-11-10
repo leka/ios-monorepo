@@ -28,9 +28,11 @@ struct ErrorContentView: View {
             Text(errorDescription)
                 .font(.title2)
                 .bold()
+                .fixedSize(horizontal: false, vertical: true)
                 .multilineTextAlignment(.center)
 
             Text(errorInstruction)
+                .fixedSize(horizontal: false, vertical: true)
                 .multilineTextAlignment(.center)
 
             Button {

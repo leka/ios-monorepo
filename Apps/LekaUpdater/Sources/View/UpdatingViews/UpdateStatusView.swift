@@ -39,7 +39,6 @@ struct UpdateStatusView: View {
                         .bold()
                         .padding()
                 } else {
-
                     Text(l10n.update.stepNumber("\(viewModel.stepNumber)/3"))
                         .font(.title)
                         .bold()
@@ -65,7 +64,8 @@ struct UpdateStatusView: View {
                             ErrorContentView(
                                 errorDescription: viewModel.errorDescription,
                                 errorInstruction: viewModel.errorInstructions,
-                                isConnectionViewPresented: $isConnectionViewPresented)
+                                isConnectionViewPresented: $isConnectionViewPresented
+                            )
                     }
                     Spacer()
                 }
