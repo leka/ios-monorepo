@@ -3,13 +3,15 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import DesignKit
+import RobotKit
 import SwiftUI
 
 struct GoToRobotConnectButton: View {
 
-    @EnvironmentObject var robotVM: RobotViewModel
     @EnvironmentObject var metrics: UIMetrics
     @EnvironmentObject var navigationVM: NavigationViewModel
+
+    @StateObject var robotViewModel: ConnectedRobotInformationViewModel = ConnectedRobotInformationViewModel()
 
     var body: some View {
         Button {
@@ -31,26 +33,49 @@ struct GoToRobotConnectButton: View {
 
     @ViewBuilder
     private var buttonContent: some View {
-        if robotVM.robotIsConnected {
+        if robotViewModel.isConnected {
             VStack(alignment: .leading, spacing: 4) {
                 Text("Connecté à")
-                Text(robotVM.currentlyConnectedRobotName)
+                Text(robotViewModel.name)
                     .font(metrics.reg16)
-                HStack(spacing: 4) {
-                    RobotBatteryIndicator(
-                        level: $robotVM.robotChargeLevel,
-                        charging: $robotVM.robotIsCharging)
-                    Text(robotVM.robotOSVersion)
-                        .foregroundColor(DesignKitAsset.Colors.lekaDarkGray.swiftUIColor)
-                }
+                robotCharginStatusAndBattery
             }
             .font(metrics.reg12)
             .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
         } else {
-            Text("Connectez vous à votre LEKA.")
+            Text("Connectez-vous à votre Leka")
                 .font(metrics.reg16)
                 .multilineTextAlignment(.leading)
                 .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
         }
     }
+
+    private var robotCharginStatusAndBattery: some View {
+        HStack(spacing: 5) {
+            Text(verbatim: "LekaOS v\(robotViewModel.osVersion)")
+                .foregroundColor(.gray)
+
+            if robotViewModel.isCharging {
+                Image(systemName: "bolt.circle.fill")
+                    .foregroundColor(.blue)
+            } else {
+                Image(systemName: "bolt.slash.circle")
+                    .foregroundColor(.gray.opacity(0.6))
+            }
+
+            let battery = BatteryViewModel(level: robotViewModel.battery)
+            Image(systemName: battery.name)
+                .foregroundColor(battery.color)
+            Text(verbatim: "\(battery.level)%")
+                .foregroundColor(.gray)
+                .monospacedDigit()
+        }
+    }
+
+}
+
+#Preview {
+    GoToRobotConnectButton()
+        .environmentObject(UIMetrics())
+        .environmentObject(NavigationViewModel())
 }
