@@ -66,19 +66,19 @@ struct FirstActivityModelIterationView: View {
     }
 
     private var backButton: some View {
-            Button(
-                action: {
-                    router.currentVersion = .versionSelector
-                },
-                label: {
-                    HStack(spacing: 4) {
-                        Image(systemName: "chevron.left")
-                        Text("Retour")
-                    }
+        Button(
+            action: {
+                router.currentVersion = .versionSelector
+            },
+            label: {
+                HStack(spacing: 4) {
+                    Image(systemName: "chevron.left")
+                    Text("Retour")
                 }
-            )
-            .tint(.accentColor)
-        }
+            }
+        )
+        .tint(.accentColor)
+    }
 }
 
 struct ContentView_Previews: PreviewProvider {

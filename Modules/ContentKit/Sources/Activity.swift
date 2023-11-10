@@ -73,7 +73,8 @@ public enum ExercisePayload: Codable {
 
         // association
         // TODO(@ladislas): Add PayloadType to Payload
-        if container.allKeys.contains(.type) {
+        let payloadType = try? container.decodeIfPresent(ExerciseType.self, forKey: .type)
+        if case .association = payloadType {
             let type = try container.decode(ExerciseType.self, forKey: .type)
             let choices = try container.decode([AssociationChoice].self, forKey: .choices)
             let shuffleChoices = try container.decodeIfPresent(Bool.self, forKey: .shuffleChoices) ?? false
