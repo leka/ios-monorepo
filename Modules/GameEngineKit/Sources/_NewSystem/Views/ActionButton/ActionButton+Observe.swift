@@ -7,13 +7,13 @@ import SwiftUI
 
 struct ActionObserveButton: View {
     let image: String
-    @Binding var imageHasBeenObserved: Bool
+    @Binding var imageWasTapped: Bool
     @State private var animationPercent: CGFloat = 0.0
 
     var body: some View {
         Button {
             withAnimation {
-                imageHasBeenObserved = true
+                imageWasTapped = true
                 animationPercent = 1.0
             }
         } label: {
@@ -61,10 +61,10 @@ struct ActionObserveButton: View {
                     )
             }
         }
-        .disabled(imageHasBeenObserved)
+        .disabled(imageWasTapped)
         .shadow(
             color: .accentColor.opacity(0.2),
-            radius: imageHasBeenObserved ? 6 : 3, x: 0, y: 3
+            radius: imageWasTapped ? 6 : 3, x: 0, y: 3
         )
         .animation(.bouncy, value: animationPercent)
     }
@@ -73,10 +73,10 @@ struct ActionObserveButton: View {
 #Preview {
 
     struct ActionObserveButtonContainer: View {
-        @State var imageHasBeenObserved = false
+        @State var imageWasTapped = false
         var body: some View {
             ActionObserveButton(
-                image: "placeholder-observe_then_touch_to_select", imageHasBeenObserved: $imageHasBeenObserved)
+                image: "placeholder-observe_then_touch_to_select", imageWasTapped: $imageWasTapped)
         }
     }
 
