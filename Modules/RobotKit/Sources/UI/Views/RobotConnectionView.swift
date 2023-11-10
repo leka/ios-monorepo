@@ -61,7 +61,7 @@ public struct RobotConnectionView: View {
             }
             .navigationTitle("Choose a robot")
             .toolbar {
-                ToolbarItemGroup(placement: .topBarTrailing) {
+                ToolbarItem(placement: .topBarTrailing) {
                     Button {
                         dismiss()
                     } label: {
