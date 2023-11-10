@@ -15,7 +15,11 @@ public enum l10n {
         -> AttributedString
     {
         let string = String(localized: key, defaultValue: value, comment: comment)
-        let markdown = (try? AttributedString(markdown: string)) ?? AttributedString(string)
+        let markdown =
+            (try? AttributedString(
+                markdown: string,
+                options: AttributedString.MarkdownParsingOptions(interpretedSyntax: .inlineOnlyPreservingWhitespace)))
+            ?? AttributedString(string)
         return markdown
     }
 
@@ -27,7 +31,11 @@ public enum l10n {
         func localizedArgsOnly(_ arguments: CVarArg...) -> AttributedString {
             let format = String(localized: key, defaultValue: value, comment: comment)
             let string = String(format: format, arguments: arguments)
-            let markdown = (try? AttributedString(markdown: string)) ?? AttributedString(string)
+            let markdown =
+                (try? AttributedString(
+                    markdown: string,
+                    options: AttributedString.MarkdownParsingOptions(interpretedSyntax: .inlineOnlyPreservingWhitespace)
+                )) ?? AttributedString(string)
             return markdown
         }
 
