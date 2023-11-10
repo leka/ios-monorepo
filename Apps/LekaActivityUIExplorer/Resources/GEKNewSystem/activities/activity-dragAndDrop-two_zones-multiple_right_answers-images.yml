@@ -9,16 +9,16 @@ image: activity_image_recognition_1
 sequence:
   - exercises:
       - instructions: Place les instruments dans les bonnes familles d'instruments
-        type: dragAndDrop
+        category: dragAndDrop
         interface: dragAndDrop
         gameplay: selectAllRightAnswers
         payload:
           dropZoneA:
-              value: image-placeholder-instruments_wind
-              type: image
+            value: image-placeholder-instruments_wind
+            type: image
           dropZoneB:
-              value: image-placeholder-instruments_string
-              type: image
+            value: image-placeholder-instruments_string
+            type: image
           choices:
             - value: image-instrument-violin-no_background
               type: image
@@ -30,18 +30,17 @@ sequence:
               type: image
               dropZone: zoneA
 
-
       - instructions: Place les instruments dans les bonnes familles d'instruments
-        type: dragAndDrop
+        category: dragAndDrop
         interface: dragAndDrop
         gameplay: selectAllRightAnswers
         payload:
           dropZoneA:
-              value: image-placeholder-instruments_wind
-              type: image
+            value: image-placeholder-instruments_wind
+            type: image
           dropZoneB:
-              value: image-placeholder-instruments_string
-              type: image
+            value: image-placeholder-instruments_string
+            type: image
           choices:
             - value: image-instrument-harmonica-no_background
               type: image
@@ -54,16 +53,16 @@ sequence:
               dropZone: zoneA
 
       - instructions: Place les instruments dans les bonnes familles d'instruments
-        type: dragAndDrop
+        category: dragAndDrop
         interface: dragAndDrop
         gameplay: selectAllRightAnswers
         payload:
           dropZoneA:
-              value: image-placeholder-instruments_wind
-              type: image
+            value: image-placeholder-instruments_wind
+            type: image
           dropZoneB:
-              value: image-placeholder-instruments_string
-              type: image
+            value: image-placeholder-instruments_string
+            type: image
           choices:
             - value: image-instrument-harmonica-no_background
               type: image
@@ -80,6 +79,3 @@ sequence:
             - value: image-instrument-guitar-no_background
               type: image
               dropZone: zoneB
-
-
-       

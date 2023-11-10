@@ -7,7 +7,7 @@ import Foundation
 public struct Exercise: Codable {
 
     public let instructions: String
-    public let type: Category  // TODO(@ladislas): rename to `category` here + yaml
+    public let category: Category
     public let interface: Interface
     public let gameplay: Gameplay
     public let payload: ExercisePayload

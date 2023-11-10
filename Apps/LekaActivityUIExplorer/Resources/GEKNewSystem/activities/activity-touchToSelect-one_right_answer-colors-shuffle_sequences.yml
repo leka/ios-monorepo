@@ -10,7 +10,7 @@ shuffle_sequences: true
 sequence:
   - exercises:
       - instructions: Touche le rouge
-        type: selection
+        category: selection
         interface: touchToSelect
         gameplay: selectAllRightAnswers
         payload:
@@ -20,7 +20,7 @@ sequence:
               isRightAnswer: true
 
       - instructions: Touche le rouge
-        type: selection
+        category: selection
         interface: touchToSelect
         gameplay: selectAllRightAnswers
         payload:
@@ -30,7 +30,7 @@ sequence:
               isRightAnswer: true
 
       - instructions: Touche le rouge
-        type: selection
+        category: selection
         interface: touchToSelect
         gameplay: selectAllRightAnswers
         payload:
@@ -41,7 +41,7 @@ sequence:
 
   - exercises:
       - instructions: Touche le vert
-        type: selection
+        category: selection
         interface: touchToSelect
         gameplay: selectAllRightAnswers
         payload:
@@ -51,7 +51,7 @@ sequence:
               isRightAnswer: true
 
       - instructions: Touche le vert
-        type: selection
+        category: selection
         interface: touchToSelect
         gameplay: selectAllRightAnswers
         payload:
@@ -61,7 +61,7 @@ sequence:
               isRightAnswer: true
 
       - instructions: Touche le vert
-        type: selection
+        category: selection
         interface: touchToSelect
         gameplay: selectAllRightAnswers
         payload:
@@ -72,7 +72,7 @@ sequence:
 
   - exercises:
       - instructions: Touche le bleu
-        type: selection
+        category: selection
         interface: touchToSelect
         gameplay: selectAllRightAnswers
         payload:
@@ -82,7 +82,7 @@ sequence:
               isRightAnswer: true
 
       - instructions: Touche le bleu
-        type: selection
+        category: selection
         interface: touchToSelect
         gameplay: selectAllRightAnswers
         payload:
@@ -92,7 +92,7 @@ sequence:
               isRightAnswer: true
 
       - instructions: Touche le bleu
-        type: selection
+        category: selection
         interface: touchToSelect
         gameplay: selectAllRightAnswers
         payload:

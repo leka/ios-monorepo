@@ -9,7 +9,7 @@ image: activity_color_recognition_1
 sequence:
   - exercises:
       - instructions: Exercice S1/E1
-        type: selection
+        category: selection
         interface: touchToSelect
         gameplay: selectAllRightAnswers
         payload:
@@ -19,7 +19,7 @@ sequence:
               isRightAnswer: true
 
       - instructions: Exercice S1/E2
-        type: selection
+        category: selection
         interface: touchToSelect
         gameplay: selectAllRightAnswers
         payload:
@@ -29,7 +29,7 @@ sequence:
               isRightAnswer: true
 
       - instructions: Exercice S1/E3
-        type: selection
+        category: selection
         interface: touchToSelect
         gameplay: selectAllRightAnswers
         payload:
@@ -40,7 +40,7 @@ sequence:
 
   - exercises:
       - instructions: Exercice S2/E1
-        type: selection
+        category: selection
         interface: touchToSelect
         gameplay: selectAllRightAnswers
         payload:
@@ -50,7 +50,7 @@ sequence:
               isRightAnswer: true
 
       - instructions: Exercice S2/E2
-        type: selection
+        category: selection
         interface: touchToSelect
         gameplay: selectAllRightAnswers
         payload:
@@ -60,7 +60,7 @@ sequence:
               isRightAnswer: true
 
       - instructions: Exercice S2/E3
-        type: selection
+        category: selection
         interface: touchToSelect
         gameplay: selectAllRightAnswers
         payload:
@@ -71,7 +71,7 @@ sequence:
 
   - exercises:
       - instructions: Exercice S3/E1
-        type: selection
+        category: selection
         interface: touchToSelect
         gameplay: selectAllRightAnswers
         payload:
@@ -81,7 +81,7 @@ sequence:
               isRightAnswer: true
 
       - instructions: Exercice S3/E2
-        type: selection
+        category: selection
         interface: touchToSelect
         gameplay: selectAllRightAnswers
         payload:
@@ -91,7 +91,7 @@ sequence:
               isRightAnswer: true
 
       - instructions: Exercice S3/E3
-        type: selection
+        category: selection
         interface: touchToSelect
         gameplay: selectAllRightAnswers
         payload:
