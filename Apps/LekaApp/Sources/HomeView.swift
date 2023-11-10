@@ -43,9 +43,7 @@ struct HomeView: View {
             }
         }
         .fullScreenCover(isPresented: $navigationVM.showRobotPicker) {
-            NavigationStack {
-                RobotConnectionView()
-            }
+            RobotConnectionView()
         }
         .fullScreenCover(isPresented: $navigationVM.showActivitiesFullScreenCover) {
             FullScreenCoverToGameView()
