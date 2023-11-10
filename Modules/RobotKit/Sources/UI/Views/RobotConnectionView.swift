@@ -25,32 +25,34 @@ public struct RobotConnectionView: View {
 
     public var body: some View {
         NavigationStack {
-            VStack(spacing: 10) {
-                switch viewModel.robotDiscoveries.count {
-                    case 0:
-                        Spacer()
-                        searchingView
-                        Spacer()
-                    default:
-                        robotDiscoveryGridView
-                }
-
-                Divider()
-                    .padding(.horizontal)
-                    .padding(.horizontal)
-
-                HStack {
-                    if !viewModel.connected {
-                        connectButton
-                    } else {
-                        disconnectButton
+            ZStack {
+                backgroundView
+                VStack(spacing: 10) {
+                    switch viewModel.robotDiscoveries.count {
+                        case 0:
+                            Spacer()
+                            searchingView
+                            Spacer()
+                        default:
+                            robotDiscoveryGridView
                     }
-                    continueButton
+
+                    Divider()
+                        .padding(.horizontal)
+                        .padding(.horizontal)
+
+                    HStack {
+                        if !viewModel.connected {
+                            connectButton
+                        } else {
+                            disconnectButton
+                        }
+                        continueButton
+                    }
+                    .padding(.top, 15)
+                    .padding(.bottom, 40)
                 }
-                .padding(.top, 15)
-                .padding(.bottom, 40)
             }
-            .background(backgroundView.ignoresSafeArea(.all))
             .onAppear {
                 viewModel.scanForRobots()
             }
@@ -59,7 +61,7 @@ public struct RobotConnectionView: View {
             }
             .navigationTitle("Choose a robot")
             .toolbar {
-                ToolbarItemGroup(placement: .topBarTrailing) {
+                ToolbarItem(placement: .topBarTrailing) {
                     Button {
                         dismiss()
                     } label: {
@@ -185,7 +187,10 @@ public struct RobotConnectionView: View {
     }
 
     var backgroundView: some View {
-        Image(uiImage: DesignKitAsset.Images.interfaceCloud.image)
+        DesignKitAsset.Images.interfaceCloud.swiftUIImage
+            .resizable()
+            .aspectRatio(contentMode: .fill)
+            .ignoresSafeArea(.all)
     }
 
 }
