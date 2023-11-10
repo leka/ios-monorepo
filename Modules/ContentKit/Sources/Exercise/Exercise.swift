@@ -5,8 +5,9 @@
 import Foundation
 
 public struct Exercise: Codable {
+
     public let instructions: String
-    public let type: ExerciseType
+    public let type: Category  // TODO(@ladislas): rename to `category` here + yaml
     public let interface: Interface
     public let gameplay: Gameplay
     public let payload: ExercisePayload
@@ -18,11 +19,13 @@ public struct Exercise: Codable {
         case observeThenTouchToSelect
         case dragAndDrop
     }
-}
 
-public enum ExerciseType: String, Codable {
-    case selection
-    case dragAndDrop
+    // TODO(@ladislas): is this really needed here?
+    public enum Category: String, Codable {
+        case selection
+        case dragAndDrop
+    }
+
 }
 
 public enum UIElementType: String, Codable {
