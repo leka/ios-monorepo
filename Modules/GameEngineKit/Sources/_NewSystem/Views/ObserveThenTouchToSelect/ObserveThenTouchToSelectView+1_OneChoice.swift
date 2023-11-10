@@ -12,7 +12,7 @@ extension ObserveThenTouchToSelectView {
         @ObservedObject var viewModel: SelectionViewViewModel
         let isTappable: Bool
 
-        private let kAnswerSize: CGFloat = 300
+        private let kAnswerSize: CGFloat = 180
 
         var body: some View {
             let choice = viewModel.choices[0]

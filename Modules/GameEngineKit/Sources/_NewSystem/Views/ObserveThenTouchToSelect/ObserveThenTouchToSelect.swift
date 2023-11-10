@@ -18,7 +18,9 @@ public struct ObserveThenTouchToSelectView: View {
     }
 
     @StateObject private var viewModel: SelectionViewViewModel
-    @State private var imageHasBeenObserved = false
+
+    @State private var imageWasTapped = false
+
     private let image: String
 
     public init(choices: [SelectionChoice], image: String) {
@@ -44,58 +46,53 @@ public struct ObserveThenTouchToSelectView: View {
         let interface = Interface(rawValue: viewModel.choices.count)
 
         HStack(spacing: 0) {
-            ActionObserveButton(image: image, imageHasBeenObserved: $imageHasBeenObserved)
+            ActionButtonObserve(image: image, imageWasTapped: $imageWasTapped)
                 .padding(20)
-
-            Divider()
-                .opacity(0.4)
-                .frame(maxHeight: 500)
-                .padding(.vertical, 20)
 
             Spacer()
 
             switch interface {
                 case .oneChoice:
-                    OneChoiceView(viewModel: viewModel, isTappable: imageHasBeenObserved)
-                        .onTapGestureIf(imageHasBeenObserved) {
+                    OneChoiceView(viewModel: viewModel, isTappable: imageWasTapped)
+                        .onTapGestureIf(imageWasTapped) {
                             viewModel.onChoiceTapped(choice: viewModel.choices[0])
                         }
-                        .animation(.easeOut(duration: 0.3), value: imageHasBeenObserved)
+                        .animation(.easeOut(duration: 0.3), value: imageWasTapped)
 
                 case .twoChoices:
-                    TwoChoicesView(viewModel: viewModel, isTappable: imageHasBeenObserved)
-                        .onTapGestureIf(imageHasBeenObserved) {
+                    TwoChoicesView(viewModel: viewModel, isTappable: imageWasTapped)
+                        .onTapGestureIf(imageWasTapped) {
                             viewModel.onChoiceTapped(choice: viewModel.choices[0])
                         }
-                        .animation(.easeOut(duration: 0.3), value: imageHasBeenObserved)
+                        .animation(.easeOut(duration: 0.3), value: imageWasTapped)
 
                 case .threeChoices:
-                    ThreeChoicesView(viewModel: viewModel, isTappable: imageHasBeenObserved)
-                        .onTapGestureIf(imageHasBeenObserved) {
+                    ThreeChoicesView(viewModel: viewModel, isTappable: imageWasTapped)
+                        .onTapGestureIf(imageWasTapped) {
                             viewModel.onChoiceTapped(choice: viewModel.choices[0])
                         }
-                        .animation(.easeOut(duration: 0.3), value: imageHasBeenObserved)
+                        .animation(.easeOut(duration: 0.3), value: imageWasTapped)
 
                 case .fourChoices:
-                    FourChoicesView(viewModel: viewModel, isTappable: imageHasBeenObserved)
-                        .onTapGestureIf(imageHasBeenObserved) {
+                    FourChoicesView(viewModel: viewModel, isTappable: imageWasTapped)
+                        .onTapGestureIf(imageWasTapped) {
                             viewModel.onChoiceTapped(choice: viewModel.choices[0])
                         }
-                        .animation(.easeOut(duration: 0.3), value: imageHasBeenObserved)
+                        .animation(.easeOut(duration: 0.3), value: imageWasTapped)
 
                 case .fiveChoices:
-                    FiveChoicesView(viewModel: viewModel, isTappable: imageHasBeenObserved)
-                        .onTapGestureIf(imageHasBeenObserved) {
+                    FiveChoicesView(viewModel: viewModel, isTappable: imageWasTapped)
+                        .onTapGestureIf(imageWasTapped) {
                             viewModel.onChoiceTapped(choice: viewModel.choices[0])
                         }
-                        .animation(.easeOut(duration: 0.3), value: imageHasBeenObserved)
+                        .animation(.easeOut(duration: 0.3), value: imageWasTapped)
 
                 case .sixChoices:
-                    SixChoicesView(viewModel: viewModel, isTappable: imageHasBeenObserved)
-                        .onTapGestureIf(imageHasBeenObserved) {
+                    SixChoicesView(viewModel: viewModel, isTappable: imageWasTapped)
+                        .onTapGestureIf(imageWasTapped) {
                             viewModel.onChoiceTapped(choice: viewModel.choices[0])
                         }
-                        .animation(.easeOut(duration: 0.3), value: imageHasBeenObserved)
+                        .animation(.easeOut(duration: 0.3), value: imageWasTapped)
 
                 default:
                     Text("❌ Interface not available for \(viewModel.choices.count) choices")
