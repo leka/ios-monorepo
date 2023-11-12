@@ -10,7 +10,7 @@ public struct Exercise: Codable {
     public let category: Category
     public let interface: Interface
     public let gameplay: Gameplay
-    public let payload: ExercisePayload
+    public let payload: Payload
 
     public enum Interface: String, Codable {
         case touchToSelect
