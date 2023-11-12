@@ -29,6 +29,7 @@ class DragAndDropAssociationViewViewModel: ObservableObject {
         //        gameplay.process(choice)
     }
 
+    // TODO(@macteuts): Rename this for association
     private func subscribeToGameplayDragAndDropChoicesUpdates() {
         gameplay.choices
             .receive(on: DispatchQueue.main)

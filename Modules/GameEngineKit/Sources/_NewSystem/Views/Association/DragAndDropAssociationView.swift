@@ -23,7 +23,7 @@ public struct DragAndDropAssociationView: View {
             fatalError("Exercise payload is not .association")
         }
 
-        self._viewModel = StateObject(wrappedValue: DragAndDropAssociationViewViewModel(choices: payload.choices))
+        //        self._viewModel = StateObject(wrappedValue: DragAndDropAssociationViewViewModel(choices: payload.choices))
         self._viewModel = StateObject(
             wrappedValue: DragAndDropAssociationViewViewModel(choices: payload.choices, shared: data))
     }
@@ -35,6 +35,9 @@ public struct DragAndDropAssociationView: View {
                 options: [.allowsTransparency]
             )
             .frame(width: proxy.size.width, height: proxy.size.height)
+            .onAppear {
+                scene = DragAndDropAssociationBaseScene(viewModel: viewModel)
+            }
         }
         .edgesIgnoringSafeArea(.horizontal)
     }

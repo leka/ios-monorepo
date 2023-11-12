@@ -26,7 +26,6 @@ class DragAndDropAssociationBaseScene: SKScene {
     init(viewModel: DragAndDropAssociationViewViewModel) {
         self.viewModel = viewModel
         super.init(size: CGSize.zero)
-        self.spacer = size.width / CGFloat(viewModel.choices.count + 1)
         self.defaultPosition = CGPoint(x: spacer, y: self.size.height)
 
         subscribeToChoicesUpdates()
