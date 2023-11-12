@@ -10,13 +10,17 @@ import SwiftUI
 // TODO(@macteuts): adapt this to Association Layout
 class DragAndDropAssociationBaseScene: SKScene {
     var viewModel: DragAndDropAssociationViewViewModel
-    private var biggerSide: CGFloat = 130
+    private var biggerSide: CGFloat = 150
     private var selectedNodes: [UITouch: DraggableImageAnswerNode] = [:]
-    private var answerNodes: [DraggableImageAnswerNode] = []
     private var playedNode: DraggableImageAnswerNode?
-    private var spacer: CGFloat = .zero
+    private var answerNodes: [DraggableImageAnswerNode] = []
+    private var spacer: CGFloat = 455
     private var defaultPosition = CGPoint.zero
     private var expectedItemsNodes: [String: [SKSpriteNode]] = [:]
+    private var dropDestinations: [DraggableImageAnswerNode] = []
+    private var dropDestinationAnchor: CGPoint = .zero
+    private var initialNodeX: CGFloat = .zero
+    private var verticalSpacing: CGFloat = .zero
     private var cancellables: Set<AnyCancellable> = []
 
     init(viewModel: DragAndDropAssociationViewViewModel) {
@@ -37,8 +41,9 @@ class DragAndDropAssociationBaseScene: SKScene {
         self.removeAllChildren()
         self.removeAllActions()
 
+        dropDestinations = []
+
         setFirstAnswerPosition()
-        getExpectedItems()
         layoutAnswers()
     }
 
@@ -64,7 +69,7 @@ class DragAndDropAssociationBaseScene: SKScene {
     }
 
     @MainActor func layoutAnswers() {
-        for gameplayChoiceModel in viewModel.choices {
+        for (index, gameplayChoiceModel) in viewModel.choices.enumerated() {
             let draggableImageAnswerNode = DraggableImageAnswerNode(
                 choice: gameplayChoiceModel.choice,
                 position: self.defaultPosition
@@ -75,12 +80,12 @@ class DragAndDropAssociationBaseScene: SKScene {
 
             normalizeAnswerNodesSize([draggableImageAnswerNode, draggableImageShadowNode])
             bindNodesToSafeArea([draggableImageAnswerNode, draggableImageShadowNode])
-            setNextAnswerPosition()
-
-            answerNodes.append(draggableImageAnswerNode)
+            setNextAnswerPosition(index)
 
             addChild(draggableImageShadowNode)
             addChild(draggableImageAnswerNode)
+
+            dropDestinations.append(draggableImageAnswerNode)
         }
     }
 
@@ -90,7 +95,7 @@ class DragAndDropAssociationBaseScene: SKScene {
         }
     }
 
-    func bindNodesToSafeArea(_ nodes: [SKSpriteNode], limit: CGFloat = 80) {
+    func bindNodesToSafeArea(_ nodes: [SKSpriteNode], limit: CGFloat = 120) {
         let xRange = SKRange(lowerLimit: 0, upperLimit: size.width - limit)
         let yRange = SKRange(lowerLimit: 0, upperLimit: size.height - limit)
         for node in nodes {
@@ -99,20 +104,25 @@ class DragAndDropAssociationBaseScene: SKScene {
     }
 
     func setFirstAnswerPosition() {
-        spacer = size.width / CGFloat(viewModel.choices.count + 1)
-        defaultPosition = CGPoint(x: spacer, y: self.size.height)
+        initialNodeX = (size.width - spacer) / 2
+        verticalSpacing = self.size.height / 3
+        defaultPosition = CGPoint(x: initialNodeX, y: verticalSpacing - 30)
     }
 
-    func setNextAnswerPosition() {
-        self.defaultPosition.x += spacer
-    }
-
-    func getExpectedItems() {
-        // TODO(@macteuts): adapt this to Association
+    func setNextAnswerPosition(_ index: Int) {
+        if [0, 2].contains(index) {
+            defaultPosition.x += spacer
+        } else {
+            defaultPosition.x = initialNodeX
+            defaultPosition.y += verticalSpacing + 60
+        }
     }
 
     func goodAnswerBehavior(_ node: DraggableImageAnswerNode) {
         node.scaleForMax(sizeOf: biggerSide * 0.8)
+        node.position = CGPoint(
+            x: dropDestinationAnchor.x - 60,
+            y: dropDestinationAnchor.y - 60)
         node.zPosition = 10
         node.isDraggable = false
         onDropAction(node)
@@ -192,6 +202,36 @@ class DragAndDropAssociationBaseScene: SKScene {
     }
 
     override func touchesEnded(_ touches: Set<UITouch>, with: UIEvent?) {
-        // touchesEnded association
+        for touch in touches {
+            guard selectedNodes.keys.contains(touch) else {
+                break
+            }
+            playedNode = selectedNodes[touch]!
+            playedNode!.scaleForMax(sizeOf: biggerSide)
+
+            // make dropArea out of target node
+            guard
+                let destinationNode = dropDestinations.first(where: {
+                    $0.frame.contains(touch.location(in: self)) && $0.name != playedNode!.name
+                })
+            else {
+                wrongAnswerBehavior(playedNode!)
+                break
+            }
+
+            guard let destination = viewModel.choices.first(where: { $0.choice.value == destinationNode.name })
+            else { return }
+            guard let choice = viewModel.choices.first(where: { $0.choice.value == playedNode!.name })
+            else { return }
+
+            guard choice.choice.category == destination.choice.category else {
+                wrongAnswerBehavior(playedNode!)
+                break
+            }
+            // dropped within the bounds of the proper sibling
+            destinationNode.isDraggable = false
+            viewModel.onChoiceTapped(choice: choice)
+            // viewModel.onChoiceTapped(choice: destination)
+        }
     }
 }
