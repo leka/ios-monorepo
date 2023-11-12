@@ -9,16 +9,16 @@ import SwiftUI
 
 class DragAndDropAssociationBaseScene: SKScene {
     var viewModel: DragAndDropAssociationViewViewModel
-    private var biggerSide: CGFloat = 150
+    var spacer: CGFloat = 455
+    var defaultPosition = CGPoint.zero
+    var initialNodeX: CGFloat = .zero
+    var verticalSpacing: CGFloat = .zero
+    var dropDestinationAnchor: CGPoint = .zero
+    var biggerSide: CGFloat = 150
     private var selectedNodes: [UITouch: DraggableImageAnswerNode] = [:]
     private var playedNode: DraggableImageAnswerNode?
-    private var spacer: CGFloat = 455
-    private var defaultPosition = CGPoint.zero
     private var expectedItemsNodes: [String: [SKSpriteNode]] = [:]
     private var dropDestinations: [DraggableImageAnswerNode] = []
-    private var dropDestinationAnchor: CGPoint = .zero
-    private var initialNodeX: CGFloat = .zero
-    private var verticalSpacing: CGFloat = .zero
     private var cancellables: Set<AnyCancellable> = []
 
     init(viewModel: DragAndDropAssociationViewViewModel) {

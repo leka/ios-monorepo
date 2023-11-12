@@ -36,7 +36,11 @@ public struct DragAndDropAssociationView: View {
             )
             .frame(width: proxy.size.width, height: proxy.size.height)
             .onAppear {
-                scene = DragAndDropAssociationBaseScene(viewModel: viewModel)
+                if viewModel.choices.count == 4 {
+                    scene = DragAndDropAssociationBaseScene(viewModel: viewModel)
+                } else {
+                    scene = DragAndDropAssociationSixChoicesScene(viewModel: viewModel)
+                }
             }
         }
         .edgesIgnoringSafeArea(.horizontal)
