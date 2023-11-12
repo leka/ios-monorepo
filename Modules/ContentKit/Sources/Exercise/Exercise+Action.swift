@@ -10,19 +10,14 @@ extension Exercise {
 
     public enum Action: Codable {
 
-        case ipad(type: IpadMedia)
-        case robot(type: RobotMedia)
+        case ipad(type: ActionType)
+        case robot(type: ActionType)
 
-        public enum IpadMedia: Codable {
-            case color(value: String)
-            case image(name: String)
-            case audio(name: String)
-            case speech(content: String)
-        }
-
-        public enum RobotMedia: Codable {
-            case image(id: String)
-            case color(value: String)
+        public enum ActionType: Codable {
+            case color(String)
+            case image(String)
+            case audio(String)
+            case speech(String)
         }
 
         private enum CodingKeys: String, CodingKey {
@@ -68,6 +63,12 @@ extension Exercise {
                         case .color(let value):
                             try valueContainer.encode("color", forKey: .type)
                             try valueContainer.encode(value, forKey: .value)
+                        case .audio:
+                            log.error("Action Audio not available for robot ")
+                            fatalError("💥 Action Audio not available for robot")
+                        case .speech:
+                            log.error("Action Speech not available for robot ")
+                            fatalError("💥 Action Speech not available for robot")
                     }
             }
         }
@@ -81,27 +82,27 @@ extension Exercise {
                     let valueType = try valueContainer.decode(ValueType.self, forKey: .type)
                     switch valueType {
                         case .color:
-                            let colorValue = try valueContainer.decode(String.self, forKey: .value)
-                            self = .ipad(type: .color(value: colorValue))
+                            let color = try valueContainer.decode(String.self, forKey: .value)
+                            self = .ipad(type: .color(color))
                         case .image:
-                            let imageName = try valueContainer.decode(String.self, forKey: .value)
-                            self = .ipad(type: .image(name: imageName))
+                            let image = try valueContainer.decode(String.self, forKey: .value)
+                            self = .ipad(type: .image(image))
                         case .audio:
-                            let audioName = try valueContainer.decode(String.self, forKey: .value)
-                            self = .ipad(type: .audio(name: audioName))
+                            let audio = try valueContainer.decode(String.self, forKey: .value)
+                            self = .ipad(type: .audio(audio))
                         case .speech:
-                            let speechValue = try valueContainer.decode(String.self, forKey: .value)
-                            self = .ipad(type: .speech(content: speechValue))
+                            let speech = try valueContainer.decode(String.self, forKey: .value)
+                            self = .ipad(type: .speech(speech))
                     }
                 case "robot":
                     let valueType = try valueContainer.decode(ValueType.self, forKey: .type)
                     switch valueType {
                         case .image:
-                            let imageId = try valueContainer.decode(String.self, forKey: .value)
-                            self = .robot(type: .image(id: imageId))
+                            let image = try valueContainer.decode(String.self, forKey: .value)
+                            self = .robot(type: .image(image))
                         case .color:
-                            let colorValue = try valueContainer.decode(String.self, forKey: .value)
-                            self = .robot(type: .color(value: colorValue))
+                            let color = try valueContainer.decode(String.self, forKey: .value)
+                            self = .robot(type: .color(color))
                         default:
                             throw DecodingError.dataCorruptedError(
                                 forKey: .type,
