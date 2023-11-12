@@ -8,7 +8,7 @@ import SpriteKit
 import SwiftUI
 
 final class DragAndDropAssociationSixChoicesScene: DragAndDropAssociationBaseScene {
-    
+
     private var freeSlots: [String: [Bool]] = [:]
     private var endAbscissa: CGFloat = .zero
     private var finalXPosition: CGFloat = .zero
