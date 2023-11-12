@@ -6,7 +6,6 @@ import Combine
 import ContentKit
 import SwiftUI
 
-// TODO(@macteuts): adapt this to Association
 class DragAndDropAssociationViewViewModel: ObservableObject {
 
     @Published var choices: [GameplayAssociationChoiceModel] = []
@@ -18,18 +17,17 @@ class DragAndDropAssociationViewViewModel: ObservableObject {
     init(choices: [AssociationChoice], shared: ExerciseSharedData? = nil) {
         let gameplayChoiceModel = choices.map { GameplayAssociationChoiceModel(choice: $0) }
         self.choices = gameplayChoiceModel
-        self.gameplay = GameplayAssociation()
+        self.gameplay = GameplayAssociation(choices: gameplayChoiceModel)
         self.exercicesSharedData = shared ?? ExerciseSharedData()
 
         subscribeToGameplayDragAndDropChoicesUpdates()
         subscribeToGameplayStateUpdates()
     }
 
-    public func onChoiceTapped(choice: GameplayAssociationChoiceModel) {
-        //        gameplay.process(choice)
+    public func onChoiceTapped(choice: GameplayAssociationChoiceModel, destination: GameplayAssociationChoiceModel) {
+        gameplay.process(choice, destination)
     }
 
-    // TODO(@macteuts): Rename this for association
     private func subscribeToGameplayDragAndDropChoicesUpdates() {
         gameplay.choices
             .receive(on: DispatchQueue.main)

@@ -7,13 +7,11 @@ import ContentKit
 import SpriteKit
 import SwiftUI
 
-// TODO(@macteuts): adapt this to Association Layout
 class DragAndDropAssociationBaseScene: SKScene {
     var viewModel: DragAndDropAssociationViewViewModel
     private var biggerSide: CGFloat = 150
     private var selectedNodes: [UITouch: DraggableImageAnswerNode] = [:]
     private var playedNode: DraggableImageAnswerNode?
-    private var answerNodes: [DraggableImageAnswerNode] = []
     private var spacer: CGFloat = 455
     private var defaultPosition = CGPoint.zero
     private var expectedItemsNodes: [String: [SKSpriteNode]] = [:]
@@ -47,7 +45,7 @@ class DragAndDropAssociationBaseScene: SKScene {
     }
 
     func exerciseCompletedBehavior() {
-        for node in answerNodes {
+        for node in dropDestinations {
             node.isDraggable = false
         }
     }
@@ -175,8 +173,9 @@ class DragAndDropAssociationBaseScene: SKScene {
         for touch in touches {
             let location = touch.location(in: self)
             if let node = self.atPoint(location) as? DraggableImageAnswerNode {
-                for gameplayChoiceModel in viewModel.choices
-                where node.name == gameplayChoiceModel.choice.value && node.isDraggable {
+                for gameplayChoiceModel in viewModel
+                    .choices where node.name == gameplayChoiceModel.choice.value && node.isDraggable
+                {
                     selectedNodes[touch] = node
                     onDragAnimation(node)
                     node.zPosition += 100
@@ -217,20 +216,16 @@ class DragAndDropAssociationBaseScene: SKScene {
                 wrongAnswerBehavior(playedNode!)
                 break
             }
+            dropDestinationAnchor = destinationNode.position
 
             guard let destination = viewModel.choices.first(where: { $0.choice.value == destinationNode.name })
             else { return }
             guard let choice = viewModel.choices.first(where: { $0.choice.value == playedNode!.name })
             else { return }
 
-            guard choice.choice.category == destination.choice.category else {
-                wrongAnswerBehavior(playedNode!)
-                break
-            }
             // dropped within the bounds of the proper sibling
             destinationNode.isDraggable = false
-            viewModel.onChoiceTapped(choice: choice)
-            // viewModel.onChoiceTapped(choice: destination)
+            viewModel.onChoiceTapped(choice: choice, destination: destination)
         }
     }
 }
