@@ -22,7 +22,7 @@ public struct RobotThenTouchToSelectView: View {
     @StateObject private var viewModel: SelectionViewViewModel
     @State private var didSendCommandToRobot = false
 
-    private let robotMedia: Action.RobotMedia
+    private let robotMedia: Exercise.Action.RobotMedia
 
     let robot = Robot.shared
 

@@ -27,6 +27,6 @@ public struct SelectionChoice: Codable {
 
 public struct SelectionPayload: Codable {
     public let choices: [SelectionChoice]
-    public let action: Action?
+    public let action: Exercise.Action?
     public let shuffleChoices: Bool
 }
