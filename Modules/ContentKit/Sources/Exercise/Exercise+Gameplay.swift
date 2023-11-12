@@ -4,6 +4,10 @@
 
 import Foundation
 
-public enum Gameplay: String, Codable {
-    case selectAllRightAnswers
+extension Exercise {
+
+    public enum Gameplay: String, Codable {
+        case selectAllRightAnswers
+    }
+
 }
