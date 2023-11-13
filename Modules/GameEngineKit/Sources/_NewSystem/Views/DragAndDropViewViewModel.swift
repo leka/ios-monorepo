@@ -14,7 +14,7 @@ class DragAndDropViewViewModel: ObservableObject {
     private let gameplay: GameplaySelectAllRightAnswers<GameplayDragAndDropChoiceModel>
     private var cancellables: Set<AnyCancellable> = []
 
-    init(choices: [DragAndDropIntoZonesChoice], shared: ExerciseSharedData? = nil) {
+    init(choices: [DragAndDropIntoZones.Choice], shared: ExerciseSharedData? = nil) {
         let gameplayChoiceModel = choices.map { GameplayDragAndDropChoiceModel(choice: $0) }
         self.choices = gameplayChoiceModel
         self.gameplay = GameplaySelectAllRightAnswers(
@@ -26,7 +26,7 @@ class DragAndDropViewViewModel: ObservableObject {
     }
 
     public func onChoiceTapped(
-        choice: GameplayDragAndDropChoiceModel, dropZone: DragAndDropIntoZonesChoice.DropZone
+        choice: GameplayDragAndDropChoiceModel, dropZone: DragAndDropIntoZones.DropZone
     ) {
         gameplay.process(choice, dropZone)
     }

@@ -8,9 +8,9 @@ import SpriteKit
 import SwiftUI
 
 struct DropZoneNode {
-    let details: DropZoneDetails
+    let details: DragAndDropIntoZones.DropZone.Details
     var node: SKSpriteNode = SKSpriteNode()
-    let zone: DragAndDropIntoZonesChoice.DropZone
+    let zone: DragAndDropIntoZones.DropZone
 }
 
 class DragAndDropBaseScene: SKScene {
@@ -28,7 +28,8 @@ class DragAndDropBaseScene: SKScene {
     private var cancellables: Set<AnyCancellable> = []
 
     init(
-        viewModel: DragAndDropViewViewModel, hints: Bool, dropZoneA: DropZoneDetails, dropZoneB: DropZoneDetails? = nil
+        viewModel: DragAndDropViewViewModel, hints: Bool, dropZoneA: DragAndDropIntoZones.DropZone.Details,
+        dropZoneB: DragAndDropIntoZones.DropZone.Details? = nil
     ) {
         self.viewModel = viewModel
         self.hints = hints
