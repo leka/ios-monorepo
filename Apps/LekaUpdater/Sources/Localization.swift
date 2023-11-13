@@ -167,7 +167,7 @@ extension l10n {
 
             static let updateAnotherRobotButton = LocalizedString("update.finished.update_another_robot_button", value: "Update another robot", comment: "Update another robot button")
 
-            static let launchLekaAppButton = LocalizedString("update.finished.launch_leka_app_button", value: "Launch Leka App 🚀", comment: "Launch Leka app button")
+            static let launchLekaAppButton = LocalizedString("update.finished.launch_leka_app_button", value: "Launch My Leka Alpha 🚀", comment: "Launch Leka app button")
 
             static let robotUpdatedSuccessfully = LocalizedString("update.finished.robot_updated_successfully", value: "Congrats! 🥳\nYour robot is now up-to-date 🎉", comment: "Robot updated successfully")
         }
