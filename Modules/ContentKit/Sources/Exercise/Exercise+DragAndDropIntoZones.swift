@@ -5,9 +5,9 @@
 public struct DragAndDropIntoZonesChoice: Codable {
     public let value: String
     public let type: UIElementType
-    public let dropZone: ChoiceDropZone?
+    public let dropZone: DropZone?
 
-    public enum ChoiceDropZone: String, Codable {
+    public enum DropZone: String, Codable {
         case zoneA
         case zoneB
     }
