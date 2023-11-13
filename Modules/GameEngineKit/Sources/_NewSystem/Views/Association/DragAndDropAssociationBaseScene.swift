@@ -16,6 +16,7 @@ class DragAndDropAssociationBaseScene: SKScene {
     var dropDestinationAnchor: CGPoint = .zero
     var biggerSide: CGFloat = 150
     var playedNode: DraggableImageAnswerNode?
+    var playedDestination: DraggableImageAnswerNode?
     var dropDestinations: [DraggableImageAnswerNode] = []
     var selectedNodes: [UITouch: DraggableImageAnswerNode] = [:]
     private var expectedItemsNodes: [String: [SKSpriteNode]] = [:]
@@ -24,7 +25,6 @@ class DragAndDropAssociationBaseScene: SKScene {
     init(viewModel: DragAndDropAssociationViewViewModel) {
         self.viewModel = viewModel
         super.init(size: CGSize.zero)
-        self.defaultPosition = CGPoint(x: spacer, y: self.size.height)
 
         subscribeToChoicesUpdates()
     }
@@ -122,6 +122,7 @@ class DragAndDropAssociationBaseScene: SKScene {
             y: dropDestinationAnchor.y - 60)
         node.zPosition = 10
         node.isDraggable = false
+        playedDestination?.isDraggable = false
         onDropAction(node)
         if viewModel.exercicesSharedData.state == .completed {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [self] in
@@ -193,7 +194,7 @@ class DragAndDropAssociationBaseScene: SKScene {
                     node.run(SKAction.move(to: location, duration: 0.05).moveAnimation(.linear))
                     node.position = location
                 } else {
-                    self.touchesEnded(touches, with: event)
+                    wrongAnswerBehavior(node)
                 }
             }
         }
@@ -207,7 +208,6 @@ class DragAndDropAssociationBaseScene: SKScene {
             playedNode = selectedNodes[touch]!
             playedNode!.scaleForMax(sizeOf: biggerSide)
 
-            // make dropArea out of target node
             guard
                 let destinationNode = dropDestinations.first(where: {
                     $0.frame.contains(touch.location(in: self)) && $0.name != playedNode!.name
@@ -217,14 +217,13 @@ class DragAndDropAssociationBaseScene: SKScene {
                 break
             }
             dropDestinationAnchor = destinationNode.position
+            playedDestination = destinationNode
 
             guard let destination = viewModel.choices.first(where: { $0.choice.value == destinationNode.name })
             else { return }
             guard let choice = viewModel.choices.first(where: { $0.choice.value == playedNode!.name })
             else { return }
 
-            // dropped within the bounds of the proper sibling
-            destinationNode.isDraggable = false
             viewModel.onChoiceTapped(choice: choice, destination: destination)
         }
     }

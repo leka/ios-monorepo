@@ -12,14 +12,10 @@ final class DragAndDropAssociationSixChoicesScene: DragAndDropAssociationBaseSce
     private var freeSlots: [String: [Bool]] = [:]
     private var endAbscissa: CGFloat = .zero
     private var finalXPosition: CGFloat = .zero
-    //    private var answersTurnedToDropAreas: [String: DraggableImageAnswerNode] = [:]
-    //    private var answeredButNotTurnedToDropArea: [Int] = []
 
     override init(viewModel: DragAndDropAssociationViewViewModel) {
         super.init(viewModel: viewModel)
         self.viewModel = viewModel
-        self.spacer = 340
-        self.defaultPosition = CGPoint(x: spacer, y: self.size.height)
 
         subscribeToChoicesUpdates()
     }
@@ -34,8 +30,6 @@ final class DragAndDropAssociationSixChoicesScene: DragAndDropAssociationBaseSce
         self.removeAllActions()
 
         dropDestinations = []
-        //        answersTurnedToDropAreas = [:]
-        //        answeredButNotTurnedToDropArea = []
 
         setAnswersFinalPositionSlots()
         setFirstAnswerPosition()
@@ -51,6 +45,7 @@ final class DragAndDropAssociationSixChoicesScene: DragAndDropAssociationBaseSce
     }
 
     override func setFirstAnswerPosition() {
+        spacer = 340
         initialNodeX = (size.width - (spacer * 2)) / 2
         verticalSpacing = self.size.height / 3
         defaultPosition = CGPoint(x: initialNodeX, y: verticalSpacing - 30)
@@ -94,6 +89,7 @@ final class DragAndDropAssociationSixChoicesScene: DragAndDropAssociationBaseSce
             y: dropDestinationAnchor.y - 60)
         node.zPosition = 10
         node.isDraggable = false
+        playedDestination?.isDraggable = false
         onDropAction(node)
         if viewModel.exercicesSharedData.state == .completed {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [self] in
@@ -109,8 +105,8 @@ final class DragAndDropAssociationSixChoicesScene: DragAndDropAssociationBaseSce
             }
             playedNode = selectedNodes[touch]!
             playedNode!.scaleForMax(sizeOf: biggerSide)
+            endAbscissa = touch.location(in: self).x
 
-            // make dropArea out of target node
             guard
                 let destinationNode = dropDestinations.first(where: {
                     $0.frame.contains(touch.location(in: self)) && $0.name != playedNode!.name
@@ -120,6 +116,7 @@ final class DragAndDropAssociationSixChoicesScene: DragAndDropAssociationBaseSce
                 break
             }
             dropDestinationAnchor = destinationNode.position
+            playedDestination = destinationNode
 
             guard let destination = viewModel.choices.first(where: { $0.choice.value == destinationNode.name })
             else { return }
@@ -127,8 +124,6 @@ final class DragAndDropAssociationSixChoicesScene: DragAndDropAssociationBaseSce
             else { return }
 
             // dropped within the bounds of the proper sibling
-            endAbscissa = touch.location(in: self).x
-            destinationNode.isDraggable = false
             setFinalXPosition(category: destination.choice.category.rawValue)
             viewModel.onChoiceTapped(choice: choice, destination: destination)
         }

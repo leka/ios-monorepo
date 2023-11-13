@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: Apache-2.0
 
 id: 24bf568972da46c294f1737c3ed36994
-name: Association - Two Categories - Multiple Right Answers - Images
+name: Association - Two Categories Of Two Items - Images
 description: L'objectif est de trier les images par categories.
 image: activity_image_recognition_1
 sequence:

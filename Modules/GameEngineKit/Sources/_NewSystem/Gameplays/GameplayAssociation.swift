@@ -11,6 +11,7 @@ where ChoiceModelType: GameplayChoiceModelProtocol {
 
     var choices: CurrentValueSubject<[GameplayAssociationChoiceModel], Never> = .init([])
     var rightAnswers: [ChoiceModelType] = []
+    var destinations: [ChoiceModelType] = []
     var state: CurrentValueSubject<ExerciseState, Never> = .init(.idle)
 
     func updateChoice(_ choice: ChoiceModelType, state: GameplayChoiceState) {
@@ -31,16 +32,19 @@ extension GameplayAssociation where ChoiceModelType == GameplayAssociationChoice
     }
 
     func process(_ choice: ChoiceModelType, _ destination: ChoiceModelType) {
-        if choice.choice.category == destination.choice.category {
+        if choice.choice.category == destination.choice.category
+            && !rightAnswers.contains(where: { $0.id == destination.id })
+        {
             updateChoice(choice, state: .rightAnswer)
             rightAnswers.append(choice)
-            rightAnswers.append(destination)
+            if !destinations.contains(where: { $0.id == destination.id }) {
+                destinations.append(destination)
+            }
+            if (rightAnswers.count + destinations.count) == self.choices.value.count {
+                state.send(.completed)
+            }
         } else {
             updateChoice(choice, state: .wrongAnswer)
-        }
-
-        if rightAnswers.count == self.choices.value.count {
-            state.send(.completed)
         }
     }
 
