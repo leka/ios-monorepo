@@ -13,7 +13,7 @@ public struct DragAndDropIntoZonesChoice: Codable {
     }
 }
 
-public struct DragAndDropPayload: Codable {
+public struct DragAndDropIntoZonesPayload: Codable {
     public let dropZoneA: DropZoneDetails
     public let dropZoneB: DropZoneDetails?
     public let choices: [DragAndDropIntoZonesChoice]
