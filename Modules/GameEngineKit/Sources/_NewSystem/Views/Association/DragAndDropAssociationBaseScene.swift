@@ -15,10 +15,10 @@ class DragAndDropAssociationBaseScene: SKScene {
     var verticalSpacing: CGFloat = .zero
     var dropDestinationAnchor: CGPoint = .zero
     var biggerSide: CGFloat = 150
-    private var selectedNodes: [UITouch: DraggableImageAnswerNode] = [:]
-    private var playedNode: DraggableImageAnswerNode?
+    var playedNode: DraggableImageAnswerNode?
+    var dropDestinations: [DraggableImageAnswerNode] = []
+    var selectedNodes: [UITouch: DraggableImageAnswerNode] = [:]
     private var expectedItemsNodes: [String: [SKSpriteNode]] = [:]
-    private var dropDestinations: [DraggableImageAnswerNode] = []
     private var cancellables: Set<AnyCancellable> = []
 
     init(viewModel: DragAndDropAssociationViewViewModel) {

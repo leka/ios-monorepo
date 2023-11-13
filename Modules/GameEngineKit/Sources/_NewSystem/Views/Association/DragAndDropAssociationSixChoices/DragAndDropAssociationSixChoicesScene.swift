@@ -12,6 +12,8 @@ final class DragAndDropAssociationSixChoicesScene: DragAndDropAssociationBaseSce
     private var freeSlots: [String: [Bool]] = [:]
     private var endAbscissa: CGFloat = .zero
     private var finalXPosition: CGFloat = .zero
+    //    private var answersTurnedToDropAreas: [String: DraggableImageAnswerNode] = [:]
+    //    private var answeredButNotTurnedToDropArea: [Int] = []
 
     override init(viewModel: DragAndDropAssociationViewViewModel) {
         super.init(viewModel: viewModel)
@@ -24,6 +26,28 @@ final class DragAndDropAssociationSixChoicesScene: DragAndDropAssociationBaseSce
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    override func reset() {
+        self.backgroundColor = .clear
+        self.removeAllChildren()
+        self.removeAllActions()
+
+        dropDestinations = []
+        //        answersTurnedToDropAreas = [:]
+        //        answeredButNotTurnedToDropArea = []
+
+        setAnswersFinalPositionSlots()
+        setFirstAnswerPosition()
+        layoutAnswers()
+    }
+
+    private func setAnswersFinalPositionSlots() {
+        freeSlots = [:]
+        for gameplayChoiceModel in viewModel.choices {
+            let category = gameplayChoiceModel.choice.category.rawValue
+            freeSlots[category] = [true, true]
+        }
     }
 
     override func setFirstAnswerPosition() {
@@ -41,24 +65,24 @@ final class DragAndDropAssociationSixChoicesScene: DragAndDropAssociationBaseSce
         }
     }
 
-    private func setFinalXPosition(context: String) {
+    private func setFinalXPosition(category: String) {
         guard endAbscissa <= dropDestinationAnchor.x else {
             finalXPosition = {
-                guard freeSlots[context]![1] else {
-                    freeSlots[context]![0] = false
+                guard freeSlots[category]![1] else {
+                    freeSlots[category]![0] = false
                     return dropDestinationAnchor.x - 80
                 }
-                freeSlots[context]![1] = false
+                freeSlots[category]![1] = false
                 return dropDestinationAnchor.x + 80
             }()
             return
         }
         finalXPosition = {
-            guard freeSlots[context]![0] else {
-                freeSlots[context]![1] = false
+            guard freeSlots[category]![0] else {
+                freeSlots[category]![1] = false
                 return dropDestinationAnchor.x + 80
             }
-            freeSlots[context]![0] = false
+            freeSlots[category]![0] = false
             return dropDestinationAnchor.x - 80
         }()
     }
@@ -75,6 +99,38 @@ final class DragAndDropAssociationSixChoicesScene: DragAndDropAssociationBaseSce
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [self] in
                 exerciseCompletedBehavior()
             }
+        }
+    }
+
+    override func touchesEnded(_ touches: Set<UITouch>, with: UIEvent?) {
+        for touch in touches {
+            guard selectedNodes.keys.contains(touch) else {
+                break
+            }
+            playedNode = selectedNodes[touch]!
+            playedNode!.scaleForMax(sizeOf: biggerSide)
+
+            // make dropArea out of target node
+            guard
+                let destinationNode = dropDestinations.first(where: {
+                    $0.frame.contains(touch.location(in: self)) && $0.name != playedNode!.name
+                })
+            else {
+                wrongAnswerBehavior(playedNode!)
+                break
+            }
+            dropDestinationAnchor = destinationNode.position
+
+            guard let destination = viewModel.choices.first(where: { $0.choice.value == destinationNode.name })
+            else { return }
+            guard let choice = viewModel.choices.first(where: { $0.choice.value == playedNode!.name })
+            else { return }
+
+            // dropped within the bounds of the proper sibling
+            endAbscissa = touch.location(in: self).x
+            destinationNode.isDraggable = false
+            setFinalXPosition(category: destination.choice.category.rawValue)
+            viewModel.onChoiceTapped(choice: choice, destination: destination)
         }
     }
 }
