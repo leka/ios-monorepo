@@ -5,38 +5,19 @@
 import Foundation
 import SwiftUI
 
-public func convertJoystickPosToMotorSpeed(position: CGPoint, maxValue: CGFloat) -> (
-    rotationLeft: Rotation, rotationRight: Rotation
+public func convertJoystickPosToSpeed(position: CGPoint, maxValue: CGFloat) -> (
+    leftSpeed: CGFloat, leftRight: CGFloat
 ) {
-    let rotationLeft: Rotation
-    let rotationRight: Rotation
-
     let posX = position.x
     let posY = position.y
 
-    let leftMotor = 255.0 / maxValue * (posX - posY)
-    let rightMotor = -255.0 / maxValue * (posX + posY)
+    let leftSpeed = (posX - posY) / maxValue
+    let rightSpeed = -(posX + posY) / maxValue
 
-    let leftMotorClamped = UInt8(abs(clamp(leftMotor, lower: -255, upper: 255)))
-    let rightMotorClamped = UInt8(abs(clamp(rightMotor, lower: -255, upper: 255)))
+    let leftSpeedClamped = clamp(leftSpeed, lower: -1.0, upper: 1.0)
+    let rightSpeedClamped = clamp(rightSpeed, lower: -1.0, upper: 1.0)
 
-    if leftMotor > 0 {
-        rotationLeft = .clockwise(speed: leftMotorClamped)
-    } else if leftMotor < 0 {
-        rotationLeft = .counterclockwise(speed: leftMotorClamped)
-    } else {
-        rotationLeft = .still
-    }
-
-    if rightMotor > 0 {
-        rotationRight = .clockwise(speed: rightMotorClamped)
-    } else if rightMotor < 0 {
-        rotationRight = .counterclockwise(speed: rightMotorClamped)
-    } else {
-        rotationRight = .still
-    }
-
-    return (rotationLeft, rotationRight)
+    return (leftSpeedClamped, rightSpeedClamped)
 }
 
 func clamp<T: Comparable>(_ value: T, lower: T, upper: T) -> T {
