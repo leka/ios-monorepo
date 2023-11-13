@@ -20,7 +20,7 @@ protocol GameplayChoiceModelProtocol: Identifiable {
 }
 
 struct GameplaySelectionChoiceModel: GameplayChoiceModelProtocol {
-    typealias ChoiceType = TouchSelectionChoice
+    typealias ChoiceType = TouchSelection.Choice
 
     let id: String = UUID().uuidString
     let choice: ChoiceType
