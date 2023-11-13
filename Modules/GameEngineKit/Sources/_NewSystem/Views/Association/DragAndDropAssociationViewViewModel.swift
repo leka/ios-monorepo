@@ -16,7 +16,7 @@ class DragAndDropAssociationViewViewModel: ObservableObject {
 
     init(choices: [AssociationChoice], shuffle: Bool = false, shared: ExerciseSharedData? = nil) {
         let gameplayChoiceModel = choices.map { GameplayAssociationChoiceModel(choice: $0) }
-        self.choices = gameplayChoiceModel
+        self.choices = shuffle ? gameplayChoiceModel.shuffled() : gameplayChoiceModel
         self.gameplay = GameplayAssociation(choices: gameplayChoiceModel, shuffle: shuffle)
         self.exercicesSharedData = shared ?? ExerciseSharedData()
 
