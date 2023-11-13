@@ -25,9 +25,9 @@ where ChoiceModelType: GameplayChoiceModelProtocol {
 
 extension GameplayAssociation where ChoiceModelType == GameplayAssociationChoiceModel {
 
-    convenience init(choices: [GameplayAssociationChoiceModel]) {
+    convenience init(choices: [GameplayAssociationChoiceModel], shuffle: Bool = false) {
         self.init()
-        self.choices.send(choices)
+        self.choices.send(shuffle ? choices.shuffled() : choices)
         self.state.send(.playing)
     }
 

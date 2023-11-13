@@ -12,9 +12,9 @@ public struct DragAndDropAssociationView: View {
     @StateObject private var viewModel: DragAndDropAssociationViewViewModel
     @State private var scene: SKScene = SKScene()
 
-    public init(choices: [AssociationChoice]) {
+    public init(choices: [AssociationChoice], shuffle: Bool = false) {
         self._viewModel = StateObject(
-            wrappedValue: DragAndDropAssociationViewViewModel(choices: choices)
+            wrappedValue: DragAndDropAssociationViewViewModel(choices: choices, shuffle: shuffle)
         )
     }
 
@@ -23,9 +23,19 @@ public struct DragAndDropAssociationView: View {
             fatalError("Exercise payload is not .association")
         }
 
-        //        self._viewModel = StateObject(wrappedValue: DragAndDropAssociationViewViewModel(choices: payload.choices))
         self._viewModel = StateObject(
-            wrappedValue: DragAndDropAssociationViewViewModel(choices: payload.choices, shared: data))
+            wrappedValue: DragAndDropAssociationViewViewModel(
+                choices: payload.choices,
+                shuffle: payload.shuffleChoices
+            )
+        )
+        self._viewModel = StateObject(
+            wrappedValue: DragAndDropAssociationViewViewModel(
+                choices: payload.choices,
+                shuffle: payload.shuffleChoices,
+                shared: data
+            )
+        )
     }
 
     public var body: some View {

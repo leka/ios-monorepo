@@ -14,13 +14,13 @@ class DragAndDropAssociationViewViewModel: ObservableObject {
     private let gameplay: GameplayAssociation<GameplayAssociationChoiceModel>
     private var cancellables: Set<AnyCancellable> = []
 
-    init(choices: [AssociationChoice], shared: ExerciseSharedData? = nil) {
+    init(choices: [AssociationChoice], shuffle: Bool = false, shared: ExerciseSharedData? = nil) {
         let gameplayChoiceModel = choices.map { GameplayAssociationChoiceModel(choice: $0) }
         self.choices = gameplayChoiceModel
-        self.gameplay = GameplayAssociation(choices: gameplayChoiceModel)
+        self.gameplay = GameplayAssociation(choices: gameplayChoiceModel, shuffle: shuffle)
         self.exercicesSharedData = shared ?? ExerciseSharedData()
 
-        subscribeToGameplayDragAndDropChoicesUpdates()
+        subscribeToGameplayDragAndDropAssociationChoicesUpdates()
         subscribeToGameplayStateUpdates()
     }
 
@@ -28,7 +28,7 @@ class DragAndDropAssociationViewViewModel: ObservableObject {
         gameplay.process(choice, destination)
     }
 
-    private func subscribeToGameplayDragAndDropChoicesUpdates() {
+    private func subscribeToGameplayDragAndDropAssociationChoicesUpdates() {
         gameplay.choices
             .receive(on: DispatchQueue.main)
             .sink {
