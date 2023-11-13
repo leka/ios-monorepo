@@ -7,7 +7,7 @@ import Foundation
 extension Exercise {
 
     public enum Payload: Codable {
-        case selection(SelectionPayload)
+        case selection(TouchSelectionPayload)
         case dragAndDrop(DragAndDropPayload)
 
         // TODO(@ladislas): see if we can decode based on interface in Exercise
@@ -29,7 +29,8 @@ extension Exercise {
                 let action = try? container.decode(Exercise.Action.self, forKey: .action)
                 let shuffleChoices = try container.decodeIfPresent(Bool.self, forKey: .shuffleChoices) ?? false
 
-                self = .selection(SelectionPayload(choices: choices, action: action, shuffleChoices: shuffleChoices))
+                self = .selection(
+                    TouchSelectionPayload(choices: choices, action: action, shuffleChoices: shuffleChoices))
                 return
             }
 

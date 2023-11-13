@@ -25,7 +25,7 @@ public struct TouchSelectionChoice: Codable {
     }
 }
 
-public struct SelectionPayload: Codable {
+public struct TouchSelectionPayload: Codable {
     public let choices: [TouchSelectionChoice]
     public let action: Exercise.Action?
     public let shuffleChoices: Bool
