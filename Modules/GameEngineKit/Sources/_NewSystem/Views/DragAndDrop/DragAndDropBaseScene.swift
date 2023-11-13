@@ -10,7 +10,7 @@ import SwiftUI
 struct DropZoneNode {
     let details: DropZoneDetails
     var node: SKSpriteNode = SKSpriteNode()
-    let zone: DragAndDropChoice.ChoiceDropZone
+    let zone: DragAndDropIntoZonesChoice.ChoiceDropZone
 }
 
 class DragAndDropBaseScene: SKScene {

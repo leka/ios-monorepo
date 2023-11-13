@@ -16,7 +16,7 @@ public struct DragAndDropView: View {
     // TODO(@hugo): Add hints variable
     //    let hints: Bool
 
-    public init(choices: [DragAndDropChoice], dropZoneA: DropZoneDetails, dropZoneB: DropZoneDetails? = nil) {
+    public init(choices: [DragAndDropIntoZonesChoice], dropZoneA: DropZoneDetails, dropZoneB: DropZoneDetails? = nil) {
         self._viewModel = StateObject(wrappedValue: DragAndDropViewViewModel(choices: choices))
         self.dropZoneA = dropZoneA
         self.dropZoneB = dropZoneB

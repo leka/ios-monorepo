@@ -17,7 +17,7 @@ extension Exercise {
             if container.allKeys.contains(.dropZoneA) {
                 let dropZoneA = try container.decode(DropZoneDetails.self, forKey: .dropZoneA)
                 let dropZoneB = try container.decodeIfPresent(DropZoneDetails.self, forKey: .dropZoneB)
-                let choices = try container.decode([DragAndDropChoice].self, forKey: .choices)
+                let choices = try container.decode([DragAndDropIntoZonesChoice].self, forKey: .choices)
 
                 self = .dragAndDrop(DragAndDropPayload(dropZoneA: dropZoneA, dropZoneB: dropZoneB, choices: choices))
                 return
