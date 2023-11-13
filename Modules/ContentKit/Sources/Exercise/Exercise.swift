@@ -12,14 +12,6 @@ public struct Exercise: Codable {
     public let gameplay: Gameplay
     public let payload: Payload
 
-    public enum Interface: String, Codable {
-        case touchToSelect
-        case robotThenTouchToSelect
-        case listenThenTouchToSelect
-        case observeThenTouchToSelect
-        case dragAndDrop
-    }
-
     // TODO(@ladislas): is this really needed here?
     public enum Category: String, Codable {
         case selection
