@@ -30,7 +30,7 @@ struct Play_ButtonStyle: ButtonStyle {
 }
 
 struct PlayButton: View {
-    @ObservedObject var audioPlayer: AudioPlayer
+    @ObservedObject var audioPlayer: AudioPlayerDeprecated
 
     var body: some View {
         Button {

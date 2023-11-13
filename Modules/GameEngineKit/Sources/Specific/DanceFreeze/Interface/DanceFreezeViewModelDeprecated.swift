@@ -3,10 +3,11 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import Combine
+import ContentKit
 import SwiftUI
 
-public class DanceFreezeViewModel: Identifiable, ObservableObject {
-    private var gameplay: DanceFreezeGameplay
+public class DanceFreezeViewModelDeprecated: Identifiable, ObservableObject {
+    private var gameplay: DanceFreezeGameplayDeprecated
 
     @Published public var progress: CGFloat
     @Published public var state: GameplayStateDeprecated
@@ -14,7 +15,7 @@ public class DanceFreezeViewModel: Identifiable, ObservableObject {
 
     private var cancellables: Set<AnyCancellable> = []
 
-    public init(gameplay: DanceFreezeGameplay) {
+    public init(gameplay: DanceFreezeGameplayDeprecated) {
         self.gameplay = gameplay
 
         self.progress = self.gameplay.progress
@@ -49,7 +50,7 @@ public class DanceFreezeViewModel: Identifiable, ObservableObject {
         gameplay.process()
     }
 
-    func setAudioRecording(audioRecording: AudioRecordingModel) {
+    func setAudioRecording(audioRecording: AudioRecordingModelDeprecated) {
         gameplay.setAudioPlayer(audioRecording: audioRecording)
     }
 }
