@@ -2,7 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
-public struct DragAndDropChoice: Codable {
+public struct DragAndDropIntoZonesChoice: Codable {
     public let value: String
     public let type: UIElementType
     public let dropZone: ChoiceDropZone?
@@ -16,7 +16,7 @@ public struct DragAndDropChoice: Codable {
 public struct DragAndDropPayload: Codable {
     public let dropZoneA: DropZoneDetails
     public let dropZoneB: DropZoneDetails?
-    public let choices: [DragAndDropChoice]
+    public let choices: [DragAndDropIntoZonesChoice]
 }
 
 public struct DropZoneDetails: Codable {
