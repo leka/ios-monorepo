@@ -13,7 +13,7 @@ struct Play_ButtonStyle: ButtonStyle {
             .mask(Circle().inset(by: 4))
             .background(
                 Circle()
-                    .fill(
+                    .fillDeprecated(
                         Color.white, strokeBorder: DesignKitAsset.Colors.gameButtonBorder.swiftUIColor,
                         lineWidth: 4
                     )

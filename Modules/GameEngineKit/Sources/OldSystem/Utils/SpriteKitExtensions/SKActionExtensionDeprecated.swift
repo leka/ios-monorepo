@@ -6,7 +6,7 @@ import SpriteKit
 import SwiftUI
 
 extension SKAction {
-    func moveAnimation(_ timingMode: SKActionTimingMode) -> SKAction {
+    func moveAnimationDeprecated(_ timingMode: SKActionTimingMode) -> SKAction {
         self.timingMode = timingMode
         return self
     }

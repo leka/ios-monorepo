@@ -6,13 +6,13 @@ import SpriteKit
 import SwiftUI
 
 extension SKSpriteNode {
-    func fullyContains(bounds: CGRect) -> Bool {
+    func fullyContainsDeprecated(bounds: CGRect) -> Bool {
         (self.position.x - (self.size.width / 2) >= bounds.minX)
             && (self.position.y - (self.size.height / 2) >= bounds.minY)
             && (self.position.x + (self.size.width / 2) <= bounds.maxX)
             && (self.position.y + (self.size.height / 2) <= bounds.maxY)
     }
-    func fullyContains(location: CGPoint, bounds: CGRect) -> Bool {
+    func fullyContainsDeprecated(location: CGPoint, bounds: CGRect) -> Bool {
         (location.x - (self.size.width / 3) >= bounds.minX)
             && (location.y - (self.size.height / 3) >= bounds.minY)
             && (location.x + (self.size.width / 3) <= bounds.maxX)
@@ -20,7 +20,7 @@ extension SKSpriteNode {
     }
 
     // make sure the bigger side of a node measures a max of 170 pts
-    func scaleForMax(sizeOf: CGFloat) {
+    func scaleForMaxDeprecated(sizeOf: CGFloat) {
         let initialSize = self.texture?.size()
         let biggerSide = max(initialSize!.width, initialSize!.height)
         let scaler = sizeOf / biggerSide

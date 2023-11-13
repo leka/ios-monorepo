@@ -5,7 +5,7 @@
 import Foundation
 import SwiftUI
 
-public func convertJoystickPosToSpeed(position: CGPoint, maxValue: CGFloat) -> (
+public func convertJoystickPosToSpeedDeprecated(position: CGPoint, maxValue: CGFloat) -> (
     leftSpeed: CGFloat, leftRight: CGFloat
 ) {
     let posX = position.x
@@ -20,12 +20,12 @@ public func convertJoystickPosToSpeed(position: CGPoint, maxValue: CGFloat) -> (
     return (leftSpeedClamped, rightSpeedClamped)
 }
 
-func clamp<T: Comparable>(_ value: T, lower: T, upper: T) -> T {
+func clampDeprecated<T: Comparable>(_ value: T, lower: T, upper: T) -> T {
     min(max(value, lower), upper)
 }
 
 extension View {
-    func onTapGestureIf(_ condition: Bool, closure: @escaping () -> Void) -> some View {
+    func onTapGestureIfDeprecated(_ condition: Bool, closure: @escaping () -> Void) -> some View {
         self.allowsHitTesting(condition)
             .onTapGesture {
                 closure()
@@ -34,7 +34,7 @@ extension View {
 }
 
 extension Shape {
-    func fill<Fill: ShapeStyle, Stroke: ShapeStyle>(
+    func fillDeprecated<Fill: ShapeStyle, Stroke: ShapeStyle>(
         _ fillStyle: Fill, strokeBorder strokeStyle: Stroke, lineWidth: CGFloat = 1
     ) -> some View {
         self
@@ -44,6 +44,6 @@ extension Shape {
 }
 
 // rotation animations
-func degreesToRadian(degrees: Double) -> Double {
+func degreesToRadianDeprecated(degrees: Double) -> Double {
     Double(degrees / 180.0 * .pi)
 }
