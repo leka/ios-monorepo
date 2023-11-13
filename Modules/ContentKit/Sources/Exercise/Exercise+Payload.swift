@@ -25,7 +25,7 @@ extension Exercise {
 
             // ? Selection
             if container.allKeys.contains(.choices) {
-                let choices = try container.decode([SelectionChoice].self, forKey: .choices)
+                let choices = try container.decode([TouchSelectionChoice].self, forKey: .choices)
                 let action = try? container.decode(Exercise.Action.self, forKey: .action)
                 let shuffleChoices = try container.decodeIfPresent(Bool.self, forKey: .shuffleChoices) ?? false
 

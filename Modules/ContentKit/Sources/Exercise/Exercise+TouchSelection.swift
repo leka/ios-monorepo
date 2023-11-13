@@ -2,7 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
-public struct SelectionChoice: Codable {
+public struct TouchSelectionChoice: Codable {
     public let value: String
     public let type: UIElementType
     public let isRightAnswer: Bool
@@ -26,7 +26,7 @@ public struct SelectionChoice: Codable {
 }
 
 public struct SelectionPayload: Codable {
-    public let choices: [SelectionChoice]
+    public let choices: [TouchSelectionChoice]
     public let action: Exercise.Action?
     public let shuffleChoices: Bool
 }

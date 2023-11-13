@@ -20,7 +20,7 @@ public struct ListenThenTouchToSelectView: View {
     @StateObject private var viewModel: SelectionViewViewModel
     @StateObject private var audioPlayer: AudioPlayer
 
-    public init(choices: [SelectionChoice], audioRecording: AudioRecordingModel) {
+    public init(choices: [TouchSelectionChoice], audioRecording: AudioRecordingModel) {
         self._viewModel = StateObject(wrappedValue: SelectionViewViewModel(choices: choices))
         self._audioPlayer = StateObject(wrappedValue: AudioPlayer(audioRecording: audioRecording))
     }

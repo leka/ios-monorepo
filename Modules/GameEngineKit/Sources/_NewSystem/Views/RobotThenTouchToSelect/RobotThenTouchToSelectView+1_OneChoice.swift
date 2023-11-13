@@ -27,8 +27,8 @@ extension RobotThenTouchToSelectView {
 }
 
 #Preview {
-    let choices: [SelectionChoice] = [
-        SelectionChoice(value: "red", type: .color, isRightAnswer: true)
+    let choices: [TouchSelectionChoice] = [
+        TouchSelectionChoice(value: "red", type: .color, isRightAnswer: true)
     ]
 
     return RobotThenTouchToSelectView(choices: choices)

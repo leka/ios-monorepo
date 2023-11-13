@@ -30,10 +30,10 @@ extension TouchToSelectView {
 }
 
 #Preview {
-    let choices: [SelectionChoice] = [
-        SelectionChoice(value: "red", type: .color, isRightAnswer: true),
-        SelectionChoice(value: "image-placeholder-food", type: .image, isRightAnswer: false),
-        SelectionChoice(value: "image-placeholder-portrait", type: .image, isRightAnswer: false),
+    let choices: [TouchSelectionChoice] = [
+        TouchSelectionChoice(value: "red", type: .color, isRightAnswer: true),
+        TouchSelectionChoice(value: "image-placeholder-food", type: .image, isRightAnswer: false),
+        TouchSelectionChoice(value: "image-placeholder-portrait", type: .image, isRightAnswer: false),
     ]
 
     return TouchToSelectView(choices: choices)

@@ -23,7 +23,7 @@ public struct ObserveThenTouchToSelectView: View {
 
     private let image: String
 
-    public init(choices: [SelectionChoice], image: String) {
+    public init(choices: [TouchSelectionChoice], image: String) {
         self._viewModel = StateObject(wrappedValue: SelectionViewViewModel(choices: choices))
         self.image = image
     }
