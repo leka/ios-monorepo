@@ -6,7 +6,7 @@ import AVFAudio
 import Combine
 import Foundation
 
-public class AudioPlayer: NSObject, ObservableObject {
+public class AudioPlayerDeprecated: NSObject, ObservableObject {
     @Published var progress: CGFloat = 0.0
     @Published var didFinishPlaying = false
 
@@ -14,13 +14,13 @@ public class AudioPlayer: NSObject, ObservableObject {
 
     private var cancellables: Set<AnyCancellable> = []
 
-    public init(audioRecording: AudioRecordingModel) {
+    public init(audioRecording: AudioRecordingModelDeprecated) {
         super.init()
         setAudioPlayer(audioRecording: audioRecording)
         didFinishPlaying = false
     }
 
-    func setAudioPlayer(audioRecording: AudioRecordingModel) {
+    func setAudioPlayer(audioRecording: AudioRecordingModelDeprecated) {
         progress = 0.0
         didFinishPlaying = false
 
@@ -71,7 +71,7 @@ public class AudioPlayer: NSObject, ObservableObject {
 
 }
 
-extension AudioPlayer: AVAudioPlayerDelegate {
+extension AudioPlayerDeprecated: AVAudioPlayerDelegate {
 
     public func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully: Bool) {
         didFinishPlaying = true

@@ -4,8 +4,8 @@
 
 import SwiftUI
 
-struct DanceFreezePlayer: View {
-    @EnvironmentObject var viewModel: DanceFreezeViewModel
+struct DanceFreezePlayerDeprecated: View {
+    @EnvironmentObject var viewModel: DanceFreezeViewModelDeprecated
 
     let isAuto: Bool
 
@@ -22,9 +22,9 @@ struct DanceFreezePlayer: View {
                 viewModel.onDanceFreezeToggle()
             } label: {
                 if viewModel.isDancing {
-                    DanceView()
+                    DanceViewDeprecated()
                 } else {
-                    FreezeView()
+                    FreezeViewDeprecated()
                 }
             }
             .disabled(isAuto)
@@ -53,11 +53,11 @@ struct DanceFreezePlayer: View {
     }
 }
 
-struct DanceFreezePlayer_Previews:
+struct DanceFreezePlayerDeprecated_Previews:
     PreviewProvider
 {
     static var previews: some View {
-        DanceFreezePlayer(isAuto: true)
+        DanceFreezePlayerDeprecated(isAuto: true)
             .previewInterfaceOrientation(.landscapeLeft)
     }
 }

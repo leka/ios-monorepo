@@ -25,12 +25,12 @@ public enum InterfaceType {
     case fourChoicesInline
     case fiveChoices
     case sixChoices
-    case listenOneChoice(AudioRecordingModel)
-    case listenTwoChoices(AudioRecordingModel)
-    case listenThreeChoices(AudioRecordingModel)
-    case listenThreeChoicesInline(AudioRecordingModel)
-    case listenFourChoices(AudioRecordingModel)
-    case listenSixChoices(AudioRecordingModel)
+    case listenOneChoice(AudioRecordingModelDeprecated)
+    case listenTwoChoices(AudioRecordingModelDeprecated)
+    case listenThreeChoices(AudioRecordingModelDeprecated)
+    case listenThreeChoicesInline(AudioRecordingModelDeprecated)
+    case listenFourChoices(AudioRecordingModelDeprecated)
+    case listenSixChoices(AudioRecordingModelDeprecated)
     case dragAndDropOneZoneOneOrMoreChoices(hints: Bool)
     case dragAndDropTwoZonesOneOrMoreChoices(hints: Bool)
 }

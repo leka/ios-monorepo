@@ -4,7 +4,7 @@
 
 import Foundation
 
-public struct AudioRecordingModel: Hashable, Equatable {
+public struct AudioRecordingModelDeprecated: Hashable, Equatable {
     let id: UUID = UUID()
     let name: String
     let file: String

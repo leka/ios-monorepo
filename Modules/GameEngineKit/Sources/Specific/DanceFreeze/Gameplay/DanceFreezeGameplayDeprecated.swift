@@ -5,8 +5,8 @@
 import Combine
 import SwiftUI
 
-public class DanceFreezeGameplay: ObservableObject {
-    var audioPlayer: AudioPlayer
+public class DanceFreezeGameplayDeprecated: ObservableObject {
+    var audioPlayer: AudioPlayerDeprecated
     @Published public var progress: CGFloat = 0.0
     @Published public var state: GameplayStateDeprecated = .idle
     @Published public var isDancing: Bool = false
@@ -14,7 +14,7 @@ public class DanceFreezeGameplay: ObservableObject {
     var cancellables: Set<AnyCancellable> = []
 
     public init() {
-        self.audioPlayer = AudioPlayer(audioRecording: kAvailableSongs[0])
+        self.audioPlayer = AudioPlayerDeprecated(audioRecording: kAvailableSongsDeprecated[0])
         self.audioPlayer.$progress
             .receive(on: DispatchQueue.main)
             .sink { [weak self] in
@@ -40,7 +40,7 @@ public class DanceFreezeGameplay: ObservableObject {
         }
     }
 
-    func setAudioPlayer(audioRecording: AudioRecordingModel) {
+    func setAudioPlayer(audioRecording: AudioRecordingModelDeprecated) {
         audioPlayer.setAudioPlayer(audioRecording: audioRecording)
     }
 }

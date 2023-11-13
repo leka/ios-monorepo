@@ -6,14 +6,14 @@ import SwiftUI
 
 public struct ListenThreeChoicesView: View {
     @StateObject private var viewModel: GenericViewModel
-    @StateObject private var audioPlayer: AudioPlayer
+    @StateObject private var audioPlayer: AudioPlayerDeprecated
     let horizontalSpacing: CGFloat = 32
     let verticalSpacing: CGFloat = 32
     let answerSize: CGFloat = 230
 
-    public init(gameplay: any SelectionGameplayProtocol, audioRecording: AudioRecordingModel) {
+    public init(gameplay: any SelectionGameplayProtocol, audioRecording: AudioRecordingModelDeprecated) {
         self._viewModel = StateObject(wrappedValue: GenericViewModel(gameplay: gameplay))
-        self._audioPlayer = StateObject(wrappedValue: AudioPlayer(audioRecording: audioRecording))
+        self._audioPlayer = StateObject(wrappedValue: AudioPlayerDeprecated(audioRecording: audioRecording))
     }
 
     public var body: some View {

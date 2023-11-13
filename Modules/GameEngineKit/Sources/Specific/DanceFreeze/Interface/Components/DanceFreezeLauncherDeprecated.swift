@@ -4,7 +4,7 @@
 
 import SwiftUI
 
-struct DanceFreezeModeButtonLabel: View {
+struct DanceFreezeModeButtonLabelDeprecated: View {
     let text: String
     let color: Color
 
@@ -25,8 +25,8 @@ struct DanceFreezeModeButtonLabel: View {
     }
 }
 
-struct DanceFreezeLauncher: View {
-    @Binding var mode: DanceFreezeStage
+struct DanceFreezeLauncherDeprecated: View {
+    @Binding var mode: DanceFreezeStageDeprecated
 
     var body: some View {
         VStack(spacing: 100) {
@@ -36,7 +36,7 @@ struct DanceFreezeLauncher: View {
                     .aspectRatio(contentMode: .fit)
                     .padding(.trailing, 50)
 
-                SongSelector()
+                SongSelectorDeprecated()
                     .frame(maxHeight: 250)
 
             }
@@ -46,24 +46,24 @@ struct DanceFreezeLauncher: View {
                 Button {
                     mode = .manualMode
                 } label: {
-                    DanceFreezeModeButtonLabel("Jouer - mode manuel", color: .cyan)
+                    DanceFreezeModeButtonLabelDeprecated("Jouer - mode manuel", color: .cyan)
                 }
 
                 Button {
                     mode = .automaticMode
                 } label: {
-                    DanceFreezeModeButtonLabel("Jouer - mode auto", color: .mint)
+                    DanceFreezeModeButtonLabelDeprecated("Jouer - mode auto", color: .mint)
                 }
             }
         }
     }
 }
 
-struct DanceFreezeLauncher_Previews:
+struct DanceFreezeLauncherDeprecated_Previews:
     PreviewProvider
 {
     static var previews: some View {
-        DanceFreezeLauncher(mode: .constant(.waitingForSelection))
+        DanceFreezeLauncherDeprecated(mode: .constant(.waitingForSelection))
             .previewInterfaceOrientation(.landscapeLeft)
     }
 }

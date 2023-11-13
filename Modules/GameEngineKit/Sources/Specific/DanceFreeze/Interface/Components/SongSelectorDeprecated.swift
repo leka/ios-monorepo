@@ -5,18 +5,18 @@
 import DesignKit
 import SwiftUI
 
-public let kAvailableSongs: [AudioRecordingModel] = [
-    AudioRecordingModel(name: "Giggly Squirrel", file: "Giggly_Squirrel"),
-    AudioRecordingModel(name: "Empty Page", file: "Empty_Page"),
-    AudioRecordingModel(name: "Early Bird", file: "Early_Bird"),
-    AudioRecordingModel(name: "Hands On", file: "Hands_On"),
-    AudioRecordingModel(name: "In The Game", file: "In_The_Game"),
-    AudioRecordingModel(name: "Little by Little", file: "Little_by_little"),
+public let kAvailableSongsDeprecated: [AudioRecordingModelDeprecated] = [
+    AudioRecordingModelDeprecated(name: "Giggly Squirrel", file: "Giggly_Squirrel"),
+    AudioRecordingModelDeprecated(name: "Empty Page", file: "Empty_Page"),
+    AudioRecordingModelDeprecated(name: "Early Bird", file: "Early_Bird"),
+    AudioRecordingModelDeprecated(name: "Hands On", file: "Hands_On"),
+    AudioRecordingModelDeprecated(name: "In The Game", file: "In_The_Game"),
+    AudioRecordingModelDeprecated(name: "Little by Little", file: "Little_by_little"),
 ]
 
-struct SongSelector: View {
-    @EnvironmentObject private var viewModel: DanceFreezeViewModel
-    @State private var selectedAudioRecording: AudioRecordingModel = kAvailableSongs.first!
+struct SongSelectorDeprecated: View {
+    @EnvironmentObject private var viewModel: DanceFreezeViewModelDeprecated
+    @State private var selectedAudioRecording: AudioRecordingModelDeprecated = kAvailableSongsDeprecated.first!
 
     let columns = [
         GridItem(.flexible()),
@@ -35,7 +35,7 @@ struct SongSelector: View {
 
             ScrollView {
                 LazyVGrid(columns: columns, alignment: .leading, spacing: 20) {
-                    ForEach(kAvailableSongs, id: \.self) { audioRecording in
+                    ForEach(kAvailableSongsDeprecated, id: \.self) { audioRecording in
                         Button {
                             selectedAudioRecording = audioRecording
                             viewModel.setAudioRecording(audioRecording: selectedAudioRecording)
@@ -64,7 +64,7 @@ struct SongSelector: View {
         .foregroundColor(DesignKitAsset.Colors.lekaDarkGray.swiftUIColor)
         .clipShape(RoundedRectangle(cornerRadius: 30))
         .onAppear {
-            viewModel.setAudioRecording(audioRecording: kAvailableSongs[0])
+            viewModel.setAudioRecording(audioRecording: kAvailableSongsDeprecated[0])
         }
     }
 }
