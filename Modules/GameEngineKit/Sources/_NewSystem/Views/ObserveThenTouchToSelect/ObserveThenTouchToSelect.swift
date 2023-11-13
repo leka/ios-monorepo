@@ -29,20 +29,18 @@ public struct ObserveThenTouchToSelectView: View {
     }
 
     public init(exercise: Exercise, data: ExerciseSharedData? = nil) {
-        guard case .selection(let payload) = exercise.payload else {
-            log.error("Exercise payload is not .selection")
-            fatalError("💥 Exercise payload is not .selection")
+        guard
+            case .selection(let payload) = exercise.payload,
+            case .ipad(type: .image(let name)) = exercise.action
+        else {
+            log.error("Exercise payload is not .selection and/or Exercise does not contain iPad image action")
+            fatalError("💥 Exercise payload is not .selection and/or Exercise does not contain iPad image action")
         }
-
-        guard case .ipad(type: .image(name: let name)) = exercise.action else {
-            log.error("Exercise payload does not contain an iPad image action")
-            fatalError("💥 Exercise payload does not contain an iPad image action")
-        }
-
-        self.image = name
 
         self._viewModel = StateObject(
             wrappedValue: SelectionViewViewModel(choices: payload.choices, shared: data))
+
+        self.image = name
     }
 
     public var body: some View {
