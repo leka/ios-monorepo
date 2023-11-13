@@ -12,10 +12,4 @@ public struct Exercise: Codable {
     public let gameplay: Gameplay
     public let payload: Payload
 
-    // TODO(@ladislas): is this really needed here?
-    public enum Category: String, Codable {
-        case selection
-        case dragAndDrop
-    }
-
 }
