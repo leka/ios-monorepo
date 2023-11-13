@@ -12,12 +12,12 @@ sequence:
         category: selection
         interface: robotThenTouchToSelect
         gameplay: selectAllRightAnswers
+        action:
+          type: robot
+          value:
+            type: color
+            value: blue
         payload:
-          action:
-            type: robot
-            value:
-              type: color
-              value: blue
           choices:
             - value: blue
               type: color
@@ -27,12 +27,12 @@ sequence:
         category: selection
         interface: robotThenTouchToSelect
         gameplay: selectAllRightAnswers
+        action:
+          type: robot
+          value:
+            type: color
+            value: green
         payload:
-          action:
-            type: robot
-            value:
-              type: color
-              value: green
           choices:
             - value: green
               type: color
@@ -44,12 +44,12 @@ sequence:
         category: selection
         interface: robotThenTouchToSelect
         gameplay: selectAllRightAnswers
+        action:
+          type: robot
+          value:
+            type: color
+            value: red
         payload:
-          action:
-            type: robot
-            value:
-              type: color
-              value: red
           choices:
             - value: red
               type: color
@@ -63,12 +63,12 @@ sequence:
         category: selection
         interface: robotThenTouchToSelect
         gameplay: selectAllRightAnswers
+        action:
+          type: robot
+          value:
+            type: color
+            value: yellow
         payload:
-          action:
-            type: robot
-            value:
-              type: color
-              value: yellow
           choices:
             - value: yellow
               type: color
@@ -84,12 +84,12 @@ sequence:
         category: selection
         interface: robotThenTouchToSelect
         gameplay: selectAllRightAnswers
+        action:
+          type: robot
+          value:
+            type: color
+            value: orange
         payload:
-          action:
-            type: robot
-            value:
-              type: color
-              value: orange
           choices:
             - value: orange
               type: color
@@ -107,12 +107,12 @@ sequence:
         category: selection
         interface: robotThenTouchToSelect
         gameplay: selectAllRightAnswers
+        action:
+          type: robot
+          value:
+            type: color
+            value: yellow
         payload:
-          action:
-            type: robot
-            value:
-              type: color
-              value: yellow
           choices:
             - value: purple
               type: color

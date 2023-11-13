@@ -34,10 +34,13 @@ public struct RobotThenTouchToSelectView: View {
 
     public init(exercise: Exercise, data: ExerciseSharedData? = nil) {
         guard case .selection(let payload) = exercise.payload else {
+            log.error("Exercise payload is not .selection")
             fatalError("💥 Exercise payload is not .selection")
         }
-        guard case .robot(let robotMedia) = payload.action else {
-            fatalError("💥 Exercise payload does not contain an robot action")
+
+        guard case .robot(let robotMedia) = exercise.action else {
+            log.error("Exercise does not contain an robot action")
+            fatalError("💥 Exercise does not contain an robot action")
         }
 
         self.robot.blacken(.all)

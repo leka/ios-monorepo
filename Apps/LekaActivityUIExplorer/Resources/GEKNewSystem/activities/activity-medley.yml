@@ -12,12 +12,12 @@ sequence:
         category: selection
         interface: listenThenTouchToSelect
         gameplay: selectAllRightAnswers
+        action:
+          type: ipad
+          value:
+            type: audio
+            value: violin
         payload:
-          action:
-            type: ipad
-            value:
-              type: audio
-              value: violin
           choices:
             - value: image-instrument-violin-no_background
               type: image
@@ -60,12 +60,12 @@ sequence:
         category: selection
         interface: observeThenTouchToSelect
         gameplay: selectAllRightAnswers
+        action:
+          type: ipad
+          value:
+            type: image
+            value: image-landscape-red
         payload:
-          action:
-            type: ipad
-            value:
-              type: image
-              value: image-landscape-red
           choices:
             - value: yellow
               type: color
@@ -85,12 +85,12 @@ sequence:
         category: selection
         interface: robotThenTouchToSelect
         gameplay: selectAllRightAnswers
+        action:
+          type: robot
+          value:
+            type: color
+            value: orange
         payload:
-          action:
-            type: robot
-            value:
-              type: color
-              value: orange
           choices:
             - value: orange
               type: color

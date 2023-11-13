@@ -12,12 +12,12 @@ sequence:
         category: selection
         interface: listenThenTouchToSelect
         gameplay: selectAllRightAnswers
+        action:
+          type: ipad
+          value:
+            type: audio
+            value: guitar
         payload:
-          action:
-            type: ipad
-            value:
-              type: audio
-              value: guitar
           choices:
             - value: image-instrument-guitar-no_background
               type: image
@@ -27,12 +27,12 @@ sequence:
         category: selection
         interface: listenThenTouchToSelect
         gameplay: selectAllRightAnswers
+        action:
+          type: ipad
+          value:
+            type: audio
+            value: violin
         payload:
-          action:
-            type: ipad
-            value:
-              type: audio
-              value: violin
           choices:
             - value: image-instrument-violin-no_background
               type: image
@@ -44,12 +44,12 @@ sequence:
         category: selection
         interface: listenThenTouchToSelect
         gameplay: selectAllRightAnswers
+        action:
+          type: ipad
+          value:
+            type: audio
+            value: saxophone
         payload:
-          action:
-            type: ipad
-            value:
-              type: audio
-              value: saxophone
           choices:
             - value: image-instrument-saxophone-no_background
               type: image
@@ -64,12 +64,12 @@ sequence:
         category: selection
         interface: listenThenTouchToSelect
         gameplay: selectAllRightAnswers
+        action:
+          type: ipad
+          value:
+            type: audio
+            value: piano
         payload:
-          action:
-            type: ipad
-            value:
-              type: audio
-              value: piano
           choices:
             - value: image-instrument-harmonica-no_background
               type: image
@@ -85,12 +85,12 @@ sequence:
         category: selection
         interface: listenThenTouchToSelect
         gameplay: selectAllRightAnswers
+        action:
+          type: ipad
+          value:
+            type: audio
+            value: flute
         payload:
-          action:
-            type: ipad
-            value:
-              type: audio
-              value: flute
           choices:
             - value: image-instrument-violin-no_background
               type: image
@@ -110,12 +110,12 @@ sequence:
         category: selection
         interface: listenThenTouchToSelect
         gameplay: selectAllRightAnswers
+        action:
+          type: ipad
+          value:
+            type: audio
+            value: drums
         payload:
-          action:
-            type: ipad
-            value:
-              type: audio
-              value: drums
           choices:
             - value: image-instrument-drums-no_background
               type: image

@@ -31,7 +31,6 @@ public enum TouchSelection {
 
     public struct Payload: Codable {
         public let choices: [Choice]
-        public let action: Exercise.Action?  // TODO(@ladislas): remove action from here
         public let shuffleChoices: Bool
     }
 

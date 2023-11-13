@@ -4,6 +4,8 @@
 
 import Foundation
 
+// swiftlint:disable nesting
+
 extension Exercise {
 
     public enum Payload: Codable {
@@ -28,11 +30,10 @@ extension Exercise {
             // ? Selection
             if container.allKeys.contains(.choices) {
                 let choices = try container.decode([TouchSelection.Choice].self, forKey: .choices)
-                let action = try? container.decode(Exercise.Action.self, forKey: .action)
                 let shuffleChoices = try container.decodeIfPresent(Bool.self, forKey: .shuffleChoices) ?? false
 
                 self = .selection(
-                    TouchSelection.Payload(choices: choices, action: action, shuffleChoices: shuffleChoices))
+                    TouchSelection.Payload(choices: choices, shuffleChoices: shuffleChoices))
                 return
             }
 
@@ -59,3 +60,5 @@ extension Exercise {
     }
 
 }
+
+// swiftlint:enable nesting

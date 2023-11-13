@@ -10,6 +10,7 @@ public struct Exercise: Codable {
     public let category: Category
     public let interface: Interface
     public let gameplay: Gameplay
+    public let action: Action?
     public let payload: Payload
 
 }

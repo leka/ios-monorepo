@@ -30,10 +30,13 @@ public struct ObserveThenTouchToSelectView: View {
 
     public init(exercise: Exercise, data: ExerciseSharedData? = nil) {
         guard case .selection(let payload) = exercise.payload else {
-            fatalError("Exercise payload is not .selection")
+            log.error("Exercise payload is not .selection")
+            fatalError("💥 Exercise payload is not .selection")
         }
-        guard case .ipad(type: .image(name: let name)) = payload.action else {
-            fatalError("Exercise payload does not contain an iPad image action")
+
+        guard case .ipad(type: .image(name: let name)) = exercise.action else {
+            log.error("Exercise payload does not contain an iPad image action")
+            fatalError("💥 Exercise payload does not contain an iPad image action")
         }
 
         self.image = name
