@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import DesignKit
+import LocalizationKit
 import SwiftUI
 
 struct RobotUpdateAvailableView: View {
@@ -12,14 +13,14 @@ struct RobotUpdateAvailableView: View {
 
     var body: some View {
         VStack {
-            Text("⬆️ Une mise à jour est disponible 📦")
+            Text(l10n.information.status.robotUpdateAvailable)
                 .font(.title3)
                 .padding([.bottom])
 
             Button {
                 isUpdateStatusViewPresented = true
             } label: {
-                Text("Lancer la mise à jour du robot")
+                Text(l10n.information.startUpdateButton)
                     .foregroundColor(.white)
                     .font(.title2)
                     .padding([.horizontal], 50)

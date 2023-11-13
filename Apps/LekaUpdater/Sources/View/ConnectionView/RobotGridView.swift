@@ -3,6 +3,7 @@
 //// SPDX-License-Identifier: Apache-2.0
 
 import DesignKit
+import LocalizationKit
 import SwiftUI
 
 struct RobotGridView: View {
@@ -20,7 +21,7 @@ struct RobotGridView: View {
             if let robotDiscoveries = robotConnectionViewModel.robotDiscoveries {
                 switch robotDiscoveries.count {
                     case 0:
-                        Text("Aucun robot trouvé :(")
+                        Text(l10n.connection.noRobotsFoundText)
                     default:
                         VStack(alignment: .trailing) {
                             ScrollView(.vertical, showsIndicators: false) {
@@ -47,7 +48,7 @@ struct RobotGridView: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(height: tilePictoHeightSmall)
                     .padding(.top, 10)
-                Text("Lancer une recherche pour trouver les robots autour de vous !")
+                Text(l10n.connection.searchInviteText)
                     .font(reg17)
                     .multilineTextAlignment(.center)
                 Spacer()

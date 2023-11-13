@@ -4,6 +4,7 @@
 
 import Combine
 import Foundation
+import LocalizationKit
 
 class RobotInformationViewModel: ObservableObject {
 
@@ -12,7 +13,7 @@ class RobotInformationViewModel: ObservableObject {
     @Published var robotSerialNumber = "n/a"
     @Published var robotBattery = "n/a"
     @Published var robotOsVersion = "n/a"
-    @Published var robotIsCharging = false
+    @Published var robotIsCharging = "n/a"
 
     init() {
         subscribeToRobotSerialNumberUpdates()
@@ -35,7 +36,7 @@ class RobotInformationViewModel: ObservableObject {
             .receive(on: DispatchQueue.main)
             .sink { robotBattery in
                 if let robotBattery = robotBattery {
-                    self.robotBattery = "\(robotBattery)"
+                    self.robotBattery = "\(robotBattery)%"
                 } else {
                     self.robotBattery = "n/a"
                 }
@@ -56,7 +57,12 @@ class RobotInformationViewModel: ObservableObject {
         globalRobotManager.$isCharging
             .receive(on: DispatchQueue.main)
             .sink {
-                self.robotIsCharging = $0 ?? false
+                guard let isCharging = $0 else {
+                    self.robotIsCharging = "n/a"
+                    return
+                }
+                self.robotIsCharging =
+                    isCharging ? String(l10n.general.yes.characters) : String(l10n.general.no.characters)
             }
             .store(in: &cancellables)
     }

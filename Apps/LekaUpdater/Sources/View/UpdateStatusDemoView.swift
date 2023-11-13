@@ -63,7 +63,7 @@ struct UpdateStatusDemoView: View {
 
     var body: some View {
         VStack {
-            Text("Update Status Demo")
+            Text(verbatim: "Update Status Demo")
                 .font(.largeTitle)
                 .padding(.top)
 
@@ -72,13 +72,15 @@ struct UpdateStatusDemoView: View {
 
             VStack {
                 VStack {
-                    Text("User state is: \(viewModel.state)")
+                    Text(verbatim: "User state is: \(viewModel.state)")
                         .font(.title2)
                         .bold()
 
-                    Button("Start Update", action: viewModel.startUpdate)
+                    Button(action: viewModel.startUpdate) {
+                        Text(verbatim: "Start Update")
+                    }
 
-                    Text("Error: \(viewModel.error)")
+                    Text(verbatim: "Error: \(viewModel.error)")
                         .foregroundColor(.red)
                         .opacity(viewModel.error.isEmpty ? 0.0 : 1.0)
                 }

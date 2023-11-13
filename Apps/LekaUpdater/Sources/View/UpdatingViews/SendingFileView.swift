@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import DesignKit
+import LocalizationKit
 import SwiftUI
 
 struct SendingFileIllustration: View {
@@ -18,7 +19,7 @@ struct SendingFileContentView: View {
 
     var body: some View {
         VStack {
-            Text("Envoi de la mise à jour vers le robot")
+            Text(l10n.update.sending.sendingTitle)
                 .font(.title2)
                 .bold()
 
@@ -32,15 +33,9 @@ struct SendingFileContentView: View {
                 )
                 .frame(width: 600)
 
-            Text(
-                """
-                Ne débranchez pas votre robot.
-                Ne le sortez pas de son socle de recharge.
-                Ne fermez pas l'application.
-                """
-            )
-            .multilineTextAlignment(.center)
-            .padding()
+            Text(l10n.update.sending.instructions)
+                .multilineTextAlignment(.center)
+                .padding()
         }
     }
 }
@@ -55,7 +50,7 @@ struct SendingFileView_Previews: PreviewProvider {
                 .padding(.bottom)
                 .padding(.bottom)
 
-            Text("Étape 1/3")
+            Text(l10n.update.stepNumber("1/3"))
                 .font(.title)
                 .bold()
                 .monospacedDigit()

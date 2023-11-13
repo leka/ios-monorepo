@@ -5,6 +5,7 @@
 // Inspired from RobotKit
 
 import DesignKit
+import LocalizationKit
 import SwiftUI
 
 struct RobotConnectionView: View {
@@ -38,7 +39,7 @@ struct RobotConnectionView: View {
             label: {
                 HStack {
                     Image(systemName: "magnifyingglass")
-                    Text("Rechercher")
+                    Text(l10n.connection.searchButton)
                 }
                 .font(bold15)
                 .foregroundColor(.white)
@@ -65,10 +66,10 @@ struct RobotConnectionView: View {
                 HStack {
                     Image(systemName: "checkmark.circle")
                     if robotConnectionViewModel.disconnected {
-                        Text("Se connecter")
+                        Text(l10n.connection.connectButton)
 
                     } else {
-                        Text("Se déconnecter")
+                        Text(l10n.connection.disconnectButton)
                     }
                 }
                 .font(bold15)

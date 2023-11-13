@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import DesignKit
+import LocalizationKit
 import SwiftUI
 
 struct UpdateStatusView: View {
@@ -33,30 +34,21 @@ struct UpdateStatusView: View {
                 .padding(.bottom)
 
                 if viewModel.updatingStatus == .error {
-                    Text("Une erreur s'est produite")
+                    Text(l10n.update.errorTitle)
                         .font(.title)
                         .bold()
                         .padding()
                 } else {
-                    Text("Étape \(viewModel.stepNumber)/3")
+                    Text(l10n.update.stepNumber("\(viewModel.stepNumber)/3"))
                         .font(.title)
                         .bold()
                         .monospacedDigit()
                         .padding()
                         .alert(isPresented: $viewModel.showAlert) {
                             Alert(
-                                title: Text(
-                                    """
-                                    ⚠️ ATTENTION ⚡
-                                    Le robot n'est plus en charge
-                                    """
-                                ),
-                                message: Text(
-                                    """
-                                    Veuillez reposer Leka sur sa base
-                                    et/ou vérifier le branchement
-                                    """
-                                ))
+                                title: Text(l10n.update.alert.robotNotInChargeTitle),
+                                message: Text(l10n.update.alert.robotNotInChargeMessage)
+                            )
                         }
                 }
 
@@ -71,8 +63,9 @@ struct UpdateStatusView: View {
                         case .error:
                             ErrorContentView(
                                 errorDescription: viewModel.errorDescription,
-                                errorInstruction: viewModel.errorInstruction,
-                                isConnectionViewPresented: $isConnectionViewPresented)
+                                errorInstruction: viewModel.errorInstructions,
+                                isConnectionViewPresented: $isConnectionViewPresented
+                            )
                     }
                     Spacer()
                 }
@@ -92,10 +85,10 @@ struct UpdateStatusView: View {
             .toolbar {
                 ToolbarItem(placement: .principal) {
                     VStack {
-                        Text("Leka Updater")
+                        Text(l10n.main.appName)
                             .font(.title2)
                             .bold()
-                        Text("L'application pour mettre à jour vos robots Leka !")
+                        Text(l10n.main.appDescription)
                     }
                     .foregroundColor(.accentColor)
                 }
@@ -108,8 +101,9 @@ struct UpdatingStatusView_Previews: PreviewProvider {
     @State static var isConnectionViewPresented = false
 
     static var previews: some View {
-        NavigationStack {
-            UpdateStatusView(isConnectionViewPresented: $isConnectionViewPresented)
-        }
+        UpdateStatusView(isConnectionViewPresented: $isConnectionViewPresented)
+            .environment(\.locale, .init(identifier: "en"))
+        UpdateStatusView(isConnectionViewPresented: $isConnectionViewPresented)
+            .environment(\.locale, .init(identifier: "fr"))
     }
 }

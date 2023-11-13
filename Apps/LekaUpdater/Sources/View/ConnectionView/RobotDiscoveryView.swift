@@ -5,6 +5,7 @@
 // Copied from RobotKit
 
 import DesignKit
+import LocalizationKit
 import SwiftUI
 
 struct RobotDiscoveryView: View {
@@ -104,14 +105,14 @@ struct RobotDiscoveryView: View {
                             .foregroundColor(.green)
                 }
 
-                Text("\(discovery.battery)%")
+                Text(String(discovery.battery) + "%")
                     .foregroundColor(.gray)
             }
         }
     }
 
     private var robotOsVersion: some View {
-        Text("LekaOS v\(discovery.osVersion)")
+        Text(l10n.connection.robotDiscoveryVersion(discovery.osVersion))
             .font(.caption)
             .foregroundColor(.gray)
     }
