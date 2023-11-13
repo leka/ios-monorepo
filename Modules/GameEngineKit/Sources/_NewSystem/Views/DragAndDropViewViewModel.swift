@@ -26,7 +26,7 @@ class DragAndDropViewViewModel: ObservableObject {
     }
 
     public func onChoiceTapped(
-        choice: GameplayDragAndDropChoiceModel, dropZone: DragAndDropIntoZonesChoice.ChoiceDropZone
+        choice: GameplayDragAndDropChoiceModel, dropZone: DragAndDropIntoZonesChoice.DropZone
     ) {
         gameplay.process(choice, dropZone)
     }
