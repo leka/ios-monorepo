@@ -8,7 +8,7 @@ public enum TouchSelection {
 
     public struct Choice: Codable {
         public let value: String
-        public let type: UIElementType
+        public let type: Exercise.UIElementType
         public let isRightAnswer: Bool
 
         private enum CodingKeys: String, CodingKey {
@@ -18,11 +18,11 @@ public enum TouchSelection {
         public init(from decoder: Decoder) throws {
             let container = try decoder.container(keyedBy: CodingKeys.self)
             value = try container.decode(String.self, forKey: .value)
-            type = try container.decode(UIElementType.self, forKey: .type)
+            type = try container.decode(Exercise.UIElementType.self, forKey: .type)
             isRightAnswer = try container.decodeIfPresent(Bool.self, forKey: .isRightAnswer) ?? false
         }
 
-        public init(value: String, type: UIElementType, isRightAnswer: Bool = false) {
+        public init(value: String, type: Exercise.UIElementType, isRightAnswer: Bool = false) {
             self.value = value
             self.type = type
             self.isRightAnswer = isRightAnswer

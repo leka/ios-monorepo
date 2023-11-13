@@ -27,9 +27,3 @@ public struct Exercise: Codable {
     }
 
 }
-
-public enum UIElementType: String, Codable {
-    case image
-    case text
-    case color
-}

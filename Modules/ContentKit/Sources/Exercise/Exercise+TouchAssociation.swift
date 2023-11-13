@@ -13,7 +13,7 @@ public enum TouchAssociation {
 
     public struct Choice: Codable {
         public let value: String
-        public let type: UIElementType
+        public let type: Exercise.UIElementType
         public let category: Category?
     }
 
