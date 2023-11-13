@@ -52,7 +52,9 @@ let project = Project.iOSApp(
                 "CFBundleURLSchemes": ["LekaUpdater"],
             ]
         ],
-        "LSApplicationQueriesSchemes": ["LekaApp"],
+        "LSApplicationQueriesSchemes": [
+            "LekaApp", "com.googleusercontent.apps.224911845933-mv4tp4rstgjtvdqvbv5dl7defii1a7ic",
+        ],
     ],
     schemes: schemes
 )
