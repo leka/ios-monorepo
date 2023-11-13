@@ -8,19 +8,20 @@ extension Exercise {
 
     public enum Payload: Codable {
         case selection(TouchSelectionPayload)
-        case dragAndDrop(DragAndDropIntoZonesPayload)
+        case dragAndDrop(DragAndDropIntoZones.Payload)
 
         // TODO(@ladislas): see if we can decode based on interface in Exercise
         public init(from decoder: Decoder) throws {
             let container = try decoder.container(keyedBy: CustomKeys.self)
 
             if container.allKeys.contains(.dropZoneA) {
-                let dropZoneA = try container.decode(DropZoneDetails.self, forKey: .dropZoneA)
-                let dropZoneB = try container.decodeIfPresent(DropZoneDetails.self, forKey: .dropZoneB)
-                let choices = try container.decode([DragAndDropIntoZonesChoice].self, forKey: .choices)
+                let dropZoneA = try container.decode(DragAndDropIntoZones.DropZone.Details.self, forKey: .dropZoneA)
+                let dropZoneB = try container.decodeIfPresent(
+                    DragAndDropIntoZones.DropZone.Details.self, forKey: .dropZoneB)
+                let choices = try container.decode([DragAndDropIntoZones.Choice].self, forKey: .choices)
 
                 self = .dragAndDrop(
-                    DragAndDropIntoZonesPayload(dropZoneA: dropZoneA, dropZoneB: dropZoneB, choices: choices))
+                    DragAndDropIntoZones.Payload(dropZoneA: dropZoneA, dropZoneB: dropZoneB, choices: choices))
                 return
             }
 

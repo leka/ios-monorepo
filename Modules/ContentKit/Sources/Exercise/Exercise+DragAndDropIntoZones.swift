@@ -2,24 +2,32 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
-public struct DragAndDropIntoZonesChoice: Codable {
-    public let value: String
-    public let type: UIElementType
-    public let dropZone: DropZone?
+// swiftlint:disable nesting
+
+public enum DragAndDropIntoZones {
 
     public enum DropZone: String, Codable {
         case zoneA
         case zoneB
+
+        public struct Details: Codable {
+            public let value: String
+            public let type: UIElementType
+        }
     }
+
+    public struct Choice: Codable {
+        public let value: String
+        public let type: UIElementType
+        public let dropZone: DropZone?
+    }
+
+    public struct Payload: Codable {
+        public let dropZoneA: DropZone.Details
+        public let dropZoneB: DropZone.Details?
+        public let choices: [Choice]
+    }
+
 }
 
-public struct DragAndDropIntoZonesPayload: Codable {
-    public let dropZoneA: DropZoneDetails
-    public let dropZoneB: DropZoneDetails?
-    public let choices: [DragAndDropIntoZonesChoice]
-}
-
-public struct DropZoneDetails: Codable {
-    public let value: String
-    public let type: UIElementType
-}
+// swiftlint:enable nesting
