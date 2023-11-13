@@ -27,8 +27,8 @@ extension ListenThenTouchToSelectView {
 }
 
 #Preview {
-    let choices: [SelectionChoice] = [
-        SelectionChoice(value: "red", type: .color, isRightAnswer: true)
+    let choices: [TouchSelectionChoice] = [
+        TouchSelectionChoice(value: "red", type: .color, isRightAnswer: true)
     ]
 
     return ListenThenTouchToSelectView(
