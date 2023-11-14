@@ -11,7 +11,7 @@ extension Exercise {
         case robotThenTouchToSelect
         case listenThenTouchToSelect
         case observeThenTouchToSelect
-        case dragAndDrop
+        case dragAndDropIntoZones
     }
 
 }

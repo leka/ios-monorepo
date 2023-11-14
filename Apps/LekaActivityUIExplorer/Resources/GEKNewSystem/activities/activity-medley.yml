@@ -100,7 +100,7 @@ sequence:
               type: color
 
       - instructions: Place le bon instrument dans le panier
-        interface: dragAndDrop
+        interface: dragAndDropIntoZones
         gameplay: selectAllRightAnswers
         payload:
           dropZoneA:
@@ -120,7 +120,7 @@ sequence:
               type: image
 
       - instructions: Place les instruments dans les bonnes familles d'instruments
-        interface: dragAndDrop
+        interface: dragAndDropIntoZones
         gameplay: selectAllRightAnswers
         payload:
           dropZoneA:

@@ -7,14 +7,14 @@ import ContentKit
 import SpriteKit
 import SwiftUI
 
-public struct DragAndDropView: View {
+public struct DragAndDropIntoZonesView: View {
 
     @StateObject private var viewModel: DragAndDropViewViewModel
     @State private var scene: SKScene = SKScene()
     let dropZoneA: DragAndDropIntoZones.DropZone.Details
     let dropZoneB: DragAndDropIntoZones.DropZone.Details?
-    // TODO(@hugo): Add hints variable
-    //    let hints: Bool
+    // TODO(@HPezz): Add hints variable
+    // let hints: Bool
 
     public init(
         choices: [DragAndDropIntoZones.Choice], dropZoneA: DragAndDropIntoZones.DropZone.Details,
@@ -27,12 +27,13 @@ public struct DragAndDropView: View {
 
     public init(exercise: Exercise, data: ExerciseSharedData? = nil) {
         guard case .dragAndDrop(let payload) = exercise.payload else {
-            fatalError("Exercise payload is not .dragAndDrop")
+            log.error("Exercise payload is not .dragAndDrop")
+            fatalError("💥 Exercise payload is not .dragAndDrop")
         }
 
-        self._viewModel = StateObject(wrappedValue: DragAndDropViewViewModel(choices: payload.choices))
         self._viewModel = StateObject(
             wrappedValue: DragAndDropViewViewModel(choices: payload.choices, shared: data))
+
         self.dropZoneA = payload.dropZoneA
         self.dropZoneB = payload.dropZoneB
     }

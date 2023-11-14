@@ -9,7 +9,7 @@ image: activity_image_recognition_1
 sequence:
   - exercises:
       - instructions: Place les instruments dans les bonnes familles d'instruments
-        interface: dragAndDrop
+        interface: dragAndDropIntoZones
         gameplay: selectAllRightAnswers
         payload:
           dropZoneA:
@@ -30,7 +30,7 @@ sequence:
               dropZone: zoneA
 
       - instructions: Place les instruments dans les bonnes familles d'instruments
-        interface: dragAndDrop
+        interface: dragAndDropIntoZones
         gameplay: selectAllRightAnswers
         payload:
           dropZoneA:
@@ -51,7 +51,7 @@ sequence:
               dropZone: zoneA
 
       - instructions: Place les instruments dans les bonnes familles d'instruments
-        interface: dragAndDrop
+        interface: dragAndDropIntoZones
         gameplay: selectAllRightAnswers
         payload:
           dropZoneA:

@@ -9,7 +9,7 @@ import SwiftUI
 let kActivities: [Activity] = [
     // ? Filename format
     // ? touchToSelect: activity-touchToSelect-<number_of_answers>-<answer_type>
-    // ? dragAndDrop:   activity-dragAndDrop-<number_of_zones>-<number_of_answers>-<answer_type>
+    // ? dragAndDropIntoZones:   activity-dragAndDropIntoZones-<number_of_zones>-<number_of_answers>-<answer_type>
 
     ContentKit.decodeActivity("activity-touchToSelect-one_right_answer-colors"),
     ContentKit.decodeActivity("activity-touchToSelect-one_right_answer-colors-shuffle_choices"),
@@ -24,19 +24,19 @@ let kActivities: [Activity] = [
     ContentKit.decodeActivity("activity-listenThenTouchToSelect-mixed-images"),
     ContentKit.decodeActivity("activity-observeThenTouchToSelect-mixed-colors"),
 
-    ContentKit.decodeActivity("activity-dragAndDrop-one_zone-one_right_answer-image"),
-    // ContentKit.decodeActivity("activity-dragAndDrop-one_zone-one_right_answer-colors"),
-    // ContentKit.decodeActivity("activity-dragAndDrop-one_zone-one_right_answer-mixed"),
-    // ContentKit.decodeActivity("activity-dragAndDrop-one_zone-multiple_right_answer-images"),
-    // ContentKit.decodeActivity("activity-dragAndDrop-one_zone-multiple_right_answer-colors"),
-    // ContentKit.decodeActivity("activity-dragAndDrop-one_zone-multiple_right_answer-mixed"),
+    ContentKit.decodeActivity("activity-dragAndDropIntoZones-one_zone-one_right_answer-image"),
+    // ContentKit.decodeActivity("activity-dragAndDropIntoZones-one_zone-one_right_answer-colors"),
+    // ContentKit.decodeActivity("activity-dragAndDropIntoZones-one_zone-one_right_answer-mixed"),
+    // ContentKit.decodeActivity("activity-dragAndDropIntoZones-one_zone-multiple_right_answer-images"),
+    // ContentKit.decodeActivity("activity-dragAndDropIntoZones-one_zone-multiple_right_answer-colors"),
+    // ContentKit.decodeActivity("activity-dragAndDropIntoZones-one_zone-multiple_right_answer-mixed"),
 
-    // ContentKit.decodeActivity("activity-dragAndDrop-two_zones-one_right_answer-image"),
-    // ContentKit.decodeActivity("activity-dragAndDrop-two_zones-one_right_answer-colors"),
-    // ContentKit.decodeActivity("activity-dragAndDrop-two_zones-one_right_answer-mixed"),
-    ContentKit.decodeActivity("activity-dragAndDrop-two_zones-multiple_right_answers-images"),
-    // ContentKit.decodeActivity("activity-dragAndDrop-two_zones-multiple_right_answer-colors"),
-    // ContentKit.decodeActivity("activity-dragAndDrop-two_zones-multiple_right_answer-mixed"),
+    // ContentKit.decodeActivity("activity-dragAndDropIntoZones-two_zones-one_right_answer-image"),
+    // ContentKit.decodeActivity("activity-dragAndDropIntoZones-two_zones-one_right_answer-colors"),
+    // ContentKit.decodeActivity("activity-dragAndDropIntoZones-two_zones-one_right_answer-mixed"),
+    ContentKit.decodeActivity("activity-dragAndDropIntoZones-two_zones-multiple_right_answers-images"),
+    // ContentKit.decodeActivity("activity-dragAndDropIntoZones-two_zones-multiple_right_answer-colors"),
+    // ContentKit.decodeActivity("activity-dragAndDropIntoZones-two_zones-multiple_right_answer-mixed"),
 
     ContentKit.decodeActivity("activity-medley"),
     ContentKit.decodeActivity("activity-colorBingo"),

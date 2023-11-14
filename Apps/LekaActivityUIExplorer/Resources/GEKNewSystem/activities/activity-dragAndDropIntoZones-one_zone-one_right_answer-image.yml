@@ -9,7 +9,7 @@ image: activity_image_recognition_1
 sequence:
   - exercises:
       - instructions: Place le bon instrument dans le panier
-        interface: dragAndDrop
+        interface: dragAndDropIntoZones
         gameplay: selectAllRightAnswers
         payload:
           dropZoneA:
@@ -23,7 +23,7 @@ sequence:
               type: image
 
       - instructions: Place le bon instrument dans le panier
-        interface: dragAndDrop
+        interface: dragAndDropIntoZones
         gameplay: selectAllRightAnswers
         payload:
           dropZoneA:
@@ -39,7 +39,7 @@ sequence:
               dropZone: zoneA
 
       - instructions: Place le bon instrument dans le panier
-        interface: dragAndDrop
+        interface: dragAndDropIntoZones
         gameplay: selectAllRightAnswers
         payload:
           dropZoneA:
