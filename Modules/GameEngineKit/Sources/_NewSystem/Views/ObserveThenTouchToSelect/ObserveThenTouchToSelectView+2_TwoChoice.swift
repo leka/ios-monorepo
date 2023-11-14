@@ -18,7 +18,7 @@ extension ObserveThenTouchToSelectView {
         var body: some View {
             HStack(spacing: kHorizontalSpacing) {
                 ForEach(viewModel.choices) { choice in
-                    SelectionChoiceView(choice: choice, size: kAnswerSize, isTappable: isTappable)
+                    TouchToSelectChoiceView(choice: choice, size: kAnswerSize, isTappable: isTappable)
                         .onTapGesture {
                             viewModel.onChoiceTapped(choice: choice)
                         }

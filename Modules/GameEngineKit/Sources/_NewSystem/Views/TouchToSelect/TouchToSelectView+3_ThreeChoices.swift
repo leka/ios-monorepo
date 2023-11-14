@@ -17,7 +17,7 @@ extension TouchToSelectView {
         var body: some View {
             HStack(spacing: kHorizontalSpacing) {
                 ForEach(viewModel.choices[0...2]) { choice in
-                    SelectionChoiceView(choice: choice, size: kAnswerSize)
+                    TouchToSelectChoiceView(choice: choice, size: kAnswerSize)
                         .onTapGesture {
                             viewModel.onChoiceTapped(choice: choice)
                         }

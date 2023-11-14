@@ -20,7 +20,7 @@ extension RobotThenTouchToSelectView {
             VStack(spacing: kVerticalSpacing) {
                 HStack(spacing: kHorizontalSpacing) {
                     ForEach(viewModel.choices[0...1]) { choice in
-                        SelectionChoiceView(choice: choice, size: kAnswerSize, isTappable: isTappable)
+                        TouchToSelectChoiceView(choice: choice, size: kAnswerSize, isTappable: isTappable)
                             .onTapGesture {
                                 viewModel.onChoiceTapped(choice: choice)
                             }
@@ -29,7 +29,7 @@ extension RobotThenTouchToSelectView {
 
                 HStack(spacing: kHorizontalSpacing) {
                     ForEach(viewModel.choices[2...3]) { choice in
-                        SelectionChoiceView(choice: choice, size: kAnswerSize, isTappable: isTappable)
+                        TouchToSelectChoiceView(choice: choice, size: kAnswerSize, isTappable: isTappable)
                             .onTapGesture {
                                 viewModel.onChoiceTapped(choice: choice)
                             }
