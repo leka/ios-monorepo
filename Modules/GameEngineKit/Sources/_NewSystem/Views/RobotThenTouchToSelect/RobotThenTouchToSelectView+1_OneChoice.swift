@@ -5,14 +5,14 @@
 import ContentKit
 import SwiftUI
 
-extension ObserveThenTouchToSelectView {
+extension RobotThenTouchToSelectView {
 
     struct OneChoiceView: View {
 
         @ObservedObject var viewModel: SelectionViewViewModel
         let isTappable: Bool
 
-        private let kAnswerSize: CGFloat = 180
+        private let kAnswerSize: CGFloat = 300
 
         var body: some View {
             let choice = viewModel.choices[0]
@@ -31,5 +31,5 @@ extension ObserveThenTouchToSelectView {
         SelectionChoice(value: "red", type: .color, isRightAnswer: true)
     ]
 
-    return ObserveThenTouchToSelectView(choices: choices, image: "image-landscape-blue")
+    return RobotThenTouchToSelectView(choices: choices)
 }

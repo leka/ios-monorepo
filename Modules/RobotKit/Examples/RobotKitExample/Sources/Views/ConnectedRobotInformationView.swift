@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import Combine
+import RobotKit
 import SwiftUI
 
 struct ConnectedRobotInformationView: View {

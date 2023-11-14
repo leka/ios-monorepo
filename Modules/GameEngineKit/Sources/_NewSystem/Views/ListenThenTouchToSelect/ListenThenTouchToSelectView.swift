@@ -45,7 +45,7 @@ public struct ListenThenTouchToSelectView: View {
         let interface = Interface(rawValue: viewModel.choices.count)
 
         HStack(spacing: 0) {
-            ActionListenButton(audioPlayer: audioPlayer)
+            ActionButtonListen(audioPlayer: audioPlayer)
                 .padding(20)
 
             Divider()

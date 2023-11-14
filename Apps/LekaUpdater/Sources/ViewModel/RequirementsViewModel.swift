@@ -4,22 +4,23 @@
 
 import Combine
 import Foundation
+import LocalizationKit
 import SwiftUI
 
 class RequirementsViewModel: ObservableObject {
 
     private var cancellables: Set<AnyCancellable> = []
 
-    let requirementsInstructionText = "Pour lancer la mise à jour, veillez à ce que :"
+    let requirementsInstructionsText = l10n.update.requirements.instructionsText
 
     let chargingBasePluggedImage = LekaUpdaterAsset.Assets.chargingBasePlugged.swiftUIImage
-    let chargingBasePluggedText = "Le robot soit posé sur son socle et que le socle soit branché au secteur"
+    let chargingBasePluggedText = l10n.update.requirements.chargingBasePluggedText
 
     let chargingBaseGreenLEDImage = LekaUpdaterAsset.Assets.chargingBaseGreenLED.swiftUIImage
-    let chargingBaseGreenLEDText = "La LED de charge soit verte indiquant le bon positionnement sur le socle"
+    let chargingBaseGreenLEDText = l10n.update.requirements.chargingBaseGreenLEDText
 
-    let robotBatteryQuarter1Image = LekaUpdaterAsset.Assets.robotBatteryQuarter1.swiftUIImage
-    let robotBatteryQuarter1Text = "Votre robot soit chargé à 30% ou plus"
+    let robotBatteryMinimumLevelImage = LekaUpdaterAsset.Assets.robotBatteryQuarter1.swiftUIImage
+    let robotBatteryMinimumLevelText = l10n.update.requirements.robotBatteryMinimumLevelText
 
     @Published var robotIsReadyToUpdate = false
     @Published var robotIsNotReadyToUpdate = true

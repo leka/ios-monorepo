@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import DesignKit
+import LocalizationKit
 import SwiftUI
 
 struct ConnectionView: View {
@@ -29,10 +30,10 @@ struct ConnectionView: View {
             .toolbar {
                 ToolbarItem(placement: .principal) {
                     VStack {
-                        Text("Leka Updater")
+                        Text(l10n.main.appName)
                             .font(.title2)
                             .bold()
-                        Text("L'application pour mettre à jour vos robots Leka !")
+                        Text(l10n.main.appDescription)
                     }
                     .foregroundColor(.accentColor)
                 }
@@ -47,7 +48,7 @@ struct ConnectionView: View {
             },
             label: {
                 HStack {
-                    Text("Continuer")
+                    Text(l10n.connection.continueButton)
                     Image(systemName: "arrow.forward.circle")
                 }
                 .font(bold15)
@@ -65,5 +66,8 @@ struct ConnectionView: View {
 struct ConnectionView_Previews: PreviewProvider {
     static var previews: some View {
         ConnectionView()
+            .environment(\.locale, .init(identifier: "en"))
+        ConnectionView()
+            .environment(\.locale, .init(identifier: "fr"))
     }
 }

@@ -7,12 +7,6 @@ import Foundation
 import SwiftUI
 import SwiftUIJoystick
 
-public enum Rotation: Equatable {
-    case still
-    case clockwise(speed: UInt8)
-    case counterclockwise(speed: UInt8)
-}
-
 @MainActor
 public class JoystickViewModel: ObservableObject {
 
@@ -20,9 +14,6 @@ public class JoystickViewModel: ObservableObject {
     public var joystickMonitor = JoystickMonitor()
 
     @Published public var position: CGPoint = CGPoint(x: 0.0, y: 0.0)
-
-    @Published public var rotationLeft: Rotation = .still
-    @Published public var rotationRight: Rotation = .still
 
     public let dragDiameter: CGFloat
     public let shape: JoystickShape = .circle
@@ -38,10 +29,10 @@ public class JoystickViewModel: ObservableObject {
             .sink(receiveValue: {
                 self.position = $0
 
-                (self.rotationLeft, self.rotationRight) = convertJoystickPosToMotorSpeed(
-                    position: $0, maxValue: dragDiameter)
+                let (leftSpeed, rightSpeed) = convertJoystickPosToSpeed(position: $0, maxValue: dragDiameter)
 
                 // TODO(@ladislas): Run motors w/ rotationLeft & Right
+                print("LeftSpeed : \(leftSpeed), RightSpeed : \(rightSpeed)")
             })
             .store(in: &cancellables)
     }

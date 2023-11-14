@@ -7,15 +7,13 @@ import Combine
 import DesignKit
 import SwiftUI
 
-// TODO(@ladislas): Move to RobotKit to be available for all apps
-
 public struct RobotConnectionView: View {
 
     @StateObject var viewModel: RobotConnectionViewModel
 
     @Environment(\.dismiss) var dismiss
 
-    public init(viewModel: RobotConnectionViewModel) {
+    public init(viewModel: RobotConnectionViewModel = RobotConnectionViewModel()) {
         self._viewModel = StateObject(wrappedValue: viewModel)
     }
 
@@ -27,30 +25,33 @@ public struct RobotConnectionView: View {
 
     public var body: some View {
         NavigationStack {
-            VStack(spacing: 10) {
-                switch viewModel.robotDiscoveries.count {
-                    case 0:
-                        Spacer()
-                        searchingView
-                        Spacer()
-                    default:
-                        robotDiscoveryGridView
-                }
-
-                Divider()
-                    .padding(.horizontal)
-                    .padding(.horizontal)
-
-                HStack {
-                    if !viewModel.connected {
-                        connectButton
-                    } else {
-                        disconnectButton
+            ZStack {
+                backgroundView
+                VStack(spacing: 10) {
+                    switch viewModel.robotDiscoveries.count {
+                        case 0:
+                            Spacer()
+                            searchingView
+                            Spacer()
+                        default:
+                            robotDiscoveryGridView
                     }
-                    continueButton
+
+                    Divider()
+                        .padding(.horizontal)
+                        .padding(.horizontal)
+
+                    HStack {
+                        if !viewModel.connected {
+                            connectButton
+                        } else {
+                            disconnectButton
+                        }
+                        continueButton
+                    }
+                    .padding(.top, 15)
+                    .padding(.bottom, 40)
                 }
-                .padding(.top, 15)
-                .padding(.bottom, 40)
             }
             .onAppear {
                 viewModel.scanForRobots()
@@ -60,7 +61,7 @@ public struct RobotConnectionView: View {
             }
             .navigationTitle("Choose a robot")
             .toolbar {
-                ToolbarItemGroup(placement: .topBarTrailing) {
+                ToolbarItem(placement: .topBarTrailing) {
                     Button {
                         dismiss()
                     } label: {
@@ -183,6 +184,13 @@ public struct RobotConnectionView: View {
             }
             .disabled(true)
         }
+    }
+
+    var backgroundView: some View {
+        DesignKitAsset.Images.interfaceCloud.swiftUIImage
+            .resizable()
+            .aspectRatio(contentMode: .fill)
+            .ignoresSafeArea(.all)
     }
 
 }

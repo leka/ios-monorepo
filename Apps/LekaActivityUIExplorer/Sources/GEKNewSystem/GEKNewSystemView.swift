@@ -40,6 +40,7 @@ let kActivities: [Activity] = [
 
     ContentKit.decodeActivity("activity-medley"),
     ContentKit.decodeActivity("activity-association-two_categories-multiple_right_answers-images"),
+    ContentKit.decodeActivity("activity-colorBingo"),
 ]
 
 struct GEKNewSystemView: View {

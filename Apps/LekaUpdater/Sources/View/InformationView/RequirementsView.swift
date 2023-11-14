@@ -10,7 +10,7 @@ struct RequirementsView: View {
 
     var body: some View {
         VStack {
-            Text(viewModel.requirementsInstructionText)
+            Text(viewModel.requirementsInstructionsText)
                 .foregroundColor(DesignKitAsset.Colors.darkGray.swiftUIColor)
 
             HStack(alignment: .top) {
@@ -25,8 +25,8 @@ struct RequirementsView: View {
                     stepNumber: 2)
 
                 RequirementView(
-                    image: viewModel.robotBatteryQuarter1Image,
-                    text: viewModel.robotBatteryQuarter1Text,
+                    image: viewModel.robotBatteryMinimumLevelImage,
+                    text: viewModel.robotBatteryMinimumLevelText,
                     stepNumber: 3)
             }
         }
@@ -36,7 +36,7 @@ struct RequirementsView: View {
 
 private struct RequirementView: View {
     let image: Image
-    let text: String
+    let text: AttributedString
     let stepNumber: Int
 
     var body: some View {
@@ -68,5 +68,9 @@ private struct RequirementView: View {
 struct RequirementsView_Previews: PreviewProvider {
     static var previews: some View {
         RequirementsView(viewModel: RequirementsViewModel())
+            .environment(\.locale, .init(identifier: "en"))
+
+        RequirementsView(viewModel: RequirementsViewModel())
+            .environment(\.locale, .init(identifier: "fr"))
     }
 }

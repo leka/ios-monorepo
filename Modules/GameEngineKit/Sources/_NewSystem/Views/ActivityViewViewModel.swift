@@ -61,6 +61,7 @@ public class ActivityViewViewModel: ObservableObject {
 
     private func updateValues() {
         currentExercise = sequenceManager.currentExercise
+        currentExerciseInterface = sequenceManager.currentExercise.interface
         currentSequenceIndex = sequenceManager.currentSequenceIndex
         totalSequences = sequenceManager.totalSequences
         currentExerciseIndexInSequence = sequenceManager.currentExerciseIndexInSequence

@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import DesignKit
+import LocalizationKit
 import SwiftUI
 
 struct ErrorIllustration: View {
@@ -27,16 +28,18 @@ struct ErrorContentView: View {
             Text(errorDescription)
                 .font(.title2)
                 .bold()
+                .fixedSize(horizontal: false, vertical: true)
                 .multilineTextAlignment(.center)
 
             Text(errorInstruction)
+                .fixedSize(horizontal: false, vertical: true)
                 .multilineTextAlignment(.center)
 
             Button {
                 dismiss()
                 isConnectionViewPresented = true
             } label: {
-                Text("Revenir à la page de connexion")
+                Text(l10n.update.errorBackButtonTitle)
                     .padding(.horizontal)
                     .foregroundColor(.white)
                     .frame(height: 50)
@@ -54,21 +57,22 @@ struct ErrorContentView: View {
 struct ErrorView_Previews: PreviewProvider {
     @State static var isConnectionViewPresented = false
 
-    static let errorDescription = "Erreur inconnue"
-    static let errorActionRequired = "Contacter le support technique"
+    static let errorDescription = l10n.update.errorDescription
+    static let errorActionRequired = l10n.update.errorCallToAction
 
     static var previews: some View {
         VStack(spacing: 40) {
             ErrorIllustration()
                 .frame(height: 250)
 
-            Text("Une erreur s'est produite")
+            Text(l10n.update.errorTitle)
                 .font(.title)
                 .bold()
                 .monospacedDigit()
 
             ErrorContentView(
-                errorDescription: errorDescription, errorInstruction: errorActionRequired,
+                errorDescription: String(errorDescription.characters),
+                errorInstruction: String(errorActionRequired.characters),
                 isConnectionViewPresented: $isConnectionViewPresented
             )
             .foregroundColor(DesignKitAsset.Colors.darkGray.swiftUIColor)

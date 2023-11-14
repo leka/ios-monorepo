@@ -95,7 +95,7 @@ struct RobotDiscoveryView: View {
             HStack(spacing: 5) {
                 Image(systemName: discovery.battery.name)
                     .foregroundColor(discovery.battery.color)
-                Text("\(discovery.battery.value)%")
+                Text("\(discovery.battery.level)%")
                     .foregroundColor(.gray)
             }
         }

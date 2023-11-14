@@ -55,6 +55,7 @@ public struct Exercise: Codable {
 
     public enum Interface: String, Codable {
         case touchToSelect
+        case robotThenTouchToSelect
         case listenThenTouchToSelect
         case observeThenTouchToSelect
         case dragAndDrop

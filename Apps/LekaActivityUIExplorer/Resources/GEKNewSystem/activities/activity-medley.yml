@@ -2,12 +2,29 @@
 # Copyright 2023 APF France handicap
 # SPDX-License-Identifier: Apache-2.0
 
-id: d82c2ee629034950a056433975fd41e8
+id: 43a4ed54b7fe4e1ab05a82a4bab2be45
 name: Medley
 description: Cette activité rassemble toutes les interfaces disponibles
 image: activity_color_recognition_1
 sequence:
   - exercises:
+      - instructions: Écoute le son puis touche le bon instrument
+        type: selection
+        interface: listenThenTouchToSelect
+        gameplay: selectAllRightAnswers
+        payload:
+          action:
+            type: ipad
+            value:
+              type: audio
+              value: violin
+          choices:
+            - value: image-instrument-violin-no_background
+              type: image
+              isRightAnswer: true
+            - value: image-instrument-drums-no_background
+              type: image
+
       - instructions: Touche le bleu
         type: selection
         interface: touchToSelect
@@ -23,3 +40,109 @@ sequence:
               type: color
             - value: yellow
               type: color
+
+      - instructions: Touche le rond rouge et le rond jaune
+        type: selection
+        interface: touchToSelect
+        gameplay: selectAllRightAnswers
+        payload:
+          choices:
+            - value: red
+              type: color
+              isRightAnswer: true
+            - value: yellow
+              type: color
+              isRightAnswer: true
+            - value: green
+              type: color
+
+      - instructions: Regarde l'image puis touche la bonne réponse
+        type: selection
+        interface: observeThenTouchToSelect
+        gameplay: selectAllRightAnswers
+        payload:
+          action:
+            type: ipad
+            value:
+              type: image
+              value: image-landscape-red
+          choices:
+            - value: yellow
+              type: color
+            - value: green
+              type: color
+            - value: blue
+              type: color
+            - value: purple
+              type: color
+            - value: red
+              type: color
+              isRightAnswer: true
+            - value: green
+              type: color
+
+      - instructions: Touche la couleur de Leka
+        type: selection
+        interface: robotThenTouchToSelect
+        gameplay: selectAllRightAnswers
+        payload:
+          action:
+            type: robot
+            value:
+              type: color
+              value: orange
+          choices:
+            - value: orange
+              type: color
+              isRightAnswer: true
+            - value: yellow
+              type: color
+            - value: red
+              type: color
+            - value: green
+              type: color
+            - value: blue
+              type: color
+
+      - instructions: Place le bon instrument dans le panier
+        type: dragAndDrop
+        interface: dragAndDrop
+        gameplay: selectAllRightAnswers
+        payload:
+          dropZoneA:
+              value: basket
+              type: image
+          choices:
+            - value: image-instrument-harmonica-no_background
+              type: image
+            - value: image-instrument-flute-no_background
+              type: image
+              dropZone: zoneA
+            - value: image-instrument-violin-no_background
+              type: image
+            - value: image-instrument-piano-no_background
+              type: image
+            - value: image-instrument-guitar-no_background
+              type: image
+
+      - instructions: Place les instruments dans les bonnes familles d'instruments
+        type: dragAndDrop
+        interface: dragAndDrop
+        gameplay: selectAllRightAnswers
+        payload:
+          dropZoneA:
+              value: image-placeholder-instruments_wind
+              type: image
+          dropZoneB:
+              value: image-placeholder-instruments_string
+              type: image
+          choices:
+            - value: image-instrument-harmonica-no_background
+              type: image
+              dropZone: zoneA
+            - value: image-instrument-piano-no_background
+              type: image
+              dropZone: zoneB
+            - value: image-instrument-saxophone-no_background
+              type: image
+              dropZone: zoneA

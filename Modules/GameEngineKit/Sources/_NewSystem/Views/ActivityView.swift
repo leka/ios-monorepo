@@ -21,10 +21,8 @@ public struct ActivityView: View {
                 VStack {
                     VStack(spacing: 15) {
                         ActivityProgressBar(viewModel: viewModel)
-                            .id(viewModel.currentExerciseIndexInSequence)
 
                         ExerciseInstructionsButton(instructions: viewModel.currentExercise.instructions)
-                            .id(viewModel.currentExerciseIndexInSequence)
                     }
 
                     VStack {
@@ -33,6 +31,7 @@ public struct ActivityView: View {
                         Spacer()
                     }
                 }
+                .id(viewModel.currentExerciseIndexInSequence)
 
                 continueButton
             }
@@ -76,35 +75,36 @@ public struct ActivityView: View {
                     exercise: viewModel.currentExercise,
                     data: viewModel.currentExerciseSharedData
                 )
-                .id(viewModel.currentExerciseIndexInSequence)
+
+            case .robotThenTouchToSelect:
+                RobotThenTouchToSelectView(
+                    exercise: viewModel.currentExercise,
+                    data: viewModel.currentExerciseSharedData
+                )
 
             case .listenThenTouchToSelect:
                 ListenThenTouchToSelectView(
                     exercise: viewModel.currentExercise,
                     data: viewModel.currentExerciseSharedData
                 )
-                .id(viewModel.currentExerciseIndexInSequence)
 
             case .observeThenTouchToSelect:
                 ObserveThenTouchToSelectView(
                     exercise: viewModel.currentExercise,
                     data: viewModel.currentExerciseSharedData
                 )
-                .id(viewModel.currentExerciseIndexInSequence)
 
             case .dragAndDrop:
                 DragAndDropView(
                     exercise: viewModel.currentExercise,
                     data: viewModel.currentExerciseSharedData
                 )
-                .id(viewModel.currentExerciseIndexInSequence)
-
+          
             case .association:
                 DragAndDropAssociationView(
                     exercise: viewModel.currentExercise,
                     data: viewModel.currentExerciseSharedData
                 )
-                .id(viewModel.currentExerciseIndexInSequence)
         }
     }
 

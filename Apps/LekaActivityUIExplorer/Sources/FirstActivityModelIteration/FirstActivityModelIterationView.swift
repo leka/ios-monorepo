@@ -3,24 +3,16 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import DesignKit
-import RobotKit
 import SwiftUI
 
 struct FirstActivityModelIterationView: View {
 
     @EnvironmentObject var router: Router
-    @State var presentRobotConnection: Bool = false
+
+    let columns = Array(repeating: GridItem(), count: 3)
 
     var body: some View {
         NavigationStack {
-            let columns = Array(repeating: GridItem(), count: 3)
-            Button("Connect Robot") {
-                print("connect robot")
-                presentRobotConnection.toggle()
-            }
-            .foregroundStyle(.green)
-            .font(.title3)
-
             ScrollView {
                 LazyVGrid(columns: columns) {
                     ForEach(kListOfAvailablesActivities) { activity in
@@ -52,9 +44,6 @@ struct FirstActivityModelIterationView: View {
                 ToolbarItem(placement: .principal) { navigationTitleView }
             }
         }
-        .fullScreenCover(isPresented: $presentRobotConnection) {
-            RobotConnectionView(viewModel: RobotConnectionViewModel())
-        }
     }
 
     private var navigationTitleView: some View {
@@ -66,17 +55,14 @@ struct FirstActivityModelIterationView: View {
     }
 
     private var backButton: some View {
-        Button(
-            action: {
-                router.currentVersion = .versionSelector
-            },
-            label: {
-                HStack(spacing: 4) {
-                    Image(systemName: "chevron.left")
-                    Text("Retour")
-                }
+        Button {
+            router.currentVersion = .versionSelector
+        } label: {
+            HStack(spacing: 4) {
+                Image(systemName: "chevron.left")
+                Text("Retour")
             }
-        )
+        }
         .tint(.accentColor)
     }
 }

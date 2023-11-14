@@ -5,21 +5,21 @@
 import ContentKit
 import SwiftUI
 
-extension ObserveThenTouchToSelectView {
+extension RobotThenTouchToSelectView {
 
-    struct FourChoicesView: View {
+    struct FiveChoicesView: View {
 
         @ObservedObject var viewModel: SelectionViewViewModel
         let isTappable: Bool
 
         private let kHorizontalSpacing: CGFloat = 60
         private let kVerticalSpacing: CGFloat = 40
-        private let kAnswerSize: CGFloat = 180
+        private let kAnswerSize: CGFloat = 200
 
         var body: some View {
             VStack(spacing: kVerticalSpacing) {
                 HStack(spacing: kHorizontalSpacing) {
-                    ForEach(viewModel.choices[0...1]) { choice in
+                    ForEach(viewModel.choices[0...2]) { choice in
                         SelectionChoiceView(choice: choice, size: kAnswerSize, isTappable: isTappable)
                             .onTapGesture {
                                 viewModel.onChoiceTapped(choice: choice)
@@ -28,7 +28,7 @@ extension ObserveThenTouchToSelectView {
                 }
 
                 HStack(spacing: kHorizontalSpacing) {
-                    ForEach(viewModel.choices[2...3]) { choice in
+                    ForEach(viewModel.choices[3...4]) { choice in
                         SelectionChoiceView(choice: choice, size: kAnswerSize, isTappable: isTappable)
                             .onTapGesture {
                                 viewModel.onChoiceTapped(choice: choice)
@@ -48,7 +48,8 @@ extension ObserveThenTouchToSelectView {
         SelectionChoice(value: "blue", type: .color, isRightAnswer: false),
         SelectionChoice(value: "green", type: .color, isRightAnswer: false),
         SelectionChoice(value: "yellow", type: .color, isRightAnswer: false),
+        SelectionChoice(value: "purple", type: .color, isRightAnswer: false),
     ]
 
-    return ObserveThenTouchToSelectView(choices: choices, image: "image-landscape-blue")
+    return RobotThenTouchToSelectView(choices: choices)
 }

@@ -5,16 +5,16 @@
 import ContentKit
 import SwiftUI
 
-extension ObserveThenTouchToSelectView {
+extension RobotThenTouchToSelectView {
 
     struct FourChoicesView: View {
 
         @ObservedObject var viewModel: SelectionViewViewModel
         let isTappable: Bool
 
-        private let kHorizontalSpacing: CGFloat = 60
+        private let kHorizontalSpacing: CGFloat = 200
         private let kVerticalSpacing: CGFloat = 40
-        private let kAnswerSize: CGFloat = 180
+        private let kAnswerSize: CGFloat = 240
 
         var body: some View {
             VStack(spacing: kVerticalSpacing) {
@@ -50,5 +50,5 @@ extension ObserveThenTouchToSelectView {
         SelectionChoice(value: "yellow", type: .color, isRightAnswer: false),
     ]
 
-    return ObserveThenTouchToSelectView(choices: choices, image: "image-landscape-blue")
+    return RobotThenTouchToSelectView(choices: choices)
 }

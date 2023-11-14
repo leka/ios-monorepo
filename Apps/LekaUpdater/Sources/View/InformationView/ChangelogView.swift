@@ -3,19 +3,27 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import DesignKit
+import LocalizationKit
 import SwiftUI
 
 struct ChangelogView: View {
     private var changelog: LocalizedStringKey {
         // swiftlint:disable:next force_cast
         let osVersion = Bundle.main.object(forInfoDictionaryKey: "LEKA_OS_VERSION") as! String
-        let fileURL = Bundle.main.url(forResource: "LekaOS-\(osVersion)", withExtension: "md")!
+        var languageCode: String {
+            guard let language = Locale.current.language.languageCode?.identifier else { return "en" }
+            return language == "fr" ? "fr" : "en"
+        }
+
+        let fileURL = Bundle.main.url(
+            forResource: "LekaOS-\(osVersion)-\(languageCode)",
+            withExtension: "md")!
 
         do {
             let content = try String(contentsOf: fileURL)
             return LocalizedStringKey(stringLiteral: content)
         } catch {
-            return "Changelog cannot be loaded"
+            return "\(l10n.information.changelogNotFoundText)"
         }
     }
 

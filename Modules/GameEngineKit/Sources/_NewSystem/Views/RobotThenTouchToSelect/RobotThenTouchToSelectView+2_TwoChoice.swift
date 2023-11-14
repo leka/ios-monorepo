@@ -5,15 +5,15 @@
 import ContentKit
 import SwiftUI
 
-extension ObserveThenTouchToSelectView {
+extension RobotThenTouchToSelectView {
 
     struct TwoChoicesView: View {
 
         @ObservedObject var viewModel: SelectionViewViewModel
         let isTappable: Bool
 
-        private let kHorizontalSpacing: CGFloat = 60
-        private let kAnswerSize: CGFloat = 180
+        private let kHorizontalSpacing: CGFloat = 100
+        private let kAnswerSize: CGFloat = 300
 
         var body: some View {
             HStack(spacing: kHorizontalSpacing) {
@@ -36,5 +36,5 @@ extension ObserveThenTouchToSelectView {
         SelectionChoice(value: "blue", type: .color, isRightAnswer: false),
     ]
 
-    return ObserveThenTouchToSelectView(choices: choices, image: "image-landscape-blue")
+    return RobotThenTouchToSelectView(choices: choices)
 }

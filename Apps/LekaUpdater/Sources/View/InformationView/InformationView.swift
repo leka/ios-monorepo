@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import DesignKit
+import LocalizationKit
 import SwiftUI
 import Version
 
@@ -27,20 +28,19 @@ struct InformationView: View {
                                 .font(.title3)
 
                             Text(
-                                """
-                                🚧 DEV - Processus de mise à jour non reconnu ou inexistant (LekaOS v\(viewModel.robotOSVersion))
-                                (Code erreur #0003)
-                                """
+                                l10n.information.status.robotCannotBeUpdatedText.characters
+                                    + " - (LekaOS v\(viewModel.robotOSVersion))"
                             )
                             .font(.title2)
                             .multilineTextAlignment(.center)
+
                         } else if viewModel.showRobotNeedsUpdate {
                             RobotNeedsUpdateIllustration(size: 200)
 
                             Text(viewModel.robotName)
                                 .font(.title3)
 
-                            Text("⬆️ Une mise à jour est disponible 📦")
+                            Text(l10n.information.status.robotUpdateAvailable)
                                 .font(.title2)
                         } else {
                             RobotUpToDateIllustration(size: 200)
@@ -48,7 +48,7 @@ struct InformationView: View {
                             Text(viewModel.robotName)
                                 .font(.title3)
 
-                            Text("🤖 Votre robot est à jour ! 🎉 Vous n'avez rien à faire 👌")
+                            Text(l10n.information.status.robotIsUpToDate)
                                 .font(.title2)
                         }
                     }
@@ -66,7 +66,7 @@ struct InformationView: View {
                         ChangelogView()
                             .padding()
                     } label: {
-                        Text("Liste des changements apportés")
+                        Text(l10n.information.changelogSectionTitle)
                             .foregroundStyle(DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor)
                     }
                     .accentColor(DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor)
@@ -99,10 +99,10 @@ struct InformationView: View {
             .toolbar {
                 ToolbarItem(placement: .principal) {
                     VStack {
-                        Text("Leka Updater")
+                        Text(l10n.main.appName)
                             .font(.title2)
                             .bold()
-                        Text("L'application pour mettre à jour vos robots Leka !")
+                        Text(l10n.main.appDescription)
                     }
                     .foregroundColor(.accentColor)
                 }
@@ -113,7 +113,7 @@ struct InformationView: View {
                     } label: {
                         HStack {
                             Image(systemName: "chevron.backward")
-                            Text("Connexion")
+                            Text(l10n.toolbar.connectionButton)
                         }
                     }
                 }
@@ -137,5 +137,18 @@ struct InformationView_Previews: PreviewProvider {
             globalRobotManager.isCharging = true
             globalRobotManager.osVersion = Version(1, 3, 0)
         }
+        .environment(\.locale, .init(identifier: "en"))
+
+        InformationView(
+            isConnectionViewPresented: $isConnectionViewPresented,
+            isUpdateStatusViewPresented: $isUpdateStatusViewPresented
+        )
+        .onAppear {
+            globalRobotManager.name = "Leka"
+            globalRobotManager.battery = 75
+            globalRobotManager.isCharging = true
+            globalRobotManager.osVersion = Version(1, 3, 0)
+        }
+        .environment(\.locale, .init(identifier: "fr"))
     }
 }

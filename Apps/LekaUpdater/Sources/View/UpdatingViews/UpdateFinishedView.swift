@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import DesignKit
+import LocalizationKit
 import SwiftUI
 
 struct UpdateFinishedIllustration: View {
@@ -42,22 +43,17 @@ struct UpdateFinishedContentView: View {
 
     var body: some View {
         VStack {
-            Text(
-                """
-                Bravo ! 🥳
-                Votre robot est maintenant à jour
-                """
-            )
-            .multilineTextAlignment(.center)
-            .font(.title2)
-            .bold()
+            Text(l10n.update.finished.robotUpdatedSuccessfully)
+                .multilineTextAlignment(.center)
+                .font(.title2)
+                .bold()
 
             VStack(spacing: 20) {
                 Button {
                     dismiss()
                     isConnectionViewPresented = true
                 } label: {
-                    Text("Mettre à jour un autre robot")
+                    Text(l10n.update.finished.updateAnotherRobotButton)
                         .foregroundColor(DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor)
                         .frame(maxWidth: .infinity, maxHeight: 50)
                         .background(
@@ -72,8 +68,9 @@ struct UpdateFinishedContentView: View {
                 }
 
                 Button {
-                    let appURL = URL(string: "LekaApp://")
-                    let appStoreURL = URL(string: "https://apps.apple.com/fr/app/mon-leka-alpha/id1607862221")!
+                    let appURL = URL(
+                        string: "com.googleusercontent.apps.224911845933-mv4tp4rstgjtvdqvbv5dl7defii1a7ic://")
+                    let appStoreURL = URL(string: "https://apps.apple.com/app/mon-leka-alpha/id1607862221")!
 
                     if let appURL = appURL, UIApplication.shared.canOpenURL(appURL) {
                         UIApplication.shared.open(appURL, options: [:], completionHandler: nil)
@@ -81,7 +78,7 @@ struct UpdateFinishedContentView: View {
                         UIApplication.shared.open(appStoreURL, options: [:], completionHandler: nil)
                     }
                 } label: {
-                    Text("Lancer LekaApp 🚀")
+                    Text(l10n.update.finished.launchLekaAppButton)
                         .foregroundColor(.white)
                         .frame(maxWidth: .infinity, maxHeight: 50)
                         .background(DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor)
@@ -106,7 +103,7 @@ struct UpdateFinishedView_Previews: PreviewProvider {
                 .padding(.bottom)
                 .padding(.bottom)
 
-            Text("Étape 3/3")
+            Text(l10n.update.stepNumber("3/3"))
                 .font(.title)
                 .bold()
                 .monospacedDigit()
