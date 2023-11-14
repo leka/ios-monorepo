@@ -8,22 +8,22 @@ import SwiftUI
 
 class TouchToSelectViewViewModel: ObservableObject {
 
-    @Published var choices: [GameplaySelectionChoiceModel] = []
+    @Published var choices: [GameplayTouchToSelectChoiceModel] = []
     @ObservedObject var exercicesSharedData: ExerciseSharedData
 
-    private let gameplay: GameplaySelectAllRightAnswers<GameplaySelectionChoiceModel>
+    private let gameplay: GameplaySelectAllRightAnswers<GameplayTouchToSelectChoiceModel>
     private var cancellables: Set<AnyCancellable> = []
 
     init(choices: [TouchToSelect.Choice], shuffle: Bool = false, shared: ExerciseSharedData? = nil) {
         self.gameplay = GameplaySelectAllRightAnswers(
-            choices: choices.map { GameplaySelectionChoiceModel(choice: $0) }, shuffle: shuffle)
+            choices: choices.map { GameplayTouchToSelectChoiceModel(choice: $0) }, shuffle: shuffle)
         self.exercicesSharedData = shared ?? ExerciseSharedData()
 
         subscribeToGameplaySelectionChoicesUpdates()
         subscribeToGameplayStateUpdates()
     }
 
-    public func onChoiceTapped(choice: GameplaySelectionChoiceModel) {
+    public func onChoiceTapped(choice: GameplayTouchToSelectChoiceModel) {
         gameplay.process(choice)
     }
 

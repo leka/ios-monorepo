@@ -4,9 +4,9 @@
 
 import Foundation
 
-extension GameplaySelectAllRightAnswers where ChoiceModelType == GameplaySelectionChoiceModel {
+extension GameplaySelectAllRightAnswers where ChoiceModelType == GameplayTouchToSelectChoiceModel {
 
-    convenience init(choices: [GameplaySelectionChoiceModel], shuffle: Bool = false) {
+    convenience init(choices: [GameplayTouchToSelectChoiceModel], shuffle: Bool = false) {
         self.init()
         self.choices.send(shuffle ? choices.shuffled() : choices)
         self.rightAnswers = choices.filter { $0.choice.isRightAnswer }
