@@ -26,19 +26,19 @@ public struct ListenThenTouchToSelectView: View {
     }
 
     public init(exercise: Exercise, data: ExerciseSharedData? = nil) {
-        guard case .selection(let payload) = exercise.payload else {
-            fatalError("Exercise payload is not .selection")
+        guard
+            case .selection(let payload) = exercise.payload,
+            case .ipad(type: .audio(let name)) = exercise.action
+        else {
+            log.error("Exercise payload is not .selection and/or Exercise does not contain iPad audio action")
+            fatalError("💥 Exercise payload is not .selection and/or Exercise does not contain iPad audio action")
         }
-        guard case .ipad(type: .audio(name: let name)) = payload.action else {
-            fatalError("Exercise payload has no iPad audio action")
-        }
+
+        self._viewModel = StateObject(
+            wrappedValue: SelectionViewViewModel(choices: payload.choices, shared: data))
 
         let audioRecording = AudioRecordingModel(name: name, file: name)
         self._audioPlayer = StateObject(wrappedValue: AudioPlayer(audioRecording: audioRecording))
-
-        self._viewModel = StateObject(wrappedValue: SelectionViewViewModel(choices: payload.choices))
-        self._viewModel = StateObject(
-            wrappedValue: SelectionViewViewModel(choices: payload.choices, shared: data))
     }
 
     public var body: some View {

@@ -12,12 +12,12 @@ sequence:
         category: selection
         interface: observeThenTouchToSelect
         gameplay: selectAllRightAnswers
+        action:
+          type: ipad
+          value:
+            type: image
+            value: image-landscape-blue
         payload:
-          action:
-            type: ipad
-            value:
-              type: image
-              value: image-landscape-blue
           choices:
             - value: blue
               type: color
@@ -27,12 +27,12 @@ sequence:
         category: selection
         interface: observeThenTouchToSelect
         gameplay: selectAllRightAnswers
+        action:
+          type: ipad
+          value:
+            type: image
+            value: image-landscape-red
         payload:
-          action:
-            type: ipad
-            value:
-              type: image
-              value: image-landscape-red
           choices:
             - value: blue
               type: color
@@ -44,12 +44,12 @@ sequence:
         category: selection
         interface: observeThenTouchToSelect
         gameplay: selectAllRightAnswers
+        action:
+          type: ipad
+          value:
+            type: image
+            value: image-landscape-purple
         payload:
-          action:
-            type: ipad
-            value:
-              type: image
-              value: image-landscape-purple
           choices:
             - value: purple
               type: color
@@ -64,12 +64,12 @@ sequence:
         category: selection
         interface: observeThenTouchToSelect
         gameplay: selectAllRightAnswers
+        action:
+          type: ipad
+          value:
+            type: image
+            value: image-landscape-yellow
         payload:
-          action:
-            type: ipad
-            value:
-              type: image
-              value: image-landscape-yellow
           choices:
             - value: blue
               type: color
@@ -85,12 +85,12 @@ sequence:
         category: selection
         interface: observeThenTouchToSelect
         gameplay: selectAllRightAnswers
+        action:
+          type: ipad
+          value:
+            type: image
+            value: image-landscape-green
         payload:
-          action:
-            type: ipad
-            value:
-              type: image
-              value: image-landscape-green
           choices:
             - value: yellow
               type: color
@@ -110,12 +110,12 @@ sequence:
         category: selection
         interface: observeThenTouchToSelect
         gameplay: selectAllRightAnswers
+        action:
+          type: ipad
+          value:
+            type: image
+            value: image-landscape-red
         payload:
-          action:
-            type: ipad
-            value:
-              type: image
-              value: image-landscape-red
           choices:
             - value: yellow
               type: color
