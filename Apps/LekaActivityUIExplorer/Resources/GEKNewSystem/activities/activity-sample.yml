@@ -10,7 +10,7 @@ sequence:
   - exercises:
       - instructions: Exercice S1/E1
         interface: touchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         payload:
           choices:
             - value: blue
@@ -19,7 +19,7 @@ sequence:
 
       - instructions: Exercice S1/E2
         interface: touchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         payload:
           choices:
             - value: red
@@ -28,7 +28,7 @@ sequence:
 
       - instructions: Exercice S1/E3
         interface: touchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         payload:
           choices:
             - value: green
@@ -38,7 +38,7 @@ sequence:
   - exercises:
       - instructions: Exercice S2/E1
         interface: touchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         payload:
           choices:
             - value: orange
@@ -47,7 +47,7 @@ sequence:
 
       - instructions: Exercice S2/E2
         interface: touchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         payload:
           choices:
             - value: yellow
@@ -56,7 +56,7 @@ sequence:
 
       - instructions: Exercice S2/E3
         interface: touchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         payload:
           choices:
             - value: purple
@@ -66,7 +66,7 @@ sequence:
   - exercises:
       - instructions: Exercice S3/E1
         interface: touchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         payload:
           choices:
             - value: lightBlue
@@ -75,7 +75,7 @@ sequence:
 
       - instructions: Exercice S3/E2
         interface: touchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         payload:
           choices:
             - value: pink
@@ -84,7 +84,7 @@ sequence:
 
       - instructions: Exercice S3/E3
         interface: touchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         payload:
           choices:
             - value: black

@@ -10,7 +10,7 @@ sequence:
   - exercises:
       - instructions: Touche le jaune
         interface: touchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         payload:
           shuffle_choices: true
           choices:
@@ -26,7 +26,7 @@ sequence:
 
       - instructions: Touche le jaune
         interface: touchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         payload:
           shuffle_choices: true
           choices:
@@ -42,7 +42,7 @@ sequence:
 
       - instructions: Touche le jaune
         interface: touchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         payload:
           shuffle_choices: true
           choices:
@@ -58,7 +58,7 @@ sequence:
 
       - instructions: Touche le jaune
         interface: touchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         payload:
           shuffle_choices: true
           choices:

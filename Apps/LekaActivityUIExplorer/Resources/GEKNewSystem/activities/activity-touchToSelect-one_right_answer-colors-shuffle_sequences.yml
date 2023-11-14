@@ -11,7 +11,7 @@ sequence:
   - exercises:
       - instructions: Touche le rouge
         interface: touchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         payload:
           choices:
             - value: red
@@ -20,7 +20,7 @@ sequence:
 
       - instructions: Touche le rouge
         interface: touchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         payload:
           choices:
             - value: red
@@ -29,7 +29,7 @@ sequence:
 
       - instructions: Touche le rouge
         interface: touchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         payload:
           choices:
             - value: red
@@ -39,7 +39,7 @@ sequence:
   - exercises:
       - instructions: Touche le vert
         interface: touchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         payload:
           choices:
             - value: green
@@ -48,7 +48,7 @@ sequence:
 
       - instructions: Touche le vert
         interface: touchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         payload:
           choices:
             - value: green
@@ -57,7 +57,7 @@ sequence:
 
       - instructions: Touche le vert
         interface: touchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         payload:
           choices:
             - value: green
@@ -67,7 +67,7 @@ sequence:
   - exercises:
       - instructions: Touche le bleu
         interface: touchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         payload:
           choices:
             - value: blue
@@ -76,7 +76,7 @@ sequence:
 
       - instructions: Touche le bleu
         interface: touchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         payload:
           choices:
             - value: blue
@@ -85,7 +85,7 @@ sequence:
 
       - instructions: Touche le bleu
         interface: touchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         payload:
           choices:
             - value: blue

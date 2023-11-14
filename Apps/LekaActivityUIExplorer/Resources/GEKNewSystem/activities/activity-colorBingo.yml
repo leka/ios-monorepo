@@ -10,7 +10,7 @@ sequence:
   - exercises:
       - instructions: Touche la couleur de Leka
         interface: robotThenTouchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         action:
           type: robot
           value:
@@ -24,7 +24,7 @@ sequence:
 
       - instructions: Touche la couleur de Leka
         interface: robotThenTouchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         action:
           type: robot
           value:
@@ -40,7 +40,7 @@ sequence:
 
       - instructions: Touche la couleur de Leka
         interface: robotThenTouchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         action:
           type: robot
           value:
@@ -58,7 +58,7 @@ sequence:
 
       - instructions: Touche la couleur de Leka
         interface: robotThenTouchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         action:
           type: robot
           value:
@@ -78,7 +78,7 @@ sequence:
 
       - instructions: Touche la couleur de Leka
         interface: robotThenTouchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         action:
           type: robot
           value:
@@ -100,7 +100,7 @@ sequence:
 
       - instructions: Touche la couleur de Leka
         interface: robotThenTouchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         action:
           type: robot
           value:

@@ -10,7 +10,7 @@ sequence:
   - exercises:
       - instructions: Regarde l'image puis touche la bonne réponse
         interface: observeThenTouchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         action:
           type: ipad
           value:
@@ -24,7 +24,7 @@ sequence:
 
       - instructions: Regarde l'image puis touche la bonne réponse
         interface: observeThenTouchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         action:
           type: ipad
           value:
@@ -40,7 +40,7 @@ sequence:
 
       - instructions: Regarde l'image puis touche les bonnes réponses
         interface: observeThenTouchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         action:
           type: ipad
           value:
@@ -59,7 +59,7 @@ sequence:
 
       - instructions: Regarde l'image puis touche la bonne réponse
         interface: observeThenTouchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         action:
           type: ipad
           value:
@@ -79,7 +79,7 @@ sequence:
 
       - instructions: Regarde l'image puis touche les bonnes réponses
         interface: observeThenTouchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         action:
           type: ipad
           value:
@@ -103,7 +103,7 @@ sequence:
 
       - instructions: Regarde l'image puis touche la bonne réponse
         interface: observeThenTouchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         action:
           type: ipad
           value:

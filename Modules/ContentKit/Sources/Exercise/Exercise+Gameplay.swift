@@ -7,7 +7,7 @@ import Foundation
 extension Exercise {
 
     public enum Gameplay: String, Codable {
-        case selectAllRightAnswers
+        case findTheRightAnswers
     }
 
 }

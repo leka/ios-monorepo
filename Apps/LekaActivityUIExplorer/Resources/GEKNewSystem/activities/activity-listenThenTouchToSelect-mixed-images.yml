@@ -10,7 +10,7 @@ sequence:
   - exercises:
       - instructions: Écoute le son puis touche le bon instrument
         interface: listenThenTouchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         action:
           type: ipad
           value:
@@ -24,7 +24,7 @@ sequence:
 
       - instructions: Écoute le son puis touche le bon instrument
         interface: listenThenTouchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         action:
           type: ipad
           value:
@@ -40,7 +40,7 @@ sequence:
 
       - instructions: Écoute le son puis touche le bon instrument
         interface: listenThenTouchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         action:
           type: ipad
           value:
@@ -59,7 +59,7 @@ sequence:
 
       - instructions: Écoute le son puis touche le bon instrument
         interface: listenThenTouchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         action:
           type: ipad
           value:
@@ -79,7 +79,7 @@ sequence:
 
       - instructions: Écoute le son puis touche le bon instrument
         interface: listenThenTouchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         action:
           type: ipad
           value:
@@ -103,7 +103,7 @@ sequence:
 
       - instructions: Écoute le son puis touche le bon instrument
         interface: listenThenTouchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         action:
           type: ipad
           value:

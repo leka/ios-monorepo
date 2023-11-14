@@ -10,7 +10,7 @@ sequence:
   - exercises:
       - instructions: Touche le bleu
         interface: touchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         payload:
           choices:
             - value: blue
@@ -19,7 +19,7 @@ sequence:
 
       - instructions: Touche le vert
         interface: touchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         payload:
           choices:
             - value: green
@@ -30,7 +30,7 @@ sequence:
 
       - instructions: Touche le rouge
         interface: touchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         payload:
           choices:
             - value: red
@@ -43,7 +43,7 @@ sequence:
 
       - instructions: Touche le jaune
         interface: touchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         payload:
           choices:
             - value: yellow
@@ -58,7 +58,7 @@ sequence:
 
       - instructions: Touche le orange
         interface: touchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         payload:
           choices:
             - value: orange
@@ -75,7 +75,7 @@ sequence:
 
       - instructions: Touche le violet
         interface: touchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         payload:
           choices:
             - value: purple

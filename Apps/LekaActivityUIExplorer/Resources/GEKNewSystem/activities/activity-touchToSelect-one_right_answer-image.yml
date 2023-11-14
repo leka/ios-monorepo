@@ -10,7 +10,7 @@ sequence:
   - exercises:
       - instructions: Touche les animaux
         interface: touchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         payload:
           choices:
             - value: image-placeholder-animals
@@ -19,7 +19,7 @@ sequence:
 
       - instructions: Touche le portrait
         interface: touchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         payload:
           choices:
             - value: image-placeholder-food
@@ -30,7 +30,7 @@ sequence:
 
       - instructions: Touche le paysage
         interface: touchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         payload:
           choices:
             - value: image-placeholder-landscape
@@ -43,7 +43,7 @@ sequence:
 
       - instructions: Touche la nourriture
         interface: touchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         payload:
           choices:
             - value: image-placeholder-animals
@@ -58,7 +58,7 @@ sequence:
 
       - instructions: Touche les animaux
         interface: touchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         payload:
           choices:
             - value: image-placeholder-animals
@@ -75,7 +75,7 @@ sequence:
 
       - instructions: Touche le portrait
         interface: touchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         payload:
           choices:
             - value: image-placeholder-animals

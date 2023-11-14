@@ -10,7 +10,7 @@ sequence:
   - exercises:
       - instructions: Touche tous les ronds verts
         interface: touchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         payload:
           choices:
             - value: green
@@ -26,7 +26,7 @@ sequence:
 
       - instructions: Touche le rond rouge et le rond jaune
         interface: touchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         payload:
           choices:
             - value: red
@@ -40,7 +40,7 @@ sequence:
 
       - instructions: Touche tous les ronds violets
         interface: touchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         payload:
           choices:
             - value: purple

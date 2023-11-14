@@ -10,7 +10,7 @@ sequence:
   - exercises:
       - instructions: Place les instruments dans les bonnes familles d'instruments
         interface: dragAndDropIntoZones
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         payload:
           dropZoneA:
             value: image-placeholder-instruments_wind
@@ -31,7 +31,7 @@ sequence:
 
       - instructions: Place les instruments dans les bonnes familles d'instruments
         interface: dragAndDropIntoZones
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         payload:
           dropZoneA:
             value: image-placeholder-instruments_wind
@@ -52,7 +52,7 @@ sequence:
 
       - instructions: Place les instruments dans les bonnes familles d'instruments
         interface: dragAndDropIntoZones
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         payload:
           dropZoneA:
             value: image-placeholder-instruments_wind

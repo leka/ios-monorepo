@@ -10,7 +10,7 @@ sequence:
   - exercises:
       - instructions: Écoute le son puis touche le bon instrument
         interface: listenThenTouchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         action:
           type: ipad
           value:
@@ -26,7 +26,7 @@ sequence:
 
       - instructions: Touche le bleu
         interface: touchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         payload:
           choices:
             - value: blue
@@ -41,7 +41,7 @@ sequence:
 
       - instructions: Touche le rond rouge et le rond jaune
         interface: touchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         payload:
           choices:
             - value: red
@@ -55,7 +55,7 @@ sequence:
 
       - instructions: Regarde l'image puis touche la bonne réponse
         interface: observeThenTouchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         action:
           type: ipad
           value:
@@ -79,7 +79,7 @@ sequence:
 
       - instructions: Touche la couleur de Leka
         interface: robotThenTouchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         action:
           type: robot
           value:
@@ -101,7 +101,7 @@ sequence:
 
       - instructions: Place le bon instrument dans le panier
         interface: dragAndDropIntoZones
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         payload:
           dropZoneA:
             value: basket
@@ -121,7 +121,7 @@ sequence:
 
       - instructions: Place les instruments dans les bonnes familles d'instruments
         interface: dragAndDropIntoZones
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         payload:
           dropZoneA:
             value: image-placeholder-instruments_wind

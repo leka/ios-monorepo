@@ -11,13 +11,13 @@ class DragAndDropViewViewModel: ObservableObject {
     @Published var choices: [GameplayDragAndDropIntoZonesChoiceModel] = []
     @ObservedObject var exercicesSharedData: ExerciseSharedData
 
-    private let gameplay: GameplaySelectAllRightAnswers<GameplayDragAndDropIntoZonesChoiceModel>
+    private let gameplay: GameplayFindTheRightAnswers<GameplayDragAndDropIntoZonesChoiceModel>
     private var cancellables: Set<AnyCancellable> = []
 
     init(choices: [DragAndDropIntoZones.Choice], shared: ExerciseSharedData? = nil) {
         let gameplayChoiceModel = choices.map { GameplayDragAndDropIntoZonesChoiceModel(choice: $0) }
         self.choices = gameplayChoiceModel
-        self.gameplay = GameplaySelectAllRightAnswers(
+        self.gameplay = GameplayFindTheRightAnswers(
             choices: gameplayChoiceModel)
         self.exercicesSharedData = shared ?? ExerciseSharedData()
 

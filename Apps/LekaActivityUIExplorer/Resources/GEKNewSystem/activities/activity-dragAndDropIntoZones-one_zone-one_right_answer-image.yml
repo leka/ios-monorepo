@@ -10,7 +10,7 @@ sequence:
   - exercises:
       - instructions: Place le bon instrument dans le panier
         interface: dragAndDropIntoZones
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         payload:
           dropZoneA:
             value: basket
@@ -24,7 +24,7 @@ sequence:
 
       - instructions: Place le bon instrument dans le panier
         interface: dragAndDropIntoZones
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         payload:
           dropZoneA:
             value: basket
@@ -40,7 +40,7 @@ sequence:
 
       - instructions: Place le bon instrument dans le panier
         interface: dragAndDropIntoZones
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         payload:
           dropZoneA:
             value: basket

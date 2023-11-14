@@ -10,7 +10,7 @@ sequence:
   - exercises:
       - instructions: Touche l'image
         interface: touchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         payload:
           choices:
             - value: image-placeholder-food
@@ -21,7 +21,7 @@ sequence:
 
       - instructions: Touche les images
         interface: touchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         payload:
           choices:
             - value: blue
@@ -37,7 +37,7 @@ sequence:
 
       - instructions: Touche toutes les items
         interface: touchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         payload:
           choices:
             - value: blue
