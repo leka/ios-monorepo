@@ -27,7 +27,7 @@ struct GameplayTouchToSelectChoiceModel: GameplayChoiceModelProtocol {
     var state: GameplayChoiceState = .idle
 }
 
-struct GameplayDragAndDropChoiceModel: GameplayChoiceModelProtocol {
+struct GameplayDragAndDropIntoZonesChoiceModel: GameplayChoiceModelProtocol {
     typealias ChoiceType = DragAndDropIntoZones.Choice
 
     let id: String = UUID().uuidString

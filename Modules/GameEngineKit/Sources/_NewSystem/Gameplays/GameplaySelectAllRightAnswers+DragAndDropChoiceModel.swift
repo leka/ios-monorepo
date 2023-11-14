@@ -5,9 +5,9 @@
 import ContentKit
 import Foundation
 
-extension GameplaySelectAllRightAnswers where ChoiceModelType == GameplayDragAndDropChoiceModel {
+extension GameplaySelectAllRightAnswers where ChoiceModelType == GameplayDragAndDropIntoZonesChoiceModel {
 
-    convenience init(choices: [GameplayDragAndDropChoiceModel]) {
+    convenience init(choices: [GameplayDragAndDropIntoZonesChoiceModel]) {
         self.init()
         self.choices.send(choices)
         self.rightAnswers = choices.filter { $0.choice.dropZone != .none }
