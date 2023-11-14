@@ -17,14 +17,14 @@ public struct ObserveThenTouchToSelectView: View {
         case sixChoices
     }
 
-    @StateObject private var viewModel: SelectionViewViewModel
+    @StateObject private var viewModel: TouchToSelectViewViewModel
 
     @State private var imageWasTapped = false
 
     private let image: String
 
     public init(choices: [TouchToSelect.Choice], image: String) {
-        self._viewModel = StateObject(wrappedValue: SelectionViewViewModel(choices: choices))
+        self._viewModel = StateObject(wrappedValue: TouchToSelectViewViewModel(choices: choices))
         self.image = image
     }
 
@@ -38,7 +38,7 @@ public struct ObserveThenTouchToSelectView: View {
         }
 
         self._viewModel = StateObject(
-            wrappedValue: SelectionViewViewModel(choices: payload.choices, shared: data))
+            wrappedValue: TouchToSelectViewViewModel(choices: payload.choices, shared: data))
 
         self.image = name
     }

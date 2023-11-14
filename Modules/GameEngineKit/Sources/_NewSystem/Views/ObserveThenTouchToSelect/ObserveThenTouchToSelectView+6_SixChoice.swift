@@ -9,7 +9,7 @@ extension ObserveThenTouchToSelectView {
 
     struct SixChoicesView: View {
 
-        @ObservedObject var viewModel: SelectionViewViewModel
+        @ObservedObject var viewModel: TouchToSelectViewViewModel
         let isTappable: Bool
 
         private let kHorizontalSpacing: CGFloat = 40

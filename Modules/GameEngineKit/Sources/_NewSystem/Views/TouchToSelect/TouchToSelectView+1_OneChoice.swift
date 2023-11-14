@@ -9,7 +9,7 @@ extension TouchToSelectView {
 
     struct OneChoiceView: View {
 
-        @ObservedObject var viewModel: SelectionViewViewModel
+        @ObservedObject var viewModel: TouchToSelectViewViewModel
 
         private let kAnswerSize: CGFloat = 300
 

@@ -17,11 +17,11 @@ public struct ListenThenTouchToSelectView: View {
         case sixChoices
     }
 
-    @StateObject private var viewModel: SelectionViewViewModel
+    @StateObject private var viewModel: TouchToSelectViewViewModel
     @StateObject private var audioPlayer: AudioPlayer
 
     public init(choices: [TouchToSelect.Choice], audioRecording: AudioRecordingModel) {
-        self._viewModel = StateObject(wrappedValue: SelectionViewViewModel(choices: choices))
+        self._viewModel = StateObject(wrappedValue: TouchToSelectViewViewModel(choices: choices))
         self._audioPlayer = StateObject(wrappedValue: AudioPlayer(audioRecording: audioRecording))
     }
 
@@ -35,7 +35,7 @@ public struct ListenThenTouchToSelectView: View {
         }
 
         self._viewModel = StateObject(
-            wrappedValue: SelectionViewViewModel(choices: payload.choices, shared: data))
+            wrappedValue: TouchToSelectViewViewModel(choices: payload.choices, shared: data))
 
         let audioRecording = AudioRecordingModel(name: name, file: name)
         self._audioPlayer = StateObject(wrappedValue: AudioPlayer(audioRecording: audioRecording))

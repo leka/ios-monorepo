@@ -9,7 +9,7 @@ extension ListenThenTouchToSelectView {
 
     struct OneChoiceView: View {
 
-        @ObservedObject var viewModel: SelectionViewViewModel
+        @ObservedObject var viewModel: TouchToSelectViewViewModel
         let isTappable: Bool
 
         private let kAnswerSize: CGFloat = 300
