@@ -27,8 +27,8 @@ extension ObserveThenTouchToSelectView {
 }
 
 #Preview {
-    let choices: [SelectionChoice] = [
-        SelectionChoice(value: "red", type: .color, isRightAnswer: true)
+    let choices: [TouchSelection.Choice] = [
+        TouchSelection.Choice(value: "red", type: .color, isRightAnswer: true)
     ]
 
     return ObserveThenTouchToSelectView(choices: choices, image: "image-landscape-blue")

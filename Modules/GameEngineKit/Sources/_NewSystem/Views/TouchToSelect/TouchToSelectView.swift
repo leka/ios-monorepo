@@ -19,7 +19,7 @@ public struct TouchToSelectView: View {
 
     @StateObject private var viewModel: SelectionViewViewModel
 
-    public init(choices: [SelectionChoice], shuffle: Bool = false) {
+    public init(choices: [TouchSelection.Choice], shuffle: Bool = false) {
         self._viewModel = StateObject(wrappedValue: SelectionViewViewModel(choices: choices, shuffle: shuffle))
     }
 

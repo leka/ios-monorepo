@@ -22,26 +22,26 @@ public struct RobotThenTouchToSelectView: View {
     @StateObject private var viewModel: SelectionViewViewModel
     @State private var didSendCommandToRobot = false
 
-    private let robotMedia: Action.RobotMedia
+    private let actionType: Exercise.Action.ActionType
 
     let robot = Robot.shared
 
-    public init(choices: [SelectionChoice]) {
+    public init(choices: [TouchSelection.Choice]) {
         self._viewModel = StateObject(wrappedValue: SelectionViewViewModel(choices: choices))
 
-        self.robotMedia = .color(value: "red")
+        self.actionType = .color("red")
     }
 
     public init(exercise: Exercise, data: ExerciseSharedData? = nil) {
         guard case .selection(let payload) = exercise.payload else {
-            fatalError("Exercise payload is not .selection")
+            fatalError("💥 Exercise payload is not .selection")
         }
         guard case .robot(let robotMedia) = payload.action else {
-            fatalError("Exercise payload does not contain an robot action")
+            fatalError("💥 Exercise payload does not contain an robot action")
         }
 
         self.robot.blacken(.all)
-        self.robotMedia = robotMedia
+        self.actionType = robotMedia
 
         self._viewModel = StateObject(
             wrappedValue: SelectionViewViewModel(choices: payload.choices, shared: data))
@@ -52,11 +52,12 @@ public struct RobotThenTouchToSelectView: View {
 
         HStack(spacing: 0) {
             Button {
-                switch robotMedia {
-                    case .image:
-                        fatalError("Image not supported by robot")
+                switch actionType {
                     case .color(let value):
                         robot.shine(.all(in: .init(from: value)))
+                    case .audio, .image, .speech:
+                        log.error("Action not available for robot: \(actionType)")
+                        fatalError("💥 Action not available for robot: \(actionType)")
                 }
 
                 withAnimation {

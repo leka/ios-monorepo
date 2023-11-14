@@ -11,12 +11,15 @@ public struct DragAndDropView: View {
 
     @StateObject private var viewModel: DragAndDropViewViewModel
     @State private var scene: SKScene = SKScene()
-    let dropZoneA: DropZoneDetails
-    let dropZoneB: DropZoneDetails?
+    let dropZoneA: DragAndDropIntoZones.DropZone.Details
+    let dropZoneB: DragAndDropIntoZones.DropZone.Details?
     // TODO(@hugo): Add hints variable
     //    let hints: Bool
 
-    public init(choices: [DragAndDropChoice], dropZoneA: DropZoneDetails, dropZoneB: DropZoneDetails? = nil) {
+    public init(
+        choices: [DragAndDropIntoZones.Choice], dropZoneA: DragAndDropIntoZones.DropZone.Details,
+        dropZoneB: DragAndDropIntoZones.DropZone.Details? = nil
+    ) {
         self._viewModel = StateObject(wrappedValue: DragAndDropViewViewModel(choices: choices))
         self.dropZoneA = dropZoneA
         self.dropZoneB = dropZoneB

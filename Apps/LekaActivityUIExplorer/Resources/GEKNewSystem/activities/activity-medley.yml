@@ -9,7 +9,7 @@ image: activity_color_recognition_1
 sequence:
   - exercises:
       - instructions: Écoute le son puis touche le bon instrument
-        type: selection
+        category: selection
         interface: listenThenTouchToSelect
         gameplay: selectAllRightAnswers
         payload:
@@ -26,7 +26,7 @@ sequence:
               type: image
 
       - instructions: Touche le bleu
-        type: selection
+        category: selection
         interface: touchToSelect
         gameplay: selectAllRightAnswers
         payload:
@@ -42,7 +42,7 @@ sequence:
               type: color
 
       - instructions: Touche le rond rouge et le rond jaune
-        type: selection
+        category: selection
         interface: touchToSelect
         gameplay: selectAllRightAnswers
         payload:
@@ -57,7 +57,7 @@ sequence:
               type: color
 
       - instructions: Regarde l'image puis touche la bonne réponse
-        type: selection
+        category: selection
         interface: observeThenTouchToSelect
         gameplay: selectAllRightAnswers
         payload:
@@ -82,7 +82,7 @@ sequence:
               type: color
 
       - instructions: Touche la couleur de Leka
-        type: selection
+        category: selection
         interface: robotThenTouchToSelect
         gameplay: selectAllRightAnswers
         payload:
@@ -105,13 +105,13 @@ sequence:
               type: color
 
       - instructions: Place le bon instrument dans le panier
-        type: dragAndDrop
+        category: dragAndDrop
         interface: dragAndDrop
         gameplay: selectAllRightAnswers
         payload:
           dropZoneA:
-              value: basket
-              type: image
+            value: basket
+            type: image
           choices:
             - value: image-instrument-harmonica-no_background
               type: image
@@ -126,16 +126,16 @@ sequence:
               type: image
 
       - instructions: Place les instruments dans les bonnes familles d'instruments
-        type: dragAndDrop
+        category: dragAndDrop
         interface: dragAndDrop
         gameplay: selectAllRightAnswers
         payload:
           dropZoneA:
-              value: image-placeholder-instruments_wind
-              type: image
+            value: image-placeholder-instruments_wind
+            type: image
           dropZoneB:
-              value: image-placeholder-instruments_string
-              type: image
+            value: image-placeholder-instruments_string
+            type: image
           choices:
             - value: image-instrument-harmonica-no_background
               type: image
@@ -146,6 +146,3 @@ sequence:
             - value: image-instrument-saxophone-no_background
               type: image
               dropZone: zoneA
-
-
-

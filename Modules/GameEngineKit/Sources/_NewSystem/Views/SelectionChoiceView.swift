@@ -7,13 +7,13 @@ import SwiftUI
 
 struct SelectionChoiceView: View {
 
-    let choice: SelectionChoice
+    let choice: TouchSelection.Choice
     let state: GameplayChoiceState
 
     let size: CGFloat
     var isTappable = true
 
-    private init(choice: SelectionChoice, state: GameplayChoiceState, size: CGFloat, isTappable: Bool = true) {
+    private init(choice: TouchSelection.Choice, state: GameplayChoiceState, size: CGFloat, isTappable: Bool = true) {
         self.choice = choice
         self.state = state
         self.size = size

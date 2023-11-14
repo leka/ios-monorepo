@@ -9,7 +9,7 @@ image: activity_image_recognition_1
 sequence:
   - exercises:
       - instructions: Écoute le son puis touche le bon instrument
-        type: selection
+        category: selection
         interface: listenThenTouchToSelect
         gameplay: selectAllRightAnswers
         payload:
@@ -24,7 +24,7 @@ sequence:
               isRightAnswer: true
 
       - instructions: Écoute le son puis touche le bon instrument
-        type: selection
+        category: selection
         interface: listenThenTouchToSelect
         gameplay: selectAllRightAnswers
         payload:
@@ -41,7 +41,7 @@ sequence:
               type: image
 
       - instructions: Écoute le son puis touche le bon instrument
-        type: selection
+        category: selection
         interface: listenThenTouchToSelect
         gameplay: selectAllRightAnswers
         payload:
@@ -61,7 +61,7 @@ sequence:
               isRightAnswer: true
 
       - instructions: Écoute le son puis touche le bon instrument
-        type: selection
+        category: selection
         interface: listenThenTouchToSelect
         gameplay: selectAllRightAnswers
         payload:
@@ -82,7 +82,7 @@ sequence:
               type: image
 
       - instructions: Écoute le son puis touche le bon instrument
-        type: selection
+        category: selection
         interface: listenThenTouchToSelect
         gameplay: selectAllRightAnswers
         payload:
@@ -107,7 +107,7 @@ sequence:
               isRightAnswer: true
 
       - instructions: Écoute le son puis touche le bon instrument
-        type: selection
+        category: selection
         interface: listenThenTouchToSelect
         gameplay: selectAllRightAnswers
         payload:

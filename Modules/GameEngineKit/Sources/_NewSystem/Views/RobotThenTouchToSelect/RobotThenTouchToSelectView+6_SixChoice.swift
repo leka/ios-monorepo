@@ -43,13 +43,13 @@ extension RobotThenTouchToSelectView {
 }
 
 #Preview {
-    let choices: [SelectionChoice] = [
-        SelectionChoice(value: "red", type: .color, isRightAnswer: true),
-        SelectionChoice(value: "blue", type: .color, isRightAnswer: false),
-        SelectionChoice(value: "green", type: .color, isRightAnswer: false),
-        SelectionChoice(value: "yellow", type: .color, isRightAnswer: false),
-        SelectionChoice(value: "purple", type: .color, isRightAnswer: false),
-        SelectionChoice(value: "lightBlue", type: .color, isRightAnswer: false),
+    let choices: [TouchSelection.Choice] = [
+        TouchSelection.Choice(value: "red", type: .color, isRightAnswer: true),
+        TouchSelection.Choice(value: "blue", type: .color, isRightAnswer: false),
+        TouchSelection.Choice(value: "green", type: .color, isRightAnswer: false),
+        TouchSelection.Choice(value: "yellow", type: .color, isRightAnswer: false),
+        TouchSelection.Choice(value: "purple", type: .color, isRightAnswer: false),
+        TouchSelection.Choice(value: "lightBlue", type: .color, isRightAnswer: false),
     ]
 
     return RobotThenTouchToSelectView(choices: choices)

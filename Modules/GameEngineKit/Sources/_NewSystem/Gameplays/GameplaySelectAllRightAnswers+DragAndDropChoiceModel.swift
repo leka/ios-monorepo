@@ -14,7 +14,7 @@ extension GameplaySelectAllRightAnswers where ChoiceModelType == GameplayDragAnd
         self.state.send(.playing)
     }
 
-    func process(_ choice: ChoiceModelType, _ dropZone: DragAndDropChoice.ChoiceDropZone) {
+    func process(_ choice: ChoiceModelType, _ dropZone: DragAndDropIntoZones.DropZone) {
         guard rightAnswers.isNotEmpty else {
             return
         }

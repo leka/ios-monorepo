@@ -9,7 +9,7 @@ image: activity_color_recognition_1
 sequence:
   - exercises:
       - instructions: Touche le jaune
-        type: selection
+        category: selection
         interface: touchToSelect
         gameplay: selectAllRightAnswers
         payload:
@@ -26,7 +26,7 @@ sequence:
               type: color
 
       - instructions: Touche le jaune
-        type: selection
+        category: selection
         interface: touchToSelect
         gameplay: selectAllRightAnswers
         payload:
@@ -43,7 +43,7 @@ sequence:
               type: color
 
       - instructions: Touche le jaune
-        type: selection
+        category: selection
         interface: touchToSelect
         gameplay: selectAllRightAnswers
         payload:
@@ -60,7 +60,7 @@ sequence:
               type: color
 
       - instructions: Touche le jaune
-        type: selection
+        category: selection
         interface: touchToSelect
         gameplay: selectAllRightAnswers
         payload:

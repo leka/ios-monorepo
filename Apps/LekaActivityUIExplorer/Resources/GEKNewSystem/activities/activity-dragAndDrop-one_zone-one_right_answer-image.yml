@@ -9,13 +9,13 @@ image: activity_image_recognition_1
 sequence:
   - exercises:
       - instructions: Place le bon instrument dans le panier
-        type: dragAndDrop
+        category: dragAndDrop
         interface: dragAndDrop
         gameplay: selectAllRightAnswers
         payload:
           dropZoneA:
-              value: basket
-              type: image
+            value: basket
+            type: image
           choices:
             - value: image-instrument-drums-no_background
               type: image
@@ -24,13 +24,13 @@ sequence:
               type: image
 
       - instructions: Place le bon instrument dans le panier
-        type: dragAndDrop
+        category: dragAndDrop
         interface: dragAndDrop
         gameplay: selectAllRightAnswers
         payload:
           dropZoneA:
-              value: basket
-              type: image
+            value: basket
+            type: image
           choices:
             - value: image-instrument-drums-no_background
               type: image
@@ -41,13 +41,13 @@ sequence:
               dropZone: zoneA
 
       - instructions: Place le bon instrument dans le panier
-        type: dragAndDrop
+        category: dragAndDrop
         interface: dragAndDrop
         gameplay: selectAllRightAnswers
         payload:
           dropZoneA:
-              value: basket
-              type: image
+            value: basket
+            type: image
           choices:
             - value: image-instrument-harmonica-no_background
               type: image
@@ -60,6 +60,3 @@ sequence:
               type: image
             - value: image-instrument-guitar-no_background
               type: image
-
-
-       

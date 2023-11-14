@@ -9,7 +9,7 @@ image: activity_image_recognition_1
 sequence:
   - exercises:
       - instructions: Touche les animaux
-        type: selection
+        category: selection
         interface: touchToSelect
         gameplay: selectAllRightAnswers
         payload:
@@ -19,7 +19,7 @@ sequence:
               isRightAnswer: true
 
       - instructions: Touche le portrait
-        type: selection
+        category: selection
         interface: touchToSelect
         gameplay: selectAllRightAnswers
         payload:
@@ -31,7 +31,7 @@ sequence:
               isRightAnswer: true
 
       - instructions: Touche le paysage
-        type: selection
+        category: selection
         interface: touchToSelect
         gameplay: selectAllRightAnswers
         payload:
@@ -45,7 +45,7 @@ sequence:
               type: image
 
       - instructions: Touche la nourriture
-        type: selection
+        category: selection
         interface: touchToSelect
         gameplay: selectAllRightAnswers
         payload:
@@ -61,7 +61,7 @@ sequence:
               type: image
 
       - instructions: Touche les animaux
-        type: selection
+        category: selection
         interface: touchToSelect
         gameplay: selectAllRightAnswers
         payload:
@@ -79,7 +79,7 @@ sequence:
               type: image
 
       - instructions: Touche le portrait
-        type: selection
+        category: selection
         interface: touchToSelect
         gameplay: selectAllRightAnswers
         payload:
