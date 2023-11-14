@@ -27,7 +27,7 @@ public struct ListenThenTouchToSelectView: View {
 
     public init(exercise: Exercise, data: ExerciseSharedData? = nil) {
         guard
-            case .selection(let payload) = exercise.payload,
+            let payload = exercise.payload as? TouchToSelect.Payload,
             case .ipad(type: .audio(let name)) = exercise.action
         else {
             log.error("Exercise payload is not .selection and/or Exercise does not contain iPad audio action")

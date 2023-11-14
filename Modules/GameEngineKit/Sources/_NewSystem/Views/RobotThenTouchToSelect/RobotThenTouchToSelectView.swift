@@ -34,7 +34,7 @@ public struct RobotThenTouchToSelectView: View {
 
     public init(exercise: Exercise, data: ExerciseSharedData? = nil) {
         guard
-            case .selection(let payload) = exercise.payload,
+            let payload = exercise.payload as? TouchToSelect.Payload,
             case .robot(let actionType) = exercise.action
         else {
             log.error("Exercise payload is not .selection and/or Exercise does not contain robot action")

@@ -4,61 +4,7 @@
 
 import Foundation
 
-// swiftlint:disable nesting
+public protocol ExercisePayloadProtocol: Codable {}
 
-extension Exercise {
-
-    public enum Payload: Codable {
-        case selection(TouchToSelect.Payload)
-        case dragAndDrop(DragAndDropIntoZones.Payload)
-
-        // TODO(@ladislas): see if we can decode based on interface in Exercise
-        public init(from decoder: Decoder) throws {
-            let container = try decoder.container(keyedBy: CustomKeys.self)
-
-            if container.allKeys.contains(.dropZoneA) {
-                let dropZoneA = try container.decode(DragAndDropIntoZones.DropZone.Details.self, forKey: .dropZoneA)
-                let dropZoneB = try container.decodeIfPresent(
-                    DragAndDropIntoZones.DropZone.Details.self, forKey: .dropZoneB)
-                let choices = try container.decode([DragAndDropIntoZones.Choice].self, forKey: .choices)
-
-                self = .dragAndDrop(
-                    DragAndDropIntoZones.Payload(dropZoneA: dropZoneA, dropZoneB: dropZoneB, choices: choices))
-                return
-            }
-
-            // ? Selection
-            if container.allKeys.contains(.choices) {
-                let choices = try container.decode([TouchToSelect.Choice].self, forKey: .choices)
-                let shuffleChoices = try container.decodeIfPresent(Bool.self, forKey: .shuffleChoices) ?? false
-
-                self = .selection(
-                    TouchToSelect.Payload(choices: choices, shuffleChoices: shuffleChoices))
-                return
-            }
-
-            throw DecodingError.dataCorruptedError(
-                forKey: CustomKeys.payload, in: container,
-                debugDescription:
-                    "Cannot decode ExercisePayload. Available keys: \(container.allKeys.map { $0.stringValue })")
-        }
-
-        public func encode(to encoder: Encoder) throws {
-            var container = encoder.singleValueContainer()
-            switch self {
-                case .selection(let payload):
-                    try container.encode(payload)
-                case .dragAndDrop(let payload):
-                    try container.encode(payload)
-            }
-        }
-
-        private enum CustomKeys: String, CodingKey {
-            case choices, dropZoneA, dropZoneB, payload, action
-            case shuffleChoices = "shuffle_choices"
-        }
-    }
-
-}
-
-// swiftlint:enable nesting
+extension TouchToSelect.Payload: ExercisePayloadProtocol {}
+extension DragAndDropIntoZones.Payload: ExercisePayloadProtocol {}

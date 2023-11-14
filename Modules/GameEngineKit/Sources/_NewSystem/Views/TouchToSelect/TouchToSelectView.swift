@@ -24,7 +24,7 @@ public struct TouchToSelectView: View {
     }
 
     public init(exercise: Exercise, data: ExerciseSharedData? = nil) {
-        guard case .selection(let payload) = exercise.payload else {
+        guard let payload = exercise.payload as? TouchToSelect.Payload else {
             fatalError("Exercise payload is not .selection")
         }
 
