@@ -3,7 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 // TODO(@ladislas): Add real implementation when needed
-public enum TouchAssociation {
+public enum TouchToAssociate {
 
     public enum Category: String, Codable {
         case catA
