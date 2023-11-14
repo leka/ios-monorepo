@@ -14,7 +14,7 @@ class SelectionViewViewModel: ObservableObject {
     private let gameplay: GameplaySelectAllRightAnswers<GameplaySelectionChoiceModel>
     private var cancellables: Set<AnyCancellable> = []
 
-    init(choices: [TouchSelection.Choice], shuffle: Bool = false, shared: ExerciseSharedData? = nil) {
+    init(choices: [TouchToSelect.Choice], shuffle: Bool = false, shared: ExerciseSharedData? = nil) {
         self.gameplay = GameplaySelectAllRightAnswers(
             choices: choices.map { GameplaySelectionChoiceModel(choice: $0) }, shuffle: shuffle)
         self.exercicesSharedData = shared ?? ExerciseSharedData()

@@ -9,7 +9,7 @@ import Foundation
 extension Exercise {
 
     public enum Payload: Codable {
-        case selection(TouchSelection.Payload)
+        case selection(TouchToSelect.Payload)
         case dragAndDrop(DragAndDropIntoZones.Payload)
 
         // TODO(@ladislas): see if we can decode based on interface in Exercise
@@ -29,11 +29,11 @@ extension Exercise {
 
             // ? Selection
             if container.allKeys.contains(.choices) {
-                let choices = try container.decode([TouchSelection.Choice].self, forKey: .choices)
+                let choices = try container.decode([TouchToSelect.Choice].self, forKey: .choices)
                 let shuffleChoices = try container.decodeIfPresent(Bool.self, forKey: .shuffleChoices) ?? false
 
                 self = .selection(
-                    TouchSelection.Payload(choices: choices, shuffleChoices: shuffleChoices))
+                    TouchToSelect.Payload(choices: choices, shuffleChoices: shuffleChoices))
                 return
             }
 

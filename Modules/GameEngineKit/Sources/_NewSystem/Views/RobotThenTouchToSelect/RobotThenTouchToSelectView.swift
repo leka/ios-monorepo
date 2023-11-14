@@ -26,7 +26,7 @@ public struct RobotThenTouchToSelectView: View {
 
     let robot = Robot.shared
 
-    public init(choices: [TouchSelection.Choice]) {
+    public init(choices: [TouchToSelect.Choice]) {
         self._viewModel = StateObject(wrappedValue: SelectionViewViewModel(choices: choices))
 
         self.actionType = .color("red")

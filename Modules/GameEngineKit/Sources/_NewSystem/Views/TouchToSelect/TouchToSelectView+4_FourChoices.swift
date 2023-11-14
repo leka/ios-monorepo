@@ -42,11 +42,11 @@ extension TouchToSelectView {
 }
 
 #Preview {
-    let choices: [TouchSelection.Choice] = [
-        TouchSelection.Choice(value: "red", type: .color, isRightAnswer: true),
-        TouchSelection.Choice(value: "blue", type: .color, isRightAnswer: false),
-        TouchSelection.Choice(value: "image-placeholder-food", type: .image, isRightAnswer: false),
-        TouchSelection.Choice(value: "image-placeholder-portrait", type: .image, isRightAnswer: false),
+    let choices: [TouchToSelect.Choice] = [
+        TouchToSelect.Choice(value: "red", type: .color, isRightAnswer: true),
+        TouchToSelect.Choice(value: "blue", type: .color, isRightAnswer: false),
+        TouchToSelect.Choice(value: "image-placeholder-food", type: .image, isRightAnswer: false),
+        TouchToSelect.Choice(value: "image-placeholder-portrait", type: .image, isRightAnswer: false),
     ]
 
     return TouchToSelectView(choices: choices)

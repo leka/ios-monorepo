@@ -43,12 +43,12 @@ extension ObserveThenTouchToSelectView {
 }
 
 #Preview {
-    let choices: [TouchSelection.Choice] = [
-        TouchSelection.Choice(value: "red", type: .color, isRightAnswer: true),
-        TouchSelection.Choice(value: "blue", type: .color, isRightAnswer: false),
-        TouchSelection.Choice(value: "green", type: .color, isRightAnswer: false),
-        TouchSelection.Choice(value: "yellow", type: .color, isRightAnswer: false),
-        TouchSelection.Choice(value: "purple", type: .color, isRightAnswer: false),
+    let choices: [TouchToSelect.Choice] = [
+        TouchToSelect.Choice(value: "red", type: .color, isRightAnswer: true),
+        TouchToSelect.Choice(value: "blue", type: .color, isRightAnswer: false),
+        TouchToSelect.Choice(value: "green", type: .color, isRightAnswer: false),
+        TouchToSelect.Choice(value: "yellow", type: .color, isRightAnswer: false),
+        TouchToSelect.Choice(value: "purple", type: .color, isRightAnswer: false),
     ]
 
     return ObserveThenTouchToSelectView(choices: choices, image: "image-landscape-blue")
