@@ -4,7 +4,7 @@
 
 // swiftlint:disable nesting
 
-public enum TouchSelection {
+public enum TouchToSelect {
 
     public struct Choice: Codable {
         public let value: String

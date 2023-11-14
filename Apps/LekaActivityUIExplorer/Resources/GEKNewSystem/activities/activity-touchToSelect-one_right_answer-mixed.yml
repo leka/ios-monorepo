@@ -9,9 +9,8 @@ image: activity_mixed_recognition_1
 sequence:
   - exercises:
       - instructions: Touche l'image
-        category: selection
         interface: touchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         payload:
           choices:
             - value: image-placeholder-food
@@ -21,9 +20,8 @@ sequence:
               type: color
 
       - instructions: Touche les images
-        category: selection
         interface: touchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         payload:
           choices:
             - value: blue
@@ -38,9 +36,8 @@ sequence:
               isRightAnswer: true
 
       - instructions: Touche toutes les items
-        category: selection
         interface: touchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         payload:
           choices:
             - value: blue

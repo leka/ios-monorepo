@@ -9,9 +9,8 @@ image: activity_color_recognition_1
 sequence:
   - exercises:
       - instructions: Exercice S1/E1
-        category: selection
         interface: touchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         payload:
           choices:
             - value: blue
@@ -19,9 +18,8 @@ sequence:
               isRightAnswer: true
 
       - instructions: Exercice S1/E2
-        category: selection
         interface: touchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         payload:
           choices:
             - value: red
@@ -29,9 +27,8 @@ sequence:
               isRightAnswer: true
 
       - instructions: Exercice S1/E3
-        category: selection
         interface: touchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         payload:
           choices:
             - value: green
@@ -40,9 +37,8 @@ sequence:
 
   - exercises:
       - instructions: Exercice S2/E1
-        category: selection
         interface: touchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         payload:
           choices:
             - value: orange
@@ -50,9 +46,8 @@ sequence:
               isRightAnswer: true
 
       - instructions: Exercice S2/E2
-        category: selection
         interface: touchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         payload:
           choices:
             - value: yellow
@@ -60,9 +55,8 @@ sequence:
               isRightAnswer: true
 
       - instructions: Exercice S2/E3
-        category: selection
         interface: touchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         payload:
           choices:
             - value: purple
@@ -71,9 +65,8 @@ sequence:
 
   - exercises:
       - instructions: Exercice S3/E1
-        category: selection
         interface: touchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         payload:
           choices:
             - value: lightBlue
@@ -81,9 +74,8 @@ sequence:
               isRightAnswer: true
 
       - instructions: Exercice S3/E2
-        category: selection
         interface: touchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         payload:
           choices:
             - value: pink
@@ -91,9 +83,8 @@ sequence:
               isRightAnswer: true
 
       - instructions: Exercice S3/E3
-        category: selection
         interface: touchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         payload:
           choices:
             - value: black

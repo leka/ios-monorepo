@@ -9,9 +9,8 @@ image: activity_image_recognition_1
 sequence:
   - exercises:
       - instructions: Place les instruments dans les bonnes familles d'instruments
-        category: dragAndDrop
-        interface: dragAndDrop
-        gameplay: selectAllRightAnswers
+        interface: dragAndDropIntoZones
+        gameplay: findTheRightAnswers
         payload:
           dropZoneA:
             value: image-placeholder-instruments_wind
@@ -31,9 +30,8 @@ sequence:
               dropZone: zoneA
 
       - instructions: Place les instruments dans les bonnes familles d'instruments
-        category: dragAndDrop
-        interface: dragAndDrop
-        gameplay: selectAllRightAnswers
+        interface: dragAndDropIntoZones
+        gameplay: findTheRightAnswers
         payload:
           dropZoneA:
             value: image-placeholder-instruments_wind
@@ -53,9 +51,8 @@ sequence:
               dropZone: zoneA
 
       - instructions: Place les instruments dans les bonnes familles d'instruments
-        category: dragAndDrop
-        interface: dragAndDrop
-        gameplay: selectAllRightAnswers
+        interface: dragAndDropIntoZones
+        gameplay: findTheRightAnswers
         payload:
           dropZoneA:
             value: image-placeholder-instruments_wind

@@ -8,16 +8,16 @@ import SwiftUI
 
 class DragAndDropViewViewModel: ObservableObject {
 
-    @Published var choices: [GameplayDragAndDropChoiceModel] = []
+    @Published var choices: [GameplayDragAndDropIntoZonesChoiceModel] = []
     @ObservedObject var exercicesSharedData: ExerciseSharedData
 
-    private let gameplay: GameplaySelectAllRightAnswers<GameplayDragAndDropChoiceModel>
+    private let gameplay: GameplayFindTheRightAnswers<GameplayDragAndDropIntoZonesChoiceModel>
     private var cancellables: Set<AnyCancellable> = []
 
     init(choices: [DragAndDropIntoZones.Choice], shared: ExerciseSharedData? = nil) {
-        let gameplayChoiceModel = choices.map { GameplayDragAndDropChoiceModel(choice: $0) }
+        let gameplayChoiceModel = choices.map { GameplayDragAndDropIntoZonesChoiceModel(choice: $0) }
         self.choices = gameplayChoiceModel
-        self.gameplay = GameplaySelectAllRightAnswers(
+        self.gameplay = GameplayFindTheRightAnswers(
             choices: gameplayChoiceModel)
         self.exercicesSharedData = shared ?? ExerciseSharedData()
 
@@ -26,7 +26,7 @@ class DragAndDropViewViewModel: ObservableObject {
     }
 
     public func onChoiceTapped(
-        choice: GameplayDragAndDropChoiceModel, dropZone: DragAndDropIntoZones.DropZone
+        choice: GameplayDragAndDropIntoZonesChoiceModel, dropZone: DragAndDropIntoZones.DropZone
     ) {
         gameplay.process(choice, dropZone)
     }

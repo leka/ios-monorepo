@@ -9,7 +9,7 @@ extension ObserveThenTouchToSelectView {
 
     struct FourChoicesView: View {
 
-        @ObservedObject var viewModel: SelectionViewViewModel
+        @ObservedObject var viewModel: TouchToSelectViewViewModel
         let isTappable: Bool
 
         private let kHorizontalSpacing: CGFloat = 60
@@ -20,7 +20,7 @@ extension ObserveThenTouchToSelectView {
             VStack(spacing: kVerticalSpacing) {
                 HStack(spacing: kHorizontalSpacing) {
                     ForEach(viewModel.choices[0...1]) { choice in
-                        SelectionChoiceView(choice: choice, size: kAnswerSize, isTappable: isTappable)
+                        TouchToSelectChoiceView(choice: choice, size: kAnswerSize, isTappable: isTappable)
                             .onTapGesture {
                                 viewModel.onChoiceTapped(choice: choice)
                             }
@@ -29,7 +29,7 @@ extension ObserveThenTouchToSelectView {
 
                 HStack(spacing: kHorizontalSpacing) {
                     ForEach(viewModel.choices[2...3]) { choice in
-                        SelectionChoiceView(choice: choice, size: kAnswerSize, isTappable: isTappable)
+                        TouchToSelectChoiceView(choice: choice, size: kAnswerSize, isTappable: isTappable)
                             .onTapGesture {
                                 viewModel.onChoiceTapped(choice: choice)
                             }
@@ -43,11 +43,11 @@ extension ObserveThenTouchToSelectView {
 }
 
 #Preview {
-    let choices: [TouchSelection.Choice] = [
-        TouchSelection.Choice(value: "red", type: .color, isRightAnswer: true),
-        TouchSelection.Choice(value: "blue", type: .color, isRightAnswer: false),
-        TouchSelection.Choice(value: "green", type: .color, isRightAnswer: false),
-        TouchSelection.Choice(value: "yellow", type: .color, isRightAnswer: false),
+    let choices: [TouchToSelect.Choice] = [
+        TouchToSelect.Choice(value: "red", type: .color, isRightAnswer: true),
+        TouchToSelect.Choice(value: "blue", type: .color, isRightAnswer: false),
+        TouchToSelect.Choice(value: "green", type: .color, isRightAnswer: false),
+        TouchToSelect.Choice(value: "yellow", type: .color, isRightAnswer: false),
     ]
 
     return ObserveThenTouchToSelectView(choices: choices, image: "image-landscape-blue")

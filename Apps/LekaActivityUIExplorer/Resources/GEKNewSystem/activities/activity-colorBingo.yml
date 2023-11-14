@@ -9,9 +9,8 @@ image: activity_color_recognition_1
 sequence:
   - exercises:
       - instructions: Touche la couleur de Leka
-        category: selection
         interface: robotThenTouchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         action:
           type: robot
           value:
@@ -24,9 +23,8 @@ sequence:
               isRightAnswer: true
 
       - instructions: Touche la couleur de Leka
-        category: selection
         interface: robotThenTouchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         action:
           type: robot
           value:
@@ -41,9 +39,8 @@ sequence:
               type: color
 
       - instructions: Touche la couleur de Leka
-        category: selection
         interface: robotThenTouchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         action:
           type: robot
           value:
@@ -60,9 +57,8 @@ sequence:
               type: color
 
       - instructions: Touche la couleur de Leka
-        category: selection
         interface: robotThenTouchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         action:
           type: robot
           value:
@@ -81,9 +77,8 @@ sequence:
               type: color
 
       - instructions: Touche la couleur de Leka
-        category: selection
         interface: robotThenTouchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         action:
           type: robot
           value:
@@ -104,9 +99,8 @@ sequence:
               type: color
 
       - instructions: Touche la couleur de Leka
-        category: selection
         interface: robotThenTouchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         action:
           type: robot
           value:

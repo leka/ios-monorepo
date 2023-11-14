@@ -2,24 +2,23 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
-import ContentKit
 import Foundation
 
-extension GameplaySelectAllRightAnswers where ChoiceModelType == GameplayDragAndDropChoiceModel {
+extension GameplayFindTheRightAnswers where ChoiceModelType == GameplayTouchToSelectChoiceModel {
 
-    convenience init(choices: [GameplayDragAndDropChoiceModel]) {
+    convenience init(choices: [GameplayTouchToSelectChoiceModel], shuffle: Bool = false) {
         self.init()
-        self.choices.send(choices)
-        self.rightAnswers = choices.filter { $0.choice.dropZone != .none }
+        self.choices.send(shuffle ? choices.shuffled() : choices)
+        self.rightAnswers = choices.filter { $0.choice.isRightAnswer }
         self.state.send(.playing)
     }
 
-    func process(_ choice: ChoiceModelType, _ dropZone: DragAndDropIntoZones.DropZone) {
+    func process(_ choice: ChoiceModelType) {
         guard rightAnswers.isNotEmpty else {
             return
         }
 
-        if choice.choice.dropZone == dropZone {
+        if choice.choice.isRightAnswer && rightAnswers.isNotEmpty {
             updateChoice(choice, state: .rightAnswer)
             rightAnswers.removeAll { $0.id == choice.id }
         } else {

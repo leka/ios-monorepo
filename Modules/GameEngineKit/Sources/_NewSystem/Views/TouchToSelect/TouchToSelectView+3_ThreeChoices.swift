@@ -9,7 +9,7 @@ extension TouchToSelectView {
 
     struct ThreeChoicesView: View {
 
-        @ObservedObject var viewModel: SelectionViewViewModel
+        @ObservedObject var viewModel: TouchToSelectViewViewModel
 
         private let kHorizontalSpacing: CGFloat = 80
         private let kAnswerSize: CGFloat = 280
@@ -17,7 +17,7 @@ extension TouchToSelectView {
         var body: some View {
             HStack(spacing: kHorizontalSpacing) {
                 ForEach(viewModel.choices[0...2]) { choice in
-                    SelectionChoiceView(choice: choice, size: kAnswerSize)
+                    TouchToSelectChoiceView(choice: choice, size: kAnswerSize)
                         .onTapGesture {
                             viewModel.onChoiceTapped(choice: choice)
                         }
@@ -30,10 +30,10 @@ extension TouchToSelectView {
 }
 
 #Preview {
-    let choices: [TouchSelection.Choice] = [
-        TouchSelection.Choice(value: "red", type: .color, isRightAnswer: true),
-        TouchSelection.Choice(value: "image-placeholder-food", type: .image, isRightAnswer: false),
-        TouchSelection.Choice(value: "image-placeholder-portrait", type: .image, isRightAnswer: false),
+    let choices: [TouchToSelect.Choice] = [
+        TouchToSelect.Choice(value: "red", type: .color, isRightAnswer: true),
+        TouchToSelect.Choice(value: "image-placeholder-food", type: .image, isRightAnswer: false),
+        TouchToSelect.Choice(value: "image-placeholder-portrait", type: .image, isRightAnswer: false),
     ]
 
     return TouchToSelectView(choices: choices)

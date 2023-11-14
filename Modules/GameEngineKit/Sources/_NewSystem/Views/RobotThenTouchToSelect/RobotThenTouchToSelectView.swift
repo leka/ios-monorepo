@@ -19,15 +19,15 @@ public struct RobotThenTouchToSelectView: View {
         case sixChoices
     }
 
-    @StateObject private var viewModel: SelectionViewViewModel
+    @StateObject private var viewModel: TouchToSelectViewViewModel
     @State private var didSendCommandToRobot = false
 
     private let actionType: Exercise.Action.ActionType
 
     let robot = Robot.shared
 
-    public init(choices: [TouchSelection.Choice]) {
-        self._viewModel = StateObject(wrappedValue: SelectionViewViewModel(choices: choices))
+    public init(choices: [TouchToSelect.Choice]) {
+        self._viewModel = StateObject(wrappedValue: TouchToSelectViewViewModel(choices: choices))
 
         self.actionType = .color("red")
     }
@@ -42,7 +42,7 @@ public struct RobotThenTouchToSelectView: View {
         }
 
         self._viewModel = StateObject(
-            wrappedValue: SelectionViewViewModel(choices: payload.choices, shared: data))
+            wrappedValue: TouchToSelectViewViewModel(choices: payload.choices, shared: data))
 
         self.actionType = actionType
 

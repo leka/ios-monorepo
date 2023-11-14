@@ -10,9 +10,8 @@ shuffle_sequences: true
 sequence:
   - exercises:
       - instructions: Touche le rouge
-        category: selection
         interface: touchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         payload:
           choices:
             - value: red
@@ -20,9 +19,8 @@ sequence:
               isRightAnswer: true
 
       - instructions: Touche le rouge
-        category: selection
         interface: touchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         payload:
           choices:
             - value: red
@@ -30,9 +28,8 @@ sequence:
               isRightAnswer: true
 
       - instructions: Touche le rouge
-        category: selection
         interface: touchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         payload:
           choices:
             - value: red
@@ -41,9 +38,8 @@ sequence:
 
   - exercises:
       - instructions: Touche le vert
-        category: selection
         interface: touchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         payload:
           choices:
             - value: green
@@ -51,9 +47,8 @@ sequence:
               isRightAnswer: true
 
       - instructions: Touche le vert
-        category: selection
         interface: touchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         payload:
           choices:
             - value: green
@@ -61,9 +56,8 @@ sequence:
               isRightAnswer: true
 
       - instructions: Touche le vert
-        category: selection
         interface: touchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         payload:
           choices:
             - value: green
@@ -72,9 +66,8 @@ sequence:
 
   - exercises:
       - instructions: Touche le bleu
-        category: selection
         interface: touchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         payload:
           choices:
             - value: blue
@@ -82,9 +75,8 @@ sequence:
               isRightAnswer: true
 
       - instructions: Touche le bleu
-        category: selection
         interface: touchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         payload:
           choices:
             - value: blue
@@ -92,9 +84,8 @@ sequence:
               isRightAnswer: true
 
       - instructions: Touche le bleu
-        category: selection
         interface: touchToSelect
-        gameplay: selectAllRightAnswers
+        gameplay: findTheRightAnswers
         payload:
           choices:
             - value: blue

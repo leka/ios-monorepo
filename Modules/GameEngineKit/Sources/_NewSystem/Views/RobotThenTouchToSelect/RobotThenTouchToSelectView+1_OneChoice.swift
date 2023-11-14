@@ -9,14 +9,14 @@ extension RobotThenTouchToSelectView {
 
     struct OneChoiceView: View {
 
-        @ObservedObject var viewModel: SelectionViewViewModel
+        @ObservedObject var viewModel: TouchToSelectViewViewModel
         let isTappable: Bool
 
         private let kAnswerSize: CGFloat = 300
 
         var body: some View {
             let choice = viewModel.choices[0]
-            SelectionChoiceView(choice: choice, size: kAnswerSize, isTappable: isTappable)
+            TouchToSelectChoiceView(choice: choice, size: kAnswerSize, isTappable: isTappable)
                 .onTapGesture {
                     viewModel.onChoiceTapped(choice: choice)
                 }
@@ -27,8 +27,8 @@ extension RobotThenTouchToSelectView {
 }
 
 #Preview {
-    let choices: [TouchSelection.Choice] = [
-        TouchSelection.Choice(value: "red", type: .color, isRightAnswer: true)
+    let choices: [TouchToSelect.Choice] = [
+        TouchToSelect.Choice(value: "red", type: .color, isRightAnswer: true)
     ]
 
     return RobotThenTouchToSelectView(choices: choices)

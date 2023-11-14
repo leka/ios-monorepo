@@ -9,7 +9,7 @@ extension TouchToSelectView {
 
     struct FourChoicesView: View {
 
-        @ObservedObject var viewModel: SelectionViewViewModel
+        @ObservedObject var viewModel: TouchToSelectViewViewModel
 
         private let kHorizontalSpacing: CGFloat = 200
         private let kVerticalSpacing: CGFloat = 40
@@ -19,7 +19,7 @@ extension TouchToSelectView {
             VStack(spacing: kVerticalSpacing) {
                 HStack(spacing: kHorizontalSpacing) {
                     ForEach(viewModel.choices[0...1]) { choice in
-                        SelectionChoiceView(choice: choice, size: kAnswerSize)
+                        TouchToSelectChoiceView(choice: choice, size: kAnswerSize)
                             .onTapGesture {
                                 viewModel.onChoiceTapped(choice: choice)
                             }
@@ -28,7 +28,7 @@ extension TouchToSelectView {
 
                 HStack(spacing: kHorizontalSpacing) {
                     ForEach(viewModel.choices[2...3]) { choice in
-                        SelectionChoiceView(choice: choice, size: kAnswerSize)
+                        TouchToSelectChoiceView(choice: choice, size: kAnswerSize)
                             .onTapGesture {
                                 viewModel.onChoiceTapped(choice: choice)
                             }
@@ -42,11 +42,11 @@ extension TouchToSelectView {
 }
 
 #Preview {
-    let choices: [TouchSelection.Choice] = [
-        TouchSelection.Choice(value: "red", type: .color, isRightAnswer: true),
-        TouchSelection.Choice(value: "blue", type: .color, isRightAnswer: false),
-        TouchSelection.Choice(value: "image-placeholder-food", type: .image, isRightAnswer: false),
-        TouchSelection.Choice(value: "image-placeholder-portrait", type: .image, isRightAnswer: false),
+    let choices: [TouchToSelect.Choice] = [
+        TouchToSelect.Choice(value: "red", type: .color, isRightAnswer: true),
+        TouchToSelect.Choice(value: "blue", type: .color, isRightAnswer: false),
+        TouchToSelect.Choice(value: "image-placeholder-food", type: .image, isRightAnswer: false),
+        TouchToSelect.Choice(value: "image-placeholder-portrait", type: .image, isRightAnswer: false),
     ]
 
     return TouchToSelectView(choices: choices)

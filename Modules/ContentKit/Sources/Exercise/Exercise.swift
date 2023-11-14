@@ -7,7 +7,6 @@ import Foundation
 public struct Exercise: Codable {
 
     public let instructions: String
-    public let category: Category
     public let interface: Interface
     public let gameplay: Gameplay
     public let action: Action?

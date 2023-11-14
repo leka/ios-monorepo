@@ -6,7 +6,7 @@ import Combine
 import ContentKit
 import Foundation
 
-class GameplaySelectAllRightAnswers<ChoiceModelType>: StatefulGameplayProtocol
+class GameplayFindTheRightAnswers<ChoiceModelType>: StatefulGameplayProtocol
 where ChoiceModelType: GameplayChoiceModelProtocol {
 
     var choices: CurrentValueSubject<[ChoiceModelType], Never> = .init([])

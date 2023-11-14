@@ -9,7 +9,7 @@ extension RobotThenTouchToSelectView {
 
     struct TwoChoicesView: View {
 
-        @ObservedObject var viewModel: SelectionViewViewModel
+        @ObservedObject var viewModel: TouchToSelectViewViewModel
         let isTappable: Bool
 
         private let kHorizontalSpacing: CGFloat = 100
@@ -18,7 +18,7 @@ extension RobotThenTouchToSelectView {
         var body: some View {
             HStack(spacing: kHorizontalSpacing) {
                 ForEach(viewModel.choices) { choice in
-                    SelectionChoiceView(choice: choice, size: kAnswerSize, isTappable: isTappable)
+                    TouchToSelectChoiceView(choice: choice, size: kAnswerSize, isTappable: isTappable)
                         .onTapGesture {
                             viewModel.onChoiceTapped(choice: choice)
                         }
@@ -31,9 +31,9 @@ extension RobotThenTouchToSelectView {
 }
 
 #Preview {
-    let choices: [TouchSelection.Choice] = [
-        TouchSelection.Choice(value: "red", type: .color, isRightAnswer: true),
-        TouchSelection.Choice(value: "blue", type: .color, isRightAnswer: false),
+    let choices: [TouchToSelect.Choice] = [
+        TouchToSelect.Choice(value: "red", type: .color, isRightAnswer: true),
+        TouchToSelect.Choice(value: "blue", type: .color, isRightAnswer: false),
     ]
 
     return RobotThenTouchToSelectView(choices: choices)

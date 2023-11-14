@@ -19,15 +19,15 @@ protocol GameplayChoiceModelProtocol: Identifiable {
     var state: GameplayChoiceState { get set }  // .selected, .idle, .rightAnswer, .wrongAnswer
 }
 
-struct GameplaySelectionChoiceModel: GameplayChoiceModelProtocol {
-    typealias ChoiceType = TouchSelection.Choice
+struct GameplayTouchToSelectChoiceModel: GameplayChoiceModelProtocol {
+    typealias ChoiceType = TouchToSelect.Choice
 
     let id: String = UUID().uuidString
     let choice: ChoiceType
     var state: GameplayChoiceState = .idle
 }
 
-struct GameplayDragAndDropChoiceModel: GameplayChoiceModelProtocol {
+struct GameplayDragAndDropIntoZonesChoiceModel: GameplayChoiceModelProtocol {
     typealias ChoiceType = DragAndDropIntoZones.Choice
 
     let id: String = UUID().uuidString

@@ -5,22 +5,22 @@
 import ContentKit
 import SwiftUI
 
-struct SelectionChoiceView: View {
+struct TouchToSelectChoiceView: View {
 
-    let choice: TouchSelection.Choice
+    let choice: TouchToSelect.Choice
     let state: GameplayChoiceState
 
     let size: CGFloat
     var isTappable = true
 
-    private init(choice: TouchSelection.Choice, state: GameplayChoiceState, size: CGFloat, isTappable: Bool = true) {
+    private init(choice: TouchToSelect.Choice, state: GameplayChoiceState, size: CGFloat, isTappable: Bool = true) {
         self.choice = choice
         self.state = state
         self.size = size
         self.isTappable = isTappable
     }
 
-    init(choice: GameplaySelectionChoiceModel, size: CGFloat, isTappable: Bool = true) {
+    init(choice: GameplayTouchToSelectChoiceModel, size: CGFloat, isTappable: Bool = true) {
         self.init(choice: choice.choice, state: choice.state, size: size, isTappable: isTappable)
     }
 
