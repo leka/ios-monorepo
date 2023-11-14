@@ -9,7 +9,6 @@ image: activity_color_recognition_1
 sequence:
   - exercises:
       - instructions: Touche tous les ronds verts
-        category: selection
         interface: touchToSelect
         gameplay: selectAllRightAnswers
         payload:
@@ -26,7 +25,6 @@ sequence:
               type: color
 
       - instructions: Touche le rond rouge et le rond jaune
-        category: selection
         interface: touchToSelect
         gameplay: selectAllRightAnswers
         payload:
@@ -41,7 +39,6 @@ sequence:
               type: color
 
       - instructions: Touche tous les ronds violets
-        category: selection
         interface: touchToSelect
         gameplay: selectAllRightAnswers
         payload:

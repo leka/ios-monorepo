@@ -9,7 +9,6 @@ image: activity_color_recognition_1
 sequence:
   - exercises:
       - instructions: Écoute le son puis touche le bon instrument
-        category: selection
         interface: listenThenTouchToSelect
         gameplay: selectAllRightAnswers
         action:
@@ -26,7 +25,6 @@ sequence:
               type: image
 
       - instructions: Touche le bleu
-        category: selection
         interface: touchToSelect
         gameplay: selectAllRightAnswers
         payload:
@@ -42,7 +40,6 @@ sequence:
               type: color
 
       - instructions: Touche le rond rouge et le rond jaune
-        category: selection
         interface: touchToSelect
         gameplay: selectAllRightAnswers
         payload:
@@ -57,7 +54,6 @@ sequence:
               type: color
 
       - instructions: Regarde l'image puis touche la bonne réponse
-        category: selection
         interface: observeThenTouchToSelect
         gameplay: selectAllRightAnswers
         action:
@@ -82,7 +78,6 @@ sequence:
               type: color
 
       - instructions: Touche la couleur de Leka
-        category: selection
         interface: robotThenTouchToSelect
         gameplay: selectAllRightAnswers
         action:
@@ -105,7 +100,6 @@ sequence:
               type: color
 
       - instructions: Place le bon instrument dans le panier
-        category: dragAndDrop
         interface: dragAndDrop
         gameplay: selectAllRightAnswers
         payload:
@@ -126,7 +120,6 @@ sequence:
               type: image
 
       - instructions: Place les instruments dans les bonnes familles d'instruments
-        category: dragAndDrop
         interface: dragAndDrop
         gameplay: selectAllRightAnswers
         payload:

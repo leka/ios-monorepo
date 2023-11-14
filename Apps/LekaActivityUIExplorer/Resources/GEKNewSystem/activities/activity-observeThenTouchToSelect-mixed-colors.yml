@@ -9,7 +9,6 @@ image: activity_image_recognition_1
 sequence:
   - exercises:
       - instructions: Regarde l'image puis touche la bonne réponse
-        category: selection
         interface: observeThenTouchToSelect
         gameplay: selectAllRightAnswers
         action:
@@ -24,7 +23,6 @@ sequence:
               isRightAnswer: true
 
       - instructions: Regarde l'image puis touche la bonne réponse
-        category: selection
         interface: observeThenTouchToSelect
         gameplay: selectAllRightAnswers
         action:
@@ -41,7 +39,6 @@ sequence:
               isRightAnswer: true
 
       - instructions: Regarde l'image puis touche les bonnes réponses
-        category: selection
         interface: observeThenTouchToSelect
         gameplay: selectAllRightAnswers
         action:
@@ -61,7 +58,6 @@ sequence:
               isRightAnswer: true
 
       - instructions: Regarde l'image puis touche la bonne réponse
-        category: selection
         interface: observeThenTouchToSelect
         gameplay: selectAllRightAnswers
         action:
@@ -82,7 +78,6 @@ sequence:
               type: color
 
       - instructions: Regarde l'image puis touche les bonnes réponses
-        category: selection
         interface: observeThenTouchToSelect
         gameplay: selectAllRightAnswers
         action:
@@ -107,7 +102,6 @@ sequence:
               isRightAnswer: true
 
       - instructions: Regarde l'image puis touche la bonne réponse
-        category: selection
         interface: observeThenTouchToSelect
         gameplay: selectAllRightAnswers
         action:

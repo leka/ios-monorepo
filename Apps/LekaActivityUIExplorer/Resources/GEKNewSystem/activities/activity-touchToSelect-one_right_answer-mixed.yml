@@ -9,7 +9,6 @@ image: activity_mixed_recognition_1
 sequence:
   - exercises:
       - instructions: Touche l'image
-        category: selection
         interface: touchToSelect
         gameplay: selectAllRightAnswers
         payload:
@@ -21,7 +20,6 @@ sequence:
               type: color
 
       - instructions: Touche les images
-        category: selection
         interface: touchToSelect
         gameplay: selectAllRightAnswers
         payload:
@@ -38,7 +36,6 @@ sequence:
               isRightAnswer: true
 
       - instructions: Touche toutes les items
-        category: selection
         interface: touchToSelect
         gameplay: selectAllRightAnswers
         payload:

@@ -10,7 +10,6 @@ shuffle_sequences: true
 sequence:
   - exercises:
       - instructions: Touche le rouge
-        category: selection
         interface: touchToSelect
         gameplay: selectAllRightAnswers
         payload:
@@ -20,7 +19,6 @@ sequence:
               isRightAnswer: true
 
       - instructions: Touche le rouge
-        category: selection
         interface: touchToSelect
         gameplay: selectAllRightAnswers
         payload:
@@ -30,7 +28,6 @@ sequence:
               isRightAnswer: true
 
       - instructions: Touche le rouge
-        category: selection
         interface: touchToSelect
         gameplay: selectAllRightAnswers
         payload:
@@ -41,7 +38,6 @@ sequence:
 
   - exercises:
       - instructions: Touche le vert
-        category: selection
         interface: touchToSelect
         gameplay: selectAllRightAnswers
         payload:
@@ -51,7 +47,6 @@ sequence:
               isRightAnswer: true
 
       - instructions: Touche le vert
-        category: selection
         interface: touchToSelect
         gameplay: selectAllRightAnswers
         payload:
@@ -61,7 +56,6 @@ sequence:
               isRightAnswer: true
 
       - instructions: Touche le vert
-        category: selection
         interface: touchToSelect
         gameplay: selectAllRightAnswers
         payload:
@@ -72,7 +66,6 @@ sequence:
 
   - exercises:
       - instructions: Touche le bleu
-        category: selection
         interface: touchToSelect
         gameplay: selectAllRightAnswers
         payload:
@@ -82,7 +75,6 @@ sequence:
               isRightAnswer: true
 
       - instructions: Touche le bleu
-        category: selection
         interface: touchToSelect
         gameplay: selectAllRightAnswers
         payload:
@@ -92,7 +84,6 @@ sequence:
               isRightAnswer: true
 
       - instructions: Touche le bleu
-        category: selection
         interface: touchToSelect
         gameplay: selectAllRightAnswers
         payload:
