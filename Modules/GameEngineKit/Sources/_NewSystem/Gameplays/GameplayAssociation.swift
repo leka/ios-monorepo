@@ -27,7 +27,7 @@ extension GameplayAssociation where ChoiceModelType == GameplayAssociationChoice
 
     convenience init(choices: [GameplayAssociationChoiceModel], shuffle: Bool = false) {
         self.init()
-        self.choices.send(shuffle ? choices.shuffled() : choices)
+        self.choices.send(choices)
         self.state.send(.playing)
     }
 
