@@ -11,9 +11,17 @@ public class ActivitySequenceManager {
 
     public init(activity: Activity) {
         var localActivity = activity
+
+        if localActivity.shuffleExercises {
+            localActivity.sequence = localActivity.sequence.map { sequence in
+                Exercise.Sequence(exercises: sequence.exercises.shuffled())
+            }
+        }
+
         if localActivity.shuffleSequences {
             localActivity.sequence.shuffle()
         }
+
         self.activity = localActivity
     }
 
