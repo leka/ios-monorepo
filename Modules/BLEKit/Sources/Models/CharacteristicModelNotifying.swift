@@ -13,7 +13,10 @@ public struct CharacteristicModelNotifying {
     public let cbCharacteristic: CBCharacteristic?
     public let onNotification: Callback?
 
-    public init(characteristicUUID: CBUUID, serviceUUID: CBUUID, cbCharacteristic: CBCharacteristic? = nil, onNotification: Callback? = nil ) {
+    public init(
+        characteristicUUID: CBUUID, serviceUUID: CBUUID, cbCharacteristic: CBCharacteristic? = nil,
+        onNotification: Callback? = nil
+    ) {
         self.characteristicUUID = characteristicUUID
         self.serviceUUID = serviceUUID
         self.cbCharacteristic = cbCharacteristic
