@@ -9,16 +9,15 @@ import SwiftUI
 
 class DragAndDropAssociationBaseScene: SKScene {
     var viewModel: DragAndDropAssociationViewViewModel
-    var spacer: CGFloat = 455
+    var spacer = CGFloat.zero
     var defaultPosition = CGPoint.zero
     var initialNodeX: CGFloat = .zero
     var verticalSpacing: CGFloat = .zero
-    var dropDestinationAnchor: CGPoint = .zero
-    var biggerSide: CGFloat = 150
-    var playedNode: DraggableImageAnswerNode?
-    var playedDestination: DraggableImageAnswerNode?
-    var dropDestinations: [DraggableImageAnswerNode] = []
-    var selectedNodes: [UITouch: DraggableImageAnswerNode] = [:]
+    private var biggerSide: CGFloat = 150
+    private var playedNode: DraggableImageAnswerNode?
+    private var playedDestination: DraggableImageAnswerNode?
+    private var dropDestinations: [DraggableImageAnswerNode] = []
+    private var selectedNodes: [UITouch: DraggableImageAnswerNode] = [:]
     private var expectedItemsNodes: [String: [SKSpriteNode]] = [:]
     private var cancellables: Set<AnyCancellable> = []
 
@@ -92,7 +91,7 @@ class DragAndDropAssociationBaseScene: SKScene {
         }
     }
 
-    func bindNodesToSafeArea(_ nodes: [SKSpriteNode], limit: CGFloat = 120) {
+    func bindNodesToSafeArea(_ nodes: [SKSpriteNode], limit: CGFloat = 80) {
         let xRange = SKRange(lowerLimit: 0, upperLimit: size.width - limit)
         let yRange = SKRange(lowerLimit: 0, upperLimit: size.height - limit)
         for node in nodes {
@@ -101,25 +100,15 @@ class DragAndDropAssociationBaseScene: SKScene {
     }
 
     func setFirstAnswerPosition() {
-        initialNodeX = (size.width - spacer) / 2
-        verticalSpacing = self.size.height / 3
-        defaultPosition = CGPoint(x: initialNodeX, y: verticalSpacing - 30)
+        fatalError("setFirstAnswerPosition() has not been implemented")
     }
 
     func setNextAnswerPosition(_ index: Int) {
-        if [0, 2].contains(index) {
-            defaultPosition.x += spacer
-        } else {
-            defaultPosition.x = initialNodeX
-            defaultPosition.y += verticalSpacing + 60
-        }
+        fatalError("setNextAnswerPosition(_ index:) has not been implemented")
     }
 
     func goodAnswerBehavior(_ node: DraggableImageAnswerNode) {
         node.scaleForMax(sizeOf: biggerSide * 0.8)
-        node.position = CGPoint(
-            x: dropDestinationAnchor.x - 60,
-            y: dropDestinationAnchor.y - 60)
         node.zPosition = 10
         node.isDraggable = false
         playedDestination?.isDraggable = false
@@ -216,7 +205,6 @@ class DragAndDropAssociationBaseScene: SKScene {
                 wrongAnswerBehavior(playedNode!)
                 break
             }
-            dropDestinationAnchor = destinationNode.position
             playedDestination = destinationNode
 
             guard let destination = viewModel.choices.first(where: { $0.choice.value == destinationNode.name })

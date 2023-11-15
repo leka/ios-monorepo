@@ -26,12 +26,6 @@ public struct DragAndDropAssociationView: View {
         self._viewModel = StateObject(
             wrappedValue: DragAndDropAssociationViewViewModel(
                 choices: payload.choices,
-                shuffle: payload.shuffleChoices
-            )
-        )
-        self._viewModel = StateObject(
-            wrappedValue: DragAndDropAssociationViewViewModel(
-                choices: payload.choices,
                 shuffle: payload.shuffleChoices,
                 shared: data
             )
@@ -47,7 +41,7 @@ public struct DragAndDropAssociationView: View {
             .frame(width: proxy.size.width, height: proxy.size.height)
             .onAppear {
                 if viewModel.choices.count == 4 {
-                    scene = DragAndDropAssociationBaseScene(viewModel: viewModel)
+                    scene = DragAndDropAssociationFourChoicesScene(viewModel: viewModel)
                 } else {
                     scene = DragAndDropAssociationSixChoicesScene(viewModel: viewModel)
                 }

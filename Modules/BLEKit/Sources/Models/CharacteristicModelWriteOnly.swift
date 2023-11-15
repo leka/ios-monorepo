@@ -12,7 +12,7 @@ public struct CharacteristicModelWriteOnly {
     public let serviceUUID: CBUUID
     public let onWrite: Callback?
 
-    public init(characteristicUUID: CBUUID, serviceUUID: CBUUID, onWrite: Callback? = nil ) {
+    public init(characteristicUUID: CBUUID, serviceUUID: CBUUID, onWrite: Callback? = nil) {
         self.characteristicUUID = characteristicUUID
         self.serviceUUID = serviceUUID
         self.onWrite = onWrite
