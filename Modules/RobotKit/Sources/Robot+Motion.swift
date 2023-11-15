@@ -50,8 +50,8 @@ extension Robot {
 
                 case .free(let left, let right):
                     let payload = [
-                        setMotor(.left, speed: left, rotation: left > 0 ? .clockwise : .counterclockwise),
-                        setMotor(.right, speed: right, rotation: right > 0 ? .clockwise : .counterclockwise),
+                        setMotor(.left, speed: left, rotation: left < 0 ? .clockwise : .counterclockwise),
+                        setMotor(.right, speed: right, rotation: right < 0 ? .clockwise : .counterclockwise),
                     ]
                     output.append(contentsOf: payload)
 
@@ -66,16 +66,16 @@ extension Robot {
                 case .forwardLeft(let speed):
                     guard speed.isInRange0to1 else { break }
                     let payload = [
-                        setMotor(.left, speed: speed * 0.8, rotation: .clockwise),
-                        setMotor(.right, speed: speed, rotation: .clockwise),
+                        setMotor(.left, speed: speed * 0.8, rotation: .counterclockwise),
+                        setMotor(.right, speed: speed, rotation: .counterclockwise),
                     ]
                     output.append(contentsOf: payload)
 
                 case .forwardRight(let speed):
                     guard speed.isInRange0to1 else { break }
                     let payload = [
-                        setMotor(.left, speed: speed, rotation: .clockwise),
-                        setMotor(.right, speed: speed * 0.8, rotation: .clockwise),
+                        setMotor(.left, speed: speed, rotation: .counterclockwise),
+                        setMotor(.right, speed: speed * 0.8, rotation: .counterclockwise),
                     ]
                     output.append(contentsOf: payload)
 
@@ -90,16 +90,16 @@ extension Robot {
                 case .backwardLeft(let speed):
                     guard speed.isInRange0to1 else { break }
                     let payload = [
-                        setMotor(.left, speed: speed * 0.8, rotation: .counterclockwise),
-                        setMotor(.right, speed: speed, rotation: .counterclockwise),
+                        setMotor(.left, speed: speed * 0.8, rotation: .clockwise),
+                        setMotor(.right, speed: speed, rotation: .clockwise),
                     ]
                     output.append(contentsOf: payload)
 
                 case .backwardRight(let speed):
                     guard speed.isInRange0to1 else { break }
                     let payload = [
-                        setMotor(.left, speed: speed, rotation: .counterclockwise),
-                        setMotor(.right, speed: speed * 0.8, rotation: .counterclockwise),
+                        setMotor(.left, speed: speed, rotation: .clockwise),
+                        setMotor(.right, speed: speed * 0.8, rotation: .clockwise),
                     ]
                     output.append(contentsOf: payload)
 
