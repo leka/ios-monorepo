@@ -8,10 +8,25 @@ import SwiftUI
 @main
 struct LocalizationKitExample: App {
 
+    @Environment(\.openURL) var openURL
+
     var body: some Scene {
         WindowGroup {
-            MainView()
+            VStack {
+                Button("Open Settings") {
+                    openAppSettings()
+                }
+                MainView()
+            }
         }
+    }
+
+    private func openAppSettings() {
+        guard let settingsURL = URL(string: UIApplication.openSettingsURLString) else {
+            return
+        }
+
+        openURL(settingsURL)
     }
 
 }
