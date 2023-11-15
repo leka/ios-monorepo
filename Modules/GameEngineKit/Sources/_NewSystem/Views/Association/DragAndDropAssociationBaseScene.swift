@@ -109,7 +109,7 @@ class DragAndDropAssociationBaseScene: SKScene {
 
     func goodAnswerBehavior(_ node: DraggableImageAnswerNode) {
         node.scaleForMax(sizeOf: biggerSide * 0.8)
-        node.zPosition = 10
+        node.zPosition = (self.playedDestination?.zPosition ?? 10) + 10
         node.isDraggable = false
         playedDestination?.isDraggable = false
         onDropAction(node)
