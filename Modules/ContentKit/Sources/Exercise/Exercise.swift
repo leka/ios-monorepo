@@ -37,6 +37,9 @@ public struct Exercise: Codable {
             case (.dragAndDropIntoZones, .findTheRightAnswers):
                 payload = try container.decode(DragAndDropIntoZones.Payload.self, forKey: .payload)
 
+            case (.dragAndDropAssociation, .associateCategories):
+                payload = try container.decode(DragAndDropAssociation.Payload.self, forKey: .payload)
+
             default:
                 throw DecodingError.dataCorruptedError(
                     forKey: .payload, in: container, debugDescription: "Invalid combination of interface or gameplay")
