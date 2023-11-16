@@ -10,10 +10,9 @@ sequence:
   - exercises:
       - instructions: Rassemble les instruments par familles d'instruments
         type: association
-        interface: association
+        interface: dragAndDropAssociation
         gameplay: association
         payload:
-          type: association
           shuffle_choices: true
           choices:
             - value: image-instrument-violin-no_background
@@ -32,10 +31,9 @@ sequence:
 
       - instructions: Rassemble les instruments par familles d'instruments
         type: association
-        interface: association
+        interface: dragAndDropAssociation
         gameplay: association
         payload:
-          type: association
           shuffle_choices: true
           choices:
             - value: image-instrument-harmonica-no_background
@@ -54,10 +52,9 @@ sequence:
 
       - instructions: Rassemble les instruments par familles d'instruments
         type: association
-        interface: association
+        interface: dragAndDropAssociation
         gameplay: association
         payload:
-          type: association
           shuffle_choices: true
           choices:
             - value: image-instrument-piano-no_background
