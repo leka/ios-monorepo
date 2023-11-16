@@ -8,3 +8,4 @@ public protocol ExercisePayloadProtocol: Codable {}
 
 extension TouchToSelect.Payload: ExercisePayloadProtocol {}
 extension DragAndDropIntoZones.Payload: ExercisePayloadProtocol {}
+extension DragAndDropAssociation.Payload: ExercisePayloadProtocol {}
