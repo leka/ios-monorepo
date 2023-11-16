@@ -46,5 +46,5 @@ extension ListenThenTouchToSelectView {
     ]
 
     return ListenThenTouchToSelectView(
-        choices: choices, audioRecording: AudioRecordingModel(name: "drums", file: "drums"))
+        choices: choices, audioRecording: AudioRecording(name: "drums", file: "drums"))
 }
