@@ -34,3 +34,11 @@ struct GameplayDragAndDropIntoZonesChoiceModel: GameplayChoiceModelProtocol {
     let choice: ChoiceType
     var state: GameplayChoiceState = .idle
 }
+
+struct GameplayAssociationChoiceModel: GameplayChoiceModelProtocol {
+    typealias ChoiceType = DragAndDropAssociation.Choice
+
+    let id: String = UUID().uuidString
+    let choice: ChoiceType
+    var state: GameplayChoiceState = .idle
+}
