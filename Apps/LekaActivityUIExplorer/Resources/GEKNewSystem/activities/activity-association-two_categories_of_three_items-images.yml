@@ -1,0 +1,95 @@
+# Leka - iOS Monorepo
+# Copyright 2023 APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+id: 5e5394ee819a11eeb9620242ac120002
+name: Association - Two Categories Of Three Items - Images
+description: L'objectif est de trier les images par categories.
+image: activity_image_recognition_1
+sequence:
+  - exercises:
+      - instructions: Rassemble les instruments par familles d'instruments
+        type: association
+        interface: association
+        gameplay: association
+        payload:
+          type: association
+          shuffle_choices: true
+          choices:
+            - value: image-instrument-violin-no_background
+              type: image
+              category: catA
+            - value: image-instrument-guitar-no_background
+              type: image
+              category: catA
+            - value: image-instrument-piano-no_background
+              type: image
+              category: catA
+            - value: image-instrument-flute-no_background
+              type: image
+              category: catB
+            - value: image-instrument-saxophone-no_background
+              type: image
+              category: catB
+            - value: image-instrument-harmonica-no_background
+              type: image
+              category: catB
+
+
+      - instructions: Rassemble les instruments par familles d'instruments
+        type: association
+        interface: association
+        gameplay: association
+        payload:
+          type: association
+          shuffle_choices: true
+          choices:
+            - value: image-instrument-harmonica-no_background
+              type: image
+              category: catB
+            - value: image-instrument-violin-no_background
+              type: image
+              category: catA
+            - value: image-instrument-piano-no_background
+              type: image
+              category: catA
+            - value: image-instrument-saxophone-no_background
+              type: image
+              category: catB
+            - value: image-instrument-guitar-no_background
+              type: image
+              category: catA
+            - value: image-instrument-flute-no_background
+              type: image
+              category: catB
+
+
+      - instructions: Rassemble les instruments par familles d'instruments
+        type: association
+        interface: association
+        gameplay: association
+        payload:
+          type: association
+          shuffle_choices: true
+          choices:
+            - value: image-instrument-piano-no_background
+              type: image
+              category: catA
+            - value: image-instrument-harmonica-no_background
+              type: image
+              category: catB
+            - value: image-instrument-guitar-no_background
+              type: image
+              category: catA
+            - value: image-instrument-flute-no_background
+              type: image
+              category: catB
+            - value: image-instrument-violin-no_background
+              type: image
+              category: catA
+            - value: image-instrument-saxophone-no_background
+              type: image
+              category: catB
+
+
+       
