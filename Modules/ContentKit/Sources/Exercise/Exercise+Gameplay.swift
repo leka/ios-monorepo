@@ -8,6 +8,7 @@ extension Exercise {
 
     public enum Gameplay: String, Codable {
         case findTheRightAnswers
+        case association // TODO(@macteuts): Rename gameplay
     }
 
 }

@@ -16,7 +16,7 @@ public enum DragAndDropIntoZones {
         }
     }
 
-    public struct Choice: Codable {
+    public struct Choice: Codable, DraggableChoice {
         public let value: String
         public let type: Exercise.UIElementType
         public let dropZone: DropZone?

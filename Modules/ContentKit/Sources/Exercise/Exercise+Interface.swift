@@ -12,6 +12,7 @@ extension Exercise {
         case listenThenTouchToSelect
         case observeThenTouchToSelect
         case dragAndDropIntoZones
+        case dragAndDropAssociation
     }
 
 }
