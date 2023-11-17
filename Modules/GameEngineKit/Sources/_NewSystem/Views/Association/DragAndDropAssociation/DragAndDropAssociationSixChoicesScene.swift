@@ -8,7 +8,7 @@ final class DragAndDropAssociationSixChoicesScene: DragAndDropAssociationBaseSce
 
     override func setFirstAnswerPosition() {
         spacer = 340
-        initialNodeX = (size.width - (spacer * 2)) / 2
+        initialNodeX = (size.width / 2) - spacer
         verticalSpacing = self.size.height / 3
         defaultPosition = CGPoint(x: initialNodeX, y: verticalSpacing - 30)
     }
