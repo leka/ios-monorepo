@@ -6,10 +6,10 @@ import GameEngineKit
 import SwiftUI
 
 struct DanceFreezeActivity: View {
-    @StateObject private var gameplay = DanceFreezeGameplay()
+    @StateObject private var gameplay = DanceFreezeGameplayDeprecated()
 
     var body: some View {
-        DanceFreezeView(gameplay: gameplay)
+        DanceFreezeViewDeprecated(gameplay: gameplay)
     }
 }
 

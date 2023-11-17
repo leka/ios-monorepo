@@ -2,6 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import ContentKit
 import DesignKit
 import SwiftUI
 
@@ -30,5 +31,6 @@ struct ActionButtonListen: View {
 }
 
 #Preview {
-    ActionButtonListen(audioPlayer: AudioPlayer(audioRecording: AudioRecordingModel(name: "drums", file: "drums")))
+    ActionButtonListen(
+        audioPlayer: AudioPlayer(audioRecording: AudioRecording(name: "drums", file: "drums")))
 }

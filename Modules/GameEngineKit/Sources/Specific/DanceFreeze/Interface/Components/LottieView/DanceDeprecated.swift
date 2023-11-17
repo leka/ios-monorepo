@@ -5,17 +5,17 @@
 import DesignKit
 import SwiftUI
 
-struct FreezeView: View {
+struct DanceViewDeprecated: View {
     var body: some View {
         LottieView(
-            name: "freeze", speed: 0.5,
+            name: "dance", speed: 0.5,
             loopMode: .loop
         )
     }
 }
 
-struct FreezeView_Previews: PreviewProvider {
+struct DanceViewDeprecated_Previews: PreviewProvider {
     static var previews: some View {
-        FreezeView()
+        DanceViewDeprecated()
     }
 }

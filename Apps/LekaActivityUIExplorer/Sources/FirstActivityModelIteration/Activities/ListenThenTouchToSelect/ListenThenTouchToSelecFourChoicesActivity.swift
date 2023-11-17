@@ -43,19 +43,19 @@ private let choiceStep5 = [
 private var steps: [StandardStepModel] = [
     StandardStepModel(
         choices: choiceStep1, gameplay: .selectTheRightAnswer,
-        interface: .listenFourChoices(AudioRecordingModel(name: "guitar", file: "guitar"))),
+        interface: .listenFourChoices(AudioRecordingModelDeprecated(name: "guitar", file: "guitar"))),
     StandardStepModel(
         choices: choiceStep2, gameplay: .selectTheRightAnswer,
-        interface: .listenFourChoices(AudioRecordingModel(name: "guitar", file: "guitar"))),
+        interface: .listenFourChoices(AudioRecordingModelDeprecated(name: "guitar", file: "guitar"))),
     StandardStepModel(
         choices: choiceStep3, gameplay: .selectTheRightAnswer,
-        interface: .listenFourChoices(AudioRecordingModel(name: "guitar", file: "guitar"))),
+        interface: .listenFourChoices(AudioRecordingModelDeprecated(name: "guitar", file: "guitar"))),
     StandardStepModel(
         choices: choiceStep4, gameplay: .selectTheRightAnswer,
-        interface: .listenFourChoices(AudioRecordingModel(name: "guitar", file: "guitar"))),
+        interface: .listenFourChoices(AudioRecordingModelDeprecated(name: "guitar", file: "guitar"))),
     StandardStepModel(
         choices: choiceStep5, gameplay: .selectTheRightAnswer,
-        interface: .listenFourChoices(AudioRecordingModel(name: "guitar", file: "guitar"))),
+        interface: .listenFourChoices(AudioRecordingModelDeprecated(name: "guitar", file: "guitar"))),
 ]
 
 struct ListenThenTouchToSelectFourChoicesActivity: View {
