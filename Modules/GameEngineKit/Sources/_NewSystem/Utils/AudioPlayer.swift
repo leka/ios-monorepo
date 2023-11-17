@@ -25,13 +25,20 @@ public class AudioPlayer: NSObject, ObservableObject {
         progress = 0.0
         didFinishPlaying = false
 
+        guard
+            let fileURL = Bundle.main.url(forResource: audioRecording.file, withExtension: "mp3")
+                ?? Bundle.module.url(forResource: audioRecording.file, withExtension: "mp3")
+        else {
+            log.error("File \(audioRecording.file) not found")
+            return
+        }
+
         do {
-            let fileUrl = Bundle.module.url(forResource: audioRecording.file, withExtension: "mp3")!
-            player = try AVAudioPlayer(contentsOf: fileUrl)
+            log.trace("AudioRecoding file \"\(audioRecording.file)\" found at \(fileURL.relativePath)")
+            self.player = try AVAudioPlayer(contentsOf: fileURL)
             player.delegate = self
         } catch {
-            print("ERROR - mp3 file not found - \(error)")
-            return
+            log.error("AVAudioPlayer error: \(error)")
         }
 
         player.prepareToPlay()
