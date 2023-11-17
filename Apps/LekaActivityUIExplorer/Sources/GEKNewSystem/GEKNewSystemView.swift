@@ -41,7 +41,10 @@ let kActivities: [Activity] = [
 
     ContentKit.decodeActivity("activity-medley"),
     ContentKit.decodeActivity("activity-colorBingo"),
+    ContentKit.decodeActivity("activity-associateCategories-one_category_of_two_items-images"),
+    ContentKit.decodeActivity("activity-associateCategories-one_category_of_three_items-images"),
     ContentKit.decodeActivity("activity-associateCategories-two_categories_of_two_items-images"),
+    ContentKit.decodeActivity("activity-associateCategories-two_categories_of_one_or_two_items-images"),
     ContentKit.decodeActivity("activity-associateCategories-two_categories_of_three_items-images"),
     ContentKit.decodeActivity("activity-placeholderNoGameplay-no_payload"),
 ]
