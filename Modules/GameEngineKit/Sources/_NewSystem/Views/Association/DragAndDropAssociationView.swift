@@ -52,6 +52,8 @@ public struct DragAndDropAssociationView: View {
                 guard let interface = Interface(rawValue: viewModel.choices.count) else { return }
 
                 switch interface {
+                    case .twoChoices:
+                        scene = DragAndDropAssociationTwoChoicesScene(viewModel: viewModel)
                     case .fourChoices:
                         scene = DragAndDropAssociationFourChoicesScene(viewModel: viewModel)
                     case .sixChoices:
