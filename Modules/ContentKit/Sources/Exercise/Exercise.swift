@@ -8,9 +8,9 @@ public struct Exercise: Codable {
 
     public let instructions: String
     public let interface: Interface
-    public let gameplay: Gameplay
+    public let gameplay: Gameplay?
     public let action: Action?
-    public let payload: ExercisePayloadProtocol
+    public let payload: ExercisePayloadProtocol?
 
     enum CodingKeys: String, CodingKey {
         case instructions, interface, gameplay, action, payload
@@ -24,7 +24,7 @@ public struct Exercise: Codable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.instructions = try container.decode(String.self, forKey: .instructions)
         self.interface = try container.decode(Interface.self, forKey: .interface)
-        self.gameplay = try container.decode(Gameplay.self, forKey: .gameplay)
+        self.gameplay = try container.decodeIfPresent(Gameplay.self, forKey: .gameplay)
         self.action = try container.decodeIfPresent(Action.self, forKey: .action)
 
         switch (interface, gameplay) {
@@ -39,6 +39,9 @@ public struct Exercise: Codable {
 
             case (.dragAndDropAssociation, .associateCategories):
                 payload = try container.decode(DragAndDropAssociation.Payload.self, forKey: .payload)
+
+            case (.placeholderNoGameplay, .none):
+                payload = nil
 
             default:
                 throw DecodingError.dataCorruptedError(

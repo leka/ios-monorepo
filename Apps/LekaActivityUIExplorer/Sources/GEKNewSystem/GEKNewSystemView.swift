@@ -43,6 +43,7 @@ let kActivities: [Activity] = [
     ContentKit.decodeActivity("activity-colorBingo"),
     ContentKit.decodeActivity("activity-associateCategories-two_categories_of_two_items-images"),
     ContentKit.decodeActivity("activity-associateCategories-two_categories_of_three_items-images"),
+    ContentKit.decodeActivity("activity-placeholderNoGameplay-no_payload"),
 ]
 
 struct GEKNewSystemView: View {

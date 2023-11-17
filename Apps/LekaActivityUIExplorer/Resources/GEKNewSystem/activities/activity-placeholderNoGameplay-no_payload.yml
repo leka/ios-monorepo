@@ -1,0 +1,15 @@
+# Leka - iOS Monorepo
+# Copyright 2023 APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+id: cf48f09895f947d3853d185b9136c5fe
+name: No Gameplay Activity
+description: L'objectif est de supprimer cette activité rapidement
+image: activity_color_recognition_1
+sequence:
+  - exercises:
+      - instructions: Touche le bouton pour finir l'exercice
+        interface: placeholderNoGameplay
+
+      - instructions: Touche le bouton pour finir l'exercice
+        interface: placeholderNoGameplay
