@@ -40,6 +40,9 @@ public struct Exercise: Codable {
             case (.dragAndDropAssociation, .associateCategories):
                 payload = try container.decode(DragAndDropAssociation.Payload.self, forKey: .payload)
 
+            case (.placeholderNoGameplay, .none):
+                payload = nil
+
             default:
                 throw DecodingError.dataCorruptedError(
                     forKey: .payload, in: container, debugDescription: "Invalid combination of interface or gameplay")
