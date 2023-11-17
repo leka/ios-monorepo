@@ -11,7 +11,7 @@ public class AudioPlayer: NSObject, ObservableObject {
     @Published var progress: CGFloat = 0.0
     @Published var didFinishPlaying = false
 
-    private var player: AVAudioPlayer!
+    private var player: AVAudioPlayer?
 
     private var cancellables: Set<AnyCancellable> = []
 
@@ -36,12 +36,12 @@ public class AudioPlayer: NSObject, ObservableObject {
         do {
             log.trace("AudioRecoding file \"\(audioRecording.file)\" found at \(fileURL.relativePath)")
             self.player = try AVAudioPlayer(contentsOf: fileURL)
-            player.delegate = self
+            player?.delegate = self
         } catch {
             log.error("AVAudioPlayer error: \(error)")
         }
 
-        player.prepareToPlay()
+        player?.prepareToPlay()
 
         Timer.publish(every: 0.1, on: .main, in: .default)
             .autoconnect()
@@ -60,21 +60,21 @@ public class AudioPlayer: NSObject, ObservableObject {
     }
 
     func play() {
-        player.play()
+        player?.play()
         didFinishPlaying = false
     }
 
     func pause() {
-        player.pause()
+        player?.pause()
     }
 
     func stop() {
-        player.stop()
+        player?.stop()
         didFinishPlaying = true
     }
 
     var isPlaying: Bool {
-        self.player.isPlaying
+        player?.isPlaying ?? false
     }
 
 }
