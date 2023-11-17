@@ -15,16 +15,15 @@ public class AudioPlayer: NSObject, ObservableObject {
 
     private var timerCancellable: AnyCancellable?
 
-    public init(audioRecording: AudioRecording) {
+    public init(recording: AudioRecording? = nil) {
         super.init()
-        setRecording(audioRecording)
-        didFinishPlaying = false
+
+        if let recording = recording {
+            setRecording(recording)
+        }
     }
 
     func setRecording(_ recording: AudioRecording) {
-        progress = 0.0
-        didFinishPlaying = false
-
         guard
             let fileURL = Bundle.main.url(forResource: recording.file, withExtension: "mp3")
                 ?? Bundle.module.url(forResource: recording.file, withExtension: "mp3")
@@ -41,6 +40,7 @@ public class AudioPlayer: NSObject, ObservableObject {
             log.error("AVAudioPlayer error: \(error)")
         }
 
+        reset()
         player?.prepareToPlay()
     }
 

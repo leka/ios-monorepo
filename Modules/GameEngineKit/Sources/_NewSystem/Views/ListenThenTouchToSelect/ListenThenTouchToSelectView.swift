@@ -22,7 +22,7 @@ public struct ListenThenTouchToSelectView: View {
 
     public init(choices: [TouchToSelect.Choice], audioRecording: AudioRecording) {
         self._viewModel = StateObject(wrappedValue: TouchToSelectViewViewModel(choices: choices))
-        self._audioPlayer = StateObject(wrappedValue: AudioPlayer(audioRecording: audioRecording))
+        self._audioPlayer = StateObject(wrappedValue: AudioPlayer(recording: audioRecording))
     }
 
     public init(exercise: Exercise, data: ExerciseSharedData? = nil) {
@@ -38,14 +38,14 @@ public struct ListenThenTouchToSelectView: View {
             wrappedValue: TouchToSelectViewViewModel(choices: payload.choices, shared: data))
 
         let audioRecording = AudioRecording(name: name, file: name)
-        self._audioPlayer = StateObject(wrappedValue: AudioPlayer(audioRecording: audioRecording))
+        self._audioPlayer = StateObject(wrappedValue: AudioPlayer(recording: audioRecording))
     }
 
     public var body: some View {
         let interface = Interface(rawValue: viewModel.choices.count)
 
         HStack(spacing: 0) {
-            ActionButtonListen(audioPlayer: audioPlayer)
+            ActionButtonListen(audioPlayer: audioPlayer, disableWhilePlaying: false)
                 .padding(20)
 
             Divider()

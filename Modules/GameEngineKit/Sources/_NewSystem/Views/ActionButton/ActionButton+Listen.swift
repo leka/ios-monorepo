@@ -32,5 +32,5 @@ struct ActionButtonListen: View {
 
 #Preview {
     ActionButtonListen(
-        audioPlayer: AudioPlayer(audioRecording: AudioRecording(name: "drums", file: "drums")))
+        audioPlayer: AudioPlayer(recording: AudioRecording(name: "drums", file: "drums")))
 }
