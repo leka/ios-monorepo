@@ -58,10 +58,10 @@ public struct DragAndDropAssociationView: View {
                         scene = DragAndDropAssociationThreeChoicesScene(viewModel: viewModel)
                     case .fourChoices:
                         scene = DragAndDropAssociationFourChoicesScene(viewModel: viewModel)
+                    case .fiveChoices:
+                        scene = DragAndDropAssociationFiveChoicesScene(viewModel: viewModel)
                     case .sixChoices:
                         scene = DragAndDropAssociationSixChoicesScene(viewModel: viewModel)
-                    default:
-                        log.error("Interface \(interface) not available for \(viewModel.choices.count) choices")
                 }
             }
         }
