@@ -54,6 +54,8 @@ public struct DragAndDropAssociationView: View {
                 switch interface {
                     case .twoChoices:
                         scene = DragAndDropAssociationTwoChoicesScene(viewModel: viewModel)
+                    case .threeChoices:
+                        scene = DragAndDropAssociationThreeChoicesScene(viewModel: viewModel)
                     case .fourChoices:
                         scene = DragAndDropAssociationFourChoicesScene(viewModel: viewModel)
                     case .sixChoices:
