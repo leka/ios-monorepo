@@ -22,7 +22,7 @@ public class ActivityViewViewModel: ObservableObject {
 
     @Published var currentExercise: Exercise
     @Published var currentExerciseInterface: Exercise.Interface
-    @Published var currentExerciseSharedData = ExerciseSharedData()
+    @Published var currentExerciseSharedData: ExerciseSharedData
 
     public init(activity: Activity) {
         self.sequenceManager = ActivitySequenceManager(activity: activity)
@@ -37,6 +37,7 @@ public class ActivityViewViewModel: ObservableObject {
 
         self.currentExercise = sequenceManager.currentExercise
         self.currentExerciseInterface = sequenceManager.currentExercise.interface
+        self.currentExerciseSharedData = ExerciseSharedData()
 
         subscribeToCurrentExerciseSharedDataUpdates()
     }
@@ -66,6 +67,9 @@ public class ActivityViewViewModel: ObservableObject {
         totalSequences = sequenceManager.totalSequences
         currentExerciseIndexInSequence = sequenceManager.currentExerciseIndexInSequence
         totalExercisesInCurrentSequence = sequenceManager.totalExercisesInCurrentSequence
+        currentExerciseSharedData = ExerciseSharedData()
+
+        subscribeToCurrentExerciseSharedDataUpdates()
     }
 
     private func subscribeToCurrentExerciseSharedDataUpdates() {
