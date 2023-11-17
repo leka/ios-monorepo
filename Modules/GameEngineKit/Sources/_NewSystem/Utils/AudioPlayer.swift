@@ -13,7 +13,7 @@ public class AudioPlayer: NSObject, ObservableObject {
 
     private var player: AVAudioPlayer?
 
-    private var cancellables: Set<AnyCancellable> = []
+    private var timerCancellable: AnyCancellable?
 
     public init(audioRecording: AudioRecording) {
         super.init()
@@ -42,8 +42,10 @@ public class AudioPlayer: NSObject, ObservableObject {
         }
 
         player?.prepareToPlay()
+    }
 
-        Timer.publish(every: 0.1, on: .main, in: .default)
+    private func startProgressTimer() {
+        timerCancellable = Timer.publish(every: 0.1, on: .main, in: .default)
             .autoconnect()
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { _ in
@@ -56,10 +58,16 @@ public class AudioPlayer: NSObject, ObservableObject {
                     }
                 }
             })
-            .store(in: &cancellables)
+    }
+
+    private func reset() {
+        player?.currentTime = 0
+        progress = 0.0
+        timerCancellable?.cancel()
     }
 
     func play() {
+        startProgressTimer()
         player?.play()
         didFinishPlaying = false
     }
@@ -70,6 +78,7 @@ public class AudioPlayer: NSObject, ObservableObject {
 
     func stop() {
         player?.stop()
+        reset()
         didFinishPlaying = true
     }
 
@@ -83,6 +92,7 @@ extension AudioPlayer: AVAudioPlayerDelegate {
 
     public func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully: Bool) {
         didFinishPlaying = true
+        reset()
     }
 
 }
