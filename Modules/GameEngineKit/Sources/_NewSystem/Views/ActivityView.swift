@@ -101,7 +101,7 @@ public struct ActivityView: View {
                 )
 
             case .dragAndDropAssociation:
-                DragAndDropAssociationView(
+                DragAndDropToAssociateView(
                     exercise: viewModel.currentExercise,
                     data: viewModel.currentExerciseSharedData
                 )

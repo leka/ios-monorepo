@@ -8,7 +8,7 @@ import LogKit
 import SpriteKit
 import SwiftUI
 
-public struct DragAndDropAssociationView: View {
+public struct DragAndDropToAssociateView: View {
 
     enum Interface: Int {
         case twoChoices = 2
@@ -53,15 +53,15 @@ public struct DragAndDropAssociationView: View {
 
                 switch interface {
                     case .twoChoices:
-                        scene = DragAndDropAssociationTwoChoicesScene(viewModel: viewModel)
+                        scene = TwoChoicesScene(viewModel: viewModel)
                     case .threeChoices:
-                        scene = DragAndDropAssociationThreeChoicesScene(viewModel: viewModel)
+                        scene = ThreeChoicesScene(viewModel: viewModel)
                     case .fourChoices:
-                        scene = DragAndDropAssociationFourChoicesScene(viewModel: viewModel)
+                        scene = FourChoicesScene(viewModel: viewModel)
                     case .fiveChoices:
-                        scene = DragAndDropAssociationFiveChoicesScene(viewModel: viewModel)
+                        scene = FiveChoicesScene(viewModel: viewModel)
                     case .sixChoices:
-                        scene = DragAndDropAssociationSixChoicesScene(viewModel: viewModel)
+                        scene = SixChoicesScene(viewModel: viewModel)
                 }
             }
         }
@@ -69,7 +69,7 @@ public struct DragAndDropAssociationView: View {
     }
 
     private func makeScene(size: CGSize) -> SKScene {
-        guard let finalScene = scene as? DragAndDropAssociationBaseScene else {
+        guard let finalScene = scene as? BaseScene else {
             return SKScene()
         }
         finalScene.size = CGSize(width: size.width, height: size.height)
