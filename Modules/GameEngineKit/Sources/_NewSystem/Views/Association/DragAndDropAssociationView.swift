@@ -52,12 +52,16 @@ public struct DragAndDropAssociationView: View {
                 guard let interface = Interface(rawValue: viewModel.choices.count) else { return }
 
                 switch interface {
+                    case .twoChoices:
+                        scene = DragAndDropAssociationTwoChoicesScene(viewModel: viewModel)
+                    case .threeChoices:
+                        scene = DragAndDropAssociationThreeChoicesScene(viewModel: viewModel)
                     case .fourChoices:
                         scene = DragAndDropAssociationFourChoicesScene(viewModel: viewModel)
+                    case .fiveChoices:
+                        scene = DragAndDropAssociationFiveChoicesScene(viewModel: viewModel)
                     case .sixChoices:
                         scene = DragAndDropAssociationSixChoicesScene(viewModel: viewModel)
-                    default:
-                        log.error("Interface \(interface) not available for \(viewModel.choices.count) choices")
                 }
             }
         }
