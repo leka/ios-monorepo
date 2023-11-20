@@ -6,14 +6,28 @@ import SwiftUI
 
 struct MainView: View {
 
-    @State var count = 1
+    @EnvironmentObject var authenticationState: OrganisationAuthState
 
     var body: some View {
-        Text("Hello, AccountKit!")
+        Group {
+            switch authenticationState.organisationIsAuthenticated {
+                case .unknown:
+                    Text("Loading...")
+                case .loggedIn:
+                    Text("Organisation is logged in.")
+                case .loggedOut:
+                    Text("Organisation is logged out.")
+            }
+        }
+        .preferredColorScheme(.light)
+        .onAppear(perform: {
+            authenticationState.organisationIsAuthenticated = .loggedOut
+        })
     }
 
 }
 
 #Preview {
     MainView()
+        .environmentObject(OrganisationAuthState())
 }
