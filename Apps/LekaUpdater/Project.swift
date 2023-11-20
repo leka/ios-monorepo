@@ -27,6 +27,7 @@ let project = Project.iOSApp(
     dependencies: [
         .project(target: "DesignKit", path: Path("../../Modules/DesignKit")),
         .project(target: "BLEKit", path: Path("../../Modules/BLEKit")),
+        .project(target: "RobotKit", path: Path("../../Modules/RobotKit")),
         .project(target: "LocalizationKit", path: Path("../../Modules/LocalizationKit")),
         .external(name: "Version"),
     ],
