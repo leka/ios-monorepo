@@ -15,7 +15,7 @@ public class Robot {
 
     // MARK: - Internal properties
 
-    var connectedPeripheral: RobotPeripheral? {
+    public var connectedPeripheral: RobotPeripheral? {
         didSet {
             registerBatteryCharacteristicNotificationCallback()
             registerChargingStatusNotificationCallback()
