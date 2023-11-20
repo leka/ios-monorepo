@@ -30,8 +30,8 @@ class ConnectionViewModel: ObservableObject {
 
     private func onConnectedRobotDiscoveryChanged(robot: RobotDiscoveryViewModel?) {
         if let robotDiscovery = robot?.robotDiscovery {
+            Robot.shared.name.send(robotDiscovery.name)
             Robot.shared.connectedPeripheral = robotDiscovery.robotPeripheral
-            // Also update Robot.shared properties
             continueButtonDisabled = false
         } else {
             continueButtonDisabled = true

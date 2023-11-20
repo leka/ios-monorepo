@@ -37,7 +37,7 @@ public class Robot {
 
     public var isConnected: CurrentValueSubject<Bool, Never> = CurrentValueSubject(false)
 
-    public var name: CurrentValueSubject<String, Never> = CurrentValueSubject("(robot not connected)")  // TODO: Is not updated
+    public var name: CurrentValueSubject<String, Never> = CurrentValueSubject("(robot not connected)")
     public var osVersion: CurrentValueSubject<String, Never> = CurrentValueSubject("(n/a)")
     public var serialNumber: CurrentValueSubject<String, Never> = CurrentValueSubject("(n/a)")
     public var isCharging: CurrentValueSubject<Bool, Never> = CurrentValueSubject(false)
