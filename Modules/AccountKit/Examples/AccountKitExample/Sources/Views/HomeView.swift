@@ -25,12 +25,15 @@ struct HomeView: View {
             Text("Organisation is Logged In!")
                 .fontWeight(.heavy)
 
-            Button(action: {
-                authenticationState.organisationIsAuthenticated = .loggedOut
-            }, label: {
-                Text("Log Out")
-                    .frame(maxWidth: .infinity)
-            })
+            Button(
+                action: {
+                    authenticationState.organisationIsAuthenticated = .loggedOut
+                },
+                label: {
+                    Text("Log Out")
+                        .frame(maxWidth: .infinity)
+                }
+            )
             .buttonStyle(.borderedProminent)
             .frame(maxWidth: 150)
             .tint(.red)

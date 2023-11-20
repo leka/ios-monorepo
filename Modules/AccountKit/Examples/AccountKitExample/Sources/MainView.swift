@@ -14,9 +14,9 @@ struct MainView: View {
                 case .unknown:
                     Text("Loading...")
                 case .loggedIn:
-                    Text("Organisation is logged in.")
+                    HomeView()
                 case .loggedOut:
-                    Text("Organisation is logged out.")
+                    LoginView()
             }
         }
         .preferredColorScheme(.light)
