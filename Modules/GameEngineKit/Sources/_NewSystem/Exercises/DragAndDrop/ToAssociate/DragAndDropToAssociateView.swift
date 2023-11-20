@@ -18,12 +18,12 @@ public struct DragAndDropToAssociateView: View {
         case sixChoices
     }
 
-    @StateObject private var viewModel: DragAndDropAssociationViewViewModel
+    @StateObject private var viewModel: ViewModel
     @State private var scene: SKScene = SKScene()
 
     public init(choices: [DragAndDropAssociation.Choice], shuffle: Bool = false) {
         self._viewModel = StateObject(
-            wrappedValue: DragAndDropAssociationViewViewModel(choices: choices, shuffle: shuffle)
+            wrappedValue: ViewModel(choices: choices, shuffle: shuffle)
         )
     }
 
@@ -33,7 +33,7 @@ public struct DragAndDropToAssociateView: View {
         }
 
         self._viewModel = StateObject(
-            wrappedValue: DragAndDropAssociationViewViewModel(
+            wrappedValue: ViewModel(
                 choices: payload.choices,
                 shuffle: payload.shuffleChoices,
                 shared: data

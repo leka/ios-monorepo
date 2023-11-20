@@ -11,12 +11,12 @@ extension DragAndDropToAssociateView {
 
     class BaseScene: SKScene {
 
-        var viewModel: DragAndDropAssociationViewViewModel
+        var viewModel: ViewModel
         var spacer = CGFloat.zero
         var defaultPosition = CGPoint.zero
         var initialNodeX: CGFloat = .zero
         var verticalSpacing: CGFloat = .zero
-        
+
         private var biggerSide: CGFloat = 150
         private var playedNode: DraggableImageAnswerNode?
         private var playedDestination: DraggableImageAnswerNode?
@@ -25,7 +25,7 @@ extension DragAndDropToAssociateView {
         private var expectedItemsNodes: [String: [SKSpriteNode]] = [:]
         private var cancellables: Set<AnyCancellable> = []
 
-        init(viewModel: DragAndDropAssociationViewViewModel) {
+        init(viewModel: ViewModel) {
             self.viewModel = viewModel
             super.init(size: CGSize.zero)
 
