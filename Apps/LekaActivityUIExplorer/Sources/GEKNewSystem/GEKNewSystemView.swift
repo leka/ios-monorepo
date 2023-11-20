@@ -47,6 +47,7 @@ let kActivities: [Activity] = [
     ContentKit.decodeActivity("activity-associateCategories-two_categories_of_one_or_two_items-images"),
     ContentKit.decodeActivity("activity-associateCategories-two_categories_of_three_items-images"),
     ContentKit.decodeActivity("activity-placeholderNoGameplay-no_payload"),
+    ContentKit.decodeActivity("activity-danceFreeze"),
 ]
 
 struct GEKNewSystemView: View {
