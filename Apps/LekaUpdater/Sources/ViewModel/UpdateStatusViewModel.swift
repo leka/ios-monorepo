@@ -5,6 +5,7 @@
 import Combine
 import Foundation
 import LocalizationKit
+import SwiftUI
 
 class UpdateStatusViewModel: ObservableObject {
 
@@ -88,6 +89,7 @@ class UpdateStatusViewModel: ObservableObject {
                                 self.errorDescription = String(l10n.update.error.unknownErrorDescription.characters)
                                 self.errorInstructions = String(l10n.update.error.unknownErrorInstructions.characters)
                         }
+                        self.onUpdateEnded()
                 }
             } receiveValue: { state in
                 switch state {
@@ -122,7 +124,13 @@ class UpdateStatusViewModel: ObservableObject {
     }
 
     public func startUpdate() {
+        UIApplication.shared.isIdleTimerDisabled = true
+
         updateProcessController.startUpdate()
+    }
+
+    private func onUpdateEnded() {
+        UIApplication.shared.isIdleTimerDisabled = false
     }
 
 }
