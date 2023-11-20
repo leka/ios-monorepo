@@ -19,13 +19,14 @@ var projects: [Path] {
 
     // MARK: - Modules
     let modules: [Path] = [
-        "Modules/DesignKit",
+        "Modules/AccountKit",
         "Modules/BLEKit",
-        "Modules/RobotKit",
-        "Modules/GameEngineKit",
-        "Modules/LogKit",
         "Modules/ContentKit",
+        "Modules/DesignKit",
+        "Modules/GameEngineKit",
         "Modules/LocalizationKit",
+        "Modules/LogKit",
+        "Modules/RobotKit",
     ]
 
     // MARK: - iOS Examples
