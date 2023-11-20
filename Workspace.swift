@@ -26,6 +26,7 @@ var projects: [Path] {
         "Modules/LogKit",
         "Modules/ContentKit",
         "Modules/LocalizationKit",
+        "Modules/AccountKit",
     ]
 
     // MARK: - iOS Examples
