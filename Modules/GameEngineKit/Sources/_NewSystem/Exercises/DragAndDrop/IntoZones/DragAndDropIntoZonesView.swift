@@ -9,7 +9,7 @@ import SwiftUI
 
 public struct DragAndDropIntoZonesView: View {
 
-    @StateObject private var viewModel: DragAndDropViewViewModel
+    @StateObject private var viewModel: ViewModel
     @State private var scene: SKScene = SKScene()
     let dropZoneA: DragAndDropIntoZones.DropZone.Details
     let dropZoneB: DragAndDropIntoZones.DropZone.Details?
@@ -20,7 +20,7 @@ public struct DragAndDropIntoZonesView: View {
         choices: [DragAndDropIntoZones.Choice], dropZoneA: DragAndDropIntoZones.DropZone.Details,
         dropZoneB: DragAndDropIntoZones.DropZone.Details? = nil
     ) {
-        self._viewModel = StateObject(wrappedValue: DragAndDropViewViewModel(choices: choices))
+        self._viewModel = StateObject(wrappedValue: ViewModel(choices: choices))
         self.dropZoneA = dropZoneA
         self.dropZoneB = dropZoneB
     }
@@ -32,7 +32,7 @@ public struct DragAndDropIntoZonesView: View {
         }
 
         self._viewModel = StateObject(
-            wrappedValue: DragAndDropViewViewModel(choices: payload.choices, shared: data))
+            wrappedValue: ViewModel(choices: payload.choices, shared: data))
 
         self.dropZoneA = payload.dropZoneA
         self.dropZoneB = payload.dropZoneB
@@ -47,10 +47,10 @@ public struct DragAndDropIntoZonesView: View {
             .frame(width: proxy.size.width, height: proxy.size.height)
             .onAppear {
                 if let dropZoneB = dropZoneB {
-                    scene = DragAndDropTwoZonesScene(
+                    scene = DragAndDropIntoZonesView.TwoZonesScene(
                         viewModel: viewModel, hints: false, dropZoneA: dropZoneA, dropZoneB: dropZoneB)
                 } else {
-                    scene = DragAndDropOneZoneScene(viewModel: viewModel, hints: true, dropZoneA: dropZoneA)
+                    scene = DragAndDropIntoZonesView.OneZoneScene(viewModel: viewModel, hints: true, dropZoneA: dropZoneA)
                 }
 
             }
@@ -59,7 +59,7 @@ public struct DragAndDropIntoZonesView: View {
     }
 
     private func makeScene(size: CGSize) -> SKScene {
-        guard let finalScene = scene as? DragAndDropBaseScene else {
+        guard let finalScene = scene as? DragAndDropIntoZonesView.BaseScene else {
             return SKScene()
         }
         finalScene.size = CGSize(width: size.width, height: size.height)
