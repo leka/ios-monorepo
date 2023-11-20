@@ -15,16 +15,45 @@ struct MainView: View {
                     Text("Loading...")
                 case .loggedIn:
                     HomeView()
+                        .transition(.opacity)
                 case .loggedOut:
-                    LoginView()
+                    navigation
+                        .transition(.opacity)
             }
         }
+        .animation(
+            .easeOut(duration: 0.4),
+            value: authenticationState.organisationIsAuthenticated
+        )
         .preferredColorScheme(.light)
         .onAppear(perform: {
             authenticationState.organisationIsAuthenticated = .loggedOut
         })
     }
 
+    private var navigation: some View {
+        NavigationStack {
+            VStack(spacing: 10) {
+                NavigationLink {
+                    LoginView()
+                } label: {
+                    Text("Log In").frame(width: 400)
+                }
+                .buttonStyle(.borderedProminent)
+
+                NavigationLink {
+                    SignupView()
+                } label: {
+                    Text("Sign Up").frame(width: 400)
+                }
+                .buttonStyle(.bordered)
+            }
+            .buttonBorderShape(.roundedRectangle)
+            .controlSize(.large)
+            .navigationTitle("Authentication")
+            .navigationBarBackButtonHidden()
+        }
+    }
 }
 
 #Preview {
