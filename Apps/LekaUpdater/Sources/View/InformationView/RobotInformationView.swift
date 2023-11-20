@@ -4,6 +4,7 @@
 
 import DesignKit
 import LocalizationKit
+import RobotKit
 import SwiftUI
 import Version
 
@@ -35,22 +36,22 @@ struct RobotInformationView_Previews: PreviewProvider {
                 switch selection {
                     case 1:
                         print("Robot just connected (not received serial number yet)")
-                        globalRobotManager.serialNumber = nil
-                        globalRobotManager.battery = Int.random(in: 0...100)
-                        globalRobotManager.osVersion = Version(1, 0, 0)
-                        globalRobotManager.isCharging = false
+                        Robot.shared.serialNumber.send("(n/a)")
+                        Robot.shared.battery.send(Int.random(in: 0...100))
+                        Robot.shared.osVersion.send("1.0.0")
+                        Robot.shared.isCharging.send(false)
                     case 2:
                         print("Robot connected")
-                        globalRobotManager.serialNumber = "LK-2206DHQFLQJZ139813JJQ - connected"
-                        globalRobotManager.battery = Int.random(in: 0...100)
-                        globalRobotManager.osVersion = Version(1, 0, 0)
-                        globalRobotManager.isCharging = true
+                        Robot.shared.serialNumber.send("LK-2206DHQFLQJZ139813JJQ - connected")
+                        Robot.shared.battery.send(Int.random(in: 0...100))
+                        Robot.shared.osVersion.send("1.0.0")
+                        Robot.shared.isCharging.send(true)
                     default:
                         print("Robot not connected")
-                        globalRobotManager.serialNumber = nil
-                        globalRobotManager.battery = nil
-                        globalRobotManager.osVersion = nil
-                        globalRobotManager.isCharging = nil
+                        Robot.shared.serialNumber.send("(n/a)")
+                        Robot.shared.battery.send(0)
+                        Robot.shared.osVersion.send("(n/a)")
+                        Robot.shared.isCharging.send(false)
                 }
             }
         }

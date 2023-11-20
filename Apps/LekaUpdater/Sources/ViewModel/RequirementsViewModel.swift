@@ -5,6 +5,7 @@
 import Combine
 import Foundation
 import LocalizationKit
+import RobotKit
 import SwiftUI
 
 class RequirementsViewModel: ObservableObject {
@@ -31,21 +32,21 @@ class RequirementsViewModel: ObservableObject {
     }
 
     private func subscribeToRobotBatteryUpdates() {
-        globalRobotManager.$battery
+        Robot.shared.battery
             .receive(on: DispatchQueue.main)
             .sink { robotBattery in
                 self.updateRobotIsReadyToUpdate(
-                    robotBattery: robotBattery, robotIsCharging: globalRobotManager.isCharging)
+                    robotBattery: robotBattery, robotIsCharging: Robot.shared.isCharging.value)
             }
             .store(in: &cancellables)
     }
 
     private func subscribeToRobotIsChargingUpdates() {
-        globalRobotManager.$isCharging
+        Robot.shared.isCharging
             .receive(on: DispatchQueue.main)
             .sink { robotIsCharging in
                 self.updateRobotIsReadyToUpdate(
-                    robotBattery: globalRobotManager.battery, robotIsCharging: robotIsCharging)
+                    robotBattery: Robot.shared.battery.value, robotIsCharging: robotIsCharging)
             }
             .store(in: &cancellables)
     }

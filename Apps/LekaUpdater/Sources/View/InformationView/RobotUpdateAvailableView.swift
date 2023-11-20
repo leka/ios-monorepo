@@ -4,6 +4,7 @@
 
 import DesignKit
 import LocalizationKit
+import RobotKit
 import SwiftUI
 
 struct RobotUpdateAvailableView: View {
@@ -57,12 +58,12 @@ struct RobotUpdateAvailableView_Previews: PreviewProvider {
 
                 if isReady {
                     print("Robot is ready to update")
-                    globalRobotManager.battery = 100
-                    globalRobotManager.isCharging = true
+                    Robot.shared.battery.send(100)
+                    Robot.shared.isCharging.send(true)
                 } else {
                     print("Robot is NOT ready to update")
-                    globalRobotManager.battery = 0
-                    globalRobotManager.isCharging = false
+                    Robot.shared.battery.send(0)
+                    Robot.shared.isCharging.send(false)
                 }
             }
         }
