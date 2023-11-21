@@ -4,7 +4,7 @@
 
 // swiftlint:disable nesting
 
-public enum DragAndDropAssociation {
+public enum DragAndDropToAssociate {
 
     public enum Category: String, Codable {
         case catA

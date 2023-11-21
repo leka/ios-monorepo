@@ -36,7 +36,7 @@ struct GameplayDragAndDropIntoZonesChoiceModel: GameplayChoiceModelProtocol {
 }
 
 struct GameplayAssociationChoiceModel: GameplayChoiceModelProtocol {
-    typealias ChoiceType = DragAndDropAssociation.Choice
+    typealias ChoiceType = DragAndDropToAssociate.Choice
 
     let id: String = UUID().uuidString
     let choice: ChoiceType

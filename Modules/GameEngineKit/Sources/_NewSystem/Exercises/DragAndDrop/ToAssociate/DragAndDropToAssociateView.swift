@@ -21,14 +21,14 @@ public struct DragAndDropToAssociateView: View {
     @StateObject private var viewModel: ViewModel
     @State private var scene: SKScene = SKScene()
 
-    public init(choices: [DragAndDropAssociation.Choice], shuffle: Bool = false) {
+    public init(choices: [DragAndDropToAssociate.Choice], shuffle: Bool = false) {
         self._viewModel = StateObject(
             wrappedValue: ViewModel(choices: choices, shuffle: shuffle)
         )
     }
 
     public init(exercise: Exercise, data: ExerciseSharedData? = nil) {
-        guard let payload = exercise.payload as? DragAndDropAssociation.Payload else {
+        guard let payload = exercise.payload as? DragAndDropToAssociate.Payload else {
             fatalError("Exercise payload is not .association")
         }
 

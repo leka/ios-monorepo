@@ -38,7 +38,7 @@ public struct Exercise: Codable {
                 payload = try container.decode(DragAndDropIntoZones.Payload.self, forKey: .payload)
 
             case (.dragAndDropToAssociate, .associateCategories):
-                payload = try container.decode(DragAndDropAssociation.Payload.self, forKey: .payload)
+                payload = try container.decode(DragAndDropToAssociate.Payload.self, forKey: .payload)
 
             case (.placeholderNoGameplay, .none):
                 payload = nil

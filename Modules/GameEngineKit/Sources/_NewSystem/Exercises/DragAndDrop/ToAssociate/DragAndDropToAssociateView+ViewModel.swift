@@ -17,7 +17,7 @@ extension DragAndDropToAssociateView {
         private var cancellables: Set<AnyCancellable> = []
 
         init(
-            choices: [DragAndDropAssociation.Choice],
+            choices: [DragAndDropToAssociate.Choice],
             shuffle: Bool = false,
             shared: ExerciseSharedData? = nil
         ) {
