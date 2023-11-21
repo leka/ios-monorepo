@@ -5,7 +5,7 @@
 import ContentKit
 import Foundation
 
-extension GameplayAssociation where ChoiceModelType == GameplayAssociationChoiceModel {
+extension GameplayAssociateCategories where ChoiceModelType == GameplayAssociationChoiceModel {
 
     convenience init(choices: [GameplayAssociationChoiceModel], shuffle: Bool = false) {
         self.init()

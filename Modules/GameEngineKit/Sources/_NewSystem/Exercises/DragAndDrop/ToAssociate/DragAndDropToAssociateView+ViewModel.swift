@@ -13,7 +13,7 @@ extension DragAndDropToAssociateView {
         @Published var choices: [GameplayAssociationChoiceModel] = []
         @ObservedObject var exercicesSharedData: ExerciseSharedData
 
-        private let gameplay: GameplayAssociation<GameplayAssociationChoiceModel>
+        private let gameplay: GameplayAssociateCategories<GameplayAssociationChoiceModel>
         private var cancellables: Set<AnyCancellable> = []
 
         init(
@@ -23,7 +23,7 @@ extension DragAndDropToAssociateView {
         ) {
             let gameplayChoiceModel = choices.map { GameplayAssociationChoiceModel(choice: $0) }
             self.choices = shuffle ? gameplayChoiceModel.shuffled() : gameplayChoiceModel
-            self.gameplay = GameplayAssociation(choices: gameplayChoiceModel, shuffle: shuffle)
+            self.gameplay = GameplayAssociateCategories(choices: gameplayChoiceModel, shuffle: shuffle)
             self.exercicesSharedData = shared ?? ExerciseSharedData()
 
             subscribeToGameplayDragAndDropAssociationChoicesUpdates()
