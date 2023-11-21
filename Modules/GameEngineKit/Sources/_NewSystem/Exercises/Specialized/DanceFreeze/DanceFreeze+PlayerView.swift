@@ -71,7 +71,8 @@ extension DanceFreeze {
         AudioRecording(name: "In The Game", file: "In_The_Game"),
         AudioRecording(name: "Little by Little", file: "Little_by_little"),
     ]
-    var viewModel = DanceFreeze.MainViewViewModel(songs: songs)
+    
+    let  viewModel = DanceFreeze.MainViewViewModel(songs: songs)
 
     return DanceFreeze.PlayerView(viewModel: viewModel, isAuto: true, motion: .movement)
 }
