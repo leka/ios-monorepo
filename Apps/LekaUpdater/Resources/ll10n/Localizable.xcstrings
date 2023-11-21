@@ -319,7 +319,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Veuillez reposer Leka sur sa base\\net/ou vérifier le branchement"
+            "value" : "Veuillez reposer Leka sur sa base et/ou vérifier le branchement"
           }
         }
       }
