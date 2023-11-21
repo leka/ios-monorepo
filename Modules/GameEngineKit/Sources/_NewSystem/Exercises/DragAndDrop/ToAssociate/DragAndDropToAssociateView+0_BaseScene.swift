@@ -203,7 +203,7 @@ extension DragAndDropToAssociateView {
 
                 guard
                     let destinationNode = dropDestinations.first(where: {
-                        $0.frame.contains(touch.location(in: self)) && $0.name != playedNode!.name
+                        $0.frame.contains(touch.location(in: self)) && $0.id != playedNode!.id
                     })
                 else {
                     wrongAnswerBehavior(playedNode!)
@@ -211,9 +211,9 @@ extension DragAndDropToAssociateView {
                 }
                 playedDestination = destinationNode
 
-                guard let destination = viewModel.choices.first(where: { $0.choice.value == destinationNode.name })
+                guard let destination = viewModel.choices.first(where: { $0.choice.id == playedDestination!.id })
                 else { return }
-                guard let choice = viewModel.choices.first(where: { $0.choice.value == playedNode!.name })
+                guard let choice = viewModel.choices.first(where: { $0.choice.id == playedNode!.id })
                 else { return }
 
                 viewModel.onChoiceTapped(choice: choice, destination: destination)

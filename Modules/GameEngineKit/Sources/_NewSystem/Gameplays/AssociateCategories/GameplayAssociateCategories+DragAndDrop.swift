@@ -8,7 +8,7 @@ import Foundation
 struct GameplayAssociateCategoriesChoiceModel: GameplayChoiceModelProtocol {
     typealias ChoiceType = DragAndDropToAssociate.Choice
 
-    let id: String = UUID().uuidString
+    let id = UUID().uuidString
     let choice: ChoiceType
     var state: GameplayChoiceState = .idle
 }
@@ -25,7 +25,6 @@ extension GameplayAssociateCategories where ChoiceModelType == GameplayAssociate
         if choice.choice.category == destination.choice.category {
             updateChoice(choice, state: .rightAnswer)
             updateChoice(destination, state: .rightAnswer)
-
         } else {
             updateChoice(choice, state: .wrongAnswer)
         }

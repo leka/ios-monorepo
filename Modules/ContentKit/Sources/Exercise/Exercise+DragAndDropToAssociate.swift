@@ -2,6 +2,8 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import Foundation
+
 // swiftlint:disable nesting
 
 public enum DragAndDropToAssociate {
@@ -12,7 +14,8 @@ public enum DragAndDropToAssociate {
         case catC
     }
 
-    public struct Choice: Codable, DraggableChoice {
+    public struct Choice: Codable, DraggableChoice, Identifiable {
+        public let id = UUID().uuidString
         public let value: String
         public let type: Exercise.UIElementType
         public let category: Category?
