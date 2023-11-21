@@ -27,12 +27,14 @@ public struct DanceFreezeViewDeprecated: View {
                 case .automaticMode:
                     DanceFreezePlayerDeprecated(isAuto: true)
                         .onDisappear {
-                            viewModel.setAudioRecording(audioRecording: AudioRecordingModelDeprecated(name: "", file: ""))
+                            viewModel.setAudioRecording(
+                                audioRecording: AudioRecordingModelDeprecated(name: "", file: ""))
                         }
                 case .manualMode:
                     DanceFreezePlayerDeprecated(isAuto: false)
                         .onDisappear {
-                            viewModel.setAudioRecording(audioRecording: AudioRecordingModelDeprecated(name: "", file: ""))
+                            viewModel.setAudioRecording(
+                                audioRecording: AudioRecordingModelDeprecated(name: "", file: ""))
                         }
             }
         }

@@ -50,7 +50,8 @@ public struct DragAndDropIntoZonesView: View {
                     scene = DragAndDropIntoZonesView.TwoZonesScene(
                         viewModel: viewModel, hints: false, dropZoneA: dropZoneA, dropZoneB: dropZoneB)
                 } else {
-                    scene = DragAndDropIntoZonesView.OneZoneScene(viewModel: viewModel, hints: true, dropZoneA: dropZoneA)
+                    scene = DragAndDropIntoZonesView.OneZoneScene(
+                        viewModel: viewModel, hints: true, dropZoneA: dropZoneA)
                 }
 
             }
