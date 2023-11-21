@@ -5,6 +5,14 @@
 import ContentKit
 import Foundation
 
+struct GameplayDragAndDropIntoZonesChoiceModel: GameplayChoiceModelProtocol {
+    typealias ChoiceType = DragAndDropIntoZones.Choice
+
+    let id: String = UUID().uuidString
+    let choice: ChoiceType
+    var state: GameplayChoiceState = .idle
+}
+
 extension GameplayFindTheRightAnswers where ChoiceModelType == GameplayDragAndDropIntoZonesChoiceModel {
 
     convenience init(choices: [GameplayDragAndDropIntoZonesChoiceModel]) {

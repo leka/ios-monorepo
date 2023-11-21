@@ -2,7 +2,16 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import ContentKit
 import Foundation
+
+struct GameplayTouchToSelectChoiceModel: GameplayChoiceModelProtocol {
+    typealias ChoiceType = TouchToSelect.Choice
+
+    let id: String = UUID().uuidString
+    let choice: ChoiceType
+    var state: GameplayChoiceState = .idle
+}
 
 extension GameplayFindTheRightAnswers where ChoiceModelType == GameplayTouchToSelectChoiceModel {
 

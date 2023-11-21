@@ -5,6 +5,14 @@
 import ContentKit
 import Foundation
 
+struct GameplayAssociationChoiceModel: GameplayChoiceModelProtocol {
+    typealias ChoiceType = DragAndDropToAssociate.Choice
+
+    let id: String = UUID().uuidString
+    let choice: ChoiceType
+    var state: GameplayChoiceState = .idle
+}
+
 extension GameplayAssociateCategories where ChoiceModelType == GameplayAssociationChoiceModel {
 
     convenience init(choices: [GameplayAssociationChoiceModel], shuffle: Bool = false) {
