@@ -5,7 +5,7 @@
 import ContentKit
 import Foundation
 
-struct GameplayAssociationChoiceModel: GameplayChoiceModelProtocol {
+struct GameplayAssociateCategoriesChoiceModel: GameplayChoiceModelProtocol {
     typealias ChoiceType = DragAndDropToAssociate.Choice
 
     let id: String = UUID().uuidString
@@ -13,9 +13,9 @@ struct GameplayAssociationChoiceModel: GameplayChoiceModelProtocol {
     var state: GameplayChoiceState = .idle
 }
 
-extension GameplayAssociateCategories where ChoiceModelType == GameplayAssociationChoiceModel {
+extension GameplayAssociateCategories where ChoiceModelType == GameplayAssociateCategoriesChoiceModel {
 
-    convenience init(choices: [GameplayAssociationChoiceModel], shuffle: Bool = false) {
+    convenience init(choices: [GameplayAssociateCategoriesChoiceModel], shuffle: Bool = false) {
         self.init()
         self.choices.send(choices)
         self.state.send(.playing)

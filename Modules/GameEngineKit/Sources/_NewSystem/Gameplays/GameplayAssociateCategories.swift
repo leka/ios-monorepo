@@ -9,7 +9,7 @@ import Foundation
 class GameplayAssociateCategories<ChoiceModelType>: StatefulGameplayProtocol
 where ChoiceModelType: GameplayChoiceModelProtocol {
 
-    var choices: CurrentValueSubject<[GameplayAssociationChoiceModel], Never> = .init([])
+    var choices: CurrentValueSubject<[GameplayAssociateCategoriesChoiceModel], Never> = .init([])
     var state: CurrentValueSubject<ExerciseState, Never> = .init(.idle)
 
     func updateChoice(_ choice: ChoiceModelType, state: GameplayChoiceState) {
