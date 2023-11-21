@@ -11,39 +11,29 @@ let kActivities: [Activity] = [
     // ? touchToSelect: activity-touchToSelect-<number_of_answers>-<answer_type>
     // ? dragAndDropIntoZones:   activity-dragAndDropIntoZones-<number_of_zones>-<number_of_answers>-<answer_type>
 
+    ContentKit.decodeActivity("activity-placeholderNoGameplay-no_payload"),
+    ContentKit.decodeActivity("activity-medley"),
+    ContentKit.decodeActivity("activity-colorBingo"),
+    ContentKit.decodeActivity("activity-danceFreeze"),
+
     ContentKit.decodeActivity("activity-touchToSelect-one_right_answer-colors"),
     ContentKit.decodeActivity("activity-touchToSelect-one_right_answer-colors-shuffle_choices"),
     ContentKit.decodeActivity("activity-touchToSelect-one_right_answer-colors-shuffle_exercises"),
     ContentKit.decodeActivity("activity-touchToSelect-one_right_answer-colors-shuffle_sequences"),
     ContentKit.decodeActivity("activity-touchToSelect-one_right_answer-image"),
     ContentKit.decodeActivity("activity-touchToSelect-one_right_answer-mixed"),
-    // ContentKit.decodeActivity("activity-touchToSelect-multipe_right_answers-mixed"),
     ContentKit.decodeActivity("activity-touchToSelect-multipe_right_answers-colors"),
-    // ContentKit.decodeActivity("activity-touchToSelect-multipe_right_answers-images"),
-    // ContentKit.decodeActivity("activity-touchToSelect-multipe_right_answers-mixed"),
 
     ContentKit.decodeActivity("activity-listenThenTouchToSelect-mixed-images"),
     ContentKit.decodeActivity("activity-observeThenTouchToSelect-mixed-colors"),
 
     ContentKit.decodeActivity("activity-dragAndDropIntoZones-one_zone-one_right_answer-image"),
     // ContentKit.decodeActivity("activity-dragAndDropIntoZones-one_zone-one_right_answer-colors"),
-    // ContentKit.decodeActivity("activity-dragAndDropIntoZones-one_zone-one_right_answer-mixed"),
-    // ContentKit.decodeActivity("activity-dragAndDropIntoZones-one_zone-multiple_right_answer-images"),
-    // ContentKit.decodeActivity("activity-dragAndDropIntoZones-one_zone-multiple_right_answer-colors"),
-    // ContentKit.decodeActivity("activity-dragAndDropIntoZones-one_zone-multiple_right_answer-mixed"),
-
-    // ContentKit.decodeActivity("activity-dragAndDropIntoZones-two_zones-one_right_answer-image"),
-    // ContentKit.decodeActivity("activity-dragAndDropIntoZones-two_zones-one_right_answer-colors"),
-    // ContentKit.decodeActivity("activity-dragAndDropIntoZones-two_zones-one_right_answer-mixed"),
     ContentKit.decodeActivity("activity-dragAndDropIntoZones-two_zones-multiple_right_answers-images"),
-    // ContentKit.decodeActivity("activity-dragAndDropIntoZones-two_zones-multiple_right_answer-colors"),
-    // ContentKit.decodeActivity("activity-dragAndDropIntoZones-two_zones-multiple_right_answer-mixed"),
+    // ContentKit.decodeActivity("activity-dragAndDropIntoZones-mixed-mixed-mixed"),
 
-    ContentKit.decodeActivity("activity-medley"),
-    ContentKit.decodeActivity("activity-colorBingo"),
     ContentKit.decodeActivity("activity-dragAndDropToAssociate-mixed-images"),
-    ContentKit.decodeActivity("activity-placeholderNoGameplay-no_payload"),
-    ContentKit.decodeActivity("activity-danceFreeze"),
+
 ]
 
 struct GEKNewSystemView: View {
