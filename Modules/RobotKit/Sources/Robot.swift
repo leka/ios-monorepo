@@ -19,8 +19,10 @@ public class Robot {
         didSet {
             registerBatteryCharacteristicNotificationCallback()
             registerChargingStatusNotificationCallback()
+
             registerOSVersionReadCallback()
             registerSerialNumberReadCallback()
+            registerChargingStatusReadCallback()
 
             connectedPeripheral?.discoverAndListenForUpdates()
             connectedPeripheral?.readReadOnlyCharacteristics()

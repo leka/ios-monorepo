@@ -72,4 +72,19 @@ extension Robot {
         self.connectedPeripheral?.readOnlyCharacteristics.insert(characteristic)
     }
 
+    func registerChargingStatusReadCallback() {
+        let characteristic = CharacteristicModelReadOnly(
+            characteristicUUID: BLESpecs.Monitoring.Characteristics.chargingStatus,
+            serviceUUID: BLESpecs.Monitoring.service,
+            onRead: { data in
+                if let value = data?.first {
+                    self.isCharging.send(value == 1)
+                    log.trace("🤖 isCharging: \(self.isCharging.value)")
+                }
+            }
+        )
+
+        self.connectedPeripheral?.readOnlyCharacteristics.insert(characteristic)
+    }
+
 }
