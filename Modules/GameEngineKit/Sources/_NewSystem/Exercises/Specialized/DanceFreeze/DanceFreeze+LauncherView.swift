@@ -15,7 +15,7 @@ extension DanceFreeze {
         var body: some View {
             VStack(spacing: 70) {
                 HStack(spacing: 70) {
-                    GameEngineKitAsset.Exercice.pictoDanceFreezePlaceholder.swiftUIImage
+                    GameEngineKitAsset.Exercises.DanceFreeze.imageIllustration.swiftUIImage
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .padding(.trailing, 50)
@@ -24,7 +24,7 @@ extension DanceFreeze {
                         HStack(spacing: 40) {
                             VStack(spacing: 0) {
                                 MotionModeButtonStyle(
-                                    image: GameEngineKitAsset.Exercice.pictoDanceFreezeMotionModeRotation.swiftUIImage,
+                                    image: GameEngineKitAsset.Exercises.DanceFreeze.iconMotionModeRotation.swiftUIImage,
                                     color: motion == .rotation ? .teal : .gray)
                                 Text("Rotation")
                             }
@@ -41,7 +41,7 @@ extension DanceFreeze {
 
                             VStack(spacing: 0) {
                                 MotionModeButtonStyle(
-                                    image: GameEngineKitAsset.Exercice.pictoDanceFreezeMotionModeMovement.swiftUIImage,
+                                    image: GameEngineKitAsset.Exercises.DanceFreeze.iconMotionModeMovement.swiftUIImage,
                                     color: motion == .movement ? .teal : .gray)
                                 Text("Mouvement")
                             }
