@@ -5,8 +5,9 @@
 import ContentKit
 import SpriteKit
 
-class DraggableImageAnswerNode: SKSpriteNode {
+class DraggableImageAnswerNode: SKSpriteNode, Identifiable {
 
+    let id = UUID()
     var isDraggable: Bool = true
     var defaultPosition: CGPoint?
 
