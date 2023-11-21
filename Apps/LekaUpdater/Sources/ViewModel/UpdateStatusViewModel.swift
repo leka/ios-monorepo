@@ -89,8 +89,8 @@ class UpdateStatusViewModel: ObservableObject {
                                 self.errorDescription = String(l10n.update.error.unknownErrorDescription.characters)
                                 self.errorInstructions = String(l10n.update.error.unknownErrorInstructions.characters)
                         }
-                        self.onUpdateEnded()
                 }
+                self.onUpdateEnded()
             } receiveValue: { state in
                 switch state {
                     case .initial, .sendingUpdate:
