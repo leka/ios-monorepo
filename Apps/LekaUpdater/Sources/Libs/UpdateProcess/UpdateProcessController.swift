@@ -4,6 +4,7 @@
 
 import Combine
 import Foundation
+import RobotKit
 import Version
 
 // MARK: - General (user facing) update process states, errors
@@ -48,7 +49,7 @@ class UpdateProcessController {
     public var sendingFileProgression = CurrentValueSubject<Float, Never>(0.0)
 
     init() {
-        let currentRobotVersion = globalRobotManager.osVersion
+        let currentRobotVersion = Version(Robot.shared.osVersion.value)
 
         switch currentRobotVersion {
             case Version(1, 0, 0), Version(1, 1, 0), Version(1, 2, 0):
