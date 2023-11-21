@@ -38,19 +38,19 @@ struct RobotInformationView_Previews: PreviewProvider {
                         print("Robot just connected (not received serial number yet)")
                         Robot.shared.serialNumber.send("(n/a)")
                         Robot.shared.battery.send(Int.random(in: 0...100))
-                        Robot.shared.osVersion.send("1.0.0")
+                        Robot.shared.osVersion.send(Version(1, 0, 0))
                         Robot.shared.isCharging.send(false)
                     case 2:
                         print("Robot connected")
                         Robot.shared.serialNumber.send("LK-2206DHQFLQJZ139813JJQ - connected")
                         Robot.shared.battery.send(Int.random(in: 0...100))
-                        Robot.shared.osVersion.send("1.0.0")
+                        Robot.shared.osVersion.send(Version(1, 0, 0))
                         Robot.shared.isCharging.send(true)
                     default:
                         print("Robot not connected")
                         Robot.shared.serialNumber.send("(n/a)")
                         Robot.shared.battery.send(0)
-                        Robot.shared.osVersion.send("(n/a)")
+                        Robot.shared.osVersion.send(nil)
                         Robot.shared.isCharging.send(false)
                 }
             }
