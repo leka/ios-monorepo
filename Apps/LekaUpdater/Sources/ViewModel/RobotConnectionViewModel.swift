@@ -35,7 +35,6 @@ public class RobotConnectionViewModel: ObservableObject {
 
     // MARK: - Private variables
 
-    private let bleManager = globalBleManager
     private var cancellables: Set<AnyCancellable> = []
 
     // MARK: - Public functions
@@ -46,7 +45,7 @@ public class RobotConnectionViewModel: ObservableObject {
     }
 
     public func onAppear() {
-        globalBleManager.disconnect()
+        BLEManager.shared.disconnect()
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.scanForRobots()
@@ -56,7 +55,7 @@ public class RobotConnectionViewModel: ObservableObject {
     public func scanForRobots() {
         scanForRobotsTask?.cancel()
 
-        scanForRobotsTask = bleManager.scanForRobots()
+        scanForRobotsTask = BLEManager.shared.scanForRobots()
             .receive(on: DispatchQueue.main)
             .sink(
                 receiveCompletion: { _ in
@@ -81,7 +80,7 @@ public class RobotConnectionViewModel: ObservableObject {
         }
 
         scanForRobotsTask?.cancel()
-        bleManager.connect(selectedRobotDiscovery)
+        BLEManager.shared.connect(selectedRobotDiscovery)
             .receive(on: DispatchQueue.main)
             .sink(
                 receiveCompletion: { _ in
@@ -96,7 +95,7 @@ public class RobotConnectionViewModel: ObservableObject {
     }
 
     public func disconnectFromRobot() {
-        bleManager.disconnect()
+        BLEManager.shared.disconnect()
 
         self.connectedRobotDiscovery = nil
     }

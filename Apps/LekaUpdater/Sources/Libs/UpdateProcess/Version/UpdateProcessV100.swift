@@ -336,7 +336,7 @@ private class StateWaitingForRobotToReboot: GKState, StateEventProcessor {
     }
 
     private func registerScanForRobot() {
-        globalBleManager.scanForRobots()
+        BLEManager.shared.scanForRobots()
             .receive(on: DispatchQueue.main)
             .sink(
                 receiveCompletion: { _ in
@@ -422,7 +422,7 @@ class UpdateProcessV100: UpdateProcessProtocol {
     }
 
     private func registerDidDisconnect() {
-        globalBleManager.didDisconnect
+        BLEManager.shared.didDisconnect
             .receive(on: DispatchQueue.main)
             .sink {
                 self.process(event: .robotDisconnected)
