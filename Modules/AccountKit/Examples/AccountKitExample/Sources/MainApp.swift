@@ -11,9 +11,12 @@ let log = LogKit.createLoggerFor(app: "AccountKitExample")
 @main
 struct AccountKitExample: App {
 
+    @StateObject var authenticationState = OrganisationAuthState()
+
     var body: some Scene {
         WindowGroup {
             MainView()
+                .environmentObject(authenticationState)
         }
     }
 
