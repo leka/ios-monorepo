@@ -111,6 +111,12 @@ public struct ActivityView: View {
                     exercise: viewModel.currentExercise,
                     data: viewModel.currentExerciseSharedData
                 )
+
+            case .danceFreeze:
+                DanceFreeze.MainView(
+                    exercise: viewModel.currentExercise,
+                    data: viewModel.currentExerciseSharedData
+                )
         }
     }
 

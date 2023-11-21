@@ -14,6 +14,7 @@ extension Exercise {
         case dragAndDropIntoZones
         case dragAndDropAssociation
         case placeholderNoGameplay
+        case danceFreeze
     }
 
 }

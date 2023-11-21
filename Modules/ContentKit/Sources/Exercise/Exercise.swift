@@ -43,6 +43,9 @@ public struct Exercise: Codable {
             case (.placeholderNoGameplay, .none):
                 payload = nil
 
+            case (.danceFreeze, .none):
+                payload = try container.decode(AudioRecordingPlayer.Payload.self, forKey: .payload)
+
             default:
                 throw DecodingError.dataCorruptedError(
                     forKey: .payload, in: container, debugDescription: "Invalid combination of interface or gameplay")
