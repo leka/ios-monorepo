@@ -5,6 +5,7 @@
 import Combine
 import Foundation
 import LocalizationKit
+import RobotKit
 
 class RobotInformationViewModel: ObservableObject {
 
@@ -23,44 +24,36 @@ class RobotInformationViewModel: ObservableObject {
     }
 
     private func subscribeToRobotSerialNumberUpdates() {
-        globalRobotManager.$serialNumber
+        Robot.shared.serialNumber
             .receive(on: DispatchQueue.main)
             .sink { robotSerialNumber in
-                self.robotSerialNumber = robotSerialNumber ?? "n/a"
+                self.robotSerialNumber = robotSerialNumber
             }
             .store(in: &cancellables)
     }
 
     private func subscribeToRobotBatteryUpdates() {
-        globalRobotManager.$battery
+        Robot.shared.battery
             .receive(on: DispatchQueue.main)
             .sink { robotBattery in
-                if let robotBattery = robotBattery {
-                    self.robotBattery = "\(robotBattery)%"
-                } else {
-                    self.robotBattery = "n/a"
-                }
+                self.robotBattery = "\(robotBattery)%"
             }
             .store(in: &cancellables)
     }
 
     private func subscribeToRobotOsVersionUpdates() {
-        globalRobotManager.$osVersion
+        Robot.shared.osVersion
             .receive(on: DispatchQueue.main)
             .sink { robotOsVersion in
-                self.robotOsVersion = robotOsVersion?.description ?? "n/a"
+                self.robotOsVersion = robotOsVersion
             }
             .store(in: &cancellables)
     }
 
     private func subscribeToRobotChargingStatusUpdates() {
-        globalRobotManager.$isCharging
+        Robot.shared.isCharging
             .receive(on: DispatchQueue.main)
-            .sink {
-                guard let isCharging = $0 else {
-                    self.robotIsCharging = "n/a"
-                    return
-                }
+            .sink { isCharging in
                 self.robotIsCharging =
                     isCharging ? String(l10n.general.yes.characters) : String(l10n.general.no.characters)
             }

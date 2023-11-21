@@ -8,7 +8,6 @@ import SwiftUI
 
 var globalFirmwareManager = FirmwareManager()
 var globalBleManager = BLEManager.live()
-var globalRobotManager = RobotManager()
 
 @main
 struct LekaUpdaterApp: App {

@@ -6,6 +6,7 @@ import BLEKit
 import Combine
 import Foundation
 import GameplayKit
+import RobotKit
 import Version
 
 // MARK: - events
@@ -112,7 +113,7 @@ private class StateSettingDestinationPath: GKState, StateEventProcessor {
             }
         )
 
-        globalRobotManager.robotPeripheral?.send(destinationPath.data(using: .utf8)!, forCharacteristic: characteristic)
+        Robot.shared.connectedPeripheral?.send(destinationPath.data(using: .utf8)!, forCharacteristic: characteristic)
     }
 }
 
@@ -210,11 +211,9 @@ private class StateSendingFile: GKState, StateEventProcessor {
     }
 
     private func isInCriticalSection() -> Bool {
-        guard let battery = globalRobotManager.battery, let isCharging = globalRobotManager.isCharging else {
-            return true
-        }
+        let isNotCharging = !Robot.shared.isCharging.value
 
-        let isNotCharging = !isCharging
+        let battery = Robot.shared.battery.value
         let isNearBatteryLevelChange =
             23...27 ~= battery || 48...52 ~= battery || 73...77 ~= battery || 88...92 ~= battery
 
@@ -229,7 +228,7 @@ private class StateSendingFile: GKState, StateEventProcessor {
 
         let dataToSend = globalFirmwareManager.data[startIndex...endIndex]
 
-        globalRobotManager.robotPeripheral?.send(dataToSend, forCharacteristic: characteristic)
+        Robot.shared.connectedPeripheral?.send(dataToSend, forCharacteristic: characteristic)
     }
 }
 
@@ -269,7 +268,7 @@ private class StateApplyingUpdate: GKState, StateEventProcessor {
             serviceUUID: BLESpecs.FirmwareUpdate.service
         )
 
-        globalRobotManager.robotPeripheral?.send(majorData, forCharacteristic: majorCharacteristic)
+        Robot.shared.connectedPeripheral?.send(majorData, forCharacteristic: majorCharacteristic)
 
         let minorData = Data([globalFirmwareManager.minor])
 
@@ -278,7 +277,7 @@ private class StateApplyingUpdate: GKState, StateEventProcessor {
             serviceUUID: BLESpecs.FirmwareUpdate.service
         )
 
-        globalRobotManager.robotPeripheral?.send(minorData, forCharacteristic: minorCharacteristic)
+        Robot.shared.connectedPeripheral?.send(minorData, forCharacteristic: minorCharacteristic)
 
         let revisionData = globalFirmwareManager.revision.data
 
@@ -287,7 +286,7 @@ private class StateApplyingUpdate: GKState, StateEventProcessor {
             serviceUUID: BLESpecs.FirmwareUpdate.service
         )
 
-        globalRobotManager.robotPeripheral?.send(revisionData, forCharacteristic: revisionCharacteristic)
+        Robot.shared.connectedPeripheral?.send(revisionData, forCharacteristic: revisionCharacteristic)
     }
 
     private func applyUpdate() {
@@ -298,7 +297,7 @@ private class StateApplyingUpdate: GKState, StateEventProcessor {
             serviceUUID: BLESpecs.FirmwareUpdate.service
         )
 
-        globalRobotManager.robotPeripheral?.send(applyValue, forCharacteristic: characteristic)
+        Robot.shared.connectedPeripheral?.send(applyValue, forCharacteristic: characteristic)
     }
 }
 
@@ -345,7 +344,7 @@ private class StateWaitingForRobotToReboot: GKState, StateEventProcessor {
                 },
                 receiveValue: { robotDiscoveryList in
                     let robotDetected = robotDiscoveryList.first { robotDiscovery in
-                        robotDiscovery.robotPeripheral == globalRobotManager.robotPeripheral
+                        robotDiscovery.robotPeripheral == Robot.shared.connectedPeripheral
                     }
                     if let robotDetected = robotDetected {
                         self.isRobotUpToDate =

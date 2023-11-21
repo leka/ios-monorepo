@@ -4,6 +4,7 @@
 
 import Combine
 import Foundation
+import RobotKit
 
 @MainActor
 class ConnectionViewModel: ObservableObject {
@@ -29,7 +30,8 @@ class ConnectionViewModel: ObservableObject {
 
     private func onConnectedRobotDiscoveryChanged(robot: RobotDiscoveryViewModel?) {
         if let robotDiscovery = robot?.robotDiscovery {
-            globalRobotManager.setRobotPeripheral(from: robotDiscovery)
+            Robot.shared.name.send(robotDiscovery.name)
+            Robot.shared.connectedPeripheral = robotDiscovery.robotPeripheral
             continueButtonDisabled = false
         } else {
             continueButtonDisabled = true

@@ -5,6 +5,7 @@
 import Combine
 import Foundation
 import LocalizationKit
+import RobotKit
 import SwiftUI
 
 class UpdateStatusViewModel: ObservableObject {
@@ -112,7 +113,7 @@ class UpdateStatusViewModel: ObservableObject {
     }
 
     private func subscribeToRobotIsChargingUpdates() {
-        globalRobotManager.$isCharging
+        Robot.shared.isCharging
             .receive(on: DispatchQueue.main)
             .sink { robotIsCharging in
                 let robotShouldBeInCharge =

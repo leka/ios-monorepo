@@ -4,6 +4,7 @@
 
 import Combine
 import Foundation
+import RobotKit
 import Version
 
 class InformationViewModel: ObservableObject {
@@ -21,28 +22,25 @@ class InformationViewModel: ObservableObject {
     }
 
     public func onViewReappear() {
-        self.robotName = globalRobotManager.name ?? "n/a"
-
-        globalRobotManager.readReadOnlyCharacteristics()
-        globalRobotManager.subscribeToCharacteristicsNotifications()
+        self.robotName = Robot.shared.name.value
     }
 
     private func subscribeToRobotNameUpdates() {
-        globalRobotManager.$name
+        Robot.shared.name
             .receive(on: DispatchQueue.main)
             .sink { robotName in
-                self.robotName = robotName ?? "n/a"
+                self.robotName = robotName
             }
             .store(in: &cancellables)
     }
 
     private func subscribeToRobotOsVersionUpdates() {
-        globalRobotManager.$osVersion
+        Robot.shared.osVersion
             .receive(on: DispatchQueue.main)
             .sink { robotOsVersion in
-                self.updateShowRobotCannotBeUpdated(robotOsVersion: robotOsVersion)
-                self.updateShowRobotNeedsUpdate(robotOsVersion: robotOsVersion)
-                self.robotOSVersion = robotOsVersion?.description ?? ""
+                self.updateShowRobotCannotBeUpdated(robotOsVersion: Version(robotOsVersion))
+                self.updateShowRobotNeedsUpdate(robotOsVersion: Version(robotOsVersion))
+                self.robotOSVersion = Version(robotOsVersion)?.description ?? ""
             }
             .store(in: &cancellables)
     }
