@@ -7,7 +7,6 @@ import DesignKit
 import SwiftUI
 
 var globalFirmwareManager = FirmwareManager()
-var globalBleManager = BLEManager.live()
 
 @main
 struct LekaUpdaterApp: App {
