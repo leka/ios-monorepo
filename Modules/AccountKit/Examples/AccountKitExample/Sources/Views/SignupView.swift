@@ -16,7 +16,6 @@ struct SignupView: View {
             passwordField
             confirmPasswordField
             signupButton
-            signupApple
         }
         .textInputAutocapitalization(.never)
         .frame(maxWidth: 400)
@@ -91,21 +90,6 @@ struct SignupView: View {
         .buttonStyle(.borderedProminent)
         .disabled(!organisation.signUpIsComplete)
         .animation(.default, value: organisation.signUpIsComplete)
-    }
-
-    private var signupApple: some View {
-        VStack(spacing: 0) {
-            Text("or...")
-                .padding(.vertical, 20)
-
-            SignInWithAppleButton(
-                .signUp,
-                onRequest: { request in },
-                onCompletion: { result in }
-            )
-            .signInWithAppleButtonStyle(.whiteOutline)
-            .frame(height: 50)
-        }
     }
 
 }

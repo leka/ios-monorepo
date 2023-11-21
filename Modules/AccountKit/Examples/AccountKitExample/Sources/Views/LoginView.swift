@@ -17,7 +17,6 @@ struct LoginView: View {
             passwordField
             loginButton
             forgotLink
-            loginApple
         }
         .textInputAutocapitalization(.never)
         .frame(maxWidth: 400)
@@ -81,13 +80,6 @@ struct LoginView: View {
     private var forgotLink: some View {
         HStack {
             Spacer()
-            // TODO(@macteuts) : ask @ladislas about the UX here
-            //            Link(destination: URL(string: "https://leka.io")!) {
-            //                Text("Forgot Password")
-            //                    .font(.footnote)
-            //                    .underline()
-            //                    .padding(.trailing, 10)
-            //            }
             Button(
                 action: {
                     showSheet = true
@@ -98,21 +90,6 @@ struct LoginView: View {
                         .underline()
                         .padding(.trailing, 10)
                 })
-        }
-    }
-
-    private var loginApple: some View {
-        VStack(spacing: 0) {
-            Text("or...")
-                .padding(.vertical, 20)
-
-            SignInWithAppleButton(
-                .signIn,
-                onRequest: { request in },
-                onCompletion: { result in }
-            )
-            .signInWithAppleButtonStyle(.whiteOutline)
-            .frame(height: 50)
         }
     }
 }
