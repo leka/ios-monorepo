@@ -18,7 +18,6 @@ extension DanceFreeze {
                     GameEngineKitAsset.Exercice.pictoDanceFreezePlaceholder.swiftUIImage
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(maxWidth: 380, maxHeight: 190)
                         .padding(.trailing, 50)
 
                     VStack(spacing: 15) {
