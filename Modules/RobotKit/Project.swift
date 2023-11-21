@@ -13,6 +13,7 @@ let project = Project.module(
         .project(target: "BLEKit", path: Path("../../Modules/BLEKit")),
         .project(target: "DesignKit", path: Path("../../Modules/DesignKit")),
         .project(target: "LogKit", path: Path("../../Modules/LogKit")),
+        .external(name: "Version"),
     ],
     examples: [
         ModuleExample(
