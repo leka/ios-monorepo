@@ -54,7 +54,7 @@ public class ConnectedRobotInformationViewModel: ObservableObject {
         robot.osVersion
             .receive(on: DispatchQueue.main)
             .sink {
-                self.osVersion = $0
+                self.osVersion = $0?.description ?? "(n/a)"
             }
             .store(in: &cancellables)
 

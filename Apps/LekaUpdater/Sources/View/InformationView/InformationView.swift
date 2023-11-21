@@ -136,7 +136,7 @@ struct InformationView_Previews: PreviewProvider {
             Robot.shared.name.send("Leka")
             Robot.shared.battery.send(75)
             Robot.shared.isCharging.send(true)
-            Robot.shared.osVersion.send("1.3.0")
+            Robot.shared.osVersion.send(Version(1, 3, 0))
         }
         .environment(\.locale, .init(identifier: "en"))
 
@@ -148,7 +148,7 @@ struct InformationView_Previews: PreviewProvider {
             Robot.shared.name.send("Leka")
             Robot.shared.battery.send(75)
             Robot.shared.isCharging.send(true)
-            Robot.shared.osVersion.send("1.3.0")
+            Robot.shared.osVersion.send(Version(1, 3, 0))
         }
         .environment(\.locale, .init(identifier: "fr"))
     }

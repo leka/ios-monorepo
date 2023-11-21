@@ -4,6 +4,7 @@
 
 import BLEKit
 import Combine
+import Version
 
 extension Robot {
 
@@ -44,8 +45,9 @@ extension Robot {
             onRead: { data in
                 if let data = data {
                     self.osVersion.send(
-                        String(decoding: data, as: UTF8.self)
-                            .replacingOccurrences(of: "\0", with: ""))
+                        Version(
+                            String(decoding: data, as: UTF8.self)
+                                .replacingOccurrences(of: "\0", with: "")))
                     log.trace("🤖 osVersion: \(self.osVersion.value)")
 
                 }

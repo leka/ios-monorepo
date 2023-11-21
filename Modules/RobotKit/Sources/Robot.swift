@@ -6,6 +6,7 @@ import BLEKit
 import Combine
 import Foundation
 import LogKit
+import Version
 
 let log = LogKit.createLoggerFor(module: "RobotKit")
 
@@ -40,7 +41,7 @@ public class Robot {
     public var isConnected: CurrentValueSubject<Bool, Never> = CurrentValueSubject(false)
 
     public var name: CurrentValueSubject<String, Never> = CurrentValueSubject("(robot not connected)")
-    public var osVersion: CurrentValueSubject<String, Never> = CurrentValueSubject("(n/a)")
+    public var osVersion: CurrentValueSubject<Version?, Never> = CurrentValueSubject(nil)
     public var serialNumber: CurrentValueSubject<String, Never> = CurrentValueSubject("(n/a)")
     public var isCharging: CurrentValueSubject<Bool, Never> = CurrentValueSubject(false)
     public var battery: CurrentValueSubject<Int, Never> = CurrentValueSubject(0)

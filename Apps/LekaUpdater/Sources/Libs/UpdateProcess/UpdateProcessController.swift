@@ -49,7 +49,7 @@ class UpdateProcessController {
     public var sendingFileProgression = CurrentValueSubject<Float, Never>(0.0)
 
     init() {
-        let currentRobotVersion = Version(Robot.shared.osVersion.value)
+        let currentRobotVersion = Robot.shared.osVersion.value
 
         switch currentRobotVersion {
             case Version(1, 0, 0), Version(1, 1, 0), Version(1, 2, 0):
