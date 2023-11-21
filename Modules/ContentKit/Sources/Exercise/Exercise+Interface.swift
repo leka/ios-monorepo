@@ -12,7 +12,7 @@ extension Exercise {
         case listenThenTouchToSelect
         case observeThenTouchToSelect
         case dragAndDropIntoZones
-        case dragAndDropAssociation
+        case dragAndDropToAssociate
         case placeholderNoGameplay
         case danceFreeze
     }

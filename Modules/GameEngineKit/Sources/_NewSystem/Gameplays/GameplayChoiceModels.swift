@@ -18,27 +18,3 @@ protocol GameplayChoiceModelProtocol: Identifiable {
     var choice: ChoiceType { get }
     var state: GameplayChoiceState { get set }  // .selected, .idle, .rightAnswer, .wrongAnswer
 }
-
-struct GameplayTouchToSelectChoiceModel: GameplayChoiceModelProtocol {
-    typealias ChoiceType = TouchToSelect.Choice
-
-    let id: String = UUID().uuidString
-    let choice: ChoiceType
-    var state: GameplayChoiceState = .idle
-}
-
-struct GameplayDragAndDropIntoZonesChoiceModel: GameplayChoiceModelProtocol {
-    typealias ChoiceType = DragAndDropIntoZones.Choice
-
-    let id: String = UUID().uuidString
-    let choice: ChoiceType
-    var state: GameplayChoiceState = .idle
-}
-
-struct GameplayAssociationChoiceModel: GameplayChoiceModelProtocol {
-    typealias ChoiceType = DragAndDropAssociation.Choice
-
-    let id: String = UUID().uuidString
-    let choice: ChoiceType
-    var state: GameplayChoiceState = .idle
-}
