@@ -305,11 +305,16 @@ private class StateWaitingForRobotToReboot: GKState, StateEventProcessor {
 
     private var cancellables: Set<AnyCancellable> = []
 
+    private var expectedRobot: RobotPeripheral?
     private var isRobotUpToDate: Bool = false
 
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
         stateClass is StateFinal.Type || stateClass is StateErrorRobotNotUpToDate.Type
             || stateClass is StateErrorRobotUnexpectedDisconnection.Type
+    }
+
+    init(expectedRobot: RobotPeripheral?) {
+        self.expectedRobot = expectedRobot
     }
 
     override func didEnter(from previousState: GKState?) {
@@ -344,7 +349,7 @@ private class StateWaitingForRobotToReboot: GKState, StateEventProcessor {
                 },
                 receiveValue: { robotDiscoveryList in
                     let robotDetected = robotDiscoveryList.first { robotDiscovery in
-                        robotDiscovery.robotPeripheral == Robot.shared.connectedPeripheral
+                        robotDiscovery.robotPeripheral == self.expectedRobot
                     }
                     if let robotDetected = robotDetected {
                         self.isRobotUpToDate =
@@ -391,7 +396,7 @@ class UpdateProcessV100: UpdateProcessProtocol {
             StateLoadingUpdateFile(),
             stateSendingFile,
             StateApplyingUpdate(),
-            StateWaitingForRobotToReboot(),
+            StateWaitingForRobotToReboot(expectedRobot: Robot.shared.connectedPeripheral),
             StateSettingDestinationPath(),
 
             StateFinal(),
