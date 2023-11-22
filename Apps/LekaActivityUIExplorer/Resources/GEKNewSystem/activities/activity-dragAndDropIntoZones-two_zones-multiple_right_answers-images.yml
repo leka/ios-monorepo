@@ -76,3 +76,33 @@ sequence:
             - value: image-instrument-guitar-no_background
               type: image
               dropZone: zoneB
+
+      - instructions: TEST - Même image plusieurs fois
+        interface: dragAndDropIntoZones
+        gameplay: findTheRightAnswers
+        payload:
+          dropZoneA:
+            value: image-placeholder-instruments_wind
+            type: image
+          dropZoneB:
+            value: image-placeholder-instruments_string
+            type: image
+          choices:
+            - value: image-instrument-flute-no_background
+              type: image
+              dropZone: zoneA
+            - value: image-instrument-flute-no_background
+              type: image
+              dropZone: zoneA
+            - value: image-instrument-flute-no_background
+              type: image
+              dropZone: zoneA
+            - value: image-instrument-guitar-no_background
+              type: image
+              dropZone: zoneB
+            - value: image-instrument-guitar-no_background
+              type: image
+              dropZone: zoneB
+            - value: image-instrument-guitar-no_background
+              type: image
+              dropZone: zoneB
