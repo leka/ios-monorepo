@@ -42,7 +42,7 @@ public struct ListenFourChoicesView: View {
                     ChoiceViewDeprecated(
                         choice: choice, size: answerSize, isTappable: audioPlayer.didFinishPlaying
                     )
-                    .onTapGestureIf(audioPlayer.didFinishPlaying) {
+                    .onTapGestureIfDeprecated(audioPlayer.didFinishPlaying) {
                         viewModel.onChoiceTapped(choice: choice)
                     }
                 }
@@ -54,7 +54,7 @@ public struct ListenFourChoicesView: View {
                     ChoiceViewDeprecated(
                         choice: choice, size: answerSize, isTappable: audioPlayer.didFinishPlaying
                     )
-                    .onTapGestureIf(audioPlayer.didFinishPlaying) {
+                    .onTapGestureIfDeprecated(audioPlayer.didFinishPlaying) {
                         viewModel.onChoiceTapped(choice: choice)
                     }
                 }

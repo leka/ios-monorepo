@@ -39,14 +39,14 @@ public struct ListenThreeChoicesView: View {
                 ChoiceViewDeprecated(
                     choice: viewModel.choices[0], size: answerSize, isTappable: audioPlayer.didFinishPlaying
                 )
-                .onTapGestureIf(audioPlayer.didFinishPlaying) {
+                .onTapGestureIfDeprecated(audioPlayer.didFinishPlaying) {
                     viewModel.onChoiceTapped(choice: viewModel.choices[0])
                 }
                 Color.clear.gridCellUnsizedAxes([.horizontal, .vertical])
                 ChoiceViewDeprecated(
                     choice: viewModel.choices[1], size: answerSize, isTappable: audioPlayer.didFinishPlaying
                 )
-                .onTapGestureIf(audioPlayer.didFinishPlaying) {
+                .onTapGestureIfDeprecated(audioPlayer.didFinishPlaying) {
                     viewModel.onChoiceTapped(choice: viewModel.choices[1])
                 }
             }
@@ -55,7 +55,7 @@ public struct ListenThreeChoicesView: View {
                 ChoiceViewDeprecated(
                     choice: viewModel.choices[2], size: answerSize, isTappable: audioPlayer.didFinishPlaying
                 )
-                .onTapGestureIf(audioPlayer.didFinishPlaying) {
+                .onTapGestureIfDeprecated(audioPlayer.didFinishPlaying) {
                     viewModel.onChoiceTapped(choice: viewModel.choices[2])
                 }
                 Color.clear.gridCellUnsizedAxes([.horizontal, .vertical])

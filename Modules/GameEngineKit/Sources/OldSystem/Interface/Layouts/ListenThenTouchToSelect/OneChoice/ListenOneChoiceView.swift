@@ -27,7 +27,7 @@ public struct ListenOneChoiceView: View {
             ChoiceViewDeprecated(
                 choice: viewModel.choices[0], size: answerSize, isTappable: audioPlayer.didFinishPlaying
             )
-            .onTapGestureIf(audioPlayer.didFinishPlaying) {
+            .onTapGestureIfDeprecated(audioPlayer.didFinishPlaying) {
                 viewModel.onChoiceTapped(choice: viewModel.choices[0])
             }
             .animation(.easeOut(duration: 0.3), value: audioPlayer.didFinishPlaying)

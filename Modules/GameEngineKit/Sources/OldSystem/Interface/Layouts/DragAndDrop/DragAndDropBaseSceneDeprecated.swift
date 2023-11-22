@@ -145,7 +145,7 @@ class DragAndDropBaseSceneDeprecated: SKScene {
 
     func wrongAnswerBehavior(_ node: DraggableImageAnswerNodeDeprecated) {
         let moveAnimation: SKAction = SKAction.move(to: node.defaultPosition!, duration: 0.25)
-            .moveAnimation(.easeOut)
+            .moveAnimationDeprecated(.easeOut)
         let group: DispatchGroup = DispatchGroup()
         group.enter()
         node.run(
@@ -162,9 +162,9 @@ class DragAndDropBaseSceneDeprecated: SKScene {
 
     func onDragAnimation(_ node: SKSpriteNode) {
         let wiggleAnimation: SKAction = SKAction.sequence([
-            SKAction.rotate(byAngle: CGFloat(degreesToRadian(degrees: -4)), duration: 0.1),
+            SKAction.rotate(byAngle: CGFloat(degreesToRadianDeprecated(degrees: -4)), duration: 0.1),
             SKAction.rotate(byAngle: 0.0, duration: 0.1),
-            SKAction.rotate(byAngle: CGFloat(degreesToRadian(degrees: 4)), duration: 0.1),
+            SKAction.rotate(byAngle: CGFloat(degreesToRadianDeprecated(degrees: 4)), duration: 0.1),
         ])
         node.scaleForMax(sizeOf: biggerSide * 1.1)
         node.run(SKAction.repeatForever(wiggleAnimation))
@@ -199,8 +199,8 @@ class DragAndDropBaseSceneDeprecated: SKScene {
             let location = touch.location(in: self)
             if let node = selectedNodes[touch] {
                 let bounds: CGRect = self.view!.bounds
-                if node.fullyContains(location: location, bounds: bounds) {
-                    node.run(SKAction.move(to: location, duration: 0.05).moveAnimation(.linear))
+                if node.fullyContainsDeprecated(location: location, bounds: bounds) {
+                    node.run(SKAction.move(to: location, duration: 0.05).moveAnimationDeprecated(.linear))
                     node.position = location
                 } else {
                     self.touchesEnded(touches, with: event)
@@ -217,7 +217,7 @@ class DragAndDropBaseSceneDeprecated: SKScene {
             playedNode = selectedNodes[touch]!
             playedNode!.scaleForMax(sizeOf: biggerSide)
             let choice = viewModel.choices.first(where: { $0.value == playedNode!.name })
-            for dropZoneNode in dropZonesNode where playedNode!.fullyContains(bounds: dropZoneNode.frame) {
+            for dropZoneNode in dropZonesNode where playedNode!.fullyContainsDeprecated(bounds: dropZoneNode.frame) {
                 viewModel.onChoiceTapped(choice: choice!, dropZoneName: dropZoneNode.name!)
                 break
             }
