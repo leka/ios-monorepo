@@ -12,7 +12,7 @@ public enum DragAndDropToAssociate {
         case catC
     }
 
-    public struct Choice: Codable, DraggableChoice {
+    public struct Choice: Codable {
         public let value: String
         public let type: Exercise.UIElementType
         public let category: Category?
