@@ -7,16 +7,35 @@ import SpriteKit
 
 class DraggableImageAnswerNode: SKSpriteNode {
 
+    var id: String
     var isDraggable: Bool = true
     var defaultPosition: CGPoint?
 
-    init(choice: DraggableChoice, scale: CGFloat = 1, position: CGPoint) {
-        super.init(texture: SKTexture(image: UIImage(named: choice.value)!), color: .clear, size: CGSize.zero)
+    init(choice: GameplayAssociateCategoriesChoiceModel, scale: CGFloat = 1, position: CGPoint) {
+        self.id = choice.id
+
+        super.init(texture: SKTexture(image: UIImage(named: choice.choice.value)!), color: .clear, size: CGSize.zero)
 
         let action = SKAction.setTexture(texture!, resize: true)
         self.run(action)
 
-        self.name = choice.value
+        self.name = choice.choice.value
+        self.texture = texture
+        self.setScale(scale)
+        self.size = size
+        self.position = position
+        self.defaultPosition = position
+    }
+
+    init(choice: GameplayDragAndDropIntoZonesChoiceModel, scale: CGFloat = 1, position: CGPoint) {
+        self.id = choice.id
+
+        super.init(texture: SKTexture(image: UIImage(named: choice.choice.value)!), color: .clear, size: CGSize.zero)
+
+        let action = SKAction.setTexture(texture!, resize: true)
+        self.run(action)
+
+        self.name = choice.choice.value
         self.texture = texture
         self.setScale(scale)
         self.size = size
@@ -25,7 +44,7 @@ class DraggableImageAnswerNode: SKSpriteNode {
     }
 
     required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+        fatalError("init(coder:) has not been implemented")
     }
 
 }

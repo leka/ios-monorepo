@@ -72,11 +72,13 @@ extension DragAndDropIntoZonesView {
         func subscribeToChoicesUpdates() {
             self.viewModel.$choices
                 .receive(on: DispatchQueue.main)
-                .sink(receiveValue: {
-                    for gameplayChoiceModel in $0 where gameplayChoiceModel.choice.value == self.playedNode?.name {
-                        if gameplayChoiceModel.state == .rightAnswer {
+                .sink(receiveValue: { [weak self] choices in
+                    guard let self = self else { return }
+
+                    for choice in choices where choice.id == self.playedNode?.id {
+                        if choice.state == .rightAnswer {
                             self.goodAnswerBehavior(self.playedNode!)
-                        } else if gameplayChoiceModel.state == .wrongAnswer {
+                        } else if choice.state == .wrongAnswer {
                             self.wrongAnswerBehavior(self.playedNode!)
                         }
                     }
@@ -85,9 +87,9 @@ extension DragAndDropIntoZonesView {
         }
 
         @MainActor func layoutAnswers() {
-            for gameplayChoiceModel in viewModel.choices {
+            for choice in viewModel.choices {
                 let draggableImageAnswerNode = DraggableImageAnswerNode(
-                    choice: gameplayChoiceModel.choice,
+                    choice: choice,
                     position: self.defaultPosition
                 )
                 let draggableImageShadowNode = DraggableImageShadowNode(
@@ -203,7 +205,7 @@ extension DragAndDropIntoZonesView {
         }
 
         private func disableWrongAnswer(_ node: DraggableImageAnswerNode) {
-            let gameplayChoiceModel = viewModel.choices.first(where: { $0.choice.value == node.name })!
+            let gameplayChoiceModel = viewModel.choices.first(where: { $0.id == node.id })!
             if gameplayChoiceModel.choice.dropZone == nil {
                 node.colorBlendFactor = 0.4
                 node.isDraggable = false
@@ -219,8 +221,8 @@ extension DragAndDropIntoZonesView {
             for touch in touches {
                 let location = touch.location(in: self)
                 if let node = self.atPoint(location) as? DraggableImageAnswerNode {
-                    for gameplayChoiceModel in viewModel.choices
-                    where node.name == gameplayChoiceModel.choice.value && node.isDraggable {
+                    for choice in viewModel.choices
+                    where node.id == choice.id && node.isDraggable {
                         selectedNodes[touch] = node
                         onDragAnimation(node)
                         node.zPosition += 100
@@ -251,7 +253,7 @@ extension DragAndDropIntoZonesView {
                 }
                 playedNode = selectedNodes[touch]!
                 playedNode!.scaleForMax(sizeOf: biggerSide)
-                let gameplayChoiceModel = viewModel.choices.first(where: { $0.choice.value == playedNode!.name })
+                let gameplayChoiceModel = viewModel.choices.first(where: { $0.id == playedNode!.id })
 
                 if playedNode!.fullyContains(bounds: dropZoneA.node.frame) {
                     viewModel.onChoiceTapped(choice: gameplayChoiceModel!, dropZone: dropZoneA.zone)
