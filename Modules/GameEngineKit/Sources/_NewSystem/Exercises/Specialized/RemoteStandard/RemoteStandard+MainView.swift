@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import DesignKit
+import RobotKit
 import SwiftUI
 
 enum RemoteStandard {
@@ -54,7 +55,7 @@ enum RemoteStandard {
                 RadialLayout(firstButtonPosX: -100, firstButtonPosY: -250, angle: 120.0) {
                     JoystickView()
 
-                    ForEach(Reinforcer.allCases, id: \.self) { reinforcer in
+                    ForEach(Robot.Reinforcer.allCases, id: \.self) { reinforcer in
                         ReinforcerButton(reinforcer: reinforcer)
                     }
                 }

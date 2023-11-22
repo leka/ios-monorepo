@@ -4,7 +4,7 @@
 
 extension Robot {
 
-    public enum Reinforcer: UInt8 {
+    public enum Reinforcer: UInt8, CaseIterable {
         case rainbow = 0x51
         case fire = 0x52
         case sprinkles = 0x53
