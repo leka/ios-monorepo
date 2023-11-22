@@ -89,11 +89,11 @@ class CompanyViewModel: ObservableObject {
 
     func getReinforcerFor(index: Int) -> UIImage {
         switch index {
-            case 2: return DesignKitAsset.Assets.reinforcer2.image
-            case 3: return DesignKitAsset.Assets.reinforcer3.image
-            case 4: return DesignKitAsset.Assets.reinforcer4.image
-            case 5: return DesignKitAsset.Assets.reinforcer5.image
-            default: return DesignKitAsset.Assets.reinforcer1.image
+            case 2: return DesignKitAsset.Reinforcers.spinBlinkBlueViolet.image
+            case 3: return DesignKitAsset.Reinforcers.fire.image
+            case 4: return DesignKitAsset.Reinforcers.sprinkles.image
+            case 5: return DesignKitAsset.Reinforcers.rainbow.image
+            default: return DesignKitAsset.Reinforcers.spinBlinkGreenOff.image
         }
     }
 
