@@ -56,11 +56,12 @@ extension DragAndDropToAssociateView {
         func subscribeToChoicesUpdates() {
             self.viewModel.$choices
                 .receive(on: DispatchQueue.main)
-                .sink(receiveValue: {
-                    for gameplayChoiceModel in $0 where gameplayChoiceModel.choice.value == self.playedNode?.name {
-                        if gameplayChoiceModel.state == .rightAnswer {
+                .sink(receiveValue: { [weak self] choices in
+                    guard let self = self else { return }
+                    for choice in choices where choice.id == self.playedNode?.id {
+                        if choice.state == .rightAnswer {
                             self.goodAnswerBehavior(self.playedNode!)
-                        } else if gameplayChoiceModel.state == .wrongAnswer {
+                        } else if choice.state == .wrongAnswer {
                             self.wrongAnswerBehavior(self.playedNode!)
                         }
                     }
@@ -71,7 +72,7 @@ extension DragAndDropToAssociateView {
         @MainActor func layoutAnswers() {
             for (index, gameplayChoiceModel) in viewModel.choices.enumerated() {
                 let draggableImageAnswerNode = DraggableImageAnswerNode(
-                    choice: gameplayChoiceModel.choice,
+                    choice: gameplayChoiceModel,
                     position: self.defaultPosition
                 )
                 let draggableImageShadowNode = DraggableImageShadowNode(
@@ -167,8 +168,8 @@ extension DragAndDropToAssociateView {
             for touch in touches {
                 let location = touch.location(in: self)
                 if let node = self.atPoint(location) as? DraggableImageAnswerNode {
-                    for gameplayChoiceModel in viewModel
-                        .choices where node.name == gameplayChoiceModel.choice.value && node.isDraggable
+                    for choice in viewModel
+                        .choices where node.id == choice.id && node.isDraggable
                     {
                         selectedNodes[touch] = node
                         onDragAnimation(node)
@@ -203,7 +204,7 @@ extension DragAndDropToAssociateView {
 
                 guard
                     let destinationNode = dropDestinations.first(where: {
-                        $0.frame.contains(touch.location(in: self)) && $0.name != playedNode!.name
+                        $0.frame.contains(touch.location(in: self)) && $0.id != playedNode!.id
                     })
                 else {
                     wrongAnswerBehavior(playedNode!)
@@ -211,9 +212,9 @@ extension DragAndDropToAssociateView {
                 }
                 playedDestination = destinationNode
 
-                guard let destination = viewModel.choices.first(where: { $0.choice.value == destinationNode.name })
+                guard let destination = viewModel.choices.first(where: { $0.id == destinationNode.id })
                 else { return }
-                guard let choice = viewModel.choices.first(where: { $0.choice.value == playedNode!.name })
+                guard let choice = viewModel.choices.first(where: { $0.id == playedNode!.id })
                 else { return }
 
                 viewModel.onChoiceTapped(choice: choice, destination: destination)
