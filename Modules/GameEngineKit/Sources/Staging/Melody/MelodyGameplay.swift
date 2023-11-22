@@ -8,7 +8,7 @@ import SwiftUI
 
 public class MelodyGameplay: ObservableObject {
     @Published public var progress: CGFloat = 0.0
-    @Published public var state: GameplayStateDeprecated = .idle
+    @Published var state: ExerciseState = .idle
 
     private let xyloPlayer = MIDIPlayer(name: "Xylophone", samples: xyloSamples)
 
@@ -55,7 +55,7 @@ public class MelodyGameplay: ObservableObject {
                 // TODO(@hugo): BUG - length is not correct, it returns 32 seconds but the track is ~12 secondes long
                 DispatchQueue.main.asyncAfter(deadline: .now() + self.xyloPlayer.getDuration()) {
                     print("Reset UI")
-                    self.state = .finished
+                    self.state = .completed
                     self.currentNoteIndex = 0
                     self.progress = 0
                 }

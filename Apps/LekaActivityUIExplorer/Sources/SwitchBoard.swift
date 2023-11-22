@@ -27,7 +27,7 @@ struct SwitchBoard: View {
                     UIExplorerVersionSelector()
                         .transition(.opacity)
                 case .firstActivityModelIteration:
-                    FirstActivityModelIterationView()
+                    Text("No more content. Sorry ...")
                         .transition(.opacity)
                 case .gameEngineKitNewSystem:
                     GEKNewSystemView()
@@ -57,24 +57,12 @@ struct UIExplorerVersionSelector: View {
             VStack(spacing: 50) {
                 HStack(spacing: 200) {
                     Button {
-                        router.currentVersion = .firstActivityModelIteration
-                    } label: {
-                        VStack(spacing: 20) {
-                            Image(systemName: "1.circle")
-                                .resizable()
-                                .activityIconImageModifier(diameter: 250, padding: 0)
-                            Text("First Acvitivy\nModel Iteration")
-                                .font(.body)
-                        }
-                    }
-
-                    Button {
                         router.currentVersion = .gameEngineKitNewSystem
                     } label: {
                         VStack(spacing: 20) {
                             Image(systemName: "2.circle")
                                 .resizable()
-                                .activityIconImageModifier(diameter: 250, padding: 0)
+                                .scaledToFit()
                             Text("New GameEngineKit\nSystem")
                                 .font(.body)
                         }
