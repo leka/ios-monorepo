@@ -1,0 +1,12 @@
+# Leka - iOS Monorepo
+# Copyright 2023 APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+id: 1a8e3ec59d0b4b0599b712343caeea6f
+name: Remote Arrow
+description: La commande fléchée de contrôler les mouvements et les lumières dans 4 directions prédéfinies
+image: activity_color_recognition_1
+sequence:
+  - exercises:
+      - instructions: Contrôle Leka avec la télécommande et fais le changer de couleur
+        interface: remoteArrow

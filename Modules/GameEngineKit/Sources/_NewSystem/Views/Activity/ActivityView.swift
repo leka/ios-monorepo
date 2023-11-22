@@ -120,6 +120,9 @@ public struct ActivityView: View {
 
             case .remoteStandard:
                 RemoteStandard.MainView()
+
+            case .remoteArrow:
+                RemoteArrowView()
         }
     }
 
