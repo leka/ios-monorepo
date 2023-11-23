@@ -2,14 +2,12 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import DesignKit
+import RobotKit
 import SwiftUI
 
-public enum Reinforcer: CaseIterable {
-    case spinBlinkGreenOff
-    case spinBlinkBlueViolet
-    case fire
-    case sprinkles
-    case rainbow
+// TODO(@ladislas): decide where to put this, keeping it here for now
+extension Robot.Reinforcer {
 
     public func icon() -> Image {
         switch self {
@@ -25,4 +23,22 @@ public enum Reinforcer: CaseIterable {
                 return DesignKitAsset.Reinforcers.rainbow.swiftUIImage
         }
     }
+
+}
+
+struct ReinforcerButton: View {
+    var reinforcer: Robot.Reinforcer
+    let robot = Robot.shared
+
+    var body: some View {
+        Button {
+            robot.run(reinforcer)
+        } label: {
+            reinforcer.icon()
+        }
+    }
+}
+
+#Preview {
+    ReinforcerButton(reinforcer: .fire)
 }

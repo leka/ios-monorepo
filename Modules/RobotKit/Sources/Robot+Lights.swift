@@ -66,6 +66,24 @@ extension Robot {
         case spot(Spot.Position, ids: [UInt8], in: Color)
         case range(start: UInt8, end: UInt8, in: Color)
 
+        public var color: Robot.Color {
+            switch self {
+                case let .all(color),
+                    let .full(_, color),
+                    let .halfLeft(color),
+                    let .halfRight(color),
+                    let .quarterFrontLeft(color),
+                    let .quarterFrontRight(color),
+                    let .quarterBackLeft(color),
+                    let .quarterBackRight(color),
+                    let .earLeft(color),
+                    let .earRight(color),
+                    let .spot(_, _, color),
+                    let .range(_, _, color):
+                    return color
+            }
+        }
+
         static func spot(on position: Spot.Position, ids: UInt8..., in color: Color) -> Self {
             .spot(position, ids: ids, in: color)
         }
@@ -203,6 +221,36 @@ extension Robot {
 
         connectedPeripheral?
             .sendCommand(output)
+    }
+
+    public func blacken(_ lights: Lights) {
+        log.trace("🤖 BLACKEN \(lights)")
+        switch lights {
+            case .all:
+                shine(.all(in: .black))
+            case .full(let position, _):
+                shine(.full(position, in: .black))
+            case .halfLeft:
+                shine(.halfLeft(in: .black))
+            case .halfRight:
+                shine(.halfRight(in: .black))
+            case .quarterFrontLeft:
+                shine(.quarterFrontLeft(in: .black))
+            case .quarterFrontRight:
+                shine(.quarterFrontRight(in: .black))
+            case .quarterBackLeft:
+                shine(.quarterBackLeft(in: .black))
+            case .quarterBackRight:
+                shine(.quarterBackRight(in: .black))
+            case .earLeft:
+                shine(.earLeft(in: .black))
+            case .earRight:
+                shine(.earRight(in: .black))
+            case .spot(let position, let ids, _):
+                shine(.spot(position, ids: ids, in: .black))
+            case .range(let start, let end, _):
+                shine(.range(start: start, end: end, in: .black))
+        }
     }
 
     public func blacken(_ lights: Lights.Blacken) {

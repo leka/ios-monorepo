@@ -15,6 +15,7 @@ extension Exercise {
         case dragAndDropToAssociate
         case placeholderNoGameplay
         case danceFreeze
+        case remoteStandard
     }
 
 }
