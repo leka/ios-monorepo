@@ -16,6 +16,7 @@ extension Exercise {
         case placeholderNoGameplay
         case danceFreeze
         case remoteStandard
+        case remoteArrow
     }
 
 }

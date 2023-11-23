@@ -35,6 +35,7 @@ let kActivities: [Activity] = [
     ContentKit.decodeActivity("activity-dragAndDropToAssociate-mixed-images"),
 
     ContentKit.decodeActivity("remote-standard"),
+    ContentKit.decodeActivity("remote-arrow"),
 ]
 
 struct GEKNewSystemView: View {

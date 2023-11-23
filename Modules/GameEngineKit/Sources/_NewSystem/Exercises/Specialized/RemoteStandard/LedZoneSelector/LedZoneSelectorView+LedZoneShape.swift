@@ -8,6 +8,7 @@ import SwiftUI
 extension LedZoneSelectorView {
 
     struct LedZoneShape: Shape {
+
         let section: Robot.Lights
 
         func path(in rect: CGRect) -> Path {
@@ -23,6 +24,7 @@ extension LedZoneSelectorView {
 
             return path
         }
+
     }
 
 }
