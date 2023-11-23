@@ -13,7 +13,6 @@ extension Exercise {
         case observeThenTouchToSelect
         case dragAndDropIntoZones
         case dragAndDropToAssociate
-        case placeholderNoGameplay
         case danceFreeze
         case remoteStandard
         case remoteArrow

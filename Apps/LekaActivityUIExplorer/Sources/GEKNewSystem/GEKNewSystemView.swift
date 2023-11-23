@@ -11,7 +11,6 @@ let kActivities: [Activity] = [
     // ? touchToSelect: activity-touchToSelect-<number_of_answers>-<answer_type>
     // ? dragAndDropIntoZones:   activity-dragAndDropIntoZones-<number_of_zones>-<number_of_answers>-<answer_type>
 
-    ContentKit.decodeActivity("activity-placeholderNoGameplay-no_payload"),
     ContentKit.decodeActivity("activity-medley"),
     ContentKit.decodeActivity("activity-colorBingo"),
     ContentKit.decodeActivity("activity-danceFreeze"),

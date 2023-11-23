@@ -40,9 +40,6 @@ public struct Exercise: Codable {
             case (.dragAndDropToAssociate, .associateCategories):
                 payload = try container.decode(DragAndDropToAssociate.Payload.self, forKey: .payload)
 
-            case (.placeholderNoGameplay, .none):
-                payload = nil
-
             case (.danceFreeze, .none):
                 payload = try container.decode(AudioRecordingPlayer.Payload.self, forKey: .payload)
 

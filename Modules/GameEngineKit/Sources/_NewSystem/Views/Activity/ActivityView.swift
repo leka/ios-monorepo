@@ -106,12 +106,6 @@ public struct ActivityView: View {
                     data: viewModel.currentExerciseSharedData
                 )
 
-            case .placeholderNoGameplay:
-                PlaceholderNoGameplayView(
-                    exercise: viewModel.currentExercise,
-                    data: viewModel.currentExerciseSharedData
-                )
-
             case .danceFreeze:
                 DanceFreeze.MainView(
                     exercise: viewModel.currentExercise,
