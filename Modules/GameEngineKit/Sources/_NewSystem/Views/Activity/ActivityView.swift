@@ -117,6 +117,12 @@ public struct ActivityView: View {
 
             case .remoteArrow:
                 RemoteArrowView()
+
+            case .hideAndSeek:
+                HideAndSeekView(
+                    exercise: viewModel.currentExercise,
+                    data: viewModel.currentExerciseSharedData
+                )
         }
     }
 
