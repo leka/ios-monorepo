@@ -1,0 +1,159 @@
+{
+    "properties": {
+        "uuid": {
+            "type": "string"
+        },
+        "name": {
+            "type": "string"
+        },
+        "authors": {
+            "elements": {
+                "ref": "$author"
+            }
+        },
+        "skills": {
+            "elements": {
+                "ref": "$skill"
+            }
+        },
+        "tags": {
+            "elements": {
+                "ref": "$tag"
+            }
+        },
+        "locales": {
+            "elements": {
+                "ref": "$locale"
+            }
+        },
+        "l10n": {
+            "elements": {
+                "ref": "$l10n"
+            }
+        },
+        "gameengine": {
+            "properties": {
+                "shuffle_exercises": {
+                    "type": "boolean"
+                },
+                "shuffle_sequences": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "exercises": {
+            "elements": {
+                "ref": "$group"
+            }
+        }
+    },
+    "definitions": {
+        "$author": {
+            "enum": [
+                "leka_at_apf_france_handicap",
+                "aurore_kiesler",
+                "julie_tuil"
+            ]
+        },
+        "$locale": {
+            "enum": [
+                "en_US",
+                "fr_FR"
+            ]
+        },
+        "$l10n": {
+            "properties": {
+                "locale": {
+                    "ref": "$locale"
+                },
+                "details": {
+                    "ref": "$l10n/details"
+                }
+            }
+        },
+        "$l10n/details": {
+            "properties": {
+                "icon": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "subtitle": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "instructions": {
+                    "type": "string"
+                }
+            }
+        },
+        "$skill": {
+            "type": "string"
+        },
+        "$tag": {
+            "type": "string"
+        },
+        "$group": {
+            "properties": {
+                "group": {
+                    "elements": {
+                        "ref": "$exercise"
+                    }
+                }
+            }
+        },
+        "$exercise": {
+            "properties": {
+                "instructions": {
+                    "ref": "$exercise/instructions"
+                },
+                "interface": {
+                    "ref": "$exercise/interface"
+                },
+                "gameplay": {
+                    "ref": "$exercise/gameplay"
+                },
+                "payload": {
+                    "ref": "$exercise/payload"
+                }
+            }
+        },
+        "$exercise/instructions": {
+            "elements": {
+                "properties": {
+                    "locale": {
+                        "ref": "$locale"
+                    },
+                    "value": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "$exercise/interface": {
+            "enum": [
+                "touchToSelect",
+                "robotThenTouchToSelect",
+                "listenThenTouchToSelect",
+                "observeThenTouchToSelect",
+                "dragAndDropIntoZones",
+                "dragAndDropToAssociate",
+                "danceFreeze",
+                "remoteStandard",
+                "remoteArrow"
+            ]
+        },
+        "$exercise/gameplay": {
+            "enum": [
+                "findTheRightAnswers",
+                "associateCategories"
+            ]
+        },
+        "$exercise/payload": {
+            "type": "string"
+        }
+    }
+}
