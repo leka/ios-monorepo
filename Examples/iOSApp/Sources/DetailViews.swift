@@ -4,25 +4,43 @@
 
 import SwiftUI
 
-struct FruitsDetailView: View {
+struct FruitInfoView: View {
+    let fruit: Fruit
 
-    struct FruitInfoView: View {
-        let fruit: Fruit
+    var body: some View {
+        VStack {
+            Text("Info view for **\(fruit.name)**")
 
-        var body: some View {
             VStack {
-                Text("Info view for **\(fruit.name)**")
-
-                VStack {
-                    ForEach(fruit.subFruits ?? []) { subFruit in
-                        NavigationLink(value: subFruit) {
-                            Text(subFruit.name)
-                        }
+                ForEach(fruit.subFruits ?? []) { subFruit in
+                    NavigationLink(value: subFruit) {
+                        Text(subFruit.name)
                     }
                 }
             }
         }
     }
+}
+
+struct AnimalInfoView: View {
+    let animal: Animal
+
+    var body: some View {
+        VStack {
+            Text("Info view for **\(animal.name)**")
+
+            VStack {
+                ForEach(animal.friends ?? []) { friend in
+                    NavigationLink(value: friend) {
+                        Text(friend.name)
+                    }
+                }
+            }
+        }
+    }
+}
+
+struct FruitsDetailView: View {
 
     @EnvironmentObject var navigation: Navigation
 
@@ -58,24 +76,6 @@ struct FruitsDetailView: View {
 }
 
 struct AnimalsDetailView: View {
-
-    struct AnimalInfoView: View {
-        let animal: Animal
-
-        var body: some View {
-            VStack {
-                Text("Info view for **\(animal.name)**")
-
-                VStack {
-                    ForEach(animal.friends ?? []) { friend in
-                        NavigationLink(value: friend) {
-                            Text(friend.name)
-                        }
-                    }
-                }
-            }
-        }
-    }
 
     @EnvironmentObject var navigation: Navigation
 
@@ -121,7 +121,7 @@ struct ActionsDetailView: View {
                 .font(.title)
 
             VStack(spacing: 20) {
-                Button("Go to Fruits/Apple") {
+                Button("Go to Category:Fruits - Apple") {
                     navigation.selectedCategory = .fruits
                     // ? Not working
                     // navigation.path.append(fruits[0])
@@ -131,7 +131,7 @@ struct ActionsDetailView: View {
                     }
                 }
 
-                Button("Go to Animals/Dog") {
+                Button("Go to Category:Animals - Dog") {
                     navigation.selectedCategory = .animals
                     // ? Not working
                     // navigation.path.append(animals[1])
@@ -140,7 +140,28 @@ struct ActionsDetailView: View {
                         navigation.path.append(animals[1])
                     }
                 }
+
+                Button("Go to Category:Actions - Cat/Apple/Dog/Banana") {
+                    navigation.path.append(animals[0])
+                    navigation.path.append(fruits[0])
+                    navigation.path.append(animals[1])
+                    navigation.path.append(fruits[1])
+                }
             }
+        }
+        .navigationDestination(for: Animal.self) { animal in
+            VStack(spacing: 20) {
+                AnimalInfoView(animal: animal)
+                Text("Current path: \(String(describing: navigation.path))")
+            }
+            .navigationTitle("\(animal.name)")
+        }
+        .navigationDestination(for: Fruit.self) { fruit in
+            VStack(spacing: 20) {
+                FruitInfoView(fruit: fruit)
+                Text("Current path: \(String(describing: navigation.path))")
+            }
+            .navigationTitle("\(fruit.name)")
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(.mint)
