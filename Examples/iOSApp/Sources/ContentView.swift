@@ -2,17 +2,50 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
-import Module
+import Combine
 import SwiftUI
 
 struct ContentView: View {
+
+    @EnvironmentObject var navigation: Navigation
+
     var body: some View {
-        HelloView(color: .mint, name: "iOS App Example")
+        NavigationSplitView {
+            List(navigation.categories, id: \.self, selection: $navigation.selectedCategory) { category in
+                Text(category.rawValue)
+                    .tag(category)
+                    .onTapGesture {
+                        navigation.selectedCategory = category
+                        print("Selected category: \(navigation.selectedCategory?.rawValue ?? "n/a")")
+                    }
+            }
+            .listStyle(SidebarListStyle())
+            .navigationTitle("Categories")
+        } detail: {
+            NavigationStack(path: $navigation.path) {
+                Group {
+                    if let selectedCategory = navigation.selectedCategory {
+                        switch selectedCategory {
+                            case .fruits:
+                                FruitsDetailView()
+                            case .animals:
+                                AnimalsDetailView()
+                            case .actions:
+                                ActionsDetailView()
+                        }
+                    } else {
+                        Text("Select a category")
+                    }
+                }
+            }
+        }
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
+#Preview {
+    let navigation: Navigation = Navigation()
+
+    return ContentView()
+        .environmentObject(navigation)
+        .previewInterfaceOrientation(.landscapeLeft)
 }
