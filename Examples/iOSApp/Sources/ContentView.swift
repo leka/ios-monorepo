@@ -7,24 +7,27 @@ import SwiftUI
 
 struct ContentView: View {
 
-    @EnvironmentObject var navigation: Navigation
+    //    @EnvironmentObject var navigation: Navigation
+
+    @ObservedObject var navigation = Navigation.shared
 
     var body: some View {
         NavigationSplitView {
-            List(navigation.categories, id: \.self, selection: $navigation.selectedCategory) { category in
+            List(navigation.categories, id: \.self, selection: $navigation.coordinator.category) { category in
                 Text(category.rawValue)
                     .tag(category)
                     .onTapGesture {
-                        navigation.selectedCategory = category
+                        //                        navigation.selectedCategory = category
+                        navigation.set(category: category)
                         print("Selected category: \(navigation.selectedCategory?.rawValue ?? "n/a")")
                     }
             }
             .listStyle(SidebarListStyle())
             .navigationTitle("Categories")
         } detail: {
-            NavigationStack(path: $navigation.path) {
+            NavigationStack(path: $navigation.coordinator.path) {
                 Group {
-                    if let selectedCategory = navigation.selectedCategory {
+                    if let selectedCategory = navigation.coordinator.category {
                         switch selectedCategory {
                             case .fruits:
                                 FruitsDetailView()
@@ -39,13 +42,14 @@ struct ContentView: View {
                 }
             }
         }
+        .id(navigation.coordinator.category)
     }
 }
 
 #Preview {
-    let navigation: Navigation = Navigation()
+    //    let navigation: Navigation = Navigation()
 
-    return ContentView()
-        .environmentObject(navigation)
+    ContentView()
+        //        .environmentObject(navigation)
         .previewInterfaceOrientation(.landscapeLeft)
 }

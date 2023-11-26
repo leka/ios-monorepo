@@ -42,7 +42,9 @@ struct AnimalInfoView: View {
 
 struct FruitsDetailView: View {
 
-    @EnvironmentObject var navigation: Navigation
+    //    @EnvironmentObject var navigation: Navigation
+
+    var navigation = Navigation.shared
 
     var body: some View {
         VStack(spacing: 50) {
@@ -58,15 +60,16 @@ struct FruitsDetailView: View {
                 }
             }
             Button("Go to Apple/Banana") {
-                navigation.path.append(fruits[0])
-                navigation.path.append(fruits[1])
+
+                //                navigation.path.append(fruits[0])
+                //                navigation.path.append(fruits[1])
+                navigation.set(path: fruits[0], fruits[1], for: .fruits)
             }
 
         }
         .navigationDestination(for: Fruit.self) { fruit in
             VStack(spacing: 20) {
                 FruitInfoView(fruit: fruit)
-                Text("Current path: \(String(describing: navigation.path))")
             }
             .navigationTitle("\(fruit.name)")
         }
@@ -101,7 +104,6 @@ struct AnimalsDetailView: View {
         .navigationDestination(for: Animal.self) { animal in
             VStack(spacing: 20) {
                 AnimalInfoView(animal: animal)
-                Text("Current path: \(String(describing: navigation.path))")
             }
             .navigationTitle("\(animal.name)")
         }
@@ -122,44 +124,42 @@ struct ActionsDetailView: View {
 
             VStack(spacing: 20) {
                 Button("Go to Category:Fruits - Apple") {
-                    navigation.selectedCategory = .fruits
-                    // ? Not working
-                    // navigation.path.append(fruits[0])
-                    // ? Current workaround
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                        navigation.path.append(fruits[1])
-                    }
+                    navigation.set(path: fruits[1], for: .fruits)
+                    //                    navigation.selectedCategory = .fruits
+                    //                    // ? Not working
+                    //                    // navigation.path.append(fruits[0])
+                    //                    // ? Current workaround
+                    //                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    //                        navigation.path.append(fruits[1])
+                    //                    }
                 }
 
                 Button("Go to Category:Animals - Dog") {
                     navigation.selectedCategory = .animals
+                    navigation.set(category: .animals)
                     // ? Not working
                     // navigation.path.append(animals[1])
                     // ? Current workaround
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                        navigation.path.append(animals[1])
+//                        navigation.path.append(animals[1])
+                        navigation.setPath(path: animals[1])
                     }
                 }
 
                 Button("Go to Category:Actions - Cat/Apple/Dog/Banana") {
-                    navigation.path.append(animals[0])
-                    navigation.path.append(fruits[0])
-                    navigation.path.append(animals[1])
-                    navigation.path.append(fruits[1])
+                    navigation.setPath(path: animals[0], fruits[0], animals[1], fruits[1])
                 }
             }
         }
         .navigationDestination(for: Animal.self) { animal in
             VStack(spacing: 20) {
                 AnimalInfoView(animal: animal)
-                Text("Current path: \(String(describing: navigation.path))")
             }
             .navigationTitle("\(animal.name)")
         }
         .navigationDestination(for: Fruit.self) { fruit in
             VStack(spacing: 20) {
                 FruitInfoView(fruit: fruit)
-                Text("Current path: \(String(describing: navigation.path))")
             }
             .navigationTitle("\(fruit.name)")
         }
