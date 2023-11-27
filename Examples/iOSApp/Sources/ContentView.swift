@@ -55,9 +55,15 @@ struct ContentView: View {
                     Text("Hello, Home!")
                         .navigationTitle("What's new?")
                 case .activities:
-                    ActivityListView()
+                    // ? Fix animation w/ multiple navigation stacks, see https://developer.apple.com/forums/thread/728132
+                    NavigationStack(path: $navigation.activitiesNavPath.animation(.linear(duration: 0))) {
+                        ActivityListView()
+                    }
                 case .curriculums:
-                    CurriculumListView()
+                    // ? Fix animation w/ multiple navigation stacks, see https://developer.apple.com/forums/thread/728132
+                    NavigationStack(path: $navigation.curriculumsNavPath.animation(.linear(duration: 0))) {
+                        CurriculumListView()
+                    }
                 case .none:
                     Text("Select a category")
             }
