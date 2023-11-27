@@ -33,19 +33,16 @@ class ContentViewViewModel: ObservableObject {
 
 struct ContentView: View {
 
-    @EnvironmentObject var navigation: Navigation
+    @ObservedObject var navigation: Navigation = Navigation.shared
 
     @StateObject var viewModel = ContentViewViewModel()
 
     var body: some View {
         NavigationSplitView {
             List(navigation.categories, selection: $navigation.selectedCategory) { category in
-                Label(viewModel.titleForCategory(category), systemImage: viewModel.imageForCategory(category))
-                    .tag(category)
-                    .onTapGesture {
-                        // TODO(@ladislas): handle double tap to go back to root
-                        navigation.selectCategory(category)
-                    }
+                NavigationLink(value: category) {
+                    Label(viewModel.titleForCategory(category), systemImage: viewModel.imageForCategory(category))
+                }
             }
             .listStyle(.sidebar)
             .navigationTitle("Categories")
