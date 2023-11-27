@@ -36,7 +36,7 @@ struct CurriculumInfoView: View {
     let curriculum: Curriculum
 
     var body: some View {
-        VStack {
+        VStack(spacing: 50) {
             List {
                 Section("Info") {
                     Text("Name: \(curriculum.name)")
@@ -64,7 +64,15 @@ struct CurriculumInfoView: View {
                     }
                 }
             }
+
+            Button("Back to root", systemImage: "arrow.backward.circle") {
+                Navigation.shared.backToRoot()
+            }
+            .buttonStyle(.bordered)
+
+            Spacer()
         }
         .navigationTitle("\(curriculum.name)")
     }
+
 }

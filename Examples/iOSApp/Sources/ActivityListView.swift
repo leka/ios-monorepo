@@ -36,7 +36,7 @@ struct ActivityInfoView: View {
     let activity: Activity
 
     var body: some View {
-        VStack {
+        VStack(spacing: 50) {
             List {
                 Section("Info") {
                     Text("Name: \(activity.name)")
@@ -55,7 +55,15 @@ struct ActivityInfoView: View {
                     }
                 }
             }
+
+            Button("Back to root", systemImage: "arrow.backward.circle") {
+                Navigation.shared.backToRoot()
+            }
+            .buttonStyle(.bordered)
+
+            Spacer()
         }
         .navigationTitle("\(activity.name)")
     }
+
 }

@@ -30,4 +30,17 @@ class Navigation: ObservableObject {
         selectedCategory = newCategory
     }
 
+    public func backToRoot() {
+        switch selectedCategory {
+            case .home:
+                homeNavPath = NavigationPath()
+            case .activities:
+                activitiesNavPath = NavigationPath()
+            case .curriculums:
+                curriculumsNavPath = NavigationPath()
+            case .none:
+                break
+        }
+    }
+
 }

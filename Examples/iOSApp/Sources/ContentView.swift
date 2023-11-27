@@ -43,8 +43,8 @@ struct ContentView: View {
                 Label(viewModel.titleForCategory(category), systemImage: viewModel.imageForCategory(category))
                     .tag(category)
                     .onTapGesture {
+                        // TODO(@ladislas): handle double tap to go back to root
                         navigation.selectCategory(category)
-                        print("Selected category: \(viewModel.titleForCategory(category))")
                     }
             }
             .listStyle(.sidebar)
