@@ -191,6 +191,7 @@ public struct RobotConnectionView: View {
             .resizable()
             .aspectRatio(contentMode: .fill)
             .ignoresSafeArea(.all)
+            .frame(maxWidth: UIScreen.main.bounds.width, maxHeight: UIScreen.main.bounds.height)
     }
 
 }
