@@ -187,9 +187,23 @@ struct ColorsView: View {
             ColorView(color: .pink)
             ColorView(color: .brown)
 
+            Divider()
+            ColorView(color: Color(hex: 0xAFCE36))
+            ColorView(color: Color(hex: 0x0A579B))
+            ColorView(color: Color(hex: 0xCFEBFC))
+
         }
     }
 
+}
+
+extension Color {
+    init(hex: Int, opacity: Double = 1.0) {
+        let red = Double((hex & 0xff0000) >> 16) / 255.0
+        let green = Double((hex & 0xff00) >> 8) / 255.0
+        let blue = Double((hex & 0xff) >> 0) / 255.0
+        self.init(.displayP3, red: red, green: green, blue: blue, opacity: opacity)
+    }
 }
 
 struct UIColorsView: View {
@@ -299,6 +313,9 @@ struct ButtonsView: View {
         .purple,
         .pink,
         .brown,
+        Color(hex: 0xAFCE36),
+        Color(hex: 0x0A579B),
+        Color(hex: 0xCFEBFC),
     ]
 
     var body: some View {
