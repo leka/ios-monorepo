@@ -44,6 +44,7 @@ struct UIExplorerVersionSelector: View {
     @EnvironmentObject var router: Router
 
     @State var presentRobotConnection: Bool = false
+    @State var presentDesignSystem: Bool = false
 
     var body: some View {
         VStack(spacing: 80) {
@@ -76,6 +77,12 @@ struct UIExplorerVersionSelector: View {
                 }
                 .font(.title3)
                 .buttonStyle(.robotControlBorderedButtonStyle(foreground: .green, border: .green))
+
+                Button("Open Design System") {
+                    presentDesignSystem.toggle()
+                }
+                .font(.title3)
+                .buttonStyle(.robotControlBorderedButtonStyle(foreground: .blue, border: .blue))
             }
 
             logoLeka
@@ -83,6 +90,9 @@ struct UIExplorerVersionSelector: View {
         .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
         .fullScreenCover(isPresented: $presentRobotConnection) {
             RobotConnectionView(viewModel: RobotConnectionViewModel())
+        }
+        .fullScreenCover(isPresented: $presentDesignSystem) {
+            DesignSystem()
         }
     }
 
