@@ -21,17 +21,26 @@ class Navigation: ObservableObject {
     @Published var categories = Category.allCases
     @Published var selectedCategory: Category? = .home
 
-    var homeNavPath: NavigationPath = NavigationPath()
-    var activitiesNavPath: NavigationPath = NavigationPath(){
+    @Published var mainPath: NavigationPath = NavigationPath() {
+        willSet {
+            print("WILL SET - mainPath: \(newValue)")
+        }
         didSet {
-            print("DID SET - activitiesNavPath: \(activitiesNavPath)")
+            print("DID SET - mainPath: \(mainPath)")
         }
     }
-    var curriculumsNavPath: NavigationPath = NavigationPath() {
-        didSet {
-            print("DID SET - curriculumsNavPath: \(curriculumsNavPath)")
-        }
-    }
+//
+//    var homeNavPath: NavigationPath = NavigationPath()
+//    var activitiesNavPath: NavigationPath = NavigationPath(){
+//        didSet {
+//            print("DID SET - activitiesNavPath: \(activitiesNavPath)")
+//        }
+//    }
+//    var curriculumsNavPath: NavigationPath = NavigationPath() {
+//        didSet {
+//            print("DID SET - curriculumsNavPath: \(curriculumsNavPath)")
+//        }
+//    }
 
     private var homeNavPathBackup: NavigationPath = NavigationPath()
     private var activitiesNavPathBackup: NavigationPath = NavigationPath()
@@ -45,52 +54,55 @@ class Navigation: ObservableObject {
             .compactMap { $0 }
             .pairwise()
             .sink { (previous, new) in
-                print("Changed category: \(previous) --> \(new)")
+                print("\nChanged category: \(String(describing: previous )) --> \(new)")
 
                 switch previous {
                     case .home:
-                        print("backup homeNavPath")
-                        self.homeNavPathBackup = self.homeNavPath
+                        self.homeNavPathBackup = self.mainPath
+                        print("BACKUP homeNavPath \(self.homeNavPathBackup)")
                     case .activities:
-                        print("backup activitiesNavPath")
-                        self.activitiesNavPathBackup = self.activitiesNavPath
+                        self.activitiesNavPathBackup = self.mainPath
+                        print("BACKUP activitiesNavPath \(self.activitiesNavPathBackup)")
                     case .curriculums:
-                        print("backup curriculumsNavPath")
-                        self.curriculumsNavPathBackup = self.curriculumsNavPath
+                        self.curriculumsNavPathBackup = self.mainPath
+                        print("BACKUP curriculumsNavPath \(self.curriculumsNavPathBackup)")
                     case .none:
                         break
                 }
 
-                switch new {
-                    case .home:
-                        self.homeNavPath = self.homeNavPathBackup
-                        print("restore homeNavPath: \(self.homeNavPath)")
-                    case .activities:
-                        self.activitiesNavPath = self.activitiesNavPathBackup
-                        print("restore activitiesNavPath: \(self.activitiesNavPath)")
-                    case .curriculums:
-                        self.curriculumsNavPath = self.curriculumsNavPathBackup
-                        print("restore curriculumsNavPath \(self.curriculumsNavPath)")
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    
+                    switch new {
+                        case .home:
+                            self.mainPath = self.homeNavPathBackup
+                            print("RESTORE homeNavPath: \(self.mainPath)")
+                        case .activities:
+                            self.mainPath = self.activitiesNavPathBackup
+                            print("RESTORE activitiesNavPath: \(self.mainPath)")
+                        case .curriculums:
+                            self.mainPath = self.curriculumsNavPathBackup
+                            print("RESTORE curriculumsNavPath: \(self.mainPath)")
+                    }
                 }
-
-                self.objectWillChange.send()
+//                self.objectWillChange.send()
 
             }
             .store(in: &cancellables)
     }
 
     public func backToRoot() {
-        switch selectedCategory {
-            case .home:
-                homeNavPath = NavigationPath()
-            case .activities:
-                activitiesNavPath = NavigationPath()
-            case .curriculums:
-                curriculumsNavPath = NavigationPath()
-            case .none:
-                break
-        }
-        objectWillChange.send()
+        mainPath = NavigationPath()
+//        switch selectedCategory {
+//            case .home:
+//                mainPath = NavigationPath()
+//            case .activities:
+//                activitiesNavPath = NavigationPath()
+//            case .curriculums:
+//                curriculumsNavPath = NavigationPath()
+//            case .none:
+//                break
+//        }
+//        objectWillChange.send()
     }
 
 }
