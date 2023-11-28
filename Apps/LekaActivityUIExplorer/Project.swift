@@ -8,6 +8,7 @@ import ProjectDescriptionHelpers
 // Creates our project using a helper function defined in ProjectDescriptionHelpers
 let project = Project.iOSApp(
     name: "LekaActivityUIExplorer",
+    deploymentTarget: .iOS(targetVersion: "17.0", devices: .ipad),
     dependencies: [
         .project(target: "DesignKit", path: Path("../../Modules/DesignKit")),
         .project(target: "GameEngineKit", path: Path("../../Modules/GameEngineKit")),
