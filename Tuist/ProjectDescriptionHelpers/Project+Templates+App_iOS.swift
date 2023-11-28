@@ -9,6 +9,7 @@ extension Project {
     public static func iOSApp(
         name: String,
         version: String = "1.0.0",
+        deploymentTarget: DeploymentTarget = .iOS(targetVersion: "16.0", devices: .ipad),
         dependencies: [TargetDependency],
         infoPlist: [String: InfoPlist.Value] = [:],
         options: Options = .options(),
@@ -21,7 +22,7 @@ extension Project {
             platform: .iOS,
             product: .app,
             bundleId: "io.leka.apf.app.\(name)",
-            deploymentTarget: .iOS(targetVersion: "16.0", devices: .ipad),
+            deploymentTarget: deploymentTarget,
             infoPlist: .extendingDefault(with: appInfoPlist),
             sources: ["Sources/**"],
             resources: ["Resources/**"],
