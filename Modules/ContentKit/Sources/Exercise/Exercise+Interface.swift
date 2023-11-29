@@ -16,6 +16,7 @@ extension Exercise {
         case danceFreeze
         case remoteStandard
         case remoteArrow
+        case hideAndSeek
     }
 
 }
