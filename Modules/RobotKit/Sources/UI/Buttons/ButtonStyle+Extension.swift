@@ -53,10 +53,12 @@ public struct RobotControlPlainButtonStyle: ButtonStyle {
 public struct RobotControlBorderedButtonStyle: ButtonStyle {
     private let foreground: Color
     private let border: Color
+    private let background: Color
 
-    init(foreground: Color?, border: Color?) {
+    init(foreground: Color?, border: Color?, background: Color? = nil) {
         self.foreground = foreground ?? .accentColor
         self.border = border ?? .accentColor
+        self.background = background ?? .clear
     }
 
     public func makeBody(configuration: Configuration) -> some View {
@@ -66,7 +68,7 @@ public struct RobotControlBorderedButtonStyle: ButtonStyle {
         .padding(.vertical, 7)
         .padding(.horizontal, 20)
         .foregroundColor(foreground)
-        .background(.white)
+        .background(background)
         .cornerRadius(10)
         .overlay(
             RoundedRectangle(cornerRadius: 10)
