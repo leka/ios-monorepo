@@ -27,8 +27,6 @@ struct ContinuousProgressBar: View {
     }
 }
 
-struct ContinuousProgressBar_Previews: PreviewProvider {
-    static var previews: some View {
-        ContinuousProgressBar(progress: 0.5)
-    }
+#Preview {
+    ContinuousProgressBar(progress: 0.5)
 }
