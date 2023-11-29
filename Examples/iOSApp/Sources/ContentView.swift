@@ -7,18 +7,24 @@ import SwiftUI
 
 class ViewModel: ObservableObject {
 
-    var number1: Int = 42
+    var number1: Int = 42 {
+        willSet {
+            print("WILL SET - number 1 - \(number1) -> \(newValue)")
+            guard newValue == 4 else { return }
+            objectWillChange.send()
+            print("WILL SET - calling objectWillChange.send()")
+        }
+    }
     var number2: Int = 1337
 
     func randomize() {
-        number1 = Int.random(in: 0...100)
+        number1 = Int.random(in: 0...4)
         number2 = Int.random(in: 0...100)
         print("randomized numbers \(number1) - \(number2)")
     }
 
     func update() {
         objectWillChange.send()
-        print("updated numbers \(number1) - \(number2)")
     }
 
 }
