@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import ContentKit
+import RobotKit
 import SwiftUI
 
 public struct ActivityView: View {
@@ -64,6 +65,12 @@ public struct ActivityView: View {
                     .disabled(viewModel.isLastExercise)
                 }
             }
+        }
+        .onAppear {
+            Robot.shared.stop()
+        }
+        .onDisappear {
+            Robot.shared.stop()
         }
     }
 
