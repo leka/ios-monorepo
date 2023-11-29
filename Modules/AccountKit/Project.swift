@@ -12,6 +12,7 @@ let project = Project.module(
     dependencies: [
         .project(target: "DesignKit", path: Path("../../Modules/DesignKit")),
         .project(target: "LogKit", path: Path("../../Modules/LogKit")),
+        .external(name: "FirebaseAuthCombine-Community"),
     ],
     examples: [
         ModuleExample(

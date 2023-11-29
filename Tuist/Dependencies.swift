@@ -42,6 +42,10 @@ let dependencies = Dependencies(
             url: "https://github.com/mxcl/Version",
             requirement: .exact("2.0.1")
         ),
+        .remote(
+            url: "https://github.com/firebase/firebase-ios-sdk",
+            requirement: .exact("10.19.0")
+        ),
     ]),
     platforms: [.iOS, .macOS]
 )
