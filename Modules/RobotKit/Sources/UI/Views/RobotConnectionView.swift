@@ -25,34 +25,32 @@ public struct RobotConnectionView: View {
 
     public var body: some View {
         NavigationStack {
-            ZStack {
-                backgroundView
-                VStack(spacing: 10) {
-                    switch viewModel.robotDiscoveries.count {
-                        case 0:
-                            Spacer()
-                            searchingView
-                            Spacer()
-                        default:
-                            robotDiscoveryGridView
-                    }
-
-                    Divider()
-                        .padding(.horizontal)
-                        .padding(.horizontal)
-
-                    HStack {
-                        if !viewModel.connected {
-                            connectButton
-                        } else {
-                            disconnectButton
-                        }
-                        continueButton
-                    }
-                    .padding(.top, 15)
-                    .padding(.bottom, 40)
+            VStack(spacing: 10) {
+                switch viewModel.robotDiscoveries.count {
+                    case 0:
+                        Spacer()
+                        searchingView
+                        Spacer()
+                    default:
+                        robotDiscoveryGridView
                 }
+
+                Divider()
+                    .padding(.horizontal)
+                    .padding(.horizontal)
+
+                HStack {
+                    if !viewModel.connected {
+                        connectButton
+                    } else {
+                        disconnectButton
+                    }
+                    continueButton
+                }
+                .padding(.top, 15)
+                .padding(.bottom, 40)
             }
+            .background(BackgroundView())
             .onAppear {
                 viewModel.scanForRobots()
             }
@@ -186,13 +184,14 @@ public struct RobotConnectionView: View {
         }
     }
 
-    var backgroundView: some View {
-        DesignKitAsset.Images.interfaceCloud.swiftUIImage
-            .resizable()
-            .aspectRatio(contentMode: .fill)
-            .ignoresSafeArea(.all)
+    struct BackgroundView: View {
+        var body: some View {
+            DesignKitAsset.Images.interfaceCloud.swiftUIImage
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .ignoresSafeArea(.all)
+        }
     }
-
 }
 
 #Preview {
