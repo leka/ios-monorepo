@@ -36,6 +36,8 @@ let kActivities: [Activity] = [
     ContentKit.decodeActivity("remote-standard"),
     ContentKit.decodeActivity("remote-arrow"),
     ContentKit.decodeActivity("activity-hideAndSeek"),
+    ContentKit.decodeActivity("activity-xylophone-pentatonic"),
+    ContentKit.decodeActivity("activity-xylophone-heptatonic"),
 ]
 
 struct GEKNewSystemView: View {

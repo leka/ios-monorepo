@@ -4,22 +4,19 @@
 
 import AVFAudio
 import AudioKit
+import ContentKit
 import SwiftUI
 
 class MIDIPlayer: ObservableObject {
-    public let name: String
-
     private let engine = AudioEngine()
     private let sampler = MIDISampler()
     private let sequencer = AppleSequencer()
     private let instrument = MIDICallbackInstrument()
 
-    init(name: String, samples: [MIDISample]) {
-        self.name = name
-
+    init(instrument: MIDIInstrument) {
         engine.output = sampler
 
-        loadInstrument(samples: samples)
+        loadInstrument(samples: instrument.samples)
         startAudioEngine()
     }
 

@@ -123,6 +123,12 @@ public struct ActivityView: View {
                     exercise: viewModel.currentExercise,
                     data: viewModel.currentExerciseSharedData
                 )
+
+            case .musicalInstruments:
+                MusicalInstrumentView(
+                    exercise: viewModel.currentExercise,
+                    data: viewModel.currentExerciseSharedData
+                )
         }
     }
 
