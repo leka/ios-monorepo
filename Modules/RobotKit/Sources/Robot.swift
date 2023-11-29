@@ -50,6 +50,8 @@ public class Robot {
 
     public func stop() {
         log.trace("🤖 STOP 🛑 - Everything")
+        stopLights()
+        stopMotion()
     }
 
     public func reboot() {
