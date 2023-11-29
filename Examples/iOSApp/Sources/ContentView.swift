@@ -8,19 +8,26 @@ import SwiftUI
 class ViewModel: ObservableObject {
 
     var number1: Int = 42 {
+        // ? Use willSet or didSet but not both at the same time
         willSet {
-            print("WILL SET - number 1 - \(number1) -> \(newValue)")
             guard newValue == 4 else { return }
+            print("WILL SET - newValue == 4 - calling objectWillChange.send()")
             objectWillChange.send()
-            print("WILL SET - calling objectWillChange.send()")
         }
+
+        // didSet {
+        //     guard number1 == 4 else { return }
+        //     print("DID SET - newValue == 4 - calling objectWillChange.send()")
+        //     objectWillChange.send()
+        // }
     }
     var number2: Int = 1337
 
     func randomize() {
+        print("\nBEFORE randomizing numbers \(number1) - \(number2)")
         number1 = Int.random(in: 0...4)
         number2 = Int.random(in: 0...100)
-        print("randomized numbers \(number1) - \(number2)")
+        print("AFTER randomizing numbers \(number1) - \(number2)")
     }
 
     func update() {
@@ -41,6 +48,9 @@ struct ContentView: View {
             }
             .onChange(of: viewModel.number2) { [oldValue = viewModel.number2] newValue in
                 print("ON CHANGE - number 2 - \(oldValue) -> \(newValue)")
+            }
+            .onReceive(viewModel.objectWillChange) {
+                print("ON RECEIVE - objectWillChange - \(viewModel)")
             }
 
         Button("Randomize") {
