@@ -2,29 +2,20 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
-import AVFAudio
 import AudioKit
-import SwiftUI
 
-struct MIDISample {
-    var fileName: String
-    var midiNote: Int
-    var audioFile: AVAudioFile?
+enum MIDIInstrument: String {
+    case xylophone
 
-    init(file: String, note: Int) {
-        fileName = file
-        midiNote = note
-
-        guard let fileURL = Bundle.module.resourceURL?.appendingPathComponent(file) else { return }
-        do {
-            audioFile = try AVAudioFile(forReading: fileURL)
-        } catch {
-            Log("Could not load: \(fileName)")
+    var samples: [MIDISample] {
+        switch self {
+            case .xylophone:
+                xyloSamples
         }
     }
 }
 
-let xyloSamples: [MIDISample] =
+private let xyloSamples: [MIDISample] =
     [
         MIDISample(file: "Xylo-24-C1.wav", note: 24),
         MIDISample(file: "Xylo-25-C#1.wav", note: 25),

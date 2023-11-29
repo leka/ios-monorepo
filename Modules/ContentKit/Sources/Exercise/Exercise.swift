@@ -46,6 +46,9 @@ public struct Exercise: Codable {
             case (.hideAndSeek, .none):
                 payload = try container.decode(HideAndSeek.Payload.self, forKey: .payload)
 
+            case (.musicalInstruments, .none):
+                payload = try container.decode(MusicalInstrument.Payload.self, forKey: .payload)
+
             case (.remoteStandard, .none),
                 (.remoteArrow, .none):
                 payload = nil

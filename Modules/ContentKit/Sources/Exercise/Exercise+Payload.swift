@@ -11,3 +11,4 @@ extension DragAndDropIntoZones.Payload: ExercisePayloadProtocol {}
 extension DragAndDropToAssociate.Payload: ExercisePayloadProtocol {}
 extension AudioRecordingPlayer.Payload: ExercisePayloadProtocol {}
 extension HideAndSeek.Payload: ExercisePayloadProtocol {}
+extension MusicalInstrument.Payload: ExercisePayloadProtocol {}

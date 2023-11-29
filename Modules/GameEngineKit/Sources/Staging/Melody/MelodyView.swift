@@ -2,8 +2,15 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
-import DesignKit
+import AudioKit
+import RobotKit
 import SwiftUI
+
+public struct XylophoneTile: Identifiable {
+    public var id: Int
+    var noteNumber: MIDINoteNumber
+    var color: Robot.Color
+}
 
 public let kListOfTiles: [XylophoneTile] = [
     XylophoneTile(id: 0, noteNumber: 24, color: .pink),
@@ -19,7 +26,7 @@ public struct MelodyView: View {
     @ObservedObject private var viewModel: MelodyViewModel
 
     let defaultTilesSpacing: CGFloat = 16
-    let tilesNumber = 7
+    let tileNumber = 7
 
     public init(gameplay: MelodyGameplay) {
         self.viewModel = MelodyViewModel(gameplay: gameplay)
@@ -36,9 +43,11 @@ public struct MelodyView: View {
                     Button {
                         viewModel.onTileTapped(tile: tile)
                     } label: {
-                        tile.color
+                        tile.color.screen
                     }
-                    .buttonStyle(XylophoneTileButtonStyle(index: tile.id, tilesNumber: tilesNumber))
+                    .buttonStyle(
+                        MusicalInstrumentView.XylophoneView.TileButtonStyle(index: tile.id, tileNumber: tileNumber)
+                    )
                     .compositingGroup()
                 }
             }

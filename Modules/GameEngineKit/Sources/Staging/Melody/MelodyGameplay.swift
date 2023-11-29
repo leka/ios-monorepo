@@ -4,13 +4,14 @@
 
 import AudioKit
 import Combine
+import ContentKit
 import SwiftUI
 
 public class MelodyGameplay: ObservableObject {
     @Published public var progress: CGFloat = 0.0
     @Published var state: ExerciseState = .idle
 
-    private let xyloPlayer = MIDIPlayer(name: "Xylophone", samples: xyloSamples)
+    private let xyloPlayer = MIDIPlayer(instrument: .xylophone)
 
     private let song: MelodySongModel
 
@@ -68,6 +69,6 @@ public class MelodyGameplay: ObservableObject {
         let index = kListOfTiles.firstIndex(where: {
             $0.noteNumber == currentNoteNumber
         })
-        return kListOfTiles[index!].color
+        return kListOfTiles[index!].color.screen
     }
 }
