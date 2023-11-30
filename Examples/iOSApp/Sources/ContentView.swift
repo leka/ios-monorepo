@@ -9,12 +9,12 @@ class ContentViewViewModel: ObservableObject {
 
     private var navigation: Navigation = Navigation.shared
 
-//    @Published var topViewCategory: Category? = .home
+    //    @Published var topViewCategory: Category? = .home
 
-//    init() {
-//        navigation.$selectedCategory
-//            .assign(to: &$topViewCategory)
-//    }
+    //    init() {
+    //        navigation.$selectedCategory
+    //            .assign(to: &$topViewCategory)
+    //    }
 
     public func titleForCategory(_ category: Category) -> String {
         switch category {
@@ -46,6 +46,12 @@ struct ContentView: View {
 
     @StateObject var viewModel = ContentViewViewModel()
 
+    @State var path: [Activity] = [] {
+        didSet {
+            print("didSet path: \(path)")
+        }
+    }
+
     var body: some View {
         NavigationSplitView {
             List(navigation.categories, selection: $navigation.selectedCategory) { category in
@@ -53,7 +59,10 @@ struct ContentView: View {
             }
             .navigationTitle("Categories")
         } detail: {
-            DetailView()
+            NavigationStack(path: $path) {
+                DetailView()
+            }
+            //                .id(navigation.selectedCategory)
         }
     }
 
@@ -74,15 +83,27 @@ struct DetailView: View {
     var body: some View {
         ZStack {
             Group {
-                HomeView()
+                //                HomeView()
+                //                    .opacity(navigation.selectedCategory == .home ? 1 : 0)
+                //
+                //
+                ////                NavigationView {
+                //                    ActivityListView()
+                ////                }.navigationViewStyle(.stack)
+                //
+                //                .opacity(navigation.selectedCategory == .activities ? 1 : 0)
+                //
+                //
+                //                CurriculumListView()
+                //                    .opacity(navigation.selectedCategory == .curriculums ? 1 : 0)
+
+                View1()
+                    //                HomeView()
                     .opacity(navigation.selectedCategory == .home ? 1 : 0)
-
-
+                //                View2()
                 ActivityListView()
                     .opacity(navigation.selectedCategory == .activities ? 1 : 0)
-
-
-                CurriculumListView()
+                View3()
                     .opacity(navigation.selectedCategory == .curriculums ? 1 : 0)
 
             }
@@ -102,6 +123,94 @@ struct DetailView: View {
         }
     }
 
+}
+
+struct View1: View {
+
+    @State var value: Int = 0
+
+    init() {
+        print("View1 init")
+    }
+
+    var body: some View {
+        ZStack {
+            Rectangle().fill(Color.red).edgesIgnoringSafeArea(.all)
+            Text("Value: \(value)")
+                .foregroundColor(.white)
+                .font(.title)
+                .onTapGesture {
+                    value += 1
+                }
+                .onAppear {
+                    print("View 1 Text appeared")
+                }
+        }
+        .onTapGesture {
+            print("View1 tapped")
+        }
+        .onAppear {
+            print("View1 appeared")
+        }
+    }
+}
+
+struct View2: View {
+    @State var value: Int = 0
+
+    init() {
+        print("View2 init")
+    }
+    var body: some View {
+        ZStack {
+            Rectangle().fill(Color.green).edgesIgnoringSafeArea(.all)
+            Text("Value: \(value)")
+                .foregroundColor(.white)
+                .font(.title)
+                .onTapGesture {
+                    value += 1
+                }
+                .onAppear {
+                    print("View 2 Text appeared")
+                }
+        }
+
+        .onTapGesture {
+            print("View2 tapped")
+        }
+        .onAppear {
+            print("View2 appeared")
+        }
+    }
+}
+
+struct View3: View {
+    @State var value: Int = 0
+
+    init() {
+        print("View3 init")
+    }
+
+    var body: some View {
+        ZStack {
+            Rectangle().fill(Color.blue).edgesIgnoringSafeArea(.all)
+            Text("Value: \(value)")
+                .foregroundColor(.white)
+                .font(.title)
+                .onTapGesture {
+                    value += 1
+                }
+                .onAppear {
+                    print("View 3 Text appeared")
+                }
+        }
+        .onTapGesture {
+            print("View3 tapped")
+        }
+        .onAppear {
+            print("View3 appeared")
+        }
+    }
 }
 
 #Preview {

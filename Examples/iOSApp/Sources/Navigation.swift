@@ -13,7 +13,6 @@ enum Category: CaseIterable, Identifiable {
     var id: Self { self }
 }
 
-
 class Navigation: ObservableObject {
 
     static let shared = Navigation()
