@@ -53,15 +53,15 @@ struct ContentView: View {
     }
 
     var body: some View {
-        NavigationSplitView {
+        CustomSplitView {
             List(navigation.categories, selection: $navigation.selectedCategory) { category in
                 Label(viewModel.titleForCategory(category), systemImage: viewModel.imageForCategory(category))
             }
             .navigationTitle("Categories")
         } detail: {
-            NavigationStack(path: $path) {
+//            NavigationStack(path: $path) {
                 DetailView()
-            }
+//            }
             //                .id(navigation.selectedCategory)
         }
     }
@@ -210,6 +210,44 @@ struct View3: View {
         .onAppear {
             print("View3 appeared")
         }
+    }
+}
+
+struct CustomSplitView<Sidebar: View, Detail: View>: View {
+    let sidebar: () -> Sidebar
+    let detail: () -> Detail
+    @State private var isSidebarCollapsed = false
+
+    init(@ViewBuilder sidebar: @escaping () -> Sidebar, @ViewBuilder detail: @escaping () -> Detail) {
+        self.sidebar = sidebar
+        self.detail = detail
+    }
+
+    var body: some View {
+        HStack(spacing: 0) {
+            if !isSidebarCollapsed {
+                VStack {
+                    Button(action: { isSidebarCollapsed = true }) {
+                        Image(systemName: "chevron.left")
+                            .padding()
+                    }
+                    sidebar()
+                }
+                .frame(width: 250)
+                .transition(.move(edge: .leading))
+            }
+
+            detail()
+
+            if isSidebarCollapsed {
+                Button(action: { isSidebarCollapsed = false }) {
+                    Image(systemName: "chevron.right")
+                        .padding()
+                }
+                .transition(.move(edge: .leading))
+            }
+        }
+        .animation(.default, value: isSidebarCollapsed)
     }
 }
 

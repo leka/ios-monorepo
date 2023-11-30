@@ -28,7 +28,7 @@ struct ActivityListView: View {
 
     var body: some View {
         //        NavigationStack(path: $navigation.activitiesNavPath) {
-//        NavigationStack(path: $path) {
+        NavigationStack(path: $path) {
 //        NavigationStack {
             ZStack {
                 Rectangle().fill(Color.green).edgesIgnoringSafeArea(.all)
@@ -70,13 +70,13 @@ struct ActivityListView: View {
             .onAppear {
                 print("View2 appeared")
             }
-//        }
-//        .onAppear {
-//            print("onAppear ActivityListView")
-//        }
-//        .onDisappear {
-//            print("onDisappear ActivityListView")
-//        }
+        }
+        .onAppear {
+            print("onAppear ActivityListView")
+        }
+        .onDisappear {
+            print("onDisappear ActivityListView")
+        }
         //        NavigationStack(path: $path) {
         //            VStack(spacing: 50) {
         //                List {
