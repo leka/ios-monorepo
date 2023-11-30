@@ -53,11 +53,15 @@ struct ContentView: View {
     }
 
     var body: some View {
-        CustomSplitView {
+//        CustomSplitView {
+        NavigationSplitView {
+//        SplitView {
             List(navigation.categories, selection: $navigation.selectedCategory) { category in
                 Label(viewModel.titleForCategory(category), systemImage: viewModel.imageForCategory(category))
             }
+//            .listStyle(.sidebar)
             .navigationTitle("Categories")
+
         } detail: {
 //            NavigationStack(path: $path) {
                 DetailView()
@@ -100,8 +104,8 @@ struct DetailView: View {
                 View1()
                     //                HomeView()
                     .opacity(navigation.selectedCategory == .home ? 1 : 0)
-                //                View2()
-                ActivityListView()
+                                View2()
+//                ActivityListView()
                     .opacity(navigation.selectedCategory == .activities ? 1 : 0)
 //                View3()
                 CurriculumListView()
@@ -214,12 +218,13 @@ struct View3: View {
     }
 }
 
-struct CustomSplitView<Sidebar: View, Detail: View>: View {
+struct CustomSplitView<Sidebar, Content, Detail> : View where Sidebar : View, Content : View, Detail : View{
     let sidebar: () -> Sidebar
     let detail: () -> Detail
     @State private var isSidebarCollapsed = false
 
-    init(@ViewBuilder sidebar: @escaping () -> Sidebar, @ViewBuilder detail: @escaping () -> Detail) {
+    public init(@ViewBuilder sidebar: @escaping () -> Sidebar, @ViewBuilder detail: @escaping () -> Detail) where Content == EmptyView {
+//    init(@ViewBuilder sidebar: @escaping () -> Sidebar, @ViewBuilder detail: @escaping () -> Detail) {
         self.sidebar = sidebar
         self.detail = detail
     }
@@ -233,6 +238,7 @@ struct CustomSplitView<Sidebar: View, Detail: View>: View {
                             .padding()
                     }
                     sidebar()
+                        .listStyle(.sidebar)
                 }
                 .frame(width: 250)
                 .transition(.move(edge: .leading))

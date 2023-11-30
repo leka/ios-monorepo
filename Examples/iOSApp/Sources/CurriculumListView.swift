@@ -13,7 +13,7 @@ struct CurriculumListView: View {
     }
 
     var body: some View {
-        NavigationStack(path: $navigation.curriculumsNavPath) {
+        NavigationStack(path: $navigation.curriculumsNavPath.animation(.linear(duration: 0))) {
             VStack(spacing: 50) {
                                 List {
                                     ForEach(Curriculum.all) { curriculum in
@@ -22,14 +22,16 @@ struct CurriculumListView: View {
                                         }
                                     }
                                 }
-                                .listStyle(.automatic)
+                                .listStyle(SidebarListStyle())
             }
             .navigationDestination(for: Curriculum.self) { curriculum in
                 CurriculumInfoView(curriculum: curriculum)
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
+//            .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(.teal)
         }
+        .navigationViewStyle(.stack)
+//        .zIndex(-10)
     }
 }
 

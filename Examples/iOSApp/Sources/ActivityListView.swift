@@ -10,11 +10,11 @@ struct ActivityListView: View {
 
     @State var value: Int = 0
 
-    //    @State var path: NavigationPath = NavigationPath() {
-    //        didSet {
-    //            print("didSet path: \(path)")
-    //        }
-    //    }
+//        @State var path: NavigationPath = NavigationPath() {
+//            didSet {
+//                print("didSet path: \(path)")
+//            }
+//        }
 
     @State var path: [Activity] = [] {
         didSet {
@@ -45,6 +45,10 @@ struct ActivityListView: View {
 
                     NavigationLink(value: Activity.all[0]) {
                         Text(Activity.all[0].name)
+                    }
+
+                    NavigationLink("with destination") {
+                        Text("with destination")
                     }
 
                     Button("Go to Activity 1") {
