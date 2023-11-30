@@ -5,18 +5,18 @@
 import Combine
 import SwiftUI
 
-@MainActor
+enum Category: CaseIterable, Identifiable {
+    case home
+    case activities
+    case curriculums
+
+    var id: Self { self }
+}
+
+
 class Navigation: ObservableObject {
 
     static let shared = Navigation()
-
-    enum Category: CaseIterable, Identifiable {
-        case home
-        case activities
-        case curriculums
-
-        var id: Self { self }
-    }
 
     @Published var categories = Category.allCases
     @Published var selectedCategory: Category? = .home

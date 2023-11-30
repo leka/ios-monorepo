@@ -7,7 +7,16 @@ import SwiftUI
 
 class ContentViewViewModel: ObservableObject {
 
-    public func titleForCategory(_ category: Navigation.Category) -> String {
+    private var navigation: Navigation = Navigation.shared
+
+//    @Published var topViewCategory: Category? = .home
+
+//    init() {
+//        navigation.$selectedCategory
+//            .assign(to: &$topViewCategory)
+//    }
+
+    public func titleForCategory(_ category: Category) -> String {
         switch category {
             case .home:
                 "Home"
@@ -18,7 +27,7 @@ class ContentViewViewModel: ObservableObject {
         }
     }
 
-    public func imageForCategory(_ category: Navigation.Category) -> String {
+    public func imageForCategory(_ category: Category) -> String {
         switch category {
             case .home:
                 "house"
@@ -33,7 +42,7 @@ class ContentViewViewModel: ObservableObject {
 
 struct ContentView: View {
 
-    @EnvironmentObject var navigation: Navigation
+    @ObservedObject var navigation: Navigation = Navigation.shared
 
     @StateObject var viewModel = ContentViewViewModel()
 
@@ -41,25 +50,54 @@ struct ContentView: View {
         NavigationSplitView {
             List(navigation.categories, selection: $navigation.selectedCategory) { category in
                 Label(viewModel.titleForCategory(category), systemImage: viewModel.imageForCategory(category))
-                    .tag(category)
-                    .onTapGesture {
-                        navigation.selectCategory(category)
-                        print("Selected category: \(viewModel.titleForCategory(category))")
-                    }
             }
-            .listStyle(.sidebar)
             .navigationTitle("Categories")
         } detail: {
-            switch navigation.selectedCategory {
-                case .home:
-                    Text("Hello, Home!")
-                        .navigationTitle("What's new?")
-                case .activities:
-                    ActivityListView()
-                case .curriculums:
-                    CurriculumListView()
-                case .none:
-                    Text("Select a category")
+            DetailView()
+        }
+    }
+
+}
+
+struct DetailView: View {
+
+    @ObservedObject var navigation: Navigation = Navigation.shared
+
+    @State var title: String = "NO TITLE"
+
+    private var cancellables = Set<AnyCancellable>()
+
+    init() {
+        print("init DetailView")
+    }
+
+    var body: some View {
+        ZStack {
+            Group {
+                HomeView()
+                    .opacity(navigation.selectedCategory == .home ? 1 : 0)
+
+
+                ActivityListView()
+                    .opacity(navigation.selectedCategory == .activities ? 1 : 0)
+
+
+                CurriculumListView()
+                    .opacity(navigation.selectedCategory == .curriculums ? 1 : 0)
+
+            }
+            .navigationTitle(title)
+            .onReceive(navigation.$selectedCategory) { category in
+                switch category {
+                    case .home:
+                        self.title = "Home"
+                    case .activities:
+                        self.title = "Activities"
+                    case .curriculums:
+                        self.title = "Curriculums"
+                    case .none:
+                        self.title = "NIL TITLE"
+                }
             }
         }
     }
@@ -67,9 +105,6 @@ struct ContentView: View {
 }
 
 #Preview {
-    let navigation: Navigation = Navigation()
-
-    return ContentView()
-        .environmentObject(navigation)
+    ContentView()
         .previewInterfaceOrientation(.landscapeLeft)
 }

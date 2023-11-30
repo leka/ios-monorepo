@@ -6,22 +6,24 @@ import SwiftUI
 
 struct CurriculumListView: View {
 
-    @EnvironmentObject var navigation: Navigation
+    @ObservedObject var navigation: Navigation = Navigation.shared
+
+    init() {
+        print("init CurriculumListView")
+    }
 
     var body: some View {
-        // ? Fix animation w/ multiple navigation stacks, see https://developer.apple.com/forums/thread/728132
-        NavigationStack(path: $navigation.curriculumsNavPath.animation(.linear(duration: 0))) {
+        NavigationStack(path: $navigation.curriculumsNavPath) {
             VStack(spacing: 50) {
-                List {
-                    ForEach(Curriculum.all) { curriculum in
-                        NavigationLink(value: curriculum) {
-                            Text(curriculum.name)
-                        }
-                    }
-                }
-                .listStyle(.automatic)
+//                List {
+//                    ForEach(Curriculum.all) { curriculum in
+//                        NavigationLink(value: curriculum) {
+//                            Text(curriculum.name)
+//                        }
+//                    }
+//                }
+//                .listStyle(.automatic)
             }
-            .navigationTitle("List of Curriculums")
             .navigationDestination(for: Curriculum.self) { curriculum in
                 CurriculumInfoView(curriculum: curriculum)
             }
@@ -67,4 +69,8 @@ struct CurriculumInfoView: View {
         }
         .navigationTitle("\(curriculum.name)")
     }
+}
+
+#Preview {
+    CurriculumListView()
 }

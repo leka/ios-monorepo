@@ -6,27 +6,29 @@ import SwiftUI
 
 struct ActivityListView: View {
 
-    @EnvironmentObject var navigation: Navigation
+    @ObservedObject var navigation: Navigation = Navigation.shared
+
+    init() {
+        print("init ActivityListView")
+    }
 
     var body: some View {
-        // ? Fix animation w/ multiple navigation stacks, see https://developer.apple.com/forums/thread/728132
-        NavigationStack(path: $navigation.activitiesNavPath.animation(.linear(duration: 0))) {
+        NavigationStack(path: $navigation.activitiesNavPath) {
             VStack(spacing: 50) {
-                List {
-                    ForEach(Activity.all) { actvity in
-                        NavigationLink(value: actvity) {
-                            Text(actvity.name)
-                        }
-                    }
-                }
-                .listStyle(.automatic)
+//                List {
+//                    ForEach(Activity.all) { actvity in
+//                        NavigationLink(value: actvity) {
+//                            Text(actvity.name)
+//                        }
+//                    }
+//                }
+//                .listStyle(.automatic)
             }
-            .navigationTitle("List of Activities")
             .navigationDestination(for: Activity.self) { activity in
                 ActivityInfoView(activity: activity)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(.teal)
+            .background(.mint)
         }
     }
 }
@@ -58,4 +60,8 @@ struct ActivityInfoView: View {
         }
         .navigationTitle("\(activity.name)")
     }
+}
+
+#Preview {
+    ActivityListView()
 }
