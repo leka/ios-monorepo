@@ -15,14 +15,14 @@ struct CurriculumListView: View {
     var body: some View {
         NavigationStack(path: $navigation.curriculumsNavPath) {
             VStack(spacing: 50) {
-                //                List {
-                //                    ForEach(Curriculum.all) { curriculum in
-                //                        NavigationLink(value: curriculum) {
-                //                            Text(curriculum.name)
-                //                        }
-                //                    }
-                //                }
-                //                .listStyle(.automatic)
+                                List {
+                                    ForEach(Curriculum.all) { curriculum in
+                                        NavigationLink(value: curriculum) {
+                                            Text(curriculum.name)
+                                        }
+                                    }
+                                }
+                                .listStyle(.automatic)
             }
             .navigationDestination(for: Curriculum.self) { curriculum in
                 CurriculumInfoView(curriculum: curriculum)

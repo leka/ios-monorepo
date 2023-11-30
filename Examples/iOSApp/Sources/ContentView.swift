@@ -94,7 +94,7 @@ struct DetailView: View {
                 //                .opacity(navigation.selectedCategory == .activities ? 1 : 0)
                 //
                 //
-                //                CurriculumListView()
+                //                c
                 //                    .opacity(navigation.selectedCategory == .curriculums ? 1 : 0)
 
                 View1()
@@ -103,7 +103,8 @@ struct DetailView: View {
                 //                View2()
                 ActivityListView()
                     .opacity(navigation.selectedCategory == .activities ? 1 : 0)
-                View3()
+//                View3()
+                CurriculumListView()
                     .opacity(navigation.selectedCategory == .curriculums ? 1 : 0)
 
             }
