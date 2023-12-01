@@ -21,6 +21,9 @@ struct CurriculumListView: View {
             .navigationDestination(for: Curriculum.self) { curriculum in
                 CurriculumInfoView(curriculum: curriculum)
             }
+            .navigationDestination(for: Activity.self) { activity in
+                ActivityInfoView(activity: activity)
+            }
             .navigationTitle("List of curriculums")
     }
 
@@ -40,7 +43,7 @@ struct CurriculumInfoView: View {
 
                 Section("List of activities") {
                     ForEach(Activity.all.filter { curriculum.activities.contains($0.id) }) { activity in
-                        NavigationLink(destination: ActivityInfoView(activity: activity)) {
+                        NavigationLink(value: activity) {
                             Text(activity.name)
                         }
                     }
