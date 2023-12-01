@@ -26,8 +26,17 @@ struct Activity: Identifiable, Hashable {
 struct Curriculum: Identifiable, Hashable {
     let id: String
     let name: String
-    let activities: [String]
+    let activities: [Activity]
     let similarCurriculums: [String]?
+
+    init(id: String, name: String, activities: [String], similarCurriculums: [String]?) {
+        self.id = id
+        self.name = name
+        self.activities = activities.compactMap { activityId in
+            Activity.all.first { $0.id == activityId }
+        }
+        self.similarCurriculums = similarCurriculums
+    }
 
     static let all: [Curriculum] = [
         Curriculum(
