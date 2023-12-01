@@ -8,7 +8,8 @@ import SwiftUI
 struct SignupView: View {
     // MARK: Internal
 
-    @EnvironmentObject var authenticationState: OrganisationAuthState
+    @EnvironmentObject var authManager: AuthManager
+    @State private var credentials = CompanyCredentialsViewModel()
 
     var body: some View {
         VStack(spacing: 10) {
@@ -22,24 +23,22 @@ struct SignupView: View {
         .padding()
         .navigationTitle("Sign-Up View")
         .navigationBarTitleDisplayMode(.large)
-        .animation(.default, value: self.organisation.isEmailValid())
-        .animation(.default, value: self.organisation.isPasswordValid(self.organisation.password))
-        .animation(.default, value: self.organisation.passwordsMatch())
+        .animation(.default, value: credentials.isEmailValid())
+        .animation(.default, value: credentials.isPasswordValid(credentials.password))
+        .animation(.default, value: credentials.passwordsMatch())
     }
 
     // MARK: Private
 
-    @State private var organisation = OrganisationViewModel()
-
     private var emailField: some View {
         VStack(alignment: .leading, spacing: 10) {
-            TextField("email", text: self.$organisation.mail)
+            TextField("email", text: $credentials.mail)
                 .textFieldStyle(.roundedBorder)
                 .keyboardType(.emailAddress)
-            if !self.organisation.mail.isEmpty,
-               !self.organisation.isEmailValid()
+            if !credentials.mail.isEmpty
+                && !credentials.isEmailValid()
             {
-                Text(self.organisation.invalidEmailAddressText)
+                Text(credentials.invalidEmailAddressText)
                     .font(.footnote)
                     .foregroundStyle(.red)
                     .padding(.horizontal, 10)
@@ -49,12 +48,12 @@ struct SignupView: View {
 
     private var passwordField: some View {
         VStack(alignment: .leading, spacing: 10) {
-            SecureField("password", text: self.$organisation.password)
+            SecureField("password", text: $credentials.password)
                 .textFieldStyle(.roundedBorder)
-            if !self.organisation.password.isEmpty,
-               !self.organisation.isPasswordValid(self.organisation.password)
+            if !credentials.password.isEmpty
+                && !credentials.isPasswordValid(credentials.password)
             {
-                Text(self.organisation.invalidPasswordText)
+                Text(credentials.invalidPasswordText)
                     .font(.footnote)
                     .lineLimit(2)
                     .foregroundStyle(.red)
@@ -65,13 +64,13 @@ struct SignupView: View {
 
     private var confirmPasswordField: some View {
         VStack(alignment: .leading, spacing: 10) {
-            SecureField("confirm password", text: self.$organisation.confirmPassword)
+            SecureField("confirm password", text: $credentials.confirmPassword)
                 .textFieldStyle(.roundedBorder)
-            if !self.organisation.password.isEmpty,
-               !self.organisation.confirmPassword.isEmpty,
-               !self.organisation.passwordsMatch()
+            if !credentials.password.isEmpty
+                && (!credentials.confirmPassword.isEmpty
+                    && !credentials.passwordsMatch())
             {
-                Text(self.organisation.invalidConfirmPasswordText)
+                Text(credentials.invalidConfirmPasswordText)
                     .font(.footnote)
                     .foregroundStyle(.red)
                     .padding(.horizontal, 10)
@@ -83,7 +82,10 @@ struct SignupView: View {
     private var signupButton: some View {
         Button(
             action: {
-                self.authenticationState.organisationIsAuthenticated = .loggedIn // tests
+                authManager.signUp(
+                    email: credentials.mail,
+                    password: credentials.password
+                )
             },
             label: {
                 Text("Sign Up")
@@ -92,12 +94,12 @@ struct SignupView: View {
         )
         .controlSize(.large)
         .buttonStyle(.borderedProminent)
-        .disabled(!self.organisation.signUpIsComplete)
-        .animation(.default, value: self.organisation.signUpIsComplete)
+        .disabled(!credentials.signUpIsComplete)
+        .animation(.default, value: credentials.signUpIsComplete)
     }
 }
 
 #Preview {
     SignupView()
-        .environmentObject(OrganisationAuthState())
+        .environmentObject(AuthManager())
 }

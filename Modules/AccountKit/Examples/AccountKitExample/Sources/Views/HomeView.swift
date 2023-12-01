@@ -29,27 +29,52 @@ struct HomeView: View {
             Text("Organisation is Logged In!")
                 .fontWeight(.heavy)
 
-            Button(
-                action: {
-                    self.authenticationState.organisationIsAuthenticated = .loggedOut
-                },
-                label: {
-                    Text("Log Out")
-                        .frame(maxWidth: .infinity)
-                }
-            )
-            .buttonStyle(.borderedProminent)
-            .frame(maxWidth: 150)
-            .tint(.red)
+            HStack(spacing: 10) {
+                Button(
+                    action: {
+                        authManager.signOut()
+                    },
+                    label: {
+                        Text("Log Out")
+                            .frame(maxWidth: .infinity)
+                    }
+                )
+                .buttonStyle(.bordered)
+                .frame(maxWidth: 150)
+
+                Button(
+                    action: {
+                        showDeleteConfirmation.toggle()
+                    },
+                    label: {
+                        Text("Delete User")
+                            .frame(maxWidth: .infinity)
+                    }
+                )
+                .buttonStyle(.borderedProminent)
+                .frame(maxWidth: 150)
+                .tint(.red)
+            }
         }
         .padding()
-        .navigationTitle("Home View")
-        .navigationBarBackButtonHidden()
-        .navigationBarTitleDisplayMode(.large)
+        .alert("Supprimer le compte", isPresented: $showDeleteConfirmation) {
+            Button(role: .destructive) {
+                authManager.deleteAccount()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                    dismiss()
+                }
+            } label: {
+                Text("Supprimer")
+            }
+        } message: {
+            Text(
+                "Vous êtes sur le point de supprimer le compte de votre établissemnt. \nCette action est irreversible."
+            )
+        }
     }
 }
 
 #Preview {
     HomeView()
-        .environmentObject(OrganisationAuthState())
+        .environmentObject(AuthManager())
 }

@@ -8,7 +8,9 @@ import SwiftUI
 struct LoginView: View {
     // MARK: Internal
 
-    @EnvironmentObject var authenticationState: OrganisationAuthState
+    @EnvironmentObject var authManager: AuthManager
+    @State private var credentials = CompanyCredentialsViewModel()
+    @State private var showSheet: Bool = false
 
     var body: some View {
         VStack(spacing: 10) {
@@ -22,25 +24,22 @@ struct LoginView: View {
         .padding()
         .navigationTitle("Login View")
         .navigationBarTitleDisplayMode(.large)
-        .animation(.default, value: self.organisation.isEmailValid())
-        .animation(.default, value: self.organisation.isPasswordValid(self.organisation.password))
-        .sheet(isPresented: self.$showSheet) { ForgotPasswordView() }
+        .animation(.default, value: credentials.isEmailValid())
+        .animation(.default, value: credentials.isPasswordValid(credentials.password))
+        .sheet(isPresented: $showSheet) { ForgotPasswordView() }
     }
 
     // MARK: Private
 
-    @State private var organisation = OrganisationViewModel()
-    @State private var showSheet: Bool = false
-
     private var emailField: some View {
         VStack(alignment: .leading, spacing: 10) {
-            TextField("email", text: self.$organisation.mail)
+            TextField("email", text: $credentials.mail)
                 .textFieldStyle(.roundedBorder)
                 .keyboardType(.emailAddress)
-            if !self.organisation.mail.isEmpty,
-               !self.organisation.isEmailValid()
+            if !credentials.mail.isEmpty
+                && !credentials.isEmailValid()
             {
-                Text(self.organisation.invalidEmailAddressText)
+                Text(credentials.invalidEmailAddressText)
                     .font(.footnote)
                     .foregroundStyle(.red)
                     .padding(.horizontal, 10)
@@ -50,12 +49,12 @@ struct LoginView: View {
 
     private var passwordField: some View {
         VStack(alignment: .leading, spacing: 10) {
-            SecureField("password", text: self.$organisation.password)
+            SecureField("password", text: $credentials.password)
                 .textFieldStyle(.roundedBorder)
-            if !self.organisation.password.isEmpty,
-               !self.organisation.isPasswordValid(self.organisation.password)
+            if !credentials.password.isEmpty
+                && !credentials.isPasswordValid(credentials.password)
             {
-                Text(self.organisation.invalidPasswordText)
+                Text(credentials.invalidPasswordText)
                     .font(.footnote)
                     .lineLimit(2)
                     .foregroundStyle(.red)
@@ -68,7 +67,10 @@ struct LoginView: View {
     private var loginButton: some View {
         Button(
             action: {
-                self.authenticationState.organisationIsAuthenticated = .loggedIn // tests
+                authManager.signIn(
+                    email: credentials.mail,
+                    password: credentials.password
+                )
             },
             label: {
                 Text("Log In")
@@ -77,8 +79,8 @@ struct LoginView: View {
         )
         .controlSize(.large)
         .buttonStyle(.borderedProminent)
-        .disabled(!self.organisation.logInIsComplete)
-        .animation(.default, value: self.organisation.logInIsComplete)
+        .disabled(!credentials.logInIsComplete)
+        .animation(.default, value: credentials.logInIsComplete)
     }
 
     private var forgotLink: some View {
@@ -101,5 +103,5 @@ struct LoginView: View {
 
 #Preview {
     LoginView()
-        .environmentObject(OrganisationAuthState())
+        .environmentObject(AuthManager())
 }

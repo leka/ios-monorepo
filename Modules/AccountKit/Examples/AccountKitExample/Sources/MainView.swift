@@ -7,11 +7,11 @@ import SwiftUI
 struct MainView: View {
     // MARK: Internal
 
-    @EnvironmentObject var authenticationState: OrganisationAuthState
+    @EnvironmentObject var authManager: AuthManager
 
     var body: some View {
         Group {
-            switch self.authenticationState.organisationIsAuthenticated {
+            switch authManager.companyAuthenticationState {
                 case .unknown:
                     Text("Loading...")
                 case .loggedIn:
@@ -23,12 +23,11 @@ struct MainView: View {
             }
         }
         .animation(
-            .easeOut(duration: 0.4),
-            value: self.authenticationState.organisationIsAuthenticated
+            .easeOut(duration: 0.4), value: authManager.companyAuthenticationState
         )
         .preferredColorScheme(.light)
         .onAppear(perform: {
-            self.authenticationState.organisationIsAuthenticated = .loggedOut
+            authManager.checkAuthenticationStatus()
         })
     }
 
@@ -61,5 +60,5 @@ struct MainView: View {
 
 #Preview {
     MainView()
-        .environmentObject(OrganisationAuthState())
+        .environmentObject(AuthManager())
 }

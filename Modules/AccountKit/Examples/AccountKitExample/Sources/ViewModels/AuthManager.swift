@@ -24,12 +24,12 @@ class AuthManager: ObservableObject {
 
     private func handleCompletion(_ completion: Subscribers.Completion<Error>, newState: FirebaseAuthenticationState) {
         switch completion {
-        case .finished:
-            break
-        case .failure(let error):
-            errorMessage = error.localizedDescription
-            print(errorMessage)
-            companyAuthenticationState = newState
+            case .finished:
+                break
+            case .failure(let error):
+                errorMessage = error.localizedDescription
+                print(errorMessage)
+                companyAuthenticationState = newState
         }
     }
 
@@ -108,5 +108,3 @@ class AuthManager: ObservableObject {
         }
     }
 }
-
-

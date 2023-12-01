@@ -3,8 +3,19 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import AccountKit
+import FirebaseCore
 import LogKit
 import SwiftUI
+
+class AppDelegate: NSObject, UIApplicationDelegate {
+    func application(
+        _ application: UIApplication,
+        didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil
+    ) -> Bool {
+        FirebaseApp.configure()
+        return true
+    }
+}
 
 let log = LogKit.createLoggerFor(app: "AccountKitExample")
 
@@ -12,12 +23,13 @@ let log = LogKit.createLoggerFor(app: "AccountKitExample")
 
 @main
 struct AccountKitExample: App {
-    @StateObject var authenticationState = OrganisationAuthState()
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    @StateObject var authManager = AuthManager()
 
     var body: some Scene {
         WindowGroup {
             MainView()
-                .environmentObject(self.authenticationState)
+                .environmentObject(authManager)
         }
     }
 }

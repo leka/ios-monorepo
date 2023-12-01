@@ -5,7 +5,9 @@
 import SwiftUI
 
 struct ForgotPasswordView: View {
-    @State private var organisation = OrganisationViewModel()
+
+    @EnvironmentObject var authManager: AuthManager
+    @State private var credentials = CompanyCredentialsViewModel()
     @Environment(\.dismiss) var dismiss
 
     var body: some View {
@@ -20,20 +22,20 @@ struct ForgotPasswordView: View {
             .navigationTitle("Reset Password View")
             .navigationBarTitleDisplayMode(.inline)
             .toolbarBackground(.visible, for: .navigationBar)
-            .animation(.default, value: self.organisation.isEmailValid())
-            .navigationBarItems(trailing: Button("Dismiss", action: { self.dismiss() }))
+            .animation(.default, value: credentials.isEmailValid())
+            .navigationBarItems(trailing: Button("Dismiss", action: { dismiss() }))
         }
     }
 
     private var emailField: some View {
         VStack(alignment: .leading, spacing: 10) {
-            TextField("email", text: self.$organisation.mail)
+            TextField("email", text: $credentials.mail)
                 .textFieldStyle(.roundedBorder)
                 .keyboardType(.emailAddress)
-            if !self.organisation.mail.isEmpty,
-               !self.organisation.isEmailValid()
+            if !credentials.mail.isEmpty
+                && !credentials.isEmailValid()
             {
-                Text(self.organisation.invalidEmailAddressText)
+                Text(credentials.invalidEmailAddressText)
                     .font(.footnote)
                     .foregroundStyle(.red)
                     .padding(.horizontal, 10)
@@ -44,7 +46,10 @@ struct ForgotPasswordView: View {
     private var resetPasswordButton: some View {
         Button(
             action: {
-                self.dismiss()
+                authManager.sendPasswordReset(with: credentials.mail)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                    dismiss()
+                }
             },
             label: {
                 Text("Reset Password")
@@ -52,10 +57,11 @@ struct ForgotPasswordView: View {
             }
         )
         .buttonStyle(.borderedProminent)
-        .disabled(!self.organisation.isEmailValid())
+        .disabled(!credentials.isEmailValid())
     }
 }
 
 #Preview {
     ForgotPasswordView()
+        .environmentObject(AuthManager())
 }
