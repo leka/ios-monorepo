@@ -13,30 +13,14 @@ class AuthManager: ObservableObject {
     }
 
     @Published private(set) var companyAuthenticationState: FirebaseAuthenticationState = .unknown
-    @Published private var errorMessage: String = ""
+    @Published var errorMessage: String = ""
+    @Published var showErrorMessageAlert = false
 
     private let auth = Auth.auth()
     private var cancellables = Set<AnyCancellable>()
 
     init() {
         checkAuthenticationStatus()
-    }
-
-    private func handleCompletion(_ completion: Subscribers.Completion<Error>, newState: FirebaseAuthenticationState) {
-        switch completion {
-            case .finished:
-                break
-            case .failure(let error):
-                errorMessage = error.localizedDescription
-                print(errorMessage)
-                companyAuthenticationState = newState
-        }
-    }
-
-    private func handleUserUpdate(result: AuthDataResult, operation: String) {
-        companyAuthenticationState = .loggedIn
-        let company = result.user
-        print("Company \(company.uid) \(operation) successfully.")
     }
 
     private func updateAuthState(for company: User?) {
@@ -106,5 +90,55 @@ class AuthManager: ObservableObject {
                 print("Account deleted successfully.")
             }
         }
+    }
+
+    // MARK: - Completion & error handling
+    private func handleCompletion(_ completion: Subscribers.Completion<Error>, newState: FirebaseAuthenticationState) {
+        switch completion {
+            case .finished:
+                break
+            case .failure(let error):
+                errorMessage = error.localizedDescription
+                print(errorMessage)
+                handleSignInError(error)
+                companyAuthenticationState = newState
+        }
+    }
+
+    private func handleUserUpdate(result: AuthDataResult, operation: String) {
+        companyAuthenticationState = .loggedIn
+        let company = result.user
+        print("Company \(company.uid) \(operation) successfully.")
+    }
+
+    private func handleSignInError(_ error: Error) {
+        if let authError = AuthErrorCode(_bridgedNSError: (error as NSError))?.code {
+            switch authError {
+                case .wrongPassword:
+                    errorMessage = "Wrong password. Please try again."
+                case .invalidEmail:
+                    errorMessage = "We cannot find this email address. Please check and try again."
+                default:
+                    errorMessage = "Sign-in failed. Please try again."
+            }
+        } else {
+            errorMessage = "An unexpected error occurred. Please try again later."
+        }
+        showErrorMessageAlert.toggle()
+    }
+
+    private func handleSignUpError(_ error: Error) {
+        if let authError = AuthErrorCode(_bridgedNSError: error as NSError)?.code {
+            switch authError {
+                case .emailAlreadyInUse:
+                    errorMessage =
+                        "This email is already in use. Please try with a different one or go back to sign in."
+                default:
+                    errorMessage = "Sign-up failed. Please try again later."
+            }
+        } else {
+            errorMessage = "An unexpected error occurred. Please try again later."
+        }
+        showErrorMessageAlert.toggle()
     }
 }

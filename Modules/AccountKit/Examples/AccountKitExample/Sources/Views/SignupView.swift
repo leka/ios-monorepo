@@ -26,6 +26,11 @@ struct SignupView: View {
         .animation(.default, value: credentials.isEmailValid())
         .animation(.default, value: credentials.isPasswordValid(credentials.password))
         .animation(.default, value: credentials.passwordsMatch())
+        .alert("An error occurred", isPresented: $authManager.showErrorMessageAlert) {
+            // nothing to show
+        } message: {
+            Text(authManager.errorMessage)
+        }
     }
 
     // MARK: Private
