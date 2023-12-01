@@ -49,11 +49,10 @@ struct CurriculumInfoView: View {
                 Section("Similar Curriculums") {
                     if let similarCurriculum = curriculum.similarCurriculums {
                         ForEach(Curriculum.all.filter { similarCurriculum.contains($0.id) }) { curriculum in
-                            NavigationLink(destination: CurriculumInfoView(curriculum: curriculum)) {
+                            NavigationLink(value: curriculum) {
                                 Text(curriculum.name)
                             }
                         }
-
                     } else {
                         Text("No similar curriculums")
                     }

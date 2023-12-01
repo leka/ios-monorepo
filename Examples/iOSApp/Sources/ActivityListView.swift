@@ -11,9 +11,9 @@ struct ActivityListView: View {
     var body: some View {
             VStack(spacing: 50) {
                 List {
-                    ForEach(Activity.all) { actvity in
-                        NavigationLink(value: actvity) {
-                            Text(actvity.name)
+                    ForEach(Activity.all) { activity in
+                        NavigationLink(value: activity) {
+                            Text(activity.name)
                         }
                     }
                 }
@@ -40,7 +40,7 @@ struct ActivityInfoView: View {
                 Section("Similar Activities") {
                     if let similarActivities = activity.similarActivities {
                         ForEach(Activity.all.filter { similarActivities.contains($0.id) }) { activity in
-                            NavigationLink(destination: ActivityInfoView(activity: activity)) {
+                            NavigationLink(value: activity) {
                                 Text(activity.name)
                             }
                         }
