@@ -9,7 +9,6 @@ struct ActivityListView: View {
     @ObservedObject var navigation: Navigation = Navigation.shared
 
     var body: some View {
-//        NavigationStack(path: $navigation.activitiesNavPath) {
             VStack(spacing: 50) {
                 List {
                     ForEach(Activity.all) { actvity in
@@ -23,7 +22,6 @@ struct ActivityListView: View {
                 ActivityInfoView(activity: activity)
             }
             .navigationTitle("List of activities")
-//        }
     }
 
 }
@@ -55,8 +53,11 @@ struct ActivityInfoView: View {
         }
         .navigationTitle("\(activity.name)")
     }
+
 }
 
 #Preview {
-    ActivityListView()
+    NavigationStack {
+        ActivityListView()
+    }
 }

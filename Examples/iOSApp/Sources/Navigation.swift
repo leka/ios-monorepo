@@ -30,60 +30,10 @@ class Navigation: ObservableObject {
     var selectedCategory: Category? = .home {
         willSet {
             disableUICompletly = true
-
             backupPath(for: selectedCategory)
-
-//            switch selectedCategory {
-//                case .home:
-//                    withTransaction(pushPopNoAnimationTransaction) {
-//                        homeNavPathBackup = path
-//
-//                    }
-//                    print("backup homeNavPathBackup: \(homeNavPathBackup)")
-//                case .activities:
-//                    withTransaction(pushPopNoAnimationTransaction) {
-//                        activitiesNavPathBackup = path
-//
-//                    }
-//                    print("backup activitiesNavPathBackup: \(activitiesNavPathBackup)")
-//                case .curriculums:
-//                    withTransaction(pushPopNoAnimationTransaction) {
-//                        curriculumsNavPathBackup = path
-//
-//                    }
-//                    print("backup curriculumsNavPathBackup: \(curriculumsNavPathBackup)")
-//                case nil:
-//                    print("no backup")
-//                    return
-//            }
-
-//            withTransaction(pushPopNoAnimationTransaction) {
-//                path = NavigationPath()
-//            }
         }
-
         didSet {
             restorePath(for: selectedCategory)
-
-//            switch selectedCategory {
-//                case .home:
-//                    withTransaction(pushPopNoAnimationTransaction) {
-//                        path = homeNavPathBackup
-//                    }
-//                    print("restore homeNavPath: \(path)")
-//                case .activities:
-//                    withTransaction(pushPopNoAnimationTransaction) {
-//                        path = activitiesNavPathBackup
-//                    }
-//                    print("restore activitiesNavPath: \(path)")
-//                case .curriculums:
-//                    withTransaction(pushPopNoAnimationTransaction) {
-//                        path = curriculumsNavPathBackup
-//                    }
-//                    print("restore curriculumsNavPath: \(path)")
-//                case .none:
-//                    break
-//            }
         }
     }
 
