@@ -85,48 +85,42 @@ struct DetailView: View {
     }
 
     var body: some View {
-        ZStack {
-            Group {
-                //                HomeView()
-                //                    .opacity(navigation.selectedCategory == .home ? 1 : 0)
-                //
-                //
-                ////                NavigationView {
-                //                    ActivityListView()
-                ////                }.navigationViewStyle(.stack)
-                //
-                //                .opacity(navigation.selectedCategory == .activities ? 1 : 0)
-                //
-                //
-                //                c
-                //                    .opacity(navigation.selectedCategory == .curriculums ? 1 : 0)
-
-                View1()
-                    //                HomeView()
-                    .opacity(navigation.selectedCategory == .home ? 1 : 0)
-                                View2()
-//                ActivityListView()
-                    .opacity(navigation.selectedCategory == .activities ? 1 : 0)
-//                View3()
-                CurriculumListView()
-                    .opacity(navigation.selectedCategory == .curriculums ? 1 : 0)
-
-            }
-            .navigationTitle(title)
-            .onReceive(navigation.$selectedCategory) { category in
-                switch category {
+//        ZStack {
+//            Group {
+                switch navigation.selectedCategory {
                     case .home:
-                        self.title = "Home"
+                        View1()
                     case .activities:
-                        self.title = "Activities"
+                        // ? Fix animation w/ multiple navigation stacks, see https://developer.apple.com/forums/thread/728132
+//                        NavigationStack(path: $navigation.mainPath.animation(.linear(duration: 0))) {
+                            ActivityListView()
+//                        }
                     case .curriculums:
-                        self.title = "Curriculums"
+                        // ? Fix animation w/ multiple navigation stacks, see https://developer.apple.com/forums/thread/728132
+//                        NavigationStack(path: $navigation.mainPath.animation(.linear(duration: 0))) {
+                            CurriculumListView()
+//                        }
                     case .none:
-                        self.title = "NIL TITLE"
+                        Text("Select a category")
                 }
-            }
+                
+
+//            }
+//            .navigationTitle(title)
+//            .onReceive(navigation.$selectedCategory) { category in
+//                switch category {
+//                    case .home:
+//                        self.title = "Home"
+//                    case .activities:
+//                        self.title = "Activities"
+//                    case .curriculums:
+//                        self.title = "Curriculums"
+//                    case .none:
+//                        self.title = "NIL TITLE"
+//                }
+//            }
         }
-    }
+//    }
 
 }
 

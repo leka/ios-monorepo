@@ -13,7 +13,7 @@ struct CurriculumListView: View {
     }
 
     var body: some View {
-        NavigationStack(path: $navigation.curriculumsNavPath.animation(.linear(duration: 0))) {
+        NavigationStack(path: $navigation.curriculumsNavPath) {
             VStack(spacing: 50) {
                                 List {
                                     ForEach(Curriculum.all) { curriculum in
@@ -22,7 +22,7 @@ struct CurriculumListView: View {
                                         }
                                     }
                                 }
-                                .listStyle(SidebarListStyle())
+//                                .listStyle(SidebarListStyle())
             }
             .navigationDestination(for: Curriculum.self) { curriculum in
                 CurriculumInfoView(curriculum: curriculum)
