@@ -8,31 +8,24 @@ struct CurriculumListView: View {
 
     @ObservedObject var navigation: Navigation = Navigation.shared
 
-    init() {
-        print("init CurriculumListView")
-    }
-
     var body: some View {
         NavigationStack(path: $navigation.curriculumsNavPath) {
             VStack(spacing: 50) {
-                                List {
-                                    ForEach(Curriculum.all) { curriculum in
-                                        NavigationLink(value: curriculum) {
-                                            Text(curriculum.name)
-                                        }
-                                    }
-                                }
-//                                .listStyle(SidebarListStyle())
+                List {
+                    ForEach(Curriculum.all) { curriculum in
+                        NavigationLink(value: curriculum) {
+                            Text(curriculum.name)
+                        }
+                    }
+                }
             }
             .navigationDestination(for: Curriculum.self) { curriculum in
                 CurriculumInfoView(curriculum: curriculum)
             }
-//            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(.teal)
+            .navigationTitle("List of curriculums")
         }
-        .navigationViewStyle(.stack)
-//        .zIndex(-10)
     }
+
 }
 
 struct CurriculumInfoView: View {

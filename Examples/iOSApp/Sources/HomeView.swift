@@ -6,15 +6,17 @@ import SwiftUI
 
 struct HomeView: View {
 
-    init() {
-        print("init HomeView")
-    }
+    @ObservedObject var navigation: Navigation = Navigation.shared
 
     var body: some View {
-        Text( /*@START_MENU_TOKEN@*/"Hello, World!" /*@END_MENU_TOKEN@*/)
-            .font(.largeTitle)
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(.blue)
+        NavigationStack(path: $navigation.homeNavPath) {
+            Text( /*@START_MENU_TOKEN@*/"Hello, World!" /*@END_MENU_TOKEN@*/)
+                .font(.largeTitle)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .background(.cyan)
+                .navigationTitle("What's new?")
+        }
+
     }
 }
 

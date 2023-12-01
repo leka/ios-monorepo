@@ -13,34 +13,36 @@ enum Category: CaseIterable, Identifiable {
     var id: Self { self }
 }
 
-enum Destination: Hashable {
-    case activity(id: String)
-    case curriculum(id: String)
-}
-
 class Navigation: ObservableObject {
 
     static let shared = Navigation()
 
+    private var pushPopNoAnimationTransaction: Transaction {
+        var t = Transaction()
+        t.disablesAnimations = true
+        return t
+    }
+
     @Published var categories = Category.allCases
+
     @Published var selectedCategory: Category? = .home {
         willSet {
             switch selectedCategory {
                 case .home:
-                    break
+                    withTransaction(pushPopNoAnimationTransaction) {
+                        homeNavPathBackup = homeNavPath
+                        homeNavPath = NavigationPath()
+                    }
+                    print("backup homeNavPathBackup: \(homeNavPathBackup)")
                 case .activities:
-                    activitiesNavPathBackup = activitiesNavPath
-                    var t = Transaction()
-                    t.disablesAnimations = true
-                    withTransaction(t) {
+                    withTransaction(pushPopNoAnimationTransaction) {
+                        activitiesNavPathBackup = activitiesNavPath
                         activitiesNavPath = NavigationPath()
                     }
                     print("backup activitiesNavPathBackup: \(activitiesNavPathBackup)")
                 case .curriculums:
-                    curriculumsNavPathBackup = curriculumsNavPath
-                    var t = Transaction()
-                    t.disablesAnimations = true
-                    withTransaction(t) {
+                    withTransaction(pushPopNoAnimationTransaction) {
+                        curriculumsNavPathBackup = curriculumsNavPath
                         curriculumsNavPath = NavigationPath()
                     }
                     print("backup curriculumsNavPathBackup: \(curriculumsNavPathBackup)")
@@ -52,40 +54,35 @@ class Navigation: ObservableObject {
         didSet {
             switch selectedCategory {
                 case .home:
-                    homeNavPath = NavigationPath()
+                    withTransaction(pushPopNoAnimationTransaction) {
+                        homeNavPath = homeNavPathBackup
+                    }
+                    print("restore homeNavPath: \(homeNavPath)")
                 case .activities:
-                    var t = Transaction()
-                    t.disablesAnimations = true
-                    withTransaction(t) {
+                    withTransaction(pushPopNoAnimationTransaction) {
                         activitiesNavPath = activitiesNavPathBackup
                     }
                     print("restore activitiesNavPath: \(activitiesNavPath)")
                 case .curriculums:
-                    var t = Transaction()
-                    t.disablesAnimations = true
-                    withTransaction(t) {
+                    withTransaction(pushPopNoAnimationTransaction) {
                         curriculumsNavPath = curriculumsNavPathBackup
                     }
                     print("restore curriculumsNavPath: \(curriculumsNavPath)")
-                case nil:
+                case .none:
                     break
             }
         }
     }
 
     @Published var homeNavPath: NavigationPath = NavigationPath()
-//    @Published var activitiesNavPath: [Destination] = []
     @Published var activitiesNavPath: NavigationPath = NavigationPath()
     @Published var curriculumsNavPath: NavigationPath = NavigationPath()
-//    @Published var curriculumsNavPath: [Destination] = []
 
-//    var activitiesNavPathBackup: [Destination] = []
-//    var curriculumsNavPathBackup: [Destination] = []
+    private var homeNavPathBackup: NavigationPath = NavigationPath()
+    private var activitiesNavPathBackup: NavigationPath = NavigationPath()
+    private var curriculumsNavPathBackup: NavigationPath = NavigationPath()
 
-    var activitiesNavPathBackup: NavigationPath = NavigationPath()
-    var curriculumsNavPathBackup: NavigationPath = NavigationPath()
-
-    public func selectCategory(_ newCategory: Category) {
+    public func select(category newCategory: Category) {
         guard selectedCategory != newCategory else { return }
         selectedCategory = newCategory
     }

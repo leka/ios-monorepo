@@ -5,18 +5,22 @@
 import Combine
 import SwiftUI
 
-class ContentViewViewModel: ObservableObject {
+struct ContentView: View {
 
-    private var navigation: Navigation = Navigation.shared
+    @ObservedObject var navigation: Navigation = Navigation.shared
 
-    //    @Published var topViewCategory: Category? = .home
+    var body: some View {
+        NavigationSplitView {
+            List(navigation.categories, selection: $navigation.selectedCategory) { category in
+                Label(title(for: category), systemImage: image(for: category))
+            }
+            .navigationTitle("Categories")
+        } detail: {
+            DetailView()
+        }
+    }
 
-    //    init() {
-    //        navigation.$selectedCategory
-    //            .assign(to: &$topViewCategory)
-    //    }
-
-    public func titleForCategory(_ category: Category) -> String {
+    private func title(for category: Category) -> String {
         switch category {
             case .home:
                 "Home"
@@ -27,7 +31,7 @@ class ContentViewViewModel: ObservableObject {
         }
     }
 
-    public func imageForCategory(_ category: Category) -> String {
+    private func image(for category: Category) -> String {
         switch category {
             case .home:
                 "house"
@@ -40,87 +44,24 @@ class ContentViewViewModel: ObservableObject {
 
 }
 
-struct ContentView: View {
-
-    @ObservedObject var navigation: Navigation = Navigation.shared
-
-    @StateObject var viewModel = ContentViewViewModel()
-
-    @State var path: [Activity] = [] {
-        didSet {
-            print("didSet path: \(path)")
-        }
-    }
-
-    var body: some View {
-//        CustomSplitView {
-        NavigationSplitView {
-//        SplitView {
-            List(navigation.categories, selection: $navigation.selectedCategory) { category in
-                Label(viewModel.titleForCategory(category), systemImage: viewModel.imageForCategory(category))
-            }
-//            .listStyle(.sidebar)
-            .navigationTitle("Categories")
-
-        } detail: {
-//            NavigationStack(path: $path) {
-                DetailView()
-//            }
-            //                .id(navigation.selectedCategory)
-        }
-    }
-
-}
-
 struct DetailView: View {
 
     @ObservedObject var navigation: Navigation = Navigation.shared
 
-    @State var title: String = "NO TITLE"
-
-    private var cancellables = Set<AnyCancellable>()
-
-    init() {
-        print("init DetailView")
-    }
-
     var body: some View {
-//        ZStack {
-//            Group {
-                switch navigation.selectedCategory {
-                    case .home:
-                        View1()
-                    case .activities:
-                        // ? Fix animation w/ multiple navigation stacks, see https://developer.apple.com/forums/thread/728132
-//                        NavigationStack(path: $navigation.mainPath.animation(.linear(duration: 0))) {
-                            ActivityListView()
-//                        }
-                    case .curriculums:
-                        // ? Fix animation w/ multiple navigation stacks, see https://developer.apple.com/forums/thread/728132
-//                        NavigationStack(path: $navigation.mainPath.animation(.linear(duration: 0))) {
-                            CurriculumListView()
-//                        }
-                    case .none:
-                        Text("Select a category")
-                }
-                
-
-//            }
-//            .navigationTitle(title)
-//            .onReceive(navigation.$selectedCategory) { category in
-//                switch category {
-//                    case .home:
-//                        self.title = "Home"
-//                    case .activities:
-//                        self.title = "Activities"
-//                    case .curriculums:
-//                        self.title = "Curriculums"
-//                    case .none:
-//                        self.title = "NIL TITLE"
-//                }
-//            }
+        Group {
+            switch navigation.selectedCategory {
+                case .home:
+                    HomeView()
+                case .activities:
+                    ActivityListView()
+                case .curriculums:
+                    CurriculumListView()
+                case .none:
+                    Text("Select a category")
+            }
         }
-//    }
+    }
 
 }
 
@@ -151,104 +92,6 @@ struct View1: View {
         .onAppear {
             print("View1 appeared")
         }
-    }
-}
-
-struct View2: View {
-    @State var value: Int = 0
-
-    init() {
-        print("View2 init")
-    }
-    var body: some View {
-        ZStack {
-            Rectangle().fill(Color.green).edgesIgnoringSafeArea(.all)
-            Text("Value: \(value)")
-                .foregroundColor(.white)
-                .font(.title)
-                .onTapGesture {
-                    value += 1
-                }
-                .onAppear {
-                    print("View 2 Text appeared")
-                }
-        }
-
-        .onTapGesture {
-            print("View2 tapped")
-        }
-        .onAppear {
-            print("View2 appeared")
-        }
-    }
-}
-
-struct View3: View {
-    @State var value: Int = 0
-
-    init() {
-        print("View3 init")
-    }
-
-    var body: some View {
-        ZStack {
-            Rectangle().fill(Color.blue).edgesIgnoringSafeArea(.all)
-            Text("Value: \(value)")
-                .foregroundColor(.white)
-                .font(.title)
-                .onTapGesture {
-                    value += 1
-                }
-                .onAppear {
-                    print("View 3 Text appeared")
-                }
-        }
-        .onTapGesture {
-            print("View3 tapped")
-        }
-        .onAppear {
-            print("View3 appeared")
-        }
-    }
-}
-
-struct CustomSplitView<Sidebar, Content, Detail> : View where Sidebar : View, Content : View, Detail : View{
-    let sidebar: () -> Sidebar
-    let detail: () -> Detail
-    @State private var isSidebarCollapsed = false
-
-    public init(@ViewBuilder sidebar: @escaping () -> Sidebar, @ViewBuilder detail: @escaping () -> Detail) where Content == EmptyView {
-//    init(@ViewBuilder sidebar: @escaping () -> Sidebar, @ViewBuilder detail: @escaping () -> Detail) {
-        self.sidebar = sidebar
-        self.detail = detail
-    }
-
-    var body: some View {
-        HStack(spacing: 0) {
-            if !isSidebarCollapsed {
-                VStack {
-                    Button(action: { isSidebarCollapsed = true }) {
-                        Image(systemName: "chevron.left")
-                            .padding()
-                    }
-                    sidebar()
-                        .listStyle(.sidebar)
-                }
-                .frame(width: 250)
-                .transition(.move(edge: .leading))
-            }
-
-            detail()
-
-            if isSidebarCollapsed {
-                Button(action: { isSidebarCollapsed = false }) {
-                    Image(systemName: "chevron.right")
-                        .padding()
-                }
-                .transition(.move(edge: .leading))
-            }
-        }
-        .animation(.default, value: isSidebarCollapsed)
     }
 }
 
