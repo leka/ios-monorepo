@@ -12,14 +12,14 @@ extension MusicalInstrumentView {
         @ObservedObject var xyloPlayer: MIDIPlayer
         let tilesSpacing: CGFloat
         let tileNumber: Int
-        let tileColors: [Robot.Color] = [.pink, .red, .orange, .yellow, .green, .blue, .purple]
+        let tileColors: [Robot.Color] = [.pink, .red, .orange, .yellow, .green, .lightBlue, .blue, .purple]
         let scale: MIDIScale
 
         init(midiPlayer: MIDIPlayer, scale: MIDIScale) {
             self.xyloPlayer = midiPlayer
             self.scale = scale
             self.tileNumber = scale.notes.count
-            self.tilesSpacing = scale.self == .majorPentatonic ? 40 : 16
+            self.tilesSpacing = scale.self == .majorPentatonic ? 40 : 20
         }
 
         var body: some View {
@@ -31,7 +31,10 @@ extension MusicalInstrumentView {
                     } label: {
                         tileColors[index].screen
                     }
-                    .buttonStyle(TileButtonStyle(index: index, tileNumber: tileNumber))
+                    .buttonStyle(
+                        TileButtonStyle(
+                            index: index, tileNumber: tileNumber, tileWidth: scale.self == .majorPentatonic ? 130 : 100)
+                    )
                     .compositingGroup()
                 }
             }

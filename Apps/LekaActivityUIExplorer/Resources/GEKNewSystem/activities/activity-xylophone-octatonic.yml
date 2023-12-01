@@ -1,0 +1,15 @@
+# Leka - iOS Monorepo
+# Copyright 2023 APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+id: 7fe97b08432f4ec0a1556f6f8734a99e
+name: Xylophone Octatonic
+description: L'objectif est de jouer de la musique à l'aide du xylophone
+image: activity_color_recognition_1
+sequence:
+  - exercises:
+      - instructions: Joue du xylophone avec Leka
+        interface: musicalInstruments
+        payload:
+          instrument: xylophone
+          scale: majorOctatonic
