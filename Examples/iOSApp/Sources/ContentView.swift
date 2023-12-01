@@ -13,6 +13,7 @@ struct ContentView: View {
         NavigationSplitView {
             List(navigation.categories, selection: $navigation.selectedCategory) { category in
                 Label(title(for: category), systemImage: image(for: category))
+                    .disabled(navigation.disableUICompletly)
             }
             .navigationTitle("Categories")
         } detail: {

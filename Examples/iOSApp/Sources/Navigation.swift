@@ -18,15 +18,18 @@ class Navigation: ObservableObject {
     static let shared = Navigation()
 
     private var pushPopNoAnimationTransaction: Transaction {
-        var t = Transaction()
+        var t = Transaction(animation: nil)
         t.disablesAnimations = true
         return t
     }
+
+    @Published var disableUICompletly: Bool = false
 
     @Published var categories = Category.allCases
 
     @Published var selectedCategory: Category? = .home {
         willSet {
+            disableUICompletly = true
             switch selectedCategory {
                 case .home:
                     withTransaction(pushPopNoAnimationTransaction) {
@@ -71,6 +74,10 @@ class Navigation: ObservableObject {
                 case .none:
                     break
             }
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
+                self.disableUICompletly = false
+//            }
+//            disableUICompletly = false
         }
     }
 
