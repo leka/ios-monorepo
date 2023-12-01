@@ -9,22 +9,22 @@ struct CurriculumListView: View {
     @ObservedObject var navigation: Navigation = Navigation.shared
 
     var body: some View {
-            VStack(spacing: 50) {
-                List {
-                    ForEach(Curriculum.all) { curriculum in
-                        NavigationLink(value: curriculum) {
-                            Text(curriculum.name)
-                        }
+        VStack(spacing: 50) {
+            List {
+                ForEach(Curriculum.all) { curriculum in
+                    NavigationLink(value: curriculum) {
+                        Text(curriculum.name)
                     }
                 }
             }
-            .navigationDestination(for: Curriculum.self) { curriculum in
-                CurriculumInfoView(curriculum: curriculum)
-            }
-            .navigationDestination(for: Activity.self) { activity in
-                ActivityInfoView(activity: activity)
-            }
-            .navigationTitle("List of curriculums")
+        }
+        .navigationDestination(for: Curriculum.self) { curriculum in
+            CurriculumInfoView(curriculum: curriculum)
+        }
+        .navigationDestination(for: Activity.self) { activity in
+            ActivityInfoView(activity: activity)
+        }
+        .navigationTitle("List of curriculums")
     }
 
 }

@@ -76,8 +76,8 @@ class Navigation: ObservableObject {
                 print("backup curriculumsNavPathBackup: \(curriculumsNavPathBackup)")
 
             case .none:
-                    print("category is nil, early return to avoid reseting path")
-                return // ? Note: early return to avoid reseting path
+                print("category is nil, early return to avoid reseting path")
+                return  // ? Note: early return to avoid reseting path
         }
 
         withTransaction(pushPopNoAnimationTransaction) {

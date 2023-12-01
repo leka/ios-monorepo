@@ -9,19 +9,19 @@ struct ActivityListView: View {
     @ObservedObject var navigation: Navigation = Navigation.shared
 
     var body: some View {
-            VStack(spacing: 50) {
-                List {
-                    ForEach(Activity.all) { activity in
-                        NavigationLink(value: activity) {
-                            Text(activity.name)
-                        }
+        VStack(spacing: 50) {
+            List {
+                ForEach(Activity.all) { activity in
+                    NavigationLink(value: activity) {
+                        Text(activity.name)
                     }
                 }
             }
-            .navigationDestination(for: Activity.self) { activity in
-                ActivityInfoView(activity: activity)
-            }
-            .navigationTitle("List of activities")
+        }
+        .navigationDestination(for: Activity.self) { activity in
+            ActivityInfoView(activity: activity)
+        }
+        .navigationTitle("List of activities")
     }
 
 }
