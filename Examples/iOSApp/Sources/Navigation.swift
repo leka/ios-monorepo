@@ -30,10 +30,8 @@ class Navigation: ObservableObject {
     var selectedCategory: Category? = .home {
         willSet {
             disableUICompletly = true
-            guard !isProgrammaticNavigation else {
-                print("isProgrammaticNavigation is true, early return to avoid reseting path")
-                return  // ? Note: early return to avoid reseting path
-            }
+            // ? Note: early return to avoid reseting path
+            guard !isProgrammaticNavigation else { return }
             backupPath(for: selectedCategory)
         }
         didSet {
@@ -67,22 +65,18 @@ class Navigation: ObservableObject {
                 withTransaction(pushPopNoAnimationTransaction) {
                     homeNavPathBackup = path
                 }
-                print("backup homeNavPathBackup: \(homeNavPathBackup)")
 
             case .activities:
                 withTransaction(pushPopNoAnimationTransaction) {
                     activitiesNavPathBackup = path
                 }
-                print("backup activitiesNavPathBackup: \(activitiesNavPathBackup)")
 
             case .curriculums:
                 withTransaction(pushPopNoAnimationTransaction) {
                     curriculumsNavPathBackup = path
                 }
-                print("backup curriculumsNavPathBackup: \(curriculumsNavPathBackup)")
 
             case .none:
-                print("category is nil, early return to avoid reseting path")
                 return  // ? Note: early return to avoid reseting path
         }
 
@@ -97,22 +91,19 @@ class Navigation: ObservableObject {
                 withTransaction(pushPopNoAnimationTransaction) {
                     path = homeNavPathBackup
                 }
-                print("restore homeNavPath: \(path)")
 
             case .activities:
                 withTransaction(pushPopNoAnimationTransaction) {
                     path = activitiesNavPathBackup
                 }
-                print("restore activitiesNavPath: \(path)")
 
             case .curriculums:
                 withTransaction(pushPopNoAnimationTransaction) {
                     path = curriculumsNavPathBackup
                 }
-                print("restore curriculumsNavPath: \(path)")
 
             case .none:
-                print("category is nil, no retore")
+                break
         }
     }
 
@@ -120,25 +111,21 @@ class Navigation: ObservableObject {
         switch newCategory {
             case .home:
                 break
+
             case .activities:
                 activitiesNavPathBackup = newPath.compactMap { $0 as? Activity }
                     .reduce(into: NavigationPath()) { $0.append($1) }
+
             case .curriculums:
                 var localPath = NavigationPath()
                 newPath.forEach {
                     if let activity = $0 as? Activity {
-                        print("append activity: \(activity)")
                         localPath.append(activity)
                     } else if let curriculum = $0 as? Curriculum {
-                        print("append curriculum: \(curriculum)")
                         localPath.append(curriculum)
-                    } else {
-                        print("append unknown: \($0)")
                     }
                 }
-                print("localPath: \(localPath)")
                 curriculumsNavPathBackup = localPath
-                print("bckupPath: \(curriculumsNavPathBackup)")
         }
 
         underProgrammaticNavigation {
@@ -165,9 +152,6 @@ class Navigation: ObservableObject {
     func set(curriculum: String, activity id: String) {
         guard let curriculum = Curriculum.all.first(where: { $0.id == curriculum }) else { return }
         guard let activity = curriculum.activities.first(where: { $0.id == id }) else { return }
-
-        print("curri: \(curriculum)")
-        print("activ: \(activity)")
 
         var localPath = NavigationPath()
 

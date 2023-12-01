@@ -10,8 +10,8 @@ struct HomeView: View {
 
     var body: some View {
         VStack {
-            Text( /*@START_MENU_TOKEN@*/"Hello, World!" /*@END_MENU_TOKEN@*/)
-                .font(.largeTitle)
+            Text("Try programmatic navigation")
+                .font(.headline)
 
             Button("Go to Activities / Activity 1") {
                 navigation.set(path: Activity.all[0], for: .activities)
