@@ -17,7 +17,18 @@ struct ContentView: View {
             }
             .navigationTitle("Categories")
         } detail: {
-            DetailView()
+            NavigationStack(path: $navigation.path) {
+                switch navigation.selectedCategory {
+                    case .home:
+                        HomeView()
+                    case .activities:
+                        ActivityListView()
+                    case .curriculums:
+                        CurriculumListView()
+                    case .none:
+                        Text("Select a category")
+                }
+            }
         }
     }
 
@@ -43,57 +54,6 @@ struct ContentView: View {
         }
     }
 
-}
-
-struct DetailView: View {
-
-    @ObservedObject var navigation: Navigation = Navigation.shared
-
-    var body: some View {
-        Group {
-            switch navigation.selectedCategory {
-                case .home:
-                    HomeView()
-                case .activities:
-                    ActivityListView()
-                case .curriculums:
-                    CurriculumListView()
-                case .none:
-                    Text("Select a category")
-            }
-        }
-    }
-
-}
-
-struct View1: View {
-
-    @State var value: Int = 0
-
-    init() {
-        print("View1 init")
-    }
-
-    var body: some View {
-        ZStack {
-            Rectangle().fill(Color.red).edgesIgnoringSafeArea(.all)
-            Text("Value: \(value)")
-                .foregroundColor(.white)
-                .font(.title)
-                .onTapGesture {
-                    value += 1
-                }
-                .onAppear {
-                    print("View 1 Text appeared")
-                }
-        }
-        .onTapGesture {
-            print("View1 tapped")
-        }
-        .onAppear {
-            print("View1 appeared")
-        }
-    }
 }
 
 #Preview {

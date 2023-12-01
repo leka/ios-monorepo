@@ -27,63 +27,74 @@ class Navigation: ObservableObject {
 
     @Published var categories = Category.allCases
 
-    @Published var selectedCategory: Category? = .home {
+    var selectedCategory: Category? = .home {
         willSet {
             disableUICompletly = true
-            switch selectedCategory {
-                case .home:
-                    withTransaction(pushPopNoAnimationTransaction) {
-                        homeNavPathBackup = homeNavPath
-                        homeNavPath = NavigationPath()
-                    }
-                    print("backup homeNavPathBackup: \(homeNavPathBackup)")
-                case .activities:
-                    withTransaction(pushPopNoAnimationTransaction) {
-                        activitiesNavPathBackup = activitiesNavPath
-                        activitiesNavPath = NavigationPath()
-                    }
-                    print("backup activitiesNavPathBackup: \(activitiesNavPathBackup)")
-                case .curriculums:
-                    withTransaction(pushPopNoAnimationTransaction) {
-                        curriculumsNavPathBackup = curriculumsNavPath
-                        curriculumsNavPath = NavigationPath()
-                    }
-                    print("backup curriculumsNavPathBackup: \(curriculumsNavPathBackup)")
-                case nil:
-                    break
-            }
+
+            backupPath(for: selectedCategory)
+
+//            switch selectedCategory {
+//                case .home:
+//                    withTransaction(pushPopNoAnimationTransaction) {
+//                        homeNavPathBackup = path
+//
+//                    }
+//                    print("backup homeNavPathBackup: \(homeNavPathBackup)")
+//                case .activities:
+//                    withTransaction(pushPopNoAnimationTransaction) {
+//                        activitiesNavPathBackup = path
+//
+//                    }
+//                    print("backup activitiesNavPathBackup: \(activitiesNavPathBackup)")
+//                case .curriculums:
+//                    withTransaction(pushPopNoAnimationTransaction) {
+//                        curriculumsNavPathBackup = path
+//
+//                    }
+//                    print("backup curriculumsNavPathBackup: \(curriculumsNavPathBackup)")
+//                case nil:
+//                    print("no backup")
+//                    return
+//            }
+
+//            withTransaction(pushPopNoAnimationTransaction) {
+//                path = NavigationPath()
+//            }
         }
 
         didSet {
-            switch selectedCategory {
-                case .home:
-                    withTransaction(pushPopNoAnimationTransaction) {
-                        homeNavPath = homeNavPathBackup
-                    }
-                    print("restore homeNavPath: \(homeNavPath)")
-                case .activities:
-                    withTransaction(pushPopNoAnimationTransaction) {
-                        activitiesNavPath = activitiesNavPathBackup
-                    }
-                    print("restore activitiesNavPath: \(activitiesNavPath)")
-                case .curriculums:
-                    withTransaction(pushPopNoAnimationTransaction) {
-                        curriculumsNavPath = curriculumsNavPathBackup
-                    }
-                    print("restore curriculumsNavPath: \(curriculumsNavPath)")
-                case .none:
-                    break
-            }
-//            DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
-                self.disableUICompletly = false
+            restorePath(for: selectedCategory)
+
+//            switch selectedCategory {
+//                case .home:
+//                    withTransaction(pushPopNoAnimationTransaction) {
+//                        path = homeNavPathBackup
+//                    }
+//                    print("restore homeNavPath: \(path)")
+//                case .activities:
+//                    withTransaction(pushPopNoAnimationTransaction) {
+//                        path = activitiesNavPathBackup
+//                    }
+//                    print("restore activitiesNavPath: \(path)")
+//                case .curriculums:
+//                    withTransaction(pushPopNoAnimationTransaction) {
+//                        path = curriculumsNavPathBackup
+//                    }
+//                    print("restore curriculumsNavPath: \(path)")
+//                case .none:
+//                    break
 //            }
-//            disableUICompletly = false
         }
     }
 
-    @Published var homeNavPath: NavigationPath = NavigationPath()
-    @Published var activitiesNavPath: NavigationPath = NavigationPath()
-    @Published var curriculumsNavPath: NavigationPath = NavigationPath()
+    @Published var path: NavigationPath = NavigationPath() {
+        willSet {
+            disableUICompletly = true
+        }
+        didSet {
+            self.disableUICompletly = false
+        }
+    }
 
     private var homeNavPathBackup: NavigationPath = NavigationPath()
     private var activitiesNavPathBackup: NavigationPath = NavigationPath()
@@ -92,6 +103,61 @@ class Navigation: ObservableObject {
     public func select(category newCategory: Category) {
         guard selectedCategory != newCategory else { return }
         selectedCategory = newCategory
+    }
+
+    private func backupPath(for category: Category?) {
+        switch category {
+            case .home:
+                withTransaction(pushPopNoAnimationTransaction) {
+                    homeNavPathBackup = path
+                }
+                print("backup homeNavPathBackup: \(homeNavPathBackup)")
+
+            case .activities:
+                withTransaction(pushPopNoAnimationTransaction) {
+                    activitiesNavPathBackup = path
+                }
+                print("backup activitiesNavPathBackup: \(activitiesNavPathBackup)")
+
+            case .curriculums:
+                withTransaction(pushPopNoAnimationTransaction) {
+                    curriculumsNavPathBackup = path
+                }
+                print("backup curriculumsNavPathBackup: \(curriculumsNavPathBackup)")
+
+            case .none:
+                    print("category is nil, early return to avoid reseting path")
+                return // ? Note: early return to avoid reseting path
+        }
+
+        withTransaction(pushPopNoAnimationTransaction) {
+            path = NavigationPath()
+        }
+    }
+
+    private func restorePath(for category: Category?) {
+        switch category {
+            case .home:
+                withTransaction(pushPopNoAnimationTransaction) {
+                    path = homeNavPathBackup
+                }
+                print("restore homeNavPath: \(path)")
+
+            case .activities:
+                withTransaction(pushPopNoAnimationTransaction) {
+                    path = activitiesNavPathBackup
+                }
+                print("restore activitiesNavPath: \(path)")
+
+            case .curriculums:
+                withTransaction(pushPopNoAnimationTransaction) {
+                    path = curriculumsNavPathBackup
+                }
+                print("restore curriculumsNavPath: \(path)")
+
+            case .none:
+                print("category is nil, no retore")
+        }
     }
 
 }

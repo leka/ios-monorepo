@@ -9,7 +9,7 @@ struct CurriculumListView: View {
     @ObservedObject var navigation: Navigation = Navigation.shared
 
     var body: some View {
-        NavigationStack(path: $navigation.curriculumsNavPath) {
+//        NavigationStack(path: $navigation.curriculumsNavPath) {
             VStack(spacing: 50) {
                 List {
                     ForEach(Curriculum.all) { curriculum in
@@ -23,7 +23,7 @@ struct CurriculumListView: View {
                 CurriculumInfoView(curriculum: curriculum)
             }
             .navigationTitle("List of curriculums")
-        }
+//        }
     }
 
 }
