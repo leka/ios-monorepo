@@ -42,7 +42,7 @@ struct CurriculumInfoView: View {
                 }
 
                 Section("List of activities") {
-                    ForEach(Activity.all.filter { curriculum.activities.contains($0.id) }) { activity in
+                    ForEach(curriculum.activities) { activity in
                         NavigationLink(value: activity) {
                             Text(activity.name)
                         }
