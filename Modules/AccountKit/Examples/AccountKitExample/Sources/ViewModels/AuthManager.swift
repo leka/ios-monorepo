@@ -12,6 +12,12 @@ class AuthManager: ObservableObject {
         case unknown, loggedOut, loggedIn
     }
 
+    enum FirebaseAuthenticationOperation: String {
+        case none = ""
+        case signIn = "signed in"
+        case signUp = "signed up"
+    }
+
     @Published private(set) var companyAuthenticationState: FirebaseAuthenticationState = .unknown
     @Published var errorMessage: String = ""
     @Published var showErrorMessageAlert = false
@@ -40,9 +46,9 @@ class AuthManager: ObservableObject {
     func signIn(email: String, password: String) {
         auth.signIn(withEmail: email, password: password)
             .sink { [weak self] completion in
-                self?.handleCompletion(completion, newState: .loggedOut)
+                self?.handleCompletion(completion, newState: .loggedOut, operation: .signIn)
             } receiveValue: { [weak self] result in
-                self?.handleUserUpdate(result: result, operation: "signed in")
+                self?.handleUserUpdate(result: result, operation: .signIn)
             }
             .store(in: &cancellables)
     }
@@ -50,9 +56,9 @@ class AuthManager: ObservableObject {
     func signUp(email: String, password: String) {
         auth.createUser(withEmail: email, password: password)
             .sink { [weak self] completion in
-                self?.handleCompletion(completion, newState: .loggedOut)
+                self?.handleCompletion(completion, newState: .loggedOut, operation: .signUp)
             } receiveValue: { [weak self] result in
-                self?.handleUserUpdate(result: result, operation: "signed up")
+                self?.handleUserUpdate(result: result, operation: .signUp)
             }
             .store(in: &cancellables)
     }
@@ -60,7 +66,7 @@ class AuthManager: ObservableObject {
     func sendPasswordReset(with email: String) {
         auth.sendPasswordReset(withEmail: email)
             .sink { [weak self] completion in
-                self?.handleCompletion(completion, newState: .unknown)
+                self?.handleCompletion(completion, newState: .unknown, operation: .none)
             } receiveValue: { _ in
                 // nothing to do
             }
@@ -93,34 +99,37 @@ class AuthManager: ObservableObject {
     }
 
     // MARK: - Completion & error handling
-    private func handleCompletion(_ completion: Subscribers.Completion<Error>, newState: FirebaseAuthenticationState) {
+    private func handleCompletion(
+        _ completion: Subscribers.Completion<Error>,
+        newState: FirebaseAuthenticationState,
+        operation: FirebaseAuthenticationOperation
+    ) {
         switch completion {
             case .finished:
                 break
             case .failure(let error):
                 errorMessage = error.localizedDescription
-                print(errorMessage)
-                handleSignInError(error)
+                switch operation {
+                    case .none:
+                        print(errorMessage)
+                    case .signIn:
+                        handleSignInError(error)
+                    case .signUp:
+                        handleSignUpError(error)
+                }
                 companyAuthenticationState = newState
         }
     }
 
-    private func handleUserUpdate(result: AuthDataResult, operation: String) {
+    private func handleUserUpdate(result: AuthDataResult, operation: FirebaseAuthenticationOperation) {
         companyAuthenticationState = .loggedIn
         let company = result.user
-        print("Company \(company.uid) \(operation) successfully.")
+        print("Company \(company.uid) \(operation.rawValue) successfully.")
     }
 
     private func handleSignInError(_ error: Error) {
         if let authError = AuthErrorCode(_bridgedNSError: (error as NSError))?.code {
-            switch authError {
-                case .wrongPassword:
-                    errorMessage = "Wrong password. Please try again."
-                case .invalidEmail:
-                    errorMessage = "We cannot find this email address. Please check and try again."
-                default:
-                    errorMessage = "Sign-in failed. Please try again."
-            }
+            errorMessage = "Sign-in failed. Please try again."
         } else {
             errorMessage = "An unexpected error occurred. Please try again later."
         }
@@ -129,13 +138,7 @@ class AuthManager: ObservableObject {
 
     private func handleSignUpError(_ error: Error) {
         if let authError = AuthErrorCode(_bridgedNSError: error as NSError)?.code {
-            switch authError {
-                case .emailAlreadyInUse:
-                    errorMessage =
-                        "This email is already in use. Please try with a different one or go back to sign in."
-                default:
-                    errorMessage = "Sign-up failed. Please try again later."
-            }
+            errorMessage = "Sign-up failed. Please try again later."
         } else {
             errorMessage = "An unexpected error occurred. Please try again later."
         }
