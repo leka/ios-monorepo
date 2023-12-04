@@ -26,9 +26,9 @@ struct MainView: View {
             .easeOut(duration: 0.4), value: authManager.companyAuthenticationState
         )
         .preferredColorScheme(.light)
-        .onAppear(perform: {
-            authManager.checkAuthenticationStatus()
-        })
+        //        .onAppear(perform: {
+        //            authManager.checkAuthenticationStatus()
+        //        })
     }
 
     // MARK: Private
