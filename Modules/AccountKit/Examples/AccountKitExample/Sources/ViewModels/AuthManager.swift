@@ -13,9 +13,9 @@ class AuthManager: ObservableObject {
     }
 
     enum FirebaseAuthenticationOperation: String {
-        case none = ""
         case signIn = "signed in"
         case signUp = "signed up"
+        case resetPassword = ""
     }
 
     @Published private(set) var companyAuthenticationState: FirebaseAuthenticationState = .unknown
@@ -66,7 +66,7 @@ class AuthManager: ObservableObject {
     func sendPasswordReset(with email: String) {
         auth.sendPasswordReset(withEmail: email)
             .sink { [weak self] completion in
-                self?.handleCompletion(completion, newState: .unknown, operation: .none)
+                self?.handleCompletion(completion, newState: .unknown, operation: .resetPassword)
             } receiveValue: { _ in
                 // nothing to do
             }
@@ -110,12 +110,12 @@ class AuthManager: ObservableObject {
             case .failure(let error):
                 errorMessage = error.localizedDescription
                 switch operation {
-                    case .none:
-                        print(errorMessage)
                     case .signIn:
                         handleSignInError(error)
                     case .signUp:
                         handleSignUpError(error)
+                    case .resetPassword:
+                        print(errorMessage)
                 }
                 companyAuthenticationState = newState
         }
