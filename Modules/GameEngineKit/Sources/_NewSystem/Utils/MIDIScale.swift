@@ -7,15 +7,12 @@ import AudioKit
 enum MIDIScale: String {
     case majorPentatonic
     case majorHeptatonic
-    case majorOctatonic
 
     var notes: [MIDINoteNumber] {
         switch self {
             case .majorPentatonic:
                 return [24, 26, 28, 31, 33]
             case .majorHeptatonic:
-                return [24, 26, 28, 29, 31, 33, 35]
-            case .majorOctatonic:
                 return [24, 26, 28, 29, 31, 33, 35, 36]
         }
     }
