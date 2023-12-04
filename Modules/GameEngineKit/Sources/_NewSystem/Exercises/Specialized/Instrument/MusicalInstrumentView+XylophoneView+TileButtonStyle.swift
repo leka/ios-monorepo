@@ -13,12 +13,12 @@ extension MusicalInstrumentView.XylophoneView {
         let xyloAttachColor = Color(red: 0.87, green: 0.65, blue: 0.54)
         let defaultMaxTileHeight: Int = 500
         let defaultTileHeightGap: Int = 250
-        let defaultTileWidth: CGFloat = 130
         let defaultTilesScaleFeedback: CGFloat = 0.98
         let defaultTilesRotationFeedback: CGFloat = -1
 
         let index: Int
         let tileNumber: Int
+        let tileWidth: CGFloat
 
         func makeBody(configuration: Self.Configuration) -> some View {
             configuration.label
@@ -47,7 +47,7 @@ extension MusicalInstrumentView.XylophoneView {
                         .stroke(.black.opacity(configuration.isPressed ? 0.3 : 0), lineWidth: 20)
                 }
                 .clipShape(RoundedRectangle(cornerRadius: 7, style: .circular))
-                .frame(width: defaultTileWidth, height: setSizeFromIndex())
+                .frame(width: tileWidth, height: setSizeFromIndex())
                 .scaleEffect(
                     configuration.isPressed ? defaultTilesScaleFeedback : 1,
                     anchor: .center
@@ -78,5 +78,5 @@ extension MusicalInstrumentView.XylophoneView {
     } label: {
         Color(.red)
     }
-    .buttonStyle(MusicalInstrumentView.XylophoneView.TileButtonStyle(index: 0, tileNumber: 1))
+    .buttonStyle(MusicalInstrumentView.XylophoneView.TileButtonStyle(index: 0, tileNumber: 1, tileWidth: 130))
 }

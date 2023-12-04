@@ -46,7 +46,8 @@ public struct MelodyView: View {
                         tile.color.screen
                     }
                     .buttonStyle(
-                        MusicalInstrumentView.XylophoneView.TileButtonStyle(index: tile.id, tileNumber: tileNumber)
+                        MusicalInstrumentView.XylophoneView.TileButtonStyle(
+                            index: tile.id, tileNumber: tileNumber, tileWidth: 130)
                     )
                     .compositingGroup()
                 }
