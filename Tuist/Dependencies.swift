@@ -11,7 +11,7 @@ let dependencies = Dependencies(
             requirement: .exact("5.0.6")
         ),
         .remote(
-            url: "https://github.com/leka/lottie-ios",
+            url: "https://github.com/airbnb/lottie-ios",
             requirement: .exact("4.3.4")
         ),
         .remote(
