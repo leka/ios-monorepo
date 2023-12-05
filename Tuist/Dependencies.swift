@@ -44,7 +44,7 @@ let dependencies = Dependencies(
         ),
         .remote(
             url: "https://github.com/firebase/firebase-ios-sdk",
-            requirement: .exact("10.19.0")
+            requirement: .exact("10.18.0")
         ),
     ]),
     platforms: [.iOS, .macOS]
