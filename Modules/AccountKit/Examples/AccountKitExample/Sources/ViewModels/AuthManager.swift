@@ -168,6 +168,10 @@ class AuthManager: ObservableObject {
                 message = "There was an error sending the verification email. Please try again later."
         }
 
+        showErrorAlert(with: message)
+    }
+
+    private func showErrorAlert(with message: String) {
         Just(message)
             .receive(on: DispatchQueue.main)
             .sink { [weak self] newMessage in

@@ -8,6 +8,7 @@ struct ForgotPasswordView: View {
 
     @EnvironmentObject var authManager: AuthManager
     @State private var credentials = CompanyCredentialsViewModel()
+    @State private var showErrorAlert = false
     @Environment(\.dismiss) var dismiss
 
     var body: some View {
@@ -29,10 +30,13 @@ struct ForgotPasswordView: View {
             } message: {
                 Text(authManager.notificationMessage)
             }
-            .alert("An error occurred", isPresented: $authManager.showErrorAlert) {
+            .alert("An error occurred", isPresented: $showErrorAlert) {
                 // nothing to show
             } message: {
                 Text(authManager.errorMessage)
+            }
+            .onReceive(authManager.$showErrorAlert) { newValue in
+                showErrorAlert = newValue
             }
         }
     }

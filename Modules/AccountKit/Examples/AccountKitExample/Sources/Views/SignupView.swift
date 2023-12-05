@@ -10,6 +10,7 @@ struct SignupView: View {
 
     @EnvironmentObject var authManager: AuthManager
     @State private var credentials = CompanyCredentialsViewModel()
+    @State private var showErrorAlert = false
 
     var body: some View {
         VStack(spacing: 10) {
@@ -26,10 +27,13 @@ struct SignupView: View {
         .animation(.default, value: credentials.isEmailValid())
         .animation(.default, value: credentials.isPasswordValid(credentials.password))
         .animation(.default, value: credentials.passwordsMatch())
-        .alert("An error occurred", isPresented: $authManager.showErrorAlert) {
+        .alert("An error occurred", isPresented: $showErrorAlert) {
             // nothing to show
         } message: {
             Text(authManager.errorMessage)
+        }
+        .onReceive(authManager.$showErrorAlert) { newValue in
+            showErrorAlert = newValue
         }
     }
 

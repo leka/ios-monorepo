@@ -7,10 +7,15 @@ import SwiftUI
 struct HomeView: View {
     // MARK: Internal
 
-    @EnvironmentObject var authenticationState: OrganisationAuthState
+    @EnvironmentObject var authManager: AuthManager
+    @Environment(\.dismiss) var dismiss
+
+    @State private var goBackToContentView: Bool = false
+    @State private var showDeleteConfirmation: Bool = false
+    @State private var showErrorAlert = false
 
     var body: some View {
-        switch self.authenticationState.organisationIsAuthenticated {
+        switch self.authManager.companyAuthenticationState {
             case .unknown:
                 Text("Loading...")
             case .loggedIn:
@@ -21,8 +26,6 @@ struct HomeView: View {
     }
 
     // MARK: Private
-
-    @State private var goBackToContentView: Bool = false
 
     private var content: some View {
         VStack(spacing: 10) {
@@ -93,10 +96,13 @@ struct HomeView: View {
         } message: {
             Text(authManager.notificationMessage)
         }
-        .alert("An error occurred", isPresented: $authManager.showErrorAlert) {
+        .alert("An error occurred", isPresented: $showErrorAlert) {
             // nothing to show
         } message: {
             Text(authManager.errorMessage)
+        }
+        .onReceive(authManager.$showErrorAlert) { newValue in
+            showErrorAlert = newValue
         }
     }
 }
