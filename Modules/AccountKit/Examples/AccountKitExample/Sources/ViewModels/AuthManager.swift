@@ -19,12 +19,6 @@ class AuthManager: ObservableObject {
         case resetPassword = "reset password"
     }
 
-    //    var currentUser: User? {
-    //        get {
-    //            return Auth.auth().currentUser
-    //        }
-    //    }
-
     @Published private(set) var companyAuthenticationState: FirebaseAuthenticationState = .unknown
     @Published private var emailHasBeenConfirmed: Bool = false {
         didSet {
@@ -156,20 +150,30 @@ class AuthManager: ObservableObject {
         companyAuthenticationState = .loggedIn
         print("Company \(result.user.uid) \(operation.rawValue) successfully.")
         checkAuthenticationStatus()
-        if case .signUp = operation { sendEmailVerification() }
+        if case .signUp = operation {
+            sendEmailVerification()
+        }
     }
 
     private func handleOperationsErrors(_ error: Error, operation: FirebaseAuthenticationOperation) {
+        var message = ""
         switch operation {
             case .signIn:
-                errorMessage = "Sign-in failed. Please try again."
+                message = "Sign-in failed. Please try again."
             case .signUp:
-                errorMessage = "Sign-up failed. Please try again later."
+                message = "Sign-up failed. Please try again later."
             case .resetPassword:
-                errorMessage = "There was an error resetting your password. Please try again later."
+                message = "There was an error resetting your password. Please try again later."
             case .confirmEmail:
-                errorMessage = "There was an error sending the verification email. Please try again later."
+                message = "There was an error sending the verification email. Please try again later."
         }
-        showErrorAlert = true
+
+        Just(message)
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] newMessage in
+                self?.errorMessage = newMessage
+                self?.showErrorAlert = true
+            }
+            .store(in: &cancellables)
     }
 }

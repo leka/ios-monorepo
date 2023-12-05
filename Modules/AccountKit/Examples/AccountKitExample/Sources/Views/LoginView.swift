@@ -45,6 +45,7 @@ struct LoginView: View {
         VStack(alignment: .leading, spacing: 10) {
             TextField("email", text: $credentials.mail)
                 .textFieldStyle(.roundedBorder)
+                .textContentType(.emailAddress)
                 .keyboardType(.emailAddress)
             if !credentials.mail.isEmpty
                 && !credentials.isEmailValid()
@@ -61,6 +62,7 @@ struct LoginView: View {
         VStack(alignment: .leading, spacing: 10) {
             SecureField("password", text: $credentials.password)
                 .textFieldStyle(.roundedBorder)
+                .textContentType(.password)
             if !credentials.password.isEmpty
                 && !credentials.isPasswordValid(credentials.password)
             {

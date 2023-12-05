@@ -39,6 +39,7 @@ struct SignupView: View {
         VStack(alignment: .leading, spacing: 10) {
             TextField("email", text: $credentials.mail)
                 .textFieldStyle(.roundedBorder)
+                .textContentType(.emailAddress)
                 .keyboardType(.emailAddress)
             if !credentials.mail.isEmpty
                 && !credentials.isEmailValid()
@@ -55,12 +56,12 @@ struct SignupView: View {
         VStack(alignment: .leading, spacing: 10) {
             SecureField("password", text: $credentials.password)
                 .textFieldStyle(.roundedBorder)
+                .textContentType(.newPassword)
             if !credentials.password.isEmpty
                 && !credentials.isPasswordValid(credentials.password)
             {
                 Text(credentials.invalidPasswordText)
                     .font(.footnote)
-                    .lineLimit(2)
                     .foregroundStyle(.red)
                     .padding(.horizontal, 10)
             }
@@ -71,6 +72,7 @@ struct SignupView: View {
         VStack(alignment: .leading, spacing: 10) {
             SecureField("confirm password", text: $credentials.confirmPassword)
                 .textFieldStyle(.roundedBorder)
+                .textContentType(.password)
             if !credentials.password.isEmpty
                 && (!credentials.confirmPassword.isEmpty
                     && !credentials.passwordsMatch())
