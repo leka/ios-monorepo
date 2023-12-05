@@ -15,7 +15,8 @@ class AuthManager: ObservableObject {
     enum FirebaseAuthenticationOperation: String {
         case signIn = "signed in"
         case signUp = "signed up"
-        case resetPassword = ""
+        case resetPassword = "reset password"
+        case confirmEmail = "confirm email"
     }
 
     @Published private(set) var companyAuthenticationState: FirebaseAuthenticationState = .unknown
@@ -77,6 +78,17 @@ class AuthManager: ObservableObject {
             .store(in: &cancellables)
     }
 
+    // TODO(@macteuts): Handle user notification/alert
+    func sendEmailVerification(for user: User) {
+        user.sendEmailVerification()
+            .sink { [weak self] completion in
+                self?.handleCompletion(completion, newState: .unknown, operation: .confirmEmail)
+            } receiveValue: { _ in
+                print("Verification email sent to \(user.email ?? "your email"). Please check your inbox.")
+            }
+            .store(in: &cancellables)
+    }
+
     func signOut() {
         do {
             try auth.signOut()
@@ -87,6 +99,7 @@ class AuthManager: ObservableObject {
         }
     }
 
+    // TODO(@macteuts): Handle user notification/alert
     func deleteAccount() {
         guard let currentUser = auth.currentUser else {
             print("No company signed-in currently.")
@@ -113,43 +126,43 @@ class AuthManager: ObservableObject {
                 break
             case .failure(let error):
                 errorMessage = error.localizedDescription
-                switch operation {
-                    case .signIn:
-                        handleSignInError(error)
-                    case .signUp:
-                        handleSignUpError(error)
-                    case .resetPassword:
-                        print(errorMessage)
-                }
+                handleOperationsErrors(error, operation: operation)
                 companyAuthenticationState = newState
         }
     }
 
+    // TODO(@macteuts): Handle user notification/alert + navigation
+    // TODO(@macteuts): Add "Send again" button
     private func handleUserUpdate(result: AuthDataResult, operation: FirebaseAuthenticationOperation) {
         guard result.user.isEmailVerified else {
-            // Show alert asking to verifiy email + resend button
-            print("Show alert asking to verifiy email + resend button")
+            switch operation {
+                case .resetPassword:
+                    // show alert
+                    // navigate back to signIn
+                    print("An email has been sent to \(result.user.email ?? "your email") to reset your password.")
+                default:
+                    // Show alert asking to verifiy email + resend button
+                    // signUp: navigate back to signIn
+                    // signIn: login automatically??
+                    print("Verification email sent to \(result.user.email ?? "your email"). Please check your inbox.")
+                    sendEmailVerification(for: result.user)
+            }
             return
         }
         companyAuthenticationState = .loggedIn
         print("Company \(result.user.uid) \(operation.rawValue) successfully.")
     }
 
-    private func handleSignInError(_ error: Error) {
-        if let authError = AuthErrorCode(_bridgedNSError: (error as NSError))?.code {
-            errorMessage = "Sign-in failed. Please try again."
-        } else {
-            errorMessage = "An unexpected error occurred. Please try again later."
+    private func handleOperationsErrors(_ error: Error, operation: FirebaseAuthenticationOperation) {
+        switch operation {
+            case .signIn:
+                errorMessage = "Sign-in failed. Please try again."
+            case .signUp:
+                errorMessage = "Sign-up failed. Please try again later."
+            case .resetPassword:
+                errorMessage = "There was an error resetting your password. Please try again later."
+            case .confirmEmail:
+                errorMessage = "There was an error sending the verification email. Please try again later."
         }
-        showErrorMessageAlert.toggle()
-    }
-
-    private func handleSignUpError(_ error: Error) {
-        if let authError = AuthErrorCode(_bridgedNSError: error as NSError)?.code {
-            errorMessage = "Sign-up failed. Please try again later."
-        } else {
-            errorMessage = "An unexpected error occurred. Please try again later."
-        }
-        showErrorMessageAlert.toggle()
     }
 }
