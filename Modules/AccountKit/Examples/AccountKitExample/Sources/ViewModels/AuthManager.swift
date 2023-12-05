@@ -19,6 +19,7 @@ class AuthManager: ObservableObject {
     }
 
     @Published private(set) var companyAuthenticationState: FirebaseAuthenticationState = .unknown
+    @Published private var emailHasBeenConfirmed: Bool = false
     @Published var errorMessage: String = ""
     @Published var showErrorMessageAlert = false
 
@@ -27,6 +28,9 @@ class AuthManager: ObservableObject {
 
     init() {
         checkAuthenticationStatus()
+        auth.addStateDidChangeListener { _, user in
+            self.emailHasBeenConfirmed = user?.isEmailVerified ?? false
+        }
     }
 
     private func updateAuthState(for company: User?) {
@@ -122,9 +126,13 @@ class AuthManager: ObservableObject {
     }
 
     private func handleUserUpdate(result: AuthDataResult, operation: FirebaseAuthenticationOperation) {
+        guard result.user.isEmailVerified else {
+            // Show alert asking to verifiy email + resend button
+            print("Show alert asking to verifiy email + resend button")
+            return
+        }
         companyAuthenticationState = .loggedIn
-        let company = result.user
-        print("Company \(company.uid) \(operation.rawValue) successfully.")
+        print("Company \(result.user.uid) \(operation.rawValue) successfully.")
     }
 
     private func handleSignInError(_ error: Error) {
