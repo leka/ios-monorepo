@@ -12,13 +12,17 @@ struct NavigationView: View {
 
     @ObservedObject var navigation: Navigation = Navigation.shared
 
-    @State private var expandDesignSystemApple: Bool = true
-    @State private var expandDesignSystemLeka: Bool = true
+    @State private var expandDesignSystemApple: Bool = false
+    @State private var expandDesignSystemLeka: Bool = false
 
     var body: some View {
         NavigationSplitView {
             List(selection: $navigation.selectedCategory) {
                 CategoryLabel(category: .home)
+
+                Section("Activities") {
+                    CategoryLabel(category: .activities)
+                }
 
                 Section("Design System (Apple)", isExpanded: $expandDesignSystemApple) {
                     CategoryLabel(category: .designSystemAppleFonts)
@@ -31,6 +35,7 @@ struct NavigationView: View {
                     CategoryLabel(category: .designSystemLekaButtons)
                     CategoryLabel(category: .designSystemLekaColorsSwiftUI)
                 }
+
             }
             // TODO(@ladislas): remove if not necessary
             // .disabled(navigation.disableUICompletly)
@@ -51,6 +56,9 @@ struct NavigationView: View {
                         Text("Hello, Home!")
                             .font(.largeTitle)
                             .bold()
+
+                    case .activities:
+                        GEKNewSystemView()
 
                     case .designSystemAppleFonts:
                         DesignSystemApple.FontsView()
@@ -93,6 +101,10 @@ struct NavigationView: View {
                 case .home:
                     self.title = "Home"
                     self.systemImage = "house"
+
+                case .activities:
+                    self.title = "Activities"
+                    self.systemImage = "dice"
 
                 case .designSystemAppleFonts:
                     self.title = "Apple Fonts"

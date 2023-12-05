@@ -8,6 +8,8 @@ enum Category: Hashable, Identifiable, CaseIterable {
 
     case home
 
+    case activities
+
     case designSystemAppleFonts
     case designSystemAppleButtons
     case designSystemAppleColorsSwiftUI
