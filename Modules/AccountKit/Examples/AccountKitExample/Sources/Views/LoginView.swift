@@ -27,10 +27,15 @@ struct LoginView: View {
         .animation(.default, value: credentials.isEmailValid())
         .animation(.default, value: credentials.isPasswordValid(credentials.password))
         .sheet(isPresented: $showSheet) { ForgotPasswordView() }
-        .alert("An error occurred", isPresented: $authManager.showErrorMessageAlert) {
+        .alert("An error occurred", isPresented: $authManager.showErrorAlert) {
             // nothing to show
         } message: {
             Text(authManager.errorMessage)
+        }
+        .alert("Réinitialiser le mot de passe", isPresented: $authManager.showNotificationAlert) {
+            // nothing to show
+        } message: {
+            Text(authManager.notificationMessage)
         }
     }
 

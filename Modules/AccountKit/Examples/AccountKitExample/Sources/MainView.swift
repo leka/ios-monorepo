@@ -5,10 +5,11 @@
 import SwiftUI
 
 struct MainView: View {
+
     // MARK: Internal
 
     @EnvironmentObject var authManager: AuthManager
-    
+
     var body: some View {
         Group {
             switch authManager.companyAuthenticationState {
@@ -29,7 +30,7 @@ struct MainView: View {
     }
 
     // MARK: Private
-    
+
     private var navigation: some View {
         NavigationStack {
             VStack(spacing: 10) {
@@ -39,7 +40,7 @@ struct MainView: View {
                     Text("Log In").frame(width: 400)
                 }
                 .buttonStyle(.borderedProminent)
-                
+
                 NavigationLink {
                     SignupView()
                 } label: {
@@ -51,6 +52,11 @@ struct MainView: View {
             .controlSize(.large)
             .navigationTitle("Authentication")
             .navigationBarBackButtonHidden()
+            .alert("An error occurred", isPresented: $authManager.showErrorAlert) {
+                // nothing to show
+            } message: {
+                Text(authManager.errorMessage)
+            }
         }
     }
 }

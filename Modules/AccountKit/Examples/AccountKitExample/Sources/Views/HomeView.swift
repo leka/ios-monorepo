@@ -26,7 +26,7 @@ struct HomeView: View {
 
     private var content: some View {
         VStack(spacing: 10) {
-            Text("Organisation is Logged In!")
+            Text("Company is Logged In!")
                 .fontWeight(.heavy)
 
             HStack(spacing: 10) {
@@ -40,19 +40,19 @@ struct HomeView: View {
                     }
                 )
                 .buttonStyle(.bordered)
-                .frame(maxWidth: 150)
+                .frame(maxWidth: 200)
 
                 Button(
                     action: {
                         showDeleteConfirmation.toggle()
                     },
                     label: {
-                        Text("Delete User")
+                        Text("Delete Company")
                             .frame(maxWidth: .infinity)
                     }
                 )
                 .buttonStyle(.borderedProminent)
-                .frame(maxWidth: 150)
+                .frame(maxWidth: 200)
                 .tint(.red)
             }
         }
@@ -70,6 +70,33 @@ struct HomeView: View {
             Text(
                 "Vous êtes sur le point de supprimer le compte de votre établissemnt. \nCette action est irreversible."
             )
+        }
+        .alert("Email non-vérifié", isPresented: $authManager.showactionRequestAlert) {
+            Button(role: .none) {
+                authManager.sendEmailVerification()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                    dismiss()
+                }
+            } label: {
+                Text("Renvoyer")
+            }
+            Button(role: .cancel) {
+                dismiss()
+            } label: {
+                Text("Plus tard")
+            }
+        } message: {
+            Text(authManager.actionRequestMessage)
+        }
+        .alert("Vérification de votre email", isPresented: $authManager.showNotificationAlert) {
+            // nothing to show
+        } message: {
+            Text(authManager.notificationMessage)
+        }
+        .alert("An error occurred", isPresented: $authManager.showErrorAlert) {
+            // nothing to show
+        } message: {
+            Text(authManager.errorMessage)
         }
     }
 }

@@ -24,6 +24,16 @@ struct ForgotPasswordView: View {
             .toolbarBackground(.visible, for: .navigationBar)
             .animation(.default, value: credentials.isEmailValid())
             .navigationBarItems(trailing: Button("Dismiss", action: { dismiss() }))
+            .alert("Réinitialiser le mot de passe", isPresented: $authManager.showNotificationAlert) {
+                // nothing to show
+            } message: {
+                Text(authManager.notificationMessage)
+            }
+            .alert("An error occurred", isPresented: $authManager.showErrorAlert) {
+                // nothing to show
+            } message: {
+                Text(authManager.errorMessage)
+            }
         }
     }
 
@@ -46,7 +56,7 @@ struct ForgotPasswordView: View {
     private var resetPasswordButton: some View {
         Button(
             action: {
-                authManager.sendPasswordReset(with: credentials.mail)
+                authManager.sendPasswordReset(to: credentials.mail)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                     dismiss()
                 }

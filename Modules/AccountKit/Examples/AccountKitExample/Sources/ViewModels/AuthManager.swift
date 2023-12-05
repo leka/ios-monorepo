@@ -15,27 +15,47 @@ class AuthManager: ObservableObject {
     enum FirebaseAuthenticationOperation: String {
         case signIn = "signed in"
         case signUp = "signed up"
-        case resetPassword = "reset password"
         case confirmEmail = "confirm email"
+        case resetPassword = "reset password"
     }
 
+    //    var currentUser: User? {
+    //        get {
+    //            return Auth.auth().currentUser
+    //        }
+    //    }
+
     @Published private(set) var companyAuthenticationState: FirebaseAuthenticationState = .unknown
-    @Published private var emailHasBeenConfirmed: Bool = false
+    @Published private var emailHasBeenConfirmed: Bool = false {
+        didSet {
+            print("email Has Been Confirmed:", emailHasBeenConfirmed)
+        }
+    }
     @Published var errorMessage: String = ""
-    @Published var showErrorMessageAlert = false
+    @Published var showErrorAlert = false
+    @Published var actionRequestMessage: String = ""
+    @Published var showactionRequestAlert = false
+    @Published var notificationMessage: String = ""
+    @Published var showNotificationAlert = false
 
     private let auth = Auth.auth()
     private var cancellables = Set<AnyCancellable>()
 
     init() {
-        checkAuthenticationStatus()
         auth.addStateDidChangeListener { _, user in
             self.emailHasBeenConfirmed = user?.isEmailVerified ?? false
         }
+        checkAuthenticationStatus()
     }
 
     private func updateAuthState(for company: User?) {
         companyAuthenticationState = company != nil ? .loggedIn : .loggedOut
+        guard emailHasBeenConfirmed else {
+            actionRequestMessage =
+                "Your email hasn't been verified yet. Please verify your email to avoid losing your data."
+            showactionRequestAlert = true
+            return
+        }
     }
 
     func checkAuthenticationStatus() {
@@ -68,23 +88,24 @@ class AuthManager: ObservableObject {
             .store(in: &cancellables)
     }
 
-    func sendPasswordReset(with email: String) {
+    func sendPasswordReset(to email: String) {
         auth.sendPasswordReset(withEmail: email)
             .sink { [weak self] completion in
                 self?.handleCompletion(completion, newState: .unknown, operation: .resetPassword)
             } receiveValue: { _ in
-                // nothing to do
+                self.notificationMessage = "An email has been sent to \(email) to reset your password."
+                self.showNotificationAlert = true
             }
             .store(in: &cancellables)
     }
 
-    // TODO(@macteuts): Handle user notification/alert
-    func sendEmailVerification(for user: User) {
-        user.sendEmailVerification()
+    func sendEmailVerification() {
+        auth.currentUser!.sendEmailVerification()
             .sink { [weak self] completion in
                 self?.handleCompletion(completion, newState: .unknown, operation: .confirmEmail)
             } receiveValue: { _ in
-                print("Verification email sent to \(user.email ?? "your email"). Please check your inbox.")
+                self.notificationMessage = "Verification email sent to your email. Please check your inbox."
+                self.showNotificationAlert = true
             }
             .store(in: &cancellables)
     }
@@ -99,7 +120,6 @@ class AuthManager: ObservableObject {
         }
     }
 
-    // TODO(@macteuts): Handle user notification/alert
     func deleteAccount() {
         guard let currentUser = auth.currentUser else {
             print("No company signed-in currently.")
@@ -108,6 +128,7 @@ class AuthManager: ObservableObject {
         currentUser.delete { [weak self] error in
             if let error = error {
                 print("Error deleting company: \(error.localizedDescription)")
+                self?.errorMessage = "There was an error deleting your account. Please try again later"
             } else {
                 self?.companyAuthenticationState = .loggedOut
                 print("Account deleted successfully.")
@@ -131,26 +152,11 @@ class AuthManager: ObservableObject {
         }
     }
 
-    // TODO(@macteuts): Handle user notification/alert + navigation
-    // TODO(@macteuts): Add "Send again" button
     private func handleUserUpdate(result: AuthDataResult, operation: FirebaseAuthenticationOperation) {
-        guard result.user.isEmailVerified else {
-            switch operation {
-                case .resetPassword:
-                    // show alert
-                    // navigate back to signIn
-                    print("An email has been sent to \(result.user.email ?? "your email") to reset your password.")
-                default:
-                    // Show alert asking to verifiy email + resend button
-                    // signUp: navigate back to signIn
-                    // signIn: login automatically??
-                    print("Verification email sent to \(result.user.email ?? "your email"). Please check your inbox.")
-                    sendEmailVerification(for: result.user)
-            }
-            return
-        }
         companyAuthenticationState = .loggedIn
         print("Company \(result.user.uid) \(operation.rawValue) successfully.")
+        checkAuthenticationStatus()
+        if case .signUp = operation { sendEmailVerification() }
     }
 
     private func handleOperationsErrors(_ error: Error, operation: FirebaseAuthenticationOperation) {
@@ -164,5 +170,6 @@ class AuthManager: ObservableObject {
             case .confirmEmail:
                 errorMessage = "There was an error sending the verification email. Please try again later."
         }
+        showErrorAlert = true
     }
 }
