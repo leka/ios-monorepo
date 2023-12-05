@@ -7,13 +7,10 @@ import SwiftUI
 @main
 struct LekaActivityUIExplorerApp: App {
 
-    @StateObject var router = Router()
-
     var body: some Scene {
         WindowGroup {
-            SwitchBoard()
-                .environmentObject(router)
-                .preferredColorScheme(.light)
+            NavigationView()
         }
     }
+
 }

@@ -92,7 +92,7 @@ struct UIExplorerVersionSelector: View {
             RobotConnectionView(viewModel: RobotConnectionViewModel())
         }
         .fullScreenCover(isPresented: $presentDesignSystem) {
-            DesignSystem()
+            Text("Design System")
         }
     }
 
