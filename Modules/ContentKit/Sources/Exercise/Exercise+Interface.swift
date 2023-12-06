@@ -18,6 +18,7 @@ extension Exercise {
         case remoteArrow
         case hideAndSeek
         case musicalInstruments
+        case melody
     }
 
 }

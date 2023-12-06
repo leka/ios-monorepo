@@ -49,6 +49,9 @@ public struct Exercise: Codable {
             case (.musicalInstruments, .none):
                 payload = try container.decode(MusicalInstrument.Payload.self, forKey: .payload)
 
+            case (.melody, .none):
+                payload = try container.decode(MidiRecordingPlayer.Payload.self, forKey: .payload)
+
             case (.remoteStandard, .none),
                 (.remoteArrow, .none):
                 payload = nil
