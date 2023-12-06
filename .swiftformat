@@ -101,6 +101,7 @@
 --enable redundantLet
 --enable redundantLetError
 --enable redundantNilInit
+--enable redundantObjc
 
 # Disabled rules
 
