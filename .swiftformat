@@ -100,6 +100,7 @@
 --enable redundantInternal
 --enable redundantLet
 --enable redundantLetError
+--enable redundantNilInit
 
 # Disabled rules
 
