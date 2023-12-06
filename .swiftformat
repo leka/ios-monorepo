@@ -68,6 +68,8 @@
 --indentcase true
 --indentstrings true
 
+--enable initCoderUnavailable
+
 # Disabled rules
 
 --disable blankLinesBetweenImports
