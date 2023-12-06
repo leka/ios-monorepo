@@ -27,7 +27,7 @@ extension GameplayFindTheRightAnswers where ChoiceModelType == GameplayTouchToSe
             return
         }
 
-        if choice.choice.isRightAnswer && rightAnswers.isNotEmpty {
+        if choice.choice.isRightAnswer, rightAnswers.isNotEmpty {
             updateChoice(choice, state: .rightAnswer)
             rightAnswers.removeAll { $0.id == choice.id }
         } else {

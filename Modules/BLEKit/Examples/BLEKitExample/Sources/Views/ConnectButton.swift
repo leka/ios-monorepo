@@ -16,7 +16,7 @@ struct ConnectButton: View {
 
     var body: some View {
         Button {
-            if robotListViewModel.connectedRobotPeripheral == nil && robotListViewModel.selectedRobotDiscovery != nil {
+            if robotListViewModel.connectedRobotPeripheral == nil, robotListViewModel.selectedRobotDiscovery != nil {
                 connectToRobot()
             } else {
                 disconnectFromRobot()

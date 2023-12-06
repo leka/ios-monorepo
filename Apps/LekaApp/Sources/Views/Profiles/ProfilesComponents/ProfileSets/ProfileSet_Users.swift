@@ -119,7 +119,7 @@ struct ProfileSet_Users: View {
 
     @ViewBuilder
     private var availableProfiles: some View {
-        if !navigationVM.showProfileEditor && sixMax() {
+        if !navigationVM.showProfileEditor, sixMax() {
             VStack {
                 Spacer()
                 HStack(spacing: 40) {

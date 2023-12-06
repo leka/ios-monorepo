@@ -14,7 +14,7 @@ extension Robot {
         private let screenRGB: [UInt8]
 
         public init(robot rRGB: UInt8..., screen sRGB: UInt8...) {
-            guard rRGB.count == 3 && sRGB.count == 3 else { fatalError() }
+            guard rRGB.count == 3, sRGB.count == 3 else { fatalError() }
 
             self.robotRGB = rRGB
             self.screenRGB = sRGB

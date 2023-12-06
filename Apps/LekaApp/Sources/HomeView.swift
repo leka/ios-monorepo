@@ -65,7 +65,7 @@ struct HomeView: View {
     private var toolbarTitle: some View {
         HStack(spacing: 4) {
             Text(navigationVM.setNavTitle())
-            if settings.companyIsConnected && settings.exploratoryModeIsOn {
+            if settings.companyIsConnected, settings.exploratoryModeIsOn {
                 Image(systemName: "binoculars.fill")
             }
         }

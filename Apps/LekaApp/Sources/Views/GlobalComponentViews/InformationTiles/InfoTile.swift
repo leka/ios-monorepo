@@ -44,7 +44,7 @@ struct InfoTile: View {
                             .aspectRatio(contentMode: .fit)
                 }
                 Spacer()
-                if data != .discovery && settings.companyIsConnected {
+                if data != .discovery, settings.companyIsConnected {
                     closeButton
                 }
             }

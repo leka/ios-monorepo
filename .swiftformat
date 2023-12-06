@@ -6,3 +6,4 @@
 --swiftversion 5.9
 
 --enable acronyms
+--enable andOperator

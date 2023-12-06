@@ -208,7 +208,7 @@ struct GameView: View {
                 ToolbarItem(placement: .principal) {
                     HStack(spacing: 4) {
                         Text(activityVM.currentActivityTitle)
-                        if settings.companyIsConnected && settings.exploratoryModeIsOn {
+                        if settings.companyIsConnected, settings.exploratoryModeIsOn {
                             Image(systemName: "binoculars.fill")
                         }
                     }

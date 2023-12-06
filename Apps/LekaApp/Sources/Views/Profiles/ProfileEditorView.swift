@@ -43,7 +43,7 @@ struct ProfileEditorView: View {
     private var navigationTitle: some View {
         HStack(spacing: 4) {
             Text("Choisir ou créer de nouveaux profils")
-            if settings.companyIsConnected && settings.exploratoryModeIsOn {
+            if settings.companyIsConnected, settings.exploratoryModeIsOn {
                 Image(systemName: "binoculars.fill")
             }
         }

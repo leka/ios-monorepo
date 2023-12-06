@@ -28,7 +28,7 @@ struct CommandListView: View {
                     }
                 }
                 .safeAreaInset(edge: .top) {
-                    if settings.companyIsConnected && !navigationVM.showInfo() {
+                    if settings.companyIsConnected, !navigationVM.showInfo() {
                         Color.clear
                             .frame(height: settings.companyIsConnected ? 40 : 0)
                     } else {

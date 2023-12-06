@@ -56,7 +56,7 @@ private func computeVersion(version: String?, name: String) -> String {
 
     if name == "Leka" {
         return "1.0.0"
-    } else if name.contains("LK-") && name.contains("xx") {
+    } else if name.contains("LK-"), name.contains("xx") {
         return "1.1.0"
     } else if name.contains("LK-") {
         return "1.2.0"
