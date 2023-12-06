@@ -2,7 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
-public extension Array where Element == UInt8 {
+public extension Array<UInt8> {
     var checksum8: UInt8 {
         var checksum: Int = 0
 
