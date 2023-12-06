@@ -93,6 +93,7 @@
 --enable redundantBackticks
 --enable redundantBreak
 --enable redundantClosure
+--enable redundantExtensionACL
 
 # Disabled rules
 
