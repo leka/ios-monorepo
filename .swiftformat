@@ -105,6 +105,7 @@
 --enable redundantOptionalBinding
 --enable redundantParens
 --enable redundantPattern
+--enable redundantRawValues
 
 # Disabled rules
 
