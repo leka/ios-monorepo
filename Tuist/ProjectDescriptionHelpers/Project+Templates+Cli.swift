@@ -4,8 +4,8 @@
 
 import ProjectDescription
 
-extension Project {
-    public static func cli(
+public extension Project {
+    static func cli(
         name: String,
         version: String = "1.0.0",
         dependencies: [TargetDependency]

@@ -14,8 +14,8 @@ public struct ModuleExample {
     }
 }
 
-extension Project {
-    public static func module(
+public extension Project {
+    static func module(
         name: String,
         platform: Platform,
         product: Product = .staticLibrary,

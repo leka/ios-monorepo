@@ -2,8 +2,8 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
-extension Robot {
-    public enum Reinforcer: UInt8, CaseIterable {
+public extension Robot {
+    enum Reinforcer: UInt8, CaseIterable {
         case rainbow = 0x51
         case fire = 0x52
         case sprinkles = 0x53
@@ -23,7 +23,7 @@ extension Robot {
         }
     }
 
-    public func run(_ reinforcer: Reinforcer) {
+    func run(_ reinforcer: Reinforcer) {
         log.trace("🤖 RUN reinforcer \(reinforcer)")
 
         let output = Self.commandGenerator(commands: reinforcer.cmd)

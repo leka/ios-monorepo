@@ -47,8 +47,8 @@ struct AlertWhenNoUserSelected: ViewModifier {
     }
 }
 
-extension View {
-    public func alertWhenNoUserSelected() -> some View {
+public extension View {
+    func alertWhenNoUserSelected() -> some View {
         modifier(AlertWhenNoUserSelected())
     }
 }

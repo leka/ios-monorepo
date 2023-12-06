@@ -46,6 +46,9 @@
 --enable enumNamespaces
 --enumnamespaces always
 
+--enable extensionAccessControl
+--extensionacl on-extension
+
 # Disabled rules
 
 --disable blankLinesBetweenImports

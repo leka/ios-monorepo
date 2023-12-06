@@ -47,8 +47,8 @@ struct AlertWhenRobotIsNeeded: ViewModifier {
     }
 }
 
-extension View {
-    public func alertWhenRobotIsNeeded() -> some View {
+public extension View {
+    func alertWhenRobotIsNeeded() -> some View {
         modifier(AlertWhenRobotIsNeeded())
     }
 }

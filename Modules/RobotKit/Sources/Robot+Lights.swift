@@ -4,8 +4,8 @@
 
 // swiftlint:disable identifier_name nesting cyclomatic_complexity
 
-extension Robot {
-    public enum Lights {
+public extension Robot {
+    enum Lights {
         public enum Spot {
             static let id: UInt8 = 0x10
             public enum Position: UInt8 {
@@ -210,7 +210,7 @@ extension Robot {
         }
     }
 
-    public func shine(_ lights: Lights) {
+    func shine(_ lights: Lights) {
         log.trace("🤖 SHINE \(lights)")
 
         let output = Self.commandGenerator(commands: lights.cmd)
@@ -219,7 +219,7 @@ extension Robot {
             .sendCommand(output)
     }
 
-    public func blacken(_ lights: Lights) {
+    func blacken(_ lights: Lights) {
         log.trace("🤖 BLACKEN \(lights)")
         switch lights {
             case .all:
@@ -249,7 +249,7 @@ extension Robot {
         }
     }
 
-    public func blacken(_ lights: Lights.Blacken) {
+    func blacken(_ lights: Lights.Blacken) {
         log.trace("🤖 BLACKEN \(lights)")
         switch lights {
             case .all:
@@ -279,7 +279,7 @@ extension Robot {
         }
     }
 
-    public func stopLights() {
+    func stopLights() {
         log.trace("🤖 STOP 🛑 - Lights")
         shine(.all(in: .black))
     }

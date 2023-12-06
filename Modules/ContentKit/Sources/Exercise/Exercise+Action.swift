@@ -6,8 +6,8 @@ import Foundation
 
 // swiftlint:disable nesting
 
-extension Exercise {
-    public enum Action: Codable {
+public extension Exercise {
+    enum Action: Codable {
         case ipad(type: ActionType)
         case robot(type: ActionType)
 

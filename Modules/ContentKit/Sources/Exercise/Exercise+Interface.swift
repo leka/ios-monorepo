@@ -4,8 +4,8 @@
 
 import Foundation
 
-extension Exercise {
-    public enum Interface: String, Codable {
+public extension Exercise {
+    enum Interface: String, Codable {
         case touchToSelect
         case robotThenTouchToSelect
         case listenThenTouchToSelect

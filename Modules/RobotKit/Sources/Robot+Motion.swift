@@ -10,8 +10,8 @@ extension Float {
     }
 }
 
-extension Robot {
-    public enum Motion {
+public extension Robot {
+    enum Motion {
         static let id: UInt8 = 0x20
 
         enum Motor: UInt8 {
@@ -134,7 +134,7 @@ extension Robot {
         }
     }
 
-    public func move(_ motion: Motion) {
+    func move(_ motion: Motion) {
         log.trace("🤖 MOVE \(motion)")
         let output = Self.commandGenerator(commands: motion.cmd)
 
@@ -142,7 +142,7 @@ extension Robot {
             .sendCommand(output)
     }
 
-    public func stopMotion() {
+    func stopMotion() {
         log.trace("🤖 STOP 🛑 - Motion")
         move(.stop)
     }

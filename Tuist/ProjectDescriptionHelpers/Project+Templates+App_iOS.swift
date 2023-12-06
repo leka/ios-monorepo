@@ -4,8 +4,8 @@
 
 import ProjectDescription
 
-extension Project {
-    public static func iOSApp(
+public extension Project {
+    static func iOSApp(
         name: String,
         version: String = "1.0.0",
         deploymentTarget: DeploymentTarget = .iOS(targetVersion: "16.0", devices: .ipad),

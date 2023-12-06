@@ -6,8 +6,8 @@ import SwiftUI
 
 // swiftlint:disable nesting
 
-extension Robot {
-    public struct Color {
+public extension Robot {
+    struct Color {
         private let robotRGB: [UInt8]
         private let screenRGB: [UInt8]
 
@@ -77,19 +77,19 @@ extension Robot {
     }
 }
 
-extension Robot.Color {
-    public static let black: Robot.Color = .init(robot: 0, 0, 0, screen: 0, 0, 0)
-    public static let white: Robot.Color = .init(robot: 255, 255, 255, screen: 255, 255, 255)
+public extension Robot.Color {
+    static let black: Robot.Color = .init(robot: 0, 0, 0, screen: 0, 0, 0)
+    static let white: Robot.Color = .init(robot: 255, 255, 255, screen: 255, 255, 255)
 
-    public static let red: Robot.Color = .init(robot: 255, 0, 0, screen: 255, 0, 0)
-    public static let green: Robot.Color = .init(robot: 0, 150, 0, screen: 0, 226, 0)
-    public static let blue: Robot.Color = .init(robot: 0, 0, 255, screen: 0, 121, 255)
+    static let red: Robot.Color = .init(robot: 255, 0, 0, screen: 255, 0, 0)
+    static let green: Robot.Color = .init(robot: 0, 150, 0, screen: 0, 226, 0)
+    static let blue: Robot.Color = .init(robot: 0, 0, 255, screen: 0, 121, 255)
 
-    public static let lightBlue: Robot.Color = .init(robot: 0, 121, 255, screen: 70, 194, 248)
-    public static let orange: Robot.Color = .init(robot: 248, 100, 0, screen: 255, 143, 0)
-    public static let purple: Robot.Color = .init(robot: 20, 0, 80, screen: 173, 73, 247)
-    public static let pink: Robot.Color = .init(robot: 255, 0, 127, screen: 252, 103, 178)
-    public static let yellow: Robot.Color = .init(robot: 255, 255, 0, screen: 251, 232, 0)
+    static let lightBlue: Robot.Color = .init(robot: 0, 121, 255, screen: 70, 194, 248)
+    static let orange: Robot.Color = .init(robot: 248, 100, 0, screen: 255, 143, 0)
+    static let purple: Robot.Color = .init(robot: 20, 0, 80, screen: 173, 73, 247)
+    static let pink: Robot.Color = .init(robot: 255, 0, 127, screen: 252, 103, 178)
+    static let yellow: Robot.Color = .init(robot: 255, 255, 0, screen: 251, 232, 0)
 }
 
 // swiftlint:enable nesting

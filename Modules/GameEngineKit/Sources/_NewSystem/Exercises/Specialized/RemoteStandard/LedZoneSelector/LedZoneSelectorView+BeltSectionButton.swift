@@ -5,8 +5,8 @@
 import RobotKit
 import SwiftUI
 
-extension Robot.Lights {
-    public var arcAngle: (start: Angle, end: Angle) {
+public extension Robot.Lights {
+    var arcAngle: (start: Angle, end: Angle) {
         switch self {
             case .full:
                 return (start: .degrees(0), end: .degrees(360))

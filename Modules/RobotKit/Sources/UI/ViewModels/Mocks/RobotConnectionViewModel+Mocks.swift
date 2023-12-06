@@ -4,8 +4,8 @@
 
 import Foundation
 
-extension RobotConnectionViewModel {
-    public static func mock() -> RobotConnectionViewModel {
+public extension RobotConnectionViewModel {
+    static func mock() -> RobotConnectionViewModel {
         let viewModel = RobotConnectionViewModel()
         viewModel.robotDiscoveries = [
             .mock(),

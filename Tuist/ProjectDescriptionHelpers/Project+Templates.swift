@@ -10,13 +10,9 @@ import ProjectDescription
 /// See https://docs.tuist.io/guides/helpers/
 
 extension Project {
-    //
-
     // MARK: - Internal
 
-    //
-
-    internal static func makeFrameworkTargets(
+    static func makeFrameworkTargets(
         name: String, platform: Platform, product: Product = .staticLibrary, dependencies: [TargetDependency], settings: Settings? = nil
     )
         -> [Target] {
