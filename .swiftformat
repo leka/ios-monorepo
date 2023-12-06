@@ -24,6 +24,8 @@
 --enable blankLinesBetweenChainedFunctions
 --enable blankLinesBetweenScopes
 
+--enable blockComments
+
 # Disabled rules
 
 --disable blankLinesBetweenImports
