@@ -133,5 +133,4 @@ class UpdateStatusViewModel: ObservableObject {
     private func onUpdateEnded() {
         UIApplication.shared.isIdleTimerDisabled = false
     }
-
 }

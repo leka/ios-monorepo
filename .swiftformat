@@ -5,6 +5,8 @@
 --disable all
 --swiftversion 5.9
 
+# Enabled rules
+
 --enable acronyms
 --enable andOperator
 --enable anyObjectProtocol
@@ -14,3 +16,7 @@
 
 --enable blankLinesAroundMark
 --lineaftermarks true
+
+--enable blankLinesAtEndOfScope
+
+# Disabled rules

@@ -20,5 +20,4 @@ extension RobotConnectionViewModel {
         ]
         return viewModel
     }
-
 }

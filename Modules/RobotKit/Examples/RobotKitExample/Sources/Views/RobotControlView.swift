@@ -122,7 +122,6 @@ struct RobotControlView: View {
         }
         .buttonStyle(.robotControlPlainButtonStyle(foreground: .white, background: .red))
     }
-
 }
 
 #Preview {

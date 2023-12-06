@@ -63,5 +63,4 @@ struct SidebarView: View {
             .font(metrics.reg12)
             .frame(alignment: .bottom)
     }
-
 }

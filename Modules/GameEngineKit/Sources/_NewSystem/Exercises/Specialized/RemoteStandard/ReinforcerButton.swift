@@ -23,7 +23,6 @@ extension Robot.Reinforcer {
                 return DesignKitAsset.Reinforcers.rainbow.swiftUIImage
         }
     }
-
 }
 
 struct ReinforcerButton: View {

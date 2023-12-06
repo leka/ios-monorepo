@@ -50,12 +50,10 @@ struct ContentView: View {
                 SendDataButton()
             }
             .padding(30)
-
         }
         .navigationTitle("BLEKit Example App")
         .environmentObject(robotListViewModel)
     }
-
 }
 
 struct ContentView_Previews: PreviewProvider {

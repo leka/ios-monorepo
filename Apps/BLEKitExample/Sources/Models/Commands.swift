@@ -22,7 +22,6 @@ enum LKCommand {
         static let numberOfValues: UInt8 = 1 + 3 + 1  // EAR/BELT + R, G, B + Checksum
         static let ears: UInt8 = 0x14
         static let belt: UInt8 = 0x15
-
     }
 
     // MARK: - LKCommand Motors
@@ -36,7 +35,6 @@ enum LKCommand {
 
         static let forward: UInt8 = 0x01
         static let backward: UInt8 = 0x00
-
     }
 
     // MARK: - LKCommand Motivator
@@ -50,9 +48,7 @@ enum LKCommand {
         static let sprinkles: UInt8 = 0x53
         static let spinBlink: UInt8 = 0x54
         static let blinkGreen: UInt8 = 0x55
-
     }
-
 }
 
 func checksum8(_ values: [UInt8]) -> UInt8 {
@@ -64,7 +60,6 @@ func checksum8(_ values: [UInt8]) -> UInt8 {
     }
 
     return UInt8(checksum)
-
 }
 
 // MARK: - CommandKit
@@ -91,7 +86,6 @@ class CommandKit {
         for _ in 0...LKCommand.startByteLength - 1 {
             self.startSequence.append(LKCommand.startByte)
         }
-
     }
 
     // MARK: - Led Functions
@@ -105,7 +99,6 @@ class CommandKit {
         }
 
         numberOfCommands += 1
-
     }
 
     // MARK: - Motor Functions
@@ -119,7 +112,6 @@ class CommandKit {
         }
 
         numberOfCommands += 1
-
     }
 
     // MARK: - Motivator Functions
@@ -133,7 +125,6 @@ class CommandKit {
         }
 
         numberOfCommands += 1
-
     }
 
     // MARK: - Command Functions
@@ -150,7 +141,6 @@ class CommandKit {
         self.isEncapsulated = true
 
         return self.commandSequence
-
     }
 
     func getCommands() -> [UInt8] {
@@ -165,7 +155,6 @@ class CommandKit {
 
         flush()
         return commands
-
     }
 
     func flush() {
@@ -173,7 +162,5 @@ class CommandKit {
         self.commandSequence.removeAll()
         self.numberOfCommands = 0
         self.isEncapsulated = false
-
     }
-
 }

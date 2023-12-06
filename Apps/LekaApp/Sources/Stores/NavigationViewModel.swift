@@ -88,5 +88,4 @@ class NavigationViewModel: ObservableObject {
             case .commands: showInfoCommands.toggle()
         }
     }
-
 }

@@ -26,9 +26,7 @@ extension DesignSystemApple {
             }
             .navigationTitle("Apple Fonts")
         }
-
     }
-
 }
 
 #Preview {

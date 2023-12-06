@@ -53,7 +53,6 @@ public struct DragAndDropIntoZonesView: View {
                     scene = DragAndDropIntoZonesView.OneZoneScene(
                         viewModel: viewModel, hints: true, dropZoneA: dropZoneA)
                 }
-
             }
         }
         .edgesIgnoringSafeArea(.horizontal)
@@ -67,5 +66,4 @@ public struct DragAndDropIntoZonesView: View {
         finalScene.viewModel = viewModel
         return finalScene
     }
-
 }

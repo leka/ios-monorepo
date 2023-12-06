@@ -23,7 +23,6 @@ struct MainView: View {
                 self.count += 1
             }
     }
-
 }
 
 #Preview {

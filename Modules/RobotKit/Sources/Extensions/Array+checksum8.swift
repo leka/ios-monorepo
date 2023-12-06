@@ -13,5 +13,4 @@ extension Array where Element == UInt8 {
 
         return UInt8(checksum)
     }
-
 }

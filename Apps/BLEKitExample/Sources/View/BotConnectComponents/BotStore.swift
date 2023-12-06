@@ -69,7 +69,6 @@ struct BotStore: View {
                         osVersion: .constant(advertisementData.osVersion)
                     )
                 }
-
             }
             .buttonStyle(NoFeedback_ButtonStyle())
             .id(item)

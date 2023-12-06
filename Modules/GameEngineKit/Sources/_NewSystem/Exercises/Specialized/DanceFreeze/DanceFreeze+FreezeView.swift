@@ -15,7 +15,6 @@ extension DanceFreeze {
             )
         }
     }
-
 }
 
 #Preview {

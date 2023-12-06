@@ -40,7 +40,6 @@ struct ConnectedRobotInformationView: View {
             }
         }
     }
-
 }
 
 #Preview {

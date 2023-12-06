@@ -53,5 +53,4 @@ public class ContentKit {
             fatalError("💥 Error decoding \(filename): \(error)")
         }
     }
-
 }

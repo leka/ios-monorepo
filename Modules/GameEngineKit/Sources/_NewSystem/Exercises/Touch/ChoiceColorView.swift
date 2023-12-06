@@ -74,9 +74,7 @@ struct ChoiceColorView: View {
                         }
                     }
         }
-
     }
-
 }
 
 #Preview {

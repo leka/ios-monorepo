@@ -71,9 +71,7 @@ extension DesignSystemApple {
             }
             .navigationTitle("Apple Buttons")
         }
-
     }
-
 }
 
 #Preview {

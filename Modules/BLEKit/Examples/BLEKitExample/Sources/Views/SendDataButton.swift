@@ -55,7 +55,6 @@ struct SendDataButton: View {
         self.robotListViewModel.connectedRobotPeripheral?
             .sendCommand(Data([0x2A, 0x2A, 0x2A, 0x2A, 0x01, 0x50, 0x51, 0x51]))
     }
-
 }
 
 struct SendDataButton_Previews: PreviewProvider {

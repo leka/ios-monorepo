@@ -117,7 +117,5 @@ struct RobotDiscoveryView: View {
         RobotDiscoveryView(discovery: .mock(name: "Leka selected", status: .selected))
 
         RobotDiscoveryView(discovery: .mock(name: "Leka connected", status: .connected))
-
     }
-
 }

@@ -45,7 +45,6 @@ extension DanceFreeze {
                     viewModel.exercicesSharedData.state = .completed
                 }
             }
-
         }
 
         func randomSwitch() {
@@ -59,7 +58,6 @@ extension DanceFreeze {
             }
         }
     }
-
 }
 
 #Preview {

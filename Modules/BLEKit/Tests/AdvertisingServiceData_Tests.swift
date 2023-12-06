@@ -49,7 +49,6 @@ final class AdvertisingServiceData_Tests_BatteryLevel: XCTestCase {
 
         XCTAssertEqual(expected, actual)
     }
-
 }
 
 final class AdvertisingServiceData_Tests_ChargingStatus: XCTestCase {
@@ -81,7 +80,6 @@ final class AdvertisingServiceData_Tests_ChargingStatus: XCTestCase {
 
         XCTAssertEqual(expected, actual)
     }
-
 }
 
 final class AdvertisingServiceData_Tests_OsVersion: XCTestCase {
@@ -155,5 +153,4 @@ final class AdvertisingServiceData_Tests_OsVersion: XCTestCase {
 
         XCTAssertEqual(expected, actual)
     }
-
 }

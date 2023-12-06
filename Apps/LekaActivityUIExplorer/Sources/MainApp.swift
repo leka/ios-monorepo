@@ -12,5 +12,4 @@ struct LekaActivityUIExplorerApp: App {
             NavigationView()
         }
     }
-
 }

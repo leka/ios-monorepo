@@ -80,5 +80,4 @@ public class ActivityViewViewModel: ObservableObject {
             }
             .store(in: &cancellables)
     }
-
 }

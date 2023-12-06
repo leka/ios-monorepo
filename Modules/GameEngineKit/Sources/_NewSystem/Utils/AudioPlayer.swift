@@ -69,7 +69,6 @@ public class AudioPlayer: NSObject, ObservableObject {
     var isPlaying: Bool {
         self.player.isPlaying
     }
-
 }
 
 extension AudioPlayer: AVAudioPlayerDelegate {
@@ -77,5 +76,4 @@ extension AudioPlayer: AVAudioPlayerDelegate {
     public func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully: Bool) {
         didFinishPlaying = true
     }
-
 }

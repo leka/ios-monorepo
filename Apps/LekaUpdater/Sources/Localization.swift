@@ -13,7 +13,6 @@ extension l10n {
 
         static let yes = LocalizedString("general.yes", value: "Yes", comment: "Yes")
         static let no = LocalizedString("general.no", value: "No", comment: "No")
-
     }
 
     enum main {
@@ -22,14 +21,12 @@ extension l10n {
         static let appDescription = LocalizedString(
             "main.app_description", value: "The app to update your Leka robots!",
             comment: "Description of the application")
-
     }
 
     enum toolbar {
 
         static let connectionButton = LocalizedString(
             "toolbar.connection_button", value: "Connection", comment: "Connection toolbar button")
-
     }
 
     enum connection {
@@ -50,7 +47,6 @@ extension l10n {
 
         static let robotDiscoveryVersion = LocalizedStringInterpolation(
             "connection.robot_discovery_version", value: "LekaOS v%@", comment: "Discovery version LekaOS v...")
-
     }
 
     enum information {
@@ -67,7 +63,6 @@ extension l10n {
             static let robotIsUpToDate = LocalizedString(
                 "information.status.robot_is_up_to_date", value: "🤖 Your robot is up-to-date! 🎉 You're all done 👌",
                 comment: "Robot is up to date text")
-
         }
 
         enum robot {
@@ -81,7 +76,6 @@ extension l10n {
                 "information.robot.version", value: "Version: %@", comment: "Connected robot version")
             static let isCharging = LocalizedStringInterpolation(
                 "information.robot.charging_status", value: "Charging: %@", comment: "Connected robot charging status")
-
         }
 
         static let changelogSectionTitle = LocalizedString(
@@ -91,7 +85,6 @@ extension l10n {
             comment: "Changelog not found text")
 
         static let startUpdateButton = LocalizedString("information.start_update_button", value: "Start robot update", comment: "Start update button")
-
     }
 
     enum update {
@@ -119,7 +112,6 @@ extension l10n {
             static let robotBatteryMinimumLevelText = LocalizedString(
                 "update.requirements.robot_battery_minimum_level_text",
                 value: "The robot battery level is at least 30%", comment: "Robot battery level must be at least 30%")
-
         }
 
         enum error {
@@ -138,7 +130,6 @@ extension l10n {
 
             static let unknownErrorDescription = LocalizedString("update.error.unknown_error", value: "An unknown error has occurred\n(Error code #0000)", comment: "unknown error")
             static let unknownErrorInstructions = LocalizedString("update.error.unknown_error_instructions", value: "Please contact technical support", comment: "unknown error instructions")
-
         }
 
         enum alert {
@@ -146,21 +137,18 @@ extension l10n {
             static let robotNotInChargeTitle = LocalizedString("information.status.alert.robot_not_in_charge", value: "⚠️ WARNING ⚡\nThe robot is no longer in charge", comment: "Robot not in charge alert")
 
             static let robotNotInChargeMessage = LocalizedString("information.status.alert.robot_not_in_charge_button", value: "Please put Leka back on its charging station and/or check it's plugged to a power outlet", comment: "Robot not in charge alert button")
-
         }
 
         enum sending {
 
             static let sendingTitle = LocalizedString("update.sending.title", value: "Sending update to the robot", comment: "Sending title")
             static let instructions = LocalizedString("update.sending.instruction", value: "Do not unplug your robot\nDo not remove it from its charging station\nDo not close the app", comment: "Sending instruction")
-
         }
 
         enum rebooting {
 
             static let rebootingTitle = LocalizedString("update.rebooting.title", value: "The update is being installed", comment: "Rebooting title")
             static let rebootingSubtitle = LocalizedString("update.rebooting.subtitle", value: "Your robot will reboot in a few minutes", comment: "Rebooting subtitle")
-
         }
 
         enum finished {
@@ -171,9 +159,7 @@ extension l10n {
 
             static let robotUpdatedSuccessfully = LocalizedString("update.finished.robot_updated_successfully", value: "Congrats! 🥳\nYour robot is now up-to-date 🎉", comment: "Robot updated successfully")
         }
-
     }
-
 }
 
 // swiftlint:enable type_name nesting line_length identifier_name

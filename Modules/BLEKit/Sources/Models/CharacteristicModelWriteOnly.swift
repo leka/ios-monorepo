@@ -17,5 +17,4 @@ public struct CharacteristicModelWriteOnly {
         self.serviceUUID = serviceUUID
         self.onWrite = onWrite
     }
-
 }

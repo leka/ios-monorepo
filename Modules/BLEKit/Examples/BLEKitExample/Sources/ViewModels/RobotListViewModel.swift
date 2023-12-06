@@ -101,5 +101,4 @@ public class RobotListViewModel: ObservableObject {
             }
             .store(in: &cancellables)
     }
-
 }

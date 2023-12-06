@@ -13,7 +13,6 @@ extension Color {
         let blue = Double((hex & 0xff) >> 0) / 255.0
         self.init(.displayP3, red: red, green: green, blue: blue, opacity: opacity)
     }
-
 }
 
 extension DesignSystemApple {
@@ -53,9 +52,7 @@ extension DesignSystemApple {
             }
             .navigationTitle("SwiftUI colors")
         }
-
     }
-
 }
 
 #Preview {

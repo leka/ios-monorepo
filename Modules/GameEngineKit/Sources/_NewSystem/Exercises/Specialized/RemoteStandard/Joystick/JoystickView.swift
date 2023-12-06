@@ -46,7 +46,6 @@ struct JoystickView: View {
                 },
                 locksInPlace: false)
         }
-
     }
 }
 

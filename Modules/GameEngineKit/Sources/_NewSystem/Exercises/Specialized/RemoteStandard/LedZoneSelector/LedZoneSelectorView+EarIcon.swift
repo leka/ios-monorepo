@@ -13,7 +13,6 @@ extension LedZoneSelectorView {
                 .frame(width: 10, height: 10)
         }
     }
-
 }
 
 #Preview {

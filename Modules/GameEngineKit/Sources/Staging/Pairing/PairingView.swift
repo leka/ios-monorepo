@@ -112,7 +112,6 @@ public struct PairingView: View {
                 .font(.title2)
                 .foregroundColor(DesignKitAsset.Colors.lekaDarkGray.swiftUIColor)
                 .padding(.vertical, 10)
-
         }
     }
 }

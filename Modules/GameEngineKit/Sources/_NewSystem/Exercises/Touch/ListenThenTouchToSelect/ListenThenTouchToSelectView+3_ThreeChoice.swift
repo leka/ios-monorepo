@@ -33,9 +33,7 @@ extension ListenThenTouchToSelectView {
                     }
             }
         }
-
     }
-
 }
 
 #Preview {

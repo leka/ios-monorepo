@@ -37,5 +37,4 @@ public struct BatteryViewModel: Equatable {
                 self.color = .gray
         }
     }
-
 }

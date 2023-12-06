@@ -20,5 +20,4 @@ public enum TouchToAssociate {
     public struct Payload: Codable {
         public let choices: [Choice]
     }
-
 }

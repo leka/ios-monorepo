@@ -78,7 +78,6 @@ struct UpdateStatusView: View {
                     .scaledToFit()
                     .frame(height: 70)
                     .padding(35)
-
             }
             .foregroundColor(DesignKitAsset.Colors.darkGray.swiftUIColor)
             .onAppear(perform: viewModel.startUpdate)

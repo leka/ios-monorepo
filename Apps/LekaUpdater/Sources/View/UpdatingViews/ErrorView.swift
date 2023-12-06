@@ -49,7 +49,6 @@ struct ErrorContentView: View {
             .buttonStyle(.plain)
             .padding(.top)
             .shadow(radius: 3, y: 4)
-
         }
     }
 }

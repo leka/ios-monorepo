@@ -70,7 +70,6 @@ enum RemoteStandard {
             }
         }
     }
-
 }
 
 #Preview {

@@ -19,7 +19,6 @@ extension UIColor {
 
         return String(format: "#%06x", rgb)
     }
-
 }
 
 extension DesignSystemApple {
@@ -74,7 +73,6 @@ extension DesignSystemApple {
             }
             .navigationTitle("UIKit Colors")
         }
-
     }
 
     struct ColorView: View {
@@ -95,14 +93,11 @@ extension DesignSystemApple {
                 VStack(alignment: .leading) {
                     Text("\(color.accessibilityName): \(color.hex.uppercased())")
                     Text("The quick brown fox jumps over the lazy dog")
-
                 }
             }
             .foregroundColor(Color(uiColor: color))
         }
-
     }
-
 }
 
 #Preview {

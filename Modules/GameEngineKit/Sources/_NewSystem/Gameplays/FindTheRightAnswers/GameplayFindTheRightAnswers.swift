@@ -19,5 +19,4 @@ where ChoiceModelType: GameplayChoiceModelProtocol {
         }
         choices.value[index].state = state
     }
-
 }

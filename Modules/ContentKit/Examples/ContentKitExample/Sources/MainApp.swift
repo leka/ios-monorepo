@@ -13,5 +13,4 @@ struct ContentKitExample: App {
             MainView()
         }
     }
-
 }

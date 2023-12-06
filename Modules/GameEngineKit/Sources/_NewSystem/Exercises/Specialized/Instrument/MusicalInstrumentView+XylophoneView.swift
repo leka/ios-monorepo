@@ -40,7 +40,6 @@ extension MusicalInstrumentView {
             }
         }
     }
-
 }
 
 #Preview {

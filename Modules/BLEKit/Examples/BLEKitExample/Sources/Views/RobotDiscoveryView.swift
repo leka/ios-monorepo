@@ -71,7 +71,6 @@ struct RobotDiscoveryView: View {
             }
         }
     }
-
 }
 
 // TODO(@ladislas): create protocol and mock RobotDiscovery

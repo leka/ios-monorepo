@@ -75,5 +75,4 @@ extension DanceFreeze {
             return action.duration
         }
     }
-
 }

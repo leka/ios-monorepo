@@ -53,7 +53,5 @@ extension DragAndDropToAssociateView {
                 }
                 .store(in: &cancellables)
         }
-
     }
-
 }

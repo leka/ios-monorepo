@@ -39,5 +39,4 @@ extension DanceFreeze.LauncherView {
                 .scaledToFit()
         }
     }
-
 }

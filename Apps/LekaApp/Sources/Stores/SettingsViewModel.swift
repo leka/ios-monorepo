@@ -17,5 +17,4 @@ class SettingsViewModel: ObservableObject {
 
     // This will go later in UIEvents Environment
     @Published var showConnectInvite: Bool = false
-
 }

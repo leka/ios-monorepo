@@ -63,7 +63,6 @@ struct NavigationView: View {
                     CategoryLabel(category: .designSystemLekaButtons)
                     CategoryLabel(category: .designSystemLekaColorsSwiftUI)
                 }
-
             }
             // TODO(@ladislas): remove if not necessary
             // .disabled(navigation.disableUICompletly)
@@ -160,7 +159,6 @@ struct NavigationView: View {
                 case .designSystemLekaColorsSwiftUI:
                     self.title = "Leka Colors SwiftUI"
                     self.systemImage = "swatchpalette.fill"
-
             }
         }
 
@@ -169,7 +167,6 @@ struct NavigationView: View {
                 .tag(category)
         }
     }
-
 }
 
 #Preview {

@@ -26,5 +26,4 @@ extension HideAndSeekView {
                 .background(Capsule().fill(color).shadow(radius: 3))
         }
     }
-
 }

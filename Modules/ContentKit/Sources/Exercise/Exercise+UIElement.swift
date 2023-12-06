@@ -11,5 +11,4 @@ extension Exercise {
         case text
         case color
     }
-
 }

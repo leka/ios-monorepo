@@ -71,7 +71,6 @@ struct GoToRobotConnectButton: View {
                 .monospacedDigit()
         }
     }
-
 }
 
 #Preview {

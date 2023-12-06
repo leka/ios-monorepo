@@ -51,7 +51,6 @@ public enum DragAndDropToAssociate {
             self.shuffleChoices = try container.decodeIfPresent(Bool.self, forKey: .shuffleChoices) ?? false
         }
     }
-
 }
 
 // swiftlint:enable nesting

@@ -33,5 +33,4 @@ public struct RobotAdvertisingData {
 
         self.init(name: advertisementData.localName, serviceData: robotServiceData)
     }
-
 }

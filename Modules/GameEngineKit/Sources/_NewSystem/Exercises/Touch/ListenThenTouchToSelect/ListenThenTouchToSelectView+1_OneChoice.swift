@@ -21,9 +21,7 @@ extension ListenThenTouchToSelectView {
                     viewModel.onChoiceTapped(choice: choice)
                 }
         }
-
     }
-
 }
 
 #Preview {

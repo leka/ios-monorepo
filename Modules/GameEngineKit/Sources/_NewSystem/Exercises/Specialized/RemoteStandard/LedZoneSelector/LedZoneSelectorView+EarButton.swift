@@ -39,7 +39,6 @@ extension LedZoneSelectorView {
                 .animation(.easeInOut(duration: 0.2), value: backgroundDimension)
         }
     }
-
 }
 
 #Preview {

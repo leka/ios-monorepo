@@ -67,7 +67,6 @@ struct ActionButtonObserve: View {
                     .clipShape(RoundedRectangle(cornerRadius: 10))
                     .modifier(AnimatableBlur(blurRadius: imageWasTapped ? 0 : 20))
                     .modifier(AnimatableSaturation(saturation: imageWasTapped ? 1 : 0))
-
             }
         } else {
             Text("❌\nImage not found:\n\(image)")
@@ -94,5 +93,4 @@ struct ActionButtonObserve: View {
     }
 
     return ActionObserveButtonContainer()
-
 }

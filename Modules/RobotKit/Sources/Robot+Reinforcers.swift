@@ -32,5 +32,4 @@ extension Robot {
         connectedPeripheral?
             .sendCommand(output)
     }
-
 }

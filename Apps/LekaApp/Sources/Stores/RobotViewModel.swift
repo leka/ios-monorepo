@@ -25,5 +25,4 @@ class RobotViewModel: ObservableObject {
         currentlyConnectedRobotIndex = nil
         robotIsConnected = false
     }
-
 }

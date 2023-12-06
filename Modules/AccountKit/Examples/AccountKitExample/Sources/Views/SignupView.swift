@@ -91,7 +91,6 @@ struct SignupView: View {
         .disabled(!organisation.signUpIsComplete)
         .animation(.default, value: organisation.signUpIsComplete)
     }
-
 }
 
 #Preview {

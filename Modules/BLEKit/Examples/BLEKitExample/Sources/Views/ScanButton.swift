@@ -33,7 +33,6 @@ struct ScanButton: View {
                                 .font(.headline)
                                 .foregroundColor(.white)
                         }
-
                     }
                     Image(systemName: "magnifyingglass.circle.fill")
                         .font(.title)

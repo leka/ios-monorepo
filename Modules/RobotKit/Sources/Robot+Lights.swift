@@ -158,7 +158,6 @@ extension Robot {
                 case .earRight(let color):
                     let payload = shineSpot(1, on: .ears, in: color)
                     output.append(payload)
-
             }
 
             return output
@@ -211,7 +210,6 @@ extension Robot {
 
             return payload
         }
-
     }
 
     public func shine(_ lights: Lights) {
@@ -287,7 +285,6 @@ extension Robot {
         log.trace("🤖 STOP 🛑 - Lights")
         shine(.all(in: .black))
     }
-
 }
 
 // swiftlint:enable identifier_name nesting cyclomatic_complexity

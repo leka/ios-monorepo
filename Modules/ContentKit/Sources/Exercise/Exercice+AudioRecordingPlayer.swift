@@ -18,5 +18,4 @@ public enum AudioRecordingPlayer {
             self.songs = audioRecordingSongs.map { AudioRecording($0) }
         }
     }
-
 }

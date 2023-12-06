@@ -20,5 +20,4 @@ extension Exercise {
         case musicalInstruments
         case melody
     }
-
 }

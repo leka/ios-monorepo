@@ -25,9 +25,7 @@ extension ObserveThenTouchToSelectView {
                 }
             }
         }
-
     }
-
 }
 
 #Preview {

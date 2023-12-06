@@ -71,7 +71,6 @@ struct GEKNewSystemView: View {
         .font(.system(size: 17, weight: .bold))
         .foregroundColor(.accentColor)
     }
-
 }
 
 #Preview {

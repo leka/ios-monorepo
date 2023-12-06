@@ -28,7 +28,6 @@ public enum TouchToSelect {
             self.type = type
             self.isRightAnswer = isRightAnswer
         }
-
     }
 
     public struct Payload: Codable {
@@ -47,9 +46,7 @@ public enum TouchToSelect {
 
             self.shuffleChoices = try container.decodeIfPresent(Bool.self, forKey: .shuffleChoices) ?? false
         }
-
     }
-
 }
 
 // swiftlint:enable nesting

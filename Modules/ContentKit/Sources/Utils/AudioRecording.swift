@@ -47,5 +47,4 @@ public struct AudioRecording: Codable, Hashable, Equatable {
         self.name = song.details.name
         self.file = song.details.file
     }
-
 }

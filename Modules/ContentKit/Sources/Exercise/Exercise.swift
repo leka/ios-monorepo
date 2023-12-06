@@ -61,5 +61,4 @@ public struct Exercise: Codable {
                     forKey: .payload, in: container, debugDescription: "Invalid combination of interface or gameplay")
         }
     }
-
 }

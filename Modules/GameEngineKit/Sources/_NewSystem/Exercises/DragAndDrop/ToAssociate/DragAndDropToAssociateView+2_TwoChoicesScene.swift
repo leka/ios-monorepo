@@ -16,7 +16,5 @@ extension DragAndDropToAssociateView {
         override func setNextAnswerPosition(_ index: Int) {
             self.defaultPosition.x += spacer
         }
-
     }
-
 }

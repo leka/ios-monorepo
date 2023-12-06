@@ -75,7 +75,6 @@ final class Array_checksum8_Tests: XCTestCase {
             // Then
             XCTAssertEqual(checksum, 0x00)
         }
-
     }
 
     func test_checksum8ForMultipleValuesTurnOneLedOn() {
@@ -106,5 +105,4 @@ final class Array_checksum8_Tests: XCTestCase {
         // Then
         XCTAssertEqual(checksum, 0x54)
     }
-
 }

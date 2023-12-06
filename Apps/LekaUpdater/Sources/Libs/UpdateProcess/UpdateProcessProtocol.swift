@@ -11,5 +11,4 @@ protocol UpdateProcessProtocol {
     var sendingFileProgression: CurrentValueSubject<Float, Never> { get }
 
     func startProcess()
-
 }

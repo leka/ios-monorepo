@@ -50,7 +50,5 @@ extension DragAndDropIntoZonesView {
                 }
                 .store(in: &cancellables)
         }
-
     }
-
 }

@@ -308,7 +308,6 @@ private class StateApplyingUpdate: GKState, StateEventProcessor {
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: setMajorMinorRevision)
         DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: applyUpdate)
-
     }
 
     override func willExit(to nextState: GKState) {
@@ -546,5 +545,4 @@ class UpdateProcessV130: UpdateProcessProtocol {
                 currentStage.send(completion: .failure(.unknown))
         }
     }
-
 }

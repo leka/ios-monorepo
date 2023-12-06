@@ -16,7 +16,6 @@ extension LedZoneSelectorView {
                 .frame(width: CGFloat(backgroundDimension), height: CGFloat(backgroundDimension))
         }
     }
-
 }
 
 #Preview {

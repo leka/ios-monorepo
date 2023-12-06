@@ -63,5 +63,4 @@ public class ActivitySequenceManager {
             currentExerciseIndexInSequence = activity.sequence[currentSequenceIndex].exercises.count - 1
         }
     }
-
 }

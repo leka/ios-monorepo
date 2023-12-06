@@ -72,7 +72,6 @@ extension RemoteArrowView {
                 )
         }
     }
-
 }
 
 #Preview {

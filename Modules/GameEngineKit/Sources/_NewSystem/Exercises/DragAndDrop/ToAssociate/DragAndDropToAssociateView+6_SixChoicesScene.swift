@@ -23,7 +23,5 @@ extension DragAndDropToAssociateView {
                 defaultPosition.y += verticalSpacing + 60
             }
         }
-
     }
-
 }

@@ -92,5 +92,4 @@ class CurriculumViewModel: ObservableObject, YamlFileDecodable {
             activityFilesCompleteList.append(contentsOf: curriculum.activities)
         }
     }
-
 }

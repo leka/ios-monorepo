@@ -12,5 +12,4 @@ struct RobotKitExample: App {
             MainView()
         }
     }
-
 }

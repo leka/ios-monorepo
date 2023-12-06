@@ -36,7 +36,6 @@ struct ButtonFilled<Label: View>: View {
         )
         .buttonStyle(.robotControlPlainButtonStyle(foreground: foreground, background: background))
     }
-
 }
 
 #Preview {

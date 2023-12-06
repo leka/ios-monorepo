@@ -16,5 +16,4 @@ public struct NewModule {
     public func doSomething() {
         log.info("doing something")
     }
-
 }

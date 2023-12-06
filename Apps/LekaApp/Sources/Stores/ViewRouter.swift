@@ -12,5 +12,4 @@ enum Page {
 class ViewRouter: ObservableObject {
 
     @Published var currentPage: Page = .welcome
-
 }

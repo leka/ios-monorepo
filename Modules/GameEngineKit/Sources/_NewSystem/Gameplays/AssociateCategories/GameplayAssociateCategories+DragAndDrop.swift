@@ -34,5 +34,4 @@ extension GameplayAssociateCategories where ChoiceModelType == GameplayAssociate
             state.send(.completed)
         }
     }
-
 }

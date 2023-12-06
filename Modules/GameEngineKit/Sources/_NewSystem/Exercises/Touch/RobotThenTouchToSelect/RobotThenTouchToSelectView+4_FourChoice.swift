@@ -37,9 +37,7 @@ extension RobotThenTouchToSelectView {
                 }
             }
         }
-
     }
-
 }
 
 #Preview {

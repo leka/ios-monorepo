@@ -38,5 +38,4 @@ extension GameplayFindTheRightAnswers where ChoiceModelType == GameplayDragAndDr
             state.send(.completed)
         }
     }
-
 }

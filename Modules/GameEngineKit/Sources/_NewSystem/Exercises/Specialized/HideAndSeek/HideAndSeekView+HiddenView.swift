@@ -24,7 +24,6 @@ extension HideAndSeekView {
             .padding(10)
         }
     }
-
 }
 
 #Preview {

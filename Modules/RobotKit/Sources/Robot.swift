@@ -64,5 +64,4 @@ public class Robot {
         Just(MagicCard.dice_roll)
             .eraseToAnyPublisher()
     }
-
 }

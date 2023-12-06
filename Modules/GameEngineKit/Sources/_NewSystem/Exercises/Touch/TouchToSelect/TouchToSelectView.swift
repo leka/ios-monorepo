@@ -59,5 +59,4 @@ public struct TouchToSelectView: View {
                 Text("❌ Interface not available for \(viewModel.choices.count) choices")
         }
     }
-
 }

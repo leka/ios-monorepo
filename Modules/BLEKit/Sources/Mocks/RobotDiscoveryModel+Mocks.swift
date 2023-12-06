@@ -8,5 +8,4 @@ extension RobotDiscoveryModel {
         RobotDiscoveryModel(
             name: "Leka Mock", isCharging: Bool.random(), battery: Int.random(in: 1..<100), osVersion: "1.2.3")
     }
-
 }

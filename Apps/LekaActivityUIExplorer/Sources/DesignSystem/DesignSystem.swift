@@ -47,7 +47,6 @@ struct FontView: View {
                 return "Unknown"
         }
     }
-
 }
 
 struct ColorSwiftUIView: View {
@@ -72,10 +71,8 @@ struct ColorSwiftUIView: View {
             VStack(alignment: .leading) {
                 Text("\(color.description): \(String(describing: color.resolve(in: environment).description))")
                 Text("The quick brown fox jumps over the lazy dog")
-
             }
         }
         .foregroundColor(color)
     }
-
 }

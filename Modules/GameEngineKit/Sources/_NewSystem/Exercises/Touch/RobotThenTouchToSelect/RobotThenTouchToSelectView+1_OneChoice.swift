@@ -21,9 +21,7 @@ extension RobotThenTouchToSelectView {
                     viewModel.onChoiceTapped(choice: choice)
                 }
         }
-
     }
-
 }
 
 #Preview {

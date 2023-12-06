@@ -49,7 +49,6 @@ extension Robot {
                             String(decoding: data, as: UTF8.self)
                                 .replacingOccurrences(of: "\0", with: "")))
                     log.trace("🤖 osVersion: \(self.osVersion.value)")
-
                 }
             }
         )
@@ -88,5 +87,4 @@ extension Robot {
 
         self.connectedPeripheral?.readOnlyCharacteristics.insert(characteristic)
     }
-
 }

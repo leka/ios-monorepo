@@ -57,5 +57,4 @@ class Navigation: ObservableObject {
     }
 
     private var isProgrammaticNavigation: Bool = false
-
 }

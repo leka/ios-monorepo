@@ -67,7 +67,5 @@ extension Project {
             targets: frameworkTargets + exampleTargets,
             schemes: schemes
         )
-
     }
-
 }

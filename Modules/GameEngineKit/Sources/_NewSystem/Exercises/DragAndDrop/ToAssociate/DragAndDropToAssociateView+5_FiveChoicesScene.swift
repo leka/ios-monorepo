@@ -23,7 +23,5 @@ extension DragAndDropToAssociateView {
                 defaultPosition.x += spacer
             }
         }
-
     }
-
 }

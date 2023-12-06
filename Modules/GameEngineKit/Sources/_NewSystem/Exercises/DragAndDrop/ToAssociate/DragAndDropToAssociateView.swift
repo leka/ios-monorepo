@@ -76,5 +76,4 @@ public struct DragAndDropToAssociateView: View {
         finalScene.viewModel = viewModel
         return finalScene
     }
-
 }

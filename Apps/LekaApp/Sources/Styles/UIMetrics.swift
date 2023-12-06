@@ -62,5 +62,4 @@ class UIMetrics: ObservableObject {
     @Published var tileContentWidth: CGFloat = 360
     @Published var tileContentPadding: CGFloat = 25
     @Published var tileSize = CGSize(width: 843, height: 327)
-
 }

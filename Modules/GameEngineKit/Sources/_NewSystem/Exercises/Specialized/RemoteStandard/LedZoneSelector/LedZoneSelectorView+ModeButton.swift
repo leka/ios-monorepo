@@ -26,7 +26,6 @@ extension LedZoneSelectorView {
                 }
             }
             .background(ModeFeedback(backgroundDimension: displayMode == mode ? 80 : 0))
-
         }
 
         private var earsSectionIcons: some View {
@@ -39,7 +38,6 @@ extension LedZoneSelectorView {
                         EarIcon()
                 }
             }
-
         }
 
         private var beltSectionIcons: some View {
@@ -56,11 +54,9 @@ extension LedZoneSelectorView {
                         BeltSectionIcon(section: .quarterBackLeft(in: .black))
                         BeltSectionIcon(section: .quarterFrontLeft(in: .black))
                 }
-
             }
         }
     }
-
 }
 
 #Preview {

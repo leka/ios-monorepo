@@ -105,5 +105,4 @@ public struct ListenThenTouchToSelectView: View {
             Spacer()
         }
     }
-
 }

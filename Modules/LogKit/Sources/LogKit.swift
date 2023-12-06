@@ -29,5 +29,4 @@ public struct LogKit {
         let logger = Logger(label: "\(label)")
         return logger
     }
-
 }

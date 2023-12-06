@@ -35,7 +35,6 @@ struct MainView: View {
             .navigationTitle("RobotKit Explorer")
         }
     }
-
 }
 
 #Preview {

@@ -48,5 +48,4 @@ class GameMetrics: NSObject, ObservableObject {
 
     // Misc
     @Published var roundedCorner: CGFloat = 10
-
 }

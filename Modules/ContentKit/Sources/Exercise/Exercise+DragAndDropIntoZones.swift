@@ -27,7 +27,6 @@ public enum DragAndDropIntoZones {
         public let dropZoneB: DropZone.Details?
         public let choices: [Choice]
     }
-
 }
 
 // swiftlint:enable nesting

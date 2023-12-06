@@ -252,5 +252,4 @@ class CompanyViewModel: ObservableObject {
         profilesInUse[.teacher] = currentCompany.teachers[0].id
         profilesInUse[.user] = currentCompany.users[0].id
     }
-
 }

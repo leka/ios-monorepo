@@ -29,7 +29,6 @@ public struct MagicCard: Equatable {
     public static func === (lhs: MagicCard, rhs: MagicCard) -> Bool {
         lhs.id == rhs.id && lhs.language == rhs.language
     }
-
 }
 
 extension MagicCard {
@@ -104,7 +103,6 @@ extension MagicCard {
 
     public static let math_arithmetic_substraction_sign_minus: MagicCard = MagicCard(id: 0x00_3B)
     public static let math_arithmetic_addition_sign_plus: MagicCard = MagicCard(id: 0x00_3C)
-
 }
 
 // swiftlint:enable identifier_name

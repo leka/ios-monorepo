@@ -22,7 +22,6 @@ public struct CharacteristicModelNotifying {
         self.cbCharacteristic = cbCharacteristic
         self.onNotification = onNotification
     }
-
 }
 
 extension CharacteristicModelNotifying: Hashable {
@@ -35,7 +34,6 @@ extension CharacteristicModelNotifying: Hashable {
     public static func == (lhs: CharacteristicModelNotifying, rhs: CharacteristicModelNotifying) -> Bool {
         lhs.serviceUUID == rhs.serviceUUID && lhs.characteristicUUID == rhs.characteristicUUID
     }
-
 }
 
 public let kDefaultNotifyingCharacteristics: Set<CharacteristicModelNotifying> = [

@@ -54,5 +54,4 @@ struct TouchToSelectChoiceView: View {
         }
         .contentShape(Circle())
     }
-
 }

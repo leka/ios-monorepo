@@ -79,5 +79,4 @@ public class ConnectedRobotInformationViewModel: ObservableObject {
             }
             .store(in: &cancellables)
     }
-
 }

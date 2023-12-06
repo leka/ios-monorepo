@@ -24,9 +24,7 @@ extension LedZoneSelectorView {
 
             return path
         }
-
     }
-
 }
 
 #Preview {

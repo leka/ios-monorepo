@@ -9,7 +9,6 @@ extension Float {
     var isInRange0to1: Bool {
         self >= 0 && self <= 1
     }
-
 }
 
 extension Robot {
@@ -114,7 +113,6 @@ extension Robot {
                             .right, speed: speed, rotation: rotation == .clockwise ? .clockwise : .counterclockwise),
                     ]
                     output.append(contentsOf: payload)
-
             }
 
             return output
@@ -137,7 +135,6 @@ extension Robot {
 
             return payload
         }
-
     }
 
     public func move(_ motion: Motion) {

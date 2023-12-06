@@ -41,7 +41,6 @@ public enum l10n {
 
         return localizedArgsOnly
     }
-
 }
 
 // swiftlint:enable identifier_name

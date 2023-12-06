@@ -18,5 +18,4 @@ extension RobotListViewModel {
             // RobotDiscovery.mock(),
         ])
     }
-
 }

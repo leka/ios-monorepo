@@ -34,7 +34,6 @@ struct ConnectButton: View {
         )
         .disabled(
             robotListViewModel.connectedRobotPeripheral == nil && robotListViewModel.selectedRobotDiscovery == nil)
-
     }
 
     // MARK: - Private views
@@ -86,7 +85,6 @@ struct ConnectButton: View {
     private func disconnectFromRobot() {
         robotListViewModel.disconnectFromConnectedPeripheral()
     }
-
 }
 
 struct ConnectButton_Previews: PreviewProvider {

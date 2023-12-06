@@ -40,5 +40,4 @@ public enum HideAndSeek {
             self.instructions = try container.decode(Instructions.self, forKey: .instructions)
         }
     }
-
 }

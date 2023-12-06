@@ -30,5 +30,4 @@ extension RobotDiscoveryViewModel {
             osVersion: osVersion,
             status: status)
     }
-
 }

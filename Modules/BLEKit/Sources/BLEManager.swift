@@ -84,7 +84,6 @@ public class BLEManager {
                     return RobotDiscoveryModel(
                         robotPeripheral: robotPeripheral, advertisingData: robotAdvertisingData, rssi: rssi)
                 }
-
             }
             .eraseToAnyPublisher()
     }

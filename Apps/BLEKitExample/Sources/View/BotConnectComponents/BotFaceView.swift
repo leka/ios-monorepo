@@ -46,7 +46,6 @@ struct BotFaceView: View {
             Text("Charging Status : " + (isCharging ? "On" : "Off"))
 
             Text("OS Version : \(osVersion)")
-
         }
         .animation(.default, value: isConnected)
     }

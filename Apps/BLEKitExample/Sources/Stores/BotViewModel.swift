@@ -24,5 +24,4 @@ class BotViewModel: ObservableObject {
         currentlyConnectedBotIndex = nil
         botIsConnected = false
     }
-
 }

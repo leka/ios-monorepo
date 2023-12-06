@@ -24,7 +24,6 @@ extension l10n {
         value:
             "⛳ **DEFAULT** *localized_string_interpolation_with_markdown* - **text: %@** - *int: %lld* - ***float: %f***",
         comment: "")
-
 }
 
 struct LocalizationView: View {
@@ -71,7 +70,6 @@ struct LocalizationView: View {
             }
         }
     }
-
 }
 
 #Preview {

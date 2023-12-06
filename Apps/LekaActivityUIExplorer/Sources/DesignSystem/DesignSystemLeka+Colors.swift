@@ -20,9 +20,7 @@ extension DesignSystemLeka {
             }
             .navigationTitle("Leka SwiftUI colors")
         }
-
     }
-
 }
 
 #Preview {

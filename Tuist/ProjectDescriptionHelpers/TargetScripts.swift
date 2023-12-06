@@ -24,5 +24,4 @@ extension TargetScript {
 
         return defaultLinters
     }
-
 }

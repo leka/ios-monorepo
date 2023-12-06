@@ -19,5 +19,4 @@ struct AccountKitExample: App {
                 .environmentObject(authenticationState)
         }
     }
-
 }

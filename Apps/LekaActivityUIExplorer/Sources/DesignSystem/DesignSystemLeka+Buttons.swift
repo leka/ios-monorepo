@@ -43,9 +43,7 @@ extension DesignSystemLeka {
             }
             .navigationTitle("Leka Buttons")
         }
-
     }
-
 }
 
 #Preview {

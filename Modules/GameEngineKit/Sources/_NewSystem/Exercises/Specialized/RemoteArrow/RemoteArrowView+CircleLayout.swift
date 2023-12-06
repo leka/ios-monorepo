@@ -28,5 +28,4 @@ extension RemoteArrowView {
             }
         }
     }
-
 }

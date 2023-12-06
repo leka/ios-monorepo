@@ -90,7 +90,6 @@ struct ChoiceImageView: View {
                     }
         }
     }
-
 }
 
 #Preview {

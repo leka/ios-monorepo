@@ -296,5 +296,4 @@ class ActivityViewModel: NSObject, ObservableObject, YamlFileDecodable {
         showEndAnimation = false
         //		selectedActivity = Activity()
     }
-
 }

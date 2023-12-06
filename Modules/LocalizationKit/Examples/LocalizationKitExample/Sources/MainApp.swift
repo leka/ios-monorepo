@@ -13,5 +13,4 @@ struct LocalizationKitExample: App {
             MainView()
         }
     }
-
 }

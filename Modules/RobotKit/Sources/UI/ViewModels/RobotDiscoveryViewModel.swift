@@ -39,7 +39,6 @@ public struct RobotDiscoveryViewModel: Identifiable {
         self.osVersion = "LekaOS \(discovery.osVersion)"
         self.battery = BatteryViewModel(level: discovery.battery)
     }
-
 }
 
 extension RobotDiscoveryViewModel: Equatable {
@@ -49,5 +48,4 @@ extension RobotDiscoveryViewModel: Equatable {
             && lhs.isCharging == rhs.isCharging
             && lhs.battery == rhs.battery
     }
-
 }

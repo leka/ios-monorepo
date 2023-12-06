@@ -17,7 +17,6 @@ public struct CharacteristicModelReadOnly {
         self.serviceUUID = serviceUUID
         self.onRead = onRead
     }
-
 }
 
 extension CharacteristicModelReadOnly: Hashable {
@@ -30,7 +29,6 @@ extension CharacteristicModelReadOnly: Hashable {
     public static func == (lhs: CharacteristicModelReadOnly, rhs: CharacteristicModelReadOnly) -> Bool {
         lhs.serviceUUID == rhs.serviceUUID && lhs.characteristicUUID == rhs.characteristicUUID
     }
-
 }
 
 public let kDefaultReadOnlyCharacteristics: Set<CharacteristicModelReadOnly> = [

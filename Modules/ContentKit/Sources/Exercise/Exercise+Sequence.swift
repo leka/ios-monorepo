@@ -9,5 +9,4 @@ extension Exercise {
     public struct Sequence: Codable {
         public let exercises: [Exercise]
     }
-
 }

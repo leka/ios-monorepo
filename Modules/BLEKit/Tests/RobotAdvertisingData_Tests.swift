@@ -43,5 +43,4 @@ final class RobotAdvertisingData_Tests: XCTestCase {
         let actual = advertisingData.name
         XCTAssertEqual(expected, actual)
     }
-
 }

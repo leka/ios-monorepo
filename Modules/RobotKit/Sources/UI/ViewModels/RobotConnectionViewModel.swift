@@ -81,5 +81,4 @@ public class RobotConnectionViewModel: ObservableObject {
         bleManager.disconnect()
         connectedDiscovery = nil
     }
-
 }

@@ -84,5 +84,4 @@ final class MagicCard_Tests: XCTestCase {
         // Then
         XCTAssertFalse(card1 === card2)
     }
-
 }

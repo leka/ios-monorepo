@@ -58,7 +58,6 @@ struct RobotListView: View {
         )
         .buttonStyle(.borderedProminent)
         .tint(Color(.blue))
-
     }
 
     private var connectionButton: some View {

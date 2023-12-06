@@ -35,5 +35,4 @@ class RobotControlViewModel: ObservableObject {
             }
             .store(in: &cancellables)
     }
-
 }

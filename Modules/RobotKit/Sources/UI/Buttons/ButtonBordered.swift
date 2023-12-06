@@ -36,7 +36,6 @@ struct ButtonBordered<Label: View>: View {
         )
         .buttonStyle(.robotControlBorderedButtonStyle(foreground: foreground, border: border))
     }
-
 }
 
 #Preview {

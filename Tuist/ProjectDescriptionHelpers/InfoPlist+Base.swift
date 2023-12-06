@@ -15,5 +15,4 @@ extension InfoPlist {
             "ITSAppUsesNonExemptEncryption": "NO",
         ]
     }
-
 }

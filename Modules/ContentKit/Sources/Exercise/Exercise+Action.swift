@@ -118,9 +118,7 @@ extension Exercise {
                     )
             }
         }
-
     }
-
 }
 
 // swiftlint:enable nesting

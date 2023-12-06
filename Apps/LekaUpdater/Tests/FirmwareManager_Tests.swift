@@ -44,7 +44,6 @@ final class FirmwareManager_Tests_compareVersion: XCTestCase {
         let actual = firmwareManager.compareWith(version: robotVersion)
         XCTAssertEqual(expected, actual)
     }
-
 }
 
 final class FirmwareManager_Tests_sha256: XCTestCase {
@@ -59,5 +58,4 @@ final class FirmwareManager_Tests_sha256: XCTestCase {
 
         XCTAssertEqual(expectedSHA256, actualSHA256)
     }
-
 }

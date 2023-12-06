@@ -161,7 +161,6 @@ public struct ActivityView: View {
             .transition(.asymmetric(insertion: .opacity.animation(.snappy.delay(2)), removal: .identity))
         }
     }
-
 }
 
 #Preview {

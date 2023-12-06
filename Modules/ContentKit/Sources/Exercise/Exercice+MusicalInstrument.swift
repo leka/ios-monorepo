@@ -19,5 +19,4 @@ public enum MusicalInstrument {
             self.scale = try container.decode(String.self, forKey: .scale)
         }
     }
-
 }

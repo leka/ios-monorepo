@@ -38,7 +38,6 @@ public struct RobotDiscoveryModel: Identifiable {
         self.battery = advertisingData.battery
         self.osVersion = computeVersion(version: advertisingData.osVersion, name: advertisingData.name)
     }
-
 }
 
 extension RobotDiscoveryModel: Equatable {
@@ -46,7 +45,6 @@ extension RobotDiscoveryModel: Equatable {
     public static func == (lhs: RobotDiscoveryModel, rhs: RobotDiscoveryModel) -> Bool {
         lhs.id == rhs.id
     }
-
 }
 
 private func computeVersion(version: String?, name: String) -> String {

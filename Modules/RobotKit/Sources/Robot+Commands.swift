@@ -25,5 +25,4 @@ extension Robot {
 
         return Data(output)
     }
-
 }

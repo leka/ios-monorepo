@@ -141,5 +141,4 @@ public class RobotPeripheral: Equatable {
             )
             .store(in: &cancellables)
     }
-
 }

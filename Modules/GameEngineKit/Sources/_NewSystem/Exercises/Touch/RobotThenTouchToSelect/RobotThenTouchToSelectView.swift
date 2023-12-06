@@ -139,5 +139,4 @@ public struct RobotThenTouchToSelectView: View {
             Spacer()
         }
     }
-
 }

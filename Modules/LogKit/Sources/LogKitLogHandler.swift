@@ -21,7 +21,6 @@ extension String {
     var lastPathComponent: String {
         fileURL.lastPathComponent
     }
-
 }
 
 let systemStderr = Darwin.stderr

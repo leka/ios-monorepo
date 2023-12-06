@@ -102,5 +102,4 @@ public struct ObserveThenTouchToSelectView: View {
             Spacer()
         }
     }
-
 }

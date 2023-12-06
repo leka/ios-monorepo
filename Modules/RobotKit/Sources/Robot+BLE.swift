@@ -26,5 +26,4 @@ extension Robot {
             }
             .store(in: &cancellables)
     }
-
 }

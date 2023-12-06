@@ -21,7 +21,6 @@ extension TouchToSelectView {
                 }
         }
     }
-
 }
 
 #Preview {

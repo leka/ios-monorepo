@@ -31,6 +31,5 @@ class JoystickViewViewModel: ObservableObject {
                 Robot.shared.move(.free(left: Float(leftSpeed), right: Float(rightSpeed)))
             })
             .store(in: &cancellables)
-
     }
 }

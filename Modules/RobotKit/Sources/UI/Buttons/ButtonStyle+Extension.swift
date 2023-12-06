@@ -15,7 +15,6 @@ extension ButtonStyle where Self == RobotControlPlainButtonStyle {
     public static func robotControlPlainButtonStyle(foreground: Color? = nil, background: Color? = nil) -> Self {
         .init(foreground: foreground, background: background)
     }
-
 }
 
 extension ButtonStyle where Self == RobotControlBorderedButtonStyle {
@@ -23,7 +22,6 @@ extension ButtonStyle where Self == RobotControlBorderedButtonStyle {
     public static func robotControlBorderedButtonStyle(foreground: Color? = nil, border: Color? = nil) -> Self {
         .init(foreground: foreground, border: border)
     }
-
 }
 
 //

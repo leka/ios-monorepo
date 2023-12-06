@@ -10,5 +10,4 @@ extension Exercise {
         case findTheRightAnswers
         case associateCategories
     }
-
 }

@@ -27,7 +27,6 @@ extension Robot.Lights {
                 return (start: .degrees(0), end: .degrees(0))
         }
     }
-
 }
 
 extension LedZoneSelectorView {
@@ -67,7 +66,6 @@ extension LedZoneSelectorView {
                 .animation(Animation.easeInOut(duration: 0.2), value: backgroundLineWidth)
         }
     }
-
 }
 
 #Preview {

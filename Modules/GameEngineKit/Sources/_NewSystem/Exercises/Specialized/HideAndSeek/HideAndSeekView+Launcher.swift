@@ -29,7 +29,6 @@ extension HideAndSeekView {
             .scaledToFill()
         }
     }
-
 }
 
 #Preview {

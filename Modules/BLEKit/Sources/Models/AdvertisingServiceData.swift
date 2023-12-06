@@ -15,7 +15,6 @@ internal struct AdvertisingServiceData {
         self.isCharging = getChargingState(data: data)
         self.osVersion = getOsVersion(data: data)
     }
-
 }
 
 private enum AdvertisingServiceDataIndex {

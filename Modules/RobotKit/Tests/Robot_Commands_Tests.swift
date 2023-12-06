@@ -38,5 +38,4 @@ final class Robot_Commands_Tests: XCTestCase {
         // Then
         XCTAssertEqual(output, expected)
     }
-
 }

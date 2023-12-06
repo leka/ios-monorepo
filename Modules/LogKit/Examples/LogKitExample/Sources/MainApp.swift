@@ -19,5 +19,4 @@ struct LogKitExample: App {
                 }
         }
     }
-
 }

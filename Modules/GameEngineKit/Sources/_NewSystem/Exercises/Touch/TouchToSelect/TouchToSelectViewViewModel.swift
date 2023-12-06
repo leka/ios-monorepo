@@ -44,5 +44,4 @@ class TouchToSelectViewViewModel: ObservableObject {
             }
             .store(in: &cancellables)
     }
-
 }

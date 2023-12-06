@@ -271,5 +271,4 @@ extension DragAndDropIntoZonesView {
             }
         }
     }
-
 }

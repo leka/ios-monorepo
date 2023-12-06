@@ -220,7 +220,5 @@ extension DragAndDropToAssociateView {
                 viewModel.onChoiceTapped(choice: choice, destination: destination)
             }
         }
-
     }
-
 }

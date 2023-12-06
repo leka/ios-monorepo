@@ -57,7 +57,6 @@ extension Robot {
                         return .yellow
                 }
             }
-
         }
 
         public init(from value: String) {
@@ -95,7 +94,6 @@ extension Robot.Color {
     public static let purple: Robot.Color = .init(robot: 20, 0, 80, screen: 173, 73, 247)
     public static let pink: Robot.Color = .init(robot: 255, 0, 127, screen: 252, 103, 178)
     public static let yellow: Robot.Color = .init(robot: 255, 255, 0, screen: 251, 232, 0)
-
 }
 
 // swiftlint:enable nesting

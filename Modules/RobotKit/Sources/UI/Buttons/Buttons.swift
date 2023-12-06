@@ -27,7 +27,6 @@ public struct RobotControlActionButton: View {
         }
         .buttonStyle(.robotControlBorderedButtonStyle(foreground: tint, border: tint))
     }
-
 }
 
 #Preview {

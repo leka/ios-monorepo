@@ -90,7 +90,6 @@ extension HideAndSeekView {
                 }
         }
     }
-
 }
 // swiftlint:enable nesting
 

@@ -37,7 +37,5 @@ extension DragAndDropIntoZonesView {
             dropZoneA.node = dropZoneNodeA
             dropZoneB?.node = dropZoneNodeB
         }
-
     }
-
 }
