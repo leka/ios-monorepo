@@ -40,6 +40,9 @@
 --elseposition same-line
 --guardelse auto
 
+--enable emptyBraces
+--emptybraces no-space
+
 # Disabled rules
 
 --disable blankLinesBetweenImports
