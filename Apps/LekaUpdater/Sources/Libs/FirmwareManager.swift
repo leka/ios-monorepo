@@ -6,10 +6,14 @@ import CryptoKit
 import Foundation
 import Version
 
+// MARK: - RobotUpdateStatus
+
 enum RobotUpdateStatus {
     case upToDate
     case needsUpdate
 }
+
+// MARK: - FirmwareManager
 
 class FirmwareManager: ObservableObject {
     // swiftlint:disable:next force_cast

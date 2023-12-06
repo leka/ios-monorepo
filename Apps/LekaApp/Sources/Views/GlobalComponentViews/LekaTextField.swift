@@ -5,6 +5,8 @@
 import DesignKit
 import SwiftUI
 
+// MARK: - LekaTextField
+
 struct LekaTextField: View {
     @EnvironmentObject var metrics: UIMetrics
 
@@ -50,6 +52,8 @@ struct LekaTextField: View {
         )
     }
 }
+
+// MARK: - LekaPasswordField
 
 struct LekaPasswordField: View {
     @EnvironmentObject var metrics: UIMetrics

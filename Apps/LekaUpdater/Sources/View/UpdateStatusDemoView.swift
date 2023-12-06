@@ -5,6 +5,8 @@
 import Combine
 import SwiftUI
 
+// MARK: - UpdateStatusDemoViewModel
+
 class UpdateStatusDemoViewModel: ObservableObject {
     private var updateProcessController: UpdateProcessController
 
@@ -58,6 +60,8 @@ class UpdateStatusDemoViewModel: ObservableObject {
     }
 }
 
+// MARK: - UpdateStatusDemoView
+
 struct UpdateStatusDemoView: View {
     @StateObject private var viewModel = UpdateStatusDemoViewModel()
 
@@ -91,6 +95,8 @@ struct UpdateStatusDemoView: View {
         }
     }
 }
+
+// MARK: - UpdateStatusDemoView_Previews
 
 struct UpdateStatusDemoView_Previews: PreviewProvider {
     static var previews: some View {

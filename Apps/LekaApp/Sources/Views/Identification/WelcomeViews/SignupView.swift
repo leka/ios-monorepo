@@ -5,6 +5,8 @@
 import DesignKit
 import SwiftUI
 
+// MARK: - SignupView
+
 struct SignupView: View {
     @EnvironmentObject var company: CompanyViewModel
     @EnvironmentObject var settings: SettingsViewModel
@@ -175,6 +177,8 @@ struct SignupView: View {
         .tint(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
     }
 }
+
+// MARK: - SignupView_Previews
 
 struct SignupView_Previews: PreviewProvider {
     static var previews: some View {

@@ -5,6 +5,8 @@
 import DesignKit
 import SwiftUI
 
+// MARK: - InstructionButton
+
 struct InstructionButton: View {
     @ObservedObject var gameMetrics: GameMetrics
     @EnvironmentObject var activityVM: ActivityViewModel
@@ -72,6 +74,8 @@ struct InstructionButton: View {
         .animation(.easeOut(duration: 0.2), value: activityVM.isSpeaking)
     }
 }
+
+// MARK: - InstructionButton_Previews
 
 struct InstructionButton_Previews: PreviewProvider {
     static var previews: some View {

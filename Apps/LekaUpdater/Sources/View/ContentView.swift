@@ -4,6 +4,8 @@
 
 import SwiftUI
 
+// MARK: - ContentView
+
 struct ContentView: View {
     @State var isConnectionViewPresented = true
     @State var isUpdateStatusViewPresented = false
@@ -21,6 +23,8 @@ struct ContentView: View {
         }
     }
 }
+
+// MARK: - ContentView_Previews
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

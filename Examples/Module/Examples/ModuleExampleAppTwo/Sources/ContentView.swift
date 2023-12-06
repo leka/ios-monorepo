@@ -5,6 +5,8 @@
 import Module
 import SwiftUI
 
+// MARK: - ContentView
+
 struct ContentView: View {
     let appName = ModuleExampleAppTwoResources.bundle.infoDictionary?["APP_NAME"] as? String ?? "NO NAME"
 
@@ -12,6 +14,8 @@ struct ContentView: View {
         HelloView(color: .teal, name: appName)
     }
 }
+
+// MARK: - ContentView_Previews
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

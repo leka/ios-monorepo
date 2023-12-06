@@ -5,6 +5,8 @@
 import DesignKit
 import SwiftUI
 
+// MARK: - CommandListView
+
 struct CommandListView: View {
     @EnvironmentObject var settings: SettingsViewModel
     @EnvironmentObject var navigationVM: NavigationViewModel
@@ -41,6 +43,8 @@ struct CommandListView: View {
         .onAppear { navigationVM.sidebarVisibility = .all }
     }
 }
+
+// MARK: - CommandListView_Previews
 
 struct CommandListView_Previews: PreviewProvider {
     static var previews: some View {

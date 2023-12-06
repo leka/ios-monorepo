@@ -4,6 +4,8 @@
 
 import CombineCoreBluetooth
 
+// MARK: - CharacteristicModelReadOnly
+
 public struct CharacteristicModelReadOnly {
     public typealias Callback = ((_ data: Data?) -> Void)
 
@@ -17,6 +19,8 @@ public struct CharacteristicModelReadOnly {
         self.onRead = onRead
     }
 }
+
+// MARK: Hashable
 
 extension CharacteristicModelReadOnly: Hashable {
     public func hash(into hasher: inout Hasher) {

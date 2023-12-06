@@ -6,6 +6,8 @@ import DesignKit
 import LocalizationKit
 import SwiftUI
 
+// MARK: - ErrorIllustration
+
 struct ErrorIllustration: View {
     var body: some View {
         Image(systemName: "exclamationmark.octagon.fill")
@@ -14,6 +16,8 @@ struct ErrorIllustration: View {
             .foregroundColor(.red)
     }
 }
+
+// MARK: - ErrorContentView
 
 struct ErrorContentView: View {
     @Environment(\.dismiss) var dismiss
@@ -52,6 +56,8 @@ struct ErrorContentView: View {
         }
     }
 }
+
+// MARK: - ErrorView_Previews
 
 struct ErrorView_Previews: PreviewProvider {
     @State static var isConnectionViewPresented = false

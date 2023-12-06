@@ -6,6 +6,8 @@ import AVFoundation
 import DesignKit
 import SwiftUI
 
+// MARK: - SpeakerViewModel
+
 // TODO(@ladislas): refactor speech synth into own class
 class SpeakerViewModel: NSObject, ObservableObject, AVSpeechSynthesizerDelegate {
     @Published var isSpeaking = false
@@ -39,6 +41,8 @@ class SpeakerViewModel: NSObject, ObservableObject, AVSpeechSynthesizerDelegate 
     }
 }
 
+// MARK: - ExerciseInstructionsButton
+
 struct ExerciseInstructionsButton: View {
     @StateObject var speaker = SpeakerViewModel()
     @State var instructions: String
@@ -50,6 +54,8 @@ struct ExerciseInstructionsButton: View {
         .buttonStyle(StepInstructions_ButtonStyle(isSpeaking: $speaker.isSpeaking))
     }
 }
+
+// MARK: - StepInstructions_ButtonStyle
 
 struct StepInstructions_ButtonStyle: ButtonStyle {
     @Binding var isSpeaking: Bool

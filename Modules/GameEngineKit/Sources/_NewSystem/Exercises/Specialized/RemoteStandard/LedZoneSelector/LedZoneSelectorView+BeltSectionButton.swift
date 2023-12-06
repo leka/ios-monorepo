@@ -28,6 +28,8 @@ public extension Robot.Lights {
     }
 }
 
+// MARK: - LedZoneSelectorView.BeltSectionButton
+
 extension LedZoneSelectorView {
     struct BeltSectionButton: View {
         var section: Robot.Lights

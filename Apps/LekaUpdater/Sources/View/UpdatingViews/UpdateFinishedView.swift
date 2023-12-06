@@ -6,6 +6,8 @@ import DesignKit
 import LocalizationKit
 import SwiftUI
 
+// MARK: - UpdateFinishedIllustration
+
 struct UpdateFinishedIllustration: View {
     var body: some View {
         ZStack {
@@ -35,6 +37,8 @@ struct UpdateFinishedIllustration: View {
         .padding()
     }
 }
+
+// MARK: - UpdateFinishedContentView
 
 struct UpdateFinishedContentView: View {
     @Environment(\.dismiss) var dismiss
@@ -92,6 +96,8 @@ struct UpdateFinishedContentView: View {
         }
     }
 }
+
+// MARK: - UpdateFinishedView_Previews
 
 struct UpdateFinishedView_Previews: PreviewProvider {
     @State static var isConnectionViewPresented = false

@@ -5,6 +5,8 @@
 import Foundation
 import Yams
 
+// MARK: - YamlFileDecodable
+
 protocol YamlFileDecodable {
     func decodeYamlFile<T: Decodable>(withName name: String, toType: T.Type) throws -> T
 }
@@ -23,7 +25,7 @@ extension YamlFileDecodable {
     }
 }
 
-// MARK: - Custom Errors
+// MARK: - CustomError
 
 enum CustomError: Error, CustomStringConvertible {
     case failedToGetFilePath
@@ -35,7 +37,7 @@ enum CustomError: Error, CustomStringConvertible {
     }
 }
 
-// MARK: - Handling Yaml files in a type-safe manner, when possible!
+// MARK: - YamlFiles
 
 struct YamlFiles: RawRepresentable, Hashable {
     var rawValue: String
@@ -48,6 +50,8 @@ struct YamlFiles: RawRepresentable, Hashable {
         self.rawValue = rawValue
     }
 }
+
+// MARK: - CurriculumCategories
 
 enum CurriculumCategories: String, CaseIterable {
     case emotionRecognition = "emotion_recognition-curriculums-list"

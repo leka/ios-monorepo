@@ -6,6 +6,8 @@ import XCTest
 
 @testable import BLEKit
 
+// MARK: - AdvertisingServiceData_Tests_BatteryLevel
+
 final class AdvertisingServiceData_Tests_BatteryLevel: XCTestCase {
     func test_shouldReturnBatteryLevel_equals0() {
         // Given
@@ -50,6 +52,8 @@ final class AdvertisingServiceData_Tests_BatteryLevel: XCTestCase {
     }
 }
 
+// MARK: - AdvertisingServiceData_Tests_ChargingStatus
+
 final class AdvertisingServiceData_Tests_ChargingStatus: XCTestCase {
     func test_shouldReturnChargingStatus_isCharging() {
         // Given
@@ -79,6 +83,8 @@ final class AdvertisingServiceData_Tests_ChargingStatus: XCTestCase {
         XCTAssertEqual(expected, actual)
     }
 }
+
+// MARK: - AdvertisingServiceData_Tests_OsVersion
 
 final class AdvertisingServiceData_Tests_OsVersion: XCTestCase {
     func test_shouldReturnOsVersion_0_0_0() {

@@ -76,6 +76,8 @@
 
 --enable linebreakAtEndOfFile
 
+--enable markTypes
+
 # Disabled rules
 
 --disable blankLinesBetweenImports

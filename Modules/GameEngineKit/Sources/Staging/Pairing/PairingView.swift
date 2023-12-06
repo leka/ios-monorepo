@@ -5,6 +5,8 @@
 import DesignKit
 import SwiftUI
 
+// MARK: - Action
+
 private enum Action {
     case play, pause, stop
 
@@ -40,6 +42,8 @@ private enum Action {
         }
     }
 }
+
+// MARK: - PairingView
 
 public struct PairingView: View {
     @State private var stopButtonDisabled: Bool = true

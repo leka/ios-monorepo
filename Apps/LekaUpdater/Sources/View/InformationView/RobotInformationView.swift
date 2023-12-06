@@ -8,6 +8,8 @@ import RobotKit
 import SwiftUI
 import Version
 
+// MARK: - RobotInformationView
+
 struct RobotInformationView: View {
     @StateObject private var viewModel = RobotInformationViewModel()
 
@@ -24,6 +26,8 @@ struct RobotInformationView: View {
         .padding()
     }
 }
+
+// MARK: - RobotInformationView_Previews
 
 struct RobotInformationView_Previews: PreviewProvider {
     static var previews: some View {

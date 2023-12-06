@@ -5,6 +5,8 @@
 import DesignKit
 import SwiftUI
 
+// MARK: - CurrentGameInstructionView
+
 struct CurrentGameInstructionView: View {
     @EnvironmentObject var activityVM: ActivityViewModel
     @ObservedObject var gameMetrics: GameMetrics
@@ -63,6 +65,8 @@ struct CurrentGameInstructionView: View {
         .preferredColorScheme(.light)
     }
 }
+
+// MARK: - CurrentGameInstructionView_Previews
 
 struct CurrentGameInstructionView_Previews: PreviewProvider {
     static var previews: some View {

@@ -5,6 +5,8 @@
 import ContentKit
 import Foundation
 
+// MARK: - GameplayTouchToSelectChoiceModel
+
 struct GameplayTouchToSelectChoiceModel: GameplayChoiceModelProtocol {
     typealias ChoiceType = TouchToSelect.Choice
 

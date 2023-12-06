@@ -5,6 +5,8 @@
 import DesignKit
 import SwiftUI
 
+// MARK: - GoToProfileEditorButton
+
 struct GoToProfileEditorButton: View {
     @EnvironmentObject var settings: SettingsViewModel
     @EnvironmentObject var metrics: UIMetrics
@@ -46,6 +48,8 @@ struct GoToProfileEditorButton: View {
             .background(.white, in: RoundedRectangle(cornerRadius: metrics.btnRadius))
     }
 }
+
+// MARK: - GoToProfileEditorButton_Previews
 
 struct GoToProfileEditorButton_Previews: PreviewProvider {
     static var previews: some View {

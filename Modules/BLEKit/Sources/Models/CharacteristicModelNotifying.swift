@@ -4,6 +4,8 @@
 
 import CombineCoreBluetooth
 
+// MARK: - CharacteristicModelNotifying
+
 public struct CharacteristicModelNotifying {
     public typealias Callback = ((_ data: Data?) -> Void)
 
@@ -22,6 +24,8 @@ public struct CharacteristicModelNotifying {
         self.onNotification = onNotification
     }
 }
+
+// MARK: Hashable
 
 extension CharacteristicModelNotifying: Hashable {
     public func hash(into hasher: inout Hasher) {

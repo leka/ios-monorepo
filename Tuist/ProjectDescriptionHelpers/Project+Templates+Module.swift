@@ -4,6 +4,8 @@
 
 import ProjectDescription
 
+// MARK: - ModuleExample
+
 public struct ModuleExample {
     public let name: String
     public let infoPlist: [String: InfoPlist.Value]

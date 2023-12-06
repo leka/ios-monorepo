@@ -4,6 +4,8 @@
 
 import Foundation
 
+// MARK: - MagicCard
+
 // swiftlint:disable identifier_name
 
 public struct MagicCard: Equatable {

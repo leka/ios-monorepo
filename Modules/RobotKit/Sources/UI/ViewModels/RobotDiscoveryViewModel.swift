@@ -5,6 +5,8 @@
 import BLEKit
 import SwiftUI
 
+// MARK: - RobotDiscoveryViewModel
+
 public struct RobotDiscoveryViewModel: Identifiable {
     public enum Status: CaseIterable {
         case connected
@@ -39,6 +41,8 @@ public struct RobotDiscoveryViewModel: Identifiable {
         self.battery = BatteryViewModel(level: discovery.battery)
     }
 }
+
+// MARK: Equatable
 
 extension RobotDiscoveryViewModel: Equatable {
     public static func == (lhs: RobotDiscoveryViewModel, rhs: RobotDiscoveryViewModel) -> Bool {

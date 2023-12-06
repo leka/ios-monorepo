@@ -5,6 +5,8 @@
 import BLEKit
 import SwiftUI
 
+// MARK: - ScanButton
+
 struct ScanButton: View {
     // MARK: - Environment variables
 
@@ -45,6 +47,8 @@ struct ScanButton: View {
         }
     }
 }
+
+// MARK: - ScanButton_Previews
 
 struct ScanButton_Previews: PreviewProvider {
     //    static let bleManager = BLEManager.live()

@@ -7,7 +7,7 @@ import Foundation
 import RobotKit
 import Version
 
-// MARK: - General (user facing) update process states, errors
+// MARK: - UpdateProcessStage
 
 enum UpdateProcessStage {
     case initial
@@ -16,6 +16,8 @@ enum UpdateProcessStage {
     case sendingUpdate
     case installingUpdate
 }
+
+// MARK: - UpdateProcessError
 
 enum UpdateProcessError: Error {
     case unknown
@@ -27,7 +29,7 @@ enum UpdateProcessError: Error {
     case robotUnexpectedDisconnection
 }
 
-// MARK: - Controller
+// MARK: - UpdateProcessController
 
 class UpdateProcessController {
     // MARK: - Private variables

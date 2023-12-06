@@ -22,9 +22,9 @@ public extension ButtonStyle where Self == RobotControlBorderedButtonStyle {
     }
 }
 
-//
+// MARK: - RobotControlPlainButtonStyle
 
-// MARK: - ButtonStyle struct implementations
+//
 
 //
 
@@ -49,6 +49,8 @@ public struct RobotControlPlainButtonStyle: ButtonStyle {
         .opacity(configuration.isPressed ? 0.8 : 1)
     }
 }
+
+// MARK: - RobotControlBorderedButtonStyle
 
 public struct RobotControlBorderedButtonStyle: ButtonStyle {
     private let foreground: Color

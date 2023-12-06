@@ -4,6 +4,8 @@
 
 import Foundation
 
+// MARK: - AdvertisingServiceData
+
 internal struct AdvertisingServiceData {
     let battery: Int
     let isCharging: Bool
@@ -15,6 +17,8 @@ internal struct AdvertisingServiceData {
         self.osVersion = getOsVersion(data: data)
     }
 }
+
+// MARK: - AdvertisingServiceDataIndex
 
 private enum AdvertisingServiceDataIndex {
     static let battery = 0

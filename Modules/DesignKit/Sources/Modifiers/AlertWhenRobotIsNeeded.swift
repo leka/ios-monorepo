@@ -4,6 +4,8 @@
 
 import SwiftUI
 
+// MARK: - AlertWhenRobotIsNeeded
+
 struct AlertWhenRobotIsNeeded: ViewModifier {
     @State private var showAlert: Bool = false
 

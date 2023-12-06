@@ -24,6 +24,8 @@ public extension Robot.Reinforcer {
     }
 }
 
+// MARK: - ReinforcerButton
+
 struct ReinforcerButton: View {
     var reinforcer: Robot.Reinforcer
     let robot = Robot.shared

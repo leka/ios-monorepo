@@ -5,6 +5,8 @@
 import DesignKit
 import SwiftUI
 
+// MARK: - CreateUserProfileView
+
 struct CreateUserProfileView: View {
     @EnvironmentObject var company: CompanyViewModel
     @EnvironmentObject var viewRouter: ViewRouter
@@ -180,6 +182,8 @@ struct CreateUserProfileView: View {
         .contentShape(Rectangle())
     }
 }
+
+// MARK: - CreateUserProfileView_Previews
 
 struct CreateUserProfileView_Previews: PreviewProvider {
     static var previews: some View {

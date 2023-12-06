@@ -5,6 +5,8 @@
 import DesignKit
 import SwiftUI
 
+// MARK: - RequirementsView
+
 struct RequirementsView: View {
     @StateObject var viewModel: RequirementsViewModel
 
@@ -33,6 +35,8 @@ struct RequirementsView: View {
         .padding()
     }
 }
+
+// MARK: - RequirementView
 
 private struct RequirementView: View {
     let image: Image
@@ -64,6 +68,8 @@ private struct RequirementView: View {
         .padding()
     }
 }
+
+// MARK: - RequirementsView_Previews
 
 struct RequirementsView_Previews: PreviewProvider {
     static var previews: some View {

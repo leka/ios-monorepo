@@ -4,6 +4,8 @@
 
 import CombineCoreBluetooth
 
+// MARK: - RobotDiscoveryModel
+
 public struct RobotDiscoveryModel: Identifiable {
     // MARK: - Public variables
 
@@ -38,6 +40,8 @@ public struct RobotDiscoveryModel: Identifiable {
         self.osVersion = computeVersion(version: advertisingData.osVersion, name: advertisingData.name)
     }
 }
+
+// MARK: Equatable
 
 extension RobotDiscoveryModel: Equatable {
     public static func == (lhs: RobotDiscoveryModel, rhs: RobotDiscoveryModel) -> Bool {

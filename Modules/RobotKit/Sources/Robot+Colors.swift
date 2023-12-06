@@ -4,6 +4,8 @@
 
 import SwiftUI
 
+// MARK: - Robot.Color
+
 // swiftlint:disable nesting
 
 public extension Robot {

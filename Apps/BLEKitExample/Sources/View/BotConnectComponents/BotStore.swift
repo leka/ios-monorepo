@@ -5,11 +5,15 @@
 import BLEKit
 import SwiftUI
 
+// MARK: - NoFeedback_ButtonStyle
+
 struct NoFeedback_ButtonStyle: ButtonStyle {
     func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
     }
 }
+
+// MARK: - BotStore
 
 struct BotStore: View {
     @EnvironmentObject var bleManager: BLEManager

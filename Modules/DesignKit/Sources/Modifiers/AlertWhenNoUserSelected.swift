@@ -4,6 +4,8 @@
 
 import SwiftUI
 
+// MARK: - AlertWhenNoUserSelected
+
 struct AlertWhenNoUserSelected: ViewModifier {
     @State private var showAlert: Bool = false
 

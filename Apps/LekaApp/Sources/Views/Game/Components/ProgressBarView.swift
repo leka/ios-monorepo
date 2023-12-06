@@ -5,6 +5,8 @@
 import DesignKit
 import SwiftUI
 
+// MARK: - ProgressBarView
+
 struct ProgressBarView: View {
     @EnvironmentObject var activityVM: ActivityViewModel
     @ObservedObject var gameMetrics: GameMetrics
@@ -38,6 +40,8 @@ struct ProgressBarView: View {
             )
     }
 }
+
+// MARK: - ProgressBarView_Previews
 
 struct ProgressBarView_Previews: PreviewProvider {
     static var previews: some View {

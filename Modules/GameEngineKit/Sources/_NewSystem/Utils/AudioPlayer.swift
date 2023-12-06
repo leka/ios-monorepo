@@ -7,6 +7,8 @@ import Combine
 import ContentKit
 import Foundation
 
+// MARK: - AudioPlayer
+
 public class AudioPlayer: NSObject, ObservableObject {
     @Published var progress: CGFloat = 0.0
     @Published var didFinishPlaying = false
@@ -70,6 +72,8 @@ public class AudioPlayer: NSObject, ObservableObject {
         self.player.isPlaying
     }
 }
+
+// MARK: AVAudioPlayerDelegate
 
 extension AudioPlayer: AVAudioPlayerDelegate {
     public func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully: Bool) {

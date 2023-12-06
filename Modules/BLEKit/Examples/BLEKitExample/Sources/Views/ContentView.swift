@@ -5,6 +5,8 @@
 import BLEKit
 import SwiftUI
 
+// MARK: - ContentView
+
 struct ContentView: View {
     // MARK: - Environment variables
 
@@ -54,6 +56,8 @@ struct ContentView: View {
         .environmentObject(robotListViewModel)
     }
 }
+
+// MARK: - ContentView_Previews
 
 struct ContentView_Previews: PreviewProvider {
     static let bleManager = BLEManager.live()

@@ -7,6 +7,8 @@ import SwiftUI
 
 let log = LogKit.createLoggerFor(app: "LogKitExample")
 
+// MARK: - LogKitExample
+
 @main
 struct LogKitExample: App {
     let module = NewModule()

@@ -5,6 +5,8 @@
 import ContentKit
 import Foundation
 
+// MARK: - GameplayDragAndDropIntoZonesChoiceModel
+
 struct GameplayDragAndDropIntoZonesChoiceModel: GameplayChoiceModelProtocol {
     typealias ChoiceType = DragAndDropIntoZones.Choice
 

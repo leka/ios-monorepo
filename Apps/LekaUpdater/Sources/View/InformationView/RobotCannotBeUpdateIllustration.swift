@@ -5,6 +5,8 @@
 import DesignKit
 import SwiftUI
 
+// MARK: - RobotCannotBeUpdatedIllustration
+
 struct RobotCannotBeUpdatedIllustration: View {
     public var illustrationSize: CGFloat = 300
 
@@ -66,6 +68,8 @@ struct RobotCannotBeUpdatedIllustration: View {
         .frame(width: circleSize, height: illustrationSize)
     }
 }
+
+// MARK: - RobotCannotBeUpdatedIllustration_Previews
 
 struct RobotCannotBeUpdatedIllustration_Previews: PreviewProvider {
     static var previews: some View {

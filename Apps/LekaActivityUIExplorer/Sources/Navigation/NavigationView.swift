@@ -7,6 +7,8 @@ import DesignKit
 import RobotKit
 import SwiftUI
 
+// MARK: - NavigationViewViewModel
+
 class NavigationViewViewModel: ObservableObject {
     @Published var isDesignSystemAppleExpanded: Bool = false
     @Published var isDesignSystemLekaExpanded: Bool = false
@@ -27,6 +29,8 @@ class NavigationViewViewModel: ObservableObject {
             .store(in: &cancellables)
     }
 }
+
+// MARK: - NavigationView
 
 struct NavigationView: View {
     @Environment(\.colorScheme) var colorScheme

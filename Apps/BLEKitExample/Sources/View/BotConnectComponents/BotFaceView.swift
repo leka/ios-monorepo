@@ -4,6 +4,8 @@
 
 import SwiftUI
 
+// MARK: - BotFaceView
+
 struct BotFaceView: View {
     @Binding var isSelected: Bool
     @Binding var isConnected: Bool
@@ -49,6 +51,8 @@ struct BotFaceView: View {
         .animation(.default, value: isConnected)
     }
 }
+
+// MARK: - BotFaceView_Previews
 
 struct BotFaceView_Previews: PreviewProvider {
     static var previews: some View {

@@ -4,6 +4,8 @@
 
 import SwiftUI
 
+// MARK: - HelloView
+
 public struct HelloView: View {
     var color: Color
     var name: String
@@ -26,6 +28,8 @@ public struct HelloView: View {
         }
     }
 }
+
+// MARK: - ContentView_Previews
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

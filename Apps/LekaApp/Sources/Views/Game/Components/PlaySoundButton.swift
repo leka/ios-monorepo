@@ -5,6 +5,8 @@
 import DesignKit
 import SwiftUI
 
+// MARK: - PlaySoundButton
+
 struct PlaySoundButton: View {
     @EnvironmentObject var activityVM: ActivityViewModel
 
@@ -35,6 +37,8 @@ struct PlaySoundButton: View {
         .disabled(activityVM.audioPlayer.isPlaying)
     }
 }
+
+// MARK: - PlaySoundButton_Previews
 
 struct PlaySoundButton_Previews: PreviewProvider {
     static var previews: some View {

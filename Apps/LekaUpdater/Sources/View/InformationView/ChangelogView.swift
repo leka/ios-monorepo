@@ -6,6 +6,8 @@ import DesignKit
 import LocalizationKit
 import SwiftUI
 
+// MARK: - ChangelogView
+
 struct ChangelogView: View {
     private var changelog: LocalizedStringKey {
         // swiftlint:disable:next force_cast
@@ -31,6 +33,8 @@ struct ChangelogView: View {
         Text(changelog)
     }
 }
+
+// MARK: - ChangelogView_Previews
 
 struct ChangelogView_Previews: PreviewProvider {
     static var previews: some View {

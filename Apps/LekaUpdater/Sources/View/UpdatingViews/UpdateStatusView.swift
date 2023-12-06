@@ -6,6 +6,8 @@ import DesignKit
 import LocalizationKit
 import SwiftUI
 
+// MARK: - UpdateStatusView
+
 struct UpdateStatusView: View {
     @StateObject private var viewModel = UpdateStatusViewModel()
 
@@ -95,6 +97,8 @@ struct UpdateStatusView: View {
         }
     }
 }
+
+// MARK: - UpdatingStatusView_Previews
 
 struct UpdatingStatusView_Previews: PreviewProvider {
     @State static var isConnectionViewPresented = false

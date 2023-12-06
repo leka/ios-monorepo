@@ -5,6 +5,8 @@
 import ContentKit
 import Foundation
 
+// MARK: - GameplayAssociateCategoriesChoiceModel
+
 struct GameplayAssociateCategoriesChoiceModel: GameplayChoiceModelProtocol {
     typealias ChoiceType = DragAndDropToAssociate.Choice
 

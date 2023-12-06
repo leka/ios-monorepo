@@ -5,6 +5,8 @@
 import AVFoundation
 import SwiftUI
 
+// MARK: - PlayZone
+
 struct PlayZone: View {
     @ObservedObject var gameMetrics: GameMetrics
     @EnvironmentObject var activityVM: ActivityViewModel
@@ -106,6 +108,8 @@ struct PlayZone: View {
         )
     }
 }
+
+// MARK: - PlayZone_Previews
 
 struct PlayZone_Previews: PreviewProvider {
     static var previews: some View {

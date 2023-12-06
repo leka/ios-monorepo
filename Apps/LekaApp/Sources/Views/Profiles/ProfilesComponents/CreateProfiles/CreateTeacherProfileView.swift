@@ -5,6 +5,8 @@
 import DesignKit
 import SwiftUI
 
+// MARK: - CreateTeacherProfileView
+
 struct CreateTeacherProfileView: View {
     @EnvironmentObject var company: CompanyViewModel
     @EnvironmentObject var settings: SettingsViewModel
@@ -181,6 +183,8 @@ struct CreateTeacherProfileView: View {
         .tint(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
     }
 }
+
+// MARK: - CreateProfileView_Previews
 
 struct CreateProfileView_Previews: PreviewProvider {
     static var previews: some View {

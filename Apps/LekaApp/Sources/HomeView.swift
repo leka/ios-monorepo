@@ -6,6 +6,8 @@ import DesignKit
 import RobotKit
 import SwiftUI
 
+// MARK: - HomeView
+
 struct HomeView: View {
     @EnvironmentObject var navigationVM: NavigationViewModel
     @EnvironmentObject var settings: SettingsViewModel
@@ -82,6 +84,8 @@ struct HomeView: View {
         .opacity(navigationVM.showInfo() ? 0 : 1)
     }
 }
+
+// MARK: - HomeView_Previews
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {

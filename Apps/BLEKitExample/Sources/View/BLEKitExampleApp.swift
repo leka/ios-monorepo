@@ -5,6 +5,8 @@
 import BLEKit
 import SwiftUI
 
+// MARK: - BLEKitExampleApp
+
 @main
 struct BLEKitExampleApp: App {
     @StateObject var bleManager: BLEManager = BLEManager.live()
@@ -20,6 +22,8 @@ struct BLEKitExampleApp: App {
         }
     }
 }
+
+// MARK: - ContentView
 
 struct ContentView: View {
     @EnvironmentObject var bleManager: BLEManager

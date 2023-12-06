@@ -6,6 +6,8 @@ import DesignKit
 import LocalizationKit
 import SwiftUI
 
+// MARK: - SendingFileIllustration
+
 struct SendingFileIllustration: View {
     var body: some View {
         LekaUpdaterAsset.Assets.sendingUpdate.swiftUIImage
@@ -13,6 +15,8 @@ struct SendingFileIllustration: View {
             .scaledToFit()
     }
 }
+
+// MARK: - SendingFileContentView
 
 struct SendingFileContentView: View {
     @Binding var progress: Float
@@ -39,6 +43,8 @@ struct SendingFileContentView: View {
         }
     }
 }
+
+// MARK: - SendingFileView_Previews
 
 struct SendingFileView_Previews: PreviewProvider {
     @State static private var progress: Float = 0.66

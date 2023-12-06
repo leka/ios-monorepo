@@ -5,12 +5,16 @@
 import DesignKit
 import Foundation
 
+// MARK: - AvatarCategory
+
 // Avatar Picker Models
 struct AvatarCategory: Identifiable, Hashable {
     let id = UUID()
     let category: String
     let images: [String]
 }
+
+// MARK: - AvatarSets
 
 // AvatarPicker Data
 enum AvatarSets: Int, CaseIterable, Hashable {

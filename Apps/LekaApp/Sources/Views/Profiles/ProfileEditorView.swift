@@ -5,6 +5,8 @@
 import DesignKit
 import SwiftUI
 
+// MARK: - ProfileEditorView
+
 struct ProfileEditorView: View {
     @EnvironmentObject var company: CompanyViewModel
     @EnvironmentObject var settings: SettingsViewModel
@@ -85,6 +87,8 @@ struct ProfileEditorView: View {
         .disabled(!company.selectionSetIsCorrect())
     }
 }
+
+// MARK: - ProfileEditorView_Previews
 
 struct ProfileEditorView_Previews: PreviewProvider {
     static var previews: some View {

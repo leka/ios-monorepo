@@ -5,6 +5,8 @@
 import DesignKit
 import SwiftUI
 
+// MARK: - JobTag
+
 struct JobTag: View {
     @EnvironmentObject var company: CompanyViewModel
     @EnvironmentObject var metrics: UIMetrics
@@ -29,6 +31,8 @@ struct JobTag: View {
             in: RoundedRectangle(cornerRadius: 6, style: .circular))
     }
 }
+
+// MARK: - JobTag_Previews
 
 struct JobTag_Previews: PreviewProvider {
     static var previews: some View {

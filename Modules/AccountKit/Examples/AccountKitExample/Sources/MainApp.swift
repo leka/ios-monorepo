@@ -8,6 +8,8 @@ import SwiftUI
 
 let log = LogKit.createLoggerFor(app: "AccountKitExample")
 
+// MARK: - AccountKitExample
+
 @main
 struct AccountKitExample: App {
     @StateObject var authenticationState = OrganisationAuthState()

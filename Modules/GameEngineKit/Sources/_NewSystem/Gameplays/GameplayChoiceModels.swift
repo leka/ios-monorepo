@@ -5,11 +5,15 @@
 import ContentKit
 import Foundation
 
+// MARK: - GameplayChoiceState
+
 enum GameplayChoiceState {
     case idle
     case rightAnswer
     case wrongAnswer
 }
+
+// MARK: - GameplayChoiceModelProtocol
 
 protocol GameplayChoiceModelProtocol: Identifiable {
     associatedtype ChoiceType

@@ -5,6 +5,8 @@
 import DesignKit
 import SwiftUI
 
+// MARK: - CurriculumDetailsView
+
 struct CurriculumDetailsView: View {
     @EnvironmentObject var curriculumVM: CurriculumViewModel
     @EnvironmentObject var activityVM: ActivityViewModel
@@ -126,6 +128,8 @@ struct CurriculumDetailsView: View {
         }
     }
 }
+
+// MARK: - ContextualActivitiesDetailsView_Previews
 
 struct ContextualActivitiesDetailsView_Previews: PreviewProvider {
     static var previews: some View {

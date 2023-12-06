@@ -4,8 +4,15 @@
 
 import SwiftUI
 
+// MARK: - DesignSystemApple
+
 enum DesignSystemApple {}
+
+// MARK: - DesignSystemLeka
+
 enum DesignSystemLeka {}
+
+// MARK: - FontView
 
 struct FontView: View {
     let font: Font
@@ -47,6 +54,8 @@ struct FontView: View {
         }
     }
 }
+
+// MARK: - ColorSwiftUIView
 
 struct ColorSwiftUIView: View {
     @Environment(\.self) var environment

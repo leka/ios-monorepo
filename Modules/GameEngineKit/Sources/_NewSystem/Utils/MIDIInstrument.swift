@@ -4,6 +4,8 @@
 
 import AudioKit
 
+// MARK: - MIDIInstrument
+
 enum MIDIInstrument: String {
     case xylophone
 

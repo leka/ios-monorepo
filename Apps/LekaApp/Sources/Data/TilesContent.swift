@@ -6,6 +6,8 @@ import DesignKit
 import Foundation
 import SwiftUI
 
+// MARK: - TileContent
+
 // swiftlint:disable line_length
 
 struct TileContent {
@@ -16,6 +18,8 @@ struct TileContent {
     var callToActionLabel: String?
     var pictoCTA: String?
 }
+
+// MARK: - TileData
 
 enum TileData: Int, CaseIterable, Hashable {
     case discovery, curriculums, activities, commands

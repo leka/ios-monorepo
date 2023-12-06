@@ -4,9 +4,13 @@
 
 import SwiftUI
 
+// MARK: - UserType
+
 enum UserType: Int, CaseIterable {
     case user, teacher
 }
+
+// MARK: - Company
 
 struct Company: Identifiable {
     var id = UUID()
@@ -16,6 +20,8 @@ struct Company: Identifiable {
     var users: [User] = []
 }
 
+// MARK: - Profile
+
 // Profiles types base-protocol
 protocol Profile: Identifiable, Hashable {
     var id: UUID { get }
@@ -23,6 +29,8 @@ protocol Profile: Identifiable, Hashable {
     var name: String { get set }
     var avatar: String { get set }
 }
+
+// MARK: - Teacher
 
 struct Teacher: Profile {
     // conform
@@ -35,6 +43,8 @@ struct Teacher: Profile {
     var jobs: [String]
 }
 
+// MARK: - User
+
 struct User: Profile {
     // conform
     let id = UUID()
@@ -45,6 +55,8 @@ struct User: Profile {
     // specific
     var reinforcer: Int
 }
+
+// MARK: - Professions
 
 enum Professions: String, Identifiable, CaseIterable {
     // swiftlint:disable identifier_name

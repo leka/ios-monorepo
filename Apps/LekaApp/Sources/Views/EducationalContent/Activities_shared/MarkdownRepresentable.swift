@@ -11,6 +11,8 @@
 //
 import SwiftUI
 
+// MARK: - MarkdownObservable
+
 // TODO(@ladislas): reimport when Down is fixed
 // import Down
 
@@ -22,6 +24,8 @@ class MarkdownObservable: ObservableObject {
         self.text = text
     }
 }
+
+// MARK: - MarkdownRepresentable
 
 struct MarkdownRepresentable: UIViewRepresentable {
     @Binding var dynamicHeight: CGFloat
@@ -95,6 +99,8 @@ struct MarkdownRepresentable: UIViewRepresentable {
         //		}
     }
 }
+
+// MARK: - DownAttributedString
 
 struct DownAttributedString: View {
     @ObservedObject private var markdownObject: MarkdownObservable

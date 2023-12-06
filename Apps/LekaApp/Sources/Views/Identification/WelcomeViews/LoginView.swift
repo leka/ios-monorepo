@@ -5,6 +5,8 @@
 import DesignKit
 import SwiftUI
 
+// MARK: - LoginView
+
 struct LoginView: View {
     @EnvironmentObject var company: CompanyViewModel
     @EnvironmentObject var settings: SettingsViewModel
@@ -161,6 +163,8 @@ struct LoginView: View {
         }
     }
 }
+
+// MARK: - LoginView_Previews
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {

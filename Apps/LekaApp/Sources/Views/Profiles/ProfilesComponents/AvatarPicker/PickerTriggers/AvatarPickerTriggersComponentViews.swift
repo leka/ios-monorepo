@@ -5,6 +5,8 @@
 import DesignKit
 import SwiftUI
 
+// MARK: - AvatarTriggerImageView
+
 struct AvatarTriggerImageView: View {
     var img: String
 
@@ -29,6 +31,8 @@ struct AvatarTriggerImageView: View {
         .frame(width: 170, height: 170)
     }
 }
+
+// MARK: - AvatarTriggerCTAView
 
 struct AvatarTriggerCTAView: View {
     @EnvironmentObject var metrics: UIMetrics

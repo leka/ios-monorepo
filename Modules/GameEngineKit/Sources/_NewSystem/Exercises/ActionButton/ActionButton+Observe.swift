@@ -5,6 +5,8 @@
 import DesignKit
 import SwiftUI
 
+// MARK: - AnimatableBlur
+
 struct AnimatableBlur: AnimatableModifier {
     var blurRadius: CGFloat
 
@@ -19,6 +21,8 @@ struct AnimatableBlur: AnimatableModifier {
     }
 }
 
+// MARK: - AnimatableSaturation
+
 struct AnimatableSaturation: AnimatableModifier {
     var saturation: Double
 
@@ -32,6 +36,8 @@ struct AnimatableSaturation: AnimatableModifier {
             .saturation(saturation)
     }
 }
+
+// MARK: - ActionButtonObserve
 
 struct ActionButtonObserve: View {
     let image: String

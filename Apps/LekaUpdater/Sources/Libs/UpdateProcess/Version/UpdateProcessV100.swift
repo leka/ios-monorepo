@@ -9,7 +9,7 @@ import GameplayKit
 import RobotKit
 import Version
 
-// MARK: - events
+// MARK: - UpdateEvent
 
 private enum UpdateEvent {
     case startUpdateRequested
@@ -21,11 +21,13 @@ private enum UpdateEvent {
     case robotDetected
 }
 
-// MARK: - StateMachine states
+// MARK: - StateEventProcessor
 
 private protocol StateEventProcessor {
     func process(event: UpdateEvent)
 }
+
+// MARK: - StateInitial
 
 private class StateInitial: GKState, StateEventProcessor {
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
@@ -43,6 +45,8 @@ private class StateInitial: GKState, StateEventProcessor {
         }
     }
 }
+
+// MARK: - StateLoadingUpdateFile
 
 private class StateLoadingUpdateFile: GKState, StateEventProcessor {
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
@@ -73,6 +77,8 @@ private class StateLoadingUpdateFile: GKState, StateEventProcessor {
         }
     }
 }
+
+// MARK: - StateSettingDestinationPath
 
 private class StateSettingDestinationPath: GKState, StateEventProcessor {
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
@@ -112,6 +118,8 @@ private class StateSettingDestinationPath: GKState, StateEventProcessor {
         Robot.shared.connectedPeripheral?.send(destinationPath.data(using: .utf8)!, forCharacteristic: characteristic)
     }
 }
+
+// MARK: - StateSendingFile
 
 private class StateSendingFile: GKState, StateEventProcessor {
     private var cancellables: Set<AnyCancellable> = []
@@ -228,6 +236,8 @@ private class StateSendingFile: GKState, StateEventProcessor {
     }
 }
 
+// MARK: - StateApplyingUpdate
+
 private class StateApplyingUpdate: GKState, StateEventProcessor {
     private var cancellables: Set<AnyCancellable> = []
 
@@ -294,6 +304,8 @@ private class StateApplyingUpdate: GKState, StateEventProcessor {
     }
 }
 
+// MARK: - StateWaitingForRobotToReboot
+
 private class StateWaitingForRobotToReboot: GKState, StateEventProcessor {
     private var cancellables: Set<AnyCancellable> = []
 
@@ -355,17 +367,27 @@ private class StateWaitingForRobotToReboot: GKState, StateEventProcessor {
     }
 }
 
+// MARK: - StateFinal
+
 private class StateFinal: GKState {}
 
-// MARK: - StateMachine error states
+// MARK: - StateError
 
 private protocol StateError {}
 
+// MARK: - StateErrorFailedToLoadFile
+
 private class StateErrorFailedToLoadFile: GKState, StateError {}
+
+// MARK: - StateErrorRobotNotUpToDate
+
 private class StateErrorRobotNotUpToDate: GKState, StateError {}
+
+// MARK: - StateErrorRobotUnexpectedDisconnection
+
 private class StateErrorRobotUnexpectedDisconnection: GKState, StateError {}
 
-// MARK: - StateMachine
+// MARK: - UpdateProcessV100
 
 class UpdateProcessV100: UpdateProcessProtocol {
     // MARK: - Private variables

@@ -8,6 +8,8 @@ import RobotKit
 import SwiftUI
 import Version
 
+// MARK: - InformationView
+
 struct InformationView: View {
     @StateObject var viewModel = InformationViewModel()
     @Binding var isConnectionViewPresented: Bool
@@ -122,6 +124,8 @@ struct InformationView: View {
         }
     }
 }
+
+// MARK: - InformationView_Previews
 
 struct InformationView_Previews: PreviewProvider {
     @State static var isConnectionViewPresented = false

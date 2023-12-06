@@ -5,6 +5,8 @@
 import BLEKit
 import SwiftUI
 
+// MARK: - ReadOnlyView
+
 struct ReadOnlyView: View {
     var characteristicName: String
     var characteristicValue: String
@@ -17,6 +19,8 @@ struct ReadOnlyView: View {
         }
     }
 }
+
+// MARK: - RobotView
 
 struct RobotView: View {
     @EnvironmentObject var bleManager: BLEManager

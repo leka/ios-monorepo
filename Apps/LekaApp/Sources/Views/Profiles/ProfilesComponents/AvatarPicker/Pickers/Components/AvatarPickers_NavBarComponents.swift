@@ -5,6 +5,8 @@
 import DesignKit
 import SwiftUI
 
+// MARK: - AvatarPicker_NavigationTitle
+
 struct AvatarPicker_NavigationTitle: View {
     @EnvironmentObject var metrics: UIMetrics
     @EnvironmentObject var company: CompanyViewModel
@@ -15,6 +17,8 @@ struct AvatarPicker_NavigationTitle: View {
             .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
     }
 }
+
+// MARK: - AvatarPicker_AdaptiveBackButton
 
 struct AvatarPicker_AdaptiveBackButton: View {
     @EnvironmentObject var viewRouter: ViewRouter
@@ -37,6 +41,8 @@ struct AvatarPicker_AdaptiveBackButton: View {
         .tint(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
     }
 }
+
+// MARK: - AvatarPicker_ValidateButton
 
 struct AvatarPicker_ValidateButton: View {
     @EnvironmentObject var company: CompanyViewModel

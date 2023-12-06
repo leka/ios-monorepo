@@ -7,6 +7,8 @@ import LocalizationKit
 import RobotKit
 import SwiftUI
 
+// MARK: - RobotUpdateAvailableView
+
 struct RobotUpdateAvailableView: View {
     @StateObject private var requirementsViewModel = RequirementsViewModel()
 
@@ -40,6 +42,8 @@ struct RobotUpdateAvailableView: View {
         .padding()
     }
 }
+
+// MARK: - RobotUpdateAvailableView_Previews
 
 struct RobotUpdateAvailableView_Previews: PreviewProvider {
     @State static var isUpdateStatusViewPresented = false

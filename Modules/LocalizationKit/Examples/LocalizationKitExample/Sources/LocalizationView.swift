@@ -25,6 +25,8 @@ extension l10n {
         comment: "")
 }
 
+// MARK: - LocalizationView
+
 struct LocalizationView: View {
     @Environment(\.locale) var locale
 

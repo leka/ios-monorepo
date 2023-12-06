@@ -5,6 +5,8 @@
 import DesignKit
 import SwiftUI
 
+// MARK: - JobPicker
+
 struct JobPicker: View {
     @EnvironmentObject var company: CompanyViewModel
     @EnvironmentObject var metrics: UIMetrics
@@ -96,6 +98,8 @@ struct JobPicker: View {
         .disabled(isEditing)
     }
 }
+
+// MARK: - JobPicker_Previews
 
 struct JobPicker_Previews: PreviewProvider {
     static var previews: some View {

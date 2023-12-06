@@ -7,6 +7,8 @@
 import DesignKit
 import SwiftUI
 
+// MARK: - InstructionsView
+
 struct InstructionsView: View {
     @EnvironmentObject var activityVM: ActivityViewModel
     @EnvironmentObject var metrics: UIMetrics
@@ -44,6 +46,8 @@ struct InstructionsView: View {
         .background(DesignKitAsset.Colors.lekaLightGray.swiftUIColor)
     }
 }
+
+// MARK: - InstructionsView_Previews
 
 struct InstructionsView_Previews: PreviewProvider {
     static var previews: some View {

@@ -5,6 +5,8 @@
 import DesignKit
 import SwiftUI
 
+// MARK: - InfoTile
+
 struct InfoTile: View {
     @EnvironmentObject var settings: SettingsViewModel
     @EnvironmentObject var navigationVM: NavigationViewModel
@@ -98,6 +100,8 @@ struct InfoTile: View {
                 width: 300))
     }
 }
+
+// MARK: - InfoTile_Previews
 
 struct InfoTile_Previews: PreviewProvider {
     static var previews: some View {

@@ -6,6 +6,8 @@ import BLEKit
 import Combine
 import SwiftUI
 
+// MARK: - ConnectButton
+
 struct ConnectButton: View {
     // MARK: - Environment variables
 
@@ -85,6 +87,8 @@ struct ConnectButton: View {
         robotListViewModel.disconnectFromConnectedPeripheral()
     }
 }
+
+// MARK: - ConnectButton_Previews
 
 struct ConnectButton_Previews: PreviewProvider {
     static var previews: some View {

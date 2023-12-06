@@ -41,6 +41,8 @@ let kActivities: [Activity] = [
     ContentKit.decodeActivity("activity-melody"),
 ]
 
+// MARK: - GEKNewSystemView
+
 struct GEKNewSystemView: View {
     @State var currentActivity: Activity?
 

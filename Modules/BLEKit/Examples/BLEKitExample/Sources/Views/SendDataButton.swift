@@ -5,6 +5,8 @@
 import BLEKit
 import SwiftUI
 
+// MARK: - SendDataButton
+
 struct SendDataButton: View {
     // MARK: - Environment properties
 
@@ -55,6 +57,8 @@ struct SendDataButton: View {
             .sendCommand(Data([0x2A, 0x2A, 0x2A, 0x2A, 0x01, 0x50, 0x51, 0x51]))
     }
 }
+
+// MARK: - SendDataButton_Previews
 
 struct SendDataButton_Previews: PreviewProvider {
     static var previews: some View {

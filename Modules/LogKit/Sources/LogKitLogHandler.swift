@@ -29,6 +29,8 @@ let systemStdout = Darwin.stdout
 
 internal typealias CFilePointer = UnsafeMutablePointer<FILE>
 
+// MARK: - StdioOutputStream
+
 internal struct StdioOutputStream: TextOutputStream {
     internal let file: CFilePointer
     internal let flushMode: FlushMode
@@ -65,6 +67,8 @@ internal struct StdioOutputStream: TextOutputStream {
         case always
     }
 }
+
+// MARK: - LogKitLogHandler
 
 public struct LogKitLogHandler: LogHandler {
     internal typealias _SendableTextOutputStream = TextOutputStream & Sendable

@@ -5,6 +5,8 @@
 import RobotKit
 import SwiftUI
 
+// MARK: - FullScreenCoverToGameView
+
 struct FullScreenCoverToGameView: View {
     @EnvironmentObject var navigationVM: NavigationViewModel
 
@@ -24,6 +26,8 @@ struct FullScreenCoverToGameView: View {
         }
     }
 }
+
+// MARK: - FullScreenCoverToGameView_Previews
 
 struct FullScreenCoverToGameView_Previews: PreviewProvider {
     static var previews: some View {

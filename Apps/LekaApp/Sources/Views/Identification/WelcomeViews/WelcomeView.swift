@@ -5,6 +5,8 @@
 import DesignKit
 import SwiftUI
 
+// MARK: - WelcomeView
+
 struct WelcomeView: View {
     @EnvironmentObject var company: CompanyViewModel
     @EnvironmentObject var viewRouter: ViewRouter
@@ -64,6 +66,8 @@ struct WelcomeView: View {
             })
     }
 }
+
+// MARK: - WelcomeView_Previews
 
 struct WelcomeView_Previews: PreviewProvider {
     static var previews: some View {

@@ -4,11 +4,15 @@
 
 import SwiftUI
 
+// MARK: - ActivityCell
+
 struct ActivityCell: Identifiable {
     var id = UUID()
     var img: String
     var texts: [String]
 }
+
+// MARK: - Instructions
 
 struct Instructions: Codable {
     var instructions: LocalizedContent
@@ -17,6 +21,8 @@ struct Instructions: Codable {
         self.instructions = instructions
     }
 }
+
+// MARK: - Activity
 
 struct Activity: Codable {
     enum CodingKeys: String, CodingKey {
@@ -62,6 +68,8 @@ struct Activity: Codable {
         self.steps = steps
     }
 }
+
+// MARK: - Step
 
 // Step conforms to Equatable because steps are compared when randomized
 struct Step: Codable, Equatable {

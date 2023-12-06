@@ -4,6 +4,8 @@
 
 import SwiftUI
 
+// MARK: - Category
+
 enum Category: Hashable, Identifiable, CaseIterable {
     case home
 
@@ -19,6 +21,8 @@ enum Category: Hashable, Identifiable, CaseIterable {
 
     var id: Self { self }
 }
+
+// MARK: - Navigation
 
 class Navigation: ObservableObject {
     static let shared = Navigation()

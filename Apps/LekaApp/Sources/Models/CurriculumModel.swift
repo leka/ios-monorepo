@@ -4,6 +4,8 @@
 
 import Foundation
 
+// MARK: - CurriculumList
+
 struct CurriculumList: Codable {
     enum CodingKeys: String, CodingKey {
         case curriculums
@@ -21,6 +23,8 @@ struct CurriculumList: Codable {
         self.curriculums = curriculums
     }
 }
+
+// MARK: - Curriculum
 
 struct Curriculum: Codable, Identifiable {
     enum CodingKeys: String, CodingKey {

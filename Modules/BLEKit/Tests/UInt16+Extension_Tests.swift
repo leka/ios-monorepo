@@ -6,6 +6,8 @@ import XCTest
 
 @testable import BLEKit
 
+// MARK: - UInt16_Extension_Tests_highByte_lowByte
+
 final class UInt16_Extension_Tests_highByte_lowByte: XCTestCase {
     func test_shouldReturnHighByte() {
         // Given
@@ -51,6 +53,8 @@ final class UInt16_Extension_Tests_highByte_lowByte: XCTestCase {
         XCTAssertEqual(expectedLow, actualLow)
     }
 }
+
+// MARK: - UInt16_Extension_Tests_Data
 
 final class UInt16_Extension_Tests_Data: XCTestCase {
     func test_shouldReturnData() {

@@ -14,6 +14,8 @@ extension Color {
     }
 }
 
+// MARK: - DesignSystemApple.ColorsSwiftUIView
+
 extension DesignSystemApple {
     struct ColorsSwiftUIView: View {
         var body: some View {
