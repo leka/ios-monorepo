@@ -33,19 +33,19 @@ public struct AudioRecording: Codable, Hashable, Equatable {
         var details: (name: String, file: String) {
             switch self {
                 case .earlyBird:
-                    return (name: "Early Bird", file: "Early_Bird")
+                    (name: "Early Bird", file: "Early_Bird")
                 case .emptyPage:
-                    return (name: "Empty Page", file: "Empty_Page")
+                    (name: "Empty Page", file: "Empty_Page")
                 case .gigglySquirrel:
-                    return (name: "Giggly Squirrel", file: "Giggly_Squirrel")
+                    (name: "Giggly Squirrel", file: "Giggly_Squirrel")
                 case .handsOn:
-                    return (name: "Hands on", file: "Hands_On")
+                    (name: "Hands on", file: "Hands_On")
                 case .happyDays:
-                    return (name: "Happy Days", file: "Happy_Days")
+                    (name: "Happy Days", file: "Happy_Days")
                 case .inTheGame:
-                    return (name: "In the game", file: "In_The_Game")
+                    (name: "In the game", file: "In_The_Game")
                 case .littleByLittle:
-                    return (name: "Little by Little", file: "Little_by_little")
+                    (name: "Little by Little", file: "Little_by_little")
             }
         }
     }

@@ -59,25 +59,25 @@ public extension Robot {
             public var color: Robot.Color {
                 switch self {
                     case .black:
-                        return .black
+                        .black
                     case .white:
-                        return .white
+                        .white
                     case .red:
-                        return .red
+                        .red
                     case .green:
-                        return .green
+                        .green
                     case .blue:
-                        return .blue
+                        .blue
                     case .lightBlue:
-                        return .lightBlue
+                        .lightBlue
                     case .orange:
-                        return .orange
+                        .orange
                     case .purple:
-                        return .purple
+                        .purple
                     case .pink:
-                        return .pink
+                        .pink
                     case .yellow:
-                        return .yellow
+                        .yellow
                 }
             }
         }

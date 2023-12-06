@@ -17,26 +17,26 @@ extension RemoteArrowView {
             var name: String {
                 switch self {
                     case .up:
-                        return "arrow.up"
+                        "arrow.up"
                     case .clockwise:
-                        return "arrow.clockwise"
+                        "arrow.clockwise"
                     case .down:
-                        return "arrow.down"
+                        "arrow.down"
                     case .counterclockwise:
-                        return "arrow.counterclockwise"
+                        "arrow.counterclockwise"
                 }
             }
 
             var color: Robot.Color {
                 switch self {
                     case .up:
-                        return .blue
+                        .blue
                     case .clockwise:
-                        return .red
+                        .red
                     case .down:
-                        return .green
+                        .green
                     case .counterclockwise:
-                        return .yellow
+                        .yellow
                 }
             }
         }

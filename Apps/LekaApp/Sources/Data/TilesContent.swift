@@ -33,7 +33,7 @@ enum TileData: Int, CaseIterable, Hashable {
         switch self {
             // DiscoveryMode Orange Tile
             case .discovery:
-                return TileContent(
+                TileContent(
                     image: "exclamationmark.triangle",
                     title: "Le mode découverte",
                     subtitle: "Vous utilisez actuellement votre application en mode découverte !",
@@ -41,7 +41,7 @@ enum TileData: Int, CaseIterable, Hashable {
                     callToActionLabel: "Se connecter ou Créer un compte")
             // Blue Information tiles
             case .curriculums:
-                return TileContent(
+                TileContent(
                     image: "graduationcap",
                     title: "Les parcours",
                     subtitle: "Les parcours sont des compilations d'activités dont la difficulté est évolutive.",
@@ -49,7 +49,7 @@ enum TileData: Int, CaseIterable, Hashable {
                     "Les parcours ont pour objectif d'atteindre des compétences précises. Ils ont été pensé avec des professionnels du médico-social. \nVous pouvez réaliser les activités dans l'ordre ou sauter des niveaux."
                 )
             case .activities:
-                return TileContent(
+                TileContent(
                     image: "dice",
                     title: "Les activités",
                     subtitle: "Les activités vous permettent de travailler des compétences variées !",
@@ -57,7 +57,7 @@ enum TileData: Int, CaseIterable, Hashable {
                     "Vous trouverez au sein de votre application diverses activités variées. Elles peuvent intéresser les différents métiers du médico-social afin de faire progresser les utilisateurs."
                 )
             case .commands:
-                return TileContent(
+                TileContent(
                     image: "gamecontroller",
                     title: "Les commandes",
                     subtitle:
@@ -67,26 +67,26 @@ enum TileData: Int, CaseIterable, Hashable {
                 )
             // New company signup path
             case .signupBravo:
-                return TileContent(
+                TileContent(
                     image: DesignKitAsset.Images.welcome.name,
                     title: "Félicitations ! 🎉 \nVous venez de créer votre compte Leka !",
                     message: "Nous allons maintenant découvrir l'application \nensemble. Vous êtes prêt ?",
                     callToActionLabel: "👉 C'est parti !")
             case .signupStep1:
-                return TileContent(
+                TileContent(
                     image: DesignKitAsset.Images.accompagnantPicto.name,
                     title: "ÉTAPE 1 :",
                     message: "Nous allons créer votre profil accompagnant.",
                     callToActionLabel: "Créer")
             case .signupStep2:
-                return TileContent(
+                TileContent(
                     image: DesignKitAsset.Images.user.name,
                     title: "ÉTAPE 2 :",
                     message:
                     "Nous allons maintenant créer votre premier \nprofil utilisateur (le profil d'une personne que \nvous accompagnez).",
                     callToActionLabel: "Créer")
             case .signupFinalStep:
-                return TileContent(
+                TileContent(
                     title: "🎉 Encore bravo ! 👏",
                     message: "Vous avez réalisé ces 2 étapes avec brio :",
                     callToActionLabel: "Découvrir le contenu !")

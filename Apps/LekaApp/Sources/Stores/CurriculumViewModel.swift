@@ -78,12 +78,12 @@ class CurriculumViewModel: ObservableObject, YamlFileDecodable {
 
     func setCurriculumIcon(for curriculum: Curriculum) -> String {
         switch curriculum.id {
-            case "ec6fca8d-ac0f-44f8-b641-c9a96f9195c5": return "parcours_Emotion_Recognition_Pictures"
-            case "7859be5a-9fa5-11ec-b909-0242ac120002": return "parcours_Emotion_Recognition_Images"
-            case "6d41484b-71ff-4556-a821-ad85ad107c80": return "parcours_Emotion_Recognition_Pictograms"
-            case "14a71d61-ed35-4122-b7a4-0a8895e06386": return "parcours_Emotion_Recognition_Generalization"
-            case "a3a4aa6a-1ea5-4a8f-82cd-f3879cfbdc72": return "parcours_Emotion_Recognition_Sounds"
-            default: return "parcours_Emotion_Recognition_Pictures"
+            case "ec6fca8d-ac0f-44f8-b641-c9a96f9195c5": "parcours_Emotion_Recognition_Pictures"
+            case "7859be5a-9fa5-11ec-b909-0242ac120002": "parcours_Emotion_Recognition_Images"
+            case "6d41484b-71ff-4556-a821-ad85ad107c80": "parcours_Emotion_Recognition_Pictograms"
+            case "14a71d61-ed35-4122-b7a4-0a8895e06386": "parcours_Emotion_Recognition_Generalization"
+            case "a3a4aa6a-1ea5-4a8f-82cd-f3879cfbdc72": "parcours_Emotion_Recognition_Sounds"
+            default: "parcours_Emotion_Recognition_Pictures"
         }
     }
 

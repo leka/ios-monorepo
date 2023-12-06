@@ -95,7 +95,7 @@ public extension Robot {
                      let .earRight(color),
                      let .spot(_, _, color),
                      let .range(_, _, color):
-                    return color
+                    color
             }
         }
 

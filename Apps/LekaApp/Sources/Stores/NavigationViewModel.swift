@@ -59,25 +59,25 @@ class NavigationViewModel: ObservableObject {
 
     func setNavTitle() -> String {
         switch currentView {
-            case .curriculums: return "Parcours"
-            case .activities: return "Activités"
-            case .commands: return "Commandes"
+            case .curriculums: "Parcours"
+            case .activities: "Activités"
+            case .commands: "Commandes"
         }
     }
 
     func contextualInfo() -> TileData {
         switch currentView {
-            case .curriculums: return .curriculums
-            case .activities: return .activities
-            case .commands: return .commands
+            case .curriculums: .curriculums
+            case .activities: .activities
+            case .commands: .commands
         }
     }
 
     func showInfo() -> Bool {
         switch currentView {
-            case .curriculums: return showInfoCurriculums
-            case .activities: return showInfoActivities
-            case .commands: return showInfoCommands
+            case .curriculums: showInfoCurriculums
+            case .activities: showInfoActivities
+            case .commands: showInfoCommands
         }
     }
 

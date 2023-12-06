@@ -33,9 +33,9 @@ extension HideAndSeekView {
             public func icon() -> Image {
                 switch self {
                     case .light:
-                        return GameEngineKitAsset.Exercises.HideAndSeek.iconStimulationLight.swiftUIImage
+                        GameEngineKitAsset.Exercises.HideAndSeek.iconStimulationLight.swiftUIImage
                     case .motion:
-                        return GameEngineKitAsset.Exercises.HideAndSeek.iconStimulationMotion.swiftUIImage
+                        GameEngineKitAsset.Exercises.HideAndSeek.iconStimulationMotion.swiftUIImage
                 }
             }
         }

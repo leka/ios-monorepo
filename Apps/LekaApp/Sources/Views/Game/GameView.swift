@@ -110,37 +110,33 @@ struct GameView: View {
     @ViewBuilder
     func resultMessage(result: ResultType) -> some View {
         // Localized Strings
-        let topMessage: Text = {
-            switch result {
-                case .fail:
-                    return Text("fail_top_message")
-                case .medium:
-                    return Text("medium_top_message")
-                case .success:
-                    return Text("success_top_message")
-                default:
-                    return Text("")
-            }
-        }()
+        let topMessage: Text = switch result {
+            case .fail:
+                Text("fail_top_message")
+            case .medium:
+                Text("medium_top_message")
+            case .success:
+                Text("success_top_message")
+            default:
+                Text("")
+        }
 
-        let bottomMessage: Text = {
-            switch result {
-                case .fail:
-                    return Text("fail_bottom_message")
-                        + Text("(0%)")
-                        .foregroundColor(DesignKitAsset.Colors.bravoHighlights.swiftUIColor)
-                        + Text(".")
-                case .medium, .success:
-                    return Text("success_bottom_message")
-                        + Text(
-                            "success_bottom_result \(activityVM.goodAnswers) \(activityVM.numberOfSteps) \(activityVM.percentOfSuccess)"
-                        )
-                        .foregroundColor(DesignKitAsset.Colors.bravoHighlights.swiftUIColor)
-                        + Text("!")
-                default:
-                    return Text("")
-            }
-        }()
+        let bottomMessage: Text = switch result {
+            case .fail:
+                Text("fail_bottom_message")
+                    + Text("(0%)")
+                    .foregroundColor(DesignKitAsset.Colors.bravoHighlights.swiftUIColor)
+                    + Text(".")
+            case .medium, .success:
+                Text("success_bottom_message")
+                    + Text(
+                        "success_bottom_result \(activityVM.goodAnswers) \(activityVM.numberOfSteps) \(activityVM.percentOfSuccess)"
+                    )
+                    .foregroundColor(DesignKitAsset.Colors.bravoHighlights.swiftUIColor)
+                    + Text("!")
+            default:
+                Text("")
+        }
 
         VStack(spacing: gameMetrics.endAnimTextsSpacing) {
             Group {

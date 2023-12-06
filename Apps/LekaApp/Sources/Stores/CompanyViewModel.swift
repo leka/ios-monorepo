@@ -53,8 +53,8 @@ class CompanyViewModel: ObservableObject {
 
     func getSelectedProfileAvatar(_ type: UserType) -> String {
         switch type {
-            case .teacher: return bufferTeacher.avatar
-            case .user: return bufferUser.avatar
+            case .teacher: bufferTeacher.avatar
+            case .user: bufferUser.avatar
         }
     }
 
@@ -89,25 +89,25 @@ class CompanyViewModel: ObservableObject {
 
     func getReinforcerFor(index: Int) -> UIImage {
         switch index {
-            case 2: return DesignKitAsset.Reinforcers.spinBlinkBlueViolet.image
-            case 3: return DesignKitAsset.Reinforcers.fire.image
-            case 4: return DesignKitAsset.Reinforcers.sprinkles.image
-            case 5: return DesignKitAsset.Reinforcers.rainbow.image
-            default: return DesignKitAsset.Reinforcers.spinBlinkGreenOff.image
+            case 2: DesignKitAsset.Reinforcers.spinBlinkBlueViolet.image
+            case 3: DesignKitAsset.Reinforcers.fire.image
+            case 4: DesignKitAsset.Reinforcers.sprinkles.image
+            case 5: DesignKitAsset.Reinforcers.rainbow.image
+            default: DesignKitAsset.Reinforcers.spinBlinkGreenOff.image
         }
     }
 
     func getAllAvatarsOf(_ type: UserType) -> [[UUID: String]] {
         switch type {
-            case .teacher: return currentCompany.teachers.map { [$0.id: $0.avatar] }
-            case .user: return currentCompany.users.map { [$0.id: $0.avatar] }
+            case .teacher: currentCompany.teachers.map { [$0.id: $0.avatar] }
+            case .user: currentCompany.users.map { [$0.id: $0.avatar] }
         }
     }
 
     func getAllProfilesIDFor(_ type: UserType) -> [UUID] {
         switch type {
-            case .teacher: return currentCompany.teachers.map(\.id)
-            case .user: return currentCompany.users.map(\.id)
+            case .teacher: currentCompany.teachers.map(\.id)
+            case .user: currentCompany.users.map(\.id)
         }
     }
 
@@ -135,22 +135,22 @@ class CompanyViewModel: ObservableObject {
 
     func profileIsSelected(_ type: UserType) -> Bool {
         switch type {
-            case .teacher: return currentCompany.teachers.map(\.id).contains(selectedProfiles[.teacher])
-            case .user: return currentCompany.users.map(\.id).contains(selectedProfiles[.user])
+            case .teacher: currentCompany.teachers.map(\.id).contains(selectedProfiles[.teacher])
+            case .user: currentCompany.users.map(\.id).contains(selectedProfiles[.user])
         }
     }
 
     func profileIsCurrent(_ type: UserType, id: UUID) -> Bool {
         switch type {
-            case .teacher: return profilesInUse[.teacher] == id
-            case .user: return profilesInUse[.user] == id
+            case .teacher: profilesInUse[.teacher] == id
+            case .user: profilesInUse[.user] == id
         }
     }
 
     func profileIsAssigned(_ type: UserType) -> Bool {
         switch type {
-            case .teacher: return currentCompany.teachers.map(\.id).contains(profilesInUse[.teacher])
-            case .user: return currentCompany.users.map(\.id).contains(profilesInUse[.user])
+            case .teacher: currentCompany.teachers.map(\.id).contains(profilesInUse[.teacher])
+            case .user: currentCompany.users.map(\.id).contains(profilesInUse[.user])
         }
     }
 

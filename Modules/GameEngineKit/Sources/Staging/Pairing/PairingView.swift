@@ -15,15 +15,15 @@ private enum Action {
     public func icon(_ stopButtonDisabled: Bool) -> some View {
         switch self {
             case .play:
-                return Image(systemName: "play.circle.fill")
+                Image(systemName: "play.circle.fill")
                     .foregroundStyle(DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor)
                     .font(.system(size: 150))
             case .pause:
-                return Image(systemName: "pause.circle.fill")
+                Image(systemName: "pause.circle.fill")
                     .foregroundStyle(DesignKitAsset.Colors.btnDarkBlue.swiftUIColor)
                     .font(.system(size: 150))
             case .stop:
-                return Image(systemName: "stop.circle.fill")
+                Image(systemName: "stop.circle.fill")
                     .foregroundStyle(
                         stopButtonDisabled
                             ? DesignKitAsset.Colors.lekaDarkGray.swiftUIColor
@@ -36,11 +36,11 @@ private enum Action {
     public func text() -> String {
         switch self {
             case .play:
-                return "Play"
+                "Play"
             case .pause:
-                return "Pause"
+                "Pause"
             case .stop:
-                return "Stop"
+                "Stop"
         }
     }
 }

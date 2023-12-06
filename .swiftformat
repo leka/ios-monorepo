@@ -106,6 +106,7 @@
 --enable redundantParens
 --enable redundantPattern
 --enable redundantRawValues
+--enable redundantReturn
 
 # Disabled rules
 

@@ -71,7 +71,7 @@ struct ActivityListView: View {
                         )
                     }
                     .alignmentGuide(.listRowSeparatorLeading) { _ in
-                        return 0
+                        0
                     }
                     .frame(maxWidth: 600)
                     .buttonStyle(NoFeedback_ButtonStyle())

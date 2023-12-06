@@ -9,21 +9,21 @@ public extension Robot.Lights {
     var arcAngle: (start: Angle, end: Angle) {
         switch self {
             case .full:
-                return (start: .degrees(0), end: .degrees(360))
+                (start: .degrees(0), end: .degrees(360))
             case .halfRight:
-                return (start: .degrees(10), end: .degrees(170))
+                (start: .degrees(10), end: .degrees(170))
             case .halfLeft:
-                return (start: .degrees(190), end: .degrees(350))
+                (start: .degrees(190), end: .degrees(350))
             case .quarterFrontRight:
-                return (start: .degrees(10), end: .degrees(80))
+                (start: .degrees(10), end: .degrees(80))
             case .quarterBackRight:
-                return (start: .degrees(100), end: .degrees(170))
+                (start: .degrees(100), end: .degrees(170))
             case .quarterBackLeft:
-                return (start: .degrees(190), end: .degrees(260))
+                (start: .degrees(190), end: .degrees(260))
             case .quarterFrontLeft:
-                return (start: .degrees(280), end: .degrees(350))
+                (start: .degrees(280), end: .degrees(350))
             default:
-                return (start: .degrees(0), end: .degrees(0))
+                (start: .degrees(0), end: .degrees(0))
         }
     }
 }

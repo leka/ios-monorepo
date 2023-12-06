@@ -32,29 +32,29 @@ struct FontView: View {
     private var fontName: String {
         switch font {
             case .largeTitle:
-                return "Large Title"
+                "Large Title"
             case .title:
-                return "Title"
+                "Title"
             case .title2:
-                return "Title 2"
+                "Title 2"
             case .title3:
-                return "Title 3"
+                "Title 3"
             case .headline:
-                return "Headline"
+                "Headline"
             case .subheadline:
-                return "Subheadline"
+                "Subheadline"
             case .body:
-                return "Body"
+                "Body"
             case .callout:
-                return "Callout"
+                "Callout"
             case .caption:
-                return "Caption"
+                "Caption"
             case .caption2:
-                return "Caption 2"
+                "Caption 2"
             case .footnote:
-                return "Footnote"
+                "Footnote"
             default:
-                return "Unknown"
+                "Unknown"
         }
     }
 }

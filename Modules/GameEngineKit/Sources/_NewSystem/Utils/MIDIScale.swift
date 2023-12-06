@@ -13,9 +13,9 @@ enum MIDIScale: String {
     var notes: [MIDINoteNumber] {
         switch self {
             case .majorPentatonic:
-                return [24, 26, 28, 31, 33]
+                [24, 26, 28, 31, 33]
             case .majorHeptatonic:
-                return [24, 26, 28, 29, 31, 33, 35, 36]
+                [24, 26, 28, 29, 31, 33, 35, 36]
         }
     }
 }

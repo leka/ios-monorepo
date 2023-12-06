@@ -108,7 +108,7 @@ struct CurriculumDetailsView: View {
                             == UUID(uuidString: activityVM.getActivity(item).id))
                 }
                 .alignmentGuide(.listRowSeparatorLeading) { _ in
-                    return 0
+                    0
                 }
                 .buttonStyle(NoFeedback_ButtonStyle())
                 .contentShape(Rectangle())

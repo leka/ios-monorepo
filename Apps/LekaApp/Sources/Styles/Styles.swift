@@ -118,17 +118,15 @@ struct JobPickerToggleStyle: ToggleStyle {
 
 struct SuccessGaugeStyle: GaugeStyle {
     func makeBody(configuration: Configuration) -> some View {
-        let color: Color = {
-            if configuration.value < 0.25 {
-                return .red
-            } else if 0.25..<0.5 ~= configuration.value {
-                return .orange
-            } else if 0.5..<0.8 ~= configuration.value {
-                return .yellow
-            } else {
-                return .green
-            }
-        }()
+        let color: Color = if configuration.value < 0.25 {
+            .red
+        } else if 0.25..<0.5 ~= configuration.value {
+            .orange
+        } else if 0.5..<0.8 ~= configuration.value {
+            .yellow
+        } else {
+            .green
+        }
 
         ZStack {
             Circle()

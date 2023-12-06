@@ -11,15 +11,15 @@ public extension Robot.Reinforcer {
     func icon() -> Image {
         switch self {
             case .spinBlinkGreenOff:
-                return DesignKitAsset.Reinforcers.spinBlinkGreenOff.swiftUIImage
+                DesignKitAsset.Reinforcers.spinBlinkGreenOff.swiftUIImage
             case .spinBlinkBlueViolet:
-                return DesignKitAsset.Reinforcers.spinBlinkBlueViolet.swiftUIImage
+                DesignKitAsset.Reinforcers.spinBlinkBlueViolet.swiftUIImage
             case .fire:
-                return DesignKitAsset.Reinforcers.fire.swiftUIImage
+                DesignKitAsset.Reinforcers.fire.swiftUIImage
             case .sprinkles:
-                return DesignKitAsset.Reinforcers.sprinkles.swiftUIImage
+                DesignKitAsset.Reinforcers.sprinkles.swiftUIImage
             case .rainbow:
-                return DesignKitAsset.Reinforcers.rainbow.swiftUIImage
+                DesignKitAsset.Reinforcers.rainbow.swiftUIImage
         }
     }
 }

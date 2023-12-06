@@ -31,13 +31,13 @@ class UpdateStatusViewModel: ObservableObject {
     public var stepNumber: Int {
         switch updatingStatus {
             case .sendingFile:
-                return 1
+                1
             case .rebootingRobot:
-                return 2
+                2
             case .updateFinished:
-                return 3
+                3
             case .error:
-                return -1
+                -1
         }
     }
 

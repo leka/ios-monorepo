@@ -34,7 +34,7 @@ enum CustomError: Error, CustomStringConvertible {
 
     var description: String {
         switch self {
-            case .failedToGetFilePath: return "Unable to get the path to the Yaml file!"
+            case .failedToGetFilePath: "Unable to get the path to the Yaml file!"
         }
     }
 }
