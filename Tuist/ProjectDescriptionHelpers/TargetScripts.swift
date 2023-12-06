@@ -10,17 +10,11 @@ extension TargetScript {
         name: "SwiftLint",
         basedOnDependencyAnalysis: false)
 
-    public static let swiftFormat = TargetScript.post(
-        path: Path.relativeToRoot("Scripts/SwiftFormatRunScript.sh"),
-        name: "SwiftFormat",
-        basedOnDependencyAnalysis: false)
-
     public static func linters() -> [TargetScript] {
 
         let turnOffLinters = Environment.turnOffLinters.getBoolean(default: false)
 
         let defaultLinters: [TargetScript] = [
-            .swiftFormat,
             .swiftLint,
         ]
 
