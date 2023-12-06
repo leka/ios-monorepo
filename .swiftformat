@@ -49,6 +49,9 @@
 --enable extensionAccessControl
 --extensionacl on-extension
 
+--enable fileHeader
+--header Leka - iOS Monorepo\nCopyright {created.year} APF France handicap\nSPDX-License-Identifier: Apache-2.0
+
 # Disabled rules
 
 --disable blankLinesBetweenImports
