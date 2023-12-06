@@ -26,6 +26,9 @@
 
 --enable blockComments
 
+--enable braces
+--allman false
+
 # Disabled rules
 
 --disable blankLinesBetweenImports

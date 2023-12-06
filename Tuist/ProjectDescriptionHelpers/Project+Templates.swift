@@ -19,8 +19,7 @@ extension Project {
     internal static func makeFrameworkTargets(
         name: String, platform: Platform, product: Product = .staticLibrary, dependencies: [TargetDependency], settings: Settings? = nil
     )
-        -> [Target]
-    {
+        -> [Target] {
         // MARK: - Set product type
 
         var product = product
