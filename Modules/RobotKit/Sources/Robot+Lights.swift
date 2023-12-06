@@ -88,8 +88,8 @@ extension Robot {
             .spot(position, ids: ids, in: color)
         }
 
-        static func range(startId: UInt8, endId: UInt8, in color: Color) -> Self {
-            .range(start: startId, end: endId, in: color)
+        static func range(startID: UInt8, endID: UInt8, in color: Color) -> Self {
+            .range(start: startID, end: endID, in: color)
         }
 
         var cmd: [[UInt8]] {

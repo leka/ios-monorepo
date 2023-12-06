@@ -30,7 +30,7 @@ enum LKCommand {
     enum Motor {
 
         static let command: UInt8 = 0x20
-        static let numberOfValues: UInt8 = 1 + 2 + 1  // Id + Spin, Speed + Checksum
+        static let numberOfValues: UInt8 = 1 + 2 + 1  // ID + Spin, Speed + Checksum
         static let left: UInt8 = 0x21
         static let right: UInt8 = 0x22
 

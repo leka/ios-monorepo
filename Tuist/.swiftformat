@@ -2,7 +2,4 @@
 # Copyright 2023 APF France handicap
 # SPDX-License-Identifier: Apache-2.0
 
---disable all
---swiftversion 5.9
-
---enable acronyms
+--disable acronyms

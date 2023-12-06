@@ -38,7 +38,7 @@ struct RobotView: View {
             }
 
             Group {
-                ReadOnlyView(characteristicName: "Magic Card (ID)", characteristicValue: "\(robot.magicCardId)")
+                ReadOnlyView(characteristicName: "Magic Card (ID)", characteristicValue: "\(robot.magicCardID)")
                 ReadOnlyView(
                     characteristicName: "MagicCard (Language)", characteristicValue: robot.magicCardLanguage)
             }

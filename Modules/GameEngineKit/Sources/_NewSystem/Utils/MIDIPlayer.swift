@@ -39,8 +39,8 @@ class MIDIPlayer: ObservableObject {
         }
     }
 
-    func loadMIDIFile(fileUrl: URL, tempo: Double) {
-        sequencer.loadMIDIFile(fromURL: fileUrl)
+    func loadMIDIFile(fileURL: URL, tempo: Double) {
+        sequencer.loadMIDIFile(fromURL: fileURL)
         sequencer.setGlobalMIDIOutput(instrument.midiIn)
         sequencer.setTempo(tempo)
     }

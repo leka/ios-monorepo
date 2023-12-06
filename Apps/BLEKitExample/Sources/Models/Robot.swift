@@ -21,7 +21,7 @@ class Robot: ObservableObject {
     @Published var battery: Int = 0
     @Published var isCharging: Bool = false
 
-    @Published var magicCardId: Int = 0
+    @Published var magicCardID: Int = 0
     @Published var magicCardLanguage: String = ""
 
     let commands = CommandKit()
@@ -125,7 +125,7 @@ class Robot: ObservableObject {
                 newChar.onNotification = {
                     [weak self] data in
                     if let data = data {
-                        self?.magicCardId = Int(data[1])
+                        self?.magicCardID = Int(data[1])
                     }
                 }
             }
