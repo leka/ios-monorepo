@@ -36,6 +36,10 @@
 
 --enable duplicateImports
 
+--enable elseOnSameLine
+--elseposition same-line
+--guardelse auto
+
 # Disabled rules
 
 --disable blankLinesBetweenImports
