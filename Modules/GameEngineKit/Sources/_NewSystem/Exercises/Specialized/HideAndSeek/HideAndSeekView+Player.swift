@@ -89,6 +89,7 @@ extension HideAndSeekView {
         }
     }
 }
+
 // swiftlint:enable nesting
 
 #Preview {

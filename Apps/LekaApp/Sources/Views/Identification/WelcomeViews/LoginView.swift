@@ -44,6 +44,7 @@ struct LoginView: View {
             credentialsAreCorrect = false
         }
     }
+
     // TESTS *****************************************************************
 
     var body: some View {

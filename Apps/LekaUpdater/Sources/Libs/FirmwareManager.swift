@@ -18,9 +18,11 @@ class FirmwareManager: ObservableObject {
     public var major: UInt8 {
         UInt8(currentVersion.major)
     }
+
     public var minor: UInt8 {
         UInt8(currentVersion.minor)
     }
+
     public var revision: UInt16 {
         UInt16(currentVersion.patch)
     }

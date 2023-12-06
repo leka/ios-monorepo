@@ -124,6 +124,7 @@ private class StateSendingFile: GKState, StateEventProcessor {
     private var expectedPackets: Int {
         expectedRemainingBytes == 0 ? expectedCompletePackets : expectedCompletePackets + 1
     }
+
     private var _progression: Float {
         Float(currentPacket) / Float(expectedPackets)
     }

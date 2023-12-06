@@ -12,6 +12,7 @@ extension SKSpriteNode {
             && (self.position.x + (self.size.width / 2) <= bounds.maxX)
             && (self.position.y + (self.size.height / 2) <= bounds.maxY)
     }
+
     func fullyContains(location: CGPoint, bounds: CGRect) -> Bool {
         (location.x - (self.size.width / 3) >= bounds.minX)
             && (location.y - (self.size.height / 3) >= bounds.minY)

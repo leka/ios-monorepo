@@ -43,6 +43,7 @@ struct YamlFiles: RawRepresentable, Hashable {
     init?(rawValue: String) {
         self.rawValue = rawValue
     }
+
     init(_ rawValue: String) {
         self.rawValue = rawValue
     }

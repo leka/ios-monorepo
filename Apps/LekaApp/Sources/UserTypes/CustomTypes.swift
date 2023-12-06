@@ -18,6 +18,7 @@ struct LocalizedContent: Codable, Equatable {
         case enUS = "en_US"
         case frFR = "fr_FR"
     }
+
     var enUS: String?
     var frFR: String?
 }

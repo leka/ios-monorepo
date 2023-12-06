@@ -14,9 +14,11 @@ extension String {
     var fileURL: URL {
         URL(fileURLWithPath: self)
     }
+
     var pathExtension: String {
         fileURL.pathExtension
     }
+
     var lastPathComponent: String {
         fileURL.lastPathComponent
     }

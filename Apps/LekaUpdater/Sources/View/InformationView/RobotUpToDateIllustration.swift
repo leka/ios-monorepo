@@ -11,15 +11,19 @@ struct RobotUpToDateIllustration: View {
     private var circleSize: CGFloat {
         illustrationSize * 250 / 300
     }
+
     private var circleLineWidth: CGFloat {
         illustrationSize / 60
     }
+
     private var dashSpacer: CGFloat {
         illustrationSize / 18
     }
+
     private var imageSize: CGFloat {
         illustrationSize * 180 / 300
     }
+
     private var checkmarkSize: CGFloat {
         illustrationSize * 56 / 300
     }
