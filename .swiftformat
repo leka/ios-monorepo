@@ -24,3 +24,5 @@
 --enable blankLinesBetweenChainedFunctions
 
 # Disabled rules
+
+--disable blankLinesBetweenImports
