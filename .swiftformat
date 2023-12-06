@@ -92,6 +92,7 @@
 
 --enable redundantBackticks
 --enable redundantBreak
+--enable redundantClosure
 
 # Disabled rules
 

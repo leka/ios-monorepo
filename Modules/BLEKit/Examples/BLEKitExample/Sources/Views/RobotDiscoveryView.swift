@@ -43,7 +43,7 @@ struct RobotDiscoveryView: View {
                     return .gray
                 }()
             )
-            .animation(.easeIn(duration: 0.25), value: { robotListViewModel.selectedRobotDiscovery == discovery }())
+            .animation(.easeIn(duration: 0.25), value: robotListViewModel.selectedRobotDiscovery == discovery)
 
             VStack(alignment: .leading, spacing: 10) {
                 HStack(spacing: 40) {

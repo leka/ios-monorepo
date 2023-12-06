@@ -126,9 +126,7 @@ struct SignupView: View {
             return "Confirmer le mot de passe"
         }()
 
-        let confirmLabelColor: Color = {
-            return passwordsMatch() || confirm.isEmpty ? DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor : .red
-        }()
+        let confirmLabelColor: Color = passwordsMatch() || confirm.isEmpty ? DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor : .red
 
         LekaPasswordField(
             label: confirmTitle,

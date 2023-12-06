@@ -27,11 +27,9 @@ struct ActivityProgressBar: View {
                             }
                             return .green
                         }()
-                        let isCurrentExercise: Bool = {
-                            return sequenceIndex == viewModel.currentSequenceIndex
-                                && exerciseIndex == viewModel.currentExerciseIndexInSequence
-                                && viewModel.currentExerciseSharedData.state != .completed
-                        }()
+                        let isCurrentExercise: Bool = sequenceIndex == viewModel.currentSequenceIndex
+                            && exerciseIndex == viewModel.currentExerciseIndexInSequence
+                            && viewModel.currentExerciseSharedData.state != .completed
                         ActivityProgressBarMarker(
                             color: (sequenceIndex == viewModel.currentSequenceIndex
                                 && exerciseIndex == viewModel.currentExerciseIndexInSequence)

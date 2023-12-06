@@ -96,10 +96,8 @@ struct LoginView: View {
             return "Email"
         }()
 
-        let mailLabelColor: Color = {
-            return mail.isValidEmail() || mail.isEmpty || isEditing
-                ? DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor : .red
-        }()
+        let mailLabelColor: Color = mail.isValidEmail() || mail.isEmpty || isEditing
+            ? DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor : .red
 
         LekaTextField(
             label: mailTitle,
@@ -121,9 +119,7 @@ struct LoginView: View {
             return "Mot de passe"
         }()
 
-        let passwordLabelColor: Color = {
-            return credentialsAreCorrect ? DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor : .red
-        }()
+        let passwordLabelColor: Color = credentialsAreCorrect ? DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor : .red
 
         LekaPasswordField(
             label: passwordTitle,
