@@ -11,7 +11,7 @@ public struct RobotConnectionView: View {
     // MARK: Lifecycle
 
     public init(viewModel: RobotConnectionViewModel = RobotConnectionViewModel()) {
-        self._viewModel = StateObject(wrappedValue: viewModel)
+        _viewModel = StateObject(wrappedValue: viewModel)
     }
 
     // MARK: Public

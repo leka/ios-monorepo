@@ -9,7 +9,7 @@ extension DragAndDropToAssociateView {
         override func setFirstAnswerPosition() {
             spacer = 455
             initialNodeX = (size.width - spacer) / 2
-            verticalSpacing = self.size.height / 3
+            verticalSpacing = size.height / 3
             defaultPosition = CGPoint(x: initialNodeX, y: verticalSpacing - 30)
         }
 

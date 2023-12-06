@@ -19,7 +19,7 @@ struct LottieView: UIViewRepresentable {
         self.speed = speed
         self.reverse = reverse
         self.action = action
-        self._play = play
+        _play = play
     }
 
     // MARK: Internal

@@ -32,8 +32,8 @@ extension DanceFreeze {
                             Toggle(
                                 "",
                                 isOn: Binding<Bool>(
-                                    get: { self.motion == .movement },
-                                    set: { self.motion = $0 ? .movement : .rotation }
+                                    get: { motion == .movement },
+                                    set: { motion = $0 ? .movement : .rotation }
                                 )
                             )
                             .toggleStyle(BinaryChoiceToggleStyle())

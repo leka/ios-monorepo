@@ -15,7 +15,7 @@ public class AudioPlayer: NSObject, ObservableObject {
     public init(audioRecording: AudioRecording) {
         super.init()
         setAudioPlayer(audioRecording: audioRecording)
-        didFinishPlaying = false
+        self.didFinishPlaying = false
     }
 
     // MARK: Internal
@@ -24,7 +24,7 @@ public class AudioPlayer: NSObject, ObservableObject {
     @Published var didFinishPlaying = false
 
     var isPlaying: Bool {
-        self.player.isPlaying
+        player.isPlaying
     }
 
     func setAudioPlayer(audioRecording: AudioRecording) {

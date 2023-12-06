@@ -14,9 +14,8 @@ extension Shape {
     func fill(
         _ fillStyle: some ShapeStyle, strokeBorder strokeStyle: some ShapeStyle, lineWidth: CGFloat = 1
     ) -> some View {
-        self
-            .stroke(strokeStyle, lineWidth: lineWidth)
-            .background(self.fill(fillStyle))
+        stroke(strokeStyle, lineWidth: lineWidth)
+            .background(fill(fillStyle))
     }
 }
 
@@ -67,7 +66,7 @@ extension Image {
 
 extension LocalizedContent {
     func localized() -> String {
-        guard let translation = (Locale.current.language.languageCode?.identifier == "fr" ? self.frFR : self.enUS)
+        guard let translation = (Locale.current.language.languageCode?.identifier == "fr" ? frFR : enUS)
         else {
             print("Nothing to display")
             return ""

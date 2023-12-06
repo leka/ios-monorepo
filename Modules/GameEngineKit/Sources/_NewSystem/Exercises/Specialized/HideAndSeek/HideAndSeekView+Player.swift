@@ -14,12 +14,12 @@ extension HideAndSeekView {
             stage: Binding<HideAndSeekStage>, textSubInstructions: String, textButtonRobotFound: String,
             shared: ExerciseSharedData? = nil
         ) {
-            self._stage = stage
+            _stage = stage
             self.textSubInstructions = textSubInstructions
             self.textButtonRobotFound = textButtonRobotFound
 
             self.exercicesSharedData = shared ?? ExerciseSharedData()
-            self.exercicesSharedData.state = .playing
+            exercicesSharedData.state = .playing
         }
 
         // MARK: Internal
@@ -68,7 +68,7 @@ extension HideAndSeekView {
                     Spacer()
 
                     Button {
-                        self.exercicesSharedData.state = .completed
+                        exercicesSharedData.state = .completed
                     } label: {
                         ButtonLabel(textButtonRobotFound, color: .cyan)
                     }

@@ -10,8 +10,8 @@ public struct ListenThenTouchToSelectView: View {
     // MARK: Lifecycle
 
     public init(choices: [TouchToSelect.Choice], audioRecording: AudioRecording) {
-        self._viewModel = StateObject(wrappedValue: TouchToSelectViewViewModel(choices: choices))
-        self._audioPlayer = StateObject(wrappedValue: AudioPlayer(audioRecording: audioRecording))
+        _viewModel = StateObject(wrappedValue: TouchToSelectViewViewModel(choices: choices))
+        _audioPlayer = StateObject(wrappedValue: AudioPlayer(audioRecording: audioRecording))
     }
 
     public init(exercise: Exercise, data: ExerciseSharedData? = nil) {
@@ -23,11 +23,11 @@ public struct ListenThenTouchToSelectView: View {
             fatalError("💥 Exercise payload is not .selection and/or Exercise does not contain iPad audio action")
         }
 
-        self._viewModel = StateObject(
+        _viewModel = StateObject(
             wrappedValue: TouchToSelectViewViewModel(choices: payload.choices, shared: data))
 
         let audioRecording = AudioRecording(name: name, file: name)
-        self._audioPlayer = StateObject(wrappedValue: AudioPlayer(audioRecording: audioRecording))
+        _audioPlayer = StateObject(wrappedValue: AudioPlayer(audioRecording: audioRecording))
     }
 
     // MARK: Public

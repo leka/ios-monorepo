@@ -12,8 +12,8 @@ public class BLEManager {
     public init(centralManager: CentralManager) {
         self.centralManager = centralManager
 
-        self.subscribeToDidDisconnect()
-        self.subscribeToDidConnect()
+        subscribeToDidDisconnect()
+        subscribeToDidConnect()
     }
 
     // MARK: Public
@@ -94,7 +94,7 @@ public class BLEManager {
     }
 
     public func disconnect() {
-        guard let connectedPeripheral = self.connectedRobotPeripheral?.peripheral else { return }
+        guard let connectedPeripheral = connectedRobotPeripheral?.peripheral else { return }
         centralManager.cancelPeripheralConnection(connectedPeripheral)
     }
 
@@ -110,7 +110,7 @@ public class BLEManager {
     // MARK: - Private functions
 
     private func subscribeToDidConnect() {
-        self.centralManager.didConnectPeripheral
+        centralManager.didConnectPeripheral
             .sink { peripheral in
                 self.didConnect.send(RobotPeripheral(peripheral: peripheral))
             }
@@ -118,7 +118,7 @@ public class BLEManager {
     }
 
     private func subscribeToDidDisconnect() {
-        self.centralManager.didDisconnectPeripheral
+        centralManager.didDisconnectPeripheral
             .sink { _ in
                 self.didDisconnect.send()
             }

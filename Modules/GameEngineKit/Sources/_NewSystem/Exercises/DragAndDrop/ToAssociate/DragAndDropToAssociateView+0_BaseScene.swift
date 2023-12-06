@@ -32,9 +32,9 @@ extension DragAndDropToAssociateView {
         var verticalSpacing: CGFloat = .zero
 
         func reset() {
-            self.backgroundColor = .clear
-            self.removeAllChildren()
-            self.removeAllActions()
+            backgroundColor = .clear
+            removeAllChildren()
+            removeAllActions()
 
             dropDestinations = []
 
@@ -49,11 +49,11 @@ extension DragAndDropToAssociateView {
         }
 
         func subscribeToChoicesUpdates() {
-            self.viewModel.$choices
+            viewModel.$choices
                 .receive(on: DispatchQueue.main)
                 .sink(receiveValue: { [weak self] choices in
                     guard let self else { return }
-                    for choice in choices where choice.id == self.playedNode?.id {
+                    for choice in choices where choice.id == playedNode?.id {
                         if choice.state == .rightAnswer {
                             self.goodAnswerBehavior(self.playedNode!)
                         } else if choice.state == .wrongAnswer {
@@ -68,7 +68,7 @@ extension DragAndDropToAssociateView {
             for (index, gameplayChoiceModel) in viewModel.choices.enumerated() {
                 let draggableImageAnswerNode = DraggableImageAnswerNode(
                     choice: gameplayChoiceModel,
-                    position: self.defaultPosition
+                    position: defaultPosition
                 )
                 let draggableImageShadowNode = DraggableImageShadowNode(
                     draggableImageAnswerNode: draggableImageAnswerNode
@@ -109,7 +109,7 @@ extension DragAndDropToAssociateView {
 
         func goodAnswerBehavior(_ node: DraggableImageAnswerNode) {
             node.scaleForMax(sizeOf: biggerSide * 0.8)
-            node.zPosition = (self.playedDestination?.zPosition ?? 10) + 10
+            node.zPosition = (playedDestination?.zPosition ?? 10) + 10
             node.isDraggable = false
             playedDestination?.isDraggable = false
             onDropAction(node)
@@ -155,14 +155,14 @@ extension DragAndDropToAssociateView {
         }
 
         override func didMove(to view: SKView) {
-            self.reset()
+            reset()
         }
 
         // overriden Touches states
         override func touchesBegan(_ touches: Set<UITouch>, with: UIEvent?) {
             for touch in touches {
                 let location = touch.location(in: self)
-                if let node = self.atPoint(location) as? DraggableImageAnswerNode {
+                if let node = atPoint(location) as? DraggableImageAnswerNode {
                     for choice in viewModel
                         .choices where node.id == choice.id && node.isDraggable {
                         selectedNodes[touch] = node
@@ -177,7 +177,7 @@ extension DragAndDropToAssociateView {
             for touch in touches {
                 let location = touch.location(in: self)
                 if let node = selectedNodes[touch] {
-                    let bounds: CGRect = self.view!.bounds
+                    let bounds: CGRect = view!.bounds
                     if node.fullyContains(location: location, bounds: bounds) {
                         node.run(SKAction.move(to: location, duration: 0.05).moveAnimation(.linear))
                         node.position = location

@@ -23,7 +23,7 @@ public struct LottieView: UIViewRepresentable {
         self.reverse = reverse
         self.loopMode = loopMode
         self.action = action
-        self._play = play
+        _play = play
     }
 
     // MARK: Public

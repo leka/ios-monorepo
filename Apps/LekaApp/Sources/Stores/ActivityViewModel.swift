@@ -51,7 +51,7 @@ class ActivityViewModel: NSObject, ObservableObject, YamlFileDecodable {
 
     func getActivity(_ title: String) -> Activity {
         do {
-            return try self.decodeYamlFile(withName: title, toType: Activity.self)
+            return try decodeYamlFile(withName: title, toType: Activity.self)
         } catch {
             print("Activities: Failed to decode Yaml file with error:", error)
             return Activity()
@@ -61,7 +61,7 @@ class ActivityViewModel: NSObject, ObservableObject, YamlFileDecodable {
     // Temporary Instructions Source
     func getInstructions() -> String {
         do {
-            return try self.decodeYamlFile(withName: "instructions", toType: Instructions.self).instructions.localized()
+            return try decodeYamlFile(withName: "instructions", toType: Instructions.self).instructions.localized()
         } catch {
             print("Instructions: Failed to decode Yaml file with error:", error)
             return Instructions().instructions.localized()
@@ -218,7 +218,7 @@ class ActivityViewModel: NSObject, ObservableObject, YamlFileDecodable {
 
     // Show, Then Hide Reinforcer animation + Setup for next Step
     func runMotivatorScenario() {
-        self.showBlurryBG = true
+        showBlurryBG = true
         // Update behind-the-scene during Reinforcer animation
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
             self.tapIsDisabled.toggle() // false

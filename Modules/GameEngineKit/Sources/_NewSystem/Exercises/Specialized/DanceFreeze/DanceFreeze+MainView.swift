@@ -14,7 +14,7 @@ enum DanceFreeze {
 
         public init(songs: [AudioRecording]) {
             self.songs = songs
-            self._viewModel = StateObject(wrappedValue: MainViewViewModel(songs: songs))
+            _viewModel = StateObject(wrappedValue: MainViewViewModel(songs: songs))
         }
 
         public init(exercise: Exercise, data: ExerciseSharedData? = nil) {
@@ -23,7 +23,7 @@ enum DanceFreeze {
             }
 
             self.songs = payload.songs
-            self._viewModel = StateObject(
+            _viewModel = StateObject(
                 wrappedValue: MainViewViewModel(
                     songs: payload.songs, shared: data))
         }

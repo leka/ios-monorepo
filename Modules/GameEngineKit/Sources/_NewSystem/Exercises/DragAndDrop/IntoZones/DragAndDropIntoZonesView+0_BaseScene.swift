@@ -29,7 +29,7 @@ extension DragAndDropIntoZonesView {
             }
             super.init(size: CGSize.zero)
             self.spacer = size.width / CGFloat(viewModel.choices.count + 1)
-            self.defaultPosition = CGPoint(x: spacer, y: self.size.height)
+            self.defaultPosition = CGPoint(x: spacer, y: size.height)
 
             subscribeToChoicesUpdates()
         }
@@ -46,9 +46,9 @@ extension DragAndDropIntoZonesView {
         var dropZoneB: DropZoneNode?
 
         func reset() {
-            self.backgroundColor = .clear
-            self.removeAllChildren()
-            self.removeAllActions()
+            backgroundColor = .clear
+            removeAllChildren()
+            removeAllActions()
 
             setFirstAnswerPosition()
             layoutDropZones()
@@ -63,12 +63,12 @@ extension DragAndDropIntoZonesView {
         }
 
         func subscribeToChoicesUpdates() {
-            self.viewModel.$choices
+            viewModel.$choices
                 .receive(on: DispatchQueue.main)
                 .sink(receiveValue: { [weak self] choices in
                     guard let self else { return }
 
-                    for choice in choices where choice.id == self.playedNode?.id {
+                    for choice in choices where choice.id == playedNode?.id {
                         if choice.state == .rightAnswer {
                             self.goodAnswerBehavior(self.playedNode!)
                         } else if choice.state == .wrongAnswer {
@@ -83,7 +83,7 @@ extension DragAndDropIntoZonesView {
             for choice in viewModel.choices {
                 let draggableImageAnswerNode = DraggableImageAnswerNode(
                     choice: choice,
-                    position: self.defaultPosition
+                    position: defaultPosition
                 )
                 let draggableImageShadowNode = DraggableImageShadowNode(
                     draggableImageAnswerNode: draggableImageAnswerNode
@@ -116,11 +116,11 @@ extension DragAndDropIntoZonesView {
 
         func setFirstAnswerPosition() {
             spacer = size.width / CGFloat(viewModel.choices.count + 1)
-            defaultPosition = CGPoint(x: spacer, y: self.size.height)
+            defaultPosition = CGPoint(x: spacer, y: size.height)
         }
 
         func setNextAnswerPosition() {
-            self.defaultPosition.x += spacer
+            defaultPosition.x += spacer
         }
 
         func layoutDropZones() {
@@ -198,14 +198,14 @@ extension DragAndDropIntoZonesView {
         }
 
         override func didMove(to view: SKView) {
-            self.reset()
+            reset()
         }
 
         // overriden Touches states
         override func touchesBegan(_ touches: Set<UITouch>, with: UIEvent?) {
             for touch in touches {
                 let location = touch.location(in: self)
-                if let node = self.atPoint(location) as? DraggableImageAnswerNode {
+                if let node = atPoint(location) as? DraggableImageAnswerNode {
                     for choice in viewModel.choices
                         where node.id == choice.id && node.isDraggable {
                         selectedNodes[touch] = node
@@ -220,12 +220,12 @@ extension DragAndDropIntoZonesView {
             for touch in touches {
                 let location = touch.location(in: self)
                 if let node = selectedNodes[touch] {
-                    let bounds: CGRect = self.view!.bounds
+                    let bounds: CGRect = view!.bounds
                     if node.fullyContains(location: location, bounds: bounds) {
                         node.run(SKAction.move(to: location, duration: 0.05).moveAnimation(.linear))
                         node.position = location
                     } else {
-                        self.touchesEnded(touches, with: event)
+                        touchesEnded(touches, with: event)
                     }
                 }
             }

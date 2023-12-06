@@ -37,9 +37,9 @@ private class StateInitial: GKState, StateEventProcessor {
     func process(event: UpdateEvent) {
         switch event {
             case .startUpdateRequested:
-                self.stateMachine?.enter(StateLoadingUpdateFile.self)
+                stateMachine?.enter(StateLoadingUpdateFile.self)
             case .robotDisconnected:
-                self.stateMachine?.enter(StateErrorRobotUnexpectedDisconnection.self)
+                stateMachine?.enter(StateErrorRobotUnexpectedDisconnection.self)
             default:
                 return
         }
@@ -67,11 +67,11 @@ private class StateLoadingUpdateFile: GKState, StateEventProcessor {
     func process(event: UpdateEvent) {
         switch event {
             case .fileLoaded:
-                self.stateMachine?.enter(StateSettingDestinationPath.self)
+                stateMachine?.enter(StateSettingDestinationPath.self)
             case .failedToLoadFile:
-                self.stateMachine?.enter(StateErrorFailedToLoadFile.self)
+                stateMachine?.enter(StateErrorFailedToLoadFile.self)
             case .robotDisconnected:
-                self.stateMachine?.enter(StateErrorRobotUnexpectedDisconnection.self)
+                stateMachine?.enter(StateErrorRobotUnexpectedDisconnection.self)
             default:
                 return
         }
@@ -94,9 +94,9 @@ private class StateSettingDestinationPath: GKState, StateEventProcessor {
     func process(event: UpdateEvent) {
         switch event {
             case .destinationPathSet:
-                self.stateMachine?.enter(StateSendingFile.self)
+                stateMachine?.enter(StateSendingFile.self)
             case .robotDisconnected:
-                self.stateMachine?.enter(StateErrorRobotUnexpectedDisconnection.self)
+                stateMachine?.enter(StateErrorRobotUnexpectedDisconnection.self)
             default:
                 return
         }
@@ -138,7 +138,7 @@ private class StateSendingFile: GKState, StateEventProcessor {
 
         super.init()
 
-        self.subscribeToFirmwareDataUpdates()
+        subscribeToFirmwareDataUpdates()
     }
 
     // MARK: Public
@@ -162,9 +162,9 @@ private class StateSendingFile: GKState, StateEventProcessor {
     func process(event: UpdateEvent) {
         switch event {
             case .fileSent:
-                self.stateMachine?.enter(StateApplyingUpdate.self)
+                stateMachine?.enter(StateApplyingUpdate.self)
             case .robotDisconnected:
-                self.stateMachine?.enter(StateErrorRobotUnexpectedDisconnection.self)
+                stateMachine?.enter(StateErrorRobotUnexpectedDisconnection.self)
             default:
                 return
         }
@@ -214,7 +214,7 @@ private class StateSendingFile: GKState, StateEventProcessor {
 
     private func tryToSendNextPacket() {
         if isInCriticalSection() {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: self.tryToSendNextPacket)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: tryToSendNextPacket)
             return
         }
 
@@ -269,7 +269,7 @@ private class StateApplyingUpdate: GKState, StateEventProcessor {
     func process(event: UpdateEvent) {
         switch event {
             case .robotDisconnected:
-                self.stateMachine?.enter(StateWaitingForRobotToReboot.self)
+                stateMachine?.enter(StateWaitingForRobotToReboot.self)
             default:
                 return
         }
@@ -348,12 +348,12 @@ private class StateWaitingForRobotToReboot: GKState, StateEventProcessor {
         switch event {
             case .robotDetected:
                 if isRobotUpToDate {
-                    self.stateMachine?.enter(StateFinal.self)
+                    stateMachine?.enter(StateFinal.self)
                 } else {
-                    self.stateMachine?.enter(StateErrorRobotNotUpToDate.self)
+                    stateMachine?.enter(StateErrorRobotNotUpToDate.self)
                 }
             case .robotDisconnected:
-                self.stateMachine?.enter(StateErrorRobotUnexpectedDisconnection.self)
+                stateMachine?.enter(StateErrorRobotUnexpectedDisconnection.self)
             default:
                 return
         }
@@ -430,11 +430,11 @@ class UpdateProcessV100: UpdateProcessProtocol {
             StateErrorRobotNotUpToDate(),
             StateErrorRobotUnexpectedDisconnection(),
         ])
-        self.stateMachine?.enter(StateInitial.self)
+        stateMachine?.enter(StateInitial.self)
 
-        self.startRoutineToUpdateCurrentState()
-        self.registerDidDisconnect()
-        self.sendingFileProgression = self.stateSendingFile.progression
+        startRoutineToUpdateCurrentState()
+        registerDidDisconnect()
+        self.sendingFileProgression = stateSendingFile.progression
     }
 
     // MARK: Public

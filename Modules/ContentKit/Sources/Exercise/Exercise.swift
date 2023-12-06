@@ -19,29 +19,29 @@ public struct Exercise: Codable {
                  (.listenThenTouchToSelect, .findTheRightAnswers),
                  (.observeThenTouchToSelect, .findTheRightAnswers),
                  (.robotThenTouchToSelect, .findTheRightAnswers):
-                payload = try container.decode(TouchToSelect.Payload.self, forKey: .payload)
+                self.payload = try container.decode(TouchToSelect.Payload.self, forKey: .payload)
 
             case (.dragAndDropIntoZones, .findTheRightAnswers):
-                payload = try container.decode(DragAndDropIntoZones.Payload.self, forKey: .payload)
+                self.payload = try container.decode(DragAndDropIntoZones.Payload.self, forKey: .payload)
 
             case (.dragAndDropToAssociate, .associateCategories):
-                payload = try container.decode(DragAndDropToAssociate.Payload.self, forKey: .payload)
+                self.payload = try container.decode(DragAndDropToAssociate.Payload.self, forKey: .payload)
 
             case (.danceFreeze, .none):
-                payload = try container.decode(AudioRecordingPlayer.Payload.self, forKey: .payload)
+                self.payload = try container.decode(AudioRecordingPlayer.Payload.self, forKey: .payload)
 
             case (.hideAndSeek, .none):
-                payload = try container.decode(HideAndSeek.Payload.self, forKey: .payload)
+                self.payload = try container.decode(HideAndSeek.Payload.self, forKey: .payload)
 
             case (.musicalInstruments, .none):
-                payload = try container.decode(MusicalInstrument.Payload.self, forKey: .payload)
+                self.payload = try container.decode(MusicalInstrument.Payload.self, forKey: .payload)
 
             case (.melody, .none):
                 payload = try container.decode(MidiRecordingPlayer.Payload.self, forKey: .payload)
 
             case (.remoteStandard, .none),
                  (.remoteArrow, .none):
-                payload = nil
+                self.payload = nil
 
             default:
                 throw DecodingError.dataCorruptedError(

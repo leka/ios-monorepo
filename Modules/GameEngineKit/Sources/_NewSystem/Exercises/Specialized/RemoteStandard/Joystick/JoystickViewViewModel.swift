@@ -13,7 +13,7 @@ class JoystickViewViewModel: ObservableObject {
     init(dragDiameter: CGFloat) {
         self.dragDiameter = dragDiameter
 
-        self.joystickMonitor.$xyPoint
+        joystickMonitor.$xyPoint
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: {
                 self.position = $0

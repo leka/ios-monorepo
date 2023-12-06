@@ -34,7 +34,7 @@ public class RobotConnectionViewModel: ObservableObject {
                 // nothing to do
             } receiveValue: { [weak self] discoveries in
                 guard let self else { return }
-                self.robotDiscoveries = discoveries
+                robotDiscoveries = discoveries
                 log.trace("🔵 BLE - Discoveries found: \(discoveries)")
             }
     }
@@ -55,8 +55,8 @@ public class RobotConnectionViewModel: ObservableObject {
             } receiveValue: { [weak self] peripheral in
                 guard let self else { return }
                 robot.connectedPeripheral = peripheral
-                self.connectedDiscovery = discovery
-                self.selectedDiscovery = nil
+                connectedDiscovery = discovery
+                selectedDiscovery = nil
                 log.info("🔵 BLE - Connected to \(robot.name.value)")
             }
             .store(in: &cancellables)

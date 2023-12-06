@@ -17,7 +17,7 @@ public struct DragAndDropIntoZonesView: View {
         choices: [DragAndDropIntoZones.Choice], dropZoneA: DragAndDropIntoZones.DropZone.Details,
         dropZoneB: DragAndDropIntoZones.DropZone.Details? = nil
     ) {
-        self._viewModel = StateObject(wrappedValue: ViewModel(choices: choices))
+        _viewModel = StateObject(wrappedValue: ViewModel(choices: choices))
         self.dropZoneA = dropZoneA
         self.dropZoneB = dropZoneB
     }
@@ -28,7 +28,7 @@ public struct DragAndDropIntoZonesView: View {
             fatalError("💥 Exercise payload is not .dragAndDrop")
         }
 
-        self._viewModel = StateObject(
+        _viewModel = StateObject(
             wrappedValue: ViewModel(choices: payload.choices, shared: data))
 
         self.dropZoneA = payload.dropZoneA

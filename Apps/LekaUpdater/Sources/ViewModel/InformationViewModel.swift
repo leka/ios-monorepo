@@ -11,14 +11,14 @@ class InformationViewModel: ObservableObject {
     // MARK: Lifecycle
 
     init() {
-        self.subscribeToRobotNameUpdates()
-        self.subscribeToRobotOsVersionUpdates()
+        subscribeToRobotNameUpdates()
+        subscribeToRobotOsVersionUpdates()
     }
 
     // MARK: Public
 
     public func onViewReappear() {
-        self.robotName = Robot.shared.name.value
+        robotName = Robot.shared.name.value
     }
 
     // MARK: Internal

@@ -65,7 +65,7 @@ class UpdateStatusViewModel: ObservableObject {
     private var cancellables: Set<AnyCancellable> = []
 
     private func subscribeToStateUpdates() {
-        self.updateProcessController.currentStage
+        updateProcessController.currentStage
             .receive(on: DispatchQueue.main)
             .sink { completion in
                 self.showAlert = false
@@ -117,7 +117,7 @@ class UpdateStatusViewModel: ObservableObject {
     }
 
     private func subscribeToSendingFileProgressionUpdates() {
-        self.updateProcessController.sendingFileProgression
+        updateProcessController.sendingFileProgression
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { progression in
                 self.sendingFileProgression = progression

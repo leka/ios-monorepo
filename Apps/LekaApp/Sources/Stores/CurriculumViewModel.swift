@@ -39,7 +39,7 @@ class CurriculumViewModel: ObservableObject, YamlFileDecodable {
 
     func getCurriculumList(category: CurriculumCategories) -> CurriculumList {
         do {
-            return try self.decodeYamlFile(withName: category.rawValue, toType: CurriculumList.self)
+            return try decodeYamlFile(withName: category.rawValue, toType: CurriculumList.self)
         } catch {
             print("Failed to decode Yaml file with error:", error)
             return CurriculumList()
@@ -65,7 +65,7 @@ class CurriculumViewModel: ObservableObject, YamlFileDecodable {
 
     func getCurriculum(_ title: String) -> Curriculum {
         do {
-            return try self.decodeYamlFile(withName: title, toType: Curriculum.self)
+            return try decodeYamlFile(withName: title, toType: Curriculum.self)
         } catch {
             print("Failed to decode Yaml file with error:", error)
             return Curriculum()

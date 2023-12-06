@@ -12,7 +12,7 @@ public struct DragAndDropToAssociateView: View {
     // MARK: Lifecycle
 
     public init(choices: [DragAndDropToAssociate.Choice], shuffle: Bool = false) {
-        self._viewModel = StateObject(
+        _viewModel = StateObject(
             wrappedValue: ViewModel(choices: choices, shuffle: shuffle)
         )
     }
@@ -22,7 +22,7 @@ public struct DragAndDropToAssociateView: View {
             fatalError("Exercise payload is not .association")
         }
 
-        self._viewModel = StateObject(
+        _viewModel = StateObject(
             wrappedValue: ViewModel(
                 choices: payload.choices,
                 shuffle: payload.shuffleChoices,

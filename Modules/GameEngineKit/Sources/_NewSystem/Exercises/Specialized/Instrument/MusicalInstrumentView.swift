@@ -12,7 +12,7 @@ struct MusicalInstrumentView: View {
     init(instrument: MIDIInstrument, scale: MIDIScale) {
         self.instrument = instrument
         self.scale = scale
-        self._midiPlayer = StateObject(wrappedValue: MIDIPlayer(instrument: instrument))
+        _midiPlayer = StateObject(wrappedValue: MIDIPlayer(instrument: instrument))
     }
 
     init(exercise: Exercise, data: ExerciseSharedData? = nil) {
@@ -28,7 +28,7 @@ struct MusicalInstrumentView: View {
 
         self.instrument = instrument
         self.scale = scale
-        self._midiPlayer = StateObject(wrappedValue: MIDIPlayer(instrument: instrument))
+        _midiPlayer = StateObject(wrappedValue: MIDIPlayer(instrument: instrument))
     }
 
     // MARK: Internal

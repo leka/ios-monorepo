@@ -125,7 +125,7 @@ struct InformationView: View {
     // MARK: Private
 
     private var isViewVisible: Bool {
-        !self.isConnectionViewPresented && !self.isUpdateStatusViewPresented
+        !isConnectionViewPresented && !isUpdateStatusViewPresented
     }
 }
 

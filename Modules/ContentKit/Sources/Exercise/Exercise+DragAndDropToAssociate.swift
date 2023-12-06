@@ -16,9 +16,9 @@ public enum DragAndDropToAssociate {
 
         public init(from decoder: Decoder) throws {
             let container = try decoder.container(keyedBy: CodingKeys.self)
-            value = try container.decode(String.self, forKey: .value)
-            type = try container.decode(Exercise.UIElementType.self, forKey: .type)
-            category = try container.decodeIfPresent(Category.self, forKey: .category) ?? .none
+            self.value = try container.decode(String.self, forKey: .value)
+            self.type = try container.decode(Exercise.UIElementType.self, forKey: .type)
+            self.category = try container.decodeIfPresent(Category.self, forKey: .category) ?? .none
         }
 
         public init(value: String, type: Exercise.UIElementType, category: Category) {

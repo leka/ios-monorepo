@@ -28,7 +28,7 @@ public class RobotPeripheral: Equatable {
 
     public func discoverAndListenForUpdates() {
         for char in notifyingCharacteristics {
-            self.peripheral
+            peripheral
                 .discoverCharacteristic(
                     withUUID: char.characteristicUUID, inServiceWithUUID: char.serviceUUID
                 )

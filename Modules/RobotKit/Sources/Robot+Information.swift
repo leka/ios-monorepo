@@ -19,7 +19,7 @@ extension Robot {
             }
         )
 
-        self.connectedPeripheral?.notifyingCharacteristics.insert(characteristic)
+        connectedPeripheral?.notifyingCharacteristics.insert(characteristic)
     }
 
     func registerChargingStatusNotificationCallback() {
@@ -34,7 +34,7 @@ extension Robot {
             }
         )
 
-        self.connectedPeripheral?.notifyingCharacteristics.insert(characteristic)
+        connectedPeripheral?.notifyingCharacteristics.insert(characteristic)
     }
 
     func registerOSVersionReadCallback() {
@@ -52,7 +52,7 @@ extension Robot {
             }
         )
 
-        self.connectedPeripheral?.readOnlyCharacteristics.insert(characteristic)
+        connectedPeripheral?.readOnlyCharacteristics.insert(characteristic)
     }
 
     func registerSerialNumberReadCallback() {
@@ -69,7 +69,7 @@ extension Robot {
             }
         )
 
-        self.connectedPeripheral?.readOnlyCharacteristics.insert(characteristic)
+        connectedPeripheral?.readOnlyCharacteristics.insert(characteristic)
     }
 
     func registerChargingStatusReadCallback() {
@@ -84,6 +84,6 @@ extension Robot {
             }
         )
 
-        self.connectedPeripheral?.readOnlyCharacteristics.insert(characteristic)
+        connectedPeripheral?.readOnlyCharacteristics.insert(characteristic)
     }
 }

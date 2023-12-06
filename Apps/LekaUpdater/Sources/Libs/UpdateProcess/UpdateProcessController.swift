@@ -46,8 +46,8 @@ class UpdateProcessController {
                 self.currentUpdateProcess = UpdateProcessTemplate()
         }
 
-        self.currentStage = self.currentUpdateProcess.currentStage
-        self.sendingFileProgression = self.currentUpdateProcess.sendingFileProgression
+        self.currentStage = currentUpdateProcess.currentStage
+        self.sendingFileProgression = currentUpdateProcess.sendingFileProgression
     }
 
     // MARK: Public

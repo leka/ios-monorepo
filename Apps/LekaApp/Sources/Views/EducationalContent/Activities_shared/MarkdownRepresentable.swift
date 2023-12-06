@@ -35,7 +35,7 @@ struct MarkdownRepresentable: UIViewRepresentable {
     // MARK: Lifecycle
 
     init(height: Binding<CGFloat>) {
-        self._dynamicHeight = height
+        _dynamicHeight = height
     }
 
     // MARK: Internal
@@ -44,7 +44,7 @@ struct MarkdownRepresentable: UIViewRepresentable {
         // MARK: Lifecycle
 
         init(text: UITextView) {
-            textView = text
+            self.textView = text
         }
 
         //		func textAttachmentDidLoadImage(textAttachment: AsyncImageLoad, displaySizeChanged: Bool)

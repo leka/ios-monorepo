@@ -14,6 +14,6 @@ public extension UInt16 {
     }
 
     var data: Data {
-        Data([self.highByte, self.lowByte])
+        Data([highByte, lowByte])
     }
 }

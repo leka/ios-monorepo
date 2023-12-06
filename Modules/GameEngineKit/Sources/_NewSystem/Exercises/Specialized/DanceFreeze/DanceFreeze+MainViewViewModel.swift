@@ -17,7 +17,7 @@ extension DanceFreeze {
             self.robotManager = RobotManager()
 
             self.exercicesSharedData = shared ?? ExerciseSharedData()
-            self.exercicesSharedData.state = .playing
+            exercicesSharedData.state = .playing
 
             subscribeToAudioPlayerProgress()
         }
@@ -68,12 +68,12 @@ extension DanceFreeze {
         // MARK: Private
 
         private func subscribeToAudioPlayerProgress() {
-            self.audioPlayer.$progress
+            audioPlayer.$progress
                 .receive(on: DispatchQueue.main)
                 .sink { [weak self] in
                     guard let self else { return }
-                    self.progress = $0
-                    if self.progress == 1 {
+                    progress = $0
+                    if progress == 1 {
                         completeDanceFreeze()
                     }
                 }

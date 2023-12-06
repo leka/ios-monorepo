@@ -50,22 +50,22 @@ class UpdateProcessTemplate: UpdateProcessProtocol {
     private var currentInternalState = CurrentValueSubject<UpdateState, UpdateError>(.initial)
 
     private func subscribeToStateUpdates() {
-        self.currentInternalState
+        currentInternalState
             .receive(on: DispatchQueue.main)
-            .sink(receiveCompletion: self.convertCompletion, receiveValue: self.convertReceivedValue)
+            .sink(receiveCompletion: convertCompletion, receiveValue: convertReceivedValue)
             .store(in: &cancellables)
     }
 
     private func convertCompletion(completion: Subscribers.Completion<UpdateError>) {
         switch completion {
             case .finished:
-                self.currentStage.send(completion: .finished)
+                currentStage.send(completion: .finished)
             case let .failure(error):
-                self.currentStage.send(completion: .failure(.updateProcessNotAvailable)) // only available error
+                currentStage.send(completion: .failure(.updateProcessNotAvailable)) // only available error
         }
     }
 
     private func convertReceivedValue(state: UpdateState) {
-        self.currentStage.send(.initial) // only available state
+        currentStage.send(.initial) // only available state
     }
 }

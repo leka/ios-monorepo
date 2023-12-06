@@ -78,7 +78,7 @@ public class ActivityViewViewModel: ObservableObject {
     }
 
     private func subscribeToCurrentExerciseSharedDataUpdates() {
-        self.currentExerciseSharedData.objectWillChange
+        currentExerciseSharedData.objectWillChange
             .receive(on: DispatchQueue.main)
             .sink {
                 self.objectWillChange.send()

@@ -44,21 +44,21 @@ struct StdioOutputStream: TextOutputStream {
     let flushMode: FlushMode
 
     func write(_ string: String) {
-        self.contiguousUTF8(string)
+        contiguousUTF8(string)
             .withContiguousStorageIfAvailable { utf8Bytes in
-                flockfile(self.file)
+                flockfile(file)
                 defer {
                     funlockfile(self.file)
                 }
-                _ = fwrite(utf8Bytes.baseAddress!, 1, utf8Bytes.count, self.file)
-                if case .always = self.flushMode {
-                    self.flush()
+                _ = fwrite(utf8Bytes.baseAddress!, 1, utf8Bytes.count, file)
+                if case .always = flushMode {
+                    flush()
                 }
             }!
     }
 
     func flush() {
-        _ = fflush(self.file)
+        _ = fflush(file)
     }
 
     func contiguousUTF8(_ string: String) -> String.UTF8View {
@@ -106,10 +106,10 @@ public struct LogKitLogHandler: LogHandler {
 
     public subscript(metadataKey metadataKey: String) -> Logger.Metadata.Value? {
         get {
-            self.metadata[metadataKey]
+            metadata[metadataKey]
         }
         set {
-            self.metadata[metadataKey] = newValue
+            metadata[metadataKey] = newValue
         }
     }
 
@@ -122,10 +122,10 @@ public struct LogKitLogHandler: LogHandler {
         function: String,
         line: UInt
     ) {
-        var strm = self.stream
+        var strm = stream
 
         strm.write(
-            "\(self.timestamp()) \(prettyLevel(level)) [\(label)](\(prettyFile(file)):\(line)) \(function) > \(message)\n"
+            "\(timestamp()) \(prettyLevel(level)) [\(label)](\(prettyFile(file)):\(line)) \(function) > \(message)\n"
         )
     }
 

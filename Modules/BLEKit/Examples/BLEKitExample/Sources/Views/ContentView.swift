@@ -15,7 +15,7 @@ struct ContentView: View {
     init(bleManager: BLEManager) {
         // ? StateObject dependency injection pattern as described here:
         // https://developer.apple.com/documentation/swiftui/stateobject#Initialize-state-objects-using-external-data
-        self._robotListViewModel = StateObject(wrappedValue: RobotListViewModel(bleManager: bleManager))
+        _robotListViewModel = StateObject(wrappedValue: RobotListViewModel(bleManager: bleManager))
     }
 
     // MARK: Internal
@@ -28,13 +28,13 @@ struct ContentView: View {
                 RobotDiscoveryView(discovery: robotDiscovery)
                     .contentShape(Rectangle())
                     .onTapGesture {
-                        if robotDiscovery == self.robotListViewModel.selectedRobotDiscovery {
+                        if robotDiscovery == robotListViewModel.selectedRobotDiscovery {
                             print("Unselect \(robotDiscovery)")
-                            self.robotListViewModel.selectedRobotDiscovery = nil
+                            robotListViewModel.selectedRobotDiscovery = nil
 
                         } else {
                             print("Select \(robotDiscovery)")
-                            self.robotListViewModel.selectedRobotDiscovery = robotDiscovery
+                            robotListViewModel.selectedRobotDiscovery = robotDiscovery
                         }
                     }
             }

@@ -19,7 +19,7 @@ struct MainView: View {
             }
             .onTapGesture {
                 log.debug("touched \(count)")
-                self.count += 1
+                count += 1
             }
     }
 }

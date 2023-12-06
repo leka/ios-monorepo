@@ -25,7 +25,7 @@ public class ConnectedRobotInformationViewModel: ObservableObject {
 
     @Published public var isConnected: Bool = false {
         didSet {
-            self.isNotConnected = !isConnected
+            isNotConnected = !isConnected
         }
     }
 

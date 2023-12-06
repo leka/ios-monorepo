@@ -10,7 +10,7 @@ public struct ObserveThenTouchToSelectView: View {
     // MARK: Lifecycle
 
     public init(choices: [TouchToSelect.Choice], image: String) {
-        self._viewModel = StateObject(wrappedValue: TouchToSelectViewViewModel(choices: choices))
+        _viewModel = StateObject(wrappedValue: TouchToSelectViewViewModel(choices: choices))
         self.image = image
     }
 
@@ -23,7 +23,7 @@ public struct ObserveThenTouchToSelectView: View {
             fatalError("💥 Exercise payload is not .selection and/or Exercise does not contain iPad image action")
         }
 
-        self._viewModel = StateObject(
+        _viewModel = StateObject(
             wrappedValue: TouchToSelectViewViewModel(choices: payload.choices, shared: data))
 
         self.image = name

@@ -19,7 +19,7 @@ extension GameplayAssociateCategories where ChoiceModelType == GameplayAssociate
     convenience init(choices: [GameplayAssociateCategoriesChoiceModel], shuffle: Bool = false) {
         self.init()
         self.choices.send(choices)
-        self.state.send(.playing)
+        state.send(.playing)
     }
 
     func process(_ choice: ChoiceModelType, _ destination: ChoiceModelType) {

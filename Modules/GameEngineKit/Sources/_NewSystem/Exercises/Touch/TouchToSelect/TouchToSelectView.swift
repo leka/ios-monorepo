@@ -10,7 +10,7 @@ public struct TouchToSelectView: View {
     // MARK: Lifecycle
 
     public init(choices: [TouchToSelect.Choice], shuffle: Bool = false) {
-        self._viewModel = StateObject(wrappedValue: TouchToSelectViewViewModel(choices: choices, shuffle: shuffle))
+        _viewModel = StateObject(wrappedValue: TouchToSelectViewViewModel(choices: choices, shuffle: shuffle))
     }
 
     public init(exercise: Exercise, data: ExerciseSharedData? = nil) {
@@ -18,7 +18,7 @@ public struct TouchToSelectView: View {
             fatalError("Exercise payload is not .selection")
         }
 
-        self._viewModel = StateObject(
+        _viewModel = StateObject(
             wrappedValue: TouchToSelectViewViewModel(
                 choices: payload.choices, shuffle: payload.shuffleChoices, shared: data))
     }

@@ -66,7 +66,7 @@ class CommandKit {
 
     init() {
         for _ in 0...LKCommand.startByteLength - 1 {
-            self.startSequence.append(LKCommand.startByte)
+            startSequence.append(LKCommand.startByte)
         }
     }
 
@@ -127,14 +127,14 @@ class CommandKit {
     func encapsulate() -> [UInt8] {
         var encapsulatedArray: [UInt8] = []
 
-        encapsulatedArray.append(contentsOf: self.startSequence)
-        encapsulatedArray.append(UInt8(self.numberOfCommands))
-        encapsulatedArray.append(contentsOf: self.commandSequence)
+        encapsulatedArray.append(contentsOf: startSequence)
+        encapsulatedArray.append(UInt8(numberOfCommands))
+        encapsulatedArray.append(contentsOf: commandSequence)
 
-        self.commandSequence = encapsulatedArray
-        self.isEncapsulated = true
+        commandSequence = encapsulatedArray
+        isEncapsulated = true
 
-        return self.commandSequence
+        return commandSequence
     }
 
     func getCommands() -> [UInt8] {
@@ -151,8 +151,8 @@ class CommandKit {
     }
 
     func flush() {
-        self.commandSequence.removeAll()
-        self.numberOfCommands = 0
-        self.isEncapsulated = false
+        commandSequence.removeAll()
+        numberOfCommands = 0
+        isEncapsulated = false
     }
 }

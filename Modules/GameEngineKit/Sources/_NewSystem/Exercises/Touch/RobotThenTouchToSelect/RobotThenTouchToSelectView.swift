@@ -12,7 +12,7 @@ public struct RobotThenTouchToSelectView: View {
     // MARK: Lifecycle
 
     public init(choices: [TouchToSelect.Choice]) {
-        self._viewModel = StateObject(wrappedValue: TouchToSelectViewViewModel(choices: choices))
+        _viewModel = StateObject(wrappedValue: TouchToSelectViewViewModel(choices: choices))
 
         self.actionType = .color("red")
     }
@@ -26,12 +26,12 @@ public struct RobotThenTouchToSelectView: View {
             fatalError("💥 Exercise payload is not .selection and/or Exercise does not contain robot action")
         }
 
-        self._viewModel = StateObject(
+        _viewModel = StateObject(
             wrappedValue: TouchToSelectViewViewModel(choices: payload.choices, shared: data))
 
         self.actionType = actionType
 
-        self.robot.blacken(.all)
+        robot.blacken(.all)
     }
 
     // MARK: Public

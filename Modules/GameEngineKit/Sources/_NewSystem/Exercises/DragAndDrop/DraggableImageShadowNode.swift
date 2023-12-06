@@ -12,14 +12,14 @@ class DraggableImageShadowNode: SKSpriteNode {
                 size: draggableImageAnswerNode.size)
 
         let actionShadow = SKAction.setTexture(draggableImageAnswerNode.texture!, resize: true)
-        self.run(actionShadow)
+        run(actionShadow)
 
-        self.blendMode = SKBlendMode.alpha
-        self.colorBlendFactor = 1.0
-        self.color = .black
-        self.alpha = 0.15
-        self.setScale(draggableImageAnswerNode.xScale)
-        self.position = draggableImageAnswerNode.position
+        blendMode = SKBlendMode.alpha
+        colorBlendFactor = 1.0
+        color = .black
+        alpha = 0.15
+        setScale(draggableImageAnswerNode.xScale)
+        position = draggableImageAnswerNode.position
     }
 
     required init?(coder aDecoder: NSCoder) {

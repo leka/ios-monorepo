@@ -10,9 +10,9 @@ public enum TouchToSelect {
 
         public init(from decoder: Decoder) throws {
             let container = try decoder.container(keyedBy: CodingKeys.self)
-            value = try container.decode(String.self, forKey: .value)
-            type = try container.decode(Exercise.UIElementType.self, forKey: .type)
-            isRightAnswer = try container.decodeIfPresent(Bool.self, forKey: .isRightAnswer) ?? false
+            self.value = try container.decode(String.self, forKey: .value)
+            self.type = try container.decode(Exercise.UIElementType.self, forKey: .type)
+            self.isRightAnswer = try container.decodeIfPresent(Bool.self, forKey: .isRightAnswer) ?? false
         }
 
         public init(value: String, type: Exercise.UIElementType, isRightAnswer: Bool = false) {

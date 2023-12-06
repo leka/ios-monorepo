@@ -108,6 +108,9 @@
 --enable redundantRawValues
 --enable redundantReturn
 
+--enable redundantSelf
+--self init-only
+
 # Disabled rules
 
 --disable blankLinesBetweenImports

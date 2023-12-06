@@ -17,8 +17,8 @@ public extension Robot {
         var cmd: [UInt8] {
             let output: [UInt8] = [
                 Self.id,
-                self.rawValue,
-                [self.rawValue].checksum8,
+                rawValue,
+                [rawValue].checksum8,
             ]
 
             return output

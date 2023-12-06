@@ -19,8 +19,8 @@ extension GameplayFindTheRightAnswers where ChoiceModelType == GameplayDragAndDr
     convenience init(choices: [GameplayDragAndDropIntoZonesChoiceModel]) {
         self.init()
         self.choices.send(choices)
-        self.rightAnswers = choices.filter { $0.choice.dropZone != .none }
-        self.state.send(.playing)
+        rightAnswers = choices.filter { $0.choice.dropZone != .none }
+        state.send(.playing)
     }
 
     func process(_ choice: ChoiceModelType, _ dropZone: DragAndDropIntoZones.DropZone) {

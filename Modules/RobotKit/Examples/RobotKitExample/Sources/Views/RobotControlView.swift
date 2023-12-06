@@ -10,7 +10,7 @@ struct RobotControlView: View {
     // MARK: Lifecycle
 
     init(viewModel: RobotControlViewModel) {
-        self._viewModel = StateObject(wrappedValue: viewModel)
+        _viewModel = StateObject(wrappedValue: viewModel)
     }
 
     // MARK: Internal

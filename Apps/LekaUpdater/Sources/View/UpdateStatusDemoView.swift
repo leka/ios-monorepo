@@ -32,7 +32,7 @@ class UpdateStatusDemoViewModel: ObservableObject {
     private var cancellables: Set<AnyCancellable> = []
 
     private func subscribeToStateUpdates() {
-        self.updateProcessController.currentStage
+        updateProcessController.currentStage
             .receive(on: DispatchQueue.main)
             .sink { completion in
                 switch completion {
