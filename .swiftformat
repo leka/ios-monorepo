@@ -54,6 +54,8 @@
 
 --enable genericExtensions
 
+--enable headerFileName
+
 # Disabled rules
 
 --disable blankLinesBetweenImports
