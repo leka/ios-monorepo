@@ -11,8 +11,8 @@ import SwiftUI
 
 // Fill & Stroke with 1 modifier
 extension Shape {
-    func fill<Fill: ShapeStyle, Stroke: ShapeStyle>(
-        _ fillStyle: Fill, strokeBorder strokeStyle: Stroke, lineWidth: CGFloat = 1
+    func fill(
+        _ fillStyle: some ShapeStyle, strokeBorder strokeStyle: some ShapeStyle, lineWidth: CGFloat = 1
     ) -> some View {
         self
             .stroke(strokeStyle, lineWidth: lineWidth)

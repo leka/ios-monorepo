@@ -84,6 +84,8 @@
 --hexliteralcase uppercase
 --exponentcase lowercase
 
+--enable opaqueGenericParameters
+
 # Disabled rules
 
 --disable blankLinesBetweenImports
