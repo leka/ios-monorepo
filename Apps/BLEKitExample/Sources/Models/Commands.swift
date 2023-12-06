@@ -4,9 +4,8 @@
 
 import Foundation
 
-//
 // MARK: - LKCommand
-//
+
 enum LKCommand {
 
     static let startByte: UInt8 = 0x2A
@@ -15,9 +14,8 @@ enum LKCommand {
     static let motor: UInt8 = 0x20
     static let motivator: UInt8 = 0x50
 
-    //
     // MARK: - LKCommand Led Full
-    //
+
     enum LedFull {
 
         static let command: UInt8 = 0x13
@@ -27,9 +25,8 @@ enum LKCommand {
 
     }
 
-    //
     // MARK: - LKCommand Motors
-    //
+
     enum Motor {
 
         static let command: UInt8 = 0x20
@@ -42,9 +39,8 @@ enum LKCommand {
 
     }
 
-    //
     // MARK: - LKCommand Motivator
-    //
+
     enum Motivator {
 
         static let command: UInt8 = 0x50
@@ -71,29 +67,25 @@ func checksum8(_ values: [UInt8]) -> UInt8 {
 
 }
 
-//
 // MARK: - CommandKit
-//
+
 class CommandKit {
 
-    //
     // MARK: - Singleton
-    //
+
     static let sharedSingleton = CommandKit()
     let command = LKCommand.self
 
-    //
     // MARK: - Variables
-    //
+
     var startSequence: [UInt8] = []
     var commandSequence: [UInt8] = []
 
     var numberOfCommands: Int = 0
     var isEncapsulated: Bool = false
 
-    //
     // MARK: - Initialisation
-    //
+
     init() {
 
         for _ in 0...LKCommand.startByteLength - 1 {
@@ -102,9 +94,8 @@ class CommandKit {
 
     }
 
-    //
     // MARK: - Led Functions
-    //
+
     func addAllLeds(of earOrBelt: UInt8, rgbColor red: UInt8, _ green: UInt8, _ blue: UInt8) {
 
         let array = [command.LedFull.command, earOrBelt, red, green, blue, checksum8([earOrBelt, red, green, blue])]
@@ -117,9 +108,8 @@ class CommandKit {
 
     }
 
-    //
     // MARK: - Motor Functions
-    //
+
     func addMotor(on leftOrRight: UInt8, direction: UInt8, speed: UInt8) {
 
         let array = [command.Motor.command, leftOrRight, direction, speed, checksum8([leftOrRight, direction, speed])]
@@ -132,9 +122,8 @@ class CommandKit {
 
     }
 
-    //
     // MARK: - Motivator Functions
-    //
+
     func addMotivator(_ motivator: UInt8) {
 
         let array = [command.Motivator.command, motivator, checksum8([motivator])]
@@ -147,9 +136,8 @@ class CommandKit {
 
     }
 
-    //
     // MARK: - Command Functions
-    //
+
     func encapsulate() -> [UInt8] {
 
         var encapsulatedArray: [UInt8] = []
