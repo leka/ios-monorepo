@@ -34,6 +34,8 @@
 --enable consecutiveBlankLines
 --enable consecutiveSpaces
 
+--enable duplicateImports
+
 # Disabled rules
 
 --disable blankLinesBetweenImports
