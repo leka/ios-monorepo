@@ -6,7 +6,7 @@ import Foundation
 
 // MARK: - AdvertisingServiceData
 
-internal struct AdvertisingServiceData {
+struct AdvertisingServiceData {
     // MARK: Lifecycle
 
     init(data: Data) {

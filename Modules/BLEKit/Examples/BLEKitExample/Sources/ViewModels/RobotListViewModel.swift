@@ -19,7 +19,7 @@ public class RobotListViewModel: ObservableObject {
 
     // MARK: - Private functions
 
-    internal init(availableRobots: [RobotDiscoveryModel]) {
+    init(availableRobots: [RobotDiscoveryModel]) {
         self.bleManager = BLEManager.live()
         self.robotDiscoveries = availableRobots
     }
@@ -84,9 +84,9 @@ public class RobotListViewModel: ObservableObject {
 
     // MARK: - Private variables
 
-    internal let bleManager: BLEManager
-    internal var cancellables: Set<AnyCancellable> = []
-    internal var scanForRobotsTask: AnyCancellable?
+    let bleManager: BLEManager
+    var cancellables: Set<AnyCancellable> = []
+    var scanForRobotsTask: AnyCancellable?
 
     // MARK: - Published variables
 

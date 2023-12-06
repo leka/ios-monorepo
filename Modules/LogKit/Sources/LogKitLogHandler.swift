@@ -27,23 +27,23 @@ extension String {
 let systemStderr = Darwin.stderr
 let systemStdout = Darwin.stdout
 
-internal typealias CFilePointer = UnsafeMutablePointer<FILE>
+typealias CFilePointer = UnsafeMutablePointer<FILE>
 
 // MARK: - StdioOutputStream
 
-internal struct StdioOutputStream: TextOutputStream {
-    internal enum FlushMode {
+struct StdioOutputStream: TextOutputStream {
+    enum FlushMode {
         case undefined
         case always
     }
 
-    internal static let stderr = StdioOutputStream(file: systemStderr, flushMode: .always)
-    internal static let stdout = StdioOutputStream(file: systemStdout, flushMode: .always)
+    static let stderr = StdioOutputStream(file: systemStderr, flushMode: .always)
+    static let stdout = StdioOutputStream(file: systemStdout, flushMode: .always)
 
-    internal let file: CFilePointer
-    internal let flushMode: FlushMode
+    let file: CFilePointer
+    let flushMode: FlushMode
 
-    internal func write(_ string: String) {
+    func write(_ string: String) {
         self.contiguousUTF8(string)
             .withContiguousStorageIfAvailable { utf8Bytes in
                 flockfile(self.file)
@@ -57,11 +57,11 @@ internal struct StdioOutputStream: TextOutputStream {
             }!
     }
 
-    internal func flush() {
+    func flush() {
         _ = fflush(self.file)
     }
 
-    internal func contiguousUTF8(_ string: String) -> String.UTF8View {
+    func contiguousUTF8(_ string: String) -> String.UTF8View {
         var contiguousString = string
         contiguousString.makeContiguousUTF8()
         return contiguousString.utf8
@@ -74,12 +74,12 @@ public struct LogKitLogHandler: LogHandler {
     // MARK: Lifecycle
 
     // internal for testing only
-    internal init(label: String, stream: _SendableTextOutputStream) {
+    init(label: String, stream: _SendableTextOutputStream) {
         self.init(label: label, stream: stream, metadataProvider: LoggingSystem.metadataProvider)
     }
 
     // internal for testing only
-    internal init(label: String, stream: _SendableTextOutputStream, metadataProvider: Logger.MetadataProvider?) {
+    init(label: String, stream: _SendableTextOutputStream, metadataProvider: Logger.MetadataProvider?) {
         self.label = label
         self.stream = stream
         self.metadataProvider = metadataProvider
@@ -131,7 +131,7 @@ public struct LogKitLogHandler: LogHandler {
 
     // MARK: Internal
 
-    internal typealias _SendableTextOutputStream = TextOutputStream & Sendable
+    typealias _SendableTextOutputStream = TextOutputStream & Sendable
 
     // MARK: Private
 

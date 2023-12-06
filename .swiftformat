@@ -97,6 +97,7 @@
 --enable redundantFileprivate
 --enable redundantGet
 --enable redundantInit
+--enable redundantInternal
 
 # Disabled rules
 
