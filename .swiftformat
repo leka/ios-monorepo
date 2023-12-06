@@ -31,6 +31,8 @@
 
 --enable conditionalAssignment
 
+--enable consecutiveBlankLines
+
 # Disabled rules
 
 --disable blankLinesBetweenImports
