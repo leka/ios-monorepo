@@ -90,6 +90,8 @@
 
 --enable preferKeyPath
 
+--enable redundantBackticks
+
 # Disabled rules
 
 --disable blankLinesBetweenImports
