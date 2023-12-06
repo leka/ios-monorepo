@@ -104,6 +104,7 @@
 --enable redundantObjc
 --enable redundantOptionalBinding
 --enable redundantParens
+--enable redundantPattern
 
 # Disabled rules
 
