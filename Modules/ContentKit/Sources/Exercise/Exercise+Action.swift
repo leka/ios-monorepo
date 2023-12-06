@@ -112,7 +112,7 @@ public extension Exercise {
                         forKey: .type,
                         in: container,
                         debugDescription:
-                            "Cannot decode ExercisePayload. Available keys: \(container.allKeys.map { $0.stringValue })"
+                        "Cannot decode ExercisePayload. Available keys: \(container.allKeys.map { $0.stringValue })"
                     )
             }
         }

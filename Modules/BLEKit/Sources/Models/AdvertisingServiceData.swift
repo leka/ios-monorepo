@@ -42,7 +42,7 @@ private func getOsVersion(data: Data) -> String? {
     let minor = data[AdvertisingServiceDataIndex.osVersionMinor]
     let revision =
         Int(data[AdvertisingServiceDataIndex.osVersionRevisionHighByte]) << 8
-        + Int(data[AdvertisingServiceDataIndex.osVersionRevisionLowByte])
+            + Int(data[AdvertisingServiceDataIndex.osVersionRevisionLowByte])
 
     return "\(major).\(minor).\(revision)"
 }

@@ -21,7 +21,7 @@ extension l10n {
     static let localizedStringInterpolationWithMarkdown = LocalizedStringInterpolation(
         "localized_string_interpolation_with_markdown",
         value:
-            "⛳ **DEFAULT** *localized_string_interpolation_with_markdown* - **text: %@** - *int: %lld* - ***float: %f***",
+        "⛳ **DEFAULT** *localized_string_interpolation_with_markdown* - **text: %@** - *int: %lld* - ***float: %f***",
         comment: "")
 }
 

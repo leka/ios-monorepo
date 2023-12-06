@@ -25,7 +25,7 @@ struct RobotConnectionIndicator: View {
 
             Image(
                 uiImage:
-                    robotViewModel.isConnected
+                robotViewModel.isConnected
                     ? DesignKitAsset.Images.robotConnected.image : DesignKitAsset.Images.robotDisconnected.image
             )
             .resizable()

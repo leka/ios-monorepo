@@ -73,7 +73,7 @@ class ActivityViewModel: NSObject, ObservableObject, YamlFileDecodable {
         utterance.rate = 0.40
         utterance.voice =
             Locale.current.language.languageCode?.identifier == "fr"
-            ? AVSpeechSynthesisVoice(language: "fr-FR") : AVSpeechSynthesisVoice(language: "en-US")
+                ? AVSpeechSynthesisVoice(language: "fr-FR") : AVSpeechSynthesisVoice(language: "en-US")
 
         isSpeaking = true
         synth.speak(utterance)

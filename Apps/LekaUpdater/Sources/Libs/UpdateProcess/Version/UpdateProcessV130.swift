@@ -280,7 +280,7 @@ private class StateSendingFile: GKState, StateEventProcessor {
         let startIndex = currentPacket * maximumPacketSize
         let endIndex =
             currentPacket < expectedCompletePackets
-            ? startIndex + maximumPacketSize - 1 : startIndex + expectedRemainingBytes - 1
+                ? startIndex + maximumPacketSize - 1 : startIndex + expectedRemainingBytes - 1
 
         let dataToSend = globalFirmwareManager.data[startIndex...endIndex]
 
@@ -510,7 +510,7 @@ class UpdateProcessV130: UpdateProcessProtocol {
             case is StateInitial:
                 currentStage.send(.initial)
             case is StateLoadingUpdateFile, is StateSettingFileExchangeState, is StateSettingDestinationPath,
-                is StateClearingFile, is StateSendingFile:
+                 is StateClearingFile, is StateSendingFile:
                 currentStage.send(.sendingUpdate)
             case is StateApplyingUpdate, is StateWaitingForRobotToReboot:
                 currentStage.send(.installingUpdate)

@@ -28,9 +28,9 @@ public struct Exercise: Codable {
 
         switch (interface, gameplay) {
             case (.touchToSelect, .findTheRightAnswers),
-                (.listenThenTouchToSelect, .findTheRightAnswers),
-                (.observeThenTouchToSelect, .findTheRightAnswers),
-                (.robotThenTouchToSelect, .findTheRightAnswers):
+                 (.listenThenTouchToSelect, .findTheRightAnswers),
+                 (.observeThenTouchToSelect, .findTheRightAnswers),
+                 (.robotThenTouchToSelect, .findTheRightAnswers):
                 payload = try container.decode(TouchToSelect.Payload.self, forKey: .payload)
 
             case (.dragAndDropIntoZones, .findTheRightAnswers):
@@ -52,7 +52,7 @@ public struct Exercise: Codable {
                 payload = try container.decode(MidiRecordingPlayer.Payload.self, forKey: .payload)
 
             case (.remoteStandard, .none),
-                (.remoteArrow, .none):
+                 (.remoteArrow, .none):
                 payload = nil
 
             default:

@@ -20,8 +20,8 @@ struct ActivityProgressBar: View {
                         let dotColor: Color = {
                             guard
                                 sequenceIndex < viewModel.currentSequenceIndex
-                                    || (sequenceIndex == viewModel.currentSequenceIndex
-                                        && exerciseIndex < viewModel.currentExerciseIndexInSequence)
+                                || (sequenceIndex == viewModel.currentSequenceIndex
+                                    && exerciseIndex < viewModel.currentExerciseIndexInSequence)
                             else {
                                 return .white
                             }

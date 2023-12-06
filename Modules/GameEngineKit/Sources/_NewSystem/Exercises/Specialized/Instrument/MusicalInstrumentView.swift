@@ -23,7 +23,7 @@ struct MusicalInstrumentView: View {
         }
 
         guard let instrument = MIDIInstrument(rawValue: payload.instrument),
-            let scale = MIDIScale(rawValue: payload.scale)
+              let scale = MIDIScale(rawValue: payload.scale)
         else {
             fatalError("Instrument or scale not found")
         }

@@ -220,7 +220,7 @@ extension DragAndDropIntoZonesView {
                 let location = touch.location(in: self)
                 if let node = self.atPoint(location) as? DraggableImageAnswerNode {
                     for choice in viewModel.choices
-                    where node.id == choice.id && node.isDraggable {
+                        where node.id == choice.id && node.isDraggable {
                         selectedNodes[touch] = node
                         onDragAnimation(node)
                         node.zPosition += 100

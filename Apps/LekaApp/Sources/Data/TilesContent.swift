@@ -40,7 +40,7 @@ enum TileData: Int, CaseIterable, Hashable {
                     title: "Les parcours",
                     subtitle: "Les parcours sont des compilations d'activités dont la difficulté est évolutive.",
                     message:
-                        "Les parcours ont pour objectif d'atteindre des compétences précises. Ils ont été pensé avec des professionnels du médico-social. \nVous pouvez réaliser les activités dans l'ordre ou sauter des niveaux."
+                    "Les parcours ont pour objectif d'atteindre des compétences précises. Ils ont été pensé avec des professionnels du médico-social. \nVous pouvez réaliser les activités dans l'ordre ou sauter des niveaux."
                 )
             case .activities:
                 return TileContent(
@@ -48,16 +48,16 @@ enum TileData: Int, CaseIterable, Hashable {
                     title: "Les activités",
                     subtitle: "Les activités vous permettent de travailler des compétences variées !",
                     message:
-                        "Vous trouverez au sein de votre application diverses activités variées. Elles peuvent intéresser les différents métiers du médico-social afin de faire progresser les utilisateurs."
+                    "Vous trouverez au sein de votre application diverses activités variées. Elles peuvent intéresser les différents métiers du médico-social afin de faire progresser les utilisateurs."
                 )
             case .commands:
                 return TileContent(
                     image: "gamecontroller",
                     title: "Les commandes",
                     subtitle:
-                        "Les commandes vous permettent de créer des activités en utilisant Leka comme médiateur !",
+                    "Les commandes vous permettent de créer des activités en utilisant Leka comme médiateur !",
                     message:
-                        "Vous pouvez télécommander Leka, le faire tourner, lancer un renforçateur ou encore allumer ses leds dans la couleur souhaitée ! \nL'objectif des commandes est de vous permettre de créer votre propre activité avec l'utilisateur et d'entrer en interaction avec lui."
+                    "Vous pouvez télécommander Leka, le faire tourner, lancer un renforçateur ou encore allumer ses leds dans la couleur souhaitée ! \nL'objectif des commandes est de vous permettre de créer votre propre activité avec l'utilisateur et d'entrer en interaction avec lui."
                 )
             // New company signup path
             case .signupBravo:
@@ -77,7 +77,7 @@ enum TileData: Int, CaseIterable, Hashable {
                     image: DesignKitAsset.Images.user.name,
                     title: "ÉTAPE 2 :",
                     message:
-                        "Nous allons maintenant créer votre premier \nprofil utilisateur (le profil d'une personne que \nvous accompagnez).",
+                    "Nous allons maintenant créer votre premier \nprofil utilisateur (le profil d'une personne que \nvous accompagnez).",
                     callToActionLabel: "Créer")
             case .signupFinalStep:
                 return TileContent(

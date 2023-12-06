@@ -49,8 +49,8 @@ struct User: Profile {
 enum Professions: String, Identifiable, CaseIterable {
     // swiftlint:disable identifier_name
     case educSpe, eje, monit, monitAt, teach, ASC, psychoMot,
-        ergo, ortho, kine, pedopsy, med, psy, infir, soign,
-        AESH, AES, AVDH, auxVieScol, pueri, auxPueri, ludo
+         ergo, ortho, kine, pedopsy, med, psy, infir, soign,
+         AESH, AES, AVDH, auxVieScol, pueri, auxPueri, ludo
     // swiftlint:enable identifier_name
 
     var id: Self { self }

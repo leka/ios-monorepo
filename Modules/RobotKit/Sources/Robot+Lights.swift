@@ -67,17 +67,17 @@ public extension Robot {
         public var color: Robot.Color {
             switch self {
                 case let .all(color),
-                    let .full(_, color),
-                    let .halfLeft(color),
-                    let .halfRight(color),
-                    let .quarterFrontLeft(color),
-                    let .quarterFrontRight(color),
-                    let .quarterBackLeft(color),
-                    let .quarterBackRight(color),
-                    let .earLeft(color),
-                    let .earRight(color),
-                    let .spot(_, _, color),
-                    let .range(_, _, color):
+                     let .full(_, color),
+                     let .halfLeft(color),
+                     let .halfRight(color),
+                     let .quarterFrontLeft(color),
+                     let .quarterFrontRight(color),
+                     let .quarterBackLeft(color),
+                     let .quarterBackRight(color),
+                     let .earLeft(color),
+                     let .earRight(color),
+                     let .spot(_, _, color),
+                     let .range(_, _, color):
                     return color
             }
         }

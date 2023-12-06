@@ -33,7 +33,7 @@ struct LoginView: View {
                 .textFieldStyle(.roundedBorder)
                 .keyboardType(.emailAddress)
             if !organisation.mail.isEmpty,
-                !organisation.isEmailValid() {
+               !organisation.isEmailValid() {
                 Text(organisation.invalidEmailAddressText)
                     .font(.footnote)
                     .foregroundStyle(.red)
@@ -47,7 +47,7 @@ struct LoginView: View {
             SecureField("password", text: $organisation.password)
                 .textFieldStyle(.roundedBorder)
             if !organisation.password.isEmpty,
-                !organisation.isPasswordValid(organisation.password) {
+               !organisation.isPasswordValid(organisation.password) {
                 Text(organisation.invalidPasswordText)
                     .font(.footnote)
                     .lineLimit(2)

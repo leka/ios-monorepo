@@ -220,7 +220,7 @@ private class StateSendingFile: GKState, StateEventProcessor {
         let startIndex = currentPacket * maximumPacketSize
         let endIndex =
             currentPacket < expectedCompletePackets
-            ? startIndex + maximumPacketSize - 1 : startIndex + expectedRemainingBytes - 1
+                ? startIndex + maximumPacketSize - 1 : startIndex + expectedRemainingBytes - 1
 
         let dataToSend = globalFirmwareManager.data[startIndex...endIndex]
 
