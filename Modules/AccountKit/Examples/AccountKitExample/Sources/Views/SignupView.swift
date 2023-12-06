@@ -66,8 +66,8 @@ struct SignupView: View {
             SecureField("confirm password", text: $organisation.confirmPassword)
                 .textFieldStyle(.roundedBorder)
             if !organisation.password.isEmpty,
-               (!organisation.confirmPassword.isEmpty
-                   && !organisation.passwordsMatch()) {
+               !organisation.confirmPassword.isEmpty,
+               !organisation.passwordsMatch() {
                 Text(organisation.invalidConfirmPasswordText)
                     .font(.footnote)
                     .foregroundStyle(.red)

@@ -14,7 +14,7 @@ public extension Project {
         options: Options = .options(),
         schemes: [Scheme] = []
     ) -> Project {
-        let appInfoPlist = InfoPlist.base(version: version).merging(infoPlist) { (_, new) in new }
+        let appInfoPlist = InfoPlist.base(version: version).merging(infoPlist) { _, new in new }
 
         let mainTarget = Target(
             name: name,

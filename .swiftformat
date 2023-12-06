@@ -103,6 +103,7 @@
 --enable redundantNilInit
 --enable redundantObjc
 --enable redundantOptionalBinding
+--enable redundantParens
 
 # Disabled rules
 

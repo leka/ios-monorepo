@@ -71,8 +71,8 @@ class CompanyViewModel: ObservableObject {
             case .user:
                 guard let i = currentCompany.users.firstIndex(where: { $0.id == id }) else {
                     return [
-                        (!profileIsAssigned(.user)
-                            ? DesignKitAsset.Avatars.questionMark.name : DesignKitAsset.Avatars.userBlue.name),
+                        !profileIsAssigned(.user)
+                            ? DesignKitAsset.Avatars.questionMark.name : DesignKitAsset.Avatars.userBlue.name,
                         "Utilisateur",
                     ]
                 }

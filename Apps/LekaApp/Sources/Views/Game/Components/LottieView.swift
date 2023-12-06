@@ -73,7 +73,7 @@ struct LottieView: UIViewRepresentable {
         if play {
             if reverse {
                 context.coordinator.parent.animationView.play(fromProgress: 0.0, toProgress: 1.0, loopMode: .none) {
-                    (_) in
+                    _ in
                     animationView.pause()
                 }
             } else {
@@ -88,7 +88,7 @@ struct LottieView: UIViewRepresentable {
             if reverse {
                 context.coordinator.parent.animationView.animationSpeed = speed * 1.5
                 context.coordinator.parent.animationView.play(fromProgress: 1.0, toProgress: 0.0, loopMode: .none) {
-                    (_) in
+                    _ in
                     context.coordinator.parent.animationView.stop()
                     context.coordinator.parent.animationView.animationSpeed = speed
                 }

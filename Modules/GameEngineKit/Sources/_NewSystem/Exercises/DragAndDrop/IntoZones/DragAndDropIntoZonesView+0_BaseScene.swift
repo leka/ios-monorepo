@@ -145,7 +145,7 @@ extension DragAndDropIntoZonesView {
             expectedNode.texture = texture
             expectedNode.scaleForMax(sizeOf: biggerSide * 0.8)
             expectedNode.position = CGPoint(x: dropZoneA.node.position.x + 80, y: 110)
-            (expectedItemsNodes[dropZoneA.details.value, default: []]).append(expectedNode)
+            expectedItemsNodes[dropZoneA.details.value, default: []].append(expectedNode)
 
             addChild(expectedNode)
         }

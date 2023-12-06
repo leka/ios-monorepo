@@ -39,7 +39,7 @@ public extension Project {
             settings: settings)
 
         let exampleTargets = examples.compactMap { example in
-            let appInfoPlist = InfoPlist.base(version: "1.0.0").merging(example.infoPlist) { (_, new) in new }
+            let appInfoPlist = InfoPlist.base(version: "1.0.0").merging(example.infoPlist) { _, new in new }
 
             let target = Target(
                 name: example.name,

@@ -15,7 +15,7 @@ public struct CharacteristicModelWriteOnly {
 
     // MARK: Public
 
-    public typealias Callback = (() -> Void)
+    public typealias Callback = () -> Void
 
     public let characteristicUUID: CBUUID
     public let serviceUUID: CBUUID

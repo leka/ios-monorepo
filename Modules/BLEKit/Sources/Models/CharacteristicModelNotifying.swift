@@ -21,7 +21,7 @@ public struct CharacteristicModelNotifying {
 
     // MARK: Public
 
-    public typealias Callback = ((_ data: Data?) -> Void)
+    public typealias Callback = (_ data: Data?) -> Void
 
     public let characteristicUUID: CBUUID
     public let serviceUUID: CBUUID
