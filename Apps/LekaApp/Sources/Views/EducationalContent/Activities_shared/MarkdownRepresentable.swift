@@ -78,7 +78,7 @@ struct MarkdownRepresentable: UIViewRepresentable {
 
         // TODO(@ladislas): reimport when Down is fixed
         // let attributedText = try? down.toAttributedString(styler: DownStyler())
-        let attributedText = NSMutableAttributedString.init(
+        let attributedText = NSMutableAttributedString(
             string: "TODO(@ladislas): use real markdown when Down is fixed")
 
         markdownObject.textView.attributedText = attributedText
