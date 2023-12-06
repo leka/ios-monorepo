@@ -95,6 +95,7 @@
 --enable redundantClosure
 --enable redundantExtensionACL
 --enable redundantFileprivate
+--enable redundantGet
 
 # Disabled rules
 
