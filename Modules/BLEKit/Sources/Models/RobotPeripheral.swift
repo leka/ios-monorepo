@@ -112,7 +112,7 @@ public class RobotPeripheral: Equatable {
                 switch completion {
                     case .finished:
                         characteristic.onWrite?()
-                    case .failure(let error):
+                    case let .failure(error):
                         print("💥 ERROR: \(error)")
                 }
             },

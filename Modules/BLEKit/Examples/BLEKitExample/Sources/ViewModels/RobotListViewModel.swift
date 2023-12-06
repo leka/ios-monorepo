@@ -37,7 +37,7 @@ public class RobotListViewModel: ObservableObject {
                 .receive(on: DispatchQueue.main)
                 .sink(
                     receiveCompletion: { completion in
-                        if case .failure(let error) = completion {
+                        if case let .failure(error) = completion {
                             print("💥 ERROR: \(error)")
                         }
                     },
@@ -61,7 +61,7 @@ public class RobotListViewModel: ObservableObject {
             .receive(on: DispatchQueue.main)
             .sink(
                 receiveCompletion: { completion in
-                    if case .failure(let error) = completion {
+                    if case let .failure(error) = completion {
                         print("💥 ERROR: \(error)")
                     }
                 },

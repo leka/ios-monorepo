@@ -58,6 +58,9 @@
 
 --enable hoistAwait
 
+--enable hoistPatternLet
+--patternlet hoist
+
 # Disabled rules
 
 --disable blankLinesBetweenImports

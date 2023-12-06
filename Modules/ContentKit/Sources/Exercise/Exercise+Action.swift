@@ -34,31 +34,31 @@ public extension Exercise {
             var container = encoder.container(keyedBy: CodingKeys.self)
 
             switch self {
-                case .ipad(let ipadAction):
+                case let .ipad(ipadAction):
                     try container.encode("ipad", forKey: .type)
                     var valueContainer = container.nestedContainer(keyedBy: CodingKeys.self, forKey: .value)
                     switch ipadAction {
-                        case .color(let value):
+                        case let .color(value):
                             try valueContainer.encode("color", forKey: .type)
                             try valueContainer.encode(value, forKey: .value)
-                        case .image(let name):
+                        case let .image(name):
                             try valueContainer.encode("image", forKey: .type)
                             try valueContainer.encode(name, forKey: .value)
-                        case .audio(let name):
+                        case let .audio(name):
                             try valueContainer.encode("audio", forKey: .type)
                             try valueContainer.encode(name, forKey: .value)
-                        case .speech(let value):
+                        case let .speech(value):
                             try valueContainer.encode("speech", forKey: .type)
                             try valueContainer.encode(value, forKey: .value)
                     }
-                case .robot(let robotAction):
+                case let .robot(robotAction):
                     try container.encode("robot", forKey: .type)
                     var valueContainer = container.nestedContainer(keyedBy: CodingKeys.self, forKey: .value)
                     switch robotAction {
-                        case .image(let id):
+                        case let .image(id):
                             try valueContainer.encode("image", forKey: .type)
                             try valueContainer.encode(id, forKey: .value)
-                        case .color(let value):
+                        case let .color(value):
                             try valueContainer.encode("color", forKey: .type)
                             try valueContainer.encode(value, forKey: .value)
                         case .audio:

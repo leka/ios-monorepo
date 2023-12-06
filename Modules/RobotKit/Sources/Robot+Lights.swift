@@ -94,66 +94,66 @@ public extension Robot {
             var output: [[UInt8]] = [[]]
 
             switch self {
-                case .all(let color):
+                case let .all(color):
                     let ears = shineFull(.ears, in: color)
                     let belt = shineFull(.belt, in: color)
                     output.append(contentsOf: [ears, belt])
 
-                case .spot(_: let position, let ids, let color):
+                case let .spot(_: position, ids, color):
                     for id in ids {
                         let payload = shineSpot(id, on: position, in: color)
                         output.append(payload)
                     }
 
-                case .full(let position, let color):
+                case let .full(position, color):
                     let payload = shineFull(position, in: color)
                     output.append(payload)
 
-                case .range(let start, let end, let color):
+                case let .range(start, end, color):
                     let payload = shineRange(from: start, to: end, in: color)
                     output.append(payload)
 
-                case .halfLeft(let color):
+                case let .halfLeft(color):
                     let start: UInt8 = 0
                     let end: UInt8 = 9
                     let payload = shineRange(from: start, to: end, in: color)
                     output.append(payload)
 
-                case .halfRight(let color):
+                case let .halfRight(color):
                     let start: UInt8 = 10
                     let end: UInt8 = 19
                     let payload = shineRange(from: start, to: end, in: color)
                     output.append(payload)
 
-                case .quarterFrontLeft(let color):
+                case let .quarterFrontLeft(color):
                     let start: UInt8 = 0
                     let end: UInt8 = 4
                     let payload = shineRange(from: start, to: end, in: color)
                     output.append(payload)
 
-                case .quarterFrontRight(let color):
+                case let .quarterFrontRight(color):
                     let start: UInt8 = 15
                     let end: UInt8 = 19
                     let payload = shineRange(from: start, to: end, in: color)
                     output.append(payload)
 
-                case .quarterBackLeft(let color):
+                case let .quarterBackLeft(color):
                     let start: UInt8 = 5
                     let end: UInt8 = 9
                     let payload = shineRange(from: start, to: end, in: color)
                     output.append(payload)
 
-                case .quarterBackRight(let color):
+                case let .quarterBackRight(color):
                     let start: UInt8 = 10
                     let end: UInt8 = 14
                     let payload = shineRange(from: start, to: end, in: color)
                     output.append(payload)
 
-                case .earLeft(let color):
+                case let .earLeft(color):
                     let payload = shineSpot(0, on: .ears, in: color)
                     output.append(payload)
 
-                case .earRight(let color):
+                case let .earRight(color):
                     let payload = shineSpot(1, on: .ears, in: color)
                     output.append(payload)
             }
@@ -224,7 +224,7 @@ public extension Robot {
         switch lights {
             case .all:
                 shine(.all(in: .black))
-            case .full(let position, _):
+            case let .full(position, _):
                 shine(.full(position, in: .black))
             case .halfLeft:
                 shine(.halfLeft(in: .black))
@@ -242,9 +242,9 @@ public extension Robot {
                 shine(.earLeft(in: .black))
             case .earRight:
                 shine(.earRight(in: .black))
-            case .spot(let position, let ids, _):
+            case let .spot(position, ids, _):
                 shine(.spot(position, ids: ids, in: .black))
-            case .range(let start, let end, _):
+            case let .range(start, end, _):
                 shine(.range(start: start, end: end, in: .black))
         }
     }
@@ -254,7 +254,7 @@ public extension Robot {
         switch lights {
             case .all:
                 shine(.all(in: .black))
-            case .full(let position):
+            case let .full(position):
                 shine(.full(position, in: .black))
             case .halfLeft:
                 shine(.halfLeft(in: .black))
@@ -272,9 +272,9 @@ public extension Robot {
                 shine(.earLeft(in: .black))
             case .earRight:
                 shine(.earRight(in: .black))
-            case .spot(let postion, let ids):
+            case let .spot(postion, ids):
                 shine(.spot(postion, ids: ids, in: .black))
-            case .range(let start, let end):
+            case let .range(start, end):
                 shine(.range(start: start, end: end, in: .black))
         }
     }

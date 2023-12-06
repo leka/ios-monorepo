@@ -48,7 +48,7 @@ class UpdateProcessTemplate: UpdateProcessProtocol {
         switch completion {
             case .finished:
                 self.currentStage.send(completion: .finished)
-            case .failure(let error):
+            case let .failure(error):
                 self.currentStage.send(completion: .failure(.updateProcessNotAvailable)) // only available error
         }
     }

@@ -46,14 +46,14 @@ public extension Robot {
                     ]
                     output.append(contentsOf: payload)
 
-                case .free(let left, let right):
+                case let .free(left, right):
                     let payload = [
                         setMotor(.left, speed: left, rotation: left < 0 ? .clockwise : .counterclockwise),
                         setMotor(.right, speed: right, rotation: right < 0 ? .clockwise : .counterclockwise),
                     ]
                     output.append(contentsOf: payload)
 
-                case .forward(let speed):
+                case let .forward(speed):
                     guard speed.isInRange0to1 else { break }
                     let payload = [
                         setMotor(.left, speed: speed, rotation: .counterclockwise),
@@ -61,7 +61,7 @@ public extension Robot {
                     ]
                     output.append(contentsOf: payload)
 
-                case .forwardLeft(let speed):
+                case let .forwardLeft(speed):
                     guard speed.isInRange0to1 else { break }
                     let payload = [
                         setMotor(.left, speed: speed * 0.8, rotation: .counterclockwise),
@@ -69,7 +69,7 @@ public extension Robot {
                     ]
                     output.append(contentsOf: payload)
 
-                case .forwardRight(let speed):
+                case let .forwardRight(speed):
                     guard speed.isInRange0to1 else { break }
                     let payload = [
                         setMotor(.left, speed: speed, rotation: .counterclockwise),
@@ -77,7 +77,7 @@ public extension Robot {
                     ]
                     output.append(contentsOf: payload)
 
-                case .backward(let speed):
+                case let .backward(speed):
                     guard speed.isInRange0to1 else { break }
                     let payload = [
                         setMotor(.left, speed: speed, rotation: .clockwise),
@@ -85,7 +85,7 @@ public extension Robot {
                     ]
                     output.append(contentsOf: payload)
 
-                case .backwardLeft(let speed):
+                case let .backwardLeft(speed):
                     guard speed.isInRange0to1 else { break }
                     let payload = [
                         setMotor(.left, speed: speed * 0.8, rotation: .clockwise),
@@ -93,7 +93,7 @@ public extension Robot {
                     ]
                     output.append(contentsOf: payload)
 
-                case .backwardRight(let speed):
+                case let .backwardRight(speed):
                     guard speed.isInRange0to1 else { break }
                     let payload = [
                         setMotor(.left, speed: speed, rotation: .clockwise),
@@ -101,7 +101,7 @@ public extension Robot {
                     ]
                     output.append(contentsOf: payload)
 
-                case .spin(let rotation, let speed):
+                case let .spin(rotation, speed):
                     guard speed.isInRange0to1 else { break }
                     let payload = [
                         setMotor(

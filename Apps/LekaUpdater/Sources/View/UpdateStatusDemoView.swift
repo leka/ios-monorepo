@@ -30,7 +30,7 @@ class UpdateStatusDemoViewModel: ObservableObject {
                 switch completion {
                     case .finished:
                         self.state = "Votre robot est maintenant à jour!"
-                    case .failure(let error):
+                    case let .failure(error):
                         self.state = "Oops, something wrong happened"
 
                         switch error {

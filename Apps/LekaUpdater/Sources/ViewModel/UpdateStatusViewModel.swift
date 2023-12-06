@@ -59,7 +59,7 @@ class UpdateStatusViewModel: ObservableObject {
                 switch completion {
                     case .finished:
                         self.updatingStatus = .updateFinished
-                    case .failure(let error):
+                    case let .failure(error):
                         self.updatingStatus = .error
 
                         switch error {

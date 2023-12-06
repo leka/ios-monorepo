@@ -34,7 +34,7 @@ public struct RobotThenTouchToSelectView: View {
     public init(exercise: Exercise, data: ExerciseSharedData? = nil) {
         guard
             let payload = exercise.payload as? TouchToSelect.Payload,
-            case .robot(let actionType) = exercise.action
+            case let .robot(actionType) = exercise.action
         else {
             log.error("Exercise payload is not .selection and/or Exercise does not contain robot action")
             fatalError("💥 Exercise payload is not .selection and/or Exercise does not contain robot action")
@@ -54,7 +54,7 @@ public struct RobotThenTouchToSelectView: View {
         HStack(spacing: 0) {
             Button {
                 switch actionType {
-                    case .color(let value):
+                    case let .color(value):
                         robot.shine(.all(in: .init(from: value)))
                     case .audio, .image, .speech:
                         log.error("Action not available for robot: \(actionType)")
