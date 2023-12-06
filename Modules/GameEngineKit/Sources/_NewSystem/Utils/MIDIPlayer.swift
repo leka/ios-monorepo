@@ -58,12 +58,23 @@ class MIDIPlayer: ObservableObject {
         sequencer.play()
     }
 
+    func stop() {
+        sequencer.stop()
+    }
+
     func getMidiNotes() -> [MIDINoteData] {
-        sequencer.tracks[1].getMIDINoteData()
+        guard let track = sequencer.tracks.first else {
+            fatalError("Sequencer track not found")
+        }
+
+        return track.getMIDINoteData()
     }
 
     func getDuration() -> Double {
-        // TODO(@hugo): BUG - length is not correct, it returns 32 seconds but the track is ~12 secondes long
-        sequencer.tracks[1].length
+        guard let track = sequencer.tracks.first else {
+            fatalError("Sequencer track not found")
+        }
+
+        return track.length * 60 / sequencer.tempo
     }
 }
