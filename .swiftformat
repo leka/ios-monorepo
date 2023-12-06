@@ -80,6 +80,10 @@
 
 --enable modifierOrder
 
+--enable numberFormatting
+--hexliteralcase uppercase
+--exponentcase lowercase
+
 # Disabled rules
 
 --disable blankLinesBetweenImports

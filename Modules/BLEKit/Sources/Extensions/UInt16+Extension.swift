@@ -10,7 +10,7 @@ public extension UInt16 {
     }
 
     var lowByte: UInt8 {
-        UInt8(self & 0xff)
+        UInt8(self & 0xFF)
     }
 
     var data: Data {
