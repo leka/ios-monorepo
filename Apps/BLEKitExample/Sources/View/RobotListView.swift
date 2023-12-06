@@ -99,7 +99,7 @@ struct RobotListView: View {
         )
         .buttonStyle(.borderedProminent)
         .tint(botVM.currentlyConnectedBotIndex == botVM.currentlySelectedBotIndex ? Color(.orange) : .accentColor)
-        .disabled(bleManager.peripherals.count == 0)
+        .disabled(bleManager.peripherals.isEmpty)
         .disabled(botVM.currentlySelectedBotIndex == nil)
     }
 }

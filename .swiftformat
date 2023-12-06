@@ -70,6 +70,8 @@
 
 --enable initCoderUnavailable
 
+--enable isEmpty
+
 # Disabled rules
 
 --disable blankLinesBetweenImports
