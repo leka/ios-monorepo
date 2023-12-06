@@ -99,6 +99,7 @@
 --enable redundantInit
 --enable redundantInternal
 --enable redundantLet
+--enable redundantLetError
 
 # Disabled rules
 
