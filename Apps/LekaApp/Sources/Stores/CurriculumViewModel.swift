@@ -8,10 +8,12 @@ import Yams
 class CurriculumViewModel: ObservableObject, YamlFileDecodable {
 
     // MARK: - CurriculumList Published properties
+
     @Published var currentCurriculumCategory: CurriculumCategories = .emotionRecognition
     @Published var availableCurriculums: [Curriculum] = []
 
     // MARK: - Current || selected Curriculum Published properties
+
     @Published var currentCurriculum = Curriculum()
     @Published var currentCurriculumSelectedActivityID: UUID?
     @Published var selectedCurriculumHeaderTitle: String = ""
@@ -30,6 +32,7 @@ class CurriculumViewModel: ObservableObject, YamlFileDecodable {
     }
 
     // MARK: - CurriculumList related Work
+
     func getCurriculumList(category: CurriculumCategories) -> CurriculumList {
         do {
             return try self.decodeYamlFile(withName: category.rawValue, toType: CurriculumList.self)
@@ -55,6 +58,7 @@ class CurriculumViewModel: ObservableObject, YamlFileDecodable {
     }
 
     // MARK: - Curriculum-Specific Work
+
     func getCurriculum(_ title: String) -> Curriculum {
         do {
             return try self.decodeYamlFile(withName: title, toType: Curriculum.self)
@@ -81,6 +85,7 @@ class CurriculumViewModel: ObservableObject, YamlFileDecodable {
     }
 
     // MARK: - ActivityList -> will not stay here - list activities files from the Bundle instead
+
     @Published var activityFilesCompleteList: [String] = []  // will not stay like that - list files instead
     func getCompleteActivityList() {
         for curriculum in availableCurriculums {

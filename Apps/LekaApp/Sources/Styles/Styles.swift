@@ -7,6 +7,7 @@ import Foundation
 import SwiftUI
 
 // MARK: - Robot (robot connection) Button Style
+
 struct NoFeedback_ButtonStyle: ButtonStyle {
     func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
@@ -14,6 +15,7 @@ struct NoFeedback_ButtonStyle: ButtonStyle {
 }
 
 // MARK: - Edit Button Style -> avatar picker, profile editor, explorer mode tile
+
 struct BorderedCapsule_NoFeedback_ButtonStyle: ButtonStyle {
 
     var font: Font
@@ -55,6 +57,7 @@ struct CircledIcon_NoFeedback_ButtonStyle: ButtonStyle {
 }
 
 // MARK: - Login/Signup Button Style
+
 struct Connect_ButtonStyle: ButtonStyle {
     @EnvironmentObject var metrics: UIMetrics
     var reversed: Bool = false
@@ -72,6 +75,7 @@ struct Connect_ButtonStyle: ButtonStyle {
 }
 
 // MARK: - Job Picker Toggle Style
+
 struct JobPickerToggleStyle: ToggleStyle {
     @EnvironmentObject var metrics: UIMetrics
     var onImage = "checkmark.circle"
@@ -109,6 +113,7 @@ struct JobPickerToggleStyle: ToggleStyle {
 }
 
 // MARK: - Custom Gauge Style (FollowUp stats)
+
 struct SuccessGaugeStyle: GaugeStyle {
     func makeBody(configuration: Configuration) -> some View {
         let color: Color = {
@@ -138,6 +143,7 @@ struct SuccessGaugeStyle: GaugeStyle {
 }
 
 // MARK: - Emotion Buttons Style (Gameplay)
+
 struct ActivityAnswer_ButtonStyle: ButtonStyle {
 
     var isEnabled: Bool = false
@@ -164,6 +170,7 @@ struct ActivityAnswer_ButtonStyle: ButtonStyle {
 }
 
 // MARK: - Play Sound Button Style (Gameplay)
+
 struct PlaySound_ButtonStyle: ButtonStyle {
 
     var progress: CGFloat
@@ -194,6 +201,7 @@ struct PlaySound_ButtonStyle: ButtonStyle {
 }
 
 // MARK: - CheerScreen Buttons
+
 struct BorderedCapsule_ButtonStyle: ButtonStyle {
 
     var isFilled: Bool = true

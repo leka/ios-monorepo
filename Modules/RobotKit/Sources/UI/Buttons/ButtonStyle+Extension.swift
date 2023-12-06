@@ -5,7 +5,9 @@
 import SwiftUI
 
 //
+
 // MARK: - Public ButtonStyle extensions
+
 //
 
 extension ButtonStyle where Self == RobotControlPlainButtonStyle {
@@ -25,7 +27,9 @@ extension ButtonStyle where Self == RobotControlBorderedButtonStyle {
 }
 
 //
+
 // MARK: - ButtonStyle struct implementations
+
 //
 
 public struct RobotControlPlainButtonStyle: ButtonStyle {

@@ -17,6 +17,7 @@ class CompanyViewModel: ObservableObject {
     @Published var editingProfile: Bool = false
 
     // MARK: - METHODS
+
     // Account Managment
     func disconnect() {
         currentCompany = Company(mail: "", password: "", teachers: [], users: [])
@@ -245,6 +246,7 @@ class CompanyViewModel: ObservableObject {
     }
 
     // MARK: - DiscoveryMode
+
     func setupDiscoveryCompany() {
         currentCompany = DiscoveryCompany().discoveryCompany
         profilesInUse[.teacher] = currentCompany.teachers[0].id

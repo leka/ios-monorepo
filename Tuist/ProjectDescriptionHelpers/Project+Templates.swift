@@ -12,7 +12,9 @@ import ProjectDescription
 extension Project {
 
     //
+
     // MARK: - Internal
+
     //
 
     internal static func makeFrameworkTargets(
@@ -21,6 +23,7 @@ extension Project {
         -> [Target]
     {
         // MARK: - Set product type
+
         var product = product
 
         let generateModulesAsFrameworksForDebug = Environment.generateModulesAsFrameworksForDebug.getBoolean(
@@ -31,6 +34,7 @@ extension Project {
         }
 
         // MARK: - Set platform type
+
         var platform = platform
 
         let generateMacOSApps = Environment.generateMacOSApps.getBoolean(default: false)

@@ -8,6 +8,7 @@ import Foundation
 import SwiftUI
 
 // MARK: - Shape
+
 // Fill & Stroke with 1 modifier
 extension Shape {
     func fill<Fill: ShapeStyle, Stroke: ShapeStyle>(
@@ -20,6 +21,7 @@ extension Shape {
 }
 
 // MARK: - String
+
 // Check if email format id correct
 extension String {
     func isValidEmail() -> Bool {
@@ -30,6 +32,7 @@ extension String {
 }
 
 // MARK: - Image
+
 // Used for Activities Icons && Commands/Stories buttons
 extension Image {
     func activityIconImageModifier(diameter: CGFloat = 132, padding: CGFloat = 0) -> some View {
@@ -51,6 +54,7 @@ extension Image {
 }
 
 // MARK: - dismiss Keyboard when focusState not available
+
 #if canImport(UIKit)
     extension View {
         func hideKeyboard() {

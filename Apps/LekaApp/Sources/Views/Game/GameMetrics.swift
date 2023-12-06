@@ -8,6 +8,7 @@ import SwiftUI
 class GameMetrics: NSObject, ObservableObject {
 
     // MARK: - Views Metrics & Animations parameters
+
     // GameView
     @Published var headerTotalHeight: CGFloat = 155
     @Published var headerSpacing: CGFloat = 40

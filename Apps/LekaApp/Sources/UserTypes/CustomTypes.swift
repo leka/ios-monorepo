@@ -6,11 +6,13 @@ import Foundation
 import SwiftUI
 
 // MARK: - LekaTextFields type and focus managment
+
 enum FormField {
     case mail, password, confirm, name
 }
 
 // MARK: - Localized Custom Type for Yaml Translations
+
 struct LocalizedContent: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case enUS = "en_US"
@@ -21,6 +23,7 @@ struct LocalizedContent: Codable, Equatable {
 }
 
 // MARK: - Game States for UI Translations
+
 enum ResultType {
     case idle, fail, medium, success
 }

@@ -11,3 +11,6 @@
 --enable applicationMain
 --enable assertionFailures
 --enable blankLineAfterImports
+
+--enable blankLinesAroundMark
+--lineaftermarks true

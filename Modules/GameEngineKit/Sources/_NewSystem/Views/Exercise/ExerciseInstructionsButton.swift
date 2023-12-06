@@ -29,6 +29,7 @@ class SpeakerViewModel: NSObject, ObservableObject, AVSpeechSynthesizerDelegate 
     }
 
     // MARK: AVSpeechSynthesizerDelegate
+
     internal func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didStart utterance: AVSpeechUtterance) {
         self.isSpeaking = true
     }

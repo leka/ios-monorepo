@@ -30,6 +30,7 @@ class ActivityViewModel: NSObject, ObservableObject, YamlFileDecodable {
     }
 
     // MARK: - Current Activity's properties
+
     @Published var currentActivity = Activity()
     @Published var selectedActivityID: UUID?  // save scroll position
     @Published var currentActivityTitle: String = ""
@@ -48,6 +49,7 @@ class ActivityViewModel: NSObject, ObservableObject, YamlFileDecodable {
     @Published var answersAreDisabled: Bool = false
 
     // MARK: - Game-related animations & Interactions
+
     @Published var tapIsDisabled: Bool = false
     @Published var pressedIndex: Int = 100
     @Published var trials: Int = 0
