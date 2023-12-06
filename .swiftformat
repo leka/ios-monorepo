@@ -111,6 +111,8 @@
 --enable redundantSelf
 --self init-only
 
+--enable redundantStaticSelf
+
 # Disabled rules
 
 --disable blankLinesBetweenImports
