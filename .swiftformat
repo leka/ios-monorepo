@@ -8,3 +8,4 @@
 --enable acronyms
 --enable andOperator
 --enable anyObjectProtocol
+--enable applicationMain
