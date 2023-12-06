@@ -102,6 +102,7 @@
 --enable redundantLetError
 --enable redundantNilInit
 --enable redundantObjc
+--enable redundantOptionalBinding
 
 # Disabled rules
 

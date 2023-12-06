@@ -54,7 +54,7 @@ extension RobotDiscoveryModel: Equatable {
 }
 
 private func computeVersion(version: String?, name: String) -> String {
-    if let version = version {
+    if let version {
         return "\(version)"
     }
 

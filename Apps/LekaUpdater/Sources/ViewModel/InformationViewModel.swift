@@ -53,14 +53,14 @@ class InformationViewModel: ObservableObject {
     }
 
     private func updateShowRobotCannotBeUpdated(robotOsVersion: Version?) {
-        guard let robotOsVersion = robotOsVersion else { return }
+        guard let robotOsVersion else { return }
 
         let isUpdateProcessAvailable = UpdateProcessController.availableVersions.contains(robotOsVersion)
         showRobotCannotBeUpdated = !isUpdateProcessAvailable
     }
 
     private func updateShowRobotNeedsUpdate(robotOsVersion: Version?) {
-        if let robotOsVersion = robotOsVersion {
+        if let robotOsVersion {
             let isUpdateProcessAvailable = UpdateProcessController.availableVersions.contains(robotOsVersion)
             let isRobotNeedsUpdate = globalFirmwareManager.compareWith(version: robotOsVersion) == .needsUpdate
             showRobotNeedsUpdate = isRobotNeedsUpdate && isUpdateProcessAvailable

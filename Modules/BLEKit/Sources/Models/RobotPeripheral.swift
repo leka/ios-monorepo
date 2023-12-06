@@ -72,7 +72,7 @@ public class RobotPeripheral: Equatable {
                     // nothing to do
                 },
                 receiveValue: { data in
-                    guard let data = data else { return }
+                    guard let data else { return }
                     characteristic.onRead?(data)
                 }
             )
@@ -139,7 +139,7 @@ public class RobotPeripheral: Equatable {
                     // nothing to do
                 },
                 receiveValue: { data in
-                    if let data = data {
+                    if let data {
                         characteristic.onNotification?(data)
                     }
                 }

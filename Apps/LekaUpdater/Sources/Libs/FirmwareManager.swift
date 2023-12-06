@@ -55,7 +55,7 @@ class FirmwareManager: ObservableObject {
     let currentVersion = Version(Bundle.main.object(forInfoDictionaryKey: "LEKA_OS_VERSION") as! String)!
 
     func compareWith(version: Version?) -> RobotUpdateStatus {
-        guard let version = version else {
+        guard let version else {
             return .needsUpdate
         }
 

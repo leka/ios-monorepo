@@ -24,7 +24,7 @@ extension DragAndDropIntoZonesView {
             self.viewModel = viewModel
             self.hints = hints
             self.dropZoneA = DropZoneNode(details: dropZoneA, zone: .zoneA)
-            if let dropZoneB = dropZoneB {
+            if let dropZoneB {
                 self.dropZoneB = DropZoneNode(details: dropZoneB, zone: .zoneB)
             }
             super.init(size: CGSize.zero)
@@ -66,7 +66,7 @@ extension DragAndDropIntoZonesView {
             self.viewModel.$choices
                 .receive(on: DispatchQueue.main)
                 .sink(receiveValue: { [weak self] choices in
-                    guard let self = self else { return }
+                    guard let self else { return }
 
                     for choice in choices where choice.id == self.playedNode?.id {
                         if choice.state == .rightAnswer {
@@ -245,7 +245,7 @@ extension DragAndDropIntoZonesView {
                     break
                 }
 
-                if let dropZoneB = dropZoneB {
+                if let dropZoneB {
                     if playedNode!.fullyContains(bounds: dropZoneB.node.frame) {
                         viewModel.onChoiceTapped(choice: gameplayChoiceModel!, dropZone: dropZoneB.zone)
                         break

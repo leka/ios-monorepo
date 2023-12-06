@@ -45,7 +45,7 @@ class Robot: ObservableObject {
     }
 
     func runReinforcer(_ reinforcer: UInt8) {
-        guard let robotPeripheral = robotPeripheral else { return }
+        guard let robotPeripheral else { return }
 
         commands.addMotivator(reinforcer)
         let data = Data(commands.getCommands())
@@ -62,7 +62,7 @@ class Robot: ObservableObject {
             if newChar.characteristicUUID == BLESpecs.DeviceInformation.Characteristics.manufacturer {
                 newChar.onNotification = {
                     [weak self] data in
-                    if let data = data {
+                    if let data {
                         self?.manufacturer = String(
                             decoding: data, as: UTF8.self)
                     }
@@ -72,7 +72,7 @@ class Robot: ObservableObject {
             if newChar.characteristicUUID == BLESpecs.DeviceInformation.Characteristics.modelNumber {
                 newChar.onNotification = {
                     [weak self] data in
-                    if let data = data {
+                    if let data {
                         self?.modelNumber = String(
                             decoding: data, as: UTF8.self)
                     }
@@ -82,7 +82,7 @@ class Robot: ObservableObject {
             if newChar.characteristicUUID == BLESpecs.DeviceInformation.Characteristics.serialNumber {
                 newChar.onNotification = {
                     [weak self] data in
-                    if let data = data {
+                    if let data {
                         self?.serialNumber = String(
                             decoding: data, as: UTF8.self)
                     }
@@ -92,7 +92,7 @@ class Robot: ObservableObject {
             if newChar.characteristicUUID == BLESpecs.DeviceInformation.Characteristics.osVersion {
                 newChar.onNotification = {
                     [weak self] data in
-                    if let data = data {
+                    if let data {
                         self?.osVersion = String(
                             decoding: data, as: UTF8.self)
                     }
@@ -128,7 +128,7 @@ class Robot: ObservableObject {
             if newChar.characteristicUUID == BLESpecs.MagicCard.Characteristics.id {
                 newChar.onNotification = {
                     [weak self] data in
-                    if let data = data {
+                    if let data {
                         self?.magicCardID = Int(data[1])
                     }
                 }

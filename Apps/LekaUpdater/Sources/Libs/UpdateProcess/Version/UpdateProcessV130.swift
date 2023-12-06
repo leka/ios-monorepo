@@ -316,7 +316,7 @@ private class StateSendingFile: GKState, StateEventProcessor {
 
         let dataToSend = globalFirmwareManager.data[startIndex...endIndex]
 
-        if let characteristic = characteristic {
+        if let characteristic {
             Robot.shared.connectedPeripheral?.send(dataToSend, forCharacteristic: characteristic)
         }
     }
@@ -455,7 +455,7 @@ private class StateWaitingForRobotToReboot: GKState, StateEventProcessor {
                     let robotDetected = robotDiscoveryList.first { robotDiscovery in
                         robotDiscovery.robotPeripheral == self.expectedRobot
                     }
-                    if let robotDetected = robotDetected {
+                    if let robotDetected {
                         self.isRobotUpToDate =
                             Version(robotDetected.osVersion) == globalFirmwareManager.currentVersion
 

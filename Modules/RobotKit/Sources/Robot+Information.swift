@@ -42,7 +42,7 @@ extension Robot {
             characteristicUUID: BLESpecs.DeviceInformation.Characteristics.osVersion,
             serviceUUID: BLESpecs.DeviceInformation.service,
             onRead: { data in
-                if let data = data {
+                if let data {
                     self.osVersion.send(
                         Version(
                             String(decoding: data, as: UTF8.self)
@@ -60,7 +60,7 @@ extension Robot {
             characteristicUUID: BLESpecs.DeviceInformation.Characteristics.serialNumber,
             serviceUUID: BLESpecs.DeviceInformation.service,
             onRead: { data in
-                if let data = data {
+                if let data {
                     self.serialNumber.send(
                         String(decoding: data, as: UTF8.self)
                             .replacingOccurrences(of: "\0", with: ""))

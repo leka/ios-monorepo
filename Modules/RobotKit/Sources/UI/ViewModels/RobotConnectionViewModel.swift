@@ -33,7 +33,7 @@ public class RobotConnectionViewModel: ObservableObject {
             .sink { _ in
                 // nothing to do
             } receiveValue: { [weak self] discoveries in
-                guard let self = self else { return }
+                guard let self else { return }
                 self.robotDiscoveries = discoveries
                 log.trace("🔵 BLE - Discoveries found: \(discoveries)")
             }
@@ -53,7 +53,7 @@ public class RobotConnectionViewModel: ObservableObject {
             .sink { _ in
                 // nothing to do
             } receiveValue: { [weak self] peripheral in
-                guard let self = self else { return }
+                guard let self else { return }
                 robot.connectedPeripheral = peripheral
                 self.connectedDiscovery = discovery
                 self.selectedDiscovery = nil

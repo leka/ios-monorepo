@@ -52,7 +52,7 @@ extension DragAndDropToAssociateView {
             self.viewModel.$choices
                 .receive(on: DispatchQueue.main)
                 .sink(receiveValue: { [weak self] choices in
-                    guard let self = self else { return }
+                    guard let self else { return }
                     for choice in choices where choice.id == self.playedNode?.id {
                         if choice.state == .rightAnswer {
                             self.goodAnswerBehavior(self.playedNode!)

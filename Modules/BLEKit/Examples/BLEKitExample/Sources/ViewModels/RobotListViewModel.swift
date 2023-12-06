@@ -51,7 +51,7 @@ public class RobotListViewModel: ObservableObject {
     }
 
     public func connectToSelectedPeripheral() {
-        guard let selectedRobotDiscovery = selectedRobotDiscovery else { return }
+        guard let selectedRobotDiscovery else { return }
         print("Connecting to \(selectedRobotDiscovery.name)")
         bleManager.connect(selectedRobotDiscovery)
             .receive(on: DispatchQueue.main)
@@ -62,7 +62,7 @@ public class RobotListViewModel: ObservableObject {
                     }
                 },
                 receiveValue: { [weak self] connectedRobotPeripheral in
-                    guard let self = self else { return }
+                    guard let self else { return }
                     self.connectedRobotDiscovery = self.selectedRobotDiscovery
                     self.connectedRobotPeripheral = connectedRobotPeripheral
                 }
@@ -103,7 +103,7 @@ public class RobotListViewModel: ObservableObject {
         bleManager.isScanning
             .receive(on: DispatchQueue.main)
             .sink { [weak self] status in
-                guard let self = self else { return }
+                guard let self else { return }
                 self.isScanning = status
             }
             .store(in: &cancellables)

@@ -45,7 +45,7 @@ public struct DragAndDropIntoZonesView: View {
             )
             .frame(width: proxy.size.width, height: proxy.size.height)
             .onAppear {
-                if let dropZoneB = dropZoneB {
+                if let dropZoneB {
                     scene = DragAndDropIntoZonesView.TwoZonesScene(
                         viewModel: viewModel, hints: false, dropZoneA: dropZoneA, dropZoneB: dropZoneB)
                 } else {

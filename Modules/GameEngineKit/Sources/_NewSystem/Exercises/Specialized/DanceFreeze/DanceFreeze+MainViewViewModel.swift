@@ -71,7 +71,7 @@ extension DanceFreeze {
             self.audioPlayer.$progress
                 .receive(on: DispatchQueue.main)
                 .sink { [weak self] in
-                    guard let self = self else { return }
+                    guard let self else { return }
                     self.progress = $0
                     if self.progress == 1 {
                         completeDanceFreeze()
