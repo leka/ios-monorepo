@@ -74,6 +74,8 @@
 
 --enable leadingDelimiters
 
+--enable linebreakAtEndOfFile
+
 # Disabled rules
 
 --disable blankLinesBetweenImports
