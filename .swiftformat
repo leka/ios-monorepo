@@ -72,6 +72,8 @@
 
 --enable isEmpty
 
+--enable leadingDelimiters
+
 # Disabled rules
 
 --disable blankLinesBetweenImports
