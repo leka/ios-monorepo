@@ -20,11 +20,8 @@ class AuthManager: ObservableObject {
     }
 
     @Published private(set) var companyAuthenticationState: FirebaseAuthenticationState = .unknown
-    @Published private var emailHasBeenConfirmed: Bool = false {
-        didSet {
-            print("email Has Been Confirmed:", emailHasBeenConfirmed)
-        }
-    }
+    @Published private var emailHasBeenConfirmed: Bool = false
+
     @Published var errorMessage: String = ""
     @Published var showErrorAlert = false
     @Published var actionRequestMessage: String = ""
@@ -64,43 +61,53 @@ class AuthManager: ObservableObject {
 
     func signIn(email: String, password: String) {
         auth.signIn(withEmail: email, password: password)
-            .sink { [weak self] completion in
-                self?.handleCompletion(completion, newState: .loggedOut, operation: .signIn)
-            } receiveValue: { [weak self] result in
-                self?.handleUserUpdate(result: result, operation: .signIn)
-            }
+            .mapError { $0 as Error }
+            .sink(
+                receiveCompletion:
+                    handleCompletion(newState: .loggedOut, operation: .signIn),
+                receiveValue:
+                    handleUserUpdate(operation: .signIn)
+            )
             .store(in: &cancellables)
     }
 
     func signUp(email: String, password: String) {
         auth.createUser(withEmail: email, password: password)
-            .sink { [weak self] completion in
-                self?.handleCompletion(completion, newState: .loggedOut, operation: .signUp)
-            } receiveValue: { [weak self] result in
-                self?.handleUserUpdate(result: result, operation: .signUp)
-            }
+            .mapError { $0 as Error }
+            .sink(
+                receiveCompletion:
+                    handleCompletion(newState: .loggedOut, operation: .signUp),
+                receiveValue:
+                    handleUserUpdate(operation: .signUp)
+            )
             .store(in: &cancellables)
     }
 
     func sendPasswordReset(to email: String) {
         auth.sendPasswordReset(withEmail: email)
-            .sink { [weak self] completion in
-                self?.handleCompletion(completion, newState: .unknown, operation: .resetPassword)
-            } receiveValue: { _ in
-                self.notificationMessage = "An email has been sent to \(email) to reset your password."
-                self.showNotificationAlert = true
-            }
+            .mapError { $0 as Error }
+            .sink(
+                receiveCompletion:
+                    handleCompletion(newState: .unknown, operation: .resetPassword),
+                receiveValue: { [weak self] _ in
+                    self?.notificationMessage = "An email has been sent to \(email) to reset your password."
+                    self?.showNotificationAlert = true
+                }
+            )
             .store(in: &cancellables)
     }
 
     func sendEmailVerification() {
         auth.currentUser!.sendEmailVerification()
-            .sink { [weak self] completion in
-                self?.handleCompletion(completion, newState: .unknown, operation: .confirmEmail)
-            } receiveValue: { _ in
-                self.notificationMessage = "Verification email sent to your email. Please check your inbox."
-                self.showNotificationAlert = true
-            }
+            .mapError { $0 as Error }
+            .sink(
+                receiveCompletion:
+                    handleCompletion(newState: .unknown, operation: .confirmEmail),
+                receiveValue: { [weak self] _ in
+                    self?.notificationMessage = "Verification email sent to your email. Please check your inbox."
+                    self?.showNotificationAlert = true
+                }
+            )
             .store(in: &cancellables)
     }
 
@@ -131,27 +138,29 @@ class AuthManager: ObservableObject {
     }
 
     // MARK: - Completion & error handling
-    private func handleCompletion(
-        _ completion: Subscribers.Completion<Error>,
-        newState: FirebaseAuthenticationState,
-        operation: FirebaseAuthenticationOperation
-    ) {
-        switch completion {
-            case .finished:
-                break
-            case .failure(let error):
-                errorMessage = error.localizedDescription
-                handleOperationsErrors(error, operation: operation)
-                companyAuthenticationState = newState
+    private func handleCompletion(newState: FirebaseAuthenticationState, operation: FirebaseAuthenticationOperation)
+        -> (Subscribers.Completion<Error>) -> Void
+    {
+        { [weak self] completion in
+            switch completion {
+                case .finished:
+                    break
+                case .failure(let error):
+                    self?.errorMessage = error.localizedDescription
+                    self?.handleOperationsErrors(error, operation: operation)
+                    self?.companyAuthenticationState = newState
+            }
         }
     }
 
-    private func handleUserUpdate(result: AuthDataResult, operation: FirebaseAuthenticationOperation) {
-        companyAuthenticationState = .loggedIn
-        print("Company \(result.user.uid) \(operation.rawValue) successfully.")
-        checkAuthenticationStatus()
-        if case .signUp = operation {
-            sendEmailVerification()
+    private func handleUserUpdate(operation: FirebaseAuthenticationOperation) -> (AuthDataResult) -> Void {
+        { [weak self] result in
+            self?.companyAuthenticationState = .loggedIn
+            print("Company \(result.user.uid) \(operation.rawValue) successfully.")
+            self?.checkAuthenticationStatus()
+            if case .signUp = operation {
+                self?.sendEmailVerification()
+            }
         }
     }
 
