@@ -75,9 +75,7 @@ class MIDIPlayer: ObservableObject {
 
     private func loadInstrument(samples: [MIDISample]) {
         do {
-            let files = samples.compactMap {
-                $0.audioFile
-            }
+            let files = samples.compactMap(\.audioFile)
             try sampler.loadAudioFiles(files)
         } catch {
             print("Could not load file")

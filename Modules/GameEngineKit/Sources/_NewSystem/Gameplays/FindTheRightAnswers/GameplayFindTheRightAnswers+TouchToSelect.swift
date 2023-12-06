@@ -19,7 +19,7 @@ extension GameplayFindTheRightAnswers where ChoiceModelType == GameplayTouchToSe
     convenience init(choices: [GameplayTouchToSelectChoiceModel], shuffle: Bool = false) {
         self.init()
         self.choices.send(shuffle ? choices.shuffled() : choices)
-        self.rightAnswers = choices.filter { $0.choice.isRightAnswer }
+        self.rightAnswers = choices.filter(\.choice.isRightAnswer)
         self.state.send(.playing)
     }
 

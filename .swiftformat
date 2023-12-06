@@ -88,6 +88,8 @@
 
 --enable organizeDeclarations
 
+--enable preferKeyPath
+
 # Disabled rules
 
 --disable blankLinesBetweenImports
