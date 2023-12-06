@@ -37,3 +37,4 @@
 # Disabled rules
 
 --disable blankLinesBetweenImports
+--disable docComments
