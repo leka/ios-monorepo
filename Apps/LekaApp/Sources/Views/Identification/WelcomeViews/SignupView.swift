@@ -68,7 +68,7 @@ struct SignupView: View {
 
     @ViewBuilder
     private var mailTextField: some View {
-        let mailTitle: String = {
+        var mailTitle: String {
             guard mail.isValidEmail() || mail.isEmpty || isEditing else {
                 return "Email incorrect"
             }
@@ -76,24 +76,22 @@ struct SignupView: View {
                 return "Email"
             }
             return "Ce compte existe déjà"
-        }()
+        }
 
-        let mailLabelColor: Color = {
+        var mailLabelColor: Color {
             // TODO(@ladislas): review logic in the future
-            var color: Color
-
-            if mail.isValidEmail() || mail.isEmpty || isEditing {
+            let color: Color = if mail.isValidEmail() || mail.isEmpty || isEditing {
                 if accountAlreadyExists {
-                    color = .red
+                    .red
                 } else {
-                    color = DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor
+                    DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor
                 }
             } else {
-                color = .red
+                .red
             }
 
             return color
-        }()
+        }
 
         LekaTextField(
             label: mailTitle,

@@ -29,6 +29,8 @@
 --enable braces
 --allman false
 
+--enable conditionalAssignment
+
 # Disabled rules
 
 --disable blankLinesBetweenImports
