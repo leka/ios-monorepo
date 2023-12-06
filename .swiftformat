@@ -21,4 +21,6 @@
 --enable blankLinesAtStartOfScope
 --typeblanklines remove
 
+--enable blankLinesBetweenChainedFunctions
+
 # Disabled rules
