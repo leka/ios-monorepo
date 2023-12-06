@@ -49,12 +49,12 @@ class UpdateProcessTemplate: UpdateProcessProtocol {
             case .finished:
                 self.currentStage.send(completion: .finished)
             case .failure(let error):
-                self.currentStage.send(completion: .failure(.updateProcessNotAvailable))  // only available error
+                self.currentStage.send(completion: .failure(.updateProcessNotAvailable)) // only available error
         }
     }
 
     private func convertReceivedValue(state: UpdateState) {
-        self.currentStage.send(.initial)  // only available state
+        self.currentStage.send(.initial) // only available state
     }
 
     func startProcess() {

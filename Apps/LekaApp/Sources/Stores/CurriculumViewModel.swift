@@ -24,8 +24,8 @@ class CurriculumViewModel: ObservableObject, YamlFileDecodable {
             currentCurriculum = availableCurriculums[selectedCurriculum ?? 0]
             selectedCurriculumRank = "\(String(describing: (selectedCurriculum ?? 0)+1))/\(availableCurriculums.count)"
             selectedCurriculumHeaderTitle = availableCurriculums[selectedCurriculum ?? 0].fullTitle.localized()
-            selectedCurriculumIcon = setCurriculumIcon(for: currentCurriculum)  // from Yaml later
-            selectedCurriculumDescription =  // swiftlint:disable:next line_length
+            selectedCurriculumIcon = setCurriculumIcon(for: currentCurriculum) // from Yaml later
+            selectedCurriculumDescription = // swiftlint:disable:next line_length
                 "Reconnaissance des 5 émotions primaires \n(peur, joie, tristesse, colère et dégoût) \nà travers les photos de 5 personnes différentes."
         }
     }
@@ -84,7 +84,7 @@ class CurriculumViewModel: ObservableObject, YamlFileDecodable {
 
     // MARK: - ActivityList -> will not stay here - list activities files from the Bundle instead
 
-    @Published var activityFilesCompleteList: [String] = []  // will not stay like that - list files instead
+    @Published var activityFilesCompleteList: [String] = [] // will not stay like that - list files instead
     func getCompleteActivityList() {
         for curriculum in availableCurriculums {
             activityFilesCompleteList.append(contentsOf: curriculum.activities)

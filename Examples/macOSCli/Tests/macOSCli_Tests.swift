@@ -5,7 +5,7 @@
 import Foundation
 import XCTest
 
-final class macOSCli_Tests: XCTestCase {  // swiftlint:disable:this type_name
+final class macOSCli_Tests: XCTestCase { // swiftlint:disable:this type_name
     func test_twoPlusTwo_isFour() {
         XCTAssertEqual(2 + 2, 4)
     }

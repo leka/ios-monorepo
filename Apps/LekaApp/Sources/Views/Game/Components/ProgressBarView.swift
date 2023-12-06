@@ -25,7 +25,7 @@ struct ProgressBarView: View {
         Capsule()
             .fill(DesignKitAsset.Colors.progressBar.swiftUIColor)
             .frame(maxHeight: gameMetrics.progressViewHeight)
-            .frame(maxWidth: 760)  // this will change
+            .frame(maxWidth: 760) // this will change
             .overlay(
                 HStack(spacing: 0) {
                     ForEach(activityVM.steps.indices, id: \.self) { index in

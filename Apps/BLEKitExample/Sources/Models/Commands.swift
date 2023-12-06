@@ -17,7 +17,7 @@ enum LKCommand {
 
     enum LedFull {
         static let command: UInt8 = 0x13
-        static let numberOfValues: UInt8 = 1 + 3 + 1  // EAR/BELT + R, G, B + Checksum
+        static let numberOfValues: UInt8 = 1 + 3 + 1 // EAR/BELT + R, G, B + Checksum
         static let ears: UInt8 = 0x14
         static let belt: UInt8 = 0x15
     }
@@ -26,7 +26,7 @@ enum LKCommand {
 
     enum Motor {
         static let command: UInt8 = 0x20
-        static let numberOfValues: UInt8 = 1 + 2 + 1  // ID + Spin, Speed + Checksum
+        static let numberOfValues: UInt8 = 1 + 2 + 1 // ID + Spin, Speed + Checksum
         static let left: UInt8 = 0x21
         static let right: UInt8 = 0x22
 
@@ -38,7 +38,7 @@ enum LKCommand {
 
     enum Motivator {
         static let command: UInt8 = 0x50
-        static let numberOfValues: UInt8 = 1 + 1  // Motivator + Checksum
+        static let numberOfValues: UInt8 = 1 + 1 // Motivator + Checksum
         static let rainbow: UInt8 = 0x51
         static let fire: UInt8 = 0x52
         static let sprinkles: UInt8 = 0x53

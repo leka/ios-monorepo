@@ -75,7 +75,7 @@ struct SignupView: View {
     private var signupButton: some View {
         Button(
             action: {
-                authenticationState.organisationIsAuthenticated = .loggedIn  // tests
+                authenticationState.organisationIsAuthenticated = .loggedIn // tests
             },
             label: {
                 Text("Sign Up")

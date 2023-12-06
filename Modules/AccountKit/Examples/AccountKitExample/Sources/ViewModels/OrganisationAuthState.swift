@@ -12,6 +12,6 @@ class OrganisationAuthState: ObservableObject {
     @Published var organisationIsAuthenticated: FirebaseAuthenticationState = .unknown
 
     func updateAuthState() {
-        organisationIsAuthenticated = .loggedOut  // for now...
+        organisationIsAuthenticated = .loggedOut // for now...
     }
 }

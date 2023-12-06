@@ -22,7 +22,7 @@ struct LottieView: UIViewRepresentable {
         name: String,
         speed: CGFloat = 1,
         reverse: Bool = false,
-        action: @escaping () -> Void = { /* default empty closure */  },
+        action: @escaping () -> Void = { /* default empty closure */ },
         play: Binding<Bool> = .constant(true)
     ) {
         self.name = name

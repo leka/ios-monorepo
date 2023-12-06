@@ -56,7 +56,7 @@ struct CurriculumListView: View {
                 navigationVM.pathsFromHome.append("curriculumDetail")
             } label: {
                 CurriculumPillShapedView(
-                    curriculum: item,  // Integrate rank and icon within curriculum Type, delete following properties
+                    curriculum: item, // Integrate rank and icon within curriculum Type, delete following properties
                     icon: curriculumVM.setCurriculumIcon(for: item))
             }
             .padding()

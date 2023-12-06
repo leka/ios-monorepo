@@ -76,7 +76,7 @@ struct MarkdownRepresentable: UIViewRepresentable {
         }
     }
 
-    class Coordinator: NSObject {  // }, AsyncImageLoadDelegate {
+    class Coordinator: NSObject { // }, AsyncImageLoadDelegate {
         public var textView: UITextView
 
         init(text: UITextView) {

@@ -47,7 +47,7 @@ struct SettingsSection_Account: View {
                 Text("Supprimer")
             }
         } message: {
-            Text(  // swiftlint:disable:next line_length
+            Text( // swiftlint:disable:next line_length
                 "Vous êtes sur le point de supprimer votre compte et toutes les données qu'il contient. \nCette action est irreversible. \nVoulez-vous continuer ?"
             )
         }

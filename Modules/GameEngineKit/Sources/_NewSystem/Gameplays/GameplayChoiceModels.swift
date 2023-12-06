@@ -16,5 +16,5 @@ protocol GameplayChoiceModelProtocol: Identifiable {
 
     var id: String { get }
     var choice: ChoiceType { get }
-    var state: GameplayChoiceState { get set }  // .selected, .idle, .rightAnswer, .wrongAnswer
+    var state: GameplayChoiceState { get set } // .selected, .idle, .rightAnswer, .wrongAnswer
 }

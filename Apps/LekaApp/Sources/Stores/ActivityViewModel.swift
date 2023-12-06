@@ -31,7 +31,7 @@ class ActivityViewModel: NSObject, ObservableObject, YamlFileDecodable {
     // MARK: - Current Activity's properties
 
     @Published var currentActivity = Activity()
-    @Published var selectedActivityID: UUID?  // save scroll position
+    @Published var selectedActivityID: UUID? // save scroll position
     @Published var currentActivityTitle: String = ""
     @Published var currentActivityType: String = "touch_to_select"
     @Published var steps: [Step] = []
@@ -179,7 +179,7 @@ class ActivityViewModel: NSObject, ObservableObject, YamlFileDecodable {
 
     // Prevent multiple taps, deal with success or failure
     func answerHasBeenPressed(atIndex: Int) {
-        tapIsDisabled.toggle()  // true
+        tapIsDisabled.toggle() // true
         trials += 1
         pressedIndex = atIndex
         if pressedIndex == correctIndex {
@@ -195,7 +195,7 @@ class ActivityViewModel: NSObject, ObservableObject, YamlFileDecodable {
             withAnimation(.easeOut(duration: 0.8)) {
                 percent = 1.0
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                    self.showMotivator.toggle()  // true
+                    self.showMotivator.toggle() // true
                     self.showBlurryBG.toggle()
                     self.runMotivatorScenario()
                 }
@@ -207,9 +207,9 @@ class ActivityViewModel: NSObject, ObservableObject, YamlFileDecodable {
                 updateMarkers(atIndex: currentStep)
                 calculateSuccessPercent()
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                    self.showEndAnimation.toggle()  // true
+                    self.showEndAnimation.toggle() // true
                     self.showBlurryBG = true
-                    self.tapIsDisabled.toggle()  // false
+                    self.tapIsDisabled.toggle() // false
                 }
             }
         }
@@ -220,7 +220,7 @@ class ActivityViewModel: NSObject, ObservableObject, YamlFileDecodable {
         self.showBlurryBG = true
         // Update behind-the-scene during Reinforcer animation
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
-            self.tapIsDisabled.toggle()  // false
+            self.tapIsDisabled.toggle() // false
             self.pressedIndex = 100
             self.updateMarkers(atIndex: self.currentStep)
             self.currentStep += 1
@@ -242,7 +242,7 @@ class ActivityViewModel: NSObject, ObservableObject, YamlFileDecodable {
                 withAnimation {
                     self.overlayOpacity = 0
                 }
-                self.tapIsDisabled.toggle()  // false
+                self.tapIsDisabled.toggle() // false
                 self.pressedIndex = 100
             }
         }

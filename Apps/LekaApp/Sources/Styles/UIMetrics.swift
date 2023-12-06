@@ -11,8 +11,8 @@ class UIMetrics: ObservableObject {
     @Published var reg17: Font = .system(size: 17, weight: .regular)
     @Published var semi20: Font = .system(size: 20, weight: .semibold)
     @Published var bold15: Font = .system(size: 15, weight: .bold)
-    @Published var bold16: Font = .system(size: 16, weight: .bold)  // Instructions, ProfileSet
-    @Published var light24: Font = .system(size: 24, weight: .light)  // sidebar items
+    @Published var bold16: Font = .system(size: 16, weight: .bold) // Instructions, ProfileSet
+    @Published var light24: Font = .system(size: 24, weight: .light) // sidebar items
     @Published var btnRadius: CGFloat = 10
 
     // MARK: - Curriculums
@@ -37,7 +37,7 @@ class UIMetrics: ObservableObject {
     @Published var roundReg14: Font = .system(size: 14, weight: .regular, design: .rounded)
     @Published var reg16: Font = .system(size: 16, weight: .regular)
     @Published var reg14: Font = .system(size: 14, weight: .regular)
-    @Published var med14: Font = .system(size: 14, weight: .medium)  // also used wirhin PillShepedView
+    @Published var med14: Font = .system(size: 14, weight: .medium) // also used wirhin PillShepedView
 
     // MARK: - Avatars
 
