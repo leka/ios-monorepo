@@ -5,15 +5,15 @@
 import CoreBluetooth
 import Foundation
 
-public struct BLESpecs {
-    public struct AdvertisingData {
+public enum BLESpecs {
+    public enum AdvertisingData {
         public static let service = CBUUID(string: "0xDFB0")
     }
 
-    public struct DeviceInformation {
+    public enum DeviceInformation {
         public static let service = CBUUID(string: "0x180A")
 
-        public struct Characteristics {
+        public enum Characteristics {
             public static let manufacturer = CBUUID(string: "0x2A29")
             public static let modelNumber = CBUUID(string: "0x2A24")
             public static let serialNumber = CBUUID(string: "0x2A25")
@@ -21,18 +21,18 @@ public struct BLESpecs {
         }
     }
 
-    public struct Battery {
+    public enum Battery {
         public static let service = CBUUID(string: "0x180F")
 
-        public struct Characteristics {
+        public enum Characteristics {
             public static let level = CBUUID(string: "0x2A19")
         }
     }
 
-    public struct Monitoring {
+    public enum Monitoring {
         public static let service = CBUUID(string: "0x7779")
 
-        public struct Characteristics {
+        public enum Characteristics {
             public static let chargingStatus = CBUUID(string: "0x6783")
             public static let screensaverEnable = CBUUID(string: "0x8369")
             public static let softReboot = CBUUID(string: "0x8382")
@@ -40,27 +40,27 @@ public struct BLESpecs {
         }
     }
 
-    public struct Config {
+    public enum Config {
         public static let service = CBUUID(string: "0x6770")
 
-        public struct Characteristics {
+        public enum Characteristics {
             public static let robotName = CBUUID(string: "8278")
         }
     }
 
-    public struct MagicCard {
+    public enum MagicCard {
         public static let service = CBUUID(data: Data("Magic Card".utf8 + Data([0, 0, 0, 0, 0, 0])))
 
-        public struct Characteristics {
+        public enum Characteristics {
             public static let id = CBUUID(data: Data("ID".utf8) + Data([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]))
             public static let language = CBUUID(data: Data("Language".utf8) + Data([0, 0, 0, 0, 0, 0, 0, 0]))
         }
     }
 
-    public struct FileExchange {
+    public enum FileExchange {
         public static let service = CBUUID(string: "0x8270")
 
-        public struct Characteristics {
+        public enum Characteristics {
             public static let setState = CBUUID(string: "0x8383")
             public static let filePath = CBUUID(string: "0x7080")
             public static let clearFile = CBUUID(string: "0x6770")
@@ -69,10 +69,10 @@ public struct BLESpecs {
         }
     }
 
-    public struct FirmwareUpdate {
+    public enum FirmwareUpdate {
         public static let service = CBUUID(string: "0x7085")
 
-        public struct Characteristics {
+        public enum Characteristics {
             public static let requestUpdate = CBUUID(string: "0x8285")
             public static let requestFactoryReset = CBUUID(string: "0x8270")
             public static let versionMajor = CBUUID(string: "0x7765")
@@ -81,10 +81,10 @@ public struct BLESpecs {
         }
     }
 
-    public struct Commands {
+    public enum Commands {
         public static let service = CBUUID(string: "0xDFB0")
 
-        public struct Characteristics {
+        public enum Characteristics {
             public static let tx = CBUUID(string: "0xDFB1")
         }
     }

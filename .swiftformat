@@ -43,6 +43,9 @@
 --enable emptyBraces
 --emptybraces no-space
 
+--enable enumNamespaces
+--enumnamespaces always
+
 # Disabled rules
 
 --disable blankLinesBetweenImports
