@@ -9,3 +9,4 @@
 --enable andOperator
 --enable anyObjectProtocol
 --enable applicationMain
+--enable assertionFailures
