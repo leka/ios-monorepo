@@ -91,6 +91,7 @@
 --enable preferKeyPath
 
 --enable redundantBackticks
+--enable redundantBreak
 
 # Disabled rules
 
