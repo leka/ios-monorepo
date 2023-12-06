@@ -10,3 +10,4 @@
 --enable anyObjectProtocol
 --enable applicationMain
 --enable assertionFailures
+--enable blankLineAfterImports
