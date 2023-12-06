@@ -215,7 +215,7 @@ private class StateSendingFile: GKState, StateEventProcessor {
         Float(currentPacket) / Float(expectedPackets)
     }
 
-    lazy private var characteristic: CharacteristicModelWriteOnly? = CharacteristicModelWriteOnly(
+    private lazy var characteristic: CharacteristicModelWriteOnly? = CharacteristicModelWriteOnly(
         characteristicUUID: BLESpecs.FileExchange.Characteristics.fileReceptionBuffer,
         serviceUUID: BLESpecs.FileExchange.service,
         onWrite: {

@@ -78,6 +78,8 @@
 
 --enable markTypes
 
+--enable modifierOrder
+
 # Disabled rules
 
 --disable blankLinesBetweenImports

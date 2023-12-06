@@ -47,7 +47,7 @@ struct SendingFileContentView: View {
 // MARK: - SendingFileView_Previews
 
 struct SendingFileView_Previews: PreviewProvider {
-    @State static private var progress: Float = 0.66
+    @State private static var progress: Float = 0.66
 
     static var previews: some View {
         VStack {

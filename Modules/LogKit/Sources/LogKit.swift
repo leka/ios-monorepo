@@ -11,15 +11,15 @@ public struct LogKit {
         // nothing to do
     }
 
-    static public func createLoggerFor(module: String) -> Logger {
+    public static func createLoggerFor(module: String) -> Logger {
         createLogger(label: "mod:\(module)")
     }
 
-    static public func createLoggerFor(app: String) -> Logger {
+    public static func createLoggerFor(app: String) -> Logger {
         createLogger(label: "app:\(app)")
     }
 
-    static private func createLogger(label: String) -> Logger {
+    private static func createLogger(label: String) -> Logger {
         if !hasBeenInitialized {
             LoggingSystem.bootstrap(LogKitLogHandler.standardOutput)
             hasBeenInitialized = true
