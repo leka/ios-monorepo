@@ -9,6 +9,15 @@ import Foundation
 // swiftlint:disable identifier_name
 
 public struct MagicCard: Equatable {
+    // MARK: Lifecycle
+
+    public init(language: Language = .none, id: UInt16) {
+        self.language = language
+        self.id = id
+    }
+
+    // MARK: Public
+
     public enum Language: UInt8 {
         case none = 0
         case fr_FR = 1
@@ -17,11 +26,6 @@ public struct MagicCard: Equatable {
 
     public let language: Language
     public let id: UInt16
-
-    public init(language: Language = .none, id: UInt16) {
-        self.language = language
-        self.id = id
-    }
 
     public static func == (lhs: MagicCard, rhs: MagicCard) -> Bool {
         lhs.id == rhs.id

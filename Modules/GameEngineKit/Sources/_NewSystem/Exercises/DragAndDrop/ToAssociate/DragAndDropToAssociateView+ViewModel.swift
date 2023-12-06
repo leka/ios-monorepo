@@ -8,11 +8,7 @@ import SwiftUI
 
 extension DragAndDropToAssociateView {
     class ViewModel: ObservableObject {
-        @Published var choices: [GameplayAssociateCategoriesChoiceModel] = []
-        @ObservedObject var exercicesSharedData: ExerciseSharedData
-
-        private let gameplay: GameplayAssociateCategories<GameplayAssociateCategoriesChoiceModel>
-        private var cancellables: Set<AnyCancellable> = []
+        // MARK: Lifecycle
 
         init(
             choices: [DragAndDropToAssociate.Choice],
@@ -28,11 +24,23 @@ extension DragAndDropToAssociateView {
             subscribeToGameplayStateUpdates()
         }
 
+        // MARK: Public
+
         public func onChoiceTapped(
             choice: GameplayAssociateCategoriesChoiceModel, destination: GameplayAssociateCategoriesChoiceModel
         ) {
             gameplay.process(choice, destination)
         }
+
+        // MARK: Internal
+
+        @Published var choices: [GameplayAssociateCategoriesChoiceModel] = []
+        @ObservedObject var exercicesSharedData: ExerciseSharedData
+
+        // MARK: Private
+
+        private let gameplay: GameplayAssociateCategories<GameplayAssociateCategoriesChoiceModel>
+        private var cancellables: Set<AnyCancellable> = []
 
         private func subscribeToGameplayAssociateCategoriesChoicesUpdates() {
             gameplay.choices

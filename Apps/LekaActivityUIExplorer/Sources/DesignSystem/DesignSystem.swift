@@ -15,6 +15,8 @@ enum DesignSystemLeka {}
 // MARK: - FontView
 
 struct FontView: View {
+    // MARK: Internal
+
     let font: Font
 
     var body: some View {
@@ -24,6 +26,8 @@ struct FontView: View {
         }
         .font(font)
     }
+
+    // MARK: Private
 
     private var fontName: String {
         switch font {
@@ -58,9 +62,7 @@ struct FontView: View {
 // MARK: - ColorSwiftUIView
 
 struct ColorSwiftUIView: View {
-    @Environment(\.self) var environment
-
-    let color: Color
+    // MARK: Lifecycle
 
     init(color: Color) {
         self.color = color
@@ -69,6 +71,12 @@ struct ColorSwiftUIView: View {
     init(uiColor: UIColor) {
         self.color = Color(uiColor: uiColor)
     }
+
+    // MARK: Internal
+
+    @Environment(\.self) var environment
+
+    let color: Color
 
     var body: some View {
         HStack {

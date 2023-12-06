@@ -44,6 +44,8 @@ let kActivities: [Activity] = [
 // MARK: - GEKNewSystemView
 
 struct GEKNewSystemView: View {
+    // MARK: Internal
+
     @State var currentActivity: Activity?
 
     var body: some View {
@@ -64,6 +66,8 @@ struct GEKNewSystemView: View {
         }
         .navigationTitle("List of Activities")
     }
+
+    // MARK: Private
 
     private var navigationTitleView: some View {
         HStack(spacing: 4) {

@@ -7,13 +7,14 @@ import SwiftUI
 // MARK: - HelloView
 
 public struct HelloView: View {
-    var color: Color
-    var name: String
+    // MARK: Lifecycle
 
     public init(color: Color, name: String) {
         self.color = color
         self.name = name
     }
+
+    // MARK: Public
 
     public var body: some View {
         ZStack {
@@ -27,6 +28,11 @@ public struct HelloView: View {
                 .multilineTextAlignment(.center)
         }
     }
+
+    // MARK: Internal
+
+    var color: Color
+    var name: String
 }
 
 // MARK: - ContentView_Previews

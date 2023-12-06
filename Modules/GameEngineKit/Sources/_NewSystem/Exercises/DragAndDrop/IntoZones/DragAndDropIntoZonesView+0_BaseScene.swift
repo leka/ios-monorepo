@@ -15,19 +15,7 @@ extension DragAndDropIntoZonesView {
     }
 
     class BaseScene: SKScene {
-        var viewModel: ViewModel
-        var dropZoneA: DropZoneNode
-        var dropZoneB: DropZoneNode?
-
-        private var hints: Bool
-        private var biggerSide: CGFloat = 130
-        private var selectedNodes: [UITouch: DraggableImageAnswerNode] = [:]
-        private var answerNodes: [DraggableImageAnswerNode] = []
-        private var playedNode: DraggableImageAnswerNode?
-        private var spacer: CGFloat = .zero
-        private var defaultPosition = CGPoint.zero
-        private var expectedItemsNodes: [String: [SKSpriteNode]] = [:]
-        private var cancellables: Set<AnyCancellable> = []
+        // MARK: Lifecycle
 
         init(
             viewModel: ViewModel, hints: Bool, dropZoneA: DragAndDropIntoZones.DropZone.Details,
@@ -50,6 +38,12 @@ extension DragAndDropIntoZonesView {
         required init?(coder aDecoder: NSCoder) {
             fatalError("init(coder:) has not been implemented")
         }
+
+        // MARK: Internal
+
+        var viewModel: ViewModel
+        var dropZoneA: DropZoneNode
+        var dropZoneB: DropZoneNode?
 
         func reset() {
             self.backgroundColor = .clear
@@ -203,14 +197,6 @@ extension DragAndDropIntoZonesView {
             selectedNodes = [:]
         }
 
-        private func disableWrongAnswer(_ node: DraggableImageAnswerNode) {
-            let gameplayChoiceModel = viewModel.choices.first(where: { $0.id == node.id })!
-            if gameplayChoiceModel.choice.dropZone == nil {
-                node.colorBlendFactor = 0.4
-                node.isDraggable = false
-            }
-        }
-
         override func didMove(to view: SKView) {
             self.reset()
         }
@@ -267,6 +253,26 @@ extension DragAndDropIntoZonesView {
                 }
 
                 wrongAnswerBehavior(playedNode!)
+            }
+        }
+
+        // MARK: Private
+
+        private var hints: Bool
+        private var biggerSide: CGFloat = 130
+        private var selectedNodes: [UITouch: DraggableImageAnswerNode] = [:]
+        private var answerNodes: [DraggableImageAnswerNode] = []
+        private var playedNode: DraggableImageAnswerNode?
+        private var spacer: CGFloat = .zero
+        private var defaultPosition = CGPoint.zero
+        private var expectedItemsNodes: [String: [SKSpriteNode]] = [:]
+        private var cancellables: Set<AnyCancellable> = []
+
+        private func disableWrongAnswer(_ node: DraggableImageAnswerNode) {
+            let gameplayChoiceModel = viewModel.choices.first(where: { $0.id == node.id })!
+            if gameplayChoiceModel.choice.dropZone == nil {
+                node.colorBlendFactor = 0.4
+                node.isDraggable = false
             }
         }
     }

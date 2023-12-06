@@ -7,11 +7,7 @@ import ContentKit
 import SwiftUI
 
 class TouchToSelectViewViewModel: ObservableObject {
-    @Published var choices: [GameplayTouchToSelectChoiceModel] = []
-    @ObservedObject var exercicesSharedData: ExerciseSharedData
-
-    private let gameplay: GameplayFindTheRightAnswers<GameplayTouchToSelectChoiceModel>
-    private var cancellables: Set<AnyCancellable> = []
+    // MARK: Lifecycle
 
     init(choices: [TouchToSelect.Choice], shuffle: Bool = false, shared: ExerciseSharedData? = nil) {
         self.gameplay = GameplayFindTheRightAnswers(
@@ -22,9 +18,21 @@ class TouchToSelectViewViewModel: ObservableObject {
         subscribeToGameplayStateUpdates()
     }
 
+    // MARK: Public
+
     public func onChoiceTapped(choice: GameplayTouchToSelectChoiceModel) {
         gameplay.process(choice)
     }
+
+    // MARK: Internal
+
+    @Published var choices: [GameplayTouchToSelectChoiceModel] = []
+    @ObservedObject var exercicesSharedData: ExerciseSharedData
+
+    // MARK: Private
+
+    private let gameplay: GameplayFindTheRightAnswers<GameplayTouchToSelectChoiceModel>
+    private var cancellables: Set<AnyCancellable> = []
 
     private func subscribeToGameplaySelectionChoicesUpdates() {
         gameplay.choices

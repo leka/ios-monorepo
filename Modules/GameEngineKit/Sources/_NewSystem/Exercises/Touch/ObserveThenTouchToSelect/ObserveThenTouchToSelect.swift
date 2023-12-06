@@ -7,20 +7,7 @@ import ContentKit
 import SwiftUI
 
 public struct ObserveThenTouchToSelectView: View {
-    enum Interface: Int {
-        case oneChoice = 1
-        case twoChoices
-        case threeChoices
-        case fourChoices
-        case fiveChoices
-        case sixChoices
-    }
-
-    @StateObject private var viewModel: TouchToSelectViewViewModel
-
-    @State private var imageWasTapped = false
-
-    private let image: String
+    // MARK: Lifecycle
 
     public init(choices: [TouchToSelect.Choice], image: String) {
         self._viewModel = StateObject(wrappedValue: TouchToSelectViewViewModel(choices: choices))
@@ -41,6 +28,8 @@ public struct ObserveThenTouchToSelectView: View {
 
         self.image = name
     }
+
+    // MARK: Public
 
     public var body: some View {
         let interface = Interface(rawValue: viewModel.choices.count)
@@ -101,4 +90,23 @@ public struct ObserveThenTouchToSelectView: View {
             Spacer()
         }
     }
+
+    // MARK: Internal
+
+    enum Interface: Int {
+        case oneChoice = 1
+        case twoChoices
+        case threeChoices
+        case fourChoices
+        case fiveChoices
+        case sixChoices
+    }
+
+    // MARK: Private
+
+    @StateObject private var viewModel: TouchToSelectViewViewModel
+
+    @State private var imageWasTapped = false
+
+    private let image: String
 }

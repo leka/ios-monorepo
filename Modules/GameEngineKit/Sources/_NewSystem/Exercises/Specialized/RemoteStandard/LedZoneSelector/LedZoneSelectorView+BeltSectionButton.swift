@@ -32,11 +32,10 @@ public extension Robot.Lights {
 
 extension LedZoneSelectorView {
     struct BeltSectionButton: View {
+        // MARK: Internal
+
         var section: Robot.Lights
         let robot = Robot.shared
-
-        @State private var buttonPressed = false
-        @State private var backgroundLineWidth = 0
 
         var body: some View {
             LedZoneShape(section: section)
@@ -65,6 +64,11 @@ extension LedZoneSelectorView {
                 )
                 .animation(Animation.easeInOut(duration: 0.2), value: backgroundLineWidth)
         }
+
+        // MARK: Private
+
+        @State private var buttonPressed = false
+        @State private var backgroundLineWidth = 0
     }
 }
 

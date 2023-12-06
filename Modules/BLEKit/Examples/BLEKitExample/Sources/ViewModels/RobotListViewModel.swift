@@ -8,20 +8,7 @@ import SwiftUI
 
 @MainActor
 public class RobotListViewModel: ObservableObject {
-    // MARK: - Private variables
-
-    internal let bleManager: BLEManager
-    internal var cancellables: Set<AnyCancellable> = []
-    internal var scanForRobotsTask: AnyCancellable?
-
-    // MARK: - Published variables
-
-    @Published var selectedRobotDiscovery: RobotDiscoveryModel?
-    // TODO(@ladislas): are they both needed?
-    @Published var connectedRobotDiscovery: RobotDiscoveryModel?
-    @Published var connectedRobotPeripheral: RobotPeripheral?
-    @Published var robotDiscoveries: [RobotDiscoveryModel] = []
-    @Published var isScanning: Bool = false
+    // MARK: Lifecycle
 
     // MARK: - Public functions
 
@@ -29,6 +16,15 @@ public class RobotListViewModel: ObservableObject {
         self.bleManager = bleManager
         subscribeToScanningStatus()
     }
+
+    // MARK: - Private functions
+
+    internal init(availableRobots: [RobotDiscoveryModel]) {
+        self.bleManager = BLEManager.live()
+        self.robotDiscoveries = availableRobots
+    }
+
+    // MARK: Public
 
     public func scanForPeripherals() {
         if !bleManager.isScanning.value {
@@ -84,12 +80,24 @@ public class RobotListViewModel: ObservableObject {
         }
     }
 
-    // MARK: - Private functions
+    // MARK: Internal
 
-    internal init(availableRobots: [RobotDiscoveryModel]) {
-        self.bleManager = BLEManager.live()
-        self.robotDiscoveries = availableRobots
-    }
+    // MARK: - Private variables
+
+    internal let bleManager: BLEManager
+    internal var cancellables: Set<AnyCancellable> = []
+    internal var scanForRobotsTask: AnyCancellable?
+
+    // MARK: - Published variables
+
+    @Published var selectedRobotDiscovery: RobotDiscoveryModel?
+    // TODO(@ladislas): are they both needed?
+    @Published var connectedRobotDiscovery: RobotDiscoveryModel?
+    @Published var connectedRobotPeripheral: RobotPeripheral?
+    @Published var robotDiscoveries: [RobotDiscoveryModel] = []
+    @Published var isScanning: Bool = false
+
+    // MARK: Private
 
     private func subscribeToScanningStatus() {
         bleManager.isScanning

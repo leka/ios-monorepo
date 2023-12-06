@@ -10,6 +10,8 @@ import SwiftUI
 private enum Action {
     case play, pause, stop
 
+    // MARK: Public
+
     public func icon(_ stopButtonDisabled: Bool) -> some View {
         switch self {
             case .play:
@@ -46,12 +48,13 @@ private enum Action {
 // MARK: - PairingView
 
 public struct PairingView: View {
-    @State private var stopButtonDisabled: Bool = true
-    @State private var playButtonVisible: Bool = true
+    // MARK: Lifecycle
 
     public init() {
         // Nothing to do
     }
+
+    // MARK: Public
 
     public var body: some View {
         VStack {
@@ -81,6 +84,11 @@ public struct PairingView: View {
             }
         }
     }
+
+    // MARK: Private
+
+    @State private var stopButtonDisabled: Bool = true
+    @State private var playButtonVisible: Bool = true
 
     private func actionButton(_ action: Action) -> some View {
         VStack {

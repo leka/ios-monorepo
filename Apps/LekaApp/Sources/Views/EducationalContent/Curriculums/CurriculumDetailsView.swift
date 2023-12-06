@@ -8,19 +8,18 @@ import SwiftUI
 // MARK: - CurriculumDetailsView
 
 struct CurriculumDetailsView: View {
+    // MARK: Internal
+
     @EnvironmentObject var curriculumVM: CurriculumViewModel
     @EnvironmentObject var activityVM: ActivityViewModel
     @EnvironmentObject var navigationVM: NavigationViewModel
     @EnvironmentObject var metrics: UIMetrics
 
-    private func goButtonIsDisabled() -> Bool {
-        !curriculumVM.currentCurriculum.activities.map({ UUID(uuidString: activityVM.getActivity($0).id) })
-            .contains(curriculumVM.currentCurriculumSelectedActivityID)
-    }
-
     var body: some View {
         curriculumDetailContent
     }
+
+    // MARK: Private
 
     private var curriculumDetailContent: some View {
         ZStack(alignment: .top) {
@@ -126,6 +125,11 @@ struct CurriculumDetailsView: View {
                 withAnimation { proxy.scrollTo(curriculumVM.currentCurriculumSelectedActivityID, anchor: .top) }
             }
         }
+    }
+
+    private func goButtonIsDisabled() -> Bool {
+        !curriculumVM.currentCurriculum.activities.map({ UUID(uuidString: activityVM.getActivity($0).id) })
+            .contains(curriculumVM.currentCurriculumSelectedActivityID)
     }
 }
 

@@ -6,11 +6,7 @@ import ContentKit
 import SwiftUI
 
 struct TouchToSelectChoiceView: View {
-    let choice: TouchToSelect.Choice
-    let state: GameplayChoiceState
-
-    let size: CGFloat
-    var isTappable = true
+    // MARK: Lifecycle
 
     private init(choice: TouchToSelect.Choice, state: GameplayChoiceState, size: CGFloat, isTappable: Bool = true) {
         self.choice = choice
@@ -22,6 +18,14 @@ struct TouchToSelectChoiceView: View {
     init(choice: GameplayTouchToSelectChoiceModel, size: CGFloat, isTappable: Bool = true) {
         self.init(choice: choice.choice, state: choice.state, size: size, isTappable: isTappable)
     }
+
+    // MARK: Internal
+
+    let choice: TouchToSelect.Choice
+    let state: GameplayChoiceState
+
+    let size: CGFloat
+    var isTappable = true
 
     var body: some View {
         // TODO(@ladislas): Add text

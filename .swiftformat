@@ -86,6 +86,8 @@
 
 --enable opaqueGenericParameters
 
+--enable organizeDeclarations
+
 # Disabled rules
 
 --disable blankLinesBetweenImports

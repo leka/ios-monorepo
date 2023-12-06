@@ -6,28 +6,62 @@
 
 public extension Robot {
     enum Lights {
+        case all(in: Color)
+
+        case full(_ position: Full.Position, in: Color)
+
+        case halfLeft(in: Color)
+        case halfRight(in: Color)
+        case quarterFrontLeft(in: Color)
+        case quarterFrontRight(in: Color)
+        case quarterBackLeft(in: Color)
+        case quarterBackRight(in: Color)
+
+        case earLeft(in: Color)
+        case earRight(in: Color)
+
+        case spot(Spot.Position, ids: [UInt8], in: Color)
+        case range(start: UInt8, end: UInt8, in: Color)
+
+        // MARK: Public
+
         public enum Spot {
-            static let id: UInt8 = 0x10
+            // MARK: Public
+
             public enum Position: UInt8 {
                 case ears = 0x11
                 case belt = 0x12
             }
+
+            // MARK: Internal
+
+            static let id: UInt8 = 0x10
         }
 
         public enum Full {
-            static let id: UInt8 = 0x13
+            // MARK: Public
+
             public enum Position: UInt8 {
                 case ears = 0x14
                 case belt = 0x15
             }
+
+            // MARK: Internal
+
+            static let id: UInt8 = 0x13
         }
 
         public enum Range {
-            static let id: UInt8 = 0x16
+            // MARK: Public
+
             public enum Position: UInt8 {
                 case ears = 0x17
                 case belt = 0x18
             }
+
+            // MARK: Internal
+
+            static let id: UInt8 = 0x16
         }
 
         public enum Blacken {
@@ -47,23 +81,6 @@ public extension Robot {
             case range(start: UInt8, end: UInt8)
         }
 
-        case all(in: Color)
-
-        case full(_ position: Full.Position, in: Color)
-
-        case halfLeft(in: Color)
-        case halfRight(in: Color)
-        case quarterFrontLeft(in: Color)
-        case quarterFrontRight(in: Color)
-        case quarterBackLeft(in: Color)
-        case quarterBackRight(in: Color)
-
-        case earLeft(in: Color)
-        case earRight(in: Color)
-
-        case spot(Spot.Position, ids: [UInt8], in: Color)
-        case range(start: UInt8, end: UInt8, in: Color)
-
         public var color: Robot.Color {
             switch self {
                 case let .all(color),
@@ -82,13 +99,7 @@ public extension Robot {
             }
         }
 
-        static func spot(on position: Spot.Position, ids: UInt8..., in color: Color) -> Self {
-            .spot(position, ids: ids, in: color)
-        }
-
-        static func range(startID: UInt8, endID: UInt8, in color: Color) -> Self {
-            .range(start: startID, end: endID, in: color)
-        }
+        // MARK: Internal
 
         var cmd: [[UInt8]] {
             var output: [[UInt8]] = [[]]
@@ -160,6 +171,16 @@ public extension Robot {
 
             return output
         }
+
+        static func spot(on position: Spot.Position, ids: UInt8..., in color: Color) -> Self {
+            .spot(position, ids: ids, in: color)
+        }
+
+        static func range(startID: UInt8, endID: UInt8, in color: Color) -> Self {
+            .range(start: startID, end: endID, in: color)
+        }
+
+        // MARK: Private
 
         private func shineSpot(_ id: UInt8, on position: Spot.Position, in color: Color) -> [UInt8] {
             var payload: [UInt8] = []

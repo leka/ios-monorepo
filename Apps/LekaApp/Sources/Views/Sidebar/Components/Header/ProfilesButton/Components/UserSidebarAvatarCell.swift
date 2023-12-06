@@ -5,6 +5,8 @@
 import SwiftUI
 
 struct UserSidebarAvatarCell: View {
+    // MARK: Internal
+
     @EnvironmentObject var company: CompanyViewModel
     @EnvironmentObject var settings: SettingsViewModel
     @EnvironmentObject var metrics: UIMetrics
@@ -28,6 +30,8 @@ struct UserSidebarAvatarCell: View {
             Spacer()
         }
     }
+
+    // MARK: Private
 
     @ViewBuilder private var avatarAccessoryView: some View {
         if !settings.companyIsConnected || (!company.profileIsAssigned(.user) && !settings.exploratoryModeIsOn) {

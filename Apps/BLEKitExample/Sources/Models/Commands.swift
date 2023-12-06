@@ -7,12 +7,6 @@ import Foundation
 // MARK: - LKCommand
 
 enum LKCommand {
-    static let startByte: UInt8 = 0x2A
-    static let startByteLength: UInt8 = 0x04
-    static let ledFull: UInt8 = 0x13
-    static let motor: UInt8 = 0x20
-    static let motivator: UInt8 = 0x50
-
     // MARK: - LKCommand Led Full
 
     enum LedFull {
@@ -45,6 +39,12 @@ enum LKCommand {
         static let spinBlink: UInt8 = 0x54
         static let blinkGreen: UInt8 = 0x55
     }
+
+    static let startByte: UInt8 = 0x2A
+    static let startByteLength: UInt8 = 0x04
+    static let ledFull: UInt8 = 0x13
+    static let motor: UInt8 = 0x20
+    static let motivator: UInt8 = 0x50
 }
 
 func checksum8(_ values: [UInt8]) -> UInt8 {
@@ -60,9 +60,22 @@ func checksum8(_ values: [UInt8]) -> UInt8 {
 // MARK: - CommandKit
 
 class CommandKit {
+    // MARK: Lifecycle
+
+    // MARK: - Initialisation
+
+    init() {
+        for _ in 0...LKCommand.startByteLength - 1 {
+            self.startSequence.append(LKCommand.startByte)
+        }
+    }
+
+    // MARK: Internal
+
     // MARK: - Singleton
 
     static let sharedSingleton = CommandKit()
+
     let command = LKCommand.self
 
     // MARK: - Variables
@@ -72,14 +85,6 @@ class CommandKit {
 
     var numberOfCommands: Int = 0
     var isEncapsulated: Bool = false
-
-    // MARK: - Initialisation
-
-    init() {
-        for _ in 0...LKCommand.startByteLength - 1 {
-            self.startSequence.append(LKCommand.startByte)
-        }
-    }
 
     // MARK: - Led Functions
 

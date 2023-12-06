@@ -9,6 +9,8 @@ public enum DragAndDropIntoZones {
         case zoneA
         case zoneB
 
+        // MARK: Public
+
         public struct Details: Codable {
             public let value: String
             public let type: Exercise.UIElementType

@@ -10,6 +10,8 @@ import SwiftUI
 enum SidebarDestinations: Int, Identifiable, CaseIterable, Hashable {
     case curriculums, activities, commands
 
+    // MARK: Internal
+
     var id: Self { self }
 }
 

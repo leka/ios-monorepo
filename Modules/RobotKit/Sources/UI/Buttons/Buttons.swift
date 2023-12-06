@@ -5,10 +5,7 @@
 import SwiftUI
 
 public struct RobotControlActionButton: View {
-    private let title: String
-    private let image: String
-    private let tint: Color
-    private let action: () -> Void
+    // MARK: Lifecycle
 
     public init(title: String, image: String, tint: Color, action: @escaping () -> Void) {
         self.title = title
@@ -16,6 +13,8 @@ public struct RobotControlActionButton: View {
         self.tint = tint
         self.action = action
     }
+
+    // MARK: Public
 
     public var body: some View {
         Button {
@@ -26,6 +25,13 @@ public struct RobotControlActionButton: View {
         }
         .buttonStyle(.robotControlBorderedButtonStyle(foreground: tint, border: tint))
     }
+
+    // MARK: Private
+
+    private let title: String
+    private let image: String
+    private let tint: Color
+    private let action: () -> Void
 }
 
 #Preview {

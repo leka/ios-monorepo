@@ -7,13 +7,14 @@ import SwiftUI
 // MARK: - Hello
 
 public struct Hello: View {
-    let name: String
-    let color: Color
+    // MARK: Lifecycle
 
     public init(_ name: String, in color: Color) {
         self.name = name
         self.color = color
     }
+
+    // MARK: Public
 
     public var body: some View {
         VStack {
@@ -27,6 +28,11 @@ public struct Hello: View {
                 .frame(width: 200.0)
         }
     }
+
+    // MARK: Internal
+
+    let name: String
+    let color: Color
 }
 
 // MARK: - ContentView_Previews

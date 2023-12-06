@@ -7,7 +7,13 @@ import SwiftUI
 // MARK: - AlertWhenNoUserSelected
 
 struct AlertWhenNoUserSelected: ViewModifier {
-    @State private var showAlert: Bool = false
+    // MARK: Lifecycle
+
+    public init() {
+        // nothing to do
+    }
+
+    // MARK: Internal
 
     func body(content: Content) -> some View {
         content
@@ -21,9 +27,9 @@ struct AlertWhenNoUserSelected: ViewModifier {
             }
     }
 
-    public init() {
-        // nothing to do
-    }
+    // MARK: Private
+
+    @State private var showAlert: Bool = false
 
     private var alertContent: some View {
         Group {

@@ -6,10 +6,10 @@ import DesignKit
 import SwiftUI
 
 struct ActivityProgressBar: View {
+    // MARK: Internal
+
     @ObservedObject var viewModel: ActivityViewViewModel
     let height: CGFloat = 30
-
-    @State private var currentColor: Color = .white
 
     var body: some View {
         HStack(spacing: 0) {
@@ -62,4 +62,8 @@ struct ActivityProgressBar: View {
             Spacer()
         }
     }
+
+    // MARK: Private
+
+    @State private var currentColor: Color = .white
 }

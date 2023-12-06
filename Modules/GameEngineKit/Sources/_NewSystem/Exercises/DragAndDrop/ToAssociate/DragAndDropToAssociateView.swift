@@ -9,16 +9,7 @@ import SpriteKit
 import SwiftUI
 
 public struct DragAndDropToAssociateView: View {
-    enum Interface: Int {
-        case twoChoices = 2
-        case threeChoices
-        case fourChoices
-        case fiveChoices
-        case sixChoices
-    }
-
-    @StateObject private var viewModel: ViewModel
-    @State private var scene: SKScene = SKScene()
+    // MARK: Lifecycle
 
     public init(choices: [DragAndDropToAssociate.Choice], shuffle: Bool = false) {
         self._viewModel = StateObject(
@@ -39,6 +30,8 @@ public struct DragAndDropToAssociateView: View {
             )
         )
     }
+
+    // MARK: Public
 
     public var body: some View {
         GeometryReader { proxy in
@@ -66,6 +59,21 @@ public struct DragAndDropToAssociateView: View {
         }
         .edgesIgnoringSafeArea(.horizontal)
     }
+
+    // MARK: Internal
+
+    enum Interface: Int {
+        case twoChoices = 2
+        case threeChoices
+        case fourChoices
+        case fiveChoices
+        case sixChoices
+    }
+
+    // MARK: Private
+
+    @StateObject private var viewModel: ViewModel
+    @State private var scene: SKScene = SKScene()
 
     private func makeScene(size: CGSize) -> SKScene {
         guard let finalScene = scene as? BaseScene else {

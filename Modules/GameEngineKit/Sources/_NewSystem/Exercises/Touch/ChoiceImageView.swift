@@ -8,19 +8,15 @@ import RobotKit
 import SwiftUI
 
 struct ChoiceImageView: View {
-    private let image: String
-    private let size: CGFloat
-    private let state: GameplayChoiceState
-    private let kOverLayScaleFactor: CGFloat = 1.08
-
-    @State private var animationPercent: CGFloat = .zero
-    @State private var overlayOpacity: CGFloat = .zero
+    // MARK: Lifecycle
 
     init(image: String, size: CGFloat, state: GameplayChoiceState = .idle) {
         self.image = image
         self.size = size
         self.state = state
     }
+
+    // MARK: Internal
 
     @ViewBuilder
     var circle: some View {
@@ -89,6 +85,16 @@ struct ChoiceImageView: View {
                     }
         }
     }
+
+    // MARK: Private
+
+    private let image: String
+    private let size: CGFloat
+    private let state: GameplayChoiceState
+    private let kOverLayScaleFactor: CGFloat = 1.08
+
+    @State private var animationPercent: CGFloat = .zero
+    @State private var overlayOpacity: CGFloat = .zero
 }
 
 #Preview {

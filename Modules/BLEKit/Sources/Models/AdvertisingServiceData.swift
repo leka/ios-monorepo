@@ -7,15 +7,19 @@ import Foundation
 // MARK: - AdvertisingServiceData
 
 internal struct AdvertisingServiceData {
-    let battery: Int
-    let isCharging: Bool
-    let osVersion: String?
+    // MARK: Lifecycle
 
     init(data: Data) {
         self.battery = getBattery(data: data)
         self.isCharging = getChargingState(data: data)
         self.osVersion = getOsVersion(data: data)
     }
+
+    // MARK: Internal
+
+    let battery: Int
+    let isCharging: Bool
+    let osVersion: String?
 }
 
 // MARK: - AdvertisingServiceDataIndex

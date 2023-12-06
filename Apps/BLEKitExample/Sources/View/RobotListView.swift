@@ -6,6 +6,8 @@ import BLEKit
 import SwiftUI
 
 struct RobotListView: View {
+    // MARK: Internal
+
     @EnvironmentObject var bleManager: BLEManager
     @EnvironmentObject var robot: Robot
     @EnvironmentObject var botVM: BotViewModel
@@ -29,6 +31,8 @@ struct RobotListView: View {
             Spacer()
         }
     }
+
+    // MARK: Private
 
     private var searchButton: some View {
         Button(

@@ -8,10 +8,7 @@ import ContentKit
 import SwiftUI
 
 class MIDIPlayer: ObservableObject {
-    private let engine = AudioEngine()
-    private let sampler = MIDISampler()
-    private let sequencer = AppleSequencer()
-    private let instrument = MIDICallbackInstrument()
+    // MARK: Lifecycle
 
     init(instrument: MIDIInstrument) {
         engine.output = sampler
@@ -20,24 +17,7 @@ class MIDIPlayer: ObservableObject {
         startAudioEngine()
     }
 
-    private func startAudioEngine() {
-        do {
-            try engine.start()
-        } catch {
-            print("Could not start AudioKit")
-        }
-    }
-
-    private func loadInstrument(samples: [MIDISample]) {
-        do {
-            let files = samples.compactMap {
-                $0.audioFile
-            }
-            try sampler.loadAudioFiles(files)
-        } catch {
-            print("Could not load file")
-        }
-    }
+    // MARK: Internal
 
     func loadMIDIFile(fileURL: URL, tempo: Double) {
         sequencer.loadMIDIFile(fromURL: fileURL)
@@ -76,5 +56,31 @@ class MIDIPlayer: ObservableObject {
         }
 
         return track.length * 60 / sequencer.tempo
+    }
+
+    // MARK: Private
+
+    private let engine = AudioEngine()
+    private let sampler = MIDISampler()
+    private let sequencer = AppleSequencer()
+    private let instrument = MIDICallbackInstrument()
+
+    private func startAudioEngine() {
+        do {
+            try engine.start()
+        } catch {
+            print("Could not start AudioKit")
+        }
+    }
+
+    private func loadInstrument(samples: [MIDISample]) {
+        do {
+            let files = samples.compactMap {
+                $0.audioFile
+            }
+            try sampler.loadAudioFiles(files)
+        } catch {
+            print("Could not load file")
+        }
     }
 }

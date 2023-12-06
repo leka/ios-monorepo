@@ -9,15 +9,7 @@ import SwiftUI
 
 extension DanceFreeze {
     class MainViewViewModel: ObservableObject {
-        @ObservedObject var exercicesSharedData: ExerciseSharedData
-        @Published public var progress: CGFloat = 0.0
-        @Published public var isDancing: Bool = false
-
-        var robotManager: RobotManager
-        var audioPlayer: AudioPlayer
-        let songs: [AudioRecording]
-        var motionMode: Motion = .rotation
-        var cancellables: Set<AnyCancellable> = []
+        // MARK: Lifecycle
 
         init(songs: [AudioRecording], shuffle: Bool = false, shared: ExerciseSharedData? = nil) {
             self.songs = songs
@@ -30,18 +22,10 @@ extension DanceFreeze {
             subscribeToAudioPlayerProgress()
         }
 
-        private func subscribeToAudioPlayerProgress() {
-            self.audioPlayer.$progress
-                .receive(on: DispatchQueue.main)
-                .sink { [weak self] in
-                    guard let self = self else { return }
-                    self.progress = $0
-                    if self.progress == 1 {
-                        completeDanceFreeze()
-                    }
-                }
-                .store(in: &cancellables)
-        }
+        // MARK: Public
+
+        @Published public var progress: CGFloat = 0.0
+        @Published public var isDancing: Bool = false
 
         public func onDanceFreezeToggle() {
             if progress == 1.0 {
@@ -67,9 +51,33 @@ extension DanceFreeze {
             motionMode = motion
         }
 
+        // MARK: Internal
+
+        @ObservedObject var exercicesSharedData: ExerciseSharedData
+        var robotManager: RobotManager
+        var audioPlayer: AudioPlayer
+        let songs: [AudioRecording]
+        var motionMode: Motion = .rotation
+        var cancellables: Set<AnyCancellable> = []
+
         func completeDanceFreeze() {
             robotManager.stopRobot()
             exercicesSharedData.state = .completed
+        }
+
+        // MARK: Private
+
+        private func subscribeToAudioPlayerProgress() {
+            self.audioPlayer.$progress
+                .receive(on: DispatchQueue.main)
+                .sink { [weak self] in
+                    guard let self = self else { return }
+                    self.progress = $0
+                    if self.progress == 1 {
+                        completeDanceFreeze()
+                    }
+                }
+                .store(in: &cancellables)
         }
 
         private func robotDance() {

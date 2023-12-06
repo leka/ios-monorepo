@@ -12,6 +12,8 @@ extension RemoteArrowView {
         enum Arrow {
             case up, clockwise, down, counterclockwise
 
+            // MARK: Internal
+
             var name: String {
                 switch self {
                     case .up:

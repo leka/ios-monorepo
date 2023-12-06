@@ -5,10 +5,7 @@
 import SwiftUI
 
 struct ButtonBordered<Label: View>: View {
-    private let foreground: Color?
-    private let border: Color?
-    private let label: Label
-    private let action: () -> Void
+    // MARK: Lifecycle
 
     init(tint: Color? = nil, @ViewBuilder label: () -> Label, action: @escaping () -> Void) {
         self.foreground = tint
@@ -24,6 +21,8 @@ struct ButtonBordered<Label: View>: View {
         self.label = label()
     }
 
+    // MARK: Internal
+
     var body: some View {
         Button(
             action: {
@@ -35,6 +34,13 @@ struct ButtonBordered<Label: View>: View {
         )
         .buttonStyle(.robotControlBorderedButtonStyle(foreground: foreground, border: border))
     }
+
+    // MARK: Private
+
+    private let foreground: Color?
+    private let border: Color?
+    private let label: Label
+    private let action: () -> Void
 }
 
 #Preview {

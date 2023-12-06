@@ -6,9 +6,9 @@ import AuthenticationServices
 import SwiftUI
 
 struct LoginView: View {
+    // MARK: Internal
+
     @EnvironmentObject var authenticationState: OrganisationAuthState
-    @State private var organisation = OrganisationViewModel()
-    @State private var showSheet: Bool = false
 
     var body: some View {
         VStack(spacing: 10) {
@@ -26,6 +26,11 @@ struct LoginView: View {
         .animation(.default, value: organisation.isPasswordValid(organisation.password))
         .sheet(isPresented: $showSheet) { ForgotPasswordView() }
     }
+
+    // MARK: Private
+
+    @State private var organisation = OrganisationViewModel()
+    @State private var showSheet: Bool = false
 
     private var emailField: some View {
         VStack(alignment: .leading, spacing: 10) {

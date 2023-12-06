@@ -11,16 +11,61 @@ public extension Exercise {
         case ipad(type: ActionType)
         case robot(type: ActionType)
 
+        // MARK: Lifecycle
+
+        public init(from decoder: Decoder) throws {
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            let type = try container.decode(String.self, forKey: .type)
+            let valueContainer = try container.nestedContainer(keyedBy: CodingKeys.self, forKey: .value)
+            switch type {
+                case "ipad":
+                    let valueType = try valueContainer.decode(ValueType.self, forKey: .type)
+                    switch valueType {
+                        case .color:
+                            let color = try valueContainer.decode(String.self, forKey: .value)
+                            self = .ipad(type: .color(color))
+                        case .image:
+                            let image = try valueContainer.decode(String.self, forKey: .value)
+                            self = .ipad(type: .image(image))
+                        case .audio:
+                            let audio = try valueContainer.decode(String.self, forKey: .value)
+                            self = .ipad(type: .audio(audio))
+                        case .speech:
+                            let speech = try valueContainer.decode(String.self, forKey: .value)
+                            self = .ipad(type: .speech(speech))
+                    }
+                case "robot":
+                    let valueType = try valueContainer.decode(ValueType.self, forKey: .type)
+                    switch valueType {
+                        case .image:
+                            let image = try valueContainer.decode(String.self, forKey: .value)
+                            self = .robot(type: .image(image))
+                        case .color:
+                            let color = try valueContainer.decode(String.self, forKey: .value)
+                            self = .robot(type: .color(color))
+                        default:
+                            throw DecodingError.dataCorruptedError(
+                                forKey: .type,
+                                in: valueContainer,
+                                debugDescription: "Unexpected type for RobotMedia")
+                    }
+                default:
+                    throw DecodingError.dataCorruptedError(
+                        forKey: .type,
+                        in: container,
+                        debugDescription:
+                        "Cannot decode ExercisePayload. Available keys: \(container.allKeys.map { $0.stringValue })"
+                    )
+            }
+        }
+
+        // MARK: Public
+
         public enum ActionType: Codable {
             case color(String)
             case image(String)
             case audio(String)
             case speech(String)
-        }
-
-        private enum CodingKeys: String, CodingKey {
-            case type
-            case value
         }
 
         public enum ValueType: String, Codable {
@@ -71,50 +116,11 @@ public extension Exercise {
             }
         }
 
-        public init(from decoder: Decoder) throws {
-            let container = try decoder.container(keyedBy: CodingKeys.self)
-            let type = try container.decode(String.self, forKey: .type)
-            let valueContainer = try container.nestedContainer(keyedBy: CodingKeys.self, forKey: .value)
-            switch type {
-                case "ipad":
-                    let valueType = try valueContainer.decode(ValueType.self, forKey: .type)
-                    switch valueType {
-                        case .color:
-                            let color = try valueContainer.decode(String.self, forKey: .value)
-                            self = .ipad(type: .color(color))
-                        case .image:
-                            let image = try valueContainer.decode(String.self, forKey: .value)
-                            self = .ipad(type: .image(image))
-                        case .audio:
-                            let audio = try valueContainer.decode(String.self, forKey: .value)
-                            self = .ipad(type: .audio(audio))
-                        case .speech:
-                            let speech = try valueContainer.decode(String.self, forKey: .value)
-                            self = .ipad(type: .speech(speech))
-                    }
-                case "robot":
-                    let valueType = try valueContainer.decode(ValueType.self, forKey: .type)
-                    switch valueType {
-                        case .image:
-                            let image = try valueContainer.decode(String.self, forKey: .value)
-                            self = .robot(type: .image(image))
-                        case .color:
-                            let color = try valueContainer.decode(String.self, forKey: .value)
-                            self = .robot(type: .color(color))
-                        default:
-                            throw DecodingError.dataCorruptedError(
-                                forKey: .type,
-                                in: valueContainer,
-                                debugDescription: "Unexpected type for RobotMedia")
-                    }
-                default:
-                    throw DecodingError.dataCorruptedError(
-                        forKey: .type,
-                        in: container,
-                        debugDescription:
-                        "Cannot decode ExercisePayload. Available keys: \(container.allKeys.map { $0.stringValue })"
-                    )
-            }
+        // MARK: Private
+
+        private enum CodingKeys: String, CodingKey {
+            case type
+            case value
         }
     }
 }

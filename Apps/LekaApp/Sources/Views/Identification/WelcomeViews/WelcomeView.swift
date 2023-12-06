@@ -8,6 +8,8 @@ import SwiftUI
 // MARK: - WelcomeView
 
 struct WelcomeView: View {
+    // MARK: Internal
+
     @EnvironmentObject var company: CompanyViewModel
     @EnvironmentObject var viewRouter: ViewRouter
     @EnvironmentObject var metrics: UIMetrics
@@ -40,6 +42,8 @@ struct WelcomeView: View {
             }
         }
     }
+
+    // MARK: Private
 
     private var logoLeka: some View {
         Image(

@@ -6,18 +6,7 @@ import Lottie
 import SwiftUI
 
 public struct LottieView: UIViewRepresentable {
-    public typealias UIViewType = UIView
-
-    public func makeCoordinator() -> Coordinator {
-        Coordinator(self)
-    }
-
-    var name: String!
-    var speed: CGFloat
-    var reverse: Bool
-    var loopMode: LottieLoopMode
-    var action: () -> Void
-    @Binding var play: Bool
+    // MARK: Lifecycle
 
     public init(
         name: String,
@@ -37,15 +26,25 @@ public struct LottieView: UIViewRepresentable {
         self._play = play
     }
 
-    var animationView = LottieAnimationView()
+    // MARK: Public
+
+    public typealias UIViewType = UIView
 
     public class Coordinator: NSObject {
-        var parent: LottieView
+        // MARK: Lifecycle
 
         init(_ animationView: LottieView) {
             self.parent = animationView
             super.init()
         }
+
+        // MARK: Internal
+
+        var parent: LottieView
+    }
+
+    public func makeCoordinator() -> Coordinator {
+        Coordinator(self)
     }
 
     public func makeUIView(context: UIViewRepresentableContext<LottieView>) -> UIView {
@@ -94,4 +93,15 @@ public struct LottieView: UIViewRepresentable {
             }
         }
     }
+
+    // MARK: Internal
+
+    var name: String!
+    var speed: CGFloat
+    var reverse: Bool
+    var loopMode: LottieLoopMode
+    var action: () -> Void
+    @Binding var play: Bool
+
+    var animationView = LottieAnimationView()
 }

@@ -7,17 +7,21 @@ import CombineCoreBluetooth
 // MARK: - CharacteristicModelReadOnly
 
 public struct CharacteristicModelReadOnly {
-    public typealias Callback = ((_ data: Data?) -> Void)
-
-    public let characteristicUUID: CBUUID
-    public let serviceUUID: CBUUID
-    public let onRead: Callback?
+    // MARK: Lifecycle
 
     public init(characteristicUUID: CBUUID, serviceUUID: CBUUID, onRead: Callback? = nil) {
         self.characteristicUUID = characteristicUUID
         self.serviceUUID = serviceUUID
         self.onRead = onRead
     }
+
+    // MARK: Public
+
+    public typealias Callback = ((_ data: Data?) -> Void)
+
+    public let characteristicUUID: CBUUID
+    public let serviceUUID: CBUUID
+    public let onRead: Callback?
 }
 
 // MARK: Hashable

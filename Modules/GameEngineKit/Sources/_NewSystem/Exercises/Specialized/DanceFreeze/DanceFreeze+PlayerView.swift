@@ -7,16 +7,20 @@ import SwiftUI
 
 extension DanceFreeze {
     struct PlayerView: View {
-        @ObservedObject var viewModel: MainViewViewModel
-
-        let isAuto: Bool
-        let motion: Motion
+        // MARK: Lifecycle
 
         public init(viewModel: MainViewViewModel, isAuto: Bool, motion: Motion) {
             self.viewModel = viewModel
             self.isAuto = isAuto
             self.motion = motion
         }
+
+        // MARK: Internal
+
+        @ObservedObject var viewModel: MainViewViewModel
+
+        let isAuto: Bool
+        let motion: Motion
 
         var body: some View {
             VStack {

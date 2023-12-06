@@ -63,6 +63,9 @@ enum Professions: String, Identifiable, CaseIterable {
     case educSpe, eje, monit, monitAt, teach, ASC, psychoMot,
          ergo, ortho, kine, pedopsy, med, psy, infir, soign,
          AESH, AES, AVDH, auxVieScol, pueri, auxPueri, ludo
+
+    // MARK: Internal
+
     // swiftlint:enable identifier_name
 
     var id: Self { self }

@@ -8,12 +8,10 @@ import SwiftUI
 // MARK: - CommandListView
 
 struct CommandListView: View {
+    // MARK: Internal
+
     @EnvironmentObject var settings: SettingsViewModel
     @EnvironmentObject var navigationVM: NavigationViewModel
-
-    private let images: [String] = [
-        "standard-remote", "colored-arrows", "color-remote copy", "big-joystick", "hand-remote",
-    ]
 
     var body: some View {
         ZStack {
@@ -42,6 +40,12 @@ struct CommandListView: View {
         .animation(.easeOut(duration: 0.4), value: navigationVM.showInfo())
         .onAppear { navigationVM.sidebarVisibility = .all }
     }
+
+    // MARK: Private
+
+    private let images: [String] = [
+        "standard-remote", "colored-arrows", "color-remote copy", "big-joystick", "hand-remote",
+    ]
 }
 
 // MARK: - CommandListView_Previews

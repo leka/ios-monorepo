@@ -6,9 +6,7 @@ import BLEKit
 import SwiftUI
 
 public struct BatteryViewModel: Equatable {
-    public let level: Int
-    public let name: String
-    public let color: Color
+    // MARK: Lifecycle
 
     public init(level: Int) {
         self.level = level
@@ -36,4 +34,10 @@ public struct BatteryViewModel: Equatable {
                 self.color = .gray
         }
     }
+
+    // MARK: Public
+
+    public let level: Int
+    public let name: String
+    public let color: Color
 }

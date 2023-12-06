@@ -7,10 +7,10 @@ import SwiftUI
 
 extension ObserveThenTouchToSelectView {
     struct OneChoiceView: View {
+        // MARK: Internal
+
         @ObservedObject var viewModel: TouchToSelectViewViewModel
         let isTappable: Bool
-
-        private let kAnswerSize: CGFloat = 180
 
         var body: some View {
             let choice = viewModel.choices[0]
@@ -19,6 +19,10 @@ extension ObserveThenTouchToSelectView {
                     viewModel.onChoiceTapped(choice: choice)
                 }
         }
+
+        // MARK: Private
+
+        private let kAnswerSize: CGFloat = 180
     }
 }
 

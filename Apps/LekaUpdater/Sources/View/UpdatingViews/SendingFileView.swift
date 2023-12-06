@@ -47,7 +47,7 @@ struct SendingFileContentView: View {
 // MARK: - SendingFileView_Previews
 
 struct SendingFileView_Previews: PreviewProvider {
-    @State private static var progress: Float = 0.66
+    // MARK: Internal
 
     static var previews: some View {
         VStack {
@@ -70,4 +70,8 @@ struct SendingFileView_Previews: PreviewProvider {
             .frame(maxWidth: .infinity, maxHeight: 250)
         }
     }
+
+    // MARK: Private
+
+    @State private static var progress: Float = 0.66
 }

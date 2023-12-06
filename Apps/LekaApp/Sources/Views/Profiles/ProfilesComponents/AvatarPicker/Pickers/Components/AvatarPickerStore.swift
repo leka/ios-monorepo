@@ -6,6 +6,8 @@ import DesignKit
 import SwiftUI
 
 struct AvatarPickerStore: View {
+    // MARK: Internal
+
     @EnvironmentObject var metrics: UIMetrics
 
     @Binding var selected: String
@@ -18,6 +20,8 @@ struct AvatarPickerStore: View {
             }
         }
     }
+
+    // MARK: Private
 
     private func makeAvatarCategoryRow(category: AvatarCategory) -> some View {
         VStack(alignment: .leading, spacing: 10) {

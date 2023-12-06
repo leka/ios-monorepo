@@ -8,19 +8,14 @@ import SwiftUI
 // MARK: - CreateTeacherProfileView
 
 struct CreateTeacherProfileView: View {
+    // MARK: Internal
+
     @EnvironmentObject var company: CompanyViewModel
     @EnvironmentObject var settings: SettingsViewModel
     @EnvironmentObject var viewRouter: ViewRouter
     @EnvironmentObject var metrics: UIMetrics
     @EnvironmentObject var navigationVM: NavigationViewModel
     @Environment(\.dismiss) var dismiss
-
-    @FocusState private var focusedField: FormField?
-    @State private var isEditing = false
-    @State private var showDeleteConfirmation: Bool = false
-    @State private var navigateToSignup3: Bool = false
-    @State private var navigateToJobPicker: Bool = false
-    @State private var navigateToAvatarPicker: Bool = false
 
     var body: some View {
         ZStack {
@@ -68,6 +63,40 @@ struct CreateTeacherProfileView: View {
         }
         .preferredColorScheme(.light)
     }
+
+    @ViewBuilder
+    var validateButton: some View {
+        if viewRouter.currentPage == .welcome {
+            EmptyView()
+        } else {
+            Button(
+                action: {
+                    company.saveProfileChanges(.teacher)
+                    if settings.companyIsLoggingIn {
+                        company.assignCurrentProfiles()
+                        viewRouter.currentPage = .home
+                        settings.companyIsLoggingIn = false
+                    } else {
+                        dismiss()
+                    }
+                    hideKeyboard()
+                },
+                label: {
+                    validateButtonLabel
+                }
+            )
+            .disabled(company.bufferTeacher.name.isEmpty)
+        }
+    }
+
+    // MARK: Private
+
+    @FocusState private var focusedField: FormField?
+    @State private var isEditing = false
+    @State private var showDeleteConfirmation: Bool = false
+    @State private var navigateToSignup3: Bool = false
+    @State private var navigateToJobPicker: Bool = false
+    @State private var navigateToAvatarPicker: Bool = false
 
     private var nameField: some View {
         LekaTextField(
@@ -126,31 +155,6 @@ struct CreateTeacherProfileView: View {
         Text(company.editingProfile ? "Éditer un profil accompagnant" : "Créer un profil accompagnant")
             .font(metrics.semi17)
             .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
-    }
-
-    @ViewBuilder
-    var validateButton: some View {
-        if viewRouter.currentPage == .welcome {
-            EmptyView()
-        } else {
-            Button(
-                action: {
-                    company.saveProfileChanges(.teacher)
-                    if settings.companyIsLoggingIn {
-                        company.assignCurrentProfiles()
-                        viewRouter.currentPage = .home
-                        settings.companyIsLoggingIn = false
-                    } else {
-                        dismiss()
-                    }
-                    hideKeyboard()
-                },
-                label: {
-                    validateButtonLabel
-                }
-            )
-            .disabled(company.bufferTeacher.name.isEmpty)
-        }
     }
 
     private var validateButtonLabel: some View {

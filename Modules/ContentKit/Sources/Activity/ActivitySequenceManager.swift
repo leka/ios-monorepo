@@ -3,10 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 public class ActivitySequenceManager {
-    private let activity: Activity
-
-    public var currentSequenceIndex: Int = 0
-    public var currentExerciseIndexInSequence: Int = 0
+    // MARK: Lifecycle
 
     public init(activity: Activity) {
         var localActivity = activity
@@ -23,6 +20,11 @@ public class ActivitySequenceManager {
 
         self.activity = localActivity
     }
+
+    // MARK: Public
+
+    public var currentSequenceIndex: Int = 0
+    public var currentExerciseIndexInSequence: Int = 0
 
     public var totalSequences: Int {
         activity.sequence.count
@@ -62,4 +64,8 @@ public class ActivitySequenceManager {
             currentExerciseIndexInSequence = activity.sequence[currentSequenceIndex].exercises.count - 1
         }
     }
+
+    // MARK: Private
+
+    private let activity: Activity
 }

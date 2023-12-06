@@ -5,11 +5,11 @@
 import SwiftUI
 
 struct AvatarPicker_Teachers: View {
+    // MARK: Internal
+
     @EnvironmentObject var company: CompanyViewModel
     @EnvironmentObject var metrics: UIMetrics
     @EnvironmentObject var navigationVM: NavigationViewModel
-
-    @State private var selected: String = ""
 
     var body: some View {
         ZStack {
@@ -37,4 +37,8 @@ struct AvatarPicker_Teachers: View {
         .toolbarBackground(navigationVM.showProfileEditor ? .visible : .automatic, for: .navigationBar)
         .preferredColorScheme(.light)
     }
+
+    // MARK: Private
+
+    @State private var selected: String = ""
 }

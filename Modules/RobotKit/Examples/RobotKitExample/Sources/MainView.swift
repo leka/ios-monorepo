@@ -6,7 +6,7 @@ import RobotKit
 import SwiftUI
 
 struct MainView: View {
-    @State private var presentRobotConnection: Bool = false
+    // MARK: Internal
 
     var body: some View {
         NavigationStack {
@@ -34,6 +34,10 @@ struct MainView: View {
             .navigationTitle("RobotKit Explorer")
         }
     }
+
+    // MARK: Private
+
+    @State private var presentRobotConnection: Bool = false
 }
 
 #Preview {

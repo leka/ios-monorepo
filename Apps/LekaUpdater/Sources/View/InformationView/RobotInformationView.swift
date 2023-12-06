@@ -11,7 +11,7 @@ import Version
 // MARK: - RobotInformationView
 
 struct RobotInformationView: View {
-    @StateObject private var viewModel = RobotInformationViewModel()
+    // MARK: Internal
 
     var body: some View {
         VStack(alignment: .leading) {
@@ -25,6 +25,10 @@ struct RobotInformationView: View {
         }
         .padding()
     }
+
+    // MARK: Private
+
+    @StateObject private var viewModel = RobotInformationViewModel()
 }
 
 // MARK: - RobotInformationView_Previews

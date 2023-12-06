@@ -9,6 +9,14 @@ import SwiftUI
 // MARK: - ChangelogView
 
 struct ChangelogView: View {
+    // MARK: Internal
+
+    var body: some View {
+        Text(changelog)
+    }
+
+    // MARK: Private
+
     private var changelog: LocalizedStringKey {
         // swiftlint:disable:next force_cast
         let osVersion = Bundle.main.object(forInfoDictionaryKey: "LEKA_OS_VERSION") as! String
@@ -27,10 +35,6 @@ struct ChangelogView: View {
         } catch {
             return "\(l10n.information.changelogNotFoundText)"
         }
-    }
-
-    var body: some View {
-        Text(changelog)
     }
 }
 

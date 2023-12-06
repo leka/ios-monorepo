@@ -8,10 +8,8 @@ import SpriteKit
 import SwiftUI
 
 public struct DragAndDropIntoZonesView: View {
-    @StateObject private var viewModel: ViewModel
-    @State private var scene: SKScene = SKScene()
-    let dropZoneA: DragAndDropIntoZones.DropZone.Details
-    let dropZoneB: DragAndDropIntoZones.DropZone.Details?
+    // MARK: Lifecycle
+
     // TODO(@HPezz): Add hints variable
     // let hints: Bool
 
@@ -37,6 +35,8 @@ public struct DragAndDropIntoZonesView: View {
         self.dropZoneB = payload.dropZoneB
     }
 
+    // MARK: Public
+
     public var body: some View {
         GeometryReader { proxy in
             SpriteView(
@@ -56,6 +56,16 @@ public struct DragAndDropIntoZonesView: View {
         }
         .edgesIgnoringSafeArea(.horizontal)
     }
+
+    // MARK: Internal
+
+    let dropZoneA: DragAndDropIntoZones.DropZone.Details
+    let dropZoneB: DragAndDropIntoZones.DropZone.Details?
+
+    // MARK: Private
+
+    @StateObject private var viewModel: ViewModel
+    @State private var scene: SKScene = SKScene()
 
     private func makeScene(size: CGSize) -> SKScene {
         guard let finalScene = scene as? DragAndDropIntoZonesView.BaseScene else {

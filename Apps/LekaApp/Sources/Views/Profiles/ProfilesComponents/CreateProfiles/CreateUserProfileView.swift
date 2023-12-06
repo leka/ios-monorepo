@@ -8,17 +8,13 @@ import SwiftUI
 // MARK: - CreateUserProfileView
 
 struct CreateUserProfileView: View {
+    // MARK: Internal
+
     @EnvironmentObject var company: CompanyViewModel
     @EnvironmentObject var viewRouter: ViewRouter
     @EnvironmentObject var metrics: UIMetrics
     @EnvironmentObject var navigationVM: NavigationViewModel
     @Environment(\.dismiss) var dismiss
-
-    @FocusState private var focusedField: FormField?
-    @State private var isEditing = false
-    @State private var showDeleteConfirmation: Bool = false
-    @State private var navigateToSignupFinalStep: Bool = false
-    @State private var navigateToAvatarPicker: Bool = false
 
     var body: some View {
         ZStack {
@@ -61,6 +57,14 @@ struct CreateUserProfileView: View {
         }
         .preferredColorScheme(.light)
     }
+
+    // MARK: Private
+
+    @FocusState private var focusedField: FormField?
+    @State private var isEditing = false
+    @State private var showDeleteConfirmation: Bool = false
+    @State private var navigateToSignupFinalStep: Bool = false
+    @State private var navigateToAvatarPicker: Bool = false
 
     private var nameField: some View {
         LekaTextField(

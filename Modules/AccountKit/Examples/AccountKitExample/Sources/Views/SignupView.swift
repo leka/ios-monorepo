@@ -6,8 +6,9 @@ import AuthenticationServices
 import SwiftUI
 
 struct SignupView: View {
+    // MARK: Internal
+
     @EnvironmentObject var authenticationState: OrganisationAuthState
-    @State private var organisation = OrganisationViewModel()
 
     var body: some View {
         VStack(spacing: 10) {
@@ -25,6 +26,10 @@ struct SignupView: View {
         .animation(.default, value: organisation.isPasswordValid(organisation.password))
         .animation(.default, value: organisation.passwordsMatch())
     }
+
+    // MARK: Private
+
+    @State private var organisation = OrganisationViewModel()
 
     private var emailField: some View {
         VStack(alignment: .leading, spacing: 10) {

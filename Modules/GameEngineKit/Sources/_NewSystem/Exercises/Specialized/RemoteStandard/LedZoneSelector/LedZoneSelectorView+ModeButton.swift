@@ -7,6 +7,8 @@ import SwiftUI
 
 extension LedZoneSelectorView {
     struct ModeButton: View {
+        // MARK: Internal
+
         var mode: RemoteStandard.DisplayMode
         @Binding var displayMode: RemoteStandard.DisplayMode
 
@@ -26,6 +28,8 @@ extension LedZoneSelectorView {
             }
             .background(ModeFeedback(backgroundDimension: displayMode == mode ? 80 : 0))
         }
+
+        // MARK: Private
 
         private var earsSectionIcons: some View {
             HStack {

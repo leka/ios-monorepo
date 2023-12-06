@@ -32,22 +32,7 @@ enum UpdateProcessError: Error {
 // MARK: - UpdateProcessController
 
 class UpdateProcessController {
-    // MARK: - Private variables
-
-    private var currentUpdateProcess: any UpdateProcessProtocol
-
-    // MARK: - Public variables
-
-    public static let availableVersions = [
-        Version(1, 0, 0),
-        Version(1, 1, 0),
-        Version(1, 2, 0),
-        Version(1, 3, 0),
-        Version(1, 4, 0),
-    ]
-
-    public var currentStage = CurrentValueSubject<UpdateProcessStage, UpdateProcessError>(.initial)
-    public var sendingFileProgression = CurrentValueSubject<Float, Never>(0.0)
+    // MARK: Lifecycle
 
     init() {
         let currentRobotVersion = Robot.shared.osVersion.value
@@ -65,7 +50,30 @@ class UpdateProcessController {
         self.sendingFileProgression = self.currentUpdateProcess.sendingFileProgression
     }
 
+    // MARK: Public
+
+    // MARK: - Public variables
+
+    public static let availableVersions = [
+        Version(1, 0, 0),
+        Version(1, 1, 0),
+        Version(1, 2, 0),
+        Version(1, 3, 0),
+        Version(1, 4, 0),
+    ]
+
+    public var currentStage = CurrentValueSubject<UpdateProcessStage, UpdateProcessError>(.initial)
+    public var sendingFileProgression = CurrentValueSubject<Float, Never>(0.0)
+
+    // MARK: Internal
+
     func startUpdate() {
         currentUpdateProcess.startProcess()
     }
+
+    // MARK: Private
+
+    // MARK: - Private variables
+
+    private var currentUpdateProcess: any UpdateProcessProtocol
 }

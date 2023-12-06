@@ -10,8 +10,7 @@ import SwiftUI
 
 public extension Robot {
     struct Color {
-        private let robotRGB: [UInt8]
-        private let screenRGB: [UInt8]
+        // MARK: Lifecycle
 
         public init(robot rRGB: UInt8..., screen sRGB: UInt8...) {
             guard rRGB.count == 3, sRGB.count == 3 else { fatalError() }
@@ -19,6 +18,29 @@ public extension Robot {
             self.robotRGB = rRGB
             self.screenRGB = sRGB
         }
+
+        public init(from value: String) {
+            guard let color = ColorString(rawValue: value)?.color else {
+                fatalError("Invalid color string \(value)")
+            }
+            self = color
+        }
+
+        // MARK: Public
+
+        public var robot: [UInt8] {
+            robotRGB
+        }
+
+        public var screen: SwiftUI.Color {
+            SwiftUI.Color(
+                red: Double(screenRGB[0]) / 255.0,
+                green: Double(screenRGB[1]) / 255.0,
+                blue: Double(screenRGB[2]) / 255.0
+            )
+        }
+
+        // MARK: Private
 
         private enum ColorString: String {
             case black
@@ -31,6 +53,8 @@ public extension Robot {
             case purple
             case pink
             case yellow
+
+            // MARK: Public
 
             public var color: Robot.Color {
                 switch self {
@@ -58,24 +82,8 @@ public extension Robot {
             }
         }
 
-        public init(from value: String) {
-            guard let color = ColorString(rawValue: value)?.color else {
-                fatalError("Invalid color string \(value)")
-            }
-            self = color
-        }
-
-        public var robot: [UInt8] {
-            robotRGB
-        }
-
-        public var screen: SwiftUI.Color {
-            SwiftUI.Color(
-                red: Double(screenRGB[0]) / 255.0,
-                green: Double(screenRGB[1]) / 255.0,
-                blue: Double(screenRGB[2]) / 255.0
-            )
-        }
+        private let robotRGB: [UInt8]
+        private let screenRGB: [UInt8]
     }
 }
 

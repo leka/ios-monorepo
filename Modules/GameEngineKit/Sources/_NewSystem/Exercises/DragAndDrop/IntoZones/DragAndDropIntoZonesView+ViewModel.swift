@@ -8,11 +8,7 @@ import SwiftUI
 
 extension DragAndDropIntoZonesView {
     class ViewModel: ObservableObject {
-        @Published var choices: [GameplayDragAndDropIntoZonesChoiceModel] = []
-        @ObservedObject var exercicesSharedData: ExerciseSharedData
-
-        private let gameplay: GameplayFindTheRightAnswers<GameplayDragAndDropIntoZonesChoiceModel>
-        private var cancellables: Set<AnyCancellable> = []
+        // MARK: Lifecycle
 
         init(choices: [DragAndDropIntoZones.Choice], shared: ExerciseSharedData? = nil) {
             let gameplayChoiceModel = choices.map { GameplayDragAndDropIntoZonesChoiceModel(choice: $0) }
@@ -25,11 +21,23 @@ extension DragAndDropIntoZonesView {
             subscribeToGameplayStateUpdates()
         }
 
+        // MARK: Public
+
         public func onChoiceTapped(
             choice: GameplayDragAndDropIntoZonesChoiceModel, dropZone: DragAndDropIntoZones.DropZone
         ) {
             gameplay.process(choice, dropZone)
         }
+
+        // MARK: Internal
+
+        @Published var choices: [GameplayDragAndDropIntoZonesChoiceModel] = []
+        @ObservedObject var exercicesSharedData: ExerciseSharedData
+
+        // MARK: Private
+
+        private let gameplay: GameplayFindTheRightAnswers<GameplayDragAndDropIntoZonesChoiceModel>
+        private var cancellables: Set<AnyCancellable> = []
 
         private func subscribeToGameplayDragAndDropChoicesUpdates() {
             gameplay.choices

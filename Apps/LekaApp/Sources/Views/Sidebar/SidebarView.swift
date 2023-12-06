@@ -6,12 +6,11 @@ import DesignKit
 import SwiftUI
 
 struct SidebarView: View {
+    // MARK: Internal
+
     @EnvironmentObject var navigationVM: NavigationViewModel
     @EnvironmentObject var settings: SettingsViewModel
     @EnvironmentObject var metrics: UIMetrics
-
-    @State private var appVersion: String? = ""
-    @State private var buildNumber: String? = ""
 
     var body: some View {
         ScrollView {
@@ -34,6 +33,11 @@ struct SidebarView: View {
             buildNumber = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String
         }
     }
+
+    // MARK: Private
+
+    @State private var appVersion: String? = ""
+    @State private var buildNumber: String? = ""
 
     @ViewBuilder
     private var settingsButton: some View {

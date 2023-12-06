@@ -6,13 +6,19 @@ import Foundation
 import LogKit
 
 public struct NewModule {
-    private let log = LogKit.createLoggerFor(module: "NewModule")
+    // MARK: Lifecycle
 
     public init() {
         log.info("new module has been initialized")
     }
 
+    // MARK: Public
+
     public func doSomething() {
         log.info("doing something")
     }
+
+    // MARK: Private
+
+    private let log = LogKit.createLoggerFor(module: "NewModule")
 }

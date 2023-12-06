@@ -6,9 +6,7 @@ import AVFAudio
 import SwiftUI
 
 struct MIDISample {
-    var fileName: String
-    var midiNote: Int
-    var audioFile: AVAudioFile?
+    // MARK: Lifecycle
 
     init(file: String, note: Int) {
         fileName = file
@@ -21,4 +19,10 @@ struct MIDISample {
             fatalError("Could not load: \(fileName)")
         }
     }
+
+    // MARK: Internal
+
+    var fileName: String
+    var midiNote: Int
+    var audioFile: AVAudioFile?
 }

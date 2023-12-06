@@ -8,6 +8,8 @@ import SwiftUI
 // MARK: - LekaTextField
 
 struct LekaTextField: View {
+    // MARK: Internal
+
     @EnvironmentObject var metrics: UIMetrics
 
     var label: String
@@ -27,6 +29,8 @@ struct LekaTextField: View {
             entryField
         }
     }
+
+    // MARK: Private
 
     @ViewBuilder
     private var entryField: some View {

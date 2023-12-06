@@ -8,18 +8,19 @@ import SwiftUI
 
 extension DanceFreeze {
     struct SongSelectorView: View {
-        @ObservedObject private var viewModel: MainViewViewModel
-        @State private var selectedAudioRecording: AudioRecording
-
-        let columns = [
-            GridItem(.flexible()),
-            GridItem(.flexible()),
-        ]
+        // MARK: Lifecycle
 
         init(viewModel: MainViewViewModel) {
             self.viewModel = viewModel
             self.selectedAudioRecording = viewModel.songs.first!
         }
+
+        // MARK: Internal
+
+        let columns = [
+            GridItem(.flexible()),
+            GridItem(.flexible()),
+        ]
 
         var body: some View {
             VStack {
@@ -66,6 +67,11 @@ extension DanceFreeze {
                 viewModel.setAudioRecording(audioRecording: viewModel.songs.first!)
             }
         }
+
+        // MARK: Private
+
+        @ObservedObject private var viewModel: MainViewViewModel
+        @State private var selectedAudioRecording: AudioRecording
     }
 }
 

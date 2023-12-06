@@ -6,6 +6,8 @@ import DesignKit
 import SwiftUI
 
 struct ActivityListView: View {
+    // MARK: Internal
+
     @EnvironmentObject var curriculumVM: CurriculumViewModel
     @EnvironmentObject var activityVM: ActivityViewModel
     @EnvironmentObject var navigationVM: NavigationViewModel
@@ -15,6 +17,7 @@ struct ActivityListView: View {
 
     // Data modeled for Search Feature
     @State var searchQuery = ""
+
     var searchResults: [String] {
         guard searchQuery.isEmpty else {
             return curriculumVM.activityFilesCompleteList.filter {
@@ -47,6 +50,8 @@ struct ActivityListView: View {
             }
         )
     }
+
+    // MARK: Private
 
     private var completeActivityList: some View {
         ScrollViewReader { proxy in

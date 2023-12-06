@@ -8,9 +8,27 @@ import SwiftUI
 // swiftlint:disable nesting
 extension HideAndSeekView {
     struct Player: View {
+        // MARK: Lifecycle
+
+        init(
+            stage: Binding<HideAndSeekStage>, textSubInstructions: String, textButtonRobotFound: String,
+            shared: ExerciseSharedData? = nil
+        ) {
+            self._stage = stage
+            self.textSubInstructions = textSubInstructions
+            self.textButtonRobotFound = textButtonRobotFound
+
+            self.exercicesSharedData = shared ?? ExerciseSharedData()
+            self.exercicesSharedData.state = .playing
+        }
+
+        // MARK: Internal
+
         enum Stimulation: String, CaseIterable {
             case light
             case motion
+
+            // MARK: Public
 
             public func icon() -> Image {
                 switch self {
@@ -27,18 +45,6 @@ extension HideAndSeekView {
         let textSubInstructions: String
         let textButtonRobotFound: String
         let robotManager = RobotManager()
-
-        init(
-            stage: Binding<HideAndSeekStage>, textSubInstructions: String, textButtonRobotFound: String,
-            shared: ExerciseSharedData? = nil
-        ) {
-            self._stage = stage
-            self.textSubInstructions = textSubInstructions
-            self.textButtonRobotFound = textButtonRobotFound
-
-            self.exercicesSharedData = shared ?? ExerciseSharedData()
-            self.exercicesSharedData.state = .playing
-        }
 
         var body: some View {
             ZStack {

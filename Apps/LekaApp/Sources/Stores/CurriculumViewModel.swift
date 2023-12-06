@@ -19,6 +19,11 @@ class CurriculumViewModel: ObservableObject, YamlFileDecodable {
     @Published var selectedCurriculumRank: String = ""
     @Published var selectedCurriculumIcon: String = ""
     @Published var selectedCurriculumDescription: String = ""
+
+    // MARK: - ActivityList -> will not stay here - list activities files from the Bundle instead
+
+    @Published var activityFilesCompleteList: [String] = [] // will not stay like that - list files instead
+
     @Published var selectedCurriculum: Int? = 0 {
         didSet {
             currentCurriculum = availableCurriculums[selectedCurriculum ?? 0]
@@ -82,9 +87,6 @@ class CurriculumViewModel: ObservableObject, YamlFileDecodable {
         }
     }
 
-    // MARK: - ActivityList -> will not stay here - list activities files from the Bundle instead
-
-    @Published var activityFilesCompleteList: [String] = [] // will not stay like that - list files instead
     func getCompleteActivityList() {
         for curriculum in availableCurriculums {
             activityFilesCompleteList.append(contentsOf: curriculum.activities)

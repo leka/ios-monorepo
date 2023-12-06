@@ -7,12 +7,7 @@ import CombineCoreBluetooth
 // MARK: - CharacteristicModelNotifying
 
 public struct CharacteristicModelNotifying {
-    public typealias Callback = ((_ data: Data?) -> Void)
-
-    public let characteristicUUID: CBUUID
-    public let serviceUUID: CBUUID
-    public let cbCharacteristic: CBCharacteristic?
-    public let onNotification: Callback?
+    // MARK: Lifecycle
 
     public init(
         characteristicUUID: CBUUID, serviceUUID: CBUUID, cbCharacteristic: CBCharacteristic? = nil,
@@ -23,6 +18,15 @@ public struct CharacteristicModelNotifying {
         self.cbCharacteristic = cbCharacteristic
         self.onNotification = onNotification
     }
+
+    // MARK: Public
+
+    public typealias Callback = ((_ data: Data?) -> Void)
+
+    public let characteristicUUID: CBUUID
+    public let serviceUUID: CBUUID
+    public let cbCharacteristic: CBCharacteristic?
+    public let onNotification: Callback?
 }
 
 // MARK: Hashable

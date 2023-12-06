@@ -13,7 +13,25 @@ let log = LogKit.createLoggerFor(module: "RobotKit")
 // MARK: - Robot
 
 public class Robot {
+    // MARK: Lifecycle
+
+    private init() {
+        subscribeToBLEConnectionUpdates()
+    }
+
+    // MARK: Public
+
     public static var shared: Robot = Robot()
+
+    // MARK: - Information
+
+    public var isConnected: CurrentValueSubject<Bool, Never> = CurrentValueSubject(false)
+
+    public var name: CurrentValueSubject<String, Never> = CurrentValueSubject("(robot not connected)")
+    public var osVersion: CurrentValueSubject<Version?, Never> = CurrentValueSubject(nil)
+    public var serialNumber: CurrentValueSubject<String, Never> = CurrentValueSubject("(n/a)")
+    public var isCharging: CurrentValueSubject<Bool, Never> = CurrentValueSubject(false)
+    public var battery: CurrentValueSubject<Int, Never> = CurrentValueSubject(0)
 
     // MARK: - Internal properties
 
@@ -30,22 +48,6 @@ public class Robot {
             connectedPeripheral?.readReadOnlyCharacteristics()
         }
     }
-
-    var cancellables: Set<AnyCancellable> = []
-
-    private init() {
-        subscribeToBLEConnectionUpdates()
-    }
-
-    // MARK: - Information
-
-    public var isConnected: CurrentValueSubject<Bool, Never> = CurrentValueSubject(false)
-
-    public var name: CurrentValueSubject<String, Never> = CurrentValueSubject("(robot not connected)")
-    public var osVersion: CurrentValueSubject<Version?, Never> = CurrentValueSubject(nil)
-    public var serialNumber: CurrentValueSubject<String, Never> = CurrentValueSubject("(n/a)")
-    public var isCharging: CurrentValueSubject<Bool, Never> = CurrentValueSubject(false)
-    public var battery: CurrentValueSubject<Int, Never> = CurrentValueSubject(0)
 
     // MARK: - General
 
@@ -65,4 +67,8 @@ public class Robot {
         Just(MagicCard.dice_roll)
             .eraseToAnyPublisher()
     }
+
+    // MARK: Internal
+
+    var cancellables: Set<AnyCancellable> = []
 }

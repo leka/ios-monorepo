@@ -7,13 +7,7 @@ import Foundation
 // MARK: - CurriculumList
 
 struct CurriculumList: Codable {
-    enum CodingKeys: String, CodingKey {
-        case curriculums
-        case sectionTitle = "section_title"
-    }
-
-    var sectionTitle: LocalizedContent
-    var curriculums: [String]
+    // MARK: Lifecycle
 
     init(
         sectionTitle: LocalizedContent = LocalizedContent(),
@@ -22,24 +16,22 @@ struct CurriculumList: Codable {
         self.sectionTitle = sectionTitle
         self.curriculums = curriculums
     }
+
+    // MARK: Internal
+
+    enum CodingKeys: String, CodingKey {
+        case curriculums
+        case sectionTitle = "section_title"
+    }
+
+    var sectionTitle: LocalizedContent
+    var curriculums: [String]
 }
 
 // MARK: - Curriculum
 
 struct Curriculum: Codable, Identifiable {
-    enum CodingKeys: String, CodingKey {
-        case title, subtitle, activities
-        case id = "uuid"
-        case fullTitle = "full_title"
-        case quantity = "number_of_activities"
-    }
-
-    var id: String
-    var title: LocalizedContent
-    var subtitle: LocalizedContent
-    var fullTitle: LocalizedContent
-    var quantity: Int
-    var activities: [String]
+    // MARK: Lifecycle
 
     init(
         id: String = "",
@@ -56,4 +48,20 @@ struct Curriculum: Codable, Identifiable {
         self.quantity = quantity
         self.activities = activities
     }
+
+    // MARK: Internal
+
+    enum CodingKeys: String, CodingKey {
+        case title, subtitle, activities
+        case id = "uuid"
+        case fullTitle = "full_title"
+        case quantity = "number_of_activities"
+    }
+
+    var id: String
+    var title: LocalizedContent
+    var subtitle: LocalizedContent
+    var fullTitle: LocalizedContent
+    var quantity: Int
+    var activities: [String]
 }

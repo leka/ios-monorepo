@@ -32,6 +32,14 @@ internal typealias CFilePointer = UnsafeMutablePointer<FILE>
 // MARK: - StdioOutputStream
 
 internal struct StdioOutputStream: TextOutputStream {
+    internal enum FlushMode {
+        case undefined
+        case always
+    }
+
+    internal static let stderr = StdioOutputStream(file: systemStderr, flushMode: .always)
+    internal static let stdout = StdioOutputStream(file: systemStdout, flushMode: .always)
+
     internal let file: CFilePointer
     internal let flushMode: FlushMode
 
@@ -58,20 +66,32 @@ internal struct StdioOutputStream: TextOutputStream {
         contiguousString.makeContiguousUTF8()
         return contiguousString.utf8
     }
-
-    internal static let stderr = StdioOutputStream(file: systemStderr, flushMode: .always)
-    internal static let stdout = StdioOutputStream(file: systemStdout, flushMode: .always)
-
-    internal enum FlushMode {
-        case undefined
-        case always
-    }
 }
 
 // MARK: - LogKitLogHandler
 
 public struct LogKitLogHandler: LogHandler {
-    internal typealias _SendableTextOutputStream = TextOutputStream & Sendable
+    // MARK: Lifecycle
+
+    // internal for testing only
+    internal init(label: String, stream: _SendableTextOutputStream) {
+        self.init(label: label, stream: stream, metadataProvider: LoggingSystem.metadataProvider)
+    }
+
+    // internal for testing only
+    internal init(label: String, stream: _SendableTextOutputStream, metadataProvider: Logger.MetadataProvider?) {
+        self.label = label
+        self.stream = stream
+        self.metadataProvider = metadataProvider
+    }
+
+    // MARK: Public
+
+    public var logLevel: Logger.Level = .trace
+
+    public var metadataProvider: Logger.MetadataProvider?
+
+    public var metadata = Logger.Metadata()
 
     /// Factory that makes a `LogKitLogHandler` to directs its output to `stdout`
     public static func standardOutput(label: String) -> LogKitLogHandler {
@@ -84,16 +104,6 @@ public struct LogKitLogHandler: LogHandler {
         LogKitLogHandler(label: label, stream: StdioOutputStream.stdout, metadataProvider: metadataProvider)
     }
 
-    private let stream: _SendableTextOutputStream
-    private let label: String
-
-    public var logLevel: Logger.Level = .trace
-
-    public var metadataProvider: Logger.MetadataProvider?
-
-    private var prettyMetadata: String?
-    public var metadata = Logger.Metadata()
-
     public subscript(metadataKey metadataKey: String) -> Logger.Metadata.Value? {
         get {
             self.metadata[metadataKey]
@@ -101,18 +111,6 @@ public struct LogKitLogHandler: LogHandler {
         set {
             self.metadata[metadataKey] = newValue
         }
-    }
-
-    // internal for testing only
-    internal init(label: String, stream: _SendableTextOutputStream) {
-        self.init(label: label, stream: stream, metadataProvider: LoggingSystem.metadataProvider)
-    }
-
-    // internal for testing only
-    internal init(label: String, stream: _SendableTextOutputStream, metadataProvider: Logger.MetadataProvider?) {
-        self.label = label
-        self.stream = stream
-        self.metadataProvider = metadataProvider
     }
 
     public func log(
@@ -130,6 +128,17 @@ public struct LogKitLogHandler: LogHandler {
             "\(self.timestamp()) \(prettyLevel(level)) [\(label)](\(prettyFile(file)):\(line)) \(function) > \(message)\n"
         )
     }
+
+    // MARK: Internal
+
+    internal typealias _SendableTextOutputStream = TextOutputStream & Sendable
+
+    // MARK: Private
+
+    private let stream: _SendableTextOutputStream
+    private let label: String
+
+    private var prettyMetadata: String?
 
     private func prettyLevel(_ level: Logger.Level) -> String {
         switch level {

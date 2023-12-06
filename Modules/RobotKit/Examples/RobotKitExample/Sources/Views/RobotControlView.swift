@@ -7,13 +7,15 @@ import RobotKit
 import SwiftUI
 
 struct RobotControlView: View {
-    @StateObject var viewModel: RobotControlViewModel
-
-    private let robot = Robot.shared
+    // MARK: Lifecycle
 
     init(viewModel: RobotControlViewModel) {
         self._viewModel = StateObject(wrappedValue: viewModel)
     }
+
+    // MARK: Internal
+
+    @StateObject var viewModel: RobotControlViewModel
 
     var body: some View {
         VStack {
@@ -121,6 +123,10 @@ struct RobotControlView: View {
         }
         .buttonStyle(.robotControlPlainButtonStyle(foreground: .white, background: .red))
     }
+
+    // MARK: Private
+
+    private let robot = Robot.shared
 }
 
 #Preview {

@@ -6,6 +6,8 @@ import DesignKit
 import SwiftUI
 
 struct TeacherSet_AvatarCell: View {
+    // MARK: Internal
+
     @EnvironmentObject var company: CompanyViewModel
     @EnvironmentObject var settings: SettingsViewModel
     @EnvironmentObject var viewRouter: ViewRouter
@@ -70,6 +72,8 @@ struct TeacherSet_AvatarCell: View {
         }
         .buttonStyle(NoFeedback_ButtonStyle())
     }
+
+    // MARK: Private
 
     private func selectionIndicator(id: UUID) -> some View {
         // TODO(@ladislas): review logic in the future

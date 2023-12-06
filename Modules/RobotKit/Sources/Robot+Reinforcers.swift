@@ -10,6 +10,8 @@ public extension Robot {
         case spinBlinkBlueViolet = 0x54
         case spinBlinkGreenOff = 0x55
 
+        // MARK: Internal
+
         static let id: UInt8 = 0x50
 
         var cmd: [UInt8] {

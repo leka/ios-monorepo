@@ -7,6 +7,8 @@ import RobotKit
 import SwiftUI
 
 struct GoToRobotConnectButton: View {
+    // MARK: Internal
+
     @EnvironmentObject var metrics: UIMetrics
     @EnvironmentObject var navigationVM: NavigationViewModel
 
@@ -29,6 +31,8 @@ struct GoToRobotConnectButton: View {
         }
         .contentShape(Rectangle())
     }
+
+    // MARK: Private
 
     @ViewBuilder
     private var buttonContent: some View {

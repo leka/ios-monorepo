@@ -7,9 +7,9 @@ import SwiftUI
 
 extension TouchToSelectView {
     struct OneChoiceView: View {
-        @ObservedObject var viewModel: TouchToSelectViewViewModel
+        // MARK: Internal
 
-        private let kAnswerSize: CGFloat = 300
+        @ObservedObject var viewModel: TouchToSelectViewViewModel
 
         var body: some View {
             let choice = viewModel.choices[0]
@@ -18,6 +18,10 @@ extension TouchToSelectView {
                     viewModel.onChoiceTapped(choice: choice)
                 }
         }
+
+        // MARK: Private
+
+        private let kAnswerSize: CGFloat = 300
     }
 }
 

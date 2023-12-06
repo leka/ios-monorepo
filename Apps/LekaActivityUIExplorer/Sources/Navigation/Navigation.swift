@@ -19,23 +19,15 @@ enum Category: Hashable, Identifiable, CaseIterable {
     case designSystemLekaButtons
     case designSystemLekaColorsSwiftUI
 
+    // MARK: Internal
+
     var id: Self { self }
 }
 
 // MARK: - Navigation
 
 class Navigation: ObservableObject {
-    static let shared = Navigation()
-
-    private var pushPopNoAnimationTransaction: Transaction {
-        var transaction = Transaction(animation: nil)
-        transaction.disablesAnimations = true
-        return transaction
-    }
-
-    @Published var disableUICompletly: Bool = false
-
-    @Published var categories = Category.allCases
+    // MARK: Public
 
     public var selectedCategory: Category? = .home {
         willSet {
@@ -49,6 +41,14 @@ class Navigation: ObservableObject {
         }
     }
 
+    // MARK: Internal
+
+    static let shared = Navigation()
+
+    @Published var disableUICompletly: Bool = false
+
+    @Published var categories = Category.allCases
+
     @Published var path: NavigationPath = NavigationPath() {
         willSet {
             disableUICompletly = true
@@ -58,5 +58,13 @@ class Navigation: ObservableObject {
         }
     }
 
+    // MARK: Private
+
     private var isProgrammaticNavigation: Bool = false
+
+    private var pushPopNoAnimationTransaction: Transaction {
+        var transaction = Transaction(animation: nil)
+        transaction.disablesAnimations = true
+        return transaction
+    }
 }

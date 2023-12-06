@@ -8,6 +8,8 @@ import SwiftUI
 // MARK: - ProfileEditorView
 
 struct ProfileEditorView: View {
+    // MARK: Internal
+
     @EnvironmentObject var company: CompanyViewModel
     @EnvironmentObject var settings: SettingsViewModel
     @EnvironmentObject var metrics: UIMetrics
@@ -39,6 +41,8 @@ struct ProfileEditorView: View {
             ToolbarItem(placement: .navigationBarTrailing) { validateButton }
         }
     }
+
+    // MARK: Private
 
     // Toolbar
     private var navigationTitle: some View {

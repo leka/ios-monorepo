@@ -6,6 +6,8 @@ import DesignKit
 import SwiftUI
 
 struct SettingsSection_Profiles: View {
+    // MARK: Internal
+
     @EnvironmentObject var company: CompanyViewModel
     @EnvironmentObject var metrics: UIMetrics
 
@@ -23,6 +25,8 @@ struct SettingsSection_Profiles: View {
                 .headerProminence(.increased)
         }
     }
+
+    // MARK: Private
 
     private func avatar(_ name: String) -> some View {
         Image(name, bundle: Bundle(for: DesignKitResources.self))

@@ -8,6 +8,8 @@ import SwiftUI
 // MARK: - JobPicker
 
 struct JobPicker: View {
+    // MARK: Internal
+
     @EnvironmentObject var company: CompanyViewModel
     @EnvironmentObject var metrics: UIMetrics
     @EnvironmentObject var viewRouter: ViewRouter
@@ -15,9 +17,6 @@ struct JobPicker: View {
     @Environment(\.dismiss) var dismiss
 
     @FocusState var focusedField: FormField?
-    @State private var otherJobText: String = ""
-    @State private var isEditing = false
-    @State private var selectedJobs: [String] = []
 
     var body: some View {
         ZStack {
@@ -40,6 +39,12 @@ struct JobPicker: View {
         }
         .toolbarBackground(navigationVM.showProfileEditor ? .visible : .automatic, for: .navigationBar)
     }
+
+    // MARK: Private
+
+    @State private var otherJobText: String = ""
+    @State private var isEditing = false
+    @State private var selectedJobs: [String] = []
 
     private var customJobTextField: some View {
         VStack(spacing: 0) {

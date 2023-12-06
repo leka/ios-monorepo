@@ -10,17 +10,21 @@ import Foundation
 // MARK: - AudioPlayer
 
 public class AudioPlayer: NSObject, ObservableObject {
-    @Published var progress: CGFloat = 0.0
-    @Published var didFinishPlaying = false
-
-    private var player: AVAudioPlayer!
-
-    private var cancellables: Set<AnyCancellable> = []
+    // MARK: Lifecycle
 
     public init(audioRecording: AudioRecording) {
         super.init()
         setAudioPlayer(audioRecording: audioRecording)
         didFinishPlaying = false
+    }
+
+    // MARK: Internal
+
+    @Published var progress: CGFloat = 0.0
+    @Published var didFinishPlaying = false
+
+    var isPlaying: Bool {
+        self.player.isPlaying
     }
 
     func setAudioPlayer(audioRecording: AudioRecording) {
@@ -68,9 +72,11 @@ public class AudioPlayer: NSObject, ObservableObject {
         didFinishPlaying = true
     }
 
-    var isPlaying: Bool {
-        self.player.isPlaying
-    }
+    // MARK: Private
+
+    private var player: AVAudioPlayer!
+
+    private var cancellables: Set<AnyCancellable> = []
 }
 
 // MARK: AVAudioPlayerDelegate

@@ -11,13 +11,11 @@ import Version
 // MARK: - InformationView
 
 struct InformationView: View {
+    // MARK: Internal
+
     @StateObject var viewModel = InformationViewModel()
     @Binding var isConnectionViewPresented: Bool
     @Binding var isUpdateStatusViewPresented: Bool
-
-    private var isViewVisible: Bool {
-        !self.isConnectionViewPresented && !self.isUpdateStatusViewPresented
-    }
 
     var body: some View {
         NavigationStack {
@@ -122,6 +120,12 @@ struct InformationView: View {
                 }
             }
         }
+    }
+
+    // MARK: Private
+
+    private var isViewVisible: Bool {
+        !self.isConnectionViewPresented && !self.isUpdateStatusViewPresented
     }
 }
 

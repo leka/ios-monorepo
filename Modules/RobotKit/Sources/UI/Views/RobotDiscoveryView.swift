@@ -6,18 +6,15 @@ import DesignKit
 import SwiftUI
 
 struct RobotDiscoveryView: View {
-    // MARK: - Private variables
-
-    @State private var rotation: CGFloat = 0.0
-    @State private var inset: CGFloat = 0.0
-
-    private var discovery: RobotDiscoveryViewModel
+    // MARK: Lifecycle
 
     // MARK: - Public functions
 
     public init(discovery: RobotDiscoveryViewModel) {
         self.discovery = discovery
     }
+
+    // MARK: Internal
 
     // MARK: - Views
 
@@ -33,6 +30,15 @@ struct RobotDiscoveryView: View {
         .padding(.top, 30)
         .padding(.horizontal, 20)
     }
+
+    // MARK: Private
+
+    // MARK: - Private variables
+
+    @State private var rotation: CGFloat = 0.0
+    @State private var inset: CGFloat = 0.0
+
+    private var discovery: RobotDiscoveryViewModel
 
     // MARK: - Private views
 

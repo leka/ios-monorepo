@@ -11,18 +11,6 @@ struct ProgressBarView: View {
     @EnvironmentObject var activityVM: ActivityViewModel
     @ObservedObject var gameMetrics: GameMetrics
 
-    @ViewBuilder
-    func stepMarker(_ color: Color) -> some View {
-        Circle()
-            .fill(
-                color,
-                strokeBorder: .white,
-                lineWidth: gameMetrics.stepMarkerBorderWidth
-            )
-            .background(Circle().fill(.white))
-            .padding(gameMetrics.stepMarkerPadding)
-    }
-
     var body: some View {
         Capsule()
             .fill(DesignKitAsset.Colors.progressBar.swiftUIColor)
@@ -38,6 +26,18 @@ struct ProgressBarView: View {
                     }
                 }
             )
+    }
+
+    @ViewBuilder
+    func stepMarker(_ color: Color) -> some View {
+        Circle()
+            .fill(
+                color,
+                strokeBorder: .white,
+                lineWidth: gameMetrics.stepMarkerBorderWidth
+            )
+            .background(Circle().fill(.white))
+            .padding(gameMetrics.stepMarkerPadding)
     }
 }
 

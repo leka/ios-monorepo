@@ -6,6 +6,8 @@ import DesignKit
 import SwiftUI
 
 struct JobPickerTrigger: View {
+    // MARK: Internal
+
     @EnvironmentObject var company: CompanyViewModel
     @EnvironmentObject var metrics: UIMetrics
 
@@ -32,6 +34,8 @@ struct JobPickerTrigger: View {
         }
         .frame(width: 435)
     }
+
+    // MARK: Private
 
     private var buttonLabel: some View {
         HStack(spacing: 0) {

@@ -7,15 +7,16 @@ import SwiftUI
 
 extension LedZoneSelectorView {
     struct EarButton: View {
-        let selectedEar: Robot.Lights
-        let robot = Robot.shared
-
-        @State private var buttonPressed = false
-        @State private var backgroundDimension = 0
+        // MARK: Lifecycle
 
         init(selectedEar: Robot.Lights) {
             self.selectedEar = selectedEar
         }
+
+        // MARK: Internal
+
+        let selectedEar: Robot.Lights
+        let robot = Robot.shared
 
         var body: some View {
             Circle()
@@ -37,6 +38,11 @@ extension LedZoneSelectorView {
                 )
                 .animation(.easeInOut(duration: 0.2), value: backgroundDimension)
         }
+
+        // MARK: Private
+
+        @State private var buttonPressed = false
+        @State private var backgroundDimension = 0
     }
 }
 

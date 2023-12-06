@@ -6,18 +6,13 @@ import DesignKit
 import SwiftUI
 
 struct ProfileSet_Users: View {
+    // MARK: Internal
+
     @EnvironmentObject var company: CompanyViewModel
     @EnvironmentObject var settings: SettingsViewModel
     @EnvironmentObject var metrics: UIMetrics
     @EnvironmentObject var navigationVM: NavigationViewModel
     @Environment(\.dismiss) var dismiss
-
-    @State private var showEditProfileUser: Bool = false
-
-    // check if less than 7 profiles to display in order to adapt Layout (HStack vs. Scrollable Grid)
-    private func sixMax() -> Bool {
-        company.currentCompany.users.count < 7
-    }
 
     var body: some View {
         VStack(spacing: 0) {
@@ -51,6 +46,10 @@ struct ProfileSet_Users: View {
             )
         }
     }
+
+    // MARK: Private
+
+    @State private var showEditProfileUser: Bool = false
 
     private var editButton: some View {
         Button {
@@ -138,5 +137,10 @@ struct ProfileSet_Users: View {
             }
             ._safeAreaInsets(EdgeInsets(top: 20, leading: 20, bottom: 20, trailing: 20))
         }
+    }
+
+    // check if less than 7 profiles to display in order to adapt Layout (HStack vs. Scrollable Grid)
+    private func sixMax() -> Bool {
+        company.currentCompany.users.count < 7
     }
 }

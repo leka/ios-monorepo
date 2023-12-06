@@ -7,12 +7,10 @@ import SwiftUI
 
 extension ListenThenTouchToSelectView {
     struct SixChoicesView: View {
+        // MARK: Internal
+
         @ObservedObject var viewModel: TouchToSelectViewViewModel
         let isTappable: Bool
-
-        private let kHorizontalSpacing: CGFloat = 60
-        private let kVerticalSpacing: CGFloat = 40
-        private let kAnswerSize: CGFloat = 200
 
         var body: some View {
             VStack(spacing: kVerticalSpacing) {
@@ -35,6 +33,12 @@ extension ListenThenTouchToSelectView {
                 }
             }
         }
+
+        // MARK: Private
+
+        private let kHorizontalSpacing: CGFloat = 60
+        private let kVerticalSpacing: CGFloat = 40
+        private let kAnswerSize: CGFloat = 200
     }
 }
 

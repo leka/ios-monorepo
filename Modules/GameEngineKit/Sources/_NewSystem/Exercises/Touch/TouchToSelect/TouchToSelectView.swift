@@ -7,16 +7,7 @@ import ContentKit
 import SwiftUI
 
 public struct TouchToSelectView: View {
-    enum Interface: Int {
-        case oneChoice = 1
-        case twoChoices
-        case threeChoices
-        case fourChoices
-        case fiveChoices
-        case sixChoices
-    }
-
-    @StateObject private var viewModel: TouchToSelectViewViewModel
+    // MARK: Lifecycle
 
     public init(choices: [TouchToSelect.Choice], shuffle: Bool = false) {
         self._viewModel = StateObject(wrappedValue: TouchToSelectViewViewModel(choices: choices, shuffle: shuffle))
@@ -31,6 +22,8 @@ public struct TouchToSelectView: View {
             wrappedValue: TouchToSelectViewViewModel(
                 choices: payload.choices, shuffle: payload.shuffleChoices, shared: data))
     }
+
+    // MARK: Public
 
     public var body: some View {
         let interface = Interface(rawValue: viewModel.choices.count)
@@ -58,4 +51,19 @@ public struct TouchToSelectView: View {
                 Text("❌ Interface not available for \(viewModel.choices.count) choices")
         }
     }
+
+    // MARK: Internal
+
+    enum Interface: Int {
+        case oneChoice = 1
+        case twoChoices
+        case threeChoices
+        case fourChoices
+        case fiveChoices
+        case sixChoices
+    }
+
+    // MARK: Private
+
+    @StateObject private var viewModel: TouchToSelectViewViewModel
 }

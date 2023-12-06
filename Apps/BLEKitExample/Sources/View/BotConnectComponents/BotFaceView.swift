@@ -7,14 +7,14 @@ import SwiftUI
 // MARK: - BotFaceView
 
 struct BotFaceView: View {
+    // MARK: Internal
+
     @Binding var isSelected: Bool
     @Binding var isConnected: Bool
     @Binding var name: String
     @Binding var battery: Int
     @Binding var isCharging: Bool
     @Binding var osVersion: String
-
-    @State private var rotation: CGFloat = 0.0
 
     var body: some View {
         VStack {
@@ -50,6 +50,10 @@ struct BotFaceView: View {
         }
         .animation(.default, value: isConnected)
     }
+
+    // MARK: Private
+
+    @State private var rotation: CGFloat = 0.0
 }
 
 // MARK: - BotFaceView_Previews

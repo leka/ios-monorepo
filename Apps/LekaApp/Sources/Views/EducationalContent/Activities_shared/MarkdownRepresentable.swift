@@ -17,23 +17,55 @@ import SwiftUI
 // import Down
 
 class MarkdownObservable: ObservableObject {
-    @Published public var textView = UITextView()
-    public let text: String
+    // MARK: Lifecycle
 
     init(text: String) {
         self.text = text
     }
+
+    // MARK: Public
+
+    @Published public var textView = UITextView()
+    public let text: String
 }
 
 // MARK: - MarkdownRepresentable
 
 struct MarkdownRepresentable: UIViewRepresentable {
-    @Binding var dynamicHeight: CGFloat
-    @EnvironmentObject var markdownObject: MarkdownObservable
+    // MARK: Lifecycle
 
     init(height: Binding<CGFloat>) {
         self._dynamicHeight = height
     }
+
+    // MARK: Internal
+
+    class Coordinator: NSObject {
+        // MARK: Lifecycle
+
+        init(text: UITextView) {
+            textView = text
+        }
+
+        //		func textAttachmentDidLoadImage(textAttachment: AsyncImageLoad, displaySizeChanged: Bool)
+        //		{
+        //			if displaySizeChanged
+        //			{
+        //				textView.layoutManager.setNeedsLayout(forAttachment: textAttachment)
+        //			}
+        //
+        //			// always re-display, the image might have changed
+        //			textView.layoutManager.setNeedsDisplay(forAttachment: textAttachment)
+        //		}
+
+        // MARK: Public
+
+        // }, AsyncImageLoadDelegate {
+        public var textView: UITextView
+    }
+
+    @Binding var dynamicHeight: CGFloat
+    @EnvironmentObject var markdownObject: MarkdownObservable
 
     func makeCoordinator() -> Coordinator {
         Coordinator(text: markdownObject.textView)
@@ -79,39 +111,19 @@ struct MarkdownRepresentable: UIViewRepresentable {
                 .height
         }
     }
-
-    class Coordinator: NSObject { // }, AsyncImageLoadDelegate {
-        public var textView: UITextView
-
-        init(text: UITextView) {
-            textView = text
-        }
-
-        //		func textAttachmentDidLoadImage(textAttachment: AsyncImageLoad, displaySizeChanged: Bool)
-        //		{
-        //			if displaySizeChanged
-        //			{
-        //				textView.layoutManager.setNeedsLayout(forAttachment: textAttachment)
-        //			}
-        //
-        //			// always re-display, the image might have changed
-        //			textView.layoutManager.setNeedsDisplay(forAttachment: textAttachment)
-        //		}
-    }
 }
 
 // MARK: - DownAttributedString
 
 struct DownAttributedString: View {
-    @ObservedObject private var markdownObject: MarkdownObservable
-    private var markdownString: String
-
-    @State private var height: CGFloat = .zero
+    // MARK: Lifecycle
 
     init(text: String) {
         self.markdownString = text
         self.markdownObject = MarkdownObservable(text: text)
     }
+
+    // MARK: Internal
 
     var body: some View {
         VStack(alignment: .leading) {
@@ -123,4 +135,11 @@ struct DownAttributedString: View {
         }
         .navigationBarTitleDisplayMode(.inline)
     }
+
+    // MARK: Private
+
+    @ObservedObject private var markdownObject: MarkdownObservable
+    private var markdownString: String
+
+    @State private var height: CGFloat = .zero
 }

@@ -7,17 +7,7 @@ import ContentKit
 import SwiftUI
 
 public struct ListenThenTouchToSelectView: View {
-    enum Interface: Int {
-        case oneChoice = 1
-        case twoChoices
-        case threeChoices
-        case fourChoices
-        case fiveChoices
-        case sixChoices
-    }
-
-    @StateObject private var viewModel: TouchToSelectViewViewModel
-    @StateObject private var audioPlayer: AudioPlayer
+    // MARK: Lifecycle
 
     public init(choices: [TouchToSelect.Choice], audioRecording: AudioRecording) {
         self._viewModel = StateObject(wrappedValue: TouchToSelectViewViewModel(choices: choices))
@@ -39,6 +29,8 @@ public struct ListenThenTouchToSelectView: View {
         let audioRecording = AudioRecording(name: name, file: name)
         self._audioPlayer = StateObject(wrappedValue: AudioPlayer(audioRecording: audioRecording))
     }
+
+    // MARK: Public
 
     public var body: some View {
         let interface = Interface(rawValue: viewModel.choices.count)
@@ -104,4 +96,20 @@ public struct ListenThenTouchToSelectView: View {
             Spacer()
         }
     }
+
+    // MARK: Internal
+
+    enum Interface: Int {
+        case oneChoice = 1
+        case twoChoices
+        case threeChoices
+        case fourChoices
+        case fiveChoices
+        case sixChoices
+    }
+
+    // MARK: Private
+
+    @StateObject private var viewModel: TouchToSelectViewViewModel
+    @StateObject private var audioPlayer: AudioPlayer
 }

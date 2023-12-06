@@ -8,11 +8,11 @@ import SwiftUI
 // MARK: - CurriculumListView
 
 struct CurriculumListView: View {
+    // MARK: Internal
+
     @EnvironmentObject var navigationVM: NavigationViewModel
     @EnvironmentObject var curriculumVM: CurriculumViewModel
     @EnvironmentObject var metrics: UIMetrics
-
-    private let columns = Array(repeating: GridItem(), count: 3)
 
     var body: some View {
         ZStack {
@@ -46,6 +46,10 @@ struct CurriculumListView: View {
             }
         )
     }
+
+    // MARK: Private
+
+    private let columns = Array(repeating: GridItem(), count: 3)
 
     @ViewBuilder
     private func allCurriculums(category: CurriculumCategories) -> some View {

@@ -5,11 +5,13 @@
 import Logging
 
 public struct LogKit {
-    private static var hasBeenInitialized: Bool = false
+    // MARK: Lifecycle
 
     private init() {
         // nothing to do
     }
+
+    // MARK: Public
 
     public static func createLoggerFor(module: String) -> Logger {
         createLogger(label: "mod:\(module)")
@@ -18,6 +20,10 @@ public struct LogKit {
     public static func createLoggerFor(app: String) -> Logger {
         createLogger(label: "app:\(app)")
     }
+
+    // MARK: Private
+
+    private static var hasBeenInitialized: Bool = false
 
     private static func createLogger(label: String) -> Logger {
         if !hasBeenInitialized {

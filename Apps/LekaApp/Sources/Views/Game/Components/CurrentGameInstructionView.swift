@@ -8,9 +8,39 @@ import SwiftUI
 // MARK: - CurrentGameInstructionView
 
 struct CurrentGameInstructionView: View {
+    // MARK: Internal
+
     @EnvironmentObject var activityVM: ActivityViewModel
     @ObservedObject var gameMetrics: GameMetrics
     @Environment(\.dismiss) var dismiss
+
+    var body: some View {
+        NavigationStack {
+            ZStack(alignment: .top) {
+                // Header color
+                DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor.ignoresSafeArea()
+
+                // Background Color
+                DesignKitAsset.Colors.lekaLightGray.swiftUIColor.padding(.top, 70)
+
+                VStack(spacing: 0) {
+                    activityDetailHeader
+                    InstructionsView()
+                }
+            }
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbarBackground(.hidden, for: .navigationBar)
+            .interactiveDismissDisabled()
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    resumeButton
+                }
+            }
+        }
+        .preferredColorScheme(.light)
+    }
+
+    // MARK: Private
 
     private var activityDetailHeader: some View {
         HStack {
@@ -37,32 +67,6 @@ struct CurrentGameInstructionView: View {
                 }
                 .foregroundColor(.white)
             })
-    }
-
-    var body: some View {
-        NavigationStack {
-            ZStack(alignment: .top) {
-                // Header color
-                DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor.ignoresSafeArea()
-
-                // Background Color
-                DesignKitAsset.Colors.lekaLightGray.swiftUIColor.padding(.top, 70)
-
-                VStack(spacing: 0) {
-                    activityDetailHeader
-                    InstructionsView()
-                }
-            }
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbarBackground(.hidden, for: .navigationBar)
-            .interactiveDismissDisabled()
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    resumeButton
-                }
-            }
-        }
-        .preferredColorScheme(.light)
     }
 }
 

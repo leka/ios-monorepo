@@ -6,6 +6,8 @@ import DesignKit
 import SwiftUI
 
 struct SidebarHeaderView: View {
+    // MARK: Internal
+
     @EnvironmentObject var metrics: UIMetrics
 
     var body: some View {
@@ -16,6 +18,8 @@ struct SidebarHeaderView: View {
         }
         .frame(minHeight: 350, idealHeight: 350, maxHeight: 371)
     }
+
+    // MARK: Private
 
     private var logoLeka: some View {
         DesignKitAsset.Assets.lekaLogo.swiftUIImage

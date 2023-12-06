@@ -8,43 +8,13 @@ import SwiftUI
 // MARK: - SignupView
 
 struct SignupView: View {
+    // MARK: Internal
+
     @EnvironmentObject var company: CompanyViewModel
     @EnvironmentObject var settings: SettingsViewModel
     @EnvironmentObject var metrics: UIMetrics
 
     @FocusState var focusedField: FormField?
-    @State private var isEditing = false
-    @State private var mail: String = ""
-    @State private var password: String = ""
-    @State private var confirm: String = ""
-    @State private var accountAlreadyExists: Bool = false
-    @State private var navigateToSignup1: Bool = false
-
-    func connectIsDisabled() -> Bool {
-        !mail.isValidEmail() || !passwordsMatch() || mail.isEmpty || password.isEmpty || confirm.isEmpty
-            || accountAlreadyExists
-    }
-
-    func passwordsMatch() -> Bool {
-        password == confirm
-    }
-
-    func checkAccountAvailability() {
-        accountAlreadyExists = (mail == "test@leka.io")
-    }
-
-    private func submitForm() {
-        checkAccountAvailability()
-        if accountAlreadyExists {
-            password = ""
-            confirm = ""
-        } else {
-            company.currentCompany.mail = mail
-            company.currentCompany.password = password
-            settings.companyIsConnected = true
-            navigateToSignup1.toggle()
-        }
-    }
 
     var body: some View {
         ZStack(alignment: .center) {
@@ -67,6 +37,28 @@ struct SignupView: View {
             SignupStep1()
         }
     }
+
+    func connectIsDisabled() -> Bool {
+        !mail.isValidEmail() || !passwordsMatch() || mail.isEmpty || password.isEmpty || confirm.isEmpty
+            || accountAlreadyExists
+    }
+
+    func passwordsMatch() -> Bool {
+        password == confirm
+    }
+
+    func checkAccountAvailability() {
+        accountAlreadyExists = (mail == "test@leka.io")
+    }
+
+    // MARK: Private
+
+    @State private var isEditing = false
+    @State private var mail: String = ""
+    @State private var password: String = ""
+    @State private var confirm: String = ""
+    @State private var accountAlreadyExists: Bool = false
+    @State private var navigateToSignup1: Bool = false
 
     @ViewBuilder
     private var mailTextField: some View {
@@ -175,6 +167,19 @@ struct SignupView: View {
         .disabled(connectIsDisabled())
         .buttonStyle(.borderedProminent)
         .tint(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
+    }
+
+    private func submitForm() {
+        checkAccountAvailability()
+        if accountAlreadyExists {
+            password = ""
+            confirm = ""
+        } else {
+            company.currentCompany.mail = mail
+            company.currentCompany.password = password
+            settings.companyIsConnected = true
+            navigateToSignup1.toggle()
+        }
     }
 }
 

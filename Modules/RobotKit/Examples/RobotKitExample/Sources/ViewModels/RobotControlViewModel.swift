@@ -7,11 +7,7 @@ import RobotKit
 import SwiftUI
 
 class RobotControlViewModel: ObservableObject {
-    @Published var magicCard: MagicCard = .none
-    @Published var magicCardImage: Image = Image(systemName: "photo")
-
-    private let robot: Robot
-    private var cancellables: Set<AnyCancellable> = []
+    // MARK: Lifecycle
 
     init(robot: Robot) {
         self.robot = robot
@@ -34,4 +30,14 @@ class RobotControlViewModel: ObservableObject {
             }
             .store(in: &cancellables)
     }
+
+    // MARK: Internal
+
+    @Published var magicCard: MagicCard = .none
+    @Published var magicCardImage: Image = Image(systemName: "photo")
+
+    // MARK: Private
+
+    private let robot: Robot
+    private var cancellables: Set<AnyCancellable> = []
 }

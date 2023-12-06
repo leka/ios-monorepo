@@ -29,13 +29,14 @@ public extension ButtonStyle where Self == RobotControlBorderedButtonStyle {
 //
 
 public struct RobotControlPlainButtonStyle: ButtonStyle {
-    private let foreground: Color
-    private let background: Color
+    // MARK: Lifecycle
 
     init(foreground: Color?, background: Color?) {
         self.foreground = foreground ?? .black
         self.background = background ?? .white
     }
+
+    // MARK: Public
 
     public func makeBody(configuration: Configuration) -> some View {
         HStack(spacing: 5) {
@@ -48,20 +49,25 @@ public struct RobotControlPlainButtonStyle: ButtonStyle {
         .clipShape(RoundedRectangle(cornerRadius: 10))
         .opacity(configuration.isPressed ? 0.8 : 1)
     }
+
+    // MARK: Private
+
+    private let foreground: Color
+    private let background: Color
 }
 
 // MARK: - RobotControlBorderedButtonStyle
 
 public struct RobotControlBorderedButtonStyle: ButtonStyle {
-    private let foreground: Color
-    private let border: Color
-    private let background: Color
+    // MARK: Lifecycle
 
     init(foreground: Color?, border: Color?, background: Color? = nil) {
         self.foreground = foreground ?? .accentColor
         self.border = border ?? .accentColor
         self.background = background ?? .clear
     }
+
+    // MARK: Public
 
     public func makeBody(configuration: Configuration) -> some View {
         HStack(spacing: 5) {
@@ -78,4 +84,10 @@ public struct RobotControlBorderedButtonStyle: ButtonStyle {
         )
         .opacity(configuration.isPressed ? 0.8 : 1)
     }
+
+    // MARK: Private
+
+    private let foreground: Color
+    private let border: Color
+    private let background: Color
 }

@@ -5,6 +5,19 @@
 import CombineCoreBluetooth
 
 public class BLEManager {
+    // MARK: Lifecycle
+
+    // MARK: - Public functions
+
+    public init(centralManager: CentralManager) {
+        self.centralManager = centralManager
+
+        self.subscribeToDidDisconnect()
+        self.subscribeToDidConnect()
+    }
+
+    // MARK: Public
+
     public static var shared: BLEManager = BLEManager(
         centralManager: .live(
             ManagerCreationOptions(showPowerAlert: true, restoreIdentifier: "io.leka.module.BLEKit.Manager.live")))
@@ -17,22 +30,6 @@ public class BLEManager {
 
     public var isConnected: Bool {
         connectedRobotPeripheral != nil ? true : false
-    }
-
-    // MARK: - Private variables
-
-    private var centralManager: CentralManager
-    private var connectedRobotPeripheral: RobotPeripheral?
-
-    private var cancellables: Set<AnyCancellable> = []
-
-    // MARK: - Public functions
-
-    public init(centralManager: CentralManager) {
-        self.centralManager = centralManager
-
-        self.subscribeToDidDisconnect()
-        self.subscribeToDidConnect()
     }
 
     public static func live() -> BLEManager {
@@ -100,6 +97,15 @@ public class BLEManager {
         guard let connectedPeripheral = self.connectedRobotPeripheral?.peripheral else { return }
         centralManager.cancelPeripheralConnection(connectedPeripheral)
     }
+
+    // MARK: Private
+
+    // MARK: - Private variables
+
+    private var centralManager: CentralManager
+    private var connectedRobotPeripheral: RobotPeripheral?
+
+    private var cancellables: Set<AnyCancellable> = []
 
     // MARK: - Private functions
 

@@ -8,19 +8,15 @@ import RobotKit
 import SwiftUI
 
 struct ChoiceColorView: View {
-    private let color: Robot.Color
-    private let size: CGFloat
-    private let state: GameplayChoiceState
-    private let kOverLayScaleFactor: CGFloat = 1.08
-
-    @State private var animationPercent: CGFloat = .zero
-    @State private var overlayOpacity: CGFloat = .zero
+    // MARK: Lifecycle
 
     init(color: String, size: CGFloat, state: GameplayChoiceState = .idle) {
         self.color = Robot.Color(from: color)
         self.size = size
         self.state = state
     }
+
+    // MARK: Internal
 
     // TODO(@ladislas): handle case of color white, add colored border?
     var circle: some View {
@@ -74,6 +70,16 @@ struct ChoiceColorView: View {
                     }
         }
     }
+
+    // MARK: Private
+
+    private let color: Robot.Color
+    private let size: CGFloat
+    private let state: GameplayChoiceState
+    private let kOverLayScaleFactor: CGFloat = 1.08
+
+    @State private var animationPercent: CGFloat = .zero
+    @State private var overlayOpacity: CGFloat = .zero
 }
 
 #Preview {

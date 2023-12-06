@@ -6,12 +6,6 @@ import Foundation
 import SwiftUI
 
 class NavigationViewModel: ObservableObject {
-    // sidebar utils
-    @Published var sidebarVisibility = NavigationSplitViewVisibility.all
-    @Published var showSettings: Bool = false
-    @Published var showProfileEditor: Bool = false
-    @Published var showRobotPicker: Bool = false
-
     // Educative Content section data
     static let educContentSectionLabels: [SectionLabel] = [
         SectionLabel(
@@ -30,6 +24,13 @@ class NavigationViewModel: ObservableObject {
             label: "Commandes"
         ),
     ]
+
+    // sidebar utils
+    @Published var sidebarVisibility = NavigationSplitViewVisibility.all
+    @Published var showSettings: Bool = false
+    @Published var showProfileEditor: Bool = false
+    @Published var showRobotPicker: Bool = false
+
     @Published var educContentList = ListModel(
         title: "Contenu Éducatif",
         sections: educContentSectionLabels
@@ -37,6 +38,16 @@ class NavigationViewModel: ObservableObject {
 
     // Overall Navigation from the sidebar
     @Published var currentView: SidebarDestinations = .curriculums
+    // Navigation within FullScreenCover to GameView()
+    @Published var pathsFromHome = NavigationPath()
+    @Published var showActivitiesFullScreenCover: Bool = false
+    @Published var pathToGame = NavigationPath()
+
+    // Info Tiles triggers
+    @Published var showInfoCurriculums: Bool = true
+    @Published var showInfoActivities: Bool = true
+    @Published var showInfoCommands: Bool = true
+
     // Returned Views & NavigationTitles
     @ViewBuilder var allSidebarDestinationViews: some View {
         switch currentView {
@@ -53,16 +64,6 @@ class NavigationViewModel: ObservableObject {
             case .commands: return "Commandes"
         }
     }
-
-    // Navigation within FullScreenCover to GameView()
-    @Published var pathsFromHome = NavigationPath()
-    @Published var showActivitiesFullScreenCover: Bool = false
-    @Published var pathToGame = NavigationPath()
-
-    // Info Tiles triggers
-    @Published var showInfoCurriculums: Bool = true
-    @Published var showInfoActivities: Bool = true
-    @Published var showInfoCommands: Bool = true
 
     func contextualInfo() -> TileData {
         switch currentView {

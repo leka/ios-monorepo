@@ -5,6 +5,8 @@
 import SwiftUI
 
 struct MainView: View {
+    // MARK: Internal
+
     @EnvironmentObject var authenticationState: OrganisationAuthState
 
     var body: some View {
@@ -29,6 +31,8 @@ struct MainView: View {
             authenticationState.organisationIsAuthenticated = .loggedOut
         })
     }
+
+    // MARK: Private
 
     private var navigation: some View {
         NavigationStack {

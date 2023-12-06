@@ -6,6 +6,8 @@ import DesignKit
 import SwiftUI
 
 struct ActivityListCell_Curriculums: View {
+    // MARK: Internal
+
     @EnvironmentObject var metrics: UIMetrics
 
     let activity: Activity
@@ -25,6 +27,8 @@ struct ActivityListCell_Curriculums: View {
         .clipShape(RoundedRectangle(cornerRadius: metrics.btnRadius, style: .continuous))
         .padding(.vertical, 4)
     }
+
+    // MARK: Private
 
     private var iconView: some View {
         Image(icon)

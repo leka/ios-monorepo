@@ -7,11 +7,10 @@ import SwiftUI
 
 extension RobotThenTouchToSelectView {
     struct TwoChoicesView: View {
+        // MARK: Internal
+
         @ObservedObject var viewModel: TouchToSelectViewViewModel
         let isTappable: Bool
-
-        private let kHorizontalSpacing: CGFloat = 100
-        private let kAnswerSize: CGFloat = 300
 
         var body: some View {
             HStack(spacing: kHorizontalSpacing) {
@@ -23,6 +22,11 @@ extension RobotThenTouchToSelectView {
                 }
             }
         }
+
+        // MARK: Private
+
+        private let kHorizontalSpacing: CGFloat = 100
+        private let kAnswerSize: CGFloat = 300
     }
 }
 

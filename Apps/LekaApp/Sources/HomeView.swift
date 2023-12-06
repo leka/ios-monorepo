@@ -9,6 +9,8 @@ import SwiftUI
 // MARK: - HomeView
 
 struct HomeView: View {
+    // MARK: Internal
+
     @EnvironmentObject var navigationVM: NavigationViewModel
     @EnvironmentObject var settings: SettingsViewModel
     @EnvironmentObject var metrics: UIMetrics
@@ -62,6 +64,8 @@ struct HomeView: View {
             )
         }
     }
+
+    // MARK: Private
 
     private var toolbarTitle: some View {
         HStack(spacing: 4) {

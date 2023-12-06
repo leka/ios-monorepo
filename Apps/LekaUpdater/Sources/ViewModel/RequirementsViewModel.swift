@@ -9,7 +9,14 @@ import RobotKit
 import SwiftUI
 
 class RequirementsViewModel: ObservableObject {
-    private var cancellables: Set<AnyCancellable> = []
+    // MARK: Lifecycle
+
+    init() {
+        subscribeToRobotBatteryUpdates()
+        subscribeToRobotIsChargingUpdates()
+    }
+
+    // MARK: Internal
 
     let requirementsInstructionsText = l10n.update.requirements.instructionsText
 
@@ -25,10 +32,9 @@ class RequirementsViewModel: ObservableObject {
     @Published var robotIsReadyToUpdate = false
     @Published var robotIsNotReadyToUpdate = true
 
-    init() {
-        subscribeToRobotBatteryUpdates()
-        subscribeToRobotIsChargingUpdates()
-    }
+    // MARK: Private
+
+    private var cancellables: Set<AnyCancellable> = []
 
     private func subscribeToRobotBatteryUpdates() {
         Robot.shared.battery

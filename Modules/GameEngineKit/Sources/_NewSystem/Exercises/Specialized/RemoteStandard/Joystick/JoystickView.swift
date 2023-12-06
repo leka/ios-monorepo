@@ -6,7 +6,7 @@ import SwiftUI
 import SwiftUIJoystick
 
 struct JoystickView: View {
-    @StateObject private var joystickViewViewModel = JoystickViewViewModel(dragDiameter: 300)
+    // MARK: Public
 
     public var body: some View {
         VStack {
@@ -47,6 +47,10 @@ struct JoystickView: View {
                 locksInPlace: false)
         }
     }
+
+    // MARK: Private
+
+    @StateObject private var joystickViewViewModel = JoystickViewViewModel(dragDiameter: 300)
 }
 
 #Preview {

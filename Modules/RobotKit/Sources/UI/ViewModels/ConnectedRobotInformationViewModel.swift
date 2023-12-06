@@ -6,11 +6,13 @@ import Combine
 import SwiftUI
 
 public class ConnectedRobotInformationViewModel: ObservableObject {
-    @Published public var isConnected: Bool = false {
-        didSet {
-            self.isNotConnected = !isConnected
-        }
+    // MARK: Lifecycle
+
+    public init() {
+        getRobotInformation()
     }
+
+    // MARK: Public
 
     @Published public var isNotConnected: Bool = true
 
@@ -21,13 +23,19 @@ public class ConnectedRobotInformationViewModel: ObservableObject {
     @Published public var battery: Int = 0
     @Published public var isCharging: Bool = false
 
+    @Published public var isConnected: Bool = false {
+        didSet {
+            self.isNotConnected = !isConnected
+        }
+    }
+
+    // MARK: Internal
+
     let robot = Robot.shared
 
-    private var cancellables: Set<AnyCancellable> = []
+    // MARK: Private
 
-    public init() {
-        getRobotInformation()
-    }
+    private var cancellables: Set<AnyCancellable> = []
 
     private func getRobotInformation() {
         robot.isConnected

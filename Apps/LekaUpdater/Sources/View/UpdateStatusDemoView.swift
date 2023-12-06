@@ -8,12 +8,7 @@ import SwiftUI
 // MARK: - UpdateStatusDemoViewModel
 
 class UpdateStatusDemoViewModel: ObservableObject {
-    private var updateProcessController: UpdateProcessController
-
-    @Published public var state = ""
-    @Published public var error: String = ""
-
-    private var cancellables: Set<AnyCancellable> = []
+    // MARK: Lifecycle
 
     init() {
         self.updateProcessController = UpdateProcessController()
@@ -21,9 +16,20 @@ class UpdateStatusDemoViewModel: ObservableObject {
         subscribeToStateUpdates()
     }
 
+    // MARK: Public
+
+    @Published public var state = ""
+    @Published public var error: String = ""
+
     public func startUpdate() {
         updateProcessController.startUpdate()
     }
+
+    // MARK: Private
+
+    private var updateProcessController: UpdateProcessController
+
+    private var cancellables: Set<AnyCancellable> = []
 
     private func subscribeToStateUpdates() {
         self.updateProcessController.currentStage
@@ -63,7 +69,7 @@ class UpdateStatusDemoViewModel: ObservableObject {
 // MARK: - UpdateStatusDemoView
 
 struct UpdateStatusDemoView: View {
-    @StateObject private var viewModel = UpdateStatusDemoViewModel()
+    // MARK: Internal
 
     var body: some View {
         VStack {
@@ -94,6 +100,10 @@ struct UpdateStatusDemoView: View {
             Spacer()
         }
     }
+
+    // MARK: Private
+
+    @StateObject private var viewModel = UpdateStatusDemoViewModel()
 }
 
 // MARK: - UpdateStatusDemoView_Previews

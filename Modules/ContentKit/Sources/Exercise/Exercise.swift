@@ -5,19 +5,7 @@
 import Foundation
 
 public struct Exercise: Codable {
-    public let instructions: String
-    public let interface: Interface
-    public let gameplay: Gameplay?
-    public let action: Action?
-    public let payload: ExercisePayloadProtocol?
-
-    enum CodingKeys: String, CodingKey {
-        case instructions, interface, gameplay, action, payload
-    }
-
-    public func encode(to encoder: Encoder) throws {
-        fatalError("💥 Not implemented yet")
-    }
+    // MARK: Lifecycle
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
@@ -59,5 +47,23 @@ public struct Exercise: Codable {
                 throw DecodingError.dataCorruptedError(
                     forKey: .payload, in: container, debugDescription: "Invalid combination of interface or gameplay")
         }
+    }
+
+    // MARK: Public
+
+    public let instructions: String
+    public let interface: Interface
+    public let gameplay: Gameplay?
+    public let action: Action?
+    public let payload: ExercisePayloadProtocol?
+
+    public func encode(to encoder: Encoder) throws {
+        fatalError("💥 Not implemented yet")
+    }
+
+    // MARK: Internal
+
+    enum CodingKeys: String, CodingKey {
+        case instructions, interface, gameplay, action, payload
     }
 }

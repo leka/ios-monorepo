@@ -8,12 +8,7 @@ import LocalizationKit
 import RobotKit
 
 class RobotInformationViewModel: ObservableObject {
-    private var cancellables: Set<AnyCancellable> = []
-
-    @Published var robotSerialNumber = "n/a"
-    @Published var robotBattery = "n/a"
-    @Published var robotOsVersion = "n/a"
-    @Published var robotIsCharging = "n/a"
+    // MARK: Lifecycle
 
     init() {
         subscribeToRobotSerialNumberUpdates()
@@ -21,6 +16,17 @@ class RobotInformationViewModel: ObservableObject {
         subscribeToRobotOsVersionUpdates()
         subscribeToRobotChargingStatusUpdates()
     }
+
+    // MARK: Internal
+
+    @Published var robotSerialNumber = "n/a"
+    @Published var robotBattery = "n/a"
+    @Published var robotOsVersion = "n/a"
+    @Published var robotIsCharging = "n/a"
+
+    // MARK: Private
+
+    private var cancellables: Set<AnyCancellable> = []
 
     private func subscribeToRobotSerialNumberUpdates() {
         Robot.shared.serialNumber

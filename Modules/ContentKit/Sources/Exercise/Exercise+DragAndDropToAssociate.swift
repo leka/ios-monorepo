@@ -12,13 +12,7 @@ public enum DragAndDropToAssociate {
     }
 
     public struct Choice: Codable {
-        public let value: String
-        public let type: Exercise.UIElementType
-        public let category: Category?
-
-        private enum CodingKeys: String, CodingKey {
-            case value, type, category
-        }
+        // MARK: Lifecycle
 
         public init(from decoder: Decoder) throws {
             let container = try decoder.container(keyedBy: CodingKeys.self)
@@ -32,22 +26,40 @@ public enum DragAndDropToAssociate {
             self.type = type
             self.category = category
         }
+
+        // MARK: Public
+
+        public let value: String
+        public let type: Exercise.UIElementType
+        public let category: Category?
+
+        // MARK: Private
+
+        private enum CodingKeys: String, CodingKey {
+            case value, type, category
+        }
     }
 
     public struct Payload: Codable {
-        public let choices: [Choice]
-        public let shuffleChoices: Bool
-
-        enum CodingKeys: String, CodingKey {
-            case choices
-            case shuffleChoices = "shuffle_choices"
-        }
+        // MARK: Lifecycle
 
         public init(from decoder: Decoder) throws {
             let container = try decoder.container(keyedBy: CodingKeys.self)
 
             self.choices = try container.decode([Choice].self, forKey: .choices)
             self.shuffleChoices = try container.decodeIfPresent(Bool.self, forKey: .shuffleChoices) ?? false
+        }
+
+        // MARK: Public
+
+        public let choices: [Choice]
+        public let shuffleChoices: Bool
+
+        // MARK: Internal
+
+        enum CodingKeys: String, CodingKey {
+            case choices
+            case shuffleChoices = "shuffle_choices"
         }
     }
 }

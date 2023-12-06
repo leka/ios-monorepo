@@ -6,12 +6,7 @@ import BLEKit
 import Foundation
 
 class Robot: ObservableObject {
-    var robotPeripheral: RobotPeripheral? {
-        didSet {
-            updateDeviceInformation()
-            subscribeToDeviceUpdates()
-        }
-    }
+    // MARK: Internal
 
     @Published var manufacturer: String = ""
     @Published var modelNumber: String = ""
@@ -25,6 +20,13 @@ class Robot: ObservableObject {
     @Published var magicCardLanguage: String = ""
 
     let commands = CommandKit()
+
+    var robotPeripheral: RobotPeripheral? {
+        didSet {
+            updateDeviceInformation()
+            subscribeToDeviceUpdates()
+        }
+    }
 
     func updateDeviceInformation() {
         guard let robotPeripheral = self.robotPeripheral else { return }
@@ -50,6 +52,8 @@ class Robot: ObservableObject {
 
         robotPeripheral.sendCommand(data)
     }
+
+    // MARK: Private
 
     private func registerReadOnlyCharacteristicClosures() {
         for char in kDefaultReadOnlyCharacteristics {

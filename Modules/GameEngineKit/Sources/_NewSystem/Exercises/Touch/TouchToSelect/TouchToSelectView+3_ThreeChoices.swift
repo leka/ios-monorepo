@@ -7,10 +7,9 @@ import SwiftUI
 
 extension TouchToSelectView {
     struct ThreeChoicesView: View {
-        @ObservedObject var viewModel: TouchToSelectViewViewModel
+        // MARK: Internal
 
-        private let kHorizontalSpacing: CGFloat = 80
-        private let kAnswerSize: CGFloat = 280
+        @ObservedObject var viewModel: TouchToSelectViewViewModel
 
         var body: some View {
             HStack(spacing: kHorizontalSpacing) {
@@ -22,6 +21,11 @@ extension TouchToSelectView {
                 }
             }
         }
+
+        // MARK: Private
+
+        private let kHorizontalSpacing: CGFloat = 80
+        private let kAnswerSize: CGFloat = 280
     }
 }
 

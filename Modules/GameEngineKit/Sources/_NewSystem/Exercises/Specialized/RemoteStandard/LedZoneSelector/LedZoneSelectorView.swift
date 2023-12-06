@@ -5,6 +5,8 @@
 import SwiftUI
 
 struct LedZoneSelectorView: View {
+    // MARK: Internal
+
     let displayMode: RemoteStandard.DisplayMode
 
     var body: some View {
@@ -27,6 +29,8 @@ struct LedZoneSelectorView: View {
             earsSectionButtons
         }
     }
+
+    // MARK: Private
 
     private var earsSectionButtons: some View {
         HStack(spacing: 50) {

@@ -6,11 +6,10 @@ import DesignKit
 import SwiftUI
 
 struct SignupStep3: View {
+    // MARK: Internal
+
     @EnvironmentObject var company: CompanyViewModel
     @EnvironmentObject var metrics: UIMetrics
-
-    private let data: TileData = .signupStep2
-    @State private var navigateToUserCreation: Bool = false
 
     var body: some View {
         ZStack {
@@ -27,6 +26,11 @@ struct SignupStep3: View {
             }
         }
     }
+
+    // MARK: Private
+
+    private let data: TileData = .signupStep2
+    @State private var navigateToUserCreation: Bool = false
 
     private var tile: some View {
         HStack(alignment: .center, spacing: 0) {

@@ -8,6 +8,7 @@ import SwiftUI
 extension HideAndSeekView {
     struct HiddenView: View {
         let textSubInstructions: String
+
         var body: some View {
             VStack {
                 Text(textSubInstructions)

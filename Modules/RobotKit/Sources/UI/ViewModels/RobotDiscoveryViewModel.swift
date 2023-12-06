@@ -8,18 +8,7 @@ import SwiftUI
 // MARK: - RobotDiscoveryViewModel
 
 public struct RobotDiscoveryViewModel: Identifiable {
-    public enum Status: CaseIterable {
-        case connected
-        case unselected
-        case selected
-    }
-
-    public let id: UUID
-    public let name: String
-    public let status: Status
-    public let isCharging: Bool
-    public let osVersion: String
-    public let battery: BatteryViewModel
+    // MARK: Lifecycle
 
     init(
         name: String, battery: Int, isCharging: Bool, osVersion: String, status: Status = .unselected
@@ -40,6 +29,21 @@ public struct RobotDiscoveryViewModel: Identifiable {
         self.osVersion = "LekaOS \(discovery.osVersion)"
         self.battery = BatteryViewModel(level: discovery.battery)
     }
+
+    // MARK: Public
+
+    public enum Status: CaseIterable {
+        case connected
+        case unselected
+        case selected
+    }
+
+    public let id: UUID
+    public let name: String
+    public let status: Status
+    public let isCharging: Bool
+    public let osVersion: String
+    public let battery: BatteryViewModel
 }
 
 // MARK: Equatable

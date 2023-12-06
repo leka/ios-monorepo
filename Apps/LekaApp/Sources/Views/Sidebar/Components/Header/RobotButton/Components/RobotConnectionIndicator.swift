@@ -7,12 +7,11 @@ import RobotKit
 import SwiftUI
 
 struct RobotConnectionIndicator: View {
+    // MARK: Internal
+
     @EnvironmentObject var metrics: UIMetrics
 
     @StateObject var robotViewModel: ConnectedRobotInformationViewModel = ConnectedRobotInformationViewModel()
-
-    @State private var isAnimated: Bool = false
-    @State private var diameter: CGFloat = 0
 
     var body: some View {
         ZStack {
@@ -64,6 +63,11 @@ struct RobotConnectionIndicator: View {
             diameter = isAnimated ? 100 : 0
         }
     }
+
+    // MARK: Private
+
+    @State private var isAnimated: Bool = false
+    @State private var diameter: CGFloat = 0
 
     @ViewBuilder private var badgeView: some View {
         if !robotViewModel.isConnected {

@@ -8,6 +8,8 @@ import SwiftUI
 // MARK: - SendDataButton
 
 struct SendDataButton: View {
+    // MARK: Internal
+
     // MARK: - Environment properties
 
     @EnvironmentObject var robotListViewModel: RobotListViewModel
@@ -23,6 +25,8 @@ struct SendDataButton: View {
         .opacity((self.robotListViewModel.connectedRobotPeripheral == nil) ? 0.5 : 1.0)
         .disabled(self.robotListViewModel.connectedRobotPeripheral == nil)
     }
+
+    // MARK: Private
 
     // MARK: - Private views
 

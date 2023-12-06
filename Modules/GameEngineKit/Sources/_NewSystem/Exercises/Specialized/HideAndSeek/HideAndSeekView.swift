@@ -6,14 +6,7 @@ import ContentKit
 import SwiftUI
 
 struct HideAndSeekView: View {
-    enum HideAndSeekStage {
-        case toHide
-        case hidden
-    }
-
-    @State private var stage: HideAndSeekStage
-    let instructions: HideAndSeek.Payload.Instructions
-    let shared: ExerciseSharedData?
+    // MARK: Lifecycle
 
     public init(instructions: HideAndSeek.Payload.Instructions) {
         self.stage = .toHide
@@ -31,6 +24,8 @@ struct HideAndSeekView: View {
         self.shared = data
     }
 
+    // MARK: Public
+
     public var body: some View {
         switch stage {
             case .toHide:
@@ -43,4 +38,18 @@ struct HideAndSeekView: View {
                     textButtonRobotFound: instructions.textButtonRobotFound, shared: shared)
         }
     }
+
+    // MARK: Internal
+
+    enum HideAndSeekStage {
+        case toHide
+        case hidden
+    }
+
+    let instructions: HideAndSeek.Payload.Instructions
+    let shared: ExerciseSharedData?
+
+    // MARK: Private
+
+    @State private var stage: HideAndSeekStage
 }

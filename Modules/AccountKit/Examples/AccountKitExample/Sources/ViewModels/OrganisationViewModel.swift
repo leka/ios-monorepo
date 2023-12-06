@@ -12,27 +12,6 @@ struct OrganisationViewModel {
     // var users: [User] = []
     var confirmPassword: String = ""
 
-    // MARK: - Validation Checks
-
-    func isEmailValid() -> Bool {
-        let mailTest = NSPredicate(
-            format: "SELF MATCHES %@",
-            "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}")
-        return mailTest.evaluate(with: mail)
-    }
-
-    func isPasswordValid(_ password: String) -> Bool {
-        // 8 chars min, contain a cap letter and a number at least
-        let passwordTest = NSPredicate(
-            format: "SELF MATCHES %@",
-            "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$")
-        return passwordTest.evaluate(with: password)
-    }
-
-    func passwordsMatch() -> Bool {
-        confirmPassword == password
-    }
-
     var signUpIsComplete: Bool {
         if !isEmailValid() || !isPasswordValid(password) || !passwordsMatch() {
             return false
@@ -59,5 +38,26 @@ struct OrganisationViewModel {
 
     var invalidConfirmPasswordText: String {
         "Password fields do not match."
+    }
+
+    // MARK: - Validation Checks
+
+    func isEmailValid() -> Bool {
+        let mailTest = NSPredicate(
+            format: "SELF MATCHES %@",
+            "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}")
+        return mailTest.evaluate(with: mail)
+    }
+
+    func isPasswordValid(_ password: String) -> Bool {
+        // 8 chars min, contain a cap letter and a number at least
+        let passwordTest = NSPredicate(
+            format: "SELF MATCHES %@",
+            "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$")
+        return passwordTest.evaluate(with: password)
+    }
+
+    func passwordsMatch() -> Bool {
+        confirmPassword == password
     }
 }

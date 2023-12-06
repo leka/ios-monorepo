@@ -7,13 +7,13 @@ import RobotKit
 import SwiftUI
 
 public struct ActivityView: View {
-    @Environment(\.dismiss) var dismiss
-
-    @ObservedObject var viewModel: ActivityViewViewModel
+    // MARK: Lifecycle
 
     public init(viewModel: ActivityViewViewModel) {
         self.viewModel = viewModel
     }
+
+    // MARK: Public
 
     public var body: some View {
         NavigationStack {
@@ -70,6 +70,31 @@ public struct ActivityView: View {
         }
         .onDisappear {
             Robot.shared.stop()
+        }
+    }
+
+    // MARK: Internal
+
+    @Environment(\.dismiss) var dismiss
+
+    @ObservedObject var viewModel: ActivityViewViewModel
+
+    // MARK: Private
+
+    @ViewBuilder
+    private var continueButton: some View {
+        let state = viewModel.currentExerciseSharedData.state
+
+        if state != .completed {
+            EmptyView()
+        } else {
+            Button("Continuer") {
+                viewModel.isLastExercise ? dismiss() : viewModel.moveToNextExercise()
+            }
+            .buttonStyle(.borderedProminent)
+            .tint(.green)
+            .padding()
+            .transition(.asymmetric(insertion: .opacity.animation(.snappy.delay(2)), removal: .identity))
         }
     }
 
@@ -141,23 +166,6 @@ public struct ActivityView: View {
                     exercise: viewModel.currentExercise,
                     data: viewModel.currentExerciseSharedData
                 )
-        }
-    }
-
-    @ViewBuilder
-    private var continueButton: some View {
-        let state = viewModel.currentExerciseSharedData.state
-
-        if state != .completed {
-            EmptyView()
-        } else {
-            Button("Continuer") {
-                viewModel.isLastExercise ? dismiss() : viewModel.moveToNextExercise()
-            }
-            .buttonStyle(.borderedProminent)
-            .tint(.green)
-            .padding()
-            .transition(.asymmetric(insertion: .opacity.animation(.snappy.delay(2)), removal: .identity))
         }
     }
 }

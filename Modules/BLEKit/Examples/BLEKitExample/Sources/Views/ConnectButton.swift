@@ -9,6 +9,8 @@ import SwiftUI
 // MARK: - ConnectButton
 
 struct ConnectButton: View {
+    // MARK: Internal
+
     // MARK: - Environment variables
 
     @EnvironmentObject var robotListViewModel: RobotListViewModel
@@ -36,6 +38,8 @@ struct ConnectButton: View {
         .disabled(
             robotListViewModel.connectedRobotPeripheral == nil && robotListViewModel.selectedRobotDiscovery == nil)
     }
+
+    // MARK: Private
 
     // MARK: - Private views
 

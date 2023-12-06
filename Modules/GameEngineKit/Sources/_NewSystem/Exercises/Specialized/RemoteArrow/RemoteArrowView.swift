@@ -7,6 +7,7 @@ import SwiftUI
 
 struct RemoteArrowView: View {
     let robot = Robot.shared
+
     var body: some View {
         CircleLayout {
             ArrowButton(arrow: .up) {

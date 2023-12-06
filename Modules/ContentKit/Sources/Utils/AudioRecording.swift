@@ -5,6 +5,20 @@
 import Foundation
 
 public struct AudioRecording: Codable, Hashable, Equatable {
+    // MARK: Lifecycle
+
+    public init(name: String, file: String) {
+        self.name = name
+        self.file = file
+    }
+
+    public init(_ song: Song) {
+        self.name = song.details.name
+        self.file = song.details.file
+    }
+
+    // MARK: Public
+
     public enum Song: String, Codable {
         case earlyBird
         case emptyPage
@@ -13,6 +27,8 @@ public struct AudioRecording: Codable, Hashable, Equatable {
         case happyDays
         case inTheGame
         case littleByLittle
+
+        // MARK: Internal
 
         var details: (name: String, file: String) {
             switch self {
@@ -36,14 +52,4 @@ public struct AudioRecording: Codable, Hashable, Equatable {
 
     public let name: String
     public let file: String
-
-    public init(name: String, file: String) {
-        self.name = name
-        self.file = file
-    }
-
-    public init(_ song: Song) {
-        self.name = song.details.name
-        self.file = song.details.file
-    }
 }

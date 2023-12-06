@@ -12,18 +12,6 @@ extension Float {
 
 public extension Robot {
     enum Motion {
-        static let id: UInt8 = 0x20
-
-        enum Motor: UInt8 {
-            case left = 0x21
-            case right = 0x22
-        }
-
-        public enum Rotation: UInt8 {
-            case clockwise = 0x00
-            case counterclockwise = 0x01
-        }
-
         case stop
         case free(left: Float, right: Float)
 
@@ -34,6 +22,22 @@ public extension Robot {
         case backwardLeft(speed: Float)
         case backwardRight(speed: Float)
         case spin(Rotation, speed: Float)
+
+        // MARK: Public
+
+        public enum Rotation: UInt8 {
+            case clockwise = 0x00
+            case counterclockwise = 0x01
+        }
+
+        // MARK: Internal
+
+        enum Motor: UInt8 {
+            case left = 0x21
+            case right = 0x22
+        }
+
+        static let id: UInt8 = 0x20
 
         var cmd: [[UInt8]] {
             var output: [[UInt8]] = [[]]
@@ -114,6 +118,8 @@ public extension Robot {
 
             return output
         }
+
+        // MARK: Private
 
         private func setMotor(_ motor: Motor, speed: Float, rotation: Rotation) -> [UInt8] {
             let speed: UInt8 = UInt8(abs(speed) * 255)

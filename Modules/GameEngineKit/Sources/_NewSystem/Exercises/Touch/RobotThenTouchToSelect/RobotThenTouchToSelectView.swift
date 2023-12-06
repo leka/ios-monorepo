@@ -9,21 +9,7 @@ import RobotKit
 import SwiftUI
 
 public struct RobotThenTouchToSelectView: View {
-    enum Interface: Int {
-        case oneChoice = 1
-        case twoChoices
-        case threeChoices
-        case fourChoices
-        case fiveChoices
-        case sixChoices
-    }
-
-    @StateObject private var viewModel: TouchToSelectViewViewModel
-    @State private var didSendCommandToRobot = false
-
-    private let actionType: Exercise.Action.ActionType
-
-    let robot = Robot.shared
+    // MARK: Lifecycle
 
     public init(choices: [TouchToSelect.Choice]) {
         self._viewModel = StateObject(wrappedValue: TouchToSelectViewViewModel(choices: choices))
@@ -47,6 +33,8 @@ public struct RobotThenTouchToSelectView: View {
 
         self.robot.blacken(.all)
     }
+
+    // MARK: Public
 
     public var body: some View {
         let interface = Interface(rawValue: viewModel.choices.count)
@@ -138,4 +126,24 @@ public struct RobotThenTouchToSelectView: View {
             Spacer()
         }
     }
+
+    // MARK: Internal
+
+    enum Interface: Int {
+        case oneChoice = 1
+        case twoChoices
+        case threeChoices
+        case fourChoices
+        case fiveChoices
+        case sixChoices
+    }
+
+    let robot = Robot.shared
+
+    // MARK: Private
+
+    @StateObject private var viewModel: TouchToSelectViewViewModel
+    @State private var didSendCommandToRobot = false
+
+    private let actionType: Exercise.Action.ActionType
 }

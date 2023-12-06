@@ -6,6 +6,8 @@ import DesignKit
 import SwiftUI
 
 struct CurriculumPillShapedView: View {
+    // MARK: Internal
+
     @EnvironmentObject var metrics: UIMetrics
 
     var curriculum: Curriculum
@@ -22,6 +24,8 @@ struct CurriculumPillShapedView: View {
         .shadow(color: .black.opacity(0.1), radius: 1, x: 0, y: 1)
         .compositingGroup()
     }
+
+    // MARK: Private
 
     private var topContent: some View {
         Text(curriculum.fullTitle.localized())

@@ -8,16 +8,14 @@ import SwiftUI
 // MARK: - InfoTile
 
 struct InfoTile: View {
+    // MARK: Internal
+
     @EnvironmentObject var settings: SettingsViewModel
     @EnvironmentObject var navigationVM: NavigationViewModel
     @EnvironmentObject var viewRouter: ViewRouter
     @EnvironmentObject var metrics: UIMetrics
 
     let data: TileData
-    private var headerColor: Color {
-        data == .discovery
-            ? DesignKitAsset.Colors.lekaOrange.swiftUIColor : DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor
-    }
 
     var body: some View {
         VStack(spacing: 0) {
@@ -28,6 +26,13 @@ struct InfoTile: View {
         .frame(height: 266)
         .background(.white)
         .clipShape(RoundedRectangle(cornerRadius: metrics.tilesRadius, style: .continuous))
+    }
+
+    // MARK: Private
+
+    private var headerColor: Color {
+        data == .discovery
+            ? DesignKitAsset.Colors.lekaOrange.swiftUIColor : DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor
     }
 
     private var tileHeader: some View {

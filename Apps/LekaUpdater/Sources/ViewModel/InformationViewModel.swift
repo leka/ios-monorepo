@@ -8,21 +8,29 @@ import RobotKit
 import Version
 
 class InformationViewModel: ObservableObject {
-    private var cancellables: Set<AnyCancellable> = []
-
-    @Published var showRobotCannotBeUpdated: Bool = false
-    @Published var showRobotNeedsUpdate: Bool = true
-    @Published var robotName: String = "n/a"
-    @Published var robotOSVersion: String = ""
+    // MARK: Lifecycle
 
     init() {
         self.subscribeToRobotNameUpdates()
         self.subscribeToRobotOsVersionUpdates()
     }
 
+    // MARK: Public
+
     public func onViewReappear() {
         self.robotName = Robot.shared.name.value
     }
+
+    // MARK: Internal
+
+    @Published var showRobotCannotBeUpdated: Bool = false
+    @Published var showRobotNeedsUpdate: Bool = true
+    @Published var robotName: String = "n/a"
+    @Published var robotOSVersion: String = ""
+
+    // MARK: Private
+
+    private var cancellables: Set<AnyCancellable> = []
 
     private func subscribeToRobotNameUpdates() {
         Robot.shared.name

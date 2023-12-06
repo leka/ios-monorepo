@@ -5,12 +5,7 @@
 import CombineCoreBluetooth
 
 public struct RobotAdvertisingData {
-    // MARK: - Public variables
-
-    public let name: String
-    public let battery: Int
-    public let isCharging: Bool
-    public let osVersion: String?
+    // MARK: Lifecycle
 
     // MARK: - Public functions
 
@@ -32,4 +27,13 @@ public struct RobotAdvertisingData {
 
         self.init(name: advertisementData.localName, serviceData: robotServiceData)
     }
+
+    // MARK: Public
+
+    // MARK: - Public variables
+
+    public let name: String
+    public let battery: Int
+    public let isCharging: Bool
+    public let osVersion: String?
 }

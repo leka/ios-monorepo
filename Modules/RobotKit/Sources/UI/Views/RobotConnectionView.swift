@@ -8,19 +8,13 @@ import DesignKit
 import SwiftUI
 
 public struct RobotConnectionView: View {
-    @StateObject var viewModel: RobotConnectionViewModel
-
-    @Environment(\.dismiss) var dismiss
+    // MARK: Lifecycle
 
     public init(viewModel: RobotConnectionViewModel = RobotConnectionViewModel()) {
         self._viewModel = StateObject(wrappedValue: viewModel)
     }
 
-    private let columns: [GridItem] = [
-        GridItem(),
-        GridItem(),
-        GridItem(),
-    ]
+    // MARK: Public
 
     public var body: some View {
         NavigationStack {
@@ -69,6 +63,29 @@ public struct RobotConnectionView: View {
         }
     }
 
+    // MARK: Internal
+
+    struct BackgroundView: View {
+        var body: some View {
+            DesignKitAsset.Images.interfaceCloud.swiftUIImage
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .ignoresSafeArea(.all)
+        }
+    }
+
+    @StateObject var viewModel: RobotConnectionViewModel
+
+    @Environment(\.dismiss) var dismiss
+
+    // MARK: Private
+
+    private let columns: [GridItem] = [
+        GridItem(),
+        GridItem(),
+        GridItem(),
+    ]
+
     private var searchingView: some View {
         // TODO(@ladislas): review "no robot found" interface
         // TODO(@ladislas): handle no robots found after xx seconds + add refresh button
@@ -91,26 +108,6 @@ public struct RobotConnectionView: View {
                         }
                 }
             }
-        }
-    }
-
-    @ViewBuilder
-    private func robotDiscoveryCellView(for discovery: RobotDiscoveryModel) -> some View {
-        if discovery == viewModel.connectedDiscovery {
-            RobotDiscoveryView(
-                discovery: RobotDiscoveryViewModel(
-                    discovery: discovery, status: .connected)
-            )
-        } else if discovery == viewModel.selectedDiscovery {
-            RobotDiscoveryView(
-                discovery: RobotDiscoveryViewModel(
-                    discovery: discovery, status: .selected)
-            )
-        } else {
-            RobotDiscoveryView(
-                discovery: RobotDiscoveryViewModel(
-                    discovery: discovery, status: .unselected)
-            )
         }
     }
 
@@ -183,12 +180,23 @@ public struct RobotConnectionView: View {
         }
     }
 
-    struct BackgroundView: View {
-        var body: some View {
-            DesignKitAsset.Images.interfaceCloud.swiftUIImage
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .ignoresSafeArea(.all)
+    @ViewBuilder
+    private func robotDiscoveryCellView(for discovery: RobotDiscoveryModel) -> some View {
+        if discovery == viewModel.connectedDiscovery {
+            RobotDiscoveryView(
+                discovery: RobotDiscoveryViewModel(
+                    discovery: discovery, status: .connected)
+            )
+        } else if discovery == viewModel.selectedDiscovery {
+            RobotDiscoveryView(
+                discovery: RobotDiscoveryViewModel(
+                    discovery: discovery, status: .selected)
+            )
+        } else {
+            RobotDiscoveryView(
+                discovery: RobotDiscoveryViewModel(
+                    discovery: discovery, status: .unselected)
+            )
         }
     }
 }

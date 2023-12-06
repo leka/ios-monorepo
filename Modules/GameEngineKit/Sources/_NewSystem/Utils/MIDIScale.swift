@@ -8,6 +8,8 @@ enum MIDIScale: String {
     case majorPentatonic
     case majorHeptatonic
 
+    // MARK: Internal
+
     var notes: [MIDINoteNumber] {
         switch self {
             case .majorPentatonic:

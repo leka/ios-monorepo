@@ -9,19 +9,7 @@ import SwiftUI
 
 extension DragAndDropToAssociateView {
     class BaseScene: SKScene {
-        var viewModel: ViewModel
-        var spacer = CGFloat.zero
-        var defaultPosition = CGPoint.zero
-        var initialNodeX: CGFloat = .zero
-        var verticalSpacing: CGFloat = .zero
-
-        private var biggerSide: CGFloat = 150
-        private var playedNode: DraggableImageAnswerNode?
-        private var playedDestination: DraggableImageAnswerNode?
-        private var dropDestinations: [DraggableImageAnswerNode] = []
-        private var selectedNodes: [UITouch: DraggableImageAnswerNode] = [:]
-        private var expectedItemsNodes: [String: [SKSpriteNode]] = [:]
-        private var cancellables: Set<AnyCancellable> = []
+        // MARK: Lifecycle
 
         init(viewModel: ViewModel) {
             self.viewModel = viewModel
@@ -34,6 +22,14 @@ extension DragAndDropToAssociateView {
         required init?(coder aDecoder: NSCoder) {
             fatalError("init(coder:) has not been implemented")
         }
+
+        // MARK: Internal
+
+        var viewModel: ViewModel
+        var spacer = CGFloat.zero
+        var defaultPosition = CGPoint.zero
+        var initialNodeX: CGFloat = .zero
+        var verticalSpacing: CGFloat = .zero
 
         func reset() {
             self.backgroundColor = .clear
@@ -218,5 +214,15 @@ extension DragAndDropToAssociateView {
                 viewModel.onChoiceTapped(choice: choice, destination: destination)
             }
         }
+
+        // MARK: Private
+
+        private var biggerSide: CGFloat = 150
+        private var playedNode: DraggableImageAnswerNode?
+        private var playedDestination: DraggableImageAnswerNode?
+        private var dropDestinations: [DraggableImageAnswerNode] = []
+        private var selectedNodes: [UITouch: DraggableImageAnswerNode] = [:]
+        private var expectedItemsNodes: [String: [SKSpriteNode]] = [:]
+        private var cancellables: Set<AnyCancellable> = []
     }
 }

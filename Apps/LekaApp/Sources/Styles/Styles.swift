@@ -61,6 +61,7 @@ struct CircledIcon_NoFeedback_ButtonStyle: ButtonStyle {
 struct Connect_ButtonStyle: ButtonStyle {
     @EnvironmentObject var metrics: UIMetrics
     var reversed: Bool = false
+
     func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
             .font(metrics.bold15)
@@ -81,6 +82,7 @@ struct JobPickerToggleStyle: ToggleStyle {
     var onImage = "checkmark.circle"
     var offImage = "circle"
     var action: () -> Void
+
     func makeBody(configuration: Configuration) -> some View {
         HStack(spacing: 10) {
             Image(systemName: configuration.isOn ? onImage : offImage)

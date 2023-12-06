@@ -7,21 +7,7 @@ import ContentKit
 import SwiftUI
 
 public class ActivityViewViewModel: ObservableObject {
-    private let sequenceManager: ActivitySequenceManager
-
-    private var cancellables: Set<AnyCancellable> = []
-
-    @Published var currentActivity: Activity
-
-    @Published var totalSequences: Int
-    @Published var currentSequenceIndex: Int
-
-    @Published var totalExercisesInCurrentSequence: Int
-    @Published var currentExerciseIndexInSequence: Int
-
-    @Published var currentExercise: Exercise
-    @Published var currentExerciseInterface: Exercise.Interface
-    @Published var currentExerciseSharedData: ExerciseSharedData
+    // MARK: Lifecycle
 
     public init(activity: Activity) {
         self.sequenceManager = ActivitySequenceManager(activity: activity)
@@ -41,6 +27,28 @@ public class ActivityViewViewModel: ObservableObject {
         subscribeToCurrentExerciseSharedDataUpdates()
     }
 
+    // MARK: Internal
+
+    @Published var currentActivity: Activity
+
+    @Published var totalSequences: Int
+    @Published var currentSequenceIndex: Int
+
+    @Published var totalExercisesInCurrentSequence: Int
+    @Published var currentExerciseIndexInSequence: Int
+
+    @Published var currentExercise: Exercise
+    @Published var currentExerciseInterface: Exercise.Interface
+    @Published var currentExerciseSharedData: ExerciseSharedData
+
+    var isFirstExercise: Bool {
+        sequenceManager.isFirstExercise
+    }
+
+    var isLastExercise: Bool {
+        sequenceManager.isLastExercise
+    }
+
     func moveToNextExercise() {
         sequenceManager.moveToNextExercise()
         updateValues()
@@ -51,13 +59,11 @@ public class ActivityViewViewModel: ObservableObject {
         updateValues()
     }
 
-    var isFirstExercise: Bool {
-        sequenceManager.isFirstExercise
-    }
+    // MARK: Private
 
-    var isLastExercise: Bool {
-        sequenceManager.isLastExercise
-    }
+    private let sequenceManager: ActivitySequenceManager
+
+    private var cancellables: Set<AnyCancellable> = []
 
     private func updateValues() {
         currentExercise = sequenceManager.currentExercise

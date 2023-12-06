@@ -8,9 +8,7 @@ import SwiftUI
 // MARK: - ContentView
 
 struct ContentView: View {
-    // MARK: - Environment variables
-
-    @StateObject private var robotListViewModel: RobotListViewModel
+    // MARK: Lifecycle
 
     // MARK: - Public functions
 
@@ -19,6 +17,8 @@ struct ContentView: View {
         // https://developer.apple.com/documentation/swiftui/stateobject#Initialize-state-objects-using-external-data
         self._robotListViewModel = StateObject(wrappedValue: RobotListViewModel(bleManager: bleManager))
     }
+
+    // MARK: Internal
 
     // MARK: - Views
 
@@ -55,12 +55,19 @@ struct ContentView: View {
         .navigationTitle("BLEKit Example App")
         .environmentObject(robotListViewModel)
     }
+
+    // MARK: Private
+
+    // MARK: - Environment variables
+
+    @StateObject private var robotListViewModel: RobotListViewModel
 }
 
 // MARK: - ContentView_Previews
 
 struct ContentView_Previews: PreviewProvider {
     static let bleManager = BLEManager.live()
+
     static var previews: some View {
         ContentView(bleManager: bleManager)
     }

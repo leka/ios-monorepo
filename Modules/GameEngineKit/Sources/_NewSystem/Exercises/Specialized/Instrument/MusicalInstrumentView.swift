@@ -7,9 +7,7 @@ import ContentKit
 import SwiftUI
 
 struct MusicalInstrumentView: View {
-    @StateObject var midiPlayer: MIDIPlayer
-    let instrument: MIDIInstrument
-    let scale: MIDIScale
+    // MARK: Lifecycle
 
     init(instrument: MIDIInstrument, scale: MIDIScale) {
         self.instrument = instrument
@@ -32,6 +30,12 @@ struct MusicalInstrumentView: View {
         self.scale = scale
         self._midiPlayer = StateObject(wrappedValue: MIDIPlayer(instrument: instrument))
     }
+
+    // MARK: Internal
+
+    @StateObject var midiPlayer: MIDIPlayer
+    let instrument: MIDIInstrument
+    let scale: MIDIScale
 
     var body: some View {
         switch instrument {

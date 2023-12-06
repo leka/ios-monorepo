@@ -7,22 +7,10 @@ import DesignKit
 import SwiftUI
 
 enum DanceFreeze {
-    enum Stage {
-        case waitingForSelection
-        case automaticMode
-        case manualMode
-    }
-
-    enum Motion {
-        case rotation
-        case movement
-    }
+    // MARK: Public
 
     public struct MainView: View {
-        @State private var mode = Stage.waitingForSelection
-        @State private var motion: Motion = .rotation
-        @StateObject private var viewModel: MainViewViewModel
-        let songs: [AudioRecording]
+        // MARK: Lifecycle
 
         public init(songs: [AudioRecording]) {
             self.songs = songs
@@ -39,6 +27,8 @@ enum DanceFreeze {
                 wrappedValue: MainViewViewModel(
                     songs: payload.songs, shared: data))
         }
+
+        // MARK: Public
 
         public var body: some View {
             NavigationStack {
@@ -63,6 +53,29 @@ enum DanceFreeze {
             }
             .navigationViewStyle(StackNavigationViewStyle())
         }
+
+        // MARK: Internal
+
+        let songs: [AudioRecording]
+
+        // MARK: Private
+
+        @State private var mode = Stage.waitingForSelection
+        @State private var motion: Motion = .rotation
+        @StateObject private var viewModel: MainViewViewModel
+    }
+
+    // MARK: Internal
+
+    enum Stage {
+        case waitingForSelection
+        case automaticMode
+        case manualMode
+    }
+
+    enum Motion {
+        case rotation
+        case movement
     }
 }
 

@@ -8,6 +8,8 @@ import SwiftUI
 // MARK: - GoToProfileEditorButton
 
 struct GoToProfileEditorButton: View {
+    // MARK: Internal
+
     @EnvironmentObject var settings: SettingsViewModel
     @EnvironmentObject var metrics: UIMetrics
     @EnvironmentObject var navigationVM: NavigationViewModel
@@ -38,6 +40,8 @@ struct GoToProfileEditorButton: View {
         .contentShape(Rectangle())
         .animation(.default, value: settings.exploratoryModeIsOn)
     }
+
+    // MARK: Private
 
     private var exploratoryModeLabel: some View {
         Text("Mode exploratoire")

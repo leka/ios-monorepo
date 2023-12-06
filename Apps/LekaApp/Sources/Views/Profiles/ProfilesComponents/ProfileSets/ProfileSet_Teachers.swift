@@ -6,19 +6,13 @@ import DesignKit
 import SwiftUI
 
 struct ProfileSet_Teachers: View {
+    // MARK: Internal
+
     @EnvironmentObject var company: CompanyViewModel
     @EnvironmentObject var settings: SettingsViewModel
     @EnvironmentObject var viewRouter: ViewRouter
     @EnvironmentObject var metrics: UIMetrics
     @EnvironmentObject var navigationVM: NavigationViewModel
-
-    @State private var showEditProfileTeacher: Bool = false
-    @State private var navigateToTeacherCreation: Bool = false
-
-    // check if less than 7 profiles to display in order to adapt Layout (HStack vs. Scrollable Grid)
-    private func sixMax() -> Bool {
-        company.currentCompany.teachers.count < 7
-    }
 
     var body: some View {
         VStack(spacing: 0) {
@@ -56,6 +50,11 @@ struct ProfileSet_Teachers: View {
         }
     }
 
+    // MARK: Private
+
+    @State private var showEditProfileTeacher: Bool = false
+    @State private var navigateToTeacherCreation: Bool = false
+
     private var editButton: some View {
         Button {
             if settings.companyIsConnected {
@@ -66,28 +65,6 @@ struct ProfileSet_Teachers: View {
             }
         } label: {
             Image(systemName: "pencil")
-        }
-        .buttonStyle(CircledIcon_NoFeedback_ButtonStyle(font: metrics.bold16))
-    }
-
-    @ViewBuilder
-    private func addButton() -> some View {
-        Button {
-            if viewRouter.currentPage == .welcome {
-                // Existing company is connected, we're in the selector here
-                company.resetBufferProfile(.teacher)
-                navigateToTeacherCreation.toggle()
-            } else {
-                if settings.companyIsConnected {
-                    company.editingProfile = false
-                    company.resetBufferProfile(.teacher)
-                    showEditProfileTeacher.toggle()
-                } else {
-                    settings.showConnectInvite.toggle()
-                }
-            }
-        } label: {
-            Image(systemName: "plus")
         }
         .buttonStyle(CircledIcon_NoFeedback_ButtonStyle(font: metrics.bold16))
     }
@@ -142,5 +119,32 @@ struct ProfileSet_Teachers: View {
             }
             ._safeAreaInsets(EdgeInsets(top: 20, leading: 20, bottom: 20, trailing: 20))
         }
+    }
+
+    // check if less than 7 profiles to display in order to adapt Layout (HStack vs. Scrollable Grid)
+    private func sixMax() -> Bool {
+        company.currentCompany.teachers.count < 7
+    }
+
+    @ViewBuilder
+    private func addButton() -> some View {
+        Button {
+            if viewRouter.currentPage == .welcome {
+                // Existing company is connected, we're in the selector here
+                company.resetBufferProfile(.teacher)
+                navigateToTeacherCreation.toggle()
+            } else {
+                if settings.companyIsConnected {
+                    company.editingProfile = false
+                    company.resetBufferProfile(.teacher)
+                    showEditProfileTeacher.toggle()
+                } else {
+                    settings.showConnectInvite.toggle()
+                }
+            }
+        } label: {
+            Image(systemName: "plus")
+        }
+        .buttonStyle(CircledIcon_NoFeedback_ButtonStyle(font: metrics.bold16))
     }
 }

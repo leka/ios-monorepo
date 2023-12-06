@@ -73,13 +73,17 @@ extension DesignSystemApple {
     }
 
     struct ColorView: View {
-        @Environment(\.self) var environment
-
-        let color: UIColor
+        // MARK: Lifecycle
 
         init(color: UIColor) {
             self.color = color
         }
+
+        // MARK: Internal
+
+        @Environment(\.self) var environment
+
+        let color: UIColor
 
         var body: some View {
             HStack {

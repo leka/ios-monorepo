@@ -80,13 +80,6 @@ extension l10n {
     }
 
     enum update {
-        static let stepNumber = LocalizedStringInterpolation("update.step_number", value: "Step %@", comment: "Update step number")
-
-        static let errorTitle = LocalizedString("update.error", value: "An error has occurred", comment: "Update error")
-        static let errorDescription = LocalizedString("update.error_description", value: "Unknown error", comment: "Update error description")
-        static let errorCallToAction = LocalizedString("update.error_call_to_action", value: "Contact technical support", comment: "Update error call to action")
-        static let errorBackButtonTitle = LocalizedString("update.error_back_button", value: "Return to robot connection page", comment: "Update error back button")
-
         enum requirements {
             static let instructionsText = LocalizedString(
                 "update.requirements.instructions_text", value: "To start the update, make sure that:",
@@ -144,6 +137,13 @@ extension l10n {
 
             static let robotUpdatedSuccessfully = LocalizedString("update.finished.robot_updated_successfully", value: "Congrats! 🥳\nYour robot is now up-to-date 🎉", comment: "Robot updated successfully")
         }
+
+        static let stepNumber = LocalizedStringInterpolation("update.step_number", value: "Step %@", comment: "Update step number")
+
+        static let errorTitle = LocalizedString("update.error", value: "An error has occurred", comment: "Update error")
+        static let errorDescription = LocalizedString("update.error_description", value: "Unknown error", comment: "Update error description")
+        static let errorCallToAction = LocalizedString("update.error_call_to_action", value: "Contact technical support", comment: "Update error call to action")
+        static let errorBackButtonTitle = LocalizedString("update.error_back_button", value: "Return to robot connection page", comment: "Update error back button")
     }
 }
 

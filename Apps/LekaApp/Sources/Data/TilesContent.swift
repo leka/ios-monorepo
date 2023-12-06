@@ -25,6 +25,8 @@ enum TileData: Int, CaseIterable, Hashable {
     case discovery, curriculums, activities, commands
     case signupBravo, signupStep1, signupStep2, signupFinalStep
 
+    // MARK: Internal
+
     var id: Self { self }
 
     var content: TileContent {

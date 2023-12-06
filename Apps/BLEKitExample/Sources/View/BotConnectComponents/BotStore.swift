@@ -16,6 +16,8 @@ struct NoFeedback_ButtonStyle: ButtonStyle {
 // MARK: - BotStore
 
 struct BotStore: View {
+    // MARK: Internal
+
     @EnvironmentObject var bleManager: BLEManager
     @EnvironmentObject var robot: Robot
     @ObservedObject var botVM: BotViewModel
@@ -56,6 +58,8 @@ struct BotStore: View {
         }
         .frame(height: 500)
     }
+
+    // MARK: Private
 
     private var availableBots: some View {
         ForEach(0..<bleManager.peripherals.count, id: \.self) { item in

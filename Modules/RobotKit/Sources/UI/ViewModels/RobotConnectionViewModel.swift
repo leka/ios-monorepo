@@ -7,26 +7,13 @@ import Combine
 import Foundation
 
 public class RobotConnectionViewModel: ObservableObject {
-    @Published var robotDiscoveries: [RobotDiscoveryModel] = []
-    @Published var selectedDiscovery: RobotDiscoveryModel?
-
-    @Published var connectedDiscovery: RobotDiscoveryModel? {
-        didSet {
-            connected = connectedDiscovery != nil
-        }
-    }
-
-    @Published var connected: Bool = false
-
-    private let robot = Robot.shared
-    private let bleManager = BLEManager.shared
-
-    private var cancellables: Set<AnyCancellable> = []
-    private var scanCancellable: AnyCancellable?
+    // MARK: Lifecycle
 
     public init() {
         self.connected = bleManager.isConnected
     }
+
+    // MARK: Public
 
     public func select(discovery: RobotDiscoveryModel) {
         if selectedDiscovery == discovery {
@@ -80,4 +67,25 @@ public class RobotConnectionViewModel: ObservableObject {
         bleManager.disconnect()
         connectedDiscovery = nil
     }
+
+    // MARK: Internal
+
+    @Published var robotDiscoveries: [RobotDiscoveryModel] = []
+    @Published var selectedDiscovery: RobotDiscoveryModel?
+
+    @Published var connected: Bool = false
+
+    @Published var connectedDiscovery: RobotDiscoveryModel? {
+        didSet {
+            connected = connectedDiscovery != nil
+        }
+    }
+
+    // MARK: Private
+
+    private let robot = Robot.shared
+    private let bleManager = BLEManager.shared
+
+    private var cancellables: Set<AnyCancellable> = []
+    private var scanCancellable: AnyCancellable?
 }

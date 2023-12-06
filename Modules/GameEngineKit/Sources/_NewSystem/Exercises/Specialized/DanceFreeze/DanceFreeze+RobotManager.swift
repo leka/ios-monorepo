@@ -9,6 +9,8 @@ import SwiftUI
 
 extension DanceFreeze {
     class RobotManager {
+        // MARK: Internal
+
         let robot = Robot.shared
         var lastMove = 0
 
@@ -27,19 +29,6 @@ extension DanceFreeze {
             let randomLight = getRandomLight(color: randomColor)
 
             robot.shine(randomLight)
-        }
-
-        private func getRandomColor() -> Robot.Color {
-            let colors: [Robot.Color] = [.red, .blue, .green, .yellow, .lightBlue, .purple, .orange, .pink]
-            return colors.randomElement()!
-        }
-
-        private func getRandomLight(color: Robot.Color) -> Robot.Lights {
-            let lights: [Robot.Lights] = [
-                .earLeft(in: color), .earRight(in: color), .quarterBackLeft(in: color), .quarterBackRight(in: color),
-                .quarterFrontLeft(in: color), .quarterFrontRight(in: color),
-            ]
-            return lights.randomElement()!
         }
 
         func rotationDance() -> CGFloat {
@@ -72,6 +61,21 @@ extension DanceFreeze {
             robot.move(action.motion)
 
             return action.duration
+        }
+
+        // MARK: Private
+
+        private func getRandomColor() -> Robot.Color {
+            let colors: [Robot.Color] = [.red, .blue, .green, .yellow, .lightBlue, .purple, .orange, .pink]
+            return colors.randomElement()!
+        }
+
+        private func getRandomLight(color: Robot.Color) -> Robot.Lights {
+            let lights: [Robot.Lights] = [
+                .earLeft(in: color), .earRight(in: color), .quarterBackLeft(in: color), .quarterBackRight(in: color),
+                .quarterFrontLeft(in: color), .quarterFrontRight(in: color),
+            ]
+            return lights.randomElement()!
         }
     }
 }

@@ -9,25 +9,6 @@ import Yams
 
 // @MainActor
 class ActivityViewModel: NSObject, ObservableObject, YamlFileDecodable {
-    func getActivity(_ title: String) -> Activity {
-        do {
-            return try self.decodeYamlFile(withName: title, toType: Activity.self)
-        } catch {
-            print("Activities: Failed to decode Yaml file with error:", error)
-            return Activity()
-        }
-    }
-
-    // Temporary Instructions Source
-    func getInstructions() -> String {
-        do {
-            return try self.decodeYamlFile(withName: "instructions", toType: Instructions.self).instructions.localized()
-        } catch {
-            print("Instructions: Failed to decode Yaml file with error:", error)
-            return Instructions().instructions.localized()
-        }
-    }
-
     // MARK: - Current Activity's properties
 
     @Published var currentActivity = Activity()
@@ -67,6 +48,26 @@ class ActivityViewModel: NSObject, ObservableObject, YamlFileDecodable {
     // Here because GameMetrics is @EnvironmentObject
     @Published var isSpeaking: Bool = false
     @Published var synth = AVSpeechSynthesizer()
+
+    func getActivity(_ title: String) -> Activity {
+        do {
+            return try self.decodeYamlFile(withName: title, toType: Activity.self)
+        } catch {
+            print("Activities: Failed to decode Yaml file with error:", error)
+            return Activity()
+        }
+    }
+
+    // Temporary Instructions Source
+    func getInstructions() -> String {
+        do {
+            return try self.decodeYamlFile(withName: "instructions", toType: Instructions.self).instructions.localized()
+        } catch {
+            print("Instructions: Failed to decode Yaml file with error:", error)
+            return Instructions().instructions.localized()
+        }
+    }
+
     func speak(sentence: String) {
         synth.delegate = self
         let utterance = AVSpeechUtterance(string: sentence)

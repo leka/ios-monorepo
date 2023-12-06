@@ -8,31 +8,17 @@ import SwiftUI
 // MARK: - RobotNeedsUpdateIllustration
 
 struct RobotNeedsUpdateIllustration: View {
-    public var illustrationSize: CGFloat = 300
-
-    private var circleSize: CGFloat {
-        illustrationSize * 250 / 300
-    }
-
-    private var circleLineWidth: CGFloat {
-        illustrationSize / 60
-    }
-
-    private var dashSpacer: CGFloat {
-        illustrationSize / 18
-    }
-
-    private var imageSize: CGFloat {
-        illustrationSize * 180 / 300
-    }
-
-    private var checkmarkSize: CGFloat {
-        illustrationSize * 56 / 300
-    }
+    // MARK: Lifecycle
 
     init(size: CGFloat = 300) {
         self.illustrationSize = size
     }
+
+    // MARK: Public
+
+    public var illustrationSize: CGFloat = 300
+
+    // MARK: Internal
 
     var body: some View {
         ZStack {
@@ -66,6 +52,28 @@ struct RobotNeedsUpdateIllustration: View {
             }
         }
         .frame(width: circleSize, height: illustrationSize)
+    }
+
+    // MARK: Private
+
+    private var circleSize: CGFloat {
+        illustrationSize * 250 / 300
+    }
+
+    private var circleLineWidth: CGFloat {
+        illustrationSize / 60
+    }
+
+    private var dashSpacer: CGFloat {
+        illustrationSize / 18
+    }
+
+    private var imageSize: CGFloat {
+        illustrationSize * 180 / 300
+    }
+
+    private var checkmarkSize: CGFloat {
+        illustrationSize * 56 / 300
     }
 }
 

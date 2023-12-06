@@ -10,6 +10,8 @@ import SwiftUI
 // MARK: - InstructionsView
 
 struct InstructionsView: View {
+    // MARK: Internal
+
     @EnvironmentObject var activityVM: ActivityViewModel
     @EnvironmentObject var metrics: UIMetrics
 
@@ -22,6 +24,8 @@ struct InstructionsView: View {
             instructionTitle
         }
     }
+
+    // MARK: Private
 
     @ViewBuilder
     private var instructionsMarkdownView: some View {

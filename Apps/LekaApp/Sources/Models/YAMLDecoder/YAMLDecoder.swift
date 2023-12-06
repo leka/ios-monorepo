@@ -30,6 +30,8 @@ extension YamlFileDecodable {
 enum CustomError: Error, CustomStringConvertible {
     case failedToGetFilePath
 
+    // MARK: Internal
+
     var description: String {
         switch self {
             case .failedToGetFilePath: return "Unable to get the path to the Yaml file!"
@@ -40,7 +42,7 @@ enum CustomError: Error, CustomStringConvertible {
 // MARK: - YamlFiles
 
 struct YamlFiles: RawRepresentable, Hashable {
-    var rawValue: String
+    // MARK: Lifecycle
 
     init?(rawValue: String) {
         self.rawValue = rawValue
@@ -49,6 +51,10 @@ struct YamlFiles: RawRepresentable, Hashable {
     init(_ rawValue: String) {
         self.rawValue = rawValue
     }
+
+    // MARK: Internal
+
+    var rawValue: String
 }
 
 // MARK: - CurriculumCategories

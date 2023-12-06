@@ -46,7 +46,7 @@ enum RemoteStandard {
     }
 
     struct MainView: View {
-        @State private var displayMode = DisplayMode.fullBelt
+        // MARK: Internal
 
         var body: some View {
             HStack(spacing: 400) {
@@ -67,6 +67,10 @@ enum RemoteStandard {
                 }
             }
         }
+
+        // MARK: Private
+
+        @State private var displayMode = DisplayMode.fullBelt
     }
 }
 

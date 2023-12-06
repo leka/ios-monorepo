@@ -5,22 +5,22 @@
 import CombineCoreBluetooth
 
 public class RobotPeripheral: Equatable {
-    // MARK: - Public variables
-
-    // TODO(@ladislas): should they be published? maybe, need to investigate
-    public var peripheral: Peripheral
-    public var notifyingCharacteristics: Set<CharacteristicModelNotifying> = []
-    public var readOnlyCharacteristics: Set<CharacteristicModelReadOnly> = []
-
-    // MARK: - Private variables
-
-    private var cancellables: Set<AnyCancellable> = []
+    // MARK: Lifecycle
 
     // MARK: - Public functions
 
     public init(peripheral: Peripheral) {
         self.peripheral = peripheral
     }
+
+    // MARK: Public
+
+    // MARK: - Public variables
+
+    // TODO(@ladislas): should they be published? maybe, need to investigate
+    public var peripheral: Peripheral
+    public var notifyingCharacteristics: Set<CharacteristicModelNotifying> = []
+    public var readOnlyCharacteristics: Set<CharacteristicModelReadOnly> = []
 
     public static func == (lhs: RobotPeripheral, rhs: RobotPeripheral) -> Bool {
         lhs.peripheral.id == rhs.peripheral.id
@@ -122,6 +122,12 @@ public class RobotPeripheral: Equatable {
         )
         .store(in: &cancellables)
     }
+
+    // MARK: Private
+
+    // MARK: - Private variables
+
+    private var cancellables: Set<AnyCancellable> = []
 
     // MARK: - Private functions
 

@@ -5,14 +5,9 @@
 import SwiftUI
 
 struct JobPickerStore: View {
+    // MARK: Internal
+
     @Binding var selectedJobs: [String]
-    private func jobSelection(profession: String) {
-        if selectedJobs.contains(profession) {
-            selectedJobs.removeAll(where: { profession == $0 })
-        } else {
-            selectedJobs.append(profession)
-        }
-    }
 
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -31,6 +26,16 @@ struct JobPickerStore: View {
                 }
                 .padding(.vertical, 30)
             }
+        }
+    }
+
+    // MARK: Private
+
+    private func jobSelection(profession: String) {
+        if selectedJobs.contains(profession) {
+            selectedJobs.removeAll(where: { profession == $0 })
+        } else {
+            selectedJobs.append(profession)
         }
     }
 }

@@ -8,46 +8,10 @@ import SwiftUI
 // MARK: - PlayZone
 
 struct PlayZone: View {
+    // MARK: Internal
+
     @ObservedObject var gameMetrics: GameMetrics
     @EnvironmentObject var activityVM: ActivityViewModel
-
-    // Grid configuration
-    private var columns: [GridItem] {
-        let number = activityVM.currentActivity.numberOfImages
-        if number % 3 == 0 {
-            guard activityVM.currentActivityType != "touch_to_select" else {
-                return [
-                    GridItem(.fixed(gameMetrics.playGridBtnCellSize), alignment: .center),
-                    GridItem(.fixed(gameMetrics.playGridBtnCellSize), alignment: .center),
-                    GridItem(.fixed(gameMetrics.playGridBtnCellSize), alignment: .center),
-                ]
-            }
-            return [
-                GridItem(.fixed(gameMetrics.playGridBtnCellSize), alignment: .center),
-                GridItem(.fixed(gameMetrics.playGridBtnCellSize), alignment: .center),
-            ]
-        } else if number == 2 {
-            return [
-                GridItem(.fixed(gameMetrics.playGridBtnCellSize), alignment: .center),
-                GridItem(.fixed(gameMetrics.playGridBtnCellSize), alignment: .center),
-            ]
-        } else if number == 4 {
-            guard activityVM.currentActivityType != "touch_to_select" else {
-                return [
-                    GridItem(.fixed(gameMetrics.playGridBtnCellSize), alignment: .center),
-                    GridItem(.fixed(gameMetrics.playGridBtnCellSize), alignment: .center),
-                    GridItem(.fixed(gameMetrics.playGridBtnCellSize), alignment: .center),
-                    GridItem(.fixed(gameMetrics.playGridBtnCellSize), alignment: .center),
-                ]
-            }
-            return [
-                GridItem(.fixed(gameMetrics.playGridBtnCellSize), alignment: .center),
-                GridItem(.fixed(gameMetrics.playGridBtnCellSize), alignment: .center),
-            ]
-        } else {
-            return [GridItem(.fixed(gameMetrics.playGridBtnCellSize), alignment: .center)]
-        }
-    }
 
     var body: some View {
         HStack {
@@ -106,6 +70,46 @@ struct PlayZone: View {
                 }
             }
         )
+    }
+
+    // MARK: Private
+
+    // Grid configuration
+    private var columns: [GridItem] {
+        let number = activityVM.currentActivity.numberOfImages
+        if number % 3 == 0 {
+            guard activityVM.currentActivityType != "touch_to_select" else {
+                return [
+                    GridItem(.fixed(gameMetrics.playGridBtnCellSize), alignment: .center),
+                    GridItem(.fixed(gameMetrics.playGridBtnCellSize), alignment: .center),
+                    GridItem(.fixed(gameMetrics.playGridBtnCellSize), alignment: .center),
+                ]
+            }
+            return [
+                GridItem(.fixed(gameMetrics.playGridBtnCellSize), alignment: .center),
+                GridItem(.fixed(gameMetrics.playGridBtnCellSize), alignment: .center),
+            ]
+        } else if number == 2 {
+            return [
+                GridItem(.fixed(gameMetrics.playGridBtnCellSize), alignment: .center),
+                GridItem(.fixed(gameMetrics.playGridBtnCellSize), alignment: .center),
+            ]
+        } else if number == 4 {
+            guard activityVM.currentActivityType != "touch_to_select" else {
+                return [
+                    GridItem(.fixed(gameMetrics.playGridBtnCellSize), alignment: .center),
+                    GridItem(.fixed(gameMetrics.playGridBtnCellSize), alignment: .center),
+                    GridItem(.fixed(gameMetrics.playGridBtnCellSize), alignment: .center),
+                    GridItem(.fixed(gameMetrics.playGridBtnCellSize), alignment: .center),
+                ]
+            }
+            return [
+                GridItem(.fixed(gameMetrics.playGridBtnCellSize), alignment: .center),
+                GridItem(.fixed(gameMetrics.playGridBtnCellSize), alignment: .center),
+            ]
+        } else {
+            return [GridItem(.fixed(gameMetrics.playGridBtnCellSize), alignment: .center)]
+        }
     }
 }
 

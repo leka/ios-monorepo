@@ -9,18 +9,15 @@ import RobotKit
 import SwiftUI
 
 class UpdateStatusViewModel: ObservableObject {
-    enum UpdateStatus {
-        case sendingFile
-        case rebootingRobot
-        case updateFinished
-        case error
+    // MARK: Lifecycle
+
+    init() {
+        subscribeToStateUpdates()
+        subscribeToSendingFileProgressionUpdates()
+        subscribeToRobotIsChargingUpdates()
     }
 
-    // MARK: - Private variables
-
-    private var updateProcessController = UpdateProcessController()
-
-    private var cancellables: Set<AnyCancellable> = []
+    // MARK: Public
 
     // MARK: - Public variables
 
@@ -44,11 +41,28 @@ class UpdateStatusViewModel: ObservableObject {
         }
     }
 
-    init() {
-        subscribeToStateUpdates()
-        subscribeToSendingFileProgressionUpdates()
-        subscribeToRobotIsChargingUpdates()
+    public func startUpdate() {
+        UIApplication.shared.isIdleTimerDisabled = true
+
+        updateProcessController.startUpdate()
     }
+
+    // MARK: Internal
+
+    enum UpdateStatus {
+        case sendingFile
+        case rebootingRobot
+        case updateFinished
+        case error
+    }
+
+    // MARK: Private
+
+    // MARK: - Private variables
+
+    private var updateProcessController = UpdateProcessController()
+
+    private var cancellables: Set<AnyCancellable> = []
 
     private func subscribeToStateUpdates() {
         self.updateProcessController.currentStage
@@ -121,12 +135,6 @@ class UpdateStatusViewModel: ObservableObject {
                 self.showAlert = robotShouldBeInCharge && robotIsCharging == false
             }
             .store(in: &cancellables)
-    }
-
-    public func startUpdate() {
-        UIApplication.shared.isIdleTimerDisabled = true
-
-        updateProcessController.startUpdate()
     }
 
     private func onUpdateEnded() {

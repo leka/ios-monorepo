@@ -6,6 +6,8 @@ import DesignKit
 import SwiftUI
 
 struct GoButton: View {
+    // MARK: Internal
+
     @EnvironmentObject var company: CompanyViewModel
     @EnvironmentObject var activityVM: ActivityViewModel
     @EnvironmentObject var navigationVM: NavigationViewModel
@@ -29,26 +31,7 @@ struct GoButton: View {
         }
     }
 
-    private func goButtonAction() {
-        activityVM.setupGame(with: activityVM.currentActivity)
-        guard robotVM.robotIsConnected || robotVM.userChoseToPlayWithoutRobot else {
-            navigationVM.pathToGame = NavigationPath([PathsToGame.robot])
-            navigationVM.showActivitiesFullScreenCover = true
-            return
-        }
-        guard settings.companyIsConnected else {
-            navigationVM.pathToGame = NavigationPath([PathsToGame.game])
-            navigationVM.showActivitiesFullScreenCover = true
-            return
-        }
-        guard company.selectionSetIsCorrect() else {
-            navigationVM.pathToGame = NavigationPath([PathsToGame.user])
-            navigationVM.showActivitiesFullScreenCover = true
-            return
-        }
-        navigationVM.pathToGame = NavigationPath([PathsToGame.game])
-        navigationVM.showActivitiesFullScreenCover = true
-    }
+    // MARK: Private
 
     private var goButtonLabel: some View {
         ZStack {
@@ -69,5 +52,26 @@ struct GoButton: View {
         }
         .frame(width: 127, height: 127)
         .compositingGroup()
+    }
+
+    private func goButtonAction() {
+        activityVM.setupGame(with: activityVM.currentActivity)
+        guard robotVM.robotIsConnected || robotVM.userChoseToPlayWithoutRobot else {
+            navigationVM.pathToGame = NavigationPath([PathsToGame.robot])
+            navigationVM.showActivitiesFullScreenCover = true
+            return
+        }
+        guard settings.companyIsConnected else {
+            navigationVM.pathToGame = NavigationPath([PathsToGame.game])
+            navigationVM.showActivitiesFullScreenCover = true
+            return
+        }
+        guard company.selectionSetIsCorrect() else {
+            navigationVM.pathToGame = NavigationPath([PathsToGame.user])
+            navigationVM.showActivitiesFullScreenCover = true
+            return
+        }
+        navigationVM.pathToGame = NavigationPath([PathsToGame.game])
+        navigationVM.showActivitiesFullScreenCover = true
     }
 }

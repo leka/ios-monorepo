@@ -81,6 +81,8 @@ private class StateLoadingUpdateFile: GKState, StateEventProcessor {
 // MARK: - StateSettingDestinationPath
 
 private class StateSettingDestinationPath: GKState, StateEventProcessor {
+    // MARK: Internal
+
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
         stateClass is StateSendingFile.Type || stateClass is StateErrorRobotUnexpectedDisconnection.Type
     }
@@ -99,6 +101,8 @@ private class StateSettingDestinationPath: GKState, StateEventProcessor {
                 return
         }
     }
+
+    // MARK: Private
 
     private func setDestinationPath() {
         let osVersion = globalFirmwareManager.currentVersion
@@ -122,31 +126,7 @@ private class StateSettingDestinationPath: GKState, StateEventProcessor {
 // MARK: - StateSendingFile
 
 private class StateSendingFile: GKState, StateEventProcessor {
-    private var cancellables: Set<AnyCancellable> = []
-
-    private let maximumPacketSize: Int = 61
-
-    private var currentPacket: Int = 0
-    private var expectedCompletePackets: Int
-    private var expectedRemainingBytes: Int
-    private var expectedPackets: Int {
-        expectedRemainingBytes == 0 ? expectedCompletePackets : expectedCompletePackets + 1
-    }
-
-    private var _progression: Float {
-        Float(currentPacket) / Float(expectedPackets)
-    }
-
-    private lazy var characteristic: CharacteristicModelWriteOnly = CharacteristicModelWriteOnly(
-        characteristicUUID: BLESpecs.FileExchange.Characteristics.fileReceptionBuffer,
-        serviceUUID: BLESpecs.FileExchange.service,
-        onWrite: {
-            self.currentPacket += 1
-            self.tryToSendNextPacket()
-        }
-    )
-
-    public var progression = CurrentValueSubject<Float, Never>(0.0)
+    // MARK: Lifecycle
 
     override init() {
         let dataSize = globalFirmwareManager.data.count
@@ -161,17 +141,11 @@ private class StateSendingFile: GKState, StateEventProcessor {
         self.subscribeToFirmwareDataUpdates()
     }
 
-    private func subscribeToFirmwareDataUpdates() {
-        globalFirmwareManager.$data
-            .receive(on: DispatchQueue.main)
-            .sink { data in
-                let dataSize = data.count
+    // MARK: Public
 
-                self.expectedCompletePackets = Int(floor(Double(dataSize / self.maximumPacketSize)))
-                self.expectedRemainingBytes = Int(dataSize % self.maximumPacketSize)
-            }
-            .store(in: &cancellables)
-    }
+    public var progression = CurrentValueSubject<Float, Never>(0.0)
+
+    // MARK: Internal
 
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
         stateClass is StateApplyingUpdate.Type || stateClass is StateErrorRobotUnexpectedDisconnection.Type
@@ -194,6 +168,44 @@ private class StateSendingFile: GKState, StateEventProcessor {
             default:
                 return
         }
+    }
+
+    // MARK: Private
+
+    private var cancellables: Set<AnyCancellable> = []
+
+    private let maximumPacketSize: Int = 61
+
+    private var currentPacket: Int = 0
+    private var expectedCompletePackets: Int
+    private var expectedRemainingBytes: Int
+    private lazy var characteristic: CharacteristicModelWriteOnly = CharacteristicModelWriteOnly(
+        characteristicUUID: BLESpecs.FileExchange.Characteristics.fileReceptionBuffer,
+        serviceUUID: BLESpecs.FileExchange.service,
+        onWrite: {
+            self.currentPacket += 1
+            self.tryToSendNextPacket()
+        }
+    )
+
+    private var expectedPackets: Int {
+        expectedRemainingBytes == 0 ? expectedCompletePackets : expectedCompletePackets + 1
+    }
+
+    private var _progression: Float {
+        Float(currentPacket) / Float(expectedPackets)
+    }
+
+    private func subscribeToFirmwareDataUpdates() {
+        globalFirmwareManager.$data
+            .receive(on: DispatchQueue.main)
+            .sink { data in
+                let dataSize = data.count
+
+                self.expectedCompletePackets = Int(floor(Double(dataSize / self.maximumPacketSize)))
+                self.expectedRemainingBytes = Int(dataSize % self.maximumPacketSize)
+            }
+            .store(in: &cancellables)
     }
 
     private func sendFile() {
@@ -239,7 +251,7 @@ private class StateSendingFile: GKState, StateEventProcessor {
 // MARK: - StateApplyingUpdate
 
 private class StateApplyingUpdate: GKState, StateEventProcessor {
-    private var cancellables: Set<AnyCancellable> = []
+    // MARK: Internal
 
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
         stateClass is StateWaitingForRobotToReboot.Type
@@ -262,6 +274,10 @@ private class StateApplyingUpdate: GKState, StateEventProcessor {
                 return
         }
     }
+
+    // MARK: Private
+
+    private var cancellables: Set<AnyCancellable> = []
 
     private func setMajorMinorRevision() {
         let majorData = Data([globalFirmwareManager.major])
@@ -307,18 +323,17 @@ private class StateApplyingUpdate: GKState, StateEventProcessor {
 // MARK: - StateWaitingForRobotToReboot
 
 private class StateWaitingForRobotToReboot: GKState, StateEventProcessor {
-    private var cancellables: Set<AnyCancellable> = []
+    // MARK: Lifecycle
 
-    private var expectedRobot: RobotPeripheral?
-    private var isRobotUpToDate: Bool = false
+    init(expectedRobot: RobotPeripheral?) {
+        self.expectedRobot = expectedRobot
+    }
+
+    // MARK: Internal
 
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
         stateClass is StateFinal.Type || stateClass is StateErrorRobotNotUpToDate.Type
             || stateClass is StateErrorRobotUnexpectedDisconnection.Type
-    }
-
-    init(expectedRobot: RobotPeripheral?) {
-        self.expectedRobot = expectedRobot
     }
 
     override func didEnter(from previousState: GKState?) {
@@ -343,6 +358,13 @@ private class StateWaitingForRobotToReboot: GKState, StateEventProcessor {
                 return
         }
     }
+
+    // MARK: Private
+
+    private var cancellables: Set<AnyCancellable> = []
+
+    private var expectedRobot: RobotPeripheral?
+    private var isRobotUpToDate: Bool = false
 
     private func registerScanForRobot() {
         BLEManager.shared.scanForRobots()
@@ -390,17 +412,7 @@ private class StateErrorRobotUnexpectedDisconnection: GKState, StateError {}
 // MARK: - UpdateProcessV100
 
 class UpdateProcessV100: UpdateProcessProtocol {
-    // MARK: - Private variables
-
-    private var stateMachine: GKStateMachine?
-    private var stateSendingFile = StateSendingFile()
-
-    private var cancellables: Set<AnyCancellable> = []
-
-    // MARK: - Public variables
-
-    public var currentStage = CurrentValueSubject<UpdateProcessStage, UpdateProcessError>(.initial)
-    public var sendingFileProgression = CurrentValueSubject<Float, Never>(0.0)
+    // MARK: Lifecycle
 
     init() {
         self.stateMachine = GKStateMachine(states: [
@@ -425,9 +437,25 @@ class UpdateProcessV100: UpdateProcessProtocol {
         self.sendingFileProgression = self.stateSendingFile.progression
     }
 
+    // MARK: Public
+
+    // MARK: - Public variables
+
+    public var currentStage = CurrentValueSubject<UpdateProcessStage, UpdateProcessError>(.initial)
+    public var sendingFileProgression = CurrentValueSubject<Float, Never>(0.0)
+
     public func startProcess() {
         process(event: .startUpdateRequested)
     }
+
+    // MARK: Private
+
+    // MARK: - Private variables
+
+    private var stateMachine: GKStateMachine?
+    private var stateSendingFile = StateSendingFile()
+
+    private var cancellables: Set<AnyCancellable> = []
 
     private func process(event: UpdateEvent) {
         guard let state = stateMachine?.currentState as? any StateEventProcessor else {

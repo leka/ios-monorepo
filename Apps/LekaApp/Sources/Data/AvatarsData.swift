@@ -20,6 +20,8 @@ struct AvatarCategory: Identifiable, Hashable {
 enum AvatarSets: Int, CaseIterable, Hashable {
     case girls, boys, lekaGirls, lekaBoys, jobs, weather, sunglasses, animals, fruits, vegies
 
+    // MARK: Internal
+
     var id: Self { self }
 
     var content: AvatarCategory {

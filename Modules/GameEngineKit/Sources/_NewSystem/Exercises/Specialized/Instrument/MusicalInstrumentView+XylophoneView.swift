@@ -8,11 +8,7 @@ import SwiftUI
 
 extension MusicalInstrumentView {
     struct XylophoneView: View {
-        @ObservedObject var xyloPlayer: MIDIPlayer
-        let tilesSpacing: CGFloat
-        let tileNumber: Int
-        let tileColors: [Robot.Color] = [.pink, .red, .orange, .yellow, .green, .lightBlue, .blue, .purple]
-        let scale: MIDIScale
+        // MARK: Lifecycle
 
         init(midiPlayer: MIDIPlayer, scale: MIDIScale) {
             self.xyloPlayer = midiPlayer
@@ -20,6 +16,14 @@ extension MusicalInstrumentView {
             self.tileNumber = scale.notes.count
             self.tilesSpacing = scale.self == .majorPentatonic ? 40 : 20
         }
+
+        // MARK: Internal
+
+        @ObservedObject var xyloPlayer: MIDIPlayer
+        let tilesSpacing: CGFloat
+        let tileNumber: Int
+        let tileColors: [Robot.Color] = [.pink, .red, .orange, .yellow, .green, .lightBlue, .blue, .purple]
+        let scale: MIDIScale
 
         var body: some View {
             HStack(spacing: tilesSpacing) {

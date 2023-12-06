@@ -4,18 +4,17 @@
 
 public enum HideAndSeek {
     public struct Payload: Codable {
-        public struct Instructions: Codable {
-            public let textMainInstructions: String
-            public let textSubInstructions: String
-            public let textButtonOk: String
-            public let textButtonRobotFound: String
+        // MARK: Lifecycle
 
-            enum CodingKeys: String, CodingKey {
-                case textMainInstructions = "text_main_instructions"
-                case textSubInstructions = "text_sub_instructions"
-                case textButtonOk = "text_button_ok"
-                case textButtonRobotFound = "text_button_robot_found"
-            }
+        public init(from decoder: Decoder) throws {
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            self.instructions = try container.decode(Instructions.self, forKey: .instructions)
+        }
+
+        // MARK: Public
+
+        public struct Instructions: Codable {
+            // MARK: Lifecycle
 
             public init(from decoder: Decoder) throws {
                 let container = try decoder.container(keyedBy: CodingKeys.self)
@@ -25,17 +24,30 @@ public enum HideAndSeek {
                 self.textButtonOk = try container.decode(String.self, forKey: .textButtonOk)
                 self.textButtonRobotFound = try container.decode(String.self, forKey: .textButtonRobotFound)
             }
+
+            // MARK: Public
+
+            public let textMainInstructions: String
+            public let textSubInstructions: String
+            public let textButtonOk: String
+            public let textButtonRobotFound: String
+
+            // MARK: Internal
+
+            enum CodingKeys: String, CodingKey {
+                case textMainInstructions = "text_main_instructions"
+                case textSubInstructions = "text_sub_instructions"
+                case textButtonOk = "text_button_ok"
+                case textButtonRobotFound = "text_button_robot_found"
+            }
         }
 
         public let instructions: Instructions
 
+        // MARK: Internal
+
         enum CodingKeys: String, CodingKey {
             case instructions
-        }
-
-        public init(from decoder: Decoder) throws {
-            let container = try decoder.container(keyedBy: CodingKeys.self)
-            self.instructions = try container.decode(Instructions.self, forKey: .instructions)
         }
     }
 }

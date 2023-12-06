@@ -7,16 +7,7 @@ import CombineCoreBluetooth
 // MARK: - RobotDiscoveryModel
 
 public struct RobotDiscoveryModel: Identifiable {
-    // MARK: - Public variables
-
-    public let robotPeripheral: RobotPeripheral!
-    public let rssi: Double?
-
-    public let id: UUID
-    public let name: String
-    public let isCharging: Bool
-    public let battery: Int
-    public let osVersion: String
+    // MARK: Lifecycle
 
     // MARK: - Public functions
 
@@ -39,6 +30,19 @@ public struct RobotDiscoveryModel: Identifiable {
         self.battery = advertisingData.battery
         self.osVersion = computeVersion(version: advertisingData.osVersion, name: advertisingData.name)
     }
+
+    // MARK: Public
+
+    // MARK: - Public variables
+
+    public let robotPeripheral: RobotPeripheral!
+    public let rssi: Double?
+
+    public let id: UUID
+    public let name: String
+    public let isCharging: Bool
+    public let battery: Int
+    public let osVersion: String
 }
 
 // MARK: Equatable

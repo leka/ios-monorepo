@@ -16,8 +16,9 @@ enum RobotUpdateStatus {
 // MARK: - FirmwareManager
 
 class FirmwareManager: ObservableObject {
-    // swiftlint:disable:next force_cast
-    let currentVersion = Version(Bundle.main.object(forInfoDictionaryKey: "LEKA_OS_VERSION") as! String)!
+    // MARK: Public
+
+    @Published public var data = Data()
 
     public var major: UInt8 {
         UInt8(currentVersion.major)
@@ -31,22 +32,8 @@ class FirmwareManager: ObservableObject {
         UInt16(currentVersion.patch)
     }
 
-    @Published public var data = Data()
-
     public var sha256: String {
         SHA256.hash(data: data).compactMap { String(format: "%02x", $0) }.joined()
-    }
-
-    func compareWith(version: Version?) -> RobotUpdateStatus {
-        guard let version = version else {
-            return .needsUpdate
-        }
-
-        if version >= currentVersion {
-            return .upToDate
-        }
-
-        return .needsUpdate
     }
 
     public func load() -> Bool {
@@ -60,5 +47,22 @@ class FirmwareManager: ObservableObject {
         } catch {
             return false
         }
+    }
+
+    // MARK: Internal
+
+    // swiftlint:disable:next force_cast
+    let currentVersion = Version(Bundle.main.object(forInfoDictionaryKey: "LEKA_OS_VERSION") as! String)!
+
+    func compareWith(version: Version?) -> RobotUpdateStatus {
+        guard let version = version else {
+            return .needsUpdate
+        }
+
+        if version >= currentVersion {
+            return .upToDate
+        }
+
+        return .needsUpdate
     }
 }

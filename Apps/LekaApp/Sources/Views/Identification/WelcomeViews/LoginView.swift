@@ -8,44 +8,13 @@ import SwiftUI
 // MARK: - LoginView
 
 struct LoginView: View {
+    // MARK: Internal
+
     @EnvironmentObject var company: CompanyViewModel
     @EnvironmentObject var settings: SettingsViewModel
     @EnvironmentObject var metrics: UIMetrics
 
     @FocusState var focusedField: FormField?
-    @State private var mail: String = ""
-    @State private var password: String = ""
-    @State private var isEditing = false
-
-    @State private var navigateToTeacherSelector: Bool = false
-
-    // Make sure you have set up Associated Domains for your app and AutoFill Passwords
-    // is enabled in Settings in order to get the strong password proposals etc...
-    // the same applies for both login/signup
-    // re-enable autofill modifiers in LekaTextField when OK (textContentType)
-
-    func connectIsDisabled() -> Bool {
-        !mail.isValidEmail() || mail.isEmpty || password.isEmpty
-    }
-
-    // TESTS *****************************************************************
-    @State private var credentialsAreCorrect: Bool = true
-
-    private func submitForm() {
-        if mail == LekaCompany().lekaCompany.mail {
-            if password != LekaCompany().lekaCompany.password {
-                credentialsAreCorrect = false
-            } else {
-                credentialsAreCorrect = true
-                settings.companyIsConnected = true
-                company.currentCompany = LekaCompany().lekaCompany
-                settings.companyIsLoggingIn = true
-                navigateToTeacherSelector.toggle()
-            }
-        } else {
-            credentialsAreCorrect = false
-        }
-    }
 
     // TESTS *****************************************************************
 
@@ -72,6 +41,26 @@ struct LoginView: View {
             ProfileSelector_Teachers()
         }
     }
+
+    // Make sure you have set up Associated Domains for your app and AutoFill Passwords
+    // is enabled in Settings in order to get the strong password proposals etc...
+    // the same applies for both login/signup
+    // re-enable autofill modifiers in LekaTextField when OK (textContentType)
+
+    func connectIsDisabled() -> Bool {
+        !mail.isValidEmail() || mail.isEmpty || password.isEmpty
+    }
+
+    // MARK: Private
+
+    @State private var mail: String = ""
+    @State private var password: String = ""
+    @State private var isEditing = false
+
+    @State private var navigateToTeacherSelector: Bool = false
+
+    // TESTS *****************************************************************
+    @State private var credentialsAreCorrect: Bool = true
 
     private var title: some View {
         Text("Se connecter")
@@ -160,6 +149,22 @@ struct LoginView: View {
                     .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
                     .padding([.top, .trailing], 10)
             }
+        }
+    }
+
+    private func submitForm() {
+        if mail == LekaCompany().lekaCompany.mail {
+            if password != LekaCompany().lekaCompany.password {
+                credentialsAreCorrect = false
+            } else {
+                credentialsAreCorrect = true
+                settings.companyIsConnected = true
+                company.currentCompany = LekaCompany().lekaCompany
+                settings.companyIsLoggingIn = true
+                navigateToTeacherSelector.toggle()
+            }
+        } else {
+            credentialsAreCorrect = false
         }
     }
 }

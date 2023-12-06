@@ -6,15 +6,13 @@ import BLEKit
 import SwiftUI
 
 struct RobotDiscoveryView: View {
-    private var discovery: RobotDiscoveryModel
-
-    // MARK: - Environment variables
-
-    @EnvironmentObject private var robotListViewModel: RobotListViewModel
+    // MARK: Lifecycle
 
     public init(discovery: RobotDiscoveryModel) {
         self.discovery = discovery
     }
+
+    // MARK: Internal
 
     var body: some View {
         HStack(spacing: 20) {
@@ -68,6 +66,14 @@ struct RobotDiscoveryView: View {
             }
         }
     }
+
+    // MARK: Private
+
+    private var discovery: RobotDiscoveryModel
+
+    // MARK: - Environment variables
+
+    @EnvironmentObject private var robotListViewModel: RobotListViewModel
 }
 
 // TODO(@ladislas): create protocol and mock RobotDiscovery

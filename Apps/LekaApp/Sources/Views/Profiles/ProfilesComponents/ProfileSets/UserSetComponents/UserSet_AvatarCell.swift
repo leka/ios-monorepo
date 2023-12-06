@@ -6,6 +6,8 @@ import DesignKit
 import SwiftUI
 
 struct UserSet_AvatarCell: View {
+    // MARK: Internal
+
     @EnvironmentObject var company: CompanyViewModel
     @EnvironmentObject var settings: SettingsViewModel
     @EnvironmentObject var metrics: UIMetrics
@@ -86,6 +88,8 @@ struct UserSet_AvatarCell: View {
         }
         .buttonStyle(NoFeedback_ButtonStyle())
     }
+
+    // MARK: Private
 
     @ViewBuilder
     private func selectionIndicator(id: UUID) -> some View {

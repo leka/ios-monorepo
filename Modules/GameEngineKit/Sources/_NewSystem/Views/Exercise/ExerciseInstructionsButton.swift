@@ -10,9 +10,8 @@ import SwiftUI
 
 // TODO(@ladislas): refactor speech synth into own class
 class SpeakerViewModel: NSObject, ObservableObject, AVSpeechSynthesizerDelegate {
-    @Published var isSpeaking = false
+    // MARK: Lifecycle
 
-    private var synthesizer = AVSpeechSynthesizer()
     override init() {
         super.init()
         synthesizer.delegate = self
@@ -21,6 +20,10 @@ class SpeakerViewModel: NSObject, ObservableObject, AVSpeechSynthesizerDelegate 
     deinit {
         synthesizer.delegate = nil
     }
+
+    // MARK: Internal
+
+    @Published var isSpeaking = false
 
     func speak(sentence: String) {
         let utterance = AVSpeechUtterance(string: sentence)
@@ -39,6 +42,10 @@ class SpeakerViewModel: NSObject, ObservableObject, AVSpeechSynthesizerDelegate 
     internal func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
         self.isSpeaking = false
     }
+
+    // MARK: Private
+
+    private var synthesizer = AVSpeechSynthesizer()
 }
 
 // MARK: - ExerciseInstructionsButton
@@ -58,6 +65,8 @@ struct ExerciseInstructionsButton: View {
 // MARK: - StepInstructions_ButtonStyle
 
 struct StepInstructions_ButtonStyle: ButtonStyle {
+    // MARK: Internal
+
     @Binding var isSpeaking: Bool
 
     func makeBody(configuration: Self.Configuration) -> some View {
@@ -89,6 +98,8 @@ struct StepInstructions_ButtonStyle: ButtonStyle {
         .disabled(isSpeaking)
         .animation(.easeOut(duration: 0.2), value: isSpeaking)
     }
+
+    // MARK: Private
 
     private var backgroundGradient: some View {
         ZStack {
