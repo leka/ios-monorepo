@@ -98,6 +98,7 @@
 --enable redundantGet
 --enable redundantInit
 --enable redundantInternal
+--enable redundantLet
 
 # Disabled rules
 
