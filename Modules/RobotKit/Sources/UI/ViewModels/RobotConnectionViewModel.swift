@@ -7,7 +7,6 @@ import Combine
 import Foundation
 
 public class RobotConnectionViewModel: ObservableObject {
-
     @Published var robotDiscoveries: [RobotDiscoveryModel] = []
     @Published var selectedDiscovery: RobotDiscoveryModel?
 

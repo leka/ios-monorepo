@@ -5,7 +5,6 @@
 import ProjectDescription
 
 extension InfoPlist {
-
     public static func base(version: String) -> [String: InfoPlist.Value] {
         [
             "CFBundleShortVersionString": "\(version)",

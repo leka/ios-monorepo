@@ -6,7 +6,6 @@ import ContentKit
 import SwiftUI
 
 struct TouchToSelectChoiceView: View {
-
     let choice: TouchToSelect.Choice
     let state: GameplayChoiceState
 

@@ -9,7 +9,6 @@ import Yams
 
 // @MainActor
 class ActivityViewModel: NSObject, ObservableObject, YamlFileDecodable {
-
     func getActivity(_ title: String) -> Activity {
         do {
             return try self.decodeYamlFile(withName: title, toType: Activity.self)

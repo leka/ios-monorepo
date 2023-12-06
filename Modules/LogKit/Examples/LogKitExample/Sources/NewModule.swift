@@ -6,7 +6,6 @@ import Foundation
 import LogKit
 
 public struct NewModule {
-
     private let log = LogKit.createLoggerFor(module: "NewModule")
 
     public init() {

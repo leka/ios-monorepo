@@ -6,7 +6,6 @@ import Combine
 import Foundation
 
 class UpdateProcessTemplate: UpdateProcessProtocol {
-
     // MARK: - Internal states, events, errors
 
     enum UpdateState {

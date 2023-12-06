@@ -5,7 +5,6 @@
 import Foundation
 
 extension RobotConnectionViewModel {
-
     public static func mock() -> RobotConnectionViewModel {
         let viewModel = RobotConnectionViewModel()
         viewModel.robotDiscoveries = [

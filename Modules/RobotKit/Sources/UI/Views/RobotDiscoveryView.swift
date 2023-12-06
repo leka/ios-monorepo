@@ -6,7 +6,6 @@ import DesignKit
 import SwiftUI
 
 struct RobotDiscoveryView: View {
-
     // MARK: - Private variables
 
     @State private var rotation: CGFloat = 0.0
@@ -109,9 +108,7 @@ struct RobotDiscoveryView: View {
 }
 
 #Preview {
-
     HStack(spacing: 100) {
-
         RobotDiscoveryView(discovery: .mock(name: "Leka unselected", status: .unselected))
 
         RobotDiscoveryView(discovery: .mock(name: "Leka selected", status: .selected))

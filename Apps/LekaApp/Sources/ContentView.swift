@@ -5,7 +5,6 @@
 import SwiftUI
 
 struct ContentView: View {
-
     @EnvironmentObject var viewRouter: ViewRouter
 
     var body: some View {

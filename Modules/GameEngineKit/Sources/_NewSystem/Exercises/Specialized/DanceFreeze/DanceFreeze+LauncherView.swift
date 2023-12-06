@@ -6,7 +6,6 @@ import ContentKit
 import SwiftUI
 
 extension DanceFreeze {
-
     struct LauncherView: View {
         @ObservedObject var viewModel: MainViewViewModel
         @Binding var mode: Stage

@@ -6,7 +6,6 @@ import DesignKit
 import SwiftUI
 
 struct InstructionButton: View {
-
     @ObservedObject var gameMetrics: GameMetrics
     @EnvironmentObject var activityVM: ActivityViewModel
 

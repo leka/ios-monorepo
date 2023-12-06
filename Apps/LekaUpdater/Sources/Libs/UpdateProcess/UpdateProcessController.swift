@@ -30,7 +30,6 @@ enum UpdateProcessError: Error {
 // MARK: - Controller
 
 class UpdateProcessController {
-
     // MARK: - Private variables
 
     private var currentUpdateProcess: any UpdateProcessProtocol

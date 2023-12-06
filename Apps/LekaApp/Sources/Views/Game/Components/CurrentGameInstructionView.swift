@@ -6,7 +6,6 @@ import DesignKit
 import SwiftUI
 
 struct CurrentGameInstructionView: View {
-
     @EnvironmentObject var activityVM: ActivityViewModel
     @ObservedObject var gameMetrics: GameMetrics
     @Environment(\.dismiss) var dismiss

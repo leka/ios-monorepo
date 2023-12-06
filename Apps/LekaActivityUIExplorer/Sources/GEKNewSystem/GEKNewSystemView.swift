@@ -42,7 +42,6 @@ let kActivities: [Activity] = [
 ]
 
 struct GEKNewSystemView: View {
-
     @State var currentActivity: Activity?
 
     var body: some View {

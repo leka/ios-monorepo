@@ -8,7 +8,6 @@ import LocalizationKit
 import RobotKit
 
 class RobotInformationViewModel: ObservableObject {
-
     private var cancellables: Set<AnyCancellable> = []
 
     @Published var robotSerialNumber = "n/a"

@@ -7,7 +7,6 @@ import RobotKit
 import SwiftUI
 
 struct HomeView: View {
-
     @EnvironmentObject var navigationVM: NavigationViewModel
     @EnvironmentObject var settings: SettingsViewModel
     @EnvironmentObject var metrics: UIMetrics

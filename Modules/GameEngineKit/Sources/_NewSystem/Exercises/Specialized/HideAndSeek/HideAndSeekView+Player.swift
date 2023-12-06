@@ -7,9 +7,7 @@ import SwiftUI
 
 // swiftlint:disable nesting
 extension HideAndSeekView {
-
     struct Player: View {
-
         enum Stimulation: String, CaseIterable {
             case light
             case motion

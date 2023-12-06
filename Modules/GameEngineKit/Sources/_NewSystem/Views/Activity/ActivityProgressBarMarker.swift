@@ -6,7 +6,6 @@ import DesignKit
 import SwiftUI
 
 struct ActivityProgressBarMarker: View {
-
     @Binding var color: Color
     @Binding var isCurrent: Bool
 

@@ -6,9 +6,7 @@ import ContentKit
 import SwiftUI
 
 extension TouchToSelectView {
-
     struct OneChoiceView: View {
-
         @ObservedObject var viewModel: TouchToSelectViewViewModel
 
         private let kAnswerSize: CGFloat = 300

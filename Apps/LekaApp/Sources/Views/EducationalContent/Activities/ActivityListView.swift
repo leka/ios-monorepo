@@ -6,7 +6,6 @@ import DesignKit
 import SwiftUI
 
 struct ActivityListView: View {
-
     @EnvironmentObject var curriculumVM: CurriculumViewModel
     @EnvironmentObject var activityVM: ActivityViewModel
     @EnvironmentObject var navigationVM: NavigationViewModel

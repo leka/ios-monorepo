@@ -5,9 +5,7 @@
 import SwiftUI
 
 extension DesignSystemLeka {
-
     struct ButtonsView: View {
-
         let colors: [Color] = [
             Color(hex: 0xAFCE36),
             Color(hex: 0x0A579B),

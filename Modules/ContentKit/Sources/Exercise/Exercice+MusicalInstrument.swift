@@ -3,7 +3,6 @@
 // SPDX-License-Identifier: Apache-2.0
 
 public enum MusicalInstrument {
-
     public struct Payload: Codable {
         public let instrument: String
         public let scale: String

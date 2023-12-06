@@ -5,7 +5,6 @@
 import CombineCoreBluetooth
 
 public struct CharacteristicModelWriteOnly {
-
     public typealias Callback = (() -> Void)
 
     public let characteristicUUID: CBUUID

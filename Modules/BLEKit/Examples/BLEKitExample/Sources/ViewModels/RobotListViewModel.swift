@@ -8,7 +8,6 @@ import SwiftUI
 
 @MainActor
 public class RobotListViewModel: ObservableObject {
-
     // MARK: - Private variables
 
     internal let bleManager: BLEManager

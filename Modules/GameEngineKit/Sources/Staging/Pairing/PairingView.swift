@@ -51,7 +51,6 @@ public struct PairingView: View {
 
     public var body: some View {
         VStack {
-
             Text(
                 """
                 Le mode Pairing permet à la personne accompagnée de se familiariser à Leka

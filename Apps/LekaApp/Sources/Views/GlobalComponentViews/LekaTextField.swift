@@ -6,7 +6,6 @@ import DesignKit
 import SwiftUI
 
 struct LekaTextField: View {
-
     @EnvironmentObject var metrics: UIMetrics
 
     var label: String
@@ -53,7 +52,6 @@ struct LekaTextField: View {
 }
 
 struct LekaPasswordField: View {
-
     @EnvironmentObject var metrics: UIMetrics
 
     var label: String

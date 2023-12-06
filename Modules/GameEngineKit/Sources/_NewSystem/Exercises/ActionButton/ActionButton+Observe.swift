@@ -83,7 +83,6 @@ struct ActionButtonObserve: View {
     }
 }
 #Preview {
-
     struct ActionObserveButtonContainer: View {
         @State var imageWasTapped = false
         var body: some View {

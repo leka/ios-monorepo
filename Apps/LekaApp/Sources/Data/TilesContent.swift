@@ -18,7 +18,6 @@ struct TileContent {
 }
 
 enum TileData: Int, CaseIterable, Hashable {
-
     case discovery, curriculums, activities, commands
     case signupBravo, signupStep1, signupStep2, signupFinalStep
 

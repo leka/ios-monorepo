@@ -8,9 +8,7 @@ import SwiftUI
 // swiftlint:disable identifier_name nesting
 
 extension RemoteArrowView {
-
     struct ArrowButton: View {
-
         enum Arrow {
             case up, clockwise, down, counterclockwise
 

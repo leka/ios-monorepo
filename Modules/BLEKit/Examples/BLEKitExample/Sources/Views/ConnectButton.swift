@@ -7,7 +7,6 @@ import Combine
 import SwiftUI
 
 struct ConnectButton: View {
-
     // MARK: - Environment variables
 
     @EnvironmentObject var robotListViewModel: RobotListViewModel

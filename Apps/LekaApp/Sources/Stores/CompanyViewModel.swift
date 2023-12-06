@@ -6,7 +6,6 @@ import DesignKit
 import SwiftUI
 
 class CompanyViewModel: ObservableObject {
-
     @Published var currentCompany = Company(mail: "", password: "", teachers: [], users: [])
     @Published var profilesInUse: [UserType: UUID] = [.teacher: UUID(), .user: UUID()]
     @Published var selectedProfiles: [UserType: UUID] = [.teacher: UUID(), .user: UUID()]

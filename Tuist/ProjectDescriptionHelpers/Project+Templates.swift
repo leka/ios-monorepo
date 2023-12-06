@@ -10,7 +10,6 @@ import ProjectDescription
 /// See https://docs.tuist.io/guides/helpers/
 
 extension Project {
-
     //
 
     // MARK: - Internal

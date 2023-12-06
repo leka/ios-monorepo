@@ -8,7 +8,6 @@ import RobotKit
 import SwiftUI
 
 struct ChoiceColorView: View {
-
     private let color: Robot.Color
     private let size: CGFloat
     private let state: GameplayChoiceState

@@ -6,7 +6,6 @@ import RobotKit
 import SwiftUI
 
 struct MainView: View {
-
     @State private var presentRobotConnection: Bool = false
 
     var body: some View {

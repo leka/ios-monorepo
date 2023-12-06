@@ -6,7 +6,6 @@ import BLEKit
 import SwiftUI
 
 struct ContentView: View {
-
     // MARK: - Environment variables
 
     @StateObject private var robotListViewModel: RobotListViewModel

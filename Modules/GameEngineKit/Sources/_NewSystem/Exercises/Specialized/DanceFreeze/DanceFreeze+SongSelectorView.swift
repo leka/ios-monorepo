@@ -7,7 +7,6 @@ import DesignKit
 import SwiftUI
 
 extension DanceFreeze {
-
     struct SongSelectorView: View {
         @ObservedObject private var viewModel: MainViewViewModel
         @State private var selectedAudioRecording: AudioRecording
@@ -23,7 +22,6 @@ extension DanceFreeze {
         }
 
         var body: some View {
-
             VStack {
                 HStack {
                     Image(systemName: "music.note.list")

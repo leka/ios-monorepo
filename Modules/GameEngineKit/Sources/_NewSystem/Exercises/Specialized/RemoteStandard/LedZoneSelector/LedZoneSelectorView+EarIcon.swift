@@ -5,7 +5,6 @@
 import SwiftUI
 
 extension LedZoneSelectorView {
-
     struct EarIcon: View {
         var body: some View {
             Circle()

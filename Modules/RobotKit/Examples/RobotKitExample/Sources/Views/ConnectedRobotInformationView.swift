@@ -7,7 +7,6 @@ import RobotKit
 import SwiftUI
 
 struct ConnectedRobotInformationView: View {
-
     @StateObject var viewModel: ConnectedRobotInformationViewModel = ConnectedRobotInformationViewModel()
 
     var body: some View {

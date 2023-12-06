@@ -5,9 +5,7 @@
 import SpriteKit
 
 extension DragAndDropToAssociateView {
-
     final class TwoChoicesScene: BaseScene {
-
         override func setFirstAnswerPosition() {
             spacer = size.width / CGFloat(viewModel.choices.count + 1)
             defaultPosition = CGPoint(x: spacer, y: self.size.height / 2)

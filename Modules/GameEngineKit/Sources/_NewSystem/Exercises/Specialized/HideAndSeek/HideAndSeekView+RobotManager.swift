@@ -8,7 +8,6 @@ import RobotKit
 import SwiftUI
 
 extension HideAndSeekView {
-
     class RobotManager {
         let reinforcers: [Robot.Reinforcer] = [.fire, .rainbow, .sprinkles]
         let robot = Robot.shared

@@ -5,7 +5,6 @@
 import SwiftUI
 
 struct ButtonBordered<Label: View>: View {
-
     private let foreground: Color?
     private let border: Color?
     private let label: Label

@@ -6,7 +6,6 @@ import DesignKit
 import SwiftUI
 
 struct ActivityProgressBar: View {
-
     @ObservedObject var viewModel: ActivityViewViewModel
     let height: CGFloat = 30
 

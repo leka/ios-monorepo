@@ -6,7 +6,6 @@ import DesignKit
 import SwiftUI
 
 struct ProfileSelector_Users: View {
-
     @EnvironmentObject var company: CompanyViewModel
     @EnvironmentObject var settings: SettingsViewModel
     @EnvironmentObject var navigationVM: NavigationViewModel

@@ -6,7 +6,6 @@ import DesignKit
 import SwiftUI
 
 struct CurriculumPillShapedView: View {
-
     @EnvironmentObject var metrics: UIMetrics
 
     var curriculum: Curriculum

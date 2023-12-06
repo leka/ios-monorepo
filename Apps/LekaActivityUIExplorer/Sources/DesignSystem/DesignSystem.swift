@@ -8,7 +8,6 @@ enum DesignSystemApple {}
 enum DesignSystemLeka {}
 
 struct FontView: View {
-
     let font: Font
 
     var body: some View {
@@ -50,7 +49,6 @@ struct FontView: View {
 }
 
 struct ColorSwiftUIView: View {
-
     @Environment(\.self) var environment
 
     let color: Color

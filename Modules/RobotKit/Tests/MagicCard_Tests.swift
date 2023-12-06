@@ -7,7 +7,6 @@ import XCTest
 @testable import RobotKit
 
 final class MagicCard_Tests: XCTestCase {
-
     func test_shouldBeLooselyEqualWhenLanguagesAreTheSame() {
         // Given
 

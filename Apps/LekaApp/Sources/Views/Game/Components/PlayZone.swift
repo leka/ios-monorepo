@@ -6,7 +6,6 @@ import AVFoundation
 import SwiftUI
 
 struct PlayZone: View {
-
     @ObservedObject var gameMetrics: GameMetrics
     @EnvironmentObject var activityVM: ActivityViewModel
 

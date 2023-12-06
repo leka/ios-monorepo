@@ -9,7 +9,6 @@ import Yams
 let log = LogKit.createLoggerFor(module: "ContentKit")
 
 public class ContentKit {
-
     public var shared: ContentKit {
         ContentKit()
     }

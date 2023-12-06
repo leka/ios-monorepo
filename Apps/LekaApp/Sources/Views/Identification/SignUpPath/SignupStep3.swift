@@ -6,7 +6,6 @@ import DesignKit
 import SwiftUI
 
 struct SignupStep3: View {
-
     @EnvironmentObject var company: CompanyViewModel
     @EnvironmentObject var metrics: UIMetrics
 

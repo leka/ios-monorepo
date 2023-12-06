@@ -5,7 +5,6 @@
 import ProjectDescription
 
 public enum SchemeList {
-
     public static func l10nFR(name: String) -> Scheme {
         Scheme(
             name: "\(name) 🇫🇷",

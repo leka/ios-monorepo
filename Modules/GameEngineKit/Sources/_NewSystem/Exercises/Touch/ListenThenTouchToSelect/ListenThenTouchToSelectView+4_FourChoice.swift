@@ -6,9 +6,7 @@ import ContentKit
 import SwiftUI
 
 extension ListenThenTouchToSelectView {
-
     struct FourChoicesView: View {
-
         @ObservedObject var viewModel: TouchToSelectViewViewModel
         let isTappable: Bool
 

@@ -5,7 +5,6 @@
 import Logging
 
 public struct LogKit {
-
     private static var hasBeenInitialized: Bool = false
 
     private init() {

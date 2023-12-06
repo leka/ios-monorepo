@@ -5,7 +5,6 @@
 import ProjectDescription
 
 extension Project {
-
     public static func macOSApp(
         name: String,
         version: String = "1.0.0",

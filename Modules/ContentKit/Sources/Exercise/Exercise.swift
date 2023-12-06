@@ -5,7 +5,6 @@
 import Foundation
 
 public struct Exercise: Codable {
-
     public let instructions: String
     public let interface: Interface
     public let gameplay: Gameplay?

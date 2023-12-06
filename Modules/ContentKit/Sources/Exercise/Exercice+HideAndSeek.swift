@@ -3,9 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 public enum HideAndSeek {
-
     public struct Payload: Codable {
-
         public struct Instructions: Codable {
             public let textMainInstructions: String
             public let textSubInstructions: String

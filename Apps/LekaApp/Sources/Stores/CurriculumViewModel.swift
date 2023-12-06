@@ -6,7 +6,6 @@ import SwiftUI
 import Yams
 
 class CurriculumViewModel: ObservableObject, YamlFileDecodable {
-
     // MARK: - CurriculumList Published properties
 
     @Published var currentCurriculumCategory: CurriculumCategories = .emotionRecognition
@@ -69,7 +68,6 @@ class CurriculumViewModel: ObservableObject, YamlFileDecodable {
     }
 
     func setCurriculumDetailNavTitle() -> String {
-
         "\(getCurriculumList(category: currentCurriculumCategory).sectionTitle.localized()) \(String(describing: (selectedCurriculum ?? 0)+1))/\(availableCurriculums.count)"
     }
 

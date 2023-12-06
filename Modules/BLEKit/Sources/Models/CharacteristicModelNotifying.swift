@@ -5,7 +5,6 @@
 import CombineCoreBluetooth
 
 public struct CharacteristicModelNotifying {
-
     public typealias Callback = ((_ data: Data?) -> Void)
 
     public let characteristicUUID: CBUUID
@@ -25,7 +24,6 @@ public struct CharacteristicModelNotifying {
 }
 
 extension CharacteristicModelNotifying: Hashable {
-
     public func hash(into hasher: inout Hasher) {
         hasher.combine(characteristicUUID)
         hasher.combine(serviceUUID)

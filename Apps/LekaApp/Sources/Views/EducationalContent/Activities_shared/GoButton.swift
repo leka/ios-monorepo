@@ -6,7 +6,6 @@ import DesignKit
 import SwiftUI
 
 struct GoButton: View {
-
     @EnvironmentObject var company: CompanyViewModel
     @EnvironmentObject var activityVM: ActivityViewModel
     @EnvironmentObject var navigationVM: NavigationViewModel

@@ -7,7 +7,6 @@ import RobotKit
 import SwiftUI
 
 class RobotControlViewModel: ObservableObject {
-
     @Published var magicCard: MagicCard = .none
     @Published var magicCardImage: Image = Image(systemName: "photo")
 

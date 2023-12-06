@@ -6,7 +6,6 @@ import DesignKit
 import SwiftUI
 
 struct CreateUserProfileView: View {
-
     @EnvironmentObject var company: CompanyViewModel
     @EnvironmentObject var viewRouter: ViewRouter
     @EnvironmentObject var metrics: UIMetrics

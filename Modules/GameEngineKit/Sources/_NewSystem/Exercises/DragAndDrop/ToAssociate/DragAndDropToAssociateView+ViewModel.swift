@@ -7,9 +7,7 @@ import ContentKit
 import SwiftUI
 
 extension DragAndDropToAssociateView {
-
     class ViewModel: ObservableObject {
-
         @Published var choices: [GameplayAssociateCategoriesChoiceModel] = []
         @ObservedObject var exercicesSharedData: ExerciseSharedData
 

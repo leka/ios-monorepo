@@ -5,7 +5,6 @@
 import SwiftUI
 
 struct MainView: View {
-
     @State var count = 1
 
     var body: some View {

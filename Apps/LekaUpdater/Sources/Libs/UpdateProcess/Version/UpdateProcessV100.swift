@@ -28,7 +28,6 @@ private protocol StateEventProcessor {
 }
 
 private class StateInitial: GKState, StateEventProcessor {
-
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
         stateClass is StateLoadingUpdateFile.Type || stateClass is StateErrorRobotUnexpectedDisconnection.Type
     }
@@ -46,14 +45,12 @@ private class StateInitial: GKState, StateEventProcessor {
 }
 
 private class StateLoadingUpdateFile: GKState, StateEventProcessor {
-
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
         stateClass is StateErrorFailedToLoadFile.Type || stateClass is StateSettingDestinationPath.Type
             || stateClass is StateErrorRobotUnexpectedDisconnection.Type
     }
 
     override func didEnter(from previousState: GKState?) {
-
         let isLoaded = globalFirmwareManager.load()
 
         if isLoaded {
@@ -78,7 +75,6 @@ private class StateLoadingUpdateFile: GKState, StateEventProcessor {
 }
 
 private class StateSettingDestinationPath: GKState, StateEventProcessor {
-
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
         stateClass is StateSendingFile.Type || stateClass is StateErrorRobotUnexpectedDisconnection.Type
     }
@@ -118,7 +114,6 @@ private class StateSettingDestinationPath: GKState, StateEventProcessor {
 }
 
 private class StateSendingFile: GKState, StateEventProcessor {
-
     private var cancellables: Set<AnyCancellable> = []
 
     private let maximumPacketSize: Int = 61
@@ -233,7 +228,6 @@ private class StateSendingFile: GKState, StateEventProcessor {
 }
 
 private class StateApplyingUpdate: GKState, StateEventProcessor {
-
     private var cancellables: Set<AnyCancellable> = []
 
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
@@ -241,7 +235,6 @@ private class StateApplyingUpdate: GKState, StateEventProcessor {
     }
 
     override func didEnter(from previousState: GKState?) {
-
         DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: setMajorMinorRevision)
         DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: applyUpdate)
     }
@@ -301,7 +294,6 @@ private class StateApplyingUpdate: GKState, StateEventProcessor {
 }
 
 private class StateWaitingForRobotToReboot: GKState, StateEventProcessor {
-
     private var cancellables: Set<AnyCancellable> = []
 
     private var expectedRobot: RobotPeripheral?
@@ -375,7 +367,6 @@ private class StateErrorRobotUnexpectedDisconnection: GKState, StateError {}
 // MARK: - StateMachine
 
 class UpdateProcessV100: UpdateProcessProtocol {
-
     // MARK: - Private variables
 
     private var stateMachine: GKStateMachine?

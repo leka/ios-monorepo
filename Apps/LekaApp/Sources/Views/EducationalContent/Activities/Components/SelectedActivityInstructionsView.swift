@@ -6,7 +6,6 @@ import DesignKit
 import SwiftUI
 
 struct SelectedActivityInstructionsView: View {
-
     @EnvironmentObject var activityVM: ActivityViewModel
     @EnvironmentObject var metrics: UIMetrics
 

@@ -7,7 +7,6 @@ import Foundation
 // MARK: - LKCommand
 
 enum LKCommand {
-
     static let startByte: UInt8 = 0x2A
     static let startByteLength: UInt8 = 0x04
     static let ledFull: UInt8 = 0x13
@@ -17,7 +16,6 @@ enum LKCommand {
     // MARK: - LKCommand Led Full
 
     enum LedFull {
-
         static let command: UInt8 = 0x13
         static let numberOfValues: UInt8 = 1 + 3 + 1  // EAR/BELT + R, G, B + Checksum
         static let ears: UInt8 = 0x14
@@ -27,7 +25,6 @@ enum LKCommand {
     // MARK: - LKCommand Motors
 
     enum Motor {
-
         static let command: UInt8 = 0x20
         static let numberOfValues: UInt8 = 1 + 2 + 1  // ID + Spin, Speed + Checksum
         static let left: UInt8 = 0x21
@@ -40,7 +37,6 @@ enum LKCommand {
     // MARK: - LKCommand Motivator
 
     enum Motivator {
-
         static let command: UInt8 = 0x50
         static let numberOfValues: UInt8 = 1 + 1  // Motivator + Checksum
         static let rainbow: UInt8 = 0x51
@@ -52,7 +48,6 @@ enum LKCommand {
 }
 
 func checksum8(_ values: [UInt8]) -> UInt8 {
-
     var checksum: Int = 0
 
     for value in values {
@@ -65,7 +60,6 @@ func checksum8(_ values: [UInt8]) -> UInt8 {
 // MARK: - CommandKit
 
 class CommandKit {
-
     // MARK: - Singleton
 
     static let sharedSingleton = CommandKit()
@@ -82,7 +76,6 @@ class CommandKit {
     // MARK: - Initialisation
 
     init() {
-
         for _ in 0...LKCommand.startByteLength - 1 {
             self.startSequence.append(LKCommand.startByte)
         }
@@ -91,7 +84,6 @@ class CommandKit {
     // MARK: - Led Functions
 
     func addAllLeds(of earOrBelt: UInt8, rgbColor red: UInt8, _ green: UInt8, _ blue: UInt8) {
-
         let array = [command.LedFull.command, earOrBelt, red, green, blue, checksum8([earOrBelt, red, green, blue])]
 
         for element in array {
@@ -104,7 +96,6 @@ class CommandKit {
     // MARK: - Motor Functions
 
     func addMotor(on leftOrRight: UInt8, direction: UInt8, speed: UInt8) {
-
         let array = [command.Motor.command, leftOrRight, direction, speed, checksum8([leftOrRight, direction, speed])]
 
         for element in array {
@@ -117,7 +108,6 @@ class CommandKit {
     // MARK: - Motivator Functions
 
     func addMotivator(_ motivator: UInt8) {
-
         let array = [command.Motivator.command, motivator, checksum8([motivator])]
 
         for element in array {
@@ -130,7 +120,6 @@ class CommandKit {
     // MARK: - Command Functions
 
     func encapsulate() -> [UInt8] {
-
         var encapsulatedArray: [UInt8] = []
 
         encapsulatedArray.append(contentsOf: self.startSequence)
@@ -144,7 +133,6 @@ class CommandKit {
     }
 
     func getCommands() -> [UInt8] {
-
         var commands: [UInt8] = []
 
         if isEncapsulated {
@@ -158,7 +146,6 @@ class CommandKit {
     }
 
     func flush() {
-
         self.commandSequence.removeAll()
         self.numberOfCommands = 0
         self.isEncapsulated = false

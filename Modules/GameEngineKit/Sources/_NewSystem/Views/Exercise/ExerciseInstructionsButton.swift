@@ -40,7 +40,6 @@ class SpeakerViewModel: NSObject, ObservableObject, AVSpeechSynthesizerDelegate 
 }
 
 struct ExerciseInstructionsButton: View {
-
     @StateObject var speaker = SpeakerViewModel()
     @State var instructions: String
 
@@ -53,7 +52,6 @@ struct ExerciseInstructionsButton: View {
 }
 
 struct StepInstructions_ButtonStyle: ButtonStyle {
-
     @Binding var isSpeaking: Bool
 
     func makeBody(configuration: Self.Configuration) -> some View {

@@ -5,7 +5,6 @@
 import SwiftUI
 
 public struct Hello: View {
-
     let name: String
     let color: Color
 

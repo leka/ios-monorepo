@@ -8,7 +8,6 @@ import DesignKit
 import SwiftUI
 
 struct InstructionsView: View {
-
     @EnvironmentObject var activityVM: ActivityViewModel
     @EnvironmentObject var metrics: UIMetrics
 

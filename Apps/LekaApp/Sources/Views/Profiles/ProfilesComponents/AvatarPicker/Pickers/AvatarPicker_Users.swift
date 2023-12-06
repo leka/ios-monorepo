@@ -5,7 +5,6 @@
 import SwiftUI
 
 struct AvatarPicker_Users: View {
-
     @EnvironmentObject var company: CompanyViewModel
     @EnvironmentObject var metrics: UIMetrics
     @EnvironmentObject var navigationVM: NavigationViewModel

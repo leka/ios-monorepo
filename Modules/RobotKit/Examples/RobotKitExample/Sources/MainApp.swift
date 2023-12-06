@@ -6,7 +6,6 @@ import SwiftUI
 
 @main
 struct RobotKitExample: App {
-
     var body: some Scene {
         WindowGroup {
             MainView()

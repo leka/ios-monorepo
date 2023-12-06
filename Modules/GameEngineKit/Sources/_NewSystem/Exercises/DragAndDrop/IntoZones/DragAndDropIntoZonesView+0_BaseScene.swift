@@ -8,7 +8,6 @@ import SpriteKit
 import SwiftUI
 
 extension DragAndDropIntoZonesView {
-
     struct DropZoneNode {
         let details: DragAndDropIntoZones.DropZone.Details
         var node: SKSpriteNode = SKSpriteNode()
@@ -16,7 +15,6 @@ extension DragAndDropIntoZonesView {
     }
 
     class BaseScene: SKScene {
-
         var viewModel: ViewModel
         var dropZoneA: DropZoneNode
         var dropZoneB: DropZoneNode?

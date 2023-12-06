@@ -6,7 +6,6 @@ import ArgumentParser
 
 @main
 struct Greetings: ParsableCommand {
-
     @Flag(help: "Include a counter with each repetition.")
     var includeCounter = false
 

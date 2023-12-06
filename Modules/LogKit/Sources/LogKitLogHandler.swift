@@ -11,7 +11,6 @@ import Logging
 // swiftlint:disable function_parameter_count
 
 extension String {
-
     var fileURL: URL {
         URL(fileURLWithPath: self)
     }
@@ -66,7 +65,6 @@ internal struct StdioOutputStream: TextOutputStream {
 }
 
 public struct LogKitLogHandler: LogHandler {
-
     internal typealias _SendableTextOutputStream = TextOutputStream & Sendable
 
     /// Factory that makes a `LogKitLogHandler` to directs its output to `stdout`

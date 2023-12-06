@@ -11,7 +11,6 @@ struct RobotListView: View {
     @EnvironmentObject var botVM: BotViewModel
 
     var body: some View {
-
         VStack {
             Spacer()
 

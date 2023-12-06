@@ -6,7 +6,6 @@ import DesignKit
 import SwiftUI
 
 struct ActivityListCell: View {
-
     @EnvironmentObject var metrics: UIMetrics
 
     let activity: Activity

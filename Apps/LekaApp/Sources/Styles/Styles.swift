@@ -17,7 +17,6 @@ struct NoFeedback_ButtonStyle: ButtonStyle {
 // MARK: - Edit Button Style -> avatar picker, profile editor, explorer mode tile
 
 struct BorderedCapsule_NoFeedback_ButtonStyle: ButtonStyle {
-
     var font: Font
     var color: Color
     var isOpaque: Bool = false
@@ -40,7 +39,6 @@ struct BorderedCapsule_NoFeedback_ButtonStyle: ButtonStyle {
 }
 
 struct CircledIcon_NoFeedback_ButtonStyle: ButtonStyle {
-
     var font: Font
 
     func makeBody(configuration: Self.Configuration) -> some View {
@@ -145,7 +143,6 @@ struct SuccessGaugeStyle: GaugeStyle {
 // MARK: - Emotion Buttons Style (Gameplay)
 
 struct ActivityAnswer_ButtonStyle: ButtonStyle {
-
     var isEnabled: Bool = false
 
     func makeBody(configuration: Self.Configuration) -> some View {
@@ -172,7 +169,6 @@ struct ActivityAnswer_ButtonStyle: ButtonStyle {
 // MARK: - Play Sound Button Style (Gameplay)
 
 struct PlaySound_ButtonStyle: ButtonStyle {
-
     var progress: CGFloat
 
     func makeBody(configuration: Self.Configuration) -> some View {
@@ -203,7 +199,6 @@ struct PlaySound_ButtonStyle: ButtonStyle {
 // MARK: - CheerScreen Buttons
 
 struct BorderedCapsule_ButtonStyle: ButtonStyle {
-
     var isFilled: Bool = true
 
     func makeBody(configuration: Self.Configuration) -> some View {

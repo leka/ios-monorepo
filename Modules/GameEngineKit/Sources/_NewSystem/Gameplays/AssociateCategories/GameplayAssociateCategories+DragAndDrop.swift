@@ -14,7 +14,6 @@ struct GameplayAssociateCategoriesChoiceModel: GameplayChoiceModelProtocol {
 }
 
 extension GameplayAssociateCategories where ChoiceModelType == GameplayAssociateCategoriesChoiceModel {
-
     convenience init(choices: [GameplayAssociateCategoriesChoiceModel], shuffle: Bool = false) {
         self.init()
         self.choices.send(choices)

@@ -7,7 +7,6 @@ import SwiftUI
 
 @main
 struct LocalizationKitExample: App {
-
     var body: some Scene {
         WindowGroup {
             MainView()

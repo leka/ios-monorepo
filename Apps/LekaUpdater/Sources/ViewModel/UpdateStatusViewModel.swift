@@ -9,7 +9,6 @@ import RobotKit
 import SwiftUI
 
 class UpdateStatusViewModel: ObservableObject {
-
     enum UpdateStatus {
         case sendingFile
         case rebootingRobot

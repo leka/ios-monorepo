@@ -6,7 +6,6 @@ import DesignKit
 import SwiftUI
 
 struct SidebarSections: View {
-
     @EnvironmentObject var navigationVM: NavigationViewModel
     @EnvironmentObject var robotVM: RobotViewModel
     @EnvironmentObject var company: CompanyViewModel

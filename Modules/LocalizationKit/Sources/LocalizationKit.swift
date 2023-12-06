@@ -8,7 +8,6 @@ import Foundation
 // swiftlint:disable identifier_name
 
 public enum l10n {
-
     public static func LocalizedString(
         _ key: StaticString, value: String.LocalizationValue, comment: StaticString
     )

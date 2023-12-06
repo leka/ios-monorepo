@@ -6,7 +6,6 @@ import BLEKit
 import SwiftUI
 
 struct RobotDiscoveryView: View {
-
     private var discovery: RobotDiscoveryModel
 
     // MARK: - Environment variables
@@ -49,9 +48,7 @@ struct RobotDiscoveryView: View {
             .animation(.easeIn(duration: 0.25), value: { robotListViewModel.selectedRobotDiscovery == discovery }())
 
             VStack(alignment: .leading, spacing: 10) {
-
                 HStack(spacing: 40) {
-
                     VStack(alignment: .leading) {
                         Text(discovery.name)
                             .font(.headline)

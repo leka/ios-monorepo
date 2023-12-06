@@ -6,7 +6,6 @@ import DesignKit
 import SwiftUI
 
 struct GoToProfileEditorButton: View {
-
     @EnvironmentObject var settings: SettingsViewModel
     @EnvironmentObject var metrics: UIMetrics
     @EnvironmentObject var navigationVM: NavigationViewModel

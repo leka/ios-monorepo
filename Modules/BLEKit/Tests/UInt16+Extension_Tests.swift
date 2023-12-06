@@ -7,7 +7,6 @@ import XCTest
 @testable import BLEKit
 
 final class UInt16_Extension_Tests_highByte_lowByte: XCTestCase {
-
     func test_shouldReturnHighByte() {
         // Given
         let value: UInt16 = 0x4200
@@ -54,7 +53,6 @@ final class UInt16_Extension_Tests_highByte_lowByte: XCTestCase {
 }
 
 final class UInt16_Extension_Tests_Data: XCTestCase {
-
     func test_shouldReturnData() {
         // Given
         let value: UInt16 = 0xBEEF

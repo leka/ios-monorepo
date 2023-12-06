@@ -11,7 +11,6 @@ extension TargetScript {
         basedOnDependencyAnalysis: false)
 
     public static func linters() -> [TargetScript] {
-
         let turnOffLinters = Environment.turnOffLinters.getBoolean(default: false)
 
         let defaultLinters: [TargetScript] = [

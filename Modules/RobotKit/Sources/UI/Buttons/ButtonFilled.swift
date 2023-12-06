@@ -5,7 +5,6 @@
 import SwiftUI
 
 struct ButtonFilled<Label: View>: View {
-
     private let foreground: Color
     private let background: Color
     private let label: Label

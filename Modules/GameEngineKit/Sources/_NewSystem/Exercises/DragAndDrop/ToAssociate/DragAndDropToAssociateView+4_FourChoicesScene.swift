@@ -5,9 +5,7 @@
 import SpriteKit
 
 extension DragAndDropToAssociateView {
-
     final class FourChoicesScene: BaseScene {
-
         override func setFirstAnswerPosition() {
             spacer = 455
             initialNodeX = (size.width - spacer) / 2

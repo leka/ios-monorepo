@@ -8,7 +8,6 @@ import Foundation
 
 class GameplayAssociateCategories<ChoiceModelType>: StatefulGameplayProtocol
 where ChoiceModelType: GameplayChoiceModelProtocol {
-
     var choices: CurrentValueSubject<[GameplayAssociateCategoriesChoiceModel], Never> = .init([])
     var state: CurrentValueSubject<ExerciseState, Never> = .init(.idle)
 

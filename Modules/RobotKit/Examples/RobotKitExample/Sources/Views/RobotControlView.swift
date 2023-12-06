@@ -7,7 +7,6 @@ import RobotKit
 import SwiftUI
 
 struct RobotControlView: View {
-
     @StateObject var viewModel: RobotControlViewModel
 
     private let robot = Robot.shared

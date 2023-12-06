@@ -6,9 +6,7 @@ import ContentKit
 import SwiftUI
 
 extension RobotThenTouchToSelectView {
-
     struct FiveChoicesView: View {
-
         @ObservedObject var viewModel: TouchToSelectViewViewModel
         let isTappable: Bool
 

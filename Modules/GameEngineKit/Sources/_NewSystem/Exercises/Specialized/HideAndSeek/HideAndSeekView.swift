@@ -6,7 +6,6 @@ import ContentKit
 import SwiftUI
 
 struct HideAndSeekView: View {
-
     enum HideAndSeekStage {
         case toHide
         case hidden

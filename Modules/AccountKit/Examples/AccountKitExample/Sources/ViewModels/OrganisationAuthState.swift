@@ -5,7 +5,6 @@
 import Foundation
 
 class OrganisationAuthState: ObservableObject {
-
     enum FirebaseAuthenticationState {
         case unknown, loggedOut, loggedIn
     }

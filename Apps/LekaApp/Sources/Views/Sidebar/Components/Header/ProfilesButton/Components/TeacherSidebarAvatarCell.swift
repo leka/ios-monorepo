@@ -5,7 +5,6 @@
 import SwiftUI
 
 struct TeacherSidebarAvatarCell: View {
-
     @EnvironmentObject var settings: SettingsViewModel
 
     var body: some View {

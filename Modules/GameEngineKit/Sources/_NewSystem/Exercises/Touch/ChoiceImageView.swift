@@ -8,7 +8,6 @@ import RobotKit
 import SwiftUI
 
 struct ChoiceImageView: View {
-
     private let image: String
     private let size: CGFloat
     private let state: GameplayChoiceState

@@ -6,7 +6,6 @@ import RobotKit
 import SwiftUI
 
 extension Robot.Lights {
-
     public var arcAngle: (start: Angle, end: Angle) {
         switch self {
             case .full:
@@ -30,7 +29,6 @@ extension Robot.Lights {
 }
 
 extension LedZoneSelectorView {
-
     struct BeltSectionButton: View {
         var section: Robot.Lights
         let robot = Robot.shared

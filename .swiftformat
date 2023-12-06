@@ -18,5 +18,7 @@
 --lineaftermarks true
 
 --enable blankLinesAtEndOfScope
+--enable blankLinesAtStartOfScope
+--typeblanklines remove
 
 # Disabled rules

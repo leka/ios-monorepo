@@ -6,7 +6,6 @@ import DesignKit
 import SwiftUI
 
 extension HideAndSeekView {
-
     struct Launcher: View {
         @Binding var stage: HideAndSeekStage
         let textMainInstructions: String

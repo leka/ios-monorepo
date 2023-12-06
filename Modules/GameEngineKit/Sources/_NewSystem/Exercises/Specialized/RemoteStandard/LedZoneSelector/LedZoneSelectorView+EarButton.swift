@@ -6,7 +6,6 @@ import RobotKit
 import SwiftUI
 
 extension LedZoneSelectorView {
-
     struct EarButton: View {
         let selectedEar: Robot.Lights
         let robot = Robot.shared

@@ -6,7 +6,6 @@ import BLEKit
 import SwiftUI
 
 struct SendDataButton: View {
-
     // MARK: - Environment properties
 
     @EnvironmentObject var robotListViewModel: RobotListViewModel

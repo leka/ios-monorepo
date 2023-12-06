@@ -8,7 +8,6 @@ import SpriteKit
 import SwiftUI
 
 public struct DragAndDropIntoZonesView: View {
-
     @StateObject private var viewModel: ViewModel
     @State private var scene: SKScene = SKScene()
     let dropZoneA: DragAndDropIntoZones.DropZone.Details

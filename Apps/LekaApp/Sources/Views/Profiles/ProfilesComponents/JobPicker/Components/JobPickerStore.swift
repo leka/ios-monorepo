@@ -5,7 +5,6 @@
 import SwiftUI
 
 struct JobPickerStore: View {
-
     @Binding var selectedJobs: [String]
     private func jobSelection(profession: String) {
         if selectedJobs.contains(profession) {

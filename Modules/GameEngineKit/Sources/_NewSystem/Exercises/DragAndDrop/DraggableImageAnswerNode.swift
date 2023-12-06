@@ -6,7 +6,6 @@ import ContentKit
 import SpriteKit
 
 class DraggableImageAnswerNode: SKSpriteNode {
-
     var id: String
     var isDraggable: Bool = true
     var defaultPosition: CGPoint?

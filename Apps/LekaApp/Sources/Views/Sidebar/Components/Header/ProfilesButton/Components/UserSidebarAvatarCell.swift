@@ -5,7 +5,6 @@
 import SwiftUI
 
 struct UserSidebarAvatarCell: View {
-
     @EnvironmentObject var company: CompanyViewModel
     @EnvironmentObject var settings: SettingsViewModel
     @EnvironmentObject var metrics: UIMetrics

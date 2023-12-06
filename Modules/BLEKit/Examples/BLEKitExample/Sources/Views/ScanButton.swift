@@ -6,7 +6,6 @@ import BLEKit
 import SwiftUI
 
 struct ScanButton: View {
-
     // MARK: - Environment variables
 
     @EnvironmentObject var robotListViewModel: RobotListViewModel

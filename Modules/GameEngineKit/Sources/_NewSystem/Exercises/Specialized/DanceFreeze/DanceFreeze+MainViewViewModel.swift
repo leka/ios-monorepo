@@ -8,7 +8,6 @@ import RobotKit
 import SwiftUI
 
 extension DanceFreeze {
-
     class MainViewViewModel: ObservableObject {
         @ObservedObject var exercicesSharedData: ExerciseSharedData
         @Published public var progress: CGFloat = 0.0

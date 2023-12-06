@@ -7,7 +7,6 @@ import Combine
 import Version
 
 extension Robot {
-
     func registerBatteryCharacteristicNotificationCallback() {
         let characteristic = CharacteristicModelNotifying(
             characteristicUUID: BLESpecs.Battery.Characteristics.level,

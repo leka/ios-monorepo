@@ -6,7 +6,6 @@ import DesignKit
 import SwiftUI
 
 struct SidebarView: View {
-
     @EnvironmentObject var navigationVM: NavigationViewModel
     @EnvironmentObject var settings: SettingsViewModel
     @EnvironmentObject var metrics: UIMetrics

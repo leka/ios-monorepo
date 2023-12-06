@@ -7,7 +7,6 @@ import RobotKit
 import SwiftUI
 
 struct GoToRobotConnectButton: View {
-
     @EnvironmentObject var metrics: UIMetrics
     @EnvironmentObject var navigationVM: NavigationViewModel
 

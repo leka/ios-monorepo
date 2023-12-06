@@ -6,7 +6,6 @@ import DesignKit
 import SwiftUI
 
 struct CreateTeacherProfileView: View {
-
     @EnvironmentObject var company: CompanyViewModel
     @EnvironmentObject var settings: SettingsViewModel
     @EnvironmentObject var viewRouter: ViewRouter

@@ -5,7 +5,6 @@
 import Foundation
 
 internal struct AdvertisingServiceData {
-
     let battery: Int
     let isCharging: Bool
     let osVersion: String?

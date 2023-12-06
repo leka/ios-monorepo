@@ -5,7 +5,6 @@
 import CombineCoreBluetooth
 
 public struct RobotDiscoveryModel: Identifiable {
-
     // MARK: - Public variables
 
     public let robotPeripheral: RobotPeripheral!
@@ -41,7 +40,6 @@ public struct RobotDiscoveryModel: Identifiable {
 }
 
 extension RobotDiscoveryModel: Equatable {
-
     public static func == (lhs: RobotDiscoveryModel, rhs: RobotDiscoveryModel) -> Bool {
         lhs.id == rhs.id
     }

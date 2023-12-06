@@ -5,9 +5,7 @@
 import SwiftUI
 
 extension RemoteArrowView {
-
     struct CircleLayout: Layout {
-
         func sizeThatFits(proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) -> CGSize {
             proposal.replacingUnspecifiedDimensions()
         }

@@ -6,7 +6,6 @@ import DesignKit
 import SwiftUI
 
 struct TeacherSet_AvatarCell: View {
-
     @EnvironmentObject var company: CompanyViewModel
     @EnvironmentObject var settings: SettingsViewModel
     @EnvironmentObject var viewRouter: ViewRouter

@@ -6,7 +6,6 @@ import DesignKit
 import SwiftUI
 
 extension LedZoneSelectorView {
-
     struct ModeFeedback: View {
         var backgroundDimension: Int
 

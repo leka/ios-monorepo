@@ -6,7 +6,6 @@ import Foundation
 import SwiftUI
 
 class UIMetrics: ObservableObject {
-
     // MARK: - Global
 
     @Published var reg17: Font = .system(size: 17, weight: .regular)

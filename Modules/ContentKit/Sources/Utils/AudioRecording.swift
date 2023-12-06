@@ -5,7 +5,6 @@
 import Foundation
 
 public struct AudioRecording: Codable, Hashable, Equatable {
-
     public enum Song: String, Codable {
         case earlyBird
         case emptyPage

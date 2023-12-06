@@ -36,7 +36,6 @@ struct MarkdownRepresentable: UIViewRepresentable {
     }
 
     func makeUIView(context: Context) -> UITextView {
-
         // TODO(@ladislas): reimport when Down is fixed
         // let down = Down(markdownString: markdownObject.text)
         // let attributedText = try? down.toAttributedString(styler: DownStyler())//delegate: context.coordinator))
@@ -78,7 +77,6 @@ struct MarkdownRepresentable: UIViewRepresentable {
     }
 
     class Coordinator: NSObject {  // }, AsyncImageLoadDelegate {
-
         public var textView: UITextView
 
         init(text: UITextView) {

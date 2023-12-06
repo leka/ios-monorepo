@@ -5,7 +5,6 @@
 import CombineCoreBluetooth
 
 public struct RobotAdvertisingData {
-
     // MARK: - Public variables
 
     public let name: String

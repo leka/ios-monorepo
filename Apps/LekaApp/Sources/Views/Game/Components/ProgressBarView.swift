@@ -6,7 +6,6 @@ import DesignKit
 import SwiftUI
 
 struct ProgressBarView: View {
-
     @EnvironmentObject var activityVM: ActivityViewModel
     @ObservedObject var gameMetrics: GameMetrics
 

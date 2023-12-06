@@ -7,7 +7,6 @@ import RobotKit
 import SwiftUI
 
 public struct ActivityView: View {
-
     @Environment(\.dismiss) var dismiss
 
     @ObservedObject var viewModel: ActivityViewViewModel

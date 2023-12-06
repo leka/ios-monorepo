@@ -3,7 +3,6 @@
 // SPDX-License-Identifier: Apache-2.0
 
 public enum AudioRecordingPlayer {
-
     public struct Payload: Codable {
         public let songs: [AudioRecording]
 

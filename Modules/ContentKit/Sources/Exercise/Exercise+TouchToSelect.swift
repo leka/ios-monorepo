@@ -5,9 +5,7 @@
 // swiftlint:disable nesting
 
 public enum TouchToSelect {
-
     public struct Choice: Codable {
-
         public let value: String
         public let type: Exercise.UIElementType
         public let isRightAnswer: Bool
@@ -31,7 +29,6 @@ public enum TouchToSelect {
     }
 
     public struct Payload: Codable {
-
         public let choices: [Choice]
         public let shuffleChoices: Bool
 

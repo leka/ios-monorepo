@@ -6,7 +6,6 @@ import DesignKit
 import SwiftUI
 
 struct SignupStep1: View {
-
     @EnvironmentObject var metrics: UIMetrics
 
     private let data: TileData = .signupBravo

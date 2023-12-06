@@ -15,7 +15,6 @@ public struct ModuleExample {
 }
 
 extension Project {
-
     public static func module(
         name: String,
         platform: Platform,

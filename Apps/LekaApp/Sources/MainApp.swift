@@ -6,7 +6,6 @@ import SwiftUI
 
 @main
 struct LekaApp: App {
-
     @StateObject var viewRouter = ViewRouter()
     @StateObject var metrics = UIMetrics()
     @StateObject var navigationVM = NavigationViewModel()

@@ -8,7 +8,6 @@ import RobotKit
 import SwiftUI
 
 extension DanceFreeze {
-
     class RobotManager {
         let robot = Robot.shared
         var lastMove = 0

@@ -5,9 +5,7 @@
 import SwiftUI
 
 extension DesignSystemApple {
-
     struct ButtonsView: View {
-
         let colors: [Color] = [
             .primary,
             .secondary,

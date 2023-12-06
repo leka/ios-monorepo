@@ -7,7 +7,6 @@ import Lottie
 import SwiftUI
 
 struct GameView: View {
-
     @StateObject var gameMetrics = GameMetrics()
     @EnvironmentObject var navigationVM: NavigationViewModel
     @EnvironmentObject var robotVM: RobotViewModel

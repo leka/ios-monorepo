@@ -6,7 +6,6 @@ import DesignKit
 import SwiftUI
 
 struct SignupFinalStep: View {
-
     @EnvironmentObject var metrics: UIMetrics
     @EnvironmentObject var viewRouter: ViewRouter
 

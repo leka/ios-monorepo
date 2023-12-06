@@ -7,7 +7,6 @@ import DesignKit
 import SwiftUI
 
 enum DanceFreeze {
-
     enum Stage {
         case waitingForSelection
         case automaticMode

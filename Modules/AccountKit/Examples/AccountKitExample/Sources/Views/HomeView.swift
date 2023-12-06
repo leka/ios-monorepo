@@ -5,7 +5,6 @@
 import SwiftUI
 
 struct HomeView: View {
-
     @EnvironmentObject var authenticationState: OrganisationAuthState
     @State private var goBackToContentView: Bool = false
 

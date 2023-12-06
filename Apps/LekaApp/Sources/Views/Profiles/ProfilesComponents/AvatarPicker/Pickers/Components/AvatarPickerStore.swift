@@ -6,7 +6,6 @@ import DesignKit
 import SwiftUI
 
 struct AvatarPickerStore: View {
-
     @EnvironmentObject var metrics: UIMetrics
 
     @Binding var selected: String

@@ -14,7 +14,6 @@ struct GameplayTouchToSelectChoiceModel: GameplayChoiceModelProtocol {
 }
 
 extension GameplayFindTheRightAnswers where ChoiceModelType == GameplayTouchToSelectChoiceModel {
-
     convenience init(choices: [GameplayTouchToSelectChoiceModel], shuffle: Bool = false) {
         self.init()
         self.choices.send(shuffle ? choices.shuffled() : choices)

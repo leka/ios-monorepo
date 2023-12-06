@@ -7,7 +7,6 @@ import XCTest
 @testable import BLEKit
 
 final class RobotAdvertisingData_Tests: XCTestCase {
-
     func test_shouldReturnNameWhenNameIsNotNil() {
         // Given
 

@@ -72,7 +72,6 @@ public class AudioPlayer: NSObject, ObservableObject {
 }
 
 extension AudioPlayer: AVAudioPlayerDelegate {
-
     public func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully: Bool) {
         didFinishPlaying = true
     }

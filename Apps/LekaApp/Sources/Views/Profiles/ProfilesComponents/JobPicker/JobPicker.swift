@@ -6,7 +6,6 @@ import DesignKit
 import SwiftUI
 
 struct JobPicker: View {
-
     @EnvironmentObject var company: CompanyViewModel
     @EnvironmentObject var metrics: UIMetrics
     @EnvironmentObject var viewRouter: ViewRouter

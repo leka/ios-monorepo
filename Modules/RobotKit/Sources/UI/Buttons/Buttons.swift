@@ -5,7 +5,6 @@
 import SwiftUI
 
 public struct RobotControlActionButton: View {
-
     private let title: String
     private let image: String
     private let tint: Color

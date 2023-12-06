@@ -6,7 +6,6 @@ import DesignKit
 import SwiftUI
 
 struct SidebarHeaderView: View {
-
     @EnvironmentObject var metrics: UIMetrics
 
     var body: some View {

@@ -7,7 +7,6 @@ import SwiftUI
 
 @main
 struct ContentKitExample: App {
-
     var body: some Scene {
         WindowGroup {
             MainView()

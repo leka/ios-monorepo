@@ -6,7 +6,6 @@ import RobotKit
 import SwiftUI
 
 struct FullScreenCoverToGameView: View {
-
     @EnvironmentObject var navigationVM: NavigationViewModel
 
     var body: some View {

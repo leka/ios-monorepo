@@ -6,7 +6,6 @@ import DesignKit
 import SwiftUI
 
 struct SettingsSection_Exploratory: View {
-
     @EnvironmentObject var settings: SettingsViewModel
     @EnvironmentObject var metrics: UIMetrics
 

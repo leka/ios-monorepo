@@ -5,7 +5,6 @@
 import SwiftUI
 
 class BotViewModel: ObservableObject {
-
     // Bot Connect
     // Make 'botIsConnected' & 'currentlyConnectedBotIndex' one prop' instead
     // if currentlyConnectedBotIndex is not nil, bot is connected for sure

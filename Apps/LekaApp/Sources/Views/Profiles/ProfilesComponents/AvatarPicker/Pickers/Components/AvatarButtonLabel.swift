@@ -7,7 +7,6 @@ import SwiftUI
 
 // Avatar Buttons within the AvatarPicker()
 struct AvatarButtonLabel: View {
-
     @EnvironmentObject var metrics: UIMetrics
 
     @Binding var image: String

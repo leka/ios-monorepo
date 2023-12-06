@@ -6,7 +6,6 @@ import DesignKit
 import SwiftUI
 
 struct CurriculumListView: View {
-
     @EnvironmentObject var navigationVM: NavigationViewModel
     @EnvironmentObject var curriculumVM: CurriculumViewModel
     @EnvironmentObject var metrics: UIMetrics

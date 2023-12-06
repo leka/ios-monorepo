@@ -7,7 +7,6 @@ import Foundation
 // swiftlint:disable identifier_name
 
 public struct MagicCard: Equatable {
-
     public enum Language: UInt8 {
         case none = 0
         case fr_FR = 1
@@ -32,7 +31,6 @@ public struct MagicCard: Equatable {
 }
 
 extension MagicCard {
-
     public static let none: MagicCard = MagicCard(id: 0x00_00)
     public static let emergency_stop: MagicCard = MagicCard(id: 0x00_01)
     public static let dice_roll: MagicCard = MagicCard(id: 0x00_02)

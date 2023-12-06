@@ -5,7 +5,6 @@
 // swiftlint:disable nesting
 
 public enum DragAndDropIntoZones {
-
     public enum DropZone: String, Codable {
         case zoneA
         case zoneB

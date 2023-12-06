@@ -7,7 +7,6 @@ import RobotKit
 import SwiftUI
 
 enum RemoteStandard {
-
     enum DisplayMode: String, CaseIterable {
         case fullBelt
         case twoHalves
@@ -24,7 +23,6 @@ enum RemoteStandard {
         }
 
         func placeSubviews(in bounds: CGRect, proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) {
-
             let angleDivision = Angle.degrees(angle / Double(subviews.count - 1)).radians
             let posX = bounds.midX
             let posY = bounds.midY * 5 / 4

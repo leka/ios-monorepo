@@ -8,7 +8,6 @@ import RobotKit
 import Version
 
 class InformationViewModel: ObservableObject {
-
     private var cancellables: Set<AnyCancellable> = []
 
     @Published var showRobotCannotBeUpdated: Bool = false

@@ -6,7 +6,6 @@ import AuthenticationServices
 import SwiftUI
 
 struct SignupView: View {
-
     @EnvironmentObject var authenticationState: OrganisationAuthState
     @State private var organisation = OrganisationViewModel()
 

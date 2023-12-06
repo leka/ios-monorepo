@@ -14,7 +14,6 @@ struct GameplayDragAndDropIntoZonesChoiceModel: GameplayChoiceModelProtocol {
 }
 
 extension GameplayFindTheRightAnswers where ChoiceModelType == GameplayDragAndDropIntoZonesChoiceModel {
-
     convenience init(choices: [GameplayDragAndDropIntoZonesChoiceModel]) {
         self.init()
         self.choices.send(choices)

@@ -6,7 +6,6 @@ import DesignKit
 import SwiftUI
 
 struct SidebarAvatarView: View {
-
     @EnvironmentObject var company: CompanyViewModel
     @EnvironmentObject var settings: SettingsViewModel
 

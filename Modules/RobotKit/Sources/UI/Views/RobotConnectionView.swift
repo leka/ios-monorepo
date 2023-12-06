@@ -8,7 +8,6 @@ import DesignKit
 import SwiftUI
 
 public struct RobotConnectionView: View {
-
     @StateObject var viewModel: RobotConnectionViewModel
 
     @Environment(\.dismiss) var dismiss

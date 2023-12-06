@@ -7,7 +7,6 @@ import RobotKit
 import SwiftUI
 
 struct RobotConnectionIndicator: View {
-
     @EnvironmentObject var metrics: UIMetrics
 
     @StateObject var robotViewModel: ConnectedRobotInformationViewModel = ConnectedRobotInformationViewModel()

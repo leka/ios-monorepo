@@ -5,9 +5,7 @@
 // swiftlint:disable identifier_name nesting cyclomatic_complexity
 
 extension Robot {
-
     public enum Lights {
-
         public enum Spot {
             static let id: UInt8 = 0x10
             public enum Position: UInt8 {

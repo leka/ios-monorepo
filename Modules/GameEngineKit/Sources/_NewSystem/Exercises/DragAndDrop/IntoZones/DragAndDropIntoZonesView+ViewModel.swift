@@ -7,9 +7,7 @@ import ContentKit
 import SwiftUI
 
 extension DragAndDropIntoZonesView {
-
     class ViewModel: ObservableObject {
-
         @Published var choices: [GameplayDragAndDropIntoZonesChoiceModel] = []
         @ObservedObject var exercicesSharedData: ExerciseSharedData
 

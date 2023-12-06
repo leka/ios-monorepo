@@ -6,7 +6,6 @@ import DesignKit
 import SwiftUI
 
 struct SettingsView: View {
-
     @EnvironmentObject var settings: SettingsViewModel
     @EnvironmentObject var metrics: UIMetrics
     @Environment(\.dismiss) var dismiss
@@ -62,7 +61,6 @@ struct SettingsView: View {
 }
 
 struct SettingsView_Previews: PreviewProvider {
-
     @State static var open: Bool = true
 
     static var previews: some View {

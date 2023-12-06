@@ -29,7 +29,6 @@ class NavigationViewViewModel: ObservableObject {
 }
 
 struct NavigationView: View {
-
     @Environment(\.colorScheme) var colorScheme
     @State var preferedColorScheme: ColorScheme = .light
 

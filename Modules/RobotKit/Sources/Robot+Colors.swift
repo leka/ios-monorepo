@@ -7,9 +7,7 @@ import SwiftUI
 // swiftlint:disable nesting
 
 extension Robot {
-
     public struct Color {
-
         private let robotRGB: [UInt8]
         private let screenRGB: [UInt8]
 
@@ -21,7 +19,6 @@ extension Robot {
         }
 
         private enum ColorString: String {
-
             case black
             case white
             case red
@@ -81,7 +78,6 @@ extension Robot {
 }
 
 extension Robot.Color {
-
     public static let black: Robot.Color = .init(robot: 0, 0, 0, screen: 0, 0, 0)
     public static let white: Robot.Color = .init(robot: 255, 255, 255, screen: 255, 255, 255)
 

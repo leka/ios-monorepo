@@ -6,7 +6,6 @@ import DesignKit
 import SwiftUI
 
 struct InfoTile: View {
-
     @EnvironmentObject var settings: SettingsViewModel
     @EnvironmentObject var navigationVM: NavigationViewModel
     @EnvironmentObject var viewRouter: ViewRouter

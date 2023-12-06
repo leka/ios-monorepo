@@ -6,7 +6,6 @@ import AuthenticationServices
 import SwiftUI
 
 struct LoginView: View {
-
     @EnvironmentObject var authenticationState: OrganisationAuthState
     @State private var organisation = OrganisationViewModel()
     @State private var showSheet: Bool = false

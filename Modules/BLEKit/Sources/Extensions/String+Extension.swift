@@ -5,7 +5,6 @@
 import Foundation
 
 extension String {
-
     public var nilWhenEmpty: String? {
         self.isEmpty ? nil : self
     }

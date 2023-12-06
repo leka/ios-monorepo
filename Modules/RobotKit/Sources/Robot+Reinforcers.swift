@@ -3,7 +3,6 @@
 // SPDX-License-Identifier: Apache-2.0
 
 extension Robot {
-
     public enum Reinforcer: UInt8, CaseIterable {
         case rainbow = 0x51
         case fire = 0x52

@@ -6,7 +6,6 @@ import ContentKit
 import SwiftUI
 
 extension DanceFreeze {
-
     struct PlayerView: View {
         @ObservedObject var viewModel: MainViewViewModel
 

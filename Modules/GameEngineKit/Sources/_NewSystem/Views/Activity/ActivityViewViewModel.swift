@@ -7,7 +7,6 @@ import ContentKit
 import SwiftUI
 
 public class ActivityViewViewModel: ObservableObject {
-
     private let sequenceManager: ActivitySequenceManager
 
     private var cancellables: Set<AnyCancellable> = []

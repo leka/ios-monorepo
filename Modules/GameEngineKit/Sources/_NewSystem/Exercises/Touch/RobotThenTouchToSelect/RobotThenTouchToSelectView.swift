@@ -9,7 +9,6 @@ import RobotKit
 import SwiftUI
 
 public struct RobotThenTouchToSelectView: View {
-
     enum Interface: Int {
         case oneChoice = 1
         case twoChoices

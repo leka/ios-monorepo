@@ -5,7 +5,6 @@
 import SwiftUI
 
 struct DeleteProfileButton: View {
-
     @EnvironmentObject var company: CompanyViewModel
     @EnvironmentObject var metrics: UIMetrics
 

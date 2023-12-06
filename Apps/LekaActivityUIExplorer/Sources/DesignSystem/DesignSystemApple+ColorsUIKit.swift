@@ -5,7 +5,6 @@
 import SwiftUI
 
 extension UIColor {
-
     // swiftlint:disable:next identifier_name
     var hex: String {
         var r: CGFloat = 0
@@ -22,9 +21,7 @@ extension UIColor {
 }
 
 extension DesignSystemApple {
-
     struct ColorsUIKitView: View {
-
         var body: some View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 20) {
@@ -76,7 +73,6 @@ extension DesignSystemApple {
     }
 
     struct ColorView: View {
-
         @Environment(\.self) var environment
 
         let color: UIColor

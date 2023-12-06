@@ -5,7 +5,6 @@
 import SwiftUI
 
 class RobotViewModel: ObservableObject {
-
     // Robot Connect
     // Make 'robotIsConnected' & 'currentlyConnectedRobotIndex' one prop' instead
     // if currentlyConnectedRobotIndex is not nil, robot is connected for sure

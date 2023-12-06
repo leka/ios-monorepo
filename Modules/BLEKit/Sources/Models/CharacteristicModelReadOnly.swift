@@ -5,7 +5,6 @@
 import CombineCoreBluetooth
 
 public struct CharacteristicModelReadOnly {
-
     public typealias Callback = ((_ data: Data?) -> Void)
 
     public let characteristicUUID: CBUUID
@@ -20,7 +19,6 @@ public struct CharacteristicModelReadOnly {
 }
 
 extension CharacteristicModelReadOnly: Hashable {
-
     public func hash(into hasher: inout Hasher) {
         hasher.combine(characteristicUUID)
         hasher.combine(serviceUUID)

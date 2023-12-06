@@ -5,7 +5,6 @@
 import SwiftUI
 
 struct MainView: View {
-
     @EnvironmentObject var authenticationState: OrganisationAuthState
 
     var body: some View {

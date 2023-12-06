@@ -9,7 +9,6 @@ import RobotKit
 import SwiftUI
 
 class RequirementsViewModel: ObservableObject {
-
     private var cancellables: Set<AnyCancellable> = []
 
     let requirementsInstructionsText = l10n.update.requirements.instructionsText

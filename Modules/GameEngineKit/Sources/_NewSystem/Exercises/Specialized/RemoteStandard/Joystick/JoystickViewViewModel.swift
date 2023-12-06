@@ -8,7 +8,6 @@ import SwiftUI
 import SwiftUIJoystick
 
 class JoystickViewViewModel: ObservableObject {
-
     var joystickMonitor = JoystickMonitor()
 
     @Published private var position: CGPoint = CGPoint(x: 0.0, y: 0.0)

@@ -11,7 +11,6 @@ import Version
 let log = LogKit.createLoggerFor(module: "RobotKit")
 
 public class Robot {
-
     public static var shared: Robot = Robot()
 
     // MARK: - Internal properties

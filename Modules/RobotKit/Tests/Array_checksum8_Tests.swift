@@ -8,7 +8,6 @@ import XCTest
 @testable import RobotKit
 
 final class Array_checksum8_Tests: XCTestCase {
-
     func test_checksum8ForOneValue0x00() {
         // Given
         let data: [UInt8] = [0x00]

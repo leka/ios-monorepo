@@ -6,7 +6,6 @@ import DesignKit
 import SwiftUI
 
 struct PlaySoundButton: View {
-
     @EnvironmentObject var activityVM: ActivityViewModel
 
     var body: some View {

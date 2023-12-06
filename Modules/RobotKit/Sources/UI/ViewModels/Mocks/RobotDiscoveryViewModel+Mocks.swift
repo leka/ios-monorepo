@@ -15,7 +15,6 @@ extension String {
 }
 
 extension RobotDiscoveryViewModel {
-
     public static func mock(
         name: String = "LK-\(String.random(length: 12))",
         battery: Int = Int.random(in: 0...100),

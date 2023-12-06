@@ -7,7 +7,6 @@ import ContentKit
 import SwiftUI
 
 public struct TouchToSelectView: View {
-
     enum Interface: Int {
         case oneChoice = 1
         case twoChoices

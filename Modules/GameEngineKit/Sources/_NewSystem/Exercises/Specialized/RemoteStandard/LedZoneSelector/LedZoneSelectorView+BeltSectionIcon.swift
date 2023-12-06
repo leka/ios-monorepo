@@ -6,7 +6,6 @@ import RobotKit
 import SwiftUI
 
 extension LedZoneSelectorView {
-
     struct BeltSectionIcon: View {
         var section: Robot.Lights
 

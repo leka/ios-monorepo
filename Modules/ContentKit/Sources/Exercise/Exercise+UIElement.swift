@@ -5,7 +5,6 @@
 import Foundation
 
 extension Exercise {
-
     public enum UIElementType: String, Codable {
         case image
         case text

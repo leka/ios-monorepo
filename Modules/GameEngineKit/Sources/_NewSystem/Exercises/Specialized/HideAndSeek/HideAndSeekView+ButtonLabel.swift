@@ -5,7 +5,6 @@
 import SwiftUI
 
 extension HideAndSeekView {
-
     struct ButtonLabel: View {
         let text: String
         let color: Color

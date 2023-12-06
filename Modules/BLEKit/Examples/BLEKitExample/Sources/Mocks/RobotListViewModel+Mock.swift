@@ -7,7 +7,6 @@ import Combine
 import SwiftUI
 
 extension RobotListViewModel {
-
     // TODO(@ladislas): create protocol and mock RobotDiscoveryModel
     public static func mock() -> RobotListViewModel {
         RobotListViewModel(availableRobots: [

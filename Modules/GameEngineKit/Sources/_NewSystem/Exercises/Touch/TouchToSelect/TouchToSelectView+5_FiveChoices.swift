@@ -6,9 +6,7 @@ import ContentKit
 import SwiftUI
 
 extension TouchToSelectView {
-
     struct FiveChoicesView: View {
-
         @ObservedObject var viewModel: TouchToSelectViewViewModel
 
         private let kHorizontalSpacing: CGFloat = 60

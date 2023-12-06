@@ -5,7 +5,6 @@
 import SwiftUI
 
 struct BotFaceView: View {
-
     @Binding var isSelected: Bool
     @Binding var isConnected: Bool
     @Binding var name: String

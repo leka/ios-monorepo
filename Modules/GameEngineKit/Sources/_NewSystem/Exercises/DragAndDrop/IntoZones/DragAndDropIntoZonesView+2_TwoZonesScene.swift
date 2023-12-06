@@ -5,9 +5,7 @@
 import SpriteKit
 
 extension DragAndDropIntoZonesView {
-
     final class TwoZonesScene: DragAndDropIntoZonesView.BaseScene {
-
         override func layoutDropZones() {
             guard let unwrappedDropZoneB = dropZoneB else {
                 fatalError("No dropZoneB provided")

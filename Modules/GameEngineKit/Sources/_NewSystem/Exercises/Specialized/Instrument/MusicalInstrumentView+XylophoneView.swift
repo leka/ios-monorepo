@@ -7,7 +7,6 @@ import RobotKit
 import SwiftUI
 
 extension MusicalInstrumentView {
-
     struct XylophoneView: View {
         @ObservedObject var xyloPlayer: MIDIPlayer
         let tilesSpacing: CGFloat

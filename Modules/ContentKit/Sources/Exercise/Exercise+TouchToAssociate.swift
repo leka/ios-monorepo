@@ -4,7 +4,6 @@
 
 // TODO(@ladislas): Add real implementation when needed
 public enum TouchToAssociate {
-
     public enum Category: String, Codable {
         case catA
         case catB

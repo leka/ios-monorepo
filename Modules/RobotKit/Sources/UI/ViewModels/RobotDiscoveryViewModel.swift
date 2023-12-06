@@ -6,7 +6,6 @@ import BLEKit
 import SwiftUI
 
 public struct RobotDiscoveryViewModel: Identifiable {
-
     public enum Status: CaseIterable {
         case connected
         case unselected
@@ -42,7 +41,6 @@ public struct RobotDiscoveryViewModel: Identifiable {
 }
 
 extension RobotDiscoveryViewModel: Equatable {
-
     public static func == (lhs: RobotDiscoveryViewModel, rhs: RobotDiscoveryViewModel) -> Bool {
         lhs.id == rhs.id
             && lhs.isCharging == rhs.isCharging

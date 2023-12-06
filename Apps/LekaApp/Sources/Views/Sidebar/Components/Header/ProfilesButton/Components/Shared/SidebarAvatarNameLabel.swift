@@ -6,7 +6,6 @@ import DesignKit
 import SwiftUI
 
 struct SidebarAvatarNameLabel: View {
-
     @EnvironmentObject var company: CompanyViewModel
     @EnvironmentObject var metrics: UIMetrics
 

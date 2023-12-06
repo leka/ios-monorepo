@@ -5,7 +5,6 @@
 import SwiftUI
 
 struct ForgotPasswordView: View {
-
     @State private var organisation = OrganisationViewModel()
     @Environment(\.dismiss) var dismiss
 

@@ -9,7 +9,6 @@ import SpriteKit
 import SwiftUI
 
 public struct DragAndDropToAssociateView: View {
-
     enum Interface: Int {
         case twoChoices = 2
         case threeChoices

@@ -5,7 +5,6 @@
 import SwiftUI
 
 extension DanceFreeze.LauncherView {
-
     struct StageModeButtonStyle: View {
         let text: String
         let color: Color

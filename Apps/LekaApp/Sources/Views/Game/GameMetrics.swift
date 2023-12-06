@@ -6,7 +6,6 @@ import Foundation
 import SwiftUI
 
 class GameMetrics: NSObject, ObservableObject {
-
     // MARK: - Views Metrics & Animations parameters
 
     // GameView

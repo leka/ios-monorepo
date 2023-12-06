@@ -5,7 +5,6 @@
 import SwiftUI
 
 struct InfoTileManager: View {
-
     @EnvironmentObject var navigationVM: NavigationViewModel
     @EnvironmentObject var settings: SettingsViewModel
 

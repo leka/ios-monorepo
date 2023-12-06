@@ -5,7 +5,6 @@
 import CombineCoreBluetooth
 
 public class RobotPeripheral: Equatable {
-
     // MARK: - Public variables
 
     // TODO(@ladislas): should they be published? maybe, need to investigate

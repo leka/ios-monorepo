@@ -6,7 +6,6 @@ import RobotKit
 import SwiftUI
 
 extension LedZoneSelectorView {
-
     struct ModeButton: View {
         var mode: RemoteStandard.DisplayMode
         @Binding var displayMode: RemoteStandard.DisplayMode

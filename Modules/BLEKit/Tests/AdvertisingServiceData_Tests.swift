@@ -7,7 +7,6 @@ import XCTest
 @testable import BLEKit
 
 final class AdvertisingServiceData_Tests_BatteryLevel: XCTestCase {
-
     func test_shouldReturnBatteryLevel_equals0() {
         // Given
         let data: Data = Data([0, 0, 0, 0, 0, 0])
@@ -52,7 +51,6 @@ final class AdvertisingServiceData_Tests_BatteryLevel: XCTestCase {
 }
 
 final class AdvertisingServiceData_Tests_ChargingStatus: XCTestCase {
-
     func test_shouldReturnChargingStatus_isCharging() {
         // Given
         let data: Data = Data([0, 1, 0, 0, 0, 0])
@@ -83,7 +81,6 @@ final class AdvertisingServiceData_Tests_ChargingStatus: XCTestCase {
 }
 
 final class AdvertisingServiceData_Tests_OsVersion: XCTestCase {
-
     func test_shouldReturnOsVersion_0_0_0() {
         // Given
         let data: Data = Data([0, 0, 0, 0, 0, 0])

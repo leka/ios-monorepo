@@ -6,7 +6,6 @@ import LocalizationKit
 import SwiftUI
 
 extension l10n {
-
     static let localizedStringNoDefault = LocalizedString("localized_string_NO_default", value: "", comment: "")
 
     static let localizedStringWithDefault = LocalizedString(
@@ -27,7 +26,6 @@ extension l10n {
 }
 
 struct LocalizationView: View {
-
     @Environment(\.locale) var locale
 
     let nameValue = "John *Doe* [link]"

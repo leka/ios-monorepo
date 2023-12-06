@@ -8,7 +8,6 @@ import SwiftUI
 
 // TODO(@ladislas): decide where to put this, keeping it here for now
 extension Robot.Reinforcer {
-
     public func icon() -> Image {
         switch self {
             case .spinBlinkGreenOff:

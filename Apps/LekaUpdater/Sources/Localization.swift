@@ -8,15 +8,12 @@ import LocalizationKit
 // swiftlint:disable type_name nesting line_length identifier_name
 // swift-format-ignore
 extension l10n {
-
     enum general {
-
         static let yes = LocalizedString("general.yes", value: "Yes", comment: "Yes")
         static let no = LocalizedString("general.no", value: "No", comment: "No")
     }
 
     enum main {
-
         static let appName = LocalizedString("main.app_name", value: "Leka Updater", comment: "Name of the application")
         static let appDescription = LocalizedString(
             "main.app_description", value: "The app to update your Leka robots!",
@@ -24,13 +21,11 @@ extension l10n {
     }
 
     enum toolbar {
-
         static let connectionButton = LocalizedString(
             "toolbar.connection_button", value: "Connection", comment: "Connection toolbar button")
     }
 
     enum connection {
-
         static let continueButton = LocalizedString(
             "connection.continue_button", value: "Continue", comment: "Continue button")
         static let searchButton = LocalizedString("connection.search_button", value: "Search", comment: "Search button")
@@ -50,9 +45,7 @@ extension l10n {
     }
 
     enum information {
-
         enum status {
-
             static let robotCannotBeUpdatedText = LocalizedString(
                 "information.status.robot_cannot_be_updated_text",
                 value: "⚠️ DEV 🚧\nUpdate process not recognized or not available\n(Error code: #0003)",
@@ -66,7 +59,6 @@ extension l10n {
         }
 
         enum robot {
-
             static var serialNumber = LocalizedStringInterpolation(
                 "information.robot.serial_number", value: "Serial Number blablabla: %@",
                 comment: "Connected robot serial number")
@@ -88,7 +80,6 @@ extension l10n {
     }
 
     enum update {
-
         static let stepNumber = LocalizedStringInterpolation("update.step_number", value: "Step %@", comment: "Update step number")
 
         static let errorTitle = LocalizedString("update.error", value: "An error has occurred", comment: "Update error")
@@ -97,7 +88,6 @@ extension l10n {
         static let errorBackButtonTitle = LocalizedString("update.error_back_button", value: "Return to robot connection page", comment: "Update error back button")
 
         enum requirements {
-
             static let instructionsText = LocalizedString(
                 "update.requirements.instructions_text", value: "To start the update, make sure that:",
                 comment: "Requirements before update")
@@ -115,7 +105,6 @@ extension l10n {
         }
 
         enum error {
-
             static let failedToLoadFileDescription = LocalizedString("update.error.failed_to_load_file", value: "Robot update file cannot be opened\n(Error code #0001)", comment: "Failed to load file")
             static let failedToLoadFileInstructions = LocalizedString("update.error.failed_to_load_file_instructions", value: "Please reinstall the app", comment: "Failed to load file instructions")
 
@@ -133,26 +122,22 @@ extension l10n {
         }
 
         enum alert {
-
             static let robotNotInChargeTitle = LocalizedString("information.status.alert.robot_not_in_charge", value: "⚠️ WARNING ⚡\nThe robot is no longer in charge", comment: "Robot not in charge alert")
 
             static let robotNotInChargeMessage = LocalizedString("information.status.alert.robot_not_in_charge_button", value: "Please put Leka back on its charging station and/or check it's plugged to a power outlet", comment: "Robot not in charge alert button")
         }
 
         enum sending {
-
             static let sendingTitle = LocalizedString("update.sending.title", value: "Sending update to the robot", comment: "Sending title")
             static let instructions = LocalizedString("update.sending.instruction", value: "Do not unplug your robot\nDo not remove it from its charging station\nDo not close the app", comment: "Sending instruction")
         }
 
         enum rebooting {
-
             static let rebootingTitle = LocalizedString("update.rebooting.title", value: "The update is being installed", comment: "Rebooting title")
             static let rebootingSubtitle = LocalizedString("update.rebooting.subtitle", value: "Your robot will reboot in a few minutes", comment: "Rebooting subtitle")
         }
 
         enum finished {
-
             static let updateAnotherRobotButton = LocalizedString("update.finished.update_another_robot_button", value: "Update another robot", comment: "Update another robot button")
 
             static let launchLekaAppButton = LocalizedString("update.finished.launch_leka_app_button", value: "Launch My Leka Alpha 🚀", comment: "Launch Leka app button")

@@ -3,7 +3,6 @@
 // SPDX-License-Identifier: Apache-2.0
 
 public class ActivitySequenceManager {
-
     private let activity: Activity
 
     public var currentSequenceIndex: Int = 0

@@ -6,7 +6,6 @@ import DesignKit
 import SwiftUI
 
 struct JobTag: View {
-
     @EnvironmentObject var company: CompanyViewModel
     @EnvironmentObject var metrics: UIMetrics
 

@@ -6,7 +6,6 @@ import DesignKit
 import SwiftUI
 
 struct ReinforcerPicker: View {
-
     @EnvironmentObject var company: CompanyViewModel
     @EnvironmentObject var metrics: UIMetrics
 

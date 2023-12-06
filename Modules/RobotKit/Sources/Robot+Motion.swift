@@ -5,16 +5,13 @@
 import Foundation
 
 extension Float {
-
     var isInRange0to1: Bool {
         self >= 0 && self <= 1
     }
 }
 
 extension Robot {
-
     public enum Motion {
-
         static let id: UInt8 = 0x20
 
         enum Motor: UInt8 {

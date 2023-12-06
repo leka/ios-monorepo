@@ -8,9 +8,7 @@ import SpriteKit
 import SwiftUI
 
 extension DragAndDropToAssociateView {
-
     class BaseScene: SKScene {
-
         var viewModel: ViewModel
         var spacer = CGFloat.zero
         var defaultPosition = CGPoint.zero

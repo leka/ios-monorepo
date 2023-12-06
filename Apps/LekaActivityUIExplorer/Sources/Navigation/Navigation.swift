@@ -5,7 +5,6 @@
 import SwiftUI
 
 enum Category: Hashable, Identifiable, CaseIterable {
-
     case home
 
     case activities
@@ -22,7 +21,6 @@ enum Category: Hashable, Identifiable, CaseIterable {
 }
 
 class Navigation: ObservableObject {
-
     static let shared = Navigation()
 
     private var pushPopNoAnimationTransaction: Transaction {

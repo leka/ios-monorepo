@@ -6,7 +6,6 @@ import DesignKit
 import SwiftUI
 
 struct ProfileSelector_Teachers: View {
-
     @EnvironmentObject var company: CompanyViewModel
     @EnvironmentObject var settings: SettingsViewModel
     @EnvironmentObject var metrics: UIMetrics

@@ -5,7 +5,6 @@
 import SpriteKit
 
 class DraggableImageShadowNode: SKSpriteNode {
-
     init(draggableImageAnswerNode: DraggableImageAnswerNode) {
         super
             .init(

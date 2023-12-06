@@ -6,7 +6,6 @@ import DesignKit
 import SwiftUI
 
 struct SignupNavigationTitle: View {
-
     @EnvironmentObject var metrics: UIMetrics
 
     var body: some View {
