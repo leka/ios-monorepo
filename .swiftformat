@@ -94,6 +94,7 @@
 --enable redundantBreak
 --enable redundantClosure
 --enable redundantExtensionACL
+--enable redundantFileprivate
 
 # Disabled rules
 
