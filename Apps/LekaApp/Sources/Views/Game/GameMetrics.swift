@@ -14,7 +14,7 @@ class GameMetrics: NSObject, ObservableObject {
     @Published var headerPadding: CGFloat = 30
     @Published var instructionFontSize: CGFloat = 22
     @Published var instructionFontWeight: Font.Weight = .regular
-    @Published var instructionFrame: CGSize = CGSize(width: 640, height: 85)
+    @Published var instructionFrame: CGSize = .init(width: 640, height: 85)
     @Published var reg17: Font = .system(size: 17, weight: .regular)
     @Published var semi17: Font = .system(size: 17, weight: .semibold)
 

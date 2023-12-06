@@ -11,7 +11,7 @@ import XCTest
 final class AdvertisingServiceData_Tests_BatteryLevel: XCTestCase {
     func test_shouldReturnBatteryLevel_equals0() {
         // Given
-        let data: Data = Data([0, 0, 0, 0, 0, 0])
+        let data = Data([0, 0, 0, 0, 0, 0])
 
         // When
         let serviceData = AdvertisingServiceData(data: data)
@@ -25,7 +25,7 @@ final class AdvertisingServiceData_Tests_BatteryLevel: XCTestCase {
 
     func test_shouldReturnBatteryLevel_equals50() {
         // Given
-        let data: Data = Data([50, 0, 0, 0, 0, 0])
+        let data = Data([50, 0, 0, 0, 0, 0])
 
         // When
         let serviceData = AdvertisingServiceData(data: data)
@@ -39,7 +39,7 @@ final class AdvertisingServiceData_Tests_BatteryLevel: XCTestCase {
 
     func test_shouldReturnBatteryLevel_equals100() {
         // Given
-        let data: Data = Data([100, 0, 0, 0, 0, 0])
+        let data = Data([100, 0, 0, 0, 0, 0])
 
         // When
         let serviceData = AdvertisingServiceData(data: data)
@@ -57,7 +57,7 @@ final class AdvertisingServiceData_Tests_BatteryLevel: XCTestCase {
 final class AdvertisingServiceData_Tests_ChargingStatus: XCTestCase {
     func test_shouldReturnChargingStatus_isCharging() {
         // Given
-        let data: Data = Data([0, 1, 0, 0, 0, 0])
+        let data = Data([0, 1, 0, 0, 0, 0])
 
         // When
         let serviceData = AdvertisingServiceData(data: data)
@@ -71,7 +71,7 @@ final class AdvertisingServiceData_Tests_ChargingStatus: XCTestCase {
 
     func test_shouldReturnChargingStatus_isNotCharging() {
         // Given
-        let data: Data = Data([0, 0, 0, 0, 0, 0])
+        let data = Data([0, 0, 0, 0, 0, 0])
 
         // When
         let serviceData = AdvertisingServiceData(data: data)
@@ -89,7 +89,7 @@ final class AdvertisingServiceData_Tests_ChargingStatus: XCTestCase {
 final class AdvertisingServiceData_Tests_OsVersion: XCTestCase {
     func test_shouldReturnOsVersion_0_0_0() {
         // Given
-        let data: Data = Data([0, 0, 0, 0, 0, 0])
+        let data = Data([0, 0, 0, 0, 0, 0])
 
         // When
         let serviceData = AdvertisingServiceData(data: data)
@@ -103,7 +103,7 @@ final class AdvertisingServiceData_Tests_OsVersion: XCTestCase {
 
     func test_shouldReturnOsVersion_1_0_0() {
         // Given
-        let data: Data = Data([0, 0, 1, 0, 0, 0])
+        let data = Data([0, 0, 1, 0, 0, 0])
 
         // When
         let serviceData = AdvertisingServiceData(data: data)
@@ -117,7 +117,7 @@ final class AdvertisingServiceData_Tests_OsVersion: XCTestCase {
 
     func test_shouldReturnOsVersion_1_2_0() {
         // Given
-        let data: Data = Data([0, 0, 1, 2, 0, 0])
+        let data = Data([0, 0, 1, 2, 0, 0])
 
         // When
         let serviceData = AdvertisingServiceData(data: data)
@@ -131,7 +131,7 @@ final class AdvertisingServiceData_Tests_OsVersion: XCTestCase {
 
     func test_shouldReturnOsVersion_1_2_3() {
         // Given
-        let data: Data = Data([0, 0, 1, 2, 0, 3])
+        let data = Data([0, 0, 1, 2, 0, 3])
 
         // When
         let serviceData = AdvertisingServiceData(data: data)
@@ -145,7 +145,7 @@ final class AdvertisingServiceData_Tests_OsVersion: XCTestCase {
 
     func test_shouldReturnOsVersion_1_2_300() {
         // Given
-        let data: Data = Data([0, 0, 1, 2, 0x01, 0x2C])
+        let data = Data([0, 0, 1, 2, 0x01, 0x2C])
 
         // When
         let serviceData = AdvertisingServiceData(data: data)

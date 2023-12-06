@@ -7,7 +7,7 @@ import SwiftUI
 
 @main
 struct BLEKitExample: App {
-    var bleManager: BLEManager = BLEManager.live()
+    var bleManager: BLEManager = .live()
 
     var body: some Scene {
         WindowGroup {

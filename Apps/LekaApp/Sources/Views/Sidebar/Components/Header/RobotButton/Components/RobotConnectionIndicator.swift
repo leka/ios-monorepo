@@ -11,7 +11,7 @@ struct RobotConnectionIndicator: View {
 
     @EnvironmentObject var metrics: UIMetrics
 
-    @StateObject var robotViewModel: ConnectedRobotInformationViewModel = ConnectedRobotInformationViewModel()
+    @StateObject var robotViewModel: ConnectedRobotInformationViewModel = .init()
 
     var body: some View {
         ZStack {

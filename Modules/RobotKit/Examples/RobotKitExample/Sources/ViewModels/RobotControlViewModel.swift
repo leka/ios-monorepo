@@ -34,7 +34,7 @@ class RobotControlViewModel: ObservableObject {
     // MARK: Internal
 
     @Published var magicCard: MagicCard = .none
-    @Published var magicCardImage: Image = Image(systemName: "photo")
+    @Published var magicCardImage: Image = .init(systemName: "photo")
 
     // MARK: Private
 

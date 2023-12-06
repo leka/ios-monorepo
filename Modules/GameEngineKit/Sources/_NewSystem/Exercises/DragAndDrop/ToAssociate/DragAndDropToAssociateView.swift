@@ -73,7 +73,7 @@ public struct DragAndDropToAssociateView: View {
     // MARK: Private
 
     @StateObject private var viewModel: ViewModel
-    @State private var scene: SKScene = SKScene()
+    @State private var scene: SKScene = .init()
 
     private func makeScene(size: CGSize) -> SKScene {
         guard let finalScene = scene as? BaseScene else {

@@ -110,7 +110,7 @@ struct GameView: View {
     @ViewBuilder
     func resultMessage(result: ResultType) -> some View {
         // Localized Strings
-        let topMessage: Text = switch result {
+        let topMessage = switch result {
             case .fail:
                 Text("fail_top_message")
             case .medium:
@@ -121,7 +121,7 @@ struct GameView: View {
                 Text("")
         }
 
-        let bottomMessage: Text = switch result {
+        let bottomMessage = switch result {
             case .fail:
                 Text("fail_bottom_message")
                     + Text("(0%)")

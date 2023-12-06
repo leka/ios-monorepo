@@ -95,7 +95,7 @@ struct NavigationView: View {
     @Environment(\.colorScheme) var colorScheme
     @State var preferedColorScheme: ColorScheme = .light
 
-    @ObservedObject var navigation: Navigation = Navigation.shared
+    @ObservedObject var navigation: Navigation = .shared
     @StateObject var viewModel: NavigationViewViewModel = .init()
 
     var body: some View {

@@ -34,7 +34,7 @@ class JoystickViewViewModel: ObservableObject {
 
     // MARK: Private
 
-    @Published private var position: CGPoint = CGPoint(x: 0.0, y: 0.0)
+    @Published private var position: CGPoint = .init(x: 0.0, y: 0.0)
 
     private var cancellables: Set<AnyCancellable> = []
 }

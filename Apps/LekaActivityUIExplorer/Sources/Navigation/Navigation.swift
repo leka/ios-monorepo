@@ -49,12 +49,12 @@ class Navigation: ObservableObject {
 
     @Published var categories = Category.allCases
 
-    @Published var path: NavigationPath = NavigationPath() {
+    @Published var path: NavigationPath = .init() {
         willSet {
             disableUICompletly = true
         }
         didSet {
-            self.disableUICompletly = false
+            disableUICompletly = false
         }
     }
 

@@ -179,7 +179,7 @@ private class StateSendingFile: GKState, StateEventProcessor {
     private var currentPacket: Int = 0
     private var expectedCompletePackets: Int
     private var expectedRemainingBytes: Int
-    private lazy var characteristic: CharacteristicModelWriteOnly = CharacteristicModelWriteOnly(
+    private lazy var characteristic: CharacteristicModelWriteOnly = .init(
         characteristicUUID: BLESpecs.FileExchange.Characteristics.fileReceptionBuffer,
         serviceUUID: BLESpecs.FileExchange.service,
         onWrite: {

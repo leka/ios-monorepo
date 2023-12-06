@@ -48,7 +48,7 @@ enum LKCommand {
 }
 
 func checksum8(_ values: [UInt8]) -> UInt8 {
-    var checksum: Int = 0
+    var checksum = 0
 
     for value in values {
         checksum = (Int(value) + checksum) % 256

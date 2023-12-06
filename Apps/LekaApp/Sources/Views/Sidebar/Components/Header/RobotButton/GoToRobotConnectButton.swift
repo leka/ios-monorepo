@@ -12,7 +12,7 @@ struct GoToRobotConnectButton: View {
     @EnvironmentObject var metrics: UIMetrics
     @EnvironmentObject var navigationVM: NavigationViewModel
 
-    @StateObject var robotViewModel: ConnectedRobotInformationViewModel = ConnectedRobotInformationViewModel()
+    @StateObject var robotViewModel: ConnectedRobotInformationViewModel = .init()
 
     var body: some View {
         Button {

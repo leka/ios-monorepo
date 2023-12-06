@@ -64,7 +64,7 @@ final class UInt16_Extension_Tests_Data: XCTestCase {
         // When
 
         // Then
-        let expected: Data = Data([0xBE, 0xEF])
+        let expected = Data([0xBE, 0xEF])
         let actual = value.data
 
         XCTAssertEqual(expected, actual)

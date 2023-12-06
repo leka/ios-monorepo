@@ -122,7 +122,7 @@ public extension Robot {
         // MARK: Private
 
         private func setMotor(_ motor: Motor, speed: Float, rotation: Rotation) -> [UInt8] {
-            let speed: UInt8 = UInt8(abs(speed) * 255)
+            let speed = UInt8(abs(speed) * 255)
 
             var payload: [UInt8] = []
 

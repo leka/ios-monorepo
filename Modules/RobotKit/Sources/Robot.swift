@@ -21,7 +21,7 @@ public class Robot {
 
     // MARK: Public
 
-    public static var shared: Robot = Robot()
+    public static var shared: Robot = .init()
 
     // MARK: - Information
 

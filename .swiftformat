@@ -112,6 +112,7 @@
 --self init-only
 
 --enable redundantStaticSelf
+--enable redundantType
 
 # Disabled rules
 

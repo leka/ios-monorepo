@@ -9,9 +9,9 @@ import SwiftUI
 
 @main
 struct BLEKitExampleApp: App {
-    @StateObject var bleManager: BLEManager = BLEManager.live()
-    @StateObject var robot: Robot = Robot()
-    @StateObject var botVM: BotViewModel = BotViewModel()
+    @StateObject var bleManager: BLEManager = .live()
+    @StateObject var robot: Robot = .init()
+    @StateObject var botVM: BotViewModel = .init()
 
     var body: some Scene {
         WindowGroup {

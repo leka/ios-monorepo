@@ -10,7 +10,7 @@ import SwiftUI
 extension DragAndDropIntoZonesView {
     struct DropZoneNode {
         let details: DragAndDropIntoZones.DropZone.Details
-        var node: SKSpriteNode = SKSpriteNode()
+        var node: SKSpriteNode = .init()
         let zone: DragAndDropIntoZones.DropZone
     }
 
@@ -163,9 +163,9 @@ extension DragAndDropIntoZonesView {
         }
 
         func wrongAnswerBehavior(_ node: DraggableImageAnswerNode) {
-            let moveAnimation: SKAction = SKAction.move(to: node.defaultPosition!, duration: 0.25)
+            let moveAnimation = SKAction.move(to: node.defaultPosition!, duration: 0.25)
                 .moveAnimation(.easeOut)
-            let group: DispatchGroup = DispatchGroup()
+            let group = DispatchGroup()
             group.enter()
             node.scaleForMax(sizeOf: biggerSide)
             node.run(
@@ -182,7 +182,7 @@ extension DragAndDropIntoZonesView {
         }
 
         func onDragAnimation(_ node: SKSpriteNode) {
-            let wiggleAnimation: SKAction = SKAction.sequence([
+            let wiggleAnimation = SKAction.sequence([
                 SKAction.rotate(byAngle: CGFloat(degreesToRadian(degrees: -4)), duration: 0.1),
                 SKAction.rotate(byAngle: 0.0, duration: 0.1),
                 SKAction.rotate(byAngle: CGFloat(degreesToRadian(degrees: 4)), duration: 0.1),

@@ -4,7 +4,7 @@
 
 public extension Array<UInt8> {
     var checksum8: UInt8 {
-        var checksum: Int = 0
+        var checksum = 0
 
         for value in self {
             checksum = (Int(value) + checksum) % 256
