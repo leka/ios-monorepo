@@ -95,7 +95,7 @@ struct CurriculumDetailsView: View {
 
     private var curriculumActivityList: some View {
         ScrollViewReader { proxy in
-            List(curriculumVM.currentCurriculum.activities.enumerated().map({ $0 }), id: \.element) { index, item in
+            List(curriculumVM.currentCurriculum.activities.enumerated().map { $0 }, id: \.element) { index, item in
                 Button {
                     curriculumVM.currentCurriculumSelectedActivityID = UUID(uuidString: activityVM.getActivity(item).id)
                     activityVM.currentActivity = activityVM.getActivity(item)
@@ -128,7 +128,7 @@ struct CurriculumDetailsView: View {
     }
 
     private func goButtonIsDisabled() -> Bool {
-        !curriculumVM.currentCurriculum.activities.map({ UUID(uuidString: activityVM.getActivity($0).id) })
+        !curriculumVM.currentCurriculum.activities.map { UUID(uuidString: activityVM.getActivity($0).id) }
             .contains(curriculumVM.currentCurriculumSelectedActivityID)
     }
 }

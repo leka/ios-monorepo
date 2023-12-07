@@ -55,7 +55,7 @@ struct ActivityListView: View {
 
     private var completeActivityList: some View {
         ScrollViewReader { proxy in
-            List(searchResults.enumerated().map({ $0 }), id: \.element) { index, item in
+            List(searchResults.enumerated().map { $0 }, id: \.element) { index, item in
                 HStack {
                     Spacer()
                     Button {

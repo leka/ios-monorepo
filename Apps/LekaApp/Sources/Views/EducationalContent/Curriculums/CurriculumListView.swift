@@ -54,7 +54,7 @@ struct CurriculumListView: View {
     @ViewBuilder
     private func allCurriculums(category: CurriculumCategories) -> some View {
         let list: [Curriculum] = curriculumVM.getCurriculumsFrom(category: category)
-        ForEach(list.enumerated().map({ $0 }), id: \.element.id) { index, item in
+        ForEach(list.enumerated().map { $0 }, id: \.element.id) { index, item in
             Button {
                 curriculumVM.currentCurriculumCategory = category
                 curriculumVM.populateCurriculumList(category: category)
