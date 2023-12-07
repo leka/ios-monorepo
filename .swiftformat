@@ -133,6 +133,7 @@
 --enable spaceInsideBraces
 --enable spaceInsideBrackets
 --enable spaceInsideComments
+--enable spaceInsideGenerics
 
 # Disabled rules
 
