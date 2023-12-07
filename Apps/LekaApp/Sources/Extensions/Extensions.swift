@@ -78,7 +78,7 @@ extension LocalizedContent {
 // MARK: - ActivityViewModel + AVSpeechSynthesizerDelegate
 
 extension ActivityViewModel: AVSpeechSynthesizerDelegate {
-    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
+    func speechSynthesizer(_: AVSpeechSynthesizer, didFinish _: AVSpeechUtterance) {
         isSpeaking = false
     }
 }
@@ -86,7 +86,7 @@ extension ActivityViewModel: AVSpeechSynthesizerDelegate {
 // MARK: - ActivityViewModel + AVAudioPlayerDelegate
 
 extension ActivityViewModel: AVAudioPlayerDelegate {
-    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+    func audioPlayerDidFinishPlaying(_: AVAudioPlayer, successfully _: Bool) {
         currentMediaHasBeenPlayedOnce = true
         answersAreDisabled = false
     }

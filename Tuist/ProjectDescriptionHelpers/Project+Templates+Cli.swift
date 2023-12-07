@@ -7,7 +7,7 @@ import ProjectDescription
 public extension Project {
     static func cli(
         name: String,
-        version: String = "1.0.0",
+        version _: String = "1.0.0",
         dependencies: [TargetDependency]
     ) -> Project {
         let mainTarget = Target(

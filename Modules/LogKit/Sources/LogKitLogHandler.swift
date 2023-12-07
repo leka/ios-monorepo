@@ -116,8 +116,8 @@ public struct LogKitLogHandler: LogHandler {
     public func log(
         level: Logger.Level,
         message: Logger.Message,
-        metadata explicitMetadata: Logger.Metadata?,
-        source: String,
+        metadata _: Logger.Metadata?,
+        source _: String,
         file: String,
         function: String,
         line: UInt

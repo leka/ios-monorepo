@@ -18,11 +18,11 @@ enum RemoteStandard {
         var firstButtonPosY: Int
         var angle: Double
 
-        func sizeThatFits(proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) -> CGSize {
+        func sizeThatFits(proposal: ProposedViewSize, subviews _: Subviews, cache _: inout ()) -> CGSize {
             proposal.replacingUnspecifiedDimensions()
         }
 
-        func placeSubviews(in bounds: CGRect, proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) {
+        func placeSubviews(in bounds: CGRect, proposal _: ProposedViewSize, subviews: Subviews, cache _: inout ()) {
             let angleDivision = Angle.degrees(angle / Double(subviews.count - 1)).radians
             let posX = bounds.midX
             let posY = bounds.midY * 5 / 4

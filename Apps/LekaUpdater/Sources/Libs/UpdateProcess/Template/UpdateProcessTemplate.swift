@@ -65,7 +65,7 @@ class UpdateProcessTemplate: UpdateProcessProtocol {
         }
     }
 
-    private func convertReceivedValue(state: UpdateState) {
+    private func convertReceivedValue(state _: UpdateState) {
         currentStage.send(.initial) // only available state
     }
 }

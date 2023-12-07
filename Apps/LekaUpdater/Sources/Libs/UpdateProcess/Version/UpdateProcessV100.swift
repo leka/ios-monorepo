@@ -54,7 +54,7 @@ private class StateLoadingUpdateFile: GKState, StateEventProcessor {
             || stateClass is StateErrorRobotUnexpectedDisconnection.Type
     }
 
-    override func didEnter(from previousState: GKState?) {
+    override func didEnter(from _: GKState?) {
         let isLoaded = globalFirmwareManager.load()
 
         if isLoaded {
@@ -87,7 +87,7 @@ private class StateSettingDestinationPath: GKState, StateEventProcessor {
         stateClass is StateSendingFile.Type || stateClass is StateErrorRobotUnexpectedDisconnection.Type
     }
 
-    override func didEnter(from previousState: GKState?) {
+    override func didEnter(from _: GKState?) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: setDestinationPath)
     }
 
@@ -151,11 +151,11 @@ private class StateSendingFile: GKState, StateEventProcessor {
         stateClass is StateApplyingUpdate.Type || stateClass is StateErrorRobotUnexpectedDisconnection.Type
     }
 
-    override func didEnter(from previousState: GKState?) {
+    override func didEnter(from _: GKState?) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: sendFile)
     }
 
-    override func willExit(to nextState: GKState) {
+    override func willExit(to _: GKState) {
         cancellables.removeAll()
     }
 
@@ -257,12 +257,12 @@ private class StateApplyingUpdate: GKState, StateEventProcessor {
         stateClass is StateWaitingForRobotToReboot.Type
     }
 
-    override func didEnter(from previousState: GKState?) {
+    override func didEnter(from _: GKState?) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: setMajorMinorRevision)
         DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: applyUpdate)
     }
 
-    override func willExit(to nextState: GKState) {
+    override func willExit(to _: GKState) {
         cancellables.removeAll()
     }
 
@@ -336,11 +336,11 @@ private class StateWaitingForRobotToReboot: GKState, StateEventProcessor {
             || stateClass is StateErrorRobotUnexpectedDisconnection.Type
     }
 
-    override func didEnter(from previousState: GKState?) {
+    override func didEnter(from _: GKState?) {
         registerScanForRobot()
     }
 
-    override func willExit(to nextState: GKState) {
+    override func willExit(to _: GKState) {
         cancellables.removeAll()
     }
 

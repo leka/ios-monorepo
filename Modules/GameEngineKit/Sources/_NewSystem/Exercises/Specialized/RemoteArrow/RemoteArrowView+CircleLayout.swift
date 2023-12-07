@@ -6,11 +6,11 @@ import SwiftUI
 
 extension RemoteArrowView {
     struct CircleLayout: Layout {
-        func sizeThatFits(proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) -> CGSize {
+        func sizeThatFits(proposal: ProposedViewSize, subviews _: Subviews, cache _: inout ()) -> CGSize {
             proposal.replacingUnspecifiedDimensions()
         }
 
-        func placeSubviews(in bounds: CGRect, proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) {
+        func placeSubviews(in bounds: CGRect, proposal _: ProposedViewSize, subviews: Subviews, cache _: inout ()) {
             let angle = Angle.degrees(360 / Double(subviews.count)).radians
             let posX = bounds.midX
             let posY = bounds.midY

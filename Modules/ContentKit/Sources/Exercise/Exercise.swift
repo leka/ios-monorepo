@@ -57,7 +57,7 @@ public struct Exercise: Codable {
     public let action: Action?
     public let payload: ExercisePayloadProtocol?
 
-    public func encode(to encoder: Encoder) throws {
+    public func encode(to _: Encoder) throws {
         fatalError("💥 Not implemented yet")
     }
 

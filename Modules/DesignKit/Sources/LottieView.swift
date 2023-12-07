@@ -47,7 +47,7 @@ public struct LottieView: UIViewRepresentable {
         Coordinator(self)
     }
 
-    public func makeUIView(context: UIViewRepresentableContext<LottieView>) -> UIView {
+    public func makeUIView(context _: UIViewRepresentableContext<LottieView>) -> UIView {
         let view = UIView()
 
         animationView.animation = LottieAnimation.named(name)
@@ -65,7 +65,7 @@ public struct LottieView: UIViewRepresentable {
         return view
     }
 
-    public func updateUIView(_ uiView: UIView, context: UIViewRepresentableContext<LottieView>) {
+    public func updateUIView(_: UIView, context: UIViewRepresentableContext<LottieView>) {
         if play {
             if reverse {
                 context.coordinator.parent.animationView.play(fromProgress: 0.0, toProgress: 1.0, loopMode: .none) {

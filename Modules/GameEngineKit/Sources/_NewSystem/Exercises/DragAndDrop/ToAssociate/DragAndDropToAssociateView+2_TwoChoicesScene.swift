@@ -11,7 +11,7 @@ extension DragAndDropToAssociateView {
             defaultPosition = CGPoint(x: spacer, y: size.height / 2)
         }
 
-        override func setNextAnswerPosition(_ index: Int) {
+        override func setNextAnswerPosition(_: Int) {
             defaultPosition.x += spacer
         }
     }

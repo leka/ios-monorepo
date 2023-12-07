@@ -35,7 +35,7 @@ extension DragAndDropIntoZonesView {
         }
 
         @available(*, unavailable)
-        required init?(coder aDecoder: NSCoder) {
+        required init?(coder _: NSCoder) {
             fatalError("init(coder:) has not been implemented")
         }
 
@@ -197,12 +197,12 @@ extension DragAndDropIntoZonesView {
             selectedNodes = [:]
         }
 
-        override func didMove(to view: SKView) {
+        override func didMove(to _: SKView) {
             reset()
         }
 
         // overriden Touches states
-        override func touchesBegan(_ touches: Set<UITouch>, with: UIEvent?) {
+        override func touchesBegan(_ touches: Set<UITouch>, with _: UIEvent?) {
             for touch in touches {
                 let location = touch.location(in: self)
                 if let node = atPoint(location) as? DraggableImageAnswerNode {
@@ -231,7 +231,7 @@ extension DragAndDropIntoZonesView {
             }
         }
 
-        override func touchesEnded(_ touches: Set<UITouch>, with: UIEvent?) {
+        override func touchesEnded(_ touches: Set<UITouch>, with _: UIEvent?) {
             for touch in touches {
                 guard selectedNodes.keys.contains(touch) else {
                     break

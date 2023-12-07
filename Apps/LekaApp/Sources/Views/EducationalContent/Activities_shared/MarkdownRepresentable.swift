@@ -71,7 +71,7 @@ struct MarkdownRepresentable: UIViewRepresentable {
         Coordinator(text: markdownObject.textView)
     }
 
-    func makeUIView(context: Context) -> UITextView {
+    func makeUIView(context _: Context) -> UITextView {
         // TODO(@ladislas): reimport when Down is fixed
         // let down = Down(markdownString: markdownObject.text)
         // let attributedText = try? down.toAttributedString(styler: DownStyler())//delegate: context.coordinator))
@@ -98,7 +98,7 @@ struct MarkdownRepresentable: UIViewRepresentable {
         return markdownObject.textView
     }
 
-    func updateUIView(_ uiView: UITextView, context: Context) {
+    func updateUIView(_ uiView: UITextView, context _: Context) {
         DispatchQueue.main.async {
             //			uiView.textColor = UIColor(named: "darkGray")
 

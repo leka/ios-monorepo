@@ -12,7 +12,7 @@ protocol YamlFileDecodable {
 }
 
 extension YamlFileDecodable {
-    func decodeYamlFile<T: Decodable>(withName name: String, toType: T.Type) throws -> T {
+    func decodeYamlFile<T: Decodable>(withName name: String, toType _: T.Type) throws -> T {
         guard let path = Bundle.main.path(forResource: name, ofType: "yml") else {
             print(name)
             throw CustomError.failedToGetFilePath
