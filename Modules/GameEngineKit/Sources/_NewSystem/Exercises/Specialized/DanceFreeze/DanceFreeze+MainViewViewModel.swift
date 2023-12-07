@@ -95,9 +95,7 @@ extension DanceFreeze {
 
             self.robotManager.shineRandomly()
 
-            DispatchQueue.main.asyncAfter(
-                deadline: .now() + 0.2)
-            {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                 self.robotLightFrenzy()
             }
         }
@@ -107,9 +105,7 @@ extension DanceFreeze {
 
             let duration = self.robotManager.rotationDance()
 
-            DispatchQueue.main.asyncAfter(
-                deadline: .now() + duration)
-            {
+            DispatchQueue.main.asyncAfter(deadline: .now() + duration) {
                 self.robotRotation()
             }
         }
@@ -119,9 +115,7 @@ extension DanceFreeze {
 
             let duration = self.robotManager.movementDance()
 
-            DispatchQueue.main.asyncAfter(
-                deadline: .now() + duration)
-            {
+            DispatchQueue.main.asyncAfter(deadline: .now() + duration) {
                 self.robotMovement()
             }
         }
