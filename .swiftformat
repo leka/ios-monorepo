@@ -130,6 +130,7 @@
 --ranges no-space
 
 --enable spaceAroundParens
+--enable spaceInsideBraces
 
 # Disabled rules
 
