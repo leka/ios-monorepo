@@ -129,6 +129,8 @@
 --enable spaceAroundOperators
 --ranges no-space
 
+--enable spaceAroundParens
+
 # Disabled rules
 
 --disable blankLinesBetweenImports
