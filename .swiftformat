@@ -136,6 +136,8 @@
 --enable spaceInsideGenerics
 --enable spaceInsideParens
 
+--enable strongifiedSelf
+
 # Disabled rules
 
 --disable blankLinesBetweenImports
