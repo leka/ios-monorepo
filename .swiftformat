@@ -148,6 +148,8 @@
 
 --enable unusedArguments
 
+--enable void
+
 # Disabled rules
 
 --disable blankLinesBetweenImports
