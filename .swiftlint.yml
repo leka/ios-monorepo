@@ -25,11 +25,14 @@ identifier_name:
   min_length: # only min_length
     error: 4 # only error
   excluded:
+    - a
     - app
     - args
+    - b
     - ble
     - BLE
     - cmd
+    - g
     - i
     - i18n
     - id
@@ -39,7 +42,9 @@ identifier_name:
     - lhs
     - log
     - new
+    - r
     - red
+    - rgb
     - rhs
     - rx
     - tx

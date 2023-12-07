@@ -42,33 +42,25 @@ let kActivities: [Activity] = [
 
 struct GEKNewSystemView: View {
 
-    @EnvironmentObject var router: Router
-
     @State var currentActivity: Activity?
 
     var body: some View {
-        NavigationStack {
-            ScrollView {
-                VStack(spacing: 30) {
-                    ForEach(kActivities, id: \.id) { activity in
-                        Button(activity.name) {
-                            currentActivity = activity
-                        }
+        ScrollView {
+            VStack(spacing: 30) {
+                ForEach(kActivities, id: \.id) { activity in
+                    Button(activity.name) {
+                        currentActivity = activity
                     }
                 }
-                .fullScreenCover(item: $currentActivity) {
-                    currentActivity = nil
-                } content: { activity in
-                    ActivityView(viewModel: ActivityViewViewModel(activity: activity))
-                }
-                .buttonStyle(.borderedProminent)
-                .navigationBarTitleDisplayMode(.inline)
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarLeading, content: { backButton })
-                    ToolbarItem(placement: .principal) { navigationTitleView }
-                }
             }
+            .fullScreenCover(item: $currentActivity) {
+                currentActivity = nil
+            } content: { activity in
+                ActivityView(viewModel: ActivityViewViewModel(activity: activity))
+            }
+            .buttonStyle(.borderedProminent)
         }
+        .navigationTitle("List of Activities")
     }
 
     private var navigationTitleView: some View {
@@ -79,24 +71,8 @@ struct GEKNewSystemView: View {
         .foregroundColor(.accentColor)
     }
 
-    private var backButton: some View {
-        Button(
-            action: {
-                router.currentVersion = .versionSelector
-            },
-            label: {
-                HStack(spacing: 4) {
-                    Image(systemName: "chevron.left")
-                    Text("Retour")
-                }
-            }
-        )
-        .tint(.accentColor)
-    }
-
 }
 
 #Preview {
     GEKNewSystemView()
-        .environmentObject(Router())
 }
