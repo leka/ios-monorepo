@@ -123,6 +123,7 @@
 
 --enable spaceAroundBraces
 --enable spaceAroundBrackets
+--enable spaceAroundComments
 
 # Disabled rules
 
