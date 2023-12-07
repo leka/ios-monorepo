@@ -163,6 +163,8 @@
 --enable wrapSingleLineComments
 --enable wrapSwitchCases
 
+--enable yodaConditions
+
 # Disabled rules
 
 --disable blankLinesBetweenImports
