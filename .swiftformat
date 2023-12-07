@@ -122,6 +122,7 @@
 --importgrouping testable-bottom
 
 --enable spaceAroundBraces
+--enable spaceAroundBrackets
 
 # Disabled rules
 
