@@ -157,7 +157,9 @@ class AuthManager: ObservableObject {
         { [weak self] result in
             self?.companyAuthenticationState = .loggedIn
             print("Company \(result.user.uid) \(operation.rawValue) successfully.")
-            self?.checkAuthenticationStatus()
+            if case .signIn = operation {
+                self?.checkAuthenticationStatus()
+            }
             if case .signUp = operation {
                 self?.sendEmailVerification()
             }
