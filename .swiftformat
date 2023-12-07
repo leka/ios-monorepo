@@ -115,6 +115,8 @@
 --enable redundantType
 --enable redundantVoidReturnType
 
+--enable semicolons
+
 # Disabled rules
 
 --disable blankLinesBetweenImports
