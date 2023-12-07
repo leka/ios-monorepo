@@ -2,8 +2,15 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import Combine
 import DesignKit
+import RobotKit
 import SwiftUI
+
+class NavigationViewViewModel: ObservableObject {
+    @Published var isDesignSystemAppleExpanded: Bool = false
+    @Published var isDesignSystemLekaExpanded: Bool = false
+}
 
 struct NavigationView: View {
 
@@ -11,9 +18,7 @@ struct NavigationView: View {
     @State var preferedColorScheme: ColorScheme = .light
 
     @ObservedObject var navigation: Navigation = Navigation.shared
-
-    @State private var expandDesignSystemApple: Bool = false
-    @State private var expandDesignSystemLeka: Bool = false
+    @StateObject var viewModel: NavigationViewViewModel = .init()
 
     var body: some View {
         NavigationSplitView {
@@ -24,14 +29,14 @@ struct NavigationView: View {
                     CategoryLabel(category: .activities)
                 }
 
-                Section("Design System (Apple)", isExpanded: $expandDesignSystemApple) {
+                Section("Design System (Apple)", isExpanded: $viewModel.isDesignSystemAppleExpanded) {
                     CategoryLabel(category: .designSystemAppleFonts)
                     CategoryLabel(category: .designSystemAppleButtons)
                     CategoryLabel(category: .designSystemAppleColorsSwiftUI)
                     CategoryLabel(category: .designSystemAppleColorsUIKit)
                 }
 
-                Section("Design System (Leka)", isExpanded: $expandDesignSystemLeka) {
+                Section("Design System (Leka)", isExpanded: $viewModel.isDesignSystemLekaExpanded) {
                     CategoryLabel(category: .designSystemLekaButtons)
                     CategoryLabel(category: .designSystemLekaColorsSwiftUI)
                 }
