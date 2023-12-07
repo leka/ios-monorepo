@@ -26,9 +26,9 @@ class Navigation: ObservableObject {
     static let shared = Navigation()
 
     private var pushPopNoAnimationTransaction: Transaction {
-        var t = Transaction(animation: nil)
-        t.disablesAnimations = true
-        return t
+        var transaction = Transaction(animation: nil)
+        transaction.disablesAnimations = true
+        return transaction
     }
 
     @Published var disableUICompletly: Bool = false
