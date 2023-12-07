@@ -118,6 +118,9 @@
 --enable semicolons
 --enable sortDeclarations
 
+--enable sortImports
+--importgrouping testable-bottom
+
 # Disabled rules
 
 --disable blankLinesBetweenImports
