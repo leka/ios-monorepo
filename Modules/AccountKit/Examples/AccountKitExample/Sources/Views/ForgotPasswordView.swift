@@ -31,7 +31,8 @@ struct ForgotPasswordView: View {
                 .textFieldStyle(.roundedBorder)
                 .keyboardType(.emailAddress)
             if !organisation.mail.isEmpty,
-               !organisation.isEmailValid() {
+               !organisation.isEmailValid()
+            {
                 Text(organisation.invalidEmailAddressText)
                     .font(.footnote)
                     .foregroundStyle(.red)

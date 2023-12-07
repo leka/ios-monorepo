@@ -157,6 +157,7 @@
 --wrapconditions after-first
 --enable wrapAttributes
 --enable wrapEnumCases
+--enable wrapMultilineStatementBraces
 
 # Disabled rules
 

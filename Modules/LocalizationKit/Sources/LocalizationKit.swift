@@ -11,7 +11,8 @@ public enum l10n {
     public static func LocalizedString(
         _ key: StaticString, value: String.LocalizationValue, comment: StaticString
     )
-        -> AttributedString {
+        -> AttributedString
+    {
         let string = String(localized: key, defaultValue: value, comment: comment)
         let markdown =
             (try? AttributedString(

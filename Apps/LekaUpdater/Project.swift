@@ -9,7 +9,8 @@ private var schemes: [Scheme] {
     var schemeList: [Scheme] = []
 
     if Environment.createLocalizationSchemes.getBoolean(
-        default: false) {
+        default: false)
+    {
         schemeList.append(contentsOf: [
             SchemeList.l10nFR(name: "LekaUpdater"),
             SchemeList.l10nEN(name: "LekaUpdater"),
