@@ -155,6 +155,7 @@
 --wraparguments preserve
 --wrapcollections preserve
 --wrapconditions after-first
+--enable wrapAttributes
 
 # Disabled rules
 
