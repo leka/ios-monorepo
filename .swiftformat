@@ -121,6 +121,8 @@
 --enable sortImports
 --importgrouping testable-bottom
 
+--enable spaceAroundBraces
+
 # Disabled rules
 
 --disable blankLinesBetweenImports
