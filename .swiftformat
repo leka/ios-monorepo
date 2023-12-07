@@ -151,13 +151,16 @@
 --enable void
 
 --enable wrap
+
 --enable wrapArguments
 --wraparguments preserve
 --wrapcollections preserve
 --wrapconditions after-first
+
 --enable wrapAttributes
 --enable wrapEnumCases
 --enable wrapMultilineStatementBraces
+--enable wrapSingleLineComments
 
 # Disabled rules
 
