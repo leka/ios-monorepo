@@ -150,6 +150,8 @@
 
 --enable void
 
+--enable wrap
+
 # Disabled rules
 
 --disable blankLinesBetweenImports
