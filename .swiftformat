@@ -142,6 +142,7 @@
 
 --enable trailingClosures
 --enable trailingCommas
+--enable trailingSpace
 
 # Disabled rules
 
