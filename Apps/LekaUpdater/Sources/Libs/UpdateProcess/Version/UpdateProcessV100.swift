@@ -492,9 +492,12 @@ class UpdateProcessV100: UpdateProcessProtocol {
         switch state {
             case is StateInitial:
                 currentStage.send(.initial)
-            case is StateLoadingUpdateFile, is StateSettingDestinationPath, is StateSendingFile:
+            case is StateLoadingUpdateFile,
+                 is StateSettingDestinationPath,
+                 is StateSendingFile:
                 currentStage.send(.sendingUpdate)
-            case is StateApplyingUpdate, is StateWaitingForRobotToReboot:
+            case is StateApplyingUpdate,
+                 is StateWaitingForRobotToReboot:
                 currentStage.send(.installingUpdate)
             case is StateFinal:
                 currentStage.send(completion: .finished)

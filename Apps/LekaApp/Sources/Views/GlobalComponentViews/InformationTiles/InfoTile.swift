@@ -40,7 +40,10 @@ struct InfoTile: View {
             Text(data.content.title!)
             HStack {
                 switch data {
-                    case .discovery, .curriculums, .activities, .commands:
+                    case .discovery,
+                         .curriculums,
+                         .activities,
+                         .commands:
                         Image(systemName: data.content.image!)
                             .font(metrics.reg19)
                     default:

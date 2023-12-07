@@ -107,7 +107,8 @@ class UpdateStatusViewModel: ObservableObject {
                 self.onUpdateEnded()
             } receiveValue: { state in
                 switch state {
-                    case .initial, .sendingUpdate:
+                    case .initial,
+                         .sendingUpdate:
                         self.updatingStatus = .sendingFile
                     case .installingUpdate:
                         self.updatingStatus = .rebootingRobot

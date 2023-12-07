@@ -36,7 +36,8 @@ extension LedZoneSelectorView {
                 switch mode {
                     case .fullBelt:
                         EarIcon()
-                    case .twoHalves, .fourQuarters:
+                    case .twoHalves,
+                         .fourQuarters:
                         EarIcon()
                         EarIcon()
                 }

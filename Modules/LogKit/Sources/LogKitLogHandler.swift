@@ -147,7 +147,8 @@ public struct LogKitLogHandler: LogHandler {
                 "🩶 [TRCE]"
             case .debug:
                 "💚 [DBUG]"
-            case .info, .notice:
+            case .info,
+                 .notice:
                 "💙 [INFO]"
             case .warning:
                 "⚠️ [WARN]"

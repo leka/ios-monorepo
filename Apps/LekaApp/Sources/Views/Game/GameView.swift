@@ -127,7 +127,8 @@ struct GameView: View {
                     + Text("(0%)")
                     .foregroundColor(DesignKitAsset.Colors.bravoHighlights.swiftUIColor)
                     + Text(".")
-            case .medium, .success:
+            case .medium,
+                 .success:
                 Text("success_bottom_message")
                     + Text(
                         "success_bottom_result \(activityVM.goodAnswers) \(activityVM.numberOfSteps) \(activityVM.percentOfSuccess)"
