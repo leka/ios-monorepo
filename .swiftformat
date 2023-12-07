@@ -116,6 +116,7 @@
 --enable redundantVoidReturnType
 
 --enable semicolons
+--enable sortDeclarations
 
 # Disabled rules
 
