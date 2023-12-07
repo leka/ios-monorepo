@@ -156,6 +156,7 @@
 --wrapcollections preserve
 --wrapconditions after-first
 --enable wrapAttributes
+--enable wrapEnumCases
 
 # Disabled rules
 

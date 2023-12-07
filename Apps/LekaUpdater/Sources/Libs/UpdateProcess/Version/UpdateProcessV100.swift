@@ -14,7 +14,8 @@ import Version
 private enum UpdateEvent {
     case startUpdateRequested
 
-    case fileLoaded, failedToLoadFile
+    case fileLoaded
+    case failedToLoadFile
     case destinationPathSet
     case fileSent
     case robotDisconnected

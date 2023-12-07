@@ -10,7 +10,10 @@ import SwiftUI
 extension RemoteArrowView {
     struct ArrowButton: View {
         enum Arrow {
-            case up, clockwise, down, counterclockwise
+            case up
+            case clockwise
+            case down
+            case counterclockwise
 
             // MARK: Internal
 

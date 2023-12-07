@@ -36,7 +36,9 @@ public enum DragAndDropToAssociate {
         // MARK: Private
 
         private enum CodingKeys: String, CodingKey {
-            case value, type, category
+            case value
+            case type
+            case category
         }
     }
 

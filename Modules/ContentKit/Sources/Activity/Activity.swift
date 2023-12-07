@@ -34,7 +34,11 @@ public struct Activity: Codable, Identifiable {
     // MARK: Private
 
     private enum CodingKeys: String, CodingKey {
-        case id, name, description, image, sequence
+        case id
+        case name
+        case description
+        case image
+        case sequence
         case shuffleExercises = "shuffle_exercises"
         case shuffleSequences = "shuffle_sequences"
     }

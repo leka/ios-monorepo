@@ -65,6 +65,10 @@ public struct Exercise: Codable {
     // MARK: Internal
 
     enum CodingKeys: String, CodingKey {
-        case instructions, interface, gameplay, action, payload
+        case instructions
+        case interface
+        case gameplay
+        case action
+        case payload
     }
 }

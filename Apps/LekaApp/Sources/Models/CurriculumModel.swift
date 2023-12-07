@@ -52,7 +52,9 @@ struct Curriculum: Codable, Identifiable {
     // MARK: Internal
 
     enum CodingKeys: String, CodingKey {
-        case title, subtitle, activities
+        case title
+        case subtitle
+        case activities
         case id = "uuid"
         case fullTitle = "full_title"
         case quantity = "number_of_activities"

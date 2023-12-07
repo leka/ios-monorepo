@@ -18,7 +18,16 @@ struct AvatarCategory: Identifiable, Hashable {
 
 // AvatarPicker Data
 enum AvatarSets: Int, CaseIterable, Hashable {
-    case girls, boys, lekaGirls, lekaBoys, jobs, weather, sunglasses, animals, fruits, vegies
+    case girls
+    case boys
+    case lekaGirls
+    case lekaBoys
+    case jobs
+    case weather
+    case sunglasses
+    case animals
+    case fruits
+    case vegies
 
     // MARK: Internal
 

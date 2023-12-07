@@ -8,7 +8,10 @@ import SwiftUI
 // MARK: - FormField
 
 enum FormField {
-    case mail, password, confirm, name
+    case mail
+    case password
+    case confirm
+    case name
 }
 
 // MARK: - LocalizedContent
@@ -26,5 +29,8 @@ struct LocalizedContent: Codable, Equatable {
 // MARK: - ResultType
 
 enum ResultType {
-    case idle, fail, medium, success
+    case idle
+    case fail
+    case medium
+    case success
 }

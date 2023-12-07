@@ -8,7 +8,9 @@ import SwiftUI
 
 // Navigation Sets
 enum SidebarDestinations: Int, Identifiable, CaseIterable, Hashable {
-    case curriculums, activities, commands
+    case curriculums
+    case activities
+    case commands
 
     // MARK: Internal
 
@@ -18,7 +20,9 @@ enum SidebarDestinations: Int, Identifiable, CaseIterable, Hashable {
 // MARK: - PathsToGame
 
 enum PathsToGame: Hashable {
-    case robot, user, game
+    case robot
+    case user
+    case game
 }
 
 // MARK: - SectionLabel

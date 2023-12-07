@@ -30,7 +30,9 @@ public enum TouchToSelect {
         // MARK: Private
 
         private enum CodingKeys: String, CodingKey {
-            case value, type, isRightAnswer
+            case value
+            case type
+            case isRightAnswer
         }
     }
 

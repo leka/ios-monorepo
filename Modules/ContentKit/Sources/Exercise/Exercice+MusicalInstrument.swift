@@ -21,7 +21,8 @@ public enum MusicalInstrument {
         // MARK: Internal
 
         enum CodingKeys: String, CodingKey {
-            case instrument, scale
+            case instrument
+            case scale
         }
     }
 }

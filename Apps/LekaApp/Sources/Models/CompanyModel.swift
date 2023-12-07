@@ -7,7 +7,8 @@ import SwiftUI
 // MARK: - UserType
 
 enum UserType: Int, CaseIterable {
-    case user, teacher
+    case user
+    case teacher
 }
 
 // MARK: - Company
@@ -60,9 +61,28 @@ struct User: Profile {
 
 enum Professions: String, Identifiable, CaseIterable {
     // swiftlint:disable identifier_name
-    case educSpe, eje, monit, monitAt, teach, ASC, psychoMot,
-         ergo, ortho, kine, pedopsy, med, psy, infir, soign,
-         AESH, AES, AVDH, auxVieScol, pueri, auxPueri, ludo
+    case educSpe
+    case eje
+    case monit
+    case monitAt
+    case teach
+    case ASC
+    case psychoMot
+    case ergo
+    case ortho
+    case kine
+    case pedopsy
+    case med
+    case psy
+    case infir
+    case soign
+    case AESH
+    case AES
+    case AVDH
+    case auxVieScol
+    case pueri
+    case auxPueri
+    case ludo
 
     // MARK: Internal
 

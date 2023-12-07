@@ -56,7 +56,8 @@ struct Activity: Codable {
     // MARK: Internal
 
     enum CodingKeys: String, CodingKey {
-        case title, steps
+        case title
+        case steps
         case short = "short_title"
         case id = "uuid"
         case activityType = "type"
@@ -98,7 +99,9 @@ struct Step: Codable, Equatable {
     // MARK: Internal
 
     enum CodingKeys: String, CodingKey {
-        case instruction, images, sound
+        case instruction
+        case images
+        case sound
         case correctAnswer = "correct_answer"
     }
 

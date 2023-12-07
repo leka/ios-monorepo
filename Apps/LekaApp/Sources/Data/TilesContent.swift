@@ -22,8 +22,14 @@ struct TileContent {
 // MARK: - TileData
 
 enum TileData: Int, CaseIterable, Hashable {
-    case discovery, curriculums, activities, commands
-    case signupBravo, signupStep1, signupStep2, signupFinalStep
+    case discovery
+    case curriculums
+    case activities
+    case commands
+    case signupBravo
+    case signupStep1
+    case signupStep2
+    case signupFinalStep
 
     // MARK: Internal
 

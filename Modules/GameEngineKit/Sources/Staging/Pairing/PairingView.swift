@@ -8,7 +8,9 @@ import SwiftUI
 // MARK: - Action
 
 private enum Action {
-    case play, pause, stop
+    case play
+    case pause
+    case stop
 
     // MARK: Public
 
