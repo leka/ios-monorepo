@@ -124,6 +124,7 @@
 --enable spaceAroundBraces
 --enable spaceAroundBrackets
 --enable spaceAroundComments
+--enable spaceAroundGenerics
 
 # Disabled rules
 
