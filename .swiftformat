@@ -134,6 +134,7 @@
 --enable spaceInsideBrackets
 --enable spaceInsideComments
 --enable spaceInsideGenerics
+--enable spaceInsideParens
 
 # Disabled rules
 
