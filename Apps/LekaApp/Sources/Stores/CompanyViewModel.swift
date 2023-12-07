@@ -135,9 +135,17 @@ class CompanyViewModel: ObservableObject {
 
     func profileIsSelected(_ type: UserType) -> Bool {
         switch type {
-            case .teacher: currentCompany.teachers.map(\.id).contains(selectedProfiles[.teacher])
-            case .user: currentCompany.users.map(\.id).contains(selectedProfiles[.user])
+            case .teacher:
+                if let id = selectedProfiles[.teacher] {
+                    return currentCompany.teachers.map(\.id).contains(id)
+                }
+            case .user:
+                if let id = selectedProfiles[.user] {
+                    return currentCompany.users.map(\.id).contains(id)
+                }
         }
+
+        return false
     }
 
     func profileIsCurrent(_ type: UserType, id: UUID) -> Bool {
@@ -149,14 +157,26 @@ class CompanyViewModel: ObservableObject {
 
     func profileIsAssigned(_ type: UserType) -> Bool {
         switch type {
-            case .teacher: currentCompany.teachers.map(\.id).contains(profilesInUse[.teacher])
-            case .user: currentCompany.users.map(\.id).contains(profilesInUse[.user])
+            case .teacher:
+                if let id = selectedProfiles[.teacher] {
+                    return currentCompany.teachers.map(\.id).contains(id)
+                }
+            case .user:
+                if let id = selectedProfiles[.user] {
+                    return currentCompany.users.map(\.id).contains(id)
+                }
         }
+
+        return false
     }
 
     func selectionSetIsCorrect() -> Bool {
-        currentCompany.teachers.map(\.id).contains(selectedProfiles[.teacher])
-            && currentCompany.users.map(\.id).contains(selectedProfiles[.user])
+        if let teacher = selectedProfiles[.teacher], let user = selectedProfiles[.user] {
+            return currentCompany.teachers.map(\.id).contains(teacher)
+                && currentCompany.users.map(\.id).contains(user)
+        }
+
+        return false
     }
 
     func editProfile(_ type: UserType) {
