@@ -126,6 +126,9 @@
 --enable spaceAroundComments
 --enable spaceAroundGenerics
 
+--enable spaceAroundOperators
+--ranges no-space
+
 # Disabled rules
 
 --disable blankLinesBetweenImports

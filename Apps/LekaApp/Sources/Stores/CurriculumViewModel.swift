@@ -27,7 +27,7 @@ class CurriculumViewModel: ObservableObject, YamlFileDecodable {
     @Published var selectedCurriculum: Int? = 0 {
         didSet {
             currentCurriculum = availableCurriculums[selectedCurriculum ?? 0]
-            selectedCurriculumRank = "\(String(describing: (selectedCurriculum ?? 0)+1))/\(availableCurriculums.count)"
+            selectedCurriculumRank = "\(String(describing: (selectedCurriculum ?? 0) + 1))/\(availableCurriculums.count)"
             selectedCurriculumHeaderTitle = availableCurriculums[selectedCurriculum ?? 0].fullTitle.localized()
             selectedCurriculumIcon = setCurriculumIcon(for: currentCurriculum) // from Yaml later
             selectedCurriculumDescription = // swiftlint:disable:next line_length
@@ -73,7 +73,7 @@ class CurriculumViewModel: ObservableObject, YamlFileDecodable {
     }
 
     func setCurriculumDetailNavTitle() -> String {
-        "\(getCurriculumList(category: currentCurriculumCategory).sectionTitle.localized()) \(String(describing: (selectedCurriculum ?? 0)+1))/\(availableCurriculums.count)"
+        "\(getCurriculumList(category: currentCurriculumCategory).sectionTitle.localized()) \(String(describing: (selectedCurriculum ?? 0) + 1))/\(availableCurriculums.count)"
     }
 
     func setCurriculumIcon(for curriculum: Curriculum) -> String {
