@@ -138,6 +138,8 @@
 
 --enable strongifiedSelf
 
+--enable todos
+
 # Disabled rules
 
 --disable blankLinesBetweenImports
