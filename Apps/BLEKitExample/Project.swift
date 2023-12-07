@@ -16,6 +16,6 @@ let project = Project.iOSApp(
         "NSBluetoothAlwaysUsageDescription":
             "The LekaBLE app needs to use Bluetooth to connect to the Leka robot.",
         "UIBackgroundModes": [
-            "bluetooth-central"
+            "bluetooth-central",
         ],
     ])

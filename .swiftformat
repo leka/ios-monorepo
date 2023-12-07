@@ -141,6 +141,7 @@
 --enable todos
 
 --enable trailingClosures
+--enable trailingCommas
 
 # Disabled rules
 

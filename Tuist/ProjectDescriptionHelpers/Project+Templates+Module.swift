@@ -58,7 +58,7 @@ public extension Project {
                         "CFCopyLocalizedString",
                         "LocalizedString",
                         "LocalizedStringInterpolation",
-                    ]
+                    ],
                 ])
             )
 

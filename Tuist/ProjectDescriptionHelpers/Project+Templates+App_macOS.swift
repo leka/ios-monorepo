@@ -32,7 +32,7 @@ public extension Project {
             resources: [],
             scripts: TargetScript.linters(),
             dependencies: [
-                .target(name: "\(name)")
+                .target(name: "\(name)"),
             ])
 
         let targets = [mainTarget, testTarget]

@@ -27,7 +27,7 @@ extension TouchToSelectView {
 
 #Preview {
     let choices: [TouchToSelect.Choice] = [
-        TouchToSelect.Choice(value: "red", type: .color, isRightAnswer: true)
+        TouchToSelect.Choice(value: "red", type: .color, isRightAnswer: true),
     ]
 
     return TouchToSelectView(choices: choices)

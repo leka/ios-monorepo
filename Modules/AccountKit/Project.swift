@@ -17,6 +17,6 @@ let project = Project.module(
         ModuleExample(
             name: "AccountKitExample",
             infoPlist: [
-                "NSAccentColorName": "AccentColor"
-            ])
+                "NSAccentColorName": "AccentColor",
+            ]),
     ])

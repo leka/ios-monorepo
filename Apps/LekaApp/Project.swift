@@ -19,7 +19,7 @@ let project = Project.iOSApp(
         "NSBluetoothAlwaysUsageDescription":
             "The Leka App needs to use Bluetooth to connect to the Leka robot.",
         "UIBackgroundModes": [
-            "bluetooth-central"
+            "bluetooth-central",
         ],
         "UIRequiresFullScreen": "true",
         "UISupportedInterfaceOrientations": [
@@ -36,7 +36,7 @@ let project = Project.iOSApp(
                 "CFBundleTypeRole": "Editor",
                 "CFBundleURLName": "io.leka.apf.app.LekaApp",
                 "CFBundleURLSchemes": ["LekaApp"],
-            ]
+            ],
         ],
         "LSApplicationQueriesSchemes": ["LekaUpdater"],
     ])

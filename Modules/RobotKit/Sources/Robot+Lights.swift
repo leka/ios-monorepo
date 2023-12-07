@@ -202,7 +202,7 @@ public extension Robot {
             var payload: [UInt8] = []
 
             payload.append(contentsOf: [
-                position.rawValue
+                position.rawValue,
             ])
 
             payload.append(contentsOf: color.robot)
