@@ -125,3 +125,4 @@
 
 --disable blankLinesBetweenImports
 --disable docComments
+--disable sortSwitchCases
