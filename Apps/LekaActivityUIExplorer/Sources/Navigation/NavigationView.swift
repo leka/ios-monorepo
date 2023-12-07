@@ -10,6 +10,22 @@ import SwiftUI
 class NavigationViewViewModel: ObservableObject {
     @Published var isDesignSystemAppleExpanded: Bool = false
     @Published var isDesignSystemLekaExpanded: Bool = false
+
+    @Published var isRobotConnectionPresented: Bool = false
+
+    @Published var isRobotConnect: Bool = false
+
+    private var cancellables: Set<AnyCancellable> = []
+
+    init() {
+        Robot.shared.isConnected
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] isConnected in
+                guard let self else { return }
+                self.isRobotConnect = isConnected
+            }
+            .store(in: &cancellables)
+    }
 }
 
 struct NavigationView: View {
@@ -24,6 +40,13 @@ struct NavigationView: View {
         NavigationSplitView {
             List(selection: $navigation.selectedCategory) {
                 CategoryLabel(category: .home)
+
+                Button {
+                    viewModel.isRobotConnectionPresented.toggle()
+                } label: {
+                    Label(viewModel.isRobotConnect ? "Disconnect robot" : "Connect robot", systemImage: "link")
+                        .foregroundStyle(viewModel.isRobotConnect ? .green : .orange)
+                }
 
                 Section("Activities") {
                     CategoryLabel(category: .activities)
@@ -91,6 +114,9 @@ struct NavigationView: View {
         .preferredColorScheme(preferedColorScheme)
         .onAppear {
             preferedColorScheme = colorScheme
+        }
+        .fullScreenCover(isPresented: $viewModel.isRobotConnectionPresented) {
+            RobotConnectionView(viewModel: RobotConnectionViewModel())
         }
     }
 
