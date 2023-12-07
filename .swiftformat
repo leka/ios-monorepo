@@ -144,6 +144,8 @@
 --enable trailingCommas
 --enable trailingSpace
 
+--enable typeSugar
+
 # Disabled rules
 
 --disable blankLinesBetweenImports
