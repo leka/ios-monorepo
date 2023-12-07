@@ -75,10 +75,3 @@ struct RobotDiscoveryView: View {
 
     @EnvironmentObject private var robotListViewModel: RobotListViewModel
 }
-
-// TODO(@ladislas): create protocol and mock RobotDiscovery
-// struct RobotView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        RobotDiscoveryView(discovery: RobotDiscovery.mock())
-//    }
-// }
