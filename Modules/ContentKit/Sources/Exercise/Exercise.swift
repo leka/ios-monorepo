@@ -45,7 +45,8 @@ public struct Exercise: Codable {
 
             default:
                 throw DecodingError.dataCorruptedError(
-                    forKey: .payload, in: container, debugDescription: "Invalid combination of interface or gameplay")
+                    forKey: .payload, in: container, debugDescription: "Invalid combination of interface or gameplay"
+                )
         }
     }
 

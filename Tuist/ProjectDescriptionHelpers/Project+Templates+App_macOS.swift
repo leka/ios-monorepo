@@ -33,13 +33,15 @@ public extension Project {
             scripts: TargetScript.linters(),
             dependencies: [
                 .target(name: "\(name)"),
-            ])
+            ]
+        )
 
         let targets = [mainTarget, testTarget]
 
         return Project(
             name: name,
             organizationName: "leka.io",
-            targets: targets)
+            targets: targets
+        )
     }
 }

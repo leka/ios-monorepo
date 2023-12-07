@@ -38,13 +38,15 @@ struct RobotView: View {
             Group {
                 ReadOnlyView(characteristicName: "Battery", characteristicValue: "\(robot.battery)")
                 ReadOnlyView(
-                    characteristicName: "Charging status", characteristicValue: robot.isCharging ? "On" : "Off")
+                    characteristicName: "Charging status", characteristicValue: robot.isCharging ? "On" : "Off"
+                )
             }
 
             Group {
                 ReadOnlyView(characteristicName: "Magic Card (ID)", characteristicValue: "\(robot.magicCardID)")
                 ReadOnlyView(
-                    characteristicName: "MagicCard (Language)", characteristicValue: robot.magicCardLanguage)
+                    characteristicName: "MagicCard (Language)", characteristicValue: robot.magicCardLanguage
+                )
             }
 
             Group {

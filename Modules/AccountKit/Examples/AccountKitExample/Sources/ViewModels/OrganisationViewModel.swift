@@ -45,7 +45,8 @@ struct OrganisationViewModel {
     func isEmailValid() -> Bool {
         let mailTest = NSPredicate(
             format: "SELF MATCHES %@",
-            "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}")
+            "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        )
         return mailTest.evaluate(with: mail)
     }
 
@@ -53,7 +54,8 @@ struct OrganisationViewModel {
         // 8 chars min, contain a cap letter and a number at least
         let passwordTest = NSPredicate(
             format: "SELF MATCHES %@",
-            "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$")
+            "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$"
+        )
         return passwordTest.evaluate(with: password)
     }
 

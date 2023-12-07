@@ -28,7 +28,8 @@ struct BotFaceView: View {
                                 lineWidth: 2,
                                 lineCap: .butt,
                                 lineJoin: .round,
-                                dash: [12, 3])
+                                dash: [12, 3]
+                            )
                         )
                         .opacity(isSelected ? 1 : 0)
                         .rotationEffect(.degrees(rotation), anchor: .center)

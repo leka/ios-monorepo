@@ -27,7 +27,8 @@ struct ChangelogView: View {
 
         let fileURL = Bundle.main.url(
             forResource: "LekaOS-\(osVersion)-\(languageCode)",
-            withExtension: "md")!
+            withExtension: "md"
+        )!
 
         do {
             let content = try String(contentsOf: fileURL)

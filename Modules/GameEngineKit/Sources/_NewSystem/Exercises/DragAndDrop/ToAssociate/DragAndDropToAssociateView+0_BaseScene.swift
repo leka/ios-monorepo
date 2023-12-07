@@ -132,7 +132,8 @@ extension DragAndDropToAssociateView {
                     node.position = node.defaultPosition!
                     node.zPosition = 10
                     group.leave()
-                })
+                }
+            )
             group.notify(queue: .main) {
                 self.onDropAction(node)
             }
@@ -196,10 +197,9 @@ extension DragAndDropToAssociateView {
                 playedNode = selectedNodes[touch]!
                 playedNode!.scaleForMax(sizeOf: biggerSide)
 
-                guard
-                    let destinationNode = dropDestinations.first(where: {
-                        $0.frame.contains(touch.location(in: self)) && $0.id != playedNode!.id
-                    })
+                guard let destinationNode = dropDestinations.first(where: {
+                    $0.frame.contains(touch.location(in: self)) && $0.id != playedNode!.id
+                })
                 else {
                     wrongAnswerBehavior(playedNode!)
                     break

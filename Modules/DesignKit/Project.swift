@@ -11,4 +11,5 @@ let project = Project.module(
     platform: .iOS,
     dependencies: [
         .external(name: "Lottie"),
-    ])
+    ]
+)

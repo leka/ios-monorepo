@@ -47,10 +47,12 @@ public struct DragAndDropIntoZonesView: View {
             .onAppear {
                 if let dropZoneB {
                     scene = DragAndDropIntoZonesView.TwoZonesScene(
-                        viewModel: viewModel, hints: false, dropZoneA: dropZoneA, dropZoneB: dropZoneB)
+                        viewModel: viewModel, hints: false, dropZoneA: dropZoneA, dropZoneB: dropZoneB
+                    )
                 } else {
                     scene = DragAndDropIntoZonesView.OneZoneScene(
-                        viewModel: viewModel, hints: true, dropZoneA: dropZoneA)
+                        viewModel: viewModel, hints: true, dropZoneA: dropZoneA
+                    )
                 }
             }
         }

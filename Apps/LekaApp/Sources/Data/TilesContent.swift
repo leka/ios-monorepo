@@ -38,7 +38,8 @@ enum TileData: Int, CaseIterable, Hashable {
                     title: "Le mode découverte",
                     subtitle: "Vous utilisez actuellement votre application en mode découverte !",
                     message: "Vous ne pouvez pas créer de profils et aucune donnée ne sera enregistrée.",
-                    callToActionLabel: "Se connecter ou Créer un compte")
+                    callToActionLabel: "Se connecter ou Créer un compte"
+                )
             // Blue Information tiles
             case .curriculums:
                 TileContent(
@@ -71,25 +72,29 @@ enum TileData: Int, CaseIterable, Hashable {
                     image: DesignKitAsset.Images.welcome.name,
                     title: "Félicitations ! 🎉 \nVous venez de créer votre compte Leka !",
                     message: "Nous allons maintenant découvrir l'application \nensemble. Vous êtes prêt ?",
-                    callToActionLabel: "👉 C'est parti !")
+                    callToActionLabel: "👉 C'est parti !"
+                )
             case .signupStep1:
                 TileContent(
                     image: DesignKitAsset.Images.accompagnantPicto.name,
                     title: "ÉTAPE 1 :",
                     message: "Nous allons créer votre profil accompagnant.",
-                    callToActionLabel: "Créer")
+                    callToActionLabel: "Créer"
+                )
             case .signupStep2:
                 TileContent(
                     image: DesignKitAsset.Images.user.name,
                     title: "ÉTAPE 2 :",
                     message:
                     "Nous allons maintenant créer votre premier \nprofil utilisateur (le profil d'une personne que \nvous accompagnez).",
-                    callToActionLabel: "Créer")
+                    callToActionLabel: "Créer"
+                )
             case .signupFinalStep:
                 TileContent(
                     title: "🎉 Encore bravo ! 👏",
                     message: "Vous avez réalisé ces 2 étapes avec brio :",
-                    callToActionLabel: "Découvrir le contenu !")
+                    callToActionLabel: "Découvrir le contenu !"
+                )
         }
     }
 }

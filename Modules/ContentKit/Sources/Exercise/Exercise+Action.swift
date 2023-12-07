@@ -47,7 +47,8 @@ public extension Exercise {
                             throw DecodingError.dataCorruptedError(
                                 forKey: .type,
                                 in: valueContainer,
-                                debugDescription: "Unexpected type for RobotMedia")
+                                debugDescription: "Unexpected type for RobotMedia"
+                            )
                     }
                 default:
                     throw DecodingError.dataCorruptedError(

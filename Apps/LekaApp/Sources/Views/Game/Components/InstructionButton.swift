@@ -39,7 +39,8 @@ struct InstructionButton: View {
                     .clear,
                     strokeBorder: LinearGradient(
                         gradient: Gradient(colors: [.black.opacity(0.2), .black.opacity(0.05)]), startPoint: .bottom,
-                        endPoint: .top), lineWidth: 4
+                        endPoint: .top
+                    ), lineWidth: 4
                 )
                 .opacity(activityVM.isSpeaking ? 0.5 : 0)
         )

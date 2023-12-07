@@ -66,7 +66,8 @@ struct CurrentGameInstructionView: View {
                     Text("Reprendre")
                 }
                 .foregroundColor(.white)
-            })
+            }
+        )
     }
 }
 

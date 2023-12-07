@@ -44,7 +44,8 @@ struct JoystickView: View {
                     Circle()
                         .fill(.gray)
                 },
-                locksInPlace: false)
+                locksInPlace: false
+            )
         }
     }
 

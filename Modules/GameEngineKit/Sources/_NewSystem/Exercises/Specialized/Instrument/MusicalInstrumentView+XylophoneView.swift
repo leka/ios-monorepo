@@ -36,7 +36,8 @@ extension MusicalInstrumentView {
                     }
                     .buttonStyle(
                         XylophoneTileButtonStyle(
-                            index: index, tileNumber: tileNumber, tileWidth: scale.self == .majorPentatonic ? 130 : 100)
+                            index: index, tileNumber: tileNumber, tileWidth: scale.self == .majorPentatonic ? 130 : 100
+                        )
                     )
                     .compositingGroup()
                 }

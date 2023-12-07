@@ -65,7 +65,8 @@ struct UpdateFinishedContentView: View {
                                 RoundedRectangle(cornerRadius: 10).fill(.white)
                                 RoundedRectangle(cornerRadius: 10)
                                     .strokeBorder(
-                                        DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor, lineWidth: 2)
+                                        DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor, lineWidth: 2
+                                    )
                             }
                         )
                         .cornerRadius(10)

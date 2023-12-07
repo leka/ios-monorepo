@@ -26,6 +26,7 @@ public extension Project {
         return Project(
             name: name,
             organizationName: "leka.io",
-            targets: targets)
+            targets: targets
+        )
     }
 }

@@ -66,7 +66,8 @@ struct CurriculumDetailsView: View {
                             Image(systemName: "chevron.left")
                             Text("Retour")
                         }
-                    })
+                    }
+                )
             }
         }
     }
@@ -105,7 +106,8 @@ struct CurriculumDetailsView: View {
                         icon: item,
                         rank: index + 1,
                         selected: curriculumVM.currentCurriculumSelectedActivityID
-                            == UUID(uuidString: activityVM.getActivity(item).id))
+                            == UUID(uuidString: activityVM.getActivity(item).id)
+                    )
                 }
                 .alignmentGuide(.listRowSeparatorLeading) { _ in
                     0

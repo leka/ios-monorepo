@@ -24,7 +24,8 @@ extension DanceFreeze {
                             VStack(spacing: 0) {
                                 MotionModeButtonStyle(
                                     image: GameEngineKitAsset.Exercises.DanceFreeze.iconMotionModeRotation.swiftUIImage,
-                                    color: motion == .rotation ? .teal : .gray)
+                                    color: motion == .rotation ? .teal : .gray
+                                )
                                 Text("Rotation")
                             }
                             .foregroundStyle(motion == .rotation ? .teal : .gray.opacity(0.4))
@@ -41,7 +42,8 @@ extension DanceFreeze {
                             VStack(spacing: 0) {
                                 MotionModeButtonStyle(
                                     image: GameEngineKitAsset.Exercises.DanceFreeze.iconMotionModeMovement.swiftUIImage,
-                                    color: motion == .movement ? .teal : .gray)
+                                    color: motion == .movement ? .teal : .gray
+                                )
                                 Text("Mouvement")
                             }
                             .foregroundStyle(motion == .movement ? .teal : .gray.opacity(0.4))

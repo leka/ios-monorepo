@@ -67,7 +67,8 @@ struct WelcomeView: View {
                     Text("Passer cette étape")
                     Image(systemName: "chevron.right")
                 }
-            })
+            }
+        )
     }
 }
 

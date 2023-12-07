@@ -55,7 +55,8 @@ struct SettingsView: View {
                         label: {
                             Text("Fermer")
                                 .foregroundColor(.white)
-                        })
+                        }
+                    )
                 }
             }
         }

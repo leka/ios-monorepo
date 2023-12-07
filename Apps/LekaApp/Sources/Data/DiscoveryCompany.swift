@@ -130,5 +130,6 @@ class DiscoveryCompany {
         ]
 
     let discoveryCompany = Company(
-        mail: "discovery@leka.io", password: "Password1234", teachers: discoveryTeachers, users: discoveryUsers)
+        mail: "discovery@leka.io", password: "Password1234", teachers: discoveryTeachers, users: discoveryUsers
+    )
 }

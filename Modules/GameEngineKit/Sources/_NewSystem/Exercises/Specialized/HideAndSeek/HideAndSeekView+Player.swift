@@ -101,5 +101,6 @@ extension HideAndSeekView {
 #Preview {
     HideAndSeekView.Player(
         stage: .constant(.hidden), textSubInstructions: "Example", textButtonRobotFound: "Trouvé",
-        shared: ExerciseSharedData())
+        shared: ExerciseSharedData()
+    )
 }

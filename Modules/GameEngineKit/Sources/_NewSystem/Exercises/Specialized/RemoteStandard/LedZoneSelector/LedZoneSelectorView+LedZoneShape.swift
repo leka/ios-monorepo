@@ -18,7 +18,8 @@ extension LedZoneSelectorView {
 
             path.addArc(
                 center: CGPoint(x: rect.midX, y: rect.midY), radius: rect.width / 2, startAngle: modifiedStart,
-                endAngle: modifiedEnd, clockwise: false)
+                endAngle: modifiedEnd, clockwise: false
+            )
 
             return path
         }

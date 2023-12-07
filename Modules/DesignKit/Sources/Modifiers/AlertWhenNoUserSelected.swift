@@ -40,7 +40,8 @@ struct AlertWhenNoUserSelected: ViewModifier {
                 },
                 label: {
                     Text("Continuer sans utilisateur")
-                })
+                }
+            )
             Button(
                 role: .none,
                 action: {
@@ -50,7 +51,8 @@ struct AlertWhenNoUserSelected: ViewModifier {
                     Text("Sélectionner un utilisateur")
                         .font(.system(size: 17, weight: .semibold))
                         .foregroundColor(.accentColor)
-                })
+                }
+            )
         }
     }
 }

@@ -143,7 +143,8 @@ struct CreateTeacherProfileView: View {
                 BorderedCapsule_NoFeedback_ButtonStyle(
                     font: metrics.reg17,
                     color: DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor,
-                    width: metrics.tileBtnWidth)
+                    width: metrics.tileBtnWidth
+                )
             )
         } else {
             EmptyView()

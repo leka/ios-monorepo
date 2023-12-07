@@ -74,6 +74,7 @@ struct ReinforcerPicker: View {
         )
         .background(
             DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor,
-            in: Circle().inset(by: company.bufferUser.reinforcer == number ? -6 : 2))
+            in: Circle().inset(by: company.bufferUser.reinforcer == number ? -6 : 2)
+        )
     }
 }

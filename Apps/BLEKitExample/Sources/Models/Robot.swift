@@ -64,7 +64,8 @@ class Robot: ObservableObject {
                     [weak self] data in
                     if let data {
                         self?.manufacturer = String(
-                            decoding: data, as: UTF8.self)
+                            decoding: data, as: UTF8.self
+                        )
                     }
                 }
             }
@@ -74,7 +75,8 @@ class Robot: ObservableObject {
                     [weak self] data in
                     if let data {
                         self?.modelNumber = String(
-                            decoding: data, as: UTF8.self)
+                            decoding: data, as: UTF8.self
+                        )
                     }
                 }
             }
@@ -84,7 +86,8 @@ class Robot: ObservableObject {
                     [weak self] data in
                     if let data {
                         self?.serialNumber = String(
-                            decoding: data, as: UTF8.self)
+                            decoding: data, as: UTF8.self
+                        )
                     }
                 }
             }
@@ -94,7 +97,8 @@ class Robot: ObservableObject {
                     [weak self] data in
                     if let data {
                         self?.osVersion = String(
-                            decoding: data, as: UTF8.self)
+                            decoding: data, as: UTF8.self
+                        )
                     }
                 }
             }

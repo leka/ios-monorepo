@@ -19,17 +19,20 @@ struct RequirementsView: View {
                 RequirementView(
                     image: viewModel.chargingBasePluggedImage,
                     text: viewModel.chargingBasePluggedText,
-                    stepNumber: 1)
+                    stepNumber: 1
+                )
 
                 RequirementView(
                     image: viewModel.chargingBaseGreenLEDImage,
                     text: viewModel.chargingBaseGreenLEDText,
-                    stepNumber: 2)
+                    stepNumber: 2
+                )
 
                 RequirementView(
                     image: viewModel.robotBatteryMinimumLevelImage,
                     text: viewModel.robotBatteryMinimumLevelText,
-                    stepNumber: 3)
+                    stepNumber: 3
+                )
             }
         }
         .padding()

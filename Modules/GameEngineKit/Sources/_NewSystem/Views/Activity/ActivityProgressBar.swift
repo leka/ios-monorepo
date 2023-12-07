@@ -18,8 +18,7 @@ struct ActivityProgressBar: View {
                 HStack(spacing: 0) {
                     ForEach(0..<viewModel.totalExercisesInCurrentSequence, id: \.self) { exerciseIndex in
                         let dotColor: Color = {
-                            guard
-                                sequenceIndex < viewModel.currentSequenceIndex
+                            guard sequenceIndex < viewModel.currentSequenceIndex
                                 || (sequenceIndex == viewModel.currentSequenceIndex
                                     && exerciseIndex < viewModel.currentExerciseIndexInSequence)
                             else {

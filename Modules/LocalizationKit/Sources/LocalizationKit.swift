@@ -16,7 +16,8 @@ public enum l10n {
         let markdown =
             (try? AttributedString(
                 markdown: string,
-                options: AttributedString.MarkdownParsingOptions(interpretedSyntax: .inlineOnlyPreservingWhitespace)))
+                options: AttributedString.MarkdownParsingOptions(interpretedSyntax: .inlineOnlyPreservingWhitespace)
+            ))
             ?? AttributedString(string)
         return markdown
     }

@@ -18,5 +18,7 @@ let project = Project.module(
             name: "ContentKitExample",
             infoPlist: [
                 "NSAccentColorName": "AccentColor",
-            ]),
-    ])
+            ]
+        ),
+    ]
+)

@@ -106,7 +106,8 @@ struct MarkdownRepresentable: UIViewRepresentable {
                 uiView.sizeThatFits(
                     CGSize(
                         width: uiView.bounds.width,
-                        height: CGFloat.greatestFiniteMagnitude)
+                        height: CGFloat.greatestFiniteMagnitude
+                    )
                 )
                 .height
         }

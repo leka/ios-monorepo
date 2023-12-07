@@ -64,7 +64,8 @@ struct ProfileEditorView: View {
             },
             label: {
                 Text("Fermer")
-            })
+            }
+        )
     }
 
     private var validateButton: some View {

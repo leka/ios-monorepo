@@ -18,9 +18,8 @@ public struct RobotAdvertisingData {
     }
 
     public init?(advertisementData: AdvertisementData) {
-        guard
-            let rawServiceData = advertisementData.serviceData,
-            let robotServiceData = rawServiceData[BLESpecs.AdvertisingData.service]
+        guard let rawServiceData = advertisementData.serviceData,
+              let robotServiceData = rawServiceData[BLESpecs.AdvertisingData.service]
         else {
             return nil
         }

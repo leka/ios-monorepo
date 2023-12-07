@@ -185,17 +185,20 @@ public struct RobotConnectionView: View {
         if discovery == viewModel.connectedDiscovery {
             RobotDiscoveryView(
                 discovery: RobotDiscoveryViewModel(
-                    discovery: discovery, status: .connected)
+                    discovery: discovery, status: .connected
+                )
             )
         } else if discovery == viewModel.selectedDiscovery {
             RobotDiscoveryView(
                 discovery: RobotDiscoveryViewModel(
-                    discovery: discovery, status: .selected)
+                    discovery: discovery, status: .selected
+                )
             )
         } else {
             RobotDiscoveryView(
                 discovery: RobotDiscoveryViewModel(
-                    discovery: discovery, status: .unselected)
+                    discovery: discovery, status: .unselected
+                )
             )
         }
     }

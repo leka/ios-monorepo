@@ -63,7 +63,8 @@ struct CurriculumListView: View {
             } label: {
                 CurriculumPillShapedView(
                     curriculum: item, // Integrate rank and icon within curriculum Type, delete following properties
-                    icon: curriculumVM.setCurriculumIcon(for: item))
+                    icon: curriculumVM.setCurriculumIcon(for: item)
+                )
             }
             .padding()
         }

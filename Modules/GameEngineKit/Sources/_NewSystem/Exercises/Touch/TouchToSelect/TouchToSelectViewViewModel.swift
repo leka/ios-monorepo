@@ -11,7 +11,8 @@ class TouchToSelectViewViewModel: ObservableObject {
 
     init(choices: [TouchToSelect.Choice], shuffle: Bool = false, shared: ExerciseSharedData? = nil) {
         self.gameplay = GameplayFindTheRightAnswers(
-            choices: choices.map { GameplayTouchToSelectChoiceModel(choice: $0) }, shuffle: shuffle)
+            choices: choices.map { GameplayTouchToSelectChoiceModel(choice: $0) }, shuffle: shuffle
+        )
         self.exercicesSharedData = shared ?? ExerciseSharedData()
 
         subscribeToGameplaySelectionChoicesUpdates()

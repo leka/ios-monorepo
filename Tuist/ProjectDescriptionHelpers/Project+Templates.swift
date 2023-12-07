@@ -49,7 +49,8 @@ extension Project {
             resources: ["Resources/**"],
             scripts: TargetScript.linters(),
             dependencies: dependencies,
-            settings: settings)
+            settings: settings
+        )
 
         let tests = Target(
             name: "\(name)Tests",
@@ -60,7 +61,8 @@ extension Project {
             sources: ["Tests/**"],
             resources: [],
             scripts: TargetScript.linters(),
-            dependencies: [.target(name: name)])
+            dependencies: [.target(name: name)]
+        )
 
         return [module, tests]
     }

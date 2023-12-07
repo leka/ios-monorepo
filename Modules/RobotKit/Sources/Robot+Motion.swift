@@ -109,9 +109,11 @@ public extension Robot {
                     guard speed.isInRange0to1 else { break }
                     let payload = [
                         setMotor(
-                            .left, speed: speed, rotation: rotation == .clockwise ? .counterclockwise : .clockwise),
+                            .left, speed: speed, rotation: rotation == .clockwise ? .counterclockwise : .clockwise
+                        ),
                         setMotor(
-                            .right, speed: speed, rotation: rotation == .clockwise ? .clockwise : .counterclockwise),
+                            .right, speed: speed, rotation: rotation == .clockwise ? .clockwise : .counterclockwise
+                        ),
                     ]
                     output.append(contentsOf: payload)
             }

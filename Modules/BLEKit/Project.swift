@@ -21,5 +21,7 @@ let project = Project.module(
                 "UIBackgroundModes": [
                     "bluetooth-central",
                 ],
-            ]),
-    ])
+            ]
+        ),
+    ]
+)

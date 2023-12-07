@@ -41,7 +41,8 @@ class RequirementsViewModel: ObservableObject {
             .receive(on: DispatchQueue.main)
             .sink { robotBattery in
                 self.updateRobotIsReadyToUpdate(
-                    robotBattery: robotBattery, robotIsCharging: Robot.shared.isCharging.value)
+                    robotBattery: robotBattery, robotIsCharging: Robot.shared.isCharging.value
+                )
             }
             .store(in: &cancellables)
     }
@@ -51,7 +52,8 @@ class RequirementsViewModel: ObservableObject {
             .receive(on: DispatchQueue.main)
             .sink { robotIsCharging in
                 self.updateRobotIsReadyToUpdate(
-                    robotBattery: Robot.shared.battery.value, robotIsCharging: robotIsCharging)
+                    robotBattery: Robot.shared.battery.value, robotIsCharging: robotIsCharging
+                )
             }
             .store(in: &cancellables)
     }

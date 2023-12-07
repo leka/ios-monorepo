@@ -94,7 +94,8 @@ struct ActionButtonObserve: View {
         @State var imageWasTapped = false
         var body: some View {
             ActionButtonObserve(
-                image: "placeholder-observe_then_touch_to_select", imageWasTapped: $imageWasTapped)
+                image: "placeholder-observe_then_touch_to_select", imageWasTapped: $imageWasTapped
+            )
         }
     }
 

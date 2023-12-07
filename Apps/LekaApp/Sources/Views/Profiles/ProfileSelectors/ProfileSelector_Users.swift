@@ -41,7 +41,8 @@ struct ProfileSelector_Users: View {
                             Image(systemName: "chevron.left")
                             Text("Retour")
                         }
-                    })
+                    }
+                )
             }
         }
     }

@@ -67,7 +67,8 @@ struct TeacherSet_AvatarCell: View {
                         company.profileIsCurrent(.teacher, id: teacher.id)
                             ? DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor
                             : DesignKitAsset.Colors.lekaLightGray.swiftUIColor,
-                        in: RoundedRectangle(cornerRadius: metrics.btnRadius))
+                        in: RoundedRectangle(cornerRadius: metrics.btnRadius)
+                    )
             }
         }
         .buttonStyle(NoFeedback_ButtonStyle())
@@ -101,6 +102,8 @@ struct TeacherSet_AvatarCell: View {
                     lineWidth: lineWidth,
                     lineCap: .butt,
                     lineJoin: .round,
-                    dash: dash))
+                    dash: dash
+                )
+            )
     }
 }

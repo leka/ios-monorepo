@@ -53,10 +53,9 @@ public class BLEManager {
             .tryScan(
                 [],
                 { list, discovery -> [PeripheralDiscovery] in
-                    guard
-                        let index = list.firstIndex(where: {
-                            $0.id == discovery.id
-                        })
+                    guard let index = list.firstIndex(where: {
+                        $0.id == discovery.id
+                    })
                     else {
                         return list + [discovery]
                     }
@@ -67,9 +66,8 @@ public class BLEManager {
             )
             .compactMap { peripheralDiscoveries in
                 peripheralDiscoveries.compactMap { peripheralDiscovery in
-                    guard
-                        let robotAdvertisingData = RobotAdvertisingData(
-                            advertisementData: peripheralDiscovery.advertisementData),
+                    guard let robotAdvertisingData = RobotAdvertisingData(
+                        advertisementData: peripheralDiscovery.advertisementData),
                         let rssi = peripheralDiscovery.rssi
                     else {
                         return nil
@@ -78,7 +76,8 @@ public class BLEManager {
                     let robotPeripheral = RobotPeripheral(peripheral: peripheralDiscovery.peripheral)
 
                     return RobotDiscoveryModel(
-                        robotPeripheral: robotPeripheral, advertisingData: robotAdvertisingData, rssi: rssi)
+                        robotPeripheral: robotPeripheral, advertisingData: robotAdvertisingData, rssi: rssi
+                    )
                 }
             }
             .eraseToAnyPublisher()

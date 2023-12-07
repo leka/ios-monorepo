@@ -28,7 +28,8 @@ struct JobTag: View {
         .padding(5)
         .background(
             DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor,
-            in: RoundedRectangle(cornerRadius: 6, style: .circular))
+            in: RoundedRectangle(cornerRadius: 6, style: .circular)
+        )
     }
 }
 

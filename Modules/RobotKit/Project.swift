@@ -34,5 +34,7 @@ let project = Project.module(
                     "UIInterfaceOrientationLandscapeLeft",
                 ],
                 "NSAccentColorName": "AccentColor",
-            ]),
-    ])
+            ]
+        ),
+    ]
+)

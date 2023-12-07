@@ -174,7 +174,8 @@ extension DragAndDropIntoZonesView {
                     node.position = node.defaultPosition!
                     node.zPosition = 10
                     group.leave()
-                })
+                }
+            )
             group.notify(queue: .main) {
                 self.onDropAction(node)
             }

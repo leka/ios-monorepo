@@ -40,7 +40,8 @@ struct AlertWhenRobotIsNeeded: ViewModifier {
                 },
                 label: {
                     Text("Continuer sans le robot")
-                })
+                }
+            )
             Button(
                 role: .none,
                 action: {
@@ -50,7 +51,8 @@ struct AlertWhenRobotIsNeeded: ViewModifier {
                     Text("Se connecter")
                         .font(.system(size: 17, weight: .semibold))
                         .foregroundColor(.accentColor)
-                })
+                }
+            )
         }
     }
 }

@@ -11,4 +11,5 @@ let project = Project.cli(
     version: "1.0.0",
     dependencies: [
         .external(name: "ArgumentParser"),
-    ])
+    ]
+)

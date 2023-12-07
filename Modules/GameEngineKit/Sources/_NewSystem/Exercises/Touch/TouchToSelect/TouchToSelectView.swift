@@ -20,7 +20,8 @@ public struct TouchToSelectView: View {
 
         _viewModel = StateObject(
             wrappedValue: TouchToSelectViewViewModel(
-                choices: payload.choices, shuffle: payload.shuffleChoices, shared: data))
+                choices: payload.choices, shuffle: payload.shuffleChoices, shared: data
+            ))
     }
 
     // MARK: Public

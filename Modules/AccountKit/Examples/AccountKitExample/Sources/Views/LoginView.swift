@@ -91,7 +91,8 @@ struct LoginView: View {
                         .font(.footnote)
                         .underline()
                         .padding(.trailing, 10)
-                })
+                }
+            )
         }
     }
 }

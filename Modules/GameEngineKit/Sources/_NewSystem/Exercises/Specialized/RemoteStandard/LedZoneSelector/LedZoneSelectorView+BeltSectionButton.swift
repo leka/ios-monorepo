@@ -58,7 +58,8 @@ extension LedZoneSelectorView {
                                 lineWidth: CGFloat(backgroundLineWidth),
                                 lineCap: .round,
                                 lineJoin: .round,
-                                miterLimit: 10)
+                                miterLimit: 10
+                            )
                         )
                         .frame(width: 300, height: 300)
                 )

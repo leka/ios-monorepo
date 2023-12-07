@@ -17,5 +17,7 @@ let project = Project.module(
             name: "LogKitExample",
             infoPlist: [
                 "NSAccentColorName": "AccentColor",
-            ]),
-    ])
+            ]
+        ),
+    ]
+)

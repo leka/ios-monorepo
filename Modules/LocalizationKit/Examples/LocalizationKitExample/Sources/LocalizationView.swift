@@ -9,20 +9,24 @@ extension l10n {
     static let localizedStringNoDefault = LocalizedString("localized_string_NO_default", value: "", comment: "")
 
     static let localizedStringWithDefault = LocalizedString(
-        "localized_string_WITH_default", value: "⛳ DEFAULT localized_string_WITH_default", comment: "")
+        "localized_string_WITH_default", value: "⛳ DEFAULT localized_string_WITH_default", comment: ""
+    )
 
     static let localizedStringInterpolation = LocalizedStringInterpolation(
         "localized_string_interpolation",
-        value: "⛳ DEFAULT localized_string_interpolation - text: %@ - int: %lld - float: %f", comment: "")
+        value: "⛳ DEFAULT localized_string_interpolation - text: %@ - int: %lld - float: %f", comment: ""
+    )
 
     static let localizedStringWithMarkdown = LocalizedString(
-        "localized_string_with_markdown", value: "⛳ **DEFAULT** *localized_string_with_markdown*", comment: "")
+        "localized_string_with_markdown", value: "⛳ **DEFAULT** *localized_string_with_markdown*", comment: ""
+    )
 
     static let localizedStringInterpolationWithMarkdown = LocalizedStringInterpolation(
         "localized_string_interpolation_with_markdown",
         value:
         "⛳ **DEFAULT** *localized_string_interpolation_with_markdown* - **text: %@** - *int: %lld* - ***float: %f***",
-        comment: "")
+        comment: ""
+    )
 }
 
 // MARK: - LocalizationView

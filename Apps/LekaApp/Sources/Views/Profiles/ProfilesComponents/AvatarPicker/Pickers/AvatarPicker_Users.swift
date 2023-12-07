@@ -30,7 +30,8 @@ struct AvatarPicker_Users: View {
                             selected: $selected,
                             action: {
                                 company.setBufferAvatar(selected, for: .user)
-                            })
+                            }
+                        )
                     }
                 }
         }

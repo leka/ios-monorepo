@@ -150,7 +150,8 @@ struct GameView: View {
                     )
                     .animation(
                         .easeOut(duration: gameMetrics.endAnimDuration).delay(gameMetrics.endAnimDelayTop),
-                        value: textOpacity)
+                        value: textOpacity
+                    )
                 bottomMessage
                     .foregroundColor(DesignKitAsset.Colors.lekaDarkGray.swiftUIColor)
                     .offset(y: textOffset)
@@ -161,13 +162,15 @@ struct GameView: View {
                     )
                     .animation(
                         .easeOut(duration: gameMetrics.endAnimDuration).delay(gameMetrics.endAnimDelayBottom),
-                        value: textOpacity)
+                        value: textOpacity
+                    )
             }
             .font(
                 .system(
                     size: gameMetrics.endAnimFontSize,
                     weight: gameMetrics.endAnimFontWeight,
-                    design: gameMetrics.endAnimFontDesign))
+                    design: gameMetrics.endAnimFontDesign
+                ))
         }
     }
 
@@ -233,7 +236,8 @@ struct GameView: View {
                     .offset(x: offsetGameOverBtn)
                     .animation(
                         .easeOut(duration: gameMetrics.endAnimBtnDuration).delay(gameMetrics.endAnimGameOverBtnDelay),
-                        value: offsetGameOverBtn)
+                        value: offsetGameOverBtn
+                    )
                     Spacer()
                     Button {
                         activityVM.replayCurrentActivity()
@@ -248,7 +252,8 @@ struct GameView: View {
                     .offset(x: offsetReplayBtn)
                     .animation(
                         .easeOut(duration: gameMetrics.endAnimBtnDuration).delay(gameMetrics.endAnimReplayBtnDelay),
-                        value: offsetReplayBtn)
+                        value: offsetReplayBtn
+                    )
                     Spacer()
                 }
             }

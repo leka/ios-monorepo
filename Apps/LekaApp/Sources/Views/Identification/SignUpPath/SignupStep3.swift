@@ -68,7 +68,8 @@ struct SignupStep3: View {
         )
         .background(
             .white,
-            in: RoundedRectangle(cornerRadius: metrics.tilesRadius, style: .continuous))
+            in: RoundedRectangle(cornerRadius: metrics.tilesRadius, style: .continuous)
+        )
     }
 
     private var accessoryView: some View {
@@ -84,7 +85,8 @@ struct SignupStep3: View {
             BorderedCapsule_NoFeedback_ButtonStyle(
                 font: metrics.reg17,
                 color: DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor,
-                width: metrics.tileBtnWidth)
+                width: metrics.tileBtnWidth
+            )
         )
     }
 }

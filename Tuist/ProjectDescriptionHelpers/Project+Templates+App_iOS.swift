@@ -48,7 +48,8 @@ public extension Project {
             scripts: TargetScript.linters(),
             dependencies: [
                 .target(name: "\(name)"),
-            ])
+            ]
+        )
 
         let targets = [mainTarget, testTarget]
 

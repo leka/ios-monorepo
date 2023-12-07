@@ -26,6 +26,7 @@ public extension RobotDiscoveryViewModel {
             battery: battery,
             isCharging: isCharging,
             osVersion: osVersion,
-            status: status)
+            status: status
+        )
     }
 }

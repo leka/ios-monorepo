@@ -18,4 +18,5 @@ let project = Project.iOSApp(
         "UIBackgroundModes": [
             "bluetooth-central",
         ],
-    ])
+    ]
+)

@@ -8,7 +8,8 @@ public extension TargetScript {
     static let swiftLint = TargetScript.post(
         path: Path.relativeToRoot("Scripts/SwiftLintRunScript.sh"),
         name: "SwiftLint",
-        basedOnDependencyAnalysis: false)
+        basedOnDependencyAnalysis: false
+    )
 
     static func linters() -> [TargetScript] {
         let turnOffLinters = Environment.turnOffLinters.getBoolean(default: false)

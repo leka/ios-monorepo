@@ -28,7 +28,8 @@ struct PlayZone: View {
                             .frame(
                                 width: gameMetrics.playGridBtnSize,
                                 height: gameMetrics.playGridBtnSize,
-                                alignment: .center)
+                                alignment: .center
+                            )
                     }
                     .buttonStyle(ActivityAnswer_ButtonStyle(isEnabled: activityVM.currentMediaHasBeenPlayedOnce))
                     .animation(.easeIn(duration: gameMetrics.playGridBtnAnimDuration), value: activityVM.percent)
@@ -43,7 +44,9 @@ struct PlayZone: View {
                                             lineWidth: gameMetrics.playGridBtnTrimLineWidth,
                                             lineCap: .round,
                                             lineJoin: .round,
-                                            miterLimit: 10))
+                                            miterLimit: 10
+                                        )
+                                    )
                             } else if answer == activityVM.pressedIndex {
                                 Circle()
                                     .fill(.gray)

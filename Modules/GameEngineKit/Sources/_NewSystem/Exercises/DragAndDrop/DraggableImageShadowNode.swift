@@ -9,7 +9,8 @@ class DraggableImageShadowNode: SKSpriteNode {
         super
             .init(
                 texture: draggableImageAnswerNode.texture, color: draggableImageAnswerNode.color,
-                size: draggableImageAnswerNode.size)
+                size: draggableImageAnswerNode.size
+            )
 
         let actionShadow = SKAction.setTexture(draggableImageAnswerNode.texture!, resize: true)
         run(actionShadow)

@@ -39,4 +39,5 @@ let project = Project.iOSApp(
             ],
         ],
         "LSApplicationQueriesSchemes": ["LekaUpdater"],
-    ])
+    ]
+)

@@ -96,7 +96,8 @@ public struct LogKitLogHandler: LogHandler {
     /// Factory that makes a `LogKitLogHandler` to directs its output to `stdout`
     public static func standardOutput(label: String) -> LogKitLogHandler {
         LogKitLogHandler(
-            label: label, stream: StdioOutputStream.stdout, metadataProvider: LoggingSystem.metadataProvider)
+            label: label, stream: StdioOutputStream.stdout, metadataProvider: LoggingSystem.metadataProvider
+        )
     }
 
     /// Factory that makes a `LogKitLogHandler` that directs its output to `stdout`

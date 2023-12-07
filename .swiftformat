@@ -151,6 +151,10 @@
 --enable void
 
 --enable wrap
+--enable wrapArguments
+--wraparguments preserve
+--wrapcollections preserve
+--wrapconditions after-first
 
 # Disabled rules
 

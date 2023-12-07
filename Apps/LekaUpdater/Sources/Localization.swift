@@ -17,31 +17,39 @@ extension l10n {
         static let appName = LocalizedString("main.app_name", value: "Leka Updater", comment: "Name of the application")
         static let appDescription = LocalizedString(
             "main.app_description", value: "The app to update your Leka robots!",
-            comment: "Description of the application")
+            comment: "Description of the application"
+        )
     }
 
     enum toolbar {
         static let connectionButton = LocalizedString(
-            "toolbar.connection_button", value: "Connection", comment: "Connection toolbar button")
+            "toolbar.connection_button", value: "Connection", comment: "Connection toolbar button"
+        )
     }
 
     enum connection {
         static let continueButton = LocalizedString(
-            "connection.continue_button", value: "Continue", comment: "Continue button")
+            "connection.continue_button", value: "Continue", comment: "Continue button"
+        )
         static let searchButton = LocalizedString("connection.search_button", value: "Search", comment: "Search button")
         static let connectButton = LocalizedString(
-            "connection.connect_button", value: "Connect", comment: "Connect button")
+            "connection.connect_button", value: "Connect", comment: "Connect button"
+        )
         static let disconnectButton = LocalizedString(
-            "connection.disconnect_button", value: "Disconnect", comment: "Disconnect button")
+            "connection.disconnect_button", value: "Disconnect", comment: "Disconnect button"
+        )
 
         static let noRobotsFoundText = LocalizedString(
-            "connection.no_robots_found_text", value: "No robots found...", comment: "No robount found text")
+            "connection.no_robots_found_text", value: "No robots found...", comment: "No robount found text"
+        )
         static let searchInviteText = LocalizedString(
             "connection.search_invite_text", value: "Press the Search button to find robots around you",
-            comment: "Search invite text")
+            comment: "Search invite text"
+        )
 
         static let robotDiscoveryVersion = LocalizedStringInterpolation(
-            "connection.robot_discovery_version", value: "LekaOS v%@", comment: "Discovery version LekaOS v...")
+            "connection.robot_discovery_version", value: "LekaOS v%@", comment: "Discovery version LekaOS v..."
+        )
     }
 
     enum information {
@@ -49,32 +57,41 @@ extension l10n {
             static let robotCannotBeUpdatedText = LocalizedString(
                 "information.status.robot_cannot_be_updated_text",
                 value: "⚠️ DEV 🚧\nUpdate process not recognized or not available\n(Error code: #0003)",
-                comment: "Robot cannot be updated text")
+                comment: "Robot cannot be updated text"
+            )
             static let robotUpdateAvailable = LocalizedString(
                 "information.status.robot_update_available", value: "⬆️ New firmware update available 📦",
-                comment: "Robot firmware update available text")
+                comment: "Robot firmware update available text"
+            )
             static let robotIsUpToDate = LocalizedString(
                 "information.status.robot_is_up_to_date", value: "🤖 Your robot is up-to-date! 🎉 You're all done 👌",
-                comment: "Robot is up to date text")
+                comment: "Robot is up to date text"
+            )
         }
 
         enum robot {
             static var serialNumber = LocalizedStringInterpolation(
                 "information.robot.serial_number", value: "Serial Number blablabla: %@",
-                comment: "Connected robot serial number")
+                comment: "Connected robot serial number"
+            )
             static let battery = LocalizedStringInterpolation(
-                "information.robot.battery", value: "Battery: %@", comment: "Connected robot battery level")
+                "information.robot.battery", value: "Battery: %@", comment: "Connected robot battery level"
+            )
             static let version = LocalizedStringInterpolation(
-                "information.robot.version", value: "Version: %@", comment: "Connected robot version")
+                "information.robot.version", value: "Version: %@", comment: "Connected robot version"
+            )
             static let isCharging = LocalizedStringInterpolation(
-                "information.robot.charging_status", value: "Charging: %@", comment: "Connected robot charging status")
+                "information.robot.charging_status", value: "Charging: %@", comment: "Connected robot charging status"
+            )
         }
 
         static let changelogSectionTitle = LocalizedString(
-            "information.changelog_section_title", value: "Changelog", comment: "Changelog of latest firmware update")
+            "information.changelog_section_title", value: "Changelog", comment: "Changelog of latest firmware update"
+        )
         static let changelogNotFoundText = LocalizedString(
             "information.changelog_not_found_text", value: "Changelog is not available",
-            comment: "Changelog not found text")
+            comment: "Changelog not found text"
+        )
 
         static let startUpdateButton = LocalizedString("information.start_update_button", value: "Start robot update", comment: "Start update button")
     }
@@ -83,18 +100,22 @@ extension l10n {
         enum requirements {
             static let instructionsText = LocalizedString(
                 "update.requirements.instructions_text", value: "To start the update, make sure that:",
-                comment: "Requirements before update")
+                comment: "Requirements before update"
+            )
             static let chargingBasePluggedText = LocalizedString(
                 "update.requirements.charging_base_plugged_text",
                 value: "The robot is placed on its base and the base is connected to the mains",
-                comment: "Base must be plugged")
+                comment: "Base must be plugged"
+            )
             static let chargingBaseGreenLEDText = LocalizedString(
                 "update.requirements.charging_base_green_led_text",
                 value: "The charging LED is green indicating the correct positioning on the base",
-                comment: "Base green LED must be on")
+                comment: "Base green LED must be on"
+            )
             static let robotBatteryMinimumLevelText = LocalizedString(
                 "update.requirements.robot_battery_minimum_level_text",
-                value: "The robot battery level is at least 30%", comment: "Robot battery level must be at least 30%")
+                value: "The robot battery level is at least 30%", comment: "Robot battery level must be at least 30%"
+            )
         }
 
         enum error {

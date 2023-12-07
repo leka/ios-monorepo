@@ -16,7 +16,8 @@ final class UtilsLeftPWMConversion_Tests: XCTestCase {
 
         // When
         let (actualLeftSpeed, actualRightSpeed) = convertJoystickPosToSpeed(
-            position: position, maxValue: maxValue)
+            position: position, maxValue: maxValue
+        )
 
         // Then
         let expectedLeftSpeed: CGFloat = 0
@@ -32,7 +33,8 @@ final class UtilsLeftPWMConversion_Tests: XCTestCase {
 
         // When
         let (actualLeftSpeed, actualRightSpeed) = convertJoystickPosToSpeed(
-            position: position, maxValue: maxValue)
+            position: position, maxValue: maxValue
+        )
 
         // Then
         let expectedLeftSpeed: CGFloat = 1
@@ -48,7 +50,8 @@ final class UtilsLeftPWMConversion_Tests: XCTestCase {
 
         // When
         let (actualLeftSpeed, actualRightSpeed) = convertJoystickPosToSpeed(
-            position: position, maxValue: maxValue)
+            position: position, maxValue: maxValue
+        )
 
         // Then
         let expectedLeftSpeed: CGFloat = -1
@@ -64,7 +67,8 @@ final class UtilsLeftPWMConversion_Tests: XCTestCase {
 
         // When
         let (actualLeftSpeed, actualRightSpeed) = convertJoystickPosToSpeed(
-            position: position, maxValue: maxValue)
+            position: position, maxValue: maxValue
+        )
 
         // Then
         let expectedLeftSpeed: CGFloat = 1
@@ -80,7 +84,8 @@ final class UtilsLeftPWMConversion_Tests: XCTestCase {
 
         // When
         let (actualLeftSpeed, actualRightSpeed) = convertJoystickPosToSpeed(
-            position: position, maxValue: maxValue)
+            position: position, maxValue: maxValue
+        )
 
         // Then
         let expectedLeftSpeed: CGFloat = -1
@@ -96,7 +101,8 @@ final class UtilsLeftPWMConversion_Tests: XCTestCase {
 
         // When
         let (actualLeftSpeed, actualRightSpeed) = convertJoystickPosToSpeed(
-            position: position, maxValue: maxValue)
+            position: position, maxValue: maxValue
+        )
 
         // Then
         let expectedLeftSpeed: CGFloat = 0.5
@@ -112,7 +118,8 @@ final class UtilsLeftPWMConversion_Tests: XCTestCase {
 
         // When
         let (actualLeftSpeed, actualRightSpeed) = convertJoystickPosToSpeed(
-            position: position, maxValue: maxValue)
+            position: position, maxValue: maxValue
+        )
 
         // Then
         let expectedLeftSpeed: CGFloat = -0.5
@@ -128,7 +135,8 @@ final class UtilsLeftPWMConversion_Tests: XCTestCase {
 
         // When
         let (actualLeftSpeed, actualRightSpeed) = convertJoystickPosToSpeed(
-            position: position, maxValue: maxValue)
+            position: position, maxValue: maxValue
+        )
 
         // Then
         let expectedLeftSpeed: CGFloat = 0.5
@@ -144,7 +152,8 @@ final class UtilsLeftPWMConversion_Tests: XCTestCase {
 
         // When
         let (actualLeftSpeed, actualRightSpeed) = convertJoystickPosToSpeed(
-            position: position, maxValue: maxValue)
+            position: position, maxValue: maxValue
+        )
 
         // Then
         let expectedLeftSpeed: CGFloat = -0.5
@@ -160,7 +169,8 @@ final class UtilsLeftPWMConversion_Tests: XCTestCase {
 
         // When
         let (actualLeftSpeed, actualRightSpeed) = convertJoystickPosToSpeed(
-            position: position, maxValue: maxValue)
+            position: position, maxValue: maxValue
+        )
 
         // Then
         let expectedLeftSpeed: CGFloat = 0
@@ -176,7 +186,8 @@ final class UtilsLeftPWMConversion_Tests: XCTestCase {
 
         // When
         let (actualLeftSpeed, actualRightSpeed) = convertJoystickPosToSpeed(
-            position: position, maxValue: maxValue)
+            position: position, maxValue: maxValue
+        )
 
         // Then
         let expectedLeftSpeed: CGFloat = 1
@@ -192,7 +203,8 @@ final class UtilsLeftPWMConversion_Tests: XCTestCase {
 
         // When
         let (actualLeftSpeed, actualRightSpeed) = convertJoystickPosToSpeed(
-            position: position, maxValue: maxValue)
+            position: position, maxValue: maxValue
+        )
 
         // Then
         let expectedLeftSpeed: CGFloat = 0
@@ -208,7 +220,8 @@ final class UtilsLeftPWMConversion_Tests: XCTestCase {
 
         // When
         let (actualLeftSpeed, actualRightSpeed) = convertJoystickPosToSpeed(
-            position: position, maxValue: maxValue)
+            position: position, maxValue: maxValue
+        )
 
         // Then
         let expectedLeftSpeed: CGFloat = -1

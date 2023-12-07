@@ -41,7 +41,8 @@ struct AvatarPickerStore: View {
                         } label: {
                             AvatarButtonLabel(
                                 image: .constant(item),
-                                isSelected: .constant(selected == item))
+                                isSelected: .constant(selected == item)
+                            )
                         }
                         .buttonStyle(NoFeedback_ButtonStyle())
                         .id(item)

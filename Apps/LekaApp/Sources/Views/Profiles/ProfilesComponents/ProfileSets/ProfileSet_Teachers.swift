@@ -111,7 +111,8 @@ struct ProfileSet_Teachers: View {
         } else {
             ScrollView(showsIndicators: false) {
                 let columns = Array(
-                    repeating: GridItem(spacing: 20), count: navigationVM.showProfileEditor ? 3 : 6)
+                    repeating: GridItem(spacing: 20), count: navigationVM.showProfileEditor ? 3 : 6
+                )
                 LazyVGrid(columns: columns, spacing: 20) {
                     teachersSet
                 }

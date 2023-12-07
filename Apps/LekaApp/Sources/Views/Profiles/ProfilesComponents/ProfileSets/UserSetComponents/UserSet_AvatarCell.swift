@@ -83,7 +83,8 @@ struct UserSet_AvatarCell: View {
                         company.profileIsCurrent(.user, id: user.id)
                             ? DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor
                             : DesignKitAsset.Colors.lekaLightGray.swiftUIColor,
-                        in: RoundedRectangle(cornerRadius: metrics.btnRadius))
+                        in: RoundedRectangle(cornerRadius: metrics.btnRadius)
+                    )
             }
         }
         .buttonStyle(NoFeedback_ButtonStyle())
@@ -118,7 +119,9 @@ struct UserSet_AvatarCell: View {
                     lineWidth: lineWidth,
                     lineCap: .butt,
                     lineJoin: .round,
-                    dash: dash))
+                    dash: dash
+                )
+            )
         Circle()
             .stroke(
                 DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor,
@@ -126,7 +129,8 @@ struct UserSet_AvatarCell: View {
                     lineWidth: lineWidth,
                     lineCap: .butt,
                     lineJoin: .round,
-                    dash: dash)
+                    dash: dash
+                )
             )
             .frame(maxWidth: 40, maxHeight: 40)
             .offset(x: 6, y: -6)

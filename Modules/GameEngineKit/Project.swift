@@ -37,4 +37,5 @@ let project = Project.module(
                 "NSAccentColorName": "AccentColor",
             ]
         ),
-    ])
+    ]
+)

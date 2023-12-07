@@ -31,11 +31,13 @@ struct HideAndSeekView: View {
             case .toHide:
                 Launcher(
                     stage: $stage, textMainInstructions: instructions.textMainInstructions,
-                    textButtonOk: instructions.textButtonOk)
+                    textButtonOk: instructions.textButtonOk
+                )
             case .hidden:
                 Player(
                     stage: $stage, textSubInstructions: instructions.textSubInstructions,
-                    textButtonRobotFound: instructions.textButtonRobotFound, shared: shared)
+                    textButtonRobotFound: instructions.textButtonRobotFound, shared: shared
+                )
         }
     }
 

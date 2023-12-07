@@ -11,4 +11,5 @@ let project = Project.macOSApp(
     version: "1.0.0",
     dependencies: [
         .project(target: "Module", path: Path("../../Examples/Module")),
-    ])
+    ]
+)

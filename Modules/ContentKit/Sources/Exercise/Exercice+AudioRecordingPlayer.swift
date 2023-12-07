@@ -9,7 +9,8 @@ public enum AudioRecordingPlayer {
         public init(from decoder: Decoder) throws {
             let container = try decoder.container(keyedBy: CodingKeys.self)
             let audioRecordingSongs: [AudioRecording.Song] = try container.decode(
-                [AudioRecording.Song].self, forKey: .songs)
+                [AudioRecording.Song].self, forKey: .songs
+            )
             self.songs = audioRecordingSongs.map { AudioRecording($0) }
         }
 
