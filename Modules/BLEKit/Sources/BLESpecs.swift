@@ -5,6 +5,8 @@
 import CoreBluetooth
 import Foundation
 
+// swiftlint:disable nesting
+
 public enum BLESpecs {
     public enum AdvertisingData {
         public static let service = CBUUID(string: "0xDFB0")
@@ -89,3 +91,5 @@ public enum BLESpecs {
         public static let service = CBUUID(string: "0xDFB0")
     }
 }
+
+// swiftlint:enable nesting

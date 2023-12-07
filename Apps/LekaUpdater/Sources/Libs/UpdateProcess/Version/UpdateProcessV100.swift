@@ -11,6 +11,8 @@ import Version
 
 // MARK: - UpdateEvent
 
+// swiftlint:disable file_length
+
 private enum UpdateEvent {
     case startUpdateRequested
 
@@ -521,3 +523,5 @@ class UpdateProcessV100: UpdateProcessProtocol {
         }
     }
 }
+
+// swiftlint:enable file_length

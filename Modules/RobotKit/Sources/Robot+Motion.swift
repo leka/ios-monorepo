@@ -4,6 +4,8 @@
 
 import Foundation
 
+// swiftlint:disable nesting
+
 extension Float {
     var isInRange0to1: Bool {
         self >= 0 && self <= 1
@@ -155,3 +157,5 @@ public extension Robot {
         self.move(.stop)
     }
 }
+
+// swiftlint:enable nesting

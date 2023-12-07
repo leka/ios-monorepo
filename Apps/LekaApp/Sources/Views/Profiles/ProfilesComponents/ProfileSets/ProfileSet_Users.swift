@@ -41,7 +41,7 @@ struct ProfileSet_Users: View {
         .alert("Mode découverte", isPresented: self.$settings.showConnectInvite) {
             IdentificationIsNeededAlertLabel()
         } message: {
-            Text( // swiftlint:disable:next line_length
+            Text(
                 "Ce mode ne vous permet pas de créer des profils ou d'enregistrer votre utilisation de l'application. \nVoulez-vous vous identifier ?"
             )
         }

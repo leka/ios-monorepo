@@ -2,6 +2,8 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+// swiftlint:disable nesting
+
 public enum MusicalInstrument {
     public struct Payload: Codable {
         // MARK: Lifecycle
@@ -26,3 +28,5 @@ public enum MusicalInstrument {
         }
     }
 }
+
+// swiftlint:enable nesting
