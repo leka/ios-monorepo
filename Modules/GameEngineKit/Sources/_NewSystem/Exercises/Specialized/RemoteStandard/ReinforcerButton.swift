@@ -32,9 +32,9 @@ struct ReinforcerButton: View {
 
     var body: some View {
         Button {
-            robot.run(reinforcer)
+            self.robot.run(self.reinforcer)
         } label: {
-            reinforcer.icon()
+            self.reinforcer.icon()
         }
     }
 }

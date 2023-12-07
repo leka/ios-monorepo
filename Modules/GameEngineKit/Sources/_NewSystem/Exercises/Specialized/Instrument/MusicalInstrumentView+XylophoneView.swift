@@ -26,17 +26,17 @@ extension MusicalInstrumentView {
         let scale: MIDIScale
 
         var body: some View {
-            HStack(spacing: tilesSpacing) {
-                ForEach(0..<tileNumber) { index in
+            HStack(spacing: self.tilesSpacing) {
+                ForEach(0..<self.tileNumber) { index in
                     Button {
-                        xyloPlayer.noteOn(number: scale.notes[index])
-                        Robot.shared.shine(.all(in: tileColors[index]))
+                        self.xyloPlayer.noteOn(number: self.scale.notes[index])
+                        Robot.shared.shine(.all(in: self.tileColors[index]))
                     } label: {
-                        tileColors[index].screen
+                        self.tileColors[index].screen
                     }
                     .buttonStyle(
                         XylophoneTileButtonStyle(
-                            index: index, tileNumber: tileNumber, tileWidth: scale.self == .majorPentatonic ? 130 : 100
+                            index: index, tileNumber: self.tileNumber, tileWidth: self.scale.self == .majorPentatonic ? 130 : 100
                         )
                     )
                     .compositingGroup()

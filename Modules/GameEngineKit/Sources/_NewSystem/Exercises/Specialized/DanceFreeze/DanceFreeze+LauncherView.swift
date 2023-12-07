@@ -24,17 +24,17 @@ extension DanceFreeze {
                             VStack(spacing: 0) {
                                 MotionModeButtonStyle(
                                     image: GameEngineKitAsset.Exercises.DanceFreeze.iconMotionModeRotation.swiftUIImage,
-                                    color: motion == .rotation ? .teal : .gray
+                                    color: self.motion == .rotation ? .teal : .gray
                                 )
                                 Text("Rotation")
                             }
-                            .foregroundStyle(motion == .rotation ? .teal : .gray.opacity(0.4))
+                            .foregroundStyle(self.motion == .rotation ? .teal : .gray.opacity(0.4))
 
                             Toggle(
                                 "",
                                 isOn: Binding<Bool>(
-                                    get: { motion == .movement },
-                                    set: { motion = $0 ? .movement : .rotation }
+                                    get: { self.motion == .movement },
+                                    set: { self.motion = $0 ? .movement : .rotation }
                                 )
                             )
                             .toggleStyle(BinaryChoiceToggleStyle())
@@ -42,18 +42,18 @@ extension DanceFreeze {
                             VStack(spacing: 0) {
                                 MotionModeButtonStyle(
                                     image: GameEngineKitAsset.Exercises.DanceFreeze.iconMotionModeMovement.swiftUIImage,
-                                    color: motion == .movement ? .teal : .gray
+                                    color: self.motion == .movement ? .teal : .gray
                                 )
                                 Text("Mouvement")
                             }
-                            .foregroundStyle(motion == .movement ? .teal : .gray.opacity(0.4))
+                            .foregroundStyle(self.motion == .movement ? .teal : .gray.opacity(0.4))
                         }
                         .padding(.horizontal)
                         .padding(.vertical)
                         .background(.white)
                         .clipShape(RoundedRectangle(cornerRadius: 10))
 
-                        SongSelectorView(viewModel: viewModel)
+                        SongSelectorView(viewModel: self.viewModel)
                             .frame(maxHeight: 260)
                     }
                     .frame(maxWidth: 460, maxHeight: 400)
@@ -62,13 +62,13 @@ extension DanceFreeze {
 
                 HStack(spacing: 70) {
                     Button {
-                        mode = .manualMode
+                        self.mode = .manualMode
                     } label: {
                         StageModeButtonStyle("Jouer - Mode manuel", color: .cyan)
                     }
 
                     Button {
-                        mode = .automaticMode
+                        self.mode = .automaticMode
                     } label: {
                         StageModeButtonStyle("Jouer - Mode auto", color: .mint)
                     }

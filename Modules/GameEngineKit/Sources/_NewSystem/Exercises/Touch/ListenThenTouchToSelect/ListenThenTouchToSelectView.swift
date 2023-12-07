@@ -35,7 +35,7 @@ public struct ListenThenTouchToSelectView: View {
         let interface = Interface(rawValue: viewModel.choices.count)
 
         HStack(spacing: 0) {
-            ActionButtonListen(audioPlayer: audioPlayer)
+            ActionButtonListen(audioPlayer: self.audioPlayer)
                 .padding(20)
 
             Divider()
@@ -47,49 +47,49 @@ public struct ListenThenTouchToSelectView: View {
 
             switch interface {
                 case .oneChoice:
-                    OneChoiceView(viewModel: viewModel, isTappable: audioPlayer.didFinishPlaying)
-                        .onTapGestureIf(audioPlayer.didFinishPlaying) {
-                            viewModel.onChoiceTapped(choice: viewModel.choices[0])
+                    OneChoiceView(viewModel: self.viewModel, isTappable: self.audioPlayer.didFinishPlaying)
+                        .onTapGestureIf(self.audioPlayer.didFinishPlaying) {
+                            self.viewModel.onChoiceTapped(choice: self.viewModel.choices[0])
                         }
-                        .animation(.easeOut(duration: 0.3), value: audioPlayer.didFinishPlaying)
+                        .animation(.easeOut(duration: 0.3), value: self.audioPlayer.didFinishPlaying)
 
                 case .twoChoices:
-                    TwoChoicesView(viewModel: viewModel, isTappable: audioPlayer.didFinishPlaying)
-                        .onTapGestureIf(audioPlayer.didFinishPlaying) {
-                            viewModel.onChoiceTapped(choice: viewModel.choices[0])
+                    TwoChoicesView(viewModel: self.viewModel, isTappable: self.audioPlayer.didFinishPlaying)
+                        .onTapGestureIf(self.audioPlayer.didFinishPlaying) {
+                            self.viewModel.onChoiceTapped(choice: self.viewModel.choices[0])
                         }
-                        .animation(.easeOut(duration: 0.3), value: audioPlayer.didFinishPlaying)
+                        .animation(.easeOut(duration: 0.3), value: self.audioPlayer.didFinishPlaying)
 
                 case .threeChoices:
-                    ThreeChoicesView(viewModel: viewModel, isTappable: audioPlayer.didFinishPlaying)
-                        .onTapGestureIf(audioPlayer.didFinishPlaying) {
-                            viewModel.onChoiceTapped(choice: viewModel.choices[0])
+                    ThreeChoicesView(viewModel: self.viewModel, isTappable: self.audioPlayer.didFinishPlaying)
+                        .onTapGestureIf(self.audioPlayer.didFinishPlaying) {
+                            self.viewModel.onChoiceTapped(choice: self.viewModel.choices[0])
                         }
-                        .animation(.easeOut(duration: 0.3), value: audioPlayer.didFinishPlaying)
+                        .animation(.easeOut(duration: 0.3), value: self.audioPlayer.didFinishPlaying)
 
                 case .fourChoices:
-                    FourChoicesView(viewModel: viewModel, isTappable: audioPlayer.didFinishPlaying)
-                        .onTapGestureIf(audioPlayer.didFinishPlaying) {
-                            viewModel.onChoiceTapped(choice: viewModel.choices[0])
+                    FourChoicesView(viewModel: self.viewModel, isTappable: self.audioPlayer.didFinishPlaying)
+                        .onTapGestureIf(self.audioPlayer.didFinishPlaying) {
+                            self.viewModel.onChoiceTapped(choice: self.viewModel.choices[0])
                         }
-                        .animation(.easeOut(duration: 0.3), value: audioPlayer.didFinishPlaying)
+                        .animation(.easeOut(duration: 0.3), value: self.audioPlayer.didFinishPlaying)
 
                 case .fiveChoices:
-                    FiveChoicesView(viewModel: viewModel, isTappable: audioPlayer.didFinishPlaying)
-                        .onTapGestureIf(audioPlayer.didFinishPlaying) {
-                            viewModel.onChoiceTapped(choice: viewModel.choices[0])
+                    FiveChoicesView(viewModel: self.viewModel, isTappable: self.audioPlayer.didFinishPlaying)
+                        .onTapGestureIf(self.audioPlayer.didFinishPlaying) {
+                            self.viewModel.onChoiceTapped(choice: self.viewModel.choices[0])
                         }
-                        .animation(.easeOut(duration: 0.3), value: audioPlayer.didFinishPlaying)
+                        .animation(.easeOut(duration: 0.3), value: self.audioPlayer.didFinishPlaying)
 
                 case .sixChoices:
-                    SixChoicesView(viewModel: viewModel, isTappable: audioPlayer.didFinishPlaying)
-                        .onTapGestureIf(audioPlayer.didFinishPlaying) {
-                            viewModel.onChoiceTapped(choice: viewModel.choices[0])
+                    SixChoicesView(viewModel: self.viewModel, isTappable: self.audioPlayer.didFinishPlaying)
+                        .onTapGestureIf(self.audioPlayer.didFinishPlaying) {
+                            self.viewModel.onChoiceTapped(choice: self.viewModel.choices[0])
                         }
-                        .animation(.easeOut(duration: 0.3), value: audioPlayer.didFinishPlaying)
+                        .animation(.easeOut(duration: 0.3), value: self.audioPlayer.didFinishPlaying)
 
                 default:
-                    Text("❌ Interface not available for \(viewModel.choices.count) choices")
+                    Text("❌ Interface not available for \(self.viewModel.choices.count) choices")
             }
 
             Spacer()

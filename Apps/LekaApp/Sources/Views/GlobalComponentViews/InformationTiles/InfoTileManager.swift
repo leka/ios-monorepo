@@ -10,15 +10,15 @@ struct InfoTileManager: View {
 
     var body: some View {
         Group {
-            if !settings.companyIsConnected {
+            if !self.settings.companyIsConnected {
                 HStack(spacing: 15) {
                     InfoTile(data: .discovery)
-                    InfoTile(data: navigationVM.contextualInfo())
+                    InfoTile(data: self.navigationVM.contextualInfo())
                 }
                 .padding(.horizontal, 20)
                 .padding(.vertical, 10)
-            } else if navigationVM.showInfo() {
-                InfoTile(data: navigationVM.contextualInfo())
+            } else if self.navigationVM.showInfo() {
+                InfoTile(data: self.navigationVM.contextualInfo())
                     .transition(.move(edge: .top).combined(with: .opacity))
                     .padding(.horizontal, 20)
                     .padding(.vertical, 10)
@@ -26,7 +26,7 @@ struct InfoTileManager: View {
                 EmptyView()
             }
         }
-        .animation(.easeOut(duration: 0.4), value: navigationVM.showInfo())
+        .animation(.easeOut(duration: 0.4), value: self.navigationVM.showInfo())
         .shadow(color: .black.opacity(0.1), radius: 3, x: 0, y: 2)
     }
 }

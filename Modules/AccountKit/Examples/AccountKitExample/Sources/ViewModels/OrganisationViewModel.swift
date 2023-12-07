@@ -13,14 +13,14 @@ struct OrganisationViewModel {
     var confirmPassword: String = ""
 
     var signUpIsComplete: Bool {
-        if !isEmailValid() || !isPasswordValid(password) || !passwordsMatch() {
+        if !self.isEmailValid() || !self.isPasswordValid(self.password) || !self.passwordsMatch() {
             return false
         }
         return true
     }
 
     var logInIsComplete: Bool {
-        if !isEmailValid() || !isPasswordValid(password) {
+        if !self.isEmailValid() || !self.isPasswordValid(self.password) {
             return false
         }
         return true
@@ -47,7 +47,7 @@ struct OrganisationViewModel {
             format: "SELF MATCHES %@",
             "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         )
-        return mailTest.evaluate(with: mail)
+        return mailTest.evaluate(with: self.mail)
     }
 
     func isPasswordValid(_ password: String) -> Bool {
@@ -60,6 +60,6 @@ struct OrganisationViewModel {
     }
 
     func passwordsMatch() -> Bool {
-        confirmPassword == password
+        self.confirmPassword == self.password
     }
 }

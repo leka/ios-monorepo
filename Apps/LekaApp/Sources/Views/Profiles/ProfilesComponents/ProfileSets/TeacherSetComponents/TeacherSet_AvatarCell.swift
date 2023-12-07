@@ -18,18 +18,18 @@ struct TeacherSet_AvatarCell: View {
     var body: some View {
         Button {
             withAnimation {
-                company.selectedProfiles[.teacher] = teacher.id
+                self.company.selectedProfiles[.teacher] = self.teacher.id
             }
-            if settings.companyIsLoggingIn {
-                company.assignCurrentProfiles()
-                settings.companyIsLoggingIn = false
-                viewRouter.currentPage = .home
+            if self.settings.companyIsLoggingIn {
+                self.company.assignCurrentProfiles()
+                self.settings.companyIsLoggingIn = false
+                self.viewRouter.currentPage = .home
             }
         } label: {
             VStack(spacing: 0) {
                 ZStack(alignment: .topTrailing) {
                     // Selection Indicator
-                    selectionIndicator(id: teacher.id)
+                    self.selectionIndicator(id: self.teacher.id)
                     // Avatar
                     Circle()
                         .fill(
@@ -38,7 +38,7 @@ struct TeacherSet_AvatarCell: View {
                             lineWidth: 3
                         )
                         .overlay(content: {
-                            Image(teacher.avatar, bundle: Bundle(for: DesignKitResources.self))
+                            Image(self.teacher.avatar, bundle: Bundle(for: DesignKitResources.self))
                                 .resizable()
                                 .aspectRatio(contentMode: .fill)
                                 .clipShape(Circle())
@@ -48,26 +48,26 @@ struct TeacherSet_AvatarCell: View {
                 .frame(height: 108)
                 .padding(10)
 
-                Text(teacher.name)
-                    .font(metrics.reg15)
+                Text(self.teacher.name)
+                    .font(self.metrics.reg15)
                     .allowsTightening(true)
                     .lineLimit(2)
                     .padding(.horizontal, 14)
                     .foregroundColor(
-                        company.profileIsCurrent(.teacher, id: teacher.id)
+                        self.company.profileIsCurrent(.teacher, id: self.teacher.id)
                             ? Color.white : DesignKitAsset.Colors.lekaDarkGray.swiftUIColor
                     )
                     .padding(2)
                     .frame(minWidth: 108)
                     .background(content: {
-                        RoundedRectangle(cornerRadius: metrics.btnRadius)
+                        RoundedRectangle(cornerRadius: self.metrics.btnRadius)
                             .stroke(.white, lineWidth: 2)
                     })
                     .background(
-                        company.profileIsCurrent(.teacher, id: teacher.id)
+                        self.company.profileIsCurrent(.teacher, id: self.teacher.id)
                             ? DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor
                             : DesignKitAsset.Colors.lekaLightGray.swiftUIColor,
-                        in: RoundedRectangle(cornerRadius: metrics.btnRadius)
+                        in: RoundedRectangle(cornerRadius: self.metrics.btnRadius)
                     )
             }
         }
@@ -79,8 +79,8 @@ struct TeacherSet_AvatarCell: View {
     private func selectionIndicator(id: UUID) -> some View {
         // TODO(@ladislas): review logic in the future
         let lineWidth: CGFloat = {
-            guard company.selectedProfiles[.teacher] == id else {
-                guard company.profileIsCurrent(.teacher, id: id) else {
+            guard self.company.selectedProfiles[.teacher] == id else {
+                guard self.company.profileIsCurrent(.teacher, id: id) else {
                     return 0
                 }
                 return 10
@@ -89,7 +89,7 @@ struct TeacherSet_AvatarCell: View {
         }()
 
         let dash: [CGFloat] = {
-            guard company.profileIsCurrent(.teacher, id: id) else {
+            guard self.company.profileIsCurrent(.teacher, id: id) else {
                 return [10, 4]
             }
             return [10, 0]

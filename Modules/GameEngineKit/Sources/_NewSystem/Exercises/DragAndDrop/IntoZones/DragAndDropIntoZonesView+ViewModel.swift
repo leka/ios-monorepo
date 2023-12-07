@@ -17,8 +17,8 @@ extension DragAndDropIntoZonesView {
                 choices: gameplayChoiceModel)
             self.exercicesSharedData = shared ?? ExerciseSharedData()
 
-            subscribeToGameplayDragAndDropChoicesUpdates()
-            subscribeToGameplayStateUpdates()
+            self.subscribeToGameplayDragAndDropChoicesUpdates()
+            self.subscribeToGameplayStateUpdates()
         }
 
         // MARK: Public
@@ -26,7 +26,7 @@ extension DragAndDropIntoZonesView {
         public func onChoiceTapped(
             choice: GameplayDragAndDropIntoZonesChoiceModel, dropZone: DragAndDropIntoZones.DropZone
         ) {
-            gameplay.process(choice, dropZone)
+            self.gameplay.process(choice, dropZone)
         }
 
         // MARK: Internal
@@ -40,21 +40,21 @@ extension DragAndDropIntoZonesView {
         private var cancellables: Set<AnyCancellable> = []
 
         private func subscribeToGameplayDragAndDropChoicesUpdates() {
-            gameplay.choices
+            self.gameplay.choices
                 .receive(on: DispatchQueue.main)
                 .sink {
                     self.choices = $0
                 }
-                .store(in: &cancellables)
+                .store(in: &self.cancellables)
         }
 
         private func subscribeToGameplayStateUpdates() {
-            gameplay.state
+            self.gameplay.state
                 .receive(on: DispatchQueue.main)
                 .sink {
                     self.exercicesSharedData.state = $0
                 }
-                .store(in: &cancellables)
+                .store(in: &self.cancellables)
         }
     }
 }

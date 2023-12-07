@@ -23,7 +23,7 @@ enum RemoteStandard {
         }
 
         func placeSubviews(in bounds: CGRect, proposal _: ProposedViewSize, subviews: Subviews, cache _: inout ()) {
-            let angleDivision = Angle.degrees(angle / Double(subviews.count - 1)).radians
+            let angleDivision = Angle.degrees(self.angle / Double(subviews.count - 1)).radians
             let posX = bounds.midX
             let posY = bounds.midY * 5 / 4
 
@@ -59,10 +59,10 @@ enum RemoteStandard {
                 }
 
                 RadialLayout(firstButtonPosX: -120, firstButtonPosY: -200, angle: 90.0) {
-                    LedZoneSelectorView(displayMode: displayMode)
+                    LedZoneSelectorView(displayMode: self.displayMode)
 
                     ForEach(DisplayMode.allCases, id: \.self) { mode in
-                        LedZoneSelectorView.ModeButton(mode: mode, displayMode: $displayMode)
+                        LedZoneSelectorView.ModeButton(mode: mode, displayMode: self.$displayMode)
                     }
                 }
             }

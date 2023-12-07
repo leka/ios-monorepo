@@ -18,12 +18,12 @@ struct SendDataButton: View {
 
     var body: some View {
         Button {
-            sendData()
+            self.sendData()
         } label: {
-            labelView
+            self.labelView
         }
-        .opacity((robotListViewModel.connectedRobotPeripheral == nil) ? 0.5 : 1.0)
-        .disabled(robotListViewModel.connectedRobotPeripheral == nil)
+        .opacity((self.robotListViewModel.connectedRobotPeripheral == nil) ? 0.5 : 1.0)
+        .disabled(self.robotListViewModel.connectedRobotPeripheral == nil)
     }
 
     // MARK: Private
@@ -33,9 +33,9 @@ struct SendDataButton: View {
     private var labelView: some View {
         HStack {
             Text(
-                (robotListViewModel.connectedRobotPeripheral == nil)
+                (self.robotListViewModel.connectedRobotPeripheral == nil)
                     ? "Select a robot"
-                    : "Send data to \(robotListViewModel.connectedRobotPeripheral?.peripheral.name ?? "nil")")
+                    : "Send data to \(self.robotListViewModel.connectedRobotPeripheral?.peripheral.name ?? "nil")")
             Image(systemName: "paperplane.circle.fill")
                 .font(.title)
                 .foregroundColor(.teal)
@@ -57,7 +57,7 @@ struct SendDataButton: View {
 
     private func sendData() {
         print("Send data")
-        robotListViewModel.connectedRobotPeripheral?
+        self.robotListViewModel.connectedRobotPeripheral?
             .sendCommand(Data([0x2A, 0x2A, 0x2A, 0x2A, 0x01, 0x50, 0x51, 0x51]))
     }
 }

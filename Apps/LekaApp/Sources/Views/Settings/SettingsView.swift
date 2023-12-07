@@ -30,7 +30,7 @@ struct SettingsView: View {
                 .padding(.horizontal, 10)
                 .formStyle(.grouped)
                 .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
-                .font(metrics.reg17)
+                .font(self.metrics.reg17)
             }
             .interactiveDismissDisabled()
             .navigationBarTitleDisplayMode(.inline)
@@ -40,17 +40,17 @@ struct SettingsView: View {
                 ToolbarItem(placement: .principal) {
                     HStack(spacing: 4) {
                         Text("Réglages")
-                        if settings.companyIsConnected, settings.exploratoryModeIsOn {
+                        if self.settings.companyIsConnected, self.settings.exploratoryModeIsOn {
                             Image(systemName: "binoculars.fill")
                         }
                     }
-                    .font(metrics.semi17)
+                    .font(self.metrics.semi17)
                     .foregroundColor(.white)
                 }
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button(
                         action: {
-                            dismiss()
+                            self.dismiss()
                         },
                         label: {
                             Text("Fermer")

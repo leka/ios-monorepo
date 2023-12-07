@@ -15,12 +15,12 @@ struct CurriculumPillShapedView: View {
 
     var body: some View {
         VStack(spacing: 0) {
-            topContent
-            bottomContent
+            self.topContent
+            self.bottomContent
         }
         .frame(width: 200, height: 240)
         .background(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor, in: Rectangle())
-        .clipShape(RoundedRectangle(cornerRadius: metrics.pillRadius, style: .continuous))
+        .clipShape(RoundedRectangle(cornerRadius: self.metrics.pillRadius, style: .continuous))
         .shadow(color: .black.opacity(0.1), radius: 1, x: 0, y: 1)
         .compositingGroup()
     }
@@ -28,9 +28,9 @@ struct CurriculumPillShapedView: View {
     // MARK: Private
 
     private var topContent: some View {
-        Text(curriculum.fullTitle.localized())
+        Text(self.curriculum.fullTitle.localized())
             .multilineTextAlignment(.center)
-            .font(metrics.med16)
+            .font(self.metrics.med16)
             .frame(maxWidth: 136, minHeight: 120)
             .foregroundColor(.white)
     }
@@ -38,10 +38,10 @@ struct CurriculumPillShapedView: View {
     private var bottomContent: some View {
         VStack(alignment: .center, spacing: 0) {
             Spacer()
-            iconView
+            self.iconView
             Spacer()
-            Text("\(curriculum.activities.count) activités")
-                .font(metrics.med12)
+            Text("\(self.curriculum.activities.count) activités")
+                .font(self.metrics.med12)
                 .foregroundColor(DesignKitAsset.Colors.darkGray.swiftUIColor)
                 .padding(.bottom, 12)
         }
@@ -49,7 +49,7 @@ struct CurriculumPillShapedView: View {
     }
 
     private var iconView: some View {
-        Image(icon)
+        Image(self.icon)
             .resizable()
             .aspectRatio(contentMode: .fit)
             .frame(width: 200, height: 70)

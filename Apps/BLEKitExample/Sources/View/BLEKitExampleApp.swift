@@ -16,9 +16,9 @@ struct BLEKitExampleApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environmentObject(bleManager)
-                .environmentObject(robot)
-                .environmentObject(botVM)
+                .environmentObject(self.bleManager)
+                .environmentObject(self.robot)
+                .environmentObject(self.botVM)
         }
     }
 }
@@ -31,7 +31,7 @@ struct ContentView: View {
 
     var body: some View {
         NavigationView {
-            if bleManager.connectedPeripheral != nil {
+            if self.bleManager.connectedPeripheral != nil {
                 RobotView()
                     .navigationTitle("BLEKitExampleApp")
             } else {

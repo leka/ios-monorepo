@@ -11,13 +11,13 @@ struct AnimatableBlur: AnimatableModifier {
     var blurRadius: CGFloat
 
     var animatableData: CGFloat {
-        get { blurRadius }
-        set { blurRadius = newValue }
+        get { self.blurRadius }
+        set { self.blurRadius = newValue }
     }
 
     func body(content: Content) -> some View {
         content
-            .blur(radius: blurRadius)
+            .blur(radius: self.blurRadius)
     }
 }
 
@@ -27,13 +27,13 @@ struct AnimatableSaturation: AnimatableModifier {
     var saturation: Double
 
     var animatableData: Double {
-        get { saturation }
-        set { saturation = newValue }
+        get { self.saturation }
+        set { self.saturation = newValue }
     }
 
     func body(content: Content) -> some View {
         content
-            .saturation(saturation)
+            .saturation(self.saturation)
     }
 }
 
@@ -48,7 +48,7 @@ struct ActionButtonObserve: View {
         if let uiImage = UIImage(named: image) {
             Button {
                 withAnimation {
-                    imageWasTapped = true
+                    self.imageWasTapped = true
                 }
             } label: {
                 VStack {
@@ -61,21 +61,21 @@ struct ActionButtonObserve: View {
                         .foregroundColor(.white)
                 }
                 .transition(.opacity)
-                .opacity(imageWasTapped ? 0 : 1)
+                .opacity(self.imageWasTapped ? 0 : 1)
                 .frame(width: 460, height: 460)
                 .contentShape(RoundedRectangle(cornerRadius: 10))
             }
-            .disabled(imageWasTapped)
+            .disabled(self.imageWasTapped)
             .background {
                 Image(uiImage: uiImage)
                     .resizable()
                     .frame(width: 460, height: 460)
                     .clipShape(RoundedRectangle(cornerRadius: 10))
-                    .modifier(AnimatableBlur(blurRadius: imageWasTapped ? 0 : 20))
-                    .modifier(AnimatableSaturation(saturation: imageWasTapped ? 1 : 0))
+                    .modifier(AnimatableBlur(blurRadius: self.imageWasTapped ? 0 : 20))
+                    .modifier(AnimatableSaturation(saturation: self.imageWasTapped ? 1 : 0))
             }
         } else {
-            Text("❌\nImage not found:\n\(image)")
+            Text("❌\nImage not found:\n\(self.image)")
                 .multilineTextAlignment(.center)
                 .overlay {
                     Circle()

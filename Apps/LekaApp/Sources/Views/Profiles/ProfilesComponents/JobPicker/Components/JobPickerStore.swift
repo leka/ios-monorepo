@@ -15,12 +15,12 @@ struct JobPickerStore: View {
                 let columns = Array(repeating: GridItem(), count: 3)
                 LazyVGrid(columns: columns, spacing: 40) {
                     ForEach(Professions.allCases) { profession in
-                        Toggle(isOn: .constant(selectedJobs.contains(profession.name))) {
+                        Toggle(isOn: .constant(self.selectedJobs.contains(profession.name))) {
                             Text(profession.name)
                         }
                         .toggleStyle(
                             JobPickerToggleStyle(action: {
-                                jobSelection(profession: profession.name)
+                                self.jobSelection(profession: profession.name)
                             }))
                     }
                 }
@@ -32,10 +32,10 @@ struct JobPickerStore: View {
     // MARK: Private
 
     private func jobSelection(profession: String) {
-        if selectedJobs.contains(profession) {
-            selectedJobs.removeAll(where: { profession == $0 })
+        if self.selectedJobs.contains(profession) {
+            self.selectedJobs.removeAll(where: { profession == $0 })
         } else {
-            selectedJobs.append(profession)
+            self.selectedJobs.append(profession)
         }
     }
 }

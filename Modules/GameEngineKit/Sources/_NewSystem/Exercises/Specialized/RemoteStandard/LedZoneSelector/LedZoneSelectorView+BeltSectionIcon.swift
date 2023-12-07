@@ -12,7 +12,7 @@ extension LedZoneSelectorView {
         var section: Robot.Lights
 
         var body: some View {
-            LedZoneShape(section: section)
+            LedZoneShape(section: self.section)
                 .stroke(.black, style: StrokeStyle(lineWidth: 3, lineCap: .round))
                 .frame(width: 60, height: 60)
         }

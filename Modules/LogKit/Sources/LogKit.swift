@@ -14,11 +14,11 @@ public struct LogKit {
     // MARK: Public
 
     public static func createLoggerFor(module: String) -> Logger {
-        createLogger(label: "mod:\(module)")
+        self.createLogger(label: "mod:\(module)")
     }
 
     public static func createLoggerFor(app: String) -> Logger {
-        createLogger(label: "app:\(app)")
+        self.createLogger(label: "app:\(app)")
     }
 
     // MARK: Private
@@ -26,9 +26,9 @@ public struct LogKit {
     private static var hasBeenInitialized: Bool = false
 
     private static func createLogger(label: String) -> Logger {
-        if !hasBeenInitialized {
+        if !self.hasBeenInitialized {
             LoggingSystem.bootstrap(LogKitLogHandler.standardOutput)
-            hasBeenInitialized = true
+            self.hasBeenInitialized = true
         }
 
         let logger = Logger(label: "\(label)")

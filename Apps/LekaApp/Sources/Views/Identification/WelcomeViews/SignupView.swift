@@ -21,34 +21,34 @@ struct SignupView: View {
             CloudsBGView()
 
             VStack(alignment: .center, spacing: 30) {
-                title
+                self.title
                 Group {
-                    mailTextField
-                    passwordTextField
-                    confirmTextField
+                    self.mailTextField
+                    self.passwordTextField
+                    self.confirmTextField
                 }
                 .frame(width: 400)
                 .disableAutocorrection(true)
-                .onAppear { focusedField = .mail }
-                submitButton
+                .onAppear { self.focusedField = .mail }
+                self.submitButton
             }
         }
-        .navigationDestination(isPresented: $navigateToSignup1) {
+        .navigationDestination(isPresented: self.$navigateToSignup1) {
             SignupStep1()
         }
     }
 
     func connectIsDisabled() -> Bool {
-        !mail.isValidEmail() || !passwordsMatch() || mail.isEmpty || password.isEmpty || confirm.isEmpty
-            || accountAlreadyExists
+        !self.mail.isValidEmail() || !self.passwordsMatch() || self.mail.isEmpty || self.password.isEmpty || self.confirm.isEmpty
+            || self.accountAlreadyExists
     }
 
     func passwordsMatch() -> Bool {
-        password == confirm
+        self.password == self.confirm
     }
 
     func checkAccountAvailability() {
-        accountAlreadyExists = (mail == "test@leka.io")
+        self.accountAlreadyExists = (self.mail == "test@leka.io")
     }
 
     // MARK: Private
@@ -63,10 +63,10 @@ struct SignupView: View {
     @ViewBuilder
     private var mailTextField: some View {
         var mailTitle: String {
-            guard mail.isValidEmail() || mail.isEmpty || isEditing else {
+            guard self.mail.isValidEmail() || self.mail.isEmpty || self.isEditing else {
                 return "Email incorrect"
             }
-            guard accountAlreadyExists else {
+            guard self.accountAlreadyExists else {
                 return "Email"
             }
             return "Ce compte existe déjà"
@@ -74,8 +74,8 @@ struct SignupView: View {
 
         var mailLabelColor: Color {
             // TODO(@ladislas): review logic in the future
-            let color: Color = if mail.isValidEmail() || mail.isEmpty || isEditing {
-                if accountAlreadyExists {
+            let color: Color = if self.mail.isValidEmail() || self.mail.isEmpty || self.isEditing {
+                if self.accountAlreadyExists {
                     .red
                 } else {
                     DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor
@@ -89,16 +89,16 @@ struct SignupView: View {
 
         LekaTextField(
             label: mailTitle,
-            entry: $mail,
+            entry: self.$mail,
             color: mailLabelColor,
-            isEditing: $isEditing,
+            isEditing: self.$isEditing,
             focused: _focusedField
         ) {
-            focusedField = .password
+            self.focusedField = .password
         }
-        .onChange(of: mail) { _ in
-            if accountAlreadyExists {
-                checkAccountAvailability()
+        .onChange(of: self.mail) { _ in
+            if self.accountAlreadyExists {
+                self.checkAccountAvailability()
             }
         }
     }
@@ -106,13 +106,13 @@ struct SignupView: View {
     private var passwordTextField: some View {
         LekaPasswordField(
             label: "Mot de passe",
-            entry: $password,
+            entry: self.$password,
             focused: _focusedField
         ) {
-            if !password.isEmpty {
-                focusedField = .confirm
+            if !self.password.isEmpty {
+                self.focusedField = .confirm
             } else {
-                focusedField = .password
+                self.focusedField = .password
             }
         }
     }
@@ -120,25 +120,25 @@ struct SignupView: View {
     @ViewBuilder
     private var confirmTextField: some View {
         let confirmTitle: String = {
-            guard passwordsMatch() || password.isEmpty || confirm.isEmpty else {
+            guard self.passwordsMatch() || self.password.isEmpty || self.confirm.isEmpty else {
                 return "Les mots de passe ne sont pas identiques"
             }
             return "Confirmer le mot de passe"
         }()
 
-        let confirmLabelColor: Color = passwordsMatch() || confirm.isEmpty ? DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor : .red
+        let confirmLabelColor: Color = self.passwordsMatch() || self.confirm.isEmpty ? DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor : .red
 
         LekaPasswordField(
             label: confirmTitle,
-            entry: $confirm,
+            entry: self.$confirm,
             color: confirmLabelColor,
             type: .confirm,
             focused: _focusedField
         ) {
-            if confirm.isEmpty || !passwordsMatch() {
-                focusedField = .confirm
+            if self.confirm.isEmpty || !self.passwordsMatch() {
+                self.focusedField = .confirm
             } else {
-                submitForm()
+                self.submitForm()
             }
         }
     }
@@ -147,36 +147,36 @@ struct SignupView: View {
         Text("Créer un compte")
             .textCase(.uppercase)
             .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
-            .font(metrics.semi20)
+            .font(self.metrics.semi20)
     }
 
     private var submitButton: some View {
         Button(
             action: {
-                submitForm()
+                self.submitForm()
             },
             label: {
                 Text("Connexion")
-                    .font(metrics.bold15)
+                    .font(self.metrics.bold15)
                     .padding(6)
                     .frame(width: 210)
             }
         )
-        .disabled(connectIsDisabled())
+        .disabled(self.connectIsDisabled())
         .buttonStyle(.borderedProminent)
         .tint(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
     }
 
     private func submitForm() {
-        checkAccountAvailability()
-        if accountAlreadyExists {
-            password = ""
-            confirm = ""
+        self.checkAccountAvailability()
+        if self.accountAlreadyExists {
+            self.password = ""
+            self.confirm = ""
         } else {
-            company.currentCompany.mail = mail
-            company.currentCompany.password = password
-            settings.companyIsConnected = true
-            navigateToSignup1.toggle()
+            self.company.currentCompany.mail = self.mail
+            self.company.currentCompany.password = self.password
+            self.settings.companyIsConnected = true
+            self.navigateToSignup1.toggle()
         }
     }
 }

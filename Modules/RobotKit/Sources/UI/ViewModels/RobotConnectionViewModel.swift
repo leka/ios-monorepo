@@ -10,62 +10,62 @@ public class RobotConnectionViewModel: ObservableObject {
     // MARK: Lifecycle
 
     public init() {
-        self.connected = bleManager.isConnected
+        self.connected = self.bleManager.isConnected
     }
 
     // MARK: Public
 
     public func select(discovery: RobotDiscoveryModel) {
-        if selectedDiscovery == discovery {
-            selectedDiscovery = nil
+        if self.selectedDiscovery == discovery {
+            self.selectedDiscovery = nil
             log.trace("Unselected: \(discovery.id)")
             return
         }
 
-        selectedDiscovery = discovery
+        self.selectedDiscovery = discovery
         log.trace("Selected: \(discovery.id)")
     }
 
     public func scanForRobots() {
         log.info("🔵 BLE - Start scanning for robots")
-        scanCancellable = bleManager.scanForRobots()
+        self.scanCancellable = self.bleManager.scanForRobots()
             .receive(on: DispatchQueue.main)
             .sink { _ in
                 // nothing to do
             } receiveValue: { [weak self] discoveries in
                 guard let self else { return }
-                robotDiscoveries = discoveries
+                self.robotDiscoveries = discoveries
                 log.trace("🔵 BLE - Discoveries found: \(discoveries)")
             }
     }
 
     public func stopScanning() {
         log.info("🔵 BLE - Stop scanning for robots")
-        scanCancellable = nil
+        self.scanCancellable = nil
     }
 
     public func connectToRobot() {
         guard let discovery = selectedDiscovery else {
             return
         }
-        bleManager.connect(discovery)
+        self.bleManager.connect(discovery)
             .receive(on: DispatchQueue.main)
             .sink { _ in
                 // nothing to do
             } receiveValue: { [weak self] peripheral in
                 guard let self else { return }
-                robot.connectedPeripheral = peripheral
-                connectedDiscovery = discovery
-                selectedDiscovery = nil
-                log.info("🔵 BLE - Connected to \(robot.name.value)")
+                self.robot.connectedPeripheral = peripheral
+                self.connectedDiscovery = discovery
+                self.selectedDiscovery = nil
+                log.info("🔵 BLE - Connected to \(self.robot.name.value)")
             }
-            .store(in: &cancellables)
+            .store(in: &self.cancellables)
     }
 
     public func disconnectFromRobot() {
-        log.info("🔵 BLE - Disconnecting from \(robot.name.value)")
-        bleManager.disconnect()
-        connectedDiscovery = nil
+        log.info("🔵 BLE - Disconnecting from \(self.robot.name.value)")
+        self.bleManager.disconnect()
+        self.connectedDiscovery = nil
     }
 
     // MARK: Internal
@@ -77,7 +77,7 @@ public class RobotConnectionViewModel: ObservableObject {
 
     @Published var connectedDiscovery: RobotDiscoveryModel? {
         didSet {
-            connected = connectedDiscovery != nil
+            self.connected = self.connectedDiscovery != nil
         }
     }
 

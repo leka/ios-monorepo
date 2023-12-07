@@ -18,18 +18,18 @@ struct HomeView: View {
     var body: some View {
         Group {
             // Educ Content
-            NavigationSplitView(columnVisibility: $navigationVM.sidebarVisibility) {
+            NavigationSplitView(columnVisibility: self.$navigationVM.sidebarVisibility) {
                 SidebarView()
             } detail: {
-                NavigationStack(path: $navigationVM.pathsFromHome) {
-                    navigationVM.allSidebarDestinationViews
+                NavigationStack(path: self.$navigationVM.pathsFromHome) {
+                    self.navigationVM.allSidebarDestinationViews
                         .navigationBarTitleDisplayMode(.inline)
                         .toolbar {
                             ToolbarItem(placement: .principal) {
-                                toolbarTitle
+                                self.toolbarTitle
                             }
                             ToolbarItem(placement: .navigationBarTrailing) {
-                                infoButton
+                                self.infoButton
                             }
                         }
                         .background(DesignKitAsset.Colors.lekaLightBlue.swiftUIColor.ignoresSafeArea())
@@ -37,23 +37,23 @@ struct HomeView: View {
             }
         }
         .preferredColorScheme(.light)
-        .sheet(isPresented: $navigationVM.showSettings) {
+        .sheet(isPresented: self.$navigationVM.showSettings) {
             SettingsView()
         }
-        .fullScreenCover(isPresented: $navigationVM.showProfileEditor) {
+        .fullScreenCover(isPresented: self.$navigationVM.showProfileEditor) {
             NavigationStack {
                 ProfileEditorView()
             }
         }
-        .fullScreenCover(isPresented: $navigationVM.showRobotPicker) {
+        .fullScreenCover(isPresented: self.$navigationVM.showRobotPicker) {
             RobotConnectionView()
         }
-        .fullScreenCover(isPresented: $navigationVM.showActivitiesFullScreenCover) {
+        .fullScreenCover(isPresented: self.$navigationVM.showActivitiesFullScreenCover) {
             FullScreenCoverToGameView()
         }
-        .alert("Voulez-vous quitter le mode exploratoire ?", isPresented: $settings.showSwitchOffExploratoryAlert) {
+        .alert("Voulez-vous quitter le mode exploratoire ?", isPresented: self.$settings.showSwitchOffExploratoryAlert) {
             Button(role: .destructive) {
-                settings.exploratoryModeIsOn.toggle()
+                self.settings.exploratoryModeIsOn.toggle()
             } label: {
                 Text("Quitter")
             }
@@ -69,23 +69,23 @@ struct HomeView: View {
 
     private var toolbarTitle: some View {
         HStack(spacing: 4) {
-            Text(navigationVM.setNavTitle())
-            if settings.companyIsConnected, settings.exploratoryModeIsOn {
+            Text(self.navigationVM.setNavTitle())
+            if self.settings.companyIsConnected, self.settings.exploratoryModeIsOn {
                 Image(systemName: "binoculars.fill")
             }
         }
-        .font(metrics.semi17)
+        .font(self.metrics.semi17)
         .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
     }
 
     private var infoButton: some View {
         Button {
-            navigationVM.updateShowInfo()
+            self.navigationVM.updateShowInfo()
         } label: {
             Image(systemName: "info.circle")
                 .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
         }
-        .opacity(navigationVM.showInfo() ? 0 : 1)
+        .opacity(self.navigationVM.showInfo() ? 0 : 1)
     }
 }
 

@@ -8,7 +8,7 @@ extension Robot {
     static let kHeaderPattern: [UInt8] = [0x2A, 0x2A, 0x2A, 0x2A]
 
     static func commandGenerator(commands: [UInt8]...) -> Data {
-        commandGenerator(commands: commands)
+        self.commandGenerator(commands: commands)
     }
 
     static func commandGenerator(commands: [[UInt8]]) -> Data {

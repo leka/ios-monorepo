@@ -21,16 +21,16 @@ struct FontView: View {
 
     var body: some View {
         VStack(alignment: .leading) {
-            Text(fontName)
+            Text(self.fontName)
             Text("The quick brown fox jumps over the lazy dog")
         }
-        .font(font)
+        .font(self.font)
     }
 
     // MARK: Private
 
     private var fontName: String {
-        switch font {
+        switch self.font {
             case .largeTitle:
                 "Large Title"
             case .title:
@@ -84,10 +84,10 @@ struct ColorSwiftUIView: View {
                 .frame(width: 50, height: 50)
                 .clipShape(RoundedRectangle(cornerRadius: 10))
             VStack(alignment: .leading) {
-                Text("\(color.description): \(String(describing: color.resolve(in: environment).description))")
+                Text("\(self.color.description): \(String(describing: self.color.resolve(in: self.environment).description))")
                 Text("The quick brown fox jumps over the lazy dog")
             }
         }
-        .foregroundColor(color)
+        .foregroundColor(self.color)
     }
 }

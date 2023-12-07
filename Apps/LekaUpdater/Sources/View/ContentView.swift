@@ -12,14 +12,14 @@ struct ContentView: View {
 
     var body: some View {
         InformationView(
-            isConnectionViewPresented: $isConnectionViewPresented,
-            isUpdateStatusViewPresented: $isUpdateStatusViewPresented
+            isConnectionViewPresented: self.$isConnectionViewPresented,
+            isUpdateStatusViewPresented: self.$isUpdateStatusViewPresented
         )
-        .fullScreenCover(isPresented: $isConnectionViewPresented) {
+        .fullScreenCover(isPresented: self.$isConnectionViewPresented) {
             ConnectionView()
         }
-        .fullScreenCover(isPresented: $isUpdateStatusViewPresented) {
-            UpdateStatusView(isConnectionViewPresented: $isConnectionViewPresented)
+        .fullScreenCover(isPresented: self.$isUpdateStatusViewPresented) {
+            UpdateStatusView(isConnectionViewPresented: self.$isConnectionViewPresented)
         }
     }
 }

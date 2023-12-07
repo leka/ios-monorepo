@@ -16,7 +16,7 @@ struct MIDISample {
         do {
             self.audioFile = try AVAudioFile(forReading: fileURL)
         } catch {
-            fatalError("Could not load: \(fileName)")
+            fatalError("Could not load: \(self.fileName)")
         }
     }
 

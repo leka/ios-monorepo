@@ -9,13 +9,13 @@ public struct NewModule {
     // MARK: Lifecycle
 
     public init() {
-        log.info("new module has been initialized")
+        self.log.info("new module has been initialized")
     }
 
     // MARK: Public
 
     public func doSomething() {
-        log.info("doing something")
+        self.log.info("doing something")
     }
 
     // MARK: Private

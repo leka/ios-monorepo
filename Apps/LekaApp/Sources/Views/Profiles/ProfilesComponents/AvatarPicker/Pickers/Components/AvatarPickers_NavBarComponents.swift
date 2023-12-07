@@ -13,7 +13,7 @@ struct AvatarPicker_NavigationTitle: View {
 
     var body: some View {
         Text("Quel est ton avatar ?")
-            .font(metrics.semi17)
+            .font(self.metrics.semi17)
             .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
     }
 }
@@ -27,11 +27,11 @@ struct AvatarPicker_AdaptiveBackButton: View {
     var body: some View {
         Button {
             // go back without saving
-            dismiss()
+            self.dismiss()
         } label: {
             HStack(spacing: 4) {
                 Image(systemName: "chevron.left")
-                if viewRouter.currentPage == .welcome {
+                if self.viewRouter.currentPage == .welcome {
                     Text("Retour")
                 } else {
                     Text("Annuler")
@@ -53,8 +53,8 @@ struct AvatarPicker_ValidateButton: View {
 
     var body: some View {
         Button {
-            action()
-            dismiss()
+            self.action()
+            self.dismiss()
         } label: {
             HStack(spacing: 6) {
                 Image(systemName: "checkmark.circle")
@@ -62,6 +62,6 @@ struct AvatarPicker_ValidateButton: View {
             }
             .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
         }
-        .disabled(selected.isEmpty)
+        .disabled(self.selected.isEmpty)
     }
 }

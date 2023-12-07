@@ -19,8 +19,8 @@ class BotViewModel: ObservableObject {
     @Published var botOSVersion: String = "LekaOS v1.4.0"
 
     func disconnect() {
-        currentlySelectedBotIndex = nil
-        currentlyConnectedBotIndex = nil
-        botIsConnected = false
+        self.currentlySelectedBotIndex = nil
+        self.currentlyConnectedBotIndex = nil
+        self.botIsConnected = false
     }
 }

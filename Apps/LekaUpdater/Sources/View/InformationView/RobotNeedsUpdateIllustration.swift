@@ -24,56 +24,56 @@ struct RobotNeedsUpdateIllustration: View {
         ZStack {
             Circle()
                 .fill(.white)
-                .frame(width: illustrationSize)
+                .frame(width: self.illustrationSize)
 
             Circle()
                 .strokeBorder(
                     .yellow,
-                    style: StrokeStyle(lineWidth: circleLineWidth, lineCap: .round, dash: [dashSpacer, dashSpacer])
+                    style: StrokeStyle(lineWidth: self.circleLineWidth, lineCap: .round, dash: [self.dashSpacer, self.dashSpacer])
                 )
-                .frame(width: circleSize)
+                .frame(width: self.circleSize)
 
             LekaUpdaterAsset.Assets.robotOnBase.swiftUIImage
                 .resizable()
                 .scaledToFit()
-                .frame(height: imageSize)
+                .frame(height: self.imageSize)
 
             VStack {
                 Spacer()
 
                 ZStack {
                     Circle().fill(.white)
-                        .frame(height: checkmarkSize)
+                        .frame(height: self.checkmarkSize)
 
                     Image(systemName: "exclamationmark.circle")
-                        .font(.system(size: checkmarkSize))
+                        .font(.system(size: self.checkmarkSize))
                         .foregroundColor(.yellow)
                 }
             }
         }
-        .frame(width: circleSize, height: illustrationSize)
+        .frame(width: self.circleSize, height: self.illustrationSize)
     }
 
     // MARK: Private
 
     private var circleSize: CGFloat {
-        illustrationSize * 250 / 300
+        self.illustrationSize * 250 / 300
     }
 
     private var circleLineWidth: CGFloat {
-        illustrationSize / 60
+        self.illustrationSize / 60
     }
 
     private var dashSpacer: CGFloat {
-        illustrationSize / 18
+        self.illustrationSize / 18
     }
 
     private var imageSize: CGFloat {
-        illustrationSize * 180 / 300
+        self.illustrationSize * 180 / 300
     }
 
     private var checkmarkSize: CGFloat {
-        illustrationSize * 56 / 300
+        self.illustrationSize * 56 / 300
     }
 }
 

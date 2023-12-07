@@ -14,12 +14,12 @@ class DraggableImageAnswerNode: SKSpriteNode {
         super.init(texture: SKTexture(image: UIImage(named: choice.choice.value)!), color: .clear, size: CGSize.zero)
 
         let action = SKAction.setTexture(texture!, resize: true)
-        run(action)
+        self.run(action)
 
-        name = choice.choice.value
-        texture = texture
-        setScale(scale)
-        size = size
+        self.name = choice.choice.value
+        self.texture = texture
+        self.setScale(scale)
+        self.size = size
         self.position = position
         self.defaultPosition = position
     }
@@ -30,12 +30,12 @@ class DraggableImageAnswerNode: SKSpriteNode {
         super.init(texture: SKTexture(image: UIImage(named: choice.choice.value)!), color: .clear, size: CGSize.zero)
 
         let action = SKAction.setTexture(texture!, resize: true)
-        run(action)
+        self.run(action)
 
-        name = choice.choice.value
-        texture = texture
-        setScale(scale)
-        size = size
+        self.name = choice.choice.value
+        self.texture = texture
+        self.setScale(scale)
+        self.size = size
         self.position = position
         self.defaultPosition = position
     }

@@ -16,11 +16,11 @@ struct ScanButton: View {
 
     var body: some View {
         Button {
-            robotListViewModel.scanForPeripherals()
+            self.robotListViewModel.scanForPeripherals()
         } label: {
             Group {
                 HStack(spacing: 10) {
-                    if !robotListViewModel.isScanning {
+                    if !self.robotListViewModel.isScanning {
                         Text("Start scanning")
                             .font(.headline)
                             .foregroundColor(.white)
@@ -42,7 +42,7 @@ struct ScanButton: View {
             }
             .frame(height: 50)
             .frame(maxWidth: .infinity)
-            .background(!robotListViewModel.isScanning ? .blue : .orange)
+            .background(!self.robotListViewModel.isScanning ? .blue : .orange)
             .cornerRadius(10)
         }
     }

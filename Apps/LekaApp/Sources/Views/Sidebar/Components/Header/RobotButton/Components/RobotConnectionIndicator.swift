@@ -17,14 +17,14 @@ struct RobotConnectionIndicator: View {
         ZStack {
             Circle()
                 .fill(
-                    robotViewModel.isConnected
+                    self.robotViewModel.isConnected
                         ? DesignKitAsset.Colors.lekaGreen.swiftUIColor : DesignKitAsset.Colors.lekaDarkGray.swiftUIColor
                 )
                 .opacity(0.4)
 
             Image(
                 uiImage:
-                robotViewModel.isConnected
+                self.robotViewModel.isConnected
                     ? DesignKitAsset.Images.robotConnected.image : DesignKitAsset.Images.robotDisconnected.image
             )
             .resizable()
@@ -34,7 +34,7 @@ struct RobotConnectionIndicator: View {
 
             Circle()
                 .stroke(
-                    robotViewModel.isConnected
+                    self.robotViewModel.isConnected
                         ? DesignKitAsset.Colors.lekaGreen.swiftUIColor
                         : DesignKitAsset.Colors.lekaDarkGray.swiftUIColor,
                     lineWidth: 4
@@ -45,22 +45,22 @@ struct RobotConnectionIndicator: View {
         .background(
             Circle()
                 .fill(DesignKitAsset.Colors.lekaGreen.swiftUIColor)
-                .frame(width: diameter, height: diameter)
-                .opacity(isAnimated ? 0.0 : 0.8)
+                .frame(width: self.diameter, height: self.diameter)
+                .opacity(self.isAnimated ? 0.0 : 0.8)
                 .animation(
-                    Animation.easeInOut(duration: 1.5).delay(5).repeatForever(autoreverses: false), value: diameter
+                    Animation.easeInOut(duration: 1.5).delay(5).repeatForever(autoreverses: false), value: self.diameter
                 )
-                .opacity(robotViewModel.isConnected ? 1 : 0.0)
+                .opacity(self.robotViewModel.isConnected ? 1 : 0.0)
         )
         .overlay(
             alignment: .topTrailing,
             content: {
-                badgeView
+                self.badgeView
             }
         )
         .onAppear {
-            isAnimated = true
-            diameter = isAnimated ? 100 : 0
+            self.isAnimated = true
+            self.diameter = self.isAnimated ? 100 : 0
         }
     }
 
@@ -70,11 +70,11 @@ struct RobotConnectionIndicator: View {
     @State private var diameter: CGFloat = 0
 
     @ViewBuilder private var badgeView: some View {
-        if !robotViewModel.isConnected {
+        if !self.robotViewModel.isConnected {
             Image(systemName: "exclamationmark.circle.fill")
                 .symbolRenderingMode(.palette)
                 .foregroundStyle(.white, .red)
-                .font(metrics.reg19)
+                .font(self.metrics.reg19)
                 .frame(maxWidth: 22, maxHeight: 22)
         }
     }

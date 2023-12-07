@@ -27,8 +27,8 @@ public class RobotPeripheral: Equatable {
     }
 
     public func discoverAndListenForUpdates() {
-        for char in notifyingCharacteristics {
-            peripheral
+        for char in self.notifyingCharacteristics {
+            self.peripheral
                 .discoverCharacteristic(
                     withUUID: char.characteristicUUID, inServiceWithUUID: char.serviceUUID
                 )
@@ -56,13 +56,13 @@ public class RobotPeripheral: Equatable {
                             .store(in: &self.cancellables)
                     }
                 )
-                .store(in: &cancellables)
+                .store(in: &self.cancellables)
         }
     }
 
     public func readReadOnlyCharacteristics() {
-        for characteristic in readOnlyCharacteristics {
-            peripheral.readValue(
+        for characteristic in self.readOnlyCharacteristics {
+            self.peripheral.readValue(
                 forCharacteristic: characteristic.characteristicUUID,
                 inService: characteristic.serviceUUID
             )
@@ -76,12 +76,12 @@ public class RobotPeripheral: Equatable {
                     characteristic.onRead?(data)
                 }
             )
-            .store(in: &cancellables)
+            .store(in: &self.cancellables)
         }
     }
 
     public func sendCommand(_ data: Data) {
-        peripheral.writeValue(
+        self.peripheral.writeValue(
             data,
             writeType: .withoutResponse,
             forCharacteristic: BLESpecs.Commands.Characteristics.tx,
@@ -96,11 +96,11 @@ public class RobotPeripheral: Equatable {
                 // nothing to do
             }
         )
-        .store(in: &cancellables)
+        .store(in: &self.cancellables)
     }
 
     public func send(_ data: Data, forCharacteristic characteristic: CharacteristicModelWriteOnly) {
-        peripheral.writeValue(
+        self.peripheral.writeValue(
             data,
             writeType: .withResponse,
             forCharacteristic: characteristic.characteristicUUID,
@@ -120,7 +120,7 @@ public class RobotPeripheral: Equatable {
                 // nothing to do
             }
         )
-        .store(in: &cancellables)
+        .store(in: &self.cancellables)
     }
 
     // MARK: Private
@@ -132,7 +132,7 @@ public class RobotPeripheral: Equatable {
     // MARK: - Private functions
 
     private func listenForUpdates(on characteristic: CharacteristicModelNotifying) {
-        peripheral.listenForUpdates(on: characteristic.cbCharacteristic!)
+        self.peripheral.listenForUpdates(on: characteristic.cbCharacteristic!)
             .receive(on: DispatchQueue.main)
             .sink(
                 receiveCompletion: { _ in
@@ -144,6 +144,6 @@ public class RobotPeripheral: Equatable {
                     }
                 }
             )
-            .store(in: &cancellables)
+            .store(in: &self.cancellables)
     }
 }

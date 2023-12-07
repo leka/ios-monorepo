@@ -75,14 +75,14 @@ public struct PairingView: View {
             .padding(.vertical, 50)
 
             HStack(spacing: 180) {
-                if playButtonVisible {
-                    actionButton(.play)
+                if self.playButtonVisible {
+                    self.actionButton(.play)
                 } else {
-                    actionButton(.pause)
+                    self.actionButton(.pause)
                 }
 
-                actionButton(.stop)
-                    .disabled(stopButtonDisabled)
+                self.actionButton(.stop)
+                    .disabled(self.stopButtonDisabled)
             }
         }
     }
@@ -99,20 +99,20 @@ public struct PairingView: View {
                     case .play:
                         // TODO(@ladislas): Play pairing behavior
                         print("Pairing behavior is running")
-                        stopButtonDisabled = false
-                        playButtonVisible.toggle()
+                        self.stopButtonDisabled = false
+                        self.playButtonVisible.toggle()
                     case .pause:
                         // TODO(@ladislas): Pause pairing behavior
                         print("Pairing behavior is pausing")
-                        playButtonVisible.toggle()
+                        self.playButtonVisible.toggle()
                     case .stop:
                         // TODO(@ladislas): Stop pairing behavior and restart pairing behavior
                         print("Pairing behavior stopped")
-                        playButtonVisible = true
-                        stopButtonDisabled = true
+                        self.playButtonVisible = true
+                        self.stopButtonDisabled = true
                 }
             } label: {
-                action.icon(stopButtonDisabled)
+                action.icon(self.stopButtonDisabled)
             }
 
             .background(

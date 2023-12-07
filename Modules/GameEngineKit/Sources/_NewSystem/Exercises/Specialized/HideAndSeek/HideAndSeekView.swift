@@ -27,16 +27,16 @@ struct HideAndSeekView: View {
     // MARK: Public
 
     public var body: some View {
-        switch stage {
+        switch self.stage {
             case .toHide:
                 Launcher(
-                    stage: $stage, textMainInstructions: instructions.textMainInstructions,
-                    textButtonOk: instructions.textButtonOk
+                    stage: self.$stage, textMainInstructions: self.instructions.textMainInstructions,
+                    textButtonOk: self.instructions.textButtonOk
                 )
             case .hidden:
                 Player(
-                    stage: $stage, textSubInstructions: instructions.textSubInstructions,
-                    textButtonRobotFound: instructions.textButtonRobotFound, shared: shared
+                    stage: self.$stage, textSubInstructions: self.instructions.textSubInstructions,
+                    textButtonRobotFound: self.instructions.textButtonRobotFound, shared: self.shared
                 )
         }
     }

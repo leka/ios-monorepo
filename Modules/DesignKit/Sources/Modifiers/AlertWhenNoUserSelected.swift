@@ -18,10 +18,10 @@ struct AlertWhenNoUserSelected: ViewModifier {
     func body(content: Content) -> some View {
         content
             .onAppear {
-                showAlert = true
+                self.showAlert = true
             }
-            .alert("Aucun utilisateur sélectionné pour cette activité.", isPresented: $showAlert) {
-                alertContent
+            .alert("Aucun utilisateur sélectionné pour cette activité.", isPresented: self.$showAlert) {
+                self.alertContent
             } message: {
                 Text("Avant de commencer l'activité, sélectionnez un utilisateur.")
             }
@@ -36,7 +36,7 @@ struct AlertWhenNoUserSelected: ViewModifier {
             Button(
                 role: .destructive,
                 action: {
-                    showAlert.toggle()
+                    self.showAlert.toggle()
                 },
                 label: {
                     Text("Continuer sans utilisateur")
@@ -45,7 +45,7 @@ struct AlertWhenNoUserSelected: ViewModifier {
             Button(
                 role: .none,
                 action: {
-                    showAlert.toggle()
+                    self.showAlert.toggle()
                 },
                 label: {
                     Text("Sélectionner un utilisateur")

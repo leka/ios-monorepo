@@ -17,13 +17,13 @@ struct UserSidebarAvatarCell: View {
             VStack(spacing: 0) {
                 ZStack(alignment: .topTrailing) {
                     SidebarAvatarView(type: .user)
-                    avatarAccessoryView
+                    self.avatarAccessoryView
                 }
-                .frame(height: settings.exploratoryModeIsOn ? 58 : 72)
-                .offset(x: settings.exploratoryModeIsOn ? -26 : 0)
+                .frame(height: self.settings.exploratoryModeIsOn ? 58 : 72)
+                .offset(x: self.settings.exploratoryModeIsOn ? -26 : 0)
                 .padding(10)
 
-                if !settings.exploratoryModeIsOn {
+                if !self.settings.exploratoryModeIsOn {
                     SidebarAvatarNameLabel(type: .user)
                 }
             }
@@ -34,28 +34,28 @@ struct UserSidebarAvatarCell: View {
     // MARK: Private
 
     @ViewBuilder private var avatarAccessoryView: some View {
-        if !settings.companyIsConnected || (!company.profileIsAssigned(.user) && !settings.exploratoryModeIsOn) {
+        if !self.settings.companyIsConnected || (!self.company.profileIsAssigned(.user) && !self.settings.exploratoryModeIsOn) {
             Image(systemName: "exclamationmark.circle.fill")
                 .symbolRenderingMode(.palette)
                 .foregroundStyle(.white, .red)
-                .font(metrics.reg19)
+                .font(self.metrics.reg19)
                 .frame(maxWidth: 22, maxHeight: 22)
                 .offset(x: 2, y: -2)
-        } else if company.profileIsAssigned(.user) {
-            Image(uiImage: company.getReinforcerFor(index: company.getCurrentUserReinforcer()))
+        } else if self.company.profileIsAssigned(.user) {
+            Image(uiImage: self.company.getReinforcerFor(index: self.company.getCurrentUserReinforcer()))
                 .resizable()
                 .renderingMode(.original)
                 .aspectRatio(contentMode: .fit)
-                .frame(maxWidth: settings.exploratoryModeIsOn ? 24 : 33)
+                .frame(maxWidth: self.settings.exploratoryModeIsOn ? 24 : 33)
                 .background(.white)
                 .clipShape(Circle())
                 .overlay(
                     Circle()
                         .fill(.black)
-                        .opacity(settings.exploratoryModeIsOn ? 0.3 : 0)
+                        .opacity(self.settings.exploratoryModeIsOn ? 0.3 : 0)
                 )
                 .overlay(Circle().stroke(.white, lineWidth: 3))
-                .offset(x: 6, y: settings.exploratoryModeIsOn ? -8 : -12)
+                .offset(x: 6, y: self.settings.exploratoryModeIsOn ? -8 : -12)
         }
     }
 }

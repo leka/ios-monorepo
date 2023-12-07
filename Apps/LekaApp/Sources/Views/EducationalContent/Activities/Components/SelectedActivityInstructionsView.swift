@@ -20,7 +20,7 @@ struct SelectedActivityInstructionsView: View {
             DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor
 
             VStack(spacing: 0) {
-                activityDetailHeader
+                self.activityDetailHeader
                 Rectangle()
                     .fill(DesignKitAsset.Colors.lekaLightGray.swiftUIColor)
                     .edgesIgnoringSafeArea(.bottom)
@@ -36,8 +36,8 @@ struct SelectedActivityInstructionsView: View {
     private var activityDetailHeader: some View {
         HStack {
             Spacer()
-            Text(activityVM.currentActivity.title.localized())
-                .font(metrics.semi17)
+            Text(self.activityVM.currentActivity.title.localized())
+                .font(self.metrics.semi17)
                 .foregroundColor(.white)
                 .multilineTextAlignment(.center)
             Spacer()

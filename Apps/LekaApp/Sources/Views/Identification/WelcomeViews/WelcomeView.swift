@@ -20,7 +20,7 @@ struct WelcomeView: View {
                 DesignKitAsset.Colors.lekaLightBlue.swiftUIColor.ignoresSafeArea()
 
                 VStack(spacing: 30) {
-                    logoLeka
+                    self.logoLeka
 
                     NavigationLink("Créer un compte") {
                         SignupView()
@@ -37,7 +37,7 @@ struct WelcomeView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    skipButton
+                    self.skipButton
                 }
             }
         }
@@ -59,8 +59,8 @@ struct WelcomeView: View {
     private var skipButton: some View {
         Button(
             action: {
-                company.setupDiscoveryCompany()
-                viewRouter.currentPage = .home
+                self.company.setupDiscoveryCompany()
+                self.viewRouter.currentPage = .home
             },
             label: {
                 HStack(spacing: 4) {

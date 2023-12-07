@@ -20,7 +20,7 @@ struct UpdateStatusView: View {
                 Spacer()
 
                 VStack {
-                    switch viewModel.updatingStatus {
+                    switch self.viewModel.updatingStatus {
                         case .sendingFile:
                             SendingFileIllustration()
                         case .rebootingRobot:
@@ -35,18 +35,18 @@ struct UpdateStatusView: View {
                 .padding(.bottom)
                 .padding(.bottom)
 
-                if viewModel.updatingStatus == .error {
+                if self.viewModel.updatingStatus == .error {
                     Text(l10n.update.errorTitle)
                         .font(.title)
                         .bold()
                         .padding()
                 } else {
-                    Text(l10n.update.stepNumber("\(viewModel.stepNumber)/3"))
+                    Text(l10n.update.stepNumber("\(self.viewModel.stepNumber)/3"))
                         .font(.title)
                         .bold()
                         .monospacedDigit()
                         .padding()
-                        .alert(isPresented: $viewModel.showAlert) {
+                        .alert(isPresented: self.$viewModel.showAlert) {
                             Alert(
                                 title: Text(l10n.update.alert.robotNotInChargeTitle),
                                 message: Text(l10n.update.alert.robotNotInChargeMessage)
@@ -55,18 +55,18 @@ struct UpdateStatusView: View {
                 }
 
                 VStack {
-                    switch viewModel.updatingStatus {
+                    switch self.viewModel.updatingStatus {
                         case .sendingFile:
-                            SendingFileContentView(progress: $viewModel.sendingFileProgression)
+                            SendingFileContentView(progress: self.$viewModel.sendingFileProgression)
                         case .rebootingRobot:
                             RebootingContentView()
                         case .updateFinished:
-                            UpdateFinishedContentView(isConnectionViewPresented: $isConnectionViewPresented)
+                            UpdateFinishedContentView(isConnectionViewPresented: self.$isConnectionViewPresented)
                         case .error:
                             ErrorContentView(
-                                errorDescription: viewModel.errorDescription,
-                                errorInstruction: viewModel.errorInstructions,
-                                isConnectionViewPresented: $isConnectionViewPresented
+                                errorDescription: self.viewModel.errorDescription,
+                                errorInstruction: self.viewModel.errorInstructions,
+                                isConnectionViewPresented: self.$isConnectionViewPresented
                             )
                     }
                     Spacer()
@@ -82,7 +82,7 @@ struct UpdateStatusView: View {
                     .padding(35)
             }
             .foregroundColor(DesignKitAsset.Colors.darkGray.swiftUIColor)
-            .onAppear(perform: viewModel.startUpdate)
+            .onAppear(perform: self.viewModel.startUpdate)
             .toolbar {
                 ToolbarItem(placement: .principal) {
                     VStack {

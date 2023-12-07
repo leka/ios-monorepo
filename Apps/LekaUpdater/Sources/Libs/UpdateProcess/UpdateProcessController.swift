@@ -49,8 +49,8 @@ class UpdateProcessController {
                 self.currentUpdateProcess = UpdateProcessTemplate()
         }
 
-        self.currentStage = currentUpdateProcess.currentStage
-        self.sendingFileProgression = currentUpdateProcess.sendingFileProgression
+        self.currentStage = self.currentUpdateProcess.currentStage
+        self.sendingFileProgression = self.currentUpdateProcess.sendingFileProgression
     }
 
     // MARK: Public
@@ -71,7 +71,7 @@ class UpdateProcessController {
     // MARK: Internal
 
     func startUpdate() {
-        currentUpdateProcess.startProcess()
+        self.currentUpdateProcess.startProcess()
     }
 
     // MARK: Private

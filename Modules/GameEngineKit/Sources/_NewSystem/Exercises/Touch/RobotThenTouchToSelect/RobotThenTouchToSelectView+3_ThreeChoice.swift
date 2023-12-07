@@ -13,19 +13,19 @@ extension RobotThenTouchToSelectView {
         let isTappable: Bool
 
         var body: some View {
-            VStack(spacing: kVerticalSpacing) {
-                HStack(spacing: kHorizontalSpacing) {
-                    ForEach(viewModel.choices[0...1]) { choice in
-                        TouchToSelectChoiceView(choice: choice, size: kAnswerSize, isTappable: isTappable)
+            VStack(spacing: self.kVerticalSpacing) {
+                HStack(spacing: self.kHorizontalSpacing) {
+                    ForEach(self.viewModel.choices[0...1]) { choice in
+                        TouchToSelectChoiceView(choice: choice, size: self.kAnswerSize, isTappable: self.isTappable)
                             .onTapGesture {
-                                viewModel.onChoiceTapped(choice: choice)
+                                self.viewModel.onChoiceTapped(choice: choice)
                             }
                     }
                 }
 
-                TouchToSelectChoiceView(choice: viewModel.choices[2], size: kAnswerSize, isTappable: isTappable)
+                TouchToSelectChoiceView(choice: self.viewModel.choices[2], size: self.kAnswerSize, isTappable: self.isTappable)
                     .onTapGesture {
-                        viewModel.onChoiceTapped(choice: viewModel.choices[2])
+                        self.viewModel.onChoiceTapped(choice: self.viewModel.choices[2])
                     }
             }
         }

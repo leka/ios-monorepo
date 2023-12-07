@@ -91,11 +91,11 @@ extension DesignSystemApple {
                     .frame(width: 50, height: 50)
                     .clipShape(RoundedRectangle(cornerRadius: 10))
                 VStack(alignment: .leading) {
-                    Text("\(color.accessibilityName): \(color.hex.uppercased())")
+                    Text("\(self.color.accessibilityName): \(self.color.hex.uppercased())")
                     Text("The quick brown fox jumps over the lazy dog")
                 }
             }
-            .foregroundColor(Color(uiColor: color))
+            .foregroundColor(Color(uiColor: self.color))
         }
     }
 }

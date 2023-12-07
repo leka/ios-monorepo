@@ -17,7 +17,7 @@ struct LogKitExample: App {
         WindowGroup {
             MainView()
                 .onAppear {
-                    module.doSomething()
+                    self.module.doSomething()
                 }
         }
     }

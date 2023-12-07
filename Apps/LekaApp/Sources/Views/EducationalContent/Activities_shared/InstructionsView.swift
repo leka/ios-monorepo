@@ -18,10 +18,10 @@ struct InstructionsView: View {
     var body: some View {
         ScrollView(.vertical, showsIndicators: true) {
             //			instructions_OLD
-            instructionsMarkdownView
+            self.instructionsMarkdownView
         }
         .safeAreaInset(edge: .top) {
-            instructionTitle
+            self.instructionTitle
         }
     }
 
@@ -30,9 +30,9 @@ struct InstructionsView: View {
     @ViewBuilder
     private var instructionsMarkdownView: some View {
         //		Text(activityVM.getInstructions())
-        DownAttributedString(text: activityVM.getInstructions())
+        DownAttributedString(text: self.activityVM.getInstructions())
             //		MarkdownRepresentable(height: .constant(.zero))
-            .environmentObject(MarkdownObservable(text: activityVM.getInstructions()))
+            .environmentObject(MarkdownObservable(text: self.activityVM.getInstructions()))
             .padding()
             .frame(minWidth: 450, maxWidth: 550)
     }
@@ -41,7 +41,7 @@ struct InstructionsView: View {
         HStack {
             Spacer()
             Text("DESCRIPTION & INSTALLATION")
-                .font(metrics.reg18)
+                .font(self.metrics.reg18)
                 .foregroundColor(DesignKitAsset.Colors.darkGray.swiftUIColor.opacity(0.8))
                 .padding(.vertical, 22)
             Spacer()

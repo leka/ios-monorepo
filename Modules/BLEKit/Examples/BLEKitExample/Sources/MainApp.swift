@@ -12,7 +12,7 @@ struct BLEKitExample: App {
     var body: some Scene {
         WindowGroup {
             NavigationStack {
-                ContentView(bleManager: bleManager)
+                ContentView(bleManager: self.bleManager)
             }
         }
     }

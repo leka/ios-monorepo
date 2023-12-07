@@ -29,14 +29,14 @@ public extension Robot {
         // MARK: Public
 
         public var robot: [UInt8] {
-            robotRGB
+            self.robotRGB
         }
 
         public var screen: SwiftUI.Color {
             SwiftUI.Color(
-                red: Double(screenRGB[0]) / 255.0,
-                green: Double(screenRGB[1]) / 255.0,
-                blue: Double(screenRGB[2]) / 255.0
+                red: Double(self.screenRGB[0]) / 255.0,
+                green: Double(self.screenRGB[1]) / 255.0,
+                blue: Double(self.screenRGB[2]) / 255.0
             )
         }
 

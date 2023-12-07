@@ -24,7 +24,7 @@ struct CurrentGameInstructionView: View {
                 DesignKitAsset.Colors.lekaLightGray.swiftUIColor.padding(.top, 70)
 
                 VStack(spacing: 0) {
-                    activityDetailHeader
+                    self.activityDetailHeader
                     InstructionsView()
                 }
             }
@@ -33,7 +33,7 @@ struct CurrentGameInstructionView: View {
             .interactiveDismissDisabled()
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    resumeButton
+                    self.resumeButton
                 }
             }
         }
@@ -45,8 +45,8 @@ struct CurrentGameInstructionView: View {
     private var activityDetailHeader: some View {
         HStack {
             Spacer()
-            Text(activityVM.currentActivity.title.localized())
-                .font(gameMetrics.semi17)
+            Text(self.activityVM.currentActivity.title.localized())
+                .font(self.gameMetrics.semi17)
                 .foregroundColor(.white)
                 .multilineTextAlignment(.center)
             Spacer()
@@ -58,7 +58,7 @@ struct CurrentGameInstructionView: View {
     private var resumeButton: some View {
         Button(
             action: {
-                dismiss()
+                self.dismiss()
             },
             label: {
                 HStack(spacing: 4) {

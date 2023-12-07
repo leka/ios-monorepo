@@ -12,9 +12,9 @@ class UpdateStatusViewModel: ObservableObject {
     // MARK: Lifecycle
 
     init() {
-        subscribeToStateUpdates()
-        subscribeToSendingFileProgressionUpdates()
-        subscribeToRobotIsChargingUpdates()
+        self.subscribeToStateUpdates()
+        self.subscribeToSendingFileProgressionUpdates()
+        self.subscribeToRobotIsChargingUpdates()
     }
 
     // MARK: Public
@@ -29,7 +29,7 @@ class UpdateStatusViewModel: ObservableObject {
     @Published public var errorInstructions: String = ""
 
     public var stepNumber: Int {
-        switch updatingStatus {
+        switch self.updatingStatus {
             case .sendingFile:
                 1
             case .rebootingRobot:
@@ -44,7 +44,7 @@ class UpdateStatusViewModel: ObservableObject {
     public func startUpdate() {
         UIApplication.shared.isIdleTimerDisabled = true
 
-        updateProcessController.startUpdate()
+        self.updateProcessController.startUpdate()
     }
 
     // MARK: Internal
@@ -65,7 +65,7 @@ class UpdateStatusViewModel: ObservableObject {
     private var cancellables: Set<AnyCancellable> = []
 
     private func subscribeToStateUpdates() {
-        updateProcessController.currentStage
+        self.updateProcessController.currentStage
             .receive(on: DispatchQueue.main)
             .sink { completion in
                 self.showAlert = false
@@ -114,16 +114,16 @@ class UpdateStatusViewModel: ObservableObject {
                         self.updatingStatus = .rebootingRobot
                 }
             }
-            .store(in: &cancellables)
+            .store(in: &self.cancellables)
     }
 
     private func subscribeToSendingFileProgressionUpdates() {
-        updateProcessController.sendingFileProgression
+        self.updateProcessController.sendingFileProgression
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { progression in
                 self.sendingFileProgression = progression
             })
-            .store(in: &cancellables)
+            .store(in: &self.cancellables)
     }
 
     private func subscribeToRobotIsChargingUpdates() {
@@ -135,7 +135,7 @@ class UpdateStatusViewModel: ObservableObject {
 
                 self.showAlert = robotShouldBeInCharge && robotIsCharging == false
             }
-            .store(in: &cancellables)
+            .store(in: &self.cancellables)
     }
 
     private func onUpdateEnded() {

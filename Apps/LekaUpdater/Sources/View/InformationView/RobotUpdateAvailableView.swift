@@ -21,7 +21,7 @@ struct RobotUpdateAvailableView: View {
                 .padding([.bottom])
 
             Button {
-                isUpdateStatusViewPresented = true
+                self.isUpdateStatusViewPresented = true
             } label: {
                 Text(l10n.information.startUpdateButton)
                     .foregroundColor(.white)
@@ -33,10 +33,10 @@ struct RobotUpdateAvailableView: View {
                     .frame(maxWidth: .infinity)
             }
             .buttonStyle(.plain)
-            .disabled(requirementsViewModel.robotIsNotReadyToUpdate)
+            .disabled(self.requirementsViewModel.robotIsNotReadyToUpdate)
 
-            if !requirementsViewModel.robotIsReadyToUpdate {
-                RequirementsView(viewModel: requirementsViewModel)
+            if !self.requirementsViewModel.robotIsReadyToUpdate {
+                RequirementsView(viewModel: self.requirementsViewModel)
             }
         }
         .padding()

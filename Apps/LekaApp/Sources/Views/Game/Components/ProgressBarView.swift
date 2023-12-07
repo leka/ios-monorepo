@@ -14,13 +14,13 @@ struct ProgressBarView: View {
     var body: some View {
         Capsule()
             .fill(DesignKitAsset.Colors.progressBar.swiftUIColor)
-            .frame(maxHeight: gameMetrics.progressViewHeight)
+            .frame(maxHeight: self.gameMetrics.progressViewHeight)
             .frame(maxWidth: 760) // this will change
             .overlay(
                 HStack(spacing: 0) {
-                    ForEach(activityVM.steps.indices, id: \.self) { index in
-                        stepMarker(activityVM.markerColors[index])
-                        if index < activityVM.markerColors.count - 1 {
+                    ForEach(self.activityVM.steps.indices, id: \.self) { index in
+                        self.stepMarker(self.activityVM.markerColors[index])
+                        if index < self.activityVM.markerColors.count - 1 {
                             Spacer()
                         }
                     }
@@ -34,10 +34,10 @@ struct ProgressBarView: View {
             .fill(
                 color,
                 strokeBorder: .white,
-                lineWidth: gameMetrics.stepMarkerBorderWidth
+                lineWidth: self.gameMetrics.stepMarkerBorderWidth
             )
             .background(Circle().fill(.white))
-            .padding(gameMetrics.stepMarkerPadding)
+            .padding(self.gameMetrics.stepMarkerPadding)
     }
 }
 

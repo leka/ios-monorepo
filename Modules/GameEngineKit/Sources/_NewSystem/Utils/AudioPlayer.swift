@@ -14,7 +14,7 @@ public class AudioPlayer: NSObject, ObservableObject {
 
     public init(audioRecording: AudioRecording) {
         super.init()
-        setAudioPlayer(audioRecording: audioRecording)
+        self.setAudioPlayer(audioRecording: audioRecording)
         self.didFinishPlaying = false
     }
 
@@ -24,23 +24,23 @@ public class AudioPlayer: NSObject, ObservableObject {
     @Published var didFinishPlaying = false
 
     var isPlaying: Bool {
-        player.isPlaying
+        self.player.isPlaying
     }
 
     func setAudioPlayer(audioRecording: AudioRecording) {
-        progress = 0.0
-        didFinishPlaying = false
+        self.progress = 0.0
+        self.didFinishPlaying = false
 
         do {
             let fileURL = Bundle.module.url(forResource: audioRecording.file, withExtension: "mp3")!
-            player = try AVAudioPlayer(contentsOf: fileURL)
-            player.delegate = self
+            self.player = try AVAudioPlayer(contentsOf: fileURL)
+            self.player.delegate = self
         } catch {
             print("ERROR - mp3 file not found - \(error)")
             return
         }
 
-        player.prepareToPlay()
+        self.player.prepareToPlay()
 
         Timer.publish(every: 0.1, on: .main, in: .default)
             .autoconnect()
@@ -55,21 +55,21 @@ public class AudioPlayer: NSObject, ObservableObject {
                     }
                 }
             })
-            .store(in: &cancellables)
+            .store(in: &self.cancellables)
     }
 
     func play() {
-        player.play()
-        didFinishPlaying = false
+        self.player.play()
+        self.didFinishPlaying = false
     }
 
     func pause() {
-        player.pause()
+        self.player.pause()
     }
 
     func stop() {
-        player.stop()
-        didFinishPlaying = true
+        self.player.stop()
+        self.didFinishPlaying = true
     }
 
     // MARK: Private
@@ -83,6 +83,6 @@ public class AudioPlayer: NSObject, ObservableObject {
 
 extension AudioPlayer: AVAudioPlayerDelegate {
     public func audioPlayerDidFinishPlaying(_: AVAudioPlayer, successfully _: Bool) {
-        didFinishPlaying = true
+        self.didFinishPlaying = true
     }
 }

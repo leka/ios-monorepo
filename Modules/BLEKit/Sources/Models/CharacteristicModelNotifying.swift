@@ -33,8 +33,8 @@ public struct CharacteristicModelNotifying {
 
 extension CharacteristicModelNotifying: Hashable {
     public func hash(into hasher: inout Hasher) {
-        hasher.combine(characteristicUUID)
-        hasher.combine(serviceUUID)
+        hasher.combine(self.characteristicUUID)
+        hasher.combine(self.serviceUUID)
     }
 
     public static func == (lhs: CharacteristicModelNotifying, rhs: CharacteristicModelNotifying) -> Bool {

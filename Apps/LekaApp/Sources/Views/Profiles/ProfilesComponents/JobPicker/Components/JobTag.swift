@@ -15,15 +15,15 @@ struct JobTag: View {
 
     var body: some View {
         HStack(spacing: 12) {
-            Text(profession)
+            Text(self.profession)
                 .padding(.leading, 4)
             Button {
-                company.bufferTeacher.jobs.removeAll(where: { profession == $0 })
+                self.company.bufferTeacher.jobs.removeAll(where: { self.profession == $0 })
             } label: {
                 Image(systemName: "multiply.square.fill")
             }
         }
-        .font(metrics.bold15)
+        .font(self.metrics.bold15)
         .foregroundColor(.white)
         .padding(5)
         .background(

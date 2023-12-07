@@ -16,7 +16,7 @@ struct CurriculumDetailsView: View {
     @EnvironmentObject var metrics: UIMetrics
 
     var body: some View {
-        curriculumDetailContent
+        self.curriculumDetailContent
     }
 
     // MARK: Private
@@ -30,9 +30,9 @@ struct CurriculumDetailsView: View {
             DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor
 
             VStack(spacing: 0) {
-                curriculumDetailHeader
+                self.curriculumDetailHeader
                 HStack(spacing: 0) {
-                    curriculumActivityList
+                    self.curriculumActivityList
                     // Instructions + GoBtn
                     Rectangle()
                         .fill(DesignKitAsset.Colors.lekaLightGray.swiftUIColor)
@@ -40,7 +40,7 @@ struct CurriculumDetailsView: View {
                         .overlay { InstructionsView() }
                         .overlay {
                             GoButton()
-                                .disabled(goButtonIsDisabled())
+                                .disabled(self.goButtonIsDisabled())
                         }
                 }
             }
@@ -49,17 +49,17 @@ struct CurriculumDetailsView: View {
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden()
         .toolbarBackground(.automatic, for: .navigationBar)
-        .onAppear { navigationVM.sidebarVisibility = .detailOnly }
+        .onAppear { self.navigationVM.sidebarVisibility = .detailOnly }
         .toolbar {
             ToolbarItem(placement: .principal) {
-                Text(curriculumVM.setCurriculumDetailNavTitle())
-                    .font(metrics.semi17)
+                Text(self.curriculumVM.setCurriculumDetailNavTitle())
+                    .font(self.metrics.semi17)
                     .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
             }
             ToolbarItem(placement: .navigationBarLeading) {
                 Button(
                     action: {
-                        navigationVM.pathsFromHome = .init()
+                        self.navigationVM.pathsFromHome = .init()
                     },
                     label: {
                         HStack(spacing: 4) {
@@ -76,15 +76,15 @@ struct CurriculumDetailsView: View {
         HStack {
             Spacer()
             VStack(spacing: 20) {
-                Text(curriculumVM.selectedCurriculumHeaderTitle)
-                    .font(metrics.semi17)
+                Text(self.curriculumVM.selectedCurriculumHeaderTitle)
+                    .font(self.metrics.semi17)
                     .padding(.top, 15)
-                Image(curriculumVM.selectedCurriculumIcon)
+                Image(self.curriculumVM.selectedCurriculumIcon)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 200, height: 66)
-                Text(curriculumVM.selectedCurriculumDescription)
-                    .font(metrics.reg17)
+                Text(self.curriculumVM.selectedCurriculumDescription)
+                    .font(self.metrics.reg17)
                     .multilineTextAlignment(.center)
                 Spacer()
             }
@@ -96,17 +96,17 @@ struct CurriculumDetailsView: View {
 
     private var curriculumActivityList: some View {
         ScrollViewReader { proxy in
-            List(curriculumVM.currentCurriculum.activities.enumerated().map { $0 }, id: \.element) { index, item in
+            List(self.curriculumVM.currentCurriculum.activities.enumerated().map { $0 }, id: \.element) { index, item in
                 Button {
-                    curriculumVM.currentCurriculumSelectedActivityID = UUID(uuidString: activityVM.getActivity(item).id)
-                    activityVM.currentActivity = activityVM.getActivity(item)
+                    self.curriculumVM.currentCurriculumSelectedActivityID = UUID(uuidString: self.activityVM.getActivity(item).id)
+                    self.activityVM.currentActivity = self.activityVM.getActivity(item)
                 } label: {
                     ActivityListCell_Curriculums(
-                        activity: activityVM.getActivity(item),
+                        activity: self.activityVM.getActivity(item),
                         icon: item,
                         rank: index + 1,
-                        selected: curriculumVM.currentCurriculumSelectedActivityID
-                            == UUID(uuidString: activityVM.getActivity(item).id)
+                        selected: self.curriculumVM.currentCurriculumSelectedActivityID
+                            == UUID(uuidString: self.activityVM.getActivity(item).id)
                     )
                 }
                 .alignmentGuide(.listRowSeparatorLeading) { _ in
@@ -114,24 +114,24 @@ struct CurriculumDetailsView: View {
                 }
                 .buttonStyle(NoFeedback_ButtonStyle())
                 .contentShape(Rectangle())
-                .id(UUID(uuidString: activityVM.getActivity(item).id))
+                .id(UUID(uuidString: self.activityVM.getActivity(item).id))
             }
             .listStyle(PlainListStyle())
             .padding(.bottom, 20)
             .background(.white, in: Rectangle())
             .edgesIgnoringSafeArea([.bottom])
             .onAppear {
-                guard curriculumVM.currentCurriculumSelectedActivityID != nil else {
+                guard self.curriculumVM.currentCurriculumSelectedActivityID != nil else {
                     return
                 }
-                withAnimation { proxy.scrollTo(curriculumVM.currentCurriculumSelectedActivityID, anchor: .top) }
+                withAnimation { proxy.scrollTo(self.curriculumVM.currentCurriculumSelectedActivityID, anchor: .top) }
             }
         }
     }
 
     private func goButtonIsDisabled() -> Bool {
-        !curriculumVM.currentCurriculum.activities.map { UUID(uuidString: activityVM.getActivity($0).id) }
-            .contains(curriculumVM.currentCurriculumSelectedActivityID)
+        !self.curriculumVM.currentCurriculum.activities.map { UUID(uuidString: self.activityVM.getActivity($0).id) }
+            .contains(self.curriculumVM.currentCurriculumSelectedActivityID)
     }
 }
 

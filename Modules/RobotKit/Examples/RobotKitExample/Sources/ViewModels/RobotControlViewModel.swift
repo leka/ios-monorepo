@@ -28,7 +28,7 @@ class RobotControlViewModel: ObservableObject {
                     }
                 }($0)
             }
-            .store(in: &cancellables)
+            .store(in: &self.cancellables)
     }
 
     // MARK: Internal

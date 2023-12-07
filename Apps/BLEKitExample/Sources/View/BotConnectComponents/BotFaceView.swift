@@ -31,25 +31,25 @@ struct BotFaceView: View {
                                 dash: [12, 3]
                             )
                         )
-                        .opacity(isSelected ? 1 : 0)
-                        .rotationEffect(.degrees(rotation), anchor: .center)
-                        .animation(Animation.linear(duration: 15).repeatForever(autoreverses: false), value: rotation)
+                        .opacity(self.isSelected ? 1 : 0)
+                        .rotationEffect(.degrees(self.rotation), anchor: .center)
+                        .animation(Animation.linear(duration: 15).repeatForever(autoreverses: false), value: self.rotation)
                         .onAppear {
-                            rotation = 360
+                            self.rotation = 360
                         }
                 })
-                .background(Color(.green), in: Circle().inset(by: isConnected ? -26 : 2))
+                .background(Color(.green), in: Circle().inset(by: self.isConnected ? -26 : 2))
                 .padding(.bottom, 40)
 
-            Text(name)
+            Text(self.name)
 
-            Text("Battery level : \(battery)")
+            Text("Battery level : \(self.battery)")
 
-            Text("Charging Status : " + (isCharging ? "On" : "Off"))
+            Text("Charging Status : " + (self.isCharging ? "On" : "Off"))
 
-            Text("OS Version : \(osVersion)")
+            Text("OS Version : \(self.osVersion)")
         }
-        .animation(.default, value: isConnected)
+        .animation(.default, value: self.isConnected)
     }
 
     // MARK: Private

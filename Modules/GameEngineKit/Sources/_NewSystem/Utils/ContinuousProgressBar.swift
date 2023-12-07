@@ -13,17 +13,17 @@ struct ContinuousProgressBar: View {
         GeometryReader { geometry in
             Capsule()
                 .fill(DesignKitAsset.Colors.progressBar.swiftUIColor)
-                .frame(height: kHeight)
+                .frame(height: self.kHeight)
                 .frame(width: geometry.size.width)
                 .overlay(alignment: .leading) {
                     Capsule()
                         .fill(.green)
-                        .frame(maxWidth: geometry.size.width * progress)
+                        .frame(maxWidth: geometry.size.width * self.progress)
                         .padding(8)
                 }
                 .position(x: geometry.frame(in: .local).midX, y: geometry.frame(in: .local).midY)
         }
-        .frame(maxHeight: kHeight)
+        .frame(maxHeight: self.kHeight)
     }
 }
 

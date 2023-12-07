@@ -25,21 +25,21 @@ struct RobotControlView: View {
                         .font(.title)
                     HStack {
                         RobotControlActionButton(title: "Move forward", image: "arrow.up", tint: .orange) {
-                            robot.move(.forward(speed: 1.0))
+                            self.robot.move(.forward(speed: 1.0))
                         }
                         RobotControlActionButton(title: "Move backward", image: "arrow.down", tint: .green) {
-                            robot.move(.backward(speed: 0.5))
+                            self.robot.move(.backward(speed: 0.5))
                         }
                         RobotControlActionButton(title: "Spin clockwise", image: "arrow.clockwise", tint: .indigo) {
-                            robot.move(.spin(.clockwise, speed: 0.7))
+                            self.robot.move(.spin(.clockwise, speed: 0.7))
                         }
                         RobotControlActionButton(
                             title: "Spin counterclockwise", image: "arrow.counterclockwise", tint: .teal
                         ) {
-                            robot.move(.spin(.counterclockwise, speed: 0.7))
+                            self.robot.move(.spin(.counterclockwise, speed: 0.7))
                         }
                         RobotControlActionButton(title: "Stop motion", image: "xmark", tint: .red) {
-                            robot.stopMotion()
+                            self.robot.stopMotion()
                         }
                     }
                 }
@@ -49,24 +49,24 @@ struct RobotControlView: View {
                         .font(.title)
                     HStack {
                         RobotControlActionButton(title: "Individual LEDs", image: "light.max", tint: .orange) {
-                            robot.shine(.spot(.belt, ids: [0, 4, 8, 10, 12], in: .red))
+                            self.robot.shine(.spot(.belt, ids: [0, 4, 8, 10, 12], in: .red))
                         }
                         RobotControlActionButton(title: "Quarters", image: "light.max", tint: .green) {
-                            robot.shine(.quarterFrontLeft(in: .blue))
-                            robot.shine(.quarterFrontRight(in: .red))
-                            robot.shine(.quarterBackLeft(in: .red))
-                            robot.shine(.quarterBackRight(in: .blue))
+                            self.robot.shine(.quarterFrontLeft(in: .blue))
+                            self.robot.shine(.quarterFrontRight(in: .red))
+                            self.robot.shine(.quarterBackLeft(in: .red))
+                            self.robot.shine(.quarterBackRight(in: .blue))
                         }
                         RobotControlActionButton(title: "Halves", image: "light.max", tint: .indigo) {
-                            robot.shine(.halfRight(in: .green))
-                            robot.shine(.halfLeft(in: .red))
+                            self.robot.shine(.halfRight(in: .green))
+                            self.robot.shine(.halfLeft(in: .red))
                         }
                         RobotControlActionButton(title: "Full belt + ears", image: "light.max", tint: .teal) {
-                            robot.shine(.full(.belt, in: .blue))
-                            robot.shine(.full(.ears, in: .green))
+                            self.robot.shine(.full(.belt, in: .blue))
+                            self.robot.shine(.full(.ears, in: .green))
                         }
                         RobotControlActionButton(title: "Turn off lights", image: "xmark", tint: .red) {
-                            robot.stopLights()
+                            self.robot.stopLights()
                         }
                     }
                 }
@@ -76,16 +76,16 @@ struct RobotControlView: View {
                         .font(.title)
                     HStack {
                         RobotControlActionButton(title: "Rainbow", image: "number.circle", tint: .orange) {
-                            robot.run(.rainbow)
+                            self.robot.run(.rainbow)
                         }
                         RobotControlActionButton(title: "Fire", image: "number.circle", tint: .green) {
-                            robot.run(.fire)
+                            self.robot.run(.fire)
                         }
                         RobotControlActionButton(title: "Spin 1", image: "number.circle", tint: .indigo) {
-                            robot.run(.spinBlinkGreenOff)
+                            self.robot.run(.spinBlinkGreenOff)
                         }
                         RobotControlActionButton(title: "Spin 2", image: "number.circle", tint: .teal) {
-                            robot.run(.spinBlinkBlueViolet)
+                            self.robot.run(.spinBlinkBlueViolet)
                         }
                     }
                 }
@@ -94,9 +94,9 @@ struct RobotControlView: View {
                     Text("Magic Cards")
                         .font(.title)
                     HStack(alignment: .center, spacing: 30) {
-                        Text("ID: 0x\(String(format: "%04X", viewModel.magicCard.id))")
+                        Text("ID: 0x\(String(format: "%04X", self.viewModel.magicCard.id))")
                             .monospacedDigit()
-                        viewModel.magicCardImage
+                        self.viewModel.magicCardImage
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(height: 180)
@@ -108,14 +108,14 @@ struct RobotControlView: View {
         .navigationTitle("Robot Control")
         .toolbar {
             ToolbarItemGroup(placement: .topBarTrailing) {
-                stopButton
+                self.stopButton
             }
         }
     }
 
     var stopButton: some View {
         Button {
-            robot.stop()
+            self.robot.stop()
         } label: {
             Image(systemName: "exclamationmark.octagon.fill")
             Text("STOP")

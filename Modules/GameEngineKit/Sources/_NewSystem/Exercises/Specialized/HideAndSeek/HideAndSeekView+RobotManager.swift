@@ -33,7 +33,7 @@ extension HideAndSeekView {
         }
 
         func runRandomReinforcer() {
-            robot.run(reinforcers.randomElement()!)
+            self.robot.run(self.reinforcers.randomElement()!)
         }
     }
 }

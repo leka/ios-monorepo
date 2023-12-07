@@ -43,7 +43,7 @@ extension DesignSystemApple {
                             .buttonStyle(.robotControlBorderedButtonStyle())
                     }
 
-                    ForEach(colors, id: \.self) { color in
+                    ForEach(self.colors, id: \.self) { color in
                         VStack(alignment: .leading) {
                             Button("automatic tint \(color.description)") {}
                                 .buttonStyle(.automatic)

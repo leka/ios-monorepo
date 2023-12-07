@@ -20,23 +20,23 @@ extension LedZoneSelectorView {
 
         var body: some View {
             Circle()
-                .foregroundColor(selectedEar.color.screen)
+                .foregroundColor(self.selectedEar.color.screen)
                 .frame(width: 50, height: 50)
                 .onTapGesture {
-                    buttonPressed.toggle()
-                    if buttonPressed {
-                        robot.shine(selectedEar)
+                    self.buttonPressed.toggle()
+                    if self.buttonPressed {
+                        self.robot.shine(self.selectedEar)
                     } else {
-                        robot.blacken(selectedEar)
+                        self.robot.blacken(self.selectedEar)
                     }
-                    backgroundDimension = buttonPressed ? 65 : 0
+                    self.backgroundDimension = self.buttonPressed ? 65 : 0
                 }
                 .background(
                     Circle()
-                        .foregroundColor(selectedEar.color.screen.opacity(0.5))
-                        .frame(width: CGFloat(backgroundDimension), height: CGFloat(backgroundDimension))
+                        .foregroundColor(self.selectedEar.color.screen.opacity(0.5))
+                        .frame(width: CGFloat(self.backgroundDimension), height: CGFloat(self.backgroundDimension))
                 )
-                .animation(.easeInOut(duration: 0.2), value: backgroundDimension)
+                .animation(.easeInOut(duration: 0.2), value: self.backgroundDimension)
         }
 
         // MARK: Private

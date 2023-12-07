@@ -24,21 +24,21 @@ struct ContentView: View {
 
     var body: some View {
         VStack {
-            List(robotListViewModel.robotDiscoveries) { robotDiscovery in
+            List(self.robotListViewModel.robotDiscoveries) { robotDiscovery in
                 RobotDiscoveryView(discovery: robotDiscovery)
                     .contentShape(Rectangle())
                     .onTapGesture {
-                        if robotDiscovery == robotListViewModel.selectedRobotDiscovery {
+                        if robotDiscovery == self.robotListViewModel.selectedRobotDiscovery {
                             print("Unselect \(robotDiscovery)")
-                            robotListViewModel.selectedRobotDiscovery = nil
+                            self.robotListViewModel.selectedRobotDiscovery = nil
 
                         } else {
                             print("Select \(robotDiscovery)")
-                            robotListViewModel.selectedRobotDiscovery = robotDiscovery
+                            self.robotListViewModel.selectedRobotDiscovery = robotDiscovery
                         }
                     }
             }
-            .disabled(robotListViewModel.connectedRobotPeripheral != nil)
+            .disabled(self.robotListViewModel.connectedRobotPeripheral != nil)
             .listStyle(.plain)
             .padding()
 
@@ -53,7 +53,7 @@ struct ContentView: View {
             .padding(30)
         }
         .navigationTitle("BLEKit Example App")
-        .environmentObject(robotListViewModel)
+        .environmentObject(self.robotListViewModel)
     }
 
     // MARK: Private

@@ -11,8 +11,8 @@ extension LedZoneSelectorView {
 
         func path(in rect: CGRect) -> Path {
             let rotationAdjustment = Angle.degrees(90)
-            let modifiedStart = section.arcAngle.start - rotationAdjustment
-            let modifiedEnd = section.arcAngle.end - rotationAdjustment
+            let modifiedStart = self.section.arcAngle.start - rotationAdjustment
+            let modifiedEnd = self.section.arcAngle.end - rotationAdjustment
 
             var path = Path()
 

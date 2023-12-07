@@ -19,7 +19,7 @@ extension HideAndSeekView {
             self.textButtonRobotFound = textButtonRobotFound
 
             self.exercicesSharedData = shared ?? ExerciseSharedData()
-            exercicesSharedData.state = .playing
+            self.exercicesSharedData.state = .playing
         }
 
         // MARK: Internal
@@ -48,17 +48,17 @@ extension HideAndSeekView {
 
         var body: some View {
             ZStack {
-                HiddenView(textSubInstructions: textSubInstructions)
+                HiddenView(textSubInstructions: self.textSubInstructions)
                     .padding(.horizontal, 30)
 
                 HStack {
                     Spacer()
                     VStack(spacing: 70) {
-                        stimulationButton(Stimulation.light) {
-                            robotManager.runRandomReinforcer()
+                        self.stimulationButton(Stimulation.light) {
+                            self.robotManager.runRandomReinforcer()
                         }
-                        stimulationButton(Stimulation.motion) {
-                            robotManager.wiggle(for: 1)
+                        self.stimulationButton(Stimulation.motion) {
+                            self.robotManager.wiggle(for: 1)
                         }
                     }
                     .padding(.trailing, 60)
@@ -68,9 +68,9 @@ extension HideAndSeekView {
                     Spacer()
 
                     Button {
-                        exercicesSharedData.state = .completed
+                        self.exercicesSharedData.state = .completed
                     } label: {
-                        ButtonLabel(textButtonRobotFound, color: .cyan)
+                        ButtonLabel(self.textButtonRobotFound, color: .cyan)
                     }
                     .padding(.vertical, 30)
                 }

@@ -38,7 +38,7 @@ extension Shape {
         _ fillStyle: some ShapeStyle, strokeBorder strokeStyle: some ShapeStyle, lineWidth: CGFloat = 1
     ) -> some View {
         stroke(strokeStyle, lineWidth: lineWidth)
-            .background(fill(fillStyle))
+            .background(self.fill(fillStyle))
     }
 }
 

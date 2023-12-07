@@ -18,12 +18,12 @@ public struct RobotControlActionButton: View {
 
     public var body: some View {
         Button {
-            action()
+            self.action()
         } label: {
-            Image(systemName: image)
-            Text(title)
+            Image(systemName: self.image)
+            Text(self.title)
         }
-        .buttonStyle(.robotControlBorderedButtonStyle(foreground: tint, border: tint))
+        .buttonStyle(.robotControlBorderedButtonStyle(foreground: self.tint, border: self.tint))
     }
 
     // MARK: Private

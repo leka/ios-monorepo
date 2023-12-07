@@ -36,7 +36,7 @@ public struct DragAndDropToAssociateView: View {
     public var body: some View {
         GeometryReader { proxy in
             SpriteView(
-                scene: makeScene(size: proxy.size),
+                scene: self.makeScene(size: proxy.size),
                 options: [.allowsTransparency]
             )
             .frame(width: proxy.size.width, height: proxy.size.height)
@@ -45,15 +45,15 @@ public struct DragAndDropToAssociateView: View {
 
                 switch interface {
                     case .twoChoices:
-                        scene = TwoChoicesScene(viewModel: viewModel)
+                        self.scene = TwoChoicesScene(viewModel: self.viewModel)
                     case .threeChoices:
-                        scene = ThreeChoicesScene(viewModel: viewModel)
+                        self.scene = ThreeChoicesScene(viewModel: self.viewModel)
                     case .fourChoices:
-                        scene = FourChoicesScene(viewModel: viewModel)
+                        self.scene = FourChoicesScene(viewModel: self.viewModel)
                     case .fiveChoices:
-                        scene = FiveChoicesScene(viewModel: viewModel)
+                        self.scene = FiveChoicesScene(viewModel: self.viewModel)
                     case .sixChoices:
-                        scene = SixChoicesScene(viewModel: viewModel)
+                        self.scene = SixChoicesScene(viewModel: self.viewModel)
                 }
             }
         }
@@ -80,7 +80,7 @@ public struct DragAndDropToAssociateView: View {
             return SKScene()
         }
         finalScene.size = CGSize(width: size.width, height: size.height)
-        finalScene.viewModel = viewModel
+        finalScene.viewModel = self.viewModel
         return finalScene
     }
 }

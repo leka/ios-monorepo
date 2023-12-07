@@ -18,18 +18,18 @@ struct UserSet_AvatarCell: View {
     var body: some View {
         Button {
             withAnimation {
-                company.selectedProfiles[.user] = user.id
+                self.company.selectedProfiles[.user] = self.user.id
             }
             // Next context is within the userSelector right before launching a game
-            if !navigationVM.showProfileEditor {
-                company.assignCurrentProfiles()
-                navigationVM.pathToGame.append(PathsToGame.game)
+            if !self.navigationVM.showProfileEditor {
+                self.company.assignCurrentProfiles()
+                self.navigationVM.pathToGame.append(PathsToGame.game)
             }
         } label: {
             VStack(spacing: 0) {
                 ZStack(alignment: .topTrailing) {
                     // Selection Indicator
-                    selectionIndicator(id: user.id)
+                    self.selectionIndicator(id: self.user.id)
                     // Avatar
                     Circle()
                         .fill(
@@ -38,7 +38,7 @@ struct UserSet_AvatarCell: View {
                             lineWidth: 3
                         )
                         .overlay(content: {
-                            Image(user.avatar, bundle: Bundle(for: DesignKitResources.self))
+                            Image(self.user.avatar, bundle: Bundle(for: DesignKitResources.self))
                                 .resizable()
                                 .aspectRatio(contentMode: .fill)
                                 .clipShape(Circle())
@@ -48,7 +48,7 @@ struct UserSet_AvatarCell: View {
                     ZStack(alignment: .topTrailing) {
                         Circle()
                             .fill(DesignKitAsset.Colors.lekaLightGray.swiftUIColor)
-                        Image(uiImage: company.getReinforcerFor(index: user.reinforcer))
+                        Image(uiImage: self.company.getReinforcerFor(index: self.user.reinforcer))
                             .resizable()
                             .renderingMode(.original)
                             .aspectRatio(contentMode: .fit)
@@ -64,26 +64,26 @@ struct UserSet_AvatarCell: View {
                 .frame(height: 108)
                 .padding(10)
 
-                Text(user.name)
-                    .font(metrics.reg15)
+                Text(self.user.name)
+                    .font(self.metrics.reg15)
                     .allowsTightening(true)
                     .lineLimit(2)
                     .padding(.horizontal, 14)
                     .foregroundColor(
-                        company.profileIsCurrent(.user, id: user.id)
+                        self.company.profileIsCurrent(.user, id: self.user.id)
                             ? Color.white : DesignKitAsset.Colors.lekaDarkGray.swiftUIColor
                     )
                     .padding(2)
                     .frame(minWidth: 108)
                     .background(content: {
-                        RoundedRectangle(cornerRadius: metrics.btnRadius)
+                        RoundedRectangle(cornerRadius: self.metrics.btnRadius)
                             .stroke(.white, lineWidth: 2)
                     })
                     .background(
-                        company.profileIsCurrent(.user, id: user.id)
+                        self.company.profileIsCurrent(.user, id: self.user.id)
                             ? DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor
                             : DesignKitAsset.Colors.lekaLightGray.swiftUIColor,
-                        in: RoundedRectangle(cornerRadius: metrics.btnRadius)
+                        in: RoundedRectangle(cornerRadius: self.metrics.btnRadius)
                     )
             }
         }
@@ -96,8 +96,8 @@ struct UserSet_AvatarCell: View {
     private func selectionIndicator(id: UUID) -> some View {
         // TODO(@ladislas): review logic in the future
         let lineWidth: CGFloat = {
-            guard company.selectedProfiles[.user] == id else {
-                guard company.profileIsCurrent(.user, id: id) else {
+            guard self.company.selectedProfiles[.user] == id else {
+                guard self.company.profileIsCurrent(.user, id: id) else {
                     return 0
                 }
                 return 10
@@ -106,7 +106,7 @@ struct UserSet_AvatarCell: View {
         }()
 
         let dash: [CGFloat] = {
-            guard company.profileIsCurrent(.user, id: id) else {
+            guard self.company.profileIsCurrent(.user, id: id) else {
                 return [10, 4]
             }
             return [10, 0]

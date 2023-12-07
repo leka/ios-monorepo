@@ -38,9 +38,9 @@ struct MusicalInstrumentView: View {
     let scale: MIDIScale
 
     var body: some View {
-        switch instrument {
+        switch self.instrument {
             case .xylophone:
-                XylophoneView(midiPlayer: midiPlayer, scale: scale)
+                XylophoneView(midiPlayer: self.midiPlayer, scale: self.scale)
         }
     }
 }

@@ -50,7 +50,7 @@ class NavigationViewModel: ObservableObject {
 
     // Returned Views & NavigationTitles
     @ViewBuilder var allSidebarDestinationViews: some View {
-        switch currentView {
+        switch self.currentView {
             case .curriculums: CurriculumListView()
             case .activities: ActivityListView()
             case .commands: CommandListView()
@@ -58,7 +58,7 @@ class NavigationViewModel: ObservableObject {
     }
 
     func setNavTitle() -> String {
-        switch currentView {
+        switch self.currentView {
             case .curriculums: "Parcours"
             case .activities: "Activités"
             case .commands: "Commandes"
@@ -66,7 +66,7 @@ class NavigationViewModel: ObservableObject {
     }
 
     func contextualInfo() -> TileData {
-        switch currentView {
+        switch self.currentView {
             case .curriculums: .curriculums
             case .activities: .activities
             case .commands: .commands
@@ -74,18 +74,18 @@ class NavigationViewModel: ObservableObject {
     }
 
     func showInfo() -> Bool {
-        switch currentView {
-            case .curriculums: showInfoCurriculums
-            case .activities: showInfoActivities
-            case .commands: showInfoCommands
+        switch self.currentView {
+            case .curriculums: self.showInfoCurriculums
+            case .activities: self.showInfoActivities
+            case .commands: self.showInfoCommands
         }
     }
 
     func updateShowInfo() {
-        switch currentView {
-            case .curriculums: showInfoCurriculums.toggle()
-            case .activities: showInfoActivities.toggle()
-            case .commands: showInfoCommands.toggle()
+        switch self.currentView {
+            case .curriculums: self.showInfoCurriculums.toggle()
+            case .activities: self.showInfoActivities.toggle()
+            case .commands: self.showInfoCommands.toggle()
         }
     }
 }

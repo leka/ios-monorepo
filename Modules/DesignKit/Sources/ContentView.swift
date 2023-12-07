@@ -18,9 +18,9 @@ public struct Hello: View {
 
     public var body: some View {
         VStack {
-            Text("Hello, \(name)!")
+            Text("Hello, \(self.name)!")
                 .padding(50)
-                .background(color)
+                .background(self.color)
 
             Image(uiImage: DesignKitAsset.Assets.lekaLogo.image)
                 .resizable()

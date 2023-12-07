@@ -53,12 +53,12 @@ struct GEKNewSystemView: View {
             VStack(spacing: 30) {
                 ForEach(kActivities, id: \.id) { activity in
                     Button(activity.name) {
-                        currentActivity = activity
+                        self.currentActivity = activity
                     }
                 }
             }
-            .fullScreenCover(item: $currentActivity) {
-                currentActivity = nil
+            .fullScreenCover(item: self.$currentActivity) {
+                self.currentActivity = nil
             } content: { activity in
                 ActivityView(viewModel: ActivityViewViewModel(activity: activity))
             }

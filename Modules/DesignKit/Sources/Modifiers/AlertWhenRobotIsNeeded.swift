@@ -18,10 +18,10 @@ struct AlertWhenRobotIsNeeded: ViewModifier {
     func body(content: Content) -> some View {
         content
             .onAppear {
-                showAlert = true
+                self.showAlert = true
             }
-            .alert("Cette activité nécessite l'utilisation du robot !", isPresented: $showAlert) {
-                alertContent
+            .alert("Cette activité nécessite l'utilisation du robot !", isPresented: self.$showAlert) {
+                self.alertContent
             } message: {
                 Text("Avant de commencer l'activité, connectez-vous en Bluetooth à votre robot.")
             }
@@ -36,7 +36,7 @@ struct AlertWhenRobotIsNeeded: ViewModifier {
             Button(
                 role: .destructive,
                 action: {
-                    showAlert.toggle()
+                    self.showAlert.toggle()
                 },
                 label: {
                     Text("Continuer sans le robot")
@@ -45,7 +45,7 @@ struct AlertWhenRobotIsNeeded: ViewModifier {
             Button(
                 role: .none,
                 action: {
-                    showAlert.toggle()
+                    self.showAlert.toggle()
                 },
                 label: {
                     Text("Se connecter")

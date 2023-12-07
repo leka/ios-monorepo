@@ -10,11 +10,11 @@ struct ReinforcerPicker: View {
     @EnvironmentObject var metrics: UIMetrics
 
     var body: some View {
-        if company.editingProfile {
+        if self.company.editingProfile {
             VStack(spacing: 10) {
                 HStack {
                     Text("Choix du renforçateur")
-                        .font(metrics.reg17)
+                        .font(self.metrics.reg17)
                         .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
                         .padding(.leading, 10)
                     Spacer()
@@ -23,7 +23,7 @@ struct ReinforcerPicker: View {
                     Text( // swiftlint:disable:next line_length
                         "Le renforçateur est un effet lumineux répétitif du robot que vous pourrez actionner pour récompenser le comportement de l'utilisateur. \nSi votre robot est connecté, vous pouvez tester les renforçateurs avant d'en choisir un."
                     )
-                    .font(metrics.reg12)
+                    .font(self.metrics.reg12)
                     .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
                     .padding(.leading, 10)
                     Spacer()
@@ -33,7 +33,7 @@ struct ReinforcerPicker: View {
                 VStack(spacing: 4) {
                     HStack(spacing: 12) {
                         ForEach(1...3, id: \.self) { item in
-                            reinforcerButton(item)
+                            self.reinforcerButton(item)
                         }
                     }
                     .padding(.horizontal, 10)
@@ -41,7 +41,7 @@ struct ReinforcerPicker: View {
 
                     HStack(spacing: 12) {
                         ForEach(4...5, id: \.self) { item in
-                            reinforcerButton(item)
+                            self.reinforcerButton(item)
                         }
                     }
                     .padding(.horizontal, 10)
@@ -50,7 +50,7 @@ struct ReinforcerPicker: View {
                 .frame(width: 410, height: 271, alignment: .center)
             }
             .frame(width: 420)
-            .animation(.default, value: company.bufferUser.reinforcer)
+            .animation(.default, value: self.company.bufferUser.reinforcer)
         } else {
             EmptyView()
         }
@@ -58,7 +58,7 @@ struct ReinforcerPicker: View {
 
     func reinforcerButton(_ number: Int) -> some View {
         Button {
-            company.bufferUser.reinforcer = number
+            self.company.bufferUser.reinforcer = number
         } label: {
             Image("reinforcer-\(number)")
                 .resizable()
@@ -74,7 +74,7 @@ struct ReinforcerPicker: View {
         )
         .background(
             DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor,
-            in: Circle().inset(by: company.bufferUser.reinforcer == number ? -6 : 2)
+            in: Circle().inset(by: self.company.bufferUser.reinforcer == number ? -6 : 2)
         )
     }
 }

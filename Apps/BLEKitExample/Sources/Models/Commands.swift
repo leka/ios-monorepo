@@ -66,7 +66,7 @@ class CommandKit {
 
     init() {
         for _ in 0...LKCommand.startByteLength - 1 {
-            startSequence.append(LKCommand.startByte)
+            self.startSequence.append(LKCommand.startByte)
         }
     }
 
@@ -92,10 +92,10 @@ class CommandKit {
         let array = [command.LedFull.command, earOrBelt, red, green, blue, checksum8([earOrBelt, red, green, blue])]
 
         for element in array {
-            commandSequence.append(element)
+            self.commandSequence.append(element)
         }
 
-        numberOfCommands += 1
+        self.numberOfCommands += 1
     }
 
     // MARK: - Motor Functions
@@ -104,10 +104,10 @@ class CommandKit {
         let array = [command.Motor.command, leftOrRight, direction, speed, checksum8([leftOrRight, direction, speed])]
 
         for element in array {
-            commandSequence.append(element)
+            self.commandSequence.append(element)
         }
 
-        numberOfCommands += 1
+        self.numberOfCommands += 1
     }
 
     // MARK: - Motivator Functions
@@ -116,10 +116,10 @@ class CommandKit {
         let array = [command.Motivator.command, motivator, checksum8([motivator])]
 
         for element in array {
-            commandSequence.append(element)
+            self.commandSequence.append(element)
         }
 
-        numberOfCommands += 1
+        self.numberOfCommands += 1
     }
 
     // MARK: - Command Functions
@@ -127,32 +127,32 @@ class CommandKit {
     func encapsulate() -> [UInt8] {
         var encapsulatedArray: [UInt8] = []
 
-        encapsulatedArray.append(contentsOf: startSequence)
-        encapsulatedArray.append(UInt8(numberOfCommands))
-        encapsulatedArray.append(contentsOf: commandSequence)
+        encapsulatedArray.append(contentsOf: self.startSequence)
+        encapsulatedArray.append(UInt8(self.numberOfCommands))
+        encapsulatedArray.append(contentsOf: self.commandSequence)
 
-        commandSequence = encapsulatedArray
-        isEncapsulated = true
+        self.commandSequence = encapsulatedArray
+        self.isEncapsulated = true
 
-        return commandSequence
+        return self.commandSequence
     }
 
     func getCommands() -> [UInt8] {
         var commands: [UInt8] = []
 
-        if isEncapsulated {
-            commands = commandSequence
+        if self.isEncapsulated {
+            commands = self.commandSequence
         } else {
-            commands = encapsulate()
+            commands = self.encapsulate()
         }
 
-        flush()
+        self.flush()
         return commands
     }
 
     func flush() {
-        commandSequence.removeAll()
-        numberOfCommands = 0
-        isEncapsulated = false
+        self.commandSequence.removeAll()
+        self.numberOfCommands = 0
+        self.isEncapsulated = false
     }
 }

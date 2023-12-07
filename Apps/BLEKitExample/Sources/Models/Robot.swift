@@ -23,15 +23,15 @@ class Robot: ObservableObject {
 
     var robotPeripheral: RobotPeripheral? {
         didSet {
-            updateDeviceInformation()
-            subscribeToDeviceUpdates()
+            self.updateDeviceInformation()
+            self.subscribeToDeviceUpdates()
         }
     }
 
     func updateDeviceInformation() {
         guard let robotPeripheral else { return }
 
-        registerReadOnlyCharacteristicClosures()
+        self.registerReadOnlyCharacteristicClosures()
 
         robotPeripheral.readReadOnlyCharacteristics()
     }
@@ -39,7 +39,7 @@ class Robot: ObservableObject {
     func subscribeToDeviceUpdates() {
         guard let robotPeripheral else { return }
 
-        registerNotifyingCharacteristicClosures()
+        self.registerNotifyingCharacteristicClosures()
 
         robotPeripheral.discoverAndListenForUpdates()
     }
@@ -47,7 +47,7 @@ class Robot: ObservableObject {
     func runReinforcer(_ reinforcer: UInt8) {
         guard let robotPeripheral else { return }
 
-        commands.addMotivator(reinforcer)
+        self.commands.addMotivator(reinforcer)
         let data = Data(commands.getCommands())
 
         robotPeripheral.sendCommand(data)
@@ -103,7 +103,7 @@ class Robot: ObservableObject {
                 }
             }
 
-            robotPeripheral?.readOnlyCharacteristics.insert(newChar)
+            self.robotPeripheral?.readOnlyCharacteristics.insert(newChar)
         }
     }
 
@@ -147,7 +147,7 @@ class Robot: ObservableObject {
                 }
             }
 
-            robotPeripheral?.notifyingCharacteristics.insert(newChar)
+            self.robotPeripheral?.notifyingCharacteristics.insert(newChar)
         }
     }
 }

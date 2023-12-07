@@ -18,11 +18,11 @@ struct RobotDiscoveryView: View {
         HStack(spacing: 20) {
             Image(
                 systemName: {
-                    if robotListViewModel.selectedRobotDiscovery == discovery {
+                    if self.robotListViewModel.selectedRobotDiscovery == self.discovery {
                         return "checkmark.circle.fill"
                     }
 
-                    if robotListViewModel.connectedRobotDiscovery == discovery {
+                    if self.robotListViewModel.connectedRobotDiscovery == self.discovery {
                         return "checkmark.circle.fill"
                     }
 
@@ -32,33 +32,33 @@ struct RobotDiscoveryView: View {
             .font(.system(size: 40))
             .foregroundColor(
                 {
-                    if robotListViewModel.connectedRobotDiscovery == discovery {
+                    if self.robotListViewModel.connectedRobotDiscovery == self.discovery {
                         return .green
                     }
 
-                    if robotListViewModel.selectedRobotDiscovery == discovery {
+                    if self.robotListViewModel.selectedRobotDiscovery == self.discovery {
                         return .accentColor
                     }
 
                     return .gray
                 }()
             )
-            .animation(.easeIn(duration: 0.25), value: robotListViewModel.selectedRobotDiscovery == discovery)
+            .animation(.easeIn(duration: 0.25), value: self.robotListViewModel.selectedRobotDiscovery == self.discovery)
 
             VStack(alignment: .leading, spacing: 10) {
                 HStack(spacing: 40) {
                     VStack(alignment: .leading) {
-                        Text(discovery.name)
+                        Text(self.discovery.name)
                             .font(.headline)
-                        Text("v\(discovery.osVersion)")
+                        Text("v\(self.discovery.osVersion)")
                     }
 
                     Spacer()
 
                     VStack(alignment: .leading) {
-                        Text("Battery: \(discovery.battery)")
-                        Text("Charging: \(discovery.isCharging ? "Yes" : "No")")
-                            .foregroundColor(discovery.isCharging ? .green : .red)
+                        Text("Battery: \(self.discovery.battery)")
+                        Text("Charging: \(self.discovery.isCharging ? "Yes" : "No")")
+                            .foregroundColor(self.discovery.isCharging ? .green : .red)
                     }
 
                     Spacer()

@@ -12,19 +12,19 @@ struct SignupView: View {
 
     var body: some View {
         VStack(spacing: 10) {
-            emailField
-            passwordField
-            confirmPasswordField
-            signupButton
+            self.emailField
+            self.passwordField
+            self.confirmPasswordField
+            self.signupButton
         }
         .textInputAutocapitalization(.never)
         .frame(maxWidth: 400)
         .padding()
         .navigationTitle("Sign-Up View")
         .navigationBarTitleDisplayMode(.large)
-        .animation(.default, value: organisation.isEmailValid())
-        .animation(.default, value: organisation.isPasswordValid(organisation.password))
-        .animation(.default, value: organisation.passwordsMatch())
+        .animation(.default, value: self.organisation.isEmailValid())
+        .animation(.default, value: self.organisation.isPasswordValid(self.organisation.password))
+        .animation(.default, value: self.organisation.passwordsMatch())
     }
 
     // MARK: Private
@@ -33,13 +33,13 @@ struct SignupView: View {
 
     private var emailField: some View {
         VStack(alignment: .leading, spacing: 10) {
-            TextField("email", text: $organisation.mail)
+            TextField("email", text: self.$organisation.mail)
                 .textFieldStyle(.roundedBorder)
                 .keyboardType(.emailAddress)
-            if !organisation.mail.isEmpty,
-               !organisation.isEmailValid()
+            if !self.organisation.mail.isEmpty,
+               !self.organisation.isEmailValid()
             {
-                Text(organisation.invalidEmailAddressText)
+                Text(self.organisation.invalidEmailAddressText)
                     .font(.footnote)
                     .foregroundStyle(.red)
                     .padding(.horizontal, 10)
@@ -49,12 +49,12 @@ struct SignupView: View {
 
     private var passwordField: some View {
         VStack(alignment: .leading, spacing: 10) {
-            SecureField("password", text: $organisation.password)
+            SecureField("password", text: self.$organisation.password)
                 .textFieldStyle(.roundedBorder)
-            if !organisation.password.isEmpty,
-               !organisation.isPasswordValid(organisation.password)
+            if !self.organisation.password.isEmpty,
+               !self.organisation.isPasswordValid(self.organisation.password)
             {
-                Text(organisation.invalidPasswordText)
+                Text(self.organisation.invalidPasswordText)
                     .font(.footnote)
                     .lineLimit(2)
                     .foregroundStyle(.red)
@@ -65,13 +65,13 @@ struct SignupView: View {
 
     private var confirmPasswordField: some View {
         VStack(alignment: .leading, spacing: 10) {
-            SecureField("confirm password", text: $organisation.confirmPassword)
+            SecureField("confirm password", text: self.$organisation.confirmPassword)
                 .textFieldStyle(.roundedBorder)
-            if !organisation.password.isEmpty,
-               !organisation.confirmPassword.isEmpty,
-               !organisation.passwordsMatch()
+            if !self.organisation.password.isEmpty,
+               !self.organisation.confirmPassword.isEmpty,
+               !self.organisation.passwordsMatch()
             {
-                Text(organisation.invalidConfirmPasswordText)
+                Text(self.organisation.invalidConfirmPasswordText)
                     .font(.footnote)
                     .foregroundStyle(.red)
                     .padding(.horizontal, 10)
@@ -83,7 +83,7 @@ struct SignupView: View {
     private var signupButton: some View {
         Button(
             action: {
-                authenticationState.organisationIsAuthenticated = .loggedIn // tests
+                self.authenticationState.organisationIsAuthenticated = .loggedIn // tests
             },
             label: {
                 Text("Sign Up")
@@ -92,8 +92,8 @@ struct SignupView: View {
         )
         .controlSize(.large)
         .buttonStyle(.borderedProminent)
-        .disabled(!organisation.signUpIsComplete)
-        .animation(.default, value: organisation.signUpIsComplete)
+        .disabled(!self.organisation.signUpIsComplete)
+        .animation(.default, value: self.organisation.signUpIsComplete)
     }
 }
 

@@ -55,22 +55,22 @@ extension RemoteArrowView {
                 .fill(.white)
                 .frame(width: 200, height: 200)
                 .overlay {
-                    Image(systemName: arrow.name)
+                    Image(systemName: self.arrow.name)
                         .resizable()
-                        .foregroundColor(arrow.color.screen)
+                        .foregroundColor(self.arrow.color.screen)
                         .frame(width: 80, height: 100)
                 }
                 .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: 0)
-                .scaleEffect(isPressed ? 0.95 : 1.0)
+                .scaleEffect(self.isPressed ? 0.95 : 1.0)
                 .gesture(
                     DragGesture(minimumDistance: 0)
                         .onChanged { _ in
-                            onChanged()
-                            isPressed = true
+                            self.onChanged()
+                            self.isPressed = true
                         }
                         .onEnded { _ in
-                            onReleased()
-                            isPressed = false
+                            self.onReleased()
+                            self.isPressed = false
                         }
                 )
         }

@@ -26,13 +26,13 @@ struct ButtonBordered<Label: View>: View {
     var body: some View {
         Button(
             action: {
-                action()
+                self.action()
             },
             label: {
-                label
+                self.label
             }
         )
-        .buttonStyle(.robotControlBorderedButtonStyle(foreground: foreground, border: border))
+        .buttonStyle(.robotControlBorderedButtonStyle(foreground: self.foreground, border: self.border))
     }
 
     // MARK: Private

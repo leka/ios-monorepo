@@ -14,11 +14,11 @@ struct MainView: View {
                 ConnectedRobotInformationView()
 
                 Button {
-                    presentRobotConnection.toggle()
+                    self.presentRobotConnection.toggle()
                 } label: {
                     Text("Connect robot")
                 }
-                .fullScreenCover(isPresented: $presentRobotConnection) {
+                .fullScreenCover(isPresented: self.$presentRobotConnection) {
                     RobotConnectionView(viewModel: RobotConnectionViewModel())
                 }
 

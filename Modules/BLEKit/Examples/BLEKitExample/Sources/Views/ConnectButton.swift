@@ -19,24 +19,24 @@ struct ConnectButton: View {
 
     var body: some View {
         Button {
-            if robotListViewModel.connectedRobotPeripheral == nil, robotListViewModel.selectedRobotDiscovery != nil {
-                connectToRobot()
+            if self.robotListViewModel.connectedRobotPeripheral == nil, self.robotListViewModel.selectedRobotDiscovery != nil {
+                self.connectToRobot()
             } else {
-                disconnectFromRobot()
+                self.disconnectFromRobot()
             }
         } label: {
-            if robotListViewModel.connectedRobotPeripheral == nil {
-                disconnectedView
+            if self.robotListViewModel.connectedRobotPeripheral == nil {
+                self.disconnectedView
             } else {
-                connectedView
+                self.connectedView
             }
         }
         .opacity(
-            (robotListViewModel.connectedRobotPeripheral == nil && robotListViewModel.selectedRobotDiscovery == nil)
+            (self.robotListViewModel.connectedRobotPeripheral == nil && self.robotListViewModel.selectedRobotDiscovery == nil)
                 ? 0.5 : 1.0
         )
         .disabled(
-            robotListViewModel.connectedRobotPeripheral == nil && robotListViewModel.selectedRobotDiscovery == nil)
+            self.robotListViewModel.connectedRobotPeripheral == nil && self.robotListViewModel.selectedRobotDiscovery == nil)
     }
 
     // MARK: Private
@@ -84,11 +84,11 @@ struct ConnectButton: View {
     }
 
     private func connectToRobot() {
-        robotListViewModel.connectToSelectedPeripheral()
+        self.robotListViewModel.connectToSelectedPeripheral()
     }
 
     private func disconnectFromRobot() {
-        robotListViewModel.disconnectFromConnectedPeripheral()
+        self.robotListViewModel.disconnectFromConnectedPeripheral()
     }
 }
 

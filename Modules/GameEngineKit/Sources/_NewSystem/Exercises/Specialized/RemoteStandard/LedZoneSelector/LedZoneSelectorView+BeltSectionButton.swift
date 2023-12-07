@@ -38,24 +38,24 @@ extension LedZoneSelectorView {
         let robot = Robot.shared
 
         var body: some View {
-            LedZoneShape(section: section)
-                .stroke(section.color.screen, style: StrokeStyle(lineWidth: 10, lineCap: .round))
+            LedZoneShape(section: self.section)
+                .stroke(self.section.color.screen, style: StrokeStyle(lineWidth: 10, lineCap: .round))
                 .frame(width: 300, height: 300)
                 .onTapGesture {
-                    buttonPressed.toggle()
-                    if buttonPressed {
-                        robot.shine(section)
+                    self.buttonPressed.toggle()
+                    if self.buttonPressed {
+                        self.robot.shine(self.section)
                     } else {
-                        robot.blacken(section)
+                        self.robot.blacken(self.section)
                     }
-                    backgroundLineWidth = buttonPressed ? 25 : 0
+                    self.backgroundLineWidth = self.buttonPressed ? 25 : 0
                 }
                 .background(
-                    LedZoneShape(section: section)
+                    LedZoneShape(section: self.section)
                         .stroke(
-                            section.color.screen.opacity(0.3),
+                            self.section.color.screen.opacity(0.3),
                             style: StrokeStyle(
-                                lineWidth: CGFloat(backgroundLineWidth),
+                                lineWidth: CGFloat(self.backgroundLineWidth),
                                 lineCap: .round,
                                 lineJoin: .round,
                                 miterLimit: 10
@@ -63,7 +63,7 @@ extension LedZoneSelectorView {
                         )
                         .frame(width: 300, height: 300)
                 )
-                .animation(Animation.easeInOut(duration: 0.2), value: backgroundLineWidth)
+                .animation(Animation.easeInOut(duration: 0.2), value: self.backgroundLineWidth)
         }
 
         // MARK: Private

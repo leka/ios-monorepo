@@ -16,55 +16,55 @@ struct PlayZone: View {
     var body: some View {
         HStack {
             Spacer()
-            LazyVGrid(columns: columns, spacing: gameMetrics.playGridRowSpacing) {
-                ForEach(0..<activityVM.currentActivity.numberOfImages, id: \.self) { answer in
+            LazyVGrid(columns: self.columns, spacing: self.gameMetrics.playGridRowSpacing) {
+                ForEach(0..<self.activityVM.currentActivity.numberOfImages, id: \.self) { answer in
                     Button {
-                        activityVM.answerHasBeenPressed(atIndex: answer)
+                        self.activityVM.answerHasBeenPressed(atIndex: answer)
                     } label: {
-                        Image(activityVM.images[answer])
+                        Image(self.activityVM.images[answer])
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .clipShape(Circle().inset(by: 2))
                             .frame(
-                                width: gameMetrics.playGridBtnSize,
-                                height: gameMetrics.playGridBtnSize,
+                                width: self.gameMetrics.playGridBtnSize,
+                                height: self.gameMetrics.playGridBtnSize,
                                 alignment: .center
                             )
                     }
-                    .buttonStyle(ActivityAnswer_ButtonStyle(isEnabled: activityVM.currentMediaHasBeenPlayedOnce))
-                    .animation(.easeIn(duration: gameMetrics.playGridBtnAnimDuration), value: activityVM.percent)
+                    .buttonStyle(ActivityAnswer_ButtonStyle(isEnabled: self.activityVM.currentMediaHasBeenPlayedOnce))
+                    .animation(.easeIn(duration: self.gameMetrics.playGridBtnAnimDuration), value: self.activityVM.percent)
                     .overlay(
                         ZStack {
-                            if answer == activityVM.correctIndex {
+                            if answer == self.activityVM.correctIndex {
                                 Circle()
-                                    .trim(from: 0, to: activityVM.percent)
+                                    .trim(from: 0, to: self.activityVM.percent)
                                     .stroke(
                                         .green,
                                         style: StrokeStyle(
-                                            lineWidth: gameMetrics.playGridBtnTrimLineWidth,
+                                            lineWidth: self.gameMetrics.playGridBtnTrimLineWidth,
                                             lineCap: .round,
                                             lineJoin: .round,
                                             miterLimit: 10
                                         )
                                     )
-                            } else if answer == activityVM.pressedIndex {
+                            } else if answer == self.activityVM.pressedIndex {
                                 Circle()
                                     .fill(.gray)
-                                    .opacity(activityVM.overlayOpacity)
+                                    .opacity(self.activityVM.overlayOpacity)
                             } else {
                                 EmptyView()
                             }
                         }
                     )
-                    .disabled(activityVM.tapIsDisabled)
-                    .disabled(activityVM.answersAreDisabled)
+                    .disabled(self.activityVM.tapIsDisabled)
+                    .disabled(self.activityVM.answersAreDisabled)
                 }
             }
             Spacer()
         }
         .background(
             HStack {
-                if activityVM.currentActivityType != "touch_to_select" {
+                if self.activityVM.currentActivityType != "touch_to_select" {
                     PlaySoundButton()
                         .padding(.leading, 50)
                     Spacer()
@@ -79,39 +79,39 @@ struct PlayZone: View {
 
     // Grid configuration
     private var columns: [GridItem] {
-        let number = activityVM.currentActivity.numberOfImages
+        let number = self.activityVM.currentActivity.numberOfImages
         if number % 3 == 0 {
-            guard activityVM.currentActivityType != "touch_to_select" else {
+            guard self.activityVM.currentActivityType != "touch_to_select" else {
                 return [
-                    GridItem(.fixed(gameMetrics.playGridBtnCellSize), alignment: .center),
-                    GridItem(.fixed(gameMetrics.playGridBtnCellSize), alignment: .center),
-                    GridItem(.fixed(gameMetrics.playGridBtnCellSize), alignment: .center),
+                    GridItem(.fixed(self.gameMetrics.playGridBtnCellSize), alignment: .center),
+                    GridItem(.fixed(self.gameMetrics.playGridBtnCellSize), alignment: .center),
+                    GridItem(.fixed(self.gameMetrics.playGridBtnCellSize), alignment: .center),
                 ]
             }
             return [
-                GridItem(.fixed(gameMetrics.playGridBtnCellSize), alignment: .center),
-                GridItem(.fixed(gameMetrics.playGridBtnCellSize), alignment: .center),
+                GridItem(.fixed(self.gameMetrics.playGridBtnCellSize), alignment: .center),
+                GridItem(.fixed(self.gameMetrics.playGridBtnCellSize), alignment: .center),
             ]
         } else if number == 2 {
             return [
-                GridItem(.fixed(gameMetrics.playGridBtnCellSize), alignment: .center),
-                GridItem(.fixed(gameMetrics.playGridBtnCellSize), alignment: .center),
+                GridItem(.fixed(self.gameMetrics.playGridBtnCellSize), alignment: .center),
+                GridItem(.fixed(self.gameMetrics.playGridBtnCellSize), alignment: .center),
             ]
         } else if number == 4 {
-            guard activityVM.currentActivityType != "touch_to_select" else {
+            guard self.activityVM.currentActivityType != "touch_to_select" else {
                 return [
-                    GridItem(.fixed(gameMetrics.playGridBtnCellSize), alignment: .center),
-                    GridItem(.fixed(gameMetrics.playGridBtnCellSize), alignment: .center),
-                    GridItem(.fixed(gameMetrics.playGridBtnCellSize), alignment: .center),
-                    GridItem(.fixed(gameMetrics.playGridBtnCellSize), alignment: .center),
+                    GridItem(.fixed(self.gameMetrics.playGridBtnCellSize), alignment: .center),
+                    GridItem(.fixed(self.gameMetrics.playGridBtnCellSize), alignment: .center),
+                    GridItem(.fixed(self.gameMetrics.playGridBtnCellSize), alignment: .center),
+                    GridItem(.fixed(self.gameMetrics.playGridBtnCellSize), alignment: .center),
                 ]
             }
             return [
-                GridItem(.fixed(gameMetrics.playGridBtnCellSize), alignment: .center),
-                GridItem(.fixed(gameMetrics.playGridBtnCellSize), alignment: .center),
+                GridItem(.fixed(self.gameMetrics.playGridBtnCellSize), alignment: .center),
+                GridItem(.fixed(self.gameMetrics.playGridBtnCellSize), alignment: .center),
             ]
         } else {
-            return [GridItem(.fixed(gameMetrics.playGridBtnCellSize), alignment: .center)]
+            return [GridItem(.fixed(self.gameMetrics.playGridBtnCellSize), alignment: .center)]
         }
     }
 }

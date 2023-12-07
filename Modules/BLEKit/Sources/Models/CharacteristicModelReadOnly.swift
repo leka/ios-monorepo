@@ -28,8 +28,8 @@ public struct CharacteristicModelReadOnly {
 
 extension CharacteristicModelReadOnly: Hashable {
     public func hash(into hasher: inout Hasher) {
-        hasher.combine(characteristicUUID)
-        hasher.combine(serviceUUID)
+        hasher.combine(self.characteristicUUID)
+        hasher.combine(self.serviceUUID)
     }
 
     public static func == (lhs: CharacteristicModelReadOnly, rhs: CharacteristicModelReadOnly) -> Bool {

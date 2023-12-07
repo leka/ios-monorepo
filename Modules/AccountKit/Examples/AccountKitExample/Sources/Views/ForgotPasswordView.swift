@@ -11,8 +11,8 @@ struct ForgotPasswordView: View {
     var body: some View {
         NavigationStack {
             VStack(spacing: 10) {
-                emailField
-                resetPasswordButton
+                self.emailField
+                self.resetPasswordButton
             }
             .textInputAutocapitalization(.never)
             .frame(maxWidth: 400)
@@ -20,20 +20,20 @@ struct ForgotPasswordView: View {
             .navigationTitle("Reset Password View")
             .navigationBarTitleDisplayMode(.inline)
             .toolbarBackground(.visible, for: .navigationBar)
-            .animation(.default, value: organisation.isEmailValid())
-            .navigationBarItems(trailing: Button("Dismiss", action: { dismiss() }))
+            .animation(.default, value: self.organisation.isEmailValid())
+            .navigationBarItems(trailing: Button("Dismiss", action: { self.dismiss() }))
         }
     }
 
     private var emailField: some View {
         VStack(alignment: .leading, spacing: 10) {
-            TextField("email", text: $organisation.mail)
+            TextField("email", text: self.$organisation.mail)
                 .textFieldStyle(.roundedBorder)
                 .keyboardType(.emailAddress)
-            if !organisation.mail.isEmpty,
-               !organisation.isEmailValid()
+            if !self.organisation.mail.isEmpty,
+               !self.organisation.isEmailValid()
             {
-                Text(organisation.invalidEmailAddressText)
+                Text(self.organisation.invalidEmailAddressText)
                     .font(.footnote)
                     .foregroundStyle(.red)
                     .padding(.horizontal, 10)
@@ -44,7 +44,7 @@ struct ForgotPasswordView: View {
     private var resetPasswordButton: some View {
         Button(
             action: {
-                dismiss()
+                self.dismiss()
             },
             label: {
                 Text("Reset Password")
@@ -52,7 +52,7 @@ struct ForgotPasswordView: View {
             }
         )
         .buttonStyle(.borderedProminent)
-        .disabled(!organisation.isEmailValid())
+        .disabled(!self.organisation.isEmailValid())
     }
 }
 

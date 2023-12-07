@@ -15,7 +15,7 @@ extension DesignSystemLeka {
         var body: some View {
             ScrollView(.vertical) {
                 VStack(alignment: .leading, spacing: 40) {
-                    ForEach(colors, id: \.self) { color in
+                    ForEach(self.colors, id: \.self) { color in
                         VStack(alignment: .leading) {
                             Button("automatic tint \(color.description)") {}
                                 .buttonStyle(.automatic)

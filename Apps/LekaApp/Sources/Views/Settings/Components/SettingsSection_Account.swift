@@ -14,35 +14,35 @@ struct SettingsSection_Account: View {
         Section {
             Group {
                 Button("Se déconnecter") {
-                    settings.showConfirmDisconnection.toggle()
+                    self.settings.showConfirmDisconnection.toggle()
                 }
                 .foregroundColor(.blue)
                 Button("Supprimer le compte") {
-                    settings.showConfirmDeleteAccount.toggle()
+                    self.settings.showConfirmDeleteAccount.toggle()
                 }
                 .foregroundColor(.red)
             }
             .frame(maxHeight: 52)
         }
-        .alert("Déconnexion", isPresented: $settings.showConfirmDisconnection) {
+        .alert("Déconnexion", isPresented: self.$settings.showConfirmDisconnection) {
             Button(role: .destructive) {
-                viewRouter.currentPage = .welcome
-                company.disconnect()
-                robotVM.disconnect()
-                settings.companyIsConnected = false
+                self.viewRouter.currentPage = .welcome
+                self.company.disconnect()
+                self.robotVM.disconnect()
+                self.settings.companyIsConnected = false
             } label: {
                 Text("Se déconnecter")
             }
         } message: {
             Text("Vous êtes sur le point de vous déconnecter.")
         }
-        .alert("Supprimer le compte", isPresented: $settings.showConfirmDeleteAccount) {
+        .alert("Supprimer le compte", isPresented: self.$settings.showConfirmDeleteAccount) {
             Button(role: .destructive) {
                 // For now...
-                viewRouter.currentPage = .welcome
-                company.disconnect()
-                robotVM.disconnect()
-                settings.companyIsConnected = false
+                self.viewRouter.currentPage = .welcome
+                self.company.disconnect()
+                self.robotVM.disconnect()
+                self.settings.companyIsConnected = false
             } label: {
                 Text("Supprimer")
             }

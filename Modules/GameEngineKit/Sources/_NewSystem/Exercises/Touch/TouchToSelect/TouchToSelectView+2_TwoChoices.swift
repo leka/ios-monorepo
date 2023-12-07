@@ -12,11 +12,11 @@ extension TouchToSelectView {
         @ObservedObject var viewModel: TouchToSelectViewViewModel
 
         var body: some View {
-            HStack(spacing: kHorizontalSpacing) {
-                ForEach(viewModel.choices) { choice in
-                    TouchToSelectChoiceView(choice: choice, size: kAnswerSize)
+            HStack(spacing: self.kHorizontalSpacing) {
+                ForEach(self.viewModel.choices) { choice in
+                    TouchToSelectChoiceView(choice: choice, size: self.kAnswerSize)
                         .onTapGesture {
-                            viewModel.onChoiceTapped(choice: choice)
+                            self.viewModel.onChoiceTapped(choice: choice)
                         }
                 }
             }

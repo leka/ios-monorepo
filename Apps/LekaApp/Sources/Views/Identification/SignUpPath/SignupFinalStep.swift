@@ -14,7 +14,7 @@ struct SignupFinalStep: View {
     var body: some View {
         ZStack {
             DesignKitAsset.Colors.lekaLightBlue.swiftUIColor.ignoresSafeArea()
-            tile
+            self.tile
         }
         .edgesIgnoringSafeArea(.top)
         .toolbar {
@@ -32,13 +32,13 @@ struct SignupFinalStep: View {
         HStack(alignment: .center, spacing: 0) {
             VStack(spacing: 0) {
                 // Title
-                Text(data.content.title!)
-                    .font(metrics.semi17)
+                Text(self.data.content.title!)
+                    .font(self.metrics.semi17)
                     .foregroundColor(DesignKitAsset.Colors.lekaOrange.swiftUIColor)
                 Spacer()
                 // Message
                 VStack(spacing: 10) {
-                    Text(data.content.message!)
+                    Text(self.data.content.message!)
                         .padding(.bottom, 10)
                     VStack(alignment: .leading, spacing: 8) {
                         Text("✅ Créer votre profil de professionnel")
@@ -48,37 +48,37 @@ struct SignupFinalStep: View {
                     }
                 }
                 .multilineTextAlignment(.center)
-                .font(metrics.reg17)
+                .font(self.metrics.reg17)
                 Spacer()
                 // CTA Button
-                accessoryView
+                self.accessoryView
             }
             .multilineTextAlignment(.center)
             .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
             .frame(width: 400)
-            .padding(metrics.tileContentPadding)
+            .padding(self.metrics.tileContentPadding)
         }
         .frame(
-            width: metrics.tileSize.width,
-            height: metrics.tileSize.height
+            width: self.metrics.tileSize.width,
+            height: self.metrics.tileSize.height
         )
         .background(
             .white,
-            in: RoundedRectangle(cornerRadius: metrics.tilesRadius, style: .continuous)
+            in: RoundedRectangle(cornerRadius: self.metrics.tilesRadius, style: .continuous)
         )
     }
 
     private var accessoryView: some View {
         Button {
             withAnimation {
-                viewRouter.currentPage = .home
+                self.viewRouter.currentPage = .home
             }
         } label: {
-            Text(data.content.callToActionLabel!)
+            Text(self.data.content.callToActionLabel!)
         }
         .buttonStyle(
             BorderedCapsule_NoFeedback_ButtonStyle(
-                font: metrics.reg17,
+                font: self.metrics.reg17,
                 color: DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor
             )
         )

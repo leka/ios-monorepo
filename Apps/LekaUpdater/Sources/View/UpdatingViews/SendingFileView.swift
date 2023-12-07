@@ -27,7 +27,7 @@ struct SendingFileContentView: View {
                 .font(.title2)
                 .bold()
 
-            Gauge(value: progress, label: { EmptyView() })
+            Gauge(value: self.progress, label: { EmptyView() })
                 .tint(Color(red: 160 / 255, green: 185 / 255, blue: 49 / 255))
                 .padding(40)
                 .background(

@@ -17,7 +17,7 @@ struct AccountKitExample: App {
     var body: some Scene {
         WindowGroup {
             MainView()
-                .environmentObject(authenticationState)
+                .environmentObject(self.authenticationState)
         }
     }
 }

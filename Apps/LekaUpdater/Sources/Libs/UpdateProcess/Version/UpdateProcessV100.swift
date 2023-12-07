@@ -59,9 +59,9 @@ private class StateLoadingUpdateFile: GKState, StateEventProcessor {
         let isLoaded = globalFirmwareManager.load()
 
         if isLoaded {
-            process(event: .fileLoaded)
+            self.process(event: .fileLoaded)
         } else {
-            process(event: .failedToLoadFile)
+            self.process(event: .failedToLoadFile)
         }
     }
 
@@ -89,7 +89,7 @@ private class StateSettingDestinationPath: GKState, StateEventProcessor {
     }
 
     override func didEnter(from _: GKState?) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: setDestinationPath)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: self.setDestinationPath)
     }
 
     func process(event: UpdateEvent) {
@@ -132,14 +132,14 @@ private class StateSendingFile: GKState, StateEventProcessor {
     override init() {
         let dataSize = globalFirmwareManager.data.count
 
-        self.expectedCompletePackets = Int(floor(Double(dataSize / maximumPacketSize)))
-        self.expectedRemainingBytes = Int(dataSize % maximumPacketSize)
+        self.expectedCompletePackets = Int(floor(Double(dataSize / self.maximumPacketSize)))
+        self.expectedRemainingBytes = Int(dataSize % self.maximumPacketSize)
 
         self.currentPacket = 0
 
         super.init()
 
-        subscribeToFirmwareDataUpdates()
+        self.subscribeToFirmwareDataUpdates()
     }
 
     // MARK: Public
@@ -153,11 +153,11 @@ private class StateSendingFile: GKState, StateEventProcessor {
     }
 
     override func didEnter(from _: GKState?) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: sendFile)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: self.sendFile)
     }
 
     override func willExit(to _: GKState) {
-        cancellables.removeAll()
+        self.cancellables.removeAll()
     }
 
     func process(event: UpdateEvent) {
@@ -190,11 +190,11 @@ private class StateSendingFile: GKState, StateEventProcessor {
     )
 
     private var expectedPackets: Int {
-        expectedRemainingBytes == 0 ? expectedCompletePackets : expectedCompletePackets + 1
+        self.expectedRemainingBytes == 0 ? self.expectedCompletePackets : self.expectedCompletePackets + 1
     }
 
     private var _progression: Float {
-        Float(currentPacket) / Float(expectedPackets)
+        Float(self.currentPacket) / Float(self.expectedPackets)
     }
 
     private func subscribeToFirmwareDataUpdates() {
@@ -206,24 +206,24 @@ private class StateSendingFile: GKState, StateEventProcessor {
                 self.expectedCompletePackets = Int(floor(Double(dataSize / self.maximumPacketSize)))
                 self.expectedRemainingBytes = Int(dataSize % self.maximumPacketSize)
             }
-            .store(in: &cancellables)
+            .store(in: &self.cancellables)
     }
 
     private func sendFile() {
-        tryToSendNextPacket()
+        self.tryToSendNextPacket()
     }
 
     private func tryToSendNextPacket() {
-        if isInCriticalSection() {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: tryToSendNextPacket)
+        if self.isInCriticalSection() {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: self.tryToSendNextPacket)
             return
         }
 
-        progression.send(_progression)
-        if _progression < 1.0 {
-            sendNextPacket()
+        self.progression.send(self._progression)
+        if self._progression < 1.0 {
+            self.sendNextPacket()
         } else {
-            process(event: .fileSent)
+            self.process(event: .fileSent)
         }
     }
 
@@ -238,14 +238,14 @@ private class StateSendingFile: GKState, StateEventProcessor {
     }
 
     private func sendNextPacket() {
-        let startIndex = currentPacket * maximumPacketSize
+        let startIndex = self.currentPacket * self.maximumPacketSize
         let endIndex =
-            currentPacket < expectedCompletePackets
-                ? startIndex + maximumPacketSize - 1 : startIndex + expectedRemainingBytes - 1
+            self.currentPacket < self.expectedCompletePackets
+                ? startIndex + self.maximumPacketSize - 1 : startIndex + self.expectedRemainingBytes - 1
 
         let dataToSend = globalFirmwareManager.data[startIndex...endIndex]
 
-        Robot.shared.connectedPeripheral?.send(dataToSend, forCharacteristic: characteristic)
+        Robot.shared.connectedPeripheral?.send(dataToSend, forCharacteristic: self.characteristic)
     }
 }
 
@@ -259,12 +259,12 @@ private class StateApplyingUpdate: GKState, StateEventProcessor {
     }
 
     override func didEnter(from _: GKState?) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: setMajorMinorRevision)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: applyUpdate)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: self.setMajorMinorRevision)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: self.applyUpdate)
     }
 
     override func willExit(to _: GKState) {
-        cancellables.removeAll()
+        self.cancellables.removeAll()
     }
 
     func process(event: UpdateEvent) {
@@ -338,17 +338,17 @@ private class StateWaitingForRobotToReboot: GKState, StateEventProcessor {
     }
 
     override func didEnter(from _: GKState?) {
-        registerScanForRobot()
+        self.registerScanForRobot()
     }
 
     override func willExit(to _: GKState) {
-        cancellables.removeAll()
+        self.cancellables.removeAll()
     }
 
     func process(event: UpdateEvent) {
         switch event {
             case .robotDetected:
-                if isRobotUpToDate {
+                if self.isRobotUpToDate {
                     stateMachine?.enter(StateFinal.self)
                 } else {
                     stateMachine?.enter(StateErrorRobotNotUpToDate.self)
@@ -386,7 +386,7 @@ private class StateWaitingForRobotToReboot: GKState, StateEventProcessor {
                     }
                 }
             )
-            .store(in: &cancellables)
+            .store(in: &self.cancellables)
     }
 }
 
@@ -420,7 +420,7 @@ class UpdateProcessV100: UpdateProcessProtocol {
             StateInitial(),
 
             StateLoadingUpdateFile(),
-            stateSendingFile,
+            self.stateSendingFile,
             StateApplyingUpdate(),
             StateWaitingForRobotToReboot(expectedRobot: Robot.shared.connectedPeripheral),
             StateSettingDestinationPath(),
@@ -431,11 +431,11 @@ class UpdateProcessV100: UpdateProcessProtocol {
             StateErrorRobotNotUpToDate(),
             StateErrorRobotUnexpectedDisconnection(),
         ])
-        stateMachine?.enter(StateInitial.self)
+        self.stateMachine?.enter(StateInitial.self)
 
-        startRoutineToUpdateCurrentState()
-        registerDidDisconnect()
-        self.sendingFileProgression = stateSendingFile.progression
+        self.startRoutineToUpdateCurrentState()
+        self.registerDidDisconnect()
+        self.sendingFileProgression = self.stateSendingFile.progression
     }
 
     // MARK: Public
@@ -446,7 +446,7 @@ class UpdateProcessV100: UpdateProcessProtocol {
     public var sendingFileProgression = CurrentValueSubject<Float, Never>(0.0)
 
     public func startProcess() {
-        process(event: .startUpdateRequested)
+        self.process(event: .startUpdateRequested)
     }
 
     // MARK: Private
@@ -465,7 +465,7 @@ class UpdateProcessV100: UpdateProcessProtocol {
 
         state.process(event: event)
 
-        updateCurrentState()
+        self.updateCurrentState()
     }
 
     private func registerDidDisconnect() {
@@ -474,7 +474,7 @@ class UpdateProcessV100: UpdateProcessProtocol {
             .sink {
                 self.process(event: .robotDisconnected)
             }
-            .store(in: &cancellables)
+            .store(in: &self.cancellables)
     }
 
     private func startRoutineToUpdateCurrentState() {
@@ -483,7 +483,7 @@ class UpdateProcessV100: UpdateProcessProtocol {
             .sink { _ in
                 self.updateCurrentState()
             }
-            .store(in: &cancellables)
+            .store(in: &self.cancellables)
     }
 
     private func updateCurrentState() {
@@ -491,33 +491,33 @@ class UpdateProcessV100: UpdateProcessProtocol {
 
         switch state {
             case is StateInitial:
-                currentStage.send(.initial)
+                self.currentStage.send(.initial)
             case is StateLoadingUpdateFile,
                  is StateSettingDestinationPath,
                  is StateSendingFile:
-                currentStage.send(.sendingUpdate)
+                self.currentStage.send(.sendingUpdate)
             case is StateApplyingUpdate,
                  is StateWaitingForRobotToReboot:
-                currentStage.send(.installingUpdate)
+                self.currentStage.send(.installingUpdate)
             case is StateFinal:
-                currentStage.send(completion: .finished)
+                self.currentStage.send(completion: .finished)
             case is any StateError:
-                sendError(state: state)
+                self.sendError(state: state)
             default:
-                currentStage.send(completion: .failure(.unknown))
+                self.currentStage.send(completion: .failure(.unknown))
         }
     }
 
     private func sendError(state: GKState) {
         switch state {
             case is StateErrorFailedToLoadFile:
-                currentStage.send(completion: .failure(.failedToLoadFile))
+                self.currentStage.send(completion: .failure(.failedToLoadFile))
             case is StateErrorRobotNotUpToDate:
-                currentStage.send(completion: .failure(.robotNotUpToDate))
+                self.currentStage.send(completion: .failure(.robotNotUpToDate))
             case is StateErrorRobotUnexpectedDisconnection:
-                currentStage.send(completion: .failure(.robotUnexpectedDisconnection))
+                self.currentStage.send(completion: .failure(.robotUnexpectedDisconnection))
             default:
-                currentStage.send(completion: .failure(.unknown))
+                self.currentStage.send(completion: .failure(.unknown))
         }
     }
 }

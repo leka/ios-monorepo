@@ -14,20 +14,20 @@ struct AvatarButtonLabel: View {
 
     var body: some View {
         ZStack {
-            Image(image, bundle: Bundle(for: DesignKitResources.self))
+            Image(self.image, bundle: Bundle(for: DesignKitResources.self))
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .frame(maxWidth: metrics.diameter, maxHeight: metrics.diameter)
+                .frame(maxWidth: self.metrics.diameter, maxHeight: self.metrics.diameter)
                 .background(.white)
                 .mask(Circle())
             Circle()
                 .strokeBorder(DesignKitAsset.Colors.lekaLightGray.swiftUIColor, lineWidth: 2)
         }
-        .frame(minWidth: metrics.diameter, maxWidth: metrics.diameter)
+        .frame(minWidth: self.metrics.diameter, maxWidth: self.metrics.diameter)
         .background(
             DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor,
-            in: Circle().inset(by: isSelected ? -7 : 2)
+            in: Circle().inset(by: self.isSelected ? -7 : 2)
         )
-        .animation(.default, value: isSelected)
+        .animation(.default, value: self.isSelected)
     }
 }

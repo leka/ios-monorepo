@@ -11,10 +11,10 @@ class RobotInformationViewModel: ObservableObject {
     // MARK: Lifecycle
 
     init() {
-        subscribeToRobotSerialNumberUpdates()
-        subscribeToRobotBatteryUpdates()
-        subscribeToRobotOsVersionUpdates()
-        subscribeToRobotChargingStatusUpdates()
+        self.subscribeToRobotSerialNumberUpdates()
+        self.subscribeToRobotBatteryUpdates()
+        self.subscribeToRobotOsVersionUpdates()
+        self.subscribeToRobotChargingStatusUpdates()
     }
 
     // MARK: Internal
@@ -34,7 +34,7 @@ class RobotInformationViewModel: ObservableObject {
             .sink { robotSerialNumber in
                 self.robotSerialNumber = robotSerialNumber
             }
-            .store(in: &cancellables)
+            .store(in: &self.cancellables)
     }
 
     private func subscribeToRobotBatteryUpdates() {
@@ -43,7 +43,7 @@ class RobotInformationViewModel: ObservableObject {
             .sink { robotBattery in
                 self.robotBattery = "\(robotBattery)%"
             }
-            .store(in: &cancellables)
+            .store(in: &self.cancellables)
     }
 
     private func subscribeToRobotOsVersionUpdates() {
@@ -52,7 +52,7 @@ class RobotInformationViewModel: ObservableObject {
             .sink { robotOsVersion in
                 self.robotOsVersion = robotOsVersion?.description ?? "(n/a)"
             }
-            .store(in: &cancellables)
+            .store(in: &self.cancellables)
     }
 
     private func subscribeToRobotChargingStatusUpdates() {
@@ -62,6 +62,6 @@ class RobotInformationViewModel: ObservableObject {
                 self.robotIsCharging =
                     isCharging ? String(l10n.general.yes.characters) : String(l10n.general.no.characters)
             }
-            .store(in: &cancellables)
+            .store(in: &self.cancellables)
     }
 }

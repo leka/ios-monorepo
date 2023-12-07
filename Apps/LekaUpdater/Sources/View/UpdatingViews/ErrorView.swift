@@ -29,19 +29,19 @@ struct ErrorContentView: View {
 
     var body: some View {
         VStack(spacing: 15) {
-            Text(errorDescription)
+            Text(self.errorDescription)
                 .font(.title2)
                 .bold()
                 .fixedSize(horizontal: false, vertical: true)
                 .multilineTextAlignment(.center)
 
-            Text(errorInstruction)
+            Text(self.errorInstruction)
                 .fixedSize(horizontal: false, vertical: true)
                 .multilineTextAlignment(.center)
 
             Button {
-                dismiss()
-                isConnectionViewPresented = true
+                self.dismiss()
+                self.isConnectionViewPresented = true
             } label: {
                 Text(l10n.update.errorBackButtonTitle)
                     .padding(.horizontal)

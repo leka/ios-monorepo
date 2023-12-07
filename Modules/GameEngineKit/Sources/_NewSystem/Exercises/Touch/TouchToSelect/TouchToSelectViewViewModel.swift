@@ -15,14 +15,14 @@ class TouchToSelectViewViewModel: ObservableObject {
         )
         self.exercicesSharedData = shared ?? ExerciseSharedData()
 
-        subscribeToGameplaySelectionChoicesUpdates()
-        subscribeToGameplayStateUpdates()
+        self.subscribeToGameplaySelectionChoicesUpdates()
+        self.subscribeToGameplayStateUpdates()
     }
 
     // MARK: Public
 
     public func onChoiceTapped(choice: GameplayTouchToSelectChoiceModel) {
-        gameplay.process(choice)
+        self.gameplay.process(choice)
     }
 
     // MARK: Internal
@@ -36,20 +36,20 @@ class TouchToSelectViewViewModel: ObservableObject {
     private var cancellables: Set<AnyCancellable> = []
 
     private func subscribeToGameplaySelectionChoicesUpdates() {
-        gameplay.choices
+        self.gameplay.choices
             .receive(on: DispatchQueue.main)
             .sink {
                 self.choices = $0
             }
-            .store(in: &cancellables)
+            .store(in: &self.cancellables)
     }
 
     private func subscribeToGameplayStateUpdates() {
-        gameplay.state
+        self.gameplay.state
             .receive(on: DispatchQueue.main)
             .sink {
                 self.exercicesSharedData.state = $0
             }
-            .store(in: &cancellables)
+            .store(in: &self.cancellables)
     }
 }

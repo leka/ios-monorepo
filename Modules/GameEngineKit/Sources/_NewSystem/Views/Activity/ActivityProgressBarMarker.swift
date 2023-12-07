@@ -12,13 +12,13 @@ struct ActivityProgressBarMarker: View {
     var body: some View {
         Circle()
             .stroke(Color.white, lineWidth: 3)
-            .background(color, in: Circle())
+            .background(self.color, in: Circle())
             .overlay {
                 Circle()
                     .fill(DesignKitAsset.Colors.chevron.swiftUIColor)
                     .padding(4)
-                    .scaleEffect(isCurrent ? 1 : 0.01)
-                    .animation(.easeIn(duration: 0.5).delay(0.2), value: isCurrent)
+                    .scaleEffect(self.isCurrent ? 1 : 0.01)
+                    .animation(.easeIn(duration: 0.5).delay(0.2), value: self.isCurrent)
             }
     }
 }

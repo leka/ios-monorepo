@@ -54,8 +54,8 @@ struct UpdateFinishedContentView: View {
 
             VStack(spacing: 20) {
                 Button {
-                    dismiss()
-                    isConnectionViewPresented = true
+                    self.dismiss()
+                    self.isConnectionViewPresented = true
                 } label: {
                     Text(l10n.update.finished.updateAnotherRobotButton)
                         .foregroundColor(DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor)

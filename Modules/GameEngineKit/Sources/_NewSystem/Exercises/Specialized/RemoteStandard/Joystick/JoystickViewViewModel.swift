@@ -13,7 +13,7 @@ class JoystickViewViewModel: ObservableObject {
     init(dragDiameter: CGFloat) {
         self.dragDiameter = dragDiameter
 
-        joystickMonitor.$xyPoint
+        self.joystickMonitor.$xyPoint
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: {
                 self.position = $0
@@ -22,7 +22,7 @@ class JoystickViewViewModel: ObservableObject {
 
                 Robot.shared.move(.free(left: Float(leftSpeed), right: Float(rightSpeed)))
             })
-            .store(in: &cancellables)
+            .store(in: &self.cancellables)
     }
 
     // MARK: Internal

@@ -109,7 +109,7 @@
 --enable redundantReturn
 
 --enable redundantSelf
---self init-only
+--self insert
 
 --enable redundantStaticSelf
 --enable redundantType

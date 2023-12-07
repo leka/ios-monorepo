@@ -16,13 +16,13 @@ struct Greetings: ParsableCommand {
     var name: String = "macOS Cli Example!"
 
     mutating func run() throws {
-        let repeatCount = count ?? 2
+        let repeatCount = self.count ?? 2
 
         for i in 1...repeatCount {
-            if includeCounter {
-                print("\(i): Hello, \(name)")
+            if self.includeCounter {
+                print("\(i): Hello, \(self.name)")
             } else {
-                print("Hello, \(name)")
+                print("Hello, \(self.name)")
             }
         }
     }

@@ -20,52 +20,52 @@ struct ChoiceColorView: View {
 
     // TODO(@ladislas): handle case of color white, add colored border?
     var circle: some View {
-        color.screen
+        self.color.screen
             .frame(
-                width: size,
-                height: size
+                width: self.size,
+                height: self.size
             )
             .clipShape(Circle())
     }
 
     var body: some View {
-        switch state {
+        switch self.state {
             case .idle:
-                circle
+                self.circle
                     .onAppear {
                         withAnimation {
-                            animationPercent = 0.0
-                            overlayOpacity = 0.0
+                            self.animationPercent = 0.0
+                            self.overlayOpacity = 0.0
                         }
                     }
 
             case .rightAnswer:
-                circle
+                self.circle
                     .overlay {
-                        RightAnswerFeedback(animationPercent: animationPercent)
+                        RightAnswerFeedback(animationPercent: self.animationPercent)
                             .frame(
-                                width: size * kOverLayScaleFactor,
-                                height: size * kOverLayScaleFactor
+                                width: self.size * self.kOverLayScaleFactor,
+                                height: self.size * self.kOverLayScaleFactor
                             )
                     }
                     .onAppear {
                         withAnimation {
-                            animationPercent = 1.0
+                            self.animationPercent = 1.0
                         }
                     }
 
             case .wrongAnswer:
-                circle
+                self.circle
                     .overlay {
-                        WrongAnswerFeedback(overlayOpacity: overlayOpacity)
+                        WrongAnswerFeedback(overlayOpacity: self.overlayOpacity)
                             .frame(
-                                width: size * kOverLayScaleFactor,
-                                height: size * kOverLayScaleFactor
+                                width: self.size * self.kOverLayScaleFactor,
+                                height: self.size * self.kOverLayScaleFactor
                             )
                     }
                     .onAppear {
                         withAnimation {
-                            overlayOpacity = 0.8
+                            self.overlayOpacity = 0.8
                         }
                     }
         }

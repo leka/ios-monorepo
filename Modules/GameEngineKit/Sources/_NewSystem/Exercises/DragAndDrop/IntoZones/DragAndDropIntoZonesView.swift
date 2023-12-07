@@ -40,18 +40,18 @@ public struct DragAndDropIntoZonesView: View {
     public var body: some View {
         GeometryReader { proxy in
             SpriteView(
-                scene: makeScene(size: proxy.size),
+                scene: self.makeScene(size: proxy.size),
                 options: [.allowsTransparency]
             )
             .frame(width: proxy.size.width, height: proxy.size.height)
             .onAppear {
                 if let dropZoneB {
-                    scene = DragAndDropIntoZonesView.TwoZonesScene(
-                        viewModel: viewModel, hints: false, dropZoneA: dropZoneA, dropZoneB: dropZoneB
+                    self.scene = DragAndDropIntoZonesView.TwoZonesScene(
+                        viewModel: self.viewModel, hints: false, dropZoneA: self.dropZoneA, dropZoneB: dropZoneB
                     )
                 } else {
-                    scene = DragAndDropIntoZonesView.OneZoneScene(
-                        viewModel: viewModel, hints: true, dropZoneA: dropZoneA
+                    self.scene = DragAndDropIntoZonesView.OneZoneScene(
+                        viewModel: self.viewModel, hints: true, dropZoneA: self.dropZoneA
                     )
                 }
             }
@@ -74,7 +74,7 @@ public struct DragAndDropIntoZonesView: View {
             return SKScene()
         }
         finalScene.size = CGSize(width: size.width, height: size.height)
-        finalScene.viewModel = viewModel
+        finalScene.viewModel = self.viewModel
         return finalScene
     }
 }

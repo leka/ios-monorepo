@@ -19,7 +19,7 @@ class NavigationViewViewModel: ObservableObject {
                 guard let self else { return }
                 self.isRobotConnect = isConnected
             }
-            .store(in: &cancellables)
+            .store(in: &self.cancellables)
     }
 
     // MARK: Internal
@@ -87,8 +87,8 @@ struct NavigationView: View {
         let systemImage: String
 
         var body: some View {
-            Label(title, systemImage: systemImage)
-                .tag(category)
+            Label(self.title, systemImage: self.systemImage)
+                .tag(self.category)
         }
     }
 
@@ -100,28 +100,28 @@ struct NavigationView: View {
 
     var body: some View {
         NavigationSplitView {
-            List(selection: $navigation.selectedCategory) {
+            List(selection: self.$navigation.selectedCategory) {
                 CategoryLabel(category: .home)
 
                 Button {
-                    viewModel.isRobotConnectionPresented.toggle()
+                    self.viewModel.isRobotConnectionPresented.toggle()
                 } label: {
-                    Label(viewModel.isRobotConnect ? "Disconnect robot" : "Connect robot", systemImage: "link")
-                        .foregroundStyle(viewModel.isRobotConnect ? .green : .orange)
+                    Label(self.viewModel.isRobotConnect ? "Disconnect robot" : "Connect robot", systemImage: "link")
+                        .foregroundStyle(self.viewModel.isRobotConnect ? .green : .orange)
                 }
 
                 Section("Activities") {
                     CategoryLabel(category: .activities)
                 }
 
-                Section("Design System (Apple)", isExpanded: $viewModel.isDesignSystemAppleExpanded) {
+                Section("Design System (Apple)", isExpanded: self.$viewModel.isDesignSystemAppleExpanded) {
                     CategoryLabel(category: .designSystemAppleFonts)
                     CategoryLabel(category: .designSystemAppleButtons)
                     CategoryLabel(category: .designSystemAppleColorsSwiftUI)
                     CategoryLabel(category: .designSystemAppleColorsUIKit)
                 }
 
-                Section("Design System (Leka)", isExpanded: $viewModel.isDesignSystemLekaExpanded) {
+                Section("Design System (Leka)", isExpanded: self.$viewModel.isDesignSystemLekaExpanded) {
                     CategoryLabel(category: .designSystemLekaButtons)
                     CategoryLabel(category: .designSystemLekaColorsSwiftUI)
                 }
@@ -132,15 +132,15 @@ struct NavigationView: View {
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
-                        preferedColorScheme = preferedColorScheme == .light ? .dark : .light
+                        self.preferedColorScheme = self.preferedColorScheme == .light ? .dark : .light
                     } label: {
                         Image(systemName: "circle.lefthalf.filled")
                     }
                 }
             }
         } detail: {
-            NavigationStack(path: $navigation.path) {
-                switch navigation.selectedCategory {
+            NavigationStack(path: self.$navigation.path) {
+                switch self.navigation.selectedCategory {
                     case .home:
                         Text("Hello, Home!")
                             .font(.largeTitle)
@@ -172,11 +172,11 @@ struct NavigationView: View {
                 }
             }
         }
-        .preferredColorScheme(preferedColorScheme)
+        .preferredColorScheme(self.preferedColorScheme)
         .onAppear {
-            preferedColorScheme = colorScheme
+            self.preferedColorScheme = self.colorScheme
         }
-        .fullScreenCover(isPresented: $viewModel.isRobotConnectionPresented) {
+        .fullScreenCover(isPresented: self.$viewModel.isRobotConnectionPresented) {
             RobotConnectionView(viewModel: RobotConnectionViewModel())
         }
     }

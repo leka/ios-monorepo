@@ -10,11 +10,11 @@ struct HomeView: View {
     @EnvironmentObject var authenticationState: OrganisationAuthState
 
     var body: some View {
-        switch authenticationState.organisationIsAuthenticated {
+        switch self.authenticationState.organisationIsAuthenticated {
             case .unknown:
                 Text("Loading...")
             case .loggedIn:
-                content
+                self.content
             case .loggedOut:
                 MainView()
         }
@@ -31,7 +31,7 @@ struct HomeView: View {
 
             Button(
                 action: {
-                    authenticationState.organisationIsAuthenticated = .loggedOut
+                    self.authenticationState.organisationIsAuthenticated = .loggedOut
                 },
                 label: {
                     Text("Log Out")

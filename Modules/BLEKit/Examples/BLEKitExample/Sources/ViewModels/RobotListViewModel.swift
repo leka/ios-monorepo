@@ -14,7 +14,7 @@ public class RobotListViewModel: ObservableObject {
 
     public init(bleManager: BLEManager) {
         self.bleManager = bleManager
-        subscribeToScanningStatus()
+        self.subscribeToScanningStatus()
     }
 
     // MARK: - Private functions
@@ -27,9 +27,9 @@ public class RobotListViewModel: ObservableObject {
     // MARK: Public
 
     public func scanForPeripherals() {
-        if !bleManager.isScanning.value {
+        if !self.bleManager.isScanning.value {
             print("Start scanning")
-            scanForRobotsTask = bleManager.scanForRobots()
+            self.scanForRobotsTask = self.bleManager.scanForRobots()
                 .receive(on: DispatchQueue.main)
                 .sink(
                     receiveCompletion: { completion in
@@ -44,16 +44,16 @@ public class RobotListViewModel: ObservableObject {
         } else {
             print("Stop scanning")
             // TODO(@ladislas): do not reset to try and connect --> handle errors for real
-            robotDiscoveries = []
-            scanForRobotsTask?.cancel()
-            selectedRobotDiscovery = nil
+            self.robotDiscoveries = []
+            self.scanForRobotsTask?.cancel()
+            self.selectedRobotDiscovery = nil
         }
     }
 
     public func connectToSelectedPeripheral() {
         guard let selectedRobotDiscovery else { return }
         print("Connecting to \(selectedRobotDiscovery.name)")
-        bleManager.connect(selectedRobotDiscovery)
+        self.bleManager.connect(selectedRobotDiscovery)
             .receive(on: DispatchQueue.main)
             .sink(
                 receiveCompletion: { completion in
@@ -63,20 +63,20 @@ public class RobotListViewModel: ObservableObject {
                 },
                 receiveValue: { [weak self] connectedRobotPeripheral in
                     guard let self else { return }
-                    connectedRobotDiscovery = self.selectedRobotDiscovery
+                    self.connectedRobotDiscovery = self.selectedRobotDiscovery
                     self.connectedRobotPeripheral = connectedRobotPeripheral
                 }
             )
-            .store(in: &cancellables)
+            .store(in: &self.cancellables)
     }
 
     public func disconnectFromConnectedPeripheral() {
         print("Disconnecting")
-        bleManager.disconnect()
-        connectedRobotDiscovery = nil
-        connectedRobotPeripheral = nil
-        if !isScanning {
-            robotDiscoveries = []
+        self.bleManager.disconnect()
+        self.connectedRobotDiscovery = nil
+        self.connectedRobotPeripheral = nil
+        if !self.isScanning {
+            self.robotDiscoveries = []
         }
     }
 
@@ -100,12 +100,12 @@ public class RobotListViewModel: ObservableObject {
     // MARK: Private
 
     private func subscribeToScanningStatus() {
-        bleManager.isScanning
+        self.bleManager.isScanning
             .receive(on: DispatchQueue.main)
             .sink { [weak self] status in
                 guard let self else { return }
-                isScanning = status
+                self.isScanning = status
             }
-            .store(in: &cancellables)
+            .store(in: &self.cancellables)
     }
 }

@@ -20,8 +20,8 @@ class RobotViewModel: ObservableObject {
     @Published var robotOSVersion: String = "LekaOS v1.4.0"
 
     func disconnect() {
-        currentlySelectedRobotIndex = nil
-        currentlyConnectedRobotIndex = nil
-        robotIsConnected = false
+        self.currentlySelectedRobotIndex = nil
+        self.currentlyConnectedRobotIndex = nil
+        self.robotIsConnected = false
     }
 }

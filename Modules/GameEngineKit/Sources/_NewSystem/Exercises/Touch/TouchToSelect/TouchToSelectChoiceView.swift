@@ -30,28 +30,28 @@ struct TouchToSelectChoiceView: View {
     var body: some View {
         // TODO(@ladislas): Add text
         Group {
-            switch choice.type {
+            switch self.choice.type {
                 case .color:
-                    ChoiceColorView(color: choice.value, size: size, state: state)
+                    ChoiceColorView(color: self.choice.value, size: self.size, state: self.state)
                         .overlay(
                             Circle()
-                                .fill(isTappable ? .clear : .white.opacity(0.6))
+                                .fill(self.isTappable ? .clear : .white.opacity(0.6))
                         )
-                        .animation(.easeOut(duration: 0.3), value: isTappable)
+                        .animation(.easeOut(duration: 0.3), value: self.isTappable)
 
                 case .image:
-                    ChoiceImageView(image: choice.value, size: size, state: state)
+                    ChoiceImageView(image: self.choice.value, size: self.size, state: self.state)
                         .overlay(
                             Circle()
-                                .fill(isTappable ? .clear : .white.opacity(0.6))
+                                .fill(self.isTappable ? .clear : .white.opacity(0.6))
                         )
-                        .animation(.easeOut(duration: 0.3), value: isTappable)
+                        .animation(.easeOut(duration: 0.3), value: self.isTappable)
 
                 default:
                     Text("❌ ERROR\nChoice type not implemented")
                         .multilineTextAlignment(.center)
                         .onAppear {
-                            log.error("Choice type \(choice.type) not implemented for choice: \(choice)")
+                            log.error("Choice type \(self.choice.type) not implemented for choice: \(self.choice)")
                         }
             }
         }

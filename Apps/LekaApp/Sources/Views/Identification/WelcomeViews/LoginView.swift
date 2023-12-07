@@ -23,21 +23,21 @@ struct LoginView: View {
             CloudsBGView()
 
             VStack(alignment: .center, spacing: 30) {
-                title
+                self.title
                 Group {
-                    mailTextField
+                    self.mailTextField
                     VStack(spacing: 0) {
-                        passwordTextField
-                        forgotLink
+                        self.passwordTextField
+                        self.forgotLink
                     }
                 }
                 .frame(width: 400)
                 .disableAutocorrection(true)
-                .onAppear { focusedField = .mail }
-                submitButton
+                .onAppear { self.focusedField = .mail }
+                self.submitButton
             }
         }
-        .navigationDestination(isPresented: $navigateToTeacherSelector) {
+        .navigationDestination(isPresented: self.$navigateToTeacherSelector) {
             ProfileSelector_Teachers()
         }
     }
@@ -48,7 +48,7 @@ struct LoginView: View {
     // re-enable autofill modifiers in LekaTextField when OK (textContentType)
 
     func connectIsDisabled() -> Bool {
-        !mail.isValidEmail() || mail.isEmpty || password.isEmpty
+        !self.mail.isValidEmail() || self.mail.isEmpty || self.password.isEmpty
     }
 
     // MARK: Private
@@ -66,22 +66,22 @@ struct LoginView: View {
         Text("Se connecter")
             .textCase(.uppercase)
             .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
-            .font(metrics.semi20)
+            .font(self.metrics.semi20)
     }
 
     private var submitButton: some View {
         Button(
             action: {
-                submitForm()
+                self.submitForm()
             },
             label: {
                 Text("Connexion")
-                    .font(metrics.bold15)
+                    .font(self.metrics.bold15)
                     .padding(6)
                     .frame(width: 210)
             }
         )
-        .disabled(connectIsDisabled())
+        .disabled(self.connectIsDisabled())
         .buttonStyle(.borderedProminent)
         .tint(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
         .padding(.top, 24)
@@ -90,47 +90,47 @@ struct LoginView: View {
     @ViewBuilder
     private var mailTextField: some View {
         let mailTitle: String = {
-            guard mail.isValidEmail() || mail.isEmpty || isEditing else {
+            guard self.mail.isValidEmail() || self.mail.isEmpty || self.isEditing else {
                 return "Email incorrect"
             }
             return "Email"
         }()
 
-        let mailLabelColor: Color = mail.isValidEmail() || mail.isEmpty || isEditing
+        let mailLabelColor: Color = self.mail.isValidEmail() || self.mail.isEmpty || self.isEditing
             ? DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor : .red
 
         LekaTextField(
             label: mailTitle,
-            entry: $mail,
+            entry: self.$mail,
             color: mailLabelColor,
-            isEditing: $isEditing,
+            isEditing: self.$isEditing,
             focused: _focusedField
         ) {
-            focusedField = .password
+            self.focusedField = .password
         }
     }
 
     @ViewBuilder
     private var passwordTextField: some View {
         let passwordTitle: String = {
-            guard credentialsAreCorrect else {
+            guard self.credentialsAreCorrect else {
                 return "Email ou mot de passe incorrect"
             }
             return "Mot de passe"
         }()
 
-        let passwordLabelColor: Color = credentialsAreCorrect ? DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor : .red
+        let passwordLabelColor: Color = self.credentialsAreCorrect ? DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor : .red
 
         LekaPasswordField(
             label: passwordTitle,
-            entry: $password,
+            entry: self.$password,
             color: passwordLabelColor,
             focused: _focusedField
         ) {
-            if password.isEmpty {
-                focusedField = .password
+            if self.password.isEmpty {
+                self.focusedField = .password
             } else {
-                submitForm()
+                self.submitForm()
             }
         }
     }
@@ -140,7 +140,7 @@ struct LoginView: View {
             Spacer()
             Link(destination: URL(string: "https://leka.io")!) {
                 Text("Mot de passe oublié")
-                    .font(metrics.reg14)
+                    .font(self.metrics.reg14)
                     .underline()
                     .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
                     .padding([.top, .trailing], 10)
@@ -149,18 +149,18 @@ struct LoginView: View {
     }
 
     private func submitForm() {
-        if mail == LekaCompany().lekaCompany.mail {
-            if password != LekaCompany().lekaCompany.password {
-                credentialsAreCorrect = false
+        if self.mail == LekaCompany().lekaCompany.mail {
+            if self.password != LekaCompany().lekaCompany.password {
+                self.credentialsAreCorrect = false
             } else {
-                credentialsAreCorrect = true
-                settings.companyIsConnected = true
-                company.currentCompany = LekaCompany().lekaCompany
-                settings.companyIsLoggingIn = true
-                navigateToTeacherSelector.toggle()
+                self.credentialsAreCorrect = true
+                self.settings.companyIsConnected = true
+                self.company.currentCompany = LekaCompany().lekaCompany
+                self.settings.companyIsLoggingIn = true
+                self.navigateToTeacherSelector.toggle()
             }
         } else {
-            credentialsAreCorrect = false
+            self.credentialsAreCorrect = false
         }
     }
 }

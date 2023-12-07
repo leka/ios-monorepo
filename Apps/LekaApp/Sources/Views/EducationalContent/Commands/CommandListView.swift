@@ -20,16 +20,16 @@ struct CommandListView: View {
             let columns = Array(repeating: GridItem(), count: 3)
             VStack {
                 LazyVGrid(columns: columns) {
-                    ForEach(images.indices, id: \.self) { item in
-                        Image(images[item])
+                    ForEach(self.images.indices, id: \.self) { item in
+                        Image(self.images[item])
                             .activityIconImageModifier(padding: 20)
                             .padding()
                     }
                 }
                 .safeAreaInset(edge: .top) {
-                    if settings.companyIsConnected, !navigationVM.showInfo() {
+                    if self.settings.companyIsConnected, !self.navigationVM.showInfo() {
                         Color.clear
-                            .frame(height: settings.companyIsConnected ? 40 : 0)
+                            .frame(height: self.settings.companyIsConnected ? 40 : 0)
                     } else {
                         InfoTileManager()
                     }
@@ -37,8 +37,8 @@ struct CommandListView: View {
                 Spacer()
             }
         }
-        .animation(.easeOut(duration: 0.4), value: navigationVM.showInfo())
-        .onAppear { navigationVM.sidebarVisibility = .all }
+        .animation(.easeOut(duration: 0.4), value: self.navigationVM.showInfo())
+        .onAppear { self.navigationVM.sidebarVisibility = .all }
     }
 
     // MARK: Private

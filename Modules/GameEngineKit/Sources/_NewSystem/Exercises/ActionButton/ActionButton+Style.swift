@@ -19,10 +19,10 @@ struct ActionButtonStyle: ButtonStyle {
                     )
                     .overlay(
                         Circle()
-                            .trim(from: 0, to: progress)
+                            .trim(from: 0, to: self.progress)
                             .stroke(Color.accentColor, style: StrokeStyle(lineWidth: 10, lineCap: .round))
                             .rotationEffect(.degrees(-90))
-                            .animation(.easeOut(duration: 0.2), value: progress)
+                            .animation(.easeOut(duration: 0.2), value: self.progress)
                     )
             )
             .contentShape(Circle())

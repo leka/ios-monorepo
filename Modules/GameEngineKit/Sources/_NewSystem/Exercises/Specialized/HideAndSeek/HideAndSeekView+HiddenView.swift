@@ -11,7 +11,7 @@ extension HideAndSeekView {
 
         var body: some View {
             VStack {
-                Text(textSubInstructions)
+                Text(self.textSubInstructions)
                     .font(.title3)
                     .foregroundColor(.white)
                     .multilineTextAlignment(.center)

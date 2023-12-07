@@ -12,7 +12,7 @@ struct ChangelogView: View {
     // MARK: Internal
 
     var body: some View {
-        Text(changelog)
+        Text(self.changelog)
     }
 
     // MARK: Private

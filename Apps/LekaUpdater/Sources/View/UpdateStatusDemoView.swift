@@ -13,7 +13,7 @@ class UpdateStatusDemoViewModel: ObservableObject {
     init() {
         self.updateProcessController = UpdateProcessController()
 
-        subscribeToStateUpdates()
+        self.subscribeToStateUpdates()
     }
 
     // MARK: Public
@@ -22,7 +22,7 @@ class UpdateStatusDemoViewModel: ObservableObject {
     @Published public var error: String = ""
 
     public func startUpdate() {
-        updateProcessController.startUpdate()
+        self.updateProcessController.startUpdate()
     }
 
     // MARK: Private
@@ -32,7 +32,7 @@ class UpdateStatusDemoViewModel: ObservableObject {
     private var cancellables: Set<AnyCancellable> = []
 
     private func subscribeToStateUpdates() {
-        updateProcessController.currentStage
+        self.updateProcessController.currentStage
             .receive(on: DispatchQueue.main)
             .sink { completion in
                 switch completion {
@@ -62,7 +62,7 @@ class UpdateStatusDemoViewModel: ObservableObject {
                         self.state = "installing update"
                 }
             }
-            .store(in: &cancellables)
+            .store(in: &self.cancellables)
     }
 }
 
@@ -82,17 +82,17 @@ struct UpdateStatusDemoView: View {
 
             VStack {
                 VStack {
-                    Text(verbatim: "User state is: \(viewModel.state)")
+                    Text(verbatim: "User state is: \(self.viewModel.state)")
                         .font(.title2)
                         .bold()
 
-                    Button(action: viewModel.startUpdate) {
+                    Button(action: self.viewModel.startUpdate) {
                         Text(verbatim: "Start Update")
                     }
 
-                    Text(verbatim: "Error: \(viewModel.error)")
+                    Text(verbatim: "Error: \(self.viewModel.error)")
                         .foregroundColor(.red)
-                        .opacity(viewModel.error.isEmpty ? 0.0 : 1.0)
+                        .opacity(self.viewModel.error.isEmpty ? 0.0 : 1.0)
                 }
                 .padding()
             }

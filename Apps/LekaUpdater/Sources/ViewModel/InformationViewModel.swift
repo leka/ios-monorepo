@@ -11,14 +11,14 @@ class InformationViewModel: ObservableObject {
     // MARK: Lifecycle
 
     init() {
-        subscribeToRobotNameUpdates()
-        subscribeToRobotOsVersionUpdates()
+        self.subscribeToRobotNameUpdates()
+        self.subscribeToRobotOsVersionUpdates()
     }
 
     // MARK: Public
 
     public func onViewReappear() {
-        robotName = Robot.shared.name.value
+        self.robotName = Robot.shared.name.value
     }
 
     // MARK: Internal
@@ -38,7 +38,7 @@ class InformationViewModel: ObservableObject {
             .sink { robotName in
                 self.robotName = robotName
             }
-            .store(in: &cancellables)
+            .store(in: &self.cancellables)
     }
 
     private func subscribeToRobotOsVersionUpdates() {
@@ -49,23 +49,23 @@ class InformationViewModel: ObservableObject {
                 self.updateShowRobotNeedsUpdate(robotOsVersion: robotOsVersion)
                 self.robotOSVersion = robotOsVersion?.description ?? "(n/a)"
             }
-            .store(in: &cancellables)
+            .store(in: &self.cancellables)
     }
 
     private func updateShowRobotCannotBeUpdated(robotOsVersion: Version?) {
         guard let robotOsVersion else { return }
 
         let isUpdateProcessAvailable = UpdateProcessController.availableVersions.contains(robotOsVersion)
-        showRobotCannotBeUpdated = !isUpdateProcessAvailable
+        self.showRobotCannotBeUpdated = !isUpdateProcessAvailable
     }
 
     private func updateShowRobotNeedsUpdate(robotOsVersion: Version?) {
         if let robotOsVersion {
             let isUpdateProcessAvailable = UpdateProcessController.availableVersions.contains(robotOsVersion)
             let isRobotNeedsUpdate = globalFirmwareManager.compareWith(version: robotOsVersion) == .needsUpdate
-            showRobotNeedsUpdate = isRobotNeedsUpdate && isUpdateProcessAvailable
+            self.showRobotNeedsUpdate = isRobotNeedsUpdate && isUpdateProcessAvailable
         } else {
-            showRobotNeedsUpdate = false
+            self.showRobotNeedsUpdate = false
         }
     }
 }

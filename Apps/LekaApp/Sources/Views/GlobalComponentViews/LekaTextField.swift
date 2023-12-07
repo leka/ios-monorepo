@@ -22,11 +22,11 @@ struct LekaTextField: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
-            Text(label)
-                .font(metrics.reg17)
-                .foregroundColor(color)
+            Text(self.label)
+                .font(self.metrics.reg17)
+                .foregroundColor(self.color)
                 .padding(.leading, 10)
-            entryField
+            self.entryField
         }
     }
 
@@ -34,25 +34,25 @@ struct LekaTextField: View {
 
     @ViewBuilder
     private var entryField: some View {
-        TextField("", text: $entry) { isEditingNow in
+        TextField("", text: self.$entry) { isEditingNow in
             withAnimation {
-                isEditing = isEditingNow
+                self.isEditing = isEditingNow
             }
         }
-        .keyboardType(type == .mail ? .emailAddress : .default)
-        .textContentType(type == .mail ? .emailAddress : .name)
-        .submitLabel(type == .mail ? .next : .done)
-        .onSubmit { action() }
+        .keyboardType(self.type == .mail ? .emailAddress : .default)
+        .textContentType(self.type == .mail ? .emailAddress : .name)
+        .submitLabel(self.type == .mail ? .next : .done)
+        .onSubmit { self.action() }
         .autocapitalization(.none)
         .autocorrectionDisabled()
         .padding(10)
         .frame(width: 400, height: 44)
         .background(
-            DesignKitAsset.Colors.lekaLightGray.swiftUIColor, in: RoundedRectangle(cornerRadius: metrics.btnRadius)
+            DesignKitAsset.Colors.lekaLightGray.swiftUIColor, in: RoundedRectangle(cornerRadius: self.metrics.btnRadius)
         )
         .overlay(
-            RoundedRectangle(cornerRadius: metrics.btnRadius)
-                .stroke(focused == type ? color : .clear, lineWidth: 1)
+            RoundedRectangle(cornerRadius: self.metrics.btnRadius)
+                .stroke(self.focused == self.type ? self.color : .clear, lineWidth: 1)
         )
     }
 }
@@ -73,11 +73,11 @@ struct LekaPasswordField: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
-            Text(label)
-                .font(metrics.reg17)
-                .foregroundColor(color)
+            Text(self.label)
+                .font(self.metrics.reg17)
+                .foregroundColor(self.color)
                 .padding(.leading, 10)
-            passwordField
+            self.passwordField
         }
     }
 
@@ -85,35 +85,35 @@ struct LekaPasswordField: View {
     private var passwordField: some View {
         HStack {
             Group {
-                if isSecured {
-                    SecureField("", text: $entry)
+                if self.isSecured {
+                    SecureField("", text: self.$entry)
                 } else {
-                    TextField("", text: $entry)
+                    TextField("", text: self.$entry)
                 }
             }
             .padding(10)
             .autocapitalization(.none)
             .textContentType(.password)
             .submitLabel(.continue)
-            .onSubmit { action() }
-            .focused($focused, equals: type)
+            .onSubmit { self.action() }
+            .focused(self.$focused, equals: self.type)
             Spacer()
             Button {
-                isSecured.toggle()
+                self.isSecured.toggle()
             } label: {
-                Image(systemName: isSecured ? "eye" : "eye.slash")
+                Image(systemName: self.isSecured ? "eye" : "eye.slash")
                     .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
                     .padding(10)
             }
-            .disabled(entry.isEmpty)
+            .disabled(self.entry.isEmpty)
         }
         .frame(width: 400, height: 44)
         .background(
-            DesignKitAsset.Colors.lekaLightGray.swiftUIColor, in: RoundedRectangle(cornerRadius: metrics.btnRadius)
+            DesignKitAsset.Colors.lekaLightGray.swiftUIColor, in: RoundedRectangle(cornerRadius: self.metrics.btnRadius)
         )
         .overlay(
-            RoundedRectangle(cornerRadius: metrics.btnRadius)
-                .stroke(focused == type ? color : .clear, lineWidth: 1)
+            RoundedRectangle(cornerRadius: self.metrics.btnRadius)
+                .stroke(self.focused == self.type ? self.color : .clear, lineWidth: 1)
         )
     }
 }

@@ -15,9 +15,9 @@ struct AvatarPicker_Users: View {
         ZStack {
             Color.white.edgesIgnoringSafeArea(.top)
 
-            AvatarPickerStore(selected: $selected)
+            AvatarPickerStore(selected: self.$selected)
                 .onAppear {
-                    selected = company.bufferUser.avatar
+                    self.selected = self.company.bufferUser.avatar
                 }
                 ._safeAreaInsets(EdgeInsets(top: 40, leading: 0, bottom: 20, trailing: 0))
                 .navigationBarTitleDisplayMode(.inline)
@@ -27,15 +27,15 @@ struct AvatarPicker_Users: View {
                     ToolbarItem(placement: .navigationBarLeading) { AvatarPicker_AdaptiveBackButton() }
                     ToolbarItem(placement: .navigationBarTrailing) {
                         AvatarPicker_ValidateButton(
-                            selected: $selected,
+                            selected: self.$selected,
                             action: {
-                                company.setBufferAvatar(selected, for: .user)
+                                self.company.setBufferAvatar(self.selected, for: .user)
                             }
                         )
                     }
                 }
         }
-        .toolbarBackground(navigationVM.showProfileEditor ? .visible : .automatic, for: .navigationBar)
+        .toolbarBackground(self.navigationVM.showProfileEditor ? .visible : .automatic, for: .navigationBar)
         .preferredColorScheme(.light)
     }
 

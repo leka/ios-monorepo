@@ -14,7 +14,7 @@ extension LedZoneSelectorView {
 
         var body: some View {
             Button {
-                displayMode = mode
+                self.displayMode = self.mode
                 Robot.shared.blacken(.all)
             } label: {
                 ZStack {
@@ -22,18 +22,18 @@ extension LedZoneSelectorView {
                         .fill(.white)
                         .frame(width: 60, height: 60)
 
-                    beltSectionIcons
-                    earsSectionIcons
+                    self.beltSectionIcons
+                    self.earsSectionIcons
                 }
             }
-            .background(ModeFeedback(backgroundDimension: displayMode == mode ? 80 : 0))
+            .background(ModeFeedback(backgroundDimension: self.displayMode == self.mode ? 80 : 0))
         }
 
         // MARK: Private
 
         private var earsSectionIcons: some View {
             HStack {
-                switch mode {
+                switch self.mode {
                     case .fullBelt:
                         EarIcon()
                     case .twoHalves,
@@ -46,7 +46,7 @@ extension LedZoneSelectorView {
 
         private var beltSectionIcons: some View {
             ZStack {
-                switch mode {
+                switch self.mode {
                     case .fullBelt:
                         BeltSectionIcon(section: .full(.belt, in: .black))
                     case .twoHalves:

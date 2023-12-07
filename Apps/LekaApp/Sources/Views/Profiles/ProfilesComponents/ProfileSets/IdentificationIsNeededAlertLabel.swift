@@ -10,13 +10,13 @@ struct IdentificationIsNeededAlertLabel: View {
 
     var body: some View {
         Button {
-            settings.showConnectInvite.toggle()
+            self.settings.showConnectInvite.toggle()
         } label: {
             Text("Non")
         }
 
         Button {
-            viewRouter.currentPage = .welcome
+            self.viewRouter.currentPage = .welcome
         } label: {
             Text("Oui")
         }

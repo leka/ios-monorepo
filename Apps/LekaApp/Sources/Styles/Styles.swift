@@ -24,16 +24,16 @@ struct BorderedCapsule_NoFeedback_ButtonStyle: ButtonStyle {
 
     func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
-            .font(font)
-            .foregroundColor(color)
+            .font(self.font)
+            .foregroundColor(self.color)
             .padding(.vertical, 10)
             .padding(.horizontal, 20)
-            .frame(width: width)
+            .frame(width: self.width)
             .overlay(
                 Capsule()
-                    .stroke(color, lineWidth: 1)
+                    .stroke(self.color, lineWidth: 1)
             )
-            .background(isOpaque ? .white : .clear, in: Capsule())
+            .background(self.isOpaque ? .white : .clear, in: Capsule())
             .contentShape(Capsule())
     }
 }
@@ -45,7 +45,7 @@ struct CircledIcon_NoFeedback_ButtonStyle: ButtonStyle {
 
     func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
-            .font(font)
+            .font(self.font)
             .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
             .frame(width: 46, height: 46)
             .overlay(
@@ -64,10 +64,10 @@ struct Connect_ButtonStyle: ButtonStyle {
 
     func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
-            .font(metrics.bold15)
+            .font(self.metrics.bold15)
             .frame(width: 310, height: 60)
-            .foregroundColor(reversed ? DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor : .white)
-            .background(reversed ? .white : DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor, in: Capsule())
+            .foregroundColor(self.reversed ? DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor : .white)
+            .background(self.reversed ? .white : DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor, in: Capsule())
             .contentShape(Capsule())
             .opacity(configuration.isPressed ? 0.4 : 1)
             .compositingGroup()
@@ -85,7 +85,7 @@ struct JobPickerToggleStyle: ToggleStyle {
 
     func makeBody(configuration: Configuration) -> some View {
         HStack(spacing: 10) {
-            Image(systemName: configuration.isOn ? onImage : offImage)
+            Image(systemName: configuration.isOn ? self.onImage : self.offImage)
                 .foregroundColor(configuration.isOn ? .white : DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
                 .background(
                     Circle()
@@ -99,7 +99,7 @@ struct JobPickerToggleStyle: ToggleStyle {
 
             configuration.label
                 .multilineTextAlignment(.leading)
-                .font(metrics.reg16)
+                .font(self.metrics.reg16)
                 .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
 
             Spacer()
@@ -108,7 +108,7 @@ struct JobPickerToggleStyle: ToggleStyle {
         .onTapGesture {
             withAnimation(.easeIn(duration: 0.2)) {
                 configuration.isOn.toggle()
-                action()
+                self.action()
             }
         }
     }
@@ -161,10 +161,10 @@ struct ActivityAnswer_ButtonStyle: ButtonStyle {
             )
             .overlay(
                 Circle()
-                    .fill(isEnabled ? .clear : .white.opacity(0.6))
+                    .fill(self.isEnabled ? .clear : .white.opacity(0.6))
             )
             .contentShape(Circle())
-            .animation(.easeOut(duration: 0.3), value: isEnabled)
+            .animation(.easeOut(duration: 0.3), value: self.isEnabled)
     }
 }
 
@@ -185,13 +185,13 @@ struct PlaySound_ButtonStyle: ButtonStyle {
                     )
                     .overlay(
                         Circle()
-                            .trim(from: 0, to: progress)
+                            .trim(from: 0, to: self.progress)
                             .stroke(
                                 DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor,
                                 style: StrokeStyle(lineWidth: 10, lineCap: .round)
                             )
                             .rotationEffect(.degrees(-90))
-                            .animation(.easeOut(duration: 0.2), value: progress)
+                            .animation(.easeOut(duration: 0.2), value: self.progress)
                     )
             )
             .contentShape(Circle())
@@ -206,7 +206,7 @@ struct BorderedCapsule_ButtonStyle: ButtonStyle {
     func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
             .font(.system(size: 22, weight: .black, design: .rounded))
-            .foregroundColor(!isFilled ? DesignKitAsset.Colors.bravoHighlights.swiftUIColor : .white)
+            .foregroundColor(!self.isFilled ? DesignKitAsset.Colors.bravoHighlights.swiftUIColor : .white)
             .opacity(configuration.isPressed ? 0.95 : 1)
             .scaleEffect(configuration.isPressed ? 0.99 : 1, anchor: .center)
             .padding()
@@ -214,7 +214,7 @@ struct BorderedCapsule_ButtonStyle: ButtonStyle {
             .background(
                 Capsule()
                     .fill(
-                        isFilled ? DesignKitAsset.Colors.bravoHighlights.swiftUIColor : .white,
+                        self.isFilled ? DesignKitAsset.Colors.bravoHighlights.swiftUIColor : .white,
                         strokeBorder: DesignKitAsset.Colors.bravoHighlights.swiftUIColor,
                         lineWidth: 1
                     )

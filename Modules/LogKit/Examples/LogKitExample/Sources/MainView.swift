@@ -18,8 +18,8 @@ struct MainView: View {
                 log.critical("WE MUST ABORT")
             }
             .onTapGesture {
-                log.debug("touched \(count)")
-                count += 1
+                log.debug("touched \(self.count)")
+                self.count += 1
             }
     }
 }

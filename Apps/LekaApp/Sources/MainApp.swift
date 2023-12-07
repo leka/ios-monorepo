@@ -19,17 +19,17 @@ struct LekaApp: App {
         WindowGroup {
             ContentView()
                 .task {
-                    curriculumVM.populateCurriculumList(category: .emotionRecognition)
-                    curriculumVM.getCompleteActivityList()
+                    self.curriculumVM.populateCurriculumList(category: .emotionRecognition)
+                    self.curriculumVM.getCompleteActivityList()
                 }
-                .environmentObject(viewRouter)
-                .environmentObject(metrics)
-                .environmentObject(navigationVM)
-                .environmentObject(company)
-                .environmentObject(settings)
-                .environmentObject(curriculumVM)
-                .environmentObject(activityVM)
-                .environmentObject(robotVM)
+                .environmentObject(self.viewRouter)
+                .environmentObject(self.metrics)
+                .environmentObject(self.navigationVM)
+                .environmentObject(self.company)
+                .environmentObject(self.settings)
+                .environmentObject(self.curriculumVM)
+                .environmentObject(self.activityVM)
+                .environmentObject(self.robotVM)
         }
     }
 }

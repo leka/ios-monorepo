@@ -152,6 +152,6 @@ public extension Robot {
 
     func stopMotion() {
         log.trace("🤖 STOP 🛑 - Motion")
-        move(.stop)
+        self.move(.stop)
     }
 }

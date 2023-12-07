@@ -68,7 +68,7 @@ struct MarkdownRepresentable: UIViewRepresentable {
     @EnvironmentObject var markdownObject: MarkdownObservable
 
     func makeCoordinator() -> Coordinator {
-        Coordinator(text: markdownObject.textView)
+        Coordinator(text: self.markdownObject.textView)
     }
 
     func makeUIView(context _: Context) -> UITextView {
@@ -81,28 +81,28 @@ struct MarkdownRepresentable: UIViewRepresentable {
         let attributedText = NSMutableAttributedString(
             string: "TODO(@ladislas): use real markdown when Down is fixed")
 
-        markdownObject.textView.attributedText = attributedText
-        markdownObject.textView.textAlignment = .left
-        markdownObject.textView.isScrollEnabled = false
-        markdownObject.textView.isUserInteractionEnabled = true
-        markdownObject.textView.showsVerticalScrollIndicator = false
-        markdownObject.textView.showsHorizontalScrollIndicator = false
-        markdownObject.textView.isEditable = false
-        markdownObject.textView.backgroundColor = .clear
-        markdownObject.textView.textColor = UIColor(named: "darkGray")
+        self.markdownObject.textView.attributedText = attributedText
+        self.markdownObject.textView.textAlignment = .left
+        self.markdownObject.textView.isScrollEnabled = false
+        self.markdownObject.textView.isUserInteractionEnabled = true
+        self.markdownObject.textView.showsVerticalScrollIndicator = false
+        self.markdownObject.textView.showsHorizontalScrollIndicator = false
+        self.markdownObject.textView.isEditable = false
+        self.markdownObject.textView.backgroundColor = .clear
+        self.markdownObject.textView.textColor = UIColor(named: "darkGray")
         // markdownObject.textView.font = UIFont(name: "SF Pro Regular", size: 14)
 
-        markdownObject.textView.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
-        markdownObject.textView.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
+        self.markdownObject.textView.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+        self.markdownObject.textView.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
 
-        return markdownObject.textView
+        return self.markdownObject.textView
     }
 
     func updateUIView(_ uiView: UITextView, context _: Context) {
         DispatchQueue.main.async {
             //			uiView.textColor = UIColor(named: "darkGray")
 
-            dynamicHeight =
+            self.dynamicHeight =
                 uiView.sizeThatFits(
                     CGSize(
                         width: uiView.bounds.width,
@@ -129,9 +129,9 @@ struct DownAttributedString: View {
     var body: some View {
         VStack(alignment: .leading) {
             ScrollView {
-                MarkdownRepresentable(height: $height)
-                    .frame(height: height)
-                    .environmentObject(markdownObject)
+                MarkdownRepresentable(height: self.$height)
+                    .frame(height: self.height)
+                    .environmentObject(self.markdownObject)
             }
         }
         .navigationBarTitleDisplayMode(.inline)

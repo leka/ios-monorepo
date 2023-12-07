@@ -9,7 +9,7 @@ class UpdateProcessTemplate: UpdateProcessProtocol {
     // MARK: Lifecycle
 
     init() {
-        subscribeToStateUpdates()
+        self.subscribeToStateUpdates()
     }
 
     // MARK: Public
@@ -39,7 +39,7 @@ class UpdateProcessTemplate: UpdateProcessProtocol {
     }
 
     func startProcess() {
-        currentInternalState.send(completion: .failure(.notAvailable))
+        self.currentInternalState.send(completion: .failure(.notAvailable))
     }
 
     // MARK: Private
@@ -50,22 +50,22 @@ class UpdateProcessTemplate: UpdateProcessProtocol {
     private var currentInternalState = CurrentValueSubject<UpdateState, UpdateError>(.initial)
 
     private func subscribeToStateUpdates() {
-        currentInternalState
+        self.currentInternalState
             .receive(on: DispatchQueue.main)
-            .sink(receiveCompletion: convertCompletion, receiveValue: convertReceivedValue)
-            .store(in: &cancellables)
+            .sink(receiveCompletion: self.convertCompletion, receiveValue: self.convertReceivedValue)
+            .store(in: &self.cancellables)
     }
 
     private func convertCompletion(completion: Subscribers.Completion<UpdateError>) {
         switch completion {
             case .finished:
-                currentStage.send(completion: .finished)
+                self.currentStage.send(completion: .finished)
             case let .failure(error):
-                currentStage.send(completion: .failure(.updateProcessNotAvailable)) // only available error
+                self.currentStage.send(completion: .failure(.updateProcessNotAvailable)) // only available error
         }
     }
 
     private func convertReceivedValue(state _: UpdateState) {
-        currentStage.send(.initial) // only available state
+        self.currentStage.send(.initial) // only available state
     }
 }

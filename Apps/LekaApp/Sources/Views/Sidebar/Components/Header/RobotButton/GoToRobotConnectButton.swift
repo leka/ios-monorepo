@@ -16,11 +16,11 @@ struct GoToRobotConnectButton: View {
 
     var body: some View {
         Button {
-            navigationVM.showRobotPicker.toggle()
+            self.navigationVM.showRobotPicker.toggle()
         } label: {
             HStack(spacing: 10) {
                 RobotConnectionIndicator()
-                buttonContent
+                self.buttonContent
                 Spacer()
             }
             .padding(.horizontal, 15)
@@ -36,18 +36,18 @@ struct GoToRobotConnectButton: View {
 
     @ViewBuilder
     private var buttonContent: some View {
-        if robotViewModel.isConnected {
+        if self.robotViewModel.isConnected {
             VStack(alignment: .leading, spacing: 4) {
                 Text("Connecté à")
-                Text(robotViewModel.name)
-                    .font(metrics.reg16)
-                robotCharginStatusAndBattery
+                Text(self.robotViewModel.name)
+                    .font(self.metrics.reg16)
+                self.robotCharginStatusAndBattery
             }
-            .font(metrics.reg12)
+            .font(self.metrics.reg12)
             .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
         } else {
             Text("Connectez-vous à votre Leka")
-                .font(metrics.reg16)
+                .font(self.metrics.reg16)
                 .multilineTextAlignment(.leading)
                 .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
         }
@@ -55,10 +55,10 @@ struct GoToRobotConnectButton: View {
 
     private var robotCharginStatusAndBattery: some View {
         HStack(spacing: 5) {
-            Text(verbatim: "LekaOS v\(robotViewModel.osVersion)")
+            Text(verbatim: "LekaOS v\(self.robotViewModel.osVersion)")
                 .foregroundColor(.gray)
 
-            if robotViewModel.isCharging {
+            if self.robotViewModel.isCharging {
                 Image(systemName: "bolt.circle.fill")
                     .foregroundColor(.blue)
             } else {

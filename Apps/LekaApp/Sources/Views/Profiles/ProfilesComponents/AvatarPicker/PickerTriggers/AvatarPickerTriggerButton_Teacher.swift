@@ -12,11 +12,11 @@ struct AvatarPickerTriggerButton_Teachers: View {
     var body: some View {
         Button(
             action: {
-                navigate.toggle()
+                self.navigate.toggle()
             },
             label: {
                 VStack(spacing: 10) {
-                    AvatarTriggerImageView(img: company.getSelectedProfileAvatar(.teacher))
+                    AvatarTriggerImageView(img: self.company.getSelectedProfileAvatar(.teacher))
                     AvatarTriggerCTAView()
                 }
             }

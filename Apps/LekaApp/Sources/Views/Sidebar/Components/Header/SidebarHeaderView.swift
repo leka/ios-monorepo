@@ -12,7 +12,7 @@ struct SidebarHeaderView: View {
 
     var body: some View {
         VStack(spacing: 10) {
-            logoLeka
+            self.logoLeka
             GoToProfileEditorButton()
             GoToRobotConnectButton()
         }

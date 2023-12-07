@@ -18,10 +18,10 @@ public struct HelloView: View {
 
     public var body: some View {
         ZStack {
-            color
+            self.color
                 .ignoresSafeArea()
 
-            Text("Hello, \(name)!")
+            Text("Hello, \(self.name)!")
                 .foregroundColor(.white)
                 .font(.largeTitle)
                 .fontWeight(.bold)

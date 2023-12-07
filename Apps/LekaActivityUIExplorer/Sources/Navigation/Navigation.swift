@@ -31,9 +31,9 @@ class Navigation: ObservableObject {
 
     public var selectedCategory: Category? = .home {
         willSet {
-            disableUICompletly = true
+            self.disableUICompletly = true
             // ? Note: early return to avoid reseting path
-            guard !isProgrammaticNavigation else { return }
+            guard !self.isProgrammaticNavigation else { return }
             //            backupPath(for: selectedCategory)
         }
         didSet {
@@ -51,10 +51,10 @@ class Navigation: ObservableObject {
 
     @Published var path: NavigationPath = .init() {
         willSet {
-            disableUICompletly = true
+            self.disableUICompletly = true
         }
         didSet {
-            disableUICompletly = false
+            self.disableUICompletly = false
         }
     }
 

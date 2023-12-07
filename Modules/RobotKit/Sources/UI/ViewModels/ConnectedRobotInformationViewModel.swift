@@ -9,7 +9,7 @@ public class ConnectedRobotInformationViewModel: ObservableObject {
     // MARK: Lifecycle
 
     public init() {
-        getRobotInformation()
+        self.getRobotInformation()
     }
 
     // MARK: Public
@@ -25,7 +25,7 @@ public class ConnectedRobotInformationViewModel: ObservableObject {
 
     @Published public var isConnected: Bool = false {
         didSet {
-            isNotConnected = !isConnected
+            self.isNotConnected = !self.isConnected
         }
     }
 
@@ -38,7 +38,7 @@ public class ConnectedRobotInformationViewModel: ObservableObject {
     private var cancellables: Set<AnyCancellable> = []
 
     private func getRobotInformation() {
-        robot.isConnected
+        self.robot.isConnected
             .receive(on: DispatchQueue.main)
             .sink { isConnected in
                 self.isConnected = isConnected
@@ -49,41 +49,41 @@ public class ConnectedRobotInformationViewModel: ObservableObject {
                 self.battery = 0
                 self.isCharging = false
             }
-            .store(in: &cancellables)
+            .store(in: &self.cancellables)
 
-        robot.name
+        self.robot.name
             .receive(on: DispatchQueue.main)
             .sink {
                 self.name = $0
             }
-            .store(in: &cancellables)
+            .store(in: &self.cancellables)
 
-        robot.osVersion
+        self.robot.osVersion
             .receive(on: DispatchQueue.main)
             .sink {
                 self.osVersion = $0?.description ?? "(n/a)"
             }
-            .store(in: &cancellables)
+            .store(in: &self.cancellables)
 
-        robot.battery
+        self.robot.battery
             .receive(on: DispatchQueue.main)
             .sink {
                 self.battery = $0
             }
-            .store(in: &cancellables)
+            .store(in: &self.cancellables)
 
-        robot.isCharging
+        self.robot.isCharging
             .receive(on: DispatchQueue.main)
             .sink {
                 self.isCharging = $0
             }
-            .store(in: &cancellables)
+            .store(in: &self.cancellables)
 
-        robot.serialNumber
+        self.robot.serialNumber
             .receive(on: DispatchQueue.main)
             .sink {
                 self.serialNumber = $0
             }
-            .store(in: &cancellables)
+            .store(in: &self.cancellables)
     }
 }

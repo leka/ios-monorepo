@@ -15,7 +15,7 @@ extension DragAndDropToAssociateView {
             self.viewModel = viewModel
             super.init(size: CGSize.zero)
 
-            subscribeToChoicesUpdates()
+            self.subscribeToChoicesUpdates()
         }
 
         @available(*, unavailable)
@@ -36,24 +36,24 @@ extension DragAndDropToAssociateView {
             removeAllChildren()
             removeAllActions()
 
-            dropDestinations = []
+            self.dropDestinations = []
 
-            setFirstAnswerPosition()
-            layoutAnswers()
+            self.setFirstAnswerPosition()
+            self.layoutAnswers()
         }
 
         func exerciseCompletedBehavior() {
-            for node in dropDestinations {
+            for node in self.dropDestinations {
                 node.isDraggable = false
             }
         }
 
         func subscribeToChoicesUpdates() {
-            viewModel.$choices
+            self.viewModel.$choices
                 .receive(on: DispatchQueue.main)
                 .sink(receiveValue: { [weak self] choices in
                     guard let self else { return }
-                    for choice in choices where choice.id == playedNode?.id {
+                    for choice in choices where choice.id == self.playedNode?.id {
                         if choice.state == .rightAnswer {
                             self.goodAnswerBehavior(self.playedNode!)
                         } else if choice.state == .wrongAnswer {
@@ -61,11 +61,11 @@ extension DragAndDropToAssociateView {
                         }
                     }
                 })
-                .store(in: &cancellables)
+                .store(in: &self.cancellables)
         }
 
         @MainActor func layoutAnswers() {
-            for (index, gameplayChoiceModel) in viewModel.choices.enumerated() {
+            for (index, gameplayChoiceModel) in self.viewModel.choices.enumerated() {
                 let draggableImageAnswerNode = DraggableImageAnswerNode(
                     choice: gameplayChoiceModel,
                     position: defaultPosition
@@ -74,20 +74,20 @@ extension DragAndDropToAssociateView {
                     draggableImageAnswerNode: draggableImageAnswerNode
                 )
 
-                normalizeAnswerNodesSize([draggableImageAnswerNode, draggableImageShadowNode])
-                bindNodesToSafeArea([draggableImageAnswerNode, draggableImageShadowNode])
-                setNextAnswerPosition(index)
+                self.normalizeAnswerNodesSize([draggableImageAnswerNode, draggableImageShadowNode])
+                self.bindNodesToSafeArea([draggableImageAnswerNode, draggableImageShadowNode])
+                self.setNextAnswerPosition(index)
 
                 addChild(draggableImageShadowNode)
                 addChild(draggableImageAnswerNode)
 
-                dropDestinations.append(draggableImageAnswerNode)
+                self.dropDestinations.append(draggableImageAnswerNode)
             }
         }
 
         func normalizeAnswerNodesSize(_ nodes: [SKSpriteNode]) {
             for node in nodes {
-                node.scaleForMax(sizeOf: biggerSide)
+                node.scaleForMax(sizeOf: self.biggerSide)
             }
         }
 
@@ -108,14 +108,14 @@ extension DragAndDropToAssociateView {
         }
 
         func goodAnswerBehavior(_ node: DraggableImageAnswerNode) {
-            node.scaleForMax(sizeOf: biggerSide * 0.8)
-            node.zPosition = (playedDestination?.zPosition ?? 10) + 10
+            node.scaleForMax(sizeOf: self.biggerSide * 0.8)
+            node.zPosition = (self.playedDestination?.zPosition ?? 10) + 10
             node.isDraggable = false
-            playedDestination?.isDraggable = false
-            onDropAction(node)
-            if viewModel.exercicesSharedData.state == .completed {
+            self.playedDestination?.isDraggable = false
+            self.onDropAction(node)
+            if self.viewModel.exercicesSharedData.state == .completed {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [self] in
-                    exerciseCompletedBehavior()
+                    self.exerciseCompletedBehavior()
                 }
             }
         }
@@ -125,7 +125,7 @@ extension DragAndDropToAssociateView {
                 .moveAnimation(.easeOut)
             let group = DispatchGroup()
             group.enter()
-            node.scaleForMax(sizeOf: biggerSide)
+            node.scaleForMax(sizeOf: self.biggerSide)
             node.run(
                 moveAnimation,
                 completion: {
@@ -145,18 +145,18 @@ extension DragAndDropToAssociateView {
                 SKAction.rotate(byAngle: 0.0, duration: 0.1),
                 SKAction.rotate(byAngle: CGFloat(degreesToRadian(degrees: 4)), duration: 0.1),
             ])
-            node.scaleForMax(sizeOf: biggerSide * 1.1)
+            node.scaleForMax(sizeOf: self.biggerSide * 1.1)
             node.run(SKAction.repeatForever(wiggleAnimation))
         }
 
         func onDropAction(_ node: SKSpriteNode) {
             node.zRotation = 0
             node.removeAllActions()
-            selectedNodes = [:]
+            self.selectedNodes = [:]
         }
 
         override func didMove(to _: SKView) {
-            reset()
+            self.reset()
         }
 
         // overriden Touches states
@@ -164,7 +164,7 @@ extension DragAndDropToAssociateView {
             for touch in touches {
                 let location = touch.location(in: self)
                 if let node = atPoint(location) as? DraggableImageAnswerNode {
-                    for choice in viewModel
+                    for choice in self.viewModel
                         .choices where node.id == choice.id && node.isDraggable
                     {
                         selectedNodes[touch] = node
@@ -184,7 +184,7 @@ extension DragAndDropToAssociateView {
                         node.run(SKAction.move(to: location, duration: 0.05).moveAnimation(.linear))
                         node.position = location
                     } else {
-                        wrongAnswerBehavior(node)
+                        self.wrongAnswerBehavior(node)
                     }
                 }
             }
@@ -192,27 +192,27 @@ extension DragAndDropToAssociateView {
 
         override func touchesEnded(_ touches: Set<UITouch>, with _: UIEvent?) {
             for touch in touches {
-                guard selectedNodes.keys.contains(touch) else {
+                guard self.selectedNodes.keys.contains(touch) else {
                     break
                 }
-                playedNode = selectedNodes[touch]!
-                playedNode!.scaleForMax(sizeOf: biggerSide)
+                self.playedNode = self.selectedNodes[touch]!
+                self.playedNode!.scaleForMax(sizeOf: self.biggerSide)
 
                 guard let destinationNode = dropDestinations.first(where: {
                     $0.frame.contains(touch.location(in: self)) && $0.id != playedNode!.id
                 })
                 else {
-                    wrongAnswerBehavior(playedNode!)
+                    self.wrongAnswerBehavior(self.playedNode!)
                     break
                 }
-                playedDestination = destinationNode
+                self.playedDestination = destinationNode
 
                 guard let destination = viewModel.choices.first(where: { $0.id == destinationNode.id })
                 else { return }
                 guard let choice = viewModel.choices.first(where: { $0.id == playedNode!.id })
                 else { return }
 
-                viewModel.onChoiceTapped(choice: choice, destination: destination)
+                self.viewModel.onChoiceTapped(choice: choice, destination: destination)
             }
         }
 

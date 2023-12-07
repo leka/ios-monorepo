@@ -12,25 +12,25 @@ struct RequirementsView: View {
 
     var body: some View {
         VStack {
-            Text(viewModel.requirementsInstructionsText)
+            Text(self.viewModel.requirementsInstructionsText)
                 .foregroundColor(DesignKitAsset.Colors.darkGray.swiftUIColor)
 
             HStack(alignment: .top) {
                 RequirementView(
-                    image: viewModel.chargingBasePluggedImage,
-                    text: viewModel.chargingBasePluggedText,
+                    image: self.viewModel.chargingBasePluggedImage,
+                    text: self.viewModel.chargingBasePluggedText,
                     stepNumber: 1
                 )
 
                 RequirementView(
-                    image: viewModel.chargingBaseGreenLEDImage,
-                    text: viewModel.chargingBaseGreenLEDText,
+                    image: self.viewModel.chargingBaseGreenLEDImage,
+                    text: self.viewModel.chargingBaseGreenLEDText,
                     stepNumber: 2
                 )
 
                 RequirementView(
-                    image: viewModel.robotBatteryMinimumLevelImage,
-                    text: viewModel.robotBatteryMinimumLevelText,
+                    image: self.viewModel.robotBatteryMinimumLevelImage,
+                    text: self.viewModel.robotBatteryMinimumLevelText,
                     stepNumber: 3
                 )
             }
@@ -48,7 +48,7 @@ private struct RequirementView: View {
 
     var body: some View {
         VStack {
-            image
+            self.image
                 .resizable()
                 .scaledToFit()
                 .frame(height: 150)
@@ -58,12 +58,12 @@ private struct RequirementView: View {
                         .strokeBorder(DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor, lineWidth: 2)
                 )
 
-            Text("\(stepNumber)")
+            Text("\(self.stepNumber)")
                 .font(.title2)
                 .foregroundColor(DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor)
                 .padding()
 
-            Text(text)
+            Text(self.text)
                 .font(.caption)
                 .multilineTextAlignment(.center)
                 .foregroundColor(DesignKitAsset.Colors.darkGray.swiftUIColor)

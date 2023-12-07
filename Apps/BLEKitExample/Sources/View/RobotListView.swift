@@ -16,13 +16,13 @@ struct RobotListView: View {
         VStack {
             Spacer()
 
-            BotStore(botVM: botVM)
+            BotStore(botVM: self.botVM)
 
             HStack(spacing: 60) {
                 Spacer()
 
-                searchButton
-                connectionButton
+                self.searchButton
+                self.connectionButton
 
                 Spacer()
             }
@@ -37,15 +37,15 @@ struct RobotListView: View {
     private var searchButton: some View {
         Button(
             action: {
-                if !bleManager.isScanning {
-                    bleManager.searchForPeripherals()
+                if !self.bleManager.isScanning {
+                    self.bleManager.searchForPeripherals()
                 } else {
-                    bleManager.stopSearching()
+                    self.bleManager.stopSearching()
                 }
             },
             label: {
                 Group {
-                    if !bleManager.isScanning {
+                    if !self.bleManager.isScanning {
                         Text("Search for peripheral")
                             .font(.body)
                             .padding(6)
@@ -66,14 +66,14 @@ struct RobotListView: View {
     private var connectionButton: some View {
         Button(
             action: {
-                if botVM.currentlyConnectedBotIndex == botVM.currentlySelectedBotIndex {
-                    bleManager.disconnect()
+                if self.botVM.currentlyConnectedBotIndex == self.botVM.currentlySelectedBotIndex {
+                    self.bleManager.disconnect()
 
-                    botVM.currentlyConnectedBotIndex = nil
-                    botVM.currentlyConnectedBotName = ""
-                    botVM.botIsConnected = false
+                    self.botVM.currentlyConnectedBotIndex = nil
+                    self.botVM.currentlyConnectedBotName = ""
+                    self.botVM.botIsConnected = false
                 } else {
-                    bleManager.connect(bleManager.peripherals[botVM.currentlySelectedBotIndex!])
+                    self.bleManager.connect(self.bleManager.peripherals[self.botVM.currentlySelectedBotIndex!])
                         .receive(on: DispatchQueue.main)
                         .sink(
                             receiveCompletion: { _ in
@@ -81,17 +81,17 @@ struct RobotListView: View {
                             },
                             receiveValue: { peripheral in
                                 let connectedRobotPeripheral = RobotPeripheral(peripheral: peripheral)
-                                robot.robotPeripheral = connectedRobotPeripheral
+                                self.robot.robotPeripheral = connectedRobotPeripheral
                             }
                         )
-                        .store(in: &bleManager.cancellables)
-                    botVM.currentlyConnectedBotIndex = botVM.currentlySelectedBotIndex
-                    botVM.botIsConnected = true
+                        .store(in: &self.bleManager.cancellables)
+                    self.botVM.currentlyConnectedBotIndex = self.botVM.currentlySelectedBotIndex
+                    self.botVM.botIsConnected = true
                 }
             },
             label: {
                 Group {
-                    if botVM.currentlyConnectedBotIndex == botVM.currentlySelectedBotIndex {
+                    if self.botVM.currentlyConnectedBotIndex == self.botVM.currentlySelectedBotIndex {
                         Text("Se déconnecter")
                     } else {
                         Text("Se connecter")
@@ -102,8 +102,8 @@ struct RobotListView: View {
             }
         )
         .buttonStyle(.borderedProminent)
-        .tint(botVM.currentlyConnectedBotIndex == botVM.currentlySelectedBotIndex ? Color(.orange) : .accentColor)
-        .disabled(bleManager.peripherals.isEmpty)
-        .disabled(botVM.currentlySelectedBotIndex == nil)
+        .tint(self.botVM.currentlyConnectedBotIndex == self.botVM.currentlySelectedBotIndex ? Color(.orange) : .accentColor)
+        .disabled(self.bleManager.peripherals.isEmpty)
+        .disabled(self.botVM.currentlySelectedBotIndex == nil)
     }
 }

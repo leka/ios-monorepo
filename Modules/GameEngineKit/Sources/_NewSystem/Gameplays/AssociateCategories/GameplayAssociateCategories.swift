@@ -16,6 +16,6 @@ class GameplayAssociateCategories<ChoiceModelType>: StatefulGameplayProtocol
         guard let index = choices.value.firstIndex(where: { $0.id == choice.id }) else {
             return
         }
-        choices.value[index].state = state
+        self.choices.value[index].state = state
     }
 }

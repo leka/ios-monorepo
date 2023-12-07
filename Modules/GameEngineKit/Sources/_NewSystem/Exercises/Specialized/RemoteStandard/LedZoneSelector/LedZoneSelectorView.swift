@@ -25,8 +25,8 @@ struct LedZoneSelectorView: View {
             }
             .padding(20)
 
-            beltSectionButtons
-            earsSectionButtons
+            self.beltSectionButtons
+            self.earsSectionButtons
         }
     }
 
@@ -34,7 +34,7 @@ struct LedZoneSelectorView: View {
 
     private var earsSectionButtons: some View {
         HStack(spacing: 50) {
-            switch displayMode {
+            switch self.displayMode {
                 case .fullBelt:
                     EarButton(selectedEar: .full(.ears, in: .blue))
                 case .twoHalves:
@@ -49,7 +49,7 @@ struct LedZoneSelectorView: View {
 
     private var beltSectionButtons: some View {
         ZStack {
-            switch displayMode {
+            switch self.displayMode {
                 case .fullBelt:
                     BeltSectionButton(section: .full(.belt, in: .red))
                 case .twoHalves:

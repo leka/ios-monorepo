@@ -33,22 +33,22 @@ enum DanceFreeze {
 
         public var body: some View {
             NavigationStack {
-                switch mode {
+                switch self.mode {
                     case .waitingForSelection:
-                        LauncherView(viewModel: viewModel, mode: $mode, motion: $motion)
+                        LauncherView(viewModel: self.viewModel, mode: self.$mode, motion: self.$motion)
                     case .automaticMode:
-                        PlayerView(viewModel: viewModel, isAuto: true, motion: motion)
+                        PlayerView(viewModel: self.viewModel, isAuto: true, motion: self.motion)
                             .onDisappear {
-                                viewModel.setAudioRecording(
+                                self.viewModel.setAudioRecording(
                                     audioRecording: AudioRecording(name: "", file: ""))
-                                viewModel.completeDanceFreeze()
+                                self.viewModel.completeDanceFreeze()
                             }
                     case .manualMode:
-                        PlayerView(viewModel: viewModel, isAuto: false, motion: motion)
+                        PlayerView(viewModel: self.viewModel, isAuto: false, motion: self.motion)
                             .onDisappear {
-                                viewModel.setAudioRecording(
+                                self.viewModel.setAudioRecording(
                                     audioRecording: AudioRecording(name: "", file: ""))
-                                viewModel.completeDanceFreeze()
+                                self.viewModel.completeDanceFreeze()
                             }
                 }
             }

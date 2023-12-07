@@ -11,7 +11,7 @@ struct FullScreenCoverToGameView: View {
     @EnvironmentObject var navigationVM: NavigationViewModel
 
     var body: some View {
-        NavigationStack(path: $navigationVM.pathToGame) {
+        NavigationStack(path: self.$navigationVM.pathToGame) {
             EmptyView()
                 .navigationDestination(
                     for: PathsToGame.self,

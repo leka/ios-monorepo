@@ -14,7 +14,7 @@ public struct Exercise: Codable {
         self.gameplay = try container.decodeIfPresent(Gameplay.self, forKey: .gameplay)
         self.action = try container.decodeIfPresent(Action.self, forKey: .action)
 
-        switch (interface, gameplay) {
+        switch (self.interface, self.gameplay) {
             case (.touchToSelect, .findTheRightAnswers),
                  (.listenThenTouchToSelect, .findTheRightAnswers),
                  (.observeThenTouchToSelect, .findTheRightAnswers),

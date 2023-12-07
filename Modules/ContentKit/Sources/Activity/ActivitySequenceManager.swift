@@ -27,41 +27,41 @@ public class ActivitySequenceManager {
     public var currentExerciseIndexInSequence: Int = 0
 
     public var totalSequences: Int {
-        activity.sequence.count
+        self.activity.sequence.count
     }
 
     public var totalExercisesInCurrentSequence: Int {
-        activity.sequence[currentSequenceIndex].exercises.count
+        self.activity.sequence[self.currentSequenceIndex].exercises.count
     }
 
     public var currentExercise: Exercise {
-        activity.sequence[currentSequenceIndex].exercises[currentExerciseIndexInSequence]
+        self.activity.sequence[self.currentSequenceIndex].exercises[self.currentExerciseIndexInSequence]
     }
 
     public var isFirstExercise: Bool {
-        currentExerciseIndexInSequence == 0 && currentSequenceIndex == 0
+        self.currentExerciseIndexInSequence == 0 && self.currentSequenceIndex == 0
     }
 
     public var isLastExercise: Bool {
-        currentExerciseIndexInSequence == activity.sequence[currentSequenceIndex].exercises.count - 1
-            && currentSequenceIndex == activity.sequence.count - 1
+        self.currentExerciseIndexInSequence == self.activity.sequence[self.currentSequenceIndex].exercises.count - 1
+            && self.currentSequenceIndex == self.activity.sequence.count - 1
     }
 
     public func moveToNextExercise() {
-        if currentExerciseIndexInSequence < activity.sequence[currentSequenceIndex].exercises.count - 1 {
-            currentExerciseIndexInSequence += 1
-        } else if currentSequenceIndex < activity.sequence.count - 1 {
-            currentSequenceIndex += 1
-            currentExerciseIndexInSequence = 0
+        if self.currentExerciseIndexInSequence < self.activity.sequence[self.currentSequenceIndex].exercises.count - 1 {
+            self.currentExerciseIndexInSequence += 1
+        } else if self.currentSequenceIndex < self.activity.sequence.count - 1 {
+            self.currentSequenceIndex += 1
+            self.currentExerciseIndexInSequence = 0
         }
     }
 
     public func moveToPreviousExercise() {
-        if currentExerciseIndexInSequence > 0 {
-            currentExerciseIndexInSequence -= 1
-        } else if currentSequenceIndex > 0 {
-            currentSequenceIndex -= 1
-            currentExerciseIndexInSequence = activity.sequence[currentSequenceIndex].exercises.count - 1
+        if self.currentExerciseIndexInSequence > 0 {
+            self.currentExerciseIndexInSequence -= 1
+        } else if self.currentSequenceIndex > 0 {
+            self.currentSequenceIndex -= 1
+            self.currentExerciseIndexInSequence = self.activity.sequence[self.currentSequenceIndex].exercises.count - 1
         }
     }
 

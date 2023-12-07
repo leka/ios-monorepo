@@ -44,8 +44,8 @@ public struct RobotControlPlainButtonStyle: ButtonStyle {
         }
         .padding(.vertical, 7)
         .padding(.horizontal, 20)
-        .foregroundColor(foreground)
-        .background(background)
+        .foregroundColor(self.foreground)
+        .background(self.background)
         .clipShape(RoundedRectangle(cornerRadius: 10))
         .opacity(configuration.isPressed ? 0.8 : 1)
     }
@@ -75,12 +75,12 @@ public struct RobotControlBorderedButtonStyle: ButtonStyle {
         }
         .padding(.vertical, 7)
         .padding(.horizontal, 20)
-        .foregroundColor(foreground)
-        .background(background)
+        .foregroundColor(self.foreground)
+        .background(self.background)
         .cornerRadius(10)
         .overlay(
             RoundedRectangle(cornerRadius: 10)
-                .strokeBorder(border, lineWidth: 2)
+                .strokeBorder(self.border, lineWidth: 2)
         )
         .opacity(configuration.isPressed ? 0.8 : 1)
     }

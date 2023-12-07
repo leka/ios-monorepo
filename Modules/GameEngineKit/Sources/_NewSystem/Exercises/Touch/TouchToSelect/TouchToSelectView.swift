@@ -31,25 +31,25 @@ public struct TouchToSelectView: View {
 
         switch interface {
             case .oneChoice:
-                OneChoiceView(viewModel: viewModel)
+                OneChoiceView(viewModel: self.viewModel)
 
             case .twoChoices:
-                TwoChoicesView(viewModel: viewModel)
+                TwoChoicesView(viewModel: self.viewModel)
 
             case .threeChoices:
-                ThreeChoicesView(viewModel: viewModel)
+                ThreeChoicesView(viewModel: self.viewModel)
 
             case .fourChoices:
-                FourChoicesView(viewModel: viewModel)
+                FourChoicesView(viewModel: self.viewModel)
 
             case .fiveChoices:
-                FiveChoicesView(viewModel: viewModel)
+                FiveChoicesView(viewModel: self.viewModel)
 
             case .sixChoices:
-                SixChoicesView(viewModel: viewModel)
+                SixChoicesView(viewModel: self.viewModel)
 
             default:
-                Text("❌ Interface not available for \(viewModel.choices.count) choices")
+                Text("❌ Interface not available for \(self.viewModel.choices.count) choices")
         }
     }
 

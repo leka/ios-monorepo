@@ -13,21 +13,21 @@ extension ListenThenTouchToSelectView {
         let isTappable: Bool
 
         var body: some View {
-            VStack(spacing: kVerticalSpacing) {
-                HStack(spacing: kHorizontalSpacing) {
-                    ForEach(viewModel.choices[0...2]) { choice in
-                        TouchToSelectChoiceView(choice: choice, size: kAnswerSize, isTappable: isTappable)
+            VStack(spacing: self.kVerticalSpacing) {
+                HStack(spacing: self.kHorizontalSpacing) {
+                    ForEach(self.viewModel.choices[0...2]) { choice in
+                        TouchToSelectChoiceView(choice: choice, size: self.kAnswerSize, isTappable: self.isTappable)
                             .onTapGesture {
-                                viewModel.onChoiceTapped(choice: choice)
+                                self.viewModel.onChoiceTapped(choice: choice)
                             }
                     }
                 }
 
-                HStack(spacing: kHorizontalSpacing) {
-                    ForEach(viewModel.choices[3...4]) { choice in
-                        TouchToSelectChoiceView(choice: choice, size: kAnswerSize, isTappable: isTappable)
+                HStack(spacing: self.kHorizontalSpacing) {
+                    ForEach(self.viewModel.choices[3...4]) { choice in
+                        TouchToSelectChoiceView(choice: choice, size: self.kAnswerSize, isTappable: self.isTappable)
                             .onTapGesture {
-                                viewModel.onChoiceTapped(choice: choice)
+                                self.viewModel.onChoiceTapped(choice: choice)
                             }
                     }
                 }

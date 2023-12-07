@@ -12,8 +12,8 @@ class RequirementsViewModel: ObservableObject {
     // MARK: Lifecycle
 
     init() {
-        subscribeToRobotBatteryUpdates()
-        subscribeToRobotIsChargingUpdates()
+        self.subscribeToRobotBatteryUpdates()
+        self.subscribeToRobotIsChargingUpdates()
     }
 
     // MARK: Internal
@@ -44,7 +44,7 @@ class RequirementsViewModel: ObservableObject {
                     robotBattery: robotBattery, robotIsCharging: Robot.shared.isCharging.value
                 )
             }
-            .store(in: &cancellables)
+            .store(in: &self.cancellables)
     }
 
     private func subscribeToRobotIsChargingUpdates() {
@@ -55,13 +55,13 @@ class RequirementsViewModel: ObservableObject {
                     robotBattery: Robot.shared.battery.value, robotIsCharging: robotIsCharging
                 )
             }
-            .store(in: &cancellables)
+            .store(in: &self.cancellables)
     }
 
     private func updateRobotIsReadyToUpdate(robotBattery: Int?, robotIsCharging: Bool?) {
         if let battery = robotBattery, let isCharging = robotIsCharging {
-            robotIsReadyToUpdate = battery >= 30 && isCharging
-            robotIsNotReadyToUpdate = !robotIsReadyToUpdate
+            self.robotIsReadyToUpdate = battery >= 30 && isCharging
+            self.robotIsNotReadyToUpdate = !self.robotIsReadyToUpdate
         }
     }
 }

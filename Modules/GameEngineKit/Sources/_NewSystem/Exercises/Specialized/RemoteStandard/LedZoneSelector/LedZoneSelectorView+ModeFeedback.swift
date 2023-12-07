@@ -12,7 +12,7 @@ extension LedZoneSelectorView {
         var body: some View {
             Circle()
                 .foregroundColor(DesignKitAsset.Colors.btnLightBlue.swiftUIColor)
-                .frame(width: CGFloat(backgroundDimension), height: CGFloat(backgroundDimension))
+                .frame(width: CGFloat(self.backgroundDimension), height: CGFloat(self.backgroundDimension))
         }
     }
 }

@@ -44,8 +44,8 @@ public class Robot {
             registerSerialNumberReadCallback()
             registerChargingStatusReadCallback()
 
-            connectedPeripheral?.discoverAndListenForUpdates()
-            connectedPeripheral?.readReadOnlyCharacteristics()
+            self.connectedPeripheral?.discoverAndListenForUpdates()
+            self.connectedPeripheral?.readReadOnlyCharacteristics()
         }
     }
 

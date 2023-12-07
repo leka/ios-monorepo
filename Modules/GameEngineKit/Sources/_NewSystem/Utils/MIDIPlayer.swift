@@ -11,35 +11,35 @@ class MIDIPlayer: ObservableObject {
     // MARK: Lifecycle
 
     init(instrument: MIDIInstrument) {
-        engine.output = sampler
+        self.engine.output = self.sampler
 
-        loadInstrument(samples: instrument.samples)
-        startAudioEngine()
+        self.loadInstrument(samples: instrument.samples)
+        self.startAudioEngine()
     }
 
     // MARK: Internal
 
     func loadMIDIFile(fileURL: URL, tempo: Double) {
-        sequencer.loadMIDIFile(fromURL: fileURL)
-        sequencer.setGlobalMIDIOutput(instrument.midiIn)
-        sequencer.setTempo(tempo)
+        self.sequencer.loadMIDIFile(fromURL: fileURL)
+        self.sequencer.setGlobalMIDIOutput(self.instrument.midiIn)
+        self.sequencer.setTempo(tempo)
     }
 
     func setInstrumentCallback(callback: @escaping MIDICallback) {
-        instrument.callback = callback
+        self.instrument.callback = callback
     }
 
     func noteOn(number: MIDINoteNumber, velocity: MIDIVelocity = 60) {
-        sampler.play(noteNumber: number, velocity: velocity, channel: 0)
+        self.sampler.play(noteNumber: number, velocity: velocity, channel: 0)
     }
 
     func play() {
-        sequencer.rewind()
-        sequencer.play()
+        self.sequencer.rewind()
+        self.sequencer.play()
     }
 
     func stop() {
-        sequencer.stop()
+        self.sequencer.stop()
     }
 
     func getMidiNotes() -> [MIDINoteData] {
@@ -55,7 +55,7 @@ class MIDIPlayer: ObservableObject {
             fatalError("Sequencer track not found")
         }
 
-        return track.length * 60 / sequencer.tempo
+        return track.length * 60 / self.sequencer.tempo
     }
 
     // MARK: Private
@@ -67,7 +67,7 @@ class MIDIPlayer: ObservableObject {
 
     private func startAudioEngine() {
         do {
-            try engine.start()
+            try self.engine.start()
         } catch {
             print("Could not start AudioKit")
         }
@@ -76,7 +76,7 @@ class MIDIPlayer: ObservableObject {
     private func loadInstrument(samples: [MIDISample]) {
         do {
             let files = samples.compactMap(\.audioFile)
-            try sampler.loadAudioFiles(files)
+            try self.sampler.loadAudioFiles(files)
         } catch {
             print("Could not load file")
         }

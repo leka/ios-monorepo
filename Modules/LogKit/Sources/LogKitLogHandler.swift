@@ -16,11 +16,11 @@ extension String {
     }
 
     var pathExtension: String {
-        fileURL.pathExtension
+        self.fileURL.pathExtension
     }
 
     var lastPathComponent: String {
-        fileURL.lastPathComponent
+        self.fileURL.lastPathComponent
     }
 }
 
@@ -44,21 +44,21 @@ struct StdioOutputStream: TextOutputStream {
     let flushMode: FlushMode
 
     func write(_ string: String) {
-        contiguousUTF8(string)
+        self.contiguousUTF8(string)
             .withContiguousStorageIfAvailable { utf8Bytes in
-                flockfile(file)
+                flockfile(self.file)
                 defer {
                     funlockfile(self.file)
                 }
-                _ = fwrite(utf8Bytes.baseAddress!, 1, utf8Bytes.count, file)
-                if case .always = flushMode {
-                    flush()
+                _ = fwrite(utf8Bytes.baseAddress!, 1, utf8Bytes.count, self.file)
+                if case .always = self.flushMode {
+                    self.flush()
                 }
             }!
     }
 
     func flush() {
-        _ = fflush(file)
+        _ = fflush(self.file)
     }
 
     func contiguousUTF8(_ string: String) -> String.UTF8View {
@@ -107,10 +107,10 @@ public struct LogKitLogHandler: LogHandler {
 
     public subscript(metadataKey metadataKey: String) -> Logger.Metadata.Value? {
         get {
-            metadata[metadataKey]
+            self.metadata[metadataKey]
         }
         set {
-            metadata[metadataKey] = newValue
+            self.metadata[metadataKey] = newValue
         }
     }
 
@@ -123,10 +123,10 @@ public struct LogKitLogHandler: LogHandler {
         function: String,
         line: UInt
     ) {
-        var strm = stream
+        var strm = self.stream
 
         strm.write(
-            "\(timestamp()) \(prettyLevel(level)) [\(label)](\(prettyFile(file)):\(line)) \(function) > \(message)\n"
+            "\(self.timestamp()) \(self.prettyLevel(level)) [\(self.label)](\(self.prettyFile(file)):\(line)) \(function) > \(message)\n"
         )
     }
 

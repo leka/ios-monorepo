@@ -16,32 +16,32 @@ struct ProfileSet_Teachers: View {
 
     var body: some View {
         VStack(spacing: 0) {
-            header
+            self.header
 
             // Separator
             Rectangle()
                 .fill(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
                 .frame(height: 1)
-                .frame(maxWidth: navigationVM.showProfileEditor ? .infinity : 460)
+                .frame(maxWidth: self.navigationVM.showProfileEditor ? .infinity : 460)
 
             // Avatars
-            availableProfiles
+            self.availableProfiles
         }
         .task {
-            company.sortProfiles(.teacher)
+            self.company.sortProfiles(.teacher)
         }
         .navigationBarTitleDisplayMode(.inline)
         .preferredColorScheme(.light)
         .frame(minWidth: 460)
-        .navigationDestination(isPresented: $navigateToTeacherCreation) {
+        .navigationDestination(isPresented: self.$navigateToTeacherCreation) {
             CreateTeacherProfileView()
         }
-        .sheet(isPresented: $showEditProfileTeacher) {
+        .sheet(isPresented: self.$showEditProfileTeacher) {
             NavigationStack {
                 CreateTeacherProfileView()
             }
         }
-        .alert("Mode découverte", isPresented: $settings.showConnectInvite) {
+        .alert("Mode découverte", isPresented: self.$settings.showConnectInvite) {
             IdentificationIsNeededAlertLabel()
         } message: {
             Text( // swiftlint:disable:next line_length
@@ -57,53 +57,53 @@ struct ProfileSet_Teachers: View {
 
     private var editButton: some View {
         Button {
-            if settings.companyIsConnected {
-                company.editProfile(.teacher)
-                showEditProfileTeacher.toggle()
+            if self.settings.companyIsConnected {
+                self.company.editProfile(.teacher)
+                self.showEditProfileTeacher.toggle()
             } else {
-                settings.showConnectInvite.toggle()
+                self.settings.showConnectInvite.toggle()
             }
         } label: {
             Image(systemName: "pencil")
         }
-        .buttonStyle(CircledIcon_NoFeedback_ButtonStyle(font: metrics.bold16))
+        .buttonStyle(CircledIcon_NoFeedback_ButtonStyle(font: self.metrics.bold16))
     }
 
     private var header: some View {
         HStack(spacing: 20) {
-            if !navigationVM.showProfileEditor {
+            if !self.navigationVM.showProfileEditor {
                 Spacer()
             }
             Text("Qui êtes-vous ?")
-                .font(metrics.reg17)
+                .font(self.metrics.reg17)
                 .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
-            if navigationVM.showProfileEditor {
+            if self.navigationVM.showProfileEditor {
                 Spacer()
             }
-            addButton()
-            if !navigationVM.showProfileEditor {
+            self.addButton()
+            if !self.navigationVM.showProfileEditor {
                 Spacer()
             }
-            if navigationVM.showProfileEditor {
-                editButton
+            if self.navigationVM.showProfileEditor {
+                self.editButton
             }
         }
         .padding(20)
     }
 
     private var teachersSet: some View {
-        ForEach(company.currentCompany.teachers) { teacher in
+        ForEach(self.company.currentCompany.teachers) { teacher in
             TeacherSet_AvatarCell(teacher: teacher)
         }
     }
 
     @ViewBuilder
     private var availableProfiles: some View {
-        if !navigationVM.showProfileEditor, sixMax() {
+        if !self.navigationVM.showProfileEditor, self.sixMax() {
             VStack {
                 Spacer()
                 HStack(spacing: 40) {
-                    teachersSet
+                    self.teachersSet
                 }
                 .offset(y: -100)
                 Spacer()
@@ -114,7 +114,7 @@ struct ProfileSet_Teachers: View {
                     repeating: GridItem(spacing: 20), count: navigationVM.showProfileEditor ? 3 : 6
                 )
                 LazyVGrid(columns: columns, spacing: 20) {
-                    teachersSet
+                    self.teachersSet
                 }
                 .padding(.bottom, 20)
             }
@@ -124,28 +124,28 @@ struct ProfileSet_Teachers: View {
 
     // check if less than 7 profiles to display in order to adapt Layout (HStack vs. Scrollable Grid)
     private func sixMax() -> Bool {
-        company.currentCompany.teachers.count < 7
+        self.company.currentCompany.teachers.count < 7
     }
 
     @ViewBuilder
     private func addButton() -> some View {
         Button {
-            if viewRouter.currentPage == .welcome {
+            if self.viewRouter.currentPage == .welcome {
                 // Existing company is connected, we're in the selector here
-                company.resetBufferProfile(.teacher)
-                navigateToTeacherCreation.toggle()
+                self.company.resetBufferProfile(.teacher)
+                self.navigateToTeacherCreation.toggle()
             } else {
-                if settings.companyIsConnected {
-                    company.editingProfile = false
-                    company.resetBufferProfile(.teacher)
-                    showEditProfileTeacher.toggle()
+                if self.settings.companyIsConnected {
+                    self.company.editingProfile = false
+                    self.company.resetBufferProfile(.teacher)
+                    self.showEditProfileTeacher.toggle()
                 } else {
-                    settings.showConnectInvite.toggle()
+                    self.settings.showConnectInvite.toggle()
                 }
             }
         } label: {
             Image(systemName: "plus")
         }
-        .buttonStyle(CircledIcon_NoFeedback_ButtonStyle(font: metrics.bold16))
+        .buttonStyle(CircledIcon_NoFeedback_ButtonStyle(font: self.metrics.bold16))
     }
 }

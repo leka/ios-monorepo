@@ -20,22 +20,22 @@ struct CurriculumListView: View {
 
             ScrollViewReader { proxy in
                 ScrollView {
-                    LazyVGrid(columns: columns) {
+                    LazyVGrid(columns: self.columns) {
                         ForEach(CurriculumCategories.allCases, id: \.self) { category in
                             Section {
-                                allCurriculums(category: category)
+                                self.allCurriculums(category: category)
                             } header: {
-                                headerViews(title: curriculumVM.getCurriculumList(category: category).sectionTitle)
+                                self.headerViews(title: self.curriculumVM.getCurriculumList(category: category).sectionTitle)
                             }
                         }
                     }
                 }
-                .animation(.easeOut(duration: 0.4), value: navigationVM.showInfo())
+                .animation(.easeOut(duration: 0.4), value: self.navigationVM.showInfo())
                 .safeAreaInset(edge: .top) {
                     InfoTileManager()
                 }
                 .onAppear {
-                    withAnimation { proxy.scrollTo(curriculumVM.currentCurriculumCategory, anchor: .top) }
+                    withAnimation { proxy.scrollTo(self.curriculumVM.currentCurriculumCategory, anchor: .top) }
                 }
             }
         }
@@ -53,17 +53,17 @@ struct CurriculumListView: View {
 
     @ViewBuilder
     private func allCurriculums(category: CurriculumCategories) -> some View {
-        let list: [Curriculum] = curriculumVM.getCurriculumsFrom(category: category)
+        let list: [Curriculum] = self.curriculumVM.getCurriculumsFrom(category: category)
         ForEach(list.enumerated().map { $0 }, id: \.element.id) { index, item in
             Button {
-                curriculumVM.currentCurriculumCategory = category
-                curriculumVM.populateCurriculumList(category: category)
-                curriculumVM.selectedCurriculum = index
-                navigationVM.pathsFromHome.append("curriculumDetail")
+                self.curriculumVM.currentCurriculumCategory = category
+                self.curriculumVM.populateCurriculumList(category: category)
+                self.curriculumVM.selectedCurriculum = index
+                self.navigationVM.pathsFromHome.append("curriculumDetail")
             } label: {
                 CurriculumPillShapedView(
                     curriculum: item, // Integrate rank and icon within curriculum Type, delete following properties
-                    icon: curriculumVM.setCurriculumIcon(for: item)
+                    icon: self.curriculumVM.setCurriculumIcon(for: item)
                 )
             }
             .padding()
@@ -73,7 +73,7 @@ struct CurriculumListView: View {
     private func headerViews(title: LocalizedContent) -> some View {
         HStack {
             Text(title.localized())
-                .font(metrics.semi17)
+                .font(self.metrics.semi17)
                 .padding(16)
                 .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
                 .padding(.leading, 20)

@@ -26,13 +26,13 @@ struct ButtonFilled<Label: View>: View {
     var body: some View {
         Button(
             action: {
-                action()
+                self.action()
             },
             label: {
-                label
+                self.label
             }
         )
-        .buttonStyle(.robotControlPlainButtonStyle(foreground: foreground, background: background))
+        .buttonStyle(.robotControlPlainButtonStyle(foreground: self.foreground, background: self.background))
     }
 
     // MARK: Private

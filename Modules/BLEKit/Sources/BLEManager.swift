@@ -12,8 +12,8 @@ public class BLEManager {
     public init(centralManager: CentralManager) {
         self.centralManager = centralManager
 
-        subscribeToDidDisconnect()
-        subscribeToDidConnect()
+        self.subscribeToDidDisconnect()
+        self.subscribeToDidConnect()
     }
 
     // MARK: Public
@@ -29,7 +29,7 @@ public class BLEManager {
     public let didDisconnect = PassthroughSubject<Void, Never>()
 
     public var isConnected: Bool {
-        connectedRobotPeripheral != nil ? true : false
+        self.connectedRobotPeripheral != nil ? true : false
     }
 
     public static func live() -> BLEManager {
@@ -37,7 +37,7 @@ public class BLEManager {
     }
 
     public func scanForRobots() -> AnyPublisher<[RobotDiscoveryModel], Error> {
-        centralManager.scanForPeripherals(withServices: [BLESpecs.AdvertisingData.service])
+        self.centralManager.scanForPeripherals(withServices: [BLESpecs.AdvertisingData.service])
             .handleEvents(
                 receiveSubscription: { _ in
                     if self.centralManager.state == .poweredOn {
@@ -84,7 +84,7 @@ public class BLEManager {
     }
 
     public func connect(_ discovery: RobotDiscoveryModel) -> AnyPublisher<RobotPeripheral, Error> {
-        centralManager.connect(discovery.robotPeripheral.peripheral)
+        self.centralManager.connect(discovery.robotPeripheral.peripheral)
             .compactMap { peripheral in
                 self.connectedRobotPeripheral = RobotPeripheral(peripheral: peripheral)
                 return self.connectedRobotPeripheral
@@ -94,7 +94,7 @@ public class BLEManager {
 
     public func disconnect() {
         guard let connectedPeripheral = connectedRobotPeripheral?.peripheral else { return }
-        centralManager.cancelPeripheralConnection(connectedPeripheral)
+        self.centralManager.cancelPeripheralConnection(connectedPeripheral)
     }
 
     // MARK: Private
@@ -109,18 +109,18 @@ public class BLEManager {
     // MARK: - Private functions
 
     private func subscribeToDidConnect() {
-        centralManager.didConnectPeripheral
+        self.centralManager.didConnectPeripheral
             .sink { peripheral in
                 self.didConnect.send(RobotPeripheral(peripheral: peripheral))
             }
-            .store(in: &cancellables)
+            .store(in: &self.cancellables)
     }
 
     private func subscribeToDidDisconnect() {
-        centralManager.didDisconnectPeripheral
+        self.centralManager.didDisconnectPeripheral
             .sink { _ in
                 self.didDisconnect.send()
             }
-            .store(in: &cancellables)
+            .store(in: &self.cancellables)
     }
 }

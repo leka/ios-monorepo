@@ -26,11 +26,11 @@ class CurriculumViewModel: ObservableObject, YamlFileDecodable {
 
     @Published var selectedCurriculum: Int? = 0 {
         didSet {
-            currentCurriculum = availableCurriculums[selectedCurriculum ?? 0]
-            selectedCurriculumRank = "\(String(describing: (selectedCurriculum ?? 0) + 1))/\(availableCurriculums.count)"
-            selectedCurriculumHeaderTitle = availableCurriculums[selectedCurriculum ?? 0].fullTitle.localized()
-            selectedCurriculumIcon = setCurriculumIcon(for: currentCurriculum) // from Yaml later
-            selectedCurriculumDescription = // swiftlint:disable:next line_length
+            self.currentCurriculum = self.availableCurriculums[self.selectedCurriculum ?? 0]
+            self.selectedCurriculumRank = "\(String(describing: (self.selectedCurriculum ?? 0) + 1))/\(self.availableCurriculums.count)"
+            self.selectedCurriculumHeaderTitle = self.availableCurriculums[self.selectedCurriculum ?? 0].fullTitle.localized()
+            self.selectedCurriculumIcon = self.setCurriculumIcon(for: self.currentCurriculum) // from Yaml later
+            self.selectedCurriculumDescription = // swiftlint:disable:next line_length
                 "Reconnaissance des 5 émotions primaires \n(peur, joie, tristesse, colère et dégoût) \nà travers les photos de 5 personnes différentes."
         }
     }
@@ -47,16 +47,16 @@ class CurriculumViewModel: ObservableObject, YamlFileDecodable {
     }
 
     func populateCurriculumList(category: CurriculumCategories) {
-        availableCurriculums.removeAll()
-        for item in getCurriculumList(category: category).curriculums {
-            availableCurriculums.append(getCurriculum(item))
+        self.availableCurriculums.removeAll()
+        for item in self.getCurriculumList(category: category).curriculums {
+            self.availableCurriculums.append(self.getCurriculum(item))
         }
     }
 
     func getCurriculumsFrom(category: CurriculumCategories) -> [Curriculum] {
         var curriculums: [Curriculum] = []
-        for item in getCurriculumList(category: category).curriculums {
-            curriculums.append(getCurriculum(item))
+        for item in self.getCurriculumList(category: category).curriculums {
+            curriculums.append(self.getCurriculum(item))
         }
         return curriculums
     }
@@ -73,7 +73,7 @@ class CurriculumViewModel: ObservableObject, YamlFileDecodable {
     }
 
     func setCurriculumDetailNavTitle() -> String {
-        "\(getCurriculumList(category: currentCurriculumCategory).sectionTitle.localized()) \(String(describing: (selectedCurriculum ?? 0) + 1))/\(availableCurriculums.count)"
+        "\(self.getCurriculumList(category: self.currentCurriculumCategory).sectionTitle.localized()) \(String(describing: (self.selectedCurriculum ?? 0) + 1))/\(self.availableCurriculums.count)"
     }
 
     func setCurriculumIcon(for curriculum: Curriculum) -> String {
@@ -88,8 +88,8 @@ class CurriculumViewModel: ObservableObject, YamlFileDecodable {
     }
 
     func getCompleteActivityList() {
-        for curriculum in availableCurriculums {
-            activityFilesCompleteList.append(contentsOf: curriculum.activities)
+        for curriculum in self.availableCurriculums {
+            self.activityFilesCompleteList.append(contentsOf: curriculum.activities)
         }
     }
 }
