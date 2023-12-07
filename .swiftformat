@@ -132,6 +132,7 @@
 --enable spaceAroundParens
 --enable spaceInsideBraces
 --enable spaceInsideBrackets
+--enable spaceInsideComments
 
 # Disabled rules
 

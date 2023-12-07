@@ -2,7 +2,6 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
-//import Combine
 import ContentKit
 import RobotKit
 import SwiftUI

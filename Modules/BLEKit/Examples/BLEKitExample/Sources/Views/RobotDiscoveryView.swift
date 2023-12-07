@@ -77,8 +77,8 @@ struct RobotDiscoveryView: View {
 }
 
 // TODO(@ladislas): create protocol and mock RobotDiscovery
-//struct RobotView_Previews: PreviewProvider {
+// struct RobotView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        RobotDiscoveryView(discovery: RobotDiscovery.mock())
 //    }
-//}
+// }
