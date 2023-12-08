@@ -14,6 +14,11 @@ let project = Project.module(
         .project(target: "LogKit", path: Path("../../Modules/LogKit")),
         .external(name: "FirebaseAuthCombine-Community"),
     ],
+    settings: .settings(base: [
+        "OTHER_LDFLAGS": [
+            "-ObjC"
+        ],
+    ]),
     examples: [
         ModuleExample(
             name: "AccountKitExample",
