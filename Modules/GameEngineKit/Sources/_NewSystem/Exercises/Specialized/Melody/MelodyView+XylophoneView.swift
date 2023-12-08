@@ -12,6 +12,7 @@ extension MelodyView {
 
     public struct XylophoneView: View {
         @StateObject private var viewModel: ViewModel
+        @Environment(\.colorScheme) var colorScheme
 
         private var scale: [MIDINoteNumber]
         private let tilesSpacing: CGFloat = 16
@@ -22,42 +23,56 @@ extension MelodyView {
         ) {
             self._viewModel = StateObject(
                 wrappedValue: ViewModel(
-                    midiPlayer: MIDIPlayer(instrument: instrument), selectedSong: selectedSong, shared: data))
+                    midiPlayer: MIDIPlayer(instrument: instrument), selectedSong: selectedSong, shared: data)
+            )
             self.keyboard = keyboard
             self.scale = selectedSong.scale
         }
 
         public var body: some View {
-            VStack(spacing: 50) {
-                ContinuousProgressBar(progress: viewModel.progress)
-                    .animation(.easeOut, value: viewModel.progress)
-                    .padding(.horizontal)
+            ZStack {
 
-                HStack(spacing: tilesSpacing) {
-                    ForEach(scale.enumerated().map { $0 }, id: \.0) { index, note in
-                        Button {
-                            viewModel.onTileTapped(noteNumber: note)
-                        } label: {
-                            viewModel.tileColors[index].screen
-                        }
-                        .buttonStyle(
-                            XylophoneTileButtonStyle(
-                                index: index,
-                                tileNumber: scale.count,
-                                tileWidth: 100,
-                                isTappable: viewModel.scale.contains(note)
+                VStack(spacing: 50) {
+                    ContinuousProgressBar(progress: viewModel.progress)
+                        .animation(.easeOut, value: viewModel.progress)
+                        .padding(.horizontal)
+
+                    HStack(spacing: tilesSpacing) {
+                        ForEach(scale.enumerated().map { $0 }, id: \.0) { index, note in
+                            Button {
+                                viewModel.onTileTapped(noteNumber: note)
+                            } label: {
+                                viewModel.tileColors[index].screen
+                            }
+                            .buttonStyle(
+                                XylophoneTileButtonStyle(
+                                    index: index,
+                                    tileNumber: scale.count,
+                                    tileWidth: 100,
+                                    isTappable: viewModel.scale.contains(note)
+                                )
                             )
-                        )
-                        .disabled(viewModel.isNotTappable)
-                        .modifier(
-                            KeyboardModeModifier(
-                                isPartial: keyboard == .partial, scaleNote: note, viewModel: viewModel)
-                        )
-                        .compositingGroup()
+                            .disabled(viewModel.isNotTappable)
+                            .modifier(
+                                KeyboardModeModifier(
+                                    colorScheme: colorScheme,
+                                    isPartial: keyboard == .partial,
+                                    isDisabled: !viewModel.scale.contains(note)
+                                )
+                            )
+                            .compositingGroup()
+                        }
                     }
+                    .blur(radius: viewModel.showModal ? 10 : 0)
                 }
+
+                if viewModel.showModal {
+                    PlayMelodyModalView(progress: $viewModel.progress)
+                }
+
             }
             .onAppear {
+                viewModel.showModal = true
                 viewModel.playMIDIRecording()
             }
             .onDisappear {
@@ -68,17 +83,16 @@ extension MelodyView {
         }
 
         struct KeyboardModeModifier: ViewModifier {
-            @Environment(\.colorScheme) var colorScheme
+            let colorScheme: ColorScheme
             var isPartial: Bool
-            var scaleNote: MIDINoteNumber
-            var viewModel: ViewModel
+            var isDisabled: Bool
 
             func body(content: Content) -> some View {
                 if isPartial {
                     content
-                        .disabled(!viewModel.scale.contains(scaleNote))
+                        .disabled(isDisabled)
                         .overlay {
-                            if !viewModel.scale.contains(scaleNote) {
+                            if isDisabled {
                                 RoundedRectangle(cornerRadius: 7)
                                     .fill(colorScheme == .light ? Color.white.opacity(0.9) : Color.black.opacity(0.85))
                             }
