@@ -8,64 +8,65 @@ import RobotKit
 import SwiftUI
 
 // swiftlint:disable nesting
-extension MelodyView {
-
-    public struct XylophoneView: View {
-        @StateObject private var viewModel: ViewModel
-
-        private var scale: [MIDINoteNumber]
-        private let tilesSpacing: CGFloat = 16
-        private let keyboard: Keyboard
+public extension MelodyView {
+    struct XylophoneView: View {
+        // MARK: Lifecycle
 
         init(
             instrument: MIDIInstrument, selectedSong: MidiRecording, keyboard: Keyboard, data: ExerciseSharedData? = nil
         ) {
             self._viewModel = StateObject(
                 wrappedValue: ViewModel(
-                    midiPlayer: MIDIPlayer(instrument: instrument), selectedSong: selectedSong, shared: data))
+                    midiPlayer: MIDIPlayer(instrument: instrument), selectedSong: selectedSong, shared: data
+                ))
             self.keyboard = keyboard
             self.scale = selectedSong.scale
         }
 
+        // MARK: Public
+
         public var body: some View {
             VStack(spacing: 50) {
-                ContinuousProgressBar(progress: viewModel.progress)
-                    .animation(.easeOut, value: viewModel.progress)
+                ContinuousProgressBar(progress: self.viewModel.progress)
+                    .animation(.easeOut, value: self.viewModel.progress)
                     .padding(.horizontal)
 
-                HStack(spacing: tilesSpacing) {
-                    ForEach(scale.enumerated().map { $0 }, id: \.0) { index, note in
+                HStack(spacing: self.tilesSpacing) {
+                    ForEach(self.scale.enumerated().map { $0 }, id: \.0) { index, note in
                         Button {
-                            viewModel.onTileTapped(noteNumber: note)
+                            self.viewModel.onTileTapped(noteNumber: note)
                         } label: {
-                            viewModel.tileColors[index].screen
+                            self.viewModel.tileColors[index].screen
                         }
                         .buttonStyle(
                             XylophoneTileButtonStyle(
                                 index: index,
-                                tileNumber: scale.count,
+                                tileNumber: self.scale.count,
                                 tileWidth: 100,
-                                isTappable: viewModel.scale.contains(note)
+                                isTappable: self.viewModel.scale.contains(note)
                             )
                         )
-                        .disabled(viewModel.isNotTappable)
+                        .disabled(self.viewModel.isNotTappable)
                         .modifier(
                             KeyboardModeModifier(
-                                isPartial: keyboard == .partial, scaleNote: note, viewModel: viewModel)
+                                isPartial: self.keyboard == .partial, scaleNote: note, viewModel: self.viewModel
+                            )
                         )
                         .compositingGroup()
                     }
                 }
             }
             .onAppear {
-                viewModel.playMIDIRecording()
+                self.viewModel.playMIDIRecording()
             }
             .onDisappear {
-                viewModel.setMIDIRecording(
+                self.viewModel.setMIDIRecording(
                     midiRecording: MidiRecording(.none))
-                viewModel.midiPlayer.stop()
+                self.viewModel.midiPlayer.stop()
             }
         }
+
+        // MARK: Internal
 
         struct KeyboardModeModifier: ViewModifier {
             @Environment(\.colorScheme) var colorScheme
@@ -74,13 +75,13 @@ extension MelodyView {
             var viewModel: ViewModel
 
             func body(content: Content) -> some View {
-                if isPartial {
+                if self.isPartial {
                     content
-                        .disabled(!viewModel.scale.contains(scaleNote))
+                        .disabled(!self.viewModel.scale.contains(self.scaleNote))
                         .overlay {
-                            if !viewModel.scale.contains(scaleNote) {
+                            if !self.viewModel.scale.contains(self.scaleNote) {
                                 RoundedRectangle(cornerRadius: 7)
-                                    .fill(colorScheme == .light ? Color.white.opacity(0.9) : Color.black.opacity(0.85))
+                                    .fill(self.colorScheme == .light ? Color.white.opacity(0.9) : Color.black.opacity(0.85))
                             }
                         }
                 } else {
@@ -88,12 +89,21 @@ extension MelodyView {
                 }
             }
         }
-    }
 
+        // MARK: Private
+
+        @StateObject private var viewModel: ViewModel
+
+        private var scale: [MIDINoteNumber]
+        private let tilesSpacing: CGFloat = 16
+        private let keyboard: Keyboard
+    }
 }
+
 // swiftlint:enable nesting
 
 #Preview {
     MelodyView.XylophoneView(
-        instrument: .xylophone, selectedSong: MidiRecording(.aGreenMouse), keyboard: .full)
+        instrument: .xylophone, selectedSong: MidiRecording(.aGreenMouse), keyboard: .full
+    )
 }

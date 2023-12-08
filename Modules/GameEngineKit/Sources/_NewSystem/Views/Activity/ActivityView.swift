@@ -163,8 +163,8 @@ public struct ActivityView: View {
 
             case .melody:
                 MelodyView(
-                    exercise: viewModel.currentExercise,
-                    data: viewModel.currentExerciseSharedData
+                    exercise: self.viewModel.currentExercise,
+                    data: self.viewModel.currentExerciseSharedData
                 )
         }
     }

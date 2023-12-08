@@ -6,25 +6,8 @@ import AudioKit
 import ContentKit
 import SwiftUI
 
-struct MelodyView: View {
-
-    enum Stage {
-        case waitingForSelection
-        case selectionConfirmed
-    }
-
-    enum Keyboard {
-        case full
-        case partial
-    }
-
-    @State private var mode = Stage.waitingForSelection
-    @State private var selectedSong: MidiRecording
-    @State private var keyboard: Keyboard = .partial
-    let data: ExerciseSharedData?
-    let instructions: MidiRecordingPlayer.Payload.Instructions
-    let instrument: MIDIInstrument
-    let songs: [MidiRecording]
+public struct MelodyView: View {
+    // MARK: Lifecycle
 
     init(instructions: MidiRecordingPlayer.Payload.Instructions, instrument: MIDIInstrument, songs: [MidiRecording]) {
         self.instructions = instructions
@@ -47,27 +30,54 @@ struct MelodyView: View {
         self.instructions = payload.instructions
         self.instrument = instrument
         self.songs = payload.songs
-        self.selectedSong = songs.first!
+        self.selectedSong = self.songs.first!
         self.data = data
     }
 
-    var body: some View {
+    // MARK: Public
+
+    public var body: some View {
         NavigationStack {
-            switch mode {
+            switch self.mode {
                 case .waitingForSelection:
                     LauncherView(
-                        selectedSong: $selectedSong, mode: $mode, keyboard: $keyboard, songs: songs,
-                        instructions: instructions)
+                        selectedSong: self.$selectedSong, mode: self.$mode, keyboard: self.$keyboard, songs: self.songs,
+                        instructions: self.instructions
+                    )
                 case .selectionConfirmed:
-                    switch instrument {
+                    switch self.instrument {
                         case .xylophone:
                             XylophoneView(
-                                instrument: instrument, selectedSong: selectedSong, keyboard: keyboard, data: data)
+                                instrument: self.instrument, selectedSong: self.selectedSong, keyboard: self.keyboard, data: self.data
+                            )
                     }
             }
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }
+
+    // MARK: Internal
+
+    enum Stage {
+        case waitingForSelection
+        case selectionConfirmed
+    }
+
+    enum Keyboard {
+        case full
+        case partial
+    }
+
+    let data: ExerciseSharedData?
+    let instructions: MidiRecordingPlayer.Payload.Instructions
+    let instrument: MIDIInstrument
+    let songs: [MidiRecording]
+
+    // MARK: Private
+
+    @State private var mode = Stage.waitingForSelection
+    @State private var selectedSong: MidiRecording
+    @State private var keyboard: Keyboard = .partial
 }
 
 #Preview {

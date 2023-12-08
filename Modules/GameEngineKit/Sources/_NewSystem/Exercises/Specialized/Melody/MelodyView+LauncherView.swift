@@ -6,7 +6,6 @@ import ContentKit
 import SwiftUI
 
 extension MelodyView {
-
     struct LauncherView: View {
         @Binding var selectedSong: MidiRecording
         @Binding var mode: Stage
@@ -28,8 +27,8 @@ extension MelodyView {
                                 GameEngineKitAsset.Exercises.Melody.iconKeyboardPartial.swiftUIImage
                                     .resizable()
                                     .scaledToFit()
-                                Text(instructions.textKeyboardPartial)
-                                    .foregroundStyle(keyboard == .partial ? .black : .gray.opacity(0.4))
+                                Text(self.instructions.textKeyboardPartial)
+                                    .foregroundStyle(self.keyboard == .partial ? .black : .gray.opacity(0.4))
                             }
 
                             Toggle(
@@ -45,8 +44,8 @@ extension MelodyView {
                                 GameEngineKitAsset.Exercises.Melody.iconKeyboardFull.swiftUIImage
                                     .resizable()
                                     .scaledToFit()
-                                Text(instructions.textKeyboardFull)
-                                    .foregroundStyle(keyboard == .full ? .black : .gray.opacity(0.4))
+                                Text(self.instructions.textKeyboardFull)
+                                    .foregroundStyle(self.keyboard == .full ? .black : .gray.opacity(0.4))
                             }
                         }
                         .padding(.horizontal)
@@ -55,8 +54,8 @@ extension MelodyView {
                         .clipShape(RoundedRectangle(cornerRadius: 10))
 
                         SongSelectorView(
-                            songs: songs, selectedMidiRecording: $selectedSong,
-                            textMusicSelection: instructions.textMusicSelection
+                            songs: self.songs, selectedMidiRecording: self.$selectedSong,
+                            textMusicSelection: self.instructions.textMusicSelection
                         )
                         .frame(maxHeight: 260)
                     }
@@ -65,9 +64,9 @@ extension MelodyView {
                 .padding(.horizontal, 100)
 
                 Button {
-                    mode = .selectionConfirmed
+                    self.mode = .selectionConfirmed
                 } label: {
-                    ButtonLabel(instructions.textButtonPlay, color: .cyan)
+                    ButtonLabel(self.instructions.textButtonPlay, color: .cyan)
                 }
             }
         }
