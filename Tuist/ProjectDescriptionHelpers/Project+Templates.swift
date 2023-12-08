@@ -16,7 +16,7 @@ extension Project {
     //
 
     internal static func makeFrameworkTargets(
-        name: String, platform: Platform, product: Product = .staticLibrary, dependencies: [TargetDependency]
+        name: String, platform: Platform, product: Product = .staticLibrary, dependencies: [TargetDependency], settings: Settings? = nil
     )
         -> [Target]
     {
@@ -50,7 +50,8 @@ extension Project {
             sources: ["Sources/**"],
             resources: ["Resources/**"],
             scripts: TargetScript.linters(),
-            dependencies: dependencies)
+            dependencies: dependencies,
+            settings: settings)
 
         let tests = Target(
             name: "\(name)Tests",
