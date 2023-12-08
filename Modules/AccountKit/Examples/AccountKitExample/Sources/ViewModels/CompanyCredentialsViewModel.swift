@@ -5,11 +5,8 @@
 import Foundation
 
 struct CompanyCredentialsViewModel {
-    // var id = UUID().uuidString
     var mail: String = ""
     var password: String = ""
-    // var teachers: [Teacher] = []
-    // var users: [User] = []
     var confirmPassword: String = ""
 
     // MARK: - Validation Checks

@@ -115,7 +115,7 @@ class AuthManager: ObservableObject {
         do {
             try auth.signOut()
             companyAuthenticationState = .loggedOut
-            print("Company was successfully signed out.")
+            log.notice("Company was successfully signed out. 🙋‍♂️")
         } catch let signOutError {
             errorMessage = signOutError.localizedDescription
         }
@@ -156,7 +156,7 @@ class AuthManager: ObservableObject {
     private func handleUserUpdate(operation: FirebaseAuthenticationOperation) -> (AuthDataResult) -> Void {
         { [weak self] result in
             self?.companyAuthenticationState = .loggedIn
-            print("Company \(result.user.uid) \(operation.rawValue) successfully.")
+            log.notice("🎉 Company \(result.user.uid) \(operation.rawValue) successfully.")
             if case .signIn = operation {
                 self?.checkAuthenticationStatus()
             }
