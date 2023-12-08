@@ -1,0 +1,26 @@
+# Leka - iOS Monorepo
+# Copyright 2023 APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+id: 0acffb9d1c4141688721ad430aebe0c2
+name: Melody
+description: L'objectif est de reproduire la mélodie affichée par Leka
+image: activity_color_recognition_1
+sequence:
+  - exercises:
+      - instructions: Joue les notes de la même couleur que Leka
+        interface: melody
+        payload:
+          instructions:
+            text_music_selection: Sélection de la musique
+            text_button_play: Jouer
+            text_keyboard_partial: Clavier partiel
+            text_keyboard_full: Clavier entier
+          instrument: xylophone
+          songs:
+            - underTheMoonlight
+            - aGreenMouse
+            - twinkleTwinkleLittleStar
+            - londonBridgeIsFallingDown
+            - ohTheCrocodiles
+            - happyBirthday

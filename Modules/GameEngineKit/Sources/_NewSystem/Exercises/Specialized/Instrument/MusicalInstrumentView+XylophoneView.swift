@@ -32,7 +32,7 @@ extension MusicalInstrumentView {
                         tileColors[index].screen
                     }
                     .buttonStyle(
-                        TileButtonStyle(
+                        XylophoneTileButtonStyle(
                             index: index, tileNumber: tileNumber, tileWidth: scale.self == .majorPentatonic ? 130 : 100)
                     )
                     .compositingGroup()
