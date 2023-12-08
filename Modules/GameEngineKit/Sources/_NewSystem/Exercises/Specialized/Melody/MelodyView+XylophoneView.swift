@@ -12,6 +12,7 @@ extension MelodyView {
 
     public struct XylophoneView: View {
         @StateObject private var viewModel: ViewModel
+        @Environment(\.colorScheme) var colorScheme
 
         private var scale: [MIDINoteNumber]
         private let tilesSpacing: CGFloat = 16
@@ -22,7 +23,8 @@ extension MelodyView {
         ) {
             self._viewModel = StateObject(
                 wrappedValue: ViewModel(
-                    midiPlayer: MIDIPlayer(instrument: instrument), selectedSong: selectedSong, shared: data))
+                    midiPlayer: MIDIPlayer(instrument: instrument), selectedSong: selectedSong, shared: data)
+            )
             self.keyboard = keyboard
             self.scale = selectedSong.scale
         }
@@ -51,13 +53,18 @@ extension MelodyView {
                         .disabled(viewModel.isNotTappable)
                         .modifier(
                             KeyboardModeModifier(
-                                isPartial: keyboard == .partial, scaleNote: note, viewModel: viewModel)
+                                colorScheme: colorScheme,
+                                isPartial: keyboard == .partial,
+                                isDisabled: !viewModel.scale.contains(note)
+                            )
                         )
                         .compositingGroup()
                     }
                 }
+                .blur(radius: viewModel.isXylophoneBlurred ? 10 : 0)
             }
             .onAppear {
+                viewModel.isXylophoneBlurred = true
                 viewModel.playMIDIRecording()
             }
             .onDisappear {
@@ -68,17 +75,16 @@ extension MelodyView {
         }
 
         struct KeyboardModeModifier: ViewModifier {
-            @Environment(\.colorScheme) var colorScheme
+            let colorScheme: ColorScheme
             var isPartial: Bool
-            var scaleNote: MIDINoteNumber
-            var viewModel: ViewModel
+            var isDisabled: Bool
 
             func body(content: Content) -> some View {
                 if isPartial {
                     content
-                        .disabled(!viewModel.scale.contains(scaleNote))
+                        .disabled(isDisabled)
                         .overlay {
-                            if !viewModel.scale.contains(scaleNote) {
+                            if isDisabled {
                                 RoundedRectangle(cornerRadius: 7)
                                     .fill(colorScheme == .light ? Color.white.opacity(0.9) : Color.black.opacity(0.85))
                             }

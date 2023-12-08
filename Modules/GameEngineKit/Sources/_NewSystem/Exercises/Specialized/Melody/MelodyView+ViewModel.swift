@@ -13,6 +13,7 @@ extension MelodyView {
         @ObservedObject public var exercicesSharedData: ExerciseSharedData
         @Published public var progress: CGFloat = 0.0
         @Published public var isNotTappable: Bool = true
+        @Published public var isXylophoneBlurred: Bool = false
         public var midiPlayer: MIDIPlayer
         public var scale: [MIDINoteNumber] = []
         public var currentNoteNumber: MIDINoteNumber = 0
@@ -26,7 +27,10 @@ extension MelodyView {
         private var currentNoteIndex: Int = 0
         private var octaveGap: MIDINoteNumber = 0
 
-        init(midiPlayer: MIDIPlayer, selectedSong: MidiRecording, shared: ExerciseSharedData? = nil) {
+        init(
+            midiPlayer: MIDIPlayer, selectedSong: MidiRecording,
+            shared: ExerciseSharedData? = nil
+        ) {
             self.midiPlayer = midiPlayer
             self.defaultScale = selectedSong.scale
             self.exercicesSharedData = shared ?? ExerciseSharedData()
@@ -45,10 +49,11 @@ extension MelodyView {
         }
 
         func playMIDIRecording() {
-            self.midiPlayer.play()
+            midiPlayer.play()
 
             DispatchQueue.main.asyncAfter(deadline: .now() + self.midiPlayer.getDuration()) {
                 self.robot.stopLights()
+                self.isXylophoneBlurred = false
 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                     self.startActivity()
@@ -57,8 +62,9 @@ extension MelodyView {
         }
 
         func startActivity() {
-            self.isNotTappable = false
-            self.showColorFromMIDINote(self.currentNoteNumber)
+            progress = 0.0
+            isNotTappable = false
+            showColorFromMIDINote(self.currentNoteNumber)
         }
 
         func onTileTapped(noteNumber: MIDINoteNumber) {
@@ -94,10 +100,15 @@ extension MelodyView {
         }
 
         private func setInstrumentCallback() {
+            var currentNoteIndex = 0
             self.midiPlayer.setInstrumentCallback(callback: { _, note, velocity in
                 if velocity == 0 || note < self.octaveGap { return }
                 let currentNote = note - self.octaveGap
                 if 24 <= currentNote && currentNote <= 36 {
+                    currentNoteIndex += 1
+                    withAnimation {
+                        self.progress = CGFloat(currentNoteIndex) / CGFloat(self.midiNotes.count)
+                    }
                     self.showColorFromMIDINote(currentNote)
                     self.midiPlayer.noteOn(number: currentNote, velocity: velocity)
                 }
