@@ -81,7 +81,9 @@ extension MelodyView {
         textMusicSelection: "Sélection de la musique",
         textButtonPlay: "Jouer",
         textKeyboardPartial: "Clavier partiel",
-        textKeyboardFull: "Clavier entier"
+        textKeyboardFull: "Clavier entier",
+        textStartMelody: "Appuie sur le bouton Play pour écouter et voir Leka jouer de la musique!",
+        textSkipMelody: "Passer la chanson"
     )
 
     return MelodyView.SongSelectorView(

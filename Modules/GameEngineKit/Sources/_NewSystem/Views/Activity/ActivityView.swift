@@ -6,9 +6,15 @@ import ContentKit
 import RobotKit
 import SwiftUI
 
+class BlurManager: ObservableObject {
+    @Published var isBlurred: Bool = false
+    let radius: CGFloat = 20
+}
+
 public struct ActivityView: View {
 
     @Environment(\.dismiss) var dismiss
+    @StateObject var blurManager = BlurManager()
 
     @ObservedObject var viewModel: ActivityViewViewModel
 
@@ -25,10 +31,12 @@ public struct ActivityView: View {
 
                         ExerciseInstructionsButton(instructions: viewModel.currentExercise.instructions)
                     }
+                    .blur(radius: blurManager.isBlurred ? blurManager.radius : 0)
 
                     VStack {
                         Spacer()
                         currentExerciseInterface()
+                            .environmentObject(blurManager)
                         Spacer()
                     }
                 }
@@ -72,6 +80,7 @@ public struct ActivityView: View {
         .onDisappear {
             Robot.shared.stop()
         }
+
     }
 
     @ViewBuilder

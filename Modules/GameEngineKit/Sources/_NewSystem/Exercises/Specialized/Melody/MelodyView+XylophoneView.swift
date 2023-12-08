@@ -12,53 +12,84 @@ extension MelodyView {
 
     public struct XylophoneView: View {
         @StateObject private var viewModel: ViewModel
+        @EnvironmentObject var blurManager: BlurManager
+        @Environment(\.colorScheme) var colorScheme
 
         private var scale: [MIDINoteNumber]
         private let tilesSpacing: CGFloat = 16
         private let keyboard: Keyboard
+        private let instructions: MidiRecordingPlayer.Payload.Instructions
 
         init(
-            instrument: MIDIInstrument, selectedSong: MidiRecording, keyboard: Keyboard, data: ExerciseSharedData? = nil
+            instrument: MIDIInstrument, selectedSong: MidiRecording, keyboard: Keyboard,
+            instructions: MidiRecordingPlayer.Payload.Instructions, data: ExerciseSharedData? = nil
         ) {
             self._viewModel = StateObject(
                 wrappedValue: ViewModel(
-                    midiPlayer: MIDIPlayer(instrument: instrument), selectedSong: selectedSong, shared: data))
+                    midiPlayer: MIDIPlayer(instrument: instrument), selectedSong: selectedSong, shared: data)
+            )
             self.keyboard = keyboard
+            self.instructions = instructions
             self.scale = selectedSong.scale
         }
 
         public var body: some View {
-            VStack(spacing: 50) {
-                ContinuousProgressBar(progress: viewModel.progress)
-                    .animation(.easeOut, value: viewModel.progress)
-                    .padding(.horizontal)
+            ZStack {
+                VStack(spacing: 50) {
+                    ContinuousProgressBar(progress: viewModel.progress)
+                        .animation(.easeOut, value: viewModel.progress)
+                        .padding(.horizontal)
 
-                HStack(spacing: tilesSpacing) {
-                    ForEach(scale.enumerated().map { $0 }, id: \.0) { index, note in
-                        Button {
-                            viewModel.onTileTapped(noteNumber: note)
-                        } label: {
-                            viewModel.tileColors[index].screen
-                        }
-                        .buttonStyle(
-                            XylophoneTileButtonStyle(
-                                index: index,
-                                tileNumber: scale.count,
-                                tileWidth: 100,
-                                isTappable: viewModel.scale.contains(note)
+                    HStack(spacing: tilesSpacing) {
+                        ForEach(scale.enumerated().map { $0 }, id: \.0) { index, note in
+                            Button {
+                                viewModel.onTileTapped(noteNumber: note)
+                            } label: {
+                                viewModel.tileColors[index].screen
+                            }
+                            .buttonStyle(
+                                XylophoneTileButtonStyle(
+                                    index: index,
+                                    tileNumber: scale.count,
+                                    tileWidth: 100,
+                                    isTappable: viewModel.scale.contains(note)
+                                )
                             )
-                        )
-                        .disabled(viewModel.isNotTappable)
-                        .modifier(
-                            KeyboardModeModifier(
-                                isPartial: keyboard == .partial, scaleNote: note, viewModel: viewModel)
-                        )
-                        .compositingGroup()
+                            .disabled(viewModel.isNotTappable)
+                            .modifier(
+                                KeyboardModeModifier(
+                                    colorScheme: colorScheme,
+                                    isPartial: keyboard == .partial,
+                                    isDisabled: !viewModel.scale.contains(note)
+                                )
+                            )
+                            .compositingGroup()
+                        }
                     }
                 }
+                .blur(radius: blurManager.isBlurred ? blurManager.radius : 0)
+
+                if viewModel.showModal {
+                    VStack {
+                        PlayMelodyModalView(
+                            showModal: $viewModel.showModal, viewModel: viewModel,
+                            textStartMelody: instructions.textStartMelody,
+                            textSkipMelody: instructions.textSkipMelody
+                        ) {
+                            viewModel.playMIDIRecording()
+                        }
+                        .background(colorScheme == .light ? Color.white : Color.black)
+                        .cornerRadius(10)
+                        Spacer()
+                    }
+                }
+
             }
             .onAppear {
-                viewModel.playMIDIRecording()
+                viewModel.showModal = true
+            }
+            .onReceive(viewModel.$showModal) {
+                blurManager.isBlurred = $0
             }
             .onDisappear {
                 viewModel.setMIDIRecording(
@@ -68,17 +99,16 @@ extension MelodyView {
         }
 
         struct KeyboardModeModifier: ViewModifier {
-            @Environment(\.colorScheme) var colorScheme
+            let colorScheme: ColorScheme
             var isPartial: Bool
-            var scaleNote: MIDINoteNumber
-            var viewModel: ViewModel
+            var isDisabled: Bool
 
             func body(content: Content) -> some View {
                 if isPartial {
                     content
-                        .disabled(!viewModel.scale.contains(scaleNote))
+                        .disabled(isDisabled)
                         .overlay {
-                            if !viewModel.scale.contains(scaleNote) {
+                            if isDisabled {
                                 RoundedRectangle(cornerRadius: 7)
                                     .fill(colorScheme == .light ? Color.white.opacity(0.9) : Color.black.opacity(0.85))
                             }
@@ -94,6 +124,15 @@ extension MelodyView {
 // swiftlint:enable nesting
 
 #Preview {
-    MelodyView.XylophoneView(
-        instrument: .xylophone, selectedSong: MidiRecording(.aGreenMouse), keyboard: .full)
+    let instructions = MidiRecordingPlayer.Payload.Instructions(
+        textMusicSelection: "Sélection de la musique",
+        textButtonPlay: "Jouer",
+        textKeyboardPartial: "Clavier partiel",
+        textKeyboardFull: "Clavier entier",
+        textStartMelody: "Appuie sur le bouton Play pour écouter et voir Leka jouer de la musique!",
+        textSkipMelody: "Passer la chanson"
+    )
+
+    return MelodyView.XylophoneView(
+        instrument: .xylophone, selectedSong: MidiRecording(.aGreenMouse), keyboard: .full, instructions: instructions)
 }

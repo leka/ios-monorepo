@@ -16,6 +16,10 @@ sequence:
             text_button_play: Jouer
             text_keyboard_partial: Clavier partiel
             text_keyboard_full: Clavier entier
+            text_start_melody: |
+                Appuie sur le bouton "Play"
+                pour écouter et voir Leka jouer de la musique
+            text_skip_melody: Passer la chanson
           instrument: xylophone
           songs:
             - underTheMoonlight
