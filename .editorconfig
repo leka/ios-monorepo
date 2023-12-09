@@ -17,7 +17,7 @@ insert_final_newline = true
 [*.md]
 trim_trailing_whitespace = false # Trailing whitespace is significant in markdown files
 
-[*.yml]
+[*.{yml,yaml}]
 indent_style = space
 indent_size = 2
 
@@ -28,3 +28,7 @@ indent_size = 2
 [fastlane/*]
 indent_style = space
 indent_size = 2
+
+[Makefile]
+indent_style = tab
+indent_size = 4
