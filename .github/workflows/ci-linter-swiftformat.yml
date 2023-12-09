@@ -1,0 +1,34 @@
+# Leka - iOS Monorepo
+# Copyright 2023 APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+name: Linter - SwiftFormat
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  swift_format:
+    name: lint
+    runs-on: [self-hosted, iOS]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # Fetch all history for all branches and tags
+          lfs: true
+
+      - name: Run swiftformat
+        run: |
+          echo ""
+          echo "🏃‍♂️ Running swiftformat"
+
+          swiftformat --version
+
+          swiftformat --lint .
