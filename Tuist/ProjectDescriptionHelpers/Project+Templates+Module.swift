@@ -61,7 +61,7 @@ public extension Project {
                         "LocalizedStringInterpolation",
                     ],
                     "OTHER_LDFLAGS": [
-                        "-ObjC"
+                        "-ObjC",
                     ],
                 ])
             )

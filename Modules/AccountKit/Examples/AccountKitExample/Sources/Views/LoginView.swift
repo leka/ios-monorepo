@@ -9,9 +9,6 @@ struct LoginView: View {
     // MARK: Internal
 
     @EnvironmentObject var authManager: AuthManager
-    @State private var credentials = CompanyCredentialsViewModel()
-    @State private var showSheet: Bool = false
-    @State private var showErrorAlert = false
 
     var body: some View {
         VStack(spacing: 10) {
@@ -25,36 +22,40 @@ struct LoginView: View {
         .padding()
         .navigationTitle("Login View")
         .navigationBarTitleDisplayMode(.large)
-        .animation(.default, value: credentials.isEmailValid())
-        .animation(.default, value: credentials.isPasswordValid(credentials.password))
-        .sheet(isPresented: $showSheet) { ForgotPasswordView() }
-        .alert("An error occurred", isPresented: $showErrorAlert) {
+        .animation(.default, value: self.credentials.isEmailValid())
+        .animation(.default, value: self.credentials.isPasswordValid(self.credentials.password))
+        .sheet(isPresented: self.$showSheet) { ForgotPasswordView() }
+        .alert("An error occurred", isPresented: self.$showErrorAlert) {
             // nothing to show
         } message: {
-            Text(authManager.errorMessage)
+            Text(self.authManager.errorMessage)
         }
-        .onReceive(authManager.$showErrorAlert) { newValue in
-            showErrorAlert = newValue
+        .onReceive(self.authManager.$showErrorAlert) { newValue in
+            self.showErrorAlert = newValue
         }
-        .alert("Réinitialiser le mot de passe", isPresented: $authManager.showNotificationAlert) {
+        .alert("Réinitialiser le mot de passe", isPresented: self.$authManager.showNotificationAlert) {
             // nothing to show
         } message: {
-            Text(authManager.notificationMessage)
+            Text(self.authManager.notificationMessage)
         }
     }
 
     // MARK: Private
 
+    @State private var credentials = CompanyCredentialsViewModel()
+    @State private var showSheet: Bool = false
+    @State private var showErrorAlert = false
+
     private var emailField: some View {
         VStack(alignment: .leading, spacing: 10) {
-            TextField("email", text: $credentials.mail)
+            TextField("email", text: self.$credentials.mail)
                 .textFieldStyle(.roundedBorder)
                 .textContentType(.emailAddress)
                 .keyboardType(.emailAddress)
-            if !credentials.mail.isEmpty
-                && !credentials.isEmailValid()
+            if !self.credentials.mail.isEmpty,
+               !self.credentials.isEmailValid()
             {
-                Text(credentials.invalidEmailAddressText)
+                Text(self.credentials.invalidEmailAddressText)
                     .font(.footnote)
                     .foregroundStyle(.red)
                     .padding(.horizontal, 10)
@@ -64,13 +65,13 @@ struct LoginView: View {
 
     private var passwordField: some View {
         VStack(alignment: .leading, spacing: 10) {
-            SecureField("password", text: $credentials.password)
+            SecureField("password", text: self.$credentials.password)
                 .textFieldStyle(.roundedBorder)
                 .textContentType(.password)
-            if !credentials.password.isEmpty
-                && !credentials.isPasswordValid(credentials.password)
+            if !self.credentials.password.isEmpty,
+               !self.credentials.isPasswordValid(self.credentials.password)
             {
-                Text(credentials.invalidPasswordText)
+                Text(self.credentials.invalidPasswordText)
                     .font(.footnote)
                     .lineLimit(2)
                     .foregroundStyle(.red)
@@ -83,9 +84,9 @@ struct LoginView: View {
     private var loginButton: some View {
         Button(
             action: {
-                authManager.signIn(
-                    email: credentials.mail,
-                    password: credentials.password
+                self.authManager.signIn(
+                    email: self.credentials.mail,
+                    password: self.credentials.password
                 )
             },
             label: {
@@ -95,8 +96,8 @@ struct LoginView: View {
         )
         .controlSize(.large)
         .buttonStyle(.borderedProminent)
-        .disabled(!credentials.logInIsComplete)
-        .animation(.default, value: credentials.logInIsComplete)
+        .disabled(!self.credentials.logInIsComplete)
+        .animation(.default, value: self.credentials.logInIsComplete)
     }
 
     private var forgotLink: some View {

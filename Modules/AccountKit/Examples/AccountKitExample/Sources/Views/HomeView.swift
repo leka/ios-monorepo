@@ -10,10 +10,6 @@ struct HomeView: View {
     @EnvironmentObject var authManager: AuthManager
     @Environment(\.dismiss) var dismiss
 
-    @State private var goBackToContentView: Bool = false
-    @State private var showDeleteConfirmation: Bool = false
-    @State private var showErrorAlert = false
-
     var body: some View {
         switch self.authManager.companyAuthenticationState {
             case .unknown:
@@ -27,6 +23,10 @@ struct HomeView: View {
 
     // MARK: Private
 
+    @State private var goBackToContentView: Bool = false
+    @State private var showDeleteConfirmation: Bool = false
+    @State private var showErrorAlert = false
+
     private var content: some View {
         VStack(spacing: 10) {
             Text("Company is Logged In!")
@@ -35,7 +35,7 @@ struct HomeView: View {
             HStack(spacing: 10) {
                 Button(
                     action: {
-                        authManager.signOut()
+                        self.authManager.signOut()
                     },
                     label: {
                         Text("Log Out")
@@ -47,7 +47,7 @@ struct HomeView: View {
 
                 Button(
                     action: {
-                        showDeleteConfirmation.toggle()
+                        self.showDeleteConfirmation.toggle()
                     },
                     label: {
                         Text("Delete Company")
@@ -60,11 +60,11 @@ struct HomeView: View {
             }
         }
         .padding()
-        .alert("Supprimer le compte", isPresented: $showDeleteConfirmation) {
+        .alert("Supprimer le compte", isPresented: self.$showDeleteConfirmation) {
             Button(role: .destructive) {
-                authManager.deleteAccount()
+                self.authManager.deleteAccount()
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                    dismiss()
+                    self.dismiss()
                 }
             } label: {
                 Text("Supprimer")
@@ -74,35 +74,35 @@ struct HomeView: View {
                 "Vous êtes sur le point de supprimer le compte de votre établissemnt. \nCette action est irreversible."
             )
         }
-        .alert("Email non-vérifié", isPresented: $authManager.showactionRequestAlert) {
+        .alert("Email non-vérifié", isPresented: self.$authManager.showactionRequestAlert) {
             Button(role: .none) {
-                authManager.sendEmailVerification()
+                self.authManager.sendEmailVerification()
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                    dismiss()
+                    self.dismiss()
                 }
             } label: {
                 Text("Renvoyer")
             }
             Button(role: .cancel) {
-                dismiss()
+                self.dismiss()
             } label: {
                 Text("Plus tard")
             }
         } message: {
-            Text(authManager.actionRequestMessage)
+            Text(self.authManager.actionRequestMessage)
         }
-        .alert("Vérification de votre email", isPresented: $authManager.showNotificationAlert) {
+        .alert("Vérification de votre email", isPresented: self.$authManager.showNotificationAlert) {
             // nothing to show
         } message: {
-            Text(authManager.notificationMessage)
+            Text(self.authManager.notificationMessage)
         }
-        .alert("An error occurred", isPresented: $showErrorAlert) {
+        .alert("An error occurred", isPresented: self.$showErrorAlert) {
             // nothing to show
         } message: {
-            Text(authManager.errorMessage)
+            Text(self.authManager.errorMessage)
         }
-        .onReceive(authManager.$showErrorAlert) { newValue in
-            showErrorAlert = newValue
+        .onReceive(self.authManager.$showErrorAlert) { newValue in
+            self.showErrorAlert = newValue
         }
     }
 }

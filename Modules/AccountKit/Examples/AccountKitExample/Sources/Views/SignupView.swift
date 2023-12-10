@@ -9,8 +9,6 @@ struct SignupView: View {
     // MARK: Internal
 
     @EnvironmentObject var authManager: AuthManager
-    @State private var credentials = CompanyCredentialsViewModel()
-    @State private var showErrorAlert = false
 
     var body: some View {
         VStack(spacing: 10) {
@@ -24,31 +22,34 @@ struct SignupView: View {
         .padding()
         .navigationTitle("Sign-Up View")
         .navigationBarTitleDisplayMode(.large)
-        .animation(.default, value: credentials.isEmailValid())
-        .animation(.default, value: credentials.isPasswordValid(credentials.password))
-        .animation(.default, value: credentials.passwordsMatch())
-        .alert("An error occurred", isPresented: $showErrorAlert) {
+        .animation(.default, value: self.credentials.isEmailValid())
+        .animation(.default, value: self.credentials.isPasswordValid(self.credentials.password))
+        .animation(.default, value: self.credentials.passwordsMatch())
+        .alert("An error occurred", isPresented: self.$showErrorAlert) {
             // nothing to show
         } message: {
-            Text(authManager.errorMessage)
+            Text(self.authManager.errorMessage)
         }
-        .onReceive(authManager.$showErrorAlert) { newValue in
-            showErrorAlert = newValue
+        .onReceive(self.authManager.$showErrorAlert) { newValue in
+            self.showErrorAlert = newValue
         }
     }
 
     // MARK: Private
 
+    @State private var credentials = CompanyCredentialsViewModel()
+    @State private var showErrorAlert = false
+
     private var emailField: some View {
         VStack(alignment: .leading, spacing: 10) {
-            TextField("email", text: $credentials.mail)
+            TextField("email", text: self.$credentials.mail)
                 .textFieldStyle(.roundedBorder)
                 .textContentType(.emailAddress)
                 .keyboardType(.emailAddress)
-            if !credentials.mail.isEmpty
-                && !credentials.isEmailValid()
+            if !self.credentials.mail.isEmpty,
+               !self.credentials.isEmailValid()
             {
-                Text(credentials.invalidEmailAddressText)
+                Text(self.credentials.invalidEmailAddressText)
                     .font(.footnote)
                     .foregroundStyle(.red)
                     .padding(.horizontal, 10)
@@ -58,13 +59,13 @@ struct SignupView: View {
 
     private var passwordField: some View {
         VStack(alignment: .leading, spacing: 10) {
-            SecureField("password", text: $credentials.password)
+            SecureField("password", text: self.$credentials.password)
                 .textFieldStyle(.roundedBorder)
                 .textContentType(.newPassword)
-            if !credentials.password.isEmpty
-                && !credentials.isPasswordValid(credentials.password)
+            if !self.credentials.password.isEmpty,
+               !self.credentials.isPasswordValid(self.credentials.password)
             {
-                Text(credentials.invalidPasswordText)
+                Text(self.credentials.invalidPasswordText)
                     .font(.footnote)
                     .foregroundStyle(.red)
                     .padding(.horizontal, 10)
@@ -74,14 +75,14 @@ struct SignupView: View {
 
     private var confirmPasswordField: some View {
         VStack(alignment: .leading, spacing: 10) {
-            SecureField("confirm password", text: $credentials.confirmPassword)
+            SecureField("confirm password", text: self.$credentials.confirmPassword)
                 .textFieldStyle(.roundedBorder)
                 .textContentType(.password)
-            if !credentials.password.isEmpty
-                && (!credentials.confirmPassword.isEmpty
-                    && !credentials.passwordsMatch())
+            if !self.credentials.password.isEmpty,
+               !self.credentials.confirmPassword.isEmpty,
+               !self.credentials.passwordsMatch()
             {
-                Text(credentials.invalidConfirmPasswordText)
+                Text(self.credentials.invalidConfirmPasswordText)
                     .font(.footnote)
                     .foregroundStyle(.red)
                     .padding(.horizontal, 10)
@@ -93,9 +94,9 @@ struct SignupView: View {
     private var signupButton: some View {
         Button(
             action: {
-                authManager.signUp(
-                    email: credentials.mail,
-                    password: credentials.password
+                self.authManager.signUp(
+                    email: self.credentials.mail,
+                    password: self.credentials.password
                 )
             },
             label: {
@@ -105,8 +106,8 @@ struct SignupView: View {
         )
         .controlSize(.large)
         .buttonStyle(.borderedProminent)
-        .disabled(!credentials.signUpIsComplete)
-        .animation(.default, value: credentials.signUpIsComplete)
+        .disabled(!self.credentials.signUpIsComplete)
+        .animation(.default, value: self.credentials.signUpIsComplete)
     }
 }
 

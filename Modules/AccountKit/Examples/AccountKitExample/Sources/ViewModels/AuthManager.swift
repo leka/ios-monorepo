@@ -8,8 +8,21 @@ import FirebaseAuthCombineSwift
 import Foundation
 
 class AuthManager: ObservableObject {
+    // MARK: Lifecycle
+
+    init() {
+        self.auth.addStateDidChangeListener { _, user in
+            self.emailHasBeenConfirmed = user?.isEmailVerified ?? false
+        }
+        self.checkAuthenticationStatus()
+    }
+
+    // MARK: Internal
+
     enum FirebaseAuthenticationState {
-        case unknown, loggedOut, loggedIn
+        case unknown
+        case loggedOut
+        case loggedIn
     }
 
     enum FirebaseAuthenticationOperation: String {
@@ -20,8 +33,6 @@ class AuthManager: ObservableObject {
     }
 
     @Published private(set) var companyAuthenticationState: FirebaseAuthenticationState = .unknown
-    @Published private var emailHasBeenConfirmed: Bool = false
-
     @Published var errorMessage: String = ""
     @Published var showErrorAlert = false
     @Published var actionRequestMessage: String = ""
@@ -29,92 +40,72 @@ class AuthManager: ObservableObject {
     @Published var notificationMessage: String = ""
     @Published var showNotificationAlert = false
 
-    private let auth = Auth.auth()
-    private var cancellables = Set<AnyCancellable>()
-
-    init() {
-        auth.addStateDidChangeListener { _, user in
-            self.emailHasBeenConfirmed = user?.isEmailVerified ?? false
-        }
-        checkAuthenticationStatus()
-    }
-
-    private func updateAuthState(for company: User?) {
-        companyAuthenticationState = company != nil ? .loggedIn : .loggedOut
-        guard emailHasBeenConfirmed else {
-            actionRequestMessage =
-                "Your email hasn't been verified yet. Please verify your email to avoid losing your data."
-            showactionRequestAlert = true
-            return
-        }
-    }
-
     func checkAuthenticationStatus() {
-        auth.publisher(for: \.currentUser)
+        self.auth.publisher(for: \.currentUser)
             .map { [weak self] company in
                 self?.updateAuthState(for: company)
                 return self?.companyAuthenticationState ?? .unknown
             }
             .print()
-            .assign(to: &$companyAuthenticationState)
+            .assign(to: &self.$companyAuthenticationState)
     }
 
     func signIn(email: String, password: String) {
-        auth.signIn(withEmail: email, password: password)
+        self.auth.signIn(withEmail: email, password: password)
             .mapError { $0 as Error }
             .sink(
                 receiveCompletion:
-                    handleCompletion(newState: .loggedOut, operation: .signIn),
+                self.handleCompletion(newState: .loggedOut, operation: .signIn),
                 receiveValue:
-                    handleUserUpdate(operation: .signIn)
+                self.handleUserUpdate(operation: .signIn)
             )
-            .store(in: &cancellables)
+            .store(in: &self.cancellables)
     }
 
     func signUp(email: String, password: String) {
-        auth.createUser(withEmail: email, password: password)
+        self.auth.createUser(withEmail: email, password: password)
             .mapError { $0 as Error }
             .sink(
                 receiveCompletion:
-                    handleCompletion(newState: .loggedOut, operation: .signUp),
+                self.handleCompletion(newState: .loggedOut, operation: .signUp),
                 receiveValue:
-                    handleUserUpdate(operation: .signUp)
+                self.handleUserUpdate(operation: .signUp)
             )
-            .store(in: &cancellables)
+            .store(in: &self.cancellables)
     }
 
     func sendPasswordReset(to email: String) {
-        auth.sendPasswordReset(withEmail: email)
+        self.auth.sendPasswordReset(withEmail: email)
             .mapError { $0 as Error }
             .sink(
                 receiveCompletion:
-                    handleCompletion(newState: .unknown, operation: .resetPassword),
+                self.handleCompletion(newState: .unknown, operation: .resetPassword),
                 receiveValue: { [weak self] _ in
                     self?.notificationMessage = "An email has been sent to \(email) to reset your password."
                     self?.showNotificationAlert = true
                 }
             )
-            .store(in: &cancellables)
+            .store(in: &self.cancellables)
     }
 
     func sendEmailVerification() {
-        auth.currentUser!.sendEmailVerification()
+        self.auth.currentUser!.sendEmailVerification()
             .mapError { $0 as Error }
             .sink(
                 receiveCompletion:
-                    handleCompletion(newState: .unknown, operation: .confirmEmail),
+                self.handleCompletion(newState: .unknown, operation: .confirmEmail),
                 receiveValue: { [weak self] _ in
                     self?.notificationMessage = "Verification email sent to your email. Please check your inbox."
                     self?.showNotificationAlert = true
                 }
             )
-            .store(in: &cancellables)
+            .store(in: &self.cancellables)
     }
 
     func signOut() {
         do {
-            try auth.signOut()
-            companyAuthenticationState = .loggedOut
+            try self.auth.signOut()
+            self.companyAuthenticationState = .loggedOut
             log.notice("Company was successfully signed out. 🙋‍♂️")
         } catch let signOutError {
             errorMessage = signOutError.localizedDescription
@@ -127,7 +118,7 @@ class AuthManager: ObservableObject {
             return
         }
         currentUser.delete { [weak self] error in
-            if let error = error {
+            if let error {
                 print("Error deleting company: \(error.localizedDescription)")
                 self?.errorMessage = "There was an error deleting your account. Please try again later"
             } else {
@@ -137,7 +128,25 @@ class AuthManager: ObservableObject {
         }
     }
 
+    // MARK: Private
+
+    @Published private var emailHasBeenConfirmed: Bool = false
+
+    private let auth = Auth.auth()
+    private var cancellables = Set<AnyCancellable>()
+
+    private func updateAuthState(for company: User?) {
+        self.companyAuthenticationState = company != nil ? .loggedIn : .loggedOut
+        guard self.emailHasBeenConfirmed else {
+            self.actionRequestMessage =
+                "Your email hasn't been verified yet. Please verify your email to avoid losing your data."
+            self.showactionRequestAlert = true
+            return
+        }
+    }
+
     // MARK: - Completion & error handling
+
     private func handleCompletion(newState: FirebaseAuthenticationState, operation: FirebaseAuthenticationOperation)
         -> (Subscribers.Completion<Error>) -> Void
     {
@@ -145,7 +154,7 @@ class AuthManager: ObservableObject {
             switch completion {
                 case .finished:
                     break
-                case .failure(let error):
+                case let .failure(error):
                     self?.errorMessage = error.localizedDescription
                     self?.handleOperationsErrors(error, operation: operation)
                     self?.companyAuthenticationState = newState
@@ -166,7 +175,7 @@ class AuthManager: ObservableObject {
         }
     }
 
-    private func handleOperationsErrors(_ error: Error, operation: FirebaseAuthenticationOperation) {
+    private func handleOperationsErrors(_: Error, operation: FirebaseAuthenticationOperation) {
         var message = ""
         switch operation {
             case .signIn:
@@ -179,7 +188,7 @@ class AuthManager: ObservableObject {
                 message = "There was an error sending the verification email. Please try again later."
         }
 
-        showErrorAlert(with: message)
+        self.showErrorAlert(with: message)
     }
 
     private func showErrorAlert(with message: String) {
@@ -189,6 +198,6 @@ class AuthManager: ObservableObject {
                 self?.errorMessage = newMessage
                 self?.showErrorAlert = true
             }
-            .store(in: &cancellables)
+            .store(in: &self.cancellables)
     }
 }

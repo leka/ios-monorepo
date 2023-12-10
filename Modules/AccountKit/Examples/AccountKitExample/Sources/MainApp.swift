@@ -7,10 +7,12 @@ import FirebaseCore
 import LogKit
 import SwiftUI
 
+// MARK: - AppDelegate
+
 class AppDelegate: NSObject, UIApplicationDelegate {
     func application(
-        _ application: UIApplication,
-        didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil
+        _: UIApplication,
+        didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]? = nil
     ) -> Bool {
         FirebaseApp.configure()
         return true
@@ -29,7 +31,7 @@ struct AccountKitExample: App {
     var body: some Scene {
         WindowGroup {
             MainView()
-                .environmentObject(authManager)
+                .environmentObject(self.authManager)
         }
     }
 }

@@ -5,14 +5,13 @@
 import SwiftUI
 
 struct MainView: View {
-
     // MARK: Internal
 
     @EnvironmentObject var authManager: AuthManager
 
     var body: some View {
         Group {
-            switch authManager.companyAuthenticationState {
+            switch self.authManager.companyAuthenticationState {
                 case .unknown:
                     Text("Loading...")
                 case .loggedIn:
@@ -24,7 +23,7 @@ struct MainView: View {
             }
         }
         .animation(
-            .easeOut(duration: 0.4), value: authManager.companyAuthenticationState
+            .easeOut(duration: 0.4), value: self.authManager.companyAuthenticationState
         )
         .preferredColorScheme(.light)
     }
@@ -52,10 +51,10 @@ struct MainView: View {
             .controlSize(.large)
             .navigationTitle("Authentication")
             .navigationBarBackButtonHidden()
-            .alert("An error occurred", isPresented: $authManager.showErrorAlert) {
+            .alert("An error occurred", isPresented: self.$authManager.showErrorAlert) {
                 // nothing to show
             } message: {
-                Text(authManager.errorMessage)
+                Text(self.authManager.errorMessage)
             }
         }
     }

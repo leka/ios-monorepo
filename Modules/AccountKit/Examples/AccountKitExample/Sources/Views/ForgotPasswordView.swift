@@ -5,7 +5,6 @@
 import SwiftUI
 
 struct ForgotPasswordView: View {
-
     @EnvironmentObject var authManager: AuthManager
     @State private var credentials = CompanyCredentialsViewModel()
     @State private var showErrorAlert = false
@@ -23,33 +22,33 @@ struct ForgotPasswordView: View {
             .navigationTitle("Reset Password View")
             .navigationBarTitleDisplayMode(.inline)
             .toolbarBackground(.visible, for: .navigationBar)
-            .animation(.default, value: credentials.isEmailValid())
-            .navigationBarItems(trailing: Button("Dismiss", action: { dismiss() }))
-            .alert("Réinitialiser le mot de passe", isPresented: $authManager.showNotificationAlert) {
+            .animation(.default, value: self.credentials.isEmailValid())
+            .navigationBarItems(trailing: Button("Dismiss", action: { self.dismiss() }))
+            .alert("Réinitialiser le mot de passe", isPresented: self.$authManager.showNotificationAlert) {
                 // nothing to show
             } message: {
-                Text(authManager.notificationMessage)
+                Text(self.authManager.notificationMessage)
             }
-            .alert("An error occurred", isPresented: $showErrorAlert) {
+            .alert("An error occurred", isPresented: self.$showErrorAlert) {
                 // nothing to show
             } message: {
-                Text(authManager.errorMessage)
+                Text(self.authManager.errorMessage)
             }
-            .onReceive(authManager.$showErrorAlert) { newValue in
-                showErrorAlert = newValue
+            .onReceive(self.authManager.$showErrorAlert) { newValue in
+                self.showErrorAlert = newValue
             }
         }
     }
 
     private var emailField: some View {
         VStack(alignment: .leading, spacing: 10) {
-            TextField("email", text: $credentials.mail)
+            TextField("email", text: self.$credentials.mail)
                 .textFieldStyle(.roundedBorder)
                 .keyboardType(.emailAddress)
-            if !credentials.mail.isEmpty
-                && !credentials.isEmailValid()
+            if !self.credentials.mail.isEmpty,
+               !self.credentials.isEmailValid()
             {
-                Text(credentials.invalidEmailAddressText)
+                Text(self.credentials.invalidEmailAddressText)
                     .font(.footnote)
                     .foregroundStyle(.red)
                     .padding(.horizontal, 10)
@@ -60,9 +59,9 @@ struct ForgotPasswordView: View {
     private var resetPasswordButton: some View {
         Button(
             action: {
-                authManager.sendPasswordReset(to: credentials.mail)
+                self.authManager.sendPasswordReset(to: self.credentials.mail)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                    dismiss()
+                    self.dismiss()
                 }
             },
             label: {
@@ -71,7 +70,7 @@ struct ForgotPasswordView: View {
             }
         )
         .buttonStyle(.borderedProminent)
-        .disabled(!credentials.isEmailValid())
+        .disabled(!self.credentials.isEmailValid())
     }
 }
 
