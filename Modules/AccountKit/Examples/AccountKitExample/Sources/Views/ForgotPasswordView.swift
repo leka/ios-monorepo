@@ -2,11 +2,12 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AccountKit
 import SwiftUI
 
 struct ForgotPasswordView: View {
     @EnvironmentObject var authManager: AuthManager
-    @State private var credentials = CompanyCredentialsViewModel()
+    @State private var credentials = CompanyCredentialsViewModel.shared
     @State private var showErrorAlert = false
     @Environment(\.dismiss) var dismiss
 

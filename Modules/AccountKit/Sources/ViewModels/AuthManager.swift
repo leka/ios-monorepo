@@ -6,41 +6,39 @@ import Combine
 import Firebase
 import FirebaseAuthCombineSwift
 import Foundation
+import LogKit
 
-class AuthManager: ObservableObject {
+let log = LogKit.createLoggerFor(module: "AccountKit")
+
+// MARK: - AuthManager
+
+public class AuthManager: ObservableObject {
     // MARK: Lifecycle
 
-    init() {
+    public init() {
         self.auth.addStateDidChangeListener { _, user in
             self.emailHasBeenConfirmed = user?.isEmailVerified ?? false
         }
         self.checkAuthenticationStatus()
     }
 
-    // MARK: Internal
+    // MARK: Public
 
-    enum FirebaseAuthenticationState {
+    public enum FirebaseAuthenticationState {
         case unknown
         case loggedOut
         case loggedIn
     }
 
-    enum FirebaseAuthenticationOperation: String {
-        case signIn = "signed in"
-        case signUp = "signed up"
-        case confirmEmail = "confirm email"
-        case resetPassword = "reset password"
-    }
+    @Published public var companyAuthenticationState: FirebaseAuthenticationState = .unknown
+    @Published public var errorMessage: String = ""
+    @Published public var showErrorAlert = false
+    @Published public var actionRequestMessage: String = ""
+    @Published public var showactionRequestAlert = false
+    @Published public var notificationMessage: String = ""
+    @Published public var showNotificationAlert = false
 
-    @Published private(set) var companyAuthenticationState: FirebaseAuthenticationState = .unknown
-    @Published var errorMessage: String = ""
-    @Published var showErrorAlert = false
-    @Published var actionRequestMessage: String = ""
-    @Published var showactionRequestAlert = false
-    @Published var notificationMessage: String = ""
-    @Published var showNotificationAlert = false
-
-    func checkAuthenticationStatus() {
+    public func checkAuthenticationStatus() {
         self.auth.publisher(for: \.currentUser)
             .map { [weak self] company in
                 self?.updateAuthState(for: company)
@@ -50,7 +48,7 @@ class AuthManager: ObservableObject {
             .assign(to: &self.$companyAuthenticationState)
     }
 
-    func signIn(email: String, password: String) {
+    public func signIn(email: String, password: String) {
         self.auth.signIn(withEmail: email, password: password)
             .mapError { $0 as Error }
             .sink(
@@ -62,7 +60,7 @@ class AuthManager: ObservableObject {
             .store(in: &self.cancellables)
     }
 
-    func signUp(email: String, password: String) {
+    public func signUp(email: String, password: String) {
         self.auth.createUser(withEmail: email, password: password)
             .mapError { $0 as Error }
             .sink(
@@ -74,7 +72,7 @@ class AuthManager: ObservableObject {
             .store(in: &self.cancellables)
     }
 
-    func sendPasswordReset(to email: String) {
+    public func sendPasswordReset(to email: String) {
         self.auth.sendPasswordReset(withEmail: email)
             .mapError { $0 as Error }
             .sink(
@@ -88,7 +86,7 @@ class AuthManager: ObservableObject {
             .store(in: &self.cancellables)
     }
 
-    func sendEmailVerification() {
+    public func sendEmailVerification() {
         self.auth.currentUser!.sendEmailVerification()
             .mapError { $0 as Error }
             .sink(
@@ -102,7 +100,7 @@ class AuthManager: ObservableObject {
             .store(in: &self.cancellables)
     }
 
-    func signOut() {
+    public func signOut() {
         do {
             try self.auth.signOut()
             self.companyAuthenticationState = .loggedOut
@@ -112,7 +110,7 @@ class AuthManager: ObservableObject {
         }
     }
 
-    func deleteAccount() {
+    public func deleteAccount() {
         guard let currentUser = auth.currentUser else {
             log.info("No company signed-in currently.")
             return
@@ -126,6 +124,15 @@ class AuthManager: ObservableObject {
                 log.info("Account deleted successfully.")
             }
         }
+    }
+
+    // MARK: Internal
+
+    enum FirebaseAuthenticationOperation: String {
+        case signIn = "signed in"
+        case signUp = "signed up"
+        case confirmEmail = "confirm email"
+        case resetPassword = "reset password"
     }
 
     // MARK: Private

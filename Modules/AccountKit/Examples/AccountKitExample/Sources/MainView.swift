@@ -2,6 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AccountKit
 import SwiftUI
 
 struct MainView: View {

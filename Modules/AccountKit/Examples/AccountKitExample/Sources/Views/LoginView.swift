@@ -2,6 +2,7 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AccountKit
 import AuthenticationServices
 import SwiftUI
 
@@ -42,7 +43,7 @@ struct LoginView: View {
 
     // MARK: Private
 
-    @State private var credentials = CompanyCredentialsViewModel()
+    @State private var credentials = CompanyCredentialsViewModel.shared
     @State private var showSheet: Bool = false
     @State private var showErrorAlert = false
 
