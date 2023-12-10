@@ -6,7 +6,6 @@ import DesignKit
 import SwiftUI
 
 extension HideAndSeekView {
-
     struct Launcher: View {
         @Binding var stage: HideAndSeekStage
         let textMainInstructions: String
@@ -14,22 +13,21 @@ extension HideAndSeekView {
 
         var body: some View {
             VStack {
-                Text(textMainInstructions)
+                Text(self.textMainInstructions)
                 GameEngineKitAsset.Exercises.HideAndSeek.imageIllustration.swiftUIImage
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 500, height: 500)
 
                 Button {
-                    stage = .hidden
+                    self.stage = .hidden
                 } label: {
-                    ButtonLabel(textButtonOk, color: .cyan)
+                    ButtonLabel(self.textButtonOk, color: .cyan)
                 }
             }
             .scaledToFill()
         }
     }
-
 }
 
 #Preview {

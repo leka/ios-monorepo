@@ -6,7 +6,6 @@ import DesignKit
 import SwiftUI
 
 struct SettingsSection_Credentials: View {
-
     @EnvironmentObject var company: CompanyViewModel
     @EnvironmentObject var metrics: UIMetrics
 
@@ -14,8 +13,8 @@ struct SettingsSection_Credentials: View {
         Section {
             Group {
                 LabeledContent {
-                    Text(company.currentCompany.mail)
-                        .font(metrics.reg14)
+                    Text(self.company.currentCompany.mail)
+                        .font(self.metrics.reg14)
                         .multilineTextAlignment(.leading)
                         .foregroundColor(DesignKitAsset.Colors.lekaDarkGray.swiftUIColor)
                 } label: {
@@ -30,7 +29,7 @@ struct SettingsSection_Credentials: View {
             .frame(maxHeight: 52)
         } header: {
             Text("Compte")
-                .font(metrics.reg15)
+                .font(self.metrics.reg15)
                 .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
                 .headerProminence(.increased)
                 .padding(.top, 20)

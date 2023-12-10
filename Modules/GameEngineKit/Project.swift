@@ -23,7 +23,7 @@ let project = Project.module(
                 "NSBluetoothAlwaysUsageDescription":
                     "The Leka Updater app needs to use Bluetooth to connect to the Leka robot.",
                 "UIBackgroundModes": [
-                    "bluetooth-central"
+                    "bluetooth-central",
                 ],
                 "UIRequiresFullScreen": "true",
                 "UISupportedInterfaceOrientations": [
@@ -36,5 +36,6 @@ let project = Project.module(
                 ],
                 "NSAccentColorName": "AccentColor",
             ]
-        )
-    ])
+        ),
+    ]
+)

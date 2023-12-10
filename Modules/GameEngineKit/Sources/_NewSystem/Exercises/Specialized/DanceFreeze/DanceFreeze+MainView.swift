@@ -7,6 +7,66 @@ import DesignKit
 import SwiftUI
 
 enum DanceFreeze {
+    // MARK: Public
+
+    public struct MainView: View {
+        // MARK: Lifecycle
+
+        public init(songs: [AudioRecording]) {
+            self.songs = songs
+            _viewModel = StateObject(wrappedValue: MainViewViewModel(songs: songs))
+        }
+
+        public init(exercise: Exercise, data: ExerciseSharedData? = nil) {
+            guard let payload = exercise.payload as? AudioRecordingPlayer.Payload else {
+                fatalError("Exercise payload is not .selection")
+            }
+
+            self.songs = payload.songs
+            _viewModel = StateObject(
+                wrappedValue: MainViewViewModel(
+                    songs: payload.songs, shared: data
+                ))
+        }
+
+        // MARK: Public
+
+        public var body: some View {
+            NavigationStack {
+                switch self.mode {
+                    case .waitingForSelection:
+                        LauncherView(viewModel: self.viewModel, mode: self.$mode, motion: self.$motion)
+                    case .automaticMode:
+                        PlayerView(viewModel: self.viewModel, isAuto: true, motion: self.motion)
+                            .onDisappear {
+                                self.viewModel.setAudioRecording(
+                                    audioRecording: AudioRecording(name: "", file: ""))
+                                self.viewModel.completeDanceFreeze()
+                            }
+                    case .manualMode:
+                        PlayerView(viewModel: self.viewModel, isAuto: false, motion: self.motion)
+                            .onDisappear {
+                                self.viewModel.setAudioRecording(
+                                    audioRecording: AudioRecording(name: "", file: ""))
+                                self.viewModel.completeDanceFreeze()
+                            }
+                }
+            }
+            .navigationViewStyle(StackNavigationViewStyle())
+        }
+
+        // MARK: Internal
+
+        let songs: [AudioRecording]
+
+        // MARK: Private
+
+        @State private var mode = Stage.waitingForSelection
+        @State private var motion: Motion = .rotation
+        @StateObject private var viewModel: MainViewViewModel
+    }
+
+    // MARK: Internal
 
     enum Stage {
         case waitingForSelection
@@ -17,53 +77,6 @@ enum DanceFreeze {
     enum Motion {
         case rotation
         case movement
-    }
-
-    public struct MainView: View {
-        @State private var mode = Stage.waitingForSelection
-        @State private var motion: Motion = .rotation
-        @StateObject private var viewModel: MainViewViewModel
-        let songs: [AudioRecording]
-
-        public init(songs: [AudioRecording]) {
-            self.songs = songs
-            self._viewModel = StateObject(wrappedValue: MainViewViewModel(songs: songs))
-        }
-
-        public init(exercise: Exercise, data: ExerciseSharedData? = nil) {
-            guard let payload = exercise.payload as? AudioRecordingPlayer.Payload else {
-                fatalError("Exercise payload is not .selection")
-            }
-
-            self.songs = payload.songs
-            self._viewModel = StateObject(
-                wrappedValue: MainViewViewModel(
-                    songs: payload.songs, shared: data))
-        }
-
-        public var body: some View {
-            NavigationStack {
-                switch mode {
-                    case .waitingForSelection:
-                        LauncherView(viewModel: viewModel, mode: $mode, motion: $motion)
-                    case .automaticMode:
-                        PlayerView(viewModel: viewModel, isAuto: true, motion: motion)
-                            .onDisappear {
-                                viewModel.setAudioRecording(
-                                    audioRecording: AudioRecording(name: "", file: ""))
-                                viewModel.completeDanceFreeze()
-                            }
-                    case .manualMode:
-                        PlayerView(viewModel: viewModel, isAuto: false, motion: motion)
-                            .onDisappear {
-                                viewModel.setAudioRecording(
-                                    audioRecording: AudioRecording(name: "", file: ""))
-                                viewModel.completeDanceFreeze()
-                            }
-                }
-            }
-            .navigationViewStyle(StackNavigationViewStyle())
-        }
     }
 }
 

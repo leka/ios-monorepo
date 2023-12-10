@@ -5,9 +5,7 @@
 import SwiftUI
 
 extension DesignSystemApple {
-
     struct ButtonsView: View {
-
         let colors: [Color] = [
             .primary,
             .secondary,
@@ -45,7 +43,7 @@ extension DesignSystemApple {
                             .buttonStyle(.robotControlBorderedButtonStyle())
                     }
 
-                    ForEach(colors, id: \.self) { color in
+                    ForEach(self.colors, id: \.self) { color in
                         VStack(alignment: .leading) {
                             Button("automatic tint \(color.description)") {}
                                 .buttonStyle(.automatic)
@@ -71,9 +69,7 @@ extension DesignSystemApple {
             }
             .navigationTitle("Apple Buttons")
         }
-
     }
-
 }
 
 #Preview {

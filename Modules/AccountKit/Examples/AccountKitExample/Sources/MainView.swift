@@ -5,31 +5,34 @@
 import SwiftUI
 
 struct MainView: View {
+    // MARK: Internal
 
     @EnvironmentObject var authenticationState: OrganisationAuthState
 
     var body: some View {
         Group {
-            switch authenticationState.organisationIsAuthenticated {
+            switch self.authenticationState.organisationIsAuthenticated {
                 case .unknown:
                     Text("Loading...")
                 case .loggedIn:
                     HomeView()
                         .transition(.opacity)
                 case .loggedOut:
-                    navigation
+                    self.navigation
                         .transition(.opacity)
             }
         }
         .animation(
             .easeOut(duration: 0.4),
-            value: authenticationState.organisationIsAuthenticated
+            value: self.authenticationState.organisationIsAuthenticated
         )
         .preferredColorScheme(.light)
         .onAppear(perform: {
-            authenticationState.organisationIsAuthenticated = .loggedOut
+            self.authenticationState.organisationIsAuthenticated = .loggedOut
         })
     }
+
+    // MARK: Private
 
     private var navigation: some View {
         NavigationStack {

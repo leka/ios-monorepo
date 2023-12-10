@@ -8,6 +8,8 @@ import SwiftUI
 
 var globalFirmwareManager = FirmwareManager()
 
+// MARK: - LekaUpdaterApp
+
 @main
 struct LekaUpdaterApp: App {
     var body: some Scene {

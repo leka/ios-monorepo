@@ -5,15 +5,9 @@
 import SwiftUI
 
 struct JobPickerStore: View {
+    // MARK: Internal
 
     @Binding var selectedJobs: [String]
-    private func jobSelection(profession: String) {
-        if selectedJobs.contains(profession) {
-            selectedJobs.removeAll(where: { profession == $0 })
-        } else {
-            selectedJobs.append(profession)
-        }
-    }
 
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -21,17 +15,27 @@ struct JobPickerStore: View {
                 let columns = Array(repeating: GridItem(), count: 3)
                 LazyVGrid(columns: columns, spacing: 40) {
                     ForEach(Professions.allCases) { profession in
-                        Toggle(isOn: .constant(selectedJobs.contains(profession.name))) {
+                        Toggle(isOn: .constant(self.selectedJobs.contains(profession.name))) {
                             Text(profession.name)
                         }
                         .toggleStyle(
                             JobPickerToggleStyle(action: {
-                                jobSelection(profession: profession.name)
+                                self.jobSelection(profession: profession.name)
                             }))
                     }
                 }
                 .padding(.vertical, 30)
             }
+        }
+    }
+
+    // MARK: Private
+
+    private func jobSelection(profession: String) {
+        if self.selectedJobs.contains(profession) {
+            self.selectedJobs.removeAll(where: { profession == $0 })
+        } else {
+            self.selectedJobs.append(profession)
         }
     }
 }

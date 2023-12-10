@@ -5,9 +5,7 @@
 import SpriteKit
 
 extension DragAndDropIntoZonesView {
-
     final class OneZoneScene: DragAndDropIntoZonesView.BaseScene {
-
         override func layoutDropZones() {
             // TODO(@hugo): Add type declaration
             let dropZoneNode = SKSpriteNode()
@@ -22,7 +20,5 @@ extension DragAndDropIntoZonesView {
 
             dropZoneA.node = dropZoneNode
         }
-
     }
-
 }

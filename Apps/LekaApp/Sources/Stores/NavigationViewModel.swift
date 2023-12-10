@@ -6,13 +6,6 @@ import Foundation
 import SwiftUI
 
 class NavigationViewModel: ObservableObject {
-
-    // sidebar utils
-    @Published var sidebarVisibility = NavigationSplitViewVisibility.all
-    @Published var showSettings: Bool = false
-    @Published var showProfileEditor: Bool = false
-    @Published var showRobotPicker: Bool = false
-
     // Educative Content section data
     static let educContentSectionLabels: [SectionLabel] = [
         SectionLabel(
@@ -31,6 +24,13 @@ class NavigationViewModel: ObservableObject {
             label: "Commandes"
         ),
     ]
+
+    // sidebar utils
+    @Published var sidebarVisibility = NavigationSplitViewVisibility.all
+    @Published var showSettings: Bool = false
+    @Published var showProfileEditor: Bool = false
+    @Published var showRobotPicker: Bool = false
+
     @Published var educContentList = ListModel(
         title: "Contenu Éducatif",
         sections: educContentSectionLabels
@@ -38,23 +38,6 @@ class NavigationViewModel: ObservableObject {
 
     // Overall Navigation from the sidebar
     @Published var currentView: SidebarDestinations = .curriculums
-    // Returned Views & NavigationTitles
-    @ViewBuilder var allSidebarDestinationViews: some View {
-        switch currentView {
-            case .curriculums: CurriculumListView()
-            case .activities: ActivityListView()
-            case .commands: CommandListView()
-        }
-    }
-
-    func setNavTitle() -> String {
-        switch currentView {
-            case .curriculums: return "Parcours"
-            case .activities: return "Activités"
-            case .commands: return "Commandes"
-        }
-    }
-
     // Navigation within FullScreenCover to GameView()
     @Published var pathsFromHome = NavigationPath()
     @Published var showActivitiesFullScreenCover: Bool = false
@@ -65,28 +48,44 @@ class NavigationViewModel: ObservableObject {
     @Published var showInfoActivities: Bool = true
     @Published var showInfoCommands: Bool = true
 
+    // Returned Views & NavigationTitles
+    @ViewBuilder var allSidebarDestinationViews: some View {
+        switch self.currentView {
+            case .curriculums: CurriculumListView()
+            case .activities: ActivityListView()
+            case .commands: CommandListView()
+        }
+    }
+
+    func setNavTitle() -> String {
+        switch self.currentView {
+            case .curriculums: "Parcours"
+            case .activities: "Activités"
+            case .commands: "Commandes"
+        }
+    }
+
     func contextualInfo() -> TileData {
-        switch currentView {
-            case .curriculums: return .curriculums
-            case .activities: return .activities
-            case .commands: return .commands
+        switch self.currentView {
+            case .curriculums: .curriculums
+            case .activities: .activities
+            case .commands: .commands
         }
     }
 
     func showInfo() -> Bool {
-        switch currentView {
-            case .curriculums: return showInfoCurriculums
-            case .activities: return showInfoActivities
-            case .commands: return showInfoCommands
+        switch self.currentView {
+            case .curriculums: self.showInfoCurriculums
+            case .activities: self.showInfoActivities
+            case .commands: self.showInfoCommands
         }
     }
 
     func updateShowInfo() {
-        switch currentView {
-            case .curriculums: showInfoCurriculums.toggle()
-            case .activities: showInfoActivities.toggle()
-            case .commands: showInfoCommands.toggle()
+        switch self.currentView {
+            case .curriculums: self.showInfoCurriculums.toggle()
+            case .activities: self.showInfoActivities.toggle()
+            case .commands: self.showInfoCommands.toggle()
         }
     }
-
 }

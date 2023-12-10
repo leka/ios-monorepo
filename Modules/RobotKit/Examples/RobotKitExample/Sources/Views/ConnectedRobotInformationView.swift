@@ -7,8 +7,7 @@ import RobotKit
 import SwiftUI
 
 struct ConnectedRobotInformationView: View {
-
-    @StateObject var viewModel: ConnectedRobotInformationViewModel = ConnectedRobotInformationViewModel()
+    @StateObject var viewModel: ConnectedRobotInformationViewModel = .init()
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
@@ -19,28 +18,27 @@ struct ConnectedRobotInformationView: View {
             Grid(alignment: .leading, horizontalSpacing: 100) {
                 GridRow {
                     Text("Name:")
-                    Text(viewModel.name)
+                    Text(self.viewModel.name)
                 }
                 GridRow {
                     Text("S/N:")
-                    Text(viewModel.serialNumber)
+                    Text(self.viewModel.serialNumber)
                 }
                 GridRow {
                     Text("LekaOS:")
-                    Text(viewModel.osVersion)
+                    Text(self.viewModel.osVersion)
                 }
                 GridRow {
                     Text("Battery:")
-                    Text("\(viewModel.battery)%")
+                    Text("\(self.viewModel.battery)%")
                 }
                 GridRow {
                     Text("Charging:")
-                    Text(viewModel.isCharging ? "yes" : "no")
+                    Text(self.viewModel.isCharging ? "yes" : "no")
                 }
             }
         }
     }
-
 }
 
 #Preview {

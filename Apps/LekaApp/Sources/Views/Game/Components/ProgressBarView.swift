@@ -5,10 +5,28 @@
 import DesignKit
 import SwiftUI
 
-struct ProgressBarView: View {
+// MARK: - ProgressBarView
 
+struct ProgressBarView: View {
     @EnvironmentObject var activityVM: ActivityViewModel
     @ObservedObject var gameMetrics: GameMetrics
+
+    var body: some View {
+        Capsule()
+            .fill(DesignKitAsset.Colors.progressBar.swiftUIColor)
+            .frame(maxHeight: self.gameMetrics.progressViewHeight)
+            .frame(maxWidth: 760) // this will change
+            .overlay(
+                HStack(spacing: 0) {
+                    ForEach(self.activityVM.steps.indices, id: \.self) { index in
+                        self.stepMarker(self.activityVM.markerColors[index])
+                        if index < self.activityVM.markerColors.count - 1 {
+                            Spacer()
+                        }
+                    }
+                }
+            )
+    }
 
     @ViewBuilder
     func stepMarker(_ color: Color) -> some View {
@@ -16,29 +34,14 @@ struct ProgressBarView: View {
             .fill(
                 color,
                 strokeBorder: .white,
-                lineWidth: gameMetrics.stepMarkerBorderWidth
+                lineWidth: self.gameMetrics.stepMarkerBorderWidth
             )
             .background(Circle().fill(.white))
-            .padding(gameMetrics.stepMarkerPadding)
-    }
-
-    var body: some View {
-        Capsule()
-            .fill(DesignKitAsset.Colors.progressBar.swiftUIColor)
-            .frame(maxHeight: gameMetrics.progressViewHeight)
-            .frame(maxWidth: 760)  // this will change
-            .overlay(
-                HStack(spacing: 0) {
-                    ForEach(activityVM.steps.indices, id: \.self) { index in
-                        stepMarker(activityVM.markerColors[index])
-                        if index < activityVM.markerColors.count - 1 {
-                            Spacer()
-                        }
-                    }
-                }
-            )
+            .padding(self.gameMetrics.stepMarkerPadding)
     }
 }
+
+// MARK: - ProgressBarView_Previews
 
 struct ProgressBarView_Previews: PreviewProvider {
     static var previews: some View {

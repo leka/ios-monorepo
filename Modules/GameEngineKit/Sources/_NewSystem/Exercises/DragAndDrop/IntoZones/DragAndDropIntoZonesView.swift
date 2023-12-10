@@ -8,11 +8,8 @@ import SpriteKit
 import SwiftUI
 
 public struct DragAndDropIntoZonesView: View {
+    // MARK: Lifecycle
 
-    @StateObject private var viewModel: ViewModel
-    @State private var scene: SKScene = SKScene()
-    let dropZoneA: DragAndDropIntoZones.DropZone.Details
-    let dropZoneB: DragAndDropIntoZones.DropZone.Details?
     // TODO(@HPezz): Add hints variable
     // let hints: Bool
 
@@ -20,7 +17,7 @@ public struct DragAndDropIntoZonesView: View {
         choices: [DragAndDropIntoZones.Choice], dropZoneA: DragAndDropIntoZones.DropZone.Details,
         dropZoneB: DragAndDropIntoZones.DropZone.Details? = nil
     ) {
-        self._viewModel = StateObject(wrappedValue: ViewModel(choices: choices))
+        _viewModel = StateObject(wrappedValue: ViewModel(choices: choices))
         self.dropZoneA = dropZoneA
         self.dropZoneB = dropZoneB
     }
@@ -31,41 +28,53 @@ public struct DragAndDropIntoZonesView: View {
             fatalError("💥 Exercise payload is not .dragAndDrop")
         }
 
-        self._viewModel = StateObject(
+        _viewModel = StateObject(
             wrappedValue: ViewModel(choices: payload.choices, shared: data))
 
         self.dropZoneA = payload.dropZoneA
         self.dropZoneB = payload.dropZoneB
     }
 
+    // MARK: Public
+
     public var body: some View {
         GeometryReader { proxy in
             SpriteView(
-                scene: makeScene(size: proxy.size),
+                scene: self.makeScene(size: proxy.size),
                 options: [.allowsTransparency]
             )
             .frame(width: proxy.size.width, height: proxy.size.height)
             .onAppear {
-                if let dropZoneB = dropZoneB {
-                    scene = DragAndDropIntoZonesView.TwoZonesScene(
-                        viewModel: viewModel, hints: false, dropZoneA: dropZoneA, dropZoneB: dropZoneB)
+                if let dropZoneB {
+                    self.scene = DragAndDropIntoZonesView.TwoZonesScene(
+                        viewModel: self.viewModel, hints: false, dropZoneA: self.dropZoneA, dropZoneB: dropZoneB
+                    )
                 } else {
-                    scene = DragAndDropIntoZonesView.OneZoneScene(
-                        viewModel: viewModel, hints: true, dropZoneA: dropZoneA)
+                    self.scene = DragAndDropIntoZonesView.OneZoneScene(
+                        viewModel: self.viewModel, hints: true, dropZoneA: self.dropZoneA
+                    )
                 }
-
             }
         }
         .edgesIgnoringSafeArea(.horizontal)
     }
+
+    // MARK: Internal
+
+    let dropZoneA: DragAndDropIntoZones.DropZone.Details
+    let dropZoneB: DragAndDropIntoZones.DropZone.Details?
+
+    // MARK: Private
+
+    @StateObject private var viewModel: ViewModel
+    @State private var scene: SKScene = .init()
 
     private func makeScene(size: CGSize) -> SKScene {
         guard let finalScene = scene as? DragAndDropIntoZonesView.BaseScene else {
             return SKScene()
         }
         finalScene.size = CGSize(width: size.width, height: size.height)
-        finalScene.viewModel = viewModel
+        finalScene.viewModel = self.viewModel
         return finalScene
     }
-
 }

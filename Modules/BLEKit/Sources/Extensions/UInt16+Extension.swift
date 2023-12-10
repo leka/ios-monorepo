@@ -4,18 +4,16 @@
 
 import Foundation
 
-extension UInt16 {
-
-    public var highByte: UInt8 {
+public extension UInt16 {
+    var highByte: UInt8 {
         UInt8(self >> 8)
     }
 
-    public var lowByte: UInt8 {
-        UInt8(self & 0xff)
+    var lowByte: UInt8 {
+        UInt8(self & 0xFF)
     }
 
-    public var data: Data {
+    var data: Data {
         Data([self.highByte, self.lowByte])
     }
-
 }

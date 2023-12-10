@@ -7,8 +7,8 @@ import ContentKit
 import Foundation
 
 class GameplayFindTheRightAnswers<ChoiceModelType>: StatefulGameplayProtocol
-where ChoiceModelType: GameplayChoiceModelProtocol {
-
+    where ChoiceModelType: GameplayChoiceModelProtocol
+{
     var choices: CurrentValueSubject<[ChoiceModelType], Never> = .init([])
     var rightAnswers: [ChoiceModelType] = []
     var state: CurrentValueSubject<ExerciseState, Never> = .init(.idle)
@@ -17,7 +17,6 @@ where ChoiceModelType: GameplayChoiceModelProtocol {
         guard let index = choices.value.firstIndex(where: { $0.id == choice.id }) else {
             return
         }
-        choices.value[index].state = state
+        self.choices.value[index].state = state
     }
-
 }

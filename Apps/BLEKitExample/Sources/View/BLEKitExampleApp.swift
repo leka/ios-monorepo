@@ -5,21 +5,25 @@
 import BLEKit
 import SwiftUI
 
+// MARK: - BLEKitExampleApp
+
 @main
 struct BLEKitExampleApp: App {
-    @StateObject var bleManager: BLEManager = BLEManager.live()
-    @StateObject var robot: Robot = Robot()
-    @StateObject var botVM: BotViewModel = BotViewModel()
+    @StateObject var bleManager: BLEManager = .live()
+    @StateObject var robot: Robot = .init()
+    @StateObject var botVM: BotViewModel = .init()
 
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environmentObject(bleManager)
-                .environmentObject(robot)
-                .environmentObject(botVM)
+                .environmentObject(self.bleManager)
+                .environmentObject(self.robot)
+                .environmentObject(self.botVM)
         }
     }
 }
+
+// MARK: - ContentView
 
 struct ContentView: View {
     @EnvironmentObject var bleManager: BLEManager
@@ -27,7 +31,7 @@ struct ContentView: View {
 
     var body: some View {
         NavigationView {
-            if bleManager.connectedPeripheral != nil {
+            if self.bleManager.connectedPeripheral != nil {
                 RobotView()
                     .navigationTitle("BLEKitExampleApp")
             } else {
@@ -36,6 +40,5 @@ struct ContentView: View {
             }
         }
         .navigationViewStyle(StackNavigationViewStyle())
-
     }
 }

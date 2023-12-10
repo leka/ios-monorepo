@@ -7,6 +7,8 @@ import LocalizationKit
 import RobotKit
 import SwiftUI
 
+// MARK: - RobotUpdateAvailableView
+
 struct RobotUpdateAvailableView: View {
     @StateObject private var requirementsViewModel = RequirementsViewModel()
 
@@ -19,7 +21,7 @@ struct RobotUpdateAvailableView: View {
                 .padding([.bottom])
 
             Button {
-                isUpdateStatusViewPresented = true
+                self.isUpdateStatusViewPresented = true
             } label: {
                 Text(l10n.information.startUpdateButton)
                     .foregroundColor(.white)
@@ -31,15 +33,17 @@ struct RobotUpdateAvailableView: View {
                     .frame(maxWidth: .infinity)
             }
             .buttonStyle(.plain)
-            .disabled(requirementsViewModel.robotIsNotReadyToUpdate)
+            .disabled(self.requirementsViewModel.robotIsNotReadyToUpdate)
 
-            if !requirementsViewModel.robotIsReadyToUpdate {
-                RequirementsView(viewModel: requirementsViewModel)
+            if !self.requirementsViewModel.robotIsReadyToUpdate {
+                RequirementsView(viewModel: self.requirementsViewModel)
             }
         }
         .padding()
     }
 }
+
+// MARK: - RobotUpdateAvailableView_Previews
 
 struct RobotUpdateAvailableView_Previews: PreviewProvider {
     @State static var isUpdateStatusViewPresented = false

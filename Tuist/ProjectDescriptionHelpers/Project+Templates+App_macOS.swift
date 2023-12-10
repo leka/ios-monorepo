@@ -4,11 +4,10 @@
 
 import ProjectDescription
 
-extension Project {
-
-    public static func macOSApp(
+public extension Project {
+    static func macOSApp(
         name: String,
-        version: String = "1.0.0",
+        version _: String = "1.0.0",
         dependencies: [TargetDependency]
     ) -> Project {
         let mainTarget = Target(
@@ -33,15 +32,16 @@ extension Project {
             resources: [],
             scripts: TargetScript.linters(),
             dependencies: [
-                .target(name: "\(name)")
-            ])
+                .target(name: "\(name)"),
+            ]
+        )
 
         let targets = [mainTarget, testTarget]
 
         return Project(
             name: name,
             organizationName: "leka.io",
-            targets: targets)
+            targets: targets
+        )
     }
-
 }

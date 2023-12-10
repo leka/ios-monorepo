@@ -7,14 +7,8 @@ import ContentKit
 import SwiftUI
 
 extension DragAndDropIntoZonesView {
-
     class ViewModel: ObservableObject {
-
-        @Published var choices: [GameplayDragAndDropIntoZonesChoiceModel] = []
-        @ObservedObject var exercicesSharedData: ExerciseSharedData
-
-        private let gameplay: GameplayFindTheRightAnswers<GameplayDragAndDropIntoZonesChoiceModel>
-        private var cancellables: Set<AnyCancellable> = []
+        // MARK: Lifecycle
 
         init(choices: [DragAndDropIntoZones.Choice], shared: ExerciseSharedData? = nil) {
             let gameplayChoiceModel = choices.map { GameplayDragAndDropIntoZonesChoiceModel(choice: $0) }
@@ -23,34 +17,44 @@ extension DragAndDropIntoZonesView {
                 choices: gameplayChoiceModel)
             self.exercicesSharedData = shared ?? ExerciseSharedData()
 
-            subscribeToGameplayDragAndDropChoicesUpdates()
-            subscribeToGameplayStateUpdates()
+            self.subscribeToGameplayDragAndDropChoicesUpdates()
+            self.subscribeToGameplayStateUpdates()
         }
+
+        // MARK: Public
 
         public func onChoiceTapped(
             choice: GameplayDragAndDropIntoZonesChoiceModel, dropZone: DragAndDropIntoZones.DropZone
         ) {
-            gameplay.process(choice, dropZone)
+            self.gameplay.process(choice, dropZone)
         }
 
+        // MARK: Internal
+
+        @Published var choices: [GameplayDragAndDropIntoZonesChoiceModel] = []
+        @ObservedObject var exercicesSharedData: ExerciseSharedData
+
+        // MARK: Private
+
+        private let gameplay: GameplayFindTheRightAnswers<GameplayDragAndDropIntoZonesChoiceModel>
+        private var cancellables: Set<AnyCancellable> = []
+
         private func subscribeToGameplayDragAndDropChoicesUpdates() {
-            gameplay.choices
+            self.gameplay.choices
                 .receive(on: DispatchQueue.main)
                 .sink {
                     self.choices = $0
                 }
-                .store(in: &cancellables)
+                .store(in: &self.cancellables)
         }
 
         private func subscribeToGameplayStateUpdates() {
-            gameplay.state
+            self.gameplay.state
                 .receive(on: DispatchQueue.main)
                 .sink {
                     self.exercicesSharedData.state = $0
                 }
-                .store(in: &cancellables)
+                .store(in: &self.cancellables)
         }
-
     }
-
 }

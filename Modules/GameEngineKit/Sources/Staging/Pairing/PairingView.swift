@@ -5,21 +5,27 @@
 import DesignKit
 import SwiftUI
 
+// MARK: - Action
+
 private enum Action {
-    case play, pause, stop
+    case play
+    case pause
+    case stop
+
+    // MARK: Public
 
     public func icon(_ stopButtonDisabled: Bool) -> some View {
         switch self {
             case .play:
-                return Image(systemName: "play.circle.fill")
+                Image(systemName: "play.circle.fill")
                     .foregroundStyle(DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor)
                     .font(.system(size: 150))
             case .pause:
-                return Image(systemName: "pause.circle.fill")
+                Image(systemName: "pause.circle.fill")
                     .foregroundStyle(DesignKitAsset.Colors.btnDarkBlue.swiftUIColor)
                     .font(.system(size: 150))
             case .stop:
-                return Image(systemName: "stop.circle.fill")
+                Image(systemName: "stop.circle.fill")
                     .foregroundStyle(
                         stopButtonDisabled
                             ? DesignKitAsset.Colors.lekaDarkGray.swiftUIColor
@@ -32,26 +38,28 @@ private enum Action {
     public func text() -> String {
         switch self {
             case .play:
-                return "Play"
+                "Play"
             case .pause:
-                return "Pause"
+                "Pause"
             case .stop:
-                return "Stop"
+                "Stop"
         }
     }
 }
 
+// MARK: - PairingView
+
 public struct PairingView: View {
-    @State private var stopButtonDisabled: Bool = true
-    @State private var playButtonVisible: Bool = true
+    // MARK: Lifecycle
 
     public init() {
         // Nothing to do
     }
 
+    // MARK: Public
+
     public var body: some View {
         VStack {
-
             Text(
                 """
                 Le mode Pairing permet à la personne accompagnée de se familiariser à Leka
@@ -67,17 +75,22 @@ public struct PairingView: View {
             .padding(.vertical, 50)
 
             HStack(spacing: 180) {
-                if playButtonVisible {
-                    actionButton(.play)
+                if self.playButtonVisible {
+                    self.actionButton(.play)
                 } else {
-                    actionButton(.pause)
+                    self.actionButton(.pause)
                 }
 
-                actionButton(.stop)
-                    .disabled(stopButtonDisabled)
+                self.actionButton(.stop)
+                    .disabled(self.stopButtonDisabled)
             }
         }
     }
+
+    // MARK: Private
+
+    @State private var stopButtonDisabled: Bool = true
+    @State private var playButtonVisible: Bool = true
 
     private func actionButton(_ action: Action) -> some View {
         VStack {
@@ -86,20 +99,20 @@ public struct PairingView: View {
                     case .play:
                         // TODO(@ladislas): Play pairing behavior
                         print("Pairing behavior is running")
-                        stopButtonDisabled = false
-                        playButtonVisible.toggle()
+                        self.stopButtonDisabled = false
+                        self.playButtonVisible.toggle()
                     case .pause:
                         // TODO(@ladislas): Pause pairing behavior
                         print("Pairing behavior is pausing")
-                        playButtonVisible.toggle()
+                        self.playButtonVisible.toggle()
                     case .stop:
                         // TODO(@ladislas): Stop pairing behavior and restart pairing behavior
                         print("Pairing behavior stopped")
-                        playButtonVisible = true
-                        stopButtonDisabled = true
+                        self.playButtonVisible = true
+                        self.stopButtonDisabled = true
                 }
             } label: {
-                action.icon(stopButtonDisabled)
+                action.icon(self.stopButtonDisabled)
             }
 
             .background(
@@ -112,7 +125,6 @@ public struct PairingView: View {
                 .font(.title2)
                 .foregroundColor(DesignKitAsset.Colors.lekaDarkGray.swiftUIColor)
                 .padding(.vertical, 10)
-
         }
     }
 }

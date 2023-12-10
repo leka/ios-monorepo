@@ -8,31 +8,24 @@ import DesignKit
 import SwiftUI
 
 public struct RobotConnectionView: View {
-
-    @StateObject var viewModel: RobotConnectionViewModel
-
-    @Environment(\.dismiss) var dismiss
+    // MARK: Lifecycle
 
     public init(viewModel: RobotConnectionViewModel = RobotConnectionViewModel()) {
-        self._viewModel = StateObject(wrappedValue: viewModel)
+        _viewModel = StateObject(wrappedValue: viewModel)
     }
 
-    private let columns: [GridItem] = [
-        GridItem(),
-        GridItem(),
-        GridItem(),
-    ]
+    // MARK: Public
 
     public var body: some View {
         NavigationStack {
             VStack(spacing: 10) {
-                switch viewModel.robotDiscoveries.count {
+                switch self.viewModel.robotDiscoveries.count {
                     case 0:
                         Spacer()
-                        searchingView
+                        self.searchingView
                         Spacer()
                     default:
-                        robotDiscoveryGridView
+                        self.robotDiscoveryGridView
                 }
 
                 Divider()
@@ -40,28 +33,28 @@ public struct RobotConnectionView: View {
                     .padding(.horizontal)
 
                 HStack {
-                    if !viewModel.connected {
-                        connectButton
+                    if !self.viewModel.connected {
+                        self.connectButton
                     } else {
-                        disconnectButton
+                        self.disconnectButton
                     }
-                    continueButton
+                    self.continueButton
                 }
                 .padding(.top, 15)
                 .padding(.bottom, 40)
             }
             .background(BackgroundView())
             .onAppear {
-                viewModel.scanForRobots()
+                self.viewModel.scanForRobots()
             }
             .onDisappear {
-                viewModel.stopScanning()
+                self.viewModel.stopScanning()
             }
             .navigationTitle("Choose a robot")
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
-                        dismiss()
+                        self.dismiss()
                     } label: {
                         Text("Dismiss")
                     }
@@ -69,6 +62,29 @@ public struct RobotConnectionView: View {
             }
         }
     }
+
+    // MARK: Internal
+
+    struct BackgroundView: View {
+        var body: some View {
+            DesignKitAsset.Images.interfaceCloud.swiftUIImage
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .ignoresSafeArea(.all)
+        }
+    }
+
+    @StateObject var viewModel: RobotConnectionViewModel
+
+    @Environment(\.dismiss) var dismiss
+
+    // MARK: Private
+
+    private let columns: [GridItem] = [
+        GridItem(),
+        GridItem(),
+        GridItem(),
+    ]
 
     private var searchingView: some View {
         // TODO(@ladislas): review "no robot found" interface
@@ -81,37 +97,17 @@ public struct RobotConnectionView: View {
 
     private var robotDiscoveryGridView: some View {
         ScrollView(.vertical, showsIndicators: true) {
-            LazyVGrid(columns: columns, spacing: 40) {
-                ForEach(viewModel.robotDiscoveries) { discovery in
-                    robotDiscoveryCellView(for: discovery)
+            LazyVGrid(columns: self.columns, spacing: 40) {
+                ForEach(self.viewModel.robotDiscoveries) { discovery in
+                    self.robotDiscoveryCellView(for: discovery)
                         .contentShape(Rectangle())
                         .onTapGesture {
                             withAnimation {
-                                viewModel.select(discovery: discovery)
+                                self.viewModel.select(discovery: discovery)
                             }
                         }
                 }
             }
-        }
-    }
-
-    @ViewBuilder
-    private func robotDiscoveryCellView(for discovery: RobotDiscoveryModel) -> some View {
-        if discovery == viewModel.connectedDiscovery {
-            RobotDiscoveryView(
-                discovery: RobotDiscoveryViewModel(
-                    discovery: discovery, status: .connected)
-            )
-        } else if discovery == viewModel.selectedDiscovery {
-            RobotDiscoveryView(
-                discovery: RobotDiscoveryViewModel(
-                    discovery: discovery, status: .selected)
-            )
-        } else {
-            RobotDiscoveryView(
-                discovery: RobotDiscoveryViewModel(
-                    discovery: discovery, status: .unselected)
-            )
         }
     }
 
@@ -136,10 +132,10 @@ public struct RobotConnectionView: View {
             .frame(minWidth: 200)
         } action: {
             withAnimation {
-                viewModel.connectToRobot()
+                self.viewModel.connectToRobot()
             }
         }
-        .disabled(viewModel.selectedDiscovery == nil)
+        .disabled(self.viewModel.selectedDiscovery == nil)
     }
 
     private var disconnectButton: some View {
@@ -152,14 +148,14 @@ public struct RobotConnectionView: View {
         } action: {
             let animation = Animation.easeOut(duration: 0.5)
             withAnimation(animation) {
-                viewModel.disconnectFromRobot()
+                self.viewModel.disconnectFromRobot()
             }
         }
     }
 
     @ViewBuilder
     private var continueButton: some View {
-        if viewModel.connected {
+        if self.viewModel.connected {
             ButtonFilled(tint: .green) {
                 HStack {
                     Image(systemName: "arrow.right.circle")
@@ -167,7 +163,7 @@ public struct RobotConnectionView: View {
                 }
                 .frame(minWidth: 200)
             } action: {
-                dismiss()
+                self.dismiss()
             }
             .disabled(false)
         } else {
@@ -184,12 +180,26 @@ public struct RobotConnectionView: View {
         }
     }
 
-    struct BackgroundView: View {
-        var body: some View {
-            DesignKitAsset.Images.interfaceCloud.swiftUIImage
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .ignoresSafeArea(.all)
+    @ViewBuilder
+    private func robotDiscoveryCellView(for discovery: RobotDiscoveryModel) -> some View {
+        if discovery == self.viewModel.connectedDiscovery {
+            RobotDiscoveryView(
+                discovery: RobotDiscoveryViewModel(
+                    discovery: discovery, status: .connected
+                )
+            )
+        } else if discovery == self.viewModel.selectedDiscovery {
+            RobotDiscoveryView(
+                discovery: RobotDiscoveryViewModel(
+                    discovery: discovery, status: .selected
+                )
+            )
+        } else {
+            RobotDiscoveryView(
+                discovery: RobotDiscoveryViewModel(
+                    discovery: discovery, status: .unselected
+                )
+            )
         }
     }
 }

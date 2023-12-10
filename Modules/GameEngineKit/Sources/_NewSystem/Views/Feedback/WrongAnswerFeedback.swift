@@ -10,6 +10,6 @@ public struct WrongAnswerFeedback: View {
     public var body: some View {
         Circle()
             .fill(.gray)
-            .opacity(overlayOpacity)
+            .opacity(self.overlayOpacity)
     }
 }

@@ -6,6 +6,7 @@ import ProjectDescription
 
 var projects: [Path] {
     // MARK: - iOS Apps
+
     let iOSApps: [Path] = [
         "Apps/LekaApp",
         "Apps/LekaUpdater",
@@ -13,11 +14,13 @@ var projects: [Path] {
     ]
 
     // MARK: - macOS Apps
+
     let macOSApps: [Path] = [
         // no apps yet
     ]
 
     // MARK: - Modules
+
     let modules: [Path] = [
         "Modules/AccountKit",
         "Modules/BLEKit",
@@ -30,12 +33,14 @@ var projects: [Path] {
     ]
 
     // MARK: - iOS Examples
+
     let iOSExamples: [Path] = [
         "Examples/iOSApp",
         "Examples/Module",
     ]
 
     // MARK: - macOS Examples
+
     let macOSExamples: [Path] = [
         "Examples/macOSApp",
         "Examples/macOSCli",

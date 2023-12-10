@@ -7,19 +7,35 @@ import SwiftUI
 
 // swiftlint:disable nesting
 extension HideAndSeekView {
-
     struct Player: View {
+        // MARK: Lifecycle
+
+        init(
+            stage: Binding<HideAndSeekStage>, textSubInstructions: String, textButtonRobotFound: String,
+            shared: ExerciseSharedData? = nil
+        ) {
+            _stage = stage
+            self.textSubInstructions = textSubInstructions
+            self.textButtonRobotFound = textButtonRobotFound
+
+            self.exercicesSharedData = shared ?? ExerciseSharedData()
+            self.exercicesSharedData.state = .playing
+        }
+
+        // MARK: Internal
 
         enum Stimulation: String, CaseIterable {
             case light
             case motion
 
+            // MARK: Public
+
             public func icon() -> Image {
                 switch self {
                     case .light:
-                        return GameEngineKitAsset.Exercises.HideAndSeek.iconStimulationLight.swiftUIImage
+                        GameEngineKitAsset.Exercises.HideAndSeek.iconStimulationLight.swiftUIImage
                     case .motion:
-                        return GameEngineKitAsset.Exercises.HideAndSeek.iconStimulationMotion.swiftUIImage
+                        GameEngineKitAsset.Exercises.HideAndSeek.iconStimulationMotion.swiftUIImage
                 }
             }
         }
@@ -30,31 +46,19 @@ extension HideAndSeekView {
         let textButtonRobotFound: String
         let robotManager = RobotManager()
 
-        init(
-            stage: Binding<HideAndSeekStage>, textSubInstructions: String, textButtonRobotFound: String,
-            shared: ExerciseSharedData? = nil
-        ) {
-            self._stage = stage
-            self.textSubInstructions = textSubInstructions
-            self.textButtonRobotFound = textButtonRobotFound
-
-            self.exercicesSharedData = shared ?? ExerciseSharedData()
-            self.exercicesSharedData.state = .playing
-        }
-
         var body: some View {
             ZStack {
-                HiddenView(textSubInstructions: textSubInstructions)
+                HiddenView(textSubInstructions: self.textSubInstructions)
                     .padding(.horizontal, 30)
 
                 HStack {
                     Spacer()
                     VStack(spacing: 70) {
-                        stimulationButton(Stimulation.light) {
-                            robotManager.runRandomReinforcer()
+                        self.stimulationButton(Stimulation.light) {
+                            self.robotManager.runRandomReinforcer()
                         }
-                        stimulationButton(Stimulation.motion) {
-                            robotManager.wiggle(for: 1)
+                        self.stimulationButton(Stimulation.motion) {
+                            self.robotManager.wiggle(for: 1)
                         }
                     }
                     .padding(.trailing, 60)
@@ -66,7 +70,7 @@ extension HideAndSeekView {
                     Button {
                         self.exercicesSharedData.state = .completed
                     } label: {
-                        ButtonLabel(textButtonRobotFound, color: .cyan)
+                        ButtonLabel(self.textButtonRobotFound, color: .cyan)
                     }
                     .padding(.vertical, 30)
                 }
@@ -90,12 +94,13 @@ extension HideAndSeekView {
                 }
         }
     }
-
 }
+
 // swiftlint:enable nesting
 
 #Preview {
     HideAndSeekView.Player(
         stage: .constant(.hidden), textSubInstructions: "Example", textButtonRobotFound: "Trouvé",
-        shared: ExerciseSharedData())
+        shared: ExerciseSharedData()
+    )
 }

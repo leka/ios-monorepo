@@ -6,7 +6,6 @@ import DesignKit
 import SwiftUI
 
 struct SidebarAvatarView: View {
-
     @EnvironmentObject var company: CompanyViewModel
     @EnvironmentObject var settings: SettingsViewModel
 
@@ -17,9 +16,9 @@ struct SidebarAvatarView: View {
             .fill(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
             .overlay(
                 Image(
-                    company.getProfileDataFor(
-                        type,
-                        id: company.profilesInUse[type]!
+                    self.company.getProfileDataFor(
+                        self.type,
+                        id: self.company.profilesInUse[self.type]!
                     )[0],
                     bundle: Bundle(for: DesignKitResources.self)
                 )
@@ -30,7 +29,7 @@ struct SidebarAvatarView: View {
             .overlay(
                 Circle()
                     .fill(.black)
-                    .opacity(settings.exploratoryModeIsOn ? 0.3 : 0)
+                    .opacity(self.settings.exploratoryModeIsOn ? 0.3 : 0)
             )
             .overlay {
                 Circle()

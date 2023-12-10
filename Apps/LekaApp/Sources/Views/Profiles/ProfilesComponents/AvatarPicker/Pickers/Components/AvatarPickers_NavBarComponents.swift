@@ -5,31 +5,33 @@
 import DesignKit
 import SwiftUI
 
-struct AvatarPicker_NavigationTitle: View {
+// MARK: - AvatarPicker_NavigationTitle
 
+struct AvatarPicker_NavigationTitle: View {
     @EnvironmentObject var metrics: UIMetrics
     @EnvironmentObject var company: CompanyViewModel
 
     var body: some View {
         Text("Quel est ton avatar ?")
-            .font(metrics.semi17)
+            .font(self.metrics.semi17)
             .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
     }
 }
 
-struct AvatarPicker_AdaptiveBackButton: View {
+// MARK: - AvatarPicker_AdaptiveBackButton
 
+struct AvatarPicker_AdaptiveBackButton: View {
     @EnvironmentObject var viewRouter: ViewRouter
     @Environment(\.dismiss) var dismiss
 
     var body: some View {
         Button {
             // go back without saving
-            dismiss()
+            self.dismiss()
         } label: {
             HStack(spacing: 4) {
                 Image(systemName: "chevron.left")
-                if viewRouter.currentPage == .welcome {
+                if self.viewRouter.currentPage == .welcome {
                     Text("Retour")
                 } else {
                     Text("Annuler")
@@ -40,8 +42,9 @@ struct AvatarPicker_AdaptiveBackButton: View {
     }
 }
 
-struct AvatarPicker_ValidateButton: View {
+// MARK: - AvatarPicker_ValidateButton
 
+struct AvatarPicker_ValidateButton: View {
     @EnvironmentObject var company: CompanyViewModel
     @Environment(\.dismiss) var dismiss
 
@@ -50,8 +53,8 @@ struct AvatarPicker_ValidateButton: View {
 
     var body: some View {
         Button {
-            action()
-            dismiss()
+            self.action()
+            self.dismiss()
         } label: {
             HStack(spacing: 6) {
                 Image(systemName: "checkmark.circle")
@@ -59,6 +62,6 @@ struct AvatarPicker_ValidateButton: View {
             }
             .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
         }
-        .disabled(selected.isEmpty)
+        .disabled(self.selected.isEmpty)
     }
 }

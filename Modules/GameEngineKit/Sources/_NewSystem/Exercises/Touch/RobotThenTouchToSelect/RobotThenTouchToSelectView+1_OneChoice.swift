@@ -6,29 +6,29 @@ import ContentKit
 import SwiftUI
 
 extension RobotThenTouchToSelectView {
-
     struct OneChoiceView: View {
+        // MARK: Internal
 
         @ObservedObject var viewModel: TouchToSelectViewViewModel
         let isTappable: Bool
 
-        private let kAnswerSize: CGFloat = 300
-
         var body: some View {
-            let choice = viewModel.choices[0]
-            TouchToSelectChoiceView(choice: choice, size: kAnswerSize, isTappable: isTappable)
+            let choice = self.viewModel.choices[0]
+            TouchToSelectChoiceView(choice: choice, size: self.kAnswerSize, isTappable: self.isTappable)
                 .onTapGesture {
-                    viewModel.onChoiceTapped(choice: choice)
+                    self.viewModel.onChoiceTapped(choice: choice)
                 }
         }
 
-    }
+        // MARK: Private
 
+        private let kAnswerSize: CGFloat = 300
+    }
 }
 
 #Preview {
     let choices: [TouchToSelect.Choice] = [
-        TouchToSelect.Choice(value: "red", type: .color, isRightAnswer: true)
+        TouchToSelect.Choice(value: "red", type: .color, isRightAnswer: true),
     ]
 
     return RobotThenTouchToSelectView(choices: choices)

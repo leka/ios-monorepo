@@ -5,6 +5,8 @@
 import DesignKit
 import Foundation
 
+// MARK: - AvatarCategory
+
 // Avatar Picker Models
 struct AvatarCategory: Identifiable, Hashable {
     let id = UUID()
@@ -12,16 +14,29 @@ struct AvatarCategory: Identifiable, Hashable {
     let images: [String]
 }
 
+// MARK: - AvatarSets
+
 // AvatarPicker Data
 enum AvatarSets: Int, CaseIterable, Hashable {
-    case girls, boys, lekaGirls, lekaBoys, jobs, weather, sunglasses, animals, fruits, vegies
+    case girls
+    case boys
+    case lekaGirls
+    case lekaBoys
+    case jobs
+    case weather
+    case sunglasses
+    case animals
+    case fruits
+    case vegies
+
+    // MARK: Internal
 
     var id: Self { self }
 
     var content: AvatarCategory {
         switch self {
             case .girls:
-                return AvatarCategory(
+                AvatarCategory(
                     category: "Filles",
                     images: [
                         DesignKitAsset.Avatars.avatarsGirl1a.name,
@@ -52,9 +67,10 @@ enum AvatarSets: Int, CaseIterable, Hashable {
                         DesignKitAsset.Avatars.avatarsGirl5c.name,
                         DesignKitAsset.Avatars.avatarsGirl5d.name,
                         DesignKitAsset.Avatars.avatarsGirl5e.name,
-                    ])
+                    ]
+                )
             case .boys:
-                return AvatarCategory(
+                AvatarCategory(
                     category: "Garçons",
                     images: [
                         DesignKitAsset.Avatars.avatarsBoy1a.name,
@@ -86,9 +102,10 @@ enum AvatarSets: Int, CaseIterable, Hashable {
                         DesignKitAsset.Avatars.avatarsBoy4e.name,
                         DesignKitAsset.Avatars.avatarsBoy4f.name,
                         DesignKitAsset.Avatars.avatarsBoy4g.name,
-                    ])
+                    ]
+                )
             case .lekaGirls:
-                return AvatarCategory(
+                AvatarCategory(
                     category: "Filles Leka",
                     images: [
                         DesignKitAsset.Avatars.avatarsLekaGirl1a.name,
@@ -115,9 +132,10 @@ enum AvatarSets: Int, CaseIterable, Hashable {
                         DesignKitAsset.Avatars.avatarsLekaGirl6b.name,
                         DesignKitAsset.Avatars.avatarsLekaGirl6c.name,
                         DesignKitAsset.Avatars.avatarsLekaGirl6d.name,
-                    ])
+                    ]
+                )
             case .lekaBoys:
-                return AvatarCategory(
+                AvatarCategory(
                     category: "Garçons Leka",
                     images: [
                         DesignKitAsset.Avatars.avatarsLekaBoy1a.name,
@@ -128,9 +146,10 @@ enum AvatarSets: Int, CaseIterable, Hashable {
                         DesignKitAsset.Avatars.avatarsLekaBoy2b.name,
                         DesignKitAsset.Avatars.avatarsLekaBoy2c.name,
                         DesignKitAsset.Avatars.avatarsLekaBoy2d.name,
-                    ])
+                    ]
+                )
             case .jobs:
-                return AvatarCategory(
+                AvatarCategory(
                     category: "Métiers Leka",
                     images: [
                         DesignKitAsset.Avatars.avatarsLekaCook.name,
@@ -139,9 +158,10 @@ enum AvatarSets: Int, CaseIterable, Hashable {
                         DesignKitAsset.Avatars.avatarsLekaExplorer.name,
                         DesignKitAsset.Avatars.avatarsLekaMarine.name,
                         DesignKitAsset.Avatars.avatarsLekaPirate.name,
-                    ])
+                    ]
+                )
             case .weather:
-                return AvatarCategory(
+                AvatarCategory(
                     category: "Météo Leka",
                     images: [
                         DesignKitAsset.Avatars.avatarsLekaCloud.name,
@@ -149,18 +169,20 @@ enum AvatarSets: Int, CaseIterable, Hashable {
                         DesignKitAsset.Avatars.avatarsLekaMoon.name,
                         DesignKitAsset.Avatars.avatarsLekaStar.name,
                         DesignKitAsset.Avatars.avatarsSun.name,
-                    ])
+                    ]
+                )
             case .sunglasses:
-                return AvatarCategory(
+                AvatarCategory(
                     category: "Lunettes de soleil",
                     images: [
                         DesignKitAsset.Avatars.avatarsLekaSunglassesBlue.name,
                         DesignKitAsset.Avatars.avatarsLekaSunglassesGreen.name,
                         DesignKitAsset.Avatars.avatarsLekaSunglassesYellow.name,
                         DesignKitAsset.Avatars.avatarsLekaSunglassesPink.name,
-                    ])
+                    ]
+                )
             case .animals:
-                return AvatarCategory(
+                AvatarCategory(
                     category: "Animaux",
                     images: [
                         DesignKitAsset.Avatars.avatarsPictogramsAnimalsFarmBirdYellow0071.name,
@@ -180,9 +202,10 @@ enum AvatarSets: Int, CaseIterable, Hashable {
                         DesignKitAsset.Avatars.avatarsPictogramsAnimalsSavannaLionBrown0082.name,
                         DesignKitAsset.Avatars.avatarsPictogramsAnimalsSeaCrabRed003E.name,
                         DesignKitAsset.Avatars.avatarsPictogramsAnimalsSeaTurtleGreen0041.name,
-                    ])
+                    ]
+                )
             case .fruits:
-                return AvatarCategory(
+                AvatarCategory(
                     category: "Fruits",
                     images: [
                         DesignKitAsset.Avatars.avatarsPictogramsFoodsFruitsAppleGreen0100.name,
@@ -196,9 +219,10 @@ enum AvatarSets: Int, CaseIterable, Hashable {
                         DesignKitAsset.Avatars.avatarsPictogramsFoodsFruitsPineappleOrange00F9.name,
                         DesignKitAsset.Avatars.avatarsPictogramsFoodsFruitsStrawberryRed00FD.name,
                         DesignKitAsset.Avatars.avatarsPictogramsFoodsFruitsWatermelonRed00FA.name,
-                    ])
+                    ]
+                )
             case .vegies:
-                return AvatarCategory(
+                AvatarCategory(
                     category: "Légumes",
                     images: [
                         DesignKitAsset.Avatars.avatarsPictogramsFoodsVegetablesAvocadoGreen00E1.name,
@@ -210,7 +234,8 @@ enum AvatarSets: Int, CaseIterable, Hashable {
                         DesignKitAsset.Avatars.avatarsPictogramsFoodsVegetablesPotatoYellow100E9.name,
                         DesignKitAsset.Avatars.avatarsPictogramsFoodsVegetablesSaladGreen100EA.name,
                         DesignKitAsset.Avatars.avatarsPictogramsFoodsVegetablesTomatoRed00E2.name,
-                    ])
+                    ]
+                )
         }
     }
 }

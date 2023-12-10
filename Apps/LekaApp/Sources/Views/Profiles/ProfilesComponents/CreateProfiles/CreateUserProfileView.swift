@@ -5,7 +5,10 @@
 import DesignKit
 import SwiftUI
 
+// MARK: - CreateUserProfileView
+
 struct CreateUserProfileView: View {
+    // MARK: Internal
 
     @EnvironmentObject var company: CompanyViewModel
     @EnvironmentObject var viewRouter: ViewRouter
@@ -13,73 +16,75 @@ struct CreateUserProfileView: View {
     @EnvironmentObject var navigationVM: NavigationViewModel
     @Environment(\.dismiss) var dismiss
 
-    @FocusState private var focusedField: FormField?
-    @State private var isEditing = false
-    @State private var showDeleteConfirmation: Bool = false
-    @State private var navigateToSignupFinalStep: Bool = false
-    @State private var navigateToAvatarPicker: Bool = false
-
     var body: some View {
         ZStack {
             Color.white.edgesIgnoringSafeArea(.top)
 
             ScrollView(showsIndicators: false) {
                 VStack(spacing: 30) {
-                    AvatarPickerTriggerButton_Users(navigate: $navigateToAvatarPicker)
+                    AvatarPickerTriggerButton_Users(navigate: self.$navigateToAvatarPicker)
                         .padding(.top, 30)
 
-                    nameField
+                    self.nameField
                     ReinforcerPicker()
-                    accessoryView
+                    self.accessoryView
                     Spacer()
-                    DeleteProfileButton(show: $showDeleteConfirmation)
+                    DeleteProfileButton(show: self.$showDeleteConfirmation)
                 }
             }
         }
         .interactiveDismissDisabled()
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)
-        .toolbarBackground(navigationVM.showProfileEditor ? .visible : .automatic, for: .navigationBar)
-        .navigationDestination(isPresented: $navigateToAvatarPicker) {
+        .toolbarBackground(self.navigationVM.showProfileEditor ? .visible : .automatic, for: .navigationBar)
+        .navigationDestination(isPresented: self.$navigateToAvatarPicker) {
             AvatarPicker_Users()
         }
-        .navigationDestination(isPresented: $navigateToSignupFinalStep) {
+        .navigationDestination(isPresented: self.$navigateToSignupFinalStep) {
             SignupFinalStep()
         }
-        .alert("Supprimer le profil", isPresented: $showDeleteConfirmation) {
-            alertContent
+        .alert("Supprimer le profil", isPresented: self.$showDeleteConfirmation) {
+            self.alertContent
         } message: {
             Text(
-                "Vous êtes sur le point de supprimer le profil utilisateur de \(company.bufferUser.name). \nCette action est irreversible."
+                "Vous êtes sur le point de supprimer le profil utilisateur de \(self.company.bufferUser.name). \nCette action est irreversible."
             )
         }
         .toolbar {
-            ToolbarItem(placement: .principal) { navigationTitle }
-            ToolbarItem(placement: .navigationBarLeading) { adaptativeBackButton }
-            ToolbarItem(placement: .navigationBarTrailing) { validateButton }
+            ToolbarItem(placement: .principal) { self.navigationTitle }
+            ToolbarItem(placement: .navigationBarLeading) { self.adaptativeBackButton }
+            ToolbarItem(placement: .navigationBarTrailing) { self.validateButton }
         }
         .preferredColorScheme(.light)
     }
 
+    // MARK: Private
+
+    @FocusState private var focusedField: FormField?
+    @State private var isEditing = false
+    @State private var showDeleteConfirmation: Bool = false
+    @State private var navigateToSignupFinalStep: Bool = false
+    @State private var navigateToAvatarPicker: Bool = false
+
     private var nameField: some View {
         LekaTextField(
-            label: "Nom d'utilisateur", entry: $company.bufferUser.name, isEditing: $isEditing, type: .name,
+            label: "Nom d'utilisateur", entry: self.$company.bufferUser.name, isEditing: self.$isEditing, type: .name,
             focused: _focusedField,
             action: {
-                focusedField = nil
+                self.focusedField = nil
             }
         )
         .padding(2)
         .onAppear {
-            focusedField = .name
+            self.focusedField = .name
         }
     }
 
     private var alertContent: some View {
         Button(role: .destructive) {
-            company.deleteProfile(.user)
+            self.company.deleteProfile(.user)
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                dismiss()
+                self.dismiss()
             }
         } label: {
             Text("Supprimer")
@@ -88,25 +93,26 @@ struct CreateUserProfileView: View {
 
     @ViewBuilder
     private var accessoryView: some View {
-        if viewRouter.currentPage == .welcome {
+        if self.viewRouter.currentPage == .welcome {
             Button(
                 action: {
-                    navigateToSignupFinalStep.toggle()
+                    self.navigateToSignupFinalStep.toggle()
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                        company.addUserProfile()
-                        company.assignCurrentProfiles()
+                        self.company.addUserProfile()
+                        self.company.assignCurrentProfiles()
                     }
                 },
                 label: {
                     Text("Enregistrer ce profil")
                 }
             )
-            .disabled(company.bufferTeacher.name.isEmpty)
+            .disabled(self.company.bufferTeacher.name.isEmpty)
             .buttonStyle(
                 BorderedCapsule_NoFeedback_ButtonStyle(
-                    font: metrics.reg17,
+                    font: self.metrics.reg17,
                     color: DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor,
-                    width: metrics.tileBtnWidth)
+                    width: self.metrics.tileBtnWidth
+                )
             )
         } else {
             EmptyView()
@@ -115,23 +121,23 @@ struct CreateUserProfileView: View {
 
     // Toolbar
     private var navigationTitle: some View {
-        Text(company.editingProfile ? "Éditer un profil utilisateur" : "Créer un profil utilisateur")
-            .font(metrics.semi17)
+        Text(self.company.editingProfile ? "Éditer un profil utilisateur" : "Créer un profil utilisateur")
+            .font(self.metrics.semi17)
             .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
     }
 
     private var adaptativeBackButton: some View {
         Button {
             // Leave without saving
-            dismiss()
-            company.editingProfile = false
+            self.dismiss()
+            self.company.editingProfile = false
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                company.resetBufferProfile(.user)
+                self.company.resetBufferProfile(.user)
             }
         } label: {
             HStack(spacing: 4) {
                 Image(systemName: "chevron.left")
-                if viewRouter.currentPage == .welcome {
+                if self.viewRouter.currentPage == .welcome {
                     Text("Retour")
                 } else {
                     Text("Annuler")
@@ -143,33 +149,35 @@ struct CreateUserProfileView: View {
 
     private var validateButton: some View {
         Group {
-            if navigationVM.showProfileEditor {
+            if self.navigationVM.showProfileEditor {
                 Button(
                     action: {
                         // Save changes and leave
-                        company.saveProfileChanges(.user)
-                        dismiss()
+                        self.company.saveProfileChanges(.user)
+                        self.dismiss()
                     },
                     label: {
-                        validateButtonLabel
-                    })
-            } else if viewRouter.currentPage == .welcome {
+                        self.validateButtonLabel
+                    }
+                )
+            } else if self.viewRouter.currentPage == .welcome {
                 EmptyView()
             } else {
                 // User Selector before launching an activity
                 Button(
                     action: {
-                        dismiss()
+                        self.dismiss()
                         hideKeyboard()
-                        company.saveProfileChanges(.user)
-                        company.assignCurrentProfiles()
+                        self.company.saveProfileChanges(.user)
+                        self.company.assignCurrentProfiles()
                     },
                     label: {
-                        validateButtonLabel
-                    })
+                        self.validateButtonLabel
+                    }
+                )
             }
         }
-        .disabled(company.bufferUser.name.isEmpty)
+        .disabled(self.company.bufferUser.name.isEmpty)
     }
 
     private var validateButtonLabel: some View {
@@ -181,6 +189,8 @@ struct CreateUserProfileView: View {
         .contentShape(Rectangle())
     }
 }
+
+// MARK: - CreateUserProfileView_Previews
 
 struct CreateUserProfileView_Previews: PreviewProvider {
     static var previews: some View {

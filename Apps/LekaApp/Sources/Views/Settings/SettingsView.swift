@@ -5,8 +5,9 @@
 import DesignKit
 import SwiftUI
 
-struct SettingsView: View {
+// MARK: - SettingsView
 
+struct SettingsView: View {
     @EnvironmentObject var settings: SettingsViewModel
     @EnvironmentObject var metrics: UIMetrics
     @Environment(\.dismiss) var dismiss
@@ -29,7 +30,7 @@ struct SettingsView: View {
                 .padding(.horizontal, 10)
                 .formStyle(.grouped)
                 .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
-                .font(metrics.reg17)
+                .font(self.metrics.reg17)
             }
             .interactiveDismissDisabled()
             .navigationBarTitleDisplayMode(.inline)
@@ -39,30 +40,32 @@ struct SettingsView: View {
                 ToolbarItem(placement: .principal) {
                     HStack(spacing: 4) {
                         Text("Réglages")
-                        if settings.companyIsConnected && settings.exploratoryModeIsOn {
+                        if self.settings.companyIsConnected, self.settings.exploratoryModeIsOn {
                             Image(systemName: "binoculars.fill")
                         }
                     }
-                    .font(metrics.semi17)
+                    .font(self.metrics.semi17)
                     .foregroundColor(.white)
                 }
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button(
                         action: {
-                            dismiss()
+                            self.dismiss()
                         },
                         label: {
                             Text("Fermer")
                                 .foregroundColor(.white)
-                        })
+                        }
+                    )
                 }
             }
         }
     }
 }
 
-struct SettingsView_Previews: PreviewProvider {
+// MARK: - SettingsView_Previews
 
+struct SettingsView_Previews: PreviewProvider {
     @State static var open: Bool = true
 
     static var previews: some View {

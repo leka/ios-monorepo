@@ -7,7 +7,7 @@ import Foundation
 import RobotKit
 import Version
 
-// MARK: - General (user facing) update process states, errors
+// MARK: - UpdateProcessStage
 
 enum UpdateProcessStage {
     case initial
@@ -16,6 +16,8 @@ enum UpdateProcessStage {
     case sendingUpdate
     case installingUpdate
 }
+
+// MARK: - UpdateProcessError
 
 enum UpdateProcessError: Error {
     case unknown
@@ -27,13 +29,31 @@ enum UpdateProcessError: Error {
     case robotUnexpectedDisconnection
 }
 
-// MARK: - Controller
+// MARK: - UpdateProcessController
 
 class UpdateProcessController {
+    // MARK: Lifecycle
 
-    // MARK: - Private variables
+    init() {
+        let currentRobotVersion = Robot.shared.osVersion.value
 
-    private var currentUpdateProcess: any UpdateProcessProtocol
+        switch currentRobotVersion {
+            case Version(1, 0, 0),
+                 Version(1, 1, 0),
+                 Version(1, 2, 0):
+                self.currentUpdateProcess = UpdateProcessV100()
+            case Version(1, 3, 0),
+                 Version(1, 4, 0):
+                self.currentUpdateProcess = UpdateProcessV130()
+            default:
+                self.currentUpdateProcess = UpdateProcessTemplate()
+        }
+
+        self.currentStage = self.currentUpdateProcess.currentStage
+        self.sendingFileProgression = self.currentUpdateProcess.sendingFileProgression
+    }
+
+    // MARK: Public
 
     // MARK: - Public variables
 
@@ -48,23 +68,15 @@ class UpdateProcessController {
     public var currentStage = CurrentValueSubject<UpdateProcessStage, UpdateProcessError>(.initial)
     public var sendingFileProgression = CurrentValueSubject<Float, Never>(0.0)
 
-    init() {
-        let currentRobotVersion = Robot.shared.osVersion.value
-
-        switch currentRobotVersion {
-            case Version(1, 0, 0), Version(1, 1, 0), Version(1, 2, 0):
-                self.currentUpdateProcess = UpdateProcessV100()
-            case Version(1, 3, 0), Version(1, 4, 0):
-                self.currentUpdateProcess = UpdateProcessV130()
-            default:
-                self.currentUpdateProcess = UpdateProcessTemplate()
-        }
-
-        self.currentStage = self.currentUpdateProcess.currentStage
-        self.sendingFileProgression = self.currentUpdateProcess.sendingFileProgression
-    }
+    // MARK: Internal
 
     func startUpdate() {
-        currentUpdateProcess.startProcess()
+        self.currentUpdateProcess.startProcess()
     }
+
+    // MARK: Private
+
+    // MARK: - Private variables
+
+    private var currentUpdateProcess: any UpdateProcessProtocol
 }

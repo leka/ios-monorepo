@@ -5,6 +5,8 @@
 import ContentKit
 import Foundation
 
+// MARK: - GameplayTouchToSelectChoiceModel
+
 struct GameplayTouchToSelectChoiceModel: GameplayChoiceModelProtocol {
     typealias ChoiceType = TouchToSelect.Choice
 
@@ -14,12 +16,11 @@ struct GameplayTouchToSelectChoiceModel: GameplayChoiceModelProtocol {
 }
 
 extension GameplayFindTheRightAnswers where ChoiceModelType == GameplayTouchToSelectChoiceModel {
-
     convenience init(choices: [GameplayTouchToSelectChoiceModel], shuffle: Bool = false) {
         self.init()
         self.choices.send(shuffle ? choices.shuffled() : choices)
-        self.rightAnswers = choices.filter { $0.choice.isRightAnswer }
-        self.state.send(.playing)
+        rightAnswers = choices.filter(\.choice.isRightAnswer)
+        state.send(.playing)
     }
 
     func process(_ choice: ChoiceModelType) {
@@ -27,7 +28,7 @@ extension GameplayFindTheRightAnswers where ChoiceModelType == GameplayTouchToSe
             return
         }
 
-        if choice.choice.isRightAnswer && rightAnswers.isNotEmpty {
+        if choice.choice.isRightAnswer, rightAnswers.isNotEmpty {
             updateChoice(choice, state: .rightAnswer)
             rightAnswers.removeAll { $0.id == choice.id }
         } else {
@@ -38,5 +39,4 @@ extension GameplayFindTheRightAnswers where ChoiceModelType == GameplayTouchToSe
             state.send(.completed)
         }
     }
-
 }

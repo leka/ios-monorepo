@@ -4,51 +4,61 @@
 
 import SwiftUI
 
+// MARK: - AlertWhenRobotIsNeeded
+
 struct AlertWhenRobotIsNeeded: ViewModifier {
-    @State private var showAlert: Bool = false
+    // MARK: Lifecycle
+
+    public init() {
+        // nothing to do
+    }
+
+    // MARK: Internal
 
     func body(content: Content) -> some View {
         content
             .onAppear {
-                showAlert = true
+                self.showAlert = true
             }
-            .alert("Cette activité nécessite l'utilisation du robot !", isPresented: $showAlert) {
-                alertContent
+            .alert("Cette activité nécessite l'utilisation du robot !", isPresented: self.$showAlert) {
+                self.alertContent
             } message: {
                 Text("Avant de commencer l'activité, connectez-vous en Bluetooth à votre robot.")
             }
     }
 
-    public init() {
-        // nothing to do
-    }
+    // MARK: Private
+
+    @State private var showAlert: Bool = false
 
     private var alertContent: some View {
         Group {
             Button(
                 role: .destructive,
                 action: {
-                    showAlert.toggle()
+                    self.showAlert.toggle()
                 },
                 label: {
                     Text("Continuer sans le robot")
-                })
+                }
+            )
             Button(
                 role: .none,
                 action: {
-                    showAlert.toggle()
+                    self.showAlert.toggle()
                 },
                 label: {
                     Text("Se connecter")
                         .font(.system(size: 17, weight: .semibold))
                         .foregroundColor(.accentColor)
-                })
+                }
+            )
         }
     }
 }
 
-extension View {
-    public func alertWhenRobotIsNeeded() -> some View {
+public extension View {
+    func alertWhenRobotIsNeeded() -> some View {
         modifier(AlertWhenRobotIsNeeded())
     }
 }

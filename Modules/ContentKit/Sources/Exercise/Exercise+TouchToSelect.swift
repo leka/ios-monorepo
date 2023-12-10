@@ -5,22 +5,14 @@
 // swiftlint:disable nesting
 
 public enum TouchToSelect {
-
     public struct Choice: Codable {
-
-        public let value: String
-        public let type: Exercise.UIElementType
-        public let isRightAnswer: Bool
-
-        private enum CodingKeys: String, CodingKey {
-            case value, type, isRightAnswer
-        }
+        // MARK: Lifecycle
 
         public init(from decoder: Decoder) throws {
             let container = try decoder.container(keyedBy: CodingKeys.self)
-            value = try container.decode(String.self, forKey: .value)
-            type = try container.decode(Exercise.UIElementType.self, forKey: .type)
-            isRightAnswer = try container.decodeIfPresent(Bool.self, forKey: .isRightAnswer) ?? false
+            self.value = try container.decode(String.self, forKey: .value)
+            self.type = try container.decode(Exercise.UIElementType.self, forKey: .type)
+            self.isRightAnswer = try container.decodeIfPresent(Bool.self, forKey: .isRightAnswer) ?? false
         }
 
         public init(value: String, type: Exercise.UIElementType, isRightAnswer: Bool = false) {
@@ -29,17 +21,23 @@ public enum TouchToSelect {
             self.isRightAnswer = isRightAnswer
         }
 
+        // MARK: Public
+
+        public let value: String
+        public let type: Exercise.UIElementType
+        public let isRightAnswer: Bool
+
+        // MARK: Private
+
+        private enum CodingKeys: String, CodingKey {
+            case value
+            case type
+            case isRightAnswer
+        }
     }
 
     public struct Payload: Codable {
-
-        public let choices: [Choice]
-        public let shuffleChoices: Bool
-
-        enum CodingKeys: String, CodingKey {
-            case choices
-            case shuffleChoices = "shuffle_choices"
-        }
+        // MARK: Lifecycle
 
         public init(from decoder: Decoder) throws {
             let container = try decoder.container(keyedBy: CodingKeys.self)
@@ -48,8 +46,18 @@ public enum TouchToSelect {
             self.shuffleChoices = try container.decodeIfPresent(Bool.self, forKey: .shuffleChoices) ?? false
         }
 
-    }
+        // MARK: Public
 
+        public let choices: [Choice]
+        public let shuffleChoices: Bool
+
+        // MARK: Internal
+
+        enum CodingKeys: String, CodingKey {
+            case choices
+            case shuffleChoices = "shuffle_choices"
+        }
+    }
 }
 
 // swiftlint:enable nesting

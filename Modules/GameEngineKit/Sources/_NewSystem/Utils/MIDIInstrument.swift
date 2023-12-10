@@ -4,8 +4,12 @@
 
 import AudioKit
 
+// MARK: - MIDIInstrument
+
 enum MIDIInstrument: String {
     case xylophone
+
+    // MARK: Internal
 
     var samples: [MIDISample] {
         switch self {

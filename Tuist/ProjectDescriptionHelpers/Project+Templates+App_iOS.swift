@@ -4,9 +4,8 @@
 
 import ProjectDescription
 
-extension Project {
-
-    public static func iOSApp(
+public extension Project {
+    static func iOSApp(
         name: String,
         version: String = "1.0.0",
         deploymentTarget: DeploymentTarget = .iOS(targetVersion: "16.0", devices: .ipad),
@@ -15,7 +14,7 @@ extension Project {
         options: Options = .options(),
         schemes: [Scheme] = []
     ) -> Project {
-        let appInfoPlist = InfoPlist.base(version: version).merging(infoPlist) { (_, new) in new }
+        let appInfoPlist = InfoPlist.base(version: version).merging(infoPlist) { _, new in new }
 
         let mainTarget = Target(
             name: name,
@@ -34,7 +33,7 @@ extension Project {
                     "CFCopyLocalizedString",
                     "LocalizedString",
                     "LocalizedStringInterpolation",
-                ]
+                ],
             ])
         )
 
@@ -48,8 +47,9 @@ extension Project {
             resources: [],
             scripts: TargetScript.linters(),
             dependencies: [
-                .target(name: "\(name)")
-            ])
+                .target(name: "\(name)"),
+            ]
+        )
 
         let targets = [mainTarget, testTarget]
 
@@ -61,5 +61,4 @@ extension Project {
             schemes: schemes
         )
     }
-
 }

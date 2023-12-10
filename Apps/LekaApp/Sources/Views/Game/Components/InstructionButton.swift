@@ -5,23 +5,24 @@
 import DesignKit
 import SwiftUI
 
-struct InstructionButton: View {
+// MARK: - InstructionButton
 
+struct InstructionButton: View {
     @ObservedObject var gameMetrics: GameMetrics
     @EnvironmentObject var activityVM: ActivityViewModel
 
     var body: some View {
         HStack(spacing: 0) {
             Spacer()
-            Text(activityVM.steps[activityVM.currentStep].instruction.localized())
+            Text(self.activityVM.steps[self.activityVM.currentStep].instruction.localized())
                 .foregroundColor(DesignKitAsset.Colors.lekaDarkGray.swiftUIColor)
-                .font(.system(size: gameMetrics.instructionFontSize, weight: gameMetrics.instructionFontWeight))
+                .font(.system(size: self.gameMetrics.instructionFontSize, weight: self.gameMetrics.instructionFontWeight))
                 .multilineTextAlignment(.center)
-                .padding(.horizontal, gameMetrics.instructionFrame.height)
+                .padding(.horizontal, self.gameMetrics.instructionFrame.height)
             Spacer()
         }
-        .frame(maxWidth: gameMetrics.instructionFrame.width)
-        .frame(height: gameMetrics.instructionFrame.height, alignment: .center)
+        .frame(maxWidth: self.gameMetrics.instructionFrame.width)
+        .frame(height: self.gameMetrics.instructionFrame.height, alignment: .center)
         .background(
             ZStack {
                 Color.white
@@ -29,18 +30,19 @@ struct InstructionButton: View {
                     gradient: Gradient(colors: [.black.opacity(0.1), .black.opacity(0.0), .black.opacity(0.0)]),
                     startPoint: .top, endPoint: .center
                 )
-                .opacity(activityVM.isSpeaking ? 1 : 0)
+                .opacity(self.activityVM.isSpeaking ? 1 : 0)
             }
         )
         .overlay(
-            RoundedRectangle(cornerRadius: gameMetrics.roundedCorner, style: .circular)
+            RoundedRectangle(cornerRadius: self.gameMetrics.roundedCorner, style: .circular)
                 .fill(
                     .clear,
                     strokeBorder: LinearGradient(
                         gradient: Gradient(colors: [.black.opacity(0.2), .black.opacity(0.05)]), startPoint: .bottom,
-                        endPoint: .top), lineWidth: 4
+                        endPoint: .top
+                    ), lineWidth: 4
                 )
-                .opacity(activityVM.isSpeaking ? 0.5 : 0)
+                .opacity(self.activityVM.isSpeaking ? 0.5 : 0)
         )
         .overlay(
             HStack {
@@ -53,32 +55,33 @@ struct InstructionButton: View {
                 .renderingMode(.template)
                 .aspectRatio(contentMode: .fit)
                 .foregroundColor(
-                    activityVM.isSpeaking
+                    self.activityVM.isSpeaking
                         ? DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor
                         : DesignKitAsset.Colors.progressBar.swiftUIColor
                 )
                 .padding(10)
             }
         )
-        .clipShape(RoundedRectangle(cornerRadius: gameMetrics.roundedCorner, style: .circular))
+        .clipShape(RoundedRectangle(cornerRadius: self.gameMetrics.roundedCorner, style: .circular))
         .shadow(
             color: DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor.opacity(0.2),
-            radius: activityVM.isSpeaking ? 0 : 4, x: 0, y: activityVM.isSpeaking ? 1 : 4
+            radius: self.activityVM.isSpeaking ? 0 : 4, x: 0, y: self.activityVM.isSpeaking ? 1 : 4
         )
-        .scaleEffect(activityVM.isSpeaking ? 0.98 : 1)
+        .scaleEffect(self.activityVM.isSpeaking ? 0.98 : 1)
         .onTapGesture {
-            activityVM.speak(sentence: activityVM.steps[activityVM.currentStep].instruction.localized())
+            self.activityVM.speak(sentence: self.activityVM.steps[self.activityVM.currentStep].instruction.localized())
         }
-        .disabled(activityVM.isSpeaking)
-        .animation(.easeOut(duration: 0.2), value: activityVM.isSpeaking)
+        .disabled(self.activityVM.isSpeaking)
+        .animation(.easeOut(duration: 0.2), value: self.activityVM.isSpeaking)
     }
 }
+
+// MARK: - InstructionButton_Previews
 
 struct InstructionButton_Previews: PreviewProvider {
     static var previews: some View {
         InstructionButton(gameMetrics: GameMetrics())
             .environmentObject(ActivityViewModel())
             .environmentObject(GameMetrics())
-
     }
 }

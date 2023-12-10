@@ -5,19 +5,18 @@
 import SwiftUI
 
 struct IdentificationIsNeededAlertLabel: View {
-
     @EnvironmentObject var settings: SettingsViewModel
     @EnvironmentObject var viewRouter: ViewRouter
 
     var body: some View {
         Button {
-            settings.showConnectInvite.toggle()
+            self.settings.showConnectInvite.toggle()
         } label: {
             Text("Non")
         }
 
         Button {
-            viewRouter.currentPage = .welcome
+            self.viewRouter.currentPage = .welcome
         } label: {
             Text("Oui")
         }

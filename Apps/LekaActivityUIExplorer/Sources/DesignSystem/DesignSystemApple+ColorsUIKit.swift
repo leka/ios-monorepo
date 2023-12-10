@@ -5,7 +5,6 @@
 import SwiftUI
 
 extension UIColor {
-
     // swiftlint:disable:next identifier_name
     var hex: String {
         var r: CGFloat = 0
@@ -15,17 +14,14 @@ extension UIColor {
 
         getRed(&r, green: &g, blue: &b, alpha: &a)
 
-        let rgb: Int = (Int)(r * 255) << 16 | (Int)(g * 255) << 8 | (Int)(b * 255) << 0
+        let rgb = Int(r * 255) << 16 | Int(g * 255) << 8 | Int(b * 255) << 0
 
         return String(format: "#%06x", rgb)
     }
-
 }
 
 extension DesignSystemApple {
-
     struct ColorsUIKitView: View {
-
         var body: some View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 20) {
@@ -74,18 +70,20 @@ extension DesignSystemApple {
             }
             .navigationTitle("UIKit Colors")
         }
-
     }
 
     struct ColorView: View {
-
-        @Environment(\.self) var environment
-
-        let color: UIColor
+        // MARK: Lifecycle
 
         init(color: UIColor) {
             self.color = color
         }
+
+        // MARK: Internal
+
+        @Environment(\.self) var environment
+
+        let color: UIColor
 
         var body: some View {
             HStack {
@@ -93,16 +91,13 @@ extension DesignSystemApple {
                     .frame(width: 50, height: 50)
                     .clipShape(RoundedRectangle(cornerRadius: 10))
                 VStack(alignment: .leading) {
-                    Text("\(color.accessibilityName): \(color.hex.uppercased())")
+                    Text("\(self.color.accessibilityName): \(self.color.hex.uppercased())")
                     Text("The quick brown fox jumps over the lazy dog")
-
                 }
             }
-            .foregroundColor(Color(uiColor: color))
+            .foregroundColor(Color(uiColor: self.color))
         }
-
     }
-
 }
 
 #Preview {

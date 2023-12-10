@@ -7,6 +7,8 @@ import SwiftUI
 
 let log = LogKit.createLoggerFor(app: "LogKitExample")
 
+// MARK: - LogKitExample
+
 @main
 struct LogKitExample: App {
     let module = NewModule()
@@ -15,9 +17,8 @@ struct LogKitExample: App {
         WindowGroup {
             MainView()
                 .onAppear {
-                    module.doSomething()
+                    self.module.doSomething()
                 }
         }
     }
-
 }

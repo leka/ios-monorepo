@@ -4,9 +4,8 @@
 
 import ProjectDescription
 
-extension InfoPlist {
-
-    public static func base(version: String) -> [String: InfoPlist.Value] {
+public extension InfoPlist {
+    static func base(version: String) -> [String: InfoPlist.Value] {
         [
             "CFBundleShortVersionString": "\(version)",
             "CFBundleVersion": "\(version)",
@@ -15,5 +14,4 @@ extension InfoPlist {
             "ITSAppUsesNonExemptEncryption": "NO",
         ]
     }
-
 }

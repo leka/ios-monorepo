@@ -5,7 +5,10 @@
 import DesignKit
 import SwiftUI
 
+// MARK: - JobPicker
+
 struct JobPicker: View {
+    // MARK: Internal
 
     @EnvironmentObject var company: CompanyViewModel
     @EnvironmentObject var metrics: UIMetrics
@@ -14,39 +17,42 @@ struct JobPicker: View {
     @Environment(\.dismiss) var dismiss
 
     @FocusState var focusedField: FormField?
-    @State private var otherJobText: String = ""
-    @State private var isEditing = false
-    @State private var selectedJobs: [String] = []
 
     var body: some View {
         ZStack {
             Color.white.edgesIgnoringSafeArea(.top)
 
-            JobPickerStore(selectedJobs: $selectedJobs)
+            JobPickerStore(selectedJobs: self.$selectedJobs)
                 .onAppear {
-                    selectedJobs = company.bufferTeacher.jobs
+                    self.selectedJobs = self.company.bufferTeacher.jobs
                 }
                 .navigationBarTitleDisplayMode(.inline)
                 .navigationBarBackButtonHidden(true)
                 .safeAreaInset(edge: .bottom) {
-                    customJobTextField
+                    self.customJobTextField
                 }
                 .toolbar {
-                    ToolbarItem(placement: .principal) { navigationTitle }
-                    ToolbarItem(placement: .navigationBarLeading) { adaptiveBackButton }
-                    ToolbarItem(placement: .navigationBarTrailing) { validateButton }
+                    ToolbarItem(placement: .principal) { self.navigationTitle }
+                    ToolbarItem(placement: .navigationBarLeading) { self.adaptiveBackButton }
+                    ToolbarItem(placement: .navigationBarTrailing) { self.validateButton }
                 }
         }
-        .toolbarBackground(navigationVM.showProfileEditor ? .visible : .automatic, for: .navigationBar)
+        .toolbarBackground(self.navigationVM.showProfileEditor ? .visible : .automatic, for: .navigationBar)
     }
+
+    // MARK: Private
+
+    @State private var otherJobText: String = ""
+    @State private var isEditing = false
+    @State private var selectedJobs: [String] = []
 
     private var customJobTextField: some View {
         VStack(spacing: 0) {
             Divider()
                 .padding(.horizontal, 20)
-            LekaTextField(label: "Autre (préciser)", entry: $otherJobText, isEditing: $isEditing, type: .name) {
-                if !otherJobText.isEmpty || !company.bufferTeacher.jobs.contains(otherJobText) {
-                    selectedJobs.append(otherJobText)
+            LekaTextField(label: "Autre (préciser)", entry: self.$otherJobText, isEditing: self.$isEditing, type: .name) {
+                if !self.otherJobText.isEmpty || !self.company.bufferTeacher.jobs.contains(self.otherJobText) {
+                    self.selectedJobs.append(self.otherJobText)
                 }
             }
             .padding(.vertical, 30)
@@ -61,18 +67,18 @@ struct JobPicker: View {
 
     private var navigationTitle: some View {
         Text("Sélectionnez vos professions")
-            .font(metrics.semi17)
+            .font(self.metrics.semi17)
             .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
     }
 
     private var adaptiveBackButton: some View {
         Button {
             // go back without saving
-            dismiss()
+            self.dismiss()
         } label: {
             HStack(spacing: 4) {
                 Image(systemName: "chevron.left")
-                if viewRouter.currentPage == .welcome {
+                if self.viewRouter.currentPage == .welcome {
                     Text("Retour")
                 } else {
                     Text("Annuler")
@@ -84,8 +90,8 @@ struct JobPicker: View {
 
     private var validateButton: some View {
         Button {
-            company.bufferTeacher.jobs = selectedJobs
-            dismiss()
+            self.company.bufferTeacher.jobs = self.selectedJobs
+            self.dismiss()
         } label: {
             HStack(spacing: 4) {
                 Image(systemName: "checkmark.circle")
@@ -93,10 +99,12 @@ struct JobPicker: View {
             }
             .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
         }
-        .disabled(selectedJobs.isEmpty)
-        .disabled(isEditing)
+        .disabled(self.selectedJobs.isEmpty)
+        .disabled(self.isEditing)
     }
 }
+
+// MARK: - JobPicker_Previews
 
 struct JobPicker_Previews: PreviewProvider {
     static var previews: some View {

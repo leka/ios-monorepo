@@ -7,7 +7,6 @@ import XCTest
 @testable import BLEKit
 
 final class RobotAdvertisingData_Tests: XCTestCase {
-
     func test_shouldReturnNameWhenNameIsNotNil() {
         // Given
 
@@ -43,5 +42,4 @@ final class RobotAdvertisingData_Tests: XCTestCase {
         let actual = advertisingData.name
         XCTAssertEqual(expected, actual)
     }
-
 }

@@ -9,7 +9,7 @@ public struct RightAnswerFeedback: View {
 
     public var body: some View {
         Circle()
-            .trim(from: 0, to: animationPercent)
+            .trim(from: 0, to: self.animationPercent)
             .stroke(
                 .green,
                 style: StrokeStyle(

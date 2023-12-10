@@ -6,16 +6,17 @@ import DesignKit
 import Foundation
 import SwiftUI
 
-// MARK: - Robot (robot connection) Button Style
+// MARK: - NoFeedback_ButtonStyle
+
 struct NoFeedback_ButtonStyle: ButtonStyle {
     func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
     }
 }
 
-// MARK: - Edit Button Style -> avatar picker, profile editor, explorer mode tile
-struct BorderedCapsule_NoFeedback_ButtonStyle: ButtonStyle {
+// MARK: - BorderedCapsule_NoFeedback_ButtonStyle
 
+struct BorderedCapsule_NoFeedback_ButtonStyle: ButtonStyle {
     var font: Font
     var color: Color
     var isOpaque: Bool = false
@@ -23,27 +24,28 @@ struct BorderedCapsule_NoFeedback_ButtonStyle: ButtonStyle {
 
     func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
-            .font(font)
-            .foregroundColor(color)
+            .font(self.font)
+            .foregroundColor(self.color)
             .padding(.vertical, 10)
             .padding(.horizontal, 20)
-            .frame(width: width)
+            .frame(width: self.width)
             .overlay(
                 Capsule()
-                    .stroke(color, lineWidth: 1)
+                    .stroke(self.color, lineWidth: 1)
             )
-            .background(isOpaque ? .white : .clear, in: Capsule())
+            .background(self.isOpaque ? .white : .clear, in: Capsule())
             .contentShape(Capsule())
     }
 }
 
-struct CircledIcon_NoFeedback_ButtonStyle: ButtonStyle {
+// MARK: - CircledIcon_NoFeedback_ButtonStyle
 
+struct CircledIcon_NoFeedback_ButtonStyle: ButtonStyle {
     var font: Font
 
     func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
-            .font(font)
+            .font(self.font)
             .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
             .frame(width: 46, height: 46)
             .overlay(
@@ -54,16 +56,18 @@ struct CircledIcon_NoFeedback_ButtonStyle: ButtonStyle {
     }
 }
 
-// MARK: - Login/Signup Button Style
+// MARK: - Connect_ButtonStyle
+
 struct Connect_ButtonStyle: ButtonStyle {
     @EnvironmentObject var metrics: UIMetrics
     var reversed: Bool = false
+
     func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
-            .font(metrics.bold15)
+            .font(self.metrics.bold15)
             .frame(width: 310, height: 60)
-            .foregroundColor(reversed ? DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor : .white)
-            .background(reversed ? .white : DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor, in: Capsule())
+            .foregroundColor(self.reversed ? DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor : .white)
+            .background(self.reversed ? .white : DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor, in: Capsule())
             .contentShape(Capsule())
             .opacity(configuration.isPressed ? 0.4 : 1)
             .compositingGroup()
@@ -71,15 +75,17 @@ struct Connect_ButtonStyle: ButtonStyle {
     }
 }
 
-// MARK: - Job Picker Toggle Style
+// MARK: - JobPickerToggleStyle
+
 struct JobPickerToggleStyle: ToggleStyle {
     @EnvironmentObject var metrics: UIMetrics
     var onImage = "checkmark.circle"
     var offImage = "circle"
     var action: () -> Void
+
     func makeBody(configuration: Configuration) -> some View {
         HStack(spacing: 10) {
-            Image(systemName: configuration.isOn ? onImage : offImage)
+            Image(systemName: configuration.isOn ? self.onImage : self.offImage)
                 .foregroundColor(configuration.isOn ? .white : DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
                 .background(
                     Circle()
@@ -93,7 +99,7 @@ struct JobPickerToggleStyle: ToggleStyle {
 
             configuration.label
                 .multilineTextAlignment(.leading)
-                .font(metrics.reg16)
+                .font(self.metrics.reg16)
                 .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
 
             Spacer()
@@ -102,26 +108,25 @@ struct JobPickerToggleStyle: ToggleStyle {
         .onTapGesture {
             withAnimation(.easeIn(duration: 0.2)) {
                 configuration.isOn.toggle()
-                action()
+                self.action()
             }
         }
     }
 }
 
-// MARK: - Custom Gauge Style (FollowUp stats)
+// MARK: - SuccessGaugeStyle
+
 struct SuccessGaugeStyle: GaugeStyle {
     func makeBody(configuration: Configuration) -> some View {
-        let color: Color = {
-            if configuration.value < 0.25 {
-                return .red
-            } else if 0.25..<0.5 ~= configuration.value {
-                return .orange
-            } else if 0.5..<0.8 ~= configuration.value {
-                return .yellow
-            } else {
-                return .green
-            }
-        }()
+        let color: Color = if configuration.value < 0.25 {
+            .red
+        } else if 0.25..<0.5 ~= configuration.value {
+            .orange
+        } else if 0.5..<0.8 ~= configuration.value {
+            .yellow
+        } else {
+            .green
+        }
 
         ZStack {
             Circle()
@@ -137,9 +142,9 @@ struct SuccessGaugeStyle: GaugeStyle {
     }
 }
 
-// MARK: - Emotion Buttons Style (Gameplay)
-struct ActivityAnswer_ButtonStyle: ButtonStyle {
+// MARK: - ActivityAnswer_ButtonStyle
 
+struct ActivityAnswer_ButtonStyle: ButtonStyle {
     var isEnabled: Bool = false
 
     func makeBody(configuration: Self.Configuration) -> some View {
@@ -156,16 +161,16 @@ struct ActivityAnswer_ButtonStyle: ButtonStyle {
             )
             .overlay(
                 Circle()
-                    .fill(isEnabled ? .clear : .white.opacity(0.6))
+                    .fill(self.isEnabled ? .clear : .white.opacity(0.6))
             )
             .contentShape(Circle())
-            .animation(.easeOut(duration: 0.3), value: isEnabled)
+            .animation(.easeOut(duration: 0.3), value: self.isEnabled)
     }
 }
 
-// MARK: - Play Sound Button Style (Gameplay)
-struct PlaySound_ButtonStyle: ButtonStyle {
+// MARK: - PlaySound_ButtonStyle
 
+struct PlaySound_ButtonStyle: ButtonStyle {
     var progress: CGFloat
 
     func makeBody(configuration: Self.Configuration) -> some View {
@@ -180,28 +185,28 @@ struct PlaySound_ButtonStyle: ButtonStyle {
                     )
                     .overlay(
                         Circle()
-                            .trim(from: 0, to: progress)
+                            .trim(from: 0, to: self.progress)
                             .stroke(
                                 DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor,
                                 style: StrokeStyle(lineWidth: 10, lineCap: .round)
                             )
                             .rotationEffect(.degrees(-90))
-                            .animation(.easeOut(duration: 0.2), value: progress)
+                            .animation(.easeOut(duration: 0.2), value: self.progress)
                     )
             )
             .contentShape(Circle())
     }
 }
 
-// MARK: - CheerScreen Buttons
-struct BorderedCapsule_ButtonStyle: ButtonStyle {
+// MARK: - BorderedCapsule_ButtonStyle
 
+struct BorderedCapsule_ButtonStyle: ButtonStyle {
     var isFilled: Bool = true
 
     func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
             .font(.system(size: 22, weight: .black, design: .rounded))
-            .foregroundColor(!isFilled ? DesignKitAsset.Colors.bravoHighlights.swiftUIColor : .white)
+            .foregroundColor(!self.isFilled ? DesignKitAsset.Colors.bravoHighlights.swiftUIColor : .white)
             .opacity(configuration.isPressed ? 0.95 : 1)
             .scaleEffect(configuration.isPressed ? 0.99 : 1, anchor: .center)
             .padding()
@@ -209,7 +214,7 @@ struct BorderedCapsule_ButtonStyle: ButtonStyle {
             .background(
                 Capsule()
                     .fill(
-                        isFilled ? DesignKitAsset.Colors.bravoHighlights.swiftUIColor : .white,
+                        self.isFilled ? DesignKitAsset.Colors.bravoHighlights.swiftUIColor : .white,
                         strokeBorder: DesignKitAsset.Colors.bravoHighlights.swiftUIColor,
                         lineWidth: 1
                     )

@@ -7,7 +7,6 @@ import RobotKit
 import SwiftUI
 
 enum RemoteStandard {
-
     enum DisplayMode: String, CaseIterable {
         case fullBelt
         case twoHalves
@@ -19,13 +18,12 @@ enum RemoteStandard {
         var firstButtonPosY: Int
         var angle: Double
 
-        func sizeThatFits(proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) -> CGSize {
+        func sizeThatFits(proposal: ProposedViewSize, subviews _: Subviews, cache _: inout ()) -> CGSize {
             proposal.replacingUnspecifiedDimensions()
         }
 
-        func placeSubviews(in bounds: CGRect, proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) {
-
-            let angleDivision = Angle.degrees(angle / Double(subviews.count - 1)).radians
+        func placeSubviews(in bounds: CGRect, proposal _: ProposedViewSize, subviews: Subviews, cache _: inout ()) {
+            let angleDivision = Angle.degrees(self.angle / Double(subviews.count - 1)).radians
             let posX = bounds.midX
             let posY = bounds.midY * 5 / 4
 
@@ -48,7 +46,7 @@ enum RemoteStandard {
     }
 
     struct MainView: View {
-        @State private var displayMode = DisplayMode.fullBelt
+        // MARK: Internal
 
         var body: some View {
             HStack(spacing: 400) {
@@ -61,16 +59,19 @@ enum RemoteStandard {
                 }
 
                 RadialLayout(firstButtonPosX: -120, firstButtonPosY: -200, angle: 90.0) {
-                    LedZoneSelectorView(displayMode: displayMode)
+                    LedZoneSelectorView(displayMode: self.displayMode)
 
                     ForEach(DisplayMode.allCases, id: \.self) { mode in
-                        LedZoneSelectorView.ModeButton(mode: mode, displayMode: $displayMode)
+                        LedZoneSelectorView.ModeButton(mode: mode, displayMode: self.$displayMode)
                     }
                 }
             }
         }
-    }
 
+        // MARK: Private
+
+        @State private var displayMode = DisplayMode.fullBelt
+    }
 }
 
 #Preview {

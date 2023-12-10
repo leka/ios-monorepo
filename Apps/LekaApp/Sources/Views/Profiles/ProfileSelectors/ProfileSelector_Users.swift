@@ -6,7 +6,6 @@ import DesignKit
 import SwiftUI
 
 struct ProfileSelector_Users: View {
-
     @EnvironmentObject var company: CompanyViewModel
     @EnvironmentObject var settings: SettingsViewModel
     @EnvironmentObject var navigationVM: NavigationViewModel
@@ -24,25 +23,26 @@ struct ProfileSelector_Users: View {
         .toolbar {
             ToolbarItem(placement: .principal) {
                 HStack(spacing: 4) {
-                    if settings.companyIsConnected && settings.exploratoryModeIsOn {
+                    if self.settings.companyIsConnected, self.settings.exploratoryModeIsOn {
                         Image(systemName: "binoculars.fill")
                     }
                     Text("Choisir ou créer de nouveaux profils")
                 }
-                .font(metrics.semi17)
+                .font(self.metrics.semi17)
                 .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
             }
             ToolbarItem(placement: .navigationBarLeading) {
                 Button(
                     action: {
-                        navigationVM.showActivitiesFullScreenCover = false
+                        self.navigationVM.showActivitiesFullScreenCover = false
                     },
                     label: {
                         HStack(spacing: 4) {
                             Image(systemName: "chevron.left")
                             Text("Retour")
                         }
-                    })
+                    }
+                )
             }
         }
     }

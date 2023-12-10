@@ -5,9 +5,7 @@
 import SwiftUI
 
 extension DesignSystemLeka {
-
     struct ButtonsView: View {
-
         let colors: [Color] = [
             Color(hex: 0xAFCE36),
             Color(hex: 0x0A579B),
@@ -17,7 +15,7 @@ extension DesignSystemLeka {
         var body: some View {
             ScrollView(.vertical) {
                 VStack(alignment: .leading, spacing: 40) {
-                    ForEach(colors, id: \.self) { color in
+                    ForEach(self.colors, id: \.self) { color in
                         VStack(alignment: .leading) {
                             Button("automatic tint \(color.description)") {}
                                 .buttonStyle(.automatic)
@@ -43,9 +41,7 @@ extension DesignSystemLeka {
             }
             .navigationTitle("Leka Buttons")
         }
-
     }
-
 }
 
 #Preview {

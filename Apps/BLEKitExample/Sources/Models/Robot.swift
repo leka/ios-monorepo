@@ -6,12 +6,7 @@ import BLEKit
 import Foundation
 
 class Robot: ObservableObject {
-    var robotPeripheral: RobotPeripheral? {
-        didSet {
-            updateDeviceInformation()
-            subscribeToDeviceUpdates()
-        }
-    }
+    // MARK: Internal
 
     @Published var manufacturer: String = ""
     @Published var modelNumber: String = ""
@@ -21,35 +16,44 @@ class Robot: ObservableObject {
     @Published var battery: Int = 0
     @Published var isCharging: Bool = false
 
-    @Published var magicCardId: Int = 0
+    @Published var magicCardID: Int = 0
     @Published var magicCardLanguage: String = ""
 
     let commands = CommandKit()
 
-    func updateDeviceInformation() {
-        guard let robotPeripheral = self.robotPeripheral else { return }
+    var robotPeripheral: RobotPeripheral? {
+        didSet {
+            self.updateDeviceInformation()
+            self.subscribeToDeviceUpdates()
+        }
+    }
 
-        registerReadOnlyCharacteristicClosures()
+    func updateDeviceInformation() {
+        guard let robotPeripheral else { return }
+
+        self.registerReadOnlyCharacteristicClosures()
 
         robotPeripheral.readReadOnlyCharacteristics()
     }
 
     func subscribeToDeviceUpdates() {
-        guard let robotPeripheral = self.robotPeripheral else { return }
+        guard let robotPeripheral else { return }
 
-        registerNotifyingCharacteristicClosures()
+        self.registerNotifyingCharacteristicClosures()
 
         robotPeripheral.discoverAndListenForUpdates()
     }
 
     func runReinforcer(_ reinforcer: UInt8) {
-        guard let robotPeripheral = robotPeripheral else { return }
+        guard let robotPeripheral else { return }
 
-        commands.addMotivator(reinforcer)
+        self.commands.addMotivator(reinforcer)
         let data = Data(commands.getCommands())
 
         robotPeripheral.sendCommand(data)
     }
+
+    // MARK: Private
 
     private func registerReadOnlyCharacteristicClosures() {
         for char in kDefaultReadOnlyCharacteristics {
@@ -58,9 +62,10 @@ class Robot: ObservableObject {
             if newChar.characteristicUUID == BLESpecs.DeviceInformation.Characteristics.manufacturer {
                 newChar.onNotification = {
                     [weak self] data in
-                    if let data = data {
+                    if let data {
                         self?.manufacturer = String(
-                            decoding: data, as: UTF8.self)
+                            decoding: data, as: UTF8.self
+                        )
                     }
                 }
             }
@@ -68,9 +73,10 @@ class Robot: ObservableObject {
             if newChar.characteristicUUID == BLESpecs.DeviceInformation.Characteristics.modelNumber {
                 newChar.onNotification = {
                     [weak self] data in
-                    if let data = data {
+                    if let data {
                         self?.modelNumber = String(
-                            decoding: data, as: UTF8.self)
+                            decoding: data, as: UTF8.self
+                        )
                     }
                 }
             }
@@ -78,9 +84,10 @@ class Robot: ObservableObject {
             if newChar.characteristicUUID == BLESpecs.DeviceInformation.Characteristics.serialNumber {
                 newChar.onNotification = {
                     [weak self] data in
-                    if let data = data {
+                    if let data {
                         self?.serialNumber = String(
-                            decoding: data, as: UTF8.self)
+                            decoding: data, as: UTF8.self
+                        )
                     }
                 }
             }
@@ -88,9 +95,10 @@ class Robot: ObservableObject {
             if newChar.characteristicUUID == BLESpecs.DeviceInformation.Characteristics.osVersion {
                 newChar.onNotification = {
                     [weak self] data in
-                    if let data = data {
+                    if let data {
                         self?.osVersion = String(
-                            decoding: data, as: UTF8.self)
+                            decoding: data, as: UTF8.self
+                        )
                     }
                 }
             }
@@ -124,8 +132,8 @@ class Robot: ObservableObject {
             if newChar.characteristicUUID == BLESpecs.MagicCard.Characteristics.id {
                 newChar.onNotification = {
                     [weak self] data in
-                    if let data = data {
-                        self?.magicCardId = Int(data[1])
+                    if let data {
+                        self?.magicCardID = Int(data[1])
                     }
                 }
             }

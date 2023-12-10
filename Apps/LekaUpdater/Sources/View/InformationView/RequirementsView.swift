@@ -5,34 +5,41 @@
 import DesignKit
 import SwiftUI
 
+// MARK: - RequirementsView
+
 struct RequirementsView: View {
     @StateObject var viewModel: RequirementsViewModel
 
     var body: some View {
         VStack {
-            Text(viewModel.requirementsInstructionsText)
+            Text(self.viewModel.requirementsInstructionsText)
                 .foregroundColor(DesignKitAsset.Colors.darkGray.swiftUIColor)
 
             HStack(alignment: .top) {
                 RequirementView(
-                    image: viewModel.chargingBasePluggedImage,
-                    text: viewModel.chargingBasePluggedText,
-                    stepNumber: 1)
+                    image: self.viewModel.chargingBasePluggedImage,
+                    text: self.viewModel.chargingBasePluggedText,
+                    stepNumber: 1
+                )
 
                 RequirementView(
-                    image: viewModel.chargingBaseGreenLEDImage,
-                    text: viewModel.chargingBaseGreenLEDText,
-                    stepNumber: 2)
+                    image: self.viewModel.chargingBaseGreenLEDImage,
+                    text: self.viewModel.chargingBaseGreenLEDText,
+                    stepNumber: 2
+                )
 
                 RequirementView(
-                    image: viewModel.robotBatteryMinimumLevelImage,
-                    text: viewModel.robotBatteryMinimumLevelText,
-                    stepNumber: 3)
+                    image: self.viewModel.robotBatteryMinimumLevelImage,
+                    text: self.viewModel.robotBatteryMinimumLevelText,
+                    stepNumber: 3
+                )
             }
         }
         .padding()
     }
 }
+
+// MARK: - RequirementView
 
 private struct RequirementView: View {
     let image: Image
@@ -41,7 +48,7 @@ private struct RequirementView: View {
 
     var body: some View {
         VStack {
-            image
+            self.image
                 .resizable()
                 .scaledToFit()
                 .frame(height: 150)
@@ -51,12 +58,12 @@ private struct RequirementView: View {
                         .strokeBorder(DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor, lineWidth: 2)
                 )
 
-            Text("\(stepNumber)")
+            Text("\(self.stepNumber)")
                 .font(.title2)
                 .foregroundColor(DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor)
                 .padding()
 
-            Text(text)
+            Text(self.text)
                 .font(.caption)
                 .multilineTextAlignment(.center)
                 .foregroundColor(DesignKitAsset.Colors.darkGray.swiftUIColor)
@@ -64,6 +71,8 @@ private struct RequirementView: View {
         .padding()
     }
 }
+
+// MARK: - RequirementsView_Previews
 
 struct RequirementsView_Previews: PreviewProvider {
     static var previews: some View {

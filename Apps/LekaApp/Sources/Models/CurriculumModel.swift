@@ -4,14 +4,10 @@
 
 import Foundation
 
-struct CurriculumList: Codable {
-    enum CodingKeys: String, CodingKey {
-        case curriculums
-        case sectionTitle = "section_title"
-    }
+// MARK: - CurriculumList
 
-    var sectionTitle: LocalizedContent
-    var curriculums: [String]
+struct CurriculumList: Codable {
+    // MARK: Lifecycle
 
     init(
         sectionTitle: LocalizedContent = LocalizedContent(),
@@ -20,22 +16,22 @@ struct CurriculumList: Codable {
         self.sectionTitle = sectionTitle
         self.curriculums = curriculums
     }
-}
 
-struct Curriculum: Codable, Identifiable {
+    // MARK: Internal
+
     enum CodingKeys: String, CodingKey {
-        case title, subtitle, activities
-        case id = "uuid"
-        case fullTitle = "full_title"
-        case quantity = "number_of_activities"
+        case curriculums
+        case sectionTitle = "section_title"
     }
 
-    var id: String
-    var title: LocalizedContent
-    var subtitle: LocalizedContent
-    var fullTitle: LocalizedContent
-    var quantity: Int
-    var activities: [String]
+    var sectionTitle: LocalizedContent
+    var curriculums: [String]
+}
+
+// MARK: - Curriculum
+
+struct Curriculum: Codable, Identifiable {
+    // MARK: Lifecycle
 
     init(
         id: String = "",
@@ -52,4 +48,22 @@ struct Curriculum: Codable, Identifiable {
         self.quantity = quantity
         self.activities = activities
     }
+
+    // MARK: Internal
+
+    enum CodingKeys: String, CodingKey {
+        case title
+        case subtitle
+        case activities
+        case id = "uuid"
+        case fullTitle = "full_title"
+        case quantity = "number_of_activities"
+    }
+
+    var id: String
+    var title: LocalizedContent
+    var subtitle: LocalizedContent
+    var fullTitle: LocalizedContent
+    var quantity: Int
+    var activities: [String]
 }

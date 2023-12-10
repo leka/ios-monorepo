@@ -6,13 +6,11 @@ import DesignKit
 import SwiftUI
 
 struct SidebarView: View {
+    // MARK: Internal
 
     @EnvironmentObject var navigationVM: NavigationViewModel
     @EnvironmentObject var settings: SettingsViewModel
     @EnvironmentObject var metrics: UIMetrics
-
-    @State private var appVersion: String? = ""
-    @State private var buildNumber: String? = ""
 
     var body: some View {
         ScrollView {
@@ -22,8 +20,8 @@ struct SidebarView: View {
                 Spacer()
                 VStack(spacing: 20) {
                     Spacer()
-                    settingsButton
-                    appVersionIndicator
+                    self.settingsButton
+                    self.appVersionIndicator
                 }
                 .padding(.bottom, 20)
             }
@@ -31,25 +29,30 @@ struct SidebarView: View {
         .ignoresSafeArea(.container, edges: .top)
         .background(DesignKitAsset.Colors.lekaLightGray.swiftUIColor)
         .task {
-            appVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
-            buildNumber = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String
+            self.appVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
+            self.buildNumber = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String
         }
     }
 
+    // MARK: Private
+
+    @State private var appVersion: String? = ""
+    @State private var buildNumber: String? = ""
+
     @ViewBuilder
     private var settingsButton: some View {
-        if settings.companyIsConnected {
+        if self.settings.companyIsConnected {
             Button {
-                navigationVM.showSettings.toggle()
+                self.navigationVM.showSettings.toggle()
             } label: {
                 HStack {
                     Image(systemName: "gear")
                     Text("Réglages")
-                        .font(metrics.reg17)
+                        .font(self.metrics.reg17)
                 }
                 .foregroundColor(DesignKitAsset.Colors.lekaDarkGray.swiftUIColor)
                 .frame(width: 200, height: 44)
-                .background(.white, in: RoundedRectangle(cornerRadius: metrics.btnRadius, style: .continuous))
+                .background(.white, in: RoundedRectangle(cornerRadius: self.metrics.btnRadius, style: .continuous))
                 .contentShape(Rectangle())
             }
         } else {
@@ -58,10 +61,9 @@ struct SidebarView: View {
     }
 
     private var appVersionIndicator: some View {
-        Text("My Leka App - Version \(appVersion!) (\(buildNumber!))")
+        Text("My Leka App - Version \(self.appVersion!) (\(self.buildNumber!))")
             .foregroundColor(DesignKitAsset.Colors.lekaDarkGray.swiftUIColor)
-            .font(metrics.reg12)
+            .font(self.metrics.reg12)
             .frame(alignment: .bottom)
     }
-
 }

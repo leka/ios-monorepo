@@ -5,13 +5,11 @@
 import SpriteKit
 
 extension DragAndDropToAssociateView {
-
     final class FourChoicesScene: BaseScene {
-
         override func setFirstAnswerPosition() {
             spacer = 455
             initialNodeX = (size.width - spacer) / 2
-            verticalSpacing = self.size.height / 3
+            verticalSpacing = size.height / 3
             defaultPosition = CGPoint(x: initialNodeX, y: verticalSpacing - 30)
         }
 
@@ -23,7 +21,5 @@ extension DragAndDropToAssociateView {
                 defaultPosition.y += verticalSpacing + 60
             }
         }
-
     }
-
 }

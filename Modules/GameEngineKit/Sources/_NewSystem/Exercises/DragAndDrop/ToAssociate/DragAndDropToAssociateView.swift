@@ -9,20 +9,10 @@ import SpriteKit
 import SwiftUI
 
 public struct DragAndDropToAssociateView: View {
-
-    enum Interface: Int {
-        case twoChoices = 2
-        case threeChoices
-        case fourChoices
-        case fiveChoices
-        case sixChoices
-    }
-
-    @StateObject private var viewModel: ViewModel
-    @State private var scene: SKScene = SKScene()
+    // MARK: Lifecycle
 
     public init(choices: [DragAndDropToAssociate.Choice], shuffle: Bool = false) {
-        self._viewModel = StateObject(
+        _viewModel = StateObject(
             wrappedValue: ViewModel(choices: choices, shuffle: shuffle)
         )
     }
@@ -32,7 +22,7 @@ public struct DragAndDropToAssociateView: View {
             fatalError("Exercise payload is not .association")
         }
 
-        self._viewModel = StateObject(
+        _viewModel = StateObject(
             wrappedValue: ViewModel(
                 choices: payload.choices,
                 shuffle: payload.shuffleChoices,
@@ -41,10 +31,12 @@ public struct DragAndDropToAssociateView: View {
         )
     }
 
+    // MARK: Public
+
     public var body: some View {
         GeometryReader { proxy in
             SpriteView(
-                scene: makeScene(size: proxy.size),
+                scene: self.makeScene(size: proxy.size),
                 options: [.allowsTransparency]
             )
             .frame(width: proxy.size.width, height: proxy.size.height)
@@ -53,28 +45,42 @@ public struct DragAndDropToAssociateView: View {
 
                 switch interface {
                     case .twoChoices:
-                        scene = TwoChoicesScene(viewModel: viewModel)
+                        self.scene = TwoChoicesScene(viewModel: self.viewModel)
                     case .threeChoices:
-                        scene = ThreeChoicesScene(viewModel: viewModel)
+                        self.scene = ThreeChoicesScene(viewModel: self.viewModel)
                     case .fourChoices:
-                        scene = FourChoicesScene(viewModel: viewModel)
+                        self.scene = FourChoicesScene(viewModel: self.viewModel)
                     case .fiveChoices:
-                        scene = FiveChoicesScene(viewModel: viewModel)
+                        self.scene = FiveChoicesScene(viewModel: self.viewModel)
                     case .sixChoices:
-                        scene = SixChoicesScene(viewModel: viewModel)
+                        self.scene = SixChoicesScene(viewModel: self.viewModel)
                 }
             }
         }
         .edgesIgnoringSafeArea(.horizontal)
     }
 
+    // MARK: Internal
+
+    enum Interface: Int {
+        case twoChoices = 2
+        case threeChoices
+        case fourChoices
+        case fiveChoices
+        case sixChoices
+    }
+
+    // MARK: Private
+
+    @StateObject private var viewModel: ViewModel
+    @State private var scene: SKScene = .init()
+
     private func makeScene(size: CGSize) -> SKScene {
         guard let finalScene = scene as? BaseScene else {
             return SKScene()
         }
         finalScene.size = CGSize(width: size.width, height: size.height)
-        finalScene.viewModel = viewModel
+        finalScene.viewModel = self.viewModel
         return finalScene
     }
-
 }

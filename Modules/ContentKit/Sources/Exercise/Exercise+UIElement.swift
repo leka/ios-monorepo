@@ -4,12 +4,10 @@
 
 import Foundation
 
-extension Exercise {
-
-    public enum UIElementType: String, Codable {
+public extension Exercise {
+    enum UIElementType: String, Codable {
         case image
         case text
         case color
     }
-
 }

@@ -5,8 +5,9 @@
 import BLEKit
 import SwiftUI
 
-struct ScanButton: View {
+// MARK: - ScanButton
 
+struct ScanButton: View {
     // MARK: - Environment variables
 
     @EnvironmentObject var robotListViewModel: RobotListViewModel
@@ -15,11 +16,11 @@ struct ScanButton: View {
 
     var body: some View {
         Button {
-            robotListViewModel.scanForPeripherals()
+            self.robotListViewModel.scanForPeripherals()
         } label: {
             Group {
                 HStack(spacing: 10) {
-                    if !robotListViewModel.isScanning {
+                    if !self.robotListViewModel.isScanning {
                         Text("Start scanning")
                             .font(.headline)
                             .foregroundColor(.white)
@@ -33,7 +34,6 @@ struct ScanButton: View {
                                 .font(.headline)
                                 .foregroundColor(.white)
                         }
-
                     }
                     Image(systemName: "magnifyingglass.circle.fill")
                         .font(.title)
@@ -42,11 +42,13 @@ struct ScanButton: View {
             }
             .frame(height: 50)
             .frame(maxWidth: .infinity)
-            .background(!robotListViewModel.isScanning ? .blue : .orange)
+            .background(!self.robotListViewModel.isScanning ? .blue : .orange)
             .cornerRadius(10)
         }
     }
 }
+
+// MARK: - ScanButton_Previews
 
 struct ScanButton_Previews: PreviewProvider {
     //    static let bleManager = BLEManager.live()

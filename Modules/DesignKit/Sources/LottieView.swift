@@ -6,18 +6,7 @@ import Lottie
 import SwiftUI
 
 public struct LottieView: UIViewRepresentable {
-    public typealias UIViewType = UIView
-
-    public func makeCoordinator() -> Coordinator {
-        Coordinator(self)
-    }
-
-    var name: String!
-    var speed: CGFloat
-    var reverse: Bool
-    var loopMode: LottieLoopMode
-    var action: () -> Void
-    @Binding var play: Bool
+    // MARK: Lifecycle
 
     public init(
         name: String,
@@ -34,64 +23,85 @@ public struct LottieView: UIViewRepresentable {
         self.reverse = reverse
         self.loopMode = loopMode
         self.action = action
-        self._play = play
+        _play = play
     }
 
-    var animationView = LottieAnimationView()
+    // MARK: Public
+
+    public typealias UIViewType = UIView
 
     public class Coordinator: NSObject {
-        var parent: LottieView
+        // MARK: Lifecycle
 
         init(_ animationView: LottieView) {
             self.parent = animationView
             super.init()
         }
+
+        // MARK: Internal
+
+        var parent: LottieView
     }
 
-    public func makeUIView(context: UIViewRepresentableContext<LottieView>) -> UIView {
+    public func makeCoordinator() -> Coordinator {
+        Coordinator(self)
+    }
+
+    public func makeUIView(context _: UIViewRepresentableContext<LottieView>) -> UIView {
         let view = UIView()
 
-        animationView.animation = LottieAnimation.named(name)
-        animationView.contentMode = .scaleAspectFit
-        animationView.animationSpeed = speed
-        animationView.loopMode = loopMode
-        animationView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(animationView)
+        self.animationView.animation = LottieAnimation.named(self.name)
+        self.animationView.contentMode = .scaleAspectFit
+        self.animationView.animationSpeed = self.speed
+        self.animationView.loopMode = self.loopMode
+        self.animationView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(self.animationView)
 
         NSLayoutConstraint.activate([
-            animationView.widthAnchor.constraint(equalTo: view.widthAnchor),
-            animationView.heightAnchor.constraint(equalTo: view.heightAnchor),
+            self.animationView.widthAnchor.constraint(equalTo: view.widthAnchor),
+            self.animationView.heightAnchor.constraint(equalTo: view.heightAnchor),
         ])
 
         return view
     }
 
-    public func updateUIView(_ uiView: UIView, context: UIViewRepresentableContext<LottieView>) {
-        if play {
-            if reverse {
+    public func updateUIView(_: UIView, context: UIViewRepresentableContext<LottieView>) {
+        if self.play {
+            if self.reverse {
                 context.coordinator.parent.animationView.play(fromProgress: 0.0, toProgress: 1.0, loopMode: .none) {
                     _ in
-                    animationView.pause()
+                    self.animationView.pause()
                 }
             } else {
                 context.coordinator.parent.animationView.play { finished in
                     if finished {
-                        animationView.pause()
-                        action()
+                        self.animationView.pause()
+                        self.action()
                     }
                 }
             }
         } else {
-            if reverse {
-                context.coordinator.parent.animationView.animationSpeed = speed * 1.5
+            if self.reverse {
+                context.coordinator.parent.animationView.animationSpeed = self.speed * 1.5
                 context.coordinator.parent.animationView.play(fromProgress: 1.0, toProgress: 0.0, loopMode: .none) {
                     _ in
                     context.coordinator.parent.animationView.stop()
-                    context.coordinator.parent.animationView.animationSpeed = speed
+                    context.coordinator.parent.animationView.animationSpeed = self.speed
                 }
             } else {
                 context.coordinator.parent.animationView.stop()
             }
         }
     }
+
+    // MARK: Internal
+
+    var name: String!
+    var speed: CGFloat
+    var reverse: Bool
+    var loopMode: LottieLoopMode
+    var action: () -> Void
+    @Binding var play: Bool
+
+    var animationView = LottieAnimationView()
 }

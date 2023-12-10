@@ -5,14 +5,15 @@
 import Foundation
 
 class OrganisationAuthState: ObservableObject {
-
     enum FirebaseAuthenticationState {
-        case unknown, loggedOut, loggedIn
+        case unknown
+        case loggedOut
+        case loggedIn
     }
 
     @Published var organisationIsAuthenticated: FirebaseAuthenticationState = .unknown
 
     func updateAuthState() {
-        organisationIsAuthenticated = .loggedOut  // for now...
+        self.organisationIsAuthenticated = .loggedOut // for now...
     }
 }

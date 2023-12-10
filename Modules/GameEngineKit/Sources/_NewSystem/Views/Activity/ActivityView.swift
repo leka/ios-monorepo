@@ -7,62 +7,61 @@ import RobotKit
 import SwiftUI
 
 public struct ActivityView: View {
-
-    @Environment(\.dismiss) var dismiss
-
-    @ObservedObject var viewModel: ActivityViewViewModel
+    // MARK: Lifecycle
 
     public init(viewModel: ActivityViewViewModel) {
         self.viewModel = viewModel
     }
+
+    // MARK: Public
 
     public var body: some View {
         NavigationStack {
             ZStack(alignment: .bottomTrailing) {
                 VStack {
                     VStack(spacing: 15) {
-                        ActivityProgressBar(viewModel: viewModel)
+                        ActivityProgressBar(viewModel: self.viewModel)
 
-                        ExerciseInstructionsButton(instructions: viewModel.currentExercise.instructions)
+                        ExerciseInstructionsButton(instructions: self.viewModel.currentExercise.instructions)
                     }
 
                     VStack {
                         Spacer()
-                        currentExerciseInterface()
+                        self.currentExerciseInterface()
                         Spacer()
                     }
                 }
-                .id(viewModel.currentExerciseIndexInSequence)
+                .id(self.viewModel.currentExerciseIndexInSequence)
 
-                continueButton
+                self.continueButton
             }
             .ignoresSafeArea(.all, edges: .bottom)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .principal) {
-                    Text(viewModel.currentActivity.name)
+                    Text(self.viewModel.currentActivity.name)
                         .font(.headline)
                 }
                 ToolbarItem(placement: .topBarLeading) {
                     Button {
-                        viewModel.moveToPreviousExercise()
+                        self.viewModel.moveToPreviousExercise()
                     } label: {
                         Image(systemName: "chevron.backward")
                     }
-                    .disabled(viewModel.isFirstExercise)
+                    .disabled(self.viewModel.isFirstExercise)
                 }
                 ToolbarItem(placement: .topBarTrailing) {
                     Button("Dismiss") {
-                        dismiss()
+                        self.dismiss()
                     }
                 }
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
-                        viewModel.moveToNextExercise()
+                        self.viewModel.moveToNextExercise()
                     } label: {
                         Image(systemName: "chevron.forward")
                     }
-                    .disabled(viewModel.isLastExercise)
+                    .disabled(self.viewModel.isLastExercise)
                 }
             }
         }
@@ -74,49 +73,74 @@ public struct ActivityView: View {
         }
     }
 
+    // MARK: Internal
+
+    @Environment(\.dismiss) var dismiss
+
+    @ObservedObject var viewModel: ActivityViewViewModel
+
+    // MARK: Private
+
+    @ViewBuilder
+    private var continueButton: some View {
+        let state = self.viewModel.currentExerciseSharedData.state
+
+        if state != .completed {
+            EmptyView()
+        } else {
+            Button("Continuer") {
+                self.viewModel.isLastExercise ? self.dismiss() : self.viewModel.moveToNextExercise()
+            }
+            .buttonStyle(.borderedProminent)
+            .tint(.green)
+            .padding()
+            .transition(.asymmetric(insertion: .opacity.animation(.snappy.delay(2)), removal: .identity))
+        }
+    }
+
     @ViewBuilder
     private func currentExerciseInterface() -> some View {
-        switch viewModel.currentExerciseInterface {
+        switch self.viewModel.currentExerciseInterface {
             case .touchToSelect:
                 TouchToSelectView(
-                    exercise: viewModel.currentExercise,
-                    data: viewModel.currentExerciseSharedData
+                    exercise: self.viewModel.currentExercise,
+                    data: self.viewModel.currentExerciseSharedData
                 )
 
             case .robotThenTouchToSelect:
                 RobotThenTouchToSelectView(
-                    exercise: viewModel.currentExercise,
-                    data: viewModel.currentExerciseSharedData
+                    exercise: self.viewModel.currentExercise,
+                    data: self.viewModel.currentExerciseSharedData
                 )
 
             case .listenThenTouchToSelect:
                 ListenThenTouchToSelectView(
-                    exercise: viewModel.currentExercise,
-                    data: viewModel.currentExerciseSharedData
+                    exercise: self.viewModel.currentExercise,
+                    data: self.viewModel.currentExerciseSharedData
                 )
 
             case .observeThenTouchToSelect:
                 ObserveThenTouchToSelectView(
-                    exercise: viewModel.currentExercise,
-                    data: viewModel.currentExerciseSharedData
+                    exercise: self.viewModel.currentExercise,
+                    data: self.viewModel.currentExerciseSharedData
                 )
 
             case .dragAndDropIntoZones:
                 DragAndDropIntoZonesView(
-                    exercise: viewModel.currentExercise,
-                    data: viewModel.currentExerciseSharedData
+                    exercise: self.viewModel.currentExercise,
+                    data: self.viewModel.currentExerciseSharedData
                 )
 
             case .dragAndDropToAssociate:
                 DragAndDropToAssociateView(
-                    exercise: viewModel.currentExercise,
-                    data: viewModel.currentExerciseSharedData
+                    exercise: self.viewModel.currentExercise,
+                    data: self.viewModel.currentExerciseSharedData
                 )
 
             case .danceFreeze:
                 DanceFreeze.MainView(
-                    exercise: viewModel.currentExercise,
-                    data: viewModel.currentExerciseSharedData
+                    exercise: self.viewModel.currentExercise,
+                    data: self.viewModel.currentExerciseSharedData
                 )
 
             case .remoteStandard:
@@ -127,41 +151,23 @@ public struct ActivityView: View {
 
             case .hideAndSeek:
                 HideAndSeekView(
-                    exercise: viewModel.currentExercise,
-                    data: viewModel.currentExerciseSharedData
+                    exercise: self.viewModel.currentExercise,
+                    data: self.viewModel.currentExerciseSharedData
                 )
 
             case .musicalInstruments:
                 MusicalInstrumentView(
-                    exercise: viewModel.currentExercise,
-                    data: viewModel.currentExerciseSharedData
+                    exercise: self.viewModel.currentExercise,
+                    data: self.viewModel.currentExerciseSharedData
                 )
 
             case .melody:
                 MelodyView(
-                    exercise: viewModel.currentExercise,
-                    data: viewModel.currentExerciseSharedData
+                    exercise: self.viewModel.currentExercise,
+                    data: self.viewModel.currentExerciseSharedData
                 )
         }
     }
-
-    @ViewBuilder
-    private var continueButton: some View {
-        let state = viewModel.currentExerciseSharedData.state
-
-        if state != .completed {
-            EmptyView()
-        } else {
-            Button("Continuer") {
-                viewModel.isLastExercise ? dismiss() : viewModel.moveToNextExercise()
-            }
-            .buttonStyle(.borderedProminent)
-            .tint(.green)
-            .padding()
-            .transition(.asymmetric(insertion: .opacity.animation(.snappy.delay(2)), removal: .identity))
-        }
-    }
-
 }
 
 #Preview {

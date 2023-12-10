@@ -7,34 +7,40 @@ import Combine
 import ContentKit
 import Foundation
 
+// MARK: - AudioPlayer
+
 public class AudioPlayer: NSObject, ObservableObject {
-    @Published var progress: CGFloat = 0.0
-    @Published var didFinishPlaying = false
-
-    private var player: AVAudioPlayer!
-
-    private var cancellables: Set<AnyCancellable> = []
+    // MARK: Lifecycle
 
     public init(audioRecording: AudioRecording) {
         super.init()
-        setAudioPlayer(audioRecording: audioRecording)
-        didFinishPlaying = false
+        self.setAudioPlayer(audioRecording: audioRecording)
+        self.didFinishPlaying = false
+    }
+
+    // MARK: Internal
+
+    @Published var progress: CGFloat = 0.0
+    @Published var didFinishPlaying = false
+
+    var isPlaying: Bool {
+        self.player.isPlaying
     }
 
     func setAudioPlayer(audioRecording: AudioRecording) {
-        progress = 0.0
-        didFinishPlaying = false
+        self.progress = 0.0
+        self.didFinishPlaying = false
 
         do {
-            let fileUrl = Bundle.module.url(forResource: audioRecording.file, withExtension: "mp3")!
-            player = try AVAudioPlayer(contentsOf: fileUrl)
-            player.delegate = self
+            let fileURL = Bundle.module.url(forResource: audioRecording.file, withExtension: "mp3")!
+            self.player = try AVAudioPlayer(contentsOf: fileURL)
+            self.player.delegate = self
         } catch {
             print("ERROR - mp3 file not found - \(error)")
             return
         }
 
-        player.prepareToPlay()
+        self.player.prepareToPlay()
 
         Timer.publish(every: 0.1, on: .main, in: .default)
             .autoconnect()
@@ -49,33 +55,34 @@ public class AudioPlayer: NSObject, ObservableObject {
                     }
                 }
             })
-            .store(in: &cancellables)
+            .store(in: &self.cancellables)
     }
 
     func play() {
-        player.play()
-        didFinishPlaying = false
+        self.player.play()
+        self.didFinishPlaying = false
     }
 
     func pause() {
-        player.pause()
+        self.player.pause()
     }
 
     func stop() {
-        player.stop()
-        didFinishPlaying = true
+        self.player.stop()
+        self.didFinishPlaying = true
     }
 
-    var isPlaying: Bool {
-        self.player.isPlaying
-    }
+    // MARK: Private
 
+    private var player: AVAudioPlayer!
+
+    private var cancellables: Set<AnyCancellable> = []
 }
 
+// MARK: AVAudioPlayerDelegate
+
 extension AudioPlayer: AVAudioPlayerDelegate {
-
-    public func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully: Bool) {
-        didFinishPlaying = true
+    public func audioPlayerDidFinishPlaying(_: AVAudioPlayer, successfully _: Bool) {
+        self.didFinishPlaying = true
     }
-
 }

@@ -6,7 +6,17 @@ import DesignKit
 import LocalizationKit
 import SwiftUI
 
+// MARK: - ChangelogView
+
 struct ChangelogView: View {
+    // MARK: Internal
+
+    var body: some View {
+        Text(self.changelog)
+    }
+
+    // MARK: Private
+
     private var changelog: LocalizedStringKey {
         // swiftlint:disable:next force_cast
         let osVersion = Bundle.main.object(forInfoDictionaryKey: "LEKA_OS_VERSION") as! String
@@ -17,7 +27,8 @@ struct ChangelogView: View {
 
         let fileURL = Bundle.main.url(
             forResource: "LekaOS-\(osVersion)-\(languageCode)",
-            withExtension: "md")!
+            withExtension: "md"
+        )!
 
         do {
             let content = try String(contentsOf: fileURL)
@@ -26,11 +37,9 @@ struct ChangelogView: View {
             return "\(l10n.information.changelogNotFoundText)"
         }
     }
-
-    var body: some View {
-        Text(changelog)
-    }
 }
+
+// MARK: - ChangelogView_Previews
 
 struct ChangelogView_Previews: PreviewProvider {
     static var previews: some View {

@@ -6,6 +6,8 @@ import DesignKit
 import LocalizationKit
 import SwiftUI
 
+// MARK: - ErrorIllustration
+
 struct ErrorIllustration: View {
     var body: some View {
         Image(systemName: "exclamationmark.octagon.fill")
@@ -14,6 +16,8 @@ struct ErrorIllustration: View {
             .foregroundColor(.red)
     }
 }
+
+// MARK: - ErrorContentView
 
 struct ErrorContentView: View {
     @Environment(\.dismiss) var dismiss
@@ -25,19 +29,19 @@ struct ErrorContentView: View {
 
     var body: some View {
         VStack(spacing: 15) {
-            Text(errorDescription)
+            Text(self.errorDescription)
                 .font(.title2)
                 .bold()
                 .fixedSize(horizontal: false, vertical: true)
                 .multilineTextAlignment(.center)
 
-            Text(errorInstruction)
+            Text(self.errorInstruction)
                 .fixedSize(horizontal: false, vertical: true)
                 .multilineTextAlignment(.center)
 
             Button {
-                dismiss()
-                isConnectionViewPresented = true
+                self.dismiss()
+                self.isConnectionViewPresented = true
             } label: {
                 Text(l10n.update.errorBackButtonTitle)
                     .padding(.horizontal)
@@ -49,10 +53,11 @@ struct ErrorContentView: View {
             .buttonStyle(.plain)
             .padding(.top)
             .shadow(radius: 3, y: 4)
-
         }
     }
 }
+
+// MARK: - ErrorView_Previews
 
 struct ErrorView_Previews: PreviewProvider {
     @State static var isConnectionViewPresented = false

@@ -6,29 +6,32 @@ import LocalizationKit
 import SwiftUI
 
 extension l10n {
-
     static let localizedStringNoDefault = LocalizedString("localized_string_NO_default", value: "", comment: "")
 
     static let localizedStringWithDefault = LocalizedString(
-        "localized_string_WITH_default", value: "⛳ DEFAULT localized_string_WITH_default", comment: "")
+        "localized_string_WITH_default", value: "⛳ DEFAULT localized_string_WITH_default", comment: ""
+    )
 
     static let localizedStringInterpolation = LocalizedStringInterpolation(
         "localized_string_interpolation",
-        value: "⛳ DEFAULT localized_string_interpolation - text: %@ - int: %lld - float: %f", comment: "")
+        value: "⛳ DEFAULT localized_string_interpolation - text: %@ - int: %lld - float: %f", comment: ""
+    )
 
     static let localizedStringWithMarkdown = LocalizedString(
-        "localized_string_with_markdown", value: "⛳ **DEFAULT** *localized_string_with_markdown*", comment: "")
+        "localized_string_with_markdown", value: "⛳ **DEFAULT** *localized_string_with_markdown*", comment: ""
+    )
 
     static let localizedStringInterpolationWithMarkdown = LocalizedStringInterpolation(
         "localized_string_interpolation_with_markdown",
         value:
-            "⛳ **DEFAULT** *localized_string_interpolation_with_markdown* - **text: %@** - *int: %lld* - ***float: %f***",
-        comment: "")
-
+        "⛳ **DEFAULT** *localized_string_interpolation_with_markdown* - **text: %@** - *int: %lld* - ***float: %f***",
+        comment: ""
+    )
 }
 
-struct LocalizationView: View {
+// MARK: - LocalizationView
 
+struct LocalizationView: View {
     @Environment(\.locale) var locale
 
     let nameValue = "John *Doe* [link]"
@@ -37,7 +40,7 @@ struct LocalizationView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
-            Text(verbatim: "Current locale: \(locale)")
+            Text(verbatim: "Current locale: \(self.locale)")
                 .font(.largeTitle)
 
             VStack(alignment: .leading) {
@@ -55,7 +58,7 @@ struct LocalizationView: View {
             VStack(alignment: .leading) {
                 Text(verbatim: "localized_string_interpolation")
                     .bold()
-                Text(l10n.localizedStringInterpolation(nameValue, intValue, floatValue))
+                Text(l10n.localizedStringInterpolation(self.nameValue, self.intValue, self.floatValue))
             }
 
             VStack(alignment: .leading) {
@@ -67,11 +70,10 @@ struct LocalizationView: View {
             VStack(alignment: .leading) {
                 Text(verbatim: "localized_string_interpolation_with_markdown")
                     .bold()
-                Text(l10n.localizedStringInterpolationWithMarkdown(nameValue, intValue, floatValue))
+                Text(l10n.localizedStringInterpolationWithMarkdown(self.nameValue, self.intValue, self.floatValue))
             }
         }
     }
-
 }
 
 #Preview {

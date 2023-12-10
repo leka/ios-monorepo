@@ -4,11 +4,10 @@
 
 import Foundation
 
-internal struct AdvertisingServiceData {
+// MARK: - AdvertisingServiceData
 
-    let battery: Int
-    let isCharging: Bool
-    let osVersion: String?
+struct AdvertisingServiceData {
+    // MARK: Lifecycle
 
     init(data: Data) {
         self.battery = getBattery(data: data)
@@ -16,7 +15,14 @@ internal struct AdvertisingServiceData {
         self.osVersion = getOsVersion(data: data)
     }
 
+    // MARK: Internal
+
+    let battery: Int
+    let isCharging: Bool
+    let osVersion: String?
 }
+
+// MARK: - AdvertisingServiceDataIndex
 
 private enum AdvertisingServiceDataIndex {
     static let battery = 0
@@ -44,7 +50,7 @@ private func getOsVersion(data: Data) -> String? {
     let minor = data[AdvertisingServiceDataIndex.osVersionMinor]
     let revision =
         Int(data[AdvertisingServiceDataIndex.osVersionRevisionHighByte]) << 8
-        + Int(data[AdvertisingServiceDataIndex.osVersionRevisionLowByte])
+            + Int(data[AdvertisingServiceDataIndex.osVersionRevisionLowByte])
 
     return "\(major).\(minor).\(revision)"
 }

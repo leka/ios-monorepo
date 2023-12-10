@@ -4,10 +4,8 @@
 
 import Foundation
 
-extension String {
-
-    public var nilWhenEmpty: String? {
-        self.isEmpty ? nil : self
+public extension String {
+    var nilWhenEmpty: String? {
+        isEmpty ? nil : self
     }
-
 }

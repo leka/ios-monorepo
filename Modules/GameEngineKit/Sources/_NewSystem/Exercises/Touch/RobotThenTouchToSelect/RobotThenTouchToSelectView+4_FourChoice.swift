@@ -6,40 +6,40 @@ import ContentKit
 import SwiftUI
 
 extension RobotThenTouchToSelectView {
-
     struct FourChoicesView: View {
+        // MARK: Internal
 
         @ObservedObject var viewModel: TouchToSelectViewViewModel
         let isTappable: Bool
 
-        private let kHorizontalSpacing: CGFloat = 200
-        private let kVerticalSpacing: CGFloat = 40
-        private let kAnswerSize: CGFloat = 240
-
         var body: some View {
-            VStack(spacing: kVerticalSpacing) {
-                HStack(spacing: kHorizontalSpacing) {
-                    ForEach(viewModel.choices[0...1]) { choice in
-                        TouchToSelectChoiceView(choice: choice, size: kAnswerSize, isTappable: isTappable)
+            VStack(spacing: self.kVerticalSpacing) {
+                HStack(spacing: self.kHorizontalSpacing) {
+                    ForEach(self.viewModel.choices[0...1]) { choice in
+                        TouchToSelectChoiceView(choice: choice, size: self.kAnswerSize, isTappable: self.isTappable)
                             .onTapGesture {
-                                viewModel.onChoiceTapped(choice: choice)
+                                self.viewModel.onChoiceTapped(choice: choice)
                             }
                     }
                 }
 
-                HStack(spacing: kHorizontalSpacing) {
-                    ForEach(viewModel.choices[2...3]) { choice in
-                        TouchToSelectChoiceView(choice: choice, size: kAnswerSize, isTappable: isTappable)
+                HStack(spacing: self.kHorizontalSpacing) {
+                    ForEach(self.viewModel.choices[2...3]) { choice in
+                        TouchToSelectChoiceView(choice: choice, size: self.kAnswerSize, isTappable: self.isTappable)
                             .onTapGesture {
-                                viewModel.onChoiceTapped(choice: choice)
+                                self.viewModel.onChoiceTapped(choice: choice)
                             }
                     }
                 }
             }
         }
 
-    }
+        // MARK: Private
 
+        private let kHorizontalSpacing: CGFloat = 200
+        private let kVerticalSpacing: CGFloat = 40
+        private let kAnswerSize: CGFloat = 240
+    }
 }
 
 #Preview {

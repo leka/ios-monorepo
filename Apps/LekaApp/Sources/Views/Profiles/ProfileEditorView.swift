@@ -5,7 +5,10 @@
 import DesignKit
 import SwiftUI
 
+// MARK: - ProfileEditorView
+
 struct ProfileEditorView: View {
+    // MARK: Internal
 
     @EnvironmentObject var company: CompanyViewModel
     @EnvironmentObject var settings: SettingsViewModel
@@ -28,26 +31,28 @@ struct ProfileEditorView: View {
             }
         }
         .onAppear {
-            if !settings.companyIsConnected {
-                company.emptyProfilesSelection()
+            if !self.settings.companyIsConnected {
+                self.company.emptyProfilesSelection()
             }
         }
         .toolbar {
-            ToolbarItem(placement: .principal) { navigationTitle }
-            ToolbarItem(placement: .navigationBarLeading) { closeButton }
-            ToolbarItem(placement: .navigationBarTrailing) { validateButton }
+            ToolbarItem(placement: .principal) { self.navigationTitle }
+            ToolbarItem(placement: .navigationBarLeading) { self.closeButton }
+            ToolbarItem(placement: .navigationBarTrailing) { self.validateButton }
         }
     }
+
+    // MARK: Private
 
     // Toolbar
     private var navigationTitle: some View {
         HStack(spacing: 4) {
             Text("Choisir ou créer de nouveaux profils")
-            if settings.companyIsConnected && settings.exploratoryModeIsOn {
+            if self.settings.companyIsConnected, self.settings.exploratoryModeIsOn {
                 Image(systemName: "binoculars.fill")
             }
         }
-        .font(metrics.semi17)
+        .font(self.metrics.semi17)
         .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
     }
 
@@ -55,25 +60,26 @@ struct ProfileEditorView: View {
         Button(
             action: {
                 // Leave without saving new selection
-                dismiss()
+                self.dismiss()
             },
             label: {
                 Text("Fermer")
-            })
+            }
+        )
     }
 
     private var validateButton: some View {
         Button {
-            if settings.companyIsConnected {
-                if settings.exploratoryModeIsOn {
-                    settings.showSwitchOffExploratoryAlert.toggle()
+            if self.settings.companyIsConnected {
+                if self.settings.exploratoryModeIsOn {
+                    self.settings.showSwitchOffExploratoryAlert.toggle()
                 } else {
                     // Save new selection and leave
-                    company.assignCurrentProfiles()
-                    dismiss()
+                    self.company.assignCurrentProfiles()
+                    self.dismiss()
                 }
             } else {
-                settings.showConnectInvite.toggle()
+                self.settings.showConnectInvite.toggle()
             }
         } label: {
             HStack(spacing: 4) {
@@ -82,10 +88,12 @@ struct ProfileEditorView: View {
             }
             .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
         }
-        .disabled(!settings.companyIsConnected)
-        .disabled(!company.selectionSetIsCorrect())
+        .disabled(!self.settings.companyIsConnected)
+        .disabled(!self.company.selectionSetIsCorrect())
     }
 }
+
+// MARK: - ProfileEditorView_Previews
 
 struct ProfileEditorView_Previews: PreviewProvider {
     static var previews: some View {

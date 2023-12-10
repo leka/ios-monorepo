@@ -6,12 +6,8 @@ import ContentKit
 import SwiftUI
 
 extension DanceFreeze {
-
     struct PlayerView: View {
-        @ObservedObject var viewModel: MainViewViewModel
-
-        let isAuto: Bool
-        let motion: Motion
+        // MARK: Lifecycle
 
         public init(viewModel: MainViewViewModel, isAuto: Bool, motion: Motion) {
             self.viewModel = viewModel
@@ -19,47 +15,52 @@ extension DanceFreeze {
             self.motion = motion
         }
 
+        // MARK: Internal
+
+        @ObservedObject var viewModel: MainViewViewModel
+
+        let isAuto: Bool
+        let motion: Motion
+
         var body: some View {
             VStack {
-                ContinuousProgressBar(progress: viewModel.progress)
+                ContinuousProgressBar(progress: self.viewModel.progress)
                     .padding(20)
 
                 Button {
-                    viewModel.onDanceFreezeToggle()
+                    self.viewModel.onDanceFreezeToggle()
                 } label: {
-                    if viewModel.isDancing {
+                    if self.viewModel.isDancing {
                         DanceView()
                     } else {
                         FreezeView()
                     }
                 }
-                .disabled(isAuto)
+                .disabled(self.isAuto)
                 .onAppear {
-                    viewModel.setMotionMode(motion: motion)
-                    viewModel.onDanceFreezeToggle()
-                    if isAuto {
-                        randomSwitch()
+                    self.viewModel.setMotionMode(motion: self.motion)
+                    self.viewModel.onDanceFreezeToggle()
+                    if self.isAuto {
+                        self.randomSwitch()
                     }
                 }
                 .onDisappear {
-                    viewModel.exercicesSharedData.state = .completed
+                    self.viewModel.exercicesSharedData.state = .completed
                 }
             }
-
         }
 
         func randomSwitch() {
-            if viewModel.progress < 1.0 && viewModel.exercicesSharedData.state != .completed {
+            if self.viewModel.progress < 1.0, self.viewModel.exercicesSharedData.state != .completed {
                 let rand = Double.random(in: 2..<10)
 
                 DispatchQueue.main.asyncAfter(deadline: .now() + rand) {
-                    viewModel.onDanceFreezeToggle()
-                    randomSwitch()
+                    self.viewModel.onDanceFreezeToggle()
+                    self.randomSwitch()
                 }
             }
         }
     }
-
 }
 
 #Preview {

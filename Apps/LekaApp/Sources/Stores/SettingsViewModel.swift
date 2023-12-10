@@ -5,7 +5,6 @@
 import Foundation
 
 class SettingsViewModel: ObservableObject {
-
     // Connexion-related properties - Settings
     @Published var companyIsLoggingIn: Bool = false
     @Published var companyIsConnected: Bool = false
@@ -17,5 +16,4 @@ class SettingsViewModel: ObservableObject {
 
     // This will go later in UIEvents Environment
     @Published var showConnectInvite: Bool = false
-
 }

@@ -6,27 +6,24 @@ import RobotKit
 import SwiftUI
 
 extension LedZoneSelectorView {
-
     struct LedZoneShape: Shape {
-
         let section: Robot.Lights
 
         func path(in rect: CGRect) -> Path {
             let rotationAdjustment = Angle.degrees(90)
-            let modifiedStart = section.arcAngle.start - rotationAdjustment
-            let modifiedEnd = section.arcAngle.end - rotationAdjustment
+            let modifiedStart = self.section.arcAngle.start - rotationAdjustment
+            let modifiedEnd = self.section.arcAngle.end - rotationAdjustment
 
             var path = Path()
 
             path.addArc(
                 center: CGPoint(x: rect.midX, y: rect.midY), radius: rect.width / 2, startAngle: modifiedStart,
-                endAngle: modifiedEnd, clockwise: false)
+                endAngle: modifiedEnd, clockwise: false
+            )
 
             return path
         }
-
     }
-
 }
 
 #Preview {

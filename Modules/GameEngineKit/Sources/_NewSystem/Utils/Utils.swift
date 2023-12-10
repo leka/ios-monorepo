@@ -26,7 +26,7 @@ func clamp<T: Comparable>(_ value: T, lower: T, upper: T) -> T {
 
 extension View {
     func onTapGestureIf(_ condition: Bool, closure: @escaping () -> Void) -> some View {
-        self.allowsHitTesting(condition)
+        allowsHitTesting(condition)
             .onTapGesture {
                 closure()
             }
@@ -34,11 +34,10 @@ extension View {
 }
 
 extension Shape {
-    func fill<Fill: ShapeStyle, Stroke: ShapeStyle>(
-        _ fillStyle: Fill, strokeBorder strokeStyle: Stroke, lineWidth: CGFloat = 1
+    func fill(
+        _ fillStyle: some ShapeStyle, strokeBorder strokeStyle: some ShapeStyle, lineWidth: CGFloat = 1
     ) -> some View {
-        self
-            .stroke(strokeStyle, lineWidth: lineWidth)
+        stroke(strokeStyle, lineWidth: lineWidth)
             .background(self.fill(fillStyle))
     }
 }

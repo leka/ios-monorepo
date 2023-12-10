@@ -5,7 +5,6 @@
 import SwiftUI
 
 struct TeacherSidebarAvatarCell: View {
-
     @EnvironmentObject var settings: SettingsViewModel
 
     var body: some View {
@@ -15,11 +14,11 @@ struct TeacherSidebarAvatarCell: View {
                 ZStack(alignment: .topTrailing) {
                     SidebarAvatarView(type: .teacher)
                 }
-                .frame(height: settings.exploratoryModeIsOn ? 58 : 72)
-                .offset(x: settings.exploratoryModeIsOn ? 26 : 0)
+                .frame(height: self.settings.exploratoryModeIsOn ? 58 : 72)
+                .offset(x: self.settings.exploratoryModeIsOn ? 26 : 0)
                 .padding(10)
 
-                if !settings.exploratoryModeIsOn {
+                if !self.settings.exploratoryModeIsOn {
                     SidebarAvatarNameLabel(type: .teacher)
                 }
             }

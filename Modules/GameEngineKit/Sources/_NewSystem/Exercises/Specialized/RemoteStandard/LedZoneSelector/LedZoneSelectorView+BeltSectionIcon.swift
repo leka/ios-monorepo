@@ -6,19 +6,21 @@ import RobotKit
 import SwiftUI
 
 extension LedZoneSelectorView {
-
     struct BeltSectionIcon: View {
+        // MARK: Internal
+
         var section: Robot.Lights
 
-        @State private var backgroundLineWidth = 0
-
         var body: some View {
-            LedZoneShape(section: section)
+            LedZoneShape(section: self.section)
                 .stroke(.black, style: StrokeStyle(lineWidth: 3, lineCap: .round))
                 .frame(width: 60, height: 60)
         }
-    }
 
+        // MARK: Private
+
+        @State private var backgroundLineWidth = 0
+    }
 }
 
 #Preview {

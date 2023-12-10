@@ -5,7 +5,6 @@
 import SwiftUI
 
 struct MainView: View {
-
     @State var count = 1
 
     var body: some View {
@@ -19,11 +18,10 @@ struct MainView: View {
                 log.critical("WE MUST ABORT")
             }
             .onTapGesture {
-                log.debug("touched \(count)")
+                log.debug("touched \(self.count)")
                 self.count += 1
             }
     }
-
 }
 
 #Preview {

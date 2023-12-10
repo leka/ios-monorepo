@@ -9,19 +9,15 @@ import RobotKit
 import SwiftUI
 
 class UpdateStatusViewModel: ObservableObject {
+    // MARK: Lifecycle
 
-    enum UpdateStatus {
-        case sendingFile
-        case rebootingRobot
-        case updateFinished
-        case error
+    init() {
+        self.subscribeToStateUpdates()
+        self.subscribeToSendingFileProgressionUpdates()
+        self.subscribeToRobotIsChargingUpdates()
     }
 
-    // MARK: - Private variables
-
-    private var updateProcessController = UpdateProcessController()
-
-    private var cancellables: Set<AnyCancellable> = []
+    // MARK: Public
 
     // MARK: - Public variables
 
@@ -33,23 +29,40 @@ class UpdateStatusViewModel: ObservableObject {
     @Published public var errorInstructions: String = ""
 
     public var stepNumber: Int {
-        switch updatingStatus {
+        switch self.updatingStatus {
             case .sendingFile:
-                return 1
+                1
             case .rebootingRobot:
-                return 2
+                2
             case .updateFinished:
-                return 3
+                3
             case .error:
-                return -1
+                -1
         }
     }
 
-    init() {
-        subscribeToStateUpdates()
-        subscribeToSendingFileProgressionUpdates()
-        subscribeToRobotIsChargingUpdates()
+    public func startUpdate() {
+        UIApplication.shared.isIdleTimerDisabled = true
+
+        self.updateProcessController.startUpdate()
     }
+
+    // MARK: Internal
+
+    enum UpdateStatus {
+        case sendingFile
+        case rebootingRobot
+        case updateFinished
+        case error
+    }
+
+    // MARK: Private
+
+    // MARK: - Private variables
+
+    private var updateProcessController = UpdateProcessController()
+
+    private var cancellables: Set<AnyCancellable> = []
 
     private func subscribeToStateUpdates() {
         self.updateProcessController.currentStage
@@ -60,7 +73,7 @@ class UpdateStatusViewModel: ObservableObject {
                 switch completion {
                     case .finished:
                         self.updatingStatus = .updateFinished
-                    case .failure(let error):
+                    case let .failure(error):
                         self.updatingStatus = .error
 
                         switch error {
@@ -94,13 +107,14 @@ class UpdateStatusViewModel: ObservableObject {
                 self.onUpdateEnded()
             } receiveValue: { state in
                 switch state {
-                    case .initial, .sendingUpdate:
+                    case .initial,
+                         .sendingUpdate:
                         self.updatingStatus = .sendingFile
                     case .installingUpdate:
                         self.updatingStatus = .rebootingRobot
                 }
             }
-            .store(in: &cancellables)
+            .store(in: &self.cancellables)
     }
 
     private func subscribeToSendingFileProgressionUpdates() {
@@ -109,7 +123,7 @@ class UpdateStatusViewModel: ObservableObject {
             .sink(receiveValue: { progression in
                 self.sendingFileProgression = progression
             })
-            .store(in: &cancellables)
+            .store(in: &self.cancellables)
     }
 
     private func subscribeToRobotIsChargingUpdates() {
@@ -121,17 +135,10 @@ class UpdateStatusViewModel: ObservableObject {
 
                 self.showAlert = robotShouldBeInCharge && robotIsCharging == false
             }
-            .store(in: &cancellables)
-    }
-
-    public func startUpdate() {
-        UIApplication.shared.isIdleTimerDisabled = true
-
-        updateProcessController.startUpdate()
+            .store(in: &self.cancellables)
     }
 
     private func onUpdateEnded() {
         UIApplication.shared.isIdleTimerDisabled = false
     }
-
 }

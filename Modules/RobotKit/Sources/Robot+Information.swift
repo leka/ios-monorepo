@@ -7,7 +7,6 @@ import Combine
 import Version
 
 extension Robot {
-
     func registerBatteryCharacteristicNotificationCallback() {
         let characteristic = CharacteristicModelNotifying(
             characteristicUUID: BLESpecs.Battery.Characteristics.level,
@@ -20,7 +19,7 @@ extension Robot {
             }
         )
 
-        self.connectedPeripheral?.notifyingCharacteristics.insert(characteristic)
+        connectedPeripheral?.notifyingCharacteristics.insert(characteristic)
     }
 
     func registerChargingStatusNotificationCallback() {
@@ -35,7 +34,7 @@ extension Robot {
             }
         )
 
-        self.connectedPeripheral?.notifyingCharacteristics.insert(characteristic)
+        connectedPeripheral?.notifyingCharacteristics.insert(characteristic)
     }
 
     func registerOSVersionReadCallback() {
@@ -43,18 +42,17 @@ extension Robot {
             characteristicUUID: BLESpecs.DeviceInformation.Characteristics.osVersion,
             serviceUUID: BLESpecs.DeviceInformation.service,
             onRead: { data in
-                if let data = data {
+                if let data {
                     self.osVersion.send(
                         Version(
                             String(decoding: data, as: UTF8.self)
                                 .replacingOccurrences(of: "\0", with: "")))
                     log.trace("🤖 osVersion: \(self.osVersion.value)")
-
                 }
             }
         )
 
-        self.connectedPeripheral?.readOnlyCharacteristics.insert(characteristic)
+        connectedPeripheral?.readOnlyCharacteristics.insert(characteristic)
     }
 
     func registerSerialNumberReadCallback() {
@@ -62,7 +60,7 @@ extension Robot {
             characteristicUUID: BLESpecs.DeviceInformation.Characteristics.serialNumber,
             serviceUUID: BLESpecs.DeviceInformation.service,
             onRead: { data in
-                if let data = data {
+                if let data {
                     self.serialNumber.send(
                         String(decoding: data, as: UTF8.self)
                             .replacingOccurrences(of: "\0", with: ""))
@@ -71,7 +69,7 @@ extension Robot {
             }
         )
 
-        self.connectedPeripheral?.readOnlyCharacteristics.insert(characteristic)
+        connectedPeripheral?.readOnlyCharacteristics.insert(characteristic)
     }
 
     func registerChargingStatusReadCallback() {
@@ -86,7 +84,6 @@ extension Robot {
             }
         )
 
-        self.connectedPeripheral?.readOnlyCharacteristics.insert(characteristic)
+        connectedPeripheral?.readOnlyCharacteristics.insert(characteristic)
     }
-
 }

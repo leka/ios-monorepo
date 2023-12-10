@@ -5,7 +5,10 @@
 import BLEKit
 import SwiftUI
 
+// MARK: - SendDataButton
+
 struct SendDataButton: View {
+    // MARK: Internal
 
     // MARK: - Environment properties
 
@@ -15,13 +18,15 @@ struct SendDataButton: View {
 
     var body: some View {
         Button {
-            sendData()
+            self.sendData()
         } label: {
-            labelView
+            self.labelView
         }
         .opacity((self.robotListViewModel.connectedRobotPeripheral == nil) ? 0.5 : 1.0)
         .disabled(self.robotListViewModel.connectedRobotPeripheral == nil)
     }
+
+    // MARK: Private
 
     // MARK: - Private views
 
@@ -55,8 +60,9 @@ struct SendDataButton: View {
         self.robotListViewModel.connectedRobotPeripheral?
             .sendCommand(Data([0x2A, 0x2A, 0x2A, 0x2A, 0x01, 0x50, 0x51, 0x51]))
     }
-
 }
+
+// MARK: - SendDataButton_Previews
 
 struct SendDataButton_Previews: PreviewProvider {
     static var previews: some View {

@@ -5,46 +5,17 @@
 import DesignKit
 import SwiftUI
 
+// MARK: - LoginView
+
 struct LoginView: View {
+    // MARK: Internal
 
     @EnvironmentObject var company: CompanyViewModel
     @EnvironmentObject var settings: SettingsViewModel
     @EnvironmentObject var metrics: UIMetrics
 
     @FocusState var focusedField: FormField?
-    @State private var mail: String = ""
-    @State private var password: String = ""
-    @State private var isEditing = false
 
-    @State private var navigateToTeacherSelector: Bool = false
-
-    // Make sure you have set up Associated Domains for your app and AutoFill Passwords
-    // is enabled in Settings in order to get the strong password proposals etc...
-    // the same applies for both login/signup
-    // re-enable autofill modifiers in LekaTextField when OK (textContentType)
-
-    func connectIsDisabled() -> Bool {
-        !mail.isValidEmail() || mail.isEmpty || password.isEmpty
-    }
-
-    // TESTS *****************************************************************
-    @State private var credentialsAreCorrect: Bool = true
-
-    private func submitForm() {
-        if mail == LekaCompany().lekaCompany.mail {
-            if password != LekaCompany().lekaCompany.password {
-                credentialsAreCorrect = false
-            } else {
-                credentialsAreCorrect = true
-                settings.companyIsConnected = true
-                company.currentCompany = LekaCompany().lekaCompany
-                settings.companyIsLoggingIn = true
-                navigateToTeacherSelector.toggle()
-            }
-        } else {
-            credentialsAreCorrect = false
-        }
-    }
     // TESTS *****************************************************************
 
     var body: some View {
@@ -52,45 +23,65 @@ struct LoginView: View {
             CloudsBGView()
 
             VStack(alignment: .center, spacing: 30) {
-                title
+                self.title
                 Group {
-                    mailTextField
+                    self.mailTextField
                     VStack(spacing: 0) {
-                        passwordTextField
-                        forgotLink
+                        self.passwordTextField
+                        self.forgotLink
                     }
                 }
                 .frame(width: 400)
                 .disableAutocorrection(true)
-                .onAppear { focusedField = .mail }
-                submitButton
+                .onAppear { self.focusedField = .mail }
+                self.submitButton
             }
         }
-        .navigationDestination(isPresented: $navigateToTeacherSelector) {
+        .navigationDestination(isPresented: self.$navigateToTeacherSelector) {
             ProfileSelector_Teachers()
         }
     }
+
+    // Make sure you have set up Associated Domains for your app and AutoFill Passwords
+    // is enabled in Settings in order to get the strong password proposals etc...
+    // the same applies for both login/signup
+    // re-enable autofill modifiers in LekaTextField when OK (textContentType)
+
+    func connectIsDisabled() -> Bool {
+        !self.mail.isValidEmail() || self.mail.isEmpty || self.password.isEmpty
+    }
+
+    // MARK: Private
+
+    @State private var mail: String = ""
+    @State private var password: String = ""
+    @State private var isEditing = false
+
+    @State private var navigateToTeacherSelector: Bool = false
+
+    // TESTS *****************************************************************
+    @State private var credentialsAreCorrect: Bool = true
 
     private var title: some View {
         Text("Se connecter")
             .textCase(.uppercase)
             .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
-            .font(metrics.semi20)
+            .font(self.metrics.semi20)
     }
 
     private var submitButton: some View {
         Button(
             action: {
-                submitForm()
+                self.submitForm()
             },
             label: {
                 Text("Connexion")
-                    .font(metrics.bold15)
+                    .font(self.metrics.bold15)
                     .padding(6)
                     .frame(width: 210)
             }
         )
-        .disabled(connectIsDisabled())
+        .disabled(self.connectIsDisabled())
         .buttonStyle(.borderedProminent)
         .tint(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
         .padding(.top, 24)
@@ -99,51 +90,47 @@ struct LoginView: View {
     @ViewBuilder
     private var mailTextField: some View {
         let mailTitle: String = {
-            guard mail.isValidEmail() || mail.isEmpty || isEditing else {
+            guard self.mail.isValidEmail() || self.mail.isEmpty || self.isEditing else {
                 return "Email incorrect"
             }
             return "Email"
         }()
 
-        let mailLabelColor: Color = {
-            return mail.isValidEmail() || mail.isEmpty || isEditing
-                ? DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor : .red
-        }()
+        let mailLabelColor: Color = self.mail.isValidEmail() || self.mail.isEmpty || self.isEditing
+            ? DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor : .red
 
         LekaTextField(
             label: mailTitle,
-            entry: $mail,
+            entry: self.$mail,
             color: mailLabelColor,
-            isEditing: $isEditing,
+            isEditing: self.$isEditing,
             focused: _focusedField
         ) {
-            focusedField = .password
+            self.focusedField = .password
         }
     }
 
     @ViewBuilder
     private var passwordTextField: some View {
         let passwordTitle: String = {
-            guard credentialsAreCorrect else {
+            guard self.credentialsAreCorrect else {
                 return "Email ou mot de passe incorrect"
             }
             return "Mot de passe"
         }()
 
-        let passwordLabelColor: Color = {
-            return credentialsAreCorrect ? DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor : .red
-        }()
+        let passwordLabelColor: Color = self.credentialsAreCorrect ? DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor : .red
 
         LekaPasswordField(
             label: passwordTitle,
-            entry: $password,
+            entry: self.$password,
             color: passwordLabelColor,
             focused: _focusedField
         ) {
-            if password.isEmpty {
-                focusedField = .password
+            if self.password.isEmpty {
+                self.focusedField = .password
             } else {
-                submitForm()
+                self.submitForm()
             }
         }
     }
@@ -153,14 +140,32 @@ struct LoginView: View {
             Spacer()
             Link(destination: URL(string: "https://leka.io")!) {
                 Text("Mot de passe oublié")
-                    .font(metrics.reg14)
+                    .font(self.metrics.reg14)
                     .underline()
                     .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
                     .padding([.top, .trailing], 10)
             }
         }
     }
+
+    private func submitForm() {
+        if self.mail == LekaCompany().lekaCompany.mail {
+            if self.password != LekaCompany().lekaCompany.password {
+                self.credentialsAreCorrect = false
+            } else {
+                self.credentialsAreCorrect = true
+                self.settings.companyIsConnected = true
+                self.company.currentCompany = LekaCompany().lekaCompany
+                self.settings.companyIsLoggingIn = true
+                self.navigateToTeacherSelector.toggle()
+            }
+        } else {
+            self.credentialsAreCorrect = false
+        }
+    }
 }
+
+// MARK: - LoginView_Previews
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {

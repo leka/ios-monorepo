@@ -5,29 +5,33 @@
 import Logging
 
 public struct LogKit {
-
-    private static var hasBeenInitialized: Bool = false
+    // MARK: Lifecycle
 
     private init() {
         // nothing to do
     }
 
-    static public func createLoggerFor(module: String) -> Logger {
-        createLogger(label: "mod:\(module)")
+    // MARK: Public
+
+    public static func createLoggerFor(module: String) -> Logger {
+        self.createLogger(label: "mod:\(module)")
     }
 
-    static public func createLoggerFor(app: String) -> Logger {
-        createLogger(label: "app:\(app)")
+    public static func createLoggerFor(app: String) -> Logger {
+        self.createLogger(label: "app:\(app)")
     }
 
-    static private func createLogger(label: String) -> Logger {
-        if !hasBeenInitialized {
+    // MARK: Private
+
+    private static var hasBeenInitialized: Bool = false
+
+    private static func createLogger(label: String) -> Logger {
+        if !self.hasBeenInitialized {
             LoggingSystem.bootstrap(LogKitLogHandler.standardOutput)
-            hasBeenInitialized = true
+            self.hasBeenInitialized = true
         }
 
         let logger = Logger(label: "\(label)")
         return logger
     }
-
 }

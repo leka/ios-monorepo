@@ -17,6 +17,8 @@ let project = Project.module(
         ModuleExample(
             name: "ModuleExampleAppTwo",
             infoPlist: [
-                "APP_NAME": "ModuleExampleAppTwo from InfoPlist"
-            ]),
-    ])
+                "APP_NAME": "ModuleExampleAppTwo from InfoPlist",
+            ]
+        ),
+    ]
+)

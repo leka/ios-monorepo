@@ -6,10 +6,7 @@ import ContentKit
 import SpriteKit
 
 class DraggableImageAnswerNode: SKSpriteNode {
-
-    var id: String
-    var isDraggable: Bool = true
-    var defaultPosition: CGPoint?
+    // MARK: Lifecycle
 
     init(choice: GameplayAssociateCategoriesChoiceModel, scale: CGFloat = 1, position: CGPoint) {
         self.id = choice.id
@@ -43,8 +40,14 @@ class DraggableImageAnswerNode: SKSpriteNode {
         self.defaultPosition = position
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    @available(*, unavailable)
+    required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
+    // MARK: Internal
+
+    var id: String
+    var isDraggable: Bool = true
+    var defaultPosition: CGPoint?
 }

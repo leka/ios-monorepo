@@ -10,12 +10,14 @@ let project = Project.module(
     name: "LogKit",
     platform: .iOS,
     dependencies: [
-        .external(name: "Logging")
+        .external(name: "Logging"),
     ],
     examples: [
         ModuleExample(
             name: "LogKitExample",
             infoPlist: [
-                "NSAccentColorName": "AccentColor"
-            ])
-    ])
+                "NSAccentColorName": "AccentColor",
+            ]
+        ),
+    ]
+)

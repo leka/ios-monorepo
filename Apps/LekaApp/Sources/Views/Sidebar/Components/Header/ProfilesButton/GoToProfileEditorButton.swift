@@ -5,7 +5,10 @@
 import DesignKit
 import SwiftUI
 
+// MARK: - GoToProfileEditorButton
+
 struct GoToProfileEditorButton: View {
+    // MARK: Internal
 
     @EnvironmentObject var settings: SettingsViewModel
     @EnvironmentObject var metrics: UIMetrics
@@ -13,10 +16,10 @@ struct GoToProfileEditorButton: View {
 
     var body: some View {
         Button {
-            if settings.exploratoryModeIsOn {
-                settings.showSwitchOffExploratoryAlert.toggle()
+            if self.settings.exploratoryModeIsOn {
+                self.settings.showSwitchOffExploratoryAlert.toggle()
             } else {
-                navigationVM.showProfileEditor.toggle()
+                self.navigationVM.showProfileEditor.toggle()
             }
         } label: {
             VStack(spacing: 5) {
@@ -28,25 +31,29 @@ struct GoToProfileEditorButton: View {
                 }
                 .overlay(TickPic())
 
-                if settings.exploratoryModeIsOn {
-                    exploratoryModeLabel
+                if self.settings.exploratoryModeIsOn {
+                    self.exploratoryModeLabel
                 }
             }
         }
         .frame(minHeight: 135)
         .contentShape(Rectangle())
-        .animation(.default, value: settings.exploratoryModeIsOn)
+        .animation(.default, value: self.settings.exploratoryModeIsOn)
     }
+
+    // MARK: Private
 
     private var exploratoryModeLabel: some View {
         Text("Mode exploratoire")
-            .font(metrics.reg17)
+            .font(self.metrics.reg17)
             .foregroundColor(DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor)
             .padding(.vertical, 2)
             .padding(.horizontal, 6)
-            .background(.white, in: RoundedRectangle(cornerRadius: metrics.btnRadius))
+            .background(.white, in: RoundedRectangle(cornerRadius: self.metrics.btnRadius))
     }
 }
+
+// MARK: - GoToProfileEditorButton_Previews
 
 struct GoToProfileEditorButton_Previews: PreviewProvider {
     static var previews: some View {

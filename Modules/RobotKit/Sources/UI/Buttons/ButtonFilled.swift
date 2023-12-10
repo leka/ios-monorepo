@@ -5,11 +5,7 @@
 import SwiftUI
 
 struct ButtonFilled<Label: View>: View {
-
-    private let foreground: Color
-    private let background: Color
-    private let label: Label
-    private let action: () -> Void
+    // MARK: Lifecycle
 
     init(foreground: Color, background: Color, @ViewBuilder label: () -> Label, action: @escaping () -> Void) {
         self.foreground = foreground
@@ -25,18 +21,26 @@ struct ButtonFilled<Label: View>: View {
         self.label = label()
     }
 
+    // MARK: Internal
+
     var body: some View {
         Button(
             action: {
-                action()
+                self.action()
             },
             label: {
-                label
+                self.label
             }
         )
-        .buttonStyle(.robotControlPlainButtonStyle(foreground: foreground, background: background))
+        .buttonStyle(.robotControlPlainButtonStyle(foreground: self.foreground, background: self.background))
     }
 
+    // MARK: Private
+
+    private let foreground: Color
+    private let background: Color
+    private let label: Label
+    private let action: () -> Void
 }
 
 #Preview {

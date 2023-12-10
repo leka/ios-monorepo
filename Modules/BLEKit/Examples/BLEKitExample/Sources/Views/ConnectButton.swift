@@ -6,7 +6,10 @@ import BLEKit
 import Combine
 import SwiftUI
 
+// MARK: - ConnectButton
+
 struct ConnectButton: View {
+    // MARK: Internal
 
     // MARK: - Environment variables
 
@@ -16,26 +19,27 @@ struct ConnectButton: View {
 
     var body: some View {
         Button {
-            if robotListViewModel.connectedRobotPeripheral == nil && robotListViewModel.selectedRobotDiscovery != nil {
-                connectToRobot()
+            if self.robotListViewModel.connectedRobotPeripheral == nil, self.robotListViewModel.selectedRobotDiscovery != nil {
+                self.connectToRobot()
             } else {
-                disconnectFromRobot()
+                self.disconnectFromRobot()
             }
         } label: {
-            if robotListViewModel.connectedRobotPeripheral == nil {
-                disconnectedView
+            if self.robotListViewModel.connectedRobotPeripheral == nil {
+                self.disconnectedView
             } else {
-                connectedView
+                self.connectedView
             }
         }
         .opacity(
-            (robotListViewModel.connectedRobotPeripheral == nil && robotListViewModel.selectedRobotDiscovery == nil)
+            (self.robotListViewModel.connectedRobotPeripheral == nil && self.robotListViewModel.selectedRobotDiscovery == nil)
                 ? 0.5 : 1.0
         )
         .disabled(
-            robotListViewModel.connectedRobotPeripheral == nil && robotListViewModel.selectedRobotDiscovery == nil)
-
+            self.robotListViewModel.connectedRobotPeripheral == nil && self.robotListViewModel.selectedRobotDiscovery == nil)
     }
+
+    // MARK: Private
 
     // MARK: - Private views
 
@@ -80,14 +84,15 @@ struct ConnectButton: View {
     }
 
     private func connectToRobot() {
-        robotListViewModel.connectToSelectedPeripheral()
+        self.robotListViewModel.connectToSelectedPeripheral()
     }
 
     private func disconnectFromRobot() {
-        robotListViewModel.disconnectFromConnectedPeripheral()
+        self.robotListViewModel.disconnectFromConnectedPeripheral()
     }
-
 }
+
+// MARK: - ConnectButton_Previews
 
 struct ConnectButton_Previews: PreviewProvider {
     static var previews: some View {

@@ -4,9 +4,14 @@
 
 import SwiftUI
 
+// MARK: - UserType
+
 enum UserType: Int, CaseIterable {
-    case user, teacher
+    case user
+    case teacher
 }
+
+// MARK: - Company
 
 struct Company: Identifiable {
     var id = UUID()
@@ -16,6 +21,8 @@ struct Company: Identifiable {
     var users: [User] = []
 }
 
+// MARK: - Profile
+
 // Profiles types base-protocol
 protocol Profile: Identifiable, Hashable {
     var id: UUID { get }
@@ -23,6 +30,8 @@ protocol Profile: Identifiable, Hashable {
     var name: String { get set }
     var avatar: String { get set }
 }
+
+// MARK: - Teacher
 
 struct Teacher: Profile {
     // conform
@@ -35,6 +44,8 @@ struct Teacher: Profile {
     var jobs: [String]
 }
 
+// MARK: - User
+
 struct User: Profile {
     // conform
     let id = UUID()
@@ -46,39 +57,63 @@ struct User: Profile {
     var reinforcer: Int
 }
 
+// MARK: - Professions
+
 enum Professions: String, Identifiable, CaseIterable {
     // swiftlint:disable identifier_name
-    case educSpe, eje, monit, monitAt, teach, ASC, psychoMot,
-        ergo, ortho, kine, pedopsy, med, psy, infir, soign,
-        AESH, AES, AVDH, auxVieScol, pueri, auxPueri, ludo
+    case educSpe
+    case eje
+    case monit
+    case monitAt
+    case teach
+    case ASC
+    case psychoMot
+    case ergo
+    case ortho
+    case kine
+    case pedopsy
+    case med
+    case psy
+    case infir
+    case soign
+    case AESH
+    case AES
+    case AVDH
+    case auxVieScol
+    case pueri
+    case auxPueri
+    case ludo
+
+    // MARK: Internal
+
     // swiftlint:enable identifier_name
 
     var id: Self { self }
 
     var name: String {
         switch self {
-            case .educSpe: return "Éducateur(trice) spécialisé(e)"
-            case .eje: return "Éducateur(trice) de jeunes enfants"
-            case .monit: return "Moniteur(trice) éducateur(trice)"
-            case .monitAt: return "Moniteur(trice) d'atelier"
-            case .teach: return "Enseignant(e)"
-            case .ASC: return "Animateur(trice) socio-culturel(le)"
-            case .psychoMot: return "Psychomotricien(ne)"
-            case .ergo: return "Ergothérapeute"
-            case .ortho: return "Orthophoniste"
-            case .kine: return "Kinésithérapeute"
-            case .pedopsy: return "Pédopsychiatre"
-            case .med: return "Médecin"
-            case .psy: return "Psychologue"
-            case .infir: return "Infirmier(ière)"
-            case .soign: return "Soignant(e)"
-            case .AESH: return "Accompagnant(e) des élèves en situation de handicap"
-            case .AES: return "Accompagnant(e) éducatif et social"
-            case .AVDH: return "Assistant(e) de vie dépendance et handicap"
-            case .auxVieScol: return "Auxiliaire de vie sociale"
-            case .pueri: return "Puériculteur(trice)"
-            case .auxPueri: return "Auxiliaire de puériculture"
-            case .ludo: return "Ludothécaire"
+            case .educSpe: "Éducateur(trice) spécialisé(e)"
+            case .eje: "Éducateur(trice) de jeunes enfants"
+            case .monit: "Moniteur(trice) éducateur(trice)"
+            case .monitAt: "Moniteur(trice) d'atelier"
+            case .teach: "Enseignant(e)"
+            case .ASC: "Animateur(trice) socio-culturel(le)"
+            case .psychoMot: "Psychomotricien(ne)"
+            case .ergo: "Ergothérapeute"
+            case .ortho: "Orthophoniste"
+            case .kine: "Kinésithérapeute"
+            case .pedopsy: "Pédopsychiatre"
+            case .med: "Médecin"
+            case .psy: "Psychologue"
+            case .infir: "Infirmier(ière)"
+            case .soign: "Soignant(e)"
+            case .AESH: "Accompagnant(e) des élèves en situation de handicap"
+            case .AES: "Accompagnant(e) éducatif et social"
+            case .AVDH: "Assistant(e) de vie dépendance et handicap"
+            case .auxVieScol: "Auxiliaire de vie sociale"
+            case .pueri: "Puériculteur(trice)"
+            case .auxPueri: "Auxiliaire de puériculture"
+            case .ludo: "Ludothécaire"
         }
     }
 }

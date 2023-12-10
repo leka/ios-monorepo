@@ -11,29 +11,39 @@ import Logging
 // swiftlint:disable function_parameter_count
 
 extension String {
-
     var fileURL: URL {
         URL(fileURLWithPath: self)
     }
+
     var pathExtension: String {
-        fileURL.pathExtension
-    }
-    var lastPathComponent: String {
-        fileURL.lastPathComponent
+        self.fileURL.pathExtension
     }
 
+    var lastPathComponent: String {
+        self.fileURL.lastPathComponent
+    }
 }
 
 let systemStderr = Darwin.stderr
 let systemStdout = Darwin.stdout
 
-internal typealias CFilePointer = UnsafeMutablePointer<FILE>
+typealias CFilePointer = UnsafeMutablePointer<FILE>
 
-internal struct StdioOutputStream: TextOutputStream {
-    internal let file: CFilePointer
-    internal let flushMode: FlushMode
+// MARK: - StdioOutputStream
 
-    internal func write(_ string: String) {
+struct StdioOutputStream: TextOutputStream {
+    enum FlushMode {
+        case undefined
+        case always
+    }
+
+    static let stderr = StdioOutputStream(file: systemStderr, flushMode: .always)
+    static let stdout = StdioOutputStream(file: systemStdout, flushMode: .always)
+
+    let file: CFilePointer
+    let flushMode: FlushMode
+
+    func write(_ string: String) {
         self.contiguousUTF8(string)
             .withContiguousStorageIfAvailable { utf8Bytes in
                 flockfile(self.file)
@@ -47,49 +57,53 @@ internal struct StdioOutputStream: TextOutputStream {
             }!
     }
 
-    internal func flush() {
+    func flush() {
         _ = fflush(self.file)
     }
 
-    internal func contiguousUTF8(_ string: String) -> String.UTF8View {
+    func contiguousUTF8(_ string: String) -> String.UTF8View {
         var contiguousString = string
         contiguousString.makeContiguousUTF8()
         return contiguousString.utf8
     }
-
-    internal static let stderr = StdioOutputStream(file: systemStderr, flushMode: .always)
-    internal static let stdout = StdioOutputStream(file: systemStdout, flushMode: .always)
-
-    internal enum FlushMode {
-        case undefined
-        case always
-    }
 }
 
-public struct LogKitLogHandler: LogHandler {
+// MARK: - LogKitLogHandler
 
-    internal typealias _SendableTextOutputStream = TextOutputStream & Sendable
+public struct LogKitLogHandler: LogHandler {
+    // MARK: Lifecycle
+
+    // internal for testing only
+    init(label: String, stream: _SendableTextOutputStream) {
+        self.init(label: label, stream: stream, metadataProvider: LoggingSystem.metadataProvider)
+    }
+
+    // internal for testing only
+    init(label: String, stream: _SendableTextOutputStream, metadataProvider: Logger.MetadataProvider?) {
+        self.label = label
+        self.stream = stream
+        self.metadataProvider = metadataProvider
+    }
+
+    // MARK: Public
+
+    public var logLevel: Logger.Level = .trace
+
+    public var metadataProvider: Logger.MetadataProvider?
+
+    public var metadata = Logger.Metadata()
 
     /// Factory that makes a `LogKitLogHandler` to directs its output to `stdout`
     public static func standardOutput(label: String) -> LogKitLogHandler {
         LogKitLogHandler(
-            label: label, stream: StdioOutputStream.stdout, metadataProvider: LoggingSystem.metadataProvider)
+            label: label, stream: StdioOutputStream.stdout, metadataProvider: LoggingSystem.metadataProvider
+        )
     }
 
     /// Factory that makes a `LogKitLogHandler` that directs its output to `stdout`
     public static func standardOutput(label: String, metadataProvider: Logger.MetadataProvider?) -> LogKitLogHandler {
         LogKitLogHandler(label: label, stream: StdioOutputStream.stdout, metadataProvider: metadataProvider)
     }
-
-    private let stream: _SendableTextOutputStream
-    private let label: String
-
-    public var logLevel: Logger.Level = .trace
-
-    public var metadataProvider: Logger.MetadataProvider?
-
-    private var prettyMetadata: String?
-    public var metadata = Logger.Metadata()
 
     public subscript(metadataKey metadataKey: String) -> Logger.Metadata.Value? {
         get {
@@ -100,23 +114,11 @@ public struct LogKitLogHandler: LogHandler {
         }
     }
 
-    // internal for testing only
-    internal init(label: String, stream: _SendableTextOutputStream) {
-        self.init(label: label, stream: stream, metadataProvider: LoggingSystem.metadataProvider)
-    }
-
-    // internal for testing only
-    internal init(label: String, stream: _SendableTextOutputStream, metadataProvider: Logger.MetadataProvider?) {
-        self.label = label
-        self.stream = stream
-        self.metadataProvider = metadataProvider
-    }
-
     public func log(
         level: Logger.Level,
         message: Logger.Message,
-        metadata explicitMetadata: Logger.Metadata?,
-        source: String,
+        metadata _: Logger.Metadata?,
+        source _: String,
         file: String,
         function: String,
         line: UInt
@@ -124,9 +126,20 @@ public struct LogKitLogHandler: LogHandler {
         var strm = self.stream
 
         strm.write(
-            "\(self.timestamp()) \(prettyLevel(level)) [\(label)](\(prettyFile(file)):\(line)) \(function) > \(message)\n"
+            "\(self.timestamp()) \(self.prettyLevel(level)) [\(self.label)](\(self.prettyFile(file)):\(line)) \(function) > \(message)\n"
         )
     }
+
+    // MARK: Internal
+
+    typealias _SendableTextOutputStream = TextOutputStream & Sendable
+
+    // MARK: Private
+
+    private let stream: _SendableTextOutputStream
+    private let label: String
+
+    private var prettyMetadata: String?
 
     private func prettyLevel(_ level: Logger.Level) -> String {
         switch level {
@@ -134,7 +147,8 @@ public struct LogKitLogHandler: LogHandler {
                 "🩶 [TRCE]"
             case .debug:
                 "💚 [DBUG]"
-            case .info, .notice:
+            case .info,
+                 .notice:
                 "💙 [INFO]"
             case .warning:
                 "⚠️ [WARN]"

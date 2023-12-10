@@ -4,11 +4,9 @@
 
 import Foundation
 
-extension Exercise {
-
-    public enum Gameplay: String, Codable {
+public extension Exercise {
+    enum Gameplay: String, Codable {
         case findTheRightAnswers
         case associateCategories
     }
-
 }

@@ -4,21 +4,23 @@
 
 import SwiftUI
 
-public struct Hello: View {
+// MARK: - Hello
 
-    let name: String
-    let color: Color
+public struct Hello: View {
+    // MARK: Lifecycle
 
     public init(_ name: String, in color: Color) {
         self.name = name
         self.color = color
     }
 
+    // MARK: Public
+
     public var body: some View {
         VStack {
-            Text("Hello, \(name)!")
+            Text("Hello, \(self.name)!")
                 .padding(50)
-                .background(color)
+                .background(self.color)
 
             Image(uiImage: DesignKitAsset.Assets.lekaLogo.image)
                 .resizable()
@@ -26,7 +28,14 @@ public struct Hello: View {
                 .frame(width: 200.0)
         }
     }
+
+    // MARK: Internal
+
+    let name: String
+    let color: Color
 }
+
+// MARK: - ContentView_Previews
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

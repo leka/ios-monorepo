@@ -4,29 +4,38 @@
 
 import SwiftUI
 
-public struct HelloView: View {
+// MARK: - HelloView
 
-    var color: Color
-    var name: String
+public struct HelloView: View {
+    // MARK: Lifecycle
 
     public init(color: Color, name: String) {
         self.color = color
         self.name = name
     }
 
+    // MARK: Public
+
     public var body: some View {
         ZStack {
-            color
+            self.color
                 .ignoresSafeArea()
 
-            Text("Hello, \(name)!")
+            Text("Hello, \(self.name)!")
                 .foregroundColor(.white)
                 .font(.largeTitle)
                 .fontWeight(.bold)
                 .multilineTextAlignment(.center)
         }
     }
+
+    // MARK: Internal
+
+    var color: Color
+    var name: String
 }
+
+// MARK: - ContentView_Previews
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

@@ -8,8 +8,22 @@ import SpriteKit
 import SwiftUI
 
 extension DragAndDropToAssociateView {
-
     class BaseScene: SKScene {
+        // MARK: Lifecycle
+
+        init(viewModel: ViewModel) {
+            self.viewModel = viewModel
+            super.init(size: CGSize.zero)
+
+            self.subscribeToChoicesUpdates()
+        }
+
+        @available(*, unavailable)
+        required init?(coder _: NSCoder) {
+            fatalError("init(coder:) has not been implemented")
+        }
+
+        // MARK: Internal
 
         var viewModel: ViewModel
         var spacer = CGFloat.zero
@@ -17,38 +31,19 @@ extension DragAndDropToAssociateView {
         var initialNodeX: CGFloat = .zero
         var verticalSpacing: CGFloat = .zero
 
-        private var biggerSide: CGFloat = 150
-        private var playedNode: DraggableImageAnswerNode?
-        private var playedDestination: DraggableImageAnswerNode?
-        private var dropDestinations: [DraggableImageAnswerNode] = []
-        private var selectedNodes: [UITouch: DraggableImageAnswerNode] = [:]
-        private var expectedItemsNodes: [String: [SKSpriteNode]] = [:]
-        private var cancellables: Set<AnyCancellable> = []
-
-        init(viewModel: ViewModel) {
-            self.viewModel = viewModel
-            super.init(size: CGSize.zero)
-
-            subscribeToChoicesUpdates()
-        }
-
-        required init?(coder aDecoder: NSCoder) {
-            fatalError("init(coder:) has not been implemented")
-        }
-
         func reset() {
-            self.backgroundColor = .clear
-            self.removeAllChildren()
-            self.removeAllActions()
+            backgroundColor = .clear
+            removeAllChildren()
+            removeAllActions()
 
-            dropDestinations = []
+            self.dropDestinations = []
 
-            setFirstAnswerPosition()
-            layoutAnswers()
+            self.setFirstAnswerPosition()
+            self.layoutAnswers()
         }
 
         func exerciseCompletedBehavior() {
-            for node in dropDestinations {
+            for node in self.dropDestinations {
                 node.isDraggable = false
             }
         }
@@ -57,7 +52,7 @@ extension DragAndDropToAssociateView {
             self.viewModel.$choices
                 .receive(on: DispatchQueue.main)
                 .sink(receiveValue: { [weak self] choices in
-                    guard let self = self else { return }
+                    guard let self else { return }
                     for choice in choices where choice.id == self.playedNode?.id {
                         if choice.state == .rightAnswer {
                             self.goodAnswerBehavior(self.playedNode!)
@@ -66,33 +61,33 @@ extension DragAndDropToAssociateView {
                         }
                     }
                 })
-                .store(in: &cancellables)
+                .store(in: &self.cancellables)
         }
 
         @MainActor func layoutAnswers() {
-            for (index, gameplayChoiceModel) in viewModel.choices.enumerated() {
+            for (index, gameplayChoiceModel) in self.viewModel.choices.enumerated() {
                 let draggableImageAnswerNode = DraggableImageAnswerNode(
                     choice: gameplayChoiceModel,
-                    position: self.defaultPosition
+                    position: defaultPosition
                 )
                 let draggableImageShadowNode = DraggableImageShadowNode(
                     draggableImageAnswerNode: draggableImageAnswerNode
                 )
 
-                normalizeAnswerNodesSize([draggableImageAnswerNode, draggableImageShadowNode])
-                bindNodesToSafeArea([draggableImageAnswerNode, draggableImageShadowNode])
-                setNextAnswerPosition(index)
+                self.normalizeAnswerNodesSize([draggableImageAnswerNode, draggableImageShadowNode])
+                self.bindNodesToSafeArea([draggableImageAnswerNode, draggableImageShadowNode])
+                self.setNextAnswerPosition(index)
 
                 addChild(draggableImageShadowNode)
                 addChild(draggableImageAnswerNode)
 
-                dropDestinations.append(draggableImageAnswerNode)
+                self.dropDestinations.append(draggableImageAnswerNode)
             }
         }
 
         func normalizeAnswerNodesSize(_ nodes: [SKSpriteNode]) {
             for node in nodes {
-                node.scaleForMax(sizeOf: biggerSide)
+                node.scaleForMax(sizeOf: self.biggerSide)
             }
         }
 
@@ -108,67 +103,68 @@ extension DragAndDropToAssociateView {
             fatalError("setFirstAnswerPosition() has not been implemented")
         }
 
-        func setNextAnswerPosition(_ index: Int) {
+        func setNextAnswerPosition(_: Int) {
             fatalError("setNextAnswerPosition(_ index:) has not been implemented")
         }
 
         func goodAnswerBehavior(_ node: DraggableImageAnswerNode) {
-            node.scaleForMax(sizeOf: biggerSide * 0.8)
+            node.scaleForMax(sizeOf: self.biggerSide * 0.8)
             node.zPosition = (self.playedDestination?.zPosition ?? 10) + 10
             node.isDraggable = false
-            playedDestination?.isDraggable = false
-            onDropAction(node)
-            if viewModel.exercicesSharedData.state == .completed {
+            self.playedDestination?.isDraggable = false
+            self.onDropAction(node)
+            if self.viewModel.exercicesSharedData.state == .completed {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [self] in
-                    exerciseCompletedBehavior()
+                    self.exerciseCompletedBehavior()
                 }
             }
         }
 
         func wrongAnswerBehavior(_ node: DraggableImageAnswerNode) {
-            let moveAnimation: SKAction = SKAction.move(to: node.defaultPosition!, duration: 0.25)
+            let moveAnimation = SKAction.move(to: node.defaultPosition!, duration: 0.25)
                 .moveAnimation(.easeOut)
-            let group: DispatchGroup = DispatchGroup()
+            let group = DispatchGroup()
             group.enter()
-            node.scaleForMax(sizeOf: biggerSide)
+            node.scaleForMax(sizeOf: self.biggerSide)
             node.run(
                 moveAnimation,
                 completion: {
                     node.position = node.defaultPosition!
                     node.zPosition = 10
                     group.leave()
-                })
+                }
+            )
             group.notify(queue: .main) {
                 self.onDropAction(node)
             }
         }
 
         func onDragAnimation(_ node: SKSpriteNode) {
-            let wiggleAnimation: SKAction = SKAction.sequence([
+            let wiggleAnimation = SKAction.sequence([
                 SKAction.rotate(byAngle: CGFloat(degreesToRadian(degrees: -4)), duration: 0.1),
                 SKAction.rotate(byAngle: 0.0, duration: 0.1),
                 SKAction.rotate(byAngle: CGFloat(degreesToRadian(degrees: 4)), duration: 0.1),
             ])
-            node.scaleForMax(sizeOf: biggerSide * 1.1)
+            node.scaleForMax(sizeOf: self.biggerSide * 1.1)
             node.run(SKAction.repeatForever(wiggleAnimation))
         }
 
         func onDropAction(_ node: SKSpriteNode) {
             node.zRotation = 0
             node.removeAllActions()
-            selectedNodes = [:]
+            self.selectedNodes = [:]
         }
 
-        override func didMove(to view: SKView) {
+        override func didMove(to _: SKView) {
             self.reset()
         }
 
         // overriden Touches states
-        override func touchesBegan(_ touches: Set<UITouch>, with: UIEvent?) {
+        override func touchesBegan(_ touches: Set<UITouch>, with _: UIEvent?) {
             for touch in touches {
                 let location = touch.location(in: self)
-                if let node = self.atPoint(location) as? DraggableImageAnswerNode {
-                    for choice in viewModel
+                if let node = atPoint(location) as? DraggableImageAnswerNode {
+                    for choice in self.viewModel
                         .choices where node.id == choice.id && node.isDraggable
                     {
                         selectedNodes[touch] = node
@@ -179,48 +175,55 @@ extension DragAndDropToAssociateView {
             }
         }
 
-        override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        override func touchesMoved(_ touches: Set<UITouch>, with _: UIEvent?) {
             for touch in touches {
                 let location = touch.location(in: self)
                 if let node = selectedNodes[touch] {
-                    let bounds: CGRect = self.view!.bounds
+                    let bounds: CGRect = view!.bounds
                     if node.fullyContains(location: location, bounds: bounds) {
                         node.run(SKAction.move(to: location, duration: 0.05).moveAnimation(.linear))
                         node.position = location
                     } else {
-                        wrongAnswerBehavior(node)
+                        self.wrongAnswerBehavior(node)
                     }
                 }
             }
         }
 
-        override func touchesEnded(_ touches: Set<UITouch>, with: UIEvent?) {
+        override func touchesEnded(_ touches: Set<UITouch>, with _: UIEvent?) {
             for touch in touches {
-                guard selectedNodes.keys.contains(touch) else {
+                guard self.selectedNodes.keys.contains(touch) else {
                     break
                 }
-                playedNode = selectedNodes[touch]!
-                playedNode!.scaleForMax(sizeOf: biggerSide)
+                self.playedNode = self.selectedNodes[touch]!
+                self.playedNode!.scaleForMax(sizeOf: self.biggerSide)
 
-                guard
-                    let destinationNode = dropDestinations.first(where: {
-                        $0.frame.contains(touch.location(in: self)) && $0.id != playedNode!.id
-                    })
+                guard let destinationNode = dropDestinations.first(where: {
+                    $0.frame.contains(touch.location(in: self)) && $0.id != playedNode!.id
+                })
                 else {
-                    wrongAnswerBehavior(playedNode!)
+                    self.wrongAnswerBehavior(self.playedNode!)
                     break
                 }
-                playedDestination = destinationNode
+                self.playedDestination = destinationNode
 
                 guard let destination = viewModel.choices.first(where: { $0.id == destinationNode.id })
                 else { return }
                 guard let choice = viewModel.choices.first(where: { $0.id == playedNode!.id })
                 else { return }
 
-                viewModel.onChoiceTapped(choice: choice, destination: destination)
+                self.viewModel.onChoiceTapped(choice: choice, destination: destination)
             }
         }
 
-    }
+        // MARK: Private
 
+        private var biggerSide: CGFloat = 150
+        private var playedNode: DraggableImageAnswerNode?
+        private var playedDestination: DraggableImageAnswerNode?
+        private var dropDestinations: [DraggableImageAnswerNode] = []
+        private var selectedNodes: [UITouch: DraggableImageAnswerNode] = [:]
+        private var expectedItemsNodes: [String: [SKSpriteNode]] = [:]
+        private var cancellables: Set<AnyCancellable> = []
+    }
 }

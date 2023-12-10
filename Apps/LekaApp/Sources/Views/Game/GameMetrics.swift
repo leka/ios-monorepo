@@ -6,15 +6,15 @@ import Foundation
 import SwiftUI
 
 class GameMetrics: NSObject, ObservableObject {
-
     // MARK: - Views Metrics & Animations parameters
+
     // GameView
     @Published var headerTotalHeight: CGFloat = 155
     @Published var headerSpacing: CGFloat = 40
     @Published var headerPadding: CGFloat = 30
     @Published var instructionFontSize: CGFloat = 22
     @Published var instructionFontWeight: Font.Weight = .regular
-    @Published var instructionFrame: CGSize = CGSize(width: 640, height: 85)
+    @Published var instructionFrame: CGSize = .init(width: 640, height: 85)
     @Published var reg17: Font = .system(size: 17, weight: .regular)
     @Published var semi17: Font = .system(size: 17, weight: .semibold)
 
@@ -47,5 +47,4 @@ class GameMetrics: NSObject, ObservableObject {
 
     // Misc
     @Published var roundedCorner: CGFloat = 10
-
 }

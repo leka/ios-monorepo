@@ -6,19 +6,18 @@ import DesignKit
 import SwiftUI
 
 struct SettingsSection_Exploratory: View {
-
     @EnvironmentObject var settings: SettingsViewModel
     @EnvironmentObject var metrics: UIMetrics
 
     var body: some View {
         Section {
             LabeledContent {
-                Toggle("Mode exploratoire", isOn: $settings.exploratoryModeIsOn)
+                Toggle("Mode exploratoire", isOn: self.$settings.exploratoryModeIsOn)
                     .toggleStyle(SwitchToggleStyle(tint: DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor))
                     .labelsHidden()
             } label: {
                 Text("Le mode exploratoire vous permet de découvrir les contenus sans enregistrer l'utilisation")
-                    .font(metrics.reg13)
+                    .font(self.metrics.reg13)
                     .foregroundColor(DesignKitAsset.Colors.lekaDarkGray.swiftUIColor)
                     .frame(maxWidth: 300)
             }
@@ -28,7 +27,7 @@ struct SettingsSection_Exploratory: View {
                 Image(systemName: "binoculars.fill")
                 Text("Mode exploratoire")
             }
-            .font(metrics.reg15)
+            .font(self.metrics.reg15)
             .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
             .headerProminence(.increased)
         }

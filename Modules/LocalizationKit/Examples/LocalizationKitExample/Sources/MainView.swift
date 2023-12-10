@@ -6,11 +6,9 @@ import LocalizationKit
 import SwiftUI
 
 struct MainView: View {
-
     var body: some View {
         LocalizationView()
     }
-
 }
 
 #Preview {

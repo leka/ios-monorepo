@@ -5,20 +5,24 @@
 import SwiftUI
 
 struct HomeView: View {
+    // MARK: Internal
 
     @EnvironmentObject var authenticationState: OrganisationAuthState
-    @State private var goBackToContentView: Bool = false
 
     var body: some View {
-        switch authenticationState.organisationIsAuthenticated {
+        switch self.authenticationState.organisationIsAuthenticated {
             case .unknown:
                 Text("Loading...")
             case .loggedIn:
-                content
+                self.content
             case .loggedOut:
                 MainView()
         }
     }
+
+    // MARK: Private
+
+    @State private var goBackToContentView: Bool = false
 
     private var content: some View {
         VStack(spacing: 10) {
@@ -27,7 +31,7 @@ struct HomeView: View {
 
             Button(
                 action: {
-                    authenticationState.organisationIsAuthenticated = .loggedOut
+                    self.authenticationState.organisationIsAuthenticated = .loggedOut
                 },
                 label: {
                     Text("Log Out")

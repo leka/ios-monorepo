@@ -6,14 +6,14 @@ import SwiftUI
 import SwiftUIJoystick
 
 struct JoystickView: View {
-    @StateObject private var joystickViewViewModel = JoystickViewViewModel(dragDiameter: 300)
+    // MARK: Public
 
     public var body: some View {
         VStack {
             JoystickBuilder(
-                monitor: joystickViewViewModel.joystickMonitor,
-                width: joystickViewViewModel.dragDiameter,
-                shape: joystickViewViewModel.shape,
+                monitor: self.joystickViewViewModel.joystickMonitor,
+                width: self.joystickViewViewModel.dragDiameter,
+                shape: self.joystickViewViewModel.shape,
 
                 background: {
                     ZStack {
@@ -44,10 +44,14 @@ struct JoystickView: View {
                     Circle()
                         .fill(.gray)
                 },
-                locksInPlace: false)
+                locksInPlace: false
+            )
         }
-
     }
+
+    // MARK: Private
+
+    @StateObject private var joystickViewViewModel = JoystickViewViewModel(dragDiameter: 300)
 }
 
 #Preview {

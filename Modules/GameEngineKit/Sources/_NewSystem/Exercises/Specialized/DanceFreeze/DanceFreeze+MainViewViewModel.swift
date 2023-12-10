@@ -8,19 +8,10 @@ import RobotKit
 import SwiftUI
 
 extension DanceFreeze {
-
     class MainViewViewModel: ObservableObject {
-        @ObservedObject var exercicesSharedData: ExerciseSharedData
-        @Published public var progress: CGFloat = 0.0
-        @Published public var isDancing: Bool = false
+        // MARK: Lifecycle
 
-        var robotManager: RobotManager
-        var audioPlayer: AudioPlayer
-        let songs: [AudioRecording]
-        var motionMode: Motion = .rotation
-        var cancellables: Set<AnyCancellable> = []
-
-        init(songs: [AudioRecording], shuffle: Bool = false, shared: ExerciseSharedData? = nil) {
+        init(songs: [AudioRecording], shuffle _: Bool = false, shared: ExerciseSharedData? = nil) {
             self.songs = songs
             self.audioPlayer = AudioPlayer(audioRecording: songs.first!)
             self.robotManager = RobotManager()
@@ -28,96 +19,105 @@ extension DanceFreeze {
             self.exercicesSharedData = shared ?? ExerciseSharedData()
             self.exercicesSharedData.state = .playing
 
-            subscribeToAudioPlayerProgress()
+            self.subscribeToAudioPlayerProgress()
         }
+
+        // MARK: Public
+
+        @Published public var progress: CGFloat = 0.0
+        @Published public var isDancing: Bool = false
+
+        public func onDanceFreezeToggle() {
+            if self.progress == 1.0 {
+                self.exercicesSharedData.state = .completed
+                return
+            }
+            if self.audioPlayer.isPlaying {
+                self.audioPlayer.pause()
+                self.isDancing = false
+                self.robotManager.freeze()
+            } else {
+                self.audioPlayer.play()
+                self.isDancing = true
+                self.robotDance()
+            }
+        }
+
+        public func setAudioRecording(audioRecording: AudioRecording) {
+            self.audioPlayer.setAudioPlayer(audioRecording: audioRecording)
+        }
+
+        public func setMotionMode(motion: Motion) {
+            self.motionMode = motion
+        }
+
+        // MARK: Internal
+
+        @ObservedObject var exercicesSharedData: ExerciseSharedData
+        var robotManager: RobotManager
+        var audioPlayer: AudioPlayer
+        let songs: [AudioRecording]
+        var motionMode: Motion = .rotation
+        var cancellables: Set<AnyCancellable> = []
+
+        func completeDanceFreeze() {
+            self.robotManager.stopRobot()
+            self.exercicesSharedData.state = .completed
+        }
+
+        // MARK: Private
 
         private func subscribeToAudioPlayerProgress() {
             self.audioPlayer.$progress
                 .receive(on: DispatchQueue.main)
                 .sink { [weak self] in
-                    guard let self = self else { return }
+                    guard let self else { return }
                     self.progress = $0
                     if self.progress == 1 {
-                        completeDanceFreeze()
+                        self.completeDanceFreeze()
                     }
                 }
-                .store(in: &cancellables)
-        }
-
-        public func onDanceFreezeToggle() {
-            if progress == 1.0 {
-                exercicesSharedData.state = .completed
-                return
-            }
-            if audioPlayer.isPlaying {
-                audioPlayer.pause()
-                isDancing = false
-                robotManager.freeze()
-            } else {
-                audioPlayer.play()
-                isDancing = true
-                robotDance()
-            }
-        }
-
-        public func setAudioRecording(audioRecording: AudioRecording) {
-            audioPlayer.setAudioPlayer(audioRecording: audioRecording)
-        }
-
-        public func setMotionMode(motion: Motion) {
-            motionMode = motion
-        }
-
-        func completeDanceFreeze() {
-            robotManager.stopRobot()
-            exercicesSharedData.state = .completed
+                .store(in: &self.cancellables)
         }
 
         private func robotDance() {
-            switch motionMode {
+            switch self.motionMode {
                 case .rotation:
-                    robotRotation()
+                    self.robotRotation()
                 case .movement:
-                    robotMovement()
+                    self.robotMovement()
             }
-            robotLightFrenzy()
+            self.robotLightFrenzy()
         }
 
         private func robotLightFrenzy() {
-            guard exercicesSharedData.state != .completed, isDancing else { return }
+            guard self.exercicesSharedData.state != .completed, self.isDancing else { return }
 
-            robotManager.shineRandomly()
+            self.robotManager.shineRandomly()
 
-            DispatchQueue.main.asyncAfter(
-                deadline: .now() + 0.2,
-                execute: {
-                    self.robotLightFrenzy()
-                })
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                self.robotLightFrenzy()
+            }
         }
 
         private func robotRotation() {
-            guard exercicesSharedData.state != .completed, isDancing else { return }
+            guard self.exercicesSharedData.state != .completed, self.isDancing else { return }
 
-            let duration = robotManager.rotationDance()
+            let duration = self.robotManager.rotationDance()
 
-            DispatchQueue.main.asyncAfter(
-                deadline: .now() + duration,
-                execute: {
-                    self.robotRotation()
-                })
+            DispatchQueue.main.asyncAfter(deadline: .now() + duration) {
+                self.robotRotation()
+            }
         }
 
         private func robotMovement() {
-            guard exercicesSharedData.state != .completed, isDancing else { return }
+            guard self.exercicesSharedData.state != .completed, self.isDancing else { return }
 
-            let duration = robotManager.movementDance()
+            let duration = self.robotManager.movementDance()
 
-            DispatchQueue.main.asyncAfter(
-                deadline: .now() + duration,
-                execute: {
-                    self.robotMovement()
-                })
+            DispatchQueue.main.asyncAfter(deadline: .now() + duration) {
+                self.robotMovement()
+            }
         }
     }
-
 }

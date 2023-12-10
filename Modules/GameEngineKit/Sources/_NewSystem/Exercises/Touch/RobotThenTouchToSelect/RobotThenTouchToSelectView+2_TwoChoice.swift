@@ -6,28 +6,28 @@ import ContentKit
 import SwiftUI
 
 extension RobotThenTouchToSelectView {
-
     struct TwoChoicesView: View {
+        // MARK: Internal
 
         @ObservedObject var viewModel: TouchToSelectViewViewModel
         let isTappable: Bool
 
-        private let kHorizontalSpacing: CGFloat = 100
-        private let kAnswerSize: CGFloat = 300
-
         var body: some View {
-            HStack(spacing: kHorizontalSpacing) {
-                ForEach(viewModel.choices) { choice in
-                    TouchToSelectChoiceView(choice: choice, size: kAnswerSize, isTappable: isTappable)
+            HStack(spacing: self.kHorizontalSpacing) {
+                ForEach(self.viewModel.choices) { choice in
+                    TouchToSelectChoiceView(choice: choice, size: self.kAnswerSize, isTappable: self.isTappable)
                         .onTapGesture {
-                            viewModel.onChoiceTapped(choice: choice)
+                            self.viewModel.onChoiceTapped(choice: choice)
                         }
                 }
             }
         }
 
-    }
+        // MARK: Private
 
+        private let kHorizontalSpacing: CGFloat = 100
+        private let kAnswerSize: CGFloat = 300
+    }
 }
 
 #Preview {

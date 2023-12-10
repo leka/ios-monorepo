@@ -5,10 +5,11 @@
 // swiftlint:disable nesting
 
 public enum DragAndDropIntoZones {
-
     public enum DropZone: String, Codable {
         case zoneA
         case zoneB
+
+        // MARK: Public
 
         public struct Details: Codable {
             public let value: String
@@ -27,7 +28,6 @@ public enum DragAndDropIntoZones {
         public let dropZoneB: DropZone.Details?
         public let choices: [Choice]
     }
-
 }
 
 // swiftlint:enable nesting

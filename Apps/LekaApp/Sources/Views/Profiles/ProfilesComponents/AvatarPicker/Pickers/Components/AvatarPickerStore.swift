@@ -6,6 +6,7 @@ import DesignKit
 import SwiftUI
 
 struct AvatarPickerStore: View {
+    // MARK: Internal
 
     @EnvironmentObject var metrics: UIMetrics
 
@@ -14,31 +15,34 @@ struct AvatarPickerStore: View {
     var body: some View {
         ScrollView(.vertical, showsIndicators: true) {
             ForEach(AvatarSets.allCases, id: \.id) { category in
-                makeAvatarCategoryRow(category: category.content)
+                self.makeAvatarCategoryRow(category: category.content)
                     .id(category.id)
             }
         }
     }
 
+    // MARK: Private
+
     private func makeAvatarCategoryRow(category: AvatarCategory) -> some View {
         VStack(alignment: .leading, spacing: 10) {
             Text(category.category)
-                .font(metrics.med16)
+                .font(self.metrics.med16)
                 .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
                 .padding(.leading, 40)
             ScrollView(.horizontal, showsIndicators: true) {
                 LazyHGrid(rows: [GridItem()], spacing: 50) {
                     ForEach(category.images, id: \.self) { item in
                         Button {
-                            if selected == item {
-                                selected = ""
+                            if self.selected == item {
+                                self.selected = ""
                             } else {
-                                selected = item
+                                self.selected = item
                             }
                         } label: {
                             AvatarButtonLabel(
                                 image: .constant(item),
-                                isSelected: .constant(selected == item))
+                                isSelected: .constant(self.selected == item)
+                            )
                         }
                         .buttonStyle(NoFeedback_ButtonStyle())
                         .id(item)

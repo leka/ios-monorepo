@@ -5,6 +5,8 @@
 import ContentKit
 import Foundation
 
+// MARK: - GameplayAssociateCategoriesChoiceModel
+
 struct GameplayAssociateCategoriesChoiceModel: GameplayChoiceModelProtocol {
     typealias ChoiceType = DragAndDropToAssociate.Choice
 
@@ -14,11 +16,10 @@ struct GameplayAssociateCategoriesChoiceModel: GameplayChoiceModelProtocol {
 }
 
 extension GameplayAssociateCategories where ChoiceModelType == GameplayAssociateCategoriesChoiceModel {
-
-    convenience init(choices: [GameplayAssociateCategoriesChoiceModel], shuffle: Bool = false) {
+    convenience init(choices: [GameplayAssociateCategoriesChoiceModel], shuffle _: Bool = false) {
         self.init()
         self.choices.send(choices)
-        self.state.send(.playing)
+        state.send(.playing)
     }
 
     func process(_ choice: ChoiceModelType, _ destination: ChoiceModelType) {
@@ -34,5 +35,4 @@ extension GameplayAssociateCategories where ChoiceModelType == GameplayAssociate
             state.send(.completed)
         }
     }
-
 }

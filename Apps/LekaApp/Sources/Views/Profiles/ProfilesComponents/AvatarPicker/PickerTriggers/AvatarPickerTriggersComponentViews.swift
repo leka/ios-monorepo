@@ -5,8 +5,9 @@
 import DesignKit
 import SwiftUI
 
-struct AvatarTriggerImageView: View {
+// MARK: - AvatarTriggerImageView
 
+struct AvatarTriggerImageView: View {
     var img: String
 
     var body: some View {
@@ -15,7 +16,7 @@ struct AvatarTriggerImageView: View {
                 .fill(.white)
                 .shadow(color: .black.opacity(0.2), radius: 4, x: 0, y: 4)
             Group {
-                Image(img, bundle: Bundle(for: DesignKitResources.self))
+                Image(self.img, bundle: Bundle(for: DesignKitResources.self))
                     .resizable()
                     .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
                     .aspectRatio(contentMode: .fit)
@@ -31,13 +32,14 @@ struct AvatarTriggerImageView: View {
     }
 }
 
-struct AvatarTriggerCTAView: View {
+// MARK: - AvatarTriggerCTAView
 
+struct AvatarTriggerCTAView: View {
     @EnvironmentObject var metrics: UIMetrics
 
     var body: some View {
         Text("choisir un avatar")
-            .font(metrics.reg17)
+            .font(self.metrics.reg17)
             .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
             .padding(.vertical, 4)
             .padding(.horizontal, 20)

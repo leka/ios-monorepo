@@ -6,6 +6,7 @@ import DesignKit
 import SwiftUI
 
 struct GoButton: View {
+    // MARK: Internal
 
     @EnvironmentObject var company: CompanyViewModel
     @EnvironmentObject var activityVM: ActivityViewModel
@@ -18,9 +19,9 @@ struct GoButton: View {
             HStack(alignment: .top) {
                 Spacer()
                 Button {
-                    goButtonAction()
+                    self.goButtonAction()
                 } label: {
-                    goButtonLabel
+                    self.goButtonLabel
                 }
                 .background(DesignKitAsset.Colors.lekaLightGray.swiftUIColor, in: Circle())
                 .padding(.trailing, 40)
@@ -30,26 +31,7 @@ struct GoButton: View {
         }
     }
 
-    private func goButtonAction() {
-        activityVM.setupGame(with: activityVM.currentActivity)
-        guard robotVM.robotIsConnected || robotVM.userChoseToPlayWithoutRobot else {
-            navigationVM.pathToGame = NavigationPath([PathsToGame.robot])
-            navigationVM.showActivitiesFullScreenCover = true
-            return
-        }
-        guard settings.companyIsConnected else {
-            navigationVM.pathToGame = NavigationPath([PathsToGame.game])
-            navigationVM.showActivitiesFullScreenCover = true
-            return
-        }
-        guard company.selectionSetIsCorrect() else {
-            navigationVM.pathToGame = NavigationPath([PathsToGame.user])
-            navigationVM.showActivitiesFullScreenCover = true
-            return
-        }
-        navigationVM.pathToGame = NavigationPath([PathsToGame.game])
-        navigationVM.showActivitiesFullScreenCover = true
-    }
+    // MARK: Private
 
     private var goButtonLabel: some View {
         ZStack {
@@ -70,5 +52,26 @@ struct GoButton: View {
         }
         .frame(width: 127, height: 127)
         .compositingGroup()
+    }
+
+    private func goButtonAction() {
+        self.activityVM.setupGame(with: self.activityVM.currentActivity)
+        guard self.robotVM.robotIsConnected || self.robotVM.userChoseToPlayWithoutRobot else {
+            self.navigationVM.pathToGame = NavigationPath([PathsToGame.robot])
+            self.navigationVM.showActivitiesFullScreenCover = true
+            return
+        }
+        guard self.settings.companyIsConnected else {
+            self.navigationVM.pathToGame = NavigationPath([PathsToGame.game])
+            self.navigationVM.showActivitiesFullScreenCover = true
+            return
+        }
+        guard self.company.selectionSetIsCorrect() else {
+            self.navigationVM.pathToGame = NavigationPath([PathsToGame.user])
+            self.navigationVM.showActivitiesFullScreenCover = true
+            return
+        }
+        self.navigationVM.pathToGame = NavigationPath([PathsToGame.game])
+        self.navigationVM.showActivitiesFullScreenCover = true
     }
 }

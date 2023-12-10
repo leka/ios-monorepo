@@ -6,11 +6,9 @@ import SwiftUI
 
 @main
 struct LekaActivityUIExplorerApp: App {
-
     var body: some Scene {
         WindowGroup {
             NavigationView()
         }
     }
-
 }

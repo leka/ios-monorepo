@@ -10,9 +10,28 @@ import Version
 
 let log = LogKit.createLoggerFor(module: "RobotKit")
 
-public class Robot {
+// MARK: - Robot
 
-    public static var shared: Robot = Robot()
+public class Robot {
+    // MARK: Lifecycle
+
+    private init() {
+        subscribeToBLEConnectionUpdates()
+    }
+
+    // MARK: Public
+
+    public static var shared: Robot = .init()
+
+    // MARK: - Information
+
+    public var isConnected: CurrentValueSubject<Bool, Never> = CurrentValueSubject(false)
+
+    public var name: CurrentValueSubject<String, Never> = CurrentValueSubject("(robot not connected)")
+    public var osVersion: CurrentValueSubject<Version?, Never> = CurrentValueSubject(nil)
+    public var serialNumber: CurrentValueSubject<String, Never> = CurrentValueSubject("(n/a)")
+    public var isCharging: CurrentValueSubject<Bool, Never> = CurrentValueSubject(false)
+    public var battery: CurrentValueSubject<Int, Never> = CurrentValueSubject(0)
 
     // MARK: - Internal properties
 
@@ -25,26 +44,10 @@ public class Robot {
             registerSerialNumberReadCallback()
             registerChargingStatusReadCallback()
 
-            connectedPeripheral?.discoverAndListenForUpdates()
-            connectedPeripheral?.readReadOnlyCharacteristics()
+            self.connectedPeripheral?.discoverAndListenForUpdates()
+            self.connectedPeripheral?.readReadOnlyCharacteristics()
         }
     }
-
-    var cancellables: Set<AnyCancellable> = []
-
-    private init() {
-        subscribeToBLEConnectionUpdates()
-    }
-
-    // MARK: - Information
-
-    public var isConnected: CurrentValueSubject<Bool, Never> = CurrentValueSubject(false)
-
-    public var name: CurrentValueSubject<String, Never> = CurrentValueSubject("(robot not connected)")
-    public var osVersion: CurrentValueSubject<Version?, Never> = CurrentValueSubject(nil)
-    public var serialNumber: CurrentValueSubject<String, Never> = CurrentValueSubject("(n/a)")
-    public var isCharging: CurrentValueSubject<Bool, Never> = CurrentValueSubject(false)
-    public var battery: CurrentValueSubject<Int, Never> = CurrentValueSubject(0)
 
     // MARK: - General
 
@@ -65,4 +68,7 @@ public class Robot {
             .eraseToAnyPublisher()
     }
 
+    // MARK: Internal
+
+    var cancellables: Set<AnyCancellable> = []
 }

@@ -8,22 +8,30 @@ import RobotKit
 import SwiftUI
 import Version
 
+// MARK: - RobotInformationView
+
 struct RobotInformationView: View {
-    @StateObject private var viewModel = RobotInformationViewModel()
+    // MARK: Internal
 
     var body: some View {
         VStack(alignment: .leading) {
-            Text(l10n.information.robot.serialNumber(viewModel.robotSerialNumber))
+            Text(l10n.information.robot.serialNumber(self.viewModel.robotSerialNumber))
             Divider()
-            Text(l10n.information.robot.battery(viewModel.robotBattery))
+            Text(l10n.information.robot.battery(self.viewModel.robotBattery))
             Divider()
-            Text(l10n.information.robot.version(viewModel.robotOsVersion))
+            Text(l10n.information.robot.version(self.viewModel.robotOsVersion))
             Divider()
-            Text(l10n.information.robot.isCharging(viewModel.robotIsCharging))
+            Text(l10n.information.robot.isCharging(self.viewModel.robotIsCharging))
         }
         .padding()
     }
+
+    // MARK: Private
+
+    @StateObject private var viewModel = RobotInformationViewModel()
 }
+
+// MARK: - RobotInformationView_Previews
 
 struct RobotInformationView_Previews: PreviewProvider {
     static var previews: some View {

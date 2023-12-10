@@ -7,6 +7,7 @@ import Lottie
 import SwiftUI
 
 struct GameView: View {
+    // MARK: Internal
 
     @StateObject var gameMetrics = GameMetrics()
     @EnvironmentObject var navigationVM: NavigationViewModel
@@ -14,6 +15,167 @@ struct GameView: View {
     @EnvironmentObject var activityVM: ActivityViewModel
     @EnvironmentObject var settings: SettingsViewModel
     @Environment(\.dismiss) var dismiss
+
+    var body: some View {
+        DesignKitAsset.Colors.lekaLightBlue.swiftUIColor
+            .edgesIgnoringSafeArea(.all)
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarBackButtonHidden()
+            .tint(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
+            .overlay(
+                VStack(spacing: 0) {
+                    VStack(spacing: self.gameMetrics.headerSpacing) {
+                        ProgressBarView(gameMetrics: self.gameMetrics)
+                        InstructionButton(gameMetrics: self.gameMetrics)
+                    }
+                    .frame(maxHeight: self.gameMetrics.headerTotalHeight)
+                    .padding(.top, self.gameMetrics.headerPadding)
+
+                    VStack {
+                        Spacer()
+                        PlayZone(gameMetrics: self.gameMetrics)
+                            .layoutPriority(1)
+                        Spacer()
+                    }
+                }
+            )
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(
+                        action: {
+                            self.activityVM.resetActivity()
+                            self.navigationVM.showActivitiesFullScreenCover = false
+                            self.robotVM.userChoseToPlayWithoutRobot = false
+                            // show alert to inform about losing the progress??
+                        },
+                        label: {
+                            Image(systemName: "chevron.left")
+                                .padding(.horizontal)
+                        }
+                    )
+                    .disabled(self.activityVM.tapIsDisabled)
+                }
+                ToolbarItem(placement: .principal) {
+                    HStack(spacing: 4) {
+                        Text(self.activityVM.currentActivityTitle)
+                        if self.settings.companyIsConnected, self.settings.exploratoryModeIsOn {
+                            Image(systemName: "binoculars.fill")
+                        }
+                    }
+                    .font(self.gameMetrics.semi17)
+                    .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
+                }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    self.infoButton
+                }
+            }
+            .sheet(isPresented: self.$showInstructionModal) {
+                CurrentGameInstructionView(gameMetrics: self.gameMetrics)
+            }
+            .overlay(
+                ZStack {
+                    if self.activityVM.showMotivator {
+                        self.successScreen
+                    } else if self.activityVM.showEndAnimation {
+                        self.cheerScreen
+                    } else {
+                        // Not an EmptyView() to avoid breaking the opacity animation
+                        Rectangle()
+                            .fill(Color.clear)
+                    }
+                }
+                .background(content: {
+                    Group {
+                        if self.activityVM.showBlurryBG {
+                            Rectangle()
+                                .fill(.regularMaterial)
+                                .transition(.opacity)
+                        }
+                    }
+                    .animation(.default, value: self.activityVM.showBlurryBG)
+                })
+                .edgesIgnoringSafeArea(.all)
+            )
+            .background(
+                GeometryReader { reader in
+                    Color.clear
+                        .onAppear {
+                            self.offsetGameOverBtn = -reader.frame(in: .local).width / 2
+                            self.offsetReplayBtn = reader.frame(in: .local).width / 2
+                            self.initialBtnOffsets = [self.offsetGameOverBtn, self.offsetReplayBtn]
+                        }
+                })
+    }
+
+    @ViewBuilder
+    func resultMessage(result: ResultType) -> some View {
+        // Localized Strings
+        let topMessage = switch result {
+            case .fail:
+                Text("fail_top_message")
+            case .medium:
+                Text("medium_top_message")
+            case .success:
+                Text("success_top_message")
+            default:
+                Text("")
+        }
+
+        let bottomMessage = switch result {
+            case .fail:
+                Text("fail_bottom_message")
+                    + Text("(0%)")
+                    .foregroundColor(DesignKitAsset.Colors.bravoHighlights.swiftUIColor)
+                    + Text(".")
+            case .medium,
+                 .success:
+                Text("success_bottom_message")
+                    + Text(
+                        "success_bottom_result \(self.activityVM.goodAnswers) \(self.activityVM.numberOfSteps) \(self.activityVM.percentOfSuccess)"
+                    )
+                    .foregroundColor(DesignKitAsset.Colors.bravoHighlights.swiftUIColor)
+                    + Text("!")
+            default:
+                Text("")
+        }
+
+        VStack(spacing: self.gameMetrics.endAnimTextsSpacing) {
+            Group {
+                topMessage
+                    .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
+                    .offset(y: self.textOffset)
+                    .opacity(self.textOpacity)
+                    .animation(
+                        .easeOut(duration: self.gameMetrics.endAnimDuration).delay(self.gameMetrics.endAnimDelayTop),
+                        value: self.textOffset
+                    )
+                    .animation(
+                        .easeOut(duration: self.gameMetrics.endAnimDuration).delay(self.gameMetrics.endAnimDelayTop),
+                        value: self.textOpacity
+                    )
+                bottomMessage
+                    .foregroundColor(DesignKitAsset.Colors.lekaDarkGray.swiftUIColor)
+                    .offset(y: self.textOffset)
+                    .opacity(self.textOpacity)
+                    .animation(
+                        .easeOut(duration: self.gameMetrics.endAnimDuration).delay(self.gameMetrics.endAnimDelayBottom),
+                        value: self.textOffset
+                    )
+                    .animation(
+                        .easeOut(duration: self.gameMetrics.endAnimDuration).delay(self.gameMetrics.endAnimDelayBottom),
+                        value: self.textOpacity
+                    )
+            }
+            .font(
+                .system(
+                    size: self.gameMetrics.endAnimFontSize,
+                    weight: self.gameMetrics.endAnimFontWeight,
+                    design: self.gameMetrics.endAnimFontDesign
+                ))
+        }
+    }
+
+    // MARK: Private
 
     @State private var textOffset: CGFloat = -100
     @State private var textOpacity: Double = 0
@@ -25,235 +187,78 @@ struct GameView: View {
 
     private var infoButton: some View {
         Button {
-            showInstructionModal.toggle()
+            self.showInstructionModal.toggle()
         } label: {
             Image(systemName: "info.circle")
                 .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
         }
-        .opacity(showInstructionModal ? 0 : 1)
+        .opacity(self.showInstructionModal ? 0 : 1)
     }
 
     private var successScreen: some View {
         LottieView(
             name: "motivator", speed: 0.5,
-            action: { activityVM.hideMotivator() },
-            play: $activityVM.showMotivator
+            action: { self.activityVM.hideMotivator() },
+            play: self.$activityVM.showMotivator
         )
-        .scaleEffect(gameMetrics.motivatorScale, anchor: .center)
-    }
-
-    @ViewBuilder
-    func resultMessage(result: ResultType) -> some View {
-        // Localized Strings
-        let topMessage: Text = {
-            switch result {
-                case .fail:
-                    return Text("fail_top_message")
-                case .medium:
-                    return Text("medium_top_message")
-                case .success:
-                    return Text("success_top_message")
-                default:
-                    return Text("")
-            }
-        }()
-
-        let bottomMessage: Text = {
-            switch result {
-                case .fail:
-                    return Text("fail_bottom_message")
-                        + Text("(0%)")
-                        .foregroundColor(DesignKitAsset.Colors.bravoHighlights.swiftUIColor)
-                        + Text(".")
-                case .medium, .success:
-                    return Text("success_bottom_message")
-                        + Text(
-                            "success_bottom_result \(activityVM.goodAnswers) \(activityVM.numberOfSteps) \(activityVM.percentOfSuccess)"
-                        )
-                        .foregroundColor(DesignKitAsset.Colors.bravoHighlights.swiftUIColor)
-                        + Text("!")
-                default:
-                    return Text("")
-            }
-        }()
-
-        VStack(spacing: gameMetrics.endAnimTextsSpacing) {
-            Group {
-                topMessage
-                    .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
-                    .offset(y: textOffset)
-                    .opacity(textOpacity)
-                    .animation(
-                        .easeOut(duration: gameMetrics.endAnimDuration).delay(gameMetrics.endAnimDelayTop),
-                        value: textOffset
-                    )
-                    .animation(
-                        .easeOut(duration: gameMetrics.endAnimDuration).delay(gameMetrics.endAnimDelayTop),
-                        value: textOpacity)
-                bottomMessage
-                    .foregroundColor(DesignKitAsset.Colors.lekaDarkGray.swiftUIColor)
-                    .offset(y: textOffset)
-                    .opacity(textOpacity)
-                    .animation(
-                        .easeOut(duration: gameMetrics.endAnimDuration).delay(gameMetrics.endAnimDelayBottom),
-                        value: textOffset
-                    )
-                    .animation(
-                        .easeOut(duration: gameMetrics.endAnimDuration).delay(gameMetrics.endAnimDelayBottom),
-                        value: textOpacity)
-            }
-            .font(
-                .system(
-                    size: gameMetrics.endAnimFontSize,
-                    weight: gameMetrics.endAnimFontWeight,
-                    design: gameMetrics.endAnimFontDesign))
-        }
+        .scaleEffect(self.gameMetrics.motivatorScale, anchor: .center)
     }
 
     private var cheerScreen: some View {
         ZStack {
             LottieView(
-                name: activityVM.percentOfSuccess >= 80 ? "bravo" : "tryAgain", play: $activityVM.showEndAnimation
+                name: self.activityVM.percentOfSuccess >= 80 ? "bravo" : "tryAgain", play: self.$activityVM.showEndAnimation
             )
             .onAppear {
                 // Delayed to avoid artifacts on animation... SwiftUI bug
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                    textOffset = 0
-                    textOpacity = 1
-                    offsetGameOverBtn = 0
-                    offsetReplayBtn = 0
+                    self.textOffset = 0
+                    self.textOpacity = 1
+                    self.offsetGameOverBtn = 0
+                    self.offsetReplayBtn = 0
                 }
             }
 
             VStack(spacing: 0) {
-                resultMessage(result: activityVM.result)
+                self.resultMessage(result: self.activityVM.result)
                 Spacer()
                 HStack {
                     Spacer()
                     Button {
-                        navigationVM.showActivitiesFullScreenCover = false
-                        robotVM.userChoseToPlayWithoutRobot = false
+                        self.navigationVM.showActivitiesFullScreenCover = false
+                        self.robotVM.userChoseToPlayWithoutRobot = false
                         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                            activityVM.resetActivity()
+                            self.activityVM.resetActivity()
                         }
                     } label: {
                         Text("gameOver_button")
                     }
                     .buttonStyle(BorderedCapsule_ButtonStyle(isFilled: false))
-                    .offset(x: offsetGameOverBtn)
+                    .offset(x: self.offsetGameOverBtn)
                     .animation(
-                        .easeOut(duration: gameMetrics.endAnimBtnDuration).delay(gameMetrics.endAnimGameOverBtnDelay),
-                        value: offsetGameOverBtn)
+                        .easeOut(duration: self.gameMetrics.endAnimBtnDuration).delay(self.gameMetrics.endAnimGameOverBtnDelay),
+                        value: self.offsetGameOverBtn
+                    )
                     Spacer()
                     Button {
-                        activityVM.replayCurrentActivity()
-                        textOffset = -100
-                        textOpacity = 0
-                        offsetGameOverBtn = initialBtnOffsets[0]
-                        offsetReplayBtn = initialBtnOffsets[1]
+                        self.activityVM.replayCurrentActivity()
+                        self.textOffset = -100
+                        self.textOpacity = 0
+                        self.offsetGameOverBtn = self.initialBtnOffsets[0]
+                        self.offsetReplayBtn = self.initialBtnOffsets[1]
                     } label: {
                         Text("replay_button")
                     }
                     .buttonStyle(BorderedCapsule_ButtonStyle())
-                    .offset(x: offsetReplayBtn)
+                    .offset(x: self.offsetReplayBtn)
                     .animation(
-                        .easeOut(duration: gameMetrics.endAnimBtnDuration).delay(gameMetrics.endAnimReplayBtnDelay),
-                        value: offsetReplayBtn)
+                        .easeOut(duration: self.gameMetrics.endAnimBtnDuration).delay(self.gameMetrics.endAnimReplayBtnDelay),
+                        value: self.offsetReplayBtn
+                    )
                     Spacer()
                 }
             }
-            .padding(.vertical, gameMetrics.endAnimBtnPadding)
+            .padding(.vertical, self.gameMetrics.endAnimBtnPadding)
         }
-    }
-
-    var body: some View {
-        DesignKitAsset.Colors.lekaLightBlue.swiftUIColor
-            .edgesIgnoringSafeArea(.all)
-            .navigationBarTitleDisplayMode(.inline)
-            .navigationBarBackButtonHidden()
-            .tint(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
-            .overlay(
-                VStack(spacing: 0) {
-                    VStack(spacing: gameMetrics.headerSpacing) {
-                        ProgressBarView(gameMetrics: gameMetrics)
-                        InstructionButton(gameMetrics: gameMetrics)
-                    }
-                    .frame(maxHeight: gameMetrics.headerTotalHeight)
-                    .padding(.top, gameMetrics.headerPadding)
-
-                    VStack {
-                        Spacer()
-                        PlayZone(gameMetrics: gameMetrics)
-                            .layoutPriority(1)
-                        Spacer()
-                    }
-                }
-            )
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button(
-                        action: {
-                            activityVM.resetActivity()
-                            navigationVM.showActivitiesFullScreenCover = false
-                            robotVM.userChoseToPlayWithoutRobot = false
-                            // show alert to inform about losing the progress??
-                        },
-                        label: {
-                            Image(systemName: "chevron.left")
-                                .padding(.horizontal)
-                        }
-                    )
-                    .disabled(activityVM.tapIsDisabled)
-                }
-                ToolbarItem(placement: .principal) {
-                    HStack(spacing: 4) {
-                        Text(activityVM.currentActivityTitle)
-                        if settings.companyIsConnected && settings.exploratoryModeIsOn {
-                            Image(systemName: "binoculars.fill")
-                        }
-                    }
-                    .font(gameMetrics.semi17)
-                    .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
-                }
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    infoButton
-                }
-            }
-            .sheet(isPresented: $showInstructionModal) {
-                CurrentGameInstructionView(gameMetrics: gameMetrics)
-            }
-            .overlay(
-                ZStack {
-                    if activityVM.showMotivator {
-                        successScreen
-                    } else if activityVM.showEndAnimation {
-                        cheerScreen
-                    } else {
-                        // Not an EmptyView() to avoid breaking the opacity animation
-                        Rectangle()
-                            .fill(Color.clear)
-                    }
-                }
-                .background(content: {
-                    Group {
-                        if activityVM.showBlurryBG {
-                            Rectangle()
-                                .fill(.regularMaterial)
-                                .transition(.opacity)
-                        }
-                    }
-                    .animation(.default, value: activityVM.showBlurryBG)
-                })
-                .edgesIgnoringSafeArea(.all)
-            )
-            .background(
-                GeometryReader { reader in
-                    Color.clear
-                        .onAppear {
-                            offsetGameOverBtn = -reader.frame(in: .local).width / 2
-                            offsetReplayBtn = reader.frame(in: .local).width / 2
-                            initialBtnOffsets = [offsetGameOverBtn, offsetReplayBtn]
-                        }
-                })
     }
 }

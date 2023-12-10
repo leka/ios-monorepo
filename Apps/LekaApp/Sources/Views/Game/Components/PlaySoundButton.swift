@@ -5,14 +5,15 @@
 import DesignKit
 import SwiftUI
 
-struct PlaySoundButton: View {
+// MARK: - PlaySoundButton
 
+struct PlaySoundButton: View {
     @EnvironmentObject var activityVM: ActivityViewModel
 
     var body: some View {
         Button(
             action: {
-                activityVM.audioPlayer.play()
+                self.activityVM.audioPlayer.play()
             },
             label: {
                 Image(systemName: "speaker.2")
@@ -21,21 +22,23 @@ struct PlaySoundButton: View {
                     .padding(40)
             }
         )
-        .buttonStyle(PlaySound_ButtonStyle(progress: activityVM.progress))
+        .buttonStyle(PlaySound_ButtonStyle(progress: self.activityVM.progress))
         .frame(
             width: 160,
             height: 200,
             alignment: .center
         )
-        .scaleEffect(activityVM.audioPlayer.isPlaying ? 1.0 : 0.8, anchor: .center)
+        .scaleEffect(self.activityVM.audioPlayer.isPlaying ? 1.0 : 0.8, anchor: .center)
         .shadow(
             color: DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor.opacity(0.2),
-            radius: activityVM.audioPlayer.isPlaying ? 6 : 3, x: 0, y: 3
+            radius: self.activityVM.audioPlayer.isPlaying ? 6 : 3, x: 0, y: 3
         )
-        .animation(.spring(response: 0.3, dampingFraction: 0.45), value: activityVM.audioPlayer.isPlaying)
-        .disabled(activityVM.audioPlayer.isPlaying)
+        .animation(.spring(response: 0.3, dampingFraction: 0.45), value: self.activityVM.audioPlayer.isPlaying)
+        .disabled(self.activityVM.audioPlayer.isPlaying)
     }
 }
+
+// MARK: - PlaySoundButton_Previews
 
 struct PlaySoundButton_Previews: PreviewProvider {
     static var previews: some View {

@@ -2,26 +2,20 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
-//import Combine
 import ContentKit
 import RobotKit
 import SwiftUI
 
 struct ChoiceImageView: View {
-
-    private let image: String
-    private let size: CGFloat
-    private let state: GameplayChoiceState
-    private let kOverLayScaleFactor: CGFloat = 1.08
-
-    @State private var animationPercent: CGFloat = .zero
-    @State private var overlayOpacity: CGFloat = .zero
+    // MARK: Lifecycle
 
     init(image: String, size: CGFloat, state: GameplayChoiceState = .idle) {
         self.image = image
         self.size = size
         self.state = state
     }
+
+    // MARK: Internal
 
     @ViewBuilder
     var circle: some View {
@@ -30,16 +24,16 @@ struct ChoiceImageView: View {
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(
-                    width: size,
-                    height: size
+                    width: self.size,
+                    height: self.size
                 )
                 .clipShape(Circle())
         } else {
-            Text("❌\nImage not found:\n\(image)")
+            Text("❌\nImage not found:\n\(self.image)")
                 .multilineTextAlignment(.center)
                 .frame(
-                    width: size,
-                    height: size
+                    width: self.size,
+                    height: self.size
                 )
                 .overlay {
                     Circle()
@@ -49,48 +43,57 @@ struct ChoiceImageView: View {
     }
 
     var body: some View {
-        switch state {
+        switch self.state {
             case .idle:
-                circle
+                self.circle
                     .onAppear {
                         withAnimation {
-                            animationPercent = 0.0
-                            overlayOpacity = 0.0
+                            self.animationPercent = 0.0
+                            self.overlayOpacity = 0.0
                         }
                     }
 
             case .rightAnswer:
-                circle
+                self.circle
                     .overlay {
-                        RightAnswerFeedback(animationPercent: animationPercent)
+                        RightAnswerFeedback(animationPercent: self.animationPercent)
                             .frame(
-                                width: size * kOverLayScaleFactor,
-                                height: size * kOverLayScaleFactor
+                                width: self.size * self.kOverLayScaleFactor,
+                                height: self.size * self.kOverLayScaleFactor
                             )
                     }
                     .onAppear {
                         withAnimation {
-                            animationPercent = 1.0
+                            self.animationPercent = 1.0
                         }
                     }
 
             case .wrongAnswer:
-                circle
+                self.circle
                     .overlay {
-                        WrongAnswerFeedback(overlayOpacity: overlayOpacity)
+                        WrongAnswerFeedback(overlayOpacity: self.overlayOpacity)
                             .frame(
-                                width: size * kOverLayScaleFactor,
-                                height: size * kOverLayScaleFactor
+                                width: self.size * self.kOverLayScaleFactor,
+                                height: self.size * self.kOverLayScaleFactor
                             )
                     }
                     .onAppear {
                         withAnimation {
-                            overlayOpacity = 0.8
+                            self.overlayOpacity = 0.8
                         }
                     }
         }
     }
 
+    // MARK: Private
+
+    private let image: String
+    private let size: CGFloat
+    private let state: GameplayChoiceState
+    private let kOverLayScaleFactor: CGFloat = 1.08
+
+    @State private var animationPercent: CGFloat = .zero
+    @State private var overlayOpacity: CGFloat = .zero
 }
 
 #Preview {

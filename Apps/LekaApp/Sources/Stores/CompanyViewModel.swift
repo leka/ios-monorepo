@@ -6,7 +6,6 @@ import DesignKit
 import SwiftUI
 
 class CompanyViewModel: ObservableObject {
-
     @Published var currentCompany = Company(mail: "", password: "", teachers: [], users: [])
     @Published var profilesInUse: [UserType: UUID] = [.teacher: UUID(), .user: UUID()]
     @Published var selectedProfiles: [UserType: UUID] = [.teacher: UUID(), .user: UUID()]
@@ -17,44 +16,45 @@ class CompanyViewModel: ObservableObject {
     @Published var editingProfile: Bool = false
 
     // MARK: - METHODS
+
     // Account Managment
     func disconnect() {
-        currentCompany = Company(mail: "", password: "", teachers: [], users: [])
-        profilesInUse = [.teacher: UUID(), .user: UUID()]
-        selectedProfiles = [.teacher: UUID(), .user: UUID()]
-        resetBufferProfile(.teacher)
-        resetBufferProfile(.user)
+        self.currentCompany = Company(mail: "", password: "", teachers: [], users: [])
+        self.profilesInUse = [.teacher: UUID(), .user: UUID()]
+        self.selectedProfiles = [.teacher: UUID(), .user: UUID()]
+        self.resetBufferProfile(.teacher)
+        self.resetBufferProfile(.user)
     }
 
     func assignCurrentProfiles() {
-        profilesInUse = selectedProfiles
+        self.profilesInUse = self.selectedProfiles
     }
 
     func preselectCurrentProfiles() {
-        selectedProfiles = profilesInUse
+        self.selectedProfiles = self.profilesInUse
     }
 
     // Sort profiles (alpabetically + current first) before displaying them in a ProfileSet (Selector || Editor)
     func sortProfiles(_ type: UserType) {
         switch type {
             case .teacher:
-                currentCompany.teachers.sort { $0.name < $1.name }
+                self.currentCompany.teachers.sort { $0.name < $1.name }
                 if let i = currentCompany.teachers.firstIndex(where: { $0.id == profilesInUse[.teacher] }) {
-                    currentCompany.teachers.move(fromOffsets: [i], toOffset: 0)
+                    self.currentCompany.teachers.move(fromOffsets: [i], toOffset: 0)
                 }
             case .user:
-                currentCompany.users.sort { $0.name < $1.name }
+                self.currentCompany.users.sort { $0.name < $1.name }
                 if let i = currentCompany.users.firstIndex(where: { $0.id == profilesInUse[.user] }) {
-                    currentCompany.users.move(fromOffsets: [i], toOffset: 0)
+                    self.currentCompany.users.move(fromOffsets: [i], toOffset: 0)
                 }
         }
-        preselectCurrentProfiles()
+        self.preselectCurrentProfiles()
     }
 
     func getSelectedProfileAvatar(_ type: UserType) -> String {
         switch type {
-            case .teacher: return bufferTeacher.avatar
-            case .user: return bufferUser.avatar
+            case .teacher: self.bufferTeacher.avatar
+            case .user: self.bufferUser.avatar
         }
     }
 
@@ -67,16 +67,16 @@ class CompanyViewModel: ObservableObject {
                         "Accompagnant",
                     ]
                 }
-                return [currentCompany.teachers[i].avatar, currentCompany.teachers[i].name]
+                return [self.currentCompany.teachers[i].avatar, self.currentCompany.teachers[i].name]
             case .user:
                 guard let i = currentCompany.users.firstIndex(where: { $0.id == id }) else {
                     return [
-                        (!profileIsAssigned(.user)
-                            ? DesignKitAsset.Avatars.questionMark.name : DesignKitAsset.Avatars.userBlue.name),
+                        !self.profileIsAssigned(.user)
+                            ? DesignKitAsset.Avatars.questionMark.name : DesignKitAsset.Avatars.userBlue.name,
                         "Utilisateur",
                     ]
                 }
-                return [currentCompany.users[i].avatar, currentCompany.users[i].name]
+                return [self.currentCompany.users[i].avatar, self.currentCompany.users[i].name]
         }
     }
 
@@ -84,43 +84,43 @@ class CompanyViewModel: ObservableObject {
         guard let i = currentCompany.users.firstIndex(where: { $0.id == profilesInUse[.user] }) else {
             return 1
         }
-        return currentCompany.users[i].reinforcer
+        return self.currentCompany.users[i].reinforcer
     }
 
     func getReinforcerFor(index: Int) -> UIImage {
         switch index {
-            case 2: return DesignKitAsset.Reinforcers.spinBlinkBlueViolet.image
-            case 3: return DesignKitAsset.Reinforcers.fire.image
-            case 4: return DesignKitAsset.Reinforcers.sprinkles.image
-            case 5: return DesignKitAsset.Reinforcers.rainbow.image
-            default: return DesignKitAsset.Reinforcers.spinBlinkGreenOff.image
+            case 2: DesignKitAsset.Reinforcers.spinBlinkBlueViolet.image
+            case 3: DesignKitAsset.Reinforcers.fire.image
+            case 4: DesignKitAsset.Reinforcers.sprinkles.image
+            case 5: DesignKitAsset.Reinforcers.rainbow.image
+            default: DesignKitAsset.Reinforcers.spinBlinkGreenOff.image
         }
     }
 
     func getAllAvatarsOf(_ type: UserType) -> [[UUID: String]] {
         switch type {
-            case .teacher: return currentCompany.teachers.map { [$0.id: $0.avatar] }
-            case .user: return currentCompany.users.map { [$0.id: $0.avatar] }
+            case .teacher: self.currentCompany.teachers.map { [$0.id: $0.avatar] }
+            case .user: self.currentCompany.users.map { [$0.id: $0.avatar] }
         }
     }
 
     func getAllProfilesIDFor(_ type: UserType) -> [UUID] {
         switch type {
-            case .teacher: return currentCompany.teachers.map { $0.id }
-            case .user: return currentCompany.users.map { $0.id }
+            case .teacher: self.currentCompany.teachers.map(\.id)
+            case .user: self.currentCompany.users.map(\.id)
         }
     }
 
     func resetBufferProfile(_ type: UserType) {
         switch type {
             case .teacher:
-                bufferTeacher = Teacher(
+                self.bufferTeacher = Teacher(
                     name: "",
                     avatar: DesignKitAsset.Avatars.accompanyingWhite.name,
                     jobs: []
                 )
             case .user:
-                bufferUser = User(
+                self.bufferUser = User(
                     name: "",
                     avatar: DesignKitAsset.Avatars.userWhite.name,
                     reinforcer: 1
@@ -129,61 +129,81 @@ class CompanyViewModel: ObservableObject {
     }
 
     func emptyProfilesSelection() {
-        selectedProfiles[.user] = UUID()
-        selectedProfiles[.teacher] = UUID()
+        self.selectedProfiles[.user] = UUID()
+        self.selectedProfiles[.teacher] = UUID()
     }
 
     func profileIsSelected(_ type: UserType) -> Bool {
         switch type {
-            case .teacher: return currentCompany.teachers.map { $0.id }.contains(selectedProfiles[.teacher])
-            case .user: return currentCompany.users.map { $0.id }.contains(selectedProfiles[.user])
+            case .teacher:
+                if let id = selectedProfiles[.teacher] {
+                    return self.currentCompany.teachers.map(\.id).contains(id)
+                }
+            case .user:
+                if let id = selectedProfiles[.user] {
+                    return self.currentCompany.users.map(\.id).contains(id)
+                }
         }
+
+        return false
     }
 
     func profileIsCurrent(_ type: UserType, id: UUID) -> Bool {
         switch type {
-            case .teacher: return profilesInUse[.teacher] == id
-            case .user: return profilesInUse[.user] == id
+            case .teacher: self.profilesInUse[.teacher] == id
+            case .user: self.profilesInUse[.user] == id
         }
     }
 
     func profileIsAssigned(_ type: UserType) -> Bool {
         switch type {
-            case .teacher: return currentCompany.teachers.map { $0.id }.contains(profilesInUse[.teacher])
-            case .user: return currentCompany.users.map { $0.id }.contains(profilesInUse[.user])
+            case .teacher:
+                if let id = selectedProfiles[.teacher] {
+                    return self.currentCompany.teachers.map(\.id).contains(id)
+                }
+            case .user:
+                if let id = selectedProfiles[.user] {
+                    return self.currentCompany.users.map(\.id).contains(id)
+                }
         }
+
+        return false
     }
 
     func selectionSetIsCorrect() -> Bool {
-        currentCompany.teachers.map { $0.id }.contains(selectedProfiles[.teacher])
-            && currentCompany.users.map { $0.id }.contains(selectedProfiles[.user])
+        if let teacher = selectedProfiles[.teacher], let user = selectedProfiles[.user] {
+            return self.currentCompany.teachers.map(\.id).contains(teacher)
+                && self.currentCompany.users.map(\.id).contains(user)
+        }
+
+        return false
     }
 
     func editProfile(_ type: UserType) {
         switch type {
             case .teacher:
                 if let i = currentCompany.teachers.firstIndex(where: { $0.id == selectedProfiles[.teacher] }) {
-                    bufferTeacher = currentCompany.teachers[i]
+                    self.bufferTeacher = self.currentCompany.teachers[i]
                 }
             case .user:
                 if let i = currentCompany.users.firstIndex(where: { $0.id == selectedProfiles[.user] }) {
-                    bufferUser = currentCompany.users[i]
+                    self.bufferUser = self.currentCompany.users[i]
                 }
         }
-        editingProfile = true
+        self.editingProfile = true
     }
 
     func setBufferAvatar(_ img: String, for type: UserType) {
         switch type {
-            case .teacher: bufferTeacher.avatar = img
-            case .user: bufferUser.avatar = img
+            case .teacher: self.bufferTeacher.avatar = img
+            case .user: self.bufferUser.avatar = img
         }
     }
 
     func resetBufferAvatar(_ type: UserType) {
         switch type {
-            case .teacher: bufferTeacher.avatar = ""
-            case .user: bufferUser.avatar = ""
+            case .teacher: self.bufferTeacher.avatar = ""
+            case .user: self.bufferUser.avatar = ""
         }
     }
 
@@ -191,64 +211,64 @@ class CompanyViewModel: ObservableObject {
         switch type {
             case .teacher:
                 if let i = currentCompany.teachers.firstIndex(where: { $0.id == bufferTeacher.id }) {
-                    currentCompany.teachers[i] = bufferTeacher
+                    self.currentCompany.teachers[i] = self.bufferTeacher
                 } else {
-                    addTeacherProfile()
+                    self.addTeacherProfile()
                 }
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [self] in
-                    resetBufferProfile(.teacher)
+                    self.resetBufferProfile(.teacher)
                 }
 
             case .user:
                 if let i = currentCompany.users.firstIndex(where: { $0.id == bufferUser.id }) {
-                    currentCompany.users[i] = bufferUser
+                    self.currentCompany.users[i] = self.bufferUser
                 } else {
-                    addUserProfile()
+                    self.addUserProfile()
                 }
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [self] in
-                    resetBufferProfile(.user)
+                    self.resetBufferProfile(.user)
                 }
         }
-        editingProfile = false
+        self.editingProfile = false
     }
 
     func addTeacherProfile() {
-        if bufferTeacher.avatar == DesignKitAsset.Avatars.accompanyingWhite.name {
-            bufferTeacher.avatar = DesignKitAsset.Avatars.accompanyingBlue.name
+        if self.bufferTeacher.avatar == DesignKitAsset.Avatars.accompanyingWhite.name {
+            self.bufferTeacher.avatar = DesignKitAsset.Avatars.accompanyingBlue.name
         }
-        currentCompany.teachers.insert(bufferTeacher, at: 0)
-        selectedProfiles[.teacher] = bufferTeacher.id
+        self.currentCompany.teachers.insert(self.bufferTeacher, at: 0)
+        self.selectedProfiles[.teacher] = self.bufferTeacher.id
     }
 
     func addUserProfile() {
-        if bufferUser.avatar == DesignKitAsset.Avatars.userWhite.name {
-            bufferUser.avatar = DesignKitAsset.Avatars.userBlue.name
+        if self.bufferUser.avatar == DesignKitAsset.Avatars.userWhite.name {
+            self.bufferUser.avatar = DesignKitAsset.Avatars.userBlue.name
         }
-        currentCompany.users.insert(bufferUser, at: 0)
-        selectedProfiles[.user] = bufferUser.id
+        self.currentCompany.users.insert(self.bufferUser, at: 0)
+        self.selectedProfiles[.user] = self.bufferUser.id
     }
 
     func deleteProfile(_ type: UserType) {
         switch type {
             case .teacher:
-                currentCompany.teachers.removeAll(where: { bufferTeacher.id == $0.id })
-                profilesInUse[.teacher] = UUID()
-                selectedProfiles[.teacher] = UUID()
-                editingProfile = false
+                self.currentCompany.teachers.removeAll(where: { self.bufferTeacher.id == $0.id })
+                self.profilesInUse[.teacher] = UUID()
+                self.selectedProfiles[.teacher] = UUID()
+                self.editingProfile = false
 
             case .user:
-                currentCompany.users.removeAll(where: { bufferUser.id == $0.id })
-                profilesInUse[.user] = UUID()
-                selectedProfiles[.user] = UUID()
-                editingProfile = false
+                self.currentCompany.users.removeAll(where: { self.bufferUser.id == $0.id })
+                self.profilesInUse[.user] = UUID()
+                self.selectedProfiles[.user] = UUID()
+                self.editingProfile = false
         }
     }
 
     // MARK: - DiscoveryMode
-    func setupDiscoveryCompany() {
-        currentCompany = DiscoveryCompany().discoveryCompany
-        profilesInUse[.teacher] = currentCompany.teachers[0].id
-        profilesInUse[.user] = currentCompany.users[0].id
-    }
 
+    func setupDiscoveryCompany() {
+        self.currentCompany = DiscoveryCompany().discoveryCompany
+        self.profilesInUse[.teacher] = self.currentCompany.teachers[0].id
+        self.profilesInUse[.user] = self.currentCompany.users[0].id
+    }
 }

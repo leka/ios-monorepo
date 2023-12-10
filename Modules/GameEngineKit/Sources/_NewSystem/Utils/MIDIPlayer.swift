@@ -2,64 +2,44 @@
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
-import AVFAudio
 import AudioKit
+import AVFAudio
 import ContentKit
 import SwiftUI
 
 class MIDIPlayer: ObservableObject {
-    private let engine = AudioEngine()
-    private let sampler = MIDISampler()
-    private let sequencer = AppleSequencer()
-    private let instrument = MIDICallbackInstrument()
+    // MARK: Lifecycle
 
     init(instrument: MIDIInstrument) {
-        engine.output = sampler
+        self.engine.output = self.sampler
 
-        loadInstrument(samples: instrument.samples)
-        startAudioEngine()
+        self.loadInstrument(samples: instrument.samples)
+        self.startAudioEngine()
     }
 
-    private func startAudioEngine() {
-        do {
-            try engine.start()
-        } catch {
-            print("Could not start AudioKit")
-        }
-    }
+    // MARK: Internal
 
-    private func loadInstrument(samples: [MIDISample]) {
-        do {
-            let files = samples.compactMap {
-                $0.audioFile
-            }
-            try sampler.loadAudioFiles(files)
-        } catch {
-            print("Could not load file")
-        }
-    }
-
-    func loadMIDIFile(fileUrl: URL, tempo: Double) {
-        sequencer.loadMIDIFile(fromURL: fileUrl)
-        sequencer.setGlobalMIDIOutput(instrument.midiIn)
-        sequencer.setTempo(tempo)
+    func loadMIDIFile(fileURL: URL, tempo: Double) {
+        self.sequencer.loadMIDIFile(fromURL: fileURL)
+        self.sequencer.setGlobalMIDIOutput(self.instrument.midiIn)
+        self.sequencer.setTempo(tempo)
     }
 
     func setInstrumentCallback(callback: @escaping MIDICallback) {
-        instrument.callback = callback
+        self.instrument.callback = callback
     }
 
     func noteOn(number: MIDINoteNumber, velocity: MIDIVelocity = 60) {
-        sampler.play(noteNumber: number, velocity: velocity, channel: 0)
+        self.sampler.play(noteNumber: number, velocity: velocity, channel: 0)
     }
 
     func play() {
-        sequencer.rewind()
-        sequencer.play()
+        self.sequencer.rewind()
+        self.sequencer.play()
     }
 
     func stop() {
-        sequencer.stop()
+        self.sequencer.stop()
     }
 
     func getMidiNotes() -> [MIDINoteData] {
@@ -75,6 +55,30 @@ class MIDIPlayer: ObservableObject {
             fatalError("Sequencer track not found")
         }
 
-        return track.length * 60 / sequencer.tempo
+        return track.length * 60 / self.sequencer.tempo
+    }
+
+    // MARK: Private
+
+    private let engine = AudioEngine()
+    private let sampler = MIDISampler()
+    private let sequencer = AppleSequencer()
+    private let instrument = MIDICallbackInstrument()
+
+    private func startAudioEngine() {
+        do {
+            try self.engine.start()
+        } catch {
+            print("Could not start AudioKit")
+        }
+    }
+
+    private func loadInstrument(samples: [MIDISample]) {
+        do {
+            let files = samples.compactMap(\.audioFile)
+            try self.sampler.loadAudioFiles(files)
+        } catch {
+            print("Could not load file")
+        }
     }
 }

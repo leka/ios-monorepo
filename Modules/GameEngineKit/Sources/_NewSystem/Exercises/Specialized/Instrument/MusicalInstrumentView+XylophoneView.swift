@@ -7,13 +7,8 @@ import RobotKit
 import SwiftUI
 
 extension MusicalInstrumentView {
-
     struct XylophoneView: View {
-        @ObservedObject var xyloPlayer: MIDIPlayer
-        let tilesSpacing: CGFloat
-        let tileNumber: Int
-        let tileColors: [Robot.Color] = [.pink, .red, .orange, .yellow, .green, .lightBlue, .blue, .purple]
-        let scale: MIDIScale
+        // MARK: Lifecycle
 
         init(midiPlayer: MIDIPlayer, scale: MIDIScale) {
             self.xyloPlayer = midiPlayer
@@ -22,25 +17,33 @@ extension MusicalInstrumentView {
             self.tilesSpacing = scale.self == .majorPentatonic ? 40 : 20
         }
 
+        // MARK: Internal
+
+        @ObservedObject var xyloPlayer: MIDIPlayer
+        let tilesSpacing: CGFloat
+        let tileNumber: Int
+        let tileColors: [Robot.Color] = [.pink, .red, .orange, .yellow, .green, .lightBlue, .blue, .purple]
+        let scale: MIDIScale
+
         var body: some View {
-            HStack(spacing: tilesSpacing) {
-                ForEach(0..<tileNumber) { index in
+            HStack(spacing: self.tilesSpacing) {
+                ForEach(0..<self.tileNumber) { index in
                     Button {
-                        xyloPlayer.noteOn(number: scale.notes[index])
-                        Robot.shared.shine(.all(in: tileColors[index]))
+                        self.xyloPlayer.noteOn(number: self.scale.notes[index])
+                        Robot.shared.shine(.all(in: self.tileColors[index]))
                     } label: {
-                        tileColors[index].screen
+                        self.tileColors[index].screen
                     }
                     .buttonStyle(
                         XylophoneTileButtonStyle(
-                            index: index, tileNumber: tileNumber, tileWidth: scale.self == .majorPentatonic ? 130 : 100)
+                            index: index, tileNumber: self.tileNumber, tileWidth: self.scale.self == .majorPentatonic ? 130 : 100
+                        )
                     )
                     .compositingGroup()
                 }
             }
         }
     }
-
 }
 
 #Preview {

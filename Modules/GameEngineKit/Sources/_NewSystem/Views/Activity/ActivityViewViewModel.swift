@@ -7,10 +7,27 @@ import ContentKit
 import SwiftUI
 
 public class ActivityViewViewModel: ObservableObject {
+    // MARK: Lifecycle
 
-    private let sequenceManager: ActivitySequenceManager
+    public init(activity: Activity) {
+        self.sequenceManager = ActivitySequenceManager(activity: activity)
 
-    private var cancellables: Set<AnyCancellable> = []
+        self.currentActivity = activity
+
+        self.totalSequences = self.sequenceManager.totalSequences
+        self.currentSequenceIndex = self.sequenceManager.currentSequenceIndex
+
+        self.totalExercisesInCurrentSequence = self.sequenceManager.totalExercisesInCurrentSequence
+        self.currentExerciseIndexInSequence = self.sequenceManager.currentExerciseIndexInSequence
+
+        self.currentExercise = self.sequenceManager.currentExercise
+        self.currentExerciseInterface = self.sequenceManager.currentExercise.interface
+        self.currentExerciseSharedData = ExerciseSharedData()
+
+        self.subscribeToCurrentExerciseSharedDataUpdates()
+    }
+
+    // MARK: Internal
 
     @Published var currentActivity: Activity
 
@@ -24,52 +41,40 @@ public class ActivityViewViewModel: ObservableObject {
     @Published var currentExerciseInterface: Exercise.Interface
     @Published var currentExerciseSharedData: ExerciseSharedData
 
-    public init(activity: Activity) {
-        self.sequenceManager = ActivitySequenceManager(activity: activity)
-
-        self.currentActivity = activity
-
-        self.totalSequences = sequenceManager.totalSequences
-        self.currentSequenceIndex = sequenceManager.currentSequenceIndex
-
-        self.totalExercisesInCurrentSequence = sequenceManager.totalExercisesInCurrentSequence
-        self.currentExerciseIndexInSequence = sequenceManager.currentExerciseIndexInSequence
-
-        self.currentExercise = sequenceManager.currentExercise
-        self.currentExerciseInterface = sequenceManager.currentExercise.interface
-        self.currentExerciseSharedData = ExerciseSharedData()
-
-        subscribeToCurrentExerciseSharedDataUpdates()
-    }
-
-    func moveToNextExercise() {
-        sequenceManager.moveToNextExercise()
-        updateValues()
-    }
-
-    func moveToPreviousExercise() {
-        sequenceManager.moveToPreviousExercise()
-        updateValues()
-    }
-
     var isFirstExercise: Bool {
-        sequenceManager.isFirstExercise
+        self.sequenceManager.isFirstExercise
     }
 
     var isLastExercise: Bool {
-        sequenceManager.isLastExercise
+        self.sequenceManager.isLastExercise
     }
 
-    private func updateValues() {
-        currentExercise = sequenceManager.currentExercise
-        currentExerciseInterface = sequenceManager.currentExercise.interface
-        currentSequenceIndex = sequenceManager.currentSequenceIndex
-        totalSequences = sequenceManager.totalSequences
-        currentExerciseIndexInSequence = sequenceManager.currentExerciseIndexInSequence
-        totalExercisesInCurrentSequence = sequenceManager.totalExercisesInCurrentSequence
-        currentExerciseSharedData = ExerciseSharedData()
+    func moveToNextExercise() {
+        self.sequenceManager.moveToNextExercise()
+        self.updateValues()
+    }
 
-        subscribeToCurrentExerciseSharedDataUpdates()
+    func moveToPreviousExercise() {
+        self.sequenceManager.moveToPreviousExercise()
+        self.updateValues()
+    }
+
+    // MARK: Private
+
+    private let sequenceManager: ActivitySequenceManager
+
+    private var cancellables: Set<AnyCancellable> = []
+
+    private func updateValues() {
+        self.currentExercise = self.sequenceManager.currentExercise
+        self.currentExerciseInterface = self.sequenceManager.currentExercise.interface
+        self.currentSequenceIndex = self.sequenceManager.currentSequenceIndex
+        self.totalSequences = self.sequenceManager.totalSequences
+        self.currentExerciseIndexInSequence = self.sequenceManager.currentExerciseIndexInSequence
+        self.totalExercisesInCurrentSequence = self.sequenceManager.totalExercisesInCurrentSequence
+        self.currentExerciseSharedData = ExerciseSharedData()
+
+        self.subscribeToCurrentExerciseSharedDataUpdates()
     }
 
     private func subscribeToCurrentExerciseSharedDataUpdates() {
@@ -78,7 +83,6 @@ public class ActivityViewViewModel: ObservableObject {
             .sink {
                 self.objectWillChange.send()
             }
-            .store(in: &cancellables)
+            .store(in: &self.cancellables)
     }
-
 }

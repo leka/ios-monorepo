@@ -10,17 +10,15 @@ import ProjectDescription
 /// See https://docs.tuist.io/guides/helpers/
 
 extension Project {
-
-    //
     // MARK: - Internal
-    //
 
-    internal static func makeFrameworkTargets(
+    static func makeFrameworkTargets(
         name: String, platform: Platform, product: Product = .staticLibrary, dependencies: [TargetDependency], settings: Settings? = nil
     )
         -> [Target]
     {
         // MARK: - Set product type
+
         var product = product
 
         let generateModulesAsFrameworksForDebug = Environment.generateModulesAsFrameworksForDebug.getBoolean(
@@ -31,6 +29,7 @@ extension Project {
         }
 
         // MARK: - Set platform type
+
         var platform = platform
 
         let generateMacOSApps = Environment.generateMacOSApps.getBoolean(default: false)
@@ -51,7 +50,8 @@ extension Project {
             resources: ["Resources/**"],
             scripts: TargetScript.linters(),
             dependencies: dependencies,
-            settings: settings)
+            settings: settings
+        )
 
         let tests = Target(
             name: "\(name)Tests",
@@ -62,9 +62,9 @@ extension Project {
             sources: ["Tests/**"],
             resources: [],
             scripts: TargetScript.linters(),
-            dependencies: [.target(name: name)])
+            dependencies: [.target(name: name)]
+        )
 
         return [module, tests]
     }
-
 }

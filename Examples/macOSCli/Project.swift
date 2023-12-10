@@ -10,5 +10,6 @@ let project = Project.cli(
     name: "macOSCli",
     version: "1.0.0",
     dependencies: [
-        .external(name: "ArgumentParser")
-    ])
+        .external(name: "ArgumentParser"),
+    ]
+)

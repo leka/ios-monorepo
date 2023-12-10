@@ -7,7 +7,6 @@ import Combine
 import Foundation
 
 extension Robot {
-
     func subscribeToBLEConnectionUpdates() {
         BLEManager.shared.didConnect
             .receive(on: DispatchQueue.main)
@@ -26,5 +25,4 @@ extension Robot {
             }
             .store(in: &cancellables)
     }
-
 }

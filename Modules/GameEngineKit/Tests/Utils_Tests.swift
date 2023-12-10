@@ -16,7 +16,8 @@ final class UtilsLeftPWMConversion_Tests: XCTestCase {
 
         // When
         let (actualLeftSpeed, actualRightSpeed) = convertJoystickPosToSpeed(
-            position: position, maxValue: maxValue)
+            position: position, maxValue: maxValue
+        )
 
         // Then
         let expectedLeftSpeed: CGFloat = 0
@@ -28,11 +29,12 @@ final class UtilsLeftPWMConversion_Tests: XCTestCase {
 
     func test_shouldReturnRotations_equals_clockwise255_clockwise255() {
         // Given
-        let position = CGPoint(x: 0.0, y: -maxValue)
+        let position = CGPoint(x: 0.0, y: -self.maxValue)
 
         // When
         let (actualLeftSpeed, actualRightSpeed) = convertJoystickPosToSpeed(
-            position: position, maxValue: maxValue)
+            position: position, maxValue: maxValue
+        )
 
         // Then
         let expectedLeftSpeed: CGFloat = 1
@@ -48,7 +50,8 @@ final class UtilsLeftPWMConversion_Tests: XCTestCase {
 
         // When
         let (actualLeftSpeed, actualRightSpeed) = convertJoystickPosToSpeed(
-            position: position, maxValue: maxValue)
+            position: position, maxValue: maxValue
+        )
 
         // Then
         let expectedLeftSpeed: CGFloat = -1
@@ -64,7 +67,8 @@ final class UtilsLeftPWMConversion_Tests: XCTestCase {
 
         // When
         let (actualLeftSpeed, actualRightSpeed) = convertJoystickPosToSpeed(
-            position: position, maxValue: maxValue)
+            position: position, maxValue: maxValue
+        )
 
         // Then
         let expectedLeftSpeed: CGFloat = 1
@@ -76,11 +80,12 @@ final class UtilsLeftPWMConversion_Tests: XCTestCase {
 
     func test_shouldReturnRotations_equals_counterclockwise255_clockwise255() {
         // Given
-        let position = CGPoint(x: -maxValue, y: 0.0)
+        let position = CGPoint(x: -self.maxValue, y: 0.0)
 
         // When
         let (actualLeftSpeed, actualRightSpeed) = convertJoystickPosToSpeed(
-            position: position, maxValue: maxValue)
+            position: position, maxValue: maxValue
+        )
 
         // Then
         let expectedLeftSpeed: CGFloat = -1
@@ -92,11 +97,12 @@ final class UtilsLeftPWMConversion_Tests: XCTestCase {
 
     func test_shouldReturnRotations_equals_clockwise127_clockwise127() {
         // Given
-        let position = CGPoint(x: 0.0, y: -maxValue / 2)
+        let position = CGPoint(x: 0.0, y: -self.maxValue / 2)
 
         // When
         let (actualLeftSpeed, actualRightSpeed) = convertJoystickPosToSpeed(
-            position: position, maxValue: maxValue)
+            position: position, maxValue: maxValue
+        )
 
         // Then
         let expectedLeftSpeed: CGFloat = 0.5
@@ -112,7 +118,8 @@ final class UtilsLeftPWMConversion_Tests: XCTestCase {
 
         // When
         let (actualLeftSpeed, actualRightSpeed) = convertJoystickPosToSpeed(
-            position: position, maxValue: maxValue)
+            position: position, maxValue: maxValue
+        )
 
         // Then
         let expectedLeftSpeed: CGFloat = -0.5
@@ -128,7 +135,8 @@ final class UtilsLeftPWMConversion_Tests: XCTestCase {
 
         // When
         let (actualLeftSpeed, actualRightSpeed) = convertJoystickPosToSpeed(
-            position: position, maxValue: maxValue)
+            position: position, maxValue: maxValue
+        )
 
         // Then
         let expectedLeftSpeed: CGFloat = 0.5
@@ -140,11 +148,12 @@ final class UtilsLeftPWMConversion_Tests: XCTestCase {
 
     func test_shouldReturnRotations_equals_counterclockwise127_clockwise127() {
         // Given
-        let position = CGPoint(x: -maxValue / 2, y: 0.0)
+        let position = CGPoint(x: -self.maxValue / 2, y: 0.0)
 
         // When
         let (actualLeftSpeed, actualRightSpeed) = convertJoystickPosToSpeed(
-            position: position, maxValue: maxValue)
+            position: position, maxValue: maxValue
+        )
 
         // Then
         let expectedLeftSpeed: CGFloat = -0.5
@@ -160,7 +169,8 @@ final class UtilsLeftPWMConversion_Tests: XCTestCase {
 
         // When
         let (actualLeftSpeed, actualRightSpeed) = convertJoystickPosToSpeed(
-            position: position, maxValue: maxValue)
+            position: position, maxValue: maxValue
+        )
 
         // Then
         let expectedLeftSpeed: CGFloat = 0
@@ -172,11 +182,12 @@ final class UtilsLeftPWMConversion_Tests: XCTestCase {
 
     func test_shouldReturnRotations_equalsClockwise_clockwise255_still() {
         // Given
-        let position = CGPoint(x: maxValue / 2, y: -maxValue / 2)
+        let position = CGPoint(x: maxValue / 2, y: -self.maxValue / 2)
 
         // When
         let (actualLeftSpeed, actualRightSpeed) = convertJoystickPosToSpeed(
-            position: position, maxValue: maxValue)
+            position: position, maxValue: maxValue
+        )
 
         // Then
         let expectedLeftSpeed: CGFloat = 1
@@ -188,11 +199,12 @@ final class UtilsLeftPWMConversion_Tests: XCTestCase {
 
     func test_shouldReturnRotations_equalsCounterclockwise_still_clockwise255() {
         // Given
-        let position = CGPoint(x: -maxValue / 2, y: -maxValue / 2)
+        let position = CGPoint(x: -self.maxValue / 2, y: -self.maxValue / 2)
 
         // When
         let (actualLeftSpeed, actualRightSpeed) = convertJoystickPosToSpeed(
-            position: position, maxValue: maxValue)
+            position: position, maxValue: maxValue
+        )
 
         // Then
         let expectedLeftSpeed: CGFloat = 0
@@ -204,11 +216,12 @@ final class UtilsLeftPWMConversion_Tests: XCTestCase {
 
     func test_shouldReturnRotations_equalsCounterclockwise_counterclockwise255_still() {
         // Given
-        let position = CGPoint(x: -maxValue / 2, y: maxValue / 2)
+        let position = CGPoint(x: -self.maxValue / 2, y: self.maxValue / 2)
 
         // When
         let (actualLeftSpeed, actualRightSpeed) = convertJoystickPosToSpeed(
-            position: position, maxValue: maxValue)
+            position: position, maxValue: maxValue
+        )
 
         // Then
         let expectedLeftSpeed: CGFloat = -1

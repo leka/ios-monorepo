@@ -5,20 +5,19 @@
 import SwiftUI
 
 struct AvatarPicker_Teachers: View {
+    // MARK: Internal
 
     @EnvironmentObject var company: CompanyViewModel
     @EnvironmentObject var metrics: UIMetrics
     @EnvironmentObject var navigationVM: NavigationViewModel
 
-    @State private var selected: String = ""
-
     var body: some View {
         ZStack {
             Color.white.edgesIgnoringSafeArea(.top)
 
-            AvatarPickerStore(selected: $selected)
+            AvatarPickerStore(selected: self.$selected)
                 .onAppear {
-                    selected = company.bufferTeacher.avatar
+                    self.selected = self.company.bufferTeacher.avatar
                 }
                 ._safeAreaInsets(EdgeInsets(top: 40, leading: 0, bottom: 20, trailing: 0))
                 .navigationBarTitleDisplayMode(.inline)
@@ -28,14 +27,19 @@ struct AvatarPicker_Teachers: View {
                     ToolbarItem(placement: .navigationBarLeading) { AvatarPicker_AdaptiveBackButton() }
                     ToolbarItem(placement: .navigationBarTrailing) {
                         AvatarPicker_ValidateButton(
-                            selected: $selected,
+                            selected: self.$selected,
                             action: {
-                                company.setBufferAvatar(selected, for: .teacher)
-                            })
+                                self.company.setBufferAvatar(self.selected, for: .teacher)
+                            }
+                        )
                     }
                 }
         }
-        .toolbarBackground(navigationVM.showProfileEditor ? .visible : .automatic, for: .navigationBar)
+        .toolbarBackground(self.navigationVM.showProfileEditor ? .visible : .automatic, for: .navigationBar)
         .preferredColorScheme(.light)
     }
+
+    // MARK: Private
+
+    @State private var selected: String = ""
 }

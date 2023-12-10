@@ -7,8 +7,9 @@ import XCTest
 
 @testable import LekaUpdater
 
-final class FirmwareManager_Tests_compareVersion: XCTestCase {
+// MARK: - FirmwareManager_Tests_compareVersion
 
+final class FirmwareManager_Tests_compareVersion: XCTestCase {
     func test_shouldReturnRobotNeedUpdate_lowerVersion() {
         let firmwareManager = FirmwareManager()
         let robotVersion = Version(1, 0, 0)
@@ -44,11 +45,11 @@ final class FirmwareManager_Tests_compareVersion: XCTestCase {
         let actual = firmwareManager.compareWith(version: robotVersion)
         XCTAssertEqual(expected, actual)
     }
-
 }
 
-final class FirmwareManager_Tests_sha256: XCTestCase {
+// MARK: - FirmwareManager_Tests_sha256
 
+final class FirmwareManager_Tests_sha256: XCTestCase {
     func test_shouldReturnRobotNeedUpdate_invalidVersion() {
         let firmwareManager = FirmwareManager()
         _ = firmwareManager.load()
@@ -59,5 +60,4 @@ final class FirmwareManager_Tests_sha256: XCTestCase {
 
         XCTAssertEqual(expectedSHA256, actualSHA256)
     }
-
 }

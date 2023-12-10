@@ -8,14 +8,19 @@ import Yams
 
 let log = LogKit.createLoggerFor(module: "ContentKit")
 
-public class ContentKit {
+// MARK: - ContentKit
 
-    public var shared: ContentKit {
-        ContentKit()
-    }
+public class ContentKit {
+    // MARK: Lifecycle
 
     private init() {
         // nothing to do
+    }
+
+    // MARK: Public
+
+    public var shared: ContentKit {
+        ContentKit()
     }
 
     // TODO(@ladislas): maybe return optional activity instead of fatalError
@@ -53,5 +58,4 @@ public class ContentKit {
             fatalError("💥 Error decoding \(filename): \(error)")
         }
     }
-
 }

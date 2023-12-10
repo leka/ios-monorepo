@@ -5,7 +5,10 @@
 import DesignKit
 import SwiftUI
 
+// MARK: - CreateTeacherProfileView
+
 struct CreateTeacherProfileView: View {
+    // MARK: Internal
 
     @EnvironmentObject var company: CompanyViewModel
     @EnvironmentObject var settings: SettingsViewModel
@@ -14,6 +17,80 @@ struct CreateTeacherProfileView: View {
     @EnvironmentObject var navigationVM: NavigationViewModel
     @Environment(\.dismiss) var dismiss
 
+    var body: some View {
+        ZStack {
+            Color.white.edgesIgnoringSafeArea(.top)
+
+            ScrollView(showsIndicators: false) {
+                VStack(spacing: 30) {
+                    AvatarPickerTriggerButton_Teachers(navigate: self.$navigateToAvatarPicker)
+                        .padding(.top, 30)
+
+                    Group {
+                        self.nameField
+                        JobPickerTrigger(navigate: self.$navigateToJobPicker)
+                    }
+                    self.accessoryView
+                    Spacer()
+                    DeleteProfileButton(show: self.$showDeleteConfirmation)
+                }
+            }
+        }
+        .interactiveDismissDisabled()
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarBackButtonHidden(true)
+        .toolbarBackground(self.navigationVM.showProfileEditor ? .visible : .automatic, for: .navigationBar)
+        .navigationDestination(isPresented: self.$navigateToAvatarPicker) {
+            AvatarPicker_Teachers()
+        }
+        .navigationDestination(isPresented: self.$navigateToJobPicker) {
+            JobPicker()
+        }
+        .navigationDestination(isPresented: self.$navigateToSignup3) {
+            SignupStep3()
+        }
+        .alert("Supprimer le profil", isPresented: self.$showDeleteConfirmation) {
+            self.alertContent
+        } message: {
+            Text(
+                "Vous êtes sur le point de supprimer le profil accompagnant de \(self.company.bufferTeacher.name). \nCette action est irreversible."
+            )
+        }
+        .toolbar {
+            ToolbarItem(placement: .principal) { self.navigationTitle }
+            ToolbarItem(placement: .navigationBarLeading) { self.adaptiveBackButton }
+            ToolbarItem(placement: .navigationBarTrailing) { self.validateButton }
+        }
+        .preferredColorScheme(.light)
+    }
+
+    @ViewBuilder
+    var validateButton: some View {
+        if self.viewRouter.currentPage == .welcome {
+            EmptyView()
+        } else {
+            Button(
+                action: {
+                    self.company.saveProfileChanges(.teacher)
+                    if self.settings.companyIsLoggingIn {
+                        self.company.assignCurrentProfiles()
+                        self.viewRouter.currentPage = .home
+                        self.settings.companyIsLoggingIn = false
+                    } else {
+                        self.dismiss()
+                    }
+                    hideKeyboard()
+                },
+                label: {
+                    self.validateButtonLabel
+                }
+            )
+            .disabled(self.company.bufferTeacher.name.isEmpty)
+        }
+    }
+
+    // MARK: Private
+
     @FocusState private var focusedField: FormField?
     @State private var isEditing = false
     @State private var showDeleteConfirmation: Bool = false
@@ -21,72 +98,25 @@ struct CreateTeacherProfileView: View {
     @State private var navigateToJobPicker: Bool = false
     @State private var navigateToAvatarPicker: Bool = false
 
-    var body: some View {
-        ZStack {
-            Color.white.edgesIgnoringSafeArea(.top)
-
-            ScrollView(showsIndicators: false) {
-                VStack(spacing: 30) {
-                    AvatarPickerTriggerButton_Teachers(navigate: $navigateToAvatarPicker)
-                        .padding(.top, 30)
-
-                    Group {
-                        nameField
-                        JobPickerTrigger(navigate: $navigateToJobPicker)
-                    }
-                    accessoryView
-                    Spacer()
-                    DeleteProfileButton(show: $showDeleteConfirmation)
-                }
-            }
-        }
-        .interactiveDismissDisabled()
-        .navigationBarTitleDisplayMode(.inline)
-        .navigationBarBackButtonHidden(true)
-        .toolbarBackground(navigationVM.showProfileEditor ? .visible : .automatic, for: .navigationBar)
-        .navigationDestination(isPresented: $navigateToAvatarPicker) {
-            AvatarPicker_Teachers()
-        }
-        .navigationDestination(isPresented: $navigateToJobPicker) {
-            JobPicker()
-        }
-        .navigationDestination(isPresented: $navigateToSignup3) {
-            SignupStep3()
-        }
-        .alert("Supprimer le profil", isPresented: $showDeleteConfirmation) {
-            alertContent
-        } message: {
-            Text(
-                "Vous êtes sur le point de supprimer le profil accompagnant de \(company.bufferTeacher.name). \nCette action est irreversible."
-            )
-        }
-        .toolbar {
-            ToolbarItem(placement: .principal) { navigationTitle }
-            ToolbarItem(placement: .navigationBarLeading) { adaptiveBackButton }
-            ToolbarItem(placement: .navigationBarTrailing) { validateButton }
-        }
-        .preferredColorScheme(.light)
-    }
-
     private var nameField: some View {
         LekaTextField(
-            label: "Nom d'accompagnant", entry: $company.bufferTeacher.name, isEditing: $isEditing, type: .name,
+            label: "Nom d'accompagnant", entry: self.$company.bufferTeacher.name, isEditing: self.$isEditing, type: .name,
             focused: _focusedField,
             action: {
-                focusedField = nil
+                self.focusedField = nil
             }
         )
         .padding(2)
         .onAppear {
-            focusedField = .name
+            self.focusedField = .name
         }
     }
 
     private var alertContent: some View {
         Button(role: .destructive) {
-            company.deleteProfile(.teacher)
+            self.company.deleteProfile(.teacher)
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                dismiss()
+                self.dismiss()
             }
         } label: {
             Text("Supprimer")
@@ -95,25 +125,26 @@ struct CreateTeacherProfileView: View {
 
     @ViewBuilder
     private var accessoryView: some View {
-        if viewRouter.currentPage == .welcome {
+        if self.viewRouter.currentPage == .welcome {
             Button(
                 action: {
-                    navigateToSignup3.toggle()
+                    self.navigateToSignup3.toggle()
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                        company.addTeacherProfile()
-                        company.assignCurrentProfiles()
+                        self.company.addTeacherProfile()
+                        self.company.assignCurrentProfiles()
                     }
                 },
                 label: {
                     Text("Enregistrer ce profil")
                 }
             )
-            .disabled(company.bufferTeacher.name.isEmpty)
+            .disabled(self.company.bufferTeacher.name.isEmpty)
             .buttonStyle(
                 BorderedCapsule_NoFeedback_ButtonStyle(
-                    font: metrics.reg17,
+                    font: self.metrics.reg17,
                     color: DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor,
-                    width: metrics.tileBtnWidth)
+                    width: self.metrics.tileBtnWidth
+                )
             )
         } else {
             EmptyView()
@@ -122,34 +153,9 @@ struct CreateTeacherProfileView: View {
 
     // Toolbar
     private var navigationTitle: some View {
-        Text(company.editingProfile ? "Éditer un profil accompagnant" : "Créer un profil accompagnant")
-            .font(metrics.semi17)
+        Text(self.company.editingProfile ? "Éditer un profil accompagnant" : "Créer un profil accompagnant")
+            .font(self.metrics.semi17)
             .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
-    }
-
-    @ViewBuilder
-    var validateButton: some View {
-        if viewRouter.currentPage == .welcome {
-            EmptyView()
-        } else {
-            Button(
-                action: {
-                    company.saveProfileChanges(.teacher)
-                    if settings.companyIsLoggingIn {
-                        company.assignCurrentProfiles()
-                        viewRouter.currentPage = .home
-                        settings.companyIsLoggingIn = false
-                    } else {
-                        dismiss()
-                    }
-                    hideKeyboard()
-                },
-                label: {
-                    validateButtonLabel
-                }
-            )
-            .disabled(company.bufferTeacher.name.isEmpty)
-        }
     }
 
     private var validateButtonLabel: some View {
@@ -164,15 +170,15 @@ struct CreateTeacherProfileView: View {
     private var adaptiveBackButton: some View {
         Button {
             // go back without saving
-            dismiss()
-            company.editingProfile = false
+            self.dismiss()
+            self.company.editingProfile = false
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                company.resetBufferProfile(.teacher)
+                self.company.resetBufferProfile(.teacher)
             }
         } label: {
             HStack(spacing: 4) {
                 Image(systemName: "chevron.left")
-                if navigationVM.showProfileEditor {
+                if self.navigationVM.showProfileEditor {
                     Text("Annuler")
                 } else {
                     Text("Retour")
@@ -182,6 +188,8 @@ struct CreateTeacherProfileView: View {
         .tint(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
     }
 }
+
+// MARK: - CreateProfileView_Previews
 
 struct CreateProfileView_Previews: PreviewProvider {
     static var previews: some View {

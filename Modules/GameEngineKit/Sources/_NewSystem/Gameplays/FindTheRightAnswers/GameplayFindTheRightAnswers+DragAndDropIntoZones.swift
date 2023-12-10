@@ -5,6 +5,8 @@
 import ContentKit
 import Foundation
 
+// MARK: - GameplayDragAndDropIntoZonesChoiceModel
+
 struct GameplayDragAndDropIntoZonesChoiceModel: GameplayChoiceModelProtocol {
     typealias ChoiceType = DragAndDropIntoZones.Choice
 
@@ -14,12 +16,11 @@ struct GameplayDragAndDropIntoZonesChoiceModel: GameplayChoiceModelProtocol {
 }
 
 extension GameplayFindTheRightAnswers where ChoiceModelType == GameplayDragAndDropIntoZonesChoiceModel {
-
     convenience init(choices: [GameplayDragAndDropIntoZonesChoiceModel]) {
         self.init()
         self.choices.send(choices)
-        self.rightAnswers = choices.filter { $0.choice.dropZone != .none }
-        self.state.send(.playing)
+        rightAnswers = choices.filter { $0.choice.dropZone != .none }
+        state.send(.playing)
     }
 
     func process(_ choice: ChoiceModelType, _ dropZone: DragAndDropIntoZones.DropZone) {
@@ -38,5 +39,4 @@ extension GameplayFindTheRightAnswers where ChoiceModelType == GameplayDragAndDr
             state.send(.completed)
         }
     }
-
 }

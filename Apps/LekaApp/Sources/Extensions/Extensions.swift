@@ -8,18 +8,19 @@ import Foundation
 import SwiftUI
 
 // MARK: - Shape
+
 // Fill & Stroke with 1 modifier
 extension Shape {
-    func fill<Fill: ShapeStyle, Stroke: ShapeStyle>(
-        _ fillStyle: Fill, strokeBorder strokeStyle: Stroke, lineWidth: CGFloat = 1
+    func fill(
+        _ fillStyle: some ShapeStyle, strokeBorder strokeStyle: some ShapeStyle, lineWidth: CGFloat = 1
     ) -> some View {
-        self
-            .stroke(strokeStyle, lineWidth: lineWidth)
+        stroke(strokeStyle, lineWidth: lineWidth)
             .background(self.fill(fillStyle))
     }
 }
 
 // MARK: - String
+
 // Check if email format id correct
 extension String {
     func isValidEmail() -> Bool {
@@ -30,6 +31,7 @@ extension String {
 }
 
 // MARK: - Image
+
 // Used for Activities Icons && Commands/Stories buttons
 extension Image {
     func activityIconImageModifier(diameter: CGFloat = 132, padding: CGFloat = 0) -> some View {
@@ -51,6 +53,7 @@ extension Image {
 }
 
 // MARK: - dismiss Keyboard when focusState not available
+
 #if canImport(UIKit)
     extension View {
         func hideKeyboard() {
@@ -63,7 +66,7 @@ extension Image {
 
 extension LocalizedContent {
     func localized() -> String {
-        guard let translation = (Locale.current.language.languageCode?.identifier == "fr" ? self.frFR : self.enUS)
+        guard let translation = (Locale.current.language.languageCode?.identifier == "fr" ? frFR : enUS)
         else {
             print("Nothing to display")
             return ""
@@ -72,14 +75,18 @@ extension LocalizedContent {
     }
 }
 
+// MARK: - ActivityViewModel + AVSpeechSynthesizerDelegate
+
 extension ActivityViewModel: AVSpeechSynthesizerDelegate {
-    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
+    func speechSynthesizer(_: AVSpeechSynthesizer, didFinish _: AVSpeechUtterance) {
         isSpeaking = false
     }
 }
 
+// MARK: - ActivityViewModel + AVAudioPlayerDelegate
+
 extension ActivityViewModel: AVAudioPlayerDelegate {
-    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+    func audioPlayerDidFinishPlaying(_: AVAudioPlayer, successfully _: Bool) {
         currentMediaHasBeenPlayedOnce = true
         answersAreDisabled = false
     }

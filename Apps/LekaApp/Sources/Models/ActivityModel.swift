@@ -4,41 +4,32 @@
 
 import SwiftUI
 
+// MARK: - ActivityCell
+
 struct ActivityCell: Identifiable {
     var id = UUID()
     var img: String
     var texts: [String]
 }
 
+// MARK: - Instructions
+
 struct Instructions: Codable {
-    var instructions: LocalizedContent
+    // MARK: Lifecycle
 
     init(instructions: LocalizedContent = LocalizedContent()) {
         self.instructions = instructions
     }
+
+    // MARK: Internal
+
+    var instructions: LocalizedContent
 }
 
-struct Activity: Codable {
-    enum CodingKeys: String, CodingKey {
-        case title, steps
-        case short = "short_title"
-        case id = "uuid"
-        case activityType = "type"
-        case stepsAmount = "number_of_steps"
-        case isRandom = "random_steps"
-        case numberOfImages = "number_of_images_per_step"
-        case randomImagePosition = "random_image_position"
-    }
+// MARK: - Activity
 
-    var id: String
-    var title: LocalizedContent
-    var short: LocalizedContent
-    var activityType: String?
-    var stepsAmount: Int
-    var isRandom: Bool
-    var numberOfImages: Int
-    var randomImagePosition: Bool
-    var steps: [Step]
+struct Activity: Codable {
+    // MARK: Lifecycle
 
     init(
         id: String = "",
@@ -61,23 +52,37 @@ struct Activity: Codable {
         self.randomImagePosition = randomImagePosition
         self.steps = steps
     }
+
+    // MARK: Internal
+
+    enum CodingKeys: String, CodingKey {
+        case title
+        case steps
+        case short = "short_title"
+        case id = "uuid"
+        case activityType = "type"
+        case stepsAmount = "number_of_steps"
+        case isRandom = "random_steps"
+        case numberOfImages = "number_of_images_per_step"
+        case randomImagePosition = "random_image_position"
+    }
+
+    var id: String
+    var title: LocalizedContent
+    var short: LocalizedContent
+    var activityType: String?
+    var stepsAmount: Int
+    var isRandom: Bool
+    var numberOfImages: Int
+    var randomImagePosition: Bool
+    var steps: [Step]
 }
+
+// MARK: - Step
 
 // Step conforms to Equatable because steps are compared when randomized
 struct Step: Codable, Equatable {
-    static func == (lhs: Step, rhs: Step) -> Bool {
-        lhs.instruction == rhs.instruction
-    }
-
-    enum CodingKeys: String, CodingKey {
-        case instruction, images, sound
-        case correctAnswer = "correct_answer"
-    }
-
-    var instruction: LocalizedContent
-    var correctAnswer: String
-    var images: [String]
-    var sound: [String]?
+    // MARK: Lifecycle
 
     init(
         instruction: LocalizedContent = LocalizedContent(),
@@ -89,5 +94,23 @@ struct Step: Codable, Equatable {
         self.correctAnswer = correctAnswer
         self.images = images
         self.sound = sound
+    }
+
+    // MARK: Internal
+
+    enum CodingKeys: String, CodingKey {
+        case instruction
+        case images
+        case sound
+        case correctAnswer = "correct_answer"
+    }
+
+    var instruction: LocalizedContent
+    var correctAnswer: String
+    var images: [String]
+    var sound: [String]?
+
+    static func == (lhs: Step, rhs: Step) -> Bool {
+        lhs.instruction == rhs.instruction
     }
 }

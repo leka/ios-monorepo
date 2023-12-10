@@ -5,12 +5,11 @@
 import SwiftUI
 
 struct ContentView: View {
-
     @EnvironmentObject var viewRouter: ViewRouter
 
     var body: some View {
         Group {
-            switch viewRouter.currentPage {
+            switch self.viewRouter.currentPage {
                 case .welcome:
                     WelcomeView()
                         .transition(.opacity)
@@ -19,7 +18,7 @@ struct ContentView: View {
                         .transition(.opacity)
             }
         }
-        .animation(.default, value: viewRouter.currentPage)
+        .animation(.default, value: self.viewRouter.currentPage)
         .preferredColorScheme(.light)
     }
 }

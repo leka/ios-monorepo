@@ -10,7 +10,6 @@ struct BinaryChoiceToggleStyle: ToggleStyle {
             configuration.label
             RoundedRectangle(cornerRadius: 20)
                 .foregroundColor(.teal)
-
                 .frame(width: 50, height: 30)
                 .overlay(
                     Circle()

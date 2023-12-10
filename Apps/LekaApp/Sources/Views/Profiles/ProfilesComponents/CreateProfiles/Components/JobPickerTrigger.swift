@@ -6,6 +6,7 @@ import DesignKit
 import SwiftUI
 
 struct JobPickerTrigger: View {
+    // MARK: Internal
 
     @EnvironmentObject var company: CompanyViewModel
     @EnvironmentObject var metrics: UIMetrics
@@ -15,24 +16,26 @@ struct JobPickerTrigger: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             Text("Profession(s)")
-                .font(metrics.reg14)
+                .font(self.metrics.reg14)
                 .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
                 .padding(.leading, 10)
 
             Button {
-                navigate.toggle()
+                self.navigate.toggle()
             } label: {
-                buttonLabel
+                self.buttonLabel
             }
 
-            if !company.bufferTeacher.jobs.isEmpty {
-                ForEach(company.bufferTeacher.jobs, id: \.self) { profession in
+            if !self.company.bufferTeacher.jobs.isEmpty {
+                ForEach(self.company.bufferTeacher.jobs, id: \.self) { profession in
                     JobTag(profession: profession)
                 }
             }
         }
         .frame(width: 435)
     }
+
+    // MARK: Private
 
     private var buttonLabel: some View {
         HStack(spacing: 0) {
@@ -47,6 +50,7 @@ struct JobPickerTrigger: View {
         }
         .frame(width: 400, height: 44)
         .background(
-            DesignKitAsset.Colors.lekaLightGray.swiftUIColor, in: RoundedRectangle(cornerRadius: metrics.btnRadius))
+            DesignKitAsset.Colors.lekaLightGray.swiftUIColor, in: RoundedRectangle(cornerRadius: self.metrics.btnRadius)
+        )
     }
 }

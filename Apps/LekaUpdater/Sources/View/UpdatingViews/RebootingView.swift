@@ -6,6 +6,8 @@ import DesignKit
 import LocalizationKit
 import SwiftUI
 
+// MARK: - RebootingIllustration
+
 struct RebootingIllustration: View {
     var body: some View {
         LekaUpdaterAsset.Assets.updateInstallation.swiftUIImage
@@ -13,6 +15,8 @@ struct RebootingIllustration: View {
             .scaledToFit()
     }
 }
+
+// MARK: - RebootingContentView
 
 struct RebootingContentView: View {
     var body: some View {
@@ -30,6 +34,8 @@ struct RebootingContentView: View {
         }
     }
 }
+
+// MARK: - RebootingView_Previews
 
 struct RebootingView_Previews: PreviewProvider {
     static var previews: some View {

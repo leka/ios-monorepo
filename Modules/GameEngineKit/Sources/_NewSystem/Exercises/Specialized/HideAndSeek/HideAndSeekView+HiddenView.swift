@@ -6,12 +6,12 @@ import DesignKit
 import SwiftUI
 
 extension HideAndSeekView {
-
     struct HiddenView: View {
         let textSubInstructions: String
+
         var body: some View {
             VStack {
-                Text(textSubInstructions)
+                Text(self.textSubInstructions)
                     .font(.title3)
                     .foregroundColor(.white)
                     .multilineTextAlignment(.center)
@@ -24,7 +24,6 @@ extension HideAndSeekView {
             .padding(10)
         }
     }
-
 }
 
 #Preview {

@@ -8,37 +8,37 @@ import RobotKit
 import SwiftUI
 import Version
 
+// MARK: - InformationView
+
 struct InformationView: View {
+    // MARK: Internal
+
     @StateObject var viewModel = InformationViewModel()
     @Binding var isConnectionViewPresented: Bool
     @Binding var isUpdateStatusViewPresented: Bool
-
-    private var isViewVisible: Bool {
-        !self.isConnectionViewPresented && !self.isUpdateStatusViewPresented
-    }
 
     var body: some View {
         NavigationStack {
             VStack {
                 ScrollView {
                     VStack(alignment: .center, spacing: 10) {
-                        if viewModel.showRobotCannotBeUpdated {
+                        if self.viewModel.showRobotCannotBeUpdated {
                             RobotCannotBeUpdatedIllustration(size: 200)
 
-                            Text(viewModel.robotName)
+                            Text(self.viewModel.robotName)
                                 .font(.title3)
 
                             Text(
                                 l10n.information.status.robotCannotBeUpdatedText.characters
-                                    + " - (LekaOS v\(viewModel.robotOSVersion))"
+                                    + " - (LekaOS v\(self.viewModel.robotOSVersion))"
                             )
                             .font(.title2)
                             .multilineTextAlignment(.center)
 
-                        } else if viewModel.showRobotNeedsUpdate {
+                        } else if self.viewModel.showRobotNeedsUpdate {
                             RobotNeedsUpdateIllustration(size: 200)
 
-                            Text(viewModel.robotName)
+                            Text(self.viewModel.robotName)
                                 .font(.title3)
 
                             Text(l10n.information.status.robotUpdateAvailable)
@@ -46,7 +46,7 @@ struct InformationView: View {
                         } else {
                             RobotUpToDateIllustration(size: 200)
 
-                            Text(viewModel.robotName)
+                            Text(self.viewModel.robotName)
                                 .font(.title3)
 
                             Text(l10n.information.status.robotIsUpToDate)
@@ -78,8 +78,8 @@ struct InformationView: View {
                     )
                     .padding([.vertical], 10)
 
-                    if viewModel.showRobotNeedsUpdate {
-                        RobotUpdateAvailableView(isUpdateStatusViewPresented: $isUpdateStatusViewPresented)
+                    if self.viewModel.showRobotNeedsUpdate {
+                        RobotUpdateAvailableView(isUpdateStatusViewPresented: self.$isUpdateStatusViewPresented)
                             .padding([.vertical], 10)
                     }
 
@@ -94,8 +94,8 @@ struct InformationView: View {
                 .padding([.horizontal], 20)
             }
             .foregroundColor(DesignKitAsset.Colors.darkGray.swiftUIColor)
-            .onChange(of: isViewVisible) { isVisible in
-                if isVisible { viewModel.onViewReappear() }
+            .onChange(of: self.isViewVisible) { isVisible in
+                if isVisible { self.viewModel.onViewReappear() }
             }
             .toolbar {
                 ToolbarItem(placement: .principal) {
@@ -110,7 +110,7 @@ struct InformationView: View {
 
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button {
-                        isConnectionViewPresented = true
+                        self.isConnectionViewPresented = true
                     } label: {
                         HStack {
                             Image(systemName: "chevron.backward")
@@ -121,7 +121,15 @@ struct InformationView: View {
             }
         }
     }
+
+    // MARK: Private
+
+    private var isViewVisible: Bool {
+        !self.isConnectionViewPresented && !self.isUpdateStatusViewPresented
+    }
 }
+
+// MARK: - InformationView_Previews
 
 struct InformationView_Previews: PreviewProvider {
     @State static var isConnectionViewPresented = false

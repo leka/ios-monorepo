@@ -4,30 +4,16 @@
 
 import Foundation
 
-extension Float {
+// swiftlint:disable nesting
 
+extension Float {
     var isInRange0to1: Bool {
         self >= 0 && self <= 1
     }
-
 }
 
-extension Robot {
-
-    public enum Motion {
-
-        static let id: UInt8 = 0x20
-
-        enum Motor: UInt8 {
-            case left = 0x21
-            case right = 0x22
-        }
-
-        public enum Rotation: UInt8 {
-            case clockwise = 0x00
-            case counterclockwise = 0x01
-        }
-
+public extension Robot {
+    enum Motion {
         case stop
         case free(left: Float, right: Float)
 
@@ -38,6 +24,22 @@ extension Robot {
         case backwardLeft(speed: Float)
         case backwardRight(speed: Float)
         case spin(Rotation, speed: Float)
+
+        // MARK: Public
+
+        public enum Rotation: UInt8 {
+            case clockwise = 0x00
+            case counterclockwise = 0x01
+        }
+
+        // MARK: Internal
+
+        enum Motor: UInt8 {
+            case left = 0x21
+            case right = 0x22
+        }
+
+        static let id: UInt8 = 0x20
 
         var cmd: [[UInt8]] {
             var output: [[UInt8]] = [[]]
@@ -50,14 +52,14 @@ extension Robot {
                     ]
                     output.append(contentsOf: payload)
 
-                case .free(let left, let right):
+                case let .free(left, right):
                     let payload = [
                         setMotor(.left, speed: left, rotation: left < 0 ? .clockwise : .counterclockwise),
                         setMotor(.right, speed: right, rotation: right < 0 ? .clockwise : .counterclockwise),
                     ]
                     output.append(contentsOf: payload)
 
-                case .forward(let speed):
+                case let .forward(speed):
                     guard speed.isInRange0to1 else { break }
                     let payload = [
                         setMotor(.left, speed: speed, rotation: .counterclockwise),
@@ -65,7 +67,7 @@ extension Robot {
                     ]
                     output.append(contentsOf: payload)
 
-                case .forwardLeft(let speed):
+                case let .forwardLeft(speed):
                     guard speed.isInRange0to1 else { break }
                     let payload = [
                         setMotor(.left, speed: speed * 0.8, rotation: .counterclockwise),
@@ -73,7 +75,7 @@ extension Robot {
                     ]
                     output.append(contentsOf: payload)
 
-                case .forwardRight(let speed):
+                case let .forwardRight(speed):
                     guard speed.isInRange0to1 else { break }
                     let payload = [
                         setMotor(.left, speed: speed, rotation: .counterclockwise),
@@ -81,7 +83,7 @@ extension Robot {
                     ]
                     output.append(contentsOf: payload)
 
-                case .backward(let speed):
+                case let .backward(speed):
                     guard speed.isInRange0to1 else { break }
                     let payload = [
                         setMotor(.left, speed: speed, rotation: .clockwise),
@@ -89,7 +91,7 @@ extension Robot {
                     ]
                     output.append(contentsOf: payload)
 
-                case .backwardLeft(let speed):
+                case let .backwardLeft(speed):
                     guard speed.isInRange0to1 else { break }
                     let payload = [
                         setMotor(.left, speed: speed * 0.8, rotation: .clockwise),
@@ -97,7 +99,7 @@ extension Robot {
                     ]
                     output.append(contentsOf: payload)
 
-                case .backwardRight(let speed):
+                case let .backwardRight(speed):
                     guard speed.isInRange0to1 else { break }
                     let payload = [
                         setMotor(.left, speed: speed, rotation: .clockwise),
@@ -105,23 +107,26 @@ extension Robot {
                     ]
                     output.append(contentsOf: payload)
 
-                case .spin(let rotation, let speed):
+                case let .spin(rotation, speed):
                     guard speed.isInRange0to1 else { break }
                     let payload = [
                         setMotor(
-                            .left, speed: speed, rotation: rotation == .clockwise ? .counterclockwise : .clockwise),
+                            .left, speed: speed, rotation: rotation == .clockwise ? .counterclockwise : .clockwise
+                        ),
                         setMotor(
-                            .right, speed: speed, rotation: rotation == .clockwise ? .clockwise : .counterclockwise),
+                            .right, speed: speed, rotation: rotation == .clockwise ? .clockwise : .counterclockwise
+                        ),
                     ]
                     output.append(contentsOf: payload)
-
             }
 
             return output
         }
 
+        // MARK: Private
+
         private func setMotor(_ motor: Motor, speed: Float, rotation: Rotation) -> [UInt8] {
-            let speed: UInt8 = UInt8(abs(speed) * 255)
+            let speed = UInt8(abs(speed) * 255)
 
             var payload: [UInt8] = []
 
@@ -137,10 +142,9 @@ extension Robot {
 
             return payload
         }
-
     }
 
-    public func move(_ motion: Motion) {
+    func move(_ motion: Motion) {
         log.trace("🤖 MOVE \(motion)")
         let output = Self.commandGenerator(commands: motion.cmd)
 
@@ -148,8 +152,10 @@ extension Robot {
             .sendCommand(output)
     }
 
-    public func stopMotion() {
+    func stopMotion() {
         log.trace("🤖 STOP 🛑 - Motion")
-        move(.stop)
+        self.move(.stop)
     }
 }
+
+// swiftlint:enable nesting

@@ -6,8 +6,7 @@ import RobotKit
 import SwiftUI
 
 struct MainView: View {
-
-    @State private var presentRobotConnection: Bool = false
+    // MARK: Internal
 
     var body: some View {
         NavigationStack {
@@ -15,11 +14,11 @@ struct MainView: View {
                 ConnectedRobotInformationView()
 
                 Button {
-                    presentRobotConnection.toggle()
+                    self.presentRobotConnection.toggle()
                 } label: {
                     Text("Connect robot")
                 }
-                .fullScreenCover(isPresented: $presentRobotConnection) {
+                .fullScreenCover(isPresented: self.$presentRobotConnection) {
                     RobotConnectionView(viewModel: RobotConnectionViewModel())
                 }
 
@@ -36,6 +35,9 @@ struct MainView: View {
         }
     }
 
+    // MARK: Private
+
+    @State private var presentRobotConnection: Bool = false
 }
 
 #Preview {

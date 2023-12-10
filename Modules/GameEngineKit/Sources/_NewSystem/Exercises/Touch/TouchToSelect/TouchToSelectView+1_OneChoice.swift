@@ -6,27 +6,28 @@ import ContentKit
 import SwiftUI
 
 extension TouchToSelectView {
-
     struct OneChoiceView: View {
+        // MARK: Internal
 
         @ObservedObject var viewModel: TouchToSelectViewViewModel
 
-        private let kAnswerSize: CGFloat = 300
-
         var body: some View {
-            let choice = viewModel.choices[0]
-            TouchToSelectChoiceView(choice: choice, size: kAnswerSize)
+            let choice = self.viewModel.choices[0]
+            TouchToSelectChoiceView(choice: choice, size: self.kAnswerSize)
                 .onTapGesture {
-                    viewModel.onChoiceTapped(choice: choice)
+                    self.viewModel.onChoiceTapped(choice: choice)
                 }
         }
-    }
 
+        // MARK: Private
+
+        private let kAnswerSize: CGFloat = 300
+    }
 }
 
 #Preview {
     let choices: [TouchToSelect.Choice] = [
-        TouchToSelect.Choice(value: "red", type: .color, isRightAnswer: true)
+        TouchToSelect.Choice(value: "red", type: .color, isRightAnswer: true),
     ]
 
     return TouchToSelectView(choices: choices)

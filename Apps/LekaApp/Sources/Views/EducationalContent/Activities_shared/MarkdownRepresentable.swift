@@ -11,78 +11,40 @@
 //
 import SwiftUI
 
+// MARK: - MarkdownObservable
+
 // TODO(@ladislas): reimport when Down is fixed
 // import Down
 
 class MarkdownObservable: ObservableObject {
-    @Published public var textView = UITextView()
-    public let text: String
+    // MARK: Lifecycle
 
     init(text: String) {
         self.text = text
     }
+
+    // MARK: Public
+
+    @Published public var textView = UITextView()
+    public let text: String
 }
 
+// MARK: - MarkdownRepresentable
+
 struct MarkdownRepresentable: UIViewRepresentable {
-    @Binding var dynamicHeight: CGFloat
-    @EnvironmentObject var markdownObject: MarkdownObservable
+    // MARK: Lifecycle
 
     init(height: Binding<CGFloat>) {
-        self._dynamicHeight = height
+        _dynamicHeight = height
     }
 
-    func makeCoordinator() -> Coordinator {
-        Coordinator(text: markdownObject.textView)
-    }
+    // MARK: Internal
 
-    func makeUIView(context: Context) -> UITextView {
-
-        // TODO(@ladislas): reimport when Down is fixed
-        // let down = Down(markdownString: markdownObject.text)
-        // let attributedText = try? down.toAttributedString(styler: DownStyler())//delegate: context.coordinator))
-
-        // TODO(@ladislas): reimport when Down is fixed
-        // let attributedText = try? down.toAttributedString(styler: DownStyler())
-        let attributedText = NSMutableAttributedString.init(
-            string: "TODO(@ladislas): use real markdown when Down is fixed")
-
-        markdownObject.textView.attributedText = attributedText
-        markdownObject.textView.textAlignment = .left
-        markdownObject.textView.isScrollEnabled = false
-        markdownObject.textView.isUserInteractionEnabled = true
-        markdownObject.textView.showsVerticalScrollIndicator = false
-        markdownObject.textView.showsHorizontalScrollIndicator = false
-        markdownObject.textView.isEditable = false
-        markdownObject.textView.backgroundColor = .clear
-        markdownObject.textView.textColor = UIColor(named: "darkGray")
-        // markdownObject.textView.font = UIFont(name: "SF Pro Regular", size: 14)
-
-        markdownObject.textView.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
-        markdownObject.textView.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
-
-        return markdownObject.textView
-    }
-
-    func updateUIView(_ uiView: UITextView, context: Context) {
-        DispatchQueue.main.async {
-            //			uiView.textColor = UIColor(named: "darkGray")
-
-            dynamicHeight =
-                uiView.sizeThatFits(
-                    CGSize(
-                        width: uiView.bounds.width,
-                        height: CGFloat.greatestFiniteMagnitude)
-                )
-                .height
-        }
-    }
-
-    class Coordinator: NSObject {  // }, AsyncImageLoadDelegate {
-
-        public var textView: UITextView
+    class Coordinator: NSObject {
+        // MARK: Lifecycle
 
         init(text: UITextView) {
-            textView = text
+            self.textView = text
         }
 
         //		func textAttachmentDidLoadImage(textAttachment: AsyncImageLoad, displaySizeChanged: Bool)
@@ -95,28 +57,90 @@ struct MarkdownRepresentable: UIViewRepresentable {
         //			// always re-display, the image might have changed
         //			textView.layoutManager.setNeedsDisplay(forAttachment: textAttachment)
         //		}
+
+        // MARK: Public
+
+        // }, AsyncImageLoadDelegate {
+        public var textView: UITextView
+    }
+
+    @Binding var dynamicHeight: CGFloat
+    @EnvironmentObject var markdownObject: MarkdownObservable
+
+    func makeCoordinator() -> Coordinator {
+        Coordinator(text: self.markdownObject.textView)
+    }
+
+    func makeUIView(context _: Context) -> UITextView {
+        // TODO(@ladislas): reimport when Down is fixed
+        // let down = Down(markdownString: markdownObject.text)
+        // let attributedText = try? down.toAttributedString(styler: DownStyler())//delegate: context.coordinator))
+
+        // TODO(@ladislas): reimport when Down is fixed
+        // let attributedText = try? down.toAttributedString(styler: DownStyler())
+        let attributedText = NSMutableAttributedString(
+            string: "TODO(@ladislas): use real markdown when Down is fixed")
+
+        self.markdownObject.textView.attributedText = attributedText
+        self.markdownObject.textView.textAlignment = .left
+        self.markdownObject.textView.isScrollEnabled = false
+        self.markdownObject.textView.isUserInteractionEnabled = true
+        self.markdownObject.textView.showsVerticalScrollIndicator = false
+        self.markdownObject.textView.showsHorizontalScrollIndicator = false
+        self.markdownObject.textView.isEditable = false
+        self.markdownObject.textView.backgroundColor = .clear
+        self.markdownObject.textView.textColor = UIColor(named: "darkGray")
+        // markdownObject.textView.font = UIFont(name: "SF Pro Regular", size: 14)
+
+        self.markdownObject.textView.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+        self.markdownObject.textView.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
+
+        return self.markdownObject.textView
+    }
+
+    func updateUIView(_ uiView: UITextView, context _: Context) {
+        DispatchQueue.main.async {
+            //			uiView.textColor = UIColor(named: "darkGray")
+
+            self.dynamicHeight =
+                uiView.sizeThatFits(
+                    CGSize(
+                        width: uiView.bounds.width,
+                        height: CGFloat.greatestFiniteMagnitude
+                    )
+                )
+                .height
+        }
     }
 }
 
-struct DownAttributedString: View {
-    @ObservedObject private var markdownObject: MarkdownObservable
-    private var markdownString: String
+// MARK: - DownAttributedString
 
-    @State private var height: CGFloat = .zero
+struct DownAttributedString: View {
+    // MARK: Lifecycle
 
     init(text: String) {
         self.markdownString = text
         self.markdownObject = MarkdownObservable(text: text)
     }
 
+    // MARK: Internal
+
     var body: some View {
         VStack(alignment: .leading) {
             ScrollView {
-                MarkdownRepresentable(height: $height)
-                    .frame(height: height)
-                    .environmentObject(markdownObject)
+                MarkdownRepresentable(height: self.$height)
+                    .frame(height: self.height)
+                    .environmentObject(self.markdownObject)
             }
         }
         .navigationBarTitleDisplayMode(.inline)
     }
+
+    // MARK: Private
+
+    @ObservedObject private var markdownObject: MarkdownObservable
+    private var markdownString: String
+
+    @State private var height: CGFloat = .zero
 }

@@ -5,9 +5,7 @@
 import SwiftUI
 
 extension DesignSystemLeka {
-
     struct ColorsSwiftUIView: View {
-
         var body: some View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 20) {
@@ -20,9 +18,7 @@ extension DesignSystemLeka {
             }
             .navigationTitle("Leka SwiftUI colors")
         }
-
     }
-
 }
 
 #Preview {

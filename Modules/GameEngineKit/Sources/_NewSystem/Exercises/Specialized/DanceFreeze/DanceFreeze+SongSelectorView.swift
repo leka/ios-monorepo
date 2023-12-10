@@ -7,23 +7,22 @@ import DesignKit
 import SwiftUI
 
 extension DanceFreeze {
-
     struct SongSelectorView: View {
-        @ObservedObject private var viewModel: MainViewViewModel
-        @State private var selectedAudioRecording: AudioRecording
-
-        let columns = [
-            GridItem(.flexible()),
-            GridItem(.flexible()),
-        ]
+        // MARK: Lifecycle
 
         init(viewModel: MainViewViewModel) {
             self.viewModel = viewModel
             self.selectedAudioRecording = viewModel.songs.first!
         }
 
-        var body: some View {
+        // MARK: Internal
 
+        let columns = [
+            GridItem(.flexible()),
+            GridItem(.flexible()),
+        ]
+
+        var body: some View {
             VStack {
                 HStack {
                     Image(systemName: "music.note.list")
@@ -34,20 +33,20 @@ extension DanceFreeze {
                 Divider()
 
                 ScrollView {
-                    LazyVGrid(columns: columns, alignment: .listRowSeparatorLeading, spacing: 20) {
-                        ForEach(viewModel.songs, id: \.self) { audioRecording in
+                    LazyVGrid(columns: self.columns, alignment: .listRowSeparatorLeading, spacing: 20) {
+                        ForEach(self.viewModel.songs, id: \.self) { audioRecording in
                             Button {
-                                selectedAudioRecording = audioRecording
-                                viewModel.setAudioRecording(audioRecording: selectedAudioRecording)
+                                self.selectedAudioRecording = audioRecording
+                                self.viewModel.setAudioRecording(audioRecording: self.selectedAudioRecording)
                             } label: {
                                 HStack {
                                     Image(
-                                        systemName: audioRecording == selectedAudioRecording
+                                        systemName: audioRecording == self.selectedAudioRecording
                                             ? "checkmark.circle.fill" : "circle"
                                     )
                                     .imageScale(.large)
                                     .foregroundColor(
-                                        audioRecording == selectedAudioRecording
+                                        audioRecording == self.selectedAudioRecording
                                             ? .green : DesignKitAsset.Colors.lekaDarkGray.swiftUIColor
                                     )
                                     Text(audioRecording.name)
@@ -65,11 +64,15 @@ extension DanceFreeze {
             .foregroundColor(DesignKitAsset.Colors.lekaDarkGray.swiftUIColor)
             .clipShape(RoundedRectangle(cornerRadius: 10))
             .onAppear {
-                viewModel.setAudioRecording(audioRecording: viewModel.songs.first!)
+                self.viewModel.setAudioRecording(audioRecording: self.viewModel.songs.first!)
             }
         }
-    }
 
+        // MARK: Private
+
+        @ObservedObject private var viewModel: MainViewViewModel
+        @State private var selectedAudioRecording: AudioRecording
+    }
 }
 
 #Preview {

@@ -6,39 +6,39 @@ import ContentKit
 import SwiftUI
 
 extension TouchToSelectView {
-
     struct FourChoicesView: View {
+        // MARK: Internal
 
         @ObservedObject var viewModel: TouchToSelectViewViewModel
 
-        private let kHorizontalSpacing: CGFloat = 200
-        private let kVerticalSpacing: CGFloat = 40
-        private let kAnswerSize: CGFloat = 240
-
         var body: some View {
-            VStack(spacing: kVerticalSpacing) {
-                HStack(spacing: kHorizontalSpacing) {
-                    ForEach(viewModel.choices[0...1]) { choice in
-                        TouchToSelectChoiceView(choice: choice, size: kAnswerSize)
+            VStack(spacing: self.kVerticalSpacing) {
+                HStack(spacing: self.kHorizontalSpacing) {
+                    ForEach(self.viewModel.choices[0...1]) { choice in
+                        TouchToSelectChoiceView(choice: choice, size: self.kAnswerSize)
                             .onTapGesture {
-                                viewModel.onChoiceTapped(choice: choice)
+                                self.viewModel.onChoiceTapped(choice: choice)
                             }
                     }
                 }
 
-                HStack(spacing: kHorizontalSpacing) {
-                    ForEach(viewModel.choices[2...3]) { choice in
-                        TouchToSelectChoiceView(choice: choice, size: kAnswerSize)
+                HStack(spacing: self.kHorizontalSpacing) {
+                    ForEach(self.viewModel.choices[2...3]) { choice in
+                        TouchToSelectChoiceView(choice: choice, size: self.kAnswerSize)
                             .onTapGesture {
-                                viewModel.onChoiceTapped(choice: choice)
+                                self.viewModel.onChoiceTapped(choice: choice)
                             }
                     }
                 }
             }
         }
 
-    }
+        // MARK: Private
 
+        private let kHorizontalSpacing: CGFloat = 200
+        private let kVerticalSpacing: CGFloat = 40
+        private let kAnswerSize: CGFloat = 240
+    }
 }
 
 #Preview {

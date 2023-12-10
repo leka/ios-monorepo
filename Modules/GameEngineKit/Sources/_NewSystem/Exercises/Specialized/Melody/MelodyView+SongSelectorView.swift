@@ -7,8 +7,17 @@ import DesignKit
 import SwiftUI
 
 extension MelodyView {
-
     struct SongSelectorView: View {
+        // MARK: Lifecycle
+
+        init(songs: [MidiRecording], selectedMidiRecording: Binding<MidiRecording>, textMusicSelection: String) {
+            self.songs = songs
+            self._selectedMidiRecording = selectedMidiRecording
+            self.textMusicSelection = textMusicSelection
+        }
+
+        // MARK: Internal
+
         @Binding var selectedMidiRecording: MidiRecording
         let songs: [MidiRecording]
         let textMusicSelection: String
@@ -18,37 +27,30 @@ extension MelodyView {
             GridItem(.flexible()),
         ]
 
-        init(songs: [MidiRecording], selectedMidiRecording: Binding<MidiRecording>, textMusicSelection: String) {
-            self.songs = songs
-            self._selectedMidiRecording = selectedMidiRecording
-            self.textMusicSelection = textMusicSelection
-        }
-
         var body: some View {
-
             VStack {
                 HStack {
                     Image(systemName: "music.note.list")
-                    Text(textMusicSelection)
+                    Text(self.textMusicSelection)
                     Image(systemName: "music.note.list")
                 }
 
                 Divider()
 
                 ScrollView {
-                    LazyVGrid(columns: columns, alignment: .listRowSeparatorLeading, spacing: 20) {
-                        ForEach(songs, id: \.self) { midiRecording in
+                    LazyVGrid(columns: self.columns, alignment: .listRowSeparatorLeading, spacing: 20) {
+                        ForEach(self.songs, id: \.self) { midiRecording in
                             Button {
-                                selectedMidiRecording = midiRecording
+                                self.selectedMidiRecording = midiRecording
                             } label: {
                                 HStack {
                                     Image(
-                                        systemName: midiRecording == selectedMidiRecording
+                                        systemName: midiRecording == self.selectedMidiRecording
                                             ? "checkmark.circle.fill" : "circle"
                                     )
                                     .imageScale(.large)
                                     .foregroundColor(
-                                        midiRecording == selectedMidiRecording
+                                        midiRecording == self.selectedMidiRecording
                                             ? .green : DesignKitAsset.Colors.lekaDarkGray.swiftUIColor
                                     )
                                     Text(midiRecording.name)
@@ -67,7 +69,6 @@ extension MelodyView {
             .clipShape(RoundedRectangle(cornerRadius: 10))
         }
     }
-
 }
 
 #Preview {

@@ -6,6 +6,8 @@ import DesignKit
 import LocalizationKit
 import SwiftUI
 
+// MARK: - UpdateFinishedIllustration
+
 struct UpdateFinishedIllustration: View {
     var body: some View {
         ZStack {
@@ -36,6 +38,8 @@ struct UpdateFinishedIllustration: View {
     }
 }
 
+// MARK: - UpdateFinishedContentView
+
 struct UpdateFinishedContentView: View {
     @Environment(\.dismiss) var dismiss
 
@@ -50,8 +54,8 @@ struct UpdateFinishedContentView: View {
 
             VStack(spacing: 20) {
                 Button {
-                    dismiss()
-                    isConnectionViewPresented = true
+                    self.dismiss()
+                    self.isConnectionViewPresented = true
                 } label: {
                     Text(l10n.update.finished.updateAnotherRobotButton)
                         .foregroundColor(DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor)
@@ -61,7 +65,8 @@ struct UpdateFinishedContentView: View {
                                 RoundedRectangle(cornerRadius: 10).fill(.white)
                                 RoundedRectangle(cornerRadius: 10)
                                     .strokeBorder(
-                                        DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor, lineWidth: 2)
+                                        DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor, lineWidth: 2
+                                    )
                             }
                         )
                         .cornerRadius(10)
@@ -72,7 +77,7 @@ struct UpdateFinishedContentView: View {
                         string: "com.googleusercontent.apps.224911845933-mv4tp4rstgjtvdqvbv5dl7defii1a7ic://")
                     let appStoreURL = URL(string: "https://apps.apple.com/app/mon-leka-alpha/id1607862221")!
 
-                    if let appURL = appURL, UIApplication.shared.canOpenURL(appURL) {
+                    if let appURL, UIApplication.shared.canOpenURL(appURL) {
                         UIApplication.shared.open(appURL, options: [:], completionHandler: nil)
                     } else {
                         UIApplication.shared.open(appStoreURL, options: [:], completionHandler: nil)
@@ -92,6 +97,8 @@ struct UpdateFinishedContentView: View {
         }
     }
 }
+
+// MARK: - UpdateFinishedView_Previews
 
 struct UpdateFinishedView_Previews: PreviewProvider {
     @State static var isConnectionViewPresented = false

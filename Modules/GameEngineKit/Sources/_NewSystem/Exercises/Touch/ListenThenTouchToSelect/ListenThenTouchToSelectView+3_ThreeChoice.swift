@@ -6,36 +6,36 @@ import ContentKit
 import SwiftUI
 
 extension ListenThenTouchToSelectView {
-
     struct ThreeChoicesView: View {
+        // MARK: Internal
 
         @ObservedObject var viewModel: TouchToSelectViewViewModel
         let isTappable: Bool
 
-        private let kHorizontalSpacing: CGFloat = 200
-        private let kVerticalSpacing: CGFloat = 40
-        private let kAnswerSize: CGFloat = 240
-
         var body: some View {
-            VStack(spacing: kVerticalSpacing) {
-                HStack(spacing: kHorizontalSpacing) {
-                    ForEach(viewModel.choices[0...1]) { choice in
-                        TouchToSelectChoiceView(choice: choice, size: kAnswerSize, isTappable: isTappable)
+            VStack(spacing: self.kVerticalSpacing) {
+                HStack(spacing: self.kHorizontalSpacing) {
+                    ForEach(self.viewModel.choices[0...1]) { choice in
+                        TouchToSelectChoiceView(choice: choice, size: self.kAnswerSize, isTappable: self.isTappable)
                             .onTapGesture {
-                                viewModel.onChoiceTapped(choice: choice)
+                                self.viewModel.onChoiceTapped(choice: choice)
                             }
                     }
                 }
 
-                TouchToSelectChoiceView(choice: viewModel.choices[2], size: kAnswerSize, isTappable: isTappable)
+                TouchToSelectChoiceView(choice: self.viewModel.choices[2], size: self.kAnswerSize, isTappable: self.isTappable)
                     .onTapGesture {
-                        viewModel.onChoiceTapped(choice: viewModel.choices[2])
+                        self.viewModel.onChoiceTapped(choice: self.viewModel.choices[2])
                     }
             }
         }
 
-    }
+        // MARK: Private
 
+        private let kHorizontalSpacing: CGFloat = 200
+        private let kVerticalSpacing: CGFloat = 40
+        private let kAnswerSize: CGFloat = 240
+    }
 }
 
 #Preview {
@@ -46,5 +46,6 @@ extension ListenThenTouchToSelectView {
     ]
 
     return ListenThenTouchToSelectView(
-        choices: choices, audioRecording: AudioRecording(name: "drums", file: "drums"))
+        choices: choices, audioRecording: AudioRecording(name: "drums", file: "drums")
+    )
 }

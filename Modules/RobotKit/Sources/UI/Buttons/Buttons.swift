@@ -5,11 +5,7 @@
 import SwiftUI
 
 public struct RobotControlActionButton: View {
-
-    private let title: String
-    private let image: String
-    private let tint: Color
-    private let action: () -> Void
+    // MARK: Lifecycle
 
     public init(title: String, image: String, tint: Color, action: @escaping () -> Void) {
         self.title = title
@@ -18,16 +14,24 @@ public struct RobotControlActionButton: View {
         self.action = action
     }
 
+    // MARK: Public
+
     public var body: some View {
         Button {
-            action()
+            self.action()
         } label: {
-            Image(systemName: image)
-            Text(title)
+            Image(systemName: self.image)
+            Text(self.title)
         }
-        .buttonStyle(.robotControlBorderedButtonStyle(foreground: tint, border: tint))
+        .buttonStyle(.robotControlBorderedButtonStyle(foreground: self.tint, border: self.tint))
     }
 
+    // MARK: Private
+
+    private let title: String
+    private let image: String
+    private let tint: Color
+    private let action: () -> Void
 }
 
 #Preview {

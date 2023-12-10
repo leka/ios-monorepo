@@ -5,9 +5,13 @@
 import Foundation
 
 public struct LocalHelper {
-    let name: String
+    // MARK: Lifecycle
 
     public init(name: String) {
         self.name = name
     }
+
+    // MARK: Internal
+
+    let name: String
 }

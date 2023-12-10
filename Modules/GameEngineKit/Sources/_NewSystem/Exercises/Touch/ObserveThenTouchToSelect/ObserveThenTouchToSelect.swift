@@ -7,6 +7,90 @@ import ContentKit
 import SwiftUI
 
 public struct ObserveThenTouchToSelectView: View {
+    // MARK: Lifecycle
+
+    public init(choices: [TouchToSelect.Choice], image: String) {
+        _viewModel = StateObject(wrappedValue: TouchToSelectViewViewModel(choices: choices))
+        self.image = image
+    }
+
+    public init(exercise: Exercise, data: ExerciseSharedData? = nil) {
+        guard let payload = exercise.payload as? TouchToSelect.Payload,
+              case let .ipad(type: .image(name)) = exercise.action
+        else {
+            log.error("Exercise payload is not .selection and/or Exercise does not contain iPad image action")
+            fatalError("💥 Exercise payload is not .selection and/or Exercise does not contain iPad image action")
+        }
+
+        _viewModel = StateObject(
+            wrappedValue: TouchToSelectViewViewModel(choices: payload.choices, shared: data))
+
+        self.image = name
+    }
+
+    // MARK: Public
+
+    public var body: some View {
+        let interface = Interface(rawValue: viewModel.choices.count)
+
+        HStack(spacing: 0) {
+            ActionButtonObserve(image: self.image, imageWasTapped: self.$imageWasTapped)
+                .padding(20)
+
+            Spacer()
+
+            switch interface {
+                case .oneChoice:
+                    OneChoiceView(viewModel: self.viewModel, isTappable: self.imageWasTapped)
+                        .onTapGestureIf(self.imageWasTapped) {
+                            self.viewModel.onChoiceTapped(choice: self.viewModel.choices[0])
+                        }
+                        .animation(.easeOut(duration: 0.3), value: self.imageWasTapped)
+
+                case .twoChoices:
+                    TwoChoicesView(viewModel: self.viewModel, isTappable: self.imageWasTapped)
+                        .onTapGestureIf(self.imageWasTapped) {
+                            self.viewModel.onChoiceTapped(choice: self.viewModel.choices[0])
+                        }
+                        .animation(.easeOut(duration: 0.3), value: self.imageWasTapped)
+
+                case .threeChoices:
+                    ThreeChoicesView(viewModel: self.viewModel, isTappable: self.imageWasTapped)
+                        .onTapGestureIf(self.imageWasTapped) {
+                            self.viewModel.onChoiceTapped(choice: self.viewModel.choices[0])
+                        }
+                        .animation(.easeOut(duration: 0.3), value: self.imageWasTapped)
+
+                case .fourChoices:
+                    FourChoicesView(viewModel: self.viewModel, isTappable: self.imageWasTapped)
+                        .onTapGestureIf(self.imageWasTapped) {
+                            self.viewModel.onChoiceTapped(choice: self.viewModel.choices[0])
+                        }
+                        .animation(.easeOut(duration: 0.3), value: self.imageWasTapped)
+
+                case .fiveChoices:
+                    FiveChoicesView(viewModel: self.viewModel, isTappable: self.imageWasTapped)
+                        .onTapGestureIf(self.imageWasTapped) {
+                            self.viewModel.onChoiceTapped(choice: self.viewModel.choices[0])
+                        }
+                        .animation(.easeOut(duration: 0.3), value: self.imageWasTapped)
+
+                case .sixChoices:
+                    SixChoicesView(viewModel: self.viewModel, isTappable: self.imageWasTapped)
+                        .onTapGestureIf(self.imageWasTapped) {
+                            self.viewModel.onChoiceTapped(choice: self.viewModel.choices[0])
+                        }
+                        .animation(.easeOut(duration: 0.3), value: self.imageWasTapped)
+
+                default:
+                    Text("❌ Interface not available for \(self.viewModel.choices.count) choices")
+            }
+
+            Spacer()
+        }
+    }
+
+    // MARK: Internal
 
     enum Interface: Int {
         case oneChoice = 1
@@ -17,90 +101,11 @@ public struct ObserveThenTouchToSelectView: View {
         case sixChoices
     }
 
+    // MARK: Private
+
     @StateObject private var viewModel: TouchToSelectViewViewModel
 
     @State private var imageWasTapped = false
 
     private let image: String
-
-    public init(choices: [TouchToSelect.Choice], image: String) {
-        self._viewModel = StateObject(wrappedValue: TouchToSelectViewViewModel(choices: choices))
-        self.image = image
-    }
-
-    public init(exercise: Exercise, data: ExerciseSharedData? = nil) {
-        guard
-            let payload = exercise.payload as? TouchToSelect.Payload,
-            case .ipad(type: .image(let name)) = exercise.action
-        else {
-            log.error("Exercise payload is not .selection and/or Exercise does not contain iPad image action")
-            fatalError("💥 Exercise payload is not .selection and/or Exercise does not contain iPad image action")
-        }
-
-        self._viewModel = StateObject(
-            wrappedValue: TouchToSelectViewViewModel(choices: payload.choices, shared: data))
-
-        self.image = name
-    }
-
-    public var body: some View {
-        let interface = Interface(rawValue: viewModel.choices.count)
-
-        HStack(spacing: 0) {
-            ActionButtonObserve(image: image, imageWasTapped: $imageWasTapped)
-                .padding(20)
-
-            Spacer()
-
-            switch interface {
-                case .oneChoice:
-                    OneChoiceView(viewModel: viewModel, isTappable: imageWasTapped)
-                        .onTapGestureIf(imageWasTapped) {
-                            viewModel.onChoiceTapped(choice: viewModel.choices[0])
-                        }
-                        .animation(.easeOut(duration: 0.3), value: imageWasTapped)
-
-                case .twoChoices:
-                    TwoChoicesView(viewModel: viewModel, isTappable: imageWasTapped)
-                        .onTapGestureIf(imageWasTapped) {
-                            viewModel.onChoiceTapped(choice: viewModel.choices[0])
-                        }
-                        .animation(.easeOut(duration: 0.3), value: imageWasTapped)
-
-                case .threeChoices:
-                    ThreeChoicesView(viewModel: viewModel, isTappable: imageWasTapped)
-                        .onTapGestureIf(imageWasTapped) {
-                            viewModel.onChoiceTapped(choice: viewModel.choices[0])
-                        }
-                        .animation(.easeOut(duration: 0.3), value: imageWasTapped)
-
-                case .fourChoices:
-                    FourChoicesView(viewModel: viewModel, isTappable: imageWasTapped)
-                        .onTapGestureIf(imageWasTapped) {
-                            viewModel.onChoiceTapped(choice: viewModel.choices[0])
-                        }
-                        .animation(.easeOut(duration: 0.3), value: imageWasTapped)
-
-                case .fiveChoices:
-                    FiveChoicesView(viewModel: viewModel, isTappable: imageWasTapped)
-                        .onTapGestureIf(imageWasTapped) {
-                            viewModel.onChoiceTapped(choice: viewModel.choices[0])
-                        }
-                        .animation(.easeOut(duration: 0.3), value: imageWasTapped)
-
-                case .sixChoices:
-                    SixChoicesView(viewModel: viewModel, isTappable: imageWasTapped)
-                        .onTapGestureIf(imageWasTapped) {
-                            viewModel.onChoiceTapped(choice: viewModel.choices[0])
-                        }
-                        .animation(.easeOut(duration: 0.3), value: imageWasTapped)
-
-                default:
-                    Text("❌ Interface not available for \(viewModel.choices.count) choices")
-            }
-
-            Spacer()
-        }
-    }
-
 }

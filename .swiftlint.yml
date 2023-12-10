@@ -2,11 +2,7 @@
 # Copyright 2023 APF France handicap
 # SPDX-License-Identifier: Apache-2.0
 
-opt_in_rules:
-  - indentation_width
-
-indentation_width:
-  indentation_width: 4
+opt_in_rules: []
 
 trailing_comma:
   mandatory_comma: true
@@ -51,7 +47,7 @@ identifier_name:
     - URL
 
 line_length:
-  warning: 130
+  warning: 150
   ignores_urls: true
   ignores_function_declarations: true
   ignores_interpolated_strings: true

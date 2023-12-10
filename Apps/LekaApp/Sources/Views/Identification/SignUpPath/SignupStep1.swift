@@ -6,19 +6,17 @@ import DesignKit
 import SwiftUI
 
 struct SignupStep1: View {
+    // MARK: Internal
 
     @EnvironmentObject var metrics: UIMetrics
-
-    private let data: TileData = .signupBravo
-    @State private var navigateToSignup2: Bool = false
 
     var body: some View {
         ZStack {
             DesignKitAsset.Colors.lekaLightBlue.swiftUIColor.ignoresSafeArea()
-            tile
+            self.tile
         }
         .edgesIgnoringSafeArea(.top)
-        .navigationDestination(isPresented: $navigateToSignup2) {
+        .navigationDestination(isPresented: self.$navigateToSignup2) {
             SignupStep2()
         }
         .toolbar {
@@ -28,59 +26,66 @@ struct SignupStep1: View {
         }
     }
 
+    // MARK: Private
+
+    private let data: TileData = .signupBravo
+    @State private var navigateToSignup2: Bool = false
+
     private var tile: some View {
         HStack(alignment: .center, spacing: 0) {
             VStack(spacing: 0) {
                 // Picto
                 Image(
-                    data.content.image!,
+                    self.data.content.image!,
                     bundle: Bundle(for: DesignKitResources.self)
                 )
                 .resizable()
                 .renderingMode(.original)
                 .aspectRatio(contentMode: .fit)
-                .frame(height: metrics.tilePictoHeightSmall)
+                .frame(height: self.metrics.tilePictoHeightSmall)
                 .padding(.bottom, 30)
                 // Title
-                Text(data.content.title!)
-                    .font(metrics.semi17)
+                Text(self.data.content.title!)
+                    .font(self.metrics.semi17)
                     .foregroundColor(DesignKitAsset.Colors.lekaOrange.swiftUIColor)
                 Spacer()
                 // Message
-                Text(data.content.message!)
-                    .font(metrics.reg17)
+                Text(self.data.content.message!)
+                    .font(self.metrics.reg17)
                 Spacer()
                 // CTA Button
-                accessoryView
+                self.accessoryView
             }
             .multilineTextAlignment(.center)
             .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
-            .frame(width: metrics.tileContentWidth)
-            .padding(metrics.tileContentPadding)
+            .frame(width: self.metrics.tileContentWidth)
+            .padding(self.metrics.tileContentPadding)
         }
         .frame(
-            width: metrics.tileSize.width,
-            height: metrics.tileSize.height
+            width: self.metrics.tileSize.width,
+            height: self.metrics.tileSize.height
         )
         .background(
             .white,
-            in: RoundedRectangle(cornerRadius: metrics.tilesRadius, style: .continuous))
+            in: RoundedRectangle(cornerRadius: self.metrics.tilesRadius, style: .continuous)
+        )
     }
 
     private var accessoryView: some View {
         Button(
             action: {
-                navigateToSignup2.toggle()
+                self.navigateToSignup2.toggle()
             },
             label: {
-                Text(data.content.callToActionLabel!)
+                Text(self.data.content.callToActionLabel!)
             }
         )
         .buttonStyle(
             BorderedCapsule_NoFeedback_ButtonStyle(
-                font: metrics.reg17,
+                font: self.metrics.reg17,
                 color: DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor,
-                width: metrics.tileBtnWidth)
+                width: self.metrics.tileBtnWidth
+            )
         )
     }
 }

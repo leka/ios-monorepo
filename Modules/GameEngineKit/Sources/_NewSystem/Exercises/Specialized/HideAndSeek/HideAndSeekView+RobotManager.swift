@@ -8,7 +8,6 @@ import RobotKit
 import SwiftUI
 
 extension HideAndSeekView {
-
     class RobotManager {
         let reinforcers: [Robot.Reinforcer] = [.fire, .rainbow, .sprinkles]
         let robot = Robot.shared
@@ -34,7 +33,7 @@ extension HideAndSeekView {
         }
 
         func runRandomReinforcer() {
-            robot.run(reinforcers.randomElement()!)
+            self.robot.run(self.reinforcers.randomElement()!)
         }
     }
 }

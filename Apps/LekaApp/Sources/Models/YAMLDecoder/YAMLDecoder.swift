@@ -5,12 +5,14 @@
 import Foundation
 import Yams
 
+// MARK: - YamlFileDecodable
+
 protocol YamlFileDecodable {
     func decodeYamlFile<T: Decodable>(withName name: String, toType: T.Type) throws -> T
 }
 
 extension YamlFileDecodable {
-    func decodeYamlFile<T: Decodable>(withName name: String, toType: T.Type) throws -> T {
+    func decodeYamlFile<T: Decodable>(withName name: String, toType _: T.Type) throws -> T {
         guard let path = Bundle.main.path(forResource: name, ofType: "yml") else {
             print(name)
             throw CustomError.failedToGetFilePath
@@ -23,30 +25,39 @@ extension YamlFileDecodable {
     }
 }
 
-// MARK: - Custom Errors
+// MARK: - CustomError
 
 enum CustomError: Error, CustomStringConvertible {
     case failedToGetFilePath
 
+    // MARK: Internal
+
     var description: String {
         switch self {
-            case .failedToGetFilePath: return "Unable to get the path to the Yaml file!"
+            case .failedToGetFilePath: "Unable to get the path to the Yaml file!"
         }
     }
 }
 
-// MARK: - Handling Yaml files in a type-safe manner, when possible!
+// MARK: - YamlFiles
 
 struct YamlFiles: RawRepresentable, Hashable {
-    var rawValue: String
+    // MARK: Lifecycle
 
     init?(rawValue: String) {
         self.rawValue = rawValue
     }
+
     init(_ rawValue: String) {
         self.rawValue = rawValue
     }
+
+    // MARK: Internal
+
+    var rawValue: String
 }
+
+// MARK: - CurriculumCategories
 
 enum CurriculumCategories: String, CaseIterable {
     case emotionRecognition = "emotion_recognition-curriculums-list"

@@ -6,10 +6,9 @@ import BLEKit
 import Combine
 import SwiftUI
 
-extension RobotListViewModel {
-
+public extension RobotListViewModel {
     // TODO(@ladislas): create protocol and mock RobotDiscoveryModel
-    public static func mock() -> RobotListViewModel {
+    static func mock() -> RobotListViewModel {
         RobotListViewModel(availableRobots: [
             // RobotDiscovery.mock(),
             // RobotDiscovery.mock(),
@@ -18,5 +17,4 @@ extension RobotListViewModel {
             // RobotDiscovery.mock(),
         ])
     }
-
 }

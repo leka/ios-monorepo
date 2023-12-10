@@ -7,7 +7,6 @@ import XCTest
 @testable import RobotKit
 
 final class Robot_Commands_Tests: XCTestCase {
-
     func test_generateFrameForOneCommand() {
         // Given
         let cmd: [UInt8] = [0x50, 0x51, 0x51]
@@ -38,5 +37,4 @@ final class Robot_Commands_Tests: XCTestCase {
         // Then
         XCTAssertEqual(output, expected)
     }
-
 }

@@ -41,7 +41,10 @@ let kActivities: [Activity] = [
     ContentKit.decodeActivity("activity-melody"),
 ]
 
+// MARK: - GEKNewSystemView
+
 struct GEKNewSystemView: View {
+    // MARK: Internal
 
     @State var currentActivity: Activity?
 
@@ -50,12 +53,12 @@ struct GEKNewSystemView: View {
             VStack(spacing: 30) {
                 ForEach(kActivities, id: \.id) { activity in
                     Button(activity.name) {
-                        currentActivity = activity
+                        self.currentActivity = activity
                     }
                 }
             }
-            .fullScreenCover(item: $currentActivity) {
-                currentActivity = nil
+            .fullScreenCover(item: self.$currentActivity) {
+                self.currentActivity = nil
             } content: { activity in
                 ActivityView(viewModel: ActivityViewViewModel(activity: activity))
             }
@@ -64,6 +67,8 @@ struct GEKNewSystemView: View {
         .navigationTitle("List of Activities")
     }
 
+    // MARK: Private
+
     private var navigationTitleView: some View {
         HStack(spacing: 4) {
             Text("Leka Activity UI Explorer")
@@ -71,7 +76,6 @@ struct GEKNewSystemView: View {
         .font(.system(size: 17, weight: .bold))
         .foregroundColor(.accentColor)
     }
-
 }
 
 #Preview {

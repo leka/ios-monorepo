@@ -5,38 +5,14 @@
 import DesignKit
 import SwiftUI
 
+// MARK: - CurrentGameInstructionView
+
 struct CurrentGameInstructionView: View {
+    // MARK: Internal
 
     @EnvironmentObject var activityVM: ActivityViewModel
     @ObservedObject var gameMetrics: GameMetrics
     @Environment(\.dismiss) var dismiss
-
-    private var activityDetailHeader: some View {
-        HStack {
-            Spacer()
-            Text(activityVM.currentActivity.title.localized())
-                .font(gameMetrics.semi17)
-                .foregroundColor(.white)
-                .multilineTextAlignment(.center)
-            Spacer()
-        }
-        .frame(height: 70)
-        .padding(.horizontal, 20)
-    }
-
-    private var resumeButton: some View {
-        Button(
-            action: {
-                dismiss()
-            },
-            label: {
-                HStack(spacing: 4) {
-                    Image(systemName: "arrow.2.circlepath")
-                    Text("Reprendre")
-                }
-                .foregroundColor(.white)
-            })
-    }
 
     var body: some View {
         NavigationStack {
@@ -48,7 +24,7 @@ struct CurrentGameInstructionView: View {
                 DesignKitAsset.Colors.lekaLightGray.swiftUIColor.padding(.top, 70)
 
                 VStack(spacing: 0) {
-                    activityDetailHeader
+                    self.activityDetailHeader
                     InstructionsView()
                 }
             }
@@ -57,13 +33,45 @@ struct CurrentGameInstructionView: View {
             .interactiveDismissDisabled()
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    resumeButton
+                    self.resumeButton
                 }
             }
         }
         .preferredColorScheme(.light)
     }
+
+    // MARK: Private
+
+    private var activityDetailHeader: some View {
+        HStack {
+            Spacer()
+            Text(self.activityVM.currentActivity.title.localized())
+                .font(self.gameMetrics.semi17)
+                .foregroundColor(.white)
+                .multilineTextAlignment(.center)
+            Spacer()
+        }
+        .frame(height: 70)
+        .padding(.horizontal, 20)
+    }
+
+    private var resumeButton: some View {
+        Button(
+            action: {
+                self.dismiss()
+            },
+            label: {
+                HStack(spacing: 4) {
+                    Image(systemName: "arrow.2.circlepath")
+                    Text("Reprendre")
+                }
+                .foregroundColor(.white)
+            }
+        )
+    }
 }
+
+// MARK: - CurrentGameInstructionView_Previews
 
 struct CurrentGameInstructionView_Previews: PreviewProvider {
     static var previews: some View {

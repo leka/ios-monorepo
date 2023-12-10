@@ -8,15 +8,7 @@ import SwiftUI
 import SwiftUIJoystick
 
 class JoystickViewViewModel: ObservableObject {
-
-    var joystickMonitor = JoystickMonitor()
-
-    @Published private var position: CGPoint = CGPoint(x: 0.0, y: 0.0)
-
-    let dragDiameter: CGFloat
-    let shape: JoystickShape = .circle
-
-    private var cancellables: Set<AnyCancellable> = []
+    // MARK: Lifecycle
 
     init(dragDiameter: CGFloat) {
         self.dragDiameter = dragDiameter
@@ -30,7 +22,19 @@ class JoystickViewViewModel: ObservableObject {
 
                 Robot.shared.move(.free(left: Float(leftSpeed), right: Float(rightSpeed)))
             })
-            .store(in: &cancellables)
-
+            .store(in: &self.cancellables)
     }
+
+    // MARK: Internal
+
+    var joystickMonitor = JoystickMonitor()
+
+    let dragDiameter: CGFloat
+    let shape: JoystickShape = .circle
+
+    // MARK: Private
+
+    @Published private var position: CGPoint = .init(x: 0.0, y: 0.0)
+
+    private var cancellables: Set<AnyCancellable> = []
 }

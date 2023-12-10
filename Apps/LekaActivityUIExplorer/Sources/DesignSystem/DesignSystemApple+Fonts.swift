@@ -5,9 +5,7 @@
 import SwiftUI
 
 extension DesignSystemApple {
-
     struct FontsView: View {
-
         var body: some View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 20) {
@@ -26,9 +24,7 @@ extension DesignSystemApple {
             }
             .navigationTitle("Apple Fonts")
         }
-
     }
-
 }
 
 #Preview {

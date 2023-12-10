@@ -6,7 +6,6 @@ import DesignKit
 import SwiftUI
 
 struct SidebarAvatarNameLabel: View {
-
     @EnvironmentObject var company: CompanyViewModel
     @EnvironmentObject var metrics: UIMetrics
 
@@ -14,19 +13,19 @@ struct SidebarAvatarNameLabel: View {
 
     var body: some View {
         Text(
-            company.getProfileDataFor(
-                type,
-                id: company.profilesInUse[type]!
+            self.company.getProfileDataFor(
+                self.type,
+                id: self.company.profilesInUse[self.type]!
             )[1]
         )
-        .font(metrics.reg15)
+        .font(self.metrics.reg15)
         .allowsTightening(true)
         .lineLimit(2)
         .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
         .padding(.vertical, 2)
         .padding(.horizontal, 6)
         .frame(minWidth: 100)
-        .background(.white, in: RoundedRectangle(cornerRadius: metrics.btnRadius))
+        .background(.white, in: RoundedRectangle(cornerRadius: self.metrics.btnRadius))
     }
 }
 

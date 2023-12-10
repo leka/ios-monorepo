@@ -4,7 +4,10 @@
 
 import SwiftUI
 
+// MARK: - BotFaceView
+
 struct BotFaceView: View {
+    // MARK: Internal
 
     @Binding var isSelected: Bool
     @Binding var isConnected: Bool
@@ -12,8 +15,6 @@ struct BotFaceView: View {
     @Binding var battery: Int
     @Binding var isCharging: Bool
     @Binding var osVersion: String
-
-    @State private var rotation: CGFloat = 0.0
 
     var body: some View {
         VStack {
@@ -27,30 +28,36 @@ struct BotFaceView: View {
                                 lineWidth: 2,
                                 lineCap: .butt,
                                 lineJoin: .round,
-                                dash: [12, 3])
+                                dash: [12, 3]
+                            )
                         )
-                        .opacity(isSelected ? 1 : 0)
-                        .rotationEffect(.degrees(rotation), anchor: .center)
-                        .animation(Animation.linear(duration: 15).repeatForever(autoreverses: false), value: rotation)
+                        .opacity(self.isSelected ? 1 : 0)
+                        .rotationEffect(.degrees(self.rotation), anchor: .center)
+                        .animation(Animation.linear(duration: 15).repeatForever(autoreverses: false), value: self.rotation)
                         .onAppear {
-                            rotation = 360
+                            self.rotation = 360
                         }
                 })
-                .background(Color(.green), in: Circle().inset(by: isConnected ? -26 : 2))
+                .background(Color(.green), in: Circle().inset(by: self.isConnected ? -26 : 2))
                 .padding(.bottom, 40)
 
-            Text(name)
+            Text(self.name)
 
-            Text("Battery level : \(battery)")
+            Text("Battery level : \(self.battery)")
 
-            Text("Charging Status : " + (isCharging ? "On" : "Off"))
+            Text("Charging Status : " + (self.isCharging ? "On" : "Off"))
 
-            Text("OS Version : \(osVersion)")
-
+            Text("OS Version : \(self.osVersion)")
         }
-        .animation(.default, value: isConnected)
+        .animation(.default, value: self.isConnected)
     }
+
+    // MARK: Private
+
+    @State private var rotation: CGFloat = 0.0
 }
+
+// MARK: - BotFaceView_Previews
 
 struct BotFaceView_Previews: PreviewProvider {
     static var previews: some View {

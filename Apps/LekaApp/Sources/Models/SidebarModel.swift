@@ -4,16 +4,28 @@
 
 import SwiftUI
 
+// MARK: - SidebarDestinations
+
 // Navigation Sets
 enum SidebarDestinations: Int, Identifiable, CaseIterable, Hashable {
-    case curriculums, activities, commands
+    case curriculums
+    case activities
+    case commands
+
+    // MARK: Internal
 
     var id: Self { self }
 }
 
+// MARK: - PathsToGame
+
 enum PathsToGame: Hashable {
-    case robot, user, game
+    case robot
+    case user
+    case game
 }
+
+// MARK: - SectionLabel
 
 // Sidebar UI Models
 struct SectionLabel: Identifiable, Hashable {
@@ -22,6 +34,8 @@ struct SectionLabel: Identifiable, Hashable {
     let icon: String
     let label: String
 }
+
+// MARK: - ListModel
 
 struct ListModel: Identifiable, Hashable {
     let id = UUID()

@@ -6,52 +6,66 @@ import AVFoundation
 import DesignKit
 import SwiftUI
 
+// MARK: - SpeakerViewModel
+
 // TODO(@ladislas): refactor speech synth into own class
 class SpeakerViewModel: NSObject, ObservableObject, AVSpeechSynthesizerDelegate {
-    @Published var isSpeaking = false
+    // MARK: Lifecycle
 
-    private var synthesizer = AVSpeechSynthesizer()
     override init() {
         super.init()
-        synthesizer.delegate = self
+        self.synthesizer.delegate = self
     }
 
     deinit {
         synthesizer.delegate = nil
     }
 
+    // MARK: Internal
+
+    @Published var isSpeaking = false
+
     func speak(sentence: String) {
         let utterance = AVSpeechUtterance(string: sentence)
         utterance.rate = 0.40
         // TODO(@ladislas): handle different locales
         utterance.voice = AVSpeechSynthesisVoice(language: "fr-FR")
-        synthesizer.speak(utterance)
+        self.synthesizer.speak(utterance)
     }
 
     // MARK: AVSpeechSynthesizerDelegate
-    internal func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didStart utterance: AVSpeechUtterance) {
+
+    func speechSynthesizer(_: AVSpeechSynthesizer, didStart _: AVSpeechUtterance) {
         self.isSpeaking = true
     }
 
-    internal func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
+    func speechSynthesizer(_: AVSpeechSynthesizer, didFinish _: AVSpeechUtterance) {
         self.isSpeaking = false
     }
+
+    // MARK: Private
+
+    private var synthesizer = AVSpeechSynthesizer()
 }
 
-struct ExerciseInstructionsButton: View {
+// MARK: - ExerciseInstructionsButton
 
+struct ExerciseInstructionsButton: View {
     @StateObject var speaker = SpeakerViewModel()
     @State var instructions: String
 
     var body: some View {
-        Button(instructions) {
-            speaker.speak(sentence: instructions)
+        Button(self.instructions) {
+            self.speaker.speak(sentence: self.instructions)
         }
-        .buttonStyle(StepInstructions_ButtonStyle(isSpeaking: $speaker.isSpeaking))
+        .buttonStyle(StepInstructions_ButtonStyle(isSpeaking: self.$speaker.isSpeaking))
     }
 }
 
+// MARK: - StepInstructions_ButtonStyle
+
 struct StepInstructions_ButtonStyle: ButtonStyle {
+    // MARK: Internal
 
     @Binding var isSpeaking: Bool
 
@@ -67,9 +81,9 @@ struct StepInstructions_ButtonStyle: ButtonStyle {
         }
         .frame(maxWidth: 640)
         .frame(height: 85, alignment: .center)
-        .background(backgroundGradient)
-        .overlay(buttonStroke)
-        .overlay(speachIndicator)
+        .background(self.backgroundGradient)
+        .overlay(self.buttonStroke)
+        .overlay(self.speachIndicator)
         .clipShape(
             RoundedRectangle(
                 cornerRadius: 10,
@@ -78,12 +92,14 @@ struct StepInstructions_ButtonStyle: ButtonStyle {
         )
         .shadow(
             color: .black.opacity(0.1),
-            radius: isSpeaking ? 0 : 4, x: 0, y: isSpeaking ? 1 : 4
+            radius: self.isSpeaking ? 0 : 4, x: 0, y: self.isSpeaking ? 1 : 4
         )
-        .scaleEffect(isSpeaking ? 0.98 : 1)
-        .disabled(isSpeaking)
-        .animation(.easeOut(duration: 0.2), value: isSpeaking)
+        .scaleEffect(self.isSpeaking ? 0.98 : 1)
+        .disabled(self.isSpeaking)
+        .animation(.easeOut(duration: 0.2), value: self.isSpeaking)
     }
+
+    // MARK: Private
 
     private var backgroundGradient: some View {
         ZStack {
@@ -92,7 +108,7 @@ struct StepInstructions_ButtonStyle: ButtonStyle {
                 gradient: Gradient(colors: [.black.opacity(0.1), .black.opacity(0.0), .black.opacity(0.0)]),
                 startPoint: .top, endPoint: .center
             )
-            .opacity(isSpeaking ? 1 : 0)
+            .opacity(self.isSpeaking ? 1 : 0)
         }
     }
 
@@ -110,7 +126,7 @@ struct StepInstructions_ButtonStyle: ButtonStyle {
             ),
             lineWidth: 4
         )
-        .opacity(isSpeaking ? 0.5 : 0)
+        .opacity(self.isSpeaking ? 0.5 : 0)
     }
 
     private var speachIndicator: some View {
@@ -121,7 +137,7 @@ struct StepInstructions_ButtonStyle: ButtonStyle {
                 .renderingMode(.template)
                 .aspectRatio(contentMode: .fit)
                 .foregroundColor(
-                    isSpeaking
+                    self.isSpeaking
                         ? DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor : DesignKitAsset.Colors.darkGray.swiftUIColor
                 )
                 .padding(10)

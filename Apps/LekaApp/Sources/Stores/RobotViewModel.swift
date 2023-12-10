@@ -5,7 +5,6 @@
 import SwiftUI
 
 class RobotViewModel: ObservableObject {
-
     // Robot Connect
     // Make 'robotIsConnected' & 'currentlyConnectedRobotIndex' one prop' instead
     // if currentlyConnectedRobotIndex is not nil, robot is connected for sure
@@ -21,9 +20,8 @@ class RobotViewModel: ObservableObject {
     @Published var robotOSVersion: String = "LekaOS v1.4.0"
 
     func disconnect() {
-        currentlySelectedRobotIndex = nil
-        currentlyConnectedRobotIndex = nil
-        robotIsConnected = false
+        self.currentlySelectedRobotIndex = nil
+        self.currentlyConnectedRobotIndex = nil
+        self.robotIsConnected = false
     }
-
 }

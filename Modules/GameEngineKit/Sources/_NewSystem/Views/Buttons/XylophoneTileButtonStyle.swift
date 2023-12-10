@@ -6,6 +6,17 @@ import DesignKit
 import SwiftUI
 
 struct XylophoneTileButtonStyle: ButtonStyle {
+    // MARK: Lifecycle
+
+    init(index: Int, tileNumber: Int, tileWidth: CGFloat = 100, isTappable: Bool = true) {
+        self.index = index
+        self.tileNumber = tileNumber
+        self.tileWidth = tileWidth
+        self.isTappable = isTappable
+    }
+
+    // MARK: Internal
+
     let xyloAttachColor = Color(red: 0.87, green: 0.65, blue: 0.54)
     let defaultMaxTileHeight: Int = 500
     let defaultTileHeightGap: Int = 250
@@ -17,29 +28,22 @@ struct XylophoneTileButtonStyle: ButtonStyle {
     let tileWidth: CGFloat
     let isTappable: Bool
 
-    init(index: Int, tileNumber: Int, tileWidth: CGFloat = 100, isTappable: Bool = true) {
-        self.index = index
-        self.tileNumber = tileNumber
-        self.tileWidth = tileWidth
-        self.isTappable = isTappable
-    }
-
     func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
             .overlay {
                 VStack {
                     Spacer()
                     Circle()
-                        .fill(xyloAttachColor)
+                        .fill(self.xyloAttachColor)
                         .shadow(
                             color: .black.opacity(0.4),
                             radius: 3, x: 0, y: 3
                         )
                     Spacer()
                     Circle()
-                        .fill(xyloAttachColor)
+                        .fill(self.xyloAttachColor)
                         .shadow(
-                            color: isTappable ? .black.opacity(0.4) : .clear,
+                            color: self.isTappable ? .black.opacity(0.4) : .clear,
                             radius: 3, x: 0, y: 3
                         )
                     Spacer()
@@ -51,24 +55,26 @@ struct XylophoneTileButtonStyle: ButtonStyle {
                     .stroke(.black.opacity(configuration.isPressed ? 0.3 : 0), lineWidth: 20)
             }
             .clipShape(RoundedRectangle(cornerRadius: 7, style: .circular))
-            .frame(width: tileWidth, height: setSizeFromIndex())
+            .frame(width: self.tileWidth, height: self.setSizeFromIndex())
             .scaleEffect(
-                configuration.isPressed ? defaultTilesScaleFeedback : 1,
+                configuration.isPressed ? self.defaultTilesScaleFeedback : 1,
                 anchor: .center
             )
             .rotationEffect(
-                Angle(degrees: configuration.isPressed ? defaultTilesRotationFeedback : 0),
+                Angle(degrees: configuration.isPressed ? self.defaultTilesRotationFeedback : 0),
                 anchor: .center
             )
             .shadow(
-                color: isTappable ? .black.opacity(0.4) : .clear,
+                color: self.isTappable ? .black.opacity(0.4) : .clear,
                 radius: 3, x: 0, y: 3
             )
     }
 
+    // MARK: Private
+
     private func setSizeFromIndex() -> CGFloat {
-        let sizeDiff = defaultTileHeightGap / tileNumber
-        let tileHeight = defaultMaxTileHeight - index * sizeDiff
+        let sizeDiff = self.defaultTileHeightGap / self.tileNumber
+        let tileHeight = self.defaultMaxTileHeight - self.index * sizeDiff
 
         return CGFloat(tileHeight)
     }

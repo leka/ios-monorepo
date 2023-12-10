@@ -4,10 +4,8 @@
 
 import Foundation
 
-extension Exercise {
-
-    public struct Sequence: Codable {
+public extension Exercise {
+    struct Sequence: Codable {
         public let exercises: [Exercise]
     }
-
 }

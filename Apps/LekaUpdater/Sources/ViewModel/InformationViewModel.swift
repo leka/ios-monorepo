@@ -8,22 +8,29 @@ import RobotKit
 import Version
 
 class InformationViewModel: ObservableObject {
-
-    private var cancellables: Set<AnyCancellable> = []
-
-    @Published var showRobotCannotBeUpdated: Bool = false
-    @Published var showRobotNeedsUpdate: Bool = true
-    @Published var robotName: String = "n/a"
-    @Published var robotOSVersion: String = ""
+    // MARK: Lifecycle
 
     init() {
         self.subscribeToRobotNameUpdates()
         self.subscribeToRobotOsVersionUpdates()
     }
 
+    // MARK: Public
+
     public func onViewReappear() {
         self.robotName = Robot.shared.name.value
     }
+
+    // MARK: Internal
+
+    @Published var showRobotCannotBeUpdated: Bool = false
+    @Published var showRobotNeedsUpdate: Bool = true
+    @Published var robotName: String = "n/a"
+    @Published var robotOSVersion: String = ""
+
+    // MARK: Private
+
+    private var cancellables: Set<AnyCancellable> = []
 
     private func subscribeToRobotNameUpdates() {
         Robot.shared.name
@@ -31,7 +38,7 @@ class InformationViewModel: ObservableObject {
             .sink { robotName in
                 self.robotName = robotName
             }
-            .store(in: &cancellables)
+            .store(in: &self.cancellables)
     }
 
     private func subscribeToRobotOsVersionUpdates() {
@@ -42,23 +49,23 @@ class InformationViewModel: ObservableObject {
                 self.updateShowRobotNeedsUpdate(robotOsVersion: robotOsVersion)
                 self.robotOSVersion = robotOsVersion?.description ?? "(n/a)"
             }
-            .store(in: &cancellables)
+            .store(in: &self.cancellables)
     }
 
     private func updateShowRobotCannotBeUpdated(robotOsVersion: Version?) {
-        guard let robotOsVersion = robotOsVersion else { return }
+        guard let robotOsVersion else { return }
 
         let isUpdateProcessAvailable = UpdateProcessController.availableVersions.contains(robotOsVersion)
-        showRobotCannotBeUpdated = !isUpdateProcessAvailable
+        self.showRobotCannotBeUpdated = !isUpdateProcessAvailable
     }
 
     private func updateShowRobotNeedsUpdate(robotOsVersion: Version?) {
-        if let robotOsVersion = robotOsVersion {
+        if let robotOsVersion {
             let isUpdateProcessAvailable = UpdateProcessController.availableVersions.contains(robotOsVersion)
             let isRobotNeedsUpdate = globalFirmwareManager.compareWith(version: robotOsVersion) == .needsUpdate
-            showRobotNeedsUpdate = isRobotNeedsUpdate && isUpdateProcessAvailable
+            self.showRobotNeedsUpdate = isRobotNeedsUpdate && isUpdateProcessAvailable
         } else {
-            showRobotNeedsUpdate = false
+            self.showRobotNeedsUpdate = false
         }
     }
 }

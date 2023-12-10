@@ -5,7 +5,6 @@
 import ProjectDescription
 
 public enum SchemeList {
-
     public static func l10nFR(name: String) -> Scheme {
         Scheme(
             name: "\(name) 🇫🇷",
@@ -23,5 +22,4 @@ public enum SchemeList {
             runAction: RunAction.runAction(configuration: "Debug", options: .options(language: "en"))
         )
     }
-
 }

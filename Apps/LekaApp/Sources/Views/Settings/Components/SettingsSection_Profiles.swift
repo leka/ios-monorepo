@@ -6,6 +6,7 @@ import DesignKit
 import SwiftUI
 
 struct SettingsSection_Profiles: View {
+    // MARK: Internal
 
     @EnvironmentObject var company: CompanyViewModel
     @EnvironmentObject var metrics: UIMetrics
@@ -13,17 +14,19 @@ struct SettingsSection_Profiles: View {
     var body: some View {
         Section {
             Group {
-                avatarsRow(.teacher)
-                avatarsRow(.user)
+                self.avatarsRow(.teacher)
+                self.avatarsRow(.user)
             }
             .frame(maxHeight: 52)
         } header: {
             Text("Profils")
-                .font(metrics.reg15)
+                .font(self.metrics.reg15)
                 .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
                 .headerProminence(.increased)
         }
     }
+
+    // MARK: Private
 
     private func avatar(_ name: String) -> some View {
         Image(name, bundle: Bundle(for: DesignKitResources.self))
@@ -42,7 +45,7 @@ struct SettingsSection_Profiles: View {
             .overlay(
                 Text("+\(remainder)")
                     .foregroundColor(.white)
-                    .font(metrics.reg12)
+                    .font(self.metrics.reg12)
                     .clipShape(Circle())
             )
             .overlay(Circle().stroke(.white, lineWidth: 2))
@@ -51,19 +54,19 @@ struct SettingsSection_Profiles: View {
     private func avatarsRow(_ type: UserType) -> some View {
         LabeledContent {
             HStack(spacing: -10) {
-                ForEach(company.getAllAvatarsOf(type).prefix(10), id: \.self) { item in
-                    avatar(item.first!.value)
+                ForEach(self.company.getAllAvatarsOf(type).prefix(10), id: \.self) { item in
+                    self.avatar(item.first!.value)
                 }
-                if company.getAllAvatarsOf(type).count > 10 {
-                    let remainder: Int = company.getAllAvatarsOf(type).count - 10
-                    remainingProfiles(remainder)
+                if self.company.getAllAvatarsOf(type).count > 10 {
+                    let remainder: Int = self.company.getAllAvatarsOf(type).count - 10
+                    self.remainingProfiles(remainder)
                 }
                 Spacer()
             }
             .frame(minWidth: 320, maxWidth: 320)
         } label: {
             Text(
-                "Profils \(type == .teacher ? "accompagnants" : "utilisateurs") (\(company.getAllAvatarsOf(type).count))"
+                "Profils \(type == .teacher ? "accompagnants" : "utilisateurs") (\(self.company.getAllAvatarsOf(type).count))"
             )
             .foregroundColor(DesignKitAsset.Colors.lekaDarkGray.swiftUIColor)
         }

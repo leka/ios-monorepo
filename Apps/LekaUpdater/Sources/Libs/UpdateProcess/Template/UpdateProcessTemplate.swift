@@ -6,6 +6,20 @@ import Combine
 import Foundation
 
 class UpdateProcessTemplate: UpdateProcessProtocol {
+    // MARK: Lifecycle
+
+    init() {
+        self.subscribeToStateUpdates()
+    }
+
+    // MARK: Public
+
+    // MARK: - Public variables
+
+    public var currentStage = CurrentValueSubject<UpdateProcessStage, UpdateProcessError>(.initial)
+    public var sendingFileProgression = CurrentValueSubject<Float, Never>(0.0)
+
+    // MARK: Internal
 
     // MARK: - Internal states, events, errors
 
@@ -24,41 +38,34 @@ class UpdateProcessTemplate: UpdateProcessProtocol {
         case notAvailable
     }
 
+    func startProcess() {
+        self.currentInternalState.send(completion: .failure(.notAvailable))
+    }
+
+    // MARK: Private
+
     // MARK: - Private variables
 
     private var cancellables: Set<AnyCancellable> = []
     private var currentInternalState = CurrentValueSubject<UpdateState, UpdateError>(.initial)
 
-    // MARK: - Public variables
-
-    public var currentStage = CurrentValueSubject<UpdateProcessStage, UpdateProcessError>(.initial)
-    public var sendingFileProgression = CurrentValueSubject<Float, Never>(0.0)
-
-    init() {
-        subscribeToStateUpdates()
-    }
-
     private func subscribeToStateUpdates() {
         self.currentInternalState
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: self.convertCompletion, receiveValue: self.convertReceivedValue)
-            .store(in: &cancellables)
+            .store(in: &self.cancellables)
     }
 
     private func convertCompletion(completion: Subscribers.Completion<UpdateError>) {
         switch completion {
             case .finished:
                 self.currentStage.send(completion: .finished)
-            case .failure(let error):
-                self.currentStage.send(completion: .failure(.updateProcessNotAvailable))  // only available error
+            case let .failure(error):
+                self.currentStage.send(completion: .failure(.updateProcessNotAvailable)) // only available error
         }
     }
 
-    private func convertReceivedValue(state: UpdateState) {
-        self.currentStage.send(.initial)  // only available state
-    }
-
-    func startProcess() {
-        currentInternalState.send(completion: .failure(.notAvailable))
+    private func convertReceivedValue(state _: UpdateState) {
+        self.currentStage.send(.initial) // only available state
     }
 }

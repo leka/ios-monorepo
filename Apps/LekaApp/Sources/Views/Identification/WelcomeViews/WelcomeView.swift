@@ -5,7 +5,10 @@
 import DesignKit
 import SwiftUI
 
+// MARK: - WelcomeView
+
 struct WelcomeView: View {
+    // MARK: Internal
 
     @EnvironmentObject var company: CompanyViewModel
     @EnvironmentObject var viewRouter: ViewRouter
@@ -17,7 +20,7 @@ struct WelcomeView: View {
                 DesignKitAsset.Colors.lekaLightBlue.swiftUIColor.ignoresSafeArea()
 
                 VStack(spacing: 30) {
-                    logoLeka
+                    self.logoLeka
 
                     NavigationLink("Créer un compte") {
                         SignupView()
@@ -34,11 +37,13 @@ struct WelcomeView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    skipButton
+                    self.skipButton
                 }
             }
         }
     }
+
+    // MARK: Private
 
     private var logoLeka: some View {
         Image(
@@ -54,17 +59,20 @@ struct WelcomeView: View {
     private var skipButton: some View {
         Button(
             action: {
-                company.setupDiscoveryCompany()
-                viewRouter.currentPage = .home
+                self.company.setupDiscoveryCompany()
+                self.viewRouter.currentPage = .home
             },
             label: {
                 HStack(spacing: 4) {
                     Text("Passer cette étape")
                     Image(systemName: "chevron.right")
                 }
-            })
+            }
+        )
     }
 }
+
+// MARK: - WelcomeView_Previews
 
 struct WelcomeView_Previews: PreviewProvider {
     static var previews: some View {

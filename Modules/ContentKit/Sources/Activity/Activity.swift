@@ -6,19 +6,7 @@ import Foundation
 import Yams
 
 public struct Activity: Codable, Identifiable {
-    public let id: String
-    public let name: String
-    public let description: String
-    public let image: String
-    public let shuffleExercises: Bool
-    public let shuffleSequences: Bool
-    public var sequence: [Exercise.Sequence]
-
-    private enum CodingKeys: String, CodingKey {
-        case id, name, description, image, sequence
-        case shuffleExercises = "shuffle_exercises"
-        case shuffleSequences = "shuffle_sequences"
-    }
+    // MARK: Lifecycle
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
@@ -31,5 +19,27 @@ public struct Activity: Codable, Identifiable {
 
         self.shuffleExercises = try container.decodeIfPresent(Bool.self, forKey: .shuffleExercises) ?? false
         self.shuffleSequences = try container.decodeIfPresent(Bool.self, forKey: .shuffleSequences) ?? false
+    }
+
+    // MARK: Public
+
+    public let id: String
+    public let name: String
+    public let description: String
+    public let image: String
+    public let shuffleExercises: Bool
+    public let shuffleSequences: Bool
+    public var sequence: [Exercise.Sequence]
+
+    // MARK: Private
+
+    private enum CodingKeys: String, CodingKey {
+        case id
+        case name
+        case description
+        case image
+        case sequence
+        case shuffleExercises = "shuffle_exercises"
+        case shuffleSequences = "shuffle_sequences"
     }
 }

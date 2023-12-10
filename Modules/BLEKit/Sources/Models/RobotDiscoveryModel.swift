@@ -4,18 +4,10 @@
 
 import CombineCoreBluetooth
 
+// MARK: - RobotDiscoveryModel
+
 public struct RobotDiscoveryModel: Identifiable {
-
-    // MARK: - Public variables
-
-    public let robotPeripheral: RobotPeripheral!
-    public let rssi: Double?
-
-    public let id: UUID
-    public let name: String
-    public let isCharging: Bool
-    public let battery: Int
-    public let osVersion: String
+    // MARK: Lifecycle
 
     // MARK: - Public functions
 
@@ -39,24 +31,36 @@ public struct RobotDiscoveryModel: Identifiable {
         self.osVersion = computeVersion(version: advertisingData.osVersion, name: advertisingData.name)
     }
 
+    // MARK: Public
+
+    // MARK: - Public variables
+
+    public let robotPeripheral: RobotPeripheral!
+    public let rssi: Double?
+
+    public let id: UUID
+    public let name: String
+    public let isCharging: Bool
+    public let battery: Int
+    public let osVersion: String
 }
 
-extension RobotDiscoveryModel: Equatable {
+// MARK: Equatable
 
+extension RobotDiscoveryModel: Equatable {
     public static func == (lhs: RobotDiscoveryModel, rhs: RobotDiscoveryModel) -> Bool {
         lhs.id == rhs.id
     }
-
 }
 
 private func computeVersion(version: String?, name: String) -> String {
-    if let version = version {
+    if let version {
         return "\(version)"
     }
 
     if name == "Leka" {
         return "1.0.0"
-    } else if name.contains("LK-") && name.contains("xx") {
+    } else if name.contains("LK-"), name.contains("xx") {
         return "1.1.0"
     } else if name.contains("LK-") {
         return "1.2.0"

@@ -5,48 +5,53 @@
 import BLEKit
 import SwiftUI
 
+// MARK: - NoFeedback_ButtonStyle
+
 struct NoFeedback_ButtonStyle: ButtonStyle {
     func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
     }
 }
 
+// MARK: - BotStore
+
 struct BotStore: View {
+    // MARK: Internal
+
     @EnvironmentObject var bleManager: BLEManager
     @EnvironmentObject var robot: Robot
     @ObservedObject var botVM: BotViewModel
 
     var body: some View {
-
         Group {
-            if bleManager.peripherals.count < 1 {
-                searchInvite
-            } else if 1...3 ~= bleManager.peripherals.count {
+            if self.bleManager.peripherals.count < 1 {
+                self.searchInvite
+            } else if 1...3 ~= self.bleManager.peripherals.count {
                 HStack(spacing: 160) {
                     Spacer()
-                    availableBots
+                    self.availableBots
                     Spacer()
                 }
                 .onTapGesture {
-                    botVM.currentlySelectedBotIndex = nil
+                    self.botVM.currentlySelectedBotIndex = nil
                 }
             } else {
                 let rows = Array(repeating: GridItem(), count: 2)
                 ScrollViewReader { proxy in
                     ScrollView(.horizontal) {
                         LazyHGrid(rows: rows, spacing: 200) {
-                            availableBots
+                            self.availableBots
                         }
                     }
                     .onTapGesture {
-                        botVM.currentlySelectedBotIndex = nil
+                        self.botVM.currentlySelectedBotIndex = nil
                     }
                     ._safeAreaInsets(EdgeInsets(top: 0, leading: 110, bottom: 0, trailing: 80))
                     .onAppear {
-                        guard botVM.currentlyConnectedBotIndex != nil else {
+                        guard self.botVM.currentlyConnectedBotIndex != nil else {
                             return
                         }
-                        withAnimation { proxy.scrollTo(botVM.currentlyConnectedBotIndex, anchor: .center) }
+                        withAnimation { proxy.scrollTo(self.botVM.currentlyConnectedBotIndex, anchor: .center) }
                     }
                 }
             }
@@ -54,22 +59,23 @@ struct BotStore: View {
         .frame(height: 500)
     }
 
+    // MARK: Private
+
     private var availableBots: some View {
-        ForEach(0..<bleManager.peripherals.count, id: \.self) { item in
+        ForEach(0..<self.bleManager.peripherals.count, id: \.self) { item in
             Button {
-                botVM.currentlySelectedBotIndex = item
+                self.botVM.currentlySelectedBotIndex = item
             } label: {
                 if let advertisementData = AdvertisingData(bleManager.peripherals[item].advertisementData) {
                     BotFaceView(
-                        isSelected: .constant(botVM.currentlySelectedBotIndex == item),
-                        isConnected: .constant(botVM.currentlyConnectedBotIndex == item),
+                        isSelected: .constant(self.botVM.currentlySelectedBotIndex == item),
+                        isConnected: .constant(self.botVM.currentlyConnectedBotIndex == item),
                         name: .constant(advertisementData.name),
                         battery: .constant(advertisementData.battery),
                         isCharging: .constant(advertisementData.isCharging),
                         osVersion: .constant(advertisementData.osVersion)
                     )
                 }
-
             }
             .buttonStyle(NoFeedback_ButtonStyle())
             .id(item)

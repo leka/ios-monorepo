@@ -5,6 +5,8 @@
 import SwiftUI
 
 struct LedZoneSelectorView: View {
+    // MARK: Internal
+
     let displayMode: RemoteStandard.DisplayMode
 
     var body: some View {
@@ -23,14 +25,16 @@ struct LedZoneSelectorView: View {
             }
             .padding(20)
 
-            beltSectionButtons
-            earsSectionButtons
+            self.beltSectionButtons
+            self.earsSectionButtons
         }
     }
 
+    // MARK: Private
+
     private var earsSectionButtons: some View {
         HStack(spacing: 50) {
-            switch displayMode {
+            switch self.displayMode {
                 case .fullBelt:
                     EarButton(selectedEar: .full(.ears, in: .blue))
                 case .twoHalves:
@@ -45,7 +49,7 @@ struct LedZoneSelectorView: View {
 
     private var beltSectionButtons: some View {
         ZStack {
-            switch displayMode {
+            switch self.displayMode {
                 case .fullBelt:
                     BeltSectionButton(section: .full(.belt, in: .red))
                 case .twoHalves:

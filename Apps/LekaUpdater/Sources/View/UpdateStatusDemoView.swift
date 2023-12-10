@@ -5,23 +5,31 @@
 import Combine
 import SwiftUI
 
+// MARK: - UpdateStatusDemoViewModel
+
 class UpdateStatusDemoViewModel: ObservableObject {
-    private var updateProcessController: UpdateProcessController
-
-    @Published public var state = ""
-    @Published public var error: String = ""
-
-    private var cancellables: Set<AnyCancellable> = []
+    // MARK: Lifecycle
 
     init() {
         self.updateProcessController = UpdateProcessController()
 
-        subscribeToStateUpdates()
+        self.subscribeToStateUpdates()
     }
 
+    // MARK: Public
+
+    @Published public var state = ""
+    @Published public var error: String = ""
+
     public func startUpdate() {
-        updateProcessController.startUpdate()
+        self.updateProcessController.startUpdate()
     }
+
+    // MARK: Private
+
+    private var updateProcessController: UpdateProcessController
+
+    private var cancellables: Set<AnyCancellable> = []
 
     private func subscribeToStateUpdates() {
         self.updateProcessController.currentStage
@@ -30,7 +38,7 @@ class UpdateStatusDemoViewModel: ObservableObject {
                 switch completion {
                     case .finished:
                         self.state = "Votre robot est maintenant à jour!"
-                    case .failure(let error):
+                    case let .failure(error):
                         self.state = "Oops, something wrong happened"
 
                         switch error {
@@ -54,12 +62,14 @@ class UpdateStatusDemoViewModel: ObservableObject {
                         self.state = "installing update"
                 }
             }
-            .store(in: &cancellables)
+            .store(in: &self.cancellables)
     }
 }
 
+// MARK: - UpdateStatusDemoView
+
 struct UpdateStatusDemoView: View {
-    @StateObject private var viewModel = UpdateStatusDemoViewModel()
+    // MARK: Internal
 
     var body: some View {
         VStack {
@@ -72,17 +82,17 @@ struct UpdateStatusDemoView: View {
 
             VStack {
                 VStack {
-                    Text(verbatim: "User state is: \(viewModel.state)")
+                    Text(verbatim: "User state is: \(self.viewModel.state)")
                         .font(.title2)
                         .bold()
 
-                    Button(action: viewModel.startUpdate) {
+                    Button(action: self.viewModel.startUpdate) {
                         Text(verbatim: "Start Update")
                     }
 
-                    Text(verbatim: "Error: \(viewModel.error)")
+                    Text(verbatim: "Error: \(self.viewModel.error)")
                         .foregroundColor(.red)
-                        .opacity(viewModel.error.isEmpty ? 0.0 : 1.0)
+                        .opacity(self.viewModel.error.isEmpty ? 0.0 : 1.0)
                 }
                 .padding()
             }
@@ -90,7 +100,13 @@ struct UpdateStatusDemoView: View {
             Spacer()
         }
     }
+
+    // MARK: Private
+
+    @StateObject private var viewModel = UpdateStatusDemoViewModel()
 }
+
+// MARK: - UpdateStatusDemoView_Previews
 
 struct UpdateStatusDemoView_Previews: PreviewProvider {
     static var previews: some View {

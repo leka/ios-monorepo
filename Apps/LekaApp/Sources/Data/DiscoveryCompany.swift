@@ -6,9 +6,6 @@ import DesignKit
 import SwiftUI
 
 class DiscoveryCompany {
-    let discoveryCompany = Company(
-        mail: "discovery@leka.io", password: "Password1234", teachers: discoveryTeachers, users: discoveryUsers)
-
     static var discoveryTeachers: [Teacher] =
         [
             Teacher(
@@ -131,4 +128,8 @@ class DiscoveryCompany {
                 reinforcer: 3
             ),
         ]
+
+    let discoveryCompany = Company(
+        mail: "discovery@leka.io", password: "Password1234", teachers: discoveryTeachers, users: discoveryUsers
+    )
 }

@@ -6,41 +6,34 @@ import CryptoKit
 import Foundation
 import Version
 
+// MARK: - RobotUpdateStatus
+
 enum RobotUpdateStatus {
     case upToDate
     case needsUpdate
 }
 
-class FirmwareManager: ObservableObject {
-    // swiftlint:disable:next force_cast
-    let currentVersion = Version(Bundle.main.object(forInfoDictionaryKey: "LEKA_OS_VERSION") as! String)!
+// MARK: - FirmwareManager
 
-    public var major: UInt8 {
-        UInt8(currentVersion.major)
-    }
-    public var minor: UInt8 {
-        UInt8(currentVersion.minor)
-    }
-    public var revision: UInt16 {
-        UInt16(currentVersion.patch)
-    }
+class FirmwareManager: ObservableObject {
+    // MARK: Public
 
     @Published public var data = Data()
 
-    public var sha256: String {
-        SHA256.hash(data: data).compactMap { String(format: "%02x", $0) }.joined()
+    public var major: UInt8 {
+        UInt8(self.currentVersion.major)
     }
 
-    func compareWith(version: Version?) -> RobotUpdateStatus {
-        guard let version = version else {
-            return .needsUpdate
-        }
+    public var minor: UInt8 {
+        UInt8(self.currentVersion.minor)
+    }
 
-        if version >= currentVersion {
-            return .upToDate
-        }
+    public var revision: UInt16 {
+        UInt16(self.currentVersion.patch)
+    }
 
-        return .needsUpdate
+    public var sha256: String {
+        SHA256.hash(data: self.data).compactMap { String(format: "%02x", $0) }.joined()
     }
 
     public func load() -> Bool {
@@ -49,10 +42,27 @@ class FirmwareManager: ObservableObject {
         }
 
         do {
-            data = try Data(contentsOf: fileURL)
+            self.data = try Data(contentsOf: fileURL)
             return true
         } catch {
             return false
         }
+    }
+
+    // MARK: Internal
+
+    // swiftlint:disable:next force_cast
+    let currentVersion = Version(Bundle.main.object(forInfoDictionaryKey: "LEKA_OS_VERSION") as! String)!
+
+    func compareWith(version: Version?) -> RobotUpdateStatus {
+        guard let version else {
+            return .needsUpdate
+        }
+
+        if version >= self.currentVersion {
+            return .upToDate
+        }
+
+        return .needsUpdate
     }
 }

@@ -5,7 +5,10 @@
 import DesignKit
 import SwiftUI
 
+// MARK: - InfoTile
+
 struct InfoTile: View {
+    // MARK: Internal
 
     @EnvironmentObject var settings: SettingsViewModel
     @EnvironmentObject var navigationVM: NavigationViewModel
@@ -13,62 +16,68 @@ struct InfoTile: View {
     @EnvironmentObject var metrics: UIMetrics
 
     let data: TileData
-    private var headerColor: Color {
-        data == .discovery
-            ? DesignKitAsset.Colors.lekaOrange.swiftUIColor : DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor
-    }
 
     var body: some View {
         VStack(spacing: 0) {
-            tileHeader
-            tileContent
+            self.tileHeader
+            self.tileContent
             Spacer()
         }
         .frame(height: 266)
         .background(.white)
-        .clipShape(RoundedRectangle(cornerRadius: metrics.tilesRadius, style: .continuous))
+        .clipShape(RoundedRectangle(cornerRadius: self.metrics.tilesRadius, style: .continuous))
+    }
+
+    // MARK: Private
+
+    private var headerColor: Color {
+        self.data == .discovery
+            ? DesignKitAsset.Colors.lekaOrange.swiftUIColor : DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor
     }
 
     private var tileHeader: some View {
         ZStack {
-            Text(data.content.title!)
+            Text(self.data.content.title!)
             HStack {
-                switch data {
-                    case .discovery, .curriculums, .activities, .commands:
-                        Image(systemName: data.content.image!)
-                            .font(metrics.reg19)
+                switch self.data {
+                    case .discovery,
+                         .curriculums,
+                         .activities,
+                         .commands:
+                        Image(systemName: self.data.content.image!)
+                            .font(self.metrics.reg19)
                     default:
-                        Image(data.content.image!)
+                        Image(self.data.content.image!)
                             .resizable()
                             .renderingMode(.template)
                             .aspectRatio(contentMode: .fit)
                 }
                 Spacer()
-                if data != .discovery && settings.companyIsConnected {
-                    closeButton
+                if self.data != .discovery, self.settings.companyIsConnected {
+                    self.closeButton
                 }
             }
             .padding(.vertical, 6)
             .padding(.horizontal, 20)
         }
-        .font(metrics.semi17)
+        .font(self.metrics.semi17)
         .frame(height: 44)
         .foregroundColor(.white)
-        .background(headerColor)
+        .background(self.headerColor)
     }
 
     private var tileContent: some View {
         VStack {
             Spacer()
-            Text(data.content.subtitle!)
-                .font(metrics.reg17)
-                .foregroundColor(headerColor)
+            Text(self.data.content.subtitle!)
+                .font(self.metrics.reg17)
+                .foregroundColor(self.headerColor)
             Spacer()
-            Text(data.content.message!)
-                .font(metrics.reg13)
+            Text(self.data.content.message!)
+                .font(self.metrics.reg13)
             Spacer()
-            if data == .discovery {
-                connectButton
+            if self.data == .discovery {
+                self.connectButton
             }
         }
         .multilineTextAlignment(.center)
@@ -78,27 +87,30 @@ struct InfoTile: View {
 
     private var closeButton: some View {
         Button {
-            navigationVM.updateShowInfo()
+            self.navigationVM.updateShowInfo()
         } label: {
             Image(systemName: "multiply")
-                .font(metrics.semi20)
+                .font(self.metrics.semi20)
         }
     }
 
     private var connectButton: some View {
         Button {
-            viewRouter.currentPage = .welcome
+            self.viewRouter.currentPage = .welcome
         } label: {
-            Text(data.content.callToActionLabel!)
+            Text(self.data.content.callToActionLabel!)
         }
         .padding(20)
         .buttonStyle(
             BorderedCapsule_NoFeedback_ButtonStyle(
-                font: metrics.reg17,
+                font: self.metrics.reg17,
                 color: DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor,
-                width: 300))
+                width: 300
+            ))
     }
 }
+
+// MARK: - InfoTile_Previews
 
 struct InfoTile_Previews: PreviewProvider {
     static var previews: some View {

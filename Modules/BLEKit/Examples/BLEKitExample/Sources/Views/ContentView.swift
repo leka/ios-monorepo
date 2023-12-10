@@ -5,25 +5,26 @@
 import BLEKit
 import SwiftUI
 
+// MARK: - ContentView
+
 struct ContentView: View {
-
-    // MARK: - Environment variables
-
-    @StateObject private var robotListViewModel: RobotListViewModel
+    // MARK: Lifecycle
 
     // MARK: - Public functions
 
     init(bleManager: BLEManager) {
         // ? StateObject dependency injection pattern as described here:
         // https://developer.apple.com/documentation/swiftui/stateobject#Initialize-state-objects-using-external-data
-        self._robotListViewModel = StateObject(wrappedValue: RobotListViewModel(bleManager: bleManager))
+        _robotListViewModel = StateObject(wrappedValue: RobotListViewModel(bleManager: bleManager))
     }
+
+    // MARK: Internal
 
     // MARK: - Views
 
     var body: some View {
         VStack {
-            List(robotListViewModel.robotDiscoveries) { robotDiscovery in
+            List(self.robotListViewModel.robotDiscoveries) { robotDiscovery in
                 RobotDiscoveryView(discovery: robotDiscovery)
                     .contentShape(Rectangle())
                     .onTapGesture {
@@ -37,7 +38,7 @@ struct ContentView: View {
                         }
                     }
             }
-            .disabled(robotListViewModel.connectedRobotPeripheral != nil)
+            .disabled(self.robotListViewModel.connectedRobotPeripheral != nil)
             .listStyle(.plain)
             .padding()
 
@@ -50,16 +51,23 @@ struct ContentView: View {
                 SendDataButton()
             }
             .padding(30)
-
         }
         .navigationTitle("BLEKit Example App")
-        .environmentObject(robotListViewModel)
+        .environmentObject(self.robotListViewModel)
     }
 
+    // MARK: Private
+
+    // MARK: - Environment variables
+
+    @StateObject private var robotListViewModel: RobotListViewModel
 }
+
+// MARK: - ContentView_Previews
 
 struct ContentView_Previews: PreviewProvider {
     static let bleManager = BLEManager.live()
+
     static var previews: some View {
         ContentView(bleManager: bleManager)
     }

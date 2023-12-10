@@ -9,8 +9,14 @@ import RobotKit
 import SwiftUI
 
 class RequirementsViewModel: ObservableObject {
+    // MARK: Lifecycle
 
-    private var cancellables: Set<AnyCancellable> = []
+    init() {
+        self.subscribeToRobotBatteryUpdates()
+        self.subscribeToRobotIsChargingUpdates()
+    }
+
+    // MARK: Internal
 
     let requirementsInstructionsText = l10n.update.requirements.instructionsText
 
@@ -26,19 +32,19 @@ class RequirementsViewModel: ObservableObject {
     @Published var robotIsReadyToUpdate = false
     @Published var robotIsNotReadyToUpdate = true
 
-    init() {
-        subscribeToRobotBatteryUpdates()
-        subscribeToRobotIsChargingUpdates()
-    }
+    // MARK: Private
+
+    private var cancellables: Set<AnyCancellable> = []
 
     private func subscribeToRobotBatteryUpdates() {
         Robot.shared.battery
             .receive(on: DispatchQueue.main)
             .sink { robotBattery in
                 self.updateRobotIsReadyToUpdate(
-                    robotBattery: robotBattery, robotIsCharging: Robot.shared.isCharging.value)
+                    robotBattery: robotBattery, robotIsCharging: Robot.shared.isCharging.value
+                )
             }
-            .store(in: &cancellables)
+            .store(in: &self.cancellables)
     }
 
     private func subscribeToRobotIsChargingUpdates() {
@@ -46,16 +52,16 @@ class RequirementsViewModel: ObservableObject {
             .receive(on: DispatchQueue.main)
             .sink { robotIsCharging in
                 self.updateRobotIsReadyToUpdate(
-                    robotBattery: Robot.shared.battery.value, robotIsCharging: robotIsCharging)
+                    robotBattery: Robot.shared.battery.value, robotIsCharging: robotIsCharging
+                )
             }
-            .store(in: &cancellables)
+            .store(in: &self.cancellables)
     }
 
     private func updateRobotIsReadyToUpdate(robotBattery: Int?, robotIsCharging: Bool?) {
         if let battery = robotBattery, let isCharging = robotIsCharging {
-            robotIsReadyToUpdate = battery >= 30 && isCharging
-            robotIsNotReadyToUpdate = !robotIsReadyToUpdate
+            self.robotIsReadyToUpdate = battery >= 30 && isCharging
+            self.robotIsNotReadyToUpdate = !self.robotIsReadyToUpdate
         }
     }
-
 }

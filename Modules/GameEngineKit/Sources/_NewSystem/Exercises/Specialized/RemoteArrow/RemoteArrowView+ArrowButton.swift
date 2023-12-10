@@ -8,35 +8,38 @@ import SwiftUI
 // swiftlint:disable identifier_name nesting
 
 extension RemoteArrowView {
-
     struct ArrowButton: View {
-
         enum Arrow {
-            case up, clockwise, down, counterclockwise
+            case up
+            case clockwise
+            case down
+            case counterclockwise
+
+            // MARK: Internal
 
             var name: String {
                 switch self {
                     case .up:
-                        return "arrow.up"
+                        "arrow.up"
                     case .clockwise:
-                        return "arrow.clockwise"
+                        "arrow.clockwise"
                     case .down:
-                        return "arrow.down"
+                        "arrow.down"
                     case .counterclockwise:
-                        return "arrow.counterclockwise"
+                        "arrow.counterclockwise"
                 }
             }
 
             var color: Robot.Color {
                 switch self {
                     case .up:
-                        return .blue
+                        .blue
                     case .clockwise:
-                        return .red
+                        .red
                     case .down:
-                        return .green
+                        .green
                     case .counterclockwise:
-                        return .yellow
+                        .yellow
                 }
             }
         }
@@ -52,27 +55,26 @@ extension RemoteArrowView {
                 .fill(.white)
                 .frame(width: 200, height: 200)
                 .overlay {
-                    Image(systemName: arrow.name)
+                    Image(systemName: self.arrow.name)
                         .resizable()
-                        .foregroundColor(arrow.color.screen)
+                        .foregroundColor(self.arrow.color.screen)
                         .frame(width: 80, height: 100)
                 }
                 .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: 0)
-                .scaleEffect(isPressed ? 0.95 : 1.0)
+                .scaleEffect(self.isPressed ? 0.95 : 1.0)
                 .gesture(
                     DragGesture(minimumDistance: 0)
                         .onChanged { _ in
-                            onChanged()
-                            isPressed = true
+                            self.onChanged()
+                            self.isPressed = true
                         }
                         .onEnded { _ in
-                            onReleased()
-                            isPressed = false
+                            self.onReleased()
+                            self.isPressed = false
                         }
                 )
         }
     }
-
 }
 
 #Preview {
