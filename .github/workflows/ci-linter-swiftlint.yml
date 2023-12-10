@@ -14,7 +14,7 @@ concurrency:
 
 jobs:
   swift_format:
-    name: lint
+    name: swiftlint
     runs-on: [self-hosted, iOS]
 
     steps:
