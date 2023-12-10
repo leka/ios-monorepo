@@ -31,4 +31,4 @@ jobs:
 
           swiftformat --version
 
-          swiftformat --lint .
+          swiftformat --lint --reporter github-actions-log .
