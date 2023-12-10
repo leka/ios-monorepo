@@ -17,7 +17,7 @@ let project = Project.module(
     settings: .settings(base: [
         "OTHER_LDFLAGS": [
             "-ObjC"
-        ],
+        ]
     ]),
     examples: [
         ModuleExample(
