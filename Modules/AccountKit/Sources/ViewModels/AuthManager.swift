@@ -114,16 +114,16 @@ class AuthManager: ObservableObject {
 
     func deleteAccount() {
         guard let currentUser = auth.currentUser else {
-            print("No company signed-in currently.")
+            log.info("No company signed-in currently.")
             return
         }
         currentUser.delete { [weak self] error in
             if let error {
-                print("Error deleting company: \(error.localizedDescription)")
+                log.error("Error deleting company: \(error.localizedDescription)")
                 self?.errorMessage = "There was an error deleting your account. Please try again later"
             } else {
                 self?.companyAuthenticationState = .loggedOut
-                print("Account deleted successfully.")
+                log.info("Account deleted successfully.")
             }
         }
     }
@@ -165,7 +165,7 @@ class AuthManager: ObservableObject {
     private func handleUserUpdate(operation: FirebaseAuthenticationOperation) -> (AuthDataResult) -> Void {
         { [weak self] result in
             self?.companyAuthenticationState = .loggedIn
-            log.notice("🎉 Company \(result.user.uid) \(operation.rawValue) successfully.")
+            log.notice("Company \(result.user.uid) \(operation.rawValue) successfully. 🎉")
             if case .signIn = operation {
                 self?.checkAuthenticationStatus()
             }
