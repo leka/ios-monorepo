@@ -20,7 +20,7 @@ let dependencies = Dependencies(
         ),
         .remote(
             url: "https://github.com/apple/swift-argument-parser",
-            requirement: .exact("1.2.3")
+            requirement: .exact("1.3.0")
         ),
         .remote(
             url: "https://github.com/StarryInternet/CombineCoreBluetooth",
