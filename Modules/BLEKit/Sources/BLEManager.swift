@@ -18,9 +18,14 @@ public class BLEManager {
 
     // MARK: Public
 
-    public static var shared: BLEManager = .init(
-        centralManager: .live(
-            ManagerCreationOptions(showPowerAlert: true, restoreIdentifier: "io.leka.module.BLEKit.Manager.live")))
+    #if targetEnvironment(simulator)
+        public static var shared: BLEManager = .init(centralManager: .live())
+    #else
+        public static var shared: BLEManager = .init(
+            centralManager: .live(
+                ManagerCreationOptions(showPowerAlert: true, restoreIdentifier: "io.leka.module.BLEKit.Manager.live"))
+        )
+    #endif
 
     // MARK: - @Published variables
 
