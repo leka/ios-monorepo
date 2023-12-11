@@ -31,12 +31,10 @@ jobs:
 
           swiftlint --version
 
-          git diff --name-status origin/main          \
-            | grep -E "^A|^M" | sed "s/^[AM]\t//g"    \
-            | grep -E "\.swift\$$"                    \
+          git diff origin/main --name-only --diff-filter=AMCR \
+            | grep -E "\.swift\$$"                            \
             || echo "No files added nor modified!"
 
-          git diff --name-status origin/main          \
-            | grep -E "^A|^M" | sed "s/^[AM]\t//g"    \
-            | grep -E "\.swift\$$"                    \
-            | xargs --no-run-if-empty swiftlint lint --quiet --strict --reporter github-actions-logging
+          git diff origin/main --name-only --diff-filter=AMCR \
+            | grep -E "\.swift\$$"                            \
+            | xargs --no-run-if-empty swiftlint lint --quiet --reporter github-actions-logging
