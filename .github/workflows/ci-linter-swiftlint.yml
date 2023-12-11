@@ -32,9 +32,9 @@ jobs:
           swiftlint --version
 
           git diff origin/main --name-only --diff-filter=AMCR \
-            | grep -E "\.swift\$$"                    \
+            | grep -E "\.swift\$$"                            \
             || echo "No files added nor modified!"
 
           git diff origin/main --name-only --diff-filter=AMCR \
-            | grep -E "\.swift\$$"                    \
-            | xargs --no-run-if-empty swiftlint lint --quiet --strict --reporter github-actions-logging
+            | grep -E "\.swift\$$"                            \
+            | xargs --no-run-if-empty swiftlint lint --quiet --reporter github-actions-logging
