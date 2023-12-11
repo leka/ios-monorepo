@@ -15,7 +15,7 @@ private enum Action {
     // MARK: Public
 
     public func icon(_ stopButtonDisabled: Bool) -> some View {
-        switch self {
+        let view = switch self {
             case .play:
                 Image(systemName: "play.circle.fill")
                     .foregroundStyle(DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor)
@@ -33,6 +33,8 @@ private enum Action {
                     )
                     .font(.system(size: 150))
         }
+
+        return view
     }
 
     public func text() -> String {
