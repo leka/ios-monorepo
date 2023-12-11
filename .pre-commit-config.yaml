@@ -19,7 +19,7 @@ repos:
     rev: 0.54.0
     hooks:
       - id: swiftlint
-        entry: swiftlint lint --fix
+        entry: swiftlint
 
   - repo: https://github.com/nicklockwood/SwiftFormat
     rev: 0.52.11
