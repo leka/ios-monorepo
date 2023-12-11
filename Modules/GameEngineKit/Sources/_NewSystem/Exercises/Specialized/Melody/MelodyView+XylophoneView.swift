@@ -26,38 +26,47 @@ public extension MelodyView {
         // MARK: Public
 
         public var body: some View {
-            VStack(spacing: 50) {
-                ContinuousProgressBar(progress: self.viewModel.progress)
-                    .animation(.easeOut, value: self.viewModel.progress)
-                    .padding(.horizontal)
+            ZStack {
+                VStack(spacing: 50) {
+                    ContinuousProgressBar(progress: self.viewModel.progress)
+                        .animation(.easeOut, value: self.viewModel.progress)
+                        .padding(.horizontal)
 
-                HStack(spacing: self.tilesSpacing) {
-                    ForEach(self.scale.enumerated().map { $0 }, id: \.0) { index, note in
-                        Button {
-                            self.viewModel.onTileTapped(noteNumber: note)
-                        } label: {
-                            self.viewModel.tileColors[index].screen
+                    HStack(spacing: self.tilesSpacing) {
+                        ForEach(self.scale.enumerated().map { $0 }, id: \.0) { index, note in
+                            Button {
+                                self.viewModel.onTileTapped(noteNumber: note)
+                            } label: {
+                                self.viewModel.tileColors[index].screen
+                            }
+                            .buttonStyle(
+                                XylophoneTileButtonStyle(
+                                    index: index,
+                                    tileNumber: self.scale.count,
+                                    tileWidth: 100,
+                                    isTappable: self.viewModel.scale.contains(note)
+                                )
+                            )
+                            .disabled(self.viewModel.isNotTappable)
+                            .modifier(
+                                KeyboardModeModifier(
+                                    isPartial: self.keyboard == .partial, isDisabled: !self.viewModel.scale.contains(note)
+                                )
+                            )
+                            .compositingGroup()
                         }
-                        .buttonStyle(
-                            XylophoneTileButtonStyle(
-                                index: index,
-                                tileNumber: self.scale.count,
-                                tileWidth: 100,
-                                isTappable: self.viewModel.scale.contains(note)
-                            )
-                        )
-                        .disabled(self.viewModel.isNotTappable)
-                        .modifier(
-                            KeyboardModeModifier(
-                                isPartial: self.keyboard == .partial, scaleNote: note, viewModel: self.viewModel
-                            )
-                        )
-                        .compositingGroup()
+                    }
+                }
+                .blur(radius: self.viewModel.showModal ? 10 : 0)
+
+                if self.viewModel.showModal {
+                    PlayerButton(showModal: self.$viewModel.showModal) {
+                        self.viewModel.playMIDIRecording()
                     }
                 }
             }
             .onAppear {
-                self.viewModel.playMIDIRecording()
+                self.viewModel.showModal = true
             }
             .onDisappear {
                 self.viewModel.setMIDIRecording(
@@ -71,15 +80,14 @@ public extension MelodyView {
         struct KeyboardModeModifier: ViewModifier {
             @Environment(\.colorScheme) var colorScheme
             var isPartial: Bool
-            var scaleNote: MIDINoteNumber
-            var viewModel: ViewModel
+            var isDisabled: Bool
 
             func body(content: Content) -> some View {
                 if self.isPartial {
                     content
-                        .disabled(!self.viewModel.scale.contains(self.scaleNote))
+                        .disabled(self.isDisabled)
                         .overlay {
-                            if !self.viewModel.scale.contains(self.scaleNote) {
+                            if self.isDisabled {
                                 RoundedRectangle(cornerRadius: 7)
                                     .fill(self.colorScheme == .light ? Color.white.opacity(0.9) : Color.black.opacity(0.85))
                             }
