@@ -10,6 +10,7 @@ enum Category: Hashable, Identifiable, CaseIterable {
     case home
 
     case activities
+    case workInProgress
 
     case designSystemAppleFonts
     case designSystemAppleButtons

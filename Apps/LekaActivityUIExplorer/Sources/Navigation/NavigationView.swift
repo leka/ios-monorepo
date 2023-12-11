@@ -54,6 +54,10 @@ struct NavigationView: View {
                     self.title = "Activities"
                     self.systemImage = "dice"
 
+                case .workInProgress:
+                    self.title = "Work in Progress"
+                    self.systemImage = "wrench.adjustable.fill"
+
                 case .designSystemAppleFonts:
                     self.title = "Apple Fonts"
                     self.systemImage = "textformat"
@@ -148,6 +152,11 @@ struct NavigationView: View {
 
                     case .activities:
                         GEKNewSystemView()
+
+                    case .workInProgress:
+                        Text("Work in Progress!")
+                            .font(.largeTitle)
+                            .bold()
 
                     case .designSystemAppleFonts:
                         DesignSystemApple.FontsView()
