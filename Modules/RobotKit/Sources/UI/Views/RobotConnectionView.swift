@@ -43,7 +43,7 @@ public struct RobotConnectionView: View {
                 .padding(.top, 15)
                 .padding(.bottom, 40)
             }
-            .background(BackgroundView())
+            .background(.lkBackground)
             .onAppear {
                 self.viewModel.scanForRobots()
             }
@@ -64,15 +64,6 @@ public struct RobotConnectionView: View {
     }
 
     // MARK: Internal
-
-    struct BackgroundView: View {
-        var body: some View {
-            DesignKitAsset.Images.interfaceCloud.swiftUIImage
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .ignoresSafeArea(.all)
-        }
-    }
 
     @StateObject var viewModel: RobotConnectionViewModel
 
