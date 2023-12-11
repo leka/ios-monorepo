@@ -56,7 +56,7 @@ struct NavigationView: View {
 
                 case .workInProgress:
                     self.title = "Work in Progress"
-                    self.systemImage = "wrench.adjustable.fill"
+                    self.systemImage = "wrench.adjustable"
 
                 case .designSystemAppleFonts:
                     self.title = "Apple Fonts"
@@ -116,6 +116,7 @@ struct NavigationView: View {
 
                 Section("Activities") {
                     CategoryLabel(category: .activities)
+                    CategoryLabel(category: .workInProgress)
                 }
 
                 Section("Design System (Apple)", isExpanded: self.$viewModel.isDesignSystemAppleExpanded) {
@@ -154,9 +155,7 @@ struct NavigationView: View {
                         GEKNewSystemView()
 
                     case .workInProgress:
-                        Text("Work in Progress!")
-                            .font(.largeTitle)
-                            .bold()
+                        WIPListView()
 
                     case .designSystemAppleFonts:
                         DesignSystemApple.FontsView()
