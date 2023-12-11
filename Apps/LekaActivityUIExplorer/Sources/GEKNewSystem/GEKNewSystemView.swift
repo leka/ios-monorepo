@@ -61,7 +61,9 @@ struct GEKNewSystemView: View {
                 ActivityView(viewModel: ActivityViewViewModel(activity: activity))
             }
             .buttonStyle(.borderedProminent)
+            .frame(maxWidth: .infinity)
         }
+        .background(.lkBackground)
         .navigationTitle("List of Activities")
     }
 }
