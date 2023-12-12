@@ -35,13 +35,9 @@ struct WIPListView: View {
                 self.currentActivity = nil
             } content: { activity in
                 if activity.name == "Sort images" {
-                    Text("Sort images!")
-                        .font(.largeTitle)
-                        .bold()
+                    DragAndDropToSortImagesActivityView()
                 } else {
-                    Text("Sort colors!")
-                        .font(.largeTitle)
-                        .bold()
+                    DragAndDropToSortColorsActivityView()
                 }
             }
             .buttonStyle(.borderedProminent)
