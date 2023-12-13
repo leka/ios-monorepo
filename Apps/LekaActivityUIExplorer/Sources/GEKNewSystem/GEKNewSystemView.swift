@@ -41,6 +41,7 @@ let kActivities: [Activity] = [
     ContentKit.decodeActivity("activity-xylophone-pentatonic"),
     ContentKit.decodeActivity("activity-xylophone-heptatonic"),
     ContentKit.decodeActivity("activity-melody"),
+    ContentKit.decodeActivity("activity-pairing"),
 ]
 
 // MARK: - GEKNewSystemView
