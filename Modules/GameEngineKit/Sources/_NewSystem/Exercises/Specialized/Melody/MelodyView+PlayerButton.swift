@@ -24,11 +24,9 @@ extension MelodyView {
                     Image(systemName: self.isMelodyPlaying ? "speaker.wave.2.circle" : "play.circle.fill")
                         .resizable()
                         .scaledToFit()
-                        .foregroundStyle(self.isMelodyPlaying ? .gray : .blue)
                         .background {
                             Circle()
                                 .fill(.white)
-                                .frame(width: 290)
                         }
                 }
                 .disabled(self.isMelodyPlaying)
