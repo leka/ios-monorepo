@@ -54,6 +54,10 @@ struct NavigationView: View {
                     self.title = "Activities"
                     self.systemImage = "dice"
 
+                case .experimentations:
+                    self.title = "Experimentation"
+                    self.systemImage = "flask"
+
                 case .designSystemAppleFonts:
                     self.title = "Apple Fonts"
                     self.systemImage = "textformat"
@@ -112,6 +116,7 @@ struct NavigationView: View {
 
                 Section("Activities") {
                     CategoryLabel(category: .activities)
+                    CategoryLabel(category: .experimentations)
                 }
 
                 Section("Design System (Apple)", isExpanded: self.$viewModel.isDesignSystemAppleExpanded) {
@@ -148,6 +153,9 @@ struct NavigationView: View {
 
                     case .activities:
                         GEKNewSystemView()
+
+                    case .experimentations:
+                        ExperimentListView()
 
                     case .designSystemAppleFonts:
                         DesignSystemApple.FontsView()
