@@ -63,7 +63,6 @@ struct GEKNewSystemView: View {
             .buttonStyle(.borderedProminent)
             .frame(maxWidth: .infinity)
         }
-        .background(.lkBackground)
         .navigationTitle("List of Activities")
     }
 }
