@@ -8,6 +8,7 @@
 
 GENERATE_MODULES_AS_FRAMEWORKS_FOR_DEBUG ?= TRUE
 TURN_OFF_LINTERS ?= FALSE
+TEST_FLIGHT_APP_NAME ?= LekaActivityUIExplorer
 
 
 #
@@ -68,3 +69,9 @@ lint:
 	@-swiftlint --quiet --fix && swiftlint --quiet --progress
 	@echo ""
 	@-swiftformat --lint .
+
+ci_test_flight_release:
+	@git checkout release/testflight-beta
+	@git rebase main
+	@git push --force-with-lease
+	@gh pr edit --add-label "fastlane:rbi $(TEST_FLIGHT_APP_NAME)"
