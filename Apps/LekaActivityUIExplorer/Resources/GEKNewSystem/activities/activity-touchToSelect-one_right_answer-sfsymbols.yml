@@ -1,0 +1,44 @@
+# Leka - iOS Monorepo
+# Copyright 2023 APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+id: 326067D8AB7D43EBA157145D3587EB37
+name: Touch To Select - One Right Answer - SF Symbols
+description: L'obejctif est de trouver le bon symbole
+image: activity_color_recognition_1
+sequence:
+  - exercises:
+      - instructions: Touche l'avion
+        interface: touchToSelect
+        gameplay: findTheRightAnswers
+        payload:
+          choices:
+            - value: airplane
+              type: sfsymbol
+              isRightAnswer: true
+
+      - instructions: Touche le chat
+        interface: touchToSelect
+        gameplay: findTheRightAnswers
+        payload:
+          choices:
+            - value: cat
+              type: sfsymbol
+              isRightAnswer: true
+            - value: dog
+              type: sfsymbol
+
+      - instructions: Touche le rond
+        interface: touchToSelect
+        gameplay: findTheRightAnswers
+        payload:
+          choices:
+            - value: circle
+              type: sfsymbol
+              isRightAnswer: true
+            - value: square
+              type: sfsymbol
+            - value: triangle
+              type: sfsymbol
+            - value: rhombus
+              type: sfsymbol

@@ -28,7 +28,6 @@ struct TouchToSelectChoiceView: View {
     var isTappable = true
 
     var body: some View {
-        // TODO(@ladislas): Add text
         Group {
             switch self.choice.type {
                 case .color:
@@ -41,6 +40,14 @@ struct TouchToSelectChoiceView: View {
 
                 case .image:
                     ChoiceImageView(image: self.choice.value, size: self.size, state: self.state)
+                        .overlay(
+                            Circle()
+                                .fill(self.isTappable ? .clear : .white.opacity(0.6))
+                        )
+                        .animation(.easeOut(duration: 0.3), value: self.isTappable)
+
+                case .sfsymbol:
+                    ChoiceSFSymbolView(image: self.choice.value, size: self.size, state: self.state)
                         .overlay(
                             Circle()
                                 .fill(self.isTappable ? .clear : .white.opacity(0.6))
