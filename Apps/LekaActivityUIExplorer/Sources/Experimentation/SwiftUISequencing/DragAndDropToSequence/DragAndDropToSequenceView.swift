@@ -4,9 +4,9 @@
 
 import SwiftUI
 
-// MARK: - DragAndDropToSequence
+// MARK: - DragAndDropToSequenceView
 
-struct DragAndDropToSequence: View {
+struct DragAndDropToSequenceView: View {
     // MARK: Internal
 
     var body: some View {
@@ -183,7 +183,7 @@ struct DragAndDropToSequence: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        DragAndDropToSequence()
+        DragAndDropToSequenceView()
             .previewInterfaceOrientation(.landscapeRight)
     }
 }

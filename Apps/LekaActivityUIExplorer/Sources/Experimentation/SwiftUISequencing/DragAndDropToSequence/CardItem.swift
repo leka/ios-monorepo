@@ -22,7 +22,7 @@ struct CardItem: Codable, Hashable, Transferable {
 }
 
 extension UTType {
-    static let cardItem = UTType(exportedAs: "co.bakedbeats.cardItem")
+    static let cardItem = UTType(exportedAs: "io.leka.apf.cardItem")
 }
 
 // MARK: - MockData
