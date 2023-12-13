@@ -39,65 +39,7 @@ class NavigationViewViewModel: ObservableObject {
 // MARK: - NavigationView
 
 struct NavigationView: View {
-    struct CategoryLabel: View {
-        // MARK: Lifecycle
-
-        init(category: Category) {
-            self.category = category
-
-            switch category {
-                case .home:
-                    self.title = "Home"
-                    self.systemImage = "house"
-
-                case .activities:
-                    self.title = "Activities"
-                    self.systemImage = "dice"
-
-                case .experimentations:
-                    self.title = "Experimentation"
-                    self.systemImage = "flask"
-
-                case .designSystemAppleFonts:
-                    self.title = "Apple Fonts"
-                    self.systemImage = "textformat"
-
-                case .designSystemAppleButtons:
-                    self.title = "Apple Buttons"
-                    self.systemImage = "button.horizontal"
-
-                case .designSystemAppleColorsSwiftUI:
-                    self.title = "Apple Colors SwiftUI"
-                    self.systemImage = "swatchpalette.fill"
-
-                case .designSystemAppleColorsUIKit:
-                    self.title = "Apple Colors UIKit"
-                    self.systemImage = "swatchpalette"
-
-                case .designSystemLekaButtons:
-                    self.title = "Leka Buttons"
-                    self.systemImage = "button.horizontal"
-
-                case .designSystemLekaColorsSwiftUI:
-                    self.title = "Leka Colors SwiftUI"
-                    self.systemImage = "swatchpalette.fill"
-            }
-        }
-
-        // MARK: Internal
-
-        let category: Category
-        let title: String
-        let systemImage: String
-
-        var body: some View {
-            Label(self.title, systemImage: self.systemImage)
-                .tag(self.category)
-        }
-    }
-
-    @Environment(\.colorScheme) var colorScheme
-    @State var preferedColorScheme: ColorScheme = .light
+    @EnvironmentObject var styleManager: StyleManager
 
     @ObservedObject var navigation: Navigation = .shared
     @StateObject var viewModel: NavigationViewViewModel = .init()
@@ -131,13 +73,21 @@ struct NavigationView: View {
                     CategoryLabel(category: .designSystemLekaColorsSwiftUI)
                 }
             }
-            // TODO(@ladislas): remove if not necessary
+            // TODO: (@ladislas) remove if not necessary
             // .disabled(navigation.disableUICompletly)
             .navigationTitle("Categories")
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
-                        self.preferedColorScheme = self.preferedColorScheme == .light ? .dark : .light
+                        self.styleManager.toggleAccentColor()
+                    } label: {
+                        Image(systemName: "eyedropper")
+                    }
+                }
+
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        self.styleManager.toggleColorScheme()
                     } label: {
                         Image(systemName: "circle.lefthalf.filled")
                     }
@@ -180,17 +130,75 @@ struct NavigationView: View {
                 }
             }
         }
-        .preferredColorScheme(self.preferedColorScheme)
-        .onAppear {
-            self.preferedColorScheme = self.colorScheme
-        }
         .fullScreenCover(isPresented: self.$viewModel.isRobotConnectionPresented) {
             RobotConnectionView(viewModel: RobotConnectionViewModel())
         }
     }
 }
 
+// MARK: - CategoryLabel
+
+struct CategoryLabel: View {
+    // MARK: Lifecycle
+
+    init(category: Category) {
+        self.category = category
+
+        switch category {
+            case .home:
+                self.title = "Home"
+                self.systemImage = "house"
+
+            case .activities:
+                self.title = "Activities"
+                self.systemImage = "dice"
+
+            case .experimentations:
+                self.title = "Experimentation"
+                self.systemImage = "flask"
+
+            case .designSystemAppleFonts:
+                self.title = "Apple Fonts"
+                self.systemImage = "textformat"
+
+            case .designSystemAppleButtons:
+                self.title = "Apple Buttons"
+                self.systemImage = "button.horizontal"
+
+            case .designSystemAppleColorsSwiftUI:
+                self.title = "Apple Colors SwiftUI"
+                self.systemImage = "swatchpalette.fill"
+
+            case .designSystemAppleColorsUIKit:
+                self.title = "Apple Colors UIKit"
+                self.systemImage = "swatchpalette"
+
+            case .designSystemLekaButtons:
+                self.title = "Leka Buttons"
+                self.systemImage = "button.horizontal"
+
+            case .designSystemLekaColorsSwiftUI:
+                self.title = "Leka Colors SwiftUI"
+                self.systemImage = "swatchpalette.fill"
+        }
+    }
+
+    // MARK: Internal
+
+    let category: Category
+    let title: String
+    let systemImage: String
+
+    var body: some View {
+        Label(self.title, systemImage: self.systemImage)
+            .tag(self.category)
+    }
+}
+
+// MARK: - FormView_Previews
+
 #Preview {
     NavigationView()
         .previewInterfaceOrientation(.landscapeLeft)
+        .environmentObject(StyleManager())
 }

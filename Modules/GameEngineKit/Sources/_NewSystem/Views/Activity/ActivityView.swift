@@ -35,6 +35,7 @@ public struct ActivityView: View {
 
                 self.continueButton
             }
+            .background(.lkBackground)
             .ignoresSafeArea(.all, edges: .bottom)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
