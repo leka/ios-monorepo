@@ -5,27 +5,27 @@
 import Foundation
 import SwiftUI
 
-// MARK: - WorkInProgress
+// MARK: - Experiment
 
-struct WorkInProgress: Identifiable {
+struct Experiment: Identifiable {
     var id = UUID().uuidString
     var name: String = ""
 }
 
-// MARK: - WIPListView
+// MARK: - ExperimentListView
 
-struct WIPListView: View {
-    @State var currentActivity: WorkInProgress?
+struct ExperimentListView: View {
+    @State var currentActivity: Experiment?
 
-    let WIPActivities: [WorkInProgress] = [
-        WorkInProgress(name: "Sort images"),
-        WorkInProgress(name: "Sort colors"),
+    let kExperiments: [Experiment] = [
+        Experiment(name: "Sort images"),
+        Experiment(name: "Sort colors"),
     ]
 
     var body: some View {
         ScrollView {
             VStack(spacing: 30) {
-                ForEach(self.WIPActivities, id: \.id) { activity in
+                ForEach(self.kExperiments, id: \.id) { activity in
                     Button(activity.name) {
                         self.currentActivity = activity
                     }
@@ -42,10 +42,10 @@ struct WIPListView: View {
             }
             .buttonStyle(.borderedProminent)
         }
-        .navigationTitle("List of Works in Progress")
+        .navigationTitle("Experimentation")
     }
 }
 
 #Preview {
-    WIPListView()
+    ExperimentListView()
 }
