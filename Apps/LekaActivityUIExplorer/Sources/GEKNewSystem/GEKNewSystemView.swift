@@ -22,6 +22,7 @@ let kActivities: [Activity] = [
     ContentKit.decodeActivity("activity-touchToSelect-one_right_answer-image"),
     ContentKit.decodeActivity("activity-touchToSelect-one_right_answer-mixed"),
     ContentKit.decodeActivity("activity-touchToSelect-multipe_right_answers-colors"),
+    ContentKit.decodeActivity("activity-touchToSelect-one_right_answer-sfsymbols"),
 
     ContentKit.decodeActivity("activity-listenThenTouchToSelect-mixed-images"),
     ContentKit.decodeActivity("activity-observeThenTouchToSelect-mixed-colors"),

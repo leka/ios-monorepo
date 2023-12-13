@@ -9,5 +9,6 @@ public extension Exercise {
         case image
         case text
         case color
+        case sfsymbol
     }
 }
