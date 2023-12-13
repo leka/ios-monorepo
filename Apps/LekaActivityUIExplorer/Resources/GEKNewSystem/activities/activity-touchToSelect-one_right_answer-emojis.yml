@@ -1,0 +1,44 @@
+# Leka - iOS Monorepo
+# Copyright 2023 APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+id: 1AB742871C554A468E9F1F95908CBA21
+name: Touch To Select - One Right Answer - Emojis 😄
+description: L'obejctif est de trouver le bon symbole
+image: activity_color_recognition_1
+sequence:
+  - exercises:
+      - instructions: Touche l'avion
+        interface: touchToSelect
+        gameplay: findTheRightAnswers
+        payload:
+          choices:
+            - value: ✈️
+              type: emoji
+              isRightAnswer: true
+
+      - instructions: Touche le chat
+        interface: touchToSelect
+        gameplay: findTheRightAnswers
+        payload:
+          choices:
+            - value: 🐱
+              type: emoji
+              isRightAnswer: true
+            - value: 🐶
+              type: emoji
+
+      - instructions: Touche la pastèque
+        interface: touchToSelect
+        gameplay: findTheRightAnswers
+        payload:
+          choices:
+            - value: 🍉
+              type: emoji
+              isRightAnswer: true
+            - value: 🍌
+              type: emoji
+            - value: 🍒
+              type: emoji
+            - value: 🥝
+              type: emoji
