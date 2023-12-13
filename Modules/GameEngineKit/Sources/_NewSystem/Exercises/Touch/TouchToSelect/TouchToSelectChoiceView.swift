@@ -54,6 +54,14 @@ struct TouchToSelectChoiceView: View {
                         )
                         .animation(.easeOut(duration: 0.3), value: self.isTappable)
 
+                case .emoji:
+                    ChoiceEmojiView(emoji: self.choice.value, size: self.size, state: self.state)
+                        .overlay(
+                            Circle()
+                                .fill(self.isTappable ? .clear : .white.opacity(0.6))
+                        )
+                        .animation(.easeOut(duration: 0.3), value: self.isTappable)
+
                 default:
                     Text("❌ ERROR\nChoice type not implemented")
                         .multilineTextAlignment(.center)

@@ -10,5 +10,6 @@ public extension Exercise {
         case text
         case color
         case sfsymbol
+        case emoji
     }
 }
