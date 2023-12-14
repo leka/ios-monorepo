@@ -37,6 +37,7 @@ public struct ActivityView: View {
 
                 self.continueButton
             }
+            .frame(maxWidth: .infinity)
             .background(.lkBackground)
             .ignoresSafeArea(.all, edges: .bottom)
             .navigationBarTitleDisplayMode(.inline)
