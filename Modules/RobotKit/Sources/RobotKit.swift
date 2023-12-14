@@ -50,6 +50,44 @@ final class ActionMoveForward: RobotActionProtocol {
     private let robot = Robot.shared
 }
 
+// MARK: - ActionBlink
+
+final class ActionBlink: RobotActionProtocol {
+    // MARK: Lifecycle
+
+    init(delay: Duration, duration: Duration) {
+        self.delay = delay
+        self.duration = duration
+    }
+
+    // MARK: Internal
+
+    var delay: Duration
+    var duration: Duration
+
+    var isRunning: Bool = false
+
+    func execute() {
+        self.isRunning = true
+        Task {
+            while self.isRunning {
+                self.robot.shine(.all(in: .white))
+                try? await Task.sleep(for: self.delay)
+                self.robot.shine(.all(in: .black))
+                try? await Task.sleep(for: self.delay)
+            }
+        }
+    }
+
+    func stop() {
+        self.isRunning = false
+    }
+
+    // MARK: Private
+
+    private var robot = Robot.shared
+}
+
 // MARK: - ActionStopMotion
 
 public final class ActionStopMotion: RobotActionProtocol {
@@ -84,6 +122,7 @@ public final class ActionStopMotion: RobotActionProtocol {
 public enum RobotAction {
     case moveForward(speed: Float, duration: Duration)
     case stopMotion(duration: Duration)
+    case blink(delay: Duration, duration: Duration)
 
     // MARK: Public
 
@@ -93,6 +132,8 @@ public enum RobotAction {
                 ActionMoveForward(speed: speed, duration: duration)
             case let .stopMotion(duration):
                 ActionStopMotion(duration: duration)
+            case let .blink(delay, duration):
+                ActionBlink(delay: delay, duration: duration)
         }
     }
 }
@@ -138,6 +179,8 @@ public class RobotKit {
 
                 try? await Task.sleep(for: action.duration)
             }
+
+            self.stop()
         }
     }
 

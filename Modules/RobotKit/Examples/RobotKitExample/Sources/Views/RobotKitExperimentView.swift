@@ -16,6 +16,7 @@ struct RobotKitExperimentView: View {
                     .moveForward(speed: 1, duration: .seconds(4)),
                     .stopMotion(duration: .seconds(5)),
                     .moveForward(speed: 0.5, duration: .seconds(2)),
+                    .blink(delay: .seconds(0.5), duration: .seconds(4)),
                 ])
 
                 self.robotkit.executeSync()
