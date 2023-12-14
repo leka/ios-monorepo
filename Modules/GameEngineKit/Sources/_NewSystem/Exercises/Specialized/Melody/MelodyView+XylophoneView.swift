@@ -88,7 +88,7 @@ public extension MelodyView {
                         .disabled(self.isDisabled)
                         .overlay {
                             if self.isDisabled {
-                                RoundedRectangle(cornerRadius: 7)
+                                RoundedRectangle(cornerRadius: 5)
                                     .fill(self.colorScheme == .light ? Color.white.opacity(0.9) : Color.black.opacity(0.85))
                             }
                         }
