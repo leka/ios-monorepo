@@ -71,7 +71,10 @@ lint:
 	@-swiftformat --lint .
 
 ci_test_flight_release:
+	@git checkout main
+	@git pull
 	@git checkout release/testflight-beta
 	@git rebase main
 	@git push --force-with-lease
 	@gh pr edit --add-label "fastlane:rbi $(TEST_FLIGHT_APP_NAME)"
+	@git checkout main
