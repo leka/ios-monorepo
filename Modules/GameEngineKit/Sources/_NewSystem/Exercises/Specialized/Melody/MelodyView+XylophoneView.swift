@@ -60,6 +60,15 @@ public extension MelodyView {
                 .blur(radius: self.viewModel.showModal ? 10 : 0)
 
                 if self.viewModel.showModal {
+                    Color.clear
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .contentShape(Rectangle())
+                        .onTapGesture {
+                            self.viewModel.showModal = false
+                            self.viewModel.midiPlayer.stop()
+                            self.viewModel.startActivity()
+                        }
+
                     PlayerButton(showModal: self.$viewModel.showModal) {
                         self.viewModel.playMIDIRecording()
                     }
@@ -88,7 +97,7 @@ public extension MelodyView {
                         .disabled(self.isDisabled)
                         .overlay {
                             if self.isDisabled {
-                                RoundedRectangle(cornerRadius: 7)
+                                RoundedRectangle(cornerRadius: 5)
                                     .fill(self.colorScheme == .light ? Color.white.opacity(0.9) : Color.black.opacity(0.85))
                             }
                         }
