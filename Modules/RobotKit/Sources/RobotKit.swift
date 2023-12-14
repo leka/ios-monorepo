@@ -136,17 +136,14 @@ public class RobotKit {
 
                 action.execute()
 
-                do {
-                    try await Task.sleep(for: action.duration)
-                } catch {
-                    log.error("Task sleep error: \(error)")
-                }
+                try? await Task.sleep(for: action.duration)
             }
         }
     }
 
     public func stop() {
         self.task?.cancel()
+        self.task = nil
         for action in self.actions {
             action.stop()
         }
