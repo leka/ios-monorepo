@@ -8,7 +8,7 @@ description: L'objectif est de danser lorsque de la musique est jouée, et de s'
 image: activity_color_recognition_1
 sequence:
   - exercises:
-      - instructions: Danse avec Leka au rythme de la musique et fais la statue lorsqu’il s’arrête
+      - instructions:
         interface: danceFreeze
         payload:
           songs:
