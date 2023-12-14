@@ -20,7 +20,9 @@ public struct ActivityView: View {
             ZStack(alignment: .bottomTrailing) {
                 VStack {
                     VStack(spacing: 15) {
-                        ActivityProgressBar(viewModel: self.viewModel)
+                        if self.viewModel.isProgressBarVisible {
+                            ActivityProgressBar(viewModel: self.viewModel)
+                        }
 
                         ExerciseInstructionsButton(instructions: self.viewModel.currentExercise.instructions)
                     }

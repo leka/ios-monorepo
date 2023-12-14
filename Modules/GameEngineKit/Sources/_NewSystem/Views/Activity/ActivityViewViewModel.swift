@@ -41,6 +41,10 @@ public class ActivityViewViewModel: ObservableObject {
     @Published var currentExerciseInterface: Exercise.Interface
     @Published var currentExerciseSharedData: ExerciseSharedData
 
+    var isProgressBarVisible: Bool {
+        self.totalSequences > 1 || self.totalExercisesInCurrentSequence != 1
+    }
+
     var isFirstExercise: Bool {
         self.sequenceManager.isFirstExercise
     }
