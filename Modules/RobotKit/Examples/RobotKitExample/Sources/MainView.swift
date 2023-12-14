@@ -32,6 +32,15 @@ struct MainView: View {
                         Text("Go to robot control")
                     }
                 )
+
+                NavigationLink(
+                    destination: {
+                        RobotKitExperimentView()
+                    },
+                    label: {
+                        Text("Go to RobotKit experiment")
+                    }
+                )
             }
             .navigationTitle("RobotKit Explorer")
         }
