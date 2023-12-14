@@ -51,10 +51,12 @@ extension DanceFreeze {
         }
 
         func randomSwitch() {
+            guard self.viewModel.exercicesSharedData.state != .completed else { return }
             if self.viewModel.progress < 1.0, self.viewModel.exercicesSharedData.state != .completed {
                 let rand = Double.random(in: 2..<10)
 
                 DispatchQueue.main.asyncAfter(deadline: .now() + rand) {
+                    guard self.viewModel.exercicesSharedData.state != .completed else { return }
                     self.viewModel.onDanceFreezeToggle()
                     self.randomSwitch()
                 }
