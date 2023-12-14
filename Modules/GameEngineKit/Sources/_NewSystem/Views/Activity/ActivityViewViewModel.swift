@@ -45,6 +45,10 @@ public class ActivityViewViewModel: ObservableObject {
         self.totalSequences > 1 || self.totalExercisesInCurrentSequence != 1
     }
 
+    var isExerciseInstructionsButtonVisible: Bool {
+        !self.currentExercise.instructions.isEmpty
+    }
+
     var isFirstExercise: Bool {
         self.sequenceManager.isFirstExercise
     }
