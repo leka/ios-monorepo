@@ -24,7 +24,9 @@ public struct ActivityView: View {
                             ActivityProgressBar(viewModel: self.viewModel)
                         }
 
-                        ExerciseInstructionsButton(instructions: self.viewModel.currentExercise.instructions)
+                        if self.viewModel.isExerciseInstructionsButtonVisible {
+                            ExerciseInstructionsButton(instructions: self.viewModel.currentExercise.instructions)
+                        }
                     }
 
                     VStack {
