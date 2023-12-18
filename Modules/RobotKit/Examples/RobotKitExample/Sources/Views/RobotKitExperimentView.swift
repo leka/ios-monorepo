@@ -13,10 +13,14 @@ struct RobotKitExperimentView: View {
         VStack(spacing: 50) {
             Button("Launch Synchronous Sequence", systemImage: "play.circle") {
                 self.robotkit.append(actions: [
-                    .moveForward(speed: 1, duration: .seconds(4)),
-                    .stopMotion(duration: .seconds(5)),
-                    .moveForward(speed: 0.5, duration: .seconds(2)),
-                    .blink(delay: .seconds(0.5), duration: .seconds(4)),
+                    .motion(.spin(.clockwise, speed: 1), duration: .seconds(4), parallel: []),
+                    .motion(.stop, duration: .seconds(3), parallel: [
+                        .lights(.full(.belt, in: .red), duration: .seconds(3)),
+                    ]),
+                    .motion(.spin(.counterclockwise, speed: 0.8), duration: .seconds(4), parallel: [
+                        .blink(.seconds(0.2), duration: .seconds(2), parallel: []),
+                    ]),
+                    .stop(duration: .infinity),
                 ])
 
                 self.robotkit.executeSync()
