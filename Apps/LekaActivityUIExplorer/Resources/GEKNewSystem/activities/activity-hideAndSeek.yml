@@ -8,7 +8,7 @@ description: L'objectif est de trouver Leka, caché quelque part dans la pièce
 image: activity_color_recognition_1
 sequence:
   - exercises:
-      - instructions: Trouves Leka qui est caché et qui fait du bruit et de la lumière
+      - instructions:
         interface: hideAndSeek
         payload:
           instructions:
