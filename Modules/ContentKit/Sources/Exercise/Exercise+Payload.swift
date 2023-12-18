@@ -20,10 +20,6 @@ extension DragAndDropIntoZones.Payload: ExercisePayloadProtocol {}
 
 extension DragAndDropToAssociate.Payload: ExercisePayloadProtocol {}
 
-// MARK: - AudioRecordingPlayer.Payload + ExercisePayloadProtocol
-
-extension AudioRecordingPlayer.Payload: ExercisePayloadProtocol {}
-
 // MARK: - MidiRecordingPlayer.Payload + ExercisePayloadProtocol
 
 extension MidiRecordingPlayer.Payload: ExercisePayloadProtocol {}
