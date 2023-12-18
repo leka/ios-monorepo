@@ -5,7 +5,7 @@
 import DesignKit
 import SwiftUI
 
-extension DanceFreeze {
+extension DanceFreezeView {
     struct FreezeView: View {
         var body: some View {
             LottieView(
@@ -17,5 +17,5 @@ extension DanceFreeze {
 }
 
 #Preview {
-    DanceFreeze.FreezeView()
+    DanceFreezeView.FreezeView()
 }

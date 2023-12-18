@@ -5,19 +5,17 @@
 import ContentKit
 import SwiftUI
 
-extension DanceFreeze {
+extension DanceFreezeView {
     struct PlayerView: View {
         // MARK: Lifecycle
 
-        public init(viewModel: MainViewViewModel, isAuto: Bool, motion: Motion) {
-            self.viewModel = viewModel
+        public init(selectedAudioRecording: AudioRecording, isAuto: Bool, motion: Motion, data: ExerciseSharedData? = nil) {
+            self._viewModel = StateObject(wrappedValue: ViewModel(selectedAudioRecording: selectedAudioRecording, motion: motion, shared: data))
             self.isAuto = isAuto
             self.motion = motion
         }
 
         // MARK: Internal
-
-        @ObservedObject var viewModel: MainViewViewModel
 
         let isAuto: Bool
         let motion: Motion
@@ -38,14 +36,13 @@ extension DanceFreeze {
                 }
                 .disabled(self.isAuto)
                 .onAppear {
-                    self.viewModel.setMotionMode(motion: self.motion)
                     self.viewModel.onDanceFreezeToggle()
                     if self.isAuto {
                         self.randomSwitch()
                     }
                 }
                 .onDisappear {
-                    self.viewModel.exercicesSharedData.state = .completed
+                    self.viewModel.completeDanceFreeze()
                 }
             }
         }
@@ -62,20 +59,13 @@ extension DanceFreeze {
                 }
             }
         }
+
+        // MARK: Private
+
+        @StateObject private var viewModel: ViewModel
     }
 }
 
 #Preview {
-    let songs = [
-        AudioRecording(name: "Giggly Squirrel", file: "Giggly_Squirrel"),
-        AudioRecording(name: "Empty Page", file: "Empty_Page"),
-        AudioRecording(name: "Early Bird", file: "Early_Bird"),
-        AudioRecording(name: "Hands On", file: "Hands_On"),
-        AudioRecording(name: "In The Game", file: "In_The_Game"),
-        AudioRecording(name: "Little by Little", file: "Little_by_little"),
-    ]
-
-    let viewModel = DanceFreeze.MainViewViewModel(songs: songs)
-
-    return DanceFreeze.PlayerView(viewModel: viewModel, isAuto: true, motion: .movement)
+    DanceFreezeView.PlayerView(selectedAudioRecording: AudioRecording(.earlyBird), isAuto: true, motion: .movement)
 }

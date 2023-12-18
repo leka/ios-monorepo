@@ -7,14 +7,15 @@ import ContentKit
 import RobotKit
 import SwiftUI
 
-extension DanceFreeze {
-    class MainViewViewModel: ObservableObject {
+extension DanceFreezeView {
+    class ViewModel: ObservableObject {
         // MARK: Lifecycle
 
-        init(songs: [AudioRecording], shuffle _: Bool = false, shared: ExerciseSharedData? = nil) {
-            self.songs = songs
-            self.audioPlayer = AudioPlayer(audioRecording: songs.first!)
+        init(selectedAudioRecording: AudioRecording, motion: Motion, shared: ExerciseSharedData? = nil) {
+            self.audioPlayer = AudioPlayer(audioRecording: selectedAudioRecording)
+            self.audioPlayer.setAudioPlayer(audioRecording: selectedAudioRecording)
             self.robotManager = RobotManager()
+            self.motionMode = motion
 
             self.exercicesSharedData = shared ?? ExerciseSharedData()
             self.exercicesSharedData.state = .playing
@@ -43,25 +44,17 @@ extension DanceFreeze {
             }
         }
 
-        public func setAudioRecording(audioRecording: AudioRecording) {
-            self.audioPlayer.setAudioPlayer(audioRecording: audioRecording)
-        }
-
-        public func setMotionMode(motion: Motion) {
-            self.motionMode = motion
-        }
-
         // MARK: Internal
 
         @ObservedObject var exercicesSharedData: ExerciseSharedData
         var robotManager: RobotManager
         var audioPlayer: AudioPlayer
-        let songs: [AudioRecording]
         var motionMode: Motion = .rotation
         var cancellables: Set<AnyCancellable> = []
 
         func completeDanceFreeze() {
             self.robotManager.stopRobot()
+            self.audioPlayer.stop()
             self.exercicesSharedData.state = .completed
         }
 

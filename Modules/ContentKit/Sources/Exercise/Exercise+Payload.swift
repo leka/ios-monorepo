@@ -35,3 +35,7 @@ extension HideAndSeek.Payload: ExercisePayloadProtocol {}
 // MARK: - MusicalInstrument.Payload + ExercisePayloadProtocol
 
 extension MusicalInstrument.Payload: ExercisePayloadProtocol {}
+
+// MARK: - DanceFreeze.Payload + ExercisePayloadProtocol
+
+extension DanceFreeze.Payload: ExercisePayloadProtocol {}
