@@ -40,23 +40,40 @@ public class RobotKit {
 //            await action.object.execute()
 //            log.debug("execute action \(action) ✅")
 //        }
-
         self.task = Task {
             for action in self.actions {
                 guard self.task?.isCancelled == false else {
                     log.debug("Task cancelled, stopping robot kit")
-//                    action.object.stop()
+                    //                    action.object.stop()
                     return
                 }
+
                 self.currentAction = action
                 log.debug("execute action \(action)")
-                await action.object.execute()
-//                async let currentTask: () = action.object.execute()
-//                await currentTask
+                async let _ = action.object.execute()
+                //                async let currentTask: () = action.object.execute()
+                //                await currentTask
                 log.debug("execute action \(action) ✅")
             }
             self.stop()
         }
+
+//        self.task = Task {
+//            for action in self.actions {
+//                guard self.task?.isCancelled == false else {
+//                    log.debug("Task cancelled, stopping robot kit")
+        ////                    action.object.stop()
+//                    return
+//                }
+//                self.currentAction = action
+//                log.debug("execute action \(action)")
+//                await action.object.execute()
+        ////                async let currentTask: () = action.object.execute()
+        ////                await currentTask
+//                log.debug("execute action \(action) ✅")
+//            }
+//            self.stop()
+//        }
     }
 
 //    public func executeSync() {
@@ -96,7 +113,7 @@ public class RobotKit {
 //        self.actions[self.currentActionIndex].object.stop()
 
         self.task?.cancel()
-        self.currentAction?.object.cancel()
+//        self.currentAction?.object.cancel()
         self.task = nil
         self.currentAction = nil
 
