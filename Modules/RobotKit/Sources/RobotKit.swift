@@ -35,44 +35,81 @@ public class RobotKit {
             return
         }
 
+//        for action in self.actions {
+//            log.debug("execute action \(action)")
+//            await action.object.execute()
+//            log.debug("execute action \(action) ✅")
+//        }
+
         self.task = Task {
             for action in self.actions {
-                guard self.task?.isCancelled == false else { return }
-                guard let action = action.object else {
-                    self.stop()
+                guard self.task?.isCancelled == false else {
+                    log.debug("Task cancelled, stopping robot kit")
+//                    action.object.stop()
                     return
                 }
-
-                action.execute()
-
-                action.parallelActions.forEach {
-                    guard let action = $0.object else { return }
-                    action.execute()
-                }
-
-                try? await Task.sleep(for: action.duration)
-
-                action.stop()
-                action.parallelActions.forEach {
-                    guard let action = $0.object else { return }
-                    action.stop()
-                }
+                self.currentAction = action
+                log.debug("execute action \(action)")
+                await action.object.execute()
+//                async let currentTask: () = action.object.execute()
+//                await currentTask
+                log.debug("execute action \(action) ✅")
             }
+            self.stop()
         }
     }
 
+//    public func executeSync() {
+//        guard self.task == nil else {
+//            log.trace("Task already running, ignoring new execution")
+//            return
+//        }
+//
+//        self.task = Task {
+//            for action in self.actions {
+//                guard self.task?.isCancelled == false else { return }
+//                guard let action = action.object else {
+//                    self.stop()
+//                    return
+//                }
+//
+//                action.execute()
+//
+//                action.parallelActions.forEach {
+//                    guard let action = $0.object else { return }
+//                    action.execute()
+//                }
+//
+//                try? await Task.sleep(for: action.duration)
+//
+//                action.stop()
+//                action.parallelActions.forEach {
+//                    guard let action = $0.object else { return }
+//                    action.stop()
+//                }
+//            }
+//        }
+//    }
+
     public func stop() {
+        log.debug("stop robot kit")
+//        self.actions[self.currentActionIndex].object.stop()
+
         self.task?.cancel()
+        self.currentAction?.object.cancel()
         self.task = nil
-        for action in self.actions {
-            action.object?.stop()
-            if let parallelActions = action.object?.parallelActions {
-                for parallelAction in parallelActions {
-                    parallelAction.object?.stop()
-                }
-            }
-        }
+        self.currentAction = nil
+
+//        for action in self.actions {
+//            action.object.stop()
+//            if let parallelActions = action.object.parallelActions {
+//                for parallelAction in parallelActions {
+//                    parallelAction.object.stop()
+//                }
+//            }
+//        }
         self.actions = []
+
         self.robot.stop()
     }
 
@@ -81,5 +118,6 @@ public class RobotKit {
     private let robot = Robot.shared
 
     private var actions: [RobotAction] = []
+    private var currentAction: RobotAction?
     private var task: Task<Void, Never>?
 }

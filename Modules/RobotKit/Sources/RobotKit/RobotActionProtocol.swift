@@ -9,6 +9,7 @@ public protocol RobotActionProtocol {
     var duration: Duration { get }
     var parallelActions: [RobotAction] { get }
 
-    func execute()
-    func stop()
+    func execute() async
+    func end()
+    func cancel()
 }

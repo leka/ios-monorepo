@@ -11,6 +11,25 @@ final class ActionMotion: RobotActionProtocol {
         self.motion = motion
         self.duration = duration
         self.parallelActions = parallelActions
+
+        self.task = Task {
+            guard Task.isCancelled == false else {
+                log.debug("motion task is cancelled")
+                return
+            }
+            log.debug("motion - start task - move")
+            self.robot.move(self.motion)
+            do {
+                log.debug("motion - run task - sleep")
+                try await Task.sleep(for: self.duration)
+                log.debug("motion - run task - sleep done")
+            } catch {
+                log.debug("error \(error)")
+                self.cancel()
+                return
+            }
+            log.debug("motion - end task")
+        }
     }
 
     // MARK: Internal
@@ -18,19 +37,50 @@ final class ActionMotion: RobotActionProtocol {
     var motion: Robot.Motion
     var duration: Duration
     var parallelActions: [RobotAction]
-    var isRunning: Bool = false
 
-    func execute() {
-        self.robot.move(self.motion)
-        self.isRunning = true
+    var isRunning: Bool {
+        self.task?.isCancelled == false
     }
 
-    func stop() {
+    func execute() async {
+//        log.debug("motion - before task")
+
+//        self.task = Task {
+//            guard Task.isCancelled == false else {
+//                log.debug("motion task is cancelled")
+//                return
+//            }
+//            log.debug("motion - start task - move")
+//            self.robot.move(self.motion)
+//            do {
+//                log.debug("motion - start task - sleep")
+//                try await Task.sleep(for: self.duration)
+//                log.debug("motion - start task - sleep done")
+//            } catch {
+//                log.debug("error \(error)")
+//            }
+//            log.debug("motion - end task")
+//        }
+
+        async let _ = self.task?.result
+//        log.debug("motion - after task")
+
+//        let _ = await task
+    }
+
+    func end() {
+        log.debug("motion - STOP")
         self.robot.stopMotion()
-        self.isRunning = false
+    }
+
+    func cancel() {
+        self.end()
+        self.task?.cancel()
+        self.task = nil
     }
 
     // MARK: Private
 
     private let robot = Robot.shared
+    private var task: Task<Void, Never>?
 }

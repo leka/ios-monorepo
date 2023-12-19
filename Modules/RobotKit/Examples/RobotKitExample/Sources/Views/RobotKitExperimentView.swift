@@ -15,12 +15,12 @@ struct RobotKitExperimentView: View {
                 self.robotkit.append(actions: [
                     .motion(.spin(.clockwise, speed: 1), duration: .seconds(4), parallel: []),
                     .motion(.stop, duration: .seconds(3), parallel: [
-                        .lights(.full(.belt, in: .red), duration: .seconds(3)),
+                        //                        .lights(.full(.belt, in: .red), duration: .seconds(3)),
                     ]),
-                    .motion(.spin(.counterclockwise, speed: 0.8), duration: .seconds(4), parallel: [
-                        .blink(.seconds(0.2), duration: .seconds(2), parallel: []),
-                    ]),
-                    .stop(duration: .infinity),
+//                    .motion(.spin(.counterclockwise, speed: 0.8), duration: .seconds(4), parallel: [
+//                        .blink(.seconds(0.2), duration: .seconds(2), parallel: []),
+//                    ]),
+//                    .pause(duration: .infinity),
                 ])
 
                 self.robotkit.executeSync()
