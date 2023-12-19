@@ -14,52 +14,21 @@ extension MelodyView {
         let instructions: MidiRecordingPlayer.Payload.Instructions
 
         var body: some View {
-            VStack(spacing: 70) {
-                HStack(spacing: 70) {
+            VStack(spacing: 100) {
+                HStack(spacing: 30) {
                     GameEngineKitAsset.Exercises.Melody.imageIllustration.swiftUIImage
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .padding(.trailing, 50)
 
-                    VStack(spacing: 15) {
-                        HStack(spacing: 40) {
-                            VStack(spacing: 0) {
-                                GameEngineKitAsset.Exercises.Melody.iconKeyboardPartial.swiftUIImage
-                                    .resizable()
-                                    .scaledToFit()
-                                Text(self.instructions.textKeyboardPartial)
-                                    .foregroundStyle(self.keyboard == .partial ? .black : .gray.opacity(0.4))
-                            }
-
-                            Toggle(
-                                "",
-                                isOn: Binding<Bool>(
-                                    get: { self.keyboard == .full },
-                                    set: { self.keyboard = $0 ? .full : .partial }
-                                )
-                            )
-                            .toggleStyle(BinaryChoiceToggleStyle())
-
-                            VStack(spacing: 0) {
-                                GameEngineKitAsset.Exercises.Melody.iconKeyboardFull.swiftUIImage
-                                    .resizable()
-                                    .scaledToFit()
-                                Text(self.instructions.textKeyboardFull)
-                                    .foregroundStyle(self.keyboard == .full ? .black : .gray.opacity(0.4))
-                            }
-                        }
-                        .padding(.horizontal)
-                        .padding(.vertical)
-                        .background(.white)
-                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                    VStack(spacing: 0) {
+                        KeyboardModeView(keyboard: self.$keyboard, instructions: self.instructions)
 
                         SongSelectorView(
                             songs: self.songs, selectedMidiRecording: self.$selectedSong,
                             textMusicSelection: self.instructions.textMusicSelection
                         )
-                        .frame(maxHeight: 260)
                     }
-                    .frame(maxWidth: 460, maxHeight: 400)
                 }
                 .padding(.horizontal, 100)
 

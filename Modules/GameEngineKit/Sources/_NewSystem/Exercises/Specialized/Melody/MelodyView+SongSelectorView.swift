@@ -28,33 +28,30 @@ extension MelodyView {
         ]
 
         var body: some View {
-            VStack {
-                HStack {
-                    Image(systemName: "music.note.list")
-                    Text(self.textMusicSelection)
-                    Image(systemName: "music.note.list")
-                }
+            VStack(alignment: .leading) {
+                Text(self.textMusicSelection)
+                    .font(.title2)
 
                 Divider()
 
                 ScrollView {
-                    LazyVGrid(columns: self.columns, alignment: .listRowSeparatorLeading, spacing: 20) {
+                    LazyVGrid(columns: self.columns, alignment: .leading, spacing: 20) {
                         ForEach(self.songs, id: \.self) { midiRecording in
-                            Button {
-                                self.selectedMidiRecording = midiRecording
-                            } label: {
-                                HStack {
-                                    Image(
-                                        systemName: midiRecording == self.selectedMidiRecording
-                                            ? "checkmark.circle.fill" : "circle"
-                                    )
-                                    .imageScale(.large)
-                                    .foregroundColor(
-                                        midiRecording == self.selectedMidiRecording
-                                            ? .green : DesignKitAsset.Colors.lekaDarkGray.swiftUIColor
-                                    )
-                                    Text(midiRecording.name)
-                                        .multilineTextAlignment(.leading)
+                            HStack {
+                                Image(
+                                    systemName: midiRecording == self.selectedMidiRecording
+                                        ? "checkmark.circle.fill" : "circle"
+                                )
+                                .imageScale(.large)
+                                .foregroundColor(
+                                    midiRecording == self.selectedMidiRecording
+                                        ? .green : .primary
+                                )
+                                Text(midiRecording.name)
+                            }
+                            .onTapGesture {
+                                withAnimation {
+                                    self.selectedMidiRecording = midiRecording
                                 }
                             }
                         }
@@ -63,10 +60,7 @@ extension MelodyView {
                 .padding(.horizontal)
             }
             .padding(.vertical, 15)
-            .padding(.horizontal, 50)
-            .background(.white)
-            .foregroundColor(DesignKitAsset.Colors.lekaDarkGray.swiftUIColor)
-            .clipShape(RoundedRectangle(cornerRadius: 10))
+            .padding(.horizontal, 40)
         }
     }
 }
