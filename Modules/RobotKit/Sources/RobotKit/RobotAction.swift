@@ -6,8 +6,9 @@ import Foundation
 
 public enum RobotAction {
     case motion(Robot.Motion, duration: Duration, parallel: [RobotAction] = [])
-//    case lights(Robot.Lights, duration: Duration, parallel: [RobotAction] = [])
+
     case blink(Duration, duration: Duration, parallel: [RobotAction] = [])
+    //    case lights(Robot.Lights, duration: Duration, parallel: [RobotAction] = [])
 //    case pause(duration: Duration)
 
     // MARK: Public

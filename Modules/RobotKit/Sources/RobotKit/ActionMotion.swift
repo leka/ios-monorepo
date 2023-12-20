@@ -19,6 +19,14 @@ final class ActionMotion: RobotActionProtocol {
             }
             log.debug("motion - start task - move")
             self.robot.move(self.motion)
+            for action in self.parallelActions {
+                log.debug("motion - start task - parallel action \(action)")
+                Task {
+                    try await action.object.execute()
+                }
+//                /* async let _ = */ try action.object.execute()
+                log.debug("motion - start task - parallel action \(action) ✅")
+            }
             try await Task.sleep(for: self.duration)
             log.debug("motion - end task")
         }
