@@ -19,15 +19,7 @@ final class ActionMotion: RobotActionProtocol {
             }
             log.debug("motion - start task - move")
             self.robot.move(self.motion)
-            do {
-                log.debug("motion - run task - sleep")
-                try await Task.sleep(for: self.duration)
-                log.debug("motion - run task - sleep done")
-            } catch {
-                log.debug("error \(error)")
-                self.cancel()
-                return
-            }
+            try await Task.sleep(for: self.duration)
             log.debug("motion - end task")
         }
     }
@@ -42,7 +34,7 @@ final class ActionMotion: RobotActionProtocol {
         self.task?.isCancelled == false
     }
 
-    func execute() async {
+    func execute() async throws {
 //        log.debug("motion - before task")
 
 //        self.task = Task {
@@ -82,5 +74,5 @@ final class ActionMotion: RobotActionProtocol {
     // MARK: Private
 
     private let robot = Robot.shared
-    private var task: Task<Void, Never>?
+    private var task: Task<Void, any Error>?
 }

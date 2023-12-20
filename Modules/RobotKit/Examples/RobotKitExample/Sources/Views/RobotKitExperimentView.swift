@@ -17,6 +17,7 @@ struct RobotKitExperimentView: View {
                     .motion(.stop, duration: .seconds(3), parallel: [
                         //                        .lights(.full(.belt, in: .red), duration: .seconds(3)),
                     ]),
+                    .blink(.seconds(0.2), duration: .seconds(5), parallel: []),
 //                    .motion(.spin(.counterclockwise, speed: 0.8), duration: .seconds(4), parallel: [
 //                        .blink(.seconds(0.2), duration: .seconds(2), parallel: []),
 //                    ]),
@@ -29,7 +30,7 @@ struct RobotKitExperimentView: View {
             .tint(.green)
 
             Button("STOP", systemImage: "stop.circle.fill") {
-                self.robotkit.stop()
+                self.robotkit.cancel()
             }
             .buttonStyle(.bordered)
             .tint(.red)
