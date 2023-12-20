@@ -73,9 +73,11 @@ public struct ActivityView: View {
         }
         .onAppear {
             Robot.shared.stop()
+            UIApplication.shared.isIdleTimerDisabled = true
         }
         .onDisappear {
             Robot.shared.stop()
+            UIApplication.shared.isIdleTimerDisabled = false
         }
     }
 
