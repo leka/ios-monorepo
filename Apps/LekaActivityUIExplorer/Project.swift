@@ -20,6 +20,16 @@ let project = Project.iOSApp(
     ],
     infoPlist: [
         "CFBundleShortVersionString": "1.0.0",
+        "CFBundleDocumentTypes": [
+            [
+                "CFBundleTypeName": "Sequencing Card Item",
+                "LSHandlerRank": "Default",
+                "CFBundleTypeRole": "Viewer",
+                "LSItemContentTypes": [
+                    "io.leka.apf.app.uiexplorer.sequencing.card_item",
+                ],
+            ],
+        ],
         "NSBluetoothAlwaysUsageDescription":
             "The Leka App needs to use Bluetooth to connect to the Leka robot.",
         "UIBackgroundModes": [
