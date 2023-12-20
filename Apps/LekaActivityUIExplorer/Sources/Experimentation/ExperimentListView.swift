@@ -20,6 +20,7 @@ struct ExperimentListView: View {
     let kExperiments: [Experiment] = [
         Experiment(name: "Sort images"),
         Experiment(name: "Sort colors"),
+        Experiment(name: "Sequencing"),
     ]
 
     var body: some View {
@@ -36,8 +37,10 @@ struct ExperimentListView: View {
             } content: { activity in
                 if activity.name == "Sort images" {
                     DragAndDropToSortImagesActivityView()
-                } else {
+                } else if activity.name == "Sort colors" {
                     DragAndDropToSortColorsActivityView()
+                } else {
+                    DragAndDropToSequenceActivityView()
                 }
             }
             .buttonStyle(.borderedProminent)
