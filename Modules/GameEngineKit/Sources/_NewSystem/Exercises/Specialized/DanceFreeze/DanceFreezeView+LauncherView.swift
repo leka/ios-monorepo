@@ -16,7 +16,7 @@ extension DanceFreezeView {
         var body: some View {
             VStack(spacing: 100) {
                 Text(self.instructions.textMainInstructions)
-                    .font(.title2)
+                    .font(.headline)
                     .padding(.top, 30)
 
                 HStack(spacing: 30) {
