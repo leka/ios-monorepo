@@ -13,7 +13,7 @@ public extension MelodyView {
         // MARK: Lifecycle
 
         init(
-            instrument: MIDIInstrument, selectedSong: MidiRecording, keyboard: Keyboard, data: ExerciseSharedData? = nil
+            instrument: MIDIInstrument, selectedSong: MidiRecording, keyboard: KeyboardType, data: ExerciseSharedData? = nil
         ) {
             self._viewModel = StateObject(
                 wrappedValue: ViewModel(
@@ -113,7 +113,7 @@ public extension MelodyView {
 
         private var scale: [MIDINoteNumber]
         private let tilesSpacing: CGFloat = 16
-        private let keyboard: Keyboard
+        private let keyboard: KeyboardType
     }
 }
 

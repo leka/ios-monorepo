@@ -10,7 +10,7 @@ extension MelodyView {
     struct KeyboardModeView: View {
         // MARK: Lifecycle
 
-        init(keyboard: Binding<Keyboard>, instructions: MidiRecordingPlayer.Payload.Instructions) {
+        init(keyboard: Binding<KeyboardType>, instructions: MidiRecordingPlayer.Payload.Instructions) {
             self._keyboard = keyboard
             self.instructions = instructions
         }
@@ -51,7 +51,7 @@ extension MelodyView {
 
         // MARK: Private
 
-        @Binding private var keyboard: Keyboard
+        @Binding private var keyboard: KeyboardType
         private let instructions: MidiRecordingPlayer.Payload.Instructions
     }
 }

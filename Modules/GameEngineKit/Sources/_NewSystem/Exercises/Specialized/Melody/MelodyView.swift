@@ -63,7 +63,7 @@ public struct MelodyView: View {
         case selectionConfirmed
     }
 
-    enum Keyboard {
+    enum KeyboardType {
         case full
         case partial
     }
@@ -77,7 +77,7 @@ public struct MelodyView: View {
 
     @State private var mode = Stage.waitingForSelection
     @State private var selectedSong: MidiRecording
-    @State private var keyboard: Keyboard = .partial
+    @State private var keyboard: KeyboardType = .partial
 }
 
 #Preview {

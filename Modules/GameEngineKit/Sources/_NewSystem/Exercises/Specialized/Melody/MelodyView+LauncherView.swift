@@ -9,7 +9,7 @@ extension MelodyView {
     struct LauncherView: View {
         @Binding var selectedSong: MidiRecording
         @Binding var mode: Stage
-        @Binding var keyboard: Keyboard
+        @Binding var keyboard: KeyboardType
         let songs: [MidiRecording]
         let instructions: MidiRecordingPlayer.Payload.Instructions
 
