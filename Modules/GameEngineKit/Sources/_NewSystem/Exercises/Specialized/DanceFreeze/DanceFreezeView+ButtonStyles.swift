@@ -4,7 +4,7 @@
 
 import SwiftUI
 
-extension DanceFreeze.LauncherView {
+extension DanceFreezeView {
     struct StageModeButtonStyle: View {
         // MARK: Lifecycle
 
@@ -40,6 +40,7 @@ extension DanceFreeze.LauncherView {
                 .renderingMode(.template)
                 .foregroundStyle(self.color)
                 .scaledToFit()
+                .frame(maxWidth: 100)
         }
     }
 }

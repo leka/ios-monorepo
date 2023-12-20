@@ -28,7 +28,7 @@ public struct Exercise: Codable {
                 self.payload = try container.decode(DragAndDropToAssociate.Payload.self, forKey: .payload)
 
             case (.danceFreeze, .none):
-                self.payload = try container.decode(AudioRecordingPlayer.Payload.self, forKey: .payload)
+                self.payload = try container.decode(DanceFreeze.Payload.self, forKey: .payload)
 
             case (.hideAndSeek, .none):
                 self.payload = try container.decode(HideAndSeek.Payload.self, forKey: .payload)

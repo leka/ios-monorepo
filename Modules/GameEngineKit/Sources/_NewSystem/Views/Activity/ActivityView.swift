@@ -144,7 +144,7 @@ public struct ActivityView: View {
                 )
 
             case .danceFreeze:
-                DanceFreeze.MainView(
+                DanceFreezeView(
                     exercise: self.viewModel.currentExercise,
                     data: self.viewModel.currentExerciseSharedData
                 )

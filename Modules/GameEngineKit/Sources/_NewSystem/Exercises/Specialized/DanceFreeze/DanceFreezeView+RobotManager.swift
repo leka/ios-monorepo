@@ -7,7 +7,7 @@ import ContentKit
 import RobotKit
 import SwiftUI
 
-extension DanceFreeze {
+extension DanceFreezeView {
     class RobotManager {
         // MARK: Internal
 
