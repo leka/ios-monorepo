@@ -76,8 +76,7 @@ extension PairingView {
             self.updateLightIntensity()
 
             DispatchQueue.main.asyncAfter(deadline: .now() + self.lightIntensityChangeDuration) {
-                let shadeOfColor: Robot.Color = .init(fromGradient: (.black, .lightBlue), at: self.lightIntensity)
-                self.robot.shine(.all(in: shadeOfColor))
+                self.robot.shine(.all(in: Robot.Gradient(fromColors: .black, .white).color(at: self.lightIntensity)))
                 self.breathe()
             }
         }
