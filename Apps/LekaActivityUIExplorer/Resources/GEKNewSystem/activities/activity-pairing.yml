@@ -1,0 +1,22 @@
+# Leka - iOS Monorepo
+# Copyright 2023 APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+id: 834779ede3324f44a38163159edc15c0
+name: Pairing
+description: L'objectif est de découvrir Leka et s'habituer à ses réactions
+image: activity_color_recognition_1
+sequence:
+  - exercises:
+      - instructions: Observe Leka
+        interface: pairing
+        payload:
+          instructions:
+            text_main_instructions: |
+                Le mode Pairing permet à la personne accompagnée de se familiariser à Leka
+                avant même d'entrer dans les apprentissages des Activités et des Parcours.
+                Le robot va s'animer en faisant des pauses afin que la personne accompagnée puisse
+                apprivoiser son nouveau compagnon !
+            text_button_play: Jouer
+            text_button_pause: Pause
+            text_button_stop: Stop

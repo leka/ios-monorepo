@@ -240,6 +240,12 @@ public struct ActivityView: View {
                     exercise: self.viewModel.currentExercise,
                     data: self.viewModel.currentExerciseSharedData
                 )
+
+            case .pairing:
+                PairingView(
+                    exercise: self.viewModel.currentExercise,
+                    data: self.viewModel.currentExerciseSharedData
+                )
         }
     }
 }

@@ -18,5 +18,6 @@ public extension Exercise {
         case hideAndSeek
         case musicalInstruments
         case melody
+        case pairing
     }
 }

@@ -6,7 +6,7 @@ import SwiftUI
 
 // MARK: - Robot.Color
 
-// swiftlint:disable nesting
+// swiftlint:disable nesting identifier_name line_length
 
 public extension Robot {
     struct Color {
@@ -24,6 +24,24 @@ public extension Robot {
                 fatalError("Invalid color string \(value)")
             }
             self = color
+        }
+
+        public init(r: UInt8, g: UInt8, b: UInt8) {
+            self.robotRGB = [r, g, b]
+            self.screenRGB = [r, g, b]
+        }
+
+        public init(fromGradient colors: (Color, Color), at position: Float) {
+            let positionClamped = max(min(position, 1), 0)
+            let (r1, g1, b1) = (Float(colors.0.robotRGB[0]), Float(colors.0.robotRGB[1]), Float(colors.0.robotRGB[2]))
+            let (r2, g2, b2) = (Float(colors.1.robotRGB[0]), Float(colors.1.robotRGB[1]), Float(colors.1.robotRGB[2]))
+
+            let r = UInt8(r1 + (r2 - r1) * positionClamped)
+            let g = UInt8(g1 + (g2 - g1) * positionClamped)
+            let b = UInt8(b1 + (b2 - b1) * positionClamped)
+
+            self.robotRGB = [r, g, b]
+            self.screenRGB = [r, g, b]
         }
 
         // MARK: Public
@@ -102,4 +120,4 @@ public extension Robot.Color {
     static let yellow: Robot.Color = .init(robot: 255, 255, 0, screen: 251, 232, 0)
 }
 
-// swiftlint:enable nesting
+// swiftlint:enable nesting identifier_name line_length
