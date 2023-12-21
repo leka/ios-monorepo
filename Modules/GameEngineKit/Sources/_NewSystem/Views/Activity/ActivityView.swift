@@ -3,8 +3,18 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import ContentKit
+import DesignKit
+import Lottie
 import RobotKit
 import SwiftUI
+
+extension LottieAnimation {
+    static var reinforcer: LottieAnimation {
+        LottieAnimation.named("reinforcer-spin-blink", bundle: .module)!
+    }
+}
+
+// MARK: - ActivityView
 
 public struct ActivityView: View {
     // MARK: Lifecycle
@@ -36,6 +46,9 @@ public struct ActivityView: View {
                     }
                 }
                 .id(self.viewModel.currentExerciseIndexInSequence)
+                .blur(radius: self.viewModel.isCurrentExerciseDisplayingReinforcer ? 20 : 0)
+
+                self.lottieReinforcer
 
                 self.continueButton
             }
@@ -89,6 +102,31 @@ public struct ActivityView: View {
 
     // MARK: Private
 
+    private let robot = Robot.shared
+
+    @ViewBuilder
+    private var lottieReinforcer: some View {
+        let isLottieDisplayed = self.viewModel.isCurrentExerciseDisplayingReinforcer
+
+        if isLottieDisplayed {
+            LottieView(
+                animation: .reinforcer,
+                speed: 0.25,
+                action: {
+                    withAnimation {
+                        self.viewModel.isCurrentExerciseDisplayingReinforcer = false
+                    }
+                }
+            )
+            .onAppear {
+                // TODO(@ladislas/@hugo): Use reinforcer children choice
+                self.robot.run(.fire)
+            }
+        } else {
+            EmptyView()
+        }
+    }
+
     @ViewBuilder
     private var continueButton: some View {
         let state = self.viewModel.currentExerciseSharedData.state
@@ -102,7 +140,7 @@ public struct ActivityView: View {
             .buttonStyle(.borderedProminent)
             .tint(.green)
             .padding()
-            .transition(.asymmetric(insertion: .opacity.animation(.snappy.delay(2)), removal: .identity))
+            .transition(.asymmetric(insertion: .opacity.animation(.snappy.delay(5)), removal: .identity))
         }
     }
 
