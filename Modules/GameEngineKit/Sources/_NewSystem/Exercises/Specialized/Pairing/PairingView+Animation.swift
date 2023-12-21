@@ -48,7 +48,7 @@ extension PairingView {
                 case .reinforcer:
                     let reinforcers: [Robot.Reinforcer] = [.fire, .rainbow, .sprinkles]
                     return [
-                        (0.0, { Robot.shared.run(reinforcers.randomElement()!) }),
+                        (5.0, { Robot.shared.run(reinforcers.randomElement()!) }),
                     ]
                 case .light:
                     let color: [Robot.Color] = [.blue, .green, .orange, .pink, .purple, .red, .yellow]
