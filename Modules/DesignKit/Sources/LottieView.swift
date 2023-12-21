@@ -16,9 +16,23 @@ public struct LottieView: UIViewRepresentable {
         action: @escaping () -> Void = {
             // empty default implementation
         },
+        play _: Binding<Bool> = .constant(true)
+    ) {
+        let animation = LottieAnimation.named(name)!
+        self.init(animation: animation, speed: speed, reverse: reverse, loopMode: loopMode, action: action)
+    }
+
+    public init(
+        animation: LottieAnimation,
+        speed: CGFloat = 1,
+        reverse: Bool = false,
+        loopMode: LottieLoopMode = .playOnce,
+        action: @escaping () -> Void = {
+            // empty default implementation
+        },
         play: Binding<Bool> = .constant(true)
     ) {
-        self.name = name
+        self.animation = animation
         self.speed = speed
         self.reverse = reverse
         self.loopMode = loopMode
@@ -50,7 +64,7 @@ public struct LottieView: UIViewRepresentable {
     public func makeUIView(context _: UIViewRepresentableContext<LottieView>) -> UIView {
         let view = UIView()
 
-        self.animationView.animation = LottieAnimation.named(self.name)
+        self.animationView.animation = self.animation
         self.animationView.contentMode = .scaleAspectFit
         self.animationView.animationSpeed = self.speed
         self.animationView.loopMode = self.loopMode
@@ -96,7 +110,7 @@ public struct LottieView: UIViewRepresentable {
 
     // MARK: Internal
 
-    var name: String!
+    var animation: LottieAnimation
     var speed: CGFloat
     var reverse: Bool
     var loopMode: LottieLoopMode

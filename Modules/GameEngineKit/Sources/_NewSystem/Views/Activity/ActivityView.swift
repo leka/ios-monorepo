@@ -3,8 +3,26 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import ContentKit
+import DesignKit
+import Lottie
 import RobotKit
 import SwiftUI
+
+extension LottieAnimation {
+    static var reinforcer: LottieAnimation {
+        LottieAnimation.named("reinforcer-spin-blink", bundle: .module)!
+    }
+
+    static var bravo: LottieAnimation {
+        LottieAnimation.named("bravo", bundle: .module)!
+    }
+
+    static var tryAgain: LottieAnimation {
+        LottieAnimation.named("tryAgain", bundle: .module)!
+    }
+}
+
+// MARK: - ActivityView
 
 public struct ActivityView: View {
     // MARK: Lifecycle
@@ -36,6 +54,12 @@ public struct ActivityView: View {
                     }
                 }
                 .id(self.viewModel.currentExerciseIndexInSequence)
+                .blur(radius: self.viewModel.isCurrentExerciseDisplayingReinforcer ? 20 : 0)
+                .opacity(self.viewModel.isCurrentActivityCompleted ? 0 : 1)
+
+                self.lottieReinforcer
+
+                self.lottieScoreView
 
                 self.continueButton
             }
@@ -89,6 +113,44 @@ public struct ActivityView: View {
 
     // MARK: Private
 
+    private let robot = Robot.shared
+
+    @ViewBuilder
+    private var lottieScoreView: some View {
+        let isScoreDisplayed = self.viewModel.isCurrentActivityCompleted
+
+        if isScoreDisplayed, self.viewModel.isCurrentActivitySucceeded {
+            SuccessView()
+        } else if isScoreDisplayed, !self.viewModel.isCurrentActivitySucceeded {
+            FailureView()
+        } else {
+            EmptyView()
+        }
+    }
+
+    @ViewBuilder
+    private var lottieReinforcer: some View {
+        let isLottieDisplayed = self.viewModel.isCurrentExerciseDisplayingReinforcer
+
+        if isLottieDisplayed {
+            LottieView(
+                animation: .reinforcer,
+                speed: 0.25,
+                action: {
+                    withAnimation {
+                        self.viewModel.isCurrentExerciseDisplayingReinforcer = false
+                    }
+                }
+            )
+            .onAppear {
+                // TODO(@ladislas/@hugo): Use reinforcer children choice
+                self.robot.run(.fire)
+            }
+        } else {
+            EmptyView()
+        }
+    }
+
     @ViewBuilder
     private var continueButton: some View {
         let state = self.viewModel.currentExerciseSharedData.state
@@ -97,12 +159,16 @@ public struct ActivityView: View {
             EmptyView()
         } else {
             Button("Continuer") {
-                self.viewModel.isLastExercise ? self.dismiss() : self.viewModel.moveToNextExercise()
+                if self.viewModel.isCurrentActivityCompleted {
+                    self.dismiss()
+                } else {
+                    self.viewModel.isLastExercise ? self.viewModel.moveToScorePanel() : self.viewModel.moveToNextExercise()
+                }
             }
             .buttonStyle(.borderedProminent)
             .tint(.green)
             .padding()
-            .transition(.asymmetric(insertion: .opacity.animation(.snappy.delay(2)), removal: .identity))
+            .transition(.asymmetric(insertion: .opacity.animation(.snappy.delay(5)), removal: .identity))
         }
     }
 
