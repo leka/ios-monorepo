@@ -41,6 +41,10 @@ public class ActivityViewViewModel: ObservableObject {
     @Published var currentExerciseInterface: Exercise.Interface
     @Published var currentExerciseSharedData: ExerciseSharedData
     @Published var isCurrentExerciseDisplayingReinforcer: Bool = false
+    @Published var isCurrentActivityCompleted: Bool = false
+
+    // TODO(@ladislas/@hugo): Add method to change this boolean
+    @Published var isCurrentActivitySucceeded: Bool = true
 
     var isProgressBarVisible: Bool {
         self.totalSequences > 1 || self.totalExercisesInCurrentSequence != 1
@@ -66,6 +70,10 @@ public class ActivityViewViewModel: ObservableObject {
     func moveToPreviousExercise() {
         self.sequenceManager.moveToPreviousExercise()
         self.updateValues()
+    }
+
+    func moveToScorePanel() {
+        self.isCurrentActivityCompleted = true
     }
 
     // MARK: Private
