@@ -8,6 +8,8 @@ import Lottie
 import RobotKit
 import SwiftUI
 
+// swiftlint:disable cyclomatic_complexity void_function_in_ternary function_body_length
+
 extension LottieAnimation {
     static var reinforcer: LottieAnimation {
         LottieAnimation.named("reinforcer-spin-blink", bundle: .module)!
@@ -54,7 +56,7 @@ public struct ActivityView: View {
                     }
                 }
                 .id(self.viewModel.currentExerciseIndexInSequence)
-                .blur(radius: self.viewModel.isCurrentExerciseDisplayingReinforcer ? 20 : 0)
+                .blur(radius: self.viewModel.isCurrentExerciseCompleted && self.viewModel.isReinforcerEnabled ? 20 : 0)
                 .opacity(self.viewModel.isCurrentActivityCompleted ? 0 : 1)
 
                 self.lottieReinforcer
@@ -79,6 +81,14 @@ public struct ActivityView: View {
                         Image(systemName: "chevron.backward")
                     }
                     .disabled(self.viewModel.isFirstExercise)
+                }
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        self.viewModel.isReinforcerEnabled.toggle()
+                        self.viewModel.isCurrentExerciseCompleted = false
+                    } label: {
+                        Image(systemName: self.viewModel.isReinforcerEnabled ? "circle" : "circle.slash")
+                    }
                 }
                 ToolbarItem(placement: .topBarTrailing) {
                     Button("Dismiss") {
@@ -130,15 +140,16 @@ public struct ActivityView: View {
 
     @ViewBuilder
     private var lottieReinforcer: some View {
-        let isLottieDisplayed = self.viewModel.isCurrentExerciseDisplayingReinforcer
+        let isLottieDisplayed = self.viewModel.isCurrentExerciseCompleted
+        let isReinforcerEnabled = self.viewModel.isReinforcerEnabled
 
-        if isLottieDisplayed {
+        if isLottieDisplayed, isReinforcerEnabled {
             LottieView(
                 animation: .reinforcer,
                 speed: 0.25,
                 action: {
                     withAnimation {
-                        self.viewModel.isCurrentExerciseDisplayingReinforcer = false
+                        self.viewModel.isCurrentExerciseCompleted = false
                     }
                 }
             )
@@ -168,7 +179,7 @@ public struct ActivityView: View {
             .buttonStyle(.borderedProminent)
             .tint(.green)
             .padding()
-            .transition(.asymmetric(insertion: .opacity.animation(.snappy.delay(5)), removal: .identity))
+            .transition(.asymmetric(insertion: .opacity.animation(.snappy.delay(self.viewModel.isReinforcerEnabled ? 5 : 0.5)), removal: .identity))
         }
     }
 
@@ -249,6 +260,8 @@ public struct ActivityView: View {
         }
     }
 }
+
+// swiftlint:enable cyclomatic_complexity void_function_in_ternary
 
 #Preview {
     let activity = ContentKit.decodeActivity("activity-sample")
