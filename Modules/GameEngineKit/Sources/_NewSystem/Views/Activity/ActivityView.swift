@@ -56,14 +56,18 @@ public struct ActivityView: View {
                     }
                 }
                 .id(self.viewModel.currentExerciseIndexInSequence)
-                .blur(radius: self.viewModel.isCurrentExerciseCompleted && self.viewModel.isReinforcerEnabled ? 20 : 0)
+                .blur(radius: self.viewModel.isReinforcerLottieAnimationDisplayed && self.viewModel.isReinforcerLottieAnimationEnabled ? 20 : 0)
                 .opacity(self.viewModel.isCurrentActivityCompleted ? 0 : 1)
 
                 self.lottieReinforcer
 
                 self.lottieScoreView
 
-                self.continueButton
+                HStack {
+                    self.dismissReinforcerButton
+
+                    self.continueButton
+                }
             }
             .frame(maxWidth: .infinity)
             .background(.lkBackground)
@@ -84,10 +88,10 @@ public struct ActivityView: View {
                 }
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
-                        self.viewModel.isReinforcerEnabled.toggle()
-                        self.viewModel.isCurrentExerciseCompleted = false
+                        self.viewModel.isReinforcerLottieAnimationEnabled.toggle()
+                        self.viewModel.isReinforcerLottieAnimationDisplayed = false
                     } label: {
-                        Image(systemName: self.viewModel.isReinforcerEnabled ? "circle" : "circle.slash")
+                        Image(systemName: self.viewModel.isReinforcerLottieAnimationEnabled ? "circle" : "circle.slash")
                     }
                 }
                 ToolbarItem(placement: .topBarTrailing) {
@@ -140,13 +144,13 @@ public struct ActivityView: View {
 
     @ViewBuilder
     private var lottieReinforcer: some View {
-        let isLottieDisplayed = self.viewModel.isCurrentExerciseCompleted
-        let isReinforcerEnabled = self.viewModel.isReinforcerEnabled
+        let isReinforcerDisplayed = self.viewModel.isReinforcerLottieAnimationDisplayed
+        let isReinforcerEnabled = self.viewModel.isReinforcerLottieAnimationEnabled
 
-        if isLottieDisplayed, isReinforcerEnabled {
+        if isReinforcerDisplayed, isReinforcerEnabled {
             LottieView(
                 animation: .reinforcer,
-                speed: 0.25
+                speed: 0.2
             )
             .onAppear {
                 // TODO(@ladislas/@hugo): Use reinforcer children choice
@@ -174,7 +178,26 @@ public struct ActivityView: View {
             .buttonStyle(.borderedProminent)
             .tint(.green)
             .padding()
-            .transition(.asymmetric(insertion: .opacity.animation(.snappy.delay(self.viewModel.isReinforcerEnabled ? 5 : 0.5)), removal: .identity))
+            .transition(.asymmetric(insertion: .opacity.animation(.snappy.delay(self.viewModel.isReinforcerLottieAnimationEnabled ? 5 : 0.5)), removal: .identity))
+        }
+    }
+
+    @ViewBuilder
+    private var dismissReinforcerButton: some View {
+        let isLottieDisplayed = self.viewModel.isReinforcerLottieAnimationDisplayed
+
+        if isLottieDisplayed {
+            Button("Revoir les réponses") {
+                withAnimation {
+                    self.viewModel.isReinforcerLottieAnimationDisplayed = false
+                }
+            }
+            .buttonStyle(.borderedProminent)
+            .tint(.green)
+            .padding()
+            .transition(.asymmetric(insertion: .opacity.animation(.snappy.delay(self.viewModel.isReinforcerLottieAnimationDisplayed ? 5 : 0.5)), removal: .identity))
+        } else {
+            EmptyView()
         }
     }
 
@@ -256,7 +279,7 @@ public struct ActivityView: View {
     }
 }
 
-// swiftlint:enable cyclomatic_complexity void_function_in_ternary
+// swiftlint:enable cyclomatic_complexity void_function_in_ternary function_body_length
 
 #Preview {
     let activity = ContentKit.decodeActivity("activity-sample")

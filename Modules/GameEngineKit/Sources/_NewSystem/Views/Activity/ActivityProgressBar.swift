@@ -38,7 +38,7 @@ struct ActivityProgressBar: View {
                         .padding(6)
                         .onChange(of: self.viewModel.currentExerciseSharedData.state) { newValue in
                             if newValue == .completed {
-                                withAnimation(.snappy.delay(self.viewModel.isReinforcerEnabled ? 5 : 0.5)) {
+                                withAnimation(.snappy.delay(self.viewModel.isReinforcerLottieAnimationEnabled ? 5 : 0.5)) {
                                     self.currentColor = .green
                                 }
                             }

@@ -40,8 +40,8 @@ public class ActivityViewViewModel: ObservableObject {
     @Published var currentExercise: Exercise
     @Published var currentExerciseInterface: Exercise.Interface
     @Published var currentExerciseSharedData: ExerciseSharedData
-    @Published var isCurrentExerciseCompleted: Bool = false
-    @Published var isReinforcerEnabled: Bool = true
+    @Published var isReinforcerLottieAnimationDisplayed: Bool = false
+    @Published var isReinforcerLottieAnimationEnabled: Bool = true
     @Published var isCurrentActivityCompleted: Bool = false
 
     // TODO(@ladislas/@hugo): Add method to change this boolean
@@ -101,12 +101,14 @@ public class ActivityViewViewModel: ObservableObject {
             .sink {
                 self.objectWillChange.send()
                 if self.currentExerciseSharedData.state == .completed {
-                    withAnimation {
-                        self.isCurrentExerciseCompleted = true
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        withAnimation {
+                            self.isReinforcerLottieAnimationDisplayed = true
+                        }
                     }
                 } else {
                     withAnimation {
-                        self.isCurrentExerciseCompleted = false
+                        self.isReinforcerLottieAnimationDisplayed = false
                     }
                 }
             }
