@@ -10,20 +10,6 @@ import SwiftUI
 
 // swiftlint:disable cyclomatic_complexity void_function_in_ternary function_body_length
 
-extension LottieAnimation {
-    static var reinforcer: LottieAnimation {
-        LottieAnimation.named("reinforcer-spin-blink", bundle: .module)!
-    }
-
-    static var bravo: LottieAnimation {
-        LottieAnimation.named("bravo", bundle: .module)!
-    }
-
-    static var tryAgain: LottieAnimation {
-        LottieAnimation.named("tryAgain", bundle: .module)!
-    }
-}
-
 // MARK: - ActivityView
 
 public struct ActivityView: View {
