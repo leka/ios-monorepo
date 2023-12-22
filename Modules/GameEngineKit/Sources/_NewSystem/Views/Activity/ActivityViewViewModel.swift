@@ -104,6 +104,10 @@ public class ActivityViewViewModel: ObservableObject {
                     withAnimation {
                         self.isCurrentExerciseCompleted = true
                     }
+                } else {
+                    withAnimation {
+                        self.isCurrentExerciseCompleted = false
+                    }
                 }
             }
             .store(in: &self.cancellables)

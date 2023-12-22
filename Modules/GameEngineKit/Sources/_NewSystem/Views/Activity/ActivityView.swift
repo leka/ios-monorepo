@@ -146,12 +146,7 @@ public struct ActivityView: View {
         if isLottieDisplayed, isReinforcerEnabled {
             LottieView(
                 animation: .reinforcer,
-                speed: 0.25,
-                action: {
-                    withAnimation {
-                        self.viewModel.isCurrentExerciseCompleted = false
-                    }
-                }
+                speed: 0.25
             )
             .onAppear {
                 // TODO(@ladislas/@hugo): Use reinforcer children choice
