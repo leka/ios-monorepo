@@ -46,7 +46,7 @@ public class ActivityViewViewModel: ObservableObject {
     @Published var isReinforcerAnimationEnabled: Bool = true
 
     // TODO(@ladislas/@hugo): Add method to change this boolean
-    @Published var isCurrentActivitySucceeded: Bool = true
+    @Published var didCompleteActivitySuccessfully: Bool = true
 
     var isProgressBarVisible: Bool {
         self.totalSequences > 1 || self.totalExercisesInCurrentSequence != 1

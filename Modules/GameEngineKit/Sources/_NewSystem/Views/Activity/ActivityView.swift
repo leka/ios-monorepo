@@ -119,9 +119,9 @@ public struct ActivityView: View {
     private var lottieScoreView: some View {
         let isScoreDisplayed = self.viewModel.isCurrentActivityCompleted
 
-        if isScoreDisplayed, self.viewModel.isCurrentActivitySucceeded {
+        if isScoreDisplayed, self.viewModel.didCompleteActivitySuccessfully {
             SuccessView()
-        } else if isScoreDisplayed, !self.viewModel.isCurrentActivitySucceeded {
+        } else if isScoreDisplayed, !self.viewModel.didCompleteActivitySuccessfully {
             FailureView()
         } else {
             EmptyView()
