@@ -1,22 +1,22 @@
 {
     "**/*.swift": [
         "// Leka - iOS Monorepo",
-        "// Copyright 2023 APF France handicap",
+        "// Copyright APF France handicap",
         "// SPDX-License-Identifier: Apache-2.0\n"
     ],
     "**/*.yml": [
         "# Leka - iOS Monorepo",
-        "# Copyright 2023 APF France handicap",
+        "# Copyright APF France handicap",
         "# SPDX-License-Identifier: Apache-2.0\n"
     ],
     ".github/**/*.yml": [
         "# Leka - iOS Monorepo",
-        "# Copyright 2023 APF France handicap",
+        "# Copyright APF France handicap",
         "# SPDX-License-Identifier: Apache-2.0\n"
     ],
     "Gemfile": [
         "# Leka - iOS Monorepo",
-        "# Copyright 2023 APF France handicap",
+        "# Copyright APF France handicap",
         "# SPDX-License-Identifier: Apache-2.0\n"
     ],
     "ignore": [
