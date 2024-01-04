@@ -1,4 +1,8 @@
 // Leka - iOS Monorepo
+// Copyright 2024 APF France handicap
+// SPDX-License-Identifier: Apache-2.0
+
+// Leka - iOS Monorepo
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
@@ -38,7 +42,7 @@ struct ActivityProgressBar: View {
                         .padding(6)
                         .onChange(of: self.viewModel.currentExerciseSharedData.state) { newValue in
                             if newValue == .completed {
-                                withAnimation(.snappy.delay(self.viewModel.isReinforcerAnimationEnabled ? 5 : 0.5)) {
+                                withAnimation(.snappy.delay(self.viewModel.delayAfterReinforcerAnimation)) {
                                     self.currentColor = .green
                                 }
                             }

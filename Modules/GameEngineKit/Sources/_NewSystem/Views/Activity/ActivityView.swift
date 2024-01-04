@@ -1,4 +1,8 @@
 // Leka - iOS Monorepo
+// Copyright 2024 APF France handicap
+// SPDX-License-Identifier: Apache-2.0
+
+// Leka - iOS Monorepo
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
@@ -42,16 +46,40 @@ public struct ActivityView: View {
                     }
                 }
                 .id(self.viewModel.currentExerciseIndexInSequence)
-                .blur(radius: self.viewModel.isReinforcerAnimationVisible && self.viewModel.isReinforcerAnimationEnabled ? 20 : 0)
-                .opacity(self.viewModel.isCurrentActivityCompleted ? 0 : 1)
+                .blur(radius: self.blurRadius)
+                .opacity(self.opacity)
+                .onChange(of: self.viewModel.isReinforcerAnimationVisible) {
+                    if $0 {
+                        withAnimation(.easeInOut.delay(0.5)) {
+                            self.blurRadius = 20
+                        }
+                    } else {
+                        withAnimation {
+                            self.blurRadius = 0
+                        }
+                    }
+                }
+                .onChange(of: self.viewModel.isCurrentActivityCompleted) {
+                    if $0 {
+                        withAnimation {
+                            self.opacity = 0
+                        }
+                    } else {
+                        withAnimation {
+                            self.opacity = 1
+                        }
+                    }
+                }
 
-                self.reinforcerAnimationView
-
-                self.lottieScoreView
+                if self.viewModel.isReinforcerAnimationVisible {
+                    self.reinforcerAnimationView
+                        .frame(maxWidth: .infinity)
+                }
 
                 HStack {
-                    self.dismissReinforcerButton
-
+                    if self.viewModel.isReinforcerAnimationVisible {
+                        self.hideReinforcerToShowAnswersButton
+                    }
                     self.continueButton
                 }
             }
@@ -75,7 +103,6 @@ public struct ActivityView: View {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
                         self.viewModel.isReinforcerAnimationEnabled.toggle()
-                        self.viewModel.isReinforcerAnimationVisible = false
                     } label: {
                         Image(systemName: self.viewModel.isReinforcerAnimationEnabled ? "circle" : "circle.slash")
                     }
@@ -93,6 +120,9 @@ public struct ActivityView: View {
                     }
                     .disabled(self.viewModel.isLastExercise)
                 }
+            }
+            .fullScreenCover(isPresented: self.$viewModel.isCurrentActivityCompleted) {
+                self.endOfActivityScoreView
             }
         }
         .onAppear {
@@ -113,38 +143,37 @@ public struct ActivityView: View {
 
     // MARK: Private
 
+    @State private var opacity: Double = 1
+    @State private var blurRadius: CGFloat = 0
+    @State private var showScoreView: Bool = false
+
     private let robot = Robot.shared
 
     @ViewBuilder
-    private var lottieScoreView: some View {
-        let isScoreDisplayed = self.viewModel.isCurrentActivityCompleted
-
-        if isScoreDisplayed, self.viewModel.didCompleteActivitySuccessfully {
+    private var endOfActivityScoreView: some View {
+        if self.viewModel.didCompleteActivitySuccessfully {
             SuccessView()
-        } else if isScoreDisplayed, !self.viewModel.didCompleteActivitySuccessfully {
-            FailureView()
         } else {
-            EmptyView()
+            FailureView()
         }
     }
 
     @ViewBuilder
     private var reinforcerAnimationView: some View {
-        let isReinforcerDisplayed = self.viewModel.isReinforcerAnimationVisible
-        let isReinforcerEnabled = self.viewModel.isReinforcerAnimationEnabled
-
-        if isReinforcerDisplayed, isReinforcerEnabled {
-            LottieView(
-                animation: .reinforcer,
-                speed: 0.2
-            )
-            .onAppear {
-                // TODO(@ladislas/@hugo): Use reinforcer children choice
-                self.robot.run(.fire)
-            }
-        } else {
-            EmptyView()
+        LottieView(
+            animation: .reinforcer,
+            speed: 0.2
+        )
+        .onAppear {
+            // TODO(@ladislas/@hugo): Use reinforcer children choice
+            self.robot.run(.fire)
         }
+        .transition(
+            .asymmetric(
+                insertion: .opacity.animation(.snappy.delay(0.75)),
+                removal: .identity
+            )
+        )
     }
 
     @ViewBuilder
@@ -164,24 +193,31 @@ public struct ActivityView: View {
             .buttonStyle(.borderedProminent)
             .tint(.green)
             .padding()
-            .transition(.asymmetric(insertion: .opacity.animation(.snappy.delay(self.viewModel.isReinforcerAnimationEnabled ? 5 : 0.5)), removal: .identity))
+            .transition(
+                .asymmetric(
+                    insertion: .opacity.animation(.snappy.delay(self.viewModel.delayAfterReinforcerAnimation)),
+                    removal: .identity
+                )
+            )
         }
     }
 
     @ViewBuilder
-    private var dismissReinforcerButton: some View {
-        let isLottieDisplayed = self.viewModel.isReinforcerAnimationVisible
-
-        if isLottieDisplayed {
+    private var hideReinforcerToShowAnswersButton: some View {
+        if self.viewModel.currentExerciseSharedData.state == .completed, !self.viewModel.isCurrentActivityCompleted {
             Button("Revoir les réponses") {
                 withAnimation {
                     self.viewModel.isReinforcerAnimationVisible = false
                 }
             }
-            .buttonStyle(.borderedProminent)
-            .tint(.green)
+            .buttonStyle(.bordered)
             .padding()
-            .transition(.asymmetric(insertion: .opacity.animation(.snappy.delay(self.viewModel.isReinforcerAnimationVisible ? 5 : 0.5)), removal: .identity))
+            .transition(
+                .asymmetric(
+                    insertion: .opacity.animation(.snappy.delay(self.viewModel.delayAfterReinforcerAnimation)),
+                    removal: .identity
+                )
+            )
         } else {
             EmptyView()
         }

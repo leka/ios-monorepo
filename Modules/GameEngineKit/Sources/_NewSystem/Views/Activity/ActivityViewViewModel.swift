@@ -1,4 +1,8 @@
 // Leka - iOS Monorepo
+// Copyright 2024 APF France handicap
+// SPDX-License-Identifier: Apache-2.0
+
+// Leka - iOS Monorepo
 // Copyright 2023 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
@@ -47,6 +51,10 @@ public class ActivityViewViewModel: ObservableObject {
 
     // TODO(@ladislas/@hugo): Add method to change this boolean
     @Published var didCompleteActivitySuccessfully: Bool = true
+
+    var delayAfterReinforcerAnimation: Double {
+        self.isReinforcerAnimationEnabled ? 5 : 0.5
+    }
 
     var isProgressBarVisible: Bool {
         self.totalSequences > 1 || self.totalExercisesInCurrentSequence != 1
@@ -100,17 +108,10 @@ public class ActivityViewViewModel: ObservableObject {
         self.currentExerciseSharedData.objectWillChange
             .receive(on: DispatchQueue.main)
             .sink {
-                self.objectWillChange.send()
-                if self.currentExerciseSharedData.state == .completed {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                        withAnimation {
-                            self.isReinforcerAnimationVisible = true
-                        }
-                    }
+                if self.isReinforcerAnimationEnabled, self.currentExerciseSharedData.state == .completed {
+                    self.isReinforcerAnimationVisible = true
                 } else {
-                    withAnimation {
-                        self.isReinforcerAnimationVisible = false
-                    }
+                    self.isReinforcerAnimationVisible = false
                 }
             }
             .store(in: &self.cancellables)
