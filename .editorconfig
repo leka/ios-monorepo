@@ -1,5 +1,5 @@
 # Leka - iOS Monorepo
-# Copyright 2023 APF France handicap
+# Copyright APF France handicap
 # SPDX-License-Identifier: Apache-2.0
 
 # editorconfig.org
@@ -32,3 +32,6 @@ indent_size = 2
 [Makefile]
 indent_style = tab
 indent_size = 4
+
+[*.json]
+insert_final_newline = false

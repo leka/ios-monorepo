@@ -1,5 +1,5 @@
 # Leka - iOS Monorepo
-# Copyright 2023 APF France handicap
+# Copyright APF France handicap
 # SPDX-License-Identifier: Apache-2.0
 
 --disable all
@@ -50,7 +50,7 @@
 --extensionacl on-extension
 
 --enable fileHeader
---header Leka - iOS Monorepo\nCopyright {created.year} APF France handicap\nSPDX-License-Identifier: Apache-2.0
+--header Leka - iOS Monorepo\nCopyright APF France handicap\nSPDX-License-Identifier: Apache-2.0
 
 --enable genericExtensions
 
