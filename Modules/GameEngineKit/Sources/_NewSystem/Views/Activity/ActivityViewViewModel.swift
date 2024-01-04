@@ -1,5 +1,5 @@
 // Leka - iOS Monorepo
-// Copyright 2023 APF France handicap
+// Copyright 2024 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
 import Combine
@@ -40,11 +40,17 @@ public class ActivityViewViewModel: ObservableObject {
     @Published var currentExercise: Exercise
     @Published var currentExerciseInterface: Exercise.Interface
     @Published var currentExerciseSharedData: ExerciseSharedData
-    @Published var isCurrentExerciseDisplayingReinforcer: Bool = false
     @Published var isCurrentActivityCompleted: Bool = false
 
+    @Published var isReinforcerAnimationVisible: Bool = false
+    @Published var isReinforcerAnimationEnabled: Bool = true
+
     // TODO(@ladislas/@hugo): Add method to change this boolean
-    @Published var isCurrentActivitySucceeded: Bool = true
+    @Published var didCompleteActivitySuccessfully: Bool = true
+
+    var delayAfterReinforcerAnimation: Double {
+        self.isReinforcerAnimationEnabled ? 5 : 0.5
+    }
 
     var isProgressBarVisible: Bool {
         self.totalSequences > 1 || self.totalExercisesInCurrentSequence != 1
@@ -98,11 +104,10 @@ public class ActivityViewViewModel: ObservableObject {
         self.currentExerciseSharedData.objectWillChange
             .receive(on: DispatchQueue.main)
             .sink {
-                self.objectWillChange.send()
-                if self.currentExerciseSharedData.state == .completed {
-                    withAnimation {
-                        self.isCurrentExerciseDisplayingReinforcer = true
-                    }
+                if self.isReinforcerAnimationEnabled, self.currentExerciseSharedData.state == .completed {
+                    self.isReinforcerAnimationVisible = true
+                } else {
+                    self.isReinforcerAnimationVisible = false
                 }
             }
             .store(in: &self.cancellables)

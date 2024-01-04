@@ -1,5 +1,5 @@
 // Leka - iOS Monorepo
-// Copyright 2023 APF France handicap
+// Copyright 2024 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
 import ContentKit
@@ -8,19 +8,7 @@ import Lottie
 import RobotKit
 import SwiftUI
 
-extension LottieAnimation {
-    static var reinforcer: LottieAnimation {
-        LottieAnimation.named("reinforcer-spin-blink", bundle: .module)!
-    }
-
-    static var bravo: LottieAnimation {
-        LottieAnimation.named("bravo", bundle: .module)!
-    }
-
-    static var tryAgain: LottieAnimation {
-        LottieAnimation.named("tryAgain", bundle: .module)!
-    }
-}
+// swiftlint:disable cyclomatic_complexity void_function_in_ternary function_body_length
 
 // MARK: - ActivityView
 
@@ -54,14 +42,42 @@ public struct ActivityView: View {
                     }
                 }
                 .id(self.viewModel.currentExerciseIndexInSequence)
-                .blur(radius: self.viewModel.isCurrentExerciseDisplayingReinforcer ? 20 : 0)
-                .opacity(self.viewModel.isCurrentActivityCompleted ? 0 : 1)
+                .blur(radius: self.blurRadius)
+                .opacity(self.opacity)
+                .onChange(of: self.viewModel.isReinforcerAnimationVisible) {
+                    if $0 {
+                        withAnimation(.easeInOut.delay(0.5)) {
+                            self.blurRadius = 20
+                        }
+                    } else {
+                        withAnimation {
+                            self.blurRadius = 0
+                        }
+                    }
+                }
+                .onChange(of: self.viewModel.isCurrentActivityCompleted) {
+                    if $0 {
+                        withAnimation {
+                            self.opacity = 0
+                        }
+                    } else {
+                        withAnimation {
+                            self.opacity = 1
+                        }
+                    }
+                }
 
-                self.lottieReinforcer
+                if self.viewModel.isReinforcerAnimationVisible {
+                    self.reinforcerAnimationView
+                        .frame(maxWidth: .infinity)
+                }
 
-                self.lottieScoreView
-
-                self.continueButton
+                HStack {
+                    if self.viewModel.isReinforcerAnimationVisible {
+                        self.hideReinforcerToShowAnswersButton
+                    }
+                    self.continueButton
+                }
             }
             .frame(maxWidth: .infinity)
             .background(.lkBackground)
@@ -81,6 +97,13 @@ public struct ActivityView: View {
                     .disabled(self.viewModel.isFirstExercise)
                 }
                 ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        self.viewModel.isReinforcerAnimationEnabled.toggle()
+                    } label: {
+                        Image(systemName: self.viewModel.isReinforcerAnimationEnabled ? "circle" : "circle.slash")
+                    }
+                }
+                ToolbarItem(placement: .topBarTrailing) {
                     Button("Dismiss") {
                         self.dismiss()
                     }
@@ -93,6 +116,9 @@ public struct ActivityView: View {
                     }
                     .disabled(self.viewModel.isLastExercise)
                 }
+            }
+            .fullScreenCover(isPresented: self.$viewModel.isCurrentActivityCompleted) {
+                self.endOfActivityScoreView
             }
         }
         .onAppear {
@@ -113,42 +139,37 @@ public struct ActivityView: View {
 
     // MARK: Private
 
+    @State private var opacity: Double = 1
+    @State private var blurRadius: CGFloat = 0
+    @State private var showScoreView: Bool = false
+
     private let robot = Robot.shared
 
     @ViewBuilder
-    private var lottieScoreView: some View {
-        let isScoreDisplayed = self.viewModel.isCurrentActivityCompleted
-
-        if isScoreDisplayed, self.viewModel.isCurrentActivitySucceeded {
+    private var endOfActivityScoreView: some View {
+        if self.viewModel.didCompleteActivitySuccessfully {
             SuccessView()
-        } else if isScoreDisplayed, !self.viewModel.isCurrentActivitySucceeded {
-            FailureView()
         } else {
-            EmptyView()
+            FailureView()
         }
     }
 
     @ViewBuilder
-    private var lottieReinforcer: some View {
-        let isLottieDisplayed = self.viewModel.isCurrentExerciseDisplayingReinforcer
-
-        if isLottieDisplayed {
-            LottieView(
-                animation: .reinforcer,
-                speed: 0.25,
-                action: {
-                    withAnimation {
-                        self.viewModel.isCurrentExerciseDisplayingReinforcer = false
-                    }
-                }
-            )
-            .onAppear {
-                // TODO(@ladislas/@hugo): Use reinforcer children choice
-                self.robot.run(.fire)
-            }
-        } else {
-            EmptyView()
+    private var reinforcerAnimationView: some View {
+        LottieView(
+            animation: .reinforcer,
+            speed: 0.2
+        )
+        .onAppear {
+            // TODO(@ladislas/@hugo): Use reinforcer children choice
+            self.robot.run(.fire)
         }
+        .transition(
+            .asymmetric(
+                insertion: .opacity.animation(.snappy.delay(0.75)),
+                removal: .identity
+            )
+        )
     }
 
     @ViewBuilder
@@ -168,7 +189,33 @@ public struct ActivityView: View {
             .buttonStyle(.borderedProminent)
             .tint(.green)
             .padding()
-            .transition(.asymmetric(insertion: .opacity.animation(.snappy.delay(5)), removal: .identity))
+            .transition(
+                .asymmetric(
+                    insertion: .opacity.animation(.snappy.delay(self.viewModel.delayAfterReinforcerAnimation)),
+                    removal: .identity
+                )
+            )
+        }
+    }
+
+    @ViewBuilder
+    private var hideReinforcerToShowAnswersButton: some View {
+        if self.viewModel.currentExerciseSharedData.state == .completed, !self.viewModel.isCurrentActivityCompleted {
+            Button("Revoir les réponses") {
+                withAnimation {
+                    self.viewModel.isReinforcerAnimationVisible = false
+                }
+            }
+            .buttonStyle(.bordered)
+            .padding()
+            .transition(
+                .asymmetric(
+                    insertion: .opacity.animation(.snappy.delay(self.viewModel.delayAfterReinforcerAnimation)),
+                    removal: .identity
+                )
+            )
+        } else {
+            EmptyView()
         }
     }
 
@@ -249,6 +296,8 @@ public struct ActivityView: View {
         }
     }
 }
+
+// swiftlint:enable cyclomatic_complexity void_function_in_ternary function_body_length
 
 #Preview {
     let activity = ContentKit.decodeActivity("activity-sample")

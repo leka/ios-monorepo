@@ -1,8 +1,9 @@
 // Leka - iOS Monorepo
-// Copyright 2023 APF France handicap
+// Copyright 2024 APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
 import DesignKit
+import Lottie
 import SwiftUI
 
 extension DanceFreezeView {
