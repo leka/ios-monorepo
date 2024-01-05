@@ -176,9 +176,7 @@ public struct ActivityView: View {
     private var continueButton: some View {
         let state = self.viewModel.currentExerciseSharedData.state
 
-        if state != .completed {
-            EmptyView()
-        } else {
+        if case .completed = state {
             Button("Continuer") {
                 if self.viewModel.isCurrentActivityCompleted {
                     self.dismiss()
@@ -195,12 +193,14 @@ public struct ActivityView: View {
                     removal: .identity
                 )
             )
+        } else {
+            EmptyView()
         }
     }
 
     @ViewBuilder
     private var hideReinforcerToShowAnswersButton: some View {
-        if self.viewModel.currentExerciseSharedData.state == .completed, !self.viewModel.isCurrentActivityCompleted {
+        if case .completed = self.viewModel.currentExerciseSharedData.state, !self.viewModel.isCurrentActivityCompleted {
             Button("Revoir les réponses") {
                 withAnimation {
                     self.viewModel.isReinforcerAnimationVisible = false

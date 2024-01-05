@@ -36,7 +36,8 @@ extension GameplayFindTheRightAnswers where ChoiceModelType == GameplayTouchToSe
         }
 
         if rightAnswers.isEmpty {
-            state.send(.completed)
+            // TODO(@HPezz): Will be overwrite by next commit allowedTrials implementation
+            state.send(.completed(result: .excellent))
         }
     }
 }

@@ -155,7 +155,7 @@ extension DragAndDropIntoZonesView {
             node.zPosition = 10
             node.isDraggable = false
             self.onDropAction(node)
-            if self.viewModel.exercicesSharedData.state == .completed {
+            if case .completed = self.viewModel.exercicesSharedData.state {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [self] in
                     self.exerciseCompletedBehavior()
                 }

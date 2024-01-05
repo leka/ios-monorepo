@@ -28,7 +28,15 @@ struct ActivityProgressBar: View {
                         }()
                         let isCurrentExercise: Bool = sequenceIndex == self.viewModel.currentSequenceIndex
                             && exerciseIndex == self.viewModel.currentExerciseIndexInSequence
-                            && self.viewModel.currentExerciseSharedData.state != .completed
+                            && {
+                                switch self.viewModel.currentExerciseSharedData.state {
+                                    case .completed:
+                                        false
+                                    default:
+                                        true
+                                }
+                            }()
+
                         ActivityProgressBarMarker(
                             color: (sequenceIndex == self.viewModel.currentSequenceIndex
                                 && exerciseIndex == self.viewModel.currentExerciseIndexInSequence)
@@ -37,9 +45,20 @@ struct ActivityProgressBar: View {
                         )
                         .padding(6)
                         .onChange(of: self.viewModel.currentExerciseSharedData.state) { newValue in
-                            if newValue == .completed {
+                            if case let .completed(result) = newValue {
                                 withAnimation(.snappy.delay(self.viewModel.delayAfterReinforcerAnimation)) {
-                                    self.currentColor = .green
+                                    switch result {
+                                        case .excellent:
+                                            self.currentColor = .green
+                                        case .good:
+                                            self.currentColor = .orange
+                                        case .average,
+                                             .belowAverage,
+                                             .fail:
+                                            self.currentColor = .red
+                                        case .nonApplicable:
+                                            self.currentColor = .gray
+                                    }
                                 }
                             }
                         }

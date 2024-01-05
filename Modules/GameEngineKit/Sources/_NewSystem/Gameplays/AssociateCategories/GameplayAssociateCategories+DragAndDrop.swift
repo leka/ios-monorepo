@@ -32,7 +32,8 @@ extension GameplayAssociateCategories where ChoiceModelType == GameplayAssociate
         }
 
         if choices.value.allSatisfy({ $0.state == .rightAnswer }) {
-            state.send(.completed)
+            // TODO(@HPezz): Will be overwrite by next commit allowedTrials implementation
+            state.send(.completed(result: .excellent))
         }
     }
 }
