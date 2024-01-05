@@ -16,17 +16,25 @@ struct GameplayTouchToSelectChoiceModel: GameplayChoiceModelProtocol {
 }
 
 extension GameplayFindTheRightAnswers where ChoiceModelType == GameplayTouchToSelectChoiceModel {
+    // TODO: (@HPezz): Create gameplay related grading table search function & allowedTrials in args
     convenience init(choices: [GameplayTouchToSelectChoiceModel], shuffle: Bool = false) {
         self.init()
         self.choices.send(shuffle ? choices.shuffled() : choices)
         rightAnswers = choices.filter(\.choice.isRightAnswer)
         state.send(.playing)
+
+        let numberOfChoices = self.choices.value.count
+        let numberOfRightAnswers = self.rightAnswers.count
+
+        self.allowedTrials = kDefaultGradingTable[numberOfChoices]![numberOfRightAnswers]!
     }
 
     func process(_ choice: ChoiceModelType) {
         guard rightAnswers.isNotEmpty else {
             return
         }
+
+        numberOfTrials += 1
 
         if choice.choice.isRightAnswer, rightAnswers.isNotEmpty {
             updateChoice(choice, state: .rightAnswer)
@@ -36,8 +44,8 @@ extension GameplayFindTheRightAnswers where ChoiceModelType == GameplayTouchToSe
         }
 
         if rightAnswers.isEmpty {
-            // TODO(@HPezz): Will be overwrite by next commit allowedTrials implementation
-            state.send(.completed(result: .excellent))
+            let level = evaluateCompletionLevel(allowedTrials: allowedTrials, numberOfTrials: numberOfTrials)
+            state.send(.completed(level: level))
         }
     }
 }
