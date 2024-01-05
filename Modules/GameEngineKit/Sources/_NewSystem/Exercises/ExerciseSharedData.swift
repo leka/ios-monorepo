@@ -5,5 +5,37 @@
 import SwiftUI
 
 public class ExerciseSharedData: ObservableObject {
+    // MARK: Lifecycle
+
+    public init(sequenceIndex: Int, exerciseIndex: Int) {
+        self.sequenceIndex = sequenceIndex
+        self.exerciseIndex = exerciseIndex
+    }
+
+    public init() {
+        self.exerciseIndex = 0
+        self.sequenceIndex = 0
+    }
+
+    // MARK: Internal
+
+    // TODO: (@HPezz): Add state setter function, and makes it private
     @Published var state: ExerciseState = .idle
+
+    let sequenceIndex: Int
+    let exerciseIndex: Int
+
+    var completionLevel: ExerciseState.CompletionLevel? {
+        guard case let .completed(level) = state else { return nil }
+        return level
+    }
+
+    var isExerciseNotYetCompleted: Bool {
+        switch self.state {
+            case .completed:
+                false
+            default:
+                true
+        }
+    }
 }

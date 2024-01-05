@@ -17,15 +17,27 @@ struct ActivityProgressBar: View {
             ForEach(0..<self.viewModel.totalSequences, id: \.self) { sequenceIndex in
                 HStack(spacing: 0) {
                     ForEach(0..<self.viewModel.totalExercisesInCurrentSequence, id: \.self) { exerciseIndex in
-                        let dotColor: Color = {
-                            guard sequenceIndex < self.viewModel.currentSequenceIndex
-                                || (sequenceIndex == self.viewModel.currentSequenceIndex
-                                    && exerciseIndex < self.viewModel.currentExerciseIndexInSequence)
-                            else {
-                                return .white
+                        let dotColor: Color = if let completedExerciseSharedData = self.viewModel.completedExercisesSharedData.first(where: {
+                            $0.sequenceIndex == sequenceIndex
+                                && $0.exerciseIndex == exerciseIndex
+                        }) {
+                            switch completedExerciseSharedData.completionLevel {
+                                case .excellent:
+                                    .green
+                                case .good:
+                                    .orange
+                                case .fail,
+                                     .average,
+                                     .belowAverage:
+                                    .red
+                                case .none,
+                                     .nonApplicable:
+                                    .gray
                             }
-                            return .green
-                        }()
+                        } else {
+                            .white
+                        }
+
                         let isCurrentExercise: Bool = sequenceIndex == self.viewModel.currentSequenceIndex
                             && exerciseIndex == self.viewModel.currentExerciseIndexInSequence
                             && {
@@ -45,9 +57,9 @@ struct ActivityProgressBar: View {
                         )
                         .padding(6)
                         .onChange(of: self.viewModel.currentExerciseSharedData.state) { newValue in
-                            if case let .completed(result) = newValue {
+                            if case let .completed(level) = newValue {
                                 withAnimation(.snappy.delay(self.viewModel.delayAfterReinforcerAnimation)) {
-                                    switch result {
+                                    switch level {
                                         case .excellent:
                                             self.currentColor = .green
                                         case .good:
