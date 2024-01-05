@@ -148,9 +148,9 @@ public struct ActivityView: View {
     @ViewBuilder
     private var endOfActivityScoreView: some View {
         if self.viewModel.didCompleteActivitySuccessfully {
-            SuccessView()
+            SuccessView(percentage: self.viewModel.currentActivitySuccessPercentage)
         } else {
-            FailureView()
+            FailureView(percentage: self.viewModel.currentActivitySuccessPercentage)
         }
     }
 
@@ -178,10 +178,10 @@ public struct ActivityView: View {
 
         if case .completed = state {
             Button("Continuer") {
-                if self.viewModel.isCurrentActivityCompleted {
-                    self.dismiss()
+                if self.viewModel.isLastExercise {
+                    self.viewModel.scorePanelEnabled ? self.viewModel.moveToActivityEnd() : self.dismiss()
                 } else {
-                    self.viewModel.isLastExercise ? self.viewModel.moveToScorePanel() : self.viewModel.moveToNextExercise()
+                    self.viewModel.moveToNextExercise()
                 }
             }
             .buttonStyle(.borderedProminent)

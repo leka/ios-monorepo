@@ -63,6 +63,18 @@ public class ActivityViewViewModel: ObservableObject {
         self.successExercisesSharedData.count > (self.completedExercisesSharedData.count * 4 / 5)
     }
 
+    var scorePanelEnabled: Bool {
+        !self.completedExercisesSharedData.filter {
+            $0.completionLevel != .nonApplicable
+        }.isEmpty
+    }
+
+    var currentActivitySuccessPercentage: Int {
+        self.successExercisesSharedData.count * 100 / self.completedExercisesSharedData.filter {
+            $0.completionLevel != .nonApplicable
+        }.count
+    }
+
     var delayAfterReinforcerAnimation: Double {
         self.isReinforcerAnimationEnabled ? 5 : 0.5
     }
@@ -93,7 +105,7 @@ public class ActivityViewViewModel: ObservableObject {
         self.updateValues()
     }
 
-    func moveToScorePanel() {
+    func moveToActivityEnd() {
         self.isCurrentActivityCompleted = true
     }
 

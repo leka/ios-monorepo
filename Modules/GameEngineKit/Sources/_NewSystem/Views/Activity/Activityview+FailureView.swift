@@ -8,11 +8,13 @@ import SwiftUI
 
 extension ActivityView {
     struct FailureView: View {
+        let percentage: Int
+
         var body: some View {
             VStack(spacing: 40) {
                 // TODO(@ladislas/@hugo): Use text variables to be localization friendly
                 VStack {
-                    Text("10% de réussite !")
+                    Text("\(self.percentage)% de réussite !")
                         .font(.largeTitle)
                         .foregroundStyle(.teal)
                         .padding(10)
@@ -37,5 +39,5 @@ extension ActivityView {
 }
 
 #Preview {
-    ActivityView.FailureView()
+    ActivityView.FailureView(percentage: 6)
 }
