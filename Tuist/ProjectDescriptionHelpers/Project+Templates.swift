@@ -2,6 +2,8 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+// swiftformat:disable acronyms
+
 import ProjectDescription
 
 /// Project helpers are functions that simplify the way you define your project.
