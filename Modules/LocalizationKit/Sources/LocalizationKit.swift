@@ -9,11 +9,18 @@ import Foundation
 
 public enum l10n {
     public static func LocalizedString(
-        _ key: StaticString, value: String.LocalizationValue, comment: StaticString
+        _ key: StaticString, value: String.LocalizationValue, bundle: Bundle? = nil, comment: StaticString, dsoHandle: UnsafeRawPointer = #dsohandle
     )
         -> AttributedString
     {
-        let string = String(localized: key, defaultValue: value, comment: comment)
+        var dlInformation = dl_info()
+        _ = dladdr(dsoHandle, &dlInformation)
+
+        let path = String(cString: dlInformation.dli_fname)
+        let url = URL(fileURLWithPath: path).deletingLastPathComponent()
+        let bundle = bundle ?? Bundle(url: url)
+
+        let string = String(localized: key, defaultValue: value, bundle: bundle, comment: comment)
         let markdown =
             (try? AttributedString(
                 markdown: string,
