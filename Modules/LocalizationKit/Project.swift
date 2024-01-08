@@ -10,8 +10,6 @@ import ProjectDescriptionHelpers
 // Creates our project using a helper function defined in ProjectDescriptionHelpers
 let project = Project.module(
     name: "LocalizationKit",
-    platform: .iOS,
-    dependencies: [],
     examples: [
         ModuleExample(
             name: "LocalizationKitExample",
@@ -19,6 +17,9 @@ let project = Project.module(
                 "NSAccentColorName": "AccentColor",
             ]
         ),
+    ],
+    dependencies: [
+        // no deps
     ],
     schemes: [
         SchemeList.l10nFR(name: "LocalizationKitExample"),

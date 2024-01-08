@@ -25,47 +25,38 @@ public struct ModuleExample {
 public extension Project {
     static func module(
         name: String,
-        platform: Platform,
-        product: Product = .staticLibrary,
-        dependencies: [TargetDependency],
-        settings: Settings? = nil,
-        examples: [ModuleExample] = [],
+        deploymentTargets: DeploymentTargets = .iOS("16.0"),
+        destinations: Destinations = [.iPad, .macWithiPadDesign],
+        infoPlist: [String: Plist.Value] = [:],
+        settings: SettingsDictionary = [:],
         options: Options = .options(),
+        examples: [ModuleExample] = [],
+        dependencies: [TargetDependency] = [],
         schemes: [Scheme] = []
     ) -> Project {
         let frameworkTargets = makeFrameworkTargets(
             name: name,
-            platform: platform,
-            product: product,
-            dependencies: dependencies,
-            settings: settings
+            deploymentTargets: deploymentTargets,
+            destinations: destinations,
+            infoPlist: infoPlist,
+            settings: settings,
+            dependencies: dependencies
         )
 
         let exampleTargets = examples.compactMap { example in
-            let appInfoPlist = InfoPlist.base(version: "1.0.0").merging(example.infoPlist) { _, new in new }
-
-            let target = Target(
+            Target(
                 name: example.name,
-                platform: .iOS,
+                destinations: destinations,
                 product: .app,
                 bundleId: "io.leka.apf.app.example.\(example.name)",
-                deploymentTarget: .iOS(targetVersion: "16.0", devices: .ipad),
-                infoPlist: .extendingDefault(with: appInfoPlist),
+                deploymentTargets: deploymentTargets,
+                infoPlist: .extendingDefault(with: InfoPlist.extendingBase(version: "1.0.0", with: infoPlist)),
                 sources: ["Examples/\(example.name)/Sources/**"],
                 resources: ["Examples/\(example.name)/Resources/**"],
                 scripts: TargetScript.linters(),
                 dependencies: [.target(name: name)],
-                settings: .settings(base: [
-                    "LOCALIZED_STRING_MACRO_NAMES": [
-                        "NSLocalizedString",
-                        "CFCopyLocalizedString",
-                        "LocalizedString",
-                        "LocalizedStringInterpolation",
-                    ],
-                ])
+                settings: .settings(base: .extendingBase(with: settings))
             )
-
-            return target
         }
 
         return Project(
@@ -76,4 +67,51 @@ public extension Project {
             schemes: schemes
         )
     }
+}
+
+private func makeFrameworkTargets(
+    name: String,
+    deploymentTargets: DeploymentTargets = .iOS("16.0"),
+    destinations: Destinations = [.iPad, .macWithiPadDesign],
+    infoPlist: [String: Plist.Value] = [:],
+    settings: SettingsDictionary = [:],
+    dependencies: [TargetDependency] = []
+)
+    -> [Target]
+{
+    var product: Product = .staticLibrary
+
+    if Environment.generateModulesAsFrameworksForDebug.getBoolean(default: false) {
+        product = .framework
+    }
+
+    let module = Target(
+        name: name,
+        destinations: destinations,
+        product: product,
+        bundleId: "io.leka.apf.module.\(name)",
+        deploymentTargets: deploymentTargets,
+        infoPlist: .extendingDefault(with: InfoPlist.extendingBase(version: "1.0.0", with: infoPlist)),
+        sources: ["Sources/**"],
+        resources: ["Resources/**"],
+        scripts: TargetScript.linters(),
+        dependencies: dependencies,
+        settings: .settings(base: .extendingBase(with: settings))
+    )
+
+    let tests = Target(
+        name: "\(name)Tests",
+        destinations: destinations,
+        product: .unitTests,
+        bundleId: "io.leka.apf.framework.\(name)Tests",
+        infoPlist: .extendingDefault(with: InfoPlist.extendingBase(version: "1.0.0", with: infoPlist)),
+        sources: ["Tests/**"],
+        resources: [],
+        scripts: TargetScript.linters(),
+        dependencies: [
+            .target(name: name),
+        ]
+    )
+
+    return [module, tests]
 }
