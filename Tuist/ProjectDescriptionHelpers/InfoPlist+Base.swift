@@ -24,6 +24,15 @@ public extension InfoPlist {
                 "bluetooth-central",
                 "audio",
             ],
+            "UIRequiresFullScreen": "true",
+            "UISupportedInterfaceOrientations": [
+                "UIInterfaceOrientationLandscapeRight",
+                "UIInterfaceOrientationLandscapeLeft",
+            ],
+            "UISupportedInterfaceOrientations~ipad": [
+                "UIInterfaceOrientationLandscapeRight",
+                "UIInterfaceOrientationLandscapeLeft",
+            ],
         ]
     }
 
