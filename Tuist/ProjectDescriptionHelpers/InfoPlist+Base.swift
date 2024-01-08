@@ -33,6 +33,7 @@ public extension InfoPlist {
                 "UIInterfaceOrientationLandscapeRight",
                 "UIInterfaceOrientationLandscapeLeft",
             ],
+            "LSApplicationCategoryType": "public.app-category.utilities",
         ]
     }
 
