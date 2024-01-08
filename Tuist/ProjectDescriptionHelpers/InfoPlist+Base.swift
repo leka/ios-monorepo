@@ -18,6 +18,11 @@ public extension InfoPlist {
                 "fr",
                 "en",
             ],
+            "NSBluetoothAlwaysUsageDescription":
+                "The app needs to use Bluetooth to connect to the Leka robot",
+            "UIBackgroundModes": [
+                "bluetooth-central",
+            ],
         ]
     }
 
