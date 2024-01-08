@@ -12,7 +12,7 @@ public extension Project {
         version: String = "1.0.0",
         deploymentTarget: DeploymentTarget = .iOS(targetVersion: "16.0", devices: .ipad),
         dependencies: [TargetDependency],
-        infoPlist: [String: InfoPlist.Value] = [:],
+        infoPlist: [String: Plist.Value] = [:],
         options: Options = .options(),
         schemes: [Scheme] = []
     ) -> Project {

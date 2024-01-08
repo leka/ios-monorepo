@@ -11,7 +11,7 @@ import ProjectDescription
 public struct ModuleExample {
     // MARK: Lifecycle
 
-    public init(name: String, infoPlist: [String: InfoPlist.Value] = [:]) {
+    public init(name: String, infoPlist: [String: Plist.Value] = [:]) {
         self.name = name
         self.infoPlist = infoPlist
     }
@@ -19,7 +19,7 @@ public struct ModuleExample {
     // MARK: Public
 
     public let name: String
-    public let infoPlist: [String: InfoPlist.Value]
+    public let infoPlist: [String: Plist.Value]
 }
 
 public extension Project {
