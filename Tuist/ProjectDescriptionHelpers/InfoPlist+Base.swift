@@ -14,6 +14,14 @@ public extension InfoPlist {
             "UIMainStoryboardFile": "",
             "UILaunchStoryboardName": "LaunchScreen",
             "ITSAppUsesNonExemptEncryption": "NO",
+            "CFBundleLocalizations": [
+                "fr",
+                "en",
+            ],
         ]
+    }
+
+    static func extendingBase(version: String, with plist: [String: Plist.Value]) -> [String: Plist.Value] {
+        self.base(version: version).merging(plist) { _, new in new }
     }
 }
