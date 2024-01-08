@@ -8,17 +8,10 @@ import ProjectDescription
 import ProjectDescriptionHelpers
 
 // Creates our project using a helper function defined in ProjectDescriptionHelpers
-let project = Project.iOSApp(
+let project = Project.app(
     name: "BLEKitExample",
     dependencies: [
         .project(target: "DesignKit", path: Path("../../Modules/DesignKit")),
         .project(target: "BLEKit", path: Path("../../Modules/BLEKit")),
-    ],
-    infoPlist: [
-        "NSBluetoothAlwaysUsageDescription":
-            "The LekaBLE app needs to use Bluetooth to connect to the Leka robot.",
-        "UIBackgroundModes": [
-            "bluetooth-central",
-        ],
     ]
 )

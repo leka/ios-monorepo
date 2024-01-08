@@ -23,31 +23,11 @@ private var schemes: [Scheme] {
 }
 
 // Creates our project using a helper function defined in ProjectDescriptionHelpers
-let project = Project.iOSApp(
+let project = Project.app(
     name: "LekaUpdater",
     version: "1.4.0",
-    dependencies: [
-        .project(target: "DesignKit", path: Path("../../Modules/DesignKit")),
-        .project(target: "BLEKit", path: Path("../../Modules/BLEKit")),
-        .project(target: "RobotKit", path: Path("../../Modules/RobotKit")),
-        .project(target: "LocalizationKit", path: Path("../../Modules/LocalizationKit")),
-        .external(name: "Version"),
-    ],
     infoPlist: [
         "LEKA_OS_VERSION": "1.4.0",
-        "NSBluetoothAlwaysUsageDescription":
-            "The Leka Updater app needs to use Bluetooth to connect to the Leka robot.",
-        "UIBackgroundModes": [
-            "bluetooth-central",
-        ],
-        "UIRequiresFullScreen": "true",
-        "UISupportedInterfaceOrientations": ["UIInterfaceOrientationPortrait"],
-        "UISupportedInterfaceOrientations~ipad": [
-            "UIInterfaceOrientationPortrait",
-            "UIInterfaceOrientationPortraitUpsideDown",
-        ],
-        "LSApplicationCategoryType": "public.app-category.utilities",
-        "NSAccentColorName": "AccentColor",
         "CFBundleURLTypes": [
             [
                 "CFBundleTypeRole": "Editor",
@@ -58,6 +38,13 @@ let project = Project.iOSApp(
         "LSApplicationQueriesSchemes": [
             "LekaApp", "com.googleusercontent.apps.224911845933-mv4tp4rstgjtvdqvbv5dl7defii1a7ic",
         ],
+    ],
+    dependencies: [
+        .project(target: "DesignKit", path: Path("../../Modules/DesignKit")),
+        .project(target: "BLEKit", path: Path("../../Modules/BLEKit")),
+        .project(target: "RobotKit", path: Path("../../Modules/RobotKit")),
+        .project(target: "LocalizationKit", path: Path("../../Modules/LocalizationKit")),
+        .external(name: "Version"),
     ],
     schemes: schemes
 )
