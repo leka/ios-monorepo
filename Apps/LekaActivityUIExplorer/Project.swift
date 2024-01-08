@@ -10,9 +10,6 @@ import ProjectDescriptionHelpers
 let project = Project.app(
     name: "LekaActivityUIExplorer",
     deploymentTargets: .iOS("17.0"),
-    infoPlist: [
-        "NSAccentColorName": "AccentColor",
-    ],
     dependencies: [
         .project(target: "DesignKit", path: Path("../../Modules/DesignKit")),
         .project(target: "GameEngineKit", path: Path("../../Modules/GameEngineKit")),

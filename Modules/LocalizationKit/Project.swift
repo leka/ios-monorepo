@@ -11,10 +11,7 @@ let project = Project.module(
     name: "LocalizationKit",
     examples: [
         ModuleExample(
-            name: "LocalizationKitExample",
-            infoPlist: [
-                "NSAccentColorName": "AccentColor",
-            ]
+            name: "LocalizationKitExample"
         ),
     ],
     dependencies: [
