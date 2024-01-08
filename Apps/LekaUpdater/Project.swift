@@ -7,21 +7,6 @@
 import ProjectDescription
 import ProjectDescriptionHelpers
 
-private var schemes: [Scheme] {
-    var schemeList: [Scheme] = []
-
-    if Environment.createLocalizationSchemes.getBoolean(
-        default: false)
-    {
-        schemeList.append(contentsOf: [
-            SchemeList.l10nFR(name: "LekaUpdater"),
-            SchemeList.l10nEN(name: "LekaUpdater"),
-        ])
-    }
-
-    return schemeList
-}
-
 // Creates our project using a helper function defined in ProjectDescriptionHelpers
 let project = Project.app(
     name: "LekaUpdater",
@@ -45,6 +30,5 @@ let project = Project.app(
         .project(target: "RobotKit", path: Path("../../Modules/RobotKit")),
         .project(target: "LocalizationKit", path: Path("../../Modules/LocalizationKit")),
         .external(name: "Version"),
-    ],
-    schemes: schemes
+    ]
 )

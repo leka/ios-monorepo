@@ -46,14 +46,15 @@ public extension Project {
             ]
         )
 
-        let targets = [mainTarget, testTarget]
-
         return Project(
             name: name,
             organizationName: "leka.io",
             options: options,
-            targets: targets,
-            schemes: schemes
+            targets: [
+                mainTarget,
+                testTarget,
+            ],
+            schemes: l10nSchemes(name: name) + schemes
         )
     }
 }

@@ -20,9 +20,5 @@ let project = Project.module(
     ],
     dependencies: [
         // no deps
-    ],
-    schemes: [
-        SchemeList.l10nFR(name: "LocalizationKitExample"),
-        SchemeList.l10nEN(name: "LocalizationKitExample"),
     ]
 )
