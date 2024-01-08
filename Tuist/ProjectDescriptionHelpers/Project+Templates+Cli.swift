@@ -14,10 +14,10 @@ public extension Project {
     ) -> Project {
         let mainTarget = Target(
             name: name,
-            platform: .macOS,
+            destinations: .macOS,
             product: .commandLineTool,
             bundleId: "io.leka.apf.cli.\(name)",
-            deploymentTarget: .macOS(targetVersion: "13.0"),
+            deploymentTargets: .macOS("13.0"),
             sources: ["Sources/**"],
             scripts: TargetScript.linters(),
             dependencies: dependencies
