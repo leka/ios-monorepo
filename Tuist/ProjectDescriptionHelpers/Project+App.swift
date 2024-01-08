@@ -2,47 +2,42 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+// swiftformat:disable acronyms
+
 import ProjectDescription
 
 public extension Project {
-    static func iOSApp(
+    static func app(
         name: String,
         version: String = "1.0.0",
-        deploymentTarget: DeploymentTarget = .iOS(targetVersion: "16.0", devices: .ipad),
-        dependencies: [TargetDependency],
-        infoPlist: [String: InfoPlist.Value] = [:],
+        deploymentTargets: DeploymentTargets = .iOS("16.0"),
+        destinations: Destinations = [.iPad, .macWithiPadDesign],
+        infoPlist: [String: Plist.Value] = [:],
+        settings: SettingsDictionary = [:],
         options: Options = .options(),
+        dependencies: [TargetDependency] = [],
         schemes: [Scheme] = []
     ) -> Project {
-        let appInfoPlist = InfoPlist.base(version: version).merging(infoPlist) { _, new in new }
-
         let mainTarget = Target(
             name: name,
-            platform: .iOS,
+            destinations: destinations,
             product: .app,
             bundleId: "io.leka.apf.app.\(name)",
-            deploymentTarget: deploymentTarget,
-            infoPlist: .extendingDefault(with: appInfoPlist),
+            deploymentTargets: deploymentTargets,
+            infoPlist: .extendingDefault(with: InfoPlist.extendingBase(version: version, with: infoPlist)),
             sources: ["Sources/**"],
             resources: ["Resources/**"],
             scripts: TargetScript.linters(),
             dependencies: dependencies,
-            settings: .settings(base: [
-                "LOCALIZED_STRING_MACRO_NAMES": [
-                    "NSLocalizedString",
-                    "CFCopyLocalizedString",
-                    "LocalizedString",
-                    "LocalizedStringInterpolation",
-                ],
-            ])
+            settings: .settings(base: .extendingBase(with: settings))
         )
 
         let testTarget = Target(
             name: "\(name)Tests",
-            platform: .iOS,
+            destinations: destinations,
             product: .unitTests,
             bundleId: "io.leka.apf.app.\(name)Tests",
-            infoPlist: .default,
+            infoPlist: .extendingDefault(with: InfoPlist.extendingBase(version: version, with: infoPlist)),
             sources: ["Tests/**"],
             resources: [],
             scripts: TargetScript.linters(),
@@ -51,14 +46,15 @@ public extension Project {
             ]
         )
 
-        let targets = [mainTarget, testTarget]
-
         return Project(
             name: name,
             organizationName: "leka.io",
             options: options,
-            targets: targets,
-            schemes: schemes
+            targets: [
+                mainTarget,
+                testTarget,
+            ],
+            schemes: l10nSchemes(name: name) + schemes
         )
     }
 }

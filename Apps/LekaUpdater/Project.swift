@@ -2,50 +2,16 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+// swiftformat:disable acronyms
+
 import ProjectDescription
 import ProjectDescriptionHelpers
 
-private var schemes: [Scheme] {
-    var schemeList: [Scheme] = []
-
-    if Environment.createLocalizationSchemes.getBoolean(
-        default: false)
-    {
-        schemeList.append(contentsOf: [
-            SchemeList.l10nFR(name: "LekaUpdater"),
-            SchemeList.l10nEN(name: "LekaUpdater"),
-        ])
-    }
-
-    return schemeList
-}
-
-// Creates our project using a helper function defined in ProjectDescriptionHelpers
-let project = Project.iOSApp(
+let project = Project.app(
     name: "LekaUpdater",
     version: "1.4.0",
-    dependencies: [
-        .project(target: "DesignKit", path: Path("../../Modules/DesignKit")),
-        .project(target: "BLEKit", path: Path("../../Modules/BLEKit")),
-        .project(target: "RobotKit", path: Path("../../Modules/RobotKit")),
-        .project(target: "LocalizationKit", path: Path("../../Modules/LocalizationKit")),
-        .external(name: "Version"),
-    ],
     infoPlist: [
         "LEKA_OS_VERSION": "1.4.0",
-        "NSBluetoothAlwaysUsageDescription":
-            "The Leka Updater app needs to use Bluetooth to connect to the Leka robot.",
-        "UIBackgroundModes": [
-            "bluetooth-central",
-        ],
-        "UIRequiresFullScreen": "true",
-        "UISupportedInterfaceOrientations": ["UIInterfaceOrientationPortrait"],
-        "UISupportedInterfaceOrientations~ipad": [
-            "UIInterfaceOrientationPortrait",
-            "UIInterfaceOrientationPortraitUpsideDown",
-        ],
-        "LSApplicationCategoryType": "public.app-category.utilities",
-        "NSAccentColorName": "AccentColor",
         "CFBundleURLTypes": [
             [
                 "CFBundleTypeRole": "Editor",
@@ -57,5 +23,11 @@ let project = Project.iOSApp(
             "LekaApp", "com.googleusercontent.apps.224911845933-mv4tp4rstgjtvdqvbv5dl7defii1a7ic",
         ],
     ],
-    schemes: schemes
+    dependencies: [
+        .project(target: "DesignKit", path: Path("../../Modules/DesignKit")),
+        .project(target: "BLEKit", path: Path("../../Modules/BLEKit")),
+        .project(target: "RobotKit", path: Path("../../Modules/RobotKit")),
+        .project(target: "LocalizationKit", path: Path("../../Modules/LocalizationKit")),
+        .external(name: "Version"),
+    ]
 )

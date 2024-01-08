@@ -2,10 +2,12 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+// swiftformat:disable acronyms
+
 import ProjectDescription
 
-public enum SchemeList {
-    public static func l10nFR(name: String) -> Scheme {
+public extension Scheme {
+    static func l10nFR(name: String) -> Scheme {
         Scheme(
             name: "\(name) 🇫🇷",
             shared: true,
@@ -14,7 +16,7 @@ public enum SchemeList {
         )
     }
 
-    public static func l10nEN(name: String) -> Scheme {
+    static func l10nEN(name: String) -> Scheme {
         Scheme(
             name: "\(name) 🇺🇸",
             shared: true,
@@ -22,4 +24,11 @@ public enum SchemeList {
             runAction: RunAction.runAction(configuration: "Debug", options: .options(language: "en"))
         )
     }
+}
+
+func l10nSchemes(name: String) -> [Scheme] {
+    [
+        .l10nFR(name: name),
+        .l10nEN(name: name),
+    ]
 }
