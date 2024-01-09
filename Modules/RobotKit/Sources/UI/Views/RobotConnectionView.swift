@@ -5,6 +5,7 @@
 import BLEKit
 import Combine
 import DesignKit
+import LocalizationKit
 import SwiftUI
 
 public struct RobotConnectionView: View {
@@ -50,13 +51,13 @@ public struct RobotConnectionView: View {
             .onDisappear {
                 self.viewModel.stopScanning()
             }
-            .navigationTitle("Choose a robot")
+            .navigationTitle(String(l10n.RobotKit.RobotConnectionView.navigationTitle.characters))
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
                         self.dismiss()
                     } label: {
-                        Text("Dismiss")
+                        Text(l10n.RobotKit.RobotConnectionView.cancelButton)
                     }
                 }
             }
@@ -81,7 +82,7 @@ public struct RobotConnectionView: View {
         // TODO(@ladislas): review "no robot found" interface
         // TODO(@ladislas): handle no robots found after xx seconds + add refresh button
         VStack {
-            Text("Searching for robots...")
+            Text(l10n.RobotKit.RobotConnectionView.searchingViewText)
             ProgressView()
         }
     }
@@ -102,23 +103,11 @@ public struct RobotConnectionView: View {
         }
     }
 
-    private var searchButton: some View {
-        ButtonBordered(tint: .blue) {
-            HStack {
-                Image(systemName: "magnifyingglass")
-                Text("Rechercher")
-            }
-            .frame(minWidth: 200)
-        } action: {
-            // TODO(@ladislas): implement in the future
-        }
-    }
-
     private var connectButton: some View {
         ButtonBordered(tint: .green) {
             HStack {
                 Image(systemName: "checkmark.circle")
-                Text("Se connecter")
+                Text(l10n.RobotKit.RobotConnectionView.connectButton)
             }
             .frame(minWidth: 200)
         } action: {
@@ -133,7 +122,7 @@ public struct RobotConnectionView: View {
         ButtonBordered(tint: .orange) {
             HStack {
                 Image(systemName: "xmark.circle")
-                Text("Se déconnecter")
+                Text(l10n.RobotKit.RobotConnectionView.disconnectButton)
             }
             .frame(minWidth: 200)
         } action: {
@@ -150,7 +139,7 @@ public struct RobotConnectionView: View {
             ButtonFilled(tint: .green) {
                 HStack {
                     Image(systemName: "arrow.right.circle")
-                    Text("Continuer")
+                    Text(l10n.RobotKit.RobotConnectionView.continueButton)
                 }
                 .frame(minWidth: 200)
             } action: {
@@ -161,7 +150,7 @@ public struct RobotConnectionView: View {
             ButtonBordered(tint: .gray) {
                 HStack {
                     Image(systemName: "arrow.right.circle")
-                    Text("Continuer")
+                    Text(l10n.RobotKit.RobotConnectionView.continueButton)
                 }
                 .frame(minWidth: 200)
             } action: {
