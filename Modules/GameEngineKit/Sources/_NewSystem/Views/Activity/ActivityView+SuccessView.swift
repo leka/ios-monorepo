@@ -15,10 +15,12 @@ extension ActivityView {
                 // TODO(@ladislas/@hugo): Use text variables to be localization friendly
                 VStack {
                     Text("\(self.percentage)% de réussite !")
+                        // TODO: (@ui/ux) - Design System - replace with Leka font
                         .font(.largeTitle)
                         .foregroundStyle(.teal)
                         .padding(10)
                     Text("Bravo, vous avez réussi cette activité !")
+                        // TODO: (@ui/ux) - Design System - replace with Leka font
                         .font(.largeTitle)
                 }
 

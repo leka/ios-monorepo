@@ -14,6 +14,7 @@ extension HideAndSeekView {
         var body: some View {
             VStack {
                 Text(self.textMainInstructions)
+                    // TODO: (@ui/ux) - Design System - replace with Leka font
                     .font(.headline)
                 GameEngineKitAsset.Exercises.HideAndSeek.imageIllustration.swiftUIImage
                     .resizable()
