@@ -33,7 +33,7 @@ struct PairingView: View {
     var body: some View {
         VStack {
             Text(self.instructions.textMainInstructions)
-                .font(.body)
+                .font(.headline)
                 .foregroundColor(.primary)
                 .multilineTextAlignment(.center)
 

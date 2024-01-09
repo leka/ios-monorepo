@@ -30,7 +30,7 @@ extension DanceFreezeView {
         var body: some View {
             VStack(alignment: .leading) {
                 Text(self.textMusicSelection)
-                    .font(.title2)
+                    .font(.headline)
 
                 Divider()
 

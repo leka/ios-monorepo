@@ -20,7 +20,7 @@ extension HideAndSeekView {
 
         var body: some View {
             Text(self.text)
-                .font(.title2)
+                .font(.body)
                 .foregroundColor(.white)
                 .fixedSize(horizontal: false, vertical: true)
                 .multilineTextAlignment(.center)

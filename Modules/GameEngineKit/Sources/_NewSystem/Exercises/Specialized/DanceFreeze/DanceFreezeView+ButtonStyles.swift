@@ -20,7 +20,7 @@ extension DanceFreezeView {
 
         var body: some View {
             Text(self.text)
-                .font(.headline)
+                .font(.body)
                 .foregroundColor(.white)
                 .fixedSize(horizontal: false, vertical: true)
                 .multilineTextAlignment(.center)
