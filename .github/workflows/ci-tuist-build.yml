@@ -32,11 +32,11 @@ jobs:
 
       - name: tuist fetch
         run: |
-          tuist fetch
+          TUIST_TURN_OFF_LINTERS=TRUE tuist fetch
 
       - name: tuist generate
         run: |
-          tuist generate -n
+          TUIST_TURN_OFF_LINTERS=TRUE tuist generate -n
 
       - name: tuist build
         run: |

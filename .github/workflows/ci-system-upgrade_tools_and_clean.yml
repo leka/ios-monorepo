@@ -50,7 +50,7 @@ jobs:
         run: |
           brew update
           brew upgrade
-          brew install tuist@3.36.3
+          brew install tuist@3.39.3
           brew cleanup -s --prune=all
 
       - name: Upgrade bundle
