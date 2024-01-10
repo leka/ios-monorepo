@@ -11,7 +11,7 @@ import SwiftUI
 struct UpdateFinishedIllustration: View {
     var body: some View {
         ZStack {
-            Circle().fill(.white)
+            Circle().fill(.lkBackground)
 
             Circle().strokeBorder(DesignKitAsset.Colors.lekaGreen.swiftUIColor, lineWidth: 5)
 
@@ -24,7 +24,7 @@ struct UpdateFinishedIllustration: View {
                 Spacer()
 
                 ZStack {
-                    Circle().fill(.white)
+                    Circle().fill(.lkBackground)
                         .frame(height: 56)
 
                     Image(systemName: "checkmark.circle")

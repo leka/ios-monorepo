@@ -23,7 +23,7 @@ struct RobotCannotBeUpdatedIllustration: View {
     var body: some View {
         ZStack {
             Circle()
-                .fill(.white)
+                .fill(.lkBackground)
                 .frame(width: self.illustrationSize)
 
             Circle()
@@ -42,7 +42,7 @@ struct RobotCannotBeUpdatedIllustration: View {
                 Spacer()
 
                 ZStack {
-                    Circle().fill(.white)
+                    Circle().fill(.lkBackground)
                         .frame(height: self.checkmarkSize)
 
                     Image(systemName: "xmark.circle")

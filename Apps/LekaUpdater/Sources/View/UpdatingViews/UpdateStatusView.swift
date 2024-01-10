@@ -82,6 +82,7 @@ struct UpdateStatusView: View {
                     .padding(35)
             }
             .foregroundColor(DesignKitAsset.Colors.darkGray.swiftUIColor)
+            .background(.lkBackground)
             .onAppear(perform: self.viewModel.startUpdate)
             .toolbar {
                 ToolbarItem(placement: .principal) {
