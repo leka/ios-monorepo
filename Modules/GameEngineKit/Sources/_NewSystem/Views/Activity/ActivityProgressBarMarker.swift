@@ -7,7 +7,7 @@ import SwiftUI
 
 struct ActivityProgressBarMarker: View {
     @Binding var color: Color
-    @Binding var isCurrent: Bool
+    @Binding var isCurrentlyPlaying: Bool
 
     var body: some View {
         Circle()
@@ -17,8 +17,8 @@ struct ActivityProgressBarMarker: View {
                 Circle()
                     .fill(DesignKitAsset.Colors.chevron.swiftUIColor)
                     .padding(4)
-                    .scaleEffect(self.isCurrent ? 1 : 0.01)
-                    .animation(.easeIn(duration: 0.5).delay(0.2), value: self.isCurrent)
+                    .scaleEffect(self.isCurrentlyPlaying ? 1 : 0.01)
+                    .animation(.easeIn(duration: 0.5).delay(0.2), value: self.isCurrentlyPlaying)
             }
     }
 }

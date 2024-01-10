@@ -60,7 +60,9 @@ public class ActivityViewViewModel: ObservableObject {
     }
 
     var didCompleteActivitySuccessfully: Bool {
-        self.successExercisesSharedData.count > (self.completedExercisesSharedData.count * 4 / 5)
+        let minimalSuccessPercentage = 0.8
+
+        return Double(self.successExercisesSharedData.count) > (Double(self.completedExercisesSharedData.count) * minimalSuccessPercentage)
     }
 
     var scorePanelEnabled: Bool {
@@ -69,10 +71,13 @@ public class ActivityViewViewModel: ObservableObject {
         }.isEmpty
     }
 
-    var currentActivitySuccessPercentage: Int {
-        self.successExercisesSharedData.count * 100 / self.completedExercisesSharedData.filter {
+    var activityCompletionSuccessPercentage: Int {
+        let successfulExercises = self.successExercisesSharedData.count
+        let totalExercises = self.completedExercisesSharedData.filter {
             $0.completionLevel != .nonApplicable
         }.count
+
+        return (successfulExercises / totalExercises) * 100
     }
 
     var delayAfterReinforcerAnimation: Double {
