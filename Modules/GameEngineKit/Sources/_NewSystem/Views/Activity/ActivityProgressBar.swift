@@ -17,29 +17,24 @@ struct ActivityProgressBar: View {
             ForEach(0..<self.viewModel.totalSequences, id: \.self) { sequenceIndex in
                 HStack(spacing: 0) {
                     ForEach(0..<self.viewModel.totalExercisesInCurrentSequence, id: \.self) { exerciseIndex in
-                        let dotColor: Color = {
-                            guard sequenceIndex < self.viewModel.currentSequenceIndex
-                                || (sequenceIndex == self.viewModel.currentSequenceIndex
-                                    && exerciseIndex < self.viewModel.currentExerciseIndexInSequence)
-                            else {
-                                return .white
-                            }
-                            return .green
-                        }()
-                        let isCurrentExercise: Bool = sequenceIndex == self.viewModel.currentSequenceIndex
-                            && exerciseIndex == self.viewModel.currentExerciseIndexInSequence
-                            && self.viewModel.currentExerciseSharedData.state != .completed
+                        let markerColor = self.progressBarMarkerColor(sequence: sequenceIndex, exercise: exerciseIndex)
+
+                        let isCurrentSequence = sequenceIndex == self.viewModel.currentSequenceIndex
+                        let isCurrentExercise = isCurrentSequence && exerciseIndex == self.viewModel.currentExerciseIndexInSequence
+                        let isNotYetCompleted = self.viewModel.currentExerciseSharedData.isExerciseNotYetCompleted
+
+                        let isCurrentlyPlaying = isCurrentExercise && isNotYetCompleted
+
                         ActivityProgressBarMarker(
-                            color: (sequenceIndex == self.viewModel.currentSequenceIndex
-                                && exerciseIndex == self.viewModel.currentExerciseIndexInSequence)
-                                ? self.$currentColor : .constant(dotColor),
-                            isCurrent: .constant(isCurrentExercise)
+                            color: (isCurrentSequence && isCurrentExercise)
+                                ? self.$currentColor : .constant(markerColor),
+                            isCurrentlyPlaying: .constant(isCurrentlyPlaying)
                         )
                         .padding(6)
-                        .onChange(of: self.viewModel.currentExerciseSharedData.state) { newValue in
-                            if newValue == .completed {
+                        .onChange(of: self.viewModel.currentExerciseSharedData.state) { newState in
+                            if case let .completed(level) = newState {
                                 withAnimation(.snappy.delay(self.viewModel.delayAfterReinforcerAnimation)) {
-                                    self.currentColor = .green
+                                    self.currentColor = self.completionLevelToColor(level: level)
                                 }
                             }
                         }
@@ -63,4 +58,31 @@ struct ActivityProgressBar: View {
     // MARK: Private
 
     @State private var currentColor: Color = .white
+
+    private func completionLevelToColor(level: ExerciseState.CompletionLevel?) -> Color {
+        switch level {
+            case .excellent:
+                .green
+            case .good:
+                .orange
+            case .average,
+                 .belowAverage,
+                 .fail:
+                .red
+            case .nonApplicable,
+                 .none:
+                .gray
+        }
+    }
+
+    private func progressBarMarkerColor(sequence: Int, exercise: Int) -> Color {
+        if let completedExerciseSharedData = self.viewModel.completedExercisesSharedData.first(where: {
+            $0.sequenceIndex == sequence
+                && $0.exerciseIndex == exercise
+        }) {
+            self.completionLevelToColor(level: completedExerciseSharedData.completionLevel)
+        } else {
+            .white
+        }
+    }
 }

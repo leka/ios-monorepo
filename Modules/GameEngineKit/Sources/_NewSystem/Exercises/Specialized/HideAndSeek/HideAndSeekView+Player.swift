@@ -68,7 +68,7 @@ extension HideAndSeekView {
                     Spacer()
 
                     Button {
-                        self.exercicesSharedData.state = .completed
+                        self.exercicesSharedData.state = .completed(level: .nonApplicable)
                     } label: {
                         ButtonLabel(self.textButtonRobotFound, color: .cyan)
                     }

@@ -73,10 +73,12 @@ public struct ActivityView: View {
                 }
 
                 HStack {
-                    if self.viewModel.isReinforcerAnimationVisible {
-                        self.hideReinforcerToShowAnswersButton
+                    if case .completed = self.viewModel.currentExerciseSharedData.state {
+                        if self.viewModel.isReinforcerAnimationVisible {
+                            self.hideReinforcerToShowAnswersButton
+                        }
+                        self.continueButton
                     }
-                    self.continueButton
                 }
             }
             .frame(maxWidth: .infinity)
@@ -148,9 +150,9 @@ public struct ActivityView: View {
     @ViewBuilder
     private var endOfActivityScoreView: some View {
         if self.viewModel.didCompleteActivitySuccessfully {
-            SuccessView()
+            SuccessView(percentage: self.viewModel.activityCompletionSuccessPercentage)
         } else {
-            FailureView()
+            FailureView(percentage: self.viewModel.activityCompletionSuccessPercentage)
         }
     }
 
@@ -174,49 +176,39 @@ public struct ActivityView: View {
 
     @ViewBuilder
     private var continueButton: some View {
-        let state = self.viewModel.currentExerciseSharedData.state
-
-        if state != .completed {
-            EmptyView()
-        } else {
-            Button("Continuer") {
-                if self.viewModel.isCurrentActivityCompleted {
-                    self.dismiss()
-                } else {
-                    self.viewModel.isLastExercise ? self.viewModel.moveToScorePanel() : self.viewModel.moveToNextExercise()
-                }
+        Button("Continuer") {
+            if self.viewModel.isLastExercise {
+                self.viewModel.scorePanelEnabled ? self.viewModel.moveToActivityEnd() : self.dismiss()
+            } else {
+                self.viewModel.moveToNextExercise()
             }
-            .buttonStyle(.borderedProminent)
-            .tint(.green)
-            .padding()
-            .transition(
-                .asymmetric(
-                    insertion: .opacity.animation(.snappy.delay(self.viewModel.delayAfterReinforcerAnimation)),
-                    removal: .identity
-                )
-            )
         }
+        .buttonStyle(.borderedProminent)
+        .tint(.green)
+        .padding()
+        .transition(
+            .asymmetric(
+                insertion: .opacity.animation(.snappy.delay(self.viewModel.delayAfterReinforcerAnimation)),
+                removal: .identity
+            )
+        )
     }
 
     @ViewBuilder
     private var hideReinforcerToShowAnswersButton: some View {
-        if self.viewModel.currentExerciseSharedData.state == .completed, !self.viewModel.isCurrentActivityCompleted {
-            Button("Revoir les réponses") {
-                withAnimation {
-                    self.viewModel.isReinforcerAnimationVisible = false
-                }
+        Button("Revoir les réponses") {
+            withAnimation {
+                self.viewModel.isReinforcerAnimationVisible = false
             }
-            .buttonStyle(.bordered)
-            .padding()
-            .transition(
-                .asymmetric(
-                    insertion: .opacity.animation(.snappy.delay(self.viewModel.delayAfterReinforcerAnimation)),
-                    removal: .identity
-                )
-            )
-        } else {
-            EmptyView()
         }
+        .buttonStyle(.bordered)
+        .padding()
+        .transition(
+            .asymmetric(
+                insertion: .opacity.animation(.snappy.delay(self.viewModel.delayAfterReinforcerAnimation)),
+                removal: .identity
+            )
+        )
     }
 
     @ViewBuilder

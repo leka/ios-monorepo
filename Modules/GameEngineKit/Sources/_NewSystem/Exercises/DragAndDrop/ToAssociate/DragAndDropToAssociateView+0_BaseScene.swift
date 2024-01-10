@@ -113,7 +113,7 @@ extension DragAndDropToAssociateView {
             node.isDraggable = false
             self.playedDestination?.isDraggable = false
             self.onDropAction(node)
-            if self.viewModel.exercicesSharedData.state == .completed {
+            if case .completed = self.viewModel.exercicesSharedData.state {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [self] in
                     self.exerciseCompletedBehavior()
                 }

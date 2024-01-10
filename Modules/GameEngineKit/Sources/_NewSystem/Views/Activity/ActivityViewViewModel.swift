@@ -22,7 +22,12 @@ public class ActivityViewViewModel: ObservableObject {
 
         self.currentExercise = self.sequenceManager.currentExercise
         self.currentExerciseInterface = self.sequenceManager.currentExercise.interface
-        self.currentExerciseSharedData = ExerciseSharedData()
+
+        self.currentExerciseSharedData = ExerciseSharedData(
+            sequenceIndex: self.sequenceManager.currentSequenceIndex,
+            exerciseIndex: self.sequenceManager.currentExerciseIndexInSequence
+        )
+        self.completedExercisesSharedData.append(self.currentExerciseSharedData)
 
         self.subscribeToCurrentExerciseSharedDataUpdates()
     }
@@ -39,14 +44,41 @@ public class ActivityViewViewModel: ObservableObject {
 
     @Published var currentExercise: Exercise
     @Published var currentExerciseInterface: Exercise.Interface
-    @Published var currentExerciseSharedData: ExerciseSharedData
-    @Published var isCurrentActivityCompleted: Bool = false
 
+    @Published var completedExercisesSharedData: [ExerciseSharedData] = []
+    @Published var currentExerciseSharedData: ExerciseSharedData
+
+    @Published var isCurrentActivityCompleted: Bool = false
     @Published var isReinforcerAnimationVisible: Bool = false
     @Published var isReinforcerAnimationEnabled: Bool = true
 
-    // TODO(@ladislas/@hugo): Add method to change this boolean
-    @Published var didCompleteActivitySuccessfully: Bool = true
+    var successExercisesSharedData: [ExerciseSharedData] {
+        self.completedExercisesSharedData.filter {
+            $0.completionLevel == .excellent
+                || $0.completionLevel == .good
+        }
+    }
+
+    var didCompleteActivitySuccessfully: Bool {
+        let minimalSuccessPercentage = 0.8
+
+        return Double(self.successExercisesSharedData.count) > (Double(self.completedExercisesSharedData.count) * minimalSuccessPercentage)
+    }
+
+    var scorePanelEnabled: Bool {
+        !self.completedExercisesSharedData.filter {
+            $0.completionLevel != .nonApplicable
+        }.isEmpty
+    }
+
+    var activityCompletionSuccessPercentage: Int {
+        let successfulExercises = self.successExercisesSharedData.count
+        let totalExercises = self.completedExercisesSharedData.filter {
+            $0.completionLevel != .nonApplicable
+        }.count
+
+        return (successfulExercises / totalExercises) * 100
+    }
 
     var delayAfterReinforcerAnimation: Double {
         self.isReinforcerAnimationEnabled ? 5 : 0.5
@@ -78,7 +110,7 @@ public class ActivityViewViewModel: ObservableObject {
         self.updateValues()
     }
 
-    func moveToScorePanel() {
+    func moveToActivityEnd() {
         self.isCurrentActivityCompleted = true
     }
 
@@ -95,7 +127,11 @@ public class ActivityViewViewModel: ObservableObject {
         self.totalSequences = self.sequenceManager.totalSequences
         self.currentExerciseIndexInSequence = self.sequenceManager.currentExerciseIndexInSequence
         self.totalExercisesInCurrentSequence = self.sequenceManager.totalExercisesInCurrentSequence
-        self.currentExerciseSharedData = ExerciseSharedData()
+        self.currentExerciseSharedData = ExerciseSharedData(
+            sequenceIndex: self.sequenceManager.currentSequenceIndex,
+            exerciseIndex: self.sequenceManager.currentExerciseIndexInSequence
+        )
+        self.completedExercisesSharedData.append(self.currentExerciseSharedData)
 
         self.subscribeToCurrentExerciseSharedDataUpdates()
     }
@@ -104,7 +140,7 @@ public class ActivityViewViewModel: ObservableObject {
         self.currentExerciseSharedData.objectWillChange
             .receive(on: DispatchQueue.main)
             .sink {
-                if self.isReinforcerAnimationEnabled, self.currentExerciseSharedData.state == .completed {
+                if self.isReinforcerAnimationEnabled, case .completed = self.currentExerciseSharedData.state {
                     self.isReinforcerAnimationVisible = true
                 } else {
                     self.isReinforcerAnimationVisible = false
