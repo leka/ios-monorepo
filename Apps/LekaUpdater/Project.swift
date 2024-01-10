@@ -12,6 +12,11 @@ let project = Project.app(
     version: "1.4.0",
     infoPlist: [
         "LEKA_OS_VERSION": "1.4.0",
+        "UISupportedInterfaceOrientations": ["UIInterfaceOrientationPortrait"],
+        "UISupportedInterfaceOrientations~ipad": [
+            "UIInterfaceOrientationPortrait",
+            "UIInterfaceOrientationPortraitUpsideDown",
+        ],
         "CFBundleURLTypes": [
             [
                 "CFBundleTypeRole": "Editor",
