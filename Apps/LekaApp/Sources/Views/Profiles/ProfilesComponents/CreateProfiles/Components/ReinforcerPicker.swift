@@ -16,7 +16,6 @@ struct ReinforcerPicker: View {
                     Text("Choix du renforçateur")
                         // TODO: (@ui/ux) - Design System - replace with Leka font
                         .font(.body)
-                        .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
                         .padding(.leading, 10)
                     Spacer()
                 }
@@ -26,7 +25,6 @@ struct ReinforcerPicker: View {
                     )
                     // TODO: (@ui/ux) - Design System - replace with Leka font
                     .font(.footnote)
-                    .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
                     .padding(.leading, 10)
                     Spacer()
                 }

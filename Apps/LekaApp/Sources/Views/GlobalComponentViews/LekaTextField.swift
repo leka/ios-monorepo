@@ -104,7 +104,6 @@ struct LekaPasswordField: View {
                 self.isSecured.toggle()
             } label: {
                 Image(systemName: self.isSecured ? "eye" : "eye.slash")
-                    .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
                     .padding(10)
             }
             .disabled(self.entry.isEmpty)

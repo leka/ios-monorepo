@@ -65,7 +65,7 @@ struct LoginView: View {
     private var title: some View {
         Text("Se connecter")
             .textCase(.uppercase)
-            .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
+
             // TODO: (@ui/ux) - Design System - replace with Leka font
             .font(.title)
     }
@@ -85,7 +85,6 @@ struct LoginView: View {
         )
         .disabled(self.connectIsDisabled())
         .buttonStyle(.borderedProminent)
-        .tint(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
         .padding(.top, 24)
     }
 
@@ -145,7 +144,6 @@ struct LoginView: View {
                     // TODO: (@ui/ux) - Design System - replace with Leka font
                     .font(.footnote)
                     .underline()
-                    .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
                     .padding([.top, .trailing], 10)
             }
         }

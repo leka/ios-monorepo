@@ -69,7 +69,6 @@ struct JobPicker: View {
         Text("Sélectionnez vos professions")
             // TODO: (@ui/ux) - Design System - replace with Leka font
             .font(.headline)
-            .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
     }
 
     private var adaptiveBackButton: some View {
@@ -86,7 +85,6 @@ struct JobPicker: View {
                 }
             }
         }
-        .tint(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
     }
 
     private var validateButton: some View {
@@ -98,7 +96,6 @@ struct JobPicker: View {
                 Image(systemName: "checkmark.circle")
                 Text("Valider la sélection")
             }
-            .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
         }
         .disabled(self.selectedJobs.isEmpty)
         .disabled(self.isEditing)

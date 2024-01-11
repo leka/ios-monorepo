@@ -97,7 +97,6 @@ struct ProfileSet_Users: View {
             Text("Qui accompagnez-vous?")
                 // TODO: (@ui/ux) - Design System - replace with Leka font
                 .font(.body)
-                .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
             if self.navigationVM.showProfileEditor {
                 Spacer()
             }

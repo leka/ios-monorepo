@@ -28,7 +28,6 @@ struct AvatarPickerStore: View {
             Text(category.category)
                 // TODO: (@ui/ux) - Design System - replace with Leka font
                 .font(.headline)
-                .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
                 .padding(.leading, 40)
             ScrollView(.horizontal, showsIndicators: true) {
                 LazyHGrid(rows: [GridItem()], spacing: 50) {

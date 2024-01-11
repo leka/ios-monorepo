@@ -157,7 +157,6 @@ struct CreateTeacherProfileView: View {
         Text(self.company.editingProfile ? "Éditer un profil accompagnant" : "Créer un profil accompagnant")
             // TODO: (@ui/ux) - Design System - replace with Leka font
             .font(.headline)
-            .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
     }
 
     private var validateButtonLabel: some View {
@@ -165,7 +164,7 @@ struct CreateTeacherProfileView: View {
             Image(systemName: "checkmark.circle")
             Text("Enregistrer")
         }
-        .tint(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
+
         .contentShape(Rectangle())
     }
 
@@ -187,7 +186,6 @@ struct CreateTeacherProfileView: View {
                 }
             }
         }
-        .tint(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
     }
 }
 

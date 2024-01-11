@@ -85,7 +85,6 @@ struct InfoTile: View {
         }
         .multilineTextAlignment(.center)
         .frame(maxWidth: 700)
-        .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
     }
 
     private var closeButton: some View {

@@ -27,7 +27,6 @@ struct ProfileSelector_Teachers: View {
                 }
                 // TODO: (@ui/ux) - Design System - replace with Leka font
                 .font(.headline)
-                .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
             }
         }
     }

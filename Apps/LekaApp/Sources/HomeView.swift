@@ -72,7 +72,6 @@ struct HomeView: View {
             self.navigationVM.updateShowInfo()
         } label: {
             Image(systemName: "info.circle")
-                .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
         }
         .opacity(self.navigationVM.showInfo() ? 0 : 1)
     }

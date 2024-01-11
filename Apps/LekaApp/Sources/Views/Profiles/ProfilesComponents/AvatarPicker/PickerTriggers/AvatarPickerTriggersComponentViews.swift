@@ -18,7 +18,6 @@ struct AvatarTriggerImageView: View {
             Group {
                 Image(self.img, bundle: Bundle(for: DesignKitResources.self))
                     .resizable()
-                    .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
                     .aspectRatio(contentMode: .fit)
                     .clipShape(Circle())
                     .padding(10)
@@ -41,7 +40,6 @@ struct AvatarTriggerCTAView: View {
         Text("choisir un avatar")
             // TODO: (@ui/ux) - Design System - replace with Leka font
             .font(.body)
-            .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
             .padding(.vertical, 4)
             .padding(.horizontal, 20)
             .overlay(

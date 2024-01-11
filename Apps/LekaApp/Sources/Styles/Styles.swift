@@ -102,7 +102,6 @@ struct JobPickerToggleStyle: ToggleStyle {
                 .multilineTextAlignment(.leading)
                 // TODO: (@ui/ux) - Design System - replace with Leka font
                 .font(.body)
-                .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
 
             Spacer()
         }

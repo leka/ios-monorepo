@@ -125,7 +125,6 @@ struct CreateUserProfileView: View {
         Text(self.company.editingProfile ? "Éditer un profil utilisateur" : "Créer un profil utilisateur")
             // TODO: (@ui/ux) - Design System - replace with Leka font
             .font(.headline)
-            .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
     }
 
     private var adaptativeBackButton: some View {
@@ -146,7 +145,6 @@ struct CreateUserProfileView: View {
                 }
             }
         }
-        .tint(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
     }
 
     private var validateButton: some View {
@@ -187,7 +185,7 @@ struct CreateUserProfileView: View {
             Image(systemName: "checkmark.circle")
             Text("Enregistrer")
         }
-        .tint(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
+
         .contentShape(Rectangle())
     }
 }

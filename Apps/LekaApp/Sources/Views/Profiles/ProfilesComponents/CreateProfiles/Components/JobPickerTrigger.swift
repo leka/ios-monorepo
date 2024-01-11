@@ -18,7 +18,6 @@ struct JobPickerTrigger: View {
             Text("Profession(s)")
                 // TODO: (@ui/ux) - Design System - replace with Leka font
                 .font(.body)
-                .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
                 .padding(.leading, 10)
 
             Button {
@@ -46,7 +45,6 @@ struct JobPickerTrigger: View {
                 .padding(10)
             Spacer()
             Image(systemName: "chevron.down")
-                .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
                 .padding(10)
         }
         .frame(width: 400, height: 44)

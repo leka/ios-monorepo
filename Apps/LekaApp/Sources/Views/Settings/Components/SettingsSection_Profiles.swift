@@ -22,7 +22,6 @@ struct SettingsSection_Profiles: View {
             Text("Profils")
                 // TODO: (@ui/ux) - Design System - replace with Leka font
                 .font(.body)
-                .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
                 .headerProminence(.increased)
         }
     }
