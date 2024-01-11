@@ -15,11 +15,8 @@ struct DeleteProfileButton: View {
             Button {
                 self.show.toggle()
             } label: {
-                HStack {
-                    Image(systemName: "trash.fill")
-                    Text("Supprimer le profil")
-                }
-                .padding(.horizontal, 20)
+                Label("Supprimer le profil", systemImage: "trash.fill")
+                    .padding(.horizontal, 20)
             }
             .buttonStyle(BorderedCapsule_NoFeedback_ButtonStyle(font: self.metrics.reg17, color: Color.red))
             .padding(.vertical, 10)
