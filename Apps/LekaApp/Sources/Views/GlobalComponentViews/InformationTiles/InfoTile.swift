@@ -36,31 +36,30 @@ struct InfoTile: View {
     }
 
     private var tileHeader: some View {
-        ZStack {
-            Text(self.data.content.title!)
-            HStack {
-                switch self.data {
-                    case .discovery,
-                         .curriculums,
-                         .activities,
-                         .commands:
-                        Image(systemName: self.data.content.image!)
-                    default:
-                        Image(self.data.content.image!)
-                            .resizable()
-                            .renderingMode(.template)
-                            .aspectRatio(contentMode: .fit)
-                }
-                Spacer()
-                if self.data != .discovery, self.settings.companyIsConnected {
-                    self.closeButton
-                }
+        HStack {
+            switch self.data {
+                case .discovery,
+                     .curriculums,
+                     .activities,
+                     .commands:
+                    Image(systemName: self.data.content.image!)
+                default:
+                    Image(self.data.content.image!)
+                        .resizable()
+                        .renderingMode(.template)
+                        .aspectRatio(contentMode: .fit)
             }
-            .padding(.vertical, 6)
-            .padding(.horizontal, 20)
+            Spacer()
+            Text(self.data.content.title!)
+                // TODO: (@ui/ux) - Design System - replace with Leka font
+                .font(.title3)
+            Spacer()
+            if self.data != .discovery, self.settings.companyIsConnected {
+                self.closeButton
+            }
         }
-        // TODO: (@ui/ux) - Design System - replace with Leka font
-        .font(.title3)
+        .padding(.vertical, 6)
+        .padding(.horizontal, 20)
         .frame(height: 44)
         .foregroundColor(.white)
         .background(self.headerColor)
@@ -73,17 +72,18 @@ struct InfoTile: View {
                 // TODO: (@ui/ux) - Design System - replace with Leka font
                 .font(.headline)
                 .foregroundColor(self.headerColor)
+                .padding(10)
             Spacer()
             Text(self.data.content.message!)
                 // TODO: (@ui/ux) - Design System - replace with Leka font
-                .font(.body)
+                .font(.subheadline)
+                .padding(10)
             Spacer()
             if self.data == .discovery {
                 self.connectButton
             }
         }
         .multilineTextAlignment(.center)
-        .padding(10)
         .frame(maxWidth: 700)
         .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
     }
@@ -102,7 +102,7 @@ struct InfoTile: View {
         } label: {
             Text(self.data.content.callToActionLabel!)
         }
-        .padding(20)
+        .padding(.horizontal, 20)
         .buttonStyle(
             // TODO: (@ui/ux) - Design System - replace with Leka font
             BorderedCapsule_NoFeedback_ButtonStyle(
