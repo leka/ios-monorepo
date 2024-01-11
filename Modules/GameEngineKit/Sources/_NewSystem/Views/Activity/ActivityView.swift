@@ -88,6 +88,7 @@ public struct ActivityView: View {
             .toolbar {
                 ToolbarItem(placement: .principal) {
                     Text(self.viewModel.currentActivity.name)
+                        // TODO: (@ui/ux) - Design System - replace with Leka font
                         .font(.headline)
                 }
                 ToolbarItem(placement: .topBarLeading) {

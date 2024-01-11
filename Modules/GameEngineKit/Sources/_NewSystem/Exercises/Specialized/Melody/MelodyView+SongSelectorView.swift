@@ -30,6 +30,7 @@ extension MelodyView {
         var body: some View {
             VStack(alignment: .leading) {
                 Text(self.textMusicSelection)
+                    // TODO: (@ui/ux) - Design System - replace with Leka font
                     .font(.headline)
 
                 Divider()
@@ -37,23 +38,18 @@ extension MelodyView {
                 ScrollView {
                     LazyVGrid(columns: self.columns, alignment: .leading, spacing: 20) {
                         ForEach(self.songs, id: \.self) { midiRecording in
-                            HStack {
-                                Image(
-                                    systemName: midiRecording == self.selectedMidiRecording
-                                        ? "checkmark.circle.fill" : "circle"
-                                )
+                            Label(midiRecording.name, systemImage: midiRecording == self.selectedMidiRecording
+                                ? "checkmark.circle.fill" : "circle")
                                 .imageScale(.large)
                                 .foregroundColor(
                                     midiRecording == self.selectedMidiRecording
                                         ? .green : .primary
                                 )
-                                Text(midiRecording.name)
-                            }
-                            .onTapGesture {
-                                withAnimation {
-                                    self.selectedMidiRecording = midiRecording
+                                .onTapGesture {
+                                    withAnimation {
+                                        self.selectedMidiRecording = midiRecording
+                                    }
                                 }
-                            }
                         }
                     }
                 }

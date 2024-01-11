@@ -30,30 +30,26 @@ extension DanceFreezeView {
         var body: some View {
             VStack(alignment: .leading) {
                 Text(self.textMusicSelection)
-                    .font(.title2)
+                    // TODO: (@ui/ux) - Design System - replace with Leka font
+                    .font(.headline)
 
                 Divider()
 
                 ScrollView {
                     LazyVGrid(columns: self.columns, alignment: .leading, spacing: 20) {
                         ForEach(self.songs, id: \.self) { audioRecording in
-                            HStack {
-                                Image(
-                                    systemName: audioRecording == self.selectedAudioRecording
-                                        ? "checkmark.circle.fill" : "circle"
-                                )
+                            Label(audioRecording.name, systemImage: audioRecording == self.selectedAudioRecording
+                                ? "checkmark.circle.fill" : "circle")
                                 .imageScale(.large)
                                 .foregroundColor(
                                     audioRecording == self.selectedAudioRecording
                                         ? .green : .primary
                                 )
-                                Text(audioRecording.name)
-                            }
-                            .onTapGesture {
-                                withAnimation {
-                                    self.selectedAudioRecording = audioRecording
+                                .onTapGesture {
+                                    withAnimation {
+                                        self.selectedAudioRecording = audioRecording
+                                    }
                                 }
-                            }
                         }
                     }
                 }
