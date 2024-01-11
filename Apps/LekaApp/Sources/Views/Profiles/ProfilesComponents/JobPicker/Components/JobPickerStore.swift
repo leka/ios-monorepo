@@ -17,6 +17,8 @@ struct JobPickerStore: View {
                     ForEach(Professions.allCases) { profession in
                         Toggle(isOn: .constant(self.selectedJobs.contains(profession.name))) {
                             Text(profession.name)
+                                // TODO: (@ui/ux) - Design System - replace with Leka font
+                                .font(.subheadline)
                         }
                         .toggleStyle(
                             JobPickerToggleStyle(action: {

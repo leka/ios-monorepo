@@ -23,7 +23,8 @@ struct LekaTextField: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             Text(self.label)
-                .font(self.metrics.reg17)
+                // TODO: (@ui/ux) - Design System - replace with Leka font
+                .font(.body)
                 .foregroundColor(self.color)
                 .padding(.leading, 10)
             self.entryField
@@ -74,7 +75,8 @@ struct LekaPasswordField: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             Text(self.label)
-                .font(self.metrics.reg17)
+                // TODO: (@ui/ux) - Design System - replace with Leka font
+                .font(.body)
                 .foregroundColor(self.color)
                 .padding(.leading, 10)
             self.passwordField

@@ -16,7 +16,8 @@ struct JobPickerTrigger: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             Text("Profession(s)")
-                .font(self.metrics.reg14)
+                // TODO: (@ui/ux) - Design System - replace with Leka font
+                .font(.body)
                 .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
                 .padding(.leading, 10)
 

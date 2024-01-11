@@ -13,7 +13,8 @@ struct AvatarPicker_NavigationTitle: View {
 
     var body: some View {
         Text("Quel est ton avatar ?")
-            .font(self.metrics.semi17)
+            // TODO: (@ui/ux) - Design System - replace with Leka font
+            .font(.headline)
             .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
     }
 }

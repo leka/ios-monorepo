@@ -40,14 +40,15 @@ struct ActivityListCell: View {
         VStack(alignment: .leading, spacing: 0) {
             Spacer()
             Text(self.activity.title.localized())
-                .font(self.metrics.reg19)
+                // TODO: (@ui/ux) - Design System - replace with Leka font
+                .font(.title2)
             Spacer()
             Group {
                 Text("ACTIVITÉ \(self.rank)")
-                    .font(self.metrics.bold15)
+                    // TODO: (@ui/ux) - Design System - replace with Leka font
+                    .font(.headline)
                     + Text(" - \(self.activity.short.localized())")
             }
-            .font(self.metrics.reg15)
             .multilineTextAlignment(.leading)
             .padding(.bottom, 10)
         }

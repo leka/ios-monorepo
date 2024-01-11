@@ -62,7 +62,8 @@ struct ProfileSet_Users: View {
         } label: {
             Image(systemName: "pencil")
         }
-        .buttonStyle(CircledIcon_NoFeedback_ButtonStyle(font: self.metrics.bold16))
+        // TODO: (@ui/ux) - Design System - replace with Leka font
+        .buttonStyle(CircledIcon_NoFeedback_ButtonStyle(font: .body))
         .disabled(
             self.company.getProfileDataFor(
                 .user,
@@ -84,7 +85,8 @@ struct ProfileSet_Users: View {
         } label: {
             Image(systemName: "plus")
         }
-        .buttonStyle(CircledIcon_NoFeedback_ButtonStyle(font: self.metrics.bold16))
+        // TODO: (@ui/ux) - Design System - replace with Leka font
+        .buttonStyle(CircledIcon_NoFeedback_ButtonStyle(font: .body))
     }
 
     private var header: some View {
@@ -93,7 +95,8 @@ struct ProfileSet_Users: View {
                 Spacer()
             }
             Text("Qui accompagnez-vous?")
-                .font(self.metrics.reg17)
+                // TODO: (@ui/ux) - Design System - replace with Leka font
+                .font(.body)
                 .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
             if self.navigationVM.showProfileEditor {
                 Spacer()

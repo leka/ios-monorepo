@@ -36,31 +36,30 @@ struct InfoTile: View {
     }
 
     private var tileHeader: some View {
-        ZStack {
-            Text(self.data.content.title!)
-            HStack {
-                switch self.data {
-                    case .discovery,
-                         .curriculums,
-                         .activities,
-                         .commands:
-                        Image(systemName: self.data.content.image!)
-                            .font(self.metrics.reg19)
-                    default:
-                        Image(self.data.content.image!)
-                            .resizable()
-                            .renderingMode(.template)
-                            .aspectRatio(contentMode: .fit)
-                }
-                Spacer()
-                if self.data != .discovery, self.settings.companyIsConnected {
-                    self.closeButton
-                }
+        HStack {
+            switch self.data {
+                case .discovery,
+                     .curriculums,
+                     .activities,
+                     .commands:
+                    Image(systemName: self.data.content.image!)
+                default:
+                    Image(self.data.content.image!)
+                        .resizable()
+                        .renderingMode(.template)
+                        .aspectRatio(contentMode: .fit)
             }
-            .padding(.vertical, 6)
-            .padding(.horizontal, 20)
+            Spacer()
+            Text(self.data.content.title!)
+                // TODO: (@ui/ux) - Design System - replace with Leka font
+                .font(.title3)
+            Spacer()
+            if self.data != .discovery, self.settings.companyIsConnected {
+                self.closeButton
+            }
         }
-        .font(self.metrics.semi17)
+        .padding(.vertical, 6)
+        .padding(.horizontal, 20)
         .frame(height: 44)
         .foregroundColor(.white)
         .background(self.headerColor)
@@ -70,18 +69,22 @@ struct InfoTile: View {
         VStack {
             Spacer()
             Text(self.data.content.subtitle!)
-                .font(self.metrics.reg17)
+                // TODO: (@ui/ux) - Design System - replace with Leka font
+                .font(.headline)
                 .foregroundColor(self.headerColor)
+                .padding(10)
             Spacer()
             Text(self.data.content.message!)
-                .font(self.metrics.reg13)
+                // TODO: (@ui/ux) - Design System - replace with Leka font
+                .font(.subheadline)
+                .padding(10)
             Spacer()
             if self.data == .discovery {
                 self.connectButton
             }
         }
         .multilineTextAlignment(.center)
-        .frame(maxWidth: 300)
+        .frame(maxWidth: 700)
         .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
     }
 
@@ -90,7 +93,6 @@ struct InfoTile: View {
             self.navigationVM.updateShowInfo()
         } label: {
             Image(systemName: "multiply")
-                .font(self.metrics.semi20)
         }
     }
 
@@ -100,13 +102,15 @@ struct InfoTile: View {
         } label: {
             Text(self.data.content.callToActionLabel!)
         }
-        .padding(20)
+        .padding(.horizontal, 20)
         .buttonStyle(
+            // TODO: (@ui/ux) - Design System - replace with Leka font
             BorderedCapsule_NoFeedback_ButtonStyle(
-                font: self.metrics.reg17,
+                font: .body,
                 color: DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor,
                 width: 300
-            ))
+            )
+        )
     }
 }
 

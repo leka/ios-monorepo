@@ -17,7 +17,8 @@ struct SettingsSection_Exploratory: View {
                     .labelsHidden()
             } label: {
                 Text("Le mode exploratoire vous permet de découvrir les contenus sans enregistrer l'utilisation")
-                    .font(self.metrics.reg13)
+                    // TODO: (@ui/ux) - Design System - replace with Leka font
+                    .font(.footnote)
                     .foregroundColor(DesignKitAsset.Colors.lekaDarkGray.swiftUIColor)
                     .frame(maxWidth: 300)
             }
@@ -27,7 +28,8 @@ struct SettingsSection_Exploratory: View {
                 Image(systemName: "binoculars.fill")
                 Text("Mode exploratoire")
             }
-            .font(self.metrics.reg15)
+            // TODO: (@ui/ux) - Design System - replace with Leka font
+            .font(.subheadline)
             .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
             .headerProminence(.increased)
         }

@@ -25,17 +25,13 @@ struct SidebarSections: View {
             // reset user's choice to work without robot
             self.robotVM.userChoseToPlayWithoutRobot = false
         } label: {
-            HStack(spacing: 10) {
-                Image(systemName: item.icon)
-                    .font(self.metrics.light24)
-                    .frame(maxWidth: 30, maxHeight: 30)
-                    .padding(.leading, 10)
-
-                Text(item.label)
-                    .font(self.metrics.reg17)
-
+            HStack {
+                Label(item.label, systemImage: item.icon)
+                    // TODO: (@ui/ux) - Design System - replace with Leka font
+                    .font(.body)
                 Spacer()
             }
+            .padding(10)
             .foregroundColor(
                 self.navigationVM.currentView.rawValue == item.destination.rawValue
                     ? .white : DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor
@@ -58,7 +54,8 @@ struct SidebarSections: View {
         } header: {
             VStack(alignment: .leading, spacing: 6) {
                 Text(content.title)
-                    .font(self.metrics.semi20)
+                    // TODO: (@ui/ux) - Design System - replace with Leka font
+                    .font(.title2)
                     .padding(.vertical, 10)
                 Divider()
             }

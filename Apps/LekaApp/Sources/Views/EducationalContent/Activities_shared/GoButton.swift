@@ -48,6 +48,7 @@ struct GoButton: View {
                 .stroke(.white, lineWidth: 2)
             Text("GO !")
                 .foregroundColor(.white)
+                // TODO: (@ui/ux) - Design System - replace with Leka font
                 .font(.system(size: 34, weight: .bold, design: .rounded))
         }
         .frame(width: 127, height: 127)

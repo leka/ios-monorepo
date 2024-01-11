@@ -39,15 +39,18 @@ struct GoToRobotConnectButton: View {
         if self.robotViewModel.isConnected {
             VStack(alignment: .leading, spacing: 4) {
                 Text("Connecté à")
+                    // TODO: (@ui/ux) - Design System - replace with Leka font
+                    .font(.caption2)
                 Text(self.robotViewModel.name)
-                    .font(self.metrics.reg16)
+                    // TODO: (@ui/ux) - Design System - replace with Leka font
+                    .font(.subheadline)
                 self.robotCharginStatusAndBattery
             }
-            .font(self.metrics.reg12)
             .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
         } else {
             Text("Connectez-vous à votre Leka")
-                .font(self.metrics.reg16)
+                // TODO: (@ui/ux) - Design System - replace with Leka font
+                .font(.subheadline)
                 .multilineTextAlignment(.leading)
                 .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
         }
@@ -56,6 +59,8 @@ struct GoToRobotConnectButton: View {
     private var robotCharginStatusAndBattery: some View {
         HStack(spacing: 5) {
             Text(verbatim: "LekaOS v\(self.robotViewModel.osVersion)")
+                // TODO: (@ui/ux) - Design System - replace with Leka font
+                .font(.footnote)
                 .foregroundColor(.gray)
 
             if self.robotViewModel.isCharging {
@@ -70,6 +75,8 @@ struct GoToRobotConnectButton: View {
             Image(systemName: battery.name)
                 .foregroundColor(battery.color)
             Text(verbatim: "\(battery.level)%")
+                // TODO: (@ui/ux) - Design System - replace with Leka font
+                .font(.footnote)
                 .foregroundColor(.gray)
                 .monospacedDigit()
         }

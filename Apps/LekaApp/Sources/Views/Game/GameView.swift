@@ -62,7 +62,8 @@ struct GameView: View {
                             Image(systemName: "binoculars.fill")
                         }
                     }
-                    .font(self.gameMetrics.semi17)
+                    // TODO: (@ui/ux) - Design System - replace with Leka font
+                    .font(.subheadline)
                     .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -166,12 +167,8 @@ struct GameView: View {
                         value: self.textOpacity
                     )
             }
-            .font(
-                .system(
-                    size: self.gameMetrics.endAnimFontSize,
-                    weight: self.gameMetrics.endAnimFontWeight,
-                    design: self.gameMetrics.endAnimFontDesign
-                ))
+            // TODO: (@ui/ux) - Design System - replace with Leka font
+            .font(.largeTitle)
         }
     }
 

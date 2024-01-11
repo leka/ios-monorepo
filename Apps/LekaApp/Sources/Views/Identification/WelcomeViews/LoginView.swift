@@ -66,7 +66,8 @@ struct LoginView: View {
         Text("Se connecter")
             .textCase(.uppercase)
             .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
-            .font(self.metrics.semi20)
+            // TODO: (@ui/ux) - Design System - replace with Leka font
+            .font(.title)
     }
 
     private var submitButton: some View {
@@ -76,7 +77,8 @@ struct LoginView: View {
             },
             label: {
                 Text("Connexion")
-                    .font(self.metrics.bold15)
+                    // TODO: (@ui/ux) - Design System - replace with Leka font
+                    .font(.body)
                     .padding(6)
                     .frame(width: 210)
             }
@@ -140,7 +142,8 @@ struct LoginView: View {
             Spacer()
             Link(destination: URL(string: "https://leka.io")!) {
                 Text("Mot de passe oublié")
-                    .font(self.metrics.reg14)
+                    // TODO: (@ui/ux) - Design System - replace with Leka font
+                    .font(.footnote)
                     .underline()
                     .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
                     .padding([.top, .trailing], 10)

@@ -147,7 +147,8 @@ struct SignupView: View {
         Text("Créer un compte")
             .textCase(.uppercase)
             .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
-            .font(self.metrics.semi20)
+            // TODO: (@ui/ux) - Design System - replace with Leka font
+            .font(.title)
     }
 
     private var submitButton: some View {
@@ -157,7 +158,8 @@ struct SignupView: View {
             },
             label: {
                 Text("Connexion")
-                    .font(self.metrics.bold15)
+                    // TODO: (@ui/ux) - Design System - replace with Leka font
+                    .font(.body)
                     .padding(6)
                     .frame(width: 210)
             }

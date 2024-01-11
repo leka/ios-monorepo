@@ -30,7 +30,8 @@ struct CurriculumPillShapedView: View {
     private var topContent: some View {
         Text(self.curriculum.fullTitle.localized())
             .multilineTextAlignment(.center)
-            .font(self.metrics.med16)
+            // TODO: (@ui/ux) - Design System - replace with Leka font
+            .font(.body)
             .frame(maxWidth: 136, minHeight: 120)
             .foregroundColor(.white)
     }
@@ -41,7 +42,8 @@ struct CurriculumPillShapedView: View {
             self.iconView
             Spacer()
             Text("\(self.curriculum.activities.count) activités")
-                .font(self.metrics.med12)
+                // TODO: (@ui/ux) - Design System - replace with Leka font
+                .font(.caption)
                 .foregroundColor(DesignKitAsset.Colors.darkGray.swiftUIColor)
                 .padding(.bottom, 12)
         }

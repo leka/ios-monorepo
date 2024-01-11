@@ -30,7 +30,8 @@ struct SettingsView: View {
                 .padding(.horizontal, 10)
                 .formStyle(.grouped)
                 .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
-                .font(self.metrics.reg17)
+                // TODO: (@ui/ux) - Design System - replace with Leka font
+                .font(.headline)
             }
             .interactiveDismissDisabled()
             .navigationBarTitleDisplayMode(.inline)
@@ -44,7 +45,8 @@ struct SettingsView: View {
                             Image(systemName: "binoculars.fill")
                         }
                     }
-                    .font(self.metrics.semi17)
+                    // TODO: (@ui/ux) - Design System - replace with Leka font
+                    .font(.headline)
                     .foregroundColor(.white)
                 }
                 ToolbarItem(placement: .navigationBarLeading) {

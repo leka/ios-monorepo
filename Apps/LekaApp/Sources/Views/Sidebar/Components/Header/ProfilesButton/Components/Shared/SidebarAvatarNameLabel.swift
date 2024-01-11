@@ -18,7 +18,8 @@ struct SidebarAvatarNameLabel: View {
                 id: self.company.profilesInUse[self.type]!
             )[1]
         )
-        .font(self.metrics.reg15)
+        // TODO: (@ui/ux) - Design System - replace with Leka font
+        .font(.subheadline)
         .allowsTightening(true)
         .lineLimit(2)
         .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
