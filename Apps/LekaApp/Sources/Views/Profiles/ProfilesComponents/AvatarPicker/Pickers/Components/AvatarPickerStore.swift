@@ -26,7 +26,8 @@ struct AvatarPickerStore: View {
     private func makeAvatarCategoryRow(category: AvatarCategory) -> some View {
         VStack(alignment: .leading, spacing: 10) {
             Text(category.category)
-                .font(self.metrics.med16)
+                // TODO: (@ui/ux) - Design System - replace with Leka font
+                .font(.headline)
                 .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
                 .padding(.leading, 40)
             ScrollView(.horizontal, showsIndicators: true) {

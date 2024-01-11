@@ -10,7 +10,8 @@ struct SignupNavigationTitle: View {
 
     var body: some View {
         Text("Première connexion")
-            .font(self.metrics.semi17)
+            // TODO: (@ui/ux) - Design System - replace with Leka font
+            .font(.headline)
             .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
     }
 }

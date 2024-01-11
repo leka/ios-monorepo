@@ -25,7 +25,8 @@ struct ProfileSelector_Teachers: View {
                     }
                     Text("Choisir ou créer de nouveaux profils")
                 }
-                .font(self.metrics.semi17)
+                // TODO: (@ui/ux) - Design System - replace with Leka font
+                .font(.headline)
                 .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
             }
         }

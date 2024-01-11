@@ -14,7 +14,8 @@ struct SettingsSection_Credentials: View {
             Group {
                 LabeledContent {
                     Text(self.company.currentCompany.mail)
-                        .font(self.metrics.reg14)
+                        // TODO: (@ui/ux) - Design System - replace with Leka font
+                        .font(.footnote)
                         .multilineTextAlignment(.leading)
                         .foregroundColor(DesignKitAsset.Colors.lekaDarkGray.swiftUIColor)
                 } label: {
@@ -29,7 +30,8 @@ struct SettingsSection_Credentials: View {
             .frame(maxHeight: 52)
         } header: {
             Text("Compte")
-                .font(self.metrics.reg15)
+                // TODO: (@ui/ux) - Design System - replace with Leka font
+                .font(.subheadline)
                 .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
                 .headerProminence(.increased)
                 .padding(.top, 20)

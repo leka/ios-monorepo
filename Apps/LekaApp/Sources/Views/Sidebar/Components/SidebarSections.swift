@@ -54,7 +54,8 @@ struct SidebarSections: View {
         } header: {
             VStack(alignment: .leading, spacing: 6) {
                 Text(content.title)
-                    .font(self.metrics.semi20)
+                    // TODO: (@ui/ux) - Design System - replace with Leka font
+                    .font(.title2)
                     .padding(.vertical, 10)
                 Divider()
             }

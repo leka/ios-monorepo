@@ -73,7 +73,8 @@ struct CurriculumListView: View {
     private func headerViews(title: LocalizedContent) -> some View {
         HStack {
             Text(title.localized())
-                .font(self.metrics.semi17)
+                // TODO: (@ui/ux) - Design System - replace with Leka font
+                .font(.body)
                 .padding(16)
                 .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
                 .padding(.leading, 20)

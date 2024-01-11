@@ -38,7 +38,8 @@ struct UserSidebarAvatarCell: View {
             Image(systemName: "exclamationmark.circle.fill")
                 .symbolRenderingMode(.palette)
                 .foregroundStyle(.white, .red)
-                .font(self.metrics.reg19)
+                // TODO: (@ui/ux) - Design System - replace with Leka font
+                .font(.title)
                 .frame(maxWidth: 22, maxHeight: 22)
                 .offset(x: 2, y: -2)
         } else if self.company.profileIsAssigned(.user) {

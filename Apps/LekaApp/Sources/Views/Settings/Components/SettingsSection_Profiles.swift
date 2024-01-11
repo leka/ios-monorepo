@@ -20,7 +20,8 @@ struct SettingsSection_Profiles: View {
             .frame(maxHeight: 52)
         } header: {
             Text("Profils")
-                .font(self.metrics.reg15)
+                // TODO: (@ui/ux) - Design System - replace with Leka font
+                .font(.body)
                 .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
                 .headerProminence(.increased)
         }
@@ -45,7 +46,8 @@ struct SettingsSection_Profiles: View {
             .overlay(
                 Text("+\(remainder)")
                     .foregroundColor(.white)
-                    .font(self.metrics.reg12)
+                    // TODO: (@ui/ux) - Design System - replace with Leka font
+                    .font(.footnote)
                     .clipShape(Circle())
             )
             .overlay(Circle().stroke(.white, lineWidth: 2))

@@ -49,7 +49,8 @@ struct TeacherSet_AvatarCell: View {
                 .padding(10)
 
                 Text(self.teacher.name)
-                    .font(self.metrics.reg15)
+                    // TODO: (@ui/ux) - Design System - replace with Leka font
+                    .font(.body)
                     .allowsTightening(true)
                     .lineLimit(2)
                     .padding(.horizontal, 14)

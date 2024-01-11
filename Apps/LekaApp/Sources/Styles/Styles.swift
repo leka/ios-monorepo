@@ -64,7 +64,8 @@ struct Connect_ButtonStyle: ButtonStyle {
 
     func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
-            .font(self.metrics.bold15)
+            // TODO: (@ui/ux) - Design System - replace with Leka font
+            .font(.body)
             .frame(width: 310, height: 60)
             .foregroundColor(self.reversed ? DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor : .white)
             .background(self.reversed ? .white : DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor, in: Capsule())
@@ -99,7 +100,8 @@ struct JobPickerToggleStyle: ToggleStyle {
 
             configuration.label
                 .multilineTextAlignment(.leading)
-                .font(self.metrics.reg16)
+                // TODO: (@ui/ux) - Design System - replace with Leka font
+                .font(.body)
                 .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
 
             Spacer()
@@ -205,7 +207,8 @@ struct BorderedCapsule_ButtonStyle: ButtonStyle {
 
     func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
-            .font(.system(size: 22, weight: .black, design: .rounded))
+            // TODO: (@ui/ux) - Design System - replace with Leka font
+            .font(.body)
             .foregroundColor(!self.isFilled ? DesignKitAsset.Colors.bravoHighlights.swiftUIColor : .white)
             .opacity(configuration.isPressed ? 0.95 : 1)
             .scaleEffect(configuration.isPressed ? 0.99 : 1, anchor: .center)

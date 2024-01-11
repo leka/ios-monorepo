@@ -39,7 +39,8 @@ struct AvatarTriggerCTAView: View {
 
     var body: some View {
         Text("choisir un avatar")
-            .font(self.metrics.reg17)
+            // TODO: (@ui/ux) - Design System - replace with Leka font
+            .font(.body)
             .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
             .padding(.vertical, 4)
             .padding(.horizontal, 20)

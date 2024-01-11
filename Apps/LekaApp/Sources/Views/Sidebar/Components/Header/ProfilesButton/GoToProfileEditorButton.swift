@@ -45,7 +45,8 @@ struct GoToProfileEditorButton: View {
 
     private var exploratoryModeLabel: some View {
         Text("Mode exploratoire")
-            .font(self.metrics.reg17)
+            // TODO: (@ui/ux) - Design System - replace with Leka font
+            .font(.body)
             .foregroundColor(DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor)
             .padding(.vertical, 2)
             .padding(.horizontal, 6)

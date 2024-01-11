@@ -66,7 +66,8 @@ struct ProfileSet_Teachers: View {
         } label: {
             Image(systemName: "pencil")
         }
-        .buttonStyle(CircledIcon_NoFeedback_ButtonStyle(font: self.metrics.bold16))
+        // TODO: (@ui/ux) - Design System - replace with Leka font
+        .buttonStyle(CircledIcon_NoFeedback_ButtonStyle(font: .body))
     }
 
     private var header: some View {
@@ -75,7 +76,8 @@ struct ProfileSet_Teachers: View {
                 Spacer()
             }
             Text("Qui êtes-vous ?")
-                .font(self.metrics.reg17)
+                // TODO: (@ui/ux) - Design System - replace with Leka font
+                .font(.body)
                 .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
             if self.navigationVM.showProfileEditor {
                 Spacer()
@@ -146,6 +148,7 @@ struct ProfileSet_Teachers: View {
         } label: {
             Image(systemName: "plus")
         }
-        .buttonStyle(CircledIcon_NoFeedback_ButtonStyle(font: self.metrics.bold16))
+        // TODO: (@ui/ux) - Design System - replace with Leka font
+        .buttonStyle(CircledIcon_NoFeedback_ButtonStyle(font: .body))
     }
 }

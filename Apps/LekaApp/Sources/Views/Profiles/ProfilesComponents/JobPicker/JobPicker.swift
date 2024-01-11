@@ -67,7 +67,8 @@ struct JobPicker: View {
 
     private var navigationTitle: some View {
         Text("Sélectionnez vos professions")
-            .font(self.metrics.semi17)
+            // TODO: (@ui/ux) - Design System - replace with Leka font
+            .font(.headline)
             .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
     }
 

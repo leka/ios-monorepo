@@ -140,8 +140,9 @@ struct CreateTeacherProfileView: View {
             )
             .disabled(self.company.bufferTeacher.name.isEmpty)
             .buttonStyle(
+                // TODO: (@ui/ux) - Design System - replace with Leka font
                 BorderedCapsule_NoFeedback_ButtonStyle(
-                    font: self.metrics.reg17,
+                    font: .body,
                     color: DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor,
                     width: self.metrics.tileBtnWidth
                 )
@@ -154,7 +155,8 @@ struct CreateTeacherProfileView: View {
     // Toolbar
     private var navigationTitle: some View {
         Text(self.company.editingProfile ? "Éditer un profil accompagnant" : "Créer un profil accompagnant")
-            .font(self.metrics.semi17)
+            // TODO: (@ui/ux) - Design System - replace with Leka font
+            .font(.headline)
             .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
     }
 
