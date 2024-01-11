@@ -4,6 +4,7 @@
 
 import ContentKit
 import DesignKit
+import LocalizationKit
 import Lottie
 import RobotKit
 import SwiftUI
@@ -84,18 +85,14 @@ public struct ActivityView: View {
             .frame(maxWidth: .infinity)
             .background(.lkBackground)
             .ignoresSafeArea(.all, edges: .bottom)
+            .navigationTitle(self.viewModel.currentActivity.name)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .principal) {
-                    Text(self.viewModel.currentActivity.name)
-                        // TODO: (@ui/ux) - Design System - replace with Leka font
-                        .font(.headline)
-                }
                 ToolbarItem(placement: .topBarLeading) {
                     Button {
                         self.viewModel.moveToPreviousExercise()
                     } label: {
-                        Image(systemName: "chevron.backward")
+                        Image(systemName: "arrow.backward")
                     }
                     .disabled(self.viewModel.isFirstExercise)
                 }
@@ -107,7 +104,7 @@ public struct ActivityView: View {
                     }
                 }
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button("Dismiss") {
+                    Button(String(l10n.GameEngineKit.ActivityView.Toolbar.dismissButton.characters)) {
                         self.dismiss()
                     }
                 }
@@ -115,7 +112,7 @@ public struct ActivityView: View {
                     Button {
                         self.viewModel.moveToNextExercise()
                     } label: {
-                        Image(systemName: "chevron.forward")
+                        Image(systemName: "arrow.forward")
                     }
                     .disabled(self.viewModel.isLastExercise)
                 }
@@ -177,7 +174,7 @@ public struct ActivityView: View {
 
     @ViewBuilder
     private var continueButton: some View {
-        Button("Continuer") {
+        Button(String(l10n.GameEngineKit.ActivityView.continueButton.characters)) {
             if self.viewModel.isLastExercise {
                 self.viewModel.scorePanelEnabled ? self.viewModel.moveToActivityEnd() : self.dismiss()
             } else {
@@ -197,7 +194,7 @@ public struct ActivityView: View {
 
     @ViewBuilder
     private var hideReinforcerToShowAnswersButton: some View {
-        Button("Revoir les réponses") {
+        Button(String(l10n.GameEngineKit.ActivityView.hideReinforcerToShowAnswersButton.characters)) {
             withAnimation {
                 self.viewModel.isReinforcerAnimationVisible = false
             }
