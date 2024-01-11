@@ -16,17 +16,17 @@ struct GameplayDragAndDropIntoZonesChoiceModel: GameplayChoiceModelProtocol {
 }
 
 extension GameplayFindTheRightAnswers where ChoiceModelType == GameplayDragAndDropIntoZonesChoiceModel {
-    // TODO: (@HPezz): Create gameplay related grading table search function & allowedTrials in args
-    convenience init(choices: [GameplayDragAndDropIntoZonesChoiceModel]) {
+    convenience init(choices: [GameplayDragAndDropIntoZonesChoiceModel], allowedTrials: Int? = nil) {
         self.init()
         self.choices.send(choices)
         rightAnswers = choices.filter { $0.choice.dropZone != .none }
         state.send(.playing)
 
-        let numberOfChoices = self.choices.value.count
-        let numberOfRightAnswers = self.rightAnswers.count
-
-        self.allowedTrials = kDefaultGradingTable[numberOfChoices]![numberOfRightAnswers]!
+        if let allowedTrials {
+            self.allowedTrials = allowedTrials
+        } else {
+            self.allowedTrials = getNumberOfAllowedTrials(from: kGradeLUTTableDefault)
+        }
     }
 
     func process(_ choice: ChoiceModelType, _ dropZone: DragAndDropIntoZones.DropZone) {
