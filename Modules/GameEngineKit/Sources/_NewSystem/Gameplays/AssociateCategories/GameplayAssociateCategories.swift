@@ -20,4 +20,18 @@ class GameplayAssociateCategories<ChoiceModelType>: StatefulGameplayProtocol
         }
         self.choices.value[index].state = state
     }
+
+    func getNumberOfRightAnswers(choices: [GameplayAssociateCategoriesChoiceModel]) -> Int {
+        let numberOfCategories = Set(choices.map(\.choice.category)).count
+        let numberOfCategorizableChoices = choices.map { $0.choice.category != .none }.count
+
+        return numberOfCategorizableChoices - numberOfCategories
+    }
+
+    func getNumberOfAllowedTrials(from table: GradingTable) -> Int {
+        let numberOfChoices = self.choices.value.count
+        let numberOfRightAnswers = self.getNumberOfRightAnswers(choices: self.choices.value)
+
+        return table[numberOfChoices]![numberOfRightAnswers]!
+    }
 }
