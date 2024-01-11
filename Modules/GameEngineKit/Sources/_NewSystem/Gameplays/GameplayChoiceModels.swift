@@ -10,7 +10,7 @@ import Foundation
 typealias GradingTable = [Int: [Int: Int]]
 
 // TODO: (@HPezz): Split into several gameplays gradingTables
-let kDefaultGradingTable: GradingTable = [
+let kGradeLUTTableDefault: GradingTable = [
     1: [1: 1],
     2: [1: 1, 2: 2],
     3: [1: 1, 2: 2, 3: 3],
