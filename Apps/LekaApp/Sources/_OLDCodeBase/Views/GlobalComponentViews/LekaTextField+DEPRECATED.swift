@@ -10,8 +10,6 @@ import SwiftUI
 struct LekaTextFieldDeprecated: View {
     // MARK: Internal
 
-    @EnvironmentObject var metrics: UIMetrics
-
     var label: String
     @Binding var entry: String
     var color: Color = DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor
@@ -49,10 +47,10 @@ struct LekaTextFieldDeprecated: View {
         .padding(10)
         .frame(width: 400, height: 44)
         .background(
-            DesignKitAsset.Colors.lekaLightGray.swiftUIColor, in: RoundedRectangle(cornerRadius: self.metrics.btnRadius)
+            DesignKitAsset.Colors.lekaLightGray.swiftUIColor, in: RoundedRectangle(cornerRadius: 10)
         )
         .overlay(
-            RoundedRectangle(cornerRadius: self.metrics.btnRadius)
+            RoundedRectangle(cornerRadius: 10)
                 .stroke(self.focused == self.type ? self.color : .clear, lineWidth: 1)
         )
     }
@@ -110,10 +108,10 @@ struct LekaPasswordFieldDeprecated: View {
         }
         .frame(width: 400, height: 44)
         .background(
-            DesignKitAsset.Colors.lekaLightGray.swiftUIColor, in: RoundedRectangle(cornerRadius: self.metrics.btnRadius)
+            DesignKitAsset.Colors.lekaLightGray.swiftUIColor, in: RoundedRectangle(cornerRadius: 10)
         )
         .overlay(
-            RoundedRectangle(cornerRadius: self.metrics.btnRadius)
+            RoundedRectangle(cornerRadius: 10)
                 .stroke(self.focused == self.type ? self.color : .clear, lineWidth: 1)
         )
     }
