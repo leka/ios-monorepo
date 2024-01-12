@@ -34,11 +34,11 @@ struct ProfileSet_Teachers: View {
         .preferredColorScheme(.light)
         .frame(minWidth: 460)
         .navigationDestination(isPresented: self.$navigateToTeacherCreation) {
-            CreateTeacherProfileView()
+            CreateTeacherProfileViewDeprecated()
         }
         .sheet(isPresented: self.$showEditProfileTeacher) {
             NavigationStack {
-                CreateTeacherProfileView()
+                CreateTeacherProfileViewDeprecated()
             }
         }
         .alert("Mode découverte", isPresented: self.$settings.showConnectInvite) {
