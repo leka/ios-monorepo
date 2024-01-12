@@ -59,8 +59,9 @@ struct InformationView: View {
                         .padding()
                         .overlay(
                             RoundedRectangle(cornerRadius: 20)
-                                .stroke(DesignKitAsset.Colors.lightGray.swiftUIColor, lineWidth: 3)
+                                .stroke(.lkStroke, lineWidth: 3)
                         )
+                        .padding([.horizontal], 3)
                         .padding([.vertical], 10)
 
                     DisclosureGroup {
@@ -74,8 +75,9 @@ struct InformationView: View {
                     .padding()
                     .overlay(
                         RoundedRectangle(cornerRadius: 20)
-                            .stroke(DesignKitAsset.Colors.lightGray.swiftUIColor, lineWidth: 3)
+                            .stroke(.lkStroke, lineWidth: 3)
                     )
+                    .padding([.horizontal], 3)
                     .padding([.vertical], 10)
 
                     if self.viewModel.showRobotNeedsUpdate {
