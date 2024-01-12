@@ -5,7 +5,7 @@
 import DesignKit
 import SwiftUI
 
-struct SignupStep3: View {
+struct SignupStep3Deprecated: View {
     // MARK: Internal
 
     @EnvironmentObject var company: CompanyViewModel
@@ -18,11 +18,11 @@ struct SignupStep3: View {
         }
         .edgesIgnoringSafeArea(.top)
         .navigationDestination(isPresented: self.$navigateToUserCreation) {
-            CreateUserProfileView()
+            CreateUserProfileViewDeprecated()
         }
         .toolbar {
             ToolbarItem(placement: .principal) {
-                SignupNavigationTitle()
+                SignupNavigationTitleDeprecated()
             }
         }
     }

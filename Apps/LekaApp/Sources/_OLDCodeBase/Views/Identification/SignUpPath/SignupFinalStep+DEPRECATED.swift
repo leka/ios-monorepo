@@ -5,10 +5,11 @@
 import DesignKit
 import SwiftUI
 
-struct SignupStep2: View {
+struct SignupFinalStepDeprecated: View {
     // MARK: Internal
 
     @EnvironmentObject var metrics: UIMetrics
+    @EnvironmentObject var viewRouter: ViewRouter
 
     var body: some View {
         ZStack {
@@ -16,52 +17,47 @@ struct SignupStep2: View {
             self.tile
         }
         .edgesIgnoringSafeArea(.top)
-        .navigationDestination(isPresented: self.$navigateToTeacherCreation) {
-            CreateTeacherProfileView()
-        }
         .toolbar {
             ToolbarItem(placement: .principal) {
-                SignupNavigationTitle()
+                SignupNavigationTitleDeprecated()
             }
         }
     }
 
     // MARK: Private
 
-    private let data: TileData = .signupStep1
-    @State private var navigateToTeacherCreation: Bool = false
+    private let data: TileData = .signupFinalStep
 
     private var tile: some View {
         HStack(alignment: .center, spacing: 0) {
             VStack(spacing: 0) {
-                // Picto
-                Image(
-                    self.data.content.image!,
-                    bundle: Bundle(for: DesignKitResources.self)
-                )
-                .resizable()
-                .renderingMode(.original)
-                .aspectRatio(contentMode: .fit)
-                .frame(height: self.metrics.tilePictoHeightMedium)
-                .padding(.top, 20)
-                Spacer()
                 // Title
                 Text(self.data.content.title!)
                     // TODO: (@ui/ux) - Design System - replace with Leka font
                     .font(.headline)
                     .foregroundColor(DesignKitAsset.Colors.lekaOrange.swiftUIColor)
-                    .padding(.vertical, 20)
+                Spacer()
                 // Message
-                Text(self.data.content.message!)
-                    // TODO: (@ui/ux) - Design System - replace with Leka font
-                    .font(.body)
+                VStack(spacing: 10) {
+                    Text(self.data.content.message!)
+                        .padding(.bottom, 10)
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text("✅ Créer votre profil de professionnel")
+                        Text("✅ Créer votre 1er profil de personne accompagnée")
+                        Text("Vous allez maintenant pouvoir découvrir l'univers Leka et le contenu éducatif.")
+                            .padding(.vertical, 10)
+                    }
+                }
+                .multilineTextAlignment(.center)
+                // TODO: (@ui/ux) - Design System - replace with Leka font
+                .font(.body)
                 Spacer()
                 // CTA Button
                 self.accessoryView
             }
             .multilineTextAlignment(.center)
-            .frame(width: self.metrics.tileContentWidth)
-            .padding(.bottom, self.metrics.tileContentPadding)
+            .frame(width: 400)
+            .padding(self.metrics.tileContentPadding)
         }
         .frame(
             width: self.metrics.tileSize.width,
@@ -74,20 +70,18 @@ struct SignupStep2: View {
     }
 
     private var accessoryView: some View {
-        Button(
-            action: {
-                self.navigateToTeacherCreation.toggle()
-            },
-            label: {
-                Text(self.data.content.callToActionLabel!)
+        Button {
+            withAnimation {
+                self.viewRouter.currentPage = .home
             }
-        )
+        } label: {
+            Text(self.data.content.callToActionLabel!)
+        }
         .buttonStyle(
             // TODO: (@ui/ux) - Design System - replace with Leka font
             BorderedCapsule_NoFeedback_ButtonStyle(
                 font: .body,
-                color: DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor,
-                width: self.metrics.tileBtnWidth
+                color: DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor
             )
         )
     }
