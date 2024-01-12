@@ -1,6 +1,330 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "lekaapp.account_creation_view.confirm_label" : {
+      "comment" : "Confirm Password label on SignupView",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Confirm Password"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Confirmer le mot de passe"
+          }
+        }
+      }
+    },
+    "lekaapp.account_creation_view.connection_button" : {
+      "comment" : "Connection button on SignupView",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Connection"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Connexion"
+          }
+        }
+      }
+    },
+    "lekaapp.account_creation_view.create_account_title" : {
+      "comment" : "Create account title on SignupView",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Create an account"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Créer un compte"
+          }
+        }
+      }
+    },
+    "lekaapp.account_creation_view.email_label" : {
+      "comment" : "Email label on SignupView",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Email"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Email"
+          }
+        }
+      }
+    },
+    "lekaapp.account_creation_view.navigation_title" : {
+      "comment" : "NavigationBar title on the whole Signup process",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "First connection"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Première connexion"
+          }
+        }
+      }
+    },
+    "lekaapp.account_creation_view.password_label" : {
+      "comment" : "Password label on SignupView",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Password"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mot de passe"
+          }
+        }
+      }
+    },
+    "lekaapp.account_creation_view.step_1_go_button" : {
+      "comment" : "Step 1 let's go button",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "👉 Here we go !"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "👉 C'est parti !"
+          }
+        }
+      }
+    },
+    "lekaapp.account_creation_view.step_1_message" : {
+      "comment" : "Step 1 message",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "We will now discover the application\ntogether. Are you ready?"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nous allons maintenant découvrir l'application ensemble. Vous êtes prêt ?"
+          }
+        }
+      }
+    },
+    "lekaapp.account_creation_view.step_1_title" : {
+      "comment" : "Step 1 title",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Congratulations ! 🎉\nYou have just created your Leka account!"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Félicitations ! 🎉  Vous venez de créer votre compte Leka !"
+          }
+        }
+      }
+    },
+    "lekaapp.account_creation_view.step_2_create_button" : {
+      "comment" : "Step 2 create button",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Create"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Créer"
+          }
+        }
+      }
+    },
+    "lekaapp.account_creation_view.step_2_message" : {
+      "comment" : "Step 2 message",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "We will create your caregiver profile."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nous allons créer votre profil accompagnant."
+          }
+        }
+      }
+    },
+    "lekaapp.account_creation_view.step_2_title" : {
+      "comment" : "Step 2 title",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Step 1 :"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Étape 1 :"
+          }
+        }
+      }
+    },
+    "lekaapp.account_creation_view.step_3_create_button" : {
+      "comment" : "Step 3 create button",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Create"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Créer"
+          }
+        }
+      }
+    },
+    "lekaapp.account_creation_view.step_3_message" : {
+      "comment" : "Step 3 message",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "We will now create your first\ncare receiver profile."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nous allons maintenant créer votre premier profil utilisateur."
+          }
+        }
+      }
+    },
+    "lekaapp.account_creation_view.step_3_title" : {
+      "comment" : "Step 3 title",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Step 2 :"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Étape 2 :"
+          }
+        }
+      }
+    },
+    "lekaapp.account_creation_view.step_final_discover_content_button" : {
+      "comment" : "Step final discover content button",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Discover content!"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Découvrez le contenu!"
+          }
+        }
+      }
+    },
+    "lekaapp.account_creation_view.step_final_message" : {
+      "comment" : "Step final message",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "You have completed these 2 steps brilliantly:\n\n✅ Create your professional profile\n✅ Create your first supported person profile\n\nYou can now discover the Leka universe and our educational content."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vous avez réalisé ces 2 étapes avec brio :  ✅ Créer votre profil de professionnel \n ✅ Créer votre profil de personne accompagnée  \nVous allez maintenant pouvoir découvrir l'univers Leka et le contenu éducatif. "
+          }
+        }
+      }
+    },
+    "lekaapp.account_creation_view.step_final_title" : {
+      "comment" : "Step final title",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "🎉 Congratulations again! 👏"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🎉 Encore bravo ! 👏"
+          }
+        }
+      }
+    },
     "lekaapp.welcome_view.create_account_button" : {
       "comment" : "Create account button on WelcomeView",
       "extractionState" : "extracted_with_value",
