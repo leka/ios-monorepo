@@ -18,7 +18,7 @@ struct ConnectionView: View {
                                 .bold()
                             Text(l10n.main.appDescription)
                         }
-                        .foregroundColor(.accentColor)
+                        .foregroundColor(.lkNavigationTitle)
                     }
                 }
         }

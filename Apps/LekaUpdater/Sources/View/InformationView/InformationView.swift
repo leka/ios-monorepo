@@ -108,7 +108,7 @@ struct InformationView: View {
                             .bold()
                         Text(l10n.main.appDescription)
                     }
-                    .foregroundColor(.accentColor)
+                    .foregroundColor(.lkNavigationTitle)
                 }
 
                 ToolbarItem(placement: .navigationBarLeading) {
