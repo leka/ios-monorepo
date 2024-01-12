@@ -22,7 +22,7 @@ struct WelcomeView: View {
                 .buttonStyle(.borderedProminent)
 
                 NavigationLink(String(l10n.WelcomeView.loginButton.characters)) {
-                    LoginView()
+                    ConnectionView()
                 }
                 .buttonStyle(.bordered)
             }
