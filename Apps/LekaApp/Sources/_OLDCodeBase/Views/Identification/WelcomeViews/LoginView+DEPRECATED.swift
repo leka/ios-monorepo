@@ -5,9 +5,9 @@
 import DesignKit
 import SwiftUI
 
-// MARK: - LoginView
+// MARK: - LoginViewDeprecated
 
-struct LoginView: View {
+struct LoginViewDeprecated: View {
     // MARK: Internal
 
     @EnvironmentObject var company: CompanyViewModel
@@ -166,11 +166,11 @@ struct LoginView: View {
     }
 }
 
-// MARK: - LoginView_Previews
+// MARK: - LoginViewDeprecated_Previews
 
-struct LoginView_Previews: PreviewProvider {
+struct LoginViewDeprecated_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView()
+        LoginViewDeprecated()
             .environmentObject(CompanyViewModel())
             .environmentObject(SettingsViewModel())
             .environmentObject(UIMetrics())
