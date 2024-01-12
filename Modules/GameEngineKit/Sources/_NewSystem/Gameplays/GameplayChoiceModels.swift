@@ -7,10 +7,10 @@ import Foundation
 
 // MARK: - kDefaultGradingTable
 
-typealias GradingTable = [Int: [Int: Int]]
+typealias GradingLUT = [Int: [Int: Int]]
 
 // TODO: (@HPezz): Split into several gameplays gradingTables
-let kGradeLUTTableDefault: GradingTable = [
+let kGradingLUTDefault: GradingLUT = [
     1: [1: 1],
     2: [1: 1, 2: 2],
     3: [1: 1, 2: 2, 3: 3],

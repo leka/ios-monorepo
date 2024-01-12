@@ -25,7 +25,7 @@ extension GameplayFindTheRightAnswers where ChoiceModelType == GameplayDragAndDr
         if let allowedTrials {
             self.allowedTrials = allowedTrials
         } else {
-            self.allowedTrials = getNumberOfAllowedTrials(from: kGradeLUTTableDefault)
+            self.allowedTrials = getNumberOfAllowedTrials(from: kGradingLUTDefault)
         }
     }
 

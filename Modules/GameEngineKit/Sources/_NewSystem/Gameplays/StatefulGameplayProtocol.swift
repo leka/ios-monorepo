@@ -10,7 +10,7 @@ protocol StatefulGameplayProtocol {
     var state: CurrentValueSubject<ExerciseState, Never> { get }
 
     func evaluateCompletionLevel(allowedTrials: Int, numberOfTrials: Int) -> ExerciseState.CompletionLevel
-    func getNumberOfAllowedTrials(from table: GradingTable) -> Int
+    func getNumberOfAllowedTrials(from table: GradingLUT) -> Int
 }
 
 extension StatefulGameplayProtocol {

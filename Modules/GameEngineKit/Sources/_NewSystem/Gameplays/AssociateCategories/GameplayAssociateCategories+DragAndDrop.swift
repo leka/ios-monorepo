@@ -24,7 +24,7 @@ extension GameplayAssociateCategories where ChoiceModelType == GameplayAssociate
         if let allowedTrials {
             self.allowedTrials = allowedTrials
         } else {
-            self.allowedTrials = getNumberOfAllowedTrials(from: kGradeLUTTableDefault)
+            self.allowedTrials = getNumberOfAllowedTrials(from: kGradingLUTDefault)
         }
     }
 

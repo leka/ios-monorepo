@@ -28,7 +28,7 @@ class GameplayAssociateCategories<ChoiceModelType>: StatefulGameplayProtocol
         return numberOfCategorizableChoices - numberOfCategories
     }
 
-    func getNumberOfAllowedTrials(from table: GradingTable) -> Int {
+    func getNumberOfAllowedTrials(from table: GradingLUT) -> Int {
         let numberOfChoices = self.choices.value.count
         let numberOfRightAnswers = self.getNumberOfRightAnswers(choices: self.choices.value)
 
