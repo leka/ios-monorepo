@@ -17,7 +17,7 @@ struct WelcomeView: View {
                 LekaLogo(height: 90)
 
                 NavigationLink(String(l10n.WelcomeView.createAccountButton.characters)) {
-                    SignupView()
+                    AccountCreationView()
                 }
                 .buttonStyle(.borderedProminent)
 

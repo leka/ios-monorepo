@@ -5,9 +5,9 @@
 import DesignKit
 import SwiftUI
 
-// MARK: - SignupView
+// MARK: - SignupViewDeprecated
 
-struct SignupView: View {
+struct SignupViewDeprecated: View {
     // MARK: Internal
 
     @EnvironmentObject var company: CompanyViewModel
@@ -34,7 +34,7 @@ struct SignupView: View {
             }
         }
         .navigationDestination(isPresented: self.$navigateToSignup1) {
-            SignupStep1()
+            SignupStep1Deprecated()
         }
     }
 
@@ -87,7 +87,7 @@ struct SignupView: View {
             return color
         }
 
-        LekaTextField(
+        LekaTextFieldDeprecated(
             label: mailTitle,
             entry: self.$mail,
             color: mailLabelColor,
@@ -104,7 +104,7 @@ struct SignupView: View {
     }
 
     private var passwordTextField: some View {
-        LekaPasswordField(
+        LekaPasswordFieldDeprecated(
             label: "Mot de passe",
             entry: self.$password,
             focused: _focusedField
@@ -128,7 +128,7 @@ struct SignupView: View {
 
         let confirmLabelColor: Color = self.passwordsMatch() || self.confirm.isEmpty ? DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor : .red
 
-        LekaPasswordField(
+        LekaPasswordFieldDeprecated(
             label: confirmTitle,
             entry: self.$confirm,
             color: confirmLabelColor,
@@ -180,11 +180,11 @@ struct SignupView: View {
     }
 }
 
-// MARK: - SignupView_Previews
+// MARK: - SignupViewDeprecated_Previews
 
-struct SignupView_Previews: PreviewProvider {
+struct SignupViewDeprecated_Previews: PreviewProvider {
     static var previews: some View {
-        SignupView()
+        SignupViewDeprecated()
             .environmentObject(CompanyViewModel())
             .environmentObject(SettingsViewModel())
             .environmentObject(UIMetrics())
