@@ -11,7 +11,7 @@ struct ContentViewDeprecated: View {
         Group {
             switch self.viewRouter.currentPage {
                 case .welcome:
-                    WelcomeView()
+                    WelcomeViewDeprecated()
                         .transition(.opacity)
                 case .home:
                     HomeView()

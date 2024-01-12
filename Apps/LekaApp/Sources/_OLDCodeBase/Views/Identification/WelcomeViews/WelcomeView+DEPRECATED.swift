@@ -5,9 +5,9 @@
 import DesignKit
 import SwiftUI
 
-// MARK: - WelcomeView
+// MARK: - WelcomeViewDeprecated
 
-struct WelcomeView: View {
+struct WelcomeViewDeprecated: View {
     // MARK: Internal
 
     @EnvironmentObject var company: CompanyViewModel
@@ -72,11 +72,11 @@ struct WelcomeView: View {
     }
 }
 
-// MARK: - WelcomeView_Previews
+// MARK: - WelcomeViewDeprecated_Previews
 
-struct WelcomeView_Previews: PreviewProvider {
+struct WelcomeViewDeprecated_Previews: PreviewProvider {
     static var previews: some View {
-        WelcomeView()
+        WelcomeViewDeprecated()
             .environmentObject(CompanyViewModel())
             .environmentObject(ViewRouter())
             .environmentObject(UIMetrics())
