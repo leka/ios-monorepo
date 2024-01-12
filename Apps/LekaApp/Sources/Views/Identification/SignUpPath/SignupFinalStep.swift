@@ -56,7 +56,6 @@ struct SignupFinalStep: View {
                 self.accessoryView
             }
             .multilineTextAlignment(.center)
-            .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
             .frame(width: 400)
             .padding(self.metrics.tileContentPadding)
         }

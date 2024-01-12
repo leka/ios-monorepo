@@ -54,7 +54,6 @@ struct ProfileEditorView: View {
         }
         // TODO: (@ui/ux) - Design System - replace with Leka font
         .font(.headline)
-        .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
     }
 
     private var closeButton: some View {
@@ -87,7 +86,6 @@ struct ProfileEditorView: View {
                 Image(systemName: "checkmark.circle")
                 Text("Valider la sélection")
             }
-            .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
         }
         .disabled(!self.settings.companyIsConnected)
         .disabled(!self.company.selectionSetIsCorrect())

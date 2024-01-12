@@ -57,7 +57,7 @@ class NavigationViewModel: ObservableObject {
         }
     }
 
-    func setNavTitle() -> String {
+    func getNavTitle() -> String {
         switch self.currentView {
             case .curriculums: "Parcours"
             case .activities: "Activités"

@@ -21,7 +21,6 @@ struct GameView: View {
             .edgesIgnoringSafeArea(.all)
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarBackButtonHidden()
-            .tint(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
             .overlay(
                 VStack(spacing: 0) {
                     VStack(spacing: self.gameMetrics.headerSpacing) {
@@ -64,7 +63,6 @@ struct GameView: View {
                     }
                     // TODO: (@ui/ux) - Design System - replace with Leka font
                     .font(.subheadline)
-                    .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     self.infoButton

@@ -22,7 +22,6 @@ struct SidebarAvatarNameLabel: View {
         .font(.subheadline)
         .allowsTightening(true)
         .lineLimit(2)
-        .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
         .padding(.vertical, 2)
         .padding(.horizontal, 6)
         .frame(minWidth: 100)

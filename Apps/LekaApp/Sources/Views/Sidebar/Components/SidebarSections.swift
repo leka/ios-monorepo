@@ -14,7 +14,6 @@ struct SidebarSections: View {
     var body: some View {
         self.section(content: self.navigationVM.educContentList)
             .padding(.horizontal)
-            .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
     }
 
     func sectionItem(_ item: SectionLabel) -> some View {

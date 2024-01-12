@@ -145,8 +145,6 @@ struct SignupView: View {
 
     private var title: some View {
         Text("Créer un compte")
-            .textCase(.uppercase)
-            .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
             // TODO: (@ui/ux) - Design System - replace with Leka font
             .font(.title)
     }
@@ -166,7 +164,6 @@ struct SignupView: View {
         )
         .disabled(self.connectIsDisabled())
         .buttonStyle(.borderedProminent)
-        .tint(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
     }
 
     private func submitForm() {

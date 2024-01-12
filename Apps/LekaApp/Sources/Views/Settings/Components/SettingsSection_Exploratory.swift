@@ -30,7 +30,6 @@ struct SettingsSection_Exploratory: View {
             }
             // TODO: (@ui/ux) - Design System - replace with Leka font
             .font(.subheadline)
-            .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
             .headerProminence(.increased)
         }
     }

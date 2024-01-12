@@ -55,7 +55,6 @@ struct CurriculumDetailsView: View {
                 Text(self.curriculumVM.setCurriculumDetailNavTitle())
                     // TODO: (@ui/ux) - Design System - replace with Leka font
                     .font(.headline)
-                    .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
             }
             ToolbarItem(placement: .navigationBarLeading) {
                 Button(

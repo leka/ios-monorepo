@@ -46,13 +46,11 @@ struct GoToRobotConnectButton: View {
                     .font(.subheadline)
                 self.robotCharginStatusAndBattery
             }
-            .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
         } else {
             Text("Connectez-vous à votre Leka")
                 // TODO: (@ui/ux) - Design System - replace with Leka font
                 .font(.subheadline)
                 .multilineTextAlignment(.leading)
-                .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
         }
     }
 

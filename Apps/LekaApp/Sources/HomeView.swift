@@ -24,10 +24,8 @@ struct HomeView: View {
                 NavigationStack(path: self.$navigationVM.pathsFromHome) {
                     self.navigationVM.allSidebarDestinationViews
                         .navigationBarTitleDisplayMode(.inline)
+                        .navigationTitle(self.navigationVM.getNavTitle())
                         .toolbar {
-                            ToolbarItem(placement: .principal) {
-                                self.toolbarTitle
-                            }
                             ToolbarItem(placement: .navigationBarTrailing) {
                                 self.infoButton
                             }
@@ -58,33 +56,22 @@ struct HomeView: View {
                 Text("Quitter")
             }
         } message: {
-            Text(
-                // swiftlint:disable:next line_length
-                "Vous êtes actuellement en mode exploratoire. Ce mode vous permet d'explorer les contenus éducatifs sans que l'utilisation ne soit enregistrée."
+            Text("""
+                Vous êtes actuellement en mode exploratoire. \
+                Ce mode vous permet d'explorer les contenus \
+                éducatifs sans que l'utilisation ne soit enregistrée.
+                """
             )
         }
     }
 
     // MARK: Private
 
-    private var toolbarTitle: some View {
-        HStack(spacing: 4) {
-            Text(self.navigationVM.setNavTitle())
-            if self.settings.companyIsConnected, self.settings.exploratoryModeIsOn {
-                Image(systemName: "binoculars.fill")
-            }
-        }
-        // TODO: (@ui/ux) - Design System - replace with Leka font
-        .font(.headline)
-        .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
-    }
-
     private var infoButton: some View {
         Button {
             self.navigationVM.updateShowInfo()
         } label: {
             Image(systemName: "info.circle")
-                .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
         }
         .opacity(self.navigationVM.showInfo() ? 0 : 1)
     }

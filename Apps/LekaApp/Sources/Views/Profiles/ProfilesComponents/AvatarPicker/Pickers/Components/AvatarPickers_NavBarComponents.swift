@@ -15,7 +15,6 @@ struct AvatarPicker_NavigationTitle: View {
         Text("Quel est ton avatar ?")
             // TODO: (@ui/ux) - Design System - replace with Leka font
             .font(.headline)
-            .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
     }
 }
 
@@ -39,7 +38,6 @@ struct AvatarPicker_AdaptiveBackButton: View {
                 }
             }
         }
-        .tint(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
     }
 }
 
@@ -61,7 +59,6 @@ struct AvatarPicker_ValidateButton: View {
                 Image(systemName: "checkmark.circle")
                 Text("Valider la sélection")
             }
-            .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
         }
         .disabled(self.selected.isEmpty)
     }

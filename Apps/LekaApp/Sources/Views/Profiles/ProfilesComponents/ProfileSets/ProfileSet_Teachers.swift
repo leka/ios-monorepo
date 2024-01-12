@@ -77,8 +77,7 @@ struct ProfileSet_Teachers: View {
             }
             Text("Qui êtes-vous ?")
                 // TODO: (@ui/ux) - Design System - replace with Leka font
-                .font(.body)
-                .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
+                .font(.headline)
             if self.navigationVM.showProfileEditor {
                 Spacer()
             }

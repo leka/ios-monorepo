@@ -29,7 +29,6 @@ struct SettingsView: View {
                 .scrollDisabled(true)
                 .padding(.horizontal, 10)
                 .formStyle(.grouped)
-                .foregroundColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
                 // TODO: (@ui/ux) - Design System - replace with Leka font
                 .font(.headline)
             }
