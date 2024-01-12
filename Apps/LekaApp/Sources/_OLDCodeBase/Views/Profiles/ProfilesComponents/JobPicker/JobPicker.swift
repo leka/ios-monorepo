@@ -50,7 +50,7 @@ struct JobPicker: View {
         VStack(spacing: 0) {
             Divider()
                 .padding(.horizontal, 20)
-            LekaTextField(label: "Autre (préciser)", entry: self.$otherJobText, isEditing: self.$isEditing, type: .name) {
+            LekaTextFieldDeprecated(label: "Autre (préciser)", entry: self.$otherJobText, isEditing: self.$isEditing, type: .name) {
                 if !self.otherJobText.isEmpty || !self.company.bufferTeacher.jobs.contains(self.otherJobText) {
                     self.selectedJobs.append(self.otherJobText)
                 }

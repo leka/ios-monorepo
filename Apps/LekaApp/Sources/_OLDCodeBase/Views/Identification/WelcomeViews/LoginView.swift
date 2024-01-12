@@ -100,7 +100,7 @@ struct LoginView: View {
         let mailLabelColor: Color = self.mail.isValidEmail() || self.mail.isEmpty || self.isEditing
             ? DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor : .red
 
-        LekaTextField(
+        LekaTextFieldDeprecated(
             label: mailTitle,
             entry: self.$mail,
             color: mailLabelColor,
@@ -122,7 +122,7 @@ struct LoginView: View {
 
         let passwordLabelColor: Color = self.credentialsAreCorrect ? DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor : .red
 
-        LekaPasswordField(
+        LekaPasswordFieldDeprecated(
             label: passwordTitle,
             entry: self.$password,
             color: passwordLabelColor,
