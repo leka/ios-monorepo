@@ -16,16 +16,16 @@ struct GameplayAssociateCategoriesChoiceModel: GameplayChoiceModelProtocol {
 }
 
 extension GameplayAssociateCategories where ChoiceModelType == GameplayAssociateCategoriesChoiceModel {
-    // TODO: (@HPezz): Create gameplay related grading table search function & allowedTrials in args
-    convenience init(choices: [GameplayAssociateCategoriesChoiceModel], shuffle _: Bool = false) {
+    convenience init(choices: [GameplayAssociateCategoriesChoiceModel], shuffle _: Bool = false, allowedTrials: Int? = nil) {
         self.init()
         self.choices.send(choices)
         state.send(.playing)
 
-        let numberOfChoices = self.choices.value.count
-        let numberOfRightAnswers = self.getNumberOfRightAnswers(choices: choices)
-
-        self.allowedTrials = kDefaultGradingTable[numberOfChoices]![numberOfRightAnswers]!
+        if let allowedTrials {
+            self.allowedTrials = allowedTrials
+        } else {
+            self.allowedTrials = getNumberOfAllowedTrials(from: kGradingLUTDefault)
+        }
     }
 
     func process(_ choice: ChoiceModelType, _ destination: ChoiceModelType) {
@@ -42,12 +42,5 @@ extension GameplayAssociateCategories where ChoiceModelType == GameplayAssociate
             let level = evaluateCompletionLevel(allowedTrials: allowedTrials, numberOfTrials: numberOfTrials)
             state.send(.completed(level: level))
         }
-    }
-
-    func getNumberOfRightAnswers(choices: [GameplayAssociateCategoriesChoiceModel]) -> Int {
-        let numberOfCategories = Set(choices.map(\.choice.category)).count
-        let numberOfCategorizableChoices = choices.map { $0.choice.category != .none }.count
-
-        return numberOfCategorizableChoices - numberOfCategories
     }
 }
