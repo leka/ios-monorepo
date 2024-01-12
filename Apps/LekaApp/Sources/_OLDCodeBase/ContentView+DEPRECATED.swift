@@ -4,7 +4,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct ContentViewDeprecated: View {
     @EnvironmentObject var viewRouter: ViewRouter
 
     var body: some View {
