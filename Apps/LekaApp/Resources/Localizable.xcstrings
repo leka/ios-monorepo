@@ -55,6 +55,168 @@
         }
       }
     },
+    "main_view.sidebar.section.information": {
+      "comment": "The title of the section 'Information'",
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Information"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Informations"
+          }
+        }
+      }
+    },
+    "main_view.sidebar.section.content": {
+      "comment": "The title of the section 'Content'",
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Content"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Contenu"
+          }
+        }
+      }
+    },
+    "main_view.sidebar.navigation_title": {
+      "comment": "The title of the sidebar",
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Leka App"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Leka App"
+          }
+        }
+      }
+    },
+    "main_view.sidebar.category_label.stories": {
+      "comment": "The title of the category 'Stories'",
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Stories"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Histoires"
+          }
+        }
+      }
+    },
+    "main_view.sidebar.category_label.resources": {
+      "comment": "The title of the category 'Resources'",
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Resources"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ressources"
+          }
+        }
+      }
+    },
+    "main_view.sidebar.category_label.remotes": {
+      "comment": "The title of the category 'Remotes'",
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Remotes"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Télécommandes"
+          }
+        }
+      }
+    },
+    "main_view.sidebar.category_label.news": {
+      "comment": "The title of the category 'News'",
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "News"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nouveautés"
+          }
+        }
+      }
+    },
+    "main_view.sidebar.category_label.curriculums": {
+      "comment": "The title of the category 'Curriculums'",
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Curriculums"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Parcours"
+          }
+        }
+      }
+    },
+    "main_view.sidebar.category_label.activities": {
+      "comment": "The title of the category 'Activities'",
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Activities"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Activités"
+          }
+        }
+      }
+    },
     "lekaapp.connection_view.title": {
       "comment": "ConnectionView title",
       "extractionState": "extracted_with_value",
