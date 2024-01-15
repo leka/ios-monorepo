@@ -59,8 +59,9 @@ struct InformationView: View {
                         .padding()
                         .overlay(
                             RoundedRectangle(cornerRadius: 20)
-                                .stroke(DesignKitAsset.Colors.lightGray.swiftUIColor, lineWidth: 3)
+                                .stroke(.lkStroke, lineWidth: 3)
                         )
+                        .padding([.horizontal], 3)
                         .padding([.vertical], 10)
 
                     DisclosureGroup {
@@ -74,8 +75,9 @@ struct InformationView: View {
                     .padding()
                     .overlay(
                         RoundedRectangle(cornerRadius: 20)
-                            .stroke(DesignKitAsset.Colors.lightGray.swiftUIColor, lineWidth: 3)
+                            .stroke(.lkStroke, lineWidth: 3)
                     )
+                    .padding([.horizontal], 3)
                     .padding([.vertical], 10)
 
                     if self.viewModel.showRobotNeedsUpdate {
@@ -94,6 +96,7 @@ struct InformationView: View {
                 .padding([.horizontal], 20)
             }
             .foregroundColor(DesignKitAsset.Colors.darkGray.swiftUIColor)
+            .background(.lkBackground)
             .onChange(of: self.isViewVisible) { isVisible in
                 if isVisible { self.viewModel.onViewReappear() }
             }
@@ -105,7 +108,7 @@ struct InformationView: View {
                             .bold()
                         Text(l10n.main.appDescription)
                     }
-                    .foregroundColor(.accentColor)
+                    .foregroundColor(.lkNavigationTitle)
                 }
 
                 ToolbarItem(placement: .navigationBarLeading) {
