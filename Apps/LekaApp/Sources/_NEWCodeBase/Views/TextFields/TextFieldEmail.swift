@@ -3,37 +3,36 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import DesignKit
+import LocalizationKit
 import SwiftUI
 
-// MARK: - MailTextField
+// MARK: - l10n.TextFieldEmail
 
-struct MailTextField: View {
-    let label: String
+extension l10n {
+    enum TextFieldEmail {
+        static let label = LocalizedString("lekaapp.TextFieldEmail.label", value: "Email", comment: "TextFieldEmail label")
+    }
+}
 
+// MARK: - TextFieldEmail
+
+struct TextFieldEmail: View {
     @Binding var entry: String
-
-    @FocusState var focused: FormField?
-
-    let action: () -> Void
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
-            Text(self.label)
+            Text(l10n.TextFieldEmail.label)
 
             TextField("", text: self.$entry)
                 .textFieldStyle(.roundedBorder)
                 .keyboardType(.emailAddress)
                 .textContentType(.emailAddress)
-                .focused(self.$focused, equals: .mail)
                 .autocapitalization(.none)
                 .autocorrectionDisabled()
-                .onSubmit { self.action() }
         }
     }
 }
 
 #Preview {
-    MailTextField(label: "Email", entry: .constant("")) {
-        print("Email entered")
-    }
+    TextFieldEmail(entry: .constant("john.doe@mail.com"))
 }
