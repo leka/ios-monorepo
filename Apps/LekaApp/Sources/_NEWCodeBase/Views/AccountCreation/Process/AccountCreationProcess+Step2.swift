@@ -38,15 +38,15 @@ extension AccountCreationProcess {
                 .aspectRatio(contentMode: .fit)
                 .frame(height: 80)
 
-                Text(l10n.AccountCreationView.step2Title)
+                Text(l10n.AccountCreationProcess.Step2.title)
                     // TODO: (@ui/ux) - Design System - replace with Leka font
                     .font(.headline)
                     .textCase(.uppercase)
                     .foregroundColor(.orange)
 
-                Text(l10n.AccountCreationView.step2Message)
+                Text(l10n.AccountCreationProcess.Step2.message)
 
-                Button(String(l10n.AccountCreationView.step2CreateButton.characters)) {
+                Button(String(l10n.AccountCreationProcess.Step2.createButton.characters)) {
                     self.navigateToCaregiverCreationView.toggle()
                 }
                 .buttonStyle(.bordered)

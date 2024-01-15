@@ -7,7 +7,7 @@ import LocalizationKit
 import SwiftUI
 
 extension AccountCreationProcess {
-    struct StepFinal: View {
+    struct Step4: View {
         // MARK: Internal
 
         @EnvironmentObject var viewRouter: ViewRouter
@@ -26,14 +26,14 @@ extension AccountCreationProcess {
 
         private var tile: some View {
             VStack(spacing: 30) {
-                Text(l10n.AccountCreationView.stepFinalTitle)
+                Text(l10n.AccountCreationProcess.Step4.title)
                     // TODO: (@ui/ux) - Design System - replace with Leka font
                     .font(.headline)
                     .foregroundColor(DesignKitAsset.Colors.lekaOrange.swiftUIColor)
 
-                Text(l10n.AccountCreationView.stepFinalMessage)
+                Text(l10n.AccountCreationProcess.Step4.message)
 
-                Button(String(l10n.AccountCreationView.stepFinalDiscoverContentButton.characters)) {
+                Button(String(l10n.AccountCreationProcess.Step4.discoverContentButton.characters)) {
                     withAnimation {
                         self.viewRouter.currentPage = .home
                     }
@@ -49,5 +49,5 @@ extension AccountCreationProcess {
 }
 
 #Preview {
-    AccountCreationProcess.StepFinal()
+    AccountCreationProcess.Step4()
 }

@@ -18,7 +18,7 @@ extension AccountCreationProcess {
                 Text("To implement on Teacher profiles structure ready !")
                     .edgesIgnoringSafeArea(.top)
                     .navigationDestination(isPresented: self.$navigateToStepFinal) {
-                        AccountCreationProcess.StepFinal()
+                        AccountCreationProcess.Step4()
                     }
                     .toolbar {
                         ToolbarItem(placement: .principal) {

@@ -22,14 +22,6 @@ class AccountCreationViewViewModel: ObservableObject {
 struct AccountCreationView: View {
     // MARK: Internal
 
-    struct NavigationTitle: View {
-        var body: some View {
-            Text(l10n.AccountCreationView.navigationTitle)
-                // TODO: (@ui/ux) - Design System - replace with Leka font
-                .font(.headline)
-        }
-    }
-
     @FocusState var focusedField: FormField?
 
     var body: some View {

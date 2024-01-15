@@ -39,14 +39,14 @@ extension AccountCreationProcess {
                 .frame(height: 80)
                 .padding()
 
-                Text(l10n.AccountCreationView.step1Title)
+                Text(l10n.AccountCreationProcess.Step1.title)
                     // TODO: (@ui/ux) - Design System - replace with Leka font
                     .font(.headline)
                     .foregroundColor(.orange)
 
-                Text(l10n.AccountCreationView.step1Message)
+                Text(l10n.AccountCreationProcess.Step1.message)
 
-                Button(String(l10n.AccountCreationView.step1GoButton.characters)) {
+                Button(String(l10n.AccountCreationProcess.Step1.goButton.characters)) {
                     self.navigateToStep2.toggle()
                 }
                 .buttonStyle(.bordered)

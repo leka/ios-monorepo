@@ -38,15 +38,15 @@ extension AccountCreationProcess {
                 .aspectRatio(contentMode: .fit)
                 .frame(height: 80)
 
-                Text(l10n.AccountCreationView.step3Title)
+                Text(l10n.AccountCreationProcess.Step3.title)
                     // TODO: (@ui/ux) - Design System - replace with Leka font
                     .font(.headline)
                     .textCase(.uppercase)
                     .foregroundColor(DesignKitAsset.Colors.lekaOrange.swiftUIColor)
 
-                Text(l10n.AccountCreationView.step3Message)
+                Text(l10n.AccountCreationProcess.Step3.message)
 
-                Button(String(l10n.AccountCreationView.step3CreateButton.characters)) {
+                Button(String(l10n.AccountCreationProcess.Step3.createButton.characters)) {
                     self.navigateToCarereciverCreationView.toggle()
                 }
                 .buttonStyle(.bordered)
