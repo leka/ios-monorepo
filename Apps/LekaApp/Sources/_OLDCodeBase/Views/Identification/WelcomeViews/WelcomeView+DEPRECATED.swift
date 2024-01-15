@@ -28,7 +28,7 @@ struct WelcomeViewDeprecated: View {
                     .buttonStyle(Connect_ButtonStyle())
 
                     NavigationLink("Se connecter") {
-                        LoginView()
+                        LoginViewDeprecated()
                     }
                     .buttonStyle(Connect_ButtonStyle(reversed: true))
                 }
