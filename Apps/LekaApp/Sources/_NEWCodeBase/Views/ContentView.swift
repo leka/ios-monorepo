@@ -16,7 +16,7 @@ struct ContentView: View {
                     WelcomeView()
                         .transition(.opacity)
                 case .home:
-                    HomeViewDeprecated()
+                    MainView()
                         .transition(.opacity)
             }
         }
@@ -29,7 +29,7 @@ struct ContentView: View {
                 }
                 .buttonStyle(.borderedProminent)
 
-                Button("Show HomeView - NOT WORKING") {
+                Button("Show MainView") {
                     self.viewRouter.currentPage = .home
                     self.isCurrentPageModalShown.toggle()
                 }
