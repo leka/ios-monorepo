@@ -59,6 +59,15 @@ git_hooks:
 	@brew install pre-commit
 	@pre-commit install
 
+git_tools:
+	@echo "Installing git tools..."
+	@brew install gh git-lfs
+	@git lfs install
+	@brew install node && npm install --global git-json-merge
+	@echo "node and git-json-merge have been installed, please run the following:"
+	@echo "    git config merge.json.driver \"git-json-merge %A %O %B\""
+	@echo "    git config merge.json.name \"custom merge driver for json files\""
+
 format:
 	@echo "Formatting code..."
 	@swiftlint --quiet --fix
