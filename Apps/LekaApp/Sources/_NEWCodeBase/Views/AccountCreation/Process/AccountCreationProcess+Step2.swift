@@ -6,15 +6,15 @@ import DesignKit
 import LocalizationKit
 import SwiftUI
 
-extension AccountCreationView {
-    struct Step1: View {
+extension AccountCreationProcess {
+    struct Step2: View {
         // MARK: Internal
 
         var body: some View {
             self.tile
                 .edgesIgnoringSafeArea(.top)
-                .navigationDestination(isPresented: self.$navigateToStep2) {
-                    Step2()
+                .navigationDestination(isPresented: self.$navigateToCaregiverCreationView) {
+                    AccountCreationProcess.CreateTeacherProfileView()
                 }
                 .toolbar {
                     ToolbarItem(placement: .principal) {
@@ -25,29 +25,29 @@ extension AccountCreationView {
 
         // MARK: Private
 
-        @State private var navigateToStep2: Bool = false
+        @State private var navigateToCaregiverCreationView: Bool = false
 
         private var tile: some View {
             VStack(spacing: 30) {
                 Image(
-                    DesignKitAsset.Images.welcome.name,
+                    DesignKitAsset.Images.accompagnantPicto.name,
                     bundle: Bundle(for: DesignKitResources.self)
                 )
                 .resizable()
                 .renderingMode(.original)
                 .aspectRatio(contentMode: .fit)
                 .frame(height: 80)
-                .padding()
 
-                Text(l10n.AccountCreationView.step1Title)
+                Text(l10n.AccountCreationView.step2Title)
                     // TODO: (@ui/ux) - Design System - replace with Leka font
                     .font(.headline)
+                    .textCase(.uppercase)
                     .foregroundColor(.orange)
 
-                Text(l10n.AccountCreationView.step1Message)
+                Text(l10n.AccountCreationView.step2Message)
 
-                Button(String(l10n.AccountCreationView.step1GoButton.characters)) {
-                    self.navigateToStep2.toggle()
+                Button(String(l10n.AccountCreationView.step2CreateButton.characters)) {
+                    self.navigateToCaregiverCreationView.toggle()
                 }
                 .buttonStyle(.bordered)
             }
@@ -60,5 +60,5 @@ extension AccountCreationView {
 }
 
 #Preview {
-    AccountCreationView.Step1()
+    AccountCreationProcess.Step3()
 }

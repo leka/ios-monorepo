@@ -7,7 +7,7 @@ import SwiftUI
 
 // MARK: - CreateTeacherProfileView
 
-extension AccountCreationView {
+extension AccountCreationProcess {
     struct CreateTeacherProfileView: View {
         // MARK: Internal
 
@@ -18,7 +18,7 @@ extension AccountCreationView {
                 Text("To implement on Teacher profiles structure ready !")
                     .edgesIgnoringSafeArea(.top)
                     .navigationDestination(isPresented: self.$navigateToStep3) {
-                        Step3()
+                        AccountCreationProcess.Step3()
                     }
                     .toolbar {
                         ToolbarItem(placement: .principal) {
@@ -39,5 +39,5 @@ extension AccountCreationView {
 }
 
 #Preview {
-    AccountCreationView.CreateTeacherProfileView()
+    AccountCreationProcess.CreateTeacherProfileView()
 }

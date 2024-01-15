@@ -6,15 +6,15 @@ import DesignKit
 import LocalizationKit
 import SwiftUI
 
-extension AccountCreationView {
-    struct Step2: View {
+extension AccountCreationProcess {
+    struct Step3: View {
         // MARK: Internal
 
         var body: some View {
             self.tile
                 .edgesIgnoringSafeArea(.top)
-                .navigationDestination(isPresented: self.$navigateToTeacherCreation) {
-                    CreateTeacherProfileView()
+                .navigationDestination(isPresented: self.$navigateToCarereciverCreationView) {
+                    AccountCreationProcess.CreateUserProfileView()
                 }
                 .toolbar {
                     ToolbarItem(placement: .principal) {
@@ -25,12 +25,12 @@ extension AccountCreationView {
 
         // MARK: Private
 
-        @State private var navigateToTeacherCreation: Bool = false
+        @State private var navigateToCarereciverCreationView: Bool = false
 
         private var tile: some View {
             VStack(spacing: 30) {
                 Image(
-                    DesignKitAsset.Images.accompagnantPicto.name,
+                    DesignKitAsset.Images.user.name,
                     bundle: Bundle(for: DesignKitResources.self)
                 )
                 .resizable()
@@ -38,16 +38,16 @@ extension AccountCreationView {
                 .aspectRatio(contentMode: .fit)
                 .frame(height: 80)
 
-                Text(l10n.AccountCreationView.step2Title)
+                Text(l10n.AccountCreationView.step3Title)
                     // TODO: (@ui/ux) - Design System - replace with Leka font
                     .font(.headline)
                     .textCase(.uppercase)
-                    .foregroundColor(.orange)
+                    .foregroundColor(DesignKitAsset.Colors.lekaOrange.swiftUIColor)
 
-                Text(l10n.AccountCreationView.step2Message)
+                Text(l10n.AccountCreationView.step3Message)
 
-                Button(String(l10n.AccountCreationView.step2CreateButton.characters)) {
-                    self.navigateToTeacherCreation.toggle()
+                Button(String(l10n.AccountCreationView.step3CreateButton.characters)) {
+                    self.navigateToCarereciverCreationView.toggle()
                 }
                 .buttonStyle(.bordered)
             }
@@ -60,5 +60,5 @@ extension AccountCreationView {
 }
 
 #Preview {
-    AccountCreationView.Step3()
+    AccountCreationProcess.Step3()
 }

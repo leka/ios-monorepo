@@ -6,7 +6,7 @@ import DesignKit
 import LocalizationKit
 import SwiftUI
 
-extension AccountCreationView {
+extension AccountCreationProcess {
     struct StepFinal: View {
         // MARK: Internal
 
@@ -49,5 +49,5 @@ extension AccountCreationView {
 }
 
 #Preview {
-    AccountCreationView.StepFinal()
+    AccountCreationProcess.StepFinal()
 }

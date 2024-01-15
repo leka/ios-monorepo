@@ -54,7 +54,7 @@ struct AccountCreationView: View {
             .buttonStyle(.borderedProminent)
         }
         .navigationDestination(isPresented: self.$viewModel.navigateToStep1) {
-            Step1()
+            AccountCreationProcess.Step1()
         }
     }
 
