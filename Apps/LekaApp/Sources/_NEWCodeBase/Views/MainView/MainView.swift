@@ -4,6 +4,7 @@
 
 import Combine
 import DesignKit
+import LocalizationKit
 import RobotKit
 import SwiftUI
 
@@ -28,12 +29,12 @@ struct MainView: View {
                 GoToRobotConnectButton()
                     .listRowInsets(EdgeInsets(top: -5, leading: -20, bottom: -15, trailing: -20))
 
-                Section("Information") {
+                Section(String(l10n.MainView.Sidebar.sectionInformation.characters)) {
                     CategoryLabel(category: .news)
                     CategoryLabel(category: .resources)
                 }
 
-                Section("Content") {
+                Section(String(l10n.MainView.Sidebar.sectionContent.characters)) {
                     CategoryLabel(category: .curriculums)
                     CategoryLabel(category: .activities)
                     CategoryLabel(category: .remotes)
@@ -42,7 +43,7 @@ struct MainView: View {
             }
             // TODO: (@ladislas) remove if not necessary
             // .disabled(navigation.disableUICompletly)
-            .navigationTitle("Leka App")
+            .navigationTitle(String(l10n.MainView.Sidebar.navigationTitle.characters))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {

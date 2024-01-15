@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import LocalizationKit
 import SwiftUI
 
 extension MainView {
@@ -13,27 +14,27 @@ extension MainView {
 
             switch category {
                 case .news:
-                    self.title = "What's new"
+                    self.title = String(l10n.MainView.Sidebar.CategoryLabel.news.characters)
                     self.systemImage = "lightbulb.max"
 
                 case .resources:
-                    self.title = "Resources"
+                    self.title = String(l10n.MainView.Sidebar.CategoryLabel.resources.characters)
                     self.systemImage = "book.and.wrench"
 
                 case .curriculums:
-                    self.title = "Curriculums"
+                    self.title = String(l10n.MainView.Sidebar.CategoryLabel.curriculums.characters)
                     self.systemImage = "graduationcap"
 
                 case .activities:
-                    self.title = "Activities"
+                    self.title = String(l10n.MainView.Sidebar.CategoryLabel.activities.characters)
                     self.systemImage = "dice"
 
                 case .remotes:
-                    self.title = "Remotes"
+                    self.title = String(l10n.MainView.Sidebar.CategoryLabel.remotes.characters)
                     self.systemImage = "gamecontroller"
 
                 case .stories:
-                    self.title = "Stories"
+                    self.title = String(l10n.MainView.Sidebar.CategoryLabel.stories.characters)
                     self.systemImage = "book"
             }
         }
