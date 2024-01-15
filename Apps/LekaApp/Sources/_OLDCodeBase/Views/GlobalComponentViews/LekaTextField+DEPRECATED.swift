@@ -5,9 +5,9 @@
 import DesignKit
 import SwiftUI
 
-// MARK: - LekaTextField
+// MARK: - LekaTextFieldDeprecated
 
-struct LekaTextField: View {
+struct LekaTextFieldDeprecated: View {
     // MARK: Internal
 
     @EnvironmentObject var metrics: UIMetrics
@@ -58,9 +58,9 @@ struct LekaTextField: View {
     }
 }
 
-// MARK: - LekaPasswordField
+// MARK: - LekaPasswordFieldDeprecated
 
-struct LekaPasswordField: View {
+struct LekaPasswordFieldDeprecated: View {
     @EnvironmentObject var metrics: UIMetrics
 
     var label: String

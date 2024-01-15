@@ -35,7 +35,7 @@ struct ProfileSet_Users: View {
         .frame(minWidth: 460)
         .sheet(isPresented: self.$showEditProfileUser) {
             NavigationStack {
-                CreateUserProfileView()
+                CreateUserProfileViewDeprecated()
             }
         }
         .alert("Mode découverte", isPresented: self.$settings.showConnectInvite) {

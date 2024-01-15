@@ -5,7 +5,7 @@
 import DesignKit
 import SwiftUI
 
-struct SignupNavigationTitle: View {
+struct SignupNavigationTitleDeprecated: View {
     @EnvironmentObject var metrics: UIMetrics
 
     var body: some View {

@@ -5,7 +5,7 @@
 import DesignKit
 import SwiftUI
 
-struct SignupStep1: View {
+struct SignupStep2Deprecated: View {
     // MARK: Internal
 
     @EnvironmentObject var metrics: UIMetrics
@@ -16,20 +16,20 @@ struct SignupStep1: View {
             self.tile
         }
         .edgesIgnoringSafeArea(.top)
-        .navigationDestination(isPresented: self.$navigateToSignup2) {
-            SignupStep2()
+        .navigationDestination(isPresented: self.$navigateToTeacherCreation) {
+            CreateTeacherProfileViewDeprecated()
         }
         .toolbar {
             ToolbarItem(placement: .principal) {
-                SignupNavigationTitle()
+                SignupNavigationTitleDeprecated()
             }
         }
     }
 
     // MARK: Private
 
-    private let data: TileData = .signupBravo
-    @State private var navigateToSignup2: Bool = false
+    private let data: TileData = .signupStep1
+    @State private var navigateToTeacherCreation: Bool = false
 
     private var tile: some View {
         HStack(alignment: .center, spacing: 0) {
@@ -42,14 +42,15 @@ struct SignupStep1: View {
                 .resizable()
                 .renderingMode(.original)
                 .aspectRatio(contentMode: .fit)
-                .frame(height: self.metrics.tilePictoHeightSmall)
-                .padding(.bottom, 30)
+                .frame(height: self.metrics.tilePictoHeightMedium)
+                .padding(.top, 20)
+                Spacer()
                 // Title
                 Text(self.data.content.title!)
                     // TODO: (@ui/ux) - Design System - replace with Leka font
                     .font(.headline)
                     .foregroundColor(DesignKitAsset.Colors.lekaOrange.swiftUIColor)
-                Spacer()
+                    .padding(.vertical, 20)
                 // Message
                 Text(self.data.content.message!)
                     // TODO: (@ui/ux) - Design System - replace with Leka font
@@ -60,7 +61,7 @@ struct SignupStep1: View {
             }
             .multilineTextAlignment(.center)
             .frame(width: self.metrics.tileContentWidth)
-            .padding(self.metrics.tileContentPadding)
+            .padding(.bottom, self.metrics.tileContentPadding)
         }
         .frame(
             width: self.metrics.tileSize.width,
@@ -75,7 +76,7 @@ struct SignupStep1: View {
     private var accessoryView: some View {
         Button(
             action: {
-                self.navigateToSignup2.toggle()
+                self.navigateToTeacherCreation.toggle()
             },
             label: {
                 Text(self.data.content.callToActionLabel!)

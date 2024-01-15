@@ -5,9 +5,9 @@
 import DesignKit
 import SwiftUI
 
-// MARK: - CreateUserProfileView
+// MARK: - CreateUserProfileViewDeprecated
 
-struct CreateUserProfileView: View {
+struct CreateUserProfileViewDeprecated: View {
     // MARK: Internal
 
     @EnvironmentObject var company: CompanyViewModel
@@ -41,7 +41,7 @@ struct CreateUserProfileView: View {
             AvatarPicker_Users()
         }
         .navigationDestination(isPresented: self.$navigateToSignupFinalStep) {
-            SignupFinalStep()
+            SignupFinalStepDeprecated()
         }
         .alert("Supprimer le profil", isPresented: self.$showDeleteConfirmation) {
             self.alertContent
@@ -67,7 +67,7 @@ struct CreateUserProfileView: View {
     @State private var navigateToAvatarPicker: Bool = false
 
     private var nameField: some View {
-        LekaTextField(
+        LekaTextFieldDeprecated(
             label: "Nom d'utilisateur", entry: self.$company.bufferUser.name, isEditing: self.$isEditing, type: .name,
             focused: _focusedField,
             action: {
@@ -194,7 +194,7 @@ struct CreateUserProfileView: View {
 
 struct CreateUserProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        CreateUserProfileView()
+        CreateUserProfileViewDeprecated()
             .environmentObject(CompanyViewModel())
             .environmentObject(ViewRouter())
             .environmentObject(NavigationViewModel())

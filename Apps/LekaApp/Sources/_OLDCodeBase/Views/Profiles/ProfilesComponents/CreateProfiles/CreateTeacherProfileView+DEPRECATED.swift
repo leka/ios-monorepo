@@ -5,9 +5,9 @@
 import DesignKit
 import SwiftUI
 
-// MARK: - CreateTeacherProfileView
+// MARK: - CreateTeacherProfileViewDeprecated
 
-struct CreateTeacherProfileView: View {
+struct CreateTeacherProfileViewDeprecated: View {
     // MARK: Internal
 
     @EnvironmentObject var company: CompanyViewModel
@@ -47,7 +47,7 @@ struct CreateTeacherProfileView: View {
             JobPicker()
         }
         .navigationDestination(isPresented: self.$navigateToSignup3) {
-            SignupStep3()
+            SignupStep3Deprecated()
         }
         .alert("Supprimer le profil", isPresented: self.$showDeleteConfirmation) {
             self.alertContent
@@ -99,7 +99,7 @@ struct CreateTeacherProfileView: View {
     @State private var navigateToAvatarPicker: Bool = false
 
     private var nameField: some View {
-        LekaTextField(
+        LekaTextFieldDeprecated(
             label: "Nom d'accompagnant", entry: self.$company.bufferTeacher.name, isEditing: self.$isEditing, type: .name,
             focused: _focusedField,
             action: {
@@ -193,7 +193,7 @@ struct CreateTeacherProfileView: View {
 
 struct CreateProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        CreateTeacherProfileView()
+        CreateTeacherProfileViewDeprecated()
             .environmentObject(CompanyViewModel())
             .environmentObject(SettingsViewModel())
             .environmentObject(NavigationViewModel())

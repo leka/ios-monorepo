@@ -23,7 +23,7 @@ struct WelcomeViewDeprecated: View {
                     self.logoLeka
 
                     NavigationLink("Créer un compte") {
-                        SignupView()
+                        SignupViewDeprecated()
                     }
                     .buttonStyle(Connect_ButtonStyle())
 
