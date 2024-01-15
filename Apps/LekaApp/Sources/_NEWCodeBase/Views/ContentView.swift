@@ -16,7 +16,7 @@ struct ContentView: View {
                     WelcomeView()
                         .transition(.opacity)
                 case .home:
-                    HomeView()
+                    HomeViewDeprecated()
                         .transition(.opacity)
             }
         }

@@ -6,9 +6,9 @@ import DesignKit
 import RobotKit
 import SwiftUI
 
-// MARK: - HomeView
+// MARK: - HomeViewDeprecated
 
-struct HomeView: View {
+struct HomeViewDeprecated: View {
     // MARK: Internal
 
     @EnvironmentObject var navigationVM: NavigationViewModel
@@ -81,7 +81,7 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
+        HomeViewDeprecated()
             .environmentObject(NavigationViewModel())
             .environmentObject(SettingsViewModel())
             .environmentObject(UIMetrics())
