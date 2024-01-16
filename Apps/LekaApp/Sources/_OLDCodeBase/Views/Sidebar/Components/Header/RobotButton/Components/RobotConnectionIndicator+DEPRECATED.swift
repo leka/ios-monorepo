@@ -6,7 +6,7 @@ import DesignKit
 import RobotKit
 import SwiftUI
 
-struct RobotConnectionIndicator: View {
+struct RobotConnectionIndicatorDeprecated: View {
     // MARK: Internal
 
     @EnvironmentObject var metrics: UIMetrics

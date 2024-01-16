@@ -6,7 +6,7 @@ import DesignKit
 import RobotKit
 import SwiftUI
 
-struct GoToRobotConnectButton: View {
+struct GoToRobotConnectButtonDeprecated: View {
     // MARK: Internal
 
     @EnvironmentObject var metrics: UIMetrics
@@ -19,7 +19,7 @@ struct GoToRobotConnectButton: View {
             self.navigationVM.showRobotPicker.toggle()
         } label: {
             HStack(spacing: 10) {
-                RobotConnectionIndicator()
+                RobotConnectionIndicatorDeprecated()
                 self.buttonContent
                 Spacer()
             }
@@ -82,7 +82,7 @@ struct GoToRobotConnectButton: View {
 }
 
 #Preview {
-    GoToRobotConnectButton()
+    GoToRobotConnectButtonDeprecated()
         .environmentObject(UIMetrics())
         .environmentObject(NavigationViewModel())
 }
