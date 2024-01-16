@@ -40,7 +40,7 @@ extension PairingView {
         private func runRandomAnimation() {
             guard self.isAnimationRunning else { return }
 
-            let randomInterval = Double.random(in: 5.0...10.0)
+            let randomInterval = Double.random(in: 10.0...15.0)
             self.isBreathing = true
             self.breathe()
 
