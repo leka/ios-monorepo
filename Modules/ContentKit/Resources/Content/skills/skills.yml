@@ -1,0 +1,774 @@
+skills:
+  - id: spatial_understanding
+    l10n:
+      - locale: en_US
+        name: Spatial understanding
+        description: >
+          Understanding and knowing how to position oneself in a place, see
+          where things are around, and how to move or navigate in that space.
+      - locale: fr_FR
+        name: Apprehension de l'espace
+        description: >
+          Comprendre et savoir comment se situer dans un lieu, voir où les
+          choses se trouvent autour de soi, et comment bouger ou se déplacer
+          dans cet espace.
+    subskills: []
+  - id: time_and_temporality_understanding
+    l10n:
+      - locale: en_US
+        name: Time and temporality understanding
+        description: >
+          Understanding time and knowing when things happen (For example,
+          breakfast is in the morning and dinner is in the evening). This also
+          means knowing how long things last (For example, a minute is shorter
+          than an hour) and understanding the order of events (For example,
+          today is after yesterday and before tomorrow, spring is after winter
+          and before summer).
+      - locale: fr_FR
+        name: Apprehension du temps et de la temporalité
+        description: >
+          Comprendre le temps et savoir quand les choses arrivent (par exemple,
+          le petit-déjeuner a lieu le matin et le diner a lieu le soir). Cela
+          signifie aussi savoir combien de temps durent les choses (par exemple,
+          une minute est plus courte qu'une heure) et connaître l'ordre des
+          événements (par exemple, aujourd'hui est après hier et avant demain,
+          le printemps est après l’hiver et avant l’été).
+    subskills: []
+  - id: association
+    l10n:
+      - locale: en_US
+        name: Association
+        description: >
+          Creating logical connections between elements that may seem different
+          and finding relationships between them.
+      - locale: fr_FR
+        name: Association
+        description: >
+          Créer des liens logiques entre des éléments qui semblent différents et
+          trouver des relations entre eux.
+    subskills:
+      - id: association/matching
+        l10n:
+          - locale: en_US
+            name: Matching
+            description: >
+              Finding two or more things that are exactly the same or very
+              similar (for example, pairing two identical socks)
+          - locale: fr_FR
+            name: Apparier
+            description: >
+              Trouver deux ou plusieurs choses qui sont exactement les mêmes ou
+              très similaires, (par exemple, mettre ensemble deux chaussettes
+              identiques).
+        subskills: []
+      - id: association/sorting
+        l10n:
+          - locale: en_US
+            name: Sorting
+            description: >
+              Putting things into groups based on what they have in common (for
+              example, sorting fruits by color)
+          - locale: fr_FR
+            name: Trier
+            description: >
+              Mettre des choses en groupes selon ce qu'elles ont en commun, (par
+              exemple, trier des fruits par couleur)
+        subskills: []
+      - id: association/ordering
+        l10n:
+          - locale: en_US
+            name: Ordering
+            description: >
+              Arranging things in order (for example, arranging from smallest to
+              largest, in chronological order, or in alphabetical order).
+          - locale: fr_FR
+            name: Ordonner
+            description: >
+              Mettre des choses dans un ordre (par exemple, ordonner du plus
+              petit au plus grand, par ordre chronologique ou par ordre
+              alphabétique).
+        subskills: []
+  - id: relationship_tablet_robot
+    l10n:
+      - locale: en_US
+        name: Relationship between tablet and robot
+        description: >
+          Understanding the causal link between tablet and robot. Understanding
+          that touching the tablet makes the Leka robot move and change.
+      - locale: fr_FR
+        name: Relation entre tablette et robot
+        description: >
+          Comprendre le lien de causalité entre tablette et robot. Comprendre
+          qu’en touchant la tablette, cela fait bouger ou changer le robot Leka.
+    subskills: []
+  - id: discrimination
+    l10n:
+      - locale: en_US
+        name: Discrimination
+        description: >
+          Ability to see the difference between things (for example, knowing the
+          difference between an apple and an orange by looking at them or
+          hearing the difference between sounds, like the sound of a piano and a
+          guitar).
+      - locale: fr_FR
+        name: Discrimination
+        description: >
+          Capacité à voir la différence entre des choses (par exemple, savoir
+          quelle est la différence entre une pomme et une orange en les
+          regardant ou entendre la différence entre des sons, comme le son d'un
+          piano et celui d'une guitare).
+    subskills: []
+  - id: generalization
+    l10n:
+      - locale: en_US
+        name: Generalization
+        description: >
+          Learning something in one situation and knowing how to apply it in
+          different situations (for example, learning that a pen is used for
+          writing and then knowing that all pens are used for writing, even if
+          they are different colors shapes).
+      - locale: fr_FR
+        name: Généralisation
+        description: >
+          Apprendre quelque chose dans une situation et savoir l’utiliser dans
+          d'autres situations différentes (par exemple, apprendre qu’un stylo
+          sert à écrire, et ensuite savoir que tous les stylos servent à écrire,
+          même s'ils sont de différentes couleurs ou formes).
+    subskills: []
+  - id: memory
+    l10n:
+      - locale: en_US
+        name: Memory
+        description: >
+          Ability to store, retain, and remember information.
+      - locale: fr_FR
+        name: Mémoire
+        description: >
+          Capacité de stocker, garder et se souvenir des informations.
+    subskills:
+      - id: memory/short-term_memory
+        l10n:
+          - locale: en_US
+            name: Short-term memory
+            description: >
+              Ability to hold and process a limited amount of information for a
+              short period, usually from a few seconds to a minute (for example,
+              remembering the order of a sequence of colors just observed).
+          - locale: fr_FR
+            name: Mémoire court-terme
+            description: >
+              Capacité de retenir et de traiter une quantité limitée
+              d'informations pour une courte période, généralement de quelques
+              secondes à une minute (par exemple, garder en tête l’ordre d’une
+              séquence de couleurs que l’on vient d’observer).
+        subskills: []
+      - id: memory/long-term_memory
+        l10n:
+          - locale: en_US
+            name: Long-term memory
+            description: >
+              Ability to store and retrieve information over a long period,
+              ranging from a few minutes to a lifetime. It includes personal
+              memories, acquired knowledge, skills, and experiences.
+          - locale: fr_FR
+            name: Mémoire long terme
+            description: >
+              Capacité de stocker et de récupérer des informations sur une
+              longue période, allant de quelques minutes à toute une vie. Elle
+              inclut des souvenirs personnels, des connaissances acquises, des
+              compétences, et des expériences.
+        subskills: []
+  - id: attention
+    l10n:
+      - locale: en_US
+        name: Attention
+        description: >
+          Ability to focus and pay attention to something (for example,
+          listening to someone speak without being distracted by other things
+          around).
+      - locale: fr_FR
+        name: Attention
+        description: >
+          Capacité à se concentrer et à prêter attention à quelque chose (par
+          exemple, écouter quelqu'un qui parle sans être distrait par d'autres
+          choses autour).
+    subskills:
+      - id: attention/sustained_attention
+        l10n:
+          - locale: en_US
+            name: Sustained attention
+            description: >
+              Ability to stay focused on one thing for a long time.
+          - locale: fr_FR
+            name: Attention soutenue
+            description: >
+              Capacité à rester concentré sur une chose pendant longtemps.
+        subskills: []
+      - id: attention/transition
+        l10n:
+          - locale: en_US
+            name: Transition between two activities
+            description: >
+              Ability to refocus quickly after a change in activity.
+          - locale: fr_FR
+            name: Transition entre deux activités
+            description: >
+              Capacité à se reconcentrer rapidement après un changement
+              d’activité
+        subskills: []
+      - id: attention/joint_attention
+        l10n:
+          - locale: en_US
+            name: Joint attention
+            description: >
+              Ability to focus on the same thing as someone else (for example,
+              looking at an object that someone is showing or listening to a
+              story together).
+          - locale: fr_FR
+            name: Attention conjointe
+            description: >
+              Capacité à se concentrer sur la même chose que quelqu'un d'autre
+              (par exemple, regarder un objet que quelqu'un montre ou écouter
+              une histoire ensemble).
+        subskills: []
+  - id: inhibition
+    l10n:
+      - locale: en_US
+        name: Inhibition
+        description: >
+          Ability to refrain from doing something, even if tempted to do so (for
+          example, not touching the Leka robot when it's not my turn, even if I
+          really want to).
+      - locale: fr_FR
+        name: Inhibition
+        description: >
+          Capacité à se retenir de faire quelque chose, même si on a envie de le
+          faire (par exemple, ne pas toucher le robot Leka quand ce n’est pas
+          mon tour, même si j’en ai très envie).
+    subskills: []
+  - id: self-regulation
+    l10n:
+      - locale: en_US
+        name: Self-regulation
+        description: >
+          Ability to control reactions in response to emotions. Learning to calm
+          down after a strong emotion or not react impulsively.
+      - locale: fr_FR
+        name: Autorégulation
+        description: >
+          Capacité à contrôler ses réactions en réponse à ses émotions.
+          Apprendre à se calmer après une émotion forte ou à ne pas réagir de
+          manière impulsive.
+    subskills: []
+  - id: empathy
+    l10n:
+      - locale: en_US
+        name: Empathy
+        description: >
+          Understanding and feeling what others feel (for example, if someone is
+          sad, empathy allows understanding why they are sad and being able to
+          put oneself in their place).
+      - locale: fr_FR
+        name: Empathie
+        description: >
+          Comprendre et ressentir ce que les autres personnes ressentent (par
+          exemple, si quelqu'un est triste, l'empathie permet de comprendre
+          pourquoi il est triste et d’être capable de se mettre à sa place).
+    subskills: []
+  - id: social_interactions
+    l10n:
+      - locale: en_US
+        name: Social interactions
+        description: >
+          Social interactions occur when people interact and mutually influence
+          each other's behaviors. When a person speaks, uses gestures, or
+          expresses emotions, it elicits a response from another person. This
+          response, in turn, can influence the initial action or reaction of the
+          first person.
+      - locale: fr_FR
+        name: Interactions sociales
+        description: >
+          Les interactions sociales se déroulent lorsque les personnes
+          interagissent et influencent mutuellement leurs comportements.
+          Lorsqu'une personne parle, utilise des gestes ou exprime des émotions,
+          cela provoque une réponse chez une autre personne. Cette réponse, à
+          son tour, peut influencer l'action ou la réaction initiale de la
+          première personne.
+    subskills: []
+  - id: communication
+    l10n:
+      - locale: en_US
+        name: Communication
+        description: >
+          Communication is the process of exchanging information between
+          individuals, involving the transmission and reception of messages.
+      - locale: fr_FR
+        name: Communication
+        description: >
+          La communication est le processus d'échange d'informations entre des
+          individus, impliquant la transmission et la réception de messages.
+    subskills:
+      - id: communication/verbal_communication
+        l10n:
+          - locale: en_US
+            name: Verbal communication
+            description: >
+              Use of spoken or written words to express or receive messages.
+          - locale: fr_FR
+            name: Communication verbale
+            description: >
+              Utilisation de mots, parlés ou écrits, pour exprimer ou recevoir
+              des messages.
+        subskills:
+          - id: communication/verbal_communication/receptive_language
+            l10n:
+              - locale: en_US
+                name: Receptive language
+                description: >
+                  Understanding what people say or write
+              - locale: fr_FR
+                name: Langage receptif
+                description: >
+                  Comprendre ce que les gens disent ou écrivent.
+            subskills:
+              - id: >-
+                  communication/verbal_communication/receptive_language/oral_comprehension
+                l10n:
+                  - locale: en_US
+                    name: Oral comprehension
+                    description: >
+                      Understanding the words people say.
+                  - locale: fr_FR
+                    name: Compréhension orale
+                    description: >
+                      Comprendre les mots que les gens disent.
+                subskills: []
+              - id: >-
+                  communication/verbal_communication/receptive_language/written_comprehension
+                l10n:
+                  - locale: en_US
+                    name: Written comprehension (reading)
+                    description: >
+                      Understanding written words in books or elsewhere.
+                  - locale: fr_FR
+                    name: Compréhension écrite (lecture)
+                    description: >
+                      Comprendre les mots écrits dans les livres ou ailleurs.
+                subskills: []
+          - id: communication/verbal_communication/expressive_language
+            l10n:
+              - locale: en_US
+                name: Expressive language
+                description: >
+                  Ability to speak or write to express messages.
+              - locale: fr_FR
+                name: Langage expressif
+                description: >
+                  Pouvoir parler ou écrire pour exprimer des messages.
+            subskills:
+              - id: >-
+                  communication/verbal_communication/expressive_language/oral_expression
+                l10n:
+                  - locale: en_US
+                    name: Oral expression (speech)
+                    description: >
+                      Using words to express oneself.
+                  - locale: fr_FR
+                    name: Expression orale (parole)
+                    description: >
+                      Utiliser des mots pour s’exprimer.
+                subskills: []
+              - id: >-
+                  communication/verbal_communication/expressive_language/written_expression
+                l10n:
+                  - locale: en_US
+                    name: Written comprehension (reading)
+                    description: >
+                      Writing words to express oneself.
+                  - locale: fr_FR
+                    name: Expression écrite (écriture)
+                    description: >
+                      Ecrire des mots pour s’exprimer.
+                subskills: []
+      - id: communication/augmentative_alternative_communication
+        l10n:
+          - locale: en_US
+            name: Augmentative and alternative communication
+            description: >
+              Alternative methods for communicating when verbal communication is
+              challenging or not possible.
+          - locale: fr_FR
+            name: Communication augmentative et alternative
+            description: >
+              Méthodes alternatives pour communiquer quand la communication
+              verbale est difficile ou n’est pas possible.
+        subskills:
+          - id: communication/augmentative_alternative_communication/sign_language
+            l10n:
+              - locale: en_US
+                name: Sign language
+                description: >
+                  Ability to use sign language to communicate. This involves
+                  making signs with hands and using facial expressions to
+                  express ideas without speaking.
+              - locale: fr_FR
+                name: Langage des signes
+                description: >
+                  Capacité à utiliser la langue des signes pour communiquer.
+                  Cela implique de faire des signes avec les mains et d'utiliser
+                  des expressions faciales pour exprimer des idées sans parler.
+            subskills: []
+          - id: communication/augmentative_alternative_communication/makaton
+            l10n:
+              - locale: en_US
+                name: Makaton
+                description: >
+                  Ability to use makaton, a method that combines manual signs
+                  and/or symbols and words. Speech is present and is
+                  complemented by signs and symbols to reinforce communication.
+              - locale: fr_FR
+                name: Makaton
+                description: >
+                  Capacité à utiliser le Makaton, une méthode qui combine à la
+                  fois des signes manuels et/ou des pictogrammes et des mots. La
+                  parole est bien présente et est complétée par des signes et
+                  des symboles pour renforcer la communication.
+            subskills: []
+          - id: communication/augmentative_alternative_communication/PECS
+            l10n:
+              - locale: en_US
+                name: PECS (picture exchange communication system)
+                description: >
+                  Ability to use PECS, a system where people communicate using
+                  images (pictograms, symbols, written words, photos, drawings,
+                  etc.). They show or exchange images to express themselves.
+              - locale: fr_FR
+                name: PECS (picture exchange communication system)
+                description: >
+                  Capacité à utiliser le PECS, un système où les gens
+                  communiquent en utilisant des images (pictogrammes, symboles,
+                  mots écrits, photos, dessins, etc.). Ils montrent ou échangent
+                  des images pour s’exprimer.
+            subskills: []
+      - id: communication/non_verbal_communication
+        l10n:
+          - locale: en_US
+            name: Non verbal communication
+            description: >
+              Means of communication that do not involve spoken or written
+              words.
+          - locale: fr_FR
+            name: Communication non verbale
+            description: >
+              Moyens de communication qui ne font pas usage de mots parlés ou
+              écrits.
+        subskills:
+          - id: communication/non_verbal_communication/gestures
+            l10n:
+              - locale: en_US
+                name: Gestures
+                description: >
+                  Moving hands and arms to show things without speaking.
+              - locale: fr_FR
+                name: Gestes
+                description: >
+                  Bouger les mains et les bras pour montrer des choses sans
+                  parler.
+            subskills: []
+          - id: communication/non_verbal_communication/pointing
+            l10n:
+              - locale: en_US
+                name: Pointing
+                description: >
+                  Using a finger to indicate something or someone without using
+                  words.
+              - locale: fr_FR
+                name: Pointage
+                description: >
+                  Utiliser un doigt pour montrer quelque chose ou quelqu'un sans
+                  utiliser de mots.
+            subskills: []
+          - id: communication/non_verbal_communication/gaze
+            l10n:
+              - locale: en_US
+                name: Gaze
+                description: >
+                  Looking at things or people with eyes to show what one thinks
+                  or feels without saying words.
+              - locale: fr_FR
+                name: Regard
+                description: >
+                  Regarder des choses ou des personnes avec les yeux pour
+                  montrer ce qu'on pense ou ce qu'on ressent sans dire des mots.
+            subskills: []
+          - id: communication/non_verbal_communication/facial_expressions
+            l10n:
+              - locale: en_US
+                name: Facial expressions
+                description: >
+                  Making different expressions with the face to show what one
+                  thinks or feels.
+              - locale: fr_FR
+                name: Mimiques
+                description: >
+                  Faire des expressions différentes avec son visage pour montrer
+                  comment on se sent, comme sourire quand on est content.
+            subskills: []
+          - id: communication/non_verbal_communication/vocalizations
+            l10n:
+              - locale: en_US
+                name: Vocalizations
+                description: >
+                  Making sounds that are not real words.
+              - locale: fr_FR
+                name: Vocalises
+                description: >
+                  Faire des sons qui ne sont pas de vrais mots.
+            subskills: []
+          - id: communication/non_verbal_communication/smiles
+            l10n:
+              - locale: en_US
+                name: Smiles
+                description: >
+                  To smile to express joy, approval, or any kind of pleasant
+                  emotion.
+              - locale: fr_FR
+                name: Sourires
+                description: >
+                  Faire des sourires pour manifester de la joie, de
+                  l’approbation ou toute sorte d’émotion agréable
+            subskills: []
+  - id: turn_taking
+    l10n:
+      - locale: en_US
+        name: Turn taking
+        description: >
+          Ability to know when to speak, listen, or act in a social interaction,
+          respecting a predetermined order or sequence.
+      - locale: fr_FR
+        name: Tour de rôle
+        description: >
+          Capacité de savoir quand parler, écouter ou agir dans une interaction
+          sociale, en respectant un ordre ou une séquence préétablie.
+    subskills: []
+  - id: gross_motor_skills
+    l10n:
+      - locale: en_US
+        name: Gross motor skills
+        description: >
+          Ability to use large muscles for movements such as walking, running,
+          jumping, and throwing things.
+      - locale: fr_FR
+        name: Motricité globale
+        description: >
+          Capacité à utiliser les grands muscles pour faire des mouvements tels
+          que marcher, courir, sauter et lancer des choses.
+    subskills: []
+  - id: fine_motor_skills
+    l10n:
+      - locale: en_US
+        name: Fine motor skills
+        description: >
+          Fine motor skills refer to the ability to use small muscles,
+          especially those in the hands and fingers, to perform precise and
+          delicate tasks. It includes actions like writing, drawing, buttoning a
+          shirt, handling small objects, or using tools like scissors or
+          pencils.
+      - locale: fr_FR
+        name: Motricité fine
+        description: >
+          La motricité fine se réfère à la capacité d'utiliser les petits
+          muscles, particulièrement ceux des mains et des doigts, pour effectuer
+          des tâches précises et délicates. Elle inclut des actions comme
+          écrire, dessiner, boutonner une chemise, manipuler de petits objets,
+          ou utiliser des outils comme des ciseaux ou des crayons.
+    subskills: []
+  - id: familiarizing_with_leka
+    l10n:
+      - locale: en_US
+        name: Child familiarization with Leka
+        description: >
+          The skill of familiarizing the child with Leka involves helping the
+          child feel comfortable and confident with the Leka robot.
+      - locale: fr_FR
+        name: Familiarisation de l'enfant avec Leka
+        description: >
+          La compétence "familiarisation de l'enfant avec Leka" consiste à aider
+          l'enfant à se sentir à l'aise et en confiance avec le robot Leka.
+    subskills: []
+  - id: sensory_interaction
+    l10n:
+      - locale: en_US
+        name: Sensory interaction
+        description: >
+          Manifests when a child plays with the robot and uses their senses to
+          interact. This includes watching Leka's changing colors and lights,
+          listening to the sounds or music it produces, and touching and feeling
+          Leka by manipulating or playing with it.
+      - locale: fr_FR
+        name: Sensorialité
+        description: >
+          Se manifeste quand un enfant joue avec le robot et utilise ses sens
+          pour interagir. Cela inclut regarder les couleurs et lumières
+          changeantes de Leka, écouter les sons ou musiques qu'il émet, et
+          toucher et ressentir Leka en le manipulant ou en jouant avec lui.
+    subskills: []
+  - id: counting
+    l10n:
+      - locale: en_US
+        name: Counting
+        description: >
+          Knowing how to say numbers in order (1,2,3, and so on) and being able
+          to count things to determine quantity (for example, counting how many
+          apples are in a basket).
+      - locale: fr_FR
+        name: Comptage numérique
+        description: >
+          Savoir dire les nombres dans l'ordre (1,2,3 et ainsi de suite) et
+          pouvoir compter des choses pour déterminer la quantité. (par exemple,
+          compter combien de pommes sont dans un panier).
+    subskills: []
+  - id: colors_recognition
+    l10n:
+      - locale: en_US
+        name: Recognition of colors
+        description: >
+          The ability to see and identify different colors.
+      - locale: fr_FR
+        name: Reconnaissance des couleurs
+        description: >
+          La reconnaissance des couleurs est la capacité à voir et à identifier
+          différentes couleurs.
+    subskills: []
+  - id: foods_recognition
+    l10n:
+      - locale: en_US
+        name: Recognition of foods
+        description: >
+          The ability to see and identify different foods (fruits, vegetables,
+          cakes, etc).
+      - locale: fr_FR
+        name: Reonnaissance des aliments
+        description: >
+          La reconnaissance des aliments est la capacité à voir et à identifier
+          différents aliments (fruits, légumes, gâteaux, etc.)
+    subskills: []
+  - id: animals_recognition
+    l10n:
+      - locale: en_US
+        name: Recognition of animals
+        description: >
+          The ability to see and identify different animals (dogs, cats, horses,
+          etc.).
+      - locale: fr_FR
+        name: Reconnaissance des animaux
+        description: >
+          La reconnaissance des animaux est la capacité à voir et à identifier
+          différents animaux (chiens, chats, chevaux, etc.).
+    subskills: []
+  - id: shapes_recognition
+    l10n:
+      - locale: en_US
+        name: Recognition of shapes
+        description: >
+          The ability to see and identify different shapes (round, square,
+          triangle, rectangle, etc.).
+      - locale: fr_FR
+        name: Reconnaissance des formes
+        description: >
+          La reconnaissance des formes est la capacité à voir et à identifier
+          différentes formes (rond, carré, triangle, rectangle, etc.).
+    subskills: []
+  - id: numbers_recognition
+    l10n:
+      - locale: en_US
+        name: Recognition of numbers
+        description: >
+          The ability to see and identify numbers.
+      - locale: fr_FR
+        name: Reconnaissance des chiffres
+        description: >
+          La reconnaissance des chiffres est la capacité à voir et à identifier
+          des chiffres.
+    subskills: []
+  - id: alphabet-letters_recognition
+    l10n:
+      - locale: en_US
+        name: Recognition of alphabet letters
+        description: >
+          The ability to see and identify different letters of the alphabet.
+      - locale: fr_FR
+        name: Reconnaissance des lettres de l'alphabet
+        description: >
+          La reconnaissance des lettres de l’alphabet est la capacité à voir et
+          à identifier différentes lettres de l’alphabet.
+    subskills: []
+  - id: everyday-objects_recognition
+    l10n:
+      - locale: en_US
+        name: Recognition of everyday objects
+        description: >
+          The ability to see and identify different everyday objects (clothes,
+          toothbrushes, plates, etc.).
+      - locale: fr_FR
+        name: Reconnaissance des objets du quotidien
+        description: >
+          La reconnaissance d’objets du quotidien est la capacité à voir et à
+          identifier différents objets du quotidien (vêtements, brosse à dents,
+          assiettes, etc.).
+    subskills: []
+  - id: basic-physiological-needs_recognition
+    l10n:
+      - locale: en_US
+        name: Recognition of basic physiological needs
+        description: >
+          The ability to see and identify basic physiological needs (eating,
+          drinking, sleeping, etc.).
+      - locale: fr_FR
+        name: Reconnaissance des besoins physiologiques primaires
+        description: >
+          La reconnaissance des besoins physiologiques primaires est la capacité
+          à voir et à identifier les besoins physiologiques primaires (manger,
+          boire, dormir, etc.).
+    subskills: []
+  - id: weather-elements_recognition
+    l10n:
+      - locale: en_US
+        name: Recognition of weather elements
+        description: >
+          The recognition of weather elements is the ability to see and identify
+          weather elements (sun, rain, clouds, snow, etc.).
+      - locale: fr_FR
+        name: Reconnaissance des éléments de la météo
+        description: >
+          La reconnaissance des éléments de la météo est la capacité à voir et à
+          identifier les éléments de la météo (soleil, pluie, nuages, neige,
+          etc.).
+    subskills: []
+  - id: body-parts_recognition
+    l10n:
+      - locale: en_US
+        name: Recognition of body parts
+        description: >
+          The recognition of body parts is the ability to see and identify
+          different parts of the body.
+      - locale: fr_FR
+        name: Reconnaissance des parties du corps humain
+        description: >
+          La reconnaissance des parties du corps est la capacité à voir et à
+          identifier les parties du corps.
+    subskills: []
+  - id: basic-emotions_recognition
+    l10n:
+      - locale: en_US
+        name: Recognition of basic emotions
+        description: >
+          The recognition of basic emotions is the ability to see and identify
+          fundamental emotions (joy, fear, anger, sadness, disgust).
+      - locale: fr_FR
+        name: Reconnaissance des émotions de base
+        description: >
+          La reconnaissance des émotions de base est la capacité à voir et à
+          identifier les émotions de base (joie, peur, colère, tristesse,
+          dégoût).
+    subskills: []

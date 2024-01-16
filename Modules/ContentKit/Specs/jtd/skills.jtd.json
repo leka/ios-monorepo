@@ -1,0 +1,47 @@
+{
+    "properties": {
+        "skills": {
+            "elements": {
+                "ref": "$skill"
+            }
+        }
+    },
+    "definitions": {
+        "$locale": {
+            "enum": [
+                "en_US",
+                "fr_FR"
+            ]
+        },
+        "$l10n": {
+            "properties": {
+                "locale": {
+                    "ref": "$locale"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                }
+            }
+        },
+        "$skill": {
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "l10n": {
+                    "elements": {
+                        "ref": "$l10n"
+                    }
+                },
+                "subskills": {
+                    "elements": {
+                        "ref": "$skill"
+                    }
+                }
+            }
+        }
+    }
+}

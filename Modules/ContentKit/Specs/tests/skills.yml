@@ -1,0 +1,76 @@
+skills:
+  - id: spatial_understanding
+    l10n:
+      - locale: en_US
+        name: Spatial understanding
+        description: >
+          Understanding and knowing how to position oneself in a place, see
+          where things are around, and how to move or navigate in that space.
+      - locale: fr_FR
+        name: Apprehension de l'espace
+        description: >
+          Comprendre et savoir comment se situer dans un lieu, voir où les
+          choses se trouvent autour de soi, et comment bouger ou se déplacer
+          dans cet espace.
+    subskills: []
+  - id: time_and_temporality_understanding
+    l10n:
+      - locale: en_US
+        name: Time and temporality understanding
+        description: >
+          Understanding time and knowing when things happen (For example,
+          breakfast is in the morning and dinner is in the evening). This also
+          means knowing how long things last (For example, a minute is shorter
+          than an hour) and understanding the order of events (For example,
+          today is after yesterday and before tomorrow, spring is after winter
+          and before summer).
+      - locale: fr_FR
+        name: Apprehension du temps et de la temporalité
+        description: >
+          Comprendre le temps et savoir quand les choses arrivent (par exemple,
+          le petit-déjeuner a lieu le matin et le diner a lieu le soir). Cela
+          signifie aussi savoir combien de temps durent les choses (par exemple,
+          une minute est plus courte qu'une heure) et connaître l'ordre des
+          événements (par exemple, aujourd'hui est après hier et avant demain,
+          le printemps est après l’hiver et avant l’été).
+    subskills: []
+  - id: association
+    l10n:
+      - locale: en_US
+        name: Association
+        description: >
+          Creating logical connections between elements that may seem different
+          and finding relationships between them.
+      - locale: fr_FR
+        name: Association
+        description: >
+          Créer des liens logiques entre des éléments qui semblent différents et
+          trouver des relations entre eux.
+    subskills:
+      - id: association/matching
+        l10n:
+          - locale: en_US
+            name: Matching
+            description: >
+              Finding two or more things that are exactly the same or very
+              similar (for example, pairing two identical socks)
+          - locale: fr_FR
+            name: Apparier
+            description: >
+              Trouver deux ou plusieurs choses qui sont exactement les mêmes ou
+              très similaires, (par exemple, mettre ensemble deux chaussettes
+              identiques).
+        subskills: []
+      - id: association/sorting
+        l10n:
+          - locale: en_US
+            name: Sorting
+            description: >
+              Putting things into groups based on what they have in common (for
+              example, sorting fruits by color)
+          - locale: fr_FR
+            name: Trier
+            description: >
+              Mettre des choses en groupes selon ce qu'elles ont en commun, (par
+              exemple, trier des fruits par couleur)
+        subskills: []
