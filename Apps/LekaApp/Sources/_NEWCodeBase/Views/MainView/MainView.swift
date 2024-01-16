@@ -25,9 +25,12 @@ struct MainView: View {
                     Spacer()
                 }
 
-                // TODO: (@ladislas) move insets to button view
-                GoToRobotConnectButton()
-                    .listRowInsets(EdgeInsets(top: -5, leading: -20, bottom: -15, trailing: -20))
+                Button {
+                    self.viewModel.isRobotConnectionPresented = true
+                } label: {
+                    RobotConnectionLabel()
+                }
+                .listRowInsets(EdgeInsets(top: 0, leading: -8, bottom: -8, trailing: -8))
 
                 Section(String(l10n.MainView.Sidebar.sectionInformation.characters)) {
                     CategoryLabel(category: .news)
