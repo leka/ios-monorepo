@@ -5,7 +5,7 @@
 import Foundation
 import Yams
 
-public struct Activity: Codable, Identifiable {
+public struct ActivityDeprecated: Codable, Identifiable {
     // MARK: Lifecycle
 
     public init(from decoder: Decoder) throws {

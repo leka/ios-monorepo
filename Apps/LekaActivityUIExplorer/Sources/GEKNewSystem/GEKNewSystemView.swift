@@ -6,7 +6,7 @@ import ContentKit
 import GameEngineKit
 import SwiftUI
 
-let kActivities: [Activity] = [
+let kActivities: [ActivityDeprecated] = [
     // ? Filename format
     // ? touchToSelect: activity-touchToSelect-<number_of_answers>-<answer_type>
     // ? dragAndDropIntoZones:   activity-dragAndDropIntoZones-<number_of_zones>-<number_of_answers>-<answer_type>
@@ -47,7 +47,7 @@ let kActivities: [Activity] = [
 // MARK: - GEKNewSystemView
 
 struct GEKNewSystemView: View {
-    @State var currentActivity: Activity?
+    @State var currentActivity: ActivityDeprecated?
 
     var body: some View {
         ScrollView {

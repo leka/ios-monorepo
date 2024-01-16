@@ -24,7 +24,7 @@ public class ContentKit {
     }
 
     // TODO(@ladislas): maybe return optional activity instead of fatalError
-    public static func decodeActivity(_ filename: String) -> Activity {
+    public static func decodeActivity(_ filename: String) -> ActivityDeprecated {
         do {
             guard let file = Bundle.main.path(forResource: filename, ofType: "yml") else {
                 log.error("File not found: \(filename)")
@@ -32,7 +32,7 @@ public class ContentKit {
             }
 
             let data = try String(contentsOfFile: file, encoding: .utf8)
-            let activity = try YAMLDecoder().decode(Activity.self, from: data)
+            let activity = try YAMLDecoder().decode(ActivityDeprecated.self, from: data)
 
             return activity
         } catch {
@@ -42,7 +42,7 @@ public class ContentKit {
     }
 
     // TODO(@ladislas): maybe return optional activity instead of fatalError
-    public static func decodeActivityFromModule(_ filename: String) -> Activity {
+    public static func decodeActivityFromModule(_ filename: String) -> ActivityDeprecated {
         do {
             guard let file = Bundle.module.path(forResource: filename, ofType: "yml") else {
                 log.error("File not found: \(filename)")
@@ -50,7 +50,7 @@ public class ContentKit {
             }
 
             let data = try String(contentsOfFile: file, encoding: .utf8)
-            let activity = try YAMLDecoder().decode(Activity.self, from: data)
+            let activity = try YAMLDecoder().decode(ActivityDeprecated.self, from: data)
 
             return activity
         } catch {
