@@ -3,8 +3,11 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import DesignKit
+import LocalizationKit
 import RobotKit
 import SwiftUI
+
+// MARK: - RobotConnectionLabel
 
 struct RobotConnectionLabel: View {
     // MARK: Internal
@@ -30,7 +33,7 @@ struct RobotConnectionLabel: View {
     private var buttonContent: some View {
         if self.robotViewModel.isConnected {
             VStack(alignment: .leading, spacing: 4) {
-                Text("Connecté à")
+                Text(l10n.RobotConnectionLabel.textConnectedTo)
                     .font(.caption2)
 
                 Text(self.robotViewModel.name)
@@ -39,8 +42,7 @@ struct RobotConnectionLabel: View {
                 self.robotChargingStatusAndBattery
             }
         } else {
-            Text("Connectez-vous à votre Leka")
-
+            Text(l10n.RobotConnectionLabel.textNotConnected)
                 .font(.subheadline)
                 .multilineTextAlignment(.leading)
         }
@@ -70,6 +72,16 @@ struct RobotConnectionLabel: View {
                 .foregroundColor(.gray)
                 .monospacedDigit()
         }
+    }
+}
+
+// MARK: - l10n.RobotConnectionLabel
+
+extension l10n {
+    enum RobotConnectionLabel {
+        static let textConnectedTo = LocalizedString("lekaapp.robot_connection_label.text_connected_to", value: "Connected to", comment: "Connected to xxx robot label")
+
+        static let textNotConnected = LocalizedString("lekaapp.robot_connection_label.text_not_connected", value: "Connect to your Leka", comment: "Connect to your Leka label")
     }
 }
 
