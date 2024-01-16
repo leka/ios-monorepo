@@ -43,13 +43,11 @@ struct PairingView: View {
             HStack(spacing: 180) {
                 if self.isPlaying {
                     ActionButton(.pause, text: self.instructions.textButtonPause) {
-                        print("Pairing behavior is pausing")
                         self.robotManager.pausePairing()
                         self.isPlaying = false
                     }
                 } else {
                     ActionButton(.start, text: self.instructions.textButtonPlay) {
-                        print("Pairing behavior is running")
                         self.robotManager.startPairing()
                         self.isPlaying = true
                         self.hasStarted = true
@@ -57,7 +55,6 @@ struct PairingView: View {
                 }
 
                 ActionButton(.stop, text: self.instructions.textButtonStop, hasStarted: self.hasStarted) {
-                    print("Pairing behavior stopped")
                     self.robotManager.stopPairing()
 
                     self.isPlaying = false
