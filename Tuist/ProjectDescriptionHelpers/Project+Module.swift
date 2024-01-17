@@ -11,15 +11,17 @@ import ProjectDescription
 public struct ModuleExample {
     // MARK: Lifecycle
 
-    public init(name: String, infoPlist: [String: Plist.Value] = [:]) {
+    public init(name: String, infoPlist: [String: Plist.Value] = [:], dependencies: [TargetDependency] = []) {
         self.name = name
         self.infoPlist = infoPlist
+        self.dependencies = dependencies
     }
 
     // MARK: Public
 
     public let name: String
     public let infoPlist: [String: Plist.Value]
+    public let dependencies: [TargetDependency]
 }
 
 public extension Project {
@@ -54,7 +56,7 @@ public extension Project {
                 sources: ["Examples/\(example.name)/Sources/**"],
                 resources: ["Examples/\(example.name)/Resources/**"],
                 scripts: TargetScript.linters(),
-                dependencies: [.target(name: name)],
+                dependencies: [.target(name: name)] + example.dependencies,
                 settings: .settings(base: .extendingBase(with: settings))
             )
         }
