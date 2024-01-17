@@ -39,7 +39,8 @@ struct AccountCreationView: View {
             .buttonStyle(.borderedProminent)
         }
         .navigationDestination(isPresented: self.$viewModel.navigateToAccountCreationProcess) {
-            AccountCreationProcess.Step1()
+            AccountCreationProcess.CarouselView()
+                .navigationBarBackButtonHidden()
         }
     }
 

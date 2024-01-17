@@ -10,24 +10,9 @@ extension AccountCreationProcess {
     struct Step2: View {
         // MARK: Internal
 
+        @Binding var selectedTab: Step
+
         var body: some View {
-            self.tile
-                .edgesIgnoringSafeArea(.top)
-                .navigationDestination(isPresented: self.$navigateToCaregiverCreationView) {
-                    AccountCreationProcess.CreateTeacherProfileView()
-                }
-                .toolbar {
-                    ToolbarItem(placement: .principal) {
-                        NavigationTitle()
-                    }
-                }
-        }
-
-        // MARK: Private
-
-        @State private var navigateToCaregiverCreationView: Bool = false
-
-        private var tile: some View {
             VStack(spacing: 30) {
                 Image(
                     DesignKitAsset.Images.accompagnantPicto.name,
@@ -47,7 +32,9 @@ extension AccountCreationProcess {
                 Text(l10n.AccountCreationProcess.Step2.message)
 
                 Button(String(l10n.AccountCreationProcess.Step2.createButton.characters)) {
-                    self.navigateToCaregiverCreationView.toggle()
+                    withAnimation {
+                        self.isCaregiverCreationPresented.toggle()
+                    }
                 }
                 .buttonStyle(.bordered)
             }
@@ -55,10 +42,18 @@ extension AccountCreationProcess {
             .frame(width: 400)
             .multilineTextAlignment(.center)
             .frame(maxWidth: .infinity, alignment: .center)
+            .sheet(isPresented: self.$isCaregiverCreationPresented) {
+                AccountCreationProcess.CreateCaregiverView(selectedTab: self.$selectedTab,
+                                                           isPresented: self.$isCaregiverCreationPresented)
+            }
         }
+
+        // MARK: Private
+
+        @State private var isCaregiverCreationPresented: Bool = false
     }
 }
 
 #Preview {
-    AccountCreationProcess.Step3()
+    AccountCreationProcess.Step2(selectedTab: .constant(AccountCreationProcess.Step.caregiverCreation))
 }
