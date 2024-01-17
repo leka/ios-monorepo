@@ -10,7 +10,7 @@ import SwiftUI
 struct WelcomeViewDeprecated: View {
     // MARK: Internal
 
-    @EnvironmentObject var company: CompanyViewModel
+    @EnvironmentObject var company: CompanyViewModelDeprecated
     @EnvironmentObject var viewRouter: ViewRouter
     @EnvironmentObject var metrics: UIMetrics
 
@@ -77,7 +77,7 @@ struct WelcomeViewDeprecated: View {
 struct WelcomeViewDeprecated_Previews: PreviewProvider {
     static var previews: some View {
         WelcomeViewDeprecated()
-            .environmentObject(CompanyViewModel())
+            .environmentObject(CompanyViewModelDeprecated())
             .environmentObject(ViewRouter())
             .environmentObject(UIMetrics())
             .previewInterfaceOrientation(.landscapeLeft)

@@ -8,7 +8,7 @@ import SwiftUI
 struct JobPickerTrigger: View {
     // MARK: Internal
 
-    @EnvironmentObject var company: CompanyViewModel
+    @EnvironmentObject var company: CompanyViewModelDeprecated
     @EnvironmentObject var metrics: UIMetrics
 
     @Binding var navigate: Bool

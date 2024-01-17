@@ -10,7 +10,7 @@ import SwiftUI
 struct JobPicker: View {
     // MARK: Internal
 
-    @EnvironmentObject var company: CompanyViewModel
+    @EnvironmentObject var company: CompanyViewModelDeprecated
     @EnvironmentObject var metrics: UIMetrics
     @EnvironmentObject var viewRouter: ViewRouter
     @EnvironmentObject var navigationVM: NavigationViewModel
@@ -107,7 +107,7 @@ struct JobPicker: View {
 struct JobPicker_Previews: PreviewProvider {
     static var previews: some View {
         JobPicker()
-            .environmentObject(CompanyViewModel())
+            .environmentObject(CompanyViewModelDeprecated())
             .environmentObject(ViewRouter())
             .environmentObject(UIMetrics())
             .previewInterfaceOrientation(.landscapeLeft)

@@ -10,7 +10,7 @@ import SwiftUI
 struct SignupViewDeprecated: View {
     // MARK: Internal
 
-    @EnvironmentObject var company: CompanyViewModel
+    @EnvironmentObject var company: CompanyViewModelDeprecated
     @EnvironmentObject var settings: SettingsViewModel
     @EnvironmentObject var metrics: UIMetrics
 
@@ -185,7 +185,7 @@ struct SignupViewDeprecated: View {
 struct SignupViewDeprecated_Previews: PreviewProvider {
     static var previews: some View {
         SignupViewDeprecated()
-            .environmentObject(CompanyViewModel())
+            .environmentObject(CompanyViewModelDeprecated())
             .environmentObject(SettingsViewModel())
             .environmentObject(UIMetrics())
             .previewInterfaceOrientation(.landscapeLeft)

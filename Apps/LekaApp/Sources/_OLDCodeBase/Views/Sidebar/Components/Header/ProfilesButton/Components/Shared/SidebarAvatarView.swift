@@ -6,10 +6,10 @@ import DesignKit
 import SwiftUI
 
 struct SidebarAvatarView: View {
-    @EnvironmentObject var company: CompanyViewModel
+    @EnvironmentObject var company: CompanyViewModelDeprecated
     @EnvironmentObject var settings: SettingsViewModel
 
-    let type: UserType
+    let type: UserTypeDeprecated
 
     var body: some View {
         Circle()

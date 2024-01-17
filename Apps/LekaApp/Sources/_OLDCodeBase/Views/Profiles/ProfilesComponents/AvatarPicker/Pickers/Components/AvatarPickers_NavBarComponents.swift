@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AvatarPicker_NavigationTitle: View {
     @EnvironmentObject var metrics: UIMetrics
-    @EnvironmentObject var company: CompanyViewModel
+    @EnvironmentObject var company: CompanyViewModelDeprecated
 
     var body: some View {
         Text("Quel est ton avatar ?")
@@ -44,7 +44,7 @@ struct AvatarPicker_AdaptiveBackButton: View {
 // MARK: - AvatarPicker_ValidateButton
 
 struct AvatarPicker_ValidateButton: View {
-    @EnvironmentObject var company: CompanyViewModel
+    @EnvironmentObject var company: CompanyViewModelDeprecated
     @Environment(\.dismiss) var dismiss
 
     @Binding var selected: String

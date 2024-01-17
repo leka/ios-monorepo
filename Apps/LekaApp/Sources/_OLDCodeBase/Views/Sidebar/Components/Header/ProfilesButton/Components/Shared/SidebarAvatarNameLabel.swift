@@ -6,10 +6,10 @@ import DesignKit
 import SwiftUI
 
 struct SidebarAvatarNameLabel: View {
-    @EnvironmentObject var company: CompanyViewModel
+    @EnvironmentObject var company: CompanyViewModelDeprecated
     @EnvironmentObject var metrics: UIMetrics
 
-    let type: UserType
+    let type: UserTypeDeprecated
 
     var body: some View {
         Text(

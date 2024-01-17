@@ -8,12 +8,12 @@ import SwiftUI
 struct UserSet_AvatarCell: View {
     // MARK: Internal
 
-    @EnvironmentObject var company: CompanyViewModel
+    @EnvironmentObject var company: CompanyViewModelDeprecated
     @EnvironmentObject var settings: SettingsViewModel
     @EnvironmentObject var metrics: UIMetrics
     @EnvironmentObject var navigationVM: NavigationViewModel
 
-    let user: User
+    let user: UserDeprecated
 
     var body: some View {
         Button {
