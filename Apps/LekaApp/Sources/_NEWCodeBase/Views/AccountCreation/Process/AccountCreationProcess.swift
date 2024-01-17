@@ -13,4 +13,17 @@ enum AccountCreationProcess {
                 .font(.headline)
         }
     }
+
+    struct CarouselView: View {
+        var body: some View {
+            TabView(selection: self.$selectedTab) {
+                Text("First")
+                Text("Second")
+                Text("Third")
+                Text("Fourth")
+            }
+            .tabViewStyle(.page)
+            .indexViewStyle(.page(backgroundDisplayMode: .always))
+        }
+    }
 }
