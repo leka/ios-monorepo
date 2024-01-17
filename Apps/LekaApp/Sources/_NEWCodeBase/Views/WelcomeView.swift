@@ -9,7 +9,7 @@ import SwiftUI
 // MARK: - WelcomeView
 
 struct WelcomeView: View {
-    @EnvironmentObject var viewRouter: ViewRouter
+    @EnvironmentObject var viewRouter: ViewRouterDeprecated
 
     var body: some View {
         NavigationStack {
@@ -39,5 +39,5 @@ struct WelcomeView: View {
 
 #Preview {
     WelcomeView()
-        .environmentObject(ViewRouter())
+        .environmentObject(ViewRouterDeprecated())
 }

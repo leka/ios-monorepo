@@ -8,7 +8,7 @@ struct SettingsSection_Account: View {
     @EnvironmentObject var settings: SettingsViewModel
     @EnvironmentObject var company: CompanyViewModelDeprecated
     @EnvironmentObject var robotVM: RobotViewModel
-    @EnvironmentObject var viewRouter: ViewRouter
+    @EnvironmentObject var viewRouter: ViewRouterDeprecated
 
     var body: some View {
         Section {

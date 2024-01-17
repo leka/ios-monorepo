@@ -8,7 +8,7 @@ import SwiftUI
 
 extension AccountCreationProcess {
     struct Step4: View {
-        @EnvironmentObject var viewRouter: ViewRouter
+        @EnvironmentObject var viewRouter: ViewRouterDeprecated
 
         var body: some View {
             VStack(spacing: 30) {

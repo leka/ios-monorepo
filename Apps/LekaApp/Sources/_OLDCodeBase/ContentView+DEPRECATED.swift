@@ -5,7 +5,7 @@
 import SwiftUI
 
 struct ContentViewDeprecated: View {
-    @EnvironmentObject var viewRouter: ViewRouter
+    @EnvironmentObject var viewRouter: ViewRouterDeprecated
 
     var body: some View {
         Group {

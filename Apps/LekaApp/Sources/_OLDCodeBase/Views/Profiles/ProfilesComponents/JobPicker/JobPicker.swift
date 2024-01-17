@@ -12,7 +12,7 @@ struct JobPicker: View {
 
     @EnvironmentObject var company: CompanyViewModelDeprecated
     @EnvironmentObject var metrics: UIMetrics
-    @EnvironmentObject var viewRouter: ViewRouter
+    @EnvironmentObject var viewRouter: ViewRouterDeprecated
     @EnvironmentObject var navigationVM: NavigationViewModel
     @Environment(\.dismiss) var dismiss
 
@@ -108,7 +108,7 @@ struct JobPicker_Previews: PreviewProvider {
     static var previews: some View {
         JobPicker()
             .environmentObject(CompanyViewModelDeprecated())
-            .environmentObject(ViewRouter())
+            .environmentObject(ViewRouterDeprecated())
             .environmentObject(UIMetrics())
             .previewInterfaceOrientation(.landscapeLeft)
     }

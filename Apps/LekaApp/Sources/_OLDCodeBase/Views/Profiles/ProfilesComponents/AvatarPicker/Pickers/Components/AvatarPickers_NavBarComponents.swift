@@ -21,7 +21,7 @@ struct AvatarPicker_NavigationTitle: View {
 // MARK: - AvatarPicker_AdaptiveBackButton
 
 struct AvatarPicker_AdaptiveBackButton: View {
-    @EnvironmentObject var viewRouter: ViewRouter
+    @EnvironmentObject var viewRouter: ViewRouterDeprecated
     @Environment(\.dismiss) var dismiss
 
     var body: some View {
