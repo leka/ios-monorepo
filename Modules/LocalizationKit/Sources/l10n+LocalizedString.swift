@@ -7,8 +7,8 @@ import Foundation
 // swift-format-ignore: AlwaysUseLowerCamelCase
 // swiftlint:disable identifier_name
 
-public enum l10n {
-    public static func LocalizedString(
+public extension l10n {
+    static func LocalizedString(
         _ key: StaticString, value: String.LocalizationValue, bundle: Bundle? = nil, comment: StaticString, dsoHandle: UnsafeRawPointer = #dsohandle
     )
         -> AttributedString
@@ -30,7 +30,7 @@ public enum l10n {
         return markdown
     }
 
-    public static func LocalizedStringInterpolation(
+    static func LocalizedStringInterpolation(
         _ key: StaticString, value: String.LocalizationValue, comment: StaticString
     ) -> (
         (CVarArg...) -> AttributedString
