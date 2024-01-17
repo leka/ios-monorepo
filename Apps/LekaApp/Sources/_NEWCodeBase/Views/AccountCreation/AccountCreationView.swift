@@ -40,6 +40,7 @@ struct AccountCreationView: View {
         }
         .navigationDestination(isPresented: self.$viewModel.navigateToAccountCreationProcess) {
             AccountCreationProcess.CarouselView()
+                .navigationBarBackButtonHidden()
         }
     }
 
