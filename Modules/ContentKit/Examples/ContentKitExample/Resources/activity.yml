@@ -34,7 +34,6 @@ l10n:
       description: |
         Courte description de l'activité sur plusieurs lignes
         Si besoin!
-
         Et en markdown **simple** seulement
 
       instructions: |
@@ -60,7 +59,6 @@ l10n:
       description: |
         Short description of the activity on several lines
         If needed!
-
         And in **simple** markdown only
 
       instructions: |
