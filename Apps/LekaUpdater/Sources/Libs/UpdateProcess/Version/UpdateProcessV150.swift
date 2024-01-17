@@ -264,7 +264,7 @@ private class StateSendingFile: GKState, StateEventProcessor {
 
     private var cancellables: Set<AnyCancellable> = []
 
-    private let maximumPacketSize: Int = 61
+    private let maximumPacketSize: Int = 182 // MTU(max) - 3
 
     private var currentPacket: Int = 0
     private var expectedCompletePackets: Int
