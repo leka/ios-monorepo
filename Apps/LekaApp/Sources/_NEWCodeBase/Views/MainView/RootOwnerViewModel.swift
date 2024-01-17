@@ -6,6 +6,14 @@ import DesignKit
 import SwiftUI
 
 class RootOwnerViewModel: ObservableObject {
+    // MARK: Lifecycle
+
+    private init() {
+        // nothing to do
+    }
+
+    // MARK: Internal
+
     static let shared = RootOwnerViewModel()
 
     @Published var currentCompany = Company(email: "", password: "", caregivers: [], carereceivers: [])

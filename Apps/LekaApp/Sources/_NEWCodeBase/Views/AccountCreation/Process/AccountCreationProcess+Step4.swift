@@ -8,7 +8,7 @@ import SwiftUI
 
 extension AccountCreationProcess {
     struct Step4: View {
-        @EnvironmentObject var viewRouter: ViewRouterDeprecated
+        @ObservedObject var rootOwnerViewModel = RootOwnerViewModel.shared
 
         var body: some View {
             VStack(spacing: 30) {
@@ -20,9 +20,7 @@ extension AccountCreationProcess {
                 Text(l10n.AccountCreationProcess.Step4.message)
 
                 Button(String(l10n.AccountCreationProcess.Step4.discoverContentButton.characters)) {
-                    withAnimation {
-                        self.viewRouter.currentPage = .home
-                    }
+                    self.rootOwnerViewModel.isWelcomeViewPresented.toggle()
                 }
                 .buttonStyle(.bordered)
             }
