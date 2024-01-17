@@ -45,6 +45,8 @@ class UpdateProcessController {
             case Version(1, 3, 0),
                  Version(1, 4, 0):
                 self.currentUpdateProcess = UpdateProcessV130()
+            case Version(1, 5, 0):
+                self.currentUpdateProcess = UpdateProcessV150()
             default:
                 self.currentUpdateProcess = UpdateProcessTemplate()
         }
@@ -63,6 +65,7 @@ class UpdateProcessController {
         Version(1, 2, 0),
         Version(1, 3, 0),
         Version(1, 4, 0),
+        Version(1, 5, 0),
     ]
 
     public var currentStage = CurrentValueSubject<UpdateProcessStage, UpdateProcessError>(.initial)
