@@ -5,6 +5,13 @@
 import LocalizationKit
 import SwiftUI
 
+extension Locale {
+    static let enUS = Locale(identifier: "en_US")
+    static let enCA = Locale(identifier: "en_CA")
+    static let frFR = Locale(identifier: "fr_FR")
+    static let frCA = Locale(identifier: "fr_CA")
+}
+
 extension l10n {
     static let localizedStringNoDefault = LocalizedString("localized_string_NO_default", value: "", comment: "")
 
@@ -32,7 +39,8 @@ extension l10n {
 // MARK: - LocalizationView
 
 struct LocalizationView: View {
-    @Environment(\.locale) var locale
+//    @Environment(\.locale) var locale
+    let language = l10n.language
 
     let nameValue = "John *Doe* [link]"
     let intValue = 42
@@ -40,7 +48,9 @@ struct LocalizationView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
-            Text(verbatim: "Current locale: \(self.locale)")
+            Text(verbatim: "Current language: \(l10n.language)")
+                .font(.largeTitle)
+            Text(verbatim: "Current locale: \(Locale.current)")
                 .font(.largeTitle)
 
             VStack(alignment: .leading) {
@@ -72,6 +82,31 @@ struct LocalizationView: View {
                     .bold()
                 Text(l10n.localizedStringInterpolationWithMarkdown(self.nameValue, self.intValue, self.floatValue))
             }
+        }
+        .onAppear {
+            struct Widget {
+                let locale: Locale
+                let value: String
+                var language: Locale.LanguageCode { self.locale.language.languageCode! }
+            }
+
+            let widgets: [Widget] = [
+                Widget(locale: .frFR, value: "Bonjour"),
+                Widget(locale: .frFR, value: "Monde"),
+                Widget(locale: .frFR, value: "Ananas"),
+                Widget(locale: .enUS, value: "Hello"),
+                Widget(locale: .enUS, value: "World"),
+                Widget(locale: .enUS, value: "Pineapple"),
+            ]
+
+            widgets.filter { $0.language == l10n.language }.forEach {
+                print($0)
+            }
+
+            print("bundle: \(Bundle.main.preferredLocalizations[0])")
+            print("preferred: \(l10n.preferred)")
+            print("locale: \(l10n.locale)")
+            print("language: \(l10n.language)")
         }
     }
 }
