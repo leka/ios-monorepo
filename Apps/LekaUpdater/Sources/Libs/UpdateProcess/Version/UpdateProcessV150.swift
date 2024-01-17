@@ -219,10 +219,7 @@ private class StateSendingFile: GKState, StateEventProcessor {
     // MARK: Lifecycle
 
     override init() {
-        let dataSize = globalFirmwareManager.data.count
-
-        self.expectedCompletePackets = Int(floor(Double(dataSize / self.maximumPacketSize)))
-        self.expectedRemainingBytes = Int(dataSize % self.maximumPacketSize)
+        self.firmwareDataSize = globalFirmwareManager.data.count
 
         self.currentPacket = 0
 
@@ -242,6 +239,7 @@ private class StateSendingFile: GKState, StateEventProcessor {
     }
 
     override func didEnter(from _: GKState?) {
+        self.maximumPacketSize = Robot.shared.negotiatedMTU.value - self.l2capOverhead
         self.sendFile()
     }
 
@@ -265,11 +263,6 @@ private class StateSendingFile: GKState, StateEventProcessor {
 
     private var cancellables: Set<AnyCancellable> = []
 
-    private let maximumPacketSize: Int = 61
-
-    private var currentPacket: Int = 0
-    private var expectedCompletePackets: Int
-    private var expectedRemainingBytes: Int
     private lazy var characteristic: CharacteristicModelWriteOnly? = CharacteristicModelWriteOnly(
         characteristicUUID: BLESpecs.FileExchange.Characteristics.fileReceptionBuffer,
         serviceUUID: BLESpecs.FileExchange.service,
@@ -278,6 +271,20 @@ private class StateSendingFile: GKState, StateEventProcessor {
             self.tryToSendNextPacket()
         }
     )
+
+    private var firmwareDataSize: Int = 0
+    private let l2capOverhead: Int = 3
+    private var maximumPacketSize: Int = 182 // 185 (iOS max MTU) - 3 (header size)
+
+    private var currentPacket: Int = 0
+
+    private var expectedCompletePackets: Int {
+        Int(floor(Double(self.firmwareDataSize / self.maximumPacketSize)))
+    }
+
+    private var expectedRemainingBytes: Int {
+        self.firmwareDataSize % self.maximumPacketSize
+    }
 
     private var expectedPackets: Int {
         self.expectedRemainingBytes == 0 ? self.expectedCompletePackets : self.expectedCompletePackets + 1
@@ -291,10 +298,7 @@ private class StateSendingFile: GKState, StateEventProcessor {
         globalFirmwareManager.$data
             .receive(on: DispatchQueue.main)
             .sink { data in
-                let dataSize = data.count
-
-                self.expectedCompletePackets = Int(floor(Double(dataSize / self.maximumPacketSize)))
-                self.expectedRemainingBytes = Int(dataSize % self.maximumPacketSize)
+                self.firmwareDataSize = data.count
             }
             .store(in: &self.cancellables)
     }
