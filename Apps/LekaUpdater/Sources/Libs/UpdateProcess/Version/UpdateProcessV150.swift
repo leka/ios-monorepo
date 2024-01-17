@@ -336,8 +336,7 @@ private class StateApplyingUpdate: GKState, StateEventProcessor {
     }
 
     override func didEnter(from _: GKState?) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: self.setMajorMinorRevision)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: self.applyUpdate)
+        self.setMajor()
     }
 
     override func willExit(to _: GKState) {
@@ -357,34 +356,37 @@ private class StateApplyingUpdate: GKState, StateEventProcessor {
 
     private var cancellables: Set<AnyCancellable> = []
 
-    private func setMajorMinorRevision() {
+    private func setMajor() {
         let majorData = Data([globalFirmwareManager.major])
 
         let majorCharacteristic = CharacteristicModelWriteOnly(
             characteristicUUID: BLESpecs.FirmwareUpdate.Characteristics.versionMajor,
-            serviceUUID: BLESpecs.FirmwareUpdate.service
+            serviceUUID: BLESpecs.FirmwareUpdate.service,
+            onWrite: self.setMinor
         )
 
         Robot.shared.connectedPeripheral?.send(majorData, forCharacteristic: majorCharacteristic)
+    }
 
-        sleep(1)
-
+    private func setMinor() {
         let minorData = Data([globalFirmwareManager.minor])
 
         let minorCharacteristic = CharacteristicModelWriteOnly(
             characteristicUUID: BLESpecs.FirmwareUpdate.Characteristics.versionMinor,
-            serviceUUID: BLESpecs.FirmwareUpdate.service
+            serviceUUID: BLESpecs.FirmwareUpdate.service,
+            onWrite: self.setRevision
         )
 
         Robot.shared.connectedPeripheral?.send(minorData, forCharacteristic: minorCharacteristic)
+    }
 
-        sleep(1)
-
+    private func setRevision() {
         let revisionData = globalFirmwareManager.revision.data
 
         let revisionCharacteristic = CharacteristicModelWriteOnly(
             characteristicUUID: BLESpecs.FirmwareUpdate.Characteristics.versionRevision,
-            serviceUUID: BLESpecs.FirmwareUpdate.service
+            serviceUUID: BLESpecs.FirmwareUpdate.service,
+            onWrite: self.applyUpdate
         )
 
         Robot.shared.connectedPeripheral?.send(revisionData, forCharacteristic: revisionCharacteristic)
