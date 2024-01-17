@@ -10,7 +10,7 @@ import SwiftUI
 struct InfoTile: View {
     // MARK: Internal
 
-    @EnvironmentObject var settings: SettingsViewModel
+    @EnvironmentObject var settings: SettingsViewModelDeprecated
     @EnvironmentObject var navigationVM: NavigationViewModel
     @EnvironmentObject var viewRouter: ViewRouterDeprecated
     @EnvironmentObject var metrics: UIMetrics
@@ -120,7 +120,7 @@ struct InfoTile_Previews: PreviewProvider {
         ZStack {
             Color.teal.ignoresSafeArea()
             InfoTile(data: .discovery)
-                .environmentObject(SettingsViewModel())
+                .environmentObject(SettingsViewModelDeprecated())
                 .environmentObject(NavigationViewModel())
                 .environmentObject(UIMetrics())
                 .environmentObject(ViewRouterDeprecated())

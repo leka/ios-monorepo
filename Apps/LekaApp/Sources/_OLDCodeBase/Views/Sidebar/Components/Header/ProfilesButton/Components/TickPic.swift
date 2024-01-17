@@ -7,7 +7,7 @@ import SwiftUI
 
 struct TickPic: View {
     @EnvironmentObject var company: CompanyViewModelDeprecated
-    @EnvironmentObject var settings: SettingsViewModel
+    @EnvironmentObject var settings: SettingsViewModelDeprecated
 
     var body: some View {
         HStack(alignment: .top) {

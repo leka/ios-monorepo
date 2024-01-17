@@ -7,7 +7,7 @@ import SwiftUI
 
 struct ProfileSelector_Teachers: View {
     @EnvironmentObject var company: CompanyViewModelDeprecated
-    @EnvironmentObject var settings: SettingsViewModel
+    @EnvironmentObject var settings: SettingsViewModelDeprecated
     @EnvironmentObject var metrics: UIMetrics
 
     var body: some View {

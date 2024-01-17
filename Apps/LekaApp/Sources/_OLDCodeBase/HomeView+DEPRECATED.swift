@@ -12,7 +12,7 @@ struct HomeViewDeprecated: View {
     // MARK: Internal
 
     @EnvironmentObject var navigationVM: NavigationViewModel
-    @EnvironmentObject var settings: SettingsViewModel
+    @EnvironmentObject var settings: SettingsViewModelDeprecated
     @EnvironmentObject var metrics: UIMetrics
 
     var body: some View {
@@ -36,7 +36,7 @@ struct HomeViewDeprecated: View {
         }
         .preferredColorScheme(.light)
         .sheet(isPresented: self.$navigationVM.showSettings) {
-            SettingsView()
+            SettingsViewDeprecated()
         }
         .fullScreenCover(isPresented: self.$navigationVM.showProfileEditor) {
             NavigationStack {
@@ -83,7 +83,7 @@ struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeViewDeprecated()
             .environmentObject(NavigationViewModel())
-            .environmentObject(SettingsViewModel())
+            .environmentObject(SettingsViewModelDeprecated())
             .environmentObject(UIMetrics())
             .previewInterfaceOrientation(.landscapeLeft)
     }

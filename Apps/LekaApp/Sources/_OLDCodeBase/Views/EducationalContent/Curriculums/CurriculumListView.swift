@@ -90,7 +90,7 @@ struct CurriculumListView_Previews: PreviewProvider {
             .environmentObject(NavigationViewModel())
             .environmentObject(CurriculumViewModel())
             .environmentObject(UIMetrics())
-            .environmentObject(SettingsViewModel())
+            .environmentObject(SettingsViewModelDeprecated())
             .previewInterfaceOrientation(.landscapeLeft)
     }
 }

@@ -5,10 +5,10 @@
 import DesignKit
 import SwiftUI
 
-// MARK: - SettingsView
+// MARK: - SettingsViewDeprecated
 
-struct SettingsView: View {
-    @EnvironmentObject var settings: SettingsViewModel
+struct SettingsViewDeprecated: View {
+    @EnvironmentObject var settings: SettingsViewModelDeprecated
     @EnvironmentObject var metrics: UIMetrics
     @Environment(\.dismiss) var dismiss
 
@@ -73,8 +73,8 @@ struct SettingsView_Previews: PreviewProvider {
         DesignKitAsset.Colors.lekaLightBlue.swiftUIColor
             .ignoresSafeArea()
             .sheet(isPresented: $open) {
-                SettingsView()
-                    .environmentObject(SettingsViewModel())
+                SettingsViewDeprecated()
+                    .environmentObject(SettingsViewModelDeprecated())
                     .environmentObject(UIMetrics())
             }
             .previewInterfaceOrientation(.landscapeLeft)

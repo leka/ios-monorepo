@@ -13,7 +13,7 @@ struct GameView: View {
     @EnvironmentObject var navigationVM: NavigationViewModel
     @EnvironmentObject var robotVM: RobotViewModel
     @EnvironmentObject var activityVM: ActivityViewModel
-    @EnvironmentObject var settings: SettingsViewModel
+    @EnvironmentObject var settings: SettingsViewModelDeprecated
     @Environment(\.dismiss) var dismiss
 
     var body: some View {

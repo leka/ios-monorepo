@@ -11,7 +11,7 @@ struct LoginViewDeprecated: View {
     // MARK: Internal
 
     @EnvironmentObject var company: CompanyViewModelDeprecated
-    @EnvironmentObject var settings: SettingsViewModel
+    @EnvironmentObject var settings: SettingsViewModelDeprecated
     @EnvironmentObject var metrics: UIMetrics
 
     @FocusState var focusedField: FormField?
@@ -172,7 +172,7 @@ struct LoginViewDeprecated_Previews: PreviewProvider {
     static var previews: some View {
         LoginViewDeprecated()
             .environmentObject(CompanyViewModelDeprecated())
-            .environmentObject(SettingsViewModel())
+            .environmentObject(SettingsViewModelDeprecated())
             .environmentObject(UIMetrics())
             .previewInterfaceOrientation(.landscapeLeft)
     }

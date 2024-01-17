@@ -4,7 +4,7 @@
 
 import Foundation
 
-class SettingsViewModel: ObservableObject {
+class SettingsViewModelDeprecated: ObservableObject {
     // Connexion-related properties - Settings
     @Published var companyIsLoggingIn: Bool = false
     @Published var companyIsConnected: Bool = false
