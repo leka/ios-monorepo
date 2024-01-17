@@ -8,36 +8,31 @@ import SwiftUI
 // MARK: - CreateUserProfileView
 
 extension AccountCreationProcess {
-    struct CreateUserProfileView: View {
-        // MARK: Internal
-
-        @EnvironmentObject var viewRouter: ViewRouter
+    struct CreateCarereceiverView: View {
+        @Binding var selectedTab: Step
+        @Binding var isPresented: Bool
 
         var body: some View {
             VStack {
                 Text("To implement on Teacher profiles structure ready !")
                     .edgesIgnoringSafeArea(.top)
-                    .navigationDestination(isPresented: self.$navigateToStepFinal) {
-                        AccountCreationProcess.Step4()
-                    }
                     .toolbar {
                         ToolbarItem(placement: .principal) {
                             NavigationTitle()
                         }
                     }
 
-                Button("Go final step !") {
-                    self.navigateToStepFinal.toggle()
+                Button("Go step 4 !") {
+                    withAnimation {
+                        self.isPresented.toggle()
+                        self.selectedTab = .final
+                    }
                 }
             }
         }
-
-        // MARK: Private
-
-        @State private var navigateToStepFinal: Bool = false
     }
 }
 
 #Preview {
-    AccountCreationProcess.CreateUserProfileView()
+    AccountCreationProcess.CreateCarereceiverView(selectedTab: .constant(.carereceiverCreation), isPresented: .constant(true))
 }

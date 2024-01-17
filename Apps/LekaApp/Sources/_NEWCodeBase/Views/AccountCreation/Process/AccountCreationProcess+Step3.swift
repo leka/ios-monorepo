@@ -10,24 +10,9 @@ extension AccountCreationProcess {
     struct Step3: View {
         // MARK: Internal
 
+        @Binding var selectedTab: Step
+
         var body: some View {
-            self.tile
-                .edgesIgnoringSafeArea(.top)
-                .navigationDestination(isPresented: self.$navigateToCarereciverCreationView) {
-                    AccountCreationProcess.CreateUserProfileView()
-                }
-                .toolbar {
-                    ToolbarItem(placement: .principal) {
-                        NavigationTitle()
-                    }
-                }
-        }
-
-        // MARK: Private
-
-        @State private var navigateToCarereciverCreationView: Bool = false
-
-        private var tile: some View {
             VStack(spacing: 30) {
                 Image(
                     DesignKitAsset.Images.user.name,
@@ -47,7 +32,7 @@ extension AccountCreationProcess {
                 Text(l10n.AccountCreationProcess.Step3.message)
 
                 Button(String(l10n.AccountCreationProcess.Step3.createButton.characters)) {
-                    self.navigateToCarereciverCreationView.toggle()
+                    self.isCarereceiverCreationPresented.toggle()
                 }
                 .buttonStyle(.bordered)
             }
@@ -55,10 +40,18 @@ extension AccountCreationProcess {
             .frame(width: 400)
             .multilineTextAlignment(.center)
             .frame(maxWidth: .infinity, alignment: .center)
+            .sheet(isPresented: self.$isCarereceiverCreationPresented) {
+                AccountCreationProcess.CreateCarereceiverView(selectedTab: self.$selectedTab,
+                                                              isPresented: self.$isCarereceiverCreationPresented)
+            }
         }
+
+        // MARK: Private
+
+        @State private var isCarereceiverCreationPresented: Bool = false
     }
 }
 
 #Preview {
-    AccountCreationProcess.Step3()
+    AccountCreationProcess.Step3(selectedTab: .constant(.carereceiverCreation))
 }

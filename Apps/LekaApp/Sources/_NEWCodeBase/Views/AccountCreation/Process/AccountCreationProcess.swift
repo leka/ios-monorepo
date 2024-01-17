@@ -14,16 +14,38 @@ enum AccountCreationProcess {
         }
     }
 
+    enum Step: Hashable {
+        case intro
+        case caregiverCreation
+        case carereceiverCreation
+        case final
+    }
+
     struct CarouselView: View {
+        // MARK: Internal
+
         var body: some View {
             TabView(selection: self.$selectedTab) {
-                Text("First")
-                Text("Second")
-                Text("Third")
-                Text("Fourth")
+                Step1(selectedTab: self.$selectedTab)
+                    .tag(Step.intro)
+                Step2(selectedTab: self.$selectedTab)
+                    .tag(Step.caregiverCreation)
+                Step3(selectedTab: self.$selectedTab)
+                    .tag(Step.carereceiverCreation)
+                Step4()
+                    .tag(Step.final)
             }
             .tabViewStyle(.page)
             .indexViewStyle(.page(backgroundDisplayMode: .always))
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    NavigationTitle()
+                }
+            }
         }
+
+        // MARK: Private
+
+        @State private var selectedTab: Step = .intro
     }
 }

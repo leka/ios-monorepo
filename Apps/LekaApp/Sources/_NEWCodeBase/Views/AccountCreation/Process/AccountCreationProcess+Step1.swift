@@ -8,26 +8,9 @@ import SwiftUI
 
 extension AccountCreationProcess {
     struct Step1: View {
-        // MARK: Internal
+        @Binding var selectedTab: Step
 
         var body: some View {
-            self.tile
-                .edgesIgnoringSafeArea(.top)
-                .navigationDestination(isPresented: self.$navigateToStep2) {
-                    Step2()
-                }
-                .toolbar {
-                    ToolbarItem(placement: .principal) {
-                        NavigationTitle()
-                    }
-                }
-        }
-
-        // MARK: Private
-
-        @State private var navigateToStep2: Bool = false
-
-        private var tile: some View {
             VStack(spacing: 30) {
                 Image(
                     DesignKitAsset.Images.welcome.name,
@@ -47,7 +30,9 @@ extension AccountCreationProcess {
                 Text(l10n.AccountCreationProcess.Step1.message)
 
                 Button(String(l10n.AccountCreationProcess.Step1.goButton.characters)) {
-                    self.navigateToStep2.toggle()
+                    withAnimation {
+                        self.selectedTab = .caregiverCreation
+                    }
                 }
                 .buttonStyle(.bordered)
             }
@@ -60,5 +45,5 @@ extension AccountCreationProcess {
 }
 
 #Preview {
-    AccountCreationProcess.Step1()
+    AccountCreationProcess.Step1(selectedTab: .constant(.intro))
 }
