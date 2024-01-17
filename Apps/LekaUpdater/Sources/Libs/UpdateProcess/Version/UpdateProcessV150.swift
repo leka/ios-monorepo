@@ -95,7 +95,7 @@ private class StateSettingFileExchangeState: GKState, StateEventProcessor {
     }
 
     override func didEnter(from _: GKState?) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: self.setFileExchangeState)
+        self.setFileExchangeState()
     }
 
     func process(event: UpdateEvent) {
@@ -118,6 +118,7 @@ private class StateSettingFileExchangeState: GKState, StateEventProcessor {
             characteristicUUID: BLESpecs.FileExchange.Characteristics.setState,
             serviceUUID: BLESpecs.FileExchange.service,
             onWrite: {
+                sleep(1)
                 self.process(event: .fileExchangeStateSet)
             }
         )
@@ -136,7 +137,7 @@ private class StateSettingDestinationPath: GKState, StateEventProcessor {
     }
 
     override func didEnter(from _: GKState?) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: self.setDestinationPath)
+        self.setDestinationPath()
     }
 
     func process(event: UpdateEvent) {
@@ -181,7 +182,7 @@ private class StateClearingFile: GKState, StateEventProcessor {
     }
 
     override func didEnter(from _: GKState?) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: self.setClearPath)
+        self.setClearPath()
     }
 
     func process(event: UpdateEvent) {
@@ -241,7 +242,7 @@ private class StateSendingFile: GKState, StateEventProcessor {
     }
 
     override func didEnter(from _: GKState?) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: self.sendFile)
+        self.sendFile()
     }
 
     override func willExit(to _: GKState) {
@@ -274,7 +275,7 @@ private class StateSendingFile: GKState, StateEventProcessor {
         serviceUUID: BLESpecs.FileExchange.service,
         onWrite: {
             self.currentPacket += 1
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.04, execute: self.tryToSendNextPacket)
+            self.tryToSendNextPacket()
         }
     )
 
