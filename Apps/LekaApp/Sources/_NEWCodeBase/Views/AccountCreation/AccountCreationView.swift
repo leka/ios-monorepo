@@ -61,5 +61,5 @@ struct AccountCreationView: View {
 // MARK: - AccountCreationView_Previews
 
 #Preview {
-    AccountCreationView()
+    AccountCreationView(rootViewModelViewModel: RootOwnerViewModel.shared)
 }
