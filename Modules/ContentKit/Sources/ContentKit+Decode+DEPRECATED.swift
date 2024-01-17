@@ -7,7 +7,7 @@ import Yams
 
 public extension ContentKit {
     // TODO(@ladislas): maybe return optional activity instead of fatalError
-    static func decodeActivity(_ filename: String) -> ActivityDeprecated {
+    static func decodeActivityDeprecated(_ filename: String) -> ActivityDeprecated {
         do {
             guard let file = Bundle.main.path(forResource: filename, ofType: "yml") else {
                 log.error("File not found: \(filename)")
@@ -25,7 +25,7 @@ public extension ContentKit {
     }
 
     // TODO(@ladislas): maybe return optional activity instead of fatalError
-    static func decodeActivityFromModule(_ filename: String) -> ActivityDeprecated {
+    static func decodeActivityFromModuleDeprecated(_ filename: String) -> ActivityDeprecated {
         do {
             guard let file = Bundle.module.path(forResource: filename, ofType: "yml") else {
                 log.error("File not found: \(filename)")
