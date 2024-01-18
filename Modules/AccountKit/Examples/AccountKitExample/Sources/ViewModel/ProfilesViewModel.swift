@@ -25,7 +25,9 @@ public class ProfilesViewModel: ObservableObject {
     @Published public var currentCompany = Company(
         id: "",
         email: "",
-        name: ""
+        name: "",
+        caregivers: [],
+        carereceivers: []
     )
 
     // UI Updates
@@ -35,12 +37,4 @@ public class ProfilesViewModel: ObservableObject {
     @Published public var showEditCaregivers = false
     @Published public var showEditCarereceivers = false
     @Published public var isUpdating = false
-}
-
-// MARK: - Company
-
-public struct Company: Codable, Identifiable {
-    public var id: String
-    public var email: String
-    public var name: String
 }
