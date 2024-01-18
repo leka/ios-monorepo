@@ -5,7 +5,7 @@
 public class ActivitySequenceManager {
     // MARK: Lifecycle
 
-    public init(activity: Activity) {
+    public init(activity: ActivityDeprecated) {
         var localActivity = activity
 
         if localActivity.shuffleExercises {
@@ -67,5 +67,5 @@ public class ActivitySequenceManager {
 
     // MARK: Private
 
-    private let activity: Activity
+    private let activity: ActivityDeprecated
 }

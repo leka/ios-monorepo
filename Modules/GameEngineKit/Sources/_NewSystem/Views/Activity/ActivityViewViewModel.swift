@@ -9,7 +9,7 @@ import SwiftUI
 public class ActivityViewViewModel: ObservableObject {
     // MARK: Lifecycle
 
-    public init(activity: Activity) {
+    public init(activity: ActivityDeprecated) {
         self.sequenceManager = ActivitySequenceManager(activity: activity)
 
         self.currentActivity = activity
@@ -34,7 +34,7 @@ public class ActivityViewViewModel: ObservableObject {
 
     // MARK: Internal
 
-    @Published var currentActivity: Activity
+    @Published var currentActivity: ActivityDeprecated
 
     @Published var totalSequences: Int
     @Published var currentSequenceIndex: Int

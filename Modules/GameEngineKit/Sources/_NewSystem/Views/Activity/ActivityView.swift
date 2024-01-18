@@ -290,6 +290,6 @@ public struct ActivityView: View {
 // swiftlint:enable cyclomatic_complexity void_function_in_ternary function_body_length
 
 #Preview {
-    let activity = ContentKit.decodeActivity("activity-sample")
+    let activity = ContentKit.decodeActivityDeprecated("activity-sample")
     return ActivityView(viewModel: ActivityViewViewModel(activity: activity))
 }
