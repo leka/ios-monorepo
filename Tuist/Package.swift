@@ -46,5 +46,9 @@ let package = Package(
             url: "https://github.com/mxcl/Version",
             exact: "2.0.1"
         ),
+        .package(
+            url: "https://github.com/firebase/firebase-ios-sdk",
+            exact: "10.20.0"
+        ),
     ]
 )
