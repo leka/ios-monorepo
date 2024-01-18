@@ -17,7 +17,8 @@ skills:
           choses se trouvent autour de soi, et comment bouger ou se déplacer
           dans cet espace.
     subskills: []
-  - id: time_and_temporality_understanding
+
+  - id: ttime_and_temporality_understanding
     l10n:
       - locale: en_US
         name: Time and temporality understanding
@@ -38,6 +39,7 @@ skills:
           événements (par exemple, aujourd'hui est après hier et avant demain,
           le printemps est après l’hiver et avant l’été).
     subskills: []
+
   - id: association
     l10n:
       - locale: en_US
@@ -65,6 +67,7 @@ skills:
               très similaires, (par exemple, mettre ensemble deux chaussettes
               identiques).
         subskills: []
+
       - id: association/sorting
         l10n:
           - locale: en_US
@@ -78,6 +81,7 @@ skills:
               Mettre des choses en groupes selon ce qu'elles ont en commun, (par
               exemple, trier des fruits par couleur)
         subskills: []
+
       - id: association/ordering
         l10n:
           - locale: en_US
@@ -92,6 +96,7 @@ skills:
               petit au plus grand, par ordre chronologique ou par ordre
               alphabétique).
         subskills: []
+
   - id: relationship_tablet_robot
     l10n:
       - locale: en_US
@@ -105,6 +110,7 @@ skills:
           Comprendre le lien de causalité entre tablette et robot. Comprendre
           qu’en touchant la tablette, cela fait bouger ou changer le robot Leka.
     subskills: []
+
   - id: discrimination
     l10n:
       - locale: en_US
@@ -122,6 +128,7 @@ skills:
           regardant ou entendre la différence entre des sons, comme le son d'un
           piano et celui d'une guitare).
     subskills: []
+
   - id: generalization
     l10n:
       - locale: en_US
@@ -139,6 +146,7 @@ skills:
           sert à écrire, et ensuite savoir que tous les stylos servent à écrire,
           même s'ils sont de différentes couleurs ou formes).
     subskills: []
+
   - id: memory
     l10n:
       - locale: en_US
@@ -166,6 +174,7 @@ skills:
               secondes à une minute (par exemple, garder en tête l’ordre d’une
               séquence de couleurs que l’on vient d’observer).
         subskills: []
+
       - id: memory/long-term_memory
         l10n:
           - locale: en_US
@@ -182,6 +191,7 @@ skills:
               inclut des souvenirs personnels, des connaissances acquises, des
               compétences, et des expériences.
         subskills: []
+
   - id: attention
     l10n:
       - locale: en_US
@@ -208,6 +218,7 @@ skills:
             description: >
               Capacité à rester concentré sur une chose pendant longtemps.
         subskills: []
+
       - id: attention/transition
         l10n:
           - locale: en_US
@@ -220,6 +231,7 @@ skills:
               Capacité à se reconcentrer rapidement après un changement
               d’activité
         subskills: []
+
       - id: attention/joint_attention
         l10n:
           - locale: en_US
@@ -235,6 +247,7 @@ skills:
               (par exemple, regarder un objet que quelqu'un montre ou écouter
               une histoire ensemble).
         subskills: []
+
   - id: inhibition
     l10n:
       - locale: en_US
@@ -250,6 +263,7 @@ skills:
           faire (par exemple, ne pas toucher le robot Leka quand ce n’est pas
           mon tour, même si j’en ai très envie).
     subskills: []
+
   - id: self-regulation
     l10n:
       - locale: en_US
@@ -264,6 +278,7 @@ skills:
           Apprendre à se calmer après une émotion forte ou à ne pas réagir de
           manière impulsive.
     subskills: []
+
   - id: empathy
     l10n:
       - locale: en_US
@@ -279,6 +294,7 @@ skills:
           exemple, si quelqu'un est triste, l'empathie permet de comprendre
           pourquoi il est triste et d’être capable de se mettre à sa place).
     subskills: []
+
   - id: social_interactions
     l10n:
       - locale: en_US
@@ -299,6 +315,7 @@ skills:
           son tour, peut influencer l'action ou la réaction initiale de la
           première personne.
     subskills: []
+
   - id: communication
     l10n:
       - locale: en_US
@@ -335,8 +352,7 @@ skills:
                 description: >
                   Comprendre ce que les gens disent ou écrivent.
             subskills:
-              - id: >-
-                  communication/verbal_communication/receptive_language/oral_comprehension
+              - id: communication/verbal_communication/receptive_language/oral_comprehension
                 l10n:
                   - locale: en_US
                     name: Oral comprehension
@@ -347,8 +363,8 @@ skills:
                     description: >
                       Comprendre les mots que les gens disent.
                 subskills: []
-              - id: >-
-                  communication/verbal_communication/receptive_language/written_comprehension
+
+              - id: communication/verbal_communication/receptive_language/written_comprehension
                 l10n:
                   - locale: en_US
                     name: Written comprehension (reading)
@@ -359,6 +375,7 @@ skills:
                     description: >
                       Comprendre les mots écrits dans les livres ou ailleurs.
                 subskills: []
+
           - id: communication/verbal_communication/expressive_language
             l10n:
               - locale: en_US
@@ -370,8 +387,7 @@ skills:
                 description: >
                   Pouvoir parler ou écrire pour exprimer des messages.
             subskills:
-              - id: >-
-                  communication/verbal_communication/expressive_language/oral_expression
+              - id: communication/verbal_communication/expressive_language/oral_expression
                 l10n:
                   - locale: en_US
                     name: Oral expression (speech)
@@ -382,8 +398,8 @@ skills:
                     description: >
                       Utiliser des mots pour s’exprimer.
                 subskills: []
-              - id: >-
-                  communication/verbal_communication/expressive_language/written_expression
+
+              - id: communication/verbal_communication/expressive_language/written_expression
                 l10n:
                   - locale: en_US
                     name: Written comprehension (reading)
@@ -394,6 +410,7 @@ skills:
                     description: >
                       Ecrire des mots pour s’exprimer.
                 subskills: []
+
       - id: communication/augmentative_alternative_communication
         l10n:
           - locale: en_US
@@ -422,6 +439,7 @@ skills:
                   Cela implique de faire des signes avec les mains et d'utiliser
                   des expressions faciales pour exprimer des idées sans parler.
             subskills: []
+
           - id: communication/augmentative_alternative_communication/makaton
             l10n:
               - locale: en_US
@@ -438,6 +456,7 @@ skills:
                   parole est bien présente et est complétée par des signes et
                   des symboles pour renforcer la communication.
             subskills: []
+
           - id: communication/augmentative_alternative_communication/PECS
             l10n:
               - locale: en_US
@@ -454,6 +473,7 @@ skills:
                   mots écrits, photos, dessins, etc.). Ils montrent ou échangent
                   des images pour s’exprimer.
             subskills: []
+
       - id: communication/non_verbal_communication
         l10n:
           - locale: en_US
@@ -479,6 +499,7 @@ skills:
                   Bouger les mains et les bras pour montrer des choses sans
                   parler.
             subskills: []
+
           - id: communication/non_verbal_communication/pointing
             l10n:
               - locale: en_US
@@ -492,6 +513,7 @@ skills:
                   Utiliser un doigt pour montrer quelque chose ou quelqu'un sans
                   utiliser de mots.
             subskills: []
+
           - id: communication/non_verbal_communication/gaze
             l10n:
               - locale: en_US
@@ -505,6 +527,7 @@ skills:
                   Regarder des choses ou des personnes avec les yeux pour
                   montrer ce qu'on pense ou ce qu'on ressent sans dire des mots.
             subskills: []
+
           - id: communication/non_verbal_communication/facial_expressions
             l10n:
               - locale: en_US
@@ -518,6 +541,7 @@ skills:
                   Faire des expressions différentes avec son visage pour montrer
                   comment on se sent, comme sourire quand on est content.
             subskills: []
+
           - id: communication/non_verbal_communication/vocalizations
             l10n:
               - locale: en_US
@@ -529,6 +553,7 @@ skills:
                 description: >
                   Faire des sons qui ne sont pas de vrais mots.
             subskills: []
+
           - id: communication/non_verbal_communication/smiles
             l10n:
               - locale: en_US
@@ -542,6 +567,7 @@ skills:
                   Faire des sourires pour manifester de la joie, de
                   l’approbation ou toute sorte d’émotion agréable
             subskills: []
+
   - id: turn_taking
     l10n:
       - locale: en_US
@@ -555,6 +581,7 @@ skills:
           Capacité de savoir quand parler, écouter ou agir dans une interaction
           sociale, en respectant un ordre ou une séquence préétablie.
     subskills: []
+
   - id: gross_motor_skills
     l10n:
       - locale: en_US
@@ -568,6 +595,7 @@ skills:
           Capacité à utiliser les grands muscles pour faire des mouvements tels
           que marcher, courir, sauter et lancer des choses.
     subskills: []
+
   - id: fine_motor_skills
     l10n:
       - locale: en_US
@@ -587,6 +615,7 @@ skills:
           écrire, dessiner, boutonner une chemise, manipuler de petits objets,
           ou utiliser des outils comme des ciseaux ou des crayons.
     subskills: []
+
   - id: familiarizing_with_leka
     l10n:
       - locale: en_US
@@ -600,6 +629,7 @@ skills:
           La compétence "familiarisation de l'enfant avec Leka" consiste à aider
           l'enfant à se sentir à l'aise et en confiance avec le robot Leka.
     subskills: []
+
   - id: sensory_interaction
     l10n:
       - locale: en_US
@@ -617,6 +647,7 @@ skills:
           changeantes de Leka, écouter les sons ou musiques qu'il émet, et
           toucher et ressentir Leka en le manipulant ou en jouant avec lui.
     subskills: []
+
   - id: counting
     l10n:
       - locale: en_US
@@ -632,6 +663,7 @@ skills:
           pouvoir compter des choses pour déterminer la quantité. (par exemple,
           compter combien de pommes sont dans un panier).
     subskills: []
+
   - id: colors_recognition
     l10n:
       - locale: en_US
@@ -644,6 +676,7 @@ skills:
           La reconnaissance des couleurs est la capacité à voir et à identifier
           différentes couleurs.
     subskills: []
+
   - id: foods_recognition
     l10n:
       - locale: en_US
@@ -657,6 +690,7 @@ skills:
           La reconnaissance des aliments est la capacité à voir et à identifier
           différents aliments (fruits, légumes, gâteaux, etc.)
     subskills: []
+
   - id: animals_recognition
     l10n:
       - locale: en_US
@@ -670,6 +704,7 @@ skills:
           La reconnaissance des animaux est la capacité à voir et à identifier
           différents animaux (chiens, chats, chevaux, etc.).
     subskills: []
+
   - id: shapes_recognition
     l10n:
       - locale: en_US
@@ -683,6 +718,7 @@ skills:
           La reconnaissance des formes est la capacité à voir et à identifier
           différentes formes (rond, carré, triangle, rectangle, etc.).
     subskills: []
+
   - id: numbers_recognition
     l10n:
       - locale: en_US
@@ -695,6 +731,7 @@ skills:
           La reconnaissance des chiffres est la capacité à voir et à identifier
           des chiffres.
     subskills: []
+
   - id: alphabet-letters_recognition
     l10n:
       - locale: en_US
@@ -707,6 +744,7 @@ skills:
           La reconnaissance des lettres de l’alphabet est la capacité à voir et
           à identifier différentes lettres de l’alphabet.
     subskills: []
+
   - id: everyday-objects_recognition
     l10n:
       - locale: en_US
@@ -721,6 +759,7 @@ skills:
           identifier différents objets du quotidien (vêtements, brosse à dents,
           assiettes, etc.).
     subskills: []
+
   - id: basic-physiological-needs_recognition
     l10n:
       - locale: en_US
@@ -735,6 +774,7 @@ skills:
           à voir et à identifier les besoins physiologiques primaires (manger,
           boire, dormir, etc.).
     subskills: []
+
   - id: weather-elements_recognition
     l10n:
       - locale: en_US
@@ -749,6 +789,7 @@ skills:
           identifier les éléments de la météo (soleil, pluie, nuages, neige,
           etc.).
     subskills: []
+
   - id: body-parts_recognition
     l10n:
       - locale: en_US
@@ -762,6 +803,7 @@ skills:
           La reconnaissance des parties du corps est la capacité à voir et à
           identifier les parties du corps.
     subskills: []
+
   - id: basic-emotions_recognition
     l10n:
       - locale: en_US
