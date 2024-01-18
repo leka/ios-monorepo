@@ -17,5 +17,12 @@ let project = Project.module(
     dependencies: [
         .project(target: "DesignKit", path: Path("../../Modules/DesignKit")),
         .project(target: "LogKit", path: Path("../../Modules/LogKit")),
+        .external(name: "FirebaseAnalytics"),
+//        .external(name: "FirebaseCrashlytics"),
+        .external(name: "FirebaseAuth"),
+        .external(name: "FirebaseAuthCombine-Community"),
+        .external(name: "FirebaseFirestore"),
+        .external(name: "FirebaseFirestoreSwift"),
+        .external(name: "FirebaseFirestoreCombine-Community"),
     ]
 )

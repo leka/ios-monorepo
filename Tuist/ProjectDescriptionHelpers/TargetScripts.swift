@@ -26,4 +26,9 @@ public extension TargetScript {
 
         return defaultLinters
     }
+
+//    static let FBCrashlytics = TargetScript.pre(
+//        path: "./Scripts/FBCrashlyticsRunScript.sh",
+//        name: "Firebase Crashlystics"
+//    )
 }
