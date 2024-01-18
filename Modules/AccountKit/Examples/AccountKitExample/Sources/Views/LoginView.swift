@@ -2,13 +2,19 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+// Leka - iOS Monorepo
+// Copyright 2023 APF France handicap
+// SPDX-License-Identifier: Apache-2.0
+
+import AccountKit
 import AuthenticationServices
+import Combine
 import SwiftUI
 
 struct LoginView: View {
     // MARK: Internal
 
-    @EnvironmentObject var authenticationState: OrganisationAuthState
+    @EnvironmentObject var authManager: AuthManager
 
     var body: some View {
         VStack(spacing: 10) {
@@ -22,25 +28,43 @@ struct LoginView: View {
         .padding()
         .navigationTitle("Login View")
         .navigationBarTitleDisplayMode(.large)
-        .animation(.default, value: self.organisation.isEmailValid())
-        .animation(.default, value: self.organisation.isPasswordValid(self.organisation.password))
+        .animation(.default, value: self.credentials.isEmailValid())
+        .animation(.default, value: self.credentials.isPasswordValid(self.credentials.password))
         .sheet(isPresented: self.$showSheet) { ForgotPasswordView() }
+        .alert("An error occurred", isPresented: self.$showErrorAlert) {
+            // nothing to show
+        } message: {
+            Text(self.authManager.errorMessage)
+        }
+        .onReceive(self.authManager.$showErrorAlert) { newValue in
+            self.showErrorAlert = newValue
+        }
+        .alert("Réinitialiser le mot de passe", isPresented: self.$authManager.showNotificationAlert) {
+            // nothing to show
+        } message: {
+            Text(self.authManager.notificationMessage)
+        }
     }
 
     // MARK: Private
 
-    @State private var organisation = OrganisationViewModel()
+    @State private var credentials = CredentialsViewModel.shared
     @State private var showSheet: Bool = false
+    @State private var showErrorAlert = false
 
     private var emailField: some View {
         VStack(alignment: .leading, spacing: 10) {
-            TextField("email", text: self.$organisation.mail)
+            TextField("email", text: self.$credentials.mail)
                 .textFieldStyle(.roundedBorder)
+                .textContentType(.emailAddress)
                 .keyboardType(.emailAddress)
-            if !self.organisation.mail.isEmpty,
-               !self.organisation.isEmailValid()
+                .onReceive(Just(self.credentials.mail)) { newValue in
+                    self.credentials.mail = newValue.trimmingCharacters(in: .whitespaces)
+                }
+            if !self.credentials.mail.isEmpty,
+               !self.credentials.isEmailValid()
             {
-                Text(self.organisation.invalidEmailAddressText)
+                Text(self.credentials.invalidEmailAddressText)
                     .font(.footnote)
                     .foregroundStyle(.red)
                     .padding(.horizontal, 10)
@@ -50,12 +74,16 @@ struct LoginView: View {
 
     private var passwordField: some View {
         VStack(alignment: .leading, spacing: 10) {
-            SecureField("password", text: self.$organisation.password)
+            SecureField("password", text: self.$credentials.password)
                 .textFieldStyle(.roundedBorder)
-            if !self.organisation.password.isEmpty,
-               !self.organisation.isPasswordValid(self.organisation.password)
+                .textContentType(.password)
+                .onReceive(Just(self.credentials.password)) { newValue in
+                    self.credentials.password = newValue.trimmingCharacters(in: .whitespaces)
+                }
+            if !self.credentials.password.isEmpty,
+               !self.credentials.isPasswordValid(self.credentials.password)
             {
-                Text(self.organisation.invalidPasswordText)
+                Text(self.credentials.invalidPasswordText)
                     .font(.footnote)
                     .lineLimit(2)
                     .foregroundStyle(.red)
@@ -68,7 +96,10 @@ struct LoginView: View {
     private var loginButton: some View {
         Button(
             action: {
-                self.authenticationState.organisationIsAuthenticated = .loggedIn // tests
+                self.authManager.signIn(
+                    email: self.credentials.mail,
+                    password: self.credentials.password
+                )
             },
             label: {
                 Text("Log In")
@@ -77,8 +108,8 @@ struct LoginView: View {
         )
         .controlSize(.large)
         .buttonStyle(.borderedProminent)
-        .disabled(!self.organisation.logInIsComplete)
-        .animation(.default, value: self.organisation.logInIsComplete)
+        .disabled(!self.credentials.logInIsComplete)
+        .animation(.default, value: self.credentials.logInIsComplete)
     }
 
     private var forgotLink: some View {
@@ -101,5 +132,5 @@ struct LoginView: View {
 
 #Preview {
     LoginView()
-        .environmentObject(OrganisationAuthState())
+        .environmentObject(AuthManager())
 }

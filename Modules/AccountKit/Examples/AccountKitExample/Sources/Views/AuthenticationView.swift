@@ -2,16 +2,17 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AccountKit
 import SwiftUI
 
-struct MainView: View {
+struct AuthenticationView: View {
     // MARK: Internal
 
-    @EnvironmentObject var authenticationState: OrganisationAuthState
+    @EnvironmentObject var authManager: AuthManager
 
     var body: some View {
         Group {
-            switch self.authenticationState.organisationIsAuthenticated {
+            switch self.authManager.userAuthenticationState {
                 case .unknown:
                     Text("Loading...")
                 case .loggedIn:
@@ -23,13 +24,9 @@ struct MainView: View {
             }
         }
         .animation(
-            .easeOut(duration: 0.4),
-            value: self.authenticationState.organisationIsAuthenticated
+            .easeOut(duration: 0.4), value: self.authManager.userAuthenticationState
         )
         .preferredColorScheme(.light)
-        .onAppear(perform: {
-            self.authenticationState.organisationIsAuthenticated = .loggedOut
-        })
     }
 
     // MARK: Private
@@ -55,11 +52,16 @@ struct MainView: View {
             .controlSize(.large)
             .navigationTitle("Authentication")
             .navigationBarBackButtonHidden()
+            .alert("An error occurred", isPresented: self.$authManager.showErrorAlert) {
+                // nothing to show
+            } message: {
+                Text(self.authManager.errorMessage)
+            }
         }
     }
 }
 
 #Preview {
-    MainView()
-        .environmentObject(OrganisationAuthState())
+    AuthenticationView()
+        .environmentObject(AuthManager())
 }

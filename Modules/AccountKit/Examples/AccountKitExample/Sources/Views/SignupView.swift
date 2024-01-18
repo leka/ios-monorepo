@@ -2,13 +2,21 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+// Leka - iOS Monorepo
+// Copyright 2023 APF France handicap
+// SPDX-License-Identifier: Apache-2.0
+
+import AccountKit
 import AuthenticationServices
+import Combine
+import Firebase
+import FirebaseAuthCombineSwift
 import SwiftUI
 
 struct SignupView: View {
     // MARK: Internal
 
-    @EnvironmentObject var authenticationState: OrganisationAuthState
+    @EnvironmentObject var authManager: AuthManager
 
     var body: some View {
         VStack(spacing: 10) {
@@ -22,24 +30,37 @@ struct SignupView: View {
         .padding()
         .navigationTitle("Sign-Up View")
         .navigationBarTitleDisplayMode(.large)
-        .animation(.default, value: self.organisation.isEmailValid())
-        .animation(.default, value: self.organisation.isPasswordValid(self.organisation.password))
-        .animation(.default, value: self.organisation.passwordsMatch())
+        .animation(.default, value: self.credentials.isEmailValid())
+        .animation(.default, value: self.credentials.isPasswordValid(self.credentials.password))
+        .animation(.default, value: self.credentials.passwordsMatch())
+        .alert("An error occurred", isPresented: self.$showErrorAlert) {
+            // nothing to show
+        } message: {
+            Text(self.authManager.errorMessage)
+        }
+        .onReceive(self.authManager.$showErrorAlert) { newValue in
+            self.showErrorAlert = newValue
+        }
     }
 
     // MARK: Private
 
-    @State private var organisation = OrganisationViewModel()
+    @State private var credentials = CredentialsViewModel.shared
+    @State private var showErrorAlert = false
 
     private var emailField: some View {
         VStack(alignment: .leading, spacing: 10) {
-            TextField("email", text: self.$organisation.mail)
+            TextField("email", text: self.$credentials.mail)
                 .textFieldStyle(.roundedBorder)
+                .textContentType(.emailAddress)
                 .keyboardType(.emailAddress)
-            if !self.organisation.mail.isEmpty,
-               !self.organisation.isEmailValid()
+                .onReceive(Just(self.credentials.mail)) { newValue in
+                    self.credentials.mail = newValue.trimmingCharacters(in: .whitespaces)
+                }
+            if !self.credentials.mail.isEmpty,
+               !self.credentials.isEmailValid()
             {
-                Text(self.organisation.invalidEmailAddressText)
+                Text(self.credentials.invalidEmailAddressText)
                     .font(.footnote)
                     .foregroundStyle(.red)
                     .padding(.horizontal, 10)
@@ -49,14 +70,17 @@ struct SignupView: View {
 
     private var passwordField: some View {
         VStack(alignment: .leading, spacing: 10) {
-            SecureField("password", text: self.$organisation.password)
+            SecureField("password", text: self.$credentials.password)
                 .textFieldStyle(.roundedBorder)
-            if !self.organisation.password.isEmpty,
-               !self.organisation.isPasswordValid(self.organisation.password)
+                .textContentType(.newPassword)
+                .onReceive(Just(self.credentials.mail)) { newValue in
+                    self.credentials.mail = newValue.trimmingCharacters(in: .whitespaces)
+                }
+            if self.credentials.password.isEmpty,
+               self.credentials.isPasswordValid(self.credentials.password)
             {
-                Text(self.organisation.invalidPasswordText)
+                Text(self.credentials.invalidPasswordText)
                     .font(.footnote)
-                    .lineLimit(2)
                     .foregroundStyle(.red)
                     .padding(.horizontal, 10)
             }
@@ -65,13 +89,17 @@ struct SignupView: View {
 
     private var confirmPasswordField: some View {
         VStack(alignment: .leading, spacing: 10) {
-            SecureField("confirm password", text: self.$organisation.confirmPassword)
+            SecureField("confirm password", text: self.$credentials.confirmPassword)
                 .textFieldStyle(.roundedBorder)
-            if !self.organisation.password.isEmpty,
-               !self.organisation.confirmPassword.isEmpty,
-               !self.organisation.passwordsMatch()
+                .textContentType(.password)
+                .onReceive(Just(self.credentials.mail)) { newValue in
+                    self.credentials.mail = newValue.trimmingCharacters(in: .whitespaces)
+                }
+            if !self.credentials.password.isEmpty,
+               !self.credentials.confirmPassword.isEmpty,
+               !self.credentials.passwordsMatch()
             {
-                Text(self.organisation.invalidConfirmPasswordText)
+                Text(self.credentials.invalidConfirmPasswordText)
                     .font(.footnote)
                     .foregroundStyle(.red)
                     .padding(.horizontal, 10)
@@ -83,7 +111,10 @@ struct SignupView: View {
     private var signupButton: some View {
         Button(
             action: {
-                self.authenticationState.organisationIsAuthenticated = .loggedIn // tests
+                self.authManager.signUp(
+                    email: self.credentials.mail,
+                    password: self.credentials.password
+                )
             },
             label: {
                 Text("Sign Up")
@@ -92,12 +123,12 @@ struct SignupView: View {
         )
         .controlSize(.large)
         .buttonStyle(.borderedProminent)
-        .disabled(!self.organisation.signUpIsComplete)
-        .animation(.default, value: self.organisation.signUpIsComplete)
+        .disabled(!self.credentials.signUpIsComplete)
+        .animation(.default, value: self.credentials.signUpIsComplete)
     }
 }
 
 #Preview {
     SignupView()
-        .environmentObject(OrganisationAuthState())
+        .environmentObject(AuthManager())
 }

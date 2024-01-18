@@ -25,12 +25,12 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 @main
 struct AccountKitExample: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-    @StateObject var authenticationState = OrganisationAuthState()
+    @StateObject var authManager = AuthManager()
 
     var body: some Scene {
         WindowGroup {
-            MainView()
-                .environmentObject(self.authenticationState)
+            AuthenticationView()
+                .environmentObject(self.authManager)
         }
     }
 }
