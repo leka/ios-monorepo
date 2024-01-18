@@ -4,16 +4,16 @@
 
 import Combine
 
-class CompanyManager {
+public class CompanyManager {
     // MARK: Lifecycle
 
-    init(databaseOperations: DatabaseOperations) {
+    public init(databaseOperations: DatabaseOperations) {
         self.databaseOperations = databaseOperations
     }
 
-    // MARK: Internal
+    // MARK: Public
 
-    func observeCompanies() -> AnyPublisher<[Company], Error> {
+    public func observeCompanies() -> AnyPublisher<[Company], Error> {
         if let firestoreOperations = databaseOperations as? FirestoreDatabaseOperations {
             firestoreOperations.observe(.companies)
         } else {
@@ -24,21 +24,21 @@ class CompanyManager {
         }
     }
 
-    func fetchCompanyDetails(companyID: String) -> AnyPublisher<Company, Error> {
+    public func fetchCompanyDetails(companyID: String) -> AnyPublisher<Company, Error> {
         self.databaseOperations.read(from: .companies, documentID: companyID)
     }
 
-    func createCompany(_ company: Company) -> AnyPublisher<Company, Error> {
+    public func createCompany(_ company: Company) -> AnyPublisher<Company, Error> {
         self.databaseOperations.create(data: company, in: .companies)
     }
 
-    func updateCompany(_ company: Company, companyID: String) -> AnyPublisher<Void, Error> {
+    public func updateCompany(_ company: Company, companyID: String) -> AnyPublisher<Void, Error> {
         self.databaseOperations.update(data: company, in: .companies, documentID: companyID)
     }
 
     // temporary, due to the current architecture
 
-    func fetchCompanyByOwnerUID(ownerUID: String) -> AnyPublisher<Company, Error> {
+    public func fetchCompanyByOwnerUID(ownerUID: String) -> AnyPublisher<Company, Error> {
         self.databaseOperations.fetchCompanyByOwnerUID(ownerUID: ownerUID)
     }
 

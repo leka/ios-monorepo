@@ -4,7 +4,7 @@
 
 import Foundation
 
-enum DatabaseCollection: String {
+public enum DatabaseCollection: String {
     case companies
     case caregivers
     case carereceivers

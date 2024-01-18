@@ -13,7 +13,7 @@ public enum UserType: Int, Codable, CaseIterable {
 
 // MARK: - Profile
 
-protocol Profile: Identifiable, Codable, Hashable {
+public protocol Profile: Identifiable, Codable, Hashable {
     var id: String { get }
     var type: UserType { get }
     var name: String { get set }

@@ -4,7 +4,7 @@
 
 import Foundation
 
-enum DatabaseError: Error {
+public enum DatabaseError: Error {
     case customError(String)
     case documentNotFound
     case decodeError

@@ -8,12 +8,16 @@ import FirebaseFirestore
 
 // MARK: - FirestoreDatabaseOperations
 
-class FirestoreDatabaseOperations: DatabaseOperations {
-    // MARK: Internal
+public class FirestoreDatabaseOperations: DatabaseOperations {
+    // MARK: Lifecycle
+
+    public init() {}
+
+    // MARK: Public
 
     // MARK: - Listeners Setup
 
-    func observe<T: Decodable>(_ collection: DatabaseCollection) -> AnyPublisher<[T], Error> {
+    public func observe<T: Decodable>(_ collection: DatabaseCollection) -> AnyPublisher<[T], Error> {
         let query = self.database.collection(collection.rawValue)
         return QuerySnapshotPublisher(query: query)
             .map { snapshot in
@@ -26,7 +30,7 @@ class FirestoreDatabaseOperations: DatabaseOperations {
 
     // MARK: - CRUD Methods
 
-    func create<T: Codable>(data: T, in collection: DatabaseCollection) -> AnyPublisher<T, Error> {
+    public func create<T: Codable>(data: T, in collection: DatabaseCollection) -> AnyPublisher<T, Error> {
         Future<T, Error> { promise in
             do {
                 let docRef = self.database.collection(collection.rawValue).document()
@@ -61,7 +65,7 @@ class FirestoreDatabaseOperations: DatabaseOperations {
         .eraseToAnyPublisher()
     }
 
-    func read<T: Decodable>(from collection: DatabaseCollection, documentID: String) -> AnyPublisher<T, Error> {
+    public func read<T: Decodable>(from collection: DatabaseCollection, documentID: String) -> AnyPublisher<T, Error> {
         Future<T, Error> { promise in
             let docRef = self.database.collection(collection.rawValue).document(documentID)
             docRef.getDocument { document, error in
@@ -84,7 +88,7 @@ class FirestoreDatabaseOperations: DatabaseOperations {
         .eraseToAnyPublisher()
     }
 
-    func update(data: some Encodable, in collection: DatabaseCollection, documentID: String) -> AnyPublisher<Void, Error> {
+    public func update(data: some Encodable, in collection: DatabaseCollection, documentID: String) -> AnyPublisher<Void, Error> {
         Future<Void, Error> { promise in
             do {
                 let docRef = self.database.collection(collection.rawValue).document(documentID)
@@ -106,7 +110,7 @@ class FirestoreDatabaseOperations: DatabaseOperations {
         .eraseToAnyPublisher()
     }
 
-    func delete(from collection: DatabaseCollection, documentID: String) -> AnyPublisher<Void, Error> {
+    public func delete(from collection: DatabaseCollection, documentID: String) -> AnyPublisher<Void, Error> {
         Future<Void, Error> { promise in
             let docRef = self.database.collection(collection.rawValue).document(documentID)
             docRef.delete { error in
@@ -122,7 +126,7 @@ class FirestoreDatabaseOperations: DatabaseOperations {
 
     // temporary, due to the current architecture
 
-    func fetchCompanyByOwnerUID(ownerUID: String) -> AnyPublisher<Company, Error> {
+    public func fetchCompanyByOwnerUID(ownerUID: String) -> AnyPublisher<Company, Error> {
         Future<Company, Error> { promise in
             self.database.collection("companies")
                 .whereField("root_owner_uid", isEqualTo: ownerUID)

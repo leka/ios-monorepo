@@ -4,7 +4,7 @@
 
 import Combine
 
-protocol DatabaseOperations {
+public protocol DatabaseOperations {
     func create<T: Codable>(data: T, in collection: DatabaseCollection) -> AnyPublisher<T, Error>
     func read<T: Decodable>(from collection: DatabaseCollection, documentID: String) -> AnyPublisher<T, Error>
     func update<T: Encodable>(data: T, in collection: DatabaseCollection, documentID: String) -> AnyPublisher<Void, Error>

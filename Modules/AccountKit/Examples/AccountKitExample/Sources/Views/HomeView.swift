@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import AccountKit
+import Combine
 import SwiftUI
 
 struct HomeView: View {
@@ -32,9 +33,9 @@ struct HomeView: View {
 
     private var content: some View {
         VStack(spacing: 10) {
-            Text("Company \(self.profilesVM.currentCompany.name) is Logged In!")
+            Text("Company \(self.$profilesVM.currentCompany.name) is Logged In!")
                 .fontWeight(.heavy)
-            Text("Connection email: \(self.profilesVM.currentCompany.email)")
+            Text("Connection email: \(self.$profilesVM.currentCompany.email)")
                 .font(.footnote)
                 .opacity(0.7)
 
@@ -54,7 +55,7 @@ struct HomeView: View {
         .onAppear {
             if let userID = authManager.currentUserID() {
                 self.profilesVM.userUID = userID
-//                self.handleAuthenticationResult(userID: userID)
+                self.handleAuthenticationResult(userID: userID)
             }
         }
         .toolbar(content: {
@@ -95,6 +96,21 @@ struct HomeView: View {
                 .padding()
             }
         })
+        .sheet(isPresented: self.$profilesVM.showEditCompany) {
+            EditCompanyView(profilesVM: self.profilesVM)
+        }
+        .sheet(isPresented: self.$profilesVM.showCreateCaregiver) {
+            CreateCaregiverView(profilesVM: self.profilesVM)
+        }
+        .sheet(isPresented: self.$profilesVM.showEditCaregivers) {
+            CaregiversListView(profilesVM: self.profilesVM)
+        }
+        .sheet(isPresented: self.$profilesVM.showCreateCarereceiver) {
+            CreateCarereceiverView(profilesVM: self.profilesVM)
+        }
+        .sheet(isPresented: self.$profilesVM.showEditCarereceivers) {
+            CarereceiversListView(profilesVM: self.profilesVM)
+        }
         .alert("Email non-vérifié", isPresented: self.$authManager.showactionRequestAlert) {
             Button(role: .none) {
                 self.authManager.sendEmailVerification()
@@ -124,6 +140,16 @@ struct HomeView: View {
         }
         .onReceive(self.authManager.$showErrorAlert) { newValue in
             self.showErrorAlert = newValue
+        }
+    }
+
+    // temporary, due to the current architecture
+    private func handleAuthenticationResult(userID: String) {
+        if self.authManager.userIsSigningUp {
+            self.profilesVM.createCompanyDocument()
+            self.authManager.userIsSigningUp.toggle()
+        } else {
+            self.profilesVM.fetchCompanyByOwnerUID(ownerUID: userID)
         }
     }
 }

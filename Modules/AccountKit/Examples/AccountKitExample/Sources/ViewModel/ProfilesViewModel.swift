@@ -2,14 +2,15 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AccountKit
 import Combine
 import Firebase
 import SwiftUI
 
-class ProfilesViewModel: ObservableObject {
+public class ProfilesViewModel: ObservableObject {
     // MARK: Lifecycle
 
-    init(userUID: String) {
+    public init(userUID: String) {
         self.userUID = userUID
         let firestoreOperations = FirestoreDatabaseOperations()
 
@@ -20,10 +21,10 @@ class ProfilesViewModel: ObservableObject {
         self.observeCompanies()
     }
 
-    // MARK: Internal
+    // MARK: Public
 
-    @Published var userUID: String
-    @Published var currentCompany = Company(
+    @Published public var userUID: String
+    @Published public var currentCompany = Company(
         id: "",
         email: "",
         name: "",
@@ -32,14 +33,14 @@ class ProfilesViewModel: ObservableObject {
     )
 
     // UI Updates
-    @Published var showEditCompany = false
-    @Published var showCreateCaregiver = false
-    @Published var showCreateCarereceiver = false
-    @Published var showEditCaregivers = false
-    @Published var showEditCarereceivers = false
-    @Published var isUpdating = false
+    @Published public var showEditCompany = false
+    @Published public var showCreateCaregiver = false
+    @Published public var showCreateCarereceiver = false
+    @Published public var showEditCaregivers = false
+    @Published public var showEditCarereceivers = false
+    @Published public var isUpdating = false
 
-    func fetchCurrentCompanyDetails() {
+    public func fetchCurrentCompanyDetails() {
         self.companyManager.fetchCompanyDetails(companyID: self.currentCompany.id)
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { completion in
@@ -52,7 +53,7 @@ class ProfilesViewModel: ObservableObject {
             .store(in: &self.cancellables)
     }
 
-    func createCompanyDocument() {
+    public func createCompanyDocument() {
         let bufferCompany = self.currentCompany
         self.companyManager.createCompany(bufferCompany)
             .receive(on: DispatchQueue.main)
@@ -72,7 +73,7 @@ class ProfilesViewModel: ObservableObject {
             .store(in: &self.cancellables)
     }
 
-    func updateCompany() {
+    public func updateCompany() {
         self.isUpdating = true
         let updatedCompany = self.currentCompany
         self.companyManager.updateCompany(updatedCompany, companyID: self.currentCompany.id)
@@ -93,7 +94,7 @@ class ProfilesViewModel: ObservableObject {
 
     // Temporarily fetch existing company this way
 
-    func fetchCompanyByOwnerUID(ownerUID: String) {
+    public func fetchCompanyByOwnerUID(ownerUID: String) {
         self.companyManager.fetchCompanyByOwnerUID(ownerUID: ownerUID)
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { completion in
@@ -109,7 +110,7 @@ class ProfilesViewModel: ObservableObject {
 
     // MARK: - Caregivers Methods
 
-    func registerNewCaregiver(_ newCaregiver: Caregiver) {
+    public func registerNewCaregiver(_ newCaregiver: Caregiver) {
         self.isUpdating = true
         self.caregiversManager.createCaregiver(newCaregiver)
             .receive(on: DispatchQueue.main)
@@ -129,7 +130,7 @@ class ProfilesViewModel: ObservableObject {
             .store(in: &self.cancellables)
     }
 
-    func updateSelectedCaregiver(_ caregiver: Caregiver) {
+    public func updateSelectedCaregiver(_ caregiver: Caregiver) {
         self.isUpdating = true
         self.caregiversManager.updateCaregiver(caregiver, caregiverID: caregiver.id)
             .receive(on: DispatchQueue.main)
@@ -151,7 +152,7 @@ class ProfilesViewModel: ObservableObject {
             .store(in: &self.cancellables)
     }
 
-    func deleteSelectedCaregiver(_ caregiver: Caregiver) {
+    public func deleteSelectedCaregiver(_ caregiver: Caregiver) {
         self.isUpdating = true
         self.caregiversManager.deleteCaregiver(caregiverID: caregiver.id)
             .receive(on: DispatchQueue.main)
@@ -175,7 +176,7 @@ class ProfilesViewModel: ObservableObject {
 
     // MARK: - Carereceivers Methods
 
-    func registerNewCarereceiver(_ newCarereceiver: Carereceiver) {
+    public func registerNewCarereceiver(_ newCarereceiver: Carereceiver) {
         self.isUpdating = true
         self.carereceiversManager.createCarereceiver(newCarereceiver)
             .receive(on: DispatchQueue.main)
@@ -195,7 +196,7 @@ class ProfilesViewModel: ObservableObject {
             .store(in: &self.cancellables)
     }
 
-    func updateSelectedCarereceiver(_ carereceiver: Carereceiver) {
+    public func updateSelectedCarereceiver(_ carereceiver: Carereceiver) {
         self.isUpdating = true
         self.carereceiversManager.updateCarereceiver(carereceiver, carereceiverID: carereceiver.id)
             .receive(on: DispatchQueue.main)
@@ -217,7 +218,7 @@ class ProfilesViewModel: ObservableObject {
             .store(in: &self.cancellables)
     }
 
-    func deleteSelectedCarereceiver(_ carereceiver: Carereceiver) {
+    public func deleteSelectedCarereceiver(_ carereceiver: Carereceiver) {
         self.isUpdating = true
         self.carereceiversManager.deleteCarereceiver(carereceiverID: carereceiver.id)
             .receive(on: DispatchQueue.main)

@@ -7,19 +7,19 @@ import FirebaseFirestore
 
 // MARK: - QuerySnapshotPublisher
 
-struct QuerySnapshotPublisher: Publisher {
+public struct QuerySnapshotPublisher: Publisher {
     // MARK: Lifecycle
 
     init(query: Query) {
         self.query = query
     }
 
-    // MARK: Internal
+    // MARK: Public
 
-    typealias Output = QuerySnapshot
-    typealias Failure = Error
+    public typealias Output = QuerySnapshot
+    public typealias Failure = Error
 
-    func receive<S>(subscriber: S) where S: Subscriber, Self.Failure == S.Failure, Self.Output == S.Input {
+    public func receive<S>(subscriber: S) where S: Subscriber, Self.Failure == S.Failure, Self.Output == S.Input {
         let subscription = QuerySnapshotSubscription(subscriber: subscriber, query: query)
         subscriber.receive(subscription: subscription)
     }

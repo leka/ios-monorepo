@@ -4,28 +4,28 @@
 
 import Combine
 
-class CaregiversManager {
+public class CaregiversManager {
     // MARK: Lifecycle
 
-    init(databaseOperations: DatabaseOperations) {
+    public init(databaseOperations: DatabaseOperations) {
         self.databaseOperations = databaseOperations
     }
 
-    // MARK: Internal
+    // MARK: Public
 
-    func fetchCaregiverDetails(caregiverID: String) -> AnyPublisher<Caregiver, Error> {
+    public func fetchCaregiverDetails(caregiverID: String) -> AnyPublisher<Caregiver, Error> {
         self.databaseOperations.read(from: .caregivers, documentID: caregiverID)
     }
 
-    func createCaregiver(_ caregiver: Caregiver) -> AnyPublisher<Caregiver, Error> {
+    public func createCaregiver(_ caregiver: Caregiver) -> AnyPublisher<Caregiver, Error> {
         self.databaseOperations.create(data: caregiver, in: .caregivers)
     }
 
-    func updateCaregiver(_ caregiver: Caregiver, caregiverID: String) -> AnyPublisher<Void, Error> {
+    public func updateCaregiver(_ caregiver: Caregiver, caregiverID: String) -> AnyPublisher<Void, Error> {
         self.databaseOperations.update(data: caregiver, in: .caregivers, documentID: caregiverID)
     }
 
-    func deleteCaregiver(caregiverID: String) -> AnyPublisher<Void, Error> {
+    public func deleteCaregiver(caregiverID: String) -> AnyPublisher<Void, Error> {
         self.databaseOperations.delete(from: .caregivers, documentID: caregiverID)
     }
 
