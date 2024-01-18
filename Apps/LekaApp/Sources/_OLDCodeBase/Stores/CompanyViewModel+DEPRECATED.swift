@@ -5,21 +5,21 @@
 import DesignKit
 import SwiftUI
 
-class CompanyViewModel: ObservableObject {
-    @Published var currentCompany = Company(mail: "", password: "", teachers: [], users: [])
-    @Published var profilesInUse: [UserType: UUID] = [.teacher: UUID(), .user: UUID()]
-    @Published var selectedProfiles: [UserType: UUID] = [.teacher: UUID(), .user: UUID()]
+class CompanyViewModelDeprecated: ObservableObject {
+    @Published var currentCompany = CompanyDeprecated(mail: "", password: "", teachers: [], users: [])
+    @Published var profilesInUse: [UserTypeDeprecated: UUID] = [.teacher: UUID(), .user: UUID()]
+    @Published var selectedProfiles: [UserTypeDeprecated: UUID] = [.teacher: UUID(), .user: UUID()]
 
     // Buffer profiles to temporarilly store changes
-    @Published var bufferTeacher = Teacher(name: "", avatar: DesignKitAsset.Avatars.accompanyingWhite.name, jobs: [])
-    @Published var bufferUser = User(name: "", avatar: DesignKitAsset.Avatars.userWhite.name, reinforcer: 1)
+    @Published var bufferTeacher = TeacherDeprecated(name: "", avatar: DesignKitAsset.Avatars.accompanyingWhite.name, jobs: [])
+    @Published var bufferUser = UserDeprecated(name: "", avatar: DesignKitAsset.Avatars.userWhite.name, reinforcer: 1)
     @Published var editingProfile: Bool = false
 
     // MARK: - METHODS
 
     // Account Managment
     func disconnect() {
-        self.currentCompany = Company(mail: "", password: "", teachers: [], users: [])
+        self.currentCompany = CompanyDeprecated(mail: "", password: "", teachers: [], users: [])
         self.profilesInUse = [.teacher: UUID(), .user: UUID()]
         self.selectedProfiles = [.teacher: UUID(), .user: UUID()]
         self.resetBufferProfile(.teacher)
@@ -35,7 +35,7 @@ class CompanyViewModel: ObservableObject {
     }
 
     // Sort profiles (alpabetically + current first) before displaying them in a ProfileSet (Selector || Editor)
-    func sortProfiles(_ type: UserType) {
+    func sortProfiles(_ type: UserTypeDeprecated) {
         switch type {
             case .teacher:
                 self.currentCompany.teachers.sort { $0.name < $1.name }
@@ -51,14 +51,14 @@ class CompanyViewModel: ObservableObject {
         self.preselectCurrentProfiles()
     }
 
-    func getSelectedProfileAvatar(_ type: UserType) -> String {
+    func getSelectedProfileAvatar(_ type: UserTypeDeprecated) -> String {
         switch type {
             case .teacher: self.bufferTeacher.avatar
             case .user: self.bufferUser.avatar
         }
     }
 
-    func getProfileDataFor(_ type: UserType, id: UUID) -> [String] {
+    func getProfileDataFor(_ type: UserTypeDeprecated, id: UUID) -> [String] {
         switch type {
             case .teacher:
                 guard let i = currentCompany.teachers.firstIndex(where: { $0.id == id }) else {
@@ -97,30 +97,30 @@ class CompanyViewModel: ObservableObject {
         }
     }
 
-    func getAllAvatarsOf(_ type: UserType) -> [[UUID: String]] {
+    func getAllAvatarsOf(_ type: UserTypeDeprecated) -> [[UUID: String]] {
         switch type {
             case .teacher: self.currentCompany.teachers.map { [$0.id: $0.avatar] }
             case .user: self.currentCompany.users.map { [$0.id: $0.avatar] }
         }
     }
 
-    func getAllProfilesIDFor(_ type: UserType) -> [UUID] {
+    func getAllProfilesIDFor(_ type: UserTypeDeprecated) -> [UUID] {
         switch type {
             case .teacher: self.currentCompany.teachers.map(\.id)
             case .user: self.currentCompany.users.map(\.id)
         }
     }
 
-    func resetBufferProfile(_ type: UserType) {
+    func resetBufferProfile(_ type: UserTypeDeprecated) {
         switch type {
             case .teacher:
-                self.bufferTeacher = Teacher(
+                self.bufferTeacher = TeacherDeprecated(
                     name: "",
                     avatar: DesignKitAsset.Avatars.accompanyingWhite.name,
                     jobs: []
                 )
             case .user:
-                self.bufferUser = User(
+                self.bufferUser = UserDeprecated(
                     name: "",
                     avatar: DesignKitAsset.Avatars.userWhite.name,
                     reinforcer: 1
@@ -133,7 +133,7 @@ class CompanyViewModel: ObservableObject {
         self.selectedProfiles[.teacher] = UUID()
     }
 
-    func profileIsSelected(_ type: UserType) -> Bool {
+    func profileIsSelected(_ type: UserTypeDeprecated) -> Bool {
         switch type {
             case .teacher:
                 if let id = selectedProfiles[.teacher] {
@@ -148,14 +148,14 @@ class CompanyViewModel: ObservableObject {
         return false
     }
 
-    func profileIsCurrent(_ type: UserType, id: UUID) -> Bool {
+    func profileIsCurrent(_ type: UserTypeDeprecated, id: UUID) -> Bool {
         switch type {
             case .teacher: self.profilesInUse[.teacher] == id
             case .user: self.profilesInUse[.user] == id
         }
     }
 
-    func profileIsAssigned(_ type: UserType) -> Bool {
+    func profileIsAssigned(_ type: UserTypeDeprecated) -> Bool {
         switch type {
             case .teacher:
                 if let id = selectedProfiles[.teacher] {
@@ -179,7 +179,7 @@ class CompanyViewModel: ObservableObject {
         return false
     }
 
-    func editProfile(_ type: UserType) {
+    func editProfile(_ type: UserTypeDeprecated) {
         switch type {
             case .teacher:
                 if let i = currentCompany.teachers.firstIndex(where: { $0.id == selectedProfiles[.teacher] }) {
@@ -193,21 +193,21 @@ class CompanyViewModel: ObservableObject {
         self.editingProfile = true
     }
 
-    func setBufferAvatar(_ img: String, for type: UserType) {
+    func setBufferAvatar(_ img: String, for type: UserTypeDeprecated) {
         switch type {
             case .teacher: self.bufferTeacher.avatar = img
             case .user: self.bufferUser.avatar = img
         }
     }
 
-    func resetBufferAvatar(_ type: UserType) {
+    func resetBufferAvatar(_ type: UserTypeDeprecated) {
         switch type {
             case .teacher: self.bufferTeacher.avatar = ""
             case .user: self.bufferUser.avatar = ""
         }
     }
 
-    func saveProfileChanges(_ type: UserType) {
+    func saveProfileChanges(_ type: UserTypeDeprecated) {
         switch type {
             case .teacher:
                 if let i = currentCompany.teachers.firstIndex(where: { $0.id == bufferTeacher.id }) {
@@ -248,7 +248,7 @@ class CompanyViewModel: ObservableObject {
         self.selectedProfiles[.user] = self.bufferUser.id
     }
 
-    func deleteProfile(_ type: UserType) {
+    func deleteProfile(_ type: UserTypeDeprecated) {
         switch type {
             case .teacher:
                 self.currentCompany.teachers.removeAll(where: { self.bufferTeacher.id == $0.id })

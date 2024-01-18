@@ -6,7 +6,7 @@ import DesignKit
 import SwiftUI
 
 struct TickPic: View {
-    @EnvironmentObject var company: CompanyViewModel
+    @EnvironmentObject var company: CompanyViewModelDeprecated
     @EnvironmentObject var settings: SettingsViewModel
 
     var body: some View {

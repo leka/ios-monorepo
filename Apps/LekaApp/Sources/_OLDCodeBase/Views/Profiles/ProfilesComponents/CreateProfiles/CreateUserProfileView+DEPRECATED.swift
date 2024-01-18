@@ -10,7 +10,7 @@ import SwiftUI
 struct CreateUserProfileViewDeprecated: View {
     // MARK: Internal
 
-    @EnvironmentObject var company: CompanyViewModel
+    @EnvironmentObject var company: CompanyViewModelDeprecated
     @EnvironmentObject var viewRouter: ViewRouter
     @EnvironmentObject var metrics: UIMetrics
     @EnvironmentObject var navigationVM: NavigationViewModel
@@ -195,7 +195,7 @@ struct CreateUserProfileViewDeprecated: View {
 struct CreateUserProfileView_Previews: PreviewProvider {
     static var previews: some View {
         CreateUserProfileViewDeprecated()
-            .environmentObject(CompanyViewModel())
+            .environmentObject(CompanyViewModelDeprecated())
             .environmentObject(ViewRouter())
             .environmentObject(NavigationViewModel())
             .environmentObject(UIMetrics())

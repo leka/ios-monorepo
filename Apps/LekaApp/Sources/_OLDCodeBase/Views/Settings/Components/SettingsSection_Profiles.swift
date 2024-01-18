@@ -8,7 +8,7 @@ import SwiftUI
 struct SettingsSection_Profiles: View {
     // MARK: Internal
 
-    @EnvironmentObject var company: CompanyViewModel
+    @EnvironmentObject var company: CompanyViewModelDeprecated
     @EnvironmentObject var metrics: UIMetrics
 
     var body: some View {
@@ -52,7 +52,7 @@ struct SettingsSection_Profiles: View {
             .overlay(Circle().stroke(.white, lineWidth: 2))
     }
 
-    private func avatarsRow(_ type: UserType) -> some View {
+    private func avatarsRow(_ type: UserTypeDeprecated) -> some View {
         LabeledContent {
             HStack(spacing: -10) {
                 ForEach(self.company.getAllAvatarsOf(type).prefix(10), id: \.self) { item in

@@ -6,7 +6,7 @@ import SwiftUI
 
 struct SettingsSection_Account: View {
     @EnvironmentObject var settings: SettingsViewModel
-    @EnvironmentObject var company: CompanyViewModel
+    @EnvironmentObject var company: CompanyViewModelDeprecated
     @EnvironmentObject var robotVM: RobotViewModel
     @EnvironmentObject var viewRouter: ViewRouter
 

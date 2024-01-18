@@ -6,130 +6,130 @@ import DesignKit
 import SwiftUI
 
 class DiscoveryCompany {
-    static var discoveryTeachers: [Teacher] =
+    static var discoveryTeachers: [TeacherDeprecated] =
         [
-            Teacher(
+            TeacherDeprecated(
                 name: "Aurore",
                 avatar: DesignKitAsset.Avatars.avatarsLekaCook.name,
                 jobs: ["Psychomotricien(ne)"]
             ),
-            Teacher(
+            TeacherDeprecated(
                 name: "Jean-Louis",
                 avatar: DesignKitAsset.Avatars.accompanyingBlue.name,
                 jobs: ["Psychomotricien(ne)"]
             ),
-            Teacher(
+            TeacherDeprecated(
                 name: "Pauline",
                 avatar: DesignKitAsset.Avatars.avatarsLekaExplorer.name,
                 jobs: ["Ergothérapeute"]
             ),
-            Teacher(
+            TeacherDeprecated(
                 name: "Jean-Pierre",
                 avatar: DesignKitAsset.Avatars.avatarsBoy3c.name,
                 jobs: ["Pédopsychiatre"]
             ),
-            Teacher(
+            TeacherDeprecated(
                 name: "Anne",
                 avatar: DesignKitAsset.Avatars.avatarsPictogramsFoodsFruitsPineappleOrange00F9.name,
                 jobs: ["Accompagnant(e) des élèves en situation de handicap"]
             ),
         ]
 
-    static var discoveryUsers: [User] =
+    static var discoveryUsers: [UserDeprecated] =
         [
-            User(
+            UserDeprecated(
                 name: "Alice",
                 avatar: DesignKitAsset.Avatars.avatarsGirl1a.name,
                 reinforcer: 3
             ),
-            User(
+            UserDeprecated(
                 name: "Olivia",
                 avatar: DesignKitAsset.Avatars.avatarsLekaSunglassesBlue.name,
                 reinforcer: 5
             ),
-            User(
+            UserDeprecated(
                 name: "Alexandre",
                 avatar: DesignKitAsset.Avatars.avatarsPictogramsAnimalsForestHedgehogBrown0062.name,
                 reinforcer: 1
             ),
-            User(
+            UserDeprecated(
                 name: "Érica",
                 avatar: DesignKitAsset.Avatars.avatarsLekaMoon.name,
                 reinforcer: 4
             ),
-            User(
+            UserDeprecated(
                 name: "Elessa",
                 avatar: DesignKitAsset.Avatars.avatarsPictogramsAnimalsFarmBirdYellow0071.name,
                 reinforcer: 1
             ),
-            User(
+            UserDeprecated(
                 name: "Lucas",
                 avatar: DesignKitAsset.Avatars.avatarsBoy1d144.name,
                 reinforcer: 2
             ),
-            User(
+            UserDeprecated(
                 name: "Sébastien",
                 avatar: DesignKitAsset.Avatars.avatarsPictogramsAnimalsForestSquirrelOrange005C.name,
                 reinforcer: 1
             ),
-            User(
+            UserDeprecated(
                 name: "Maximilien",
                 avatar: DesignKitAsset.Avatars.avatarsPictogramsFoodsFruitsCherryRed00FF.name,
                 reinforcer: 4
             ),
-            User(
+            UserDeprecated(
                 name: "Luc",
                 avatar: DesignKitAsset.Avatars.avatarsPictogramsAnimalsForestFoxOrange0064.name,
                 reinforcer: 1
             ),
-            User(
+            UserDeprecated(
                 name: "Élisabeth",
                 avatar: DesignKitAsset.Avatars.avatarsSun.name,
                 reinforcer: 5
             ),
-            User(
+            UserDeprecated(
                 name: "Ariane",
                 avatar: DesignKitAsset.Avatars.avatarsPictogramsAnimalsSavannaGiraffeYellow0081.name,
                 reinforcer: 1
             ),
-            User(
+            UserDeprecated(
                 name: "Stéphane",
                 avatar: DesignKitAsset.Avatars.avatarsBoy4c.name,
                 reinforcer: 3
             ),
-            User(
+            UserDeprecated(
                 name: "Lila",
                 avatar: DesignKitAsset.Avatars.avatarsPictogramsFoodsVegetablesCarrotOrange00E6.name,
                 reinforcer: 2
             ),
-            User(
+            UserDeprecated(
                 name: "Pierre",
                 avatar: DesignKitAsset.Avatars.avatarsPictogramsAnimalsSavannaLionBrown0082.name,
                 reinforcer: 1
             ),
-            User(
+            UserDeprecated(
                 name: "Baptiste",
                 avatar: DesignKitAsset.Avatars.avatarsBoy2d.name,
                 reinforcer: 5
             ),
-            User(
+            UserDeprecated(
                 name: "Éloïse",
                 avatar: DesignKitAsset.Avatars.avatarsGirl2d.name,
                 reinforcer: 4
             ),
-            User(
+            UserDeprecated(
                 name: "Clément",
                 avatar: DesignKitAsset.Avatars.avatarsLekaMoon.name,
                 reinforcer: 2
             ),
-            User(
+            UserDeprecated(
                 name: "Simon",
                 avatar: DesignKitAsset.Avatars.avatarsLekaMarine.name,
                 reinforcer: 3
             ),
         ]
 
-    let discoveryCompany = Company(
+    let discoveryCompany = CompanyDeprecated(
         mail: "discovery@leka.io", password: "Password1234", teachers: discoveryTeachers, users: discoveryUsers
     )
 }

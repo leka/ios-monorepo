@@ -8,12 +8,12 @@ import SwiftUI
 struct TeacherSet_AvatarCell: View {
     // MARK: Internal
 
-    @EnvironmentObject var company: CompanyViewModel
+    @EnvironmentObject var company: CompanyViewModelDeprecated
     @EnvironmentObject var settings: SettingsViewModel
     @EnvironmentObject var viewRouter: ViewRouter
     @EnvironmentObject var metrics: UIMetrics
 
-    let teacher: Teacher
+    let teacher: TeacherDeprecated
 
     var body: some View {
         Button {

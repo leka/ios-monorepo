@@ -14,7 +14,7 @@ struct JobPickerStore: View {
             VStack(spacing: 40) {
                 let columns = Array(repeating: GridItem(), count: 3)
                 LazyVGrid(columns: columns, spacing: 40) {
-                    ForEach(Professions.allCases) { profession in
+                    ForEach(ProfessionsDeprecated.allCases) { profession in
                         Toggle(isOn: .constant(self.selectedJobs.contains(profession.name))) {
                             Text(profession.name)
                                 // TODO: (@ui/ux) - Design System - replace with Leka font

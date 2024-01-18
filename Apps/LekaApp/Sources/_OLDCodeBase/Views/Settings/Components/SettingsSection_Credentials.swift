@@ -6,7 +6,7 @@ import DesignKit
 import SwiftUI
 
 struct SettingsSection_Credentials: View {
-    @EnvironmentObject var company: CompanyViewModel
+    @EnvironmentObject var company: CompanyViewModelDeprecated
     @EnvironmentObject var metrics: UIMetrics
 
     var body: some View {

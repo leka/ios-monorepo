@@ -8,7 +8,7 @@ struct LekaAppDeprecated: App {
     @StateObject var viewRouter = ViewRouter()
     @StateObject var metrics = UIMetrics()
     @StateObject var navigationVM = NavigationViewModel()
-    @StateObject var company = CompanyViewModel()
+    @StateObject var company = CompanyViewModelDeprecated()
     @StateObject var settings = SettingsViewModel()
     @StateObject var curriculumVM = CurriculumViewModel()
     @StateObject var activityVM = ActivityViewModel()

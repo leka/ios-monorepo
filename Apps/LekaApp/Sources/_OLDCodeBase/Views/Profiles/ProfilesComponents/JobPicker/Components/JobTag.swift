@@ -8,7 +8,7 @@ import SwiftUI
 // MARK: - JobTag
 
 struct JobTag: View {
-    @EnvironmentObject var company: CompanyViewModel
+    @EnvironmentObject var company: CompanyViewModelDeprecated
     @EnvironmentObject var metrics: UIMetrics
 
     @State var profession: String
@@ -39,7 +39,7 @@ struct JobTag: View {
 struct JobTag_Previews: PreviewProvider {
     static var previews: some View {
         JobTag(profession: "Accompagnant des élèves en situation de handicap")
-            .environmentObject(CompanyViewModel())
+            .environmentObject(CompanyViewModelDeprecated())
             .environmentObject(UIMetrics())
     }
 }

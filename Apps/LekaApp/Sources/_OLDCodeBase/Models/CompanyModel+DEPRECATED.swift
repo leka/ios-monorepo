@@ -4,39 +4,39 @@
 
 import SwiftUI
 
-// MARK: - UserType
+// MARK: - UserTypeDeprecated
 
-enum UserType: Int, CaseIterable {
+enum UserTypeDeprecated: Int, CaseIterable {
     case user
     case teacher
 }
 
-// MARK: - Company
+// MARK: - CompanyDeprecated
 
-struct Company: Identifiable {
+struct CompanyDeprecated: Identifiable {
     var id = UUID()
     var mail: String
     var password: String
-    var teachers: [Teacher] = []
-    var users: [User] = []
+    var teachers: [TeacherDeprecated] = []
+    var users: [UserDeprecated] = []
 }
 
-// MARK: - Profile
+// MARK: - ProfileDeprecated
 
 // Profiles types base-protocol
-protocol Profile: Identifiable, Hashable {
+protocol ProfileDeprecated: Identifiable, Hashable {
     var id: UUID { get }
-    var type: UserType { get }
+    var type: UserTypeDeprecated { get }
     var name: String { get set }
     var avatar: String { get set }
 }
 
-// MARK: - Teacher
+// MARK: - TeacherDeprecated
 
-struct Teacher: Profile {
+struct TeacherDeprecated: ProfileDeprecated {
     // conform
     let id = UUID()
-    let type = UserType.teacher
+    let type = UserTypeDeprecated.teacher
     var name: String
     var avatar: String
 
@@ -44,12 +44,12 @@ struct Teacher: Profile {
     var jobs: [String]
 }
 
-// MARK: - User
+// MARK: - UserDeprecated
 
-struct User: Profile {
+struct UserDeprecated: ProfileDeprecated {
     // conform
     let id = UUID()
-    let type = UserType.user
+    let type = UserTypeDeprecated.user
     var name: String
     var avatar: String
 
@@ -57,9 +57,9 @@ struct User: Profile {
     var reinforcer: Int
 }
 
-// MARK: - Professions
+// MARK: - ProfessionsDeprecated
 
-enum Professions: String, Identifiable, CaseIterable {
+enum ProfessionsDeprecated: String, Identifiable, CaseIterable {
     // swiftlint:disable identifier_name
     case educSpe
     case eje

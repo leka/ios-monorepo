@@ -5,7 +5,7 @@
 import SwiftUI
 
 struct AvatarPickerTriggerButton_Teachers: View {
-    @EnvironmentObject var company: CompanyViewModel
+    @EnvironmentObject var company: CompanyViewModelDeprecated
 
     @Binding var navigate: Bool
 

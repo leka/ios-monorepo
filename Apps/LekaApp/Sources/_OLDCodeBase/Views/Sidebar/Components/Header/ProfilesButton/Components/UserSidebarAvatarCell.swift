@@ -7,7 +7,7 @@ import SwiftUI
 struct UserSidebarAvatarCell: View {
     // MARK: Internal
 
-    @EnvironmentObject var company: CompanyViewModel
+    @EnvironmentObject var company: CompanyViewModelDeprecated
     @EnvironmentObject var settings: SettingsViewModel
     @EnvironmentObject var metrics: UIMetrics
 

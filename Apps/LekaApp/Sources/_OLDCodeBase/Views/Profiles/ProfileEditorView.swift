@@ -10,7 +10,7 @@ import SwiftUI
 struct ProfileEditorView: View {
     // MARK: Internal
 
-    @EnvironmentObject var company: CompanyViewModel
+    @EnvironmentObject var company: CompanyViewModelDeprecated
     @EnvironmentObject var settings: SettingsViewModel
     @EnvironmentObject var metrics: UIMetrics
     @Environment(\.dismiss) var dismiss
@@ -97,7 +97,7 @@ struct ProfileEditorView: View {
 struct ProfileEditorView_Previews: PreviewProvider {
     static var previews: some View {
         ProfileEditorView()
-            .environmentObject(CompanyViewModel())
+            .environmentObject(CompanyViewModelDeprecated())
             .environmentObject(SettingsViewModel())
             .environmentObject(UIMetrics())
             .previewInterfaceOrientation(.landscapeLeft)
