@@ -1,0 +1,99 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: 5A670B59EB214A6AA11AB39D64D63990
+name: contentkit-specs-jtd-tests-activity_good
+
+authors:
+  - leka_at_apf_france_handicap
+  - aurore_kiesler
+
+skills:
+  - skill_one
+  - skill_two
+  - skill_three
+
+tags:
+  - tag_one
+  - tag_two
+  - tag_three
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: name_of_the_activity-icon-fr_FR.svg
+
+      title: Le titre/nom de l'activité
+      subtitle: Le sous-titre de l'activité
+
+      description: |
+        Courte description de l'activité sur plusieurs lignes
+        Si besoin!
+        Et en markdown **simple** seulement
+
+      instructions: |
+        ## Longues instructions en markdown plus complexe si on veut
+
+        Lorem markdownum recepta avidum, missa de quam patientia, antris: cum defuit,
+        Titan repetemus nomine, ignare. Quod ad aura, et non quod vidisse utque ulla:
+
+        - Pro inposuit tibi orsa tum artes ferox
+        - Acmon plausu qua agrestum situs virgo in
+        - Vacuus a pendens rostro non si pharetrae
+        - Haeremusque quos auxiliaris coniunx
+        - Repulsa impediunt munera teneri fallebat
+        - Bracchia frustra telo Iovis faucibus casus
+
+gameengine:
+  shuffle_exercises: true
+  shuffle_sequences: true
+
+exercises:
+  - group:
+      - instructions:
+          - locale: fr_FR
+            value: Place les instruments dans les bonnes familles d'instruments
+        interface: dragAndDropIntoZones
+        gameplay: findTheRightAnswers
+        payload: "placeholder payload"
+
+      - instructions:
+          - locale: fr_FR
+            value: Place les instruments dans les bonnes familles d'instruments
+        interface: dragAndDropIntoZones
+        gameplay: findTheRightAnswers
+        payload: "placeholder payload"
+
+      - instructions:
+          - locale: fr_FR
+            value: Place les instruments dans les bonnes familles d'instruments
+        interface: dragAndDropIntoZones
+        gameplay: findTheRightAnswers
+        payload: "placeholder payload"
+
+  - group:
+      - instructions:
+          - locale: fr_FR
+            value: Place les instruments dans les bonnes familles d'instruments
+        interface: dragAndDropIntoZones
+        gameplay: findTheRightAnswers
+        payload: "placeholder payload"
+
+      - instructions:
+          - locale: fr_FR
+            value: Place les instruments dans les bonnes familles d'instruments
+        interface: dragAndDropIntoZones
+        gameplay: findTheRightAnswers
+        payload: "placeholder payload"
+
+      - instructions:
+          - locale: fr_FR
+            value: Place les instruments dans les bonnes familles d'instruments
+        interface: dragAndDropIntoZones
+        gameplay: findTheRightAnswers
+        payload: "placeholder payload"
