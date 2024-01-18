@@ -10,7 +10,7 @@ struct ProfileSet_Teachers: View {
 
     @EnvironmentObject var company: CompanyViewModelDeprecated
     @EnvironmentObject var settings: SettingsViewModel
-    @EnvironmentObject var viewRouter: ViewRouter
+    @EnvironmentObject var viewRouter: ViewRouterDeprecated
     @EnvironmentObject var metrics: UIMetrics
     @EnvironmentObject var navigationVM: NavigationViewModel
 

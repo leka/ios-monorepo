@@ -11,8 +11,8 @@ enum Page {
     case home
 }
 
-// MARK: - ViewRouter
+// MARK: - ViewRouterDeprecated
 
-class ViewRouter: ObservableObject {
+class ViewRouterDeprecated: ObservableObject {
     @Published var currentPage: Page = .welcome
 }

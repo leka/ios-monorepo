@@ -5,7 +5,7 @@
 import SwiftUI
 
 struct LekaAppDeprecated: App {
-    @StateObject var viewRouter = ViewRouter()
+    @StateObject var viewRouter = ViewRouterDeprecated()
     @StateObject var metrics = UIMetrics()
     @StateObject var navigationVM = NavigationViewModel()
     @StateObject var company = CompanyViewModelDeprecated()

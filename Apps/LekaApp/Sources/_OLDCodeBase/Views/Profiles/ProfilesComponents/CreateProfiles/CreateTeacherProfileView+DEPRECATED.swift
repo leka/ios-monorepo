@@ -12,7 +12,7 @@ struct CreateTeacherProfileViewDeprecated: View {
 
     @EnvironmentObject var company: CompanyViewModelDeprecated
     @EnvironmentObject var settings: SettingsViewModel
-    @EnvironmentObject var viewRouter: ViewRouter
+    @EnvironmentObject var viewRouter: ViewRouterDeprecated
     @EnvironmentObject var metrics: UIMetrics
     @EnvironmentObject var navigationVM: NavigationViewModel
     @Environment(\.dismiss) var dismiss
@@ -197,7 +197,7 @@ struct CreateProfileView_Previews: PreviewProvider {
             .environmentObject(CompanyViewModelDeprecated())
             .environmentObject(SettingsViewModel())
             .environmentObject(NavigationViewModel())
-            .environmentObject(ViewRouter())
+            .environmentObject(ViewRouterDeprecated())
             .environmentObject(UIMetrics())
             .previewInterfaceOrientation(.landscapeLeft)
     }

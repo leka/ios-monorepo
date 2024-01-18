@@ -9,7 +9,7 @@ import SwiftUI
 struct LekaApp: App {
     @Environment(\.colorScheme) var colorScheme
 
-    @StateObject var viewRouter = ViewRouter()
+    @StateObject var viewRouter = ViewRouterDeprecated()
     @StateObject var styleManager: StyleManager = .init()
 
     var body: some Scene {

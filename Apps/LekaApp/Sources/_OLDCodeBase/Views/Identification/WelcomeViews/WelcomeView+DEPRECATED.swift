@@ -11,7 +11,7 @@ struct WelcomeViewDeprecated: View {
     // MARK: Internal
 
     @EnvironmentObject var company: CompanyViewModelDeprecated
-    @EnvironmentObject var viewRouter: ViewRouter
+    @EnvironmentObject var viewRouter: ViewRouterDeprecated
     @EnvironmentObject var metrics: UIMetrics
 
     var body: some View {
@@ -78,7 +78,7 @@ struct WelcomeViewDeprecated_Previews: PreviewProvider {
     static var previews: some View {
         WelcomeViewDeprecated()
             .environmentObject(CompanyViewModelDeprecated())
-            .environmentObject(ViewRouter())
+            .environmentObject(ViewRouterDeprecated())
             .environmentObject(UIMetrics())
             .previewInterfaceOrientation(.landscapeLeft)
     }

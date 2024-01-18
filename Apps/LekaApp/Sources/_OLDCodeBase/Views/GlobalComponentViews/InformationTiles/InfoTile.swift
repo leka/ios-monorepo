@@ -12,7 +12,7 @@ struct InfoTile: View {
 
     @EnvironmentObject var settings: SettingsViewModel
     @EnvironmentObject var navigationVM: NavigationViewModel
-    @EnvironmentObject var viewRouter: ViewRouter
+    @EnvironmentObject var viewRouter: ViewRouterDeprecated
     @EnvironmentObject var metrics: UIMetrics
 
     let data: TileData
@@ -123,7 +123,7 @@ struct InfoTile_Previews: PreviewProvider {
                 .environmentObject(SettingsViewModel())
                 .environmentObject(NavigationViewModel())
                 .environmentObject(UIMetrics())
-                .environmentObject(ViewRouter())
+                .environmentObject(ViewRouterDeprecated())
                 .padding()
         }
     }

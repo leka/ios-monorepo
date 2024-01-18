@@ -9,7 +9,7 @@ struct SignupFinalStepDeprecated: View {
     // MARK: Internal
 
     @EnvironmentObject var metrics: UIMetrics
-    @EnvironmentObject var viewRouter: ViewRouter
+    @EnvironmentObject var viewRouter: ViewRouterDeprecated
 
     var body: some View {
         ZStack {
