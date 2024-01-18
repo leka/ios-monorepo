@@ -9,7 +9,7 @@ import SwiftUI
 // MARK: - WelcomeView
 
 struct WelcomeView: View {
-    @EnvironmentObject var viewRouter: ViewRouterDeprecated
+    @ObservedObject var rootOwnerViewModel = RootOwnerViewModel.shared
 
     var body: some View {
         NavigationStack {
@@ -29,7 +29,7 @@ struct WelcomeView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(String(l10n.WelcomeView.skipStepButton.characters)) {
-                        self.viewRouter.currentPage = .home
+                        self.rootOwnerViewModel.isWelcomeViewPresented.toggle()
                     }
                 }
             }

@@ -47,6 +47,7 @@ struct AccountCreationView: View {
     // MARK: Private
 
     @StateObject private var viewModel = AccountCreationViewViewModel()
+    @ObservedObject var rootViewModelViewModel = RootOwnerViewModel.shared
 
     private var isCreationDisabled: Bool {
         !self.viewModel.email.isValidEmail() || self.viewModel.email.isEmpty || self.viewModel.password.isEmpty
@@ -54,6 +55,8 @@ struct AccountCreationView: View {
 
     private func submitForm() {
         // TODO: (@team) - Assert that credentials are valids
+        self.rootViewModelViewModel.currentCompany.email = self.viewModel.email
+        self.rootViewModelViewModel.currentCompany.password = self.viewModel.password
         self.viewModel.navigateToAccountCreationProcess.toggle()
     }
 }
@@ -61,5 +64,5 @@ struct AccountCreationView: View {
 // MARK: - AccountCreationView_Previews
 
 #Preview {
-    AccountCreationView()
+    AccountCreationView(rootViewModelViewModel: RootOwnerViewModel.shared)
 }
