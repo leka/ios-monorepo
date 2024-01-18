@@ -1,3 +1,7 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
 skills:
   - id: spatial_understanding
     l10n:
