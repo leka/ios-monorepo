@@ -8,12 +8,16 @@ import LocalizationKit
 import RobotKit
 import SwiftUI
 
+extension Bundle {
+    static var version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
+    static var buildNumber = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String
+}
+
 // MARK: - MainView
 
 struct MainView: View {
-    @EnvironmentObject var styleManager: StyleManager
-
     @ObservedObject var navigation: Navigation = .shared
+    @ObservedObject var rootOwnerViewModel: RootOwnerViewModel = .shared
     @StateObject var viewModel: ViewModel = .init()
 
     var body: some View {
@@ -42,6 +46,22 @@ struct MainView: View {
                     CategoryLabel(category: .activities)
                     CategoryLabel(category: .remotes)
                     CategoryLabel(category: .stories)
+                }
+
+                HStack {
+                    Spacer()
+                    VStack(spacing: 20) {
+                        Button {
+                            self.rootOwnerViewModel.isSettingsViewPresented = true
+                        } label: {
+                            SettingsLabel()
+                        }
+
+                        Text("My Leka App - Version \(Bundle.version!) (\(Bundle.buildNumber!))")
+                            .foregroundColor(.gray)
+                            .font(.caption2)
+                    }
+                    Spacer()
                 }
             }
             // TODO: (@ladislas) remove if not necessary
@@ -105,6 +125,9 @@ struct MainView: View {
         }
         .fullScreenCover(isPresented: self.$viewModel.isRobotConnectionPresented) {
             RobotConnectionView(viewModel: RobotConnectionViewModel())
+        }
+        .fullScreenCover(isPresented: self.$rootOwnerViewModel.isSettingsViewPresented) {
+            SettingsView()
         }
     }
 }

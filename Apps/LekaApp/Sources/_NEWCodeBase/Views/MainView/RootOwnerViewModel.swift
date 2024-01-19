@@ -18,6 +18,10 @@ class RootOwnerViewModel: ObservableObject {
 
     @Published var currentCompany = Company(email: "", password: "", caregivers: [], carereceivers: [])
     @Published var isWelcomeViewPresented = true
+    @Published var isSettingsViewPresented = false
+
+    @Published var showConfirmDisconnection: Bool = false
+    @Published var showConfirmDeleteAccount: Bool = false
 
     func disconnect() {
         self.currentCompany = Company(email: "", password: "", caregivers: [], carereceivers: [])
