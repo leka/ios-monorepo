@@ -20,6 +20,7 @@ public struct Activity: Codable, Identifiable {
         self.authors = try container.decode([String].self, forKey: .authors)
         self.skills = try container.decode([String].self, forKey: .skills)
         self.tags = try container.decode([String].self, forKey: .tags)
+        self.status = try container.decode(Status.self, forKey: .status)
         self.gameengine = try container.decode(GameEngine.self, forKey: .gameengine)
 
         self.l10n = try container.decode([Localization].self, forKey: .l10n)
@@ -33,6 +34,8 @@ public struct Activity: Codable, Identifiable {
 
     public let uuid: String
     public let name: String
+
+    public let status: Status
 
     public let authors: [String] // TODO: (@ladislas) - implement authors
     public let skills: [String] // TODO: (@ladislas) - implement skills
@@ -69,10 +72,20 @@ public struct Activity: Codable, Identifiable {
         case authors
         case skills
         case tags
+        case status
         case locales
         case l10n
         case gameengine
 //        case exercises
+    }
+}
+
+// MARK: Activity.Status
+
+public extension Activity {
+    enum Status: String, Codable {
+        case draft
+        case published
     }
 }
 

@@ -55,6 +55,8 @@ struct MainView: View {
                 RowView(label: "UUID", value: self.activity?.id ?? "nil")
                 RowView(label: "Name", value: self.activity?.name ?? "nil")
 
+                RowView(label: "Status", value: self.activity?.status == .published ? "published" : "draft")
+
                 DisclosureGroup("**Authors**") {
                     ForEach(self.activity?.authors ?? [], id: \.self) { author in
                         Text(author)
