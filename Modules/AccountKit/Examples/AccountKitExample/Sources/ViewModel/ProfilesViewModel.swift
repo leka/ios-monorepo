@@ -44,7 +44,7 @@ public class ProfilesViewModel: ObservableObject {
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { completion in
                 if case let .failure(error) = completion {
-                    print("Error fetching company details: \(error.localizedDescription)")
+                    log.error("Error fetching company details: \(error.localizedDescription)")
                 }
             }, receiveValue: { [weak self] company in
                 self?.updateCurrentCompanyDetails(with: company)
@@ -59,9 +59,9 @@ public class ProfilesViewModel: ObservableObject {
             .sink(receiveCompletion: { completion in
                 switch completion {
                     case .finished:
-                        print("Company document created successfully.")
+                        log.info("Company document created successfully.")
                     case let .failure(error):
-                        print("Error occurred while creating company document: \(error.localizedDescription)")
+                        log.error("Error occurred while creating company document: \(error.localizedDescription)")
                 }
             }, receiveValue: { [weak self] newCompany in
                 // TODO(@macteuts): Show user notification of success, + dismiss
@@ -81,9 +81,9 @@ public class ProfilesViewModel: ObservableObject {
                 self?.isUpdating = false
                 switch completion {
                     case .finished:
-                        print("Company updated successfully.")
+                        log.info("Company updated successfully.")
                     case let .failure(error):
-                        print("Error updating company: \(error.localizedDescription)")
+                        log.error("Error updating company: \(error.localizedDescription)")
                 }
             }, receiveValue: { [weak self] _ in
                 self?.showEditCompany = false
@@ -98,7 +98,7 @@ public class ProfilesViewModel: ObservableObject {
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { completion in
                 if case let .failure(error) = completion {
-                    print("Error occurred while fetching company: \(error.localizedDescription)")
+                    log.error("Error occurred while fetching company: \(error.localizedDescription)")
                     // TODO(@macteuts): Ask User to try again?
                 }
             }, receiveValue: { [weak self] company in
@@ -117,9 +117,9 @@ public class ProfilesViewModel: ObservableObject {
                 self?.isUpdating = false
                 switch completion {
                     case .finished:
-                        print("Caregiver created successfully.")
+                        log.info("Caregiver created successfully.")
                     case let .failure(error):
-                        print("Error creating caregiver: \(error.localizedDescription)")
+                        log.error("Error creating caregiver: \(error.localizedDescription)")
                 }
             }, receiveValue: { [weak self] newCaregiver in
                 self?.currentCompany.caregivers.append(newCaregiver)
@@ -137,9 +137,9 @@ public class ProfilesViewModel: ObservableObject {
                 self?.isUpdating = false
                 switch completion {
                     case .finished:
-                        print("Caregiver updated successfully.")
+                        log.info("Caregiver updated successfully.")
                     case let .failure(error):
-                        print("Error updating caregiver: \(error.localizedDescription)")
+                        log.error("Error updating caregiver: \(error.localizedDescription)")
                 }
             }, receiveValue: { [weak self] _ in
                 if let index = self?.currentCompany.caregivers.firstIndex(where: { $0.id == caregiver.id }) {
@@ -159,9 +159,9 @@ public class ProfilesViewModel: ObservableObject {
                 self?.isUpdating = false
                 switch completion {
                     case .finished:
-                        print("Caregiver deleted successfully.")
+                        log.info("Caregiver deleted successfully.")
                     case let .failure(error):
-                        print("Error deleting caregiver: \(error.localizedDescription)")
+                        log.error("Error deleting caregiver: \(error.localizedDescription)")
                 }
             }, receiveValue: { [weak self] _ in
                 if let index = self?.currentCompany.caregivers.firstIndex(where: { $0.id == caregiver.id }) {
@@ -183,9 +183,9 @@ public class ProfilesViewModel: ObservableObject {
                 self?.isUpdating = false
                 switch completion {
                     case .finished:
-                        print("Carereceiver created successfully.")
+                        log.info("Carereceiver created successfully.")
                     case let .failure(error):
-                        print("Error creating carereceiver: \(error.localizedDescription)")
+                        log.error("Error creating carereceiver: \(error.localizedDescription)")
                 }
             }, receiveValue: { [weak self] newCarereceiver in
                 self?.currentCompany.carereceivers.append(newCarereceiver)
@@ -203,9 +203,9 @@ public class ProfilesViewModel: ObservableObject {
                 self?.isUpdating = false
                 switch completion {
                     case .finished:
-                        print("Carereceiver updated successfully.")
+                        log.info("Carereceiver updated successfully.")
                     case let .failure(error):
-                        print("Error updating carereceiver: \(error.localizedDescription)")
+                        log.error("Error updating carereceiver: \(error.localizedDescription)")
                 }
             }, receiveValue: { [weak self] _ in
                 if let index = self?.currentCompany.carereceivers.firstIndex(where: { $0.id == carereceiver.id }) {
@@ -225,9 +225,9 @@ public class ProfilesViewModel: ObservableObject {
                 self?.isUpdating = false
                 switch completion {
                     case .finished:
-                        print("Carereceiver deleted successfully.")
+                        log.info("Carereceiver deleted successfully.")
                     case let .failure(error):
-                        print("Error deleting carereceiver: \(error.localizedDescription)")
+                        log.error("Error deleting carereceiver: \(error.localizedDescription)")
                 }
             }, receiveValue: { [weak self] _ in
                 if let index = self?.currentCompany.carereceivers.firstIndex(where: { $0.id == carereceiver.id }) {

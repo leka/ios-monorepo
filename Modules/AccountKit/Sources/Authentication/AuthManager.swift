@@ -10,9 +10,6 @@ import Combine
 import Firebase
 import FirebaseAuthCombineSwift
 import Foundation
-import LogKit
-
-let log = LogKit.createLoggerFor(module: "AccountKit")
 
 // MARK: - AuthManager
 

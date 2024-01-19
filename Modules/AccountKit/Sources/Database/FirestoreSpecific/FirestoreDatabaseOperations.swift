@@ -11,7 +11,9 @@ import FirebaseFirestore
 public class FirestoreDatabaseOperations: DatabaseOperations {
     // MARK: Lifecycle
 
-    public init() {}
+    public init() {
+        // Just to expose the init publicly
+    }
 
     // MARK: Public
 
