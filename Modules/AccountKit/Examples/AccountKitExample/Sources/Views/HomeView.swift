@@ -33,9 +33,9 @@ struct HomeView: View {
 
     private var content: some View {
         VStack(spacing: 10) {
-            Text("Company \(self.$profilesVM.currentCompany.name) is Logged In!")
+            Text("Company \(self.profilesVM.currentCompany.name) is Logged In!")
                 .fontWeight(.heavy)
-            Text("Connection email: \(self.$profilesVM.currentCompany.email)")
+            Text("Connection email: \(self.profilesVM.currentCompany.email)")
                 .font(.footnote)
                 .opacity(0.7)
 
