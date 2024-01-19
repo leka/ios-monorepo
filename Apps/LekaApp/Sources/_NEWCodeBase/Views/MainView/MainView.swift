@@ -68,23 +68,6 @@ struct MainView: View {
             // .disabled(navigation.disableUICompletly)
             .navigationTitle(String(l10n.MainView.Sidebar.navigationTitle.characters))
             .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button {
-                        self.styleManager.toggleAccentColor()
-                    } label: {
-                        Image(systemName: "eyedropper")
-                    }
-                }
-
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button {
-                        self.styleManager.toggleColorScheme()
-                    } label: {
-                        Image(systemName: "circle.lefthalf.filled")
-                    }
-                }
-            }
         } detail: {
             NavigationStack(path: self.$navigation.path) {
                 switch self.navigation.selectedCategory {
@@ -135,5 +118,4 @@ struct MainView: View {
 #Preview {
     MainView()
         .previewInterfaceOrientation(.landscapeLeft)
-        .environmentObject(StyleManager())
 }
