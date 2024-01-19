@@ -19,10 +19,10 @@ struct SettingsViewDeprecated: View {
 
                 Form {
                     Group {
-                        SettingsSection_Credentials()
-                        SettingsSection_Exploratory()
-                        SettingsSection_Profiles()
-                        SettingsSection_Account()
+                        SettingsSection_CredentialsDeprecated()
+                        SettingsSection_ExploratoryDeprecated()
+                        SettingsSection_ProfilesDeprecated()
+                        SettingsSection_AccountDeprecated()
                     }
                     .padding(.horizontal, 20)
                 }

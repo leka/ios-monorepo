@@ -4,7 +4,7 @@
 
 import SwiftUI
 
-struct SettingsSection_Account: View {
+struct SettingsSection_AccountDeprecated: View {
     @EnvironmentObject var settings: SettingsViewModelDeprecated
     @EnvironmentObject var company: CompanyViewModelDeprecated
     @EnvironmentObject var robotVM: RobotViewModel

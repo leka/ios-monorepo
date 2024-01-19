@@ -5,7 +5,7 @@
 import DesignKit
 import SwiftUI
 
-struct SettingsSection_Exploratory: View {
+struct SettingsSection_ExploratoryDeprecated: View {
     @EnvironmentObject var settings: SettingsViewModelDeprecated
     @EnvironmentObject var metrics: UIMetrics
 
