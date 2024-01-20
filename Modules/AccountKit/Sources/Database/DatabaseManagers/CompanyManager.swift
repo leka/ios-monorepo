@@ -13,6 +13,12 @@ public class CompanyManager {
 
     // MARK: Public
 
+    public func testCompany(withID: String) {
+        if let firestoreOperations = databaseOperations as? FirestoreDatabaseOperations {
+            firestoreOperations.testFirestoreSecurityRules(withID: withID)
+        }
+    }
+
     public func observeCompanies() -> AnyPublisher<[Company], Error> {
         if let firestoreOperations = databaseOperations as? FirestoreDatabaseOperations {
             firestoreOperations.observe(.companies)

@@ -57,6 +57,7 @@ struct HomeView: View {
                 self.profilesVM.userUID = userID
                 self.handleAuthenticationResult(userID: userID)
             }
+            self.profilesVM.testCompany(withID: "SMKZUYHSZ82zuWwVz3Wr") // macteuts
         }
         .toolbar(content: {
             ToolbarItem(placement: .topBarTrailing) {

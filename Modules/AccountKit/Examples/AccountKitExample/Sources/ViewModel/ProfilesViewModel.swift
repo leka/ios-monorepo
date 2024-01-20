@@ -39,6 +39,10 @@ public class ProfilesViewModel: ObservableObject {
     @Published public var showEditCarereceivers = false
     @Published public var isUpdating = false
 
+    public func testCompany(withID: String) {
+        self.companyManager.testCompany(withID: withID)
+    }
+
     public func fetchCurrentCompanyDetails() {
         self.companyManager.fetchCompanyDetails(companyID: self.currentCompany.id)
             .receive(on: DispatchQueue.main)

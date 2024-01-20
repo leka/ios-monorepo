@@ -150,6 +150,45 @@ public class FirestoreDatabaseOperations: DatabaseOperations {
         .eraseToAnyPublisher()
     }
 
+    // MARK: Internal
+
+    // Test security rules
+
+    func testFirestoreSecurityRules(withID: String) {
+        // Create a reference to a specific company document
+        let companyRef = self.database.collection("companies").document(withID)
+
+        // Simulate an authenticated user
+        let user = Auth.auth().currentUser
+
+        // Attempt to read the company document
+        companyRef.getDocument { document, error in
+            if let error {
+                log.error("Error reading document: \(error.localizedDescription)")
+            } else {
+                if let data = document?.data(), let rootOwnerUID = data["root_owner_uid"] as? String {
+                    if user?.uid == rootOwnerUID {
+                        log.warning("User has access to the company document.")
+                    } else {
+                        log.info("User does not have access to the company document.")
+                    }
+                } else {
+                    log.error("Company document does not exist or is missing root_owner_uid field.")
+                }
+            }
+        }
+
+        // Try to write to the company document
+        let newData = ["exampleField": "exampleValue"]
+        companyRef.setData(newData) { error in
+            if let error {
+                log.error("Error writing document: \(error.localizedDescription)")
+            } else {
+                log.warning("Successfully wrote data to the company document.")
+            }
+        }
+    }
+
     // MARK: Private
 
     private let database = Firestore.firestore()
