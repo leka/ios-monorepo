@@ -15,6 +15,9 @@ extension SettingsDictionary {
             "LocalizedStringInterpolation",
         ],
         "LOCALIZED_STRING_SWIFTUI_SUPPORT": "NO",
+        "OTHER_LDFLAGS": [
+            "-ObjC",
+        ],
     ]
 
     static func extendingBase(with settings: SettingsDictionary) -> SettingsDictionary {
