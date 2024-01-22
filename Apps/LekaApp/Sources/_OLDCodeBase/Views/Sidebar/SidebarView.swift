@@ -9,7 +9,7 @@ struct SidebarView: View {
     // MARK: Internal
 
     @EnvironmentObject var navigationVM: NavigationViewModel
-    @EnvironmentObject var settings: SettingsViewModel
+    @EnvironmentObject var settings: SettingsViewModelDeprecated
     @EnvironmentObject var metrics: UIMetrics
 
     var body: some View {

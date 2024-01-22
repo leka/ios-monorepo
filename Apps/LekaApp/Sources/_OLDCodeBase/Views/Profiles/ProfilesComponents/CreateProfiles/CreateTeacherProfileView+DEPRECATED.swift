@@ -11,7 +11,7 @@ struct CreateTeacherProfileViewDeprecated: View {
     // MARK: Internal
 
     @EnvironmentObject var company: CompanyViewModelDeprecated
-    @EnvironmentObject var settings: SettingsViewModel
+    @EnvironmentObject var settings: SettingsViewModelDeprecated
     @EnvironmentObject var viewRouter: ViewRouterDeprecated
     @EnvironmentObject var metrics: UIMetrics
     @EnvironmentObject var navigationVM: NavigationViewModel
@@ -195,7 +195,7 @@ struct CreateProfileView_Previews: PreviewProvider {
     static var previews: some View {
         CreateTeacherProfileViewDeprecated()
             .environmentObject(CompanyViewModelDeprecated())
-            .environmentObject(SettingsViewModel())
+            .environmentObject(SettingsViewModelDeprecated())
             .environmentObject(NavigationViewModel())
             .environmentObject(ViewRouterDeprecated())
             .environmentObject(UIMetrics())

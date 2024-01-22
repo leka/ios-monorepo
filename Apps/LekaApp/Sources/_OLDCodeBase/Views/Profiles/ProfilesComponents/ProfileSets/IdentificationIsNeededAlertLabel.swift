@@ -5,7 +5,7 @@
 import SwiftUI
 
 struct IdentificationIsNeededAlertLabel: View {
-    @EnvironmentObject var settings: SettingsViewModel
+    @EnvironmentObject var settings: SettingsViewModelDeprecated
     @EnvironmentObject var viewRouter: ViewRouterDeprecated
 
     var body: some View {

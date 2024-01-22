@@ -6,7 +6,7 @@ import SwiftUI
 
 struct InfoTileManager: View {
     @EnvironmentObject var navigationVM: NavigationViewModel
-    @EnvironmentObject var settings: SettingsViewModel
+    @EnvironmentObject var settings: SettingsViewModelDeprecated
 
     var body: some View {
         Group {

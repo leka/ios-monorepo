@@ -5,7 +5,7 @@
 import DesignKit
 import SwiftUI
 
-struct SettingsSection_Profiles: View {
+struct SettingsSection_ProfilesDeprecated: View {
     // MARK: Internal
 
     @EnvironmentObject var company: CompanyViewModelDeprecated

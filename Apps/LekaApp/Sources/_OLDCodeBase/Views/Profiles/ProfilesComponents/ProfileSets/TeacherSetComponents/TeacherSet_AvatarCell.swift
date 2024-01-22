@@ -9,7 +9,7 @@ struct TeacherSet_AvatarCell: View {
     // MARK: Internal
 
     @EnvironmentObject var company: CompanyViewModelDeprecated
-    @EnvironmentObject var settings: SettingsViewModel
+    @EnvironmentObject var settings: SettingsViewModelDeprecated
     @EnvironmentObject var viewRouter: ViewRouterDeprecated
     @EnvironmentObject var metrics: UIMetrics
 

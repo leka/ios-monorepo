@@ -12,7 +12,7 @@ struct GoButton: View {
     @EnvironmentObject var activityVM: ActivityViewModel
     @EnvironmentObject var navigationVM: NavigationViewModel
     @EnvironmentObject var robotVM: RobotViewModel
-    @EnvironmentObject var settings: SettingsViewModel
+    @EnvironmentObject var settings: SettingsViewModelDeprecated
 
     var body: some View {
         VStack {

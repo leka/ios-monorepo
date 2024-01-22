@@ -7,7 +7,7 @@ import SwiftUI
 
 struct SidebarAvatarView: View {
     @EnvironmentObject var company: CompanyViewModelDeprecated
-    @EnvironmentObject var settings: SettingsViewModel
+    @EnvironmentObject var settings: SettingsViewModelDeprecated
 
     let type: UserTypeDeprecated
 

@@ -10,7 +10,7 @@ import SwiftUI
 struct CommandListView: View {
     // MARK: Internal
 
-    @EnvironmentObject var settings: SettingsViewModel
+    @EnvironmentObject var settings: SettingsViewModelDeprecated
     @EnvironmentObject var navigationVM: NavigationViewModel
 
     var body: some View {
@@ -54,7 +54,7 @@ struct CommandListView_Previews: PreviewProvider {
     static var previews: some View {
         CommandListView()
             .environmentObject(NavigationViewModel())
-            .environmentObject(SettingsViewModel())
+            .environmentObject(SettingsViewModelDeprecated())
             .environmentObject(UIMetrics())
     }
 }

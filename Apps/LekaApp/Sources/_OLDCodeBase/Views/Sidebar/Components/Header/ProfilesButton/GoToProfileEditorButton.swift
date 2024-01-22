@@ -10,7 +10,7 @@ import SwiftUI
 struct GoToProfileEditorButton: View {
     // MARK: Internal
 
-    @EnvironmentObject var settings: SettingsViewModel
+    @EnvironmentObject var settings: SettingsViewModelDeprecated
     @EnvironmentObject var metrics: UIMetrics
     @EnvironmentObject var navigationVM: NavigationViewModel
 
@@ -59,7 +59,7 @@ struct GoToProfileEditorButton: View {
 struct GoToProfileEditorButton_Previews: PreviewProvider {
     static var previews: some View {
         GoToProfileEditorButton()
-            .environmentObject(SettingsViewModel())
+            .environmentObject(SettingsViewModelDeprecated())
             .environmentObject(UIMetrics())
             .environmentObject(NavigationViewModel())
     }

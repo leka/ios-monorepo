@@ -5,7 +5,7 @@
 import SwiftUI
 
 struct TeacherSidebarAvatarCell: View {
-    @EnvironmentObject var settings: SettingsViewModel
+    @EnvironmentObject var settings: SettingsViewModelDeprecated
 
     var body: some View {
         HStack {
