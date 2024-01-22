@@ -2,10 +2,6 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
-// Leka - iOS Monorepo
-// Copyright 2023 APF France handicap
-// SPDX-License-Identifier: Apache-2.0
-
 import Combine
 import Firebase
 import FirebaseAuthCombineSwift
@@ -144,7 +140,6 @@ public class AuthManager: ObservableObject {
         case signUp = "signed up"
         case confirmEmail = "confirm email"
         case resetPassword = "reset password"
-        case reauthenticate = "re-authentication"
     }
 
     // MARK: Private
@@ -205,8 +200,6 @@ public class AuthManager: ObservableObject {
                 message = "There was an error resetting your password. Please try again later."
             case .confirmEmail:
                 message = "There was an error sending the verification email. Please try again later."
-            case .reauthenticate:
-                message = "There was an error authenticating with this password. Please try again."
         }
 
         self.showErrorAlert(with: message)
