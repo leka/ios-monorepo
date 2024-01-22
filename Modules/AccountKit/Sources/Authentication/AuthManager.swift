@@ -36,7 +36,7 @@ public class AuthManager: ObservableObject {
     @Published public var showNotificationAlert = false
     @Published public var userIsSigningUp = false
 
-    // Read-only access to properties CurrentUserID and Email to the external classes
+    // Read-only access to properties CurrentUserID and Email for the external classes
     public func currentUserID() -> String? {
         self.auth.currentUser?.uid
     }
@@ -47,12 +47,13 @@ public class AuthManager: ObservableObject {
 
     public func checkAuthenticationStatus() {
         self.auth.publisher(for: \.currentUser)
-            .map { [weak self] user in
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] user in
                 self?.updateAuthState(for: user)
-                return self?.userAuthenticationState ?? .unknown
+                let newState = user != nil ? FirebaseAuthenticationState.loggedIn : .loggedOut
+                self?.userAuthenticationState = newState
             }
-            .print()
-            .assign(to: &self.$userAuthenticationState)
+            .store(in: &self.cancellables)
     }
 
     public func signIn(email: String, password: String) {
@@ -149,7 +150,8 @@ public class AuthManager: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
 
     private func updateAuthState(for user: User?) {
-        self.userAuthenticationState = user != nil ? .loggedIn : .loggedOut
+        let newState = user != nil ? FirebaseAuthenticationState.loggedIn : .loggedOut
+        self.userAuthenticationState = newState
         guard self.emailHasBeenConfirmed else {
             self.actionRequestMessage =
                 "Your email hasn't been verified yet. Please verify your email to avoid losing your data."
