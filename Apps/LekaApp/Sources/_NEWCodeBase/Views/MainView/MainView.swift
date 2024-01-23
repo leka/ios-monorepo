@@ -69,9 +69,7 @@ struct MainView: View {
             NavigationStack(path: self.$navigation.path) {
                 switch self.navigation.selectedCategory {
                     case .news:
-                        Text("Hello, What's new!")
-                            .font(.largeTitle)
-                            .bold()
+                        NewsView()
 
                     case .resources:
                         Text("Resources")
