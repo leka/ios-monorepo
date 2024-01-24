@@ -24,10 +24,6 @@ extension DragAndDropToAssociate.Payload: ExercisePayloadProtocol {}
 
 extension MidiRecordingPlayer.Payload: ExercisePayloadProtocol {}
 
-// MARK: - HideAndSeek.Payload + ExercisePayloadProtocol
-
-extension HideAndSeek.Payload: ExercisePayloadProtocol {}
-
 // MARK: - MusicalInstrument.Payload + ExercisePayloadProtocol
 
 extension MusicalInstrument.Payload: ExercisePayloadProtocol {}
