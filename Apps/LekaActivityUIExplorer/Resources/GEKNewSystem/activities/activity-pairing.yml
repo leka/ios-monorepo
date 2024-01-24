@@ -10,13 +10,3 @@ sequence:
   - exercises:
       - instructions: Observe Leka
         interface: pairing
-        payload:
-          instructions:
-            text_main_instructions: |
-                Le mode Pairing permet à la personne accompagnée de se familiariser à Leka
-                avant même d'entrer dans les apprentissages des Activités et des Parcours.
-                Le robot va s'animer en faisant des pauses afin que la personne accompagnée puisse
-                apprivoiser son nouveau compagnon !
-            text_button_play: Jouer
-            text_button_pause: Pause
-            text_button_stop: Stop

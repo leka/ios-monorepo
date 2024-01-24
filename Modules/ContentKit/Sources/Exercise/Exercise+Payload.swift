@@ -31,7 +31,3 @@ extension MusicalInstrument.Payload: ExercisePayloadProtocol {}
 // MARK: - DanceFreeze.Payload + ExercisePayloadProtocol
 
 extension DanceFreeze.Payload: ExercisePayloadProtocol {}
-
-// MARK: - Pairing.Payload + ExercisePayloadProtocol
-
-extension Pairing.Payload: ExercisePayloadProtocol {}
