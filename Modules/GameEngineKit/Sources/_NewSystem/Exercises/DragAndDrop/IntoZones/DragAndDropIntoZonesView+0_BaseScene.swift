@@ -151,7 +151,7 @@ extension DragAndDropIntoZonesView {
         }
 
         func goodAnswerBehavior(_ node: DraggableImageAnswerNode) {
-            node.scaleForMax(sizeOf: self.biggerSide * 0.8)
+            node.scaleForMax(sizeOf: self.biggerSide)
             node.zPosition = 10
             node.isDraggable = false
             self.onDropAction(node)
@@ -259,7 +259,7 @@ extension DragAndDropIntoZonesView {
         // MARK: Private
 
         private var hints: Bool
-        private var biggerSide: CGFloat = 130
+        private var biggerSide: CGFloat = 140
         private var selectedNodes: [UITouch: DraggableImageAnswerNode] = [:]
         private var answerNodes: [DraggableImageAnswerNode] = []
         private var playedNode: DraggableImageAnswerNode?
