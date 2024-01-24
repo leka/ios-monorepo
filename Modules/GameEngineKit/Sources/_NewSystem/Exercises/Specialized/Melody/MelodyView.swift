@@ -9,8 +9,7 @@ import SwiftUI
 public struct MelodyView: View {
     // MARK: Lifecycle
 
-    init(instructions: MidiRecordingPlayer.Payload.Instructions, instrument: MIDIInstrument, songs: [MidiRecording]) {
-        self.instructions = instructions
+    init(instrument: MIDIInstrument, songs: [MidiRecording]) {
         self.instrument = instrument
         self.songs = songs
         self.selectedSong = songs.first!
@@ -27,7 +26,6 @@ public struct MelodyView: View {
             fatalError("Instrument or song not found")
         }
 
-        self.instructions = payload.instructions
         self.instrument = instrument
         self.songs = payload.songs
         self.selectedSong = self.songs.first!
@@ -41,8 +39,7 @@ public struct MelodyView: View {
             switch self.mode {
                 case .waitingForSelection:
                     LauncherView(
-                        selectedSong: self.$selectedSong, mode: self.$mode, keyboard: self.$keyboard, songs: self.songs,
-                        instructions: self.instructions
+                        selectedSong: self.$selectedSong, mode: self.$mode, keyboard: self.$keyboard, songs: self.songs
                     )
                 case .selectionConfirmed:
                     switch self.instrument {
@@ -69,7 +66,6 @@ public struct MelodyView: View {
     }
 
     let data: ExerciseSharedData?
-    let instructions: MidiRecordingPlayer.Payload.Instructions
     let instrument: MIDIInstrument
     let songs: [MidiRecording]
 
@@ -81,12 +77,5 @@ public struct MelodyView: View {
 }
 
 #Preview {
-    let instructions = MidiRecordingPlayer.Payload.Instructions(
-        textMusicSelection: "Sélection de la musique",
-        textButtonPlay: "Jouer",
-        textKeyboardPartial: "Clavier partiel",
-        textKeyboardFull: "Clavier entier"
-    )
-
-    return MelodyView(instructions: instructions, instrument: .xylophone, songs: [MidiRecording(.underTheMoonlight)])
+    MelodyView(instrument: .xylophone, songs: [MidiRecording(.underTheMoonlight)])
 }

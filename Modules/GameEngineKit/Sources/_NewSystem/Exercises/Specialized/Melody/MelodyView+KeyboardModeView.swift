@@ -4,15 +4,15 @@
 
 import ContentKit
 import DesignKit
+import LocalizationKit
 import SwiftUI
 
 extension MelodyView {
     struct KeyboardModeView: View {
         // MARK: Lifecycle
 
-        init(keyboard: Binding<KeyboardType>, instructions: MidiRecordingPlayer.Payload.Instructions) {
+        init(keyboard: Binding<KeyboardType>) {
             self._keyboard = keyboard
-            self.instructions = instructions
         }
 
         // MARK: Internal
@@ -23,7 +23,7 @@ extension MelodyView {
                     GameEngineKitAsset.Exercises.Melody.iconKeyboardPartial.swiftUIImage
                         .resizable()
                         .scaledToFit()
-                    Text(self.instructions.textKeyboardPartial)
+                    Text(l10n.MelodyView.partialKeyboardLabel)
                         .foregroundStyle(self.keyboard == .partial ? .black : .gray.opacity(0.4))
                 }
                 .onTapGesture {
@@ -36,7 +36,7 @@ extension MelodyView {
                     GameEngineKitAsset.Exercises.Melody.iconKeyboardFull.swiftUIImage
                         .resizable()
                         .scaledToFit()
-                    Text(self.instructions.textKeyboardFull)
+                    Text(l10n.MelodyView.fullKeyboardLabel)
                         .foregroundStyle(self.keyboard == .full ? .black : .gray.opacity(0.4))
                 }
                 .onTapGesture {
@@ -52,7 +52,6 @@ extension MelodyView {
         // MARK: Private
 
         @Binding private var keyboard: KeyboardType
-        private let instructions: MidiRecordingPlayer.Payload.Instructions
     }
 }
 
@@ -63,15 +62,8 @@ extension MelodyView {
         MidiRecording(.twinkleTwinkleLittleStar),
         MidiRecording(.underTheMoonlight),
     ]
-    let instructions = MidiRecordingPlayer.Payload.Instructions(
-        textMusicSelection: "Sélection de la musique",
-        textButtonPlay: "Jouer",
-        textKeyboardPartial: "Clavier partiel",
-        textKeyboardFull: "Clavier entier"
-    )
 
     return MelodyView.KeyboardModeView(
-        keyboard: .constant(.partial),
-        instructions: instructions
+        keyboard: .constant(.partial)
     )
 }

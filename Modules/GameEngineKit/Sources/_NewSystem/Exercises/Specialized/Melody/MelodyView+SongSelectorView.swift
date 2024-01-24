@@ -4,23 +4,22 @@
 
 import ContentKit
 import DesignKit
+import LocalizationKit
 import SwiftUI
 
 extension MelodyView {
     struct SongSelectorView: View {
         // MARK: Lifecycle
 
-        init(songs: [MidiRecording], selectedMidiRecording: Binding<MidiRecording>, textMusicSelection: String) {
+        init(songs: [MidiRecording], selectedMidiRecording: Binding<MidiRecording>) {
             self.songs = songs
             self._selectedMidiRecording = selectedMidiRecording
-            self.textMusicSelection = textMusicSelection
         }
 
         // MARK: Internal
 
         @Binding var selectedMidiRecording: MidiRecording
         let songs: [MidiRecording]
-        let textMusicSelection: String
 
         let columns = [
             GridItem(.flexible()),
@@ -29,7 +28,7 @@ extension MelodyView {
 
         var body: some View {
             VStack(alignment: .leading) {
-                Text(self.textMusicSelection)
+                Text(l10n.MelodyView.musicSelectionTitle)
                     // TODO: (@ui/ux) - Design System - replace with Leka font
                     .font(.headline)
 
@@ -68,16 +67,9 @@ extension MelodyView {
         MidiRecording(.twinkleTwinkleLittleStar),
         MidiRecording(.underTheMoonlight),
     ]
-    let instructions = MidiRecordingPlayer.Payload.Instructions(
-        textMusicSelection: "Sélection de la musique",
-        textButtonPlay: "Jouer",
-        textKeyboardPartial: "Clavier partiel",
-        textKeyboardFull: "Clavier entier"
-    )
 
     return MelodyView.SongSelectorView(
         songs: songs,
-        selectedMidiRecording: .constant(MidiRecording(.underTheMoonlight)),
-        textMusicSelection: instructions.textMusicSelection
+        selectedMidiRecording: .constant(MidiRecording(.underTheMoonlight))
     )
 }

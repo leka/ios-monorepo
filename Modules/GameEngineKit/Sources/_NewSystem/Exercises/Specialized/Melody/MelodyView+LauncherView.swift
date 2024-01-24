@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import ContentKit
+import LocalizationKit
 import SwiftUI
 
 extension MelodyView {
@@ -11,7 +12,6 @@ extension MelodyView {
         @Binding var mode: Stage
         @Binding var keyboard: KeyboardType
         let songs: [MidiRecording]
-        let instructions: MidiRecordingPlayer.Payload.Instructions
 
         var body: some View {
             VStack(spacing: 100) {
@@ -22,12 +22,9 @@ extension MelodyView {
                         .padding(.trailing, 50)
 
                     VStack(spacing: 0) {
-                        KeyboardModeView(keyboard: self.$keyboard, instructions: self.instructions)
+                        KeyboardModeView(keyboard: self.$keyboard)
 
-                        SongSelectorView(
-                            songs: self.songs, selectedMidiRecording: self.$selectedSong,
-                            textMusicSelection: self.instructions.textMusicSelection
-                        )
+                        SongSelectorView(songs: self.songs, selectedMidiRecording: self.$selectedSong)
                     }
                 }
                 .padding(.horizontal, 100)
@@ -35,7 +32,7 @@ extension MelodyView {
                 Button {
                     self.mode = .selectionConfirmed
                 } label: {
-                    ButtonLabel(self.instructions.textButtonPlay, color: .cyan)
+                    ButtonLabel(String(l10n.MelodyView.playButtonLabel.characters), color: .cyan)
                 }
             }
         }
@@ -51,18 +48,11 @@ extension MelodyView {
         MidiRecording(.ohTheCrocodiles),
         MidiRecording(.happyBirthday),
     ]
-    let instructions = MidiRecordingPlayer.Payload.Instructions(
-        textMusicSelection: "Sélection de la musique",
-        textButtonPlay: "Jouer",
-        textKeyboardPartial: "Clavier partiel",
-        textKeyboardFull: "Clavier entier"
-    )
 
     return MelodyView.LauncherView(
         selectedSong: .constant(MidiRecording(.underTheMoonlight)),
         mode: .constant(.waitingForSelection),
         keyboard: .constant(.partial),
-        songs: songs,
-        instructions: instructions
+        songs: songs
     )
 }
