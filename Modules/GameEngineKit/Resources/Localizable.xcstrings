@@ -54,6 +54,78 @@
           }
         }
       }
+    },
+    "lekaapp.hide_and_seek_view.launcher.instructions" : {
+      "comment" : "HideAndSeekView Launcher instructions",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Press OK when Leka is hidden"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Appuies sur OK lorsque Leka est caché"
+          }
+        }
+      }
+    },
+    "lekaapp.hide_and_seek_view.launcher.ok_button_label" : {
+      "comment" : "HideAndSeekView Laucher OK button label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Ok"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ok"
+          }
+        }
+      }
+    },
+    "lekaapp.hide_and_seek_view.player.found_button_label" : {
+      "comment" : "HideAndSeekView Player Found Button label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Found !"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trouvé !"
+          }
+        }
+      }
+    },
+    "lekaapp.hide_and_seek_view.player.instructions" : {
+      "comment" : "HideAndSeekView Player instructions",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Encourage the care receiver to seek Leka.\nYou can throw a reinforcer to give him\na visual and/or audible clue.\nPress FOUND ! once the robot found."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Incites la personne accompagnée à chercher Leka Tu peux lancer un renforçateur pour lui donner un indice visuel et/ou sonore.  Appuies sur TROUVÉ ! une fois le robot trouvé. "
+          }
+        }
+      }
     }
   },
   "version" : "1.0"
