@@ -3,17 +3,16 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import DesignKit
+import LocalizationKit
 import SwiftUI
 
 extension HideAndSeekView {
     struct Launcher: View {
         @Binding var stage: HideAndSeekStage
-        let textMainInstructions: String
-        let textButtonOk: String
 
         var body: some View {
             VStack {
-                Text(self.textMainInstructions)
+                Text(l10n.HideAndSeekView.Launcher.instructions)
                     // TODO: (@ui/ux) - Design System - replace with Leka font
                     .font(.headline)
                 GameEngineKitAsset.Exercises.HideAndSeek.imageIllustration.swiftUIImage
@@ -24,7 +23,7 @@ extension HideAndSeekView {
                 Button {
                     self.stage = .hidden
                 } label: {
-                    ButtonLabel(self.textButtonOk, color: .cyan)
+                    ButtonLabel(String(l10n.HideAndSeekView.Launcher.okButtonLabel.characters).uppercased(), color: .cyan)
                 }
             }
             .scaledToFill()
@@ -33,5 +32,5 @@ extension HideAndSeekView {
 }
 
 #Preview {
-    HideAndSeekView.Launcher(stage: .constant(.toHide), textMainInstructions: "Cache Leka", textButtonOk: "OK")
+    HideAndSeekView.Launcher(stage: .constant(.toHide))
 }

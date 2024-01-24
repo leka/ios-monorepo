@@ -8,18 +8,12 @@ import SwiftUI
 struct HideAndSeekView: View {
     // MARK: Lifecycle
 
-    public init(instructions: HideAndSeek.Payload.Instructions) {
+    public init() {
         self.stage = .toHide
-        self.instructions = instructions
         self.shared = ExerciseSharedData()
     }
 
-    init(exercise: Exercise, data: ExerciseSharedData? = nil) {
-        guard let payload = exercise.payload as? HideAndSeek.Payload else {
-            fatalError("Exercise payload is not .selection")
-        }
-
-        self.instructions = payload.instructions
+    init(exercise _: Exercise, data: ExerciseSharedData? = nil) {
         self.stage = .toHide
         self.shared = data
     }
@@ -29,15 +23,9 @@ struct HideAndSeekView: View {
     public var body: some View {
         switch self.stage {
             case .toHide:
-                Launcher(
-                    stage: self.$stage, textMainInstructions: self.instructions.textMainInstructions,
-                    textButtonOk: self.instructions.textButtonOk
-                )
+                Launcher(stage: self.$stage)
             case .hidden:
-                Player(
-                    stage: self.$stage, textSubInstructions: self.instructions.textSubInstructions,
-                    textButtonRobotFound: self.instructions.textButtonRobotFound, shared: self.shared
-                )
+                Player(stage: self.$stage, shared: self.shared)
         }
     }
 
@@ -48,7 +36,6 @@ struct HideAndSeekView: View {
         case hidden
     }
 
-    let instructions: HideAndSeek.Payload.Instructions
     let shared: ExerciseSharedData?
 
     // MARK: Private
