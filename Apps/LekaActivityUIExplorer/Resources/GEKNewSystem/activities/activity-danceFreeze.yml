@@ -11,14 +11,6 @@ sequence:
       - instructions:
         interface: danceFreeze
         payload:
-          instructions:
-            text_main_instructions: Danse avec Leka au rythme de la musique et fais la statue lorsqu'il s'arrête.
-            text_motion_selection: Sélection du mouvement
-            text_music_selection: Sélection de la musique
-            text_button_rotation: Rotation
-            text_button_movement: Déplacement
-            text_button_mode_manual: Jouer - Mode manuel
-            text_button_mode_auto: Jouer - Mode auto
           songs:
             - earlyBird
             - emptyPage

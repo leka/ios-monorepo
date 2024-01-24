@@ -4,16 +4,16 @@
 
 import ContentKit
 import DesignKit
+import LocalizationKit
 import SwiftUI
 
 extension DanceFreezeView {
     struct SongSelectorView: View {
         // MARK: Lifecycle
 
-        init(songs: [AudioRecording], selectedAudioRecording: Binding<AudioRecording>, textMusicSelection: String) {
+        init(songs: [AudioRecording], selectedAudioRecording: Binding<AudioRecording>) {
             self.songs = songs
             self._selectedAudioRecording = selectedAudioRecording
-            self.textMusicSelection = textMusicSelection
         }
 
         // MARK: Internal
@@ -25,11 +25,10 @@ extension DanceFreezeView {
 
         @Binding var selectedAudioRecording: AudioRecording
         let songs: [AudioRecording]
-        let textMusicSelection: String
 
         var body: some View {
             VStack(alignment: .leading) {
-                Text(self.textMusicSelection)
+                Text(l10n.DanceFreezeView.musicSelectionTitle)
                     // TODO: (@ui/ux) - Design System - replace with Leka font
                     .font(.headline)
 
@@ -73,7 +72,6 @@ extension DanceFreezeView {
 
     return DanceFreezeView.SongSelectorView(
         songs: songs,
-        selectedAudioRecording: .constant(AudioRecording(.emptyPage)),
-        textMusicSelection: "Sélection de la musique"
+        selectedAudioRecording: .constant(AudioRecording(.emptyPage))
     )
 }

@@ -55,6 +55,114 @@
         }
       }
     },
+    "lekaapp.dance_freeze_view.auto_button_label" : {
+      "comment" : "DanceFreezeView auto button label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Play - Auto mode"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jouer - Mode auto"
+          }
+        }
+      }
+    },
+    "lekaapp.dance_freeze_view.instructions" : {
+      "comment" : "DanceFreezeView instructions",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Dance with Leka to the music and act like a statue when he stops"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Danse avec Leka au rythme de la musique et fais la statue lorsque elle s'arrête"
+          }
+        }
+      }
+    },
+    "lekaapp.dance_freeze_view.manual_button_label" : {
+      "comment" : "DanceFreezeView manual button label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Play - Manual mode"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jouer - Mode manuel"
+          }
+        }
+      }
+    },
+    "lekaapp.dance_freeze_view.movement_button_label" : {
+      "comment" : "DanceFreezeView movement button label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Movement"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Déplacement"
+          }
+        }
+      }
+    },
+    "lekaapp.dance_freeze_view.music_selection_title" : {
+      "comment" : "DanceFreezeView music selection title",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Music selection"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sélection de la musique"
+          }
+        }
+      }
+    },
+    "lekaapp.dance_freeze_view.rotation_button_label" : {
+      "comment" : "DanceFreezeView rotation button label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Rotation"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rotation"
+          }
+        }
+      }
+    },
     "lekaapp.hide_and_seek_view.launcher.instructions" : {
       "comment" : "HideAndSeekView Launcher instructions",
       "extractionState" : "extracted_with_value",
