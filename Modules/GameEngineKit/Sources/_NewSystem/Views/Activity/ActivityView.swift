@@ -280,7 +280,6 @@ public struct ActivityView: View {
 
             case .pairing:
                 PairingView(
-                    exercise: self.viewModel.currentExercise,
                     data: self.viewModel.currentExerciseSharedData
                 )
         }
