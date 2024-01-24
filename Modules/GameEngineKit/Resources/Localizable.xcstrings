@@ -126,6 +126,78 @@
           }
         }
       }
+    },
+    "lekaapp.melody_view.keyboard_full" : {
+      "comment" : "MelodyView keyboard full keyboard label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Full keyboard"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clavier entier"
+          }
+        }
+      }
+    },
+    "lekaapp.melody_view.keyboard_partial" : {
+      "comment" : "MelodyView partial keyboard label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Partial keyboard"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clavier partiel"
+          }
+        }
+      }
+    },
+    "lekaapp.melody_view.play_button_label" : {
+      "comment" : "MelodyView play button label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Play"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jouer"
+          }
+        }
+      }
+    },
+    "lekaapp.melody_view.song_selector_title" : {
+      "comment" : "MelodyView music selection title",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Music selection"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sélection de la musique"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"
