@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import LocalizationKit
 import RobotKit
 import SwiftUI
 
@@ -10,13 +11,8 @@ extension HideAndSeekView {
     struct Player: View {
         // MARK: Lifecycle
 
-        init(
-            stage: Binding<HideAndSeekStage>, textSubInstructions: String, textButtonRobotFound: String,
-            shared: ExerciseSharedData? = nil
-        ) {
+        init(stage: Binding<HideAndSeekStage>, shared: ExerciseSharedData? = nil) {
             _stage = stage
-            self.textSubInstructions = textSubInstructions
-            self.textButtonRobotFound = textButtonRobotFound
 
             self.exercicesSharedData = shared ?? ExerciseSharedData()
             self.exercicesSharedData.state = .playing
@@ -42,13 +38,11 @@ extension HideAndSeekView {
 
         @Binding var stage: HideAndSeekStage
         @ObservedObject var exercicesSharedData: ExerciseSharedData
-        let textSubInstructions: String
-        let textButtonRobotFound: String
         let robotManager = RobotManager()
 
         var body: some View {
             ZStack {
-                HiddenView(textSubInstructions: self.textSubInstructions)
+                HiddenView()
                     .padding(.horizontal, 30)
 
                 HStack {
@@ -70,7 +64,7 @@ extension HideAndSeekView {
                     Button {
                         self.exercicesSharedData.state = .completed(level: .nonApplicable)
                     } label: {
-                        ButtonLabel(self.textButtonRobotFound, color: .cyan)
+                        ButtonLabel(String(l10n.HideAndSeekView.Player.foundButtonLabel.characters).uppercased(), color: .cyan)
                     }
                     .padding(.vertical, 30)
                 }
@@ -99,8 +93,5 @@ extension HideAndSeekView {
 // swiftlint:enable nesting
 
 #Preview {
-    HideAndSeekView.Player(
-        stage: .constant(.hidden), textSubInstructions: "Example", textButtonRobotFound: "Trouvé",
-        shared: ExerciseSharedData()
-    )
+    HideAndSeekView.Player(stage: .constant(.hidden), shared: ExerciseSharedData())
 }

@@ -3,16 +3,15 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import DesignKit
+import LocalizationKit
 import Lottie
 import SwiftUI
 
 extension HideAndSeekView {
     struct HiddenView: View {
-        let textSubInstructions: String
-
         var body: some View {
             VStack {
-                Text(self.textSubInstructions)
+                Text(l10n.HideAndSeekView.Player.instructions)
                     // TODO: (@ui/ux) - Design System - replace with Leka font
                     .font(.headline)
                     .foregroundColor(.white)
@@ -29,12 +28,5 @@ extension HideAndSeekView {
 }
 
 #Preview {
-    HideAndSeekView.HiddenView(
-        textSubInstructions: """
-            Incites la personne accompagnée à chercher Leka.
-            Tu peux lancer un renforçateur pour lui donner
-            un indice visuel et/ou sonore.
-            Appuies sur TROUVÉ ! une fois le robot trouvé.
-            """
-    )
+    HideAndSeekView.HiddenView()
 }
