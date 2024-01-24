@@ -8,12 +8,16 @@ import LocalizationKit
 import RobotKit
 import SwiftUI
 
+extension Bundle {
+    static var version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
+    static var buildNumber = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String
+}
+
 // MARK: - MainView
 
 struct MainView: View {
-    @EnvironmentObject var styleManager: StyleManager
-
     @ObservedObject var navigation: Navigation = .shared
+    @ObservedObject var rootOwnerViewModel: RootOwnerViewModel = .shared
     @StateObject var viewModel: ViewModel = .init()
 
     var body: some View {
@@ -43,28 +47,27 @@ struct MainView: View {
                     CategoryLabel(category: .remotes)
                     CategoryLabel(category: .stories)
                 }
+
+                HStack {
+                    Spacer()
+                    VStack(spacing: 20) {
+                        Button {
+                            self.rootOwnerViewModel.isSettingsViewPresented = true
+                        } label: {
+                            SettingsLabel()
+                        }
+
+                        Text("My Leka App - Version \(Bundle.version!) (\(Bundle.buildNumber!))")
+                            .foregroundColor(.gray)
+                            .font(.caption2)
+                    }
+                    Spacer()
+                }
             }
             // TODO: (@ladislas) remove if not necessary
             // .disabled(navigation.disableUICompletly)
             .navigationTitle(String(l10n.MainView.Sidebar.navigationTitle.characters))
             .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button {
-                        self.styleManager.toggleAccentColor()
-                    } label: {
-                        Image(systemName: "eyedropper")
-                    }
-                }
-
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button {
-                        self.styleManager.toggleColorScheme()
-                    } label: {
-                        Image(systemName: "circle.lefthalf.filled")
-                    }
-                }
-            }
         } detail: {
             NavigationStack(path: self.$navigation.path) {
                 switch self.navigation.selectedCategory {
@@ -106,11 +109,13 @@ struct MainView: View {
         .fullScreenCover(isPresented: self.$viewModel.isRobotConnectionPresented) {
             RobotConnectionView(viewModel: RobotConnectionViewModel())
         }
+        .sheet(isPresented: self.$rootOwnerViewModel.isSettingsViewPresented) {
+            SettingsView()
+        }
     }
 }
 
 #Preview {
     MainView()
         .previewInterfaceOrientation(.landscapeLeft)
-        .environmentObject(StyleManager())
 }

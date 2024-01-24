@@ -39,5 +39,4 @@ struct WelcomeView: View {
 
 #Preview {
     WelcomeView()
-        .environmentObject(ViewRouterDeprecated())
 }
