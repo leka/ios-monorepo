@@ -15,8 +15,7 @@ extension DragAndDropIntoZonesView {
             let dropZoneNodeA = SKSpriteNode()
             let dropZoneNodeB = SKSpriteNode()
 
-            // TODO(@hugo): Adapt size to final images given by the Design team
-            let dropZoneSize = CGSize(width: 280, height: 280)
+            let dropZoneSize = CGSize(width: 410, height: 320)
             dropZoneNodeA.size = dropZoneSize
             dropZoneNodeB.size = dropZoneSize
 
@@ -24,8 +23,8 @@ extension DragAndDropIntoZonesView {
             dropZoneNodeB.texture = SKTexture(imageNamed: unwrappedDropZoneB.details.value)
 
             let dropZonePosition = size.width / 4
-            dropZoneNodeA.position = CGPoint(x: dropZonePosition, y: dropZoneSize.height / 2)
-            dropZoneNodeB.position = CGPoint(x: dropZonePosition * 3, y: dropZoneSize.height / 2)
+            dropZoneNodeA.position = CGPoint(x: dropZonePosition, y: dropZoneSize.height * 5 / 7)
+            dropZoneNodeB.position = CGPoint(x: dropZonePosition * 3, y: dropZoneSize.height * 5 / 7)
 
             dropZoneNodeA.name = dropZoneA.details.value
             dropZoneNodeB.name = unwrappedDropZoneB.details.value
