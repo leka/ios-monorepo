@@ -775,132 +775,6 @@
         }
       }
     },
-    "settings_view.appearance_section.accent_color_row.blue_label" : {
-      "comment" : "Label below blue accent color button in AccentColor Section",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Blue"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bleu"
-          }
-        }
-      }
-    },
-    "settings_view.appearance_section.accent_color_row.gray_label" : {
-      "comment" : "Label below gray accent color button in AccentColor Section",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Gray"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Gris"
-          }
-        }
-      }
-    },
-    "settings_view.appearance_section.accent_color_row.green_label" : {
-      "comment" : "Label below green accent color button in AccentColor Section",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Green"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Vert"
-          }
-        }
-      }
-    },
-    "settings_view.appearance_section.accent_color_row.none_label" : {
-      "comment" : "Label below none accent color button in AccentColor Section",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "None"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Aucune"
-          }
-        }
-      }
-    },
-    "settings_view.appearance_section.accent_color_row.orange_label" : {
-      "comment" : "Label below orange accent color button in AccentColor Section",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Orange"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Orange"
-          }
-        }
-      }
-    },
-    "settings_view.appearance_section.accent_color_row.purple_label" : {
-      "comment" : "Label below purple accent color button in AccentColor Section",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Purple"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Violet"
-          }
-        }
-      }
-    },
-    "settings_view.appearance_section.accent_color_row.red_label" : {
-      "comment" : "Label below red accent color button in AccentColor Section",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Red"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Rouge"
-          }
-        }
-      }
-    },
     "settings_view.appearance_section.accent_color_row.title" : {
       "comment" : "AccentColor Row title",
       "extractionState" : "extracted_with_value",
@@ -915,24 +789,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Couleur accentuée"
-          }
-        }
-      }
-    },
-    "settings_view.appearance_section.accent_color_row.yellow_label" : {
-      "comment" : "Label below yellow accent color button in AccentColor Section",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Yellow"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Jaune"
           }
         }
       }
@@ -1059,24 +915,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Réglages"
-          }
-        }
-      }
-    },
-    "settings_view.profiles_section.header" : {
-      "comment" : "Profiles section header",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Profiles"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Profils"
           }
         }
       }
