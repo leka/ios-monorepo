@@ -14,6 +14,8 @@ public class StyleManager: ObservableObject {
 
     // MARK: Public
 
+    public static let shared = StyleManager(accentColor: DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
+
     @Published public var accentColor: Color?
     @Published public var colorScheme: ColorScheme
 
