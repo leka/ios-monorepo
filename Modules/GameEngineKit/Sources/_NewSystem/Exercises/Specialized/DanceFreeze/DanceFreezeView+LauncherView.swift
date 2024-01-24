@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import ContentKit
+import LocalizationKit
 import SwiftUI
 
 extension DanceFreezeView {
@@ -11,11 +12,10 @@ extension DanceFreezeView {
         @Binding var motion: Motion
         @Binding var selectedAudioRecording: AudioRecording
         let songs: [AudioRecording]
-        let instructions: DanceFreeze.Payload.Instructions
 
         var body: some View {
             VStack(spacing: 100) {
-                Text(self.instructions.textMainInstructions)
+                Text(l10n.DanceFreezeView.instructions)
                     // TODO: (@ui/ux) - Design System - replace with Leka font
                     .font(.headline)
                     .padding(.top, 30)
@@ -28,12 +28,11 @@ extension DanceFreezeView {
                     }
 
                     VStack(spacing: 0) {
-                        MotionSelectorView(motion: self.$motion, instructions: self.instructions)
+                        MotionSelectorView(motion: self.$motion)
 
                         SongSelectorView(
                             songs: self.songs,
-                            selectedAudioRecording: self.$selectedAudioRecording,
-                            textMusicSelection: self.instructions.textMusicSelection
+                            selectedAudioRecording: self.$selectedAudioRecording
                         )
                     }
                 }
@@ -43,13 +42,13 @@ extension DanceFreezeView {
                     Button {
                         self.mode = .manualMode
                     } label: {
-                        StageModeButtonStyle(self.instructions.textButtonModeManual, color: .cyan)
+                        StageModeButtonStyle(String(l10n.DanceFreezeView.manualButtonLabel.characters), color: .cyan)
                     }
 
                     Button {
                         self.mode = .automaticMode
                     } label: {
-                        StageModeButtonStyle(self.instructions.textButtonModeAuto, color: .mint)
+                        StageModeButtonStyle(String(l10n.DanceFreezeView.autoButtonLabel.characters), color: .mint)
                     }
                 }
                 .padding(.bottom, 30)
@@ -67,21 +66,11 @@ extension DanceFreezeView {
         AudioRecording(name: "In The Game", file: "In_The_Game"),
         AudioRecording(name: "Little by Little", file: "Little_by_little"),
     ]
-    let instructions = DanceFreeze.Payload.Instructions(
-        textMainInstructions: "Danse avec Leka au rythme de la musique et fais la statue lorsqu'il s'arrête.",
-        textMotionSelection: "Sélection du mouvement",
-        textMusicSelection: "Sélection de la musique",
-        textButtonRotation: "Rotation",
-        textButtonMovement: "Mouvement",
-        textButtonModeManual: "Jouer - Mode manuel",
-        textButtonModeAuto: "Jouer - Mode auto"
-    )
 
     return DanceFreezeView.LauncherView(
         mode: .constant(.waitingForSelection),
         motion: .constant(.rotation),
         selectedAudioRecording: .constant(AudioRecording(.gigglySquirrel)),
-        songs: songs,
-        instructions: instructions
+        songs: songs
     )
 }

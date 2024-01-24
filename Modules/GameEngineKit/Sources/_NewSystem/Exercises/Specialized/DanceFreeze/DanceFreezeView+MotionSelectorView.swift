@@ -4,15 +4,15 @@
 
 import ContentKit
 import DesignKit
+import LocalizationKit
 import SwiftUI
 
 extension DanceFreezeView {
     struct MotionSelectorView: View {
         // MARK: Lifecycle
 
-        init(motion: Binding<Motion>, instructions: DanceFreeze.Payload.Instructions) {
+        init(motion: Binding<Motion>) {
             self._motion = motion
-            self.instructions = instructions
         }
 
         // MARK: Internal
@@ -25,7 +25,7 @@ extension DanceFreezeView {
                             image: GameEngineKitAsset.Exercises.DanceFreeze.iconMotionModeRotation.swiftUIImage,
                             color: self.motion == .rotation ? .teal : .primary
                         )
-                        Text(self.instructions.textButtonRotation)
+                        Text(l10n.DanceFreezeView.rotationButtonLabel)
                     }
                     .foregroundStyle(self.motion == .rotation ? .teal : .primary)
                     .onTapGesture {
@@ -39,7 +39,7 @@ extension DanceFreezeView {
                             image: GameEngineKitAsset.Exercises.DanceFreeze.iconMotionModeMovement.swiftUIImage,
                             color: self.motion == .movement ? .teal : .primary
                         )
-                        Text(self.instructions.textButtonMovement)
+                        Text(l10n.DanceFreezeView.movementButtonLabel)
                     }
                     .foregroundStyle(self.motion == .movement ? .teal : .primary)
                     .onTapGesture {
@@ -56,20 +56,9 @@ extension DanceFreezeView {
         // MARK: Private
 
         @Binding private var motion: Motion
-        private let instructions: DanceFreeze.Payload.Instructions
     }
 }
 
 #Preview {
-    let instructions = DanceFreeze.Payload.Instructions(
-        textMainInstructions: "Danse avec Leka au rythme de la musique et fais la statue lorsqu'il s'arrête.",
-        textMotionSelection: "Sélection du mouvement",
-        textMusicSelection: "Sélection de la musique",
-        textButtonRotation: "Rotation",
-        textButtonMovement: "Mouvement",
-        textButtonModeManual: "Jouer - Mode manuel",
-        textButtonModeAuto: "Jouer - Mode auto"
-    )
-
-    return DanceFreezeView.MotionSelectorView(motion: .constant(.rotation), instructions: instructions)
+    DanceFreezeView.MotionSelectorView(motion: .constant(.rotation))
 }
