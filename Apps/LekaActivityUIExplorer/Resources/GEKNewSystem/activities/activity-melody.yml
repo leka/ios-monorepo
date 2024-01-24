@@ -11,11 +11,6 @@ sequence:
       - instructions: Joue les notes de la même couleur que Leka
         interface: melody
         payload:
-          instructions:
-            text_music_selection: Sélection de la musique
-            text_button_play: Jouer
-            text_keyboard_partial: Clavier partiel
-            text_keyboard_full: Clavier entier
           instrument: xylophone
           songs:
             - underTheMoonlight
