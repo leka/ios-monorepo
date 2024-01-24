@@ -306,6 +306,78 @@
           }
         }
       }
+    },
+    "lekaapp.pairing_view.pause_button_label" : {
+      "comment" : "PairingView pause button label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Pause"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pause"
+          }
+        }
+      }
+    },
+    "lekaapp.pairing_view.play_button_label" : {
+      "comment" : "PairingView play button label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Play"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jouer"
+          }
+        }
+      }
+    },
+    "lekaapp.pairing_view.player.instructions" : {
+      "comment" : "PairingView instructions",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Pairing mode allows the accompanied person to become familiar with Leka\nbefore even entering into learning Activities and Curriculums.\nThe robot will come to life, taking pauses so that the care receiver can\ntame your new companion!"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le mode Pairing permet à la personne accompagnée de se familiariser à Leka  avant même d'entrer dans les apprentissages des Activités et des Parcours.  Le robot va s'animer en faisant des pauses afin que la  personne accompagnée puisse apprivoiser son nouveau compagnon !"
+          }
+        }
+      }
+    },
+    "lekaapp.pairing_view.stop_button_label" : {
+      "comment" : "PairingView stop button label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Stop"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stop"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"
