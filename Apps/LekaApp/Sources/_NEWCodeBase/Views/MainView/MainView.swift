@@ -109,7 +109,7 @@ struct MainView: View {
         .fullScreenCover(isPresented: self.$viewModel.isRobotConnectionPresented) {
             RobotConnectionView(viewModel: RobotConnectionViewModel())
         }
-        .fullScreenCover(isPresented: self.$rootOwnerViewModel.isSettingsViewPresented) {
+        .sheet(isPresented: self.$rootOwnerViewModel.isSettingsViewPresented) {
             SettingsView()
         }
     }
