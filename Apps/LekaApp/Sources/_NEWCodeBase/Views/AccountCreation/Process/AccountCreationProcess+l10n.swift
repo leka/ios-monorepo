@@ -24,7 +24,7 @@ extension l10n {
                                                      """,
                                                  comment: "Step 1 message")
 
-            static let goButton = LocalizedString("lekaapp.account_creation_process.step_1.go_button", value: "Let's start! 🏃", comment: "Step 1 continue button")
+            static let goButton = LocalizedString("lekaapp.account_creation_process.step_1.go_button", value: "Let's start! 👉", comment: "Step 1 continue button")
         }
 
         enum Step2 {

@@ -8,13 +8,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Let's start! 🏃"
+            "value" : "Let's start! 👉"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Commençons ! 🏃"
+            "value" : "Commençons ! 👉"
           }
         }
       }
@@ -86,7 +86,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tout d'abord, créons votre profil en tant qu'aidant."
+            "value" : "Tout d'abord, créons votre profil en tant qu'accompagnant."
           }
         }
       }
@@ -104,7 +104,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Étape 1 - Profil de l'aidant"
+            "value" : "Étape 1 - Profil de l'accompagnant"
           }
         }
       }
@@ -140,7 +140,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nous allons maintenant créer votre premier\nprofil de bénéficiaire de soins."
+            "value" : "Nous allons maintenant créer un profil\nprofil de personne accompagnée."
           }
         }
       }
@@ -158,7 +158,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Étape 2 - Profil du bénéficiaire de soins"
+            "value" : "Étape 2 - Profil de la personne accompagnée"
           }
         }
       }
@@ -194,7 +194,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vous avez brillamment complété le processus :\n\n- Créer votre profil d'aidant ✅\n- Créer votre premier profil de bénéficiaire de soins ✅\n\nVous pouvez maintenant découvrir l'appli Leka et approfondir notre contenu éducatif !"
+            "value" : "Vous avez brillamment complété le processus :\n\n- Créer votre profil d'accompagnant ✅\n- Créer votre premier profil de personne accompagnée ✅\n\nVous pouvez maintenant découvrir l'appli Leka et approfondir notre contenu éducatif !"
           }
         }
       }
@@ -775,132 +775,6 @@
         }
       }
     },
-    "settings_view.appearance_section.accent_color_row.blue_label" : {
-      "comment" : "Label below blue accent color button in AccentColor Section",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Blue"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bleu"
-          }
-        }
-      }
-    },
-    "settings_view.appearance_section.accent_color_row.gray_label" : {
-      "comment" : "Label below gray accent color button in AccentColor Section",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Gray"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Gris"
-          }
-        }
-      }
-    },
-    "settings_view.appearance_section.accent_color_row.green_label" : {
-      "comment" : "Label below green accent color button in AccentColor Section",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Green"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Vert"
-          }
-        }
-      }
-    },
-    "settings_view.appearance_section.accent_color_row.none_label" : {
-      "comment" : "Label below none accent color button in AccentColor Section",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "None"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Aucune"
-          }
-        }
-      }
-    },
-    "settings_view.appearance_section.accent_color_row.orange_label" : {
-      "comment" : "Label below orange accent color button in AccentColor Section",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Orange"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Orange"
-          }
-        }
-      }
-    },
-    "settings_view.appearance_section.accent_color_row.purple_label" : {
-      "comment" : "Label below purple accent color button in AccentColor Section",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Purple"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Violet"
-          }
-        }
-      }
-    },
-    "settings_view.appearance_section.accent_color_row.red_label" : {
-      "comment" : "Label below red accent color button in AccentColor Section",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Red"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Rouge"
-          }
-        }
-      }
-    },
     "settings_view.appearance_section.accent_color_row.title" : {
       "comment" : "AccentColor Row title",
       "extractionState" : "extracted_with_value",
@@ -915,24 +789,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Couleur accentuée"
-          }
-        }
-      }
-    },
-    "settings_view.appearance_section.accent_color_row.yellow_label" : {
-      "comment" : "Label below yellow accent color button in AccentColor Section",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Yellow"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Jaune"
           }
         }
       }
@@ -1059,24 +915,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Réglages"
-          }
-        }
-      }
-    },
-    "settings_view.profiles_section.header" : {
-      "comment" : "Profiles section header",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Profiles"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Profils"
           }
         }
       }
