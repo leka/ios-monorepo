@@ -8,13 +8,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Let's start! 🏃"
+            "value" : "Let's start! 👉"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Commençons ! 🏃"
+            "value" : "Commençons ! 👉"
           }
         }
       }
@@ -86,7 +86,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tout d'abord, créons votre profil en tant qu'aidant."
+            "value" : "Tout d'abord, créons votre profil en tant qu'accompagnant."
           }
         }
       }
@@ -104,7 +104,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Étape 1 - Profil de l'aidant"
+            "value" : "Étape 1 - Profil de l'accompagnant"
           }
         }
       }
@@ -140,7 +140,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nous allons maintenant créer votre premier\nprofil de bénéficiaire de soins."
+            "value" : "Nous allons maintenant créer un profil\nprofil de personne accompagnée."
           }
         }
       }
@@ -158,7 +158,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Étape 2 - Profil du bénéficiaire de soins"
+            "value" : "Étape 2 - Profil de la personne accompagnée"
           }
         }
       }
@@ -194,7 +194,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vous avez brillamment complété le processus :\n\n- Créer votre profil d'aidant ✅\n- Créer votre premier profil de bénéficiaire de soins ✅\n\nVous pouvez maintenant découvrir l'appli Leka et approfondir notre contenu éducatif !"
+            "value" : "Vous avez brillamment complété le processus :\n\n- Créer votre profil d'accompagnant ✅\n- Créer votre premier profil de personne accompagnée ✅\n\nVous pouvez maintenant découvrir l'appli Leka et approfondir notre contenu éducatif !"
           }
         }
       }
