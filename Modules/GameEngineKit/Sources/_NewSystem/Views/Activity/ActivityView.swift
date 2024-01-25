@@ -98,6 +98,13 @@ public struct ActivityView: View {
                 }
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
+                        self.isInfoSheetPresented.toggle()
+                    } label: {
+                        Image(systemName: "info.circle")
+                    }
+                }
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
                         self.viewModel.isReinforcerAnimationEnabled.toggle()
                     } label: {
                         Image(systemName: self.viewModel.isReinforcerAnimationEnabled ? "circle" : "circle.slash")
@@ -116,6 +123,10 @@ public struct ActivityView: View {
                     }
                     .disabled(self.viewModel.isLastExercise)
                 }
+            }
+            .sheet(isPresented: self.$isInfoSheetPresented) {
+                // TODO: (@team) - Add YAML description of activities
+                Text("Info related to the activity ")
             }
             .fullScreenCover(isPresented: self.$viewModel.isCurrentActivityCompleted) {
                 self.endOfActivityScoreView
@@ -142,6 +153,7 @@ public struct ActivityView: View {
     @State private var opacity: Double = 1
     @State private var blurRadius: CGFloat = 0
     @State private var showScoreView: Bool = false
+    @State private var isInfoSheetPresented: Bool = false
 
     private let robot = Robot.shared
 
