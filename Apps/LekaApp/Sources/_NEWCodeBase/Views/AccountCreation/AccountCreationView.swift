@@ -50,7 +50,10 @@ struct AccountCreationView: View {
     @ObservedObject var rootViewModelViewModel = RootOwnerViewModel.shared
 
     private var isCreationDisabled: Bool {
-        !self.viewModel.email.isValidEmail() || self.viewModel.email.isEmpty || self.viewModel.password.isEmpty
+        !self.viewModel.email.isValidEmail()
+            || self.viewModel.email.isEmpty
+            || !self.viewModel.password.isValidPassword()
+            || self.viewModel.password.isEmpty
     }
 
     private func submitForm() {
