@@ -34,6 +34,12 @@ struct TextFieldEmail: View {
                 .onReceive(Just(self.entry)) { newValue in
                     self.entry = newValue.trimmingCharacters(in: .whitespaces)
                 }
+
+            // TODO: (@team) - l10n that
+            Text("Enter a valid email address")
+                // TODO: (@ui/ux) - Design System - replace with Leka font
+                .font(.footnote)
+                .foregroundStyle(self.entry.isValidEmail() ? .clear : .red)
         }
     }
 }

@@ -43,6 +43,12 @@ struct TextFieldPassword: View {
                 }
                 .disabled(self.entry.isEmpty)
             }
+
+            // TODO: (@team) - l10n that
+            Text("8 characters minimum. Must contain at least one number and one Capital letter.")
+                // TODO: (@ui/ux) - Design System - replace with Leka font
+                .font(.footnote)
+                .foregroundStyle(self.entry.isValidPassword() ? .clear : .red)
         }
     }
 
