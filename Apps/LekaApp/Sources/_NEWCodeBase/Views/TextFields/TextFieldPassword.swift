@@ -19,31 +19,29 @@ extension l10n {
 struct TextFieldPassword: View {
     // MARK: Internal
 
-    var entry: Binding<String>
+    @Binding var entry: String
 
     var body: some View {
-        VStack(spacing: 15) {
-            VStack(alignment: .leading, spacing: 10) {
-                Text(l10n.TextFieldPassword.label)
+        VStack(alignment: .leading, spacing: 10) {
+            Text(l10n.TextFieldPassword.label)
 
-                HStack {
-                    Group {
-                        if self.isSecured {
-                            SecureField("", text: self.entry)
-                        } else {
-                            TextField("", text: self.entry)
-                        }
+            HStack {
+                Group {
+                    if self.isSecured {
+                        SecureField("", text: self.$entry)
+                    } else {
+                        TextField("", text: self.$entry)
                     }
-                    .textFieldStyle(.roundedBorder)
-                    .autocapitalization(.none)
-                    .autocorrectionDisabled()
-                    .textContentType(.password)
-
-                    Button("", systemImage: self.isSecured ? "eye" : "eye.slash") {
-                        self.isSecured.toggle()
-                    }
-                    .disabled(self.entry.wrappedValue.isEmpty)
                 }
+                .textFieldStyle(.roundedBorder)
+                .autocapitalization(.none)
+                .autocorrectionDisabled()
+                .textContentType(.password)
+
+                Button("", systemImage: self.isSecured ? "eye" : "eye.slash") {
+                    self.isSecured.toggle()
+                }
+                .disabled(self.entry.isEmpty)
             }
         }
     }
