@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import Combine
 import DesignKit
 import LocalizationKit
 import SwiftUI
@@ -29,6 +30,9 @@ struct TextFieldEmail: View {
                 .textContentType(.emailAddress)
                 .autocapitalization(.none)
                 .autocorrectionDisabled()
+                .onReceive(Just(self.entry)) { newValue in
+                    self.entry = newValue.trimmingCharacters(in: .whitespaces)
+                }
         }
     }
 }
