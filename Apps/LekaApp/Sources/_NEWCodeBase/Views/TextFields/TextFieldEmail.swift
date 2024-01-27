@@ -19,6 +19,8 @@ extension l10n {
 // MARK: - TextFieldEmail
 
 struct TextFieldEmail: View {
+    // MARK: Internal
+
     @Binding var entry: String
 
     var body: some View {
@@ -39,8 +41,14 @@ struct TextFieldEmail: View {
             Text("Enter a valid email address")
                 // TODO: (@ui/ux) - Design System - replace with Leka font
                 .font(.footnote)
-                .foregroundStyle(self.entry.isValidEmail() ? .clear : .red)
+                .foregroundStyle(self.errorMessageCanShow ? .red : .clear)
         }
+    }
+
+    // MARK: Private
+
+    private var errorMessageCanShow: Bool {
+        !self.entry.isValidEmail() && !self.entry.isEmpty
     }
 }
 
