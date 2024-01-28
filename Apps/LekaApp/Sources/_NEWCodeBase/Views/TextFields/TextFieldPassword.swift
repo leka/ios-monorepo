@@ -8,16 +8,6 @@ import DesignKit
 import LocalizationKit
 import SwiftUI
 
-// MARK: - l10n.TextFieldPassword
-
-extension l10n {
-    enum TextFieldPassword {
-        static let label = LocalizedString("lekaapp.TextFieldPassword.label", value: "Password", comment: "TextFieldPassword label")
-    }
-}
-
-// MARK: - TextFieldPassword
-
 struct TextFieldPassword: View {
     // MARK: Internal
 
@@ -57,7 +47,7 @@ struct TextFieldPassword: View {
                 .disabled(self.entry.isEmpty)
             }
 
-            Text("8 characters minimum, including at least one number and one Capital letter.")
+            Text(l10n.TextFieldPassword.invalidPasswordErrorLabel)
                 // TODO: (@ui/ux) - Design System - replace with Leka font
                 .font(.footnote)
                 .foregroundStyle(self.errorMessageCanShow ? .red : .clear)

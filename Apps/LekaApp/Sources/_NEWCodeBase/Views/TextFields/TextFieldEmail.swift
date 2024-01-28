@@ -8,16 +8,6 @@ import DesignKit
 import LocalizationKit
 import SwiftUI
 
-// MARK: - l10n.TextFieldEmail
-
-extension l10n {
-    enum TextFieldEmail {
-        static let label = LocalizedString("lekaapp.TextFieldEmail.label", value: "Email", comment: "TextFieldEmail label")
-    }
-}
-
-// MARK: - TextFieldEmail
-
 struct TextFieldEmail: View {
     // MARK: Internal
 
@@ -46,8 +36,7 @@ struct TextFieldEmail: View {
                         .stroke(self.focused == .mail ? .blue : .clear, lineWidth: 1)
                 )
 
-            // TODO: (@team) - l10n that
-            Text("Enter a valid email address")
+            Text(l10n.TextFieldEmail.invalidEmailErrorLabel)
                 // TODO: (@ui/ux) - Design System - replace with Leka font
                 .font(.footnote)
                 .foregroundStyle(self.errorMessageCanShow ? .red : .clear)
