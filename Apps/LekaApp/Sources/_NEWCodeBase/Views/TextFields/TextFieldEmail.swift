@@ -8,6 +8,22 @@ import DesignKit
 import LocalizationKit
 import SwiftUI
 
+// MARK: - l10n.TextFieldEmail
+
+// swiftlint:disable line_length
+
+extension l10n {
+    enum TextFieldEmail {
+        static let label = LocalizedString("lekaapp.TextFieldEmail.label", value: "Email", comment: "TextFieldEmail label")
+
+        static let invalidEmailErrorLabel = LocalizedString("lekaapp.TextFieldEmail.invalidEmailErrorLabel", value: "Please enter a valid email address", comment: "TextFieldEmail invalid Email Error Label")
+    }
+}
+
+// MARK: - TextFieldEmail
+
+// swiftlint:enable line_length
+
 struct TextFieldEmail: View {
     // MARK: Internal
 
