@@ -2,4 +2,6 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
-public struct AccountKit {}
+import LogKit
+
+let log = LogKit.createLoggerFor(module: "AccountKit")
