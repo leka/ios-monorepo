@@ -36,3 +36,10 @@ repos:
         entry: Tools/Hooks/check-xcstrings-stale_entries.sh
         language: script
         files: '.*\.xcstrings'
+
+      - id: check-xcstrings-unusual_terminators
+        name: Check .xcstrings files for unusual terminators
+        description: This hook checks .xcstrings files for unusual terminators
+        entry: Tools/Hooks/check-xcstrings-unusual_terminators.sh
+        language: script
+        files: '.*\.xcstrings'
