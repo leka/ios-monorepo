@@ -5,9 +5,6 @@
 import Foundation
 
 enum Focusable {
-    case mail
+    case email
     case password
-    case nickname
-    case name
-    case surname
 }

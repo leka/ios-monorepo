@@ -25,15 +25,15 @@ struct TextFieldEmail: View {
                 .autocapitalization(.none)
                 .autocorrectionDisabled()
                 .onReceive(Just(self.entry)) { newValue in
-                    if self.focused != .mail {
+                    if self.focused != .email {
                         self.entry = newValue.trimmingCharacters(in: .whitespaces)
                     }
                 }
-                .onAppear { self.focused = .mail }
-                .focused(self.$focused, equals: .mail)
+                .onAppear { self.focused = .email }
+                .focused(self.$focused, equals: .email)
                 .overlay(
                     RoundedRectangle(cornerRadius: 8)
-                        .stroke(self.focused == .mail ? .blue : .clear, lineWidth: 1)
+                        .stroke(self.focused == .email ? .blue : .clear, lineWidth: 1)
                 )
 
             Text(l10n.TextFieldEmail.invalidEmailErrorLabel)
@@ -46,7 +46,7 @@ struct TextFieldEmail: View {
     // MARK: Private
 
     private var errorMessageCanShow: Bool {
-        !self.entry.isValidEmail() && !self.entry.isEmpty && self.focused != .mail
+        !self.entry.isValidEmail() && !self.entry.isEmpty && self.focused != .email
     }
 }
 
