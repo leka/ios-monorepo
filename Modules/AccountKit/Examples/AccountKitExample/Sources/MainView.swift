@@ -5,61 +5,11 @@
 import SwiftUI
 
 struct MainView: View {
-    // MARK: Internal
-
-    @EnvironmentObject var authenticationState: OrganisationAuthState
-
     var body: some View {
-        Group {
-            switch self.authenticationState.organisationIsAuthenticated {
-                case .unknown:
-                    Text("Loading...")
-                case .loggedIn:
-                    HomeView()
-                        .transition(.opacity)
-                case .loggedOut:
-                    self.navigation
-                        .transition(.opacity)
-            }
-        }
-        .animation(
-            .easeOut(duration: 0.4),
-            value: self.authenticationState.organisationIsAuthenticated
-        )
-        .preferredColorScheme(.light)
-        .onAppear(perform: {
-            self.authenticationState.organisationIsAuthenticated = .loggedOut
-        })
-    }
-
-    // MARK: Private
-
-    private var navigation: some View {
-        NavigationStack {
-            VStack(spacing: 10) {
-                NavigationLink {
-                    LoginView()
-                } label: {
-                    Text("Log In").frame(width: 400)
-                }
-                .buttonStyle(.borderedProminent)
-
-                NavigationLink {
-                    SignupView()
-                } label: {
-                    Text("Sign Up").frame(width: 400)
-                }
-                .buttonStyle(.bordered)
-            }
-            .buttonBorderShape(.roundedRectangle)
-            .controlSize(.large)
-            .navigationTitle("Authentication")
-            .navigationBarBackButtonHidden()
-        }
+        Text("Hello, AccountKit!")
     }
 }
 
 #Preview {
     MainView()
-        .environmentObject(OrganisationAuthState())
 }
