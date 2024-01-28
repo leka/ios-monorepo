@@ -379,24 +379,6 @@
         }
       }
     },
-    "lekaapp.TextFieldEmail.invalidEmailErrorLabel": {
-      "comment": "TextFieldEmail invalid Email Error Label",
-      "extractionState": "extracted_with_value",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "new",
-            "value": "The email is not valid"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "L'adresse email n'est pas valide"
-          }
-        }
-      }
-    },
     "lekaapp.TextFieldEmail.label": {
       "comment": "TextFieldEmail label",
       "extractionState": "extracted_with_value",
@@ -411,24 +393,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "Email"
-          }
-        }
-      }
-    },
-    "lekaapp.TextFieldPassword.invalidPasswordErrorLabel": {
-      "comment": "TextFieldPassword invalid Password Error Label",
-      "extractionState": "extracted_with_value",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "new",
-            "value": "8 characters minimum. At least one number and one Capital letter"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Minimum 8 caractères, au moins un chiffre et une majuscule"
           }
         }
       }
@@ -951,6 +915,42 @@
           "stringUnit": {
             "state": "translated",
             "value": "Réglages"
+          }
+        }
+      }
+    },
+    "lekaapp.TextFieldPassword.invalidPasswordErrorLabel": {
+      "comment": "TextFieldPassword invalid Password Error Label",
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "8 characters minimum. At least one number and one Capital letter"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Minimum 8 caractères, au moins un chiffre et une majuscule"
+          }
+        }
+      }
+    },
+    "lekaapp.TextFieldEmail.invalidEmailErrorLabel": {
+      "comment": "TextFieldEmail invalid Email Error Label",
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "The email is not valid"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "L'adresse email n'est pas valide"
           }
         }
       }
