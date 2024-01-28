@@ -2,6 +2,8 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AccountKit
+import Combine
 import DesignKit
 import LocalizationKit
 import SwiftUI
@@ -20,6 +22,7 @@ struct TextFieldPassword: View {
     // MARK: Internal
 
     @Binding var entry: String
+    @FocusState var focused: Focusable?
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
@@ -37,6 +40,16 @@ struct TextFieldPassword: View {
                 .autocapitalization(.none)
                 .autocorrectionDisabled()
                 .textContentType(.password)
+                .onReceive(Just(self.entry)) { newValue in
+                    if self.focused != .password {
+                        self.entry = newValue.trimmingCharacters(in: .whitespaces)
+                    }
+                }
+                .focused(self.$focused, equals: .password)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 8)
+                        .stroke(self.focused == .password ? .blue : .clear, lineWidth: 1)
+                )
 
                 Button("", systemImage: self.isSecured ? "eye" : "eye.slash") {
                     self.isSecured.toggle()
@@ -44,7 +57,6 @@ struct TextFieldPassword: View {
                 .disabled(self.entry.isEmpty)
             }
 
-            // TODO: (@team) - l10n that
             Text("8 characters minimum, including at least one number and one Capital letter.")
                 // TODO: (@ui/ux) - Design System - replace with Leka font
                 .font(.footnote)
@@ -57,7 +69,7 @@ struct TextFieldPassword: View {
     @State private var isSecured: Bool = true
 
     private var errorMessageCanShow: Bool {
-        !self.entry.isValidPassword() && !self.entry.isEmpty
+        !self.entry.isValidPassword() && !self.entry.isEmpty && self.focused != .password
     }
 }
 

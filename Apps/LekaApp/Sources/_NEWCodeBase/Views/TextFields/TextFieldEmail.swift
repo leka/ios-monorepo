@@ -22,6 +22,7 @@ struct TextFieldEmail: View {
     // MARK: Internal
 
     @Binding var entry: String
+    @FocusState var focused: Focusable?
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
@@ -34,8 +35,16 @@ struct TextFieldEmail: View {
                 .autocapitalization(.none)
                 .autocorrectionDisabled()
                 .onReceive(Just(self.entry)) { newValue in
-                    self.entry = newValue.trimmingCharacters(in: .whitespaces)
+                    if self.focused != .mail {
+                        self.entry = newValue.trimmingCharacters(in: .whitespaces)
+                    }
                 }
+                .onAppear { self.focused = .mail }
+                .focused(self.$focused, equals: .mail)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 8)
+                        .stroke(self.focused == .mail ? .blue : .clear, lineWidth: 1)
+                )
 
             // TODO: (@team) - l10n that
             Text("Enter a valid email address")
@@ -48,7 +57,7 @@ struct TextFieldEmail: View {
     // MARK: Private
 
     private var errorMessageCanShow: Bool {
-        !self.entry.isValidEmail() && !self.entry.isEmpty
+        !self.entry.isValidEmail() && !self.entry.isEmpty && self.focused != .mail
     }
 }
 
