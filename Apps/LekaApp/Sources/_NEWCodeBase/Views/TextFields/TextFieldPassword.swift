@@ -71,6 +71,10 @@ struct TextFieldPassword: View {
     // MARK: Private
 
     @State private var isSecured: Bool = true
+
+    private var errorMessageCanShow: Bool {
+        !self.entry.isValidPassword() && !self.entry.isEmpty && self.focused != .password
+    }
 }
 
 #Preview {
