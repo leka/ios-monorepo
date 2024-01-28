@@ -16,7 +16,7 @@ extension l10n {
     enum TextFieldEmail {
         static let label = LocalizedString("lekaapp.TextFieldEmail.label", value: "Email", comment: "TextFieldEmail label")
 
-        static let invalidEmailErrorLabel = LocalizedString("lekaapp.TextFieldEmail.invalidEmailErrorLabel", value: "Please enter a valid email address", comment: "TextFieldEmail invalid Email Error Label")
+        static let invalidEmailErrorLabel = LocalizedString("lekaapp.TextFieldEmail.invalidEmailErrorLabel", value: "The email is not valid", comment: "TextFieldEmail invalid Email Error Label")
     }
 }
 

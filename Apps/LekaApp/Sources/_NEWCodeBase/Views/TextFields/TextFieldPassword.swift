@@ -16,7 +16,7 @@ extension l10n {
     enum TextFieldPassword {
         static let label = LocalizedString("lekaapp.TextFieldPassword.label", value: "Password", comment: "TextFieldPassword label")
 
-        static let invalidPasswordErrorLabel = LocalizedString("lekaapp.TextFieldPassword.invalidPasswordErrorLabel", value: "8 characters minimum, including at least one number and one Capital letter.", comment: "TextFieldPassword invalid Password Error Label")
+        static let invalidPasswordErrorLabel = LocalizedString("lekaapp.TextFieldPassword.invalidPasswordErrorLabel", value: "8 characters minimum. At least one number and one Capital letter", comment: "TextFieldPassword invalid Password Error Label")
     }
 }
 
@@ -58,7 +58,6 @@ struct TextFieldPassword: View {
                 Button("", systemImage: self.isSecured ? "eye" : "eye.slash") {
                     self.isSecured.toggle()
                 }
-                .disabled(self.entry.isEmpty)
             }
 
             Text(l10n.TextFieldPassword.invalidPasswordErrorLabel)
