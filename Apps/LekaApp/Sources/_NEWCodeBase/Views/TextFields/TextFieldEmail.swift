@@ -55,14 +55,14 @@ struct TextFieldEmail: View {
             Text(l10n.TextFieldEmail.invalidEmailErrorLabel)
                 // TODO: (@ui/ux) - Design System - replace with Leka font
                 .font(.footnote)
-                .foregroundStyle(self.errorMessageCanShow ? .red : .clear)
+                .foregroundStyle(self.isErrorMessageVisible ? .red : .clear)
         }
     }
 
     // MARK: Private
 
-    private var errorMessageCanShow: Bool {
-        !self.entry.isValidEmail() && !self.entry.isEmpty && self.focused != .email
+    private var isErrorMessageVisible: Bool {
+        self.entry.isInvalidEmail(checkEmpty: false) && !self.entry.isEmpty && self.focused != .email
     }
 }
 
