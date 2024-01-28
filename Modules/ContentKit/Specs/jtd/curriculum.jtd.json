@@ -6,6 +6,9 @@
         "name": {
             "type": "string"
         },
+        "status": {
+            "ref": "$status"
+        },
         "authors": {
             "elements": {
                 "ref": "$author"
@@ -43,6 +46,12 @@
                 "leka_at_apf_france_handicap",
                 "aurore_kiesler",
                 "julie_tuil"
+            ]
+        },
+        "$status": {
+            "enum": [
+                "draft",
+                "published"
             ]
         },
         "$locale": {

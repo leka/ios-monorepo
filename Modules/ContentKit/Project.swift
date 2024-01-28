@@ -11,10 +11,14 @@ let project = Project.module(
     name: "ContentKit",
     examples: [
         ModuleExample(
-            name: "ContentKitExample"
+            name: "ContentKitExample",
+            dependencies: [
+                .external(name: "MarkdownUI"),
+            ]
         ),
     ],
     dependencies: [
+        .project(target: "LocalizationKit", path: Path("../../Modules/LocalizationKit")),
         .project(target: "LogKit", path: Path("../../Modules/LogKit")),
         .external(name: "Yams"),
     ]
