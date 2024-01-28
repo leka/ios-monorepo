@@ -31,9 +31,7 @@ struct TextFieldPassword: View {
                 .autocorrectionDisabled()
                 .textContentType(.password)
                 .onReceive(Just(self.entry)) { newValue in
-                    if self.focused != .password {
-                        self.entry = newValue.trimmingCharacters(in: .whitespaces)
-                    }
+                    self.entry = newValue.trimmingCharacters(in: .whitespaces)
                 }
                 .focused(self.$focused, equals: .password)
                 .overlay(
@@ -50,17 +48,14 @@ struct TextFieldPassword: View {
             Text(l10n.TextFieldPassword.invalidPasswordErrorLabel)
                 // TODO: (@ui/ux) - Design System - replace with Leka font
                 .font(.footnote)
-                .foregroundStyle(self.errorMessageCanShow ? .red : .clear)
+                .lineLimit(2)
+                .foregroundStyle(self.entry.isValidPassword() ? .green : .gray)
         }
     }
 
     // MARK: Private
 
     @State private var isSecured: Bool = true
-
-    private var errorMessageCanShow: Bool {
-        !self.entry.isValidPassword() && !self.entry.isEmpty && self.focused != .password
-    }
 }
 
 #Preview {
