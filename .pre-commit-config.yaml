@@ -27,3 +27,12 @@ repos:
     rev: 0.52.11
     hooks:
       - id: swiftformat
+
+  - repo: local
+    hooks:
+      - id: check-xcstrings-stale_entries
+        name: Check .xcstrings files for stale entries
+        description: This hook checks .xcstrings files for stale entries
+        entry: Tools/Hooks/check-xcstrings-stale_entries.sh
+        language: script
+        files: '.*\.xcstrings'
