@@ -955,6 +955,60 @@
         }
       }
     },
+    "lekaapp.profession_picker.validate_button": {
+      "comment": "Profession picker validate button",
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Validate selection"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Valider la sélection"
+          }
+        }
+      }
+    },
+    "lekaapp.profession_picker.title": {
+      "comment": "Profession picker title",
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Select your professions"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sélectionnez vos professions"
+          }
+        }
+      }
+    },
+    "lekaapp.profession_picker.other_label": {
+      "comment": "Profession picker other profession label",
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Other (specify)"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Autre (préciser)"
+          }
+        }
+      }
+    },
     "lekaapp.avatar_picker.validate_button": {
       "comment": "Avatar picker validate button",
       "extractionState": "extracted_with_value",
