@@ -14,7 +14,7 @@ extension SettingsView {
         var body: some View {
             Section(String(l10n.SettingsView.CredentialsSection.header.characters)) {
                 LabeledContent {
-                    Text(self.rootOwnerViewModel.currentCompany.email)
+                    Text(self.rootOwnerViewModel.currentCompany?.email ?? "")
                         // TODO: (@ui/ux) - Design System - replace with Leka font
                         .font(.footnote)
                         .multilineTextAlignment(.leading)
