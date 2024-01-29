@@ -6,7 +6,7 @@ import DesignKit
 import SwiftUI
 
 // Avatar Buttons within the AvatarPicker()
-struct AvatarButtonLabel: View {
+struct AvatarButtonLabelDeprecated: View {
     @EnvironmentObject var metrics: UIMetrics
 
     @Binding var image: String

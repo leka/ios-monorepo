@@ -5,7 +5,7 @@
 import DesignKit
 import SwiftUI
 
-struct AvatarPickerStore: View {
+struct AvatarPickerStoreDeprecated: View {
     // MARK: Internal
 
     @EnvironmentObject var metrics: UIMetrics
@@ -14,7 +14,7 @@ struct AvatarPickerStore: View {
 
     var body: some View {
         ScrollView(.vertical, showsIndicators: true) {
-            ForEach(AvatarSets.allCases, id: \.id) { category in
+            ForEach(AvatarSetsDeprecated.allCases, id: \.id) { category in
                 self.makeAvatarCategoryRow(category: category.content)
                     .id(category.id)
             }
@@ -23,7 +23,7 @@ struct AvatarPickerStore: View {
 
     // MARK: Private
 
-    private func makeAvatarCategoryRow(category: AvatarCategory) -> some View {
+    private func makeAvatarCategoryRow(category: AvatarCategoryDeprecated) -> some View {
         VStack(alignment: .leading, spacing: 10) {
             Text(category.category)
                 // TODO: (@ui/ux) - Design System - replace with Leka font
@@ -39,7 +39,7 @@ struct AvatarPickerStore: View {
                                 self.selected = item
                             }
                         } label: {
-                            AvatarButtonLabel(
+                            AvatarButtonLabelDeprecated(
                                 image: .constant(item),
                                 isSelected: .constant(self.selected == item)
                             )

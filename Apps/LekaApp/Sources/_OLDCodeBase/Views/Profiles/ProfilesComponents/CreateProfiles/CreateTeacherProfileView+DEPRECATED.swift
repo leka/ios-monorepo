@@ -23,12 +23,12 @@ struct CreateTeacherProfileViewDeprecated: View {
 
             ScrollView(showsIndicators: false) {
                 VStack(spacing: 30) {
-                    AvatarPickerTriggerButton_Teachers(navigate: self.$navigateToAvatarPicker)
+                    AvatarPickerTriggerButton_TeachersDeprecated(navigate: self.$navigateToAvatarPicker)
                         .padding(.top, 30)
 
                     Group {
                         self.nameField
-                        JobPickerTrigger(navigate: self.$navigateToJobPicker)
+                        JobPickerTriggerDeprecated(navigate: self.$navigateToJobPicker)
                     }
                     self.accessoryView
                     Spacer()
@@ -41,10 +41,10 @@ struct CreateTeacherProfileViewDeprecated: View {
         .navigationBarBackButtonHidden(true)
         .toolbarBackground(self.navigationVM.showProfileEditor ? .visible : .automatic, for: .navigationBar)
         .navigationDestination(isPresented: self.$navigateToAvatarPicker) {
-            AvatarPicker_Teachers()
+            AvatarPicker_TeachersDeprecated()
         }
         .navigationDestination(isPresented: self.$navigateToJobPicker) {
-            JobPicker()
+            JobPickerDeprecated()
         }
         .navigationDestination(isPresented: self.$navigateToSignup3) {
             SignupStep3Deprecated()

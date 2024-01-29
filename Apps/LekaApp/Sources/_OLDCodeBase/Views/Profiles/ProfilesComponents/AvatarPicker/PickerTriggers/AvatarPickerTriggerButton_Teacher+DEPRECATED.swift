@@ -4,7 +4,7 @@
 
 import SwiftUI
 
-struct AvatarPickerTriggerButton_Teachers: View {
+struct AvatarPickerTriggerButton_TeachersDeprecated: View {
     @EnvironmentObject var company: CompanyViewModelDeprecated
 
     @Binding var navigate: Bool
@@ -16,8 +16,8 @@ struct AvatarPickerTriggerButton_Teachers: View {
             },
             label: {
                 VStack(spacing: 10) {
-                    AvatarTriggerImageView(img: self.company.getSelectedProfileAvatar(.teacher))
-                    AvatarTriggerCTAView()
+                    AvatarTriggerImageViewDeprecated(img: self.company.getSelectedProfileAvatar(.teacher))
+                    AvatarTriggerCTAViewDeprecated()
                 }
             }
         )

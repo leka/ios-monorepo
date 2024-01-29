@@ -4,7 +4,7 @@
 
 import SwiftUI
 
-struct AvatarPicker_Users: View {
+struct AvatarPicker_UsersDeprecated: View {
     // MARK: Internal
 
     @EnvironmentObject var company: CompanyViewModelDeprecated
@@ -15,7 +15,7 @@ struct AvatarPicker_Users: View {
         ZStack {
             Color.white.edgesIgnoringSafeArea(.top)
 
-            AvatarPickerStore(selected: self.$selected)
+            AvatarPickerStoreDeprecated(selected: self.$selected)
                 .onAppear {
                     self.selected = self.company.bufferUser.avatar
                 }
@@ -23,10 +23,10 @@ struct AvatarPicker_Users: View {
                 .navigationBarTitleDisplayMode(.inline)
                 .navigationBarBackButtonHidden(true)
                 .toolbar {
-                    ToolbarItem(placement: .principal) { AvatarPicker_NavigationTitle() }
-                    ToolbarItem(placement: .navigationBarLeading) { AvatarPicker_AdaptiveBackButton() }
+                    ToolbarItem(placement: .principal) { AvatarPicker_NavigationTitleDeprecated() }
+                    ToolbarItem(placement: .navigationBarLeading) { AvatarPicker_AdaptiveBackButtonDeprecated() }
                     ToolbarItem(placement: .navigationBarTrailing) {
-                        AvatarPicker_ValidateButton(
+                        AvatarPicker_ValidateButtonDeprecated(
                             selected: self.$selected,
                             action: {
                                 self.company.setBufferAvatar(self.selected, for: .user)

@@ -5,9 +5,9 @@
 import DesignKit
 import SwiftUI
 
-// MARK: - AvatarTriggerImageView
+// MARK: - AvatarTriggerImageViewDeprecated
 
-struct AvatarTriggerImageView: View {
+struct AvatarTriggerImageViewDeprecated: View {
     var img: String
 
     var body: some View {
@@ -31,9 +31,9 @@ struct AvatarTriggerImageView: View {
     }
 }
 
-// MARK: - AvatarTriggerCTAView
+// MARK: - AvatarTriggerCTAViewDeprecated
 
-struct AvatarTriggerCTAView: View {
+struct AvatarTriggerCTAViewDeprecated: View {
     @EnvironmentObject var metrics: UIMetrics
 
     var body: some View {

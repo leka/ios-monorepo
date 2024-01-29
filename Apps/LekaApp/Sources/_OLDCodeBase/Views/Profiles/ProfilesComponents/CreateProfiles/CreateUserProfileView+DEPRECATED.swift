@@ -22,11 +22,11 @@ struct CreateUserProfileViewDeprecated: View {
 
             ScrollView(showsIndicators: false) {
                 VStack(spacing: 30) {
-                    AvatarPickerTriggerButton_Users(navigate: self.$navigateToAvatarPicker)
+                    AvatarPickerTriggerButton_UsersDeprecated(navigate: self.$navigateToAvatarPicker)
                         .padding(.top, 30)
 
                     self.nameField
-                    ReinforcerPicker()
+                    ReinforcerPickerDeprecated()
                     self.accessoryView
                     Spacer()
                     DeleteProfileButton(show: self.$showDeleteConfirmation)
@@ -38,7 +38,7 @@ struct CreateUserProfileViewDeprecated: View {
         .navigationBarBackButtonHidden(true)
         .toolbarBackground(self.navigationVM.showProfileEditor ? .visible : .automatic, for: .navigationBar)
         .navigationDestination(isPresented: self.$navigateToAvatarPicker) {
-            AvatarPicker_Users()
+            AvatarPicker_UsersDeprecated()
         }
         .navigationDestination(isPresented: self.$navigateToSignupFinalStep) {
             SignupFinalStepDeprecated()

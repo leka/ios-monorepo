@@ -4,7 +4,7 @@
 
 import SwiftUI
 
-struct AvatarPicker_Teachers: View {
+struct AvatarPicker_TeachersDeprecated: View {
     // MARK: Internal
 
     @EnvironmentObject var company: CompanyViewModelDeprecated
@@ -15,7 +15,7 @@ struct AvatarPicker_Teachers: View {
         ZStack {
             Color.white.edgesIgnoringSafeArea(.top)
 
-            AvatarPickerStore(selected: self.$selected)
+            AvatarPickerStoreDeprecated(selected: self.$selected)
                 .onAppear {
                     self.selected = self.company.bufferTeacher.avatar
                 }
@@ -23,10 +23,10 @@ struct AvatarPicker_Teachers: View {
                 .navigationBarTitleDisplayMode(.inline)
                 .navigationBarBackButtonHidden(true)
                 .toolbar {
-                    ToolbarItem(placement: .principal) { AvatarPicker_NavigationTitle() }
-                    ToolbarItem(placement: .navigationBarLeading) { AvatarPicker_AdaptiveBackButton() }
+                    ToolbarItem(placement: .principal) { AvatarPicker_NavigationTitleDeprecated() }
+                    ToolbarItem(placement: .navigationBarLeading) { AvatarPicker_AdaptiveBackButtonDeprecated() }
                     ToolbarItem(placement: .navigationBarTrailing) {
-                        AvatarPicker_ValidateButton(
+                        AvatarPicker_ValidateButtonDeprecated(
                             selected: self.$selected,
                             action: {
                                 self.company.setBufferAvatar(self.selected, for: .teacher)

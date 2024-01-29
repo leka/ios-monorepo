@@ -5,19 +5,19 @@
 import DesignKit
 import Foundation
 
-// MARK: - AvatarCategory
+// MARK: - AvatarCategoryDeprecated
 
 // Avatar Picker Models
-struct AvatarCategory: Identifiable, Hashable {
+struct AvatarCategoryDeprecated: Identifiable, Hashable {
     let id = UUID()
     let category: String
     let images: [String]
 }
 
-// MARK: - AvatarSets
+// MARK: - AvatarSetsDeprecated
 
 // AvatarPicker Data
-enum AvatarSets: Int, CaseIterable, Hashable {
+enum AvatarSetsDeprecated: Int, CaseIterable, Hashable {
     case girls
     case boys
     case lekaGirls
@@ -33,10 +33,10 @@ enum AvatarSets: Int, CaseIterable, Hashable {
 
     var id: Self { self }
 
-    var content: AvatarCategory {
+    var content: AvatarCategoryDeprecated {
         switch self {
             case .girls:
-                AvatarCategory(
+                AvatarCategoryDeprecated(
                     category: "Filles",
                     images: [
                         DesignKitAsset.Avatars.avatarsGirl1a.name,
@@ -70,7 +70,7 @@ enum AvatarSets: Int, CaseIterable, Hashable {
                     ]
                 )
             case .boys:
-                AvatarCategory(
+                AvatarCategoryDeprecated(
                     category: "Garçons",
                     images: [
                         DesignKitAsset.Avatars.avatarsBoy1a.name,
@@ -105,7 +105,7 @@ enum AvatarSets: Int, CaseIterable, Hashable {
                     ]
                 )
             case .lekaGirls:
-                AvatarCategory(
+                AvatarCategoryDeprecated(
                     category: "Filles Leka",
                     images: [
                         DesignKitAsset.Avatars.avatarsLekaGirl1a.name,
@@ -135,7 +135,7 @@ enum AvatarSets: Int, CaseIterable, Hashable {
                     ]
                 )
             case .lekaBoys:
-                AvatarCategory(
+                AvatarCategoryDeprecated(
                     category: "Garçons Leka",
                     images: [
                         DesignKitAsset.Avatars.avatarsLekaBoy1a.name,
@@ -149,7 +149,7 @@ enum AvatarSets: Int, CaseIterable, Hashable {
                     ]
                 )
             case .jobs:
-                AvatarCategory(
+                AvatarCategoryDeprecated(
                     category: "Métiers Leka",
                     images: [
                         DesignKitAsset.Avatars.avatarsLekaCook.name,
@@ -161,7 +161,7 @@ enum AvatarSets: Int, CaseIterable, Hashable {
                     ]
                 )
             case .weather:
-                AvatarCategory(
+                AvatarCategoryDeprecated(
                     category: "Météo Leka",
                     images: [
                         DesignKitAsset.Avatars.avatarsLekaCloud.name,
@@ -172,7 +172,7 @@ enum AvatarSets: Int, CaseIterable, Hashable {
                     ]
                 )
             case .sunglasses:
-                AvatarCategory(
+                AvatarCategoryDeprecated(
                     category: "Lunettes de soleil",
                     images: [
                         DesignKitAsset.Avatars.avatarsLekaSunglassesBlue.name,
@@ -182,7 +182,7 @@ enum AvatarSets: Int, CaseIterable, Hashable {
                     ]
                 )
             case .animals:
-                AvatarCategory(
+                AvatarCategoryDeprecated(
                     category: "Animaux",
                     images: [
                         DesignKitAsset.Avatars.avatarsPictogramsAnimalsFarmBirdYellow0071.name,
@@ -205,7 +205,7 @@ enum AvatarSets: Int, CaseIterable, Hashable {
                     ]
                 )
             case .fruits:
-                AvatarCategory(
+                AvatarCategoryDeprecated(
                     category: "Fruits",
                     images: [
                         DesignKitAsset.Avatars.avatarsPictogramsFoodsFruitsAppleGreen0100.name,
@@ -222,7 +222,7 @@ enum AvatarSets: Int, CaseIterable, Hashable {
                     ]
                 )
             case .vegies:
-                AvatarCategory(
+                AvatarCategoryDeprecated(
                     category: "Légumes",
                     images: [
                         DesignKitAsset.Avatars.avatarsPictogramsFoodsVegetablesAvocadoGreen00E1.name,

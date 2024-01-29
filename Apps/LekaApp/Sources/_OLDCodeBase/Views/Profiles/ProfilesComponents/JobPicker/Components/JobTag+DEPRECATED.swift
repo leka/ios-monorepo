@@ -5,9 +5,9 @@
 import DesignKit
 import SwiftUI
 
-// MARK: - JobTag
+// MARK: - JobTagDeprecated
 
-struct JobTag: View {
+struct JobTagDeprecated: View {
     @EnvironmentObject var company: CompanyViewModelDeprecated
     @EnvironmentObject var metrics: UIMetrics
 
@@ -38,7 +38,7 @@ struct JobTag: View {
 
 struct JobTag_Previews: PreviewProvider {
     static var previews: some View {
-        JobTag(profession: "Accompagnant des élèves en situation de handicap")
+        JobTagDeprecated(profession: "Accompagnant des élèves en situation de handicap")
             .environmentObject(CompanyViewModelDeprecated())
             .environmentObject(UIMetrics())
     }
