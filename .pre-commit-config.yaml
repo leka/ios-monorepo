@@ -24,7 +24,7 @@ repos:
         entry: swiftlint
 
   - repo: https://github.com/nicklockwood/SwiftFormat
-    rev: 0.52.11
+    rev: 0.53.1
     hooks:
       - id: swiftformat
 
