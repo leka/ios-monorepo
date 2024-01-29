@@ -954,6 +954,42 @@
           }
         }
       }
+    },
+    "lekaapp.avatar_picker.validate_button": {
+      "comment": "Avatar picker validate button",
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Validate selection"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Valider la sélection"
+          }
+        }
+      }
+    },
+    "lekaapp.avatar_picker.title": {
+      "comment": "Avatar picker title",
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "What's your avatar ?"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quel est ton avatar ?"
+          }
+        }
+      }
     }
   },
   "version": "1.0"
