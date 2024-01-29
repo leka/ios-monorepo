@@ -4,7 +4,7 @@
 
 import LocalizationKit
 
-// swiftlint:disable line_length
+// swiftlint:disable line_length nesting
 
 extension l10n {
     enum AccountCreationProcess {
@@ -28,6 +28,20 @@ extension l10n {
         }
 
         enum Step2 {
+            enum CaregiverCreation {
+                static let title = LocalizedString("lekaapp.account_creation_process.step_2.caregiver_creation.title", value: "Create a caregiver profile", comment: "Step 2 Caregiver creation title")
+
+                static let avatarChoiceButton = LocalizedString("lekaapp.account_creation_process.step_2.caregiver_creation.avatar_choice_button", value: "Choose an avatar", comment: "Step 2 Caregiver creation avatar choice button label")
+
+                static let caregiverNameLabel = LocalizedString("lekaapp.account_creation_process.step_2.caregiver_creation.caregiver_name_label", value: "Caregiver name", comment: "Step 2 Caregiver creation caregiver name textfield label")
+
+                static let professionLabel = LocalizedString("lekaapp.account_creation_process.step_2.caregiver_creation.profession_label", value: "Profession(s)", comment: "Step 2 Caregiver creation profession label above profession selection button")
+
+                static let professionAddButton = LocalizedString("lekaapp.account_creation_process.step_2.caregiver_creation.profession_add_button", value: "Add", comment: "Step 2 Caregiver creation profession add button label")
+
+                static let registerProfilButton = LocalizedString("lekaapp.account_creation_process.step_2.caregiver_creation.register_profil_button", value: "Register profile", comment: "Step 2 Caregiver creation register profil button label")
+            }
+
             static let title = LocalizedString("lekaapp.account_creation_process.step_2.title", value: "Step 1 - Caregiver profile", comment: "Step 2 title")
 
             static let message = LocalizedString("lekaapp.account_creation_process.step_2.message", value: "First, let's create your profile as a caregiver.", comment: "Step 2 message")
@@ -69,4 +83,4 @@ extension l10n {
     }
 }
 
-// swiftlint:enable line_length
+// swiftlint:enable line_length nesting
