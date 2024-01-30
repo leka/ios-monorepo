@@ -36,6 +36,7 @@ struct LekaApp: App {
                 .environmentObject(self.authManager)
                 .onAppear {
                     self.styleManager.setDefaultColorScheme(self.colorScheme)
+                    self.rootOwnerViewModel.isWelcomeViewPresented = self.authManager.userAuthenticationState != .loggedIn
                 }
                 .fullScreenCover(isPresented: self.$rootOwnerViewModel.isWelcomeViewPresented) {
                     WelcomeView()
