@@ -5,9 +5,9 @@
 import DesignKit
 import SwiftUI
 
-// MARK: - JobPicker
+// MARK: - JobPickerDeprecated
 
-struct JobPicker: View {
+struct JobPickerDeprecated: View {
     // MARK: Internal
 
     @EnvironmentObject var company: CompanyViewModelDeprecated
@@ -22,7 +22,7 @@ struct JobPicker: View {
         ZStack {
             Color.white.edgesIgnoringSafeArea(.top)
 
-            JobPickerStore(selectedJobs: self.$selectedJobs)
+            JobPickerStoreDeprecated(selectedJobs: self.$selectedJobs)
                 .onAppear {
                     self.selectedJobs = self.company.bufferTeacher.jobs
                 }
@@ -106,7 +106,7 @@ struct JobPicker: View {
 
 struct JobPicker_Previews: PreviewProvider {
     static var previews: some View {
-        JobPicker()
+        JobPickerDeprecated()
             .environmentObject(CompanyViewModelDeprecated())
             .environmentObject(ViewRouterDeprecated())
             .environmentObject(UIMetrics())

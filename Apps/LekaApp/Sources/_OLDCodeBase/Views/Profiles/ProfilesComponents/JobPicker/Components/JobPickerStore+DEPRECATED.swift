@@ -4,7 +4,7 @@
 
 import SwiftUI
 
-struct JobPickerStore: View {
+struct JobPickerStoreDeprecated: View {
     // MARK: Internal
 
     @Binding var selectedJobs: [String]

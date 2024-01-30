@@ -5,7 +5,7 @@
 import DesignKit
 import SwiftUI
 
-struct ReinforcerPicker: View {
+struct ReinforcerPickerDeprecated: View {
     @EnvironmentObject var company: CompanyViewModelDeprecated
     @EnvironmentObject var metrics: UIMetrics
 

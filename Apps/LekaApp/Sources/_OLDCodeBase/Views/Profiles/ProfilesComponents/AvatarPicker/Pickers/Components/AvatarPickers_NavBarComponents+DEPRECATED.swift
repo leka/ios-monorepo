@@ -5,9 +5,9 @@
 import DesignKit
 import SwiftUI
 
-// MARK: - AvatarPicker_NavigationTitle
+// MARK: - AvatarPicker_NavigationTitleDeprecated
 
-struct AvatarPicker_NavigationTitle: View {
+struct AvatarPicker_NavigationTitleDeprecated: View {
     @EnvironmentObject var metrics: UIMetrics
     @EnvironmentObject var company: CompanyViewModelDeprecated
 
@@ -18,9 +18,9 @@ struct AvatarPicker_NavigationTitle: View {
     }
 }
 
-// MARK: - AvatarPicker_AdaptiveBackButton
+// MARK: - AvatarPicker_AdaptiveBackButtonDeprecated
 
-struct AvatarPicker_AdaptiveBackButton: View {
+struct AvatarPicker_AdaptiveBackButtonDeprecated: View {
     @EnvironmentObject var viewRouter: ViewRouterDeprecated
     @Environment(\.dismiss) var dismiss
 
@@ -41,9 +41,9 @@ struct AvatarPicker_AdaptiveBackButton: View {
     }
 }
 
-// MARK: - AvatarPicker_ValidateButton
+// MARK: - AvatarPicker_ValidateButtonDeprecated
 
-struct AvatarPicker_ValidateButton: View {
+struct AvatarPicker_ValidateButtonDeprecated: View {
     @EnvironmentObject var company: CompanyViewModelDeprecated
     @Environment(\.dismiss) var dismiss
 

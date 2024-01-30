@@ -5,7 +5,7 @@
 import DesignKit
 import SwiftUI
 
-struct JobPickerTrigger: View {
+struct JobPickerTriggerDeprecated: View {
     // MARK: Internal
 
     @EnvironmentObject var company: CompanyViewModelDeprecated
@@ -28,7 +28,7 @@ struct JobPickerTrigger: View {
 
             if !self.company.bufferTeacher.jobs.isEmpty {
                 ForEach(self.company.bufferTeacher.jobs, id: \.self) { profession in
-                    JobTag(profession: profession)
+                    JobTagDeprecated(profession: profession)
                 }
             }
         }
