@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AccountKit
 import LocalizationKit
 import SwiftUI
 
@@ -11,6 +12,7 @@ import SwiftUI
 
 extension SettingsView {
     struct AccountSection: View {
+        @EnvironmentObject var authManager: AuthManager
         @ObservedObject var rootOwnerViewModel: RootOwnerViewModel = .shared
 
         var body: some View {
@@ -32,6 +34,7 @@ extension SettingsView {
             }
             .alert(String(l10n.SettingsView.AccountSection.LogOut.alertTitle.characters), isPresented: self.$rootOwnerViewModel.showConfirmDisconnection) {
                 Button(role: .destructive) {
+                    self.authManager.signOut()
                     self.rootOwnerViewModel.isSettingsViewPresented = false
                     self.rootOwnerViewModel.currentCompany = Company(email: "", password: "")
                 } label: {
@@ -43,6 +46,7 @@ extension SettingsView {
             .alert(String(l10n.SettingsView.AccountSection.DeleteAccount.alertTitle.characters), isPresented: self.$rootOwnerViewModel.showConfirmDeleteAccount) {
                 Button(role: .destructive) {
                     // TODO: (@team) - Replace w/ real implementation
+                    self.authManager.signOut()
                     self.rootOwnerViewModel.isSettingsViewPresented = false
                     self.rootOwnerViewModel.currentCompany = Company(email: "", password: "")
                 } label: {

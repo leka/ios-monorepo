@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AccountKit
 import DesignKit
 import LocalizationKit
 import SwiftUI
@@ -9,6 +10,7 @@ import SwiftUI
 // MARK: - SettingsView
 
 struct SettingsView: View {
+    @EnvironmentObject var authManager: AuthManager
     @ObservedObject var rootOwnerViewModel: RootOwnerViewModel = .shared
     @ObservedObject var styleManager: StyleManager = .shared
 
@@ -17,7 +19,7 @@ struct SettingsView: View {
             Form {
                 AppearanceSection()
 
-                if self.rootOwnerViewModel.isCompanyConnected {
+                if self.authManager.userAuthenticationState == .loggedIn {
                     CredentialsSection()
                     AccountSection()
                 }

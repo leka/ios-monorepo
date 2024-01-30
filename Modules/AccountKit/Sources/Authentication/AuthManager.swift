@@ -42,8 +42,6 @@ public class AuthManager: ObservableObject {
             .receive(on: DispatchQueue.main)
             .sink { [weak self] user in
                 self?.updateAuthState(for: user)
-//                let newState = user != nil ? FirebaseAuthenticationState.loggedIn : .loggedOut
-//                self?.userAuthenticationState = newState
                 guard user != nil else {
                     self?.userAuthenticationState = .loggedOut
                     self?.isWelcomeViewPresented = true
@@ -79,6 +77,17 @@ public class AuthManager: ObservableObject {
                 }
             )
             .store(in: &self.cancellables)
+    }
+
+    public func signOut() {
+        do {
+            try self.auth.signOut()
+            self.userAuthenticationState = .loggedOut
+//            self.isWelcomeViewPresented = true
+            log.notice("Company was successfully signed out. 🙋‍♂️")
+        } catch let signOutError {
+            errorMessage = signOutError.localizedDescription
+        }
     }
 
     // MARK: Internal
@@ -129,6 +138,7 @@ public class AuthManager: ObservableObject {
             if case .signUp = operation {
                 self?.userIsSigningUp = true
                 self?.sendEmailVerification()
+                self?.isWelcomeViewPresented = false // temp
             }
         }
     }
