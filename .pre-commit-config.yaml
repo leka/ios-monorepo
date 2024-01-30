@@ -24,6 +24,22 @@ repos:
         entry: swiftlint
 
   - repo: https://github.com/nicklockwood/SwiftFormat
-    rev: 0.52.11
+    rev: 0.53.1
     hooks:
       - id: swiftformat
+
+  - repo: local
+    hooks:
+      - id: check-xcstrings-stale_entries
+        name: Check .xcstrings files for stale entries
+        description: This hook checks .xcstrings files for stale entries
+        entry: Tools/Hooks/check-xcstrings-stale_entries.sh
+        language: script
+        files: '.*\.xcstrings'
+
+      - id: check-xcstrings-unusual_terminators
+        name: Check .xcstrings files for unusual terminators
+        description: This hook checks .xcstrings files for unusual terminators
+        entry: Tools/Hooks/check-xcstrings-unusual_terminators.sh
+        language: script
+        files: '.*\.xcstrings'

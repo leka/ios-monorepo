@@ -662,7 +662,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vous êtes sur le point de supprimer votre compte et toutes les données qu'il contient. Cette action est irréversible. Voulez-vous continuer ?"
+            "value" : "Vous êtes sur le point de supprimer votre compte et toutes les données qu'il contient.\nCette action est irréversible.\nVoulez-vous continuer ?"
           }
         }
       }

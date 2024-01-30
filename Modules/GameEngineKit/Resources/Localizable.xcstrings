@@ -230,7 +230,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Incites la personne accompagnée à chercher Leka Tu peux lancer un renforçateur pour lui donner un indice visuel et/ou sonore.  Appuies sur TROUVÉ ! une fois le robot trouvé. "
+            "value" : "Incites la personne accompagnée à chercher Leka.\nTu peux lancer un renforçateur pour lui donner un indice visuel et/ou sonore.\nAppuies sur \"TROUVÉ\" une fois le robot trouvé."
           }
         }
       }
@@ -356,7 +356,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Le mode Pairing permet à la personne accompagnée de se familiariser à Leka  avant même d'entrer dans les apprentissages des Activités et des Parcours.  Le robot va s'animer en faisant des pauses afin que la  personne accompagnée puisse apprivoiser son nouveau compagnon !"
+            "value" : "Le mode Pairing permet à la personne accompagnée de se familiariser à Leka\navant même d'entrer dans les apprentissages des Activités et des Parcours.\nLe robot va s'animer en faisant des pauses afin que\nla personne accompagnée puisse apprivoiser son nouveau compagnon !"
           }
         }
       }
