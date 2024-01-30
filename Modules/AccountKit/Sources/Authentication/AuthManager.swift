@@ -28,6 +28,7 @@ public class AuthManager: ObservableObject {
     }
 
     @Published public var userAuthenticationState: FirebaseAuthenticationState = .unknown
+    @Published public var isWelcomeViewPresented = false
     @Published public var errorMessage: String = ""
     @Published public var showErrorAlert = false
     @Published public var actionRequestMessage: String = ""
@@ -41,8 +42,15 @@ public class AuthManager: ObservableObject {
             .receive(on: DispatchQueue.main)
             .sink { [weak self] user in
                 self?.updateAuthState(for: user)
-                let newState = user != nil ? FirebaseAuthenticationState.loggedIn : .loggedOut
-                self?.userAuthenticationState = newState
+//                let newState = user != nil ? FirebaseAuthenticationState.loggedIn : .loggedOut
+//                self?.userAuthenticationState = newState
+                guard user != nil else {
+                    self?.userAuthenticationState = .loggedOut
+                    self?.isWelcomeViewPresented = true
+                    return
+                }
+                self?.userAuthenticationState = .loggedIn
+                self?.isWelcomeViewPresented = false
             }
             .store(in: &self.cancellables)
     }

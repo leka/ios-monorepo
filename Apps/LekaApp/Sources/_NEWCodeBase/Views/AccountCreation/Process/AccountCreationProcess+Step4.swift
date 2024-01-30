@@ -2,13 +2,14 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AccountKit
 import DesignKit
 import LocalizationKit
 import SwiftUI
 
 extension AccountCreationProcess {
     struct Step4: View {
-        @ObservedObject var rootOwnerViewModel = RootOwnerViewModel.shared
+        @EnvironmentObject var authManager: AuthManager
 
         var body: some View {
             VStack(spacing: 30) {
@@ -20,7 +21,7 @@ extension AccountCreationProcess {
                 Text(l10n.AccountCreationProcess.Step4.message)
 
                 Button(String(l10n.AccountCreationProcess.Step4.discoverContentButton.characters)) {
-                    self.rootOwnerViewModel.isWelcomeViewPresented.toggle()
+                    self.authManager.isWelcomeViewPresented.toggle()
                 }
                 .buttonStyle(.bordered)
             }

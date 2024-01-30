@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AccountKit
 import DesignKit
 import LocalizationKit
 import SwiftUI
@@ -18,6 +19,8 @@ class AccountCreationViewViewModel: ObservableObject {
 
 struct AccountCreationView: View {
     // MARK: Internal
+
+    @EnvironmentObject var authManager: AuthManager
 
     var body: some View {
         VStack(alignment: .center, spacing: 30) {
@@ -54,10 +57,16 @@ struct AccountCreationView: View {
     }
 
     private func submitForm() {
-        // TODO: (@team) - Assert that credentials are valids
-        self.rootViewModelViewModel.currentCompany.email = self.viewModel.email
-        self.rootViewModelViewModel.currentCompany.password = self.viewModel.password
-        self.viewModel.navigateToAccountCreationProcess.toggle()
+        self.authManager.signUp(
+            email: self.viewModel.email,
+            password: self.viewModel.password
+        )
+
+        if self.authManager.userIsSigningUp {
+            self.rootViewModelViewModel.currentCompany.email = self.viewModel.email
+            self.rootViewModelViewModel.currentCompany.password = self.viewModel.password
+            self.viewModel.navigateToAccountCreationProcess.toggle()
+        }
     }
 }
 
@@ -65,4 +74,5 @@ struct AccountCreationView: View {
 
 #Preview {
     AccountCreationView(rootViewModelViewModel: RootOwnerViewModel.shared)
+        .environmentObject(AuthManager())
 }

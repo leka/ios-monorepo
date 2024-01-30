@@ -17,7 +17,7 @@ class RootOwnerViewModel: ObservableObject {
     static let shared = RootOwnerViewModel()
 
     @Published var currentCompany = Company(email: "", password: "", caregivers: [], carereceivers: [])
-    @Published var isWelcomeViewPresented = false
+//    @Published var isWelcomeViewPresented = false
     @Published var isSettingsViewPresented = false
 
     @Published var showConfirmDisconnection: Bool = false
@@ -29,6 +29,6 @@ class RootOwnerViewModel: ObservableObject {
 
     func disconnect() {
         self.currentCompany = Company(email: "", password: "", caregivers: [], carereceivers: [])
-        self.isWelcomeViewPresented = true
+//        self.isWelcomeViewPresented = true
     }
 }

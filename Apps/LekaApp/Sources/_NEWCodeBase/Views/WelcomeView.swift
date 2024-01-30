@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AccountKit
 import DesignKit
 import LocalizationKit
 import SwiftUI
@@ -9,7 +10,7 @@ import SwiftUI
 // MARK: - WelcomeView
 
 struct WelcomeView: View {
-    @ObservedObject var rootOwnerViewModel = RootOwnerViewModel.shared
+    @EnvironmentObject var authManager: AuthManager
 
     var body: some View {
         NavigationStack {
@@ -29,7 +30,7 @@ struct WelcomeView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(String(l10n.WelcomeView.skipStepButton.characters)) {
-                        self.rootOwnerViewModel.isWelcomeViewPresented.toggle()
+                        self.authManager.isWelcomeViewPresented.toggle()
                     }
                 }
             }

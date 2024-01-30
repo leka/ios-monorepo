@@ -33,16 +33,15 @@ struct LekaApp: App {
     var body: some Scene {
         WindowGroup {
             MainView()
-                .environmentObject(self.authManager)
                 .onAppear {
                     self.styleManager.setDefaultColorScheme(self.colorScheme)
-                    self.rootOwnerViewModel.isWelcomeViewPresented = self.authManager.userAuthenticationState != .loggedIn
                 }
-                .fullScreenCover(isPresented: self.$rootOwnerViewModel.isWelcomeViewPresented) {
+                .fullScreenCover(isPresented: self.$authManager.isWelcomeViewPresented) {
                     WelcomeView()
                 }
                 .tint(self.styleManager.accentColor)
                 .preferredColorScheme(self.styleManager.colorScheme)
+                .environmentObject(self.authManager)
         }
     }
 }

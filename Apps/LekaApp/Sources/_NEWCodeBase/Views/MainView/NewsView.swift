@@ -2,13 +2,14 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AccountKit
 import LocalizationKit
 import SwiftUI
 
 // MARK: - NewsView
 
 struct NewsView: View {
-    @ObservedObject var rootOwnerViewModel: RootOwnerViewModel = .shared
+    @EnvironmentObject var authManager: AuthManager
 
     var body: some View {
         VStack {
@@ -16,7 +17,7 @@ struct NewsView: View {
                 .font(.largeTitle)
                 .bold()
 
-            if self.rootOwnerViewModel.currentCompany.email == "" {
+            if self.authManager.userAuthenticationState != .loggedIn {
                 VStack {
                     Text("Vous utilisez actuellement votre application en mode découverte")
                         .font(.headline)
@@ -24,7 +25,7 @@ struct NewsView: View {
                         .font(.subheadline)
 
                     Button("Se connecter ou Créer un compte") {
-                        self.rootOwnerViewModel.isWelcomeViewPresented = true
+                        self.authManager.isWelcomeViewPresented = true
                     }
                     .buttonStyle(.bordered)
                 }
