@@ -23,6 +23,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 @main
 struct LekaApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    @StateObject var authManager = AuthManager()
 
     @Environment(\.colorScheme) var colorScheme
 
@@ -32,6 +33,7 @@ struct LekaApp: App {
     var body: some Scene {
         WindowGroup {
             MainView()
+                .environmentObject(self.authManager)
                 .onAppear {
                     self.styleManager.setDefaultColorScheme(self.colorScheme)
                 }
