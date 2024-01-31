@@ -1152,6 +1152,78 @@
                     }
                 }
             }
+        },
+        "lekaapp.account_creation_process.step_3.carereceiver_creation.title": {
+            "comment": "Step 3 Carereceiver creation title",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Create a carereceiver profile"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Créer un profil de personne accompagnée"
+                    }
+                }
+            }
+        },
+        "lekaapp.account_creation_process.step_3.carereceiver_creation.register_profil_button": {
+            "comment": "Step 3 Carereceiver creation register profil button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Register profile"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Enregistrer ce profil"
+                    }
+                }
+            }
+        },
+        "lekaapp.account_creation_process.step_3.carereceiver_creation.carereceiver_name_label": {
+            "comment": "Step 3 Carereceiver creation carereceiver name textfield label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Carereceiver name"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Nom de la personne accompagnée"
+                    }
+                }
+            }
+        },
+        "lekaapp.account_creation_process.step_3.carereceiver_creation.avatar_choice_button": {
+            "comment": "Step 3 Carereceiver creation avatar choice button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Choose an avatar"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Choisir un avatar"
+                    }
+                }
+            }
         }
     },
     "version": "1.0"
