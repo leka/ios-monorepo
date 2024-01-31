@@ -2,11 +2,28 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AccountKit
 import DesignKit
+import FirebaseCore
 import SwiftUI
+
+// MARK: - AppDelegate
+
+class AppDelegate: NSObject, UIApplicationDelegate {
+    func application(_: UIApplication,
+                     didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool
+    {
+        FirebaseApp.configure()
+        return true
+    }
+}
+
+// MARK: - LekaApp
 
 @main
 struct LekaApp: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+
     @Environment(\.colorScheme) var colorScheme
 
     @ObservedObject var styleManager: StyleManager = .shared
