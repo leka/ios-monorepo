@@ -8,8 +8,7 @@ import Foundation
 public class AuthManagerViewModel: ObservableObject {
     // MARK: Lifecycle
 
-    public init(authManager: AuthManager = .shared) {
-        self.authManager = authManager
+    public init() {
         self.subscribeToAuthManager()
     }
 
@@ -27,16 +26,9 @@ public class AuthManagerViewModel: ObservableObject {
     @Published public var notificationMessage: String = ""
     @Published public var showNotificationAlert = false
 
-    // MARK: - Authentication methods
-
-    public func signUp(email: String, password: String) {
-        self.userIsSigningUp = true
-        self.authManager.signUp(email: email, password: password)
-    }
-
     // MARK: Private
 
-    private let authManager: AuthManager
+    private let authManager: AuthManager = .shared
     private var emailHasBeenConfirmed: Bool = false
     private var cancellables = Set<AnyCancellable>()
 
@@ -52,7 +44,11 @@ public class AuthManagerViewModel: ObservableObject {
         self.authManager.authenticationErrorPublisher
             .receive(on: DispatchQueue.main)
             .sink { [weak self] error in
-                self?.errorMessage = error.localizedDescription
+                if let authError = error as? AuthManager.AuthenticationError {
+                    self?.errorMessage = authError.localizedDescription
+                } else {
+                    self?.errorMessage = error.localizedDescription
+                }
                 self?.showErrorAlert = true
             }
             .store(in: &self.cancellables)
@@ -64,7 +60,6 @@ public class AuthManagerViewModel: ObservableObject {
                 if self.userIsSigningUp {
                     self.notificationMessage = "Verification email sent. Please check your inbox."
                     self.showNotificationAlert = true
-                    // TODO(@macteuts): 'userIsSigningUp = false' on dismiss notification
                 } else {
                     // Handle unverified Sign-in
                 }
