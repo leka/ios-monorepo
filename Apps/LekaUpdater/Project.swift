@@ -33,6 +33,5 @@ let project = Project.app(
         .project(target: "BLEKit", path: Path("../../Modules/BLEKit")),
         .project(target: "RobotKit", path: Path("../../Modules/RobotKit")),
         .project(target: "LocalizationKit", path: Path("../../Modules/LocalizationKit")),
-        .external(name: "Version"),
     ]
 )
