@@ -25,5 +25,6 @@ let project = Project.app(
         .project(target: "DesignKit", path: Path("../../Modules/DesignKit")),
         .project(target: "RobotKit", path: Path("../../Modules/RobotKit")),
         .project(target: "AccountKit", path: Path("../../Modules/AccountKit")),
+        .external(name: "Yams"),
     ]
 )
