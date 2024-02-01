@@ -7,25 +7,6 @@ import Firebase
 import FirebaseAuthCombineSwift
 import Foundation
 
-// MARK: - AuthManager.AuthenticationError
-
-extension AuthManager {
-    enum AuthenticationError: Error {
-        case custom(message: String)
-
-        // MARK: Internal
-
-        var localizedDescription: String {
-            switch self {
-                case let .custom(message):
-                    message
-            }
-        }
-    }
-}
-
-// MARK: - AuthManager
-
 public class AuthManager {
     // MARK: Lifecycle
 
@@ -37,7 +18,7 @@ public class AuthManager {
 
     // MARK: Public
 
-    public enum FirebaseAuthenticationState {
+    public enum AuthenticationState {
         case unknown
         case loggedOut
         case loggedIn
@@ -58,7 +39,7 @@ public class AuthManager {
                         self?.authenticationError.send(AuthenticationError.custom(message: errorMessage))
                 }
             }, receiveValue: { [weak self] result in
-                log.notice("Company \(result.user.uid) signed-up successfully. 🎉")
+                log.info("Company \(result.user.uid) signed-up successfully. 🎉")
                 self?.authenticationState.send(.loggedIn)
                 self?.sendEmailVerification()
             })
@@ -79,7 +60,7 @@ public class AuthManager {
 
     // MARK: Internal
 
-    var authenticationStatePublisher: AnyPublisher<FirebaseAuthenticationState, Never> {
+    var authenticationStatePublisher: AnyPublisher<AuthenticationState, Never> {
         self.authenticationState.eraseToAnyPublisher()
     }
 
@@ -89,14 +70,14 @@ public class AuthManager {
 
     // MARK: Private
 
-    private let authenticationState = CurrentValueSubject<FirebaseAuthenticationState, Never>(.unknown)
+    private let authenticationState = CurrentValueSubject<AuthenticationState, Never>(.unknown)
     private let authenticationError = PassthroughSubject<Error, Never>()
     private let auth = Auth.auth()
     private var cancellables = Set<AnyCancellable>()
 
     private func updateAuthState(for user: User?) {
         // TODO(@macteuts): Check email verification Status when relevant
-        let newState = user != nil ? FirebaseAuthenticationState.loggedIn : .loggedOut
+        let newState = user != nil ? AuthenticationState.loggedIn : .loggedOut
         self.authenticationState.send(newState)
     }
 }

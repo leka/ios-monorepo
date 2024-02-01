@@ -17,16 +17,13 @@ public class AuthManagerViewModel: ObservableObject {
 
     // MARK: - User
 
-    @Published public var userAuthenticationState: AuthManager.FirebaseAuthenticationState = .unknown
+    @Published public var userAuthenticationState: AuthManager.AuthenticationState = .unknown
     @Published public var userIsSigningUp = false
 
     // MARK: - Alerts
 
     @Published public var errorMessage: String = ""
     @Published public var showErrorAlert = false
-    // TODO(@macteuts): Check email verification Status
-    // @Published public var actionRequestMessage: String = ""
-    // @Published public var showActionRequestAlert = false
     @Published public var notificationMessage: String = ""
     @Published public var showNotificationAlert = false
 
@@ -61,7 +58,7 @@ public class AuthManagerViewModel: ObservableObject {
             .store(in: &self.cancellables)
     }
 
-    private func handleAuthenticationStateChange(state: AuthManager.FirebaseAuthenticationState) {
+    private func handleAuthenticationStateChange(state: AuthManager.AuthenticationState) {
         switch state {
             case .loggedIn:
                 if self.userIsSigningUp {
@@ -72,7 +69,7 @@ public class AuthManagerViewModel: ObservableObject {
                     // Handle unverified Sign-in
                 }
             case .loggedOut:
-                log.notice("User signed-out successfuly.")
+                log.info("User signed-out successfuly.")
                 self.resetState()
             case .unknown:
                 break
@@ -84,8 +81,6 @@ public class AuthManagerViewModel: ObservableObject {
         self.userIsSigningUp = false
         self.errorMessage = ""
         self.showErrorAlert = false
-        // actionRequestMessage = ""
-        // showActionRequestAlert = false
         self.notificationMessage = ""
         self.showNotificationAlert = false
     }
