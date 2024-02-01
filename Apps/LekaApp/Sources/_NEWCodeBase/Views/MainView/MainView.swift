@@ -23,10 +23,8 @@ struct MainView: View {
     var body: some View {
         NavigationSplitView {
             List(selection: self.$navigation.selectedCategory) {
-                HStack {
-                    Spacer()
-                    LekaLogo(width: 80)
-                    Spacer()
+                if !self.rootOwnerViewModel.isCompanyConnected {
+                    NoAccountConnectedLabel()
                 }
 
                 Button {
@@ -61,6 +59,12 @@ struct MainView: View {
                             .foregroundColor(.gray)
                             .font(.caption2)
                     }
+                    Spacer()
+                }
+
+                HStack {
+                    Spacer()
+                    LekaLogo(width: 50)
                     Spacer()
                 }
             }
