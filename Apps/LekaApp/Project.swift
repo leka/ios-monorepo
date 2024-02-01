@@ -27,8 +27,5 @@ let project = Project.app(
         .project(target: "AccountKit", path: Path("../../Modules/AccountKit")),
         .external(name: "Yams"),
         .external(name: "Lottie"),
-        .external(name: "FirebaseAnalytics"),
-        .external(name: "FirebaseAuth"),
-        .external(name: "FirebaseAuthCombine-Community"),
     ]
 )
