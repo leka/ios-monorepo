@@ -16,7 +16,7 @@ struct NewsView: View {
                 .font(.largeTitle)
                 .bold()
 
-            if self.rootOwnerViewModel.currentCompany.email == "" {
+            if self.rootOwnerViewModel.currentCompany == nil {
                 VStack {
                     Text("Vous utilisez actuellement votre application en mode découverte")
                         .font(.headline)

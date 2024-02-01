@@ -33,7 +33,7 @@ extension SettingsView {
             .alert(String(l10n.SettingsView.AccountSection.LogOut.alertTitle.characters), isPresented: self.$rootOwnerViewModel.showConfirmDisconnection) {
                 Button(role: .destructive) {
                     self.rootOwnerViewModel.isSettingsViewPresented = false
-                    self.rootOwnerViewModel.currentCompany = Company(email: "", password: "")
+                    self.rootOwnerViewModel.disconnect()
                 } label: {
                     Text(l10n.SettingsView.AccountSection.LogOut.alertButtonLabel)
                 }
@@ -44,7 +44,7 @@ extension SettingsView {
                 Button(role: .destructive) {
                     // TODO: (@team) - Replace w/ real implementation
                     self.rootOwnerViewModel.isSettingsViewPresented = false
-                    self.rootOwnerViewModel.currentCompany = Company(email: "", password: "")
+                    self.rootOwnerViewModel.disconnect()
                 } label: {
                     Text(l10n.SettingsView.AccountSection.DeleteAccount.alertButtonLabel)
                 }

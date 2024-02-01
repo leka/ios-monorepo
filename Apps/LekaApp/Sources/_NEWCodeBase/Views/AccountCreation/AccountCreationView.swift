@@ -55,8 +55,7 @@ struct AccountCreationView: View {
 
     private func submitForm() {
         // TODO: (@team) - Assert that credentials are valids
-        self.rootViewModelViewModel.currentCompany.email = self.viewModel.email
-        self.rootViewModelViewModel.currentCompany.password = self.viewModel.password
+        self.rootViewModelViewModel.currentCompany = Company(email: self.viewModel.email, password: self.viewModel.password)
         self.viewModel.navigateToAccountCreationProcess.toggle()
     }
 }

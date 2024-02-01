@@ -16,7 +16,11 @@ class RootOwnerViewModel: ObservableObject {
 
     static let shared = RootOwnerViewModel()
 
-    @Published var currentCompany = Company(email: "", password: "", caregivers: [], carereceivers: [])
+    @Published var currentCompany: Company?
+
+    @Published var bufferCaregiver = Caregiver()
+    @Published var bufferCarereceiver = Carereceiver()
+
     @Published var isWelcomeViewPresented = true
     @Published var isSettingsViewPresented = false
 
@@ -24,11 +28,10 @@ class RootOwnerViewModel: ObservableObject {
     @Published var showConfirmDeleteAccount: Bool = false
 
     var isCompanyConnected: Bool {
-        !self.currentCompany.email.isEmpty && !self.currentCompany.password.isEmpty
+        self.currentCompany != nil
     }
 
     func disconnect() {
-        self.currentCompany = Company(email: "", password: "", caregivers: [], carereceivers: [])
-        self.isWelcomeViewPresented = true
+        self.currentCompany = nil
     }
 }
