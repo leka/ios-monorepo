@@ -15,8 +15,5 @@ let project = Project.app(
         .project(target: "GameEngineKit", path: Path("../../Modules/GameEngineKit")),
         .project(target: "RobotKit", path: Path("../../Modules/RobotKit")),
         .external(name: "MarkdownUI"),
-        .external(name: "Yams"),
-        .external(name: "Lottie"),
-        .external(name: "SwiftUIJoystick"),
     ]
 )
