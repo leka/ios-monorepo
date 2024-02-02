@@ -5,7 +5,7 @@
 import DesignKit
 import SwiftUI
 
-struct ProfileSet_Teachers: View {
+struct ProfileSet_TeachersDeprecated: View {
     // MARK: Internal
 
     @EnvironmentObject var company: CompanyViewModelDeprecated
@@ -94,7 +94,7 @@ struct ProfileSet_Teachers: View {
 
     private var teachersSet: some View {
         ForEach(self.company.currentCompany.teachers) { teacher in
-            TeacherSet_AvatarCell(teacher: teacher)
+            TeacherSet_AvatarCellDeprecated(teacher: teacher)
         }
     }
 

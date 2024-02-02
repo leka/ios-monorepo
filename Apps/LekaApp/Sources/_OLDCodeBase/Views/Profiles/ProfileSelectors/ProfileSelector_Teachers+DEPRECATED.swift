@@ -5,7 +5,7 @@
 import DesignKit
 import SwiftUI
 
-struct ProfileSelector_Teachers: View {
+struct ProfileSelector_TeachersDeprecated: View {
     @EnvironmentObject var company: CompanyViewModelDeprecated
     @EnvironmentObject var settings: SettingsViewModelDeprecated
     @EnvironmentObject var metrics: UIMetrics
@@ -14,7 +14,7 @@ struct ProfileSelector_Teachers: View {
         ZStack {
             DesignKitAsset.Colors.lekaLightBlue.swiftUIColor.ignoresSafeArea()
 
-            ProfileSet_Teachers()
+            ProfileSet_TeachersDeprecated()
                 .padding(.top, 60)
         }
         .toolbar {

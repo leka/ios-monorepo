@@ -22,9 +22,9 @@ struct ProfileEditorView: View {
             Group {
                 HStack(spacing: 40) {
                     Spacer()
-                    ProfileSet_Teachers()
+                    ProfileSet_TeachersDeprecated()
                     Spacer()
-                    ProfileSet_Users()
+                    ProfileSet_UsersDeprecated()
                     Spacer()
                 }
                 .padding(.top, 60)
