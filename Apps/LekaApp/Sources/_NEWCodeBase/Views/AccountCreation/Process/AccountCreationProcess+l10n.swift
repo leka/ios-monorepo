@@ -50,6 +50,16 @@ extension l10n {
         }
 
         enum Step3 {
+            enum CarereceiverCreation {
+                static let title = LocalizedString("lekaapp.account_creation_process.step_3.carereceiver_creation.title", value: "Create a carereceiver profile", comment: "Step 3 Carereceiver creation title")
+
+                static let avatarChoiceButton = LocalizedString("lekaapp.account_creation_process.step_3.carereceiver_creation.avatar_choice_button", value: "Choose an avatar", comment: "Step 3 Carereceiver creation avatar choice button label")
+
+                static let carereceiverNameLabel = LocalizedString("lekaapp.account_creation_process.step_3.carereceiver_creation.carereceiver_name_label", value: "Carereceiver name", comment: "Step 3 Carereceiver creation carereceiver name textfield label")
+
+                static let registerProfilButton = LocalizedString("lekaapp.account_creation_process.step_3.carereceiver_creation.register_profil_button", value: "Register profile", comment: "Step 3 Carereceiver creation register profil button label")
+            }
+
             static let title = LocalizedString("lekaapp.account_creation_process.step_3.title", value: "Step 2 - Care receiver profile", comment: "Step 3 title")
 
             static let message = LocalizedString("lekaapp.account_creation_process.step_3.message",
