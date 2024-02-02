@@ -5,7 +5,7 @@
 import DesignKit
 import SwiftUI
 
-struct UserSet_AvatarCell: View {
+struct UserSet_AvatarCellDeprecated: View {
     // MARK: Internal
 
     @EnvironmentObject var company: CompanyViewModelDeprecated

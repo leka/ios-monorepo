@@ -5,7 +5,7 @@
 import DesignKit
 import SwiftUI
 
-struct ProfileSelector_Users: View {
+struct ProfileSelector_UsersDeprecated: View {
     @EnvironmentObject var company: CompanyViewModelDeprecated
     @EnvironmentObject var settings: SettingsViewModelDeprecated
     @EnvironmentObject var navigationVM: NavigationViewModel
@@ -16,7 +16,7 @@ struct ProfileSelector_Users: View {
         ZStack {
             DesignKitAsset.Colors.lekaLightBlue.swiftUIColor.ignoresSafeArea()
 
-            ProfileSet_Users()
+            ProfileSet_UsersDeprecated()
                 .padding(.top, 60)
         }
         .navigationBarBackButtonHidden()

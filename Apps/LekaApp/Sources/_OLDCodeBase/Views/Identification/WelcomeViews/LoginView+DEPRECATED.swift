@@ -38,7 +38,7 @@ struct LoginViewDeprecated: View {
             }
         }
         .navigationDestination(isPresented: self.$navigateToTeacherSelector) {
-            ProfileSelector_Teachers()
+            ProfileSelector_TeachersDeprecated()
         }
     }
 

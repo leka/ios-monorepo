@@ -18,7 +18,7 @@ struct FullScreenCoverToGameView: View {
                     destination: { destination in
                         switch destination {
                             case .robot: RobotConnectionView()
-                            case .user: ProfileSelector_Users()
+                            case .user: ProfileSelector_UsersDeprecated()
                             case .game: GameView()
                         }
                     }
