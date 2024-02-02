@@ -1,0 +1,60 @@
+{
+    "sourceLanguage": "en",
+    "strings": {
+        "accountkit.auth_manager_view_model.verification_email_success_notification": {
+            "comment": "Verification email success notification message",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Verification email sent. Please check your inbox."
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "L'email de vérification a été envoyé. Veuillez vérifier votre boîte de réception."
+                    }
+                }
+            }
+        },
+        "accountkit.auth_manager.signup_failed_error": {
+            "comment": "Sign-up failure error message",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Sign-up failed. Please try again later."
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "L'inscription a échoué. Veuillez réessayer plus tard."
+                    }
+                }
+            }
+        },
+        "accountkit.auth_manager.verification_email_failed_error": {
+            "comment": "Verification email failure error message",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "There was an error sending the verification email. Please try again later."
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Une erreur s'est produite lors de l'envoi de l'e-mail de vérification. Veuillez réessayer plus tard."
+                    }
+                }
+            }
+        }
+    },
+    "version": "1.0"
+}

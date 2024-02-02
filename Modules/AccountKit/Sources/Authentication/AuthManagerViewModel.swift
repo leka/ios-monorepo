@@ -4,6 +4,7 @@
 
 import Combine
 import Foundation
+import LocalizationKit
 
 public class AuthManagerViewModel: ObservableObject {
     // MARK: Lifecycle

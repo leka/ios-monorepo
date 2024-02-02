@@ -6,6 +6,7 @@ import Combine
 import Firebase
 import FirebaseAuthCombineSwift
 import Foundation
+import LocalizationKit
 
 public class AuthManager {
     // MARK: Lifecycle
