@@ -29,7 +29,6 @@ public class AuthManagerViewModel: ObservableObject {
     // MARK: Private
 
     private let authManager: AuthManager = .shared
-    private var emailHasBeenConfirmed: Bool = false
     private var cancellables = Set<AnyCancellable>()
 
     private func subscribeToAuthManager() {
@@ -72,7 +71,6 @@ public class AuthManagerViewModel: ObservableObject {
     }
 
     private func resetState() {
-        self.emailHasBeenConfirmed = false
         self.userIsSigningUp = false
         self.errorMessage = ""
         self.showErrorAlert = false
