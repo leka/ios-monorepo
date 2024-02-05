@@ -15,19 +15,18 @@ extension SettingsView {
 
         var body: some View {
             Section("") {
-                Group {
-                    Button {
-                        self.rootOwnerViewModel.showConfirmDisconnection.toggle()
-                    } label: {
-                        Text(l10n.SettingsView.AccountSection.LogOut.buttonLabel)
-                            .foregroundColor(.accentColor)
-                    }
+                Button {
+                    self.rootOwnerViewModel.showConfirmDisconnection = true
+                } label: {
+                    Label(String(l10n.SettingsView.AccountSection.LogOut.buttonLabel.characters), systemImage: "rectangle.portrait.and.arrow.forward")
+                        .foregroundColor(.accentColor)
+                }
 
-                    Button(role: .destructive) {
-                        self.rootOwnerViewModel.showConfirmDeleteAccount.toggle()
-                    } label: {
-                        Text(l10n.SettingsView.AccountSection.DeleteAccount.buttonLabel)
-                    }
+                Button(role: .destructive) {
+                    self.rootOwnerViewModel.showConfirmDeleteAccount = true
+                } label: {
+                    Label(String(l10n.SettingsView.AccountSection.DeleteAccount.buttonLabel.characters), systemImage: "trash")
+                        .foregroundStyle(.red)
                 }
             }
             .alert(String(l10n.SettingsView.AccountSection.LogOut.alertTitle.characters), isPresented: self.$rootOwnerViewModel.showConfirmDisconnection) {
@@ -41,16 +40,11 @@ extension SettingsView {
                 Text(l10n.SettingsView.AccountSection.LogOut.alertMessage)
             }
             .alert(String(l10n.SettingsView.AccountSection.DeleteAccount.alertTitle.characters), isPresented: self.$rootOwnerViewModel.showConfirmDeleteAccount) {
-                Button(role: .destructive) {
-                    // TODO: (@team) - Replace w/ real implementation
-                    self.rootOwnerViewModel.isSettingsViewPresented = false
-                    self.rootOwnerViewModel.disconnect()
-                } label: {
-                    Text(l10n.SettingsView.AccountSection.DeleteAccount.alertButtonLabel)
-                }
+                // Nothing to do
             } message: {
                 Text(l10n.SettingsView.AccountSection.DeleteAccount.alertMessage)
             }
+            .textCase(nil)
         }
     }
 }
