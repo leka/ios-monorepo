@@ -43,8 +43,9 @@ extension AccountCreationProcess {
             .multilineTextAlignment(.center)
             .frame(maxWidth: .infinity, alignment: .center)
             .sheet(isPresented: self.$isCaregiverCreationPresented) {
-                AccountCreationProcess.CreateCaregiverView(selectedTab: self.$selectedTab,
-                                                           isPresented: self.$isCaregiverCreationPresented)
+                CreateCaregiverView(isPresented: self.$isCaregiverCreationPresented) {
+                    self.selectedTab = .carereceiverCreation
+                }
             }
         }
 

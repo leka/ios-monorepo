@@ -16,8 +16,6 @@ import SwiftUI
 class ConnectionViewViewModel: ObservableObject {
     @Published var email: String = ""
     @Published var password: String = ""
-    @Published var isEditing = false
-    @Published var credentialsAreCorrect: Bool = true
     @Published var navigateToCaregiverSelection: Bool = false
 }
 
@@ -53,13 +51,14 @@ struct ConnectionView: View {
         }
         .navigationDestination(isPresented: self.$viewModel.navigateToCaregiverSelection) {
             // TODO: (@release) - Implement selection + review nav destination use
-            Text("ProfileSelectorCaregiverView")
+            CaregiverPicker()
         }
     }
 
     // MARK: Private
 
     @StateObject private var viewModel = ConnectionViewViewModel()
+    @ObservedObject private var rootOwnerViewModel: RootOwnerViewModel = .shared
 
     private var isConnectionDisabled: Bool {
         self.viewModel.email.isEmpty || self.viewModel.password.isEmpty
@@ -67,6 +66,7 @@ struct ConnectionView: View {
 
     private func submitForm() {
         // TODO: (@release) - Plug to AccountKit
+        self.rootOwnerViewModel.currentCompany = Company(email: self.viewModel.email, password: self.viewModel.password)
         self.viewModel.navigateToCaregiverSelection.toggle()
     }
 }
