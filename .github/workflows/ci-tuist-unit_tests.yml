@@ -30,6 +30,9 @@ jobs:
           fetch-depth: 1 # shallow clone
           lfs: true
 
+      - name: Install mise tools
+        uses: jdx/mise-action@v2
+
       - name: tuist fetch
         run: |
           tuist fetch

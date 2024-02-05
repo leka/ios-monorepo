@@ -24,11 +24,15 @@ jobs:
           fetch-depth: 0 # Fetch all history for all branches and tags
           lfs: true
 
+      - name: Install mise tools
+        uses: jdx/mise-action@v2
+
       - name: Run swiftformat
         run: |
           echo ""
           echo "🏃‍♂️ Running swiftformat"
 
+          which swiftformat
           swiftformat --version
 
           swiftformat --lint --reporter github-actions-log .

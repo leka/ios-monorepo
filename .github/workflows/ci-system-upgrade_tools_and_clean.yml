@@ -29,10 +29,16 @@ jobs:
         with:
           fetch-depth: 1 # shallow clone
 
+      - name: Install mise tools
+        uses: jdx/mise-action@v2
+
       - name: Tools' versions before
         run: |
           which xcodebuild
           xcodebuild -version
+
+          which tuist
+          tuist version
 
           which fastlane
           fastlane --version
@@ -40,8 +46,8 @@ jobs:
           which swiftlint
           swiftlint --version
 
-          which swift-format
-          swift-format --version
+          which swiftformat
+          swiftformat --version
 
           which bundle
           bundle --version
@@ -50,7 +56,6 @@ jobs:
         run: |
           brew update
           brew upgrade
-          brew install tuist@3.39.3
           brew cleanup -s --prune=all
 
       - name: Upgrade bundle
@@ -70,17 +75,17 @@ jobs:
           which xcodebuild
           xcodebuild -version
 
-          which fastlane
-          fastlane --version
-
           which tuist
           tuist version
+
+          which fastlane
+          fastlane --version
 
           which swiftlint
           swiftlint --version
 
-          which swift-format
-          swift-format --version
+          which swiftformat
+          swiftformat --version
 
           which bundle
           bundle --version
