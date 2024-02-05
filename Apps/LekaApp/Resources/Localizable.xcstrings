@@ -1,6 +1,79 @@
 {
+    "version": "1.0",
     "sourceLanguage": "en",
     "strings": {
+        "lekaapp.TextFieldEmail.invalidEmailErrorLabel": {
+            "comment": "TextFieldEmail invalid Email Error Label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "The email is not valid"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "L'adresse email n'est pas valide"
+                    }
+                }
+            }
+        },
+        "lekaapp.TextFieldEmail.label": {
+            "comment": "TextFieldEmail label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Email"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Email"
+                    }
+                }
+            }
+        },
+        "lekaapp.TextFieldPassword.invalidPasswordErrorLabel": {
+            "comment": "TextFieldPassword invalid Password Error Label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "8 characters minimum. At least one number and one Capital letter"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Minimum 8 caract\u00e8res, au moins un chiffre et une majuscule"
+                    }
+                }
+            }
+        },
+        "lekaapp.TextFieldPassword.label": {
+            "comment": "TextFieldPassword label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Password"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Mot de passe"
+                    }
+                }
+            }
+        },
         "lekaapp.account_creation_process.step_1.go_button": {
             "comment": "Step 1 continue button",
             "extractionState": "extracted_with_value",
@@ -8,13 +81,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Let's start! 👉"
+                        "value": "Let's start! \ud83d\udc49"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Commençons ! 👉"
+                        "value": "Commen\u00e7ons ! \ud83d\udc49"
                     }
                 }
             }
@@ -32,7 +105,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Nous allons maintenant vous guider\nà travers la création de votre compte\net les différentes étapes.\nPrêt(e)?"
+                        "value": "Nous allons maintenant vous guider\n\u00e0 travers la cr\u00e9ation de votre compte\net les diff\u00e9rentes \u00e9tapes.\nPr\u00eat(e)?"
                     }
                 }
             }
@@ -44,13 +117,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Welcome to our account creation process! 👋"
+                        "value": "Welcome to our account creation process! \ud83d\udc4b"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Bienvenue dans notre processus de création de compte ! 👋"
+                        "value": "Bienvenue dans notre processus de cr\u00e9ation de compte ! \ud83d\udc4b"
                     }
                 }
             }
@@ -86,7 +159,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Nom d'accompagnant"
+                        "value": "Nom de l'accompagnant"
                     }
                 }
             }
@@ -158,7 +231,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Créer un profil accompagnant"
+                        "value": "Cr\u00e9er un profil accompagnant"
                     }
                 }
             }
@@ -176,7 +249,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Créer"
+                        "value": "Cr\u00e9er"
                     }
                 }
             }
@@ -194,7 +267,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Tout d'abord, créons votre profil en tant qu'accompagnant."
+                        "value": "Tout d'abord, cr\u00e9ons votre profil en tant qu'accompagnant."
                     }
                 }
             }
@@ -212,7 +285,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Étape 1 - Profil de l'accompagnant"
+                        "value": "\u00c9tape 1 - Profil de l'accompagnant"
                     }
                 }
             }
@@ -248,7 +321,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Nom de la personne accompagnée"
+                        "value": "Nom de la personne accompagn\u00e9e"
                     }
                 }
             }
@@ -284,7 +357,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Créer un profil de personne accompagnée"
+                        "value": "Cr\u00e9er un profil de personne accompagn\u00e9e"
                     }
                 }
             }
@@ -302,7 +375,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Créer"
+                        "value": "Cr\u00e9er"
                     }
                 }
             }
@@ -320,7 +393,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Nous allons maintenant créer un profil\nprofil de personne accompagnée."
+                        "value": "Nous allons maintenant cr\u00e9er un profil\nprofil de personne accompagn\u00e9e."
                     }
                 }
             }
@@ -338,7 +411,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Étape 2 - Profil de la personne accompagnée"
+                        "value": "\u00c9tape 2 - Profil de la personne accompagn\u00e9e"
                     }
                 }
             }
@@ -350,13 +423,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Let's go! 🚀"
+                        "value": "Let's go! \ud83d\ude80"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Allons-y ! 🚀"
+                        "value": "Allons-y ! \ud83d\ude80"
                     }
                 }
             }
@@ -368,13 +441,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "You have completed process brilliantly:\n\n- Create your caregiver profile ✅\n- Create your first care receiver profile ✅\n\nYou can now discover the Leka App and dive deep in our educational content!"
+                        "value": "You have completed process brilliantly:\n\n- Create your caregiver profile \u2705\n- Create your first care receiver profile \u2705\n\nYou can now discover the Leka App and dive deep in our educational content!"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Vous avez brillamment complété le processus :\n\n- Créer votre profil d'accompagnant ✅\n- Créer votre premier profil de personne accompagnée ✅\n\nVous pouvez maintenant découvrir l'appli Leka et approfondir notre contenu éducatif !"
+                        "value": "Vous avez brillamment compl\u00e9t\u00e9 le processus :\n\n- Cr\u00e9er votre profil d'accompagnant \u2705\n- Cr\u00e9er votre premier profil de personne accompagn\u00e9e \u2705\n\nVous pouvez maintenant d\u00e9couvrir l'appli Leka et approfondir notre contenu \u00e9ducatif !"
                     }
                 }
             }
@@ -386,13 +459,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "🎉 Congratulations! 👏"
+                        "value": "\ud83c\udf89 Congratulations! \ud83d\udc4f"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "🎉 Félicitations ! 👏"
+                        "value": "\ud83c\udf89 F\u00e9licitations ! \ud83d\udc4f"
                     }
                 }
             }
@@ -428,7 +501,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Créer un compte"
+                        "value": "Cr\u00e9er un compte"
                     }
                 }
             }
@@ -446,7 +519,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Processus de création de compte"
+                        "value": "Processus de cr\u00e9ation de compte"
                     }
                 }
             }
@@ -482,7 +555,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Valider la sélection"
+                        "value": "Valider la s\u00e9lection"
                     }
                 }
             }
@@ -518,7 +591,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "[Mot de passe oublié ?](https://leka.io)"
+                        "value": "[Mot de passe oubli\u00e9 ?](https://leka.io)"
                     }
                 }
             }
@@ -554,7 +627,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Autre (préciser)"
+                        "value": "Autre (pr\u00e9ciser)"
                     }
                 }
             }
@@ -572,7 +645,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Sélectionnez vos professions"
+                        "value": "S\u00e9lectionnez vos professions"
                     }
                 }
             }
@@ -590,7 +663,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Valider la sélection"
+                        "value": "Valider la s\u00e9lection"
                     }
                 }
             }
@@ -608,7 +681,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Connecté à"
+                        "value": "Connect\u00e9 \u00e0"
                     }
                 }
             }
@@ -626,7 +699,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Connectez-vous à votre Leka"
+                        "value": "Connectez-vous \u00e0 votre Leka"
                     }
                 }
             }
@@ -644,79 +717,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Réglages"
-                    }
-                }
-            }
-        },
-        "lekaapp.TextFieldEmail.invalidEmailErrorLabel": {
-            "comment": "TextFieldEmail invalid Email Error Label",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "The email is not valid"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "L'adresse email n'est pas valide"
-                    }
-                }
-            }
-        },
-        "lekaapp.TextFieldEmail.label": {
-            "comment": "TextFieldEmail label",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Email"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Email"
-                    }
-                }
-            }
-        },
-        "lekaapp.TextFieldPassword.invalidPasswordErrorLabel": {
-            "comment": "TextFieldPassword invalid Password Error Label",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "8 characters minimum. At least one number and one Capital letter"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Minimum 8 caractères, au moins un chiffre et une majuscule"
-                    }
-                }
-            }
-        },
-        "lekaapp.TextFieldPassword.label": {
-            "comment": "TextFieldPassword label",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Password"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Mot de passe"
+                        "value": "R\u00e9glages"
                     }
                 }
             }
@@ -734,7 +735,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Créer un compte"
+                        "value": "Cr\u00e9er un compte"
                     }
                 }
             }
@@ -770,7 +771,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Passer cette étape"
+                        "value": "Passer cette \u00e9tape"
                     }
                 }
             }
@@ -788,7 +789,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Se Connecter ou Créer un Compte"
+                        "value": "Se Connecter ou Cr\u00e9er un Compte"
                     }
                 }
             }
@@ -806,7 +807,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Vous utilisez Leka sans être connecté !"
+                        "value": "Vous utilisez Leka sans \u00eatre connect\u00e9 !"
                     }
                 }
             }
@@ -824,7 +825,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Activités"
+                        "value": "Activit\u00e9s"
                     }
                 }
             }
@@ -860,7 +861,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Nouveautés"
+                        "value": "Nouveaut\u00e9s"
                     }
                 }
             }
@@ -878,7 +879,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Télécommandes"
+                        "value": "T\u00e9l\u00e9commandes"
                     }
                 }
             }
@@ -1004,7 +1005,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Vous êtes sur le point de supprimer votre compte et toutes les données qu'il contient.\nCette action est irréversible.\nVoulez-vous continuer ?"
+                        "value": "Vous \u00eates sur le point de supprimer votre compte et toutes les donn\u00e9es qu'il contient.\nCette action est irr\u00e9versible.\nVoulez-vous continuer ?"
                     }
                 }
             }
@@ -1058,7 +1059,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Se déconnecter"
+                        "value": "Se d\u00e9connecter"
                     }
                 }
             }
@@ -1076,7 +1077,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Vous êtes sur le point de vous déconnecter."
+                        "value": "Vous \u00eates sur le point de vous d\u00e9connecter."
                     }
                 }
             }
@@ -1094,7 +1095,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Déconnexion"
+                        "value": "D\u00e9connexion"
                     }
                 }
             }
@@ -1112,7 +1113,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Se déconnecter"
+                        "value": "Se d\u00e9connecter"
                     }
                 }
             }
@@ -1130,7 +1131,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Couleur accentuée"
+                        "value": "Couleur accentu\u00e9e"
                     }
                 }
             }
@@ -1256,11 +1257,10 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Réglages"
+                        "value": "R\u00e9glages"
                     }
                 }
             }
         }
-    },
-    "version": "1.0"
+    }
 }

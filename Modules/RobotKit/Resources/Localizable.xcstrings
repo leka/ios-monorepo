@@ -1,4 +1,5 @@
 {
+    "version": "1.0",
     "sourceLanguage": "en",
     "strings": {
         "robotkit.robot_connect_view.cancel_button": {
@@ -68,7 +69,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Se déconnecter"
+                        "value": "Se d\u00e9connecter"
                     }
                 }
             }
@@ -109,6 +110,5 @@
                 }
             }
         }
-    },
-    "version": "1.0"
+    }
 }

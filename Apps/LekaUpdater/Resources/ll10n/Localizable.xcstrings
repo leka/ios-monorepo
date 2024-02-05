@@ -1,4 +1,5 @@
 {
+    "version": "1.0",
     "sourceLanguage": "en",
     "strings": {
         "connection.connect_button": {
@@ -50,7 +51,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Se déconnecter"
+                        "value": "Se d\u00e9connecter"
                     }
                 }
             }
@@ -68,7 +69,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Aucun robot trouvé..."
+                        "value": "Aucun robot trouv\u00e9..."
                     }
                 }
             }
@@ -194,7 +195,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Liste des changements apportés"
+                        "value": "Liste des changements apport\u00e9s"
                     }
                 }
             }
@@ -247,7 +248,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Numéro de série : %@"
+                        "value": "Num\u00e9ro de s\u00e9rie : %@"
                     }
                 }
             }
@@ -283,7 +284,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Lancer la mise à jour du robot"
+                        "value": "Lancer la mise \u00e0 jour du robot"
                     }
                 }
             }
@@ -295,13 +296,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "⚠️ WARNING ⚡\nThe robot is no longer in charge"
+                        "value": "\u26a0\ufe0f WARNING \u26a1\nThe robot is no longer in charge"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "⚠️ ATTENTION ⚡\nLe robot n'est plus en charge"
+                        "value": "\u26a0\ufe0f ATTENTION \u26a1\nLe robot n'est plus en charge"
                     }
                 }
             }
@@ -319,7 +320,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Veuillez reposer Leka sur sa base et/ou vérifier le branchement"
+                        "value": "Veuillez reposer Leka sur sa base et/ou v\u00e9rifier le branchement"
                     }
                 }
             }
@@ -331,13 +332,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "⚠️ DEV 🚧\nUpdate process not recognized or not available\n(Error code: #0003)"
+                        "value": "\u26a0\ufe0f DEV \ud83d\udea7\nUpdate process not recognized or not available\n(Error code: #0003)"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "⚠️ DEV 🚧\nProcessus de mise à jour non reconnu ou inexistant\n(Code erreur #0003)"
+                        "value": "\u26a0\ufe0f DEV \ud83d\udea7\nProcessus de mise \u00e0 jour non reconnu ou inexistant\n(Code erreur #0003)"
                     }
                 }
             }
@@ -349,13 +350,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "🤖 Your robot is up-to-date! 🎉 You're all done 👌"
+                        "value": "\ud83e\udd16 Your robot is up-to-date! \ud83c\udf89 You're all done \ud83d\udc4c"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "🤖 Votre robot est à jour ! 🎉 Vous n'avez rien à faire 👌"
+                        "value": "\ud83e\udd16 Votre robot est \u00e0 jour ! \ud83c\udf89 Vous n'avez rien \u00e0 faire \ud83d\udc4c"
                     }
                 }
             }
@@ -367,13 +368,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "⬆️ New firmware update available 📦"
+                        "value": "\u2b06\ufe0f New firmware update available \ud83d\udce6"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "⬆️ Une mise à jour est disponible 📦"
+                        "value": "\u2b06\ufe0f Une mise \u00e0 jour est disponible \ud83d\udce6"
                     }
                 }
             }
@@ -390,7 +391,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "L'application pour mettre à jour vos robots Leka !"
+                        "value": "L'application pour mettre \u00e0 jour vos robots Leka !"
                     }
                 }
             }
@@ -449,60 +450,6 @@
                 }
             }
         },
-        "update.error_back_button": {
-            "comment": "Update error back button",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Return to robot connection page"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Revenir à la page de connexion"
-                    }
-                }
-            }
-        },
-        "update.error_call_to_action": {
-            "comment": "Update error call to action",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Contact technical support"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Contactez le support technique"
-                    }
-                }
-            }
-        },
-        "update.error_description": {
-            "comment": "Update error description",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Unknown error"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Erreur inconnue"
-                    }
-                }
-            }
-        },
         "update.error.failed_to_load_file": {
             "comment": "Failed to load file",
             "extractionState": "extracted_with_value",
@@ -516,7 +463,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Le fichier de mise à jour du robot ne peut pas être ouvert\n(Code erreur #0001)"
+                        "value": "Le fichier de mise \u00e0 jour du robot ne peut pas \u00eatre ouvert\n(Code erreur #0001)"
                     }
                 }
             }
@@ -534,7 +481,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Veuillez réinstaller l'application"
+                        "value": "Veuillez r\u00e9installer l'application"
                     }
                 }
             }
@@ -552,7 +499,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Echec de la mise à jour\n(Code erreur #0002)"
+                        "value": "Echec de la mise \u00e0 jour\n(Code erreur #0002)"
                     }
                 }
             }
@@ -588,7 +535,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Le robot s'est déconnecté de manière inattendue\n(Code erreur #0004)"
+                        "value": "Le robot s'est d\u00e9connect\u00e9 de mani\u00e8re inattendue\n(Code erreur #0004)"
                     }
                 }
             }
@@ -606,7 +553,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Redémarrer le robot à l'aide de la carte \\\"Arrêt d'urgence\\\",\nreconnectez le robot et relancez le processus"
+                        "value": "Red\u00e9marrer le robot \u00e0 l'aide de la carte \\\"Arr\u00eat d'urgence\\\",\nreconnectez le robot et relancez le processus"
                     }
                 }
             }
@@ -660,7 +607,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Processus de mise à jour non disponible ou inconnu\n(Code erreur #0003)"
+                        "value": "Processus de mise \u00e0 jour non disponible ou inconnu\n(Code erreur #0003)"
                     }
                 }
             }
@@ -683,6 +630,60 @@
                 }
             }
         },
+        "update.error_back_button": {
+            "comment": "Update error back button",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Return to robot connection page"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Revenir \u00e0 la page de connexion"
+                    }
+                }
+            }
+        },
+        "update.error_call_to_action": {
+            "comment": "Update error call to action",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Contact technical support"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Contactez le support technique"
+                    }
+                }
+            }
+        },
+        "update.error_description": {
+            "comment": "Update error description",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Unknown error"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Erreur inconnue"
+                    }
+                }
+            }
+        },
         "update.finished.launch_leka_app_button": {
             "comment": "Launch Leka app button",
             "extractionState": "extracted_with_value",
@@ -690,13 +691,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Launch My Leka Alpha 🚀"
+                        "value": "Launch My Leka Alpha \ud83d\ude80"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Lancer Mon Leka Alpha 🚀"
+                        "value": "Lancer Mon Leka Alpha \ud83d\ude80"
                     }
                 }
             }
@@ -708,13 +709,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Congrats! 🥳\nYour robot is now up-to-date 🎉"
+                        "value": "Congrats! \ud83e\udd73\nYour robot is now up-to-date \ud83c\udf89"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Bravo ! 🥳\nVotre robot est maintenant à jour 🎉"
+                        "value": "Bravo ! \ud83e\udd73\nVotre robot est maintenant \u00e0 jour \ud83c\udf89"
                     }
                 }
             }
@@ -732,7 +733,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Mettre à jour un autre robot"
+                        "value": "Mettre \u00e0 jour un autre robot"
                     }
                 }
             }
@@ -750,7 +751,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Votre robot redémarrera dans quelques minutes"
+                        "value": "Votre robot red\u00e9marrera dans quelques minutes"
                     }
                 }
             }
@@ -768,7 +769,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Installation de la mise à jour"
+                        "value": "Installation de la mise \u00e0 jour"
                     }
                 }
             }
@@ -804,7 +805,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Le robot est posé sur son socle et le socle est branché au secteur"
+                        "value": "Le robot est pos\u00e9 sur son socle et le socle est branch\u00e9 au secteur"
                     }
                 }
             }
@@ -822,7 +823,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Pour démarrer la mise à jour, assurez-vous que :"
+                        "value": "Pour d\u00e9marrer la mise \u00e0 jour, assurez-vous que :"
                     }
                 }
             }
@@ -858,7 +859,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Ne débranchez pas votre robot.\nNe le sortez pas de son socle de recharge.\nNe fermez pas l'application."
+                        "value": "Ne d\u00e9branchez pas votre robot.\nNe le sortez pas de son socle de recharge.\nNe fermez pas l'application."
                     }
                 }
             }
@@ -876,7 +877,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Envoi de la mise à jour vers le robot"
+                        "value": "Envoi de la mise \u00e0 jour vers le robot"
                     }
                 }
             }
@@ -894,11 +895,10 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Étape %@"
+                        "value": "\u00c9tape %@"
                     }
                 }
             }
         }
-    },
-    "version": "1.0"
+    }
 }
