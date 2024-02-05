@@ -36,7 +36,7 @@ public class AuthManager {
                         break
                     case let .failure(error):
                         log.error("\(error.localizedDescription)")
-                        let errorMessage = "Sign-up failed. Please try again later."
+                        let errorMessage = String(l10n.AuthManager.signupFailedError.characters)
                         self?.authenticationError.send(AuthenticationError.custom(message: errorMessage))
                 }
             }, receiveValue: { [weak self] result in
@@ -52,10 +52,22 @@ public class AuthManager {
         currentUser.sendEmailVerification { [weak self] error in
             if let error {
                 log.error("\(error.localizedDescription)")
-                let errorMessage = "There was an error sending the verification email. Please try again later."
+                let errorMessage = String(l10n.AuthManager.verificationEmailFailure.characters)
                 self?.authenticationError.send(AuthenticationError.custom(message: errorMessage))
                 return
             }
+        }
+    }
+
+    public func signOut() {
+        do {
+            try self.auth.signOut()
+            self.authenticationState.send(.loggedOut)
+            log.info("User was successfully signed out.")
+        } catch {
+            log.error("Sign out failed: \(error.localizedDescription)")
+            let errorMessage = String(l10n.AuthManager.signOutFailedError.characters)
+            self.authenticationError.send(AuthenticationError.custom(message: errorMessage))
         }
     }
 
