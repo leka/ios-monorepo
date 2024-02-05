@@ -1,24 +1,7 @@
 {
+    "version": "1.0",
     "sourceLanguage": "en",
     "strings": {
-        "accountkit.auth_manager_view_model.verification_email_success_notification": {
-            "comment": "Verification email success notification message",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Verification email sent. Please check your inbox."
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "L'email de vérification a été envoyé. Veuillez vérifier votre boîte de réception."
-                    }
-                }
-            }
-        },
         "accountkit.auth_manager.signup_failed_error": {
             "comment": "Sign-up failure error message",
             "extractionState": "extracted_with_value",
@@ -32,7 +15,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "L'inscription a échoué. Veuillez réessayer plus tard."
+                        "value": "L'inscription a \u00e9chou\u00e9. Veuillez r\u00e9essayer plus tard."
                     }
                 }
             }
@@ -50,11 +33,28 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Une erreur s'est produite lors de l'envoi de l'e-mail de vérification. Veuillez réessayer plus tard."
+                        "value": "Une erreur s'est produite lors de l'envoi de l'e-mail de v\u00e9rification. Veuillez r\u00e9essayer plus tard."
+                    }
+                }
+            }
+        },
+        "accountkit.auth_manager_view_model.verification_email_success_notification": {
+            "comment": "Verification email success notification message",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Verification email sent. Please check your inbox."
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "L'email de v\u00e9rification a \u00e9t\u00e9 envoy\u00e9. Veuillez v\u00e9rifier votre bo\u00eete de r\u00e9ception."
                     }
                 }
             }
         }
-    },
-    "version": "1.0"
+    }
 }

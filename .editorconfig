@@ -33,5 +33,5 @@ indent_size = 2
 indent_style = tab
 indent_size = 4
 
-[*.json]
-insert_final_newline = false
+[*.{json,xcstrings}]
+indent_size = 4

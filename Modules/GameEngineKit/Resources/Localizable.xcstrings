@@ -1,4 +1,5 @@
 {
+    "version": "1.0",
     "sourceLanguage": "en",
     "strings": {
         "gameenginekit.activity_view.continue_button": {
@@ -32,7 +33,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Revoir les réponses"
+                        "value": "Revoir les r\u00e9ponses"
                     }
                 }
             }
@@ -86,7 +87,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Danse avec Leka au rythme de la musique et fais la statue lorsque elle s'arrête"
+                        "value": "Danse avec Leka au rythme de la musique et fais la statue lorsque elle s'arr\u00eate"
                     }
                 }
             }
@@ -122,7 +123,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Déplacement"
+                        "value": "D\u00e9placement"
                     }
                 }
             }
@@ -140,7 +141,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Sélection de la musique"
+                        "value": "S\u00e9lection de la musique"
                     }
                 }
             }
@@ -176,7 +177,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Appuies sur OK lorsque Leka est caché"
+                        "value": "Appuies sur OK lorsque Leka est cach\u00e9"
                     }
                 }
             }
@@ -212,7 +213,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Trouvé !"
+                        "value": "Trouv\u00e9 !"
                     }
                 }
             }
@@ -230,7 +231,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Incites la personne accompagnée à chercher Leka.\nTu peux lancer un renforçateur pour lui donner un indice visuel et/ou sonore.\nAppuies sur \"TROUVÉ\" une fois le robot trouvé."
+                        "value": "Incites la personne accompagn\u00e9e \u00e0 chercher Leka.\nTu peux lancer un renfor\u00e7ateur pour lui donner un indice visuel et/ou sonore.\nAppuies sur \"TROUV\u00c9\" une fois le robot trouv\u00e9."
                     }
                 }
             }
@@ -302,7 +303,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Sélection de la musique"
+                        "value": "S\u00e9lection de la musique"
                     }
                 }
             }
@@ -356,7 +357,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Le mode Pairing permet à la personne accompagnée de se familiariser à Leka\navant même d'entrer dans les apprentissages des Activités et des Parcours.\nLe robot va s'animer en faisant des pauses afin que\nla personne accompagnée puisse apprivoiser son nouveau compagnon !"
+                        "value": "Le mode Pairing permet \u00e0 la personne accompagn\u00e9e de se familiariser \u00e0 Leka\navant m\u00eame d'entrer dans les apprentissages des Activit\u00e9s et des Parcours.\nLe robot va s'animer en faisant des pauses afin que\nla personne accompagn\u00e9e puisse apprivoiser son nouveau compagnon !"
                     }
                 }
             }
@@ -379,6 +380,5 @@
                 }
             }
         }
-    },
-    "version": "1.0"
+    }
 }
