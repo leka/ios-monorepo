@@ -58,7 +58,7 @@ public class AuthManagerViewModel: ObservableObject {
         switch state {
             case .loggedIn:
                 if self.userIsSigningUp {
-                    self.notificationMessage = "Verification email sent. Please check your inbox."
+                    self.notificationMessage = String(l10n.AuthManagerViewModel.successfulEmailVerification.characters)
                     self.showNotificationAlert = true
                 } else {
                     // Handle unverified Sign-in

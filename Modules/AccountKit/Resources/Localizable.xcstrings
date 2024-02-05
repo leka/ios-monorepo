@@ -2,6 +2,24 @@
     "version": "1.0",
     "sourceLanguage": "en",
     "strings": {
+        "accountkit.auth_manager.signout_failed_error": {
+            "comment": "Sign-out failure error message",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Failed to sign out. Please try again."
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "La d\u00e9connexion a \u00e9chou\u00e9. Veuillez r\u00e9essayer."
+                    }
+                }
+            }
+        },
         "accountkit.auth_manager.signup_failed_error": {
             "comment": "Sign-up failure error message",
             "extractionState": "extracted_with_value",
