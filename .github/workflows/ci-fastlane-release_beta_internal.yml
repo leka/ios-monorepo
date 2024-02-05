@@ -37,6 +37,9 @@ jobs:
         with:
           fetch-depth: 1 # shallow clone
 
+      - name: Install mise tools
+        uses: jdx/mise-action@v2
+
       - name: bundle install
         run: |
           bundle install

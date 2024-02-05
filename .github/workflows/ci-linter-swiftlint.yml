@@ -24,11 +24,15 @@ jobs:
           fetch-depth: 0 # Fetch all history for all branches and tags
           lfs: true
 
+      - name: Install mise tools
+        uses: jdx/mise-action@v2
+
       - name: Run swiftlint
         run: |
           echo ""
           echo "🏃‍♂️ Running swiftlint on modified files 🤵‍♂️"
 
+          which swiftlint
           swiftlint --version
 
           git diff origin/main --name-only --diff-filter=AMCR \
