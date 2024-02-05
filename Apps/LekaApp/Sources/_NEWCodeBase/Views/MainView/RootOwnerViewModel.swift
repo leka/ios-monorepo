@@ -24,6 +24,7 @@ class RootOwnerViewModel: ObservableObject {
     @Published var isWelcomeViewPresented = true
     @Published var isSettingsViewPresented = false
 
+    @Published var showConfirmCredentialsChange: Bool = false
     @Published var showConfirmDisconnection: Bool = false
     @Published var showConfirmDeleteAccount: Bool = false
 

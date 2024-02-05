@@ -40,16 +40,11 @@ extension SettingsView {
                 Text(l10n.SettingsView.AccountSection.LogOut.alertMessage)
             }
             .alert(String(l10n.SettingsView.AccountSection.DeleteAccount.alertTitle.characters), isPresented: self.$rootOwnerViewModel.showConfirmDeleteAccount) {
-                Button(role: .destructive) {
-                    // TODO: (@team) - Replace w/ real implementation
-                    self.rootOwnerViewModel.isSettingsViewPresented = false
-                    self.rootOwnerViewModel.disconnect()
-                } label: {
-                    Text(l10n.SettingsView.AccountSection.DeleteAccount.alertButtonLabel)
-                }
+                // Nothing to do
             } message: {
                 Text(l10n.SettingsView.AccountSection.DeleteAccount.alertMessage)
             }
+            .textCase(nil)
         }
     }
 }

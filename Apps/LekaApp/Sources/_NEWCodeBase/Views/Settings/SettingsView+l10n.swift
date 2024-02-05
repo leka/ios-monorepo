@@ -21,11 +21,24 @@ extension l10n {
         }
 
         enum CredentialsSection {
+            enum ChangeCredentials {
+                static let buttonLabel = LocalizedString("settings_view.credentials_section.change_credentials.button_label", value: "Change email and password", comment: "Change credentials button label")
+
+                static let alertTitle = LocalizedString("settings_view.credentials_section.change_credentials.alert_title",
+                                                        value: "It is not yet possible to modify your email or password from the application.",
+                                                        comment: "Change credentials alert title")
+
+                static let alertMessage = LocalizedString("settings_view.credentials_section.change_credentials.alert_message",
+                                                          value: """
+                                                              Please send an email to hello@leka.io
+                                                              to modify your credentials.
+                                                              """,
+                                                          comment: "Change credentials alert message")
+            }
+
             static let header = LocalizedString("settings_view.credentials_section.header", value: "Credentials", comment: "Credentials section header")
 
             static let emailLabel = LocalizedString("settings_view.credentials_section.email_label", value: "Account email adress", comment: "Account email address label")
-
-            static let changeCredentialsButtonLabel = LocalizedString("settings_view.credentials_section.change_credentials_button_label", value: "[Change email and password](https://leka.io)", comment: "Change credentials button label")
         }
 
         enum AccountSection {
@@ -46,13 +59,10 @@ extension l10n {
 
                 static let alertMessage = LocalizedString("settings_view.account_section.delete_account.alert_message",
                                                           value: """
-                                                              You are about to delete your account and all its data.
-                                                              This action is irreversible.
-                                                              Do you want to continue ?
+                                                              Please send an email to hello@leka.io
+                                                              to delete your account.
                                                               """,
                                                           comment: "Delete account alert message")
-
-                static let alertButtonLabel = LocalizedString("settings_view.account_section.delete_account.alert_buton_label", value: "Delete", comment: "Delete account alert button label")
             }
         }
 

@@ -22,9 +22,18 @@ extension SettingsView {
                     Text(l10n.SettingsView.CredentialsSection.emailLabel)
                 }
 
-                Text(l10n.SettingsView.CredentialsSection.changeCredentialsButtonLabel)
-                    .foregroundColor(.accentColor)
+                Button {
+                    self.rootOwnerViewModel.showConfirmCredentialsChange = true
+                } label: {
+                    Text(l10n.SettingsView.CredentialsSection.ChangeCredentials.buttonLabel)
+                        .foregroundColor(.accentColor)
+                }
             }
+            .alert(String(l10n.SettingsView.CredentialsSection.ChangeCredentials.alertTitle.characters),
+                   isPresented: self.$rootOwnerViewModel.showConfirmCredentialsChange) {} message: {
+                Text(l10n.SettingsView.CredentialsSection.ChangeCredentials.alertMessage)
+            }
+            .textCase(nil)
         }
     }
 }
