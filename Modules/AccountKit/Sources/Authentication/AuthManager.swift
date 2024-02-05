@@ -59,6 +59,18 @@ public class AuthManager {
         }
     }
 
+    public func signOut() {
+        do {
+            try self.auth.signOut()
+            self.authenticationState.send(.loggedOut)
+            log.notice("User was successfully signed out.")
+        } catch {
+            log.error("Sign out failed: \(error.localizedDescription)")
+            let errorMessage = "Failed to sign out. Please try again."
+            self.authenticationError.send(AuthenticationError.custom(message: errorMessage))
+        }
+    }
+
     // MARK: Internal
 
     var authenticationStatePublisher: AnyPublisher<AuthenticationState, Never> {
