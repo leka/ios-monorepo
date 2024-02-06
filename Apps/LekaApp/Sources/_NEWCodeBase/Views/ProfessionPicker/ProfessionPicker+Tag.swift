@@ -9,6 +9,7 @@ extension ProfessionPicker {
     struct ProfessionTag: View {
         @ObservedObject private var rootOwnerViewModel: RootOwnerViewModel = .shared
         @State var profession: Caregiver.Profession
+        @Binding var caregiver: Caregiver
 
         var body: some View {
             Button {
@@ -19,7 +20,7 @@ extension ProfessionPicker {
 
                     Image(systemName: "multiply.square.fill")
                         .onTapGesture {
-                            self.rootOwnerViewModel.bufferCaregiver.professions.removeAll(where: { self.profession == $0 })
+                            self.caregiver.professions.removeAll(where: { self.profession == $0 })
                         }
                 }
             }
@@ -31,5 +32,8 @@ extension ProfessionPicker {
 }
 
 #Preview {
-    ProfessionPicker.ProfessionTag(profession: Caregiver.Profession.occupationalTherapist)
+    ProfessionPicker.ProfessionTag(
+        profession: Caregiver.Profession.occupationalTherapist,
+        caregiver: .constant(Caregiver(professions: [Caregiver.Profession.occupationalTherapist, Caregiver.Profession.motorTherapist]))
+    )
 }

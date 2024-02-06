@@ -40,7 +40,6 @@ struct CaregiverPicker: View {
 
     @State private var selected: String = ""
     @State private var isCaregiverCreationPresented: Bool = false
-    @State private var navigateToTeacherCreation: Bool = false
 
     private var addCaregiverButton: some View {
         Button {

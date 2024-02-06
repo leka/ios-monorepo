@@ -17,9 +17,7 @@ class RootOwnerViewModel: ObservableObject {
     static let shared = RootOwnerViewModel()
 
     @Published var currentCompany: Company?
-
-    @Published var bufferCaregiver = Caregiver()
-    @Published var bufferCarereceiver = Carereceiver()
+    @Published var currentCaregiver: Caregiver?
 
     @Published var isWelcomeViewPresented = true
     @Published var isSettingsViewPresented = false
@@ -46,5 +44,6 @@ class RootOwnerViewModel: ObservableObject {
 
     func disconnect() {
         self.currentCompany = nil
+        self.currentCaregiver = nil
     }
 }

@@ -15,6 +15,7 @@ struct CaregiverAvatarCell: View {
     var body: some View {
         Button {
             // TODO: (@team) - Add caregiver selection logic w/ Firebase
+            self.rootOwnerViewModel.currentCaregiver = self.caregiver
             self.rootOwnerViewModel.isWelcomeViewPresented = false
         } label: {
             VStack(spacing: 10) {
