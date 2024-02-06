@@ -9,6 +9,7 @@ struct CaregiverAvatarCell: View {
     // MARK: Internal
 
     @ObservedObject private var rootOwnerViewModel: RootOwnerViewModel = .shared
+    @ObservedObject private var styleManager: StyleManager = .shared
 
     let caregiver: Caregiver
 
@@ -16,6 +17,8 @@ struct CaregiverAvatarCell: View {
         Button {
             // TODO: (@team) - Add caregiver selection logic w/ Firebase
             self.rootOwnerViewModel.currentCaregiver = self.caregiver
+            self.styleManager.colorScheme = self.caregiver.preferredColorScheme
+            self.styleManager.accentColor = self.caregiver.preferredAccentColor
             self.rootOwnerViewModel.isWelcomeViewPresented = false
         } label: {
             VStack(spacing: 10) {
