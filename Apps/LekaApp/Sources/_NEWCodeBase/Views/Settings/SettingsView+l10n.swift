@@ -8,18 +8,6 @@ import LocalizationKit
 
 extension l10n {
     enum SettingsView {
-        enum AppearanceSection {
-            enum AppearanceRow {
-                static let title = LocalizedString("settings_view.appearance_section.appearance_row.title", value: "Dark mode", comment: "Appearance Row title")
-            }
-
-            enum AccentColorRow {
-                static let title = LocalizedString("settings_view.appearance_section.accent_color_row.title", value: "Accent Color", comment: "AccentColor Row title")
-            }
-
-            static let header = LocalizedString("settings_view.appearance_section.header", value: "Appearance", comment: "Appearance section header")
-        }
-
         enum CredentialsSection {
             enum ChangeCredentials {
                 static let buttonLabel = LocalizedString("settings_view.credentials_section.change_credentials.button_label", value: "Change email and password", comment: "Change credentials button label")

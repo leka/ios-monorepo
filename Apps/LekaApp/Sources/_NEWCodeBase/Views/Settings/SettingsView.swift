@@ -15,12 +15,8 @@ struct SettingsView: View {
     var body: some View {
         NavigationStack {
             Form {
-                AppearanceSection()
-
-                if self.rootOwnerViewModel.isCompanyConnected {
-                    CredentialsSection()
-                    AccountSection()
-                }
+                CredentialsSection()
+                AccountSection()
             }
             .navigationTitle(String(l10n.SettingsView.navigationTitle.characters))
             .navigationBarTitleDisplayMode(.inline)

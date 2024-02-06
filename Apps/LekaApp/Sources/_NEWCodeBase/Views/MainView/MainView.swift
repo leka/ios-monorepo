@@ -46,27 +46,22 @@ struct MainView: View {
                     CategoryLabel(category: .stories)
                 }
 
-                HStack {
-                    Spacer()
-                    VStack(spacing: 20) {
+                VStack(alignment: .center, spacing: 20) {
+                    if self.rootOwnerViewModel.isCompanyConnected {
                         Button {
                             self.rootOwnerViewModel.isSettingsViewPresented = true
                         } label: {
                             SettingsLabel()
                         }
-
-                        Text("My Leka App - Version \(Bundle.version!) (\(Bundle.buildNumber!))")
-                            .foregroundColor(.gray)
-                            .font(.caption2)
                     }
-                    Spacer()
-                }
 
-                HStack {
-                    Spacer()
+                    Text("My Leka App - Version \(Bundle.version!) (\(Bundle.buildNumber!))")
+                        .foregroundColor(.gray)
+                        .font(.caption2)
+
                     LekaLogo(width: 50)
-                    Spacer()
                 }
+                .frame(maxWidth: .infinity)
             }
             // TODO: (@ladislas) remove if not necessary
             // .disabled(navigation.disableUICompletly)
