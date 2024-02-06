@@ -20,6 +20,7 @@ struct CaregiverAvatarCell: View {
             self.styleManager.colorScheme = self.caregiver.preferredColorScheme
             self.styleManager.accentColor = self.caregiver.preferredAccentColor
             self.rootOwnerViewModel.isWelcomeViewPresented = false
+            self.rootOwnerViewModel.isCaregiverPickerViewPresented = false
         } label: {
             VStack(spacing: 10) {
                 Image(self.caregiver.avatar, bundle: Bundle(for: DesignKitResources.self))

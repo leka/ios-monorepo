@@ -23,7 +23,9 @@ struct MainView: View {
     var body: some View {
         NavigationSplitView {
             List(selection: self.$navigation.selectedCategory) {
-                if !self.rootOwnerViewModel.isCompanyConnected {
+                if self.rootOwnerViewModel.isCompanyConnected {
+                    CaregiverSettingsLabel()
+                } else {
                     NoAccountConnectedLabel()
                 }
 
@@ -108,8 +110,14 @@ struct MainView: View {
         .fullScreenCover(isPresented: self.$viewModel.isRobotConnectionPresented) {
             RobotConnectionView(viewModel: RobotConnectionViewModel())
         }
+        .fullScreenCover(isPresented: self.$rootOwnerViewModel.isCaregiverPickerViewPresented) {
+            CaregiverPicker()
+        }
         .sheet(isPresented: self.$rootOwnerViewModel.isSettingsViewPresented) {
             SettingsView()
+        }
+        .sheet(isPresented: self.$rootOwnerViewModel.isCaregiverSettingsViewPresented) {
+            CaregiverSettingsView(modifiedCaregiver: self.rootOwnerViewModel.currentCaregiver!)
         }
     }
 }

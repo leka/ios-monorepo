@@ -21,6 +21,8 @@ class RootOwnerViewModel: ObservableObject {
 
     @Published var isWelcomeViewPresented = true
     @Published var isSettingsViewPresented = false
+    @Published var isCaregiverSettingsViewPresented = false
+    @Published var isCaregiverPickerViewPresented = false
 
     @Published var showConfirmCredentialsChange: Bool = false
     @Published var showConfirmDisconnection: Bool = false
