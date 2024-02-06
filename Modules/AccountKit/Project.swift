@@ -24,5 +24,7 @@ let project = Project.module(
         .external(name: "FirebaseFirestore"),
         .external(name: "FirebaseFirestoreSwift"),
         .external(name: "FirebaseFirestoreCombine-Community"),
+        .external(name: "Version"),
+        .external(name: "Yams"),
     ]
 )
