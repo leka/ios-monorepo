@@ -35,11 +35,15 @@ jobs:
         with:
           fetch-depth: 1 # shallow clone
 
-      - name: Install mise tools
-        uses: jdx/mise-action@v2
+      - name: Setup mise
+        run: |
+          echo "$HOME/.local/share/mise/shims" >> $GITHUB_PATH
 
       - name: Tools' versions before
         run: |
+          which mise
+          mise --version
+
           which xcodebuild
           xcodebuild -version
 
@@ -64,6 +68,11 @@ jobs:
           brew upgrade
           brew cleanup -s --prune=all
 
+      - name: Install mise tools
+        run: |
+          mise uninstall --all
+          mise install
+
       - name: Upgrade bundle
         run: |
           bundle update --bundler
@@ -78,6 +87,9 @@ jobs:
 
       - name: Tools' versions after
         run: |
+          which mise
+          mise --version
+
           which xcodebuild
           xcodebuild -version
 
