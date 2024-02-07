@@ -64,7 +64,7 @@
             ]
         },
         "$hmi": {
-            "enum": ["robot", "ipad", "magic_cards", "ipad_robot"]
+            "enum": ["robot", "tablet", "magic_cards", "tablet_robot"]
         },
         "$locale": {
             "enum": ["en_US", "fr_FR"]

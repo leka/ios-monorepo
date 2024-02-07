@@ -26,7 +26,7 @@ list:
         description: |
           The user interacts with the robot by using magic cards.
 
-  - id: ipad_robot
+  - id: tablet_robot
     l10n:
       - locale: fr_FR
         name: iPad et robot
@@ -37,7 +37,7 @@ list:
         description: |
           The user interacts with the iPad, and the robot serves as support for observation before providing answers.
 
-  - id: ipad
+  - id: tablet
     l10n:
       - locale: fr_FR
         name: iPad

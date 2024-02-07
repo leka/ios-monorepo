@@ -54,7 +54,7 @@
             ]
         },
         "$hmi": {
-            "enum": ["robot", "ipad", "magic_cards", "ipad_robot"]
+            "enum": ["robot", "tablet", "magic_cards", "tablet_robot"]
         },
         "$status": {
             "enum": ["draft", "published"]

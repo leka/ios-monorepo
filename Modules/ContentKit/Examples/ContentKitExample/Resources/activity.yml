@@ -28,7 +28,7 @@ locales:
 hmi:
   - robot
   - magic_cards
-  - ipad_robot
+  - tablet_robot
 
 l10n:
   - locale: fr_FR

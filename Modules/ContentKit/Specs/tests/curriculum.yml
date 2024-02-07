@@ -23,7 +23,7 @@ skills:
 hmi:
   - robot
   - magic_cards
-  - ipad_robot
+  - tablet_robot
 
 tags:
   - tag_one
