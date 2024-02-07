@@ -19,11 +19,14 @@ public class AuthManagerViewModel: ObservableObject {
 
     @Published public var userAuthenticationState: AuthManager.AuthenticationState = .unknown
     @Published public var userIsSigningUp = false
+    @Published public var userEmailIsVerified = false
 
     // MARK: - Alerts
 
     @Published public var errorMessage: String = ""
     @Published public var showErrorAlert = false
+    @Published public var actionRequestMessage: String = ""
+    @Published public var showactionRequestAlert = false
     @Published public var notificationMessage: String = ""
     @Published public var showNotificationAlert = false
 
@@ -52,6 +55,13 @@ public class AuthManagerViewModel: ObservableObject {
                 self?.showErrorAlert = true
             }
             .store(in: &self.cancellables)
+
+        self.authManager.emailVerificationStatePublisher
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] state in
+                self?.userEmailIsVerified = state
+            }
+            .store(in: &self.cancellables)
     }
 
     private func handleAuthenticationStateChange(state: AuthManager.AuthenticationState) {
@@ -60,11 +70,11 @@ public class AuthManagerViewModel: ObservableObject {
                 if self.userIsSigningUp {
                     self.notificationMessage = String(l10n.AuthManagerViewModel.successfulEmailVerification.characters)
                     self.showNotificationAlert = true
-                } else {
-                    // Handle unverified Sign-in
+                } else if !self.userEmailIsVerified {
+                    self.actionRequestMessage = String(l10n.AuthManagerViewModel.unverifiedEmailNotification.characters)
+                    self.showactionRequestAlert = true
                 }
             case .loggedOut:
-                log.info("User signed-out successfuly.")
                 self.resetState()
             case .unknown:
                 break
@@ -73,7 +83,10 @@ public class AuthManagerViewModel: ObservableObject {
 
     private func resetState() {
         self.userIsSigningUp = false
+        self.userEmailIsVerified = false
         self.errorMessage = ""
+        self.actionRequestMessage = ""
+        self.showactionRequestAlert = false
         self.showErrorAlert = false
         self.notificationMessage = ""
         self.showNotificationAlert = false

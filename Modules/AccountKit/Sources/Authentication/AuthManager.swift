@@ -47,14 +47,16 @@ public class AuthManager {
             .store(in: &self.cancellables)
     }
 
-    public func sendEmailVerification() {
-        guard let currentUser = auth.currentUser else { return }
-        currentUser.sendEmailVerification { [weak self] error in
+    public func signIn(email: String, password: String) {
+        self.auth.signIn(withEmail: email, password: password) { [weak self] authResult, error in
             if let error {
-                log.error("\(error.localizedDescription)")
-                let errorMessage = String(l10n.AuthManager.verificationEmailFailure.characters)
+                log.error("Sign-in failed: \(error.localizedDescription)")
+                let errorMessage = String(l10n.AuthManager.signInFailedError.characters)
                 self?.authenticationError.send(AuthenticationError.custom(message: errorMessage))
-                return
+            } else if let user = authResult?.user {
+                log.info("User \(user.uid) signed-in successfully. 🎉")
+                self?.authenticationState.send(.loggedIn)
+                self?.emailVerificationState.send(user.isEmailVerified)
             }
         }
     }
@@ -71,6 +73,18 @@ public class AuthManager {
         }
     }
 
+    public func sendEmailVerification() {
+        guard let currentUser = auth.currentUser else { return }
+        currentUser.sendEmailVerification { [weak self] error in
+            if let error {
+                log.error("\(error.localizedDescription)")
+                let errorMessage = String(l10n.AuthManager.verificationEmailFailure.characters)
+                self?.authenticationError.send(AuthenticationError.custom(message: errorMessage))
+                return
+            }
+        }
+    }
+
     // MARK: Internal
 
     var authenticationStatePublisher: AnyPublisher<AuthenticationState, Never> {
@@ -81,16 +95,24 @@ public class AuthManager {
         self.authenticationError.eraseToAnyPublisher()
     }
 
+    var emailVerificationStatePublisher: AnyPublisher<Bool, Never> {
+        self.emailVerificationState.eraseToAnyPublisher()
+    }
+
     // MARK: Private
 
     private let authenticationState = CurrentValueSubject<AuthenticationState, Never>(.unknown)
     private let authenticationError = PassthroughSubject<Error, Never>()
+    private let emailVerificationState = PassthroughSubject<Bool, Never>()
     private let auth = Auth.auth()
     private var cancellables = Set<AnyCancellable>()
 
     private func updateAuthState(for user: User?) {
-        // TODO(@macteuts): Check email verification Status when relevant
-        let newState = user != nil ? AuthenticationState.loggedIn : .loggedOut
-        self.authenticationState.send(newState)
+        guard let user else {
+            self.authenticationState.send(.loggedOut)
+            return
+        }
+        self.authenticationState.send(.loggedIn)
+        self.emailVerificationState.send(user.isEmailVerified)
     }
 }
