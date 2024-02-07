@@ -14,7 +14,7 @@ public class Skills {
     // MARK: Lifecycle
 
     private init() {
-        self.container = Self.loadSKills()
+        self.container = Self.loadSkills()
     }
 
     // MARK: Public
@@ -37,7 +37,7 @@ public class Skills {
 
     private let container: SkillsContainer
 
-    private static func loadSKills() -> SkillsContainer {
+    private static func loadSkills() -> SkillsContainer {
         if let fileURL = Bundle.module.url(forResource: "skills", withExtension: "yml") {
             do {
                 let yamlString = try String(contentsOf: fileURL, encoding: .utf8)
