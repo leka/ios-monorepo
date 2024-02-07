@@ -16,7 +16,7 @@ extension l10n {
     enum TextFieldPassword {
         static let label = LocalizedString("lekaapp.TextFieldPassword.label", value: "Password", comment: "TextFieldPassword label")
 
-        static let invalidPasswordErrorLabel = LocalizedString("lekaapp.TextFieldPassword.invalidPasswordErrorLabel", value: "8 characters minimum. At least one number and one Capital letter", comment: "TextFieldPassword invalid Password Error Label")
+        static let invalidPasswordErrorLabel = LocalizedString("lekaapp.TextFieldPassword.invalidPasswordErrorLabel", value: "12 characters minimum, no spaces", comment: "TextFieldPassword invalid Password Error Label")
     }
 }
 

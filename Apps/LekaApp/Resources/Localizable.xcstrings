@@ -45,13 +45,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "8 characters minimum. At least one number and one Capital letter"
+                        "value": "12 characters minimum, no spaces"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Minimum 8 caract\u00e8res, au moins un chiffre et une majuscule"
+                        "value": "Minimum 12 caract\u00e8res, sans espaces"
                     }
                 }
             }
