@@ -19,6 +19,11 @@
                 "ref": "$skill"
             }
         },
+        "hmi": {
+            "elements": {
+                "ref": "$hmi"
+            }
+        },
         "tags": {
             "elements": {
                 "ref": "$tag"
@@ -48,17 +53,14 @@
                 "julie_tuil"
             ]
         },
+        "$hmi": {
+            "enum": ["robot", "ipad", "magic_cards", "ipad_robot"]
+        },
         "$status": {
-            "enum": [
-                "draft",
-                "published"
-            ]
+            "enum": ["draft", "published"]
         },
         "$locale": {
-            "enum": [
-                "en_US",
-                "fr_FR"
-            ]
+            "enum": ["en_US", "fr_FR"]
         },
         "$l10n": {
             "properties": {

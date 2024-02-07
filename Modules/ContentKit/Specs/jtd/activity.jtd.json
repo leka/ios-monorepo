@@ -19,6 +19,11 @@
                 "ref": "$skill"
             }
         },
+        "hmi": {
+            "elements": {
+                "ref": "$hmi"
+            }
+        },
         "tags": {
             "elements": {
                 "ref": "$tag"
@@ -58,17 +63,14 @@
                 "julie_tuil"
             ]
         },
+        "$hmi": {
+            "enum": ["robot", "ipad", "magic_cards", "ipad_robot"]
+        },
         "$locale": {
-            "enum": [
-                "en_US",
-                "fr_FR"
-            ]
+            "enum": ["en_US", "fr_FR"]
         },
         "$status": {
-            "enum": [
-                "draft",
-                "published"
-            ]
+            "enum": ["draft", "published"]
         },
         "$l10n": {
             "properties": {
@@ -156,10 +158,7 @@
             ]
         },
         "$exercise/gameplay": {
-            "enum": [
-                "findTheRightAnswers",
-                "associateCategories"
-            ]
+            "enum": ["findTheRightAnswers", "associateCategories"]
         },
         "$exercise/payload": {
             "type": "string"
