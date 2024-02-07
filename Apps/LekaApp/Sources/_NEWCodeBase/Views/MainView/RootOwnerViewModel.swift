@@ -17,12 +17,12 @@ class RootOwnerViewModel: ObservableObject {
     static let shared = RootOwnerViewModel()
 
     @Published var currentCompany: Company?
-
-    @Published var bufferCaregiver = Caregiver()
-    @Published var bufferCarereceiver = Carereceiver()
+    @Published var currentCaregiver: Caregiver?
 
     @Published var isWelcomeViewPresented = true
     @Published var isSettingsViewPresented = false
+    @Published var isCaregiverSettingsViewPresented = false
+    @Published var isCaregiverPickerViewPresented = false
 
     @Published var showConfirmCredentialsChange: Bool = false
     @Published var showConfirmDisconnection: Bool = false
@@ -30,11 +30,11 @@ class RootOwnerViewModel: ObservableObject {
 
     @Published var mockCaregiversSet: [Caregiver] = [
         Caregiver(name: "Chantal", avatar: DesignKitAsset.Avatars.avatarsBoy4f.name, professions: [Caregiver.Profession.motorTherapist]),
-        Caregiver(name: "Gaëtan", avatar: DesignKitAsset.Avatars.avatarsLekaSunglassesBlue.name, professions: [Caregiver.Profession.occupationalTherapist]),
+        Caregiver(name: "Gaëtan", avatar: DesignKitAsset.Avatars.avatarsLekaSunglassesBlue.name, professions: [Caregiver.Profession.occupationalTherapist], colorScheme: .dark, accentColor: .green),
         Caregiver(name: "Fabrizio", avatar: DesignKitAsset.Avatars.avatarsPictogramsAnimalsFarmBirdYellow0071.name, professions: [Caregiver.Profession.speechTherapist]),
         Caregiver(name: "Hakima", avatar: DesignKitAsset.Avatars.avatarsPictogramsFoodsFruitsPearYellow00FC.name, professions: [Caregiver.Profession.other(profession: "chirurgien")]),
         Caregiver(name: "Eric", avatar: DesignKitAsset.Avatars.avatarsBoy2a.name, professions: [Caregiver.Profession.motorTherapist]),
-        Caregiver(name: "Razmo", avatar: DesignKitAsset.Avatars.avatarsBoy3b.name, professions: [Caregiver.Profession.motorTherapist]),
+        Caregiver(name: "Razmo", avatar: DesignKitAsset.Avatars.avatarsBoy3b.name, professions: [Caregiver.Profession.motorTherapist], colorScheme: .dark, accentColor: .orange),
         Caregiver(name: "Corinne", avatar: DesignKitAsset.Avatars.avatarsGirl1d.name, professions: [Caregiver.Profession.motorTherapist]),
         Caregiver(name: "Alphonso", avatar: DesignKitAsset.Avatars.avatarsPictogramsFoodsFruitsAppleRed0101.name, professions: [Caregiver.Profession.motorTherapist]),
         Caregiver(name: "Gargantua", avatar: DesignKitAsset.Avatars.avatarsPictogramsFoodsFruitsCherryRed00FF.name, professions: [Caregiver.Profession.motorTherapist]),
@@ -46,5 +46,6 @@ class RootOwnerViewModel: ObservableObject {
 
     func disconnect() {
         self.currentCompany = nil
+        self.currentCaregiver = nil
     }
 }

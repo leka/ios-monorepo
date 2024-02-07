@@ -12,6 +12,7 @@ struct CreateCaregiverView: View {
     // MARK: Internal
 
     @Binding var isPresented: Bool
+    @State private var newCaregiver = Caregiver()
     var onDismissAction: () -> Void
 
     var body: some View {
@@ -21,7 +22,7 @@ struct CreateCaregiverView: View {
                     self.avatarNavigationLink
 
                     TextFieldDefault(label: String(l10n.CaregiverCreation.caregiverNameLabel.characters),
-                                     entry: self.$rootOwnerViewModel.bufferCaregiver.name)
+                                     entry: self.$newCaregiver.name)
                         .frame(width: 400)
 
                     self.professionNavigationLink
@@ -33,9 +34,9 @@ struct CreateCaregiverView: View {
                         }
                         // TODO: (@team) : add the caregiver profile to the account
                         // TODO: (@team) : assign the caregiver profile as the current selected one
-                        self.rootOwnerViewModel.mockCaregiversSet.append(self.rootOwnerViewModel.bufferCaregiver)
+                        self.rootOwnerViewModel.mockCaregiversSet.append(self.newCaregiver)
                     }
-                    .disabled(self.rootOwnerViewModel.bufferCaregiver.name.isEmpty)
+                    .disabled(self.newCaregiver.name.isEmpty)
                     .buttonStyle(.borderedProminent)
                 }
                 .padding()
@@ -50,10 +51,10 @@ struct CreateCaregiverView: View {
 
     private var avatarNavigationLink: some View {
         NavigationLink {
-            AvatarPicker(avatar: self.$rootOwnerViewModel.bufferCaregiver.avatar)
+            AvatarPicker(avatar: self.$newCaregiver.avatar)
         } label: {
             VStack(spacing: 15) {
-                AvatarPicker.ButtonLabel(image: self.rootOwnerViewModel.bufferCaregiver.avatar)
+                AvatarPicker.ButtonLabel(image: self.newCaregiver.avatar)
                 Text(l10n.CaregiverCreation.avatarChoiceButton)
                     // TODO: (@ui/ux) - Design System - replace with Leka font
                     .font(.headline)
@@ -71,15 +72,15 @@ struct CreateCaregiverView: View {
                 Spacer()
 
                 NavigationLink {
-                    ProfessionPicker()
+                    ProfessionPicker(caregiver: self.$newCaregiver)
                 } label: {
                     Label(String(l10n.CaregiverCreation.professionAddButton.characters), systemImage: "plus")
                 }
             }
 
-            if !self.rootOwnerViewModel.bufferCaregiver.professions.isEmpty {
-                ForEach(self.rootOwnerViewModel.bufferCaregiver.professions, id: \.self) { profession in
-                    ProfessionPicker.ProfessionTag(profession: profession)
+            if !self.newCaregiver.professions.isEmpty {
+                ForEach(self.newCaregiver.professions, id: \.self) { profession in
+                    ProfessionPicker.ProfessionTag(profession: profession, caregiver: self.$newCaregiver)
                 }
             }
         }

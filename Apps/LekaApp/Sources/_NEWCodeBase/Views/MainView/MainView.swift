@@ -23,7 +23,9 @@ struct MainView: View {
     var body: some View {
         NavigationSplitView {
             List(selection: self.$navigation.selectedCategory) {
-                if !self.rootOwnerViewModel.isCompanyConnected {
+                if self.rootOwnerViewModel.isCompanyConnected {
+                    CaregiverSettingsLabel()
+                } else {
                     NoAccountConnectedLabel()
                 }
 
@@ -46,27 +48,22 @@ struct MainView: View {
                     CategoryLabel(category: .stories)
                 }
 
-                HStack {
-                    Spacer()
-                    VStack(spacing: 20) {
+                VStack(alignment: .center, spacing: 20) {
+                    if self.rootOwnerViewModel.isCompanyConnected {
                         Button {
                             self.rootOwnerViewModel.isSettingsViewPresented = true
                         } label: {
                             SettingsLabel()
                         }
-
-                        Text("My Leka App - Version \(Bundle.version!) (\(Bundle.buildNumber!))")
-                            .foregroundColor(.gray)
-                            .font(.caption2)
                     }
-                    Spacer()
-                }
 
-                HStack {
-                    Spacer()
+                    Text("My Leka App - Version \(Bundle.version!) (\(Bundle.buildNumber!))")
+                        .foregroundColor(.gray)
+                        .font(.caption2)
+
                     LekaLogo(width: 50)
-                    Spacer()
                 }
+                .frame(maxWidth: .infinity)
             }
             // TODO: (@ladislas) remove if not necessary
             // .disabled(navigation.disableUICompletly)
@@ -113,8 +110,14 @@ struct MainView: View {
         .fullScreenCover(isPresented: self.$viewModel.isRobotConnectionPresented) {
             RobotConnectionView(viewModel: RobotConnectionViewModel())
         }
+        .fullScreenCover(isPresented: self.$rootOwnerViewModel.isCaregiverPickerViewPresented) {
+            CaregiverPicker()
+        }
         .sheet(isPresented: self.$rootOwnerViewModel.isSettingsViewPresented) {
             SettingsView()
+        }
+        .sheet(isPresented: self.$rootOwnerViewModel.isCaregiverSettingsViewPresented) {
+            CaregiverSettingsView(modifiedCaregiver: self.rootOwnerViewModel.currentCaregiver!)
         }
     }
 }

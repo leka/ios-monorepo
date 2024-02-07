@@ -20,6 +20,9 @@ extension AccountCreationProcess {
                 Text(l10n.AccountCreationProcess.Step4.message)
 
                 Button(String(l10n.AccountCreationProcess.Step4.discoverContentButton.characters)) {
+                    if !self.rootOwnerViewModel.mockCaregiversSet.isEmpty {
+                        self.rootOwnerViewModel.currentCaregiver = self.rootOwnerViewModel.mockCaregiversSet.last
+                    }
                     self.rootOwnerViewModel.isWelcomeViewPresented.toggle()
                 }
                 .buttonStyle(.bordered)

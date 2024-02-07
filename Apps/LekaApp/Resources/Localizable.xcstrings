@@ -2,6 +2,96 @@
     "version": "1.0",
     "sourceLanguage": "en",
     "strings": {
+        "caregiver_settings_view.appearance_section.accent_color_row.title": {
+            "comment": "AccentColor Row title",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Color Theme"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Th\u00e8me de couleur"
+                    }
+                }
+            }
+        },
+        "caregiver_settings_view.appearance_section.appearance_row.title": {
+            "comment": "Appearance Row title",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Dark Mode"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Mode sombre"
+                    }
+                }
+            }
+        },
+        "caregiver_settings_view.close_button_label": {
+            "comment": "Close button label of Caregiver Settings View",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Close"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Fermer"
+                    }
+                }
+            }
+        },
+        "caregiver_settings_view.navigation_title": {
+            "comment": "The navigation title of Caregiver Settings View",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Profil of "
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Profil de "
+                    }
+                }
+            }
+        },
+        "caregiver_settings_view.save_button_label": {
+            "comment": "Save button label of Caregiver Settings View",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Save"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Enregistrer"
+                    }
+                }
+            }
+        },
         "lekaapp.TextFieldEmail.invalidEmailErrorLabel": {
             "comment": "TextFieldEmail invalid Email Error Label",
             "extractionState": "extracted_with_value",
@@ -848,6 +938,42 @@
                 }
             }
         },
+        "lekapp.sidebar.change_caregiver_profile.button_label": {
+            "comment": "The button label of caregiver profile picker",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Change profile"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Changer de profil"
+                    }
+                }
+            }
+        },
+        "lekapp.sidebar.select_caregiver_profile.button_label": {
+            "comment": "The button label of caregiver profile picker when no profile is selected",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Select profile"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "S\u00e9lectionnez un profil"
+                    }
+                }
+            }
+        },
         "main_view.sidebar.category_label.activities": {
             "comment": "The title of the category 'Activities'",
             "extractionState": "extracted_with_value",
@@ -1132,60 +1258,6 @@
                     "stringUnit": {
                         "state": "translated",
                         "value": "Se d\u00e9connecter"
-                    }
-                }
-            }
-        },
-        "settings_view.appearance_section.accent_color_row.title": {
-            "comment": "AccentColor Row title",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Accent Color"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Couleur accentu\u00e9e"
-                    }
-                }
-            }
-        },
-        "settings_view.appearance_section.appearance_row.title": {
-            "comment": "Appearance Row title",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Dark mode"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Mode sombre"
-                    }
-                }
-            }
-        },
-        "settings_view.appearance_section.header": {
-            "comment": "Appearance section header",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Appearance"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Apparence"
                     }
                 }
             }

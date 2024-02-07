@@ -12,6 +12,7 @@ struct CreateCarereceiverView: View {
     // MARK: Internal
 
     @Binding var isPresented: Bool
+    @State private var newCarereceiver = Carereceiver()
     var onDismissAction: () -> Void
 
     var body: some View {
@@ -21,7 +22,7 @@ struct CreateCarereceiverView: View {
                     self.avatarNavigationLink
 
                     TextFieldDefault(label: String(l10n.CarereceiverCreation.carereceiverNameLabel.characters),
-                                     entry: self.$rootOwnerViewModel.bufferCarereceiver.name)
+                                     entry: self.$newCarereceiver.name)
                         .frame(width: 400)
 
                     Button(String(l10n.CarereceiverCreation.registerProfilButton.characters)) {
@@ -32,7 +33,7 @@ struct CreateCarereceiverView: View {
                         // TODO: (@team) : add the carereceiver profile to the account
                         // TODO: (@team) : assign the carereceiver profile as the current selected one
                     }
-                    .disabled(self.rootOwnerViewModel.bufferCarereceiver.name.isEmpty)
+                    .disabled(self.newCarereceiver.name.isEmpty)
                     .buttonStyle(.borderedProminent)
                 }
                 .padding()
@@ -47,10 +48,10 @@ struct CreateCarereceiverView: View {
 
     private var avatarNavigationLink: some View {
         NavigationLink {
-            AvatarPicker(avatar: self.$rootOwnerViewModel.bufferCarereceiver.avatar)
+            AvatarPicker(avatar: self.$newCarereceiver.avatar)
         } label: {
             VStack(spacing: 15) {
-                AvatarPicker.ButtonLabel(image: self.rootOwnerViewModel.bufferCarereceiver.avatar)
+                AvatarPicker.ButtonLabel(image: self.newCarereceiver.avatar)
                 Text(l10n.CarereceiverCreation.avatarChoiceButton)
                     // TODO: (@ui/ux) - Design System - replace with Leka font
                     .font(.headline)

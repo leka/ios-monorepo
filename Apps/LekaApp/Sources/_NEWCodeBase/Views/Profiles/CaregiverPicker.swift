@@ -12,23 +12,25 @@ struct CaregiverPicker: View {
     // MARK: Internal
 
     var body: some View {
-        VStack {
-            ScrollView(showsIndicators: false) {
-                LazyVGrid(columns: self.columns, spacing: 40) {
-                    ForEach(self.rootOwnerViewModel.mockCaregiversSet) { caregiver in
-                        CaregiverAvatarCell(caregiver: caregiver)
-                    }
+        NavigationStack {
+            VStack {
+                ScrollView(showsIndicators: false) {
+                    LazyVGrid(columns: self.columns, spacing: 40) {
+                        ForEach(self.rootOwnerViewModel.mockCaregiversSet) { caregiver in
+                            CaregiverAvatarCell(caregiver: caregiver)
+                        }
 
-                    // ? Last item is Add profile button
-                    self.addCaregiverButton
+                        // ? Last item is Add profile button
+                        self.addCaregiverButton
+                    }
+                    .padding()
                 }
-                .padding()
             }
-        }
-        .padding(.horizontal, 50)
-        .navigationTitle(String(l10n.CaregiverPicker.title.characters))
-        .sheet(isPresented: self.$isCaregiverCreationPresented) {
-            CreateCaregiverView(isPresented: self.$isCaregiverCreationPresented) {}
+            .padding(.horizontal, 50)
+            .navigationTitle(String(l10n.CaregiverPicker.title.characters))
+            .sheet(isPresented: self.$isCaregiverCreationPresented) {
+                CreateCaregiverView(isPresented: self.$isCaregiverCreationPresented) {}
+            }
         }
     }
 
@@ -40,7 +42,6 @@ struct CaregiverPicker: View {
 
     @State private var selected: String = ""
     @State private var isCaregiverCreationPresented: Bool = false
-    @State private var navigateToTeacherCreation: Bool = false
 
     private var addCaregiverButton: some View {
         Button {

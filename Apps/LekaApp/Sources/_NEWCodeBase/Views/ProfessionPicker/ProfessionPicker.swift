@@ -11,12 +11,13 @@ import SwiftUI
 struct ProfessionPicker: View {
     // MARK: Internal
 
+    @Binding var caregiver: Caregiver
     @Environment(\.dismiss) var dismiss
 
     var body: some View {
         ListView(selectedProfessions: self.$selectedProfessions)
             .onAppear {
-                self.selectedProfessions = self.rootOwnerViewModel.bufferCaregiver.professions
+                self.selectedProfessions = self.caregiver.professions
             }
             .safeAreaInset(edge: .bottom) {
                 TextFieldDefault(label: String(l10n.ProfessionPicker.otherLabel.characters), entry: self.$otherProfessionText)
@@ -30,7 +31,7 @@ struct ProfessionPicker: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
-                        self.rootOwnerViewModel.bufferCaregiver.professions = self.selectedProfessions
+                        self.caregiver.professions = self.selectedProfessions
                         self.dismiss()
                     } label: {
                         Label(String(l10n.ProfessionPicker.validateButton.characters), systemImage: "checkmark.circle")
@@ -42,7 +43,6 @@ struct ProfessionPicker: View {
 
     // MARK: Private
 
-    @ObservedObject private var rootOwnerViewModel: RootOwnerViewModel = .shared
     @State private var otherProfessionText: String = ""
     @State private var selectedProfessions: [Caregiver.Profession] = []
 }
@@ -50,5 +50,5 @@ struct ProfessionPicker: View {
 // MARK: - ProfessionPicker_Previews
 
 #Preview {
-    ProfessionPicker()
+    ProfessionPicker(caregiver: .constant(Caregiver()))
 }

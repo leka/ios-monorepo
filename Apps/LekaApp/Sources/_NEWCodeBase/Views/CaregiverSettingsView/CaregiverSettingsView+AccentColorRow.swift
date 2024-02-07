@@ -8,15 +8,35 @@ import SwiftUI
 
 // swiftlint:disable nesting
 
-// MARK: - SettingsView.AppearanceSection.AccentColorRow
+// MARK: - CaregiverSettingsView.AccentColorRow
 
-extension SettingsView.AppearanceSection {
+extension CaregiverSettingsView {
     struct AccentColorRow: View {
         // MARK: Internal
 
+        @Binding var caregiver: Caregiver
+
+        var body: some View {
+            HStack {
+                Text(l10n.CaregiverSettingsView.AccentColorRow.title)
+
+                Spacer()
+
+                ForEach(self.colors, id: \.self) { color in
+                    ColorCircleView(color: color, isSelected: self.selectedColor == color)
+                        .onTapGesture {
+                            self.styleManager.accentColor = color
+                            self.caregiver.preferredAccentColor = color
+                        }
+                }
+            }
+        }
+
+        // MARK: Private
+
         // MARK: - ColorCircleView
 
-        struct ColorCircleView: View {
+        private struct ColorCircleView: View {
             let color: Color
             let isSelected: Bool
 
@@ -32,24 +52,7 @@ extension SettingsView.AppearanceSection {
             }
         }
 
-        @ObservedObject var styleManager: StyleManager = .shared
-
-        var body: some View {
-            HStack {
-                Text(l10n.SettingsView.AppearanceSection.AccentColorRow.title)
-
-                Spacer()
-
-                ForEach(self.colors, id: \.self) { color in
-                    ColorCircleView(color: color, isSelected: self.selectedColor == color)
-                        .onTapGesture {
-                            self.styleManager.accentColor = color
-                        }
-                }
-            }
-        }
-
-        // MARK: Private
+        @ObservedObject private var styleManager: StyleManager = .shared
 
         private let colors: [Color] = [DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor, .blue, .purple, .red, .orange, .yellow, .green, .gray]
 
@@ -63,6 +66,6 @@ extension SettingsView.AppearanceSection {
 
 #Preview {
     Form {
-        SettingsView.AppearanceSection.AccentColorRow()
+        CaregiverSettingsView.AccentColorRow(caregiver: .constant(Caregiver()))
     }
 }
