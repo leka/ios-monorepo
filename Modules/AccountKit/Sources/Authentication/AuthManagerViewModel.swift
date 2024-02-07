@@ -71,7 +71,7 @@ public class AuthManagerViewModel: ObservableObject {
                     self.notificationMessage = String(l10n.AuthManagerViewModel.successfulEmailVerification.characters)
                     self.showNotificationAlert = true
                 } else if !self.userEmailIsVerified {
-                    self.actionRequestMessage = "Your email hasn't been verified yet. Please verify your email to avoid losing your data."
+                    self.actionRequestMessage = String(l10n.AuthManagerViewModel.unverifiedEmailNotification.characters)
                     self.showactionRequestAlert = true
                 }
             case .loggedOut:
@@ -83,7 +83,10 @@ public class AuthManagerViewModel: ObservableObject {
 
     private func resetState() {
         self.userIsSigningUp = false
+        self.userEmailIsVerified = false
         self.errorMessage = ""
+        self.actionRequestMessage = ""
+        self.showactionRequestAlert = false
         self.showErrorAlert = false
         self.notificationMessage = ""
         self.showNotificationAlert = false
