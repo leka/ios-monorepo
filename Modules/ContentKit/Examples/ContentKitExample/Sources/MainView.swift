@@ -83,6 +83,20 @@ struct MainView: View {
                     }
                 }
 
+                DisclosureGroup("**HMI**") {
+                    ForEach(self.activity?.hmi ?? [], id: \.self) { hmi in
+                        let hmi = HMI.hmi(id: hmi)!
+                        HStack {
+                            Text(hmi.name)
+                            Button {
+                                self.selectedHMI = hmi
+                            } label: {
+                                Image(systemName: "info.circle")
+                            }
+                        }
+                    }
+                }
+
                 DisclosureGroup("**Tags**") {
                     ForEach(self.activity?.tags ?? [], id: \.self) { skill in
                         Text(skill)
@@ -106,6 +120,13 @@ struct MainView: View {
                 Text(skill.name)
                     .font(.headline)
                 Text(skill.description)
+            }
+        })
+        .sheet(item: self.$selectedHMI, onDismiss: { self.selectedHMI = nil }, content: { hmi in
+            VStack(alignment: .leading) {
+                Text(hmi.name)
+                    .font(.headline)
+                Text(hmi.description)
             }
         })
         .onAppear {
@@ -133,6 +154,7 @@ struct MainView: View {
     // MARK: Private
 
     @State private var selectedSkill: Skill?
+    @State private var selectedHMI: HMIDetails?
 
     @State private var activity: Activity?
 }
