@@ -7,22 +7,22 @@ list:
   - id: robot
     l10n:
       - locale: fr_FR
-        name: Robot
+        name: Robot seul
         description: |
           L'utilisateur interagit directement avec le robot.
       - locale: en_US
-        name: Robot
+        name: Robot alone
         description: |
           The user interacts directly with the robot.
 
   - id: magic_cards
     l10n:
       - locale: fr_FR
-        name: Cartes magiques
+        name: Robot et cartes magiques
         description: |
           L'utilisateur interagit avec le robot en utilisant les cartes magiques.
       - locale: en_US
-        name: Magic cards
+        name: Robot and magic cards
         description: |
           The user interacts with the robot by using magic cards.
 
@@ -40,10 +40,10 @@ list:
   - id: tablet
     l10n:
       - locale: fr_FR
-        name: iPad
+        name: iPad (robot en renforçateur)
         description: |
           L'utilisateur interagit avec l'iPad, le robot agit en tant que renforçateur.
       - locale: en_US
-        name: iPad
+        name: iPad (robot as reinforcer)
         description: |
           The user interacts with the iPad, and the robot serves as reinforcer.
