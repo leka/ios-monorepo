@@ -56,6 +56,7 @@ public class AuthManager {
             } else if let user = authResult?.user {
                 log.info("User \(user.uid) signed-in successfully. 🎉")
                 self?.authenticationState.send(.loggedIn)
+                self?.emailVerificationState.send(user.isEmailVerified)
             }
         }
     }
@@ -94,16 +95,24 @@ public class AuthManager {
         self.authenticationError.eraseToAnyPublisher()
     }
 
+    var emailVerificationStatePublisher: AnyPublisher<Bool, Never> {
+        self.emailVerificationState.eraseToAnyPublisher()
+    }
+
     // MARK: Private
 
     private let authenticationState = CurrentValueSubject<AuthenticationState, Never>(.unknown)
     private let authenticationError = PassthroughSubject<Error, Never>()
+    private let emailVerificationState = PassthroughSubject<Bool, Never>()
     private let auth = Auth.auth()
     private var cancellables = Set<AnyCancellable>()
 
     private func updateAuthState(for user: User?) {
-        // TODO(@macteuts): Check email verification Status when relevant
-        let newState = user != nil ? AuthenticationState.loggedIn : .loggedOut
-        self.authenticationState.send(newState)
+        guard let user else {
+            self.authenticationState.send(.loggedOut)
+            return
+        }
+        self.authenticationState.send(.loggedIn)
+        self.emailVerificationState.send(user.isEmailVerified)
     }
 }
