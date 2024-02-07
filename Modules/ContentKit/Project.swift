@@ -20,6 +20,7 @@ let project = Project.module(
     dependencies: [
         .project(target: "LocalizationKit", path: Path("../../Modules/LocalizationKit")),
         .project(target: "LogKit", path: Path("../../Modules/LogKit")),
+        .external(name: "Version"),
         .external(name: "Yams"),
     ]
 )
