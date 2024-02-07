@@ -24,8 +24,9 @@ jobs:
           fetch-depth: 0 # Fetch all history for all branches and tags
           lfs: true
 
-      - name: Install mise tools
-        uses: jdx/mise-action@v2
+      - name: Setup mise
+        run: |
+          echo "$HOME/.local/share/mise/shims" >> $GITHUB_PATH
 
       - name: Run swiftformat
         run: |

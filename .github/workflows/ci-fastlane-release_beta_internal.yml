@@ -37,8 +37,9 @@ jobs:
         with:
           fetch-depth: 1 # shallow clone
 
-      - name: Install mise tools
-        uses: jdx/mise-action@v2
+      - name: Setup mise
+        run: |
+          echo "$HOME/.local/share/mise/shims" >> $GITHUB_PATH
 
       - name: bundle install
         run: |
