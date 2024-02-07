@@ -2,6 +2,24 @@
     "version": "1.0",
     "sourceLanguage": "en",
     "strings": {
+        "accountkit.auth_manager.signin_failed_error": {
+            "comment": "Sign-in failure error message",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Sign-in failed. Please try again."
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "La connexion a \u00e9chou\u00e9. Veuillez r\u00e9essayer."
+                    }
+                }
+            }
+        },
         "accountkit.auth_manager.signout_failed_error": {
             "comment": "Sign-out failure error message",
             "extractionState": "extracted_with_value",

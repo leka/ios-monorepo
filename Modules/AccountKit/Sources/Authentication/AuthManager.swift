@@ -51,7 +51,7 @@ public class AuthManager {
         self.auth.signIn(withEmail: email, password: password) { [weak self] authResult, error in
             if let error {
                 log.error("Sign-in failed: \(error.localizedDescription)")
-                let errorMessage = "Sign-in failed. Please try again."
+                let errorMessage = String(l10n.AuthManager.signInFailedError.characters)
                 self?.authenticationError.send(AuthenticationError.custom(message: errorMessage))
             } else if let user = authResult?.user {
                 log.info("User \(user.uid) signed-in successfully. 🎉")
