@@ -2,6 +2,7 @@
 # Copyright APF France handicap
 # SPDX-License-Identifier: Apache-2.0
 
+version: 1.0.0
 skills:
   - id: spatial_understanding
     l10n:
@@ -18,7 +19,7 @@ skills:
           dans cet espace.
     subskills: []
 
-  - id: ttime_and_temporality_understanding
+  - id: time_and_temporality_understanding
     l10n:
       - locale: en_US
         name: Time and temporality understanding
@@ -37,7 +38,7 @@ skills:
           signifie aussi savoir combien de temps durent les choses (par exemple,
           une minute est plus courte qu'une heure) et connaître l'ordre des
           événements (par exemple, aujourd'hui est après hier et avant demain,
-          le printemps est après l’hiver et avant l’été).
+          le printemps est après l'hiver et avant l'été).
     subskills: []
 
   - id: association
@@ -108,7 +109,7 @@ skills:
         name: Relation entre tablette et robot
         description: >
           Comprendre le lien de causalité entre tablette et robot. Comprendre
-          qu’en touchant la tablette, cela fait bouger ou changer le robot Leka.
+          qu'en touchant la tablette, cela fait bouger ou changer le robot Leka.
     subskills: []
 
   - id: discrimination
@@ -141,8 +142,8 @@ skills:
       - locale: fr_FR
         name: Généralisation
         description: >
-          Apprendre quelque chose dans une situation et savoir l’utiliser dans
-          d'autres situations différentes (par exemple, apprendre qu’un stylo
+          Apprendre quelque chose dans une situation et savoir l'utiliser dans
+          d'autres situations différentes (par exemple, apprendre qu'un stylo
           sert à écrire, et ensuite savoir que tous les stylos servent à écrire,
           même s'ils sont de différentes couleurs ou formes).
     subskills: []
@@ -158,7 +159,7 @@ skills:
         description: >
           Capacité de stocker, garder et se souvenir des informations.
     subskills:
-      - id: memory/short-term_memory
+      - id: memory/short_term_memory
         l10n:
           - locale: en_US
             name: Short-term memory
@@ -171,11 +172,11 @@ skills:
             description: >
               Capacité de retenir et de traiter une quantité limitée
               d'informations pour une courte période, généralement de quelques
-              secondes à une minute (par exemple, garder en tête l’ordre d’une
-              séquence de couleurs que l’on vient d’observer).
+              secondes à une minute (par exemple, garder en tête l'ordre d'une
+              séquence de couleurs que l'on vient d'observer).
         subskills: []
 
-      - id: memory/long-term_memory
+      - id: memory/long_term_memory
         l10n:
           - locale: en_US
             name: Long-term memory
@@ -229,7 +230,7 @@ skills:
             name: Transition entre deux activités
             description: >
               Capacité à se reconcentrer rapidement après un changement
-              d’activité
+              d'activité
         subskills: []
 
       - id: attention/joint_attention
@@ -260,11 +261,11 @@ skills:
         name: Inhibition
         description: >
           Capacité à se retenir de faire quelque chose, même si on a envie de le
-          faire (par exemple, ne pas toucher le robot Leka quand ce n’est pas
-          mon tour, même si j’en ai très envie).
+          faire (par exemple, ne pas toucher le robot Leka quand ce n'est pas
+          mon tour, même si j'en ai très envie).
     subskills: []
 
-  - id: self-regulation
+  - id: self_regulation
     l10n:
       - locale: en_US
         name: Self-regulation
@@ -292,7 +293,7 @@ skills:
         description: >
           Comprendre et ressentir ce que les autres personnes ressentent (par
           exemple, si quelqu'un est triste, l'empathie permet de comprendre
-          pourquoi il est triste et d’être capable de se mettre à sa place).
+          pourquoi il est triste et d'être capable de se mettre à sa place).
     subskills: []
 
   - id: social_interactions
@@ -352,7 +353,8 @@ skills:
                 description: >
                   Comprendre ce que les gens disent ou écrivent.
             subskills:
-              - id: communication/verbal_communication/receptive_language/oral_comprehension
+              - id: >-
+                  communication/verbal_communication/receptive_language/oral_comprehension
                 l10n:
                   - locale: en_US
                     name: Oral comprehension
@@ -363,8 +365,8 @@ skills:
                     description: >
                       Comprendre les mots que les gens disent.
                 subskills: []
-
-              - id: communication/verbal_communication/receptive_language/written_comprehension
+              - id: >-
+                  communication/verbal_communication/receptive_language/written_comprehension
                 l10n:
                   - locale: en_US
                     name: Written comprehension (reading)
@@ -375,7 +377,6 @@ skills:
                     description: >
                       Comprendre les mots écrits dans les livres ou ailleurs.
                 subskills: []
-
           - id: communication/verbal_communication/expressive_language
             l10n:
               - locale: en_US
@@ -387,7 +388,8 @@ skills:
                 description: >
                   Pouvoir parler ou écrire pour exprimer des messages.
             subskills:
-              - id: communication/verbal_communication/expressive_language/oral_expression
+              - id: >-
+                  communication/verbal_communication/expressive_language/oral_expression
                 l10n:
                   - locale: en_US
                     name: Oral expression (speech)
@@ -396,10 +398,10 @@ skills:
                   - locale: fr_FR
                     name: Expression orale (parole)
                     description: >
-                      Utiliser des mots pour s’exprimer.
+                      Utiliser des mots pour s'exprimer.
                 subskills: []
-
-              - id: communication/verbal_communication/expressive_language/written_expression
+              - id: >-
+                  communication/verbal_communication/expressive_language/written_expression
                 l10n:
                   - locale: en_US
                     name: Written comprehension (reading)
@@ -408,7 +410,7 @@ skills:
                   - locale: fr_FR
                     name: Expression écrite (écriture)
                     description: >
-                      Ecrire des mots pour s’exprimer.
+                      Ecrire des mots pour s'exprimer.
                 subskills: []
 
       - id: communication/augmentative_alternative_communication
@@ -422,7 +424,7 @@ skills:
             name: Communication augmentative et alternative
             description: >
               Méthodes alternatives pour communiquer quand la communication
-              verbale est difficile ou n’est pas possible.
+              verbale est difficile ou n'est pas possible.
         subskills:
           - id: communication/augmentative_alternative_communication/sign_language
             l10n:
@@ -439,7 +441,6 @@ skills:
                   Cela implique de faire des signes avec les mains et d'utiliser
                   des expressions faciales pour exprimer des idées sans parler.
             subskills: []
-
           - id: communication/augmentative_alternative_communication/makaton
             l10n:
               - locale: en_US
@@ -456,8 +457,7 @@ skills:
                   parole est bien présente et est complétée par des signes et
                   des symboles pour renforcer la communication.
             subskills: []
-
-          - id: communication/augmentative_alternative_communication/PECS
+          - id: communication/augmentative_alternative_communication/pecs
             l10n:
               - locale: en_US
                 name: PECS (picture exchange communication system)
@@ -471,7 +471,7 @@ skills:
                   Capacité à utiliser le PECS, un système où les gens
                   communiquent en utilisant des images (pictogrammes, symboles,
                   mots écrits, photos, dessins, etc.). Ils montrent ou échangent
-                  des images pour s’exprimer.
+                  des images pour s'exprimer.
             subskills: []
 
       - id: communication/non_verbal_communication
@@ -499,7 +499,6 @@ skills:
                   Bouger les mains et les bras pour montrer des choses sans
                   parler.
             subskills: []
-
           - id: communication/non_verbal_communication/pointing
             l10n:
               - locale: en_US
@@ -513,7 +512,6 @@ skills:
                   Utiliser un doigt pour montrer quelque chose ou quelqu'un sans
                   utiliser de mots.
             subskills: []
-
           - id: communication/non_verbal_communication/gaze
             l10n:
               - locale: en_US
@@ -527,7 +525,6 @@ skills:
                   Regarder des choses ou des personnes avec les yeux pour
                   montrer ce qu'on pense ou ce qu'on ressent sans dire des mots.
             subskills: []
-
           - id: communication/non_verbal_communication/facial_expressions
             l10n:
               - locale: en_US
@@ -541,7 +538,6 @@ skills:
                   Faire des expressions différentes avec son visage pour montrer
                   comment on se sent, comme sourire quand on est content.
             subskills: []
-
           - id: communication/non_verbal_communication/vocalizations
             l10n:
               - locale: en_US
@@ -553,7 +549,6 @@ skills:
                 description: >
                   Faire des sons qui ne sont pas de vrais mots.
             subskills: []
-
           - id: communication/non_verbal_communication/smiles
             l10n:
               - locale: en_US
@@ -565,7 +560,7 @@ skills:
                 name: Sourires
                 description: >
                   Faire des sourires pour manifester de la joie, de
-                  l’approbation ou toute sorte d’émotion agréable
+                  l'approbation ou toute sorte d'émotion agréable
             subskills: []
 
   - id: turn_taking
@@ -616,18 +611,18 @@ skills:
           ou utiliser des outils comme des ciseaux ou des crayons.
     subskills: []
 
-  - id: familiarizing_with_leka
+  - id: familiarization_with_leka
     l10n:
       - locale: en_US
-        name: Child familiarization with Leka
+        name: Familiarization with Leka
         description: >
-          The skill of familiarizing the child with Leka involves helping the
-          child feel comfortable and confident with the Leka robot.
+          The skill of "familiarization with Leka" involves helping the
+          care receiver feel comfortable and confident with the Leka robot.
       - locale: fr_FR
-        name: Familiarisation de l'enfant avec Leka
+        name: Familiarisation avec Leka
         description: >
-          La compétence "familiarisation de l'enfant avec Leka" consiste à aider
-          l'enfant à se sentir à l'aise et en confiance avec le robot Leka.
+          La compétence "familiarisation avec Leka" consiste à aider
+          la personne accompagnée à se sentir à l'aise et en confiance avec le robot Leka.
     subskills: []
 
   - id: sensory_interaction
@@ -635,14 +630,14 @@ skills:
       - locale: en_US
         name: Sensory interaction
         description: >
-          Manifests when a child plays with the robot and uses their senses to
+          Manifests when a care receiver plays with the robot and uses their senses to
           interact. This includes watching Leka's changing colors and lights,
           listening to the sounds or music it produces, and touching and feeling
           Leka by manipulating or playing with it.
       - locale: fr_FR
         name: Sensorialité
         description: >
-          Se manifeste quand un enfant joue avec le robot et utilise ses sens
+          Se manifeste quand une personne accompagnée joue avec le robot et utilise ses sens
           pour interagir. Cela inclut regarder les couleurs et lumières
           changeantes de Leka, écouter les sons ou musiques qu'il émet, et
           toucher et ressentir Leka en le manipulant ou en jouant avec lui.
@@ -664,157 +659,168 @@ skills:
           compter combien de pommes sont dans un panier).
     subskills: []
 
-  - id: colors_recognition
+  - id: recognition
     l10n:
       - locale: en_US
-        name: Recognition of colors
+        name: Recognition
         description: >
-          The ability to see and identify different colors.
+          The ability to see and identify different things.
       - locale: fr_FR
-        name: Reconnaissance des couleurs
+        name: Reconnaissance
         description: >
-          La reconnaissance des couleurs est la capacité à voir et à identifier
-          différentes couleurs.
-    subskills: []
+          La capacité à voir et à identifier différentes choses.
+    subskills:
+      - id: recognition/colors
+        l10n:
+          - locale: en_US
+            name: Color recognition
+            description: >
+              The ability to see and identify different colors.
+          - locale: fr_FR
+            name: Reconnaissance des couleurs
+            description: >
+              La reconnaissance des couleurs est la capacité à voir et à identifier
+              différentes couleurs.
+        subskills: []
 
-  - id: foods_recognition
-    l10n:
-      - locale: en_US
-        name: Recognition of foods
-        description: >
-          The ability to see and identify different foods (fruits, vegetables,
-          cakes, etc).
-      - locale: fr_FR
-        name: Reonnaissance des aliments
-        description: >
-          La reconnaissance des aliments est la capacité à voir et à identifier
-          différents aliments (fruits, légumes, gâteaux, etc.)
-    subskills: []
+      - id: recognition/food
+        l10n:
+          - locale: en_US
+            name: Food recognition
+            description: >
+              The ability to see and identify different kinds of food (fruits, vegetables,
+              cakes, etc).
+          - locale: fr_FR
+            name: Reonnaissance des aliments
+            description: >
+              La reconnaissance des aliments est la capacité à voir et à identifier
+              différents aliments (fruits, légumes, gâteaux, etc.)
+        subskills: []
 
-  - id: animals_recognition
-    l10n:
-      - locale: en_US
-        name: Recognition of animals
-        description: >
-          The ability to see and identify different animals (dogs, cats, horses,
-          etc.).
-      - locale: fr_FR
-        name: Reconnaissance des animaux
-        description: >
-          La reconnaissance des animaux est la capacité à voir et à identifier
-          différents animaux (chiens, chats, chevaux, etc.).
-    subskills: []
+      - id: recognition/animals
+        l10n:
+          - locale: en_US
+            name: Animal recognition
+            description: >
+              The ability to see and identify different animals (dogs, cats, horses,
+              etc.).
+          - locale: fr_FR
+            name: Reconnaissance des animaux
+            description: >
+              La reconnaissance des animaux est la capacité à voir et à identifier
+              différents animaux (chiens, chats, chevaux, etc.).
+        subskills: []
 
-  - id: shapes_recognition
-    l10n:
-      - locale: en_US
-        name: Recognition of shapes
-        description: >
-          The ability to see and identify different shapes (round, square,
-          triangle, rectangle, etc.).
-      - locale: fr_FR
-        name: Reconnaissance des formes
-        description: >
-          La reconnaissance des formes est la capacité à voir et à identifier
-          différentes formes (rond, carré, triangle, rectangle, etc.).
-    subskills: []
+      - id: recognition/geometric_shapes
+        l10n:
+          - locale: en_US
+            name: Share recognition
+            description: >
+              The ability to see and identify different shapes (round, square,
+              triangle, rectangle, etc.).
+          - locale: fr_FR
+            name: Reconnaissance des formes
+            description: >
+              La reconnaissance des formes est la capacité à voir et à identifier
+              différentes formes (rond, carré, triangle, rectangle, etc.).
+        subskills: []
 
-  - id: numbers_recognition
-    l10n:
-      - locale: en_US
-        name: Recognition of numbers
-        description: >
-          The ability to see and identify numbers.
-      - locale: fr_FR
-        name: Reconnaissance des chiffres
-        description: >
-          La reconnaissance des chiffres est la capacité à voir et à identifier
-          des chiffres.
-    subskills: []
+      - id: recognition/numbers
+        l10n:
+          - locale: en_US
+            name: Recognition of numbers
+            description: >
+              The ability to see and identify numbers.
+          - locale: fr_FR
+            name: Reconnaissance des chiffres
+            description: >
+              La reconnaissance des chiffres est la capacité à voir et à identifier
+              des chiffres.
+        subskills: []
 
-  - id: alphabet-letters_recognition
-    l10n:
-      - locale: en_US
-        name: Recognition of alphabet letters
-        description: >
-          The ability to see and identify different letters of the alphabet.
-      - locale: fr_FR
-        name: Reconnaissance des lettres de l'alphabet
-        description: >
-          La reconnaissance des lettres de l’alphabet est la capacité à voir et
-          à identifier différentes lettres de l’alphabet.
-    subskills: []
+      - id: recognition/alphabet_letters
+        l10n:
+          - locale: en_US
+            name: Recognition of alphabet letters
+            description: >
+              The ability to see and identify different letters of the alphabet.
+          - locale: fr_FR
+            name: Reconnaissance des lettres de l'alphabet
+            description: >
+              La reconnaissance des lettres de l'alphabet est la capacité à voir et
+              à identifier différentes lettres de l'alphabet.
+        subskills: []
 
-  - id: everyday-objects_recognition
-    l10n:
-      - locale: en_US
-        name: Recognition of everyday objects
-        description: >
-          The ability to see and identify different everyday objects (clothes,
-          toothbrushes, plates, etc.).
-      - locale: fr_FR
-        name: Reconnaissance des objets du quotidien
-        description: >
-          La reconnaissance d’objets du quotidien est la capacité à voir et à
-          identifier différents objets du quotidien (vêtements, brosse à dents,
-          assiettes, etc.).
-    subskills: []
+      - id: recognition/everyday_objects
+        l10n:
+          - locale: en_US
+            name: Recognition of everyday objects
+            description: >
+              The ability to see and identify different everyday objects (clothes,
+              toothbrushes, plates, etc.).
+          - locale: fr_FR
+            name: Reconnaissance des objets du quotidien
+            description: >
+              La reconnaissance d'objets du quotidien est la capacité à voir et à
+              identifier différents objets du quotidien (vêtements, brosse à dents,
+              assiettes, etc.).
+        subskills: []
 
-  - id: basic-physiological-needs_recognition
-    l10n:
-      - locale: en_US
-        name: Recognition of basic physiological needs
-        description: >
-          The ability to see and identify basic physiological needs (eating,
-          drinking, sleeping, etc.).
-      - locale: fr_FR
-        name: Reconnaissance des besoins physiologiques primaires
-        description: >
-          La reconnaissance des besoins physiologiques primaires est la capacité
-          à voir et à identifier les besoins physiologiques primaires (manger,
-          boire, dormir, etc.).
-    subskills: []
+      - id: recognition/basic_physiological_recognition_needs
+        l10n:
+          - locale: en_US
+            name: Recognition of basic physiological needs
+            description: >
+              The ability to see and identify basic physiological needs (eating,
+              drinking, sleeping, etc.).
+          - locale: fr_FR
+            name: Reconnaissance des besoins physiologiques primaires
+            description: >
+              La reconnaissance des besoins physiologiques primaires est la capacité
+              à voir et à identifier les besoins physiologiques primaires (manger,
+              boire, dormir, etc.).
+        subskills: []
 
-  - id: weather-elements_recognition
-    l10n:
-      - locale: en_US
-        name: Recognition of weather elements
-        description: >
-          The recognition of weather elements is the ability to see and identify
-          weather elements (sun, rain, clouds, snow, etc.).
-      - locale: fr_FR
-        name: Reconnaissance des éléments de la météo
-        description: >
-          La reconnaissance des éléments de la météo est la capacité à voir et à
-          identifier les éléments de la météo (soleil, pluie, nuages, neige,
-          etc.).
-    subskills: []
+      - id: recognition/weather_elements
+        l10n:
+          - locale: en_US
+            name: Recognition of weather elements
+            description: >
+              The recognition of weather elements is the ability to see and identify
+              weather elements (sun, rain, clouds, snow, etc.).
+          - locale: fr_FR
+            name: Reconnaissance des éléments de la météo
+            description: >
+              La reconnaissance des éléments de la météo est la capacité à voir et à
+              identifier les éléments de la météo (soleil, pluie, nuages, neige,
+              etc.).
+        subskills: []
 
-  - id: body-parts_recognition
-    l10n:
-      - locale: en_US
-        name: Recognition of body parts
-        description: >
-          The recognition of body parts is the ability to see and identify
-          different parts of the body.
-      - locale: fr_FR
-        name: Reconnaissance des parties du corps humain
-        description: >
-          La reconnaissance des parties du corps est la capacité à voir et à
-          identifier les parties du corps.
-    subskills: []
+      - id: recognition/body_parts
+        l10n:
+          - locale: en_US
+            name: Recognition of body parts
+            description: >
+              The recognition of body parts is the ability to see and identify
+              different parts of the body.
+          - locale: fr_FR
+            name: Reconnaissance des parties du corps humain
+            description: >
+              La reconnaissance des parties du corps est la capacité à voir et à
+              identifier les parties du corps.
+        subskills: []
 
-  - id: basic-emotions_recognition
-    l10n:
-      - locale: en_US
-        name: Recognition of basic emotions
-        description: >
-          The recognition of basic emotions is the ability to see and identify
-          fundamental emotions (joy, fear, anger, sadness, disgust).
-      - locale: fr_FR
-        name: Reconnaissance des émotions de base
-        description: >
-          La reconnaissance des émotions de base est la capacité à voir et à
-          identifier les émotions de base (joie, peur, colère, tristesse,
-          dégoût).
-    subskills: []
+      - id: recognition/basic_emotions
+        l10n:
+          - locale: en_US
+            name: Recognition of basic emotions
+            description: >
+              The recognition of basic emotions is the ability to see and identify
+              fundamental emotions (joy, fear, anger, sadness, disgust).
+          - locale: fr_FR
+            name: Reconnaissance des émotions de base
+            description: >
+              La reconnaissance des émotions de base est la capacité à voir et à
+              identifier les émotions de base (joie, peur, colère, tristesse,
+              dégoût).
+        subskills: []
