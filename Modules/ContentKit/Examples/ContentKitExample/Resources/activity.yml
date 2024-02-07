@@ -25,6 +25,11 @@ locales:
   - en_US
   - fr_FR
 
+hmi:
+  - robot
+  - magic_cards
+  - tablet_robot
+
 l10n:
   - locale: fr_FR
     details:

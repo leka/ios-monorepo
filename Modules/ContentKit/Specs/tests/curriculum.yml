@@ -20,6 +20,11 @@ skills:
   - skill_two
   - skill_three
 
+hmi:
+  - robot
+  - magic_cards
+  - tablet_robot
+
 tags:
   - tag_one
   - tag_two

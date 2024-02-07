@@ -83,6 +83,20 @@ struct MainView: View {
                     }
                 }
 
+                DisclosureGroup("**HMI**") {
+                    ForEach(self.activity?.hmi ?? [], id: \.self) { hmi in
+                        let hmi = HMI.hmi(id: hmi)!
+                        HStack {
+                            Text(hmi.name)
+                            Button {
+                                self.selectedHMI = hmi
+                            } label: {
+                                Image(systemName: "info.circle")
+                            }
+                        }
+                    }
+                }
+
                 DisclosureGroup("**Tags**") {
                     ForEach(self.activity?.tags ?? [], id: \.self) { skill in
                         Text(skill)
@@ -108,6 +122,13 @@ struct MainView: View {
                 Text(skill.description)
             }
         })
+        .sheet(item: self.$selectedHMI, onDismiss: { self.selectedHMI = nil }, content: { hmi in
+            VStack(alignment: .leading) {
+                Text(hmi.name)
+                    .font(.headline)
+                Text(hmi.description)
+            }
+        })
         .onAppear {
             self.activity = ContentKit.decodeActivity("activity")
             print(self.activity ?? "not working")
@@ -119,12 +140,21 @@ struct MainView: View {
                 print("name: \(skill.name)")
                 print("description: \(skill.description)")
             }
+
+            let hmis = HMI.list
+            for (index, hmi) in hmis.enumerated() {
+                print("hmi \(index + 1)")
+                print("id: \(hmi.id)")
+                print("name: \(hmi.name)")
+                print("description: \(hmi.description)")
+            }
         }
     }
 
     // MARK: Private
 
     @State private var selectedSkill: Skill?
+    @State private var selectedHMI: HMIDetails?
 
     @State private var activity: Activity?
 }
