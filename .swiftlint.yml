@@ -29,6 +29,10 @@ identifier_name:
     - BLE
     - cmd
     - g
+    - hmi
+    - HMI
+    - hmis
+    - HMIs
     - i
     - i18n
     - id
