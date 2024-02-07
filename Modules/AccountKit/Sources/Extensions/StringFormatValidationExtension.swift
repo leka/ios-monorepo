@@ -21,7 +21,7 @@ public extension String {
 
     func isValidPassword() -> Bool {
         // 8 characters minimum, must contain at least one number and one Capital letter
-        let regex = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$"
+        let regex = "^[^\\s]{12,}$"
         let predicate = NSPredicate(format: "SELF MATCHES %@", regex)
         return predicate.evaluate(with: self) && !self.isEmpty
     }
