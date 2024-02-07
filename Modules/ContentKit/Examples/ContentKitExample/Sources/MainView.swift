@@ -119,6 +119,14 @@ struct MainView: View {
                 print("name: \(skill.name)")
                 print("description: \(skill.description)")
             }
+
+            let hmis = HMI.list
+            for (index, hmi) in hmis.enumerated() {
+                print("hmi \(index + 1)")
+                print("id: \(hmi.id)")
+                print("name: \(hmi.name)")
+                print("description: \(hmi.description)")
+            }
         }
     }
 
