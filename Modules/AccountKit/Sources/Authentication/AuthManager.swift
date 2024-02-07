@@ -47,14 +47,15 @@ public class AuthManager {
             .store(in: &self.cancellables)
     }
 
-    public func sendEmailVerification() {
-        guard let currentUser = auth.currentUser else { return }
-        currentUser.sendEmailVerification { [weak self] error in
+    public func signIn(email: String, password: String) {
+        self.auth.signIn(withEmail: email, password: password) { [weak self] authResult, error in
             if let error {
-                log.error("\(error.localizedDescription)")
-                let errorMessage = String(l10n.AuthManager.verificationEmailFailure.characters)
+                log.error("Sign-in failed: \(error.localizedDescription)")
+                let errorMessage = "Sign-in failed. Please try again."
                 self?.authenticationError.send(AuthenticationError.custom(message: errorMessage))
-                return
+            } else if let user = authResult?.user {
+                log.info("User \(user.uid) signed-in successfully. 🎉")
+                self?.authenticationState.send(.loggedIn)
             }
         }
     }
@@ -68,6 +69,18 @@ public class AuthManager {
             log.error("Sign out failed: \(error.localizedDescription)")
             let errorMessage = String(l10n.AuthManager.signOutFailedError.characters)
             self.authenticationError.send(AuthenticationError.custom(message: errorMessage))
+        }
+    }
+
+    public func sendEmailVerification() {
+        guard let currentUser = auth.currentUser else { return }
+        currentUser.sendEmailVerification { [weak self] error in
+            if let error {
+                log.error("\(error.localizedDescription)")
+                let errorMessage = String(l10n.AuthManager.verificationEmailFailure.characters)
+                self?.authenticationError.send(AuthenticationError.custom(message: errorMessage))
+                return
+            }
         }
     }
 
