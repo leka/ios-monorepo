@@ -71,7 +71,15 @@ struct MainView: View {
 
                 DisclosureGroup("**Skills**") {
                     ForEach(self.activity?.skills ?? [], id: \.self) { skill in
-                        Text(skill)
+                        let skill = Skills.skill(id: skill)!
+                        HStack {
+                            Text(skill.name)
+                            Button {
+                                self.selectedSkill = skill
+                            } label: {
+                                Image(systemName: "info.circle")
+                            }
+                        }
                     }
                 }
 
@@ -93,6 +101,13 @@ struct MainView: View {
                     .markdownTheme(.leka)
             }
         }
+        .sheet(item: self.$selectedSkill, onDismiss: { self.selectedSkill = nil }, content: { skill in
+            VStack(alignment: .leading) {
+                Text(skill.name)
+                    .font(.headline)
+                Text(skill.description)
+            }
+        })
         .onAppear {
             self.activity = ContentKit.decodeActivity("activity")
             print(self.activity ?? "not working")
@@ -108,6 +123,8 @@ struct MainView: View {
     }
 
     // MARK: Private
+
+    @State private var selectedSkill: Skill?
 
     @State private var activity: Activity?
 }
