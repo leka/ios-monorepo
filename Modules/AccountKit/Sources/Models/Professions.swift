@@ -61,7 +61,7 @@ public class Professions: Codable {
 
 // MARK: - Profession
 
-public struct Profession: Codable {
+public struct Profession: Codable, Identifiable {
     // MARK: Lifecycle
 
     public init(from decoder: Decoder) throws {
