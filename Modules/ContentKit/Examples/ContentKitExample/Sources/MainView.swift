@@ -96,6 +96,14 @@ struct MainView: View {
         .onAppear {
             self.activity = ContentKit.decodeActivity("activity")
             print(self.activity ?? "not working")
+
+            let skills = Skills.list
+            for (index, skill) in skills.enumerated() {
+                print("skill \(index + 1)")
+                print("id: \(skill.id)")
+                print("name: \(skill.name)")
+                print("description: \(skill.description)")
+            }
         }
     }
 
