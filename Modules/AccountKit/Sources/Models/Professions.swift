@@ -10,30 +10,53 @@ import Yams
 
 // MARK: - Professions
 
-public struct Professions: Codable {
+public class Professions: Codable {
     // MARK: Lifecycle
 
-    public init() {
-        if let fileURL = Bundle.module.url(forResource: "professions", withExtension: "yml") {
-            do {
-                let yamlString = try String(contentsOf: fileURL, encoding: .utf8)
-                self = try YAMLDecoder().decode(Professions.self, from: yamlString)
-            } catch {
-                log.error("Failed to read YAML file: \(error)")
-                self.version = Version(major: 0, minor: 0, patch: 0)
-                self.list = []
-            }
-        } else {
-            log.error("professions.yml not found")
-            self.version = Version(major: 0, minor: 0, patch: 0)
-            self.list = []
-        }
+    private init() {
+        self.container = Self.loadProfessions()
     }
 
     // MARK: Public
 
-    public let version: Version
-    public let list: [Profession]
+    public static var list: [Profession] {
+        shared.container.list
+    }
+
+    public static var version: Version {
+        shared.container.version
+    }
+
+    public static func profession(for id: String) -> Profession? {
+        self.list.first(where: { $0.id == id })
+    }
+
+    // MARK: Private
+
+    private struct ProfessionsContainer: Codable {
+        let version: Version
+        let list: [Profession]
+    }
+
+    private static let shared: Professions = .init()
+
+    private let container: ProfessionsContainer
+
+    private static func loadProfessions() -> ProfessionsContainer {
+        if let fileURL = Bundle.module.url(forResource: "professions", withExtension: "yml") {
+            do {
+                let yamlString = try String(contentsOf: fileURL, encoding: .utf8)
+                let container = try YAMLDecoder().decode(ProfessionsContainer.self, from: yamlString)
+                return container
+            } catch {
+                log.error("Failed to read YAML file: \(error)")
+                return ProfessionsContainer(version: .init(1, 0, 0), list: [])
+            }
+        } else {
+            log.error("professions.yml not found")
+            return ProfessionsContainer(version: .init(1, 0, 0), list: [])
+        }
+    }
 }
 
 // MARK: - Profession
