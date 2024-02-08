@@ -50,3 +50,15 @@ repos:
         entry: Tools/Hooks/check-xcstrings-unusual_terminators.sh
         language: script
         files: '.*\.xcstrings'
+
+      - id: check-yaml_data-professions
+        name: Check professions.yml
+        description: |
+          This hook checks professions.yml for:
+            - non unique ids
+            - jtd schema validation
+          It also formats the file and sorts the entries
+        entry: python3 Tools/Hooks/check-yaml_data-professions.py
+        language: python
+        additional_dependencies: ["ruamel.yaml"]
+        files: professions.yml
