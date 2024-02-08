@@ -26,7 +26,6 @@ struct SidebarSections: View {
         } label: {
             HStack {
                 Label(item.label, systemImage: item.icon)
-                    // TODO: (@ui/ux) - Design System - replace with Leka font
                     .font(.body)
                 Spacer()
             }
@@ -53,7 +52,6 @@ struct SidebarSections: View {
         } header: {
             VStack(alignment: .leading, spacing: 6) {
                 Text(content.title)
-                    // TODO: (@ui/ux) - Design System - replace with Leka font
                     .font(.title2)
                     .padding(.vertical, 10)
                 Divider()

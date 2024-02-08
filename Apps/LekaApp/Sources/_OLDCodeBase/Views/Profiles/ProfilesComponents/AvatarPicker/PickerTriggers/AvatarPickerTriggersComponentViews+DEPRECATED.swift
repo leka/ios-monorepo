@@ -38,7 +38,6 @@ struct AvatarTriggerCTAViewDeprecated: View {
 
     var body: some View {
         Text("choisir un avatar")
-            // TODO: (@ui/ux) - Design System - replace with Leka font
             .font(.body)
             .padding(.vertical, 4)
             .padding(.horizontal, 20)

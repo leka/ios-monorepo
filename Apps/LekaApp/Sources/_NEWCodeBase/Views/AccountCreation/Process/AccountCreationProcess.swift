@@ -9,7 +9,6 @@ enum AccountCreationProcess {
     struct NavigationTitle: View {
         var body: some View {
             Text(l10n.AccountCreationProcess.navigationTitle)
-                // TODO: (@ui/ux) - Design System - replace with Leka font
                 .font(.headline)
         }
     }

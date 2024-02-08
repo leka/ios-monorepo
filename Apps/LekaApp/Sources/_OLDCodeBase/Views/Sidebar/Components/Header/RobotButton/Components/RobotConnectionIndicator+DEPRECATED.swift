@@ -74,7 +74,6 @@ struct RobotConnectionIndicatorDeprecated: View {
             Image(systemName: "exclamationmark.circle.fill")
                 .symbolRenderingMode(.palette)
                 .foregroundStyle(.white, .red)
-                // TODO: (@ui/ux) - Design System - replace with Leka font
                 .font(.title2)
                 .frame(maxWidth: 22, maxHeight: 22)
         }

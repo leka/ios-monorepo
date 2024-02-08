@@ -30,7 +30,6 @@ struct CaregiverAvatarCell: View {
                     .frame(width: 140)
 
                 Text(self.caregiver.name)
-                    // TODO: (@ui/ux) - Design System - replace with Leka font
                     .font(.headline)
             }
         }

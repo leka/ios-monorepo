@@ -18,7 +18,6 @@ struct DeleteProfileButton: View {
                 Label("Supprimer le profil", systemImage: "trash.fill")
                     .padding(.horizontal, 20)
             }
-            // TODO: (@ui/ux) - Design System - replace with Leka font
             .buttonStyle(BorderedCapsule_NoFeedback_ButtonStyle(font: .body, color: Color.red))
             .padding(.vertical, 10)
         } else {

@@ -40,7 +40,6 @@ extension PairingView {
                 )
 
                 Text(self.text)
-                    // TODO: (@ui/ux) - Design System - replace with Leka font
                     .font(.body)
                     .foregroundColor(DesignKitAsset.Colors.lekaDarkGray.swiftUIColor)
                     .padding(.vertical, 10)

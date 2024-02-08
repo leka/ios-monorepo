@@ -23,7 +23,6 @@ extension AccountCreationProcess {
                 .padding()
 
                 Text(l10n.AccountCreationProcess.Step1.title)
-                    // TODO: (@ui/ux) - Design System - replace with Leka font
                     .font(.headline)
                     .foregroundColor(.orange)
 

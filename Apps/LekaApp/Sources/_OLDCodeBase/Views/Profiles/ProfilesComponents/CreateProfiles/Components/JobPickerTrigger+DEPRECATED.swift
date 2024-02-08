@@ -16,7 +16,6 @@ struct JobPickerTriggerDeprecated: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             Text("Profession(s)")
-                // TODO: (@ui/ux) - Design System - replace with Leka font
                 .font(.body)
                 .padding(.leading, 10)
 

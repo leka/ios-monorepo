@@ -48,7 +48,6 @@ struct SidebarView: View {
                 HStack {
                     Image(systemName: "gear")
                     Text("Réglages")
-                        // TODO: (@ui/ux) - Design System - replace with Leka font
                         .font(.body)
                 }
                 .foregroundColor(DesignKitAsset.Colors.lekaDarkGray.swiftUIColor)
@@ -64,7 +63,6 @@ struct SidebarView: View {
     private var appVersionIndicator: some View {
         Text("My Leka App - Version \(self.appVersion!) (\(self.buildNumber!))")
             .foregroundColor(DesignKitAsset.Colors.lekaDarkGray.swiftUIColor)
-            // TODO: (@ui/ux) - Design System - replace with Leka font
             .font(.caption2)
             .frame(alignment: .bottom)
     }

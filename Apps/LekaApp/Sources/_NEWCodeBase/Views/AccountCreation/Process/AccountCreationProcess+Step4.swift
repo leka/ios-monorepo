@@ -13,7 +13,6 @@ extension AccountCreationProcess {
         var body: some View {
             VStack(spacing: 30) {
                 Text(l10n.AccountCreationProcess.Step4.title)
-                    // TODO: (@ui/ux) - Design System - replace with Leka font
                     .font(.headline)
                     .foregroundColor(DesignKitAsset.Colors.lekaOrange.swiftUIColor)
 

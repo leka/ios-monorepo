@@ -12,7 +12,6 @@ extension HideAndSeekView {
         var body: some View {
             VStack {
                 Text(l10n.HideAndSeekView.Player.instructions)
-                    // TODO: (@ui/ux) - Design System - replace with Leka font
                     .font(.headline)
                     .foregroundColor(.white)
                     .multilineTextAlignment(.center)

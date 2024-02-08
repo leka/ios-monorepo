@@ -51,7 +51,6 @@ struct InfoTile: View {
             }
             Spacer()
             Text(self.data.content.title!)
-                // TODO: (@ui/ux) - Design System - replace with Leka font
                 .font(.title3)
             Spacer()
             if self.data != .discovery, self.settings.companyIsConnected {
@@ -69,13 +68,11 @@ struct InfoTile: View {
         VStack {
             Spacer()
             Text(self.data.content.subtitle!)
-                // TODO: (@ui/ux) - Design System - replace with Leka font
                 .font(.headline)
                 .foregroundColor(self.headerColor)
                 .padding(10)
             Spacer()
             Text(self.data.content.message!)
-                // TODO: (@ui/ux) - Design System - replace with Leka font
                 .font(.subheadline)
                 .padding(10)
             Spacer()
@@ -103,7 +100,6 @@ struct InfoTile: View {
         }
         .padding(.horizontal, 20)
         .buttonStyle(
-            // TODO: (@ui/ux) - Design System - replace with Leka font
             BorderedCapsule_NoFeedback_ButtonStyle(
                 font: .body,
                 color: DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor,

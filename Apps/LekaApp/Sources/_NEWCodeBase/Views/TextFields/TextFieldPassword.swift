@@ -61,7 +61,6 @@ struct TextFieldPassword: View {
             }
 
             Text(l10n.TextFieldPassword.invalidPasswordErrorLabel)
-                // TODO: (@ui/ux) - Design System - replace with Leka font
                 .font(.footnote)
                 .lineLimit(2)
                 .foregroundStyle(self.entry.isValidPassword() ? .green : .gray)

@@ -73,7 +73,6 @@ struct CurriculumListView: View {
     private func headerViews(title: LocalizedContent) -> some View {
         HStack {
             Text(title.localized())
-                // TODO: (@ui/ux) - Design System - replace with Leka font
                 .font(.body)
                 .padding(16)
                 .padding(.leading, 20)

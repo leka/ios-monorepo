@@ -29,7 +29,6 @@ extension DanceFreezeView {
         var body: some View {
             VStack(alignment: .leading) {
                 Text(l10n.DanceFreezeView.musicSelectionTitle)
-                    // TODO: (@ui/ux) - Design System - replace with Leka font
                     .font(.headline)
 
                 Divider()

@@ -49,7 +49,6 @@ struct TeacherSet_AvatarCellDeprecated: View {
                 .padding(10)
 
                 Text(self.teacher.name)
-                    // TODO: (@ui/ux) - Design System - replace with Leka font
                     .font(.body)
                     .allowsTightening(true)
                     .lineLimit(2)

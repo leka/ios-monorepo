@@ -60,7 +60,6 @@ struct CaregiverSettingsView: View {
             VStack(spacing: 15) {
                 AvatarPicker.ButtonLabel(image: self.modifiedCaregiver.avatar)
                 Text(l10n.CaregiverCreation.avatarChoiceButton)
-                    // TODO: (@ui/ux) - Design System - replace with Leka font
                     .font(.headline)
             }
         }
@@ -70,7 +69,6 @@ struct CaregiverSettingsView: View {
         VStack(alignment: .leading) {
             HStack {
                 Text(l10n.CaregiverCreation.professionLabel)
-                    // TODO: (@ui/ux) - Design System - replace with Leka font
                     .font(.body)
 
                 Spacer()

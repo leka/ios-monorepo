@@ -108,7 +108,6 @@ struct CreateUserProfileViewDeprecated: View {
             )
             .disabled(self.company.bufferTeacher.name.isEmpty)
             .buttonStyle(
-                // TODO: (@ui/ux) - Design System - replace with Leka font
                 BorderedCapsule_NoFeedback_ButtonStyle(
                     font: .body,
                     color: DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor,
@@ -123,7 +122,6 @@ struct CreateUserProfileViewDeprecated: View {
     // Toolbar
     private var navigationTitle: some View {
         Text(self.company.editingProfile ? "Éditer un profil utilisateur" : "Créer un profil utilisateur")
-            // TODO: (@ui/ux) - Design System - replace with Leka font
             .font(.headline)
     }
 

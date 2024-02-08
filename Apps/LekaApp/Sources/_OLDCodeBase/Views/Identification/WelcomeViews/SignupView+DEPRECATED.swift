@@ -145,7 +145,6 @@ struct SignupViewDeprecated: View {
 
     private var title: some View {
         Text("Créer un compte")
-            // TODO: (@ui/ux) - Design System - replace with Leka font
             .font(.title)
     }
 
@@ -156,7 +155,6 @@ struct SignupViewDeprecated: View {
             },
             label: {
                 Text("Connexion")
-                    // TODO: (@ui/ux) - Design System - replace with Leka font
                     .font(.body)
                     .padding(6)
                     .frame(width: 210)

@@ -52,7 +52,6 @@ struct ProfileEditorView: View {
                 Image(systemName: "binoculars.fill")
             }
         }
-        // TODO: (@ui/ux) - Design System - replace with Leka font
         .font(.headline)
     }
 

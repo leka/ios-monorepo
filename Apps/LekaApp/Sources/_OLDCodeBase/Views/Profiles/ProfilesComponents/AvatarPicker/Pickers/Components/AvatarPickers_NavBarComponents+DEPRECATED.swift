@@ -13,7 +13,6 @@ struct AvatarPicker_NavigationTitleDeprecated: View {
 
     var body: some View {
         Text("Quel est ton avatar ?")
-            // TODO: (@ui/ux) - Design System - replace with Leka font
             .font(.headline)
     }
 }

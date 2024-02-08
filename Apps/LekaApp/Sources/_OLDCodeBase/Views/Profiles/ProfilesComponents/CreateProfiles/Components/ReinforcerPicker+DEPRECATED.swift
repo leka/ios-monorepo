@@ -14,7 +14,6 @@ struct ReinforcerPickerDeprecated: View {
             VStack(spacing: 10) {
                 HStack {
                     Text("Choix du renforçateur")
-                        // TODO: (@ui/ux) - Design System - replace with Leka font
                         .font(.body)
                         .padding(.leading, 10)
                     Spacer()
@@ -23,7 +22,6 @@ struct ReinforcerPickerDeprecated: View {
                     Text( // swiftlint:disable:next line_length
                         "Le renforçateur est un effet lumineux répétitif du robot que vous pourrez actionner pour récompenser le comportement de l'utilisateur. \nSi votre robot est connecté, vous pouvez tester les renforçateurs avant d'en choisir un."
                     )
-                    // TODO: (@ui/ux) - Design System - replace with Leka font
                     .font(.footnote)
                     .padding(.leading, 10)
                     Spacer()

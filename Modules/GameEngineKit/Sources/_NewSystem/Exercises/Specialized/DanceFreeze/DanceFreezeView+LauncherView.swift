@@ -16,7 +16,6 @@ extension DanceFreezeView {
         var body: some View {
             VStack(spacing: 100) {
                 Text(l10n.DanceFreezeView.instructions)
-                    // TODO: (@ui/ux) - Design System - replace with Leka font
                     .font(.headline)
                     .padding(.top, 30)
 

@@ -16,7 +16,6 @@ struct InstructionButton: View {
             Spacer()
             Text(self.activityVM.steps[self.activityVM.currentStep].instruction.localized())
                 .foregroundColor(DesignKitAsset.Colors.lekaDarkGray.swiftUIColor)
-                // TODO: (@ui/ux) - Design System - replace with Leka font
                 .font(.title2)
                 .multilineTextAlignment(.center)
                 .padding(.horizontal, self.gameMetrics.instructionFrame.height)

@@ -24,7 +24,6 @@ extension AccountCreationProcess {
                 .frame(height: 80)
 
                 Text(l10n.AccountCreationProcess.Step2.title)
-                    // TODO: (@ui/ux) - Design System - replace with Leka font
                     .font(.headline)
                     .textCase(.uppercase)
                     .foregroundColor(.orange)

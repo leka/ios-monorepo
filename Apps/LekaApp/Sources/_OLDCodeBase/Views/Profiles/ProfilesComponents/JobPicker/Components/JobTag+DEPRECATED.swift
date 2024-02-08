@@ -23,7 +23,6 @@ struct JobTagDeprecated: View {
                 Image(systemName: "multiply.square.fill")
             }
         }
-        // TODO: (@ui/ux) - Design System - replace with Leka font
         .font(.footnote)
         .foregroundColor(.white)
         .padding(5)

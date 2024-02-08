@@ -28,7 +28,6 @@ struct ProfileSelector_UsersDeprecated: View {
                     }
                     Text("Choisir ou créer de nouveaux profils")
                 }
-                // TODO: (@ui/ux) - Design System - replace with Leka font
                 .font(.headline)
             }
             ToolbarItem(placement: .navigationBarLeading) {
