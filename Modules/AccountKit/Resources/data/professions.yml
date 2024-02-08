@@ -92,14 +92,14 @@ list:
         description: |
           The occupational therapist assists disabled individuals in regaining autonomy and comfort in daily activities, adapting the environment and tools.
 
-  - id: speech_therapist
+  - id: speech_language_therapist
     l10n:
       - locale: fr_FR
         name: Orthophoniste
         description: |
           L'orthophoniste traite les troubles de la parole et du langage, élaborant des programmes de rééducation personnalisés.
       - locale: en_US
-        name: Speech Therapist
+        name: Speech-Language Therapist
         description: |
           The speech therapist treats speech and language disorders, developing personalized rehabilitation programs.
 
@@ -410,3 +410,47 @@ list:
         name: Coordinator
         description: |
           The Coordinator acts as a liaison between different teams and services, facilitating communication and collaboration to achieve common goals and optimize processes.
+
+  - id: aba_therapist
+    l10n:
+      - locale: fr_FR
+        name: Intervenant(e) en ABA
+        description: |
+          Spécialiste appliquant les principes de l'analyse appliquée du comportement (ABA) pour évaluer et intervenir auprès de personnes ayant des troubles du spectre autistique et autres troubles comportementaux.
+      - locale: en_US
+        name: ABA Therapist
+        description: |
+          A specialist who applies the principles of Applied Behavior Analysis (ABA) to assess and intervene in individuals with autism spectrum disorders and other behavioral issues.
+
+  - id: clinical_director
+    l10n:
+      - locale: fr_FR
+        name: Directeur(trice) clinique
+        description: |
+          Responsable de la supervision clinique et administrative d'une unité de soins ou d'un établissement de santé, garantissant la qualité des soins et le respect des normes professionnelles.
+      - locale: en_US
+        name: Clinical Director
+        description: |
+          Responsible for the clinical and administrative supervision of a care unit or health facility, ensuring the quality of care and compliance with professional standards.
+
+  - id: behavior_analyst
+    l10n:
+      - locale: fr_FR
+        name: Analyste du comportement
+        description: |
+          Professionnel spécialisé dans l'étude du comportement humain, utilisant des techniques d'analyse pour comprendre et modifier les comportements problématiques.
+      - locale: en_US
+        name: Behavior Analyst
+        description: |
+          A professional specialized in the study of human behavior, using analysis techniques to understand and modify problematic behaviors.
+
+  - id: psychotherapist
+    l10n:
+      - locale: fr_FR
+        name: Psychologue comportementaliste
+        description: |
+          Psychologue spécialisé dans l'utilisation de thérapies comportementales et cognitives pour traiter divers troubles psychologiques et comportementaux.
+      - locale: en_US
+        name: Psychotherapist
+        description: |
+          A psychologist specializing in the use of behavioral and cognitive therapies to treat various psychological and behavioral disorders.
