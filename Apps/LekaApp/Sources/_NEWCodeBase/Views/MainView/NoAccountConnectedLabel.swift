@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AccountKit
 import DesignKit
 import LocalizationKit
 import RobotKit
@@ -26,7 +27,7 @@ struct NoAccountConnectedLabel: View {
                 .multilineTextAlignment(.center)
 
             Button(String(l10n.NoAccountConnectedLabel.buttonLabel.characters)) {
-                self.rootOwnerViewModel.isWelcomeViewPresented = true
+                self.authManagerViewModel.isWelcomeViewPresented = true
             }
             .buttonStyle(.bordered)
         }
@@ -36,7 +37,7 @@ struct NoAccountConnectedLabel: View {
     // MARK: Private
 
     @ObservedObject private var styleManager: StyleManager = .shared
-    @ObservedObject private var rootOwnerViewModel: RootOwnerViewModel = .shared
+    @ObservedObject private var authManagerViewModel = AuthManagerViewModel.shared
 }
 
 // MARK: - l10n.NoAccountConnectedLabel

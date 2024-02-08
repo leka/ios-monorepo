@@ -35,14 +35,12 @@ struct LekaApp: App {
             MainView()
                 .onAppear {
                     self.styleManager.setDefaultColorScheme(self.colorScheme)
-                    self.rootOwnerViewModel.isWelcomeViewPresented = self.authManagerViewModel.userAuthenticationState != .loggedIn
                 }
-                .fullScreenCover(isPresented: self.$rootOwnerViewModel.isWelcomeViewPresented) {
+                .fullScreenCover(isPresented: self.$authManagerViewModel.isWelcomeViewPresented) {
                     WelcomeView()
                 }
                 .tint(self.styleManager.accentColor)
                 .preferredColorScheme(self.styleManager.colorScheme)
-                .environmentObject(self.authManagerViewModel)
         }
     }
 }

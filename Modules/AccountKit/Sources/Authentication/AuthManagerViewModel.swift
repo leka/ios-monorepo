@@ -31,6 +31,7 @@ public class AuthManagerViewModel: ObservableObject {
     @Published public var showactionRequestAlert = false
     @Published public var notificationMessage: String = ""
     @Published public var showNotificationAlert = false
+    @Published public var isWelcomeViewPresented = false
 
     // MARK: Private
 
@@ -92,5 +93,6 @@ public class AuthManagerViewModel: ObservableObject {
         self.showErrorAlert = false
         self.notificationMessage = ""
         self.showNotificationAlert = false
+        self.isWelcomeViewPresented = true
     }
 }
