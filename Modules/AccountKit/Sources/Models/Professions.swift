@@ -20,7 +20,7 @@ public class Professions: Codable {
     // MARK: Public
 
     public static var list: [Profession] {
-        shared.container.list
+        shared.container.list.sorted { $0.name < $1.name }
     }
 
     public static var version: Version {
@@ -61,7 +61,7 @@ public class Professions: Codable {
 
 // MARK: - Profession
 
-public struct Profession: Codable, Identifiable {
+public struct Profession: Codable, Identifiable, Equatable {
     // MARK: Lifecycle
 
     public init(from decoder: Decoder) throws {
@@ -85,6 +85,10 @@ public struct Profession: Codable, Identifiable {
     public let id: String
     public let name: String
     public let description: String
+
+    public static func == (lhs: Profession, rhs: Profession) -> Bool {
+        lhs.id == rhs.id
+    }
 
     // MARK: Private
 

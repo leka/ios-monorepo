@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AccountKit
 import DesignKit
 import SwiftUI
 
@@ -16,7 +17,7 @@ struct Company: Identifiable {
 // MARK: - Profile
 
 // Profiles types base-protocol
-protocol Profile: Identifiable, Hashable {
+protocol Profile: Identifiable {
     var id: String { get }
     var name: String { get set }
     var avatar: String { get set }
@@ -67,38 +68,4 @@ struct Carereceiver: Profile {
     var name: String
     var avatar: String
     var reinforcer: Int
-}
-
-// MARK: - Caregiver.Profession
-
-extension Caregiver {
-    enum Profession: CaseIterable, Equatable, Hashable {
-        case motorTherapist
-        case occupationalTherapist
-        case speechTherapist
-        case other(profession: String = "")
-
-        // MARK: Internal
-
-        static var allCases: [Profession] {
-            [
-                .motorTherapist,
-                .occupationalTherapist,
-                .speechTherapist,
-            ]
-        }
-
-        var name: String {
-            switch self {
-                case .motorTherapist:
-                    "Motor Therapist"
-                case .occupationalTherapist:
-                    "Occupational Therapist"
-                case .speechTherapist:
-                    "Speech Therapist"
-                case let .other(profession):
-                    profession
-            }
-        }
-    }
 }

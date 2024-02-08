@@ -2,13 +2,14 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AccountKit
 import DesignKit
 import SwiftUI
 
 extension ProfessionPicker {
     struct ProfessionTag: View {
         @ObservedObject private var rootOwnerViewModel: RootOwnerViewModel = .shared
-        @State var profession: Caregiver.Profession
+        @State var profession: Profession
         @Binding var caregiver: Caregiver
 
         var body: some View {
@@ -33,7 +34,7 @@ extension ProfessionPicker {
 
 #Preview {
     ProfessionPicker.ProfessionTag(
-        profession: Caregiver.Profession.occupationalTherapist,
-        caregiver: .constant(Caregiver(professions: [Caregiver.Profession.occupationalTherapist, Caregiver.Profession.motorTherapist]))
+        profession: Professions.list[8],
+        caregiver: .constant(Caregiver(professions: [Professions.list[0], Professions.list[3]]))
     )
 }

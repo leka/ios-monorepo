@@ -79,7 +79,7 @@ struct CreateCaregiverView: View {
             }
 
             if !self.newCaregiver.professions.isEmpty {
-                ForEach(self.newCaregiver.professions, id: \.self) { profession in
+                ForEach(self.newCaregiver.professions, id: \.id) { profession in
                     ProfessionPicker.ProfessionTag(profession: profession, caregiver: self.$newCaregiver)
                 }
             }

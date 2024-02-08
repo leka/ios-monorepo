@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AccountKit
 import DesignKit
 import LocalizationKit
 import SwiftUI
@@ -19,15 +20,8 @@ struct ProfessionPicker: View {
             .onAppear {
                 self.selectedProfessions = self.caregiver.professions
             }
-            .safeAreaInset(edge: .bottom) {
-                TextFieldDefault(label: String(l10n.ProfessionPicker.otherLabel.characters), entry: self.$otherProfessionText)
-                    .frame(width: 400)
-                    .padding()
-                    .onSubmit {
-                        self.selectedProfessions.append(.other(profession: self.otherProfessionText))
-                    }
-            }
             .navigationTitle(String(l10n.ProfessionPicker.title.characters))
+            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
@@ -44,7 +38,7 @@ struct ProfessionPicker: View {
     // MARK: Private
 
     @State private var otherProfessionText: String = ""
-    @State private var selectedProfessions: [Caregiver.Profession] = []
+    @State private var selectedProfessions: [Profession] = []
 }
 
 // MARK: - ProfessionPicker_Previews
