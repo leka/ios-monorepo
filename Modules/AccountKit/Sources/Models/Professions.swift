@@ -99,6 +99,14 @@ extension Profession: Equatable {
     }
 }
 
+// MARK: Hashable
+
+extension Profession: Hashable {
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(self.id)
+    }
+}
+
 // MARK: Profession.Localization
 
 public extension Profession {
