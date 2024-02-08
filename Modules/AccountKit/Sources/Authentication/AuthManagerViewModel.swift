@@ -15,6 +15,8 @@ public class AuthManagerViewModel: ObservableObject {
 
     // MARK: Public
 
+    public static let shared = AuthManagerViewModel()
+
     // MARK: - User
 
     @Published public var userAuthenticationState: AuthManager.AuthenticationState = .unknown
