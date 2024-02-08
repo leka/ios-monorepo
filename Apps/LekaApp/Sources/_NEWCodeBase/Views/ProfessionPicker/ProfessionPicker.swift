@@ -16,33 +16,37 @@ struct ProfessionPicker: View {
     @Environment(\.dismiss) var dismiss
 
     var body: some View {
-        ListView(selectedProfessions: self.$selectedProfessions)
-            .onAppear {
-                self.selectedProfessions = self.caregiver.professions
-            }
-            .navigationTitle(String(l10n.ProfessionPicker.title.characters))
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        self.caregiver.professions = self.selectedProfessions
-                        self.dismiss()
-                    } label: {
-                        Label(String(l10n.ProfessionPicker.validateButton.characters), systemImage: "checkmark.circle")
-                    }
-                    .disabled(self.selectedProfessions.isEmpty)
+        List(Professions.list, id: \.self, selection: self.$selectedProfessions) { profession in
+            Text(profession.name)
+        }
+        .environment(\.editMode, Binding.constant(EditMode.active))
+        .onAppear {
+            self.selectedProfessions = Set(self.caregiver.professions)
+        }
+        .navigationTitle(String(l10n.ProfessionPicker.title.characters))
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button {
+                    self.caregiver.professions = Array(self.selectedProfessions)
+                    self.dismiss()
+                } label: {
+                    Label(String(l10n.ProfessionPicker.validateButton.characters), systemImage: "checkmark.circle")
                 }
+                .disabled(self.selectedProfessions.isEmpty)
             }
+        }
     }
 
     // MARK: Private
 
     @State private var otherProfessionText: String = ""
-    @State private var selectedProfessions: [Profession] = []
+    @State private var selectedProfessions: Set<Profession> = []
 }
 
 // MARK: - ProfessionPicker_Previews
 
 #Preview {
-    ProfessionPicker(caregiver: .constant(Caregiver()))
+    NavigationStack {
+        ProfessionPicker(caregiver: .constant(Caregiver()))
+    }
 }
