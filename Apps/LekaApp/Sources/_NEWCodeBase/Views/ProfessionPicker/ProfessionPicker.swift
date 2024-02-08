@@ -12,12 +12,21 @@ import SwiftUI
 struct ProfessionPicker: View {
     // MARK: Internal
 
-    @Binding var caregiver: Caregiver
     @Environment(\.dismiss) var dismiss
+
+    @Binding var caregiver: Caregiver
 
     var body: some View {
         List(Professions.list, id: \.self, selection: self.$selectedProfessions) { profession in
-            Text(profession.name)
+            HStack {
+                Text(profession.name)
+                Spacer()
+                Image(systemName: "info.circle")
+                    .onTapGesture {
+                        self.selectedProfessionForDetails = profession
+                    }
+                    .foregroundStyle(self.selectedProfessions.contains(profession) ? Color.white : Color.accentColor)
+            }
         }
         .environment(\.editMode, Binding.constant(EditMode.active))
         .onAppear {
@@ -35,12 +44,22 @@ struct ProfessionPicker: View {
                 .disabled(self.selectedProfessions.isEmpty)
             }
         }
+        .sheet(item: self.$selectedProfessionForDetails, onDismiss: { self.selectedProfessionForDetails = nil }, content: { profession in
+            VStack(spacing: 40) {
+                Text(profession.name)
+                    .font(.largeTitle)
+                Text(profession.description)
+                    .padding(.horizontal, 20)
+                    .font(.title2)
+            }
+        })
     }
 
     // MARK: Private
 
     @State private var otherProfessionText: String = ""
     @State private var selectedProfessions: Set<Profession> = []
+    @State private var selectedProfessionForDetails: Profession?
 }
 
 // MARK: - ProfessionPicker_Previews
