@@ -7,22 +7,15 @@ import DesignKit
 import FirebaseCore
 import SwiftUI
 
-// MARK: - AppDelegate
-
-class AppDelegate: NSObject, UIApplicationDelegate {
-    func application(_: UIApplication,
-                     didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool
-    {
-        FirebaseApp.configure()
-        return true
-    }
-}
-
-// MARK: - LekaApp
-
 @main
 struct LekaApp: App {
-    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    // MARK: Lifecycle
+
+    init() {
+        FirebaseApp.configure()
+    }
+
+    // MARK: Internal
 
     @Environment(\.colorScheme) var colorScheme
 
