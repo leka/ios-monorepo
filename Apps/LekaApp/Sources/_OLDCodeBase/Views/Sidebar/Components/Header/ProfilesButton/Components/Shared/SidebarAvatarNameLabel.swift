@@ -18,7 +18,6 @@ struct SidebarAvatarNameLabel: View {
                 id: self.company.profilesInUse[self.type]!
             )[1]
         )
-        // TODO: (@ui/ux) - Design System - replace with Leka font
         .font(.subheadline)
         .allowsTightening(true)
         .lineLimit(2)

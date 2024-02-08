@@ -47,13 +47,11 @@ struct SignupStep2Deprecated: View {
                 Spacer()
                 // Title
                 Text(self.data.content.title!)
-                    // TODO: (@ui/ux) - Design System - replace with Leka font
                     .font(.headline)
                     .foregroundColor(DesignKitAsset.Colors.lekaOrange.swiftUIColor)
                     .padding(.vertical, 20)
                 // Message
                 Text(self.data.content.message!)
-                    // TODO: (@ui/ux) - Design System - replace with Leka font
                     .font(.body)
                 Spacer()
                 // CTA Button
@@ -83,7 +81,6 @@ struct SignupStep2Deprecated: View {
             }
         )
         .buttonStyle(
-            // TODO: (@ui/ux) - Design System - replace with Leka font
             BorderedCapsule_NoFeedback_ButtonStyle(
                 font: .body,
                 color: DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor,

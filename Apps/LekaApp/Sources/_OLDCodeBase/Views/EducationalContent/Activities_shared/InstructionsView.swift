@@ -41,7 +41,6 @@ struct InstructionsView: View {
         HStack {
             Spacer()
             Text("DESCRIPTION & INSTALLATION")
-                // TODO: (@ui/ux) - Design System - replace with Leka font
                 .font(.headline)
                 .foregroundColor(DesignKitAsset.Colors.darkGray.swiftUIColor.opacity(0.8))
                 .padding(.vertical, 22)

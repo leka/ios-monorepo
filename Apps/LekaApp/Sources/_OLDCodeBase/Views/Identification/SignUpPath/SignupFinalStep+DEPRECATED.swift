@@ -33,7 +33,6 @@ struct SignupFinalStepDeprecated: View {
             VStack(spacing: 0) {
                 // Title
                 Text(self.data.content.title!)
-                    // TODO: (@ui/ux) - Design System - replace with Leka font
                     .font(.headline)
                     .foregroundColor(DesignKitAsset.Colors.lekaOrange.swiftUIColor)
                 Spacer()
@@ -49,7 +48,6 @@ struct SignupFinalStepDeprecated: View {
                     }
                 }
                 .multilineTextAlignment(.center)
-                // TODO: (@ui/ux) - Design System - replace with Leka font
                 .font(.body)
                 Spacer()
                 // CTA Button
@@ -78,7 +76,6 @@ struct SignupFinalStepDeprecated: View {
             Text(self.data.content.callToActionLabel!)
         }
         .buttonStyle(
-            // TODO: (@ui/ux) - Design System - replace with Leka font
             BorderedCapsule_NoFeedback_ButtonStyle(
                 font: .body,
                 color: DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor

@@ -27,7 +27,7 @@ struct ConnectionView: View {
     var body: some View {
         VStack(alignment: .center, spacing: 30) {
             Text(l10n.ConnectionView.title)
-                .font(.title) // TODO: (@ui/ux) - Design System - replace with Leka font
+                .font(.title)
 
             VStack {
                 TextFieldEmail(entry: self.$viewModel.email)
@@ -36,7 +36,7 @@ struct ConnectionView: View {
                     TextFieldPassword(entry: self.$viewModel.password)
 
                     Text(l10n.ConnectionView.passwordForgottenButton)
-                        .font(.footnote) // TODO: (@ui/ux) - Design System - replace with Leka font
+                        .font(.footnote)
                         .underline()
                 }
             }

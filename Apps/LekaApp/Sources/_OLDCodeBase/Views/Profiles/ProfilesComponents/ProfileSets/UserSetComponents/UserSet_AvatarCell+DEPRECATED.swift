@@ -65,7 +65,6 @@ struct UserSet_AvatarCellDeprecated: View {
                 .padding(10)
 
                 Text(self.user.name)
-                    // TODO: (@ui/ux) - Design System - replace with Leka font
                     .font(.body)
                     .allowsTightening(true)
                     .lineLimit(2)

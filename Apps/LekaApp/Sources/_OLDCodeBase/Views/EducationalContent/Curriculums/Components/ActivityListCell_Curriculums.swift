@@ -44,7 +44,6 @@ struct ActivityListCell_Curriculums: View {
             Spacer()
             Group {
                 Text("ACTIVITÉ \(self.rank)")
-                    // TODO: (@ui/ux) - Design System - replace with Leka font
                     .font(.headline)
                     + Text(" - \(self.activity.short.localized())")
             }

@@ -25,7 +25,6 @@ struct ProfileSelector_TeachersDeprecated: View {
                     }
                     Text("Choisir ou créer de nouveaux profils")
                 }
-                // TODO: (@ui/ux) - Design System - replace with Leka font
                 .font(.headline)
             }
         }

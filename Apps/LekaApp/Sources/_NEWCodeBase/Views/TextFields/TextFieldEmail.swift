@@ -53,7 +53,6 @@ struct TextFieldEmail: View {
                 )
 
             Text(l10n.TextFieldEmail.invalidEmailErrorLabel)
-                // TODO: (@ui/ux) - Design System - replace with Leka font
                 .font(.footnote)
                 .foregroundStyle(self.isErrorMessageVisible ? .red : .clear)
         }

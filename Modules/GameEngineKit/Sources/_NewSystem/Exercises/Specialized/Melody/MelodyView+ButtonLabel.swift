@@ -21,7 +21,6 @@ extension MelodyView {
 
         var body: some View {
             Text(self.text)
-                // TODO: (@ui/ux) - Design System - replace with Leka font
                 .font(.body)
                 .foregroundColor(.white)
                 .fixedSize(horizontal: false, vertical: true)

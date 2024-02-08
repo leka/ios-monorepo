@@ -53,7 +53,6 @@ struct CreateCarereceiverView: View {
             VStack(spacing: 15) {
                 AvatarPicker.ButtonLabel(image: self.newCarereceiver.avatar)
                 Text(l10n.CarereceiverCreation.avatarChoiceButton)
-                    // TODO: (@ui/ux) - Design System - replace with Leka font
                     .font(.headline)
             }
         }

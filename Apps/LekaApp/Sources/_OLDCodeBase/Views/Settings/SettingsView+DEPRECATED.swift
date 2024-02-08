@@ -29,7 +29,6 @@ struct SettingsViewDeprecated: View {
                 .scrollDisabled(true)
                 .padding(.horizontal, 10)
                 .formStyle(.grouped)
-                // TODO: (@ui/ux) - Design System - replace with Leka font
                 .font(.headline)
             }
             .interactiveDismissDisabled()
@@ -44,7 +43,6 @@ struct SettingsViewDeprecated: View {
                             Image(systemName: "binoculars.fill")
                         }
                     }
-                    // TODO: (@ui/ux) - Design System - replace with Leka font
                     .font(.headline)
                     .foregroundColor(.white)
                 }

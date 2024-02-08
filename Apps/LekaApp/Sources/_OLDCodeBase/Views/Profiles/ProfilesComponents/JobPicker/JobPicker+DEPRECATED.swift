@@ -67,7 +67,6 @@ struct JobPickerDeprecated: View {
 
     private var navigationTitle: some View {
         Text("Sélectionnez vos professions")
-            // TODO: (@ui/ux) - Design System - replace with Leka font
             .font(.headline)
     }
 

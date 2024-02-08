@@ -46,7 +46,6 @@ struct CurrentGameInstructionView: View {
         HStack {
             Spacer()
             Text(self.activityVM.currentActivity.title.localized())
-                // TODO: (@ui/ux) - Design System - replace with Leka font
                 .font(.headline)
                 .foregroundColor(.white)
                 .multilineTextAlignment(.center)

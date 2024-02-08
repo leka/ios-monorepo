@@ -20,7 +20,6 @@ struct SettingsSection_ProfilesDeprecated: View {
             .frame(maxHeight: 52)
         } header: {
             Text("Profils")
-                // TODO: (@ui/ux) - Design System - replace with Leka font
                 .font(.body)
                 .headerProminence(.increased)
         }
@@ -45,7 +44,6 @@ struct SettingsSection_ProfilesDeprecated: View {
             .overlay(
                 Text("+\(remainder)")
                     .foregroundColor(.white)
-                    // TODO: (@ui/ux) - Design System - replace with Leka font
                     .font(.footnote)
                     .clipShape(Circle())
             )

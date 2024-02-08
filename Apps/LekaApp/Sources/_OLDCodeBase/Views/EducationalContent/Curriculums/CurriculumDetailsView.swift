@@ -53,7 +53,6 @@ struct CurriculumDetailsView: View {
         .toolbar {
             ToolbarItem(placement: .principal) {
                 Text(self.curriculumVM.setCurriculumDetailNavTitle())
-                    // TODO: (@ui/ux) - Design System - replace with Leka font
                     .font(.headline)
             }
             ToolbarItem(placement: .navigationBarLeading) {
@@ -77,7 +76,6 @@ struct CurriculumDetailsView: View {
             Spacer()
             VStack(spacing: 20) {
                 Text(self.curriculumVM.selectedCurriculumHeaderTitle)
-                    // TODO: (@ui/ux) - Design System - replace with Leka font
                     .font(.title2)
                     .padding(.top, 15)
                 Image(self.curriculumVM.selectedCurriculumIcon)
@@ -85,7 +83,6 @@ struct CurriculumDetailsView: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 200, height: 66)
                 Text(self.curriculumVM.selectedCurriculumDescription)
-                    // TODO: (@ui/ux) - Design System - replace with Leka font
                     .font(.headline)
                     .multilineTextAlignment(.center)
                 Spacer()

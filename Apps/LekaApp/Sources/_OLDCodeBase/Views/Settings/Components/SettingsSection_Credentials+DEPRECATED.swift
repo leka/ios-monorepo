@@ -14,7 +14,6 @@ struct SettingsSection_CredentialsDeprecated: View {
             Group {
                 LabeledContent {
                     Text(self.company.currentCompany.mail)
-                        // TODO: (@ui/ux) - Design System - replace with Leka font
                         .font(.footnote)
                         .multilineTextAlignment(.leading)
                 } label: {
@@ -28,7 +27,6 @@ struct SettingsSection_CredentialsDeprecated: View {
             .frame(maxHeight: 52)
         } header: {
             Text("Compte")
-                // TODO: (@ui/ux) - Design System - replace with Leka font
                 .font(.subheadline)
                 .headerProminence(.increased)
                 .padding(.top, 20)

@@ -65,8 +65,6 @@ struct LoginViewDeprecated: View {
     private var title: some View {
         Text("Se connecter")
             .textCase(.uppercase)
-
-            // TODO: (@ui/ux) - Design System - replace with Leka font
             .font(.title)
     }
 
@@ -77,7 +75,6 @@ struct LoginViewDeprecated: View {
             },
             label: {
                 Text("Connexion")
-                    // TODO: (@ui/ux) - Design System - replace with Leka font
                     .font(.body)
                     .padding(6)
                     .frame(width: 210)
@@ -141,7 +138,6 @@ struct LoginViewDeprecated: View {
             Spacer()
             Link(destination: URL(string: "https://leka.io")!) {
                 Text("Mot de passe oublié")
-                    // TODO: (@ui/ux) - Design System - replace with Leka font
                     .font(.footnote)
                     .underline()
                     .padding([.top, .trailing], 10)

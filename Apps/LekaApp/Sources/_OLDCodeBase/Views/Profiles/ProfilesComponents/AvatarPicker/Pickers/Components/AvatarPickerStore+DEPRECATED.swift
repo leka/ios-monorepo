@@ -26,7 +26,6 @@ struct AvatarPickerStoreDeprecated: View {
     private func makeAvatarCategoryRow(category: AvatarCategoryDeprecated) -> some View {
         VStack(alignment: .leading, spacing: 10) {
             Text(category.category)
-                // TODO: (@ui/ux) - Design System - replace with Leka font
                 .font(.headline)
                 .padding(.leading, 40)
             ScrollView(.horizontal, showsIndicators: true) {

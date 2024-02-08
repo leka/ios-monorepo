@@ -10,7 +10,6 @@ struct SignupNavigationTitleDeprecated: View {
 
     var body: some View {
         Text("Première connexion")
-            // TODO: (@ui/ux) - Design System - replace with Leka font
             .font(.headline)
     }
 }

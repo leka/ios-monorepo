@@ -22,7 +22,6 @@ struct AccountCreationView: View {
     var body: some View {
         VStack(alignment: .center, spacing: 30) {
             Text(l10n.AccountCreationView.createAccountTitle)
-                // TODO: (@ui/ux) - Design System - replace with Leka font
                 .font(.title)
 
             VStack(spacing: 15) {

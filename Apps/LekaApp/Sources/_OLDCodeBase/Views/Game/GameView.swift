@@ -61,7 +61,6 @@ struct GameView: View {
                             Image(systemName: "binoculars.fill")
                         }
                     }
-                    // TODO: (@ui/ux) - Design System - replace with Leka font
                     .font(.subheadline)
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -165,7 +164,6 @@ struct GameView: View {
                         value: self.textOpacity
                     )
             }
-            // TODO: (@ui/ux) - Design System - replace with Leka font
             .font(.largeTitle)
         }
     }

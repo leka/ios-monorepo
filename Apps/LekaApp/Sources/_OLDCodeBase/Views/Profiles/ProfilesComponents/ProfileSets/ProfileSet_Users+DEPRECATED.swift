@@ -62,7 +62,6 @@ struct ProfileSet_UsersDeprecated: View {
         } label: {
             Image(systemName: "pencil")
         }
-        // TODO: (@ui/ux) - Design System - replace with Leka font
         .buttonStyle(CircledIcon_NoFeedback_ButtonStyle(font: .body))
         .disabled(
             self.company.getProfileDataFor(
@@ -85,7 +84,6 @@ struct ProfileSet_UsersDeprecated: View {
         } label: {
             Image(systemName: "plus")
         }
-        // TODO: (@ui/ux) - Design System - replace with Leka font
         .buttonStyle(CircledIcon_NoFeedback_ButtonStyle(font: .body))
     }
 
@@ -95,7 +93,6 @@ struct ProfileSet_UsersDeprecated: View {
                 Spacer()
             }
             Text("Qui accompagnez-vous?")
-                // TODO: (@ui/ux) - Design System - replace with Leka font
                 .font(.body)
             if self.navigationVM.showProfileEditor {
                 Spacer()

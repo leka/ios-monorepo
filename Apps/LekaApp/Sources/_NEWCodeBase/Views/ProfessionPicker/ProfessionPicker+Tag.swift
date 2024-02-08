@@ -25,7 +25,6 @@ extension ProfessionPicker {
                         }
                 }
             }
-            // TODO: (@ui/ux) - Design System - replace with Leka font
             .font(.caption)
             .buttonStyle(.bordered)
         }

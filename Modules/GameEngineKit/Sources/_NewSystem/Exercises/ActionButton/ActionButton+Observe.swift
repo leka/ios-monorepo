@@ -57,7 +57,6 @@ struct ActionButtonObserve: View {
                         .frame(width: 70, height: 70)
                         .foregroundColor(.white)
                     Text("Tap to reveal")
-                        // TODO: (@ui/ux) - Design System - replace with Leka font
                         .font(.title)
                         .foregroundColor(.white)
                 }

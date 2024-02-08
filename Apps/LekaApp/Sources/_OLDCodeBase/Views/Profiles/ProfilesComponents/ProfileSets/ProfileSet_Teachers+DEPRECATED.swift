@@ -66,7 +66,6 @@ struct ProfileSet_TeachersDeprecated: View {
         } label: {
             Image(systemName: "pencil")
         }
-        // TODO: (@ui/ux) - Design System - replace with Leka font
         .buttonStyle(CircledIcon_NoFeedback_ButtonStyle(font: .body))
     }
 
@@ -76,7 +75,6 @@ struct ProfileSet_TeachersDeprecated: View {
                 Spacer()
             }
             Text("Qui êtes-vous ?")
-                // TODO: (@ui/ux) - Design System - replace with Leka font
                 .font(.headline)
             if self.navigationVM.showProfileEditor {
                 Spacer()
@@ -147,7 +145,6 @@ struct ProfileSet_TeachersDeprecated: View {
         } label: {
             Image(systemName: "plus")
         }
-        // TODO: (@ui/ux) - Design System - replace with Leka font
         .buttonStyle(CircledIcon_NoFeedback_ButtonStyle(font: .body))
     }
 }
