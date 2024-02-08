@@ -20,7 +20,7 @@ public class Professions: Codable {
     // MARK: Public
 
     public static var list: [Profession] {
-        shared.container.list
+        shared.container.list.sorted { $0.name < $1.name }
     }
 
     public static var version: Version {
