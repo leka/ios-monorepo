@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AccountKit
 import DesignKit
 import LocalizationKit
 import SwiftUI
@@ -41,21 +42,33 @@ struct AccountCreationView: View {
             AccountCreationProcess.CarouselView()
                 .navigationBarBackButtonHidden()
         }
+        .onChange(of: self.authManagerViewModel.userAuthenticationState) { newValue in
+            if newValue == .loggedIn {
+                self.authManagerViewModel.userIsSigningUp = true
+                self.rootOwnerViewModel.currentCompany = Company(
+                    email: self.viewModel.email,
+                    password: self.viewModel.password
+                )
+                self.viewModel.navigateToAccountCreationProcess.toggle()
+            } else {
+                // display signup failed alert
+            }
+        }
     }
 
     // MARK: Private
 
     @StateObject private var viewModel = AccountCreationViewViewModel()
     @ObservedObject private var rootOwnerViewModel = RootOwnerViewModel.shared
+    @ObservedObject private var authManagerViewModel = AuthManagerViewModel.shared
+    private var authManager = AuthManager.shared
 
     private var isCreationDisabled: Bool {
         self.viewModel.email.isInvalidEmail() || self.viewModel.password.isInvalidPassword()
     }
 
     private func submitForm() {
-        // TODO: (@team) - Assert that credentials are valids
-        self.rootOwnerViewModel.currentCompany = Company(email: self.viewModel.email, password: self.viewModel.password)
-        self.viewModel.navigateToAccountCreationProcess.toggle()
+        self.authManager.signUp(email: self.viewModel.email, password: self.viewModel.password)
     }
 }
 
