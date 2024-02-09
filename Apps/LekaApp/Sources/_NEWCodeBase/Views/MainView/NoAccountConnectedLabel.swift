@@ -27,7 +27,7 @@ struct NoAccountConnectedLabel: View {
                 .multilineTextAlignment(.center)
 
             Button(String(l10n.NoAccountConnectedLabel.buttonLabel.characters)) {
-                self.authManagerViewModel.isWelcomeViewPresented = true
+                self.authManagerViewModel.isUserLoggedOut = true
             }
             .buttonStyle(.bordered)
         }

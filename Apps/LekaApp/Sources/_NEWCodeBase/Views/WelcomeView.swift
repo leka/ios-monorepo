@@ -30,7 +30,7 @@ struct WelcomeView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(String(l10n.WelcomeView.skipStepButton.characters)) {
-                        self.authManagerViewModel.isWelcomeViewPresented.toggle()
+                        self.authManagerViewModel.isUserLoggedOut.toggle()
                     }
                 }
             }

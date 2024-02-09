@@ -21,7 +21,7 @@ struct CaregiverAvatarCell: View {
             self.rootOwnerViewModel.currentCaregiver = self.caregiver
             self.styleManager.colorScheme = self.caregiver.preferredColorScheme
             self.styleManager.accentColor = self.caregiver.preferredAccentColor
-            self.authManagerViewModel.isWelcomeViewPresented = false
+            self.authManagerViewModel.isUserLoggedOut = false
             self.rootOwnerViewModel.isCaregiverPickerViewPresented = false
         } label: {
             VStack(spacing: 10) {

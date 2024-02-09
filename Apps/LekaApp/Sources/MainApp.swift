@@ -29,7 +29,7 @@ struct LekaApp: App {
                 .onAppear {
                     self.styleManager.setDefaultColorScheme(self.colorScheme)
                 }
-                .fullScreenCover(isPresented: self.$authManagerViewModel.isWelcomeViewPresented) {
+                .fullScreenCover(isPresented: self.$authManagerViewModel.isUserLoggedOut) {
                     WelcomeView()
                 }
                 .tint(self.styleManager.accentColor)

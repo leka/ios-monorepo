@@ -23,7 +23,7 @@ extension AccountCreationProcess {
                     if !self.rootOwnerViewModel.mockCaregiversSet.isEmpty {
                         self.rootOwnerViewModel.currentCaregiver = self.rootOwnerViewModel.mockCaregiversSet.last
                     }
-                    self.authManagerViewModel.isWelcomeViewPresented.toggle()
+                    self.authManagerViewModel.isUserLoggedOut.toggle()
                 }
                 .buttonStyle(.bordered)
             }
