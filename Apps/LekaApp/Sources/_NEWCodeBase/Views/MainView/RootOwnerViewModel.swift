@@ -19,10 +19,14 @@ class RootOwnerViewModel: ObservableObject {
 
     @Published var currentCompany: Company?
     @Published var currentCaregiver: Caregiver?
+    @Published var currentCarereceiver: Carereceiver?
 
     @Published var isSettingsViewPresented = false
+
     @Published var isCaregiverSettingsViewPresented = false
+    @Published var isCarereceiverSettingsViewPresented = false
     @Published var isCaregiverPickerViewPresented = false
+    @Published var isCarereceiverPickerViewPresented = false
 
     @Published var showConfirmCredentialsChange: Bool = false
     @Published var showConfirmDisconnection: Bool = false
@@ -40,8 +44,31 @@ class RootOwnerViewModel: ObservableObject {
         Caregiver(name: "Gargantua", avatar: DesignKitAsset.Avatars.avatarsPictogramsFoodsFruitsCherryRed00FF.name, professions: [Professions.list[2]]),
     ]
 
+    @Published var mockCarereceiversSet: [Carereceiver] = [
+        Carereceiver(name: "Peet", avatar: DesignKitAsset.Avatars.avatarsLekaAstronaut.name, reinforcer: 1),
+        Carereceiver(name: "Rounhaa", avatar: DesignKitAsset.Avatars.avatarsPictogramsAnimalsForestSquirrelOrange005C.name, reinforcer: 3),
+        Carereceiver(name: "Selug", avatar: DesignKitAsset.Avatars.avatarsPictogramsAnimalsSeaCrabRed003E.name, reinforcer: 4),
+        Carereceiver(name: "Luther", avatar: DesignKitAsset.Avatars.avatarsPictogramsFoodsFruitsAppleRed0101.name, reinforcer: 5),
+        Carereceiver(name: "Abel", avatar: DesignKitAsset.Avatars.avatarsBoy1g.name, reinforcer: 2),
+    ]
+
+    var isCarereceiverSelected: Bool {
+        self.currentCarereceiver != nil
+    }
+
+    func getReinforcerFor(index: Int) -> UIImage {
+        switch index {
+            case 2: DesignKitAsset.Reinforcers.spinBlinkBlueViolet.image
+            case 3: DesignKitAsset.Reinforcers.fire.image
+            case 4: DesignKitAsset.Reinforcers.sprinkles.image
+            case 5: DesignKitAsset.Reinforcers.rainbow.image
+            default: DesignKitAsset.Reinforcers.spinBlinkGreenOff.image
+        }
+    }
+
     func disconnect() {
         self.currentCompany = nil
         self.currentCaregiver = nil
+        self.currentCarereceiver = nil
     }
 }
