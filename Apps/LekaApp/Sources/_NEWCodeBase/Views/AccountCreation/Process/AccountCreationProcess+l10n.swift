@@ -17,6 +17,8 @@ extension l10n {
 
             static let message = LocalizedString("lekaapp.account_creation_process.step_1.message",
                                                  value: """
+                                                     A verification email has been sent.
+                                                     Please check your inbox.
                                                      We will now guide you throught
                                                      the creation of your account
                                                      and the different steps.
