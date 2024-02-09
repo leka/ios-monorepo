@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AccountKit
 import Combine
 import DesignKit
 import LocalizationKit
@@ -18,12 +19,13 @@ extension Bundle {
 struct MainView: View {
     @ObservedObject var navigation: Navigation = .shared
     @ObservedObject var rootOwnerViewModel: RootOwnerViewModel = .shared
+    @ObservedObject var authManagerViewModel = AuthManagerViewModel.shared
     @StateObject var viewModel: ViewModel = .init()
 
     var body: some View {
         NavigationSplitView {
             List(selection: self.$navigation.selectedCategory) {
-                if self.rootOwnerViewModel.isCompanyConnected {
+                if self.authManagerViewModel.userAuthenticationState == .loggedIn {
                     CaregiverSettingsLabel()
                 } else {
                     NoAccountConnectedLabel()
@@ -49,7 +51,7 @@ struct MainView: View {
                 }
 
                 VStack(alignment: .center, spacing: 20) {
-                    if self.rootOwnerViewModel.isCompanyConnected {
+                    if self.authManagerViewModel.userAuthenticationState == .loggedIn {
                         Button {
                             self.rootOwnerViewModel.isSettingsViewPresented = true
                         } label: {
