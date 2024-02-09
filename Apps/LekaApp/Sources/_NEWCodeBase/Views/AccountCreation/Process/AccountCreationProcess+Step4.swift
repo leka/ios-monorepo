@@ -2,13 +2,14 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AccountKit
 import DesignKit
 import LocalizationKit
 import SwiftUI
 
 extension AccountCreationProcess {
     struct Step4: View {
-        @ObservedObject var rootOwnerViewModel = RootOwnerViewModel.shared
+        // MARK: Internal
 
         var body: some View {
             VStack(spacing: 30) {
@@ -22,7 +23,7 @@ extension AccountCreationProcess {
                     if !self.rootOwnerViewModel.mockCaregiversSet.isEmpty {
                         self.rootOwnerViewModel.currentCaregiver = self.rootOwnerViewModel.mockCaregiversSet.last
                     }
-                    self.rootOwnerViewModel.isWelcomeViewPresented.toggle()
+                    self.authManagerViewModel.isUserLoggedOut.toggle()
                 }
                 .buttonStyle(.bordered)
             }
@@ -31,6 +32,11 @@ extension AccountCreationProcess {
             .multilineTextAlignment(.center)
             .frame(maxWidth: .infinity, alignment: .center)
         }
+
+        // MARK: Private
+
+        @ObservedObject private var rootOwnerViewModel = RootOwnerViewModel.shared
+        @ObservedObject private var authManagerViewModel = AuthManagerViewModel.shared
     }
 }
 

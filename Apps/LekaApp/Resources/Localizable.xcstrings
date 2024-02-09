@@ -189,13 +189,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "We will now guide you throught\nthe creation of your account\nand the different steps.\nReady?"
+                        "value": "A verification email has been sent.\nPlease check your inbox.\n\nWe will now guide you throught\nthe creation of your account\nand the different steps.\nReady?"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Nous allons maintenant vous guider\n\u00e0 travers la cr\u00e9ation de votre compte\net les diff\u00e9rentes \u00e9tapes.\nPr\u00eat(e)?"
+                        "value": "L'email de v\u00e9rification a \u00e9t\u00e9 envoy\u00e9. Veuillez v\u00e9rifier votre bo\u00eete de r\u00e9ception.\u2028\u2028Nous allons maintenant vous guider\n\u00e0 travers la cr\u00e9ation de votre compte\net les diff\u00e9rentes \u00e9tapes.\nPr\u00eat(e)?"
                     }
                 }
             }

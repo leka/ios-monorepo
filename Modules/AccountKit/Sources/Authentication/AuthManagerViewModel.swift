@@ -15,6 +15,8 @@ public class AuthManagerViewModel: ObservableObject {
 
     // MARK: Public
 
+    public static let shared = AuthManagerViewModel()
+
     // MARK: - User
 
     @Published public var userAuthenticationState: AuthManager.AuthenticationState = .unknown
@@ -29,6 +31,7 @@ public class AuthManagerViewModel: ObservableObject {
     @Published public var showactionRequestAlert = false
     @Published public var notificationMessage: String = ""
     @Published public var showNotificationAlert = false
+    @Published public var isUserLoggedOut = false
 
     // MARK: Private
 
@@ -90,5 +93,6 @@ public class AuthManagerViewModel: ObservableObject {
         self.showErrorAlert = false
         self.notificationMessage = ""
         self.showNotificationAlert = false
+        self.isUserLoggedOut = true
     }
 }

@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AccountKit
 import DesignKit
 import SwiftUI
 
@@ -10,6 +11,7 @@ struct CaregiverAvatarCell: View {
 
     @ObservedObject private var rootOwnerViewModel: RootOwnerViewModel = .shared
     @ObservedObject private var styleManager: StyleManager = .shared
+    @ObservedObject private var authManagerViewModel = AuthManagerViewModel.shared
 
     let caregiver: Caregiver
 
@@ -19,7 +21,7 @@ struct CaregiverAvatarCell: View {
             self.rootOwnerViewModel.currentCaregiver = self.caregiver
             self.styleManager.colorScheme = self.caregiver.preferredColorScheme
             self.styleManager.accentColor = self.caregiver.preferredAccentColor
-            self.rootOwnerViewModel.isWelcomeViewPresented = false
+            self.authManagerViewModel.isUserLoggedOut = false
             self.rootOwnerViewModel.isCaregiverPickerViewPresented = false
         } label: {
             VStack(spacing: 10) {
