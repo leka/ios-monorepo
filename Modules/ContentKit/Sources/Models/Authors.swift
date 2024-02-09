@@ -62,7 +62,7 @@ public struct Author: Codable, Identifiable {
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.id = try container.decode(String.self, forKey: .id)
-        self.visibility = try container.decode(Visibility.self, forKey: .visibility)
+        self.visible = try container.decode(Bool.self, forKey: .visible)
         self.name = try container.decode(String.self, forKey: .name)
         self.website = try container.decode(String.self, forKey: .website)
         self.email = try container.decode(String.self, forKey: .email)
@@ -82,7 +82,7 @@ public struct Author: Codable, Identifiable {
     // MARK: Public
 
     public let id: String
-    public let visibility: Visibility
+    public let visible: Bool
     public let name: String
     public let website: String
     public let email: String
@@ -92,15 +92,6 @@ public struct Author: Codable, Identifiable {
     // MARK: Private
 
     private let l10n: [Localization]
-}
-
-// MARK: Author.Visibility
-
-public extension Author {
-    enum Visibility: String, Codable {
-        case `public`
-        case `private`
-    }
 }
 
 // MARK: Author.Localization

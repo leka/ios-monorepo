@@ -5,7 +5,7 @@
 version: 1.0.0
 list:
   - id: aurore_kiesler
-    visibility: public
+    visible: true
     name: Aurore Kiesler
     website: https://www.autismes-aujourdhui.fr/
     email: aurore@leka.io
@@ -24,10 +24,10 @@ list:
           She is the one you should contact if you have any questions!
 
   - id: julie_tuil
-    visibility: public
+    visible: true
     name: Julie Tuil
     website: https://www.julietuil.com/
-    email:
+    email: ''
     professions:
       - speech_language_therapist
       - aba_therapist
@@ -41,7 +41,7 @@ list:
           Julie Tuil is an autism specialist in France with over 20 years of experience. She offers training and programs based on Applied Behavior Analysis (ABA) to support autistic children and their families, focusing on enhancing communication and behavior management.
 
   - id: leka
-    visibility: public
+    visible: true
     name: Leka
     website: https://leka.io
     email: hello@leka.io
