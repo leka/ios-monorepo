@@ -62,3 +62,15 @@ repos:
         language: python
         additional_dependencies: ["ruamel.yaml"]
         files: professions.yml
+
+      - id: check_yaml_data_authors
+        name: Check authors.yml
+        description: |
+          This hook checks authors.yml for:
+            - non unique ids
+            - jtd schema validation
+          It also formats the file and sorts the entries
+        entry: python3 Tools/Hooks/check_yaml_data_authors.py
+        language: python
+        additional_dependencies: ["ruamel.yaml"]
+        files: authors.yml
