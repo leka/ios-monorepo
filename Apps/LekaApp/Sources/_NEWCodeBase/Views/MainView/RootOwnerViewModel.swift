@@ -40,10 +40,6 @@ class RootOwnerViewModel: ObservableObject {
         Caregiver(name: "Gargantua", avatar: DesignKitAsset.Avatars.avatarsPictogramsFoodsFruitsCherryRed00FF.name, professions: [Professions.list[2]]),
     ]
 
-    var isCompanyConnected: Bool {
-        self.currentCompany != nil
-    }
-
     func disconnect() {
         self.currentCompany = nil
         self.currentCaregiver = nil

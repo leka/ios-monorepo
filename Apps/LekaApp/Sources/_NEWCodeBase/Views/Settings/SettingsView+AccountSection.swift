@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AccountKit
 import LocalizationKit
 import SwiftUI
 
@@ -11,7 +12,7 @@ import SwiftUI
 
 extension SettingsView {
     struct AccountSection: View {
-        @ObservedObject var rootOwnerViewModel: RootOwnerViewModel = .shared
+        // MARK: Internal
 
         var body: some View {
             Section("") {
@@ -32,12 +33,18 @@ extension SettingsView {
             .alert(String(l10n.SettingsView.AccountSection.LogOut.alertTitle.characters), isPresented: self.$rootOwnerViewModel.showConfirmDisconnection) {
                 Button(role: .destructive) {
                     self.rootOwnerViewModel.isSettingsViewPresented = false
+                    self.authManager.signOut()
                     self.rootOwnerViewModel.disconnect()
                 } label: {
                     Text(l10n.SettingsView.AccountSection.LogOut.alertButtonLabel)
                 }
             } message: {
                 Text(l10n.SettingsView.AccountSection.LogOut.alertMessage)
+            }
+            .alert(String(l10n.SettingsView.AccountSection.LogOut.errorAlertTitle.characters), isPresented: self.$authManagerViewModel.showErrorAlert) {
+                // Nothing to do
+            } message: {
+                Text(self.authManagerViewModel.errorMessage)
             }
             .alert(String(l10n.SettingsView.AccountSection.DeleteAccount.alertTitle.characters), isPresented: self.$rootOwnerViewModel.showConfirmDeleteAccount) {
                 // Nothing to do
@@ -46,6 +53,12 @@ extension SettingsView {
             }
             .textCase(nil)
         }
+
+        // MARK: Private
+
+        @ObservedObject private var rootOwnerViewModel: RootOwnerViewModel = .shared
+        @ObservedObject private var authManagerViewModel = AuthManagerViewModel.shared
+        private var authManager = AuthManager.shared
     }
 }
 
