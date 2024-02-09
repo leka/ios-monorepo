@@ -9,6 +9,8 @@ import ruamel.yaml
 import subprocess
 import sys
 
+JTD_SCHEMA = "Specs/jtd/professions.jtd.json"
+
 # ? Check if a file was specified
 if len(sys.argv) > 1:
     FILENAME = sys.argv[1]
@@ -36,7 +38,7 @@ ids = [item['id'] for item in data['list']]
 
 # ? Check if all ids are unique
 if len(set(ids)) != len(ids):
-    print("❌ There are duplicate ids in profession.yml")
+    print(f"❌ There are duplicate ids in {FILENAME}")
     seen = set()
     duplicate = set()
     for id in ids:
@@ -49,7 +51,7 @@ if len(set(ids)) != len(ids):
 
 # Check schema validation with ajv
 os.environ['SYSTEMD_COLORS'] = '1'
-cmd = f"ajv --spec=jtd -s Specs/jtd/professions.jtd.json -d {FILENAME}"
+cmd = f"ajv --spec=jtd -s {JTD_SCHEMA} -d {FILENAME}"
 result = subprocess.run(cmd, shell=True)
 
 if result.returncode != 0:
