@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AccountKit
 import DesignKit
 import LocalizationKit
 import SwiftUI
@@ -26,8 +27,14 @@ struct ConnectionView: View {
 
     var body: some View {
         VStack(alignment: .center, spacing: 30) {
-            Text(l10n.ConnectionView.title)
-                .font(.title)
+            VStack(spacing: 10) {
+                Text(l10n.ConnectionView.title)
+                    .font(.title)
+
+                Text(self.authManagerViewModel.errorMessage)
+                    .font(.footnote)
+                    .foregroundStyle(self.authManagerViewModel.showErrorAlert ? .red : .clear)
+            }
 
             VStack {
                 TextFieldEmail(entry: self.$viewModel.email)
@@ -53,21 +60,30 @@ struct ConnectionView: View {
             // TODO: (@release) - Implement selection + review nav destination use
             CaregiverPicker()
         }
+        .onChange(of: self.authManagerViewModel.userAuthenticationState) { newValue in
+            if newValue == .loggedIn {
+                self.rootOwnerViewModel.currentCompany = Company(
+                    email: self.viewModel.email,
+                    password: self.viewModel.password
+                )
+                self.viewModel.navigateToCaregiverSelection.toggle()
+            }
+        }
     }
 
     // MARK: Private
 
     @StateObject private var viewModel = ConnectionViewViewModel()
     @ObservedObject private var rootOwnerViewModel: RootOwnerViewModel = .shared
+    @ObservedObject private var authManagerViewModel = AuthManagerViewModel.shared
+    private var authManager = AuthManager.shared
 
     private var isConnectionDisabled: Bool {
         self.viewModel.email.isEmpty || self.viewModel.password.isEmpty
     }
 
     private func submitForm() {
-        // TODO: (@release) - Plug to AccountKit
-        self.rootOwnerViewModel.currentCompany = Company(email: self.viewModel.email, password: self.viewModel.password)
-        self.viewModel.navigateToCaregiverSelection.toggle()
+        self.authManager.signIn(email: self.viewModel.email, password: self.viewModel.password)
     }
 }
 
