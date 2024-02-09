@@ -27,8 +27,14 @@ struct ConnectionView: View {
 
     var body: some View {
         VStack(alignment: .center, spacing: 30) {
-            Text(l10n.ConnectionView.title)
-                .font(.title)
+            VStack(spacing: 10) {
+                Text(l10n.ConnectionView.title)
+                    .font(.title)
+
+                Text(self.authManagerViewModel.errorMessage)
+                    .font(.footnote)
+                    .foregroundStyle(self.authManagerViewModel.showErrorAlert ? .red : .clear)
+            }
 
             VStack {
                 TextFieldEmail(entry: self.$viewModel.email)
