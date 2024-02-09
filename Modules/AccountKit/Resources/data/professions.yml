@@ -4,413 +4,6 @@
 
 version: 1.0.0
 list:
-  - id: special_educator
-    l10n:
-      - locale: fr_FR
-        name: Éducateur(trice) spécialisé(e)
-        description: |
-          L'éducateur spécialisé intervient auprès de personnes en difficulté, handicapées ou en situation de risque d'exclusion, pour favoriser leur intégration sociale.
-      - locale: en_US
-        name: Specialized Educator
-        description: |
-          Specialized educators work with individuals facing difficulties, disabilities, or risk of exclusion, to promote their social integration.
-
-  - id: early_childhood_educator
-    l10n:
-      - locale: fr_FR
-        name: Éducateur(trice) de jeunes enfants
-        description: |
-          Ce professionnel accompagne le développement des jeunes enfants en créant un environnement adapté et stimulant.
-      - locale: en_US
-        name: Early Childhood Educator
-        description: |
-          This professional supports the development of young children by creating a nurturing and stimulating environment.
-
-  - id: educational_monitor
-    l10n:
-      - locale: fr_FR
-        name: Moniteur(trice) éducatif(ve)
-        description: |
-          Le moniteur éducatif encadre des activités éducatives et de loisirs pour différents publics, souvent dans un cadre institutionnel.
-      - locale: en_US
-        name: Educational Monitor
-        description: |
-          The educational monitor supervises educational and recreational activities for various groups, often within an institutional setting.
-
-  - id: workshop_monitor
-    l10n:
-      - locale: fr_FR
-        name: Moniteur(trice) d'atelier
-        description: |
-          Ce professionnel organise et anime des ateliers à visée thérapeutique ou éducative pour des personnes en situation de handicap ou de réinsertion.
-      - locale: en_US
-        name: Workshop Monitor
-        description: |
-          This professional organizes and leads workshops with therapeutic or educational aims for individuals with disabilities or in reintegration.
-
-  - id: teacher
-    l10n:
-      - locale: fr_FR
-        name: Enseignant(e)
-        description: |
-          L'enseignant transmet des connaissances et compétences selon les programmes éducatifs, adaptant souvent son approche pour les élèves à besoins spéciaux.
-      - locale: en_US
-        name: Teacher
-        description: |
-          A teacher imparts knowledge and skills according to educational programs, often adapting their approach for students with special needs.
-
-  - id: socio_cultural_animator
-    l10n:
-      - locale: fr_FR
-        name: Animateur(trice) socio-culturel(le)
-        description: |
-          L'animateur socio-culturel organise des activités de loisir et d'animation qui favorisent le lien social et l'épanouissement individuel.
-      - locale: en_US
-        name: Socio-cultural Animator
-        description: |
-          The socio-cultural animator organizes leisure and entertainment activities that promote social bonding and individual fulfillment.
-
-  - id: psychomotor_therapist
-    l10n:
-      - locale: fr_FR
-        name: Psychomotricien(ne)
-        description: |
-          Le psychomotricien intervient auprès de personnes présentant des troubles psychomoteurs, en utilisant diverses techniques thérapeutiques.
-      - locale: en_US
-        name: Psychomotor Therapist
-        description: |
-          The psychomotor therapist works with individuals having psychomotor disorders, using various therapeutic techniques.
-
-  - id: occupational_therapist
-    l10n:
-      - locale: fr_FR
-        name: Ergothérapeute
-        description: |
-          L'ergothérapeute aide les personnes handicapées à retrouver autonomie et confort dans les activités quotidiennes, en adaptant l'environnement et les outils.
-      - locale: en_US
-        name: Occupational Therapist
-        description: |
-          The occupational therapist assists disabled individuals in regaining autonomy and comfort in daily activities, adapting the environment and tools.
-
-  - id: speech_language_therapist
-    l10n:
-      - locale: fr_FR
-        name: Orthophoniste
-        description: |
-          L'orthophoniste traite les troubles de la parole et du langage, élaborant des programmes de rééducation personnalisés.
-      - locale: en_US
-        name: Speech-Language Therapist
-        description: |
-          The speech therapist treats speech and language disorders, developing personalized rehabilitation programs.
-
-  - id: physiotherapist
-    l10n:
-      - locale: fr_FR
-        name: Kinésithérapeute
-        description: |
-          Le kinésithérapeute pratique des thérapies manuelles et exercices pour rétablir la mobilité et atténuer les douleurs.
-      - locale: en_US
-        name: Physiotherapist
-        description: |
-          The physiotherapist performs manual therapies and exercises to restore mobility and alleviate pain.
-
-  - id: child_psychiatrist
-    l10n:
-      - locale: fr_FR
-        name: Pédopsychiatre
-        description: |
-          Le pédopsychiatre diagnostique et traite les troubles mentaux et émotionnels chez les enfants et adolescents.
-      - locale: en_US
-        name: Child Psychiatrist
-        description: |
-          The child psychiatrist diagnoses and treats mental and emotional disorders in children and adolescents.
-
-  - id: doctor
-    l10n:
-      - locale: fr_FR
-        name: Médecin
-        description: |
-          Le médecin diagnostique et traite les maladies, jouant un rôle clé dans le suivi médical des personnes en situation de handicap.
-      - locale: en_US
-        name: Doctor
-        description: |
-          The doctor diagnoses and treats illnesses, playing a key role in the medical follow-up of individuals with disabilities.
-
-  - id: psychologist
-    l10n:
-      - locale: fr_FR
-        name: Psychologue
-        description: |
-          Le psychologue évalue et soutient la santé mentale, apportant une aide spécialisée dans les contextes éducatifs et thérapeutiques.
-      - locale: en_US
-        name: Psychologist
-        description: |
-          The psychologist assesses and supports mental health, providing specialized assistance in educational and therapeutic contexts.
-
-  - id: nurse
-    l10n:
-      - locale: fr_FR
-        name: Infirmier(ère)
-        description: |
-          L'infirmier assure les soins médicaux quotidiens et soutient les patients dans la gestion de leur santé au quotidien.
-      - locale: en_US
-        name: Nurse
-        description: |
-          The nurse provides daily medical care and supports patients in managing their health on a day-to-day basis.
-
-  - id: caregiver
-    l10n:
-      - locale: fr_FR
-        name: Aide-soignant(e)
-        description: |
-          L'aide-soignant assiste les personnes dépendantes dans les activités de la vie quotidienne, jouant un rôle essentiel dans le maintien de leur bien-être.
-      - locale: en_US
-        name: Caregiver
-        description: |
-          The caregiver assists dependent individuals in daily life activities, playing an essential role in maintaining their well-being.
-
-  - id: educational_support_for_students_with_disabilities
-    l10n:
-      - locale: fr_FR
-        name: Auxiliaire de vie scolaire pour élèves en situation de handicap
-        description: |
-          Ce professionnel accompagne les élèves en situation de handicap dans leur parcours scolaire, facilitant leur accès à l'éducation et à l'apprentissage.
-      - locale: en_US
-        name: Educational Support for Students with Disabilities
-        description: |
-          This professional accompanies students with disabilities in their educational journey, facilitating their access to education and learning.
-
-  - id: educational_and_social_support_worker
-    l10n:
-      - locale: fr_FR
-        name: Travailleur social éducatif
-        description: |
-          Le travailleur social éducatif aide les personnes en difficulté sociale à surmonter leurs obstacles et à s'intégrer dans la société.
-      - locale: en_US
-        name: Educational and Social Support Worker
-        description: |
-          The educational social worker helps individuals facing social difficulties to overcome their challenges and integrate into society.
-
-  - id: personal_care_assistant_for_dependence_and_disability
-    l10n:
-      - locale: fr_FR
-        name: Assistant(e) de vie aux familles pour dépendance et handicap
-        description: |
-          Cet assistant soutient les familles dans la prise en charge de membres dépendants ou handicapés, facilitant la vie quotidienne.
-      - locale: en_US
-        name: Personal Care Assistant for Dependence and Disability
-        description: |
-          This assistant supports families in caring for dependent or disabled members, facilitating daily life.
-
-  - id: social_life_assistant
-    l10n:
-      - locale: fr_FR
-        name: Assistant(e) de Vie Sociale
-        description: |
-          L'assistant(e) de vie sociale soutient les personnes en situation de fragilité ou de dépendance dans les activités du quotidien, en favorisant leur bien-être et leur intégration sociale.
-      - locale: en_US
-        name: Social Life Assistant
-        description: |
-          The social life assistant supports individuals in situations of fragility or dependency with daily activities, promoting their well-being and social integration.
-
-  - id: nursery_nurse
-    l10n:
-      - locale: fr_FR
-        name: Infirmier(ère) de Puériculture
-        description: |
-          L'infirmier(ère) de puériculture se spécialise dans les soins aux nourrissons et aux jeunes enfants, contribuant à leur développement et à leur santé dans un cadre de soins infirmiers.
-      - locale: en_US
-        name: Nursery Nurse
-        description: |
-          A nursery nurse specializes in caring for infants and young children, contributing to their development and health within a nursing care framework.
-
-  - id: nursery_assistant
-    l10n:
-      - locale: fr_FR
-        name: Auxiliaire de Puériculture
-        description: |
-          L'auxiliaire de puériculture travaille auprès des jeunes enfants, assurant leur soin quotidien, leur éveil et contribuant à leur bien-être dans les structures d'accueil de la petite enfance.
-      - locale: en_US
-        name: Nursery Assistant
-        description: |
-          The nursery assistant works with young children, providing their daily care, stimulating their development, and contributing to their well-being in early childhood care settings.
-
-  - id: toy_librarian
-    l10n:
-      - locale: fr_FR
-        name: Ludothécaire
-        description: |
-          Le ludothécaire gère une ludothèque, proposant une variété de jeux et jouets, et favorise l'éveil et l'apprentissage des enfants par le jeu, tout en accompagnant les familles et éducateurs.
-      - locale: en_US
-        name: Toy Librarian
-        description: |
-          The toy librarian manages a toy library, offering a variety of games and toys, and promotes children's development and learning through play, while supporting families and educators.
-
-  - id: special_education_teacher
-    l10n:
-      - locale: fr_FR
-        name: Enseignant(e) Spécialisée
-        description: |
-          L'enseignant en éducation spécialisée travaille spécifiquement avec des enfants présentant un large éventail de handicaps, en adaptant les méthodes d'enseignement et le contenu pédagogique pour répondre à leurs besoins uniques.
-      - locale: en_US
-        name: Special Education Teacher
-        description: |
-          The Special Education Teacher specifically works with children who have a wide range of disabilities, adapting teaching methods and educational content to meet their unique needs.
-
-  - id: behavioral_therapist
-    l10n:
-      - locale: fr_FR
-        name: Thérapeute Comportemental
-        description: |
-          Le thérapeute comportemental aide les individus présentant des défis comportementaux, en utilisant des techniques pour améliorer la communication, les compétences sociales et le comportement.
-      - locale: en_US
-        name: Behavioral Therapist
-        description: |
-          The Behavioral Therapist assists individuals with behavioral challenges, employing techniques to improve communication, social skills, and behavior.
-
-  - id: inclusive_education_specialist
-    l10n:
-      - locale: fr_FR
-        name: Spécialiste de l'Éducation Inclusive
-        description: |
-          Le spécialiste de l'éducation inclusive est expert dans l'adaptation des programmes d'études et des stratégies d'enseignement pour inclure des élèves de toutes capacités.
-      - locale: en_US
-        name: Inclusive Education Specialist
-        description: |
-          The Inclusive Education Specialist is an expert in adapting curricula and teaching strategies to include students of all abilities.
-
-  - id: rehabilitation_counselor
-    l10n:
-      - locale: fr_FR
-        name: Conseiller en Réadaptation
-        description: |
-          Le conseiller en réadaptation travaille avec des personnes handicapées pour atteindre leurs objectifs personnels, professionnels et de vie autonome.
-      - locale: en_US
-        name: Rehabilitation Counselor
-        description: |
-          The Rehabilitation Counselor works with individuals with disabilities to achieve their personal, career, and independent living goals.
-
-  - id: psychiatrist
-    l10n:
-      - locale: fr_FR
-        name: Psychiatre
-        description: |
-          Le psychiatre diagnostique et traite les troubles mentaux. Ils travaillent souvent avec des patients ayant des besoins spéciaux, en fournissant une évaluation médicale, des soins et des plans de traitement personnalisés.
-      - locale: en_US
-        name: Psychiatrist
-        description: |
-          The psychiatrist diagnoses and treats mental disorders. They often work with patients with special needs, providing medical assessment, care, and personalized treatment plans.
-
-  - id: remedial_education_therapist
-    l10n:
-      - locale: fr_FR
-        name: Orthopédagogue
-        description: |
-          L'orthopédagogue conçoit et met en œuvre des programmes de soutien éducatif pour les personnes ayant des difficultés d'apprentissage, visant à améliorer leurs compétences et performances académiques.
-      - locale: en_US
-        name: Remedial Education Therapist
-        description: |
-          The Remedial Education Therapist designs and implements educational support programs for individuals with learning difficulties, aiming to enhance their skills and academic performance.
-
-  - id: medical_psychological_assistant
-    l10n:
-      - locale: fr_FR
-        name: Aide Médico Psychologique
-        description: |
-          L'Aide Médico Psychologique accompagne les personnes ayant des troubles psychologiques ou des handicaps, en fournissant un soutien quotidien et en contribuant à leur bien-être psychologique.
-      - locale: en_US
-        name: Medical Psychological Assistant
-        description: |
-          The Medical Psychological Assistant supports individuals with psychological disorders or disabilities, providing daily support and contributing to their psychological well-being.
-
-  - id: educational_and_social_assistant
-    l10n:
-      - locale: fr_FR
-        name: Accompagnant Educatif et Social
-        description: |
-          L'Accompagnant Educatif et Social aide les personnes en difficulté ou en situation de vulnérabilité, en leur fournissant un soutien dans leur éducation et leur intégration sociale.
-      - locale: en_US
-        name: Educational and Social Assistant
-        description: |
-          The Educational and Social Assistant supports individuals facing difficulties or vulnerabilities, providing them with assistance in their education and social integration.
-
-  - id: care_assistant
-    l10n:
-      - locale: fr_FR
-        name: Auxiliaire de vie
-        description: |
-          L'Auxiliaire de vie offre un soutien aux personnes ayant besoin de soins, en assistant avec les tâches quotidiennes et en contribuant à leur confort et à leur santé.
-      - locale: en_US
-        name: Care Assistant
-        description: |
-          The Care Assistant provides support to individuals in need of care, assisting with daily tasks and contributing to their comfort and health.
-
-  - id: sports_trainer
-    l10n:
-      - locale: fr_FR
-        name: Educateur sportif
-        description: |
-          L'Educateur sportif conçoit et supervise des programmes d'entraînement pour améliorer la condition physique, souvent adaptés aux besoins spécifiques des personnes handicapées ou en rééducation.
-      - locale: en_US
-        name: Sports Trainer
-        description: |
-          The Sports Trainer designs and oversees training programs to improve physical fitness, often tailored to the specific needs of individuals with disabilities or in rehabilitation.
-
-  - id: director
-    l10n:
-      - locale: fr_FR
-        name: Directeur
-        description: |
-          Le Directeur gère et dirige une institution ou un service, en élaborant des stratégies, en supervisant les opérations et en assurant le leadership et la direction de l'équipe.
-      - locale: en_US
-        name: Director
-        description: |
-          The Director manages and leads an institution or service, developing strategies, overseeing operations, and providing leadership and direction to the team.
-
-  - id: deputy_director
-    l10n:
-      - locale: fr_FR
-        name: Directeur adjoint
-        description: |
-          Le Directeur adjoint assiste le Directeur dans la gestion et la direction, prenant en charge des responsabilités spécifiques et contribuant à la mise en œuvre de la stratégie globale.
-      - locale: en_US
-        name: Deputy Director
-        description: |
-          The Deputy Director assists the Director in management and leadership, taking on specific responsibilities and contributing to the implementation of the overall strategy.
-
-  - id: service_manager
-    l10n:
-      - locale: fr_FR
-        name: Chef de service
-        description: |
-          Le Chef de service est responsable de la gestion quotidienne d'un service spécifique, en veillant à la qualité des services fournis et au bien-être de l'équipe.
-      - locale: en_US
-        name: Service Manager
-        description: |
-          The Service Manager is responsible for the daily management of a specific service, ensuring the quality of services provided and the well-being of the team.
-
-  - id: health_manager
-    l10n:
-      - locale: fr_FR
-        name: Cadre de santé
-        description: |
-          Le Cadre de santé supervise les aspects cliniques et administratifs dans les établissements de santé, en assurant la coordination des soins et la gestion des ressources humaines et matérielles.
-      - locale: en_US
-        name: Health Manager
-        description: |
-          The Health Manager oversees clinical and administrative aspects in healthcare facilities, ensuring care coordination and the management of human and material resources.
-
-  - id: coordinator
-    l10n:
-      - locale: fr_FR
-        name: Coordinateur
-        description: |
-          Le Coordinateur assure la liaison entre différentes équipes et services, en facilitant la communication et la collaboration pour atteindre les objectifs communs et optimiser les processus.
-      - locale: en_US
-        name: Coordinator
-        description: |
-          The Coordinator acts as a liaison between different teams and services, facilitating communication and collaboration to achieve common goals and optimize processes.
-
   - id: aba_therapist
     l10n:
       - locale: fr_FR
@@ -421,17 +14,6 @@ list:
         name: ABA Therapist
         description: |
           A specialist who applies the principles of Applied Behavior Analysis (ABA) to assess and intervene in individuals with autism spectrum disorders and other behavioral issues.
-
-  - id: clinical_director
-    l10n:
-      - locale: fr_FR
-        name: Directeur(trice) clinique
-        description: |
-          Responsable de la supervision clinique et administrative d'une unité de soins ou d'un établissement de santé, garantissant la qualité des soins et le respect des normes professionnelles.
-      - locale: en_US
-        name: Clinical Director
-        description: |
-          Responsible for the clinical and administrative supervision of a care unit or health facility, ensuring the quality of care and compliance with professional standards.
 
   - id: behavior_analyst
     l10n:
@@ -444,6 +26,292 @@ list:
         description: |
           A professional specialized in the study of human behavior, using analysis techniques to understand and modify problematic behaviors.
 
+  - id: behavioral_therapist
+    l10n:
+      - locale: fr_FR
+        name: Thérapeute Comportemental
+        description: |
+          Le thérapeute comportemental aide les individus présentant des défis comportementaux, en utilisant des techniques pour améliorer la communication, les compétences sociales et le comportement.
+      - locale: en_US
+        name: Behavioral Therapist
+        description: |
+          The Behavioral Therapist assists individuals with behavioral challenges, employing techniques to improve communication, social skills, and behavior.
+
+  - id: care_assistant
+    l10n:
+      - locale: fr_FR
+        name: Auxiliaire de vie
+        description: |
+          L'Auxiliaire de vie offre un soutien aux personnes ayant besoin de soins, en assistant avec les tâches quotidiennes et en contribuant à leur confort et à leur santé.
+      - locale: en_US
+        name: Care Assistant
+        description: |
+          The Care Assistant provides support to individuals in need of care, assisting with daily tasks and contributing to their comfort and health.
+
+  - id: caregiver
+    l10n:
+      - locale: fr_FR
+        name: Aide-soignant(e)
+        description: |
+          L'aide-soignant assiste les personnes dépendantes dans les activités de la vie quotidienne, jouant un rôle essentiel dans le maintien de leur bien-être.
+      - locale: en_US
+        name: Caregiver
+        description: |
+          The caregiver assists dependent individuals in daily life activities, playing an essential role in maintaining their well-being.
+
+  - id: child_psychiatrist
+    l10n:
+      - locale: fr_FR
+        name: Pédopsychiatre
+        description: |
+          Le pédopsychiatre diagnostique et traite les troubles mentaux et émotionnels chez les enfants et adolescents.
+      - locale: en_US
+        name: Child Psychiatrist
+        description: |
+          The child psychiatrist diagnoses and treats mental and emotional disorders in children and adolescents.
+
+  - id: clinical_director
+    l10n:
+      - locale: fr_FR
+        name: Directeur(trice) clinique
+        description: |
+          Responsable de la supervision clinique et administrative d'une unité de soins ou d'un établissement de santé, garantissant la qualité des soins et le respect des normes professionnelles.
+      - locale: en_US
+        name: Clinical Director
+        description: |
+          Responsible for the clinical and administrative supervision of a care unit or health facility, ensuring the quality of care and compliance with professional standards.
+
+  - id: coordinator
+    l10n:
+      - locale: fr_FR
+        name: Coordinateur
+        description: |
+          Le Coordinateur assure la liaison entre différentes équipes et services, en facilitant la communication et la collaboration pour atteindre les objectifs communs et optimiser les processus.
+      - locale: en_US
+        name: Coordinator
+        description: |
+          The Coordinator acts as a liaison between different teams and services, facilitating communication and collaboration to achieve common goals and optimize processes.
+
+  - id: deputy_director
+    l10n:
+      - locale: fr_FR
+        name: Directeur adjoint
+        description: |
+          Le Directeur adjoint assiste le Directeur dans la gestion et la direction, prenant en charge des responsabilités spécifiques et contribuant à la mise en œuvre de la stratégie globale.
+      - locale: en_US
+        name: Deputy Director
+        description: |
+          The Deputy Director assists the Director in management and leadership, taking on specific responsibilities and contributing to the implementation of the overall strategy.
+
+  - id: director
+    l10n:
+      - locale: fr_FR
+        name: Directeur
+        description: |
+          Le Directeur gère et dirige une institution ou un service, en élaborant des stratégies, en supervisant les opérations et en assurant le leadership et la direction de l'équipe.
+      - locale: en_US
+        name: Director
+        description: |
+          The Director manages and leads an institution or service, developing strategies, overseeing operations, and providing leadership and direction to the team.
+
+  - id: doctor
+    l10n:
+      - locale: fr_FR
+        name: Médecin
+        description: |
+          Le médecin diagnostique et traite les maladies, jouant un rôle clé dans le suivi médical des personnes en situation de handicap.
+      - locale: en_US
+        name: Doctor
+        description: |
+          The doctor diagnoses and treats illnesses, playing a key role in the medical follow-up of individuals with disabilities.
+
+  - id: early_childhood_educator
+    l10n:
+      - locale: fr_FR
+        name: Éducateur(trice) de jeunes enfants
+        description: |
+          Ce professionnel accompagne le développement des jeunes enfants en créant un environnement adapté et stimulant.
+      - locale: en_US
+        name: Early Childhood Educator
+        description: |
+          This professional supports the development of young children by creating a nurturing and stimulating environment.
+
+  - id: educational_and_social_assistant
+    l10n:
+      - locale: fr_FR
+        name: Accompagnant Educatif et Social
+        description: |
+          L'Accompagnant Educatif et Social aide les personnes en difficulté ou en situation de vulnérabilité, en leur fournissant un soutien dans leur éducation et leur intégration sociale.
+      - locale: en_US
+        name: Educational and Social Assistant
+        description: |
+          The Educational and Social Assistant supports individuals facing difficulties or vulnerabilities, providing them with assistance in their education and social integration.
+
+  - id: educational_and_social_support_worker
+    l10n:
+      - locale: fr_FR
+        name: Travailleur social éducatif
+        description: |
+          Le travailleur social éducatif aide les personnes en difficulté sociale à surmonter leurs obstacles et à s'intégrer dans la société.
+      - locale: en_US
+        name: Educational and Social Support Worker
+        description: |
+          The educational social worker helps individuals facing social difficulties to overcome their challenges and integrate into society.
+
+  - id: educational_monitor
+    l10n:
+      - locale: fr_FR
+        name: Moniteur(trice) éducatif(ve)
+        description: |
+          Le moniteur éducatif encadre des activités éducatives et de loisirs pour différents publics, souvent dans un cadre institutionnel.
+      - locale: en_US
+        name: Educational Monitor
+        description: |
+          The educational monitor supervises educational and recreational activities for various groups, often within an institutional setting.
+
+  - id: educational_support_for_students_with_disabilities
+    l10n:
+      - locale: fr_FR
+        name: Auxiliaire de vie scolaire pour élèves en situation de handicap
+        description: |
+          Ce professionnel accompagne les élèves en situation de handicap dans leur parcours scolaire, facilitant leur accès à l'éducation et à l'apprentissage.
+      - locale: en_US
+        name: Educational Support for Students with Disabilities
+        description: |
+          This professional accompanies students with disabilities in their educational journey, facilitating their access to education and learning.
+
+  - id: health_manager
+    l10n:
+      - locale: fr_FR
+        name: Cadre de santé
+        description: |
+          Le Cadre de santé supervise les aspects cliniques et administratifs dans les établissements de santé, en assurant la coordination des soins et la gestion des ressources humaines et matérielles.
+      - locale: en_US
+        name: Health Manager
+        description: |
+          The Health Manager oversees clinical and administrative aspects in healthcare facilities, ensuring care coordination and the management of human and material resources.
+
+  - id: inclusive_education_specialist
+    l10n:
+      - locale: fr_FR
+        name: Spécialiste de l'Éducation Inclusive
+        description: |
+          Le spécialiste de l'éducation inclusive est expert dans l'adaptation des programmes d'études et des stratégies d'enseignement pour inclure des élèves de toutes capacités.
+      - locale: en_US
+        name: Inclusive Education Specialist
+        description: |
+          The Inclusive Education Specialist is an expert in adapting curricula and teaching strategies to include students of all abilities.
+
+  - id: medical_psychological_assistant
+    l10n:
+      - locale: fr_FR
+        name: Aide Médico Psychologique
+        description: |
+          L'Aide Médico Psychologique accompagne les personnes ayant des troubles psychologiques ou des handicaps, en fournissant un soutien quotidien et en contribuant à leur bien-être psychologique.
+      - locale: en_US
+        name: Medical Psychological Assistant
+        description: |
+          The Medical Psychological Assistant supports individuals with psychological disorders or disabilities, providing daily support and contributing to their psychological well-being.
+
+  - id: nurse
+    l10n:
+      - locale: fr_FR
+        name: Infirmier(ère)
+        description: |
+          L'infirmier assure les soins médicaux quotidiens et soutient les patients dans la gestion de leur santé au quotidien.
+      - locale: en_US
+        name: Nurse
+        description: |
+          The nurse provides daily medical care and supports patients in managing their health on a day-to-day basis.
+
+  - id: nursery_assistant
+    l10n:
+      - locale: fr_FR
+        name: Auxiliaire de Puériculture
+        description: |
+          L'auxiliaire de puériculture travaille auprès des jeunes enfants, assurant leur soin quotidien, leur éveil et contribuant à leur bien-être dans les structures d'accueil de la petite enfance.
+      - locale: en_US
+        name: Nursery Assistant
+        description: |
+          The nursery assistant works with young children, providing their daily care, stimulating their development, and contributing to their well-being in early childhood care settings.
+
+  - id: nursery_nurse
+    l10n:
+      - locale: fr_FR
+        name: Infirmier(ère) de Puériculture
+        description: |
+          L'infirmier(ère) de puériculture se spécialise dans les soins aux nourrissons et aux jeunes enfants, contribuant à leur développement et à leur santé dans un cadre de soins infirmiers.
+      - locale: en_US
+        name: Nursery Nurse
+        description: |
+          A nursery nurse specializes in caring for infants and young children, contributing to their development and health within a nursing care framework.
+
+  - id: occupational_therapist
+    l10n:
+      - locale: fr_FR
+        name: Ergothérapeute
+        description: |
+          L'ergothérapeute aide les personnes handicapées à retrouver autonomie et confort dans les activités quotidiennes, en adaptant l'environnement et les outils.
+      - locale: en_US
+        name: Occupational Therapist
+        description: |
+          The occupational therapist assists disabled individuals in regaining autonomy and comfort in daily activities, adapting the environment and tools.
+
+  - id: personal_care_assistant_for_dependence_and_disability
+    l10n:
+      - locale: fr_FR
+        name: Assistant(e) de vie aux familles pour dépendance et handicap
+        description: |
+          Cet assistant soutient les familles dans la prise en charge de membres dépendants ou handicapés, facilitant la vie quotidienne.
+      - locale: en_US
+        name: Personal Care Assistant for Dependence and Disability
+        description: |
+          This assistant supports families in caring for dependent or disabled members, facilitating daily life.
+
+  - id: physiotherapist
+    l10n:
+      - locale: fr_FR
+        name: Kinésithérapeute
+        description: |
+          Le kinésithérapeute pratique des thérapies manuelles et exercices pour rétablir la mobilité et atténuer les douleurs.
+      - locale: en_US
+        name: Physiotherapist
+        description: |
+          The physiotherapist performs manual therapies and exercises to restore mobility and alleviate pain.
+
+  - id: psychiatrist
+    l10n:
+      - locale: fr_FR
+        name: Psychiatre
+        description: |
+          Le psychiatre diagnostique et traite les troubles mentaux. Ils travaillent souvent avec des patients ayant des besoins spéciaux, en fournissant une évaluation médicale, des soins et des plans de traitement personnalisés.
+      - locale: en_US
+        name: Psychiatrist
+        description: |
+          The psychiatrist diagnoses and treats mental disorders. They often work with patients with special needs, providing medical assessment, care, and personalized treatment plans.
+
+  - id: psychologist
+    l10n:
+      - locale: fr_FR
+        name: Psychologue
+        description: |
+          Le psychologue évalue et soutient la santé mentale, apportant une aide spécialisée dans les contextes éducatifs et thérapeutiques.
+      - locale: en_US
+        name: Psychologist
+        description: |
+          The psychologist assesses and supports mental health, providing specialized assistance in educational and therapeutic contexts.
+
+  - id: psychomotor_therapist
+    l10n:
+      - locale: fr_FR
+        name: Psychomotricien(ne)
+        description: |
+          Le psychomotricien intervient auprès de personnes présentant des troubles psychomoteurs, en utilisant diverses techniques thérapeutiques.
+      - locale: en_US
+        name: Psychomotor Therapist
+        description: |
+          The psychomotor therapist works with individuals having psychomotor disorders, using various therapeutic techniques.
+
   - id: psychotherapist
     l10n:
       - locale: fr_FR
@@ -454,3 +322,134 @@ list:
         name: Psychotherapist
         description: |
           A psychologist specializing in the use of behavioral and cognitive therapies to treat various psychological and behavioral disorders.
+  - id: rehabilitation_counselor
+    l10n:
+      - locale: fr_FR
+        name: Conseiller en Réadaptation
+        description: |
+          Le conseiller en réadaptation travaille avec des personnes handicapées pour atteindre leurs objectifs personnels, professionnels et de vie autonome.
+      - locale: en_US
+        name: Rehabilitation Counselor
+        description: |
+          The Rehabilitation Counselor works with individuals with disabilities to achieve their personal, career, and independent living goals.
+
+  - id: remedial_education_therapist
+    l10n:
+      - locale: fr_FR
+        name: Orthopédagogue
+        description: |
+          L'orthopédagogue conçoit et met en œuvre des programmes de soutien éducatif pour les personnes ayant des difficultés d'apprentissage, visant à améliorer leurs compétences et performances académiques.
+      - locale: en_US
+        name: Remedial Education Therapist
+        description: |
+          The Remedial Education Therapist designs and implements educational support programs for individuals with learning difficulties, aiming to enhance their skills and academic performance.
+
+  - id: service_manager
+    l10n:
+      - locale: fr_FR
+        name: Chef de service
+        description: |
+          Le Chef de service est responsable de la gestion quotidienne d'un service spécifique, en veillant à la qualité des services fournis et au bien-être de l'équipe.
+      - locale: en_US
+        name: Service Manager
+        description: |
+          The Service Manager is responsible for the daily management of a specific service, ensuring the quality of services provided and the well-being of the team.
+
+  - id: social_life_assistant
+    l10n:
+      - locale: fr_FR
+        name: Assistant(e) de Vie Sociale
+        description: |
+          L'assistant(e) de vie sociale soutient les personnes en situation de fragilité ou de dépendance dans les activités du quotidien, en favorisant leur bien-être et leur intégration sociale.
+      - locale: en_US
+        name: Social Life Assistant
+        description: |
+          The social life assistant supports individuals in situations of fragility or dependency with daily activities, promoting their well-being and social integration.
+
+  - id: socio_cultural_animator
+    l10n:
+      - locale: fr_FR
+        name: Animateur(trice) socio-culturel(le)
+        description: |
+          L'animateur socio-culturel organise des activités de loisir et d'animation qui favorisent le lien social et l'épanouissement individuel.
+      - locale: en_US
+        name: Socio-cultural Animator
+        description: |
+          The socio-cultural animator organizes leisure and entertainment activities that promote social bonding and individual fulfillment.
+
+  - id: special_education_teacher
+    l10n:
+      - locale: fr_FR
+        name: Enseignant(e) Spécialisée
+        description: |
+          L'enseignant en éducation spécialisée travaille spécifiquement avec des enfants présentant un large éventail de handicaps, en adaptant les méthodes d'enseignement et le contenu pédagogique pour répondre à leurs besoins uniques.
+      - locale: en_US
+        name: Special Education Teacher
+        description: |
+          The Special Education Teacher specifically works with children who have a wide range of disabilities, adapting teaching methods and educational content to meet their unique needs.
+
+  - id: special_educator
+    l10n:
+      - locale: fr_FR
+        name: Éducateur(trice) spécialisé(e)
+        description: |
+          L'éducateur spécialisé intervient auprès de personnes en difficulté, handicapées ou en situation de risque d'exclusion, pour favoriser leur intégration sociale.
+      - locale: en_US
+        name: Specialized Educator
+        description: |
+          Specialized educators work with individuals facing difficulties, disabilities, or risk of exclusion, to promote their social integration.
+
+  - id: speech_language_therapist
+    l10n:
+      - locale: fr_FR
+        name: Orthophoniste
+        description: |
+          L'orthophoniste traite les troubles de la parole et du langage, élaborant des programmes de rééducation personnalisés.
+      - locale: en_US
+        name: Speech-Language Therapist
+        description: |
+          The speech therapist treats speech and language disorders, developing personalized rehabilitation programs.
+
+  - id: sports_trainer
+    l10n:
+      - locale: fr_FR
+        name: Educateur sportif
+        description: |
+          L'Educateur sportif conçoit et supervise des programmes d'entraînement pour améliorer la condition physique, souvent adaptés aux besoins spécifiques des personnes handicapées ou en rééducation.
+      - locale: en_US
+        name: Sports Trainer
+        description: |
+          The Sports Trainer designs and oversees training programs to improve physical fitness, often tailored to the specific needs of individuals with disabilities or in rehabilitation.
+
+  - id: teacher
+    l10n:
+      - locale: fr_FR
+        name: Enseignant(e)
+        description: |
+          L'enseignant transmet des connaissances et compétences selon les programmes éducatifs, adaptant souvent son approche pour les élèves à besoins spéciaux.
+      - locale: en_US
+        name: Teacher
+        description: |
+          A teacher imparts knowledge and skills according to educational programs, often adapting their approach for students with special needs.
+
+  - id: toy_librarian
+    l10n:
+      - locale: fr_FR
+        name: Ludothécaire
+        description: |
+          Le ludothécaire gère une ludothèque, proposant une variété de jeux et jouets, et favorise l'éveil et l'apprentissage des enfants par le jeu, tout en accompagnant les familles et éducateurs.
+      - locale: en_US
+        name: Toy Librarian
+        description: |
+          The toy librarian manages a toy library, offering a variety of games and toys, and promotes children's development and learning through play, while supporting families and educators.
+
+  - id: workshop_monitor
+    l10n:
+      - locale: fr_FR
+        name: Moniteur(trice) d'atelier
+        description: |
+          Ce professionnel organise et anime des ateliers à visée thérapeutique ou éducative pour des personnes en situation de handicap ou de réinsertion.
+      - locale: en_US
+        name: Workshop Monitor
+        description: |
+          This professional organizes and leads workshops with therapeutic or educational aims for individuals with disabilities or in reintegration.
