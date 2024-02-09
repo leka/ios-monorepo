@@ -45,7 +45,7 @@ list:
     name: Leka
     website: https://leka.io
     email: hello@leka.io
-    professions:
+    professions: []
     l10n:
       - locale: fr_FR
         description: |
