@@ -9,7 +9,7 @@ import ruamel.yaml
 import subprocess
 import sys
 
-JTD_SCHEMA = "Specs/jtd/professions.jtd.json"
+JTD_SCHEMA = "Specs/jtd/authors.jtd.json"
 
 # ? Check if a file was specified
 if len(sys.argv) > 1:
