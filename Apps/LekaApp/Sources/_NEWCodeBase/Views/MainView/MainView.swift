@@ -50,6 +50,10 @@ struct MainView: View {
                     CategoryLabel(category: .stories)
                 }
 
+                Section(String(l10n.MainView.Sidebar.sectionTracking.characters)) {
+                    CategoryLabel(category: .carereceivers)
+                }
+
                 VStack(alignment: .center, spacing: 20) {
                     if self.authManagerViewModel.userAuthenticationState == .loggedIn {
                         Button {
@@ -101,6 +105,12 @@ struct MainView: View {
                         Text("Stories")
                             .font(.largeTitle)
                             .bold()
+
+                    case .carereceivers:
+                        CarereceiverPicker()
+                            .navigationDestination(isPresented: .constant(self.rootOwnerViewModel.isCarereceiverSelected)) {
+                                CarereceiverView()
+                            }
 
                     case .none:
                         Text("Select a category")

@@ -16,6 +16,7 @@ extension l10n {
                 static let activities = LocalizedString("main_view.sidebar.category_label.activities", value: "Activities", comment: "The title of the category 'Activities'")
                 static let remotes = LocalizedString("main_view.sidebar.category_label.remotes", value: "Remotes", comment: "The title of the category 'Remotes'")
                 static let stories = LocalizedString("main_view.sidebar.category_label.stories", value: "Stories", comment: "The title of the category 'Stories'")
+                static let carereceivers = LocalizedString("main_view.sidebar.category_label.carereceivers", value: "Care Receivers", comment: "The title of the category 'Care Receivers'")
             }
 
             static let navigationTitle = LocalizedString("main_view.sidebar.navigation_title", value: "Leka App", comment: "The title of the sidebar")
@@ -23,6 +24,8 @@ extension l10n {
             static let sectionInformation = LocalizedString("main_view.sidebar.section.information", value: "Information", comment: "The title of the section 'Information'")
 
             static let sectionContent = LocalizedString("main_view.sidebar.section.content", value: "Content", comment: "The title of the section 'Content'")
+
+            static let sectionTracking = LocalizedString("main_view.sidebar.section.tracking", value: "Tracking", comment: "The title of the section 'Tracking'")
         }
     }
 }

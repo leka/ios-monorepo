@@ -12,6 +12,7 @@ extension Navigation {
         case activities
         case remotes
         case stories
+        case carereceivers
 
         // MARK: Internal
 
