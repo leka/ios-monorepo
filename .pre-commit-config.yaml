@@ -37,28 +37,28 @@ repos:
 
   - repo: local
     hooks:
-      - id: check-xcstrings-stale_entries
+      - id: check_xcstrings_stale_entries
         name: Check .xcstrings files for stale entries
         description: This hook checks .xcstrings files for stale entries
-        entry: Tools/Hooks/check-xcstrings-stale_entries.sh
+        entry: Tools/Hooks/check_xcstrings_stale_entries.sh
         language: script
         files: '.*\.xcstrings'
 
-      - id: check-xcstrings-unusual_terminators
+      - id: check_xcstrings_unusual_terminators
         name: Check .xcstrings files for unusual terminators
         description: This hook checks .xcstrings files for unusual terminators
-        entry: Tools/Hooks/check-xcstrings-unusual_terminators.sh
+        entry: Tools/Hooks/check_xcstrings_unusual_terminators.sh
         language: script
         files: '.*\.xcstrings'
 
-      - id: check-yaml_data-professions
+      - id: check_yaml_data_professions
         name: Check professions.yml
         description: |
           This hook checks professions.yml for:
             - non unique ids
             - jtd schema validation
           It also formats the file and sorts the entries
-        entry: python3 Tools/Hooks/check-yaml_data-professions.py
+        entry: python3 Tools/Hooks/check_yaml_data_professions.py
         language: python
         additional_dependencies: ["ruamel.yaml"]
         files: professions.yml
