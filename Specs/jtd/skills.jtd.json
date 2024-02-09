@@ -1,6 +1,9 @@
 {
     "properties": {
-        "skills": {
+        "version": {
+            "type": "string"
+        },
+        "list": {
             "elements": {
                 "ref": "$skill"
             }
@@ -8,10 +11,7 @@
     },
     "definitions": {
         "$locale": {
-            "enum": [
-                "en_US",
-                "fr_FR"
-            ]
+            "enum": ["en_US", "fr_FR"]
         },
         "$l10n": {
             "properties": {

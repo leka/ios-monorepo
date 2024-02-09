@@ -78,3 +78,15 @@ repos:
         language: python
         additional_dependencies: ["ruamel.yaml"]
         files: authors.yml
+
+      - id: check_yaml_data_skills
+        name: Check skills.yml
+        description: |
+          This hook checks skills.yml for:
+            - non unique ids
+            - jtd schema validation
+          It also formats the file and sorts the entries
+        entry: python3 Tools/Hooks/check_yaml_data_skills.py
+        language: python
+        additional_dependencies: ["ruamel.yaml"]
+        files: skills.yml

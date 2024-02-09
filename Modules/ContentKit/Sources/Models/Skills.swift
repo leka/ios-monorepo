@@ -30,7 +30,7 @@ public class Skills {
     // MARK: Private
 
     private struct SkillsContainer: Codable {
-        let skills: [Skill]
+        let list: [Skill]
     }
 
     private static let shared: Skills = .init()
@@ -45,11 +45,11 @@ public class Skills {
                 return container
             } catch {
                 log.error("Failed to read YAML file: \(error)")
-                return SkillsContainer(skills: [])
+                return SkillsContainer(list: [])
             }
         } else {
             log.error("skills.yml not found")
-            return SkillsContainer(skills: [])
+            return SkillsContainer(list: [])
         }
     }
 
@@ -67,7 +67,7 @@ public class Skills {
             return allSubskills
         }
 
-        for skill in self.container.skills {
+        for skill in self.container.list {
             allSkills.append(skill)
             allSkills.append(contentsOf: getSubskills(for: skill))
         }
