@@ -41,6 +41,7 @@ struct CreateCaregiverView: View {
                 }
                 .padding()
                 .navigationTitle(String(l10n.CaregiverCreation.title.characters))
+                .navigationBarTitleDisplayMode(.inline)
             }
         }
     }
