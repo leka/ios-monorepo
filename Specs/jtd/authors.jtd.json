@@ -31,25 +31,22 @@
                 "id": {
                     "type": "string"
                 },
-                "visibility": {
-                    "ref": "$visibility"
+                "visible": {
+                    "type": "boolean"
                 },
                 "name": {
                     "type": "string"
                 },
                 "website": {
-                    "type": "string",
-                    "nullable": true
+                    "type": "string"
                 },
                 "email": {
-                    "type": "string",
-                    "nullable": true
+                    "type": "string"
                 },
                 "professions": {
                     "elements": {
                         "type": "string"
-                    },
-                    "nullable": true
+                    }
                 },
                 "l10n": {
                     "elements": {

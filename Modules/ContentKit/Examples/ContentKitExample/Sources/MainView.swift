@@ -59,7 +59,15 @@ struct MainView: View {
 
                 DisclosureGroup("**Authors**") {
                     ForEach(self.activity?.authors ?? [], id: \.self) { author in
-                        Text(author)
+                        let author = Authors.hmi(id: author)!
+                        HStack {
+                            Text(author.name)
+                            Button {
+                                self.selectedAuthor = author
+                            } label: {
+                                Image(systemName: "info.circle")
+                            }
+                        }
                     }
                 }
 
@@ -129,6 +137,13 @@ struct MainView: View {
                 Text(hmi.description)
             }
         })
+        .sheet(item: self.$selectedAuthor, onDismiss: { self.selectedAuthor = nil }, content: { author in
+            VStack(alignment: .leading) {
+                Text(author.name)
+                    .font(.headline)
+                Text(author.description)
+            }
+        })
         .onAppear {
             self.activity = ContentKit.decodeActivity("activity")
             print(self.activity ?? "not working")
@@ -148,6 +163,14 @@ struct MainView: View {
                 print("name: \(hmi.name)")
                 print("description: \(hmi.description)")
             }
+
+            let authors = Authors.list
+            for (index, author) in authors.enumerated() {
+                print("author \(index + 1)")
+                print("id: \(author.id)")
+                print("name: \(author.name)")
+                print("description: \(author.description)")
+            }
         }
     }
 
@@ -155,6 +178,7 @@ struct MainView: View {
 
     @State private var selectedSkill: Skill?
     @State private var selectedHMI: HMIDetails?
+    @State private var selectedAuthor: Author?
 
     @State private var activity: Activity?
 }
