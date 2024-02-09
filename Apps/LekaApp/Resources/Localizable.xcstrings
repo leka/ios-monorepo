@@ -1262,6 +1262,24 @@
                 }
             }
         },
+        "settings_view.account_section.log_out.error.alert_title": {
+            "comment": "Log out error alert title",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "An error occurred"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Une erreur s'est produite"
+                    }
+                }
+            }
+        },
         "settings_view.close_button_label": {
             "comment": "Close button label of Settings View",
             "extractionState": "extracted_with_value",

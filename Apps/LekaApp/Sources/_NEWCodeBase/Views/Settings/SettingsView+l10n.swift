@@ -38,6 +38,8 @@ extension l10n {
                 static let alertMessage = LocalizedString("settings_view.account_section.log_out.alert_message", value: "You are about to log out.", comment: "Log out alert message")
 
                 static let alertButtonLabel = LocalizedString("settings_view.account_section.log_out.alert_buton_label", value: "Log out", comment: "Log out alert button label")
+
+                static let errorAlertTitle = LocalizedString("settings_view.account_section.log_out.error.alert_title", value: "An error occurred", comment: "Log out error alert title")
             }
 
             enum DeleteAccount {

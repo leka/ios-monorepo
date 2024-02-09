@@ -41,7 +41,7 @@ extension SettingsView {
             } message: {
                 Text(l10n.SettingsView.AccountSection.LogOut.alertMessage)
             }
-            .alert(String("An error occurred"), isPresented: self.$authManagerViewModel.showErrorAlert) {
+            .alert(String(l10n.SettingsView.AccountSection.LogOut.errorAlertTitle.characters), isPresented: self.$authManagerViewModel.showErrorAlert) {
                 // Nothing to do
             } message: {
                 Text(self.authManagerViewModel.errorMessage)
