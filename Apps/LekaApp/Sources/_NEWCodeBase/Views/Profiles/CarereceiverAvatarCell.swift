@@ -8,7 +8,8 @@ import SwiftUI
 struct CarereceiverAvatarCell: View {
     // MARK: Internal
 
-    private let backgroundColor: Color = .init(light: UIColor.white, dark: UIColor.systemGray5)
+    private let strokeColor: Color = .init(light: UIColor.systemGray3, dark: UIColor.systemGray2)
+
     @ObservedObject private var rootOwnerViewModel: RootOwnerViewModel = .shared
 
     let carereceiver: Carereceiver
@@ -21,20 +22,20 @@ struct CarereceiverAvatarCell: View {
                     .aspectRatio(contentMode: .fit)
                     .clipShape(Circle())
 
-                ZStack {
-                    Circle()
-                        .fill(DesignKitAsset.Colors.lekaLightGray.swiftUIColor)
-
-                    Image(uiImage: self.rootOwnerViewModel.getReinforcerFor(index: self.carereceiver.reinforcer))
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .padding(5)
-
-                    Circle()
-                        .stroke(self.backgroundColor, lineWidth: 3)
-                }
-                .frame(maxWidth: 60)
-                .offset(x: -45, y: -45)
+                Circle()
+                    .strokeBorder(self.strokeColor, lineWidth: 2)
+                    .background {
+                        Circle()
+                            .fill(Color(uiColor: UIColor.systemGray6))
+                    }
+                    .overlay {
+                        Image(uiImage: self.rootOwnerViewModel.getReinforcerFor(index: self.carereceiver.reinforcer))
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .padding(5)
+                    }
+                    .frame(maxWidth: 60)
+                    .offset(x: 50, y: -45)
             }
             .frame(maxWidth: 120)
 
