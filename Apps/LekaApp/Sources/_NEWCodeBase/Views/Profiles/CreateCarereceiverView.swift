@@ -23,7 +23,6 @@ struct CreateCarereceiverView: View {
 
                     TextFieldDefault(label: String(l10n.CarereceiverCreation.carereceiverNameLabel.characters),
                                      entry: self.$newCarereceiver.name)
-                        .frame(width: 400)
 
                     Button(String(l10n.CarereceiverCreation.registerProfilButton.characters)) {
                         withAnimation {
@@ -32,12 +31,15 @@ struct CreateCarereceiverView: View {
                         }
                         // TODO: (@team) : add the carereceiver profile to the account
                         // TODO: (@team) : assign the carereceiver profile as the current selected one
+                        self.rootOwnerViewModel.mockCarereceiversSet.append(self.newCarereceiver)
                     }
                     .disabled(self.newCarereceiver.name.isEmpty)
                     .buttonStyle(.borderedProminent)
                 }
+                .frame(width: 400)
                 .padding()
                 .navigationTitle(String(l10n.CarereceiverCreation.title.characters))
+                .navigationBarTitleDisplayMode(.inline)
             }
         }
     }

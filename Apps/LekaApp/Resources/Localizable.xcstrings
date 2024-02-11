@@ -92,6 +92,60 @@
                 }
             }
         },
+        "carereceiver_settings_view.close_button_label": {
+            "comment": "Close button label of Carereceiver Settings View",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Close"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Fermer"
+                    }
+                }
+            }
+        },
+        "carereceiver_settings_view.navigation_title": {
+            "comment": "The navigation title of Carereceiver Settings View",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Profil of "
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Profil de "
+                    }
+                }
+            }
+        },
+        "carereceiver_settings_view.save_button_label": {
+            "comment": "Save button label of Carereceiver Settings View",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Save"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Enregistrer"
+                    }
+                }
+            }
+        },
         "lekaapp.TextFieldEmail.invalidEmailErrorLabel": {
             "comment": "TextFieldEmail invalid Email Error Label",
             "extractionState": "extracted_with_value",
@@ -686,6 +740,42 @@
                 }
             }
         },
+        "lekaapp.carereceiver_picker.addButtonLabel": {
+            "comment": "Carereceiver picker add button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Add profile"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Ajouter un profil"
+                    }
+                }
+            }
+        },
+        "lekaapp.carereceiver_picker.title": {
+            "comment": "Carereceiver picker title",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Care receivers list"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Liste des personnes accompagn\u00e9es"
+                    }
+                }
+            }
+        },
         "lekaapp.connection_view.connection_button": {
             "comment": "ConnectionView connection button",
             "extractionState": "extracted_with_value",
@@ -790,6 +880,42 @@
                     "stringUnit": {
                         "state": "translated",
                         "value": "Valider la s\u00e9lection"
+                    }
+                }
+            }
+        },
+        "lekaapp.reinforcer_picker.avatar_choice_button": {
+            "comment": " Reinforcer picker description",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Reinforcer is a repetitive light effect from the robot that you can activate to reward the user's behavior.\nIf your robot is connected, you can test the reinforcers before choosing one."
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Le renfor\u00e7ateur est un effet lumineux r\u00e9p\u00e9titif du robot que vous pourrez actionner pour r\u00e9compenser le comportement de l'utilisateur. \u2028Si votre robot est connect\u00e9, vous pouvez tester les renfor\u00e7ateurs avant d'en choisir un."
+                    }
+                }
+            }
+        },
+        "lekaapp.reinforcer_picker.header": {
+            "comment": "Reinforcer picker header",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Reinforcer choice"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Choix du renfor\u00e7ateur"
                     }
                 }
             }
@@ -992,6 +1118,24 @@
                 }
             }
         },
+        "main_view.sidebar.category_label.carereceivers": {
+            "comment": "The title of the category 'Care Receivers'",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Care Receivers"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Personnes accompagn\u00e9es"
+                    }
+                }
+            }
+        },
         "main_view.sidebar.category_label.curriculums": {
             "comment": "The title of the category 'Curriculums'",
             "extractionState": "extracted_with_value",
@@ -1132,6 +1276,24 @@
                     "stringUnit": {
                         "state": "translated",
                         "value": "Informations"
+                    }
+                }
+            }
+        },
+        "main_view.sidebar.section.tracking": {
+            "comment": "The title of the section 'Tracking'",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Tracking"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Suivi"
                     }
                 }
             }

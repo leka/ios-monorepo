@@ -36,6 +36,10 @@ extension MainView {
                 case .stories:
                     self.title = String(l10n.MainView.Sidebar.CategoryLabel.stories.characters)
                     self.systemImage = "book"
+
+                case .carereceivers:
+                    self.title = String(l10n.MainView.Sidebar.CategoryLabel.carereceivers.characters)
+                    self.systemImage = "person.circle"
             }
         }
 

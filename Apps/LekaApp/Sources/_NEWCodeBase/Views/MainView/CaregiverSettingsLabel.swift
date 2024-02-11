@@ -18,7 +18,8 @@ struct CaregiverSettingsLabel: View {
                 Button {
                     self.rootOwnerViewModel.isCaregiverSettingsViewPresented = true
                 } label: {
-                    CaregiverProfileLabel(caregiver: caregiver)
+                    CaregiverAvatarCell(caregiver: caregiver)
+                        .frame(maxWidth: 80)
                 }
 
                 Button {
@@ -42,33 +43,6 @@ struct CaregiverSettingsLabel: View {
 
     @ObservedObject private var styleManager: StyleManager = .shared
     @ObservedObject private var rootOwnerViewModel: RootOwnerViewModel = .shared
-}
-
-// MARK: - CaregiverProfileLabel
-
-struct CaregiverProfileLabel: View {
-    // MARK: Internal
-
-    let caregiver: Caregiver
-
-    var body: some View {
-        VStack {
-            Image(self.caregiver.avatar, bundle: Bundle(for: DesignKitResources.self))
-                .resizable()
-                .scaledToFit()
-                .frame(width: 80)
-                .clipShape(Circle())
-
-            Text(self.caregiver.name)
-                .foregroundStyle(self.styleManager.accentColor!)
-                .font(.headline)
-                .multilineTextAlignment(.center)
-        }
-    }
-
-    // MARK: Private
-
-    @ObservedObject private var styleManager: StyleManager = .shared
 }
 
 // MARK: - UnselectedProfileLabel

@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AccountKit
 import DesignKit
 import LocalizationKit
 import SwiftUI
@@ -17,7 +18,17 @@ struct CaregiverPicker: View {
                 ScrollView(showsIndicators: false) {
                     LazyVGrid(columns: self.columns, spacing: 40) {
                         ForEach(self.rootOwnerViewModel.mockCaregiversSet) { caregiver in
-                            CaregiverAvatarCell(caregiver: caregiver)
+                            Button {
+                                // TODO: (@team) - Add caregiver selection logic w/ Firebase
+                                self.rootOwnerViewModel.currentCaregiver = caregiver
+                                self.styleManager.colorScheme = caregiver.preferredColorScheme
+                                self.styleManager.accentColor = caregiver.preferredAccentColor
+                                self.authManagerViewModel.isUserLoggedOut = false
+                                self.rootOwnerViewModel.isCaregiverPickerViewPresented = false
+                            } label: {
+                                CaregiverAvatarCell(caregiver: caregiver)
+                                    .frame(maxWidth: 140)
+                            }
                         }
 
                         // ? Last item is Add profile button
@@ -39,6 +50,8 @@ struct CaregiverPicker: View {
     private let columns = Array(repeating: GridItem(), count: 4)
 
     @ObservedObject private var rootOwnerViewModel: RootOwnerViewModel = .shared
+    @ObservedObject private var authManagerViewModel: AuthManagerViewModel = .shared
+    @ObservedObject private var styleManager: StyleManager = .shared
 
     @State private var selected: String = ""
     @State private var isCaregiverCreationPresented: Bool = false

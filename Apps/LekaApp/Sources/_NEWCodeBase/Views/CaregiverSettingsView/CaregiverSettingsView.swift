@@ -16,17 +16,29 @@ struct CaregiverSettingsView: View {
     var body: some View {
         NavigationStack {
             VStack(spacing: 40) {
-                self.avatarNavigationLink
+                Form {
+                    Section {
+                        self.avatarPickerButton
+                            .listRowBackground(Color.clear)
+                    }
 
-                TextFieldDefault(label: String(l10n.CaregiverCreation.caregiverNameLabel.characters),
-                                 entry: self.$modifiedCaregiver.name)
+                    Section {
+                        LabeledContent(String(l10n.CaregiverCreation.caregiverNameLabel.characters)) {
+                            TextField("Nom", text: self.$modifiedCaregiver.name)
+                                .multilineTextAlignment(.trailing)
+                        }
+                    }
 
-                self.professionNavigationLink
+                    Section {
+                        self.professionNavigationLink
+                    }
 
-                AppearanceRow(caregiver: self.$modifiedCaregiver)
-                AccentColorRow(caregiver: self.$modifiedCaregiver)
+                    Section {
+                        AppearanceRow(caregiver: self.$modifiedCaregiver)
+                        AccentColorRow(caregiver: self.$modifiedCaregiver)
+                    }
+                }
             }
-            .frame(maxWidth: 500)
             .navigationTitle(String(l10n.CaregiverSettingsView.navigationTitle.characters) + self.modifiedCaregiver.name)
             .navigationBarTitleDisplayMode(.inline)
             .interactiveDismissDisabled()
@@ -52,32 +64,31 @@ struct CaregiverSettingsView: View {
 
     @ObservedObject private var rootOwnerViewModel: RootOwnerViewModel = .shared
     @ObservedObject private var styleManager: StyleManager = .shared
+    @State private var isAvatarPickerPresented: Bool = false
 
-    private var avatarNavigationLink: some View {
-        NavigationLink {
-            AvatarPicker(avatar: self.$modifiedCaregiver.avatar)
+    private var avatarPickerButton: some View {
+        Button {
+            self.isAvatarPickerPresented = true
         } label: {
-            VStack(spacing: 15) {
+            VStack(alignment: .center, spacing: 15) {
                 AvatarPicker.ButtonLabel(image: self.modifiedCaregiver.avatar)
                 Text(l10n.CaregiverCreation.avatarChoiceButton)
                     .font(.headline)
             }
         }
+        .navigationDestination(isPresented: self.$isAvatarPickerPresented) {
+            AvatarPicker(avatar: self.$modifiedCaregiver.avatar)
+        }
+        .frame(maxWidth: .infinity, alignment: .center)
     }
 
     private var professionNavigationLink: some View {
         VStack(alignment: .leading) {
-            HStack {
+            NavigationLink {
+                ProfessionPicker(caregiver: self.$modifiedCaregiver)
+            } label: {
                 Text(l10n.CaregiverCreation.professionLabel)
                     .font(.body)
-
-                Spacer()
-
-                NavigationLink {
-                    ProfessionPicker(caregiver: self.$modifiedCaregiver)
-                } label: {
-                    Label(String(l10n.CaregiverCreation.professionAddButton.characters), systemImage: "plus")
-                }
             }
 
             if !self.modifiedCaregiver.professions.isEmpty {
