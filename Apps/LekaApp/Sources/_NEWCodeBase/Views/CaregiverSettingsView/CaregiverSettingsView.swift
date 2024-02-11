@@ -17,8 +17,10 @@ struct CaregiverSettingsView: View {
         NavigationStack {
             VStack(spacing: 40) {
                 Form {
-                    self.avatarPickerButton
-                        .listRowBackground(Color.clear)
+                    Section {
+                        self.avatarPickerButton
+                            .listRowBackground(Color.clear)
+                    }
 
                     Section {
                         LabeledContent(String(l10n.CaregiverCreation.caregiverNameLabel.characters)) {
@@ -37,7 +39,6 @@ struct CaregiverSettingsView: View {
                     }
                 }
             }
-
             .navigationTitle(String(l10n.CaregiverSettingsView.navigationTitle.characters) + self.modifiedCaregiver.name)
             .navigationBarTitleDisplayMode(.inline)
             .interactiveDismissDisabled()
