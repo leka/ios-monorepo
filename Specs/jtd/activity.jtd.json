@@ -57,11 +57,7 @@
     },
     "definitions": {
         "$author": {
-            "enum": [
-                "leka_at_apf_france_handicap",
-                "aurore_kiesler",
-                "julie_tuil"
-            ]
+            "enum": ["leka", "aurore_kiesler", "julie_tuil"]
         },
         "$hmi": {
             "enum": ["robot", "tablet", "magic_cards", "tablet_robot"]
@@ -160,8 +156,6 @@
         "$exercise/gameplay": {
             "enum": ["findTheRightAnswers", "associateCategories"]
         },
-        "$exercise/payload": {
-            "type": "string"
-        }
+        "$exercise/payload": {}
     }
 }
