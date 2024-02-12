@@ -37,6 +37,29 @@ public class DatabaseOperations {
         .eraseToAnyPublisher()
     }
 
+    public func read<T: AccountDocument>(from collection: DatabaseCollection, documentID: String) -> AnyPublisher<T, Error> {
+        Future<T, Error> { promise in
+            let docRef = self.database.collection(collection.rawValue).document(documentID)
+            docRef.getDocument { document, error in
+                if let error {
+                    promise(.failure(error))
+                } else {
+                    do {
+                        let object = try document?.data(as: T.self)
+                        if let object {
+                            promise(.success(object))
+                        } else {
+                            promise(.failure(DatabaseError.documentNotFound))
+                        }
+                    } catch {
+                        promise(.failure(error))
+                    }
+                }
+            }
+        }
+        .eraseToAnyPublisher()
+    }
+
     // MARK: Private
 
     private let database = Firestore.firestore()
