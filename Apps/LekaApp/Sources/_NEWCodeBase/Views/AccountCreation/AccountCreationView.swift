@@ -51,10 +51,6 @@ struct AccountCreationView: View {
         .onChange(of: self.authManagerViewModel.userAuthenticationState) { newValue in
             if newValue == .loggedIn {
                 self.authManagerViewModel.userIsSigningUp = true
-                self.rootOwnerViewModel.currentCompany = Company(
-                    email: self.viewModel.email,
-                    password: self.viewModel.password
-                )
                 self.viewModel.navigateToAccountCreationProcess.toggle()
             } else {
                 // display signup failed alert
@@ -65,7 +61,6 @@ struct AccountCreationView: View {
     // MARK: Private
 
     @StateObject private var viewModel = AccountCreationViewViewModel()
-    @ObservedObject private var rootOwnerViewModel = RootOwnerViewModel.shared
     @ObservedObject private var authManagerViewModel = AuthManagerViewModel.shared
     private var authManager = AuthManager.shared
 

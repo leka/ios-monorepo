@@ -62,10 +62,6 @@ struct ConnectionView: View {
         }
         .onChange(of: self.authManagerViewModel.userAuthenticationState) { newValue in
             if newValue == .loggedIn {
-                self.rootOwnerViewModel.currentCompany = Company(
-                    email: self.viewModel.email,
-                    password: self.viewModel.password
-                )
                 self.viewModel.navigateToCaregiverSelection.toggle()
             }
         }
