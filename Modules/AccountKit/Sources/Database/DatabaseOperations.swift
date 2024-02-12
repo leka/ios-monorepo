@@ -13,7 +13,29 @@ public class DatabaseOperations {
         // Just to expose the init publicly
     }
 
-    // CRUD methods here
+    // MARK: Public
+
+    public func create<T: AccountDocument>(data: T, in collection: DatabaseCollection) -> AnyPublisher<T, Error> {
+        Future<T, Error> { promise in
+            let docRef = self.database.collection(collection.rawValue).document()
+
+            var documentData = data
+            documentData.rootOwnerUid = Auth.auth().currentUser?.uid ?? ""
+
+            do {
+                try docRef.setData(from: documentData) { error in
+                    if let error {
+                        promise(.failure(DatabaseError.customError(error.localizedDescription)))
+                    } else {
+                        promise(.success(documentData))
+                    }
+                }
+            } catch {
+                promise(.failure(error))
+            }
+        }
+        .eraseToAnyPublisher()
+    }
 
     // MARK: Private
 
