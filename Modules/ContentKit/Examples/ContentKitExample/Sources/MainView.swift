@@ -70,6 +70,13 @@ struct MainView: View {
                         }
                     }
                 }
+                .sheet(item: self.$selectedAuthor, onDismiss: { self.selectedAuthor = nil }, content: { author in
+                    VStack(alignment: .leading) {
+                        Text(author.name)
+                            .font(.headline)
+                        Text(author.description)
+                    }
+                })
 
                 DisclosureGroup("**Available languages**") {
                     ForEach(self.activity?.languages ?? [], id: \.self) { lang in
@@ -90,6 +97,13 @@ struct MainView: View {
                         }
                     }
                 }
+                .sheet(item: self.$selectedSkill, onDismiss: { self.selectedSkill = nil }, content: { skill in
+                    VStack(alignment: .leading) {
+                        Text(skill.name)
+                            .font(.headline)
+                        Text(skill.description)
+                    }
+                })
 
                 DisclosureGroup("**HMI**") {
                     ForEach(self.activity?.hmi ?? [], id: \.self) { hmi in
@@ -104,6 +118,13 @@ struct MainView: View {
                         }
                     }
                 }
+                .sheet(item: self.$selectedHMI, onDismiss: { self.selectedHMI = nil }, content: { hmi in
+                    VStack(alignment: .leading) {
+                        Text(hmi.name)
+                            .font(.headline)
+                        Text(hmi.description)
+                    }
+                })
 
                 DisclosureGroup("**Tags**") {
                     ForEach(self.activity?.tags ?? [], id: \.self) { skill in
@@ -123,27 +144,6 @@ struct MainView: View {
                     .markdownTheme(.leka)
             }
         }
-        .sheet(item: self.$selectedSkill, onDismiss: { self.selectedSkill = nil }, content: { skill in
-            VStack(alignment: .leading) {
-                Text(skill.name)
-                    .font(.headline)
-                Text(skill.description)
-            }
-        })
-        .sheet(item: self.$selectedHMI, onDismiss: { self.selectedHMI = nil }, content: { hmi in
-            VStack(alignment: .leading) {
-                Text(hmi.name)
-                    .font(.headline)
-                Text(hmi.description)
-            }
-        })
-        .sheet(item: self.$selectedAuthor, onDismiss: { self.selectedAuthor = nil }, content: { author in
-            VStack(alignment: .leading) {
-                Text(author.name)
-                    .font(.headline)
-                Text(author.description)
-            }
-        })
         .onAppear {
             self.activity = ContentKit.decodeActivity("activity")
             print(self.activity ?? "not working")
