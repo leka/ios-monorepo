@@ -6,14 +6,6 @@ import AccountKit
 import DesignKit
 import SwiftUI
 
-// MARK: - Company
-
-struct Company: Identifiable {
-    var id = UUID().uuidString
-    var email: String
-    var password: String
-}
-
 // MARK: - Profile
 
 // Profiles types base-protocol
