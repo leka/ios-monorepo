@@ -16,28 +16,27 @@ struct CarereceiverAvatarCell: View {
 
     var body: some View {
         VStack(spacing: 10) {
-            ZStack {
-                Image(self.carereceiver.avatar, bundle: Bundle(for: DesignKitResources.self))
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .clipShape(Circle())
-
-                Circle()
-                    .strokeBorder(self.strokeColor, lineWidth: 2)
-                    .background {
-                        Circle()
-                            .fill(Color(uiColor: UIColor.systemGray6))
-                    }
-                    .overlay {
-                        Image(uiImage: self.rootOwnerViewModel.getReinforcerFor(index: self.carereceiver.reinforcer))
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .padding(5)
-                    }
-                    .frame(maxWidth: 60)
-                    .offset(x: 50, y: -45)
-            }
-            .frame(maxWidth: 120)
+            Image(self.carereceiver.avatar, bundle: Bundle(for: DesignKitResources.self))
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .clipShape(Circle())
+                .overlay {
+                    Circle()
+                        .strokeBorder(self.strokeColor, lineWidth: 2)
+                        .background {
+                            Circle()
+                                .fill(Color(uiColor: UIColor.systemGray6))
+                        }
+                        .overlay {
+                            Image(uiImage: self.rootOwnerViewModel.getReinforcerFor(index: self.carereceiver.reinforcer))
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .padding(5)
+                        }
+                        .frame(maxWidth: 60)
+                        .offset(x: 60, y: 40)
+                }
+                .frame(maxWidth: 120)
 
             Text(self.carereceiver.name)
                 .font(.headline)
@@ -46,5 +45,5 @@ struct CarereceiverAvatarCell: View {
 }
 
 #Preview {
-    CarereceiverAvatarCell(carereceiver: Carereceiver(name: "Chantal", avatar: DesignKitAsset.Avatars.avatarsBoy4f.name, reinforcer: 2))
+    CarereceiverAvatarCell(carereceiver: Carereceiver(name: "Chantal", avatar: DesignKitAsset.Avatars.avatarsPictogramsAnimalsSavannaKangarooBrown0078.name, reinforcer: 2))
 }
