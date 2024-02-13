@@ -60,6 +60,23 @@ public class DatabaseOperations {
         .eraseToAnyPublisher()
     }
 
+    public func readAll<T: AccountDocument>(from collection: DatabaseCollection) -> AnyPublisher<[T], Error> {
+        Future<[T], Error> { promise in
+            self.database.collection(collection.rawValue)
+                .getDocuments { querySnapshot, error in
+                    if let error {
+                        promise(.failure(error))
+                    } else {
+                        let objects = querySnapshot?.documents.compactMap { document -> T? in
+                            try? document.data(as: T.self)
+                        } ?? []
+                        promise(.success(objects))
+                    }
+                }
+        }
+        .eraseToAnyPublisher()
+    }
+
     // MARK: Private
 
     private let database = Firestore.firestore()
