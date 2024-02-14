@@ -12,16 +12,6 @@ extension AccountCreationProcess {
 
         var body: some View {
             VStack(spacing: 30) {
-                Image(
-                    DesignKitAsset.Images.welcome.name,
-                    bundle: Bundle(for: DesignKitResources.self)
-                )
-                .resizable()
-                .renderingMode(.original)
-                .aspectRatio(contentMode: .fit)
-                .frame(height: 80)
-                .padding()
-
                 Text(l10n.AccountCreationProcess.Step1.title)
                     .font(.headline)
                     .foregroundColor(.orange)

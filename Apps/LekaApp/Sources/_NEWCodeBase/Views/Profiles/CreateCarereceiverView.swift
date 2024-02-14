@@ -36,6 +36,9 @@ struct CreateCarereceiverView: View {
                             self.isPresented.toggle()
                             self.onDismissAction()
                         }
+                        if self.newCarereceiver.avatar.isEmpty {
+                            self.newCarereceiver.avatar = AvatarSets.sunglasses.content.images.randomElement()!
+                        }
                         // TODO: (@team) : add the carereceiver profile to the account
                         // TODO: (@team) : assign the carereceiver profile as the current selected one
                         self.rootOwnerViewModel.mockCarereceiversSet.append(self.newCarereceiver)
@@ -83,7 +86,7 @@ extension l10n {
 
         static let avatarChoiceButton = LocalizedString("lekaapp.carereceiver_creation.avatar_choice_button", value: "Choose an avatar", comment: " Carereceiver creation avatar choice button label")
 
-        static let carereceiverNameLabel = LocalizedString("lekaapp.carereceiver_creation.carereceiver_name_label", value: "Name", comment: " Carereceiver creation carereceiver name textfield label")
+        static let carereceiverNameLabel = LocalizedString("lekaapp.carereceiver_creation.carereceiver_name_label", value: "Username", comment: " Carereceiver creation carereceiver name textfield label")
 
         static let registerProfilButton = LocalizedString("lekaapp.carereceiver_creation.register_profil_button", value: "Register profile", comment: " Carereceiver creation register profil button label")
     }

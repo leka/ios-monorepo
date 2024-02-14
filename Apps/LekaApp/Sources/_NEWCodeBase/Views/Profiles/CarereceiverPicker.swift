@@ -60,7 +60,7 @@ struct CarereceiverPicker: View {
 extension l10n {
     enum CarereceiverPicker {
         static let title = LocalizedString("lekaapp.carereceiver_picker.title",
-                                           value: "Care receivers list",
+                                           value: "Care receivers",
                                            comment: "Carereceiver picker title")
 
         static let addButtonLabel = LocalizedString("lekaapp.carereceiver_picker.addButtonLabel",

@@ -16,7 +16,7 @@ extension l10n {
             static let title = LocalizedString("edit_caregiver_view.appearance_section.accent_color_row.title", value: "Color Theme", comment: "AccentColor Row title")
         }
 
-        static let navigationTitle = LocalizedString("edit_caregiver_view.navigation_title", value: "Profil of ", comment: "The navigation title of Edit Caregiver View")
+        static let navigationTitle = LocalizedString("edit_caregiver_view.navigation_title", value: "Edit my profile", comment: "The navigation title of Edit Caregiver View")
 
         static let saveButtonLabel = LocalizedString("edit_caregiver_view.save_button_label", value: "Save", comment: "Save button label of Edit Caregiver View")
 

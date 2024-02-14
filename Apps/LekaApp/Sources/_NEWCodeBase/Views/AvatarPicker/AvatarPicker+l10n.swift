@@ -8,7 +8,7 @@ import LocalizationKit
 
 extension l10n {
     enum AvatarPicker {
-        static let title = LocalizedString("lekaapp.avatar_picker.title", value: "What's your avatar ?", comment: "Avatar picker title")
+        static let title = LocalizedString("lekaapp.avatar_picker.title", value: "Avatar choice", comment: "Avatar picker title")
 
         static let validateButton = LocalizedString("lekaapp.avatar_picker.validate_button", value: "Validate selection", comment: "Avatar picker validate button")
     }

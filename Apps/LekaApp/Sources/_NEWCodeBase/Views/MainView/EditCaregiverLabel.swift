@@ -22,6 +22,8 @@ struct EditCaregiverLabel: View {
                         .frame(maxWidth: 80)
                 }
 
+                Divider()
+
                 Button {
                     self.rootOwnerViewModel.isCaregiverPickerViewPresented = true
                 } label: {

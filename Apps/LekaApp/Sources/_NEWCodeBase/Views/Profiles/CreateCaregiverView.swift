@@ -40,6 +40,9 @@ struct CreateCaregiverView: View {
                             self.isPresented.toggle()
                             self.onDismissAction()
                         }
+                        if self.newCaregiver.avatar.isEmpty {
+                            self.newCaregiver.avatar = AvatarSets.weather.content.images.randomElement()!
+                        }
                         // TODO: (@team) : add the caregiver profile to the account
                         // TODO: (@team) : assign the caregiver profile as the current selected one
                         self.rootOwnerViewModel.mockCaregiversSet.append(self.newCaregiver)
