@@ -1028,6 +1028,24 @@
                 }
             }
         },
+        "lekapp.carereceiver_view.available_soon_label": {
+            "comment": "Temporary content of Carereceiver view tracking",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "\ud83d\udea7 Tracking soon available..."
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "\ud83d\udea7 Suivi bient\u00f4t disponible ..."
+                    }
+                }
+            }
+        },
         "lekapp.not_account_connected_label.button_label": {
             "comment": "Button label to log in or sign up",
             "extractionState": "extracted_with_value",
