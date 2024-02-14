@@ -6,9 +6,9 @@ import DesignKit
 import LocalizationKit
 import SwiftUI
 
-// MARK: - CaregiverSettingsView
+// MARK: - EditCaregiverView
 
-struct CaregiverSettingsView: View {
+struct EditCaregiverView: View {
     // MARK: Internal
 
     @State var modifiedCaregiver: Caregiver
@@ -24,7 +24,7 @@ struct CaregiverSettingsView: View {
 
                     Section {
                         LabeledContent(String(l10n.CaregiverCreation.caregiverNameLabel.characters)) {
-                            TextField("Nom", text: self.$modifiedCaregiver.name)
+                            TextField("", text: self.$modifiedCaregiver.name)
                                 .multilineTextAlignment(.trailing)
                         }
                     }
@@ -39,19 +39,19 @@ struct CaregiverSettingsView: View {
                     }
                 }
             }
-            .navigationTitle(String(l10n.CaregiverSettingsView.navigationTitle.characters) + self.modifiedCaregiver.name)
+            .navigationTitle(String(l10n.EditCaregiverView.navigationTitle.characters) + self.modifiedCaregiver.name)
             .navigationBarTitleDisplayMode(.inline)
             .interactiveDismissDisabled()
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
-                    Button(String(l10n.CaregiverSettingsView.closeButtonLabel.characters)) {
-                        self.rootOwnerViewModel.isCaregiverSettingsViewPresented = false
+                    Button(String(l10n.EditCaregiverView.closeButtonLabel.characters)) {
+                        self.rootOwnerViewModel.isEditCaregiverViewPresented = false
                     }
                 }
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button(String(l10n.CaregiverSettingsView.saveButtonLabel.characters)) {
+                    Button(String(l10n.EditCaregiverView.saveButtonLabel.characters)) {
                         // TODO: (@mathieu) - Add Firestore logic
-                        self.rootOwnerViewModel.isCaregiverSettingsViewPresented = false
+                        self.rootOwnerViewModel.isEditCaregiverViewPresented = false
                         self.rootOwnerViewModel.currentCaregiver = self.modifiedCaregiver
                     }
                 }
@@ -101,5 +101,5 @@ struct CaregiverSettingsView: View {
 }
 
 #Preview {
-    CaregiverSettingsView(modifiedCaregiver: Caregiver())
+    EditCaregiverView(modifiedCaregiver: Caregiver())
 }

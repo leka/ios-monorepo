@@ -6,9 +6,9 @@ import DesignKit
 import LocalizationKit
 import SwiftUI
 
-// MARK: - CarereceiverSettingsView
+// MARK: - EditCarereceiverView
 
-struct CarereceiverSettingsView: View {
+struct EditCarereceiverView: View {
     // MARK: Internal
 
     @Binding var modifiedCarereceiver: Carereceiver
@@ -17,12 +17,14 @@ struct CarereceiverSettingsView: View {
         NavigationStack {
             VStack(spacing: 40) {
                 Form {
-                    self.avatarPickerButton
-                        .listRowBackground(Color.clear)
+                    Section {
+                        self.avatarPickerButton
+                            .listRowBackground(Color.clear)
+                    }
 
                     Section {
                         LabeledContent(String(l10n.CarereceiverCreation.carereceiverNameLabel.characters)) {
-                            TextField("Nom", text: self.$modifiedCarereceiver.name)
+                            TextField("", text: self.$modifiedCarereceiver.name)
                                 .multilineTextAlignment(.trailing)
                         }
                     }
@@ -36,19 +38,19 @@ struct CarereceiverSettingsView: View {
                     }
                 }
             }
-            .navigationTitle(String(l10n.CarereceiverSettingsView.navigationTitle.characters) + self.modifiedCarereceiver.name)
+            .navigationTitle(String(l10n.EditCarereceiverView.navigationTitle.characters) + self.modifiedCarereceiver.name)
             .navigationBarTitleDisplayMode(.inline)
             .interactiveDismissDisabled()
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
-                    Button(String(l10n.CarereceiverSettingsView.closeButtonLabel.characters)) {
-                        self.rootOwnerViewModel.isCarereceiverSettingsViewPresented = false
+                    Button(String(l10n.EditCarereceiverView.closeButtonLabel.characters)) {
+                        self.rootOwnerViewModel.isEditCarereceiverViewPresented = false
                     }
                 }
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button(String(l10n.CarereceiverSettingsView.saveButtonLabel.characters)) {
+                    Button(String(l10n.EditCarereceiverView.saveButtonLabel.characters)) {
                         // TODO: (@mathieu) - Add Firestore logic
-                        self.rootOwnerViewModel.isCarereceiverSettingsViewPresented = false
+                        self.rootOwnerViewModel.isEditCarereceiverViewPresented = false
                         self.rootOwnerViewModel.currentCarereceiver = self.modifiedCarereceiver
                     }
                 }
@@ -79,5 +81,5 @@ struct CarereceiverSettingsView: View {
 }
 
 #Preview {
-    CarereceiverSettingsView(modifiedCarereceiver: .constant(Carereceiver()))
+    EditCarereceiverView(modifiedCarereceiver: .constant(Carereceiver()))
 }

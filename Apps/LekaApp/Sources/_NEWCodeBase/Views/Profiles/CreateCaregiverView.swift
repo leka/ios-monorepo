@@ -17,15 +17,23 @@ struct CreateCaregiverView: View {
 
     var body: some View {
         NavigationStack {
-            ScrollView {
-                VStack(spacing: 40) {
-                    self.avatarNavigationLink
+            VStack(spacing: 40) {
+                Form {
+                    Section {
+                        self.avatarPickerButton
+                            .listRowBackground(Color.clear)
+                    }
 
-                    TextFieldDefault(label: String(l10n.CaregiverCreation.caregiverNameLabel.characters),
-                                     entry: self.$newCaregiver.name)
-                        .frame(width: 400)
+                    Section {
+                        LabeledContent(String(l10n.CaregiverCreation.caregiverNameLabel.characters)) {
+                            TextField("", text: self.$newCaregiver.name)
+                                .multilineTextAlignment(.trailing)
+                        }
+                    }
 
-                    self.professionNavigationLink
+                    Section {
+                        self.professionNavigationLink
+                    }
 
                     Button(String(l10n.CaregiverCreation.registerProfilButton.characters)) {
                         withAnimation {
@@ -38,43 +46,43 @@ struct CreateCaregiverView: View {
                     }
                     .disabled(self.newCaregiver.name.isEmpty)
                     .buttonStyle(.borderedProminent)
+                    .listRowBackground(Color.clear)
+                    .frame(maxWidth: .infinity, alignment: .center)
                 }
-                .padding()
-                .navigationTitle(String(l10n.CaregiverCreation.title.characters))
-                .navigationBarTitleDisplayMode(.inline)
             }
+            .navigationTitle(String(l10n.CaregiverCreation.title.characters))
+            .navigationBarTitleDisplayMode(.inline)
         }
     }
 
     // MARK: Private
 
     @ObservedObject private var rootOwnerViewModel = RootOwnerViewModel.shared
+    @State private var isAvatarPickerPresented: Bool = false
 
-    private var avatarNavigationLink: some View {
-        NavigationLink {
-            AvatarPicker(avatar: self.$newCaregiver.avatar)
+    private var avatarPickerButton: some View {
+        Button {
+            self.isAvatarPickerPresented = true
         } label: {
-            VStack(spacing: 15) {
+            VStack(alignment: .center, spacing: 15) {
                 AvatarPicker.ButtonLabel(image: self.newCaregiver.avatar)
                 Text(l10n.CaregiverCreation.avatarChoiceButton)
                     .font(.headline)
             }
         }
+        .navigationDestination(isPresented: self.$isAvatarPickerPresented) {
+            AvatarPicker(avatar: self.$newCaregiver.avatar)
+        }
+        .frame(maxWidth: .infinity, alignment: .center)
     }
 
     private var professionNavigationLink: some View {
         VStack(alignment: .leading) {
-            HStack {
+            NavigationLink {
+                ProfessionPicker(caregiver: self.$newCaregiver)
+            } label: {
                 Text(l10n.CaregiverCreation.professionLabel)
                     .font(.body)
-
-                Spacer()
-
-                NavigationLink {
-                    ProfessionPicker(caregiver: self.$newCaregiver)
-                } label: {
-                    Label(String(l10n.CaregiverCreation.professionAddButton.characters), systemImage: "plus")
-                }
             }
 
             if !self.newCaregiver.professions.isEmpty {
@@ -83,7 +91,6 @@ struct CreateCaregiverView: View {
                 }
             }
         }
-        .frame(width: 400)
     }
 }
 
@@ -97,7 +104,7 @@ extension l10n {
 
         static let avatarChoiceButton = LocalizedString("lekaapp.caregiver_creation.avatar_choice_button", value: "Choose an avatar", comment: "Caregiver creation avatar choice button label")
 
-        static let caregiverNameLabel = LocalizedString("lekaapp.caregiver_creation.caregiver_name_label", value: "Caregiver name", comment: "Caregiver creation caregiver name textfield label")
+        static let caregiverNameLabel = LocalizedString("lekaapp.caregiver_creation.caregiver_name_label", value: "Name", comment: "Caregiver creation caregiver name textfield label")
 
         static let professionLabel = LocalizedString("lekaapp.caregiver_creation.profession_label", value: "Profession(s)", comment: "Caregiver creation profession label above profession selection button")
 

@@ -29,11 +29,12 @@ extension AvatarPicker {
                                     .animation(.easeIn, value: self.selected)
                                 }
                             }
-                            .padding(.horizontal, 10)
+                            .padding()
                         }
-                        .frame(height: 180)
                     }
+                    .listRowBackground(Color.clear)
                 }
+                .listRowInsets(EdgeInsets())
             }
         }
 

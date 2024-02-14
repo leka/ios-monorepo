@@ -8,9 +8,9 @@ import SwiftUI
 
 // swiftlint:disable nesting
 
-// MARK: - CaregiverSettingsView.AccentColorRow
+// MARK: - EditCaregiverView.AccentColorRow
 
-extension CaregiverSettingsView {
+extension EditCaregiverView {
     struct AccentColorRow: View {
         // MARK: Internal
 
@@ -18,7 +18,7 @@ extension CaregiverSettingsView {
 
         var body: some View {
             HStack {
-                Text(l10n.CaregiverSettingsView.AccentColorRow.title)
+                Text(l10n.EditCaregiverView.AccentColorRow.title)
 
                 Spacer()
 
@@ -66,6 +66,6 @@ extension CaregiverSettingsView {
 
 #Preview {
     Form {
-        CaregiverSettingsView.AccentColorRow(caregiver: .constant(Caregiver()))
+        EditCaregiverView.AccentColorRow(caregiver: .constant(Caregiver()))
     }
 }

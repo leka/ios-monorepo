@@ -17,12 +17,19 @@ struct CreateCarereceiverView: View {
 
     var body: some View {
         NavigationStack {
-            ScrollView {
-                VStack(spacing: 40) {
-                    self.avatarNavigationLink
+            VStack(spacing: 40) {
+                Form {
+                    Section {
+                        self.avatarPickerButton
+                            .listRowBackground(Color.clear)
+                    }
 
-                    TextFieldDefault(label: String(l10n.CarereceiverCreation.carereceiverNameLabel.characters),
-                                     entry: self.$newCarereceiver.name)
+                    Section {
+                        LabeledContent(String(l10n.CarereceiverCreation.carereceiverNameLabel.characters)) {
+                            TextField("", text: self.$newCarereceiver.name)
+                                .multilineTextAlignment(.trailing)
+                        }
+                    }
 
                     Button(String(l10n.CarereceiverCreation.registerProfilButton.characters)) {
                         withAnimation {
@@ -35,29 +42,34 @@ struct CreateCarereceiverView: View {
                     }
                     .disabled(self.newCarereceiver.name.isEmpty)
                     .buttonStyle(.borderedProminent)
+                    .listRowBackground(Color.clear)
+                    .frame(maxWidth: .infinity, alignment: .center)
                 }
-                .frame(width: 400)
-                .padding()
-                .navigationTitle(String(l10n.CarereceiverCreation.title.characters))
-                .navigationBarTitleDisplayMode(.inline)
             }
+            .navigationTitle(String(l10n.CarereceiverCreation.title.characters))
+            .navigationBarTitleDisplayMode(.inline)
         }
     }
 
     // MARK: Private
 
     @ObservedObject private var rootOwnerViewModel = RootOwnerViewModel.shared
+    @State private var isAvatarPickerPresented: Bool = false
 
-    private var avatarNavigationLink: some View {
-        NavigationLink {
-            AvatarPicker(avatar: self.$newCarereceiver.avatar)
+    private var avatarPickerButton: some View {
+        Button {
+            self.isAvatarPickerPresented = true
         } label: {
-            VStack(spacing: 15) {
+            VStack(alignment: .center, spacing: 15) {
                 AvatarPicker.ButtonLabel(image: self.newCarereceiver.avatar)
                 Text(l10n.CarereceiverCreation.avatarChoiceButton)
                     .font(.headline)
             }
         }
+        .navigationDestination(isPresented: self.$isAvatarPickerPresented) {
+            AvatarPicker(avatar: self.$newCarereceiver.avatar)
+        }
+        .frame(maxWidth: .infinity, alignment: .center)
     }
 }
 
@@ -71,7 +83,7 @@ extension l10n {
 
         static let avatarChoiceButton = LocalizedString("lekaapp.carereceiver_creation.avatar_choice_button", value: "Choose an avatar", comment: " Carereceiver creation avatar choice button label")
 
-        static let carereceiverNameLabel = LocalizedString("lekaapp.carereceiver_creation.carereceiver_name_label", value: "Carereceiver name", comment: " Carereceiver creation carereceiver name textfield label")
+        static let carereceiverNameLabel = LocalizedString("lekaapp.carereceiver_creation.carereceiver_name_label", value: "Name", comment: " Carereceiver creation carereceiver name textfield label")
 
         static let registerProfilButton = LocalizedString("lekaapp.carereceiver_creation.register_profil_button", value: "Register profile", comment: " Carereceiver creation register profil button label")
     }
