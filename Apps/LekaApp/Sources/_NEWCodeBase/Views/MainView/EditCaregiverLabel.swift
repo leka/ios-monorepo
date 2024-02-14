@@ -18,8 +18,24 @@ struct EditCaregiverLabel: View {
                 Button {
                     self.rootOwnerViewModel.isEditCaregiverViewPresented = true
                 } label: {
-                    CaregiverAvatarCell(caregiver: caregiver)
+                    Image(caregiver.avatar, bundle: Bundle(for: DesignKitResources.self))
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .clipShape(Circle())
+                        .overlay {
+                            Image(systemName: "pencil.circle.fill")
+                                .resizable()
+                                .renderingMode(.original)
+                                .frame(maxWidth: 30, maxHeight: 30)
+                                .foregroundStyle(.orange)
+                                .padding(5)
+                                .offset(x: 30, y: -30)
+                        }
                         .frame(maxWidth: 80)
+
+                    Text(caregiver.name)
+                        .font(.headline)
+                        .frame(maxWidth: 200)
                 }
 
                 Divider()
@@ -43,6 +59,7 @@ struct EditCaregiverLabel: View {
 
     // MARK: Private
 
+    private let strokeColor: Color = .init(light: UIColor.systemGray3, dark: UIColor.systemGray2)
     @ObservedObject private var styleManager: StyleManager = .shared
     @ObservedObject private var rootOwnerViewModel: RootOwnerViewModel = .shared
 }
