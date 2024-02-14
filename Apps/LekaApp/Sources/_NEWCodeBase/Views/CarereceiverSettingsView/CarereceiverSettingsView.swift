@@ -54,13 +54,11 @@ struct CarereceiverSettingsView: View {
                 }
             }
         }
-        .preferredColorScheme(self.styleManager.colorScheme)
     }
 
     // MARK: Private
 
     @ObservedObject private var rootOwnerViewModel: RootOwnerViewModel = .shared
-    @ObservedObject private var styleManager: StyleManager = .shared
     @State private var isAvatarPickerPresented: Bool = false
 
     private var avatarPickerButton: some View {

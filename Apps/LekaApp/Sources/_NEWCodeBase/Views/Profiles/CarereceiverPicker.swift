@@ -21,15 +21,21 @@ struct CarereceiverPicker: View {
                                 CarereceiverAvatarCell(carereceiver: carereceiver)
                             }
                         }
-
-                        // ? Last item is Add profile button
-                        self.addCarereceiverButton
                     }
                     .padding()
                 }
             }
             .padding()
             .navigationTitle(String(l10n.CarereceiverPicker.title.characters))
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        self.isCarereceiverCreationPresented = true
+                    } label: {
+                        Text(l10n.CarereceiverPicker.addButtonLabel)
+                    }
+                }
+            }
             .sheet(isPresented: self.$isCarereceiverCreationPresented) {
                 CreateCarereceiverView(isPresented: self.$isCarereceiverCreationPresented) {}
             }
@@ -47,29 +53,6 @@ struct CarereceiverPicker: View {
 
     @State private var selected: String = ""
     @State private var isCarereceiverCreationPresented: Bool = false
-
-    private var addCarereceiverButton: some View {
-        Button {
-            self.isCarereceiverCreationPresented = true
-        } label: {
-            VStack(spacing: 10) {
-                Circle()
-                    .fill(Color(uiColor: .systemGray4))
-                    .frame(maxWidth: 120)
-                    .overlay {
-                        Image(systemName: "plus")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 50)
-                            .foregroundStyle(.gray)
-                    }
-
-                Text(l10n.CarereceiverPicker.addButtonLabel)
-                    .font(.headline)
-                    .foregroundStyle(.secondary)
-            }
-        }
-    }
 }
 
 // MARK: - l10n.CarereceiverPicker
