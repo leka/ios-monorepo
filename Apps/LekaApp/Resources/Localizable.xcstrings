@@ -549,13 +549,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Caregiver name"
+                        "value": "Name"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Nom d'accompagnant"
+                        "value": "Nom"
                     }
                 }
             }
@@ -627,7 +627,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Cr\u00e9er un profil de personne accompagn\u00e9e"
+                        "value": "Cr\u00e9er un profil d'accompagnant"
                     }
                 }
             }
@@ -693,13 +693,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Carereceiver name"
+                        "value": "Name"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Nom de la personne accompagn\u00e9e"
+                        "value": "Nom"
                     }
                 }
             }
