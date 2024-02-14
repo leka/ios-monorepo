@@ -108,9 +108,6 @@ struct MainView: View {
 
                     case .carereceivers:
                         CarereceiverPicker()
-                            .navigationDestination(isPresented: .constant(self.rootOwnerViewModel.isCarereceiverSelected)) {
-                                CarereceiverView()
-                            }
 
                     case .none:
                         Text("Select a category")

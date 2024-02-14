@@ -45,7 +45,7 @@ struct Caregiver: Profile {
 
 // MARK: - Carereceiver
 
-struct Carereceiver: Profile {
+struct Carereceiver: Profile, Hashable {
     // MARK: Lifecycle
 
     init(name: String = "", avatar: String = "", reinforcer: Int = 1) {

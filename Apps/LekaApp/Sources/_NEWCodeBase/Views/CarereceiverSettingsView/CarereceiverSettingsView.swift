@@ -11,7 +11,7 @@ import SwiftUI
 struct CarereceiverSettingsView: View {
     // MARK: Internal
 
-    @State var modifiedCarereceiver: Carereceiver
+    @Binding var modifiedCarereceiver: Carereceiver
 
     var body: some View {
         NavigationStack {
@@ -54,13 +54,11 @@ struct CarereceiverSettingsView: View {
                 }
             }
         }
-        .preferredColorScheme(self.styleManager.colorScheme)
     }
 
     // MARK: Private
 
     @ObservedObject private var rootOwnerViewModel: RootOwnerViewModel = .shared
-    @ObservedObject private var styleManager: StyleManager = .shared
     @State private var isAvatarPickerPresented: Bool = false
 
     private var avatarPickerButton: some View {
@@ -81,5 +79,5 @@ struct CarereceiverSettingsView: View {
 }
 
 #Preview {
-    CarereceiverSettingsView(modifiedCarereceiver: Carereceiver())
+    CarereceiverSettingsView(modifiedCarereceiver: .constant(Carereceiver()))
 }
