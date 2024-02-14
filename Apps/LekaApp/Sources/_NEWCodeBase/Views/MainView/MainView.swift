@@ -26,7 +26,7 @@ struct MainView: View {
         NavigationSplitView {
             List(selection: self.$navigation.selectedCategory) {
                 if self.authManagerViewModel.userAuthenticationState == .loggedIn {
-                    CaregiverSettingsLabel()
+                    EditCaregiverLabel()
                 } else {
                     NoAccountConnectedLabel()
                 }
@@ -125,8 +125,8 @@ struct MainView: View {
         .sheet(isPresented: self.$rootOwnerViewModel.isSettingsViewPresented) {
             SettingsView()
         }
-        .sheet(isPresented: self.$rootOwnerViewModel.isCaregiverSettingsViewPresented) {
-            CaregiverSettingsView(modifiedCaregiver: self.rootOwnerViewModel.currentCaregiver!)
+        .sheet(isPresented: self.$rootOwnerViewModel.isEditCaregiverViewPresented) {
+            EditCaregiverView(modifiedCaregiver: self.rootOwnerViewModel.currentCaregiver!)
         }
     }
 }

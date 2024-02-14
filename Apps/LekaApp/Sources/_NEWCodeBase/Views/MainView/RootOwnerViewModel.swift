@@ -22,8 +22,8 @@ class RootOwnerViewModel: ObservableObject {
 
     @Published var isSettingsViewPresented = false
 
-    @Published var isCaregiverSettingsViewPresented = false
-    @Published var isCarereceiverSettingsViewPresented = false
+    @Published var isEditCaregiverViewPresented = false
+    @Published var isEditCarereceiverViewPresented = false
     @Published var isCaregiverPickerViewPresented = false
     @Published var isCarereceiverPickerViewPresented = false
 

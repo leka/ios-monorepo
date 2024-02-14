@@ -7,16 +7,16 @@ import LocalizationKit
 import RobotKit
 import SwiftUI
 
-// MARK: - CaregiverSettingsLabel
+// MARK: - EditCaregiverLabel
 
-struct CaregiverSettingsLabel: View {
+struct EditCaregiverLabel: View {
     // MARK: Internal
 
     var body: some View {
         VStack(alignment: .center, spacing: 10) {
             if let caregiver = self.rootOwnerViewModel.currentCaregiver {
                 Button {
-                    self.rootOwnerViewModel.isCaregiverSettingsViewPresented = true
+                    self.rootOwnerViewModel.isEditCaregiverViewPresented = true
                 } label: {
                     CaregiverAvatarCell(caregiver: caregiver)
                         .frame(maxWidth: 80)
@@ -89,7 +89,7 @@ extension l10n {
 #Preview {
     NavigationSplitView(sidebar: {
         List {
-            CaregiverSettingsLabel()
+            EditCaregiverLabel()
 
             Button {} label: {
                 RobotConnectionLabel()

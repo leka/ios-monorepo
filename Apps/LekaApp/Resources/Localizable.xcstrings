@@ -2,7 +2,7 @@
     "version": "1.0",
     "sourceLanguage": "en",
     "strings": {
-        "caregiver_settings_view.appearance_section.accent_color_row.title": {
+        "edit_caregiver_view.appearance_section.accent_color_row.title": {
             "comment": "AccentColor Row title",
             "extractionState": "extracted_with_value",
             "localizations": {
@@ -20,7 +20,7 @@
                 }
             }
         },
-        "caregiver_settings_view.appearance_section.appearance_row.title": {
+        "edit_caregiver_view.appearance_section.appearance_row.title": {
             "comment": "Appearance Row title",
             "extractionState": "extracted_with_value",
             "localizations": {
@@ -38,8 +38,8 @@
                 }
             }
         },
-        "caregiver_settings_view.close_button_label": {
-            "comment": "Close button label of Caregiver Settings View",
+        "edit_caregiver_view.close_button_label": {
+            "comment": "Close button label of Edit Caregiver View",
             "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
@@ -56,8 +56,8 @@
                 }
             }
         },
-        "caregiver_settings_view.navigation_title": {
-            "comment": "The navigation title of Caregiver Settings View",
+        "edit_caregiver_view.navigation_title": {
+            "comment": "The navigation title of Edit Caregiver View",
             "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
@@ -74,8 +74,8 @@
                 }
             }
         },
-        "caregiver_settings_view.save_button_label": {
-            "comment": "Save button label of Caregiver Settings View",
+        "edit_caregiver_view.save_button_label": {
+            "comment": "Save button label of Edit Caregiver View",
             "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
@@ -92,8 +92,8 @@
                 }
             }
         },
-        "carereceiver_settings_view.close_button_label": {
-            "comment": "Close button label of Carereceiver Settings View",
+        "edit_carereceiver_view.close_button_label": {
+            "comment": "Close button label of Edit Carereceiver View",
             "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
@@ -110,8 +110,8 @@
                 }
             }
         },
-        "carereceiver_settings_view.navigation_title": {
-            "comment": "The navigation title of Carereceiver Settings View",
+        "edit_carereceiver_view.navigation_title": {
+            "comment": "The navigation title of Edit Carereceiver View",
             "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
@@ -128,8 +128,8 @@
                 }
             }
         },
-        "carereceiver_settings_view.save_button_label": {
-            "comment": "Save button label of Carereceiver Settings View",
+        "edit_carereceiver_view.save_button_label": {
+            "comment": "Save button label of Edit Carereceiver View",
             "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {

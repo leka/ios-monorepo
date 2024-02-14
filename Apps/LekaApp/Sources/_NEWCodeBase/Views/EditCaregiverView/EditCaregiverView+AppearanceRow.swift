@@ -6,9 +6,9 @@ import DesignKit
 import LocalizationKit
 import SwiftUI
 
-// MARK: - CaregiverSettingsView.AppearanceRow
+// MARK: - EditCaregiverView.AppearanceRow
 
-extension CaregiverSettingsView {
+extension EditCaregiverView {
     struct AppearanceRow: View {
         // MARK: Internal
 
@@ -16,7 +16,7 @@ extension CaregiverSettingsView {
 
         var body: some View {
             HStack(spacing: 10) {
-                Text(l10n.CaregiverSettingsView.AppearanceRow.title)
+                Text(l10n.EditCaregiverView.AppearanceRow.title)
 
                 Spacer()
 
@@ -38,6 +38,6 @@ extension CaregiverSettingsView {
 
 #Preview {
     Form {
-        CaregiverSettingsView.AppearanceRow(caregiver: .constant(Caregiver()))
+        EditCaregiverView.AppearanceRow(caregiver: .constant(Caregiver()))
     }
 }

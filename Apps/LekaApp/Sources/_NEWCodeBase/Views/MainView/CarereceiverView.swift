@@ -14,12 +14,12 @@ struct CarereceiverView: View {
 
     var body: some View {
         Button {
-            self.rootOwnerViewModel.isCarereceiverSettingsViewPresented = true
+            self.rootOwnerViewModel.isEditCarereceiverViewPresented = true
         } label: {
             CarereceiverAvatarCell(carereceiver: self.carereceiver)
         }
-        .sheet(isPresented: self.$rootOwnerViewModel.isCarereceiverSettingsViewPresented) {
-            CarereceiverSettingsView(modifiedCarereceiver: self.$carereceiver)
+        .sheet(isPresented: self.$rootOwnerViewModel.isEditCarereceiverViewPresented) {
+            EditCarereceiverView(modifiedCarereceiver: self.$carereceiver)
         }
     }
 
