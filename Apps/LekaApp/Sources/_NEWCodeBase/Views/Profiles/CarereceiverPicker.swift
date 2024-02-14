@@ -17,11 +17,7 @@ struct CarereceiverPicker: View {
                 ScrollView(showsIndicators: false) {
                     LazyVGrid(columns: self.columns, spacing: 40) {
                         ForEach(self.rootOwnerViewModel.mockCarereceiversSet) { carereceiver in
-                            Button {
-                                // TODO: (@team) - Add carereceiver selection logic w/ Firebase
-                                self.rootOwnerViewModel.currentCarereceiver = carereceiver
-                                self.rootOwnerViewModel.isCarereceiverPickerViewPresented = false
-                            } label: {
+                            NavigationLink(value: carereceiver) {
                                 CarereceiverAvatarCell(carereceiver: carereceiver)
                             }
                         }
@@ -36,6 +32,9 @@ struct CarereceiverPicker: View {
             .navigationTitle(String(l10n.CarereceiverPicker.title.characters))
             .sheet(isPresented: self.$isCarereceiverCreationPresented) {
                 CreateCarereceiverView(isPresented: self.$isCarereceiverCreationPresented) {}
+            }
+            .navigationDestination(for: Carereceiver.self) { carereceiver in
+                CarereceiverView(carereceiver: carereceiver)
             }
         }
     }

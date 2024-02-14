@@ -10,17 +10,16 @@ import SwiftUI
 struct CarereceiverView: View {
     // MARK: Internal
 
+    @State var carereceiver: Carereceiver
+
     var body: some View {
         Button {
             self.rootOwnerViewModel.isCarereceiverSettingsViewPresented = true
         } label: {
-            CarereceiverAvatarCell(carereceiver: self.rootOwnerViewModel.currentCarereceiver!)
-        }
-        .onDisappear {
-            self.rootOwnerViewModel.currentCarereceiver = nil
+            CarereceiverAvatarCell(carereceiver: self.carereceiver)
         }
         .sheet(isPresented: self.$rootOwnerViewModel.isCarereceiverSettingsViewPresented) {
-            CarereceiverSettingsView(modifiedCarereceiver: self.rootOwnerViewModel.currentCarereceiver!)
+            CarereceiverSettingsView(modifiedCarereceiver: self.$carereceiver)
         }
     }
 
@@ -31,5 +30,5 @@ struct CarereceiverView: View {
 }
 
 #Preview {
-    CarereceiverView()
+    CarereceiverView(carereceiver: Carereceiver())
 }
