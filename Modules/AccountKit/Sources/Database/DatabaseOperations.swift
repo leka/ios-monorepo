@@ -15,6 +15,8 @@ public class DatabaseOperations {
 
     // MARK: Public
 
+    public static let shared = DatabaseOperations()
+
     public func create<T: AccountDocument>(data: T, in collection: DatabaseCollection) -> AnyPublisher<T, Error> {
         Future<T, Error> { promise in
             let docRef = self.database.collection(collection.rawValue).document()
