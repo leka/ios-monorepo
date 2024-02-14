@@ -709,6 +709,49 @@ list:
               dégoût).
         subskills: []
 
+      - id: recognition/places
+        l10n:
+          - locale: en_US
+            name: Recognition of places
+            description: >
+              The recognition of places is the ability to see and identify
+              differents places (cinema, swimming pool, school, etc).
+          - locale: fr_FR
+            name: Reconnaissance des lieux
+            description: >
+              La reconnaissance des lieux est la capacité à voir et à
+              identifier différents lieux (cinéma, piscine, école,etc).
+        subskills: []
+
+      - id: recognition/professions
+        l10n:
+          - locale: en_US
+            name: Recognition of professions
+            description: >
+              The recognition of professions is the ability to see and identify
+              differents professions (doctor, teacher, firefighter, etc).
+          - locale: fr_FR
+            name: Reconnaissance des métiers
+            description: >
+              La reconnaissance des métiers est la capacité à voir et à
+              identifier différents métiers (médecin, professeur, pompier, etc.)
+        subskills: []
+
+      - id: recognition/family_members
+        l10n:
+          - locale: en_US
+            name: Recognition of family members
+            description: >
+              The recognition of family members is the ability to see and identify
+              the different family members (father, mother, grandfather, etc).
+          - locale: fr_FR
+            name: Reconnaissance des membres de la famille
+            description: >
+              La reconnaissance des membres de la famille est la capacité à voir et
+              à identifier les différents membres de la famille
+              (père, mère, grand-père, etc.)
+        subskills: []
+
   - id: relationship_tablet_robot
     l10n:
       - locale: en_US
