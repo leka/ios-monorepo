@@ -25,12 +25,15 @@ public class DatabaseOperations {
             do {
                 try docRef.setData(from: documentData) { error in
                     if let error {
+                        log.error("\(error.localizedDescription)")
                         promise(.failure(DatabaseError.customError(error.localizedDescription)))
                     } else {
+                        log.info("Document \(String(describing: documentData.id)) created successfully. 🎉")
                         promise(.success(documentData))
                     }
                 }
             } catch {
+                log.error("\(error.localizedDescription)")
                 promise(.failure(error))
             }
         }
@@ -42,16 +45,20 @@ public class DatabaseOperations {
             let docRef = self.database.collection(collection.rawValue).document(documentID)
             docRef.getDocument { document, error in
                 if let error {
+                    log.error("\(error.localizedDescription)")
                     promise(.failure(error))
                 } else {
                     do {
                         let object = try document?.data(as: T.self)
                         if let object {
+                            log.info("Document \(String(describing: object.id)) fetched successfully. 🎉")
                             promise(.success(object))
                         } else {
+                            log.error("Document not found.")
                             promise(.failure(DatabaseError.documentNotFound))
                         }
                     } catch {
+                        log.error("\(error.localizedDescription)")
                         promise(.failure(error))
                     }
                 }
@@ -65,11 +72,13 @@ public class DatabaseOperations {
             self.database.collection(collection.rawValue)
                 .getDocuments { querySnapshot, error in
                     if let error {
+                        log.error("\(error.localizedDescription)")
                         promise(.failure(error))
                     } else {
                         let objects = querySnapshot?.documents.compactMap { document -> T? in
                             try? document.data(as: T.self)
                         } ?? []
+                        log.info("\(String(describing: objects.count)) documents fetched successfully. 🎉")
                         promise(.success(objects))
                     }
                 }
