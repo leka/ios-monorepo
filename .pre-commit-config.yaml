@@ -55,38 +55,50 @@ repos:
         language: script
         files: '.*\.xcstrings'
 
-      - id: check_yaml_data_professions
+      - id: check_yaml_definitions_professions
         name: Check professions.yml
         description: |
           This hook checks professions.yml for:
             - non unique ids
             - jtd schema validation
           It also formats the file and sorts the entries
-        entry: python3 Tools/Hooks/check_yaml_data_professions.py
+        entry: python3 Tools/Hooks/check_yaml_definitions_professions.py
         language: python
         additional_dependencies: ["ruamel.yaml"]
         files: professions.yml
 
-      - id: check_yaml_data_authors
+      - id: check_yaml_definitions_authors
         name: Check authors.yml
         description: |
           This hook checks authors.yml for:
             - non unique ids
             - jtd schema validation
           It also formats the file and sorts the entries
-        entry: python3 Tools/Hooks/check_yaml_data_authors.py
+        entry: python3 Tools/Hooks/check_yaml_definitions_authors.py
         language: python
         additional_dependencies: ["ruamel.yaml"]
         files: authors.yml
 
-      - id: check_yaml_data_skills
+      - id: check_yaml_definitions_skills
         name: Check skills.yml
         description: |
           This hook checks skills.yml for:
             - non unique ids
             - jtd schema validation
           It also formats the file and sorts the entries
-        entry: python3 Tools/Hooks/check_yaml_data_skills.py
+        entry: python3 Tools/Hooks/check_yaml_definitions_skills.py
         language: python
         additional_dependencies: ["ruamel.yaml"]
         files: skills.yml
+
+      - id: check_yaml_content_activities
+        name: Check activity.yml files
+        description: |
+          This hook checks activity.yml files for:
+            - uuid and filename consistency
+            - jtd schema validation
+        entry: python3 Tools/Hooks/check_yaml_content_activities.py
+        language: python
+        additional_dependencies: ["ruamel.yaml"]
+        files: .*\.activity\.yml
+        types: [yaml]

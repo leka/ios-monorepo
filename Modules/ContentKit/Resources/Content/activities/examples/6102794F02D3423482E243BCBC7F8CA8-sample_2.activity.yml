@@ -1,0 +1,212 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+version: 1.0.0
+
+uuid: 6102794F02D3423482E243BCBC7F8CA8
+name: sample_2
+
+status: published
+
+authors:
+  - leka
+  - aurore_kiesler
+  - julie_tuil
+
+skills:
+  - spatial_understanding
+  - recognition/animals
+  - communication/non_verbal_communication/gestures
+
+tags:
+  - tag_one
+  - tag_two
+  - tag_three
+
+hmi:
+  - robot
+  - magic_cards
+  - tablet_robot
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: name_of_the_activity-icon-fr_FR.svg
+
+      title: Activité d'exemple
+      subtitle: pour le développement
+
+      description: |
+        Activité d'exemple utilisée pour le développement de l'application
+
+      instructions: |
+        ## Longues instructions en markdown plus complexe si on veut
+
+        Lorem markdownum recepta avidum, missa de quam patientia, antris: cum defuit,
+        Titan repetemus nomine, ignare. Quod ad aura, et non quod vidisse utque ulla:
+
+        - Pro inposuit tibi orsa tum artes ferox
+        - Acmon plausu qua agrestum situs virgo in
+        - Vacuus a pendens rostro non si pharetrae
+        - Haeremusque quos auxiliaris coniunx
+        - Repulsa impediunt munera teneri fallebat
+        - Bracchia frustra telo Iovis faucibus casus
+
+  - locale: en_US
+    details:
+      icon: name_of_the_activity-icon-en_US.svg
+
+      title: Sample activity
+      subtitle: for development
+
+      description: |
+        Sample activity used for the development of the application
+
+      instructions: |
+        ## Long instructions in markdown more complex if we want
+
+        Lorem markdownum recepta avidum, missa de quam patientia, antris: cum defuit,
+        Titan repetemus nomine, ignare. Quod ad aura, et non quod vidisse utque ulla:
+
+        - Pro inposuit tibi orsa tum artes ferox
+        - Acmon plausu qua agrestum situs virgo in
+        - Vacuus a pendens rostro non si pharetrae
+        - Haeremusque quos auxiliaris coniunx
+        - Repulsa impediunt munera teneri fallebat
+        - Bracchia frustra telo Iovis faucibus casus
+
+gameengine:
+  shuffle_exercises: true
+  shuffle_sequences: true
+
+exercises:
+  - group:
+      - instructions:
+          - locale: fr_FR
+            value: Touch le rond jaune
+          - locale: en_US
+            value: Touch the yellow circle
+        interface: touchToSelect
+        gameplay: findTheRightAnswers
+        payload:
+          choices:
+            - value: yellow
+              type: color
+              isRightAnswer: true
+            - value: red
+              type: color
+            - value: green
+              type: color
+            - value: blue
+              type: color
+
+      - instructions:
+          - locale: fr_FR
+            value: Touch la pastèque
+          - locale: en_US
+            value: Touch the watermelon
+        interface: touchToSelect
+        gameplay: findTheRightAnswers
+        payload:
+          choices:
+            - value: 🍉
+              type: emoji
+              isRightAnswer: true
+            - value: 🍌
+              type: emoji
+            - value: 🍒
+              type: emoji
+            - value: 🥝
+              type: emoji
+
+      - instructions:
+          - locale: fr_FR
+            value: Touch le carré
+          - locale: en_US
+            value: Touch the square
+        interface: touchToSelect
+        gameplay: findTheRightAnswers
+        payload:
+          choices:
+            - value: circle
+              type: sfsymbol
+            - value: square
+              type: sfsymbol
+              isRightAnswer: true
+            - value: triangle
+              type: sfsymbol
+            - value: rhombus
+              type: sfsymbol
+
+  - group:
+      - instructions:
+          - locale: fr_FR
+            value: Contrôle Leka avec la télécommande et fais le changer de couleur
+          - locale: en_US
+            value: Control Leka with the remote and make it change color
+        interface: remoteArrow
+
+      - instructions:
+          - locale: fr_FR
+            value: Contrôle Leka avec la télécommande et fais le changer de couleur
+          - locale: en_US
+            value: Control Leka with the remote and make it change color
+        interface: remoteArrow
+
+  - group:
+      - instructions:
+          - locale: fr_FR
+            value: Joue du xylophone avec Leka
+          - locale: en_US
+            value: Play the xylophone with Leka
+        interface: musicalInstruments
+        payload:
+          instrument: xylophone
+          scale: majorHeptatonic
+
+      - instructions:
+          - locale: fr_FR
+            value: Joue du xylophone avec Leka
+          - locale: en_US
+            value: Play the xylophone with Leka
+        interface: musicalInstruments
+        payload:
+          instrument: xylophone
+          scale: majorPentatonic
+
+  - group:
+      - instructions:
+        interface: danceFreeze
+        payload:
+          songs:
+            - earlyBird
+            - emptyPage
+            - gigglySquirrel
+            - handsOn
+            - happyDays
+            - inTheGame
+            - littleByLittle
+
+      - instructions:
+        interface: hideAndSeek
+
+      - instructions:
+          - locale: fr_FR
+            value: Joue les notes de la même couleur que Leka
+          - locale: en_US
+            value: Play the notes of the same color as Leka
+        interface: melody
+        payload:
+          instrument: xylophone
+          songs:
+            - underTheMoonlight
+            - aGreenMouse
+            - twinkleTwinkleLittleStar
+            - londonBridgeIsFallingDown
+            - ohTheCrocodiles
+            - happyBirthday

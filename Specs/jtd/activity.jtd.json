@@ -1,5 +1,8 @@
 {
     "properties": {
+        "version": {
+            "type": "string"
+        },
         "uuid": {
             "type": "string"
         },
@@ -57,11 +60,7 @@
     },
     "definitions": {
         "$author": {
-            "enum": [
-                "leka_at_apf_france_handicap",
-                "aurore_kiesler",
-                "julie_tuil"
-            ]
+            "enum": ["leka", "aurore_kiesler", "julie_tuil"]
         },
         "$hmi": {
             "enum": ["robot", "tablet", "magic_cards", "tablet_robot"]
@@ -97,7 +96,8 @@
                     "type": "string"
                 },
                 "instructions": {
-                    "type": "string"
+                    "type": "string",
+                    "nullable": true
                 }
             }
         },
@@ -119,13 +119,17 @@
         "$exercise": {
             "properties": {
                 "instructions": {
-                    "ref": "$exercise/instructions"
+                    "ref": "$exercise/instructions",
+                    "nullable": true
                 },
                 "interface": {
                     "ref": "$exercise/interface"
-                },
+                }
+            },
+            "optionalProperties": {
                 "gameplay": {
-                    "ref": "$exercise/gameplay"
+                    "ref": "$exercise/gameplay",
+                    "nullable": true
                 },
                 "payload": {
                     "ref": "$exercise/payload"
@@ -154,14 +158,16 @@
                 "dragAndDropToAssociate",
                 "danceFreeze",
                 "remoteStandard",
-                "remoteArrow"
+                "remoteArrow",
+                "hideAndSeek",
+                "musicalInstruments",
+                "melody",
+                "pairing"
             ]
         },
         "$exercise/gameplay": {
             "enum": ["findTheRightAnswers", "associateCategories"]
         },
-        "$exercise/payload": {
-            "type": "string"
-        }
+        "$exercise/payload": {}
     }
 }
