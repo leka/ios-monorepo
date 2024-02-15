@@ -90,3 +90,15 @@ repos:
         language: python
         additional_dependencies: ["ruamel.yaml"]
         files: skills.yml
+
+      - id: check_yaml_content_activities
+        name: Check activity.yml files
+        description: |
+          This hook checks activity.yml files for:
+            - uuid and filename consistency
+            - jtd schema validation
+        entry: python3 Tools/Hooks/check_yaml_content_activities.py
+        language: python
+        additional_dependencies: ["ruamel.yaml"]
+        files: .*\.activity\.yml
+        types: [yaml]
