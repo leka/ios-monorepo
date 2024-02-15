@@ -102,3 +102,13 @@ repos:
         additional_dependencies: ["ruamel.yaml"]
         files: .*\.activity\.yml
         types: [yaml]
+
+      - id: check_yaml_content_activities_unique_uuid
+        name: Check activity.yml files for unique uuid
+        description: |
+          This hook checks activity.yml files for unique uuid
+        entry: python3 Tools/Hooks/check_yaml_content_activities_unique_uuid.py
+        language: python
+        files: .*\.activity\.yml
+        types: [yaml]
+        pass_filenames: false
