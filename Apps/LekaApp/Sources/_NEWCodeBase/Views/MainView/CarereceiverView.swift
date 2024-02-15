@@ -83,7 +83,7 @@ struct CarereceiverView: View {
 
 extension l10n {
     enum CarereceiverView {
-        static let availableSoonLabel = LocalizedString("lekapp.carereceiver_view.available_soon_label", value: "🚧 Tracking soon available...", comment: "Temporary content of Carereceiver view tracking")
+        static let availableSoonLabel = LocalizedString("lekapp.carereceiver_view.available_soon_label", value: "🚧 Monitoring available soon...", comment: "Temporary content for carereceiver monitoring")
     }
 }
 

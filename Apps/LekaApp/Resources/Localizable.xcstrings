@@ -897,7 +897,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Le renfor\u00e7ateur est un effet lumineux r\u00e9p\u00e9titif du robot que vous pourrez actionner pour r\u00e9compenser le comportement de l'utilisateur. \u2028Si votre robot est connect\u00e9, vous pouvez tester les renfor\u00e7ateurs avant d'en choisir un."
+                        "value": "Le renfor\u00e7ateur est un effet lumineux r\u00e9p\u00e9titif du robot que vous pourrez actionner pour r\u00e9compenser le comportement de l'utilisateur. Si votre robot est connect\u00e9, vous pouvez tester les renfor\u00e7ateurs avant d'en choisir un."
                     }
                 }
             }
@@ -1029,13 +1029,13 @@
             }
         },
         "lekapp.carereceiver_view.available_soon_label": {
-            "comment": "Temporary content of Carereceiver view tracking",
+            "comment": "Temporary content for carereceiver monitoring",
             "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "\ud83d\udea7 Tracking soon available..."
+                        "value": "\ud83d\udea7 Monitoring available soon..."
                     }
                 },
                 "fr": {
@@ -1298,20 +1298,20 @@
                 }
             }
         },
-        "main_view.sidebar.section.tracking": {
-            "comment": "The title of the section 'Tracking'",
+        "main_view.sidebar.section.monitoring": {
+            "comment": "The title of the section 'Users'",
             "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Tracking"
+                        "value": "Users"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Suivi"
+                        "value": "Utilisateurs"
                     }
                 }
             }

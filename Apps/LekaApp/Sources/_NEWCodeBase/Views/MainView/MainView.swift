@@ -50,7 +50,7 @@ struct MainView: View {
                     CategoryLabel(category: .stories)
                 }
 
-                Section(String(l10n.MainView.Sidebar.sectionTracking.characters)) {
+                Section(String(l10n.MainView.Sidebar.sectionUsers.characters)) {
                     CategoryLabel(category: .carereceivers)
                 }
 
