@@ -38,7 +38,7 @@ struct EditCarereceiverView: View {
                     }
                 }
             }
-            .navigationTitle(String(l10n.EditCarereceiverView.navigationTitle.characters) + self.modifiedCarereceiver.name)
+            .navigationTitle(String(l10n.EditCarereceiverView.navigationTitle.characters))
             .navigationBarTitleDisplayMode(.inline)
             .interactiveDismissDisabled()
             .toolbar {

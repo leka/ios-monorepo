@@ -39,7 +39,7 @@ struct EditCaregiverView: View {
                     }
                 }
             }
-            .navigationTitle(String(l10n.EditCaregiverView.navigationTitle.characters) + self.modifiedCaregiver.name)
+            .navigationTitle(String(l10n.EditCaregiverView.navigationTitle.characters))
             .navigationBarTitleDisplayMode(.inline)
             .interactiveDismissDisabled()
             .toolbar {
