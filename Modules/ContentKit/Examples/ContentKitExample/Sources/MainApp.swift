@@ -9,7 +9,9 @@ import SwiftUI
 struct ContentKitExample: App {
     var body: some Scene {
         WindowGroup {
-            MainView()
+            NavigationStack {
+                ActivityListView()
+            }
         }
     }
 }
