@@ -1,5 +1,8 @@
 {
     "properties": {
+        "version": {
+            "type": "string"
+        },
         "uuid": {
             "type": "string"
         },
@@ -93,7 +96,8 @@
                     "type": "string"
                 },
                 "instructions": {
-                    "type": "string"
+                    "type": "string",
+                    "nullable": true
                 }
             }
         },
@@ -115,13 +119,17 @@
         "$exercise": {
             "properties": {
                 "instructions": {
-                    "ref": "$exercise/instructions"
+                    "ref": "$exercise/instructions",
+                    "nullable": true
                 },
                 "interface": {
                     "ref": "$exercise/interface"
-                },
+                }
+            },
+            "optionalProperties": {
                 "gameplay": {
-                    "ref": "$exercise/gameplay"
+                    "ref": "$exercise/gameplay",
+                    "nullable": true
                 },
                 "payload": {
                     "ref": "$exercise/payload"
@@ -150,7 +158,11 @@
                 "dragAndDropToAssociate",
                 "danceFreeze",
                 "remoteStandard",
-                "remoteArrow"
+                "remoteArrow",
+                "hideAndSeek",
+                "musicalInstruments",
+                "melody",
+                "pairing"
             ]
         },
         "$exercise/gameplay": {
