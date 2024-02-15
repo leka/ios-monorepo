@@ -50,7 +50,7 @@ struct MainView: View {
                     CategoryLabel(category: .stories)
                 }
 
-                Section(String(l10n.MainView.Sidebar.sectionTracking.characters)) {
+                Section(String(l10n.MainView.Sidebar.sectionUsers.characters)) {
                     CategoryLabel(category: .carereceivers)
                 }
 
@@ -73,8 +73,8 @@ struct MainView: View {
             }
             // TODO: (@ladislas) remove if not necessary
             // .disabled(navigation.disableUICompletly)
-            .navigationTitle(String(l10n.MainView.Sidebar.navigationTitle.characters))
-            .navigationBarTitleDisplayMode(.inline)
+//            .navigationTitle(String(l10n.MainView.Sidebar.navigationTitle.characters))
+//            .navigationBarTitleDisplayMode(.inline)
         } detail: {
             NavigationStack(path: self.$navigation.path) {
                 switch self.navigation.selectedCategory {

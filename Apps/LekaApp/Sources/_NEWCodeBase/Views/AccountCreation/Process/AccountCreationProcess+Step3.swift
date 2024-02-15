@@ -14,14 +14,11 @@ extension AccountCreationProcess {
 
         var body: some View {
             VStack(spacing: 30) {
-                Image(
-                    DesignKitAsset.Images.user.name,
-                    bundle: Bundle(for: DesignKitResources.self)
-                )
-                .resizable()
-                .renderingMode(.original)
-                .aspectRatio(contentMode: .fit)
-                .frame(height: 80)
+                Image(systemName: "figure.2.arms.open")
+                    .resizable()
+                    .renderingMode(.original)
+                    .aspectRatio(contentMode: .fit)
+                    .frame(height: 80)
 
                 Text(l10n.AccountCreationProcess.Step3.title)
                     .font(.headline)

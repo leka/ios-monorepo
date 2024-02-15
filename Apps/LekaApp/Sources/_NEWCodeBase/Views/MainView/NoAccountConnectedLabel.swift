@@ -17,9 +17,10 @@ struct NoAccountConnectedLabel: View {
         VStack(alignment: .center, spacing: 10) {
             Image(systemName: "person.crop.circle.badge.xmark")
                 .resizable()
+                .renderingMode(.original)
+                .foregroundStyle(self.styleManager.accentColor!)
                 .scaledToFit()
                 .frame(width: 80)
-                .foregroundStyle(self.styleManager.accentColor!)
 
             Text(l10n.NoAccountConnectedLabel.message)
                 .foregroundColor(.orange)

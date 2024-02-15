@@ -17,9 +17,6 @@ extension l10n {
 
             static let message = LocalizedString("lekaapp.account_creation_process.step_1.message",
                                                  value: """
-                                                     A verification email has been sent.
-                                                     Please check your inbox.
-
                                                      We will now guide you throught
                                                      the creation of your account
                                                      and the different steps.
@@ -56,10 +53,10 @@ extension l10n {
 
             static let message = LocalizedString("lekaapp.account_creation_process.step_4.message",
                                                  value: """
-                                                     You have completed process brilliantly:
+                                                     You have just completed:
 
-                                                     - Create your caregiver profile ✅
-                                                     - Create your first care receiver profile ✅
+                                                     ✅ Your caregiver profile
+                                                     ✅ Your first care receiver profile
 
                                                      You can now discover the Leka App and dive deep in our educational content!
                                                      """,

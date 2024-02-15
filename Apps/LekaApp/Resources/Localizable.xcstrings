@@ -63,13 +63,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Profil of "
+                        "value": "Edit my profile"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Profil de "
+                        "value": "Editer mon profil"
                     }
                 }
             }
@@ -117,13 +117,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Profil of "
+                        "value": "Edit profil"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Profil de "
+                        "value": "Editer le profil"
                     }
                 }
             }
@@ -243,13 +243,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "A verification email has been sent.\nPlease check your inbox.\n\nWe will now guide you throught\nthe creation of your account\nand the different steps.\nReady?"
+                        "value": "We will now guide you throught\nthe creation of your account\nand the different steps.\nReady?"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "L'email de v\u00e9rification a \u00e9t\u00e9 envoy\u00e9. Veuillez v\u00e9rifier votre bo\u00eete de r\u00e9ception.\u2028\u2028Nous allons maintenant vous guider\n\u00e0 travers la cr\u00e9ation de votre compte\net les diff\u00e9rentes \u00e9tapes.\nPr\u00eat(e)?"
+                        "value": "Nous allons maintenant vous guider\n\u00e0 travers la cr\u00e9ation de votre compte\net les diff\u00e9rentes \u00e9tapes.\nPr\u00eat(e)?"
                     }
                 }
             }
@@ -405,13 +405,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "You have completed process brilliantly:\n\n- Create your caregiver profile \u2705\n- Create your first care receiver profile \u2705\n\nYou can now discover the Leka App and dive deep in our educational content!"
+                        "value": "You have just completed:\n\n\u2705 Your caregiver profile\n\u2705 Your first care receiver profile\n\nYou can now discover the Leka App and dive deep in our educational content!"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Vous avez brillamment compl\u00e9t\u00e9 le processus :\n\n- Cr\u00e9er votre profil d'accompagnant \u2705\n- Cr\u00e9er votre premier profil de personne accompagn\u00e9e \u2705\n\nVous pouvez maintenant d\u00e9couvrir l'appli Leka et approfondir notre contenu \u00e9ducatif !"
+                        "value": "Vous venez de cr\u00e9er :\n\n\u2705 Un profil d'accompagnant\n\u2705 Un profil de personne accompagn\u00e9e \n\nVous pouvez maintenant d\u00e9couvrir l'appli Leka et approfondir notre contenu \u00e9ducatif !"
                     }
                 }
             }
@@ -495,13 +495,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "What's your avatar ?"
+                        "value": "Avatar choice"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Quel est ton avatar ?"
+                        "value": "Choix de l'avatar"
                     }
                 }
             }
@@ -693,13 +693,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Name"
+                        "value": "Username"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Nom"
+                        "value": "Nom d'utilisateur"
                     }
                 }
             }
@@ -765,13 +765,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Care receivers list"
+                        "value": "Care receivers"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Liste des personnes accompagn\u00e9es"
+                        "value": "Personnes accompagn\u00e9es"
                     }
                 }
             }
@@ -855,13 +855,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Select your professions"
+                        "value": "Profession choice"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "S\u00e9lectionnez vos professions"
+                        "value": "Choix de(s) profession(s)"
                     }
                 }
             }
@@ -897,7 +897,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Le renfor\u00e7ateur est un effet lumineux r\u00e9p\u00e9titif du robot que vous pourrez actionner pour r\u00e9compenser le comportement de l'utilisateur. \u2028Si votre robot est connect\u00e9, vous pouvez tester les renfor\u00e7ateurs avant d'en choisir un."
+                        "value": "Le renfor\u00e7ateur est un effet lumineux r\u00e9p\u00e9titif du robot que vous pourrez actionner pour r\u00e9compenser le comportement de l'utilisateur. Si votre robot est connect\u00e9, vous pouvez tester les renfor\u00e7ateurs avant d'en choisir un."
                     }
                 }
             }
@@ -1024,6 +1024,24 @@
                     "stringUnit": {
                         "state": "translated",
                         "value": "Passer cette \u00e9tape"
+                    }
+                }
+            }
+        },
+        "lekapp.carereceiver_view.available_soon_label": {
+            "comment": "Temporary content for carereceiver monitoring",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "\ud83d\udea7 Monitoring available soon..."
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "\ud83d\udea7 Suivi bient\u00f4t disponible ..."
                     }
                 }
             }
@@ -1280,20 +1298,20 @@
                 }
             }
         },
-        "main_view.sidebar.section.tracking": {
-            "comment": "The title of the section 'Tracking'",
+        "main_view.sidebar.section.monitoring": {
+            "comment": "The title of the section 'Users'",
             "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Tracking"
+                        "value": "Users"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Suivi"
+                        "value": "Utilisateurs"
                     }
                 }
             }

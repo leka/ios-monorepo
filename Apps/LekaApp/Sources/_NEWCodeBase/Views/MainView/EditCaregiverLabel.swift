@@ -13,21 +13,27 @@ struct EditCaregiverLabel: View {
     // MARK: Internal
 
     var body: some View {
-        VStack(alignment: .center, spacing: 10) {
+        VStack(alignment: .leading) {
             if let caregiver = self.rootOwnerViewModel.currentCaregiver {
                 Button {
                     self.rootOwnerViewModel.isEditCaregiverViewPresented = true
                 } label: {
-                    CaregiverAvatarCell(caregiver: caregiver)
-                        .frame(maxWidth: 80)
+                    HStack(spacing: 10) {
+                        Image(caregiver.avatar, bundle: Bundle(for: DesignKitResources.self))
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .clipShape(Circle())
+                            .frame(maxWidth: 90)
+                        VStack(alignment: .leading, spacing: 0) {
+                            Text(caregiver.name)
+                                .font(.title)
+                                .lineLimit(1)
+                                .truncationMode(.tail)
+                            Button("Edit profile") {}
+                                .font(.footnote)
+                        }
+                    }
                 }
-
-                Button {
-                    self.rootOwnerViewModel.isCaregiverPickerViewPresented = true
-                } label: {
-                    Label(String(l10n.ChangeCaregiverProfile.buttonLabel.characters), systemImage: "person.2.circle")
-                }
-                .buttonStyle(.bordered)
             } else {
                 Button {
                     self.rootOwnerViewModel.isCaregiverPickerViewPresented = true
@@ -37,6 +43,14 @@ struct EditCaregiverLabel: View {
             }
         }
         .frame(maxWidth: .infinity)
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Button("Switch profile", systemImage: "person.2.gobackward") {
+                    print("change profile")
+                    self.rootOwnerViewModel.isCaregiverPickerViewPresented = true
+                }
+            }
+        }
     }
 
     // MARK: Private
@@ -104,4 +118,8 @@ extension l10n {
     }, detail: {
         EmptyView()
     })
+    .onAppear {
+        let rootOwnerViewModel = RootOwnerViewModel.shared
+        rootOwnerViewModel.currentCaregiver = Caregiver(name: "Joe", avatar: "avatars_boy-1a")
+    }
 }

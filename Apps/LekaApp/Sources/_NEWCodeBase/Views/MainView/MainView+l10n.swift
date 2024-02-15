@@ -4,7 +4,7 @@
 
 import LocalizationKit
 
-// swiftlint:disable line_length
+// swiftlint:disable line_length nesting
 
 extension l10n {
     enum MainView {
@@ -25,9 +25,9 @@ extension l10n {
 
             static let sectionContent = LocalizedString("main_view.sidebar.section.content", value: "Content", comment: "The title of the section 'Content'")
 
-            static let sectionTracking = LocalizedString("main_view.sidebar.section.tracking", value: "Tracking", comment: "The title of the section 'Tracking'")
+            static let sectionUsers = LocalizedString("main_view.sidebar.section.monitoring", value: "Users", comment: "The title of the section 'Users'")
         }
     }
 }
 
-// swiftlint:enable line_length
+// swiftlint:enable line_length nesting
