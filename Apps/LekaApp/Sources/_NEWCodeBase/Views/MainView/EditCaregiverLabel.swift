@@ -13,39 +13,27 @@ struct EditCaregiverLabel: View {
     // MARK: Internal
 
     var body: some View {
-        VStack(alignment: .center, spacing: 10) {
+        VStack(alignment: .leading) {
             if let caregiver = self.rootOwnerViewModel.currentCaregiver {
                 Button {
                     self.rootOwnerViewModel.isEditCaregiverViewPresented = true
                 } label: {
-                    Image(caregiver.avatar, bundle: Bundle(for: DesignKitResources.self))
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .clipShape(Circle())
-                        .overlay {
-                            Image(systemName: "pencil.circle.fill")
-                                .resizable()
-                                .renderingMode(.original)
-                                .frame(maxWidth: 30, maxHeight: 30)
-                                .foregroundStyle(.orange)
-                                .padding(5)
-                                .offset(x: 30, y: -30)
+                    HStack(spacing: 10) {
+                        Image(caregiver.avatar, bundle: Bundle(for: DesignKitResources.self))
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .clipShape(Circle())
+                            .frame(maxWidth: 90)
+                        VStack(alignment: .leading, spacing: 0) {
+                            Text(caregiver.name)
+                                .font(.title)
+                                .lineLimit(1)
+                                .truncationMode(.tail)
+                            Button("Edit profile") {}
+                                .font(.footnote)
                         }
-                        .frame(maxWidth: 80)
-
-                    Text(caregiver.name)
-                        .font(.headline)
-                        .frame(maxWidth: 200)
+                    }
                 }
-
-                Divider()
-
-                Button {
-                    self.rootOwnerViewModel.isCaregiverPickerViewPresented = true
-                } label: {
-                    Label(String(l10n.ChangeCaregiverProfile.buttonLabel.characters), systemImage: "person.2.circle")
-                }
-                .buttonStyle(.bordered)
             } else {
                 Button {
                     self.rootOwnerViewModel.isCaregiverPickerViewPresented = true
@@ -55,11 +43,18 @@ struct EditCaregiverLabel: View {
             }
         }
         .frame(maxWidth: .infinity)
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Button("Switch profile", systemImage: "person.2.gobackward") {
+                    print("change profile")
+                    self.rootOwnerViewModel.isCaregiverPickerViewPresented = true
+                }
+            }
+        }
     }
 
     // MARK: Private
 
-    private let strokeColor: Color = .init(light: UIColor.systemGray3, dark: UIColor.systemGray2)
     @ObservedObject private var styleManager: StyleManager = .shared
     @ObservedObject private var rootOwnerViewModel: RootOwnerViewModel = .shared
 }
@@ -123,4 +118,8 @@ extension l10n {
     }, detail: {
         EmptyView()
     })
+    .onAppear {
+        let rootOwnerViewModel = RootOwnerViewModel.shared
+        rootOwnerViewModel.currentCaregiver = Caregiver(name: "Joe", avatar: "avatars_boy-1a")
+    }
 }
