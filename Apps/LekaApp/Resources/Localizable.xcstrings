@@ -632,7 +632,7 @@
                 }
             }
         },
-        "lekaapp.caregiver_picker.addButtonLabel": {
+        "lekaapp.caregiver_picker.add_button_label": {
             "comment": "Caregiver picker add button label",
             "extractionState": "extracted_with_value",
             "localizations": {
@@ -646,6 +646,24 @@
                     "stringUnit": {
                         "state": "translated",
                         "value": "Ajouter un profil"
+                    }
+                }
+            }
+        },
+        "lekaapp.caregiver_picker.close_button_label": {
+            "comment": "Caregiver picker close button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Close"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Fermer"
                     }
                 }
             }
@@ -1082,20 +1100,20 @@
                 }
             }
         },
-        "lekapp.sidebar.change_caregiver_profile.button_label": {
-            "comment": "The button label of caregiver profile picker",
+        "lekapp.sidebar.edit_caregiver_profile.button_label": {
+            "comment": "The button label of caregiver profile editor",
             "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Change profile"
+                        "value": "Edit profile"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Changer de profil"
+                        "value": "\u00c9diter mon profil"
                     }
                 }
             }
@@ -1582,6 +1600,42 @@
                     "stringUnit": {
                         "state": "translated",
                         "value": "R\u00e9glages"
+                    }
+                }
+            }
+        },
+        "settings_view.profiles_section.header": {
+            "comment": "Profiles section header",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Profiles"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Profils"
+                    }
+                }
+            }
+        },
+        "settings_view.profiles_section.switch_profiles_button_label": {
+            "comment": "Switch profile button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Switch profile"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Changer de profil"
                     }
                 }
             }
