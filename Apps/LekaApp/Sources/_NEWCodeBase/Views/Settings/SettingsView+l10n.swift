@@ -56,6 +56,12 @@ extension l10n {
             }
         }
 
+        enum ProfilesSection {
+            static let switchProfileButtonLabel = LocalizedString("settings_view.profiles_section.switch_profiles_button_label", value: "Switch profile", comment: "Switch profile button label")
+
+            static let header = LocalizedString("settings_view.profiles_section.header", value: "Profiles", comment: "Profiles section header")
+        }
+
         static let navigationTitle = LocalizedString("settings_view.navigation_title", value: "Settings", comment: "The navigation title of Settings View")
 
         static let closeButtonLabel = LocalizedString("settings_view.close_button_label", value: "Close", comment: "Close button label of Settings View")
