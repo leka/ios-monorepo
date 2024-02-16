@@ -44,15 +44,17 @@ repos:
       - id: check_xcstrings_stale_entries
         name: Check .xcstrings files for stale entries
         description: This hook checks .xcstrings files for stale entries
-        entry: Tools/Hooks/check_xcstrings_stale_entries.sh
-        language: script
+        entry: python3 Tools/Hooks/check_xcstrings_stale_entries.py
+        language: python
+        additional_dependencies: ["pygments"]
         files: '.*\.xcstrings'
 
       - id: check_xcstrings_unusual_terminators
         name: Check .xcstrings files for unusual terminators
         description: This hook checks .xcstrings files for unusual terminators
-        entry: Tools/Hooks/check_xcstrings_unusual_terminators.sh
-        language: script
+        entry: python3 Tools/Hooks/check_xcstrings_unusual_terminators.py
+        language: python
+        additional_dependencies: ["pygments"]
         files: '.*\.xcstrings'
 
       - id: check_yaml_definitions_professions
