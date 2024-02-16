@@ -12,6 +12,8 @@ import SwiftUI
 struct EditCaregiverLabel: View {
     // MARK: Internal
 
+    @Binding var isCaregiverPickerPresented: Bool
+
     var body: some View {
         VStack(alignment: .leading) {
             if let caregiver = self.rootOwnerViewModel.currentCaregiver {
@@ -29,25 +31,25 @@ struct EditCaregiverLabel: View {
                                 .font(.title)
                                 .lineLimit(1)
                                 .truncationMode(.tail)
-                            Button("Edit profile") {}
+                            Button(String(l10n.EditCaregiverProfile.buttonLabel.characters)) {}
                                 .font(.footnote)
                         }
                     }
                 }
             } else {
-                Button {
-                    self.rootOwnerViewModel.isCaregiverPickerViewPresented = true
-                } label: {
-                    UnselectedProfileLabel()
-                }
+                Image(systemName: "person.crop.circle.badge.questionmark")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(maxWidth: 90)
+                    .foregroundStyle(self.styleManager.accentColor!)
+                    .padding()
             }
         }
         .frame(maxWidth: .infinity)
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
-                Button("Switch profile", systemImage: "person.2.gobackward") {
-                    print("change profile")
-                    self.rootOwnerViewModel.isCaregiverPickerViewPresented = true
+                Button("", systemImage: "person.2.gobackward") {
+                    self.isCaregiverPickerPresented = true
                 }
             }
         }
@@ -59,38 +61,13 @@ struct EditCaregiverLabel: View {
     @ObservedObject private var rootOwnerViewModel: RootOwnerViewModel = .shared
 }
 
-// MARK: - UnselectedProfileLabel
-
-struct UnselectedProfileLabel: View {
-    // MARK: Internal
-
-    var body: some View {
-        VStack {
-            Image(systemName: "person.crop.circle.badge.questionmark")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 80)
-                .foregroundStyle(self.styleManager.accentColor!)
-
-            Text(l10n.SelectCaregiverProfile.buttonLabel)
-                .foregroundStyle(self.styleManager.accentColor!)
-                .font(.headline)
-                .multilineTextAlignment(.center)
-        }
-    }
-
-    // MARK: Private
-
-    @ObservedObject private var styleManager: StyleManager = .shared
-}
-
 // MARK: - l10n.ChangeCaregiverProfile
 
 // swiftlint:disable line_length
 
 extension l10n {
-    enum ChangeCaregiverProfile {
-        static let buttonLabel = LocalizedString("lekapp.sidebar.change_caregiver_profile.button_label", value: "Change profile", comment: "The button label of caregiver profile picker")
+    enum EditCaregiverProfile {
+        static let buttonLabel = LocalizedString("lekapp.sidebar.edit_caregiver_profile.button_label", value: "Edit profile", comment: "The button label of caregiver profile editor")
     }
 
     enum SelectCaregiverProfile {
@@ -103,7 +80,7 @@ extension l10n {
 #Preview {
     NavigationSplitView(sidebar: {
         List {
-            EditCaregiverLabel()
+            EditCaregiverLabel(isCaregiverPickerPresented: .constant(false))
 
             Button {} label: {
                 RobotConnectionLabel()

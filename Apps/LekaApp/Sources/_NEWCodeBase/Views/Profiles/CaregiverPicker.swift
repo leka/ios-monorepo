@@ -20,11 +20,10 @@ struct CaregiverPicker: View {
                         ForEach(self.rootOwnerViewModel.mockCaregiversSet) { caregiver in
                             Button {
                                 // TODO: (@team) - Add caregiver selection logic w/ Firebase
-                                self.rootOwnerViewModel.currentCaregiver = caregiver
                                 self.styleManager.colorScheme = caregiver.preferredColorScheme
                                 self.styleManager.accentColor = caregiver.preferredAccentColor
                                 self.authManagerViewModel.isUserLoggedOut = false
-                                self.rootOwnerViewModel.isCaregiverPickerViewPresented = false
+                                self.rootOwnerViewModel.currentCaregiver = caregiver
                             } label: {
                                 CaregiverAvatarCell(caregiver: caregiver)
                                     .frame(maxWidth: 140)

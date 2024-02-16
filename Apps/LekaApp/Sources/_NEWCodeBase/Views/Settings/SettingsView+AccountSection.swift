@@ -34,7 +34,6 @@ extension SettingsView {
                 Button(role: .destructive) {
                     self.rootOwnerViewModel.isSettingsViewPresented = false
                     self.authManager.signOut()
-                    self.rootOwnerViewModel.disconnect()
                 } label: {
                     Text(l10n.SettingsView.AccountSection.LogOut.alertButtonLabel)
                 }
