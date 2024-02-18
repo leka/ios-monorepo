@@ -5,7 +5,23 @@
 import FirebaseFirestore
 import SwiftUI
 
-struct Caregiver: AccountDocument {
+public struct Caregiver: AccountDocument {
+    // MARK: Public
+
+    @DocumentID public var id: String?
+    public var rootOwnerUid: String
+    @ServerTimestamp public var createdAt: Date?
+    @ServerTimestamp public var lastEditedAt: Date?
+    public var firstName: String
+    public var lastName: String
+    public var email: String
+    public var avatar: String
+    public var professions: [String]
+    public var colorScheme: Bool
+    public var accentColor: Int
+
+    // MARK: Internal
+
     enum CodingKeys: String, CodingKey {
         case id
         case rootOwnerUid = "root_owner_uid"
@@ -19,16 +35,4 @@ struct Caregiver: AccountDocument {
         case colorScheme = "color_scheme"
         case accentColor = "accent_color"
     }
-
-    @DocumentID var id: String?
-    var rootOwnerUid: String
-    @ServerTimestamp var createdAt: Date?
-    @ServerTimestamp var lastEditedAt: Date?
-    var firstName: String
-    var lastName: String
-    var email: String
-    var avatar: String
-    var professions: [String]
-    var colorScheme: Bool
-    var accentColor: Int
 }
