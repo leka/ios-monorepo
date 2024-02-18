@@ -27,16 +27,17 @@ public class DatabaseOperations {
             do {
                 try docRef.setData(from: documentData) { error in
                     if let error {
+                        log.error("\(error.localizedDescription)")
                         promise(.failure(DatabaseError.customError(error.localizedDescription)))
+                    } else {
+                        log.info("Document \(docRef.documentID) created successfully in \(collection). 🎉")
+                        promise(.success(docRef.documentID))
                     }
                 }
             } catch {
                 log.error("\(error.localizedDescription)")
                 promise(.failure(DatabaseError.encodeError))
             }
-
-            log.info("Document \(docRef.documentID) created successfully in \(collection). 🎉")
-            promise(.success(docRef.documentID))
         }
         .eraseToAnyPublisher()
     }
