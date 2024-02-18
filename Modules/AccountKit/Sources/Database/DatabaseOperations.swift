@@ -110,6 +110,23 @@ public class DatabaseOperations {
         .eraseToAnyPublisher()
     }
 
+    public func delete(from collection: DatabaseCollection, documentID: String) -> AnyPublisher<Void, Error> {
+        Future<Void, Error> { promise in
+            let docRef = self.database.collection(collection.rawValue).document(documentID)
+
+            docRef.delete { error in
+                if let error {
+                    log.error("\(error.localizedDescription)")
+                    promise(.failure(DatabaseError.customError(error.localizedDescription)))
+                } else {
+                    log.info("Document \(String(describing: documentID)) deleted successfully. 🎉")
+                    promise(.success(()))
+                }
+            }
+        }
+        .eraseToAnyPublisher()
+    }
+
     // MARK: Private
 
     private let database = Firestore.firestore()
