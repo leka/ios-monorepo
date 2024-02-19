@@ -9,16 +9,37 @@ import os
 import subprocess
 import uuid
 import sys
+from pathlib import Path
 import ruamel.yaml
 
 
 JTD_SCHEMA = "Specs/jtd/activity.jtd.json"
 SKILLS_FILE = "Modules/ContentKit/Resources/Content/definitions/skills.yml"
+CONTENTKIT_DIRECTORY = "Modules/ContentKit/Resources/Content"
 
 
 #
 # Mark: - Functions
 #
+
+
+def find_icon(icon):
+    """Find the icon file"""
+    start_path = Path(CONTENTKIT_DIRECTORY)
+    icon_filename = icon + ".activity.icon.png"
+    for file in start_path.rglob("*.activity.icon.png"):
+        if file.name == icon_filename:
+            return file
+    return None
+
+
+def list_icons(data):
+    """List of icons from the YAML file"""
+    icons = []
+    for l10n_entry in data["l10n"]:
+        if "details" in l10n_entry and "icon" in l10n_entry["details"]:
+            icons.append(l10n_entry["details"]["icon"])
+    return icons
 
 
 def skill_list():
@@ -96,6 +117,13 @@ def check_content_activity(filename):
             print(
                 f"\n❌ The skill {skill} in {filename} does not exist in {SKILLS_FILE}"
             )
+            file_is_valid = False
+
+    # ? Check icon exists
+    icons = list_icons(data)
+    for icon in icons:
+        if find_icon(icon) is None:
+            print(f"❌ The icon {icon}.activity.icon.png in {filename} does not exist")
             file_is_valid = False
 
     return file_is_valid
