@@ -41,13 +41,14 @@ struct CaregiverPicker: View {
                 CreateCaregiverView(isPresented: self.$isCaregiverCreationPresented) {}
             }
             .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    Button {
-                        self.dismiss()
-                    } label: {
-                        Text(l10n.CaregiverPicker.closeButtonLabel)
+                if self.rootOwnerViewModel.currentCaregiver != nil {
+                    ToolbarItem(placement: .topBarLeading) {
+                        Button {
+                            self.dismiss()
+                        } label: {
+                            Text(l10n.CaregiverPicker.closeButtonLabel)
+                        }
                     }
-                    .disabled(self.rootOwnerViewModel.currentCaregiver == nil)
                 }
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
