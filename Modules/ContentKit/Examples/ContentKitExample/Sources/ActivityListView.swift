@@ -15,6 +15,10 @@ struct ActivityListView: View {
         List {
             ForEach(self.activities) { activity in
                 NavigationLink(destination: ActivityDetailsView(activity: activity)) {
+                    Image(uiImage: activity.details.iconImage)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 44, height: 44)
                     Text(activity.name)
                 }
             }
