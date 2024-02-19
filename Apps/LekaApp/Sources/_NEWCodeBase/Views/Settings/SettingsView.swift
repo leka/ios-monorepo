@@ -16,6 +16,7 @@ struct SettingsView: View {
         NavigationStack {
             Form {
                 CredentialsSection()
+                ProfilesSection()
                 AccountSection()
             }
             .navigationTitle(String(l10n.SettingsView.navigationTitle.characters))

@@ -17,6 +17,8 @@ extension Bundle {
 // MARK: - MainView
 
 struct MainView: View {
+    // MARK: Internal
+
     @ObservedObject var navigation: Navigation = .shared
     @ObservedObject var rootOwnerViewModel: RootOwnerViewModel = .shared
     @ObservedObject var authManagerViewModel = AuthManagerViewModel.shared
@@ -26,7 +28,7 @@ struct MainView: View {
         NavigationSplitView {
             List(selection: self.$navigation.selectedCategory) {
                 if self.authManagerViewModel.userAuthenticationState == .loggedIn {
-                    EditCaregiverLabel()
+                    EditCaregiverLabel(isCaregiverPickerPresented: self.$isCaregiverPickerPresented)
                 } else {
                     NoAccountConnectedLabel()
                 }
@@ -73,8 +75,6 @@ struct MainView: View {
             }
             // TODO: (@ladislas) remove if not necessary
             // .disabled(navigation.disableUICompletly)
-//            .navigationTitle(String(l10n.MainView.Sidebar.navigationTitle.characters))
-//            .navigationBarTitleDisplayMode(.inline)
         } detail: {
             NavigationStack(path: self.$navigation.path) {
                 switch self.navigation.selectedCategory {
@@ -119,7 +119,13 @@ struct MainView: View {
         .fullScreenCover(isPresented: self.$viewModel.isRobotConnectionPresented) {
             RobotConnectionView(viewModel: RobotConnectionViewModel())
         }
-        .fullScreenCover(isPresented: self.$rootOwnerViewModel.isCaregiverPickerViewPresented) {
+        // TODO: (@team) - Update this onReceive when caregiver are managed by AccountKit
+        .onReceive(self.rootOwnerViewModel.$currentCaregiver) { caregiver in
+            if !self.authManagerViewModel.isUserLoggedOut {
+                self.isCaregiverPickerPresented = (caregiver == nil)
+            }
+        }
+        .fullScreenCover(isPresented: self.$isCaregiverPickerPresented) {
             CaregiverPicker()
         }
         .sheet(isPresented: self.$rootOwnerViewModel.isSettingsViewPresented) {
@@ -129,6 +135,10 @@ struct MainView: View {
             EditCaregiverView(modifiedCaregiver: self.rootOwnerViewModel.currentCaregiver!)
         }
     }
+
+    // MARK: Private
+
+    @State private var isCaregiverPickerPresented: Bool = false
 }
 
 #Preview {

@@ -24,8 +24,6 @@ class RootOwnerViewModel: ObservableObject {
 
     @Published var isEditCaregiverViewPresented = false
     @Published var isEditCarereceiverViewPresented = false
-    @Published var isCaregiverPickerViewPresented = false
-    @Published var isCarereceiverPickerViewPresented = false
 
     @Published var showConfirmCredentialsChange: Bool = false
     @Published var showConfirmDisconnection: Bool = false
@@ -51,10 +49,6 @@ class RootOwnerViewModel: ObservableObject {
         Carereceiver(name: "Abel", avatar: DesignKitAsset.Avatars.avatarsBoy1g.name, reinforcer: 2),
     ]
 
-    var isCarereceiverSelected: Bool {
-        self.currentCarereceiver != nil
-    }
-
     func getReinforcerFor(index: Int) -> UIImage {
         switch index {
             case 2: DesignKitAsset.Reinforcers.spinBlinkBlueViolet.image
@@ -63,10 +57,5 @@ class RootOwnerViewModel: ObservableObject {
             case 5: DesignKitAsset.Reinforcers.rainbow.image
             default: DesignKitAsset.Reinforcers.spinBlinkGreenOff.image
         }
-    }
-
-    func disconnect() {
-        self.currentCaregiver = nil
-        self.currentCarereceiver = nil
     }
 }

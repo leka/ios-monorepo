@@ -12,6 +12,8 @@ import SwiftUI
 struct CaregiverPicker: View {
     // MARK: Internal
 
+    @Environment(\.dismiss) var dismiss
+
     var body: some View {
         NavigationStack {
             VStack {
@@ -20,19 +22,15 @@ struct CaregiverPicker: View {
                         ForEach(self.rootOwnerViewModel.mockCaregiversSet) { caregiver in
                             Button {
                                 // TODO: (@team) - Add caregiver selection logic w/ Firebase
-                                self.rootOwnerViewModel.currentCaregiver = caregiver
                                 self.styleManager.colorScheme = caregiver.preferredColorScheme
                                 self.styleManager.accentColor = caregiver.preferredAccentColor
                                 self.authManagerViewModel.isUserLoggedOut = false
-                                self.rootOwnerViewModel.isCaregiverPickerViewPresented = false
+                                self.rootOwnerViewModel.currentCaregiver = caregiver
                             } label: {
                                 CaregiverAvatarCell(caregiver: caregiver)
                                     .frame(maxWidth: 140)
                             }
                         }
-
-                        // ? Last item is Add profile button
-                        self.addCaregiverButton
                     }
                     .padding()
                 }
@@ -41,6 +39,24 @@ struct CaregiverPicker: View {
             .navigationTitle(String(l10n.CaregiverPicker.title.characters))
             .sheet(isPresented: self.$isCaregiverCreationPresented) {
                 CreateCaregiverView(isPresented: self.$isCaregiverCreationPresented) {}
+            }
+            .toolbar {
+                if self.rootOwnerViewModel.currentCaregiver != nil {
+                    ToolbarItem(placement: .topBarLeading) {
+                        Button {
+                            self.dismiss()
+                        } label: {
+                            Text(l10n.CaregiverPicker.closeButtonLabel)
+                        }
+                    }
+                }
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        self.isCaregiverCreationPresented = true
+                    } label: {
+                        Text(l10n.CaregiverPicker.addButtonLabel)
+                    }
+                }
             }
         }
     }
@@ -55,29 +71,6 @@ struct CaregiverPicker: View {
 
     @State private var selected: String = ""
     @State private var isCaregiverCreationPresented: Bool = false
-
-    private var addCaregiverButton: some View {
-        Button {
-            self.isCaregiverCreationPresented = true
-        } label: {
-            VStack(spacing: 10) {
-                Circle()
-                    .fill(Color(uiColor: .systemGray4))
-                    .frame(maxWidth: 140)
-                    .overlay {
-                        Image(systemName: "plus")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 50)
-                            .foregroundStyle(.gray)
-                    }
-
-                Text(l10n.CaregiverPicker.addButtonLabel)
-                    .font(.headline)
-                    .foregroundStyle(.secondary)
-            }
-        }
-    }
 }
 
 // MARK: - l10n.CaregiverPicker
@@ -86,7 +79,9 @@ extension l10n {
     enum CaregiverPicker {
         static let title = LocalizedString("lekaapp.caregiver_picker.title", value: "Who are you ?", comment: "Caregiver picker title")
 
-        static let addButtonLabel = LocalizedString("lekaapp.caregiver_picker.addButtonLabel", value: "Add profile", comment: "Caregiver picker add button label")
+        static let addButtonLabel = LocalizedString("lekaapp.caregiver_picker.add_button_label", value: "Add profile", comment: "Caregiver picker add button label")
+
+        static let closeButtonLabel = LocalizedString("lekaapp.caregiver_picker.close_button_label", value: "Close", comment: "Caregiver picker close button label")
     }
 }
 
