@@ -9,9 +9,9 @@ public struct Caregiver: AccountDocument {
     // MARK: Public
 
     @DocumentID public var id: String?
-    public var rootOwnerUid: String
     @ServerTimestamp public var createdAt: Date?
     @ServerTimestamp public var lastEditedAt: Date?
+    public var rootOwnerUid: String
     public var firstName: String
     public var lastName: String
     public var email: String
