@@ -108,9 +108,7 @@ struct MainView: View {
                             .bold()
 
                     case .sampleActivities:
-                        Text("Sample Activities")
-                            .font(.largeTitle)
-                            .bold()
+                        SampleActivityListView()
 
                     case .carereceivers:
                         CarereceiverPicker()
