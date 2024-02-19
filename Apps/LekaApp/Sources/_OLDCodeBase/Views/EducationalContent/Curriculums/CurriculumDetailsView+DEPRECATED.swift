@@ -39,7 +39,7 @@ struct CurriculumDetailsViewDeprecated: View {
                         .edgesIgnoringSafeArea(.bottom)
                         .overlay { InstructionsViewDeprecated() }
                         .overlay {
-                            GoButton()
+                            GoButtonDeprecated()
                                 .disabled(self.goButtonIsDisabled())
                         }
                 }

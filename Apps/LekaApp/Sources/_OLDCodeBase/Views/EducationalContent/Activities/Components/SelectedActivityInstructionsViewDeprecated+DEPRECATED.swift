@@ -25,7 +25,7 @@ struct SelectedActivityInstructionsViewDeprecated: View {
                     .fill(DesignKitAsset.Colors.lekaLightGray.swiftUIColor)
                     .edgesIgnoringSafeArea(.bottom)
                     .overlay { InstructionsViewDeprecated() }
-                    .overlay { GoButton() }
+                    .overlay { GoButtonDeprecated() }
             }
         }
         .preferredColorScheme(.light)

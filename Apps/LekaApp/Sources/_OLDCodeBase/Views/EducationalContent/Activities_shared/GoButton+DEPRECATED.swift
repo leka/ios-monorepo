@@ -5,7 +5,7 @@
 import DesignKit
 import SwiftUI
 
-struct GoButton: View {
+struct GoButtonDeprecated: View {
     // MARK: Internal
 
     @EnvironmentObject var company: CompanyViewModelDeprecated
