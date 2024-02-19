@@ -48,7 +48,7 @@ struct LoginViewDeprecated: View {
     // re-enable autofill modifiers in LekaTextField when OK (textContentType)
 
     func connectIsDisabled() -> Bool {
-        !self.mail.isValidEmail() || self.mail.isEmpty || self.password.isEmpty
+        !self.mail.isValidEmailDeprecated() || self.mail.isEmpty || self.password.isEmpty
     }
 
     // MARK: Private
@@ -88,13 +88,13 @@ struct LoginViewDeprecated: View {
     @ViewBuilder
     private var mailTextField: some View {
         let mailTitle: String = {
-            guard self.mail.isValidEmail() || self.mail.isEmpty || self.isEditing else {
+            guard self.mail.isValidEmailDeprecated() || self.mail.isEmpty || self.isEditing else {
                 return "Email incorrect"
             }
             return "Email"
         }()
 
-        let mailLabelColor: Color = self.mail.isValidEmail() || self.mail.isEmpty || self.isEditing
+        let mailLabelColor: Color = self.mail.isValidEmailDeprecated() || self.mail.isEmpty || self.isEditing
             ? DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor : .red
 
         LekaTextFieldDeprecated(

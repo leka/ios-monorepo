@@ -9,8 +9,8 @@ struct GoButton: View {
     // MARK: Internal
 
     @EnvironmentObject var company: CompanyViewModelDeprecated
-    @EnvironmentObject var activityVM: ActivityViewModel
-    @EnvironmentObject var navigationVM: NavigationViewModel
+    @EnvironmentObject var activityVM: ActivityViewModelDeprecated
+    @EnvironmentObject var navigationVM: NavigationViewModelDeprecated
     @EnvironmentObject var robotVM: RobotViewModel
     @EnvironmentObject var settings: SettingsViewModelDeprecated
 

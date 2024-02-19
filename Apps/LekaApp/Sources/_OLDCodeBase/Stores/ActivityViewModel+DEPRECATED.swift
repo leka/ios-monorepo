@@ -8,14 +8,14 @@ import UIKit
 import Yams
 
 // @MainActor
-class ActivityViewModel: NSObject, ObservableObject, YamlFileDecodable {
+class ActivityViewModelDeprecated: NSObject, ObservableObject, YamlFileDecodable {
     // MARK: - Current Activity's properties
 
-    @Published var currentActivity = Activity()
+    @Published var currentActivity = ActivityDeprecated()
     @Published var selectedActivityID: UUID? // save scroll position
     @Published var currentActivityTitle: String = ""
     @Published var currentActivityType: String = "touch_to_select"
-    @Published var steps: [Step] = []
+    @Published var steps: [StepDeprecated] = []
     @Published var numberOfSteps: Int = 0
     @Published var currentStep: Int = 0
     @Published var images: [String] = []
@@ -49,22 +49,22 @@ class ActivityViewModel: NSObject, ObservableObject, YamlFileDecodable {
     @Published var isSpeaking: Bool = false
     @Published var synth = AVSpeechSynthesizer()
 
-    func getActivity(_ title: String) -> Activity {
+    func getActivity(_ title: String) -> ActivityDeprecated {
         do {
-            return try decodeYamlFile(withName: title, toType: Activity.self)
+            return try decodeYamlFile(withName: title, toType: ActivityDeprecated.self)
         } catch {
             print("Activities: Failed to decode Yaml file with error:", error)
-            return Activity()
+            return ActivityDeprecated()
         }
     }
 
     // Temporary Instructions Source
     func getInstructions() -> String {
         do {
-            return try decodeYamlFile(withName: "instructions", toType: Instructions.self).instructions.localized()
+            return try decodeYamlFile(withName: "instructions", toType: InstructionsDeprecated.self).instructions.localized()
         } catch {
             print("Instructions: Failed to decode Yaml file with error:", error)
-            return Instructions().instructions.localized()
+            return InstructionsDeprecated().instructions.localized()
         }
     }
 
@@ -103,7 +103,7 @@ class ActivityViewModel: NSObject, ObservableObject, YamlFileDecodable {
     // MARK: - GameEngine Methods
 
     // fetch selected activity's data + setup and randomize
-    func setupGame(with: Activity) {
+    func setupGame(with: ActivityDeprecated) {
         self.currentActivityTitle = with.short.localized()
         self.currentActivityType = with.activityType ?? "touch_to_select"
         self.numberOfSteps = with.stepsAmount
@@ -124,9 +124,9 @@ class ActivityViewModel: NSObject, ObservableObject, YamlFileDecodable {
     func randomizeSteps() {
         if self.currentActivity.isRandom {
             self.steps.shuffle()
-            var store: [Step] = []
-            var buffer: [Step] = []
-            var previous = Step()
+            var store: [StepDeprecated] = []
+            var buffer: [StepDeprecated] = []
+            var previous = StepDeprecated()
             for step in self.steps {
                 if step == previous {
                     store.append(step)

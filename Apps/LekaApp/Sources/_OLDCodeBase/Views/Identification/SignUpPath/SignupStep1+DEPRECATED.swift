@@ -80,7 +80,7 @@ struct SignupStep1Deprecated: View {
             }
         )
         .buttonStyle(
-            BorderedCapsule_NoFeedback_ButtonStyle(
+            BorderedCapsule_NoFeedback_ButtonStyleDeprecated(
                 font: .body,
                 color: DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor,
                 width: self.metrics.tileBtnWidth

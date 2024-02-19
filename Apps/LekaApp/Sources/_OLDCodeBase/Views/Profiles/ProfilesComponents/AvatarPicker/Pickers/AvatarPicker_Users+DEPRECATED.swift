@@ -9,7 +9,7 @@ struct AvatarPicker_UsersDeprecated: View {
 
     @EnvironmentObject var company: CompanyViewModelDeprecated
     @EnvironmentObject var metrics: UIMetrics
-    @EnvironmentObject var navigationVM: NavigationViewModel
+    @EnvironmentObject var navigationVM: NavigationViewModelDeprecated
 
     var body: some View {
         ZStack {

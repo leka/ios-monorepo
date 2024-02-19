@@ -21,6 +21,6 @@ struct AvatarPickerTriggerButton_TeachersDeprecated: View {
                 }
             }
         )
-        .buttonStyle(NoFeedback_ButtonStyle())
+        .buttonStyle(NoFeedback_ButtonStyleDeprecated())
     }
 }

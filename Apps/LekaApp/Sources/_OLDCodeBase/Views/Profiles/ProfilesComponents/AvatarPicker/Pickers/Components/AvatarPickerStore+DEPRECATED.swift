@@ -43,7 +43,7 @@ struct AvatarPickerStoreDeprecated: View {
                                 isSelected: .constant(self.selected == item)
                             )
                         }
-                        .buttonStyle(NoFeedback_ButtonStyle())
+                        .buttonStyle(NoFeedback_ButtonStyleDeprecated())
                         .id(item)
                     }
                 }

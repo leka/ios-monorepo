@@ -13,7 +13,7 @@ struct CreateUserProfileViewDeprecated: View {
     @EnvironmentObject var company: CompanyViewModelDeprecated
     @EnvironmentObject var viewRouter: ViewRouterDeprecated
     @EnvironmentObject var metrics: UIMetrics
-    @EnvironmentObject var navigationVM: NavigationViewModel
+    @EnvironmentObject var navigationVM: NavigationViewModelDeprecated
     @Environment(\.dismiss) var dismiss
 
     var body: some View {
@@ -29,7 +29,7 @@ struct CreateUserProfileViewDeprecated: View {
                     ReinforcerPickerDeprecated()
                     self.accessoryView
                     Spacer()
-                    DeleteProfileButton(show: self.$showDeleteConfirmation)
+                    DeleteProfileButtonDeprecated(show: self.$showDeleteConfirmation)
                 }
             }
         }
@@ -108,7 +108,7 @@ struct CreateUserProfileViewDeprecated: View {
             )
             .disabled(self.company.bufferTeacher.name.isEmpty)
             .buttonStyle(
-                BorderedCapsule_NoFeedback_ButtonStyle(
+                BorderedCapsule_NoFeedback_ButtonStyleDeprecated(
                     font: .body,
                     color: DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor,
                     width: self.metrics.tileBtnWidth
@@ -195,7 +195,7 @@ struct CreateUserProfileView_Previews: PreviewProvider {
         CreateUserProfileViewDeprecated()
             .environmentObject(CompanyViewModelDeprecated())
             .environmentObject(ViewRouterDeprecated())
-            .environmentObject(NavigationViewModel())
+            .environmentObject(NavigationViewModelDeprecated())
             .environmentObject(UIMetrics())
             .previewInterfaceOrientation(.landscapeLeft)
     }

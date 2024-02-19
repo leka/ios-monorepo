@@ -4,7 +4,7 @@
 
 import SwiftUI
 
-struct DeleteProfileButton: View {
+struct DeleteProfileButtonDeprecated: View {
     @EnvironmentObject var company: CompanyViewModelDeprecated
     @EnvironmentObject var metrics: UIMetrics
 
@@ -18,7 +18,7 @@ struct DeleteProfileButton: View {
                 Label("Supprimer le profil", systemImage: "trash.fill")
                     .padding(.horizontal, 20)
             }
-            .buttonStyle(BorderedCapsule_NoFeedback_ButtonStyle(font: .body, color: Color.red))
+            .buttonStyle(BorderedCapsule_NoFeedback_ButtonStyleDeprecated(font: .body, color: Color.red))
             .padding(.vertical, 10)
         } else {
             EmptyView()

@@ -5,10 +5,10 @@
 import DesignKit
 import SwiftUI
 
-// MARK: - PlaySoundButton
+// MARK: - PlaySoundButtonDeprecated
 
-struct PlaySoundButton: View {
-    @EnvironmentObject var activityVM: ActivityViewModel
+struct PlaySoundButtonDeprecated: View {
+    @EnvironmentObject var activityVM: ActivityViewModelDeprecated
 
     var body: some View {
         Button(
@@ -22,7 +22,7 @@ struct PlaySoundButton: View {
                     .padding(40)
             }
         )
-        .buttonStyle(PlaySound_ButtonStyle(progress: self.activityVM.progress))
+        .buttonStyle(PlaySound_ButtonStyleDeprecated(progress: self.activityVM.progress))
         .frame(
             width: 160,
             height: 200,
@@ -42,7 +42,7 @@ struct PlaySoundButton: View {
 
 struct PlaySoundButton_Previews: PreviewProvider {
     static var previews: some View {
-        PlaySoundButton()
-            .environmentObject(ActivityViewModel())
+        PlaySoundButtonDeprecated()
+            .environmentObject(ActivityViewModelDeprecated())
     }
 }

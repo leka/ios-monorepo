@@ -7,12 +7,12 @@
 import DesignKit
 import SwiftUI
 
-// MARK: - InstructionsView
+// MARK: - InstructionsViewDeprecated
 
-struct InstructionsView: View {
+struct InstructionsViewDeprecated: View {
     // MARK: Internal
 
-    @EnvironmentObject var activityVM: ActivityViewModel
+    @EnvironmentObject var activityVM: ActivityViewModelDeprecated
     @EnvironmentObject var metrics: UIMetrics
 
     var body: some View {
@@ -55,8 +55,8 @@ struct InstructionsView: View {
 
 struct InstructionsView_Previews: PreviewProvider {
     static var previews: some View {
-        InstructionsView()
+        InstructionsViewDeprecated()
             .environmentObject(UIMetrics())
-            .environmentObject(ActivityViewModel())
+            .environmentObject(ActivityViewModelDeprecated())
     }
 }

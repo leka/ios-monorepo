@@ -11,7 +11,7 @@ struct UserSet_AvatarCellDeprecated: View {
     @EnvironmentObject var company: CompanyViewModelDeprecated
     @EnvironmentObject var settings: SettingsViewModelDeprecated
     @EnvironmentObject var metrics: UIMetrics
-    @EnvironmentObject var navigationVM: NavigationViewModel
+    @EnvironmentObject var navigationVM: NavigationViewModelDeprecated
 
     let user: UserDeprecated
 
@@ -32,7 +32,7 @@ struct UserSet_AvatarCellDeprecated: View {
                     self.selectionIndicator(id: self.user.id)
                     // Avatar
                     Circle()
-                        .fill(
+                        .fillDeprecated(
                             DesignKitAsset.Colors.lekaLightGray.swiftUIColor,
                             strokeBorder: .white,
                             lineWidth: 3
@@ -87,7 +87,7 @@ struct UserSet_AvatarCellDeprecated: View {
                     )
             }
         }
-        .buttonStyle(NoFeedback_ButtonStyle())
+        .buttonStyle(NoFeedback_ButtonStyleDeprecated())
     }
 
     // MARK: Private

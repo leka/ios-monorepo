@@ -4,17 +4,17 @@
 
 import SwiftUI
 
-// MARK: - ActivityCell
+// MARK: - ActivityCellDeprecated
 
-struct ActivityCell: Identifiable {
+struct ActivityCellDeprecated: Identifiable {
     var id = UUID()
     var img: String
     var texts: [String]
 }
 
-// MARK: - Instructions
+// MARK: - InstructionsDeprecated
 
-struct Instructions: Codable {
+struct InstructionsDeprecated: Codable {
     // MARK: Lifecycle
 
     init(instructions: LocalizedContent = LocalizedContent()) {
@@ -26,9 +26,9 @@ struct Instructions: Codable {
     var instructions: LocalizedContent
 }
 
-// MARK: - Activity
+// MARK: - ActivityDeprecated
 
-struct Activity: Codable {
+struct ActivityDeprecated: Codable {
     // MARK: Lifecycle
 
     init(
@@ -40,7 +40,7 @@ struct Activity: Codable {
         isRandom: Bool = false,
         numberOfImages: Int = 0,
         randomImagePosition: Bool = false,
-        steps: [Step] = []
+        steps: [StepDeprecated] = []
     ) {
         self.id = id
         self.title = title
@@ -75,13 +75,13 @@ struct Activity: Codable {
     var isRandom: Bool
     var numberOfImages: Int
     var randomImagePosition: Bool
-    var steps: [Step]
+    var steps: [StepDeprecated]
 }
 
-// MARK: - Step
+// MARK: - StepDeprecated
 
 // Step conforms to Equatable because steps are compared when randomized
-struct Step: Codable, Equatable {
+struct StepDeprecated: Codable, Equatable {
     // MARK: Lifecycle
 
     init(
@@ -110,7 +110,7 @@ struct Step: Codable, Equatable {
     var images: [String]
     var sound: [String]?
 
-    static func == (lhs: Step, rhs: Step) -> Bool {
+    static func == (lhs: StepDeprecated, rhs: StepDeprecated) -> Bool {
         lhs.instruction == rhs.instruction
     }
 }

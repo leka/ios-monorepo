@@ -5,13 +5,13 @@
 import DesignKit
 import SwiftUI
 
-// MARK: - CommandListView
+// MARK: - CommandListViewDeprecated
 
-struct CommandListView: View {
+struct CommandListViewDeprecated: View {
     // MARK: Internal
 
     @EnvironmentObject var settings: SettingsViewModelDeprecated
-    @EnvironmentObject var navigationVM: NavigationViewModel
+    @EnvironmentObject var navigationVM: NavigationViewModelDeprecated
 
     var body: some View {
         ZStack {
@@ -31,7 +31,7 @@ struct CommandListView: View {
                         Color.clear
                             .frame(height: self.settings.companyIsConnected ? 40 : 0)
                     } else {
-                        InfoTileManager()
+                        InfoTileManagerDeprecated()
                     }
                 }
                 Spacer()
@@ -52,8 +52,8 @@ struct CommandListView: View {
 
 struct CommandListView_Previews: PreviewProvider {
     static var previews: some View {
-        CommandListView()
-            .environmentObject(NavigationViewModel())
+        CommandListViewDeprecated()
+            .environmentObject(NavigationViewModelDeprecated())
             .environmentObject(SettingsViewModelDeprecated())
             .environmentObject(UIMetrics())
     }

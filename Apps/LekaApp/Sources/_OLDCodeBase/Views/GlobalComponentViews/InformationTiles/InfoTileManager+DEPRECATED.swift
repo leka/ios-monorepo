@@ -4,21 +4,21 @@
 
 import SwiftUI
 
-struct InfoTileManager: View {
-    @EnvironmentObject var navigationVM: NavigationViewModel
+struct InfoTileManagerDeprecated: View {
+    @EnvironmentObject var navigationVM: NavigationViewModelDeprecated
     @EnvironmentObject var settings: SettingsViewModelDeprecated
 
     var body: some View {
         Group {
             if !self.settings.companyIsConnected {
                 HStack(spacing: 15) {
-                    InfoTile(data: .discovery)
-                    InfoTile(data: self.navigationVM.contextualInfo())
+                    InfoTileDeprecated(data: .discovery)
+                    InfoTileDeprecated(data: self.navigationVM.contextualInfo())
                 }
                 .padding(.horizontal, 20)
                 .padding(.vertical, 10)
             } else if self.navigationVM.showInfo() {
-                InfoTile(data: self.navigationVM.contextualInfo())
+                InfoTileDeprecated(data: self.navigationVM.contextualInfo())
                     .transition(.move(edge: .top).combined(with: .opacity))
                     .padding(.horizontal, 20)
                     .padding(.vertical, 10)

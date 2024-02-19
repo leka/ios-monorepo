@@ -5,13 +5,13 @@
 import DesignKit
 import SwiftUI
 
-// MARK: - InfoTile
+// MARK: - InfoTileDeprecated
 
-struct InfoTile: View {
+struct InfoTileDeprecated: View {
     // MARK: Internal
 
     @EnvironmentObject var settings: SettingsViewModelDeprecated
-    @EnvironmentObject var navigationVM: NavigationViewModel
+    @EnvironmentObject var navigationVM: NavigationViewModelDeprecated
     @EnvironmentObject var viewRouter: ViewRouterDeprecated
     @EnvironmentObject var metrics: UIMetrics
 
@@ -100,7 +100,7 @@ struct InfoTile: View {
         }
         .padding(.horizontal, 20)
         .buttonStyle(
-            BorderedCapsule_NoFeedback_ButtonStyle(
+            BorderedCapsule_NoFeedback_ButtonStyleDeprecated(
                 font: .body,
                 color: DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor,
                 width: 300
@@ -115,9 +115,9 @@ struct InfoTile_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
             Color.teal.ignoresSafeArea()
-            InfoTile(data: .discovery)
+            InfoTileDeprecated(data: .discovery)
                 .environmentObject(SettingsViewModelDeprecated())
-                .environmentObject(NavigationViewModel())
+                .environmentObject(NavigationViewModelDeprecated())
                 .environmentObject(UIMetrics())
                 .environmentObject(ViewRouterDeprecated())
                 .padding()

@@ -5,8 +5,8 @@
 import DesignKit
 import SwiftUI
 
-struct SidebarSections: View {
-    @EnvironmentObject var navigationVM: NavigationViewModel
+struct SidebarSectionsDeprecated: View {
+    @EnvironmentObject var navigationVM: NavigationViewModelDeprecated
     @EnvironmentObject var robotVM: RobotViewModel
     @EnvironmentObject var company: CompanyViewModelDeprecated
     @EnvironmentObject var metrics: UIMetrics

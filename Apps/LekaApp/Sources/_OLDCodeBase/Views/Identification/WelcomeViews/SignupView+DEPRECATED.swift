@@ -39,7 +39,7 @@ struct SignupViewDeprecated: View {
     }
 
     func connectIsDisabled() -> Bool {
-        !self.mail.isValidEmail() || !self.passwordsMatch() || self.mail.isEmpty || self.password.isEmpty || self.confirm.isEmpty
+        !self.mail.isValidEmailDeprecated() || !self.passwordsMatch() || self.mail.isEmpty || self.password.isEmpty || self.confirm.isEmpty
             || self.accountAlreadyExists
     }
 
@@ -63,7 +63,7 @@ struct SignupViewDeprecated: View {
     @ViewBuilder
     private var mailTextField: some View {
         var mailTitle: String {
-            guard self.mail.isValidEmail() || self.mail.isEmpty || self.isEditing else {
+            guard self.mail.isValidEmailDeprecated() || self.mail.isEmpty || self.isEditing else {
                 return "Email incorrect"
             }
             guard self.accountAlreadyExists else {
@@ -74,7 +74,7 @@ struct SignupViewDeprecated: View {
 
         var mailLabelColor: Color {
             // TODO(@ladislas): review logic in the future
-            let color: Color = if self.mail.isValidEmail() || self.mail.isEmpty || self.isEditing {
+            let color: Color = if self.mail.isValidEmailDeprecated() || self.mail.isEmpty || self.isEditing {
                 if self.accountAlreadyExists {
                     .red
                 } else {

@@ -5,18 +5,18 @@
 import DesignKit
 import SwiftUI
 
-struct SidebarView: View {
+struct SidebarViewDeprecated: View {
     // MARK: Internal
 
-    @EnvironmentObject var navigationVM: NavigationViewModel
+    @EnvironmentObject var navigationVM: NavigationViewModelDeprecated
     @EnvironmentObject var settings: SettingsViewModelDeprecated
     @EnvironmentObject var metrics: UIMetrics
 
     var body: some View {
         ScrollView {
             VStack {
-                SidebarHeaderView()
-                SidebarSections()
+                SidebarHeaderViewDeprecated()
+                SidebarSectionsDeprecated()
                 Spacer()
                 VStack(spacing: 20) {
                     Spacer()

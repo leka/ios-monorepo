@@ -5,13 +5,13 @@
 import AVFoundation
 import SwiftUI
 
-// MARK: - PlayZone
+// MARK: - PlayZoneDeprecated
 
-struct PlayZone: View {
+struct PlayZoneDeprecated: View {
     // MARK: Internal
 
     @ObservedObject var gameMetrics: GameMetrics
-    @EnvironmentObject var activityVM: ActivityViewModel
+    @EnvironmentObject var activityVM: ActivityViewModelDeprecated
 
     var body: some View {
         HStack {
@@ -31,7 +31,7 @@ struct PlayZone: View {
                                 alignment: .center
                             )
                     }
-                    .buttonStyle(ActivityAnswer_ButtonStyle(isEnabled: self.activityVM.currentMediaHasBeenPlayedOnce))
+                    .buttonStyle(ActivityAnswer_ButtonStyleDeprecated(isEnabled: self.activityVM.currentMediaHasBeenPlayedOnce))
                     .animation(.easeIn(duration: self.gameMetrics.playGridBtnAnimDuration), value: self.activityVM.percent)
                     .overlay(
                         ZStack {
@@ -65,7 +65,7 @@ struct PlayZone: View {
         .background(
             HStack {
                 if self.activityVM.currentActivityType != "touch_to_select" {
-                    PlaySoundButton()
+                    PlaySoundButtonDeprecated()
                         .padding(.leading, 50)
                     Spacer()
                 } else {
@@ -120,8 +120,8 @@ struct PlayZone: View {
 
 struct PlayZone_Previews: PreviewProvider {
     static var previews: some View {
-        PlayZone(gameMetrics: GameMetrics())
-            .environmentObject(ActivityViewModel())
+        PlayZoneDeprecated(gameMetrics: GameMetrics())
+            .environmentObject(ActivityViewModelDeprecated())
             .environmentObject(GameMetrics())
             .previewInterfaceOrientation(.landscapeLeft)
     }

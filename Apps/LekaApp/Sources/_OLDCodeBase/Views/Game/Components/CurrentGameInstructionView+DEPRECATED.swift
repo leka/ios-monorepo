@@ -5,12 +5,12 @@
 import DesignKit
 import SwiftUI
 
-// MARK: - CurrentGameInstructionView
+// MARK: - CurrentGameInstructionViewDeprecated
 
-struct CurrentGameInstructionView: View {
+struct CurrentGameInstructionViewDeprecated: View {
     // MARK: Internal
 
-    @EnvironmentObject var activityVM: ActivityViewModel
+    @EnvironmentObject var activityVM: ActivityViewModelDeprecated
     @ObservedObject var gameMetrics: GameMetrics
     @Environment(\.dismiss) var dismiss
 
@@ -25,7 +25,7 @@ struct CurrentGameInstructionView: View {
 
                 VStack(spacing: 0) {
                     self.activityDetailHeader
-                    InstructionsView()
+                    InstructionsViewDeprecated()
                 }
             }
             .navigationBarTitleDisplayMode(.inline)
@@ -75,6 +75,6 @@ struct CurrentGameInstructionView: View {
 
 struct CurrentGameInstructionView_Previews: PreviewProvider {
     static var previews: some View {
-        CurrentGameInstructionView(gameMetrics: GameMetrics())
+        CurrentGameInstructionViewDeprecated(gameMetrics: GameMetrics())
     }
 }

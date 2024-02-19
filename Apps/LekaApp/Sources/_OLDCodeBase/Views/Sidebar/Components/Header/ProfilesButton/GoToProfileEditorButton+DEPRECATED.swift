@@ -5,14 +5,14 @@
 import DesignKit
 import SwiftUI
 
-// MARK: - GoToProfileEditorButton
+// MARK: - GoToProfileEditorButtonDeprecated
 
-struct GoToProfileEditorButton: View {
+struct GoToProfileEditorButtonDeprecated: View {
     // MARK: Internal
 
     @EnvironmentObject var settings: SettingsViewModelDeprecated
     @EnvironmentObject var metrics: UIMetrics
-    @EnvironmentObject var navigationVM: NavigationViewModel
+    @EnvironmentObject var navigationVM: NavigationViewModelDeprecated
 
     var body: some View {
         Button {
@@ -57,9 +57,9 @@ struct GoToProfileEditorButton: View {
 
 struct GoToProfileEditorButton_Previews: PreviewProvider {
     static var previews: some View {
-        GoToProfileEditorButton()
+        GoToProfileEditorButtonDeprecated()
             .environmentObject(SettingsViewModelDeprecated())
             .environmentObject(UIMetrics())
-            .environmentObject(NavigationViewModel())
+            .environmentObject(NavigationViewModelDeprecated())
     }
 }

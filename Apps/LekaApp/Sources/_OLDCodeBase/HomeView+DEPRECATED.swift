@@ -11,7 +11,7 @@ import SwiftUI
 struct HomeViewDeprecated: View {
     // MARK: Internal
 
-    @EnvironmentObject var navigationVM: NavigationViewModel
+    @EnvironmentObject var navigationVM: NavigationViewModelDeprecated
     @EnvironmentObject var settings: SettingsViewModelDeprecated
     @EnvironmentObject var metrics: UIMetrics
 
@@ -19,7 +19,7 @@ struct HomeViewDeprecated: View {
         Group {
             // Educ Content
             NavigationSplitView(columnVisibility: self.$navigationVM.sidebarVisibility) {
-                SidebarView()
+                SidebarViewDeprecated()
             } detail: {
                 NavigationStack(path: self.$navigationVM.pathsFromHome) {
                     self.navigationVM.allSidebarDestinationViews
@@ -47,7 +47,7 @@ struct HomeViewDeprecated: View {
             RobotConnectionView()
         }
         .fullScreenCover(isPresented: self.$navigationVM.showActivitiesFullScreenCover) {
-            FullScreenCoverToGameView()
+            FullScreenCoverToGameViewDeprecated()
         }
         .alert("Voulez-vous quitter le mode exploratoire ?", isPresented: self.$settings.showSwitchOffExploratoryAlert) {
             Button(role: .destructive) {
@@ -82,7 +82,7 @@ struct HomeViewDeprecated: View {
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeViewDeprecated()
-            .environmentObject(NavigationViewModel())
+            .environmentObject(NavigationViewModelDeprecated())
             .environmentObject(SettingsViewModelDeprecated())
             .environmentObject(UIMetrics())
             .previewInterfaceOrientation(.landscapeLeft)

@@ -11,7 +11,7 @@ import SwiftUI
 
 // Fill & Stroke with 1 modifier
 extension Shape {
-    func fill(
+    func fillDeprecated(
         _ fillStyle: some ShapeStyle, strokeBorder strokeStyle: some ShapeStyle, lineWidth: CGFloat = 1
     ) -> some View {
         stroke(strokeStyle, lineWidth: lineWidth)
@@ -23,7 +23,7 @@ extension Shape {
 
 // Check if email format is correct
 extension String {
-    func isValidEmail() -> Bool {
+    func isValidEmailDeprecated() -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         let emailPred = NSPredicate(format: "SELF MATCHES %@", emailRegEx)
         return emailPred.evaluate(with: self)
@@ -75,17 +75,17 @@ extension LocalizedContent {
     }
 }
 
-// MARK: - ActivityViewModel + AVSpeechSynthesizerDelegate
+// MARK: - ActivityViewModelDeprecated + AVSpeechSynthesizerDelegate
 
-extension ActivityViewModel: AVSpeechSynthesizerDelegate {
+extension ActivityViewModelDeprecated: AVSpeechSynthesizerDelegate {
     func speechSynthesizer(_: AVSpeechSynthesizer, didFinish _: AVSpeechUtterance) {
         isSpeaking = false
     }
 }
 
-// MARK: - ActivityViewModel + AVAudioPlayerDelegate
+// MARK: - ActivityViewModelDeprecated + AVAudioPlayerDelegate
 
-extension ActivityViewModel: AVAudioPlayerDelegate {
+extension ActivityViewModelDeprecated: AVAudioPlayerDelegate {
     func audioPlayerDidFinishPlaying(_: AVAudioPlayer, successfully _: Bool) {
         currentMediaHasBeenPlayedOnce = true
         answersAreDisabled = false
