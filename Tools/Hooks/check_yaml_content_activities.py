@@ -13,11 +13,31 @@ import ruamel.yaml
 
 
 JTD_SCHEMA = "Specs/jtd/activity.jtd.json"
+SKILLS_FILE = "Modules/ContentKit/Resources/Content/definitions/skills.yml"
 
 
 #
 # Mark: - Functions
 #
+
+
+def skill_list():
+    """List of skills from skills.yml"""
+    with open(SKILLS_FILE, "r", encoding="utf8") as file:
+        yaml = ruamel.yaml.YAML(typ="rt")
+        skills = yaml.load(file)
+
+    ids = []
+
+    def find_skill_ids(data, ids):
+        for item in data:
+            ids.append(item["id"])  # Add the current skill/subskill ID
+            if "subskills" in item and item["subskills"]:  # Check for subskills
+                find_skill_ids(item["subskills"], ids)  # Recursive call for subskills
+
+    find_skill_ids(skills["list"], ids)
+
+    return ids
 
 
 def check_content_activity(filename):
@@ -68,6 +88,15 @@ def check_content_activity(filename):
         print(f"name:     {data['name']}")
         print(f"filename: {filename_name}")
         file_is_valid = False
+
+    # ? Check skills exist in skills.yml
+    skills = skill_list()
+    for skill in data["skills"]:
+        if skill not in skills:
+            print(
+                f"\n❌ The skill {skill} in {filename} does not exist in {SKILLS_FILE}"
+            )
+            file_is_valid = False
 
     return file_is_valid
 
