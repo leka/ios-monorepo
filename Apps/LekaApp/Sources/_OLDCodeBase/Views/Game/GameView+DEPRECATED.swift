@@ -6,13 +6,13 @@ import DesignKit
 import Lottie
 import SwiftUI
 
-struct GameView: View {
+struct GameViewDeprecated: View {
     // MARK: Internal
 
     @StateObject var gameMetrics = GameMetrics()
-    @EnvironmentObject var navigationVM: NavigationViewModel
+    @EnvironmentObject var navigationVM: NavigationViewModelDeprecated
     @EnvironmentObject var robotVM: RobotViewModel
-    @EnvironmentObject var activityVM: ActivityViewModel
+    @EnvironmentObject var activityVM: ActivityViewModelDeprecated
     @EnvironmentObject var settings: SettingsViewModelDeprecated
     @Environment(\.dismiss) var dismiss
 
@@ -24,15 +24,15 @@ struct GameView: View {
             .overlay(
                 VStack(spacing: 0) {
                     VStack(spacing: self.gameMetrics.headerSpacing) {
-                        ProgressBarView(gameMetrics: self.gameMetrics)
-                        InstructionButton(gameMetrics: self.gameMetrics)
+                        ProgressBarViewDeprecated(gameMetrics: self.gameMetrics)
+                        InstructionButtonDeprecated(gameMetrics: self.gameMetrics)
                     }
                     .frame(maxHeight: self.gameMetrics.headerTotalHeight)
                     .padding(.top, self.gameMetrics.headerPadding)
 
                     VStack {
                         Spacer()
-                        PlayZone(gameMetrics: self.gameMetrics)
+                        PlayZoneDeprecated(gameMetrics: self.gameMetrics)
                             .layoutPriority(1)
                         Spacer()
                     }
@@ -68,7 +68,7 @@ struct GameView: View {
                 }
             }
             .sheet(isPresented: self.$showInstructionModal) {
-                CurrentGameInstructionView(gameMetrics: self.gameMetrics)
+                CurrentGameInstructionViewDeprecated(gameMetrics: self.gameMetrics)
             }
             .overlay(
                 ZStack {
@@ -226,7 +226,7 @@ struct GameView: View {
                     } label: {
                         Text("gameOver_button")
                     }
-                    .buttonStyle(BorderedCapsule_ButtonStyle(isFilled: false))
+                    .buttonStyle(BorderedCapsule_ButtonStyleDeprecated(isFilled: false))
                     .offset(x: self.offsetGameOverBtn)
                     .animation(
                         .easeOut(duration: self.gameMetrics.endAnimBtnDuration).delay(self.gameMetrics.endAnimGameOverBtnDelay),
@@ -242,7 +242,7 @@ struct GameView: View {
                     } label: {
                         Text("replay_button")
                     }
-                    .buttonStyle(BorderedCapsule_ButtonStyle())
+                    .buttonStyle(BorderedCapsule_ButtonStyleDeprecated())
                     .offset(x: self.offsetReplayBtn)
                     .animation(
                         .easeOut(duration: self.gameMetrics.endAnimBtnDuration).delay(self.gameMetrics.endAnimReplayBtnDelay),

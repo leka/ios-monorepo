@@ -5,14 +5,14 @@
 import DesignKit
 import SwiftUI
 
-struct ActivityListCell_Curriculums: View {
+struct ActivityListCellDeprecated: View {
     // MARK: Internal
 
     @EnvironmentObject var metrics: UIMetrics
 
-    let activity: Activity
+    let activity: ActivityDeprecated
     let icon: String
-    let iconDiameter: CGFloat = 100
+    let iconDiameter: CGFloat = 132
     let rank: Int
     let selected: Bool
 
@@ -23,7 +23,7 @@ struct ActivityListCell_Curriculums: View {
             Spacer()
         }
         .frame(minWidth: 420, maxHeight: self.iconDiameter + 20)
-        .background(self.selected ? DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor : .white)
+        .background(self.selected ? Color.accentColor : .white) // TODO: (@ui/ux) - nil might be better here
         .clipShape(RoundedRectangle(cornerRadius: self.metrics.btnRadius, style: .continuous))
         .padding(.vertical, 4)
     }
@@ -50,6 +50,6 @@ struct ActivityListCell_Curriculums: View {
             .multilineTextAlignment(.leading)
             .padding(.bottom, 10)
         }
-        .foregroundColor(self.selected ? .white : DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
+        .foregroundColor(self.selected ? .white : Color.accentColor) // TODO: (@ui/ux) - nil might be better here
     }
 }

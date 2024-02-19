@@ -10,7 +10,7 @@ struct GoToRobotConnectButtonDeprecated: View {
     // MARK: Internal
 
     @EnvironmentObject var metrics: UIMetrics
-    @EnvironmentObject var navigationVM: NavigationViewModel
+    @EnvironmentObject var navigationVM: NavigationViewModelDeprecated
 
     @StateObject var robotViewModel: ConnectedRobotInformationViewModel = .init()
 
@@ -79,5 +79,5 @@ struct GoToRobotConnectButtonDeprecated: View {
 #Preview {
     GoToRobotConnectButtonDeprecated()
         .environmentObject(UIMetrics())
-        .environmentObject(NavigationViewModel())
+        .environmentObject(NavigationViewModelDeprecated())
 }

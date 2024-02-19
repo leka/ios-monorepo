@@ -12,7 +12,7 @@ struct ProfileSet_TeachersDeprecated: View {
     @EnvironmentObject var settings: SettingsViewModelDeprecated
     @EnvironmentObject var viewRouter: ViewRouterDeprecated
     @EnvironmentObject var metrics: UIMetrics
-    @EnvironmentObject var navigationVM: NavigationViewModel
+    @EnvironmentObject var navigationVM: NavigationViewModelDeprecated
 
     var body: some View {
         VStack(spacing: 0) {
@@ -66,7 +66,7 @@ struct ProfileSet_TeachersDeprecated: View {
         } label: {
             Image(systemName: "pencil")
         }
-        .buttonStyle(CircledIcon_NoFeedback_ButtonStyle(font: .body))
+        .buttonStyle(CircledIcon_NoFeedback_ButtonStyleDeprecated(font: .body))
     }
 
     private var header: some View {
@@ -145,6 +145,6 @@ struct ProfileSet_TeachersDeprecated: View {
         } label: {
             Image(systemName: "plus")
         }
-        .buttonStyle(CircledIcon_NoFeedback_ButtonStyle(font: .body))
+        .buttonStyle(CircledIcon_NoFeedback_ButtonStyleDeprecated(font: .body))
     }
 }

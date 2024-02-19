@@ -6,17 +6,17 @@ import DesignKit
 import Foundation
 import SwiftUI
 
-// MARK: - NoFeedback_ButtonStyle
+// MARK: - NoFeedback_ButtonStyleDeprecated
 
-struct NoFeedback_ButtonStyle: ButtonStyle {
+struct NoFeedback_ButtonStyleDeprecated: ButtonStyle {
     func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
     }
 }
 
-// MARK: - BorderedCapsule_NoFeedback_ButtonStyle
+// MARK: - BorderedCapsule_NoFeedback_ButtonStyleDeprecated
 
-struct BorderedCapsule_NoFeedback_ButtonStyle: ButtonStyle {
+struct BorderedCapsule_NoFeedback_ButtonStyleDeprecated: ButtonStyle {
     var font: Font
     var color: Color
     var isOpaque: Bool = false
@@ -38,9 +38,9 @@ struct BorderedCapsule_NoFeedback_ButtonStyle: ButtonStyle {
     }
 }
 
-// MARK: - CircledIcon_NoFeedback_ButtonStyle
+// MARK: - CircledIcon_NoFeedback_ButtonStyleDeprecated
 
-struct CircledIcon_NoFeedback_ButtonStyle: ButtonStyle {
+struct CircledIcon_NoFeedback_ButtonStyleDeprecated: ButtonStyle {
     var font: Font
 
     func makeBody(configuration: Self.Configuration) -> some View {
@@ -56,9 +56,9 @@ struct CircledIcon_NoFeedback_ButtonStyle: ButtonStyle {
     }
 }
 
-// MARK: - Connect_ButtonStyle
+// MARK: - Connect_ButtonStyleDeprecated
 
-struct Connect_ButtonStyle: ButtonStyle {
+struct Connect_ButtonStyleDeprecated: ButtonStyle {
     @EnvironmentObject var metrics: UIMetrics
     var reversed: Bool = false
 
@@ -75,9 +75,9 @@ struct Connect_ButtonStyle: ButtonStyle {
     }
 }
 
-// MARK: - JobPickerToggleStyle
+// MARK: - JobPickerToggleStyleDeprecated
 
-struct JobPickerToggleStyle: ToggleStyle {
+struct JobPickerToggleStyleDeprecated: ToggleStyle {
     @EnvironmentObject var metrics: UIMetrics
     var onImage = "checkmark.circle"
     var offImage = "circle"
@@ -113,9 +113,9 @@ struct JobPickerToggleStyle: ToggleStyle {
     }
 }
 
-// MARK: - SuccessGaugeStyle
+// MARK: - SuccessGaugeStyleDeprecated
 
-struct SuccessGaugeStyle: GaugeStyle {
+struct SuccessGaugeStyleDeprecated: GaugeStyle {
     func makeBody(configuration: Configuration) -> some View {
         let color: Color = if configuration.value < 0.25 {
             .red
@@ -141,9 +141,9 @@ struct SuccessGaugeStyle: GaugeStyle {
     }
 }
 
-// MARK: - ActivityAnswer_ButtonStyle
+// MARK: - ActivityAnswer_ButtonStyleDeprecated
 
-struct ActivityAnswer_ButtonStyle: ButtonStyle {
+struct ActivityAnswer_ButtonStyleDeprecated: ButtonStyle {
     var isEnabled: Bool = false
 
     func makeBody(configuration: Self.Configuration) -> some View {
@@ -152,7 +152,7 @@ struct ActivityAnswer_ButtonStyle: ButtonStyle {
             .mask(Circle().inset(by: 4))
             .background(
                 Circle()
-                    .fill(
+                    .fillDeprecated(
                         DesignKitAsset.Colors.gameButtonBorder.swiftUIColor,
                         strokeBorder: DesignKitAsset.Colors.gameButtonBorder.swiftUIColor,
                         lineWidth: 4
@@ -167,9 +167,9 @@ struct ActivityAnswer_ButtonStyle: ButtonStyle {
     }
 }
 
-// MARK: - PlaySound_ButtonStyle
+// MARK: - PlaySound_ButtonStyleDeprecated
 
-struct PlaySound_ButtonStyle: ButtonStyle {
+struct PlaySound_ButtonStyleDeprecated: ButtonStyle {
     var progress: CGFloat
 
     func makeBody(configuration: Self.Configuration) -> some View {
@@ -177,7 +177,7 @@ struct PlaySound_ButtonStyle: ButtonStyle {
             .mask(Circle().inset(by: 4))
             .background(
                 Circle()
-                    .fill(
+                    .fillDeprecated(
                         Color.white,
                         strokeBorder: DesignKitAsset.Colors.gameButtonBorder.swiftUIColor,
                         lineWidth: 4
@@ -197,9 +197,9 @@ struct PlaySound_ButtonStyle: ButtonStyle {
     }
 }
 
-// MARK: - BorderedCapsule_ButtonStyle
+// MARK: - BorderedCapsule_ButtonStyleDeprecated
 
-struct BorderedCapsule_ButtonStyle: ButtonStyle {
+struct BorderedCapsule_ButtonStyleDeprecated: ButtonStyle {
     var isFilled: Bool = true
 
     func makeBody(configuration: Self.Configuration) -> some View {
@@ -212,7 +212,7 @@ struct BorderedCapsule_ButtonStyle: ButtonStyle {
             .frame(width: 250)
             .background(
                 Capsule()
-                    .fill(
+                    .fillDeprecated(
                         self.isFilled ? DesignKitAsset.Colors.bravoHighlights.swiftUIColor : .white,
                         strokeBorder: DesignKitAsset.Colors.bravoHighlights.swiftUIColor,
                         lineWidth: 1

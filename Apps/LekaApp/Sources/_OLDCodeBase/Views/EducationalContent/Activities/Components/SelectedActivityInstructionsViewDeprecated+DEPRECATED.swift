@@ -5,10 +5,10 @@
 import DesignKit
 import SwiftUI
 
-struct SelectedActivityInstructionsView: View {
+struct SelectedActivityInstructionsViewDeprecated: View {
     // MARK: Internal
 
-    @EnvironmentObject var activityVM: ActivityViewModel
+    @EnvironmentObject var activityVM: ActivityViewModelDeprecated
     @EnvironmentObject var metrics: UIMetrics
 
     var body: some View {
@@ -24,7 +24,7 @@ struct SelectedActivityInstructionsView: View {
                 Rectangle()
                     .fill(DesignKitAsset.Colors.lekaLightGray.swiftUIColor)
                     .edgesIgnoringSafeArea(.bottom)
-                    .overlay { InstructionsView() }
+                    .overlay { InstructionsViewDeprecated() }
                     .overlay { GoButton() }
             }
         }

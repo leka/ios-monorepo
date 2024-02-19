@@ -11,7 +11,7 @@ struct ProfileSet_UsersDeprecated: View {
     @EnvironmentObject var company: CompanyViewModelDeprecated
     @EnvironmentObject var settings: SettingsViewModelDeprecated
     @EnvironmentObject var metrics: UIMetrics
-    @EnvironmentObject var navigationVM: NavigationViewModel
+    @EnvironmentObject var navigationVM: NavigationViewModelDeprecated
     @Environment(\.dismiss) var dismiss
 
     var body: some View {
@@ -62,7 +62,7 @@ struct ProfileSet_UsersDeprecated: View {
         } label: {
             Image(systemName: "pencil")
         }
-        .buttonStyle(CircledIcon_NoFeedback_ButtonStyle(font: .body))
+        .buttonStyle(CircledIcon_NoFeedback_ButtonStyleDeprecated(font: .body))
         .disabled(
             self.company.getProfileDataFor(
                 .user,
@@ -84,7 +84,7 @@ struct ProfileSet_UsersDeprecated: View {
         } label: {
             Image(systemName: "plus")
         }
-        .buttonStyle(CircledIcon_NoFeedback_ButtonStyle(font: .body))
+        .buttonStyle(CircledIcon_NoFeedback_ButtonStyleDeprecated(font: .body))
     }
 
     private var header: some View {

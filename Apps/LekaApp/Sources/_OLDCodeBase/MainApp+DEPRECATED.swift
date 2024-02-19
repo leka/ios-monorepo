@@ -7,11 +7,11 @@ import SwiftUI
 struct LekaAppDeprecated: App {
     @StateObject var viewRouter = ViewRouterDeprecated()
     @StateObject var metrics = UIMetrics()
-    @StateObject var navigationVM = NavigationViewModel()
+    @StateObject var navigationVM = NavigationViewModelDeprecated()
     @StateObject var company = CompanyViewModelDeprecated()
     @StateObject var settings = SettingsViewModelDeprecated()
-    @StateObject var curriculumVM = CurriculumViewModel()
-    @StateObject var activityVM = ActivityViewModel()
+    @StateObject var curriculumVM = CurriculumViewModelDeprecated()
+    @StateObject var activityVM = ActivityViewModelDeprecated()
     @StateObject var robotVM = RobotViewModel()
 
     var body: some Scene {

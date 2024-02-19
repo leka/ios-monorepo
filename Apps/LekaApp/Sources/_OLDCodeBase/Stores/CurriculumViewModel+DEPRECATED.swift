@@ -5,7 +5,7 @@
 import SwiftUI
 import Yams
 
-class CurriculumViewModel: ObservableObject, YamlFileDecodable {
+class CurriculumViewModelDeprecated: ObservableObject, YamlFileDecodable {
     // MARK: - CurriculumList Published properties
 
     @Published var currentCurriculumCategory: CurriculumCategories = .emotionRecognition

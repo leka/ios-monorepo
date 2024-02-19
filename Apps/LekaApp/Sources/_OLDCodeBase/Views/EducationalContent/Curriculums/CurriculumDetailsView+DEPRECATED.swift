@@ -5,14 +5,14 @@
 import DesignKit
 import SwiftUI
 
-// MARK: - CurriculumDetailsView
+// MARK: - CurriculumDetailsViewDeprecated
 
-struct CurriculumDetailsView: View {
+struct CurriculumDetailsViewDeprecated: View {
     // MARK: Internal
 
-    @EnvironmentObject var curriculumVM: CurriculumViewModel
-    @EnvironmentObject var activityVM: ActivityViewModel
-    @EnvironmentObject var navigationVM: NavigationViewModel
+    @EnvironmentObject var curriculumVM: CurriculumViewModelDeprecated
+    @EnvironmentObject var activityVM: ActivityViewModelDeprecated
+    @EnvironmentObject var navigationVM: NavigationViewModelDeprecated
     @EnvironmentObject var metrics: UIMetrics
 
     var body: some View {
@@ -37,7 +37,7 @@ struct CurriculumDetailsView: View {
                     Rectangle()
                         .fill(DesignKitAsset.Colors.lekaLightGray.swiftUIColor)
                         .edgesIgnoringSafeArea(.bottom)
-                        .overlay { InstructionsView() }
+                        .overlay { InstructionsViewDeprecated() }
                         .overlay {
                             GoButton()
                                 .disabled(self.goButtonIsDisabled())
@@ -100,7 +100,7 @@ struct CurriculumDetailsView: View {
                     self.curriculumVM.currentCurriculumSelectedActivityID = UUID(uuidString: self.activityVM.getActivity(item).id)
                     self.activityVM.currentActivity = self.activityVM.getActivity(item)
                 } label: {
-                    ActivityListCell_Curriculums(
+                    ActivityListCell_CurriculumsDeprecated(
                         activity: self.activityVM.getActivity(item),
                         icon: item,
                         rank: index + 1,
@@ -111,7 +111,7 @@ struct CurriculumDetailsView: View {
                 .alignmentGuide(.listRowSeparatorLeading) { _ in
                     0
                 }
-                .buttonStyle(NoFeedback_ButtonStyle())
+                .buttonStyle(NoFeedback_ButtonStyleDeprecated())
                 .contentShape(Rectangle())
                 .id(UUID(uuidString: self.activityVM.getActivity(item).id))
             }
@@ -138,11 +138,11 @@ struct CurriculumDetailsView: View {
 
 struct ContextualActivitiesDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        CurriculumDetailsView()
-            .environmentObject(CurriculumViewModel())
-            .environmentObject(ActivityViewModel())
+        CurriculumDetailsViewDeprecated()
+            .environmentObject(CurriculumViewModelDeprecated())
+            .environmentObject(ActivityViewModelDeprecated())
             .environmentObject(UIMetrics())
-            .environmentObject(NavigationViewModel())
+            .environmentObject(NavigationViewModelDeprecated())
             .previewInterfaceOrientation(.landscapeLeft)
     }
 }

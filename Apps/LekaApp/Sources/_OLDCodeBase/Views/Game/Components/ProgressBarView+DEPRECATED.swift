@@ -5,10 +5,10 @@
 import DesignKit
 import SwiftUI
 
-// MARK: - ProgressBarView
+// MARK: - ProgressBarViewDeprecated
 
-struct ProgressBarView: View {
-    @EnvironmentObject var activityVM: ActivityViewModel
+struct ProgressBarViewDeprecated: View {
+    @EnvironmentObject var activityVM: ActivityViewModelDeprecated
     @ObservedObject var gameMetrics: GameMetrics
 
     var body: some View {
@@ -31,7 +31,7 @@ struct ProgressBarView: View {
     @ViewBuilder
     func stepMarker(_ color: Color) -> some View {
         Circle()
-            .fill(
+            .fillDeprecated(
                 color,
                 strokeBorder: .white,
                 lineWidth: self.gameMetrics.stepMarkerBorderWidth
@@ -45,7 +45,7 @@ struct ProgressBarView: View {
 
 struct ProgressBarView_Previews: PreviewProvider {
     static var previews: some View {
-        ProgressBarView(gameMetrics: GameMetrics())
-            .environmentObject(ActivityViewModel())
+        ProgressBarViewDeprecated(gameMetrics: GameMetrics())
+            .environmentObject(ActivityViewModelDeprecated())
     }
 }

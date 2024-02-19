@@ -76,7 +76,7 @@ struct SignupFinalStepDeprecated: View {
             Text(self.data.content.callToActionLabel!)
         }
         .buttonStyle(
-            BorderedCapsule_NoFeedback_ButtonStyle(
+            BorderedCapsule_NoFeedback_ButtonStyleDeprecated(
                 font: .body,
                 color: DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor
             )

@@ -5,10 +5,10 @@
 import RobotKit
 import SwiftUI
 
-// MARK: - FullScreenCoverToGameView
+// MARK: - FullScreenCoverToGameViewDeprecated
 
-struct FullScreenCoverToGameView: View {
-    @EnvironmentObject var navigationVM: NavigationViewModel
+struct FullScreenCoverToGameViewDeprecated: View {
+    @EnvironmentObject var navigationVM: NavigationViewModelDeprecated
 
     var body: some View {
         NavigationStack(path: self.$navigationVM.pathToGame) {
@@ -19,7 +19,7 @@ struct FullScreenCoverToGameView: View {
                         switch destination {
                             case .robot: RobotConnectionView()
                             case .user: ProfileSelector_UsersDeprecated()
-                            case .game: GameView()
+                            case .game: GameViewDeprecated()
                         }
                     }
                 )
@@ -31,7 +31,7 @@ struct FullScreenCoverToGameView: View {
 
 struct FullScreenCoverToGameView_Previews: PreviewProvider {
     static var previews: some View {
-        FullScreenCoverToGameView()
-            .environmentObject(NavigationViewModel())
+        FullScreenCoverToGameViewDeprecated()
+            .environmentObject(NavigationViewModelDeprecated())
     }
 }

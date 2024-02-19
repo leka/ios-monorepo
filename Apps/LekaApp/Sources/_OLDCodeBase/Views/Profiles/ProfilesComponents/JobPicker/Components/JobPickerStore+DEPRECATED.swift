@@ -20,7 +20,7 @@ struct JobPickerStoreDeprecated: View {
                                 .font(.subheadline)
                         }
                         .toggleStyle(
-                            JobPickerToggleStyle(action: {
+                            JobPickerToggleStyleDeprecated(action: {
                                 self.jobSelection(profession: profession.name)
                             }))
                     }

@@ -5,11 +5,11 @@
 import DesignKit
 import SwiftUI
 
-// MARK: - InstructionButton
+// MARK: - InstructionButtonDeprecated
 
-struct InstructionButton: View {
+struct InstructionButtonDeprecated: View {
     @ObservedObject var gameMetrics: GameMetrics
-    @EnvironmentObject var activityVM: ActivityViewModel
+    @EnvironmentObject var activityVM: ActivityViewModelDeprecated
 
     var body: some View {
         HStack(spacing: 0) {
@@ -35,7 +35,7 @@ struct InstructionButton: View {
         )
         .overlay(
             RoundedRectangle(cornerRadius: self.gameMetrics.roundedCorner, style: .circular)
-                .fill(
+                .fillDeprecated(
                     .clear,
                     strokeBorder: LinearGradient(
                         gradient: Gradient(colors: [.black.opacity(0.2), .black.opacity(0.05)]), startPoint: .bottom,
@@ -80,8 +80,8 @@ struct InstructionButton: View {
 
 struct InstructionButton_Previews: PreviewProvider {
     static var previews: some View {
-        InstructionButton(gameMetrics: GameMetrics())
-            .environmentObject(ActivityViewModel())
+        InstructionButtonDeprecated(gameMetrics: GameMetrics())
+            .environmentObject(ActivityViewModelDeprecated())
             .environmentObject(GameMetrics())
     }
 }

@@ -5,7 +5,7 @@
 import Foundation
 import SwiftUI
 
-class NavigationViewModel: ObservableObject {
+class NavigationViewModelDeprecated: ObservableObject {
     // Educative Content section data
     static let educContentSectionLabels: [SectionLabel] = [
         SectionLabel(
@@ -51,9 +51,9 @@ class NavigationViewModel: ObservableObject {
     // Returned Views & NavigationTitles
     @ViewBuilder var allSidebarDestinationViews: some View {
         switch self.currentView {
-            case .curriculums: CurriculumListView()
-            case .activities: ActivityListView()
-            case .commands: CommandListView()
+            case .curriculums: CurriculumListViewDeprecated()
+            case .activities: ActivityListViewDeprecated()
+            case .commands: CommandListViewDeprecated()
         }
     }
 

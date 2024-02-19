@@ -5,7 +5,7 @@
 import DesignKit
 import SwiftUI
 
-struct SidebarHeaderView: View {
+struct SidebarHeaderViewDeprecated: View {
     // MARK: Internal
 
     @EnvironmentObject var metrics: UIMetrics
@@ -13,7 +13,7 @@ struct SidebarHeaderView: View {
     var body: some View {
         VStack(spacing: 10) {
             self.logoLeka
-            GoToProfileEditorButton()
+            GoToProfileEditorButtonDeprecated()
             GoToRobotConnectButtonDeprecated()
         }
         .frame(minHeight: 350, idealHeight: 350, maxHeight: 371)

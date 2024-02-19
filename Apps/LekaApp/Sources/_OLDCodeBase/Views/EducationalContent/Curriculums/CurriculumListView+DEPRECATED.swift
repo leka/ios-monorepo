@@ -5,13 +5,13 @@
 import DesignKit
 import SwiftUI
 
-// MARK: - CurriculumListView
+// MARK: - CurriculumListViewDeprecated
 
-struct CurriculumListView: View {
+struct CurriculumListViewDeprecated: View {
     // MARK: Internal
 
-    @EnvironmentObject var navigationVM: NavigationViewModel
-    @EnvironmentObject var curriculumVM: CurriculumViewModel
+    @EnvironmentObject var navigationVM: NavigationViewModelDeprecated
+    @EnvironmentObject var curriculumVM: CurriculumViewModelDeprecated
     @EnvironmentObject var metrics: UIMetrics
 
     var body: some View {
@@ -32,7 +32,7 @@ struct CurriculumListView: View {
                 }
                 .animation(.easeOut(duration: 0.4), value: self.navigationVM.showInfo())
                 .safeAreaInset(edge: .top) {
-                    InfoTileManager()
+                    InfoTileManagerDeprecated()
                 }
                 .onAppear {
                     withAnimation { proxy.scrollTo(self.curriculumVM.currentCurriculumCategory, anchor: .top) }
@@ -42,7 +42,7 @@ struct CurriculumListView: View {
         .navigationDestination(
             for: String.self,
             destination: { _ in
-                CurriculumDetailsView()
+                CurriculumDetailsViewDeprecated()
             }
         )
     }
@@ -85,9 +85,9 @@ struct CurriculumListView: View {
 
 struct CurriculumListView_Previews: PreviewProvider {
     static var previews: some View {
-        CurriculumListView()
-            .environmentObject(NavigationViewModel())
-            .environmentObject(CurriculumViewModel())
+        CurriculumListViewDeprecated()
+            .environmentObject(NavigationViewModelDeprecated())
+            .environmentObject(CurriculumViewModelDeprecated())
             .environmentObject(UIMetrics())
             .environmentObject(SettingsViewModelDeprecated())
             .previewInterfaceOrientation(.landscapeLeft)

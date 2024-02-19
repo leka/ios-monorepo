@@ -25,12 +25,12 @@ struct WelcomeViewDeprecated: View {
                     NavigationLink("Créer un compte") {
                         SignupViewDeprecated()
                     }
-                    .buttonStyle(Connect_ButtonStyle())
+                    .buttonStyle(Connect_ButtonStyleDeprecated())
 
                     NavigationLink("Se connecter") {
                         LoginViewDeprecated()
                     }
-                    .buttonStyle(Connect_ButtonStyle(reversed: true))
+                    .buttonStyle(Connect_ButtonStyleDeprecated(reversed: true))
                 }
             }
             .edgesIgnoringSafeArea(.top)

@@ -5,12 +5,12 @@
 import DesignKit
 import SwiftUI
 
-struct ActivityListView: View {
+struct ActivityListViewDeprecated: View {
     // MARK: Internal
 
-    @EnvironmentObject var curriculumVM: CurriculumViewModel
-    @EnvironmentObject var activityVM: ActivityViewModel
-    @EnvironmentObject var navigationVM: NavigationViewModel
+    @EnvironmentObject var curriculumVM: CurriculumViewModelDeprecated
+    @EnvironmentObject var activityVM: ActivityViewModelDeprecated
+    @EnvironmentObject var navigationVM: NavigationViewModelDeprecated
     @EnvironmentObject var company: CompanyViewModelDeprecated
     @EnvironmentObject var settings: SettingsViewModelDeprecated
     @EnvironmentObject var metrics: UIMetrics
@@ -46,7 +46,7 @@ struct ActivityListView: View {
         .navigationDestination(
             for: String.self,
             destination: { _ in
-                SelectedActivityInstructionsView()
+                SelectedActivityInstructionsViewDeprecated()
             }
         )
     }
@@ -63,7 +63,7 @@ struct ActivityListView: View {
                         self.activityVM.selectedActivityID = UUID(uuidString: self.activityVM.getActivity(item).id)
                         self.navigationVM.pathsFromHome.append("instructions")
                     } label: {
-                        ActivityListCell(
+                        ActivityListCellDeprecated(
                             activity: self.activityVM.getActivity(item),
                             icon: item,
                             rank: index + 1,
@@ -74,7 +74,7 @@ struct ActivityListView: View {
                         0
                     }
                     .frame(maxWidth: 600)
-                    .buttonStyle(NoFeedback_ButtonStyle())
+                    .buttonStyle(NoFeedback_ButtonStyleDeprecated())
                     .contentShape(Rectangle())
                     Spacer()
                 }
@@ -86,7 +86,7 @@ struct ActivityListView: View {
             .edgesIgnoringSafeArea(.bottom)
             .animation(.default, value: self.searchQuery)
             .safeAreaInset(edge: .top) {
-                InfoTileManager()
+                InfoTileManagerDeprecated()
             }
             .onAppear {
                 guard self.activityVM.selectedActivityID != nil else {

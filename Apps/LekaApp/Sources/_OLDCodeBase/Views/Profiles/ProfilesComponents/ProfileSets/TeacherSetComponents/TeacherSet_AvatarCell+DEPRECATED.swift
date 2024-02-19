@@ -32,7 +32,7 @@ struct TeacherSet_AvatarCellDeprecated: View {
                     self.selectionIndicator(id: self.teacher.id)
                     // Avatar
                     Circle()
-                        .fill(
+                        .fillDeprecated(
                             DesignKitAsset.Colors.lekaLightGray.swiftUIColor,
                             strokeBorder: .white,
                             lineWidth: 3
@@ -71,7 +71,7 @@ struct TeacherSet_AvatarCellDeprecated: View {
                     )
             }
         }
-        .buttonStyle(NoFeedback_ButtonStyle())
+        .buttonStyle(NoFeedback_ButtonStyleDeprecated())
     }
 
     // MARK: Private
