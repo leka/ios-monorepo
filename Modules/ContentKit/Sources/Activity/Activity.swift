@@ -4,9 +4,12 @@
 
 import Foundation
 import LocalizationKit
+import UIKit
 import Yams
 
 // MARK: - Activity
+
+// swiftlint:disable nesting
 
 public struct Activity: Codable, Identifiable {
     // MARK: Lifecycle
@@ -132,6 +135,15 @@ public extension Activity {
         public let subtitle: String
         public let description: String
         public let instructions: String
+
+        public var iconImage: UIImage {
+            guard let image = UIImage(named: "\(self.icon).activity.icon.png", in: .module, with: nil) else {
+                log.error("No image found for icon \(self.icon)")
+                fatalError("💥 No image found for icon \(self.icon)")
+            }
+
+            return image
+        }
     }
 }
 
@@ -156,3 +168,5 @@ public struct GameEngine: Codable {
 struct ExerciseGroup: Codable {
     let group: [Exercise]
 }
+
+// swiftlint:enable nesting
