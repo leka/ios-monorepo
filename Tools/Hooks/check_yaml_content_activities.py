@@ -74,7 +74,7 @@ def check_content_activity(filename):
         data = yaml.load(file)
 
     # ? Check uuid is the same as the filename
-    filename_uuid = os.path.basename(filename).split("-")[0]
+    filename_uuid = os.path.basename(filename).split("-")[-1].split(".")[0]
     if data["uuid"] != filename_uuid:
         print(f"\n❌ The id in {filename} is not the same as the filename")
         print(f"uuid:     {data['uuid']}")
@@ -103,7 +103,7 @@ def check_content_activity(filename):
         file_is_valid = False
 
     # ? Check name is the same as filename
-    filename_name = os.path.basename(filename).split("-")[-1].split(".activity.yml")[0]
+    filename_name = os.path.basename(filename).split("-")[0]
     if data["name"] != filename_name:
         print(f"\n❌ The name in {filename} is not the same as the filename")
         print(f"name:     {data['name']}")
