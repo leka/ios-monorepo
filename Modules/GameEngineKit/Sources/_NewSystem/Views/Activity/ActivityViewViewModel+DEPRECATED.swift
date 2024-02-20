@@ -10,7 +10,7 @@ public class ActivityViewViewModelDeprecated: ObservableObject {
     // MARK: Lifecycle
 
     public init(activity: ActivityDeprecated) {
-        self.sequenceManager = ActivitySequenceManager(activity: activity)
+        self.sequenceManager = ActivitySequenceManagerDeprecated(activity: activity)
 
         self.currentActivity = activity
 
@@ -116,7 +116,7 @@ public class ActivityViewViewModelDeprecated: ObservableObject {
 
     // MARK: Private
 
-    private let sequenceManager: ActivitySequenceManager
+    private let sequenceManager: ActivitySequenceManagerDeprecated
 
     private var cancellables: Set<AnyCancellable> = []
 
