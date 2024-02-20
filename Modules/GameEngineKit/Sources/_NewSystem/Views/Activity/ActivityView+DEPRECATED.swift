@@ -13,10 +13,10 @@ import SwiftUI
 
 // MARK: - ActivityView
 
-public struct ActivityView: View {
+public struct ActivityViewDeprecated: View {
     // MARK: Lifecycle
 
-    public init(viewModel: ActivityViewViewModel) {
+    public init(viewModel: ActivityViewViewModelDeprecated) {
         self.viewModel = viewModel
     }
 
@@ -146,7 +146,7 @@ public struct ActivityView: View {
 
     @Environment(\.dismiss) var dismiss
 
-    @ObservedObject var viewModel: ActivityViewViewModel
+    @ObservedObject var viewModel: ActivityViewViewModelDeprecated
 
     // MARK: Private
 
@@ -302,5 +302,5 @@ public struct ActivityView: View {
 
 #Preview {
     let activity = ContentKit.decodeActivityDeprecated("activity-sample")
-    return ActivityView(viewModel: ActivityViewViewModel(activity: activity))
+    return ActivityViewDeprecated(viewModel: ActivityViewViewModelDeprecated(activity: activity))
 }

@@ -6,7 +6,7 @@ import DesignKit
 import Lottie
 import SwiftUI
 
-extension ActivityView {
+extension ActivityViewDeprecated {
     struct SuccessView: View {
         let percentage: Int
 
@@ -39,5 +39,5 @@ extension ActivityView {
 }
 
 #Preview {
-    ActivityView.SuccessView(percentage: 65)
+    ActivityViewDeprecated.SuccessView(percentage: 65)
 }

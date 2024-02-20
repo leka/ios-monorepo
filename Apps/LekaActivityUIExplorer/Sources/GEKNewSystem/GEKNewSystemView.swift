@@ -61,7 +61,7 @@ struct GEKNewSystemView: View {
             .fullScreenCover(item: self.$currentActivity) {
                 self.currentActivity = nil
             } content: { activity in
-                ActivityView(viewModel: ActivityViewViewModel(activity: activity))
+                ActivityView(viewModel: ActivityViewViewModelDeprecated(activity: activity))
             }
             .buttonStyle(.borderedProminent)
             .frame(maxWidth: .infinity)

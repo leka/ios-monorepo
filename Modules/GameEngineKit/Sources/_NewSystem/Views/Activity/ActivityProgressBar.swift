@@ -8,7 +8,7 @@ import SwiftUI
 struct ActivityProgressBar: View {
     // MARK: Internal
 
-    @ObservedObject var viewModel: ActivityViewViewModel
+    @ObservedObject var viewModel: ActivityViewViewModelDeprecated
     let height: CGFloat = 30
 
     var body: some View {

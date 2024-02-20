@@ -6,7 +6,7 @@ import Combine
 import ContentKit
 import SwiftUI
 
-public class ActivityViewViewModel: ObservableObject {
+public class ActivityViewViewModelDeprecated: ObservableObject {
     // MARK: Lifecycle
 
     public init(activity: ActivityDeprecated) {
