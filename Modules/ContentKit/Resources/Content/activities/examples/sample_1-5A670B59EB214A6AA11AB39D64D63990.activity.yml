@@ -81,8 +81,8 @@ l10n:
         - Bracchia frustra telo Iovis faucibus casus
 
 gameengine:
-  shuffle_exercises: true
-  shuffle_sequences: true
+  shuffle_exercises: false
+  shuffle_sequences: false
 
 exercises:
   - group:

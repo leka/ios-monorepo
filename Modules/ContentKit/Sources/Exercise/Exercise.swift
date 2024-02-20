@@ -4,6 +4,7 @@
 
 import Foundation
 import LocalizationKit
+import LogKit
 
 // MARK: - Exercise
 
@@ -16,16 +17,24 @@ public struct Exercise: Codable {
         self.gameplay = try container.decodeIfPresent(Gameplay.self, forKey: .gameplay)
         self.action = try container.decodeIfPresent(Action.self, forKey: .action)
 
-        self.l10nInstructions = try? container.decode([Instructions].self, forKey: .instructions)
+        self.localizedInstructions = try? container.decode([LocalizedInstructions].self, forKey: .localizedInstructions)
 
-        if let l10nInstructions = self.l10nInstructions {
-            let availableLocales = l10nInstructions.map(\.locale)
+        log.debug("localizedInstructions: \(self.localizedInstructions)")
+
+        if let localizedInstructions = self.localizedInstructions {
+            let availableLocales = localizedInstructions.map(\.locale)
+            log.debug("\(availableLocales)")
 
             let currentLocale = availableLocales.first(where: {
                 $0.language.languageCode == LocalizationKit.l10n.language
             }) ?? Locale(identifier: "en_US")
 
-            self.instructions = self.l10nInstructions?.first(where: { $0.locale == currentLocale })?.value
+            log.debug("Current Language: \(LocalizationKit.l10n.language)")
+            log.debug("currentLocale: \(currentLocale)")
+
+            self.instructions = self.localizedInstructions?.first(where: { $0.locale == currentLocale })?.value
+//            log.debug("instructions: \(self.instructions)")
+            log.debug("Selected Instructions: \(String(describing: self.instructions))")
         } else {
             self.instructions = nil
         }
@@ -80,7 +89,7 @@ public struct Exercise: Codable {
     // MARK: Internal
 
     enum CodingKeys: String, CodingKey {
-        case instructions
+        case localizedInstructions = "instructions"
         case interface
         case gameplay
         case action
@@ -89,13 +98,23 @@ public struct Exercise: Codable {
 
     // MARK: Private
 
-    private let l10nInstructions: [Instructions]?
+    private let localizedInstructions: [LocalizedInstructions]?
 }
 
-// MARK: Exercise.Instructions
+// MARK: Exercise.LocalizedInstructions
 
 public extension Exercise {
-    struct Instructions: Codable {
+    struct LocalizedInstructions: Codable {
+        // MARK: Lifecycle
+
+        public init(from decoder: Decoder) throws {
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            self.locale = try Locale(identifier: container.decode(String.self, forKey: .locale))
+            self.value = try container.decode(String.self, forKey: .value)
+        }
+
+        // MARK: Internal
+
         let locale: Locale
         let value: String
     }

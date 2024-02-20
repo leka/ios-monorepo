@@ -28,7 +28,7 @@ public struct Activity: Codable, Identifiable {
         self.gameengine = try container.decode(GameEngine.self, forKey: .gameengine)
 
         self.l10n = try container.decode([Localization].self, forKey: .l10n)
-        self.exercises = try container.decode([ExerciseGroup].self, forKey: .exercises)
+        self.exerciseGroups = try container.decode([ExerciseGroup].self, forKey: .exerciseGroups)
 
         let localeStrings = try container.decode([String].self, forKey: .locales)
         self.locales = localeStrings.compactMap { Locale(identifier: $0) }
@@ -51,7 +51,7 @@ public struct Activity: Codable, Identifiable {
 
     public let gameengine: GameEngine
 
-    public let exercises: [ExerciseGroup]
+    public var exerciseGroups: [ExerciseGroup]
 
     public var id: String { self.uuid }
     public var languages: [Locale.LanguageCode] { self.locales.compactMap(\.language.languageCode) }
@@ -82,7 +82,7 @@ public struct Activity: Codable, Identifiable {
         case locales
         case l10n
         case gameengine
-        case exercises
+        case exerciseGroups = "exercises"
     }
 }
 
@@ -146,10 +146,10 @@ public extension Activity {
 // MARK: - GameEngine
 
 public struct GameEngine: Codable {
-    // MARK: Internal
+    // MARK: Public
 
-    let shuffleExercises: Bool
-    let shuffleSequences: Bool
+    public let shuffleExercises: Bool
+    public let shuffleSequences: Bool
 
     // MARK: Private
 
@@ -162,7 +162,22 @@ public struct GameEngine: Codable {
 // MARK: - ExerciseGroup
 
 public struct ExerciseGroup: Codable {
-    let group: [Exercise]
+    // MARK: Lifecycle
+
+    public init(exercices: [Exercise]) {
+        self.exercices = exercices
+    }
+
+    // MARK: Public
+
+    public let exercices: [Exercise]
+
+    // MARK: Private
+
+    //
+    private enum CodingKeys: String, CodingKey {
+        case exercices = "group"
+    }
 }
 
 // swiftlint:enable nesting

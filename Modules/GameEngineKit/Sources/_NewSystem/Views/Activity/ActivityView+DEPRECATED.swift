@@ -28,7 +28,7 @@ public struct ActivityViewDeprecated: View {
                 VStack {
                     VStack(spacing: 15) {
                         if self.viewModel.isProgressBarVisible {
-                            ActivityProgressBar(viewModel: self.viewModel)
+//                            ActivityProgressBar(viewModel: self.viewModel)
                         }
 
                         if self.viewModel.isExerciseInstructionsButtonVisible {

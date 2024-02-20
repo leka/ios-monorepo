@@ -24,7 +24,7 @@ public class ActivityViewViewModelDeprecated: ObservableObject {
         self.currentExerciseInterface = self.sequenceManager.currentExercise.interface
 
         self.currentExerciseSharedData = ExerciseSharedData(
-            sequenceIndex: self.sequenceManager.currentSequenceIndex,
+            groupIndex: self.sequenceManager.currentSequenceIndex,
             exerciseIndex: self.sequenceManager.currentExerciseIndexInSequence
         )
         self.completedExercisesSharedData.append(self.currentExerciseSharedData)
@@ -128,7 +128,7 @@ public class ActivityViewViewModelDeprecated: ObservableObject {
         self.currentExerciseIndexInSequence = self.sequenceManager.currentExerciseIndexInSequence
         self.totalExercisesInCurrentSequence = self.sequenceManager.totalExercisesInCurrentSequence
         self.currentExerciseSharedData = ExerciseSharedData(
-            sequenceIndex: self.sequenceManager.currentSequenceIndex,
+            groupIndex: self.sequenceManager.currentSequenceIndex,
             exerciseIndex: self.sequenceManager.currentExerciseIndexInSequence
         )
         self.completedExercisesSharedData.append(self.currentExerciseSharedData)
