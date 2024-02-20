@@ -119,6 +119,7 @@ struct ActivityDetailsView: View {
                     Text("Start activity")
                 }
                 .buttonStyle(.borderedProminent)
+                .tint(.lkGreen)
             }
         }
     }
