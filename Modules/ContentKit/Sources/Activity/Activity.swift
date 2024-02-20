@@ -28,7 +28,7 @@ public struct Activity: Codable, Identifiable {
         self.gameengine = try container.decode(GameEngine.self, forKey: .gameengine)
 
         self.l10n = try container.decode([Localization].self, forKey: .l10n)
-//        exercises = try container.decode([ExerciseGroup].self, forKey: .exercises)
+        self.exercises = try container.decode([ExerciseGroup].self, forKey: .exercises)
 
         let localeStrings = try container.decode([String].self, forKey: .locales)
         self.locales = localeStrings.compactMap { Locale(identifier: $0) }
@@ -51,7 +51,7 @@ public struct Activity: Codable, Identifiable {
 
     public let gameengine: GameEngine
 
-    //    public let exercises: [ExerciseGroup]
+    public let exercises: [ExerciseGroup]
 
     public var id: String { self.uuid }
     public var languages: [Locale.LanguageCode] { self.locales.compactMap(\.language.languageCode) }
@@ -82,7 +82,7 @@ public struct Activity: Codable, Identifiable {
         case locales
         case l10n
         case gameengine
-//        case exercises
+        case exercises
     }
 }
 
@@ -161,7 +161,7 @@ public struct GameEngine: Codable {
 
 // MARK: - ExerciseGroup
 
-struct ExerciseGroup: Codable {
+public struct ExerciseGroup: Codable {
     let group: [Exercise]
 }
 

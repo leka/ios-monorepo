@@ -3,16 +3,32 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import Foundation
+import LocalizationKit
+
+// MARK: - Exercise
 
 public struct Exercise: Codable {
     // MARK: Lifecycle
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.instructions = try container.decode(String.self, forKey: .instructions)
         self.interface = try container.decode(Interface.self, forKey: .interface)
         self.gameplay = try container.decodeIfPresent(Gameplay.self, forKey: .gameplay)
         self.action = try container.decodeIfPresent(Action.self, forKey: .action)
+
+        self.l10nInstructions = try? container.decode([Instructions].self, forKey: .instructions)
+
+        if let l10nInstructions = self.l10nInstructions {
+            let availableLocales = l10nInstructions.map(\.locale)
+
+            let currentLocale = availableLocales.first(where: {
+                $0.language.languageCode == LocalizationKit.l10n.language
+            }) ?? Locale(identifier: "en_US")
+
+            self.instructions = self.l10nInstructions?.first(where: { $0.locale == currentLocale })?.value
+        } else {
+            self.instructions = nil
+        }
 
         switch (self.interface, self.gameplay) {
             case (.touchToSelect, .findTheRightAnswers),
@@ -51,7 +67,7 @@ public struct Exercise: Codable {
 
     // MARK: Public
 
-    public let instructions: String
+    public let instructions: String?
     public let interface: Interface
     public let gameplay: Gameplay?
     public let action: Action?
@@ -69,5 +85,18 @@ public struct Exercise: Codable {
         case gameplay
         case action
         case payload
+    }
+
+    // MARK: Private
+
+    private let l10nInstructions: [Instructions]?
+}
+
+// MARK: Exercise.Instructions
+
+public extension Exercise {
+    struct Instructions: Codable {
+        let locale: Locale
+        let value: String
     }
 }

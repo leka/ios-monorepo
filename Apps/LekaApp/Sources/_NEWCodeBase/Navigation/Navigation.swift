@@ -2,10 +2,17 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import ContentKit
 import SwiftUI
 
 class Navigation: ObservableObject {
     // MARK: Public
+
+    @Published public var currentActivity: Activity?
+
+    @Published public var disableUICompletly: Bool = false
+
+    @Published public var categories = Category.allCases
 
     public var selectedCategory: Category? = .news {
         willSet {
@@ -21,15 +28,7 @@ class Navigation: ObservableObject {
         }
     }
 
-    // MARK: Internal
-
-    static let shared = Navigation()
-
-    @Published var disableUICompletly: Bool = false
-
-    @Published var categories = Category.allCases
-
-    @Published var path: NavigationPath = .init() {
+    @Published public var path: NavigationPath = .init() {
         willSet {
             self.disableUICompletly = true
         }
@@ -37,6 +36,10 @@ class Navigation: ObservableObject {
             self.disableUICompletly = false
         }
     }
+
+    // MARK: Internal
+
+    static let shared = Navigation()
 
     // MARK: Private
 

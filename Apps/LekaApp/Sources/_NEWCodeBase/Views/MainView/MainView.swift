@@ -4,7 +4,9 @@
 
 import AccountKit
 import Combine
+import ContentKit
 import DesignKit
+import GameEngineKit
 import LocalizationKit
 import RobotKit
 import SwiftUI
@@ -132,6 +134,11 @@ struct MainView: View {
         .fullScreenCover(isPresented: self.$isCaregiverPickerPresented) {
             CaregiverPicker()
         }
+        .fullScreenCover(item: self.$navigation.currentActivity) {
+            self.navigation.currentActivity = nil
+        } content: { activity in
+            ActivityView(activity: activity)
+        }
         .sheet(isPresented: self.$rootOwnerViewModel.isSettingsViewPresented) {
             SettingsView()
         }
@@ -143,6 +150,7 @@ struct MainView: View {
     // MARK: Private
 
     @State private var isCaregiverPickerPresented: Bool = false
+//    @State var currentActivity: Activity?
 }
 
 #Preview {

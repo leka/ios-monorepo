@@ -32,7 +32,7 @@ public struct ActivityViewDeprecated: View {
                         }
 
                         if self.viewModel.isExerciseInstructionsButtonVisible {
-                            ExerciseInstructionsButton(instructions: self.viewModel.currentExercise.instructions)
+                            ExerciseInstructionsButton(instructions: self.viewModel.currentExercise.instructions ?? "no instructions")
                         }
                     }
 

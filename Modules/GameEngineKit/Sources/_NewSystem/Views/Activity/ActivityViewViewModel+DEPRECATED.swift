@@ -89,7 +89,7 @@ public class ActivityViewViewModelDeprecated: ObservableObject {
     }
 
     var isExerciseInstructionsButtonVisible: Bool {
-        !self.currentExercise.instructions.isEmpty
+        (self.currentExercise.instructions?.isEmpty) == nil
     }
 
     var isFirstExercise: Bool {
