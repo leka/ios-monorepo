@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import AccountKit
+import DesignKit
 import LocalizationKit
 import SwiftUI
 
@@ -34,6 +35,8 @@ extension SettingsView {
                 Button(role: .destructive) {
                     self.rootOwnerViewModel.isSettingsViewPresented = false
                     self.authManager.signOut()
+                    self.styleManager.accentColor = DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor
+                    self.styleManager.colorScheme = .light
                 } label: {
                     Text(l10n.SettingsView.AccountSection.LogOut.alertButtonLabel)
                 }
@@ -56,6 +59,7 @@ extension SettingsView {
         // MARK: Private
 
         @ObservedObject private var rootOwnerViewModel: RootOwnerViewModel = .shared
+        @ObservedObject private var styleManager: StyleManager = .shared
         @ObservedObject private var authManagerViewModel = AuthManagerViewModel.shared
         private var authManager = AuthManager.shared
     }
