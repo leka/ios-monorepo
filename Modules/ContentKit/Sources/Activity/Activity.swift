@@ -137,12 +137,8 @@ public extension Activity {
         public let instructions: String
 
         public var iconImage: UIImage {
-            guard let image = UIImage(named: "\(self.icon).activity.icon.png", in: .module, with: nil) else {
-                log.error("No image found for icon \(self.icon)")
-                fatalError("💥 No image found for icon \(self.icon)")
-            }
-
-            return image
+            UIImage(named: "\(self.icon).activity.icon.png", in: .module, with: nil)
+                ?? UIImage(named: "placeholder.activity.icon.png", in: .module, with: nil)!
         }
     }
 }

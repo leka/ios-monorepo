@@ -10,7 +10,7 @@ public extension Project {
     static func app(
         name: String,
         version: String = "1.0.0",
-        deploymentTargets: DeploymentTargets = .iOS("16.0"),
+        deploymentTargets: DeploymentTargets = .iOS("16.6"),
         destinations: Destinations = [.iPad, .macWithiPadDesign],
         infoPlist: [String: Plist.Value] = [:],
         settings: SettingsDictionary = [:],

@@ -50,6 +50,7 @@ struct MainView: View {
                     CategoryLabel(category: .activities)
                     CategoryLabel(category: .remotes)
                     CategoryLabel(category: .stories)
+                    CategoryLabel(category: .sampleActivities)
                 }
 
                 Section(String(l10n.MainView.Sidebar.sectionUsers.characters)) {
@@ -105,6 +106,9 @@ struct MainView: View {
                         Text("Stories")
                             .font(.largeTitle)
                             .bold()
+
+                    case .sampleActivities:
+                        SampleActivityListView()
 
                     case .carereceivers:
                         CarereceiverPicker()
