@@ -9,9 +9,19 @@ import SwiftUI
 // MARK: - EditCaregiverView
 
 struct EditCaregiverView: View {
+    // MARK: Lifecycle
+
+    init(modifiedCaregiver: Caregiver) {
+        self._modifiedCaregiver = State(wrappedValue: modifiedCaregiver)
+        self.initialColorScheme = modifiedCaregiver.preferredColorScheme
+        self.initialAccentColor = modifiedCaregiver.preferredAccentColor
+    }
+
     // MARK: Internal
 
     @State var modifiedCaregiver: Caregiver
+    var initialColorScheme: ColorScheme
+    var initialAccentColor: Color
 
     var body: some View {
         NavigationStack {
@@ -46,6 +56,8 @@ struct EditCaregiverView: View {
                 ToolbarItem(placement: .topBarLeading) {
                     Button(String(l10n.EditCaregiverView.closeButtonLabel.characters)) {
                         self.rootOwnerViewModel.isEditCaregiverViewPresented = false
+                        self.styleManager.colorScheme = self.initialColorScheme
+                        self.styleManager.accentColor = self.initialAccentColor
                     }
                 }
                 ToolbarItem(placement: .topBarTrailing) {
