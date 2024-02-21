@@ -47,7 +47,7 @@ public struct Activity: Decodable, Identifiable {
     public let locales: [Locale]
     public let l10n: [LocalizedDetails]
 
-    public let exercisePayload: ExercisesPayload
+    public var exercisePayload: ExercisesPayload
 
     public var id: String { self.uuid }
     public var languages: [Locale.LanguageCode] { self.locales.compactMap(\.language.languageCode) }
@@ -145,13 +145,13 @@ public extension Activity {
         // MARK: Internal
 
         let options: Options
-        // let exerciseGroups: [ExerciseGroup]
+        var exerciseGroups: [ExerciseGroup]
 
         // MARK: Private
 
         private enum CodingKeys: String, CodingKey {
             case options
-            // case exerciseGroups = "exercise_groups"
+            case exerciseGroups = "exercise_groups"
         }
     }
 }
