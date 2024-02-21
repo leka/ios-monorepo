@@ -93,9 +93,9 @@ public extension Activity {
 
         gameengine:
           shuffle_exercises: true
-          shuffle_sequences: true
+          shuffle_groups: true
 
-        exercises:
+        exercise_groups:
           - group:
               - instructions:
                   - locale: fr_FR

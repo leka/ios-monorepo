@@ -149,13 +149,13 @@ public struct GameEngine: Codable {
     // MARK: Internal
 
     let shuffleExercises: Bool
-    let shuffleSequences: Bool
+    let shuffleGroups: Bool
 
     // MARK: Private
 
     private enum CodingKeys: String, CodingKey {
         case shuffleExercises = "shuffle_exercises"
-        case shuffleSequences = "shuffle_sequences"
+        case shuffleGroups = "shuffle_groups"
     }
 }
 

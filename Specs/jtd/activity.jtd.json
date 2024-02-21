@@ -47,12 +47,12 @@
                 "shuffle_exercises": {
                     "type": "boolean"
                 },
-                "shuffle_sequences": {
+                "shuffle_groups": {
                     "type": "boolean"
                 }
             }
         },
-        "exercises": {
+        "exercise_groups": {
             "elements": {
                 "ref": "$group"
             }
