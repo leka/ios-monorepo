@@ -25,7 +25,7 @@ struct RootAccount: AccountDocument {
     }
 
     @DocumentID var id: String?
-    var rootOwnerUid: String
     @ServerTimestamp var createdAt: Date?
     @ServerTimestamp var lastEditedAt: Date?
+    var rootOwnerUid: String
 }
