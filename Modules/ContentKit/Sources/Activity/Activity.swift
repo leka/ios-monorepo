@@ -4,7 +4,6 @@
 
 import Foundation
 import LocalizationKit
-import UIKit
 import Yams
 
 // MARK: - Activity
@@ -136,9 +135,8 @@ public extension Activity {
         public let description: String
         public let instructions: String
 
-        public var iconImage: UIImage {
-            UIImage(named: "\(self.icon).activity.icon.png", in: .module, with: nil)
-                ?? UIImage(named: "placeholder.activity.icon.png", in: .module, with: nil)!
+        public var iconURL: URL {
+            Bundle.module.url(forResource: "\(self.icon).activity.icon", withExtension: "png")!
         }
     }
 }

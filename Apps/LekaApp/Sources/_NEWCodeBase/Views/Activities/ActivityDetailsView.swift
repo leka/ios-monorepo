@@ -18,11 +18,15 @@ struct ActivityDetailsView: View {
             Section {
                 HStack {
                     HStack(alignment: .lastTextBaseline) {
-                        Image(uiImage: self.activity.details.iconImage)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 120, height: 120)
-                            .clipShape(Circle())
+                        AsyncImage(url: self.activity.details.iconURL) { image in
+                            image
+                                .resizable()
+                        } placeholder: {
+                            Image(systemName: "photo.circle")
+                        }
+                        .scaledToFit()
+                        .frame(width: 120, height: 120)
+                        .clipShape(Circle())
 
                         VStack(alignment: .leading) {
                             Text(self.activity.details.title)

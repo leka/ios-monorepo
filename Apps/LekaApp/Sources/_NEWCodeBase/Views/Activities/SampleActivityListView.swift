@@ -12,11 +12,15 @@ struct SampleActivityListView: View {
         List {
             ForEach(self.activities) { activity in
                 NavigationLink(destination: ActivityDetailsView(activity: activity)) {
-                    Image(uiImage: activity.details.iconImage)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 44, height: 44)
-                        .clipShape(Circle())
+                    AsyncImage(url: activity.details.iconURL) { image in
+                        image
+                            .resizable()
+                    } placeholder: {
+                        Image(systemName: "photo.circle")
+                    }
+                    .scaledToFit()
+                    .frame(width: 44, height: 44)
+                    .clipShape(Circle())
 
                     Text(activity.details.title)
                 }
