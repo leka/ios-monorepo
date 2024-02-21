@@ -12,7 +12,7 @@ var projects: [Path] {
     let iOSApps: [Path] = [
         "Apps/LekaApp",
         "Apps/LekaUpdater",
-        "Apps/LekaActivityUIExplorer",
+        // "Apps/LekaActivityUIExplorer",
     ]
 
     // MARK: - macOS Apps
