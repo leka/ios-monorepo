@@ -91,30 +91,31 @@ public extension Activity {
                 - Repulsa impediunt munera teneri fallebat
                 - Bracchia frustra telo Iovis faucibus casus
 
-        gameengine:
-          shuffle_exercises: true
-          shuffle_groups: true
+        exercises_payload:
+          options:
+            shuffle_exercises: true
+            shuffle_groups: true
 
-        exercise_groups:
-          - group:
-              - instructions:
-                  - locale: fr_FR
-                    value: Touch le rond jaune
-                  - locale: en_US
-                    value: Touch the yellow circle
-                interface: touchToSelect
-                gameplay: findTheRightAnswers
-                payload:
-                  choices:
-                    - value: yellow
-                      type: color
-                      isRightAnswer: true
-                    - value: red
-                      type: color
-                    - value: green
-                      type: color
-                    - value: blue
-                      type: color
+          exercise_groups:
+            - group:
+                - instructions:
+                    - locale: fr_FR
+                      value: Touch le rond jaune
+                    - locale: en_US
+                      value: Touch the yellow circle
+                  interface: touchToSelect
+                  gameplay: findTheRightAnswers
+                  payload:
+                    choices:
+                      - value: yellow
+                        type: color
+                        isRightAnswer: true
+                      - value: red
+                        type: color
+                      - value: green
+                        type: color
+                      - value: blue
+                        type: color
         """
     // swiftformat:enable all
 }
