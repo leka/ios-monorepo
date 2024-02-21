@@ -6,7 +6,7 @@ id: a3542226982342c5805931f9e86a69a8
 name: Touch To Select - One Right Answer - Colors - Shuffle sequences
 description: L'objectif est de trouver la bonne couleur ou des les rassembler par famille
 image: activity_color_recognition_1
-shuffle_sequences: true
+shuffle_groups: true
 sequence:
   - exercises:
       - instructions: Touche le rouge

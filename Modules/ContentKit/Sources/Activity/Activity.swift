@@ -11,34 +11,32 @@ import Yams
 
 // swiftlint:disable nesting
 
-public struct Activity: Codable, Identifiable {
+public struct Activity: Decodable, Identifiable {
     // MARK: Lifecycle
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
-        // Allow synthesized Codable conformance to decode the rest
         self.uuid = try container.decode(String.self, forKey: .uuid)
         self.name = try container.decode(String.self, forKey: .name)
+        self.status = try container.decode(Status.self, forKey: .status)
+
         self.authors = try container.decode([String].self, forKey: .authors)
         self.skills = try container.decode([String].self, forKey: .skills)
         self.hmi = try container.decode([String].self, forKey: .hmi)
         self.tags = try container.decode([String].self, forKey: .tags)
-        self.status = try container.decode(Status.self, forKey: .status)
-        self.gameengine = try container.decode(GameEngine.self, forKey: .gameengine)
-
-        self.l10n = try container.decode([Localization].self, forKey: .l10n)
-//        exercises = try container.decode([ExerciseGroup].self, forKey: .exercises)
 
         let localeStrings = try container.decode([String].self, forKey: .locales)
         self.locales = localeStrings.compactMap { Locale(identifier: $0) }
+        self.l10n = try container.decode([LocalizedDetails].self, forKey: .l10n)
+
+        self.exercisePayload = try container.decode(ExercisesPayload.self, forKey: .exercicesPayload)
     }
 
     // MARK: Public
 
     public let uuid: String
     public let name: String
-
     public let status: Status
 
     public let authors: [String] // TODO: (@ladislas) - implement authors
@@ -47,11 +45,9 @@ public struct Activity: Codable, Identifiable {
     public let tags: [String] // TODO: (@ladislas) - implement tags
 
     public let locales: [Locale]
-    public let l10n: [Localization]
+    public let l10n: [LocalizedDetails]
 
-    public let gameengine: GameEngine
-
-    //    public let exercises: [ExerciseGroup]
+    public var exercisePayload: ExercisesPayload
 
     public var id: String { self.uuid }
     public var languages: [Locale.LanguageCode] { self.locales.compactMap(\.language.languageCode) }
@@ -81,24 +77,23 @@ public struct Activity: Codable, Identifiable {
         case status
         case locales
         case l10n
-        case gameengine
-//        case exercises
+        case exercicesPayload = "exercises_payload"
     }
 }
 
 // MARK: Activity.Status
 
 public extension Activity {
-    enum Status: String, Codable {
+    enum Status: String, Decodable {
         case draft
         case published
     }
 }
 
-// MARK: Activity.Localization
+// MARK: Activity.LocalizedDetails
 
 public extension Activity {
-    struct Localization: Codable {
+    struct LocalizedDetails: Decodable {
         // MARK: Lifecycle
 
         public init(from decoder: Decoder) throws {
@@ -129,7 +124,7 @@ public extension Activity {
 // MARK: Activity.Details
 
 public extension Activity {
-    struct Details: Codable {
+    struct Details: Decodable {
         public let icon: String
         public let title: String
         public let subtitle: String
@@ -143,26 +138,56 @@ public extension Activity {
     }
 }
 
-// MARK: - GameEngine
+// MARK: Activity.ExercisesPayload
 
-public struct GameEngine: Codable {
-    // MARK: Internal
+public extension Activity {
+    struct ExercisesPayload: Decodable {
+        // MARK: Internal
 
-    let shuffleExercises: Bool
-    let shuffleSequences: Bool
+        let options: Options
+        var exerciseGroups: [ExerciseGroup]
 
-    // MARK: Private
+        // MARK: Private
 
-    private enum CodingKeys: String, CodingKey {
-        case shuffleExercises = "shuffle_exercises"
-        case shuffleSequences = "shuffle_sequences"
+        private enum CodingKeys: String, CodingKey {
+            case options
+            case exerciseGroups = "exercise_groups"
+        }
     }
 }
 
-// MARK: - ExerciseGroup
+public extension Activity.ExercisesPayload {
+    struct Options: Decodable {
+        // MARK: Public
 
-struct ExerciseGroup: Codable {
-    let group: [Exercise]
+        public let shuffleExercises: Bool
+        public let shuffleGroups: Bool
+
+        // MARK: Private
+
+        private enum CodingKeys: String, CodingKey {
+            case shuffleExercises = "shuffle_exercises"
+            case shuffleGroups = "shuffle_groups"
+        }
+    }
+
+    struct ExerciseGroup: Decodable {
+        // MARK: Lifecycle
+
+        public init(exercises: [Exercise]) {
+            self.exercises = exercises
+        }
+
+        // MARK: Public
+
+        public let exercises: [Exercise]
+
+        // MARK: Private
+
+        private enum CodingKeys: String, CodingKey {
+            case exercises = "group"
+        }
+    }
 }
 
 // swiftlint:enable nesting

@@ -38,7 +38,7 @@ l10n:
     details:
       icon: sample_6
 
-      title: Activité d'exemple
+      title: Activité d'exemple 6
       subtitle: pour le développement
 
       description: |
@@ -61,7 +61,7 @@ l10n:
     details:
       icon: sample_6
 
-      title: Sample activity
+      title: Sample activity 6
       subtitle: for development
 
       description: |
@@ -80,133 +80,185 @@ l10n:
         - Repulsa impediunt munera teneri fallebat
         - Bracchia frustra telo Iovis faucibus casus
 
-gameengine:
-  shuffle_exercises: true
-  shuffle_sequences: true
+exercises_payload:
+  options:
+    shuffle_exercises: false
+    shuffle_groups: false
 
-exercises:
-  - group:
-      - instructions:
-          - locale: fr_FR
-            value: Touch le rond jaune
-          - locale: en_US
-            value: Touch the yellow circle
-        interface: touchToSelect
-        gameplay: findTheRightAnswers
-        payload:
-          choices:
-            - value: yellow
-              type: color
-              isRightAnswer: true
-            - value: red
-              type: color
-            - value: green
-              type: color
-            - value: blue
-              type: color
+  exercise_groups:
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Touch le rond jaune
+            - locale: en_US
+              value: Touch the yellow circle
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          payload:
+            choices:
+              - value: yellow
+                type: color
+                isRightAnswer: true
+              - value: red
+                type: color
+              - value: green
+                type: color
+              - value: blue
+                type: color
 
-      - instructions:
-          - locale: fr_FR
-            value: Touch la pastèque
-          - locale: en_US
-            value: Touch the watermelon
-        interface: touchToSelect
-        gameplay: findTheRightAnswers
-        payload:
-          choices:
-            - value: 🍉
-              type: emoji
-              isRightAnswer: true
-            - value: 🍌
-              type: emoji
-            - value: 🍒
-              type: emoji
-            - value: 🥝
-              type: emoji
+        - instructions:
+            - locale: fr_FR
+              value: Touch les ronds verts et bleus
+            - locale: en_US
+              value: Touch the green and blue circles
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          payload:
+            choices:
+              - value: yellow
+                type: color
+              - value: red
+                type: color
+              - value: green
+                type: color
+                isRightAnswer: true
+              - value: blue
+                type: color
+                isRightAnswer: true
 
-      - instructions:
-          - locale: fr_FR
-            value: Touch le carré
-          - locale: en_US
-            value: Touch the square
-        interface: touchToSelect
-        gameplay: findTheRightAnswers
-        payload:
-          choices:
-            - value: circle
-              type: sfsymbol
-            - value: square
-              type: sfsymbol
-              isRightAnswer: true
-            - value: triangle
-              type: sfsymbol
-            - value: rhombus
-              type: sfsymbol
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Touch la pastèque
+            - locale: en_US
+              value: Touch the watermelon
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          payload:
+            choices:
+              - value: 🍉
+                type: emoji
+                isRightAnswer: true
+              - value: 🍌
+                type: emoji
+              - value: 🍒
+                type: emoji
+              - value: 🥝
+                type: emoji
 
-  - group:
-      - instructions:
-          - locale: fr_FR
-            value: Contrôle Leka avec la télécommande et fais le changer de couleur
-          - locale: en_US
-            value: Control Leka with the remote and make it change color
-        interface: remoteArrow
+        - instructions:
+            - locale: fr_FR
+              value: Touch le chat et le chien
+            - locale: en_US
+              value: Touch the cat and the dog
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          payload:
+            choices:
+              - value: 🐱
+                type: emoji
+                isRightAnswer: true
+              - value: 🐶
+                type: emoji
+                isRightAnswer: true
+              - value: 🐷
+                type: emoji
+              - value: 🐹
+                type: emoji
 
-      - instructions:
-          - locale: fr_FR
-            value: Contrôle Leka avec la télécommande et fais le changer de couleur
-          - locale: en_US
-            value: Control Leka with the remote and make it change color
-        interface: remoteArrow
+        - instructions:
+            - locale: fr_FR
+              value: Touch le marteau et la scie
+            - locale: en_US
+              value: Touch the hammer and the saw
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          payload:
+            choices:
+              - value: 🔨
+                type: emoji
+                isRightAnswer: true
+              - value: 🪚
+                type: emoji
+                isRightAnswer: true
+              - value: 🪛
+                type: emoji
+              - value: 🪜
+                type: emoji
 
-  - group:
-      - instructions:
-          - locale: fr_FR
-            value: Joue du xylophone avec Leka
-          - locale: en_US
-            value: Play the xylophone with Leka
-        interface: musicalInstruments
-        payload:
-          instrument: xylophone
-          scale: majorHeptatonic
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Touch le carré
+            - locale: en_US
+              value: Touch the square
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          payload:
+            choices:
+              - value: circle
+                type: sfsymbol
+              - value: square
+                type: sfsymbol
+                isRightAnswer: true
+              - value: triangle
+                type: sfsymbol
+              - value: rhombus
+                type: sfsymbol
 
-      - instructions:
-          - locale: fr_FR
-            value: Joue du xylophone avec Leka
-          - locale: en_US
-            value: Play the xylophone with Leka
-        interface: musicalInstruments
-        payload:
-          instrument: xylophone
-          scale: majorPentatonic
+        - instructions:
+            - locale: fr_FR
+              value: Touch la personne jouant au tennis
+            - locale: en_US
+              value: Touch the person playing tennis
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          payload:
+            choices:
+              - value: figure.climbing
+                type: sfsymbol
+              - value: figure.tennis
+                type: sfsymbol
+                isRightAnswer: true
+              - value: figure.pool.swim
+                type: sfsymbol
+              - value: figure.soccer
+                type: sfsymbol
 
-  - group:
-      - instructions: null
-        interface: danceFreeze
-        payload:
-          songs:
-            - earlyBird
-            - emptyPage
-            - gigglySquirrel
-            - handsOn
-            - happyDays
-            - inTheGame
-            - littleByLittle
+        - instructions:
+            - locale: fr_FR
+              value: Touch l'orage
+            - locale: en_US
+              value: Touch the storm
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          payload:
+            choices:
+              - value: sun.max
+                type: sfsymbol
+              - value: cloud.sun
+                type: sfsymbol
+              - value: cloud.bolt.rain.fill
+                type: sfsymbol
+                isRightAnswer: true
+              - value: cloud.rain
+                type: sfsymbol
 
-      - instructions: null
-        interface: hideAndSeek
-
-      - instructions:
-          - locale: fr_FR
-            value: Joue les notes de la même couleur que Leka
-          - locale: en_US
-            value: Play the notes of the same color as Leka
-        interface: melody
-        payload:
-          instrument: xylophone
-          songs:
-            - underTheMoonlight
-            - aGreenMouse
-            - twinkleTwinkleLittleStar
-            - londonBridgeIsFallingDown
-            - ohTheCrocodiles
-            - happyBirthday
+        - instructions:
+            - locale: fr_FR
+              value: Touch le vélo
+            - locale: en_US
+              value: Touch the bike
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          payload:
+            choices:
+              - value: bicycle
+                type: sfsymbol
+                isRightAnswer: true
+              - value: car
+                type: sfsymbol
+              - value: airplane
+                type: sfsymbol
+              - value: boat
+                type: sfsymbol

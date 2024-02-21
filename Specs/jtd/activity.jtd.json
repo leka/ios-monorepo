@@ -42,19 +42,23 @@
                 "ref": "$l10n"
             }
         },
-        "gameengine": {
+        "exercises_payload": {
             "properties": {
-                "shuffle_exercises": {
-                    "type": "boolean"
+                "options": {
+                    "properties": {
+                        "shuffle_exercises": {
+                            "type": "boolean"
+                        },
+                        "shuffle_groups": {
+                            "type": "boolean"
+                        }
+                    }
                 },
-                "shuffle_sequences": {
-                    "type": "boolean"
+                "exercise_groups": {
+                    "elements": {
+                        "ref": "$group"
+                    }
                 }
-            }
-        },
-        "exercises": {
-            "elements": {
-                "ref": "$group"
             }
         }
     },
