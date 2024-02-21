@@ -51,6 +51,30 @@ public class CaregiverManager {
             .store(in: &self.cancellables)
     }
 
+    public func updateCaregiver(caregiver: Caregiver, documentID: String) {
+        self.dbOps.update(data: caregiver, in: .caregivers, documentID: documentID)
+            .sink(receiveCompletion: { completion in
+                if case let .failure(error) = completion {
+                    self.fetchErrorSubject.send(error)
+                }
+            }, receiveValue: { _ in
+                self.fetchAllCaregivers()
+            })
+            .store(in: &self.cancellables)
+    }
+
+    public func deleteCaregiver(documentID: String) {
+        self.dbOps.delete(from: .caregivers, documentID: documentID)
+            .sink(receiveCompletion: { completion in
+                if case let .failure(error) = completion {
+                    self.fetchErrorSubject.send(error)
+                }
+            }, receiveValue: { _ in
+                self.fetchAllCaregivers()
+            })
+            .store(in: &self.cancellables)
+    }
+
     // MARK: Internal
 
     var caregiversPublisher: AnyPublisher<[Caregiver], Never> {
