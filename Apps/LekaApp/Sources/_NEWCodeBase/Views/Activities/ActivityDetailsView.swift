@@ -114,6 +114,7 @@ struct ActivityDetailsView: View {
             ToolbarItem {
                 Button {
                     print("Start activity")
+                    self.navigation.currentActivity = self.activity
                 } label: {
                     Image(systemName: "play.circle")
                     Text("Start activity")
@@ -129,6 +130,8 @@ struct ActivityDetailsView: View {
     @State private var selectedAuthor: Author?
     @State private var selectedSkill: Skill?
     @State private var selectedHMI: HMIDetails?
+
+    private let navigation: Navigation = .shared
 }
 
 #Preview {

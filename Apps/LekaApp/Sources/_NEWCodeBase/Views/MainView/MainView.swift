@@ -4,7 +4,9 @@
 
 import AccountKit
 import Combine
+import ContentKit
 import DesignKit
+import GameEngineKit
 import LocalizationKit
 import RobotKit
 import SwiftUI
@@ -131,6 +133,13 @@ struct MainView: View {
         }
         .fullScreenCover(isPresented: self.$isCaregiverPickerPresented) {
             CaregiverPicker()
+        }
+        .fullScreenCover(item: self.$navigation.currentActivity) {
+            self.navigation.currentActivity = nil
+        } content: { activity in
+            Text("Activity: \(activity.details.title)")
+            // TODO: (@ladislas) switch back to activity view
+            // ActivityView(activity: activity)
         }
         .sheet(isPresented: self.$rootOwnerViewModel.isSettingsViewPresented) {
             SettingsView()

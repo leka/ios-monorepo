@@ -2,12 +2,26 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import ContentKit
 import SwiftUI
 
 class Navigation: ObservableObject {
-    // MARK: Public
+    // MARK: Lifecycle
 
-    public var selectedCategory: Category? = .news {
+    private init() {
+        // nothing to do
+    }
+
+    // MARK: Internal
+
+    static let shared = Navigation()
+
+    @Published var disableUICompletly: Bool = false
+    @Published var categories = Category.allCases
+
+    @Published var currentActivity: Activity?
+
+    var selectedCategory: Category? = .news {
         willSet {
             self.disableUICompletly = true
             // ? Note: early return to avoid reseting path
@@ -20,14 +34,6 @@ class Navigation: ObservableObject {
             // restorePath(for: selectedCategory)
         }
     }
-
-    // MARK: Internal
-
-    static let shared = Navigation()
-
-    @Published var disableUICompletly: Bool = false
-
-    @Published var categories = Category.allCases
 
     @Published var path: NavigationPath = .init() {
         willSet {
