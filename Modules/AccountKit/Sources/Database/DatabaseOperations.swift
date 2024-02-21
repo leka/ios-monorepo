@@ -5,6 +5,7 @@
 import Combine
 import FirebaseAuth
 import FirebaseFirestore
+import FirebaseFirestoreSwift
 
 public class DatabaseOperations {
     // MARK: Lifecycle
@@ -19,10 +20,12 @@ public class DatabaseOperations {
 
     public func create(data: some AccountDocument, in collection: DatabaseCollection) -> AnyPublisher<String, Error> {
         Future<String, Error> { promise in
+            let docRef = self.database.collection(collection.rawValue).document()
             var documentData = data
             documentData.rootOwnerUid = Auth.auth().currentUser?.uid ?? ""
-
-            let docRef = self.database.collection(collection.rawValue).document()
+            documentData.id = docRef.documentID
+            documentData.createdAt = Date()
+            documentData.lastEditedAt = Date()
 
             do {
                 try docRef.setData(from: documentData) { error in
