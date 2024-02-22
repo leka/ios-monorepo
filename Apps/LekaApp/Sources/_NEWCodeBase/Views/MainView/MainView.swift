@@ -134,11 +134,6 @@ struct MainView: View {
         .fullScreenCover(isPresented: self.$isCaregiverPickerPresented) {
             CaregiverPicker()
         }
-        .fullScreenCover(item: self.$navigation.currentActivity) {
-            self.navigation.currentActivity = nil
-        } content: { activity in
-            ActivityView(activity: activity)
-        }
         .sheet(isPresented: self.$rootOwnerViewModel.isSettingsViewPresented) {
             SettingsView(isCaregiverPickerPresented: self.$isCaregiverPickerPresented)
         }

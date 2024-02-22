@@ -8,12 +8,16 @@ import SwiftUI
 
 // MARK: - ActivityDetailsView
 
-struct ActivityDetailsView: View {
-    // MARK: Internal
+public struct ActivityDetailsView: View {
+    // MARK: Lifecycle
 
-    let activity: Activity
+    public init(activity: Activity) {
+        self.activity = activity
+    }
 
-    var body: some View {
+    // MARK: Public
+
+    public var body: some View {
         List {
             Section {
                 HStack {
@@ -135,7 +139,7 @@ struct ActivityDetailsView: View {
             ToolbarItem {
                 Button {
                     print("Start activity")
-                    self.navigation.currentActivity = self.activity
+                    self.activityToStart = self.activity
                 } label: {
                     Image(systemName: "play.circle")
                     Text("Start activity")
@@ -144,16 +148,23 @@ struct ActivityDetailsView: View {
                 .tint(.lkGreen)
             }
         }
+        .fullScreenCover(item: self.$activityToStart) {
+            self.activityToStart = nil
+        } content: { activity in
+            ActivityView(activity: activity)
+        }
     }
 
     // MARK: Private
+
+    private let activity: Activity
 
     @State private var selectedAuthor: Author?
     @State private var selectedSkill: Skill?
     @State private var selectedHMI: HMIDetails?
     @State private var selectedType: ActivityType?
 
-    private let navigation: Navigation = .shared
+    @State private var activityToStart: Activity?
 }
 
 #Preview {
