@@ -17,6 +17,7 @@ public class CaregiverManagerViewModel: ObservableObject {
     @Published public var caregivers: [Caregiver] = []
     @Published public var currentCaregiver: Caregiver?
     @Published public var errorMessage: String = ""
+    @Published public var showErrorAlert = false
 
     // MARK: Private
 
@@ -24,7 +25,6 @@ public class CaregiverManagerViewModel: ObservableObject {
     private let caregiverManager = CaregiverManager.shared
 
     private func subscribeToManager() {
-        // Subscribe to caregivers updates
         self.caregiverManager.caregiversPublisher
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] fetchedCaregivers in
@@ -32,7 +32,6 @@ public class CaregiverManagerViewModel: ObservableObject {
             })
             .store(in: &self.cancellables)
 
-        // Subscribe to current caregiver updates
         self.caregiverManager.currentCaregiverPublisher
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] fetchedCaregiver in
@@ -40,12 +39,28 @@ public class CaregiverManagerViewModel: ObservableObject {
             })
             .store(in: &self.cancellables)
 
-        // Subscribe to error updates
         self.caregiverManager.fetchErrorPublisher
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] error in
-                self?.errorMessage = "An error occurred: \(error.localizedDescription)"
+                self?.handleError(error)
             })
             .store(in: &self.cancellables)
+    }
+
+    private func handleError(_ error: Error) {
+        if let databaseError = error as? DatabaseError {
+            switch databaseError {
+                case let .customError(message):
+                    self.errorMessage = message
+                case .documentNotFound:
+                    self.errorMessage = "The requested caregiver could not be found. Consider deleting this profile."
+                case .decodeError:
+                    self.errorMessage = "There was an error decoding the data."
+                case .encodeError:
+                    self.errorMessage = "There was an error encoding the data."
+            }
+        } else {
+            self.errorMessage = "An unknown error occurred: \(error.localizedDescription)"
+        }
     }
 }
