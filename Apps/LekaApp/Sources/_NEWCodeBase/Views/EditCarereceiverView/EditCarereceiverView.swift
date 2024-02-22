@@ -11,7 +11,7 @@ import SwiftUI
 struct EditCarereceiverView: View {
     // MARK: Internal
 
-    @Binding var modifiedCarereceiver: Carereceiver
+    @Binding var modifiedCarereceiver: Carereceiver_OLD
 
     var body: some View {
         NavigationStack {
@@ -81,5 +81,5 @@ struct EditCarereceiverView: View {
 }
 
 #Preview {
-    EditCarereceiverView(modifiedCarereceiver: .constant(Carereceiver()))
+    EditCarereceiverView(modifiedCarereceiver: .constant(Carereceiver_OLD()))
 }

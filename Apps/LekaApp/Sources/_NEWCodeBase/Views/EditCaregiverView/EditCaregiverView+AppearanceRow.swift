@@ -12,7 +12,7 @@ extension EditCaregiverView {
     struct AppearanceRow: View {
         // MARK: Internal
 
-        @Binding var caregiver: Caregiver
+        @Binding var caregiver: Caregiver_OLD
 
         var body: some View {
             HStack(spacing: 10) {
@@ -38,6 +38,6 @@ extension EditCaregiverView {
 
 #Preview {
     Form {
-        EditCaregiverView.AppearanceRow(caregiver: .constant(Caregiver()))
+        EditCaregiverView.AppearanceRow(caregiver: .constant(Caregiver_OLD()))
     }
 }

@@ -12,7 +12,7 @@ struct CarereceiverAvatarCell: View {
 
     @ObservedObject private var rootOwnerViewModel: RootOwnerViewModel = .shared
 
-    let carereceiver: Carereceiver
+    let carereceiver: Carereceiver_OLD
 
     var body: some View {
         VStack(spacing: 10) {
@@ -45,5 +45,5 @@ struct CarereceiverAvatarCell: View {
 }
 
 #Preview {
-    CarereceiverAvatarCell(carereceiver: Carereceiver(name: "Chantal", avatar: DesignKitAsset.Avatars.avatarsPictogramsAnimalsSavannaKangarooBrown0078.name, reinforcer: 2))
+    CarereceiverAvatarCell(carereceiver: Carereceiver_OLD(name: "Chantal", avatar: DesignKitAsset.Avatars.avatarsPictogramsAnimalsSavannaKangarooBrown0078.name, reinforcer: 2))
 }

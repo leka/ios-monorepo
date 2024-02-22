@@ -11,7 +11,7 @@ import SwiftUI
 struct EditCaregiverView: View {
     // MARK: Lifecycle
 
-    init(modifiedCaregiver: Caregiver) {
+    init(modifiedCaregiver: Caregiver_OLD) {
         self._modifiedCaregiver = State(wrappedValue: modifiedCaregiver)
         self.initialColorScheme = modifiedCaregiver.preferredColorScheme
         self.initialAccentColor = modifiedCaregiver.preferredAccentColor
@@ -19,7 +19,7 @@ struct EditCaregiverView: View {
 
     // MARK: Internal
 
-    @State var modifiedCaregiver: Caregiver
+    @State var modifiedCaregiver: Caregiver_OLD
     var initialColorScheme: ColorScheme
     var initialAccentColor: Color
 
@@ -113,5 +113,5 @@ struct EditCaregiverView: View {
 }
 
 #Preview {
-    EditCaregiverView(modifiedCaregiver: Caregiver())
+    EditCaregiverView(modifiedCaregiver: Caregiver_OLD())
 }

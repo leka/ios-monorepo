@@ -15,9 +15,9 @@ protocol Profile: Identifiable {
     var avatar: String { get set }
 }
 
-// MARK: - Caregiver
+// MARK: - Caregiver_OLD
 
-struct Caregiver: Profile {
+struct Caregiver_OLD: Profile {
     // MARK: Lifecycle
 
     init(name: String = "",
@@ -43,9 +43,9 @@ struct Caregiver: Profile {
     var preferredAccentColor: Color
 }
 
-// MARK: - Carereceiver
+// MARK: - Carereceiver_OLD
 
-struct Carereceiver: Profile, Hashable {
+struct Carereceiver_OLD: Profile, Hashable {
     // MARK: Lifecycle
 
     init(name: String = "", avatar: String = "", reinforcer: Int = 1) {

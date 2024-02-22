@@ -11,7 +11,7 @@ import SwiftUI
 struct ReinforcerPicker: View {
     // MARK: Internal
 
-    @Binding var carereceiver: Carereceiver
+    @Binding var carereceiver: Carereceiver_OLD
 
     var body: some View {
         HStack {
@@ -58,5 +58,5 @@ extension l10n {
 }
 
 #Preview {
-    ReinforcerPicker(carereceiver: .constant(Carereceiver()))
+    ReinforcerPicker(carereceiver: .constant(Carereceiver_OLD()))
 }

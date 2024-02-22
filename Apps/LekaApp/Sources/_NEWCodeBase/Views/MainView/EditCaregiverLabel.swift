@@ -97,6 +97,6 @@ extension l10n {
     })
     .onAppear {
         let rootOwnerViewModel = RootOwnerViewModel.shared
-        rootOwnerViewModel.currentCaregiver = Caregiver(name: "Joe", avatar: "avatars_boy-1a")
+        rootOwnerViewModel.currentCaregiver = Caregiver_OLD(name: "Joe", avatar: "avatars_boy-1a")
     }
 }

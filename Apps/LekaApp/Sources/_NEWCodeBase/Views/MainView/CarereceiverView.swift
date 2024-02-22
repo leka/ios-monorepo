@@ -11,7 +11,7 @@ import SwiftUI
 struct CarereceiverView: View {
     // MARK: Internal
 
-    @State var carereceiver: Carereceiver
+    @State var carereceiver: Carereceiver_OLD
 
     var body: some View {
         VStack {
@@ -90,5 +90,5 @@ extension l10n {
 // swiftlint:enable line_length
 
 #Preview {
-    CarereceiverView(carereceiver: Carereceiver(name: "Peet", avatar: DesignKitAsset.Avatars.avatarsBoy1a.name, reinforcer: 2))
+    CarereceiverView(carereceiver: Carereceiver_OLD(name: "Peet", avatar: DesignKitAsset.Avatars.avatarsBoy1a.name, reinforcer: 2))
 }

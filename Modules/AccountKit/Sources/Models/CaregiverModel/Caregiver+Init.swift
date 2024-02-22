@@ -5,7 +5,8 @@
 import SwiftUI
 
 public extension Caregiver {
-    init(rootOwnerUid: String = "",
+    init(id: String = "",
+         rootOwnerUid: String = "",
          firstName: String = "",
          lastName: String = "",
          email: String = "",
@@ -14,6 +15,7 @@ public extension Caregiver {
          colorScheme: ColorScheme = .light,
          colorTheme: ColorTheme = .darkBlue)
     {
+        self.id = id
         self.rootOwnerUid = rootOwnerUid
         self.firstName = firstName
         self.lastName = lastName

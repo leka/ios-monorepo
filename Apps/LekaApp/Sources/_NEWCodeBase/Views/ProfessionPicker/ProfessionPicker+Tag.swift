@@ -10,7 +10,7 @@ extension ProfessionPicker {
     struct ProfessionTag: View {
         @ObservedObject private var rootOwnerViewModel: RootOwnerViewModel = .shared
         @State var profession: Profession
-        @Binding var caregiver: Caregiver
+        @Binding var caregiver: Caregiver_OLD
 
         var body: some View {
             Button {
@@ -34,6 +34,6 @@ extension ProfessionPicker {
 #Preview {
     ProfessionPicker.ProfessionTag(
         profession: Professions.list[8],
-        caregiver: .constant(Caregiver(professions: [Professions.list[0], Professions.list[3]]))
+        caregiver: .constant(Caregiver_OLD(professions: [Professions.list[0], Professions.list[3]]))
     )
 }

@@ -14,7 +14,7 @@ extension EditCaregiverView {
     struct AccentColorRow: View {
         // MARK: Internal
 
-        @Binding var caregiver: Caregiver
+        @Binding var caregiver: Caregiver_OLD
 
         var body: some View {
             HStack {
@@ -66,6 +66,6 @@ extension EditCaregiverView {
 
 #Preview {
     Form {
-        EditCaregiverView.AccentColorRow(caregiver: .constant(Caregiver()))
+        EditCaregiverView.AccentColorRow(caregiver: .constant(Caregiver_OLD()))
     }
 }

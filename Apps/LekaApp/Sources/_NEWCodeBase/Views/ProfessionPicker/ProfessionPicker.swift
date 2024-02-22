@@ -14,7 +14,7 @@ struct ProfessionPicker: View {
 
     @Environment(\.dismiss) var dismiss
 
-    @Binding var caregiver: Caregiver
+    @Binding var caregiver: Caregiver_OLD
 
     var body: some View {
         List(Professions.list, id: \.self, selection: self.$selectedProfessions) { profession in
@@ -66,6 +66,6 @@ struct ProfessionPicker: View {
 
 #Preview {
     NavigationStack {
-        ProfessionPicker(caregiver: .constant(Caregiver()))
+        ProfessionPicker(caregiver: .constant(Caregiver_OLD()))
     }
 }

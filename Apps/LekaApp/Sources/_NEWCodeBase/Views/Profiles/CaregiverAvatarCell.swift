@@ -7,7 +7,7 @@ import DesignKit
 import SwiftUI
 
 struct CaregiverAvatarCell: View {
-    let caregiver: Caregiver
+    let caregiver: Caregiver_OLD
 
     var body: some View {
         VStack(spacing: 10) {
@@ -23,5 +23,5 @@ struct CaregiverAvatarCell: View {
 }
 
 #Preview {
-    CaregiverAvatarCell(caregiver: Caregiver(name: "Chantal", avatar: DesignKitAsset.Avatars.avatarsBoy4f.name, professions: []))
+    CaregiverAvatarCell(caregiver: Caregiver_OLD(name: "Chantal", avatar: DesignKitAsset.Avatars.avatarsBoy4f.name, professions: []))
 }

@@ -39,7 +39,7 @@ struct CarereceiverPicker: View {
             .sheet(isPresented: self.$isCarereceiverCreationPresented) {
                 CreateCarereceiverView(isPresented: self.$isCarereceiverCreationPresented) {}
             }
-            .navigationDestination(for: Carereceiver.self) { carereceiver in
+            .navigationDestination(for: Carereceiver_OLD.self) { carereceiver in
                 CarereceiverView(carereceiver: carereceiver)
             }
         }

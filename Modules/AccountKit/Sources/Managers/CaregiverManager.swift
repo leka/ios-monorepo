@@ -8,15 +8,27 @@ public class CaregiverManager {
     // MARK: Lifecycle
 
     private init() {
-        // Nothing to do
+        self.fetchAllCaregivers()
     }
 
     // MARK: Public
 
     public static let shared = CaregiverManager()
 
+//    public func fetchAllCaregivers() {
+//        self.dbOps.readAll(from: .caregivers)
+//            .sink(receiveCompletion: { [weak self] completion in
+//                if case let .failure(error) = completion {
+//                    self?.fetchErrorSubject.send(error)
+//                }
+//            }, receiveValue: { [weak self] fetchedCaregivers in
+//                self?.caregiverList.send(fetchedCaregivers)
+//            })
+//            .store(in: &self.cancellables)
+//    }
+
     public func fetchAllCaregivers() {
-        self.dbOps.readAll(from: .caregivers)
+        self.dbOps.observeAll(from: .caregivers)
             .sink(receiveCompletion: { [weak self] completion in
                 if case let .failure(error) = completion {
                     self?.fetchErrorSubject.send(error)
@@ -45,20 +57,36 @@ public class CaregiverManager {
                 if case let .failure(error) = completion {
                     self?.fetchErrorSubject.send(error)
                 }
-            }, receiveValue: { [weak self] _ in
-                self?.fetchAllCaregivers()
+            }, receiveValue: { /* [weak self] */ _ in
+//                self?.fetchAllCaregivers()
             })
             .store(in: &self.cancellables)
     }
 
-    public func updateCaregiver(caregiver: Caregiver, documentID: String) {
-        self.dbOps.update(data: caregiver, in: .caregivers, documentID: documentID)
+    public func updateCaregiver(caregiver: inout Caregiver /* , documentID: String */ ) {
+        caregiver.lastEditedAt = nil
+        self.dbOps.update(data: caregiver, in: .caregivers /* , documentID: documentID */ )
+            .sink(receiveCompletion: { completion in
+                if case let .failure(error) = completion {
+                    self.fetchErrorSubject.send(error)
+                }
+            }, receiveValue: { /// _ in
+//                self.fetchAllCaregivers()
+            })
+            .store(in: &self.cancellables)
+    }
+
+    public func updateAndSelectCaregiver(caregiver: inout Caregiver /* , documentID: String */ ) {
+        caregiver.lastEditedAt = nil
+        let documentID = caregiver.id!
+        self.dbOps.update(data: caregiver, in: .caregivers /* , documentID: documentID */ )
             .sink(receiveCompletion: { completion in
                 if case let .failure(error) = completion {
                     self.fetchErrorSubject.send(error)
                 }
             }, receiveValue: { _ in
-                self.fetchAllCaregivers()
+                // self.fetchAllCaregivers()
+                self.fetchCaregiver(documentID: documentID)
             })
             .store(in: &self.cancellables)
     }
@@ -69,8 +97,8 @@ public class CaregiverManager {
                 if case let .failure(error) = completion {
                     self.fetchErrorSubject.send(error)
                 }
-            }, receiveValue: { _ in
-                self.fetchAllCaregivers()
+            }, receiveValue: { /// _ in
+//                self.fetchAllCaregivers()
             })
             .store(in: &self.cancellables)
     }
