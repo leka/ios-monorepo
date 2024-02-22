@@ -33,8 +33,10 @@ struct EditCaregiverLabel: View {
                                 .font(.title)
                                 .lineLimit(1)
                                 .truncationMode(.tail)
-                            Button(String(l10n.EditCaregiverProfile.buttonLabel.characters)) {}
+                                .foregroundColor(.primary)
+                            Text(l10n.EditCaregiverProfile.buttonLabel)
                                 .font(.footnote)
+                                .foregroundStyle(self.styleManager.accentColor!)
                         }
                     }
                 }
