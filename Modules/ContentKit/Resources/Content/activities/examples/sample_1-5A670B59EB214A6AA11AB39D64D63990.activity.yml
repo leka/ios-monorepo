@@ -95,10 +95,11 @@ exercises_payload:
           interface: touchToSelect
           gameplay: findTheRightAnswers
           payload:
+            shuffle_choices: true
             choices:
               - value: yellow
                 type: color
-                isRightAnswer: true
+                is_right_answer: true
               - value: red
                 type: color
               - value: green
@@ -114,6 +115,7 @@ exercises_payload:
           interface: touchToSelect
           gameplay: findTheRightAnswers
           payload:
+            shuffle_choices: true
             choices:
               - value: yellow
                 type: color
@@ -121,10 +123,10 @@ exercises_payload:
                 type: color
               - value: green
                 type: color
-                isRightAnswer: true
+                is_right_answer: true
               - value: blue
                 type: color
-                isRightAnswer: true
+                is_right_answer: true
 
     - group:
         - instructions:
@@ -135,10 +137,11 @@ exercises_payload:
           interface: touchToSelect
           gameplay: findTheRightAnswers
           payload:
+            shuffle_choices: true
             choices:
               - value: 🍉
                 type: emoji
-                isRightAnswer: true
+                is_right_answer: true
               - value: 🍌
                 type: emoji
               - value: 🍒
@@ -154,13 +157,14 @@ exercises_payload:
           interface: touchToSelect
           gameplay: findTheRightAnswers
           payload:
+            shuffle_choices: true
             choices:
               - value: 🐱
                 type: emoji
-                isRightAnswer: true
+                is_right_answer: true
               - value: 🐶
                 type: emoji
-                isRightAnswer: true
+                is_right_answer: true
               - value: 🐷
                 type: emoji
               - value: 🐹
@@ -174,13 +178,14 @@ exercises_payload:
           interface: touchToSelect
           gameplay: findTheRightAnswers
           payload:
+            shuffle_choices: true
             choices:
               - value: 🔨
                 type: emoji
-                isRightAnswer: true
+                is_right_answer: true
               - value: 🪚
                 type: emoji
-                isRightAnswer: true
+                is_right_answer: true
               - value: 🪛
                 type: emoji
               - value: 🪜
@@ -195,12 +200,13 @@ exercises_payload:
           interface: touchToSelect
           gameplay: findTheRightAnswers
           payload:
+            shuffle_choices: true
             choices:
               - value: circle
                 type: sfsymbol
               - value: square
                 type: sfsymbol
-                isRightAnswer: true
+                is_right_answer: true
               - value: triangle
                 type: sfsymbol
               - value: rhombus
@@ -214,12 +220,13 @@ exercises_payload:
           interface: touchToSelect
           gameplay: findTheRightAnswers
           payload:
+            shuffle_choices: true
             choices:
               - value: figure.climbing
                 type: sfsymbol
               - value: figure.tennis
                 type: sfsymbol
-                isRightAnswer: true
+                is_right_answer: true
               - value: figure.pool.swim
                 type: sfsymbol
               - value: figure.soccer
@@ -233,6 +240,7 @@ exercises_payload:
           interface: touchToSelect
           gameplay: findTheRightAnswers
           payload:
+            shuffle_choices: true
             choices:
               - value: sun.max
                 type: sfsymbol
@@ -240,7 +248,7 @@ exercises_payload:
                 type: sfsymbol
               - value: cloud.bolt.rain
                 type: sfsymbol
-                isRightAnswer: true
+                is_right_answer: true
               - value: cloud.snow
                 type: sfsymbol
 
@@ -252,10 +260,11 @@ exercises_payload:
           interface: touchToSelect
           gameplay: findTheRightAnswers
           payload:
+            shuffle_choices: true
             choices:
               - value: bicycle
                 type: sfsymbol
-                isRightAnswer: true
+                is_right_answer: true
               - value: car
                 type: sfsymbol
               - value: airplane
