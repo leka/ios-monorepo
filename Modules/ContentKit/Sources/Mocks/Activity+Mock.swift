@@ -40,6 +40,10 @@ public extension Activity {
       - magic_cards
       - tablet_robot
 
+    types:
+      - one_on_one
+      - group
+
     locales:
       - en_US
       - fr_FR
