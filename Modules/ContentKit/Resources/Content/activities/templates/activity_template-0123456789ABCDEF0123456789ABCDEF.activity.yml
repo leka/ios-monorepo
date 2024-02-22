@@ -1,0 +1,126 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+version: 1.0.0
+
+uuid: 0123456789ABCDEF0123456789ABCDEF # {{💡TO_DEFINE}}
+name: activity_template # {{💡TO_DEFINE}}
+
+status: published
+
+authors: # {{💡TO_DEFINE}}
+  - leka
+
+skills: # {{💡TO_DEFINE}}
+  - recognition
+
+tags:
+  - tag_one
+  - tag_two
+  - tag_three
+
+hmi: # {{💡TO_DEFINE}}
+  - tablet
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: activity_template_icon_name # {{💡TO_DEFINE}}
+
+      title: Titre de l'activité # {{💡TO_DEFINE}}
+      subtitle: Sous-titre de l'activité # {{💡TO_DEFINE}}
+
+      description: | # {{💡TO_DEFINE}}
+        Courte description de l'activité
+
+      instructions: | # {{💡TO_DEFINE}}
+        ## Longue description de l'activité et instructions
+
+        bla bla bla
+
+  - locale: en_US
+    details:
+      icon: activity_template_icon_name # {{💡TO_DEFINE}}
+
+      title: Activity title # {{💡TO_DEFINE}}
+      subtitle: Activity subtitle # {{💡TO_DEFINE}}
+
+      description: | # {{💡TO_DEFINE}}
+        Short description of the activity
+
+      instructions: | # {{💡TO_DEFINE}}
+        ## Long description of the activity and instructions
+
+        bla bla bla
+
+exercises_payload:
+  options:
+    shuffle_exercises: false
+    shuffle_groups: false
+
+  exercise_groups:
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Touch le rond jaune
+            - locale: en_US
+              value: Touch the yellow circle
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: yellow
+                type: color
+                is_right_answer: true
+              - value: red
+                type: color
+              - value: green
+                type: color
+              - value: blue
+                type: color
+
+        - instructions:
+            - locale: fr_FR
+              value: Touch la pastèque
+            - locale: en_US
+              value: Touch the watermelon
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: 🍉
+                type: emoji
+                is_right_answer: true
+              - value: 🍌
+                type: emoji
+              - value: 🍒
+                type: emoji
+              - value: 🥝
+                type: emoji
+
+        - instructions:
+            - locale: fr_FR
+              value: Touch le carré
+            - locale: en_US
+              value: Touch the square
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: circle
+                type: sfsymbol
+              - value: square
+                type: sfsymbol
+                is_right_answer: true
+              - value: triangle
+                type: sfsymbol
+              - value: rhombus
+                type: sfsymbol
