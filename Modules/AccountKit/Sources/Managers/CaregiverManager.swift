@@ -15,18 +15,6 @@ public class CaregiverManager {
 
     public static let shared = CaregiverManager()
 
-    public func fetchAllCaregivers() {
-        self.dbOps.readAll(from: .caregivers)
-            .sink(receiveCompletion: { [weak self] completion in
-                if case let .failure(error) = completion {
-                    self?.fetchErrorSubject.send(error)
-                }
-            }, receiveValue: { [weak self] fetchedCaregivers in
-                self?.caregiverList.send(fetchedCaregivers)
-            })
-            .store(in: &self.cancellables)
-    }
-
     public func fetchCaregiver(documentID: String) {
         self.dbOps.read(from: .caregivers, documentID: documentID)
             .sink(receiveCompletion: { [weak self] completion in
@@ -45,8 +33,8 @@ public class CaregiverManager {
                 if case let .failure(error) = completion {
                     self?.fetchErrorSubject.send(error)
                 }
-            }, receiveValue: { [weak self] _ in
-                self?.fetchAllCaregivers()
+            }, receiveValue: { _ in
+                // Nothing to do
             })
             .store(in: &self.cancellables)
     }

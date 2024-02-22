@@ -24,8 +24,6 @@ public class DatabaseOperations {
             var documentData = data
             documentData.rootOwnerUid = Auth.auth().currentUser?.uid ?? ""
             documentData.id = docRef.documentID
-            documentData.createdAt = Date()
-            documentData.lastEditedAt = Date()
 
             do {
                 try docRef.setData(from: documentData) { error in
@@ -72,28 +70,28 @@ public class DatabaseOperations {
         .eraseToAnyPublisher()
     }
 
-    public func readAll<T: AccountDocument>(from collection: DatabaseCollection) -> AnyPublisher<[T], Error> {
-        Future<[T], Error> { promise in
-            self.database.collection(collection.rawValue)
-                .getDocuments { querySnapshot, error in
-                    if let error {
-                        log.error("\(error.localizedDescription)")
-                        promise(.failure(error))
-                    } else {
-                        let objects = querySnapshot?.documents.compactMap { document -> T? in
-                            try? document.data(as: T.self)
-                        } ?? []
-                        log.info("\(String(describing: objects.count)) documents fetched successfully. 🎉")
-                        promise(.success(objects))
-                    }
+    public func observeAll<T: AccountDocument>(from collection: DatabaseCollection) -> AnyPublisher<[T], Error> {
+        let subject = PassthroughSubject<[T], Error>()
+
+        self.database.collection(collection.rawValue).addSnapshotListener { querySnapshot, error in
+            if let error {
+                log.error("\(error.localizedDescription)")
+                subject.send(completion: .failure(error))
+            } else if let querySnapshot {
+                let objects = querySnapshot.documents.compactMap { document -> T? in
+                    try? document.data(as: T.self)
                 }
+                log.info("\(String(describing: objects.count)) documents fetched successfully. 🎉")
+                subject.send(objects)
+            }
         }
-        .eraseToAnyPublisher()
+
+        return subject.eraseToAnyPublisher()
     }
 
-    public func update(data: some AccountDocument, in collection: DatabaseCollection, documentID: String) -> AnyPublisher<Void, Error> {
+    public func update(data: some AccountDocument, in collection: DatabaseCollection) -> AnyPublisher<Void, Error> {
         Future<Void, Error> { promise in
-            let docRef = self.database.collection(collection.rawValue).document(documentID)
+            let docRef = self.database.collection(collection.rawValue).document(data.id!)
 
             do {
                 try docRef.setData(from: data, merge: true) { error in
@@ -101,7 +99,7 @@ public class DatabaseOperations {
                         log.error("\(error.localizedDescription)")
                         promise(.failure(DatabaseError.customError(error.localizedDescription)))
                     } else {
-                        log.info("Document \(String(describing: documentID)) updated successfully. 🎉")
+                        log.info("Document \(String(describing: data.id!)) updated successfully. 🎉")
                         promise(.success(()))
                     }
                 }
