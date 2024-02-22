@@ -59,6 +59,19 @@ repos:
         additional_dependencies: ["pygments"]
         files: '.*\.xcstrings'
 
+      - id: check_yaml_definitions_avatars
+        name: Check avatars.yml
+        description: |
+          This hook checks avatars.yml for:
+            - non unique ids
+            - jtd schema validation
+            - filename and image consistency
+          It also formats the file
+        entry: python3 Tools/Hooks/check_yaml_definitions_avatars.py
+        language: python
+        additional_dependencies: ["ruamel.yaml"]
+        files: avatars.yml
+
       - id: check_yaml_definitions_professions
         name: Check professions.yml
         description: |

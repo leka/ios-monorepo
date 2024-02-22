@@ -17,6 +17,17 @@ struct MainView: View {
                     print("name: \(profession.name)")
                     print("description: \(profession.description)")
                 }
+
+                let avatarCategories = Avatars.categories
+                for (index, avatarCategorie) in avatarCategories.enumerated() {
+                    print("index: \(index + 1)")
+                    print("version: \(Avatars.version)")
+                    print("id: \(avatarCategorie.id)")
+                    print("name: \(avatarCategorie.name)")
+                    for icon in avatarCategorie.icons {
+                        print("iconName: \(icon)")
+                    }
+                }
             }
     }
 }

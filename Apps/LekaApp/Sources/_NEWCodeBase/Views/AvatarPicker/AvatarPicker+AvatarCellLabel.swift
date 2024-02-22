@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AccountKit
 import DesignKit
 import SwiftUI
 
@@ -9,20 +10,21 @@ extension AvatarPicker {
     struct AvatarCellLabel: View {
         // MARK: Internal
 
-        let image: String
+        let image: UIImage
         @Binding var isSelected: Bool
 
         var body: some View {
-            Image(self.image, bundle: Bundle(for: DesignKitResources.self))
+            Image(uiImage: self.image)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
+                .background(DesignKitAsset.Colors.blueGray.swiftUIColor)
                 .clipShape(Circle())
-                .frame(maxWidth: 125, maxHeight: 125)
+                .frame(maxWidth: 130, maxHeight: 130)
                 .animation(.default, value: self.isSelected)
                 .overlay(
                     Circle()
                         .stroke(self.styleManager.accentColor!,
-                                lineWidth: self.isSelected ? 7 : 0)
+                                lineWidth: self.isSelected ? 4 : 0)
                 )
         }
 
@@ -34,7 +36,7 @@ extension AvatarPicker {
 
 #Preview {
     HStack {
-        AvatarPicker.AvatarCellLabel(image: DesignKitAsset.Avatars.accompanyingBlue.name, isSelected: .constant(false))
-        AvatarPicker.AvatarCellLabel(image: DesignKitAsset.Avatars.accompanyingBlue.name, isSelected: .constant(true))
+        AvatarPicker.AvatarCellLabel(image: Avatars.iconToUIImage(icon: Avatars.categories[0].avatars[0]), isSelected: .constant(false))
+        AvatarPicker.AvatarCellLabel(image: Avatars.iconToUIImage(icon: Avatars.categories[0].avatars[0]), isSelected: .constant(true))
     }
 }

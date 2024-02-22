@@ -11,9 +11,10 @@ struct CaregiverAvatarCell: View {
 
     var body: some View {
         VStack(spacing: 10) {
-            Image(self.caregiver.avatar, bundle: Bundle(for: DesignKitResources.self))
+            Image(uiImage: Avatars.iconToUIImage(icon: self.caregiver.avatar))
                 .resizable()
                 .aspectRatio(contentMode: .fit)
+                .background(DesignKitAsset.Colors.blueGray.swiftUIColor)
                 .clipShape(Circle())
 
             Text(self.caregiver.name)
@@ -23,5 +24,5 @@ struct CaregiverAvatarCell: View {
 }
 
 #Preview {
-    CaregiverAvatarCell(caregiver: Caregiver(name: "Chantal", avatar: DesignKitAsset.Avatars.avatarsBoy4f.name, professions: []))
+    CaregiverAvatarCell(caregiver: Caregiver(name: "Chantal", avatar: Avatars.categories[2].avatars[4], professions: []))
 }

@@ -30,23 +30,23 @@ class RootOwnerViewModel: ObservableObject {
     @Published var showConfirmDeleteAccount: Bool = false
 
     @Published var mockCaregiversSet: [Caregiver] = [
-        Caregiver(name: "Chantal", avatar: DesignKitAsset.Avatars.avatarsBoy4f.name, professions: [Professions.list[6]]),
-        Caregiver(name: "Gaëtan", avatar: DesignKitAsset.Avatars.avatarsLekaSunglassesBlue.name, professions: [Professions.list[9]], colorScheme: .dark, accentColor: .green),
-        Caregiver(name: "Fabrizio", avatar: DesignKitAsset.Avatars.avatarsPictogramsAnimalsFarmBirdYellow0071.name, professions: [Professions.list[10]]),
-        Caregiver(name: "Hakima", avatar: DesignKitAsset.Avatars.avatarsPictogramsFoodsFruitsPearYellow00FC.name, professions: [Professions.list[10], Professions.list[1]]),
-        Caregiver(name: "Eric", avatar: DesignKitAsset.Avatars.avatarsBoy2a.name, professions: [Professions.list[10]]),
-        Caregiver(name: "Razmo", avatar: DesignKitAsset.Avatars.avatarsBoy3b.name, professions: [Professions.list[5]], colorScheme: .dark, accentColor: .orange),
-        Caregiver(name: "Corinne", avatar: DesignKitAsset.Avatars.avatarsGirl1d.name, professions: [Professions.list[4]]),
-        Caregiver(name: "Alphonso", avatar: DesignKitAsset.Avatars.avatarsPictogramsFoodsFruitsAppleRed0101.name, professions: [Professions.list[0]]),
-        Caregiver(name: "Gargantua", avatar: DesignKitAsset.Avatars.avatarsPictogramsFoodsFruitsCherryRed00FF.name, professions: [Professions.list[2]]),
+        Caregiver(name: "Chantal", avatar: Avatars.categories[0].avatars[2], professions: [Professions.list[6]]),
+        Caregiver(name: "Gaëtan", avatar: Avatars.categories[3].avatars[1], professions: [Professions.list[9]], colorScheme: .dark, accentColor: .green),
+        Caregiver(name: "Fabrizio", avatar: Avatars.categories[4].avatars[1], professions: [Professions.list[10]]),
+        Caregiver(name: "Hakima", avatar: Avatars.categories[2].avatars[1], professions: [Professions.list[10], Professions.list[1]]),
+        Caregiver(name: "Eric", avatar: Avatars.categories[1].avatars[0], professions: [Professions.list[10]]),
+        Caregiver(name: "Razmo", avatar: Avatars.categories[2].avatars[2], professions: [Professions.list[5]], colorScheme: .dark, accentColor: .orange),
+        Caregiver(name: "Corinne", avatar: Avatars.categories[5].avatars[1], professions: [Professions.list[4]]),
+        Caregiver(name: "Alphonso", avatar: Avatars.categories[4].avatars[1], professions: [Professions.list[0]]),
+        Caregiver(name: "Gargantua", avatar: Avatars.categories[3].avatars[2], professions: [Professions.list[2]]),
     ]
 
     @Published var mockCarereceiversSet: [Carereceiver] = [
-        Carereceiver(name: "Peet", avatar: DesignKitAsset.Avatars.avatarsLekaAstronaut.name, reinforcer: 1),
-        Carereceiver(name: "Rounhaa", avatar: DesignKitAsset.Avatars.avatarsPictogramsAnimalsForestSquirrelOrange005C.name, reinforcer: 3),
-        Carereceiver(name: "Selug", avatar: DesignKitAsset.Avatars.avatarsPictogramsAnimalsSeaCrabRed003E.name, reinforcer: 4),
-        Carereceiver(name: "Luther", avatar: DesignKitAsset.Avatars.avatarsPictogramsFoodsFruitsAppleRed0101.name, reinforcer: 5),
-        Carereceiver(name: "Abel", avatar: DesignKitAsset.Avatars.avatarsBoy1g.name, reinforcer: 2),
+        Carereceiver(name: "Peet", avatar: Avatars.categories[2].avatars[2], reinforcer: 1),
+        Carereceiver(name: "Rounhaa", avatar: Avatars.categories[4].avatars[0], reinforcer: 3),
+        Carereceiver(name: "Selug", avatar: Avatars.categories[5].avatars[1], reinforcer: 4),
+        Carereceiver(name: "Luther", avatar: Avatars.categories[1].avatars[2], reinforcer: 5),
+        Carereceiver(name: "Abel", avatar: Avatars.categories[2].avatars[3], reinforcer: 2),
     ]
 
     func getReinforcerFor(index: Int) -> UIImage {

@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AccountKit
 import DesignKit
 import SwiftUI
 
@@ -16,9 +17,10 @@ struct CarereceiverAvatarCell: View {
 
     var body: some View {
         VStack(spacing: 10) {
-            Image(self.carereceiver.avatar, bundle: Bundle(for: DesignKitResources.self))
+            Image(uiImage: Avatars.iconToUIImage(icon: self.carereceiver.avatar))
                 .resizable()
                 .aspectRatio(contentMode: .fit)
+                .background(DesignKitAsset.Colors.blueGray.swiftUIColor)
                 .clipShape(Circle())
                 .overlay {
                     Circle()
@@ -45,5 +47,5 @@ struct CarereceiverAvatarCell: View {
 }
 
 #Preview {
-    CarereceiverAvatarCell(carereceiver: Carereceiver(name: "Chantal", avatar: DesignKitAsset.Avatars.avatarsPictogramsAnimalsSavannaKangarooBrown0078.name, reinforcer: 2))
+    CarereceiverAvatarCell(carereceiver: Carereceiver(name: "Chantal", avatar: Avatars.categories[2].avatars[4], reinforcer: 2))
 }
