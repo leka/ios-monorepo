@@ -2,7 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
-public class ActivityExerciseManager {
+public class CurrentActivityManager {
     // MARK: Lifecycle
 
     public init(activity: Activity) {

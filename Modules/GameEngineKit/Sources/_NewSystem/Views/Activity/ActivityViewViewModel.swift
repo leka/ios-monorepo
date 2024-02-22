@@ -12,22 +12,22 @@ class ActivityViewViewModel: ObservableObject {
     init(activity: Activity) {
         self.currentActivity = activity
 
-        self.exerciseManager = ActivityExerciseManager(activity: activity)
+        self.activityManager = CurrentActivityManager(activity: activity)
 
-        self.totalGroups = self.exerciseManager.totalGroups
-        self.currentGroupIndex = self.exerciseManager.currentGroupIndex
+        self.totalGroups = self.activityManager.totalGroups
+        self.currentGroupIndex = self.activityManager.currentGroupIndex
 
-        self.groupSizeEnumeration = self.exerciseManager.activity.exercisePayload.exerciseGroups.map(\.exercises.count)
+        self.groupSizeEnumeration = self.activityManager.activity.exercisePayload.exerciseGroups.map(\.exercises.count)
 
-        self.totalExercisesInCurrentGroup = self.exerciseManager.totalExercisesInCurrentGroup
-        self.currentExerciseIndexInCurrentGroup = self.exerciseManager.currentExerciseIndexInCurrentGroup
+        self.totalExercisesInCurrentGroup = self.activityManager.totalExercisesInCurrentGroup
+        self.currentExerciseIndexInCurrentGroup = self.activityManager.currentExerciseIndexInCurrentGroup
 
-        self.currentExercise = self.exerciseManager.currentExercise
-        self.currentExerciseInterface = self.exerciseManager.currentExercise.interface
+        self.currentExercise = self.activityManager.currentExercise
+        self.currentExerciseInterface = self.activityManager.currentExercise.interface
 
         self.currentExerciseSharedData = ExerciseSharedData(
-            groupIndex: self.exerciseManager.currentGroupIndex,
-            exerciseIndex: self.exerciseManager.currentExerciseIndexInCurrentGroup
+            groupIndex: self.activityManager.currentGroupIndex,
+            exerciseIndex: self.activityManager.currentExerciseIndexInCurrentGroup
         )
         self.completedExercisesSharedData.append(self.currentExerciseSharedData)
 
@@ -97,20 +97,20 @@ class ActivityViewViewModel: ObservableObject {
     }
 
     var isFirstExercise: Bool {
-        self.exerciseManager.isFirstExercise
+        self.activityManager.isFirstExercise
     }
 
     var isLastExercise: Bool {
-        self.exerciseManager.isLastExercise
+        self.activityManager.isLastExercise
     }
 
     func moveToNextExercise() {
-        self.exerciseManager.moveToNextExercise()
+        self.activityManager.moveToNextExercise()
         self.updateValues()
     }
 
     func moveToPreviousExercise() {
-        self.exerciseManager.moveToPreviousExercise()
+        self.activityManager.moveToPreviousExercise()
         self.updateValues()
     }
 
@@ -120,20 +120,20 @@ class ActivityViewViewModel: ObservableObject {
 
     // MARK: Private
 
-    private let exerciseManager: ActivityExerciseManager
+    private let activityManager: CurrentActivityManager
 
     private var cancellables: Set<AnyCancellable> = []
 
     private func updateValues() {
-        self.currentExercise = self.exerciseManager.currentExercise
-        self.currentExerciseInterface = self.exerciseManager.currentExercise.interface
-        self.currentGroupIndex = self.exerciseManager.currentGroupIndex
-        self.totalGroups = self.exerciseManager.totalGroups
-        self.currentExerciseIndexInCurrentGroup = self.exerciseManager.currentExerciseIndexInCurrentGroup
-        self.totalExercisesInCurrentGroup = self.exerciseManager.totalExercisesInCurrentGroup
+        self.currentExercise = self.activityManager.currentExercise
+        self.currentExerciseInterface = self.activityManager.currentExercise.interface
+        self.currentGroupIndex = self.activityManager.currentGroupIndex
+        self.totalGroups = self.activityManager.totalGroups
+        self.currentExerciseIndexInCurrentGroup = self.activityManager.currentExerciseIndexInCurrentGroup
+        self.totalExercisesInCurrentGroup = self.activityManager.totalExercisesInCurrentGroup
         self.currentExerciseSharedData = ExerciseSharedData(
-            groupIndex: self.exerciseManager.currentGroupIndex,
-            exerciseIndex: self.exerciseManager.currentExerciseIndexInCurrentGroup
+            groupIndex: self.activityManager.currentGroupIndex,
+            exerciseIndex: self.activityManager.currentExerciseIndexInCurrentGroup
         )
         self.completedExercisesSharedData.append(self.currentExerciseSharedData)
 
