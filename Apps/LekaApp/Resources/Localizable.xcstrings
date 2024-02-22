@@ -470,6 +470,60 @@
                 }
             }
         },
+        "lekaapp.account_creation_view.email_verification_alert.dismissButton": {
+            "comment": "Email verification alert dismiss button",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "OK"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "OK"
+                    }
+                }
+            }
+        },
+        "lekaapp.account_creation_view.email_verification_alert.message": {
+            "comment": "Email verification alert message",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "An email has been sent to the address provided. Please click on the link to confirm your email address."
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Un email a \u00e9t\u00e9 envoy\u00e9 \u00e0 l'adresse indiqu\u00e9e. Veuillez cliquer sur le lien pour confirmer votre adresse e-mail."
+                    }
+                }
+            }
+        },
+        "lekaapp.account_creation_view.email_verification_alert.title": {
+            "comment": "Email verification alert title",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Confirm your email address"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Confirmez votre adresse email"
+                    }
+                }
+            }
+        },
         "lekaapp.account_creation_view.navigation_title": {
             "comment": "NavigationBar title on the whole Signup process",
             "extractionState": "extracted_with_value",

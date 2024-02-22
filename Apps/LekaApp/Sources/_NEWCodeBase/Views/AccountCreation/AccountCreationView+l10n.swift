@@ -4,15 +4,15 @@
 
 import LocalizationKit
 
-// swiftlint:disable line_length
+// swiftlint:disable line_length nesting
 
 extension l10n {
     enum AccountCreationView {
         enum EmailVerificationAlert {
-            static let title = LocalizedString("lekaapp.account_creation_view.email_verification_alert.title", value: "Verify your email adress", comment: "Email verification alert title")
+            static let title = LocalizedString("lekaapp.account_creation_view.email_verification_alert.title", value: "Confirm your email address", comment: "Email verification alert title")
 
             static let message = LocalizedString("lekaapp.account_creation_view.email_verification_alert.message",
-                                                 value: "A verification email has just been sent to you ! Please verify",
+                                                 value: "An email has been sent to the address provided. Please click on the link to confirm your email address.",
                                                  comment: "Email verification alert message")
 
             static let dismissButton = LocalizedString("lekaapp.account_creation_view.email_verification_alert.dismissButton", value: "OK", comment: "Email verification alert dismiss button")
@@ -24,4 +24,4 @@ extension l10n {
     }
 }
 
-// swiftlint:enable line_length
+// swiftlint:enable line_length nesting
