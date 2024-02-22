@@ -1,0 +1,104 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+version: 1.0.0
+categories:
+  - id: weather
+    l10n:
+      - locale: fr_FR
+        name: Météo
+      - locale: en_US
+        name: Weather
+    avatars:
+      - weather_cloud
+      - weather_flake
+      - weather_moon
+      - weather_star
+      - weather_sun
+
+  - id: professions
+    l10n:
+      - locale: fr_FR
+        name: Métiers
+      - locale: en_US
+        name: Professions
+    avatars:
+      - professions_astronaut_leka
+      - professions_cook_leka
+      - professions_doctor_leka
+      - professions_explorer_leka
+      - professions_sailor_leka
+      - professions_pirate_leka
+
+  - id: eyeglasses
+    l10n:
+      - locale: fr_FR
+        name: Lunettes
+      - locale: en_US
+        name: Eyeglasses
+    avatars:
+      - eyeglasses_blue_leka
+      - eyeglasses_green_leka
+      - eyeglasses_pink_leka
+      - eyeglasses_yellow_leka
+
+  - id: animals
+    l10n:
+      - locale: fr_FR
+        name: Animaux
+      - locale: en_US
+        name: Animals
+    avatars:
+      - animals_bird
+      - animals_horse
+      - animals_rooster
+      - animals_bear
+      - animals_fox
+      - animals_hedgehog
+      - animals_rabbit
+      - animals_squirrel
+      - animals_fish
+      - animals_turtle
+      - animals_elephant
+      - animals_giraffe
+      - animals_koala
+      - animals_lion
+      - animals_crab
+      - animals_turtle
+
+  - id: fruits
+    l10n:
+      - locale: fr_FR
+        name: Fruits
+      - locale: en_US
+        name: Fruits
+    avatars:
+      - fruits_apple_green
+      - fruits_apple_red
+      - fruits_banana
+      - fruits_cherry
+      - fruits_grape
+      - fruits_kiwi
+      - fruits_lemon
+      - fruits_pear
+      - fruits_pineapple
+      - fruits_strawberry
+      - fruits_watermelon
+
+  - id: vegetables
+    l10n:
+      - locale: fr_FR
+        name: Légumes
+      - locale: en_US
+        name: Vegetables
+    avatars:
+      - vegetables_avocado
+      - vegetables_broccoli
+      - vegetables_carrot
+      - vegetables_corn
+      - vegetables_eggplant
+      - vegetables_onion
+      - vegetables_potato
+      - vegetables_salad
+      - vegetables_tomato
