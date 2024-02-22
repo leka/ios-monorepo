@@ -24,7 +24,7 @@ struct MainView: View {
                     print("version: \(Avatars.version)")
                     print("id: \(avatarCategorie.id)")
                     print("name: \(avatarCategorie.name)")
-                    for icon in avatarCategorie.icons {
+                    for icon in avatarCategorie.avatars {
                         print("iconName: \(icon)")
                     }
                 }
