@@ -142,10 +142,10 @@ public extension Activity {
 
 public extension Activity {
     struct ExercisesPayload: Decodable {
-        // MARK: Internal
+        // MARK: Public
 
-        let options: Options
-        var exerciseGroups: [ExerciseGroup]
+        public let options: Options
+        public var exerciseGroups: [ExerciseGroup]
 
         // MARK: Private
 

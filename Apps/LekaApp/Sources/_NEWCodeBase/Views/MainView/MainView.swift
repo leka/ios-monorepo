@@ -137,9 +137,7 @@ struct MainView: View {
         .fullScreenCover(item: self.$navigation.currentActivity) {
             self.navigation.currentActivity = nil
         } content: { activity in
-            Text("Activity: \(activity.details.title)")
-            // TODO: (@ladislas) switch back to activity view
-            // ActivityView(activity: activity)
+            ActivityView(activity: activity)
         }
         .sheet(isPresented: self.$rootOwnerViewModel.isSettingsViewPresented) {
             SettingsView()

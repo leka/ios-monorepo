@@ -16,8 +16,8 @@ import SwiftUI
 public struct ActivityView: View {
     // MARK: Lifecycle
 
-    public init(viewModel: ActivityViewViewModel) {
-        self.viewModel = viewModel
+    public init(activity: Activity) {
+        self._viewModel = StateObject(wrappedValue: ActivityViewViewModel(activity: activity))
     }
 
     // MARK: Public
@@ -32,7 +32,7 @@ public struct ActivityView: View {
                         }
 
                         if self.viewModel.isExerciseInstructionsButtonVisible {
-                            ExerciseInstructionsButton(instructions: self.viewModel.currentExercise.instructions)
+                            ExerciseInstructionsButton(instructions: self.viewModel.currentExercise.instructions!)
                         }
                     }
 
@@ -42,7 +42,7 @@ public struct ActivityView: View {
                         Spacer()
                     }
                 }
-                .id(self.viewModel.currentExerciseIndexInSequence)
+                .id(self.viewModel.currentExerciseIndexInCurrentGroup)
                 .blur(radius: self.blurRadius)
                 .opacity(self.opacity)
                 .onChange(of: self.viewModel.isReinforcerAnimationVisible) {
@@ -146,7 +146,8 @@ public struct ActivityView: View {
 
     @Environment(\.dismiss) var dismiss
 
-    @ObservedObject var viewModel: ActivityViewViewModel
+    // TODO: (@ladislas) was @ObservedObject, check why
+    @StateObject var viewModel: ActivityViewViewModel
 
     // MARK: Private
 
@@ -301,6 +302,7 @@ public struct ActivityView: View {
 // swiftlint:enable cyclomatic_complexity void_function_in_ternary function_body_length
 
 #Preview {
-    let activity = ContentKit.decodeActivityDeprecated("activity-sample")
-    return ActivityView(viewModel: ActivityViewViewModel(activity: activity))
+    NavigationStack {
+        ActivityView(activity: Activity.mock)
+    }
 }
