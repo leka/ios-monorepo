@@ -16,8 +16,8 @@ import SwiftUI
 public struct ActivityView: View {
     // MARK: Lifecycle
 
-    public init(viewModel: ActivityViewViewModel) {
-        self.viewModel = viewModel
+    public init(activity: Activity) {
+        self._viewModel = StateObject(wrappedValue: ActivityViewViewModel(activity: activity))
     }
 
     // MARK: Public
@@ -301,6 +301,8 @@ public struct ActivityView: View {
 // swiftlint:enable cyclomatic_complexity void_function_in_ternary function_body_length
 
 #Preview {
-    let activity = ContentKit.decodeActivityDeprecated("activity-sample")
-    return ActivityView(viewModel: ActivityViewViewModel(activity: activity))
+//    let activity = ContentKit.decodeActivityDeprecated("activity-sample")
+//    return ActivityView(viewModel: ActivityViewViewModel(activity: activity))
+    // TODO: (@ladislas) fix when Activity view has been refactored
+    Text("Hello, World!")
 }

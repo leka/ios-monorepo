@@ -9,23 +9,23 @@ import SwiftUI
 public class ActivityViewViewModel: ObservableObject {
     // MARK: Lifecycle
 
-    public init(activity: ActivityDeprecated) {
+    public init(activity: Activity) {
         self.sequenceManager = ActivityExerciseManager(activity: activity)
 
         self.currentActivity = activity
 
-        self.totalSequences = self.sequenceManager.totalSequences
-        self.currentSequenceIndex = self.sequenceManager.currentSequenceIndex
+        self.totalSequences = self.sequenceManager.totalGroups
+        self.currentGroupIndex = self.sequenceManager.currentGroupIndex
 
-        self.totalExercisesInCurrentSequence = self.sequenceManager.totalExercisesInCurrentSequence
-        self.currentExerciseIndexInSequence = self.sequenceManager.currentExerciseIndexInSequence
+        self.totalExercisesInCurrentSequence = self.sequenceManager.totalExercisesInCurrentGroup
+        self.currentExerciseIndexInSequence = self.sequenceManager.currentExerciseIndexInCurrentGroup
 
         self.currentExercise = self.sequenceManager.currentExercise
         self.currentExerciseInterface = self.sequenceManager.currentExercise.interface
 
         self.currentExerciseSharedData = ExerciseSharedData(
-            sequenceIndex: self.sequenceManager.currentSequenceIndex,
-            exerciseIndex: self.sequenceManager.currentExerciseIndexInSequence
+            sequenceIndex: self.sequenceManager.currentGroupIndex,
+            exerciseIndex: self.sequenceManager.currentExerciseIndexInCurrentGroup
         )
         self.completedExercisesSharedData.append(self.currentExerciseSharedData)
 
@@ -37,7 +37,7 @@ public class ActivityViewViewModel: ObservableObject {
     @Published var currentActivity: ActivityDeprecated
 
     @Published var totalSequences: Int
-    @Published var currentSequenceIndex: Int
+    @Published var currentGroupIndex: Int
 
     @Published var totalExercisesInCurrentSequence: Int
     @Published var currentExerciseIndexInSequence: Int
@@ -123,13 +123,13 @@ public class ActivityViewViewModel: ObservableObject {
     private func updateValues() {
         self.currentExercise = self.sequenceManager.currentExercise
         self.currentExerciseInterface = self.sequenceManager.currentExercise.interface
-        self.currentSequenceIndex = self.sequenceManager.currentSequenceIndex
-        self.totalSequences = self.sequenceManager.totalSequences
-        self.currentExerciseIndexInSequence = self.sequenceManager.currentExerciseIndexInSequence
-        self.totalExercisesInCurrentSequence = self.sequenceManager.totalExercisesInCurrentSequence
+        self.currentGroupIndex = self.sequenceManager.currentGroupIndex
+        self.totalSequences = self.sequenceManager.totalGroups
+        self.currentExerciseIndexInSequence = self.sequenceManager.currentExerciseIndexInCurrentGroup
+        self.totalExercisesInCurrentSequence = self.sequenceManager.totalExercisesInCurrentGroup
         self.currentExerciseSharedData = ExerciseSharedData(
-            sequenceIndex: self.sequenceManager.currentSequenceIndex,
-            exerciseIndex: self.sequenceManager.currentExerciseIndexInSequence
+            sequenceIndex: self.sequenceManager.currentGroupIndex,
+            exerciseIndex: self.sequenceManager.currentExerciseIndexInCurrentGroup
         )
         self.completedExercisesSharedData.append(self.currentExerciseSharedData)
 
