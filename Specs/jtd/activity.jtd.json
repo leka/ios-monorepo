@@ -27,6 +27,11 @@
                 "ref": "$hmi"
             }
         },
+        "types": {
+            "elements": {
+                "ref": "$type"
+            }
+        },
         "tags": {
             "elements": {
                 "ref": "$tag"
@@ -107,6 +112,9 @@
         },
         "$skill": {
             "type": "string"
+        },
+        "$type": {
+            "enum": ["one_on_one", "group"]
         },
         "$tag": {
             "type": "string"

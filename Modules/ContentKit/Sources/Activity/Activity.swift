@@ -24,6 +24,7 @@ public struct Activity: Decodable, Identifiable {
         self.authors = try container.decode([String].self, forKey: .authors)
         self.skills = try container.decode([String].self, forKey: .skills)
         self.hmi = try container.decode([String].self, forKey: .hmi)
+        self.types = try container.decode([String].self, forKey: .types)
         self.tags = try container.decode([String].self, forKey: .tags)
 
         let localeStrings = try container.decode([String].self, forKey: .locales)
@@ -42,6 +43,7 @@ public struct Activity: Decodable, Identifiable {
     public let authors: [String] // TODO: (@ladislas) - implement authors
     public let skills: [String] // TODO: (@ladislas) - implement skills
     public let hmi: [String] // TODO: (@ladislas) - implement hmi
+    public let types: [String] // TODO: (@ladislas) - implement types
     public let tags: [String] // TODO: (@ladislas) - implement tags
 
     public let locales: [Locale]
@@ -73,6 +75,7 @@ public struct Activity: Decodable, Identifiable {
         case authors
         case skills
         case hmi
+        case types
         case tags
         case status
         case locales

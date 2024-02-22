@@ -23,6 +23,10 @@ tags:
 hmi: # {{💡TO_DEFINE}}
   - tablet
 
+types: # {{💡TO_DEFINE}}
+  - one_on_one
+  - group
+
 locales:
   - en_US
   - fr_FR

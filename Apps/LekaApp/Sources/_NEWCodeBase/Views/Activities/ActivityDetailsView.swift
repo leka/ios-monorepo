@@ -103,6 +103,27 @@ struct ActivityDetailsView: View {
                         Text(hmi.description)
                     }
                 })
+
+                DisclosureGroup("**Activity Types**") {
+                    ForEach(self.activity.types, id: \.self) { type in
+                        let type = ActivityTypes.type(id: type)!
+                        HStack {
+                            Text(type.name)
+                            Button {
+                                self.selectedType = type
+                            } label: {
+                                Image(systemName: "info.circle")
+                            }
+                        }
+                    }
+                }
+                .sheet(item: self.$selectedType, onDismiss: { self.selectedType = nil }, content: { type in
+                    VStack(alignment: .leading) {
+                        Text(type.name)
+                            .font(.headline)
+                        Text(type.description)
+                    }
+                })
             }
 
             Section {
@@ -130,6 +151,7 @@ struct ActivityDetailsView: View {
     @State private var selectedAuthor: Author?
     @State private var selectedSkill: Skill?
     @State private var selectedHMI: HMIDetails?
+    @State private var selectedType: ActivityType?
 
     private let navigation: Navigation = .shared
 }
