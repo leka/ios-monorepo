@@ -95,6 +95,7 @@ exercises_payload:
           interface: touchToSelect
           gameplay: findTheRightAnswers
           payload:
+            shuffle_choices: true
             choices:
               - value: yellow
                 type: color
@@ -114,6 +115,7 @@ exercises_payload:
           interface: touchToSelect
           gameplay: findTheRightAnswers
           payload:
+            shuffle_choices: true
             choices:
               - value: yellow
                 type: color
@@ -135,6 +137,7 @@ exercises_payload:
           interface: touchToSelect
           gameplay: findTheRightAnswers
           payload:
+            shuffle_choices: true
             choices:
               - value: 🍉
                 type: emoji
@@ -154,6 +157,7 @@ exercises_payload:
           interface: touchToSelect
           gameplay: findTheRightAnswers
           payload:
+            shuffle_choices: true
             choices:
               - value: 🐱
                 type: emoji
@@ -174,6 +178,7 @@ exercises_payload:
           interface: touchToSelect
           gameplay: findTheRightAnswers
           payload:
+            shuffle_choices: true
             choices:
               - value: 🔨
                 type: emoji
@@ -195,6 +200,7 @@ exercises_payload:
           interface: touchToSelect
           gameplay: findTheRightAnswers
           payload:
+            shuffle_choices: true
             choices:
               - value: circle
                 type: sfsymbol
@@ -214,6 +220,7 @@ exercises_payload:
           interface: touchToSelect
           gameplay: findTheRightAnswers
           payload:
+            shuffle_choices: true
             choices:
               - value: figure.climbing
                 type: sfsymbol
@@ -233,6 +240,7 @@ exercises_payload:
           interface: touchToSelect
           gameplay: findTheRightAnswers
           payload:
+            shuffle_choices: true
             choices:
               - value: sun.max
                 type: sfsymbol
@@ -252,6 +260,7 @@ exercises_payload:
           interface: touchToSelect
           gameplay: findTheRightAnswers
           payload:
+            shuffle_choices: true
             choices:
               - value: bicycle
                 type: sfsymbol
