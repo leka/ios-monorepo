@@ -32,7 +32,7 @@ public enum TouchToSelect {
         private enum CodingKeys: String, CodingKey {
             case value
             case type
-            case isRightAnswer
+            case isRightAnswer = "is_right_answer"
         }
     }
 
