@@ -9,14 +9,15 @@ import SwiftUI
 // MARK: - SettingsView
 
 struct SettingsView: View {
-    @ObservedObject var rootOwnerViewModel: RootOwnerViewModel = .shared
-    @ObservedObject var styleManager: StyleManager = .shared
+    @ObservedObject private var rootOwnerViewModel: RootOwnerViewModel = .shared
+    @ObservedObject private var styleManager: StyleManager = .shared
+    @Binding var isCaregiverPickerPresented: Bool
 
     var body: some View {
         NavigationStack {
             Form {
                 CredentialsSection()
-                ProfilesSection()
+                ProfilesSection(isCaregiverPickerPresented: self.$isCaregiverPickerPresented)
                 AccountSection()
             }
             .navigationTitle(String(l10n.SettingsView.navigationTitle.characters))
@@ -34,5 +35,5 @@ struct SettingsView: View {
 }
 
 #Preview {
-    SettingsView()
+    SettingsView(isCaregiverPickerPresented: .constant(false))
 }

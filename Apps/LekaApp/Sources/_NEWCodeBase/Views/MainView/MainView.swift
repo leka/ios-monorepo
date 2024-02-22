@@ -140,7 +140,7 @@ struct MainView: View {
             ActivityView(activity: activity)
         }
         .sheet(isPresented: self.$rootOwnerViewModel.isSettingsViewPresented) {
-            SettingsView()
+            SettingsView(isCaregiverPickerPresented: self.$isCaregiverPickerPresented)
         }
         .sheet(isPresented: self.$rootOwnerViewModel.isEditCaregiverViewPresented) {
             EditCaregiverView(modifiedCaregiver: self.rootOwnerViewModel.currentCaregiver!)

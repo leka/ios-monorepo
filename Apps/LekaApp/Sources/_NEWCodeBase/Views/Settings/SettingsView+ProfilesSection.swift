@@ -11,12 +11,14 @@ extension SettingsView {
     struct ProfilesSection: View {
         // MARK: Internal
 
+        @Binding var isCaregiverPickerPresented: Bool
+
         var body: some View {
             Section(String(l10n.SettingsView.ProfilesSection.header.characters)) {
                 Button {
                     self.rootOwnerViewModel.isSettingsViewPresented = false
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                        self.rootOwnerViewModel.currentCaregiver = nil
+                        self.isCaregiverPickerPresented = true
                     }
                 } label: {
                     Label(String(l10n.SettingsView.ProfilesSection.switchProfileButtonLabel.characters), systemImage: "person.2.gobackward")
@@ -32,5 +34,5 @@ extension SettingsView {
 }
 
 #Preview {
-    SettingsView.ProfilesSection()
+    SettingsView.ProfilesSection(isCaregiverPickerPresented: .constant(false))
 }
