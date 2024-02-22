@@ -20,7 +20,7 @@ repos:
         exclude: '(.*\.xcassets/.*\.json$)'
       - id: pretty-format-json
         args: ["--autofix", "--indent=4", "--top-keys=version,sourceLanguage"]
-        types: [file, json]
+        types: [file]
         files: \.(json|xcstrings)$
         exclude: '(.vscode/settings.json|\.jtd.json$|.*\.xcassets/.*|.*\.colorset/.*|.*Lottie.*)'
       - id: check-added-large-files
