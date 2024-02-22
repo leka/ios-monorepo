@@ -9,24 +9,23 @@ struct ActivityProgressBar: View {
     // MARK: Internal
 
     @ObservedObject var viewModel: ActivityViewViewModel
-    let height: CGFloat = 30
 
     var body: some View {
         HStack(spacing: 0) {
             Spacer()
-            ForEach(0..<self.viewModel.totalSequences, id: \.self) { sequenceIndex in
+            ForEach(0..<self.viewModel.totalGroups, id: \.self) { groupIndex in
                 HStack(spacing: 0) {
-                    ForEach(0..<self.viewModel.totalExercisesInCurrentSequence, id: \.self) { exerciseIndex in
-                        let markerColor = self.progressBarMarkerColor(sequence: sequenceIndex, exercise: exerciseIndex)
+                    ForEach(0..<self.viewModel.groupSizeEnumeration[groupIndex], id: \.self) { exerciseIndex in
+                        let markerColor = self.progressBarMarkerColor(group: groupIndex, exercise: exerciseIndex)
 
-                        let isCurrentSequence = sequenceIndex == self.viewModel.currentSequenceIndex
-                        let isCurrentExercise = isCurrentSequence && exerciseIndex == self.viewModel.currentExerciseIndexInSequence
+                        let isCurrentGroup = groupIndex == self.viewModel.currentGroupIndex
+                        let isCurrentExercise = isCurrentGroup && exerciseIndex == self.viewModel.currentExerciseIndexInCurrentGroup
                         let isNotYetCompleted = self.viewModel.currentExerciseSharedData.isExerciseNotYetCompleted
 
                         let isCurrentlyPlaying = isCurrentExercise && isNotYetCompleted
 
                         ActivityProgressBarMarker(
-                            color: (isCurrentSequence && isCurrentExercise)
+                            color: (isCurrentGroup && isCurrentExercise)
                                 ? self.$currentColor : .constant(markerColor),
                             isCurrentlyPlaying: .constant(isCurrentlyPlaying)
                         )
@@ -39,7 +38,7 @@ struct ActivityProgressBar: View {
                             }
                         }
 
-                        if exerciseIndex < self.viewModel.totalExercisesInCurrentSequence - 1 {
+                        if exerciseIndex < self.viewModel.groupSizeEnumeration[groupIndex] - 1 {
                             Spacer().frame(maxWidth: 100)
                         }
                     }
@@ -47,7 +46,7 @@ struct ActivityProgressBar: View {
                 .frame(height: self.height)
                 .background(DesignKitAsset.Colors.progressBar.swiftUIColor, in: Capsule())
 
-                if sequenceIndex < self.viewModel.totalSequences - 1 {
+                if groupIndex < self.viewModel.totalGroups - 1 {
                     Spacer().frame(minWidth: 20, maxWidth: 60)
                 }
             }
@@ -56,6 +55,8 @@ struct ActivityProgressBar: View {
     }
 
     // MARK: Private
+
+    private let height: CGFloat = 30
 
     @State private var currentColor: Color = .white
 
@@ -75,9 +76,9 @@ struct ActivityProgressBar: View {
         }
     }
 
-    private func progressBarMarkerColor(sequence: Int, exercise: Int) -> Color {
+    private func progressBarMarkerColor(group: Int, exercise: Int) -> Color {
         if let completedExerciseSharedData = self.viewModel.completedExercisesSharedData.first(where: {
-            $0.sequenceIndex == sequence
+            $0.groupIndex == group
                 && $0.exerciseIndex == exercise
         }) {
             self.completionLevelToColor(level: completedExerciseSharedData.completionLevel)

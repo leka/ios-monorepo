@@ -7,14 +7,14 @@ import SwiftUI
 public class ExerciseSharedData: ObservableObject {
     // MARK: Lifecycle
 
-    public init(sequenceIndex: Int, exerciseIndex: Int) {
-        self.sequenceIndex = sequenceIndex
+    public init(groupIndex: Int, exerciseIndex: Int) {
+        self.groupIndex = groupIndex
         self.exerciseIndex = exerciseIndex
     }
 
     public init() {
         self.exerciseIndex = 0
-        self.sequenceIndex = 0
+        self.groupIndex = 0
     }
 
     // MARK: Internal
@@ -22,7 +22,7 @@ public class ExerciseSharedData: ObservableObject {
     // TODO: (@HPezz): Add state setter function, and makes it private
     @Published var state: ExerciseState = .idle
 
-    let sequenceIndex: Int
+    let groupIndex: Int
     let exerciseIndex: Int
 
     var completionLevel: ExerciseState.CompletionLevel? {

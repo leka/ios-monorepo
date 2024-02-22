@@ -6,26 +6,28 @@ import Combine
 import ContentKit
 import SwiftUI
 
-public class ActivityViewViewModel: ObservableObject {
+class ActivityViewViewModel: ObservableObject {
     // MARK: Lifecycle
 
-    public init(activity: Activity) {
-        self.sequenceManager = ActivityExerciseManager(activity: activity)
-
+    init(activity: Activity) {
         self.currentActivity = activity
 
-        self.totalSequences = self.sequenceManager.totalGroups
-        self.currentGroupIndex = self.sequenceManager.currentGroupIndex
+        self.exerciseManager = ActivityExerciseManager(activity: activity)
 
-        self.totalExercisesInCurrentSequence = self.sequenceManager.totalExercisesInCurrentGroup
-        self.currentExerciseIndexInSequence = self.sequenceManager.currentExerciseIndexInCurrentGroup
+        self.totalGroups = self.exerciseManager.totalGroups
+        self.currentGroupIndex = self.exerciseManager.currentGroupIndex
 
-        self.currentExercise = self.sequenceManager.currentExercise
-        self.currentExerciseInterface = self.sequenceManager.currentExercise.interface
+        self.groupSizeEnumeration = activity.exercisePayload.exerciseGroups.map(\.exercises.count)
+
+        self.totalExercisesInCurrentGroup = self.exerciseManager.totalExercisesInCurrentGroup
+        self.currentExerciseIndexInCurrentGroup = self.exerciseManager.currentExerciseIndexInCurrentGroup
+
+        self.currentExercise = self.exerciseManager.currentExercise
+        self.currentExerciseInterface = self.exerciseManager.currentExercise.interface
 
         self.currentExerciseSharedData = ExerciseSharedData(
-            sequenceIndex: self.sequenceManager.currentGroupIndex,
-            exerciseIndex: self.sequenceManager.currentExerciseIndexInCurrentGroup
+            groupIndex: self.exerciseManager.currentGroupIndex,
+            exerciseIndex: self.exerciseManager.currentExerciseIndexInCurrentGroup
         )
         self.completedExercisesSharedData.append(self.currentExerciseSharedData)
 
@@ -34,13 +36,14 @@ public class ActivityViewViewModel: ObservableObject {
 
     // MARK: Internal
 
-    @Published var currentActivity: ActivityDeprecated
+    @Published var currentActivity: Activity
 
-    @Published var totalSequences: Int
+    @Published var totalGroups: Int
     @Published var currentGroupIndex: Int
+    @Published var groupSizeEnumeration: [Int]
 
-    @Published var totalExercisesInCurrentSequence: Int
-    @Published var currentExerciseIndexInSequence: Int
+    @Published var totalExercisesInCurrentGroup: Int
+    @Published var currentExerciseIndexInCurrentGroup: Int
 
     @Published var currentExercise: Exercise
     @Published var currentExerciseInterface: Exercise.Interface
@@ -85,28 +88,29 @@ public class ActivityViewViewModel: ObservableObject {
     }
 
     var isProgressBarVisible: Bool {
-        self.totalSequences > 1 || self.totalExercisesInCurrentSequence != 1
+        self.totalGroups > 1 || self.totalExercisesInCurrentGroup != 1
     }
 
     var isExerciseInstructionsButtonVisible: Bool {
-        !self.currentExercise.instructions.isEmpty
+        guard let instructions = self.currentExercise.instructions else { return false }
+        return !instructions.isEmpty
     }
 
     var isFirstExercise: Bool {
-        self.sequenceManager.isFirstExercise
+        self.exerciseManager.isFirstExercise
     }
 
     var isLastExercise: Bool {
-        self.sequenceManager.isLastExercise
+        self.exerciseManager.isLastExercise
     }
 
     func moveToNextExercise() {
-        self.sequenceManager.moveToNextExercise()
+        self.exerciseManager.moveToNextExercise()
         self.updateValues()
     }
 
     func moveToPreviousExercise() {
-        self.sequenceManager.moveToPreviousExercise()
+        self.exerciseManager.moveToPreviousExercise()
         self.updateValues()
     }
 
@@ -116,20 +120,20 @@ public class ActivityViewViewModel: ObservableObject {
 
     // MARK: Private
 
-    private let sequenceManager: ActivityExerciseManager
+    private let exerciseManager: ActivityExerciseManager
 
     private var cancellables: Set<AnyCancellable> = []
 
     private func updateValues() {
-        self.currentExercise = self.sequenceManager.currentExercise
-        self.currentExerciseInterface = self.sequenceManager.currentExercise.interface
-        self.currentGroupIndex = self.sequenceManager.currentGroupIndex
-        self.totalSequences = self.sequenceManager.totalGroups
-        self.currentExerciseIndexInSequence = self.sequenceManager.currentExerciseIndexInCurrentGroup
-        self.totalExercisesInCurrentSequence = self.sequenceManager.totalExercisesInCurrentGroup
+        self.currentExercise = self.exerciseManager.currentExercise
+        self.currentExerciseInterface = self.exerciseManager.currentExercise.interface
+        self.currentGroupIndex = self.exerciseManager.currentGroupIndex
+        self.totalGroups = self.exerciseManager.totalGroups
+        self.currentExerciseIndexInCurrentGroup = self.exerciseManager.currentExerciseIndexInCurrentGroup
+        self.totalExercisesInCurrentGroup = self.exerciseManager.totalExercisesInCurrentGroup
         self.currentExerciseSharedData = ExerciseSharedData(
-            sequenceIndex: self.sequenceManager.currentGroupIndex,
-            exerciseIndex: self.sequenceManager.currentExerciseIndexInCurrentGroup
+            groupIndex: self.exerciseManager.currentGroupIndex,
+            exerciseIndex: self.exerciseManager.currentExerciseIndexInCurrentGroup
         )
         self.completedExercisesSharedData.append(self.currentExerciseSharedData)
 
