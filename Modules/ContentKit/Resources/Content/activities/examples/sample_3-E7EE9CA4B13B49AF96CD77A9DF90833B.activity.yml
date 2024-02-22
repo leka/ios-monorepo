@@ -238,7 +238,7 @@ exercises_payload:
                 type: sfsymbol
               - value: cloud.sun
                 type: sfsymbol
-              - value: cloud.bolt.rain.fill
+              - value: cloud.bolt.rain
                 type: sfsymbol
                 isRightAnswer: true
               - value: cloud.rain
@@ -260,5 +260,5 @@ exercises_payload:
                 type: sfsymbol
               - value: airplane
                 type: sfsymbol
-              - value: boat
+              - value: sailboat
                 type: sfsymbol
