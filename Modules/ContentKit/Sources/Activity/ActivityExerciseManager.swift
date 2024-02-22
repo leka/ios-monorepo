@@ -26,6 +26,8 @@ public class ActivityExerciseManager {
     public var currentGroupIndex: Int = 0
     public var currentExerciseIndexInCurrentGroup: Int = 0
 
+    public let activity: Activity
+
     public var totalGroups: Int {
         self.activity.exercisePayload.exerciseGroups.count
     }
@@ -64,8 +66,4 @@ public class ActivityExerciseManager {
             self.currentExerciseIndexInCurrentGroup = self.activity.exercisePayload.exerciseGroups[self.currentGroupIndex].exercises.count - 1
         }
     }
-
-    // MARK: Private
-
-    private let activity: Activity
 }

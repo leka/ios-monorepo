@@ -17,7 +17,7 @@ class ActivityViewViewModel: ObservableObject {
         self.totalGroups = self.exerciseManager.totalGroups
         self.currentGroupIndex = self.exerciseManager.currentGroupIndex
 
-        self.groupSizeEnumeration = activity.exercisePayload.exerciseGroups.map(\.exercises.count)
+        self.groupSizeEnumeration = self.exerciseManager.activity.exercisePayload.exerciseGroups.map(\.exercises.count)
 
         self.totalExercisesInCurrentGroup = self.exerciseManager.totalExercisesInCurrentGroup
         self.currentExerciseIndexInCurrentGroup = self.exerciseManager.currentExerciseIndexInCurrentGroup
