@@ -14,15 +14,33 @@ struct CarereceiverPicker: View {
     var body: some View {
         NavigationStack {
             VStack {
-                ScrollView(showsIndicators: false) {
-                    Label(String(l10n.CarereceiverPicker.subtitle.characters), systemImage: "figure.2.arms.open")
-                        .font(.headline)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.horizontal)
+                ScrollView(showsIndicators: true) {
+                    HStack(alignment: .center, spacing: 30) {
+                        Image(systemName: "figure.2.arms.open")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 80, height: 80)
+                            .foregroundStyle(self.styleManager.accentColor!)
 
-                    Text(l10n.CarereceiverPicker.description)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.horizontal)
+                        VStack(alignment: .leading) {
+                            Text(l10n.CarereceiverPicker.title)
+                                .font(.largeTitle)
+                                .fontWeight(.bold)
+
+                            Text(l10n.CarereceiverPicker.subtitle)
+                                .font(.title2)
+
+                            Text(l10n.CarereceiverPicker.description)
+                                .foregroundStyle(.secondary)
+
+                            Divider()
+                                .padding(.top)
+                        }
+
+                        Spacer()
+                    }
+                    .padding(.horizontal)
+                    .padding()
 
                     LazyVGrid(columns: self.columns, spacing: 40) {
                         ForEach(self.rootOwnerViewModel.mockCarereceiversSet) { carereceiver in
@@ -31,11 +49,10 @@ struct CarereceiverPicker: View {
                             }
                         }
                     }
-                    .padding()
                 }
             }
-            .padding()
             .navigationTitle(String(l10n.CarereceiverPicker.title.characters))
+            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
@@ -59,6 +76,7 @@ struct CarereceiverPicker: View {
     private let columns = Array(repeating: GridItem(), count: 4)
 
     @ObservedObject private var rootOwnerViewModel: RootOwnerViewModel = .shared
+    @ObservedObject private var styleManager: StyleManager = .shared
 
     @State private var selected: String = ""
     @State private var isCarereceiverCreationPresented: Bool = false
