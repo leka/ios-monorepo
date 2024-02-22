@@ -51,15 +51,23 @@ struct AccountCreationView: View {
         .onChange(of: self.authManagerViewModel.userAuthenticationState) { newValue in
             if newValue == .loggedIn {
                 self.authManagerViewModel.userIsSigningUp = true
-                self.viewModel.navigateToAccountCreationProcess.toggle()
+                self.isVerificationEmailAlertPresented = true
             } else {
                 // display signup failed alert
             }
+        }
+        .alert(isPresented: self.$isVerificationEmailAlertPresented) {
+            Alert(title: Text(l10n.AccountCreationView.EmailVerificationAlert.title),
+                  message: Text(l10n.AccountCreationView.EmailVerificationAlert.message),
+                  dismissButton: .default(Text(l10n.AccountCreationView.EmailVerificationAlert.dismissButton)) {
+                      self.viewModel.navigateToAccountCreationProcess.toggle()
+                  })
         }
     }
 
     // MARK: Private
 
+    @State private var isVerificationEmailAlertPresented: Bool = false
     @StateObject private var viewModel = AccountCreationViewViewModel()
     @ObservedObject private var authManagerViewModel = AuthManagerViewModel.shared
     private var authManager = AuthManager.shared
