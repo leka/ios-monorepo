@@ -13,6 +13,7 @@ repos:
         exclude_types: [json]
         exclude: '(.*\.xcstrings|\.xcassets)'
       - id: check-yaml
+        exclude: exercise_templates.yml
       - id: check-json
         types: [file]
         files: \.(json|xcstrings)$
