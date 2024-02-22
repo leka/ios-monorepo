@@ -1,0 +1,38 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+version: 1.0.0
+list:
+  - id: one_on_one
+    l10n:
+      - locale: fr_FR
+        name: Activité en tête-à-tête
+        description: >
+          Une activité en tête-à-tête est un engagement personnalisé entre un accompagnant et une seule personne accompagnée,
+          conçu pour favoriser une relation étroite, une attention individuelle et des expériences d'apprentissage
+          ou de divertissement sur mesure. Ce type d'activité permet une interaction directe, un retour immédiat
+          et des activités spécifiquement adaptées aux intérêts, capacités et besoins de développement de la personne accompagnée.
+      - locale: en_US
+        name: One-on-one activity
+        description: >
+          A one-on-one activity is a personalized engagement between one caregiver and one care receiver, designed to foster
+          a close relationship, individual attention, and tailored learning or entertainment experiences. This type of activity
+          allows for direct interaction, immediate feedback, and activities specifically tailored to the interests, abilities,
+          and developmental needs of the care receiver.
+
+  - id: group
+    l10n:
+      - locale: fr_FR
+        name: Activité en groupe
+        description: >
+          Une activité de groupe implique plusieurs personnes accommpagnées, supervisées par un accompagnant, s'engageant dans une tâche
+          ou un jeu partagé. Elle est conçue pour encourager l'interaction sociale, le travail d'équipe et la résolution de problèmes collective.
+          Les activités de groupe aident les personnes à apprendre à coopérer, partager et naviguer dans les dynamiques sociales tout en profitant
+          des avantages de perspectives diverses et d'un effort collaboratif.
+      - locale: en_US
+        name: Group activity
+        description: |
+          A group activity involves multiple care receivers, supervised by a caregiver, engaging in a shared task or game. It is designed to
+          encourage social interaction, teamwork, and collective problem-solving. Group activities help individuals learn to cooperate, share, and
+          navigate social dynamics while benefiting from diverse perspectives and collaborative effort.
