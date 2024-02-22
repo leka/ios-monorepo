@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AccountKit
 import DesignKit
 import LocalizationKit
 import SwiftUI
@@ -45,9 +46,10 @@ struct CarereceiverView: View {
     @ObservedObject private var rootOwnerViewModel: RootOwnerViewModel = .shared
 
     private var editCarereceiverButtonLabel: some View {
-        Image(self.carereceiver.avatar, bundle: Bundle(for: DesignKitResources.self))
+        Image(uiImage: Avatars.iconToUIImage(icon: self.carereceiver.avatar))
             .resizable()
             .aspectRatio(contentMode: .fit)
+            .background(DesignKitAsset.Colors.blueGray.swiftUIColor)
             .clipShape(Circle())
             .overlay {
                 Image(systemName: "pencil.circle.fill")
@@ -90,5 +92,5 @@ extension l10n {
 // swiftlint:enable line_length
 
 #Preview {
-    CarereceiverView(carereceiver: Carereceiver(name: "Peet", avatar: DesignKitAsset.Avatars.avatarsBoy1a.name, reinforcer: 2))
+    CarereceiverView(carereceiver: Carereceiver(name: "Peet", avatar: Avatars.categories[0].avatars[0], reinforcer: 2))
 }

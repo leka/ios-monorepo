@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AccountKit
 import DesignKit
 import LocalizationKit
 import RobotKit
@@ -21,9 +22,10 @@ struct EditCaregiverLabel: View {
                     self.rootOwnerViewModel.isEditCaregiverViewPresented = true
                 } label: {
                     HStack(spacing: 10) {
-                        Image(caregiver.avatar, bundle: Bundle(for: DesignKitResources.self))
+                        Image(uiImage: Avatars.iconToUIImage(icon: caregiver.avatar))
                             .resizable()
                             .aspectRatio(contentMode: .fit)
+                            .background(DesignKitAsset.Colors.blueGray.swiftUIColor)
                             .clipShape(Circle())
                             .frame(maxWidth: 90)
                         VStack(alignment: .leading, spacing: 0) {
@@ -97,6 +99,6 @@ extension l10n {
     })
     .onAppear {
         let rootOwnerViewModel = RootOwnerViewModel.shared
-        rootOwnerViewModel.currentCaregiver = Caregiver(name: "Joe", avatar: "avatars_boy-1a")
+        rootOwnerViewModel.currentCaregiver = Caregiver(name: "Joe", avatar: Avatars.categories[0].avatars[2])
     }
 }

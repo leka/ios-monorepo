@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AccountKit
 import DesignKit
 import LocalizationKit
 import SwiftUI
@@ -41,7 +42,7 @@ struct CreateCaregiverView: View {
                             self.onDismissAction()
                         }
                         if self.newCaregiver.avatar.isEmpty {
-                            self.newCaregiver.avatar = AvatarSets.weather.content.images.randomElement()!
+                            self.newCaregiver.avatar = Avatars.categories.last!.avatars.randomElement()!
                         }
                         // TODO: (@team) : add the caregiver profile to the account
                         // TODO: (@team) : assign the caregiver profile as the current selected one

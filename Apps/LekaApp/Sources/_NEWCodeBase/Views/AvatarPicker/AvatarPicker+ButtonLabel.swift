@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AccountKit
 import DesignKit
 import SwiftUI
 
@@ -20,9 +21,10 @@ extension AvatarPicker {
                         .frame(width: 30)
                         .foregroundStyle(self.styleManager.accentColor!)
                 } else {
-                    Image(self.image, bundle: Bundle(for: DesignKitResources.self))
+                    Image(uiImage: Avatars.iconToUIImage(icon: self.image))
                         .resizable()
                         .aspectRatio(contentMode: .fit)
+                        .background(DesignKitAsset.Colors.blueGray.swiftUIColor)
                         .clipShape(Circle())
                 }
             }
@@ -43,6 +45,6 @@ extension AvatarPicker {
     HStack {
         AvatarPicker.ButtonLabel(image: "")
 
-        AvatarPicker.ButtonLabel(image: DesignKitAsset.Avatars.accompanyingBlue.name)
+        AvatarPicker.ButtonLabel(image: Avatars.categories[0].avatars[0])
     }
 }

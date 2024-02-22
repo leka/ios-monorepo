@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AccountKit
 import DesignKit
 import LocalizationKit
 import SwiftUI
@@ -37,7 +38,7 @@ struct CreateCarereceiverView: View {
                             self.onDismissAction()
                         }
                         if self.newCarereceiver.avatar.isEmpty {
-                            self.newCarereceiver.avatar = AvatarSets.sunglasses.content.images.randomElement()!
+                            self.newCarereceiver.avatar = Avatars.categories.last!.avatars.randomElement()!
                         }
                         // TODO: (@team) : add the carereceiver profile to the account
                         // TODO: (@team) : assign the carereceiver profile as the current selected one
