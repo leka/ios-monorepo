@@ -125,8 +125,7 @@ public struct ActivityView: View {
                 }
             }
             .sheet(isPresented: self.$isInfoSheetPresented) {
-                // TODO: (@team) - Add YAML description of activities
-                Text("Info related to the activity ")
+                ActivityDetailsView(activity: self.viewModel.currentActivity)
             }
             .fullScreenCover(isPresented: self.$viewModel.isCurrentActivityCompleted) {
                 self.endOfActivityScoreView
