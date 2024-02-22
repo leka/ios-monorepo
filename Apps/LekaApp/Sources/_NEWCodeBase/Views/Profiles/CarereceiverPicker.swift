@@ -15,6 +15,15 @@ struct CarereceiverPicker: View {
         NavigationStack {
             VStack {
                 ScrollView(showsIndicators: false) {
+                    Label(String(l10n.CarereceiverPicker.subtitle.characters), systemImage: "figure.2.arms.open")
+                        .font(.headline)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.horizontal)
+
+                    Text(l10n.CarereceiverPicker.description)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.horizontal)
+
                     LazyVGrid(columns: self.columns, spacing: 40) {
                         ForEach(self.rootOwnerViewModel.mockCarereceiversSet) { carereceiver in
                             NavigationLink(value: carereceiver) {
@@ -62,6 +71,14 @@ extension l10n {
         static let title = LocalizedString("lekaapp.carereceiver_picker.title",
                                            value: "Care receivers",
                                            comment: "Carereceiver picker title")
+
+        static let subtitle = LocalizedString("lekaapp.carereceiver_picker.subtitle",
+                                              value: "These are the care receivers profiles accompanied by professionals during sessions.",
+                                              comment: "Carereceiver picker subtitle")
+
+        static let description = LocalizedString("lekaapp.carereceiver_picker.description",
+                                                 value: "Each profile is individual. It displays data specific to each care receiver using Leka app.",
+                                                 comment: "Carereceiver picker description")
 
         static let addButtonLabel = LocalizedString("lekaapp.carereceiver_picker.addButtonLabel",
                                                     value: "Add profile",
