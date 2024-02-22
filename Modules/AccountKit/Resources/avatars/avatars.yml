@@ -11,11 +11,11 @@ categories:
       - locale: en_US
         name: Weather
     avatars:
-      - weather_cloud
-      - weather_flake
-      - weather_moon
-      - weather_star
-      - weather_sun
+      - weather_cloud_with_face
+      - weather_snowflake_with_face
+      - weather_moon_with_face
+      - weather_star_with_face
+      - weather_sun_with_face
 
   - id: professions
     l10n:
