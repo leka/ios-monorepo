@@ -19,10 +19,42 @@ struct CarereceiverView: View {
             Button {
                 self.rootOwnerViewModel.isEditCarereceiverViewPresented = true
             } label: {
-                self.editCarereceiverButtonLabel
+                HStack(spacing: 20) {
+                    Image(uiImage: Avatars.iconToUIImage(icon: self.carereceiver.avatar))
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .background(DesignKitAsset.Colors.blueGray.swiftUIColor)
+                        .clipShape(Circle())
+                        .overlay {
+                            Circle()
+                                .strokeBorder(self.strokeColor, lineWidth: 2)
+                                .background {
+                                    Circle()
+                                        .fill(Color(uiColor: UIColor.systemGray6))
+                                }
+                                .overlay {
+                                    Image(uiImage: self.rootOwnerViewModel.getReinforcerFor(index: self.carereceiver.reinforcer))
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .padding(5)
+                                }
+                                .frame(maxWidth: 45)
+                                .offset(x: 45, y: 35)
+                        }
+                    VStack(alignment: .leading, spacing: 0) {
+                        Text(self.carereceiver.name)
+                            .font(.title)
+                            .lineLimit(1)
+                            .truncationMode(.tail)
+                            .foregroundColor(.primary)
+                        Text(l10n.CarereceiverView.editProfileButtonLabel)
+                            .font(.footnote)
+                            .foregroundStyle(self.styleManager.accentColor!)
+                    }
+                }
             }
             .padding()
-            .frame(maxWidth: .infinity, maxHeight: 120, alignment: .center)
+            .frame(maxHeight: 140)
             .sheet(isPresented: self.$rootOwnerViewModel.isEditCarereceiverViewPresented) {
                 EditCarereceiverView(modifiedCarereceiver: self.$carereceiver)
             }
@@ -31,8 +63,13 @@ struct CarereceiverView: View {
 
             Spacer()
 
+            Image(systemName: "chart.xyaxis.line")
+                .resizable()
+                .scaledToFit()
+                .frame(maxWidth: 50)
             Text(l10n.CarereceiverView.availableSoonLabel)
                 .font(.largeTitle)
+                .multilineTextAlignment(.center)
 
             Spacer()
         }
@@ -43,40 +80,8 @@ struct CarereceiverView: View {
     // MARK: Private
 
     private let strokeColor: Color = .init(light: UIColor.systemGray3, dark: UIColor.systemGray2)
+    @ObservedObject private var styleManager: StyleManager = .shared
     @ObservedObject private var rootOwnerViewModel: RootOwnerViewModel = .shared
-
-    private var editCarereceiverButtonLabel: some View {
-        Image(uiImage: Avatars.iconToUIImage(icon: self.carereceiver.avatar))
-            .resizable()
-            .aspectRatio(contentMode: .fit)
-            .background(DesignKitAsset.Colors.blueGray.swiftUIColor)
-            .clipShape(Circle())
-            .overlay {
-                Image(systemName: "pencil.circle.fill")
-                    .resizable()
-                    .renderingMode(.original)
-                    .frame(maxWidth: 30, maxHeight: 30)
-                    .foregroundStyle(.orange)
-                    .padding(5)
-                    .offset(x: 35, y: -35)
-            }
-            .overlay {
-                Circle()
-                    .strokeBorder(self.strokeColor, lineWidth: 2)
-                    .background {
-                        Circle()
-                            .fill(Color(uiColor: UIColor.systemGray6))
-                    }
-                    .overlay {
-                        Image(uiImage: self.rootOwnerViewModel.getReinforcerFor(index: self.carereceiver.reinforcer))
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .padding(5)
-                    }
-                    .frame(maxWidth: 45)
-                    .offset(x: 40, y: 30)
-            }
-    }
 }
 
 // MARK: - l10n.CarereceiverView
@@ -85,7 +90,9 @@ struct CarereceiverView: View {
 
 extension l10n {
     enum CarereceiverView {
-        static let availableSoonLabel = LocalizedString("lekapp.carereceiver_view.available_soon_label", value: "🚧 Monitoring available soon...", comment: "Temporary content for carereceiver monitoring")
+        static let availableSoonLabel = LocalizedString("lekapp.carereceiver_view.available_soon_label", value: "Your usage history will soon be available here.", comment: "Temporary content for carereceiver monitoring")
+
+        static let editProfileButtonLabel = LocalizedString("lekapp.sidebar.carereceiver_view.edit_profile_button_label", value: "Edit profile", comment: "The button label of carereceiver profile editor")
     }
 }
 

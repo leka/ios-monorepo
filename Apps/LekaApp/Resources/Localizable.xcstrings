@@ -830,6 +830,42 @@
                 }
             }
         },
+        "lekaapp.carereceiver_picker.description": {
+            "comment": "Carereceiver picker description",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Each profile is individual. It displays data specific to each care receiver using Leka app."
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Chaque profil est individuel. Il permet d'afficher des donn\u00e9es propres \u00e0 chaque personne accompagn\u00e9e utilisant l'application Leka."
+                    }
+                }
+            }
+        },
+        "lekaapp.carereceiver_picker.subtitle": {
+            "comment": "Carereceiver picker subtitle",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "These are the care receivers profiles accompanied by professionals during sessions."
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Il s'agit des profils de personnes accompagn\u00e9es par des professionnels au cours des s\u00e9ances."
+                    }
+                }
+            }
+        },
         "lekaapp.carereceiver_picker.title": {
             "comment": "Carereceiver picker title",
             "extractionState": "extracted_with_value",
@@ -1107,13 +1143,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "\ud83d\udea7 Monitoring available soon..."
+                        "value": "Your usage history will soon be available here."
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "\ud83d\udea7 Suivi bient\u00f4t disponible ..."
+                        "value": "Votre historique d'utilisation sera bient\u00f4t disponible ici."
                     }
                 }
             }
@@ -1150,6 +1186,24 @@
                     "stringUnit": {
                         "state": "translated",
                         "value": "Vous utilisez Leka sans \u00eatre connect\u00e9 !"
+                    }
+                }
+            }
+        },
+        "lekapp.sidebar.carereceiver_view.edit_profile_button_label": {
+            "comment": "The button label of carereceiver profile editor",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Edit profile"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "\u00c9diter le profil"
                     }
                 }
             }
