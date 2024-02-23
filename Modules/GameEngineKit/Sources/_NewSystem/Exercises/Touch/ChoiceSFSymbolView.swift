@@ -20,9 +20,9 @@ struct ChoiceSFSymbolView: View {
     @ViewBuilder
     var circle: some View {
         Circle()
-            .fill(.white)
+            .fill(self.choiceBackgroundColor)
             .overlay {
-                if let uiImage = UIImage(systemName: self.sfsymbol) {
+                if UIImage(systemName: self.sfsymbol) != nil {
                     Image(systemName: self.sfsymbol)
                         .resizable()
                         .scaledToFit()
@@ -40,6 +40,7 @@ struct ChoiceSFSymbolView: View {
                         }
                 }
             }
+            .foregroundStyle(.black)
             .frame(
                 width: self.size,
                 height: self.size
@@ -91,6 +92,11 @@ struct ChoiceSFSymbolView: View {
 
     // MARK: Private
 
+    private let choiceBackgroundColor: Color = .init(
+        light: .white,
+        dark: UIColor(displayP3Red: 242 / 255, green: 242 / 255, blue: 247 / 255, alpha: 1.0)
+    )
+
     private let sfsymbol: String
     private let size: CGFloat
     private let state: GameplayChoiceState
@@ -102,22 +108,23 @@ struct ChoiceSFSymbolView: View {
 
 #Preview {
     VStack(spacing: 30) {
-        HStack(spacing: 50) {
+        HStack(spacing: 40) {
             ChoiceSFSymbolView(image: "airplane", size: 200)
             ChoiceSFSymbolView(image: "paperplane", size: 200)
         }
 
-        HStack(spacing: 50) {
+        HStack(spacing: 40) {
             ChoiceSFSymbolView(image: "sunrise", size: 200)
             ChoiceSFSymbolView(image: "sparkles", size: 200, state: .rightAnswer)
             ChoiceSFSymbolView(image: "cloud.drizzle", size: 200, state: .wrongAnswer)
         }
 
-        HStack(spacing: 0) {
+        HStack(spacing: 40) {
             ChoiceSFSymbolView(image: "cat", size: 200)
             ChoiceSFSymbolView(image: "fish", size: 200)
             ChoiceSFSymbolView(image: "carrot", size: 200)
             ChoiceSFSymbolView(image: "not_a_real_sumbol", size: 200)
         }
     }
+    .background(.lkBackground)
 }
