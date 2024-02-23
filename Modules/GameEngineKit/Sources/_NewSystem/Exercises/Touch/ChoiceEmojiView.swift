@@ -44,7 +44,7 @@ struct ChoiceEmojiView: View {
     @ViewBuilder
     var circle: some View {
         Circle()
-            .fill(.white)
+            .fill(self.choiceBackgroundColor)
             .overlay {
                 if self.emoji.count == 1, self.emoji.containsOnlyEmojis() {
                     Text(self.emoji)
@@ -113,6 +113,11 @@ struct ChoiceEmojiView: View {
 
     // MARK: Private
 
+    private let choiceBackgroundColor: Color = .init(
+        light: .white,
+        dark: UIColor(displayP3Red: 242 / 255, green: 242 / 255, blue: 247 / 255, alpha: 1.0)
+    )
+
     private let emoji: String
     private let size: CGFloat
     private let state: GameplayChoiceState
@@ -123,19 +128,19 @@ struct ChoiceEmojiView: View {
 }
 
 #Preview {
-    VStack(spacing: 30) {
+    VStack(spacing: 40) {
         HStack(spacing: 50) {
             ChoiceEmojiView(emoji: "🍉", size: 200)
             ChoiceEmojiView(emoji: "🍏", size: 200)
         }
 
-        HStack(spacing: 50) {
+        HStack(spacing: 40) {
             ChoiceEmojiView(emoji: "🌨️", size: 200)
             ChoiceEmojiView(emoji: "🌧️", size: 200, state: .rightAnswer)
             ChoiceEmojiView(emoji: "☀️", size: 200, state: .wrongAnswer)
         }
 
-        HStack(spacing: 0) {
+        HStack(spacing: 40) {
             ChoiceEmojiView(emoji: "🐱", size: 200)
             ChoiceEmojiView(emoji: "🐶", size: 200)
             ChoiceEmojiView(emoji: "🐹🐹", size: 200)
