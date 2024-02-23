@@ -9,7 +9,7 @@ public extension Carereceiver {
          rootOwnerUid: String = "",
          username: String = "",
          avatar: String = "",
-         reinforcer: Int = 1)
+         reinforcer: UInt8 = 0x51)
     {
         self.id = id
         self.rootOwnerUid = rootOwnerUid

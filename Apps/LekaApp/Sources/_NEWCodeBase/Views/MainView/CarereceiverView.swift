@@ -33,7 +33,7 @@ struct CarereceiverView: View {
                                         .fill(Color(uiColor: UIColor.systemGray6))
                                 }
                                 .overlay {
-                                    Image(uiImage: self.rootOwnerViewModel.getReinforcerFor(index: self.carereceiver.reinforcer))
+                                    Image(uiImage: self.rootOwnerViewModel.getImageFor(reinforcer: self.carereceiver.robotReinforcer))
                                         .resizable()
                                         .aspectRatio(contentMode: .fit)
                                         .padding(5)

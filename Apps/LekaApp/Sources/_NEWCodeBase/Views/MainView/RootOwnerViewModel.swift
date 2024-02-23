@@ -9,6 +9,7 @@
 import AccountKit
 import DesignKit
 import SwiftUI
+import RobotKit
 
 class RootOwnerViewModel: ObservableObject {
     // MARK: Lifecycle
@@ -47,21 +48,21 @@ class RootOwnerViewModel: ObservableObject {
     ]
 
     @Published var mockCarereceiversSet: [Carereceiver] = [
-        Carereceiver(id: UUID().uuidString, username: "Peet", avatar: Avatars.categories[2].avatars[2], reinforcer: 1),
-        Carereceiver(id: UUID().uuidString, username: "Rounhaa", avatar: Avatars.categories[4].avatars[0], reinforcer: 3),
-        Carereceiver(id: UUID().uuidString, username: "Selug", avatar: Avatars.categories[5].avatars[1], reinforcer: 4),
-        Carereceiver(id: UUID().uuidString, username: "Luther", avatar: Avatars.categories[1].avatars[2], reinforcer: 5),
-        Carereceiver(id: UUID().uuidString, username: "Abel", avatar: Avatars.categories[2].avatars[3], reinforcer: 2),
+        Carereceiver(id: UUID().uuidString, username: "Peet", avatar: Avatars.categories[2].avatars[2], reinforcer: 0x51),
+        Carereceiver(id: UUID().uuidString, username: "Rounhaa", avatar: Avatars.categories[4].avatars[0], reinforcer: 0x52),
+        Carereceiver(id: UUID().uuidString, username: "Selug", avatar: Avatars.categories[5].avatars[1], reinforcer: 0x53),
+        Carereceiver(id: UUID().uuidString, username: "Luther", avatar: Avatars.categories[1].avatars[2], reinforcer: 0x54),
+        Carereceiver(id: UUID().uuidString, username: "Abel", avatar: Avatars.categories[2].avatars[3], reinforcer: 0x52),
     ]
     // swiftlint:enable line_length
 
-    func getReinforcerFor(index: Int) -> UIImage {
-        switch index {
-            case 2: DesignKitAsset.Reinforcers.spinBlinkBlueViolet.image
-            case 3: DesignKitAsset.Reinforcers.fire.image
-            case 4: DesignKitAsset.Reinforcers.sprinkles.image
-            case 5: DesignKitAsset.Reinforcers.rainbow.image
-            default: DesignKitAsset.Reinforcers.spinBlinkGreenOff.image
+    func getImageFor(reinforcer: Robot.Reinforcer) -> UIImage {
+        switch reinforcer {
+            case .spinBlinkGreenOff: DesignKitAsset.Reinforcers.spinBlinkGreenOff.image
+            case .spinBlinkBlueViolet: DesignKitAsset.Reinforcers.spinBlinkBlueViolet.image
+            case .fire: DesignKitAsset.Reinforcers.fire.image
+            case .sprinkles: DesignKitAsset.Reinforcers.sprinkles.image
+            case .rainbow: DesignKitAsset.Reinforcers.rainbow.image
         }
     }
 }

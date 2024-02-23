@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import FirebaseFirestore
+import RobotKit
 import SwiftUI
 
 public struct Carereceiver: AccountDocument, Hashable {
@@ -15,7 +16,11 @@ public struct Carereceiver: AccountDocument, Hashable {
     public var rootOwnerUid: String
     public var username: String
     public var avatar: String
-    public var reinforcer: Int
+    public var reinforcer: UInt8
+
+    public var robotReinforcer: Robot.Reinforcer {
+        Robot.Reinforcer(rawValue: self.reinforcer) ?? .rainbow
+    }
 
     // MARK: Internal
 
