@@ -1,0 +1,10 @@
+This new version is a complete rewrite of our previous app.
+Thanks to our amazing users and their important feedback, the user experience and the user interface have been greatly improved.
+The design is much more engaging, improtant information are easily readable and all the important actions are right under your fingers.
+
+And that's not all! This new version contains you our latest update, LekaOS v1.4.0, which brings you a lot of new features:
+
+- ⚡️ The robot has improved stability in movement
+- ⚡️ The robot has enhanced precision in its rotations
+- 🌐 The autonomous activities menu appears in English when the "Dice" card is detected by the robot
+- 🐛 The robot exits autonomous activities after 10 minutes of inactivity

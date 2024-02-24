@@ -1,0 +1,3 @@
+This app is to allow user to update their Leka robot (https://leka.io)
+It is replacing our previous app after a complete rewrite of our update process.
+See previous version here: https://apps.apple.com/fr/app/leka-updater/id6443763916?l=en-GB

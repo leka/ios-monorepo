@@ -1,0 +1,1 @@
+Leka Updater vous permet de mettre à jour votre robot Leka avec de nouvelles fonctionnalités, des corrections de bugs et bien plus encore !
