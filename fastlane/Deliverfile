@@ -9,5 +9,5 @@
 
 username('apple.apf@leka.io') # your Apple ID user
 
-submit_for_review(true)
-automatic_release(true)
+submit_for_review(false)
+automatic_release(false)
