@@ -11,3 +11,5 @@ username('apple.apf@leka.io') # your Apple ID user
 
 submit_for_review(false)
 automatic_release(false)
+
+languages(%w[en-US fr-FR])
