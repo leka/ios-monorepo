@@ -131,7 +131,7 @@ struct ActivityDetailsView: View {
             Section("Details (in: \(l10n.language.identifier))") {
                 Text(self.activity.details.title)
                     .font(.title)
-                Text(self.activity.details.subtitle)
+                Text(self.activity.details.subtitle ?? "no subtitle")
                     .font(.title2)
                 Markdown(self.activity.details.description)
                     .markdownTheme(.gitHub)

@@ -99,7 +99,8 @@
                     "type": "string"
                 },
                 "subtitle": {
-                    "type": "string"
+                    "type": "string",
+                    "nullable": true
                 },
                 "short_description": {
                     "type": "string"

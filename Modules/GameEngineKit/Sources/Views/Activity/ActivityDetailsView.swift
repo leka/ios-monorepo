@@ -33,9 +33,11 @@ public struct ActivityDetailsView: View {
                                 .font(.largeTitle)
                                 .bold()
 
-                            Text(self.activity.details.subtitle)
-                                .font(.title2)
-                                .foregroundColor(.secondary)
+                            if let subtitle = self.activity.details.subtitle {
+                                Text(subtitle)
+                                    .font(.title2)
+                                    .foregroundColor(.secondary)
+                            }
 
                             Text(self.activity.details.shortDescription)
                                 .font(.subheadline)

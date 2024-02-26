@@ -132,7 +132,7 @@ public extension Activity {
 
         public let icon: String
         public let title: String
-        public let subtitle: String
+        public let subtitle: String?
         public let shortDescription: String
         public let description: String
         public let instructions: String
