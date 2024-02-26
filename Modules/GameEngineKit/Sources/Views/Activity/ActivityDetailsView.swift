@@ -99,24 +99,6 @@ public struct ActivityDetailsView: View {
                     .markdownTheme(.gitHub)
             }
         }
-        .toolbar {
-            ToolbarItem {
-                Button {
-                    print("Start activity")
-                    self.activityToStart = self.activity
-                } label: {
-                    Image(systemName: "play.circle")
-                    Text("Start activity")
-                }
-                .buttonStyle(.borderedProminent)
-                .tint(.lkGreen)
-            }
-        }
-        .fullScreenCover(item: self.$activityToStart) {
-            self.activityToStart = nil
-        } content: { activity in
-            ActivityView(activity: activity)
-        }
     }
 
     // MARK: Private
@@ -125,8 +107,6 @@ public struct ActivityDetailsView: View {
 
     @State private var selectedAuthor: Author?
     @State private var selectedSkill: Skill?
-
-    @State private var activityToStart: Activity?
 }
 
 #Preview {
