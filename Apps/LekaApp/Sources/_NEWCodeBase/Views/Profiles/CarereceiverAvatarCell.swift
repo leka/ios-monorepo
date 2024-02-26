@@ -40,12 +40,18 @@ struct CarereceiverAvatarCell: View {
                 }
                 .frame(maxWidth: 120)
 
-            Text(self.carereceiver.name)
+            Text(self.carereceiver.username)
                 .font(.headline)
         }
     }
 }
 
 #Preview {
-    CarereceiverAvatarCell(carereceiver: Carereceiver(name: "Chantal", avatar: Avatars.categories[2].avatars[4], reinforcer: 2))
+    CarereceiverAvatarCell(
+        carereceiver: Carereceiver(
+            username: "Chantal",
+            avatar: Avatars.categories[2].avatars[4],
+            reinforcer: 2
+        )
+    )
 }

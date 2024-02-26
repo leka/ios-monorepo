@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AccountKit
 import DesignKit
 import LocalizationKit
 import SwiftUI
@@ -9,19 +10,9 @@ import SwiftUI
 // MARK: - EditCaregiverView
 
 struct EditCaregiverView: View {
-    // MARK: Lifecycle
-
-    init(modifiedCaregiver: Caregiver) {
-        self._modifiedCaregiver = State(wrappedValue: modifiedCaregiver)
-        self.initialColorScheme = modifiedCaregiver.preferredColorScheme
-        self.initialAccentColor = modifiedCaregiver.preferredAccentColor
-    }
-
     // MARK: Internal
 
     @State var modifiedCaregiver: Caregiver
-    var initialColorScheme: ColorScheme
-    var initialAccentColor: Color
 
     var body: some View {
         NavigationStack {
@@ -34,7 +25,11 @@ struct EditCaregiverView: View {
 
                     Section {
                         LabeledContent(String(l10n.CaregiverCreation.caregiverNameLabel.characters)) {
-                            TextField("", text: self.$modifiedCaregiver.name)
+                            TextField("", text: self.$modifiedCaregiver.firstName)
+                                .multilineTextAlignment(.trailing)
+                        }
+                        LabeledContent(String(l10n.CaregiverCreation.caregiverNameLabel.characters)) {
+                            TextField("", text: self.$modifiedCaregiver.lastName)
                                 .multilineTextAlignment(.trailing)
                         }
                     }
@@ -56,8 +51,8 @@ struct EditCaregiverView: View {
                 ToolbarItem(placement: .topBarLeading) {
                     Button(String(l10n.EditCaregiverView.closeButtonLabel.characters)) {
                         self.rootOwnerViewModel.isEditCaregiverViewPresented = false
-                        self.styleManager.colorScheme = self.initialColorScheme
-                        self.styleManager.accentColor = self.initialAccentColor
+                        self.styleManager.colorScheme = self.modifiedCaregiver.colorScheme
+                        self.styleManager.accentColor = self.modifiedCaregiver.colorTheme.color
                     }
                 }
                 ToolbarItem(placement: .topBarTrailing) {
@@ -104,7 +99,8 @@ struct EditCaregiverView: View {
             }
 
             if !self.modifiedCaregiver.professions.isEmpty {
-                ForEach(self.modifiedCaregiver.professions, id: \.id) { profession in
+                ForEach(self.modifiedCaregiver.professions, id: \.self) { id in
+                    let profession = Professions.profession(for: id)!
                     ProfessionPicker.ProfessionTag(profession: profession, caregiver: self.$modifiedCaregiver)
                 }
             }

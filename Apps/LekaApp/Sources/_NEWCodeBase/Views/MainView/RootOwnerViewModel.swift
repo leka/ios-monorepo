@@ -2,6 +2,10 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+// swiftlint:disable all
+// swift-format-ignore-file
+// swiftformat:disable all
+
 import AccountKit
 import DesignKit
 import SwiftUI
@@ -29,25 +33,27 @@ class RootOwnerViewModel: ObservableObject {
     @Published var showConfirmDisconnection: Bool = false
     @Published var showConfirmDeleteAccount: Bool = false
 
+    // swiftlint:disable line_length
     @Published var mockCaregiversSet: [Caregiver] = [
-        Caregiver(name: "Chantal", avatar: Avatars.categories[0].avatars[2], professions: [Professions.list[6]]),
-        Caregiver(name: "Gaëtan", avatar: Avatars.categories[3].avatars[1], professions: [Professions.list[9]], colorScheme: .dark, accentColor: .green),
-        Caregiver(name: "Fabrizio", avatar: Avatars.categories[4].avatars[1], professions: [Professions.list[10]]),
-        Caregiver(name: "Hakima", avatar: Avatars.categories[2].avatars[1], professions: [Professions.list[10], Professions.list[1]]),
-        Caregiver(name: "Eric", avatar: Avatars.categories[1].avatars[0], professions: [Professions.list[10]]),
-        Caregiver(name: "Razmo", avatar: Avatars.categories[2].avatars[2], professions: [Professions.list[5]], colorScheme: .dark, accentColor: .orange),
-        Caregiver(name: "Corinne", avatar: Avatars.categories[5].avatars[1], professions: [Professions.list[4]]),
-        Caregiver(name: "Alphonso", avatar: Avatars.categories[4].avatars[1], professions: [Professions.list[0]]),
-        Caregiver(name: "Gargantua", avatar: Avatars.categories[3].avatars[2], professions: [Professions.list[2]]),
+        Caregiver(id: UUID().uuidString, firstName: "Chantal", lastName: "Goya", avatar: Avatars.categories[0].avatars[2], professions: [Professions.list[6].id]),
+        Caregiver(id: UUID().uuidString, firstName: "Gaëtan", lastName: "Roussel", avatar: Avatars.categories[3].avatars[1], professions: [Professions.list[9].id], colorScheme: .dark, colorTheme: .green),
+        Caregiver(id: UUID().uuidString, firstName: "Fabrizio", lastName: "Ferrari", avatar: Avatars.categories[4].avatars[1], professions: [Professions.list[10].id]),
+        Caregiver(id: UUID().uuidString, firstName: "Hakima", lastName: "Queen", avatar: Avatars.categories[2].avatars[1], professions: [Professions.list[10].id, Professions.list[1].id]),
+        Caregiver(id: UUID().uuidString, firstName: "Eric", lastName: "Clapton", avatar: Avatars.categories[1].avatars[0], professions: [Professions.list[10].id]),
+        Caregiver(id: UUID().uuidString, firstName: "Razmo", lastName: "Kets", avatar: Avatars.categories[2].avatars[2], professions: [Professions.list[5].id], colorScheme: .dark, colorTheme: .orange),
+        Caregiver(id: UUID().uuidString, firstName: "Corinne", lastName: "Lepage", avatar: Avatars.categories[5].avatars[1], professions: [Professions.list[4].id]),
+        Caregiver(id: UUID().uuidString, firstName: "Alphonso", lastName: "Mango", avatar: Avatars.categories[4].avatars[1], professions: [Professions.list[0].id]),
+        Caregiver(id: UUID().uuidString, firstName: "Gargantua", lastName: "Pantagruel", avatar: Avatars.categories[3].avatars[2], professions: [Professions.list[2].id]),
     ]
 
     @Published var mockCarereceiversSet: [Carereceiver] = [
-        Carereceiver(name: "Peet", avatar: Avatars.categories[2].avatars[2], reinforcer: 1),
-        Carereceiver(name: "Rounhaa", avatar: Avatars.categories[4].avatars[0], reinforcer: 3),
-        Carereceiver(name: "Selug", avatar: Avatars.categories[5].avatars[1], reinforcer: 4),
-        Carereceiver(name: "Luther", avatar: Avatars.categories[1].avatars[2], reinforcer: 5),
-        Carereceiver(name: "Abel", avatar: Avatars.categories[2].avatars[3], reinforcer: 2),
+        Carereceiver(id: UUID().uuidString, username: "Peet", avatar: Avatars.categories[2].avatars[2], reinforcer: 1),
+        Carereceiver(id: UUID().uuidString, username: "Rounhaa", avatar: Avatars.categories[4].avatars[0], reinforcer: 3),
+        Carereceiver(id: UUID().uuidString, username: "Selug", avatar: Avatars.categories[5].avatars[1], reinforcer: 4),
+        Carereceiver(id: UUID().uuidString, username: "Luther", avatar: Avatars.categories[1].avatars[2], reinforcer: 5),
+        Carereceiver(id: UUID().uuidString, username: "Abel", avatar: Avatars.categories[2].avatars[3], reinforcer: 2),
     ]
+    // swiftlint:enable line_length
 
     func getReinforcerFor(index: Int) -> UIImage {
         switch index {
@@ -59,3 +65,6 @@ class RootOwnerViewModel: ObservableObject {
         }
     }
 }
+
+// swiftlint:enable all
+// swiftformat:enable all

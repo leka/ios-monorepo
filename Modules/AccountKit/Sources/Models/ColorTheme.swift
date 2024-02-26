@@ -5,7 +5,7 @@
 import DesignKit
 import SwiftUI
 
-public enum ColorTheme: String, Codable {
+public enum ColorTheme: String, CaseIterable, Codable {
     case darkBlue
     case blue
     case purple

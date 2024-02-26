@@ -27,7 +27,7 @@ struct CreateCarereceiverView: View {
 
                     Section {
                         LabeledContent(String(l10n.CarereceiverCreation.carereceiverNameLabel.characters)) {
-                            TextField("", text: self.$newCarereceiver.name)
+                            TextField("", text: self.$newCarereceiver.username)
                                 .multilineTextAlignment(.trailing)
                         }
                     }
@@ -44,7 +44,7 @@ struct CreateCarereceiverView: View {
                         // TODO: (@team) : assign the carereceiver profile as the current selected one
                         self.rootOwnerViewModel.mockCarereceiversSet.append(self.newCarereceiver)
                     }
-                    .disabled(self.newCarereceiver.name.isEmpty)
+                    .disabled(self.newCarereceiver.username.isEmpty)
                     .buttonStyle(.borderedProminent)
                     .listRowBackground(Color.clear)
                     .frame(maxWidth: .infinity, alignment: .center)

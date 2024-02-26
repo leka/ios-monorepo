@@ -27,7 +27,11 @@ struct CreateCaregiverView: View {
 
                     Section {
                         LabeledContent(String(l10n.CaregiverCreation.caregiverNameLabel.characters)) {
-                            TextField("", text: self.$newCaregiver.name)
+                            TextField("", text: self.$newCaregiver.firstName)
+                                .multilineTextAlignment(.trailing)
+                        }
+                        LabeledContent(String(l10n.CaregiverCreation.caregiverNameLabel.characters)) {
+                            TextField("", text: self.$newCaregiver.lastName)
                                 .multilineTextAlignment(.trailing)
                         }
                     }
@@ -48,7 +52,7 @@ struct CreateCaregiverView: View {
                         // TODO: (@team) : assign the caregiver profile as the current selected one
                         self.rootOwnerViewModel.mockCaregiversSet.append(self.newCaregiver)
                     }
-                    .disabled(self.newCaregiver.name.isEmpty)
+                    .disabled(self.newCaregiver.firstName.isEmpty)
                     .buttonStyle(.borderedProminent)
                     .listRowBackground(Color.clear)
                     .frame(maxWidth: .infinity, alignment: .center)
@@ -90,7 +94,8 @@ struct CreateCaregiverView: View {
             }
 
             if !self.newCaregiver.professions.isEmpty {
-                ForEach(self.newCaregiver.professions, id: \.id) { profession in
+                ForEach(self.newCaregiver.professions, id: \.self) { id in
+                    let profession = Professions.profession(for: id)!
                     ProfessionPicker.ProfessionTag(profession: profession, caregiver: self.$newCaregiver)
                 }
             }

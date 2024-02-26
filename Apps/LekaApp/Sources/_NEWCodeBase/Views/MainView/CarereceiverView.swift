@@ -42,7 +42,7 @@ struct CarereceiverView: View {
                                 .offset(x: 45, y: 35)
                         }
                     VStack(alignment: .leading, spacing: 0) {
-                        Text(self.carereceiver.name)
+                        Text(self.carereceiver.username)
                             .font(.title)
                             .lineLimit(1)
                             .truncationMode(.tail)
@@ -73,7 +73,7 @@ struct CarereceiverView: View {
 
             Spacer()
         }
-        .navigationTitle(self.carereceiver.name)
+        .navigationTitle(self.carereceiver.username)
         .navigationBarTitleDisplayMode(.inline)
     }
 
@@ -99,5 +99,11 @@ extension l10n {
 // swiftlint:enable line_length
 
 #Preview {
-    CarereceiverView(carereceiver: Carereceiver(name: "Peet", avatar: Avatars.categories[0].avatars[0], reinforcer: 2))
+    CarereceiverView(
+        carereceiver: Carereceiver(
+            username: "Peet",
+            avatar: Avatars.categories[0].avatars[0],
+            reinforcer: 2
+        )
+    )
 }

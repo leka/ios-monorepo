@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AccountKit
 import DesignKit
 import LocalizationKit
 import SwiftUI
@@ -24,7 +25,7 @@ extension EditCaregiverView {
                     get: { self.styleManager.colorScheme == .dark },
                     set: {
                         self.styleManager.colorScheme = $0 ? .dark : .light
-                        self.caregiver.preferredColorScheme = $0 ? .dark : .light
+                        self.caregiver.colorScheme = $0 ? .dark : .light
                     }
                 ))
             }

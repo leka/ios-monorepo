@@ -30,13 +30,16 @@ struct ProfessionPicker: View {
         }
         .environment(\.editMode, Binding.constant(EditMode.active))
         .onAppear {
-            self.selectedProfessions = Set(self.caregiver.professions)
+            let professions = self.caregiver.professions.compactMap { Professions.profession(for: $0) }
+            self.selectedProfessions = Set(professions)
         }
         .navigationTitle(String(l10n.ProfessionPicker.title.characters))
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
-                    self.caregiver.professions = Array(self.selectedProfessions)
+                    // swiftformat:disable:next preferKeyPath
+                    let professionIDs = self.selectedProfessions.compactMap { $0.id }
+                    self.caregiver.professions = Array(professionIDs)
                     self.dismiss()
                 } label: {
                     Label(String(l10n.ProfessionPicker.validateButton.characters), systemImage: "checkmark.circle")

@@ -19,11 +19,11 @@ struct CaregiverPicker: View {
             VStack {
                 ScrollView(showsIndicators: false) {
                     LazyVGrid(columns: self.columns, spacing: 40) {
-                        ForEach(self.rootOwnerViewModel.mockCaregiversSet) { caregiver in
+                        ForEach(self.rootOwnerViewModel.mockCaregiversSet, id: \.id) { caregiver in
                             Button {
                                 // TODO: (@team) - Add caregiver selection logic w/ Firebase
-                                self.styleManager.colorScheme = caregiver.preferredColorScheme
-                                self.styleManager.accentColor = caregiver.preferredAccentColor
+                                self.styleManager.colorScheme = caregiver.colorScheme
+                                self.styleManager.accentColor = caregiver.colorTheme.color
                                 self.authManagerViewModel.isUserLoggedOut = false
                                 self.rootOwnerViewModel.currentCaregiver = caregiver
                             } label: {
