@@ -37,7 +37,8 @@ struct ProfessionPicker: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
-                    let professionIDs = self.selectedProfessions.compactMap(\.id)
+                    // swiftformat:disable:next preferKeyPath
+                    let professionIDs = self.selectedProfessions.compactMap { $0.id }
                     self.caregiver.professions = Array(professionIDs)
                     self.dismiss()
                 } label: {
