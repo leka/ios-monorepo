@@ -262,9 +262,9 @@ platform :ios do
     begin
       if ENV['CI']
         app_store_connect_api_key(
-          key_id: ENV.fetch('APP_STORE_CONNECT_API_KEY_ID', nil),
+          key_id: ENV.fetch('APP_STORE_CONNECT_API_KEY_ID_RELEASE_APP_STORE', nil),
           issuer_id: ENV.fetch('APP_STORE_CONNECT_ISSUER_ID', nil),
-          key_content: ENV.fetch('APP_STORE_CONNECT_API_KEY_CONTENT', nil)
+          key_content: ENV.fetch('APP_STORE_CONNECT_API_KEY_CONTENT_RELEASE_APP_STORE', nil)
         )
 
         unlock_keychain(
