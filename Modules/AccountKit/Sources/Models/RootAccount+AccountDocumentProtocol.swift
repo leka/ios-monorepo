@@ -16,16 +16,20 @@ public protocol AccountDocument: Codable, Identifiable {
 
 // MARK: - RootAccount
 
-struct RootAccount: AccountDocument {
+public struct RootAccount: AccountDocument {
+    // MARK: Public
+
+    public var id: String?
+    @ServerTimestamp public var createdAt: Date?
+    @ServerTimestamp public var lastEditedAt: Date?
+    public var rootOwnerUid: String
+
+    // MARK: Internal
+
     enum CodingKeys: String, CodingKey {
         case id
         case rootOwnerUid = "root_owner_uid"
         case createdAt = "created_at"
         case lastEditedAt = "last_edited_at"
     }
-
-    @DocumentID var id: String?
-    @ServerTimestamp var createdAt: Date?
-    @ServerTimestamp var lastEditedAt: Date?
-    var rootOwnerUid: String
 }
