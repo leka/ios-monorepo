@@ -1,0 +1,18 @@
+This app is to allow user to work with their Leka robot (https://leka.io)
+Video showing how it connects and works with our Leka robot available here:
+
+https://www.youtube.com/shorts/6rWsmoyU2g0
+
+This app uses Audio in UIBackgroundModes to be able to play music in the background.
+You can experience this with the Dance Freeze Activity.
+
+Audio in UIBackgroundModes is also needed as the app uses MIDI through the AudioKit library.
+Using MIDI requires the Audio in UIBackgroundModes as stated in the following links
+referencing Apple Documentaton:
+
+- https://github.com/AudioKit/AudioKit/blob/3abac9ad280374f2b57570d749f7a2dcd13f8d3a/Sources/AudioKit/MIDI/MIDICallbackInstrument.swift#L10-L14
+- https://developer.apple.com/forums/thread/87568
+- https://stackoverflow.com/questions/73149533/turning-off-audio-background-mode-triggers-kmidinotpermitted-even-though-backgro
+
+This app is replacing our previous app after a complete rewrite of our update process.
+See previous version here: https://apps.apple.com/us/app/my-leka-alpha/id1607862221
