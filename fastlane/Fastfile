@@ -315,7 +315,8 @@ platform :ios do
           content_rights_contains_third_party_content: true,
           content_rights_has_rights: true
         },
-        run_precheck_before_submit: true
+        run_precheck_before_submit: true,
+        precheck_include_in_app_purchases: false
       )
     ensure
       next unless ENV['CI']
