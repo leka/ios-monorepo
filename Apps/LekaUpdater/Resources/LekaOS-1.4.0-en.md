@@ -1,7 +1,6 @@
-**Update Highlights**
+**Release Highlights**
 
-- ⚡️ The robot has improved stability in movement
-- ⚡️ The robot has enhanced precision in its rotations
-- 🌐 The autonomous activities menu appears in English when the "Dice" card is detected by the robot
-- ✨ Magic cards detected by the robot are now available on the tablet
-- 🐛 The robot exits autonomous activities after 10 minutes of inactivity
+- ⚡️ Enhanced Stability: The robot now boasts improved stability during motion, ensuring smoother transitions and steadier movements.
+- ⚡️ Precision in Rotations: We've fine-tuned the robot's rotational movements for greater accuracy and fluidity.
+- 🌐 Language Support in Autonomous Mode: When the "Dice" card is recognized, the autonomous activities menu is now conveniently displayed in English.
+- 🐛 Inactivity Timeout: To conserve energy and enhance safety, the robot will automatically exit autonomous mode after 10 minutes of inactivity.
