@@ -30,15 +30,15 @@ class RootOwnerViewModel: ObservableObject {
     @Published var showConfirmDeleteAccount: Bool = false
 
     @Published var mockCaregiversSet: [Caregiver] = [
-        Caregiver(name: "Chantal", avatar: Avatars.categories[0].avatars[2], professions: [Professions.list[6]]),
-        Caregiver(name: "Gaëtan", avatar: Avatars.categories[3].avatars[1], professions: [Professions.list[9]], colorScheme: .dark, accentColor: .green),
-        Caregiver(name: "Fabrizio", avatar: Avatars.categories[4].avatars[1], professions: [Professions.list[10]]),
-        Caregiver(name: "Hakima", avatar: Avatars.categories[2].avatars[1], professions: [Professions.list[10], Professions.list[1]]),
-        Caregiver(name: "Eric", avatar: Avatars.categories[1].avatars[0], professions: [Professions.list[10]]),
-        Caregiver(name: "Razmo", avatar: Avatars.categories[2].avatars[2], professions: [Professions.list[5]], colorScheme: .dark, accentColor: .orange),
-        Caregiver(name: "Corinne", avatar: Avatars.categories[5].avatars[1], professions: [Professions.list[4]]),
-        Caregiver(name: "Alphonso", avatar: Avatars.categories[4].avatars[1], professions: [Professions.list[0]]),
-        Caregiver(name: "Gargantua", avatar: Avatars.categories[3].avatars[2], professions: [Professions.list[2]]),
+        Caregiver(firstName: "Chantal", lastName: "Goya", avatar: Avatars.categories[0].avatars[2], professions: [Professions.list[6].id]),
+        Caregiver(firstName: "Gaëtan", lastName: "Roussel", avatar: Avatars.categories[3].avatars[1], professions: [Professions.list[9].id], colorScheme: .dark, colorTheme: .green),
+        Caregiver(firstName: "Fabrizio", lastName: "Ferrari", avatar: Avatars.categories[4].avatars[1], professions: [Professions.list[10].id]),
+        Caregiver(firstName: "Hakima", lastName: "Queen", avatar: Avatars.categories[2].avatars[1], professions: [Professions.list[10].id, Professions.list[1].id]),
+        Caregiver(firstName: "Eric", lastName: "Clapton", avatar: Avatars.categories[1].avatars[0], professions: [Professions.list[10].id]),
+        Caregiver(firstName: "Razmo", lastName: "Kets", avatar: Avatars.categories[2].avatars[2], professions: [Professions.list[5].id], colorScheme: .dark, colorTheme: .orange),
+        Caregiver(firstName: "Corinne", lastName: "Lepage", avatar: Avatars.categories[5].avatars[1], professions: [Professions.list[4].id]),
+        Caregiver(firstName: "Alphonso", lastName: "Mango", avatar: Avatars.categories[4].avatars[1], professions: [Professions.list[0].id]),
+        Caregiver(firstName: "Gargantua", lastName: "Pantagruel", avatar: Avatars.categories[3].avatars[2], professions: [Professions.list[2].id]),
     ]
 
     @Published var mockCarereceiversSet: [Carereceiver] = [

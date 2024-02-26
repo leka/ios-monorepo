@@ -29,7 +29,7 @@ struct EditCaregiverLabel: View {
                             .clipShape(Circle())
                             .frame(maxWidth: 90)
                         VStack(alignment: .leading, spacing: 0) {
-                            Text(caregiver.name)
+                            Text("\(caregiver.firstName) \(caregiver.lastName)")
                                 .font(.title)
                                 .lineLimit(1)
                                 .truncationMode(.tail)
@@ -101,6 +101,10 @@ extension l10n {
     })
     .onAppear {
         let rootOwnerViewModel = RootOwnerViewModel.shared
-        rootOwnerViewModel.currentCaregiver = Caregiver(name: "Joe", avatar: Avatars.categories[0].avatars[2])
+        rootOwnerViewModel.currentCaregiver = Caregiver(
+            firstName: "Joe",
+            lastName: "Bidjobba",
+            avatar: Avatars.categories[0].avatars[2]
+        )
     }
 }

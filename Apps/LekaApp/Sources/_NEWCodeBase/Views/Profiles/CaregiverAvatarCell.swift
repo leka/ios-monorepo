@@ -17,12 +17,21 @@ struct CaregiverAvatarCell: View {
                 .background(DesignKitAsset.Colors.blueGray.swiftUIColor)
                 .clipShape(Circle())
 
-            Text(self.caregiver.name)
+            Text("\(self.caregiver.firstName) \(self.caregiver.lastName)")
                 .font(.headline)
         }
     }
 }
 
 #Preview {
-    CaregiverAvatarCell(caregiver: Caregiver(name: "Chantal", avatar: Avatars.categories[2].avatars[4], professions: []))
+    CaregiverAvatarCell(
+        caregiver: Caregiver(
+            firstName: "Chantal",
+            lastName: "Goya",
+            avatar: Avatars.categories[2].avatars[4],
+            professions: [],
+            colorScheme: .dark,
+            colorTheme: .orange
+        )
+    )
 }

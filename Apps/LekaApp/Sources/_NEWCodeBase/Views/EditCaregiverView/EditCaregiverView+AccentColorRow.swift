@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AccountKit
 import DesignKit
 import LocalizationKit
 import SwiftUI
@@ -22,11 +23,11 @@ extension EditCaregiverView {
 
                 Spacer()
 
-                ForEach(self.colors, id: \.self) { color in
-                    ColorCircleView(color: color, isSelected: self.selectedColor == color)
+                ForEach(ColorTheme.allCases, id: \.self) { color in
+                    ColorCircleView(color: color.color, isSelected: self.selectedColor == color.color)
                         .onTapGesture {
-                            self.styleManager.accentColor = color
-                            self.caregiver.preferredAccentColor = color
+                            self.styleManager.accentColor = color.color
+                            self.caregiver.colorTheme = color
                         }
                 }
             }
@@ -53,8 +54,6 @@ extension EditCaregiverView {
         }
 
         @ObservedObject private var styleManager: StyleManager = .shared
-
-        private let colors: [Color] = [DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor, .blue, .purple, .red, .orange, .yellow, .green, .gray]
 
         private var selectedColor: Color {
             self.styleManager.accentColor ?? .clear

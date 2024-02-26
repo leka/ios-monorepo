@@ -21,7 +21,7 @@ extension ProfessionPicker {
 
                     Image(systemName: "multiply.square.fill")
                         .onTapGesture {
-                            self.caregiver.professions.removeAll(where: { self.profession == $0 })
+                            self.caregiver.professions.removeAll(where: { self.profession.id == $0 })
                         }
                 }
             }
@@ -34,6 +34,6 @@ extension ProfessionPicker {
 #Preview {
     ProfessionPicker.ProfessionTag(
         profession: Professions.list[8],
-        caregiver: .constant(Caregiver(professions: [Professions.list[0], Professions.list[3]]))
+        caregiver: .constant(Caregiver(professions: [Professions.list[0].id, Professions.list[3].id]))
     )
 }
