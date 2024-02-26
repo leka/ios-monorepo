@@ -21,7 +21,7 @@ public struct ActivityDetailsView: View {
         List {
             Section {
                 HStack {
-                    HStack(alignment: .lastTextBaseline) {
+                    HStack(alignment: .center) {
                         Image(uiImage: self.activity.details.iconImage)
                             .resizable()
                             .scaledToFit()
@@ -36,7 +36,7 @@ public struct ActivityDetailsView: View {
                                 .font(.title2)
                                 .foregroundColor(.secondary)
 
-                            Text(self.activity.details.description)
+                            Text(self.activity.details.shortDescription)
                         }
                     }
 
@@ -130,7 +130,12 @@ public struct ActivityDetailsView: View {
                 })
             }
 
-            Section {
+            Section("Description") {
+                Markdown(self.activity.details.description)
+                    .markdownTheme(.gitHub)
+            }
+
+            Section("Instructions") {
                 Markdown(self.activity.details.instructions)
                     .markdownTheme(.gitHub)
             }
