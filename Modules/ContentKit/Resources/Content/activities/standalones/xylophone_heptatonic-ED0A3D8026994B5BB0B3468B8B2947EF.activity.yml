@@ -1,0 +1,96 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+version: 1.0.0
+uuid: ED0A3D8026994B5BB0B3468B8B2947EF
+name: xylophone_heptatonic
+
+created_at: "2024-03-01T14:00:38.160397"
+last_edited_at: "2024-03-01T14:26:45.004123"
+status: published
+
+authors:
+  - leka
+
+skills:
+  - relationship_tablet_robot
+
+tags:
+  - colors
+  - music
+
+hmi:
+  - tablet_robot
+
+types:
+  - one_on_one
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: xylophone_heptatonic
+
+      title: Xylophone heptatonique
+      subtitle: null
+
+      short_description: |
+        Jouer du Xylophone avec une gamme étendue (gamme heptatonique).
+
+      description: |
+        L'activité xylophone permet à la personne de jouer de la musique en touchant les touches du xylophone affichées sur l'iPad.
+        Chaque pression sur une touche colore Leka dans la même couleur. Cette activité favorise la compréhension du lien de cause à
+        effet entre la tablette et le robot tout en offrant une expérience sensorielle enrichissante pour la personne.
+
+        Avec le xylophone heptatonique, explorez une gamme plus étendue de sons, du do au do.
+
+        Les possibilités musicales sont riches, mais attention aux fausses notes possibles. Similaire aux touches blanches du piano, cet instrument invite à l'exploration musicale avec un peu plus de complexité.
+
+      instructions: |
+        - Inciter la personne à toucher les touches colorées affichées sur l'iPad pour produire des notes de musique.
+        - Inciter la personne à observer comment Leka change de couleur pour correspondre à la touche pressée.
+
+  - locale: en_US
+    details:
+      icon: xylophone_heptatonic
+
+      title: Heptatonic xylophone
+      subtitle: null
+
+      short_description: |
+        Play the Xylophone with an extended range (heptatonic range).
+
+      description: |
+        The xylophone activity allows the person to play music by touching the xylophone keys displayed on the iPad.
+        Each press on a key colors Leka in the same color. This activity promotes understanding of the cause-and-effect relationship
+        between the tablet and the robot while offering a sensory-enriching experience for the individual.
+
+        With the heptatonic xylophone, explore a wider range of sounds, from C to C.
+
+        The musical possibilities are rich, but be careful of possible false notes. Similar to the white keys of the piano,
+        this instrument invites musical exploration with a little more complexity.
+
+      instructions: |
+        - Encourage the individual to touch the colored keys displayed on the iPad to produce musical notes.
+        - Encourage the individual to observe how Leka changes color to match the pressed key.
+
+exercises_payload:
+  options:
+    shuffle_exercises: false
+    shuffle_groups: false
+
+  exercise_groups:
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Joue du Xylophone avec Leka
+            - locale: en_US
+              value: Play the Xylophone with Leka
+          interface: musicalInstruments
+          payload:
+            instrument: xylophone
+            scale: majorHeptatonic
