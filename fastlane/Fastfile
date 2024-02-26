@@ -209,7 +209,7 @@ platform :ios do
         build_number = "#{next_build_number}.#{pr_number or '000'}.#{last_commit_sha_hex}"
         version_number = get_version_number(xcodeproj: app_xcodeproj.to_s)
 
-        UI.important "Version number: #{version_number} / Build number: #{build_number}"
+        UI.important "App: #{app} / Version number: #{version_number} / Build number: #{build_number}"
 
         increment_build_number(
           build_number: build_number,
@@ -235,6 +235,95 @@ platform :ios do
           name: 'io.leka.fastlane.keychain'
         )
       end
+    end
+  end
+
+  desc 'Release new app version to App Store Connect'
+  lane :release do |options|
+    UI.user_error! 'A target must be specified, for example: LekaApp, LekaUpdater, etc.' if options[:target].nil?
+    UI.user_error! 'Only one app can be released at a time' if options[:target].split(',').count > 1
+
+    app = options[:target].split(',').first
+
+    UI.header 'Step: Set target to build'
+    UI.important "The following targets will be built: #{app}"
+
+    build_date = Time.new.strftime('%Y_%m_%d')
+
+    UI.header "Step: Generate, build & upload target: #{app}"
+    Dir.chdir('..') do
+      ENV['TUIST_TURN_OFF_LINTERS'] = 'TRUE'
+      system('tuist', 'generate', '-n', app.to_s)
+    end
+
+    app_id = "io.leka.apf.app.#{app}"
+    app_xcodeproj = "#{ROOT_DIR}/Apps/#{app}/#{app}.xcodeproj"
+
+    begin
+      if ENV['CI']
+        app_store_connect_api_key(
+          key_id: ENV.fetch('APP_STORE_CONNECT_API_KEY_ID_RELEASE_APP_STORE', nil),
+          issuer_id: ENV.fetch('APP_STORE_CONNECT_ISSUER_ID', nil),
+          key_content: ENV.fetch('APP_STORE_CONNECT_API_KEY_CONTENT_RELEASE_APP_STORE', nil)
+        )
+
+        unlock_keychain(
+          path: 'io.leka.fastlane.keychain',
+          password: ENV.fetch('FASTLANE_KEYCHAIN_PASSWORD', nil)
+        )
+
+        UI.header 'Step: keychain security set-key-partition-list'
+        system('security', 'set-key-partition-list', '-S', 'apple-tool:,apple:', '-s', '-k',
+               ENV.fetch('FASTLANE_KEYCHAIN_PASSWORD', nil), 'io.leka.fastlane.keychain')
+      end
+
+      latest_build_number = latest_testflight_build_number(app_identifier: app_id.to_s).to_s
+      next_build_number = latest_build_number.split('.').first.to_i + 1
+      pr_number = ENV.fetch('PR_NUMBER', `gh pr view --json number -q .number`.strip)
+      last_commit_sha_hex = last_git_commit[:abbreviated_commit_hash].to_i(16)
+
+      build_number = "#{next_build_number}.#{pr_number or '000'}.#{last_commit_sha_hex}"
+      version_number = get_version_number(xcodeproj: app_xcodeproj.to_s)
+
+      UI.important "App: #{app} / Version number: #{version_number} / Build number: #{build_number}"
+      UI.important "Metadata path: #{ROOT_DIR}/fastlane/release/#{app}/metadata"
+
+      # capture_screenshots # ? not working yet
+
+      increment_build_number(
+        build_number: build_number,
+        xcodeproj: app_xcodeproj.to_s
+      )
+
+      build_app(
+        workspace: 'ios-monorepo.xcworkspace',
+        scheme: app,
+        output_directory: './.build',
+        output_name: "#{build_date}-#{app}-v#{version_number}-#{build_number}"
+      )
+
+      upload_to_app_store(
+        force: true,
+        app_identifier: app_id.to_s,
+        metadata_path: "#{ROOT_DIR}/fastlane/release/#{app}/metadata",
+        screenshots_path: "#{ROOT_DIR}/fastlane/release/#{app}/screenshots",
+        reject_if_possible: true,
+        app_rating_config_path: "#{ROOT_DIR}/fastlane/release/#{app}/metadata/app_rating_config.json",
+        submission_information: {
+          export_compliance_uses_encryption: false,
+          add_id_info_uses_idfa: false,
+          content_rights_contains_third_party_content: true,
+          content_rights_has_rights: true
+        },
+        run_precheck_before_submit: true,
+        precheck_include_in_app_purchases: false
+      )
+    ensure
+      next unless ENV['CI']
+
+      delete_keychain(
+        name: 'io.leka.fastlane.keychain'
+      )
     end
   end
 end

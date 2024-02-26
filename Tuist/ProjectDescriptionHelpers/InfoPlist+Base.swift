@@ -34,6 +34,7 @@ public extension InfoPlist {
                 "UIInterfaceOrientationLandscapeLeft",
             ],
             "LSApplicationCategoryType": "public.app-category.utilities",
+            "LSMinimumSystemVersion": "14.0",
         ]
     }
 

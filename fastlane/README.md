@@ -55,6 +55,14 @@ Create certificates
 
 Submit new internal beta app
 
+### ios release
+
+```sh
+[bundle exec] fastlane ios release
+```
+
+Release new app version to App Store Connect
+
 ----
 
 This README.md is auto-generated and will be re-generated every time [_fastlane_](https://fastlane.tools) is run.
