@@ -5,7 +5,7 @@
 import FirebaseFirestore
 import SwiftUI
 
-public struct Carereceiver: AccountDocument {
+public struct Carereceiver: AccountDocument, Hashable {
     // MARK: Public
 
     @ServerTimestamp public var createdAt: Date?
@@ -15,7 +15,7 @@ public struct Carereceiver: AccountDocument {
     public var rootOwnerUid: String
     public var username: String
     public var avatar: String
-    public var reinforcer: String
+    public var reinforcer: Int
 
     // MARK: Internal
 

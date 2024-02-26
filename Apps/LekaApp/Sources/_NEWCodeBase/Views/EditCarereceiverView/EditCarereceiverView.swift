@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AccountKit
 import DesignKit
 import LocalizationKit
 import SwiftUI
@@ -24,7 +25,7 @@ struct EditCarereceiverView: View {
 
                     Section {
                         LabeledContent(String(l10n.CarereceiverCreation.carereceiverNameLabel.characters)) {
-                            TextField("", text: self.$modifiedCarereceiver.name)
+                            TextField("", text: self.$modifiedCarereceiver.username)
                                 .multilineTextAlignment(.trailing)
                         }
                     }
