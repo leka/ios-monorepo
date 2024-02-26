@@ -39,11 +39,14 @@ l10n:
       title: Titre de l'activité # {{💡TO_DEFINE}}
       subtitle: Sous-titre de l'activité # {{💡TO_DEFINE}}
 
-      description: | # {{💡TO_DEFINE}}
+      short_description: | # {{💡TO_DEFINE}}
         Courte description de l'activité
 
+      description: | # {{💡TO_DEFINE}}
+        Longue description de l'activité
+
       instructions: | # {{💡TO_DEFINE}}
-        ## Longue description de l'activité et instructions
+        ## Instructions de l'activité
 
         bla bla bla
 
@@ -54,11 +57,14 @@ l10n:
       title: Activity title # {{💡TO_DEFINE}}
       subtitle: Activity subtitle # {{💡TO_DEFINE}}
 
-      description: | # {{💡TO_DEFINE}}
+      short_description: | # {{💡TO_DEFINE}}
         Short description of the activity
 
+      description: | # {{💡TO_DEFINE}}
+        Long description of the activity
+
       instructions: | # {{💡TO_DEFINE}}
-        ## Long description of the activity and instructions
+        ## Activity instructions
 
         bla bla bla
 

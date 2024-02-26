@@ -101,6 +101,9 @@
                 "subtitle": {
                     "type": "string"
                 },
+                "short_description": {
+                    "type": "string"
+                },
                 "description": {
                     "type": "string"
                 },

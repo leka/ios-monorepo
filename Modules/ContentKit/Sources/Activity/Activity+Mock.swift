@@ -56,8 +56,16 @@ public extension Activity {
           title: Activité d'exemple
           subtitle: pour le développement
 
+          short_description: >
+            Nunc Corinthiaci anilem, rerum primo et ambos fata? Et Drya aliis abest, *adeunt
+            deprenduntur* vidi age: venit *cuncti*, aures. Sentit tale nubibus!
+
           description: |
-            Activité d'exemple utilisée pour le développement de l'application
+            Lorem **markdownum arduus salve** sermone quanto fuit: ait nunc placitas precor
+            **Mercurium novi**: terra nec. Nullo si auctor tenentis **verbis**; sed ore.
+            Nisi sermone procul, et diu turbantes, opem nitidis, aera ad esse Pico refugit
+            iugulum? Gradus non verbis humana **rursus aeternum vincetis** gaudet inpia
+            puro, est.
 
           instructions: |
             ## Longues instructions en markdown plus complexe si on veut
@@ -79,8 +87,16 @@ public extension Activity {
           title: Sample activity
           subtitle: for development
 
+          short_description: >
+            Nunc Corinthiaci anilem, rerum primo et ambos fata? Et Drya aliis abest, *adeunt
+            deprenduntur* vidi age: venit *cuncti*, aures. Sentit tale nubibus!
+
           description: |
-            Sample activity used for the development of the application
+            Lorem **markdownum arduus salve** sermone quanto fuit: ait nunc placitas precor
+            **Mercurium novi**: terra nec. Nullo si auctor tenentis **verbis**; sed ore.
+            Nisi sermone procul, et diu turbantes, opem nitidis, aera ad esse Pico refugit
+            iugulum? Gradus non verbis humana **rursus aeternum vincetis** gaudet inpia
+            puro, est.
 
           instructions: |
             ## Long instructions in markdown more complex if we want
