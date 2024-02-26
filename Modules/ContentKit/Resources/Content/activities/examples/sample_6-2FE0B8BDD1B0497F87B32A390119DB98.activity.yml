@@ -43,7 +43,7 @@ l10n:
       icon: sample_6
 
       title: Activité d'exemple 6
-      subtitle: pour le développement
+      subtitle: null
 
       short_description: >
         Nunc Corinthiaci anilem, rerum primo et ambos fata? Et Drya aliis abest, *adeunt
@@ -74,7 +74,7 @@ l10n:
       icon: sample_6
 
       title: Sample activity 6
-      subtitle: for development
+      subtitle: null
 
       short_description: >
         Nunc Corinthiaci anilem, rerum primo et ambos fata? Et Drya aliis abest, *adeunt
