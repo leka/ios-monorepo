@@ -28,43 +28,23 @@ public struct ActivityDetailsView: View {
                             .frame(width: 120, height: 120)
                             .clipShape(Circle())
 
-                        VStack(alignment: .leading) {
+                        VStack(alignment: .leading, spacing: 8) {
                             Text(self.activity.details.title)
-                                .font(.title)
+                                .font(.largeTitle)
+                                .bold()
 
                             Text(self.activity.details.subtitle)
                                 .font(.title2)
                                 .foregroundColor(.secondary)
 
                             Text(self.activity.details.shortDescription)
+                                .font(.subheadline)
+                                .foregroundColor(.secondary)
                         }
                     }
 
                     Spacer()
                 }
-            }
-
-            Section {
-                DisclosureGroup("**Authors**") {
-                    ForEach(self.activity.authors, id: \.self) { author in
-                        let author = Authors.hmi(id: author)!
-                        HStack {
-                            Text(author.name)
-                            Button {
-                                self.selectedAuthor = author
-                            } label: {
-                                Image(systemName: "info.circle")
-                            }
-                        }
-                    }
-                }
-                .sheet(item: self.$selectedAuthor, onDismiss: { self.selectedAuthor = nil }, content: { author in
-                    VStack(alignment: .leading) {
-                        Text(author.name)
-                            .font(.headline)
-                        Text(author.description)
-                    }
-                })
 
                 DisclosureGroup("**Skills**") {
                     ForEach(self.activity.skills, id: \.self) { skill in
@@ -87,45 +67,24 @@ public struct ActivityDetailsView: View {
                     }
                 })
 
-                DisclosureGroup("**HMI**") {
-                    ForEach(self.activity.hmi, id: \.self) { hmi in
-                        let hmi = HMI.hmi(id: hmi)!
+                DisclosureGroup("**Authors**") {
+                    ForEach(self.activity.authors, id: \.self) { author in
+                        let author = Authors.hmi(id: author)!
                         HStack {
-                            Text(hmi.name)
+                            Text(author.name)
                             Button {
-                                self.selectedHMI = hmi
+                                self.selectedAuthor = author
                             } label: {
                                 Image(systemName: "info.circle")
                             }
                         }
                     }
                 }
-                .sheet(item: self.$selectedHMI, onDismiss: { self.selectedHMI = nil }, content: { hmi in
+                .sheet(item: self.$selectedAuthor, onDismiss: { self.selectedAuthor = nil }, content: { author in
                     VStack(alignment: .leading) {
-                        Text(hmi.name)
+                        Text(author.name)
                             .font(.headline)
-                        Text(hmi.description)
-                    }
-                })
-
-                DisclosureGroup("**Activity Types**") {
-                    ForEach(self.activity.types, id: \.self) { type in
-                        let type = ActivityTypes.type(id: type)!
-                        HStack {
-                            Text(type.name)
-                            Button {
-                                self.selectedType = type
-                            } label: {
-                                Image(systemName: "info.circle")
-                            }
-                        }
-                    }
-                }
-                .sheet(item: self.$selectedType, onDismiss: { self.selectedType = nil }, content: { type in
-                    VStack(alignment: .leading) {
-                        Text(type.name)
-                            .font(.headline)
-                        Text(type.description)
+                        Text(author.description)
                     }
                 })
             }
@@ -166,8 +125,6 @@ public struct ActivityDetailsView: View {
 
     @State private var selectedAuthor: Author?
     @State private var selectedSkill: Skill?
-    @State private var selectedHMI: HMIDetails?
-    @State private var selectedType: ActivityType?
 
     @State private var activityToStart: Activity?
 }
