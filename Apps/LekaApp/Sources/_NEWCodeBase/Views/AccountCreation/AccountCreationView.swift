@@ -53,8 +53,6 @@ struct AccountCreationView: View {
                 self.rootAccountManager.createRootAccount(rootAccount: RootAccount())
                 self.authManagerViewModel.userIsSigningUp = true
                 self.isVerificationEmailAlertPresented = true
-            } else {
-                // display signup failed alert
             }
         }
         .alert(isPresented: self.$isVerificationEmailAlertPresented) {
