@@ -12,62 +12,58 @@ import SwiftUI
 struct CarereceiverPicker: View {
     // MARK: Internal
 
+    @Environment(\.dismiss) var dismiss
+    var action: () -> Void
+
     var body: some View {
-        NavigationStack {
-            VStack {
-                ScrollView(showsIndicators: true) {
-                    HStack(alignment: .center, spacing: 30) {
-                        Image(systemName: "figure.2.arms.open")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 80, height: 80)
-                            .foregroundStyle(self.styleManager.accentColor!)
-
-                        VStack(alignment: .leading) {
-                            Text(l10n.CarereceiverPicker.title)
-                                .font(.largeTitle)
-                                .fontWeight(.bold)
-
-                            Text(l10n.CarereceiverPicker.subtitle)
-                                .font(.title2)
-
-                            Text(l10n.CarereceiverPicker.description)
-                                .foregroundStyle(.secondary)
-
-                            Divider()
-                                .padding(.top)
-                        }
-
-                        Spacer()
-                    }
-                    .padding(.horizontal)
-                    .padding()
-
-                    LazyVGrid(columns: self.columns, spacing: 40) {
-                        ForEach(self.rootOwnerViewModel.mockCarereceiversSet) { carereceiver in
-                            NavigationLink(value: carereceiver) {
-                                CarereceiverAvatarCell(carereceiver: carereceiver)
+        VStack {
+            ScrollView(showsIndicators: true) {
+                LazyVGrid(columns: self.columns, spacing: 40) {
+                    ForEach(self.rootOwnerViewModel.mockCarereceiversSet) { carereceiver in
+                        Button {
+                            withAnimation(.default) {
+                                if self.selected == carereceiver {
+                                    self.selected = nil
+                                } else {
+                                    self.selected = carereceiver
+                                }
                             }
+                        } label: {
+                            CarereceiverAvatarCell(carereceiver: carereceiver, isSelected: .constant(self.selected == carereceiver))
                         }
                     }
                 }
+                .padding()
             }
             .navigationTitle(String(l10n.CarereceiverPicker.title.characters))
             .navigationBarTitleDisplayMode(.inline)
+            .interactiveDismissDisabled()
             .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
+                ToolbarItem(placement: .topBarLeading) {
                     Button {
-                        self.isCarereceiverCreationPresented = true
+                        self.dismiss()
                     } label: {
-                        Text(l10n.CarereceiverPicker.addButtonLabel)
+                        Text(l10n.CarereceiverPicker.closeButtonLabel)
                     }
                 }
-            }
-            .sheet(isPresented: self.$isCarereceiverCreationPresented) {
-                CreateCarereceiverView(isPresented: self.$isCarereceiverCreationPresented) {}
-            }
-            .navigationDestination(for: Carereceiver.self) { carereceiver in
-                CarereceiverView(carereceiver: carereceiver)
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        self.rootOwnerViewModel.currentCarereceiver = self.selected
+                        self.action()
+                    } label: {
+                        Text(l10n.CarereceiverPicker.validateButtonLabel)
+                    }
+                    .disabled(self.selected == nil)
+                }
+                ToolbarItemGroup(placement: .bottomBar) {
+                    Button {
+                        self.action()
+                    } label: {
+                        Text(l10n.CarereceiverPicker.skipButtonLabel)
+                            .font(.footnote)
+                    }
+                    Spacer()
+                }
             }
         }
     }
@@ -79,8 +75,7 @@ struct CarereceiverPicker: View {
     @ObservedObject private var rootOwnerViewModel: RootOwnerViewModel = .shared
     @ObservedObject private var styleManager: StyleManager = .shared
 
-    @State private var selected: String = ""
-    @State private var isCarereceiverCreationPresented: Bool = false
+    @State private var selected: Carereceiver?
 }
 
 // MARK: - l10n.CarereceiverPicker
@@ -88,23 +83,27 @@ struct CarereceiverPicker: View {
 extension l10n {
     enum CarereceiverPicker {
         static let title = LocalizedString("lekaapp.carereceiver_picker.title",
-                                           value: "Care receivers",
+                                           value: "Who do you do this activity with?",
                                            comment: "Carereceiver picker title")
 
-        static let subtitle = LocalizedString("lekaapp.carereceiver_picker.subtitle",
-                                              value: "These are the care receivers profiles accompanied by professionals during sessions.",
-                                              comment: "Carereceiver picker subtitle")
+        static let validateButtonLabel = LocalizedString("lekaapp.carereceiver_picker.validate_button_label",
+                                                         value: "Validate",
+                                                         comment: "Carereceiver picker validate button label")
 
-        static let description = LocalizedString("lekaapp.carereceiver_picker.description",
-                                                 value: "Each profile is individual. It displays data specific to each care receiver using Leka app.",
-                                                 comment: "Carereceiver picker description")
+        static let skipButtonLabel = LocalizedString("lekaapp.carereceiver_picker.skip_button_label",
+                                                     value: "Continue without profile",
+                                                     comment: "Carereceiver picker continue without profile button label")
 
-        static let addButtonLabel = LocalizedString("lekaapp.carereceiver_picker.addButtonLabel",
-                                                    value: "Add profile",
-                                                    comment: "Carereceiver picker add button label")
+        static let closeButtonLabel = LocalizedString("lekaapp.carereceiver_picker.close_button_label",
+                                                      value: "Close",
+                                                      comment: "Carereceiver picker close button label")
     }
 }
 
 #Preview {
-    CarereceiverPicker()
+    NavigationStack {
+        CarereceiverPicker {
+            print("action")
+        }
+    }
 }

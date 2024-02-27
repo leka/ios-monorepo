@@ -113,7 +113,7 @@ struct MainView: View {
                         SampleActivityListView()
 
                     case .carereceivers:
-                        CarereceiverPicker()
+                        CarereceiverList()
 
                     case .none:
                         Text("Select a category")
@@ -132,7 +132,9 @@ struct MainView: View {
             }
         }
         .fullScreenCover(isPresented: self.$isCaregiverPickerPresented) {
-            CaregiverPicker()
+            NavigationStack {
+                CaregiverPicker()
+            }
         }
         .fullScreenCover(item: self.$navigation.currentActivity) {
             self.navigation.currentActivity = nil

@@ -15,25 +15,23 @@ struct CaregiverPicker: View {
     @Environment(\.dismiss) var dismiss
 
     var body: some View {
-        NavigationStack {
-            VStack {
-                ScrollView(showsIndicators: false) {
-                    LazyVGrid(columns: self.columns, spacing: 40) {
-                        ForEach(self.rootOwnerViewModel.mockCaregiversSet, id: \.id) { caregiver in
-                            Button {
-                                // TODO: (@team) - Add caregiver selection logic w/ Firebase
-                                self.styleManager.colorScheme = caregiver.colorScheme
-                                self.styleManager.accentColor = caregiver.colorTheme.color
-                                self.authManagerViewModel.isUserLoggedOut = false
-                                self.rootOwnerViewModel.currentCaregiver = caregiver
-                            } label: {
-                                CaregiverAvatarCell(caregiver: caregiver)
-                                    .frame(maxWidth: 140)
-                            }
+        VStack {
+            ScrollView(showsIndicators: false) {
+                LazyVGrid(columns: self.columns, spacing: 40) {
+                    ForEach(self.rootOwnerViewModel.mockCaregiversSet, id: \.id) { caregiver in
+                        Button {
+                            // TODO: (@team) - Add caregiver selection logic w/ Firebase
+                            self.styleManager.colorScheme = caregiver.colorScheme
+                            self.styleManager.accentColor = caregiver.colorTheme.color
+                            self.authManagerViewModel.isUserLoggedOut = false
+                            self.rootOwnerViewModel.currentCaregiver = caregiver
+                        } label: {
+                            CaregiverAvatarCell(caregiver: caregiver)
+                                .frame(maxWidth: 140)
                         }
                     }
-                    .padding()
                 }
+                .padding()
             }
             .padding(.horizontal, 50)
             .navigationTitle(String(l10n.CaregiverPicker.title.characters))

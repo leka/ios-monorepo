@@ -7,13 +7,17 @@ import DesignKit
 import SwiftUI
 
 struct CarereceiverAvatarCell: View {
+    // MARK: Lifecycle
+
+    init(carereceiver: Carereceiver, isSelected: Binding<Bool> = .constant(false)) {
+        self.carereceiver = carereceiver
+        self._isSelected = isSelected
+    }
+
     // MARK: Internal
 
-    private let strokeColor: Color = .init(light: UIColor.systemGray3, dark: UIColor.systemGray2)
-
-    @ObservedObject private var rootOwnerViewModel: RootOwnerViewModel = .shared
-
     let carereceiver: Carereceiver
+    @Binding var isSelected: Bool
 
     var body: some View {
         VStack(spacing: 10) {
@@ -22,6 +26,10 @@ struct CarereceiverAvatarCell: View {
                 .aspectRatio(contentMode: .fit)
                 .background(DesignKitAsset.Colors.blueGray.swiftUIColor)
                 .clipShape(Circle())
+                .overlay {
+                    Circle()
+                        .stroke(self.styleManager.accentColor!, lineWidth: self.isSelected ? 5 : 0)
+                }
                 .overlay {
                     Circle()
                         .strokeBorder(self.strokeColor, lineWidth: 2)
@@ -44,6 +52,12 @@ struct CarereceiverAvatarCell: View {
                 .font(.headline)
         }
     }
+
+    // MARK: Private
+
+    private let strokeColor: Color = .init(light: UIColor.systemGray3, dark: UIColor.systemGray2)
+    @ObservedObject private var rootOwnerViewModel: RootOwnerViewModel = .shared
+    @ObservedObject private var styleManager: StyleManager = .shared
 }
 
 #Preview {
