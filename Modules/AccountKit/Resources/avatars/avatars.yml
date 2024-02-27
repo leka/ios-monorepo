@@ -5,6 +5,7 @@
 version: 1.0.0
 categories:
   - id: weather
+    visible: true
     l10n:
       - locale: fr_FR
         name: Météo
@@ -18,6 +19,7 @@ categories:
       - weather_sun_with_face
 
   - id: professions
+    visible: true
     l10n:
       - locale: fr_FR
         name: Métiers
@@ -32,6 +34,7 @@ categories:
       - professions_pirate_leka
 
   - id: eyeglasses
+    visible: true
     l10n:
       - locale: fr_FR
         name: Lunettes
@@ -44,6 +47,7 @@ categories:
       - eyeglasses_yellow_leka
 
   - id: animals
+    visible: true
     l10n:
       - locale: fr_FR
         name: Animaux
@@ -68,6 +72,7 @@ categories:
       - animals_turtle
 
   - id: fruits
+    visible: true
     l10n:
       - locale: fr_FR
         name: Fruits
@@ -87,6 +92,7 @@ categories:
       - fruits_watermelon
 
   - id: vegetables
+    visible: true
     l10n:
       - locale: fr_FR
         name: Légumes
@@ -102,3 +108,33 @@ categories:
       - vegetables_potato
       - vegetables_salad
       - vegetables_tomato
+
+  - id: alpha
+    visible: false
+    l10n:
+      - locale: fr_FR
+        name: Alpha
+      - locale: en_US
+        name: Alpha
+    avatars:
+      - anonymous
+      - boy1
+      - boy2
+      - boy3
+      - boy4
+      - boy5
+      - boy6
+      - boy7
+      - boy8
+      - boy9
+      - boy10
+      - girl1
+      - girl2
+      - girl3
+      - girl4
+      - girl5
+      - girl6
+      - girl7
+      - girl8
+      - girl9
+      - girl10
