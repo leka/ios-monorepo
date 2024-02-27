@@ -20,17 +20,16 @@ struct CarereceiverPicker: View {
             ScrollView(showsIndicators: true) {
                 LazyVGrid(columns: self.columns, spacing: 40) {
                     ForEach(self.rootOwnerViewModel.mockCarereceiversSet) { carereceiver in
-                        Button {
-                            withAnimation(.default) {
-                                if self.selected == carereceiver {
-                                    self.selected = nil
-                                } else {
-                                    self.selected = carereceiver
+                        CarereceiverAvatarCell(carereceiver: carereceiver, isSelected: .constant(self.selected == carereceiver))
+                            .onTapGesture {
+                                withAnimation(.default) {
+                                    if self.selected == carereceiver {
+                                        self.selected = nil
+                                    } else {
+                                        self.selected = carereceiver
+                                    }
                                 }
                             }
-                        } label: {
-                            CarereceiverAvatarCell(carereceiver: carereceiver, isSelected: .constant(self.selected == carereceiver))
-                        }
                     }
                 }
                 .padding()
