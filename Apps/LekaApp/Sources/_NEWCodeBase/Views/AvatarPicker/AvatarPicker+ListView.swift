@@ -15,25 +15,27 @@ extension AvatarPicker {
         var body: some View {
             List {
                 ForEach(Avatars.categories, id: \.self) { category in
-                    Section(category.name) {
-                        ScrollView(.horizontal) {
-                            LazyHGrid(rows: self.rows, spacing: 50) {
-                                ForEach(category.avatars, id: \.self) { icon in
-                                    Button {
-                                        self.selectedAvatar = icon
-                                    } label: {
-                                        AvatarCellLabel(
-                                            image: Avatars.iconToUIImage(icon: icon),
-                                            isSelected: .constant(self.selectedAvatar == icon)
-                                        )
+                    if category.visible {
+                        Section(category.name) {
+                            ScrollView(.horizontal) {
+                                LazyHGrid(rows: self.rows, spacing: 50) {
+                                    ForEach(category.avatars, id: \.self) { icon in
+                                        Button {
+                                            self.selectedAvatar = icon
+                                        } label: {
+                                            AvatarCellLabel(
+                                                image: Avatars.iconToUIImage(icon: icon),
+                                                isSelected: .constant(self.selectedAvatar == icon)
+                                            )
+                                        }
+                                        .animation(.easeIn, value: self.selectedAvatar)
                                     }
-                                    .animation(.easeIn, value: self.selectedAvatar)
                                 }
+                                .padding()
                             }
-                            .padding()
                         }
+                        .listRowBackground(Color.clear)
                     }
-                    .listRowBackground(Color.clear)
                 }
                 .listRowInsets(EdgeInsets())
             }

@@ -46,7 +46,7 @@ struct CreateCaregiverView: View {
                             self.onDismissAction()
                         }
                         if self.newCaregiver.avatar.isEmpty {
-                            self.newCaregiver.avatar = Avatars.categories.last!.avatars.randomElement()!
+                            self.newCaregiver.avatar = Avatars.categories.first!.avatars.randomElement()!
                         }
                         // TODO: (@team) : add the caregiver profile to the account
                         // TODO: (@team) : assign the caregiver profile as the current selected one
