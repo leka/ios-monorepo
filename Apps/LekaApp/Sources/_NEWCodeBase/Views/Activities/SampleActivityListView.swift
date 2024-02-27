@@ -19,7 +19,8 @@ struct SampleActivityListView: View {
                         .toolbar {
                             ToolbarItem {
                                 Button {
-                                    self.navigation.currentActivity = activity
+                                    self.isCarereceiverPickerPresented = true
+                                    self.selectedActivity = activity
                                 } label: {
                                     Image(systemName: "play.circle")
                                     Text("Start activity")
@@ -40,11 +41,23 @@ struct SampleActivityListView: View {
             }
         }
         .navigationTitle("Sample Activities")
+        .sheet(isPresented: self.$isCarereceiverPickerPresented) {
+            NavigationStack {
+                CarereceiverPicker {
+                    self.isCarereceiverPickerPresented = false
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                        self.navigation.currentActivity = self.selectedActivity
+                    }
+                }
+            }
+        }
     }
 
     // MARK: Private
 
     private var navigation = Navigation.shared
+    @State private var selectedActivity: Activity?
+    @State private var isCarereceiverPickerPresented = false
 }
 
 #Preview {
