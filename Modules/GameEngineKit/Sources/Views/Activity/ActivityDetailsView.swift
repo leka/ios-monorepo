@@ -39,7 +39,7 @@ public struct ActivityDetailsView: View {
                                     .foregroundColor(.secondary)
                             }
 
-                            Text(self.activity.details.shortDescription)
+                            Text(markdown: self.activity.details.shortDescription)
                                 .font(.subheadline)
                                 .foregroundColor(.secondary)
                         }
