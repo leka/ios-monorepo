@@ -1,3 +1,11 @@
 This app is to allow user to update their Leka robot (https://leka.io)
+
+Video showing how it connects and works with our Leka robot available here:
+https://www.youtube.com/shorts/z37lwRfgBfg
+
+Regarding UIBackgroundModes, it is indeed not used yet.  We are working on a upcoming update that will add sound to the app to guide the user through the update process.
+
 It is replacing our previous app after a complete rewrite of our update process.
 See previous version here: https://apps.apple.com/fr/app/leka-updater/id6443763916?l=en-GB
+
+The old app has been made unavailable in all countries and will then be removed from the store to avoid having two apps doing the same thing and duplicating functionality.
