@@ -34,11 +34,15 @@ struct WelcomeView: View {
                     }
                 }
             }
+            .onAppear {
+                print(self.caregiverManagerViewModel.currentCaregiver?.firstName ?? "it is nil as it should be")
+            }
         }
     }
 
     // MARK: Private
 
+    @ObservedObject private var caregiverManagerViewModel: CaregiverManagerViewModel = .shared
     @ObservedObject private var authManagerViewModel = AuthManagerViewModel.shared
 }
 

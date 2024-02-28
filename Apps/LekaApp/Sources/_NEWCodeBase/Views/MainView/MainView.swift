@@ -111,8 +111,7 @@ struct MainView: View {
         .fullScreenCover(isPresented: self.$viewModel.isRobotConnectionPresented) {
             RobotConnectionView(viewModel: RobotConnectionViewModel())
         }
-        // TODO: (@team) - Update this onReceive when caregiver are managed by AccountKit
-        .onReceive(self.rootOwnerViewModel.$currentCaregiver) { caregiver in
+        .onReceive(self.caregiverManagerViewModel.$currentCaregiver) { caregiver in
             if !self.authManagerViewModel.isUserLoggedOut {
                 self.isCaregiverPickerPresented = (caregiver == nil)
             }
@@ -131,13 +130,14 @@ struct MainView: View {
             SettingsView(isCaregiverPickerPresented: self.$isCaregiverPickerPresented)
         }
         .sheet(isPresented: self.$rootOwnerViewModel.isEditCaregiverViewPresented) {
-            EditCaregiverView(modifiedCaregiver: self.rootOwnerViewModel.currentCaregiver!)
+            EditCaregiverView(modifiedCaregiver: self.caregiverManagerViewModel.currentCaregiver!)
         }
     }
 
     // MARK: Private
 
     @State private var isCaregiverPickerPresented: Bool = false
+    @ObservedObject private var caregiverManagerViewModel: CaregiverManagerViewModel = .shared
 }
 
 #Preview {

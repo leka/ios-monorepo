@@ -20,8 +20,8 @@ extension AccountCreationProcess {
                 Text(l10n.AccountCreationProcess.Step4.message)
 
                 Button(String(l10n.AccountCreationProcess.Step4.discoverContentButton.characters)) {
-                    if !self.rootOwnerViewModel.mockCaregiversSet.isEmpty {
-                        self.rootOwnerViewModel.currentCaregiver = self.rootOwnerViewModel.mockCaregiversSet.last
+                    if !self.caregiverManagerViewModel.caregivers.isEmpty {
+                        self.caregiverManagerViewModel.currentCaregiver = self.caregiverManagerViewModel.caregivers.last
                     }
                     self.authManagerViewModel.isUserLoggedOut.toggle()
                 }
@@ -35,8 +35,8 @@ extension AccountCreationProcess {
 
         // MARK: Private
 
-        @ObservedObject private var rootOwnerViewModel = RootOwnerViewModel.shared
         @ObservedObject private var authManagerViewModel = AuthManagerViewModel.shared
+        @ObservedObject private var caregiverManagerViewModel: CaregiverManagerViewModel = .shared
     }
 }
 

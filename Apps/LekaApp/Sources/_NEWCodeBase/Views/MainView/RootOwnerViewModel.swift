@@ -21,7 +21,6 @@ class RootOwnerViewModel: ObservableObject {
 
     static let shared = RootOwnerViewModel()
 
-    @Published var currentCaregiver: Caregiver?
     @Published var currentCarereceiver: Carereceiver?
 
     @Published var isSettingsViewPresented = false

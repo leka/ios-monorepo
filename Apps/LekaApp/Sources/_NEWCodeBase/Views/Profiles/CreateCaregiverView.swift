@@ -48,9 +48,7 @@ struct CreateCaregiverView: View {
                         if self.newCaregiver.avatar.isEmpty {
                             self.newCaregiver.avatar = Avatars.categories.first!.avatars.randomElement()!
                         }
-                        // TODO: (@team) : add the caregiver profile to the account
-                        // TODO: (@team) : assign the caregiver profile as the current selected one
-                        self.rootOwnerViewModel.mockCaregiversSet.append(self.newCaregiver)
+                        self.caregiverManager.addCaregiver(caregiver: self.newCaregiver)
                     }
                     .disabled(self.newCaregiver.firstName.isEmpty)
                     .buttonStyle(.borderedProminent)
@@ -65,9 +63,9 @@ struct CreateCaregiverView: View {
 
     // MARK: Private
 
-    @ObservedObject private var rootOwnerViewModel = RootOwnerViewModel.shared
     @State private var isAvatarPickerPresented: Bool = false
     @State private var isProfessionPickerPresented: Bool = false
+    var caregiverManager: CaregiverManager = .shared
 
     private var avatarPickerButton: some View {
         Button {
