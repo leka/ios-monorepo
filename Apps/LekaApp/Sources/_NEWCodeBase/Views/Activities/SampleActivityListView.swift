@@ -19,7 +19,7 @@ struct SampleActivityListView: View {
                         .toolbar {
                             ToolbarItem {
                                 Button {
-                                    self.isCarereceiverPickerPresented = true
+                                    self.navigation.isCarereceiverPickerPresented = true
                                     self.selectedActivity = activity
                                 } label: {
                                     Image(systemName: "play.circle")
@@ -27,15 +27,18 @@ struct SampleActivityListView: View {
                                 }
                                 .buttonStyle(.borderedProminent)
                                 .tint(.lkGreen)
-                                .sheet(isPresented: self.$isCarereceiverPickerPresented) {
-                                    NavigationStack {
-                                        CarereceiverPicker {
-                                            self.isCarereceiverPickerPresented = false
-                                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                                                self.navigation.currentActivity = self.selectedActivity
-                                            }
-                                        }
-                                    }
+                                .sheet(isPresented: self.$navigation.isCarereceiverPickerPresented) {
+//                                    NavigationStack {
+                                    CarereceiverPicker(onDismiss: {
+                                        // nothing to do
+                                    }, onSelected: { carereceiver in
+                                        RootOwnerViewModel.shared.currentCarereceiver = carereceiver
+                                        self.navigation.currentActivity = self.selectedActivity
+                                    }, onSkip: {
+                                        self.navigation.currentActivity = self.selectedActivity
+
+                                    })
+//                                    }
                                 }
                             }
                         }
@@ -55,9 +58,8 @@ struct SampleActivityListView: View {
 
     // MARK: Private
 
-    private var navigation = Navigation.shared
+    @ObservedObject private var navigation: Navigation = .shared
     @State private var selectedActivity: Activity?
-    @State private var isCarereceiverPickerPresented = false
 }
 
 #Preview {

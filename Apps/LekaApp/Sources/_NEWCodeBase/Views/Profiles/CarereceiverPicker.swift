@@ -10,23 +10,36 @@ import SwiftUI
 // MARK: - CarereceiverPicker
 
 struct CarereceiverPicker: View {
+    // MARK: Lifecycle
+
+    init(selected: Carereceiver? = nil, onDismiss: (() -> Void)? = nil, onSelected: ((Carereceiver) -> Void)? = nil, onSkip: (() -> Void)? = nil) {
+        self.selectedCarereceiver = selected
+        self.onDismiss = onDismiss
+        self.onSelected = onSelected
+        self.onSkip = onSkip
+    }
+
     // MARK: Internal
 
     @Environment(\.dismiss) var dismiss
-    var action: () -> Void
+
+    var onDismiss: (() -> Void)?
+    var onSelected: ((Carereceiver) -> Void)?
+    var onSkip: (() -> Void)?
 
     var body: some View {
-        VStack {
+        NavigationStack {
             ScrollView(showsIndicators: true) {
                 LazyVGrid(columns: self.columns, spacing: 40) {
-                    ForEach(self.rootOwnerViewModel.mockCarereceiversSet) { carereceiver in
-                        CarereceiverAvatarCell(carereceiver: carereceiver, isSelected: .constant(self.selected == carereceiver))
+                    // TODO: (@HPezz) - replace by real data
+                    ForEach(RootOwnerViewModel.shared.mockCarereceiversSet) { carereceiver in
+                        CarereceiverAvatarCell(carereceiver: carereceiver, isSelected: self.selectedCarereceiver == carereceiver)
                             .onTapGesture {
                                 withAnimation(.default) {
-                                    if self.selected == carereceiver {
-                                        self.selected = nil
+                                    if self.selectedCarereceiver == carereceiver {
+                                        self.selectedCarereceiver = nil
                                     } else {
-                                        self.selected = carereceiver
+                                        self.selectedCarereceiver = carereceiver
                                     }
                                 }
                             }
@@ -40,6 +53,7 @@ struct CarereceiverPicker: View {
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Button {
+                        self.action = .dimiss
                         self.dismiss()
                     } label: {
                         Text(l10n.CarereceiverPicker.closeButtonLabel)
@@ -47,16 +61,17 @@ struct CarereceiverPicker: View {
                 }
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
-                        self.rootOwnerViewModel.currentCarereceiver = self.selected
-                        self.action()
+                        self.action = .select
+                        self.dismiss()
                     } label: {
                         Text(l10n.CarereceiverPicker.validateButtonLabel)
                     }
-                    .disabled(self.selected == nil)
+                    .disabled(self.selectedCarereceiver == nil)
                 }
                 ToolbarItemGroup(placement: .bottomBar) {
                     Button {
-                        self.action()
+                        self.action = .skip
+                        self.dismiss()
                     } label: {
                         Text(l10n.CarereceiverPicker.skipButtonLabel)
                             .font(.footnote)
@@ -65,16 +80,36 @@ struct CarereceiverPicker: View {
                 }
             }
         }
+        .onDisappear {
+            switch self.action {
+                case .dimiss:
+                    self.onDismiss?()
+                case .select:
+                    if let selectedCarereceiver = self.selectedCarereceiver {
+                        self.onSelected?(selectedCarereceiver)
+                    }
+                case .skip:
+                    self.onSkip?()
+                case .none:
+                    break
+            }
+
+            self.action = nil
+        }
     }
 
     // MARK: Private
 
+    private enum ActionType {
+        case dimiss
+        case select
+        case skip
+    }
+
     private let columns = Array(repeating: GridItem(), count: 4)
 
-    @ObservedObject private var rootOwnerViewModel: RootOwnerViewModel = .shared
-    @ObservedObject private var styleManager: StyleManager = .shared
-
-    @State private var selected: Carereceiver?
+    @State private var selectedCarereceiver: Carereceiver?
+    @State private var action: ActionType?
 }
 
 // MARK: - l10n.CarereceiverPicker
@@ -101,8 +136,13 @@ extension l10n {
 
 #Preview {
     NavigationStack {
-        CarereceiverPicker {
-            print("action")
-        }
+        CarereceiverPicker(onDismiss: {
+            print("dismiss")
+        }, onSelected: {
+            print("selected carereceiver: \($0)")
+        },
+        onSkip: {
+            print("skip")
+        })
     }
 }
