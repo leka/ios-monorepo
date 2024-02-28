@@ -9,15 +9,15 @@ import SwiftUI
 struct CarereceiverAvatarCell: View {
     // MARK: Lifecycle
 
-    init(carereceiver: Carereceiver, isSelected: Binding<Bool> = .constant(false)) {
+    init(carereceiver: Carereceiver, isSelected: Bool = false) {
         self.carereceiver = carereceiver
-        self._isSelected = isSelected
+        self.isSelected = isSelected
     }
 
     // MARK: Internal
 
     let carereceiver: Carereceiver
-    @Binding var isSelected: Bool
+    var isSelected: Bool
 
     var body: some View {
         VStack(spacing: 10) {
