@@ -17,9 +17,18 @@ public class CaregiverManagerViewModel: ObservableObject {
     public static let shared = CaregiverManagerViewModel()
 
     @Published public var caregivers: [Caregiver] = []
-    @Published public var currentCaregiver: Caregiver?
     @Published public var errorMessage: String = ""
     @Published public var showErrorAlert = false
+    @Published public var isCaregiverPickerPresented: Bool = false
+
+    @Published public var currentCaregiver: Caregiver? {
+        didSet {
+            guard let currentCaregiver else {
+                return
+            }
+            self.isCaregiverPickerPresented = false
+        }
+    }
 
     // MARK: Private
 
@@ -36,8 +45,8 @@ public class CaregiverManagerViewModel: ObservableObject {
 
         self.caregiverManager.currentCaregiverPublisher
             .receive(on: DispatchQueue.main)
-            .sink(receiveValue: { [weak self] fetchedCaregiver in
-                self?.currentCaregiver = fetchedCaregiver
+            .sink(receiveValue: { _ in
+                // Nothing to do
             })
             .store(in: &self.cancellables)
 

@@ -60,7 +60,7 @@ struct EditCaregiverView: View {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button(String(l10n.EditCaregiverView.saveButtonLabel.characters)) {
                         self.rootOwnerViewModel.isEditCaregiverViewPresented = false
-                        self.caregiverManager.updateAndSelectCaregiver(caregiver: &self.modifiedCaregiver)
+                        self.caregiverManager.updateCaregiver(caregiver: &self.modifiedCaregiver)
                     }
                 }
             }

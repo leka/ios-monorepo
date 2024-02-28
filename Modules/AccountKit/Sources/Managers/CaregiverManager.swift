@@ -53,19 +53,6 @@ public class CaregiverManager {
 
     public func updateCaregiver(caregiver: inout Caregiver) {
         caregiver.lastEditedAt = nil
-        self.dbOps.update(data: caregiver, in: .caregivers)
-            .sink(receiveCompletion: { completion in
-                if case let .failure(error) = completion {
-                    self.fetchErrorSubject.send(error)
-                }
-            }, receiveValue: {
-                // Nothing to do
-            })
-            .store(in: &self.cancellables)
-    }
-
-    public func updateAndSelectCaregiver(caregiver: inout Caregiver) {
-        caregiver.lastEditedAt = nil
         let documentID = caregiver.id!
         self.dbOps.update(data: caregiver, in: .caregivers)
             .sink(receiveCompletion: { completion in
