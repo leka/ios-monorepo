@@ -6,6 +6,20 @@ import Combine
 import Foundation
 import LocalizationKit
 
+// MARK: - l10n.AuthManagerViewModel
+
+// swiftlint:disable line_length
+
+extension l10n {
+    enum AuthManagerViewModel {
+        static let unverifiedEmailNotification = LocalizedString("accountkit.auth_manager_view_model.unverified_email_notification", value: "Your email hasn't been verified yet. Please verify your email to avoid losing your data.", comment: "Unverified email notification message")
+    }
+}
+
+// MARK: - AuthManagerViewModel
+
+// swiftlint:enable line_length
+
 public class AuthManagerViewModel: ObservableObject {
     // MARK: Lifecycle
 
@@ -29,8 +43,6 @@ public class AuthManagerViewModel: ObservableObject {
     @Published public var showErrorAlert = false
     @Published public var actionRequestMessage: String = ""
     @Published public var showactionRequestAlert = false
-    @Published public var notificationMessage: String = ""
-    @Published public var showNotificationAlert = false
     @Published public var isUserLoggedOut = false
 
     // MARK: Private
@@ -70,10 +82,7 @@ public class AuthManagerViewModel: ObservableObject {
     private func handleAuthenticationStateChange(state: AuthManager.AuthenticationState) {
         switch state {
             case .loggedIn:
-                if self.userIsSigningUp {
-                    self.notificationMessage = String(l10n.AuthManagerViewModel.successfulEmailVerification.characters)
-                    self.showNotificationAlert = true
-                } else if !self.userEmailIsVerified {
+                if !self.userIsSigningUp, !self.userEmailIsVerified {
                     self.actionRequestMessage = String(l10n.AuthManagerViewModel.unverifiedEmailNotification.characters)
                     self.showactionRequestAlert = true
                 }
@@ -91,8 +100,6 @@ public class AuthManagerViewModel: ObservableObject {
         self.actionRequestMessage = ""
         self.showactionRequestAlert = false
         self.showErrorAlert = false
-        self.notificationMessage = ""
-        self.showNotificationAlert = false
         self.isUserLoggedOut = true
     }
 }
