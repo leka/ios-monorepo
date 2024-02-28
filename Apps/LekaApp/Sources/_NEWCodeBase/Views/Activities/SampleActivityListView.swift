@@ -27,6 +27,16 @@ struct SampleActivityListView: View {
                                 }
                                 .buttonStyle(.borderedProminent)
                                 .tint(.lkGreen)
+                                .sheet(isPresented: self.$isCarereceiverPickerPresented) {
+                                    NavigationStack {
+                                        CarereceiverPicker {
+                                            self.isCarereceiverPickerPresented = false
+                                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                                                self.navigation.currentActivity = self.selectedActivity
+                                            }
+                                        }
+                                    }
+                                }
                             }
                         }
                 ) {
@@ -41,16 +51,6 @@ struct SampleActivityListView: View {
             }
         }
         .navigationTitle("Sample Activities")
-        .sheet(isPresented: self.$isCarereceiverPickerPresented) {
-            NavigationStack {
-                CarereceiverPicker {
-                    self.isCarereceiverPickerPresented = false
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                        self.navigation.currentActivity = self.selectedActivity
-                    }
-                }
-            }
-        }
     }
 
     // MARK: Private
