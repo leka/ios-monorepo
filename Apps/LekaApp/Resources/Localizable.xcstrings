@@ -812,8 +812,8 @@
                 }
             }
         },
-        "lekaapp.carereceiver_picker.addButtonLabel": {
-            "comment": "Carereceiver picker add button label",
+        "lekaapp.carereceiver_list.add_button_label": {
+            "comment": "Carereceiver list add button label",
             "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
@@ -830,44 +830,44 @@
                 }
             }
         },
-        "lekaapp.carereceiver_picker.description": {
-            "comment": "Carereceiver picker description",
+        "lekaapp.carereceiver_list.description": {
+            "comment": "Carereceiver list description",
             "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Each profile is individual. It displays data specific to each care receiver using Leka app."
+                        "value": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Chaque profil est individuel. Il permet d'afficher des donn\u00e9es propres \u00e0 chaque personne accompagn\u00e9e utilisant l'application Leka."
+                        "value": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
                     }
                 }
             }
         },
-        "lekaapp.carereceiver_picker.subtitle": {
-            "comment": "Carereceiver picker subtitle",
+        "lekaapp.carereceiver_list.subtitle": {
+            "comment": "Carereceiver list subtitle",
             "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "These are the care receivers profiles accompanied by professionals during sessions."
+                        "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Il s'agit des profils de personnes accompagn\u00e9es par des professionnels au cours des s\u00e9ances."
+                        "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
                     }
                 }
             }
         },
-        "lekaapp.carereceiver_picker.title": {
-            "comment": "Carereceiver picker title",
+        "lekaapp.carereceiver_list.title": {
+            "comment": "Carereceiver list title",
             "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
@@ -880,6 +880,78 @@
                     "stringUnit": {
                         "state": "translated",
                         "value": "Personnes accompagn\u00e9es"
+                    }
+                }
+            }
+        },
+        "lekaapp.carereceiver_picker.close_button_label": {
+            "comment": "Carereceiver picker close button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Close"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Fermer"
+                    }
+                }
+            }
+        },
+        "lekaapp.carereceiver_picker.skip_button_label": {
+            "comment": "Carereceiver picker continue without profile button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Continue without profile"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Continuer sans profil"
+                    }
+                }
+            }
+        },
+        "lekaapp.carereceiver_picker.title": {
+            "comment": "Carereceiver picker title",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Who do you do this activity with?"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Avec qui faites vous cette activit\u00e9 ?"
+                    }
+                }
+            }
+        },
+        "lekaapp.carereceiver_picker.validate_button_label": {
+            "comment": "Carereceiver picker validate button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Validate"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Valider"
                     }
                 }
             }

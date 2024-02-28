@@ -5,7 +5,12 @@
 import AccountKit
 import DesignKit
 import FirebaseCore
+import LogKit
 import SwiftUI
+
+let log = LogKit.createLoggerFor(app: "LekaApp")
+
+// MARK: - LekaApp
 
 @main
 struct LekaApp: App {
