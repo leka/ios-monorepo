@@ -76,6 +76,7 @@ public struct AvatarCategory: Codable, Identifiable {
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.id = try container.decode(String.self, forKey: .id)
+        self.visible = try container.decode(Bool.self, forKey: .visible)
 
         self.l10n = try container.decode([AvatarCategory.Localization].self, forKey: .l10n)
 
@@ -92,6 +93,7 @@ public struct AvatarCategory: Codable, Identifiable {
     // MARK: Public
 
     public let id: String
+    public let visible: Bool
     public let name: String
     public let avatars: [String]
 

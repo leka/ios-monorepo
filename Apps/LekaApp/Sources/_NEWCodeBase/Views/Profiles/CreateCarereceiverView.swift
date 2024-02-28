@@ -38,7 +38,7 @@ struct CreateCarereceiverView: View {
                             self.onDismissAction()
                         }
                         if self.newCarereceiver.avatar.isEmpty {
-                            self.newCarereceiver.avatar = Avatars.categories.last!.avatars.randomElement()!
+                            self.newCarereceiver.avatar = Avatars.categories.first!.avatars.randomElement()!
                         }
                         // TODO: (@team) : add the carereceiver profile to the account
                         // TODO: (@team) : assign the carereceiver profile as the current selected one
