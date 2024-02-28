@@ -10,12 +10,15 @@ import subprocess
 import uuid
 import sys
 from pathlib import Path
+from datetime import datetime
 import ruamel.yaml
 
 
 JTD_SCHEMA = "Specs/jtd/activity.jtd.json"
 SKILLS_FILE = "Modules/ContentKit/Resources/Content/definitions/skills.yml"
 CONTENTKIT_DIRECTORY = "Modules/ContentKit/Resources/Content"
+
+CREATED_AT_INDEX = 3
 
 
 #
@@ -87,6 +90,17 @@ def check_content_activity(filename):
     except ValueError:
         print(f"\n❌ The id in {filename} is not valid")
         print(f"uuid: {data['uuid']}")
+        file_is_valid = False
+
+    # ? Check created_at is present
+    if "created_at" not in data:
+        print(f"\n❌ Missing key created_at in {filename}")
+        print(f"Add created_at: {datetime.now().isoformat()}")
+        if "name" in data and "status" in data:
+            data.insert(CREATED_AT_INDEX, "created_at", datetime.now().isoformat())
+            with open(filename, "w", encoding="utf8") as file:
+                yaml.dump(data, file)
+
         file_is_valid = False
 
     # ? Check schema validation with ajv
