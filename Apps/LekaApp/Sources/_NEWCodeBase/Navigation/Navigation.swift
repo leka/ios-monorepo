@@ -19,6 +19,8 @@ class Navigation: ObservableObject {
     @Published var disableUICompletly: Bool = false
     @Published var categories = Category.allCases
 
+    @Published var isCarereceiverPickerPresented: Bool = false
+
     @Published var currentActivity: Activity?
 
     var selectedCategory: Category? = .news {
