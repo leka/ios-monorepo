@@ -44,7 +44,7 @@ l10n:
     details:
       icon: sample_3
 
-      title: Activité d'exemple 3 - modified for testing
+      title: Activité d'exemple 3 - modified for testing - again without update of last_edited_at
       subtitle: pour le développement
 
       short_description: >
