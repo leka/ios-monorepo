@@ -20,7 +20,9 @@ CONTENTKIT_DIRECTORY = "Modules/ContentKit/Resources/Content"
 
 CREATED_AT_INDEX = 3
 LAST_EDITED_AT_INDEX = 4
-DATE_NOW_TIMESTAMP = datetime.now().isoformat()
+DATE_NOW_TIMESTAMP = ruamel.yaml.scalarstring.DoubleQuotedScalarString(
+    datetime.now().isoformat()
+)
 
 
 #
@@ -71,6 +73,11 @@ def check_content_activity(filename):
     # ? Create a YAML object
     yaml = ruamel.yaml.YAML(typ="rt")
     yaml.indent(mapping=2, sequence=4, offset=2)
+    yaml.preserve_quotes = True
+    yaml.representer.add_representer(
+        type(None),
+        lambda dumper, data: dumper.represent_scalar("tag:yaml.org,2002:null", "null"),
+    )
 
     file_is_valid = True
 
