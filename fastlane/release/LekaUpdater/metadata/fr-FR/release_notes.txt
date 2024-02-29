@@ -1,4 +1,9 @@
-**Points Forts de la Mise à Jour**
+Cette nouvelle version est une réécriture complète de notre application précédente.
+
+Grâce à nos incroyables utilisateurs et à leurs retours précieux, l'expérience utilisateur et l'interface utilisateur ont été significativement améliorées.
+Le design est désormais plus attrayant, les informations importantes sont facilement lisibles et toutes les actions clés sont à portée de main.
+
+Et ce n'est pas tout ! Cette nouvelle version inclut notre dernière mise à jour de firmware, LekaOS v1.4.0, qui introduit de nombreuses nouvelles fonctionnalités :
 
 - ⚡️ Stabilité Améliorée : Le robot bénéficie désormais d'une stabilité accrue en mouvement, assurant des transitions plus douces et des déplacements plus stables.
 - ⚡️ Précision des Rotations : Nous avons peaufiné les mouvements rotationnels du robot pour une plus grande précision et fluidité.
