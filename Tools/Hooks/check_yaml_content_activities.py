@@ -19,6 +19,8 @@ SKILLS_FILE = "Modules/ContentKit/Resources/Content/definitions/skills.yml"
 CONTENTKIT_DIRECTORY = "Modules/ContentKit/Resources/Content"
 
 CREATED_AT_INDEX = 3
+LAST_EDITED_AT_INDEX = 4
+DATE_NOW_TIMESTAMP = datetime.now().isoformat()
 
 
 #
@@ -95,9 +97,20 @@ def check_content_activity(filename):
     # ? Check created_at is present
     if "created_at" not in data:
         print(f"\n❌ Missing key created_at in {filename}")
-        print(f"Add created_at: {datetime.now().isoformat()}")
+        print(f"Add created_at: {DATE_NOW_TIMESTAMP}")
         if "name" in data and "status" in data:
-            data.insert(CREATED_AT_INDEX, "created_at", datetime.now().isoformat())
+            data.insert(CREATED_AT_INDEX, "created_at", DATE_NOW_TIMESTAMP)
+            with open(filename, "w", encoding="utf8") as file:
+                yaml.dump(data, file)
+
+        file_is_valid = False
+
+    # ? Check last_edited_at is present
+    if "last_edited_at" not in data:
+        print(f"\n❌ Missing key last_edited_at in {filename}")
+        print(f"Add last_edited_at: {DATE_NOW_TIMESTAMP}")
+        if "name" in data and "status" in data:
+            data.insert(LAST_EDITED_AT_INDEX, "last_edited_at", DATE_NOW_TIMESTAMP)
             with open(filename, "w", encoding="utf8") as file:
                 yaml.dump(data, file)
 
