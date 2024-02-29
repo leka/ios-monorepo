@@ -51,7 +51,6 @@ struct MainView: View {
                     CategoryLabel(category: .curriculums)
                     CategoryLabel(category: .activities)
                     CategoryLabel(category: .remotes)
-                    CategoryLabel(category: .stories)
                     CategoryLabel(category: .sampleActivities)
                 }
 
