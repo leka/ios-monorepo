@@ -10,7 +10,7 @@ import subprocess
 import uuid
 import sys
 from pathlib import Path
-from datetime import datetime
+from datetime import datetime, timedelta
 import ruamel.yaml
 
 
@@ -66,6 +66,29 @@ def skill_list():
     find_skill_ids(skills["list"], ids)
 
     return ids
+
+
+def is_file_modified(file_path):
+    """Check if a file is modified and/or staged for commit"""
+    result = subprocess.run(
+        ["git", "status", "--porcelain", file_path],
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+
+    output = result.stdout.strip()
+
+    if output:
+        # Check for modifications in both staged (index) and work tree
+        # Staged modifications: first letter is not ' ' (space)
+        # Work tree modifications: second letter is 'M'
+        # This covers added (A), modified (M), deleted (D), renamed (R), etc.
+        status_code = output[:2]
+        if status_code[0] != " " or status_code[1] == "M":
+            return True
+
+    return False
 
 
 def create_yaml_object():
@@ -127,6 +150,22 @@ def check_content_activity(filename):
                 yaml.dump(data, file)
 
         file_is_valid = False
+
+    # ? Update last_edited_at if DATE_NOW_TIMESTAMP is more recent with a threshold of 1 minute
+    if is_file_modified(filename) and "last_edited_at" in data:
+        last_edited_at = datetime.fromisoformat(data["last_edited_at"])
+        one_minute_ago = datetime.fromisoformat(DATE_NOW_TIMESTAMP) - timedelta(
+            minutes=1
+        )
+        if last_edited_at < one_minute_ago:
+            print(f"\n❌ last_edited_at in {filename} is not up to date")
+            print(f"last_edited_at: {last_edited_at}")
+            print(f"Update last_edited_at: {DATE_NOW_TIMESTAMP}")
+            data["last_edited_at"] = DATE_NOW_TIMESTAMP
+            with open(filename, "w", encoding="utf8") as file:
+                yaml.dump(data, file)
+
+            file_is_valid = False
 
     # ? Check schema validation with ajv
     os.environ["FORCE_COLOR"] = "true"
