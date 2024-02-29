@@ -84,29 +84,16 @@ struct MainView: View {
                         NewsView()
 
                     case .resources:
-                        Text("Resources")
-                            .font(.largeTitle)
-                            .bold()
+                        ResourcesView()
 
                     case .curriculums:
-                        Text("Curriculums")
-                            .font(.largeTitle)
-                            .bold()
+                        CurriculumsView()
 
                     case .activities:
-                        Text("Activities")
-                            .font(.largeTitle)
-                            .bold()
+                        ActivitiesView()
 
                     case .remotes:
-                        Text("Remotes")
-                            .font(.largeTitle)
-                            .bold()
-
-                    case .stories:
-                        Text("Stories")
-                            .font(.largeTitle)
-                            .bold()
+                        RemotesView()
 
                     case .sampleActivities:
                         SampleActivityListView()
