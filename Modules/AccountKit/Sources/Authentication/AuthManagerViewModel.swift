@@ -35,6 +35,7 @@ public class AuthManagerViewModel: ObservableObject {
 
     @Published public var userAuthenticationState: AuthManager.AuthenticationState = .unknown
     @Published public var userIsSigningUp = false
+    @Published public var userIsSigningIn = false
     @Published public var userEmailIsVerified = false
 
     // MARK: - Alerts
@@ -43,7 +44,6 @@ public class AuthManagerViewModel: ObservableObject {
     @Published public var showErrorAlert = false
     @Published public var actionRequestMessage: String = ""
     @Published public var showactionRequestAlert = false
-    @Published public var isUserLoggedOut = false
 
     // MARK: Private
 
@@ -95,11 +95,11 @@ public class AuthManagerViewModel: ObservableObject {
 
     private func resetState() {
         self.userIsSigningUp = false
+        self.userIsSigningIn = false
         self.userEmailIsVerified = false
         self.errorMessage = ""
         self.actionRequestMessage = ""
         self.showactionRequestAlert = false
         self.showErrorAlert = false
-        self.isUserLoggedOut = true
     }
 }

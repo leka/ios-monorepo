@@ -46,7 +46,7 @@ public class CaregiverManager {
                     self?.fetchErrorSubject.send(error)
                 }
             }, receiveValue: { _ in
-                // Nothing to do
+                self.fetchAllCaregivers()
             })
             .store(in: &self.cancellables)
     }

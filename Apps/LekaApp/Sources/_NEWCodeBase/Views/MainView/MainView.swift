@@ -30,7 +30,7 @@ struct MainView: View {
         NavigationSplitView {
             List(selection: self.$navigation.selectedCategory) {
                 if self.authManagerViewModel.userAuthenticationState == .loggedIn {
-                    EditCaregiverLabel(isCaregiverPickerPresented: self.$isCaregiverPickerPresented)
+                    EditCaregiverLabel(isCaregiverPickerPresented: self.$rootOwnerViewModel.isCaregiverPickerPresented)
                 } else {
                     NoAccountConnectedLabel()
                 }
@@ -111,15 +111,11 @@ struct MainView: View {
         .fullScreenCover(isPresented: self.$viewModel.isRobotConnectionPresented) {
             RobotConnectionView(viewModel: RobotConnectionViewModel())
         }
-        .onReceive(self.caregiverManagerViewModel.$currentCaregiver) { caregiver in
-            if !self.authManagerViewModel.isUserLoggedOut {
-                self.isCaregiverPickerPresented = (caregiver == nil)
-            }
+        .fullScreenCover(isPresented: self.$rootOwnerViewModel.isWelcomeViewPresented) {
+            WelcomeView()
         }
-        .fullScreenCover(isPresented: self.$isCaregiverPickerPresented) {
-            NavigationStack {
-                CaregiverPicker()
-            }
+        .fullScreenCover(isPresented: self.$rootOwnerViewModel.isCaregiverPickerPresented) {
+            CaregiverPicker()
         }
         .fullScreenCover(item: self.$navigation.currentActivity) {
             self.navigation.currentActivity = nil
@@ -127,16 +123,27 @@ struct MainView: View {
             ActivityView(activity: activity)
         }
         .sheet(isPresented: self.$rootOwnerViewModel.isSettingsViewPresented) {
-            SettingsView(isCaregiverPickerPresented: self.$isCaregiverPickerPresented)
+            SettingsView(isCaregiverPickerPresented: self.$rootOwnerViewModel.isCaregiverPickerPresented)
         }
         .sheet(isPresented: self.$rootOwnerViewModel.isEditCaregiverViewPresented) {
             EditCaregiverView(modifiedCaregiver: self.caregiverManagerViewModel.currentCaregiver!)
+        }
+        .onReceive(self.authManagerViewModel.$userAuthenticationState) { authState in
+            if case authState = .loggedOut {
+                if !self.rootOwnerViewModel.isSettingsViewPresented {
+                    self.rootOwnerViewModel.isWelcomeViewPresented = true
+                }
+            }
+            if case authState = .loggedIn {
+                if !self.rootOwnerViewModel.isWelcomeViewPresented {
+                    self.rootOwnerViewModel.isCaregiverPickerPresented = (self.caregiverManagerViewModel.currentCaregiver == nil)
+                }
+            }
         }
     }
 
     // MARK: Private
 
-    @State private var isCaregiverPickerPresented: Bool = false
     @ObservedObject private var caregiverManagerViewModel: CaregiverManagerViewModel = .shared
 }
 

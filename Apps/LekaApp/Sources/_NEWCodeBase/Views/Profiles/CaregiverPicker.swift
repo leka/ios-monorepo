@@ -23,8 +23,12 @@ struct CaregiverPicker: View {
                             Button {
                                 self.styleManager.colorScheme = caregiver.colorScheme
                                 self.styleManager.accentColor = caregiver.colorTheme.color
-                                self.authManagerViewModel.isUserLoggedOut = false
                                 self.caregiverManagerViewModel.currentCaregiver = caregiver
+                                if self.authManagerViewModel.userIsSigningIn {
+                                    self.rootOwnerViewModel.isWelcomeViewPresented = false
+                                    self.authManagerViewModel.userIsSigningIn = false
+                                }
+                                self.rootOwnerViewModel.isCaregiverPickerPresented = false
                             } label: {
                                 CaregiverAvatarCell(caregiver: caregiver)
                                     .frame(maxWidth: 140)
@@ -66,6 +70,7 @@ struct CaregiverPicker: View {
 
     @ObservedObject private var caregiverManagerViewModel: CaregiverManagerViewModel = .shared
     @ObservedObject private var authManagerViewModel: AuthManagerViewModel = .shared
+    @ObservedObject private var rootOwnerViewModel = RootOwnerViewModel.shared
     @ObservedObject private var styleManager: StyleManager = .shared
 
     @State private var selected: String = ""

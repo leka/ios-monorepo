@@ -30,7 +30,7 @@ struct WelcomeView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(String(l10n.WelcomeView.skipStepButton.characters)) {
-                        self.authManagerViewModel.isUserLoggedOut.toggle()
+                        self.rootOwnerViewModel.isWelcomeViewPresented.toggle()
                     }
                 }
             }
@@ -41,6 +41,7 @@ struct WelcomeView: View {
 
     @ObservedObject private var caregiverManagerViewModel: CaregiverManagerViewModel = .shared
     @ObservedObject private var authManagerViewModel = AuthManagerViewModel.shared
+    @ObservedObject private var rootOwnerViewModel = RootOwnerViewModel.shared
 }
 
 #Preview {
