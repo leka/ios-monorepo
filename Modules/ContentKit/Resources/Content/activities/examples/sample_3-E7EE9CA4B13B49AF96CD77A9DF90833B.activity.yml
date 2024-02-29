@@ -7,6 +7,8 @@ version: 1.0.0
 uuid: E7EE9CA4B13B49AF96CD77A9DF90833B
 name: sample_3
 
+created_at: "2024-02-28T14:49:33.391679"
+last_edited_at: "2024-02-29T11:06:01.695641"
 status: published
 
 authors:
@@ -42,7 +44,7 @@ l10n:
     details:
       icon: sample_3
 
-      title: Activité d'exemple 3
+      title: Activité d'exemple 3 - modified for testing - again without update of last_edited_at
       subtitle: pour le développement
 
       short_description: >

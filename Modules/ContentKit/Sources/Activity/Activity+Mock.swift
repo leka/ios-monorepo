@@ -18,6 +18,9 @@ public extension Activity {
     uuid: E7EE9CA4B13B49AF96CD77A9DF90833B
     name: mock_activity
 
+    created_at: 2024-02-28T12:53:48+00:00
+    last_edited_at: 2024-02-28T12:53:48+00:00
+
     status: published
 
     authors:

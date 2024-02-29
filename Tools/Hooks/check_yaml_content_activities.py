@@ -10,12 +10,19 @@ import subprocess
 import uuid
 import sys
 from pathlib import Path
+from datetime import datetime, timedelta
 import ruamel.yaml
 
 
 JTD_SCHEMA = "Specs/jtd/activity.jtd.json"
 SKILLS_FILE = "Modules/ContentKit/Resources/Content/definitions/skills.yml"
 CONTENTKIT_DIRECTORY = "Modules/ContentKit/Resources/Content"
+
+CREATED_AT_INDEX = 3
+LAST_EDITED_AT_INDEX = 4
+DATE_NOW_TIMESTAMP = ruamel.yaml.scalarstring.DoubleQuotedScalarString(
+    datetime.now().isoformat()
+)
 
 
 #
@@ -61,11 +68,44 @@ def skill_list():
     return ids
 
 
-def check_content_activity(filename):
-    """Check the content of a YAML file for an activity"""
-    # ? Create a YAML object
+def is_file_modified(file_path):
+    """Check if a file is modified and/or staged for commit"""
+    result = subprocess.run(
+        ["git", "status", "--porcelain", file_path],
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+
+    output = result.stdout.strip()
+
+    if output:
+        # Check for modifications in both staged (index) and work tree
+        # Staged modifications: first letter is not ' ' (space)
+        # Work tree modifications: second letter is 'M'
+        # This covers added (A), modified (M), deleted (D), renamed (R), etc.
+        status_code = output[:2]
+        if status_code[0] != " " or status_code[1] == "M":
+            return True
+
+    return False
+
+
+def create_yaml_object():
+    """Create a YAML object"""
     yaml = ruamel.yaml.YAML(typ="rt")
     yaml.indent(mapping=2, sequence=4, offset=2)
+    yaml.preserve_quotes = True
+    yaml.representer.add_representer(
+        type(None),
+        lambda dumper, data: dumper.represent_scalar("tag:yaml.org,2002:null", "null"),
+    )
+    return yaml
+
+
+def check_content_activity(filename):
+    """Check the content of a YAML file for an activity"""
+    yaml = create_yaml_object()
 
     file_is_valid = True
 
@@ -88,6 +128,44 @@ def check_content_activity(filename):
         print(f"\n❌ The id in {filename} is not valid")
         print(f"uuid: {data['uuid']}")
         file_is_valid = False
+
+    # ? Check created_at is present
+    if "created_at" not in data:
+        print(f"\n❌ Missing key created_at in {filename}")
+        print(f"Add created_at: {DATE_NOW_TIMESTAMP}")
+        if "name" in data and "status" in data:
+            data.insert(CREATED_AT_INDEX, "created_at", DATE_NOW_TIMESTAMP)
+            with open(filename, "w", encoding="utf8") as file:
+                yaml.dump(data, file)
+
+        file_is_valid = False
+
+    # ? Check last_edited_at is present
+    if "last_edited_at" not in data:
+        print(f"\n❌ Missing key last_edited_at in {filename}")
+        print(f"Add last_edited_at: {DATE_NOW_TIMESTAMP}")
+        if "name" in data and "status" in data:
+            data.insert(LAST_EDITED_AT_INDEX, "last_edited_at", DATE_NOW_TIMESTAMP)
+            with open(filename, "w", encoding="utf8") as file:
+                yaml.dump(data, file)
+
+        file_is_valid = False
+
+    # ? Update last_edited_at if DATE_NOW_TIMESTAMP is more recent with a threshold of 1 minute
+    if is_file_modified(filename) and "last_edited_at" in data:
+        last_edited_at = datetime.fromisoformat(data["last_edited_at"])
+        one_minute_ago = datetime.fromisoformat(DATE_NOW_TIMESTAMP) - timedelta(
+            minutes=1
+        )
+        if last_edited_at < one_minute_ago:
+            print(f"\n❌ last_edited_at in {filename} is not up to date")
+            print(f"last_edited_at: {last_edited_at}")
+            print(f"Update last_edited_at: {DATE_NOW_TIMESTAMP}")
+            data["last_edited_at"] = DATE_NOW_TIMESTAMP
+            with open(filename, "w", encoding="utf8") as file:
+                yaml.dump(data, file)
+
+            file_is_valid = False
 
     # ? Check schema validation with ajv
     os.environ["FORCE_COLOR"] = "true"
