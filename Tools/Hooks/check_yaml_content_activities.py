@@ -91,6 +91,25 @@ def is_file_modified(file_path):
     return False
 
 
+def check_strings_for_newline(data, path=None):
+    """Check if a string starts with a newline character"""
+    if path is None:
+        path = []  # Initialize path
+    keys_with_newlines = []
+
+    if isinstance(data, dict):  # If the item is a dictionary
+        for key, value in data.items():
+            keys_with_newlines += check_strings_for_newline(value, path + [key])
+    elif isinstance(data, list):  # If the item is a list
+        for index, item in enumerate(data):
+            keys_with_newlines += check_strings_for_newline(item, path + [index])
+    elif isinstance(data, str):  # If the item is a string
+        if data.startswith("\n"):
+            keys_with_newlines.append("/".join(map(str, path)))
+
+    return keys_with_newlines
+
+
 def create_yaml_object():
     """Create a YAML object"""
     yaml = ruamel.yaml.YAML(typ="rt")
@@ -203,6 +222,12 @@ def check_content_activity(filename):
         if find_icon(icon) is None:
             print(f"❌ The icon {icon}.activity.icon.png in {filename} does not exist")
             file_is_valid = False
+
+    # ? Check string values do not start with a newline character
+    strings_with_newline = check_strings_for_newline(data)
+    for string in strings_with_newline:
+        print(f"❌ String staring with newline for key: {string} \nin {filename}\n")
+        file_is_valid = False
 
     return file_is_valid
 
