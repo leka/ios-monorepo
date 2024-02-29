@@ -12,6 +12,9 @@
         "created_at": {
             "type": "string"
         },
+        "last_edited_at": {
+            "type": "string"
+        },
         "status": {
             "ref": "$status"
         },
