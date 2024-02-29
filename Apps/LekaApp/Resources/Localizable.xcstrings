@@ -15,7 +15,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Thème de couleur"
+                        "value": "Th\u00e8me de couleur"
                     }
                 }
             }
@@ -195,7 +195,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Minimum 12 caractères, sans espaces"
+                        "value": "Minimum 12 caract\u00e8res, sans espaces"
                     }
                 }
             }
@@ -225,13 +225,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Let's start! 👉"
+                        "value": "Let's start! \ud83d\udc49"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Commençons ! 👉"
+                        "value": "Commen\u00e7ons ! \ud83d\udc49"
                     }
                 }
             }
@@ -249,7 +249,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Nous allons maintenant vous guider\nà travers la création de votre compte\net les différentes étapes.\nPrêt(e)?"
+                        "value": "Nous allons maintenant vous guider\n\u00e0 travers la cr\u00e9ation de votre compte\net les diff\u00e9rentes \u00e9tapes.\nPr\u00eat(e)?"
                     }
                 }
             }
@@ -261,13 +261,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Welcome to our account creation process! 👋"
+                        "value": "Welcome to our account creation process! \ud83d\udc4b"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Bienvenue dans notre processus de création de compte ! 👋"
+                        "value": "Bienvenue dans notre processus de cr\u00e9ation de compte ! \ud83d\udc4b"
                     }
                 }
             }
@@ -285,7 +285,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Créer"
+                        "value": "Cr\u00e9er"
                     }
                 }
             }
@@ -303,7 +303,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Tout d'abord, créons votre profil en tant qu'accompagnant."
+                        "value": "Tout d'abord, cr\u00e9ons votre profil en tant qu'accompagnant."
                     }
                 }
             }
@@ -321,7 +321,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Étape 1 - Profil de l'accompagnant"
+                        "value": "\u00c9tape 1 - Profil de l'accompagnant"
                     }
                 }
             }
@@ -339,7 +339,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Créer"
+                        "value": "Cr\u00e9er"
                     }
                 }
             }
@@ -357,7 +357,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Nous allons maintenant créer un profil\nprofil de personne accompagnée."
+                        "value": "Nous allons maintenant cr\u00e9er un profil\nprofil de personne accompagn\u00e9e."
                     }
                 }
             }
@@ -375,7 +375,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Étape 2 - Profil de la personne accompagnée"
+                        "value": "\u00c9tape 2 - Profil de la personne accompagn\u00e9e"
                     }
                 }
             }
@@ -387,13 +387,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Let's go! 🚀"
+                        "value": "Let's go! \ud83d\ude80"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Allons-y ! 🚀"
+                        "value": "Allons-y ! \ud83d\ude80"
                     }
                 }
             }
@@ -405,13 +405,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "You have just completed:\n\n✅ Your caregiver profile\n✅ Your first care receiver profile\n\nYou can now discover the Leka App and dive deep in our educational content!"
+                        "value": "You have just completed:\n\n\u2705 Your caregiver profile\n\u2705 Your first care receiver profile\n\nYou can now discover the Leka App and dive deep in our educational content!"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Vous venez de créer :\n\n✅ Un profil d'accompagnant\n✅ Un profil de personne accompagnée \n\nVous pouvez maintenant découvrir l'appli Leka et approfondir notre contenu éducatif !"
+                        "value": "Vous venez de cr\u00e9er :\n\n\u2705 Un profil d'accompagnant\n\u2705 Un profil de personne accompagn\u00e9e \n\nVous pouvez maintenant d\u00e9couvrir l'appli Leka et approfondir notre contenu \u00e9ducatif !"
                     }
                 }
             }
@@ -423,13 +423,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "🎉 Congratulations! 👏"
+                        "value": "\ud83c\udf89 Congratulations! \ud83d\udc4f"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "🎉 Félicitations ! 👏"
+                        "value": "\ud83c\udf89 F\u00e9licitations ! \ud83d\udc4f"
                     }
                 }
             }
@@ -465,7 +465,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Créer un compte"
+                        "value": "Cr\u00e9er un compte"
                     }
                 }
             }
@@ -501,7 +501,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Un email a été envoyé à l'adresse indiquée. Veuillez cliquer sur le lien pour confirmer votre adresse e-mail."
+                        "value": "Un email a \u00e9t\u00e9 envoy\u00e9 \u00e0 l'adresse indiqu\u00e9e. Veuillez cliquer sur le lien pour confirmer votre adresse e-mail."
                     }
                 }
             }
@@ -537,7 +537,61 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Processus de création de compte"
+                        "value": "Processus de cr\u00e9ation de compte"
+                    }
+                }
+            }
+        },
+        "lekaapp.activities_view.description": {
+            "comment": "Activities description",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+                    }
+                }
+            }
+        },
+        "lekaapp.activities_view.subtitle": {
+            "comment": "Activities subtitle",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                    }
+                }
+            }
+        },
+        "lekaapp.activities_view.title": {
+            "comment": "Activities title",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Activities"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Activit\u00e9s"
                     }
                 }
             }
@@ -573,7 +627,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Valider la sélection"
+                        "value": "Valider la s\u00e9lection"
                     }
                 }
             }
@@ -596,14 +650,32 @@
                 }
             }
         },
-        "lekaapp.caregiver_creation.caregiver_name_label": {
-            "comment": "Caregiver creation caregiver name textfield label",
+        "lekaapp.caregiver_creation.caregiver_first_name_label": {
+            "comment": "Caregiver creation caregiver first name textfield label",
             "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Name"
+                        "value": "First name"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Pr\u00e9nom"
+                    }
+                }
+            }
+        },
+        "lekaapp.caregiver_creation.caregiver_last_name_label": {
+            "comment": "Caregiver creation caregiver last name textfield label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Last name"
                     }
                 },
                 "fr": {
@@ -681,7 +753,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Créer un profil d'accompagnant"
+                        "value": "Cr\u00e9er un profil d'accompagnant"
                     }
                 }
             }
@@ -735,7 +807,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Qui êtes vous ? "
+                        "value": "Qui \u00eates vous ? "
                     }
                 }
             }
@@ -807,7 +879,115 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Créer un profil de personne accompagnée"
+                        "value": "Cr\u00e9er un profil de personne accompagn\u00e9e"
+                    }
+                }
+            }
+        },
+        "lekaapp.carereceiver_list.add_button_label": {
+            "comment": "Carereceiver list add button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Add profile"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Ajouter un profil"
+                    }
+                }
+            }
+        },
+        "lekaapp.carereceiver_list.description": {
+            "comment": "Carereceiver list description",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+                    }
+                }
+            }
+        },
+        "lekaapp.carereceiver_list.subtitle": {
+            "comment": "Carereceiver list subtitle",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                    }
+                }
+            }
+        },
+        "lekaapp.carereceiver_list.title": {
+            "comment": "Carereceiver list title",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Care receivers"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Personnes accompagn\u00e9es"
+                    }
+                }
+            }
+        },
+        "lekaapp.carereceiver_picker.close_button_label": {
+            "comment": "Carereceiver picker close button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Close"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Fermer"
+                    }
+                }
+            }
+        },
+        "lekaapp.carereceiver_picker.skip_button_label": {
+            "comment": "Carereceiver picker continue without profile button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Continue without profile"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Continuer sans profil"
                     }
                 }
             }
@@ -825,7 +1005,25 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Avec qui faites vous cette activité ?"
+                        "value": "Avec qui faites vous cette activit\u00e9 ?"
+                    }
+                }
+            }
+        },
+        "lekaapp.carereceiver_picker.validate_button_label": {
+            "comment": "Carereceiver picker validate button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Validate"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Valider"
                     }
                 }
             }
@@ -861,7 +1059,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "[Mot de passe oublié ?](https://leka.io)"
+                        "value": "[Mot de passe oubli\u00e9 ?](https://leka.io)"
                     }
                 }
             }
@@ -884,6 +1082,114 @@
                 }
             }
         },
+        "lekaapp.curriculums_view.description": {
+            "comment": "Curriculums description",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+                    }
+                }
+            }
+        },
+        "lekaapp.curriculums_view.subtitle": {
+            "comment": "Curriculums subtitle",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                    }
+                }
+            }
+        },
+        "lekaapp.curriculums_view.title": {
+            "comment": "Curriculums title",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Curriculums"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Parcours"
+                    }
+                }
+            }
+        },
+        "lekaapp.news_view.description": {
+            "comment": "News description",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+                    }
+                }
+            }
+        },
+        "lekaapp.news_view.subtitle": {
+            "comment": "News subtitle",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                    }
+                }
+            }
+        },
+        "lekaapp.news_view.title": {
+            "comment": "News title",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "News"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Nouveaut\u00e9s"
+                    }
+                }
+            }
+        },
         "lekaapp.profession_picker.other_label": {
             "comment": "Profession picker other profession label",
             "extractionState": "extracted_with_value",
@@ -897,7 +1203,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Autre (préciser)"
+                        "value": "Autre (pr\u00e9ciser)"
                     }
                 }
             }
@@ -933,7 +1239,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Valider la sélection"
+                        "value": "Valider la s\u00e9lection"
                     }
                 }
             }
@@ -951,7 +1257,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Le renforçateur est un effet lumineux répétitif du robot que vous pourrez actionner pour récompenser le comportement de l'utilisateur. Si votre robot est connecté, vous pouvez tester les renforçateurs avant d'en choisir un."
+                        "value": "Le renfor\u00e7ateur est un effet lumineux r\u00e9p\u00e9titif du robot que vous pourrez actionner pour r\u00e9compenser le comportement de l'utilisateur. Si votre robot est connect\u00e9, vous pouvez tester les renfor\u00e7ateurs avant d'en choisir un."
                     }
                 }
             }
@@ -969,7 +1275,115 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Choix du renforçateur"
+                        "value": "Choix du renfor\u00e7ateur"
+                    }
+                }
+            }
+        },
+        "lekaapp.remotes_view.description": {
+            "comment": "Remotes description",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+                    }
+                }
+            }
+        },
+        "lekaapp.remotes_view.subtitle": {
+            "comment": "Remotes subtitle",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                    }
+                }
+            }
+        },
+        "lekaapp.remotes_view.title": {
+            "comment": "Remotes title",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Remotes"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "T\u00e9l\u00e9commandes"
+                    }
+                }
+            }
+        },
+        "lekaapp.resources_view.description": {
+            "comment": "Resources description",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+                    }
+                }
+            }
+        },
+        "lekaapp.resources_view.subtitle": {
+            "comment": "Resources subtitle",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                    }
+                }
+            }
+        },
+        "lekaapp.resources_view.title": {
+            "comment": "Resources title",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Resources"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Ressources"
                     }
                 }
             }
@@ -987,7 +1401,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Connecté à"
+                        "value": "Connect\u00e9 \u00e0"
                     }
                 }
             }
@@ -1005,7 +1419,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Connectez-vous à votre Leka"
+                        "value": "Connectez-vous \u00e0 votre Leka"
                     }
                 }
             }
@@ -1023,7 +1437,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Réglages"
+                        "value": "R\u00e9glages"
                     }
                 }
             }
@@ -1041,7 +1455,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Créer un compte"
+                        "value": "Cr\u00e9er un compte"
                     }
                 }
             }
@@ -1077,7 +1491,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Passer cette étape"
+                        "value": "Passer cette \u00e9tape"
                     }
                 }
             }
@@ -1095,7 +1509,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Votre historique d'utilisation sera bientôt disponible ici."
+                        "value": "Votre historique d'utilisation sera bient\u00f4t disponible ici."
                     }
                 }
             }
@@ -1113,7 +1527,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Se Connecter ou Créer un Compte"
+                        "value": "Se Connecter ou Cr\u00e9er un Compte"
                     }
                 }
             }
@@ -1131,7 +1545,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Vous utilisez Leka sans être connecté !"
+                        "value": "Vous utilisez Leka sans \u00eatre connect\u00e9 !"
                     }
                 }
             }
@@ -1149,7 +1563,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Éditer le profil"
+                        "value": "\u00c9diter le profil"
                     }
                 }
             }
@@ -1167,7 +1581,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Éditer mon profil"
+                        "value": "\u00c9diter mon profil"
                     }
                 }
             }
@@ -1185,7 +1599,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Sélectionnez un profil"
+                        "value": "S\u00e9lectionnez un profil"
                     }
                 }
             }
@@ -1203,7 +1617,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Activités"
+                        "value": "Activit\u00e9s"
                     }
                 }
             }
@@ -1221,7 +1635,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Personnes accompagnées"
+                        "value": "Personnes accompagn\u00e9es"
                     }
                 }
             }
@@ -1257,7 +1671,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Nouveautés"
+                        "value": "Nouveaut\u00e9s"
                     }
                 }
             }
@@ -1275,7 +1689,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Télécommandes"
+                        "value": "T\u00e9l\u00e9commandes"
                     }
                 }
             }
@@ -1401,7 +1815,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Veuillez envoyer un mail à hello@leka.io pour supprimer votre compte."
+                        "value": "Veuillez envoyer un mail \u00e0 hello@leka.io pour supprimer votre compte."
                     }
                 }
             }
@@ -1455,7 +1869,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Se déconnecter"
+                        "value": "Se d\u00e9connecter"
                     }
                 }
             }
@@ -1473,7 +1887,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Vous êtes sur le point de vous déconnecter."
+                        "value": "Vous \u00eates sur le point de vous d\u00e9connecter."
                     }
                 }
             }
@@ -1491,7 +1905,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Déconnexion"
+                        "value": "D\u00e9connexion"
                     }
                 }
             }
@@ -1509,7 +1923,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Se déconnecter"
+                        "value": "Se d\u00e9connecter"
                     }
                 }
             }
@@ -1563,7 +1977,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Veuillez envoyer un mail à hello@leka.io pour modifier vos identifiants."
+                        "value": "Veuillez envoyer un mail \u00e0 hello@leka.io pour modifier vos identifiants."
                     }
                 }
             }
@@ -1653,7 +2067,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Réglages"
+                        "value": "R\u00e9glages"
                     }
                 }
             }
@@ -1690,402 +2104,6 @@
                     "stringUnit": {
                         "state": "translated",
                         "value": "Changer de profil"
-                    }
-                }
-            }
-        },
-        "lekaapp.resources_view.title": {
-            "comment": "Resources title",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Resources"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Ressources"
-                    }
-                }
-            }
-        },
-        "lekaapp.resources_view.subtitle": {
-            "comment": "Resources subtitle",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-                    }
-                }
-            }
-        },
-        "lekaapp.resources_view.description": {
-            "comment": "Resources description",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
-                    }
-                }
-            }
-        },
-        "lekaapp.remotes_view.title": {
-            "comment": "Remotes title",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Remotes"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Télécommandes"
-                    }
-                }
-            }
-        },
-        "lekaapp.remotes_view.subtitle": {
-            "comment": "Remotes subtitle",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-                    }
-                }
-            }
-        },
-        "lekaapp.remotes_view.description": {
-            "comment": "Remotes description",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
-                    }
-                }
-            }
-        },
-        "lekaapp.news_view.title": {
-            "comment": "News title",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "News"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Nouveautés"
-                    }
-                }
-            }
-        },
-        "lekaapp.news_view.subtitle": {
-            "comment": "News subtitle",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-                    }
-                }
-            }
-        },
-        "lekaapp.news_view.description": {
-            "comment": "News description",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
-                    }
-                }
-            }
-        },
-        "lekaapp.curriculums_view.title": {
-            "comment": "Curriculums title",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Curriculums"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Parcours"
-                    }
-                }
-            }
-        },
-        "lekaapp.curriculums_view.subtitle": {
-            "comment": "Curriculums subtitle",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-                    }
-                }
-            }
-        },
-        "lekaapp.curriculums_view.description": {
-            "comment": "Curriculums description",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
-                    }
-                }
-            }
-        },
-        "lekaapp.carereceiver_picker.validate_button_label": {
-            "comment": "Carereceiver picker validate button label",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Validate"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Valider"
-                    }
-                }
-            }
-        },
-        "lekaapp.carereceiver_picker.skip_button_label": {
-            "comment": "Carereceiver picker continue without profile button label",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Continue without profile"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Continuer sans profil"
-                    }
-                }
-            }
-        },
-        "lekaapp.carereceiver_picker.close_button_label": {
-            "comment": "Carereceiver picker close button label",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Close"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Fermer"
-                    }
-                }
-            }
-        },
-        "lekaapp.carereceiver_list.title": {
-            "comment": "Carereceiver list title",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Care receivers"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Personnes accompagnées"
-                    }
-                }
-            }
-        },
-        "lekaapp.carereceiver_list.subtitle": {
-            "comment": "Carereceiver list subtitle",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-                    }
-                }
-            }
-        },
-        "lekaapp.carereceiver_list.description": {
-            "comment": "Carereceiver list description",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
-                    }
-                }
-            }
-        },
-        "lekaapp.carereceiver_list.add_button_label": {
-            "comment": "Carereceiver list add button label",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Add profile"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Ajouter un profil"
-                    }
-                }
-            }
-        },
-        "lekaapp.activities_view.title": {
-            "comment": "Activities title",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Activities"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Activités"
-                    }
-                }
-            }
-        },
-        "lekaapp.activities_view.subtitle": {
-            "comment": "Activities subtitle",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-                    }
-                }
-            }
-        },
-        "lekaapp.activities_view.description": {
-            "comment": "Activities description",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
                     }
                 }
             }

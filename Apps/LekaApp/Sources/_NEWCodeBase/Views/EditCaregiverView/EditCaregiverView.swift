@@ -24,11 +24,11 @@ struct EditCaregiverView: View {
                     }
 
                     Section {
-                        LabeledContent(String(l10n.CaregiverCreation.caregiverNameLabel.characters)) {
+                        LabeledContent(String(l10n.CaregiverCreation.caregiverFirstNameLabel.characters)) {
                             TextField("", text: self.$modifiedCaregiver.firstName)
                                 .multilineTextAlignment(.trailing)
                         }
-                        LabeledContent(String(l10n.CaregiverCreation.caregiverNameLabel.characters)) {
+                        LabeledContent(String(l10n.CaregiverCreation.caregiverLastNameLabel.characters)) {
                             TextField("", text: self.$modifiedCaregiver.lastName)
                                 .multilineTextAlignment(.trailing)
                         }
