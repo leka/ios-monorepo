@@ -68,9 +68,8 @@ def skill_list():
     return ids
 
 
-def check_content_activity(filename):
-    """Check the content of a YAML file for an activity"""
-    # ? Create a YAML object
+def create_yaml_object():
+    """Create a YAML object"""
     yaml = ruamel.yaml.YAML(typ="rt")
     yaml.indent(mapping=2, sequence=4, offset=2)
     yaml.preserve_quotes = True
@@ -78,6 +77,12 @@ def check_content_activity(filename):
         type(None),
         lambda dumper, data: dumper.represent_scalar("tag:yaml.org,2002:null", "null"),
     )
+    return yaml
+
+
+def check_content_activity(filename):
+    """Check the content of a YAML file for an activity"""
+    yaml = create_yaml_object()
 
     file_is_valid = True
 
