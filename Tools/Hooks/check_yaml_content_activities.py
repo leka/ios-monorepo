@@ -110,6 +110,29 @@ def check_strings_for_newline(data, path=None):
     return keys_with_newlines
 
 
+def check_empty_strings(data, path=None):
+    """Check for empty strings in the data structure"""
+    if path is None:
+        path = []
+    violations = []
+
+    if isinstance(data, dict):
+        for key, value in data.items():
+            sub_path = path + [key]  # Build the path for nested dictionaries
+            if isinstance(value, str) and (value == "" or value.isspace()):
+                violations.append("/".join(map(str, sub_path)))
+            else:
+                # Recurse into the value if it's a dict or list
+                violations += check_empty_strings(value, sub_path)
+    elif isinstance(data, list):
+        for index, item in enumerate(data):
+            sub_path = path + [str(index)]  # Handle list indexing in the path
+            # Recurse into the item if it's a dict or list
+            violations += check_empty_strings(item, sub_path)
+
+    return violations
+
+
 def create_yaml_object():
     """Create a YAML object"""
     yaml = ruamel.yaml.YAML(typ="rt")
@@ -177,9 +200,10 @@ def check_content_activity(filename):
             minutes=1
         )
         if last_edited_at < one_minute_ago:
-            print(f"\n❌ last_edited_at in {filename} is not up to date")
-            print(f"last_edited_at: {last_edited_at}")
-            print(f"Update last_edited_at: {DATE_NOW_TIMESTAMP}")
+            print(
+                f"\n❌ last_edited_at {last_edited_at} is not up to date in {filename}"
+            )
+            print(f"Update last_edited_at: {DATE_NOW_TIMESTAMP}\n")
             data["last_edited_at"] = DATE_NOW_TIMESTAMP
             with open(filename, "w", encoding="utf8") as file:
                 yaml.dump(data, file)
@@ -227,6 +251,13 @@ def check_content_activity(filename):
     strings_with_newline = check_strings_for_newline(data)
     for string in strings_with_newline:
         print(f"❌ String staring with newline for key: {string} \nin {filename}\n")
+        file_is_valid = False
+
+    # ? Check for empty strings according to the JTD schema
+    # schema = load_jtd_schema(JTD_SCHEMA)
+    empty_strings = check_empty_strings(data)
+    for string in empty_strings:
+        print(f"❌ Empty string for key: {string} \nin {filename}\n")
         file_is_valid = False
 
     return file_is_valid
