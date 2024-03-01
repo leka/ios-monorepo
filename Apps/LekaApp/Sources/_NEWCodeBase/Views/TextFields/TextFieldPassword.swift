@@ -60,15 +60,18 @@ struct TextFieldPassword: View {
                 }
             }
 
-            Text(l10n.TextFieldPassword.invalidPasswordErrorLabel)
-                .font(.footnote)
-                .lineLimit(2)
-                .foregroundStyle(self.entry.isValidPassword() ? .green : .gray)
+            if self.authManagerViewModel.userIsSigningUp {
+                Text(l10n.TextFieldPassword.invalidPasswordErrorLabel)
+                    .font(.footnote)
+                    .lineLimit(2)
+                    .foregroundStyle(self.entry.isValidPassword() ? .green : .gray)
+            }
         }
     }
 
     // MARK: Private
 
+    @ObservedObject private var authManagerViewModel = AuthManagerViewModel.shared
     @State private var isSecured: Bool = true
 }
 
