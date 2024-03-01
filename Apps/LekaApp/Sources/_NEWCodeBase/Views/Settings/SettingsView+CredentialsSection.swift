@@ -17,7 +17,7 @@ extension SettingsView {
         var body: some View {
             Section(String(l10n.SettingsView.CredentialsSection.header.characters)) {
                 LabeledContent {
-                    Text(self.authManager.currentUserEmail() ?? "")
+                    Text(self.authManager.currentUserEmail ?? "")
                         .font(.footnote)
                         .multilineTextAlignment(.leading)
                 } label: {

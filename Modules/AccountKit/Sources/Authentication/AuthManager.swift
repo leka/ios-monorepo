@@ -27,6 +27,10 @@ public class AuthManager {
 
     public static let shared = AuthManager()
 
+    public var currentUserEmail: String? {
+        self.auth.currentUser?.email
+    }
+
     public func signUp(email: String, password: String) {
         self.auth.createUser(withEmail: email, password: password)
             .mapError { $0 as Error }
@@ -83,10 +87,6 @@ public class AuthManager {
                 return
             }
         }
-    }
-
-    public func currentUserEmail() -> String? {
-        self.auth.currentUser?.email
     }
 
     // MARK: Internal
