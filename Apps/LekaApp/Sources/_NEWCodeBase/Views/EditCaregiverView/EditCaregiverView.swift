@@ -92,14 +92,18 @@ struct EditCaregiverView: View {
 
     private var professionPickerButton: some View {
         VStack(alignment: .leading) {
-            Button {
-                self.isProfessionPickerPresented = true
-            } label: {
-                Text(l10n.CaregiverCreation.professionLabel)
-                    .font(.body)
-            }
-            .sheet(isPresented: self.$isProfessionPickerPresented) {
-                ProfessionPicker(caregiver: self.$modifiedCaregiver)
+            LabeledContent(String(l10n.CaregiverCreation.professionLabel.characters)) {
+                Button {
+                    self.isProfessionPickerPresented = true
+                } label: {
+                    Image(systemName: "plus")
+                }
+                .sheet(isPresented: self.$isProfessionPickerPresented) {
+                    NavigationStack {
+                        ProfessionPicker(caregiver: self.$modifiedCaregiver)
+                            .navigationBarTitleDisplayMode(.inline)
+                    }
+                }
             }
 
             if !self.modifiedCaregiver.professions.isEmpty {
