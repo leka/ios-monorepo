@@ -8,7 +8,7 @@ uuid: 7F7B0195FCD84B6586B52F0132B8CCB9
 name: dance_freeze
 
 created_at: "2024-03-01T14:00:38.160403"
-last_edited_at: "2024-03-01T14:00:38.160403"
+last_edited_at: "2024-03-01T14:45:24.282168"
 status: published
 
 authors:
@@ -52,7 +52,7 @@ l10n:
         - Sélectionner la musique souhaitée dans la liste.
         - Appuyer sur Jouer - mode manuel pour contrôler vous-même quand Leka s'arrête et repart.
         - Appuyer sur Jouer - mode auto pour lancer le mode automatique où Leka s'arrête et repart de lui-même de manière aléatoire.
-        - Inciter les personnes accompagnées à se mouvoir en même temps que le robot et à s'arrêter lorsqu'il s'immobilise.
+        - Encourager les personnes accompagnées à se mouvoir en même temps que le robot et à s'arrêter lorsqu'il s'immobilise.
 
   - locale: en_US
     details:

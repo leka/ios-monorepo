@@ -8,7 +8,7 @@ uuid: B1BDE77279524027927AC77ED79F9728
 name: discover_leka
 
 created_at: "2024-03-01T14:00:38.160396"
-last_edited_at: "2024-03-01T14:00:38.160396"
+last_edited_at: "2024-03-01T14:45:24.282168"
 status: published
 
 authors:
@@ -63,7 +63,7 @@ l10n:
         Discover Leka and its sensory stimulations: lights, vibrations, movements
 
       description: |
-        *Discover Leka* is an interactive activity designed to help individuals become familiar with the robot and feel comfortable in its presence. Throughout the activity, the robot performs various movements, emits lights, vibrations, and displays colors.
+        *Discover Leka* is an interactive activity designed to help care receivers become familiar with the robot and feel comfortable in its presence. Throughout the activity, the robot performs various movements, emits lights, vibrations, and displays colors.
 
       instructions: |
         - Press the "Play" button located on the left side of the iPad screen.

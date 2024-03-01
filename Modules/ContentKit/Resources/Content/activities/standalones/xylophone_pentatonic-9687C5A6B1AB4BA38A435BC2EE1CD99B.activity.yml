@@ -7,7 +7,7 @@ uuid: 9687C5A6B1AB4BA38A435BC2EE1CD99B
 name: xylophone_pentatonic
 
 created_at: "2024-03-01T14:00:38.160396"
-last_edited_at: "2024-03-01T14:26:45.004123"
+last_edited_at: "2024-03-01T14:45:24.282168"
 status: published
 
 authors:
@@ -46,8 +46,8 @@ l10n:
         Facile à jouer, le xylophone pentatonique offre des sons harmonieux sans risque de fausses notes. Ses touches rappellent les touches noires du piano, offrant une expérience musicale simple et plaisante.
 
       instructions: |
-        - Inciter la personne à toucher les touches colorées affichées sur l'iPad pour produire des notes de musique.
-        - Inciter la personne à observer comment Leka change de couleur pour correspondre à la touche pressée.
+        - Encourager la personne à toucher les touches colorées affichées sur l'iPad pour produire des notes de musique.
+        - Encourager la personne à observer comment Leka change de couleur pour correspondre à la touche pressée.
 
   - locale: en_US
     details:
@@ -61,12 +61,12 @@ l10n:
 
       description: |
         The xylophone activity allows the person to play music by touching the xylophone keys displayed on the iPad. Each press on a key colors Leka in the same color.
-        This activity promotes understanding of the cause-and-effect relationship between the tablet and the robot while offering a sensory-enriching experience for the individual. Easy to play,
+        This activity promotes understanding of the cause-and-effect relationship between the tablet and the robot while offering a sensory-enriching experience for the care receiver. Easy to play,
         the pentatonic xylophone offers harmonious sounds without the risk of false notes. Its keys are reminiscent of the black keys of the piano, offering a simple and pleasant musical experience.
 
       instructions: |
-        - Encourage the individual to touch the colored keys displayed on the iPad to produce musical notes.
-        - Encourage the individual to observe how Leka changes color to match the pressed key.
+        - Encourage the care receiver to touch the colored keys displayed on the iPad to play musical notes.
+        - Encourage the care receiver to observe how Leka changes color to match the pressed key.
 
 exercises_payload:
   options:
