@@ -20,7 +20,7 @@ extension DanceFreezeView {
 
         // MARK: Private
 
-        private let animation = LottieAnimation.named("freeze", bundle: .module)!
+        private let animation = LottieAnimation.named("dance_freeze_freeze.animation.lottie", bundle: .module)!
     }
 }
 

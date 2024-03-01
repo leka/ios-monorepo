@@ -28,7 +28,7 @@ extension HideAndSeekView {
 
         // MARK: Private
 
-        private let animation = LottieAnimation.named("hidden", bundle: .module)!
+        private let animation = LottieAnimation.named("hide_and_seek_hidden.animation.lottie", bundle: .module)!
     }
 }
 
