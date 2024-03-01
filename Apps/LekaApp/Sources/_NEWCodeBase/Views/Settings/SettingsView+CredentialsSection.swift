@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AccountKit
 import LocalizationKit
 import SwiftUI
 
@@ -9,13 +10,14 @@ import SwiftUI
 
 extension SettingsView {
     struct CredentialsSection: View {
+        // MARK: Internal
+
         @ObservedObject var rootOwnerViewModel: RootOwnerViewModel = .shared
 
         var body: some View {
             Section(String(l10n.SettingsView.CredentialsSection.header.characters)) {
                 LabeledContent {
-                    // TODO: (@mathieu) - Add mail info with Firebase/store
-                    Text("test@leka.io")
+                    Text(self.authManager.currentUserEmail ?? "")
                         .font(.footnote)
                         .multilineTextAlignment(.leading)
                 } label: {
@@ -35,6 +37,10 @@ extension SettingsView {
             }
             .textCase(nil)
         }
+
+        // MARK: Private
+
+        private var authManager = AuthManager.shared
     }
 }
 

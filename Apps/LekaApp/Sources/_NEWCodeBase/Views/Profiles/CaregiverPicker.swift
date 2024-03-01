@@ -24,9 +24,9 @@ struct CaregiverPicker: View {
                                 self.styleManager.colorScheme = caregiver.colorScheme
                                 self.styleManager.accentColor = caregiver.colorTheme.color
                                 self.caregiverManagerViewModel.currentCaregiver = caregiver
-                                if self.authManagerViewModel.userIsSigningIn {
+
+                                if self.authManagerViewModel.userAction == .userIsSigningIn {
                                     self.rootOwnerViewModel.isWelcomeViewPresented = false
-                                    self.authManagerViewModel.userIsSigningIn = false
                                 }
                                 self.rootOwnerViewModel.isCaregiverPickerPresented = false
                             } label: {

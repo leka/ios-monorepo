@@ -20,7 +20,7 @@ extension AccountCreationProcess {
                 Text(l10n.AccountCreationProcess.Step4.message)
 
                 Button(String(l10n.AccountCreationProcess.Step4.discoverContentButton.characters)) {
-                    self.authManagerViewModel.userIsSigningUp = false
+                    self.authManagerViewModel.userAction = .none
                     self.rootOwnerViewModel.isWelcomeViewPresented = false
                 }
                 .buttonStyle(.bordered)

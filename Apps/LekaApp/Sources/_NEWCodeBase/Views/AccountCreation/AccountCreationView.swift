@@ -51,9 +51,14 @@ struct AccountCreationView: View {
         .onChange(of: self.authManagerViewModel.userAuthenticationState) { newValue in
             if newValue == .loggedIn {
                 self.rootAccountManager.createRootAccount(rootAccount: RootAccount())
-                self.authManagerViewModel.userIsSigningUp = true
                 self.isVerificationEmailAlertPresented = true
             }
+        }
+        .onAppear {
+            self.authManagerViewModel.userAction = .userIsSigningUp
+        }
+        .onDisappear {
+            self.authManagerViewModel.resetErrorMessage()
         }
         .alert(isPresented: self.$isVerificationEmailAlertPresented) {
             Alert(title: Text(l10n.AccountCreationView.EmailVerificationAlert.title),
