@@ -67,6 +67,9 @@ struct ConnectionView: View {
                 self.viewModel.navigateToCaregiverSelection.toggle()
             }
         }
+        .onDisappear {
+            self.authManagerViewModel.resetErrorMessage()
+        }
     }
 
     // MARK: Private

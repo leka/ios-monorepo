@@ -55,6 +55,9 @@ struct AccountCreationView: View {
                 self.isVerificationEmailAlertPresented = true
             }
         }
+        .onDisappear {
+            self.authManagerViewModel.resetErrorMessage()
+        }
         .alert(isPresented: self.$isVerificationEmailAlertPresented) {
             Alert(title: Text(l10n.AccountCreationView.EmailVerificationAlert.title),
                   message: Text(l10n.AccountCreationView.EmailVerificationAlert.message),

@@ -45,6 +45,11 @@ public class AuthManagerViewModel: ObservableObject {
     @Published public var actionRequestMessage: String = ""
     @Published public var showactionRequestAlert = false
 
+    public func resetErrorMessage() {
+        self.errorMessage = ""
+        self.showErrorAlert = false
+    }
+
     // MARK: Private
 
     private let authManager: AuthManager = .shared
@@ -86,6 +91,7 @@ public class AuthManagerViewModel: ObservableObject {
                     self.actionRequestMessage = String(l10n.AuthManagerViewModel.unverifiedEmailNotification.characters)
                     self.showactionRequestAlert = true
                 }
+                self.resetErrorMessage()
             case .loggedOut:
                 self.resetState()
             case .unknown:
