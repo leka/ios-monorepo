@@ -8,7 +8,7 @@ uuid: 7F7B0195FCD84B6586B52F0132B8CCB9
 name: dance_freeze
 
 created_at: "2024-03-01T14:00:38.160403"
-last_edited_at: "2024-03-01T14:45:24.282168"
+last_edited_at: "2024-03-01T14:57:02.267947"
 status: published
 
 authors:
@@ -72,7 +72,7 @@ l10n:
         - Choose the desired music from the list.
         - Press Play - manual mode to control when Leka stops and starts yourself.
         - Press Play - auto mode to activate the automatic mode where Leka stops and starts on its own randomly.
-        - Encourage accompanying individuals to move along with the robot and to stop when it freezes.
+        - Encourage the care receivers to move along with the robot and to stop when it freezes.
 
 exercises_payload:
   options:
