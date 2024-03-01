@@ -29,10 +29,12 @@ struct CreateCaregiverView: View {
                         LabeledContent(String(l10n.CaregiverCreation.caregiverFirstNameLabel.characters)) {
                             TextField("", text: self.$newCaregiver.firstName)
                                 .multilineTextAlignment(.trailing)
+                                .foregroundStyle(Color.secondary)
                         }
                         LabeledContent(String(l10n.CaregiverCreation.caregiverLastNameLabel.characters)) {
                             TextField("", text: self.$newCaregiver.lastName)
                                 .multilineTextAlignment(.trailing)
+                                .foregroundStyle(Color.secondary)
                         }
                     }
 
@@ -87,15 +89,17 @@ struct CreateCaregiverView: View {
 
     private var professionPickerButton: some View {
         VStack(alignment: .leading) {
-            Button {
-                self.isProfessionPickerPresented = true
-            } label: {
-                Text(l10n.CaregiverCreation.professionLabel)
-                    .font(.body)
-            }
-            .sheet(isPresented: self.$isProfessionPickerPresented) {
-                NavigationStack {
-                    ProfessionPicker(caregiver: self.$newCaregiver)
+            LabeledContent(String(l10n.CaregiverCreation.professionLabel.characters)) {
+                Button {
+                    self.isProfessionPickerPresented = true
+                } label: {
+                    Image(systemName: "plus")
+                }
+                .sheet(isPresented: self.$isProfessionPickerPresented) {
+                    NavigationStack {
+                        ProfessionPicker(caregiver: self.$newCaregiver)
+                            .navigationBarTitleDisplayMode(.inline)
+                    }
                 }
             }
 
