@@ -74,7 +74,7 @@ struct EditCarereceiverView: View {
                     .font(.headline)
             }
         }
-        .navigationDestination(isPresented: self.$isAvatarPickerPresented) {
+        .sheet(isPresented: self.$isAvatarPickerPresented) {
             AvatarPicker(avatar: self.$modifiedCarereceiver.avatar)
         }
         .frame(maxWidth: .infinity, alignment: .center)

@@ -35,7 +35,7 @@ struct EditCaregiverView: View {
                     }
 
                     Section {
-                        self.professionNavigationLink
+                        self.professionPickerButton
                     }
 
                     Section {
@@ -72,6 +72,7 @@ struct EditCaregiverView: View {
     @ObservedObject private var rootOwnerViewModel: RootOwnerViewModel = .shared
     @ObservedObject private var styleManager: StyleManager = .shared
     @State private var isAvatarPickerPresented: Bool = false
+    @State private var isProfessionPickerPresented: Bool = false
 
     private var avatarPickerButton: some View {
         Button {
@@ -83,19 +84,26 @@ struct EditCaregiverView: View {
                     .font(.headline)
             }
         }
-        .navigationDestination(isPresented: self.$isAvatarPickerPresented) {
+        .sheet(isPresented: self.$isAvatarPickerPresented) {
             AvatarPicker(avatar: self.$modifiedCaregiver.avatar)
         }
         .frame(maxWidth: .infinity, alignment: .center)
     }
 
-    private var professionNavigationLink: some View {
+    private var professionPickerButton: some View {
         VStack(alignment: .leading) {
-            NavigationLink {
-                ProfessionPicker(caregiver: self.$modifiedCaregiver)
-            } label: {
-                Text(l10n.CaregiverCreation.professionLabel)
-                    .font(.body)
+            LabeledContent(String(l10n.CaregiverCreation.professionLabel.characters)) {
+                Button {
+                    self.isProfessionPickerPresented = true
+                } label: {
+                    Image(systemName: "plus")
+                }
+                .sheet(isPresented: self.$isProfessionPickerPresented) {
+                    NavigationStack {
+                        ProfessionPicker(caregiver: self.$modifiedCaregiver)
+                            .navigationBarTitleDisplayMode(.inline)
+                    }
+                }
             }
 
             if !self.modifiedCaregiver.professions.isEmpty {

@@ -70,8 +70,11 @@ struct CreateCarereceiverView: View {
                     .font(.headline)
             }
         }
-        .navigationDestination(isPresented: self.$isAvatarPickerPresented) {
-            AvatarPicker(avatar: self.$newCarereceiver.avatar)
+
+        .sheet(isPresented: self.$isAvatarPickerPresented) {
+            NavigationStack {
+                AvatarPicker(avatar: self.$newCarereceiver.avatar)
+            }
         }
         .frame(maxWidth: .infinity, alignment: .center)
     }

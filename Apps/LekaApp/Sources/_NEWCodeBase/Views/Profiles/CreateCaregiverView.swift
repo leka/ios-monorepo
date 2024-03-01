@@ -37,7 +37,7 @@ struct CreateCaregiverView: View {
                     }
 
                     Section {
-                        self.professionNavigationLink
+                        self.professionPickerButton
                     }
 
                     Button(String(l10n.CaregiverCreation.registerProfilButton.characters)) {
@@ -67,6 +67,7 @@ struct CreateCaregiverView: View {
 
     @ObservedObject private var rootOwnerViewModel = RootOwnerViewModel.shared
     @State private var isAvatarPickerPresented: Bool = false
+    @State private var isProfessionPickerPresented: Bool = false
 
     private var avatarPickerButton: some View {
         Button {
@@ -78,19 +79,26 @@ struct CreateCaregiverView: View {
                     .font(.headline)
             }
         }
-        .navigationDestination(isPresented: self.$isAvatarPickerPresented) {
-            AvatarPicker(avatar: self.$newCaregiver.avatar)
+        .sheet(isPresented: self.$isAvatarPickerPresented) {
+            NavigationStack {
+                AvatarPicker(avatar: self.$newCaregiver.avatar)
+            }
         }
         .frame(maxWidth: .infinity, alignment: .center)
     }
 
-    private var professionNavigationLink: some View {
+    private var professionPickerButton: some View {
         VStack(alignment: .leading) {
-            NavigationLink {
-                ProfessionPicker(caregiver: self.$newCaregiver)
+            Button {
+                self.isProfessionPickerPresented = true
             } label: {
                 Text(l10n.CaregiverCreation.professionLabel)
                     .font(.body)
+            }
+            .sheet(isPresented: self.$isProfessionPickerPresented) {
+                NavigationStack {
+                    ProfessionPicker(caregiver: self.$newCaregiver)
+                }
             }
 
             if !self.newCaregiver.professions.isEmpty {

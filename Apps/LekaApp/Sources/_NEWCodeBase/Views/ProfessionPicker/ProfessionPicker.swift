@@ -60,7 +60,6 @@ struct ProfessionPicker: View {
 
     // MARK: Private
 
-    @State private var otherProfessionText: String = ""
     @State private var selectedProfessions: Set<Profession> = []
     @State private var selectedProfessionForDetails: Profession?
 }
