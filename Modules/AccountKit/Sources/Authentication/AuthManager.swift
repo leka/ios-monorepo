@@ -85,6 +85,10 @@ public class AuthManager {
         }
     }
 
+    public func currentUserEmail() -> String? {
+        self.auth.currentUser?.email
+    }
+
     // MARK: Internal
 
     var authenticationStatePublisher: AnyPublisher<AuthenticationState, Never> {
