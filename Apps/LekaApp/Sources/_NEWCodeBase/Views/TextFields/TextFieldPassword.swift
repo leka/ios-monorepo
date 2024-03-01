@@ -60,7 +60,7 @@ struct TextFieldPassword: View {
                 }
             }
 
-            if self.authManagerViewModel.userIsSigningUp {
+            if self.authManagerViewModel.userAction == .userIsSigningUp {
                 Text(l10n.TextFieldPassword.invalidPasswordErrorLabel)
                     .font(.footnote)
                     .lineLimit(2)

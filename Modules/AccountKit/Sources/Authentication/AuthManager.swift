@@ -25,6 +25,11 @@ public class AuthManager {
         case loggedIn
     }
 
+    public enum UserAction {
+        case userIsSigningUp
+        case userIsSigningIn
+    }
+
     public static let shared = AuthManager()
 
     public var currentUserEmail: String? {

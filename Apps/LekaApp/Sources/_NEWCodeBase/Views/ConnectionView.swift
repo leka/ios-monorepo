@@ -67,7 +67,7 @@ struct ConnectionView: View {
             }
         }
         .onAppear {
-            self.authManagerViewModel.userIsSigningIn = true
+            self.authManagerViewModel.userAction = .userIsSigningIn
         }
         .onDisappear {
             self.authManagerViewModel.resetErrorMessage()

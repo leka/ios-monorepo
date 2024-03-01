@@ -35,8 +35,7 @@ struct WelcomeView: View {
                 }
             }
             .onAppear {
-                self.authManagerViewModel.userIsSigningIn = false
-                self.authManagerViewModel.userIsSigningUp = false
+                self.authManagerViewModel.userAction = .none
             }
         }
     }

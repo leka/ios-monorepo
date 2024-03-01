@@ -34,8 +34,7 @@ public class AuthManagerViewModel: ObservableObject {
     // MARK: - User
 
     @Published public var userAuthenticationState: AuthManager.AuthenticationState = .unknown
-    @Published public var userIsSigningUp = false
-    @Published public var userIsSigningIn = false
+    @Published public var userAction: AuthManager.UserAction?
     @Published public var userEmailIsVerified = false
 
     // MARK: - Alerts
@@ -87,7 +86,7 @@ public class AuthManagerViewModel: ObservableObject {
     private func handleAuthenticationStateChange(state: AuthManager.AuthenticationState) {
         switch state {
             case .loggedIn:
-                if !self.userIsSigningUp, !self.userEmailIsVerified {
+                if self.userAction == .none {
                     self.actionRequestMessage = String(l10n.AuthManagerViewModel.unverifiedEmailNotification.characters)
                     self.showactionRequestAlert = true
                 }
@@ -100,8 +99,7 @@ public class AuthManagerViewModel: ObservableObject {
     }
 
     private func resetState() {
-        self.userIsSigningUp = false
-        self.userIsSigningIn = false
+        self.userAction = .none
         self.userEmailIsVerified = false
         self.errorMessage = ""
         self.actionRequestMessage = ""
