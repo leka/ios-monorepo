@@ -26,11 +26,11 @@ struct CreateCaregiverView: View {
                     }
 
                     Section {
-                        LabeledContent(String(l10n.CaregiverCreation.caregiverNameLabel.characters)) {
+                        LabeledContent(String(l10n.CaregiverCreation.caregiverFirstNameLabel.characters)) {
                             TextField("", text: self.$newCaregiver.firstName)
                                 .multilineTextAlignment(.trailing)
                         }
-                        LabeledContent(String(l10n.CaregiverCreation.caregiverNameLabel.characters)) {
+                        LabeledContent(String(l10n.CaregiverCreation.caregiverLastNameLabel.characters)) {
                             TextField("", text: self.$newCaregiver.lastName)
                                 .multilineTextAlignment(.trailing)
                         }
@@ -121,7 +121,9 @@ extension l10n {
 
         static let avatarChoiceButton = LocalizedString("lekaapp.caregiver_creation.avatar_choice_button", value: "Choose an avatar", comment: "Caregiver creation avatar choice button label")
 
-        static let caregiverNameLabel = LocalizedString("lekaapp.caregiver_creation.caregiver_name_label", value: "Name", comment: "Caregiver creation caregiver name textfield label")
+        static let caregiverFirstNameLabel = LocalizedString("lekaapp.caregiver_creation.caregiver_first_name_label", value: "First name", comment: "Caregiver creation caregiver first name textfield label")
+
+        static let caregiverLastNameLabel = LocalizedString("lekaapp.caregiver_creation.caregiver_last_name_label", value: "Last name", comment: "Caregiver creation caregiver last name textfield label")
 
         static let professionLabel = LocalizedString("lekaapp.caregiver_creation.profession_label", value: "Profession(s)", comment: "Caregiver creation profession label above profession selection button")
 

@@ -11,7 +11,6 @@ extension Navigation {
         case curriculums
         case activities
         case remotes
-        case stories
         case sampleActivities
         case carereceivers
 
