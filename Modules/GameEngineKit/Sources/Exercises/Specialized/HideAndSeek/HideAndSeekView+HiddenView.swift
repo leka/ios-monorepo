@@ -9,6 +9,8 @@ import SwiftUI
 
 extension HideAndSeekView {
     struct HiddenView: View {
+        // MARK: Internal
+
         var body: some View {
             VStack {
                 Text(l10n.HideAndSeekView.Player.instructions)
@@ -17,12 +19,16 @@ extension HideAndSeekView {
                     .multilineTextAlignment(.center)
                     .padding(.top, 30)
 
-                LottieView(name: "hidden", speed: 0.5)
+                LottieView(animation: self.animation, speed: 0.5)
             }
             .background(.black)
             .clipShape(RoundedRectangle(cornerRadius: 20))
             .padding(10)
         }
+
+        // MARK: Private
+
+        private let animation = LottieAnimation.named("hidden", bundle: .module)!
     }
 }
 
