@@ -29,10 +29,11 @@ extension DanceFreezeView {
         @Published public var isDancing: Bool = false
 
         public func onDanceFreezeToggle() {
-            if self.progress == 1.0 {
+            guard self.progress < 1.0 else {
                 self.completeDanceFreeze()
                 return
             }
+
             if self.audioPlayer.isPlaying {
                 self.audioPlayer.pause()
                 self.isDancing = false
@@ -47,18 +48,20 @@ extension DanceFreezeView {
         // MARK: Internal
 
         @ObservedObject var exercicesSharedData: ExerciseSharedData
-        var robotManager: RobotManager
-        var audioPlayer: AudioPlayer
-        var motionMode: Motion = .rotation
-        var cancellables: Set<AnyCancellable> = []
 
         func completeDanceFreeze() {
+            self.isDancing = false
+            self.exercicesSharedData.state = .completed(level: .nonApplicable)
             self.robotManager.stopRobot()
             self.audioPlayer.stop()
-            self.exercicesSharedData.state = .completed(level: .nonApplicable)
         }
 
         // MARK: Private
+
+        private var robotManager: RobotManager
+        private var audioPlayer: AudioPlayer
+        private var motionMode: Motion = .rotation
+        private var cancellables: Set<AnyCancellable> = []
 
         private func subscribeToAudioPlayerProgress() {
             self.audioPlayer.$progress
@@ -80,11 +83,12 @@ extension DanceFreezeView {
                 case .movement:
                     self.robotMovement()
             }
+
             self.robotLightFrenzy()
         }
 
         private func robotLightFrenzy() {
-            if case .completed = self.exercicesSharedData.state, !self.isDancing { return }
+            guard self.isDancing, !self.exercicesSharedData.isCompleted else { return }
 
             self.robotManager.shineRandomly()
 
@@ -94,7 +98,7 @@ extension DanceFreezeView {
         }
 
         private func robotRotation() {
-            if case .completed = self.exercicesSharedData.state, !self.isDancing { return }
+            guard self.isDancing, !self.exercicesSharedData.isCompleted else { return }
 
             let duration = self.robotManager.rotationDance()
 
@@ -104,7 +108,7 @@ extension DanceFreezeView {
         }
 
         private func robotMovement() {
-            if case .completed = self.exercicesSharedData.state, !self.isDancing { return }
+            guard self.isDancing, !self.exercicesSharedData.isCompleted else { return }
 
             let duration = self.robotManager.movementDance()
 
