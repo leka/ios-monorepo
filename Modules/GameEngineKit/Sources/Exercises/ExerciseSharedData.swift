@@ -30,6 +30,10 @@ public class ExerciseSharedData: ObservableObject {
         return level
     }
 
+    var isCompleted: Bool {
+        self.state.isCompleted
+    }
+
     var isExerciseNotYetCompleted: Bool {
         switch self.state {
             case .completed:

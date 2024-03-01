@@ -28,20 +28,17 @@ public struct DanceFreezeView: View {
     // MARK: Public
 
     public var body: some View {
-        NavigationStack {
-            switch self.mode {
-                case .waitingForSelection:
-                    LauncherView(mode: self.$mode,
-                                 motion: self.$motion,
-                                 selectedAudioRecording: self.$selectedAudioRecording,
-                                 songs: self.songs)
-                case .automaticMode:
-                    PlayerView(selectedAudioRecording: self.selectedAudioRecording, isAuto: true, motion: self.motion)
-                case .manualMode:
-                    PlayerView(selectedAudioRecording: self.selectedAudioRecording, isAuto: false, motion: self.motion)
-            }
+        switch self.mode {
+            case .waitingForSelection:
+                LauncherView(mode: self.$mode,
+                             motion: self.$motion,
+                             selectedAudioRecording: self.$selectedAudioRecording,
+                             songs: self.songs)
+            case .automaticMode:
+                PlayerView(selectedAudioRecording: self.selectedAudioRecording, isAuto: true, motion: self.motion)
+            case .manualMode:
+                PlayerView(selectedAudioRecording: self.selectedAudioRecording, isAuto: false, motion: self.motion)
         }
-        .navigationViewStyle(StackNavigationViewStyle())
     }
 
     // MARK: Internal
