@@ -62,6 +62,8 @@ struct ConnectionView: View {
         }
         .onChange(of: self.authManagerViewModel.userAuthenticationState) { newValue in
             if newValue == .loggedIn {
+                self.authManagerViewModel.userIsSigningIn = true
+                self.caregiverManager.fetchAllCaregivers()
                 self.viewModel.navigateToCaregiverSelection.toggle()
             }
         }
@@ -73,6 +75,7 @@ struct ConnectionView: View {
     @ObservedObject private var rootOwnerViewModel: RootOwnerViewModel = .shared
     @ObservedObject private var authManagerViewModel = AuthManagerViewModel.shared
     private var authManager = AuthManager.shared
+    private var caregiverManager = CaregiverManager.shared
 
     private var isConnectionDisabled: Bool {
         self.viewModel.email.isEmpty || self.viewModel.password.isEmpty

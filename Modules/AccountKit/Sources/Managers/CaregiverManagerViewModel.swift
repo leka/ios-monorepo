@@ -14,6 +14,8 @@ public class CaregiverManagerViewModel: ObservableObject {
 
     // MARK: Public
 
+    public static let shared = CaregiverManagerViewModel()
+
     @Published public var caregivers: [Caregiver] = []
     @Published public var currentCaregiver: Caregiver?
     @Published public var errorMessage: String = ""
@@ -34,8 +36,8 @@ public class CaregiverManagerViewModel: ObservableObject {
 
         self.caregiverManager.currentCaregiverPublisher
             .receive(on: DispatchQueue.main)
-            .sink(receiveValue: { [weak self] fetchedCaregiver in
-                self?.currentCaregiver = fetchedCaregiver
+            .sink(receiveValue: { _ in
+                // Nothing to do
             })
             .store(in: &self.cancellables)
 

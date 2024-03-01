@@ -73,18 +73,20 @@ public class DatabaseOperations {
     public func observeAll<T: AccountDocument>(from collection: DatabaseCollection) -> AnyPublisher<[T], Error> {
         let subject = PassthroughSubject<[T], Error>()
 
-        self.database.collection(collection.rawValue).addSnapshotListener { querySnapshot, error in
-            if let error {
-                log.error("\(error.localizedDescription)")
-                subject.send(completion: .failure(error))
-            } else if let querySnapshot {
-                let objects = querySnapshot.documents.compactMap { document -> T? in
-                    try? document.data(as: T.self)
+        self.database.collection(collection.rawValue)
+            .whereField("root_owner_uid", isEqualTo: Auth.auth().currentUser?.uid ?? "")
+            .addSnapshotListener { querySnapshot, error in
+                if let error {
+                    log.error("\(error.localizedDescription)")
+                    subject.send(completion: .failure(error))
+                } else if let querySnapshot {
+                    let objects = querySnapshot.documents.compactMap { document -> T? in
+                        try? document.data(as: T.self)
+                    }
+                    log.info("\(String(describing: objects.count)) documents fetched successfully. 🎉")
+                    subject.send(objects)
                 }
-                log.info("\(String(describing: objects.count)) documents fetched successfully. 🎉")
-                subject.send(objects)
             }
-        }
 
         return subject.eraseToAnyPublisher()
     }

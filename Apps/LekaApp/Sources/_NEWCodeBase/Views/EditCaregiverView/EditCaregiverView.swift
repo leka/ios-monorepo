@@ -53,15 +53,14 @@ struct EditCaregiverView: View {
                 ToolbarItem(placement: .topBarLeading) {
                     Button(String(l10n.EditCaregiverView.closeButtonLabel.characters)) {
                         self.rootOwnerViewModel.isEditCaregiverViewPresented = false
-                        self.styleManager.colorScheme = self.modifiedCaregiver.colorScheme
-                        self.styleManager.accentColor = self.modifiedCaregiver.colorTheme.color
+                        self.styleManager.colorScheme = self.caregiverManagerViewModel.currentCaregiver!.colorScheme
+                        self.styleManager.accentColor = self.caregiverManagerViewModel.currentCaregiver!.colorTheme.color
                     }
                 }
                 ToolbarItem(placement: .topBarTrailing) {
                     Button(String(l10n.EditCaregiverView.saveButtonLabel.characters)) {
-                        // TODO: (@mathieu) - Add Firestore logic
                         self.rootOwnerViewModel.isEditCaregiverViewPresented = false
-                        self.rootOwnerViewModel.currentCaregiver = self.modifiedCaregiver
+                        self.caregiverManager.updateCaregiver(caregiver: &self.modifiedCaregiver)
                     }
                 }
             }
@@ -71,10 +70,12 @@ struct EditCaregiverView: View {
 
     // MARK: Private
 
+    @ObservedObject private var caregiverManagerViewModel: CaregiverManagerViewModel = .shared
     @ObservedObject private var rootOwnerViewModel: RootOwnerViewModel = .shared
     @ObservedObject private var styleManager: StyleManager = .shared
     @State private var isAvatarPickerPresented: Bool = false
     @State private var isProfessionPickerPresented: Bool = false
+    var caregiverManager: CaregiverManager = .shared
 
     private var avatarPickerButton: some View {
         Button {

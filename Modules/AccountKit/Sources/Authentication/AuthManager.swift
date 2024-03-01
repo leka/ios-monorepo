@@ -40,7 +40,7 @@ public class AuthManager {
                         self?.authenticationError.send(AuthenticationError.custom(message: errorMessage))
                 }
             }, receiveValue: { [weak self] result in
-                log.info("Company \(result.user.uid) signed-up successfully. 🎉")
+                log.info("User \(result.user.uid) signed-up successfully. 🎉")
                 self?.authenticationState.send(.loggedIn)
                 self?.sendEmailVerification()
             })

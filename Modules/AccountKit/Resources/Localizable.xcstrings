@@ -91,24 +91,6 @@
                     }
                 }
             }
-        },
-        "accountkit.auth_manager_view_model.verification_email_success_notification": {
-            "comment": "Verification email success notification message",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Verification email sent. Please check your inbox."
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "L'email de v\u00e9rification a \u00e9t\u00e9 envoy\u00e9. Veuillez v\u00e9rifier votre bo\u00eete de r\u00e9ception."
-                    }
-                }
-            }
         }
     }
 }

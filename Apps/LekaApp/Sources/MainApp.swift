@@ -27,15 +27,13 @@ struct LekaApp: App {
     @ObservedObject var styleManager: StyleManager = .shared
     @ObservedObject var rootOwnerViewModel = RootOwnerViewModel.shared
     @StateObject var authManagerViewModel = AuthManagerViewModel.shared
+    @StateObject var caregiverManagerViewModel = CaregiverManagerViewModel.shared
 
     var body: some Scene {
         WindowGroup {
             MainView()
                 .onAppear {
                     self.styleManager.setDefaultColorScheme(self.colorScheme)
-                }
-                .fullScreenCover(isPresented: self.$authManagerViewModel.isUserLoggedOut) {
-                    WelcomeView()
                 }
                 .tint(self.styleManager.accentColor)
                 .preferredColorScheme(self.styleManager.colorScheme)

@@ -17,7 +17,7 @@ struct EditCaregiverLabel: View {
 
     var body: some View {
         VStack(alignment: .leading) {
-            if let caregiver = self.rootOwnerViewModel.currentCaregiver {
+            if let caregiver = self.caregiverManagerViewModel.currentCaregiver {
                 Button {
                     self.rootOwnerViewModel.isEditCaregiverViewPresented = true
                 } label: {
@@ -67,6 +67,7 @@ struct EditCaregiverLabel: View {
     // MARK: Private
 
     @ObservedObject private var styleManager: StyleManager = .shared
+    @ObservedObject private var caregiverManagerViewModel: CaregiverManagerViewModel = .shared
     @ObservedObject private var rootOwnerViewModel: RootOwnerViewModel = .shared
 }
 
@@ -105,8 +106,8 @@ extension l10n {
         EmptyView()
     })
     .onAppear {
-        let rootOwnerViewModel = RootOwnerViewModel.shared
-        rootOwnerViewModel.currentCaregiver = Caregiver(
+        let caregiverManagerViewModel = CaregiverManagerViewModel()
+        caregiverManagerViewModel.currentCaregiver = Caregiver(
             firstName: "Joe",
             lastName: "Bidjobba",
             avatar: Avatars.categories[0].avatars[2]
