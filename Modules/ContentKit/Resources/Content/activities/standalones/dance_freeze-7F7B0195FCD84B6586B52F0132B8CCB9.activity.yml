@@ -1,0 +1,94 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+version: 1.0.0
+
+uuid: 7F7B0195FCD84B6586B52F0132B8CCB9
+name: dance_freeze
+
+created_at: "2024-03-01T14:00:38.160403"
+last_edited_at: "2024-03-01T14:45:24.282168"
+status: published
+
+authors:
+  - leka
+
+skills:
+  - gross_motor_skills
+  - inhibition
+
+tags:
+  - music
+  - movements
+  - dancing
+
+hmi:
+  - robot
+
+types:
+  - group
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: dance_freeze
+
+      title: Dance Freeze
+      subtitle: Bouge avec Leka !
+
+      short_description: |
+        Bouger avec Leka au rythme de la musique et faire la statue quand il s'arrête.
+
+      description: |
+        *Dance Freeze* est une activité ludique où Leka, le robot, se met en mouvement au rythme de la musique. Quand la musique s'arrête, Leka s'immobilise et tous les participants doivent faire la statue. Le jeu propose deux modes : un mode manuel, où un professionnel contrôle quand Leka s'arrête, et un mode automatique où Leka s'arrête de lui-même.
+
+      instructions: |
+        - Sélectionner le mode "rotation" pour que le robot tourne sur lui-même ou le mode "déplacement" pour qu'il se déplace dans la pièce.
+        - Sélectionner la musique souhaitée dans la liste.
+        - Appuyer sur Jouer - mode manuel pour contrôler vous-même quand Leka s'arrête et repart.
+        - Appuyer sur Jouer - mode auto pour lancer le mode automatique où Leka s'arrête et repart de lui-même de manière aléatoire.
+        - Encourager les personnes accompagnées à se mouvoir en même temps que le robot et à s'arrêter lorsqu'il s'immobilise.
+
+  - locale: en_US
+    details:
+      icon: dance_freeze
+
+      title: Dance Freeze
+      subtitle: Move with Leka!
+
+      short_description: |
+        Move with Leka to the rhythm of the music and act like a statue when he stops.
+
+      description: |
+        *Dance Freeze* is a playful activity where Leka, the robot, moves to the rhythm of the music. When the music stops, Leka freezes, and all participants must strike a pose. The game offers two modes: a manual mode, where a professional controls when Leka stops, and an automatic mode where Leka stops by itself.
+
+      instructions: |
+        - Select the "rotation" mode for the robot to spin in place or the "movement" mode for it to move around the room.
+        - Choose the desired music from the list.
+        - Press Play - manual mode to control when Leka stops and starts yourself.
+        - Press Play - auto mode to activate the automatic mode where Leka stops and starts on its own randomly.
+        - Encourage accompanying individuals to move along with the robot and to stop when it freezes.
+
+exercises_payload:
+  options:
+    shuffle_exercises: false
+    shuffle_groups: false
+
+  exercise_groups:
+    - group:
+        - instructions: null
+          interface: danceFreeze
+          payload:
+            songs:
+              - earlyBird
+              - emptyPage
+              - gigglySquirrel
+              - handsOn
+              - happyDays
+              - inTheGame
+              - littleByLittle
