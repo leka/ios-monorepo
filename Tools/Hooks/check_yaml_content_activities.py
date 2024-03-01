@@ -200,9 +200,10 @@ def check_content_activity(filename):
             minutes=1
         )
         if last_edited_at < one_minute_ago:
-            print(f"\n❌ last_edited_at in {filename} is not up to date")
-            print(f"last_edited_at: {last_edited_at}")
-            print(f"Update last_edited_at: {DATE_NOW_TIMESTAMP}")
+            print(
+                f"\n❌ last_edited_at {last_edited_at} is not up to date in {filename}"
+            )
+            print(f"Update last_edited_at: {DATE_NOW_TIMESTAMP}\n")
             data["last_edited_at"] = DATE_NOW_TIMESTAMP
             with open(filename, "w", encoding="utf8") as file:
                 yaml.dump(data, file)
