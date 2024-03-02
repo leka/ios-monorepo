@@ -11,34 +11,18 @@ from pygments import highlight
 from pygments.lexers.data import JsonLexer
 from pygments.formatters.terminal import TerminalFormatter
 
-
-def check_for_stale_entries(json_file):
-    """Check for stale entries in a .xcstrings file."""
-    with open(json_file, "r", encoding="utf8") as file:
-        data = json.load(file)
-        strings = data.get("strings", {})
-
-    stale_entries = []
-
-    for key, value in strings.items():
-        if value.get("extractionState") == "stale":
-            stale_entries.append((key, strings[key]))
-
-    return stale_entries
+from modules.xstrings import check_for_stale_entries
+from modules.utils import get_files
 
 
 def main():
     """Main function."""
-    # ? Check if a file was specified
-    if len(sys.argv) > 1:
-        xcstrings_files = sys.argv[1:]
-    else:
-        print("❌ No file specified")
-        sys.exit(1)
+
+    files = get_files()
 
     must_fail = False
 
-    for file in xcstrings_files:
+    for file in files:
         stale_entries = check_for_stale_entries(file)
         if stale_entries:
             print(f"❌ Stale entries found in {file}")
