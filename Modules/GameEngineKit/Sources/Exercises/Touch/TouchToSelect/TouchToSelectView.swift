@@ -49,7 +49,7 @@ public struct TouchToSelectView: View {
                 SixChoicesView(viewModel: self.viewModel)
 
             default:
-                Text("❌ Interface not available for \(self.viewModel.choices.count) choices")
+                ProgressView()
         }
     }
 
