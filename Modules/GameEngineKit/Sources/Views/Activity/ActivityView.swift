@@ -9,9 +9,9 @@ import Lottie
 import RobotKit
 import SwiftUI
 
-// swiftlint:disable cyclomatic_complexity void_function_in_ternary function_body_length
-
 // MARK: - ActivityView
+
+// swiftlint:disable cyclomatic_complexity void_function_in_ternary function_body_length
 
 public struct ActivityView: View {
     // MARK: Lifecycle
@@ -90,11 +90,10 @@ public struct ActivityView: View {
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Button {
-                        self.viewModel.moveToPreviousExercise()
+                        self.isAlertPresented = true
                     } label: {
-                        Image(systemName: "arrow.backward")
+                        Image(systemName: "xmark.circle")
                     }
-                    .disabled(self.viewModel.isFirstExercise)
                 }
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
@@ -103,26 +102,21 @@ public struct ActivityView: View {
                         Image(systemName: "info.circle")
                     }
                 }
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button {
-                        self.viewModel.isReinforcerAnimationEnabled.toggle()
-                    } label: {
-                        Image(systemName: self.viewModel.isReinforcerAnimationEnabled ? "circle" : "circle.slash")
-                    }
-                }
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button(String(l10n.GameEngineKit.ActivityView.Toolbar.dismissButton.characters)) {
-                        self.dismiss()
-                    }
-                }
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button {
-                        self.viewModel.moveToNextExercise()
-                    } label: {
-                        Image(systemName: "arrow.forward")
-                    }
-                    .disabled(self.viewModel.isLastExercise)
-                }
+            }
+            .alert(String(l10n.GameEngineKit.ActivityView.QuitActivityAlert.title.characters), isPresented: self.$isAlertPresented) {
+                Button(String(l10n.GameEngineKit.ActivityView.QuitActivityAlert.saveQuitButtonLabel.characters), action: {
+                    // TODO: (@mathieu) - Save displayable data in session
+                    self.dismiss()
+                })
+                Button(String(l10n.GameEngineKit.ActivityView.QuitActivityAlert.quitWithoutSavingButtonLabel.characters), role: .destructive, action: {
+                    // TODO: (@mathieu) - Save undisplayable data in session
+                    self.dismiss()
+                })
+                Button(String(l10n.GameEngineKit.ActivityView.QuitActivityAlert.cancelButtonLabel.characters), role: .cancel, action: {
+                    self.isAlertPresented = false
+                })
+            } message: {
+                Text(l10n.GameEngineKit.ActivityView.QuitActivityAlert.message)
             }
             .sheet(isPresented: self.$isInfoSheetPresented) {
                 ActivityDetailsView(activity: self.viewModel.currentActivity)
@@ -149,6 +143,8 @@ public struct ActivityView: View {
     @StateObject var viewModel: ActivityViewViewModel
 
     // MARK: Private
+
+    @State private var isAlertPresented: Bool = false
 
     @State private var opacity: Double = 1
     @State private var blurRadius: CGFloat = 0
