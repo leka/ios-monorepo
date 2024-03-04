@@ -33,6 +33,25 @@ def find_all_skills():
     return ids
 
 
+def check_skills_definitions(file):
+    """Check skills definitions"""
+    file_is_valid = True
+
+    if check_jtd_schema_compliance(file, JTD_SCHEMA) is False:
+        file_is_valid = False
+
+    if check_definition_list(file) is False:
+        file_is_valid = False
+
+    duplicate_ids = check_ids_are_unique(find_all_skills())
+    if duplicate_ids is not None:
+        print(f"❌ There are duplicate ids in {file}")
+        print(f"Duplicate ids: {duplicate_ids}")
+        file_is_valid = False
+
+    return file_is_valid
+
+
 def main():
     """Main function"""
     files = get_files()
@@ -40,16 +59,9 @@ def main():
     must_fail = False
 
     for file in files:
-        if check_jtd_schema_compliance(file, JTD_SCHEMA) is False:
-            must_fail = True
+        file_is_valid = check_skills_definitions(file)
 
-        if check_definition_list(file) is False:
-            must_fail = True
-
-        duplicate_ids = check_ids_are_unique(find_all_skills())
-        if duplicate_ids is not None:
-            print(f"❌ There are duplicate ids in {file}")
-            print(f"Duplicate ids: {duplicate_ids}")
+        if file_is_valid is False:
             must_fail = True
 
     if must_fail:

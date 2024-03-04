@@ -15,6 +15,18 @@ from modules.definitions import check_definition_list
 JTD_SCHEMA = "Specs/jtd/authors.jtd.json"
 
 
+def check_authors_definitions(file):
+    """Check authors definitions"""
+    file_is_valid = True
+    if check_jtd_schema_compliance(file, JTD_SCHEMA) is False:
+        file_is_valid = False
+
+    if check_definition_list(file) is False:
+        file_is_valid = False
+
+    return file_is_valid
+
+
 def main():
     """Main function"""
     files = get_files()
@@ -22,10 +34,9 @@ def main():
     must_fail = False
 
     for file in files:
-        if check_jtd_schema_compliance(file, JTD_SCHEMA) is False:
-            must_fail = True
+        file_is_valid = check_authors_definitions(file)
 
-        if check_definition_list(file) is False:
+        if file_is_valid is False:
             must_fail = True
 
     if must_fail:

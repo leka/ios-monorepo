@@ -37,6 +37,34 @@ def list_image_names(data):
     return images
 
 
+def check_avatars_definitions(file):
+    """Check avatars definitions"""
+    file_is_valid = True
+
+    if check_jtd_schema_compliance(file, JTD_SCHEMA) is False:
+        file_is_valid = False
+
+    data = load_yaml(file)
+
+    ids = [item["id"] for item in data["categories"]]
+    duplicate_ids = check_ids_are_unique(ids)
+    if duplicate_ids is not None:
+        print(f"❌ There are duplicate ids in {file}")
+        print(f"Duplicate ids: {duplicate_ids}\n")
+        file_is_valid = False
+
+    image_names = list_image_names(data)
+    for name in image_names:
+        if "-" in name:
+            print(f'❌ The image {name}.avatars.png include "-" instead of "_"\n')
+            file_is_valid = False
+        if find_image(name) is None:
+            print(f"❌ The image {name}.avatars.png in {file} does not exist\n")
+            file_is_valid = False
+
+    return file_is_valid
+
+
 def main():
     """Main function"""
     files = get_files()
@@ -44,26 +72,10 @@ def main():
     must_fail = False
 
     for file in files:
-        if check_jtd_schema_compliance(file, JTD_SCHEMA) is False:
+        file_is_valid = check_avatars_definitions(file)
+
+        if file_is_valid is False:
             must_fail = True
-
-        data = load_yaml(file)
-
-        ids = [item["id"] for item in data["categories"]]
-        duplicate_ids = check_ids_are_unique(ids)
-        if duplicate_ids is not None:
-            print(f"❌ There are duplicate ids in {file}")
-            print(f"Duplicate ids: {duplicate_ids}\n")
-            must_fail = True
-
-        image_names = list_image_names(data)
-        for name in image_names:
-            if "-" in name:
-                print(f'❌ The image {name}.avatars.png include "-" instead of "_"\n')
-                must_fail = True
-            if find_image(name) is None:
-                print(f"❌ The image {name}.avatars.png in {file} does not exist\n")
-                must_fail = True
 
     if must_fail:
         return 1
