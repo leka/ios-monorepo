@@ -64,20 +64,6 @@ public class CarereceiverManager {
             .store(in: &self.cancellables)
     }
 
-    public func updateAndSelectCarereceiver(carereceiver: inout Carereceiver) {
-        carereceiver.lastEditedAt = nil
-        let documentID = carereceiver.id!
-        self.dbOps.update(data: carereceiver, in: .carereceivers)
-            .sink(receiveCompletion: { completion in
-                if case let .failure(error) = completion {
-                    self.fetchErrorSubject.send(error)
-                }
-            }, receiveValue: { _ in
-                self.fetchCarereceiver(documentID: documentID)
-            })
-            .store(in: &self.cancellables)
-    }
-
     public func deleteCarereceiver(documentID: String) {
         self.dbOps.delete(from: .carereceivers, documentID: documentID)
             .sink(receiveCompletion: { completion in
