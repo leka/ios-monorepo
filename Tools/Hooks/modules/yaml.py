@@ -11,10 +11,21 @@ import subprocess
 import ruamel.yaml
 
 
-def load_yaml(filename):
-    """Load a YAML file."""
+def create_yaml_object():
+    """Create a YAML object"""
     yaml = ruamel.yaml.YAML(typ="rt")
     yaml.indent(mapping=2, sequence=4, offset=2)
+    yaml.preserve_quotes = True
+    yaml.representer.add_representer(
+        type(None),
+        lambda dumper, data: dumper.represent_scalar("tag:yaml.org,2002:null", "null"),
+    )
+    return yaml
+
+
+def load_yaml(filename):
+    """Load a YAML file."""
+    yaml = create_yaml_object()
 
     with open(filename, "r", encoding="utf8") as file:
         data = yaml.load(file)
@@ -24,8 +35,7 @@ def load_yaml(filename):
 
 def dump_yaml(filename, data):
     """Dump a YAML file."""
-    yaml = ruamel.yaml.YAML(typ="rt")
-    yaml.indent(mapping=2, sequence=4, offset=2)
+    yaml = create_yaml_object()
 
     with open(filename, "w", encoding="utf8") as file:
         yaml.dump(data, file)
