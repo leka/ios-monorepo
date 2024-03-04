@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AccountKit
 import ContentKit
 import GameEngineKit
 import SwiftUI
@@ -32,7 +33,7 @@ struct SampleActivityListView: View {
                                     CarereceiverPicker(onDismiss: {
                                         // nothing to do
                                     }, onSelected: { carereceiver in
-                                        RootOwnerViewModel.shared.currentCarereceiver = carereceiver
+                                        self.carereceiverManagerViewModel.currentCarereceiver = carereceiver
                                         self.navigation.currentActivity = self.selectedActivity
                                     }, onSkip: {
                                         self.navigation.currentActivity = self.selectedActivity
@@ -58,6 +59,7 @@ struct SampleActivityListView: View {
 
     // MARK: Private
 
+    @ObservedObject private var carereceiverManagerViewModel = CarereceiverManagerViewModel.shared
     @ObservedObject private var navigation: Navigation = .shared
     @State private var selectedActivity: Activity?
 }

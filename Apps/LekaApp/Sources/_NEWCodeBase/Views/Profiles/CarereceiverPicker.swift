@@ -31,8 +31,7 @@ struct CarereceiverPicker: View {
         NavigationStack {
             ScrollView(showsIndicators: true) {
                 LazyVGrid(columns: self.columns, spacing: 40) {
-                    // TODO: (@HPezz) - replace by real data
-                    ForEach(RootOwnerViewModel.shared.mockCarereceiversSet) { carereceiver in
+                    ForEach(self.carereceiverManagerViewModel.carereceivers) { carereceiver in
                         CarereceiverAvatarCell(carereceiver: carereceiver, isSelected: self.selectedCarereceiver == carereceiver)
                             .onTapGesture {
                                 withAnimation(.default) {
@@ -108,6 +107,7 @@ struct CarereceiverPicker: View {
 
     private let columns = Array(repeating: GridItem(), count: 4)
 
+    @ObservedObject private var carereceiverManagerViewModel = CarereceiverManagerViewModel.shared
     @State private var selectedCarereceiver: Carereceiver?
     @State private var action: ActionType?
 }

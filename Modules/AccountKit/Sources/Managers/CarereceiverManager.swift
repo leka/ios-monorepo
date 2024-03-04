@@ -46,7 +46,7 @@ public class CarereceiverManager {
                     self?.fetchErrorSubject.send(error)
                 }
             }, receiveValue: { _ in
-                // Nothing to do
+                self.fetchAllCarereceivers()
             })
             .store(in: &self.cancellables)
     }

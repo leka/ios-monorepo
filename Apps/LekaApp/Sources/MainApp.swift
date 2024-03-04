@@ -28,6 +28,7 @@ struct LekaApp: App {
     @ObservedObject var rootOwnerViewModel = RootOwnerViewModel.shared
     @StateObject var authManagerViewModel = AuthManagerViewModel.shared
     @StateObject var caregiverManagerViewModel = CaregiverManagerViewModel.shared
+    @StateObject var carereceiverManagerViewModel = CarereceiverManagerViewModel.shared
 
     var body: some Scene {
         WindowGroup {

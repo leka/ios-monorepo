@@ -43,7 +43,7 @@ struct CarereceiverList: View {
                 .padding()
 
                 LazyVGrid(columns: self.columns, spacing: 40) {
-                    ForEach(self.rootOwnerViewModel.mockCarereceiversSet) { carereceiver in
+                    ForEach(self.carereceiverManagerViewModel.carereceivers) { carereceiver in
                         NavigationLink(value: carereceiver) {
                             CarereceiverAvatarCell(carereceiver: carereceiver)
                         }
@@ -74,7 +74,7 @@ struct CarereceiverList: View {
 
     private let columns = Array(repeating: GridItem(), count: 4)
 
-    @ObservedObject private var rootOwnerViewModel: RootOwnerViewModel = .shared
+    @ObservedObject private var carereceiverManagerViewModel = CarereceiverManagerViewModel.shared
     @ObservedObject private var styleManager: StyleManager = .shared
 
     @State private var selected: String = ""

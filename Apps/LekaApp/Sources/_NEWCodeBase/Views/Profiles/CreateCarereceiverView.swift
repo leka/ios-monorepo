@@ -40,9 +40,7 @@ struct CreateCarereceiverView: View {
                         if self.newCarereceiver.avatar.isEmpty {
                             self.newCarereceiver.avatar = Avatars.categories.first!.avatars.randomElement()!
                         }
-                        // TODO: (@team) : add the carereceiver profile to the account
-                        // TODO: (@team) : assign the carereceiver profile as the current selected one
-                        self.rootOwnerViewModel.mockCarereceiversSet.append(self.newCarereceiver)
+                        self.carereceiverManager.addCarereceiver(carereceiver: self.newCarereceiver)
                     }
                     .disabled(self.newCarereceiver.username.isEmpty)
                     .buttonStyle(.borderedProminent)
@@ -57,8 +55,8 @@ struct CreateCarereceiverView: View {
 
     // MARK: Private
 
-    @ObservedObject private var rootOwnerViewModel = RootOwnerViewModel.shared
     @State private var isAvatarPickerPresented: Bool = false
+    var carereceiverManager: CarereceiverManager = .shared
 
     private var avatarPickerButton: some View {
         Button {
