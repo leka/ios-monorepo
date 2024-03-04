@@ -12,7 +12,7 @@ from datetime import datetime, timedelta
 
 import ruamel.yaml
 
-from check_yaml_definitions_skills import find_all_skills
+from check_yaml_definitions_skills import get_all_skills
 
 DATE_NOW_TIMESTAMP = ruamel.yaml.scalarstring.DoubleQuotedScalarString(
     datetime.now().isoformat()
@@ -97,7 +97,7 @@ def update_last_edited_at(data):
 
 def find_missing_skills(skills):
     """Check if the skills exist in the skills.yml"""
-    skills_ids = find_all_skills()
+    skills_ids = get_all_skills()
 
     missing_skills = []
 

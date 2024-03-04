@@ -12,26 +12,24 @@ from pygments.lexers.data import JsonLexer
 from pygments.formatters.terminal import TerminalFormatter
 
 from modules.utils import get_files
-from modules.xstrings import check_stale_entries, check_unusual_characters
+from modules.xcstrings import find_stale_entries, find_unusual_characters
 
 
 def check_xcstrings_file(file):
     """Check xcstrings for stale entries."""
     file_is_valid = True
 
-    stale_entries = check_stale_entries(file)
-    if stale_entries:
-        print(f"❌ Stale entries found in {file}")
+    if stale_entries := find_stale_entries(file):
         file_is_valid = False
+        print(f"\n❌ Stale entries found in {file}")
         for key, data in stale_entries:
             data = json.dumps(data, indent=4)
             print(highlight(f'"{key}": {data}', JsonLexer(), TerminalFormatter()))
 
-    wrong_entries = check_unusual_characters(file)
-    if wrong_entries:
-        print(f"❌ Unusual characters found in {file}")
+    if problematic_entries := find_unusual_characters(file):
         file_is_valid = False
-        for key, value, character in wrong_entries:
+        print(f"\n❌ Unusual characters found in {file}")
+        for key, value, character in problematic_entries:
             value = json.dumps(value, indent=4)
             print(f"Character: {character}")
             print(highlight(f'"{key}": {value}', JsonLexer(), TerminalFormatter()))

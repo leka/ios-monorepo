@@ -9,8 +9,8 @@ import sys
 from pathlib import Path
 
 from modules.utils import get_files
-from modules.yaml import load_yaml, check_jtd_schema_compliance
-from modules.definitions import check_ids_are_unique
+from modules.yaml import load_yaml, is_jtd_schema_compliant
+from modules.definitions import find_duplicate_ids
 
 
 JTD_SCHEMA = "Specs/jtd/avatars.jtd.json"
@@ -41,26 +41,26 @@ def check_avatars_definitions(file):
     """Check avatars definitions"""
     file_is_valid = True
 
-    if check_jtd_schema_compliance(file, JTD_SCHEMA) is False:
+    if is_jtd_schema_compliant(file, JTD_SCHEMA) is False:
         file_is_valid = False
 
     data = load_yaml(file)
 
     ids = [item["id"] for item in data["categories"]]
-    duplicate_ids = check_ids_are_unique(ids)
-    if duplicate_ids is not None:
-        print(f"❌ There are duplicate ids in {file}")
-        print(f"Duplicate ids: {duplicate_ids}\n")
+    if duplicate_ids := find_duplicate_ids(ids):
         file_is_valid = False
+        print(f"\n❌ There are duplicate ids in {file}")
+        for duplicate_id in duplicate_ids:
+            print(f"   - {duplicate_id}")
 
-    image_names = list_image_names(data)
-    for name in image_names:
+    for name in list_image_names(data):
         if "-" in name:
-            print(f'❌ The image {name}.avatars.png include "-" instead of "_"\n')
             file_is_valid = False
+            print(f'\n❌ The image {name}.avatars.png include "-" instead of "_"')
+
         if find_image(name) is None:
-            print(f"❌ The image {name}.avatars.png in {file} does not exist\n")
             file_is_valid = False
+            print(f"\n❌ The image {name}.avatars.png in {file} does not exist")
 
     return file_is_valid
 

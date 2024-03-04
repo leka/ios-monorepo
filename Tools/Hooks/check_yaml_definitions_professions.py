@@ -8,8 +8,8 @@
 import sys
 
 from modules.utils import get_files
-from modules.yaml import check_jtd_schema_compliance
-from modules.definitions import check_definition_list
+from modules.yaml import is_jtd_schema_compliant
+from modules.definitions import is_definition_list_valid
 
 
 JTD_SCHEMA = "Specs/jtd/professions.jtd.json"
@@ -19,10 +19,10 @@ def check_profession_definitions(file):
     """Check profession definitions"""
     file_is_valid = True
 
-    if check_jtd_schema_compliance(file, JTD_SCHEMA) is False:
+    if is_jtd_schema_compliant(file, JTD_SCHEMA) is False:
         file_is_valid = False
 
-    if check_definition_list(file) is False:
+    if is_definition_list_valid(file) is False:
         file_is_valid = False
 
     return file_is_valid

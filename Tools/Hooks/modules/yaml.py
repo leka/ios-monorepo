@@ -41,7 +41,7 @@ def dump_yaml(filename, data):
         yaml.dump(data, file)
 
 
-def check_jtd_schema_compliance(filename, schema):
+def is_jtd_schema_compliant(filename, schema):
     """Validate a YAML file with a JTD schema."""
     file_is_compliant = True
 

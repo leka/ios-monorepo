@@ -8,15 +8,15 @@
 import sys
 
 from modules.utils import get_files
-from modules.yaml import load_yaml, check_jtd_schema_compliance
-from modules.definitions import check_definition_list, check_ids_are_unique
+from modules.yaml import load_yaml, is_jtd_schema_compliant, dump_yaml
+from modules.definitions import find_duplicate_ids, sort_list_by_id
 
 
 JTD_SCHEMA = "Specs/jtd/skills.jtd.json"
 SKILLS_FILE = "Modules/ContentKit/Resources/Content/definitions/skills.yml"
 
 
-def find_all_skills():
+def get_all_skills():
     """List of skills from skills.yml"""
     skills = load_yaml(SKILLS_FILE)
 
@@ -37,17 +37,20 @@ def check_skills_definitions(file):
     """Check skills definitions"""
     file_is_valid = True
 
-    if check_jtd_schema_compliance(file, JTD_SCHEMA) is False:
+    if is_jtd_schema_compliant(file, JTD_SCHEMA) is False:
         file_is_valid = False
 
-    if check_definition_list(file) is False:
-        file_is_valid = False
+    data = load_yaml(file)
 
-    duplicate_ids = check_ids_are_unique(find_all_skills())
-    if duplicate_ids is not None:
-        print(f"❌ There are duplicate ids in {file}")
-        print(f"Duplicate ids: {duplicate_ids}")
+    if sorted_list := sort_list_by_id(data["list"]):
+        data["list"] = sorted_list
+        dump_yaml(file, data)
+
+    if duplicate_ids := find_duplicate_ids(get_all_skills()):
         file_is_valid = False
+        print(f"\n❌ There are duplicate ids in {file}")
+        for duplicate_id in duplicate_ids:
+            print(f"   - {duplicate_id}")
 
     return file_is_valid
 

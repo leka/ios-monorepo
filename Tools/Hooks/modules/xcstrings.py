@@ -8,7 +8,7 @@
 import json
 
 
-def check_stale_entries(json_file):
+def find_stale_entries(json_file):
     """Check for stale entries in a .xcstrings file."""
     with open(json_file, "r", encoding="utf8") as file:
         data = json.load(file)
@@ -23,7 +23,7 @@ def check_stale_entries(json_file):
     return stale_entries
 
 
-def check_unusual_characters(file_path):
+def find_unusual_characters(file_path):
     """Check the given file for unusual terminators."""
     with open(file_path, "r", encoding="utf-8") as file:
         data = json.load(file)

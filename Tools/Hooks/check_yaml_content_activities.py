@@ -8,7 +8,7 @@
 import sys
 
 from modules.utils import get_files, is_file_modified
-from modules.yaml import create_yaml_object, check_jtd_schema_compliance
+from modules.yaml import create_yaml_object, is_jtd_schema_compliant
 from modules.content import (
     is_created_at_present,
     is_last_edited_at_present,
@@ -34,7 +34,7 @@ def check_activity(filename):
 
     file_is_valid = True
 
-    if check_jtd_schema_compliance(filename, JTD_SCHEMA) is False:
+    if is_jtd_schema_compliant(filename, JTD_SCHEMA) is False:
         file_is_valid = False
 
     with open(filename, "r", encoding="utf8") as file:
@@ -78,7 +78,7 @@ def check_activity(filename):
     if is_file_modified(filename) and (timestamp := update_last_edited_at(activity)):
         file_is_valid = False
         print(f"\n❌ last_edited_at  is not up to date in {filename}")
-        print(f"Update last_edited_at: {timestamp}\n")
+        print(f"Update last_edited_at: {timestamp}")
         with open(filename, "w", encoding="utf8") as file:
             yaml.dump(activity, file)
 

@@ -13,7 +13,7 @@ def sort_list_by_id(data):
     return sorted(data, key=lambda item: item["id"])
 
 
-def check_ids_are_unique(ids):
+def find_duplicate_ids(ids):
     """Check if all ids are unique."""
     duplicates = set()
 
@@ -26,23 +26,24 @@ def check_ids_are_unique(ids):
             else:
                 seen.add(author_id)
 
-    return list(duplicates) if duplicates else None
+    return duplicates
 
 
-def check_definition_list(filename):
+def is_definition_list_valid(file):
     """Check definitions"""
     file_is_valid = True
 
-    data = load_yaml(filename)
+    data = load_yaml(file)
 
-    data["list"] = sort_list_by_id(data["list"])
-    dump_yaml(filename, data)
+    if sorted_list := sort_list_by_id(data["list"]):
+        data["list"] = sorted_list
+        dump_yaml(file, data)
 
     ids = [item["id"] for item in data["list"]]
-    duplicate_ids = check_ids_are_unique(ids)
-    if duplicate_ids is not None:
-        print(f"❌ There are duplicate ids in {filename}")
-        print(f"Duplicate ids: {duplicate_ids}")
+    if duplicate_ids := find_duplicate_ids(ids):
         file_is_valid = False
+        print(f"\n❌ There are duplicate ids in {file}")
+        for duplicate_id in duplicate_ids:
+            print(f"   - {duplicate_id}")
 
     return file_is_valid
