@@ -3,22 +3,24 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import DesignKit
+import LocalizationKit
 import Lottie
 import SwiftUI
 
+// MARK: - ActivityView.FailureView
+
 extension ActivityView {
     struct FailureView: View {
-        let percentage: Int
+        let percentage: Double
 
         var body: some View {
             VStack(spacing: 40) {
-                // TODO(@ladislas/@hugo): Use text variables to be localization friendly
                 VStack {
-                    Text("\(self.percentage)% de réussite !")
+                    Text(l10n.SuccessFailureView.successPercentageLabel(self.percentage))
                         .font(.largeTitle)
                         .foregroundStyle(.teal)
                         .padding(10)
-                    Text("Essayez à nouveau !")
+                    Text(l10n.SuccessFailureView.failureCheeringLabel)
                         .font(.largeTitle)
                 }
 
@@ -29,10 +31,19 @@ extension ActivityView {
                 .frame(height: 500)
                 .padding(-100)
 
-                Button("Revenir au menu") {
-                    UIApplication.shared.dismissAll(animated: true)
+                HStack(spacing: 40) {
+                    Button(String(l10n.SuccessFailureView.quitWithoutSavingButtonLabel.characters)) {
+                        // TODO: (@mathieu) - Save undisplayable data in session
+                        UIApplication.shared.dismissAll(animated: true)
+                    }
+                    .buttonStyle(.bordered)
+
+                    Button(String(l10n.SuccessFailureView.saveQuitButtonLabel.characters)) {
+                        // TODO: (@mathieu) - Save displayable data in session
+                        UIApplication.shared.dismissAll(animated: true)
+                    }
+                    .buttonStyle(.borderedProminent)
                 }
-                .buttonStyle(.bordered)
             }
         }
     }
