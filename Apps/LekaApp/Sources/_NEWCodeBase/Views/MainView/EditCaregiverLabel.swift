@@ -13,8 +13,6 @@ import SwiftUI
 struct EditCaregiverLabel: View {
     // MARK: Internal
 
-    @Binding var isCaregiverPickerPresented: Bool
-
     var body: some View {
         VStack(alignment: .leading) {
             if let caregiver = self.caregiverManagerViewModel.currentCaregiver {
@@ -58,7 +56,7 @@ struct EditCaregiverLabel: View {
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Button("", systemImage: "person.2.gobackward") {
-                    self.isCaregiverPickerPresented = true
+                    self.rootOwnerViewModel.isCaregiverPickerPresented = true
                 }
             }
         }
@@ -67,8 +65,9 @@ struct EditCaregiverLabel: View {
     // MARK: Private
 
     @ObservedObject private var styleManager: StyleManager = .shared
-    @ObservedObject private var caregiverManagerViewModel: CaregiverManagerViewModel = .shared
     @ObservedObject private var rootOwnerViewModel: RootOwnerViewModel = .shared
+
+    @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
 }
 
 // MARK: - l10n.ChangeCaregiverProfile
@@ -90,7 +89,7 @@ extension l10n {
 #Preview {
     NavigationSplitView(sidebar: {
         List {
-            EditCaregiverLabel(isCaregiverPickerPresented: .constant(false))
+            EditCaregiverLabel()
 
             Button {} label: {
                 RobotConnectionLabel()
