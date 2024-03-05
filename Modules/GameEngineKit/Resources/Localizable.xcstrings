@@ -38,6 +38,96 @@
                 }
             }
         },
+        "gameenginekit.activity_view.quit_activity_alert.cancel_button_label": {
+            "comment": "Quit activity alert cancel button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Cancel"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Annuler"
+                    }
+                }
+            }
+        },
+        "gameenginekit.activity_view.quit_activity_alert.message": {
+            "comment": "Quit activity alert message",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Do you want to save your progress before quitting?"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Voulez-vous enregistrer vos r\u00e9sultats avant de fermer ?"
+                    }
+                }
+            }
+        },
+        "gameenginekit.activity_view.quit_activity_alert.quit_without_saving_button_label": {
+            "comment": "Quit activity alert quit without saving button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Quit Without Saving"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Quitter sans Enregistrer"
+                    }
+                }
+            }
+        },
+        "gameenginekit.activity_view.quit_activity_alert.save_quit_button_label": {
+            "comment": "Quit activity alert save and quit button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Save and Quit"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Enregistrer et Quitter"
+                    }
+                }
+            }
+        },
+        "gameenginekit.activity_view.quit_activity_alert.title": {
+            "comment": "Quit activity alert title",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Quit activity?"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Quitter l'activit\u00e9 ?"
+                    }
+                }
+            }
+        },
         "gameenginekit.activity_view.toolbar.dismiss_button": {
             "comment": "The title of the dismiss button",
             "extractionState": "extracted_with_value",
@@ -52,6 +142,96 @@
                     "stringUnit": {
                         "state": "translated",
                         "value": "Annuler"
+                    }
+                }
+            }
+        },
+        "gameenginekit.success_failure_view.failure_cheering_label": {
+            "comment": "Success and Failure view cheering label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Try again!"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Essaies encore !"
+                    }
+                }
+            }
+        },
+        "gameenginekit.success_failure_view.quit_without_saving_button_label": {
+            "comment": "Success and Failure view quit without saving button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Quit without saving"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Quitter sans Enregistrer"
+                    }
+                }
+            }
+        },
+        "gameenginekit.success_failure_view.save_quit_button_label": {
+            "comment": "Success and Failure view save & quit button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Save"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Enregistrer"
+                    }
+                }
+            }
+        },
+        "gameenginekit.success_failure_view.success_cheering_label": {
+            "comment": "Success and Failure view cheering label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Well done, you've succeeded this activity!"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Bien jou\u00e9, tu as r\u00e9ussi l'activit\u00e9 !"
+                    }
+                }
+            }
+        },
+        "gameenginekit.success_failure_view.success_percentage_label": {
+            "comment": "Success and Failure view success percentage label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "%.0f%% of success!"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "%.0f%% de succ\u00e8s !"
                     }
                 }
             }
