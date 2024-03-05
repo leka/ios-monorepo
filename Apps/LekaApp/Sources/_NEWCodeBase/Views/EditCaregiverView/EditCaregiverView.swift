@@ -61,6 +61,7 @@ struct EditCaregiverView: View {
                     Button(String(l10n.EditCaregiverView.saveButtonLabel.characters)) {
                         self.rootOwnerViewModel.isEditCaregiverViewPresented = false
                         self.caregiverManager.updateCaregiver(caregiver: &self.modifiedCaregiver)
+                        self.caregiverManager.fetchAllCaregivers()
                     }
                 }
             }
@@ -111,8 +112,11 @@ struct EditCaregiverView: View {
                 }
                 .sheet(isPresented: self.$isProfessionPickerPresented) {
                     NavigationStack {
-                        ProfessionPicker(caregiver: self.$modifiedCaregiver)
-                            .navigationBarTitleDisplayMode(.inline)
+                        ProfessionPicker(selectedProfessionsIDs: self.modifiedCaregiver.professions,
+                                         onValidate: { professions in
+                                             self.modifiedCaregiver.professions = professions
+                                         })
+                                         .navigationBarTitleDisplayMode(.inline)
                     }
                 }
             }

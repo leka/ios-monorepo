@@ -100,8 +100,11 @@ struct CreateCaregiverView: View {
                 }
                 .sheet(isPresented: self.$isProfessionPickerPresented) {
                     NavigationStack {
-                        ProfessionPicker(caregiver: self.$newCaregiver)
-                            .navigationBarTitleDisplayMode(.inline)
+                        ProfessionPicker(selectedProfessionsIDs: self.newCaregiver.professions,
+                                         onValidate: { professions in
+                                             self.newCaregiver.professions = professions
+                                         })
+                                         .navigationBarTitleDisplayMode(.inline)
                     }
                 }
             }
