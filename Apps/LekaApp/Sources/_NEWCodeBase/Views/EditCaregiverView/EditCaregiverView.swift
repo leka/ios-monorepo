@@ -91,7 +91,12 @@ struct EditCaregiverView: View {
             }
         }
         .sheet(isPresented: self.$isAvatarPickerPresented) {
-            AvatarPicker(avatar: self.$modifiedCaregiver.avatar)
+            NavigationStack {
+                AvatarPicker(selectedAvatar: self.modifiedCaregiver.avatar,
+                             onValidate: { avatar in
+                                 self.modifiedCaregiver.avatar = avatar
+                             })
+            }
         }
         .frame(maxWidth: .infinity, alignment: .center)
     }

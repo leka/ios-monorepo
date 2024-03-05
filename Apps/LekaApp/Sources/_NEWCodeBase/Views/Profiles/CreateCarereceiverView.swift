@@ -68,10 +68,12 @@ struct CreateCarereceiverView: View {
                     .font(.headline)
             }
         }
-
         .sheet(isPresented: self.$isAvatarPickerPresented) {
             NavigationStack {
-                AvatarPicker(avatar: self.$newCarereceiver.avatar)
+                AvatarPicker(selectedAvatar: self.newCarereceiver.avatar,
+                             onValidate: { avatar in
+                                 self.newCarereceiver.avatar = avatar
+                             })
             }
         }
         .frame(maxWidth: .infinity, alignment: .center)

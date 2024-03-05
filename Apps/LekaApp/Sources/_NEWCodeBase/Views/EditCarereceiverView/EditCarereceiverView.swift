@@ -79,7 +79,12 @@ struct EditCarereceiverView: View {
             }
         }
         .sheet(isPresented: self.$isAvatarPickerPresented) {
-            AvatarPicker(avatar: self.$modifiedCarereceiver.avatar)
+            NavigationStack {
+                AvatarPicker(selectedAvatar: self.modifiedCarereceiver.avatar,
+                             onValidate: { avatar in
+                                 self.modifiedCarereceiver.avatar = avatar
+                             })
+            }
         }
         .frame(maxWidth: .infinity, alignment: .center)
     }

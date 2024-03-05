@@ -81,7 +81,10 @@ struct CreateCaregiverView: View {
         }
         .sheet(isPresented: self.$isAvatarPickerPresented) {
             NavigationStack {
-                AvatarPicker(avatar: self.$newCaregiver.avatar)
+                AvatarPicker(selectedAvatar: self.newCaregiver.avatar,
+                             onValidate: { avatar in
+                                 self.newCaregiver.avatar = avatar
+                             })
             }
         }
         .frame(maxWidth: .infinity, alignment: .center)
