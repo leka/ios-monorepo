@@ -60,9 +60,12 @@ struct EditCarereceiverView: View {
 
     // MARK: Private
 
-    @ObservedObject private var carereceiverManagerViewModel = CarereceiverManagerViewModel.shared
+    @StateObject private var carereceiverManagerViewModel = CarereceiverManagerViewModel()
+
     @ObservedObject private var rootOwnerViewModel: RootOwnerViewModel = .shared
+
     @State private var isAvatarPickerPresented: Bool = false
+
     var carereceiverManager: CarereceiverManager = .shared
 
     private var avatarPickerButton: some View {

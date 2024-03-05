@@ -59,8 +59,10 @@ struct SampleActivityListView: View {
 
     // MARK: Private
 
-    @ObservedObject private var carereceiverManagerViewModel = CarereceiverManagerViewModel.shared
+    @StateObject private var carereceiverManagerViewModel = CarereceiverManagerViewModel()
+
     @ObservedObject private var navigation: Navigation = .shared
+
     @State private var selectedActivity: Activity?
 }
 

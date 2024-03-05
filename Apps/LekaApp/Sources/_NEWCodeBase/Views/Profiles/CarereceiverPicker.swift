@@ -107,7 +107,8 @@ struct CarereceiverPicker: View {
 
     private let columns = Array(repeating: GridItem(), count: 4)
 
-    @ObservedObject private var carereceiverManagerViewModel = CarereceiverManagerViewModel.shared
+    @StateObject private var carereceiverManagerViewModel = CarereceiverManagerViewModel()
+
     @State private var selectedCarereceiver: Carereceiver?
     @State private var action: ActionType?
 }

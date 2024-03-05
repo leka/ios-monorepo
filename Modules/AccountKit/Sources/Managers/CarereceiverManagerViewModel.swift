@@ -14,8 +14,6 @@ public class CarereceiverManagerViewModel: ObservableObject {
 
     // MARK: Public
 
-    public static let shared = CarereceiverManagerViewModel()
-
     @Published public var carereceivers: [Carereceiver] = []
     @Published public var currentCarereceiver: Carereceiver?
     @Published public var errorMessage: String = ""
