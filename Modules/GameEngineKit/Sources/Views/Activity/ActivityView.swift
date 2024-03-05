@@ -2,6 +2,8 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+// swiftlint:disable cyclomatic_complexity void_function_in_ternary function_body_length
+
 import ContentKit
 import DesignKit
 import LocalizationKit
@@ -10,8 +12,6 @@ import RobotKit
 import SwiftUI
 
 // MARK: - ActivityView
-
-// swiftlint:disable cyclomatic_complexity void_function_in_ternary function_body_length
 
 public struct ActivityView: View {
     // MARK: Lifecycle
