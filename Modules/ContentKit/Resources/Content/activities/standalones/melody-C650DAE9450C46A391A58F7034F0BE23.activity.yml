@@ -1,0 +1,96 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+version: 1.0.0
+
+uuid: C650DAE9450C46A391A58F7034F0BE23
+name: melody
+
+created_at: "2024-03-04T18:07:12.519606"
+last_edited_at: "2024-03-05T09:42:38.078478"
+status: published
+
+authors:
+  - leka
+
+skills:
+  - recognition
+  - recognition/colors
+  - discrimination
+  - attention
+  - attention/sustained_attention
+  - sensory_interaction
+
+tags:
+  - colors
+  - music
+  - sounds
+
+hmi:
+  - tablet_robot
+
+types:
+  - one_on_one
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: melody
+
+      title: Mélodie
+      subtitle: null
+
+      short_description: |
+        Joue les notes de la même couleur que Leka
+
+      description: |
+        Cette activité invite la personne accompagnée à s'engager dans une expérience musicale interactive. Après avoir sélectionné une musique, lancé la séquence et écouté la mélodie, la personne accompagnée doit associer les touches colorées sur l'iPad aux couleurs du robot.
+
+      instructions: |
+        - Choix du clavier : Sélectionner le clavier partiel pour limiter les notes à celles de la mélodie, simplifiant ainsi la discrimination pour la personne accompagnée. Choisir le clavier entier pour accéder à l'ensemble de la gamme heptatonique.
+        - Choisir la musique que vous souhaitez voir interprétée et reproduite.
+        - Appuyer sur "Jouer" pour lancer la séquence.
+        - Inviter la personne accompagnée à écouter attentivement la mélodie provenant de l'iPad.
+        - Demander à la personne accompagnée d'appuyer sur la touche de la même couleur que le robot.
+        - À la fin, la séquence de notes colorées est rejouée, accompagnée de la mélodie.
+
+  - locale: en_US
+    details:
+      icon: melody
+
+      title: Melody
+      subtitle: null
+
+      short_description: |
+        Play notes of the same color as Leka
+
+      description: |
+        This activity invites the accompanied person to engage in an interactive musical experience. After selecting music, starting the sequence and listening to the melody, the accompanied person must associate the colored keys on the iPad with the colors of the robot.
+
+
+      instructions: |
+        - Choice of keyboard: Select the partial keyboard to limit the notes to those of the melody, thus simplifying discrimination for the accompanied person. Choose the entire keyboard to access the entire heptatonic scale.
+        - Choose the music you want to see performed and reproduced.
+        - Press “Play” to start the sequence.
+        - Invite the accompanied person to listen carefully to the melody coming from the iPad.
+        - Ask the person being accompanied to press the button of the same color as the robot.
+        - At the end, the sequence of colored notes is played again, accompanied by the melody.
+
+exercises_payload:
+  options:
+    shuffle_exercises: false
+    shuffle_groups: false
+
+  exercise_groups:
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Joue les notes de la même couleur que Leka
+            - locale: en_US
+              value: Play the notes of the same color as Leka
+          interface: melody
