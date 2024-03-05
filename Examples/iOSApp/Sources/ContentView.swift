@@ -96,20 +96,13 @@ struct ViewB: View {
     private let dataManager: DataManager = .shared
 }
 
-// MARK: - ContentView
+// MARK: - DetailView
 
-struct ContentView: View {
+struct DetailView: View {
     // MARK: Internal
 
     var body: some View {
         VStack {
-            HStack {
-                ViewA()
-                Spacer()
-                ViewB()
-            }
-            .padding(100)
-
             Text("Global counter: \(self.viewModel.counter)")
                 .padding()
                 .font(.title)
@@ -123,13 +116,57 @@ struct ContentView: View {
                 self.dataManager.decrement()
             }
             .buttonStyle(.borderedProminent)
+        }
+        .navigationTitle("Detail View")
+    }
 
-            HStack {
-                ViewA()
-                Spacer()
-                ViewB()
+    // MARK: Private
+
+    @StateObject private var viewModel = GlobalViewModel()
+    private let dataManager: DataManager = .shared
+}
+
+// MARK: - ContentView
+
+struct ContentView: View {
+    // MARK: Internal
+
+    var body: some View {
+        NavigationStack {
+            VStack {
+                HStack {
+                    ViewA()
+                    Spacer()
+                    ViewB()
+                }
+                .padding(100)
+
+                Text("Global counter: \(self.viewModel.counter)")
+                    .padding()
+                    .font(.title)
+
+                Button("global increment counter") {
+                    self.dataManager.increment()
+                }
+                .buttonStyle(.borderedProminent)
+
+                Button("global decrement counter") {
+                    self.dataManager.decrement()
+                }
+                .buttonStyle(.borderedProminent)
+
+                NavigationLink(destination: DetailView()) {
+                    Text("Show Detail View")
+                }
+
+                HStack {
+                    ViewA()
+                    Spacer()
+                    ViewB()
+                }
+                .padding(100)
             }
-            .padding(100)
+            .navigationTitle("Main View")
         }
     }
 
