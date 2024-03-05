@@ -33,7 +33,7 @@ struct SampleActivityListView: View {
                                     CarereceiverPicker(onDismiss: {
                                         // nothing to do
                                     }, onSelected: { carereceiver in
-                                        self.carereceiverManagerViewModel.currentCarereceiver = carereceiver
+                                        self.carereceiverManager.setCurrentCarereceiver(to: carereceiver)
                                         self.navigation.currentActivity = self.selectedActivity
                                     }, onSkip: {
                                         self.navigation.currentActivity = self.selectedActivity
@@ -64,6 +64,8 @@ struct SampleActivityListView: View {
     @ObservedObject private var navigation: Navigation = .shared
 
     @State private var selectedActivity: Activity?
+
+    private var carereceiverManager: CarereceiverManager = .shared
 }
 
 #Preview {

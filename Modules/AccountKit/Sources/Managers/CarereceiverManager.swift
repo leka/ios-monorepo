@@ -76,6 +76,15 @@ public class CarereceiverManager {
             .store(in: &self.cancellables)
     }
 
+    public func setCurrentCarereceiver(to carereceiver: Carereceiver) {
+        self.currentCarereceiver.send(carereceiver)
+    }
+
+    public func resetData() {
+        self.currentCarereceiver.send(nil)
+        self.carereceiverList.send([])
+    }
+
     // MARK: Internal
 
     var carereceiversPublisher: AnyPublisher<[Carereceiver], Never> {

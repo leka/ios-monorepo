@@ -61,11 +61,14 @@ extension SettingsView {
         @ObservedObject private var rootOwnerViewModel: RootOwnerViewModel = .shared
         @ObservedObject private var styleManager: StyleManager = .shared
         @ObservedObject private var authManagerViewModel = AuthManagerViewModel.shared
+
+        private var carereceiverManager: CarereceiverManager = .shared
         private var authManager = AuthManager.shared
 
         private func reset() {
             self.caregiverManagerViewModel.currentCaregiver = nil
             self.caregiverManagerViewModel.caregivers = []
+            self.carereceiverManager.resetData()
             self.styleManager.accentColor = DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor
             self.styleManager.colorScheme = .light
         }
