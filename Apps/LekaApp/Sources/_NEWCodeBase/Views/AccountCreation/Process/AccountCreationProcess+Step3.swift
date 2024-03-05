@@ -37,7 +37,7 @@ extension AccountCreationProcess {
             .multilineTextAlignment(.center)
             .frame(maxWidth: .infinity, alignment: .center)
             .sheet(isPresented: self.$isCarereceiverCreationPresented) {
-                CreateCarereceiverView(isPresented: self.$isCarereceiverCreationPresented) {
+                CreateCarereceiverView(isPresented: self.$isCarereceiverCreationPresented) { _ in
                     self.selectedTab = .final
                 }
             }

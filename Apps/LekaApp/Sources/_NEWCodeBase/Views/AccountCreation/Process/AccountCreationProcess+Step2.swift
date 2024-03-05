@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AccountKit
 import DesignKit
 import LocalizationKit
 import SwiftUI
@@ -39,15 +40,17 @@ extension AccountCreationProcess {
             .multilineTextAlignment(.center)
             .frame(maxWidth: .infinity, alignment: .center)
             .sheet(isPresented: self.$isCaregiverCreationPresented) {
-                CreateCaregiverView(isPresented: self.$isCaregiverCreationPresented) {
+                CreateCaregiverView(onValidate: { caregiver in
                     self.selectedTab = .carereceiverCreation
-                }
+                    self.caregiverManagerViewModel.currentCaregiver = caregiver
+                })
             }
         }
 
         // MARK: Private
 
         @State private var isCaregiverCreationPresented: Bool = false
+        @ObservedObject private var caregiverManagerViewModel: CaregiverManagerViewModel = .shared
     }
 }
 
