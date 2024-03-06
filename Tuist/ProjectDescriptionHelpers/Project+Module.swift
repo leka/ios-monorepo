@@ -81,7 +81,8 @@ private func makeFrameworkTargets(
 )
     -> [Target]
 {
-    var product: Product = .staticLibrary
+    // TODO: (@ladislas) check it works in release mode/test flight
+    var product: Product = .framework
 
     if Environment.generateModulesAsFrameworksForDebug.getBoolean(default: false) {
         product = .framework
