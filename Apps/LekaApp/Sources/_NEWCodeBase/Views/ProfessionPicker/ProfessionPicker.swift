@@ -40,7 +40,6 @@ struct ProfessionPicker: View {
         }
         .environment(\.editMode, Binding.constant(EditMode.active))
         .navigationTitle(String(l10n.ProfessionPicker.title.characters))
-        .interactiveDismissDisabled()
         .onAppear {
             let professions = self.selectedProfessionsIDs.compactMap { Professions.profession(for: $0) }
             self.selectedProfessions = Set(professions)

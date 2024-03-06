@@ -26,7 +26,6 @@ struct AvatarPicker: View {
     var body: some View {
         ListView(selectedAvatar: self.$selectedAvatar)
             .navigationTitle(String(l10n.AvatarPicker.title.characters))
-            .interactiveDismissDisabled()
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button {
