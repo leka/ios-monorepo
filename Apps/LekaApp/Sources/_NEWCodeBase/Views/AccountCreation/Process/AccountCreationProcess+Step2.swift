@@ -42,7 +42,7 @@ extension AccountCreationProcess {
             .sheet(isPresented: self.$isCaregiverCreationPresented) {
                 CreateCaregiverView(onValidate: { caregiver in
                     self.selectedTab = .carereceiverCreation
-                    self.caregiverManagerViewModel.currentCaregiver = caregiver
+                    self.caregiverManager.setCurrentCaregiver(to: caregiver)
                 })
             }
         }
@@ -50,7 +50,7 @@ extension AccountCreationProcess {
         // MARK: Private
 
         @State private var isCaregiverCreationPresented: Bool = false
-        @ObservedObject private var caregiverManagerViewModel: CaregiverManagerViewModel = .shared
+        private let caregiverManager: CaregiverManager = .shared
     }
 }
 
