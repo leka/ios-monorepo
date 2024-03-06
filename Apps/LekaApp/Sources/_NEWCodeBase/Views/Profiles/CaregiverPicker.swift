@@ -23,7 +23,7 @@ struct CaregiverPicker: View {
                             Button {
                                 self.styleManager.colorScheme = caregiver.colorScheme
                                 self.styleManager.accentColor = caregiver.colorTheme.color
-                                self.caregiverManagerViewModel.currentCaregiver = caregiver
+                                self.caregiverManager.setCurrentCaregiver(to: caregiver)
 
                                 if self.authManagerViewModel.userAction == .userIsSigningIn {
                                     self.rootOwnerViewModel.isWelcomeViewPresented = false
@@ -66,15 +66,17 @@ struct CaregiverPicker: View {
 
     // MARK: Private
 
-    private let columns = Array(repeating: GridItem(), count: 4)
-
-    @ObservedObject private var caregiverManagerViewModel: CaregiverManagerViewModel = .shared
     @ObservedObject private var authManagerViewModel: AuthManagerViewModel = .shared
     @ObservedObject private var rootOwnerViewModel = RootOwnerViewModel.shared
     @ObservedObject private var styleManager: StyleManager = .shared
 
+    @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
+
     @State private var selected: String = ""
     @State private var isCaregiverCreationPresented: Bool = false
+
+    private var caregiverManager: CaregiverManager = .shared
+    private let columns = Array(repeating: GridItem(), count: 4)
 }
 
 // MARK: - l10n.CaregiverPicker

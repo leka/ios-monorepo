@@ -42,9 +42,10 @@ struct WelcomeView: View {
 
     // MARK: Private
 
-    @ObservedObject private var caregiverManagerViewModel: CaregiverManagerViewModel = .shared
     @ObservedObject private var authManagerViewModel = AuthManagerViewModel.shared
     @ObservedObject private var rootOwnerViewModel = RootOwnerViewModel.shared
+
+    @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
 }
 
 #Preview {

@@ -77,6 +77,15 @@ public class CaregiverManager {
             .store(in: &self.cancellables)
     }
 
+    public func setCurrentCaregiver(to caregiver: Caregiver) {
+        self.currentCaregiver.send(caregiver)
+    }
+
+    public func resetData() {
+        self.currentCaregiver.send(nil)
+        self.caregiverList.send([])
+    }
+
     // MARK: Internal
 
     var caregiversPublisher: AnyPublisher<[Caregiver], Never> {

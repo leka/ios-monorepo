@@ -70,11 +70,14 @@ struct EditCaregiverView: View {
 
     // MARK: Private
 
-    @ObservedObject private var caregiverManagerViewModel: CaregiverManagerViewModel = .shared
     @ObservedObject private var rootOwnerViewModel: RootOwnerViewModel = .shared
     @ObservedObject private var styleManager: StyleManager = .shared
+
+    @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
+
     @State private var isAvatarPickerPresented: Bool = false
     @State private var isProfessionPickerPresented: Bool = false
+
     var caregiverManager: CaregiverManager = .shared
 
     private var avatarPickerButton: some View {

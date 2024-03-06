@@ -30,7 +30,7 @@ struct MainView: View {
         NavigationSplitView {
             List(selection: self.$navigation.selectedCategory) {
                 if self.authManagerViewModel.userAuthenticationState == .loggedIn {
-                    EditCaregiverLabel(isCaregiverPickerPresented: self.$rootOwnerViewModel.isCaregiverPickerPresented)
+                    EditCaregiverLabel()
                 } else {
                     NoAccountConnectedLabel()
                 }
@@ -144,7 +144,7 @@ struct MainView: View {
 
     // MARK: Private
 
-    @ObservedObject private var caregiverManagerViewModel: CaregiverManagerViewModel = .shared
+    @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
 }
 
 #Preview {
