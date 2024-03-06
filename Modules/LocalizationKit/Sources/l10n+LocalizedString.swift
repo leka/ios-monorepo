@@ -31,12 +31,19 @@ public extension l10n {
     }
 
     static func LocalizedStringInterpolation(
-        _ key: StaticString, value: String.LocalizationValue, comment: StaticString
+        _ key: StaticString, value: String.LocalizationValue, bundle: Bundle? = nil, comment: StaticString, dsoHandle: UnsafeRawPointer = #dsohandle
     ) -> (
         (CVarArg...) -> AttributedString
     ) {
         func localizedArgsOnly(_ arguments: CVarArg...) -> AttributedString {
-            let format = String(localized: key, defaultValue: value, comment: comment)
+            var dlInformation = dl_info()
+            _ = dladdr(dsoHandle, &dlInformation)
+
+            let path = String(cString: dlInformation.dli_fname)
+            let url = URL(fileURLWithPath: path).deletingLastPathComponent()
+            let bundle = bundle ?? Bundle(url: url)
+
+            let format = String(localized: key, defaultValue: value, bundle: bundle, comment: comment)
             let string = String(format: format, arguments: arguments)
             let markdown =
                 (try? AttributedString(
