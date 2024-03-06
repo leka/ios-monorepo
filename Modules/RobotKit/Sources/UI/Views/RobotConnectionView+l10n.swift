@@ -10,32 +10,44 @@ extension l10n {
     enum RobotKit {
         enum RobotConnectionView {
             static let navigationTitle = LocalizedString(
-                "robotkit.robot_connect_view.navigation_title", value: "Connect to a robot",
+                "robotkit.robot_connect_view.navigation_title",
+                bundle: RobotKitResources.bundle,
+                value: "Connect to a robot",
                 comment: "The title of the robot connection view"
             )
 
             static let searchingViewText = LocalizedString(
-                "robotkit.robot_connect_view.searching_view_text", value: "Searching for robots...",
+                "robotkit.robot_connect_view.searching_view_text",
+                bundle: RobotKitResources.bundle,
+                value: "Searching for robots...",
                 comment: "The text displayed in the searching view"
             )
 
             static let cancelButton = LocalizedString(
-                "robotkit.robot_connect_view.cancel_button", value: "Cancel",
+                "robotkit.robot_connect_view.cancel_button",
+                bundle: RobotKitResources.bundle,
+                value: "Cancel",
                 comment: "The title of the cancel button in the toolbar"
             )
 
             static let connectButton = LocalizedString(
-                "robotkit.robot_connect_view.connect_button", value: "Connect",
+                "robotkit.robot_connect_view.connect_button",
+                bundle: RobotKitResources.bundle,
+                value: "Connect",
                 comment: "The title of the connect button"
             )
 
             static let disconnectButton = LocalizedString(
-                "robotkit.robot_connect_view.disconnect_button", value: "Disconnect",
+                "robotkit.robot_connect_view.disconnect_button",
+                bundle: RobotKitResources.bundle,
+                value: "Disconnect",
                 comment: "The title of the disconnect button"
             )
 
             static let continueButton = LocalizedString(
-                "robotkit.robot_connect_view.continue_button", value: "Continue",
+                "robotkit.robot_connect_view.continue_button",
+                bundle: RobotKitResources.bundle,
+                value: "Continue",
                 comment: "The title of the continue button"
             )
         }
