@@ -61,6 +61,7 @@ struct EditCaregiverView: View {
                     Button(String(l10n.EditCaregiverView.saveButtonLabel.characters)) {
                         self.rootOwnerViewModel.isEditCaregiverViewPresented = false
                         self.caregiverManager.updateCaregiver(caregiver: &self.modifiedCaregiver)
+                        self.caregiverManager.fetchAllCaregivers()
                     }
                 }
             }
@@ -91,7 +92,12 @@ struct EditCaregiverView: View {
             }
         }
         .sheet(isPresented: self.$isAvatarPickerPresented) {
-            AvatarPicker(avatar: self.$modifiedCaregiver.avatar)
+            NavigationStack {
+                AvatarPicker(selectedAvatar: self.modifiedCaregiver.avatar,
+                             onValidate: { avatar in
+                                 self.modifiedCaregiver.avatar = avatar
+                             })
+            }
         }
         .frame(maxWidth: .infinity, alignment: .center)
     }
@@ -106,8 +112,11 @@ struct EditCaregiverView: View {
                 }
                 .sheet(isPresented: self.$isProfessionPickerPresented) {
                     NavigationStack {
-                        ProfessionPicker(caregiver: self.$modifiedCaregiver)
-                            .navigationBarTitleDisplayMode(.inline)
+                        ProfessionPicker(selectedProfessionsIDs: self.modifiedCaregiver.professions,
+                                         onValidate: { professions in
+                                             self.modifiedCaregiver.professions = professions
+                                         })
+                                         .navigationBarTitleDisplayMode(.inline)
                     }
                 }
             }

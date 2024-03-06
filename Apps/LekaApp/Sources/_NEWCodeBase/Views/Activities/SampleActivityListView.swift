@@ -29,7 +29,6 @@ struct SampleActivityListView: View {
                                 .buttonStyle(.borderedProminent)
                                 .tint(.lkGreen)
                                 .sheet(isPresented: self.$navigation.isCarereceiverPickerPresented) {
-//                                    NavigationStack {
                                     CarereceiverPicker(onDismiss: {
                                         // nothing to do
                                     }, onSelected: { carereceiver in
@@ -37,9 +36,7 @@ struct SampleActivityListView: View {
                                         self.navigation.currentActivity = self.selectedActivity
                                     }, onSkip: {
                                         self.navigation.currentActivity = self.selectedActivity
-
                                     })
-//                                    }
                                 }
                             }
                         }

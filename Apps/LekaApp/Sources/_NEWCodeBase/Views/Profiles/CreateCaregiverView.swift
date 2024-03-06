@@ -81,7 +81,10 @@ struct CreateCaregiverView: View {
         }
         .sheet(isPresented: self.$isAvatarPickerPresented) {
             NavigationStack {
-                AvatarPicker(avatar: self.$newCaregiver.avatar)
+                AvatarPicker(selectedAvatar: self.newCaregiver.avatar,
+                             onValidate: { avatar in
+                                 self.newCaregiver.avatar = avatar
+                             })
             }
         }
         .frame(maxWidth: .infinity, alignment: .center)
@@ -97,8 +100,11 @@ struct CreateCaregiverView: View {
                 }
                 .sheet(isPresented: self.$isProfessionPickerPresented) {
                     NavigationStack {
-                        ProfessionPicker(caregiver: self.$newCaregiver)
-                            .navigationBarTitleDisplayMode(.inline)
+                        ProfessionPicker(selectedProfessionsIDs: self.newCaregiver.professions,
+                                         onValidate: { professions in
+                                             self.newCaregiver.professions = professions
+                                         })
+                                         .navigationBarTitleDisplayMode(.inline)
                     }
                 }
             }

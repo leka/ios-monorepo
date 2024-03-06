@@ -52,7 +52,7 @@ struct CarereceiverPicker: View {
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Button {
-                        self.action = .dimiss
+                        self.action = .dismiss
                         self.dismiss()
                     } label: {
                         Text(l10n.CarereceiverPicker.closeButtonLabel)
@@ -81,7 +81,7 @@ struct CarereceiverPicker: View {
         }
         .onDisappear {
             switch self.action {
-                case .dimiss:
+                case .dismiss:
                     self.onDismiss?()
                 case .select:
                     if let selectedCarereceiver = self.selectedCarereceiver {
@@ -100,7 +100,7 @@ struct CarereceiverPicker: View {
     // MARK: Private
 
     private enum ActionType {
-        case dimiss
+        case dismiss
         case select
         case skip
     }
