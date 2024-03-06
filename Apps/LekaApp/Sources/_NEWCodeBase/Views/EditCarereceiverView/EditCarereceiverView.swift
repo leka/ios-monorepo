@@ -52,6 +52,7 @@ struct EditCarereceiverView: View {
                     Button(String(l10n.EditCarereceiverView.saveButtonLabel.characters)) {
                         self.rootOwnerViewModel.isEditCarereceiverViewPresented = false
                         self.carereceiverManager.updateCarereceiver(carereceiver: &self.modifiedCarereceiver)
+                        self.carereceiverManager.fetchAllCarereceivers()
                     }
                 }
             }
@@ -60,10 +61,7 @@ struct EditCarereceiverView: View {
 
     // MARK: Private
 
-    @StateObject private var carereceiverManagerViewModel = CarereceiverManagerViewModel()
-
     @ObservedObject private var rootOwnerViewModel: RootOwnerViewModel = .shared
-
     @State private var isAvatarPickerPresented: Bool = false
 
     var carereceiverManager: CarereceiverManager = .shared

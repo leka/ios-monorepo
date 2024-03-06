@@ -12,16 +12,16 @@ import SwiftUI
 struct CreateCaregiverView: View {
     // MARK: Lifecycle
 
-    init(onCancel: (() -> Void)? = nil, onValidate: ((Caregiver) -> Void)? = nil) {
+    init(onCancel: (() -> Void)? = nil, onCreated: ((Caregiver) -> Void)? = nil) {
         self.onCancel = onCancel
-        self.onValidate = onValidate
+        self.onCreated = onCreated
     }
 
     // MARK: Internal
 
     @Environment(\.dismiss) var dismiss
     var onCancel: (() -> Void)?
-    var onValidate: ((Caregiver) -> Void)?
+    var onCreated: ((Caregiver) -> Void)?
 
     var caregiverManager: CaregiverManager = .shared
 
@@ -53,7 +53,7 @@ struct CreateCaregiverView: View {
 
                     Button(String(l10n.CaregiverCreation.registerProfilButton.characters)) {
                         withAnimation {
-                            self.action = .validate
+                            self.action = .created
                             self.dismiss()
                         }
                         if self.newCaregiver.avatar.isEmpty {
@@ -84,8 +84,8 @@ struct CreateCaregiverView: View {
                 switch self.action {
                     case .cancel:
                         self.onCancel?()
-                    case .validate:
-                        self.onValidate?(self.newCaregiver)
+                    case .created:
+                        self.onCreated?(self.newCaregiver)
                     case .none:
                         break
                 }
@@ -99,7 +99,7 @@ struct CreateCaregiverView: View {
 
     private enum ActionType {
         case cancel
-        case validate
+        case created
     }
 
     @State private var newCaregiver = Caregiver()
@@ -183,5 +183,5 @@ extension l10n {
 
 #Preview {
     CreateCaregiverView(onCancel: { print("Creation canceled") },
-                        onValidate: { print("Caregiver \($0.firstName) validated") })
+                        onCreated: { print("Caregiver \($0.firstName) created") })
 }
