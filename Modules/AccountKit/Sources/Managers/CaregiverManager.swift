@@ -8,7 +8,7 @@ public class CaregiverManager {
     // MARK: Lifecycle
 
     private init() {
-        self.fetchAllCaregivers()
+        // Nothing to do
     }
 
     // MARK: Public
