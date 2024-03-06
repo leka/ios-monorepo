@@ -40,7 +40,7 @@ extension AccountCreationProcess {
             .multilineTextAlignment(.center)
             .frame(maxWidth: .infinity, alignment: .center)
             .sheet(isPresented: self.$isCaregiverCreationPresented) {
-                CreateCaregiverView(onValidate: { caregiver in
+                CreateCaregiverView(onCreated: { caregiver in
                     self.selectedTab = .carereceiverCreation
                     self.caregiverManager.setCurrentCaregiver(to: caregiver)
                 })
