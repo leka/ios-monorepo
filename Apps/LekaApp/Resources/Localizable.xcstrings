@@ -1946,6 +1946,24 @@
                 }
             }
         },
+        "settings_view.change_language_section.button_label": {
+            "comment": "Change app language button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Change app language"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Changer la langue de l'application"
+                    }
+                }
+            }
+        },
         "settings_view.close_button_label": {
             "comment": "Close button label of Settings View",
             "extractionState": "extracted_with_value",
