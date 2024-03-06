@@ -3,7 +3,6 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import AccountKit
-import DesignKit
 import SwiftUI
 
 class RootOwnerViewModel: ObservableObject {
@@ -27,14 +26,4 @@ class RootOwnerViewModel: ObservableObject {
     @Published var showConfirmCredentialsChange: Bool = false
     @Published var showConfirmDisconnection: Bool = false
     @Published var showConfirmDeleteAccount: Bool = false
-
-    func getReinforcerFor(index: Int) -> UIImage {
-        switch index {
-            case 2: DesignKitAsset.Reinforcers.spinBlinkBlueViolet.image
-            case 3: DesignKitAsset.Reinforcers.fire.image
-            case 4: DesignKitAsset.Reinforcers.sprinkles.image
-            case 5: DesignKitAsset.Reinforcers.rainbow.image
-            default: DesignKitAsset.Reinforcers.spinBlinkGreenOff.image
-        }
-    }
 }

@@ -33,7 +33,7 @@ struct CarereceiverView: View {
                                         .fill(Color(uiColor: UIColor.systemGray6))
                                 }
                                 .overlay {
-                                    Image(uiImage: self.rootOwnerViewModel.getReinforcerFor(index: self.carereceiver.reinforcer))
+                                    Image(uiImage: self.carereceiver.reinforcer.image)
                                         .resizable()
                                         .aspectRatio(contentMode: .fit)
                                         .padding(5)
@@ -103,7 +103,7 @@ extension l10n {
         carereceiver: Carereceiver(
             username: "Peet",
             avatar: Avatars.categories[0].avatars[0],
-            reinforcer: 2
+            reinforcer: .fire
         )
     )
 }
