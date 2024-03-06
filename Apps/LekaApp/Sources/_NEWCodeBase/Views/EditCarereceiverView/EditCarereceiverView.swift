@@ -50,9 +50,8 @@ struct EditCarereceiverView: View {
                 }
                 ToolbarItem(placement: .topBarTrailing) {
                     Button(String(l10n.EditCarereceiverView.saveButtonLabel.characters)) {
-                        // TODO: (@mathieu) - Add Firestore logic
                         self.rootOwnerViewModel.isEditCarereceiverViewPresented = false
-                        self.rootOwnerViewModel.currentCarereceiver = self.modifiedCarereceiver
+                        self.carereceiverManager.updateCarereceiver(carereceiver: &self.modifiedCarereceiver)
                     }
                 }
             }
@@ -61,8 +60,13 @@ struct EditCarereceiverView: View {
 
     // MARK: Private
 
+    @StateObject private var carereceiverManagerViewModel = CarereceiverManagerViewModel()
+
     @ObservedObject private var rootOwnerViewModel: RootOwnerViewModel = .shared
+
     @State private var isAvatarPickerPresented: Bool = false
+
+    var carereceiverManager: CarereceiverManager = .shared
 
     private var avatarPickerButton: some View {
         Button {
