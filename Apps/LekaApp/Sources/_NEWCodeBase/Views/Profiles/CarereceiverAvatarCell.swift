@@ -38,7 +38,7 @@ struct CarereceiverAvatarCell: View {
                                 .fill(Color(uiColor: UIColor.systemGray6))
                         }
                         .overlay {
-                            Image(uiImage: self.rootOwnerViewModel.getReinforcerFor(index: self.carereceiver.reinforcer))
+                            Image(uiImage: self.rootOwnerViewModel.getReinforcerImage(for: self.carereceiver.reinforcer))
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .padding(5)
@@ -65,7 +65,7 @@ struct CarereceiverAvatarCell: View {
         carereceiver: Carereceiver(
             username: "Chantal",
             avatar: Avatars.categories[2].avatars[4],
-            reinforcer: 2
+            reinforcer: .fire
         )
     )
 }

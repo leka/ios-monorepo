@@ -4,6 +4,7 @@
 
 import AccountKit
 import DesignKit
+import RobotKit
 import SwiftUI
 
 class RootOwnerViewModel: ObservableObject {
@@ -28,12 +29,12 @@ class RootOwnerViewModel: ObservableObject {
     @Published var showConfirmDisconnection: Bool = false
     @Published var showConfirmDeleteAccount: Bool = false
 
-    func getReinforcerFor(index: Int) -> UIImage {
-        switch index {
-            case 2: DesignKitAsset.Reinforcers.spinBlinkBlueViolet.image
-            case 3: DesignKitAsset.Reinforcers.fire.image
-            case 4: DesignKitAsset.Reinforcers.sprinkles.image
-            case 5: DesignKitAsset.Reinforcers.rainbow.image
+    func getReinforcerImage(for reinforcer: Robot.Reinforcer) -> UIImage {
+        switch reinforcer {
+            case .spinBlinkBlueViolet: DesignKitAsset.Reinforcers.spinBlinkBlueViolet.image
+            case .fire: DesignKitAsset.Reinforcers.fire.image
+            case .sprinkles: DesignKitAsset.Reinforcers.sprinkles.image
+            case .rainbow: DesignKitAsset.Reinforcers.rainbow.image
             default: DesignKitAsset.Reinforcers.spinBlinkGreenOff.image
         }
     }

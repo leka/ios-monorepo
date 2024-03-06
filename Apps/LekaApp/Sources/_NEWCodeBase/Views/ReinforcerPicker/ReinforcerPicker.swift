@@ -5,6 +5,7 @@
 import AccountKit
 import DesignKit
 import LocalizationKit
+import RobotKit
 import SwiftUI
 
 // MARK: - ReinforcerPicker
@@ -16,18 +17,18 @@ struct ReinforcerPicker: View {
 
     var body: some View {
         HStack {
-            ForEach(1...5, id: \.self) { number in
-                Image(uiImage: self.rootOwnerViewModel.getReinforcerFor(index: number))
+            ForEach(Robot.Reinforcer.allCases, id: \.self) { reinforcer in
+                Image(uiImage: self.rootOwnerViewModel.getReinforcerImage(for: reinforcer))
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(maxWidth: 50)
                     .padding(5)
                     .background(
                         Circle()
-                            .stroke(self.styleManager.accentColor!, lineWidth: self.carereceiver.reinforcer == number ? 2 : 0)
+                            .stroke(self.styleManager.accentColor!, lineWidth: self.carereceiver.reinforcer == reinforcer ? 2 : 0)
                     )
                     .onTapGesture {
-                        self.carereceiver.reinforcer = number
+                        self.carereceiver.reinforcer = reinforcer
                     }
             }
         }

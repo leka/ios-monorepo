@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import RobotKit
 import SwiftUI
 
 public extension Carereceiver {
@@ -9,7 +10,7 @@ public extension Carereceiver {
          rootOwnerUid: String = "",
          username: String = "",
          avatar: String = "",
-         reinforcer: Int = 1)
+         reinforcer: Robot.Reinforcer = .rainbow)
     {
         self.id = id
         self.rootOwnerUid = rootOwnerUid
