@@ -4,11 +4,11 @@
 
 version: 1.0.0
 
-uuid: E7EE9CA4B13B49AF96CD77A9DF90833B
-name: sample_3
+uuid: 6102794F02D3423482E243BCBC7F8CA8
+name: sample_2
 
-created_at: "2024-02-28T14:49:33.391679"
-last_edited_at: "2024-02-29T11:06:01.695641"
+created_at: "2024-02-28T14:49:34.312602"
+last_edited_at: "2024-03-05T09:59:06.751849"
 status: published
 
 authors:
@@ -42,9 +42,9 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon: sample_3
+      icon: sample_2
 
-      title: Activité d'exemple 3 - modified for testing - again without update of last_edited_at
+      title: Activité d'exemple 2
       subtitle: pour le développement
 
       short_description: >
@@ -73,9 +73,9 @@ l10n:
 
   - locale: en_US
     details:
-      icon: sample_3
+      icon: sample_2
 
-      title: Sample activity 3
+      title: Sample activity 2
       subtitle: for development
 
       short_description: >
@@ -104,8 +104,8 @@ l10n:
 
 exercises_payload:
   options:
-    shuffle_exercises: false
-    shuffle_groups: true
+    shuffle_exercises: true
+    shuffle_groups: false
 
   exercise_groups:
     - group:
