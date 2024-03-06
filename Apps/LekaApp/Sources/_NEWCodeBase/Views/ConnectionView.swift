@@ -63,7 +63,7 @@ struct ConnectionView: View {
         .onChange(of: self.authManagerViewModel.userAuthenticationState) { newValue in
             if newValue == .loggedIn {
                 self.caregiverManager.fetchAllCaregivers()
-
+                self.carereceiverManager.fetchAllCarereceivers()
                 self.viewModel.navigateToCaregiverSelection.toggle()
             }
         }
@@ -80,6 +80,7 @@ struct ConnectionView: View {
     @StateObject private var viewModel = ConnectionViewViewModel()
     @ObservedObject private var rootOwnerViewModel: RootOwnerViewModel = .shared
     @ObservedObject private var authManagerViewModel: AuthManagerViewModel = .shared
+
     private var authManager: AuthManager = .shared
     private var caregiverManager: CaregiverManager = .shared
     private var carereceiverManager: CarereceiverManager = .shared

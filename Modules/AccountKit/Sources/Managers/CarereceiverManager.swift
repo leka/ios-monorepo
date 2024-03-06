@@ -8,7 +8,7 @@ public class CarereceiverManager {
     // MARK: Lifecycle
 
     private init() {
-        self.fetchAllCarereceivers()
+        // Nothing to do
     }
 
     // MARK: Public
