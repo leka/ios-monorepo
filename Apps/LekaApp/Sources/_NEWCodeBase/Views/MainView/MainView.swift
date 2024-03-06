@@ -135,6 +135,8 @@ struct MainView: View {
                 }
             }
             if case authState = .loggedIn {
+                self.caregiverManager.fetchAllCaregivers()
+                self.carereceiverManager.fetchAllCarereceivers()
                 if !self.rootOwnerViewModel.isWelcomeViewPresented {
                     self.rootOwnerViewModel.isCaregiverPickerPresented = (self.caregiverManagerViewModel.currentCaregiver == nil)
                 }
@@ -145,6 +147,9 @@ struct MainView: View {
     // MARK: Private
 
     @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
+
+    private var caregiverManager: CaregiverManager = .shared
+    private var carereceiverManager: CarereceiverManager = .shared
 }
 
 #Preview {
