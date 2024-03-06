@@ -18,7 +18,7 @@ struct ReinforcerPicker: View {
     var body: some View {
         HStack {
             ForEach(Robot.Reinforcer.allCases, id: \.self) { reinforcer in
-                Image(uiImage: self.rootOwnerViewModel.getReinforcerImage(for: reinforcer))
+                Image(uiImage: reinforcer.image)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(maxWidth: 50)

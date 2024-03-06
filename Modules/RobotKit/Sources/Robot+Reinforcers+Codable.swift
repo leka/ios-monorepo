@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import DesignKit
 import SwiftUI
 
 extension Robot.Reinforcer: Codable {
@@ -38,5 +39,15 @@ extension Robot.Reinforcer: Codable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.singleValueContainer()
         try container.encode(self.stringValue)
+    }
+
+    public var image: UIImage {
+        switch self {
+            case .spinBlinkBlueViolet: DesignKitAsset.Reinforcers.spinBlinkBlueViolet.image
+            case .fire: DesignKitAsset.Reinforcers.fire.image
+            case .sprinkles: DesignKitAsset.Reinforcers.sprinkles.image
+            case .rainbow: DesignKitAsset.Reinforcers.rainbow.image
+            default: DesignKitAsset.Reinforcers.spinBlinkGreenOff.image
+        }
     }
 }
