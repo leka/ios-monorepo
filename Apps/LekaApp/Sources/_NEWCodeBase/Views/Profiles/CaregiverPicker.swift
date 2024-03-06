@@ -41,7 +41,7 @@ struct CaregiverPicker: View {
             .padding(.horizontal, 50)
             .navigationTitle(String(l10n.CaregiverPicker.title.characters))
             .sheet(isPresented: self.$isCaregiverCreationPresented) {
-                CreateCaregiverView(isPresented: self.$isCaregiverCreationPresented) {}
+                CreateCaregiverView()
             }
             .toolbar {
                 if self.caregiverManagerViewModel.currentCaregiver != nil {

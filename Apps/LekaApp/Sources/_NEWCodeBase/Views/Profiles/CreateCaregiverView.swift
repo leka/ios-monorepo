@@ -10,11 +10,20 @@ import SwiftUI
 // MARK: - CreateCaregiverView
 
 struct CreateCaregiverView: View {
+    // MARK: Lifecycle
+
+    init(onCancel: (() -> Void)? = nil, onValidate: ((Caregiver) -> Void)? = nil) {
+        self.onCancel = onCancel
+        self.onValidate = onValidate
+    }
+
     // MARK: Internal
 
-    @Binding var isPresented: Bool
-    @State private var newCaregiver = Caregiver()
-    var onDismissAction: () -> Void
+    @Environment(\.dismiss) var dismiss
+    var onCancel: (() -> Void)?
+    var onValidate: ((Caregiver) -> Void)?
+
+    var caregiverManager: CaregiverManager = .shared
 
     var body: some View {
         NavigationStack {
@@ -44,8 +53,8 @@ struct CreateCaregiverView: View {
 
                     Button(String(l10n.CaregiverCreation.registerProfilButton.characters)) {
                         withAnimation {
-                            self.isPresented.toggle()
-                            self.onDismissAction()
+                            self.action = .validate
+                            self.dismiss()
                         }
                         if self.newCaregiver.avatar.isEmpty {
                             self.newCaregiver.avatar = Avatars.categories.first!.avatars.randomElement()!
@@ -60,14 +69,43 @@ struct CreateCaregiverView: View {
             }
             .navigationTitle(String(l10n.CaregiverCreation.title.characters))
             .navigationBarTitleDisplayMode(.inline)
+            .interactiveDismissDisabled()
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button {
+                        self.action = .cancel
+                        self.dismiss()
+                    } label: {
+                        Image(systemName: "xmark.circle")
+                    }
+                }
+            }
+            .onDisappear {
+                switch self.action {
+                    case .cancel:
+                        self.onCancel?()
+                    case .validate:
+                        self.onValidate?(self.newCaregiver)
+                    case .none:
+                        break
+                }
+
+                self.action = nil
+            }
         }
     }
 
     // MARK: Private
 
+    private enum ActionType {
+        case cancel
+        case validate
+    }
+
+    @State private var newCaregiver = Caregiver()
     @State private var isAvatarPickerPresented: Bool = false
     @State private var isProfessionPickerPresented: Bool = false
-    var caregiverManager: CaregiverManager = .shared
+    @State private var action: ActionType?
 
     private var avatarPickerButton: some View {
         Button {
@@ -144,7 +182,6 @@ extension l10n {
 // swiftlint:enable line_length
 
 #Preview {
-    CreateCaregiverView(isPresented: .constant(true)) {
-        print("Caregiver saved")
-    }
+    CreateCaregiverView(onCancel: { print("Creation canceled") },
+                        onValidate: { print("Caregiver \($0.firstName) validated") })
 }

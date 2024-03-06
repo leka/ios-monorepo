@@ -14,7 +14,7 @@ struct CreateCarereceiverView: View {
 
     @Binding var isPresented: Bool
     @State private var newCarereceiver = Carereceiver()
-    var onDismissAction: () -> Void
+    var onDismiss: (Carereceiver) -> Void
 
     var body: some View {
         NavigationStack {
@@ -35,7 +35,7 @@ struct CreateCarereceiverView: View {
                     Button(String(l10n.CarereceiverCreation.registerProfilButton.characters)) {
                         withAnimation {
                             self.isPresented.toggle()
-                            self.onDismissAction()
+                            self.onDismiss(self.newCarereceiver)
                         }
                         if self.newCarereceiver.avatar.isEmpty {
                             self.newCarereceiver.avatar = Avatars.categories.first!.avatars.randomElement()!
@@ -99,7 +99,7 @@ extension l10n {
 // swiftlint:enable line_length
 
 #Preview {
-    CreateCarereceiverView(isPresented: .constant(true)) {
-        print("Carereceiver saved")
+    CreateCarereceiverView(isPresented: .constant(true)) { carereceiver in
+        print("Carereceiver \(carereceiver.username) saved")
     }
 }
