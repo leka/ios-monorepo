@@ -144,7 +144,7 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: salad_green
+              - value: salad
                 type: image
                 category: catA
               - value: salad_light_green
@@ -202,7 +202,7 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: salad_green
+              - value: salad
                 type: image
                 category: catA
               - value: salad_light_green
@@ -260,7 +260,7 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: salad_green
+              - value: salad
                 type: image
                 category: catA
               - value: salad_dark_green

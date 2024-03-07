@@ -89,7 +89,7 @@ exercises_payload:
               value: basket
               type: image
             choices:
-              - value: mushroom-white
+              - value: mushroom_white
                 type: image
                 dropZone: zoneA
               - value: salad
@@ -119,7 +119,7 @@ exercises_payload:
                 type: image
               - value: cherry
                 type: image
-              - value: mushroom-white
+              - value: mushroom_white
                 type: image
 
         - instructions:
@@ -135,7 +135,7 @@ exercises_payload:
               value: basket
               type: image
             choices:
-              - value: apple
+              - value: apple_green
                 type: image
                 dropZone: zoneA
               - value: potato
@@ -163,7 +163,7 @@ exercises_payload:
                 dropZone: zoneA
               - value: salad
                 type: image
-              - value: mushroom-brown
+              - value: mushroom_brown
                 type: image
               - value: carrot
                 type: image
@@ -188,7 +188,7 @@ exercises_payload:
                 type: image
               - value: cherry
                 type: image
-              - value: apple-red
+              - value: apple_red
                 type: image
 
         - instructions:
@@ -209,7 +209,7 @@ exercises_payload:
                 dropZone: zoneA
               - value: salad
                 type: image
-              - value: mushroom-gray
+              - value: mushroom_gray
                 type: image
               - value: potato
                 type: image
@@ -253,9 +253,9 @@ exercises_payload:
               - value: salad
                 type: image
                 dropZone: zoneA
-              - value: apple-yellow
+              - value: apple_yellow
                 type: image
-              - value: mushroom-brown
+              - value: mushroom_brown
                 type: image
               - value: cherry
                 type: image
@@ -273,7 +273,7 @@ exercises_payload:
               value: basket
               type: image
             choices:
-              - value: apple-green
+              - value: apple_green
                 type: image
                 dropZone: zoneA
               - value: grape
@@ -301,7 +301,7 @@ exercises_payload:
                 dropZone: zoneA
               - value: cherry
                 type: image
-              - value: mushroom-white
+              - value: mushroom_white
                 type: image
               - value: strawberry
                 type: image

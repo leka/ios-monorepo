@@ -91,7 +91,7 @@ exercises_payload:
               - value: banana
                 type: image
                 dropZone: zoneA
-              - value: apple
+              - value: apple_green
                 type: image
 
         - instructions:
@@ -108,7 +108,7 @@ exercises_payload:
             choices:
               - value: potato
                 type: image
-              - value: apple
+              - value: apple_green
                 type: image
                 dropZone: zoneA
 
@@ -160,7 +160,7 @@ exercises_payload:
               value: basket
               type: image
             choices:
-              - value: mushroom-brown
+              - value: mushroom_brown
                 type: image
                 dropZone: zoneA
               - value: potato
@@ -235,7 +235,7 @@ exercises_payload:
               - value: carrot
                 type: image
                 dropZone: zoneA
-              - value: mushroom-gray
+              - value: mushroom_gray
                 type: image
 
         - instructions:
