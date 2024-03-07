@@ -23,7 +23,7 @@ env:
 
 jobs:
   internal_beta_release:
-    if: contains(github.event.label.name, 'fastlane:rbi')
+    if: contains(github.event.label.name, 'fastlane:beta')
     name: fastlane release beta_internal
     runs-on: [self-hosted, iOS]
 
