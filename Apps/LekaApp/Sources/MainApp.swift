@@ -25,7 +25,6 @@ struct LekaApp: App {
     @Environment(\.colorScheme) var colorScheme
 
     @ObservedObject var styleManager: StyleManager = .shared
-    @ObservedObject var rootOwnerViewModel = RootOwnerViewModel.shared
 
     @StateObject var authManagerViewModel = AuthManagerViewModel.shared
 

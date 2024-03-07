@@ -46,7 +46,6 @@ struct CurriculumsView: View {
 
     // MARK: Private
 
-    @ObservedObject private var rootOwnerViewModel: RootOwnerViewModel = .shared
     @ObservedObject private var styleManager: StyleManager = .shared
 }
 
