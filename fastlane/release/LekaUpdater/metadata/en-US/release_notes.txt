@@ -1,8 +1,8 @@
-## v1.4.1
+## Leka Updater v1.4.1
 
-- 🐛️ Fix robot connection view localization - in French, the view was appearing in English
+- Fix robot connection view localization - in French, the view was appearing in English
 
-## v1.4.0
+## LekaOS v1.4.0
 
 This new version is a complete rewrite of our previous app.
 
@@ -11,7 +11,7 @@ The design is now more engaging, important information is easily readable, and a
 
 And that's not all! This new version includes our latest firmware update, LekaOS v1.4.0, which introduces a host of new features:
 
-- ⚡️ Enhanced Stability: The robot now boasts improved stability during motion, ensuring smoother transitions and steadier movements.
-- ⚡️ Precision in Rotations: We've fine-tuned the robot's rotational movements for greater accuracy and fluidity.
-- 🌐 Language Support in Autonomous Mode: When the "Dice" card is recognized, the autonomous activities menu is now conveniently displayed in English.
-- 🐛 Inactivity Timeout: To conserve energy and enhance safety, the robot will automatically exit autonomous mode after 10 minutes of inactivity.
+- Enhanced Stability: The robot now boasts improved stability during motion, ensuring smoother transitions and steadier movements.
+- Precision in Rotations: We've fine-tuned the robot's rotational movements for greater accuracy and fluidity.
+- Language Support in Autonomous Mode: When the "Dice" card is recognized, the autonomous activities menu is now conveniently displayed in English.
+- Inactivity Timeout: To conserve energy and enhance safety, the robot will automatically exit autonomous mode after 10 minutes of inactivity.
