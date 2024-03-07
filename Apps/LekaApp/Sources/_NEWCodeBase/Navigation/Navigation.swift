@@ -2,6 +2,8 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AccountKit
+import Combine
 import ContentKit
 import SwiftUI
 
@@ -9,7 +11,7 @@ class Navigation: ObservableObject {
     // MARK: Lifecycle
 
     private init() {
-        // nothing to do
+        self.subscribeAuthentificationStateUpdates()
     }
 
     // MARK: Internal
@@ -48,11 +50,25 @@ class Navigation: ObservableObject {
 
     // MARK: Private
 
+    private var authManager: AuthManager = .shared
+    private var cancellables: Set<AnyCancellable> = []
+
     private var isProgrammaticNavigation: Bool = false
 
     private var pushPopNoAnimationTransaction: Transaction {
         var transaction = Transaction(animation: nil)
         transaction.disablesAnimations = true
         return transaction
+    }
+
+    private func subscribeAuthentificationStateUpdates() {
+        self.authManager.authenticationStatePublisher
+            .receive(on: DispatchQueue.main)
+            .sink {
+                if $0 != .loggedIn {
+                    self.selectedCategory = .news
+                }
+            }
+            .store(in: &self.cancellables)
     }
 }
