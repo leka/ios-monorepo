@@ -7,9 +7,20 @@ import Foundation
 // swift-format-ignore: AlwaysUseLowerCamelCase
 // swiftlint:disable identifier_name
 
+// ? LOCALIZED_STRING_MACRO_NAMES
+// ? See https://forums.developer.apple.com/forums/thread/736941
+// ? Format
+// ? func NSLocalizedString(
+// ?     _ key: String,
+// ?     tableName: String? = nil,
+// ?     bundle: Bundle = Bundle.main,
+// ?     value: String = "",
+// ?     comment: String
+// ? ) -> String
+
 public extension l10n {
     static func LocalizedString(
-        _ key: StaticString, value: String.LocalizationValue, bundle: Bundle? = nil, comment: StaticString, dsoHandle: UnsafeRawPointer = #dsohandle
+        _ key: StaticString, bundle: Bundle? = nil, value: String.LocalizationValue, comment: StaticString, dsoHandle: UnsafeRawPointer = #dsohandle
     )
         -> AttributedString
     {
@@ -31,7 +42,7 @@ public extension l10n {
     }
 
     static func LocalizedStringInterpolation(
-        _ key: StaticString, value: String.LocalizationValue, bundle: Bundle? = nil, comment: StaticString, dsoHandle: UnsafeRawPointer = #dsohandle
+        _ key: StaticString, bundle: Bundle? = nil, value: String.LocalizationValue, comment: StaticString, dsoHandle: UnsafeRawPointer = #dsohandle
     ) -> (
         (CVarArg...) -> AttributedString
     ) {

@@ -4,11 +4,10 @@
 
 import LocalizationKit
 
-// swiftlint:disable line_length
-
 extension l10n {
     enum PairingView {
         static let instructions = LocalizedString("lekaapp.pairing_view.player.instructions",
+                                                  bundle: GameEngineKitResources.bundle,
                                                   value: """
                                                       Pairing mode allows the accompanied person to become familiar with Leka
                                                       before even entering into learning Activities and Curriculums.
@@ -17,12 +16,19 @@ extension l10n {
                                                       """,
                                                   comment: "PairingView instructions")
 
-        static let playButtonLabel = LocalizedString("lekaapp.pairing_view.play_button_label", value: "Play", comment: "PairingView play button label")
+        static let playButtonLabel = LocalizedString("lekaapp.pairing_view.play_button_label",
+                                                     bundle: GameEngineKitResources.bundle,
+                                                     value: "Play",
+                                                     comment: "PairingView play button label")
 
-        static let pauseButtonLabel = LocalizedString("lekaapp.pairing_view.pause_button_label", value: "Pause", comment: "PairingView pause button label")
+        static let pauseButtonLabel = LocalizedString("lekaapp.pairing_view.pause_button_label",
+                                                      bundle: GameEngineKitResources.bundle,
+                                                      value: "Pause",
+                                                      comment: "PairingView pause button label")
 
-        static let stopButtonLabel = LocalizedString("lekaapp.pairing_view.stop_button_label", value: "Stop", comment: "PairingView stop button label")
+        static let stopButtonLabel = LocalizedString("lekaapp.pairing_view.stop_button_label",
+                                                     bundle: GameEngineKitResources.bundle,
+                                                     value: "Stop",
+                                                     comment: "PairingView stop button label")
     }
 }
-
-// swiftlint:enable line_length

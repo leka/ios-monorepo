@@ -387,7 +387,7 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Found !"
+                        "value": "Found!"
                     }
                 },
                 "fr": {
@@ -405,7 +405,7 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Encourage the care receiver to seek Leka.\nYou can throw a reinforcer to give him\na visual and/or audible clue.\nPress FOUND ! once the robot found."
+                        "value": "Encourage the care receiver to seek Leka.\nYou can throw a reinforcer to give him\na visual and/or audible clue.\nPress FOUND! once the robot found."
                     }
                 },
                 "fr": {
