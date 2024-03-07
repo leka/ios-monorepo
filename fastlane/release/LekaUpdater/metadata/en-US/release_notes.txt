@@ -1,3 +1,9 @@
+## v1.4.1
+
+- 🐛️ Fix robot connection view localization - in French, the view was appearing in English
+
+## v1.4.0
+
 This new version is a complete rewrite of our previous app.
 
 Thanks to our amazing users and their invaluable feedback, both the user experience and the user interface have been significantly enhanced.

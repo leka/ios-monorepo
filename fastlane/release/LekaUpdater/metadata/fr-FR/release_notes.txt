@@ -1,3 +1,9 @@
+## v1.4.1
+
+- 🐛️ Correction de la loc viewalisation de la vue de connexion au robot - en français, la vue apparaissait en anglais
+
+## v1.4.0
+
 Cette nouvelle version est une réécriture complète de notre application précédente.
 
 Grâce à nos incroyables utilisateurs et à leurs retours précieux, l'expérience utilisateur et l'interface utilisateur ont été significativement améliorées.
