@@ -63,11 +63,11 @@ l10n:
 
       description: |
         The care receiver has to drag and drop into the basket the same image than the one already here.
-    
+
       instructions: |
         - On the iPad screen, there is an image already into the basket and two images out of the basket
         - Encourage the care receiver to drag and drop into the basket the same image as the one already in the basket
-        - When the answer is correct, Leka launches a reinforcer 
+        - When the answer is correct, Leka launches a reinforcer
 
 exercises_payload:
   options:
@@ -84,10 +84,9 @@ exercises_payload:
           interface: dragAndDropIntoZones
           gameplay: findTheRightAnswers
           payload:
-            shuffle_choices: true
             dropZoneA:
               value: basket
-              type: image            
+              type: image
             choices:
               - value: banana
                 type: image
@@ -103,16 +102,15 @@ exercises_payload:
           interface: dragAndDropIntoZones
           gameplay: findTheRightAnswers
           payload:
-            shuffle_choices: true
             dropZoneA:
               value: basket
-              type: image            
+              type: image
             choices:
+              - value: potato
+                type: image
               - value: apple
                 type: image
                 dropZone: zoneA
-              - value: potato
-                type: image
 
         - instructions:
             - locale: fr_FR
@@ -122,16 +120,15 @@ exercises_payload:
           interface: dragAndDropIntoZones
           gameplay: findTheRightAnswers
           payload:
-            shuffle_choices: true
             dropZoneA:
               value: basket
-              type: image            
+              type: image
             choices:
+              - value: banana
+                type: image
               - value: mushroom-white
                 type: image
                 dropZone: zoneA
-              - value: banana
-                type: image
 
         - instructions:
             - locale: fr_FR
@@ -141,16 +138,15 @@ exercises_payload:
           interface: dragAndDropIntoZones
           gameplay: findTheRightAnswers
           payload:
-            shuffle_choices: true
             dropZoneA:
               value: basket
-              type: image            
+              type: image
             choices:
+              - value: potato
+                type: image
               - value: banana
                 type: image
                 dropZone: zoneA
-              - value: potato
-                type: image  
 
         - instructions:
             - locale: fr_FR
@@ -160,10 +156,9 @@ exercises_payload:
           interface: dragAndDropIntoZones
           gameplay: findTheRightAnswers
           payload:
-            shuffle_choices: true
             dropZoneA:
               value: basket
-              type: image            
+              type: image
             choices:
               - value: mushroom-brown
                 type: image
@@ -179,10 +174,9 @@ exercises_payload:
           interface: dragAndDropIntoZones
           gameplay: findTheRightAnswers
           payload:
-            shuffle_choices: true
             dropZoneA:
               value: basket
-              type: image            
+              type: image
             choices:
               - value: cherry
                 type: image
@@ -198,16 +192,15 @@ exercises_payload:
           interface: dragAndDropIntoZones
           gameplay: findTheRightAnswers
           payload:
-            shuffle_choices: true
             dropZoneA:
               value: basket
-              type: image            
+              type: image
             choices:
+              - value: grape
+                type: image
               - value: salad
                 type: image
                 dropZone: zoneA
-              - value: grape
-                type: image
 
         - instructions:
             - locale: fr_FR
@@ -217,10 +210,9 @@ exercises_payload:
           interface: dragAndDropIntoZones
           gameplay: findTheRightAnswers
           payload:
-            shuffle_choices: true
             dropZoneA:
               value: basket
-              type: image            
+              type: image
             choices:
               - value: potato
                 type: image
@@ -236,10 +228,9 @@ exercises_payload:
           interface: dragAndDropIntoZones
           gameplay: findTheRightAnswers
           payload:
-            shuffle_choices: true
             dropZoneA:
               value: basket
-              type: image            
+              type: image
             choices:
               - value: carrot
                 type: image
@@ -255,13 +246,12 @@ exercises_payload:
           interface: dragAndDropIntoZones
           gameplay: findTheRightAnswers
           payload:
-            shuffle_choices: true
             dropZoneA:
               value: basket
-              type: image            
+              type: image
             choices:
+              - value: carrot
+                type: image
               - value: cherry
                 type: image
                 dropZone: zoneA
-              - value: carrot
-                type: image                                                                                                                                             

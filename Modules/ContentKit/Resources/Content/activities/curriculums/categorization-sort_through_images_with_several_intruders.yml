@@ -63,11 +63,11 @@ l10n:
 
       description: |
         The care receiver has to drag and drop into the basket the same image than the one already here.
-    
+
       instructions: |
         - On the iPad screen, there is an image already into the basket and four images out of the basket
         - Encourage the care receiver to drag and drop into the basket the same image as the one already in the basket
-        - When the answer is correct, Leka launches a reinforcer 
+        - When the answer is correct, Leka launches a reinforcer
 
 exercises_payload:
   options:
@@ -87,7 +87,7 @@ exercises_payload:
             shuffle_choices: true
             dropZoneA:
               value: basket
-              type: image              
+              type: image
             choices:
               - value: mushroom-white
                 type: image
@@ -110,7 +110,7 @@ exercises_payload:
             shuffle_choices: true
             dropZoneA:
               value: basket
-              type: image              
+              type: image
             choices:
               - value: salad
                 type: image
@@ -133,7 +133,7 @@ exercises_payload:
             shuffle_choices: true
             dropZoneA:
               value: basket
-              type: image              
+              type: image
             choices:
               - value: apple
                 type: image
@@ -143,7 +143,7 @@ exercises_payload:
               - value: grape
                 type: image
               - value: cherry
-                type: image 
+                type: image
 
         - instructions:
             - locale: fr_FR
@@ -156,7 +156,7 @@ exercises_payload:
             shuffle_choices: true
             dropZoneA:
               value: basket
-              type: image              
+              type: image
             choices:
               - value: cherry
                 type: image
@@ -179,7 +179,7 @@ exercises_payload:
             shuffle_choices: true
             dropZoneA:
               value: basket
-              type: image              
+              type: image
             choices:
               - value: carrot
                 type: image
@@ -200,9 +200,9 @@ exercises_payload:
           gameplay: findTheRightAnswers
           payload:
             shuffle_choices: true
-              dropZoneA:
+            dropZoneA:
               value: basket
-              type: image            
+              type: image
             choices:
               - value: banana
                 type: image
@@ -212,30 +212,7 @@ exercises_payload:
               - value: mushroom-gray
                 type: image
               - value: potato
-                type: image   
-
-        - instructions:
-            - locale: fr_FR
-              value: Mets la même image dans le panier
-            - locale: en_US
-              value: Put the same image in the basket
-          interface: dragAndDropIntoZones
-          gameplay: findTheRightAnswers
-          payload:
-            shuffle_choices: true
-             dropZoneA:
-              value: basket
-              type: image             
-            choices:
-              - value: grape
                 type: image
-                dropZone: zoneA
-              - value: salad
-                type: image
-              - value: potato
-                type: image
-              - value: cherry
-                type: image   
 
         - instructions:
             - locale: fr_FR
@@ -248,7 +225,30 @@ exercises_payload:
             shuffle_choices: true
             dropZoneA:
               value: basket
-              type: image              
+              type: image
+            choices:
+              - value: grape
+                type: image
+                dropZone: zoneA
+              - value: salad
+                type: image
+              - value: potato
+                type: image
+              - value: cherry
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Mets la même image dans le panier
+            - locale: en_US
+              value: Put the same image in the basket
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            dropZoneA:
+              value: basket
+              type: image
             choices:
               - value: salad
                 type: image
@@ -258,7 +258,7 @@ exercises_payload:
               - value: mushroom-brown
                 type: image
               - value: cherry
-                type: image 
+                type: image
 
         - instructions:
             - locale: fr_FR
@@ -271,7 +271,7 @@ exercises_payload:
             shuffle_choices: true
             dropZoneA:
               value: basket
-              type: image              
+              type: image
             choices:
               - value: apple-green
                 type: image
@@ -281,7 +281,7 @@ exercises_payload:
               - value: cherry
                 type: image
               - value: potato
-                type: image   
+                type: image
 
         - instructions:
             - locale: fr_FR
@@ -294,7 +294,7 @@ exercises_payload:
             shuffle_choices: true
             dropZoneA:
               value: basket
-              type: image              
+              type: image
             choices:
               - value: potato
                 type: image
@@ -304,4 +304,4 @@ exercises_payload:
               - value: mushroom-white
                 type: image
               - value: strawberry
-                type: image                                                                                                                                                           
+                type: image

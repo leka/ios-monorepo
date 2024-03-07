@@ -62,11 +62,11 @@ l10n:
 
       description: |
         The care receiver has to drag and drop into the basket the same picture than the one already here.
-    
+
       instructions: |
         - On the iPad screen, there is an image already into the basket and one image out of the basket
         - Encourage the care receiver to drag and drop the image out of the basket in the basket
-        - Once the basket is full, Leka launches a reinforcer 
+        - Once the basket is full, Leka launches a reinforcer
 
 exercises_payload:
   options:
@@ -83,7 +83,6 @@ exercises_payload:
           interface: dragAndDropIntoZones
           gameplay: findTheRightAnswers
           payload:
-            shuffle_choices: true
             dropZoneA:
               value: basket
               type: image
@@ -100,7 +99,6 @@ exercises_payload:
           interface: dragAndDropIntoZones
           gameplay: findTheRightAnswers
           payload:
-            shuffle_choices: true
             dropZoneA:
               value: basket
               type: image
@@ -117,10 +115,9 @@ exercises_payload:
           interface: dragAndDropIntoZones
           gameplay: findTheRightAnswers
           payload:
-            shuffle_choices: true
             dropZoneA:
               value: basket
-              type: image            
+              type: image
             choices:
               - value: salad
                 type: image
@@ -134,10 +131,9 @@ exercises_payload:
           interface: dragAndDropIntoZones
           gameplay: findTheRightAnswers
           payload:
-            shuffle_choices: true
             dropZoneA:
               value: basket
-              type: image            
+              type: image
             choices:
               - value: carrot
                 type: image
@@ -151,14 +147,13 @@ exercises_payload:
           interface: dragAndDropIntoZones
           gameplay: findTheRightAnswers
           payload:
-            shuffle_choices: true
             dropZoneA:
               value: basket
-              type: image            
+              type: image
             choices:
               - value: mushroom
                 type: image
-                dropZone: zoneA 
+                dropZone: zoneA
 
         - instructions:
             - locale: fr_FR
@@ -168,10 +163,9 @@ exercises_payload:
           interface: dragAndDropIntoZones
           gameplay: findTheRightAnswers
           payload:
-            shuffle_choices: true
             dropZoneA:
               value: basket
-              type: image            
+              type: image
             choices:
               - value: cherry
                 type: image
@@ -185,10 +179,9 @@ exercises_payload:
           interface: dragAndDropIntoZones
           gameplay: findTheRightAnswers
           payload:
-            shuffle_choices: true
             dropZoneA:
               value: basket
-              type: image            
+              type: image
             choices:
               - value: grape
                 type: image
@@ -202,10 +195,9 @@ exercises_payload:
           interface: dragAndDropIntoZones
           gameplay: findTheRightAnswers
           payload:
-            shuffle_choices: true
             dropZoneA:
               value: basket
-              type: image            
+              type: image
             choices:
               - value: salad
                 type: image
@@ -219,10 +211,9 @@ exercises_payload:
           interface: dragAndDropIntoZones
           gameplay: findTheRightAnswers
           payload:
-            shuffle_choices: true
             dropZoneA:
               value: basket
-              type: image            
+              type: image
             choices:
               - value: carrot
                 type: image
@@ -236,11 +227,10 @@ exercises_payload:
           interface: dragAndDropIntoZones
           gameplay: findTheRightAnswers
           payload:
-            shuffle_choices: true
             dropZoneA:
               value: basket
-              type: image            
+              type: image
             choices:
               - value: mushroom
                 type: image
-                dropZone: zoneA                                                                                
+                dropZone: zoneA

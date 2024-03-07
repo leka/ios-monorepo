@@ -58,11 +58,11 @@ l10n:
       subtitle: null
 
       short_description: |
-        
+        Group the pictures by category
 
       description: |
         The care receiver must group similar images in the basket
-    
+
       instructions: |
         - Four images are on the iPad screen
         - Encourage the care receiver to associate the images two by two by dragging and dropping them one on top of the other
@@ -91,10 +91,14 @@ exercises_payload:
                 category: catA
               - value: dress-yellow
                 type: image
+                category: catA
               - value: potato-orange
                 type: image
+                category: catB
               - value: potato-yellow
                 type: image
+                category: catB
+
         - instructions:
             - locale: fr_FR
               value: Mets ensemble les images d'une même catégorie
@@ -107,12 +111,17 @@ exercises_payload:
             choices:
               - value: potato-orange
                 type: image
+                category: catA
               - value: potato-yellow
                 type: image
+                category: catA
               - value: apple-red
                 type: image
+                category: catB
               - value: apple-yellow
                 type: image
+                category: catB
+
         - instructions:
             - locale: fr_FR
               value: Mets ensemble les images d'une même catégorie
@@ -125,12 +134,17 @@ exercises_payload:
             choices:
               - value: pull-green
                 type: image
+                category: catA
               - value: pull-purple
                 type: image
+                category: catA
               - value: salad-green
                 type: image
+                category: catB
               - value: salad-light-green
-                type: image 
+                type: image
+                category: catB
+
         - instructions:
             - locale: fr_FR
               value: Mets ensemble les images d'une même catégorie
@@ -143,12 +157,17 @@ exercises_payload:
             choices:
               - value: hat-red
                 type: image
+                category: catA
               - value: hat-gray
                 type: image
+                category: catA
               - value: shoes-white
                 type: image
+                category: catB
               - value: shoes-brown
-                type: image   
+                type: image
+                category: catB
+
         - instructions:
             - locale: fr_FR
               value: Mets ensemble les images d'une même catégorie
@@ -161,12 +180,17 @@ exercises_payload:
             choices:
               - value: dress-yellow
                 type: image
+                category: catA
               - value: dress-blue
                 type: image
+                category: catA
               - value: salad-green
                 type: image
+                category: catB
               - value: salad-light-green
                 type: image
+                category: catB
+
         - instructions:
             - locale: fr_FR
               value: Mets ensemble les images d'une même catégorie
@@ -179,12 +203,17 @@ exercises_payload:
             choices:
               - value: cherry-red
                 type: image
+                category: catA
               - value: cherry-pink
                 type: image
+                category: catA
               - value: sock-yellow
                 type: image
+                category: catB
               - value: sock-pink
                 type: image
+                category: catB
+
         - instructions:
             - locale: fr_FR
               value: Mets ensemble les images d'une même catégorie
@@ -197,12 +226,17 @@ exercises_payload:
             choices:
               - value: mushroom-gray
                 type: image
+                category: catA
               - value: mushroom-brown
                 type: image
+                category: catA
               - value: potato-orange
                 type: image
+                category: catB
               - value: potato-yellow
                 type: image
+                category: catB
+
         - instructions:
             - locale: fr_FR
               value: Mets ensemble les images d'une même catégorie
@@ -215,12 +249,17 @@ exercises_payload:
             choices:
               - value: shoes-yellow
                 type: image
+                category: catA
               - value: shoes-white
                 type: image
+                category: catA
               - value: mushroom-gray
                 type: image
+                category: catB
               - value: mushroom-brown
-                type: image    
+                type: image
+                category: catB
+
         - instructions:
             - locale: fr_FR
               value: Mets ensemble les images d'une même catégorie
@@ -233,12 +272,17 @@ exercises_payload:
             choices:
               - value: pull-green
                 type: image
+                category: catA
               - value: pull-pink
                 type: image
+                category: catA
               - value: hat-green
                 type: image
+                category: catB
               - value: hat-red
-                type: image   
+                type: image
+                category: catB
+
         - instructions:
             - locale: fr_FR
               value: Mets ensemble les images d'une même catégorie
@@ -251,9 +295,13 @@ exercises_payload:
             choices:
               - value: cherry-red
                 type: image
+                category: catA
               - value: cherry-pink
                 type: image
+                category: catA
               - value: hat-green
                 type: image
+                category: catB
               - value: hat-red
-                type: image                                                                                                                                           
+                type: image
+                category: catB

@@ -62,7 +62,7 @@ l10n:
 
       description: |
         The care receiver must group similar images in the basket
-    
+
       instructions: |
         - Six images are on the iPad screen
         - Encourage the care receiver to associate the images two by two by dragging and dropping them on top of each other
@@ -74,7 +74,7 @@ exercises_payload:
     shuffle_groups: false
 
   exercise_groups:
-  
+
     - group:
         - instructions:
             - locale: fr_FR
@@ -86,18 +86,24 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: 
+              - value: tshirt_red
                 type: image
-              - value: 
+                category: catA
+              - value: tshirt_blue
                 type: image
-              - value: 
+                category: catA
+              - value: dress_yellow
                 type: image
-              - value:
+                category: catB
+              - value: dress_gray
                 type: image
-              - value: 
+                category: catB
+              - value: salad_dark_green
                 type: image
-              - value: 
+                category: catC
+              - value: salad_light_green
                 type: image
+                category: catC
 
         - instructions:
             - locale: fr_FR
@@ -109,41 +115,24 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: 
+              - value: pull_purple
                 type: image
-              - value: 
+                category: catA
+              - value: pull_pink
                 type: image
-              - value: 
+                category: catA
+              - value: trousers_blue
                 type: image
-              - value:
+                category: catB
+              - value: trousers_brown
                 type: image
-              - value: 
+                category: catB
+              - value: potato_yellow
                 type: image
-              - value: 
-                type: image    
-                
-        - instructions:
-            - locale: fr_FR
-              value: Mets ensemble les images d'une même catégorie
-            - locale: en_US
-              value: Group the images by category
-          interface: dragAndDropToAssociate
-          gameplay: associateCategories
-          payload:
-            shuffle_choices: true
-            choices:
-              - value: 
+                category: catC
+              - value: potato_orange
                 type: image
-              - value: 
-                type: image
-              - value: 
-                type: image
-              - value:
-                type: image
-              - value: 
-                type: image
-              - value: 
-                type: image   
+                category: catC
 
         - instructions:
             - locale: fr_FR
@@ -155,18 +144,24 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: 
+              - value: pull_pink
                 type: image
-              - value: 
+                category: catA
+              - value: pull_green
                 type: image
-              - value: 
+                category: catA
+              - value: tshirt_red
                 type: image
-              - value:
+                category: catB
+              - value: tshirt_green
                 type: image
-              - value: 
+                category: catB
+              - value: apple_red
                 type: image
-              - value: 
+                category: catC
+              - value: apple_green
                 type: image
+                category: catC
 
         - instructions:
             - locale: fr_FR
@@ -178,41 +173,24 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: 
+              - value: shoes_yellow
                 type: image
-              - value: 
+                category: catA
+              - value: shoes_white
                 type: image
-              - value: 
+                category: catA
+              - value: tshirt_blue
                 type: image
-              - value:
+                category: catB
+              - value: tshirt_red
                 type: image
-              - value: 
+                category: catB
+              - value: trousers_blue
                 type: image
-              - value: 
-                type: image    
-                
-        - instructions:
-            - locale: fr_FR
-              value: Mets ensemble les images d'une même catégorie
-            - locale: en_US
-              value: Group the images by category
-          interface: dragAndDropToAssociate
-          gameplay: associateCategories
-          payload:
-            shuffle_choices: true
-            choices:
-              - value: 
+                category: catC
+              - value: trousers_brown
                 type: image
-              - value: 
-                type: image
-              - value: 
-                type: image
-              - value:
-                type: image
-              - value: 
-                type: image
-              - value: 
-                type: image   
+                category: catC
 
         - instructions:
             - locale: fr_FR
@@ -224,18 +202,24 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: 
+              - value: short_blue
                 type: image
-              - value: 
+                category: catA
+              - value: short_red
                 type: image
-              - value: 
+                category: catA
+              - value: dress_gray
                 type: image
-              - value:
+                category: catB
+              - value: dress_yellow
                 type: image
-              - value: 
+                category: catB
+              - value: mushroom_gray
                 type: image
-              - value: 
+                category: catC
+              - value: mushroom_brown
                 type: image
+                category: catC
 
         - instructions:
             - locale: fr_FR
@@ -247,41 +231,24 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: 
+              - value: salad_dark_green
                 type: image
-              - value: 
+                category: catA
+              - value: salad_light_green
                 type: image
-              - value: 
+                category: catA
+              - value: pull_pink
                 type: image
-              - value:
+                category: catB
+              - value: pull_green
                 type: image
-              - value: 
+                category: catB
+              - value: dress_gray
                 type: image
-              - value: 
-                type: image    
-                
-        - instructions:
-            - locale: fr_FR
-              value: Mets ensemble les images d'une même catégorie
-            - locale: en_US
-              value: Group the images by category
-          interface: dragAndDropToAssociate
-          gameplay: associateCategories
-          payload:
-            shuffle_choices: true
-            choices:
-              - value: 
+                category: catC
+              - value: dress_green
                 type: image
-              - value: 
-                type: image
-              - value: 
-                type: image
-              - value:
-                type: image
-              - value: 
-                type: image
-              - value: 
-                type: image 
+                category: catC
 
         - instructions:
             - locale: fr_FR
@@ -293,15 +260,108 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: 
+              - value: apple_red
                 type: image
-              - value: 
+                category: catA
+              - value: apple_green
                 type: image
-              - value: 
+                category: catA
+              - value: pull_green
                 type: image
-              - value:
+                category: catB
+              - value: pull_purple
                 type: image
-              - value: 
+                category: catB
+              - value: mushroom_white
                 type: image
-              - value: 
+                category: catC
+              - value: mushroom_brown
                 type: image
+                category: catC
+
+        - instructions:
+            - locale: fr_FR
+              value: Mets ensemble les images d'une même catégorie
+            - locale: en_US
+              value: Group the images by category
+          interface: dragAndDropToAssociate
+          gameplay: associateCategories
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: tshirt_red
+                type: image
+                category: catA
+              - value: tshirt_green
+                type: image
+                category: catA
+              - value: apple_red
+                type: image
+                category: catB
+              - value: apple_yellow
+                type: image
+                category: catB
+              - value: hat_green
+                type: image
+                category: catC
+              - value: hat_red
+                type: image
+                category: catC
+
+        - instructions:
+            - locale: fr_FR
+              value: Mets ensemble les images d'une même catégorie
+            - locale: en_US
+              value: Group the images by category
+          interface: dragAndDropToAssociate
+          gameplay: associateCategories
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: trousers_brown
+                type: image
+                category: catA
+              - value: trousers_blue
+                type: image
+                category: catA
+              - value: short_gray
+                type: image
+                category: catB
+              - value: short_blue
+                type: image
+                category: catB
+              - value: dress_green
+                type: image
+                category: catC
+              - value: dress_yellow
+                type: image
+                category: catC
+
+        - instructions:
+            - locale: fr_FR
+              value: Mets ensemble les images d'une même catégorie
+            - locale: en_US
+              value: Group the images by category
+          interface: dragAndDropToAssociate
+          gameplay: associateCategories
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: shoes_yellow
+                type: image
+                category: catA
+              - value: shoes_white
+                type: image
+                category: catA
+              - value: short_red
+                type: image
+                category: catB
+              - value: short_blue
+                type: image
+                category: catB
+              - value: salad_dark_green
+                type: image
+                category: catC
+              - value: salad_light_green
+                type: image
+                category: catC

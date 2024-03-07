@@ -63,11 +63,11 @@ l10n:
 
       description: |
         The care receiver must group similar images in the basket
-    
+
       instructions: |
         - On the iPad screen, there is three images out of the basket : two images are the same and one is an intruder
         - Encourage the care receiver to drag and drop similar images into the basket
-        - When the answer is correct, Leka launches a reinforcer 
+        - When the answer is correct, Leka launches a reinforcer
 
 exercises_payload:
   options:
@@ -87,7 +87,7 @@ exercises_payload:
             shuffle_choices: true
             dropZoneA:
               value: basket
-              type: image                
+              type: image
             choices:
               - value: carrot
                 type: image
@@ -95,7 +95,7 @@ exercises_payload:
               - value: carrot
                 type: image
                 dropZone: zoneA
-              - value: apple
+              - value: apple_green
                 type: image
 
         - instructions:
@@ -109,7 +109,7 @@ exercises_payload:
             shuffle_choices: true
             dropZoneA:
               value: basket
-              type: image                
+              type: image
             choices:
               - value: potato
                 type: image
@@ -119,7 +119,7 @@ exercises_payload:
                 dropZone: zoneA
               - value: salad
                 type: image
-                
+
         - instructions:
             - locale: fr_FR
               value: Mets les images similaires dans le panier
@@ -137,7 +137,7 @@ exercises_payload:
                 type: image
                 dropZone: zoneA
               - value: mushroom-white
-                type: image    
+                type: image
 
         - instructions:
             - locale: fr_FR
@@ -150,16 +150,16 @@ exercises_payload:
             shuffle_choices: true
             dropZoneA:
               value: basket
-              type: image                
+              type: image
             choices:
-              - value: apple-red
+              - value: apple_red
                 type: image
                 dropZone: zoneA
-              - value: apple-red
+              - value: apple_red
                 type: image
                 dropZone: zoneA
               - value: strawberry
-                type: image    
+                type: image
 
         - instructions:
             - locale: fr_FR
@@ -172,7 +172,7 @@ exercises_payload:
             shuffle_choices: true
             dropZoneA:
               value: basket
-              type: image                
+              type: image
             choices:
               - value: mushroom-brown
                 type: image
@@ -181,7 +181,7 @@ exercises_payload:
                 type: image
                 dropZone: zoneA
               - value: cherry
-                type: image  
+                type: image
 
         - instructions:
             - locale: fr_FR
@@ -194,7 +194,7 @@ exercises_payload:
             shuffle_choices: true
             dropZoneA:
               value: basket
-              type: image                
+              type: image
             choices:
               - value: mushroom-white
                 type: image
@@ -203,7 +203,7 @@ exercises_payload:
                 type: image
                 dropZone: zoneA
               - value: cherry
-                type: image 
+                type: image
 
         - instructions:
             - locale: fr_FR
@@ -216,34 +216,12 @@ exercises_payload:
             shuffle_choices: true
             dropZoneA:
               value: basket
-              type: image                
+              type: image
             choices:
               - value: salad
                 type: image
                 dropZone: zoneA
               - value: salad
-                type: image
-                dropZone: zoneA
-              - value: grape
-                type: image    
-
-        - instructions:
-            - locale: fr_FR
-              value: Mets les images similaires dans le panier
-            - locale: en_US
-              value: Put the images that are similar in the basket
-          interface: dragAndDropIntoZones
-          gameplay: findTheRightAnswers
-          payload:
-            shuffle_choices: true
-            dropZoneA:
-              value: basket
-              type: image                
-            choices:
-              - value: potato
-                type: image
-                dropZone: zoneA
-              - value: potato
                 type: image
                 dropZone: zoneA
               - value: grape
@@ -260,7 +238,29 @@ exercises_payload:
             shuffle_choices: true
             dropZoneA:
               value: basket
-              type: image                
+              type: image
+            choices:
+              - value: potato
+                type: image
+                dropZone: zoneA
+              - value: potato
+                type: image
+                dropZone: zoneA
+              - value: grape
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Mets les images similaires dans le panier
+            - locale: en_US
+              value: Put the images that are similar in the basket
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            dropZoneA:
+              value: basket
+              type: image
             choices:
               - value: salad
                 type: image
@@ -282,14 +282,13 @@ exercises_payload:
             shuffle_choices: true
             dropZoneA:
               value: basket
-              type: image                
+              type: image
             choices:
-              - value: apple-red
+              - value: apple_red
                 type: image
                 dropZone: zoneA
-              - value: apple-red
+              - value: apple_red
                 type: image
                 dropZone: zoneA
               - value: strawberry
-                type: image                                                                                   
-                                                                     
+                type: image
