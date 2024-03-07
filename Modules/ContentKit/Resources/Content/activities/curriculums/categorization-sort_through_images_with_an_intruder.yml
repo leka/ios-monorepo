@@ -1,0 +1,267 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+version: 1.0.0
+
+uuid: 7ECDDF1846AC47A8B0BEFF5525BE80B7
+name: categorization-sort_through_images_with_an_intruder
+
+status: published
+
+authors:
+  - leka
+
+skills:
+  - association
+  - association/sorting
+
+tags:
+  - vegetables
+  - fruits
+  - basket
+  - intruder
+
+hmi:
+  - tablet_robot
+
+types:
+  - one_on_one
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: categorization
+
+      title: Trier avec un intrus
+      subtitle: null
+
+      short_description: |
+        Mets la même image dans le panier
+
+      description: |
+        La personne accompagnée doit associer l'image similaire à celle déjà présente dans le panier.
+
+      instructions: |
+        - Sur l'écran de l'iPad, une image est déjà dans le panier et deux autres sont à l'extérieur du panier
+        - Encourager la personne accompagnée à glisser puis déposer dans le panier la même image que celle qui est déjà dans le panier
+        - Quand la réponse est correct, Leka lance un renforçateur
+
+  - locale: en_US
+    details:
+      icon: categorization
+
+      title: Sort through images with an intruder
+      subtitle: null
+
+      short_description: |
+        Put the same image in the basket
+
+      description: |
+        The care receiver has to drag and drop into the basket the same image than the one already here.
+    
+      instructions: |
+        - On the iPad screen, there is an image already into the basket and two images out of the basket
+        - Encourage the care receiver to drag and drop into the basket the same image as the one already in the basket
+        - When the answer is correct, Leka launches a reinforcer 
+
+exercises_payload:
+  options:
+    shuffle_exercises: true
+    shuffle_groups: false
+
+  exercise_groups:
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Mets la même image dans le panier
+            - locale: en_US
+              value: Put the same image in the basket
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            dropZoneA:
+              value: basket
+              type: image            
+            choices:
+              - value: banana
+                type: image
+                dropZone: zoneA
+              - value: apple
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Mets la même image dans le panier
+            - locale: en_US
+              value: Put the same image in the basket
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            dropZoneA:
+              value: basket
+              type: image            
+            choices:
+              - value: apple
+                type: image
+                dropZone: zoneA
+              - value: potato
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Mets la même image dans le panier
+            - locale: en_US
+              value: Put the same image in the basket
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            dropZoneA:
+              value: basket
+              type: image            
+            choices:
+              - value: mushroom-white
+                type: image
+                dropZone: zoneA
+              - value: banana
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Mets la même image dans le panier
+            - locale: en_US
+              value: Put the same image in the basket
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            dropZoneA:
+              value: basket
+              type: image            
+            choices:
+              - value: banana
+                type: image
+                dropZone: zoneA
+              - value: potato
+                type: image  
+
+        - instructions:
+            - locale: fr_FR
+              value: Mets la même image dans le panier
+            - locale: en_US
+              value: Put the same image in the basket
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            dropZoneA:
+              value: basket
+              type: image            
+            choices:
+              - value: mushroom-brown
+                type: image
+                dropZone: zoneA
+              - value: potato
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Mets la même image dans le panier
+            - locale: en_US
+              value: Put the same image in the basket
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            dropZoneA:
+              value: basket
+              type: image            
+            choices:
+              - value: cherry
+                type: image
+                dropZone: zoneA
+              - value: potato
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Mets la même image dans le panier
+            - locale: en_US
+              value: Put the same image in the basket
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            dropZoneA:
+              value: basket
+              type: image            
+            choices:
+              - value: salad
+                type: image
+                dropZone: zoneA
+              - value: grape
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Mets la même image dans le panier
+            - locale: en_US
+              value: Put the same image in the basket
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            dropZoneA:
+              value: basket
+              type: image            
+            choices:
+              - value: potato
+                type: image
+                dropZone: zoneA
+              - value: banana
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Mets la même image dans le panier
+            - locale: en_US
+              value: Put the same image in the basket
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            dropZoneA:
+              value: basket
+              type: image            
+            choices:
+              - value: carrot
+                type: image
+                dropZone: zoneA
+              - value: mushroom-gray
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Mets la même image dans le panier
+            - locale: en_US
+              value: Put the same image in the basket
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            dropZoneA:
+              value: basket
+              type: image            
+            choices:
+              - value: cherry
+                type: image
+                dropZone: zoneA
+              - value: carrot
+                type: image                                                                                                                                             

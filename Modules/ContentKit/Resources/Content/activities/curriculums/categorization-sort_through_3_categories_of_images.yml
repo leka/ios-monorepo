@@ -1,0 +1,307 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+version: 1.0.0
+
+uuid: 3B24E59C0019409397A0238553C4E39E
+name: categorization-sort_through_3_categories_of_images
+
+status: published
+
+authors:
+  - leka
+
+skills:
+  - association
+  - association/matching
+
+tags:
+  - clothes
+  - socks
+  - pairing
+
+hmi:
+  - tablet_robot
+
+types:
+  - one_on_one
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: categorization
+
+      title: Trier par catégorie de 2 images
+      subtitle: null
+
+      short_description: |
+        Mets ensemble les images d'une même catégorie
+
+      description: |
+        La personne accompagnée doit regrouper les images d'une même catégorie
+
+      instructions: |
+        - Six images sont sur l'écran de l'iPad
+        - Encourager la personne accompagnée à associer deux par deux les images en les glissant déposant les unes sur les autres
+        - Quand les images ont été associées correctement l'une à l'autre, Leka lance un renforçateur
+
+  - locale: en_US
+    details:
+      icon: categorization
+
+      title: Sort by category of 2 images
+      subtitle: null
+
+      short_description: |
+        Put the images that are similar in the basket
+
+      description: |
+        The care receiver must group similar images in the basket
+    
+      instructions: |
+        - Six images are on the iPad screen
+        - Encourage the care receiver to associate the images two by two by dragging and dropping them on top of each other
+        - When the images have been correctly associated with each other, Leka launches a reinforcer
+
+exercises_payload:
+  options:
+    shuffle_exercises: true
+    shuffle_groups: false
+
+  exercise_groups:
+  
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Mets ensemble les images d'une même catégorie
+            - locale: en_US
+              value: Group the images by category
+          interface: dragAndDropToAssociate
+          gameplay: associateCategories
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: 
+                type: image
+              - value: 
+                type: image
+              - value: 
+                type: image
+              - value:
+                type: image
+              - value: 
+                type: image
+              - value: 
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Mets ensemble les images d'une même catégorie
+            - locale: en_US
+              value: Group the images by category
+          interface: dragAndDropToAssociate
+          gameplay: associateCategories
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: 
+                type: image
+              - value: 
+                type: image
+              - value: 
+                type: image
+              - value:
+                type: image
+              - value: 
+                type: image
+              - value: 
+                type: image    
+                
+        - instructions:
+            - locale: fr_FR
+              value: Mets ensemble les images d'une même catégorie
+            - locale: en_US
+              value: Group the images by category
+          interface: dragAndDropToAssociate
+          gameplay: associateCategories
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: 
+                type: image
+              - value: 
+                type: image
+              - value: 
+                type: image
+              - value:
+                type: image
+              - value: 
+                type: image
+              - value: 
+                type: image   
+
+        - instructions:
+            - locale: fr_FR
+              value: Mets ensemble les images d'une même catégorie
+            - locale: en_US
+              value: Group the images by category
+          interface: dragAndDropToAssociate
+          gameplay: associateCategories
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: 
+                type: image
+              - value: 
+                type: image
+              - value: 
+                type: image
+              - value:
+                type: image
+              - value: 
+                type: image
+              - value: 
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Mets ensemble les images d'une même catégorie
+            - locale: en_US
+              value: Group the images by category
+          interface: dragAndDropToAssociate
+          gameplay: associateCategories
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: 
+                type: image
+              - value: 
+                type: image
+              - value: 
+                type: image
+              - value:
+                type: image
+              - value: 
+                type: image
+              - value: 
+                type: image    
+                
+        - instructions:
+            - locale: fr_FR
+              value: Mets ensemble les images d'une même catégorie
+            - locale: en_US
+              value: Group the images by category
+          interface: dragAndDropToAssociate
+          gameplay: associateCategories
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: 
+                type: image
+              - value: 
+                type: image
+              - value: 
+                type: image
+              - value:
+                type: image
+              - value: 
+                type: image
+              - value: 
+                type: image   
+
+        - instructions:
+            - locale: fr_FR
+              value: Mets ensemble les images d'une même catégorie
+            - locale: en_US
+              value: Group the images by category
+          interface: dragAndDropToAssociate
+          gameplay: associateCategories
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: 
+                type: image
+              - value: 
+                type: image
+              - value: 
+                type: image
+              - value:
+                type: image
+              - value: 
+                type: image
+              - value: 
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Mets ensemble les images d'une même catégorie
+            - locale: en_US
+              value: Group the images by category
+          interface: dragAndDropToAssociate
+          gameplay: associateCategories
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: 
+                type: image
+              - value: 
+                type: image
+              - value: 
+                type: image
+              - value:
+                type: image
+              - value: 
+                type: image
+              - value: 
+                type: image    
+                
+        - instructions:
+            - locale: fr_FR
+              value: Mets ensemble les images d'une même catégorie
+            - locale: en_US
+              value: Group the images by category
+          interface: dragAndDropToAssociate
+          gameplay: associateCategories
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: 
+                type: image
+              - value: 
+                type: image
+              - value: 
+                type: image
+              - value:
+                type: image
+              - value: 
+                type: image
+              - value: 
+                type: image 
+
+        - instructions:
+            - locale: fr_FR
+              value: Mets ensemble les images d'une même catégorie
+            - locale: en_US
+              value: Group the images by category
+          interface: dragAndDropToAssociate
+          gameplay: associateCategories
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: 
+                type: image
+              - value: 
+                type: image
+              - value: 
+                type: image
+              - value:
+                type: image
+              - value: 
+                type: image
+              - value: 
+                type: image

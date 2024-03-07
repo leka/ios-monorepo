@@ -1,0 +1,295 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+version: 1.0.0
+
+uuid: 58A898C6E60742BD9ED7BDB2E5AEB265
+name: categorization-sort_through_images_without_help
+
+status: published
+
+authors:
+  - leka
+
+skills:
+  - association
+  - association/matching
+
+tags:
+  - vegetables
+  - fruits
+  - basket
+  - empty_basket
+
+hmi:
+  - tablet_robot
+
+types:
+  - one_on_one
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: categorization
+
+      title: Trier sans indication
+      subtitle: null
+
+      short_description: |
+        Mets les images similaires dans le panier
+
+      description: |
+        La personne accompagnée doit regrouper dans le panier les images similaires
+
+      instructions: |
+        - Sur l'écran de l'iPad, trois images sont à l'extérieur du panier : deux sont similaires et une est un intrus
+        - Encourager la personne accompagnée à glisser puis déposer dans le panier les images similaires
+        - Quand la réponse est correct, Leka lance un renforçateur
+
+  - locale: en_US
+    details:
+      icon: categorization
+
+      title: Sort through images without help
+      subtitle: null
+
+      short_description: |
+        Put the images that are similar in the basket
+
+      description: |
+        The care receiver must group similar images in the basket
+    
+      instructions: |
+        - On the iPad screen, there is three images out of the basket : two images are the same and one is an intruder
+        - Encourage the care receiver to drag and drop similar images into the basket
+        - When the answer is correct, Leka launches a reinforcer 
+
+exercises_payload:
+  options:
+    shuffle_exercises: true
+    shuffle_groups: false
+
+  exercise_groups:
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Mets les images similaires dans le panier
+            - locale: en_US
+              value: Put the images that are similar in the basket
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            dropZoneA:
+              value: basket
+              type: image                
+            choices:
+              - value: carrot
+                type: image
+                dropZone: zoneA
+              - value: carrot
+                type: image
+                dropZone: zoneA
+              - value: apple
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Mets les images similaires dans le panier
+            - locale: en_US
+              value: Put the images that are similar in the basket
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            dropZoneA:
+              value: basket
+              type: image                
+            choices:
+              - value: potato
+                type: image
+                dropZone: zoneA
+              - value: potato
+                type: image
+                dropZone: zoneA
+              - value: salad
+                type: image
+                
+        - instructions:
+            - locale: fr_FR
+              value: Mets les images similaires dans le panier
+            - locale: en_US
+              value: Put the images that are similar in the basket
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: cherry
+                type: image
+                dropZone: zoneA
+              - value: cherry
+                type: image
+                dropZone: zoneA
+              - value: mushroom-white
+                type: image    
+
+        - instructions:
+            - locale: fr_FR
+              value: Mets les images similaires dans le panier
+            - locale: en_US
+              value: Put the images that are similar in the basket
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            dropZoneA:
+              value: basket
+              type: image                
+            choices:
+              - value: apple-red
+                type: image
+                dropZone: zoneA
+              - value: apple-red
+                type: image
+                dropZone: zoneA
+              - value: strawberry
+                type: image    
+
+        - instructions:
+            - locale: fr_FR
+              value: Mets les images similaires dans le panier
+            - locale: en_US
+              value: Put the images that are similar in the basket
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            dropZoneA:
+              value: basket
+              type: image                
+            choices:
+              - value: mushroom-brown
+                type: image
+                dropZone: zoneA
+              - value: mushroom-brown
+                type: image
+                dropZone: zoneA
+              - value: cherry
+                type: image  
+
+        - instructions:
+            - locale: fr_FR
+              value: Mets les images similaires dans le panier
+            - locale: en_US
+              value: Put the images that are similar in the basket
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            dropZoneA:
+              value: basket
+              type: image                
+            choices:
+              - value: mushroom-white
+                type: image
+                dropZone: zoneA
+              - value: mushroom-white
+                type: image
+                dropZone: zoneA
+              - value: cherry
+                type: image 
+
+        - instructions:
+            - locale: fr_FR
+              value: Mets les images similaires dans le panier
+            - locale: en_US
+              value: Put the images that are similar in the basket
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            dropZoneA:
+              value: basket
+              type: image                
+            choices:
+              - value: salad
+                type: image
+                dropZone: zoneA
+              - value: salad
+                type: image
+                dropZone: zoneA
+              - value: grape
+                type: image    
+
+        - instructions:
+            - locale: fr_FR
+              value: Mets les images similaires dans le panier
+            - locale: en_US
+              value: Put the images that are similar in the basket
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            dropZoneA:
+              value: basket
+              type: image                
+            choices:
+              - value: potato
+                type: image
+                dropZone: zoneA
+              - value: potato
+                type: image
+                dropZone: zoneA
+              - value: grape
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Mets les images similaires dans le panier
+            - locale: en_US
+              value: Put the images that are similar in the basket
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            dropZoneA:
+              value: basket
+              type: image                
+            choices:
+              - value: salad
+                type: image
+                dropZone: zoneA
+              - value: salad
+                type: image
+                dropZone: zoneA
+              - value: potato
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Mets les images similaires dans le panier
+            - locale: en_US
+              value: Put the images that are similar in the basket
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            dropZoneA:
+              value: basket
+              type: image                
+            choices:
+              - value: apple-red
+                type: image
+                dropZone: zoneA
+              - value: apple-red
+                type: image
+                dropZone: zoneA
+              - value: strawberry
+                type: image                                                                                   
+                                                                     

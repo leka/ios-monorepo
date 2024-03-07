@@ -1,0 +1,92 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+version: 1.0.0
+
+uuid: DA072AA227724969AE41ECF7BDAA7F91
+name: categorization-sort_1_image_through_functional_category
+
+status: published
+
+authors:
+  - leka
+
+skills:
+  - association
+  - association/sorting
+
+tags:
+  - bedroom
+  - bathroom
+  - kitchen
+  - everyday_objects
+  - home_objects
+
+hmi:
+  - tablet_robot
+
+types:
+  - one_on_one
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: categorization
+
+      title: Trier par catégorie fonctionnelle
+      subtitle: null
+
+      short_description: |
+        Mets l'image dans la bonne pièce
+
+      description: |
+        La personne accompagnée doit associer une image d'un objet à une pièce de la maison
+
+      instructions: |
+        - Sur l'écran, il y a deux images de pièces (chambre, salle de bain ou cuisine) et une image d'un objet.
+        - Encourager la personne accompagnée à glisser puis déposer l'objet dans la pièce de la maison.
+        - Lorsque la réponse est correct, Leka lance un renforçateur
+
+  - locale: en_US
+    details:
+      icon: categorization
+
+      title: Sort through functional category
+      subtitle: null
+
+      short_description: |
+        Group the object with the place
+
+      description: |
+        The care receiver has to associate an object with a place
+    
+      instructions: |
+        - On the screen, there are two images of rooms (bedroom, bathroom or kitchen) and an image of an object.
+        - Encourage the care receiver to drag and then drop the object into the correct room of the house.
+        - When the answer is correct, Leka launches a reinforcer
+
+exercises_payload:
+  options:
+    shuffle_exercises: true
+    shuffle_groups: false
+
+  exercise_groups:
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Mets l'image dans la bonne pièce
+            - locale: en_US
+              value: Group the object with the place
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: 
+                type: image
+                is_right_answer: true
