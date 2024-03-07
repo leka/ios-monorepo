@@ -9,7 +9,7 @@ import ProjectDescriptionHelpers
 
 let project = Project.app(
     name: "LekaUpdater",
-    version: "1.4.0",
+    version: "1.4.1",
     infoPlist: [
         "LEKA_OS_VERSION": "1.4.0",
         "UISupportedInterfaceOrientations": ["UIInterfaceOrientationPortrait"],
