@@ -213,4 +213,20 @@ public extension Activity.ExercisesPayload {
     }
 }
 
+// MARK: - Activity + Hashable
+
+extension Activity: Hashable {
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(self.id)
+    }
+}
+
+// MARK: - Activity + Equatable
+
+extension Activity: Equatable {
+    public static func == (lhs: Activity, rhs: Activity) -> Bool {
+        lhs.uuid == rhs.uuid
+    }
+}
+
 // swiftlint:enable nesting
