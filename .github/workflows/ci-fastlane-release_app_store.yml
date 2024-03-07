@@ -23,7 +23,7 @@ env:
 
 jobs:
   release_app_store:
-    if: contains(github.event.label.name, 'fastlane:ras')
+    if: contains(github.event.label.name, 'fastlane:deliver')
     name: fastlane upload_to_app_store
     runs-on: [self-hosted, iOS]
 
