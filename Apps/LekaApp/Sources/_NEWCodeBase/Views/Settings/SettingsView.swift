@@ -11,15 +11,20 @@ import SwiftUI
 
 struct SettingsView: View {
     @Environment(\.openURL) private var openURL
+    @Environment(\.dismiss) var dismiss
 
     @Binding var isCaregiverPickerPresented: Bool
+
+    @State private var showConfirmCredentialsChange: Bool = false
+    @State private var showConfirmDisconnection: Bool = false
+    @State private var showConfirmDeleteAccount: Bool = false
 
     var body: some View {
         NavigationStack {
             Form {
                 Section {
                     Button {
-                        self.rootOwnerViewModel.isSettingsViewPresented = false
+                        self.dismiss()
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                             self.isCaregiverPickerPresented = true
                         }
@@ -48,7 +53,7 @@ struct SettingsView: View {
                     }
                 } footer: {
                     Button {
-                        self.rootOwnerViewModel.showConfirmCredentialsChange = true
+                        self.showConfirmCredentialsChange = true
                     } label: {
                         HStack {
                             Spacer()
@@ -57,23 +62,23 @@ struct SettingsView: View {
                         }
                     }
                     .alert(String(l10n.SettingsView.CredentialsSection.ChangeCredentials.alertTitle.characters),
-                           isPresented: self.$rootOwnerViewModel.showConfirmCredentialsChange) {} message: {
+                           isPresented: self.$showConfirmCredentialsChange) {} message: {
                         Text(l10n.SettingsView.CredentialsSection.ChangeCredentials.alertMessage)
                     }
                 }
 
                 Section {
                     Button {
-                        self.rootOwnerViewModel.showConfirmDisconnection = true
+                        self.showConfirmDisconnection = true
                     } label: {
                         Label(String(l10n.SettingsView.AccountSection.LogOut.buttonLabel.characters),
                               systemImage: "rectangle.portrait.and.arrow.forward")
                     }
                     .alert(String(l10n.SettingsView.AccountSection.LogOut.alertTitle.characters),
-                           isPresented: self.$rootOwnerViewModel.showConfirmDisconnection)
+                           isPresented: self.$showConfirmDisconnection)
                     {
                         Button(role: .destructive) {
-                            self.rootOwnerViewModel.isSettingsViewPresented = false
+                            self.dismiss()
                             self.authManager.signOut()
                             self.reset()
                         } label: {
@@ -91,13 +96,13 @@ struct SettingsView: View {
                     }
 
                     Button(role: .destructive) {
-                        self.rootOwnerViewModel.showConfirmDeleteAccount = true
+                        self.showConfirmDeleteAccount = true
                     } label: {
                         Label(String(l10n.SettingsView.AccountSection.DeleteAccount.buttonLabel.characters), systemImage: "trash")
                             .foregroundStyle(.red)
                     }
                     .alert(String(l10n.SettingsView.AccountSection.DeleteAccount.alertTitle.characters),
-                           isPresented: self.$rootOwnerViewModel.showConfirmDeleteAccount)
+                           isPresented: self.$showConfirmDeleteAccount)
                     {
                         Button("OK", role: .cancel) {}
                     } message: {
