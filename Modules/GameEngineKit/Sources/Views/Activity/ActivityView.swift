@@ -85,7 +85,7 @@ public struct ActivityView: View {
             .frame(maxWidth: .infinity)
             .background(.lkBackground)
             .ignoresSafeArea(.all, edges: .bottom)
-            .navigationTitle(self.viewModel.currentActivity.name)
+            .navigationTitle(self.viewModel.currentActivity.details.title)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
