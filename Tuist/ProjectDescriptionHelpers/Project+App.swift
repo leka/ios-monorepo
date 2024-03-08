@@ -29,7 +29,10 @@ public extension Project {
             resources: ["Resources/**"],
             scripts: TargetScript.linters(),
             dependencies: dependencies,
-            settings: .settings(base: .extendingBase(with: settings))
+            settings: .settings(base: .extendingBase(with: settings)),
+            environmentVariables: [
+                "IDEPreferLogStreaming": "YES",
+            ]
         )
 
         let testTarget = Target(
