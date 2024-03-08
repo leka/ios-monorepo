@@ -18,6 +18,7 @@ public struct Caregiver: AccountDocument {
     public var rootOwnerUid: String
     public var firstName: String
     public var lastName: String
+    public var birthdate: String
     public var email: String
     public var avatar: String
     public var professions: [String]
@@ -33,6 +34,7 @@ public struct Caregiver: AccountDocument {
         case lastEditedAt = "last_edited_at"
         case firstName = "first_name"
         case lastName = "last_name"
+        case birthdate
         case email
         case avatar
         case professions
