@@ -17,7 +17,7 @@ public struct LekaLogo: View {
     public var body: some View {
         Image(
             DesignKitAsset.Assets.lekaLogo.name,
-            bundle: Bundle(for: DesignKitResources.self)
+            bundle: DesignKitResources.bundle
         )
         .resizable()
         .aspectRatio(contentMode: .fit)
