@@ -35,7 +35,7 @@ l10n:
     details:
       icon: color_bingo_6
 
-      title: Loto des couleurs 6
+      title: Loto des Couleurs 6
       subtitle: null
 
       short_description: |
@@ -45,7 +45,6 @@ l10n:
         Leka s'allume dans une couleur. La personne accompagnée doit toucher la même couleur sur l'écran de l'iPad.
 
       instructions: |
-        - Toucher le pictogramme du robot à gauche de l'écran de l'iPad
         - Leka s'allume dans une couleur
         - Encourager la personne accompagnée à toucher la même couleur sur l'écran de l'iPad
         - Lorsque la réponse est correct, Leka lance un renforçateur
@@ -54,7 +53,7 @@ l10n:
     details:
       icon: color_bingo_5
 
-      title: Color bingo 5
+      title: Color Bingo 5
       subtitle: null
 
       short_description: |
@@ -64,7 +63,6 @@ l10n:
         Leka lights up in a color. The care receiver must touch the same color on the iPad screen.
 
       instructions: |
-        - Touch the robot pictogram on the left of the iPad screen
         - Leka lights up in one color
         - Encourage the care receiver to touch the same color on the iPad screen
         - When the answer is correct, Leka launches a reinforcer
@@ -81,7 +79,7 @@ exercises_payload:
               value: Touche la couleur de Leka
             - locale: en_US
               value: Touch the color of Leka
-          interface: touchToSelect
+          interface: robotThenTouchToSelect
           gameplay: findTheRightAnswers
           payload:
             shuffle_choices: true
@@ -104,7 +102,7 @@ exercises_payload:
               value: Touche la couleur de Leka
             - locale: en_US
               value: Touch the color of Leka
-          interface: touchToSelect
+          interface: robotThenTouchToSelect
           gameplay: findTheRightAnswers
           payload:
             shuffle_choices: true
@@ -127,7 +125,7 @@ exercises_payload:
               value: Touche la couleur de Leka
             - locale: en_US
               value: Touch the color of Leka
-          interface: touchToSelect
+          interface: robotThenTouchToSelect
           gameplay: findTheRightAnswers
           payload:
             shuffle_choices: true
@@ -150,7 +148,7 @@ exercises_payload:
               value: Touche la couleur de Leka
             - locale: en_US
               value: Touch the color of Leka
-          interface: touchToSelect
+          interface: robotThenTouchToSelect
           gameplay: findTheRightAnswers
           payload:
             shuffle_choices: true
@@ -173,7 +171,7 @@ exercises_payload:
               value: Touche la couleur de Leka
             - locale: en_US
               value: Touch the color of Leka
-          interface: touchToSelect
+          interface: robotThenTouchToSelect
           gameplay: findTheRightAnswers
           payload:
             shuffle_choices: true
