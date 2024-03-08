@@ -54,7 +54,7 @@ public class DatabaseOperations {
                     do {
                         let object = try document?.data(as: T.self)
                         if let object {
-                            log.info("Document \(String(describing: object.id)) fetched successfully. 🎉")
+                            log.info("Document \(String(describing: object.id)) fetched successfully from \(collection.rawValue). 🎉")
                             promise(.success(object))
                         } else {
                             log.error("Document not found.")
@@ -71,7 +71,7 @@ public class DatabaseOperations {
     }
 
     public func observeAll<T: AccountDocument>(from collection: DatabaseCollection) -> AnyPublisher<[T], Error> {
-        let subject = PassthroughSubject<[T], Error>()
+        let subject = CurrentValueSubject<[T], Error>([])
 
         self.database.collection(collection.rawValue)
             .whereField("root_owner_uid", isEqualTo: Auth.auth().currentUser?.uid ?? "")
@@ -83,7 +83,7 @@ public class DatabaseOperations {
                     let objects = querySnapshot.documents.compactMap { document -> T? in
                         try? document.data(as: T.self)
                     }
-                    log.info("\(String(describing: objects.count)) documents fetched successfully. 🎉")
+                    log.info("\(String(describing: objects.count)) \(collection.rawValue) documents fetched successfully. 🎉")
                     subject.send(objects)
                 }
             }
@@ -101,7 +101,7 @@ public class DatabaseOperations {
                         log.error("\(error.localizedDescription)")
                         promise(.failure(DatabaseError.customError(error.localizedDescription)))
                     } else {
-                        log.info("Document \(String(describing: data.id!)) updated successfully. 🎉")
+                        log.info("Document \(String(describing: data.id!)) updated successfully in \(collection.rawValue). 🎉")
                         promise(.success(()))
                     }
                 }
@@ -122,7 +122,7 @@ public class DatabaseOperations {
                     log.error("\(error.localizedDescription)")
                     promise(.failure(DatabaseError.customError(error.localizedDescription)))
                 } else {
-                    log.info("Document \(String(describing: documentID)) deleted successfully. 🎉")
+                    log.info("Document \(String(describing: documentID)) deleted successfully from \(collection.rawValue). 🎉")
                     promise(.success(()))
                 }
             }
