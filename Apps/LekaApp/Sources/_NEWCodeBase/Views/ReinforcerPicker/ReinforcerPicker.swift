@@ -28,6 +28,7 @@ struct ReinforcerPicker: View {
                             .stroke(self.styleManager.accentColor!, lineWidth: self.carereceiver.reinforcer == reinforcer ? 2 : 0)
                     )
                     .onTapGesture {
+                        self.robot.run(reinforcer)
                         self.carereceiver.reinforcer = reinforcer
                     }
             }
@@ -36,6 +37,8 @@ struct ReinforcerPicker: View {
     }
 
     // MARK: Private
+
+    private let robot: Robot = .shared
 
     @ObservedObject private var rootOwnerViewModel = RootOwnerViewModel.shared
     @ObservedObject private var styleManager = StyleManager.shared
