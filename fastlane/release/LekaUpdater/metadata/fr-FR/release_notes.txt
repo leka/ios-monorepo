@@ -1,3 +1,9 @@
+## Leka Updater v1.4.1
+
+- Correction de la loc viewalisation de la vue de connexion au robot - en français, la vue apparaissait en anglais
+
+## LekaOS v1.4.0
+
 Cette nouvelle version est une réécriture complète de notre application précédente.
 
 Grâce à nos incroyables utilisateurs et à leurs retours précieux, l'expérience utilisateur et l'interface utilisateur ont été significativement améliorées.
@@ -5,7 +11,7 @@ Le design est désormais plus attrayant, les informations importantes sont facil
 
 Et ce n'est pas tout ! Cette nouvelle version inclut notre dernière mise à jour de firmware, LekaOS v1.4.0, qui introduit de nombreuses nouvelles fonctionnalités :
 
-- ⚡️ Stabilité Améliorée : Le robot bénéficie désormais d'une stabilité accrue en mouvement, assurant des transitions plus douces et des déplacements plus stables.
-- ⚡️ Précision des Rotations : Nous avons peaufiné les mouvements rotationnels du robot pour une plus grande précision et fluidité.
-- 🌐 Support Linguistique en Mode Autonome : Lorsque la carte "Dice" est reconnue, le menu des activités autonomes s'affiche désormais commodément en anglais.
-- 🐛 Délai d'Inactivité : Afin de conserver l'énergie et d'améliorer la sécurité, le robot sortira automatiquement du mode autonome après 10 minutes d'inactivité.
+- Stabilité Améliorée : Le robot bénéficie désormais d'une stabilité accrue en mouvement, assurant des transitions plus douces et des déplacements plus stables.
+- Précision des Rotations : Nous avons peaufiné les mouvements rotationnels du robot pour une plus grande précision et fluidité.
+- Support Linguistique en Mode Autonome : Lorsque la carte "Dice" est reconnue, le menu des activités autonomes s'affiche désormais commodément en anglais.
+- Délai d'Inactivité : Afin de conserver l'énergie et d'améliorer la sécurité, le robot sortira automatiquement du mode autonome après 10 minutes d'inactivité.
