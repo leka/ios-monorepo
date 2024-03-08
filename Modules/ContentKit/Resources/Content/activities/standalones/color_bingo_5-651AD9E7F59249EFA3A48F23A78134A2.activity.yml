@@ -42,12 +42,20 @@ l10n:
         Touche la couleur de Leka
 
       description: |
+<<<<<<< Updated upstream
         Leka s'allume dans une couleur. L'enfant doit toucher la même couleur sur l'écran de l'iPad.
+=======
+        Leka s'allume dans une couleur. La personne accompagnée doit toucher la même couleur sur l'écran de l'iPad.
+>>>>>>> Stashed changes
 
       instructions: |
         - Toucher le pictogramme du robot à gauche de l'écran de l'iPad
         - Leka s'allume dans une couleur
+<<<<<<< Updated upstream
         - Inviter la personne accompagnée à toucher la même couleur sur l'écran de l'iPad
+=======
+        - Encourager la personne accompagnée à toucher la même couleur sur l'écran de l'iPad
+>>>>>>> Stashed changes
         - Lorsque la réponse est correct, Leka lance un renforçateur
 
   - locale: en_US
@@ -61,12 +69,20 @@ l10n:
         Touch the color of Leka
 
       description: |
+<<<<<<< Updated upstream
         Leka lights up in a color. The child must touch the same color on the iPad screen.
+=======
+        Leka lights up in a color. The care receiver must touch the same color on the iPad screen.
+>>>>>>> Stashed changes
 
       instructions: |
         - Touch the robot pictogram on the left of the iPad screen
         - Leka lights up in one color
+<<<<<<< Updated upstream
         - Invite the accompanied person to touch the same color on the iPad screen
+=======
+        - Encourage the care receiver to touch the same color on the iPad screen
+>>>>>>> Stashed changes
         - When the answer is correct, Leka launches a reinforcer
 
 exercises_payload:
@@ -117,7 +133,11 @@ exercises_payload:
               - value: orange
                 type: color
               - value: yellow
+<<<<<<< Updated upstream
                 type: color    
+=======
+                type: color
+>>>>>>> Stashed changes
         - instructions:
             - locale: fr_FR
               value: Touche la couleur de Leka
@@ -201,4 +221,8 @@ exercises_payload:
               - value: orange
                 type: color
               - value: green
+<<<<<<< Updated upstream
                 type: color                                                                                     
+=======
+                type: color
+>>>>>>> Stashed changes
