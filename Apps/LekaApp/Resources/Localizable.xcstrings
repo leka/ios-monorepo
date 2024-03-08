@@ -1809,13 +1809,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Please send an email to hello@leka.io\nto delete your account."
+                        "value": "To delete your account, please contact our support team at\nsupport@leka.io\nWe're here to help you with the process and answer any questions you might have."
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Veuillez envoyer un mail \u00e0 hello@leka.io pour supprimer votre compte."
+                        "value": "Pour supprimer votre compte, veuillez contacter notre \u00e9quipe support \u00e0\nsupport@leka.io\nNous sommes l\u00e0 pour vous aider dans le processus et r\u00e9pondre \u00e0 toutes vos questions."
                     }
                 }
             }
@@ -1827,13 +1827,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Delete account"
+                        "value": "Delete Account?"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Supprimer le compte"
+                        "value": "Supprimer Le Compte?"
                     }
                 }
             }
@@ -1845,13 +1845,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Delete account"
+                        "value": "Delete Account"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Supprimer le compte"
+                        "value": "Supprimer Le Compte"
                     }
                 }
             }
@@ -1881,13 +1881,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "You are about to log out."
+                        "value": "Are you sure you want to log out? You will need to enter your email and password to log back in."
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Vous \u00eates sur le point de vous d\u00e9connecter."
+                        "value": "\u00cates-vous s\u00fbr de vouloir vous d\u00e9connecter? Vous devrez saisir votre email et votre mot de passe pour vous reconnecter."
                     }
                 }
             }
@@ -1899,13 +1899,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Log out"
+                        "value": "Confirm Logout"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "D\u00e9connexion"
+                        "value": "Confirmer La D\u00e9connexion"
                     }
                 }
             }
@@ -1917,13 +1917,31 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Log out"
+                        "value": "Log Out"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Se d\u00e9connecter"
+                        "value": "Se D\u00e9connecter"
+                    }
+                }
+            }
+        },
+        "settings_view.account_section.log_out.error.alert_message": {
+            "comment": "Log out error alert message",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "We encountered an issue logging you out. Please try again. If the problem persists, contact our support team for assistance."
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Nous avons rencontr\u00e9 un probl\u00e8me lors de votre d\u00e9connexion. Veuillez r\u00e9essayer. Si le probl\u00e8me persiste, contactez notre \u00e9quipe d'assistance pour obtenir de l'aide."
                     }
                 }
             }
@@ -1935,13 +1953,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "An error occurred"
+                        "value": "Logout Error"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Une erreur s'est produite"
+                        "value": "Erreur de d\u00e9connexion"
                     }
                 }
             }
@@ -1953,13 +1971,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Change app language"
+                        "value": "Change App Language"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Changer la langue de l'application"
+                        "value": "Changer la Langue de l'Application"
                     }
                 }
             }
@@ -1989,13 +2007,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Please send an email to hello@leka.io\nto modify your credentials."
+                        "value": "For security reasons, changes to your email or password need to be handled by our support team.\nPlease contact us at\nsupport@leka.io\nand we'll be happy to assist you with updating your account information."
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Veuillez envoyer un mail \u00e0 hello@leka.io pour modifier vos identifiants."
+                        "value": "Pour des raisons de s\u00e9curit\u00e9, les modifications de l'e-mail ou du mot de passe doivent \u00eatre trait\u00e9es par notre \u00e9quipe support.\nVeuillez nous contacter \u00e0\nsupport@leka.io\net nous serons heureux de vous aider \u00e0 mettre \u00e0 jour les informations de votre compte."
                     }
                 }
             }
@@ -2007,13 +2025,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "It is not yet possible to modify your email or password from the application."
+                        "value": "Need to Update Your Credentials?"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Il n'est pas encore possible de modifier son mot de passe depuis l'application Leka."
+                        "value": "Besoin de mettre \u00e0 jour vos informations d'identification\u00a0?"
                     }
                 }
             }
@@ -2025,13 +2043,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Change email and password"
+                        "value": "Contact Support for Email/Password Change"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Modifier l'email et le mot de passe"
+                        "value": "Contacter le support pour un changement d'e-mail/mot de passe"
                     }
                 }
             }
@@ -2043,31 +2061,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Account email adress"
+                        "value": "Account Email"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Adresse email du compte"
-                    }
-                }
-            }
-        },
-        "settings_view.credentials_section.header": {
-            "comment": "Credentials section header",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Credentials"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Identifiants"
+                        "value": "Adresse Email"
                     }
                 }
             }
@@ -2090,38 +2090,20 @@
                 }
             }
         },
-        "settings_view.profiles_section.header": {
-            "comment": "Profiles section header",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Profiles"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Profils"
-                    }
-                }
-            }
-        },
         "settings_view.profiles_section.switch_profiles_button_label": {
-            "comment": "Switch profile button label",
+            "comment": "Switch caregiver profile button label",
             "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Switch profile"
+                        "value": "Switch Caregiver Profile"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Changer de profil"
+                        "value": "Changer de Profil Accompagnant"
                     }
                 }
             }
