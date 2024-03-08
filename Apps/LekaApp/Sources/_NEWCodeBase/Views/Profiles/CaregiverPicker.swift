@@ -24,11 +24,7 @@ struct CaregiverPicker: View {
                                 self.styleManager.colorScheme = caregiver.colorScheme
                                 self.styleManager.accentColor = caregiver.colorTheme.color
                                 self.caregiverManager.setCurrentCaregiver(to: caregiver)
-
-                                if self.authManagerViewModel.userAction == .userIsSigningIn {
-                                    self.rootOwnerViewModel.isWelcomeViewPresented = false
-                                }
-                                self.rootOwnerViewModel.isCaregiverPickerPresented = false
+                                self.dismiss()
                             } label: {
                                 CaregiverAvatarCell(caregiver: caregiver)
                                     .frame(maxWidth: 140)
@@ -68,7 +64,6 @@ struct CaregiverPicker: View {
     // MARK: Private
 
     @ObservedObject private var authManagerViewModel: AuthManagerViewModel = .shared
-    @ObservedObject private var rootOwnerViewModel = RootOwnerViewModel.shared
     @ObservedObject private var styleManager: StyleManager = .shared
 
     @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()

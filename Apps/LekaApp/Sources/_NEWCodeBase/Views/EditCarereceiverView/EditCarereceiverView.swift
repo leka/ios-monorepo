@@ -12,6 +12,7 @@ import SwiftUI
 struct EditCarereceiverView: View {
     // MARK: Internal
 
+    @Environment(\.dismiss) var dismiss
     @Binding var modifiedCarereceiver: Carereceiver
 
     var body: some View {
@@ -46,14 +47,14 @@ struct EditCarereceiverView: View {
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Button(String(l10n.EditCarereceiverView.closeButtonLabel.characters)) {
-                        self.rootOwnerViewModel.isEditCarereceiverViewPresented = false
+                        self.dismiss()
                     }
                 }
                 ToolbarItem(placement: .topBarTrailing) {
                     Button(String(l10n.EditCarereceiverView.saveButtonLabel.characters)) {
-                        self.rootOwnerViewModel.isEditCarereceiverViewPresented = false
                         self.carereceiverManager.updateCarereceiver(carereceiver: &self.modifiedCarereceiver)
                         self.carereceiverManager.fetchAllCarereceivers()
+                        self.dismiss()
                     }
                 }
             }
@@ -62,9 +63,7 @@ struct EditCarereceiverView: View {
 
     // MARK: Private
 
-    @ObservedObject private var rootOwnerViewModel: RootOwnerViewModel = .shared
     @State private var isAvatarPickerPresented: Bool = false
-
     var carereceiverManager: CarereceiverManager = .shared
 
     private var avatarPickerButton: some View {

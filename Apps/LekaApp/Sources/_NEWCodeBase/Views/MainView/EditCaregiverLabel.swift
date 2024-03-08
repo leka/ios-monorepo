@@ -17,7 +17,7 @@ struct EditCaregiverLabel: View {
         VStack(alignment: .leading) {
             if let caregiver = self.caregiverManagerViewModel.currentCaregiver {
                 Button {
-                    self.rootOwnerViewModel.isEditCaregiverViewPresented = true
+                    self.navigation.sheetContent = .editCaregiver
                 } label: {
                     HStack(spacing: 10) {
                         Image(uiImage: Avatars.iconToUIImage(icon: caregiver.avatar))
@@ -56,7 +56,17 @@ struct EditCaregiverLabel: View {
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Button("", systemImage: "person.2.gobackward") {
-                    self.rootOwnerViewModel.isCaregiverPickerPresented = true
+                    self.navigation.sheetContent = .caregiverPicker
+                }
+            }
+        }
+        .onReceive(self.caregiverManagerViewModel.$currentCaregiver) {
+            // TODO: (Mathieu) - Remove both fetch and managers when auto update will be implemented
+            self.caregiverManager.fetchAllCaregivers()
+            self.carereceiverManager.fetchAllCarereceivers()
+            if self.navigation.sheetContent == nil, self.navigation.fullScreenCoverContent == nil {
+                if $0 == nil {
+                    self.navigation.sheetContent = .caregiverPicker
                 }
             }
         }
@@ -65,9 +75,12 @@ struct EditCaregiverLabel: View {
     // MARK: Private
 
     @ObservedObject private var styleManager: StyleManager = .shared
-    @ObservedObject private var rootOwnerViewModel: RootOwnerViewModel = .shared
+    @ObservedObject private var navigation: Navigation = .shared
 
     @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
+
+    private var caregiverManager: CaregiverManager = .shared
+    private var carereceiverManager: CarereceiverManager = .shared
 }
 
 // MARK: - l10n.ChangeCaregiverProfile

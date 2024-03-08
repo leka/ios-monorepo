@@ -7,6 +7,34 @@ import Combine
 import ContentKit
 import SwiftUI
 
+// MARK: - FullScreenCoverContent
+
+enum FullScreenCoverContent: Identifiable {
+    case welcomeView
+    case activityView
+
+    // MARK: Internal
+
+    var id: Self { self }
+}
+
+// MARK: - SheetContent
+
+enum SheetContent: Hashable, Identifiable {
+    case robotConnection
+    case createCaregiver
+    case editCaregiver
+    case caregiverPicker
+    case carereceiverPicker(activity: Activity)
+    case settings
+
+    // MARK: Internal
+
+    var id: Self { self }
+}
+
+// MARK: - Navigation
+
 class Navigation: ObservableObject {
     // MARK: Lifecycle
 
@@ -21,7 +49,12 @@ class Navigation: ObservableObject {
     @Published var disableUICompletly: Bool = false
     @Published var categories = Category.allCases
 
-    @Published var isCarereceiverPickerPresented: Bool = false
+    @Published var showConfirmCredentialsChange: Bool = false
+    @Published var showConfirmDisconnection: Bool = false
+    @Published var showConfirmDeleteAccount: Bool = false
+
+    @Published var sheetContent: SheetContent?
+    @Published var fullScreenCoverContent: FullScreenCoverContent?
 
     @Published var currentActivity: Activity?
 
@@ -65,8 +98,11 @@ class Navigation: ObservableObject {
         self.authManager.authenticationStatePublisher
             .receive(on: DispatchQueue.main)
             .sink {
-                if $0 != .loggedIn {
+                if case $0 = AuthManager.AuthenticationState.loggedOut {
                     self.selectedCategory = .news
+                    if self.sheetContent == nil, self.fullScreenCoverContent == nil {
+                        self.fullScreenCoverContent = .welcomeView
+                    }
                 }
             }
             .store(in: &self.cancellables)

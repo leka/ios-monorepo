@@ -21,7 +21,7 @@ extension AccountCreationProcess {
 
                 Button(String(l10n.AccountCreationProcess.Step4.discoverContentButton.characters)) {
                     self.authManagerViewModel.userAction = .none
-                    self.rootOwnerViewModel.isWelcomeViewPresented = false
+                    self.navigation.fullScreenCoverContent = nil
                 }
                 .buttonStyle(.bordered)
             }
@@ -34,7 +34,7 @@ extension AccountCreationProcess {
         // MARK: Private
 
         @ObservedObject private var authManagerViewModel = AuthManagerViewModel.shared
-        @ObservedObject private var rootOwnerViewModel = RootOwnerViewModel.shared
+        @ObservedObject private var navigation = Navigation.shared
     }
 }
 

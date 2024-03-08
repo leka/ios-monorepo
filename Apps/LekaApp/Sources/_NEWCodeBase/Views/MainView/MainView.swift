@@ -22,7 +22,6 @@ struct MainView: View {
     // MARK: Internal
 
     @ObservedObject var navigation: Navigation = .shared
-    @ObservedObject var rootOwnerViewModel: RootOwnerViewModel = .shared
     @ObservedObject var authManagerViewModel = AuthManagerViewModel.shared
     @StateObject var viewModel: ViewModel = .init()
 
@@ -36,7 +35,7 @@ struct MainView: View {
                 }
 
                 Button {
-                    self.viewModel.isRobotConnectionPresented = true
+                    self.navigation.sheetContent = .robotConnection
                 } label: {
                     RobotConnectionLabel()
                 }
@@ -54,14 +53,16 @@ struct MainView: View {
                     CategoryLabel(category: .sampleActivities)
                 }
 
-                Section(String(l10n.MainView.Sidebar.sectionUsers.characters)) {
-                    CategoryLabel(category: .carereceivers)
+                if self.authManagerViewModel.userAuthenticationState == .loggedIn {
+                    Section(String(l10n.MainView.Sidebar.sectionUsers.characters)) {
+                        CategoryLabel(category: .carereceivers)
+                    }
                 }
 
                 VStack(alignment: .center, spacing: 20) {
                     if self.authManagerViewModel.userAuthenticationState == .loggedIn {
                         Button {
-                            self.rootOwnerViewModel.isSettingsViewPresented = true
+                            self.navigation.sheetContent = .settings
                         } label: {
                             SettingsLabel()
                         }
@@ -108,38 +109,44 @@ struct MainView: View {
                 }
             }
         }
-        .fullScreenCover(isPresented: self.$viewModel.isRobotConnectionPresented) {
-            RobotConnectionView(viewModel: RobotConnectionViewModel())
-        }
-        .fullScreenCover(isPresented: self.$rootOwnerViewModel.isWelcomeViewPresented) {
-            WelcomeView()
-        }
-        .fullScreenCover(isPresented: self.$rootOwnerViewModel.isCaregiverPickerPresented) {
-            CaregiverPicker()
-        }
-        .fullScreenCover(item: self.$navigation.currentActivity) {
+        .fullScreenCover(item: self.$navigation.fullScreenCoverContent) {
+            self.navigation.fullScreenCoverContent = nil
             self.navigation.currentActivity = nil
-        } content: { activity in
-            ActivityView(activity: activity)
-        }
-        .sheet(isPresented: self.$rootOwnerViewModel.isSettingsViewPresented) {
-            SettingsView(isCaregiverPickerPresented: self.$rootOwnerViewModel.isCaregiverPickerPresented)
-        }
-        .sheet(isPresented: self.$rootOwnerViewModel.isEditCaregiverViewPresented) {
-            EditCaregiverView(modifiedCaregiver: self.caregiverManagerViewModel.currentCaregiver!)
-        }
-        .onReceive(self.authManagerViewModel.$userAuthenticationState) { authState in
-            if case authState = .loggedOut {
-                if !self.rootOwnerViewModel.isSettingsViewPresented {
-                    self.rootOwnerViewModel.isWelcomeViewPresented = true
-                }
+        } content: { content in
+            switch content {
+                case .welcomeView:
+                    WelcomeView()
+                case .activityView:
+                    ActivityView(activity: self.navigation.currentActivity!)
             }
-            if case authState = .loggedIn {
-                self.caregiverManager.fetchAllCaregivers()
-                self.carereceiverManager.fetchAllCarereceivers()
-                if !self.rootOwnerViewModel.isWelcomeViewPresented {
-                    self.rootOwnerViewModel.isCaregiverPickerPresented = (self.caregiverManagerViewModel.currentCaregiver == nil)
-                }
+        }
+        .sheet(item: self.$navigation.sheetContent) {
+            self.navigation.sheetContent = nil
+        } content: { content in
+            switch content {
+                case .robotConnection:
+                    RobotConnectionView(viewModel: RobotConnectionViewModel())
+                case .settings:
+                    SettingsView()
+                case .editCaregiver:
+                    EditCaregiverView(modifiedCaregiver: self.caregiverManagerViewModel.currentCaregiver!)
+                case .createCaregiver:
+                    CreateCaregiverView(onCreated: { caregiver in
+                        self.caregiverManager.setCurrentCaregiver(to: caregiver)
+                    })
+                case .caregiverPicker:
+                    CaregiverPicker()
+                case let .carereceiverPicker(activity):
+                    CarereceiverPicker(onDismiss: {
+                        // nothing to do
+                    }, onSelected: { carereceiver in
+                        self.carereceiverManager.setCurrentCarereceiver(to: carereceiver)
+                        self.navigation.currentActivity = activity
+                        self.navigation.fullScreenCoverContent = .activityView
+                    }, onSkip: {
+                        self.navigation.currentActivity = activity
+                        self.navigation.fullScreenCoverContent = .activityView
+                    })
             }
         }
     }
