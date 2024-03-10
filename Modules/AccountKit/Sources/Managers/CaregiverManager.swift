@@ -51,6 +51,19 @@ public class CaregiverManager {
             .store(in: &self.cancellables)
     }
 
+    public func createCaregiver(caregiver: Caregiver) {
+        self.dbOps.create(data: caregiver, in: .caregivers)
+            .sink(receiveCompletion: { [weak self] completion in
+                if case let .failure(error) = completion {
+                    self?.fetchErrorSubject.send(error)
+                }
+            }, receiveValue: { [weak self] newCaregiver in
+                self?.currentCaregiver.send(newCaregiver)
+                self?.fetchAllCaregivers()
+            })
+            .store(in: &self.cancellables)
+    }
+
     public func updateCaregiver(caregiver: inout Caregiver) {
         caregiver.lastEditedAt = nil
         let documentID = caregiver.id!
