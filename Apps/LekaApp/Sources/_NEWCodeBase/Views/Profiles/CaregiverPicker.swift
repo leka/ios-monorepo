@@ -40,6 +40,7 @@ struct CaregiverPicker: View {
             }
             .padding(.horizontal, 50)
             .navigationTitle(String(l10n.CaregiverPicker.title.characters))
+            .navigationBarBackButtonHidden(self.authManagerViewModel.userAction == .userIsSigningIn)
             .sheet(isPresented: self.$isCaregiverCreationPresented) {
                 CreateCaregiverView()
             }
