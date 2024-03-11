@@ -40,7 +40,6 @@ struct ReinforcerPicker: View {
 
     private let robot: Robot = .shared
 
-    @ObservedObject private var rootOwnerViewModel = RootOwnerViewModel.shared
     @ObservedObject private var styleManager = StyleManager.shared
 }
 

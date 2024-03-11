@@ -36,6 +36,10 @@ public class AuthManager {
         self.auth.currentUser?.email
     }
 
+    public var authenticationStatePublisher: AnyPublisher<AuthenticationState, Never> {
+        self.authenticationState.eraseToAnyPublisher()
+    }
+
     public func signUp(email: String, password: String) {
         self.auth.createUser(withEmail: email, password: password)
             .mapError { $0 as Error }
@@ -95,10 +99,6 @@ public class AuthManager {
     }
 
     // MARK: Internal
-
-    var authenticationStatePublisher: AnyPublisher<AuthenticationState, Never> {
-        self.authenticationState.eraseToAnyPublisher()
-    }
 
     var authenticationErrorPublisher: AnyPublisher<Error, Never> {
         self.authenticationError.eraseToAnyPublisher()

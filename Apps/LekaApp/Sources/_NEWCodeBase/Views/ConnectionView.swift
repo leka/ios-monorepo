@@ -78,7 +78,6 @@ struct ConnectionView: View {
     // MARK: Private
 
     @StateObject private var viewModel = ConnectionViewViewModel()
-    @ObservedObject private var rootOwnerViewModel: RootOwnerViewModel = .shared
     @ObservedObject private var authManagerViewModel: AuthManagerViewModel = .shared
 
     private var authManager: AuthManager = .shared

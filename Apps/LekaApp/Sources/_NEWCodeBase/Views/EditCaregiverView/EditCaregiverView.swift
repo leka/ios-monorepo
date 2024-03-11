@@ -12,6 +12,7 @@ import SwiftUI
 struct EditCaregiverView: View {
     // MARK: Internal
 
+    @Environment(\.dismiss) var dismiss
     @State var modifiedCaregiver: Caregiver
 
     var body: some View {
@@ -53,16 +54,16 @@ struct EditCaregiverView: View {
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Button(String(l10n.EditCaregiverView.closeButtonLabel.characters)) {
-                        self.rootOwnerViewModel.isEditCaregiverViewPresented = false
                         self.styleManager.colorScheme = self.caregiverManagerViewModel.currentCaregiver!.colorScheme
                         self.styleManager.accentColor = self.caregiverManagerViewModel.currentCaregiver!.colorTheme.color
+                        self.dismiss()
                     }
                 }
                 ToolbarItem(placement: .topBarTrailing) {
                     Button(String(l10n.EditCaregiverView.saveButtonLabel.characters)) {
-                        self.rootOwnerViewModel.isEditCaregiverViewPresented = false
                         self.caregiverManager.updateCaregiver(caregiver: &self.modifiedCaregiver)
                         self.caregiverManager.fetchAllCaregivers()
+                        self.dismiss()
                     }
                 }
             }
@@ -72,11 +73,8 @@ struct EditCaregiverView: View {
 
     // MARK: Private
 
-    @ObservedObject private var rootOwnerViewModel: RootOwnerViewModel = .shared
     @ObservedObject private var styleManager: StyleManager = .shared
-
     @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
-
     @State private var isAvatarPickerPresented: Bool = false
     @State private var isProfessionPickerPresented: Bool = false
 

@@ -12,12 +12,13 @@ import SwiftUI
 struct CarereceiverView: View {
     // MARK: Internal
 
+    @Environment(\.dismiss) var dismiss
     @State var carereceiver: Carereceiver
 
     var body: some View {
         VStack {
             Button {
-                self.rootOwnerViewModel.isEditCarereceiverViewPresented = true
+                self.isEditCarereceiverViewPresented = true
             } label: {
                 HStack(spacing: 20) {
                     Image(uiImage: Avatars.iconToUIImage(icon: self.carereceiver.avatar))
@@ -55,7 +56,7 @@ struct CarereceiverView: View {
             }
             .padding()
             .frame(maxHeight: 140)
-            .sheet(isPresented: self.$rootOwnerViewModel.isEditCarereceiverViewPresented) {
+            .sheet(isPresented: self.$isEditCarereceiverViewPresented) {
                 EditCarereceiverView(modifiedCarereceiver: self.$carereceiver)
             }
 
@@ -81,7 +82,7 @@ struct CarereceiverView: View {
 
     private let strokeColor: Color = .init(light: UIColor.systemGray3, dark: UIColor.systemGray2)
     @ObservedObject private var styleManager: StyleManager = .shared
-    @ObservedObject private var rootOwnerViewModel: RootOwnerViewModel = .shared
+    @State private var isEditCarereceiverViewPresented = false
 }
 
 // MARK: - l10n.CarereceiverView
@@ -99,11 +100,9 @@ extension l10n {
 // swiftlint:enable line_length
 
 #Preview {
-    CarereceiverView(
-        carereceiver: Carereceiver(
-            username: "Peet",
-            avatar: Avatars.categories[0].avatars[0],
-            reinforcer: .fire
-        )
-    )
+    CarereceiverView(carereceiver: Carereceiver(
+        username: "Peet",
+        avatar: Avatars.categories[0].avatars[0],
+        reinforcer: .fire
+    ))
 }

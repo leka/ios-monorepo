@@ -8,7 +8,6 @@ import SwiftUI
 
 extension ProfessionPicker {
     struct ProfessionTag: View {
-        @ObservedObject private var rootOwnerViewModel: RootOwnerViewModel = .shared
         @State var profession: Profession
         @Binding var caregiver: Caregiver
 
