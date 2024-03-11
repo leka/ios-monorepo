@@ -31,6 +31,7 @@ struct CreateCarereceiverView: View {
                 Form {
                     Section {
                         self.avatarPickerButton
+                            .buttonStyle(.borderless)
                             .listRowBackground(Color.clear)
                     }
 

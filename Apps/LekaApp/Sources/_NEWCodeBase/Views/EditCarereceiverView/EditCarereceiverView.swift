@@ -20,6 +20,7 @@ struct EditCarereceiverView: View {
                 Form {
                     Section {
                         self.avatarPickerButton
+                            .buttonStyle(.borderless)
                             .listRowBackground(Color.clear)
                     }
 
