@@ -9,6 +9,7 @@ public extension Caregiver {
          rootOwnerUid: String = "",
          firstName: String = "",
          lastName: String = "",
+         birthdate: String = "",
          email: String = "",
          avatar: String = "",
          professions: [String] = [],
@@ -19,6 +20,7 @@ public extension Caregiver {
         self.rootOwnerUid = rootOwnerUid
         self.firstName = firstName
         self.lastName = lastName
+        self.birthdate = birthdate
         self.email = email
         self.avatar = avatar
         self.professions = professions
