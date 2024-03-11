@@ -1550,6 +1550,24 @@
                 }
             }
         },
+        "lekapp.sidebar.add_first_caregiver_profile.button_label": {
+            "comment": "The button label of create first profile when no profile is created",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Create your first caregiver profile"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Cr\u00e9er votre premier profil d'accompagnant"
+                    }
+                }
+            }
+        },
         "lekapp.sidebar.carereceiver_view.edit_profile_button_label": {
             "comment": "The button label of carereceiver profile editor",
             "extractionState": "extracted_with_value",
@@ -1582,24 +1600,6 @@
                     "stringUnit": {
                         "state": "translated",
                         "value": "\u00c9diter mon profil"
-                    }
-                }
-            }
-        },
-        "lekapp.sidebar.select_caregiver_profile.button_label": {
-            "comment": "The button label of caregiver profile picker when no profile is selected",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Select profile"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "S\u00e9lectionnez un profil"
                     }
                 }
             }

@@ -43,6 +43,27 @@ struct EditCaregiverLabel: View {
                         }
                     }
                 }
+            } else if self.caregiverManagerViewModel.caregivers.isEmpty {
+                Button {
+                    self.navigation.sheetContent = .createCaregiver
+                } label: {
+                    VStack(spacing: 20) {
+                        Image(systemName: "plus.circle.fill")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 30)
+                            .foregroundStyle(self.styleManager.accentColor!)
+                            .frame(width: 125, height: 125)
+                            .overlay(
+                                Circle()
+                                    .stroke(self.styleManager.accentColor!, lineWidth: 2)
+                            )
+                        Text(l10n.AddFirstCaregiverProfile.buttonLabel)
+                            .foregroundStyle(self.styleManager.accentColor!)
+                            .multilineTextAlignment(.center)
+                    }
+                    .padding()
+                }
             } else {
                 Image(systemName: "person.crop.circle.badge.questionmark")
                     .resizable()
@@ -93,8 +114,8 @@ extension l10n {
         static let buttonLabel = LocalizedString("lekapp.sidebar.edit_caregiver_profile.button_label", value: "Edit profile", comment: "The button label of caregiver profile editor")
     }
 
-    enum SelectCaregiverProfile {
-        static let buttonLabel = LocalizedString("lekapp.sidebar.select_caregiver_profile.button_label", value: "Select profile", comment: "The button label of caregiver profile picker when no profile is selected")
+    enum AddFirstCaregiverProfile {
+        static let buttonLabel = LocalizedString("lekapp.sidebar.add_first_caregiver_profile.button_label", value: "Create your first caregiver profile", comment: "The button label of create first profile when no profile is created")
     }
 }
 
