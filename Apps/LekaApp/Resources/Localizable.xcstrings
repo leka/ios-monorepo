@@ -776,6 +776,42 @@
                 }
             }
         },
+        "lekaapp.caregiver_picker.add_first_caregiver.add_button_label": {
+            "comment": "Caregiver picker add first caregiver button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Add your first caregiver profile"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Cr\u00e9er votre premier profil Accompagnant"
+                    }
+                }
+            }
+        },
+        "lekaapp.caregiver_picker.add_first_caregiver.message": {
+            "comment": "Caregiver picker add first caregiver message",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "No caregiver profiles have been created yet."
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Aucun profil d'accompagnant n'a \u00e9t\u00e9 cr\u00e9\u00e9 pour le moment."
+                    }
+                }
+            }
+        },
         "lekaapp.caregiver_picker.close_button_label": {
             "comment": "Caregiver picker close button label",
             "extractionState": "extracted_with_value",
@@ -902,6 +938,42 @@
                 }
             }
         },
+        "lekaapp.carereceiver_list.add_first_carereceiver.add_button_label": {
+            "comment": "Carereceiver list add first carereceiver button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Add your first care receiver profile"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Cr\u00e9er votre premier profil de personne accompagn\u00e9e"
+                    }
+                }
+            }
+        },
+        "lekaapp.carereceiver_list.add_first_carereceiver.message": {
+            "comment": "Carereceiver list add first carereceiver message",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "No care receiver profiles have been created yet."
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Aucun profil de personne accompagn\u00e9e n'a \u00e9t\u00e9 cr\u00e9\u00e9 pour le moment."
+                    }
+                }
+            }
+        },
         "lekaapp.carereceiver_list.description": {
             "comment": "Carereceiver list description",
             "extractionState": "extracted_with_value",
@@ -952,6 +1024,42 @@
                     "stringUnit": {
                         "state": "translated",
                         "value": "Personnes accompagn\u00e9es"
+                    }
+                }
+            }
+        },
+        "lekaapp.carereceiver_picker.add_first_carereceiver.add_button_label": {
+            "comment": "Carereceiver picker add first carereceiver button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Go to care receiver section"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Aller \u00e0 la section Personnes Accompagn\u00e9es"
+                    }
+                }
+            }
+        },
+        "lekaapp.carereceiver_picker.add_first_carereceiver.message": {
+            "comment": "Carereceiver picker add first carereceiver message",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "No care receiver profiles have been created yet.\nYou can create one in the Care Receivers section."
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Aucun profil de personne accompagn\u00e9e n'a \u00e9t\u00e9 cr\u00e9\u00e9 pour le moment.\nVous pouvez en cr\u00e9er un en vous rendant dans la section Personnes Accompagn\u00e9es"
                     }
                 }
             }

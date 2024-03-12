@@ -17,22 +17,37 @@ struct CaregiverPicker: View {
     var body: some View {
         NavigationStack {
             VStack {
-                ScrollView(showsIndicators: false) {
-                    LazyVGrid(columns: self.columns, spacing: 40) {
-                        ForEach(self.caregiverManagerViewModel.caregivers, id: \.id) { caregiver in
-                            Button {
-                                self.styleManager.colorScheme = caregiver.colorScheme
-                                self.styleManager.accentColor = caregiver.colorTheme.color
-                                self.caregiverManager.setCurrentCaregiver(to: caregiver)
-                                self.dismiss()
-                            } label: {
-                                CaregiverAvatarCell(caregiver: caregiver)
-                                    .frame(maxWidth: 140)
+                if self.caregiverManagerViewModel.caregivers.isEmpty {
+                    VStack {
+                        Text(l10n.CaregiverPicker.AddFirstCaregiver.message)
+                            .font(.title2)
+                            .multilineTextAlignment(.center)
+
+                        Button {
+                            self.isCaregiverCreationPresented = true
+                        } label: {
+                            Text(l10n.CaregiverPicker.AddFirstCaregiver.buttonLabel)
+                        }
+                        .buttonStyle(.borderedProminent)
+                    }
+                } else {
+                    ScrollView(showsIndicators: false) {
+                        LazyVGrid(columns: self.columns, spacing: 40) {
+                            ForEach(self.caregiverManagerViewModel.caregivers, id: \.id) { caregiver in
+                                Button {
+                                    self.styleManager.colorScheme = caregiver.colorScheme
+                                    self.styleManager.accentColor = caregiver.colorTheme.color
+                                    self.caregiverManager.setCurrentCaregiver(to: caregiver)
+                                    self.dismiss()
+                                } label: {
+                                    CaregiverAvatarCell(caregiver: caregiver)
+                                        .frame(maxWidth: 140)
+                                }
                             }
                         }
                     }
+                    .padding()
                 }
-                .padding()
             }
             .padding(.horizontal, 50)
             .navigationTitle(String(l10n.CaregiverPicker.title.characters))
@@ -79,6 +94,16 @@ struct CaregiverPicker: View {
 
 extension l10n {
     enum CaregiverPicker {
+        enum AddFirstCaregiver {
+            static let message = LocalizedString("lekaapp.caregiver_picker.add_first_caregiver.message",
+                                                 value: "No caregiver profiles have been created yet.",
+                                                 comment: "Caregiver picker add first caregiver message")
+
+            static let buttonLabel = LocalizedString("lekaapp.caregiver_picker.add_first_caregiver.add_button_label",
+                                                     value: "Add your first caregiver profile",
+                                                     comment: "Caregiver picker add first caregiver button label")
+        }
+
         static let title = LocalizedString("lekaapp.caregiver_picker.title", value: "Who are you ?", comment: "Caregiver picker title")
 
         static let addButtonLabel = LocalizedString("lekaapp.caregiver_picker.add_button_label", value: "Add profile", comment: "Caregiver picker add button label")

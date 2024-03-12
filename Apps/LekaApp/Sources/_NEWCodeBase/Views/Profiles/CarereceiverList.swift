@@ -42,10 +42,26 @@ struct CarereceiverList: View {
                 .padding(.horizontal)
                 .padding()
 
-                LazyVGrid(columns: self.columns, spacing: 40) {
-                    ForEach(self.carereceiverManagerViewModel.carereceivers) { carereceiver in
-                        NavigationLink(value: carereceiver) {
-                            CarereceiverAvatarCell(carereceiver: carereceiver)
+                if self.carereceiverManagerViewModel.carereceivers.isEmpty {
+                    VStack {
+                        Text(l10n.CarereceiverList.AddFirstCarereceiver.message)
+                            .font(.title2)
+                            .multilineTextAlignment(.center)
+
+                        Button {
+                            self.isCarereceiverCreationPresented = true
+                        } label: {
+                            Text(l10n.CarereceiverList.AddFirstCarereceiver.addButtonLabel)
+                        }
+                        .buttonStyle(.borderedProminent)
+                    }
+                    .padding(.top, 150)
+                } else {
+                    LazyVGrid(columns: self.columns, spacing: 40) {
+                        ForEach(self.carereceiverManagerViewModel.carereceivers) { carereceiver in
+                            NavigationLink(value: carereceiver) {
+                                CarereceiverAvatarCell(carereceiver: carereceiver)
+                            }
                         }
                     }
                 }
@@ -83,6 +99,16 @@ struct CarereceiverList: View {
 
 extension l10n {
     enum CarereceiverList {
+        enum AddFirstCarereceiver {
+            static let message = LocalizedString("lekaapp.carereceiver_list.add_first_carereceiver.message",
+                                                 value: "No care receiver profiles have been created yet.",
+                                                 comment: "Carereceiver list add first carereceiver message")
+
+            static let addButtonLabel = LocalizedString("lekaapp.carereceiver_list.add_first_carereceiver.add_button_label",
+                                                        value: "Add your first care receiver profile",
+                                                        comment: "Carereceiver list add first carereceiver button label")
+        }
+
         static let title = LocalizedString("lekaapp.carereceiver_list.title",
                                            value: "Care receivers",
                                            comment: "Carereceiver list title")
