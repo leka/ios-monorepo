@@ -50,7 +50,7 @@ struct CreateCarereceiverView: View {
                         if self.newCarereceiver.avatar.isEmpty {
                             self.newCarereceiver.avatar = Avatars.categories.first!.avatars.randomElement()!
                         }
-                        self.carereceiverManager.addCarereceiver(carereceiver: self.newCarereceiver)
+                        self.carereceiverManager.createCarereceiver(carereceiver: self.newCarereceiver)
                     }
                     .disabled(self.newCarereceiver.username.isEmpty)
                     .buttonStyle(.borderedProminent)

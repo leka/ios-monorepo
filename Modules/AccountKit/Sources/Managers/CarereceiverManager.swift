@@ -39,7 +39,7 @@ public class CarereceiverManager {
             .store(in: &self.cancellables)
     }
 
-    public func addCarereceiver(carereceiver: Carereceiver) {
+    public func createCarereceiver(carereceiver: Carereceiver) {
         self.dbOps.create(data: carereceiver, in: .carereceivers)
             .sink(receiveCompletion: { [weak self] completion in
                 if case let .failure(error) = completion {
