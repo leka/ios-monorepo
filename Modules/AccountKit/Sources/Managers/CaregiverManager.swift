@@ -51,17 +51,21 @@ public class CaregiverManager {
             .store(in: &self.cancellables)
     }
 
-    public func createCaregiver(caregiver: Caregiver) {
+    public func createCaregiver(caregiver: Caregiver) -> AnyPublisher<Caregiver, Error> {
         self.dbOps.create(data: caregiver, in: .caregivers)
-            .sink(receiveCompletion: { [weak self] completion in
-                if case let .failure(error) = completion {
-                    self?.fetchErrorSubject.send(error)
+            .flatMap { [weak self] createdCaregiver -> AnyPublisher<Caregiver, Error> in
+                guard let _ = self else {
+                    return Fail(error: DatabaseError.customError("Unexpected Nil Value")).eraseToAnyPublisher()
                 }
-            }, receiveValue: { [weak self] newCaregiver in
-                self?.currentCaregiver.send(newCaregiver)
+
+                return Just(createdCaregiver)
+                    .setFailureType(to: Error.self)
+                    .eraseToAnyPublisher()
+            }
+            .handleEvents(receiveOutput: { [weak self] _ in
                 self?.fetchAllCaregivers()
             })
-            .store(in: &self.cancellables)
+            .eraseToAnyPublisher()
     }
 
     public func updateCaregiver(caregiver: inout Caregiver) {

@@ -41,7 +41,7 @@ extension AccountCreationProcess {
             .frame(maxWidth: .infinity, alignment: .center)
             .sheet(isPresented: self.$isCaregiverCreationPresented) {
                 CreateCaregiverView(onCreated: { caregiver in
-                    self.caregiverManager.createCaregiver(caregiver: caregiver)
+                    self.caregiverManager.setCurrentCaregiver(to: caregiver)
                 })
             }
             .onReceive(self.caregiverManagerViewModel.$currentCaregiver) {

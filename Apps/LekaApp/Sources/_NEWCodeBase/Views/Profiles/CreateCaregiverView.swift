@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import AccountKit
+import Combine
 import DesignKit
 import LocalizationKit
 import SwiftUI
@@ -53,14 +54,25 @@ struct CreateCaregiverView: View {
                     }
 
                     Button(String(l10n.CaregiverCreation.registerProfilButton.characters)) {
-                        withAnimation {
-                            self.action = .created
-                            self.dismiss()
-                        }
                         if self.newCaregiver.avatar.isEmpty {
                             self.newCaregiver.avatar = Avatars.categories.first!.avatars.randomElement()!
                         }
-//                        self.caregiverManager.addCaregiver(caregiver: self.newCaregiver)
+                        self.caregiverManager.createCaregiver(caregiver: self.newCaregiver)
+                            .sink(receiveCompletion: { completion in
+                                switch completion {
+                                    case .finished:
+                                        print("Creation successful.")
+                                    case let .failure(error):
+                                        print("Creation failed with error: \(error)")
+                                }
+                            }, receiveValue: { createdCaregiver in
+                                self.newCaregiver = createdCaregiver
+                                withAnimation {
+                                    self.action = .created
+                                    self.dismiss()
+                                }
+                            })
+                            .store(in: &self.cancellables)
                     }
                     .disabled(self.newCaregiver.firstName.isEmpty)
                     .buttonStyle(.borderedProminent)
@@ -107,6 +119,7 @@ struct CreateCaregiverView: View {
     @State private var isAvatarPickerPresented: Bool = false
     @State private var isProfessionPickerPresented: Bool = false
     @State private var action: ActionType?
+    @State private var cancellables = Set<AnyCancellable>()
 
     private var avatarPickerButton: some View {
         Button {
