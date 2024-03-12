@@ -60,7 +60,7 @@ struct CreateCaregiverView: View {
                         if self.newCaregiver.avatar.isEmpty {
                             self.newCaregiver.avatar = Avatars.categories.first!.avatars.randomElement()!
                         }
-                        self.caregiverManager.addCaregiver(caregiver: self.newCaregiver)
+                        self.caregiverManager.createCaregiver(caregiver: self.newCaregiver)
                     }
                     .disabled(self.newCaregiver.firstName.isEmpty)
                     .buttonStyle(.borderedProminent)

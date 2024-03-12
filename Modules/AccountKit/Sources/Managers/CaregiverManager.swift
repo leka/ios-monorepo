@@ -43,7 +43,7 @@ public class CaregiverManager {
             .store(in: &self.cancellables)
     }
 
-    public func addCaregiver(caregiver: Caregiver) {
+    public func createCaregiver(caregiver: Caregiver) {
         self.dbOps.create(data: caregiver, in: .caregivers)
             .sink(receiveCompletion: { [weak self] completion in
                 if case let .failure(error) = completion {
