@@ -60,12 +60,12 @@ struct EditCaregiverLabel: View {
                 }
             }
         }
-        .onReceive(self.caregiverManagerViewModel.$currentCaregiver) {
-            // TODO: (Mathieu) - Remove both fetch and managers when auto update will be implemented
+        .onReceive(self.caregiverManagerViewModel.$currentCaregiver) { caregiverToEdit in
+            // TODO: (@macteuts) - Remove fetch when listeners are implemented
             self.caregiverManager.fetchAllCaregivers()
             self.carereceiverManager.fetchAllCarereceivers()
             if self.navigation.sheetContent == nil, self.navigation.fullScreenCoverContent == nil {
-                if $0 == nil {
+                if caregiverToEdit == nil {
                     self.navigation.sheetContent = .caregiverPicker
                 }
             }
@@ -79,6 +79,7 @@ struct EditCaregiverLabel: View {
 
     @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
 
+    // TODO: (@macteuts) - remove managers when listeners are implemented
     private var caregiverManager: CaregiverManager = .shared
     private var carereceiverManager: CarereceiverManager = .shared
 }
