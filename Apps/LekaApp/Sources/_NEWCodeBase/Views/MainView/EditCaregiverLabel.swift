@@ -47,30 +47,36 @@ struct EditCaregiverLabel: View {
                 Button {
                     self.navigation.sheetContent = .createCaregiver
                 } label: {
-                    VStack(spacing: 20) {
-                        Image(systemName: "plus.circle.fill")
+                    VStack(spacing: 10) {
+                        Image(systemName: "person.crop.circle.badge.plus")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
-                            .frame(width: 30)
+                            .frame(maxWidth: 90)
                             .foregroundStyle(self.styleManager.accentColor!)
-                            .frame(width: 125, height: 125)
-                            .overlay(
-                                Circle()
-                                    .stroke(self.styleManager.accentColor!, lineWidth: 2)
-                            )
+
                         Text(l10n.AddFirstCaregiverProfile.buttonLabel)
                             .foregroundStyle(self.styleManager.accentColor!)
                             .multilineTextAlignment(.center)
+                            .padding(.horizontal)
                     }
-                    .padding()
                 }
             } else {
-                Image(systemName: "person.crop.circle.badge.questionmark")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(maxWidth: 90)
-                    .foregroundStyle(self.styleManager.accentColor!)
-                    .padding()
+                Button {
+                    self.navigation.sheetContent = .caregiverPicker
+                } label: {
+                    VStack(spacing: 10) {
+                        Image(systemName: "person.crop.circle.badge.questionmark")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(maxWidth: 90)
+                            .foregroundStyle(self.styleManager.accentColor!)
+
+                        Text(l10n.SelectCaregiverProfile.buttonLabel)
+                            .foregroundStyle(self.styleManager.accentColor!)
+                            .multilineTextAlignment(.center)
+                            .padding(.horizontal)
+                    }
+                }
             }
         }
         .frame(maxWidth: .infinity)
@@ -112,6 +118,10 @@ struct EditCaregiverLabel: View {
 extension l10n {
     enum EditCaregiverProfile {
         static let buttonLabel = LocalizedString("lekapp.sidebar.edit_caregiver_profile.button_label", value: "Edit profile", comment: "The button label of caregiver profile editor")
+    }
+
+    enum SelectCaregiverProfile {
+        static let buttonLabel = LocalizedString("lekapp.sidebar.select_caregiver_profile.button_label", value: "Select a Caregiver", comment: "The button label of select caregiver profile")
     }
 
     enum AddFirstCaregiverProfile {
