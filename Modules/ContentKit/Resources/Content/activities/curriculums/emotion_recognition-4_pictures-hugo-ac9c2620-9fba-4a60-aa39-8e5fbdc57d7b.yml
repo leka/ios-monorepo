@@ -1,0 +1,93 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+id: ac9c2620-9fba-4a60-aa39-8e5fbdc57d7b
+name: emotion_recognition-4_pictures-hugo
+description: L'objectif est de trouver la bonne image ou des les rassembler par famille
+image: activity_image_recognition_1
+sequence:
+  - exercises:
+      - instructions: Touche les animaux
+        interface: touchToSelect
+        gameplay: findTheRightAnswers
+        payload:
+          choices:
+            - value: image-placeholder-animals
+              type: image
+              isRightAnswer: true
+
+      - instructions: Touche le portrait
+        interface: touchToSelect
+        gameplay: findTheRightAnswers
+        payload:
+          choices:
+            - value: image-placeholder-food
+              type: image
+            - value: image-placeholder-portrait
+              type: image
+              isRightAnswer: true
+
+      - instructions: Touche le paysage
+        interface: touchToSelect
+        gameplay: findTheRightAnswers
+        payload:
+          choices:
+            - value: image-placeholder-landscape
+              type: image
+              isRightAnswer: true
+            - value: image-placeholder-animals
+              type: image
+            - value: image-placeholder-food
+              type: image
+
+      - instructions: Touche la nourriture
+        interface: touchToSelect
+        gameplay: findTheRightAnswers
+        payload:
+          choices:
+            - value: image-placeholder-animals
+              type: image
+            - value: image-placeholder-portrait
+              type: image
+            - value: image-placeholder-food
+              type: image
+              isRightAnswer: true
+            - value: image-placeholder-landscape
+              type: image
+
+      - instructions: Touche les animaux
+        interface: touchToSelect
+        gameplay: findTheRightAnswers
+        payload:
+          choices:
+            - value: image-placeholder-animals
+              type: image
+            - value: image-placeholder-food
+              type: image
+              isRightAnswer: true
+            - value: image-placeholder-landscape
+              type: image
+            - value: image-placeholder-portrait
+              type: image
+            - value: image-placeholder-food
+              type: image
+
+      - instructions: Touche le portrait
+        interface: touchToSelect
+        gameplay: findTheRightAnswers
+        payload:
+          choices:
+            - value: image-placeholder-animals
+              type: image
+            - value: image-placeholder-food
+              type: image
+            - value: image-placeholder-landscape
+              type: image
+            - value: image-placeholder-food
+              type: image
+            - value: image-placeholder-portrait
+              type: image
+              isRightAnswer: true
+            - value: image-placeholder-animals
+              type: image
