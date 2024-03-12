@@ -3,9 +3,40 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import AccountKit
+import Combine
 import DesignKit
 import LocalizationKit
 import SwiftUI
+
+// MARK: - CreateCaregiverViewModel
+
+class CreateCaregiverViewModel: ObservableObject {
+    // MARK: Internal
+
+    var caregiverManager: CaregiverManager = .shared
+
+    // MARK: - Public functions
+
+    func createCaregiver(caregiver: Caregiver, onCreated: @escaping (Caregiver) -> Void, onError: @escaping (Error) -> Void) {
+        self.caregiverManager.createCaregiver(caregiver: caregiver)
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                    case .finished:
+                        print("Caregiver Creation successful.")
+                    case let .failure(error):
+                        print("Caregiver Creation failed with error: \(error)")
+                        onError(error)
+                }
+            }, receiveValue: { createdCaregiver in
+                onCreated(createdCaregiver)
+            })
+            .store(in: &self.cancellables)
+    }
+
+    // MARK: Private
+
+    private var cancellables = Set<AnyCancellable>()
+}
 
 // MARK: - CreateCaregiverView
 
@@ -53,14 +84,19 @@ struct CreateCaregiverView: View {
                     }
 
                     Button(String(l10n.CaregiverCreation.registerProfilButton.characters)) {
-                        withAnimation {
-                            self.action = .created
-                            self.dismiss()
-                        }
                         if self.newCaregiver.avatar.isEmpty {
                             self.newCaregiver.avatar = Avatars.categories.first!.avatars.randomElement()!
                         }
-                        self.caregiverManager.createCaregiver(caregiver: self.newCaregiver)
+                        self.viewModel.createCaregiver(caregiver: self.newCaregiver, onCreated: { createdCaregiver in
+                            self.newCaregiver = createdCaregiver
+                            withAnimation {
+                                self.action = .created
+                                self.dismiss()
+                            }
+                        }, onError: { error in
+                            // Handle error
+                            print(error.localizedDescription)
+                        })
                     }
                     .disabled(self.newCaregiver.firstName.isEmpty)
                     .buttonStyle(.borderedProminent)
@@ -103,10 +139,13 @@ struct CreateCaregiverView: View {
         case created
     }
 
+    @StateObject private var viewModel = CreateCaregiverViewModel()
+
     @State private var newCaregiver = Caregiver()
     @State private var isAvatarPickerPresented: Bool = false
     @State private var isProfessionPickerPresented: Bool = false
     @State private var action: ActionType?
+    @State private var cancellables = Set<AnyCancellable>()
 
     private var avatarPickerButton: some View {
         Button {
