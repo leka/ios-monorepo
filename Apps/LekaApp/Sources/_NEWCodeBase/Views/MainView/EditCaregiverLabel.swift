@@ -43,13 +43,40 @@ struct EditCaregiverLabel: View {
                         }
                     }
                 }
+            } else if self.caregiverManagerViewModel.caregivers.isEmpty {
+                Button {
+                    self.navigation.sheetContent = .createCaregiver
+                } label: {
+                    VStack(spacing: 10) {
+                        Image(systemName: "person.crop.circle.badge.plus")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(maxWidth: 90)
+                            .foregroundStyle(self.styleManager.accentColor!)
+
+                        Text(l10n.AddFirstCaregiverProfile.buttonLabel)
+                            .foregroundStyle(self.styleManager.accentColor!)
+                            .multilineTextAlignment(.center)
+                            .padding(.horizontal)
+                    }
+                }
             } else {
-                Image(systemName: "person.crop.circle.badge.questionmark")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(maxWidth: 90)
-                    .foregroundStyle(self.styleManager.accentColor!)
-                    .padding()
+                Button {
+                    self.navigation.sheetContent = .caregiverPicker
+                } label: {
+                    VStack(spacing: 10) {
+                        Image(systemName: "person.crop.circle.badge.questionmark")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(maxWidth: 90)
+                            .foregroundStyle(self.styleManager.accentColor!)
+
+                        Text(l10n.SelectCaregiverProfile.buttonLabel)
+                            .foregroundStyle(self.styleManager.accentColor!)
+                            .multilineTextAlignment(.center)
+                            .padding(.horizontal)
+                    }
+                }
             }
         }
         .frame(maxWidth: .infinity)
@@ -94,7 +121,11 @@ extension l10n {
     }
 
     enum SelectCaregiverProfile {
-        static let buttonLabel = LocalizedString("lekapp.sidebar.select_caregiver_profile.button_label", value: "Select profile", comment: "The button label of caregiver profile picker when no profile is selected")
+        static let buttonLabel = LocalizedString("lekapp.sidebar.select_caregiver_profile.button_label", value: "Select Caregiver", comment: "The button label of select caregiver profile")
+    }
+
+    enum AddFirstCaregiverProfile {
+        static let buttonLabel = LocalizedString("lekapp.sidebar.add_first_caregiver_profile.button_label", value: "Create First Caregiver", comment: "The button label of create first profile when no profile is created")
     }
 }
 
