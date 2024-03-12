@@ -18,8 +18,8 @@ public class DatabaseOperations {
 
     public static let shared = DatabaseOperations()
 
-    public func create(data: some AccountDocument, in collection: DatabaseCollection) -> AnyPublisher<String, Error> {
-        Future<String, Error> { promise in
+    public func create<T: AccountDocument>(data: T, in collection: DatabaseCollection) -> AnyPublisher<T, Error> {
+        Future<T, Error> { promise in
             let docRef = self.database.collection(collection.rawValue).document()
             var documentData = data
             documentData.rootOwnerUid = Auth.auth().currentUser?.uid ?? ""
@@ -32,7 +32,7 @@ public class DatabaseOperations {
                         promise(.failure(DatabaseError.customError(error.localizedDescription)))
                     } else {
                         log.info("Document \(docRef.documentID) created successfully in \(collection). 🎉")
-                        promise(.success(docRef.documentID))
+                        promise(.success(documentData))
                     }
                 }
             } catch {
