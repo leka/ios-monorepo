@@ -41,13 +41,21 @@ extension AccountCreationProcess {
             .frame(maxWidth: .infinity, alignment: .center)
             .sheet(isPresented: self.$isCaregiverCreationPresented) {
                 CreateCaregiverView(onCreated: { caregiver in
-                    self.selectedTab = .carereceiverCreation
-                    self.caregiverManager.setCurrentCaregiver(to: caregiver)
+                    self.caregiverManager.createCaregiver(caregiver: caregiver)
                 })
+            }
+            .onReceive(self.caregiverManagerViewModel.$currentCaregiver) {
+                guard $0 != nil else {
+                    // TODO(@macteuts): deal with activity indicator && failed creation here
+                    return
+                }
+                self.selectedTab = .carereceiverCreation
             }
         }
 
         // MARK: Private
+
+        @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
 
         @State private var isCaregiverCreationPresented: Bool = false
         private let caregiverManager: CaregiverManager = .shared

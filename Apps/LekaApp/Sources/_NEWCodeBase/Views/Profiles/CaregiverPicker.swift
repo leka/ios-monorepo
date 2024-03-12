@@ -42,7 +42,9 @@ struct CaregiverPicker: View {
             .navigationTitle(String(l10n.CaregiverPicker.title.characters))
             .navigationBarBackButtonHidden(self.authManagerViewModel.userAction == .userIsSigningIn)
             .sheet(isPresented: self.$isCaregiverCreationPresented) {
-                CreateCaregiverView()
+                CreateCaregiverView(onCreated: { caregiver in
+                    self.caregiverManager.addCaregiver(caregiver: caregiver)
+                })
             }
             .toolbar {
                 if self.caregiverManagerViewModel.currentCaregiver != nil {
