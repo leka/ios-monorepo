@@ -39,16 +39,21 @@ public class CarereceiverManager {
             .store(in: &self.cancellables)
     }
 
-    public func createCarereceiver(carereceiver: Carereceiver) {
+    public func createCarereceiver(carereceiver: Carereceiver) -> AnyPublisher<Carereceiver, Error> {
         self.dbOps.create(data: carereceiver, in: .carereceivers)
-            .sink(receiveCompletion: { [weak self] completion in
-                if case let .failure(error) = completion {
-                    self?.fetchErrorSubject.send(error)
+            .flatMap { [weak self] createdCarereceiver -> AnyPublisher<Carereceiver, Error> in
+                guard self != nil else {
+                    return Fail(error: DatabaseError.customError("Unexpected Nil Value")).eraseToAnyPublisher()
                 }
-            }, receiveValue: { _ in
-                self.fetchAllCarereceivers()
+
+                return Just(createdCarereceiver)
+                    .setFailureType(to: Error.self)
+                    .eraseToAnyPublisher()
+            }
+            .handleEvents(receiveOutput: { [weak self] _ in
+                self?.fetchAllCarereceivers()
             })
-            .store(in: &self.cancellables)
+            .eraseToAnyPublisher()
     }
 
     public func updateCarereceiver(carereceiver: inout Carereceiver) {
