@@ -49,10 +49,6 @@ class Navigation: ObservableObject {
     @Published var disableUICompletly: Bool = false
     @Published var categories = Category.allCases
 
-    @Published var showConfirmCredentialsChange: Bool = false
-    @Published var showConfirmDisconnection: Bool = false
-    @Published var showConfirmDeleteAccount: Bool = false
-
     @Published var sheetContent: SheetContent?
     @Published var fullScreenCoverContent: FullScreenCoverContent?
 
