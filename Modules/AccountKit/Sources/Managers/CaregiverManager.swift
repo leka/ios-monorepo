@@ -15,10 +15,6 @@ public class CaregiverManager {
 
     public static let shared = CaregiverManager()
 
-    public var currentCaregiverPublisher: AnyPublisher<Caregiver?, Never> {
-        self.currentCaregiver.eraseToAnyPublisher()
-    }
-
     public func fetchAllCaregivers() {
         self.dbOps.observeAll(from: .caregivers)
             .sink(receiveCompletion: { [weak self] completion in
@@ -96,6 +92,10 @@ public class CaregiverManager {
     }
 
     // MARK: Internal
+
+    var currentCaregiverPublisher: AnyPublisher<Caregiver?, Never> {
+        self.currentCaregiver.eraseToAnyPublisher()
+    }
 
     var caregiversPublisher: AnyPublisher<[Caregiver], Never> {
         self.caregiverList.eraseToAnyPublisher()
