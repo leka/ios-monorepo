@@ -12,6 +12,8 @@ import SwiftUI
 struct WelcomeView: View {
     // MARK: Internal
 
+    @Environment(\.dismiss) var dismiss
+
     var body: some View {
         NavigationStack {
             VStack(spacing: 30) {
@@ -30,7 +32,7 @@ struct WelcomeView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(String(l10n.WelcomeView.skipStepButton.characters)) {
-                        self.rootOwnerViewModel.isWelcomeViewPresented.toggle()
+                        self.dismiss()
                     }
                 }
             }
@@ -43,8 +45,6 @@ struct WelcomeView: View {
     // MARK: Private
 
     @ObservedObject private var authManagerViewModel = AuthManagerViewModel.shared
-    @ObservedObject private var rootOwnerViewModel = RootOwnerViewModel.shared
-
     @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
 }
 

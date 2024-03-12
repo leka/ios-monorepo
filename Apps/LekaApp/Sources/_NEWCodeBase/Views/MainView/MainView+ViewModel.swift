@@ -25,8 +25,6 @@ extension MainView {
         @Published var isDesignSystemAppleExpanded: Bool = false
         @Published var isDesignSystemLekaExpanded: Bool = false
 
-        @Published var isRobotConnectionPresented: Bool = false
-
         @Published var isRobotConnect: Bool = false
 
         // MARK: Private

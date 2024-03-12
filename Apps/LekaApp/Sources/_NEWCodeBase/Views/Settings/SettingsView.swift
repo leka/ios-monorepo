@@ -13,8 +13,6 @@ struct SettingsView: View {
     @Environment(\.openURL) private var openURL
     @Environment(\.dismiss) var dismiss
 
-    @Binding var isCaregiverPickerPresented: Bool
-
     @State private var showConfirmCredentialsChange: Bool = false
     @State private var showConfirmDisconnection: Bool = false
     @State private var showConfirmDeleteAccount: Bool = false
@@ -25,9 +23,7 @@ struct SettingsView: View {
                 Section {
                     Button {
                         self.dismiss()
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                            self.isCaregiverPickerPresented = true
-                        }
+                        self.navigation.sheetContent = .caregiverPicker
                     } label: {
                         Label(String(l10n.SettingsView.ProfilesSection.switchProfileButtonLabel.characters), systemImage: "person.2.gobackward")
                     }
@@ -115,7 +111,7 @@ struct SettingsView: View {
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Button(String(l10n.SettingsView.closeButtonLabel.characters)) {
-                        self.rootOwnerViewModel.isSettingsViewPresented = false
+                        self.dismiss()
                     }
                 }
             }
@@ -128,8 +124,8 @@ struct SettingsView: View {
     private let carereceiverManager: CarereceiverManager = .shared
 
     @ObservedObject private var authManagerViewModel = AuthManagerViewModel.shared
-    @ObservedObject private var rootOwnerViewModel: RootOwnerViewModel = .shared
     @ObservedObject private var styleManager: StyleManager = .shared
+    @ObservedObject private var navigation: Navigation = .shared
 
     private func reset() {
         self.caregiverManager.resetData()
@@ -140,8 +136,5 @@ struct SettingsView: View {
 }
 
 #Preview {
-    Text("Hello, World!")
-        .sheet(isPresented: .constant(true)) {
-            SettingsView(isCaregiverPickerPresented: .constant(false))
-        }
+    SettingsView()
 }
