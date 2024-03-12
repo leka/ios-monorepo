@@ -1557,13 +1557,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Create your first caregiver profile"
+                        "value": "Create First Caregiver"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Cr\u00e9er votre premier profil d'accompagnant"
+                        "value": "Cr\u00e9er un Profil Accompagnant"
                     }
                 }
             }
@@ -1600,6 +1600,24 @@
                     "stringUnit": {
                         "state": "translated",
                         "value": "\u00c9diter mon profil"
+                    }
+                }
+            }
+        },
+        "lekapp.sidebar.select_caregiver_profile.button_label": {
+            "comment": "The button label of select caregiver profile",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Select Caregiver"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "S\u00e9lectionner un Accompagnant"
                     }
                 }
             }

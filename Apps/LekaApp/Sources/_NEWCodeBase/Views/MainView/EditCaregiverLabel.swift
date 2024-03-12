@@ -121,11 +121,11 @@ extension l10n {
     }
 
     enum SelectCaregiverProfile {
-        static let buttonLabel = LocalizedString("lekapp.sidebar.select_caregiver_profile.button_label", value: "Select a Caregiver", comment: "The button label of select caregiver profile")
+        static let buttonLabel = LocalizedString("lekapp.sidebar.select_caregiver_profile.button_label", value: "Select Caregiver", comment: "The button label of select caregiver profile")
     }
 
     enum AddFirstCaregiverProfile {
-        static let buttonLabel = LocalizedString("lekapp.sidebar.add_first_caregiver_profile.button_label", value: "Create your first caregiver profile", comment: "The button label of create first profile when no profile is created")
+        static let buttonLabel = LocalizedString("lekapp.sidebar.add_first_caregiver_profile.button_label", value: "Create First Caregiver", comment: "The button label of create first profile when no profile is created")
     }
 }
 
