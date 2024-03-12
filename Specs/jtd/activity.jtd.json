@@ -155,6 +155,9 @@
                 },
                 "payload": {
                     "ref": "$exercise/payload"
+                },
+                "action": {
+                    "ref": "$exercise/action"
                 }
             }
         },
@@ -190,6 +193,7 @@
         "$exercise/gameplay": {
             "enum": ["findTheRightAnswers", "associateCategories"]
         },
+        "$exercise/action": {},
         "$exercise/payload": {}
     }
 }
