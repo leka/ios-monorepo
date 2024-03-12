@@ -29,22 +29,40 @@ struct CarereceiverPicker: View {
 
     var body: some View {
         NavigationStack {
-            ScrollView(showsIndicators: true) {
-                LazyVGrid(columns: self.columns, spacing: 40) {
-                    ForEach(self.carereceiverManagerViewModel.carereceivers) { carereceiver in
-                        CarereceiverAvatarCell(carereceiver: carereceiver, isSelected: self.selectedCarereceiver == carereceiver)
-                            .onTapGesture {
-                                withAnimation(.default) {
-                                    if self.selectedCarereceiver == carereceiver {
-                                        self.selectedCarereceiver = nil
-                                    } else {
-                                        self.selectedCarereceiver = carereceiver
+            VStack {
+                if self.carereceiverManagerViewModel.carereceivers.isEmpty {
+                    VStack {
+                        Text(l10n.CarereceiverPicker.AddFirstCarereceiver.message)
+                            .font(.title2)
+                            .multilineTextAlignment(.center)
+
+                        Button {
+                            self.dismiss()
+                            self.navigation.selectedCategory = .carereceivers
+                        } label: {
+                            Text(l10n.CarereceiverPicker.AddFirstCarereceiver.buttonLabel)
+                        }
+                        .buttonStyle(.borderedProminent)
+                    }
+                } else {
+                    ScrollView(showsIndicators: true) {
+                        LazyVGrid(columns: self.columns, spacing: 40) {
+                            ForEach(self.carereceiverManagerViewModel.carereceivers) { carereceiver in
+                                CarereceiverAvatarCell(carereceiver: carereceiver, isSelected: self.selectedCarereceiver == carereceiver)
+                                    .onTapGesture {
+                                        withAnimation(.default) {
+                                            if self.selectedCarereceiver == carereceiver {
+                                                self.selectedCarereceiver = nil
+                                            } else {
+                                                self.selectedCarereceiver = carereceiver
+                                            }
+                                        }
                                     }
-                                }
                             }
+                        }
+                        .padding()
                     }
                 }
-                .padding()
             }
             .navigationTitle(String(l10n.CarereceiverPicker.title.characters))
             .navigationBarTitleDisplayMode(.inline)
@@ -108,7 +126,7 @@ struct CarereceiverPicker: View {
     private let columns = Array(repeating: GridItem(), count: 4)
 
     @StateObject private var carereceiverManagerViewModel = CarereceiverManagerViewModel()
-
+    @ObservedObject private var navigation: Navigation = .shared
     @State private var selectedCarereceiver: Carereceiver?
     @State private var action: ActionType?
 }
@@ -117,6 +135,19 @@ struct CarereceiverPicker: View {
 
 extension l10n {
     enum CarereceiverPicker {
+        enum AddFirstCarereceiver {
+            static let message = LocalizedString("lekaapp.carereceiver_picker.add_first_carereceiver.message",
+                                                 value: """
+                                                     No care receiver profiles have been created yet.
+                                                     You can create one in the Care Receivers section.
+                                                     """,
+                                                 comment: "Carereceiver picker add first carereceiver message")
+
+            static let buttonLabel = LocalizedString("lekaapp.carereceiver_picker.add_first_carereceiver.add_button_label",
+                                                     value: "Go to care receiver section",
+                                                     comment: "Carereceiver picker add first carereceiver button label")
+        }
+
         static let title = LocalizedString("lekaapp.carereceiver_picker.title",
                                            value: "Who do you do this activity with?",
                                            comment: "Carereceiver picker title")
