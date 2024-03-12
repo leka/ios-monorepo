@@ -20,8 +20,13 @@ struct SampleActivityListView: View {
                         .toolbar {
                             ToolbarItem {
                                 Button {
-                                    self.navigation.sheetContent = .carereceiverPicker(activity: activity)
                                     self.selectedActivity = activity
+                                    if self.authManagerViewModel.userAuthenticationState == .loggedIn {
+                                        self.navigation.sheetContent = .carereceiverPicker(activity: activity)
+                                    } else {
+                                        self.navigation.currentActivity = activity
+                                        self.navigation.fullScreenCoverContent = .activityView
+                                    }
                                 } label: {
                                     Image(systemName: "play.circle")
                                     Text("Start activity")
@@ -46,6 +51,7 @@ struct SampleActivityListView: View {
 
     // MARK: Private
 
+    @ObservedObject private var authManagerViewModel: AuthManagerViewModel = .shared
     @ObservedObject private var navigation: Navigation = .shared
     @State private var selectedActivity: Activity?
 }
