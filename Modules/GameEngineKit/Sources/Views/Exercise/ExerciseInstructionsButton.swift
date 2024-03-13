@@ -27,16 +27,28 @@ class SpeakerViewModel: NSObject, ObservableObject, AVSpeechSynthesizerDelegate 
     @Published var isSpeaking = false
 
     func speak(sentence: String) {
-        let utterance = AVSpeechUtterance(string: sentence)
-        utterance.rate = 0.40
-
-        switch l10n.language {
+        let voice = switch l10n.language {
             case .french:
-                utterance.voice = AVSpeechSynthesisVoice(language: "fr-FR")
+                AVSpeechSynthesisVoice(language: "fr-FR")
             case .english:
-                utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+                AVSpeechSynthesisVoice(language: "en-US")
             default:
-                utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+                AVSpeechSynthesisVoice(language: "en-US")
+        }
+
+        var finalSentence: String {
+            if l10n.language == .french {
+                sentence.replacingOccurrences(of: "Leka", with: "Léka")
+            } else {
+                sentence
+            }
+        }
+
+        var utterance: AVSpeechUtterance {
+            let utterance = AVSpeechUtterance(string: finalSentence)
+            utterance.rate = 0.40
+            utterance.voice = voice
+            return utterance
         }
 
         self.synthesizer.speak(utterance)
