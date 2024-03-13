@@ -3,9 +3,40 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import AccountKit
+import Combine
 import DesignKit
 import LocalizationKit
 import SwiftUI
+
+// MARK: - CreateCarereceiverViewModel
+
+class CreateCarereceiverViewModel: ObservableObject {
+    // MARK: Internal
+
+    var carereceiverManager: CarereceiverManager = .shared
+
+    // MARK: - Public functions
+
+    func createCarereceiver(carereceiver: Carereceiver, onCreated: @escaping (Carereceiver) -> Void, onError: @escaping (Error) -> Void) {
+        self.carereceiverManager.createCarereceiver(carereceiver: carereceiver)
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                    case .finished:
+                        print("Carereceiver Creation successful.")
+                    case let .failure(error):
+                        print("Carereceiver Creation failed with error: \(error)")
+                        onError(error)
+                }
+            }, receiveValue: { createdCarereceiver in
+                onCreated(createdCarereceiver)
+            })
+            .store(in: &self.cancellables)
+    }
+
+    // MARK: Private
+
+    private var cancellables = Set<AnyCancellable>()
+}
 
 // MARK: - CreateCarereceiverView
 
@@ -43,14 +74,19 @@ struct CreateCarereceiverView: View {
                     }
 
                     Button(String(l10n.CarereceiverCreation.registerProfilButton.characters)) {
-                        withAnimation {
-                            self.action = .created
-                            self.dismiss()
-                        }
                         if self.newCarereceiver.avatar.isEmpty {
                             self.newCarereceiver.avatar = Avatars.categories.first!.avatars.randomElement()!
                         }
-                        self.carereceiverManager.addCarereceiver(carereceiver: self.newCarereceiver)
+                        self.viewModel.createCarereceiver(carereceiver: self.newCarereceiver, onCreated: { createdCarereceiver in
+                            self.newCarereceiver = createdCarereceiver
+                            withAnimation {
+                                self.action = .created
+                                self.dismiss()
+                            }
+                        }, onError: { error in
+                            // Handle error
+                            print(error.localizedDescription)
+                        })
                     }
                     .disabled(self.newCarereceiver.username.isEmpty)
                     .buttonStyle(.borderedProminent)
@@ -92,9 +128,12 @@ struct CreateCarereceiverView: View {
         case created
     }
 
+    @StateObject private var viewModel = CreateCarereceiverViewModel()
+
     @State private var newCarereceiver = Carereceiver()
     @State private var isAvatarPickerPresented: Bool = false
     @State private var action: ActionType?
+    @State private var cancellables = Set<AnyCancellable>()
 
     private var avatarPickerButton: some View {
         Button {
