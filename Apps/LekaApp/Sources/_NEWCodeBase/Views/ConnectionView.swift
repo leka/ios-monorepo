@@ -62,8 +62,6 @@ struct ConnectionView: View {
         }
         .onChange(of: self.authManagerViewModel.userAuthenticationState) { newValue in
             if newValue == .loggedIn {
-                self.caregiverManager.fetchAllCaregivers()
-                self.carereceiverManager.fetchAllCarereceivers()
                 self.viewModel.navigateToCaregiverSelection.toggle()
             }
         }

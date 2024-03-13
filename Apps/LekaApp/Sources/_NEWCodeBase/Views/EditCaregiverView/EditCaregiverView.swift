@@ -62,7 +62,6 @@ struct EditCaregiverView: View {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button(String(l10n.EditCaregiverView.saveButtonLabel.characters)) {
                         self.caregiverManager.updateCaregiver(caregiver: &self.modifiedCaregiver)
-                        self.caregiverManager.fetchAllCaregivers()
                         self.dismiss()
                     }
                 }

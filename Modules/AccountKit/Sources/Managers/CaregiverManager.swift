@@ -8,14 +8,14 @@ public class CaregiverManager {
     // MARK: Lifecycle
 
     private init() {
-        // Nothing to do
+        self.initializeCaregiversListener()
     }
 
     // MARK: Public
 
     public static let shared = CaregiverManager()
 
-    public func fetchAllCaregivers() {
+    public func initializeCaregiversListener() {
         self.dbOps.observeAll(from: .caregivers)
             .sink(receiveCompletion: { [weak self] completion in
                 if case let .failure(error) = completion {
@@ -51,7 +51,7 @@ public class CaregiverManager {
                     .eraseToAnyPublisher()
             }
             .handleEvents(receiveOutput: { [weak self] _ in
-                self?.fetchAllCaregivers()
+                self?.initializeCaregiversListener()
             })
             .eraseToAnyPublisher()
     }

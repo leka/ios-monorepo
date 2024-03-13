@@ -8,14 +8,14 @@ public class CarereceiverManager {
     // MARK: Lifecycle
 
     private init() {
-        // Nothing to do
+        self.initializeCarereceiversListener()
     }
 
     // MARK: Public
 
     public static let shared = CarereceiverManager()
 
-    public func fetchAllCarereceivers() {
+    public func initializeCarereceiversListener() {
         self.dbOps.observeAll(from: .carereceivers)
             .sink(receiveCompletion: { [weak self] completion in
                 if case let .failure(error) = completion {
@@ -51,7 +51,7 @@ public class CarereceiverManager {
                     .eraseToAnyPublisher()
             }
             .handleEvents(receiveOutput: { [weak self] _ in
-                self?.fetchAllCarereceivers()
+                self?.initializeCarereceiversListener()
             })
             .eraseToAnyPublisher()
     }
