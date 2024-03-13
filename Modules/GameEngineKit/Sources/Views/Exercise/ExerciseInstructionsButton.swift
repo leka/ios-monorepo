@@ -4,6 +4,7 @@
 
 import AVFoundation
 import DesignKit
+import LocalizationKit
 import SwiftUI
 
 // MARK: - SpeakerViewModel
@@ -28,8 +29,16 @@ class SpeakerViewModel: NSObject, ObservableObject, AVSpeechSynthesizerDelegate 
     func speak(sentence: String) {
         let utterance = AVSpeechUtterance(string: sentence)
         utterance.rate = 0.40
-        // TODO(@ladislas): handle different locales
-        utterance.voice = AVSpeechSynthesisVoice(language: "fr-FR")
+
+        switch l10n.language {
+            case .french:
+                utterance.voice = AVSpeechSynthesisVoice(language: "fr-FR")
+            case .english:
+                utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+            default:
+                utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+        }
+
         self.synthesizer.speak(utterance)
     }
 
