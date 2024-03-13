@@ -39,7 +39,7 @@ l10n:
       subtitle: null
 
       short_description: |
-        Jouer du xylophone sans fausse notes (gamme pentatonique)
+        Jouer du xylophone sans fausses notes (gamme pentatonique)
 
       description: |
         L'activité xylophone permet à la personne de jouer de la musique en touchant les touches du xylophone affichées sur l'iPad. Chaque pression sur une touche colore Leka dans la même couleur. Cette activité favorise la compréhension du lien de cause à effet entre la tablette et le robot tout en offrant une expérience sensorielle enrichissante pour la personne.
