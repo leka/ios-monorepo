@@ -67,6 +67,26 @@ jobs:
         run: |
           bundle exec fastlane release target:LekaUpdater --verbose
 
+      - name: post message
+        if: ${{ success() }}
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          hide_and_recreate: true
+          hide_classify: "OUTDATED"
+          header: release
+          message: |
+            ## New AppStore Release available :rocket:
+
+            @leka/dev-ios
+
+            A new version has been uploaded to the App Store and is ready for review.
+
+            | <!-- -->    | <!-- -->                        |
+            |-------------|---------------------------------|
+            | **App**     | `${{ env.APP_NAME }}`           |
+            | **Version** | `${{ env.APP_VERSION_NUMBER }}` |
+            | **Build**   | `${{ env.APP_BUILD_NUMBER }}`   |
+
       - name: remove label
         if: always()
         uses: actions/github-script@v6
