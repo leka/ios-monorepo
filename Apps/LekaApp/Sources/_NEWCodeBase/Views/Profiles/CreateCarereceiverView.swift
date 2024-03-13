@@ -8,6 +8,36 @@ import DesignKit
 import LocalizationKit
 import SwiftUI
 
+// MARK: - CreateCarereceiverViewModel
+
+class CreateCarereceiverViewModel: ObservableObject {
+    // MARK: Internal
+
+    var carereceiverManager: CarereceiverManager = .shared
+
+    // MARK: - Public functions
+
+    func createCarereceiver(carereceiver: Carereceiver, onCreated: @escaping (Carereceiver) -> Void, onError: @escaping (Error) -> Void) {
+        self.carereceiverManager.createCarereceiver(carereceiver: carereceiver)
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                    case .finished:
+                        print("Carereceiver Creation successful.")
+                    case let .failure(error):
+                        print("Carereceiver Creation failed with error: \(error)")
+                        onError(error)
+                }
+            }, receiveValue: { createdCarereceiver in
+                onCreated(createdCarereceiver)
+            })
+            .store(in: &self.cancellables)
+    }
+
+    // MARK: Private
+
+    private var cancellables = Set<AnyCancellable>()
+}
+
 // MARK: - CreateCarereceiverView
 
 struct CreateCarereceiverView: View {
@@ -47,22 +77,16 @@ struct CreateCarereceiverView: View {
                         if self.newCarereceiver.avatar.isEmpty {
                             self.newCarereceiver.avatar = Avatars.categories.first!.avatars.randomElement()!
                         }
-                        self.carereceiverManager.createCarereceiver(carereceiver: self.newCarereceiver)
-                            .sink(receiveCompletion: { completion in
-                                switch completion {
-                                    case .finished:
-                                        print("Carereceiver Creation successful.")
-                                    case let .failure(error):
-                                        print("Carereceiver Creation failed with error: \(error)")
-                                }
-                            }, receiveValue: { createdCarereceiver in
-                                self.newCarereceiver = createdCarereceiver
-                                withAnimation {
-                                    self.action = .created
-                                    self.dismiss()
-                                }
-                            })
-                            .store(in: &self.cancellables)
+                        self.viewModel.createCarereceiver(carereceiver: self.newCarereceiver, onCreated: { createdCarereceiver in
+                            self.newCarereceiver = createdCarereceiver
+                            withAnimation {
+                                self.action = .created
+                                self.dismiss()
+                            }
+                        }, onError: { error in
+                            // Handle error
+                            print(error.localizedDescription)
+                        })
                     }
                     .disabled(self.newCarereceiver.username.isEmpty)
                     .buttonStyle(.borderedProminent)
@@ -103,6 +127,8 @@ struct CreateCarereceiverView: View {
         case cancel
         case created
     }
+
+    @StateObject private var viewModel = CreateCarereceiverViewModel()
 
     @State private var newCarereceiver = Carereceiver()
     @State private var isAvatarPickerPresented: Bool = false
