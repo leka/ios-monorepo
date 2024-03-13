@@ -10,20 +10,45 @@ import SwiftUI
 
 struct ActivityListView: View {
     let activities: [Activity] = ContentKit.listSampleActivities() ?? []
+    let pngImages: [String] = ContentKit.listImagesPNG()
 
     var body: some View {
         List {
-            ForEach(self.activities) { activity in
-                NavigationLink(destination: ActivityDetailsView(activity: activity)) {
-                    Image(uiImage: activity.details.iconImage)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 44, height: 44)
-                    Text(activity.name)
-                }
+//            ForEach(self.activities) { activity in
+//                NavigationLink(destination: ActivityDetailsView(activity: activity)) {
+//                    Image(uiImage: activity.details.iconImage)
+//                        .resizable()
+//                        .scaledToFit()
+//                        .frame(width: 44, height: 44)
+//                    Text(activity.name)
+//                }
+//            }
+
+            ForEach(self.pngImages, id: \.self) { image in
+                Image(uiImage: UIImage(named: image)!)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 300, height: 300)
             }
         }
         .navigationTitle("Activities")
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button("240") {
+                    print("Refresh")
+                }
+            }
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button("280") {
+                    print("Refresh")
+                }
+            }
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button("300") {
+                    print("Refresh")
+                }
+            }
+        }
         .onAppear {
             let skills = Skills.list
             for (index, skill) in skills.enumerated() {
@@ -47,6 +72,12 @@ struct ActivityListView: View {
                 print("id: \(author.id)")
                 print("name: \(author.name)")
                 print("description: \(author.description)")
+            }
+
+            let images = ContentKit.listImagesPNG()
+            for (index, image) in images.enumerated() {
+                print("image \(index + 1)")
+                print("name: \(image)")
             }
         }
     }
