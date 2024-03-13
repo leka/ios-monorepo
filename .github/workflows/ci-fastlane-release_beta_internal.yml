@@ -77,6 +77,26 @@ jobs:
         run: |
           bundle exec fastlane beta_internal targets:all --verbose
 
+      - name: post message
+        if: ${{ success() }}
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          hide_and_recreate: true
+          hide_classify: "OUTDATED"
+          header: testflight
+          message: |
+            ## New TestFlight build available :airplane:
+
+            @leka/dev-ios
+
+            A new TestFlight build is available for testing. Please check the TestFlight app on your device to install the latest build.
+
+            | <!-- -->    | <!-- -->                        |
+            |-------------|---------------------------------|
+            | **App**     | `${{ env.APP_NAME }}`           |
+            | **Version** | `${{ env.APP_VERSION_NUMBER }}` |
+            | **Build**   | `${{ env.APP_BUILD_NUMBER }}`   |
+
       - name: remove label
         if: always()
         uses: actions/github-script@v6
