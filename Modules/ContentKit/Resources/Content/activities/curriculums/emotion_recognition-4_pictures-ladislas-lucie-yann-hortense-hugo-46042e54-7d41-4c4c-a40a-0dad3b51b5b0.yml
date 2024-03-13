@@ -2,8 +2,8 @@
 # Copyright APF France handicap
 # SPDX-License-Identifier: Apache-2.0
 
-id:
-name:
+id: 46042e54-7d41-4c4c-a40a-0dad3b51b5b0
+name: emotion_recognition-4_pictures-ladislas-lucie-yann-hortense-hugo
 description: L'objectif est de trouver la bonne image ou des les rassembler par famille
 image: activity_image_recognition_1
 sequence:

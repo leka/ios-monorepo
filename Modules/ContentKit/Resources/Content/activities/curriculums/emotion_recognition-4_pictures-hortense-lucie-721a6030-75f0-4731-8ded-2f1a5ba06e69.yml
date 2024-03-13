@@ -2,8 +2,8 @@
 # Copyright APF France handicap
 # SPDX-License-Identifier: Apache-2.0
 
-id:
-name:
+id: 721a6030-75f0-4731-8ded-2f1a5ba06e69
+name: emotion_recognition-4_pictures-hortense-lucie
 description: L'objectif est de trouver la bonne image ou des les rassembler par famille
 image: activity_image_recognition_1
 sequence:

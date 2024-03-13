@@ -2,8 +2,8 @@
 # Copyright APF France handicap
 # SPDX-License-Identifier: Apache-2.0
 
-id:
-name:
+id: ac80e69e-caba-41f6-8001-c359870b8569
+name: emotion_recognition-2_pictures-hortense-yann
 description: L'objectif est de trouver la bonne image ou des les rassembler par famille
 image: activity_image_recognition_1
 sequence:
