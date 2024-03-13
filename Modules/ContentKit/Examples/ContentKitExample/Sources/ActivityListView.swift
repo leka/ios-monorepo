@@ -25,10 +25,13 @@ struct ActivityListView: View {
 //            }
 
             ForEach(self.pngImages, id: \.self) { image in
-                Image(uiImage: UIImage(named: image)!)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 300, height: 300)
+                VStack {
+                    Image(uiImage: UIImage(named: image)!)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 300, height: 300)
+                    Text(self.getImageNameFromPath(path: image))
+                }
             }
         }
         .navigationTitle("Activities")
@@ -80,6 +83,11 @@ struct ActivityListView: View {
                 print("name: \(image)")
             }
         }
+    }
+
+    func getImageNameFromPath(path: String) -> String {
+        let components = path.components(separatedBy: "/")
+        return components.last ?? ""
     }
 }
 
