@@ -15,6 +15,7 @@ public struct Carereceiver: AccountDocument, Hashable {
     public var id: String?
     public var rootOwnerUid: String
     public var username: String
+    public var birthdate: String
     public var avatar: String
     public var reinforcer: Robot.Reinforcer
 
@@ -26,6 +27,7 @@ public struct Carereceiver: AccountDocument, Hashable {
         case createdAt = "created_at"
         case lastEditedAt = "last_edited_at"
         case username
+        case birthdate
         case avatar
         case reinforcer
     }

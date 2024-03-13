@@ -9,12 +9,14 @@ public extension Carereceiver {
     init(id: String = "",
          rootOwnerUid: String = "",
          username: String = "",
+         birthdate: String = "",
          avatar: String = "",
          reinforcer: Robot.Reinforcer = .rainbow)
     {
         self.id = id
         self.rootOwnerUid = rootOwnerUid
         self.username = username
+        self.birthdate = birthdate
         self.avatar = avatar
         self.reinforcer = reinforcer
     }
