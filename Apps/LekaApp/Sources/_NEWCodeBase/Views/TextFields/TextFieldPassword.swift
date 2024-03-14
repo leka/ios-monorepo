@@ -44,6 +44,7 @@ struct TextFieldPassword: View {
                 }
                 .textFieldStyle(.roundedBorder)
                 .textContentType(.password)
+                .textInputAutocapitalization(.never)
                 .autocorrectionDisabled()
                 .onReceive(Just(self.entry)) { newValue in
                     self.entry = newValue.trimmingCharacters(in: .whitespaces)
