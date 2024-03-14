@@ -19,6 +19,7 @@ struct CaregiverAvatarCell: View {
 
             Text("\(self.caregiver.firstName) \(self.caregiver.lastName)")
                 .font(.headline)
+                .lineLimit(2, reservesSpace: true)
         }
     }
 }
