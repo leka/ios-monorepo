@@ -27,7 +27,11 @@ struct EditCarereceiverView: View {
                 Section {
                     LabeledContent(String(l10n.CarereceiverCreation.carereceiverNameLabel.characters)) {
                         TextField("", text: self.$modifiedCarereceiver.username)
+                            .textContentType(.username)
+                            .textInputAutocapitalization(.words)
+                            .autocorrectionDisabled()
                             .multilineTextAlignment(.trailing)
+                            .foregroundStyle(Color.secondary)
                     }
                 }
 

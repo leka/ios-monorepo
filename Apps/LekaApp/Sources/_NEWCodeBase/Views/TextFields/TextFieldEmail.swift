@@ -38,7 +38,6 @@ struct TextFieldEmail: View {
                 .textFieldStyle(.roundedBorder)
                 .keyboardType(.emailAddress)
                 .textContentType(.emailAddress)
-                .autocapitalization(.none)
                 .autocorrectionDisabled()
                 .onReceive(Just(self.entry)) { newValue in
                     if self.focused != .email {
