@@ -40,6 +40,10 @@ extension MainView {
                 case .carereceivers:
                     self.title = String(l10n.MainView.Sidebar.CategoryLabel.carereceivers.characters)
                     self.systemImage = "figure.2.arms.open"
+
+                case .developerModeImageListPNG:
+                    self.title = "PNG Image List"
+                    self.systemImage = "photo.circle"
             }
         }
 

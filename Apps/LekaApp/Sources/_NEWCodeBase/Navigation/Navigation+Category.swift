@@ -13,6 +13,7 @@ extension Navigation {
         case remotes
         case sampleActivities
         case carereceivers
+        case developerModeImageListPNG
 
         // MARK: Internal
 
