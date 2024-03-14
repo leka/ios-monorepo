@@ -18,47 +18,45 @@ public struct RobotConnectionView: View {
     // MARK: Public
 
     public var body: some View {
-        NavigationStack {
-            VStack(spacing: 10) {
-                switch self.viewModel.robotDiscoveries.count {
-                    case 0:
-                        Spacer()
-                        self.searchingView
-                        Spacer()
-                    default:
-                        self.robotDiscoveryGridView
-                }
+        VStack(spacing: 10) {
+            switch self.viewModel.robotDiscoveries.count {
+                case 0:
+                    Spacer()
+                    self.searchingView
+                    Spacer()
+                default:
+                    self.robotDiscoveryGridView
+            }
 
-                Divider()
-                    .padding(.horizontal)
-                    .padding(.horizontal)
+            Divider()
+                .padding(.horizontal)
+                .padding(.horizontal)
 
-                HStack {
-                    if !self.viewModel.connected {
-                        self.connectButton
-                    } else {
-                        self.disconnectButton
-                    }
-                    self.continueButton
+            HStack {
+                if !self.viewModel.connected {
+                    self.connectButton
+                } else {
+                    self.disconnectButton
                 }
-                .padding(.top, 15)
-                .padding(.bottom, 40)
+                self.continueButton
             }
-            .background(.lkBackground)
-            .onAppear {
-                self.viewModel.scanForRobots()
-            }
-            .onDisappear {
-                self.viewModel.stopScanning()
-            }
-            .navigationTitle(String(l10n.RobotKit.RobotConnectionView.navigationTitle.characters))
-            .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button {
-                        self.dismiss()
-                    } label: {
-                        Text(l10n.RobotKit.RobotConnectionView.cancelButton)
-                    }
+            .padding(.top, 15)
+            .padding(.bottom, 40)
+        }
+        .background(.lkBackground)
+        .onAppear {
+            self.viewModel.scanForRobots()
+        }
+        .onDisappear {
+            self.viewModel.stopScanning()
+        }
+        .navigationTitle(String(l10n.RobotKit.RobotConnectionView.navigationTitle.characters))
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Button {
+                    self.dismiss()
+                } label: {
+                    Text(l10n.RobotKit.RobotConnectionView.cancelButton)
                 }
             }
         }
@@ -186,5 +184,10 @@ public struct RobotConnectionView: View {
 
 #Preview {
     let viewModel: RobotConnectionViewModel = .mock()
-    return RobotConnectionView(viewModel: viewModel)
+    return Text("Preview")
+        .sheet(isPresented: .constant(true)) {
+            NavigationStack {
+                RobotConnectionView(viewModel: viewModel)
+            }
+        }
 }
