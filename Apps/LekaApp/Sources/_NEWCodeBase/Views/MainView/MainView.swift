@@ -113,11 +113,13 @@ struct MainView: View {
             self.navigation.fullScreenCoverContent = nil
             self.navigation.currentActivity = nil
         } content: { content in
-            switch content {
-                case .welcomeView:
-                    WelcomeView()
-                case .activityView:
-                    ActivityView(activity: self.navigation.currentActivity!)
+            NavigationStack {
+                switch content {
+                    case .welcomeView:
+                        WelcomeView()
+                    case .activityView:
+                        ActivityView(activity: self.navigation.currentActivity!)
+                }
             }
         }
         .sheet(item: self.$navigation.sheetContent) {

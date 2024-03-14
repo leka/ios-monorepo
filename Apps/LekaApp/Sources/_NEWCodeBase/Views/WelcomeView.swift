@@ -15,30 +15,28 @@ struct WelcomeView: View {
     @Environment(\.dismiss) var dismiss
 
     var body: some View {
-        NavigationStack {
-            VStack(spacing: 30) {
-                LekaLogo(height: 90)
+        VStack(spacing: 30) {
+            LekaLogo(height: 90)
 
-                NavigationLink(String(l10n.WelcomeView.createAccountButton.characters)) {
-                    AccountCreationView()
-                }
-                .buttonStyle(.borderedProminent)
+            NavigationLink(String(l10n.WelcomeView.createAccountButton.characters)) {
+                AccountCreationView()
+            }
+            .buttonStyle(.borderedProminent)
 
-                NavigationLink(String(l10n.WelcomeView.loginButton.characters)) {
-                    ConnectionView()
+            NavigationLink(String(l10n.WelcomeView.loginButton.characters)) {
+                ConnectionView()
+            }
+            .buttonStyle(.bordered)
+        }
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button(String(l10n.WelcomeView.skipStepButton.characters)) {
+                    self.dismiss()
                 }
-                .buttonStyle(.bordered)
             }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(String(l10n.WelcomeView.skipStepButton.characters)) {
-                        self.dismiss()
-                    }
-                }
-            }
-            .onAppear {
-                self.authManagerViewModel.userAction = .none
-            }
+        }
+        .onAppear {
+            self.authManagerViewModel.userAction = .none
         }
     }
 
@@ -49,5 +47,7 @@ struct WelcomeView: View {
 }
 
 #Preview {
-    WelcomeView()
+    NavigationStack {
+        WelcomeView()
+    }
 }
