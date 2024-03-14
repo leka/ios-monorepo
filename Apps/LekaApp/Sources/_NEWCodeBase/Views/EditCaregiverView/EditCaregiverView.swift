@@ -10,10 +10,13 @@ import SwiftUI
 // MARK: - EditCaregiverView
 
 struct EditCaregiverView: View {
-    // MARK: Internal
+    // MARK: Lifecycle
 
-    @Environment(\.dismiss) var dismiss
-    @State var modifiedCaregiver: Caregiver
+    init(caregiver: Caregiver) {
+        self._viewModel = StateObject(wrappedValue: EditCaregiverViewViewModel(caregiver: caregiver))
+    }
+
+    // MARK: Internal
 
     var body: some View {
         VStack(spacing: 40) {
@@ -26,7 +29,7 @@ struct EditCaregiverView: View {
 
                 Section {
                     LabeledContent(String(l10n.CaregiverCreation.caregiverFirstNameLabel.characters)) {
-                        TextField("", text: self.$modifiedCaregiver.firstName)
+                        TextField("", text: self.$viewModel.caregiver.firstName)
                             .textContentType(.givenName)
                             .textInputAutocapitalization(.words)
                             .autocorrectionDisabled()
@@ -34,7 +37,7 @@ struct EditCaregiverView: View {
                             .foregroundStyle(Color.secondary)
                     }
                     LabeledContent(String(l10n.CaregiverCreation.caregiverLastNameLabel.characters)) {
-                        TextField("", text: self.$modifiedCaregiver.lastName)
+                        TextField("", text: self.$viewModel.caregiver.lastName)
                             .textContentType(.familyName)
                             .textInputAutocapitalization(.words)
                             .autocorrectionDisabled()
@@ -48,8 +51,8 @@ struct EditCaregiverView: View {
                 }
 
                 Section {
-                    AppearanceRow(caregiver: self.$modifiedCaregiver)
-                    AccentColorRow(caregiver: self.$modifiedCaregiver)
+                    AppearanceRow(caregiver: self.$viewModel.caregiver)
+                    AccentColorRow(caregiver: self.$viewModel.caregiver)
                 }
             }
         }
@@ -65,7 +68,7 @@ struct EditCaregiverView: View {
             }
             ToolbarItem(placement: .topBarTrailing) {
                 Button(String(l10n.EditCaregiverView.saveButtonLabel.characters)) {
-                    self.caregiverManager.updateCaregiver(caregiver: &self.modifiedCaregiver)
+                    self.caregiverManager.updateCaregiver(caregiver: &self.viewModel.caregiver)
                     self.dismiss()
                 }
             }
@@ -75,28 +78,30 @@ struct EditCaregiverView: View {
 
     // MARK: Private
 
-    @ObservedObject private var styleManager: StyleManager = .shared
-    @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
-    @State private var isAvatarPickerPresented: Bool = false
-    @State private var isProfessionPickerPresented: Bool = false
+    @Environment(\.dismiss) private var dismiss
 
-    var caregiverManager: CaregiverManager = .shared
+    private var caregiverManager: CaregiverManager = .shared
+
+    @StateObject private var viewModel: EditCaregiverViewViewModel
+    @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
+
+    @ObservedObject private var styleManager: StyleManager = .shared
 
     private var avatarPickerButton: some View {
         Button {
-            self.isAvatarPickerPresented = true
+            self.viewModel.isAvatarPickerPresented = true
         } label: {
             VStack(alignment: .center, spacing: 15) {
-                AvatarPicker.ButtonLabel(image: self.modifiedCaregiver.avatar)
+                AvatarPicker.ButtonLabel(image: self.viewModel.caregiver.avatar)
                 Text(l10n.CaregiverCreation.avatarChoiceButton)
                     .font(.headline)
             }
         }
-        .sheet(isPresented: self.$isAvatarPickerPresented) {
+        .sheet(isPresented: self.$viewModel.isAvatarPickerPresented) {
             NavigationStack {
-                AvatarPicker(selectedAvatar: self.modifiedCaregiver.avatar,
+                AvatarPicker(selectedAvatar: self.viewModel.caregiver.avatar,
                              onValidate: { avatar in
-                                 self.modifiedCaregiver.avatar = avatar
+                                 self.viewModel.caregiver.avatar = avatar
                              })
             }
         }
@@ -107,36 +112,52 @@ struct EditCaregiverView: View {
         VStack(alignment: .leading) {
             LabeledContent(String(l10n.CaregiverCreation.professionLabel.characters)) {
                 Button {
-                    self.isProfessionPickerPresented = true
+                    self.viewModel.isProfessionPickerPresented = true
                 } label: {
                     Image(systemName: "plus")
                 }
-                .sheet(isPresented: self.$isProfessionPickerPresented) {
+                .sheet(isPresented: self.$viewModel.isProfessionPickerPresented) {
                     NavigationStack {
-                        ProfessionPicker(selectedProfessionsIDs: self.modifiedCaregiver.professions,
+                        ProfessionPicker(selectedProfessionsIDs: self.viewModel.caregiver.professions,
                                          onValidate: { professions in
-                                             self.modifiedCaregiver.professions = professions
+                                             self.viewModel.caregiver.professions = professions
                                          })
                                          .navigationBarTitleDisplayMode(.inline)
                     }
                 }
             }
 
-            if !self.modifiedCaregiver.professions.isEmpty {
-                ForEach(self.modifiedCaregiver.professions, id: \.self) { id in
+            if !self.viewModel.caregiver.professions.isEmpty {
+                ForEach(self.viewModel.caregiver.professions, id: \.self) { id in
                     let profession = Professions.profession(for: id)!
-                    ProfessionPicker.ProfessionTag(profession: profession, caregiver: self.$modifiedCaregiver)
+                    ProfessionPicker.ProfessionTag(profession: profession, caregiver: self.$viewModel.caregiver)
                 }
             }
         }
     }
 }
 
+// MARK: - EditCaregiverViewViewModel
+
+class EditCaregiverViewViewModel: ObservableObject {
+    // MARK: Lifecycle
+
+    init(caregiver: Caregiver) {
+        self.caregiver = caregiver
+    }
+
+    // MARK: Internal
+
+    @Published var caregiver: Caregiver
+    @Published var isAvatarPickerPresented: Bool = false
+    @Published var isProfessionPickerPresented: Bool = false
+}
+
 #Preview {
     Text("Preview")
         .sheet(isPresented: .constant(true)) {
             NavigationStack {
-                EditCaregiverView(modifiedCaregiver: Caregiver())
+                EditCaregiverView(caregiver: Caregiver())
             }
         }
 }
