@@ -4,6 +4,7 @@
 
 import AccountKit
 import DesignKit
+import Fit
 import LocalizationKit
 import SwiftUI
 
@@ -128,9 +129,11 @@ struct EditCaregiverView: View {
             }
 
             if !self.viewModel.caregiver.professions.isEmpty {
-                ForEach(self.viewModel.caregiver.professions, id: \.self) { id in
-                    let profession = Professions.profession(for: id)!
-                    ProfessionPicker.ProfessionTag(profession: profession, caregiver: self.$viewModel.caregiver)
+                Fit {
+                    ForEach(self.viewModel.caregiver.professions, id: \.self) { id in
+                        let profession = Professions.profession(for: id)!
+                        ProfessionPicker.ProfessionTag(profession: profession, caregiver: self.$viewModel.caregiver)
+                    }
                 }
             }
         }
