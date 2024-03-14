@@ -116,11 +116,51 @@ public extension Activity {
 
     exercises_payload:
       options:
-        shuffle_exercises: true
-        shuffle_groups: true
+        shuffle_exercises: false
+        shuffle_groups: false
 
       exercise_groups:
         - group:
+            - instructions:
+                - locale: fr_FR
+                  value: Touch la pastèque
+                - locale: en_US
+                  value: Touch the watermelon
+              interface: touchToSelect
+              gameplay: findTheRightAnswers
+              payload:
+                shuffle_choices: true
+                choices:
+                  - value: 🍉
+                    type: emoji
+                    is_right_answer: true
+                  - value: 🍌
+                    type: emoji
+                  - value: 🍒
+                    type: emoji
+                  - value: 🥝
+                    type: emoji
+
+            - instructions:
+                - locale: fr_FR
+                  value: Touch le carré
+                - locale: en_US
+                  value: Touch the square
+              interface: touchToSelect
+              gameplay: findTheRightAnswers
+              payload:
+                shuffle_choices: true
+                choices:
+                  - value: circle
+                    type: sfsymbol
+                  - value: square
+                    type: sfsymbol
+                    is_right_answer: true
+                  - value: triangle
+                    type: sfsymbol
+                  - value: rhombus
+                    type: sfsymbol
+
             - instructions:
                 - locale: fr_FR
                   value: Touch le rond jaune
@@ -129,10 +169,11 @@ public extension Activity {
               interface: touchToSelect
               gameplay: findTheRightAnswers
               payload:
+                shuffle_choices: true
                 choices:
                   - value: yellow
                     type: color
-                    isRightAnswer: true
+                    is_right_answer: true
                   - value: red
                     type: color
                   - value: green
