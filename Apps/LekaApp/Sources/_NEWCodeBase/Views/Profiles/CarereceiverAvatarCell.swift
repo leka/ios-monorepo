@@ -50,6 +50,7 @@ struct CarereceiverAvatarCell: View {
 
             Text(self.carereceiver.username)
                 .font(.headline)
+                .lineLimit(2, reservesSpace: true)
         }
     }
 
