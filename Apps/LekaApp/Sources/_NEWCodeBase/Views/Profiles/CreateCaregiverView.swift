@@ -105,7 +105,6 @@ struct CreateCaregiverView: View {
         }
         .navigationTitle(String(l10n.CaregiverCreation.title.characters))
         .navigationBarTitleDisplayMode(.inline)
-        .interactiveDismissDisabled()
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 Button {

@@ -49,7 +49,6 @@ struct EditCaregiverView: View {
         }
         .navigationTitle(String(l10n.EditCaregiverView.navigationTitle.characters))
         .navigationBarTitleDisplayMode(.inline)
-        .interactiveDismissDisabled()
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 Button(String(l10n.EditCaregiverView.closeButtonLabel.characters)) {

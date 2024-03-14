@@ -42,7 +42,6 @@ struct EditCarereceiverView: View {
         }
         .navigationTitle(String(l10n.EditCarereceiverView.navigationTitle.characters))
         .navigationBarTitleDisplayMode(.inline)
-        .interactiveDismissDisabled()
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 Button(String(l10n.EditCarereceiverView.closeButtonLabel.characters)) {

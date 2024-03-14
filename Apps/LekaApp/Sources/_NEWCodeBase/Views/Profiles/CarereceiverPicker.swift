@@ -65,7 +65,6 @@ struct CarereceiverPicker: View {
         }
         .navigationTitle(String(l10n.CarereceiverPicker.title.characters))
         .navigationBarTitleDisplayMode(.inline)
-        .interactiveDismissDisabled()
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 Button {
