@@ -37,4 +37,11 @@ public enum ContentKit {
 
         return activities.sorted { $0.name < $1.name }
     }
+
+    public static func listImagesPNG() -> [String] {
+        let bundle = Bundle.module
+        let files = bundle.paths(forResourcesOfType: "png", inDirectory: nil)
+
+        return files
+    }
 }
