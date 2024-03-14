@@ -57,78 +57,76 @@ struct CreateCaregiverView: View {
     var caregiverManager: CaregiverManager = .shared
 
     var body: some View {
-        NavigationStack {
-            VStack(spacing: 40) {
-                Form {
-                    Section {
-                        self.avatarPickerButton
-                            .buttonStyle(.borderless)
-                            .listRowBackground(Color.clear)
-                    }
-
-                    Section {
-                        LabeledContent(String(l10n.CaregiverCreation.caregiverFirstNameLabel.characters)) {
-                            TextField("", text: self.$newCaregiver.firstName)
-                                .multilineTextAlignment(.trailing)
-                                .foregroundStyle(Color.secondary)
-                        }
-                        LabeledContent(String(l10n.CaregiverCreation.caregiverLastNameLabel.characters)) {
-                            TextField("", text: self.$newCaregiver.lastName)
-                                .multilineTextAlignment(.trailing)
-                                .foregroundStyle(Color.secondary)
-                        }
-                    }
-
-                    Section {
-                        self.professionPickerButton
-                    }
-
-                    Button(String(l10n.CaregiverCreation.registerProfilButton.characters)) {
-                        if self.newCaregiver.avatar.isEmpty {
-                            self.newCaregiver.avatar = Avatars.categories.first!.avatars.randomElement()!
-                        }
-                        self.viewModel.createCaregiver(caregiver: self.newCaregiver, onCreated: { createdCaregiver in
-                            self.newCaregiver = createdCaregiver
-                            withAnimation {
-                                self.action = .created
-                                self.dismiss()
-                            }
-                        }, onError: { error in
-                            // Handle error
-                            print(error.localizedDescription)
-                        })
-                    }
-                    .disabled(self.newCaregiver.firstName.isEmpty)
-                    .buttonStyle(.borderedProminent)
-                    .listRowBackground(Color.clear)
-                    .frame(maxWidth: .infinity, alignment: .center)
-                }
-            }
-            .navigationTitle(String(l10n.CaregiverCreation.title.characters))
-            .navigationBarTitleDisplayMode(.inline)
-            .interactiveDismissDisabled()
-            .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    Button {
-                        self.action = .cancel
-                        self.dismiss()
-                    } label: {
-                        Image(systemName: "xmark.circle")
-                    }
-                }
-            }
-            .onDisappear {
-                switch self.action {
-                    case .cancel:
-                        self.onCancel?()
-                    case .created:
-                        self.onCreated?(self.newCaregiver)
-                    case .none:
-                        break
+        VStack(spacing: 40) {
+            Form {
+                Section {
+                    self.avatarPickerButton
+                        .buttonStyle(.borderless)
+                        .listRowBackground(Color.clear)
                 }
 
-                self.action = nil
+                Section {
+                    LabeledContent(String(l10n.CaregiverCreation.caregiverFirstNameLabel.characters)) {
+                        TextField("", text: self.$newCaregiver.firstName)
+                            .multilineTextAlignment(.trailing)
+                            .foregroundStyle(Color.secondary)
+                    }
+                    LabeledContent(String(l10n.CaregiverCreation.caregiverLastNameLabel.characters)) {
+                        TextField("", text: self.$newCaregiver.lastName)
+                            .multilineTextAlignment(.trailing)
+                            .foregroundStyle(Color.secondary)
+                    }
+                }
+
+                Section {
+                    self.professionPickerButton
+                }
+
+                Button(String(l10n.CaregiverCreation.registerProfilButton.characters)) {
+                    if self.newCaregiver.avatar.isEmpty {
+                        self.newCaregiver.avatar = Avatars.categories.first!.avatars.randomElement()!
+                    }
+                    self.viewModel.createCaregiver(caregiver: self.newCaregiver, onCreated: { createdCaregiver in
+                        self.newCaregiver = createdCaregiver
+                        withAnimation {
+                            self.action = .created
+                            self.dismiss()
+                        }
+                    }, onError: { error in
+                        // Handle error
+                        print(error.localizedDescription)
+                    })
+                }
+                .disabled(self.newCaregiver.firstName.isEmpty)
+                .buttonStyle(.borderedProminent)
+                .listRowBackground(Color.clear)
+                .frame(maxWidth: .infinity, alignment: .center)
             }
+        }
+        .navigationTitle(String(l10n.CaregiverCreation.title.characters))
+        .navigationBarTitleDisplayMode(.inline)
+        .interactiveDismissDisabled()
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                Button {
+                    self.action = .cancel
+                    self.dismiss()
+                } label: {
+                    Image(systemName: "xmark.circle")
+                }
+            }
+        }
+        .onDisappear {
+            switch self.action {
+                case .cancel:
+                    self.onCancel?()
+                case .created:
+                    self.onCreated?(self.newCaregiver)
+                case .none:
+                    break
+            }
+
+            self.action = nil
         }
     }
 
@@ -222,6 +220,11 @@ extension l10n {
 // swiftlint:enable line_length
 
 #Preview {
-    CreateCaregiverView(onCancel: { print("Creation canceled") },
-                        onCreated: { print("Caregiver \($0.firstName) created") })
+    Text("Preview")
+        .sheet(isPresented: .constant(true)) {
+            NavigationStack {
+                CreateCaregiverView(onCancel: { print("Creation canceled") },
+                                    onCreated: { print("Caregiver \($0.firstName) created") })
+            }
+        }
 }

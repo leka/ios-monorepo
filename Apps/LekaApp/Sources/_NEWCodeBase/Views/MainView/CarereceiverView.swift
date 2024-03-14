@@ -57,7 +57,9 @@ struct CarereceiverView: View {
             .padding()
             .frame(maxHeight: 140)
             .sheet(isPresented: self.$isEditCarereceiverViewPresented) {
-                EditCarereceiverView(modifiedCarereceiver: self.$carereceiver)
+                NavigationStack {
+                    EditCarereceiverView(modifiedCarereceiver: self.$carereceiver)
+                }
             }
 
             Divider()

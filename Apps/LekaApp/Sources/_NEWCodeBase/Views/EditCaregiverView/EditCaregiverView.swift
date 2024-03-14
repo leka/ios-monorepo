@@ -16,54 +16,52 @@ struct EditCaregiverView: View {
     @State var modifiedCaregiver: Caregiver
 
     var body: some View {
-        NavigationStack {
-            VStack(spacing: 40) {
-                Form {
-                    Section {
-                        self.avatarPickerButton
-                            .buttonStyle(.borderless)
-                            .listRowBackground(Color.clear)
-                    }
+        VStack(spacing: 40) {
+            Form {
+                Section {
+                    self.avatarPickerButton
+                        .buttonStyle(.borderless)
+                        .listRowBackground(Color.clear)
+                }
 
-                    Section {
-                        LabeledContent(String(l10n.CaregiverCreation.caregiverFirstNameLabel.characters)) {
-                            TextField("", text: self.$modifiedCaregiver.firstName)
-                                .multilineTextAlignment(.trailing)
-                                .foregroundStyle(Color.secondary)
-                        }
-                        LabeledContent(String(l10n.CaregiverCreation.caregiverLastNameLabel.characters)) {
-                            TextField("", text: self.$modifiedCaregiver.lastName)
-                                .multilineTextAlignment(.trailing)
-                                .foregroundStyle(Color.secondary)
-                        }
+                Section {
+                    LabeledContent(String(l10n.CaregiverCreation.caregiverFirstNameLabel.characters)) {
+                        TextField("", text: self.$modifiedCaregiver.firstName)
+                            .multilineTextAlignment(.trailing)
+                            .foregroundStyle(Color.secondary)
                     }
+                    LabeledContent(String(l10n.CaregiverCreation.caregiverLastNameLabel.characters)) {
+                        TextField("", text: self.$modifiedCaregiver.lastName)
+                            .multilineTextAlignment(.trailing)
+                            .foregroundStyle(Color.secondary)
+                    }
+                }
 
-                    Section {
-                        self.professionPickerButton
-                    }
+                Section {
+                    self.professionPickerButton
+                }
 
-                    Section {
-                        AppearanceRow(caregiver: self.$modifiedCaregiver)
-                        AccentColorRow(caregiver: self.$modifiedCaregiver)
-                    }
+                Section {
+                    AppearanceRow(caregiver: self.$modifiedCaregiver)
+                    AccentColorRow(caregiver: self.$modifiedCaregiver)
                 }
             }
-            .navigationTitle(String(l10n.EditCaregiverView.navigationTitle.characters))
-            .navigationBarTitleDisplayMode(.inline)
-            .interactiveDismissDisabled()
-            .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    Button(String(l10n.EditCaregiverView.closeButtonLabel.characters)) {
-                        self.styleManager.colorScheme = self.caregiverManagerViewModel.currentCaregiver!.colorScheme
-                        self.styleManager.accentColor = self.caregiverManagerViewModel.currentCaregiver!.colorTheme.color
-                        self.dismiss()
-                    }
+        }
+        .navigationTitle(String(l10n.EditCaregiverView.navigationTitle.characters))
+        .navigationBarTitleDisplayMode(.inline)
+        .interactiveDismissDisabled()
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                Button(String(l10n.EditCaregiverView.closeButtonLabel.characters)) {
+                    self.styleManager.colorScheme = self.caregiverManagerViewModel.currentCaregiver!.colorScheme
+                    self.styleManager.accentColor = self.caregiverManagerViewModel.currentCaregiver!.colorTheme.color
+                    self.dismiss()
                 }
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button(String(l10n.EditCaregiverView.saveButtonLabel.characters)) {
-                        self.caregiverManager.updateCaregiver(caregiver: &self.modifiedCaregiver)
-                        self.dismiss()
-                    }
+            }
+            ToolbarItem(placement: .topBarTrailing) {
+                Button(String(l10n.EditCaregiverView.saveButtonLabel.characters)) {
+                    self.caregiverManager.updateCaregiver(caregiver: &self.modifiedCaregiver)
+                    self.dismiss()
                 }
             }
         }
@@ -130,5 +128,10 @@ struct EditCaregiverView: View {
 }
 
 #Preview {
-    EditCaregiverView(modifiedCaregiver: Caregiver())
+    Text("Preview")
+        .sheet(isPresented: .constant(true)) {
+            NavigationStack {
+                EditCaregiverView(modifiedCaregiver: Caregiver())
+            }
+        }
 }

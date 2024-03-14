@@ -28,73 +28,71 @@ struct CarereceiverPicker: View {
     var onSkip: (() -> Void)?
 
     var body: some View {
-        NavigationStack {
-            VStack {
-                if self.carereceiverManagerViewModel.carereceivers.isEmpty {
-                    VStack {
-                        Text(l10n.CarereceiverPicker.AddFirstCarereceiver.message)
-                            .font(.title2)
-                            .multilineTextAlignment(.center)
+        VStack {
+            if self.carereceiverManagerViewModel.carereceivers.isEmpty {
+                VStack {
+                    Text(l10n.CarereceiverPicker.AddFirstCarereceiver.message)
+                        .font(.title2)
+                        .multilineTextAlignment(.center)
 
-                        Button {
-                            self.dismiss()
-                            self.navigation.selectedCategory = .carereceivers
-                        } label: {
-                            Text(l10n.CarereceiverPicker.AddFirstCarereceiver.buttonLabel)
-                        }
-                        .buttonStyle(.borderedProminent)
+                    Button {
+                        self.dismiss()
+                        self.navigation.selectedCategory = .carereceivers
+                    } label: {
+                        Text(l10n.CarereceiverPicker.AddFirstCarereceiver.buttonLabel)
                     }
-                } else {
-                    ScrollView(showsIndicators: true) {
-                        LazyVGrid(columns: self.columns, spacing: 40) {
-                            ForEach(self.carereceiverManagerViewModel.carereceivers) { carereceiver in
-                                CarereceiverAvatarCell(carereceiver: carereceiver, isSelected: self.selectedCarereceiver == carereceiver)
-                                    .onTapGesture {
-                                        withAnimation(.default) {
-                                            if self.selectedCarereceiver == carereceiver {
-                                                self.selectedCarereceiver = nil
-                                            } else {
-                                                self.selectedCarereceiver = carereceiver
-                                            }
+                    .buttonStyle(.borderedProminent)
+                }
+            } else {
+                ScrollView(showsIndicators: true) {
+                    LazyVGrid(columns: self.columns, spacing: 40) {
+                        ForEach(self.carereceiverManagerViewModel.carereceivers) { carereceiver in
+                            CarereceiverAvatarCell(carereceiver: carereceiver, isSelected: self.selectedCarereceiver == carereceiver)
+                                .onTapGesture {
+                                    withAnimation(.default) {
+                                        if self.selectedCarereceiver == carereceiver {
+                                            self.selectedCarereceiver = nil
+                                        } else {
+                                            self.selectedCarereceiver = carereceiver
                                         }
                                     }
-                            }
+                                }
                         }
-                        .padding()
                     }
+                    .padding()
                 }
             }
-            .navigationTitle(String(l10n.CarereceiverPicker.title.characters))
-            .navigationBarTitleDisplayMode(.inline)
-            .interactiveDismissDisabled()
-            .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    Button {
-                        self.action = .dismiss
-                        self.dismiss()
-                    } label: {
-                        Text(l10n.CarereceiverPicker.closeButtonLabel)
-                    }
+        }
+        .navigationTitle(String(l10n.CarereceiverPicker.title.characters))
+        .navigationBarTitleDisplayMode(.inline)
+        .interactiveDismissDisabled()
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                Button {
+                    self.action = .dismiss
+                    self.dismiss()
+                } label: {
+                    Text(l10n.CarereceiverPicker.closeButtonLabel)
                 }
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button {
-                        self.action = .select
-                        self.dismiss()
-                    } label: {
-                        Text(l10n.CarereceiverPicker.validateButtonLabel)
-                    }
-                    .disabled(self.selectedCarereceiver == nil)
+            }
+            ToolbarItem(placement: .topBarTrailing) {
+                Button {
+                    self.action = .select
+                    self.dismiss()
+                } label: {
+                    Text(l10n.CarereceiverPicker.validateButtonLabel)
                 }
-                ToolbarItemGroup(placement: .bottomBar) {
-                    Button {
-                        self.action = .skip
-                        self.dismiss()
-                    } label: {
-                        Text(l10n.CarereceiverPicker.skipButtonLabel)
-                            .font(.footnote)
-                    }
-                    Spacer()
+                .disabled(self.selectedCarereceiver == nil)
+            }
+            ToolbarItemGroup(placement: .bottomBar) {
+                Button {
+                    self.action = .skip
+                    self.dismiss()
+                } label: {
+                    Text(l10n.CarereceiverPicker.skipButtonLabel)
+                        .font(.footnote)
                 }
+                Spacer()
             }
         }
         .onDisappear {
@@ -134,6 +132,7 @@ struct CarereceiverPicker: View {
 // MARK: - l10n.CarereceiverPicker
 
 extension l10n {
+    // swiftlint:disable nesting
     enum CarereceiverPicker {
         enum AddFirstCarereceiver {
             static let message = LocalizedString("lekaapp.carereceiver_picker.add_first_carereceiver.message",
@@ -164,17 +163,21 @@ extension l10n {
                                                       value: "Close",
                                                       comment: "Carereceiver picker close button label")
     }
+    // swiftlint:enable nesting
 }
 
 #Preview {
-    NavigationStack {
-        CarereceiverPicker(onDismiss: {
-            print("dismiss")
-        }, onSelected: {
-            print("selected carereceiver: \($0)")
-        },
-        onSkip: {
-            print("skip")
-        })
-    }
+    Text("Preview")
+        .sheet(isPresented: .constant(true)) {
+            NavigationStack {
+                CarereceiverPicker(onDismiss: {
+                    print("dismiss")
+                }, onSelected: {
+                    print("selected carereceiver: \($0)")
+                },
+                onSkip: {
+                    print("skip")
+                })
+            }
+        }
 }
