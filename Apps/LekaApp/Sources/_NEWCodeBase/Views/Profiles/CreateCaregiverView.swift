@@ -68,11 +68,17 @@ struct CreateCaregiverView: View {
                 Section {
                     LabeledContent(String(l10n.CaregiverCreation.caregiverFirstNameLabel.characters)) {
                         TextField("", text: self.$newCaregiver.firstName)
+                            .textContentType(.givenName)
+                            .textInputAutocapitalization(.words)
+                            .autocorrectionDisabled()
                             .multilineTextAlignment(.trailing)
                             .foregroundStyle(Color.secondary)
                     }
                     LabeledContent(String(l10n.CaregiverCreation.caregiverLastNameLabel.characters)) {
                         TextField("", text: self.$newCaregiver.lastName)
+                            .textContentType(.familyName)
+                            .textInputAutocapitalization(.words)
+                            .autocorrectionDisabled()
                             .multilineTextAlignment(.trailing)
                             .foregroundStyle(Color.secondary)
                     }
