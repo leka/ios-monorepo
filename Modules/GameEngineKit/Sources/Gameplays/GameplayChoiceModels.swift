@@ -21,7 +21,7 @@ let kGradingLUTDefault: GradingLUT = [
 
 // MARK: - GameplayChoiceState
 
-enum GameplayChoiceState {
+public enum GameplayChoiceState {
     case idle
     case rightAnswer
     case wrongAnswer

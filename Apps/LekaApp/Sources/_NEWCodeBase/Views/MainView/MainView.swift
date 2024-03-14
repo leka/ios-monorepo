@@ -59,6 +59,10 @@ struct MainView: View {
                     }
                 }
 
+                Section("Developer Mode") {
+                    CategoryLabel(category: .developerModeImageListPNG)
+                }
+
                 VStack(alignment: .center, spacing: 20) {
                     if self.authManagerViewModel.userAuthenticationState == .loggedIn {
                         Button {
@@ -101,6 +105,10 @@ struct MainView: View {
 
                     case .carereceivers:
                         CarereceiverList()
+
+                    case .developerModeImageListPNG:
+                        DebugImageListView(images: ContentKit.listImagesPNG())
+                            .navigationTitle("PNG Image List")
 
                     case .none:
                         Text("Select a category")

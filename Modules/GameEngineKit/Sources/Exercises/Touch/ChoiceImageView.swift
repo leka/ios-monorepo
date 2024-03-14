@@ -6,43 +6,18 @@ import ContentKit
 import RobotKit
 import SwiftUI
 
-struct ChoiceImageView: View {
+public struct ChoiceImageView: View {
     // MARK: Lifecycle
 
-    init(image: String, size: CGFloat, state: GameplayChoiceState = .idle) {
+    public init(image: String, size: CGFloat, state: GameplayChoiceState = .idle) {
         self.image = image
         self.size = size
         self.state = state
     }
 
-    // MARK: Internal
+    // MARK: Public
 
-    @ViewBuilder
-    var circle: some View {
-        if let uiImage = UIImage(named: image) {
-            Image(uiImage: uiImage)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(
-                    width: self.size,
-                    height: self.size
-                )
-                .clipShape(Circle())
-        } else {
-            Text("❌\nImage not found:\n\(self.image)")
-                .multilineTextAlignment(.center)
-                .frame(
-                    width: self.size,
-                    height: self.size
-                )
-                .overlay {
-                    Circle()
-                        .stroke(Color.red, lineWidth: 5)
-                }
-        }
-    }
-
-    var body: some View {
+    public var body: some View {
         switch self.state {
             case .idle:
                 self.circle
@@ -82,6 +57,33 @@ struct ChoiceImageView: View {
                             self.overlayOpacity = 0.8
                         }
                     }
+        }
+    }
+
+    // MARK: Internal
+
+    @ViewBuilder
+    var circle: some View {
+        if let uiImage = UIImage(named: image) {
+            Image(uiImage: uiImage)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(
+                    width: self.size,
+                    height: self.size
+                )
+                .clipShape(Circle())
+        } else {
+            Text("❌\nImage not found:\n\(self.image)")
+                .multilineTextAlignment(.center)
+                .frame(
+                    width: self.size,
+                    height: self.size
+                )
+                .overlay {
+                    Circle()
+                        .stroke(Color.red, lineWidth: 5)
+                }
         }
     }
 
