@@ -29,5 +29,6 @@ let project = Project.app(
         .project(target: "GameEngineKit", path: Path("../../Modules/GameEngineKit")),
         .external(name: "Yams"),
         .external(name: "MarkdownUI"),
+        .external(name: "Fit"),
     ]
 )
