@@ -15,62 +15,62 @@ struct CaregiverPicker: View {
     @Environment(\.dismiss) var dismiss
 
     var body: some View {
-        NavigationStack {
-            VStack {
-                if self.caregiverManagerViewModel.caregivers.isEmpty {
-                    VStack {
-                        Text(l10n.CaregiverPicker.AddFirstCaregiver.message)
-                            .font(.title2)
-                            .multilineTextAlignment(.center)
+        VStack {
+            if self.caregiverManagerViewModel.caregivers.isEmpty {
+                VStack {
+                    Text(l10n.CaregiverPicker.AddFirstCaregiver.message)
+                        .font(.title2)
+                        .multilineTextAlignment(.center)
 
-                        Button {
-                            self.isCaregiverCreationPresented = true
-                        } label: {
-                            Text(l10n.CaregiverPicker.AddFirstCaregiver.buttonLabel)
-                        }
-                        .buttonStyle(.borderedProminent)
-                    }
-                } else {
-                    ScrollView(showsIndicators: false) {
-                        LazyVGrid(columns: self.columns, spacing: 40) {
-                            ForEach(self.caregiverManagerViewModel.caregivers, id: \.id) { caregiver in
-                                Button {
-                                    self.styleManager.colorScheme = caregiver.colorScheme
-                                    self.styleManager.accentColor = caregiver.colorTheme.color
-                                    self.caregiverManager.setCurrentCaregiver(to: caregiver)
-                                    self.dismiss()
-                                } label: {
-                                    CaregiverAvatarCell(caregiver: caregiver)
-                                        .frame(maxWidth: 140)
-                                }
-                            }
-                        }
-                    }
-                    .padding()
-                }
-            }
-            .padding(.horizontal, 50)
-            .navigationTitle(String(l10n.CaregiverPicker.title.characters))
-            .navigationBarBackButtonHidden(self.authManagerViewModel.userAction == .userIsSigningIn)
-            .sheet(isPresented: self.$isCaregiverCreationPresented) {
-                CreateCaregiverView()
-            }
-            .toolbar {
-                if self.caregiverManagerViewModel.currentCaregiver != nil {
-                    ToolbarItem(placement: .topBarLeading) {
-                        Button {
-                            self.dismiss()
-                        } label: {
-                            Text(l10n.CaregiverPicker.closeButtonLabel)
-                        }
-                    }
-                }
-                ToolbarItem(placement: .topBarTrailing) {
                     Button {
                         self.isCaregiverCreationPresented = true
                     } label: {
-                        Text(l10n.CaregiverPicker.addButtonLabel)
+                        Text(l10n.CaregiverPicker.AddFirstCaregiver.buttonLabel)
                     }
+                    .buttonStyle(.borderedProminent)
+                }
+            } else {
+                ScrollView(showsIndicators: false) {
+                    LazyVGrid(columns: self.columns, spacing: 40) {
+                        ForEach(self.caregiverManagerViewModel.caregivers, id: \.id) { caregiver in
+                            Button {
+                                self.styleManager.colorScheme = caregiver.colorScheme
+                                self.styleManager.accentColor = caregiver.colorTheme.color
+                                self.caregiverManager.setCurrentCaregiver(to: caregiver)
+                                self.dismiss()
+                            } label: {
+                                CaregiverAvatarCell(caregiver: caregiver)
+                                    .frame(maxWidth: 140)
+                            }
+                        }
+                    }
+                }
+                .padding()
+            }
+        }
+        .padding(.horizontal, 50)
+        .navigationTitle(String(l10n.CaregiverPicker.title.characters))
+        .navigationBarBackButtonHidden(self.authManagerViewModel.userAction == .userIsSigningIn)
+        .sheet(isPresented: self.$isCaregiverCreationPresented) {
+            NavigationStack {
+                CreateCaregiverView()
+            }
+        }
+        .toolbar {
+            if self.caregiverManagerViewModel.currentCaregiver != nil {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button {
+                        self.dismiss()
+                    } label: {
+                        Text(l10n.CaregiverPicker.closeButtonLabel)
+                    }
+                }
+            }
+            ToolbarItem(placement: .topBarTrailing) {
+                Button {
+                    self.isCaregiverCreationPresented = true
+                } label: {
+                    Text(l10n.CaregiverPicker.addButtonLabel)
                 }
             }
         }
@@ -93,6 +93,7 @@ struct CaregiverPicker: View {
 // MARK: - l10n.CaregiverPicker
 
 extension l10n {
+    // swiftlint:disable line_length nesting
     enum CaregiverPicker {
         enum AddFirstCaregiver {
             static let message = LocalizedString("lekaapp.caregiver_picker.add_first_caregiver.message",
@@ -110,10 +111,14 @@ extension l10n {
 
         static let closeButtonLabel = LocalizedString("lekaapp.caregiver_picker.close_button_label", value: "Close", comment: "Caregiver picker close button label")
     }
+    // swiftlint:enable line_length nesting
 }
 
 #Preview {
-    NavigationStack {
-        CaregiverPicker()
-    }
+    Text("Preview")
+        .sheet(isPresented: .constant(true)) {
+            NavigationStack {
+                CaregiverPicker()
+            }
+        }
 }

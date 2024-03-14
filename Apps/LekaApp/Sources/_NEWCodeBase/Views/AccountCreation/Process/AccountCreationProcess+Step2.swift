@@ -40,9 +40,11 @@ extension AccountCreationProcess {
             .multilineTextAlignment(.center)
             .frame(maxWidth: .infinity, alignment: .center)
             .sheet(isPresented: self.$isCaregiverCreationPresented) {
-                CreateCaregiverView(onCreated: { caregiver in
-                    self.caregiverManager.setCurrentCaregiver(to: caregiver)
-                })
+                NavigationStack {
+                    CreateCaregiverView(onCreated: { caregiver in
+                        self.caregiverManager.setCurrentCaregiver(to: caregiver)
+                    })
+                }
             }
             .onReceive(self.caregiverManagerViewModel.$currentCaregiver) {
                 guard $0 != nil else {

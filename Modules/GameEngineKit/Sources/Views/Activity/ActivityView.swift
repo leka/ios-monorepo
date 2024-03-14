@@ -23,107 +23,105 @@ public struct ActivityView: View {
     // MARK: Public
 
     public var body: some View {
-        NavigationStack {
-            ZStack(alignment: .bottomTrailing) {
+        ZStack(alignment: .bottomTrailing) {
+            VStack {
+                VStack(spacing: 15) {
+                    if self.viewModel.isProgressBarVisible {
+                        ActivityProgressBar(viewModel: self.viewModel)
+                    }
+
+                    if self.viewModel.isExerciseInstructionsButtonVisible {
+                        ExerciseInstructionsButton(instructions: self.viewModel.currentExercise.instructions!)
+                    }
+                }
+
                 VStack {
-                    VStack(spacing: 15) {
-                        if self.viewModel.isProgressBarVisible {
-                            ActivityProgressBar(viewModel: self.viewModel)
-                        }
+                    Spacer()
+                    self.currentExerciseInterface()
+                    Spacer()
+                }
+            }
+            .id(self.viewModel.currentExerciseIndexInCurrentGroup)
+            .blur(radius: self.blurRadius)
+            .opacity(self.opacity)
+            .onChange(of: self.viewModel.isReinforcerAnimationVisible) {
+                if $0 {
+                    withAnimation(.easeInOut.delay(0.5)) {
+                        self.blurRadius = 20
+                    }
+                } else {
+                    withAnimation {
+                        self.blurRadius = 0
+                    }
+                }
+            }
+            .onChange(of: self.viewModel.isCurrentActivityCompleted) {
+                if $0 {
+                    withAnimation {
+                        self.opacity = 0
+                    }
+                } else {
+                    withAnimation {
+                        self.opacity = 1
+                    }
+                }
+            }
 
-                        if self.viewModel.isExerciseInstructionsButtonVisible {
-                            ExerciseInstructionsButton(instructions: self.viewModel.currentExercise.instructions!)
-                        }
-                    }
+            if self.viewModel.isReinforcerAnimationVisible {
+                self.reinforcerAnimationView
+                    .frame(maxWidth: .infinity)
+            }
 
-                    VStack {
-                        Spacer()
-                        self.currentExerciseInterface()
-                        Spacer()
+            HStack {
+                if case .completed = self.viewModel.currentExerciseSharedData.state {
+                    if self.viewModel.isReinforcerAnimationVisible {
+                        self.hideReinforcerToShowAnswersButton
                     }
-                }
-                .id(self.viewModel.currentExerciseIndexInCurrentGroup)
-                .blur(radius: self.blurRadius)
-                .opacity(self.opacity)
-                .onChange(of: self.viewModel.isReinforcerAnimationVisible) {
-                    if $0 {
-                        withAnimation(.easeInOut.delay(0.5)) {
-                            self.blurRadius = 20
-                        }
-                    } else {
-                        withAnimation {
-                            self.blurRadius = 0
-                        }
-                    }
-                }
-                .onChange(of: self.viewModel.isCurrentActivityCompleted) {
-                    if $0 {
-                        withAnimation {
-                            self.opacity = 0
-                        }
-                    } else {
-                        withAnimation {
-                            self.opacity = 1
-                        }
-                    }
-                }
-
-                if self.viewModel.isReinforcerAnimationVisible {
-                    self.reinforcerAnimationView
-                        .frame(maxWidth: .infinity)
-                }
-
-                HStack {
-                    if case .completed = self.viewModel.currentExerciseSharedData.state {
-                        if self.viewModel.isReinforcerAnimationVisible {
-                            self.hideReinforcerToShowAnswersButton
-                        }
-                        self.continueButton
-                    }
+                    self.continueButton
                 }
             }
-            .frame(maxWidth: .infinity)
-            .background(.lkBackground)
-            .ignoresSafeArea(.all, edges: .bottom)
-            .navigationTitle(self.viewModel.currentActivity.details.title)
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    Button {
-                        self.isAlertPresented = true
-                    } label: {
-                        Image(systemName: "xmark.circle")
-                    }
-                }
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button {
-                        self.isInfoSheetPresented.toggle()
-                    } label: {
-                        Image(systemName: "info.circle")
-                    }
+        }
+        .frame(maxWidth: .infinity)
+        .background(.lkBackground)
+        .ignoresSafeArea(.all, edges: .bottom)
+        .navigationTitle(self.viewModel.currentActivity.details.title)
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                Button {
+                    self.isAlertPresented = true
+                } label: {
+                    Image(systemName: "xmark.circle")
                 }
             }
-            .alert(String(l10n.GameEngineKit.ActivityView.QuitActivityAlert.title.characters), isPresented: self.$isAlertPresented) {
-                Button(String(l10n.GameEngineKit.ActivityView.QuitActivityAlert.saveQuitButtonLabel.characters), action: {
-                    // TODO: (@mathieu) - Save displayable data in session
-                    self.dismiss()
-                })
-                Button(String(l10n.GameEngineKit.ActivityView.QuitActivityAlert.quitWithoutSavingButtonLabel.characters), role: .destructive, action: {
-                    // TODO: (@mathieu) - Save undisplayable data in session
-                    self.dismiss()
-                })
-                Button(String(l10n.GameEngineKit.ActivityView.QuitActivityAlert.cancelButtonLabel.characters), role: .cancel, action: {
-                    self.isAlertPresented = false
-                })
-            } message: {
-                Text(l10n.GameEngineKit.ActivityView.QuitActivityAlert.message)
+            ToolbarItem(placement: .topBarTrailing) {
+                Button {
+                    self.isInfoSheetPresented.toggle()
+                } label: {
+                    Image(systemName: "info.circle")
+                }
             }
-            .sheet(isPresented: self.$isInfoSheetPresented) {
-                ActivityDetailsView(activity: self.viewModel.currentActivity)
-            }
-            .fullScreenCover(isPresented: self.$viewModel.isCurrentActivityCompleted) {
-                self.endOfActivityScoreView
-            }
+        }
+        .alert(String(l10n.GameEngineKit.ActivityView.QuitActivityAlert.title.characters), isPresented: self.$isAlertPresented) {
+            Button(String(l10n.GameEngineKit.ActivityView.QuitActivityAlert.saveQuitButtonLabel.characters), action: {
+                // TODO: (@mathieu) - Save displayable data in session
+                self.dismiss()
+            })
+            Button(String(l10n.GameEngineKit.ActivityView.QuitActivityAlert.quitWithoutSavingButtonLabel.characters), role: .destructive, action: {
+                // TODO: (@mathieu) - Save undisplayable data in session
+                self.dismiss()
+            })
+            Button(String(l10n.GameEngineKit.ActivityView.QuitActivityAlert.cancelButtonLabel.characters), role: .cancel, action: {
+                self.isAlertPresented = false
+            })
+        } message: {
+            Text(l10n.GameEngineKit.ActivityView.QuitActivityAlert.message)
+        }
+        .sheet(isPresented: self.$isInfoSheetPresented) {
+            ActivityDetailsView(activity: self.viewModel.currentActivity)
+        }
+        .fullScreenCover(isPresented: self.$viewModel.isCurrentActivityCompleted) {
+            self.endOfActivityScoreView
         }
         .onAppear {
             Robot.shared.stop()

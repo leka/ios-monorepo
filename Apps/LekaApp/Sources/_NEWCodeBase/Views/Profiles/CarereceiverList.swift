@@ -78,7 +78,9 @@ struct CarereceiverList: View {
                 }
             }
             .sheet(isPresented: self.$isCarereceiverCreationPresented) {
-                CreateCarereceiverView()
+                NavigationStack {
+                    CreateCarereceiverView()
+                }
             }
             .navigationDestination(for: Carereceiver.self) { carereceiver in
                 CarereceiverView(carereceiver: carereceiver)

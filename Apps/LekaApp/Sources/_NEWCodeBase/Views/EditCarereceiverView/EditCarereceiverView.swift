@@ -16,45 +16,43 @@ struct EditCarereceiverView: View {
     @Binding var modifiedCarereceiver: Carereceiver
 
     var body: some View {
-        NavigationStack {
-            VStack(spacing: 40) {
-                Form {
-                    Section {
-                        self.avatarPickerButton
-                            .buttonStyle(.borderless)
-                            .listRowBackground(Color.clear)
-                    }
+        VStack(spacing: 40) {
+            Form {
+                Section {
+                    self.avatarPickerButton
+                        .buttonStyle(.borderless)
+                        .listRowBackground(Color.clear)
+                }
 
-                    Section {
-                        LabeledContent(String(l10n.CarereceiverCreation.carereceiverNameLabel.characters)) {
-                            TextField("", text: self.$modifiedCarereceiver.username)
-                                .multilineTextAlignment(.trailing)
-                        }
+                Section {
+                    LabeledContent(String(l10n.CarereceiverCreation.carereceiverNameLabel.characters)) {
+                        TextField("", text: self.$modifiedCarereceiver.username)
+                            .multilineTextAlignment(.trailing)
                     }
+                }
 
-                    Section {
-                        LabeledContent(String(l10n.ReinforcerPicker.header.characters)) {
-                            ReinforcerPicker(carereceiver: self.$modifiedCarereceiver)
-                        }
-                    } footer: {
-                        Text(l10n.ReinforcerPicker.description)
+                Section {
+                    LabeledContent(String(l10n.ReinforcerPicker.header.characters)) {
+                        ReinforcerPicker(carereceiver: self.$modifiedCarereceiver)
                     }
+                } footer: {
+                    Text(l10n.ReinforcerPicker.description)
                 }
             }
-            .navigationTitle(String(l10n.EditCarereceiverView.navigationTitle.characters))
-            .navigationBarTitleDisplayMode(.inline)
-            .interactiveDismissDisabled()
-            .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    Button(String(l10n.EditCarereceiverView.closeButtonLabel.characters)) {
-                        self.dismiss()
-                    }
+        }
+        .navigationTitle(String(l10n.EditCarereceiverView.navigationTitle.characters))
+        .navigationBarTitleDisplayMode(.inline)
+        .interactiveDismissDisabled()
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                Button(String(l10n.EditCarereceiverView.closeButtonLabel.characters)) {
+                    self.dismiss()
                 }
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button(String(l10n.EditCarereceiverView.saveButtonLabel.characters)) {
-                        self.carereceiverManager.updateCarereceiver(carereceiver: &self.modifiedCarereceiver)
-                        self.dismiss()
-                    }
+            }
+            ToolbarItem(placement: .topBarTrailing) {
+                Button(String(l10n.EditCarereceiverView.saveButtonLabel.characters)) {
+                    self.carereceiverManager.updateCarereceiver(carereceiver: &self.modifiedCarereceiver)
+                    self.dismiss()
                 }
             }
         }
@@ -88,5 +86,10 @@ struct EditCarereceiverView: View {
 }
 
 #Preview {
-    EditCarereceiverView(modifiedCarereceiver: .constant(Carereceiver()))
+    Text("Preview")
+        .sheet(isPresented: .constant(true)) {
+            NavigationStack {
+                EditCarereceiverView(modifiedCarereceiver: .constant(Carereceiver()))
+            }
+        }
 }

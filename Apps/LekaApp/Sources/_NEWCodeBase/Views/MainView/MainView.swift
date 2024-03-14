@@ -113,40 +113,44 @@ struct MainView: View {
             self.navigation.fullScreenCoverContent = nil
             self.navigation.currentActivity = nil
         } content: { content in
-            switch content {
-                case .welcomeView:
-                    WelcomeView()
-                case .activityView:
-                    ActivityView(activity: self.navigation.currentActivity!)
+            NavigationStack {
+                switch content {
+                    case .welcomeView:
+                        WelcomeView()
+                    case .activityView:
+                        ActivityView(activity: self.navigation.currentActivity!)
+                }
             }
         }
         .sheet(item: self.$navigation.sheetContent) {
             self.navigation.sheetContent = nil
         } content: { content in
-            switch content {
-                case .robotConnection:
-                    RobotConnectionView(viewModel: RobotConnectionViewModel())
-                case .settings:
-                    SettingsView()
-                case .editCaregiver:
-                    EditCaregiverView(modifiedCaregiver: self.caregiverManagerViewModel.currentCaregiver!)
-                case .createCaregiver:
-                    CreateCaregiverView(onCreated: { caregiver in
-                        self.caregiverManager.setCurrentCaregiver(to: caregiver)
-                    })
-                case .caregiverPicker:
-                    CaregiverPicker()
-                case let .carereceiverPicker(activity):
-                    CarereceiverPicker(onDismiss: {
-                        // nothing to do
-                    }, onSelected: { carereceiver in
-                        self.carereceiverManager.setCurrentCarereceiver(to: carereceiver)
-                        self.navigation.currentActivity = activity
-                        self.navigation.fullScreenCoverContent = .activityView
-                    }, onSkip: {
-                        self.navigation.currentActivity = activity
-                        self.navigation.fullScreenCoverContent = .activityView
-                    })
+            NavigationStack {
+                switch content {
+                    case .robotConnection:
+                        RobotConnectionView(viewModel: RobotConnectionViewModel())
+                    case .settings:
+                        SettingsView()
+                    case .editCaregiver:
+                        EditCaregiverView(modifiedCaregiver: self.caregiverManagerViewModel.currentCaregiver!)
+                    case .createCaregiver:
+                        CreateCaregiverView(onCreated: { caregiver in
+                            self.caregiverManager.setCurrentCaregiver(to: caregiver)
+                        })
+                    case .caregiverPicker:
+                        CaregiverPicker()
+                    case let .carereceiverPicker(activity):
+                        CarereceiverPicker(onDismiss: {
+                            // nothing to do
+                        }, onSelected: { carereceiver in
+                            self.carereceiverManager.setCurrentCarereceiver(to: carereceiver)
+                            self.navigation.currentActivity = activity
+                            self.navigation.fullScreenCoverContent = .activityView
+                        }, onSkip: {
+                            self.navigation.currentActivity = activity
+                            self.navigation.fullScreenCoverContent = .activityView
+                        })
+                }
             }
         }
     }
