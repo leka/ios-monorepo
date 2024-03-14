@@ -37,7 +37,7 @@ l10n:
     details:
       icon: receptive_language
 
-      title: Identifier des mots courants d'une syllabe
+      title: Identifier des actions #3
       subtitle: null
 
       short_description: |
