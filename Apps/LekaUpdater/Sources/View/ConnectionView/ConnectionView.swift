@@ -8,26 +8,23 @@ import SwiftUI
 
 struct ConnectionView: View {
     var body: some View {
-        NavigationStack {
-            RobotConnectionView()
-                .toolbar {
-                    ToolbarItem(placement: .principal) {
-                        VStack {
-                            Text(l10n.main.appName)
-                                .font(.title2)
-                                .bold()
-                            Text(l10n.main.appDescription)
-                        }
-                        .foregroundColor(.lkNavigationTitle)
+        RobotConnectionView()
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    VStack {
+                        Text(l10n.main.appName)
+                            .font(.title2)
+                            .bold()
+                        Text(l10n.main.appDescription)
                     }
+                    .foregroundColor(.lkNavigationTitle)
                 }
-        }
+            }
     }
 }
 
 #Preview {
-    return ConnectionView()
-        .environment(\.locale, .init(identifier: "en"))
-    return ConnectionView()
-        .environment(\.locale, .init(identifier: "fr"))
+    NavigationStack {
+        ConnectionView()
+    }
 }
