@@ -46,6 +46,15 @@
       }
     },
     {
+      "identity" : "fit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/OlehKorchytskyi/Fit",
+      "state" : {
+        "revision" : "4532ba51e141c750bd52c73556043fdd8ca9e8d0",
+        "version" : "1.0.0"
+      }
+    },
+    {
       "identity" : "googleappmeasurement",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/google/GoogleAppMeasurement.git",

@@ -140,7 +140,7 @@ struct MainView: View {
                     case .settings:
                         SettingsView()
                     case .editCaregiver:
-                        EditCaregiverView(modifiedCaregiver: self.caregiverManagerViewModel.currentCaregiver!)
+                        EditCaregiverView(caregiver: self.caregiverManagerViewModel.currentCaregiver!)
                     case .createCaregiver:
                         CreateCaregiverView(onCreated: { caregiver in
                             self.caregiverManager.setCurrentCaregiver(to: caregiver)

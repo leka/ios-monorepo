@@ -50,5 +50,9 @@ let package = Package(
             url: "https://github.com/firebase/firebase-ios-sdk",
             exact: "10.20.0"
         ),
+        .package(
+            url: "https://github.com/OlehKorchytskyi/Fit",
+            exact: "1.0.0"
+        ),
     ]
 )
