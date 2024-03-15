@@ -90,10 +90,10 @@ exercises_payload:
               value: basket
               type: image
             choices:
-              - value: banana
+              - value: pictograms-foods-fruits-banana_yellow-00FB
                 type: image
                 dropZone: zoneA
-              - value: apple_green
+              - value: pictograms-foods-fruits-apple_green-0100
                 type: image
 
         - instructions:
@@ -108,27 +108,9 @@ exercises_payload:
               value: basket
               type: image
             choices:
-              - value: potato
+              - value: pictograms-foods-vegetables-potato_yellow_1-00E9
                 type: image
-              - value: apple_green
-                type: image
-                dropZone: zoneA
-
-        - instructions:
-            - locale: fr_FR
-              value: Mets la même image dans le panier
-            - locale: en_US
-              value: Put the same image in the basket
-          interface: dragAndDropIntoZones
-          gameplay: findTheRightAnswers
-          payload:
-            dropZoneA:
-              value: basket
-              type: image
-            choices:
-              - value: banana
-                type: image
-              - value: mushroom-white
+              - value: pictograms-foods-fruits-apple_green-0100
                 type: image
                 dropZone: zoneA
 
@@ -144,63 +126,9 @@ exercises_payload:
               value: basket
               type: image
             choices:
-              - value: potato
+              - value: pictograms-foods-fruits-banana_yellow-00FB
                 type: image
-              - value: banana
-                type: image
-                dropZone: zoneA
-
-        - instructions:
-            - locale: fr_FR
-              value: Mets la même image dans le panier
-            - locale: en_US
-              value: Put the same image in the basket
-          interface: dragAndDropIntoZones
-          gameplay: findTheRightAnswers
-          payload:
-            dropZoneA:
-              value: basket
-              type: image
-            choices:
-              - value: mushroom_brown
-                type: image
-                dropZone: zoneA
-              - value: potato
-                type: image
-
-        - instructions:
-            - locale: fr_FR
-              value: Mets la même image dans le panier
-            - locale: en_US
-              value: Put the same image in the basket
-          interface: dragAndDropIntoZones
-          gameplay: findTheRightAnswers
-          payload:
-            dropZoneA:
-              value: basket
-              type: image
-            choices:
-              - value: cherry
-                type: image
-                dropZone: zoneA
-              - value: potato
-                type: image
-
-        - instructions:
-            - locale: fr_FR
-              value: Mets la même image dans le panier
-            - locale: en_US
-              value: Put the same image in the basket
-          interface: dragAndDropIntoZones
-          gameplay: findTheRightAnswers
-          payload:
-            dropZoneA:
-              value: basket
-              type: image
-            choices:
-              - value: grape
-                type: image
-              - value: salad
+              - value: pictograms-foods-vegetables-mushroom_white-00EF
                 type: image
                 dropZone: zoneA
 
@@ -216,10 +144,28 @@ exercises_payload:
               value: basket
               type: image
             choices:
-              - value: potato
+              - value: pictograms-foods-vegetables-potato_yellow_1-00E9
+                type: image
+              - value: pictograms-foods-fruits-banana_yellow-00FB
                 type: image
                 dropZone: zoneA
-              - value: banana
+
+        - instructions:
+            - locale: fr_FR
+              value: Mets la même image dans le panier
+            - locale: en_US
+              value: Put the same image in the basket
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            dropZoneA:
+              value: basket
+              type: image
+            choices:
+              - value: pictograms-foods-vegetables-mushroom_brown-00F0
+                type: image
+                dropZone: zoneA
+              - value: pictograms-foods-vegetables-potato_yellow_1-00E9
                 type: image
 
         - instructions:
@@ -234,10 +180,10 @@ exercises_payload:
               value: basket
               type: image
             choices:
-              - value: carrot
+              - value: pictograms-foods-fruits-cherry_red-00FF
                 type: image
                 dropZone: zoneA
-              - value: mushroom_gray
+              - value: pictograms-foods-vegetables-potato_yellow_1-00E9
                 type: image
 
         - instructions:
@@ -252,8 +198,62 @@ exercises_payload:
               value: basket
               type: image
             choices:
-              - value: carrot
+              - value: pictograms-foods-fruits-grape_purple-00FE
                 type: image
-              - value: cherry
+              - value: pictograms-foods-vegetables-salad_green_1-00EA
+                type: image
+                dropZone: zoneA
+
+        - instructions:
+            - locale: fr_FR
+              value: Mets la même image dans le panier
+            - locale: en_US
+              value: Put the same image in the basket
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            dropZoneA:
+              value: basket
+              type: image
+            choices:
+              - value: pictograms-foods-vegetables-potato_yellow_1-00E9
+                type: image
+                dropZone: zoneA
+              - value: pictograms-foods-fruits-banana_yellow-00FB
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Mets la même image dans le panier
+            - locale: en_US
+              value: Put the same image in the basket
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            dropZoneA:
+              value: basket
+              type: image
+            choices:
+              - value: pictograms-foods-vegetables-carrot_orange-00E6
+                type: image
+                dropZone: zoneA
+              - value: pictograms-foods-vegetables-mushroom_gray-00EF
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Mets la même image dans le panier
+            - locale: en_US
+              value: Put the same image in the basket
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            dropZoneA:
+              value: basket
+              type: image
+            choices:
+              - value: pictograms-foods-vegetables-carrot_orange-00E6
+                type: image
+              - value: pictograms-foods-fruits-cherry_red-00FF
                 type: image
                 dropZone: zoneA

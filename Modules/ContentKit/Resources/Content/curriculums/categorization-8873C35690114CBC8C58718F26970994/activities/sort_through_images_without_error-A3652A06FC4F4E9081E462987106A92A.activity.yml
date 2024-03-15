@@ -89,7 +89,7 @@ exercises_payload:
               value: basket
               type: image
             choices:
-              - value: cherry
+              - value: pictograms-foods-fruits-cherry_red-00FF
                 type: image
                 dropZone: zoneA
 
@@ -105,7 +105,7 @@ exercises_payload:
               value: basket
               type: image
             choices:
-              - value: grape
+              - value: pictograms-foods-fruits-grape_purple-00FE
                 type: image
                 dropZone: zoneA
 
@@ -121,7 +121,7 @@ exercises_payload:
               value: basket
               type: image
             choices:
-              - value: salad
+              - value: pictograms-foods-vegetables-salad_green_1-00EA_green_1-00EA
                 type: image
                 dropZone: zoneA
 
@@ -137,7 +137,7 @@ exercises_payload:
               value: basket
               type: image
             choices:
-              - value: carrot
+              - value: pictograms-foods-vegetables-carrot_orange-00E6_orange-00E6
                 type: image
                 dropZone: zoneA
 
@@ -153,7 +153,7 @@ exercises_payload:
               value: basket
               type: image
             choices:
-              - value: mushroom
+              - value: pictograms-foods-vegetables-mushroom_white-00EF
                 type: image
                 dropZone: zoneA
 
@@ -169,7 +169,7 @@ exercises_payload:
               value: basket
               type: image
             choices:
-              - value: cherry
+              - value: pictograms-foods-fruits-cherry_red-00FF
                 type: image
                 dropZone: zoneA
 
@@ -185,7 +185,7 @@ exercises_payload:
               value: basket
               type: image
             choices:
-              - value: grape
+              - value: pictograms-foods-fruits-grape_purple-00FE
                 type: image
                 dropZone: zoneA
 
@@ -201,7 +201,7 @@ exercises_payload:
               value: basket
               type: image
             choices:
-              - value: salad
+              - value: pictograms-foods-vegetables-salad_green_1-00EA
                 type: image
                 dropZone: zoneA
 
@@ -217,7 +217,7 @@ exercises_payload:
               value: basket
               type: image
             choices:
-              - value: carrot
+              - value: pictograms-foods-vegetables-carrot_orange-00E6
                 type: image
                 dropZone: zoneA
 
@@ -233,6 +233,6 @@ exercises_payload:
               value: basket
               type: image
             choices:
-              - value: mushroom
+              - value: pictograms-foods-vegetables-mushroom_white-00EF_white-00EF
                 type: image
                 dropZone: zoneA

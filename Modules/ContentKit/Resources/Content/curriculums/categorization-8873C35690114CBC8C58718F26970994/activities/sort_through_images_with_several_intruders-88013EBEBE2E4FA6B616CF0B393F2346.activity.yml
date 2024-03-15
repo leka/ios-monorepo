@@ -91,14 +91,60 @@ exercises_payload:
               value: basket
               type: image
             choices:
+              - value: pictograms-foods-vegetables-mushroom_white-00EF
+                type: image
+                dropZone: zoneA
+              - value: pictograms-foods-vegetables-salad_green_1-00EA
+                type: image
+              - value: pictograms-foods-fruits-strawberry_red-00FD
+                type: image
+              - value: pictograms-foods-fruits-cherry_red-00FF
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Mets la même image dans le panier
+            - locale: en_US
+              value: Put the same image in the basket
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            dropZoneA:
+              value: basket
+              type: image
+            choices:
+              - value: pictograms-foods-vegetables-salad_green_1-00EA
+                type: image
+                dropZone: zoneA
+              - value: pictograms-foods-vegetables-carrot_orange-00E6
+                type: image
+              - value: pictograms-foods-fruits-cherry_red-00FF
+                type: image
               - value: mushroom_white
                 type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Mets la même image dans le panier
+            - locale: en_US
+              value: Put the same image in the basket
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            dropZoneA:
+              value: basket
+              type: image
+            choices:
+              - value: pictograms-foods-fruits-apple_green-0100
+                type: image
                 dropZone: zoneA
-              - value: salad
+              - value: pictograms-foods-vegetables-potato_yellow_1-00E9
                 type: image
-              - value: strawberry
+              - value: pictograms-foods-fruits-grape_purple-00FE
                 type: image
-              - value: cherry
+              - value: pictograms-foods-fruits-cherry_red-00FF
                 type: image
 
         - instructions:
@@ -114,60 +160,14 @@ exercises_payload:
               value: basket
               type: image
             choices:
-              - value: salad
+              - value: pictograms-foods-fruits-cherry_red-00FF
                 type: image
                 dropZone: zoneA
-              - value: carrot
-                type: image
-              - value: cherry
-                type: image
-              - value: mushroom_white
-                type: image
-
-        - instructions:
-            - locale: fr_FR
-              value: Mets la même image dans le panier
-            - locale: en_US
-              value: Put the same image in the basket
-          interface: dragAndDropIntoZones
-          gameplay: findTheRightAnswers
-          payload:
-            shuffle_choices: true
-            dropZoneA:
-              value: basket
-              type: image
-            choices:
-              - value: apple_green
-                type: image
-                dropZone: zoneA
-              - value: potato
-                type: image
-              - value: grape
-                type: image
-              - value: cherry
-                type: image
-
-        - instructions:
-            - locale: fr_FR
-              value: Mets la même image dans le panier
-            - locale: en_US
-              value: Put the same image in the basket
-          interface: dragAndDropIntoZones
-          gameplay: findTheRightAnswers
-          payload:
-            shuffle_choices: true
-            dropZoneA:
-              value: basket
-              type: image
-            choices:
-              - value: cherry
-                type: image
-                dropZone: zoneA
-              - value: salad
+              - value: pictograms-foods-vegetables-salad_green_1-00EA
                 type: image
               - value: mushroom_brown
                 type: image
-              - value: carrot
+              - value: pictograms-foods-vegetables-carrot_orange-00E6
                 type: image
 
         - instructions:
@@ -183,14 +183,14 @@ exercises_payload:
               value: basket
               type: image
             choices:
-              - value: carrot
+              - value: pictograms-foods-vegetables-carrot_orange-00E6
                 type: image
                 dropZone: zoneA
-              - value: potato
+              - value: pictograms-foods-vegetables-potato_yellow_1-00E9
                 type: image
-              - value: cherry
+              - value: pictograms-foods-fruits-cherry_red-00FF
                 type: image
-              - value: apple_red
+              - value: pictograms-foods-fruits-apple_red-0101
                 type: image
 
         - instructions:
@@ -206,14 +206,14 @@ exercises_payload:
               value: basket
               type: image
             choices:
-              - value: banana
+              - value: pictograms-foods-fruits-banana_yellow-00FB
                 type: image
                 dropZone: zoneA
-              - value: salad
+              - value: pictograms-foods-vegetables-salad_green_1-00EA
                 type: image
-              - value: mushroom_gray
+              - value: pictograms-foods-vegetables-mushroom_gray-00EF
                 type: image
-              - value: potato
+              - value: pictograms-foods-vegetables-potato_yellow_1-00E9
                 type: image
 
         - instructions:
@@ -229,14 +229,14 @@ exercises_payload:
               value: basket
               type: image
             choices:
-              - value: grape
+              - value: pictograms-foods-fruits-grape_purple-00FE
                 type: image
                 dropZone: zoneA
-              - value: salad
+              - value: pictograms-foods-vegetables-salad_green_1-00EA
                 type: image
-              - value: potato
+              - value: pictograms-foods-vegetables-potato_yellow_1-00E9
                 type: image
-              - value: cherry
+              - value: pictograms-foods-fruits-cherry_red-00FF
                 type: image
 
         - instructions:
@@ -252,14 +252,14 @@ exercises_payload:
               value: basket
               type: image
             choices:
-              - value: salad
+              - value: pictograms-foods-vegetables-salad_green_1-00EA
                 type: image
                 dropZone: zoneA
-              - value: apple_yellow
+              - value: pictograms-foods-fruits-apple_yellow-0102
                 type: image
               - value: mushroom_brown
                 type: image
-              - value: cherry
+              - value: pictograms-foods-fruits-cherry_red-00FF
                 type: image
 
         - instructions:
@@ -275,14 +275,14 @@ exercises_payload:
               value: basket
               type: image
             choices:
-              - value: apple_green
+              - value: pictograms-foods-fruits-apple_green-0100
                 type: image
                 dropZone: zoneA
-              - value: grape
+              - value: pictograms-foods-fruits-grape_purple-00FE
                 type: image
-              - value: cherry
+              - value: pictograms-foods-fruits-cherry_red-00FF
                 type: image
-              - value: potato
+              - value: pictograms-foods-vegetables-potato_yellow_1-00E9
                 type: image
 
         - instructions:
@@ -298,12 +298,12 @@ exercises_payload:
               value: basket
               type: image
             choices:
-              - value: potato
+              - value: pictograms-foods-vegetables-potato_yellow_1-00E9
                 type: image
                 dropZone: zoneA
-              - value: cherry
+              - value: pictograms-foods-fruits-cherry_red-00FF
                 type: image
               - value: mushroom_white
                 type: image
-              - value: strawberry
+              - value: pictograms-foods-fruits-strawberry_red-00FD
                 type: image

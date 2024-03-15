@@ -91,13 +91,13 @@ exercises_payload:
               value: basket
               type: image
             choices:
-              - value: carrot
+              - value: pictograms-foods-vegetables-carrot_orange-00E6
                 type: image
                 dropZone: zoneA
-              - value: carrot
+              - value: pictograms-foods-vegetables-carrot_orange-00E6
                 type: image
                 dropZone: zoneA
-              - value: apple_green
+              - value: pictograms-foods-fruits-apple_green-0100
                 type: image
 
         - instructions:
@@ -113,13 +113,13 @@ exercises_payload:
               value: basket
               type: image
             choices:
-              - value: potato
+              - value: pictograms-foods-vegetables-potato_yellow_1-00E9
                 type: image
                 dropZone: zoneA
-              - value: potato
+              - value: pictograms-foods-vegetables-potato_yellow_1-00E9
                 type: image
                 dropZone: zoneA
-              - value: salad
+              - value: pictograms-foods-vegetables-salad_green_1-00EA
                 type: image
 
         - instructions:
@@ -132,35 +132,13 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: cherry
+              - value: pictograms-foods-fruits-cherry_red-00FF
                 type: image
                 dropZone: zoneA
-              - value: cherry
+              - value: pictograms-foods-fruits-cherry_red-00FF
                 type: image
                 dropZone: zoneA
-              - value: mushroom-white
-                type: image
-
-        - instructions:
-            - locale: fr_FR
-              value: Mets les images similaires dans le panier
-            - locale: en_US
-              value: Put the images that are similar in the basket
-          interface: dragAndDropIntoZones
-          gameplay: findTheRightAnswers
-          payload:
-            shuffle_choices: true
-            dropZoneA:
-              value: basket
-              type: image
-            choices:
-              - value: apple_red
-                type: image
-                dropZone: zoneA
-              - value: apple_red
-                type: image
-                dropZone: zoneA
-              - value: strawberry
+              - value: pictograms-foods-vegetables-mushroom_white-00EF
                 type: image
 
         - instructions:
@@ -176,13 +154,13 @@ exercises_payload:
               value: basket
               type: image
             choices:
-              - value: mushroom-brown
+              - value: pictograms-foods-fruits-apple_red-0101
                 type: image
                 dropZone: zoneA
-              - value: mushroom-brown
+              - value: pictograms-foods-fruits-apple_red-0101
                 type: image
                 dropZone: zoneA
-              - value: cherry
+              - value: pictograms-foods-fruits-strawberry_red-00FD
                 type: image
 
         - instructions:
@@ -198,13 +176,13 @@ exercises_payload:
               value: basket
               type: image
             choices:
-              - value: mushroom-white
+              - value: pictograms-foods-vegetables-mushroom_brown-00F0
                 type: image
                 dropZone: zoneA
-              - value: mushroom-white
+              - value: pictograms-foods-vegetables-mushroom_brown-00F0
                 type: image
                 dropZone: zoneA
-              - value: cherry
+              - value: pictograms-foods-fruits-cherry_red-00FF
                 type: image
 
         - instructions:
@@ -220,13 +198,13 @@ exercises_payload:
               value: basket
               type: image
             choices:
-              - value: salad
+              - value: pictograms-foods-vegetables-mushroom_white-00EF
                 type: image
                 dropZone: zoneA
-              - value: salad
+              - value: pictograms-foods-vegetables-mushroom_white-00EF
                 type: image
                 dropZone: zoneA
-              - value: grape
+              - value: pictograms-foods-fruits-cherry_red-00FF
                 type: image
 
         - instructions:
@@ -242,13 +220,13 @@ exercises_payload:
               value: basket
               type: image
             choices:
-              - value: potato
+              - value: pictograms-foods-vegetables-salad_green_1-00EA
                 type: image
                 dropZone: zoneA
-              - value: potato
+              - value: pictograms-foods-vegetables-salad_green_1-00EA
                 type: image
                 dropZone: zoneA
-              - value: grape
+              - value: pictograms-foods-fruits-grape_purple-00FE
                 type: image
 
         - instructions:
@@ -264,13 +242,13 @@ exercises_payload:
               value: basket
               type: image
             choices:
-              - value: salad
+              - value: pictograms-foods-vegetables-potato_yellow_1-00E9
                 type: image
                 dropZone: zoneA
-              - value: salad
+              - value: pictograms-foods-vegetables-potato_yellow_1-00E9
                 type: image
                 dropZone: zoneA
-              - value: potato
+              - value: pictograms-foods-fruits-grape_purple-00FE
                 type: image
 
         - instructions:
@@ -286,11 +264,33 @@ exercises_payload:
               value: basket
               type: image
             choices:
-              - value: apple_red
+              - value: pictograms-foods-vegetables-salad_green_1-00EA
                 type: image
                 dropZone: zoneA
-              - value: apple_red
+              - value: pictograms-foods-vegetables-salad_green_1-00EA
                 type: image
                 dropZone: zoneA
-              - value: strawberry
+              - value: pictograms-foods-vegetables-potato_yellow_1-00E9
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Mets les images similaires dans le panier
+            - locale: en_US
+              value: Put the images that are similar in the basket
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            dropZoneA:
+              value: basket
+              type: image
+            choices:
+              - value: pictograms-foods-fruits-apple_red-0101
+                type: image
+                dropZone: zoneA
+              - value: pictograms-foods-fruits-apple_red-0101
+                type: image
+                dropZone: zoneA
+              - value: pictograms-foods-fruits-strawberry_red-00FD
                 type: image

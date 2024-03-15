@@ -89,15 +89,15 @@ exercises_payload:
           payload:
             shuffle_choices: true
             dropZoneA:
-              value: bedroom
+              value: improving-categorisation_bedroom
               type: image
             choices:
-              - value: cooking_pot
+              - value: pictograms-objects-house-kitchen-cooking_pot-0190
                 type: image
-              - value: toy
+              - value: pictograms-objects-house-bedroom-toy_wagon_brown-01A6
                 type: image
                 dropZone: zoneA
-              - value: bed
+              - value: pictograms-objects-house-bedroom-bed_blue-01A5
                 type: image
                 dropZone: zoneA
 
@@ -111,15 +111,15 @@ exercises_payload:
           payload:
             shuffle_choices: true
             dropZoneA:
-              value: kitchen
+              value: improving-categorisation_kitchen
               type: image
             choices:
-              - value: toy
+              - value: pictograms-objects-house-bedroom-toy_wagon_brown-01A6
                 type: image
-              - value: table_cutlery
+              - value: pictograms-objects-house-kitchen-tableware_gray-0194
                 type: image
                 dropZone: zoneA
-              - value: cooking_pot
+              - value: pictograms-objects-house-kitchen-cooking_pot-0190
                 type: image
                 dropZone: zoneA
 
@@ -133,15 +133,15 @@ exercises_payload:
           payload:
             shuffle_choices: true
             dropZoneA:
-              value: bedroom
+              value: improving-categorisation_bedroom
               type: image
             choices:
-              - value: towel
+              - value: pictograms-objects-bathroom-towel_blue-00C0
                 type: image
-              - value: pillow
+              - value: pictograms-objects-house-bedroom-pillow_white-01A7
                 type: image
                 dropZone: zoneA
-              - value: bed
+              - value: pictograms-objects-house-bedroom-bed_blue-01A5
                 type: image
                 dropZone: zoneA
 
@@ -155,15 +155,15 @@ exercises_payload:
           payload:
             shuffle_choices: true
             dropZoneA:
-              value: bathroom
+              value: improving-categorisation_bathroom
               type: image
             choices:
-              - value: toy
+              - value: pictograms-objects-house-bedroom-toy_wagon_brown-01A6
                 type: image
-              - value: toothbrush
+              - value: pictograms-objects-bathroom-toothbrush_blue-00C5
                 type: image
                 dropZone: zoneA
-              - value: soap
+              - value: pictograms-objects-bathroom-soap_bottle_pink-00C6
                 type: image
                 dropZone: zoneA
 
@@ -177,15 +177,15 @@ exercises_payload:
           payload:
             shuffle_choices: true
             dropZoneA:
-              value: kitchen
+              value: improving-categorisation_kitchen
               type: image
             choices:
-              - value: vegetables_basket
+              - value: pictograms-foods-meals-salad_mixed-0175
                 type: image
-              - value: table_cutlery
+              - value: pictograms-objects-house-kitchen-tableware_gray-0194
                 type: image
                 dropZone: zoneA
-              - value: soap
+              - value: pictograms-objects-bathroom-soap_bottle_pink-00C6
                 type: image
                 dropZone: zoneA
 
@@ -199,59 +199,15 @@ exercises_payload:
           payload:
             shuffle_choices: true
             dropZoneA:
-              value: kitchen
+              value: improving-categorisation_kitchen
               type: image
             choices:
-              - value: toy
+              - value: pictograms-objects-house-bedroom-toy_wagon_brown-01A6
                 type: image
-              - value: vegetables_basket
-                type: image
-                dropZone: zoneA
-              - value: table_cutlery
+              - value: pictograms-foods-meals-salad_mixed-0175
                 type: image
                 dropZone: zoneA
-
-        - instructions:
-            - locale: fr_FR
-              value: Mets les bonnes images dans la pièce
-            - locale: en_US
-              value: Group the objects with the place
-          interface: dragAndDropIntoZones
-          gameplay: findTheRightAnswers
-          payload:
-            shuffle_choices: true
-            dropZoneA:
-              value: bedroom
-              type: image
-            choices:
-              - value: towel
-                type: image
-              - value: toy
-                type: image
-                dropZone: zoneA
-              - value: bed
-                type: image
-                dropZone: zoneA
-
-        - instructions:
-            - locale: fr_FR
-              value: Mets les bonnes images dans la pièce
-            - locale: en_US
-              value: Group the objects with the place
-          interface: dragAndDropIntoZones
-          gameplay: findTheRightAnswers
-          payload:
-            shuffle_choices: true
-            dropZoneA:
-              value: kitchen
-              type: image
-            choices:
-              - value: soap
-                type: image
-              - value: table_cutlery
-                type: image
-                dropZone: zoneA
-              - value: cooking_pot
+              - value: pictograms-objects-house-kitchen-tableware_gray-0194
                 type: image
                 dropZone: zoneA
 
@@ -268,34 +224,12 @@ exercises_payload:
               value: bedroom
               type: image
             choices:
-              - value: soap
+              - value: pictograms-objects-bathroom-towel_blue-00C0
                 type: image
-              - value: pillow
-                type: image
-                dropZone: zoneA
-              - value: toy
+              - value: pictograms-objects-house-bedroom-toy_wagon_brown-01A6
                 type: image
                 dropZone: zoneA
-
-        - instructions:
-            - locale: fr_FR
-              value: Mets les bonnes images dans la pièce
-            - locale: en_US
-              value: Group the objects with the place
-          interface: dragAndDropIntoZones
-          gameplay: findTheRightAnswers
-          payload:
-            shuffle_choices: true
-            dropZoneA:
-              value: bedroom
-              type: image
-            choices:
-              - value: towel
-                type: image
-              - value: toy
-                type: image
-                dropZone: zoneA
-              - value: bed
+              - value: pictograms-objects-house-bedroom-bed_blue-01A5
                 type: image
                 dropZone: zoneA
 
@@ -309,14 +243,80 @@ exercises_payload:
           payload:
             shuffle_choices: true
             dropZoneA:
-              value: kitchen
+              value: improving-categorisation_kitchen
               type: image
             choices:
-              - value: towel
+              - value: pictograms-objects-bathroom-soap_bottle_pink-00C6
                 type: image
-              - value: vegetables_basket
+              - value: pictograms-objects-house-kitchen-tableware_gray-0194
                 type: image
                 dropZone: zoneA
-              - value: table_cutlery
+              - value: pictograms-objects-house-kitchen-cooking_pot-0190
+                type: image
+                dropZone: zoneA
+
+        - instructions:
+            - locale: fr_FR
+              value: Mets les bonnes images dans la pièce
+            - locale: en_US
+              value: Group the objects with the place
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            dropZoneA:
+              value: improving-categorisation_bedroom
+              type: image
+            choices:
+              - value: pictograms-objects-bathroom-soap_bottle_pink-00C6
+                type: image
+              - value: pictograms-objects-house-bedroom-pillow_white-01A7
+                type: image
+                dropZone: zoneA
+              - value: pictograms-objects-house-bedroom-toy_wagon_brown-01A6
+                type: image
+                dropZone: zoneA
+
+        - instructions:
+            - locale: fr_FR
+              value: Mets les bonnes images dans la pièce
+            - locale: en_US
+              value: Group the objects with the place
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            dropZoneA:
+              value: improving-categorisation_bedroom
+              type: image
+            choices:
+              - value: pictograms-objects-bathroom-towel_blue-00C0
+                type: image
+              - value: pictograms-objects-house-bedroom-toy_wagon_brown-01A6
+                type: image
+                dropZone: zoneA
+              - value: pictograms-objects-house-bedroom-bed_blue-01A5
+                type: image
+                dropZone: zoneA
+
+        - instructions:
+            - locale: fr_FR
+              value: Mets les bonnes images dans la pièce
+            - locale: en_US
+              value: Group the objects with the place
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            dropZoneA:
+              value: improving-categorisation_kitchen
+              type: image
+            choices:
+              - value: pictograms-objects-bathroom-towel_blue-00C0
+                type: image
+              - value: pictograms-foods-meals-salad_mixed-0175
+                type: image
+                dropZone: zoneA
+              - value: pictograms-objects-house-kitchen-tableware_gray-0194
                 type: image
                 dropZone: zoneA

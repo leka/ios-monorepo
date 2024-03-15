@@ -87,39 +87,16 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: dress_gray
+              - value: pictograms-clothes-dress_gray-0152
                 type: image
                 category: catA
-              - value: dress_yellow
+              - value: pictograms-clothes-dress_yellow-0144
                 type: image
                 category: catA
-              - value: potato_orange
+              - value: pictograms-foods-vegetables-potato_yellow_3-00EE
                 type: image
                 category: catB
-              - value: potato_yellow
-                type: image
-                category: catB
-
-        - instructions:
-            - locale: fr_FR
-              value: Mets ensemble les images d'une même catégorie
-            - locale: en_US
-              value: Group the images by category
-          interface: dragAndDropToAssociate
-          gameplay: associateCategories
-          payload:
-            shuffle_choices: true
-            choices:
-              - value: potato_orange
-                type: image
-                category: catA
-              - value: potato_yellow
-                type: image
-                category: catA
-              - value: apple_red
-                type: image
-                category: catB
-              - value: apple_yellow
+              - value: pictograms-foods-vegetables-potato_yellow_2-00ED
                 type: image
                 category: catB
 
@@ -133,39 +110,16 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: pull_green
+              - value: pictograms-foods-vegetables-potato_yellow_2-00ED
                 type: image
                 category: catA
-              - value: pull_purple
+              - value: pictograms-foods-vegetables-potato_yellow_3-00EE
                 type: image
                 category: catA
-              - value: salad
+              - value: pictograms-foods-fruits-apple_red-0101
                 type: image
                 category: catB
-              - value: salad_light_green
-                type: image
-                category: catB
-
-        - instructions:
-            - locale: fr_FR
-              value: Mets ensemble les images d'une même catégorie
-            - locale: en_US
-              value: Group the images by category
-          interface: dragAndDropToAssociate
-          gameplay: associateCategories
-          payload:
-            shuffle_choices: true
-            choices:
-              - value: hat_red
-                type: image
-                category: catA
-              - value: hat_gray
-                type: image
-                category: catA
-              - value: shoes_white
-                type: image
-                category: catB
-              - value: shoes_brown
+              - value: pictograms-foods-fruits-apple_yellow-0102
                 type: image
                 category: catB
 
@@ -179,39 +133,16 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: dress_yellow
+              - value: pictograms-clothes-pull_green-0143
                 type: image
                 category: catA
-              - value: dress_blue
+              - value: pictograms-clothes-pull_pink-0156
                 type: image
                 category: catA
-              - value: salad
+              - value: pictograms-foods-vegetables-salad_green_1-00EA
                 type: image
                 category: catB
-              - value: salad_light_green
-                type: image
-                category: catB
-
-        - instructions:
-            - locale: fr_FR
-              value: Mets ensemble les images d'une même catégorie
-            - locale: en_US
-              value: Group the images by category
-          interface: dragAndDropToAssociate
-          gameplay: associateCategories
-          payload:
-            shuffle_choices: true
-            choices:
-              - value: cherry_red
-                type: image
-                category: catA
-              - value: cherry_pink
-                type: image
-                category: catA
-              - value: sock_yellow
-                type: image
-                category: catB
-              - value: sock_pink
+              - value: pictograms-foods-vegetables-salad_green_2-00EB
                 type: image
                 category: catB
 
@@ -225,39 +156,16 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: mushroom_gray
+              - value: pictograms-clothes-hat_green-0146
                 type: image
                 category: catA
-              - value: mushroom_brown
+              - value: pictograms-clothes-hat_gray-014C
                 type: image
                 category: catA
-              - value: potato_orange
+              - value: pictograms-clothes-shoes_baskets_white-013F
                 type: image
                 category: catB
-              - value: potato_yellow
-                type: image
-                category: catB
-
-        - instructions:
-            - locale: fr_FR
-              value: Mets ensemble les images d'une même catégorie
-            - locale: en_US
-              value: Group the images by category
-          interface: dragAndDropToAssociate
-          gameplay: associateCategories
-          payload:
-            shuffle_choices: true
-            choices:
-              - value: shoes_yellow
-                type: image
-                category: catA
-              - value: shoes_white
-                type: image
-                category: catA
-              - value: mushroom_gray
-                type: image
-                category: catB
-              - value: mushroom_brown
+              - value: pictograms-clothes-shoes_brown-015D
                 type: image
                 category: catB
 
@@ -271,16 +179,16 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: pull_green
+              - value: pictograms-clothes-dress_yellow-0144
                 type: image
                 category: catA
-              - value: pull_pink
+              - value: pictograms-clothes-dress_green-0159
                 type: image
                 category: catA
-              - value: hat_green
+              - value: pictograms-foods-vegetables-salad_green_1-00EA
                 type: image
                 category: catB
-              - value: hat_red
+              - value: pictograms-foods-vegetables-salad_green_2-00EB
                 type: image
                 category: catB
 
@@ -294,15 +202,108 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: cherry_red
+              - value: pictograms-foods-fruits-cherry_red-00FF
                 type: image
                 category: catA
-              - value: cherry_pink
+              - value: pictograms-foods-fruits-cherry_pink
                 type: image
                 category: catA
-              - value: hat_green
+              - value: pictograms-clothes-socks_yellow-014D
                 type: image
                 category: catB
-              - value: hat_red
+              - value: pictograms-clothes-socks_pink-0140
                 type: image
                 category: catB
+
+        - instructions:
+            - locale: fr_FR
+              value: Mets ensemble les images d'une même catégorie
+            - locale: en_US
+              value: Group the images by category
+          interface: dragAndDropToAssociate
+          gameplay: associateCategories
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: pictograms-foods-vegetables-mushroom_gray-00EF
+                type: image
+                category: catA
+              - value: pictograms-foods-vegetables-mushroom_brown-00F0
+                type: image
+                category: catA
+              - value: pictograms-foods-vegetables-potato_yellow_3-00EE
+                type: image
+                category: catB
+              - value: pictograms-foods-vegetables-potato_yellow_2-00ED
+                type: image
+                category: catB
+
+        - instructions:
+            - locale: fr_FR
+              value: Mets ensemble les images d'une même catégorie
+            - locale: en_US
+              value: Group the images by category
+          interface: dragAndDropToAssociate
+          gameplay: associateCategories
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: pictograms-clothes-boots_yellow-014B
+                type: image
+                category: catA
+              - value: pictograms-clothes-shoes_baskets_white-013F
+                type: image
+                category: catA
+              - value: pictograms-foods-vegetables-mushroom_gray-00EF
+                type: image
+                category: catB
+              - value: pictograms-foods-vegetables-mushroom_brown-00F0
+                type: image
+                category: catB
+
+        - instructions:
+            - locale: fr_FR
+              value: Mets ensemble les images d'une même catégorie
+            - locale: en_US
+              value: Group the images by category
+          interface: dragAndDropToAssociate
+          gameplay: associateCategories
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: pictograms-clothes-pull_green-0143
+                type: image
+                category: catA
+              - value: pictograms-clothes-pull_pink-0156
+                type: image
+                category: catA
+              - value: pictograms-clothes-hat_green-0146
+                type: image
+                category: catB
+              - value: pictograms-clothes-hat_gray-014C
+                type: image
+                category: catB
+
+        - instructions:
+            - locale: fr_FR
+              value: Mets ensemble les images d'une même catégorie
+            - locale: en_US
+              value: Group the images by category
+          interface: dragAndDropToAssociate
+          gameplay: associateCategories
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: pictograms-foods-fruits-cherry_red-00FF
+                type: image
+                category: catA
+              - value: pictograms-foods-fruits-cherry_pink
+                type: image
+                category: catA
+              - value: pictograms-clothes-hat_green-0146
+                type: image
+                category: catB
+              - value: pictograms-clothes-hat_gray-014C
+                type: image
+                category: catB
+
