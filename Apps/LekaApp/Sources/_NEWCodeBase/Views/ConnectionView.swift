@@ -59,6 +59,7 @@ struct ConnectionView: View {
             if newValue == .loggedIn {
                 self.caregiverManager.initializeCaregiversListener()
                 self.carereceiverManager.initializeCarereceiversListener()
+                self.authManagerViewModel.userAction = .none
                 self.navigation.fullScreenCoverContent = nil
             }
         }
