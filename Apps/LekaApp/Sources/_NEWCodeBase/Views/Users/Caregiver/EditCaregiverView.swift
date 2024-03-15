@@ -4,7 +4,6 @@
 
 import AccountKit
 import DesignKit
-import Fit
 import LocalizationKit
 import SwiftUI
 
@@ -48,7 +47,7 @@ struct EditCaregiverView: View {
                 }
 
                 Section {
-                    self.professionPickerButton
+                    ProfessionListView(caregiver: self.$viewModel.caregiver)
                 }
 
                 Section {
@@ -108,36 +107,6 @@ struct EditCaregiverView: View {
         }
         .frame(maxWidth: .infinity, alignment: .center)
     }
-
-    private var professionPickerButton: some View {
-        VStack(alignment: .leading) {
-            LabeledContent(String(l10n.CaregiverCreation.professionLabel.characters)) {
-                Button {
-                    self.viewModel.isProfessionPickerPresented = true
-                } label: {
-                    Image(systemName: "plus")
-                }
-                .sheet(isPresented: self.$viewModel.isProfessionPickerPresented) {
-                    NavigationStack {
-                        ProfessionPicker(selectedProfessionsIDs: self.viewModel.caregiver.professions,
-                                         onValidate: { professions in
-                                             self.viewModel.caregiver.professions = professions
-                                         })
-                                         .navigationBarTitleDisplayMode(.inline)
-                    }
-                }
-            }
-
-            if !self.viewModel.caregiver.professions.isEmpty {
-                Fit {
-                    ForEach(self.viewModel.caregiver.professions, id: \.self) { id in
-                        let profession = Professions.profession(for: id)!
-                        ProfessionPicker.ProfessionTag(profession: profession, caregiver: self.$viewModel.caregiver)
-                    }
-                }
-            }
-        }
-    }
 }
 
 // MARK: - EditCaregiverViewViewModel
@@ -153,7 +122,6 @@ class EditCaregiverViewViewModel: ObservableObject {
 
     @Published var caregiver: Caregiver
     @Published var isAvatarPickerPresented: Bool = false
-    @Published var isProfessionPickerPresented: Bool = false
 }
 
 #Preview {
