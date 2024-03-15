@@ -85,7 +85,7 @@ struct CreateCaregiverView: View {
                 }
 
                 Section {
-                    self.professionPickerButton
+                    ProfessionListView(caregiver: self.$newCaregiver)
                 }
 
                 Button(String(l10n.CaregiverCreation.registerProfilButton.characters)) {
@@ -146,7 +146,6 @@ struct CreateCaregiverView: View {
 
     @State private var newCaregiver = Caregiver()
     @State private var isAvatarPickerPresented: Bool = false
-    @State private var isProfessionPickerPresented: Bool = false
     @State private var action: ActionType?
     @State private var cancellables = Set<AnyCancellable>()
 
@@ -169,34 +168,6 @@ struct CreateCaregiverView: View {
             }
         }
         .frame(maxWidth: .infinity, alignment: .center)
-    }
-
-    private var professionPickerButton: some View {
-        VStack(alignment: .leading) {
-            LabeledContent(String(l10n.CaregiverCreation.professionLabel.characters)) {
-                Button {
-                    self.isProfessionPickerPresented = true
-                } label: {
-                    Image(systemName: "plus")
-                }
-                .sheet(isPresented: self.$isProfessionPickerPresented) {
-                    NavigationStack {
-                        ProfessionPicker(selectedProfessionsIDs: self.newCaregiver.professions,
-                                         onValidate: { professions in
-                                             self.newCaregiver.professions = professions
-                                         })
-                                         .navigationBarTitleDisplayMode(.inline)
-                    }
-                }
-            }
-
-            if !self.newCaregiver.professions.isEmpty {
-                ForEach(self.newCaregiver.professions, id: \.self) { id in
-                    let profession = Professions.profession(for: id)!
-                    ProfessionPicker.ProfessionTag(profession: profession, caregiver: self.$newCaregiver)
-                }
-            }
-        }
     }
 }
 
