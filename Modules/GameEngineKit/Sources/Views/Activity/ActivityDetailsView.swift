@@ -3,6 +3,8 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import ContentKit
+import DesignKit
+import Fit
 import MarkdownUI
 import SwiftUI
 
@@ -48,47 +50,47 @@ public struct ActivityDetailsView: View {
                     Spacer()
                 }
 
-                DisclosureGroup("**Skills**") {
-                    ForEach(self.activity.skills, id: \.self) { skill in
-                        let skill = Skills.skill(id: skill)!
-                        HStack {
-                            Text(skill.name)
-                            Button {
-                                self.selectedSkill = skill
-                            } label: {
-                                Image(systemName: "info.circle")
-                            }
-                        }
-                    }
-                }
-                .sheet(item: self.$selectedSkill, onDismiss: { self.selectedSkill = nil }, content: { skill in
-                    VStack(alignment: .leading) {
-                        Text(skill.name)
-                            .font(.headline)
-                        Text(skill.description)
-                    }
-                })
+                HStack(alignment: .firstTextBaseline) {
+                    Text("**Skills**")
+                    Spacer()
+                    Fit(itemSpacing: .viewSpacing(minimum: 15)) {
+                        ForEach(self.activity.skills, id: \.self) { skill in
+                            let skill = Skills.skill(id: skill)!
 
-                DisclosureGroup("**Authors**") {
-                    ForEach(self.activity.authors, id: \.self) { author in
-                        let author = Authors.hmi(id: author)!
-                        HStack {
-                            Text(author.name)
-                            Button {
-                                self.selectedAuthor = author
-                            } label: {
-                                Image(systemName: "info.circle")
+                            TagView(title: skill.name, systemImage: "info.circle") {
+                                self.selectedSkill = skill
                             }
                         }
                     }
+                    .sheet(item: self.$selectedSkill, onDismiss: { self.selectedSkill = nil }, content: { skill in
+                        VStack(alignment: .leading) {
+                            Text(skill.name)
+                                .font(.headline)
+                            Text(skill.description)
+                        }
+                    })
                 }
-                .sheet(item: self.$selectedAuthor, onDismiss: { self.selectedAuthor = nil }, content: { author in
-                    VStack(alignment: .leading) {
-                        Text(author.name)
-                            .font(.headline)
-                        Text(author.description)
+
+                HStack(alignment: .firstTextBaseline) {
+                    Text("**Authors**")
+                    Spacer()
+                    Fit(itemSpacing: .viewSpacing(minimum: 15)) {
+                        ForEach(self.activity.authors, id: \.self) { author in
+                            let author = Authors.hmi(id: author)!
+
+                            TagView(title: author.name, systemImage: "info.circle") {
+                                self.selectedAuthor = author
+                            }
+                        }
                     }
-                })
+                    .sheet(item: self.$selectedAuthor, onDismiss: { self.selectedAuthor = nil }, content: { author in
+                        VStack(alignment: .leading) {
+                            Text(author.name)
+                                .font(.headline)
+                            Text(author.description)
+                        }
+                    })
+                }
             }
 
             Section("Description") {

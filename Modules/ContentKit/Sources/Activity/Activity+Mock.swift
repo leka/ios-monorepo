@@ -32,6 +32,15 @@ public extension Activity {
       - spatial_understanding
       - recognition/animals
       - communication/non_verbal_communication/gestures
+      - communication/verbal_communication/receptive_language
+      - association
+      - association/matching
+      - association/sorting
+      - association/ordering
+      - attention
+      - attention/sustained_attention
+      - attention/transition
+      - attention/joint_attention
 
     tags:
       - tag_one
