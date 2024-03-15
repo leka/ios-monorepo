@@ -73,7 +73,12 @@ public class DatabaseOperations {
     public func observeAll<T: AccountDocument>(from collection: DatabaseCollection) -> AnyPublisher<[T], Error> {
         let subject = CurrentValueSubject<[T], Error>([])
 
-        self.database.collection(collection.rawValue)
+        if let existingListener = listenerRegistrations[collection.rawValue] {
+            existingListener.remove()
+            self.listenerRegistrations.removeValue(forKey: collection.rawValue)
+        }
+
+        let listener = self.database.collection(collection.rawValue)
             .whereField("root_owner_uid", isEqualTo: Auth.auth().currentUser?.uid ?? "")
             .addSnapshotListener { querySnapshot, error in
                 if let error {
@@ -88,7 +93,16 @@ public class DatabaseOperations {
                 }
             }
 
+        self.listenerRegistrations[collection.rawValue] = listener
+
         return subject.eraseToAnyPublisher()
+    }
+
+    public func clearAllListeners() {
+        for (_, registration) in self.listenerRegistrations {
+            registration.remove()
+        }
+        self.listenerRegistrations.removeAll()
     }
 
     public func update(data: some AccountDocument, in collection: DatabaseCollection) -> AnyPublisher<Void, Error> {
@@ -133,4 +147,5 @@ public class DatabaseOperations {
     // MARK: Private
 
     private let database = Firestore.firestore()
+    private var listenerRegistrations = [String: ListenerRegistration]()
 }

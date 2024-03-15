@@ -89,6 +89,9 @@ public class CaregiverManager {
     public func resetData() {
         self.currentCaregiver.send(nil)
         self.caregiverList.send([])
+        self.dbOps.clearAllListeners()
+        self.cancellables.forEach { $0.cancel() }
+        self.cancellables.removeAll()
     }
 
     // MARK: Internal

@@ -88,6 +88,9 @@ public class CarereceiverManager {
     public func resetData() {
         self.currentCarereceiver.send(nil)
         self.carereceiverList.send([])
+        self.dbOps.clearAllListeners()
+        self.cancellables.forEach { $0.cancel() }
+        self.cancellables.removeAll()
     }
 
     // MARK: Internal
