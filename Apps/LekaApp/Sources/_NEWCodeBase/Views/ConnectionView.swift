@@ -17,7 +17,6 @@ import SwiftUI
 class ConnectionViewViewModel: ObservableObject {
     @Published var email: String = ""
     @Published var password: String = ""
-    @Published var navigateToCaregiverSelection: Bool = false
 }
 
 // MARK: - ConnectionView
@@ -56,15 +55,12 @@ struct ConnectionView: View {
             .disabled(self.isConnectionDisabled)
             .buttonStyle(.borderedProminent)
         }
-        .navigationDestination(isPresented: self.$viewModel.navigateToCaregiverSelection) {
-            // TODO: (@release) - Implement selection + review nav destination use
-            CaregiverPicker()
-        }
         .onChange(of: self.authManagerViewModel.userAuthenticationState) { newValue in
             if newValue == .loggedIn {
                 self.caregiverManager.initializeCaregiversListener()
                 self.carereceiverManager.initializeCarereceiversListener()
-                self.viewModel.navigateToCaregiverSelection.toggle()
+                self.authManagerViewModel.userAction = .none
+                self.navigation.fullScreenCoverContent = nil
             }
         }
         .onAppear {
@@ -79,6 +75,7 @@ struct ConnectionView: View {
 
     @StateObject private var viewModel = ConnectionViewViewModel()
     @ObservedObject private var authManagerViewModel: AuthManagerViewModel = .shared
+    @ObservedObject private var navigation: Navigation = .shared
 
     private var authManager: AuthManager = .shared
     private var caregiverManager: CaregiverManager = .shared
