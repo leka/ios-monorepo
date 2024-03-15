@@ -4,7 +4,7 @@
 
 version: 1.0.0
 
-uuid: DCF74FB8B23A4446A339231D08F85FA6
+uuid: 95108BC74D094434AFFC34C74D95AFBC
 name: Identify colors with 2 components #3
 
 created_at: "2024-03-08T11:49:37.123541"
@@ -37,7 +37,7 @@ l10n:
     details:
       icon: receptive_language
 
-      title: Identifier des mots courants d'une syllabe
+      title: Identifier des couleurs avec 2 objets #3
       subtitle: null
 
       short_description: |
@@ -55,7 +55,7 @@ l10n:
     details:
       icon: receptive_language
 
-      title: Identify familiar nouns with one syllable
+      title: Identify colors with 2 components #3
       subtitle: null
 
       short_description: |
@@ -72,70 +72,295 @@ l10n:
 exercises_payload:
   options:
     shuffle_exercises: true
-    shuffle_groups: false
+    shuffle_groups: true
 
   exercise_groups:
     - group:
-      - instructions: Touche le paysage
-        interface: touchToSelect
-        gameplay: findTheRightAnswers
-        payload:
+        - instructions:
+            - locale: fr_FR
+              value: Touche l'assiette jaune
+            - locale: en_US
+              value: Touch the yellow plate
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
           choices:
-            - value: image-placeholder-landscape
+            - value: pictograms-objects-house-kitchen-plateyellow
               type: image
               isRightAnswer: true
-            - value: image-placeholder-animals
+            - value: pictograms-objects-house-kitchen-plateblack
               type: image
-            - value: image-placeholder-food
+            - value: pictograms-objects-house-kitchen-platered
+              type: image
+            - value: pictograms-objects-house-bedroom-toylegoyellow
+              type: image
+            - value: pictograms-objects-house-bedroom-toylegored-01AD
+              type: image
+            - value: pictograms-objects-house-bedroom-toylegoblack
               type: image
 
-      - instructions: Touche la nourriture
-        interface: touchToSelect
-        gameplay: findTheRightAnswers
-        payload:
+        - instructions:
+            - locale: fr_FR
+              value: Touche le lego jaune
+            - locale: en_US
+              value: Touch the yellow lego
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
           choices:
-            - value: image-placeholder-animals
+            - value: pictograms-objects-house-kitchen-plateyellow
               type: image
-            - value: image-placeholder-portrait
+            - value: pictograms-objects-house-kitchen-plateblack
               type: image
-            - value: image-placeholder-food
+            - value: pictograms-objects-house-kitchen-platered
+              type: image
+            - value: pictograms-objects-house-bedroom-toylegoyellow
               type: image
               isRightAnswer: true
-            - value: image-placeholder-landscape
+            - value: pictograms-objects-house-bedroom-toylegored-01AD
+              type: image
+            - value: pictograms-objects-house-bedroom-toylegoblack
               type: image
 
-      - instructions: Touche les animaux
-        interface: touchToSelect
-        gameplay: findTheRightAnswers
-        payload:
+        - instructions:
+            - locale: fr_FR
+              value: Touche le lego noir
+            - locale: en_US
+              value: Touch the black lego
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
           choices:
-            - value: image-placeholder-animals
+            - value: pictograms-objects-house-kitchen-plateyellow
               type: image
-            - value: image-placeholder-food
+            - value: pictograms-objects-house-kitchen-plateblack
+              type: image
+            - value: pictograms-objects-house-kitchen-platered
+              type: image
+            - value: pictograms-objects-house-bedroom-toylegoyellow
+              type: image
+            - value: pictograms-objects-house-bedroom-toylegored-01AD
+              type: image
+            - value: pictograms-objects-house-bedroom-toylegoblack
               type: image
               isRightAnswer: true
-            - value: image-placeholder-landscape
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche l'assiette noire
+            - locale: en_US
+              value: Touch the black plate
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-objects-house-kitchen-plateyellow
               type: image
-            - value: image-placeholder-portrait
+            - value: pictograms-objects-house-kitchen-plateblack
               type: image
-            - value: image-placeholder-food
+              isRightAnswer: true
+            - value: pictograms-objects-house-kitchen-platered
+              type: image
+            - value: pictograms-objects-house-bedroom-toylegoyellow
+              type: image
+            - value: pictograms-objects-house-bedroom-toylegored-01AD
+              type: image
+            - value: pictograms-objects-house-bedroom-toylegoblack
               type: image
 
-      - instructions: Touche le portrait
-        interface: touchToSelect
-        gameplay: findTheRightAnswers
-        payload:
+        - instructions:
+            - locale: fr_FR
+              value: Touche le lego rouge
+            - locale: en_US
+              value: Touch the red lego
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
           choices:
-            - value: image-placeholder-animals
+            - value: pictograms-objects-house-kitchen-plateyellow
               type: image
-            - value: image-placeholder-food
+            - value: pictograms-objects-house-kitchen-plateblack
               type: image
-            - value: image-placeholder-landscape
+            - value: pictograms-objects-house-kitchen-platered
               type: image
-            - value: image-placeholder-food
+            - value: pictograms-objects-house-bedroom-toylegoyellow
               type: image
-            - value: image-placeholder-portrait
+            - value: pictograms-objects-house-bedroom-toylegored-01AD
               type: image
               isRightAnswer: true
-            - value: image-placeholder-animals
+            - value: pictograms-objects-house-bedroom-toylegoblack
+              type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche l'assiette rouge
+            - locale: en_US
+              value: Touch the red plate
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-objects-house-kitchen-plateyellow
+              type: image
+            - value: pictograms-objects-house-kitchen-plateblack
+              type: image
+            - value: pictograms-objects-house-kitchen-platered
+              type: image
+              isRightAnswer: true
+            - value: pictograms-objects-house-bedroom-toylegoyellow
+              type: image
+            - value: pictograms-objects-house-bedroom-toylegored-01AD
+              type: image
+            - value: pictograms-objects-house-bedroom-toylegoblack
+              type: image
+
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Touche la chaussure orange
+            - locale: en_US
+              value: Touch the orange shoe
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-clothes-shoewhite
+              type: image
+            - value: pictograms-clothes-shoeorange
+              type: image
+              isRightAnswer: true
+            - value: pictograms-clothes-shoegreen
+              type: image
+            - value: pictograms-objects-garden-flowerorange
+              type: image
+            - value: pictograms-objects-garden-flowergreen
+              type: image
+            - value: pictograms-objects-garden-flowerwhite
+              type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche la fleur orange
+            - locale: en_US
+              value: Touch the orange flower
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-clothes-shoewhite
+              type: image
+            - value: pictograms-clothes-shoeorange
+              type: image
+            - value: pictograms-clothes-shoegreen
+              type: image
+            - value: pictograms-objects-garden-flowerorange
+              type: image
+              isRightAnswer: true
+            - value: pictograms-objects-garden-flowergreen
+              type: image
+            - value: pictograms-objects-garden-flowerwhite
+              type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche la chaussure verte
+            - locale: en_US
+              value: Touch the green shoe
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-clothes-shoewhite
+              type: image
+            - value: pictograms-clothes-shoeorange
+              type: image
+            - value: pictograms-clothes-shoegreen
+              type: image
+              isRightAnswer: true
+            - value: pictograms-objects-garden-flowerorange
+              type: image
+            - value: pictograms-objects-garden-flowergreen
+              type: image
+            - value: pictograms-objects-garden-flowerwhite
+              type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche la fleur blanche
+            - locale: en_US
+              value: Touch the white flower
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-clothes-shoewhite
+              type: image
+            - value: pictograms-clothes-shoeorange
+              type: image
+            - value: pictograms-clothes-shoegreen
+              type: image
+            - value: pictograms-objects-garden-flowerorange
+              type: image
+            - value: pictograms-objects-garden-flowergreen
+              type: image
+            - value: pictograms-objects-garden-flowerwhite
+              type: image
+              isRightAnswer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche la chaussure blanche
+            - locale: en_US
+              value: Touch the white shoe
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-clothes-shoewhite
+              type: image
+              isRightAnswer: true
+            - value: pictograms-clothes-shoeorange
+              type: image
+            - value: pictograms-clothes-shoegreen
+              type: image
+            - value: pictograms-objects-garden-flowerorange
+              type: image
+            - value: pictograms-objects-garden-flowergreen
+              type: image
+            - value: pictograms-objects-garden-flowerwhite
+              type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche la fleur verte
+            - locale: en_US
+              value: Touch the green flower
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-clothes-shoewhite
+              type: image
+            - value: pictograms-clothes-shoeorange
+              type: image
+            - value: pictograms-clothes-shoegreen
+              type: image
+            - value: pictograms-objects-garden-flowerorange
+              type: image
+            - value: pictograms-objects-garden-flowergreen
+              type: image
+              isRightAnswer: true
+            - value: pictograms-objects-garden-flowerwhite
               type: image

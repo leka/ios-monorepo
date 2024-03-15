@@ -4,7 +4,7 @@
 
 version: 1.0.0
 
-uuid: 6302A027A4734264ABB0734A7822C25A
+uuid: 95108BC74D094434AFFC34C74D95AFBC
 name: Identify colors with 2 components #2
 
 created_at: "2024-03-08T11:49:37.123541"
@@ -37,7 +37,7 @@ l10n:
     details:
       icon: receptive_language
 
-      title: Identifier des mots courants d'une syllabe
+      title: Identifier des couleurs avec 2 objets #2
       subtitle: null
 
       short_description: |
@@ -55,7 +55,7 @@ l10n:
     details:
       icon: receptive_language
 
-      title: Identify familiar nouns with one syllable
+      title: Identify colors with 2 components #2
       subtitle: null
 
       short_description: |
@@ -72,70 +72,295 @@ l10n:
 exercises_payload:
   options:
     shuffle_exercises: true
-    shuffle_groups: false
+    shuffle_groups: true
 
   exercise_groups:
     - group:
-      - instructions: Touche le paysage
-        interface: touchToSelect
-        gameplay: findTheRightAnswers
-        payload:
+        - instructions:
+            - locale: fr_FR
+              value: Touche la veste verte
+            - locale: en_US
+              value: Touch the green jacket
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
           choices:
-            - value: image-placeholder-landscape
+            - value: pictograms-clothes-suit_jacket_blue-0148
+              type: image
+            - value: pictograms-clothes-jacketred
+              type: image
+            - value: pictograms-clothes-jacketgreen
               type: image
               isRightAnswer: true
-            - value: image-placeholder-animals
+            - value: pictograms-objects-school-bookred
               type: image
-            - value: image-placeholder-food
+            - value: pictograms-objects-school-bookgreen
+              type: image
+            - value: pictograms-objects-school-bookblue
               type: image
 
-      - instructions: Touche la nourriture
-        interface: touchToSelect
-        gameplay: findTheRightAnswers
-        payload:
+        - instructions:
+            - locale: fr_FR
+              value: Touche la veste bleue
+            - locale: en_US
+              value: Touch the blue jacket
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
           choices:
-            - value: image-placeholder-animals
-              type: image
-            - value: image-placeholder-portrait
-              type: image
-            - value: image-placeholder-food
+            - value: pictograms-clothes-suit_jacket_blue-0148
               type: image
               isRightAnswer: true
-            - value: image-placeholder-landscape
+            - value: pictograms-clothes-jacketred
+              type: image
+            - value: pictograms-clothes-jacketgreen
+              type: image
+            - value: pictograms-objects-school-bookred
+              type: image
+            - value: pictograms-objects-school-bookgreen
+              type: image
+            - value: pictograms-objects-school-bookblue
               type: image
 
-      - instructions: Touche les animaux
-        interface: touchToSelect
-        gameplay: findTheRightAnswers
-        payload:
+        - instructions:
+            - locale: fr_FR
+              value: Touche le livre vert
+            - locale: en_US
+              value: Touch the green book
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
           choices:
-            - value: image-placeholder-animals
+            - value: pictograms-clothes-suit_jacket_blue-0148
               type: image
-            - value: image-placeholder-food
+            - value: pictograms-clothes-jacketred
+              type: image
+            - value: pictograms-clothes-jacketgreen
+              type: image
+            - value: pictograms-objects-school-bookred
+              type: image
+            - value: pictograms-objects-school-bookgreen
               type: image
               isRightAnswer: true
-            - value: image-placeholder-landscape
-              type: image
-            - value: image-placeholder-portrait
-              type: image
-            - value: image-placeholder-food
+            - value: pictograms-objects-school-bookblue
               type: image
 
-      - instructions: Touche le portrait
-        interface: touchToSelect
-        gameplay: findTheRightAnswers
-        payload:
+        - instructions:
+            - locale: fr_FR
+              value: Touche le livre rouge
+            - locale: en_US
+              value: Touch the red book
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
           choices:
-            - value: image-placeholder-animals
+            - value: pictograms-clothes-suit_jacket_blue-0148
               type: image
-            - value: image-placeholder-food
+            - value: pictograms-clothes-jacketred
               type: image
-            - value: image-placeholder-landscape
+            - value: pictograms-clothes-jacketgreen
               type: image
-            - value: image-placeholder-food
-              type: image
-            - value: image-placeholder-portrait
+            - value: pictograms-objects-school-bookred
               type: image
               isRightAnswer: true
-            - value: image-placeholder-animals
+            - value: pictograms-objects-school-bookgreen
+              type: image
+            - value: pictograms-objects-school-bookblue
+              type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche le livre bleu
+            - locale: en_US
+              value: Touch the blue book
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-clothes-suit_jacket_blue-0148
+              type: image
+            - value: pictograms-clothes-jacketred
+              type: image
+            - value: pictograms-clothes-jacketgreen
+              type: image
+            - value: pictograms-objects-school-bookred
+              type: image
+            - value: pictograms-objects-school-bookgreen
+              type: image
+            - value: pictograms-objects-school-bookblue
+              type: image
+              isRightAnswer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche la veste rouge
+            - locale: en_US
+              value: Touch the red jacket
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-clothes-suit_jacket_blue-0148
+              type: image
+            - value: pictograms-clothes-jacketred
+              type: image
+              isRightAnswer: true
+            - value: pictograms-clothes-jacketgreen
+              type: image
+            - value: pictograms-objects-school-bookred
+              type: image
+            - value: pictograms-objects-school-bookgreen
+              type: image
+            - value: pictograms-objects-school-bookblue
+              type: image
+
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Touche la tasse jaune
+            - locale: en_US
+              value: Touch the yellow cup
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-objects-house-kitchen-mugcofeeyellow
+              type: image
+              isRightAnswer: true
+            - value: pictograms-objects-house-kitchen-mugcofeeorange
+              type: image
+            - value: pictograms-objects-house-kitchen-mugcofeepurple
+              type: image
+            - value: pictograms-objects-house-bedroom-toyballonyellow
+              type: image
+            - value: pictograms-objects-house-bedroom-toyballonpurple
+              type: image
+            - value: pictograms-objects-house-bedroom-toyballonorange
+              type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche le ballon jaune
+            - locale: en_US
+              value: Touch the yellow balloon
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-objects-house-kitchen-mugcofeeyellow
+              type: image
+            - value: pictograms-objects-house-kitchen-mugcofeeorange
+              type: image
+            - value: pictograms-objects-house-kitchen-mugcofeepurple
+              type: image
+            - value: pictograms-objects-house-bedroom-toyballonyellow
+              type: image
+              isRightAnswer: true
+            - value: pictograms-objects-house-bedroom-toyballonpurple
+              type: image
+            - value: pictograms-objects-house-bedroom-toyballonorange
+              type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche la tasse orange
+            - locale: en_US
+              value: Touch the orange cup
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-objects-house-kitchen-mugcofeeyellow
+              type: image
+            - value: pictograms-objects-house-kitchen-mugcofeeorange
+              type: image
+              isRightAnswer: true
+            - value: pictograms-objects-house-kitchen-mugcofeepurple
+              type: image
+            - value: pictograms-objects-house-bedroom-toyballonyellow
+              type: image
+            - value: pictograms-objects-house-bedroom-toyballonpurple
+              type: image
+            - value: pictograms-objects-house-bedroom-toyballonorange
+              type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche le ballon orange
+            - locale: en_US
+              value: Touch the orange balloon
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-objects-house-kitchen-mugcofeeyellow
+              type: image
+            - value: pictograms-objects-house-kitchen-mugcofeeorange
+              type: image
+            - value: pictograms-objects-house-kitchen-mugcofeepurple
+              type: image
+            - value: pictograms-objects-house-bedroom-toyballonyellow
+              type: image
+            - value: pictograms-objects-house-bedroom-toyballonpurple
+              type: image
+            - value: pictograms-objects-house-bedroom-toyballonorange
+              type: image
+              isRightAnswer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche le ballon violet
+            - locale: en_US
+              value: Touch the purple balloon
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-objects-house-kitchen-mugcofeeyellow
+              type: image
+            - value: pictograms-objects-house-kitchen-mugcofeeorange
+              type: image
+            - value: pictograms-objects-house-kitchen-mugcofeepurple
+              type: image
+            - value: pictograms-objects-house-bedroom-toyballonyellow
+              type: image
+            - value: pictograms-objects-house-bedroom-toyballonpurple
+              type: image
+              isRightAnswer: true
+            - value: pictograms-objects-house-bedroom-toyballonorange
+              type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche la tasse violette
+            - locale: en_US
+              value: Touch the purple cup
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-objects-house-kitchen-mugcofeeyellow
+              type: image
+            - value: pictograms-objects-house-kitchen-mugcofeeorange
+              type: image
+            - value: pictograms-objects-house-kitchen-mugcofeepurple
+              type: image
+              isRightAnswer: true
+            - value: pictograms-objects-house-bedroom-toyballonyellow
+              type: image
+            - value: pictograms-objects-house-bedroom-toyballonpurple
+              type: image
+            - value: pictograms-objects-house-bedroom-toyballonorange
               type: image

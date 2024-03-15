@@ -37,7 +37,7 @@ l10n:
     details:
       icon: receptive_language
 
-      title: Identifier des mots courants d'une syllabe
+      title: Identifier des couleurs avec 2 objets #1
       subtitle: null
 
       short_description: |
@@ -55,7 +55,7 @@ l10n:
     details:
       icon: receptive_language
 
-      title: Identify familiar nouns with one syllable
+      title: Identify colors with 2 components #1
       subtitle: null
 
       short_description: |
@@ -72,70 +72,167 @@ l10n:
 exercises_payload:
   options:
     shuffle_exercises: true
-    shuffle_groups: false
+    shuffle_groups: true
 
   exercise_groups:
     - group:
-      - instructions: Touche le paysage
-        interface: touchToSelect
-        gameplay: findTheRightAnswers
-        payload:
+        - instructions:
+            - locale: fr_FR
+              value: Touche la maison rouge
+            - locale: en_US
+              value: Touch the red house
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
           choices:
-            - value: image-placeholder-landscape
+            - value: pictograms-objects-beach-balloonyellow
+              type: image
+            - value: pictograms-objects-beach-balloon_red-00E0
+              type: image
+            - value: pictograms-object-house-red
               type: image
               isRightAnswer: true
-            - value: image-placeholder-animals
-              type: image
-            - value: image-placeholder-food
+            - value: pictograms-object-house-yellow
               type: image
 
-      - instructions: Touche la nourriture
-        interface: touchToSelect
-        gameplay: findTheRightAnswers
-        payload:
+        - instructions:
+            - locale: fr_FR
+              value: Touche la balle rouge
+            - locale: en_US
+              value: Touch the red ball
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
           choices:
-            - value: image-placeholder-animals
+            - value: pictograms-objects-beach-balloonyellow
               type: image
-            - value: image-placeholder-portrait
-              type: image
-            - value: image-placeholder-food
+            - value: pictograms-objects-beach-balloon_red-00E0
               type: image
               isRightAnswer: true
-            - value: image-placeholder-landscape
+            - value: pictograms-object-house-red
+              type: image
+            - value: pictograms-object-house-yellow
               type: image
 
-      - instructions: Touche les animaux
-        interface: touchToSelect
-        gameplay: findTheRightAnswers
-        payload:
+        - instructions:
+            - locale: fr_FR
+              value: Touche la maison jaune
+            - locale: en_US
+              value: Touch the yellow house
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
           choices:
-            - value: image-placeholder-animals
+            - value: pictograms-objects-beach-balloonyellow
               type: image
-            - value: image-placeholder-food
+            - value: pictograms-objects-beach-balloon_red-00E0
+              type: image
+            - value: pictograms-object-house-red
+              type: image
+            - value: pictograms-object-house-yellow
               type: image
               isRightAnswer: true
-            - value: image-placeholder-landscape
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche la balle jaune
+            - locale: en_US
+              value: Touch the yellow ball
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-objects-beach-balloonyellow
               type: image
-            - value: image-placeholder-portrait
+              isRightAnswer: true
+            - value: pictograms-objects-beach-balloon_red-00E0
               type: image
-            - value: image-placeholder-food
+            - value: pictograms-object-house-red
+              type: image
+            - value: pictograms-object-house-yellow
               type: image
 
-      - instructions: Touche le portrait
-        interface: touchToSelect
-        gameplay: findTheRightAnswers
-        payload:
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Touche la chaise verte
+            - locale: en_US
+              value: Touch the green chair
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
           choices:
-            - value: image-placeholder-animals
+            - value: pictograms-objects-house-bedroom-chairpurple
               type: image
-            - value: image-placeholder-food
-              type: image
-            - value: image-placeholder-landscape
-              type: image
-            - value: image-placeholder-food
-              type: image
-            - value: image-placeholder-portrait
+            - value: pictograms-objects-house-bedroom-chairgreen
               type: image
               isRightAnswer: true
-            - value: image-placeholder-animals
+            - value: pictograms-foods-fruits-grapepurple-00FE
               type: image
+            - value: pictograms-foods-fruits-grapegreen
+              type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche le raisin violet
+            - locale: en_US
+              value: Touch the purple grape
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-objects-house-bedroom-chairpurple
+              type: image
+            - value: pictograms-objects-house-bedroom-chairgreen
+              type: image
+            - value: pictograms-foods-fruits-grapepurple-00FE
+              type: image
+              isRightAnswer: true
+            - value: pictograms-foods-fruits-grapegreen
+              type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche la chaise violette
+            - locale: en_US
+              value: Touch the purple chair
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-objects-house-bedroom-chairpurple
+              type: image
+              isRightAnswer: true
+            - value: pictograms-objects-house-bedroom-chairgreen
+              type: image
+            - value: pictograms-foods-fruits-grapepurple-00FE
+              type: image
+            - value: pictograms-foods-fruits-grapegreen
+              type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche le raisin vert
+            - locale: en_US
+              value: Touch the green grape
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-objects-house-bedroom-chairpurple
+              type: image
+            - value: pictograms-objects-house-bedroom-chairgreen
+              type: image
+            - value: pictograms-foods-fruits-grapepurple-00FE
+              type: image
+            - value: pictograms-foods-fruits-grapegreen
+              type: image
+              isRightAnswer: true

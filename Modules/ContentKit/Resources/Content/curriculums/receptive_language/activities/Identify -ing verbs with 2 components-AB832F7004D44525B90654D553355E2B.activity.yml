@@ -37,7 +37,7 @@ l10n:
     details:
       icon: receptive_language
 
-      title: Identifier des mots courants d'une syllabe
+      title: Identifier des actions avec 2 acteurs
       subtitle: null
 
       short_description: |
@@ -55,7 +55,7 @@ l10n:
     details:
       icon: receptive_language
 
-      title: Identify familiar nouns with one syllable
+      title: Identify -ing verbs with 2 components
       subtitle: null
 
       short_description: |
@@ -72,70 +72,330 @@ l10n:
 exercises_payload:
   options:
     shuffle_exercises: true
-    shuffle_groups: false
+    shuffle_groups: true
 
   exercise_groups:
     - group:
-      - instructions: Touche le paysage
-        interface: touchToSelect
-        gameplay: findTheRightAnswers
-        payload:
+        - instructions:
+            - locale: fr_FR
+              value: Touche le garçon qui mange
+            - locale: en_US
+              value: Touch the boy who is eating
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
           choices:
-            - value: image-placeholder-landscape
+            - value: pictograms-characters-boy_drinking
+              type: image
+            - value: pictograms-characters-boy_eating
               type: image
               isRightAnswer: true
-            - value: image-placeholder-animals
+            - value: pictograms-animals-pets-dog_eating_gray
               type: image
-            - value: image-placeholder-food
+            - value: pictograms-animals-pets-dog_dachshund_drinking_gray
               type: image
 
-      - instructions: Touche la nourriture
-        interface: touchToSelect
-        gameplay: findTheRightAnswers
-        payload:
+        - instructions:
+            - locale: fr_FR
+              value: Touche le chien qui mange
+            - locale: en_US
+              value: Touch the dog who is eating
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
           choices:
-            - value: image-placeholder-animals
+            - value: pictograms-characters-boy_drinking
               type: image
-            - value: image-placeholder-portrait
+            - value: pictograms-characters-boy_eating
               type: image
-            - value: image-placeholder-food
+            - value: pictograms-animals-pets-dog_eating_gray
               type: image
               isRightAnswer: true
-            - value: image-placeholder-landscape
+            - value: pictograms-animals-pets-dog_dachshund_drinking_gray
               type: image
 
-      - instructions: Touche les animaux
-        interface: touchToSelect
-        gameplay: findTheRightAnswers
-        payload:
+        - instructions:
+            - locale: fr_FR
+              value: Touche le garçon qui boit
+            - locale: en_US
+              value: Touch the boy who is drinking
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
           choices:
-            - value: image-placeholder-animals
-              type: image
-            - value: image-placeholder-food
+            - value: pictograms-characters-boy_drinking
               type: image
               isRightAnswer: true
-            - value: image-placeholder-landscape
+            - value: pictograms-characters-boy_eating
               type: image
-            - value: image-placeholder-portrait
+            - value: pictograms-animals-pets-dog_eating_gray
               type: image
-            - value: image-placeholder-food
+            - value: pictograms-animals-pets-dog_dachshund_drinking_gray
               type: image
 
-      - instructions: Touche le portrait
-        interface: touchToSelect
-        gameplay: findTheRightAnswers
-        payload:
+        - instructions:
+            - locale: fr_FR
+              value: Touche le chien qui boit
+            - locale: en_US
+              value: Touch the dog who is drinking
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
           choices:
-            - value: image-placeholder-animals
+            - value: pictograms-characters-boy_drinking
               type: image
-            - value: image-placeholder-food
+            - value: pictograms-characters-boy_eating
               type: image
-            - value: image-placeholder-landscape
+            - value: pictograms-animals-pets-dog_eating_gray
               type: image
-            - value: image-placeholder-food
-              type: image
-            - value: image-placeholder-portrait
+            - value: pictograms-animals-pets-dog_dachshund_drinking_gray
               type: image
               isRightAnswer: true
-            - value: image-placeholder-animals
+
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Touche la fille qui court
+            - locale: en_US
+              value: Touch the girl who is running
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-animals-cat_sleeping_gray
               type: image
+            - value: pictograms-animals-cat_running_gray
+              type: image
+            - value: pictograms-characters-girl_sleeping
+              type: image
+            - value: pictograms-characters-girl_running
+              type: image
+              isRightAnswer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche le chat qui court
+            - locale: en_US
+              value: Touch the cat who is running
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-animals-cat_sleeping_gray
+              type: image
+            - value: pictograms-animals-cat_running_gray
+              type: image
+              isRightAnswer: true
+            - value: pictograms-characters-girl_sleeping
+              type: image
+            - value: pictograms-characters-girl_running
+              type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche le chat qui dort
+            - locale: en_US
+              value: Touch the cat who is sleeping
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-animals-cat_sleeping_gray
+              type: image
+              isRightAnswer: true
+            - value: pictograms-animals-cat_running_gray
+              type: image
+            - value: pictograms-characters-girl_sleeping
+              type: image
+            - value: pictograms-characters-girl_running
+              type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche la fille qui dort
+            - locale: en_US
+              value: Touch the girl who is sleeping
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-animals-cat_sleeping_gray
+              type: image
+            - value: pictograms-animals-cat_running_gray
+              type: image
+            - value: pictograms-characters-girl_sleeping
+              type: image
+              isRightAnswer: true
+            - value: pictograms-characters-girl_running
+              type: image
+
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Touche le cheval qui court
+            - locale: en_US
+              value: Touch the horse who is running
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-animals-farm-horse_running_brown
+              type: image
+              isRightAnswer: true
+            - value: pictograms-animals-farm-horse_jumping_brown
+              type: image
+            - value: pictograms-characters-boy_jumping
+              type: image
+            - value: pictograms-characters-boy_running
+              type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche le cheval qui saute
+            - locale: en_US
+              value: Touch the horse who is jumping
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-animals-farm-horse_running_brown
+              type: image
+            - value: pictograms-animals-farm-horse_jumping_brown
+              type: image
+              isRightAnswer: true
+            - value: pictograms-characters-boy_jumping
+              type: image
+            - value: pictograms-characters-boy_running
+              type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche le garçon qui court
+            - locale: en_US
+              value: Touch the boy who is running
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-animals-farm-horse_running_brown
+              type: image
+            - value: pictograms-animals-farm-horse_jumping_brown
+              type: image
+            - value: pictograms-characters-boy_jumping
+              type: image
+            - value: pictograms-characters-boy_running
+              type: image
+              isRightAnswer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche le garçon qui saute
+            - locale: en_US
+              value: Touch the boy who is jumping
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-animals-farm-horse_running_brown
+              type: image
+            - value: pictograms-animals-farm-horse_jumping_brown
+              type: image
+            - value: pictograms-characters-boy_jumping
+              type: image
+              isRightAnswer: true
+            - value: pictograms-characters-boy_running
+              type: image
+
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Touche le monsieur qui joue
+            - locale: en_US
+              value: Touch the man who is playing
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-characters-man_digging
+              type: image
+            - value: pictograms-characters-girl_digging
+              type: image
+            - value: pictograms-characters-girl_playing
+              type: image
+            - value: pictograms-characters-man_playing
+              type: image
+              isRightAnswer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche le fille qui joue
+            - locale: en_US
+              value: Touch the girl who is playing
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-characters-man_digging
+              type: image
+            - value: pictograms-characters-girl_digging
+              type: image
+            - value: pictograms-characters-girl_playing
+              type: image
+              isRightAnswer: true
+            - value: pictograms-characters-man_playing
+              type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche la fille qui creuse
+            - locale: en_US
+              value: Touch the girl who is digging
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-characters-man_digging
+              type: image
+            - value: pictograms-characters-girl_digging
+              type: image
+              isRightAnswer: true
+            - value: pictograms-characters-girl_playing
+              type: image
+            - value: pictograms-characters-man_playing
+              type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche le monsieur qui creuse
+            - locale: en_US
+              value: Touch the man who is digging
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-characters-man_digging
+              type: image
+              isRightAnswer: true
+            - value: pictograms-characters-girl_digging
+              type: image
+            - value: pictograms-characters-girl_playing
+              type: image
+            - value: pictograms-characters-man_playing
+              type: image
+

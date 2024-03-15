@@ -37,7 +37,7 @@ l10n:
     details:
       icon: receptive_language
 
-      title: Identifier des mots courants d'une syllabe
+      title: Différencier petit et grand
       subtitle: null
 
       short_description: |
@@ -55,7 +55,7 @@ l10n:
     details:
       icon: receptive_language
 
-      title: Identify familiar nouns with one syllable
+      title: Identify little & big items
       subtitle: null
 
       short_description: |
@@ -72,70 +72,203 @@ l10n:
 exercises_payload:
   options:
     shuffle_exercises: true
-    shuffle_groups: false
+    shuffle_groups: true
 
   exercise_groups:
     - group:
-      - instructions: Touche le paysage
-        interface: touchToSelect
-        gameplay: findTheRightAnswers
-        payload:
+        - instructions:
+            - locale: fr_FR
+              value: Touche le petit
+            - locale: en_US
+              value: Touch the little one
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
           choices:
-            - value: image-placeholder-landscape
+            - value: pictograms-transportation-carblue-011F
+              type: image
+            - value:
               type: image
               isRightAnswer: true
-            - value: image-placeholder-animals
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche le grand
+            - locale: en_US
+              value: Touch the big one
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-transportation-carblue-011F
               type: image
-            - value: image-placeholder-food
+              isRightAnswer: true
+            - value:
               type: image
 
-      - instructions: Touche la nourriture
-        interface: touchToSelect
-        gameplay: findTheRightAnswers
-        payload:
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Touche le petit
+            - locale: en_US
+              value: Touch the little one
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
           choices:
-            - value: image-placeholder-animals
+            - value: pictograms-objects-beach-circlepink
               type: image
-            - value: image-placeholder-portrait
-              type: image
-            - value: image-placeholder-food
+            - value:
               type: image
               isRightAnswer: true
-            - value: image-placeholder-landscape
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche le grand
+            - locale: en_US
+              value: Touch the big one
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-objects-beach-circlepink
+              type: image
+              isRightAnswer: true
+            - value:
               type: image
 
-      - instructions: Touche les animaux
-        interface: touchToSelect
-        gameplay: findTheRightAnswers
-        payload:
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Touche le petit
+            - locale: en_US
+              value: Touch the little one
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
           choices:
-            - value: image-placeholder-animals
+            - value: pictograms-animals-farm-duck-006A
               type: image
-            - value: image-placeholder-food
+            - value:
               type: image
               isRightAnswer: true
-            - value: image-placeholder-landscape
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche le grand
+            - locale: en_US
+              value: Touch the big one
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-animals-farm-duck-006A
               type: image
-            - value: image-placeholder-portrait
-              type: image
-            - value: image-placeholder-food
+              isRightAnswer: true
+            - value:
               type: image
 
-      - instructions: Touche le portrait
-        interface: touchToSelect
-        gameplay: findTheRightAnswers
-        payload:
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Touche le petit
+            - locale: en_US
+              value: Touch the little one
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
           choices:
-            - value: image-placeholder-animals
+            - value: pictograms-animals-sea-fishblue-0045
               type: image
-            - value: image-placeholder-food
-              type: image
-            - value: image-placeholder-landscape
-              type: image
-            - value: image-placeholder-food
-              type: image
-            - value: image-placeholder-portrait
+            - value:
               type: image
               isRightAnswer: true
-            - value: image-placeholder-animals
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche le grand
+            - locale: en_US
+              value: Touch the big one
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-animals-sea-fishblue-0045
+              type: image
+              isRightAnswer: true
+            - value:
+              type: image
+
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Touche le petit
+            - locale: en_US
+              value: Touch the little one
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms_house-purple-07
+              type: image
+            - value:
+              type: image
+              isRightAnswer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche le grand
+            - locale: en_US
+              value: Touch the big one
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms_house-purple-07
+              type: image
+              isRightAnswer: true
+            - value:
+              type: image
+
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Touche le petit
+            - locale: en_US
+              value: Touch the little one
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-animals-insects-butterflypink-0095
+              type: image
+            - value:
+              type: image
+              isRightAnswer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche le grand
+            - locale: en_US
+              value: Touch the big one
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-animals-insects-butterflypink-0095
+              type: image
+              isRightAnswer: true
+            - value:
               type: image

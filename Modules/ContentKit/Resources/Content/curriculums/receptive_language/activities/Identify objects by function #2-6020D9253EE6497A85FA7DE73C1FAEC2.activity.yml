@@ -72,70 +72,295 @@ l10n:
 exercises_payload:
   options:
     shuffle_exercises: true
-    shuffle_groups: false
+    shuffle_groups: true
 
   exercise_groups:
     - group:
-      - instructions: Touche le paysage
-        interface: touchToSelect
-        gameplay: findTheRightAnswers
-        payload:
+        - instructions:
+            - locale: fr_FR
+              value: Lequel brille dans le ciel ?
+            - locale: en_US
+              value: Which one shines in the sky?
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
           choices:
-            - value: image-placeholder-landscape
+            - value: pictograms-objects-beach-sun_yellow-00D7
               type: image
               isRightAnswer: true
-            - value: image-placeholder-animals
+            - value: pictograms-objects-garden-slide_green-00AF
               type: image
-            - value: image-placeholder-food
+            - value: pictograms-objects-bathroom-towel_little_blue-00C7
+              type: image
+            - value: pictograms-objects-house-kitchen-spoon_gray-019B
+              type: image
+            - value: pictograms-objects-house-bedroom-bed_blue-01A5
+              type: image
+            - value: pictograms-objects-garden-swing_set_green-00B1
               type: image
 
-      - instructions: Touche la nourriture
-        interface: touchToSelect
-        gameplay: findTheRightAnswers
-        payload:
+        - instructions:
+            - locale: fr_FR
+              value: Dans lequel dort-on ?
+            - locale: en_US
+              value: Which one do we sleep in?
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
           choices:
-            - value: image-placeholder-animals
+            - value: pictograms-objects-beach-sun_yellow-00D7
               type: image
-            - value: image-placeholder-portrait
+            - value: pictograms-objects-garden-slide_green-00AF
               type: image
-            - value: image-placeholder-food
+            - value: pictograms-objects-bathroom-towel_little_blue-00C7
+              type: image
+            - value: pictograms-objects-house-kitchen-spoon_gray-019B
+              type: image
+            - value: pictograms-objects-house-bedroom-bed_blue-01A5
               type: image
               isRightAnswer: true
-            - value: image-placeholder-landscape
+            - value: pictograms-objects-garden-swing_set_green-00B1
               type: image
 
-      - instructions: Touche les animaux
-        interface: touchToSelect
-        gameplay: findTheRightAnswers
-        payload:
+        - instructions:
+            - locale: fr_FR
+              value: Avec lequel s'essuie-t-on ?
+            - locale: en_US
+              value: With which one do we wipe?
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
           choices:
-            - value: image-placeholder-animals
+            - value: pictograms-objects-beach-sun_yellow-00D7
               type: image
-            - value: image-placeholder-food
+            - value: pictograms-objects-garden-slide_green-00AF
+              type: image
+            - value: pictograms-objects-bathroom-towel_little_blue-00C7
               type: image
               isRightAnswer: true
-            - value: image-placeholder-landscape
+            - value: pictograms-objects-house-kitchen-spoon_gray-019B
               type: image
-            - value: image-placeholder-portrait
+            - value: pictograms-objects-house-bedroom-bed_blue-01A5
               type: image
-            - value: image-placeholder-food
+            - value: pictograms-objects-garden-swing_set_green-00B1
               type: image
 
-      - instructions: Touche le portrait
-        interface: touchToSelect
-        gameplay: findTheRightAnswers
-        payload:
+        - instructions:
+            - locale: fr_FR
+              value: Sur lequel glisse-t-on ?
+            - locale: en_US
+              value: Which one do we slide on?
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
           choices:
-            - value: image-placeholder-animals
+            - value: pictograms-objects-beach-sun_yellow-00D7
               type: image
-            - value: image-placeholder-food
-              type: image
-            - value: image-placeholder-landscape
-              type: image
-            - value: image-placeholder-food
-              type: image
-            - value: image-placeholder-portrait
+            - value: pictograms-objects-garden-slide_green-00AF
               type: image
               isRightAnswer: true
-            - value: image-placeholder-animals
+            - value: pictograms-objects-bathroom-towel_little_blue-00C7
+              type: image
+            - value: pictograms-objects-house-kitchen-spoon_gray-019B
+              type: image
+            - value: pictograms-objects-house-bedroom-bed_blue-01A5
+              type: image
+            - value: pictograms-objects-garden-swing_set_green-00B1
+              type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Lequel utilise-t-on pour manger ?
+            - locale: en_US
+              value: Which one do we use to eat?
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-objects-beach-sun_yellow-00D7
+              type: image
+            - value: pictograms-objects-garden-slide_green-00AF
+              type: image
+            - value: pictograms-objects-bathroom-towel_little_blue-00C7
+              type: image
+            - value: pictograms-objects-house-kitchen-spoon_gray-019B
+              type: image
+              isRightAnswer: true
+            - value: pictograms-objects-house-bedroom-bed_blue-01A5
+              type: image
+            - value: pictograms-objects-garden-swing_set_green-00B1
+              type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Sur lequel se balance-t-on ?
+            - locale: en_US
+              value: Which one do we swing on?
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-objects-beach-sun_yellow-00D7
+              type: image
+            - value: pictograms-objects-garden-slide_green-00AF
+              type: image
+            - value: pictograms-objects-bathroom-towel_little_blue-00C7
+              type: image
+            - value: pictograms-objects-house-kitchen-spoon_gray-019B
+              type: image
+            - value: pictograms-objects-house-bedroom-bed_blue-01A5
+              type: image
+            - value: pictograms-objects-garden-swing_set_green-00B1
+              type: image
+              isRightAnswer: true
+
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Lequel mange-t-on ?
+            - locale: en_US
+              value: Which one do we eat?
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-objects-bathroom-toothbrush_blue-00C5
+              type: image
+            - value: pictograms-objects-house-bedroom-chair_brown-01A8
+              type: image
+            - value: pictograms-foods-meals-cookie-0174
+              type: image
+              isRightAnswer: true
+            - value: pictograms-clothes-suit_jacket_blue-0148
+              type: image
+            - value: pictograms-animals-savanna-lionbrown-0082
+              type: image
+            - value: pictograms-objects-house-bedroom-toylegored-01AD
+              type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Avec lequel construit-on ?
+            - locale: en_US
+              value: Which one do we build with?
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-objects-bathroom-toothbrush_blue-00C5
+              type: image
+            - value: pictograms-objects-house-bedroom-chair_brown-01A8
+              type: image
+            - value: pictograms-foods-meals-cookie-0174
+              type: image
+            - value: pictograms-clothes-suit_jacket_blue-0148
+              type: image
+            - value: pictograms-animals-savanna-lionbrown-0082
+              type: image
+            - value: pictograms-objects-house-bedroom-toylegored-01AD
+              type: image
+              isRightAnswer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Lequel met-on sur le dos ?
+            - locale: en_US
+              value: Which one do we wear on our back?
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-objects-bathroom-toothbrush_blue-00C5
+              type: image
+            - value: pictograms-objects-house-bedroom-chair_brown-01A8
+              type: image
+            - value: pictograms-foods-meals-cookie-0174
+              type: image
+            - value: pictograms-clothes-suit_jacket_blue-0148
+              type: image
+              isRightAnswer: true
+            - value: pictograms-animals-savanna-lionbrown-0082
+              type: image
+            - value: pictograms-objects-house-bedroom-toylegored-01AD
+              type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Avez lequel nous brossons nous les dents ?
+            - locale: en_US
+              value: Which one do we brush our teeth with?
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-objects-bathroom-toothbrush_blue-00C5
+              type: image
+              isRightAnswer: true
+            - value: pictograms-objects-house-bedroom-chair_brown-01A8
+              type: image
+            - value: pictograms-foods-meals-cookie-0174
+              type: image
+            - value: pictograms-clothes-suit_jacket_blue-0148
+              type: image
+            - value: pictograms-animals-savanna-lionbrown-0082
+              type: image
+            - value: pictograms-objects-house-bedroom-toylegored-01AD
+              type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Sur lequel s'asseyons-nous ?
+            - locale: en_US
+              value: Which one do we sit on?
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-objects-bathroom-toothbrush_blue-00C5
+              type: image
+            - value: pictograms-objects-house-bedroom-chair_brown-01A8
+              type: image
+              isRightAnswer: true
+            - value: pictograms-foods-meals-cookie-0174
+              type: image
+            - value: pictograms-clothes-suit_jacket_blue-0148
+              type: image
+            - value: pictograms-animals-savanna-lionbrown-0082
+              type: image
+            - value: pictograms-objects-house-bedroom-toylegored-01AD
+              type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Lequel rugit ?
+            - locale: en_US
+              value: Which one roars?
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-objects-bathroom-toothbrush_blue-00C5
+              type: image
+            - value: pictograms-objects-house-bedroom-chair_brown-01A8
+              type: image
+            - value: pictograms-foods-meals-cookie-0174
+              type: image
+            - value: pictograms-clothes-suit_jacket_blue-0148
+              type: image
+            - value: pictograms-animals-savanna-lionbrown-0082
+              type: image
+              isRightAnswer: true
+            - value: pictograms-objects-house-bedroom-toylegored-01AD
               type: image

@@ -37,7 +37,7 @@ l10n:
     details:
       icon: receptive_language
 
-      title: Identifier des mots courants d'une syllabe
+      title: Différencier chaud et froid
       subtitle: null
 
       short_description: |
@@ -55,7 +55,7 @@ l10n:
     details:
       icon: receptive_language
 
-      title: Identify familiar nouns with one syllable
+      title: Identify hot & cold items
       subtitle: null
 
       short_description: |
@@ -72,70 +72,170 @@ l10n:
 exercises_payload:
   options:
     shuffle_exercises: true
-    shuffle_groups: false
+    shuffle_groups: true
 
   exercise_groups:
     - group:
-      - instructions: Touche le paysage
-        interface: touchToSelect
-        gameplay: findTheRightAnswers
-        payload:
+        - instructions:
+            - locale: fr_FR
+              value: Touche le chaud
+            - locale: en_US
+              value: Touch the hot one
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
           choices:
-            - value: image-placeholder-landscape
+            - value: pictograms-foods-meals-glassicedwater-0171
+              type: image
+            - value: pictograms-objects-house-kitchen-mugcofeegray-0193
               type: image
               isRightAnswer: true
-            - value: image-placeholder-animals
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche le froid
+            - locale: en_US
+              value: Touch the cold one
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-foods-meals-glassicedwater-0171
               type: image
-            - value: image-placeholder-food
+              isRightAnswer: true
+            - value: pictograms-objects-house-kitchen-mugcofeegray-0193
               type: image
 
-      - instructions: Touche la nourriture
-        interface: touchToSelect
-        gameplay: findTheRightAnswers
-        payload:
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Touche le chaud
+            - locale: en_US
+              value: Touch the hot one
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
           choices:
-            - value: image-placeholder-animals
+            - value: pictograms-objects-mountain-snowmanwhite-00D0
               type: image
-            - value: image-placeholder-portrait
-              type: image
-            - value: image-placeholder-food
+            - value: pictograms-objects-house-bedroom-heaterpink
               type: image
               isRightAnswer: true
-            - value: image-placeholder-landscape
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche le froid
+            - locale: en_US
+              value: Touch the cold one
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-objects-mountain-snowmanwhite-00D0
+              type: image
+              isRightAnswer: true
+            - value: pictograms-objects-house-bedroom-heaterpink
               type: image
 
-      - instructions: Touche les animaux
-        interface: touchToSelect
-        gameplay: findTheRightAnswers
-        payload:
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Touche le chaud
+            - locale: en_US
+              value: Touch the hot one
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
           choices:
-            - value: image-placeholder-animals
+            - value: pictograms-objects-mountain-icicleswhite
               type: image
-            - value: image-placeholder-food
+            - value: pictograms-objects-beach-sunyellow-00D7
               type: image
               isRightAnswer: true
-            - value: image-placeholder-landscape
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche le froid
+            - locale: en_US
+              value: Touch the cold one
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-objects-mountain-icicleswhite
               type: image
-            - value: image-placeholder-portrait
-              type: image
-            - value: image-placeholder-food
+              isRightAnswer: true
+            - value: pictograms-objects-beach-sunyellow-00D7
               type: image
 
-      - instructions: Touche le portrait
-        interface: touchToSelect
-        gameplay: findTheRightAnswers
-        payload:
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Touche le chaud
+            - locale: en_US
+              value: Touch the hot one
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
           choices:
-            - value: image-placeholder-animals
+            - value: pictograms-foods-meals-icecornerpink-0181
               type: image
-            - value: image-placeholder-food
-              type: image
-            - value: image-placeholder-landscape
-              type: image
-            - value: image-placeholder-food
-              type: image
-            - value: image-placeholder-portrait
+            - value: pictograms-foods-meals-soup-0172
               type: image
               isRightAnswer: true
-            - value: image-placeholder-animals
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche le froid
+            - locale: en_US
+              value: Touch the cold one
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-foods-meals-icecornerpink-0181
+              type: image
+              isRightAnswer: true
+            - value: pictograms-foods-meals-soup-0172
+              type: image
+
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Touche le chaud
+            - locale: en_US
+              value: Touch the hot one
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-weather-rainy-day
+              type: image
+            - value: pictograms-weather-sunny-day
+              type: image
+              isRightAnswer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche le froid
+            - locale: en_US
+              value: Touch the cold one
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-weather-rainy-day
+              type: image
+              isRightAnswer: true
+            - value: pictograms-weather-sunny-day
               type: image

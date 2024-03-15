@@ -37,7 +37,7 @@ l10n:
     details:
       icon: receptive_language
 
-      title: Identifier des mots courants d'une syllabe
+      title: Identifier des objets par fonctionnalité #1
       subtitle: null
 
       short_description: |
@@ -55,7 +55,7 @@ l10n:
     details:
       icon: receptive_language
 
-      title: Identify familiar nouns with one syllable
+      title: Identify objects by function #1
       subtitle: null
 
       short_description: |
@@ -72,70 +72,330 @@ l10n:
 exercises_payload:
   options:
     shuffle_exercises: true
-    shuffle_groups: false
+    shuffle_groups: true
 
   exercise_groups:
     - group:
-      - instructions: Touche le paysage
-        interface: touchToSelect
-        gameplay: findTheRightAnswers
-        payload:
+        - instructions:
+            - locale: fr_FR
+              value: Lequel boit-on ?
+            - locale: en_US
+              value: Which one do we drink?
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
           choices:
-            - value: image-placeholder-landscape
+            - value: pictograms-animals-pets-dogdachshundgray-004F
+              type: image
+            - value: pictograms-transportation-sailboatblue-0111
+              type: image
+            - value: pictograms-objects-house-kitchen-mugcofeegray-0193
               type: image
               isRightAnswer: true
-            - value: image-placeholder-animals
-              type: image
-            - value: image-placeholder-food
+            - value: pictograms-clothes-sockgray
               type: image
 
-      - instructions: Touche la nourriture
-        interface: touchToSelect
-        gameplay: findTheRightAnswers
-        payload:
+        - instructions:
+            - locale: fr_FR
+              value: Lequel aboit ?
+            - locale: en_US
+              value: Which one barks?
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
           choices:
-            - value: image-placeholder-animals
-              type: image
-            - value: image-placeholder-portrait
-              type: image
-            - value: image-placeholder-food
+            - value: pictograms-animals-pets-dogdachshundgray-004F
               type: image
               isRightAnswer: true
-            - value: image-placeholder-landscape
+            - value: pictograms-transportation-sailboatblue-0111
+              type: image
+            - value: pictograms-objects-house-kitchen-mugcofeegray-0193
+              type: image
+            - value: pictograms-clothes-sockgray
               type: image
 
-      - instructions: Touche les animaux
-        interface: touchToSelect
-        gameplay: findTheRightAnswers
-        payload:
+        - instructions:
+            - locale: fr_FR
+              value: Lequel flotte sur l'eau ?
+            - locale: en_US
+              value: Which one floats on the water?
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
           choices:
-            - value: image-placeholder-animals
+            - value: pictograms-animals-pets-dogdachshundgray-004F
               type: image
-            - value: image-placeholder-food
+            - value: pictograms-transportation-sailboatblue-0111
               type: image
               isRightAnswer: true
-            - value: image-placeholder-landscape
+            - value: pictograms-objects-house-kitchen-mugcofeegray-0193
               type: image
-            - value: image-placeholder-portrait
-              type: image
-            - value: image-placeholder-food
+            - value: pictograms-clothes-sockgray
               type: image
 
-      - instructions: Touche le portrait
-        interface: touchToSelect
-        gameplay: findTheRightAnswers
-        payload:
+        - instructions:
+            - locale: fr_FR
+              value: Lequel porte-on aux pieds ?
+            - locale: en_US
+              value: Which one do we wear on our feet?
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
           choices:
-            - value: image-placeholder-animals
+            - value: pictograms-animals-pets-dogdachshundgray-004F
               type: image
-            - value: image-placeholder-food
+            - value: pictograms-transportation-sailboatblue-0111
               type: image
-            - value: image-placeholder-landscape
+            - value: pictograms-objects-house-kitchen-mugcofeegray-0193
               type: image
-            - value: image-placeholder-food
-              type: image
-            - value: image-placeholder-portrait
+            - value: pictograms-clothes-sockgray
               type: image
               isRightAnswer: true
-            - value: image-placeholder-animals
+
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Lequel boit-on ?
+            - locale: en_US
+              value: Which one do we drink?
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-objects-beach-balloon_red-00E0
               type: image
+            - value: pictograms-clothes-shoes_baskets_white-013F
+              type: image
+            - value: pictograms-animals-catgray-0050
+              type: image
+            - value: pictograms-foods-meals-orangejuice-017C
+              type: image
+              isRightAnswer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Lequel dit "miaou" ?
+            - locale: en_US
+              value: Which one says "meow"?
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-objects-beach-balloon_red-00E0
+              type: image
+            - value: pictograms-clothes-shoes_baskets_white-013F
+              type: image
+            - value: pictograms-animals-catgray-0050
+              type: image
+              isRightAnswer: true
+            - value: pictograms-foods-meals-orangejuice-017C
+              type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Lequel porte-on aux pieds ?
+            - locale: en_US
+              value: Which one do we wear on our feet?
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-objects-beach-balloon_red-00E0
+              type: image
+            - value: pictograms-clothes-shoes_baskets_white-013F
+              type: image
+              isRightAnswer: true
+            - value: pictograms-animals-catgray-0050
+              type: image
+            - value: pictograms-foods-meals-orangejuice-017C
+              type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Lequel lance-t-on ?
+            - locale: en_US
+              value: which one do we throw?
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-objects-beach-balloon_red-00E0
+              type: image
+              isRightAnswer: true
+            - value: pictograms-clothes-shoes_baskets_white-013F
+              type: image
+            - value: pictograms-animals-catgray-0050
+              type: image
+            - value: pictograms-foods-meals-orangejuice-017C
+              type: image
+
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Lequel met-on sur la tête ?
+            - locale: en_US
+              value: Which one do we put on our heads?
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-transportation-carblue-011F
+              type: image
+            - value: pictograms-foods-recipe-milk-016A
+              type: image
+            - value: pictograms-clothes-hatgray-014C
+              type: image
+              isRightAnswer: true
+            - value: pictograms-animals-farm-duck-006A
+              type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Lequel conduit-on ?
+            - locale: en_US
+              value: Which one do we drive?
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-transportation-carblue-011F
+              type: image
+              isRightAnswer: true
+            - value: pictograms-foods-recipe-milk-016A
+              type: image
+            - value: pictograms-clothes-hatgray-014C
+              type: image
+            - value: pictograms-animals-farm-duck-006A
+              type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Lequel boit-on ?
+            - locale: en_US
+              value: Which one do we drink?
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-transportation-carblue-011F
+              type: image
+            - value: pictograms-foods-recipe-milk-016A
+              type: image
+              isRightAnswer: true
+            - value: pictograms-clothes-hatgray-014C
+              type: image
+            - value: pictograms-animals-farm-duck-006A
+              type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Lequel dit "coin-coin" ?
+            - locale: en_US
+              value: Which one says “quack-quack”?
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-transportation-carblue-011F
+              type: image
+            - value: pictograms-foods-recipe-milk-016A
+              type: image
+            - value: pictograms-clothes-hatgray-014C
+              type: image
+            - value: pictograms-animals-farm-duck-006A
+              type: image
+              isRightAnswer: true
+
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Lequel mange-t-on ?
+            - locale: en_US
+              value: Which one do we eat?
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-objects-house-bedroom-chair_brown-01A8
+              type: image
+            - value: pictograms-transportation-plane_blue-0122
+              type: image
+            - value: pictograms-foods-meals-birthday_cake-0173
+              type: image
+              isRightAnswer: true
+            - value: pictograms-objects-school-book_yellow-0131
+              type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Lequel lit-t-on ?
+            - locale: en_US
+              value: Which one do we read?
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-objects-house-bedroom-chair_brown-01A8
+              type: image
+            - value: pictograms-transportation-plane_blue-0122
+              type: image
+            - value: pictograms-foods-meals-birthday_cake-0173
+              type: image
+            - value: pictograms-objects-school-book_yellow-0131
+              type: image
+              isRightAnswer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Sur lequel s'asseyons-nous ?
+            - locale: en_US
+              value: Which one do we sit on?
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-objects-house-bedroom-chair_brown-01A8
+              type: image
+              isRightAnswer: true
+            - value: pictograms-transportation-plane_blue-0122
+              type: image
+            - value: pictograms-foods-meals-birthday_cake-0173
+              type: image
+            - value: pictograms-objects-school-book_yellow-0131
+              type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Lequel vol dans le ciel ?
+            - locale: en_US
+              value: Which flight in the sky?
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-objects-house-bedroom-chair_brown-01A8
+              type: image
+            - value: pictograms-transportation-plane_blue-0122
+              type: image
+              isRightAnswer: true
+            - value: pictograms-foods-meals-birthday_cake-0173
+              type: image
+            - value: pictograms-objects-school-book_yellow-0131
+              type: image
+

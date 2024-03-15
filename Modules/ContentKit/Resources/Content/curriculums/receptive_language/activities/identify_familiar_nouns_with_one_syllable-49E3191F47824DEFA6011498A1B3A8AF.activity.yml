@@ -72,70 +72,78 @@ l10n:
 exercises_payload:
   options:
     shuffle_exercises: true
-    shuffle_groups: false
+    shuffle_groups: true
 
   exercise_groups:
     - group:
-      - instructions: Touche le paysage
-        interface: touchToSelect
-        gameplay: findTheRightAnswers
-        payload:
+        - instructions:
+            - locale: fr_FR
+              value: Touche le chat
+            - locale: en_US
+              value: Touch the cat
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
           choices:
-            - value: image-placeholder-landscape
+            - value: pictograms-foods-meals-baguette-0180
+              type: image
+            - value: pictograms-animals-forest-wolf_gray-005F
+              type: image
+            - value: pictograms-animal-pets-cat_gray-00A3
               type: image
               isRightAnswer: true
-            - value: image-placeholder-animals
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche le lait
+            - locale: en_US
+              value: Touch the milk
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-foods-ingredients-milk_bottle-0165
               type: image
-            - value: image-placeholder-food
+              isRightAnswer: true
+            - value: pictograms-foods-ingredients-salt_shaker-0166
+              type: image
+            - value: pictograms-animal-pets-dog_golden_retriever_brown-00A5
               type: image
 
-      - instructions: Touche la nourriture
-        interface: touchToSelect
-        gameplay: findTheRightAnswers
-        payload:
+        - instructions:
+            - locale: fr_FR
+              value: Touche le sel
+            - locale: en_US
+              value: Touch the salt
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
           choices:
-            - value: image-placeholder-animals
+            - value: pictograms-animals-forest-wolf_gray-005F
               type: image
-            - value: image-placeholder-portrait
-              type: image
-            - value: image-placeholder-food
+            - value: pictograms-foods-ingredients-salt_shaker-0166
               type: image
               isRightAnswer: true
-            - value: image-placeholder-landscape
+            - value: pictograms-animal-pets-dog_golden_retriever_brown-00A5
               type: image
 
-      - instructions: Touche les animaux
-        interface: touchToSelect
-        gameplay: findTheRightAnswers
-        payload:
+        - instructions:
+            - locale: fr_FR
+              value: Touche le lait
+            - locale: en_US
+              value: Touch the milk
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
           choices:
-            - value: image-placeholder-animals
+            - value: pictograms-animals-forest-bear_brown-005E
               type: image
-            - value: image-placeholder-food
+            - value: pictograms-foods-meals-baguette-0180
+              type: image
+            - value: pictograms-foods-ingredients-milk_bottle-0165
               type: image
               isRightAnswer: true
-            - value: image-placeholder-landscape
-              type: image
-            - value: image-placeholder-portrait
-              type: image
-            - value: image-placeholder-food
-              type: image
-
-      - instructions: Touche le portrait
-        interface: touchToSelect
-        gameplay: findTheRightAnswers
-        payload:
-          choices:
-            - value: image-placeholder-animals
-              type: image
-            - value: image-placeholder-food
-              type: image
-            - value: image-placeholder-landscape
-              type: image
-            - value: image-placeholder-food
-              type: image
-            - value: image-placeholder-portrait
-              type: image
-              isRightAnswer: true
-            - value: image-placeholder-animals
-              type: image

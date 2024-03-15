@@ -55,7 +55,7 @@ l10n:
     details:
       icon: receptive_language
 
-      title: Identify familiar nouns with one syllable
+      title: Identify actions #3
       subtitle: null
 
       short_description: |
@@ -72,70 +72,309 @@ l10n:
 exercises_payload:
   options:
     shuffle_exercises: true
-    shuffle_groups: false
+    shuffle_groups: true
 
   exercise_groups:
     - group:
-      - instructions: Touche le paysage
-        interface: touchToSelect
-        gameplay: findTheRightAnswers
-        payload:
+        - instructions:
+            - locale: fr_FR
+              value: Touche dormir
+            - locale: en_US
+              value: Touch sleeping
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
           choices:
-            - value: image-placeholder-landscape
+            - value: pictograms-characters-boy_sleeping
               type: image
               isRightAnswer: true
-            - value: image-placeholder-animals
+            - value: pictograms-characters-boy_running
               type: image
-            - value: image-placeholder-food
+            - value: pictograms-characters-boy_kicking
+              type: image
+            - value: pictograms-characters-boy_digging
+              type: image
+            - value: pictograms-characters-boy_sweeping
+              type: image
+            - value: pictograms-characters-boy_painting
               type: image
 
-      - instructions: Touche la nourriture
-        interface: touchToSelect
-        gameplay: findTheRightAnswers
-        payload:
+        - instructions:
+            - locale: fr_FR
+              value: Touche balayer
+            - locale: en_US
+              value: Touch sweeping
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
           choices:
-            - value: image-placeholder-animals
+            - value: pictograms-characters-boy_sleeping
               type: image
-            - value: image-placeholder-portrait
+            - value: pictograms-characters-boy_running
               type: image
-            - value: image-placeholder-food
+            - value: pictograms-characters-boy_kicking
+              type: image
+            - value: pictograms-characters-boy_digging
+              type: image
+            - value: pictograms-characters-boy_sweeping
               type: image
               isRightAnswer: true
-            - value: image-placeholder-landscape
+            - value: pictograms-characters-boy_painting
               type: image
 
-      - instructions: Touche les animaux
-        interface: touchToSelect
-        gameplay: findTheRightAnswers
-        payload:
+        - instructions:
+            - locale: fr_FR
+              value: Touche creuser
+            - locale: en_US
+              value: Touch digging
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
           choices:
-            - value: image-placeholder-animals
+            - value: pictograms-characters-boy_sleeping
               type: image
-            - value: image-placeholder-food
+            - value: pictograms-characters-boy_running
+              type: image
+            - value: pictograms-characters-boy_kicking
+              type: image
+            - value: pictograms-characters-boy_digging
               type: image
               isRightAnswer: true
-            - value: image-placeholder-landscape
+            - value: pictograms-characters-boy_sweeping
               type: image
-            - value: image-placeholder-portrait
-              type: image
-            - value: image-placeholder-food
+            - value: pictograms-characters-boy_painting
               type: image
 
-      - instructions: Touche le portrait
-        interface: touchToSelect
-        gameplay: findTheRightAnswers
-        payload:
+        - instructions:
+            - locale: fr_FR
+              value: Touche courir
+            - locale: en_US
+              value: Touch running
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
           choices:
-            - value: image-placeholder-animals
+            - value: pictograms-characters-boy_sleeping
               type: image
-            - value: image-placeholder-food
-              type: image
-            - value: image-placeholder-landscape
-              type: image
-            - value: image-placeholder-food
-              type: image
-            - value: image-placeholder-portrait
+            - value: pictograms-characters-boy_running
               type: image
               isRightAnswer: true
-            - value: image-placeholder-animals
+            - value: pictograms-characters-boy_kicking
               type: image
+            - value: pictograms-characters-boy_digging
+              type: image
+            - value: pictograms-characters-boy_sweeping
+              type: image
+            - value: pictograms-characters-boy_painting
+              type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche peindre
+            - locale: en_US
+              value: Touch painting
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-characters-boy_sleeping
+              type: image
+            - value: pictograms-characters-boy_running
+              type: image
+            - value: pictograms-characters-boy_kicking
+              type: image
+            - value: pictograms-characters-boy_digging
+              type: image
+            - value: pictograms-characters-boy_sweeping
+              type: image
+            - value: pictograms-characters-boy_painting
+              type: image
+              isRightAnswer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche peindre
+            - locale: en_US
+              value: Touch painting
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-characters-boy_sleeping
+              type: image
+            - value: pictograms-characters-boy_running
+              type: image
+            - value: pictograms-characters-boy_kicking
+              type: image
+              isRightAnswer: true
+            - value: pictograms-characters-boy_digging
+              type: image
+            - value: pictograms-characters-boy_sweeping
+              type: image
+            - value: pictograms-characters-boy_painting
+              type: image
+
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Touche faire un bisou
+            - locale: en_US
+              value: Touch giving a kiss
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-characters-boy_kissing
+              type: image
+              isRightAnswer: true
+            - value: pictograms-characters-boy_reading
+              type: image
+            - value: pictograms-characters-boy_jumping
+              type: image
+            - value: pictograms-characters-boy_surfing
+              type: image
+            - value: pictograms-characters-boy_drinking
+              type: image
+            - value: pictograms-characters-boy_kissing
+              type: image
+            - value: pictograms-characters-boy_dancing
+              type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche danser
+            - locale: en_US
+              value: Touch dancing
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-characters-boy_kissing
+              type: image
+            - value: pictograms-characters-boy_reading
+              type: image
+            - value: pictograms-characters-boy_jumping
+              type: image
+            - value: pictograms-characters-boy_surfing
+              type: image
+            - value: pictograms-characters-boy_drinking
+              type: image
+            - value: pictograms-characters-boy_kissing
+              type: image
+            - value: pictograms-characters-boy_dancing
+              type: image
+              isRightAnswer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche danser
+            - locale: en_US
+              value: Touch dancing
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-characters-boy_kissing
+              type: image
+            - value: pictograms-characters-boy_reading
+              type: image
+            - value: pictograms-characters-boy_jumping
+              type: image
+            - value: pictograms-characters-boy_surfing
+              type: image
+            - value: pictograms-characters-boy_drinking
+              type: image
+              isRightAnswer: true
+            - value: pictograms-characters-boy_kissing
+              type: image
+            - value: pictograms-characters-boy_dancing
+              type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche surfer
+            - locale: en_US
+              value: Touch surfing
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-characters-boy_kissing
+              type: image
+            - value: pictograms-characters-boy_reading
+              type: image
+            - value: pictograms-characters-boy_jumping
+              type: image
+            - value: pictograms-characters-boy_surfing
+              type: image
+              isRightAnswer: true
+            - value: pictograms-characters-boy_drinking
+              type: image
+            - value: pictograms-characters-boy_kissing
+              type: image
+            - value: pictograms-characters-boy_dancing
+              type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche lire
+            - locale: en_US
+              value: Touch reading
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-characters-boy_kissing
+              type: image
+            - value: pictograms-characters-boy_reading
+              type: image
+              isRightAnswer: true
+            - value: pictograms-characters-boy_jumping
+              type: image
+            - value: pictograms-characters-boy_surfing
+              type: image
+            - value: pictograms-characters-boy_drinking
+              type: image
+            - value: pictograms-characters-boy_kissing
+              type: image
+            - value: pictograms-characters-boy_dancing
+              type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche sauter
+            - locale: en_US
+              value: Touch jumping
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-characters-boy_kissing
+              type: image
+            - value: pictograms-characters-boy_reading
+              type: image
+            - value: pictograms-characters-boy_jumping
+              type: image
+              isRightAnswer: true
+            - value: pictograms-characters-boy_surfing
+              type: image
+            - value: pictograms-characters-boy_drinking
+              type: image
+            - value: pictograms-characters-boy_kissing
+              type: image
+            - value: pictograms-characters-boy_dancing
+              type: image
+
+
