@@ -21,5 +21,6 @@ let project = Project.module(
         .project(target: "LocalizationKit", path: Path("../../Modules/LocalizationKit")),
         .external(name: "SwiftUIJoystick"),
         .external(name: "AudioKit"),
+        .external(name: "Fit"),
     ]
 )
