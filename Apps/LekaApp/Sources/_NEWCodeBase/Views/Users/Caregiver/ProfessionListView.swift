@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import AccountKit
+import DesignKit
 import Fit
 import LocalizationKit
 import SwiftUI
@@ -39,7 +40,10 @@ struct ProfessionListView: View {
                 Fit {
                     ForEach(self.caregiver.professions, id: \.self) { id in
                         let profession = Professions.profession(for: id)!
-                        ProfessionPicker.ProfessionTag(profession: profession, caregiver: self.$caregiver)
+
+                        TagView(title: profession.name, systemImage: "multiply.square.fill") {
+                            self.caregiver.professions.removeAll(where: { id == $0 })
+                        }
                     }
                 }
             }
