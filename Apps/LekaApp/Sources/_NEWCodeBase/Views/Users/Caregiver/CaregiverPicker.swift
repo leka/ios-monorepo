@@ -37,10 +37,6 @@ struct CaregiverPicker: View {
                                 self.styleManager.colorScheme = caregiver.colorScheme
                                 self.styleManager.accentColor = caregiver.colorTheme.color
                                 self.caregiverManager.setCurrentCaregiver(to: caregiver)
-                                guard self.authManagerViewModel.userAction != .userIsSigningIn else {
-                                    self.navigation.fullScreenCoverContent = nil
-                                    return
-                                }
                                 self.dismiss()
                             } label: {
                                 CaregiverAvatarCell(caregiver: caregiver)
@@ -54,7 +50,6 @@ struct CaregiverPicker: View {
         }
         .padding(.horizontal, 50)
         .navigationTitle(String(l10n.CaregiverPicker.title.characters))
-        .navigationBarBackButtonHidden(self.authManagerViewModel.userAction == .userIsSigningIn)
         .sheet(isPresented: self.$isCaregiverCreationPresented) {
             NavigationStack {
                 CreateCaregiverView()
@@ -82,7 +77,6 @@ struct CaregiverPicker: View {
 
     // MARK: Private
 
-    @ObservedObject private var navigation: Navigation = .shared
     @ObservedObject private var authManagerViewModel: AuthManagerViewModel = .shared
     @ObservedObject private var styleManager: StyleManager = .shared
 
