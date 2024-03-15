@@ -117,6 +117,7 @@ struct MainView: View {
                 }
             }
         }
+        .id(self.authManagerViewModel.userAction)
         .fullScreenCover(item: self.$navigation.fullScreenCoverContent) {
             self.navigation.fullScreenCoverContent = nil
             self.navigation.currentActivity = nil
