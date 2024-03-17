@@ -94,17 +94,7 @@ jobs:
           hide_classify: "OUTDATED"
           header: testflight
           message: |
-            ## New TestFlight build available :airplane:
-
-            @leka/dev-ios
-
-            A new TestFlight build is available for testing. Please check the TestFlight app on your device to install the latest build.
-
-            | <!-- -->    | <!-- -->                        |
-            |-------------|---------------------------------|
-            | **App**     | `${{ env.APP_NAME }}`           |
-            | **Version** | `${{ env.APP_VERSION_NUMBER }}` |
-            | **Build**   | `${{ env.APP_BUILD_NUMBER }}`   |
+            ${{ env.CHANGELOG_FOR_GITHUB }}
 
       - name: remove label
         if: always()
