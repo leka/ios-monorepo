@@ -211,9 +211,9 @@ platform :ios do
 
         UI.important "App: #{app} / Version number: #{version_number} / Build number: #{build_number}"
         if ENV['CI']
-          File.write("#{ENV['GITHUB_ENV']}", "APP_NAME=#{app}\n", mode: 'a')
-          File.write("#{ENV['GITHUB_ENV']}", "APP_VERSION_NUMBER=#{version_number}\n", mode: 'a')
-          File.write("#{ENV['GITHUB_ENV']}", "APP_BUILD_NUMBER=#{build_number}\n", mode: 'a')
+          File.write(ENV.fetch('GITHUB_ENV', nil).to_s, "APP_NAME=#{app}\n", mode: 'a')
+          File.write(ENV.fetch('GITHUB_ENV', nil).to_s, "APP_VERSION_NUMBER=#{version_number}\n", mode: 'a')
+          File.write(ENV.fetch('GITHUB_ENV', nil).to_s, "APP_BUILD_NUMBER=#{build_number}\n", mode: 'a')
         end
 
         increment_build_number(
