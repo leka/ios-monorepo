@@ -7,7 +7,8 @@
 # auto update fastlane
 # update_fastlane
 
-require 'json'
+fastlane_require 'json'
+fastlane_require 'open3'
 
 default_platform(:ios)
 
@@ -331,5 +332,158 @@ platform :ios do
         name: 'io.leka.fastlane.keychain'
       )
     end
+  end
+
+  desc 'Generate changelogs for TestFlight, Github and Slack'
+  lane :generate_changelogs do |options|
+    UI.important options
+
+    app_name = options[:target].to_s
+    version_number = options[:version_number].to_s
+    latest_build_number = options[:latest_build_number].to_s
+    next_build_number = options[:next_build_number].to_s
+
+    pr_number = options[:pr_number]
+
+    commit_sha_pr_branch_head = last_git_commit[:abbreviated_commit_hash]
+    commit_sha_latest_test_flight_build = latest_build_number.split('.').last.to_i.to_s(16)
+
+    UI.message "commit_sha_pr_branch_head: #{commit_sha_pr_branch_head}"
+    UI.message "commit_sha_latest_test_flight_build: #{commit_sha_latest_test_flight_build}"
+
+    git_log_to_notes_script = "#{ROOT_DIR}/Tools/Scripts/git_log_to_notes.py"
+
+    git_log_main_pr_with_emojis, stderr_git_log_main_pr_with_emojis, status_git_log_main_pr_with_emojis =
+      Open3.capture3(
+        'python3',
+        git_log_to_notes_script,
+        '-f', 'main',
+        '-l', commit_sha_pr_branch_head.to_s
+      )
+
+    git_log_latest_build_pr_branch_with_emojis, _, status_git_log_latest_build_pr_branch_with_emojis =
+      Open3.capture3(
+        'python3',
+        git_log_to_notes_script,
+        '-f', commit_sha_latest_test_flight_build.to_s,
+        '-l', commit_sha_pr_branch_head.to_s
+      )
+
+    git_log_main_pr_no_emojis, stderr_git_log_main_pr_no_emojis, status_git_log_main_pr_no_emojis =
+      Open3.capture3(
+        'python3',
+        git_log_to_notes_script,
+        '-r',
+        '-f', 'main',
+        '-l', commit_sha_pr_branch_head.to_s
+      )
+
+    git_log_latest_build_pr_branch_no_emojis, _, status_git_log_latest_build_pr_branch_no_emojis =
+      Open3.capture3(
+        'python3',
+        git_log_to_notes_script,
+        '-r',
+        '-f', commit_sha_latest_test_flight_build.to_s,
+        '-l', commit_sha_pr_branch_head.to_s
+      )
+
+    if status_git_log_main_pr_with_emojis.success? && status_git_log_main_pr_no_emojis.success?
+      UI.message 'Creating CHANGELOG_FOR_SLACK'
+
+      CHANGELOG_FOR_SLACK = <<~EOF_CHANGELOG_FOR_SLACK
+        :test_tube: *New TestFlight Build - #{app_name}* :airplane:
+
+        New version of #{app_name} is available for testing on TestFlight. Please check the changelog and install the app on your device. :rocket:
+
+        *App*: #{app_name}
+        *Version*: #{version_number}
+        *Build*: #{next_build_number} (#{commit_sha_pr_branch_head})
+        *PR*: #{pr_number ? "https://github.com/leka/ios-monorepo/pull/#{pr_number}" : 'n/a'}
+
+        *Changes compared to `main`*:
+
+        #{git_log_main_pr_with_emojis.rstrip.empty? ? '_Could not fetch the changes compared to `main`._' : git_log_main_pr_with_emojis.rstrip}
+
+        *Changes compared to the last TestFlight build*:
+
+        #{status_git_log_latest_build_pr_branch_with_emojis.success? ? git_log_latest_build_pr_branch_with_emojis : '_Could not fetch the changes compared to the last TestFlight build. Commit may have been overwritten by force push._'}
+
+      EOF_CHANGELOG_FOR_SLACK
+
+      UI.message "CHANGELOG_FOR_SLACK:\n#{CHANGELOG_FOR_SLACK}"
+
+      UI.message 'Creating CHANGELOG_FOR_GITHUB'
+
+      CHANGELOG_FOR_GITHUB = <<~EOF_CHANGELOG_FOR_GITHUB
+        ## :test_tube: New TestFlight Build - #{app_name} :airplane:
+
+        New version of #{app_name} is available for testing on TestFlight. Please check the changelog and install the app on your device. :rocket:
+
+        **App**: #{app_name}
+        **Version**: #{version_number}
+        **Build**: #{next_build_number} (#{commit_sha_pr_branch_head})
+        **PR**: #{pr_number ? "https://github.com/leka/ios-monorepo/pull/#{pr_number}" : 'n/a'}
+
+        **Changes compared to `main`**:
+
+        #{git_log_main_pr_with_emojis.rstrip.empty? ? '*Could not fetch the changes compared to `main`.*' : git_log_main_pr_with_emojis.rstrip}
+
+        **Changes compared to the last TestFlight build**:
+
+        #{status_git_log_latest_build_pr_branch_with_emojis.success? ? git_log_latest_build_pr_branch_with_emojis : '*Could not fetch the changes compared to the last TestFlight build. Commit may have been overwritten by force push.*'}
+
+      EOF_CHANGELOG_FOR_GITHUB
+
+      UI.message "CHANGELOG_FOR_GITHUB:\n#{CHANGELOG_FOR_GITHUB}"
+
+      UI.message 'Creating CHANGELOG_FOR_TEST_FLIGHT'
+
+      CHANGELOG_FOR_TEST_FLIGHT = <<~EOF_CHANGELOG_FOR_TEST_FLIGHT
+        Version: #{version_number}
+        Build: #{next_build_number} (#{commit_sha_pr_branch_head})
+        PR: #{pr_number ? "https://github.com/leka/ios-monorepo/pull/#{pr_number}" : 'n/a'}
+
+        Changes compared to main:
+
+        #{git_log_main_pr_no_emojis.rstrip.empty? ? 'Could not fetch the changes compared to `main`.' : git_log_main_pr_no_emojis.rstrip}
+
+        Changes compared to the last TestFlight build:
+
+        #{status_git_log_latest_build_pr_branch_no_emojis.success? ? git_log_latest_build_pr_branch_no_emojis : 'Could not fetch the changes compared to the last TestFlight build. Commit may have been overwritten by force push.'}
+
+      EOF_CHANGELOG_FOR_TEST_FLIGHT
+
+      UI.message "CHANGELOG_FOR_TEST_FLIGHT:\n#{CHANGELOG_FOR_TEST_FLIGHT}"
+    else
+      UI.error 'Could not fetch the changes'
+      UI.error stderr_git_log_main_pr_with_emojis
+      UI.error stderr_git_log_main_pr_no_emojis
+    end
+
+    if ENV['CI']
+      File.write(
+        ENV.fetch('GITHUB_ENV', nil).to_s,
+        "CHANGELOG_FOR_SLACK<<EOF_CHANGELOG_FOR_SLACK\n" \
+        "#{CHANGELOG_FOR_SLACK}\n" \
+        "EOF_CHANGELOG_FOR_SLACK\n\n",
+        mode: 'a'
+      )
+      File.write(
+        ENV.fetch('GITHUB_ENV', nil).to_s,
+        "CHANGELOG_FOR_GITHUB<<EOF_CHANGELOG_FOR_GITHUB\n" \
+        "#{CHANGELOG_FOR_GITHUB}\n" \
+        "EOF_CHANGELOG_FOR_GITHUB\n\n",
+        mode: 'a'
+      )
+      File.write(
+        ENV.fetch('GITHUB_ENV', nil).to_s,
+        "CHANGELOG_FOR_TEST_FLIGHT<<EOF_CHANGELOG_FOR_TEST_FLIGHT\n" \
+        "#{CHANGELOG_FOR_TEST_FLIGHT}\n" \
+        "EOF_CHANGELOG_FOR_TEST_FLIGHT\n\n",
+        mode: 'a'
+      )
+    end
+
+    CHANGELOG_FOR_TEST_FLIGHT
   end
 end
