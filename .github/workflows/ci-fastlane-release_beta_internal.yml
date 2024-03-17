@@ -86,7 +86,7 @@ jobs:
         run: |
           bundle exec fastlane beta_internal targets:all --verbose
 
-      - name: post message
+      - name: Post Github comment
         if: ${{ success() }}
         uses: marocchino/sticky-pull-request-comment@v2
         with:
@@ -95,6 +95,15 @@ jobs:
           header: testflight
           message: |
             ${{ env.CHANGELOG_FOR_GITHUB }}
+
+      - name: Post to a Slack channel
+        id: slack
+        uses: slackapi/slack-github-action@v1.25.0
+        with:
+          channel-id: "C3SHVTYNP,C041YEWNVJS"
+          slack-message: ${{ env.CHANGELOG_FOR_SLACK }}
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
 
       - name: remove label
         if: always()
