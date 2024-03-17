@@ -212,11 +212,13 @@ platform :ios do
 
         UI.important "App: #{app} / Version number: #{version_number} / Build number: #{next_build_number}"
 
-        if ENV['CI']
-          File.write(ENV.fetch('GITHUB_ENV', nil).to_s, "APP_NAME=#{app}\n", mode: 'a')
-          File.write(ENV.fetch('GITHUB_ENV', nil).to_s, "APP_VERSION_NUMBER=#{version_number}\n", mode: 'a')
-          File.write(ENV.fetch('GITHUB_ENV', nil).to_s, "APP_BUILD_NUMBER=#{build_number}\n", mode: 'a')
-        end
+        testflight_changelog = generate_changelogs(
+          target: app,
+          version_number: version_number,
+          latest_build_number: latest_build_number,
+          next_build_number: next_build_number,
+          pr_number: pr_number
+        )
 
         increment_build_number(
           build_number: next_build_number,
@@ -233,7 +235,9 @@ platform :ios do
         upload_to_testflight(
           app_identifier: app_id.to_s,
           skip_waiting_for_build_processing: true,
-          distribute_external: false
+          distribute_external: false,
+          groups: %w[LekaTeam ClubExpert],
+          changelog: testflight_changelog
         )
       ensure
         next unless ENV['CI']
