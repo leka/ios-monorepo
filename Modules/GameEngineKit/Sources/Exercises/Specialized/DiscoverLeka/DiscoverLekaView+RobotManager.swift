@@ -84,6 +84,8 @@ extension DiscoverLekaView {
             self.updateLightIntensity()
 
             DispatchQueue.main.asyncAfter(deadline: .now() + self.lightIntensityChangeDuration) {
+                guard self.isAnimationRunning, self.isBreathing, !self.shared.isCompleted else { return }
+
                 let shadeOfColor: Robot.Color = .init(fromGradient: (.black, .lightBlue), at: self.lightIntensity)
                 self.robot.shine(.all(in: shadeOfColor))
                 self.breathe()
