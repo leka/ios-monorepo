@@ -38,10 +38,13 @@ struct AccountCreationView: View {
             .frame(width: 400)
             .disableAutocorrection(true)
 
-            Button(String(l10n.AccountCreationView.connectionButton.characters)) {
+            Button {
                 self.submitForm()
+            } label: {
+                Text(String(l10n.AccountCreationView.connectionButton.characters))
+                    .loadingText(isLoading: self.authManagerViewModel.isLoading)
             }
-            .disabled(self.isCreationDisabled)
+            .disabled(self.isCreationDisabled || self.authManagerViewModel.isLoading)
             .buttonStyle(.borderedProminent)
         }
         .navigationDestination(isPresented: self.$viewModel.navigateToAccountCreationProcess) {

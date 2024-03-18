@@ -49,10 +49,13 @@ struct ConnectionView: View {
             .disableAutocorrection(true)
             .frame(width: 350)
 
-            Button(String(l10n.ConnectionView.connectionButton.characters)) {
+            Button {
                 self.submitForm()
+            } label: {
+                Text(String(l10n.ConnectionView.connectionButton.characters))
+                    .loadingText(isLoading: self.authManagerViewModel.isLoading)
             }
-            .disabled(self.isConnectionDisabled)
+            .disabled(self.isConnectionDisabled || self.authManagerViewModel.isLoading)
             .buttonStyle(.borderedProminent)
         }
         .onChange(of: self.authManagerViewModel.userAuthenticationState) { newValue in
