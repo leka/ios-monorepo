@@ -8,7 +8,7 @@ uuid: CB995F829411449AB32E6B8A688E3DDB
 name: melody
 
 created_at: "2024-03-04T18:07:12.519606"
-last_edited_at: "2024-03-06T12:51:54.499453"
+last_edited_at: "2024-03-18T17:50:52.594505"
 status: published
 
 authors:
@@ -72,7 +72,6 @@ l10n:
       description: |
         This activity invites the care receiver to engage in an interactive musical experience. After selecting music, starting the sequence and listening to the melody, the care receiver must associate the colored keys on the iPad with the colors of the robot.
 
-
       instructions: |
         - Choice of keyboard: Select the partial keyboard to limit the notes to those of the melody, thus simplifying discrimination for the care receiver. Choose the entire keyboard to access the entire heptatonic scale.
         - Choose the music you want to see performed and reproduced.
@@ -94,3 +93,12 @@ exercises_payload:
             - locale: en_US
               value: Play the notes of the same color as Leka
           interface: melody
+          payload:
+            instrument: xylophone
+            songs:
+              - underTheMoonlight
+              - aGreenMouse
+              - twinkleTwinkleLittleStar
+              - londonBridgeIsFallingDown
+              - ohTheCrocodiles
+              - happyBirthday
