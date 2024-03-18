@@ -95,24 +95,24 @@ list:
   - id: deputy_director
     l10n:
       - locale: fr_FR
-        name: Directeur adjoint
+        name: Directeur Adjoint
         description: |
-          Le Directeur adjoint assiste le Directeur dans la gestion et la direction, prenant en charge des responsabilités spécifiques et contribuant à la mise en œuvre de la stratégie globale.
+          Le directeur adjoint assiste le directeur dans la gestion et la direction, prenant en charge des responsabilités spécifiques et contribuant à la mise en œuvre de la stratégie globale.
       - locale: en_US
         name: Deputy Director
         description: |
-          The Deputy Director assists the Director in management and leadership, taking on specific responsibilities and contributing to the implementation of the overall strategy.
+          The deputy director assists the director in management and leadership, taking on specific responsibilities and contributing to the implementation of the overall strategy.
 
   - id: director
     l10n:
       - locale: fr_FR
         name: Directeur
         description: |
-          Le Directeur gère et dirige une institution ou un service, en élaborant des stratégies, en supervisant les opérations et en assurant le leadership et la direction de l'équipe.
+          Le directeur gère et dirige une institution ou un service, en élaborant des stratégies, en supervisant les opérations et en assurant le leadership et la direction de l'équipe.
       - locale: en_US
         name: Director
         description: |
-          The Director manages and leads an institution or service, developing strategies, overseeing operations, and providing leadership and direction to the team.
+          The director manages and leads an institution or service, developing strategies, overseeing operations, and providing leadership and direction to the team.
 
   - id: doctor
     l10n:
@@ -139,13 +139,13 @@ list:
   - id: educational_and_social_assistant
     l10n:
       - locale: fr_FR
-        name: Accompagnant Educatif et Social
+        name: Accompagnant Éducatif et Social
         description: |
-          L'Accompagnant Educatif et Social aide les personnes en difficulté ou en situation de vulnérabilité, en leur fournissant un soutien dans leur éducation et leur intégration sociale.
+          L'accompagnant éducatif et Social aide les personnes en difficulté ou en situation de vulnérabilité, en leur fournissant un soutien dans leur éducation et leur intégration sociale.
       - locale: en_US
         name: Educational and Social Assistant
         description: |
-          The Educational and Social Assistant supports individuals facing difficulties or vulnerabilities, providing them with assistance in their education and social integration.
+          The educational and social assistant supports individuals facing difficulties or vulnerabilities, providing them with assistance in their education and social integration.
 
   - id: educational_and_social_support_worker
     l10n:
@@ -185,11 +185,11 @@ list:
       - locale: fr_FR
         name: Cadre de santé
         description: |
-          Le Cadre de santé supervise les aspects cliniques et administratifs dans les établissements de santé, en assurant la coordination des soins et la gestion des ressources humaines et matérielles.
+          Le cadre de santé supervise les aspects cliniques et administratifs dans les établissements de santé, en assurant la coordination des soins et la gestion des ressources humaines et matérielles.
       - locale: en_US
         name: Health Manager
         description: |
-          The Health Manager oversees clinical and administrative aspects in healthcare facilities, ensuring care coordination and the management of human and material resources.
+          The health manager oversees clinical and administrative aspects in healthcare facilities, ensuring care coordination and the management of human and material resources.
 
   - id: inclusive_education_specialist
     l10n:
@@ -200,18 +200,18 @@ list:
       - locale: en_US
         name: Inclusive Education Specialist
         description: |
-          The Inclusive Education Specialist is an expert in adapting curricula and teaching strategies to include students of all abilities.
+          The inclusive education specialist is an expert in adapting curricula and teaching strategies to include students of all abilities.
 
   - id: medical_psychological_assistant
     l10n:
       - locale: fr_FR
         name: Aide Médico Psychologique
         description: |
-          L'Aide Médico Psychologique accompagne les personnes ayant des troubles psychologiques ou des handicaps, en fournissant un soutien quotidien et en contribuant à leur bien-être psychologique.
+          L'aide médico psychologique (AMP) accompagne les personnes ayant des troubles psychologiques ou des handicaps, en fournissant un soutien quotidien et en contribuant à leur bien-être psychologique.
       - locale: en_US
         name: Medical Psychological Assistant
         description: |
-          The Medical Psychological Assistant supports individuals with psychological disorders or disabilities, providing daily support and contributing to their psychological well-being.
+          The medical psychological assistant supports individuals with psychological disorders or disabilities, providing daily support and contributing to their psychological well-being.
 
   - id: nurse
     l10n:
@@ -331,7 +331,7 @@ list:
       - locale: en_US
         name: Rehabilitation Counselor
         description: |
-          The Rehabilitation Counselor works with individuals with disabilities to achieve their personal, career, and independent living goals.
+          The rehabilitation counselor works with individuals with disabilities to achieve their personal, career, and independent living goals.
 
   - id: remedial_education_therapist
     l10n:
@@ -342,18 +342,18 @@ list:
       - locale: en_US
         name: Remedial Education Therapist
         description: |
-          The Remedial Education Therapist designs and implements educational support programs for individuals with learning difficulties, aiming to enhance their skills and academic performance.
+          The remedial education therapist designs and implements educational support programs for individuals with learning difficulties, aiming to enhance their skills and academic performance.
 
   - id: service_manager
     l10n:
       - locale: fr_FR
         name: Chef de service
         description: |
-          Le Chef de service est responsable de la gestion quotidienne d'un service spécifique, en veillant à la qualité des services fournis et au bien-être de l'équipe.
+          Le chef de service est responsable de la gestion quotidienne d'un service spécifique, en veillant à la qualité des services fournis et au bien-être de l'équipe.
       - locale: en_US
         name: Service Manager
         description: |
-          The Service Manager is responsible for the daily management of a specific service, ensuring the quality of services provided and the well-being of the team.
+          The service manager is responsible for the daily management of a specific service, ensuring the quality of services provided and the well-being of the team.
 
   - id: social_life_assistant
     l10n:
@@ -380,13 +380,13 @@ list:
   - id: special_education_teacher
     l10n:
       - locale: fr_FR
-        name: Enseignant(e) Spécialisée
+        name: Enseignant(e) Spécialisé(e)
         description: |
           L'enseignant en éducation spécialisée travaille spécifiquement avec des enfants présentant un large éventail de handicaps, en adaptant les méthodes d'enseignement et le contenu pédagogique pour répondre à leurs besoins uniques.
       - locale: en_US
         name: Special Education Teacher
         description: |
-          The Special Education Teacher specifically works with children who have a wide range of disabilities, adapting teaching methods and educational content to meet their unique needs.
+          The special education teacher specifically works with children who have a wide range of disabilities, adapting teaching methods and educational content to meet their unique needs.
 
   - id: special_educator
     l10n:
@@ -413,13 +413,13 @@ list:
   - id: sports_trainer
     l10n:
       - locale: fr_FR
-        name: Educateur sportif
+        name: Éducateur(trice) sportif(tive)
         description: |
-          L'Educateur sportif conçoit et supervise des programmes d'entraînement pour améliorer la condition physique, souvent adaptés aux besoins spécifiques des personnes handicapées ou en rééducation.
+          L'éducateur sportif conçoit et supervise des programmes d'entraînement pour améliorer la condition physique, souvent adaptés aux besoins spécifiques des personnes handicapées ou en rééducation.
       - locale: en_US
         name: Sports Trainer
         description: |
-          The Sports Trainer designs and oversees training programs to improve physical fitness, often tailored to the specific needs of individuals with disabilities or in rehabilitation.
+          The sports trainer designs and oversees training programs to improve physical fitness, often tailored to the specific needs of individuals with disabilities or in rehabilitation.
 
   - id: teacher
     l10n:
