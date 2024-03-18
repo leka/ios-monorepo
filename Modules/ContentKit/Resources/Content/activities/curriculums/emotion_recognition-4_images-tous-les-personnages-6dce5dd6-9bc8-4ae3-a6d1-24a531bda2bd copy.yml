@@ -1,0 +1,285 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+version: 1.0.0
+
+uuid: 195c7905-0188-4c1d-a3c9-0aed0199606d
+name: emotion_recognition-4_pictures-tous-les-personnages
+
+created_at: "2024-03-04T18:07:12.519229"
+last_edited_at: "2024-03-06T12:51:54.499453"
+status: published
+
+authors:
+  - leka
+
+skills:
+  - recognition
+  - recognition/basic-emotions
+  - communication
+  - communication/verbal_communication
+  - communication/verbal_communication/receptive_language
+
+tags:
+  - emotions
+  - pictures
+  - Ladislas
+  - Hortense
+  - Yann
+  - Lucie
+  - Hugo
+
+hmi:
+  - tablet
+
+types:
+  - one_on_one
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon:
+
+      title: Reconnaissance des émotions en photos - Equipe Leka #4
+      subtitle: Equipe Leka - 4
+
+      short_description: |
+        Touche l'émotion demandée
+
+      description: |
+        L'enfant doit toucher l'émotion demandée.
+
+      instructions: |
+        - Sur l'écran, toucher le haut parleur pour que la personne accompagnée puisse entendre la consigne
+        - Encourager la personne accompagnée à toucher l'émotion demandée
+        - Lorsque la réponse est correct, Leka lance un renforçateur
+
+  - locale: en_US
+    details:
+      icon:
+
+      title: Emotion recognition in pictures - Leka team #4
+      subtitle: Leka team - 4
+
+      short_description: |
+        Touch the requested emotion
+
+      description: |
+        The care receiver must touch the requested emotion.
+
+      instructions: |
+        - On the screen, touch the speaker button to make the care receiver hear the instruction
+        - Encourage the care receiver to tap on the right picture
+        - When the answer is correct, Leka launches a reinforcer
+
+exercises_payload:
+  options:
+    shuffle_exercises: true
+    shuffle_groups: false
+
+  exercise_groups:
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Touche la personne qui est dégoûtée
+            - locale: en_US
+              value: Touch the person who is disgusted
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: emotion-picture-adult-disgust-ladislas
+                type: image
+                is_right_answer: true
+              - value: emotion-picture-adult-joy-lucie
+                type: image
+              - value: emotion-picture-adult-fear-yann
+                type: image
+              - value: emotion-picture-adult-angry-hortense
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche la personne qui est en colère
+            - locale: en_US
+              value: Touch the person who is angry
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: emotion-picture-adult-angry-hugo
+                type: image
+                is_right_answer: true
+              - value: emotion-picture-adult-disgust-yann
+                type: image
+              - value: emotion-picture-adult-fear-hortense
+                type: image
+              - value: emotion-picture-adult-sad-lucie
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche la personne qui est contente
+            - locale: en_US
+              value: Touch the person who is happy
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: emotion-picture-adult-joy-yann
+                type: image
+                is_right_answer: true
+              - value: emotion-picture-adult-sad-hugo
+                type: image
+              - value: emotion-picture-adult-angry-ladislas
+                type: image
+              - value: emotion-picture-adult-disgust-lucie
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche la personne qui a peur
+            - locale: en_US
+              value: Touch the person who is afraid
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: emotion-picture-adult-fear-hugo
+                type: image
+                is_right_answer: true
+              - value: emotion-picture-adult-joy-hortense
+                type: image
+              - value: emotion-picture-adult-disgust-lucie
+                type: image
+              - value: emotion-picture-adult-sad-ladislas
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche la personne qui est triste
+            - locale: en_US
+              value: Touch the person who is sad
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: emotion-picture-adult-sad-hortense
+                type: image
+                is_right_answer: true
+              - value: emotion-picture-adult-angry-yann
+                type: image
+              - value: emotion-picture-adult-fear-ladislas
+                type: image
+              - value: emotion-picture-adult-joy-hugo
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche la personne qui est dégoûtée
+            - locale: en_US
+              value: Touch the person who is disgusted
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: emotion-picture-adult-disgust-ladislas
+                type: image
+                is_right_answer: true
+              - value: emotion-picture-adult-joy-lucie
+                type: image
+              - value: emotion-picture-adult-fear-yann
+                type: image
+              - value: emotion-picture-adult-angry-hortense
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche la personne qui est en colère
+            - locale: en_US
+              value: Touch the person who is angry
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: emotion-picture-adult-angry-hugo
+                type: image
+                is_right_answer: true
+              - value: emotion-picture-adult-disgust-yann
+                type: image
+              - value: emotion-picture-adult-fear-hortense
+                type: image
+              - value: emotion-picture-adult-sad-lucie
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche la personne qui est contente
+            - locale: en_US
+              value: Touch the person who is happy
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: emotion-picture-adult-joy-yann
+                type: image
+                is_right_answer: true
+              - value: emotion-picture-adult-sad-hugo
+                type: image
+              - value: emotion-picture-adult-angry-ladislas
+                type: image
+              - value: emotion-picture-adult-disgust-lucie
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche la personne qui a peur
+            - locale: en_US
+              value: Touch the person who is afraid
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: emotion-picture-adult-fear-hugo
+                type: image
+                is_right_answer: true
+              - value: emotion-picture-adult-joy-hortense
+                type: image
+              - value: emotion-picture-adult-disgust-lucie
+                type: image
+              - value: emotion-picture-adult-sad-ladislas
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche la personne qui est triste
+            - locale: en_US
+              value: Touch the person who is sad
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: emotion-picture-adult-sad-hortense
+                type: image
+                is_right_answer: true
+              - value: emotion-picture-adult-angry-yann
+                type: image
+              - value: emotion-picture-adult-fear-ladislas
+                type: image
+              - value: emotion-picture-adult-joy-hugo
+                type: image
