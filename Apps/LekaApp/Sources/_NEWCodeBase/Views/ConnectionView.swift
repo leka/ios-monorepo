@@ -53,7 +53,7 @@ struct ConnectionView: View {
                 self.submitForm()
             } label: {
                 Text(String(l10n.ConnectionView.connectionButton.characters))
-                    .loadingText(isLoading: self.authManagerViewModel.isLoading)
+                    .loadingIndicator(isLoading: self.authManagerViewModel.isLoading)
             }
             .disabled(self.isConnectionDisabled || self.authManagerViewModel.isLoading)
             .buttonStyle(.borderedProminent)

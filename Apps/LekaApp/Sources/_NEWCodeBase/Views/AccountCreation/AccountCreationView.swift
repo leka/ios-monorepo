@@ -41,7 +41,7 @@ struct AccountCreationView: View {
                 self.submitForm()
             } label: {
                 Text(String(l10n.AccountCreationView.connectionButton.characters))
-                    .loadingText(isLoading: self.authManagerViewModel.isLoading)
+                    .loadingIndicator(isLoading: self.authManagerViewModel.isLoading)
             }
             .disabled(self.isCreationDisabled || self.authManagerViewModel.isLoading)
             .buttonStyle(.borderedProminent)
