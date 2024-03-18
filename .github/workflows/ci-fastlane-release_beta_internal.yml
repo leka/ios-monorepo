@@ -35,7 +35,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          fetch-depth: 1 # shallow clone
+          fetch-depth: 0
+          lfs: true
+
+      - name: Checkout base, head branches
+        run: |
+          git checkout ${{ env.BASE_REF }}
+          git checkout ${{ env.HEAD_REF }}
+        env:
+          BASE_REF: ${{ github.event.pull_request.base.ref }}
+          HEAD_REF: ${{ github.head_ref }}
 
       - name: Setup mise
         run: |
