@@ -66,8 +66,6 @@ struct CarereceiverList: View {
                     }
                 }
             }
-            .navigationTitle(String(l10n.CarereceiverList.title.characters))
-            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
@@ -80,6 +78,7 @@ struct CarereceiverList: View {
             .sheet(isPresented: self.$isCarereceiverCreationPresented) {
                 NavigationStack {
                     CreateCarereceiverView()
+                        .navigationBarTitleDisplayMode(.inline)
                 }
             }
             .navigationDestination(for: Carereceiver.self) { carereceiver in

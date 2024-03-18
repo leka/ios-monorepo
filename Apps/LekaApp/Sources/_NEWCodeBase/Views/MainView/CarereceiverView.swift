@@ -59,6 +59,7 @@ struct CarereceiverView: View {
             .sheet(isPresented: self.$isEditCarereceiverViewPresented) {
                 NavigationStack {
                     EditCarereceiverView(modifiedCarereceiver: self.$carereceiver)
+                        .navigationBarTitleDisplayMode(.inline)
                 }
             }
 
@@ -76,8 +77,6 @@ struct CarereceiverView: View {
 
             Spacer()
         }
-        .navigationTitle(self.carereceiver.username)
-        .navigationBarTitleDisplayMode(.inline)
     }
 
     // MARK: Private

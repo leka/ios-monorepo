@@ -45,7 +45,6 @@ struct EditCarereceiverView: View {
             }
         }
         .navigationTitle(String(l10n.EditCarereceiverView.navigationTitle.characters))
-        .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 Button(String(l10n.EditCarereceiverView.closeButtonLabel.characters)) {
@@ -82,6 +81,7 @@ struct EditCarereceiverView: View {
                              onValidate: { avatar in
                                  self.modifiedCarereceiver.avatar = avatar
                              })
+                             .navigationBarTitleDisplayMode(.inline)
             }
         }
         .frame(maxWidth: .infinity, alignment: .center)

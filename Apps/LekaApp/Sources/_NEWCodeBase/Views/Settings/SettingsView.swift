@@ -106,7 +106,6 @@ struct SettingsView: View {
             }
         }
         .navigationTitle(String(l10n.SettingsView.navigationTitle.characters))
-        .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 Button(String(l10n.SettingsView.closeButtonLabel.characters)) {

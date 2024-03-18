@@ -44,6 +44,7 @@ extension AccountCreationProcess {
                     CreateCaregiverView(onCreated: { caregiver in
                         self.caregiverManager.setCurrentCaregiver(to: caregiver)
                     })
+                    .navigationBarTitleDisplayMode(.inline)
                 }
             }
             .onReceive(self.caregiverManagerViewModel.$currentCaregiver) {

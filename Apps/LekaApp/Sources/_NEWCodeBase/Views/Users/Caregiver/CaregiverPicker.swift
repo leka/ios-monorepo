@@ -53,6 +53,7 @@ struct CaregiverPicker: View {
         .sheet(isPresented: self.$isCaregiverCreationPresented) {
             NavigationStack {
                 CreateCaregiverView()
+                    .navigationBarTitleDisplayMode(.inline)
             }
         }
         .toolbar {
