@@ -12,7 +12,6 @@ import SwiftUI
 class AccountCreationViewViewModel: ObservableObject {
     @Published var email: String = ""
     @Published var password: String = ""
-    @Published var navigateToAccountCreationProcess: Bool = false
 }
 
 // MARK: - AccountCreationView
@@ -47,10 +46,6 @@ struct AccountCreationView: View {
             .disabled(self.isCreationDisabled || self.authManagerViewModel.isLoading)
             .buttonStyle(.borderedProminent)
         }
-        .navigationDestination(isPresented: self.$viewModel.navigateToAccountCreationProcess) {
-            AccountCreationProcess.CarouselView()
-                .navigationBarBackButtonHidden()
-        }
         .onChange(of: self.authManagerViewModel.userAuthenticationState) { newValue in
             if newValue == .loggedIn {
                 self.rootAccountManager.createRootAccount(rootAccount: RootAccount())
@@ -67,16 +62,20 @@ struct AccountCreationView: View {
             Alert(title: Text(l10n.AccountCreationView.EmailVerificationAlert.title),
                   message: Text(l10n.AccountCreationView.EmailVerificationAlert.message),
                   dismissButton: .default(Text(l10n.AccountCreationView.EmailVerificationAlert.dismissButton)) {
-                      self.viewModel.navigateToAccountCreationProcess.toggle()
+                      self.navigation.navigateToAccountCreationProcess.toggle()
                   })
         }
     }
 
     // MARK: Private
 
-    @State private var isVerificationEmailAlertPresented: Bool = false
     @StateObject private var viewModel = AccountCreationViewViewModel()
+
     @ObservedObject private var authManagerViewModel = AuthManagerViewModel.shared
+    @ObservedObject private var navigation: Navigation = .shared
+
+    @State private var isVerificationEmailAlertPresented: Bool = false
+
     private var authManager = AuthManager.shared
     private var rootAccountManager = RootAccountManager.shared
 

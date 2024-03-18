@@ -28,6 +28,10 @@ struct WelcomeView: View {
             }
             .buttonStyle(.bordered)
         }
+        .navigationDestination(isPresented: self.$navigation.navigateToAccountCreationProcess) {
+            AccountCreationProcess.CarouselView()
+                .navigationBarBackButtonHidden()
+        }
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button(String(l10n.WelcomeView.skipStepButton.characters)) {
@@ -42,6 +46,7 @@ struct WelcomeView: View {
 
     // MARK: Private
 
+    @ObservedObject private var navigation: Navigation = .shared
     @ObservedObject private var authManagerViewModel = AuthManagerViewModel.shared
     @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
 }
