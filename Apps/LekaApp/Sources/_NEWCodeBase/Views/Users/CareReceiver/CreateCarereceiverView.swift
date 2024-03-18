@@ -98,7 +98,6 @@ struct CreateCarereceiverView: View {
             }
         }
         .navigationTitle(String(l10n.CarereceiverCreation.title.characters))
-        .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 Button {
@@ -153,6 +152,7 @@ struct CreateCarereceiverView: View {
                              onValidate: { avatar in
                                  self.newCarereceiver.avatar = avatar
                              })
+                             .navigationBarTitleDisplayMode(.inline)
             }
         }
         .frame(maxWidth: .infinity, alignment: .center)

@@ -41,6 +41,7 @@ extension AccountCreationProcess {
                     CreateCarereceiverView(onCreated: { _ in
                         self.selectedTab = .final
                     })
+                    .navigationBarTitleDisplayMode(.inline)
                 }
             }
         }

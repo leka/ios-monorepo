@@ -138,16 +138,21 @@ struct MainView: View {
                 switch content {
                     case .robotConnection:
                         RobotConnectionView(viewModel: RobotConnectionViewModel())
+                            .navigationBarTitleDisplayMode(.inline)
                     case .settings:
                         SettingsView()
+                            .navigationBarTitleDisplayMode(.inline)
                     case .editCaregiver:
                         EditCaregiverView(caregiver: self.caregiverManagerViewModel.currentCaregiver!)
+                            .navigationBarTitleDisplayMode(.inline)
                     case .createCaregiver:
                         CreateCaregiverView(onCreated: { caregiver in
                             self.caregiverManager.setCurrentCaregiver(to: caregiver)
                         })
+                        .navigationBarTitleDisplayMode(.inline)
                     case .caregiverPicker:
                         CaregiverPicker()
+                            .navigationBarTitleDisplayMode(.inline)
                     case let .carereceiverPicker(activity):
                         CarereceiverPicker(onDismiss: {
                             // nothing to do
@@ -159,6 +164,7 @@ struct MainView: View {
                             self.navigation.currentActivity = activity
                             self.navigation.fullScreenCoverContent = .activityView
                         })
+                        .navigationBarTitleDisplayMode(.inline)
                 }
             }
         }

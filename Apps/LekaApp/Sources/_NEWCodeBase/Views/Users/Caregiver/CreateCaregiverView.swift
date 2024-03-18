@@ -86,6 +86,7 @@ struct CreateCaregiverView: View {
 
                 Section {
                     ProfessionListView(caregiver: self.$newCaregiver)
+                        .navigationBarTitleDisplayMode(.inline)
                 }
 
                 Button(String(l10n.CaregiverCreation.registerProfilButton.characters)) {
@@ -110,7 +111,6 @@ struct CreateCaregiverView: View {
             }
         }
         .navigationTitle(String(l10n.CaregiverCreation.title.characters))
-        .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 Button {
@@ -165,6 +165,7 @@ struct CreateCaregiverView: View {
                              onValidate: { avatar in
                                  self.newCaregiver.avatar = avatar
                              })
+                             .navigationBarTitleDisplayMode(.inline)
             }
         }
         .frame(maxWidth: .infinity, alignment: .center)

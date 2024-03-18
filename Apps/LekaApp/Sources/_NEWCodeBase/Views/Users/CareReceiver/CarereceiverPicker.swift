@@ -64,7 +64,6 @@ struct CarereceiverPicker: View {
             }
         }
         .navigationTitle(String(l10n.CarereceiverPicker.title.characters))
-        .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 Button {
