@@ -5,7 +5,7 @@
 version: 1.0.0
 
 uuid: 195c7905-0188-4c1d-a3c9-0aed0199606d
-name: emotion_recognition-1_pictures-hortense
+name: emotion_recognition-4_pictures-hortense
 
 created_at: "2024-03-04T18:07:12.519229"
 last_edited_at: "2024-03-06T12:51:54.499453"
@@ -41,8 +41,8 @@ l10n:
     details:
       icon:
 
-      title: Reconnaissance des émotions en photos - Hortense #1
-      subtitle: Hortense - 1
+      title: Reconnaissance des émotions en photos - Hortense #4
+      subtitle: Hortense - 4
 
       short_description: |
         Touche l'émotion demandée
@@ -59,8 +59,8 @@ l10n:
     details:
       icon:
 
-      title: Emotion recognition in pictures - Hortense #1
-      subtitle: Hortense - 1
+      title: Emotion recognition in pictures - Hortense #4
+      subtitle: Hortense - 4
 
       short_description: |
         Touch the requested emotion
@@ -93,6 +93,12 @@ exercises_payload:
               - value: emotion-picture-adult-disgust-hortense
                 type: image
                 is_right_answer: true
+              - value: emotion-picture-adult-joy-hortense
+                type: image
+              - value: emotion-picture-adult-fear-hortense
+                type: image
+              - value: emotion-picture-adult-angry-hortense
+                type: image
 
         - instructions:
             - locale: fr_FR
@@ -107,6 +113,12 @@ exercises_payload:
               - value: emotion-picture-adult-angry-hortense
                 type: image
                 is_right_answer: true
+              - value: emotion-picture-adult-disgust-hortense
+                type: image
+              - value: emotion-picture-adult-fear-hortense
+                type: image
+              - value: emotion-picture-adult-sad-hortense
+                type: image
 
         - instructions:
             - locale: fr_FR
@@ -121,6 +133,12 @@ exercises_payload:
               - value: emotion-picture-adult-joy-hortense
                 type: image
                 is_right_answer: true
+              - value: emotion-picture-adult-sad-hortense
+                type: image
+              - value: emotion-picture-adult-angry-hortense
+                type: image
+              - value: emotion-picture-adult-disgust-hortense
+                type: image
 
         - instructions:
             - locale: fr_FR
@@ -135,6 +153,12 @@ exercises_payload:
               - value: emotion-picture-adult-fear-hortense
                 type: image
                 is_right_answer: true
+              - value: emotion-picture-adult-joy-hortense
+                type: image
+              - value: emotion-picture-adult-disgust-hortense
+                type: image
+              - value: emotion-picture-adult-sad-hortense
+                type: image
 
         - instructions:
             - locale: fr_FR
@@ -149,6 +173,12 @@ exercises_payload:
               - value: emotion-picture-adult-sad-hortense
                 type: image
                 is_right_answer: true
+              - value: emotion-picture-adult-angry-hortense
+                type: image
+              - value: emotion-picture-adult-fear-hortense
+                type: image
+              - value: emotion-picture-adult-joy-hortense
+                type: image
 
         - instructions:
             - locale: fr_FR
@@ -163,6 +193,12 @@ exercises_payload:
               - value: emotion-picture-adult-disgust-hortense
                 type: image
                 is_right_answer: true
+              - value: emotion-picture-adult-joy-hortense
+                type: image
+              - value: emotion-picture-adult-fear-hortense
+                type: image
+              - value: emotion-picture-adult-angry-hortense
+                type: image
 
         - instructions:
             - locale: fr_FR
@@ -177,6 +213,12 @@ exercises_payload:
               - value: emotion-picture-adult-angry-hortense
                 type: image
                 is_right_answer: true
+              - value: emotion-picture-adult-disgust-hortense
+                type: image
+              - value: emotion-picture-adult-fear-hortense
+                type: image
+              - value: emotion-picture-adult-sad-hortense
+                type: image
 
         - instructions:
             - locale: fr_FR
@@ -191,6 +233,12 @@ exercises_payload:
               - value: emotion-picture-adult-joy-hortense
                 type: image
                 is_right_answer: true
+              - value: emotion-picture-adult-sad-hortense
+                type: image
+              - value: emotion-picture-adult-angry-hortense
+                type: image
+              - value: emotion-picture-adult-disgust-hortense
+                type: image
 
         - instructions:
             - locale: fr_FR
@@ -205,6 +253,12 @@ exercises_payload:
               - value: emotion-picture-adult-fear-hortense
                 type: image
                 is_right_answer: true
+              - value: emotion-picture-adult-joy-hortense
+                type: image
+              - value: emotion-picture-adult-disgust-hortense
+                type: image
+              - value: emotion-picture-adult-sad-hortense
+                type: image
 
         - instructions:
             - locale: fr_FR
@@ -219,3 +273,9 @@ exercises_payload:
               - value: emotion-picture-adult-sad-hortense
                 type: image
                 is_right_answer: true
+              - value: emotion-picture-adult-angry-hortense
+                type: image
+              - value: emotion-picture-adult-fear-hortense
+                type: image
+              - value: emotion-picture-adult-joy-hortense
+                type: image

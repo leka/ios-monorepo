@@ -2,92 +2,72 @@
 # Copyright APF France handicap
 # SPDX-License-Identifier: Apache-2.0
 
-id: 4246413b-2fe4-4b53-aa0b-3b170f053eda
-name: emotion_recognition-2_pictures-ladislas-hugo
-description: L'objectif est de trouver la bonne image ou des les rassembler par famille
-image: activity_image_recognition_1
-sequence:
-  - exercises:
-      - instructions: Touche les animaux
-        interface: touchToSelect
-        gameplay: findTheRightAnswers
-        payload:
-          choices:
-            - value: image-placeholder-animals
-              type: image
-              isRightAnswer: true
+version: 1.0.0
 
-      - instructions: Touche le portrait
-        interface: touchToSelect
-        gameplay: findTheRightAnswers
-        payload:
-          choices:
-            - value: image-placeholder-food
-              type: image
-            - value: image-placeholder-portrait
-              type: image
-              isRightAnswer: true
+uuid: 195c7905-0188-4c1d-a3c9-0aed0199606d
+name: emotion_recognition-1_pictures-hortense
 
-      - instructions: Touche le paysage
-        interface: touchToSelect
-        gameplay: findTheRightAnswers
-        payload:
-          choices:
-            - value: image-placeholder-landscape
-              type: image
-              isRightAnswer: true
-            - value: image-placeholder-animals
-              type: image
-            - value: image-placeholder-food
-              type: image
+created_at: "2024-03-04T18:07:12.519229"
+last_edited_at: "2024-03-06T12:51:54.499453"
+status: published
 
-      - instructions: Touche la nourriture
-        interface: touchToSelect
-        gameplay: findTheRightAnswers
-        payload:
-          choices:
-            - value: image-placeholder-animals
-              type: image
-            - value: image-placeholder-portrait
-              type: image
-            - value: image-placeholder-food
-              type: image
-              isRightAnswer: true
-            - value: image-placeholder-landscape
-              type: image
+authors:
+  - leka
 
-      - instructions: Touche les animaux
-        interface: touchToSelect
-        gameplay: findTheRightAnswers
-        payload:
-          choices:
-            - value: image-placeholder-animals
-              type: image
-            - value: image-placeholder-food
-              type: image
-              isRightAnswer: true
-            - value: image-placeholder-landscape
-              type: image
-            - value: image-placeholder-portrait
-              type: image
-            - value: image-placeholder-food
-              type: image
+skills:
+  - recognition
+  - recognition/basic-emotions
+  - communication
+  - communication/verbal_communication
+  - communication/verbal_communication/receptive_language
 
-      - instructions: Touche le portrait
-        interface: touchToSelect
-        gameplay: findTheRightAnswers
-        payload:
-          choices:
-            - value: image-placeholder-animals
-              type: image
-            - value: image-placeholder-food
-              type: image
-            - value: image-placeholder-landscape
-              type: image
-            - value: image-placeholder-food
-              type: image
-            - value: image-placeholder-portrait
-              type: image
-              isRightAnswer: true
-            - value: image-placeholder-animals
-              type: image
+tags:
+  - emotions
+  - pictures
+
+hmi:
+  - tablet
+
+types:
+  - one_on_one
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon:
+
+      title: Reconnaissance des émotions en photos - Hortense #1
+      subtitle: Hortense - 1
+
+      short_description: |
+        Touche l'émotion demandée
+
+      description: |
+        L'enfant doit toucher l'émotion demandée.
+
+      instructions: |
+        - Sur l'écran, toucher le haut parleur pour que la personne accompagnée puisse entendre la consigne
+        - Encourager la personne accompagnée à toucher l'émotion demandée
+        - Lorsque la réponse est correct, Leka lance un renforçateur
+
+  - locale: en_US
+    details:
+      icon:
+
+      title: Emotion recognition in pictures - Hortense #1
+      subtitle: Hortense - 1
+
+      short_description: |
+        Touch the requested emotion
+
+      description: |
+        The care receiver must touch the requested emotion.
+
+      instructions: |
+        - On the screen, touch the speaker button to make the care receiver hear the instruction
+        - Encourage the care receiver to tap on the right picture
+        - When the answer is correct, Leka launches a reinforcer
