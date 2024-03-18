@@ -350,7 +350,7 @@ platform :ios do
     pr_number = options[:pr_number]
 
     commit_sha_pr_branch_head = last_git_commit[:abbreviated_commit_hash]
-    commit_sha_latest_test_flight_build = latest_build_number.split('.').last.to_i.to_s(16)
+    commit_sha_latest_test_flight_build = latest_build_number.split('.').last.to_i.to_s(16).rjust(8, '0')
 
     UI.message "commit_sha_pr_branch_head: #{commit_sha_pr_branch_head}"
     UI.message "commit_sha_latest_test_flight_build: #{commit_sha_latest_test_flight_build}"
