@@ -41,9 +41,11 @@ public class AuthManager {
     }
 
     public func signUp(email: String, password: String) {
+        self.loadingStatePublisher.send(true)
         self.auth.createUser(withEmail: email, password: password)
             .mapError { $0 as Error }
             .sink(receiveCompletion: { [weak self] completion in
+                self?.loadingStatePublisher.send(false)
                 switch completion {
                     case .finished:
                         break
@@ -61,7 +63,9 @@ public class AuthManager {
     }
 
     public func signIn(email: String, password: String) {
+        self.loadingStatePublisher.send(true)
         self.auth.signIn(withEmail: email, password: password) { [weak self] authResult, error in
+            self?.loadingStatePublisher.send(false)
             if let error {
                 log.error("Sign-in failed: \(error.localizedDescription)")
                 let errorMessage = String(l10n.AuthManager.signInFailedError.characters)
@@ -108,10 +112,15 @@ public class AuthManager {
         self.emailVerificationState.eraseToAnyPublisher()
     }
 
+    var isLoadingPublisher: AnyPublisher<Bool, Never> {
+        self.loadingStatePublisher.eraseToAnyPublisher()
+    }
+
     // MARK: Private
 
     private let authenticationState = CurrentValueSubject<AuthenticationState, Never>(.unknown)
     private let authenticationError = PassthroughSubject<Error, Never>()
+    private let loadingStatePublisher = PassthroughSubject<Bool, Never>()
     private let emailVerificationState = PassthroughSubject<Bool, Never>()
     private let auth = Auth.auth()
     private var cancellables = Set<AnyCancellable>()

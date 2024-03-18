@@ -31,6 +31,7 @@ public class AuthManagerViewModel: ObservableObject {
     @Published public var showErrorAlert = false
     @Published public var actionRequestMessage: String = ""
     @Published public var showactionRequestAlert = false
+    @Published public var isLoading: Bool = false
 
     public func resetErrorMessage() {
         self.errorMessage = ""
@@ -62,6 +63,10 @@ public class AuthManagerViewModel: ObservableObject {
                 self?.showErrorAlert = true
             }
             .store(in: &self.cancellables)
+
+        self.authManager.isLoadingPublisher
+            .receive(on: DispatchQueue.main)
+            .assign(to: &self.$isLoading)
 
         self.authManager.emailVerificationStatePublisher
             .receive(on: DispatchQueue.main)
