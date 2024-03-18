@@ -63,6 +63,14 @@ Submit new internal beta app
 
 Release new app version to App Store Connect
 
+### ios generate_changelogs
+
+```sh
+[bundle exec] fastlane ios generate_changelogs
+```
+
+Generate changelogs for TestFlight, Github and Slack
+
 ----
 
 This README.md is auto-generated and will be re-generated every time [_fastlane_](https://fastlane.tools) is run.
