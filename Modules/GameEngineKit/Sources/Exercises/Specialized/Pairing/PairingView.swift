@@ -13,15 +13,17 @@ struct PairingView: View {
 
     init() {
         self.shared = ExerciseSharedData()
+        self.robotManager = RobotManager(data: ExerciseSharedData())
     }
 
     init(data: ExerciseSharedData? = nil) {
         self.shared = data
+        self.robotManager = RobotManager(data: data!)
     }
 
     // MARK: Internal
 
-    let robotManager = RobotManager()
+    let robotManager: RobotManager
     let shared: ExerciseSharedData?
 
     var body: some View {
@@ -57,6 +59,12 @@ struct PairingView: View {
             }
 
             Spacer()
+        }
+        .onDisappear {
+            self.shared?.state = .completed(level: .nonApplicable)
+            self.robotManager.stopPairing()
+            self.isPlaying = false
+            self.hasStarted = false
         }
     }
 

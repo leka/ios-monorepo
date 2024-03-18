@@ -9,7 +9,15 @@ import SwiftUI
 
 extension PairingView {
     class RobotManager {
+        // MARK: Lifecycle
+
+        init(data: ExerciseSharedData) {
+            self.shared = data
+        }
+
         // MARK: Internal
+
+        let shared: ExerciseSharedData
 
         func startPairing() {
             self.isAnimationRunning = true
@@ -38,20 +46,20 @@ extension PairingView {
         private let robot = Robot.shared
 
         private func runRandomAnimation() {
-            guard self.isAnimationRunning else { return }
+            guard self.isAnimationRunning, !self.shared.isCompleted else { return }
 
             let randomInterval = Double.random(in: 10.0...15.0)
             self.isBreathing = true
             self.breathe()
 
             DispatchQueue.main.asyncAfter(deadline: .now() + randomInterval) {
-                guard self.isAnimationRunning else { return }
+                guard self.isAnimationRunning, !self.shared.isCompleted else { return }
                 self.isBreathing = false
                 let currentAnimation = Animation.allCases.randomElement()!
                 self.play(currentAnimation)
 
                 DispatchQueue.main.asyncAfter(deadline: .now() + currentAnimation.duration()) {
-                    guard self.isAnimationRunning else { return }
+                    guard self.isAnimationRunning, !self.shared.isCompleted else { return }
                     self.runRandomAnimation()
                 }
             }
@@ -63,7 +71,7 @@ extension PairingView {
 
             for (duration, action) in actions {
                 DispatchQueue.main.asyncAfter(deadline: .now() + self.animationTime) {
-                    guard self.isAnimationRunning else { return }
+                    guard self.isAnimationRunning, !self.shared.isCompleted else { return }
                     action()
                 }
                 self.animationTime += duration
@@ -71,7 +79,7 @@ extension PairingView {
         }
 
         private func breathe() {
-            guard self.isAnimationRunning, self.isBreathing else { return }
+            guard self.isAnimationRunning, self.isBreathing, !self.shared.isCompleted else { return }
 
             self.updateLightIntensity()
 
