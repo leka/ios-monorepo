@@ -5,30 +5,30 @@
 import LocalizationKit
 
 extension l10n {
-    enum PairingView {
-        static let instructions = LocalizedString("lekaapp.pairing_view.player.instructions",
+    enum DiscoverLekaView {
+        static let instructions = LocalizedString("game_engine_kit.discover_leka_view.player.instructions",
                                                   bundle: GameEngineKitResources.bundle,
                                                   value: """
-                                                      Pairing mode allows the accompanied person to become familiar with Leka
+                                                      "Discover Leka" allows the accompanied person to become familiar with Leka
                                                       before even entering into learning Activities and Curriculums.
                                                       The robot will come to life, taking pauses so that the care receiver can
                                                       tame your new companion!
                                                       """,
-                                                  comment: "PairingView instructions")
+                                                  comment: "DiscoverLekaView instructions")
 
-        static let playButtonLabel = LocalizedString("lekaapp.pairing_view.play_button_label",
+        static let playButtonLabel = LocalizedString("game_engine_kit.discover_leka_view.play_button_label",
                                                      bundle: GameEngineKitResources.bundle,
                                                      value: "Play",
-                                                     comment: "PairingView play button label")
+                                                     comment: "Discover LekaView play button label")
 
-        static let pauseButtonLabel = LocalizedString("lekaapp.pairing_view.pause_button_label",
+        static let pauseButtonLabel = LocalizedString("game_engine_kit.discover_leka_view.pause_button_label",
                                                       bundle: GameEngineKitResources.bundle,
                                                       value: "Pause",
-                                                      comment: "PairingView pause button label")
+                                                      comment: "DiscoverLekaView pause button label")
 
-        static let stopButtonLabel = LocalizedString("lekaapp.pairing_view.stop_button_label",
+        static let stopButtonLabel = LocalizedString("game_engine_kit.discover_leka_view.stop_button_label",
                                                      bundle: GameEngineKitResources.bundle,
                                                      value: "Stop",
-                                                     comment: "PairingView stop button label")
+                                                     comment: "DiscoverLekaView stop button label")
     }
 }

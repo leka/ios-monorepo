@@ -285,7 +285,7 @@ public struct ActivityView: View {
                 )
 
             case .pairing:
-                PairingView(
+                DiscoverLekaView(
                     data: self.viewModel.currentExerciseSharedData
                 )
         }

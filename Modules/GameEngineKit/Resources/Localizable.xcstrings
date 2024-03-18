@@ -2,6 +2,78 @@
     "version": "1.0",
     "sourceLanguage": "en",
     "strings": {
+        "game_engine_kit.discover_leka_view.pause_button_label": {
+            "comment": "DiscoverLekaView pause button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Pause"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Pause"
+                    }
+                }
+            }
+        },
+        "game_engine_kit.discover_leka_view.play_button_label": {
+            "comment": "Discover LekaView play button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Play"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Jouer"
+                    }
+                }
+            }
+        },
+        "game_engine_kit.discover_leka_view.player.instructions": {
+            "comment": "DiscoverLekaView instructions",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "\"Discover Leka\" allows the accompanied person to become familiar with Leka\nbefore even entering into learning Activities and Curriculums.\nThe robot will come to life, taking pauses so that the care receiver can\ntame your new companion!"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "\"D\u00e9couvre Leka\" permet \u00e0 la personne accompagn\u00e9e de se familiariser \u00e0 Leka\navant m\u00eame d'entrer dans les apprentissages des Activit\u00e9s et des Parcours.\nLe robot va s'animer en faisant des pauses afin que\nla personne accompagn\u00e9e puisse apprivoiser son nouveau compagnon !"
+                    }
+                }
+            }
+        },
+        "game_engine_kit.discover_leka_view.stop_button_label": {
+            "comment": "DiscoverLekaView stop button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Stop"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Stop"
+                    }
+                }
+            }
+        },
         "gameenginekit.activity_view.continue_button": {
             "comment": "The title of the continue button",
             "extractionState": "extracted_with_value",
@@ -484,78 +556,6 @@
                     "stringUnit": {
                         "state": "translated",
                         "value": "S\u00e9lection de la musique"
-                    }
-                }
-            }
-        },
-        "lekaapp.pairing_view.pause_button_label": {
-            "comment": "PairingView pause button label",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Pause"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Pause"
-                    }
-                }
-            }
-        },
-        "lekaapp.pairing_view.play_button_label": {
-            "comment": "PairingView play button label",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Play"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Jouer"
-                    }
-                }
-            }
-        },
-        "lekaapp.pairing_view.player.instructions": {
-            "comment": "PairingView instructions",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Pairing mode allows the accompanied person to become familiar with Leka\nbefore even entering into learning Activities and Curriculums.\nThe robot will come to life, taking pauses so that the care receiver can\ntame your new companion!"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Le mode Pairing permet \u00e0 la personne accompagn\u00e9e de se familiariser \u00e0 Leka\navant m\u00eame d'entrer dans les apprentissages des Activit\u00e9s et des Parcours.\nLe robot va s'animer en faisant des pauses afin que\nla personne accompagn\u00e9e puisse apprivoiser son nouveau compagnon !"
-                    }
-                }
-            }
-        },
-        "lekaapp.pairing_view.stop_button_label": {
-            "comment": "PairingView stop button label",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Stop"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Stop"
                     }
                 }
             }

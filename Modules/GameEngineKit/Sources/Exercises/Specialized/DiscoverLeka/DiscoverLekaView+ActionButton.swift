@@ -7,7 +7,7 @@ import SwiftUI
 
 // MARK: - Action
 
-extension PairingView {
+extension DiscoverLekaView {
     struct ActionButton: View {
         // MARK: Lifecycle
 
@@ -49,7 +49,7 @@ extension PairingView {
 }
 
 #Preview {
-    PairingView.ActionButton(.stop, text: "Stop", hasStarted: true) {
+    DiscoverLekaView.ActionButton(.stop, text: "Stop", hasStarted: true) {
         print("Button tapped !")
     }
 }

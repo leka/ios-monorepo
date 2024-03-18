@@ -5,7 +5,7 @@
 import RobotKit
 import SwiftUI
 
-extension PairingView {
+extension DiscoverLekaView {
     enum Animation: CaseIterable {
         case quickMove
         case spin

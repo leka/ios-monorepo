@@ -5,7 +5,7 @@
 import DesignKit
 import SwiftUI
 
-extension PairingView {
+extension DiscoverLekaView {
     enum ActionType {
         case start
         case pause

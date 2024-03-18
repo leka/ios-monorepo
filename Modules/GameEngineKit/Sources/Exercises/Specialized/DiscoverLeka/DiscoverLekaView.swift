@@ -6,27 +6,29 @@ import ContentKit
 import LocalizationKit
 import SwiftUI
 
-// MARK: - PairingView
+// MARK: - DiscoverLekaView
 
-struct PairingView: View {
+struct DiscoverLekaView: View {
     // MARK: Lifecycle
 
     init() {
         self.shared = ExerciseSharedData()
+        self.robotManager = RobotManager(data: ExerciseSharedData())
     }
 
     init(data: ExerciseSharedData? = nil) {
         self.shared = data
+        self.robotManager = RobotManager(data: data!)
     }
 
     // MARK: Internal
 
-    let robotManager = RobotManager()
+    let robotManager: RobotManager
     let shared: ExerciseSharedData?
 
     var body: some View {
         VStack {
-            Text(l10n.PairingView.instructions)
+            Text(l10n.DiscoverLekaView.instructions)
                 .font(.headline)
                 .foregroundColor(.primary)
                 .multilineTextAlignment(.center)
@@ -35,19 +37,19 @@ struct PairingView: View {
 
             HStack(spacing: 180) {
                 if self.isPlaying {
-                    ActionButton(.pause, text: String(l10n.PairingView.pauseButtonLabel.characters)) {
+                    ActionButton(.pause, text: String(l10n.DiscoverLekaView.pauseButtonLabel.characters)) {
                         self.robotManager.pausePairing()
                         self.isPlaying = false
                     }
                 } else {
-                    ActionButton(.start, text: String(l10n.PairingView.playButtonLabel.characters)) {
+                    ActionButton(.start, text: String(l10n.DiscoverLekaView.playButtonLabel.characters)) {
                         self.robotManager.startPairing()
                         self.isPlaying = true
                         self.hasStarted = true
                     }
                 }
 
-                ActionButton(.stop, text: String(l10n.PairingView.stopButtonLabel.characters), hasStarted: self.hasStarted) {
+                ActionButton(.stop, text: String(l10n.DiscoverLekaView.stopButtonLabel.characters), hasStarted: self.hasStarted) {
                     self.robotManager.stopPairing()
 
                     self.isPlaying = false
@@ -58,6 +60,12 @@ struct PairingView: View {
 
             Spacer()
         }
+        .onDisappear {
+            self.shared?.state = .completed(level: .nonApplicable)
+            self.robotManager.stopPairing()
+            self.isPlaying = false
+            self.hasStarted = false
+        }
     }
 
     // MARK: Private
@@ -67,5 +75,5 @@ struct PairingView: View {
 }
 
 #Preview {
-    PairingView()
+    DiscoverLekaView()
 }
