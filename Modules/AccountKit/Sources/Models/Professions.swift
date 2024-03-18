@@ -20,7 +20,7 @@ public class Professions: Codable {
     // MARK: Public
 
     public static var list: [Profession] {
-        shared.container.list.sorted { $0.name < $1.name }
+        shared.container.list.sorted { $0.name.compare($1.name, locale: NSLocale.current) == .orderedAscending }
     }
 
     public static var version: Version {
