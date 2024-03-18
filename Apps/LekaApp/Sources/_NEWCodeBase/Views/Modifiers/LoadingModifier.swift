@@ -29,3 +29,21 @@ extension View {
         modifier(LoadingModifier(isLoading: isLoading))
     }
 }
+
+#Preview {
+    VStack {
+        Button {}
+            label: {
+                Text("Connect")
+                    .loadingText(isLoading: false)
+            }
+            .buttonStyle(.borderedProminent)
+
+        Button {}
+            label: {
+                Text("Connect")
+                    .loadingText(isLoading: true)
+            }
+            .buttonStyle(.borderedProminent)
+    }
+}
