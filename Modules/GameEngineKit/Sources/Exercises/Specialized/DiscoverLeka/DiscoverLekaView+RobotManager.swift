@@ -7,7 +7,7 @@ import ContentKit
 import RobotKit
 import SwiftUI
 
-extension PairingView {
+extension DiscoverLekaView {
     class RobotManager {
         // MARK: Lifecycle
 
