@@ -54,6 +54,8 @@ class Navigation: ObservableObject {
 
     @Published var currentActivity: Activity?
 
+    @Published var navigateToAccountCreationProcess: Bool = false
+
     var selectedCategory: Category? = .news {
         willSet {
             self.disableUICompletly = true
