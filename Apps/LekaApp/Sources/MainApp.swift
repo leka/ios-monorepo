@@ -26,8 +26,6 @@ struct LekaApp: App {
 
     @ObservedObject var styleManager: StyleManager = .shared
 
-    @StateObject var authManagerViewModel = AuthManagerViewModel.shared
-
     var body: some Scene {
         WindowGroup {
             MainView()
