@@ -50,6 +50,7 @@ struct CaregiverPicker: View {
         }
         .padding(.horizontal, 50)
         .navigationTitle(String(l10n.CaregiverPicker.title.characters))
+        .loadingText(isLoading: self.caregiverManagerViewModel.isLoading)
         .sheet(isPresented: self.$isCaregiverCreationPresented) {
             NavigationStack {
                 CreateCaregiverView()

@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import Combine
+import Foundation
 
 public class CaregiverManager {
     // MARK: Lifecycle
@@ -17,6 +18,7 @@ public class CaregiverManager {
 
     public func initializeCaregiversListener() {
         self.dbOps.observeAll(from: .caregivers)
+            .handleLoadingState(using: self.loadingStatePublisher)
             .sink(receiveCompletion: { [weak self] completion in
                 if case let .failure(error) = completion {
                     self?.fetchErrorSubject.send(error)
@@ -29,6 +31,7 @@ public class CaregiverManager {
 
     public func fetchCaregiver(documentID: String) {
         self.dbOps.read(from: .caregivers, documentID: documentID)
+            .handleLoadingState(using: self.loadingStatePublisher)
             .sink(receiveCompletion: { [weak self] completion in
                 if case let .failure(error) = completion {
                     self?.fetchErrorSubject.send(error)
@@ -40,7 +43,8 @@ public class CaregiverManager {
     }
 
     public func createCaregiver(caregiver: Caregiver) -> AnyPublisher<Caregiver, Error> {
-        self.dbOps.create(data: caregiver, in: .caregivers)
+        self.loadingStatePublisher.send(true)
+        return self.dbOps.create(data: caregiver, in: .caregivers)
             .flatMap { [weak self] createdCaregiver -> AnyPublisher<Caregiver, Error> in
                 guard self != nil else {
                     return Fail(error: DatabaseError.customError("Unexpected Nil Value")).eraseToAnyPublisher()
@@ -50,9 +54,19 @@ public class CaregiverManager {
                     .setFailureType(to: Error.self)
                     .eraseToAnyPublisher()
             }
-            .handleEvents(receiveOutput: { [weak self] _ in
-                self?.initializeCaregiversListener()
-            })
+            .handleEvents(
+                receiveCompletion: { [weak self] _ in
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                        self?.loadingStatePublisher.send(false)
+                    }
+                    self?.initializeCaregiversListener()
+                },
+                receiveCancel: { [weak self] in
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                        self?.loadingStatePublisher.send(false)
+                    }
+                }
+            )
             .eraseToAnyPublisher()
     }
 
@@ -60,6 +74,7 @@ public class CaregiverManager {
         caregiver.lastEditedAt = nil
         let documentID = caregiver.id!
         self.dbOps.update(data: caregiver, in: .caregivers)
+            .handleLoadingState(using: self.loadingStatePublisher)
             .sink(receiveCompletion: { completion in
                 if case let .failure(error) = completion {
                     self.fetchErrorSubject.send(error)
@@ -72,6 +87,7 @@ public class CaregiverManager {
 
     public func deleteCaregiver(documentID: String) {
         self.dbOps.delete(from: .caregivers, documentID: documentID)
+            .handleLoadingState(using: self.loadingStatePublisher)
             .sink(receiveCompletion: { completion in
                 if case let .failure(error) = completion {
                     self.fetchErrorSubject.send(error)
@@ -108,10 +124,15 @@ public class CaregiverManager {
         self.fetchErrorSubject.eraseToAnyPublisher()
     }
 
+    var isLoadingPublisher: AnyPublisher<Bool, Never> {
+        self.loadingStatePublisher.eraseToAnyPublisher()
+    }
+
     // MARK: Private
 
     private var caregiverList = CurrentValueSubject<[Caregiver], Never>([])
     private var currentCaregiver = CurrentValueSubject<Caregiver?, Never>(nil)
+    private let loadingStatePublisher = PassthroughSubject<Bool, Never>()
     private var fetchErrorSubject = PassthroughSubject<Error, Never>()
     private let dbOps = DatabaseOperations.shared
     private var cancellables = Set<AnyCancellable>()
