@@ -686,6 +686,24 @@
                 }
             }
         },
+        "lekaapp.caregiver_creation.close_button_label": {
+            "comment": " Caregiver creation close button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Close"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Fermer"
+                    }
+                }
+            }
+        },
         "lekaapp.caregiver_creation.profession_add_button": {
             "comment": "Caregiver creation profession add button label",
             "extractionState": "extracted_with_value",
@@ -898,6 +916,24 @@
                     "stringUnit": {
                         "state": "translated",
                         "value": "Nom d'utilisateur"
+                    }
+                }
+            }
+        },
+        "lekaapp.carereceiver_creation.close_button_label": {
+            "comment": " Carereceiver creation close button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Close"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Femer"
                     }
                 }
             }
