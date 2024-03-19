@@ -64,7 +64,8 @@ public struct ChoiceImageView: View {
 
     @ViewBuilder
     var circle: some View {
-        if let uiImage = UIImage(named: image) {
+        // TODO: (@ladislas) fix use of module as it would not work in LekaApp
+        if let uiImage = UIImage(named: image, in: .module, with: nil) {
             Image(uiImage: uiImage)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
@@ -101,21 +102,21 @@ public struct ChoiceImageView: View {
 #Preview {
     VStack(spacing: 30) {
         HStack(spacing: 50) {
-            ChoiceImageView(image: "image-placeholder-animals", size: 200)
+            ChoiceImageView(image: "image-placeholder-png-boy_sleeping", size: 200)
             ChoiceImageView(image: "image-placeholder-missing", size: 200)
         }
 
         HStack(spacing: 50) {
-            ChoiceImageView(image: "image-placeholder-animals", size: 200)
-            ChoiceImageView(image: "image-placeholder-animals", size: 200, state: .rightAnswer)
-            ChoiceImageView(image: "image-placeholder-animals", size: 200, state: .wrongAnswer)
+            ChoiceImageView(image: "image-placeholder-png-boy_sleeping", size: 200)
+            ChoiceImageView(image: "image-placeholder-png-boy_sleeping", size: 200, state: .rightAnswer)
+            ChoiceImageView(image: "image-placeholder-png-boy_sleeping", size: 200, state: .wrongAnswer)
         }
 
         HStack(spacing: 0) {
-            ChoiceImageView(image: "image-placeholder-animals", size: 200)
+            ChoiceImageView(image: "image-placeholder-png-boy_sleeping", size: 200)
             ChoiceColorView(color: "blue", size: 200)
 
-            ChoiceImageView(image: "image-placeholder-animals", size: 200, state: .rightAnswer)
+            ChoiceImageView(image: "image-placeholder-png-boy_sleeping", size: 200, state: .rightAnswer)
             ChoiceColorView(color: "blue", size: 200, state: .rightAnswer)
         }
     }
