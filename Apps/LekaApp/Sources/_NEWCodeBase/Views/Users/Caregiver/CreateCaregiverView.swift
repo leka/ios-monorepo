@@ -89,7 +89,7 @@ struct CreateCaregiverView: View {
                         .navigationBarTitleDisplayMode(.inline)
                 }
 
-                Button(String(l10n.CaregiverCreation.registerProfilButton.characters)) {
+                Button {
                     if self.newCaregiver.avatar.isEmpty {
                         self.newCaregiver.avatar = Avatars.categories.first!.avatars.randomElement()!
                     }
@@ -103,8 +103,11 @@ struct CreateCaregiverView: View {
                         // Handle error
                         print(error.localizedDescription)
                     })
+                } label: {
+                    Text(String(l10n.CaregiverCreation.registerProfilButton.characters))
+                        .loadingIndicator(isLoading: self.caregiverManagerViewModel.isLoading)
                 }
-                .disabled(self.newCaregiver.firstName.isEmpty)
+                .disabled(self.newCaregiver.firstName.isEmpty || self.caregiverManagerViewModel.isLoading)
                 .buttonStyle(.borderedProminent)
                 .listRowBackground(Color.clear)
                 .frame(maxWidth: .infinity, alignment: .center)
@@ -143,6 +146,7 @@ struct CreateCaregiverView: View {
     }
 
     @StateObject private var viewModel = CreateCaregiverViewModel()
+    @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
 
     @State private var newCaregiver = Caregiver()
     @State private var isAvatarPickerPresented: Bool = false
