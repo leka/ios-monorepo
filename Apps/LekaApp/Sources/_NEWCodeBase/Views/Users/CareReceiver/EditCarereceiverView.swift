@@ -78,7 +78,7 @@ struct EditCarereceiverView: View {
         .sheet(isPresented: self.$isAvatarPickerPresented) {
             NavigationStack {
                 AvatarPicker(selectedAvatar: self.modifiedCarereceiver.avatar,
-                             onValidate: { avatar in
+                             onSelect: { avatar in
                                  self.modifiedCarereceiver.avatar = avatar
                              })
                              .navigationBarTitleDisplayMode(.inline)

@@ -88,7 +88,7 @@ struct CreateCaregiverView: View {
                     ProfessionListView(caregiver: self.$newCaregiver)
                 }
 
-                Button(String(l10n.CaregiverCreation.registerProfilButton.characters)) {
+                Button(String(l10n.CaregiverCreation.createProfilButton.characters)) {
                     if self.newCaregiver.avatar.isEmpty {
                         self.newCaregiver.avatar = Avatars.categories.first!.avatars.randomElement()!
                     }
@@ -161,7 +161,7 @@ struct CreateCaregiverView: View {
         .sheet(isPresented: self.$isAvatarPickerPresented) {
             NavigationStack {
                 AvatarPicker(selectedAvatar: self.newCaregiver.avatar,
-                             onValidate: { avatar in
+                             onSelect: { avatar in
                                  self.newCaregiver.avatar = avatar
                              })
                              .navigationBarTitleDisplayMode(.inline)
@@ -189,7 +189,7 @@ extension l10n {
 
         static let professionAddButton = LocalizedString("lekaapp.caregiver_creation.profession_add_button", value: "Add", comment: "Caregiver creation profession add button label")
 
-        static let registerProfilButton = LocalizedString("lekaapp.caregiver_creation.register_profil_button", value: "Register profile", comment: "Caregiver creation register profil button label")
+        static let createProfilButton = LocalizedString("lekaapp.caregiver_creation.create_profil_button", value: "Create profile", comment: "Caregiver creation create profil button label")
 
         static let closeButtonLabel = LocalizedString("lekaapp.caregiver_creation.close_button_label", value: "Close", comment: " Caregiver creation close button label")
     }

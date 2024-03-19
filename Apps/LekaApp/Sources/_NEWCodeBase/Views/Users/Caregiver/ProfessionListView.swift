@@ -28,7 +28,7 @@ struct ProfessionListView: View {
                 .sheet(isPresented: self.$isProfessionPickerPresented) {
                     NavigationStack {
                         ProfessionPicker(selectedProfessionsIDs: self.caregiver.professions,
-                                         onValidate: { professions in
+                                         onSelect: { professions in
                                              self.caregiver.professions = professions
                                          })
                                          .navigationBarTitleDisplayMode(.inline)

@@ -10,9 +10,9 @@ import SwiftUI
 struct AvatarPicker: View {
     // MARK: Lifecycle
 
-    init(selectedAvatar: String, onCancel: (() -> Void)? = nil, onValidate: ((String) -> Void)? = nil) {
+    init(selectedAvatar: String, onCancel: (() -> Void)? = nil, onSelect: ((String) -> Void)? = nil) {
         self.onCancel = onCancel
-        self.onValidate = onValidate
+        self.onSelect = onSelect
         self._selectedAvatar = State(wrappedValue: selectedAvatar)
     }
 
@@ -21,7 +21,7 @@ struct AvatarPicker: View {
     @Environment(\.dismiss) var dismiss
     @State var selectedAvatar: String = ""
     let onCancel: (() -> Void)?
-    let onValidate: ((String) -> Void)?
+    let onSelect: ((String) -> Void)?
 
     var body: some View {
         ListView(selectedAvatar: self.$selectedAvatar)
@@ -32,15 +32,15 @@ struct AvatarPicker: View {
                         self.action = .cancel
                         self.dismiss()
                     } label: {
-                        Image(systemName: "xmark.circle")
+                        Text(l10n.AvatarPicker.closeButtonLabel)
                     }
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
-                        self.action = .validate
+                        self.action = .select
                         self.dismiss()
                     } label: {
-                        Label(String(l10n.AvatarPicker.validateButton.characters), systemImage: "checkmark.circle")
+                        Text(l10n.AvatarPicker.selectButtonLabel)
                     }
                     .disabled(self.selectedAvatar.isEmpty)
                 }
@@ -49,8 +49,8 @@ struct AvatarPicker: View {
                 switch self.action {
                     case .cancel:
                         self.onCancel?()
-                    case .validate:
-                        self.onValidate?(self.selectedAvatar)
+                    case .select:
+                        self.onSelect?(self.selectedAvatar)
                     case .none:
                         break
                 }
@@ -63,7 +63,7 @@ struct AvatarPicker: View {
 
     private enum ActionType {
         case cancel
-        case validate
+        case select
     }
 
     @State private var action: ActionType?
@@ -76,7 +76,7 @@ struct AvatarPicker: View {
             onCancel: {
                 print("Avatar choice canceled")
             },
-            onValidate: {
+            onSelect: {
                 print("You chose \($0)")
             }
         )

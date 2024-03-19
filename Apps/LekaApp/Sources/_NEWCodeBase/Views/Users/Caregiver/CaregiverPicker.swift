@@ -63,7 +63,7 @@ struct CaregiverPicker: View {
                     self.caregiverManager.setCurrentCaregiver(to: self.selectedCaregiver!)
                     self.dismiss()
                 } label: {
-                    Text(l10n.CaregiverPicker.validateButtonLabel)
+                    Text(l10n.CaregiverPicker.selectButtonLabel)
                 }
                 .disabled(self.selectedCaregiver == nil)
             }
@@ -121,7 +121,7 @@ extension l10n {
 
         static let title = LocalizedString("lekaapp.caregiver_picker.title", value: "Who are you ?", comment: "Caregiver picker title")
 
-        static let validateButtonLabel = LocalizedString("lekaapp.caregiver_picker.validate_button_label", value: "Validate", comment: "Caregiver picker validate button label")
+        static let selectButtonLabel = LocalizedString("lekaapp.caregiver_picker.select_button_label", value: "Select", comment: "Caregiver picker select button label")
 
         static let addButtonLabel = LocalizedString("lekaapp.caregiver_picker.add_button_label", value: "Add profile", comment: "Caregiver picker add button label")
 

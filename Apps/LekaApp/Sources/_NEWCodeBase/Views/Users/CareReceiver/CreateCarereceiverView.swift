@@ -76,7 +76,7 @@ struct CreateCarereceiverView: View {
                     }
                 }
 
-                Button(String(l10n.CarereceiverCreation.registerProfilButton.characters)) {
+                Button(String(l10n.CarereceiverCreation.createProfilButton.characters)) {
                     if self.newCarereceiver.avatar.isEmpty {
                         self.newCarereceiver.avatar = Avatars.categories.first!.avatars.randomElement()!
                     }
@@ -149,7 +149,7 @@ struct CreateCarereceiverView: View {
         .sheet(isPresented: self.$isAvatarPickerPresented) {
             NavigationStack {
                 AvatarPicker(selectedAvatar: self.newCarereceiver.avatar,
-                             onValidate: { avatar in
+                             onSelect: { avatar in
                                  self.newCarereceiver.avatar = avatar
                              })
                              .navigationBarTitleDisplayMode(.inline)
@@ -171,7 +171,7 @@ extension l10n {
 
         static let carereceiverNameLabel = LocalizedString("lekaapp.carereceiver_creation.carereceiver_name_label", value: "Username", comment: " Carereceiver creation carereceiver name textfield label")
 
-        static let registerProfilButton = LocalizedString("lekaapp.carereceiver_creation.register_profil_button", value: "Register profile", comment: " Carereceiver creation register profil button label")
+        static let createProfilButton = LocalizedString("lekaapp.carereceiver_creation.create_profil_button", value: "Create profile", comment: " Carereceiver creation create profil button label")
 
         static let closeButtonLabel = LocalizedString("lekaapp.carereceiver_creation.close_button_label", value: "Close", comment: " Carereceiver creation close button label")
     }
