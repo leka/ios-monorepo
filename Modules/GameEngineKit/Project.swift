@@ -22,5 +22,6 @@ let project = Project.module(
         .external(name: "SwiftUIJoystick"),
         .external(name: "AudioKit"),
         .external(name: "Fit"),
+        .external(name: "SVGView"),
     ]
 )
