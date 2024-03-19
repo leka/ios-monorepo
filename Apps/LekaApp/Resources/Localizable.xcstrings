@@ -848,6 +848,24 @@
                 }
             }
         },
+        "lekaapp.caregiver_picker.validate_button_label": {
+            "comment": "Caregiver picker validate button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Validate"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Valider"
+                    }
+                }
+            }
+        },
         "lekaapp.carereceiver_creation.avatar_choice_button": {
             "comment": " Carereceiver creation avatar choice button label",
             "extractionState": "extracted_with_value",
