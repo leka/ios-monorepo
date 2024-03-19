@@ -16,45 +16,47 @@ struct CaregiverPicker: View {
 
     var body: some View {
         VStack {
-            if self.caregiverManagerViewModel.caregivers.isEmpty {
-                VStack {
-                    Text(l10n.CaregiverPicker.AddFirstCaregiver.message)
-                        .font(.title2)
-                        .multilineTextAlignment(.center)
+            Group {
+                if self.caregiverManagerViewModel.caregivers.isEmpty {
+                    VStack {
+                        Text(l10n.CaregiverPicker.AddFirstCaregiver.message)
+                            .font(.title2)
+                            .multilineTextAlignment(.center)
 
-                    Button {
-                        self.isCaregiverCreationPresented = true
-                    } label: {
-                        Text(l10n.CaregiverPicker.AddFirstCaregiver.buttonLabel)
+                        Button {
+                            self.isCaregiverCreationPresented = true
+                        } label: {
+                            Text(l10n.CaregiverPicker.AddFirstCaregiver.buttonLabel)
+                        }
+                        .buttonStyle(.borderedProminent)
                     }
-                    .buttonStyle(.borderedProminent)
-                }
-            } else {
-                ScrollView(showsIndicators: false) {
-                    LazyVGrid(columns: self.columns, spacing: 40) {
-                        ForEach(self.caregiverManagerViewModel.caregivers, id: \.id) { caregiver in
-                            Button {
-                                self.styleManager.colorScheme = caregiver.colorScheme
-                                self.styleManager.accentColor = caregiver.colorTheme.color
-                                self.caregiverManager.setCurrentCaregiver(to: caregiver)
-                                self.dismiss()
-                            } label: {
-                                CaregiverAvatarCell(caregiver: caregiver)
-                                    .frame(maxWidth: 140)
+                } else {
+                    ScrollView(showsIndicators: false) {
+                        LazyVGrid(columns: self.columns, spacing: 40) {
+                            ForEach(self.caregiverManagerViewModel.caregivers, id: \.id) { caregiver in
+                                Button {
+                                    self.styleManager.colorScheme = caregiver.colorScheme
+                                    self.styleManager.accentColor = caregiver.colorTheme.color
+                                    self.caregiverManager.setCurrentCaregiver(to: caregiver)
+                                    self.dismiss()
+                                } label: {
+                                    CaregiverAvatarCell(caregiver: caregiver)
+                                        .frame(maxWidth: 140)
+                                }
+                                .disabled(self.caregiverManagerViewModel.isLoading)
                             }
                         }
                     }
+                    .padding()
                 }
-                .padding()
             }
+            .loadingIndicator(isLoading: self.caregiverManagerViewModel.isLoading)
         }
         .padding(.horizontal, 50)
         .navigationTitle(String(l10n.CaregiverPicker.title.characters))
-        .loadingIndicator(isLoading: self.caregiverManagerViewModel.isLoading)
         .sheet(isPresented: self.$isCaregiverCreationPresented) {
             NavigationStack {
                 CreateCaregiverView()
-                    .navigationBarTitleDisplayMode(.inline)
             }
         }
         .toolbar {
