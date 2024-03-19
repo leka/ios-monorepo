@@ -8,11 +8,13 @@ import LocalizationKit
 
 extension l10n {
     enum ProfessionPicker {
-        static let title = LocalizedString("lekaapp.profession_picker.title", value: "Profession choice", comment: "Profession picker title")
+        static let title = LocalizedString("lekaapp.profession_picker.title", value: "List of professions", comment: "Profession picker title")
 
         static let otherLabel = LocalizedString("lekaapp.profession_picker.other_label", value: "Other (specify)", comment: "Profession picker other profession label")
 
-        static let validateButton = LocalizedString("lekaapp.profession_picker.validate_button", value: "Validate selection", comment: "Profession picker validate button")
+        static let validateButtonLabel = LocalizedString("lekaapp.profession_picker.validate_button_label", value: "Validate", comment: "Profession picker validate button label")
+
+        static let closeButtonLabel = LocalizedString("lekaapp.profession_picker.close_button_label", value: "Close", comment: "Profession picker close button label")
     }
 }
 

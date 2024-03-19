@@ -31,6 +31,7 @@ struct ProfessionListView: View {
                                          onValidate: { professions in
                                              self.caregiver.professions = professions
                                          })
+                                         .navigationBarTitleDisplayMode(.inline)
                     }
                 }
             }

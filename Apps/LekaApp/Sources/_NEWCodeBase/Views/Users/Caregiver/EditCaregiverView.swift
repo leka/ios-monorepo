@@ -48,7 +48,6 @@ struct EditCaregiverView: View {
 
                 Section {
                     ProfessionListView(caregiver: self.$viewModel.caregiver)
-                        .navigationBarTitleDisplayMode(.inline)
                 }
 
                 Section {

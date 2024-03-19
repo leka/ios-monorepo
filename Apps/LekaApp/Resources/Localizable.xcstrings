@@ -933,7 +933,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Femer"
+                        "value": "Fermer"
                     }
                 }
             }
@@ -1352,6 +1352,24 @@
                 }
             }
         },
+        "lekaapp.profession_picker.close_button_label": {
+            "comment": "Profession picker close button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Close"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Fermer"
+                    }
+                }
+            }
+        },
         "lekaapp.profession_picker.other_label": {
             "comment": "Profession picker other profession label",
             "extractionState": "extracted_with_value",
@@ -1377,31 +1395,31 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Profession choice"
+                        "value": "List of professions"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Choix de(s) profession(s)"
+                        "value": "Liste des professions"
                     }
                 }
             }
         },
-        "lekaapp.profession_picker.validate_button": {
-            "comment": "Profession picker validate button",
+        "lekaapp.profession_picker.validate_button_label": {
+            "comment": "Profession picker validate button label",
             "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Validate selection"
+                        "value": "Validate"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Valider la s\u00e9lection"
+                        "value": "Valider"
                     }
                 }
             }

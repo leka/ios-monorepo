@@ -86,7 +86,6 @@ struct CreateCaregiverView: View {
 
                 Section {
                     ProfessionListView(caregiver: self.$newCaregiver)
-                        .navigationBarTitleDisplayMode(.inline)
                 }
 
                 Button(String(l10n.CaregiverCreation.registerProfilButton.characters)) {

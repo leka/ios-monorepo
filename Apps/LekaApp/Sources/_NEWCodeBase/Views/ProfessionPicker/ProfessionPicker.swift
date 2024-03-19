@@ -35,7 +35,7 @@ struct ProfessionPicker: View {
                     .onTapGesture {
                         self.selectedProfessionForDetails = profession
                     }
-                    .foregroundStyle(self.selectedProfessions.contains(profession) ? Color.white : Color.accentColor)
+                    .foregroundStyle(self.selectedProfessions.contains(profession) ? Color.white : self.styleManager.accentColor!)
             }
         }
         .environment(\.editMode, Binding.constant(EditMode.active))
@@ -50,7 +50,7 @@ struct ProfessionPicker: View {
                     self.action = .cancel
                     self.dismiss()
                 } label: {
-                    Image(systemName: "xmark.circle")
+                    Text(l10n.ProfessionPicker.closeButtonLabel)
                 }
             }
 
@@ -59,7 +59,7 @@ struct ProfessionPicker: View {
                     self.action = .validate
                     self.dismiss()
                 } label: {
-                    Label(String(l10n.ProfessionPicker.validateButton.characters), systemImage: "checkmark.circle")
+                    Text(l10n.ProfessionPicker.validateButtonLabel)
                 }
                 .disabled(self.selectedProfessions.isEmpty)
             }
@@ -72,6 +72,7 @@ struct ProfessionPicker: View {
                     .padding(.horizontal, 20)
                     .font(.title2)
             }
+            .padding()
         })
         .onDisappear {
             switch self.action {
@@ -98,6 +99,7 @@ struct ProfessionPicker: View {
 
     @State private var action: ActionType?
     @State private var selectedProfessionForDetails: Profession?
+    @ObservedObject private var styleManager: StyleManager = .shared
 }
 
 // MARK: - ProfessionPicker_Previews
