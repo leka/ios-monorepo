@@ -11,7 +11,7 @@ let project = Project.app(
     name: "LekaUpdater",
     version: "1.4.1",
     infoPlist: [
-        "LEKA_OS_VERSION": "1.4.0",
+        "LEKA_OS_VERSION": "1.4.100",
         "UISupportedInterfaceOrientations": ["UIInterfaceOrientationPortrait"],
         "UISupportedInterfaceOrientations~ipad": [
             "UIInterfaceOrientationPortrait",
