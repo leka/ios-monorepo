@@ -74,6 +74,15 @@ public struct ChoiceImageView: View {
                     height: self.size
                 )
                 .clipShape(Circle())
+        } else if let uiImage = UIImage(pdfNamed: image) {
+            Image(uiImage: uiImage)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(
+                    width: self.size,
+                    height: self.size
+                )
+                .clipShape(Circle())
         } else {
             Text("❌\nImage not found:\n\(self.image)")
                 .multilineTextAlignment(.center)
@@ -100,24 +109,23 @@ public struct ChoiceImageView: View {
 }
 
 #Preview {
-    VStack(spacing: 30) {
+    VStack(spacing: 40) {
         HStack(spacing: 50) {
-            ChoiceImageView(image: "image-placeholder-png-boy_sleeping", size: 200)
-            ChoiceImageView(image: "image-placeholder-missing", size: 200)
-        }
-
-        HStack(spacing: 50) {
-            ChoiceImageView(image: "image-placeholder-png-boy_sleeping", size: 200)
+            Text("PNG")
+                .font(.largeTitle)
+            ChoiceImageView(image: "image-placeholder-png-boy_sleeping", size: 200, state: .idle)
             ChoiceImageView(image: "image-placeholder-png-boy_sleeping", size: 200, state: .rightAnswer)
             ChoiceImageView(image: "image-placeholder-png-boy_sleeping", size: 200, state: .wrongAnswer)
         }
 
-        HStack(spacing: 0) {
-            ChoiceImageView(image: "image-placeholder-png-boy_sleeping", size: 200)
-            ChoiceColorView(color: "blue", size: 200)
-
-            ChoiceImageView(image: "image-placeholder-png-boy_sleeping", size: 200, state: .rightAnswer)
-            ChoiceColorView(color: "blue", size: 200, state: .rightAnswer)
+        HStack(spacing: 50) {
+            Text("PDF")
+                .font(.largeTitle)
+            ChoiceImageView(image: "image-placeholder-pdf-boy_sleeping", size: 200, state: .idle)
+            ChoiceImageView(image: "image-placeholder-pdf-boy_sleeping", size: 200, state: .rightAnswer)
+            ChoiceImageView(image: "image-placeholder-pdf-boy_sleeping", size: 200, state: .wrongAnswer)
         }
     }
+    .frame(maxWidth: .infinity, maxHeight: .infinity)
+    .background(.lkBackground)
 }
