@@ -149,3 +149,73 @@ exercises_payload:
               - value: emotion_picto_sad_leka
                 type: image
                 is_right_answer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche le personnage qui est dégoûté
+            - locale: en_US
+              value: Touch the character who is disgusted
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: emotion_picto_disgust_leka
+                type: image
+                is_right_answer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche le personnage qui est en colère
+            - locale: en_US
+              value: Touch the character who is angry
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: emotion_picto_angry_leka
+                type: image
+                is_right_answer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche le personnage qui est content
+            - locale: en_US
+              value: Touch the character who is happy
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: emotion_picto_joy_leka
+                type: image
+                is_right_answer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche le personnage qui a peur
+            - locale: en_US
+              value: Touch the character who is afraid
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: emotion_picto_fear_leka
+                type: image
+                is_right_answer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche le personnage qui est triste
+            - locale: en_US
+              value: Touch the character who is sad
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: emotion_picto_sad_leka
+                type: image
+                is_right_answer: true
