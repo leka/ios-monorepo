@@ -39,7 +39,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon:
+      icon: emotion_recognition-pictures-4_images_1_types-hortense-e64a56b0-0481-4688-b285-80fcf3020bba
 
       title: Reconnaissance des émotions en photos - Hortense #4
       subtitle: Hortense - 4
@@ -57,7 +57,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon:
+      icon: emotion_recognition-pictures-4_images_1_types-hortense-e64a56b0-0481-4688-b285-80fcf3020bba
 
       title: Emotion recognition in pictures - Hortense #4
       subtitle: Hortense - 4

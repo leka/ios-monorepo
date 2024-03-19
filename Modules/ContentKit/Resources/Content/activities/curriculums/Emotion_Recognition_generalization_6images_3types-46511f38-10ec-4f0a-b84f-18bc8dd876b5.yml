@@ -53,7 +53,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon:
+      icon: emotion_recognition-generalization-6_images_3_types-46511f38-10ec-4f0a-b84f-18bc8dd876b5
 
       title: Généralisation des émotions - 3 types - 6 images
       subtitle: Généralisation - 3/6
@@ -71,7 +71,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon:
+      icon: emotion_recognition-generalization-6_images_3_types-46511f38-10ec-4f0a-b84f-18bc8dd876b5
 
       title: Emotions generalization - 3 types - 6 images
       subtitle: Generalisation - 3/6

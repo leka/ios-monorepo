@@ -44,7 +44,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon:
+      icon: emotion_recognition-drawings-4_images_4_types-oscar_louna_moussa_zoe_hugo-9d4ab4af-a683-4f28-b8bd-727d65fa0bbd
 
       title: Reconnaissance des émotions en dessins - Equipe Leka #4
       subtitle: Equipe Leka - 4
@@ -62,7 +62,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon:
+      icon: emotion_recognition-drawings-4_images_4_types-oscar_louna_moussa_zoe_hugo-9d4ab4af-a683-4f28-b8bd-727d65fa0bbd
 
       title: Emotion recognition with drawings - Leka team #4
       subtitle: Leka team - 4

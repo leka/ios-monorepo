@@ -40,7 +40,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon:
+      icon: emotion_recognition-pictures-4_images_2_types-hortense_lucie-721a6030-75f0-4731-8ded-2f1a5ba06e69
 
       title: Reconnaissance des émotions en photos - Hortense et Lucie #4
       subtitle: Hortense - Lucie - 4
@@ -58,7 +58,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon:
+      icon: emotion_recognition-pictures-4_images_2_types-hortense_lucie-721a6030-75f0-4731-8ded-2f1a5ba06e69
 
       title: Emotion recognition in pictures - Hortense and Lucie #4
       subtitle: Hortense - Lucie - 4

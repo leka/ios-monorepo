@@ -39,7 +39,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon:
+      icon: emotion_recognition-pictograms-1_images_1_types-leka-b7018cde-3d47-4914-a36f-54b531d0ad7b
 
       title: Reconnaissance des émotions en pictogrammes #1
       subtitle: Leka - 1
@@ -57,7 +57,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon:
+      icon: emotion_recognition-pictograms-1_images_1_types-leka-b7018cde-3d47-4914-a36f-54b531d0ad7b
 
       title: Emotion recognition with pictograms #1
       subtitle: Leka - 1

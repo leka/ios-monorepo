@@ -40,7 +40,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon:
+      icon: emotion_recognition-pictures-4_images_2_types-yann_hortense-a22c67a2-28c8-4cd4-a0e7-aec34e6c564f
 
       title: Reconnaissance des émotions en photos - Hortense et Yann #4
       subtitle: Hortense - Yann - 4
@@ -58,7 +58,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon:
+      icon: emotion_recognition-pictures-4_images_2_types-yann_hortense-a22c67a2-28c8-4cd4-a0e7-aec34e6c564f
 
       title: Emotion recognition in pictures - Hortense and Yann #4
       subtitle: Hortense - Yann - 4

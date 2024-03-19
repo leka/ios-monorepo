@@ -40,7 +40,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon:
+      icon: emotion_recognition-drawings-1_images_1_types-moussa-6fc67415-3dcf-4e99-b987-2e8e80ee4e6a
 
       title: Reconnaissance des émotions en dessins - Moussa #1
       subtitle: Moussa - 1
@@ -58,7 +58,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon:
+      icon: emotion_recognition-drawings-1_images_1_types-moussa-6fc67415-3dcf-4e99-b987-2e8e80ee4e6a
 
       title: Emotion recognition with drawings - Moussa #1
       subtitle: Moussa - 1

@@ -39,7 +39,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon:
+      icon: emotion_recognition-pictures-4_images_1_types-hugo-ac9c2620-9fba-4a60-aa39-8e5fbdc57d7b
 
       title: Reconnaissance des émotions en photos - Hugo #4
       subtitle: Hugo - 4
@@ -57,7 +57,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon:
+      icon: emotion_recognition-pictures-4_images_1_types-hugo-ac9c2620-9fba-4a60-aa39-8e5fbdc57d7b
 
       title: Emotion recognition in pictures - Hugo #4
       subtitle: Hugo - 4

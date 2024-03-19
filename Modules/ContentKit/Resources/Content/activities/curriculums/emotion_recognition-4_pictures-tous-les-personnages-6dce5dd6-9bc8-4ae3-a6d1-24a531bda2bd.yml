@@ -43,7 +43,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon:
+      icon: emotion_recognition-pictures-4_images_4_types-lucie_hortense_hugo_ladislas_yann-6dce5dd6-9bc8-4ae3-a6d1-24a531bda2bd
 
       title: Reconnaissance des émotions en photos - Equipe Leka #4
       subtitle: Equipe Leka - 4
@@ -61,7 +61,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon:
+      icon: emotion_recognition-pictures-4_images_4_types-lucie_hortense_hugo_ladislas_yann-6dce5dd6-9bc8-4ae3-a6d1-24a531bda2bd
 
       title: Emotion recognition in pictures - Leka team #4
       subtitle: Leka team - 4

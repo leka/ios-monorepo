@@ -43,7 +43,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon:
+      icon: emotion_recognition-pictures-4_images_1_types-ladislas_lucie_yann_hortense_hugo-46042e54-7d41-4c4c-a40a-0dad3b51b5b0
 
       title: Reconnaissance des émotions en photos - Ladislas - Lucie - Yann - Hortense - Hugo #4
       subtitle: Ladislas - Lucie - Yann - Hortense - Hugo - 4
@@ -61,7 +61,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon:
+      icon: emotion_recognition-pictures-4_images_1_types-ladislas_lucie_yann_hortense_hugo-46042e54-7d41-4c4c-a40a-0dad3b51b5b0
 
       title: Emotion recognition in pictures - Ladislas - Lucie - Yann - Hortense - Hugo #4
       subtitle: Ladislas - Lucie - Yann - Hortense - Hugo - 4

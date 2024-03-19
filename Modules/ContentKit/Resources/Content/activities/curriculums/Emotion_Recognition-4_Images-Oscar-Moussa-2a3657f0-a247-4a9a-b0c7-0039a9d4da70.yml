@@ -41,7 +41,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon:
+      icon: emotion_recognition-drawings-4_images_2_types-oscar_moussa-2a3657f0-a247-4a9a-b0c7-0039a9d4da70
 
       title: Reconnaissance des émotions en dessins - Moussa et Oscar #4
       subtitle: Moussa - Oscar - 4
@@ -59,7 +59,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon:
+      icon: emotion_recognition-drawings-4_images_2_types-oscar_moussa-2a3657f0-a247-4a9a-b0c7-0039a9d4da70
 
       title: Emotion recognition in pictures - Moussa and Oscar #4
       subtitle: Moussa - Oscar - 4

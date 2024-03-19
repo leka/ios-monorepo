@@ -40,7 +40,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon:
+      icon: emotion_recognition-drawings-1_images_1_types-louna-4a1ea3ed-522c-4c2e-a414-1d52f01daeee
 
       title: Reconnaissance des émotions en dessins - Louna #1
       subtitle: Louna - 1
@@ -58,7 +58,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon:
+      icon: emotion_recognition-drawings-1_images_1_types-louna-4a1ea3ed-522c-4c2e-a414-1d52f01daeee
 
       title: Emotion recognition with drawings - Louna #1
       subtitle: Louna - 1

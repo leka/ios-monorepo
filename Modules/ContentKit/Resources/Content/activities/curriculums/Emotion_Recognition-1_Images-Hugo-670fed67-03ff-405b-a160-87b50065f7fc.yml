@@ -40,7 +40,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon:
+      icon: emotion_recognition-drawings-1_images_1_types-hugo-670fed67-03ff-405b-a160-87b50065f7fc
 
       title: Reconnaissance des émotions en dessins - Hugo #1
       subtitle: Hugo - 1
@@ -58,7 +58,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon:
+      icon: emotion_recognition-drawings-1_images_1_types-hugo-670fed67-03ff-405b-a160-87b50065f7fc
 
       title: Emotion recognition with drawings - Hugo #1
       subtitle: Hugo - 1

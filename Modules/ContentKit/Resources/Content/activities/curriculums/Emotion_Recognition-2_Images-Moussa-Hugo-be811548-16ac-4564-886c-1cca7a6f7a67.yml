@@ -41,7 +41,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon:
+      icon: emotion_recognition-drawings-2_images_2_types-moussa_hugo-be811548-16ac-4564-886c-1cca7a6f7a67
 
       title: Reconnaissance des émotions en dessins - Moussa et Hugo #2
       subtitle: Moussa - Hugo - 2
@@ -59,7 +59,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon:
+      icon: emotion_recognition-drawings-2_images_2_types-moussa_hugo-be811548-16ac-4564-886c-1cca7a6f7a67
 
       title: Emotion recognition with drawings - Moussa and Hugo #2
       subtitle: Moussa - Hugo - 2

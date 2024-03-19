@@ -40,7 +40,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon:
+      icon: emotion_recognition-drawings-4_images_1_types-hugo-2ddfa5c9-b3b2-43b3-97f2-70fa576b4fc7
 
       title: Reconnaissance des émotions en dessins - Hugo #4
       subtitle: Hugo - 4
@@ -58,7 +58,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon:
+      icon: emotion_recognition-drawings-4_images_1_types-hugo-2ddfa5c9-b3b2-43b3-97f2-70fa576b4fc7
 
       title: Emotion recognition in drawings - Hugo #4
       subtitle: Hugo - 4

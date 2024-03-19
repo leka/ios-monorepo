@@ -41,7 +41,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon:
+      icon: emotion_recognition-drawings-4_images_2_types-oscar_hugo-98dcf69e-570a-4abf-a227-22704dfa10b8
 
       title: Reconnaissance des émotions en dessins - Hugo et Oscar #4
       subtitle: Hugo - Oscar - 4
@@ -59,7 +59,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon:
+      icon: emotion_recognition-drawings-4_images_2_types-oscar_hugo-98dcf69e-570a-4abf-a227-22704dfa10b8
 
       title: Emotion recognition in pictures - Hugo and Oscar #4
       subtitle: Hugo - Oscar - 4

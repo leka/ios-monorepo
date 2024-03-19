@@ -39,7 +39,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon:
+      icon: emotion_recognition-pictures-1_images_1_types-lucie-3fc7b66e-67a0-4f50-9817-9ef19af7f717
 
       title: Reconnaissance des émotions en photos - Lucie #1
       subtitle: Lucie - 1
@@ -57,7 +57,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon:
+      icon: emotion_recognition-pictures-1_images_1_types-lucie-3fc7b66e-67a0-4f50-9817-9ef19af7f717
 
       title: Emotion recognition in pictures - Lucie #1
       subtitle: Lucie - 1

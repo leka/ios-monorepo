@@ -40,7 +40,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon:
+      icon: emotion_recognition-pictures-2_images_2_types-ladislas_hugo-4246413b-2fe4-4b53-aa0b-3b170f053eda
 
       title: Reconnaissance des émotions en photos - Hugo et Ladislas #2
       subtitle: Hugo - Ladislas - 2
@@ -58,7 +58,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon:
+      icon: emotion_recognition-pictures-2_images_2_types-ladislas_hugo-4246413b-2fe4-4b53-aa0b-3b170f053eda
 
       title: Emotion recognition in pictures - Hugo and Ladislas #2
       subtitle: Hugo - Ladislas - 2

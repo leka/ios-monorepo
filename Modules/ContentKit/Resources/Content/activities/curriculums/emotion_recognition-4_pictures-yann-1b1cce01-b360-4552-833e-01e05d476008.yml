@@ -39,7 +39,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon:
+      icon: emotion_recognition-pictures-4_images_1_types-yann-1b1cce01-b360-4552-833e-01e05d476008
 
       title: Reconnaissance des émotions en photos - Yann #4
       subtitle: Yann - 4
@@ -57,7 +57,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon:
+      icon: emotion_recognition-pictures-4_images_1_types-yann-1b1cce01-b360-4552-833e-01e05d476008
 
       title: Emotion recognition in pictures - Yann #4
       subtitle: Yann - 4

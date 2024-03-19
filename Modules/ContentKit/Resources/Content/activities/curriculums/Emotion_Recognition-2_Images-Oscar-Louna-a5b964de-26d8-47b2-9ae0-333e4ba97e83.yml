@@ -41,7 +41,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon:
+      icon: emotion_recognition-drawings-2_images_2_types-oscar_louna-a5b964de-26d8-47b2-9ae0-333e4ba97e83
 
       title: Reconnaissance des émotions en dessins - Oscar et Louna #2
       subtitle: Oscar - Louna - 2
@@ -59,7 +59,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon:
+      icon: emotion_recognition-drawings-2_images_2_types-oscar_louna-a5b964de-26d8-47b2-9ae0-333e4ba97e83
 
       title: Emotion recognition with drawings - Oscar and Louna #2
       subtitle: Oscar - Louna - 2

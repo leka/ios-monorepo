@@ -39,7 +39,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon:
+      icon: emotion_recognition-pictures-4_images_1_types-ladislas-7c8cc8cb-c6ce-4fed-b656-d98018ad2502
 
       title: Reconnaissance des émotions en photos - Ladislas #4
       subtitle: Ladislas - 4
@@ -57,7 +57,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon:
+      icon: emotion_recognition-pictures-4_images_1_types-ladislas-7c8cc8cb-c6ce-4fed-b656-d98018ad2502
 
       title: Emotion recognition in pictures - Ladislas #4
       subtitle: Ladislas - 4

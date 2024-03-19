@@ -40,7 +40,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon:
+      icon: emotion_recognition-drawings-2_images_1_types-oscar-192bf178-9c89-4ef0-bbe3-84e471a0ee4f
 
       title: Reconnaissance des émotions en dessins - Oscar #2
       subtitle: Oscar - 2
@@ -58,7 +58,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon:
+      icon: emotion_recognition-drawings-2_images_1_types-oscar-192bf178-9c89-4ef0-bbe3-84e471a0ee4f
 
       title: Emotion recognition with drawings - Oscar #2
       subtitle: Oscar - 2

@@ -40,7 +40,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon:
+      icon: emotion_recognition-drawings-2_images_1_types-zoe-7b77ed81-845c-4a86-adee-66de91f51352
 
       title: Reconnaissance des émotions en dessins - Zoe #2
       subtitle: Zoe - 2
@@ -58,7 +58,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon:
+      icon: emotion_recognition-drawings-2_images_1_types-zoe-7b77ed81-845c-4a86-adee-66de91f51352
 
       title: Emotion recognition with drawings - Zoe #2
       subtitle: Zoe - 2

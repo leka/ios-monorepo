@@ -40,7 +40,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon:
+      icon: emotion_recognition-pictures-4_images_2_types-hugo_yann-969bc9f7-da53-41ab-ba3a-6b9c5e6773cf
 
       title: Reconnaissance des émotions en photos - Hugo et Yann #4
       subtitle: Hugo - Yann - 4
@@ -58,7 +58,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon:
+      icon: emotion_recognition-pictures-4_images_2_types-hugo_yann-969bc9f7-da53-41ab-ba3a-6b9c5e6773cf
 
       title: Emotion recognition in pictures - Hugo and Yann #4
       subtitle: Hugo - Yann - 4

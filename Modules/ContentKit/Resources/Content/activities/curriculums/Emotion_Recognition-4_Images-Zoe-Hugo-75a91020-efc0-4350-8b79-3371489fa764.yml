@@ -41,7 +41,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon:
+      icon: emotion_recognition-drawings-4_images_2_types-zoe_hugo-75a91020-efc0-4350-8b79-3371489fa764
 
       title: Reconnaissance des émotions en dessins - Zoe et Hugo #4
       subtitle: Zoe - Hugo - 4
@@ -59,7 +59,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon:
+      icon: emotion_recognition-drawings-4_images_2_types-zoe_hugo-75a91020-efc0-4350-8b79-3371489fa764
 
       title: Emotion recognition in pictures - Zoe and Hugo #4
       subtitle: Zoe - Hugo - 4

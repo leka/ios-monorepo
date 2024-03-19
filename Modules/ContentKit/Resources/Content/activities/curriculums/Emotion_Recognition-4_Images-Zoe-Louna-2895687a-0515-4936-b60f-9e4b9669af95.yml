@@ -41,7 +41,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon:
+      icon: emotion_recognition-drawings-4_images_2_types-zoe_louna-2895687a-0515-4936-b60f-9e4b9669af95
 
       title: Reconnaissance des émotions en dessins - Zoé et Louna #4
       subtitle: Zoe - Louna - 4
@@ -59,7 +59,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon:
+      icon: emotion_recognition-drawings-4_images_2_types-zoe_louna-2895687a-0515-4936-b60f-9e4b9669af95
 
       title: Emotion recognition in pictures - Zoe and Louna #4
       subtitle: Zoe - Louna - 4

@@ -44,7 +44,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon:
+      icon: emotion_recognition-drawings-4_images_1_types-zoe_oscar_louna_moussa_hugo-e0c4103a-8ce5-4567-b460-579ad5cdc678
 
       title: Reconnaissance des émotions en dessins - Oscar - Louna - Moussa - Zoe - Hugo #4
       subtitle: Oscar - Louna - Moussa - Zoe - Hugo - 4
@@ -62,10 +62,10 @@ l10n:
 
   - locale: en_US
     details:
-      icon:
+      icon: emotion_recognition-drawings-4_images_4_types-oscar_louna_moussa_zoe_hugo-9d4ab4af-a683-4f28-b8bd-727d65fa0bbd
 
       title: Emotion recognition with drawings - Oscar - Louna - Moussa - Zoe - Hugo #4
-      subtitle: Oscar - Louna - Moussa - Zoe - Hugo - 4
+      subtitle: oscar - louna - moussa - zoe - Hugo - 4
 
       short_description: |
         Touch the requested emotion
