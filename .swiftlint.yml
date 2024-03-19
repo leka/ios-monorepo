@@ -48,6 +48,7 @@ identifier_name:
     - rhs
     - rx
     - tx
+    - url
     - URL
 
 line_length:
