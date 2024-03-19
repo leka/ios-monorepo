@@ -90,14 +90,14 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: emotion-picture-adult-disgust-yann
+              - value: emotion_picture_adult_disgust_yann
                 type: image
                 is_right_answer: true
-              - value: emotion-picture-adult-joy-yann
+              - value: emotion_picture_adult_joy_yann
                 type: image
-              - value: emotion-picture-adult-fear-yann
+              - value: emotion_picture_adult_fear_yann
                 type: image
-              - value: emotion-picture-adult-angry-yann
+              - value: emotion_picture_adult_angry_yann
                 type: image
 
         - instructions:
@@ -110,14 +110,14 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: emotion-picture-adult-angry-yann
+              - value: emotion_picture_adult_angry_yann
                 type: image
                 is_right_answer: true
-              - value: emotion-picture-adult-disgust-yann
+              - value: emotion_picture_adult_disgust_yann
                 type: image
-              - value: emotion-picture-adult-fear-yann
+              - value: emotion_picture_adult_fear_yann
                 type: image
-              - value: emotion-picture-adult-sad-yann
+              - value: emotion_picture_adult_sad_yann
                 type: image
 
         - instructions:
@@ -130,14 +130,14 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: emotion-picture-adult-joy-yann
+              - value: emotion_picture_adult_joy_yann
                 type: image
                 is_right_answer: true
-              - value: emotion-picture-adult-sad-yann
+              - value: emotion_picture_adult_sad_yann
                 type: image
-              - value: emotion-picture-adult-angry-yann
+              - value: emotion_picture_adult_angry_yann
                 type: image
-              - value: emotion-picture-adult-disgust-yann
+              - value: emotion_picture_adult_disgust_yann
                 type: image
 
         - instructions:
@@ -150,14 +150,14 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: emotion-picture-adult-fear-yann
+              - value: emotion_picture_adult_fear_yann
                 type: image
                 is_right_answer: true
-              - value: emotion-picture-adult-joy-yann
+              - value: emotion_picture_adult_joy_yann
                 type: image
-              - value: emotion-picture-adult-disgust-yann
+              - value: emotion_picture_adult_disgust_yann
                 type: image
-              - value: emotion-picture-adult-sad-yann
+              - value: emotion_picture_adult_sad_yann
                 type: image
 
         - instructions:
@@ -170,14 +170,14 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: emotion-picture-adult-sad-yann
+              - value: emotion_picture_adult_sad_yann
                 type: image
                 is_right_answer: true
-              - value: emotion-picture-adult-angry-yann
+              - value: emotion_picture_adult_angry_yann
                 type: image
-              - value: emotion-picture-adult-fear-yann
+              - value: emotion_picture_adult_fear_yann
                 type: image
-              - value: emotion-picture-adult-joy-yann
+              - value: emotion_picture_adult_joy_yann
                 type: image
 
         - instructions:
@@ -190,14 +190,14 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: emotion-picture-adult-disgust-yann
+              - value: emotion_picture_adult_disgust_yann
                 type: image
                 is_right_answer: true
-              - value: emotion-picture-adult-joy-yann
+              - value: emotion_picture_adult_joy_yann
                 type: image
-              - value: emotion-picture-adult-fear-yann
+              - value: emotion_picture_adult_fear_yann
                 type: image
-              - value: emotion-picture-adult-angry-yann
+              - value: emotion_picture_adult_angry_yann
                 type: image
 
         - instructions:
@@ -210,14 +210,14 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: emotion-picture-adult-angry-yann
+              - value: emotion_picture_adult_angry_yann
                 type: image
                 is_right_answer: true
-              - value: emotion-picture-adult-disgust-yann
+              - value: emotion_picture_adult_disgust_yann
                 type: image
-              - value: emotion-picture-adult-fear-yann
+              - value: emotion_picture_adult_fear_yann
                 type: image
-              - value: emotion-picture-adult-sad-yann
+              - value: emotion_picture_adult_sad_yann
                 type: image
 
         - instructions:
@@ -230,14 +230,14 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: emotion-picture-adult-joy-yann
+              - value: emotion_picture_adult_joy_yann
                 type: image
                 is_right_answer: true
-              - value: emotion-picture-adult-sad-yann
+              - value: emotion_picture_adult_sad_yann
                 type: image
-              - value: emotion-picture-adult-angry-yann
+              - value: emotion_picture_adult_angry_yann
                 type: image
-              - value: emotion-picture-adult-disgust-yann
+              - value: emotion_picture_adult_disgust_yann
                 type: image
 
         - instructions:
@@ -250,14 +250,14 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: emotion-picture-adult-fear-yann
+              - value: emotion_picture_adult_fear_yann
                 type: image
                 is_right_answer: true
-              - value: emotion-picture-adult-joy-yann
+              - value: emotion_picture_adult_joy_yann
                 type: image
-              - value: emotion-picture-adult-disgust-yann
+              - value: emotion_picture_adult_disgust_yann
                 type: image
-              - value: emotion-picture-adult-sad-yann
+              - value: emotion_picture_adult_sad_yann
                 type: image
 
         - instructions:
@@ -270,12 +270,12 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: emotion-picture-adult-sad-yann
+              - value: emotion_picture_adult_sad_yann
                 type: image
                 is_right_answer: true
-              - value: emotion-picture-adult-angry-yann
+              - value: emotion_picture_adult_angry_yann
                 type: image
-              - value: emotion-picture-adult-fear-yann
+              - value: emotion_picture_adult_fear_yann
                 type: image
-              - value: emotion-picture-adult-joy-yann
+              - value: emotion_picture_adult_joy_yann
                 type: image

@@ -94,14 +94,14 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: emotion-picture-adult-disgust-lucie
+              - value: emotion_picture_adult_disgust_lucie
                 type: image
                 is_right_answer: true
-              - value: emotion-picture-adult-joy-lucie
+              - value: emotion_picture_adult_joy_lucie
                 type: image
-              - value: emotion-picture-adult-fear-lucie
+              - value: emotion_picture_adult_fear_lucie
                 type: image
-              - value: emotion-picture-adult-angry-lucie
+              - value: emotion_picture_adult_angry_lucie
                 type: image
 
         - instructions:
@@ -114,14 +114,14 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: emotion-picture-adult-angry-hortense
+              - value: emotion_picture_adult_angry_hortense
                 type: image
                 is_right_answer: true
-              - value: emotion-picture-adult-disgust-hortense
+              - value: emotion_picture_adult_disgust_hortense
                 type: image
-              - value: emotion-picture-adult-fear-hortense
+              - value: emotion_picture_adult_fear_hortense
                 type: image
-              - value: emotion-picture-adult-sad-hortense
+              - value: emotion_picture_adult_sad_hortense
                 type: image
 
         - instructions:
@@ -134,14 +134,14 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: emotion-picture-adult-joy-hugo
+              - value: emotion_picture_adult_joy_hugo
                 type: image
                 is_right_answer: true
-              - value: emotion-picture-adult-sad-hugo
+              - value: emotion_picture_adult_sad_hugo
                 type: image
-              - value: emotion-picture-adult-angry-hugo
+              - value: emotion_picture_adult_angry_hugo
                 type: image
-              - value: emotion-picture-adult-disgust-hugo
+              - value: emotion_picture_adult_disgust_hugo
                 type: image
 
         - instructions:
@@ -154,14 +154,14 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: emotion-picture-adult-fear-yann
+              - value: emotion_picture_adult_fear_yann
                 type: image
                 is_right_answer: true
-              - value: emotion-picture-adult-joy-yann
+              - value: emotion_picture_adult_joy_yann
                 type: image
-              - value: emotion-picture-adult-disgust-yann
+              - value: emotion_picture_adult_disgust_yann
                 type: image
-              - value: emotion-picture-adult-sad-yann
+              - value: emotion_picture_adult_sad_yann
                 type: image
 
         - instructions:
@@ -174,14 +174,14 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: emotion-picture-adult-sad-ladislas
+              - value: emotion_picture_adult_sad_ladislas
                 type: image
                 is_right_answer: true
-              - value: emotion-picture-adult-angry-ladislas
+              - value: emotion_picture_adult_angry_ladislas
                 type: image
-              - value: emotion-picture-adult-fear-ladislas
+              - value: emotion_picture_adult_fear_ladislas
                 type: image
-              - value: emotion-picture-adult-joy-ladislas
+              - value: emotion_picture_adult_joy_ladislas
                 type: image
 
         - instructions:
@@ -194,14 +194,14 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: emotion-picture-adult-disgust-lucie
+              - value: emotion_picture_adult_disgust_lucie
                 type: image
                 is_right_answer: true
-              - value: emotion-picture-adult-joy-lucie
+              - value: emotion_picture_adult_joy_lucie
                 type: image
-              - value: emotion-picture-adult-fear-lucie
+              - value: emotion_picture_adult_fear_lucie
                 type: image
-              - value: emotion-picture-adult-angry-lucie
+              - value: emotion_picture_adult_angry_lucie
                 type: image
 
         - instructions:
@@ -214,14 +214,14 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: emotion-picture-adult-angry-hortense
+              - value: emotion_picture_adult_angry_hortense
                 type: image
                 is_right_answer: true
-              - value: emotion-picture-adult-disgust-hortense
+              - value: emotion_picture_adult_disgust_hortense
                 type: image
-              - value: emotion-picture-adult-fear-hortense
+              - value: emotion_picture_adult_fear_hortense
                 type: image
-              - value: emotion-picture-adult-sad-hortense
+              - value: emotion_picture_adult_sad_hortense
                 type: image
 
         - instructions:
@@ -234,14 +234,14 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: emotion-picture-adult-joy-hugo
+              - value: emotion_picture_adult_joy_hugo
                 type: image
                 is_right_answer: true
-              - value: emotion-picture-adult-sad-hugo
+              - value: emotion_picture_adult_sad_hugo
                 type: image
-              - value: emotion-picture-adult-angry-hugo
+              - value: emotion_picture_adult_angry_hugo
                 type: image
-              - value: emotion-picture-adult-disgust-hugo
+              - value: emotion_picture_adult_disgust_hugo
                 type: image
 
         - instructions:
@@ -254,14 +254,14 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: emotion-picture-adult-fear-yann
+              - value: emotion_picture_adult_fear_yann
                 type: image
                 is_right_answer: true
-              - value: emotion-picture-adult-joy-yann
+              - value: emotion_picture_adult_joy_yann
                 type: image
-              - value: emotion-picture-adult-disgust-yann
+              - value: emotion_picture_adult_disgust_yann
                 type: image
-              - value: emotion-picture-adult-sad-yann
+              - value: emotion_picture_adult_sad_yann
                 type: image
 
         - instructions:
@@ -274,12 +274,12 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: emotion-picture-adult-sad-ladislas
+              - value: emotion_picture_adult_sad_ladislas
                 type: image
                 is_right_answer: true
-              - value: emotion-picture-adult-angry-ladislas
+              - value: emotion_picture_adult_angry_ladislas
                 type: image
-              - value: emotion-picture-adult-fear-ladislas
+              - value: emotion_picture_adult_fear_ladislas
                 type: image
-              - value: emotion-picture-adult-joy-ladislas
+              - value: emotion_picture_adult_joy_ladislas
                 type: image

@@ -4,8 +4,8 @@
 
 version: 1.0.0
 
-uuid: 195c7905-0188-4c1d-a3c9-0aed0199606d
-name: emotion_recognition-4_pictures-ladislas-lucie-yann-hortense-hugo
+uuid: e76730cc-585e-4a1f-8f75-37b9705e4ba8
+name: Emotion_Recognition-4_Images-Oscar
 
 created_at: "2024-03-04T18:07:12.519229"
 last_edited_at: "2024-03-06T12:51:54.499453"
@@ -23,12 +23,9 @@ skills:
 
 tags:
   - emotions
-  - pictures
-  - Ladislas
-  - Hortense
-  - Yann
-  - Lucie
-  - Hugo
+  - drawings
+  - Oscar
+  - characters
 
 hmi:
   - tablet
@@ -45,8 +42,8 @@ l10n:
     details:
       icon:
 
-      title: Reconnaissance des émotions en photos - Ladislas - Lucie - Yann - Hortense - Hugo #4
-      subtitle: Ladislas - Lucie - Yann - Hortense - Hugo - 4
+      title: Reconnaissance des émotions en dessins - Oscar #4
+      subtitle: Oscar - 4
 
       short_description: |
         Touche l'émotion demandée
@@ -63,8 +60,8 @@ l10n:
     details:
       icon:
 
-      title: Emotion recognition in pictures - Ladislas - Lucie - Yann - Hortense - Hugo #4
-      subtitle: Ladislas - Lucie - Yann - Hortense - Hugo - 4
+      title: Emotion recognition in drawings - Oscar #4
+      subtitle: Oscar - 4
 
       short_description: |
         Touch the requested emotion
@@ -86,200 +83,200 @@ exercises_payload:
     - group:
         - instructions:
             - locale: fr_FR
-              value: Touche la personne qui est dégoûtée
+              value: Touche le personnage qui est dégoûté
             - locale: en_US
-              value: Touch the person who is disgusted
+              value: Touch the character who is disgusted
           interface: touchToSelect
           gameplay: findTheRightAnswers
           payload:
             shuffle_choices: true
             choices:
-              - value: emotion-picture-adult-disgust-lucie
+              - value: emotion_drawing_child_disgust_oscar
                 type: image
                 is_right_answer: true
-              - value: emotion-picture-adult-joy-lucie
+              - value: emotion_drawing_child_joy_oscar
                 type: image
-              - value: emotion-picture-adult-fear-lucie
+              - value: emotion_drawing_child_fear_oscar
                 type: image
-              - value: emotion-picture-adult-angry-lucie
+              - value: emotion_drawing_child_angry_oscar
                 type: image
 
         - instructions:
             - locale: fr_FR
-              value: Touche la personne qui est en colère
+              value: Touche le personnage qui est en colère
             - locale: en_US
-              value: Touch the person who is angry
+              value: Touch the character who is angry
           interface: touchToSelect
           gameplay: findTheRightAnswers
           payload:
             shuffle_choices: true
             choices:
-              - value: emotion-picture-adult-angry-hortense
+              - value: emotion_drawing_child_angry_oscar
                 type: image
                 is_right_answer: true
-              - value: emotion-picture-adult-disgust-hortense
+              - value: emotion_drawing_child_disgust_oscar
                 type: image
-              - value: emotion-picture-adult-fear-hortense
+              - value: emotion_drawing_child_fear_oscar
                 type: image
-              - value: emotion-picture-adult-sad-hortense
+              - value: emotion_drawing_child_sad_oscar
                 type: image
 
         - instructions:
             - locale: fr_FR
-              value: Touche la personne qui est contente
+              value: Touche le personnage qui est content
             - locale: en_US
-              value: Touch the person who is happy
+              value: Touch the character who is happy
           interface: touchToSelect
           gameplay: findTheRightAnswers
           payload:
             shuffle_choices: true
             choices:
-              - value: emotion-picture-adult-joy-hugo
+              - value: emotion_drawing_child_joy_oscar
                 type: image
                 is_right_answer: true
-              - value: emotion-picture-adult-sad-hugo
+              - value: emotion_drawing_child_sad_oscar
                 type: image
-              - value: emotion-picture-adult-angry-hugo
+              - value: emotion_drawing_child_angry_oscar
                 type: image
-              - value: emotion-picture-adult-disgust-hugo
+              - value: emotion_drawing_child_disgust_oscar
                 type: image
 
         - instructions:
             - locale: fr_FR
-              value: Touche la personne qui a peur
+              value: Touche le personnage qui a peur
             - locale: en_US
-              value: Touch the person who is afraid
+              value: Touch the character who is afraid
           interface: touchToSelect
           gameplay: findTheRightAnswers
           payload:
             shuffle_choices: true
             choices:
-              - value: emotion-picture-adult-fear-yann
+              - value: emotion_drawing_child_fear_oscar
                 type: image
                 is_right_answer: true
-              - value: emotion-picture-adult-joy-yann
+              - value: emotion_drawing_child_joy_oscar
                 type: image
-              - value: emotion-picture-adult-disgust-yann
+              - value: emotion_drawing_child_disgust_oscar
                 type: image
-              - value: emotion-picture-adult-sad-yann
+              - value: emotion_drawing_child_sad_oscar
                 type: image
 
         - instructions:
             - locale: fr_FR
-              value: Touche la personne qui est triste
+              value: Touche le personnage qui est triste
             - locale: en_US
-              value: Touch the person who is sad
+              value: Touch the character who is sad
           interface: touchToSelect
           gameplay: findTheRightAnswers
           payload:
             shuffle_choices: true
             choices:
-              - value: emotion-picture-adult-sad-ladislas
+              - value: emotion_drawing_child_sad_oscar
                 type: image
                 is_right_answer: true
-              - value: emotion-picture-adult-angry-ladislas
+              - value: emotion_drawing_child_angry_oscar
                 type: image
-              - value: emotion-picture-adult-fear-ladislas
+              - value: emotion_drawing_child_fear_oscar
                 type: image
-              - value: emotion-picture-adult-joy-ladislas
+              - value: emotion_drawing_child_joy_oscar
                 type: image
 
         - instructions:
             - locale: fr_FR
-              value: Touche la personne qui est dégoûtée
+              value: Touche le personnage qui est dégoûté
             - locale: en_US
-              value: Touch the person who is disgusted
+              value: Touch the character who is disgusted
           interface: touchToSelect
           gameplay: findTheRightAnswers
           payload:
             shuffle_choices: true
             choices:
-              - value: emotion-picture-adult-disgust-lucie
+              - value: emotion_drawing_child_disgust_oscar
                 type: image
                 is_right_answer: true
-              - value: emotion-picture-adult-joy-lucie
+              - value: emotion_drawing_child_joy_oscar
                 type: image
-              - value: emotion-picture-adult-fear-lucie
+              - value: emotion_drawing_child_fear_oscar
                 type: image
-              - value: emotion-picture-adult-angry-lucie
+              - value: emotion_drawing_child_angry_oscar
                 type: image
 
         - instructions:
             - locale: fr_FR
-              value: Touche la personne qui est en colère
+              value: Touche le personnage qui est en colère
             - locale: en_US
-              value: Touch the person who is angry
+              value: Touch the character who is angry
           interface: touchToSelect
           gameplay: findTheRightAnswers
           payload:
             shuffle_choices: true
             choices:
-              - value: emotion-picture-adult-angry-hortense
+              - value: emotion_drawing_child_angry_oscar
                 type: image
                 is_right_answer: true
-              - value: emotion-picture-adult-disgust-hortense
+              - value: emotion_drawing_child_disgust_oscar
                 type: image
-              - value: emotion-picture-adult-fear-hortense
+              - value: emotion_drawing_child_fear_oscar
                 type: image
-              - value: emotion-picture-adult-sad-hortense
+              - value: emotion_drawing_child_sad_oscar
                 type: image
 
         - instructions:
             - locale: fr_FR
-              value: Touche la personne qui est contente
+              value: Touche le personnage qui est content
             - locale: en_US
-              value: Touch the person who is happy
+              value: Touch the character who is happy
           interface: touchToSelect
           gameplay: findTheRightAnswers
           payload:
             shuffle_choices: true
             choices:
-              - value: emotion-picture-adult-joy-hugo
+              - value: emotion_drawing_child_joy_oscar
                 type: image
                 is_right_answer: true
-              - value: emotion-picture-adult-sad-hugo
+              - value: emotion_drawing_child_sad_oscar
                 type: image
-              - value: emotion-picture-adult-angry-hugo
+              - value: emotion_drawing_child_angry_oscar
                 type: image
-              - value: emotion-picture-adult-disgust-hugo
+              - value: emotion_drawing_child_disgust_oscar
                 type: image
 
         - instructions:
             - locale: fr_FR
-              value: Touche la personne qui a peur
+              value: Touche le personnage qui a peur
             - locale: en_US
-              value: Touch the person who is afraid
+              value: Touch the character who is afraid
           interface: touchToSelect
           gameplay: findTheRightAnswers
           payload:
             shuffle_choices: true
             choices:
-              - value: emotion-picture-adult-fear-yann
+              - value: emotion_drawing_child_fear_oscar
                 type: image
                 is_right_answer: true
-              - value: emotion-picture-adult-joy-yann
+              - value: emotion_drawing_child_joy_oscar
                 type: image
-              - value: emotion-picture-adult-disgust-yann
+              - value: emotion_drawing_child_disgust_oscar
                 type: image
-              - value: emotion-picture-adult-sad-yann
+              - value: emotion_drawing_child_sad_oscar
                 type: image
 
         - instructions:
             - locale: fr_FR
-              value: Touche la personne qui est triste
+              value: Touche le personnage qui est triste
             - locale: en_US
-              value: Touch the person who is sad
+              value: Touch the character who is sad
           interface: touchToSelect
           gameplay: findTheRightAnswers
           payload:
             shuffle_choices: true
             choices:
-              - value: emotion-picture-adult-sad-ladislas
+              - value: emotion_drawing_child_sad_oscar
                 type: image
                 is_right_answer: true
-              - value: emotion-picture-adult-angry-ladislas
+              - value: emotion_drawing_child_angry_oscar
                 type: image
-              - value: emotion-picture-adult-fear-ladislas
+              - value: emotion_drawing_child_fear_oscar
                 type: image
-              - value: emotion-picture-adult-joy-ladislas
+              - value: emotion_drawing_child_joy_oscar
                 type: image

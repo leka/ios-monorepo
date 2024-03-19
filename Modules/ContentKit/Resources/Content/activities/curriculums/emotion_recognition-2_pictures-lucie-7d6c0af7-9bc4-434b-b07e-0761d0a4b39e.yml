@@ -90,10 +90,10 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: emotion-picture-adult-disgust-lucie
+              - value: emotion_picture_adult_disgust_lucie
                 type: image
                 is_right_answer: true
-              - value: emotion-picture-adult-joy-lucie
+              - value: emotion_picture_adult_joy_lucie
                 type: image
 
         - instructions:
@@ -106,10 +106,10 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: emotion-picture-adult-angry-lucie
+              - value: emotion_picture_adult_angry_lucie
                 type: image
                 is_right_answer: true
-              - value: emotion-picture-adult-disgust-lucie
+              - value: emotion_picture_adult_disgust_lucie
                 type: image
 
         - instructions:
@@ -122,10 +122,10 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: emotion-picture-adult-joy-lucie
+              - value: emotion_picture_adult_joy_lucie
                 type: image
                 is_right_answer: true
-              - value: emotion-picture-adult-sad-lucie
+              - value: emotion_picture_adult_sad_lucie
                 type: image
 
         - instructions:
@@ -138,10 +138,10 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: emotion-picture-adult-fear-lucie
+              - value: emotion_picture_adult_fear_lucie
                 type: image
                 is_right_answer: true
-              - value: emotion-picture-adult-angry-lucie
+              - value: emotion_picture_adult_angry_lucie
                 type: image
 
         - instructions:
@@ -154,10 +154,10 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: emotion-picture-adult-sad-lucie
+              - value: emotion_picture_adult_sad_lucie
                 type: image
                 is_right_answer: true
-              - value: emotion-picture-adult-fear-lucie
+              - value: emotion_picture_adult_fear_lucie
                 type: image
 
         - instructions:
@@ -170,10 +170,10 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: emotion-picture-adult-disgust-lucie
+              - value: emotion_picture_adult_disgust_lucie
                 type: image
                 is_right_answer: true
-              - value: emotion-picture-adult-joy-lucie
+              - value: emotion_picture_adult_joy_lucie
                 type: image
 
         - instructions:
@@ -186,10 +186,10 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: emotion-picture-adult-angry-lucie
+              - value: emotion_picture_adult_angry_lucie
                 type: image
                 is_right_answer: true
-              - value: emotion-picture-adult-disgust-lucie
+              - value: emotion_picture_adult_disgust_lucie
                 type: image
 
         - instructions:
@@ -202,10 +202,10 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: emotion-picture-adult-joy-lucie
+              - value: emotion_picture_adult_joy_lucie
                 type: image
                 is_right_answer: true
-              - value: emotion-picture-adult-sad-lucie
+              - value: emotion_picture_adult_sad_lucie
                 type: image
 
         - instructions:
@@ -218,10 +218,10 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: emotion-picture-adult-fear-lucie
+              - value: emotion_picture_adult_fear_lucie
                 type: image
                 is_right_answer: true
-              - value: emotion-picture-adult-angry-lucie
+              - value: emotion_picture_adult_angry_lucie
                 type: image
 
         - instructions:
@@ -234,8 +234,8 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: emotion-picture-adult-sad-lucie
+              - value: emotion_picture_adult_sad_lucie
                 type: image
                 is_right_answer: true
-              - value: emotion-picture-adult-fear-lucie
+              - value: emotion_picture_adult_fear_lucie
                 type: image

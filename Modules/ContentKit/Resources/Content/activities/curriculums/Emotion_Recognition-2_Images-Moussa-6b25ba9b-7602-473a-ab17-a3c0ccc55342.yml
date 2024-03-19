@@ -4,8 +4,8 @@
 
 version: 1.0.0
 
-uuid: 195c7905-0188-4c1d-a3c9-0aed0199606d
-name: emotion_recognition-4_pictures-hugo-yann
+uuid: 3e2d5e0e-ba42-4a4b-8ce3-ce3855bfa207
+name: Emotion_Recognition-2_Images-Moussa
 
 created_at: "2024-03-04T18:07:12.519229"
 last_edited_at: "2024-03-06T12:51:54.499453"
@@ -23,9 +23,9 @@ skills:
 
 tags:
   - emotions
-  - pictures
-  - Hugo
-  - yann
+  - drawings
+  - Moussa
+  - characters
 
 hmi:
   - tablet
@@ -42,8 +42,8 @@ l10n:
     details:
       icon:
 
-      title: Reconnaissance des émotions en photos - Hugo et Yann #4
-      subtitle: Hugo - Yann - 4
+      title: Reconnaissance des émotions en dessins - Moussa #2
+      subtitle: Moussa - 2
 
       short_description: |
         Touche l'émotion demandée
@@ -60,8 +60,8 @@ l10n:
     details:
       icon:
 
-      title: Emotion recognition in pictures - Hugo and Yann #4
-      subtitle: Hugo - Yann - 4
+      title: Emotion recognition with drawings - Moussa #2
+      subtitle: Moussa - 2
 
       short_description: |
         Touch the requested emotion
@@ -83,200 +83,160 @@ exercises_payload:
     - group:
         - instructions:
             - locale: fr_FR
-              value: Touche la personne qui est dégoûtée
+              value: Touche le personnage qui est dégoûté
             - locale: en_US
-              value: Touch the person who is disgusted
+              value: Touch the character who is disgusted
           interface: touchToSelect
           gameplay: findTheRightAnswers
           payload:
             shuffle_choices: true
             choices:
-              - value: emotion-picture-adult-disgust-yann
+              - value: emotion_drawing_child_disgust_moussa
                 type: image
                 is_right_answer: true
-              - value: emotion-picture-adult-joy-hugo
-                type: image
-              - value: emotion-picture-adult-fear-hugo
-                type: image
-              - value: emotion-picture-adult-angry-yann
+              - value: emotion_drawing_child_joy_moussa
                 type: image
 
         - instructions:
             - locale: fr_FR
-              value: Touche la personne qui est en colère
+              value: Touche le personnage qui est en colère
             - locale: en_US
-              value: Touch the person who is angry
+              value: Touch the character who is angry
           interface: touchToSelect
           gameplay: findTheRightAnswers
           payload:
             shuffle_choices: true
             choices:
-              - value: emotion-picture-adult-angry-hugo
+              - value: emotion_drawing_child_angry_moussa
                 type: image
                 is_right_answer: true
-              - value: emotion-picture-adult-sad-yann
-                type: image
-              - value: emotion-picture-adult-disgust-hugo
-                type: image
-              - value: emotion-picture-adult-fear-yann
+              - value: emotion_drawing_child_disgust_moussa
                 type: image
 
         - instructions:
             - locale: fr_FR
-              value: Touche la personne qui est contente
+              value: Touche le personnage qui est content
             - locale: en_US
-              value: Touch the person who is happy
+              value: Touch the character who is happy
           interface: touchToSelect
           gameplay: findTheRightAnswers
           payload:
             shuffle_choices: true
             choices:
-              - value: emotion-picture-adult-joy-hugo
+              - value: emotion_drawing_child_joy_moussa
                 type: image
                 is_right_answer: true
-              - value: emotion-picture-adult-sad-hugo
-                type: image
-              - value: emotion-picture-adult-angry-yann
-                type: image
-              - value: emotion-picture-adult-disgust-yann
+              - value: emotion_drawing_child_sad_moussa
                 type: image
 
         - instructions:
             - locale: fr_FR
-              value: Touche la personne qui a peur
+              value: Touche le personnage qui a peur
             - locale: en_US
-              value: Touch the person who is afraid
+              value: Touch the character who is afraid
           interface: touchToSelect
           gameplay: findTheRightAnswers
           payload:
             shuffle_choices: true
             choices:
-              - value: emotion-picture-adult-fear-hugo
+              - value: emotion_drawing_child_fear_moussa
                 type: image
                 is_right_answer: true
-              - value: emotion-picture-adult-sad-yann
-                type: image
-              - value: emotion-picture-adult-joy-hugo
-                type: image
-              - value: emotion-picture-adult-disgust-yann
+              - value: emotion_drawing_child_angry_moussa
                 type: image
 
         - instructions:
             - locale: fr_FR
-              value: Touche la personne qui est triste
+              value: Touche le personnage qui est triste
             - locale: en_US
-              value: Touch the person who is sad
+              value: Touch the character who is sad
           interface: touchToSelect
           gameplay: findTheRightAnswers
           payload:
             shuffle_choices: true
             choices:
-              - value: emotion-picture-adult-sad-hugo
+              - value: emotion_drawing_child_sad_moussa
                 type: image
                 is_right_answer: true
-              - value: emotion-picture-adult-angry-yann
-                type: image
-              - value: emotion-picture-adult-joy-hugo
-                type: image
-              - value: emotion-picture-adult-fear-yann
+              - value: emotion_drawing_child_fear_moussa
                 type: image
 
         - instructions:
             - locale: fr_FR
-              value: Touche la personne qui est dégoûtée
+              value: Touche le personnage qui est dégoûté
             - locale: en_US
-              value: Touch the person who is disgusted
+              value: Touch the character who is disgusted
           interface: touchToSelect
           gameplay: findTheRightAnswers
           payload:
             shuffle_choices: true
             choices:
-              - value: emotion-picture-adult-disgust-yann
+              - value: emotion_drawing_child_disgust_moussa
                 type: image
                 is_right_answer: true
-              - value: emotion-picture-adult-joy-hugo
-                type: image
-              - value: emotion-picture-adult-fear-hugo
-                type: image
-              - value: emotion-picture-adult-angry-yann
+              - value: emotion_drawing_child_joy_moussa
                 type: image
 
         - instructions:
             - locale: fr_FR
-              value: Touche la personne qui est en colère
+              value: Touche le personnage qui est en colère
             - locale: en_US
-              value: Touch the person who is angry
+              value: Touch the character who is angry
           interface: touchToSelect
           gameplay: findTheRightAnswers
           payload:
             shuffle_choices: true
             choices:
-              - value: emotion-picture-adult-angry-hugo
+              - value: emotion_drawing_child_angry_moussa
                 type: image
                 is_right_answer: true
-              - value: emotion-picture-adult-sad-yann
-                type: image
-              - value: emotion-picture-adult-disgust-hugo
-                type: image
-              - value: emotion-picture-adult-fear-yann
+              - value: emotion_drawing_child_disgust_moussa
                 type: image
 
         - instructions:
             - locale: fr_FR
-              value: Touche la personne qui est contente
+              value: Touche le personnage qui est content
             - locale: en_US
-              value: Touch the person who is happy
+              value: Touch the character who is happy
           interface: touchToSelect
           gameplay: findTheRightAnswers
           payload:
             shuffle_choices: true
             choices:
-              - value: emotion-picture-adult-joy-hugo
+              - value: emotion_drawing_child_joy_moussa
                 type: image
                 is_right_answer: true
-              - value: emotion-picture-adult-sad-hugo
-                type: image
-              - value: emotion-picture-adult-angry-yann
-                type: image
-              - value: emotion-picture-adult-disgust-yann
+              - value: emotion_drawing_child_sad_moussa
                 type: image
 
         - instructions:
             - locale: fr_FR
-              value: Touche la personne qui a peur
+              value: Touche le personnage qui a peur
             - locale: en_US
-              value: Touch the person who is afraid
+              value: Touch the character who is afraid
           interface: touchToSelect
           gameplay: findTheRightAnswers
           payload:
             shuffle_choices: true
             choices:
-              - value: emotion-picture-adult-fear-hugo
+              - value: emotion_drawing_child_fear_moussa
                 type: image
                 is_right_answer: true
-              - value: emotion-picture-adult-sad-yann
-                type: image
-              - value: emotion-picture-adult-joy-hugo
-                type: image
-              - value: emotion-picture-adult-disgust-yann
+              - value: emotion_drawing_child_angry_moussa
                 type: image
 
         - instructions:
             - locale: fr_FR
-              value: Touche la personne qui est triste
+              value: Touche le personnage qui est triste
             - locale: en_US
-              value: Touch the person who is sad
+              value: Touch the character who is sad
           interface: touchToSelect
           gameplay: findTheRightAnswers
           payload:
             shuffle_choices: true
             choices:
-              - value: emotion-picture-adult-sad-hugo
+              - value: emotion_drawing_child_sad_moussa
                 type: image
                 is_right_answer: true
-              - value: emotion-picture-adult-angry-yann
-                type: image
-              - value: emotion-picture-adult-joy-hugo
-                type: image
-              - value: emotion-picture-adult-fear-yann
+              - value: emotion_drawing_child_fear_moussa
                 type: image

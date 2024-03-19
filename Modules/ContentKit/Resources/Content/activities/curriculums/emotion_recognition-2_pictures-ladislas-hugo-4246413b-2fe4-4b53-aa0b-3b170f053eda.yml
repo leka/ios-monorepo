@@ -91,10 +91,10 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: emotion-picture-adult-disgust-ladislas
+              - value: emotion_picture_adult_disgust_ladislas
                 type: image
                 is_right_answer: true
-              - value: emotion-picture-adult-joy-hugo
+              - value: emotion_picture_adult_joy_hugo
                 type: image
 
         - instructions:
@@ -107,10 +107,10 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: emotion-picture-adult-angry-ladislas
+              - value: emotion_picture_adult_angry_ladislas
                 type: image
                 is_right_answer: true
-              - value: emotion-picture-adult-disgust-hugo
+              - value: emotion_picture_adult_disgust_hugo
                 type: image
 
         - instructions:
@@ -123,10 +123,10 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: emotion-picture-adult-joy-ladislas
+              - value: emotion_picture_adult_joy_ladislas
                 type: image
                 is_right_answer: true
-              - value: emotion-picture-adult-fear-hugo
+              - value: emotion_picture_adult_fear_hugo
                 type: image
 
         - instructions:
@@ -139,10 +139,10 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: emotion-picture-adult-fear-hugo
+              - value: emotion_picture_adult_fear_hugo
                 type: image
                 is_right_answer: true
-              - value: emotion-picture-adult-sad-ladislas
+              - value: emotion_picture_adult_sad_ladislas
                 type: image
 
         - instructions:
@@ -155,10 +155,10 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: emotion-picture-adult-sad-hugo
+              - value: emotion_picture_adult_sad_hugo
                 type: image
                 is_right_answer: true
-              - value: emotion-picture-adult-angry-ladislas
+              - value: emotion_picture_adult_angry_ladislas
                 type: image
 
         - instructions:
@@ -171,10 +171,10 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: emotion-picture-adult-disgust-ladislas
+              - value: emotion_picture_adult_disgust_ladislas
                 type: image
                 is_right_answer: true
-              - value: emotion-picture-adult-joy-hugo
+              - value: emotion_picture_adult_joy_hugo
                 type: image
 
         - instructions:
@@ -187,10 +187,10 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: emotion-picture-adult-angry-ladislas
+              - value: emotion_picture_adult_angry_ladislas
                 type: image
                 is_right_answer: true
-              - value: emotion-picture-adult-disgust-hugo
+              - value: emotion_picture_adult_disgust_hugo
                 type: image
 
         - instructions:
@@ -203,10 +203,10 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: emotion-picture-adult-joy-ladislas
+              - value: emotion_picture_adult_joy_ladislas
                 type: image
                 is_right_answer: true
-              - value: emotion-picture-adult-fear-hugo
+              - value: emotion_picture_adult_fear_hugo
                 type: image
 
         - instructions:
@@ -219,10 +219,10 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: emotion-picture-adult-fear-hugo
+              - value: emotion_picture_adult_fear_hugo
                 type: image
                 is_right_answer: true
-              - value: emotion-picture-adult-sad-ladislas
+              - value: emotion_picture_adult_sad_ladislas
                 type: image
 
         - instructions:
@@ -235,8 +235,8 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: emotion-picture-adult-sad-hugo
+              - value: emotion_picture_adult_sad_hugo
                 type: image
                 is_right_answer: true
-              - value: emotion-picture-adult-angry-ladislas
+              - value: emotion_picture_adult_angry_ladislas
                 type: image

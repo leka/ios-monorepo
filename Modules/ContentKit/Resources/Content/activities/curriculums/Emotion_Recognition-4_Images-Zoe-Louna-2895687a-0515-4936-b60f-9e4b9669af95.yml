@@ -4,8 +4,8 @@
 
 version: 1.0.0
 
-uuid: 195c7905-0188-4c1d-a3c9-0aed0199606d
-name: emotion_recognition-4_pictures-tous-les-personnages
+uuid: 2895687a-0515-4936-b60f-9e4b9669af95
+name: Emotion_Recognition-4_Images-Zoe-Louna
 
 created_at: "2024-03-04T18:07:12.519229"
 last_edited_at: "2024-03-06T12:51:54.499453"
@@ -23,12 +23,10 @@ skills:
 
 tags:
   - emotions
-  - pictures
-  - Ladislas
-  - Hortense
-  - Yann
-  - Lucie
-  - Hugo
+  - drawings
+  - characters
+  - Zoe
+  - Louna
 
 hmi:
   - tablet
@@ -45,8 +43,8 @@ l10n:
     details:
       icon:
 
-      title: Reconnaissance des émotions en photos - Equipe Leka #4
-      subtitle: Equipe Leka - 4
+      title: Reconnaissance des émotions en dessins - Zoé et Louna #4
+      subtitle: Zoe - Louna - 4
 
       short_description: |
         Touche l'émotion demandée
@@ -55,16 +53,16 @@ l10n:
         L'enfant doit toucher l'émotion demandée.
 
       instructions: |
-        - Sur l'écran, toucher le haut parleur pour que la personne accompagnée puisse entendre la consigne
-        - Encourager la personne accompagnée à toucher l'émotion demandée
+        - Sur l'écran, toucher le haut parleur pour que le personnage accompagnée puisse entendre la consigne
+        - Encourager le personnage accompagnée à toucher l'émotion demandée
         - Lorsque la réponse est correct, Leka lance un renforçateur
 
   - locale: en_US
     details:
       icon:
 
-      title: Emotion recognition in pictures - Leka team #4
-      subtitle: Leka team - 4
+      title: Emotion recognition in pictures - Zoe and Louna #4
+      subtitle: Zoe - Louna - 4
 
       short_description: |
         Touch the requested emotion
@@ -86,200 +84,201 @@ exercises_payload:
     - group:
         - instructions:
             - locale: fr_FR
-              value: Touche la personne qui est dégoûtée
+              value: Touche le personnage qui est dégoûté
             - locale: en_US
-              value: Touch the person who is disgusted
+              value: Touch the character who is disgusted
           interface: touchToSelect
           gameplay: findTheRightAnswers
           payload:
             shuffle_choices: true
             choices:
-              - value: emotion-picture-adult-disgust-ladislas
+              - value: emotion_drawing_child_disgust_louna
                 type: image
                 is_right_answer: true
-              - value: emotion-picture-adult-joy-lucie
+              - value: emotion_drawing_child_joy_zoe
                 type: image
-              - value: emotion-picture-adult-fear-yann
+              - value: emotion_drawing_child_fear_zoe
                 type: image
-              - value: emotion-picture-adult-angry-hortense
+              - value: emotion_drawing_child_angry_louna
                 type: image
 
         - instructions:
             - locale: fr_FR
-              value: Touche la personne qui est en colère
+              value: Touche le personnage qui est en colère
             - locale: en_US
-              value: Touch the person who is angry
+              value: Touch the character who is angry
           interface: touchToSelect
           gameplay: findTheRightAnswers
           payload:
             shuffle_choices: true
             choices:
-              - value: emotion-picture-adult-angry-hugo
+              - value: emotion_drawing_child_angry_zoe
                 type: image
                 is_right_answer: true
-              - value: emotion-picture-adult-disgust-yann
+              - value: emotion_drawing_child_sad_louna
                 type: image
-              - value: emotion-picture-adult-fear-hortense
+              - value: emotion_drawing_child_disgust_zoe
                 type: image
-              - value: emotion-picture-adult-sad-lucie
+              - value: emotion_drawing_child_fear_louna
                 type: image
 
         - instructions:
             - locale: fr_FR
-              value: Touche la personne qui est contente
+              value: Touche le personnage qui est content
             - locale: en_US
-              value: Touch the person who is happy
+              value: Touch the character who is happy
           interface: touchToSelect
           gameplay: findTheRightAnswers
           payload:
             shuffle_choices: true
             choices:
-              - value: emotion-picture-adult-joy-yann
+              - value: emotion_drawing_child_joy_zoe
                 type: image
                 is_right_answer: true
-              - value: emotion-picture-adult-sad-hugo
+              - value: emotion_drawing_child_sad_zoe
                 type: image
-              - value: emotion-picture-adult-angry-ladislas
+              - value: emotion_drawing_child_angry_louna
                 type: image
-              - value: emotion-picture-adult-disgust-lucie
+              - value: emotion_drawing_child_disgust_louna
                 type: image
 
         - instructions:
             - locale: fr_FR
-              value: Touche la personne qui a peur
+              value: Touche le personnage qui a peur
             - locale: en_US
-              value: Touch the person who is afraid
+              value: Touch the character who is afraid
           interface: touchToSelect
           gameplay: findTheRightAnswers
           payload:
             shuffle_choices: true
             choices:
-              - value: emotion-picture-adult-fear-hugo
+              - value: emotion_drawing_child_fear_zoe
                 type: image
                 is_right_answer: true
-              - value: emotion-picture-adult-joy-hortense
+              - value: emotion_drawing_child_sad_louna
                 type: image
-              - value: emotion-picture-adult-disgust-lucie
+              - value: emotion_drawing_child_joy_zoe
                 type: image
-              - value: emotion-picture-adult-sad-ladislas
+              - value: emotion_drawing_child_disgust_louna
                 type: image
 
         - instructions:
             - locale: fr_FR
-              value: Touche la personne qui est triste
+              value: Touche le personnage qui est triste
             - locale: en_US
-              value: Touch the person who is sad
+              value: Touch the character who is sad
           interface: touchToSelect
           gameplay: findTheRightAnswers
           payload:
             shuffle_choices: true
             choices:
-              - value: emotion-picture-adult-sad-hortense
+              - value: emotion_drawing_child_sad_zoe
                 type: image
                 is_right_answer: true
-              - value: emotion-picture-adult-angry-yann
+              - value: emotion_drawing_child_angry_louna
                 type: image
-              - value: emotion-picture-adult-fear-ladislas
+              - value: emotion_drawing_child_joy_zoe
                 type: image
-              - value: emotion-picture-adult-joy-hugo
+              - value: emotion_drawing_child_fear_louna
                 type: image
 
         - instructions:
             - locale: fr_FR
-              value: Touche la personne qui est dégoûtée
+              value: Touche le personnage qui est dégoûté
             - locale: en_US
-              value: Touch the person who is disgusted
+              value: Touch the character who is disgusted
           interface: touchToSelect
           gameplay: findTheRightAnswers
           payload:
             shuffle_choices: true
             choices:
-              - value: emotion-picture-adult-disgust-ladislas
+              - value: emotion_drawing_child_disgust_louna
                 type: image
                 is_right_answer: true
-              - value: emotion-picture-adult-joy-lucie
+              - value: emotion_drawing_child_joy_zoe
                 type: image
-              - value: emotion-picture-adult-fear-yann
+              - value: emotion_drawing_child_fear_zoe
                 type: image
-              - value: emotion-picture-adult-angry-hortense
+              - value: emotion_drawing_child_angry_louna
                 type: image
 
         - instructions:
             - locale: fr_FR
-              value: Touche la personne qui est en colère
+              value: Touche le personnage qui est en colère
             - locale: en_US
-              value: Touch the person who is angry
+              value: Touch the character who is angry
           interface: touchToSelect
           gameplay: findTheRightAnswers
           payload:
             shuffle_choices: true
             choices:
-              - value: emotion-picture-adult-angry-hugo
+              - value: emotion_drawing_child_angry_zoe
                 type: image
                 is_right_answer: true
-              - value: emotion-picture-adult-disgust-yann
+              - value: emotion_drawing_child_sad_louna
                 type: image
-              - value: emotion-picture-adult-fear-hortense
+              - value: emotion_drawing_child_disgust_zoe
                 type: image
-              - value: emotion-picture-adult-sad-lucie
+              - value: emotion_drawing_child_fear_louna
                 type: image
 
         - instructions:
             - locale: fr_FR
-              value: Touche la personne qui est contente
+              value: Touche le personnage qui est content
             - locale: en_US
-              value: Touch the person who is happy
+              value: Touch the character who is happy
           interface: touchToSelect
           gameplay: findTheRightAnswers
           payload:
             shuffle_choices: true
             choices:
-              - value: emotion-picture-adult-joy-yann
+              - value: emotion_drawing_child_joy_zoe
                 type: image
                 is_right_answer: true
-              - value: emotion-picture-adult-sad-hugo
+              - value: emotion_drawing_child_sad_zoe
                 type: image
-              - value: emotion-picture-adult-angry-ladislas
+              - value: emotion_drawing_child_angry_louna
                 type: image
-              - value: emotion-picture-adult-disgust-lucie
+              - value: emotion_drawing_child_disgust_louna
                 type: image
 
         - instructions:
             - locale: fr_FR
-              value: Touche la personne qui a peur
+              value: Touche le personnage qui a peur
             - locale: en_US
-              value: Touch the person who is afraid
+              value: Touch the character who is afraid
           interface: touchToSelect
           gameplay: findTheRightAnswers
           payload:
             shuffle_choices: true
             choices:
-              - value: emotion-picture-adult-fear-hugo
+              - value: emotion_drawing_child_fear_zoe
                 type: image
                 is_right_answer: true
-              - value: emotion-picture-adult-joy-hortense
+              - value: emotion_drawing_child_sad_louna
                 type: image
-              - value: emotion-picture-adult-disgust-lucie
+              - value: emotion_drawing_child_joy_zoe
                 type: image
-              - value: emotion-picture-adult-sad-ladislas
+              - value: emotion_drawing_child_disgust_louna
                 type: image
 
         - instructions:
             - locale: fr_FR
-              value: Touche la personne qui est triste
+              value: Touche le personnage qui est triste
             - locale: en_US
-              value: Touch the person who is sad
+              value: Touch the character who is sad
           interface: touchToSelect
           gameplay: findTheRightAnswers
           payload:
             shuffle_choices: true
             choices:
-              - value: emotion-picture-adult-sad-hortense
+              - value: emotion_drawing_child_sad_zoe
                 type: image
                 is_right_answer: true
-              - value: emotion-picture-adult-angry-yann
+              - value: emotion_drawing_child_angry_louna
                 type: image
-              - value: emotion-picture-adult-fear-ladislas
+              - value: emotion_drawing_child_joy_zoe
                 type: image
-              - value: emotion-picture-adult-joy-hugo
+              - value: emotion_drawing_child_fear_louna
                 type: image
+
