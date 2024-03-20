@@ -3,7 +3,10 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import ContentKit
+import LocalizationKit
 import SwiftUI
+
+// MARK: - TouchToSelectChoiceView
 
 struct TouchToSelectChoiceView: View {
     // MARK: Lifecycle
@@ -63,7 +66,7 @@ struct TouchToSelectChoiceView: View {
                         .animation(.easeOut(duration: 0.3), value: self.isTappable)
 
                 default:
-                    Text("❌ ERROR\nChoice type not implemented")
+                    Text(l10n.TouchToSelectChoiceView.typeUnknownError)
                         .multilineTextAlignment(.center)
                         .onAppear {
                             log.error("Choice type \(self.choice.type) not implemented for choice: \(self.choice)")
@@ -71,5 +74,16 @@ struct TouchToSelectChoiceView: View {
             }
         }
         .contentShape(Circle())
+    }
+}
+
+// MARK: - l10n.TouchToSelectChoiceView
+
+extension l10n {
+    enum TouchToSelectChoiceView {
+        static let typeUnknownError = LocalizedString("game_engine_kit.touch_to_select_choice_view.type_unknown_error",
+                                                      bundle: GameEngineKitResources.bundle,
+                                                      value: "❌ ERROR\nChoice type not implemented",
+                                                      comment: "TouchToSelectChoiceView type unknown error label")
     }
 }

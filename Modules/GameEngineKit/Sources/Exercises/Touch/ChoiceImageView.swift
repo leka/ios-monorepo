@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import ContentKit
+import LocalizationKit
 import RobotKit
 import SVGView
 import SwiftUI
@@ -107,7 +108,7 @@ public struct ChoiceImageView: View {
     @State private var overlayOpacity: CGFloat = .zero
 
     private func imageNotFound() -> some View {
-        Text("❌\nImage not found:\n\(self.image)")
+        Text(l10n.ChoiceImageView.imageUnknownError(self.image))
             .multilineTextAlignment(.center)
             .frame(
                 width: self.size,
@@ -132,6 +133,17 @@ extension String {
 
     var isVectorImageFile: Bool {
         self.pathExtension == "svg"
+    }
+}
+
+// MARK: - l10n.ChoiceImageView
+
+extension l10n {
+    enum ChoiceImageView {
+        static let imageUnknownError = LocalizedStringInterpolation("game_engine_kit.choice_image_view.image_unknown_error",
+                                                                    bundle: GameEngineKitResources.bundle,
+                                                                    value: "❌\nImage not found:\n%s",
+                                                                    comment: "ChoiceImageView image unknown error")
     }
 }
 

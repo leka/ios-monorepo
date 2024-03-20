@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import DesignKit
+import LocalizationKit
 import SwiftUI
 
 // MARK: - AnimatableBlur
@@ -56,7 +57,7 @@ struct ActionButtonObserve: View {
                         .resizable()
                         .frame(width: 70, height: 70)
                         .foregroundColor(.white)
-                    Text("Tap to reveal")
+                    Text(l10n.ActionButtonObserve.buttonLabel)
                         .font(.title)
                         .foregroundColor(.white)
                 }
@@ -75,7 +76,7 @@ struct ActionButtonObserve: View {
                     .modifier(AnimatableSaturation(saturation: self.imageWasTapped ? 1 : 0))
             }
         } else {
-            Text("❌\nImage not found:\n\(self.image)")
+            Text(l10n.ActionButtonObserve.imageUnknownError(self.image))
                 .multilineTextAlignment(.center)
                 .overlay {
                     Circle()
@@ -86,6 +87,22 @@ struct ActionButtonObserve: View {
                     height: 460
                 )
         }
+    }
+}
+
+// MARK: - l10n.ActionButtonObserve
+
+extension l10n {
+    enum ActionButtonObserve {
+        static let buttonLabel = LocalizedString("game_engine_kit.action_button_observe.button_label",
+                                                 bundle: GameEngineKitResources.bundle,
+                                                 value: "Tap to reveal",
+                                                 comment: "ActionButtonObserve button label")
+
+        static let imageUnknownError = LocalizedStringInterpolation("game_engine_kit.action_button_observe.image_unknown_error",
+                                                                    bundle: GameEngineKitResources.bundle,
+                                                                    value: "❌\nImage not found:\n%s",
+                                                                    comment: "ActionButtonObserve button label")
     }
 }
 

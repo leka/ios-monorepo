@@ -2,7 +2,10 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import LocalizationKit
 import SwiftUI
+
+// MARK: - LedZoneSelectorView
 
 struct LedZoneSelectorView: View {
     // MARK: Internal
@@ -62,6 +65,17 @@ struct LedZoneSelectorView: View {
                     BeltSectionButton(section: .quarterFrontLeft(in: .yellow))
             }
         }
+    }
+}
+
+// MARK: - l10n.LedZoneSelectorView
+
+extension l10n {
+    enum LedZoneSelectorView {
+        static let frontLabel = LocalizedString("game_engine_kit.led_zone_selector_view.front_label",
+                                                bundle: GameEngineKitResources.bundle,
+                                                value: "Front",
+                                                comment: "Label that shows where the front is on the LedZoneSelectorView")
     }
 }
 

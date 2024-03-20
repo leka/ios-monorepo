@@ -3,8 +3,11 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import ContentKit
+import LocalizationKit
 import RobotKit
 import SwiftUI
+
+// MARK: - ChoiceSFSymbolView
 
 struct ChoiceSFSymbolView: View {
     // MARK: Lifecycle
@@ -104,6 +107,17 @@ struct ChoiceSFSymbolView: View {
 
     @State private var animationPercent: CGFloat = .zero
     @State private var overlayOpacity: CGFloat = .zero
+}
+
+// MARK: - l10n.ChoiceSFSymbolView
+
+extension l10n {
+    enum ChoiceSFSymbolView {
+        static let sfSymbolUnknownError = LocalizedStringInterpolation("game_engine_kit.choice_sf_symbol_view.sf_symbol_unknown_error",
+                                                                       bundle: GameEngineKitResources.bundle,
+                                                                       value: "❌\nSF Symbol not found:\n%s",
+                                                                       comment: "ChoiceSFSymbolView SF symbol unknown error label")
+    }
 }
 
 #Preview {
