@@ -12,10 +12,11 @@ import SwiftUI
 public struct ChoiceImageView: View {
     // MARK: Lifecycle
 
-    public init(image: String, size: CGFloat, state: GameplayChoiceState = .idle) {
+    public init(image: String, size: CGFloat, background: Color? = nil, state: GameplayChoiceState = .idle) {
         self.image = image
         self.size = size
         self.state = state
+        self.background = background ?? self.choiceBackgroundColor
     }
 
     // MARK: Public
@@ -76,18 +77,26 @@ public struct ChoiceImageView: View {
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: self.size, height: self.size)
+                .background(self.background)
                 .clipShape(Circle())
         }
 
         if self.image.isVectorImageFile {
             SVGView(contentsOf: URL(fileURLWithPath: self.image))
                 .frame(width: self.size, height: self.size)
-                .background(.white)
+                .background(self.background)
                 .clipShape(Circle())
         }
     }
 
     // MARK: Private
+
+    private let background: Color
+
+    private let choiceBackgroundColor: Color = .init(
+        light: .white,
+        dark: UIColor(displayP3Red: 242 / 255, green: 242 / 255, blue: 247 / 255, alpha: 1.0)
+    )
 
     private let image: String
     private let size: CGFloat
@@ -104,6 +113,7 @@ public struct ChoiceImageView: View {
                 width: self.size,
                 height: self.size
             )
+            .background(self.background)
             .overlay {
                 Circle()
                     .stroke(Color.red, lineWidth: 5)
