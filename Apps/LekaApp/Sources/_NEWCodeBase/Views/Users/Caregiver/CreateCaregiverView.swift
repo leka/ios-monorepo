@@ -105,9 +105,9 @@ struct CreateCaregiverView: View {
                     })
                 } label: {
                     Text(String(l10n.CaregiverCreation.registerProfilButton.characters))
-                        .loadingIndicator(isLoading: self.caregiverManagerViewModel.isLoading)
+                        .loadingIndicator(isLoading: self.caregiverManagerViewModel.isCreateLoading)
                 }
-                .disabled(self.newCaregiver.firstName.isEmpty || self.caregiverManagerViewModel.isLoading)
+                .disabled(self.newCaregiver.firstName.isEmpty || self.caregiverManagerViewModel.isCreateLoading)
                 .buttonStyle(.borderedProminent)
                 .listRowBackground(Color.clear)
                 .frame(maxWidth: .infinity, alignment: .center)

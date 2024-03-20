@@ -43,14 +43,14 @@ struct CaregiverPicker: View {
                                     CaregiverAvatarCell(caregiver: caregiver)
                                         .frame(maxWidth: 140)
                                 }
-                                .disabled(self.caregiverManagerViewModel.isLoading)
+                                .disabled(self.caregiverManagerViewModel.isListLoading)
                             }
                         }
                     }
                     .padding()
                 }
             }
-            .loadingIndicator(isLoading: self.caregiverManagerViewModel.isLoading)
+            .loadingIndicator(isLoading: self.caregiverManagerViewModel.isListLoading)
         }
         .padding(.horizontal, 50)
         .navigationTitle(String(l10n.CaregiverPicker.title.characters))

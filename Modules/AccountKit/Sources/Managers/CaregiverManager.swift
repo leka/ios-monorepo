@@ -18,7 +18,7 @@ public class CaregiverManager {
 
     public func initializeCaregiversListener() {
         self.dbOps.observeAll(from: .caregivers)
-            .handleLoadingState(using: self.loadingStatePublisher)
+            .handleLoadingState(using: self.loadingListPublisher)
             .sink(receiveCompletion: { [weak self] completion in
                 if case let .failure(error) = completion {
                     self?.fetchErrorSubject.send(error)
@@ -31,7 +31,7 @@ public class CaregiverManager {
 
     public func fetchCaregiver(documentID: String) {
         self.dbOps.read(from: .caregivers, documentID: documentID)
-            .handleLoadingState(using: self.loadingStatePublisher)
+            .handleLoadingState(using: self.loadingFetchPublisher)
             .sink(receiveCompletion: { [weak self] completion in
                 if case let .failure(error) = completion {
                     self?.fetchErrorSubject.send(error)
@@ -43,7 +43,7 @@ public class CaregiverManager {
     }
 
     public func createCaregiver(caregiver: Caregiver) -> AnyPublisher<Caregiver, Error> {
-        self.loadingStatePublisher.send(true)
+        self.loadingCreatePublisher.send(true)
         return self.dbOps.create(data: caregiver, in: .caregivers)
             .flatMap { [weak self] createdCaregiver -> AnyPublisher<Caregiver, Error> in
                 guard self != nil else {
@@ -56,15 +56,11 @@ public class CaregiverManager {
             }
             .handleEvents(
                 receiveCompletion: { [weak self] _ in
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                        self?.loadingStatePublisher.send(false)
-                    }
+                    self?.loadingCreatePublisher.send(false)
                     self?.initializeCaregiversListener()
                 },
                 receiveCancel: { [weak self] in
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                        self?.loadingStatePublisher.send(false)
-                    }
+                    self?.loadingCreatePublisher.send(false)
                 }
             )
             .eraseToAnyPublisher()
@@ -74,7 +70,7 @@ public class CaregiverManager {
         caregiver.lastEditedAt = nil
         let documentID = caregiver.id!
         self.dbOps.update(data: caregiver, in: .caregivers)
-            .handleLoadingState(using: self.loadingStatePublisher)
+            .handleLoadingState(using: self.loadingUpdatePublisher)
             .sink(receiveCompletion: { completion in
                 if case let .failure(error) = completion {
                     self.fetchErrorSubject.send(error)
@@ -87,7 +83,6 @@ public class CaregiverManager {
 
     public func deleteCaregiver(documentID: String) {
         self.dbOps.delete(from: .caregivers, documentID: documentID)
-            .handleLoadingState(using: self.loadingStatePublisher)
             .sink(receiveCompletion: { completion in
                 if case let .failure(error) = completion {
                     self.fetchErrorSubject.send(error)
@@ -124,16 +119,32 @@ public class CaregiverManager {
         self.fetchErrorSubject.eraseToAnyPublisher()
     }
 
-    var isLoadingPublisher: AnyPublisher<Bool, Never> {
-        self.loadingStatePublisher.eraseToAnyPublisher()
+    var isCreateLoadingPublisher: AnyPublisher<Bool, Never> {
+        self.loadingCreatePublisher.eraseToAnyPublisher()
+    }
+
+    var isFetchLoadingPublisher: AnyPublisher<Bool, Never> {
+        self.loadingFetchPublisher.eraseToAnyPublisher()
+    }
+
+    var isListLoadingPublisher: AnyPublisher<Bool, Never> {
+        self.loadingListPublisher.eraseToAnyPublisher()
+    }
+
+    var isUpdateLoadingPublisher: AnyPublisher<Bool, Never> {
+        self.loadingUpdatePublisher.eraseToAnyPublisher()
     }
 
     // MARK: Private
 
     private var caregiverList = CurrentValueSubject<[Caregiver], Never>([])
     private var currentCaregiver = CurrentValueSubject<Caregiver?, Never>(nil)
-    private let loadingStatePublisher = PassthroughSubject<Bool, Never>()
     private var fetchErrorSubject = PassthroughSubject<Error, Never>()
     private let dbOps = DatabaseOperations.shared
     private var cancellables = Set<AnyCancellable>()
+
+    private let loadingCreatePublisher = CurrentValueSubject<Bool, Never>(false)
+    private let loadingFetchPublisher = CurrentValueSubject<Bool, Never>(false)
+    private let loadingListPublisher = CurrentValueSubject<Bool, Never>(false)
+    private let loadingUpdatePublisher = CurrentValueSubject<Bool, Never>(false)
 }

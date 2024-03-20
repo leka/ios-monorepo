@@ -69,14 +69,14 @@ struct EditCaregiverView: View {
             ToolbarItem(placement: .topBarTrailing) {
                 Button(action: {
                     self.caregiverManager.updateCaregiver(caregiver: &self.viewModel.caregiver)
-                    if !self.caregiverManagerViewModel.isLoading {
+                    if !self.caregiverManagerViewModel.isUpdateLoading {
                         self.dismiss()
                     }
                 }, label: {
                     Text(String(l10n.EditCaregiverView.saveButtonLabel.characters))
-                        .loadingIndicator(isLoading: self.caregiverManagerViewModel.isLoading)
+                        .loadingIndicator(isLoading: self.caregiverManagerViewModel.isUpdateLoading)
                 })
-                .disabled(self.caregiverManagerViewModel.isLoading)
+                .disabled(self.caregiverManagerViewModel.isUpdateLoading)
             }
         }
         .preferredColorScheme(self.styleManager.colorScheme)

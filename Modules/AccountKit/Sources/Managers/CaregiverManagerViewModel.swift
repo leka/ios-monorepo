@@ -19,11 +19,10 @@ public class CaregiverManagerViewModel: ObservableObject {
     @Published public var errorMessage: String = ""
     @Published public var showErrorAlert = false
 
-    @Published public var isLoading: Bool = false {
-        didSet {
-            print("Caregivers are Loading:", self.isLoading)
-        }
-    }
+    @Published public var isCreateLoading: Bool = false
+    @Published public var isFetchLoading: Bool = false
+    @Published public var isListLoading: Bool = false
+    @Published public var isUpdateLoading: Bool = false
 
     // MARK: Private
 
@@ -45,10 +44,31 @@ public class CaregiverManagerViewModel: ObservableObject {
             })
             .store(in: &self.cancellables)
 
-        self.caregiverManager.isLoadingPublisher
+        self.caregiverManager.isCreateLoadingPublisher
             .receive(on: DispatchQueue.main)
             .sink { [weak self] isLoading in
-                self?.isLoading = isLoading
+                self?.isCreateLoading = isLoading
+            }
+            .store(in: &self.cancellables)
+
+        self.caregiverManager.isFetchLoadingPublisher
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] isLoading in
+                self?.isFetchLoading = isLoading
+            }
+            .store(in: &self.cancellables)
+
+        self.caregiverManager.isListLoadingPublisher
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] isLoading in
+                self?.isListLoading = isLoading
+            }
+            .store(in: &self.cancellables)
+
+        self.caregiverManager.isUpdateLoadingPublisher
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] isLoading in
+                self?.isUpdateLoading = isLoading
             }
             .store(in: &self.cancellables)
 
