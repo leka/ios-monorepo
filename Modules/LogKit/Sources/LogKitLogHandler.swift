@@ -10,7 +10,8 @@ import Logging
 
 // swiftlint:disable function_parameter_count
 
-extension String {
+// TODO: (@ladislas) move to UtilsKit
+public extension String {
     var fileURL: URL {
         URL(fileURLWithPath: self)
     }

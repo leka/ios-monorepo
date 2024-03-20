@@ -54,5 +54,9 @@ let package = Package(
             url: "https://github.com/OlehKorchytskyi/Fit",
             exact: "1.0.0"
         ),
+        .package(
+            url: "https://github.com/exyte/SVGView",
+            exact: "1.0.6"
+        ),
     ]
 )

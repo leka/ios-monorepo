@@ -4,7 +4,10 @@
 
 import ContentKit
 import RobotKit
+import SVGView
 import SwiftUI
+
+// MARK: - ChoiceImageView
 
 public struct ChoiceImageView: View {
     // MARK: Lifecycle
@@ -64,26 +67,23 @@ public struct ChoiceImageView: View {
 
     @ViewBuilder
     var circle: some View {
-        if let uiImage = UIImage(named: image) {
-            Image(uiImage: uiImage)
+        if !FileManager.default.fileExists(atPath: self.image) {
+            self.imageNotFound()
+        }
+
+        if self.image.isRasterImageFile {
+            Image(uiImage: UIImage(named: self.image)!)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .frame(
-                    width: self.size,
-                    height: self.size
-                )
+                .frame(width: self.size, height: self.size)
                 .clipShape(Circle())
-        } else {
-            Text("❌\nImage not found:\n\(self.image)")
-                .multilineTextAlignment(.center)
-                .frame(
-                    width: self.size,
-                    height: self.size
-                )
-                .overlay {
-                    Circle()
-                        .stroke(Color.red, lineWidth: 5)
-                }
+        }
+
+        if self.image.isVectorImageFile {
+            SVGView(contentsOf: URL(fileURLWithPath: self.image))
+                .frame(width: self.size, height: self.size)
+                .background(.white)
+                .clipShape(Circle())
         }
     }
 
@@ -96,27 +96,81 @@ public struct ChoiceImageView: View {
 
     @State private var animationPercent: CGFloat = .zero
     @State private var overlayOpacity: CGFloat = .zero
+
+    private func imageNotFound() -> some View {
+        Text("❌\nImage not found:\n\(self.image)")
+            .multilineTextAlignment(.center)
+            .frame(
+                width: self.size,
+                height: self.size
+            )
+            .overlay {
+                Circle()
+                    .stroke(Color.red, lineWidth: 5)
+            }
+            .onAppear {
+                log.error("Image not found: \(self.image)")
+            }
+    }
+}
+
+// TODO: (@ladislas) move to UtilsKit
+extension String {
+    var isRasterImageFile: Bool {
+        ["png", "jpg", "jpeg"].contains(self.pathExtension)
+    }
+
+    var isVectorImageFile: Bool {
+        self.pathExtension == "svg"
+    }
 }
 
 #Preview {
-    VStack(spacing: 30) {
-        HStack(spacing: 50) {
-            ChoiceImageView(image: "image-placeholder-animals", size: 200)
-            ChoiceImageView(image: "image-placeholder-missing", size: 200)
-        }
+    let pngImagePathFromContentKit = Bundle.path(forImage: "discover_leka.activity.icon", in: ContentKitResources.bundle)!
+    let pngImagePath = Bundle.path(forImage: "image-placeholder-png-boy_sleeping")!
+    let jpgImagePath = Bundle.path(forImage: "image-placeholder-jpg-boy_sleeping")!
+    let svgImagePath = Bundle.path(forImage: "image-placeholder-svg-boy_sleeping")!
 
-        HStack(spacing: 50) {
-            ChoiceImageView(image: "image-placeholder-animals", size: 200)
-            ChoiceImageView(image: "image-placeholder-animals", size: 200, state: .rightAnswer)
-            ChoiceImageView(image: "image-placeholder-animals", size: 200, state: .wrongAnswer)
-        }
+    return ScrollView {
+        VStack(spacing: 60) {
+            HStack(spacing: 70) {
+                VStack {
+                    Text("PNG")
+                        .font(.largeTitle)
+                    Text("ContentKit")
+                        .font(.caption)
+                }
+                ChoiceImageView(image: pngImagePathFromContentKit, size: 200, state: .idle)
+                ChoiceImageView(image: pngImagePathFromContentKit, size: 200, state: .rightAnswer)
+                ChoiceImageView(image: pngImagePathFromContentKit, size: 200, state: .wrongAnswer)
+            }
 
-        HStack(spacing: 0) {
-            ChoiceImageView(image: "image-placeholder-animals", size: 200)
-            ChoiceColorView(color: "blue", size: 200)
+            HStack(spacing: 70) {
+                Text("PNG")
+                    .font(.largeTitle)
+                ChoiceImageView(image: pngImagePath, size: 200, state: .idle)
+                ChoiceImageView(image: pngImagePath, size: 200, state: .rightAnswer)
+                ChoiceImageView(image: pngImagePath, size: 200, state: .wrongAnswer)
+            }
 
-            ChoiceImageView(image: "image-placeholder-animals", size: 200, state: .rightAnswer)
-            ChoiceColorView(color: "blue", size: 200, state: .rightAnswer)
+            HStack(spacing: 70) {
+                Text("JPG")
+                    .font(.largeTitle)
+                ChoiceImageView(image: jpgImagePath, size: 200, state: .idle)
+                ChoiceImageView(image: jpgImagePath, size: 200, state: .rightAnswer)
+                ChoiceImageView(image: jpgImagePath, size: 200, state: .wrongAnswer)
+            }
+
+            HStack(spacing: 70) {
+                Text("SVG")
+                    .font(.largeTitle)
+                ChoiceImageView(image: svgImagePath, size: 200, state: .idle)
+                ChoiceImageView(image: svgImagePath, size: 200, state: .rightAnswer)
+                ChoiceImageView(image: svgImagePath, size: 200, state: .wrongAnswer)
+            }
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
+
+    .background(.lkBackground)
 }
