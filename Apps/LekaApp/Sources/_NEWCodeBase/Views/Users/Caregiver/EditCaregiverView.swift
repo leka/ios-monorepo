@@ -67,10 +67,16 @@ struct EditCaregiverView: View {
                 }
             }
             ToolbarItem(placement: .topBarTrailing) {
-                Button(String(l10n.EditCaregiverView.saveButtonLabel.characters)) {
+                Button(action: {
                     self.caregiverManager.updateCaregiver(caregiver: &self.viewModel.caregiver)
-                    self.dismiss()
-                }
+                    if !self.caregiverManagerViewModel.isLoading {
+                        self.dismiss()
+                    }
+                }, label: {
+                    Text(String(l10n.EditCaregiverView.saveButtonLabel.characters))
+                        .loadingIndicator(isLoading: self.caregiverManagerViewModel.isLoading)
+                })
+                .disabled(self.caregiverManagerViewModel.isLoading)
             }
         }
         .preferredColorScheme(self.styleManager.colorScheme)
