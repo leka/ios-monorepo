@@ -45,13 +45,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "**Authors**"
+                        "value": "Authors"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "**Auteurs**"
+                        "value": "Auteurs"
                     }
                 }
             }
@@ -99,13 +99,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "**Skills**"
+                        "value": "Skills"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "**Comp\u00e9tences**"
+                        "value": "Comp\u00e9tences"
                     }
                 }
             }

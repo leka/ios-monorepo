@@ -120,12 +120,12 @@ extension l10n {
     enum ActivityDetailsView {
         static let skillsSectionTitle = LocalizedString("game_engine_kit.activity_details_view.skills_section_title",
                                                         bundle: GameEngineKitResources.bundle,
-                                                        value: "**Skills**",
+                                                        value: "Skills",
                                                         comment: "ActivityDetailsView 'skills' section title")
 
         static let authorsSectionTitle = LocalizedString("game_engine_kit.activity_details_view.authors_section_title",
                                                          bundle: GameEngineKitResources.bundle,
-                                                         value: "**Authors**",
+                                                         value: "Authors",
                                                          comment: "ActivityDetailsView 'authors' section title")
 
         static let descriptionSectionTitle = LocalizedString("game_engine_kit.activity_details_view.description_section_title",
