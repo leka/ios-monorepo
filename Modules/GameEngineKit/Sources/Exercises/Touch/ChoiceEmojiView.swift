@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import ContentKit
+import LocalizationKit
 import RobotKit
 import SwiftUI
 
@@ -50,7 +51,7 @@ struct ChoiceEmojiView: View {
                     Text(self.emoji)
                         .font(.system(size: self.size / 2))
                 } else {
-                    Text("❌\nText is not emoji:\n\(self.emoji)")
+                    Text(l10n.ChoiceEmojiView.emojiError(self.emoji))
                         .multilineTextAlignment(.center)
                         .frame(
                             width: self.size,
@@ -125,6 +126,17 @@ struct ChoiceEmojiView: View {
 
     @State private var animationPercent: CGFloat = .zero
     @State private var overlayOpacity: CGFloat = .zero
+}
+
+// MARK: - l10n.ChoiceEmojiView
+
+extension l10n {
+    enum ChoiceEmojiView {
+        static let emojiError = LocalizedStringInterpolation("game_engine_kit.choice_emoji_view.emoji_error",
+                                                             bundle: GameEngineKitResources.bundle,
+                                                             value: "❌\nText is not emoji:\n%s",
+                                                             comment: "ChoiceEmojiView emoji error ")
+    }
 }
 
 #Preview {

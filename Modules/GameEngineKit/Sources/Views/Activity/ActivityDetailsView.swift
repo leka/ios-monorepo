@@ -5,6 +5,7 @@
 import ContentKit
 import DesignKit
 import Fit
+import LocalizationKit
 import MarkdownUI
 import SwiftUI
 
@@ -51,7 +52,7 @@ public struct ActivityDetailsView: View {
                 }
 
                 HStack(alignment: .firstTextBaseline) {
-                    Text("**Skills**")
+                    Text(l10n.ActivityDetailsView.skillsSectionTitle)
                     Spacer()
                     Fit(itemSpacing: .viewSpacing(minimum: 15)) {
                         ForEach(self.activity.skills, id: \.self) { skill in
@@ -72,7 +73,7 @@ public struct ActivityDetailsView: View {
                 }
 
                 HStack(alignment: .firstTextBaseline) {
-                    Text("**Authors**")
+                    Text(l10n.ActivityDetailsView.authorsSectionTitle)
                     Spacer()
                     Fit(itemSpacing: .viewSpacing(minimum: 15)) {
                         ForEach(self.activity.authors, id: \.self) { author in
@@ -93,12 +94,12 @@ public struct ActivityDetailsView: View {
                 }
             }
 
-            Section("Description") {
+            Section(String(l10n.ActivityDetailsView.descriptionSectionTitle.characters)) {
                 Markdown(self.activity.details.description)
                     .markdownTheme(.gitHub)
             }
 
-            Section("Instructions") {
+            Section(String(l10n.ActivityDetailsView.instructionsSectionTitle.characters)) {
                 Markdown(self.activity.details.instructions)
                     .markdownTheme(.gitHub)
             }
@@ -111,6 +112,32 @@ public struct ActivityDetailsView: View {
 
     @State private var selectedAuthor: Author?
     @State private var selectedSkill: Skill?
+}
+
+// MARK: - l10n.ActivityDetailsView
+
+extension l10n {
+    enum ActivityDetailsView {
+        static let skillsSectionTitle = LocalizedString("game_engine_kit.activity_details_view.skills_section_title",
+                                                        bundle: GameEngineKitResources.bundle,
+                                                        value: "Skills",
+                                                        comment: "ActivityDetailsView 'skills' section title")
+
+        static let authorsSectionTitle = LocalizedString("game_engine_kit.activity_details_view.authors_section_title",
+                                                         bundle: GameEngineKitResources.bundle,
+                                                         value: "Authors",
+                                                         comment: "ActivityDetailsView 'authors' section title")
+
+        static let descriptionSectionTitle = LocalizedString("game_engine_kit.activity_details_view.description_section_title",
+                                                             bundle: GameEngineKitResources.bundle,
+                                                             value: "Description",
+                                                             comment: "ActivityDetailsView 'description' section title")
+
+        static let instructionsSectionTitle = LocalizedString("game_engine_kit.activity_details_view.instructions_section_title",
+                                                              bundle: GameEngineKitResources.bundle,
+                                                              value: "Instructions",
+                                                              comment: "ActivityDetailsView 'instructions' section title")
+    }
 }
 
 #Preview {
