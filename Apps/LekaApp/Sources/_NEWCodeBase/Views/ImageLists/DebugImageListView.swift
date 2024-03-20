@@ -19,6 +19,7 @@ class DebugImageListViewViewModel: ObservableObject {
 
     @Published var cellSize: CGFloat = 300
     @Published var cellState: GameplayChoiceState = .idle
+    @Published var cellBackgroundColor: Color?
     @Published var images: [String]
 
     func getImageNameFromPath(path: String) -> String {
@@ -35,6 +36,10 @@ class DebugImageListViewViewModel: ObservableObject {
 
     func setState(to state: GameplayChoiceState) {
         self.cellState = state
+    }
+
+    func setBackgroundColor(to color: Color?) {
+        self.cellBackgroundColor = color
     }
 
     func resizeWithAnimation(to size: CGFloat) {
@@ -60,7 +65,12 @@ struct DebugImageListView: View {
             LazyVGrid(columns: self.columns, spacing: 20) {
                 ForEach(self.viewModel.images, id: \.self) { imageName in
                     VStack(spacing: 20) {
-                        ChoiceImageView(image: imageName, size: self.viewModel.cellSize, state: self.viewModel.cellState)
+                        ChoiceImageView(
+                            image: imageName,
+                            size: self.viewModel.cellSize,
+                            background: self.viewModel.cellBackgroundColor,
+                            state: self.viewModel.cellState
+                        )
 
                         Text(self.viewModel.getImageNameFromPath(path: imageName))
                             .lineLimit(2, reservesSpace: true)
@@ -74,6 +84,14 @@ struct DebugImageListView: View {
         }
         .background(.lkBackground)
         .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                HStack(spacing: 0) {
+                    Text("Background:")
+                    Button("clear") { self.viewModel.setBackgroundColor(to: .clear) }
+                    Button("⚪") { self.viewModel.setBackgroundColor(to: nil) }
+                    Button("🔴") { self.viewModel.setBackgroundColor(to: .red) }
+                }
+            }
             ToolbarItem(placement: .navigationBarTrailing) {
                 HStack(spacing: 0) {
                     Text("State:")
