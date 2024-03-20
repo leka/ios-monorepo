@@ -43,15 +43,15 @@ class CreateCarereceiverViewModel: ObservableObject {
 struct CreateCarereceiverView: View {
     // MARK: Lifecycle
 
-    init(onCancel: (() -> Void)? = nil, onCreated: ((Carereceiver) -> Void)? = nil) {
-        self.onCancel = onCancel
+    init(onClose: (() -> Void)? = nil, onCreated: ((Carereceiver) -> Void)? = nil) {
+        self.onClose = onClose
         self.onCreated = onCreated
     }
 
     // MARK: Internal
 
     @Environment(\.dismiss) var dismiss
-    var onCancel: (() -> Void)?
+    var onClose: (() -> Void)?
     var onCreated: ((Carereceiver) -> Void)?
 
     var carereceiverManager: CarereceiverManager = .shared
@@ -76,7 +76,7 @@ struct CreateCarereceiverView: View {
                     }
                 }
 
-                Button(String(l10n.CarereceiverCreation.registerProfilButton.characters)) {
+                Button(String(l10n.CarereceiverCreation.createProfilButton.characters)) {
                     if self.newCarereceiver.avatar.isEmpty {
                         self.newCarereceiver.avatar = Avatars.categories.first!.avatars.randomElement()!
                     }
@@ -101,17 +101,17 @@ struct CreateCarereceiverView: View {
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 Button {
-                    self.action = .cancel
+                    self.action = .close
                     self.dismiss()
                 } label: {
-                    Image(systemName: "xmark.circle")
+                    Text(l10n.CarereceiverCreation.closeButtonLabel)
                 }
             }
         }
         .onDisappear {
             switch self.action {
-                case .cancel:
-                    self.onCancel?()
+                case .close:
+                    self.onClose?()
                 case .created:
                     self.onCreated?(self.newCarereceiver)
                 case .none:
@@ -125,7 +125,7 @@ struct CreateCarereceiverView: View {
     // MARK: Private
 
     private enum ActionType {
-        case cancel
+        case close
         case created
     }
 
@@ -149,7 +149,7 @@ struct CreateCarereceiverView: View {
         .sheet(isPresented: self.$isAvatarPickerPresented) {
             NavigationStack {
                 AvatarPicker(selectedAvatar: self.newCarereceiver.avatar,
-                             onValidate: { avatar in
+                             onSelect: { avatar in
                                  self.newCarereceiver.avatar = avatar
                              })
                              .navigationBarTitleDisplayMode(.inline)
@@ -171,7 +171,9 @@ extension l10n {
 
         static let carereceiverNameLabel = LocalizedString("lekaapp.carereceiver_creation.carereceiver_name_label", value: "Username", comment: " Carereceiver creation carereceiver name textfield label")
 
-        static let registerProfilButton = LocalizedString("lekaapp.carereceiver_creation.register_profil_button", value: "Register profile", comment: " Carereceiver creation register profil button label")
+        static let createProfilButton = LocalizedString("lekaapp.carereceiver_creation.create_profil_button", value: "Create profile", comment: " Carereceiver creation create profil button label")
+
+        static let closeButtonLabel = LocalizedString("lekaapp.carereceiver_creation.close_button_label", value: "Close", comment: " Carereceiver creation close button label")
     }
 }
 
@@ -181,7 +183,7 @@ extension l10n {
     Text("Preview")
         .sheet(isPresented: .constant(true)) {
             NavigationStack {
-                CreateCarereceiverView(onCancel: {
+                CreateCarereceiverView(onClose: {
                     print("Care receiver creation canceled")
                 }, onCreated: {
                     print("Carereceiver \($0.username) created")

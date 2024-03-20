@@ -78,7 +78,7 @@ struct CarereceiverPicker: View {
                     self.action = .select
                     self.dismiss()
                 } label: {
-                    Text(l10n.CarereceiverPicker.validateButtonLabel)
+                    Text(l10n.CarereceiverPicker.selectButtonLabel)
                 }
                 .disabled(self.selectedCarereceiver == nil)
             }
@@ -149,9 +149,9 @@ extension l10n {
                                            value: "Who do you do this activity with?",
                                            comment: "Carereceiver picker title")
 
-        static let validateButtonLabel = LocalizedString("lekaapp.carereceiver_picker.validate_button_label",
-                                                         value: "Validate",
-                                                         comment: "Carereceiver picker validate button label")
+        static let selectButtonLabel = LocalizedString("lekaapp.carereceiver_picker.select_button_label",
+                                                       value: "Select",
+                                                       comment: "Carereceiver picker select button label")
 
         static let skipButtonLabel = LocalizedString("lekaapp.carereceiver_picker.skip_button_label",
                                                      value: "Continue without profile",

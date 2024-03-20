@@ -17,38 +17,28 @@ struct CaregiverPicker: View {
     var body: some View {
         VStack {
             if self.caregiverManagerViewModel.caregivers.isEmpty {
-                VStack {
-                    Text(l10n.CaregiverPicker.AddFirstCaregiver.message)
-                        .font(.title2)
-                        .multilineTextAlignment(.center)
-
-                    Button {
-                        self.isCaregiverCreationPresented = true
-                    } label: {
-                        Text(l10n.CaregiverPicker.AddFirstCaregiver.buttonLabel)
-                    }
-                    .buttonStyle(.borderedProminent)
-                }
+                self.noCaregiverView
             } else {
                 ScrollView(showsIndicators: false) {
                     LazyVGrid(columns: self.columns, spacing: 40) {
                         ForEach(self.caregiverManagerViewModel.caregivers, id: \.id) { caregiver in
-                            Button {
-                                self.styleManager.colorScheme = caregiver.colorScheme
-                                self.styleManager.accentColor = caregiver.colorTheme.color
-                                self.caregiverManager.setCurrentCaregiver(to: caregiver)
-                                self.dismiss()
-                            } label: {
-                                CaregiverAvatarCell(caregiver: caregiver)
-                                    .frame(maxWidth: 140)
-                            }
+                            CaregiverAvatarCell(caregiver: caregiver, isSelected: self.selectedCaregiver?.id == caregiver.id)
+                                .frame(maxWidth: 125)
+                                .onTapGesture {
+                                    withAnimation(.default) {
+                                        if self.selectedCaregiver?.id == caregiver.id {
+                                            self.selectedCaregiver = nil
+                                        } else {
+                                            self.selectedCaregiver = caregiver
+                                        }
+                                    }
+                                }
                         }
                     }
                 }
-                .padding()
             }
         }
-        .padding(.horizontal, 50)
+        .padding(.horizontal)
         .navigationTitle(String(l10n.CaregiverPicker.title.characters))
         .sheet(isPresented: self.$isCaregiverCreationPresented) {
             NavigationStack {
@@ -68,6 +58,17 @@ struct CaregiverPicker: View {
             }
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
+                    self.styleManager.colorScheme = self.selectedCaregiver!.colorScheme
+                    self.styleManager.accentColor = self.selectedCaregiver!.colorTheme.color
+                    self.caregiverManager.setCurrentCaregiver(to: self.selectedCaregiver!)
+                    self.dismiss()
+                } label: {
+                    Text(l10n.CaregiverPicker.selectButtonLabel)
+                }
+                .disabled(self.selectedCaregiver == nil)
+            }
+            ToolbarItem(placement: .bottomBar) {
+                Button {
                     self.isCaregiverCreationPresented = true
                 } label: {
                     Text(l10n.CaregiverPicker.addButtonLabel)
@@ -78,16 +79,29 @@ struct CaregiverPicker: View {
 
     // MARK: Private
 
-    @ObservedObject private var authManagerViewModel: AuthManagerViewModel = .shared
     @ObservedObject private var styleManager: StyleManager = .shared
-
     @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
 
-    @State private var selected: String = ""
+    @State private var selectedCaregiver: Caregiver?
     @State private var isCaregiverCreationPresented: Bool = false
 
     private var caregiverManager: CaregiverManager = .shared
     private let columns = Array(repeating: GridItem(), count: 4)
+
+    private var noCaregiverView: some View {
+        VStack {
+            Text(l10n.CaregiverPicker.AddFirstCaregiver.message)
+                .font(.title2)
+                .multilineTextAlignment(.center)
+
+            Button {
+                self.isCaregiverCreationPresented = true
+            } label: {
+                Text(l10n.CaregiverPicker.AddFirstCaregiver.buttonLabel)
+            }
+            .buttonStyle(.borderedProminent)
+        }
+    }
 }
 
 // MARK: - l10n.CaregiverPicker
@@ -106,6 +120,8 @@ extension l10n {
         }
 
         static let title = LocalizedString("lekaapp.caregiver_picker.title", value: "Who are you ?", comment: "Caregiver picker title")
+
+        static let selectButtonLabel = LocalizedString("lekaapp.caregiver_picker.select_button_label", value: "Select", comment: "Caregiver picker select button label")
 
         static let addButtonLabel = LocalizedString("lekaapp.caregiver_picker.add_button_label", value: "Add profile", comment: "Caregiver picker add button label")
 

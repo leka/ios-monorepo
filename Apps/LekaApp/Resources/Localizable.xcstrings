@@ -596,6 +596,42 @@
                 }
             }
         },
+        "lekaapp.avatar_picker.close_button_label": {
+            "comment": "Avatar picker close button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Close"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Fermer"
+                    }
+                }
+            }
+        },
+        "lekaapp.avatar_picker.select_button_label": {
+            "comment": "Avatar picker select button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Select"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "S\u00e9lectionner"
+                    }
+                }
+            }
+        },
         "lekaapp.avatar_picker.title": {
             "comment": "Avatar picker title",
             "extractionState": "extracted_with_value",
@@ -610,24 +646,6 @@
                     "stringUnit": {
                         "state": "translated",
                         "value": "Choix de l'avatar"
-                    }
-                }
-            }
-        },
-        "lekaapp.avatar_picker.validate_button": {
-            "comment": "Avatar picker validate button",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Validate selection"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Valider la s\u00e9lection"
                     }
                 }
             }
@@ -686,6 +704,42 @@
                 }
             }
         },
+        "lekaapp.caregiver_creation.close_button_label": {
+            "comment": " Caregiver creation close button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Close"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Fermer"
+                    }
+                }
+            }
+        },
+        "lekaapp.caregiver_creation.create_profil_button": {
+            "comment": "Caregiver creation create profil button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Create profile"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Cr\u00e9er le profil"
+                    }
+                }
+            }
+        },
         "lekaapp.caregiver_creation.profession_add_button": {
             "comment": "Caregiver creation profession add button label",
             "extractionState": "extracted_with_value",
@@ -718,24 +772,6 @@
                     "stringUnit": {
                         "state": "translated",
                         "value": "Profession(s)"
-                    }
-                }
-            }
-        },
-        "lekaapp.caregiver_creation.register_profil_button": {
-            "comment": "Caregiver creation register profil button label",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Register profile"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Enregistrer ce profil"
                     }
                 }
             }
@@ -830,6 +866,24 @@
                 }
             }
         },
+        "lekaapp.caregiver_picker.select_button_label": {
+            "comment": "Caregiver picker select button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Select"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "S\u00e9lectionner"
+                    }
+                }
+            }
+        },
         "lekaapp.caregiver_picker.title": {
             "comment": "Caregiver picker title",
             "extractionState": "extracted_with_value",
@@ -884,20 +938,38 @@
                 }
             }
         },
-        "lekaapp.carereceiver_creation.register_profil_button": {
-            "comment": " Carereceiver creation register profil button label",
+        "lekaapp.carereceiver_creation.close_button_label": {
+            "comment": " Carereceiver creation close button label",
             "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Register profile"
+                        "value": "Close"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Enregistrer ce profil"
+                        "value": "Fermer"
+                    }
+                }
+            }
+        },
+        "lekaapp.carereceiver_creation.create_profil_button": {
+            "comment": " Carereceiver creation create profil button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Create profile"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Cr\u00e9er le profil"
                     }
                 }
             }
@@ -1082,6 +1154,24 @@
                 }
             }
         },
+        "lekaapp.carereceiver_picker.select_button_label": {
+            "comment": "Carereceiver picker select button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Select"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "S\u00e9lectionner"
+                    }
+                }
+            }
+        },
         "lekaapp.carereceiver_picker.skip_button_label": {
             "comment": "Carereceiver picker continue without profile button label",
             "extractionState": "extracted_with_value",
@@ -1114,24 +1204,6 @@
                     "stringUnit": {
                         "state": "translated",
                         "value": "Avec qui faites vous cette activit\u00e9 ?"
-                    }
-                }
-            }
-        },
-        "lekaapp.carereceiver_picker.validate_button_label": {
-            "comment": "Carereceiver picker validate button label",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Validate"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Valider"
                     }
                 }
             }
@@ -1298,6 +1370,24 @@
                 }
             }
         },
+        "lekaapp.profession_picker.close_button_label": {
+            "comment": "Profession picker close button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Close"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Fermer"
+                    }
+                }
+            }
+        },
         "lekaapp.profession_picker.other_label": {
             "comment": "Profession picker other profession label",
             "extractionState": "extracted_with_value",
@@ -1316,6 +1406,24 @@
                 }
             }
         },
+        "lekaapp.profession_picker.select_button_label": {
+            "comment": "Profession picker select button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Select"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "S\u00e9lectionner"
+                    }
+                }
+            }
+        },
         "lekaapp.profession_picker.title": {
             "comment": "Profession picker title",
             "extractionState": "extracted_with_value",
@@ -1323,31 +1431,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Profession choice"
+                        "value": "Profession List"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Choix de(s) profession(s)"
-                    }
-                }
-            }
-        },
-        "lekaapp.profession_picker.validate_button": {
-            "comment": "Profession picker validate button",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Validate selection"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Valider la s\u00e9lection"
+                        "value": "Liste des professions"
                     }
                 }
             }

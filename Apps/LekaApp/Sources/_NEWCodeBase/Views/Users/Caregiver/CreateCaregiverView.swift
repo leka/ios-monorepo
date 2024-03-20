@@ -43,15 +43,15 @@ class CreateCaregiverViewModel: ObservableObject {
 struct CreateCaregiverView: View {
     // MARK: Lifecycle
 
-    init(onCancel: (() -> Void)? = nil, onCreated: ((Caregiver) -> Void)? = nil) {
-        self.onCancel = onCancel
+    init(onClose: (() -> Void)? = nil, onCreated: ((Caregiver) -> Void)? = nil) {
+        self.onClose = onClose
         self.onCreated = onCreated
     }
 
     // MARK: Internal
 
     @Environment(\.dismiss) var dismiss
-    var onCancel: (() -> Void)?
+    var onClose: (() -> Void)?
     var onCreated: ((Caregiver) -> Void)?
 
     var caregiverManager: CaregiverManager = .shared
@@ -86,10 +86,9 @@ struct CreateCaregiverView: View {
 
                 Section {
                     ProfessionListView(caregiver: self.$newCaregiver)
-                        .navigationBarTitleDisplayMode(.inline)
                 }
 
-                Button(String(l10n.CaregiverCreation.registerProfilButton.characters)) {
+                Button(String(l10n.CaregiverCreation.createProfilButton.characters)) {
                     if self.newCaregiver.avatar.isEmpty {
                         self.newCaregiver.avatar = Avatars.categories.first!.avatars.randomElement()!
                     }
@@ -114,17 +113,17 @@ struct CreateCaregiverView: View {
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 Button {
-                    self.action = .cancel
+                    self.action = .close
                     self.dismiss()
                 } label: {
-                    Image(systemName: "xmark.circle")
+                    Text(l10n.CarereceiverCreation.closeButtonLabel)
                 }
             }
         }
         .onDisappear {
             switch self.action {
-                case .cancel:
-                    self.onCancel?()
+                case .close:
+                    self.onClose?()
                 case .created:
                     self.onCreated?(self.newCaregiver)
                 case .none:
@@ -138,7 +137,7 @@ struct CreateCaregiverView: View {
     // MARK: Private
 
     private enum ActionType {
-        case cancel
+        case close
         case created
     }
 
@@ -162,7 +161,7 @@ struct CreateCaregiverView: View {
         .sheet(isPresented: self.$isAvatarPickerPresented) {
             NavigationStack {
                 AvatarPicker(selectedAvatar: self.newCaregiver.avatar,
-                             onValidate: { avatar in
+                             onSelect: { avatar in
                                  self.newCaregiver.avatar = avatar
                              })
                              .navigationBarTitleDisplayMode(.inline)
@@ -190,7 +189,9 @@ extension l10n {
 
         static let professionAddButton = LocalizedString("lekaapp.caregiver_creation.profession_add_button", value: "Add", comment: "Caregiver creation profession add button label")
 
-        static let registerProfilButton = LocalizedString("lekaapp.caregiver_creation.register_profil_button", value: "Register profile", comment: "Caregiver creation register profil button label")
+        static let createProfilButton = LocalizedString("lekaapp.caregiver_creation.create_profil_button", value: "Create profile", comment: "Caregiver creation create profil button label")
+
+        static let closeButtonLabel = LocalizedString("lekaapp.caregiver_creation.close_button_label", value: "Close", comment: " Caregiver creation close button label")
     }
 }
 
@@ -200,7 +201,7 @@ extension l10n {
     Text("Preview")
         .sheet(isPresented: .constant(true)) {
             NavigationStack {
-                CreateCaregiverView(onCancel: { print("Creation canceled") },
+                CreateCaregiverView(onClose: { print("Creation canceled") },
                                     onCreated: { print("Caregiver \($0.firstName) created") })
             }
         }

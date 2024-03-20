@@ -13,26 +13,24 @@ extension AvatarPicker {
         let image: String
 
         var body: some View {
-            Group {
-                if self.image == "" {
-                    Image(systemName: "plus.circle.fill")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 30)
-                        .foregroundStyle(self.styleManager.accentColor!)
-                } else {
-                    Image(uiImage: Avatars.iconToUIImage(icon: self.image))
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .background(DesignKitAsset.Colors.blueGray.swiftUIColor)
-                        .clipShape(Circle())
-                }
+            if self.image == "" {
+                Image(systemName: "photo.badge.plus")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 100)
+                    .foregroundStyle(self.styleManager.accentColor!)
+            } else {
+                Image(uiImage: Avatars.iconToUIImage(icon: self.image))
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .background(DesignKitAsset.Colors.blueGray.swiftUIColor)
+                    .clipShape(Circle())
+                    .frame(width: 125, height: 125)
+                    .overlay(
+                        Circle()
+                            .stroke(self.styleManager.accentColor!, lineWidth: 2)
+                    )
             }
-            .frame(width: 125, height: 125)
-            .overlay(
-                Circle()
-                    .stroke(self.styleManager.accentColor!, lineWidth: 2)
-            )
         }
 
         // MARK: Private

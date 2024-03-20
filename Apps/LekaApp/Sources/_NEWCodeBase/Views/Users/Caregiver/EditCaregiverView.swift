@@ -48,7 +48,6 @@ struct EditCaregiverView: View {
 
                 Section {
                     ProfessionListView(caregiver: self.$viewModel.caregiver)
-                        .navigationBarTitleDisplayMode(.inline)
                 }
 
                 Section {
@@ -100,7 +99,7 @@ struct EditCaregiverView: View {
         .sheet(isPresented: self.$viewModel.isAvatarPickerPresented) {
             NavigationStack {
                 AvatarPicker(selectedAvatar: self.viewModel.caregiver.avatar,
-                             onValidate: { avatar in
+                             onSelect: { avatar in
                                  self.viewModel.caregiver.avatar = avatar
                              })
                              .navigationBarTitleDisplayMode(.inline)
