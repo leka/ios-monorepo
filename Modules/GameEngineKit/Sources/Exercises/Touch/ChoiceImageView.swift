@@ -75,15 +75,6 @@ public struct ChoiceImageView: View {
                     height: self.size
                 )
                 .clipShape(Circle())
-        } else if let uiImage = UIImage(pdfNamed: image) {
-            Image(uiImage: uiImage)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(
-                    width: self.size,
-                    height: self.size
-                )
-                .clipShape(Circle())
         } else if let svgURL = Bundle.module.url(forResource: image, withExtension: "svg") {
             SVGView(contentsOf: svgURL)
                 .frame(
@@ -124,14 +115,6 @@ public struct ChoiceImageView: View {
             ChoiceImageView(image: "image-placeholder-png-boy_sleeping", size: 200, state: .idle)
             ChoiceImageView(image: "image-placeholder-png-boy_sleeping", size: 200, state: .rightAnswer)
             ChoiceImageView(image: "image-placeholder-png-boy_sleeping", size: 200, state: .wrongAnswer)
-        }
-
-        HStack(spacing: 50) {
-            Text("PDF")
-                .font(.largeTitle)
-            ChoiceImageView(image: "image-placeholder-pdf-boy_sleeping", size: 200, state: .idle)
-            ChoiceImageView(image: "image-placeholder-pdf-boy_sleeping", size: 200, state: .rightAnswer)
-            ChoiceImageView(image: "image-placeholder-pdf-boy_sleeping", size: 200, state: .wrongAnswer)
         }
 
         HStack(spacing: 50) {
