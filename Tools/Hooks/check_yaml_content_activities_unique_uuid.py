@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""Check activities content for duplicates"""
 
 # Leka - LekaOS
 # Copyright 2020 APF France handicap

@@ -12,7 +12,7 @@ from datetime import datetime, timedelta
 
 import ruamel.yaml
 
-from check_yaml_definitions_skills import get_all_skills
+from check_yaml_definitions_skills import get_all_skills  # pylint: disable=import-error
 
 DATE_NOW_TIMESTAMP = ruamel.yaml.scalarstring.DoubleQuotedScalarString(
     datetime.now().isoformat()

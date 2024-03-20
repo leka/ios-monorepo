@@ -7,8 +7,6 @@
 
 import sys
 
-from modules.utils import get_files, is_file_modified
-from modules.yaml import create_yaml_object, is_jtd_schema_compliant
 from modules.content import (
     is_created_at_present,
     is_last_edited_at_present,
@@ -23,6 +21,8 @@ from modules.content import (
     find_string_values_starting_with_newline,
     find_empty_string_values,
 )
+from modules.utils import get_files, is_file_modified
+from modules.yaml import create_yaml_object, is_jtd_schema_compliant
 
 
 JTD_SCHEMA = "Specs/jtd/activity.jtd.json"
