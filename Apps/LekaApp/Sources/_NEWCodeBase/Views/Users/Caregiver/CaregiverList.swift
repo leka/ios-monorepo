@@ -59,7 +59,9 @@ struct CaregiverList: View {
                 } else {
                     LazyVGrid(columns: self.columns) {
                         ForEach(self.caregiverManagerViewModel.caregivers) { caregiver in
-                            CaregiverAvatarCell(caregiver: caregiver)
+                            NavigationLink(value: caregiver) {
+                                CaregiverAvatarCell(caregiver: caregiver)
+                            }
                         }
                     }
                     .padding()
@@ -79,6 +81,9 @@ struct CaregiverList: View {
                     CreateCaregiverView()
                         .navigationBarTitleDisplayMode(.inline)
                 }
+            }
+            .navigationDestination(for: Caregiver.self) { caregiver in
+                CaregiverView(caregiver: caregiver)
             }
         }
     }
