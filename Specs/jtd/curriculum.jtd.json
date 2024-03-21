@@ -6,6 +6,12 @@
         "name": {
             "type": "string"
         },
+        "created_at": {
+            "type": "string"
+        },
+        "last_edited_at": {
+            "type": "string"
+        },
         "status": {
             "ref": "$status"
         },
@@ -47,20 +53,16 @@
     },
     "definitions": {
         "$author": {
-            "enum": [
-                "leka_at_apf_france_handicap",
-                "aurore_kiesler",
-                "julie_tuil"
-            ]
+            "enum": ["leka", "aurore_kiesler", "julie_tuil"]
         },
         "$hmi": {
             "enum": ["robot", "tablet", "magic_cards", "tablet_robot"]
         },
-        "$status": {
-            "enum": ["draft", "published"]
-        },
         "$locale": {
             "enum": ["en_US", "fr_FR"]
+        },
+        "$status": {
+            "enum": ["draft", "published"]
         },
         "$l10n": {
             "properties": {

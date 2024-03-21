@@ -7,9 +7,9 @@
 
 import sys
 
+from modules.definitions import is_definition_list_valid
 from modules.utils import get_files
 from modules.yaml import is_jtd_schema_compliant
-from modules.definitions import is_definition_list_valid
 
 
 JTD_SCHEMA = "Specs/jtd/professions.jtd.json"

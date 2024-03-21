@@ -7,9 +7,9 @@
 
 import sys
 
+from modules.definitions import find_duplicate_ids, sort_list_by_id
 from modules.utils import get_files
 from modules.yaml import load_yaml, is_jtd_schema_compliant, dump_yaml
-from modules.definitions import find_duplicate_ids, sort_list_by_id
 
 
 JTD_SCHEMA = "Specs/jtd/skills.jtd.json"

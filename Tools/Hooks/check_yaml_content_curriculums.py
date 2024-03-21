@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Check the content of a YAML file for an activity"""
+"""Check the content of a YAML file for an curriculum"""
 
 # Leka - LekaOS
 # Copyright 2020 APF France handicap
@@ -25,11 +25,11 @@ from modules.utils import get_files, is_file_modified
 from modules.yaml import create_yaml_object, is_jtd_schema_compliant
 
 
-JTD_SCHEMA = "Specs/jtd/activity.jtd.json"
+JTD_SCHEMA = "Specs/jtd/curriculum.jtd.json"
 
 
-def check_activity(filename):
-    """Check the content of a YAML file for an activity"""
+def check_curriculum(filename):
+    """Check the content of a YAML file for an curriculum"""
     yaml = create_yaml_object()
 
     file_is_valid = True
@@ -38,69 +38,69 @@ def check_activity(filename):
         file_is_valid = False
 
     with open(filename, "r", encoding="utf8") as file:
-        activity = yaml.load(file)
+        curriculum = yaml.load(file)
 
-    if differing_uuids := is_uuid_same_as_filename(activity, filename):
+    if differing_uuids := is_uuid_same_as_filename(curriculum, filename):
         file_is_valid = False
-        activity_uuid, filename_uuid = differing_uuids
+        curriculum_uuid, filename_uuid = differing_uuids
         print(f"\n❌ Activity uuid and filename uuid are not the same in {filename}")
-        print(f"uuid:     {activity_uuid}")
+        print(f"uuid:     {curriculum_uuid}")
         print(f"filename: {filename_uuid}")
 
-    if is_uuid_valid(activity["uuid"]) is False:
+    if is_uuid_valid(curriculum["uuid"]) is False:
         file_is_valid = False
         print(f"\n❌ uuid not valid in {filename}")
-        print(f"uuid: {activity['uuid']}")
+        print(f"uuid: {curriculum['uuid']}")
 
-    if differing_names := is_name_same_as_filename(activity, filename):
+    if differing_names := is_name_same_as_filename(curriculum, filename):
         file_is_valid = False
-        activity_name, filename_name = differing_names
+        curriculum_name, filename_name = differing_names
         print(f"\n❌ Activity name and filename name are not the same in {filename}")
-        print(f"name:     {activity_name}")
+        print(f"name:     {curriculum_name}")
         print(f"filename: {filename_name}")
 
-    if is_created_at_present(activity) is False:
+    if is_created_at_present(curriculum) is False:
         file_is_valid = False
         print(f"\n❌ Missing key created_at in {filename}")
-        if timestamp := add_created_at(activity):
+        if timestamp := add_created_at(curriculum):
             print(f"Add created_at: {timestamp}")
             with open(filename, "w", encoding="utf8") as file:
-                yaml.dump(activity, file)
+                yaml.dump(curriculum, file)
 
-    if is_last_edited_at_present(activity) is False:
+    if is_last_edited_at_present(curriculum) is False:
         file_is_valid = False
         print(f"\n❌ Missing key last_edited_at in {filename}")
-        if timestamp := add_last_edited_at(activity):
+        if timestamp := add_last_edited_at(curriculum):
             print(f"Add last_edited_at: {timestamp}")
             with open(filename, "w", encoding="utf8") as file:
-                yaml.dump(activity, file)
+                yaml.dump(curriculum, file)
 
-    if is_file_modified(filename) and (timestamp := update_last_edited_at(activity)):
+    if is_file_modified(filename) and (timestamp := update_last_edited_at(curriculum)):
         file_is_valid = False
         print(f"\n❌ last_edited_at  is not up to date in {filename}")
         print(f"Update last_edited_at: {timestamp}")
         with open(filename, "w", encoding="utf8") as file:
-            yaml.dump(activity, file)
+            yaml.dump(curriculum, file)
 
-    if missing_skills := find_missing_skills(activity["skills"]):
+    if missing_skills := find_missing_skills(curriculum["skills"]):
         file_is_valid = False
         print(f"\n❌ The following skills do not exist in {filename}")
         for skill in missing_skills:
             print(f"   - {skill}")
 
-    if missing_icons := find_missing_icons(activity, of_type="activity"):
+    if missing_icons := find_missing_icons(curriculum, of_type="curriculum"):
         file_is_valid = False
         print(f"\n❌ The following icons do not exist in {filename}")
         for icon in missing_icons:
             print(f"   - {icon}")
 
-    if strings_with_newline := find_string_values_starting_with_newline(activity):
+    if strings_with_newline := find_string_values_starting_with_newline(curriculum):
         file_is_valid = False
         print(f"\n❌ Found strings staring with newline in {filename}")
         for string in strings_with_newline:
             print(f"  - {string}")
 
-    if empty_string_value := find_empty_string_values(activity):
+    if empty_string_value := find_empty_string_values(curriculum):
         file_is_valid = False
         print(f"\n❌ Found empty strings in {filename}")
         for string in empty_string_value:
@@ -116,7 +116,7 @@ def main():
     must_fail = False
 
     for file in files:
-        file_is_valid = check_activity(file)
+        file_is_valid = check_curriculum(file)
         if file_is_valid is False:
             must_fail = True
 

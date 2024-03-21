@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Check activities content for duplicates"""
+"""Check curriculums content for duplicates"""
 
 # Leka - LekaOS
 # Copyright 2020 APF France handicap
@@ -15,14 +15,14 @@ DIRECTORY_PATH = "Modules/ContentKit/Resources/Content"
 
 
 def find_duplicates():
-    """Find duplicates in the activity files"""
+    """Find duplicates in the curriculum files"""
     path = Path(DIRECTORY_PATH)
-    activity_files = path.rglob("*.activity.yml")
+    curriculum_files = path.rglob("*.curriculum.yml")
 
     uuids_files = {}
     duplicates = []
 
-    for file in activity_files:
+    for file in curriculum_files:
         uuid = os.path.basename(file).split("-")[-1].split(".")[0]
         if uuid in uuids_files:
             uuids_files[uuid].append(file)

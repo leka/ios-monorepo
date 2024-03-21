@@ -8,9 +8,9 @@
 import sys
 from pathlib import Path
 
+from modules.definitions import find_duplicate_ids
 from modules.utils import get_files
 from modules.yaml import load_yaml, is_jtd_schema_compliant
-from modules.definitions import find_duplicate_ids
 
 
 JTD_SCHEMA = "Specs/jtd/avatars.jtd.json"
