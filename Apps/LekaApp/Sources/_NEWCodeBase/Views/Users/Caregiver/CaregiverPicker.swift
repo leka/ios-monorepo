@@ -40,7 +40,7 @@ struct CaregiverPicker: View {
         }
         .padding(.horizontal)
         .navigationTitle(String(l10n.CaregiverPicker.title.characters))
-        .interactiveDismissDisabled(self.caregiverManagerViewModel.currentCaregiver == nil)
+        .interactiveDismissDisabled(self.isCurrentCaregiverUnknown)
         .sheet(isPresented: self.$isCaregiverCreationPresented) {
             NavigationStack {
                 CreateCaregiverView()
@@ -48,7 +48,7 @@ struct CaregiverPicker: View {
             }
         }
         .toolbar {
-            if self.caregiverManagerViewModel.currentCaregiver != nil {
+            if !self.isCurrentCaregiverUnknown {
                 ToolbarItem(placement: .topBarLeading) {
                     Button {
                         self.dismiss()
@@ -89,6 +89,10 @@ struct CaregiverPicker: View {
 
     private var caregiverManager: CaregiverManager = .shared
     private let columns = Array(repeating: GridItem(), count: 4)
+
+    private var isCurrentCaregiverUnknown: Bool {
+        self.caregiverManagerViewModel.currentCaregiver == nil
+    }
 
     private var noCaregiverView: some View {
         VStack {
