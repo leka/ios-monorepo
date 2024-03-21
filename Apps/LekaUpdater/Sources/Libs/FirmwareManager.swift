@@ -59,7 +59,7 @@ class FirmwareManager: ObservableObject {
             return .needsUpdate
         }
 
-        if version >= self.currentVersion {
+        if version > self.currentVersion {
             return .upToDate
         }
 
