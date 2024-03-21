@@ -37,6 +37,10 @@ extension MainView {
                     self.title = "Sample activites"
                     self.systemImage = "testtube.2"
 
+                case .caregivers:
+                    self.title = String(l10n.MainView.Sidebar.CategoryLabel.caregivers.characters)
+                    self.systemImage = "person.3.fill"
+
                 case .carereceivers:
                     self.title = String(l10n.MainView.Sidebar.CategoryLabel.carereceivers.characters)
                     self.systemImage = "figure.2.arms.open"

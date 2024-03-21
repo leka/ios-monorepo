@@ -16,6 +16,7 @@ extension l10n {
                 static let activities = LocalizedString("main_view.sidebar.category_label.activities", value: "Activities", comment: "The title of the category 'Activities'")
                 static let remotes = LocalizedString("main_view.sidebar.category_label.remotes", value: "Remotes", comment: "The title of the category 'Remotes'")
                 static let stories = LocalizedString("main_view.sidebar.category_label.stories", value: "Stories", comment: "The title of the category 'Stories'")
+                static let caregivers = LocalizedString("main_view.sidebar.category_label.caregivers", value: "Caregivers", comment: "The title of the category 'Caregivers'")
                 static let carereceivers = LocalizedString("main_view.sidebar.category_label.carereceivers", value: "Care Receivers", comment: "The title of the category 'Care Receivers'")
             }
 
