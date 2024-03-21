@@ -62,7 +62,7 @@ struct AccountCreationView: View {
             Alert(title: Text(l10n.AccountCreationView.EmailVerificationAlert.title),
                   message: Text(l10n.AccountCreationView.EmailVerificationAlert.message),
                   dismissButton: .default(Text(l10n.AccountCreationView.EmailVerificationAlert.dismissButton)) {
-                      self.navigation.navigateToAccountCreationProcess.toggle()
+                      self.navigation.navigateToAccountCreationProcess = true
                   })
         }
     }

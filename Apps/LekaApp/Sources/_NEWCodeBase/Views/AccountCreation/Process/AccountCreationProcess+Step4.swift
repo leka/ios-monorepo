@@ -20,8 +20,8 @@ extension AccountCreationProcess {
                 Text(l10n.AccountCreationProcess.Step4.message)
 
                 Button(String(l10n.AccountCreationProcess.Step4.discoverContentButton.characters)) {
-                    self.authManagerViewModel.userAction = .none
                     self.navigation.fullScreenCoverContent = nil
+                    self.dismiss()
                 }
                 .buttonStyle(.bordered)
             }
@@ -29,9 +29,17 @@ extension AccountCreationProcess {
             .frame(width: 400)
             .multilineTextAlignment(.center)
             .frame(maxWidth: .infinity, alignment: .center)
+            .onDisappear {
+                self.authManagerViewModel.userAction = .none
+                // TODO: (@dev/team): might not be needed, could be remoded
+                self.navigation.fullScreenCoverContent = nil
+                self.navigation.navigateToAccountCreationProcess = false
+            }
         }
 
         // MARK: Private
+
+        @Environment(\.dismiss) private var dismiss
 
         @ObservedObject private var authManagerViewModel = AuthManagerViewModel.shared
         @ObservedObject private var navigation = Navigation.shared
