@@ -825,7 +825,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Cr\u00e9er votre premier profil Accompagnant"
+                        "value": "Cr\u00e9er votre premier profil accompagnant"
                     }
                 }
             }
@@ -837,7 +837,7 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "No care giver profiles have been created yet."
+                        "value": "No caregiver profiles have been created yet."
                     }
                 },
                 "fr": {
@@ -1215,7 +1215,7 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Go to Care receivers section"
+                        "value": "Go to Care Receivers section"
                     }
                 },
                 "fr": {

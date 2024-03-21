@@ -103,7 +103,7 @@ extension l10n {
     enum CaregiverList {
         enum AddFirstCaregiver {
             static let message = LocalizedString("lekaapp.caregiver_list.add_first_caregiver.message",
-                                                 value: "No care giver profiles have been created yet.",
+                                                 value: "No caregiver profiles have been created yet.",
                                                  comment: "Caregiver list add first caregiver message")
 
             static let addButtonLabel = LocalizedString("lekaapp.caregiver_list.add_first_caregiver.add_button_label",
