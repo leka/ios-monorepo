@@ -14,7 +14,7 @@ extension Robot {
             onNotification: { data in
                 if let value = data?.first {
                     self.battery.send(Int(value))
-                    log.trace("🤖 battery: \(self.battery.value)%")
+//                    log.trace("🤖 battery: \(self.battery.value)%")
                 }
             }
         )
@@ -29,7 +29,7 @@ extension Robot {
             onNotification: { data in
                 if let value = data?.first {
                     self.isCharging.send(value == 1)
-                    log.trace("🤖 isCharging: \(self.isCharging.value)")
+//                    log.trace("🤖 isCharging: \(self.isCharging.value)")
                 }
             }
         )
@@ -79,7 +79,7 @@ extension Robot {
             onRead: { data in
                 if let value = data?.first {
                     self.isCharging.send(value == 1)
-                    log.trace("🤖 isCharging: \(self.isCharging.value)")
+//                    log.trace("🤖 isCharging: \(self.isCharging.value)")
                 }
             }
         )
