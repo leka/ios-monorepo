@@ -39,7 +39,7 @@ l10n:
     details:
       icon: emotion_recognition-sounds-4_ladislas-3d16271d-8807-41ea-84f5-1631eeae5fba
 
-      title: Reconnaitre les sons des émotions avec 2 photos
+      title: Reconnaitre les sons des émotions avec 4 photos
       subtitle: Ladislas
 
       short_description: |
@@ -57,7 +57,7 @@ l10n:
     details:
       icon: emotion_recognition-sounds-4_ladislas-3d16271d-8807-41ea-84f5-1631eeae5fba
 
-      title: Recognize the sounds of emotions with 2 pictures
+      title: Recognize the sounds of emotions with 4 pictures
       subtitle: Ladislas
 
       short_description: |
@@ -93,7 +93,9 @@ exercises_payload:
             - value: emotion_picture_adult_angry_ladislas
               type: image
             - value: emotion_sound_adult_fear_ladislas
+              type: image
             - value: emotion_sound_adult_joy_ladislas
+              type: image
 
       - instructions: Touche le haut-parleur. Quelle est cette émotion ?
         interface: listenThenTouchToSelect
@@ -131,7 +133,9 @@ exercises_payload:
             - value: emotion_picture_adult_fear_ladislas
               type: image
             - value: emotion_picture_adult_joy_ladislas
+              type: image
             - value: emotion_picture_adult_angry_ladislas
+              type: image
 
       - instructions: Touche le haut-parleur. Quelle est cette émotion ?
         interface: listenThenTouchToSelect
@@ -147,8 +151,11 @@ exercises_payload:
               type: image
               isRightAnswer: true
             - value: emotion_picture_adult_disgust_ladislas
+              type: image
             - value : emotion_picture_adult_sad_ladislas
-            -  value : emotion_picture_adult_angry_ladislas
+              type: image
+            - value : emotion_picture_adult_angry_ladislas
+              type: image
 
       - instructions: Touche le haut-parleur. Quelle est cette émotion ?
         interface: listenThenTouchToSelect
@@ -169,3 +176,104 @@ exercises_payload:
               type: image
             - value: emotion_picture_adult_disgust_ladislas
               type: image
+
+      - instructions: Touche le haut-parleur. Quelle est cette émotion ?
+        interface: listenThenTouchToSelect
+        gameplay: findTheRightAnswers
+        action:
+          type: ipad
+          value:
+            type: audio
+            value: emotion_sound_adult_sad_ladislas
+        payload:
+          choices:
+            - value: emotion_picture_adult_sad_ladislas
+              type: image
+              isRightAnswer: true
+            - value: emotion_picture_adult_angry_ladislas
+              type: image
+            - value: emotion_sound_adult_fear_ladislas
+              type: image
+            - value: emotion_sound_adult_joy_ladislas
+              type: image
+
+      - instructions: Touche le haut-parleur. Quelle est cette émotion ?
+        interface: listenThenTouchToSelect
+        gameplay: findTheRightAnswers
+        action:
+          type: ipad
+          value:
+            type: audio
+            value: emotion_sound_adult_angry_ladislas
+        payload:
+          choices:
+            - value: emotion_picture_adult_angry_ladislas
+              type: image
+              isRightAnswer: true
+            - value: emotion_picture_adult_fear_ladislas
+              type: image
+            - value: emotion_picture_adult_disgust_ladislas
+              type: image
+            - value: emotion_picture_adult_sad_ladislas
+              type: image
+
+      - instructions: Touche le haut-parleur. Quelle est cette émotion ?
+        interface: listenThenTouchToSelect
+        gameplay: findTheRightAnswers
+        action:
+          type: ipad
+          value:
+            type: audio
+            value: emotion_sound_adult_disgust_ladislas
+        payload:
+          choices:
+            - value: emotion_picture_adult_disgust_ladislas
+              type: image
+              isRightAnswer: true
+            - value: emotion_picture_adult_fear_ladislas
+              type: image
+            - value: emotion_picture_adult_joy_ladislas
+              type: image
+            - value: emotion_picture_adult_angry_ladislas
+              type: image
+
+      - instructions: Touche le haut-parleur. Quelle est cette émotion ?
+        interface: listenThenTouchToSelect
+        gameplay: findTheRightAnswers
+        action:
+          type: ipad
+          value:
+            type: audio
+            value: emotion_sound_adult_joy_ladislas
+        payload:
+          choices:
+            - value: emotion_picture_adult_joy_ladislas
+              type: image
+              isRightAnswer: true
+            - value: emotion_picture_adult_disgust_ladislas
+              type: image
+            - value : emotion_picture_adult_sad_ladislas
+              type: image
+            - value : emotion_picture_adult_angry_ladislas
+              type: image
+
+      - instructions: Touche le haut-parleur. Quelle est cette émotion ?
+        interface: listenThenTouchToSelect
+        gameplay: findTheRightAnswers
+        action:
+          type: ipad
+          value:
+            type: audio
+            value: emotion_sound_adult_fear_ladislas
+        payload:
+          choices:
+            - value: emotion_picture_adult_fear_ladislas
+              type: image
+              isRightAnswer: true
+            - value: emotion_picture_adult_joy_ladislas
+              type: image
+            - value: emotion_picture_adult_sad_ladislas
+              type: image
+            - value: emotion_picture_adult_disgust_ladislas
+              type: image
+

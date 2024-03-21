@@ -4,8 +4,8 @@
 
 version: 1.0.0
 
-uuid: 1a99dda4-c534-4577-a9be-c5683c43fc01
-name: emotion_recognition-sounds-2_lucie
+uuid: 86c5d826-0f97-403c-a444-febb5060d220
+name: emotion_recognition-sounds-2_hortense-ladislas
 
 created_at: "2024-03-04T18:07:12.519229"
 last_edited_at: "2024-03-12T15:30:51.722290"
@@ -22,7 +22,8 @@ skills:
 tags:
   - emotions
   - sounds
-  - lucie
+  - Hortense
+  - Ladislas
 
 hmi:
   - tablet
@@ -37,10 +38,10 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon: emotion_recognition-sounds-2_lucie-1a99dda4-c534-4577-a9be-c5683c43fc01
+      icon: emotion_recognition-sounds-2_hortense-ladislas-86c5d826-0f97-403c-a444-febb5060d220
 
       title: Reconnaitre les sons des émotions avec 2 photos
-      subtitle: lucie
+      subtitle: Hortense - Ladislas
 
       short_description: |
         Identifier des émotions à partir de sons
@@ -55,10 +56,10 @@ l10n:
 
   - locale: en_US
     details:
-      icon: emotion_recognition-sounds-2_lucie-1a99dda4-c534-4577-a9be-c5683c43fc01
+      icon: emotion_recognition-sounds-2_hortense-ladislas-86c5d826-0f97-403c-a444-febb5060d220
 
       title: Recognize the sounds of emotions with 2 pictures
-      subtitle: lucie
+      subtitle: Hortense - Ladislas
 
       short_description: |
         Identifying emotions from sounds
@@ -84,13 +85,13 @@ exercises_payload:
           type: ipad
           value:
             type: audio
-            value: emotion_sound_adult_sad_lucie
+            value: emotion_sound_adult_joy_hortense
         payload:
           choices:
-            - value: emotion_picture_adult_sad_lucie
+            - value: emotion_picture_adult_joy_hortense
               type: image
               isRightAnswer: true
-            - value: emotion_picture_adult_angry_lucie
+            - value: emotion_picture_adult_disgust_ladislas
               type: image
 
       - instructions: Touche le haut-parleur. Quelle est cette émotion ?
@@ -100,13 +101,29 @@ exercises_payload:
           type: ipad
           value:
             type: audio
-            value: emotion_sound_adult_angry_lucie
+            value: emotion_sound_adult_disgust_ladislas
         payload:
           choices:
-            - value: emotion_picture_adult_angry_lucie
+            - value: emotion_picture_adult_joy_hortense
+              type: image
+            - value: emotion_picture_adult_disgust_ladislas
               type: image
               isRightAnswer: true
-            - value: emotion_picture_adult_fear_lucie
+
+      - instructions: Touche le haut-parleur. Quelle est cette émotion ?
+        interface: listenThenTouchToSelect
+        gameplay: findTheRightAnswers
+        action:
+          type: ipad
+          value:
+            type: audio
+            value: emotion_sound_adult_sad_ladislas
+        payload:
+          choices:
+            - value: emotion_picture_adult_sad_ladislas
+              type: image
+              isRightAnswer: true
+            - value: emotion_picture_adult_angry_hortense
               type: image
 
       - instructions: Touche le haut-parleur. Quelle est cette émotion ?
@@ -116,13 +133,13 @@ exercises_payload:
           type: ipad
           value:
             type: audio
-            value: emotion_sound_adult_disgust_lucie
+            value: emotion_sound_adult_fear_ladislas
         payload:
           choices:
-            - value: emotion_picture_adult_disgust_lucie
+            - value: emotion_picture_adult_fear_ladislas
               type: image
               isRightAnswer: true
-            - value: emotion_picture_adult_fear_lucie
+            - value: emotion_picture_adult_joy_hortense
               type: image
 
       - instructions: Touche le haut-parleur. Quelle est cette émotion ?
@@ -132,13 +149,13 @@ exercises_payload:
           type: ipad
           value:
             type: audio
-            value: emotion_sound_adult_joy_lucie
+            value: emotion_sound_adult_angry_hortense
         payload:
           choices:
-            - value: emotion_picture_adult_joy_lucie
+            - value: emotion_picture_adult_angry_hortense
               type: image
               isRightAnswer: true
-            - value: emotion_picture_adult_disgust_lucie
+            - value: emotion_picture_adult_fear_ladislas
               type: image
 
       - instructions: Touche le haut-parleur. Quelle est cette émotion ?
@@ -148,13 +165,13 @@ exercises_payload:
           type: ipad
           value:
             type: audio
-            value: emotion_sound_adult_fear_lucie
+            value: emotion_sound_adult_joy_hortense
         payload:
           choices:
-            - value: emotion_picture_adult_fear_lucie
+            - value: emotion_picture_adult_joy_hortense
               type: image
               isRightAnswer: true
-            - value: emotion_picture_adult_joy_lucie
+            - value: emotion_picture_adult_disgust_ladislas
               type: image
 
       - instructions: Touche le haut-parleur. Quelle est cette émotion ?
@@ -164,13 +181,29 @@ exercises_payload:
           type: ipad
           value:
             type: audio
-            value: emotion_sound_adult_sad_lucie
+            value: emotion_sound_adult_disgust_ladislas
         payload:
           choices:
-            - value: emotion_picture_adult_sad_lucie
+            - value: emotion_picture_adult_joy_hortense
+              type: image
+            - value: emotion_picture_adult_disgust_ladislas
               type: image
               isRightAnswer: true
-            - value: emotion_picture_adult_angry_lucie
+
+      - instructions: Touche le haut-parleur. Quelle est cette émotion ?
+        interface: listenThenTouchToSelect
+        gameplay: findTheRightAnswers
+        action:
+          type: ipad
+          value:
+            type: audio
+            value: emotion_sound_adult_sad_ladislas
+        payload:
+          choices:
+            - value: emotion_picture_adult_sad_ladislas
+              type: image
+              isRightAnswer: true
+            - value: emotion_picture_adult_angry_hortense
               type: image
 
       - instructions: Touche le haut-parleur. Quelle est cette émotion ?
@@ -180,13 +213,13 @@ exercises_payload:
           type: ipad
           value:
             type: audio
-            value: emotion_sound_adult_angry_lucie
+            value: emotion_sound_adult_fear_ladislas
         payload:
           choices:
-            - value: emotion_picture_adult_angry_lucie
+            - value: emotion_picture_adult_fear_ladislas
               type: image
               isRightAnswer: true
-            - value: emotion_picture_adult_fear_lucie
+            - value: emotion_picture_adult_joy_hortense
               type: image
 
       - instructions: Touche le haut-parleur. Quelle est cette émotion ?
@@ -196,43 +229,11 @@ exercises_payload:
           type: ipad
           value:
             type: audio
-            value: emotion_sound_adult_disgust_lucie
+            value: emotion_sound_adult_angry_hortense
         payload:
           choices:
-            - value: emotion_picture_adult_disgust_lucie
+            - value: emotion_picture_adult_angry_hortense
               type: image
               isRightAnswer: true
-            - value: emotion_picture_adult_fear_lucie
-              type: image
-
-      - instructions: Touche le haut-parleur. Quelle est cette émotion ?
-        interface: listenThenTouchToSelect
-        gameplay: findTheRightAnswers
-        action:
-          type: ipad
-          value:
-            type: audio
-            value: emotion_sound_adult_joy_lucie
-        payload:
-          choices:
-            - value: emotion_picture_adult_joy_lucie
-              type: image
-              isRightAnswer: true
-            - value: emotion_picture_adult_disgust_lucie
-              type: image
-
-      - instructions: Touche le haut-parleur. Quelle est cette émotion ?
-        interface: listenThenTouchToSelect
-        gameplay: findTheRightAnswers
-        action:
-          type: ipad
-          value:
-            type: audio
-            value: emotion_sound_adult_fear_lucie
-        payload:
-          choices:
-            - value: emotion_picture_adult_fear_lucie
-              type: image
-              isRightAnswer: true
-            - value: emotion_picture_adult_joy_lucie
+            - value: emotion_picture_adult_fear_ladislas
               type: image
