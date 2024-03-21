@@ -8,7 +8,7 @@ import SwiftUI
 
 // MARK: - Caregiver
 
-public struct Caregiver: AccountDocument {
+public struct Caregiver: AccountDocument, Hashable {
     // MARK: Public
 
     @ServerTimestamp public var createdAt: Date?

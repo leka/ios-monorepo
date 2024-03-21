@@ -57,13 +57,14 @@ struct CarereceiverList: View {
                     }
                     .padding(.top, 150)
                 } else {
-                    LazyVGrid(columns: self.columns, spacing: 40) {
+                    LazyVGrid(columns: self.columns) {
                         ForEach(self.carereceiverManagerViewModel.carereceivers) { carereceiver in
                             NavigationLink(value: carereceiver) {
                                 CarereceiverAvatarCell(carereceiver: carereceiver)
                             }
                         }
                     }
+                    .padding()
                 }
             }
             .toolbar {

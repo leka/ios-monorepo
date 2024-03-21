@@ -794,6 +794,114 @@
                 }
             }
         },
+        "lekaapp.caregiver_list.add_button_label": {
+            "comment": "Caregiver list add button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Add profile"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Ajouter un profil"
+                    }
+                }
+            }
+        },
+        "lekaapp.caregiver_list.add_first_caregiver.add_button_label": {
+            "comment": "Caregiver list add first caregiver button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Add your first caregiver profile"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Cr\u00e9er votre premier profil accompagnant"
+                    }
+                }
+            }
+        },
+        "lekaapp.caregiver_list.add_first_caregiver.message": {
+            "comment": "Caregiver list add first caregiver message",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "No caregiver profiles have been created yet."
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Aucun profil d'accompagnant n'a \u00e9t\u00e9 cr\u00e9\u00e9 pour le moment."
+                    }
+                }
+            }
+        },
+        "lekaapp.caregiver_list.description": {
+            "comment": "Caregiver list description",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+                    }
+                }
+            }
+        },
+        "lekaapp.caregiver_list.subtitle": {
+            "comment": "Caregiver list subtitle",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                    }
+                }
+            }
+        },
+        "lekaapp.caregiver_list.title": {
+            "comment": "Caregiver list title",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Caregivers"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Accompagnants"
+                    }
+                }
+            }
+        },
         "lekaapp.caregiver_picker.add_button_label": {
             "comment": "Caregiver picker add button label",
             "extractionState": "extracted_with_value",
@@ -1107,7 +1215,7 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Go to care receiver section"
+                        "value": "Go to Care Receivers section"
                     }
                 },
                 "fr": {
@@ -1694,6 +1802,24 @@
                 }
             }
         },
+        "lekapp.caregiver_view.available_soon_label": {
+            "comment": "Temporary content for caregiver monitoring",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Your usage history will soon be available here."
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Votre historique d'utilisation sera bient\u00f4t disponible ici."
+                    }
+                }
+            }
+        },
         "lekapp.carereceiver_view.available_soon_label": {
             "comment": "Temporary content for carereceiver monitoring",
             "extractionState": "extracted_with_value",
@@ -1834,6 +1960,24 @@
                     "stringUnit": {
                         "state": "translated",
                         "value": "Activit\u00e9s"
+                    }
+                }
+            }
+        },
+        "main_view.sidebar.category_label.caregivers": {
+            "comment": "The title of the category 'Caregivers'",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Caregivers"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Accompagnants"
                     }
                 }
             }

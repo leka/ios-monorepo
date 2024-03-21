@@ -55,6 +55,7 @@ struct MainView: View {
 
                 if self.authManagerViewModel.userAuthenticationState == .loggedIn {
                     Section(String(l10n.MainView.Sidebar.sectionUsers.characters)) {
+                        CategoryLabel(category: .caregivers)
                         CategoryLabel(category: .carereceivers)
                     }
                 }
@@ -102,6 +103,9 @@ struct MainView: View {
 
                     case .sampleActivities:
                         SampleActivityListView()
+
+                    case .caregivers:
+                        CaregiverList()
 
                     case .carereceivers:
                         CarereceiverList()

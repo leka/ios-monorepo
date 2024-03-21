@@ -141,7 +141,7 @@ extension l10n {
                                                  comment: "Carereceiver picker add first carereceiver message")
 
             static let buttonLabel = LocalizedString("lekaapp.carereceiver_picker.add_first_carereceiver.add_button_label",
-                                                     value: "Go to care receiver section",
+                                                     value: "Go to Care Receivers section",
                                                      comment: "Carereceiver picker add first carereceiver button label")
         }
 

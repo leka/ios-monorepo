@@ -12,6 +12,7 @@ extension Navigation {
         case activities
         case remotes
         case sampleActivities
+        case caregivers
         case carereceivers
         case developerModeImageListPNG
 
