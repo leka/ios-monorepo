@@ -40,6 +40,7 @@ struct CaregiverPicker: View {
         }
         .padding(.horizontal)
         .navigationTitle(String(l10n.CaregiverPicker.title.characters))
+        .interactiveDismissDisabled(self.caregiverManagerViewModel.currentCaregiver == nil)
         .sheet(isPresented: self.$isCaregiverCreationPresented) {
             NavigationStack {
                 CreateCaregiverView()
@@ -67,7 +68,8 @@ struct CaregiverPicker: View {
                 }
                 .disabled(self.selectedCaregiver == nil)
             }
-            ToolbarItem(placement: .bottomBar) {
+            ToolbarItemGroup(placement: .bottomBar) {
+                Spacer()
                 Button {
                     self.isCaregiverCreationPresented = true
                 } label: {
