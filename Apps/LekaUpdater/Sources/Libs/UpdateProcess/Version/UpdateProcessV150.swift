@@ -22,6 +22,7 @@ private enum UpdateEvent {
     case destinationPathSet
     case fileCleared
     case fileSent
+    case assetsSent
     case fileVerificationReceived
     case robotDisconnected
     case robotDetected
@@ -137,6 +138,11 @@ private class StateSettingDestinationPath: GKState, StateEventProcessor {
     }
 
     override func didEnter(from _: GKState?) {
+        if Robot.shared.osVersion.value! == globalFirmwareManager.currentVersion{
+            process(event: .destinationPathSet)
+            return
+        }
+        
         self.setDestinationPath()
     }
 
@@ -182,6 +188,11 @@ private class StateClearingFile: GKState, StateEventProcessor {
     }
 
     override func didEnter(from _: GKState?) {
+        if Robot.shared.osVersion.value! == globalFirmwareManager.currentVersion{
+            process(event: .fileCleared)
+            return
+        }
+        
         self.setClearPath()
     }
 
@@ -238,10 +249,15 @@ private class StateSendingFile: GKState, StateEventProcessor {
     // MARK: Internal
 
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
-        stateClass is StateApplyingUpdate.Type || stateClass is StateErrorRobotUnexpectedDisconnection.Type
+        stateClass is StateSendingAssets.Type || stateClass is StateErrorRobotUnexpectedDisconnection.Type
     }
 
     override func didEnter(from _: GKState?) {
+        if Robot.shared.osVersion.value! == globalFirmwareManager.currentVersion{
+            process(event: .fileSent)
+            return
+        }
+
         self.sendFile()
     }
 
@@ -253,7 +269,14 @@ private class StateSendingFile: GKState, StateEventProcessor {
     func process(event: UpdateEvent) {
         switch event {
             case .fileSent:
+            debugPrint("Robot version is \(Robot.shared.osVersion.value!)")
+            if Robot.shared.osVersion.value! >= Version("1.4.100")! {
+                debugPrint("Send assets")
+                stateMachine?.enter(StateSendingAssets.self)
+            } else {
+                debugPrint("Apply update")
                 stateMachine?.enter(StateApplyingUpdate.self)
+            }
             case .robotDisconnected:
                 stateMachine?.enter(StateErrorRobotUnexpectedDisconnection.self)
             default:
@@ -319,6 +342,177 @@ private class StateSendingFile: GKState, StateEventProcessor {
                 ? startIndex + self.maximumPacketSize - 1 : startIndex + self.expectedRemainingBytes - 1
 
         let dataToSend = globalFirmwareManager.data[startIndex...endIndex]
+
+        if let characteristic {
+            Robot.shared.connectedPeripheral?.send(dataToSend, forCharacteristic: characteristic)
+        }
+    }
+}
+
+// MARK: - StateSendingAssets
+
+private class StateSendingAssets: GKState, StateEventProcessor {
+    // MARK: Lifecycle
+
+    override init() {
+
+        self.expectedCompletePackets = 0
+        self.expectedRemainingBytes = 0
+
+        super.init()
+    }
+
+    // MARK: Internal
+
+    override func isValidNextState(_ stateClass: AnyClass) -> Bool {
+        stateClass is StateApplyingUpdate.Type || stateClass is StateErrorRobotUnexpectedDisconnection.Type
+    }
+
+    override func didEnter(from _: GKState?) {
+        self.loadNextAsset()
+    }
+
+    override func willExit(to _: GKState) {
+        self.cancellables.removeAll()
+        self.characteristic = nil
+    }
+
+    func process(event: UpdateEvent) {
+        switch event {
+            case .assetsSent:
+                stateMachine?.enter(StateApplyingUpdate.self)
+            case .robotDisconnected:
+                stateMachine?.enter(StateErrorRobotUnexpectedDisconnection.self)
+            default:
+                return
+        }
+    }
+
+    // NEW
+
+    var assets: [String] = [
+//        "1-ACTIVITE REUSSIE",
+//        "3-BATTERIE FAIBLE",
+//        "8-FIN DE CHARGE",
+//        "21-TAG DETEC",
+//        "25-CONNEXION BT",
+//        "27-BATTERIE MINIME",
+//        "37-WELCOME",
+    ]
+    var assetsIndex = 0
+    var data = Data()
+
+    func loadNextAsset() {
+        if assetsIndex == assets.count {
+            self.process(event: .assetsSent)
+            return
+        }
+
+        debugPrint("fileURL \(assets[assetsIndex])")
+        guard let fileURL = Bundle.main.url(forResource: assets[assetsIndex], withExtension: "wav") else {
+            return
+        }
+
+        debugPrint("Data \(assets[assetsIndex])")
+        do {
+            self.data = try Data(contentsOf: fileURL)
+
+            let dataSize = self.data.count
+
+            self.expectedCompletePackets = Int(floor(Double(dataSize / self.maximumPacketSize)))
+            self.expectedRemainingBytes = Int(dataSize % self.maximumPacketSize)
+
+            debugPrint("DataSize: \(dataSize): \(self.expectedCompletePackets) packets (\(maximumPacketSize) bytes size) + \(self.expectedRemainingBytes) bytes")
+
+            self.currentPacket = 0
+
+            debugPrint("Set destination")
+            let directory = "/fs/home/wav"
+            let filename = "\(assets[assetsIndex]).wav"
+            let destinationPath = directory + "/" + filename
+            debugPrint("Destination path: \(destinationPath)")
+
+            let characteristic = CharacteristicModelWriteOnly(
+                characteristicUUID: BLESpecs.FileExchange.Characteristics.filePath,
+                serviceUUID: BLESpecs.FileExchange.service,
+                onWrite: {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                        debugPrint("Clear path")
+                        let data = Data([1])
+
+                        let characteristic = CharacteristicModelWriteOnly(
+                            characteristicUUID: BLESpecs.FileExchange.Characteristics.clearFile,
+                            serviceUUID: BLESpecs.FileExchange.service,
+                            onWrite: {
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+                                    debugPrint("Send file")
+                                    self.sendFile()
+                                }
+                            }
+                        )
+
+                        Robot.shared.connectedPeripheral?.send(data, forCharacteristic: characteristic)
+                    }
+                }
+            )
+
+            Robot.shared.connectedPeripheral?.send(destinationPath.data(using: .utf8)!, forCharacteristic: characteristic)
+            
+            self.assetsIndex = assetsIndex + 1
+
+            return
+        } catch {
+            debugPrint("An error occurs (UpdateProcessV150")
+            return
+        }
+    }
+
+    // MARK: Private
+
+    private var cancellables: Set<AnyCancellable> = []
+
+    private let maximumPacketSize: Int = 182 // MTU(max) - 3
+
+    private var currentPacket: Int = 0
+    private var expectedCompletePackets: Int
+    private var expectedRemainingBytes: Int
+    private lazy var characteristic: CharacteristicModelWriteOnly? = CharacteristicModelWriteOnly(
+        characteristicUUID: BLESpecs.FileExchange.Characteristics.fileReceptionBuffer,
+        serviceUUID: BLESpecs.FileExchange.service,
+        onWrite: {
+            self.currentPacket += 1
+            self.tryToSendNextPacket()
+        }
+    )
+
+    private var expectedPackets: Int {
+        self.expectedRemainingBytes == 0 ? self.expectedCompletePackets : self.expectedCompletePackets + 1
+    }
+
+    private var _progression: Float {
+        Float(self.currentPacket) / Float(self.expectedPackets)
+    }
+
+    private func sendFile() {
+        self.tryToSendNextPacket()
+    }
+
+    private func tryToSendNextPacket() {
+        if self._progression < 1.0 {
+            self.sendNextPacket()
+        } else {
+            self.loadNextAsset()
+            // self.process(event: .fileSent)
+        }
+    }
+
+    private func sendNextPacket() {
+        let startIndex = self.currentPacket * self.maximumPacketSize
+        let endIndex =
+            self.currentPacket < self.expectedCompletePackets
+                ? startIndex + self.maximumPacketSize - 1 : startIndex + self.expectedRemainingBytes - 1
+
+        let dataToSend = self.data[startIndex...endIndex]
 
         if let characteristic {
             Robot.shared.connectedPeripheral?.send(dataToSend, forCharacteristic: characteristic)
@@ -507,6 +701,7 @@ class UpdateProcessV150: UpdateProcessProtocol {
             StateSettingDestinationPath(),
             StateClearingFile(),
             self.stateSendingFile,
+            StateSendingAssets(),
             StateApplyingUpdate(),
             StateWaitingForRobotToReboot(expectedRobot: Robot.shared.connectedPeripheral),
 
@@ -581,7 +776,8 @@ class UpdateProcessV150: UpdateProcessProtocol {
                  is StateSettingFileExchangeState,
                  is StateSettingDestinationPath,
                  is StateClearingFile,
-                 is StateSendingFile:
+                 is StateSendingFile,
+                 is StateSendingAssets:
                 self.currentStage.send(.sendingUpdate)
             case is StateApplyingUpdate,
                  is StateWaitingForRobotToReboot:
