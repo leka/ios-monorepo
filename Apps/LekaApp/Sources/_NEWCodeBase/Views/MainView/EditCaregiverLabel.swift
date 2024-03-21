@@ -45,7 +45,7 @@ struct EditCaregiverLabel: View {
                 }
             } else if self.caregiverManagerViewModel.caregivers.isEmpty {
                 Button {
-                    self.navigation.sheetContent = .createCaregiver
+                    self.navigation.sheetContent = .caregiverPicker
                 } label: {
                     VStack(spacing: 10) {
                         Image(systemName: "person.crop.circle.badge.plus")

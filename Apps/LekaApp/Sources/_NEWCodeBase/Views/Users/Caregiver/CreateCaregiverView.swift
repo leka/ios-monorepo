@@ -125,7 +125,8 @@ struct CreateCaregiverView: View {
                 case .close:
                     self.onClose?()
                 case .created:
-                    self.onCreated?(self.newCaregiver)
+                    // TODO: (@dev/team remove) tmp fix, remove on created in a future commit
+                    self.onClose?()
                 case .none:
                     break
             }
