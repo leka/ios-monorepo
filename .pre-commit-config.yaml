@@ -121,3 +121,25 @@ repos:
         files: .*\.activity\.yml
         types: [yaml]
         pass_filenames: false
+
+      - id: check_yaml_content_curriculums
+        name: Check activity.yml files
+        description: |
+          This hook checks activity.yml files for:
+            - uuid and filename consistency
+            - jtd schema validation
+        entry: python3 Tools/Hooks/check_yaml_content_curriculums.py
+        language: python
+        additional_dependencies: ["ruamel.yaml"]
+        files: .*\.curriculum\.yml
+        types: [yaml]
+
+      - id: check_yaml_content_curriculums_unique_uuid
+        name: Check activity.yml files for unique uuid
+        description: |
+          This hook checks activity.yml files for unique uuid
+        entry: python3 Tools/Hooks/check_yaml_content_curriculums_unique_uuid.py
+        language: python
+        files: .*\.curriculum\.yml
+        types: [yaml]
+        pass_filenames: false
