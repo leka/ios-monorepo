@@ -30,6 +30,7 @@ struct CaregiverAvatarCell: View {
                     Circle()
                         .stroke(self.styleManager.accentColor!, lineWidth: self.isSelected ? 5 : 0)
                 }
+                .frame(maxWidth: 120)
 
             Text("\(self.caregiver.firstName) \(self.caregiver.lastName)")
                 .font(.headline)
