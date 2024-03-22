@@ -27,13 +27,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "\u274c\nImage not found:\n%s"
+                        "value": "\u274c\nImage not found:\n%1$@"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "\u274c\nImage non reconnue :\n%s"
+                        "value": "\u274c\nImage non reconnue :\n%1$@"
                     }
                 }
             }
@@ -45,13 +45,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "\u274c\nText is not emoji:\n%s"
+                        "value": "\u274c\nText is not emoji:\n%1$@"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "\u274c\nCe texte n'est pas un \u00e9moji:\n%s"
+                        "value": "\u274c\nCe texte n'est pas un \u00e9moji:\n%1$@"
                     }
                 }
             }
@@ -63,13 +63,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "\u274c\nImage not found:\n%s"
+                        "value": "\u274c\nImage not found:\n%1$@"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "\u274c\nImage non reconnue:\n%s"
+                        "value": "\u274c\nImage non reconnue:\n%1$@"
                     }
                 }
             }
@@ -81,13 +81,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "\u274c\nSF Symbol not found:\n%s"
+                        "value": "\u274c\nSF Symbol not found:\n%1$@"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "\u274c\nSymbole non reconnu:\n%s"
+                        "value": "\u274c\nSymbole non reconnu:\n%1$@"
                     }
                 }
             }
