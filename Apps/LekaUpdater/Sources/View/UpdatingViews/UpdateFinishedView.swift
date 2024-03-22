@@ -74,7 +74,7 @@ struct UpdateFinishedContentView: View {
 
                 Button {
                     let appURL = URL(
-                        string: "com.googleusercontent.apps.224911845933-mv4tp4rstgjtvdqvbv5dl7defii1a7ic://")
+                        string: "LekaApp://")
                     let appStoreURL = URL(string: "https://apps.apple.com/app/mon-leka-alpha/id1607862221")!
 
                     if let appURL, UIApplication.shared.canOpenURL(appURL) {
