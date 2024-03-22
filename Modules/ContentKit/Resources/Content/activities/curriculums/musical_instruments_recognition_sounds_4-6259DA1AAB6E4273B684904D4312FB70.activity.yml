@@ -4,8 +4,8 @@
 
 version: 1.0.0
 
-uuid:
-name:
+uuid: 6259DA1AAB6E4273B684904D4312FB70
+name: musical_instruments_recognition_sounds_4
 
 created_at: "2024-03-04T18:07:12.519229"
 last_edited_at: "2024-03-12T15:30:51.722290"
@@ -147,7 +147,7 @@ exercises_payload:
               type: image
             - value: pictograms-objects-musical_instrument-harp_brown-0135
               type: image
-            - value: pictograms-animals-pets-dog_golden_retriever_brown-0052
+            - value: pictograms-objects-musical_instrument-drum
               type: image
 
       - instructions:
