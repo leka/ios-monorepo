@@ -4,6 +4,7 @@
 
 import Foundation
 import LocalizationKit
+import UIKit
 
 // MARK: - Curriculum
 
@@ -140,10 +141,10 @@ public extension Curriculum {
         public let description: String
 
         // TODO: (@ladislas) use string path instead
-//        public var iconImage: UIImage {
-//            UIImage(named: "\(self.icon).curriculum.icon.png", in: .module, with: nil)
-//            ?? UIImage(named: "placeholder.curriculum.icon.png", in: .module, with: nil)!
-//        }
+        public var iconImage: UIImage {
+            UIImage(named: "\(self.icon).curriculum.icon.png", in: .module, with: nil)
+                ?? UIImage(named: "placeholder.curriculum.icon.png", in: .module, with: nil)!
+        }
 
         // MARK: Private
 

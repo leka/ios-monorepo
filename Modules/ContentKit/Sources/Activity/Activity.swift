@@ -14,6 +14,14 @@ import Yams
 public struct Activity: Decodable, Identifiable {
     // MARK: Lifecycle
 
+    public init?(id: String) {
+        if let activity = ContentKit.listSampleActivities()?.first(where: { $0.id == id }) {
+            self = activity
+        } else {
+            return nil
+        }
+    }
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 

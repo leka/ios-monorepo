@@ -73,6 +73,78 @@
                     }
                 }
             }
+        },
+        "content_kit.curriculum_details_view.activities_section_title": {
+            "comment": "CurriculumDetailsView 'activities' section title",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Activities"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Activit\u00e9s"
+                    }
+                }
+            }
+        },
+        "content_kit.curriculum_details_view.authors_section_title": {
+            "comment": "CurriculumDetailsView 'authors' section title",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Authors"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Auteurs"
+                    }
+                }
+            }
+        },
+        "content_kit.curriculum_details_view.description_section_title": {
+            "comment": "CurriculumDetailsView 'description' section title",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Description"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Description"
+                    }
+                }
+            }
+        },
+        "content_kit.curriculum_details_view.skills_section_title": {
+            "comment": "CurriculumDetailsView 'skills' section title",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Skills"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Comp\u00e9tences"
+                    }
+                }
+            }
         }
     }
 }
