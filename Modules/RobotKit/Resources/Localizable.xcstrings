@@ -2,20 +2,56 @@
     "version": "1.0",
     "sourceLanguage": "en",
     "strings": {
-        "robotkit.robot_connect_view.cancel_button": {
-            "comment": "The title of the cancel button in the toolbar",
+        "robotkit.connected_robot_view.navigation_title": {
+            "comment": "The title of the connected robot view",
             "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Cancel"
+                        "value": "You are connected"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Annuler"
+                        "value": "Vous \u00eates connect\u00e9s"
+                    }
+                }
+            }
+        },
+        "robotkit.connected_robot_view.serial_number_label": {
+            "comment": "The title of the connected robot view",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "S/N: %1$@"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "S/N: %1$@"
+                    }
+                }
+            }
+        },
+        "robotkit.robot_connect_view.close_button": {
+            "comment": "The title of the close button in the toolbar",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Close"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Fermer"
                     }
                 }
             }

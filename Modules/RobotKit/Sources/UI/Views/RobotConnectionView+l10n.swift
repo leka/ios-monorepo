@@ -23,11 +23,11 @@ extension l10n {
                 comment: "The text displayed in the searching view"
             )
 
-            static let cancelButton = LocalizedString(
-                "robotkit.robot_connect_view.cancel_button",
+            static let closeButton = LocalizedString(
+                "robotkit.robot_connect_view.close_button",
                 bundle: RobotKitResources.bundle,
-                value: "Cancel",
-                comment: "The title of the cancel button in the toolbar"
+                value: "Close",
+                comment: "The title of the close button in the toolbar"
             )
 
             static let connectButton = LocalizedString(
