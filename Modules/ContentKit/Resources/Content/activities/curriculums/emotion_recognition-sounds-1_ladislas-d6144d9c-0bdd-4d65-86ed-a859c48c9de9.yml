@@ -77,7 +77,11 @@ exercises_payload:
 
   exercise_groups:
     - group:
-      - instructions: Touche le haut-parleur. Quelle est cette émotion ?
+      - instructions:
+          - locale: fr_FR
+            value: Touche le haut-parleur. Quelle est cette émotion ?
+          - locale: en_US
+            value: Touch the speaker. What is this emotion?
         interface: listenThenTouchToSelect
         gameplay: findTheRightAnswers
         action:
@@ -86,12 +90,17 @@ exercises_payload:
             type: audio
             value: emotion_sound_adult_sad_ladislas
         payload:
+          shuffle_choices: true
           choices:
             - value: emotion_picture_adult_sad_ladislas
               type: image
               isRightAnswer: true
 
-      - instructions: Touche le haut-parleur. Quelle est cette émotion ?
+      - instructions:
+          - locale: fr_FR
+            value: Touche le haut-parleur. Quelle est cette émotion ?
+          - locale: en_US
+            value: Touch the speaker. What is this emotion?
         interface: listenThenTouchToSelect
         gameplay: findTheRightAnswers
         action:
@@ -100,12 +109,17 @@ exercises_payload:
             type: audio
             value: emotion_sound_adult_angry_ladislas
         payload:
+          shuffle_choices: true
           choices:
             - value: emotion_picture_adult_angry_ladislas
               type: image
               isRightAnswer: true
 
-      - instructions: Touche le haut-parleur. Quelle est cette émotion ?
+      - instructions:
+          - locale: fr_FR
+            value: Touche le haut-parleur. Quelle est cette émotion ?
+          - locale: en_US
+            value: Touch the speaker. What is this emotion?
         interface: listenThenTouchToSelect
         gameplay: findTheRightAnswers
         action:
@@ -114,12 +128,17 @@ exercises_payload:
             type: audio
             value: emotion_sound_adult_disgust_ladislas
         payload:
+          shuffle_choices: true
           choices:
             - value: emotion_picture_adult_disgust_ladislas
               type: image
               isRightAnswer: true
 
-      - instructions: Touche le haut-parleur. Quelle est cette émotion ?
+      - instructions:
+          - locale: fr_FR
+            value: Touche le haut-parleur. Quelle est cette émotion ?
+          - locale: en_US
+            value: Touch the speaker. What is this emotion?
         interface: listenThenTouchToSelect
         gameplay: findTheRightAnswers
         action:
@@ -128,12 +147,17 @@ exercises_payload:
             type: audio
             value: emotion_sound_adult_joy_ladislas
         payload:
+          shuffle_choices: true
           choices:
             - value: emotion_picture_adult_joy_ladislas
               type: image
               isRightAnswer: true
 
-      - instructions: Touche le haut-parleur. Quelle est cette émotion ?
+      - instructions:
+          - locale: fr_FR
+            value: Touche le haut-parleur. Quelle est cette émotion ?
+          - locale: en_US
+            value: Touch the speaker. What is this emotion?
         interface: listenThenTouchToSelect
         gameplay: findTheRightAnswers
         action:
@@ -142,12 +166,17 @@ exercises_payload:
             type: audio
             value: emotion_sound_adult_fear_ladislas
         payload:
+          shuffle_choices: true
           choices:
             - value: emotion_picture_adult_fear_ladislas
               type: image
               isRightAnswer: true
 
-      - instructions: Touche le haut-parleur. Quelle est cette émotion ?
+      - instructions:
+          - locale: fr_FR
+            value: Touche le haut-parleur. Quelle est cette émotion ?
+          - locale: en_US
+            value: Touch the speaker. What is this emotion?
         interface: listenThenTouchToSelect
         gameplay: findTheRightAnswers
         action:
@@ -156,12 +185,17 @@ exercises_payload:
             type: audio
             value: emotion_sound_adult_sad_ladislas
         payload:
+          shuffle_choices: true
           choices:
             - value: emotion_picture_adult_sad_ladislas
               type: image
               isRightAnswer: true
 
-      - instructions: Touche le haut-parleur. Quelle est cette émotion ?
+      - instructions:
+          - locale: fr_FR
+            value: Touche le haut-parleur. Quelle est cette émotion ?
+          - locale: en_US
+            value: Touch the speaker. What is this emotion?
         interface: listenThenTouchToSelect
         gameplay: findTheRightAnswers
         action:
@@ -170,12 +204,17 @@ exercises_payload:
             type: audio
             value: emotion_sound_adult_angry_ladislas
         payload:
+          shuffle_choices: true
           choices:
             - value: emotion_picture_adult_angry_ladislas
               type: image
               isRightAnswer: true
 
-      - instructions: Touche le haut-parleur. Quelle est cette émotion ?
+      - instructions:
+          - locale: fr_FR
+            value: Touche le haut-parleur. Quelle est cette émotion ?
+          - locale: en_US
+            value: Touch the speaker. What is this emotion?
         interface: listenThenTouchToSelect
         gameplay: findTheRightAnswers
         action:
@@ -184,12 +223,17 @@ exercises_payload:
             type: audio
             value: emotion_sound_adult_disgust_ladislas
         payload:
+          shuffle_choices: true
           choices:
             - value: emotion_picture_adult_disgust_ladislas
               type: image
               isRightAnswer: true
 
-      - instructions: Touche le haut-parleur. Quelle est cette émotion ?
+      - instructions:
+          - locale: fr_FR
+            value: Touche le haut-parleur. Quelle est cette émotion ?
+          - locale: en_US
+            value: Touch the speaker. What is this emotion?
         interface: listenThenTouchToSelect
         gameplay: findTheRightAnswers
         action:
@@ -198,12 +242,17 @@ exercises_payload:
             type: audio
             value: emotion_sound_adult_joy_ladislas
         payload:
+          shuffle_choices: true
           choices:
             - value: emotion_picture_adult_joy_ladislas
               type: image
               isRightAnswer: true
 
-      - instructions: Touche le haut-parleur. Quelle est cette émotion ?
+      - instructions:
+          - locale: fr_FR
+            value: Touche le haut-parleur. Quelle est cette émotion ?
+          - locale: en_US
+            value: Touch the speaker. What is this emotion?
         interface: listenThenTouchToSelect
         gameplay: findTheRightAnswers
         action:
@@ -212,6 +261,7 @@ exercises_payload:
             type: audio
             value: emotion_sound_adult_fear_ladislas
         payload:
+          shuffle_choices: true
           choices:
             - value: emotion_picture_adult_fear_ladislas
               type: image

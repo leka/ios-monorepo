@@ -4,8 +4,8 @@
 
 version: 1.0.0
 
-uuid: 85b0af03-cce2-4794-80b4-99f6f2b586c6
-name: emotion_recognition-sounds-3_hortense-lucie-ladislas
+uuid: BA0F2146BD5A420095F82A4C859D0EE8
+name: musical_instruments_recognition_sounds_3
 
 created_at: "2024-03-04T18:07:12.519229"
 last_edited_at: "2024-03-12T15:30:51.722290"
@@ -16,15 +16,11 @@ authors:
 
 skills:
   - recognition
-  - recognition/basic-emotions
   - sensory_interaction
 
 tags:
-  - emotions
+  - musical_instruments
   - sounds
-  - Lucie
-  - Hortense
-  - Ladislas
 
 hmi:
   - tablet
@@ -39,37 +35,37 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon: emotion_recognition-sounds-3_hortense-lucie-ladislas-85b0af03-cce2-4794-80b4-99f6f2b586c6
+      icon:
 
-      title: Reconnaitre les sons des émotions avec 3 photos
-      subtitle: Lucie - Hortense - Ladislas
+      title: Reconnaitre les sons des instruments de musique avec 3 images
+      subtitle: null
 
       short_description: |
-        Identifier des émotions à partir de sons
+        Identifier des instruments de musique à partir de sons
 
       description: |
-        L'activité consiste à reconnaître différentes émotions à partir de sons émis par le haut parleur.
+        L'activité consiste à reconnaître différents instruments de musique à partir de sons émis par le haut parleur.
 
       instructions: |
         - Encourager la personne accompagnée à toucher le haut-parleur à gauche pour entendre le son
-        - Encourager la personne accompagnée à toucher l'image correspondant à l'émotion demandée
+        - Encourager la personne accompagnée à toucher l'instrument de musique correspondant au son
         - Lorsque la réponse est correcte, Leka lance un renforçateur
 
   - locale: en_US
     details:
-      icon: emotion_recognition-sounds-3_hortense-lucie-ladislas-85b0af03-cce2-4794-80b4-99f6f2b586c6
+      icon:
 
-      title: Recognize the sounds of emotions with 3 pictures
-      subtitle: Lucie - Hortense - Ladislas
+      title: Recognize musical instruments sounds with 3 images
+      subtitle: null
 
       short_description: |
-        Identifying emotions from sounds
+        Identifying musical instruments from sounds
 
       description: |
-        The activity involves recognizing different emotions from sounds emitted by the speaker.
+        The activity involves recognizing different musical instruments from sounds emitted by the speaker.
       instructions: |
         - Encourage the care receiver to touch the speaker button on the left to hear the sound
-        - Encourage the care receiver to touch the image corresponding to the requested emotion
+        - Encourage the care receiver to touch the musical instruments corresponding to the sound
         - When the answer is correct, Leka launches a reinforcer
 
 exercises_payload:
@@ -81,230 +77,230 @@ exercises_payload:
     - group:
       - instructions:
           - locale: fr_FR
-            value: Touche le haut-parleur. Quelle est cette émotion ?
+            value: Touche le haut-parleur. Quel est cet instrument de musique ?
           - locale: en_US
-            value: Touch the speaker. What is this emotion?
+            value: Touch the speaker. What is this musical instrument?
         interface: listenThenTouchToSelect
         gameplay: findTheRightAnswers
         action:
           type: ipad
           value:
             type: audio
-            value: emotion_sound_adult_fear_ladislas
+            value: sound_instrument_accordion
         payload:
           shuffle_choices: true
           choices:
-            - value: emotion_picture_adult_fear_ladislas
+            - value: pictograms-objects-musical_instrument-accordion_orange-013A
               type: image
               isRightAnswer: true
-            - value: emotion_picture_adult_sad_lucie
+            - value: pictograms-objects-musical_instrument-drummer_brown-0139
               type: image
-            - value: emotion_picture_adult_joy_hortense
+            - value: pictograms-objects-musical_instrument-piano_gray-0138
               type: image
 
       - instructions:
           - locale: fr_FR
-            value: Touche le haut-parleur. Quelle est cette émotion ?
+            value: Touche le haut-parleur. Quel est cet instrument de musique ?
           - locale: en_US
-            value: Touch the speaker. What is this emotion?
+            value: Touch the speaker. What is this musical instrument?
         interface: listenThenTouchToSelect
         gameplay: findTheRightAnswers
         action:
           type: ipad
           value:
             type: audio
-            value: emotion_sound_adult_angry_hortense
+            value: sound_instrument_tambour
         payload:
           shuffle_choices: true
           choices:
-            - value: emotion_picture_adult_angry_hortense
+            - value: pictograms-objects-musical_instrument-drummer_brown-0139
               type: image
               isRightAnswer: true
-            - value: emotion_picture_adult_sad_ladislas
+            - value: pictograms-objects-musical_instrument-flute_brown-0136
               type: image
-            - value: emotion_picture_adult_disgust_lucie
+            - value: pictograms-objects-musical_instrument-guitar_brown-0134
               type: image
 
       - instructions:
           - locale: fr_FR
-            value: Touche le haut-parleur. Quelle est cette émotion ?
+            value: Touche le haut-parleur. Quel est cet instrument de musique ?
           - locale: en_US
-            value: Touch the speaker. What is this emotion?
+            value: Touch the speaker. What is this musical instrument?
         interface: listenThenTouchToSelect
         gameplay: findTheRightAnswers
         action:
           type: ipad
           value:
             type: audio
-            value: emotion_sound_adult_sad_ladislas
+            value: sound_instrument_flut
         payload:
           shuffle_choices: true
           choices:
-            - value: emotion_picture_adult_sad_ladislas
+            - value: pictograms-objects-musical_instrument-flute_brown-0136
               type: image
               isRightAnswer: true
-            - value: emotion_picture_adult_joy_lucie
+            - value: pictograms-objects-musical_instrument-guitar_brown-0134
               type: image
-            - value: emotion_picture_adult_angry_hortense
+            - value: pictograms-objects-musical_instrument-harp_brown-0135
               type: image
 
       - instructions:
           - locale: fr_FR
-            value: Touche le haut-parleur. Quelle est cette émotion ?
+            value: Touche le haut-parleur. Quel est cet instrument de musique ?
           - locale: en_US
-            value: Touch the speaker. What is this emotion?
+            value: Touch the speaker. What is this musical instrument?
         interface: listenThenTouchToSelect
         gameplay: findTheRightAnswers
         action:
           type: ipad
           value:
             type: audio
-            value: emotion_sound_adult_disgust_hortense
+            value: sound_instrument_guitar
         payload:
           shuffle_choices: true
           choices:
-            - value: emotion_picture_adult_disgust_hortense
+            - value: pictograms-objects-musical_instrument-guitar_brown-0134
               type: image
               isRightAnswer: true
-            - value: emotion_picture_adult_joy_ladislas
+            - value: pictograms-objects-musical_instrument-harp_brown-0135
               type: image
-            - value: emotion_picture_adult_angry_lucie
+            - value: pictograms-objects-musical_instrument-piano_gray-0138
               type: image
 
       - instructions:
           - locale: fr_FR
-            value: Touche le haut-parleur. Quelle est cette émotion ?
+            value: Touche le haut-parleur. Quel est cet instrument de musique ?
           - locale: en_US
-            value: Touch the speaker. What is this emotion?
+            value: Touch the speaker. What is this musical instrument?
         interface: listenThenTouchToSelect
         gameplay: findTheRightAnswers
         action:
           type: ipad
           value:
             type: audio
-            value: emotion_sound_adult_joy_lucie
+            value: sound_instrument_harp
         payload:
           shuffle_choices: true
           choices:
-            - value: emotion_picture_adult_joy_lucie
+            - value: pictograms-objects-musical_instrument-harp_brown-0135
               type: image
               isRightAnswer: true
-            - value: emotion_picture_adult_disgust_ladislas
+            - value: pictograms-objects-musical_instrument-piano_gray-0138
               type: image
-            - value: emotion_picture_adult_sad_hortense
+            - value: pictograms-objects-musical_instrument-violin_brown-013D
               type: image
 
       - instructions:
           - locale: fr_FR
-            value: Touche le haut-parleur. Quelle est cette émotion ?
+            value: Touche le haut-parleur. Quel est cet instrument de musique ?
           - locale: en_US
-            value: Touch the speaker. What is this emotion?
+            value: Touch the speaker. What is this musical instrument?
         interface: listenThenTouchToSelect
         gameplay: findTheRightAnswers
         action:
           type: ipad
           value:
             type: audio
-            value: emotion_sound_adult_fear_ladislas
+            value: sound_instrument_piano
         payload:
           shuffle_choices: true
           choices:
-            - value: emotion_picture_adult_fear_ladislas
+            - value: pictograms-objects-musical_instrument-piano_gray-0138
               type: image
               isRightAnswer: true
-            - value: emotion_picture_adult_sad_lucie
+            - value: pictograms-objects-musical_instrument-saxophone_yellow-013C
               type: image
-            - value: emotion_picture_adult_joy_hortense
+            - value: pictograms-objects-musical_instrument-xylophone_brown-0137
               type: image
 
       - instructions:
           - locale: fr_FR
-            value: Touche le haut-parleur. Quelle est cette émotion ?
+            value: Touche le haut-parleur. Quel est cet instrument de musique ?
           - locale: en_US
-            value: Touch the speaker. What is this emotion?
+            value: Touch the speaker. What is this musical instrument?
         interface: listenThenTouchToSelect
         gameplay: findTheRightAnswers
         action:
           type: ipad
           value:
             type: audio
-            value: emotion_sound_adult_angry_hortense
+            value: sound_instrument_sax
         payload:
           shuffle_choices: true
           choices:
-            - value: emotion_picture_adult_angry_hortense
+            - value: pictograms-objects-musical_instrument-saxophone_yellow-013C
               type: image
               isRightAnswer: true
-            - value: emotion_picture_adult_sad_ladislas
+            - value: pictograms-objects-musical_instrument-violin_brown-013D
               type: image
-            - value: emotion_picture_adult_disgust_lucie
+            - value: pictograms-objects-musical_instrument-flute_brown-0136
               type: image
 
       - instructions:
           - locale: fr_FR
-            value: Touche le haut-parleur. Quelle est cette émotion ?
+            value: Touche le haut-parleur. Quel est cet instrument de musique ?
           - locale: en_US
-            value: Touch the speaker. What is this emotion?
+            value: Touch the speaker. What is this musical instrument?
         interface: listenThenTouchToSelect
         gameplay: findTheRightAnswers
         action:
           type: ipad
           value:
             type: audio
-            value: emotion_sound_adult_sad_ladislas
+            value: sound_instrument_violon
         payload:
           shuffle_choices: true
           choices:
-            - value: emotion_picture_adult_sad_ladislas
+            - value: pictograms-objects-musical_instrument-violin_brown-013D
               type: image
               isRightAnswer: true
-            - value: emotion_picture_adult_joy_lucie
+            - value: pictograms-objects-musical_instrument-xylophone_brown-0137
               type: image
-            - value: emotion_picture_adult_angry_hortense
+            - value: pictograms-objects-musical_instrument-piano_gray-0138
               type: image
 
       - instructions:
           - locale: fr_FR
-            value: Touche le haut-parleur. Quelle est cette émotion ?
+            value: Touche le haut-parleur. Quel est cet instrument de musique ?
           - locale: en_US
-            value: Touch the speaker. What is this emotion?
+            value: Touch the speaker. What is this musical instrument?
         interface: listenThenTouchToSelect
         gameplay: findTheRightAnswers
         action:
           type: ipad
           value:
             type: audio
-            value: emotion_sound_adult_disgust_hortense
+            value: sound_instrument_xylophone
         payload:
           shuffle_choices: true
           choices:
-            - value: emotion_picture_adult_disgust_hortense
+            - value: pictograms-objects-musical_instrument-xylophone_brown-0137
               type: image
               isRightAnswer: true
-            - value: emotion_picture_adult_joy_ladislas
+            - value: pictograms-objects-musical_instrument-violin_brown-013D
               type: image
-            - value: emotion_picture_adult_angry_lucie
+            - value: pictograms-objects-musical_instrument-guitar_brown-0134
               type: image
 
       - instructions:
           - locale: fr_FR
-            value: Touche le haut-parleur. Quelle est cette émotion ?
+            value: Touche le haut-parleur. Quel est cet instrument de musique ?
           - locale: en_US
-            value: Touch the speaker. What is this emotion?
+            value: Touch the speaker. What is this musical instrument?
         interface: listenThenTouchToSelect
         gameplay: findTheRightAnswers
         action:
           type: ipad
           value:
             type: audio
-            value: emotion_sound_adult_joy_lucie
+            value: sound_instrument_drum
         payload:
           shuffle_choices: true
           choices:
-            - value: emotion_picture_adult_joy_lucie
+            - value: pictograms-objects-musical_instrument-drum
               type: image
               isRightAnswer: true
-            - value: emotion_picture_adult_disgust_ladislas
+            - value: pictograms-objects-musical_instrument-guitar_brown-0134
               type: image
-            - value: emotion_picture_adult_sad_hortense
+            - value: pictograms-objects-musical_instrument-piano_gray-0138
               type: image

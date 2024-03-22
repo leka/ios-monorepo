@@ -77,7 +77,11 @@ exercises_payload:
 
   exercise_groups:
     - group:
-      - instructions: Touche le haut-parleur. Quelle est cette émotion ?
+      - instructions:
+          - locale: fr_FR
+            value: Touche le haut-parleur. Quelle est cette émotion ?
+          - locale: en_US
+            value: Touch the speaker. What is this emotion?
         interface: listenThenTouchToSelect
         gameplay: findTheRightAnswers
         action:
@@ -86,6 +90,7 @@ exercises_payload:
             type: audio
             value: emotion_sound_adult_sad_hortense
         payload:
+          shuffle_choices: true
           choices:
             - value: emotion_picture_adult_sad_hortense
               type: image
@@ -96,7 +101,11 @@ exercises_payload:
               type: image
             - value: emotion_sound_adult_joy_hortense
 
-      - instructions: Touche le haut-parleur. Quelle est cette émotion ?
+      - instructions:
+          - locale: fr_FR
+            value: Touche le haut-parleur. Quelle est cette émotion ?
+          - locale: en_US
+            value: Touch the speaker. What is this emotion?
         interface: listenThenTouchToSelect
         gameplay: findTheRightAnswers
         action:
@@ -105,6 +114,7 @@ exercises_payload:
             type: audio
             value: emotion_sound_adult_angry_hortense
         payload:
+          shuffle_choices: true
           choices:
             - value: emotion_picture_adult_angry_hortense
               type: image
@@ -116,7 +126,11 @@ exercises_payload:
             - value: emotion_picture_adult_sad_hortense
               type: image
 
-      - instructions: Touche le haut-parleur. Quelle est cette émotion ?
+      - instructions:
+          - locale: fr_FR
+            value: Touche le haut-parleur. Quelle est cette émotion ?
+          - locale: en_US
+            value: Touch the speaker. What is this emotion?
         interface: listenThenTouchToSelect
         gameplay: findTheRightAnswers
         action:
@@ -125,6 +139,7 @@ exercises_payload:
             type: audio
             value: emotion_sound_adult_disgust_hortense
         payload:
+          shuffle_choices: true
           choices:
             - value: emotion_picture_adult_disgust_hortense
               type: image
@@ -136,7 +151,11 @@ exercises_payload:
             - value: emotion_picture_adult_angry_hortense
               type: image
 
-      - instructions: Touche le haut-parleur. Quelle est cette émotion ?
+      - instructions:
+          - locale: fr_FR
+            value: Touche le haut-parleur. Quelle est cette émotion ?
+          - locale: en_US
+            value: Touch the speaker. What is this emotion?
         interface: listenThenTouchToSelect
         gameplay: findTheRightAnswers
         action:
@@ -145,6 +164,7 @@ exercises_payload:
             type: audio
             value: emotion_sound_adult_joy_hortense
         payload:
+          shuffle_choices: true
           choices:
             - value: emotion_picture_adult_joy_hortense
               type: image
@@ -156,7 +176,11 @@ exercises_payload:
             - value : emotion_picture_adult_angry_hortense
               type: image
 
-      - instructions: Touche le haut-parleur. Quelle est cette émotion ?
+      - instructions:
+          - locale: fr_FR
+            value: Touche le haut-parleur. Quelle est cette émotion ?
+          - locale: en_US
+            value: Touch the speaker. What is this emotion?
         interface: listenThenTouchToSelect
         gameplay: findTheRightAnswers
         action:
@@ -165,6 +189,7 @@ exercises_payload:
             type: audio
             value: emotion_sound_adult_fear_hortense
         payload:
+          shuffle_choices: true
           choices:
             - value: emotion_picture_adult_fear_hortense
               type: image
@@ -176,7 +201,11 @@ exercises_payload:
             - value: emotion_picture_adult_disgust_hortense
               type: image
 
-      - instructions: Touche le haut-parleur. Quelle est cette émotion ?
+      - instructions:
+          - locale: fr_FR
+            value: Touche le haut-parleur. Quelle est cette émotion ?
+          - locale: en_US
+            value: Touch the speaker. What is this emotion?
         interface: listenThenTouchToSelect
         gameplay: findTheRightAnswers
         action:
@@ -185,6 +214,7 @@ exercises_payload:
             type: audio
             value: emotion_sound_adult_sad_hortense
         payload:
+          shuffle_choices: true
           choices:
             - value: emotion_picture_adult_sad_hortense
               type: image
@@ -195,7 +225,11 @@ exercises_payload:
               type: image
             - value: emotion_sound_adult_joy_hortense
 
-      - instructions: Touche le haut-parleur. Quelle est cette émotion ?
+      - instructions:
+          - locale: fr_FR
+            value: Touche le haut-parleur. Quelle est cette émotion ?
+          - locale: en_US
+            value: Touch the speaker. What is this emotion?
         interface: listenThenTouchToSelect
         gameplay: findTheRightAnswers
         action:
@@ -204,6 +238,7 @@ exercises_payload:
             type: audio
             value: emotion_sound_adult_angry_hortense
         payload:
+          shuffle_choices: true
           choices:
             - value: emotion_picture_adult_angry_hortense
               type: image
@@ -215,7 +250,11 @@ exercises_payload:
             - value: emotion_picture_adult_sad_hortense
               type: image
 
-      - instructions: Touche le haut-parleur. Quelle est cette émotion ?
+      - instructions:
+          - locale: fr_FR
+            value: Touche le haut-parleur. Quelle est cette émotion ?
+          - locale: en_US
+            value: Touch the speaker. What is this emotion?
         interface: listenThenTouchToSelect
         gameplay: findTheRightAnswers
         action:
@@ -224,6 +263,7 @@ exercises_payload:
             type: audio
             value: emotion_sound_adult_disgust_hortense
         payload:
+          shuffle_choices: true
           choices:
             - value: emotion_picture_adult_disgust_hortense
               type: image
@@ -235,7 +275,11 @@ exercises_payload:
             - value: emotion_picture_adult_angry_hortense
               type: image
 
-      - instructions: Touche le haut-parleur. Quelle est cette émotion ?
+      - instructions:
+          - locale: fr_FR
+            value: Touche le haut-parleur. Quelle est cette émotion ?
+          - locale: en_US
+            value: Touch the speaker. What is this emotion?
         interface: listenThenTouchToSelect
         gameplay: findTheRightAnswers
         action:
@@ -244,6 +288,7 @@ exercises_payload:
             type: audio
             value: emotion_sound_adult_joy_hortense
         payload:
+          shuffle_choices: true
           choices:
             - value: emotion_picture_adult_joy_hortense
               type: image
@@ -255,7 +300,11 @@ exercises_payload:
             - value : emotion_picture_adult_angry_hortense
               type: image
 
-      - instructions: Touche le haut-parleur. Quelle est cette émotion ?
+      - instructions:
+          - locale: fr_FR
+            value: Touche le haut-parleur. Quelle est cette émotion ?
+          - locale: en_US
+            value: Touch the speaker. What is this emotion?
         interface: listenThenTouchToSelect
         gameplay: findTheRightAnswers
         action:
@@ -264,6 +313,7 @@ exercises_payload:
             type: audio
             value: emotion_sound_adult_fear_hortense
         payload:
+          shuffle_choices: true
           choices:
             - value: emotion_picture_adult_fear_hortense
               type: image
