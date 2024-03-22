@@ -101,7 +101,7 @@ extension l10n {
 
         static let imageUnknownError = LocalizedStringInterpolation("game_engine_kit.action_button_observe.image_unknown_error",
                                                                     bundle: GameEngineKitResources.bundle,
-                                                                    value: "❌\nImage not found:\n%s",
+                                                                    value: "❌\nImage not found:\n%1$@",
                                                                     comment: "ActionButtonObserve button label")
     }
 }
