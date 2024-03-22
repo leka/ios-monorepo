@@ -1,0 +1,78 @@
+{
+    "version": "1.0",
+    "sourceLanguage": "en",
+    "strings": {
+        "content_kit.activity_details_view.authors_section_title": {
+            "comment": "ActivityDetailsView 'authors' section title",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Authors"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Auteurs"
+                    }
+                }
+            }
+        },
+        "content_kit.activity_details_view.description_section_title": {
+            "comment": "ActivityDetailsView 'description' section title",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Description"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Description"
+                    }
+                }
+            }
+        },
+        "content_kit.activity_details_view.instructions_section_title": {
+            "comment": "ActivityDetailsView 'instructions' section title",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Instructions"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Instructions"
+                    }
+                }
+            }
+        },
+        "content_kit.activity_details_view.skills_section_title": {
+            "comment": "ActivityDetailsView 'skills' section title",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Skills"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Comp\u00e9tences"
+                    }
+                }
+            }
+        }
+    }
+}

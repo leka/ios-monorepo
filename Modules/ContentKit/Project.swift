@@ -20,7 +20,10 @@ let project = Project.module(
     dependencies: [
         .project(target: "LocalizationKit", path: Path("../../Modules/LocalizationKit")),
         .project(target: "LogKit", path: Path("../../Modules/LogKit")),
+        .project(target: "DesignKit", path: Path("../../Modules/DesignKit")),
         .external(name: "Version"),
         .external(name: "Yams"),
+        .external(name: "MarkdownUI"),
+        .external(name: "Fit"),
     ]
 )
