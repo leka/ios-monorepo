@@ -53,7 +53,6 @@ l10n:
       instructions: |
         - Encourager la personne accompagnée à observer attentivement l'image présentée, en prenant en compte à la fois le contexte et l'émotion du personnage.
         - Encourager la personne accompagnée à indiquer si le personnage se sent bien ou mal en appuyant respectivement soit sur le pouce en l'air soit sur le pouce en bas.
-        - Lorsque la réponse est correct, Leka lance un renforçateur.
 
   - locale: en_US
     details:
@@ -72,7 +71,6 @@ l10n:
       instructions: |
         - Encourage the care receiver to carefully observe the presented image, taking into account both the context and the character's emotion.
         - Encourage the care receiver to indicate whether the character feels good or bad by respectively pressing either the thumbs-up or thumbs-down button.
-        - When the response is correct, Leka triggers a reinforcement.
 
 exercises_payload:
   options:
@@ -82,14 +80,18 @@ exercises_payload:
   exercise_groups:
     - group:
 
-        - instructions: Regarde l'image puis touche la bonne réponse
+        - instructions:
+            - locale: fr_FR
+              value: Regarde l'image. Comment le personnage se sent-il ?
+            - locale: en_US
+              value: Look at the image. How does the character feel?
           interface: observeThenTouchToSelect
           gameplay: findTheRightAnswers
           action:
             type: ipad
             value:
               type: image
-              value: context_hugo_living room
+              value: context_hugo_living_room
           payload:
             shuffle_choices: true
             choices:
@@ -99,14 +101,18 @@ exercises_payload:
                 type: sfsymbol
                 isRightAnswer: true
 
-        - instructions: Regarde l'image puis touche la bonne réponse
+        - instructions:
+            - locale: fr_FR
+              value: Regarde l'image. Comment le personnage se sent-il ?
+            - locale: en_US
+              value: Look at the image. How does the character feel?
           interface: observeThenTouchToSelect
           gameplay: findTheRightAnswers
           action:
             type: ipad
             value:
               type: image
-              value: context_hugo_swimming pool
+              value: context_hugo_swimming_pool
           payload:
             shuffle_choices: true
             choices:
@@ -116,7 +122,11 @@ exercises_payload:
               - value: hand.thumbsdown
                 type: sfsymbol
 
-        - instructions: Regarde l'image puis touche la bonne réponse
+        - instructions:
+            - locale: fr_FR
+              value: Regarde l'image. Comment le personnage se sent-il ?
+            - locale: en_US
+              value: Look at the image. How does the character feel?
           interface: observeThenTouchToSelect
           gameplay: findTheRightAnswers
           action:
@@ -133,7 +143,11 @@ exercises_payload:
               - value: hand.thumbsdown
                 type: sfsymbol
 
-        - instructions: Regarde l'image puis touche la bonne réponse
+        - instructions:
+            - locale: fr_FR
+              value: Regarde l'image. Comment le personnage se sent-il ?
+            - locale: en_US
+              value: Look at the image. How does the character feel?
           interface: observeThenTouchToSelect
           gameplay: findTheRightAnswers
           action:
@@ -150,7 +164,11 @@ exercises_payload:
                 type: sfsymbol
                 isRightAnswer: true
 
-        - instructions: Regarde l'image puis touche la bonne réponse
+        - instructions:
+            - locale: fr_FR
+              value: Regarde l'image. Comment le personnage se sent-il ?
+            - locale: en_US
+              value: Look at the image. How does the character feel?
           interface: observeThenTouchToSelect
           gameplay: findTheRightAnswers
           action:
@@ -167,7 +185,11 @@ exercises_payload:
               - value: hand.thumbsdown
                 type: sfsymbol
 
-        - instructions: Regarde l'image puis touche la bonne réponse
+        - instructions:
+            - locale: fr_FR
+              value: Regarde l'image. Comment le personnage se sent-il ?
+            - locale: en_US
+              value: Look at the image. How does the character feel?
           interface: observeThenTouchToSelect
           gameplay: findTheRightAnswers
           action:
@@ -184,14 +206,18 @@ exercises_payload:
                 type: sfsymbol
                 isRightAnswer: true
 
-        - instructions: Regarde l'image puis touche la bonne réponse
+        - instructions:
+            - locale: fr_FR
+              value: Regarde l'image. Comment le personnage se sent-il ?
+            - locale: en_US
+              value: Look at the image. How does the character feel?
           interface: observeThenTouchToSelect
           gameplay: findTheRightAnswers
           action:
             type: ipad
             value:
               type: image
-              value: context_oscar_ice-cream seller
+              value: context_oscar_ice-cream_seller
           payload:
             shuffle_choices: true
             choices:
@@ -201,7 +227,11 @@ exercises_payload:
                 type: sfsymbol
                 isRightAnswer: true
 
-        - instructions: Regarde l'image puis touche la bonne réponse
+        - instructions:
+            - locale: fr_FR
+              value: Regarde l'image. Comment le personnage se sent-il ?
+            - locale: en_US
+              value: Look at the image. How does the character feel?
           interface: observeThenTouchToSelect
           gameplay: findTheRightAnswers
           action:
@@ -218,7 +248,11 @@ exercises_payload:
                 type: sfsymbol
                 isRightAnswer: true
 
-        - instructions: Regarde l'image puis touche la bonne réponse
+        - instructions:
+            - locale: fr_FR
+              value: Regarde l'image. Comment le personnage se sent-il ?
+            - locale: en_US
+              value: Look at the image. How does the character feel?
           interface: observeThenTouchToSelect
           gameplay: findTheRightAnswers
           action:
@@ -235,7 +269,11 @@ exercises_payload:
               - value: hand.thumbsdown
                 type: sfsymbol
 
-        - instructions: Regarde l'image puis touche la bonne réponse
+        - instructions:
+            - locale: fr_FR
+              value: Regarde l'image. Comment le personnage se sent-il ?
+            - locale: en_US
+              value: Look at the image. How does the character feel?
           interface: observeThenTouchToSelect
           gameplay: findTheRightAnswers
           action:
