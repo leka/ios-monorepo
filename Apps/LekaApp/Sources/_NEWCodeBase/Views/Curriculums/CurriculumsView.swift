@@ -12,8 +12,8 @@ struct CurriculumsView: View {
     // MARK: Internal
 
     var body: some View {
-        VStack {
-            ScrollView(showsIndicators: true) {
+        List {
+            Section {
                 HStack(alignment: .center, spacing: 30) {
                     Image(systemName: "graduationcap")
                         .resizable()
@@ -31,15 +31,12 @@ struct CurriculumsView: View {
 
                         Text(l10n.CurriculumsView.description)
                             .foregroundStyle(.secondary)
-
-                        Divider()
-                            .padding(.top)
                     }
-
-                    Spacer()
                 }
-                .padding(.horizontal)
-                .padding()
+            }
+
+            Section {
+                CurriculumListView()
             }
         }
     }
