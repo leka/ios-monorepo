@@ -2,7 +2,6 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
-import ContentKit
 import DesignKit
 import Fit
 import LocalizationKit
@@ -118,23 +117,23 @@ public struct ActivityDetailsView: View {
 
 extension l10n {
     enum ActivityDetailsView {
-        static let skillsSectionTitle = LocalizedString("game_engine_kit.activity_details_view.skills_section_title",
-                                                        bundle: GameEngineKitResources.bundle,
+        static let skillsSectionTitle = LocalizedString("content_kit.activity_details_view.skills_section_title",
+                                                        bundle: ContentKitResources.bundle,
                                                         value: "Skills",
                                                         comment: "ActivityDetailsView 'skills' section title")
 
-        static let authorsSectionTitle = LocalizedString("game_engine_kit.activity_details_view.authors_section_title",
-                                                         bundle: GameEngineKitResources.bundle,
+        static let authorsSectionTitle = LocalizedString("content_kit.activity_details_view.authors_section_title",
+                                                         bundle: ContentKitResources.bundle,
                                                          value: "Authors",
                                                          comment: "ActivityDetailsView 'authors' section title")
 
-        static let descriptionSectionTitle = LocalizedString("game_engine_kit.activity_details_view.description_section_title",
-                                                             bundle: GameEngineKitResources.bundle,
+        static let descriptionSectionTitle = LocalizedString("content_kit.activity_details_view.description_section_title",
+                                                             bundle: ContentKitResources.bundle,
                                                              value: "Description",
                                                              comment: "ActivityDetailsView 'description' section title")
 
-        static let instructionsSectionTitle = LocalizedString("game_engine_kit.activity_details_view.instructions_section_title",
-                                                              bundle: GameEngineKitResources.bundle,
+        static let instructionsSectionTitle = LocalizedString("content_kit.activity_details_view.instructions_section_title",
+                                                              bundle: ContentKitResources.bundle,
                                                               value: "Instructions",
                                                               comment: "ActivityDetailsView 'instructions' section title")
     }

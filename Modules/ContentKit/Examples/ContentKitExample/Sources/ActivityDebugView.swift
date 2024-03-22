@@ -37,9 +37,9 @@ struct RowView<T: StringProtocol>: View {
     }
 }
 
-// MARK: - ActivityDetailsView
+// MARK: - ActivityDebugView
 
-struct ActivityDetailsView: View {
+struct ActivityDebugView: View {
     // MARK: Internal
 
     let activity: Activity
@@ -153,6 +153,6 @@ struct ActivityDetailsView: View {
 
 #Preview {
     NavigationStack {
-        ActivityDetailsView(activity: Activity.mock)
+        ActivityDebugView(activity: Activity.mock)
     }
 }

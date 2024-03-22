@@ -4,6 +4,7 @@
 
 import SwiftUI
 
+// TODO: (@ladislas) move to UtilsKit
 public extension Text {
     init(markdown: String) {
         self.init(.init(markdown))
