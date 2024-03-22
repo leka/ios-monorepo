@@ -17,7 +17,7 @@ class CreateCaregiverViewModel: ObservableObject {
 
     // MARK: - Public functions
 
-    func createCaregiver(caregiver: Caregiver, onCreated: @escaping (Caregiver) -> Void, onError: @escaping (Error) -> Void) {
+    func createCaregiver(caregiver: Caregiver) {
         self.caregiverManager.createCaregiver(caregiver: caregiver)
             .sink(receiveCompletion: { completion in
                 switch completion {
@@ -25,10 +25,9 @@ class CreateCaregiverViewModel: ObservableObject {
                         print("Caregiver Creation successful.")
                     case let .failure(error):
                         print("Caregiver Creation failed with error: \(error)")
-                        onError(error)
                 }
-            }, receiveValue: { createdCaregiver in
-                onCreated(createdCaregiver)
+            }, receiveValue: { _ in
+                // Nothing to do
             })
             .store(in: &self.cancellables)
     }
@@ -43,16 +42,14 @@ class CreateCaregiverViewModel: ObservableObject {
 struct CreateCaregiverView: View {
     // MARK: Lifecycle
 
-    init(onClose: (() -> Void)? = nil, onCreated: ((Caregiver) -> Void)? = nil) {
+    init(onClose: (() -> Void)? = nil) {
         self.onClose = onClose
-        self.onCreated = onCreated
     }
 
     // MARK: Internal
 
     @Environment(\.dismiss) var dismiss
     var onClose: (() -> Void)?
-    var onCreated: ((Caregiver) -> Void)?
 
     var caregiverManager: CaregiverManager = .shared
 
@@ -92,16 +89,10 @@ struct CreateCaregiverView: View {
                     if self.newCaregiver.avatar.isEmpty {
                         self.newCaregiver.avatar = Avatars.categories.first!.avatars.randomElement()!
                     }
-                    self.viewModel.createCaregiver(caregiver: self.newCaregiver, onCreated: { createdCaregiver in
-                        self.newCaregiver = createdCaregiver
-                        withAnimation {
-                            self.action = .created
-                            self.dismiss()
-                        }
-                    }, onError: { error in
-                        // Handle error
-                        print(error.localizedDescription)
-                    })
+                    self.viewModel.createCaregiver(caregiver: self.newCaregiver)
+                    withAnimation {
+                        self.dismiss()
+                    }
                 }
                 .disabled(self.newCaregiver.firstName.isEmpty)
                 .buttonStyle(.borderedProminent)
@@ -113,40 +104,21 @@ struct CreateCaregiverView: View {
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 Button {
-                    self.action = .close
                     self.dismiss()
                 } label: {
                     Text(l10n.CarereceiverCreation.closeButtonLabel)
                 }
             }
         }
-        .onDisappear {
-            switch self.action {
-                case .close:
-                    self.onClose?()
-                case .created:
-                    // TODO: (@dev/team remove) tmp fix, remove on created in a future commit
-                    self.onClose?()
-                case .none:
-                    break
-            }
-
-            self.action = nil
-        }
+        .onDisappear { self.onClose?() }
     }
 
     // MARK: Private
-
-    private enum ActionType {
-        case close
-        case created
-    }
 
     @StateObject private var viewModel = CreateCaregiverViewModel()
 
     @State private var newCaregiver = Caregiver()
     @State private var isAvatarPickerPresented: Bool = false
-    @State private var action: ActionType?
     @State private var cancellables = Set<AnyCancellable>()
 
     private var avatarPickerButton: some View {
@@ -200,8 +172,7 @@ extension l10n {
     Text("Preview")
         .sheet(isPresented: .constant(true)) {
             NavigationStack {
-                CreateCaregiverView(onClose: { print("Creation canceled") },
-                                    onCreated: { print("Caregiver \($0.firstName) created") })
+                CreateCaregiverView()
             }
         }
 }

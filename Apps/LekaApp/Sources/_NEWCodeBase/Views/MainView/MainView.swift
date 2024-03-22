@@ -154,10 +154,8 @@ struct MainView: View {
                         EditCaregiverView(caregiver: self.caregiverManagerViewModel.currentCaregiver!)
                             .navigationBarTitleDisplayMode(.inline)
                     case .createCaregiver:
-                        CreateCaregiverView(onCreated: { caregiver in
-                            self.caregiverManager.setCurrentCaregiver(to: caregiver)
-                        })
-                        .navigationBarTitleDisplayMode(.inline)
+                        CreateCaregiverView()
+                            .navigationBarTitleDisplayMode(.inline)
                     case .caregiverPicker:
                         CaregiverPicker()
                             .navigationBarTitleDisplayMode(.inline)
