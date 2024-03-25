@@ -10,7 +10,8 @@ struct ContentKitExample: App {
     var body: some Scene {
         WindowGroup {
             NavigationStack {
-                ActivityListView()
+//                ActivityListView()
+                CurriculumListView()
             }
         }
     }

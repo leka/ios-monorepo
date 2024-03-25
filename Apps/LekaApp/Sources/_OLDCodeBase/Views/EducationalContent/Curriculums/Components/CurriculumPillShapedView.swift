@@ -10,7 +10,7 @@ struct CurriculumPillShapedView: View {
 
     @EnvironmentObject var metrics: UIMetrics
 
-    var curriculum: Curriculum
+    var curriculum: CurriculumDeprecated
     var icon: String
 
     var body: some View {

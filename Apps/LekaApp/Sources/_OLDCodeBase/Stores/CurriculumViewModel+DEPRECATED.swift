@@ -9,11 +9,11 @@ class CurriculumViewModelDeprecated: ObservableObject, YamlFileDecodable {
     // MARK: - CurriculumList Published properties
 
     @Published var currentCurriculumCategory: CurriculumCategories = .emotionRecognition
-    @Published var availableCurriculums: [Curriculum] = []
+    @Published var availableCurriculums: [CurriculumDeprecated] = []
 
     // MARK: - Current || selected Curriculum Published properties
 
-    @Published var currentCurriculum = Curriculum()
+    @Published var currentCurriculum = CurriculumDeprecated()
     @Published var currentCurriculumSelectedActivityID: UUID?
     @Published var selectedCurriculumHeaderTitle: String = ""
     @Published var selectedCurriculumRank: String = ""
@@ -37,12 +37,12 @@ class CurriculumViewModelDeprecated: ObservableObject, YamlFileDecodable {
 
     // MARK: - CurriculumList related Work
 
-    func getCurriculumList(category: CurriculumCategories) -> CurriculumList {
+    func getCurriculumList(category: CurriculumCategories) -> CurriculumListDeprecated {
         do {
-            return try decodeYamlFile(withName: category.rawValue, toType: CurriculumList.self)
+            return try decodeYamlFile(withName: category.rawValue, toType: CurriculumListDeprecated.self)
         } catch {
             print("Failed to decode Yaml file with error:", error)
-            return CurriculumList()
+            return CurriculumListDeprecated()
         }
     }
 
@@ -53,8 +53,8 @@ class CurriculumViewModelDeprecated: ObservableObject, YamlFileDecodable {
         }
     }
 
-    func getCurriculumsFrom(category: CurriculumCategories) -> [Curriculum] {
-        var curriculums: [Curriculum] = []
+    func getCurriculumsFrom(category: CurriculumCategories) -> [CurriculumDeprecated] {
+        var curriculums: [CurriculumDeprecated] = []
         for item in self.getCurriculumList(category: category).curriculums {
             curriculums.append(self.getCurriculum(item))
         }
@@ -63,12 +63,12 @@ class CurriculumViewModelDeprecated: ObservableObject, YamlFileDecodable {
 
     // MARK: - Curriculum-Specific Work
 
-    func getCurriculum(_ title: String) -> Curriculum {
+    func getCurriculum(_ title: String) -> CurriculumDeprecated {
         do {
-            return try decodeYamlFile(withName: title, toType: Curriculum.self)
+            return try decodeYamlFile(withName: title, toType: CurriculumDeprecated.self)
         } catch {
             print("Failed to decode Yaml file with error:", error)
-            return Curriculum()
+            return CurriculumDeprecated()
         }
     }
 
@@ -76,7 +76,7 @@ class CurriculumViewModelDeprecated: ObservableObject, YamlFileDecodable {
         "\(self.getCurriculumList(category: self.currentCurriculumCategory).sectionTitle.localized()) \(String(describing: (self.selectedCurriculum ?? 0) + 1))/\(self.availableCurriculums.count)"
     }
 
-    func setCurriculumIcon(for curriculum: Curriculum) -> String {
+    func setCurriculumIcon(for curriculum: CurriculumDeprecated) -> String {
         switch curriculum.id {
             case "ec6fca8d-ac0f-44f8-b641-c9a96f9195c5": "parcours_Emotion_Recognition_Pictures"
             case "7859be5a-9fa5-11ec-b909-0242ac120002": "parcours_Emotion_Recognition_Images"

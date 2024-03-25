@@ -53,7 +53,7 @@ struct CurriculumListViewDeprecated: View {
 
     @ViewBuilder
     private func allCurriculums(category: CurriculumCategories) -> some View {
-        let list: [Curriculum] = self.curriculumVM.getCurriculumsFrom(category: category)
+        let list: [CurriculumDeprecated] = self.curriculumVM.getCurriculumsFrom(category: category)
         ForEach(list.enumerated().map { $0 }, id: \.element.id) { index, item in
             Button {
                 self.curriculumVM.currentCurriculumCategory = category

@@ -4,9 +4,9 @@
 
 import Foundation
 
-// MARK: - CurriculumList
+// MARK: - CurriculumListDeprecated
 
-struct CurriculumList: Codable {
+struct CurriculumListDeprecated: Codable {
     // MARK: Lifecycle
 
     init(
@@ -28,9 +28,9 @@ struct CurriculumList: Codable {
     var curriculums: [String]
 }
 
-// MARK: - Curriculum
+// MARK: - CurriculumDeprecated
 
-struct Curriculum: Codable, Identifiable {
+struct CurriculumDeprecated: Codable, Identifiable {
     // MARK: Lifecycle
 
     init(

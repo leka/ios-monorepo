@@ -38,6 +38,33 @@ public enum ContentKit {
         return activities.sorted { $0.name < $1.name }
     }
 
+    public static func listSampleCurriculums() -> [Curriculum]? {
+        let bundle = Bundle.module
+        let files = bundle.paths(forResourcesOfType: "curriculum.yml", inDirectory: nil)
+
+        var curriculums: [Curriculum] = []
+
+        for file in files {
+            let data = try? String(contentsOfFile: file, encoding: .utf8)
+
+            guard let data else {
+                log.error("Error reading file: \(file)")
+                continue
+            }
+
+            let curriculum = try? YAMLDecoder().decode(Curriculum.self, from: data)
+
+            guard let curriculum else {
+                log.error("Error decoding file: \(file)")
+                continue
+            }
+
+            curriculums.append(curriculum)
+        }
+
+        return curriculums.sorted { $0.name < $1.name }
+    }
+
     public static func listImagesPNG() -> [String] {
         let bundle = Bundle.module
         let files = bundle.paths(forResourcesOfType: "png", inDirectory: nil)

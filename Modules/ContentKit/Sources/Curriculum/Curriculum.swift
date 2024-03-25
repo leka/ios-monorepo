@@ -5,22 +5,11 @@
 import Foundation
 import LocalizationKit
 import UIKit
-import Yams
 
-// MARK: - Activity
+// MARK: - Curriculum
 
-// swiftlint:disable nesting
-
-public struct Activity: Decodable, Identifiable {
+public struct Curriculum: Decodable, Identifiable {
     // MARK: Lifecycle
-
-    public init?(id: String) {
-        if let activity = ContentKit.listSampleActivities()?.first(where: { $0.id == id }) {
-            self = activity
-        } else {
-            return nil
-        }
-    }
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
@@ -34,14 +23,17 @@ public struct Activity: Decodable, Identifiable {
         self.authors = try container.decode([String].self, forKey: .authors)
         self.skills = try container.decode([String].self, forKey: .skills)
         self.hmi = try container.decode([String].self, forKey: .hmi)
-        self.types = try container.decode([String].self, forKey: .types)
         self.tags = try container.decode([String].self, forKey: .tags)
 
         let localeStrings = try container.decode([String].self, forKey: .locales)
         self.locales = localeStrings.compactMap { Locale(identifier: $0) }
         self.l10n = try container.decode([LocalizedDetails].self, forKey: .l10n)
 
-        self.exercisePayload = try container.decode(ExercisesPayload.self, forKey: .exercicesPayload)
+        self.activities = try container.decode([String].self, forKey: .activities).compactMap {
+            $0.split(separator: "-")
+                .last?
+                .trimmingCharacters(in: .whitespaces)
+        }
     }
 
     // MARK: Public
@@ -55,13 +47,12 @@ public struct Activity: Decodable, Identifiable {
     public let authors: [String] // TODO: (@ladislas) - implement authors
     public let skills: [String] // TODO: (@ladislas) - implement skills
     public let hmi: [String] // TODO: (@ladislas) - implement hmi
-    public let types: [String] // TODO: (@ladislas) - implement types
     public let tags: [String] // TODO: (@ladislas) - implement tags
 
     public let locales: [Locale]
     public let l10n: [LocalizedDetails]
 
-    public var exercisePayload: ExercisesPayload
+    public let activities: [String] // TODO: (@ladislas) - implement activities
 
     public var id: String { self.uuid }
     public var languages: [Locale.LanguageCode] { self.locales.compactMap(\.language.languageCode) }
@@ -90,26 +81,25 @@ public struct Activity: Decodable, Identifiable {
         case authors
         case skills
         case hmi
-        case types
         case tags
         case locales
         case l10n
-        case exercicesPayload = "exercises_payload"
+        case activities
     }
 }
 
-// MARK: Activity.Status
+// MARK: Curriculum.Status
 
-public extension Activity {
+public extension Curriculum {
     enum Status: String, Decodable {
         case draft
         case published
     }
 }
 
-// MARK: Activity.LocalizedDetails
+// MARK: Curriculum.LocalizedDetails
 
-public extension Activity {
+public extension Curriculum {
     struct LocalizedDetails: Decodable {
         // MARK: Lifecycle
 
@@ -119,7 +109,7 @@ public extension Activity {
             let localeString = try container.decode(String.self, forKey: .locale)
             self.locale = Locale(identifier: localeString)
 
-            self.details = try container.decode(Activity.Details.self, forKey: .details)
+            self.details = try container.decode(Curriculum.Details.self, forKey: .details)
         }
 
         // MARK: Public
@@ -138,22 +128,22 @@ public extension Activity {
     }
 }
 
-// MARK: Activity.Details
+// MARK: Curriculum.Details
 
-public extension Activity {
+public extension Curriculum {
     struct Details: Decodable {
         // MARK: Public
 
         public let icon: String
         public let title: String
         public let subtitle: String?
-        public let shortDescription: String
+        public let abstract: String
         public let description: String
-        public let instructions: String
 
+        // TODO: (@ladislas) use string path instead
         public var iconImage: UIImage {
-            UIImage(named: "\(self.icon).activity.icon.png", in: .module, with: nil)
-                ?? UIImage(named: "placeholder.activity.icon.png", in: .module, with: nil)!
+            UIImage(named: "\(self.icon).curriculum.icon.png", in: .module, with: nil)
+                ?? UIImage(named: "placeholder.curriculum.icon.png", in: .module, with: nil)!
         }
 
         // MARK: Private
@@ -162,79 +152,24 @@ public extension Activity {
             case icon
             case title
             case subtitle
-            case shortDescription = "short_description"
+            case abstract
             case description
-            case instructions
         }
     }
 }
 
-// MARK: Activity.ExercisesPayload
+// MARK: Hashable
 
-public extension Activity {
-    struct ExercisesPayload: Decodable {
-        // MARK: Public
-
-        public let options: Options
-        public var exerciseGroups: [ExerciseGroup]
-
-        // MARK: Private
-
-        private enum CodingKeys: String, CodingKey {
-            case options
-            case exerciseGroups = "exercise_groups"
-        }
-    }
-}
-
-public extension Activity.ExercisesPayload {
-    struct Options: Decodable {
-        // MARK: Public
-
-        public let shuffleExercises: Bool
-        public let shuffleGroups: Bool
-
-        // MARK: Private
-
-        private enum CodingKeys: String, CodingKey {
-            case shuffleExercises = "shuffle_exercises"
-            case shuffleGroups = "shuffle_groups"
-        }
-    }
-
-    struct ExerciseGroup: Decodable {
-        // MARK: Lifecycle
-
-        public init(exercises: [Exercise]) {
-            self.exercises = exercises
-        }
-
-        // MARK: Public
-
-        public let exercises: [Exercise]
-
-        // MARK: Private
-
-        private enum CodingKeys: String, CodingKey {
-            case exercises = "group"
-        }
-    }
-}
-
-// MARK: - Activity + Hashable
-
-extension Activity: Hashable {
+extension Curriculum: Hashable {
     public func hash(into hasher: inout Hasher) {
-        hasher.combine(self.id)
+        hasher.combine(self.uuid)
     }
 }
 
-// MARK: - Activity + Equatable
+// MARK: Equatable
 
-extension Activity: Equatable {
-    public static func == (lhs: Activity, rhs: Activity) -> Bool {
+extension Curriculum: Equatable {
+    public static func == (lhs: Curriculum, rhs: Curriculum) -> Bool {
         lhs.uuid == rhs.uuid
     }
 }
-
-// swiftlint:enable nesting
