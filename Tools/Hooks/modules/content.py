@@ -190,3 +190,21 @@ def find_empty_string_values(data, path=None):
             keys_with_empty_strings += find_empty_string_values(item, sub_path)
 
     return keys_with_empty_strings
+
+
+def find_missing_activities(data):
+    """Find missing activities in the content directory"""
+    activity_list = data["activities"]
+    missing_activities = []
+
+    search_path = Path(CONTENTKIT_DIRECTORY)
+
+    for activity in activity_list:
+        activity_filenmae = activity + ".activity.yml"
+        matching_files = list(search_path.rglob(activity_filenmae))
+        print(f"Matching files: {matching_files}")
+        if not matching_files:
+            print(f"Activity {activity_filenmae} not found")
+            missing_activities.append(activity)
+
+    return missing_activities
