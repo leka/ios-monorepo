@@ -4,8 +4,8 @@
 
 version: 1.0.0
 
-uuid: F617D5D9F9D045A0B3D3FFE04FA85105
-name: categorization-sort_2_images_through_functional_category
+uuid: DB5A88B225644ABC997B86FD0E025443
+name: categorization_sort_through_functional_category_with_an_intruder
 
 status: published
 
@@ -38,7 +38,7 @@ l10n:
     details:
       icon: categorization
 
-      title: Trier par catégorie fonctionnelle
+      title: Trier par catégorie fonctionnelle avec un intrus
       subtitle: null
 
       short_description: |
@@ -48,15 +48,15 @@ l10n:
         La personne accompagnée doit associer des images d'objets à des pièces de la maison
 
       instructions: |
-        - Sur l'écran, il y a deux images de pièces (chambre, salle de bain ou cuisine) et deux images d'objets.
-        - Encourager la personne accompagnée à glisser puis déposer les objets dans les bonnes pièces de la maison.
-        - Lorsque la réponse est correct, Leka lance un renforçateur.
+        - Sur l'écran, il y a une image d'une pièce et trois images d'objets, dont un intrus qui ne correspond à aucune pièce.
+        - Encouragez la personne accompagnée à glisser puis à déposer les bons objets dans les bonnes pièces de la maison.
+        - Lorsque la réponse est correcte, Leka lance un renforçateur.
 
   - locale: en_US
     details:
       icon: categorization
 
-      title: Sort through functional category
+      title: Sort through functional category with an intruder
       subtitle: null
 
       short_description: |
@@ -66,8 +66,8 @@ l10n:
         The care receiver has to associate several objects with rooms
 
       instructions: |
-        - On the screen, there are two images of rooms (bedroom, bathroom or kitchen) and two images of objects.
-        - Encourage the care receiver to drag and then drop the objects into the correct rooms of the house.
+        - On the screen, there are one image of a room and three object's images, including an intruder that does not go into the room.
+        - Encourage the care receiver to drag and then drop the correct objects into the correct rooms of the house.
         - When the answer is correct, Leka launches a reinforcer.
 
 exercises_payload:
@@ -79,32 +79,9 @@ exercises_payload:
     - group:
         - instructions:
             - locale: fr_FR
-              value: Mets les images dans les bonnes pièces
+              value: Mets les bonnes images dans la pièce
             - locale: en_US
-              value: Group the objects with the places
-          interface: dragAndDropIntoZones
-          gameplay: findTheRightAnswers
-          payload:
-            shuffle_choices: true
-            dropZoneA:
-              value: kitchen
-              type: image
-            dropZoneB:
-              value: bathroom
-              type: image
-            choices:
-              - value: towel
-                type: image
-                dropZone: zoneB
-              - value : table_cutlery
-                type: image
-                dropZone: zoneA
-
-        - instructions:
-            - locale: fr_FR
-              value: Mets les images dans les bonnes pièces
-            - locale: en_US
-              value: Group the objects with the places
+              value: Group the objects with the place
           interface: dragAndDropIntoZones
           gameplay: findTheRightAnswers
           payload:
@@ -112,197 +89,232 @@ exercises_payload:
             dropZoneA:
               value: bedroom
               type: image
-            dropZoneB:
-              value: bathroom
-              type: image
             choices:
-              - value: soap
+              - value: cooking_pot
                 type: image
-                dropZone: zoneB
-              - value : toy
+              - value: toy
+                type: image
+                dropZone: zoneA
+              - value: bed
                 type: image
                 dropZone: zoneA
 
         - instructions:
             - locale: fr_FR
-              value: Mets les images dans les bonnes pièces
+              value: Mets les bonnes images dans la pièce
             - locale: en_US
-              value: Group the objects with the places
+              value: Group the objects with the place
           interface: dragAndDropIntoZones
           gameplay: findTheRightAnswers
           payload:
             shuffle_choices: true
             dropZoneA:
               value: kitchen
-              type: image
-            dropZoneB:
-              value: bathroom
-              type: image
-            choices:
-              - value: towel
-                type: image
-                dropZone: zoneB
-              - value : vegetables_basket
-                type: image
-                dropZone: zoneA
-
-        - instructions:
-            - locale: fr_FR
-              value: Mets les images dans les bonnes pièces
-            - locale: en_US
-              value: Group the objects with the places
-          interface: dragAndDropIntoZones
-          gameplay: findTheRightAnswers
-          payload:
-            shuffle_choices: true
-            dropZoneA:
-              value: kitchen
-              type: image
-            dropZoneB:
-              value: bedroom
               type: image
             choices:
               - value: toy
                 type: image
-                dropZone: zoneB
-              - value : vegetables_basket
+              - value: table_cutlery
+                type: image
+                dropZone: zoneA
+              - value: cooking_pot
                 type: image
                 dropZone: zoneA
 
         - instructions:
             - locale: fr_FR
-              value: Mets les images dans les bonnes pièces
+              value: Mets les bonnes images dans la pièce
             - locale: en_US
-              value: Group the objects with the places
+              value: Group the objects with the place
           interface: dragAndDropIntoZones
           gameplay: findTheRightAnswers
           payload:
             shuffle_choices: true
             dropZoneA:
-              value: kitchen
-              type: image
-            dropZoneB:
-              value: bathroom
-              type: image
-            choices:
-              - value: toothbrush
-                type: image
-                dropZone: zoneB
-              - value : cooking_pot
-                type: image
-                dropZone: zoneA
-
-        - instructions:
-            - locale: fr_FR
-              value: Mets les images dans les bonnes pièces
-            - locale: en_US
-              value: Group the objects with the places
-          interface: dragAndDropIntoZones
-          gameplay: findTheRightAnswers
-          payload:
-            shuffle_choices: true
-            dropZoneA:
-              value: bedroom
-              type: image
-            dropZoneB:
-              value: kitchen
-              type: image
-            choices:
-              - value: pillow
-                type: image
-                dropZone: zoneA
-              - value : table_cutlery
-                type: image
-                dropZone: zoneB
-
-        - instructions:
-            - locale: fr_FR
-              value: Mets les images dans les bonnes pièces
-            - locale: en_US
-              value: Group the objects with the places
-          interface: dragAndDropIntoZones
-          gameplay: findTheRightAnswers
-          payload:
-            shuffle_choices: true
-            dropZoneA:
-              value: bedroom
-              type: image
-            dropZoneB:
-              value: bathroom
-              type: image
-            choices:
-              - value: soap
-                type: image
-                dropZone: zoneB
-              - value : bed
-                type: image
-                dropZone: zoneA
-
-        - instructions:
-            - locale: fr_FR
-              value: Mets les images dans les bonnes pièces
-            - locale: en_US
-              value: Group the objects with the places
-          interface: dragAndDropIntoZones
-          gameplay: findTheRightAnswers
-          payload:
-            shuffle_choices: true
-            dropZoneA:
-              value: bedroom
-              type: image
-            dropZoneB:
-              value: bathroom
-              type: image
-            choices:
-              - value: toothbrush
-                type: image
-                dropZone: zoneB
-              - value : toy
-                type: image
-                dropZone: zoneA
-
-        - instructions:
-            - locale: fr_FR
-              value: Mets les images dans les bonnes pièces
-            - locale: en_US
-              value: Group the objects with the places
-          interface: dragAndDropIntoZones
-          gameplay: findTheRightAnswers
-          payload:
-            shuffle_choices: true
-            dropZoneA:
-              value: kitchen
-              type: image
-            dropZoneB:
-              value: bathroom
-              type: image
-            choices:
-              - value: soap
-                type: image
-                dropZone: zoneB
-              - value : cooking_pot
-                type: image
-                dropZone: zoneA
-
-        - instructions:
-            - locale: fr_FR
-              value: Mets les images dans les bonnes pièces
-            - locale: en_US
-              value: Group the objects with the places
-          interface: dragAndDropIntoZones
-          gameplay: findTheRightAnswers
-          payload:
-            shuffle_choices: true
-            dropZoneA:
-              value: bathroom
-              type: image
-            dropZoneB:
               value: bedroom
               type: image
             choices:
               - value: towel
                 type: image
-                dropZone: zoneA
-              - value : toy
+              - value: pillow
                 type: image
-                dropZone: zoneB
+                dropZone: zoneA
+              - value: bed
+                type: image
+                dropZone: zoneA
+
+        - instructions:
+            - locale: fr_FR
+              value: Mets les bonnes images dans la pièce
+            - locale: en_US
+              value: Group the objects with the place
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            dropZoneA:
+              value: bathroom
+              type: image
+            choices:
+              - value: toy
+                type: image
+              - value: toothbrush
+                type: image
+                dropZone: zoneA
+              - value: soap
+                type: image
+                dropZone: zoneA
+
+        - instructions:
+            - locale: fr_FR
+              value: Mets les bonnes images dans la pièce
+            - locale: en_US
+              value: Group the objects with the place
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            dropZoneA:
+              value: kitchen
+              type: image
+            choices:
+              - value: vegetables_basket
+                type: image
+              - value: table_cutlery
+                type: image
+                dropZone: zoneA
+              - value: soap
+                type: image
+                dropZone: zoneA
+
+        - instructions:
+            - locale: fr_FR
+              value: Mets les bonnes images dans la pièce
+            - locale: en_US
+              value: Group the objects with the place
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            dropZoneA:
+              value: kitchen
+              type: image
+            choices:
+              - value: toy
+                type: image
+              - value: vegetables_basket
+                type: image
+                dropZone: zoneA
+              - value: table_cutlery
+                type: image
+                dropZone: zoneA
+
+        - instructions:
+            - locale: fr_FR
+              value: Mets les bonnes images dans la pièce
+            - locale: en_US
+              value: Group the objects with the place
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            dropZoneA:
+              value: bedroom
+              type: image
+            choices:
+              - value: towel
+                type: image
+              - value: toy
+                type: image
+                dropZone: zoneA
+              - value: bed
+                type: image
+                dropZone: zoneA
+
+        - instructions:
+            - locale: fr_FR
+              value: Mets les bonnes images dans la pièce
+            - locale: en_US
+              value: Group the objects with the place
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            dropZoneA:
+              value: kitchen
+              type: image
+            choices:
+              - value: soap
+                type: image
+              - value: table_cutlery
+                type: image
+                dropZone: zoneA
+              - value: cooking_pot
+                type: image
+                dropZone: zoneA
+
+        - instructions:
+            - locale: fr_FR
+              value: Mets les bonnes images dans la pièce
+            - locale: en_US
+              value: Group the objects with the place
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            dropZoneA:
+              value: bedroom
+              type: image
+            choices:
+              - value: soap
+                type: image
+              - value: pillow
+                type: image
+                dropZone: zoneA
+              - value: toy
+                type: image
+                dropZone: zoneA
+
+        - instructions:
+            - locale: fr_FR
+              value: Mets les bonnes images dans la pièce
+            - locale: en_US
+              value: Group the objects with the place
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            dropZoneA:
+              value: bedroom
+              type: image
+            choices:
+              - value: towel
+                type: image
+              - value: toy
+                type: image
+                dropZone: zoneA
+              - value: bed
+                type: image
+                dropZone: zoneA
+
+        - instructions:
+            - locale: fr_FR
+              value: Mets les bonnes images dans la pièce
+            - locale: en_US
+              value: Group the objects with the place
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            dropZoneA:
+              value: kitchen
+              type: image
+            choices:
+              - value: towel
+                type: image
+              - value: vegetables_basket
+                type: image
+                dropZone: zoneA
+              - value: table_cutlery
+                type: image
+                dropZone: zoneA
