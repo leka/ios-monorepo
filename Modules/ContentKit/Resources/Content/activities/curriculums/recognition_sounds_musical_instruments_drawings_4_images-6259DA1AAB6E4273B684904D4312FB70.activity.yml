@@ -4,8 +4,8 @@
 
 version: 1.0.0
 
-uuid: BA0F2146BD5A420095F82A4C859D0EE8
-name: musical_instruments_recognition_sounds_3
+uuid: 6259DA1AAB6E4273B684904D4312FB70
+name: recognition_sounds_musical_instruments_drawings_4_images
 
 created_at: "2024-03-04T18:07:12.519229"
 last_edited_at: "2024-03-12T15:30:51.722290"
@@ -37,7 +37,7 @@ l10n:
     details:
       icon:
 
-      title: Reconnaitre les sons des instruments de musique avec 3 images
+      title: Reconnaitre les sons des instruments de musique avec 4 images
       subtitle: null
 
       short_description: |
@@ -55,7 +55,7 @@ l10n:
     details:
       icon:
 
-      title: Recognize musical instruments sounds with 3 images
+      title: Recognize musical instruments sounds with 4 images
       subtitle: null
 
       short_description: |
@@ -95,6 +95,8 @@ exercises_payload:
               isRightAnswer: true
             - value: pictograms-objects-musical_instrument-drummer_brown-0139
               type: image
+            - value: pictograms-objects-musical_instrument-flute_brown-0136
+              type: image
             - value: pictograms-objects-musical_instrument-piano_gray-0138
               type: image
 
@@ -120,6 +122,8 @@ exercises_payload:
               type: image
             - value: pictograms-objects-musical_instrument-guitar_brown-0134
               type: image
+            - value: pictograms-objects-musical_instrument-saxophone_yellow-013C
+              type: image
 
       - instructions:
           - locale: fr_FR
@@ -142,6 +146,8 @@ exercises_payload:
             - value: pictograms-objects-musical_instrument-guitar_brown-0134
               type: image
             - value: pictograms-objects-musical_instrument-harp_brown-0135
+              type: image
+            - value: pictograms-objects-musical_instrument-drum
               type: image
 
       - instructions:
@@ -166,6 +172,8 @@ exercises_payload:
               type: image
             - value: pictograms-objects-musical_instrument-piano_gray-0138
               type: image
+            - value: pictograms-objects-musical_instrument-flute_brown-0136
+              type: image
 
       - instructions:
           - locale: fr_FR
@@ -188,6 +196,8 @@ exercises_payload:
             - value: pictograms-objects-musical_instrument-piano_gray-0138
               type: image
             - value: pictograms-objects-musical_instrument-violin_brown-013D
+              type: image
+            - value: pictograms-objects-musical_instrument-xylophone_brown-0137
               type: image
 
       - instructions:
@@ -212,6 +222,8 @@ exercises_payload:
               type: image
             - value: pictograms-objects-musical_instrument-xylophone_brown-0137
               type: image
+            - value: pictograms-objects-musical_instrument-drum
+              type: image
 
       - instructions:
           - locale: fr_FR
@@ -233,8 +245,11 @@ exercises_payload:
               isRightAnswer: true
             - value: pictograms-objects-musical_instrument-violin_brown-013D
               type: image
+            - value: pictograms-objects-musical_instrument-drum
+              type: image
             - value: pictograms-objects-musical_instrument-flute_brown-0136
               type: image
+
 
       - instructions:
           - locale: fr_FR
@@ -254,7 +269,9 @@ exercises_payload:
             - value: pictograms-objects-musical_instrument-violin_brown-013D
               type: image
               isRightAnswer: true
-            - value: pictograms-objects-musical_instrument-xylophone_brown-0137
+            - value: pictograms-objects-musical_instrument-guitar_brown-0134
+              type: image
+            - value: pictograms-objects-musical_instrument-drum
               type: image
             - value: pictograms-objects-musical_instrument-piano_gray-0138
               type: image
@@ -277,9 +294,11 @@ exercises_payload:
             - value: pictograms-objects-musical_instrument-xylophone_brown-0137
               type: image
               isRightAnswer: true
-            - value: pictograms-objects-musical_instrument-violin_brown-013D
+            - value: pictograms-objects-musical_instrument-drum
               type: image
-            - value: pictograms-objects-musical_instrument-guitar_brown-0134
+            - value: pictograms-objects-musical_instrument-piano_gray-0138
+              type: image
+            - value: pictograms-objects-musical_instrument-accordion_orange-013A
               type: image
 
       - instructions:
@@ -304,3 +323,6 @@ exercises_payload:
               type: image
             - value: pictograms-objects-musical_instrument-piano_gray-0138
               type: image
+            - value: pictograms-objects-musical_instrument-saxophone_yellow-013C
+              type: image
+

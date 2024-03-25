@@ -4,8 +4,8 @@
 
 version: 1.0.0
 
-uuid: 94C14E6AA18E4FCA995B00B91103FA79
-name: musical_instruments_recognition_sounds_5
+uuid: 1032EA5E0C3D421F8AC806CAA8897D97
+name: recognition_sounds_musical_instruments_drawings_2_images
 
 created_at: "2024-03-04T18:07:12.519229"
 last_edited_at: "2024-03-12T15:30:51.722290"
@@ -19,7 +19,7 @@ skills:
   - sensory_interaction
 
 tags:
-  - musical_instruments
+  - musical instruments
   - sounds
 
 hmi:
@@ -37,7 +37,7 @@ l10n:
     details:
       icon:
 
-      title: Reconnaitre les sons des instruments de musique avec 5 images
+      title: Reconnaitre les sons des instruments de musique avec 2 images
       subtitle: null
 
       short_description: |
@@ -55,7 +55,7 @@ l10n:
     details:
       icon:
 
-      title: Recognize musical instruments sounds with 5 images
+      title: Recognize musical instruments sounds with 2 images
       subtitle: null
 
       short_description: |
@@ -95,12 +95,6 @@ exercises_payload:
               isRightAnswer: true
             - value: pictograms-objects-musical_instrument-drummer_brown-0139
               type: image
-            - value: pictograms-objects-musical_instrument-flute_brown-0136
-              type: image
-            - value: pictograms-objects-musical_instrument-piano_gray-0138
-              type: image
-            - value: pictograms-objects-musical_instrument-guitar_brown-0134
-              type: image
 
       - instructions:
           - locale: fr_FR
@@ -121,12 +115,6 @@ exercises_payload:
               type: image
               isRightAnswer: true
             - value: pictograms-objects-musical_instrument-flute_brown-0136
-              type: image
-            - value: pictograms-objects-musical_instrument-guitar_brown-0134
-              type: image
-            - value: pictograms-objects-musical_instrument-saxophone_yellow-013C
-              type: image
-            - value: pictograms-objects-musical_instrument-piano_gray-0138
               type: image
 
       - instructions:
@@ -149,12 +137,6 @@ exercises_payload:
               isRightAnswer: true
             - value: pictograms-objects-musical_instrument-guitar_brown-0134
               type: image
-            - value: pictograms-objects-musical_instrument-harp_brown-0135
-              type: image
-            - value: pictograms-objects-musical_instrument-drum
-              type: image
-            - value: pictograms-objects-musical_instrument-accordion_orange-013A
-              type: image
 
       - instructions:
           - locale: fr_FR
@@ -175,12 +157,6 @@ exercises_payload:
               type: image
               isRightAnswer: true
             - value: pictograms-objects-musical_instrument-harp_brown-0135
-              type: image
-            - value: pictograms-objects-musical_instrument-piano_gray-0138
-              type: image
-            - value: pictograms-objects-musical_instrument-flute_brown-0136
-              type: image
-            - value: pictograms-objects-musical_instrument-violin_brown-013D
               type: image
 
       - instructions:
@@ -203,12 +179,6 @@ exercises_payload:
               isRightAnswer: true
             - value: pictograms-objects-musical_instrument-piano_gray-0138
               type: image
-            - value: pictograms-objects-musical_instrument-violin_brown-013D
-              type: image
-            - value: pictograms-objects-musical_instrument-xylophone_brown-0137
-              type: image
-            - value: pictograms-objects-musical_instrument-guitar_brown-0134
-              type: image
 
       - instructions:
           - locale: fr_FR
@@ -229,12 +199,6 @@ exercises_payload:
               type: image
               isRightAnswer: true
             - value: pictograms-objects-musical_instrument-saxophone_yellow-013C
-              type: image
-            - value: pictograms-objects-musical_instrument-xylophone_brown-0137
-              type: image
-            - value: pictograms-objects-musical_instrument-drum
-              type: image
-            - value: pictograms-objects-musical_instrument-accordion_orange-013A
               type: image
 
       - instructions:
@@ -257,13 +221,6 @@ exercises_payload:
               isRightAnswer: true
             - value: pictograms-objects-musical_instrument-violin_brown-013D
               type: image
-            - value: pictograms-objects-musical_instrument-drum
-              type: image
-            - value: pictograms-objects-musical_instrument-flute_brown-0136
-              type: image
-            - value: pictograms-objects-musical_instrument-guitar_brown-0134
-              type: image
-
 
       - instructions:
           - locale: fr_FR
@@ -283,13 +240,7 @@ exercises_payload:
             - value: pictograms-objects-musical_instrument-violin_brown-013D
               type: image
               isRightAnswer: true
-            - value: pictograms-objects-musical_instrument-guitar_brown-0134
-              type: image
-            - value: pictograms-objects-musical_instrument-drum
-              type: image
-            - value: pictograms-objects-musical_instrument-piano_gray-0138
-              type: image
-            - value: pictograms-objects-musical_instrument-drummer_brown-0139
+            - value: pictograms-objects-musical_instrument-xylophone_brown-0137
               type: image
 
       - instructions:
@@ -310,20 +261,14 @@ exercises_payload:
             - value: pictograms-objects-musical_instrument-xylophone_brown-0137
               type: image
               isRightAnswer: true
-            - value: pictograms-objects-musical_instrument-drum
-              type: image
-            - value: pictograms-objects-musical_instrument-piano_gray-0138
-              type: image
-            - value: pictograms-objects-musical_instrument-accordion_orange-013A
-              type: image
-            - value: pictograms-objects-musical_instrument-violin_brown-013D
+            - value:
               type: image
 
       - instructions:
           - locale: fr_FR
             value: Touche le haut-parleur. Quel est cet instrument de musique ?
           - locale: en_US
-            value: Touch the speaker. What is this musical instrument?
+            value: Touch the speaker. What is this musical instrument ?
         interface: listenThenTouchToSelect
         gameplay: findTheRightAnswers
         action:
@@ -337,11 +282,5 @@ exercises_payload:
             - value: pictograms-objects-musical_instrument-drum
               type: image
               isRightAnswer: true
-            - value: pictograms-objects-musical_instrument-guitar_brown-0134
-              type: image
-            - value: pictograms-objects-musical_instrument-piano_gray-0138
-              type: image
-            - value: pictograms-objects-musical_instrument-saxophone_yellow-013C
-              type: image
             - value: pictograms-objects-musical_instrument-drummer_brown-0139
               type: image

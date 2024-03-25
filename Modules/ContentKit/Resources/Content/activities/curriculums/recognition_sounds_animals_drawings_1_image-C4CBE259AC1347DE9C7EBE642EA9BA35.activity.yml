@@ -4,8 +4,8 @@
 
 version: 1.0.0
 
-uuid: B60142FDD7DE4E9FBBA7E9E9BF1ECF08
-name: animals_recognition_sounds_4
+uuid: C4CBE259AC1347DE9C7EBE642EA9BA35
+name: recognition_sounds_animals_drawings_1_image
 
 created_at: "2024-03-04T18:07:12.519229"
 last_edited_at: "2024-03-12T15:30:51.722290"
@@ -38,7 +38,7 @@ l10n:
     details:
       icon:
 
-      title: Reconnaitre les sons des animaux avec 4 images
+      title: Reconnaitre les sons des animaux avec 1 image
       subtitle: null
 
       short_description: |
@@ -56,7 +56,7 @@ l10n:
     details:
       icon:
 
-      title: Recognize animal sounds with 4 images
+      title: Recognize animal sounds with 1 image
       subtitle: null
 
       short_description: |
@@ -94,12 +94,6 @@ exercises_payload:
             - value: pictograms-animals-farm-duck_green-0075
               type: image
               isRightAnswer: true
-            - value: pictograms-animals-cat_gray-0050
-              type: image
-            - value: pictograms-animals-farm-bird_yellow-0071
-              type: image
-            - value: pictograms-animals-farm-horse_brown-006A
-              type: image
 
       - instructions:
           - locale: fr_FR
@@ -119,12 +113,6 @@ exercises_payload:
             - value: pictograms-animals-cat_gray-0050
               type: image
               isRightAnswer: true
-            - value: pictograms-animals-farm-bird_yellow-0071
-              type: image
-            - value: pictograms-animals-farm-chicken_yellow-006E
-              type: image
-            - value: pictograms-animals-insects-fly_green-0093
-              type: image
 
       - instructions:
           - locale: fr_FR
@@ -144,12 +132,6 @@ exercises_payload:
             - value: pictograms-animals-farm-bird_yellow-0071
               type: image
               isRightAnswer: true
-            - value: pictograms-animals-farm-chicken_yellow-006E
-              type: image
-            - value: pictograms-animals-farm-cow_white-0070
-              type: image
-            - value: pictograms-animals-pets-dog_golden_retriever_brown-0052
-              type: image
 
       - instructions:
           - locale: fr_FR
@@ -169,12 +151,6 @@ exercises_payload:
             - value: pictograms-animals-farm-chicken_yellow-006E
               type: image
               isRightAnswer: true
-            - value: pictograms-animals-farm-cow_white-0070
-              type: image
-            - value: pictograms-animals-farm-horse_brown-006A
-              type: image
-            - value: pictograms-animals-farm-bird_yellow-0071
-              type: image
 
       - instructions:
           - locale: fr_FR
@@ -194,12 +170,6 @@ exercises_payload:
             - value: pictograms-animals-farm-cow_white-0070
               type: image
               isRightAnswer: true
-            - value: pictograms-animals-farm-horse_brown-006A
-              type: image
-            - value: pictograms-animals-farm-goat_brown-0072
-              type: image
-            - value: pictograms-animals-farm-sheep_white-006D
-              type: image
 
       - instructions:
           - locale: fr_FR
@@ -219,12 +189,6 @@ exercises_payload:
             - value: pictograms-animals-farm-horse_brown-006A
               type: image
               isRightAnswer: true
-            - value: pictograms-animals-insects-fly_green-0093
-              type: image
-            - value: pictograms-animals-farm-sheep_white-006D
-              type: image
-            - value: pictograms-animals-farm-pig_pink-0073
-              type: image
 
       - instructions:
           - locale: fr_FR
@@ -244,13 +208,6 @@ exercises_payload:
             - value: pictograms-animals-insects-fly_green-0093
               type: image
               isRightAnswer: true
-            - value: pictograms-animals-pets-dog_golden_retriever_brown-0052
-              type: image
-            - value: pictograms-animals-farm-pig_pink-0073
-              type: image
-            - value: pictograms-animals-farm-bird_yellow-0071
-              type: image
-
 
       - instructions:
           - locale: fr_FR
@@ -270,12 +227,6 @@ exercises_payload:
             - value: pictograms-animals-farm-goat_brown-0072
               type: image
               isRightAnswer: true
-            - value: pictograms-animals-farm-sheep_white-006D
-              type: image
-            - value: pictograms-animals-farm-pig_pink-0073
-              type: image
-            - value: pictograms-animals-farm-horse_brown-006A
-              type: image
 
       - instructions:
           - locale: fr_FR
@@ -295,12 +246,6 @@ exercises_payload:
             - value: pictograms-animals-farm-sheep_white-006D
               type: image
               isRightAnswer: true
-            - value: pictograms-animals-farm-pig_pink-0073
-              type: image
-            - value: pictograms-animals-farm-rooster_white-006B
-              type: image
-            - value: pictograms-animals-cat_gray-0050
-              type: image
 
       - instructions:
           - locale: fr_FR
@@ -320,12 +265,6 @@ exercises_payload:
             - value: pictograms-animals-farm-pig_pink-0073
               type: image
               isRightAnswer: true
-            - value: pictograms-animals-farm-rooster_white-006B
-              type: image
-            - value: pictograms-animals-pets-dog_golden_retriever_brown-0052
-              type: image
-            - value: pictograms-animals-insects-fly_green-0093
-              type: image
 
       - instructions:
           - locale: fr_FR
@@ -345,12 +284,6 @@ exercises_payload:
             - value: pictograms-animals-farm-rooster_white-006B
               type: image
               isRightAnswer: true
-            - value: pictograms-animals-pets-dog_golden_retriever_brown-0052
-              type: image
-            - value: pictograms-animals-cat_gray-0050
-              type: image
-            - value: pictograms-animals-farm-bird_yellow-0071
-              type: image
 
       - instructions:
           - locale: fr_FR
@@ -370,9 +303,3 @@ exercises_payload:
             - value: pictograms-animals-pets-dog_golden_retriever_brown-0052
               type: image
               isRightAnswer: true
-            - value: pictograms-animals-cat_gray-0050
-              type: image
-            - value: pictograms-animals-farm-pig_pink-0073
-              type: image
-            - value: pictograms-animals-farm-rooster_white-006B
-              type: image
