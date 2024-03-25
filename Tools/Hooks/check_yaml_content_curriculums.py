@@ -20,6 +20,7 @@ from modules.content import (
     find_missing_icons,
     find_string_values_starting_with_newline,
     find_empty_string_values,
+    find_missing_activities,
 )
 from modules.utils import get_files, is_file_modified
 from modules.yaml import create_yaml_object, is_jtd_schema_compliant
@@ -105,6 +106,12 @@ def check_curriculum(filename):
         print(f"\n❌ Found empty strings in {filename}")
         for string in empty_string_value:
             print(f"  - {string}")
+
+    if missing_activities := find_missing_activities(curriculum):
+        file_is_valid = False
+        print(f"\n❌ Found activities that do not exist in {filename}")
+        for activity in missing_activities:
+            print(f"  - {activity}")
 
     return file_is_valid
 
