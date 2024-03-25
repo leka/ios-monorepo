@@ -44,14 +44,14 @@ struct CaregiverList: View {
 
                 if self.caregiverManagerViewModel.caregivers.isEmpty {
                     VStack {
-                        Text(l10n.CaregiverList.AddFirstCaregiver.message)
+                        Text(l10n.CaregiverList.CreateFirstCaregiver.message)
                             .font(.title2)
                             .multilineTextAlignment(.center)
 
                         Button {
                             self.isCaregiverCreationPresented = true
                         } label: {
-                            Text(l10n.CaregiverList.AddFirstCaregiver.addButtonLabel)
+                            Text(l10n.CaregiverList.CreateFirstCaregiver.createButtonLabel)
                         }
                         .buttonStyle(.borderedProminent)
                     }
@@ -72,7 +72,7 @@ struct CaregiverList: View {
                     Button {
                         self.isCaregiverCreationPresented = true
                     } label: {
-                        Text(l10n.CaregiverList.addButtonLabel)
+                        Text(l10n.CaregiverList.createButtonLabel)
                     }
                 }
             }
@@ -99,16 +99,18 @@ struct CaregiverList: View {
 
 // MARK: - l10n.CaregiverList
 
+// swiftlint:disable line_length nesting
+
 extension l10n {
     enum CaregiverList {
-        enum AddFirstCaregiver {
-            static let message = LocalizedString("lekaapp.caregiver_list.add_first_caregiver.message",
+        enum CreateFirstCaregiver {
+            static let message = LocalizedString("lekaapp.caregiver_list.create_first_caregiver.message",
                                                  value: "No caregiver profiles have been created yet.",
-                                                 comment: "Caregiver list add first caregiver message")
+                                                 comment: "Caregiver list create first caregiver message")
 
-            static let addButtonLabel = LocalizedString("lekaapp.caregiver_list.add_first_caregiver.add_button_label",
-                                                        value: "Add your first caregiver profile",
-                                                        comment: "Caregiver list add first caregiver button label")
+            static let createButtonLabel = LocalizedString("lekaapp.caregiver_list.create_first_caregiver.create_button_label",
+                                                           value: "Create your first caregiver profile",
+                                                           comment: "Caregiver list create first caregiver button label")
         }
 
         static let title = LocalizedString("lekaapp.caregiver_list.title",
@@ -123,11 +125,13 @@ extension l10n {
                                                  value: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
                                                  comment: "Caregiver list description")
 
-        static let addButtonLabel = LocalizedString("lekaapp.caregiver_list.add_button_label",
-                                                    value: "Add profile",
-                                                    comment: "Caregiver list add button label")
+        static let createButtonLabel = LocalizedString("lekaapp.caregiver_list.create_button_label",
+                                                       value: "Create profile",
+                                                       comment: "Caregiver list create button label")
     }
 }
+
+// swiftlint:enable line_length nesting
 
 #Preview {
     CaregiverList()

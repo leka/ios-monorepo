@@ -73,7 +73,7 @@ struct CaregiverPicker: View {
                 Button {
                     self.isCaregiverCreationPresented = true
                 } label: {
-                    Text(l10n.CaregiverPicker.addButtonLabel)
+                    Text(l10n.CaregiverPicker.createButtonLabel)
                 }
             }
         }
@@ -112,8 +112,9 @@ struct CaregiverPicker: View {
 
 // MARK: - l10n.CaregiverPicker
 
+// swiftlint:disable line_length nesting
+
 extension l10n {
-    // swiftlint:disable line_length nesting
     enum CaregiverPicker {
         enum AddFirstCaregiver {
             static let message = LocalizedString("lekaapp.caregiver_picker.add_first_caregiver.message",
@@ -125,16 +126,17 @@ extension l10n {
                                                      comment: "Caregiver picker add first caregiver button label")
         }
 
-        static let title = LocalizedString("lekaapp.caregiver_picker.title", value: "Who are you ?", comment: "Caregiver picker title")
+        static let title = LocalizedString("lekaapp.caregiver_picker.title", value: "Select your profile", comment: "Caregiver picker title")
 
         static let selectButtonLabel = LocalizedString("lekaapp.caregiver_picker.select_button_label", value: "Select", comment: "Caregiver picker select button label")
 
-        static let addButtonLabel = LocalizedString("lekaapp.caregiver_picker.add_button_label", value: "Add profile", comment: "Caregiver picker add button label")
+        static let createButtonLabel = LocalizedString("lekaapp.caregiver_picker.create_button_label", value: "Create profile", comment: "Caregiver picker create button label")
 
         static let closeButtonLabel = LocalizedString("lekaapp.caregiver_picker.close_button_label", value: "Close", comment: "Caregiver picker close button label")
     }
-    // swiftlint:enable line_length nesting
 }
+
+// swiftlint:enable line_length nesting
 
 #Preview {
     Text("Preview")

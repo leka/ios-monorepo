@@ -31,7 +31,7 @@ struct CarereceiverPicker: View {
         VStack {
             if self.carereceiverManagerViewModel.carereceivers.isEmpty {
                 VStack {
-                    Text(l10n.CarereceiverPicker.AddFirstCarereceiver.message)
+                    Text(l10n.CarereceiverPicker.CreateFirstCarereceiver.message)
                         .font(.title2)
                         .multilineTextAlignment(.center)
 
@@ -39,7 +39,7 @@ struct CarereceiverPicker: View {
                         self.dismiss()
                         self.navigation.selectedCategory = .carereceivers
                     } label: {
-                        Text(l10n.CarereceiverPicker.AddFirstCarereceiver.buttonLabel)
+                        Text(l10n.CarereceiverPicker.CreateFirstCarereceiver.buttonLabel)
                     }
                     .buttonStyle(.borderedProminent)
                 }
@@ -132,17 +132,17 @@ struct CarereceiverPicker: View {
 extension l10n {
     // swiftlint:disable nesting
     enum CarereceiverPicker {
-        enum AddFirstCarereceiver {
-            static let message = LocalizedString("lekaapp.carereceiver_picker.add_first_carereceiver.message",
+        enum CreateFirstCarereceiver {
+            static let message = LocalizedString("lekaapp.carereceiver_picker.create_first_carereceiver.message",
                                                  value: """
                                                      No care receiver profiles have been created yet.
                                                      You can create one in the Care Receivers section.
                                                      """,
-                                                 comment: "Carereceiver picker add first carereceiver message")
+                                                 comment: "Carereceiver picker create first carereceiver message")
 
-            static let buttonLabel = LocalizedString("lekaapp.carereceiver_picker.add_first_carereceiver.add_button_label",
+            static let buttonLabel = LocalizedString("lekaapp.carereceiver_picker.create_first_carereceiver.button_label",
                                                      value: "Go to Care Receivers section",
-                                                     comment: "Carereceiver picker add first carereceiver button label")
+                                                     comment: "Carereceiver picker button label that send to the Care Receivers section")
         }
 
         static let title = LocalizedString("lekaapp.carereceiver_picker.title",

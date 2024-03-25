@@ -2,150 +2,6 @@
     "version": "1.0",
     "sourceLanguage": "en",
     "strings": {
-        "edit_caregiver_view.appearance_section.accent_color_row.title": {
-            "comment": "AccentColor Row title",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Color Theme"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Th\u00e8me de couleur"
-                    }
-                }
-            }
-        },
-        "edit_caregiver_view.appearance_section.appearance_row.title": {
-            "comment": "Appearance Row title",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Dark Mode"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Mode sombre"
-                    }
-                }
-            }
-        },
-        "edit_caregiver_view.close_button_label": {
-            "comment": "Close button label of Edit Caregiver View",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Close"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Fermer"
-                    }
-                }
-            }
-        },
-        "edit_caregiver_view.navigation_title": {
-            "comment": "The navigation title of Edit Caregiver View",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Edit my profile"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Editer mon profil"
-                    }
-                }
-            }
-        },
-        "edit_caregiver_view.save_button_label": {
-            "comment": "Save button label of Edit Caregiver View",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Save"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Enregistrer"
-                    }
-                }
-            }
-        },
-        "edit_carereceiver_view.close_button_label": {
-            "comment": "Close button label of Edit Carereceiver View",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Close"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Fermer"
-                    }
-                }
-            }
-        },
-        "edit_carereceiver_view.navigation_title": {
-            "comment": "The navigation title of Edit Carereceiver View",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Edit profil"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Editer le profil"
-                    }
-                }
-            }
-        },
-        "edit_carereceiver_view.save_button_label": {
-            "comment": "Save button label of Edit Carereceiver View",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Save"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Enregistrer"
-                    }
-                }
-            }
-        },
         "lekaapp.TextFieldEmail.invalidEmailErrorLabel": {
             "comment": "TextFieldEmail invalid Email Error Label",
             "extractionState": "extracted_with_value",
@@ -214,6 +70,24 @@
                     "stringUnit": {
                         "state": "translated",
                         "value": "Mot de passe"
+                    }
+                }
+            }
+        },
+        "lekaapp.account_creation_process.navigation_title": {
+            "comment": "NavigationBar title on the whole Signup process",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Account Creation Process"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Processus de cr\u00e9ation de compte"
                     }
                 }
             }
@@ -524,24 +398,6 @@
                 }
             }
         },
-        "lekaapp.account_creation_view.navigation_title": {
-            "comment": "NavigationBar title on the whole Signup process",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Account Creation Process"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Processus de cr\u00e9ation de compte"
-                    }
-                }
-            }
-        },
         "lekaapp.activities_view.description": {
             "comment": "Activities description",
             "extractionState": "extracted_with_value",
@@ -722,8 +578,8 @@
                 }
             }
         },
-        "lekaapp.caregiver_creation.create_profil_button": {
-            "comment": "Caregiver creation create profil button label",
+        "lekaapp.caregiver_creation.create_profile_button_label": {
+            "comment": "Caregiver creation create profile button label",
             "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
@@ -736,24 +592,6 @@
                     "stringUnit": {
                         "state": "translated",
                         "value": "Cr\u00e9er le profil"
-                    }
-                }
-            }
-        },
-        "lekaapp.caregiver_creation.profession_add_button": {
-            "comment": "Caregiver creation profession add button label",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Add"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Ajouter"
                     }
                 }
             }
@@ -794,32 +632,32 @@
                 }
             }
         },
-        "lekaapp.caregiver_list.add_button_label": {
-            "comment": "Caregiver list add button label",
+        "lekaapp.caregiver_list.create_button_label": {
+            "comment": "Caregiver list create button label",
             "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Add profile"
+                        "value": "Create profile"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Ajouter un profil"
+                        "value": "Cr\u00e9er un profil"
                     }
                 }
             }
         },
-        "lekaapp.caregiver_list.add_first_caregiver.add_button_label": {
-            "comment": "Caregiver list add first caregiver button label",
+        "lekaapp.caregiver_list.create_first_caregiver.create_button_label": {
+            "comment": "Caregiver list create first caregiver button label",
             "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Add your first caregiver profile"
+                        "value": "Create your first caregiver profile"
                     }
                 },
                 "fr": {
@@ -830,8 +668,8 @@
                 }
             }
         },
-        "lekaapp.caregiver_list.add_first_caregiver.message": {
-            "comment": "Caregiver list add first caregiver message",
+        "lekaapp.caregiver_list.create_first_caregiver.message": {
+            "comment": "Caregiver list create first caregiver message",
             "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
@@ -902,24 +740,6 @@
                 }
             }
         },
-        "lekaapp.caregiver_picker.add_button_label": {
-            "comment": "Caregiver picker add button label",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Add profile"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Ajouter un profil"
-                    }
-                }
-            }
-        },
         "lekaapp.caregiver_picker.add_first_caregiver.add_button_label": {
             "comment": "Caregiver picker add first caregiver button label",
             "extractionState": "extracted_with_value",
@@ -974,6 +794,24 @@
                 }
             }
         },
+        "lekaapp.caregiver_picker.create_button_label": {
+            "comment": "Caregiver picker create button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Create profile"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Cr\u00e9er un profil"
+                    }
+                }
+            }
+        },
         "lekaapp.caregiver_picker.select_button_label": {
             "comment": "Caregiver picker select button label",
             "extractionState": "extracted_with_value",
@@ -999,13 +837,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Who are you ?"
+                        "value": "Select your profile"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Qui \u00eates vous ? "
+                        "value": "S\u00e9lectionner votre profil "
                     }
                 }
             }
@@ -1064,8 +902,8 @@
                 }
             }
         },
-        "lekaapp.carereceiver_creation.create_profil_button": {
-            "comment": " Carereceiver creation create profil button label",
+        "lekaapp.carereceiver_creation.create_profile_button_label": {
+            "comment": " Carereceiver creation create profile button label",
             "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
@@ -1100,32 +938,32 @@
                 }
             }
         },
-        "lekaapp.carereceiver_list.add_button_label": {
-            "comment": "Carereceiver list add button label",
+        "lekaapp.carereceiver_list.create_button_label": {
+            "comment": "Carereceiver list create button label",
             "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Add profile"
+                        "value": "Create profile"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Ajouter un profil"
+                        "value": "Cr\u00e9er un profil"
                     }
                 }
             }
         },
-        "lekaapp.carereceiver_list.add_first_carereceiver.add_button_label": {
-            "comment": "Carereceiver list add first carereceiver button label",
+        "lekaapp.carereceiver_list.create_first_carereceiver.create_button_label": {
+            "comment": "Carereceiver list create first carereceiver button label",
             "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Add your first care receiver profile"
+                        "value": "Create your first care receiver profile"
                     }
                 },
                 "fr": {
@@ -1136,8 +974,8 @@
                 }
             }
         },
-        "lekaapp.carereceiver_list.add_first_carereceiver.message": {
-            "comment": "Carereceiver list add first carereceiver message",
+        "lekaapp.carereceiver_list.create_first_carereceiver.message": {
+            "comment": "Carereceiver list create first carereceiver message",
             "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
@@ -1208,8 +1046,26 @@
                 }
             }
         },
-        "lekaapp.carereceiver_picker.add_first_carereceiver.add_button_label": {
-            "comment": "Carereceiver picker add first carereceiver button label",
+        "lekaapp.carereceiver_picker.close_button_label": {
+            "comment": "Carereceiver picker close button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Close"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Fermer"
+                    }
+                }
+            }
+        },
+        "lekaapp.carereceiver_picker.create_first_carereceiver.button_label": {
+            "comment": "Carereceiver picker button label that send to the Care Receivers section",
             "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
@@ -1226,8 +1082,8 @@
                 }
             }
         },
-        "lekaapp.carereceiver_picker.add_first_carereceiver.message": {
-            "comment": "Carereceiver picker add first carereceiver message",
+        "lekaapp.carereceiver_picker.create_first_carereceiver.message": {
+            "comment": "Carereceiver picker create first carereceiver message",
             "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
@@ -1240,24 +1096,6 @@
                     "stringUnit": {
                         "state": "translated",
                         "value": "Aucun profil de personne accompagn\u00e9e n'a \u00e9t\u00e9 cr\u00e9\u00e9 pour le moment.\nVous pouvez en cr\u00e9er un en vous rendant dans la section Personnes Accompagn\u00e9es"
-                    }
-                }
-            }
-        },
-        "lekaapp.carereceiver_picker.close_button_label": {
-            "comment": "Carereceiver picker close button label",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Close"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Fermer"
                     }
                 }
             }
@@ -1424,6 +1262,366 @@
                 }
             }
         },
+        "lekaapp.edit_caregiver_view.appearance_section.accent_color_row.title": {
+            "comment": "AccentColor Row title",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Color Theme"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Th\u00e8me de couleur"
+                    }
+                }
+            }
+        },
+        "lekaapp.edit_caregiver_view.appearance_section.appearance_row.title": {
+            "comment": "Appearance Row title",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Dark Mode"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Mode sombre"
+                    }
+                }
+            }
+        },
+        "lekaapp.edit_caregiver_view.close_button_label": {
+            "comment": "Close button label of Edit Caregiver View",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Close"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Fermer"
+                    }
+                }
+            }
+        },
+        "lekaapp.edit_caregiver_view.navigation_title": {
+            "comment": "The navigation title of Edit Caregiver View",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Edit my profile"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "\u00c9diter mon profil"
+                    }
+                }
+            }
+        },
+        "lekaapp.edit_caregiver_view.save_button_label": {
+            "comment": "Save button label of Edit Caregiver View",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Save"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Enregistrer"
+                    }
+                }
+            }
+        },
+        "lekaapp.edit_carereceiver_view.close_button_label": {
+            "comment": "Close button label of Edit Carereceiver View",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Close"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Fermer"
+                    }
+                }
+            }
+        },
+        "lekaapp.edit_carereceiver_view.navigation_title": {
+            "comment": "The navigation title of Edit Carereceiver View",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Edit profil"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "\u00c9diter le profil"
+                    }
+                }
+            }
+        },
+        "lekaapp.edit_carereceiver_view.save_button_label": {
+            "comment": "Save button label of Edit Carereceiver View",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Save"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Enregistrer"
+                    }
+                }
+            }
+        },
+        "lekaapp.main_view.sidebar.category_label.activities": {
+            "comment": "The title of the category 'Activities'",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Activities"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Activit\u00e9s"
+                    }
+                }
+            }
+        },
+        "lekaapp.main_view.sidebar.category_label.caregivers": {
+            "comment": "The title of the category 'Caregivers'",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Caregivers"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Accompagnants"
+                    }
+                }
+            }
+        },
+        "lekaapp.main_view.sidebar.category_label.carereceivers": {
+            "comment": "The title of the category 'Care Receivers'",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Care Receivers"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Personnes Accompagn\u00e9es"
+                    }
+                }
+            }
+        },
+        "lekaapp.main_view.sidebar.category_label.curriculums": {
+            "comment": "The title of the category 'Curriculums'",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Curriculums"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Parcours"
+                    }
+                }
+            }
+        },
+        "lekaapp.main_view.sidebar.category_label.news": {
+            "comment": "The title of the category 'News'",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "News"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Nouveaut\u00e9s"
+                    }
+                }
+            }
+        },
+        "lekaapp.main_view.sidebar.category_label.remotes": {
+            "comment": "The title of the category 'Remotes'",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Remotes"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "T\u00e9l\u00e9commandes"
+                    }
+                }
+            }
+        },
+        "lekaapp.main_view.sidebar.category_label.resources": {
+            "comment": "The title of the category 'Resources'",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Resources"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Ressources"
+                    }
+                }
+            }
+        },
+        "lekaapp.main_view.sidebar.category_label.stories": {
+            "comment": "The title of the category 'Stories'",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Stories"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Histoires"
+                    }
+                }
+            }
+        },
+        "lekaapp.main_view.sidebar.navigation_title": {
+            "comment": "The title of the sidebar",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Leka App"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Leka App"
+                    }
+                }
+            }
+        },
+        "lekaapp.main_view.sidebar.section.content": {
+            "comment": "The title of the section 'Content'",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Content"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Contenu"
+                    }
+                }
+            }
+        },
+        "lekaapp.main_view.sidebar.section.information": {
+            "comment": "The title of the section 'Information'",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Information"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Informations"
+                    }
+                }
+            }
+        },
+        "lekaapp.main_view.sidebar.section.monitoring": {
+            "comment": "The title of the section 'Users'",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Users"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Utilisateurs"
+                    }
+                }
+            }
+        },
         "lekaapp.news_view.description": {
             "comment": "News description",
             "extractionState": "extracted_with_value",
@@ -1550,7 +1748,7 @@
                 }
             }
         },
-        "lekaapp.reinforcer_picker.avatar_choice_button": {
+        "lekaapp.reinforcer_picker.description": {
             "comment": " Reinforcer picker description",
             "extractionState": "extracted_with_value",
             "localizations": {
@@ -1730,7 +1928,25 @@
                 }
             }
         },
-        "lekaapp.settings_label.title": {
+        "lekaapp.sample_activity_list_view.button_label": {
+            "comment": "Start activity button label on Sample Activity List view",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Start activity"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Commencer l'activit\u00e9"
+                    }
+                }
+            }
+        },
+        "lekaapp.settings_label.button_label": {
             "comment": "Settings button label",
             "extractionState": "extracted_with_value",
             "localizations": {
@@ -1744,6 +1960,312 @@
                     "stringUnit": {
                         "state": "translated",
                         "value": "R\u00e9glages"
+                    }
+                }
+            }
+        },
+        "lekaapp.settings_view.account_section.delete_account.alert_message": {
+            "comment": "Delete account alert message",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "To delete your account, please contact our support team at\nsupport@leka.io\nWe're here to help you with the process and answer any questions you might have."
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Pour supprimer votre compte, veuillez contacter notre \u00e9quipe support \u00e0\nsupport@leka.io\nNous sommes l\u00e0 pour vous aider dans le processus et r\u00e9pondre \u00e0 toutes vos questions."
+                    }
+                }
+            }
+        },
+        "lekaapp.settings_view.account_section.delete_account.alert_title": {
+            "comment": "Delete account alert title",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Delete Account?"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Supprimer Le Compte ?"
+                    }
+                }
+            }
+        },
+        "lekaapp.settings_view.account_section.delete_account.button_label": {
+            "comment": "Delete account button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Delete Account"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Supprimer Le Compte"
+                    }
+                }
+            }
+        },
+        "lekaapp.settings_view.account_section.log_out.alert_button_label": {
+            "comment": "Log out alert button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Log out"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Se d\u00e9connecter"
+                    }
+                }
+            }
+        },
+        "lekaapp.settings_view.account_section.log_out.alert_message": {
+            "comment": "Log out alert message",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Are you sure you want to log out?\nYou will need to enter your email and password to log back in."
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "\u00cates-vous s\u00fbr de vouloir vous d\u00e9connecter?\nVous devrez saisir votre email et votre mot de passe pour vous reconnecter."
+                    }
+                }
+            }
+        },
+        "lekaapp.settings_view.account_section.log_out.alert_title": {
+            "comment": "Log out alert title",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Confirm Logout"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Confirmer La D\u00e9connexion"
+                    }
+                }
+            }
+        },
+        "lekaapp.settings_view.account_section.log_out.button_label": {
+            "comment": "Log out button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Log Out"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Se D\u00e9connecter"
+                    }
+                }
+            }
+        },
+        "lekaapp.settings_view.account_section.log_out.error_alert_message": {
+            "comment": "Log out error alert message",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "We encountered an issue logging you out. Please try again.\nIf the problem persists, contact our support team for assistance."
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Nous avons rencontr\u00e9 un probl\u00e8me lors de votre d\u00e9connexion. Veuillez r\u00e9essayer. \nSi le probl\u00e8me persiste, contactez notre \u00e9quipe d'assistance pour obtenir de l'aide."
+                    }
+                }
+            }
+        },
+        "lekaapp.settings_view.account_section.log_out.error_alert_title": {
+            "comment": "Log out error alert title",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Logout Error"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Erreur de d\u00e9connexion"
+                    }
+                }
+            }
+        },
+        "lekaapp.settings_view.change_language_section.button_label": {
+            "comment": "Change app language button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Change App Language"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Changer la Langue de l'Application"
+                    }
+                }
+            }
+        },
+        "lekaapp.settings_view.close_button_label": {
+            "comment": "Close button label of Settings View",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Close"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Fermer"
+                    }
+                }
+            }
+        },
+        "lekaapp.settings_view.credentials_section.change_credentials.alert_message": {
+            "comment": "Change credentials alert message",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "For security reasons, changes to your email or password need to be handled by our support team.\nPlease contact us at\nsupport@leka.io\nand we'll be happy to assist you with updating your account information."
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Pour des raisons de s\u00e9curit\u00e9, les modifications de l'e-mail ou du mot de passe doivent \u00eatre trait\u00e9es par notre \u00e9quipe support.\nVeuillez nous contacter \u00e0\nsupport@leka.io\net nous serons heureux de vous aider \u00e0 mettre \u00e0 jour les informations de votre compte."
+                    }
+                }
+            }
+        },
+        "lekaapp.settings_view.credentials_section.change_credentials.alert_title": {
+            "comment": "Change credentials alert title",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Need to Update Your Credentials?"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Besoin de mettre \u00e0 jour vos informations d'identification\u00a0?"
+                    }
+                }
+            }
+        },
+        "lekaapp.settings_view.credentials_section.change_credentials.button_label": {
+            "comment": "Change credentials button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Contact Support for Email/Password Change"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Contacter le support pour un changement d'e-mail/mot de passe"
+                    }
+                }
+            }
+        },
+        "lekaapp.settings_view.credentials_section.email_label": {
+            "comment": "Account email address label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Account Email"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Adresse Email"
+                    }
+                }
+            }
+        },
+        "lekaapp.settings_view.navigation_title": {
+            "comment": "The navigation title of Settings View",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Settings"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "R\u00e9glages"
+                    }
+                }
+            }
+        },
+        "lekaapp.settings_view.profiles_section.button_label": {
+            "comment": "Switch caregiver profile button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Switch Caregiver Profile"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Changer de Profil Accompagnant"
                     }
                 }
             }
@@ -1802,6 +2324,24 @@
                 }
             }
         },
+        "lekapp.add_first_caregiver_profile.button_label": {
+            "comment": "The button label of create first profile when no profile is created",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Create First Caregiver"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Cr\u00e9er votre premier profil Accompagnant"
+                    }
+                }
+            }
+        },
         "lekapp.caregiver_view.available_soon_label": {
             "comment": "Temporary content for caregiver monitoring",
             "extractionState": "extracted_with_value",
@@ -1834,6 +2374,42 @@
                     "stringUnit": {
                         "state": "translated",
                         "value": "Votre historique d'utilisation sera bient\u00f4t disponible ici."
+                    }
+                }
+            }
+        },
+        "lekapp.carereceiver_view.edit_profile_button_label": {
+            "comment": "The button label of carereceiver profile editor",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Edit profile"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "\u00c9diter le profil"
+                    }
+                }
+            }
+        },
+        "lekapp.edit_caregiver_profile.button_label": {
+            "comment": "The button label of caregiver profile editor",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Edit profile"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "\u00c9diter le profil"
                     }
                 }
             }
@@ -1874,61 +2450,7 @@
                 }
             }
         },
-        "lekapp.sidebar.add_first_caregiver_profile.button_label": {
-            "comment": "The button label of create first profile when no profile is created",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Create First Caregiver"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Cr\u00e9er un Profil Accompagnant"
-                    }
-                }
-            }
-        },
-        "lekapp.sidebar.carereceiver_view.edit_profile_button_label": {
-            "comment": "The button label of carereceiver profile editor",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Edit profile"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "\u00c9diter le profil"
-                    }
-                }
-            }
-        },
-        "lekapp.sidebar.edit_caregiver_profile.button_label": {
-            "comment": "The button label of caregiver profile editor",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Edit profile"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "\u00c9diter mon profil"
-                    }
-                }
-            }
-        },
-        "lekapp.sidebar.select_caregiver_profile.button_label": {
+        "lekapp.select_caregiver_profile.button_label": {
             "comment": "The button label of select caregiver profile",
             "extractionState": "extracted_with_value",
             "localizations": {
@@ -1942,528 +2464,6 @@
                     "stringUnit": {
                         "state": "translated",
                         "value": "S\u00e9lectionner un Accompagnant"
-                    }
-                }
-            }
-        },
-        "main_view.sidebar.category_label.activities": {
-            "comment": "The title of the category 'Activities'",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Activities"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Activit\u00e9s"
-                    }
-                }
-            }
-        },
-        "main_view.sidebar.category_label.caregivers": {
-            "comment": "The title of the category 'Caregivers'",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Caregivers"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Accompagnants"
-                    }
-                }
-            }
-        },
-        "main_view.sidebar.category_label.carereceivers": {
-            "comment": "The title of the category 'Care Receivers'",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Care Receivers"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Personnes accompagn\u00e9es"
-                    }
-                }
-            }
-        },
-        "main_view.sidebar.category_label.curriculums": {
-            "comment": "The title of the category 'Curriculums'",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Curriculums"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Parcours"
-                    }
-                }
-            }
-        },
-        "main_view.sidebar.category_label.news": {
-            "comment": "The title of the category 'News'",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "News"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Nouveaut\u00e9s"
-                    }
-                }
-            }
-        },
-        "main_view.sidebar.category_label.remotes": {
-            "comment": "The title of the category 'Remotes'",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Remotes"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "T\u00e9l\u00e9commandes"
-                    }
-                }
-            }
-        },
-        "main_view.sidebar.category_label.resources": {
-            "comment": "The title of the category 'Resources'",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Resources"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Ressources"
-                    }
-                }
-            }
-        },
-        "main_view.sidebar.category_label.stories": {
-            "comment": "The title of the category 'Stories'",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Stories"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Histoires"
-                    }
-                }
-            }
-        },
-        "main_view.sidebar.navigation_title": {
-            "comment": "The title of the sidebar",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Leka App"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Leka App"
-                    }
-                }
-            }
-        },
-        "main_view.sidebar.section.content": {
-            "comment": "The title of the section 'Content'",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Content"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Contenu"
-                    }
-                }
-            }
-        },
-        "main_view.sidebar.section.information": {
-            "comment": "The title of the section 'Information'",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Information"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Informations"
-                    }
-                }
-            }
-        },
-        "main_view.sidebar.section.monitoring": {
-            "comment": "The title of the section 'Users'",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Users"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Utilisateurs"
-                    }
-                }
-            }
-        },
-        "settings_view.account_section.delete_account.alert_message": {
-            "comment": "Delete account alert message",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "To delete your account, please contact our support team at\nsupport@leka.io\nWe're here to help you with the process and answer any questions you might have."
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Pour supprimer votre compte, veuillez contacter notre \u00e9quipe support \u00e0\nsupport@leka.io\nNous sommes l\u00e0 pour vous aider dans le processus et r\u00e9pondre \u00e0 toutes vos questions."
-                    }
-                }
-            }
-        },
-        "settings_view.account_section.delete_account.alert_title": {
-            "comment": "Delete account alert title",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Delete Account?"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Supprimer Le Compte?"
-                    }
-                }
-            }
-        },
-        "settings_view.account_section.delete_account.button_label": {
-            "comment": "Delete account button label",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Delete Account"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Supprimer Le Compte"
-                    }
-                }
-            }
-        },
-        "settings_view.account_section.log_out.alert_buton_label": {
-            "comment": "Log out alert button label",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Log out"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Se d\u00e9connecter"
-                    }
-                }
-            }
-        },
-        "settings_view.account_section.log_out.alert_message": {
-            "comment": "Log out alert message",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Are you sure you want to log out? You will need to enter your email and password to log back in."
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "\u00cates-vous s\u00fbr de vouloir vous d\u00e9connecter? Vous devrez saisir votre email et votre mot de passe pour vous reconnecter."
-                    }
-                }
-            }
-        },
-        "settings_view.account_section.log_out.alert_title": {
-            "comment": "Log out alert title",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Confirm Logout"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Confirmer La D\u00e9connexion"
-                    }
-                }
-            }
-        },
-        "settings_view.account_section.log_out.button_label": {
-            "comment": "Log out button label",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Log Out"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Se D\u00e9connecter"
-                    }
-                }
-            }
-        },
-        "settings_view.account_section.log_out.error.alert_message": {
-            "comment": "Log out error alert message",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "We encountered an issue logging you out. Please try again. If the problem persists, contact our support team for assistance."
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Nous avons rencontr\u00e9 un probl\u00e8me lors de votre d\u00e9connexion. Veuillez r\u00e9essayer. Si le probl\u00e8me persiste, contactez notre \u00e9quipe d'assistance pour obtenir de l'aide."
-                    }
-                }
-            }
-        },
-        "settings_view.account_section.log_out.error.alert_title": {
-            "comment": "Log out error alert title",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Logout Error"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Erreur de d\u00e9connexion"
-                    }
-                }
-            }
-        },
-        "settings_view.change_language_section.button_label": {
-            "comment": "Change app language button label",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Change App Language"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Changer la Langue de l'Application"
-                    }
-                }
-            }
-        },
-        "settings_view.close_button_label": {
-            "comment": "Close button label of Settings View",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Close"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Fermer"
-                    }
-                }
-            }
-        },
-        "settings_view.credentials_section.change_credentials.alert_message": {
-            "comment": "Change credentials alert message",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "For security reasons, changes to your email or password need to be handled by our support team.\nPlease contact us at\nsupport@leka.io\nand we'll be happy to assist you with updating your account information."
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Pour des raisons de s\u00e9curit\u00e9, les modifications de l'e-mail ou du mot de passe doivent \u00eatre trait\u00e9es par notre \u00e9quipe support.\nVeuillez nous contacter \u00e0\nsupport@leka.io\net nous serons heureux de vous aider \u00e0 mettre \u00e0 jour les informations de votre compte."
-                    }
-                }
-            }
-        },
-        "settings_view.credentials_section.change_credentials.alert_title": {
-            "comment": "Change credentials alert title",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Need to Update Your Credentials?"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Besoin de mettre \u00e0 jour vos informations d'identification\u00a0?"
-                    }
-                }
-            }
-        },
-        "settings_view.credentials_section.change_credentials.button_label": {
-            "comment": "Change credentials button label",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Contact Support for Email/Password Change"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Contacter le support pour un changement d'e-mail/mot de passe"
-                    }
-                }
-            }
-        },
-        "settings_view.credentials_section.email_label": {
-            "comment": "Account email address label",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Account Email"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Adresse Email"
-                    }
-                }
-            }
-        },
-        "settings_view.navigation_title": {
-            "comment": "The navigation title of Settings View",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Settings"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "R\u00e9glages"
-                    }
-                }
-            }
-        },
-        "settings_view.profiles_section.switch_profiles_button_label": {
-            "comment": "Switch caregiver profile button label",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Switch Caregiver Profile"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Changer de Profil Accompagnant"
                     }
                 }
             }

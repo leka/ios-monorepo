@@ -4,7 +4,7 @@
 
 import LocalizationKit
 
-// swiftlint:disable nesting line_length
+// swiftlint:disable line_length
 
 extension l10n {
     enum ConnectionView {
@@ -16,4 +16,4 @@ extension l10n {
     }
 }
 
-// swiftlint:enable nesting line_length
+// swiftlint:enable line_length

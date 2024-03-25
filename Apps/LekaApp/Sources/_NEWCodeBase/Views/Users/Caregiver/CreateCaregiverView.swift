@@ -88,7 +88,7 @@ struct CreateCaregiverView: View {
                     ProfessionListView(caregiver: self.$newCaregiver)
                 }
 
-                Button(String(l10n.CaregiverCreation.createProfilButton.characters)) {
+                Button(String(l10n.CaregiverCreation.createProfileButtonLabel.characters)) {
                     if self.newCaregiver.avatar.isEmpty {
                         self.newCaregiver.avatar = Avatars.categories.first!.avatars.randomElement()!
                     }
@@ -188,9 +188,7 @@ extension l10n {
 
         static let professionLabel = LocalizedString("lekaapp.caregiver_creation.profession_label", value: "Profession(s)", comment: "Caregiver creation profession label above profession selection button")
 
-        static let professionAddButton = LocalizedString("lekaapp.caregiver_creation.profession_add_button", value: "Add", comment: "Caregiver creation profession add button label")
-
-        static let createProfilButton = LocalizedString("lekaapp.caregiver_creation.create_profil_button", value: "Create profile", comment: "Caregiver creation create profil button label")
+        static let createProfileButtonLabel = LocalizedString("lekaapp.caregiver_creation.create_profile_button_label", value: "Create profile", comment: "Caregiver creation create profile button label")
 
         static let closeButtonLabel = LocalizedString("lekaapp.caregiver_creation.close_button_label", value: "Close", comment: " Caregiver creation close button label")
     }

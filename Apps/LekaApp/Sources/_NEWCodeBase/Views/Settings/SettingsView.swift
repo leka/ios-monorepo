@@ -24,7 +24,7 @@ struct SettingsView: View {
                     self.dismiss()
                     self.navigation.sheetContent = .caregiverPicker
                 } label: {
-                    Label(String(l10n.SettingsView.ProfilesSection.switchProfileButtonLabel.characters), systemImage: "person.2.gobackward")
+                    Label(String(l10n.SettingsView.ProfilesSection.buttonLabel.characters), systemImage: "person.2.gobackward")
                 }
             }
 

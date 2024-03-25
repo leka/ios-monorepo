@@ -77,6 +77,8 @@ struct RobotConnectionLabel: View {
 
 // MARK: - l10n.RobotConnectionLabel
 
+// swiftlint:disable line_length
+
 extension l10n {
     enum RobotConnectionLabel {
         static let textConnectedTo = LocalizedString("lekaapp.robot_connection_label.text_connected_to", value: "Connected to", comment: "Connected to xxx robot label")
@@ -84,6 +86,8 @@ extension l10n {
         static let textNotConnected = LocalizedString("lekaapp.robot_connection_label.text_not_connected", value: "Connect to your Leka", comment: "Connect to your Leka label")
     }
 }
+
+// swiftlint:enable line_length
 
 #Preview {
     NavigationSplitView(sidebar: {

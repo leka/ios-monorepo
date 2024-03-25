@@ -76,7 +76,7 @@ struct CreateCarereceiverView: View {
                     }
                 }
 
-                Button(String(l10n.CarereceiverCreation.createProfilButton.characters)) {
+                Button(String(l10n.CarereceiverCreation.createProfileButtonLabel.characters)) {
                     if self.newCarereceiver.avatar.isEmpty {
                         self.newCarereceiver.avatar = Avatars.categories.first!.avatars.randomElement()!
                     }
@@ -171,7 +171,7 @@ extension l10n {
 
         static let carereceiverNameLabel = LocalizedString("lekaapp.carereceiver_creation.carereceiver_name_label", value: "Username", comment: " Carereceiver creation carereceiver name textfield label")
 
-        static let createProfilButton = LocalizedString("lekaapp.carereceiver_creation.create_profil_button", value: "Create profile", comment: " Carereceiver creation create profil button label")
+        static let createProfileButtonLabel = LocalizedString("lekaapp.carereceiver_creation.create_profile_button_label", value: "Create profile", comment: " Carereceiver creation create profile button label")
 
         static let closeButtonLabel = LocalizedString("lekaapp.carereceiver_creation.close_button_label", value: "Close", comment: " Carereceiver creation close button label")
     }
