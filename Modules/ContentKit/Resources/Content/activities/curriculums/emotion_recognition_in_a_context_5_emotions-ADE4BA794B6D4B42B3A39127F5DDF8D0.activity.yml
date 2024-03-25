@@ -53,6 +53,7 @@ l10n:
       instructions: |
         - Encourager la personne accompagnée à observer attentivement l'image présentée
         - Encourager la personne accompagnée à toucher l'émotion correspondante à celle du personnage.
+        - Lorsque la réponse est correct, Leka lance un renforçateur.
 
   - locale: en_US
     details:
@@ -72,6 +73,7 @@ l10n:
       instructions: |
         - Encourage the care receiver to carefully observe the presented image.
         - Encourage the care receiver to touch the emotion corresponding to that of the character.
+        - When the answer is correct, Leka launches a reinforcer.
 
 exercises_payload:
   options:

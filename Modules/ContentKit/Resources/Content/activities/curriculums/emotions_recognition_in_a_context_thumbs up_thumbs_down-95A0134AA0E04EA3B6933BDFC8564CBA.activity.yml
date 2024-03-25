@@ -53,6 +53,7 @@ l10n:
       instructions: |
         - Encourager la personne accompagnée à observer attentivement l'image présentée, en prenant en compte à la fois le contexte et l'émotion du personnage.
         - Encourager la personne accompagnée à indiquer si le personnage se sent bien ou mal en appuyant respectivement soit sur le pouce en l'air soit sur le pouce en bas.
+        - Lorsque la réponse est correct, Leka lance un renforçateur.
 
   - locale: en_US
     details:
@@ -71,6 +72,7 @@ l10n:
       instructions: |
         - Encourage the care receiver to carefully observe the presented image, taking into account both the context and the character's emotion.
         - Encourage the care receiver to indicate whether the character feels good or bad by respectively pressing either the thumbs-up or thumbs-down button.
+        - When the answer is correct, Leka launches a reinforcer
 
 exercises_payload:
   options:
