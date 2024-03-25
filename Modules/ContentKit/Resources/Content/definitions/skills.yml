@@ -650,7 +650,7 @@ list:
               assiettes, etc.).
         subskills: []
 
-      - id: recognition/basic_physiological_recognition_needs
+      - id: recognition/basic_physiological_needs
         l10n:
           - locale: en_US
             name: Recognition of basic physiological needs
