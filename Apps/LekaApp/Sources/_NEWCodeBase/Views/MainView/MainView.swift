@@ -60,9 +60,11 @@ struct MainView: View {
                     }
                 }
 
-                Section("Developer Mode") {
-                    CategoryLabel(category: .developerModeImageListPNG)
-                }
+                #if DEVELOPER_MODE
+                    Section("Developer Mode") {
+                        CategoryLabel(category: .developerModeImageListPNG)
+                    }
+                #endif
 
                 VStack(alignment: .center, spacing: 20) {
                     if self.authManagerViewModel.userAuthenticationState == .loggedIn {
