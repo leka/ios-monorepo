@@ -561,7 +561,7 @@
             }
         },
         "lekaapp.caregiver_creation.close_button_label": {
-            "comment": " Caregiver creation close button label",
+            "comment": "Caregiver creation close button label",
             "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
@@ -849,7 +849,7 @@
             }
         },
         "lekaapp.carereceiver_creation.avatar_choice_button": {
-            "comment": " Carereceiver creation avatar choice button label",
+            "comment": "Carereceiver creation avatar choice button label",
             "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
@@ -867,7 +867,7 @@
             }
         },
         "lekaapp.carereceiver_creation.carereceiver_name_label": {
-            "comment": " Carereceiver creation carereceiver name textfield label",
+            "comment": "Carereceiver creation carereceiver name textfield label",
             "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
@@ -885,7 +885,7 @@
             }
         },
         "lekaapp.carereceiver_creation.close_button_label": {
-            "comment": " Carereceiver creation close button label",
+            "comment": "Carereceiver creation close button label",
             "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
@@ -903,7 +903,7 @@
             }
         },
         "lekaapp.carereceiver_creation.create_profile_button_label": {
-            "comment": " Carereceiver creation create profile button label",
+            "comment": "Carereceiver creation create profile button label",
             "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
@@ -921,7 +921,7 @@
             }
         },
         "lekaapp.carereceiver_creation.title": {
-            "comment": " Carereceiver creation title",
+            "comment": "Carereceiver creation title",
             "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
@@ -1749,7 +1749,7 @@
             }
         },
         "lekaapp.reinforcer_picker.description": {
-            "comment": " Reinforcer picker description",
+            "comment": "Reinforcer picker description",
             "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {

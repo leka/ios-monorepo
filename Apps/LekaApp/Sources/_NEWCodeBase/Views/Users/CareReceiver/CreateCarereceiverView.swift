@@ -165,15 +165,15 @@ struct CreateCarereceiverView: View {
 
 extension l10n {
     enum CarereceiverCreation {
-        static let title = LocalizedString("lekaapp.carereceiver_creation.title", value: "Create a carereceiver profile", comment: " Carereceiver creation title")
+        static let title = LocalizedString("lekaapp.carereceiver_creation.title", value: "Create a carereceiver profile", comment: "Carereceiver creation title")
 
-        static let avatarChoiceButton = LocalizedString("lekaapp.carereceiver_creation.avatar_choice_button", value: "Choose an avatar", comment: " Carereceiver creation avatar choice button label")
+        static let avatarChoiceButton = LocalizedString("lekaapp.carereceiver_creation.avatar_choice_button", value: "Choose an avatar", comment: "Carereceiver creation avatar choice button label")
 
-        static let carereceiverNameLabel = LocalizedString("lekaapp.carereceiver_creation.carereceiver_name_label", value: "Username", comment: " Carereceiver creation carereceiver name textfield label")
+        static let carereceiverNameLabel = LocalizedString("lekaapp.carereceiver_creation.carereceiver_name_label", value: "Username", comment: "Carereceiver creation carereceiver name textfield label")
 
-        static let createProfileButtonLabel = LocalizedString("lekaapp.carereceiver_creation.create_profile_button_label", value: "Create profile", comment: " Carereceiver creation create profile button label")
+        static let createProfileButtonLabel = LocalizedString("lekaapp.carereceiver_creation.create_profile_button_label", value: "Create profile", comment: "Carereceiver creation create profile button label")
 
-        static let closeButtonLabel = LocalizedString("lekaapp.carereceiver_creation.close_button_label", value: "Close", comment: " Carereceiver creation close button label")
+        static let closeButtonLabel = LocalizedString("lekaapp.carereceiver_creation.close_button_label", value: "Close", comment: "Carereceiver creation close button label")
     }
 }
 
