@@ -264,6 +264,7 @@ platform :ios do
     UI.header "Step: Generate, build & upload target: #{app}"
     Dir.chdir('..') do
       ENV['TUIST_TURN_OFF_LINTERS'] = 'TRUE'
+      ENV['TUIST_DEVELOPER_MODE'] = 'FALSE'
       system('tuist', 'generate', '-n', app.to_s)
     end
 
