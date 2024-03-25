@@ -4,8 +4,8 @@
 
 version: 1.0.0
 
-uuid: 525A44C44F154B408244CCD3E57E77EA
-name: Identify wet & dry items
+uuid: 9309431C672C45F2946B718BAF0A8D5F
+name: receptive_language_identify_opposites_little_and_big_items
 
 created_at: "2024-03-08T11:49:37.123541"
 last_edited_at: "2024-03-08T11:59:36.533942"
@@ -37,7 +37,7 @@ l10n:
     details:
       icon: receptive_language
 
-      title: Différencier sec et mouillé
+      title: Différencier petit et grand
       subtitle: null
 
       short_description: |
@@ -55,7 +55,7 @@ l10n:
     details:
       icon: receptive_language
 
-      title: Identify wet & dry items
+      title: Identify little & big items
       subtitle: null
 
       short_description: |
@@ -78,197 +78,197 @@ exercises_payload:
     - group:
         - instructions:
             - locale: fr_FR
-              value: Touche le sec
+              value: Touche le petit
             - locale: en_US
-              value: Touch the dry one
+              value: Touch the little one
           interface: touchToSelect
           gameplay: findTheRightAnswers
           shuffle_choices: true
           payload:
           choices:
-            - value: pictograms-animals-pets-dogdachshundwetgray
+            - value: pictograms-transportation-carblue-011F
               type: image
-            - value: pictograms-animals-pets-dogdachshundgray-004F
+            - value:
               type: image
               isRightAnswer: true
 
         - instructions:
             - locale: fr_FR
-              value: Touche le mouillé
+              value: Touche le grand
             - locale: en_US
-              value: Touch the wet one
+              value: Touch the big one
           interface: touchToSelect
           gameplay: findTheRightAnswers
           shuffle_choices: true
           payload:
           choices:
-            - value: pictograms-animals-pets-dogdachshundwetgray
+            - value: pictograms-transportation-carblue-011F
               type: image
               isRightAnswer: true
-            - value: pictograms-animals-pets-dogdachshundgray-004F
-              type: image
-
-    - group:
-        - instructions:
-            - locale: fr_FR
-              value: Touche le sec
-            - locale: en_US
-              value: Touch the dry one
-          interface: touchToSelect
-          gameplay: findTheRightAnswers
-          shuffle_choices: true
-          payload:
-          choices:
-            - value: pictograms-objects-house-kitchen-platewetpink
-              type: image
-            - value: pictograms-objects-house-kitchen-platepink-0199
-              type: image
-              isRightAnswer: true
-
-        - instructions:
-            - locale: fr_FR
-              value: Touche le mouillé
-            - locale: en_US
-              value: Touch the wet one
-          interface: touchToSelect
-          gameplay: findTheRightAnswers
-          shuffle_choices: true
-          payload:
-          choices:
-            - value: pictograms-objects-house-kitchen-platewetpink
-              type: image
-              isRightAnswer: true
-            - value: pictograms-objects-house-kitchen-platepink-0199
+            - value:
               type: image
 
     - group:
         - instructions:
             - locale: fr_FR
-              value: Touche le sec
+              value: Touche le petit
             - locale: en_US
-              value: Touch the dry one
+              value: Touch the little one
           interface: touchToSelect
           gameplay: findTheRightAnswers
           shuffle_choices: true
           payload:
           choices:
-            - value: pictograms-weather-rainy-day
+            - value: pictograms-objects-beach-circlepink
               type: image
-            - value: pictograms-weather-sunny-day
+            - value:
               type: image
               isRightAnswer: true
 
         - instructions:
             - locale: fr_FR
-              value: Touche le mouillé
+              value: Touche le grand
             - locale: en_US
-              value: Touch the wet one
+              value: Touch the big one
           interface: touchToSelect
           gameplay: findTheRightAnswers
           shuffle_choices: true
           payload:
           choices:
-            - value: pictograms-weather-rainy-day
+            - value: pictograms-objects-beach-circlepink
               type: image
               isRightAnswer: true
-            - value: pictograms-weather-sunny-day
-              type: image
-
-    - group:
-        - instructions:
-            - locale: fr_FR
-              value: Touche le sec
-            - locale: en_US
-              value: Touch the dry one
-          interface: touchToSelect
-          gameplay: findTheRightAnswers
-          shuffle_choices: true
-          payload:
-          choices:
-            - value: pictograms-foods-meals-glassicedwater-0171
-              type: image
-            - value: pictograms-foods-meals-baguette-0180
-              type: image
-              isRightAnswer: true
-
-        - instructions:
-            - locale: fr_FR
-              value: Touche le mouillé
-            - locale: en_US
-              value: Touch the wet one
-          interface: touchToSelect
-          gameplay: findTheRightAnswers
-          shuffle_choices: true
-          payload:
-          choices:
-            - value: pictograms-foods-meals-glassicedwater-0171
-              type: image
-              isRightAnswer: true
-            - value: pictograms-foods-meals-baguette-0180
+            - value:
               type: image
 
     - group:
         - instructions:
             - locale: fr_FR
-              value: Touche le sec
+              value: Touche le petit
             - locale: en_US
-              value: Touch the dry one
+              value: Touch the little one
           interface: touchToSelect
           gameplay: findTheRightAnswers
           shuffle_choices: true
           payload:
           choices:
-            - value: cheveux_mouillés
+            - value: pictograms-animals-farm-duck-006A
               type: image
-            - value: cheveux_secs
+            - value:
               type: image
               isRightAnswer: true
 
         - instructions:
             - locale: fr_FR
-              value: Touche le mouillé
+              value: Touche le grand
             - locale: en_US
-              value: Touch the wet one
+              value: Touch the big one
           interface: touchToSelect
           gameplay: findTheRightAnswers
           shuffle_choices: true
           payload:
           choices:
-            - value: cheveux_mouillés
+            - value: pictograms-animals-farm-duck-006A
               type: image
               isRightAnswer: true
-            - value: cheveux_secs
+            - value:
               type: image
 
     - group:
         - instructions:
             - locale: fr_FR
-              value: Touche le sec
+              value: Touche le petit
             - locale: en_US
-              value: Touch the dry one
+              value: Touch the little one
           interface: touchToSelect
           gameplay: findTheRightAnswers
           shuffle_choices: true
           payload:
           choices:
-            - value: lac
+            - value: pictograms-animals-sea-fishblue-0045
               type: image
-            - value: désert
+            - value:
               type: image
               isRightAnswer: true
 
         - instructions:
             - locale: fr_FR
-              value: Touche le mouillé
+              value: Touche le grand
             - locale: en_US
-              value: Touch the wet one
+              value: Touch the big one
           interface: touchToSelect
           gameplay: findTheRightAnswers
           shuffle_choices: true
           payload:
           choices:
-            - value: lac
+            - value: pictograms-animals-sea-fishblue-0045
               type: image
               isRightAnswer: true
-            - value: désert
+            - value:
+              type: image
+
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Touche le petit
+            - locale: en_US
+              value: Touch the little one
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms_house-purple-07
+              type: image
+            - value:
+              type: image
+              isRightAnswer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche le grand
+            - locale: en_US
+              value: Touch the big one
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms_house-purple-07
+              type: image
+              isRightAnswer: true
+            - value:
+              type: image
+
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Touche le petit
+            - locale: en_US
+              value: Touch the little one
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-animals-insects-butterflypink-0095
+              type: image
+            - value:
+              type: image
+              isRightAnswer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche le grand
+            - locale: en_US
+              value: Touch the big one
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-animals-insects-butterflypink-0095
+              type: image
+              isRightAnswer: true
+            - value:
               type: image

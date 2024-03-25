@@ -4,8 +4,8 @@
 
 version: 1.0.0
 
-uuid: AF9ACAC51F4240259050982EC15D0C7A
-name: Identify familiar nouns
+uuid: FDC6A9C523C54A47B40F2C4F1B480581
+name: receptive_language_identify_opposites_hot_and_cold_items
 
 created_at: "2024-03-08T11:49:37.123541"
 last_edited_at: "2024-03-08T11:59:36.533942"
@@ -37,7 +37,7 @@ l10n:
     details:
       icon: receptive_language
 
-      title: Identifier différents mots courants
+      title: Différencier chaud et froid
       subtitle: null
 
       short_description: |
@@ -55,7 +55,7 @@ l10n:
     details:
       icon: receptive_language
 
-      title: Identify familiar nouns
+      title: Identify hot & cold items
       subtitle: null
 
       short_description: |
@@ -78,144 +78,164 @@ exercises_payload:
     - group:
         - instructions:
             - locale: fr_FR
-              value: Touche le ballon
+              value: Touche le chaud
             - locale: en_US
-              value: Touch the balloon
+              value: Touch the hot one
           interface: touchToSelect
           gameplay: findTheRightAnswers
           shuffle_choices: true
           payload:
           choices:
-            - value: pictograms-objects-beach-balloon_red-00E0
+            - value: pictograms-foods-meals-glassicedwater-0171
               type: image
-              isRightAnswer: true
-            - value: pictograms-objects-school-pencil_yellow-012E
-              type: image
-            - value: pictograms-animals-forest-rabbit_gray-0061
-              type: image
-            - value: pictograms-clothes-suit_jacket_blue-0148
-              type: image
-            - value: pictograms-animals-savanna-tiger_orange-007B
-              type: image
-            - value: pictograms-foods-meals-birthday_cake-0173
-              type: image
-
-        - instructions:
-            - locale: fr_FR
-              value: Touche les chaussettes
-            - locale: en_US
-              value: Touch the socks
-          interface: touchToSelect
-          gameplay: findTheRightAnswers
-          shuffle_choices: true
-          payload:
-          choices:
-            - value: pictograms-clothes-socks_yellow-014D
-              type: image
-              isRightAnswer: true
-            - value: pictograms-objects-house-bedroom-chair_brown-01A8
-              type: image
-            - value: pictograms-objects-school-book_yellow-0131
-              type: image
-            - value: pictograms-objects-garden-bucket_green-00B0
-              type: image
-            - value: pictograms-transportation-plane_blue-0122
-              type: image
-            - value: pictograms-objects-garden-tree_green-00AD
-              type: image
-
-        - instructions:
-            - locale: fr_FR
-              value: Touche la maison
-            - locale: en_US
-              value: Touch the house
-          interface: touchToSelect
-          gameplay: findTheRightAnswers
-          shuffle_choices: true
-          payload:
-          choices:
-            - value: pictograms-animal-pets-dog_golden_retriever_brown-00A5
-              type: image
-            - value: pictograms-transportation-car_blue-011F
-              type: image
-            - value: pictograms-objects-garden-flower_blue-00B7
-              type: image
-            - value: pictograms-foods-fruits-banana_yellow-00FB
-              type: image
-            - value: pictograms-clothes-tshirt_blue-0157
-              type: image
-            - value: pictograms-object-house-blue
+            - value: pictograms-objects-house-kitchen-mugcofeegray-0193
               type: image
               isRightAnswer: true
 
         - instructions:
             - locale: fr_FR
-              value: Touche la carotte
+              value: Touche le froid
             - locale: en_US
-              value: Touch the carrot
+              value: Touch the cold one
           interface: touchToSelect
           gameplay: findTheRightAnswers
           shuffle_choices: true
           payload:
           choices:
-            - value: pictograms-foods-vegetables-carrot_orange-00E6
+            - value: pictograms-foods-meals-glassicedwater-0171
               type: image
               isRightAnswer: true
-            - value: pictograms-animals-savanna-giraffe_yellow-0081
+            - value: pictograms-objects-house-kitchen-mugcofeegray-0193
               type: image
-            - value: pictograms-objects-garden-slide_green-00AF
+
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Touche le chaud
+            - locale: en_US
+              value: Touch the hot one
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-objects-mountain-snowmanwhite-00D0
               type: image
-            - value: pictograms-objects-bathroom-towel_little_blue-00C7
+            - value: pictograms-objects-house-bedroom-heaterpink
               type: image
-            - value: pictograms-objects-beach-sun_yellow-00D7
-              type: image
-            - value: pictograms-objects-house-kitchen-spoon_gray-019B
-              type: image
+              isRightAnswer: true
 
         - instructions:
             - locale: fr_FR
-              value: Touche le soleil
+              value: Touche le froid
             - locale: en_US
-              value: Touch the sun
+              value: Touch the cold one
           interface: touchToSelect
           gameplay: findTheRightAnswers
           shuffle_choices: true
           payload:
           choices:
-            - value: pictograms-transportation-car_blue-011F
-              type: image
-            - value: pictograms-objects-house-bedroom-bed_blue-01A5
-              type: image
-            - value: pictograms-objects-house-kitchen-plate_pink-0199
-              type: image
-            - value: pictograms-objects-garden-swing_set_green-00B1
-              type: image
-            - value: pictograms-objects-beach-sun_yellow-00D7
+            - value: pictograms-objects-mountain-snowmanwhite-00D0
               type: image
               isRightAnswer: true
-            - value: pictograms-foods-vegetables-tomato_red-00E2
+            - value: pictograms-objects-house-bedroom-heaterpink
               type: image
+
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Touche le chaud
+            - locale: en_US
+              value: Touch the hot one
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-objects-mountain-icicleswhite
+              type: image
+            - value: pictograms-objects-beach-sunyellow-00D7
+              type: image
+              isRightAnswer: true
 
         - instructions:
             - locale: fr_FR
-              value: Touche le cookie
+              value: Touche le froid
             - locale: en_US
-              value: Touch the cookie
+              value: Touch the cold one
           interface: touchToSelect
           gameplay: findTheRightAnswers
           shuffle_choices: true
           payload:
           choices:
-            - value: pictograms-foods-meals-cookie-0174
+            - value: pictograms-objects-mountain-icicleswhite
               type: image
               isRightAnswer: true
-            - value: pictograms-clothes-shoes_baskets_white-013F
+            - value: pictograms-objects-beach-sunyellow-00D7
               type: image
-            - value: pictograms-animals-farm-horse_brown-006A
+
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Touche le chaud
+            - locale: en_US
+              value: Touch the hot one
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-foods-meals-icecornerpink-0181
               type: image
-            - value: pictograms-objects-house-kitchen-table_red-0187
+            - value: pictograms-foods-meals-soup-0172
               type: image
-            - value: pictograms-objects-bathroom-toothbrush_blue-00C5
+              isRightAnswer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche le froid
+            - locale: en_US
+              value: Touch the cold one
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-foods-meals-icecornerpink-0181
               type: image
-            - value: pictograms-weather-moon_white-0107
+              isRightAnswer: true
+            - value: pictograms-foods-meals-soup-0172
+              type: image
+
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Touche le chaud
+            - locale: en_US
+              value: Touch the hot one
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-weather-rainy-day
+              type: image
+            - value: pictograms-weather-sunny-day
+              type: image
+              isRightAnswer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche le froid
+            - locale: en_US
+              value: Touch the cold one
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-weather-rainy-day
+              type: image
+              isRightAnswer: true
+            - value: pictograms-weather-sunny-day
               type: image

@@ -4,8 +4,8 @@
 
 version: 1.0.0
 
-uuid: 2F6BDA819A304526AA40E9573B42C6E3
-name: Identify -ing verbs #3
+uuid: 1E85ED4F09A84B48904467AC40127824
+name: receptive_language_identify_positional_concepts_1
 
 created_at: "2024-03-08T11:49:37.123541"
 last_edited_at: "2024-03-08T11:59:36.533942"
@@ -19,6 +19,7 @@ skills:
   - communication/verbal_communication
   - communication/verbal_communication/receptive_language
   - communication/verbal_communication/receptive_language/oral_comprehension
+  - spatial_understanding
 
 tags:
 
@@ -37,7 +38,7 @@ l10n:
     details:
       icon: receptive_language
 
-      title: Identifier des actions #3
+      title: Identifier la position
       subtitle: null
 
       short_description: |
@@ -55,7 +56,7 @@ l10n:
     details:
       icon: receptive_language
 
-      title: Identify actions #3
+      title: Identify positional concepts
       subtitle: null
 
       short_description: |
@@ -78,303 +79,355 @@ exercises_payload:
     - group:
         - instructions:
             - locale: fr_FR
-              value: Touche dormir
+              value: Touche le chat sur la chaise
             - locale: en_US
-              value: Touch sleeping
+              value: Touch the cat on the chair
           interface: touchToSelect
           gameplay: findTheRightAnswers
           shuffle_choices: true
           payload:
           choices:
-            - value: pictograms-characters-boy_sleeping
+            - value:
               type: image
-              isRightAnswer: true
-            - value: pictograms-characters-boy_running
+            - value:
               type: image
-            - value: pictograms-characters-boy_kicking
-              type: image
-            - value: pictograms-characters-boy_digging
-              type: image
-            - value: pictograms-characters-boy_sweeping
-              type: image
-            - value: pictograms-characters-boy_painting
-              type: image
-
-        - instructions:
-            - locale: fr_FR
-              value: Touche balayer
-            - locale: en_US
-              value: Touch sweeping
-          interface: touchToSelect
-          gameplay: findTheRightAnswers
-          shuffle_choices: true
-          payload:
-          choices:
-            - value: pictograms-characters-boy_sleeping
-              type: image
-            - value: pictograms-characters-boy_running
-              type: image
-            - value: pictograms-characters-boy_kicking
-              type: image
-            - value: pictograms-characters-boy_digging
-              type: image
-            - value: pictograms-characters-boy_sweeping
-              type: image
-              isRightAnswer: true
-            - value: pictograms-characters-boy_painting
-              type: image
-
-        - instructions:
-            - locale: fr_FR
-              value: Touche creuser
-            - locale: en_US
-              value: Touch digging
-          interface: touchToSelect
-          gameplay: findTheRightAnswers
-          shuffle_choices: true
-          payload:
-          choices:
-            - value: pictograms-characters-boy_sleeping
-              type: image
-            - value: pictograms-characters-boy_running
-              type: image
-            - value: pictograms-characters-boy_kicking
-              type: image
-            - value: pictograms-characters-boy_digging
-              type: image
-              isRightAnswer: true
-            - value: pictograms-characters-boy_sweeping
-              type: image
-            - value: pictograms-characters-boy_painting
-              type: image
-
-        - instructions:
-            - locale: fr_FR
-              value: Touche courir
-            - locale: en_US
-              value: Touch running
-          interface: touchToSelect
-          gameplay: findTheRightAnswers
-          shuffle_choices: true
-          payload:
-          choices:
-            - value: pictograms-characters-boy_sleeping
-              type: image
-            - value: pictograms-characters-boy_running
-              type: image
-              isRightAnswer: true
-            - value: pictograms-characters-boy_kicking
-              type: image
-            - value: pictograms-characters-boy_digging
-              type: image
-            - value: pictograms-characters-boy_sweeping
-              type: image
-            - value: pictograms-characters-boy_painting
-              type: image
-
-        - instructions:
-            - locale: fr_FR
-              value: Touche peindre
-            - locale: en_US
-              value: Touch painting
-          interface: touchToSelect
-          gameplay: findTheRightAnswers
-          shuffle_choices: true
-          payload:
-          choices:
-            - value: pictograms-characters-boy_sleeping
-              type: image
-            - value: pictograms-characters-boy_running
-              type: image
-            - value: pictograms-characters-boy_kicking
-              type: image
-            - value: pictograms-characters-boy_digging
-              type: image
-            - value: pictograms-characters-boy_sweeping
-              type: image
-            - value: pictograms-characters-boy_painting
+            - value:
               type: image
               isRightAnswer: true
 
         - instructions:
             - locale: fr_FR
-              value: Touche peindre
+              value: Touche le chat sous la chaise
             - locale: en_US
-              value: Touch painting
+              value: Touch the cat on the chair
           interface: touchToSelect
           gameplay: findTheRightAnswers
           shuffle_choices: true
           payload:
           choices:
-            - value: pictograms-characters-boy_sleeping
+            - value:
               type: image
-            - value: pictograms-characters-boy_running
+            - value:
               type: image
-            - value: pictograms-characters-boy_kicking
+            - value:
               type: image
               isRightAnswer: true
-            - value: pictograms-characters-boy_digging
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche le chat derrière la chaise
+            - locale: en_US
+              value: Touch the cat on the chair
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value:
               type: image
-            - value: pictograms-characters-boy_sweeping
+            - value:
               type: image
-            - value: pictograms-characters-boy_painting
+            - value:
               type: image
+              isRightAnswer: true
 
     - group:
         - instructions:
             - locale: fr_FR
-              value: Touche faire un bisou
+              value: Touche la fille sur le lit
             - locale: en_US
-              value: Touch giving a kiss
+              value: Touch the girl on the bed
           interface: touchToSelect
           gameplay: findTheRightAnswers
           shuffle_choices: true
           payload:
           choices:
-            - value: pictograms-characters-boy_kissing
+            - value:
               type: image
-              isRightAnswer: true
-            - value: pictograms-characters-boy_reading
+            - value:
               type: image
-            - value: pictograms-characters-boy_jumping
-              type: image
-            - value: pictograms-characters-boy_surfing
-              type: image
-            - value: pictograms-characters-boy_drinking
-              type: image
-            - value: pictograms-characters-boy_kissing
-              type: image
-            - value: pictograms-characters-boy_dancing
-              type: image
-
-        - instructions:
-            - locale: fr_FR
-              value: Touche danser
-            - locale: en_US
-              value: Touch dancing
-          interface: touchToSelect
-          gameplay: findTheRightAnswers
-          shuffle_choices: true
-          payload:
-          choices:
-            - value: pictograms-characters-boy_kissing
-              type: image
-            - value: pictograms-characters-boy_reading
-              type: image
-            - value: pictograms-characters-boy_jumping
-              type: image
-            - value: pictograms-characters-boy_surfing
-              type: image
-            - value: pictograms-characters-boy_drinking
-              type: image
-            - value: pictograms-characters-boy_kissing
-              type: image
-            - value: pictograms-characters-boy_dancing
+            - value:
               type: image
               isRightAnswer: true
 
         - instructions:
             - locale: fr_FR
-              value: Touche danser
+              value: Touche la fille sous le lit
             - locale: en_US
-              value: Touch dancing
+              value: Touch the girl on the bed
           interface: touchToSelect
           gameplay: findTheRightAnswers
           shuffle_choices: true
           payload:
           choices:
-            - value: pictograms-characters-boy_kissing
+            - value:
               type: image
-            - value: pictograms-characters-boy_reading
+            - value:
               type: image
-            - value: pictograms-characters-boy_jumping
-              type: image
-            - value: pictograms-characters-boy_surfing
-              type: image
-            - value: pictograms-characters-boy_drinking
+            - value:
               type: image
               isRightAnswer: true
-            - value: pictograms-characters-boy_kissing
-              type: image
-            - value: pictograms-characters-boy_dancing
-              type: image
 
         - instructions:
             - locale: fr_FR
-              value: Touche surfer
+              value: Touche le fille dans le lit
             - locale: en_US
-              value: Touch surfing
+              value: Touch the girl in the bed
           interface: touchToSelect
           gameplay: findTheRightAnswers
           shuffle_choices: true
           payload:
           choices:
-            - value: pictograms-characters-boy_kissing
+            - value:
               type: image
-            - value: pictograms-characters-boy_reading
+            - value:
               type: image
-            - value: pictograms-characters-boy_jumping
-              type: image
-            - value: pictograms-characters-boy_surfing
+            - value:
               type: image
               isRightAnswer: true
-            - value: pictograms-characters-boy_drinking
+
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Touche le jouet sous le placard
+            - locale: en_US
+              value: Touch the toy under the cupboard
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value:
               type: image
-            - value: pictograms-characters-boy_kissing
+            - value:
               type: image
-            - value: pictograms-characters-boy_dancing
+            - value:
               type: image
+              isRightAnswer: true
 
         - instructions:
             - locale: fr_FR
-              value: Touche lire
+              value: Touche le jouet sur le placard
             - locale: en_US
-              value: Touch reading
+              value: Touch the toy on the cupboard
           interface: touchToSelect
           gameplay: findTheRightAnswers
           shuffle_choices: true
           payload:
           choices:
-            - value: pictograms-characters-boy_kissing
+            - value:
               type: image
-            - value: pictograms-characters-boy_reading
+            - value:
+              type: image
+            - value:
               type: image
               isRightAnswer: true
-            - value: pictograms-characters-boy_jumping
-              type: image
-            - value: pictograms-characters-boy_surfing
-              type: image
-            - value: pictograms-characters-boy_drinking
-              type: image
-            - value: pictograms-characters-boy_kissing
-              type: image
-            - value: pictograms-characters-boy_dancing
-              type: image
 
         - instructions:
             - locale: fr_FR
-              value: Touche sauter
+              value: Touche le jouet dans le placard
             - locale: en_US
-              value: Touch jumping
+              value: Touch the toy in the cupboard
           interface: touchToSelect
           gameplay: findTheRightAnswers
           shuffle_choices: true
           payload:
           choices:
-            - value: pictograms-characters-boy_kissing
+            - value:
               type: image
-            - value: pictograms-characters-boy_reading
+            - value:
               type: image
-            - value: pictograms-characters-boy_jumping
+            - value:
               type: image
               isRightAnswer: true
-            - value: pictograms-characters-boy_surfing
-              type: image
-            - value: pictograms-characters-boy_drinking
-              type: image
-            - value: pictograms-characters-boy_kissing
-              type: image
-            - value: pictograms-characters-boy_dancing
-              type: image
 
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Touche le chien dans la niche
+            - locale: en_US
+              value: Touch the dog in the kennel
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value:
+              type: image
+            - value:
+              type: image
+            - value:
+              type: image
+              isRightAnswer: true
 
+        - instructions:
+            - locale: fr_FR
+              value: Touche le chien à côté de la niche
+            - locale: en_US
+              value: Touch the dog next to the kennel
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value:
+              type: image
+            - value:
+              type: image
+            - value:
+              type: image
+              isRightAnswer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche le chien sur la niche
+            - locale: en_US
+              value: Touch the dog on the kennel
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value:
+              type: image
+            - value:
+              type: image
+            - value:
+              type: image
+              isRightAnswer: true
+
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Touche l'homme à côté de la voiture
+            - locale: en_US
+              value: Touch the man next to the car
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value:
+              type: image
+            - value:
+              type: image
+            - value:
+              type: image
+            - value:
+              type: image
+              isRightAnswer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche l'homme dans la voiture
+            - locale: en_US
+              value: Touch the man in the car
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value:
+              type: image
+            - value:
+              type: image
+            - value:
+              type: image
+            - value:
+              type: image
+              isRightAnswer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche l'homme sous la voiture
+            - locale: en_US
+              value: Touch the man under the car
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value:
+              type: image
+            - value:
+              type: image
+            - value:
+              type: image
+            - value:
+              type: image
+              isRightAnswer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche l'homme à côté de la voiture
+            - locale: en_US
+              value: Touch the man next to the car
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value:
+              type: image
+            - value:
+              type: image
+            - value:
+              type: image
+            - value:
+              type: image
+              isRightAnswer: true
+
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Touche le garçon derrière la table
+            - locale: en_US
+              value: Touch the boy behind the table
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value:
+              type: image
+            - value:
+              type: image
+            - value:
+              type: image
+              isRightAnswer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche le garçon sous la table
+            - locale: en_US
+              value: Touch the boy behind the table
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value:
+              type: image
+            - value:
+              type: image
+            - value:
+              type: image
+              isRightAnswer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche le garçon sur la table
+            - locale: en_US
+              value: Touch the boy behind the table
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value:
+              type: image
+            - value:
+              type: image
+            - value:
+              type: image
+              isRightAnswer: true

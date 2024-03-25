@@ -4,8 +4,8 @@
 
 version: 1.0.0
 
-uuid: B8964AC4C9B644BEB35DE4B4AD1C5D93
-name: Identify colors
+uuid: 29CF410501F644799C18C9F970C53129
+name: receptive_language_identify_opposites_clean_and_dirty_items
 
 created_at: "2024-03-08T11:49:37.123541"
 last_edited_at: "2024-03-08T11:59:36.533942"
@@ -37,7 +37,7 @@ l10n:
     details:
       icon: receptive_language
 
-      title: Identifier des couleurs
+      title: Différencier propre et sale
       subtitle: null
 
       short_description: |
@@ -55,7 +55,7 @@ l10n:
     details:
       icon: receptive_language
 
-      title: Identify colors
+      title: Identify clean & dirty items
       subtitle: null
 
       short_description: |
@@ -78,253 +78,197 @@ exercises_payload:
     - group:
         - instructions:
             - locale: fr_FR
-              value: Touche la balle rouge
+              value: Touche le propre
             - locale: en_US
-              value: Touch the red ball
+              value: Touch the clean one
           interface: touchToSelect
           gameplay: findTheRightAnswers
           shuffle_choices: true
           payload:
           choices:
-            - value: pictograms-objects-beach-balloonyellow
+            - value: pictograms-clothes-tshirtgreendirty
               type: image
-            - value: pictograms-objects-beach-balloon_red-00E0
-              type: image
-              isRightAnswer: true
-            - value: pictograms-objects-beach-balloonblue
-              type: image
-
-        - instructions:
-            - locale: fr_FR
-              value: Touche la balle jaune
-            - locale: en_US
-              value: Touch the yellow ball
-          interface: touchToSelect
-          gameplay: findTheRightAnswers
-          shuffle_choices: true
-          payload:
-          choices:
-            - value: pictograms-objects-beach-balloonyellow
-              type: image
-              isRightAnswer: true
-            - value: pictograms-objects-beach-balloon_red-00E0
-              type: image
-            - value: pictograms-objects-beach-balloonblue
-              type: image
-
-        - instructions:
-            - locale: fr_FR
-              value: Touche la balle bleue
-            - locale: en_US
-              value: Touch the blue ball
-          interface: touchToSelect
-          gameplay: findTheRightAnswers
-          shuffle_choices: true
-          payload:
-          choices:
-            - value: pictograms-objects-beach-balloonyellow
-              type: image
-            - value: pictograms-objects-beach-balloon_red-00E0
-              type: image
-            - value: pictograms-objects-beach-balloonblue
-              type: image
-              isRightAnswer: true
-    - group:
-        - instructions:
-            - locale: fr_FR
-              value: Touche la voiture verte
-            - locale: en_US
-              value: Touch the green car
-          interface: touchToSelect
-          gameplay: findTheRightAnswers
-          shuffle_choices: true
-          payload:
-          choices:
-            - value: pictograms-transportation-carpurple
-              type: image
-            - value: pictograms-transportation-carorange
-              type: image
-            - value: pictograms-transportation-cargreen
+            - value: pictograms-clothes-tshirtgreen-014E
               type: image
               isRightAnswer: true
 
         - instructions:
             - locale: fr_FR
-              value: Touche la voiture violette
+              value: Touche le sale
             - locale: en_US
-              value: Touch the purple car
+              value: Touch the dirty one
           interface: touchToSelect
           gameplay: findTheRightAnswers
           shuffle_choices: true
           payload:
           choices:
-            - value: pictograms-transportation-carpurple
+            - value: pictograms-clothes-tshirtgreendirty
               type: image
               isRightAnswer: true
-            - value: pictograms-transportation-carorange
-              type: image
-            - value: pictograms-transportation-cargreen
-              type: image
-
-        - instructions:
-            - locale: fr_FR
-              value: Touche la voiture orange
-            - locale: en_US
-              value: Touch the orange car
-          interface: touchToSelect
-          gameplay: findTheRightAnswers
-          shuffle_choices: true
-          payload:
-          choices:
-            - value: pictograms-transportation-carpurple
-              type: image
-            - value: pictograms-transportation-carorange
-              type: image
-              isRightAnswer: true
-            - value: pictograms-transportation-cargreen
+            - value: pictograms-clothes-tshirtgreen-014E
               type: image
 
     - group:
         - instructions:
             - locale: fr_FR
-              value: Touche la maison orange
+              value: Touche le propre
             - locale: en_US
-              value: Touch the orange house
+              value: Touch the clean one
           interface: touchToSelect
           gameplay: findTheRightAnswers
           shuffle_choices: true
           payload:
           choices:
-            - value: pictograms-object-house-blue
+            - value: pictograms-clothes-hatdirtygray
               type: image
-            - value: pictograms-object-house-orange
-              type: image
-              isRightAnswer: true
-            - value: pictograms-object-house-red
-              type: image
-            - value: pictograms-object-house-purple
-              type: image
-            - value: pictograms-object-house-yellow
-              type: image
-            - value: pictograms-object-house-green
-              type: image
-
-        - instructions:
-            - locale: fr_FR
-              value: Touche la maison violette
-            - locale: en_US
-              value: Touch the purple house
-          interface: touchToSelect
-          gameplay: findTheRightAnswers
-          shuffle_choices: true
-          payload:
-          choices:
-            - value: pictograms-object-house-blue
-              type: image
-            - value: pictograms-object-house-orange
-              type: image
-            - value: pictograms-object-house-red
-              type: image
-            - value: pictograms-object-house-purple
-              type: image
-              isRightAnswer: true
-            - value: pictograms-object-house-yellow
-              type: image
-            - value: pictograms-object-house-green
-              type: image
-
-        - instructions:
-            - locale: fr_FR
-              value: Touche la maison verte
-            - locale: en_US
-              value: Touch the green house
-          interface: touchToSelect
-          gameplay: findTheRightAnswers
-          shuffle_choices: true
-          payload:
-          choices:
-            - value: pictograms-object-house-blue
-              type: image
-            - value: pictograms-object-house-orange
-              type: image
-            - value: pictograms-object-house-red
-              type: image
-            - value: pictograms-object-house-purple
-              type: image
-            - value: pictograms-object-house-yellow
-              type: image
-            - value: pictograms-object-house-green
+            - value: pictograms-clothes-hatgray-014C
               type: image
               isRightAnswer: true
 
         - instructions:
             - locale: fr_FR
-              value: Touche la maison rouge
+              value: Touche le sale
             - locale: en_US
-              value: Touch the red house
+              value: Touch the dirty one
           interface: touchToSelect
           gameplay: findTheRightAnswers
           shuffle_choices: true
           payload:
           choices:
-            - value: pictograms-object-house-blue
-              type: image
-            - value: pictograms-object-house-orange
-              type: image
-            - value: pictograms-object-house-red
+            - value: pictograms-clothes-hatdirtygray
               type: image
               isRightAnswer: true
-            - value: pictograms-object-house-purple
+            - value: pictograms-clothes-hatgray-014C
               type: image
-            - value: pictograms-object-house-yellow
+
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Touche le propre
+            - locale: en_US
+              value: Touch the clean one
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-objects-house-kitchen-platepinkdirty
               type: image
-            - value: pictograms-object-house-green
+            - value: pictograms-objects-house-kitchen-platepink-0199
               type: image
+              isRightAnswer: true
 
         - instructions:
             - locale: fr_FR
-              value: Touche la maison bleue
+              value: Touche le sale
             - locale: en_US
-              value: Touch the blue house
+              value: Touch the dirty one
           interface: touchToSelect
           gameplay: findTheRightAnswers
           shuffle_choices: true
           payload:
           choices:
-            - value: pictograms-object-house-blue
+            - value: pictograms-objects-house-kitchen-platepinkdirty
               type: image
               isRightAnswer: true
-            - value: pictograms-object-house-orange
+            - value: pictograms-objects-house-kitchen-platepink-0199
               type: image
-            - value: pictograms-object-house-red
+
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Touche le propre
+            - locale: en_US
+              value: Touch the clean one
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-objects-house-kitchen-fryingpandirtyred
               type: image
-            - value: pictograms-object-house-purple
+            - value: pictograms-objects-house-kitchen-fryingpanred-0195
               type: image
-            - value: pictograms-object-house-yellow
-              type: image
-            - value: pictograms-object-house-green
-              type: image
+              isRightAnswer: true
 
         - instructions:
             - locale: fr_FR
-              value: Touche la maison jaune
+              value: Touche le sale
             - locale: en_US
-              value: Touch the yellow house
+              value: Touch the dirty one
           interface: touchToSelect
           gameplay: findTheRightAnswers
           shuffle_choices: true
           payload:
           choices:
-            - value: pictograms-object-house-blue
-              type: image
-            - value: pictograms-object-house-orange
-              type: image
-            - value: pictograms-object-house-red
-              type: image
-            - value: pictograms-object-house-purple
-              type: image
-            - value: pictograms-object-house-yellow
+            - value: pictograms-objects-house-kitchen-fryingpandirtyred
               type: image
               isRightAnswer: true
-            - value: pictograms-object-house-green
+            - value: pictograms-objects-house-kitchen-fryingpanred-0195
+              type: image
+
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Touche le propre
+            - locale: en_US
+              value: Touch the clean one
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-transportation-carbluedirty
+              type: image
+            - value: pictograms-transportation-carblue-011F
+              type: image
+              isRightAnswer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche le sale
+            - locale: en_US
+              value: Touch the dirty one
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-transportation-carbluedirty
+              type: image
+              isRightAnswer: true
+            - value: pictograms-transportation-carblue-011F
+              type: image
+
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Touche le propre
+            - locale: en_US
+              value: Touch the clean one
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-clothes-pantbrowndirty
+              type: image
+            - value: pictograms-clothes-pantbrown-0145
+              type: image
+              isRightAnswer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche le sale
+            - locale: en_US
+              value: Touch the dirty one
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-clothes-pantbrowndirty
+              type: image
+              isRightAnswer: true
+            - value: pictograms-clothes-pantbrown-0145
               type: image

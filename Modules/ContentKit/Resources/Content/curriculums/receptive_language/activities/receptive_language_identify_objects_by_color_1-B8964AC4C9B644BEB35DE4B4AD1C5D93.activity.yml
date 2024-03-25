@@ -4,8 +4,8 @@
 
 version: 1.0.0
 
-uuid: 9309431C672C45F2946B718BAF0A8D5F
-name: Identify little & big items
+uuid: B8964AC4C9B644BEB35DE4B4AD1C5D93
+name: receptive_language_identify_objects_by_color_1
 
 created_at: "2024-03-08T11:49:37.123541"
 last_edited_at: "2024-03-08T11:59:36.533942"
@@ -37,7 +37,7 @@ l10n:
     details:
       icon: receptive_language
 
-      title: Différencier petit et grand
+      title: Identifier des couleurs
       subtitle: null
 
       short_description: |
@@ -55,7 +55,7 @@ l10n:
     details:
       icon: receptive_language
 
-      title: Identify little & big items
+      title: Identify colors
       subtitle: null
 
       short_description: |
@@ -78,197 +78,253 @@ exercises_payload:
     - group:
         - instructions:
             - locale: fr_FR
-              value: Touche le petit
+              value: Touche la balle rouge
             - locale: en_US
-              value: Touch the little one
+              value: Touch the red ball
           interface: touchToSelect
           gameplay: findTheRightAnswers
           shuffle_choices: true
           payload:
           choices:
-            - value: pictograms-transportation-carblue-011F
+            - value: pictograms-objects-beach-balloonyellow
               type: image
-            - value:
+            - value: pictograms-objects-beach-balloon_red-00E0
+              type: image
+              isRightAnswer: true
+            - value: pictograms-objects-beach-balloonblue
+              type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche la balle jaune
+            - locale: en_US
+              value: Touch the yellow ball
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-objects-beach-balloonyellow
+              type: image
+              isRightAnswer: true
+            - value: pictograms-objects-beach-balloon_red-00E0
+              type: image
+            - value: pictograms-objects-beach-balloonblue
+              type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche la balle bleue
+            - locale: en_US
+              value: Touch the blue ball
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-objects-beach-balloonyellow
+              type: image
+            - value: pictograms-objects-beach-balloon_red-00E0
+              type: image
+            - value: pictograms-objects-beach-balloonblue
+              type: image
+              isRightAnswer: true
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Touche la voiture verte
+            - locale: en_US
+              value: Touch the green car
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-transportation-carpurple
+              type: image
+            - value: pictograms-transportation-carorange
+              type: image
+            - value: pictograms-transportation-cargreen
               type: image
               isRightAnswer: true
 
         - instructions:
             - locale: fr_FR
-              value: Touche le grand
+              value: Touche la voiture violette
             - locale: en_US
-              value: Touch the big one
+              value: Touch the purple car
           interface: touchToSelect
           gameplay: findTheRightAnswers
           shuffle_choices: true
           payload:
           choices:
-            - value: pictograms-transportation-carblue-011F
+            - value: pictograms-transportation-carpurple
               type: image
               isRightAnswer: true
-            - value:
+            - value: pictograms-transportation-carorange
+              type: image
+            - value: pictograms-transportation-cargreen
+              type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche la voiture orange
+            - locale: en_US
+              value: Touch the orange car
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-transportation-carpurple
+              type: image
+            - value: pictograms-transportation-carorange
+              type: image
+              isRightAnswer: true
+            - value: pictograms-transportation-cargreen
               type: image
 
     - group:
         - instructions:
             - locale: fr_FR
-              value: Touche le petit
+              value: Touche la maison orange
             - locale: en_US
-              value: Touch the little one
+              value: Touch the orange house
           interface: touchToSelect
           gameplay: findTheRightAnswers
           shuffle_choices: true
           payload:
           choices:
-            - value: pictograms-objects-beach-circlepink
+            - value: pictograms-object-house-blue
               type: image
-            - value:
+            - value: pictograms-object-house-orange
+              type: image
+              isRightAnswer: true
+            - value: pictograms-object-house-red
+              type: image
+            - value: pictograms-object-house-purple
+              type: image
+            - value: pictograms-object-house-yellow
+              type: image
+            - value: pictograms-object-house-green
+              type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche la maison violette
+            - locale: en_US
+              value: Touch the purple house
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-object-house-blue
+              type: image
+            - value: pictograms-object-house-orange
+              type: image
+            - value: pictograms-object-house-red
+              type: image
+            - value: pictograms-object-house-purple
+              type: image
+              isRightAnswer: true
+            - value: pictograms-object-house-yellow
+              type: image
+            - value: pictograms-object-house-green
+              type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche la maison verte
+            - locale: en_US
+              value: Touch the green house
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-object-house-blue
+              type: image
+            - value: pictograms-object-house-orange
+              type: image
+            - value: pictograms-object-house-red
+              type: image
+            - value: pictograms-object-house-purple
+              type: image
+            - value: pictograms-object-house-yellow
+              type: image
+            - value: pictograms-object-house-green
               type: image
               isRightAnswer: true
 
         - instructions:
             - locale: fr_FR
-              value: Touche le grand
+              value: Touche la maison rouge
             - locale: en_US
-              value: Touch the big one
+              value: Touch the red house
           interface: touchToSelect
           gameplay: findTheRightAnswers
           shuffle_choices: true
           payload:
           choices:
-            - value: pictograms-objects-beach-circlepink
+            - value: pictograms-object-house-blue
+              type: image
+            - value: pictograms-object-house-orange
+              type: image
+            - value: pictograms-object-house-red
               type: image
               isRightAnswer: true
-            - value:
+            - value: pictograms-object-house-purple
               type: image
-
-    - group:
-        - instructions:
-            - locale: fr_FR
-              value: Touche le petit
-            - locale: en_US
-              value: Touch the little one
-          interface: touchToSelect
-          gameplay: findTheRightAnswers
-          shuffle_choices: true
-          payload:
-          choices:
-            - value: pictograms-animals-farm-duck-006A
+            - value: pictograms-object-house-yellow
               type: image
-            - value:
+            - value: pictograms-object-house-green
               type: image
-              isRightAnswer: true
 
         - instructions:
             - locale: fr_FR
-              value: Touche le grand
+              value: Touche la maison bleue
             - locale: en_US
-              value: Touch the big one
+              value: Touch the blue house
           interface: touchToSelect
           gameplay: findTheRightAnswers
           shuffle_choices: true
           payload:
           choices:
-            - value: pictograms-animals-farm-duck-006A
+            - value: pictograms-object-house-blue
               type: image
               isRightAnswer: true
-            - value:
+            - value: pictograms-object-house-orange
               type: image
-
-    - group:
-        - instructions:
-            - locale: fr_FR
-              value: Touche le petit
-            - locale: en_US
-              value: Touch the little one
-          interface: touchToSelect
-          gameplay: findTheRightAnswers
-          shuffle_choices: true
-          payload:
-          choices:
-            - value: pictograms-animals-sea-fishblue-0045
+            - value: pictograms-object-house-red
               type: image
-            - value:
+            - value: pictograms-object-house-purple
               type: image
-              isRightAnswer: true
+            - value: pictograms-object-house-yellow
+              type: image
+            - value: pictograms-object-house-green
+              type: image
 
         - instructions:
             - locale: fr_FR
-              value: Touche le grand
+              value: Touche la maison jaune
             - locale: en_US
-              value: Touch the big one
+              value: Touch the yellow house
           interface: touchToSelect
           gameplay: findTheRightAnswers
           shuffle_choices: true
           payload:
           choices:
-            - value: pictograms-animals-sea-fishblue-0045
+            - value: pictograms-object-house-blue
+              type: image
+            - value: pictograms-object-house-orange
+              type: image
+            - value: pictograms-object-house-red
+              type: image
+            - value: pictograms-object-house-purple
+              type: image
+            - value: pictograms-object-house-yellow
               type: image
               isRightAnswer: true
-            - value:
-              type: image
-
-    - group:
-        - instructions:
-            - locale: fr_FR
-              value: Touche le petit
-            - locale: en_US
-              value: Touch the little one
-          interface: touchToSelect
-          gameplay: findTheRightAnswers
-          shuffle_choices: true
-          payload:
-          choices:
-            - value: pictograms_house-purple-07
-              type: image
-            - value:
-              type: image
-              isRightAnswer: true
-
-        - instructions:
-            - locale: fr_FR
-              value: Touche le grand
-            - locale: en_US
-              value: Touch the big one
-          interface: touchToSelect
-          gameplay: findTheRightAnswers
-          shuffle_choices: true
-          payload:
-          choices:
-            - value: pictograms_house-purple-07
-              type: image
-              isRightAnswer: true
-            - value:
-              type: image
-
-    - group:
-        - instructions:
-            - locale: fr_FR
-              value: Touche le petit
-            - locale: en_US
-              value: Touch the little one
-          interface: touchToSelect
-          gameplay: findTheRightAnswers
-          shuffle_choices: true
-          payload:
-          choices:
-            - value: pictograms-animals-insects-butterflypink-0095
-              type: image
-            - value:
-              type: image
-              isRightAnswer: true
-
-        - instructions:
-            - locale: fr_FR
-              value: Touche le grand
-            - locale: en_US
-              value: Touch the big one
-          interface: touchToSelect
-          gameplay: findTheRightAnswers
-          shuffle_choices: true
-          payload:
-          choices:
-            - value: pictograms-animals-insects-butterflypink-0095
-              type: image
-              isRightAnswer: true
-            - value:
+            - value: pictograms-object-house-green
               type: image

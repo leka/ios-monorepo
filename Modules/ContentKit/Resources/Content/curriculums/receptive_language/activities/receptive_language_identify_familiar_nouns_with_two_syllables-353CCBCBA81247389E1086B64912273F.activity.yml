@@ -4,8 +4,8 @@
 
 version: 1.0.0
 
-uuid: 49E3191F47824DEFA6011498A1B3A8AF
-name: Identify familiar nouns with one syllable
+uuid: 353CCBCBA81247389E1086B64912273F
+name: receptive_language_identify_familiar_nouns_with_two_syllables
 
 created_at: "2024-03-08T11:49:37.123541"
 last_edited_at: "2024-03-08T11:59:36.533942"
@@ -37,7 +37,7 @@ l10n:
     details:
       icon: receptive_language
 
-      title: Identifier des mots courants d'une syllabe
+      title: Identifier des mots courants de deux syllabes
       subtitle: null
 
       short_description: |
@@ -55,7 +55,7 @@ l10n:
     details:
       icon: receptive_language
 
-      title: Identify familiar nouns with one syllable
+      title: Identify familiar nouns with two syllables
       subtitle: null
 
       short_description: |
@@ -78,72 +78,36 @@ exercises_payload:
     - group:
         - instructions:
             - locale: fr_FR
-              value: Touche le chat
+              value: Touche le pingouin
             - locale: en_US
-              value: Touch the cat
+              value: Touch the penguin
           interface: touchToSelect
           gameplay: findTheRightAnswers
           shuffle_choices: true
           payload:
           choices:
-            - value: pictograms-foods-meals-baguette-0180
-              type: image
-            - value: pictograms-animals-forest-wolf_gray-005F
-              type: image
-            - value: pictograms-animal-pets-cat_gray-00A3
+            - value: pictograms-animals-arctic-penguin_yellow-0088
               type: image
               isRightAnswer: true
-
-        - instructions:
-            - locale: fr_FR
-              value: Touche le lait
-            - locale: en_US
-              value: Touch the milk
-          interface: touchToSelect
-          gameplay: findTheRightAnswers
-          shuffle_choices: true
-          payload:
-          choices:
-            - value: pictograms-foods-ingredients-milk_bottle-0165
+            - value: pictograms-animals-savanna-giraffe_yellow-0081
               type: image
-              isRightAnswer: true
-            - value: pictograms-foods-ingredients-salt_shaker-0166
-              type: image
-            - value: pictograms-animal-pets-dog_golden_retriever_brown-00A5
+            - value: pictograms-foods-meals-cup_of_coffee-0184
               type: image
 
         - instructions:
             - locale: fr_FR
-              value: Touche le sel
+              value: Touche le lapin
             - locale: en_US
-              value: Touch the salt
+              value: Touch the rabbit
           interface: touchToSelect
           gameplay: findTheRightAnswers
           shuffle_choices: true
           payload:
           choices:
-            - value: pictograms-animals-forest-wolf_gray-005F
-              type: image
-            - value: pictograms-foods-ingredients-salt_shaker-0166
+            - value: pictograms-animals-forest-rabbit_gray-0061
               type: image
               isRightAnswer: true
-            - value: pictograms-animal-pets-dog_golden_retriever_brown-00A5
+            - value: pictograms-animals-pets-turtle_green-0056
               type: image
-
-        - instructions:
-            - locale: fr_FR
-              value: Touche le lait
-            - locale: en_US
-              value: Touch the milk
-          interface: touchToSelect
-          gameplay: findTheRightAnswers
-          shuffle_choices: true
-          payload:
-          choices:
-            - value: pictograms-animals-forest-bear_brown-005E
+            - value: pictograms-animals-savanna-ostrich_gray-007F
               type: image
-            - value: pictograms-foods-meals-baguette-0180
-              type: image
-            - value: pictograms-foods-ingredients-milk_bottle-0165
-              type: image
-              isRightAnswer: true
