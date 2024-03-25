@@ -4,11 +4,11 @@
 
 version: 1.0.0
 
-uuid: DA072AA227724969AE41ECF7BDAA7F91
-name: sort_1_image_through_functional_category
+uuid: 4AD006AAD458451F848DA9D3C0D1D0AD
+name: categorization_sort_through_functional_category_without_error
 
-created_at: "2024-03-08T11:49:37.123532"
-last_edited_at: "2024-03-08T11:59:36.535069"
+created_at: "2024-03-08T11:49:37.123541"
+last_edited_at: "2024-03-08T11:59:36.533929"
 status: published
 
 authors:
@@ -40,17 +40,17 @@ l10n:
     details:
       icon: categorization
 
-      title: Trier par catégorie fonctionnelle
+      title: Trier par catégorie fonctionnelle sans erreur
       subtitle: null
 
       short_description: |
         Mets l'image dans la bonne pièce
 
       description: |
-        La personne accompagnée doit associer une image d'un objet à une pièce de la maison
+        La personne accompagnée doit associer une image d'un objet à une pièce de la maison.
 
       instructions: |
-        - Sur l'écran, il y a deux images de pièces (chambre, salle de bain ou cuisine) et une image d'un objet.
+        - Sur l'écran, deux images apparaissent : une pièce de la maison et un objet associé.
         - Encourager la personne accompagnée à glisser puis déposer l'objet dans la pièce de la maison.
         - Lorsque la réponse est correct, Leka lance un renforçateur
 
@@ -58,7 +58,7 @@ l10n:
     details:
       icon: categorization
 
-      title: Sort through functional category
+      title: Sort through functional category without error
       subtitle: null
 
       short_description: |
@@ -68,8 +68,8 @@ l10n:
         The care receiver has to associate an object with a place
 
       instructions: |
-        - On the screen, there are two images of rooms (bedroom, bathroom or kitchen) and an image of an object.
-        - Encourage the care receiver to drag and then drop the object into the correct room of the house.
+        - On the iPad screen, there is an image of an object and an image of a room: they that have to be grouped.
+        - Encourage the care receiver to drag and drop the object into the room.
         - When the answer is correct, Leka launches a reinforcer
 
 exercises_payload:
@@ -90,49 +90,8 @@ exercises_payload:
             dropZoneA:
               value: improving-categorisation_kitchen
               type: image
-            dropZoneB:
-              value: improving-categorisation_bedroom
-              type: image
             choices:
-              - value: pictograms-objects-house-bedroom-bed_blue-01A5
-                type: image
-                dropZone: zoneB
-
-        - instructions:
-            - locale: fr_FR
-              value: Mets l'image dans la bonne pièce
-            - locale: en_US
-              value: Group the object with the place
-          interface: dragAndDropIntoZones
-          gameplay: findTheRightAnswers
-          payload:
-            dropZoneA:
-              value: improving-categorisation_bedroom
-              type: image
-            dropZoneB:
-              value: improving-categorisation_bathroom
-              type: image
-            choices:
-              - value: pictograms-objects-bathroom-soap_bottle_pink-00C6
-                type: image
-                dropZone: zoneB
-
-        - instructions:
-            - locale: fr_FR
-              value: Mets l'image dans la bonne pièce
-            - locale: en_US
-              value: Group the object with the place
-          interface: dragAndDropIntoZones
-          gameplay: findTheRightAnswers
-          payload:
-            dropZoneA:
-              value: improving-categorisation_bedroom
-              type: image
-            dropZoneB:
-              value: improving-categorisation_kitchen
-              type: image
-            choices:
-              - value: pictograms-objects-house-bedroom-pillow_white-01A7
+              - value: pictograms-objects-house-kitchen-cooking_pot-0190
                 type: image
                 dropZone: zoneA
 
@@ -145,15 +104,28 @@ exercises_payload:
           gameplay: findTheRightAnswers
           payload:
             dropZoneA:
-              value: improving-categorisation_bedroom
-              type: image
-            dropZoneB:
               value: improving-categorisation_kitchen
               type: image
             choices:
               - value: pictograms-foods-meals-salad_mixed-0175
                 type: image
-                dropZone: zoneB
+                dropZone: zoneA
+
+        - instructions:
+            - locale: fr_FR
+              value: Mets l'image dans la bonne pièce
+            - locale: en_US
+              value: Group the object with the place
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            dropZoneA:
+              value: improving-categorisation_kitchen
+              type: image
+            choices:
+              - value: pictograms-objects-house-kitchen-tableware_gray-0194
+                type: image
+                dropZone: zoneA
 
         - instructions:
             - locale: fr_FR
@@ -166,8 +138,21 @@ exercises_payload:
             dropZoneA:
               value: improving-categorisation_bathroom
               type: image
-            dropZoneB:
-              value: improving-categorisation_bedroom
+            choices:
+              - value: pictograms-objects-bathroom-towel_blue-00C0
+                type: image
+                dropZone: zoneA
+
+        - instructions:
+            - locale: fr_FR
+              value: Mets l'image dans la bonne pièce
+            - locale: en_US
+              value: Group the object with the place
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            dropZoneA:
+              value: improving-categorisation_bathroom
               type: image
             choices:
               - value: pictograms-objects-bathroom-toothbrush_blue-00C5
@@ -183,29 +168,7 @@ exercises_payload:
           gameplay: findTheRightAnswers
           payload:
             dropZoneA:
-              value: improving-categorisation_kitchen
-              type: image
-            dropZoneB:
-              value: improving-categorisation_bathroom
-              type: image
-            choices:
-              - value: pictograms-foods-meals-salad_mixed-0175
-                type: image
-                dropZone: zoneA
-
-        - instructions:
-            - locale: fr_FR
-              value: Mets l'image dans la bonne pièce
-            - locale: en_US
-              value: Group the object with the place
-          interface: dragAndDropIntoZones
-          gameplay: findTheRightAnswers
-          payload:
-            dropZoneA:
               value: improving-categorisation_bedroom
-              type: image
-            dropZoneB:
-              value: improving-categorisation_kitchen
               type: image
             choices:
               - value: pictograms-objects-house-bedroom-pillow_white-01A7
@@ -223,11 +186,88 @@ exercises_payload:
             dropZoneA:
               value: improving-categorisation_bedroom
               type: image
-            dropZoneB:
+            choices:
+              - value: pictograms-objects-house-bedroom-bed_blue-01A5
+                type: image
+                dropZone: zoneA
+
+        - instructions:
+            - locale: fr_FR
+              value: Mets l'image dans la bonne pièce
+            - locale: en_US
+              value: Group the object with the place
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            dropZoneA:
               value: improving-categorisation_kitchen
               type: image
             choices:
-              - value: pictograms-objects-house-bedroom-toy_wagon_brown-01A6
+              - value: pictograms-objects-house-kitchen-cooking_pot-0190
+                type: image
+                dropZone: zoneA
+
+        - instructions:
+            - locale: fr_FR
+              value: Mets l'image dans la bonne pièce
+            - locale: en_US
+              value: Group the object with the place
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            dropZoneA:
+              value: improving-categorisation_kitchen
+              type: image
+            choices:
+              - value: pictograms-foods-meals-salad_mixed-0175
+                type: image
+                dropZone: zoneA
+
+        - instructions:
+            - locale: fr_FR
+              value: Mets l'image dans la bonne pièce
+            - locale: en_US
+              value: Group the object with the place
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            dropZoneA:
+              value: improving-categorisation_kitchen
+              type: image
+            choices:
+              - value: pictograms-objects-house-kitchen-tableware_gray-0194
+                type: image
+                dropZone: zoneA
+
+        - instructions:
+            - locale: fr_FR
+              value: Mets l'image dans la bonne pièce
+            - locale: en_US
+              value: Group the object with the place
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            dropZoneA:
+              value: improving-categorisation_bathroom
+              type: image
+            choices:
+              - value: pictograms-objects-bathroom-towel_blue-00C0
+                type: image
+                dropZone: zoneA
+
+        - instructions:
+            - locale: fr_FR
+              value: Mets l'image dans la bonne pièce
+            - locale: en_US
+              value: Group the object with the place
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            dropZoneA:
+              value: improving-categorisation_bathroom
+              type: image
+            choices:
+              - value: pictograms-objects-bathroom-toothbrush_blue-00C5
                 type: image
                 dropZone: zoneA
 
@@ -242,10 +282,24 @@ exercises_payload:
             dropZoneA:
               value: improving-categorisation_bedroom
               type: image
-            dropZoneB:
-              value: improving-categorisation_kitchen
+            choices:
+              - value: pictograms-objects-house-bedroom-pillow_white-01A7
+                type: image
+                dropZone: zoneA
+
+        - instructions:
+            - locale: fr_FR
+              value: Mets l'image dans la bonne pièce
+            - locale: en_US
+              value: Group the object with the place
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            dropZoneA:
+              value: improving-categorisation_bedroom
               type: image
             choices:
-              - value: pictograms-foods-meals-salad_mixed-0175
+              - value: pictograms-objects-house-bedroom-bed_blue-01A5
                 type: image
-                dropZone: zoneB
+                dropZone: zoneA
+

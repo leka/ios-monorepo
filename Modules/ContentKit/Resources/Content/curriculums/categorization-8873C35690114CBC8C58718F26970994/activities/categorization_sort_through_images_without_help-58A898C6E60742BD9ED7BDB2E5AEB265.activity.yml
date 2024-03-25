@@ -5,7 +5,7 @@
 version: 1.0.0
 
 uuid: 58A898C6E60742BD9ED7BDB2E5AEB265
-name: sort_through_images_without_help
+name: categorization_sort_through_images_without_help
 
 created_at: "2024-03-08T11:49:37.123541"
 last_edited_at: "2024-03-08T11:59:36.533942"
