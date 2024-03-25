@@ -65,7 +65,7 @@ extension l10n {
             static let discoverContentButton = LocalizedString("lekaapp.account_creation_process.step_4.discover_content_button", value: "Let's go! 🚀", comment: "Step 4 discover content button")
         }
 
-        static let navigationTitle = LocalizedString("lekaapp.account_creation_view.navigation_title", value: "Account Creation Process", comment: "NavigationBar title on the whole Signup process")
+        static let navigationTitle = LocalizedString("lekaapp.account_creation_process.navigation_title", value: "Account Creation Process", comment: "NavigationBar title on the whole Signup process")
     }
 }
 

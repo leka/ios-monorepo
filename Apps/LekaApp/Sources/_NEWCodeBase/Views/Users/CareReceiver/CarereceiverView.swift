@@ -94,7 +94,7 @@ extension l10n {
     enum CarereceiverView {
         static let availableSoonLabel = LocalizedString("lekapp.carereceiver_view.available_soon_label", value: "Your usage history will soon be available here.", comment: "Temporary content for carereceiver monitoring")
 
-        static let editProfileButtonLabel = LocalizedString("lekapp.sidebar.carereceiver_view.edit_profile_button_label", value: "Edit profile", comment: "The button label of carereceiver profile editor")
+        static let editProfileButtonLabel = LocalizedString("lekapp.carereceiver_view.edit_profile_button_label", value: "Edit profile", comment: "The button label of carereceiver profile editor")
     }
 }
 

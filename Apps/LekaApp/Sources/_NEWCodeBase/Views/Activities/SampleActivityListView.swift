@@ -5,7 +5,10 @@
 import AccountKit
 import ContentKit
 import GameEngineKit
+import LocalizationKit
 import SwiftUI
+
+// MARK: - SampleActivityListView
 
 struct SampleActivityListView: View {
     // MARK: Internal
@@ -55,6 +58,18 @@ struct SampleActivityListView: View {
     @ObservedObject private var navigation: Navigation = .shared
     @State private var selectedActivity: Activity?
 }
+
+// MARK: - l10n.SampleActivityListView
+
+// swiftlint:disable line_length
+
+extension l10n {
+    enum SampleActivityListView {
+        static let buttonLabel = LocalizedString("lekaapp.sample_activity_list_view.button_label", value: "Start activity", comment: "Start activity button label on Sample Activity List view")
+    }
+}
+
+// swiftlint:enable line_length
 
 #Preview {
     NavigationStack {

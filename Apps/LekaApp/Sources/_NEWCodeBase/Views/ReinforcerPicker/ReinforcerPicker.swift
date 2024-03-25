@@ -47,16 +47,19 @@ struct ReinforcerPicker: View {
 
 extension l10n {
     enum ReinforcerPicker {
-        static let header = LocalizedString("lekaapp.reinforcer_picker.header", value: "Reinforcer choice", comment: "Reinforcer picker header")
+        static let header = LocalizedString(
+            "lekaapp.reinforcer_picker.header",
+            value: "Reinforcer choice",
+            comment: "Reinforcer picker header"
+        )
 
         static let description = LocalizedString(
-            "lekaapp.reinforcer_picker.avatar_choice_button",
+            "lekaapp.reinforcer_picker.description",
             value: """
                 Reinforcer is a repetitive light effect from the robot that you can activate to reward the user's behavior.
                 If your robot is connected, you can test the reinforcers before choosing one.
                 """,
-
-            comment: " Reinforcer picker description"
+            comment: "Reinforcer picker description"
         )
     }
 }

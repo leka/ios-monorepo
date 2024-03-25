@@ -28,7 +28,7 @@ struct SettingsLabel: View {
 
 extension l10n {
     enum SettingsLabel {
-        static let buttonLabel = LocalizedString("lekaapp.settings_label.title", value: "Settings", comment: "Settings button label")
+        static let buttonLabel = LocalizedString("lekaapp.settings_label.button_label", value: "Settings", comment: "Settings button label")
     }
 }
 

@@ -110,15 +110,15 @@ struct EditCaregiverLabel: View {
 
 extension l10n {
     enum EditCaregiverProfile {
-        static let buttonLabel = LocalizedString("lekapp.sidebar.edit_caregiver_profile.button_label", value: "Edit profile", comment: "The button label of caregiver profile editor")
+        static let buttonLabel = LocalizedString("lekapp.edit_caregiver_profile.button_label", value: "Edit profile", comment: "The button label of caregiver profile editor")
     }
 
     enum SelectCaregiverProfile {
-        static let buttonLabel = LocalizedString("lekapp.sidebar.select_caregiver_profile.button_label", value: "Select Caregiver", comment: "The button label of select caregiver profile")
+        static let buttonLabel = LocalizedString("lekapp.select_caregiver_profile.button_label", value: "Select Caregiver", comment: "The button label of select caregiver profile")
     }
 
     enum AddFirstCaregiverProfile {
-        static let buttonLabel = LocalizedString("lekapp.sidebar.add_first_caregiver_profile.button_label", value: "Create First Caregiver", comment: "The button label of create first profile when no profile is created")
+        static let buttonLabel = LocalizedString("lekapp.add_first_caregiver_profile.button_label", value: "Create First Caregiver", comment: "The button label of create first profile when no profile is created")
     }
 }
 

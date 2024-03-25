@@ -44,14 +44,14 @@ struct CarereceiverList: View {
 
                 if self.carereceiverManagerViewModel.carereceivers.isEmpty {
                     VStack {
-                        Text(l10n.CarereceiverList.AddFirstCarereceiver.message)
+                        Text(l10n.CarereceiverList.CreateFirstCarereceiver.message)
                             .font(.title2)
                             .multilineTextAlignment(.center)
 
                         Button {
                             self.isCarereceiverCreationPresented = true
                         } label: {
-                            Text(l10n.CarereceiverList.AddFirstCarereceiver.addButtonLabel)
+                            Text(l10n.CarereceiverList.CreateFirstCarereceiver.createButtonLabel)
                         }
                         .buttonStyle(.borderedProminent)
                     }
@@ -72,7 +72,7 @@ struct CarereceiverList: View {
                     Button {
                         self.isCarereceiverCreationPresented = true
                     } label: {
-                        Text(l10n.CarereceiverList.addButtonLabel)
+                        Text(l10n.CarereceiverList.createButtonLabel)
                     }
                 }
             }
@@ -99,16 +99,18 @@ struct CarereceiverList: View {
 
 // MARK: - l10n.CarereceiverList
 
+// swiftlint:disable line_length nesting
+
 extension l10n {
     enum CarereceiverList {
-        enum AddFirstCarereceiver {
-            static let message = LocalizedString("lekaapp.carereceiver_list.add_first_carereceiver.message",
+        enum CreateFirstCarereceiver {
+            static let message = LocalizedString("lekaapp.carereceiver_list.create_first_carereceiver.message",
                                                  value: "No care receiver profiles have been created yet.",
-                                                 comment: "Carereceiver list add first carereceiver message")
+                                                 comment: "Carereceiver list create first carereceiver message")
 
-            static let addButtonLabel = LocalizedString("lekaapp.carereceiver_list.add_first_carereceiver.add_button_label",
-                                                        value: "Add your first care receiver profile",
-                                                        comment: "Carereceiver list add first carereceiver button label")
+            static let createButtonLabel = LocalizedString("lekaapp.carereceiver_list.create_first_carereceiver.create_button_label",
+                                                           value: "Create your first care receiver profile",
+                                                           comment: "Carereceiver list create first carereceiver button label")
         }
 
         static let title = LocalizedString("lekaapp.carereceiver_list.title",
@@ -123,11 +125,13 @@ extension l10n {
                                                  value: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
                                                  comment: "Carereceiver list description")
 
-        static let addButtonLabel = LocalizedString("lekaapp.carereceiver_list.add_button_label",
-                                                    value: "Add profile",
-                                                    comment: "Carereceiver list add button label")
+        static let createButtonLabel = LocalizedString("lekaapp.carereceiver_list.create_button_label",
+                                                       value: "Create profile",
+                                                       comment: "Carereceiver list create button label")
     }
 }
+
+// swiftlint:enable line_length nesting
 
 #Preview {
     CarereceiverList()

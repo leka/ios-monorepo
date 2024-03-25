@@ -4,7 +4,7 @@
 
 import LocalizationKit
 
-// swiftlint:disable nesting
+// swiftlint:disable line_length
 
 extension l10n {
     enum WelcomeView {
@@ -16,4 +16,4 @@ extension l10n {
     }
 }
 
-// swiftlint:enable nesting
+// swiftlint:enable line_length
