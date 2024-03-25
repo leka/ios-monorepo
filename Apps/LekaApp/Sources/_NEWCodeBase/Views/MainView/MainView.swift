@@ -110,9 +110,11 @@ struct MainView: View {
                     case .carereceivers:
                         CarereceiverList()
 
-                    case .developerModeImageListPNG:
-                        DebugImageListView(images: ContentKit.listImagesPNG())
-                            .navigationTitle("PNG Image List")
+                    #if DEVELOPER_MODE
+                        case .developerModeImageListPNG:
+                            DebugImageListView(images: ContentKit.listImagesPNG())
+                                .navigationTitle("PNG Image List")
+                    #endif
 
                     case .none:
                         Text("Select a category")
