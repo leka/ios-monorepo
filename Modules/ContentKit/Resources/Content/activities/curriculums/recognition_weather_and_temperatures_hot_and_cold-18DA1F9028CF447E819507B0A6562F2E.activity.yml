@@ -5,7 +5,7 @@
 version: 1.0.0
 
 uuid: 18DA1F9028CF447E819507B0A6562F2E
-name: hot_and_cold_temperatures_recognition
+name: recognition_weather_and_temperatures_hot_and_cold
 
 created_at: "2024-03-04T18:07:12.519229"
 last_edited_at: "2024-03-12T15:30:51.722290"

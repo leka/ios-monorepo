@@ -5,7 +5,7 @@
 version: 1.0.0
 
 uuid: 7710D57FB7214D4F90246463F20773D1
-name: day_and_night_recognition
+name: recognition_time_of_day_day_night
 
 created_at: "2024-03-04T18:07:12.519229"
 last_edited_at: "2024-03-12T15:30:51.722290"

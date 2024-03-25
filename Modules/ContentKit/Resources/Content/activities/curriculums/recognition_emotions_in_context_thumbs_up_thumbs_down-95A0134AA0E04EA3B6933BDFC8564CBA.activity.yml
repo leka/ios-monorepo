@@ -5,7 +5,7 @@
 version: 1.0.0
 
 uuid: 95A0134AA0E04EA3B6933BDFC8564CBA
-name: emotions_recognition_in_a_context_thumbs_up_thumbs_down
+name: recognition_emotions_in_context_thumbs_up_thumbs_down
 
 created_at: "2024-03-04T18:07:12.519229"
 last_edited_at: "2024-03-12T15:30:51.722290"
