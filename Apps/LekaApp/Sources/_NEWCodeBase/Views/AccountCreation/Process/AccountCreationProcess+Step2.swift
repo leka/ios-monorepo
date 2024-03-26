@@ -41,17 +41,11 @@ extension AccountCreationProcess {
             .frame(maxWidth: .infinity, alignment: .center)
             .sheet(isPresented: self.$isCaregiverCreationPresented) {
                 NavigationStack {
-                    CreateCaregiverView(onCreated: { caregiver in
-                        self.caregiverManager.setCurrentCaregiver(to: caregiver)
+                    CreateCaregiverView(onClose: {
+                        self.selectedTab = .carereceiverCreation
                     })
                     .navigationBarTitleDisplayMode(.inline)
                 }
-            }
-            .onReceive(self.caregiverManagerViewModel.$currentCaregiver) {
-                guard $0 != nil else {
-                    return
-                }
-                self.selectedTab = .carereceiverCreation
             }
         }
 

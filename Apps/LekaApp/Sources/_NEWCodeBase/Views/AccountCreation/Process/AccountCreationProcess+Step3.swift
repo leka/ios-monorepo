@@ -38,7 +38,7 @@ extension AccountCreationProcess {
             .frame(maxWidth: .infinity, alignment: .center)
             .sheet(isPresented: self.$isCarereceiverCreationPresented) {
                 NavigationStack {
-                    CreateCarereceiverView(onCreated: { _ in
+                    CreateCarereceiverView(onClose: {
                         self.selectedTab = .final
                     })
                     .navigationBarTitleDisplayMode(.inline)

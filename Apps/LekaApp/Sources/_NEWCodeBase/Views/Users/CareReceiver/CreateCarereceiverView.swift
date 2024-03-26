@@ -17,7 +17,7 @@ class CreateCarereceiverViewModel: ObservableObject {
 
     // MARK: - Public functions
 
-    func createCarereceiver(carereceiver: Carereceiver, onCreated: @escaping (Carereceiver) -> Void, onError: @escaping (Error) -> Void) {
+    func createCarereceiver(carereceiver: Carereceiver, onError: @escaping (Error) -> Void) {
         self.carereceiverManager.createCarereceiver(carereceiver: carereceiver)
             .sink(receiveCompletion: { completion in
                 switch completion {
@@ -27,8 +27,8 @@ class CreateCarereceiverViewModel: ObservableObject {
                         print("Carereceiver Creation failed with error: \(error)")
                         onError(error)
                 }
-            }, receiveValue: { createdCarereceiver in
-                onCreated(createdCarereceiver)
+            }, receiveValue: { _ in
+                // Nothing to do
             })
             .store(in: &self.cancellables)
     }
@@ -43,16 +43,14 @@ class CreateCarereceiverViewModel: ObservableObject {
 struct CreateCarereceiverView: View {
     // MARK: Lifecycle
 
-    init(onClose: (() -> Void)? = nil, onCreated: ((Carereceiver) -> Void)? = nil) {
+    init(onClose: (() -> Void)? = nil) {
         self.onClose = onClose
-        self.onCreated = onCreated
     }
 
     // MARK: Internal
 
     @Environment(\.dismiss) var dismiss
     var onClose: (() -> Void)?
-    var onCreated: ((Carereceiver) -> Void)?
 
     var carereceiverManager: CarereceiverManager = .shared
 
@@ -80,16 +78,12 @@ struct CreateCarereceiverView: View {
                     if self.newCarereceiver.avatar.isEmpty {
                         self.newCarereceiver.avatar = Avatars.categories.first!.avatars.randomElement()!
                     }
-                    self.viewModel.createCarereceiver(carereceiver: self.newCarereceiver, onCreated: { createdCarereceiver in
-                        self.newCarereceiver = createdCarereceiver
-                        withAnimation {
-                            self.action = .created
-                            self.dismiss()
-                        }
-                    }, onError: { error in
-                        // Handle error
+                    self.viewModel.createCarereceiver(carereceiver: self.newCarereceiver, onError: { error in
                         print(error.localizedDescription)
                     })
+                    withAnimation {
+                        self.dismiss()
+                    }
                 }
                 .disabled(self.newCarereceiver.username.isEmpty)
                 .buttonStyle(.borderedProminent)
@@ -101,39 +95,21 @@ struct CreateCarereceiverView: View {
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 Button {
-                    self.action = .close
                     self.dismiss()
                 } label: {
                     Text(l10n.CarereceiverCreation.closeButtonLabel)
                 }
             }
         }
-        .onDisappear {
-            switch self.action {
-                case .close:
-                    self.onClose?()
-                case .created:
-                    self.onCreated?(self.newCarereceiver)
-                case .none:
-                    break
-            }
-
-            self.action = nil
-        }
+        .onDisappear { self.onClose?() }
     }
 
     // MARK: Private
-
-    private enum ActionType {
-        case close
-        case created
-    }
 
     @StateObject private var viewModel = CreateCarereceiverViewModel()
 
     @State private var newCarereceiver = Carereceiver()
     @State private var isAvatarPickerPresented: Bool = false
-    @State private var action: ActionType?
     @State private var cancellables = Set<AnyCancellable>()
 
     private var avatarPickerButton: some View {
@@ -185,9 +161,10 @@ extension l10n {
             NavigationStack {
                 CreateCarereceiverView(onClose: {
                     print("Care receiver creation canceled")
-                }, onCreated: {
-                    print("Carereceiver \($0.username) created")
                 })
+//                , onCreated: {
+//                    print("Carereceiver \($0.username) created")
+//                })
             }
         }
 }
