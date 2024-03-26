@@ -86,9 +86,9 @@ exercises_payload:
           shuffle_choices: true
           payload:
           choices:
-            - value: pictograms-transportation-carblue-011F
+            - value: pictograms-size-car_big
               type: image
-            - value:
+            - value: pictograms-size-car_little
               type: image
               isRightAnswer: true
 
@@ -102,10 +102,10 @@ exercises_payload:
           shuffle_choices: true
           payload:
           choices:
-            - value: pictograms-transportation-carblue-011F
+            - value: pictograms-size-car_big
               type: image
               isRightAnswer: true
-            - value:
+            - value: pictograms-size-car_little
               type: image
 
     - group:
@@ -119,9 +119,9 @@ exercises_payload:
           shuffle_choices: true
           payload:
           choices:
-            - value: pictograms-objects-beach-circlepink
+            - value: pictograms-size-circle_big
               type: image
-            - value:
+            - value: pictograms-size-circle_little
               type: image
               isRightAnswer: true
 
@@ -135,10 +135,10 @@ exercises_payload:
           shuffle_choices: true
           payload:
           choices:
-            - value: pictograms-objects-beach-circlepink
+            - value: pictograms-size-circle_big
               type: image
               isRightAnswer: true
-            - value:
+            - value: pictograms-size-circle_little
               type: image
 
     - group:
@@ -152,9 +152,9 @@ exercises_payload:
           shuffle_choices: true
           payload:
           choices:
-            - value: pictograms-animals-farm-duck-006A
+            - value: pictograms-size-duck_big
               type: image
-            - value:
+            - value: pictograms-size-duck_little
               type: image
               isRightAnswer: true
 
@@ -168,10 +168,10 @@ exercises_payload:
           shuffle_choices: true
           payload:
           choices:
-            - value: pictograms-animals-farm-duck-006A
+            - value: pictograms-size-duck_big
               type: image
               isRightAnswer: true
-            - value:
+            - value: pictograms-size-duck_little
               type: image
 
     - group:
@@ -185,9 +185,9 @@ exercises_payload:
           shuffle_choices: true
           payload:
           choices:
-            - value: pictograms-animals-sea-fishblue-0045
+            - value: pictograms-size-fish_big
               type: image
-            - value:
+            - value: pictograms-size-fish_little
               type: image
               isRightAnswer: true
 
@@ -201,10 +201,10 @@ exercises_payload:
           shuffle_choices: true
           payload:
           choices:
-            - value: pictograms-animals-sea-fishblue-0045
+            - value: pictograms-size-fish_big
               type: image
               isRightAnswer: true
-            - value:
+            - value: pictograms-size-fish_little
               type: image
 
     - group:
@@ -218,9 +218,9 @@ exercises_payload:
           shuffle_choices: true
           payload:
           choices:
-            - value: pictograms_house-purple-07
+            - value: pictograms-size-house_big
               type: image
-            - value:
+            - value: pictograms-size-house_little
               type: image
               isRightAnswer: true
 
@@ -234,10 +234,10 @@ exercises_payload:
           shuffle_choices: true
           payload:
           choices:
-            - value: pictograms_house-purple-07
+            - value: pictograms-size-house_big
               type: image
               isRightAnswer: true
-            - value:
+            - value: pictograms-size-house_little
               type: image
 
     - group:
@@ -267,8 +267,8 @@ exercises_payload:
           shuffle_choices: true
           payload:
           choices:
-            - value: pictograms-animals-insects-butterflypink-0095
+            - value: pictograms-size-butterfly_big
               type: image
               isRightAnswer: true
-            - value:
+            - value: pictograms-size-butterfly_little
               type: image

@@ -218,9 +218,9 @@ exercises_payload:
           shuffle_choices: true
           payload:
           choices:
-            - value: pictograms-weather-rainy-day
+            - value: pictograms-landscapes-snow
               type: image
-            - value: pictograms-weather-sunny-day
+            - value: pictograms-landscapes-sun
               type: image
               isRightAnswer: true
 
@@ -234,8 +234,8 @@ exercises_payload:
           shuffle_choices: true
           payload:
           choices:
-            - value: pictograms-weather-rainy-day
+            - value: pictograms-landscapes-snow
               type: image
               isRightAnswer: true
-            - value: pictograms-weather-sunny-day
+            - value: pictograms-landscapes-sun
               type: image

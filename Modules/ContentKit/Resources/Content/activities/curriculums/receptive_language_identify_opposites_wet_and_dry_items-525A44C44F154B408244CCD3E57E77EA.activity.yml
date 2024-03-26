@@ -152,9 +152,9 @@ exercises_payload:
           shuffle_choices: true
           payload:
           choices:
-            - value: pictograms-weather-rainy-day
+            - value: pictograms-landscapes_rain
               type: image
-            - value: pictograms-weather-sunny-day
+            - value: pictograms-landscapes-sun
               type: image
               isRightAnswer: true
 
@@ -168,10 +168,10 @@ exercises_payload:
           shuffle_choices: true
           payload:
           choices:
-            - value: pictograms-weather-rainy-day
+            - value: pictograms-landscapes_rain
               type: image
               isRightAnswer: true
-            - value: pictograms-weather-sunny-day
+            - value: pictograms-landscapes-sun
               type: image
 
     - group:
@@ -201,7 +201,7 @@ exercises_payload:
           shuffle_choices: true
           payload:
           choices:
-            - value: pictograms-foods-meals-glassicedwater-0171
+            - value: pictograms-foods-meals-orange_juice-017C
               type: image
               isRightAnswer: true
             - value: pictograms-foods-meals-baguette-0180
@@ -218,9 +218,9 @@ exercises_payload:
           shuffle_choices: true
           payload:
           choices:
-            - value: cheveux_mouillés
+            - value: pictograms-characters-girl_hair_wet
               type: image
-            - value: cheveux_secs
+            - value: pictograms-characters-girl_hair_dry
               type: image
               isRightAnswer: true
 
@@ -234,10 +234,10 @@ exercises_payload:
           shuffle_choices: true
           payload:
           choices:
-            - value: cheveux_mouillés
+            - value: pictograms-characters-girl_hair_wet
               type: image
               isRightAnswer: true
-            - value: cheveux_secs
+            - value: pictograms-characters-girl_hair_dry
               type: image
 
     - group:
@@ -251,9 +251,9 @@ exercises_payload:
           shuffle_choices: true
           payload:
           choices:
-            - value: lac
+            - value: pictograms-landscapes-lake
               type: image
-            - value: désert
+            - value: pictograms-landscapes-sand
               type: image
               isRightAnswer: true
 
@@ -267,8 +267,8 @@ exercises_payload:
           shuffle_choices: true
           payload:
           choices:
-            - value: lac
+            - value: pictograms-landscapes-lake
               type: image
               isRightAnswer: true
-            - value: désert
+            - value: pictograms-landscapes-sand
               type: image
