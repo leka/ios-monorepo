@@ -1,0 +1,300 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+version: 1.0.0
+
+uuid: CBBCDFA8DC8C462794904F6E5E0638AB
+name: color_bingo_1
+
+created_at: "2024-03-04T18:07:12.519229"
+last_edited_at: "2024-03-06T12:51:54.499453"
+status: published
+
+authors:
+  - leka
+
+skills:
+  - recognition
+  - recognition/colors
+  - discrimination
+
+tags:
+  - colors
+
+hmi:
+  - tablet_robot
+
+types:
+  - one_on_one
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: color_bingo_1
+
+      title: Loto des Couleurs 1
+      subtitle: null
+
+      short_description: |
+        Touche la couleur de Leka
+
+      description: |
+        Leka s'allume dans une couleur. La personne accompagnée doit toucher la même couleur sur l'écran de l'iPad.
+
+      instructions: |
+        - Leka s'allume dans une couleur
+        - Encourager la personne accompagnée à toucher la même couleur sur l'écran de l'iPad
+        - Lorsque la réponse est correct, Leka lance un renforçateur
+
+  - locale: en_US
+    details:
+      icon: color_bingo_1
+
+      title: Color Bingo 1
+      subtitle: null
+
+      short_description: |
+        Touch the color of Leka
+
+      description: |
+        Leka lights up in a color. The care receiver must touch the same color on the iPad screen.
+
+      instructions: |
+        - Leka lights up in one color
+        - Encourage the care receiver to touch the same color on the iPad screen
+        - When the answer is correct, Leka launches a reinforcer
+
+exercises_payload:
+  options:
+    shuffle_exercises: true
+    shuffle_groups: false
+
+  exercise_groups:
+    - group:
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche la couleur de Leka
+            - locale: en_US
+              value: Touch the color of Leka
+          interface: robotThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: robot
+            value:
+              type: color
+              value: red
+          payload:
+            choices:
+              - value: red
+                type: color
+                is_right_answer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche la couleur de Leka
+            - locale: en_US
+              value: Touch the color of Leka
+          interface: robotThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: robot
+            value:
+              type: color
+              value: blue
+          payload:
+            choices:
+              - value: blue
+                type: color
+                is_right_answer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche la couleur de Leka
+            - locale: en_US
+              value: Touch the color of Leka
+          interface: robotThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: robot
+            value:
+              type: color
+              value: yellow
+          payload:
+            choices:
+              - value: yellow
+                type: color
+                is_right_answer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche la couleur de Leka
+            - locale: en_US
+              value: Touch the color of Leka
+          interface: robotThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: robot
+            value:
+              type: color
+              value: purple
+          payload:
+            choices:
+              - value: purple
+                type: color
+                is_right_answer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche la couleur de Leka
+            - locale: en_US
+              value: Touch the color of Leka
+          interface: robotThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: robot
+            value:
+              type: color
+              value: green
+          payload:
+            choices:
+              - value: green
+                type: color
+                is_right_answer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche la couleur de Leka
+            - locale: en_US
+              value: Touch the color of Leka
+          interface: robotThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: robot
+            value:
+              type: color
+              value: orange
+          payload:
+            choices:
+              - value: orange
+                type: color
+                is_right_answer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche la couleur de Leka
+            - locale: en_US
+              value: Touch the color of Leka
+          interface: robotThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: robot
+            value:
+              type: color
+              value: red
+          payload:
+            choices:
+              - value: red
+                type: color
+                is_right_answer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche la couleur de Leka
+            - locale: en_US
+              value: Touch the color of Leka
+          interface: robotThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: robot
+            value:
+              type: color
+              value: blue
+          payload:
+            choices:
+              - value: blue
+                type: color
+                is_right_answer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche la couleur de Leka
+            - locale: en_US
+              value: Touch the color of Leka
+          interface: robotThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: robot
+            value:
+              type: color
+              value: yellow
+          payload:
+            choices:
+              - value: yellow
+                type: color
+                is_right_answer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche la couleur de Leka
+            - locale: en_US
+              value: Touch the color of Leka
+          interface: robotThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: robot
+            value:
+              type: color
+              value: purple
+          payload:
+            choices:
+              - value: purple
+                type: color
+                is_right_answer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche la couleur de Leka
+            - locale: en_US
+              value: Touch the color of Leka
+          interface: robotThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: robot
+            value:
+              type: color
+              value: green
+          payload:
+            choices:
+              - value: green
+                type: color
+                is_right_answer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche la couleur de Leka
+            - locale: en_US
+              value: Touch the color of Leka
+          interface: robotThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: robot
+            value:
+              type: color
+              value: orange
+          payload:
+            choices:
+              - value: orange
+                type: color
+                is_right_answer: true
+
+
+
+
+
+
