@@ -86,13 +86,13 @@ exercises_payload:
           shuffle_choices: true
           payload:
           choices:
-            - value:
+            - value: pictograms-quantity-apple_four
               type: image
-            - value:
+            - value: pictograms-quantity-apple_two
               type: image
-            - value:
+            - value: pictograms-quantity-apple_three
               type: image
-            - value:
+            - value: pictograms-quantity-apple_two
               type: image
               isRightAnswer: true
 
@@ -106,15 +106,15 @@ exercises_payload:
           shuffle_choices: true
           payload:
           choices:
-            - value:
+            - value: pictograms-quantity-apple_four
               type: image
-            - value:
+            - value: pictograms-quantity-apple_two
               type: image
-            - value:
-              type: image
-            - value:
+            - value: pictograms-quantity-apple_three
               type: image
               isRightAnswer: true
+            - value: pictograms-quantity-apple_two
+              type: image
 
     - group:
         - instructions:
@@ -127,35 +127,35 @@ exercises_payload:
           shuffle_choices: true
           payload:
           choices:
-            - value:
+            - value: pictograms-quantity-lego_four
               type: image
-            - value:
+            - value: pictograms-quantity-lego_two
               type: image
-            - value:
-              type: image
-            - value:
+            - value: pictograms-quantity-lego_one
               type: image
               isRightAnswer: true
+            - value: pictograms-quantity-lego_three
+              type: image
 
         - instructions:
             - locale: fr_FR
-              value: Touche 2
+              value: Touche 1
             - locale: en_US
-              value: Touch 2
+              value: Touch 1
           interface: touchToSelect
           gameplay: findTheRightAnswers
           shuffle_choices: true
           payload:
           choices:
-            - value:
+            - value: pictograms-quantity-lego_four
               type: image
-            - value:
+            - value: pictograms-quantity-lego_two
               type: image
-            - value:
-              type: image
-            - value:
+            - value: pictograms-quantity-lego_one
               type: image
               isRightAnswer: true
+            - value: pictograms-quantity-lego_three
+              type: image
 
     - group:
         - instructions:
@@ -168,16 +168,37 @@ exercises_payload:
           shuffle_choices: true
           payload:
           choices:
-            - value:
+            - value: pictograms-quantity-tshirt_one
               type: image
-            - value:
+            - value: pictograms-quantity-tshirt_two
               type: image
-            - value:
+            - value: pictograms-quantity-tshirt_three
               type: image
-            - value:
+            - value: pictograms-quantity-tshirt_four
               type: image
               isRightAnswer: true
 
+        - instructions:
+            - locale: fr_FR
+              value: Touche 3
+            - locale: en_US
+              value: Touch 3
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-quantity-tshirt_one
+              type: image
+            - value: pictograms-quantity-tshirt_two
+              type: image
+            - value: pictograms-quantity-tshirt_three
+              type: image
+              isRightAnswer: true
+            - value: pictograms-quantity-tshirt_four
+              type: image
+
+    - group:
         - instructions:
             - locale: fr_FR
               value: Touche 2
@@ -188,37 +209,17 @@ exercises_payload:
           shuffle_choices: true
           payload:
           choices:
-            - value:
+            - value: pictograms-quantity-rabbit_four
               type: image
-            - value:
+            - value: pictograms-quantity-rabbit_three
               type: image
-            - value:
-              type: image
-            - value:
+            - value: pictograms-quantity-rabbit_two
               type: image
               isRightAnswer: true
+            - value: pictograms-quantity-rabbit_one
+              type: image
 
-    - group:
         - instructions:
-            - locale: fr_FR
-              value: Touche 2
-            - locale: en_US
-              value: Touch 2
-          interface: touchToSelect
-          gameplay: findTheRightAnswers
-          shuffle_choices: true
-          payload:
-          choices:
-            - value:
-              type: image
-            - value:
-              type: image
-            - value:
-              type: image
-            - value:
-              type: image
-              isRightAnswer: true
-
         - instructions:
             - locale: fr_FR
               value: Touche 1
@@ -229,13 +230,13 @@ exercises_payload:
           shuffle_choices: true
           payload:
           choices:
-            - value:
+            - value: pictograms-quantity-rabbit_four
               type: image
-            - value:
+            - value: pictograms-quantity-rabbit_three
               type: image
-            - value:
+            - value: pictograms-quantity-rabbit_two
               type: image
-            - value:
+            - value: pictograms-quantity-rabbit_one
               type: image
               isRightAnswer: true
 
@@ -250,13 +251,13 @@ exercises_payload:
           shuffle_choices: true
           payload:
           choices:
-            - value:
+            - value: pictograms-quantity-book_four
               type: image
-            - value:
+            - value: pictograms-quantity-book_three
               type: image
-            - value:
+            - value: pictograms-quantity-book_two
               type: image
-            - value:
+            - value: pictograms-quantity-book_one
               type: image
               isRightAnswer: true
 
@@ -270,37 +271,17 @@ exercises_payload:
           shuffle_choices: true
           payload:
           choices:
-            - value:
-              type: image
-            - value:
-              type: image
-            - value:
-              type: image
-            - value:
+            - value: pictograms-quantity-book_four
               type: image
               isRightAnswer: true
+            - value: pictograms-quantity-book_three
+              type: image
+            - value: pictograms-quantity-book_two
+              type: image
+            - value: pictograms-quantity-book_one
+              type: image
 
     - group:
-        - instructions:
-            - locale: fr_FR
-              value: Touche 4
-            - locale: en_US
-              value: Touch 4
-          interface: touchToSelect
-          gameplay: findTheRightAnswers
-          shuffle_choices: true
-          payload:
-          choices:
-            - value:
-              type: image
-            - value:
-              type: image
-            - value:
-              type: image
-            - value:
-              type: image
-              isRightAnswer: true
-
         - instructions:
             - locale: fr_FR
               value: Touche 1
@@ -311,12 +292,33 @@ exercises_payload:
           shuffle_choices: true
           payload:
           choices:
-            - value:
-              type: image
-            - value:
-              type: image
-            - value:
-              type: image
-            - value:
+            - value: pictograms-quantity-fork_one
               type: image
               isRightAnswer: true
+            - value: pictograms-quantity-fork_two
+              type: image
+            - value: pictograms-quantity-fork_three
+              type: image
+            - value: pictograms-quantity-fork_four
+              type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche 3
+            - locale: en_US
+              value: Touch 3
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-quantity-fork_one
+              type: image
+            - value: pictograms-quantity-fork_two
+              type: image
+            - value: pictograms-quantity-fork_three
+              type: image
+              isRightAnswer: true
+            - value: pictograms-quantity-fork_four
+              type: image
+
