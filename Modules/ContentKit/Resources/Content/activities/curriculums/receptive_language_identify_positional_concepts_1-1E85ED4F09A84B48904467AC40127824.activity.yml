@@ -1,0 +1,433 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+version: 1.0.0
+
+uuid: 1E85ED4F09A84B48904467AC40127824
+name: receptive_language_identify_positional_concepts_1
+
+created_at: "2024-03-08T11:49:37.123541"
+last_edited_at: "2024-03-08T11:59:36.533942"
+status: published
+
+authors:
+  - julie_tuil
+
+skills:
+  - communication
+  - communication/verbal_communication
+  - communication/verbal_communication/receptive_language
+  - communication/verbal_communication/receptive_language/oral_comprehension
+  - spatial_understanding
+
+tags:
+
+hmi:
+  - tablet
+
+types:
+  - one_on_one
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: receptive_language
+
+      title: Identifier la position
+      subtitle: null
+
+      short_description: |
+        Touche l'objet/l'action demandé
+
+      description: |
+        La personne accompagnée doit répondre correctement à la question posée.
+
+      instructions: |
+        - Sur l'écran de l'iPad, toucher le haut-parleur pour que la personne accompagnée puisse entendre la consigne
+        - Encourager la personne accompagnée à toucher la bonne image
+        - Quand la réponse est correcte, Leka lance un renforçateur
+
+  - locale: en_US
+    details:
+      icon: receptive_language
+
+      title: Identify positional concepts
+      subtitle: null
+
+      short_description: |
+        Touch the requested object/action
+
+      description: |
+        The care receiver has to answer the question asked.
+
+      instructions: |
+        - On the screen, touch the speaker button to make the care receiver hear the instruction
+        - Encourage the care receiver to click on the right picture
+        - When the care receiver touches the right picture then Leka launches a reinforcer
+
+exercises_payload:
+  options:
+    shuffle_exercises: true
+    shuffle_groups: true
+
+  exercise_groups:
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Touche le chat sur la chaise
+            - locale: en_US
+              value: Touch the cat on the chair
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value:
+              type: image
+            - value:
+              type: image
+            - value:
+              type: image
+              isRightAnswer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche le chat sous la chaise
+            - locale: en_US
+              value: Touch the cat on the chair
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value:
+              type: image
+            - value:
+              type: image
+            - value:
+              type: image
+              isRightAnswer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche le chat derrière la chaise
+            - locale: en_US
+              value: Touch the cat on the chair
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value:
+              type: image
+            - value:
+              type: image
+            - value:
+              type: image
+              isRightAnswer: true
+
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Touche la fille sur le lit
+            - locale: en_US
+              value: Touch the girl on the bed
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value:
+              type: image
+            - value:
+              type: image
+            - value:
+              type: image
+              isRightAnswer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche la fille sous le lit
+            - locale: en_US
+              value: Touch the girl on the bed
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value:
+              type: image
+            - value:
+              type: image
+            - value:
+              type: image
+              isRightAnswer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche le fille dans le lit
+            - locale: en_US
+              value: Touch the girl in the bed
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value:
+              type: image
+            - value:
+              type: image
+            - value:
+              type: image
+              isRightAnswer: true
+
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Touche le jouet sous le placard
+            - locale: en_US
+              value: Touch the toy under the cupboard
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value:
+              type: image
+            - value:
+              type: image
+            - value:
+              type: image
+              isRightAnswer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche le jouet sur le placard
+            - locale: en_US
+              value: Touch the toy on the cupboard
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value:
+              type: image
+            - value:
+              type: image
+            - value:
+              type: image
+              isRightAnswer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche le jouet dans le placard
+            - locale: en_US
+              value: Touch the toy in the cupboard
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value:
+              type: image
+            - value:
+              type: image
+            - value:
+              type: image
+              isRightAnswer: true
+
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Touche le chien dans la niche
+            - locale: en_US
+              value: Touch the dog in the kennel
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value:
+              type: image
+            - value:
+              type: image
+            - value:
+              type: image
+              isRightAnswer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche le chien à côté de la niche
+            - locale: en_US
+              value: Touch the dog next to the kennel
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value:
+              type: image
+            - value:
+              type: image
+            - value:
+              type: image
+              isRightAnswer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche le chien sur la niche
+            - locale: en_US
+              value: Touch the dog on the kennel
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value:
+              type: image
+            - value:
+              type: image
+            - value:
+              type: image
+              isRightAnswer: true
+
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Touche l'homme à côté de la voiture
+            - locale: en_US
+              value: Touch the man next to the car
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value:
+              type: image
+            - value:
+              type: image
+            - value:
+              type: image
+            - value:
+              type: image
+              isRightAnswer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche l'homme dans la voiture
+            - locale: en_US
+              value: Touch the man in the car
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value:
+              type: image
+            - value:
+              type: image
+            - value:
+              type: image
+            - value:
+              type: image
+              isRightAnswer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche l'homme sous la voiture
+            - locale: en_US
+              value: Touch the man under the car
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value:
+              type: image
+            - value:
+              type: image
+            - value:
+              type: image
+            - value:
+              type: image
+              isRightAnswer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche l'homme à côté de la voiture
+            - locale: en_US
+              value: Touch the man next to the car
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value:
+              type: image
+            - value:
+              type: image
+            - value:
+              type: image
+            - value:
+              type: image
+              isRightAnswer: true
+
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Touche le garçon derrière la table
+            - locale: en_US
+              value: Touch the boy behind the table
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value:
+              type: image
+            - value:
+              type: image
+            - value:
+              type: image
+              isRightAnswer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche le garçon sous la table
+            - locale: en_US
+              value: Touch the boy behind the table
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value:
+              type: image
+            - value:
+              type: image
+            - value:
+              type: image
+              isRightAnswer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche le garçon sur la table
+            - locale: en_US
+              value: Touch the boy behind the table
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value:
+              type: image
+            - value:
+              type: image
+            - value:
+              type: image
+              isRightAnswer: true
