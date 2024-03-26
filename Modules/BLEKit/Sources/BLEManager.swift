@@ -4,6 +4,17 @@
 
 import CombineCoreBluetooth
 
+// MARK: - ManagerState
+
+public enum ManagerState {
+    case scanning
+    case poweredOff
+    case unauthorized
+    case unknown
+}
+
+// MARK: - BLEManager
+
 public class BLEManager {
     // MARK: Lifecycle
 
@@ -29,7 +40,7 @@ public class BLEManager {
 
     // MARK: - @Published variables
 
-    public let isScanning = CurrentValueSubject<Bool, Never>(false)
+    public let managerState = CurrentValueSubject<ManagerState, Never>(.unknown)
     public let didConnect = PassthroughSubject<RobotPeripheral, Never>()
     public let didDisconnect = PassthroughSubject<Void, Never>()
 
@@ -46,13 +57,17 @@ public class BLEManager {
             .handleEvents(
                 receiveSubscription: { _ in
                     if self.centralManager.state == .poweredOn {
-                        self.isScanning.send(true)
+                        self.managerState.send(.scanning)
+                    } else if self.centralManager.state == .poweredOff {
+                        self.managerState.send(.poweredOff)
+                    } else if self.centralManager.state == .unauthorized {
+                        self.managerState.send(.unauthorized)
                     } else {
-                        self.isScanning.send(false)
+                        self.managerState.send(.unknown)
                     }
                 },
                 receiveCancel: {
-                    self.isScanning.send(false)
+                    self.managerState.send(.unknown)
                 }
             )
             .tryScan(
