@@ -1928,24 +1928,6 @@
                 }
             }
         },
-        "lekaapp.sample_activity_list_view.button_label": {
-            "comment": "Start activity button label on Sample Activity List view",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Start activity"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Commencer l'activit\u00e9"
-                    }
-                }
-            }
-        },
         "lekaapp.settings_label.button_label": {
             "comment": "Settings button label",
             "extractionState": "extracted_with_value",

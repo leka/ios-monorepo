@@ -19,25 +19,14 @@ struct SampleActivityListView: View {
         List {
             ForEach(self.activities) { activity in
                 NavigationLink(destination:
-                    ActivityDetailsView(activity: activity)
-                        .toolbar {
-                            ToolbarItem {
-                                Button {
-                                    self.selectedActivity = activity
-                                    if self.authManagerViewModel.userAuthenticationState == .loggedIn {
-                                        self.navigation.sheetContent = .carereceiverPicker(activity: activity)
-                                    } else {
-                                        self.navigation.currentActivity = activity
-                                        self.navigation.fullScreenCoverContent = .activityView
-                                    }
-                                } label: {
-                                    Image(systemName: "play.circle")
-                                    Text("Start activity")
-                                }
-                                .buttonStyle(.borderedProminent)
-                                .tint(.lkGreen)
-                            }
+                    ActivityDetailsView(activity: activity, onStartActivity: { activity in
+                        if self.authManagerViewModel.userAuthenticationState == .loggedIn {
+                            self.navigation.sheetContent = .carereceiverPicker(activity: activity)
+                        } else {
+                            self.navigation.currentActivity = activity
+                            self.navigation.fullScreenCoverContent = .activityView
                         }
+                    })
                 ) {
                     Image(uiImage: activity.details.iconImage)
                         .resizable()
@@ -56,20 +45,7 @@ struct SampleActivityListView: View {
 
     @ObservedObject private var authManagerViewModel: AuthManagerViewModel = .shared
     @ObservedObject private var navigation: Navigation = .shared
-    @State private var selectedActivity: Activity?
 }
-
-// MARK: - l10n.SampleActivityListView
-
-// swiftlint:disable line_length
-
-extension l10n {
-    enum SampleActivityListView {
-        static let buttonLabel = LocalizedString("lekaapp.sample_activity_list_view.button_label", value: "Start activity", comment: "Start activity button label on Sample Activity List view")
-    }
-}
-
-// swiftlint:enable line_length
 
 #Preview {
     NavigationStack {
