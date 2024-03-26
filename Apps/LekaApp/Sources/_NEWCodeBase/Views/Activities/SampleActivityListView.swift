@@ -19,25 +19,15 @@ struct SampleActivityListView: View {
         List {
             ForEach(self.activities) { activity in
                 NavigationLink(destination:
-                    ActivityDetailsView(activity: activity)
-                        .toolbar {
-                            ToolbarItem {
-                                Button {
-                                    self.selectedActivity = activity
-                                    if self.authManagerViewModel.userAuthenticationState == .loggedIn {
-                                        self.navigation.sheetContent = .carereceiverPicker(activity: activity)
-                                    } else {
-                                        self.navigation.currentActivity = activity
-                                        self.navigation.fullScreenCoverContent = .activityView
-                                    }
-                                } label: {
-                                    Image(systemName: "play.circle")
-                                    Text("Start activity")
-                                }
-                                .buttonStyle(.borderedProminent)
-                                .tint(.lkGreen)
-                            }
+                    ActivityDetailsView(activity: activity, onActivitySelected: { activity in
+//                                self.selectedActivity = activity
+                        if self.authManagerViewModel.userAuthenticationState == .loggedIn {
+                            self.navigation.sheetContent = .carereceiverPicker(activity: activity)
+                        } else {
+                            self.navigation.currentActivity = activity
+                            self.navigation.fullScreenCoverContent = .activityView
                         }
+                    })
                 ) {
                     Image(uiImage: activity.details.iconImage)
                         .resizable()
@@ -56,7 +46,7 @@ struct SampleActivityListView: View {
 
     @ObservedObject private var authManagerViewModel: AuthManagerViewModel = .shared
     @ObservedObject private var navigation: Navigation = .shared
-    @State private var selectedActivity: Activity?
+//    @State private var selectedActivity: Activity?
 }
 
 // MARK: - l10n.SampleActivityListView

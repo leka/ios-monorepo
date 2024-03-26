@@ -13,8 +13,9 @@ import SwiftUI
 public struct ActivityDetailsView: View {
     // MARK: Lifecycle
 
-    public init(activity: Activity) {
+    public init(activity: Activity, onActivitySelected: ((Activity) -> Void)? = nil) {
         self.activity = activity
+        self.onActivitySelected = onActivitySelected
     }
 
     // MARK: Public
@@ -103,7 +104,25 @@ public struct ActivityDetailsView: View {
                     .markdownTheme(.gitHub)
             }
         }
+        .toolbar {
+            ToolbarItem {
+                Button {
+                    self.onActivitySelected?(self.activity)
+                } label: {
+                    Image(systemName: "play.circle")
+                    Text("Start activity")
+                }
+                .buttonStyle(.borderedProminent)
+                .tint(.lkGreen)
+                .disabled(self.onActivitySelected == nil)
+                .opacity(self.onActivitySelected == nil ? 0 : 1)
+            }
+        }
     }
+
+    // MARK: Internal
+
+    var onActivitySelected: ((Activity) -> Void)?
 
     // MARK: Private
 
