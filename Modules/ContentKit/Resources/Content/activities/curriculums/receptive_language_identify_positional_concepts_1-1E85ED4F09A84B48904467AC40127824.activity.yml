@@ -87,47 +87,47 @@ exercises_payload:
           shuffle_choices: true
           payload:
           choices:
-            - value:
+            - value: pictograms-positions-cat_under_chair
               type: image
-            - value:
-              type: image
-            - value:
+            - value: pictograms-positions-cat_on_chair
               type: image
               isRightAnswer: true
+            - value: pictograms-positions-cat_behind_chair
+              type: image
 
         - instructions:
             - locale: fr_FR
               value: Touche le chat sous la chaise
             - locale: en_US
-              value: Touch the cat on the chair
+              value: Touch the cat under the chair
           interface: touchToSelect
           gameplay: findTheRightAnswers
           shuffle_choices: true
           payload:
           choices:
-            - value:
-              type: image
-            - value:
-              type: image
-            - value:
+            - value: pictograms-positions-cat_under_chair
               type: image
               isRightAnswer: true
+            - value: pictograms-positions-cat_on_chair
+              type: image
+            - value: pictograms-positions-cat_behind_chair
+              type: image
 
         - instructions:
             - locale: fr_FR
               value: Touche le chat derrière la chaise
             - locale: en_US
-              value: Touch the cat on the chair
+              value: Touch the cat behind the chair
           interface: touchToSelect
           gameplay: findTheRightAnswers
           shuffle_choices: true
           payload:
           choices:
-            - value:
+            - value: pictograms-positions-cat_under_chair
               type: image
-            - value:
+            - value: pictograms-positions-cat_on_chair
               type: image
-            - value:
+            - value: pictograms-positions-cat_behind_chair
               type: image
               isRightAnswer: true
 
@@ -142,13 +142,13 @@ exercises_payload:
           shuffle_choices: true
           payload:
           choices:
-            - value:
-              type: image
-            - value:
-              type: image
-            - value:
+            - value: pictograms-positions-girl_on_bed
               type: image
               isRightAnswer: true
+            - value: pictograms-positions-girl_under_bed
+              type: image
+            - value: pictograms-positions-girl_in_bed
+              type: image
 
         - instructions:
             - locale: fr_FR
@@ -160,13 +160,13 @@ exercises_payload:
           shuffle_choices: true
           payload:
           choices:
-            - value:
+            - value: pictograms-positions-girl_on_bed
               type: image
-            - value:
-              type: image
-            - value:
+            - value: pictograms-positions-girl_under_bed
               type: image
               isRightAnswer: true
+            - value: pictograms-positions-girl_in_bed
+              type: image
 
         - instructions:
             - locale: fr_FR
@@ -178,11 +178,11 @@ exercises_payload:
           shuffle_choices: true
           payload:
           choices:
-            - value:
+            - value: pictograms-positions-girl_on_bed
               type: image
-            - value:
+            - value: pictograms-positions-girl_under_bed
               type: image
-            - value:
+            - value: pictograms-positions-girl_in_bed
               type: image
               isRightAnswer: true
 
@@ -197,13 +197,13 @@ exercises_payload:
           shuffle_choices: true
           payload:
           choices:
-            - value:
+            - value: pictograms-positions-toy_in_cupboard
               type: image
-            - value:
-              type: image
-            - value:
+            - value: pictograms-positions-toy_under_cupboard
               type: image
               isRightAnswer: true
+            - value: pictograms-positions-toy_on_cupboard
+              type: image
 
         - instructions:
             - locale: fr_FR
@@ -215,13 +215,14 @@ exercises_payload:
           shuffle_choices: true
           payload:
           choices:
-            - value:
+            - value: pictograms-positions-toy_in_cupboard
               type: image
-            - value:
+            - value: pictograms-positions-toy_under_cupboard
               type: image
-            - value:
+            - value: pictograms-positions-toy_on_cupboard
               type: image
               isRightAnswer: true
+
 
         - instructions:
             - locale: fr_FR
@@ -233,13 +234,13 @@ exercises_payload:
           shuffle_choices: true
           payload:
           choices:
-            - value:
-              type: image
-            - value:
-              type: image
-            - value:
+            - value: pictograms-positions-toy_in_cupboard
               type: image
               isRightAnswer: true
+            - value: pictograms-positions-toy_under_cupboard
+              type: image
+            - value: pictograms-positions-toy_on_cupboard
+              type: image
 
     - group:
         - instructions:
@@ -252,13 +253,13 @@ exercises_payload:
           shuffle_choices: true
           payload:
           choices:
-            - value:
-              type: image
-            - value:
-              type: image
-            - value:
+            - value: pictograms-positions-dog_in_kennel
               type: image
               isRightAnswer: true
+            - value: pictograms-positions-doy_behind_kennel
+              type: image
+            - value: pictograms-positions-dog_on_kennel
+              type: image
 
         - instructions:
             - locale: fr_FR
@@ -270,13 +271,13 @@ exercises_payload:
           shuffle_choices: true
           payload:
           choices:
-            - value:
+            - value: pictograms-positions-dog_in_kennel
               type: image
-            - value:
-              type: image
-            - value:
+            - value: pictograms-positions-doy_behind_kennel
               type: image
               isRightAnswer: true
+            - value: pictograms-positions-dog_on_kennel
+              type: image
 
         - instructions:
             - locale: fr_FR
@@ -288,11 +289,11 @@ exercises_payload:
           shuffle_choices: true
           payload:
           choices:
-            - value:
+            - value: pictograms-positions-dog_in_kennel
               type: image
-            - value:
+            - value: pictograms-positions-doy_behind_kennel
               type: image
-            - value:
+            - value: pictograms-positions-dog_on_kennel
               type: image
               isRightAnswer: true
 
@@ -307,15 +308,13 @@ exercises_payload:
           shuffle_choices: true
           payload:
           choices:
-            - value:
+            - value: pictograms-positions-boy_under_car
               type: image
-            - value:
-              type: image
-            - value:
-              type: image
-            - value:
+            - value: pictograms-positions-boy_behind_car
               type: image
               isRightAnswer: true
+            - value: pictograms-positions-boy_in_car
+              type: image
 
         - instructions:
             - locale: fr_FR
@@ -327,13 +326,11 @@ exercises_payload:
           shuffle_choices: true
           payload:
           choices:
-            - value:
+            - value: pictograms-positions-boy_under_car
               type: image
-            - value:
+            - value: pictograms-positions-boy_behind_car
               type: image
-            - value:
-              type: image
-            - value:
+            - value: pictograms-positions-boy_in_car
               type: image
               isRightAnswer: true
 
@@ -347,35 +344,13 @@ exercises_payload:
           shuffle_choices: true
           payload:
           choices:
-            - value:
-              type: image
-            - value:
-              type: image
-            - value:
-              type: image
-            - value:
+            - value: pictograms-positions-boy_under_car
               type: image
               isRightAnswer: true
-
-        - instructions:
-            - locale: fr_FR
-              value: Touche l'homme à côté de la voiture
-            - locale: en_US
-              value: Touch the man next to the car
-          interface: touchToSelect
-          gameplay: findTheRightAnswers
-          shuffle_choices: true
-          payload:
-          choices:
-            - value:
+            - value: pictograms-positions-boy_behind_car
               type: image
-            - value:
+            - value: pictograms-positions-boy_in_car
               type: image
-            - value:
-              type: image
-            - value:
-              type: image
-              isRightAnswer: true
 
     - group:
         - instructions:
@@ -388,13 +363,13 @@ exercises_payload:
           shuffle_choices: true
           payload:
           choices:
-            - value:
+            - value: pictograms-positions-boy_on_table
               type: image
-            - value:
-              type: image
-            - value:
+            - value: pictograms-positions-boy_behind_table
               type: image
               isRightAnswer: true
+            - value: pictograms-positions-boy_under_table
+              type: image
 
         - instructions:
             - locale: fr_FR
@@ -406,11 +381,11 @@ exercises_payload:
           shuffle_choices: true
           payload:
           choices:
-            - value:
+            - value: pictograms-positions-boy_on_table
               type: image
-            - value:
+            - value: pictograms-positions-boy_behind_table
               type: image
-            - value:
+            - value: pictograms-positions-boy_under_table
               type: image
               isRightAnswer: true
 
@@ -424,10 +399,10 @@ exercises_payload:
           shuffle_choices: true
           payload:
           choices:
-            - value:
-              type: image
-            - value:
-              type: image
-            - value:
+            - value: pictograms-positions-boy_on_table
               type: image
               isRightAnswer: true
+            - value: pictograms-positions-boy_behind_table
+              type: image
+            - value: pictograms-positions-boy_under_table
+              type: image
