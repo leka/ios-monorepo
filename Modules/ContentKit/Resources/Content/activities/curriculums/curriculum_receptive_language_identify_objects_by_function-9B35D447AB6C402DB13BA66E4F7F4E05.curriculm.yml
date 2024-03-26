@@ -1,0 +1,64 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: 9B35D447AB6C402DB13BA66E4F7F4E05
+name: curriculum_receptive_language_identify_objects_by_function
+
+status: published
+
+created_at: "2024-03-21T15:12:35.579066"
+last_edited_at: "2024-03-25T10:00:11.708216"
+authors:
+  - leka
+
+skills:
+  - recognition
+
+tags:
+  - tag_one
+  - tag_two
+  - tag_three
+
+hmi:
+  - tablet
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: # {{💡TO_DEFINE}}
+
+      title: Travailler la catégorisation
+      subtitle: Communication, vocabulaire
+
+      abstract: | # {{💡TO_DEFINE}}
+        Courte description du curriculum
+
+      description: | # {{💡TO_DEFINE}}
+        Longue description du curriculum
+
+        blablabla
+
+  - locale: en_US
+    details:
+      icon: # {{💡TO_DEFINE}}
+
+      title: Improving categorization
+      subtitle: Communication, vocabulary
+
+      abstract: | # {{💡TO_DEFINE}}
+        Short description of the curriculum
+
+      description: | # {{💡TO_DEFINE}}
+        Long description of the curriculum
+
+        blablabla
+
+activities: # {{💡TO_DEFINE}}
+
+- receptive_language_identify_objects_by_function_1-DD1C6FE74232465DBB5B97378AEBB430
+- receptive_language_identify_objects_by_function_2-6020D9253EE6497A85FA7DE73C1FAEC2

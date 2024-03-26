@@ -1,0 +1,66 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: 506EA3B894AE46EBAE4BE4AFFC65233F
+name: curriculum_receptive_language_identify_objects_by_color
+
+status: published
+
+created_at: "2024-03-21T15:12:35.579066"
+last_edited_at: "2024-03-25T10:00:11.708216"
+authors:
+  - leka
+
+skills:
+  - recognition
+
+tags:
+  - tag_one
+  - tag_two
+  - tag_three
+
+hmi:
+  - tablet
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: # {{💡TO_DEFINE}}
+
+      title: Travailler la catégorisation
+      subtitle: Communication, vocabulaire
+
+      abstract: | # {{💡TO_DEFINE}}
+        Courte description du curriculum
+
+      description: | # {{💡TO_DEFINE}}
+        Longue description du curriculum
+
+        blablabla
+
+  - locale: en_US
+    details:
+      icon: # {{💡TO_DEFINE}}
+
+      title: Improving categorization
+      subtitle: Communication, vocabulary
+
+      abstract: | # {{💡TO_DEFINE}}
+        Short description of the curriculum
+
+      description: | # {{💡TO_DEFINE}}
+        Long description of the curriculum
+
+        blablabla
+
+activities: # {{💡TO_DEFINE}}
+
+- receptive_language_identify_objects_by_color_1-B8964AC4C9B644BEB35DE4B4AD1C5D93
+- receptive_language_identify_objects_by_color_with_two_components_1-95108BC74D094434AFFC34C74D95AFBC
+- receptive_language_identify_objects_by_color_with_two_components_2-6302A027A4734264ABB0734A7822C25A
+- receptive_language_identify_objects_by_color_with_two_components_3-DCF74FB8B23A4446A339231D08F85FA6

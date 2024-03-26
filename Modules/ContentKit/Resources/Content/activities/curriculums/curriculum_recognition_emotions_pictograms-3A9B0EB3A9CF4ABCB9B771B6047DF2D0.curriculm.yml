@@ -1,0 +1,67 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: 3A9B0EB3A9CF4ABCB9B771B6047DF2D0
+name: curriculum_recognition_emotions_pictograms
+
+status: published
+
+created_at: "2024-03-21T15:12:35.579066"
+last_edited_at: "2024-03-25T10:00:11.708216"
+authors:
+  - leka
+
+skills:
+  - recognition
+
+tags:
+  - tag_one
+  - tag_two
+  - tag_three
+
+hmi:
+  - tablet
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: # {{💡TO_DEFINE}}
+
+      title: Travailler la catégorisation
+      subtitle: Communication, vocabulaire
+
+      abstract: | # {{💡TO_DEFINE}}
+        Courte description du curriculum
+
+      description: | # {{💡TO_DEFINE}}
+        Longue description du curriculum
+
+        blablabla
+
+  - locale: en_US
+    details:
+      icon: # {{💡TO_DEFINE}}
+
+      title: Improving categorization
+      subtitle: Communication, vocabulary
+
+      abstract: | # {{💡TO_DEFINE}}
+        Short description of the curriculum
+
+      description: | # {{💡TO_DEFINE}}
+        Long description of the curriculum
+
+        blablabla
+
+activities: # {{💡TO_DEFINE}}
+
+- recognition_emotions_pictograms_1_leka-5C8987EC85064792AAA6C9DFB6B315C5
+- recognition_emotions_pictograms_2_leka-8C2D5551110D4A9BB0F904380C8C6F67
+- recognition_emotions_pictograms_3_leka-95F1BDCEA63F478DA164D5A976ACE1DB
+- recognition_emotions_pictograms_4_leka-FEC05FC6341847A780ED4A958BC4E14C
+
