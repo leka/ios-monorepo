@@ -1,0 +1,92 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+version: 1.0.0
+
+uuid: 4BFA2AC3390E49248DD022E27008F118
+name: hideAndSeek
+
+created_at: "2024-03-04T18:07:12.519229"
+last_edited_at: "2024-03-12T15:30:51.722290"
+status: published
+
+authors:
+  - leka
+
+skills:
+  - gross_motor_skills
+  - spatial_understanding
+  - sensory_interaction
+  - social_interactions
+  - turn_taking
+  - self_regulation
+  - inhibition
+
+tags:
+
+hmi:
+  - robot
+
+types:
+  - group
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon:
+
+      title: Cache-Cache
+      subtitle: null
+
+      short_description: |
+
+        L'objectif est de trouver Leka, caché quelque part dans la pièce.
+
+      description: |
+
+        L'objectif est de cacher Leka quelque part dans la pièce et ensuite de le retrouver.
+
+      instructions: |
+
+        - Cacher Leka quelque part dans la pièce.
+        - Appuyer sur "OK" lorsque Leka est caché.
+        - Encourager la personne accompagnée à chercher Leka.
+        - Lancer un renforçateur pour fournir un indice visuel et/ou sonore.
+        - Une fois que le robot est trouvé, appuyer sur "TROUVÉ".
+
+  - locale: en_US
+    details:
+      icon:
+
+      title: Hide and Seek
+      subtitle: null
+
+      short_description: |
+
+        The objective is to find Leka, hidden somewhere in the room.
+
+      description: |
+
+        The objective is to hide Leka somewhere in the room and then find it.
+
+      instructions: |
+
+        - Hide Leka somewhere in the room
+        - Press "OK" when Leka is hidden
+        - Encourage the care receiver to search for Leka
+        - Launch a reinforcement to provide a visual and/or auditory clue
+        - Once the robot is found, press "FOUND"
+
+exercises_payload:
+
+        - instructions:
+            - locale: fr_FR
+              value: Cherche Leka !
+            - locale: en_US
+              value: Seek Leka!
+          interface: hideAndSeek
