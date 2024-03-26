@@ -22,13 +22,24 @@ public struct RobotConnectionView: View {
             if self.viewModel.connected {
                 ConnectedRobotView(viewModel: self.viewModel)
             } else {
-                switch self.viewModel.robotDiscoveries.count {
-                    case 0:
+                switch self.viewModel.managerState {
+                    case .scanning:
+                        switch self.viewModel.robotDiscoveries.count {
+                            case 0:
+                                Spacer()
+                                self.searchingView
+                                Spacer()
+                            default:
+                                self.robotDiscoveryGridView
+                        }
+                    case .poweredOff:
+                        BluetoothOffView()
+                    case .unauthorized:
+                        BluetoothUnauthorizedView()
+                    case .unknown:
                         Spacer()
                         self.searchingView
                         Spacer()
-                    default:
-                        self.robotDiscoveryGridView
                 }
             }
         }

@@ -4,6 +4,7 @@
 
 import BLEKit
 import Combine
+import CoreBluetooth
 import Foundation
 
 public class RobotConnectionViewModel: ObservableObject {
@@ -11,6 +12,7 @@ public class RobotConnectionViewModel: ObservableObject {
 
     public init() {
         self.connected = self.bleManager.isConnected
+        self.subscribeToManagerState()
     }
 
     // MARK: Public
@@ -74,6 +76,7 @@ public class RobotConnectionViewModel: ObservableObject {
     @Published var selectedDiscovery: RobotDiscoveryModel?
 
     @Published var connected: Bool = false
+    @Published var managerState: ManagerState = .unknown
 
     @Published var connectedDiscovery: RobotDiscoveryModel? {
         didSet {
@@ -88,4 +91,14 @@ public class RobotConnectionViewModel: ObservableObject {
 
     private var cancellables: Set<AnyCancellable> = []
     private var scanCancellable: AnyCancellable?
+
+    private func subscribeToManagerState() {
+        self.bleManager.managerState
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] status in
+                guard let self else { return }
+                self.managerState = status
+            }
+            .store(in: &self.cancellables)
+    }
 }
