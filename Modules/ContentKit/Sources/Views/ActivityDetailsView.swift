@@ -13,8 +13,9 @@ import SwiftUI
 public struct ActivityDetailsView: View {
     // MARK: Lifecycle
 
-    public init(activity: Activity) {
+    public init(activity: Activity, onStartActivity: ((Activity) -> Void)? = nil) {
         self.activity = activity
+        self.onStartActivity = onStartActivity
     }
 
     // MARK: Public
@@ -103,7 +104,25 @@ public struct ActivityDetailsView: View {
                     .markdownTheme(.gitHub)
             }
         }
+        .toolbar {
+            ToolbarItem {
+                Button {
+                    self.onStartActivity?(self.activity)
+                } label: {
+                    Image(systemName: "play.circle")
+                    Text(l10n.ActivityDetailsView.startActivityButtonLabel)
+                }
+                .buttonStyle(.borderedProminent)
+                .tint(.lkGreen)
+                .disabled(self.onStartActivity == nil)
+                .opacity(self.onStartActivity == nil ? 0 : 1)
+            }
+        }
     }
+
+    // MARK: Internal
+
+    var onStartActivity: ((Activity) -> Void)?
 
     // MARK: Private
 
@@ -136,6 +155,11 @@ extension l10n {
                                                               bundle: ContentKitResources.bundle,
                                                               value: "Instructions",
                                                               comment: "ActivityDetailsView 'instructions' section title")
+
+        static let startActivityButtonLabel = LocalizedString("lekaapp.sample_activity_list_view.start_activity_button_label",
+                                                              bundle: ContentKitResources.bundle,
+                                                              value: "Start activity",
+                                                              comment: "Start activity button label on Sample Activity List view")
     }
 }
 
