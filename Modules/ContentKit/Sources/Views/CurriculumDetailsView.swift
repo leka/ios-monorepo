@@ -13,8 +13,9 @@ import SwiftUI
 public struct CurriculumDetailsView: View {
     // MARK: Lifecycle
 
-    public init(curriculum: Curriculum) {
+    public init(curriculum: Curriculum, onActivitySelected: ((Activity) -> Void)? = nil) {
         self.curriculum = curriculum
+        self.onActivitySelected = onActivitySelected
     }
 
     // MARK: Public
@@ -101,7 +102,9 @@ public struct CurriculumDetailsView: View {
             Section(String(l10n.CurriculumDetailsView.activitiesSectionTitle.characters)) {
                 ForEach(self.curriculum.activities, id: \.self) { id in
                     if let activity = Activity(id: id) {
-                        NavigationLink(destination: ActivityDetailsView(activity: activity)) {
+                        NavigationLink(destination:
+                            ActivityDetailsView(activity: activity, onStartActivity: self.onActivitySelected)
+                        ) {
                             HStack {
                                 Image(uiImage: activity.details.iconImage)
                                     .resizable()
@@ -117,6 +120,10 @@ public struct CurriculumDetailsView: View {
             }
         }
     }
+
+    // MARK: Internal
+
+    var onActivitySelected: ((Activity) -> Void)?
 
     // MARK: Private
 
