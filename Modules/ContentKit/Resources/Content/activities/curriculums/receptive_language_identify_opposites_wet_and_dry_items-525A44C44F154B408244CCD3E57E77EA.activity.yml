@@ -1,0 +1,274 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+version: 1.0.0
+
+uuid: 525A44C44F154B408244CCD3E57E77EA
+name: receptive_language_identify_opposites_wet_and_dry_items
+
+created_at: "2024-03-08T11:49:37.123541"
+last_edited_at: "2024-03-08T11:59:36.533942"
+status: published
+
+authors:
+  - julie_tuil
+
+skills:
+  - communication
+  - communication/verbal_communication
+  - communication/verbal_communication/receptive_language
+  - communication/verbal_communication/receptive_language/oral_comprehension
+
+tags:
+
+hmi:
+  - tablet
+
+types:
+  - one_on_one
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: receptive_language
+
+      title: Différencier sec et mouillé
+      subtitle: null
+
+      short_description: |
+        Touche l'objet/l'action demandé
+
+      description: |
+        La personne accompagnée doit répondre correctement à la question posée.
+
+      instructions: |
+        - Sur l'écran de l'iPad, toucher le haut-parleur pour que la personne accompagnée puisse entendre la consigne
+        - Encourager la personne accompagnée à toucher la bonne image
+        - Quand la réponse est correcte, Leka lance un renforçateur
+
+  - locale: en_US
+    details:
+      icon: receptive_language
+
+      title: Identify wet & dry items
+      subtitle: null
+
+      short_description: |
+        Touch the requested object/action
+
+      description: |
+        The care receiver has to answer the question asked.
+
+      instructions: |
+        - On the screen, touch the speaker button to make the care receiver hear the instruction
+        - Encourage the care receiver to click on the right picture
+        - When the care receiver touches the right picture then Leka launches a reinforcer
+
+exercises_payload:
+  options:
+    shuffle_exercises: true
+    shuffle_groups: true
+
+  exercise_groups:
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Touche le sec
+            - locale: en_US
+              value: Touch the dry one
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-animals-pets-dogdachshundwetgray
+              type: image
+            - value: pictograms-animals-pets-dogdachshundgray-004F
+              type: image
+              isRightAnswer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche le mouillé
+            - locale: en_US
+              value: Touch the wet one
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-animals-pets-dogdachshundwetgray
+              type: image
+              isRightAnswer: true
+            - value: pictograms-animals-pets-dogdachshundgray-004F
+              type: image
+
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Touche le sec
+            - locale: en_US
+              value: Touch the dry one
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-objects-house-kitchen-platewetpink
+              type: image
+            - value: pictograms-objects-house-kitchen-platepink-0199
+              type: image
+              isRightAnswer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche le mouillé
+            - locale: en_US
+              value: Touch the wet one
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-objects-house-kitchen-platewetpink
+              type: image
+              isRightAnswer: true
+            - value: pictograms-objects-house-kitchen-platepink-0199
+              type: image
+
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Touche le sec
+            - locale: en_US
+              value: Touch the dry one
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-weather-rainy-day
+              type: image
+            - value: pictograms-weather-sunny-day
+              type: image
+              isRightAnswer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche le mouillé
+            - locale: en_US
+              value: Touch the wet one
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-weather-rainy-day
+              type: image
+              isRightAnswer: true
+            - value: pictograms-weather-sunny-day
+              type: image
+
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Touche le sec
+            - locale: en_US
+              value: Touch the dry one
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-foods-meals-glassicedwater-0171
+              type: image
+            - value: pictograms-foods-meals-baguette-0180
+              type: image
+              isRightAnswer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche le mouillé
+            - locale: en_US
+              value: Touch the wet one
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: pictograms-foods-meals-glassicedwater-0171
+              type: image
+              isRightAnswer: true
+            - value: pictograms-foods-meals-baguette-0180
+              type: image
+
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Touche le sec
+            - locale: en_US
+              value: Touch the dry one
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: cheveux_mouillés
+              type: image
+            - value: cheveux_secs
+              type: image
+              isRightAnswer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche le mouillé
+            - locale: en_US
+              value: Touch the wet one
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: cheveux_mouillés
+              type: image
+              isRightAnswer: true
+            - value: cheveux_secs
+              type: image
+
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Touche le sec
+            - locale: en_US
+              value: Touch the dry one
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: lac
+              type: image
+            - value: désert
+              type: image
+              isRightAnswer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche le mouillé
+            - locale: en_US
+              value: Touch the wet one
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          shuffle_choices: true
+          payload:
+          choices:
+            - value: lac
+              type: image
+              isRightAnswer: true
+            - value: désert
+              type: image
