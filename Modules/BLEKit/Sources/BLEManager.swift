@@ -21,6 +21,10 @@ public class BLEManager {
 
     // MARK: Public
 
+    public enum BLEManagerError: Error {
+        case notPoweredOn
+    }
+
     #if targetEnvironment(simulator)
         public static var shared: BLEManager = .init(centralManager: .live())
     #else
@@ -45,7 +49,11 @@ public class BLEManager {
     }
 
     public func scanForRobots() -> AnyPublisher<[RobotDiscoveryModel], Error> {
-        self.centralManager.scanForPeripherals(withServices: [BLESpecs.AdvertisingData.service])
+        guard self.centralManager.state == .poweredOn else {
+            return Fail(error: BLEManagerError.notPoweredOn).eraseToAnyPublisher()
+        }
+
+        return self.centralManager.scanForPeripherals(withServices: [BLESpecs.AdvertisingData.service])
             .handleEvents(
                 receiveSubscription: { _ in
                     if self.centralManager.state == .poweredOn {
@@ -77,7 +85,7 @@ public class BLEManager {
                 }
             )
             .compactMap { peripheralDiscoveries in
-                peripheralDiscoveries.compactMap { peripheralDiscovery in
+                peripheralDiscoveries.compactMap { peripheralDiscovery -> RobotDiscoveryModel? in
                     guard let robotAdvertisingData = RobotAdvertisingData(
                         advertisementData: peripheralDiscovery.advertisementData),
                         let rssi = peripheralDiscovery.rssi
@@ -96,7 +104,11 @@ public class BLEManager {
     }
 
     public func connect(_ discovery: RobotDiscoveryModel) -> AnyPublisher<RobotPeripheral, Error> {
-        self.centralManager.connect(discovery.robotPeripheral.peripheral)
+        guard self.centralManager.state == .poweredOn else {
+            return Fail(error: BLEManagerError.notPoweredOn).eraseToAnyPublisher()
+        }
+
+        return self.centralManager.connect(discovery.robotPeripheral.peripheral)
             .compactMap { peripheral in
                 self.connectedRobotPeripheral = RobotPeripheral(peripheral: peripheral)
                 return self.connectedRobotPeripheral
