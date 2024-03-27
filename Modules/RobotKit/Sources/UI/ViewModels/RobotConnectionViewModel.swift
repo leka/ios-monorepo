@@ -76,7 +76,7 @@ public class RobotConnectionViewModel: ObservableObject {
     @Published var selectedDiscovery: RobotDiscoveryModel?
 
     @Published var connected: Bool = false
-    @Published var managerState: ManagerState = .unknown
+    @Published var managerState: CBManagerState = .unknown
 
     @Published var connectedDiscovery: RobotDiscoveryModel? {
         didSet {
@@ -93,11 +93,11 @@ public class RobotConnectionViewModel: ObservableObject {
     private var scanCancellable: AnyCancellable?
 
     private func subscribeToManagerState() {
-        self.bleManager.managerState
+        self.bleManager.state
             .receive(on: DispatchQueue.main)
-            .sink { [weak self] status in
+            .sink { [weak self] state in
                 guard let self else { return }
-                self.managerState = status
+                self.managerState = state
             }
             .store(in: &self.cancellables)
     }

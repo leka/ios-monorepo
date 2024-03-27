@@ -23,7 +23,7 @@ public struct RobotConnectionView: View {
                 ConnectedRobotView(viewModel: self.viewModel)
             } else {
                 switch self.viewModel.managerState {
-                    case .scanning:
+                    case .poweredOn:
                         switch self.viewModel.robotDiscoveries.count {
                             case 0:
                                 Spacer()
@@ -39,6 +39,11 @@ public struct RobotConnectionView: View {
                     case .unknown:
                         Spacer()
                         self.searchingView
+                        Spacer()
+
+                    default:
+                        Spacer()
+                        Text("DEBUG - shoud not see this")
                         Spacer()
                 }
             }

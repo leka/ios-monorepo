@@ -101,12 +101,12 @@ public class RobotListViewModel: ObservableObject {
     // MARK: Private
 
     private func subscribeToScanningStatus() {
-        self.bleManager.managerState
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] status in
-                guard let self else { return }
-                self.isScanning = status == .scanning
-            }
-            .store(in: &self.cancellables)
+//        self.bleManager.state
+//            .receive(on: DispatchQueue.main)
+//            .sink { [weak self] status in
+//                guard let self else { return }
+//                self.isScanning = status == .scanning
+//            }
+//            .store(in: &self.cancellables)
     }
 }
