@@ -13,6 +13,7 @@ public class RobotConnectionViewModel: ObservableObject {
     public init() {
         self.connected = self.bleManager.isConnected
         self.subscribeToManagerState()
+        self.subscribeToDidDisconnect()
     }
 
     // MARK: Public
@@ -98,6 +99,17 @@ public class RobotConnectionViewModel: ObservableObject {
             .sink { [weak self] state in
                 guard let self else { return }
                 self.managerState = state
+            }
+            .store(in: &self.cancellables)
+    }
+
+    private func subscribeToDidDisconnect() {
+        self.bleManager.didDisconnect
+            .receive(on: DispatchQueue.main)
+            .sink { _ in
+                self.connectedDiscovery = nil
+                self.robot.connectedPeripheral = nil
+                self.connected = false
             }
             .store(in: &self.cancellables)
     }
