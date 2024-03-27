@@ -2,6 +2,8 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AccountKit
+import ContentKit
 import DesignKit
 import LocalizationKit
 import SwiftUI
@@ -40,6 +42,15 @@ struct ActivitiesView: View {
                 }
                 .padding(.horizontal)
                 .padding()
+
+                ActivityListView(activities: ContentKit.listSampleActivities(), onStartActivity: { activity in
+                    if self.authManagerViewModel.userAuthenticationState == .loggedIn {
+                        self.navigation.sheetContent = .carereceiverPicker(activity: activity)
+                    } else {
+                        self.navigation.currentActivity = activity
+                        self.navigation.fullScreenCoverContent = .activityView
+                    }
+                })
             }
         }
     }
@@ -47,6 +58,8 @@ struct ActivitiesView: View {
     // MARK: Private
 
     @ObservedObject private var styleManager: StyleManager = .shared
+    @ObservedObject private var authManagerViewModel: AuthManagerViewModel = .shared
+    @ObservedObject private var navigation: Navigation = .shared
 }
 
 // MARK: - l10n.ActivitiesView
