@@ -2,6 +2,24 @@
     "version": "1.0",
     "sourceLanguage": "en",
     "strings": {
+        "robotkit.bluetooth_unauthorized_view.button": {
+            "comment": "Label of the button directing to Bluetooth settings of the bluetooth unauthorized of BluetoothUnauthorizedView",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Go to Settings"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Aller aux R\u00e9glages"
+                    }
+                }
+            }
+        },
         "robotkit.connected_robot_view.navigation_title": {
             "comment": "The title of the connected robot view",
             "extractionState": "extracted_with_value",
@@ -142,6 +160,96 @@
                     "stringUnit": {
                         "state": "translated",
                         "value": "Recherche en cours..."
+                    }
+                }
+            }
+        },
+        "robotkit.robot_connection_view.bluetooth_off_view.instruction": {
+            "comment": "The instruction of the bluetooth off of RobotConnectionErrorsView",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Go to Settings -> Select Bluetooth in sidebar -> Turn Bluetooth on."
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Aller dans R\u00e9glages -> Cliquez sur Bluetooth -> Activez le Bluetooth"
+                    }
+                }
+            }
+        },
+        "robotkit.robot_connection_view.bluetooth_off_view.message": {
+            "comment": "The message of the bluetooth off of RobotConnectionErrorsView",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "You need Bluetooth to connect to a robot."
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Le Bluetooth est requis pour se connecter \u00e0 un robot."
+                    }
+                }
+            }
+        },
+        "robotkit.robot_connection_view.bluetooth_off_view.title": {
+            "comment": "The title of the bluetooth off of RobotConnectionErrorsView",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Bluetooth off"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Bluetooth d\u00e9sactiv\u00e9"
+                    }
+                }
+            }
+        },
+        "robotkit.robot_connection_view.bluetooth_unauthorized_view.message": {
+            "comment": "The message of the bluetooth unauthorized of RobotConnectionErrorsView",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "You need Bluetooth to connect to a robot.\nPlease allow Leka App to use Bluetooth in your device settings"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Le Bluetooth est requis pour se connecter \u00e0 un robot.\nVeuillez autoriser l'utilisation du Bluetooth pour cette application."
+                    }
+                }
+            }
+        },
+        "robotkit.robot_connection_view.bluetooth_unauthorized_view.title": {
+            "comment": "The title of the bluetooth unauthorized of RobotConnectionErrorsView",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Bluetooth unauthorized"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Bluetooth non autoris\u00e9"
                     }
                 }
             }

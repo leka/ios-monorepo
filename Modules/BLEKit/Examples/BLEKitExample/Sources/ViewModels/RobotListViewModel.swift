@@ -27,7 +27,8 @@ public class RobotListViewModel: ObservableObject {
     // MARK: Public
 
     public func scanForPeripherals() {
-        if !self.bleManager.isScanning.value {
+//        if !self.bleManager.isScanning.value {
+        if !self.isScanning {
             print("Start scanning")
             self.scanForRobotsTask = self.bleManager.scanForRobots()
                 .receive(on: DispatchQueue.main)
@@ -100,12 +101,12 @@ public class RobotListViewModel: ObservableObject {
     // MARK: Private
 
     private func subscribeToScanningStatus() {
-        self.bleManager.isScanning
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] status in
-                guard let self else { return }
-                self.isScanning = status
-            }
-            .store(in: &self.cancellables)
+//        self.bleManager.state
+//            .receive(on: DispatchQueue.main)
+//            .sink { [weak self] status in
+//                guard let self else { return }
+//                self.isScanning = status == .scanning
+//            }
+//            .store(in: &self.cancellables)
     }
 }

@@ -4,6 +4,8 @@
 
 import CombineCoreBluetooth
 
+// MARK: - BLEManager
+
 public class BLEManager {
     // MARK: Lifecycle
 
@@ -14,9 +16,14 @@ public class BLEManager {
 
         self.subscribeToDidDisconnect()
         self.subscribeToDidConnect()
+        self.subscribeToDidUpdateState()
     }
 
     // MARK: Public
+
+    public enum BLEManagerError: Error {
+        case notPoweredOn
+    }
 
     #if targetEnvironment(simulator)
         public static var shared: BLEManager = .init(centralManager: .live())
@@ -29,7 +36,7 @@ public class BLEManager {
 
     // MARK: - @Published variables
 
-    public let isScanning = CurrentValueSubject<Bool, Never>(false)
+    public let state = CurrentValueSubject<CBManagerState, Never>(.unknown)
     public let didConnect = PassthroughSubject<RobotPeripheral, Never>()
     public let didDisconnect = PassthroughSubject<Void, Never>()
 
@@ -42,19 +49,11 @@ public class BLEManager {
     }
 
     public func scanForRobots() -> AnyPublisher<[RobotDiscoveryModel], Error> {
-        self.centralManager.scanForPeripherals(withServices: [BLESpecs.AdvertisingData.service])
-            .handleEvents(
-                receiveSubscription: { _ in
-                    if self.centralManager.state == .poweredOn {
-                        self.isScanning.send(true)
-                    } else {
-                        self.isScanning.send(false)
-                    }
-                },
-                receiveCancel: {
-                    self.isScanning.send(false)
-                }
-            )
+        guard self.centralManager.state == .poweredOn else {
+            return Fail(error: BLEManagerError.notPoweredOn).eraseToAnyPublisher()
+        }
+
+        return self.centralManager.scanForPeripherals(withServices: [BLESpecs.AdvertisingData.service])
             .tryScan(
                 [],
                 { list, discovery -> [PeripheralDiscovery] in
@@ -70,7 +69,7 @@ public class BLEManager {
                 }
             )
             .compactMap { peripheralDiscoveries in
-                peripheralDiscoveries.compactMap { peripheralDiscovery in
+                peripheralDiscoveries.compactMap { peripheralDiscovery -> RobotDiscoveryModel? in
                     guard let robotAdvertisingData = RobotAdvertisingData(
                         advertisementData: peripheralDiscovery.advertisementData),
                         let rssi = peripheralDiscovery.rssi
@@ -89,7 +88,11 @@ public class BLEManager {
     }
 
     public func connect(_ discovery: RobotDiscoveryModel) -> AnyPublisher<RobotPeripheral, Error> {
-        self.centralManager.connect(discovery.robotPeripheral.peripheral)
+        guard self.centralManager.state == .poweredOn else {
+            return Fail(error: BLEManagerError.notPoweredOn).eraseToAnyPublisher()
+        }
+
+        return self.centralManager.connect(discovery.robotPeripheral.peripheral)
             .compactMap { peripheral in
                 self.connectedRobotPeripheral = RobotPeripheral(peripheral: peripheral)
                 return self.connectedRobotPeripheral
@@ -99,7 +102,14 @@ public class BLEManager {
 
     public func disconnect() {
         guard let connectedPeripheral = connectedRobotPeripheral?.peripheral else { return }
-        self.centralManager.cancelPeripheralConnection(connectedPeripheral)
+
+        self.connectedRobotPeripheral = nil
+
+        if self.centralManager.state == .poweredOn {
+            self.centralManager.cancelPeripheralConnection(connectedPeripheral)
+        }
+
+        self.didDisconnect.send()
     }
 
     // MARK: Private
@@ -127,5 +137,39 @@ public class BLEManager {
                 self.didDisconnect.send()
             }
             .store(in: &self.cancellables)
+    }
+
+    private func subscribeToDidUpdateState() {
+        self.centralManager.didUpdateState
+            .sink { state in
+                self.state.send(state)
+                if state == .poweredOff {
+                    self.disconnect()
+                }
+            }
+            .store(in: &self.cancellables)
+    }
+}
+
+// MARK: - CBManagerState + CustomStringConvertible
+
+extension CBManagerState: CustomStringConvertible {
+    public var description: String {
+        switch self {
+            case .poweredOn:
+                "poweredOn"
+            case .poweredOff:
+                "poweredOff"
+            case .unauthorized:
+                "unauthorized"
+            case .unknown:
+                "unknown"
+            case .resetting:
+                "resetting"
+            case .unsupported:
+                "unsupported"
+            @unknown default:
+                "@unknown default"
+        }
     }
 }

@@ -4,6 +4,7 @@
 
 import BLEKit
 import Combine
+import CoreBluetooth
 import Foundation
 
 public class RobotConnectionViewModel: ObservableObject {
@@ -11,6 +12,8 @@ public class RobotConnectionViewModel: ObservableObject {
 
     public init() {
         self.connected = self.bleManager.isConnected
+        self.subscribeToManagerState()
+        self.subscribeToDidDisconnect()
     }
 
     // MARK: Public
@@ -42,6 +45,7 @@ public class RobotConnectionViewModel: ObservableObject {
     public func stopScanning() {
         log.info("🔵 BLE - Stop scanning for robots")
         self.scanCancellable = nil
+        self.robotDiscoveries = []
     }
 
     public func connectToRobot() {
@@ -74,6 +78,7 @@ public class RobotConnectionViewModel: ObservableObject {
     @Published var selectedDiscovery: RobotDiscoveryModel?
 
     @Published var connected: Bool = false
+    @Published var managerState: CBManagerState = .unknown
 
     @Published var connectedDiscovery: RobotDiscoveryModel? {
         didSet {
@@ -88,4 +93,34 @@ public class RobotConnectionViewModel: ObservableObject {
 
     private var cancellables: Set<AnyCancellable> = []
     private var scanCancellable: AnyCancellable?
+
+    private func subscribeToManagerState() {
+        self.bleManager.state
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] state in
+                guard let self else { return }
+                self.managerState = state
+                if state == .poweredOn {
+                    log.debug("poweredOn - start scanning")
+                    self.scanForRobots()
+                }
+                if state == .poweredOff {
+                    log.debug("poweredOff - stop scanning")
+                    self.stopScanning()
+                    self.selectedDiscovery = nil
+                }
+            }
+            .store(in: &self.cancellables)
+    }
+
+    private func subscribeToDidDisconnect() {
+        self.bleManager.didDisconnect
+            .receive(on: DispatchQueue.main)
+            .sink { _ in
+                self.connectedDiscovery = nil
+                self.robot.connectedPeripheral = nil
+                self.connected = false
+            }
+            .store(in: &self.cancellables)
+    }
 }
