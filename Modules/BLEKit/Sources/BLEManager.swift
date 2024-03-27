@@ -54,22 +54,6 @@ public class BLEManager {
         }
 
         return self.centralManager.scanForPeripherals(withServices: [BLESpecs.AdvertisingData.service])
-            .handleEvents(
-                receiveSubscription: { _ in
-                    if self.centralManager.state == .poweredOn {
-                        self.state.send(.poweredOn)
-                    } else if self.centralManager.state == .poweredOff {
-                        self.state.send(.poweredOff)
-                    } else if self.centralManager.state == .unauthorized {
-                        self.state.send(.unauthorized)
-                    } else {
-                        self.state.send(.unknown)
-                    }
-                },
-                receiveCancel: {
-                    self.state.send(.unknown)
-                }
-            )
             .tryScan(
                 [],
                 { list, discovery -> [PeripheralDiscovery] in
