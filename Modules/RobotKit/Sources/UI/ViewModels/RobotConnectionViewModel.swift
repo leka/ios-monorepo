@@ -45,6 +45,7 @@ public class RobotConnectionViewModel: ObservableObject {
     public func stopScanning() {
         log.info("🔵 BLE - Stop scanning for robots")
         self.scanCancellable = nil
+        self.robotDiscoveries = []
     }
 
     public func connectToRobot() {
@@ -99,6 +100,15 @@ public class RobotConnectionViewModel: ObservableObject {
             .sink { [weak self] state in
                 guard let self else { return }
                 self.managerState = state
+                if state == .poweredOn {
+                    log.debug("poweredOn - start scanning")
+                    self.scanForRobots()
+                }
+                if state == .poweredOff {
+                    log.debug("poweredOff - stop scanning")
+                    self.stopScanning()
+                    self.selectedDiscovery = nil
+                }
             }
             .store(in: &self.cancellables)
     }
