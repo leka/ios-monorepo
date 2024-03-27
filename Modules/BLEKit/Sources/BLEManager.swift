@@ -102,7 +102,14 @@ public class BLEManager {
 
     public func disconnect() {
         guard let connectedPeripheral = connectedRobotPeripheral?.peripheral else { return }
-        self.centralManager.cancelPeripheralConnection(connectedPeripheral)
+
+        self.connectedRobotPeripheral = nil
+
+        if self.centralManager.state == .poweredOn {
+            self.centralManager.cancelPeripheralConnection(connectedPeripheral)
+        }
+
+        self.didDisconnect.send()
     }
 
     // MARK: Private
@@ -135,8 +142,10 @@ public class BLEManager {
     private func subscribeToDidUpdateState() {
         self.centralManager.didUpdateState
             .sink { state in
-                log.info("BLEManager didUpdateState to: \(String(describing: state))")
                 self.state.send(state)
+                if state == .poweredOff {
+                    self.disconnect()
+                }
             }
             .store(in: &self.cancellables)
     }
