@@ -16,6 +16,7 @@ public class BLEManager {
 
         self.subscribeToDidDisconnect()
         self.subscribeToDidConnect()
+        self.subscribeToDidUpdateState()
     }
 
     // MARK: Public
@@ -133,5 +134,37 @@ public class BLEManager {
                 self.didDisconnect.send()
             }
             .store(in: &self.cancellables)
+    }
+
+    private func subscribeToDidUpdateState() {
+        self.centralManager.didUpdateState
+            .sink { state in
+                log.info("BLEManager didUpdateState to: \(String(describing: state))")
+                self.state.send(state)
+            }
+            .store(in: &self.cancellables)
+    }
+}
+
+// MARK: - CBManagerState + CustomStringConvertible
+
+extension CBManagerState: CustomStringConvertible {
+    public var description: String {
+        switch self {
+            case .poweredOn:
+                "poweredOn"
+            case .poweredOff:
+                "poweredOff"
+            case .unauthorized:
+                "unauthorized"
+            case .unknown:
+                "unknown"
+            case .resetting:
+                "resetting"
+            case .unsupported:
+                "unsupported"
+            @unknown default:
+                "@unknown default"
+        }
     }
 }
