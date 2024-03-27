@@ -94,6 +94,35 @@ public struct ActivityView: View {
                     Image(systemName: "xmark.circle")
                 }
             }
+
+            #if DEVELOPER_MODE
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        self.viewModel.isReinforcerAnimationEnabled.toggle()
+                    } label: {
+                        Image(systemName: self.viewModel.isReinforcerAnimationEnabled ? "livephoto" : "livephoto.slash")
+                    }
+                }
+
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        self.viewModel.moveToPreviousExercise()
+                    } label: {
+                        Image(systemName: "arrow.backward")
+                    }
+                    .disabled(self.viewModel.isFirstExercise)
+                }
+
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        self.viewModel.moveToNextExercise()
+                    } label: {
+                        Image(systemName: "arrow.forward")
+                    }
+                    .disabled(self.viewModel.isLastExercise)
+                }
+            #endif
+
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
                     self.isInfoSheetPresented.toggle()
