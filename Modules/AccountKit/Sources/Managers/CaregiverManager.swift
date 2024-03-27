@@ -22,7 +22,11 @@ public class CaregiverManager {
                     self?.fetchErrorSubject.send(error)
                 }
             }, receiveValue: { [weak self] fetchedCaregivers in
-                self?.caregiverList.send(fetchedCaregivers)
+                guard let self else { return }
+                self.caregiverList.send(fetchedCaregivers)
+                if let currentID = self.currentCaregiver.value?.id {
+                    self.currentCaregiver.send(fetchedCaregivers.first { $0.id == currentID })
+                }
             })
             .store(in: &self.cancellables)
     }
@@ -65,7 +69,7 @@ public class CaregiverManager {
                     self.fetchErrorSubject.send(error)
                 }
             }, receiveValue: { _ in
-                self.fetchCaregiver(documentID: documentID)
+                // Nothing to do
             })
             .store(in: &self.cancellables)
     }
