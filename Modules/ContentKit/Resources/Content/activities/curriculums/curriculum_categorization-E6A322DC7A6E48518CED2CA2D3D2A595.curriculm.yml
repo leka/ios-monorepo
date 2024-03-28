@@ -13,12 +13,23 @@ authors:
   - leka
 
 skills:
-  - recognition
+  - association
+  - sorting
+  - matching
 
 tags:
-  - tag_one
-  - tag_two
-  - tag_three
+  - bedroom
+  - bathroom
+  - kitchen
+  - everyday_objects
+  - home_objects
+  - clothes
+  - socks
+  - pairing
+  - vegetables
+  - fruits
+  - basket
+  - intruder
 
 hmi:
   - tablet
@@ -32,31 +43,27 @@ l10n:
     details:
       icon: # {{💡TO_DEFINE}}
 
-      title: Travailler la catégorisation
-      subtitle: Communication, vocabulaire
+      title: Catégorisation
+      subtitle: Apprendre à trier et à catégoriser
 
-      abstract: | # {{💡TO_DEFINE}}
-        Courte description du curriculum
+      abstract: |
+        Ce curriculum vise à développer les compétences de tri et de catégorisation à travers une série d'activités interactives, conçues pour engager et améliorer la capacité de la personne accompagnée à classer et organiser des objets selon différentes catégories et critères.
 
-      description: | # {{💡TO_DEFINE}}
-        Longue description du curriculum
-
-        blablabla
+      description: |
+        Ce curriculum de catégorisation est conçu pour aider les personnes accompagnées à développer leurs compétences de tri et de catégorisation à travers une variété d'activités. De l'association d'objets à des espaces fonctionnels, à l'identification d'éléments intrus, et à des tâches conçues sans possibilité d'erreur, chaque activité est adaptée pour être réalisée avec une tablette, rendant l'apprentissage interactif et engageant.
 
   - locale: en_US
     details:
       icon: # {{💡TO_DEFINE}}
 
-      title: Improving categorization
-      subtitle: Communication, vocabulary
+      title: Categorization
+      subtitle: Learning to Sort and Categorize
 
-      abstract: | # {{💡TO_DEFINE}}
-        Short description of the curriculum
+      abstract: |
+        Aimed at developing sorting and categorization skills, this curriculum features a series of interactive activities designed to engage and enhance the care receiver's ability to classify and organize objects according to different categories and criteria.
 
-      description: | # {{💡TO_DEFINE}}
-        Long description of the curriculum
-
-        blablabla
+      description: |
+        This categorization curriculum is designed to assist care receivers in developing their sorting and categorization skills through a variety of activities. From associating objects with functional spaces, identifying intruder items, to error-free designed tasks, each activity is tailored for completion with a tablet, making learning interactive and engaging.
 
 activities: # {{💡TO_DEFINE}}
 
