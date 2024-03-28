@@ -90,6 +90,8 @@ struct ActionButtonObserve: View {
             if self.image.isRasterImageFile {
                 Image(uiImage: UIImage(named: self.image)!)
                     .resizable()
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                    .scaledToFit()
                     .frame(width: 460, height: 460)
                     .clipShape(RoundedRectangle(cornerRadius: 10))
                     .modifier(AnimatableBlur(blurRadius: self.imageWasTapped ? 0 : 20))
