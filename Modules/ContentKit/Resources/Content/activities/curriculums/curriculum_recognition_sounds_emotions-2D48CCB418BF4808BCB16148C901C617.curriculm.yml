@@ -7,21 +7,27 @@ name: curriculum_recognition_sounds_emotions
 
 status: published
 
-created_at: "2024-03-21T15:12:35.579066"
-last_edited_at: "2024-03-25T10:00:11.708216"
+created_at: "2024-03-28T15:12:35.579066"
+last_edited_at: "2024-03-30T10:00:11.708216"
 authors:
-  - leka
+  - Leka
 
 skills:
-  - recognition
+  - recognition/basic_emotions
+  - sensory_interaction
 
 tags:
-  - tag_one
-  - tag_two
-  - tag_three
+  - emotions
+  - sounds
+  - Ladislas
+  - Hortense
+  - Lucie
 
 hmi:
   - tablet
+
+types:
+  - one_on_one
 
 locales:
   - en_US
@@ -30,35 +36,41 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon: # {{💡TO_DEFINE}}
+      icon: # TO_DEFINE
 
-      title: Travailler la catégorisation
-      subtitle: Communication, vocabulaire
+      title: Sons des émotions
+      subtitle: Identifier les émotions à travers des sons
 
-      abstract: | # {{💡TO_DEFINE}}
-        Courte description du curriculum
+      abstract: |
+        Ce curriculum est conçu pour aider les personnes accompagnées à reconnaître différentes émotions à travers des sons. À l'aide de l'iPad, les participants découvrent comment les variations sonores peuvent refléter des états émotionnels variés, en écoutant et en associant ces sons aux expressions des personnes Ladislas, Hortense et Lucie.
 
-      description: | # {{💡TO_DEFINE}}
-        Longue description du curriculum
+      description: |
+        À travers une série d'activités interactives, ce curriculum invite les personnes accompagnées à écouter attentivement des sons exprimant différentes émotions et à identifier l'émotion correspondante en choisissant parmi les images des personnes Ladislas, Hortense et Lucie exprimant ces émotions. L'objectif est de développer la capacité à reconnaître et à comprendre les émotions à travers les indices auditifs, renforçant ainsi la compréhension sociale et émotionnelle.
 
-        blablabla
+      instructions: |
+        - Jouer un son exprimant une émotion spécifique via l'iPad.
+        - Demander à la personne accompagnée de choisir parmi les images de Ladislas, Hortense, et Lucie celle qui correspond à l'émotion entendue.
+        - Renforcer les réponses correctes pour encourager l'apprentissage et la reconnaissance des émotions.
 
   - locale: en_US
     details:
-      icon: # {{💡TO_DEFINE}}
+      icon: # TO_DEFINE
 
-      title: Improving categorization
-      subtitle: Communication, vocabulary
+      title: Emotions sounds
+      subtitle: Identifying Emotions Through Sounds
 
-      abstract: | # {{💡TO_DEFINE}}
-        Short description of the curriculum
+      abstract: |
+        This curriculum aims to assist care receivers in recognizing different emotions through sounds. Using the iPad, participants learn how sound variations can reflect various emotional states by listening and matching these sounds to expressions of people Ladislas, Hortense, and Lucie.
 
-      description: | # {{💡TO_DEFINE}}
-        Long description of the curriculum
+      description: |
+        Through a series of interactive activities, this curriculum encourages care receivers to listen carefully to sounds expressing different emotions and to identify the corresponding emotion by choosing from images of people Ladislas, Hortense, and Lucie expressing these emotions. The goal is to develop the ability to recognize and understand emotions through auditory cues, thereby enhancing social and emotional comprehension.
 
-        blablabla
+      instructions: |
+        - Play a sound expressing a specific emotion through the iPad.
+        - Ask the care receiver to choose from images of Ladislas, Hortense, and Lucie the one that matches the heard emotion.
+        - Reinforce correct responses to encourage learning and recognition of emotions.
 
-activities: # {{💡TO_DEFINE}}
+activities:
 
 - recognition_sounds_emotions_pictures_1_hortense-7AC45BEF2A2A45E7920C7333C7E88CD6
 - recognition_sounds_emotions_pictures_1_ladislas-5F842C24C9474BF19333975561DE65E7

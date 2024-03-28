@@ -5,8 +5,6 @@
 uuid: 6A5EF209D00942F4AEEA4AEC6DAC052A
 name: curriculum_recognition_sounds_musical_instruments
 
-status: published
-
 created_at: "2024-03-21T15:12:35.579066"
 last_edited_at: "2024-03-25T10:00:11.708216"
 authors:
@@ -14,14 +12,18 @@ authors:
 
 skills:
   - recognition
+  - recognition/musical_instruments
+  - sensory_interaction
 
 tags:
-  - tag_one
-  - tag_two
-  - tag_three
+  - musical_instruments
+  - sounds
 
 hmi:
   - tablet
+
+types:
+  - one_on_one
 
 locales:
   - en_US
@@ -30,35 +32,41 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon: # {{💡TO_DEFINE}}
+      icon: # TO_DEFINE
 
-      title: Travailler la catégorisation
-      subtitle: Communication, vocabulaire
+      title: Reconnaissance des sons d'instruments de musique
+      subtitle: Identifier les instruments par leurs sons
 
-      abstract: | # {{💡TO_DEFINE}}
-        Courte description du curriculum
+      abstract: |
+        Ce curriculum est conçu pour développer la reconnaissance des sons produits par différents instruments de musique. À travers des activités interactives sur l'écran de l'iPad, les personnes accompagnées apprennent à associer des sons à l'image correspondante de l'instrument.
 
-      description: | # {{💡TO_DEFINE}}
-        Longue description du curriculum
+      description: |
+        Chaque activité dans ce curriculum aide les personnes accompagnées à identifier les sons spécifiques des instruments de musique en écoutant des enregistrements audio. En touchant l'icône du haut-parleur sur l'écran de l'iPad, elles entendent le son d'un instrument et doivent ensuite choisir parmi plusieurs images celle qui correspond au son entendu. L'approche pédagogique vise à enrichir la compréhension auditive tout en rendant l'apprentissage amusant et interactif.
 
-        blablabla
+      instructions: |
+        - Encourager la personne accompagnée à toucher le haut-parleur pour écouter le son de l'instrument.
+        - La personne accompagnée doit ensuite toucher l'image qui correspond au son entendu.
+        - Une réponse correcte est encouragée par une réaction positive de Leka.
 
   - locale: en_US
     details:
-      icon: # {{💡TO_DEFINE}}
+      icon: # TO_DEFINE
 
-      title: Improving categorization
-      subtitle: Communication, vocabulary
+      title: Recognition of musical instruments sounds
+      subtitle: Identifying instruments by their sounds
 
-      abstract: | # {{💡TO_DEFINE}}
-        Short description of the curriculum
+      abstract: |
+        This curriculum is aimed at enhancing the recognition of sounds produced by various musical instruments. Through interactive activities on the iPad screen, care receivers learn to match sounds to the corresponding instrument image.
 
-      description: | # {{💡TO_DEFINE}}
-        Long description of the curriculum
+      description: |
+        Each activity within this curriculum is designed to assist care receivers in identifying specific sounds of musical instruments by listening to audio recordings. By touching the speaker icon on the iPad screen, they hear the sound of an instrument and must then choose from several images the one that matches the heard sound. The educational approach aims to enrich auditory understanding while making learning fun and interactive.
 
-        blablabla
+      instructions: |
+        - Encourage the care receiver to touch the speaker icon to listen to the instrument sound.
+        - The care receiver must then touch the image that corresponds to the heard sound.
+        - A correct response is encouraged by a positive reaction from Leka.
 
-activities: # {{💡TO_DEFINE}}
+activities:
 
 - recognition_sounds_musical_instruments_drawings_1_image-FA8702A14D4E4792AEFB6158115C1AAD
 - recognition_sounds_musical_instruments_drawings_2_images-1032EA5E0C3D421F8AC806CAA8897D97
