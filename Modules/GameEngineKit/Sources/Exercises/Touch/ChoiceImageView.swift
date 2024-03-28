@@ -14,7 +14,13 @@ public struct ChoiceImageView: View {
     // MARK: Lifecycle
 
     public init(image: String, size: CGFloat, background: Color? = nil, state: GameplayChoiceState = .idle) {
-        self.image = image
+        if let path = Bundle.path(forImage: image) {
+            log.debug("Image found at path: \(path)")
+            self.image = path
+        } else {
+            log.error("Image not found: \(image)")
+            self.image = image
+        }
         self.size = size
         self.state = state
         self.background = background ?? self.choiceBackgroundColor
@@ -148,10 +154,10 @@ extension l10n {
 }
 
 #Preview {
-    let pngImagePathFromContentKit = Bundle.path(forImage: "discover_leka.activity.icon", in: ContentKitResources.bundle)!
-    let pngImagePath = Bundle.path(forImage: "image-placeholder-png-boy_sleeping")!
-    let jpgImagePath = Bundle.path(forImage: "image-placeholder-jpg-boy_sleeping")!
-    let svgImagePath = Bundle.path(forImage: "image-placeholder-svg-boy_sleeping")!
+    let pngImagePathFromContentKit = "discover_leka"
+    let pngImagePath = "image-placeholder-png-boy_sleeping"
+    let jpgImagePath = "image-placeholder-jpg-boy_sleeping"
+    let svgImagePath = "image-placeholder-svg-boy_sleeping"
 
     return ScrollView {
         VStack(spacing: 60) {
