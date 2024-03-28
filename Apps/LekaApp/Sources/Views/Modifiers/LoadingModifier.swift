@@ -25,7 +25,7 @@ struct LoadingModifier: ViewModifier {
 }
 
 extension View {
-    func loadingText(isLoading: Bool) -> some View {
+    func loadingIndicator(isLoading: Bool) -> some View {
         modifier(LoadingModifier(isLoading: isLoading))
     }
 }
@@ -35,14 +35,14 @@ extension View {
         Button {}
             label: {
                 Text("Connect")
-                    .loadingText(isLoading: false)
+                    .loadingIndicator(isLoading: false)
             }
             .buttonStyle(.borderedProminent)
 
         Button {}
             label: {
                 Text("Connect")
-                    .loadingText(isLoading: true)
+                    .loadingIndicator(isLoading: true)
             }
             .buttonStyle(.borderedProminent)
     }
