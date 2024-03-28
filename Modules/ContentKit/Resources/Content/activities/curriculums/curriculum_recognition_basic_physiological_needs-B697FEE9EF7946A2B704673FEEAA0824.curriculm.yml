@@ -14,14 +14,21 @@ authors:
 
 skills:
   - recognition
+  - recognition/basic_physiological_recognition_needs
+  - autoregulation
 
 tags:
-  - tag_one
-  - tag_two
-  - tag_three
+  - characters
+  - drawings
+  - physiological_needs
+  - human_needs
+  - self_awareness
 
 hmi:
   - tablet
+
+types:
+  - one_on_one
 
 locales:
   - en_US
@@ -30,35 +37,31 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon: # {{💡TO_DEFINE}}
+      icon: # TO_DEFINE
 
-      title: Travailler la catégorisation
-      subtitle: Communication, vocabulaire
+      title: Reconnaître les besoins physiologiques de base
+      subtitle: Identifier et répondre aux besoins physiologiques
 
-      abstract: | # {{💡TO_DEFINE}}
-        Courte description du curriculum
+      abstract: |
+        Ce curriculum vise à développer la reconnaissance et la compréhension des besoins physiologiques de base à travers des représentations dessinées. En observant les états des personnages, les personnes accompagnées apprennent à identifier leurs besoins essentiels tels que la faim, la soif et la fatigue.
 
-      description: | # {{💡TO_DEFINE}}
-        Longue description du curriculum
-
-        blablabla
+      description: |
+        À travers des activités interactives présentées sur l'écran de l'iPad, les personnes accompagnées sont invitées à observer attentivement des images de personnages exprimant différents états physiologiques. L'objectif est de reconnaître l'état physique du personnage et de sélectionner l'image qui correspond au besoin fondamental exprimé. Cela inclut la reconnaissance des besoins de manger, de boire, de dormir, parmi d'autres. Les activités sont structurées pour encourager une compréhension profonde des signaux corporels et des réponses appropriées à ces besoins.
 
   - locale: en_US
     details:
-      icon: # {{💡TO_DEFINE}}
+      icon: # TO_DEFINE
 
-      title: Improving categorization
-      subtitle: Communication, vocabulary
+      title: Recognize Basic Physiological Needs through Drawing
+      subtitle: Identifying and Responding to Physiological States
 
-      abstract: | # {{💡TO_DEFINE}}
-        Short description of the curriculum
+      abstract: |
+        This curriculum is designed to foster the recognition and understanding of basic physiological needs through illustrated representations. By observing the states of characters, care receivers learn to identify their essential needs such as hunger, thirst, and tiredness.
 
-      description: | # {{💡TO_DEFINE}}
-        Long description of the curriculum
+      description: |
+        Through interactive activities displayed on the iPad screen, care receivers are encouraged to carefully observe images of characters expressing various physiological states. The goal is to recognize the physical state of the character and select the image that matches the fundamental need being expressed. This includes recognizing the needs to eat, drink, sleep, among others. The activities are structured to promote a deep understanding of bodily signals and appropriate responses to these needs.
 
-        blablabla
-
-activities: # {{💡TO_DEFINE}}
+activities:
 
 - recognition_basic_physiological_needs_drawings_1_image-11EFD2C711C14CEBACD244DC9201A0ED
 - recognition_basic_physiological_needs_drawings_2_images-5DBCCB46BA2B4646983BDC7160E03536
