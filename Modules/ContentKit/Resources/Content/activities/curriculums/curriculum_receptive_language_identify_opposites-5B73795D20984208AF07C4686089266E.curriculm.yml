@@ -58,8 +58,7 @@ l10n:
       description: |
         "Identify Opposites" involves care receivers in an interactive learning process, requiring attentive listening and responses to questions about pairs of opposites. Focused on the recognition of opposites, this curriculum aims to improve oral language comprehension and the ability to follow verbal instructions. The activities are designed to engage and challenge care receivers, reinforcing their understanding of opposite concepts through clear and interactive visual examples.
 
-
-activities: # {{💡TO_DEFINE}}
+activities:
 
 - receptive_language_identify_opposites_little_and_big_items-9309431C672C45F2946B718BAF0A8D5F
 - receptive_language_identify_opposites_hot_and_cold_items-FDC6A9C523C54A47B40F2C4F1B480581
