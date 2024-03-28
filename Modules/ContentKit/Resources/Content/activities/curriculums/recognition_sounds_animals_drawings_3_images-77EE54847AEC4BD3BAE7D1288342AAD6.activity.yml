@@ -94,7 +94,7 @@ exercises_payload:
             - value: pictograms-animals-farm-duck_green-0075
               type: image
               isRightAnswer: true
-            - value: pictograms-animals-cat_gray-0050
+            - value: pictograms-animal-pets-cat_gray-00A3
               type: image
             - value: pictograms-animals-forest-bird_robin_red-005B
               type: image
@@ -114,7 +114,7 @@ exercises_payload:
         payload:
           shuffle_choices: true
           choices:
-            - value: pictograms-animals-cat_gray-0050
+            - value: pictograms-animal-pets-cat_gray-00A3
               type: image
               isRightAnswer: true
             - value: pictograms-animals-forest-bird_robin_red-005B
@@ -326,7 +326,7 @@ exercises_payload:
               isRightAnswer: true
             - value: pictograms-animals-pets-dog_golden_retriever_brown-0052
               type: image
-            - value: pictograms-animals-cat_gray-0050
+            - value: pictograms-animal-pets-cat_gray-00A3
               type: image
 
       - instructions:
@@ -347,7 +347,7 @@ exercises_payload:
             - value: pictograms-animals-pets-dog_golden_retriever_brown-0052
               type: image
               isRightAnswer: true
-            - value: pictograms-animals-cat_gray-0050
+            - value: pictograms-animal-pets-cat_gray-00A3
               type: image
             - value: pictograms-animals-farm-pig_pink-0073
               type: image
