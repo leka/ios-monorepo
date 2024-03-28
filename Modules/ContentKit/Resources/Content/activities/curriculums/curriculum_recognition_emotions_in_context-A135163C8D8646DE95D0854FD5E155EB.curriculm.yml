@@ -14,14 +14,21 @@ authors:
 
 skills:
   - recognition
+  - recognition/basic_emotions
+  - empathy
 
 tags:
-  - tag_one
-  - tag_two
-  - tag_three
+  - emotions
+  - context
+  - empathy
+  - characters
+  - drawings
 
 hmi:
   - tablet
+
+types:
+  - one_on_one
 
 locales:
   - en_US
@@ -30,35 +37,32 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon: # {{💡TO_DEFINE}}
+      icon: # TO_DEFINE
 
-      title: Travailler la catégorisation
-      subtitle: Communication, vocabulaire
+      title: Reconnaissance des émotions dans un contexte
+      subtitle: Décrypter et s'identifier aux émotions
 
-      abstract: | # {{💡TO_DEFINE}}
-        Courte description du curriculum
+      abstract: |
+        Ce parcours offre une exploration double : d'abord, identifier les émotions des personnages dans divers contextes (activités 1 et 2), puis, dans les activités 3 et 4, inviter les personnes accompagnées à exprimer ce qu'elles ressentiraient à la place des personnages. Cette deuxième partie n'a pas de "bonne réponse", encourageant ainsi une réflexion personnelle sur les réactions émotionnelles.
 
-      description: | # {{💡TO_DEFINE}}
-        Longue description du curriculum
-
-        blablabla
+      description: |
+        Les premières activités mettent l'accent sur l'identification des émotions des personnages basées sur des indices contextuels et visuels. Ensuite, le parcours se dirige vers une introspection où les participants sont encouragés à projeter leurs propres sentiments dans des situations similaires, favorisant une compréhension plus profonde des émotions et le développement de l'empathie. Cette approche permet d'aborder la reconnaissance des émotions de manière globale et personnalisée, en tenant compte de la diversité des réponses émotionnelles.
 
   - locale: en_US
     details:
-      icon: # {{💡TO_DEFINE}}
+      icon: # TO_DEFINE
 
-      title: Improving categorization
-      subtitle: Communication, vocabulary
+      title: Emotion Recognition in Context
+      subtitle: Deciphering and Identifying with Emotions
 
-      abstract: | # {{💡TO_DEFINE}}
-        Short description of the curriculum
+      abstract: |
+        This journey provides a twofold exploration: firstly, to identify characters' emotions across various contexts (activities 1 and 2), and secondly, in activities 3 and 4, to invite care receivers to express what they would feel in the characters' place. The latter part has no "right answer," thus encouraging personal reflection on emotional reactions.
 
-      description: | # {{💡TO_DEFINE}}
-        Long description of the curriculum
+      description: |
+        The initial activities focus on recognizing characters' emotions based on contextual and visual cues. Then, the journey shifts towards introspection, where participants are urged to project their own feelings onto similar situations, fostering a deeper understanding of emotions and the development of empathy. This approach addresses emotion recognition in a comprehensive and personalized manner, acknowledging the diversity of emotional responses.
 
-        blablabla
 
-activities: # {{💡TO_DEFINE}}
+activities:
 
 - recognition_emotions_in_context_thumbs_up_thumbs_down-95A0134AA0E04EA3B6933BDFC8564CBA
 - recognition_emotions_in_context_5_emotions-ADE4BA794B6D4B42B3A39127F5DDF8D0
