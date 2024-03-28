@@ -146,6 +146,24 @@
                 }
             }
         },
+        "contentkit.curriculum_list_view.button_label": {
+            "comment": "Discover button label of CurriculumListView ",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Discover"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "D\u00e9couvrir"
+                    }
+                }
+            }
+        },
         "lekaapp.sample_activity_list_view.start_activity_button_label": {
             "comment": "Start activity button label on Sample Activity List view",
             "extractionState": "extracted_with_value",
