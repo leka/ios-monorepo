@@ -96,7 +96,7 @@ exercises_payload:
               isRightAnswer: true
             - value: pictograms-animals-cat_gray-0050
               type: image
-            - value: pictograms-animals-farm-bird_yellow-0071
+            - value: pictograms-animals-forest-bird_robin_red-005B
               type: image
             - value: pictograms-animals-farm-horse_brown-006A
               type: image
@@ -119,7 +119,7 @@ exercises_payload:
             - value: pictograms-animals-cat_gray-0050
               type: image
               isRightAnswer: true
-            - value: pictograms-animals-farm-bird_yellow-0071
+            - value: pictograms-animals-forest-bird_robin_red-005B
               type: image
             - value: pictograms-animals-farm-chicken_yellow-006E
               type: image
@@ -141,7 +141,7 @@ exercises_payload:
         payload:
           shuffle_choices: true
           choices:
-            - value: pictograms-animals-farm-bird_yellow-0071
+            - value: pictograms-animals-forest-bird_robin_red-005B
               type: image
               isRightAnswer: true
             - value: pictograms-animals-farm-chicken_yellow-006E
@@ -173,7 +173,7 @@ exercises_payload:
               type: image
             - value: pictograms-animals-farm-horse_brown-006A
               type: image
-            - value: pictograms-animals-farm-bird_yellow-0071
+            - value: pictograms-animals-forest-bird_robin_red-005B
               type: image
 
       - instructions:
@@ -248,7 +248,7 @@ exercises_payload:
               type: image
             - value: pictograms-animals-farm-pig_pink-0073
               type: image
-            - value: pictograms-animals-farm-bird_yellow-0071
+            - value: pictograms-animals-forest-bird_robin_red-005B
               type: image
 
 
@@ -349,7 +349,7 @@ exercises_payload:
               type: image
             - value: pictograms-animals-cat_gray-0050
               type: image
-            - value: pictograms-animals-farm-bird_yellow-0071
+            - value: pictograms-animals-forest-bird_robin_red-005B
               type: image
 
       - instructions:
