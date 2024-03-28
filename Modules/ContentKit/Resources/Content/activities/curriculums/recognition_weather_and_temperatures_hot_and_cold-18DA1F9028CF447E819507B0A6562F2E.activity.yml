@@ -89,13 +89,76 @@ exercises_payload:
             type: ipad
             value:
               type: image
-              value:
+              value: landscape_autumn-05
           payload:
             shuffle_choices: true
             choices:
-              - value:
+              - value: selection_pictograms-weather-cold_blue-010F
                 type: image
-              - value:
+                isRightAnswer: true
+              - value: selection_pictograms-weather-hot_red-010E
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Regarde l'image. Fait-il chaud ou froid ?
+            - locale: en_US
+              value: Look at the image. Is it hot or cold?
+          interface: observeThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: image
+              value: landscape_autumn-06
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: selection_pictograms-weather-cold_blue-010F
+                type: image
+                isRightAnswer: true
+              - value: selection_pictograms-weather-hot_red-010E
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Regarde l'image. Fait-il chaud ou froid ?
+            - locale: en_US
+              value: Look at the image. Is it hot or cold?
+          interface: observeThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: image
+              value: landscape_snow_lake
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: selection_pictograms-weather-cold_blue-010F
+                type: image
+                isRightAnswer: true
+              - value: selection_pictograms-weather-hot_red-010E
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Regarde l'image. Fait-il chaud ou froid ?
+            - locale: en_US
+              value: Look at the image. Is it hot or cold?
+          interface: observeThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: image
+              value: landscape_spring-03
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: selection_pictograms-weather-cold_blue-010F
+                type: image
+              - value: selection_pictograms-weather-hot_red-010E
                 type: image
                 isRightAnswer: true
 
@@ -110,13 +173,13 @@ exercises_payload:
             type: ipad
             value:
               type: image
-              value:
+              value: landscape_spring-04
           payload:
             shuffle_choices: true
             choices:
-              - value:
+              - value: selection_pictograms-weather-cold_blue-010F
                 type: image
-              - value:
+              - value: selection_pictograms-weather-hot_red-010E
                 type: image
                 isRightAnswer: true
 
@@ -131,13 +194,13 @@ exercises_payload:
             type: ipad
             value:
               type: image
-              value:
+              value: landscape_summer-07
           payload:
             shuffle_choices: true
             choices:
-              - value:
+              - value: selection_pictograms-weather-cold_blue-010F
                 type: image
-              - value:
+              - value: selection_pictograms-weather-hot_red-010E
                 type: image
                 isRightAnswer: true
 
@@ -152,13 +215,13 @@ exercises_payload:
             type: ipad
             value:
               type: image
-              value:
+              value: landscape_summer-08
           payload:
             shuffle_choices: true
             choices:
-              - value:
+              - value: selection_pictograms-weather-cold_blue-010F
                 type: image
-              - value:
+              - value: selection_pictograms-weather-hot_red-010E
                 type: image
                 isRightAnswer: true
 
@@ -173,13 +236,13 @@ exercises_payload:
             type: ipad
             value:
               type: image
-              value:
+              value: landscape_sun_desert
           payload:
             shuffle_choices: true
             choices:
-              - value:
+              - value: selection_pictograms-weather-cold_blue-010F
                 type: image
-              - value:
+              - value: selection_pictograms-weather-hot_red-010E
                 type: image
                 isRightAnswer: true
 
@@ -194,15 +257,15 @@ exercises_payload:
             type: ipad
             value:
               type: image
-              value:
+              value: landscape_winter-01
           payload:
             shuffle_choices: true
             choices:
-              - value:
-                type: image
-              - value:
+              - value: selection_pictograms-weather-cold_blue-010F
                 type: image
                 isRightAnswer: true
+              - value: selection_pictograms-weather-hot_red-010E
+                type: image
 
         - instructions:
             - locale: fr_FR
@@ -215,75 +278,12 @@ exercises_payload:
             type: ipad
             value:
               type: image
-              value:
+              value: landscape_winter-02
           payload:
             shuffle_choices: true
             choices:
-              - value:
-                type: image
-              - value:
+              - value: selection_pictograms-weather-cold_blue-010F
                 type: image
                 isRightAnswer: true
-
-        - instructions:
-            - locale: fr_FR
-              value: Regarde l'image. Fait-il chaud ou froid ?
-            - locale: en_US
-              value: Look at the image. Is it hot or cold?
-          interface: observeThenTouchToSelect
-          gameplay: findTheRightAnswers
-          action:
-            type: ipad
-            value:
-              type: image
-              value:
-          payload:
-            shuffle_choices: true
-            choices:
-              - value:
+              - value: selection_pictograms-weather-hot_red-010E
                 type: image
-              - value:
-                type: image
-                isRightAnswer: true
-
-        - instructions:
-            - locale: fr_FR
-              value: Regarde l'image. Fait-il chaud ou froid ?
-            - locale: en_US
-              value: Look at the image. Is it hot or cold?
-          interface: observeThenTouchToSelect
-          gameplay: findTheRightAnswers
-          action:
-            type: ipad
-            value:
-              type: image
-              value:
-          payload:
-            shuffle_choices: true
-            choices:
-              - value:
-                type: image
-              - value:
-                type: image
-                isRightAnswer: true
-
-        - instructions:
-            - locale: fr_FR
-              value: Regarde l'image. Fait-il chaud ou froid ?
-            - locale: en_US
-              value: Look at the image. Is it hot or cold?
-          interface: observeThenTouchToSelect
-          gameplay: findTheRightAnswers
-          action:
-            type: ipad
-            value:
-              type: image
-              value:
-          payload:
-            shuffle_choices: true
-            choices:
-              - value:
-                type: image
-              - value:
-                type: image
-                isRightAnswer: true
