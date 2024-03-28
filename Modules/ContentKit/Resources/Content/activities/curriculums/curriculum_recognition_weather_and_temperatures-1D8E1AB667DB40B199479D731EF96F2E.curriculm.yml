@@ -14,11 +14,12 @@ authors:
 
 skills:
   - recognition
+  - association
 
 tags:
-  - tag_one
-  - tag_two
-  - tag_three
+  - weather
+  - temperature
+  - climate
 
 hmi:
   - tablet
@@ -32,35 +33,30 @@ l10n:
     details:
       icon: # {{💡TO_DEFINE}}
 
-      title: Travailler la catégorisation
-      subtitle: Communication, vocabulaire
+      title: Reconnaissance de la météo et des températures
+      subtitle: Apprendre à identifier et à catégoriser la météo
 
-      abstract: | # {{💡TO_DEFINE}}
-        Courte description du curriculum
+      abstract: |
+        Ce curriculum a pour but de développer la capacité à reconnaître et à comprendre les différentes conditions météorologiques et distinctions de température. À travers des activités interactives, les personnes accompagnées apprennent à associer des images représentatives à leur condition météorologique ou température correspondante.
 
-      description: | # {{💡TO_DEFINE}}
-        Longue description du curriculum
-
-        blablabla
+      description: |
+        Chaque activité dans ce curriculum est conçue pour introduire ou renforcer la reconnaissance de la météo à travers des images et des interactions directes sur une tablette. Les participants identifient si un paysage illustre le chaud ou le froid et reconnaissent les conditions météorologiques spécifiques présentées à travers une gamme d'images, enrichissant ainsi leur compréhension de la météo.
 
   - locale: en_US
     details:
-      icon: # {{💡TO_DEFINE}}
+      icon: categorization
 
-      title: Improving categorization
-      subtitle: Communication, vocabulary
+      title: Recognition of weather and temperatures
+      subtitle: Learning to identify and categorize weather conditions
 
-      abstract: | # {{💡TO_DEFINE}}
-        Short description of the curriculum
+      abstract: |
+        This curriculum aims to develop the ability to recognize and understand different weather conditions and temperature distinctions. Through interactive activities, participants learn to associate representative images with their corresponding weather condition or temperature.
 
-      description: | # {{💡TO_DEFINE}}
-        Long description of the curriculum
+      description: |
+        Each activity in this curriculum is designed to introduce or reinforce the recognition of weather through images and direct interactions on a tablet. Participants identify whether a landscape depicts warmth or coldness and recognize specific weather conditions presented through a range of images, thus enriching their understanding of weather.
 
-        blablabla
-
-activities: # {{💡TO_DEFINE}}
+activities:
 
 - recognition_weather_and_temperatures_hot_and_cold-18DA1F9028CF447E819507B0A6562F2E
 - recognition_weather_and_temperatures_weather_drawings_2_images-E06E4960B14047609C48C1E0DD6D61F2
 - recognition_weather_and_temperatures_weather_drawings_4_images-030525AA798F4E0D8EDAFAF3939471F9
-
