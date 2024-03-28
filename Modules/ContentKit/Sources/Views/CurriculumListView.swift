@@ -30,9 +30,14 @@ public struct CurriculumListView: View {
                             .frame(width: 150)
 
                         Text(curriculum.details.title)
-                            .font(.body.bold())
+                            .font(.headline)
+                            .multilineTextAlignment(.center)
 
                         Text(curriculum.details.subtitle ?? "")
+                            .font(.subheadline)
+                            .multilineTextAlignment(.center)
+
+                        Spacer()
 
                         NavigationLink(destination:
                             CurriculumDetailsView(curriculum: curriculum, onActivitySelected: self.onActivitySelected)
@@ -41,8 +46,8 @@ public struct CurriculumListView: View {
                         }
                         .buttonStyle(.bordered)
                     }
+                    .frame(maxHeight: .infinity)
                 }
-                .padding()
             }
         }
         .padding()
