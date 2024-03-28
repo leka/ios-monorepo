@@ -14,14 +14,14 @@ authors:
 
 skills:
   - recognition
+  - recognition/colors
+  - discrimination
 
 tags:
-  - tag_one
-  - tag_two
-  - tag_three
+  - colors
 
 hmi:
-  - tablet
+  - tablet_robot
 
 locales:
   - en_US
@@ -30,35 +30,32 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon: # {{💡TO_DEFINE}}
+      icon: color_bingo
 
-      title: Travailler la catégorisation
-      subtitle: Communication, vocabulaire
+      title: Loto des Couleurs
+      subtitle: Apprendre et reconnaître les couleurs progressivement
 
-      abstract: | # {{💡TO_DEFINE}}
-        Courte description du curriculum
+      abstract: |
+        Développant la reconnaissance des couleurs, ce curriculum propose six activités, démarrant avec une couleur pour apprendre sans erreur, et augmentant progressivement le choix jusqu'à six couleurs, invitant la personne accompagnée à sélectionner la bonne couleur parmi plusieurs options sur l'écran de l'iPad.
 
-      description: | # {{💡TO_DEFINE}}
-        Longue description du curriculum
-
-        blablabla
+      description: |
+        "Color Bingo" comprend six activités, conçues pour renforcer la reconnaissance et la discrimination des couleurs. L'activité 1 introduit une couleur unique, permettant un apprentissage sans erreur. Les activités suivantes augmentent la difficulté en proposant deux à six choix de couleurs, dont certaines ne sont pas correctes, mettant au défi la personne accompagnée d'identifier la bonne couleur sur l'écran de l'iPad. Cette approche graduelle vise à solidifier la compréhension des couleurs tout en rendant l'expérience interactive et éducative.
 
   - locale: en_US
     details:
-      icon: # {{💡TO_DEFINE}}
+      icon: color_bingo
 
-      title: Improving categorization
-      subtitle: Communication, vocabulary
+      title: Color Bingo
+      subtitle: Gradually learning and recognizing colors
 
-      abstract: | # {{💡TO_DEFINE}}
-        Short description of the curriculum
+      abstract: |
+        Enhancing color recognition, this curriculum offers six activities, starting with one color for error-free learning, and progressively increasing choices up to six colors, challenging the care receiver to select the correct color among multiple options on the iPad screen.
 
-      description: | # {{💡TO_DEFINE}}
-        Long description of the curriculum
+      description: |
+        "Color Bingo" consists of six activities, designed to bolster color recognition and discrimination. Activity 1 presents a single color, allowing for error-free learning. Subsequent activities increase in difficulty by offering two to six color choices, including incorrect options, thus challenging the care receiver to identify the correct color on the iPad's screen. This graduated approach aims to solidify understanding of colors while making the experience interactive and educational.
 
-        blablabla
 
-activities: # {{💡TO_DEFINE}}
+activities:
 
 - color_bingo_1-CBBCDFA8DC8C462794904F6E5E0638AB
 - color_bingo_2-7960FD995EDC4C179A4BA4997E4C5A4F
