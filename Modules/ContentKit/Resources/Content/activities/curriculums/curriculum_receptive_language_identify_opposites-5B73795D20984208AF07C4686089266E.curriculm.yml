@@ -10,18 +10,22 @@ status: published
 created_at: "2024-03-21T15:12:35.579066"
 last_edited_at: "2024-03-25T10:00:11.708216"
 authors:
-  - leka
+  - julie_tuil
 
 skills:
-  - recognition
+  - communication
+  - communication/verbal_communication
+  - communication/verbal_communication/receptive_language
+  - communication/verbal_communication/receptive_language/oral_comprehension
 
 tags:
-  - tag_one
-  - tag_two
-  - tag_three
+  - opposites
 
 hmi:
   - tablet
+
+types:
+  - one_on_one
 
 locales:
   - en_US
@@ -30,33 +34,30 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon: # {{💡TO_DEFINE}}
+      icon: # TO_DEFINE
 
-      title: Travailler la catégorisation
-      subtitle: Communication, vocabulaire
+      title: Identifier des contraires
+      subtitle: Reconnaissance des opposés
 
-      abstract: | # {{💡TO_DEFINE}}
-        Courte description du curriculum
+      abstract: |
+        Destiné à améliorer la compréhension du langage oral, ce curriculum aide les personnes accompagnées à identifier des paires d'opposés tels que propre/sale, chaud/froid, petit/grand, et sec/mouillé. À travers des activités interactives, les personnes accompagnées écoutent des consignes orales et sélectionnent l'image correspondante sur l'écran de l'iPad.
 
-      description: | # {{💡TO_DEFINE}}
-        Longue description du curriculum
-
-        blablabla
+      description: |
+        "Identifier des contraires" engage les personnes accompagnées dans un processus d'apprentissage interactif, exigeant une écoute attentive et une réponse aux questions sur des paires d'opposés. Centré sur la reconnaissance des opposés, ce curriculum vise à renforcer la compréhension du langage oral et la capacité à suivre des instructions verbales. Les activités proposées visent à défier et engager les personnes accompagnées, renforçant leur compréhension des concepts opposés à travers des exemples visuels interactifs et clairs.
 
   - locale: en_US
     details:
-      icon: # {{💡TO_DEFINE}}
+      icon: # TO_DEFINE
 
-      title: Improving categorization
-      subtitle: Communication, vocabulary
+      title: Identify Opposites
+      subtitle: Recognizing Opposites
 
-      abstract: | # {{💡TO_DEFINE}}
-        Short description of the curriculum
+      abstract: |
+        Aimed at enhancing oral language comprehension, this curriculum assists care receivers in identifying pairs of opposites such as clean/dirty, hot/cold, little/big, and wet/dry. Through interactive activities, care receivers listen to oral instructions and select the matching image on the iPad screen.
 
-      description: | # {{💡TO_DEFINE}}
-        Long description of the curriculum
+      description: |
+        "Identify Opposites" involves care receivers in an interactive learning process, requiring attentive listening and responses to questions about pairs of opposites. Focused on the recognition of opposites, this curriculum aims to improve oral language comprehension and the ability to follow verbal instructions. The activities are designed to engage and challenge care receivers, reinforcing their understanding of opposite concepts through clear and interactive visual examples.
 
-        blablabla
 
 activities: # {{💡TO_DEFINE}}
 
