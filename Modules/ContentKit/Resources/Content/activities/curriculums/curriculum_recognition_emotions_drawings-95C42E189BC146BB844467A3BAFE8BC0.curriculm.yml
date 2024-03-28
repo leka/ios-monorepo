@@ -14,14 +14,21 @@ authors:
 
 skills:
   - recognition
+  - recognition/basic_emotions
+  - communication
+  - communication/verbal_communication
+  - communication/verbal_communication/receptive_language
 
 tags:
-  - tag_one
-  - tag_two
-  - tag_three
+  - emotions
+  - drawings
+  - characters
 
 hmi:
   - tablet
+
+types:
+  - one_on_one
 
 locales:
   - en_US
@@ -30,35 +37,31 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon: # {{💡TO_DEFINE}}
+      icon: # TO_DEFINE
 
-      title: Travailler la catégorisation
-      subtitle: Communication, vocabulaire
+      title: Reconnaissance des émotions en dessins
+      subtitle: Comprendre les émotions à travers l'art
 
-      abstract: | # {{💡TO_DEFINE}}
-        Courte description du curriculum
+      abstract: |
+        Ce curriculum est conçu pour aider les personnes accompagnées à identifier et à comprendre différentes émotions à travers des dessins de personnages. En se focalisant sur une variété de personnages et d'émotions, ce programme vise à renforcer la reconnaissance des émotions de base et la communication émotionnelle.
 
-      description: | # {{💡TO_DEFINE}}
-        Longue description du curriculum
-
-        blablabla
+      description: |
+        À travers une série d'activités interactives sur l'écran de l'iPad, les personnes accompagnées sont encouragées à observer attentivement des illustrations de personnages exprimant diverses émotions. L'objectif est d'identifier l'émotion représentée et de toucher l'image correspondante. Ces activités visent à promouvoir une meilleure compréhension des émotions, améliorant ainsi la capacité des personnes accompagnées à communiquer leurs propres émotions et à reconnaître celles des autres.
 
   - locale: en_US
     details:
-      icon: # {{💡TO_DEFINE}}
+      icon: # TO_DEFINE
 
-      title: Improving categorization
-      subtitle: Communication, vocabulary
+      title: Recognition of Emotions through Drawing
+      subtitle: Understanding Emotions through Art
 
-      abstract: | # {{💡TO_DEFINE}}
-        Short description of the curriculum
+      abstract: |
+        This curriculum is designed to assist care receivers in identifying and understanding different emotions through drawings of characters. Focusing on a variety of characters and emotions, this program aims to enhance basic emotion recognition and emotional communication.
 
-      description: | # {{💡TO_DEFINE}}
-        Long description of the curriculum
+      description: |
+        Through a series of interactive activities on the iPad screen, care receivers are encouraged to carefully observe illustrations of characters expressing various emotions. The goal is to identify the emotion being portrayed and touch the corresponding image. These activities are intended to promote a better understanding of emotions, thereby improving the care receivers' ability to communicate their own emotions and recognize those of others.
 
-        blablabla
-
-activities: # {{💡TO_DEFINE}}
+activities:
 
 -
     - recognition_emotions_drawings_1_hugo-D9663D6F1E9F4D228FDCD918317996A3

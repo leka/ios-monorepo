@@ -14,14 +14,23 @@ authors:
 
 skills:
   - recognition
+  - recognition/basic_emotions
+  - communication
+  - communication/verbal_communication
+  - communication/verbal_communication/receptive_language
 
 tags:
-  - tag_one
-  - tag_two
-  - tag_three
+  - emotions
+  - drawings
+  - pictures
+  - pictograms
+  - generalization
 
 hmi:
   - tablet
+
+types:
+  - one_on_one
 
 locales:
   - en_US
@@ -30,35 +39,32 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon: # {{💡TO_DEFINE}}
+      icon: # TO_DEFINE
 
-      title: Travailler la catégorisation
-      subtitle: Communication, vocabulaire
+      title: Généralisation des émotions à travers différents supports
+      subtitle: Combiner dessins, photos et pictogrammes
 
-      abstract: | # {{💡TO_DEFINE}}
-        Courte description du curriculum
+      abstract: |
+        Ce parcours pédagogique vise à généraliser la reconnaissance des émotions à travers un mélange de trois supports différents : dessins, photos de personnes réelles et pictogrammes. Cette approche multidimensionnelle enrichit la compréhension des émotions en offrant une variété de représentations visuelles.
 
-      description: | # {{💡TO_DEFINE}}
-        Longue description du curriculum
-
-        blablabla
+      description: |
+        Les personnes accompagnées sont exposées à des activités interactives qui intègrent des dessins, des photos de l'équipe Leka et des pictogrammes représentant des émotions telles que la peur, la colère, la tristesse, la joie et le dégoût. L'objectif est de reconnaître les émotions présentées à travers ces différents supports visuels et de toucher l'image correspondante. Ce parcours encourage non seulement une compréhension approfondie des émotions mais aussi la flexibilité cognitive en reconnaissant ces émotions dans divers contextes et présentations.
 
   - locale: en_US
     details:
-      icon: # {{💡TO_DEFINE}}
+      icon: # TO_DEFINE
 
-      title: Improving categorization
-      subtitle: Communication, vocabulary
+      title: Emotion generalization across modalities
+      subtitle: Combining Drawings, Pictures, and Pictograms
 
-      abstract: | # {{💡TO_DEFINE}}
-        Short description of the curriculum
+      abstract: |
+        This educational journey aims to generalize emotion recognition across a blend of three different modalities: drawings, real people pictures, and pictograms. This multidimensional approach enhances understanding of emotions by providing a variety of visual representations.
 
-      description: | # {{💡TO_DEFINE}}
-        Long description of the curriculum
+      description: |
+        Care receivers are exposed to interactive activities that incorporate drawings, pictures of the Leka team, and pictograms depicting emotions such as fear, anger, sadness, joy, and disgust. The goal is to recognize the emotions presented across these different visual supports and touch the corresponding image. This journey not only encourages a deeper understanding of emotions but also cognitive flexibility in recognizing these emotions across various contexts and presentations.
 
-        blablabla
 
-activities: # {{💡TO_DEFINE}}
+activities:
 
 - recognition_emotions_generalization_3images_2types-699FB7EB68DD41F1BB24DB67B10CE60D
 - recognition_emotions_generalization_3images_3types-C21549498D584ECBBE713AD05B4225ED

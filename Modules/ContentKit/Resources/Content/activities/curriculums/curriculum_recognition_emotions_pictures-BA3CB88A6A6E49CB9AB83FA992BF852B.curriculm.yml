@@ -14,14 +14,22 @@ authors:
 
 skills:
   - recognition
+  - recognition/basic_emotions
+  - communication
+  - communication/verbal_communication
+  - communication/verbal_communication/receptive_language
 
 tags:
-  - tag_one
-  - tag_two
-  - tag_three
+  - emotions
+  - pictures
+  - real_people
+  - Leka_team
 
 hmi:
   - tablet
+
+types:
+  - one_on_one
 
 locales:
   - en_US
@@ -30,33 +38,30 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon: # {{💡TO_DEFINE}}
+      icon: # TO_DEFINE
 
-      title: Travailler la catégorisation
-      subtitle: Communication, vocabulaire
+      title: Reconnaissance des émotions à travers des photos
+      subtitle: Comprendre les émotions à travers des expressions réelles
 
-      abstract: | # {{💡TO_DEFINE}}
-        Courte description du curriculum
+      abstract: |
+        Ce curriculum aide les personnes accompagnées à identifier et à comprendre différentes émotions à travers des photos de personnes réelles, notamment de l'équipe Leka. En se concentrant sur des expressions faciales, ce parcours vise à renforcer la reconnaissance des émotions et la communication émotionnelle.
 
-      description: | # {{💡TO_DEFINE}}
-        Longue description du curriculum
-
-        blablabla
+      description: |
+        À travers des activités interactives sur l'écran de l'iPad, les personnes accompagnées sont invitées à observer attentivement des photos de membres de l'équipe Leka exprimant diverses émotions. L'objectif est d'identifier l'émotion affichée et de toucher l'image correspondante. Ces activités encouragent une meilleure compréhension et interprétation des émotions, améliorant ainsi la capacité des personnes accompagnées à exprimer leurs propres émotions et à reconnaître celles d'autrui.
 
   - locale: en_US
     details:
-      icon: # {{💡TO_DEFINE}}
+      icon: # TO_DEFINE
 
-      title: Improving categorization
-      subtitle: Communication, vocabulary
+      title: Recognition of Emotions through Pictures
+      subtitle: Understanding Emotions through Real Expressions
 
-      abstract: | # {{💡TO_DEFINE}}
-        Short description of the curriculum
+      abstract: |
+        This curriculum assists care receivers in identifying and understanding different emotions through pictures of real people, including the Leka team. By focusing on facial expressions, this journey aims to enhance emotion recognition and emotional communication.
 
-      description: | # {{💡TO_DEFINE}}
-        Long description of the curriculum
+      description: |
+        Through interactive activities displayed on the iPad screen, care receivers are encouraged to carefully observe pictures of the Leka team members expressing various emotions. The goal is to identify the displayed emotion and touch the corresponding image. These activities promote a better understanding and interpretation of emotions, thereby improving the care receivers' ability to express their own emotions and recognize those of others.
 
-        blablabla
 
 activities: # {{💡TO_DEFINE}}
 
