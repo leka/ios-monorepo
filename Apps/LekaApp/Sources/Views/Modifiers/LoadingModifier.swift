@@ -8,6 +8,7 @@ import SwiftUI
 
 struct LoadingModifier: ViewModifier {
     var isLoading: Bool
+    var forceWhiteTint: Bool
 
     func body(content: Content) -> some View {
         content
@@ -15,8 +16,11 @@ struct LoadingModifier: ViewModifier {
             .overlay(
                 Group {
                     if self.isLoading {
-                        ProgressView()
-                            .tint(.white)
+                        if self.forceWhiteTint {
+                            ProgressView().tint(.white)
+                        } else {
+                            ProgressView()
+                        }
                     }
                 }
             )
@@ -25,8 +29,8 @@ struct LoadingModifier: ViewModifier {
 }
 
 extension View {
-    func loadingIndicator(isLoading: Bool) -> some View {
-        modifier(LoadingModifier(isLoading: isLoading))
+    func loadingIndicator(isLoading: Bool, forceWhiteTint: Bool = false) -> some View {
+        modifier(LoadingModifier(isLoading: isLoading, forceWhiteTint: forceWhiteTint))
     }
 }
 
