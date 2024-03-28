@@ -17,8 +17,7 @@ SIGNING_DIR = "#{ROOT_DIR}/Tuist/Signing"
 
 RELEASE_BUNDLE_IDS = [
   'io.leka.apf.app.LekaApp',
-  'io.leka.apf.app.LekaUpdater',
-  'io.leka.apf.app.LekaActivityUIExplorer'
+  'io.leka.apf.app.LekaUpdater'
 ].freeze
 
 DEVELOPMENT_WILDCARD_BUNDLE_ID = 'io.leka.apf.*'
