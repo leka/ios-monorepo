@@ -2,6 +2,8 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AccountKit
+import ContentKit
 import DesignKit
 import LocalizationKit
 import SwiftUI
@@ -12,38 +14,43 @@ struct CurriculumsView: View {
     // MARK: Internal
 
     var body: some View {
-        List {
-            Section {
-                HStack(alignment: .center, spacing: 30) {
-                    Image(systemName: "graduationcap")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 80, height: 80)
-                        .foregroundStyle(self.styleManager.accentColor!)
+        ScrollView(showsIndicators: true) {
+            HStack(alignment: .center, spacing: 30) {
+                Image(systemName: "graduationcap")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 80, height: 80)
+                    .foregroundStyle(self.styleManager.accentColor!)
 
-                    VStack(alignment: .leading) {
-                        Text(l10n.CurriculumsView.title)
-                            .font(.largeTitle)
-                            .fontWeight(.bold)
+                VStack(alignment: .leading) {
+                    Text(l10n.CurriculumsView.title)
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
 
-                        Text(l10n.CurriculumsView.subtitle)
-                            .font(.title2)
+                    Text(l10n.CurriculumsView.subtitle)
+                        .font(.title2)
 
-                        Text(l10n.CurriculumsView.description)
-                            .foregroundStyle(.secondary)
-                    }
+                    Text(l10n.CurriculumsView.description)
+                        .foregroundStyle(.secondary)
                 }
             }
 
-            Section {
-                CurriculumListView()
-            }
+            CurriculumListView(curriculums: ContentKit.listSampleCurriculums(), onActivitySelected: { activity in
+                if self.authManagerViewModel.userAuthenticationState == .loggedIn {
+                    self.navigation.sheetContent = .carereceiverPicker(activity: activity)
+                } else {
+                    self.navigation.currentActivity = activity
+                    self.navigation.fullScreenCoverContent = .activityView
+                }
+            })
         }
     }
 
     // MARK: Private
 
     @ObservedObject private var styleManager: StyleManager = .shared
+    @ObservedObject private var authManagerViewModel: AuthManagerViewModel = .shared
+    @ObservedObject private var navigation: Navigation = .shared
 }
 
 // MARK: - l10n.CurriculumsView

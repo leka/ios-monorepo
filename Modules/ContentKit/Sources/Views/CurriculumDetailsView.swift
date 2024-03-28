@@ -100,22 +100,11 @@ public struct CurriculumDetailsView: View {
             }
 
             Section(String(l10n.CurriculumDetailsView.activitiesSectionTitle.characters)) {
-                ForEach(self.curriculum.activities, id: \.self) { id in
-                    if let activity = Activity(id: id) {
-                        NavigationLink(destination:
-                            ActivityDetailsView(activity: activity, onStartActivity: self.onActivitySelected)
-                        ) {
-                            HStack {
-                                Image(uiImage: activity.details.iconImage)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 44, height: 44)
-                                    .clipShape(Circle())
-
-                                Text(activity.details.title)
-                            }
-                        }
-                    }
+                ScrollView(showsIndicators: true) {
+                    ActivityListView(
+                        activities: self.curriculum.activities.compactMap { Activity(id: $0) },
+                        onStartActivity: self.onActivitySelected
+                    )
                 }
             }
         }
