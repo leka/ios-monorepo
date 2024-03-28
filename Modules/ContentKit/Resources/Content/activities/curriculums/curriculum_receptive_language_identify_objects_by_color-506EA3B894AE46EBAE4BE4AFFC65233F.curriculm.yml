@@ -10,15 +10,16 @@ status: published
 created_at: "2024-03-21T15:12:35.579066"
 last_edited_at: "2024-03-25T10:00:11.708216"
 authors:
-  - leka
+  - julie_tuil
 
 skills:
-  - recognition
+  - communication
+  - communication/verbal_communication
+  - communication/verbal_communication/receptive_language
+  - communication/verbal_communication/receptive_language/oral_comprehension
 
 tags:
-  - tag_one
-  - tag_two
-  - tag_three
+  - colors
 
 hmi:
   - tablet
@@ -30,35 +31,31 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon: # {{💡TO_DEFINE}}
+      icon: # TO_DEFINE
 
-      title: Travailler la catégorisation
-      subtitle: Communication, vocabulaire
+      title: Identifier des objets par couleur
+      subtitle: Reconnaissance des couleurs
 
-      abstract: | # {{💡TO_DEFINE}}
-        Courte description du curriculum
+      abstract: |
+        Destiné à améliorer la compréhension du langage oral, ce curriculum guide les personnes accompagnées à identifier des objets par leur couleur. À travers une série d'activités ciblées, les participants écoutent des consignes orales et touchent l'image correspondante sur l'écran de l'iPad.
 
-      description: | # {{💡TO_DEFINE}}
-        Longue description du curriculum
-
-        blablabla
+      description: |
+        "Identifier des objets par couleur" implique les personnes accompagnées dans un apprentissage interactif, où il est nécessaire d'écouter attentivement et de répondre à des questions sur la couleur des objets. Ce curriculum, concentré sur la reconnaissance des couleurs, vise à renforcer la compréhension du langage oral et la capacité de suivre des instructions verbales. Chaque activité introduit des objets colorés, avec une complexité croissante pour défier et engager les participants.
 
   - locale: en_US
     details:
-      icon: # {{💡TO_DEFINE}}
+      icon: # TO_DEFINE
 
-      title: Improving categorization
-      subtitle: Communication, vocabulary
+      title: Identify Objects by Color
+      subtitle: Color Recognition
 
-      abstract: | # {{💡TO_DEFINE}}
-        Short description of the curriculum
+      abstract: |
+        Aimed at enhancing oral language comprehension, this curriculum assists care receivers in identifying objects by their color. Through targeted activities, participants listen to oral instructions and touch the corresponding image on the iPad screen.
 
-      description: | # {{💡TO_DEFINE}}
-        Long description of the curriculum
+      description: |
+        "Identify Objects by Color" involves care receivers in an interactive learning process, requiring them to listen carefully and respond to questions regarding the color of objects. Focused on color recognition, this curriculum aims to improve oral language comprehension and the
 
-        blablabla
-
-activities: # {{💡TO_DEFINE}}
+activities:
 
 - receptive_language_identify_objects_by_color_1-B8964AC4C9B644BEB35DE4B4AD1C5D93
 - receptive_language_identify_objects_by_color_with_two_components_1-95108BC74D094434AFFC34C74D95AFBC
