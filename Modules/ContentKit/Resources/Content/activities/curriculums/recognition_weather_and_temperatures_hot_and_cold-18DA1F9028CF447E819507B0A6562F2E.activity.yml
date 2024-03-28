@@ -93,10 +93,10 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: selection_pictograms-weather-cold_blue-010F
+              - value: pictograms-weather-coldblue-010F
                 type: image
                 isRightAnswer: true
-              - value: selection_pictograms-weather-hot_red-010E
+              - value: pictograms-weather-hotred-010E
                 type: image
 
         - instructions:
@@ -114,10 +114,10 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: selection_pictograms-weather-cold_blue-010F
+              - value: pictograms-weather-coldblue-010F
                 type: image
                 isRightAnswer: true
-              - value: selection_pictograms-weather-hot_red-010E
+              - value: pictograms-weather-hotred-010E
                 type: image
 
         - instructions:
@@ -135,10 +135,10 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: selection_pictograms-weather-cold_blue-010F
+              - value: pictograms-weather-coldblue-010F
                 type: image
                 isRightAnswer: true
-              - value: selection_pictograms-weather-hot_red-010E
+              - value: pictograms-weather-hotred-010E
                 type: image
 
         - instructions:
@@ -156,9 +156,9 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: selection_pictograms-weather-cold_blue-010F
+              - value: pictograms-weather-coldblue-010F
                 type: image
-              - value: selection_pictograms-weather-hot_red-010E
+              - value: pictograms-weather-hotred-010E
                 type: image
                 isRightAnswer: true
 
@@ -177,9 +177,9 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: selection_pictograms-weather-cold_blue-010F
+              - value: pictograms-weather-coldblue-010F
                 type: image
-              - value: selection_pictograms-weather-hot_red-010E
+              - value: pictograms-weather-hotred-010E
                 type: image
                 isRightAnswer: true
 
@@ -198,9 +198,9 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: selection_pictograms-weather-cold_blue-010F
+              - value: pictograms-weather-coldblue-010F
                 type: image
-              - value: selection_pictograms-weather-hot_red-010E
+              - value: pictograms-weather-hotred-010E
                 type: image
                 isRightAnswer: true
 
@@ -219,9 +219,9 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: selection_pictograms-weather-cold_blue-010F
+              - value: pictograms-weather-coldblue-010F
                 type: image
-              - value: selection_pictograms-weather-hot_red-010E
+              - value: pictograms-weather-hotred-010E
                 type: image
                 isRightAnswer: true
 
@@ -240,9 +240,9 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: selection_pictograms-weather-cold_blue-010F
+              - value: pictograms-weather-coldblue-010F
                 type: image
-              - value: selection_pictograms-weather-hot_red-010E
+              - value: pictograms-weather-hotred-010E
                 type: image
                 isRightAnswer: true
 
@@ -261,10 +261,10 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: selection_pictograms-weather-cold_blue-010F
+              - value: pictograms-weather-coldblue-010F
                 type: image
                 isRightAnswer: true
-              - value: selection_pictograms-weather-hot_red-010E
+              - value: pictograms-weather-hotred-010E
                 type: image
 
         - instructions:
@@ -282,8 +282,8 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: selection_pictograms-weather-cold_blue-010F
+              - value: pictograms-weather-coldblue-010F
                 type: image
                 isRightAnswer: true
-              - value: selection_pictograms-weather-hot_red-010E
+              - value: pictograms-weather-hotred-010E
                 type: image
