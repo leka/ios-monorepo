@@ -17,6 +17,7 @@ public class CaregiverManager {
 
     public func initializeCaregiversListener() {
         self.dbOps.observeAll(from: .caregivers)
+            .handleLoadingState(using: self.loadingStatePublisher)
             .sink(receiveCompletion: { [weak self] completion in
                 if case let .failure(error) = completion {
                     self?.fetchErrorSubject.send(error)
@@ -62,7 +63,6 @@ public class CaregiverManager {
 
     public func updateCaregiver(caregiver: inout Caregiver) {
         caregiver.lastEditedAt = nil
-        let documentID = caregiver.id!
         self.dbOps.update(data: caregiver, in: .caregivers)
             .sink(receiveCompletion: { completion in
                 if case let .failure(error) = completion {
@@ -116,6 +116,10 @@ public class CaregiverManager {
         self.caregiverList.eraseToAnyPublisher()
     }
 
+    var isLoadingPublisher: AnyPublisher<Bool, Never> {
+        self.loadingStatePublisher.eraseToAnyPublisher()
+    }
+
     var fetchErrorPublisher: AnyPublisher<Error, Never> {
         self.fetchErrorSubject.eraseToAnyPublisher()
     }
@@ -124,6 +128,7 @@ public class CaregiverManager {
 
     private var caregiverList = CurrentValueSubject<[Caregiver], Never>([])
     private var currentCaregiver = CurrentValueSubject<Caregiver?, Never>(nil)
+    private let loadingStatePublisher = PassthroughSubject<Bool, Never>()
     private var fetchErrorSubject = PassthroughSubject<Error, Never>()
     private let dbOps = DatabaseOperations.shared
     private var cancellables = Set<AnyCancellable>()
