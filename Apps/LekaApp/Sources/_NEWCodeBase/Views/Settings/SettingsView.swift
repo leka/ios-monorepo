@@ -16,13 +16,13 @@ struct SettingsView: View {
     @State private var showConfirmCredentialsChange: Bool = false
     @State private var showConfirmDisconnection: Bool = false
     @State private var showConfirmDeleteAccount: Bool = false
+    @State private var isCaregiverpickerPresented: Bool = false
 
     var body: some View {
         Form {
             Section {
                 Button {
-                    self.dismiss()
-                    self.navigation.sheetContent = .caregiverPicker
+                    self.isCaregiverpickerPresented = true
                 } label: {
                     Label(String(l10n.SettingsView.ProfilesSection.buttonLabel.characters), systemImage: "person.2.gobackward")
                 }
@@ -106,6 +106,12 @@ struct SettingsView: View {
             }
         }
         .navigationTitle(String(l10n.SettingsView.navigationTitle.characters))
+        .sheet(isPresented: self.$isCaregiverpickerPresented) {
+            NavigationStack {
+                CaregiverPicker()
+                    .navigationBarTitleDisplayMode(.inline)
+            }
+        }
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 Button(String(l10n.SettingsView.closeButtonLabel.characters)) {
@@ -123,7 +129,6 @@ struct SettingsView: View {
 
     @ObservedObject private var authManagerViewModel = AuthManagerViewModel.shared
     @ObservedObject private var styleManager: StyleManager = .shared
-    @ObservedObject private var navigation: Navigation = .shared
 
     private func reset() {
         self.caregiverManager.resetData()
