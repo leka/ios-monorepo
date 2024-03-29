@@ -19,8 +19,16 @@ skills:
   - communication/verbal_communication
   - communication/verbal_communication/receptive_language
   - communication/verbal_communication/receptive_language/oral_comprehension
+  - counting
+  - recognition
+  - recognition/numbers
 
 tags:
+- one
+- two
+- three
+- four
+- digital_constellations
 
 hmi:
   - tablet
