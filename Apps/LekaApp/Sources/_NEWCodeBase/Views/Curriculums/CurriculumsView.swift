@@ -35,7 +35,7 @@ struct CurriculumsView: View {
                 }
             }
 
-            CurriculumListView(curriculums: ContentKit.listSampleCurriculums(), onActivitySelected: { activity in
+            CurriculumListView(curriculums: ContentKit.curriculumList, onActivitySelected: { activity in
                 if self.authManagerViewModel.userAuthenticationState == .loggedIn {
                     self.navigation.sheetContent = .carereceiverPicker(activity: activity)
                 } else {

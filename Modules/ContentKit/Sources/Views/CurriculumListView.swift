@@ -77,7 +77,7 @@ extension l10n {
 #Preview {
     NavigationStack {
         CurriculumListView(
-            curriculums: ContentKit.listSampleCurriculums(),
+            curriculums: ContentKit.curriculumList,
             onActivitySelected: { _ in
                 print("Activity Selected")
             }

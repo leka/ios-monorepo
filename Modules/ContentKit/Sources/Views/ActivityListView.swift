@@ -61,7 +61,7 @@ public struct ActivityListView: View {
 #Preview {
     NavigationStack {
         ActivityListView(
-            activities: ContentKit.listSampleActivities(),
+            activities: ContentKit.activityList,
             onStartActivity: { _ in
                 print("Activity Started")
             }

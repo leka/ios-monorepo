@@ -11,34 +11,21 @@ let log = LogKit.createLoggerFor(module: "ContentKit")
 // MARK: - ContentKit
 
 public enum ContentKit {
-    public static func listSampleActivities() -> [Activity]? {
+    // MARK: Public
+
+    public static let activityList: [Activity] = ContentKit.listSampleActivities() ?? []
+    public static let curriculumList: [Curriculum] = ContentKit.listSampleCurriculums() ?? []
+
+    public static func listImagesPNG() -> [String] {
         let bundle = Bundle.module
-        let files = bundle.paths(forResourcesOfType: "activity.yml", inDirectory: nil)
+        let files = bundle.paths(forResourcesOfType: "png", inDirectory: nil)
 
-        var activities: [Activity] = []
-
-        for file in files {
-            let data = try? String(contentsOfFile: file, encoding: .utf8)
-
-            guard let data else {
-                log.error("Error reading file: \(file)")
-                continue
-            }
-
-            let activity = try? YAMLDecoder().decode(Activity.self, from: data)
-
-            guard let activity else {
-                log.error("Error decoding file: \(file)")
-                continue
-            }
-
-            activities.append(activity)
-        }
-
-        return activities.sorted { $0.name < $1.name }
+        return files
     }
 
-    public static func listSampleCurriculums() -> [Curriculum]? {
+    // MARK: Private
+
+    private static func listSampleCurriculums() -> [Curriculum]? {
         let bundle = Bundle.module
         let files = bundle.paths(forResourcesOfType: "curriculum.yml", inDirectory: nil)
 
@@ -65,10 +52,30 @@ public enum ContentKit {
         return curriculums.sorted { $0.name < $1.name }
     }
 
-    public static func listImagesPNG() -> [String] {
+    private static func listSampleActivities() -> [Activity]? {
         let bundle = Bundle.module
-        let files = bundle.paths(forResourcesOfType: "png", inDirectory: nil)
+        let files = bundle.paths(forResourcesOfType: "activity.yml", inDirectory: nil)
 
-        return files
+        var activities: [Activity] = []
+
+        for file in files {
+            let data = try? String(contentsOfFile: file, encoding: .utf8)
+
+            guard let data else {
+                log.error("Error reading file: \(file)")
+                continue
+            }
+
+            let activity = try? YAMLDecoder().decode(Activity.self, from: data)
+
+            guard let activity else {
+                log.error("Error decoding file: \(file)")
+                continue
+            }
+
+            activities.append(activity)
+        }
+
+        return activities.sorted { $0.name < $1.name }
     }
 }
