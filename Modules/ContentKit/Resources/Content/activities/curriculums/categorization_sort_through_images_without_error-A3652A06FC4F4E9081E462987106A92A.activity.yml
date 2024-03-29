@@ -24,7 +24,7 @@ tags:
   - basket
 
 hmi:
-  - tablet_robot
+  - tablet
 
 types:
   - one_on_one
