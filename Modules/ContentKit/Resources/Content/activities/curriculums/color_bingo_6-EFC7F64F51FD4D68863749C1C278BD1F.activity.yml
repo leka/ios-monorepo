@@ -8,7 +8,7 @@ uuid: EFC7F64F51FD4D68863749C1C278BD1F
 name: color_bingo_6
 
 created_at: "2024-03-08T11:09:22.386263"
-last_edited_at: "2024-03-12T15:23:28.999813"
+last_edited_at: "2024-03-29T08:47:15.190419"
 status: published
 
 authors:
@@ -53,9 +53,9 @@ l10n:
 
   - locale: en_US
     details:
-      icon: color_bingo_6
+      icon: color_bingo_5
 
-      title: Color Bingo 6
+      title: Color Bingo 5
       subtitle: null
 
       short_description: |
