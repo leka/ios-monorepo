@@ -1,0 +1,34 @@
+Given a YAML file containing various activities designed for use in an iOS application by caregivers working with care receivers who have special needs, please analyze the content according to the following criteria and provide your feedback in a structured format similar to the provided example:
+
+### Criteria for Analysis
+
+1. **Content Quality and Suitability:** Assess if the activities are appropriate, engaging, and educational for the care receivers. Suggest improvements to make the activities more engaging or suitable for the care receivers, taking into account their special needs.
+
+2. **Clarity and Readability for Caregivers:** Evaluate the clarity and readability of the activities' descriptions and titles for caregivers. Ensure the `title` and `subtitle` are correct and specific enough for each activity. Suggest more descriptive or compelling titles and descriptions where necessary. The `l10n/details` should be clear, concise, and provide context for the caregiver.
+
+3. **Language and Grammar:** Check for any grammatical errors, spelling errors, typos or awkward phrasing in the content, descriptions, titles, and translations for caregivers. Provide corrections and recommendations for clearer language. Specifically, ensure that the `l10n/details/instructions` for caregivers are simple, straightforward, and clear.
+
+4. **Translation Accuracy and Cultural Sensitivity:** For activities translated into multiple languages, assess the accuracy of the translations and their cultural sensitivity, particularly for content intended for caregivers. Highlight any translations that may need revision or could be potentially insensitive or inappropriate in different cultural contexts.
+
+5. **Engagement and Summary for Browsing:** Ensure that the `l10n/details/short_description` provides a one or two-sentence summary that is clear, informative, and engaging for caregivers browsing the app content.
+
+6. **Instructions for Care Receivers:** Review the `exercise_payload` instructions intended for care receivers. These must be simple, short, and easy to understand, tailored specifically for individuals aged 2 to 6. Do not suggest to add visual cues as they are already present when doing the activity.
+
+7. **Overall Quality Rating:** Provide a global rating between 1 (the lowest) and 10 (the highest) on the quality of what's written, including how easily comprehensible it is for caregivers. Explain why you gave this rating and how the content can be improved across the aspects mentioned above.
+
+8. **Diff & Final Output:** Provide the whole YAML content modified with your suggestions and corrections in markdown code blocks. Then provide a diff of both files to highlight the changes you suggested.
+
+### Mandatory Rules and Constraints
+
+Please respect the following rules and constraints:
+
+- Refrain from using "bénéficiaire de soins," "soignant," "soignante," "enfant," and "renforcement" in French. Always use "personne accompagnée" instead of "accompagné."
+- In English, avoid "child," "children," and "reinforcement" while keeping "reinforcer" and its French equivalent "renforçateur."
+
+### Structured Feedback Format
+
+Please structure your analysis and actionable feedback for each criterion as follows:
+
+- **Criterion Number and Name**: Brief description of findings.
+- **Suggestions for Improvement**: Detailed suggestions, including specific examples when applicable.
+- **Overall Rating and Justification**: Explain the reasoning behind the given rating and offer a concise plan for enhancing content quality.
