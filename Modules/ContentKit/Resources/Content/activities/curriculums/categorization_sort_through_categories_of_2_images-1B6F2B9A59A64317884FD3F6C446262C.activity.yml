@@ -24,7 +24,7 @@ tags:
   - pairing
 
 hmi:
-  - tablet_robot
+  - tablet
 
 types:
   - one_on_one
