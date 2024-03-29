@@ -8,7 +8,7 @@ uuid: 89CEA9FE20624659B1307B633641BC90
 name: discover_leka
 
 created_at: "2024-03-01T14:00:38.160396"
-last_edited_at: "2024-03-06T12:51:54.499454"
+last_edited_at: "2024-03-29T08:29:07.712643"
 status: published
 
 authors:
@@ -44,13 +44,13 @@ l10n:
         Découvrir Leka et ses stimulations sensorielles : lumières, vibrations, mouvements
 
       description: |
-        *Découvrir Leka* est une activité interactive conçue pour que les personnes puissent se familiariser avec le robot et être à l'aise en sa présence. Au cours de l'activité, le robot exécute divers mouvements, émet des lumières, des vibrations et affiche des couleurs.
+        *Découvre Leka* est une activité interactive conçue pour que les personnes puissent se familiariser avec le robot et être à l'aise en sa présence. Au cours de l'activité, le robot exécute divers mouvements, émet des lumières, des vibrations et affiche des couleurs.
 
       instructions: |
-        - Cliquez sur le bouton "Jouer" situé à gauche de l'écran de l'iPad.
-        - Encouragez la personne à focaliser son attention sur le robot.
-        - Appuyez sur le bouton "Pause" si nécessaire.
-        - Cliquez sur le bouton "Stop" lorsque vous souhaitez mettre fin à l'activité.
+        - Cliquer sur le bouton "Jouer" situé à gauche de l'écran de l'iPad.
+        - Encourager la personne à focaliser son attention sur le robot.
+        - Appuyer sur le bouton "Pause" si nécessaire.
+        - Cliquer sur le bouton "Stop" pour mettre fin à l'activité.
 
   - locale: en_US
     details:
