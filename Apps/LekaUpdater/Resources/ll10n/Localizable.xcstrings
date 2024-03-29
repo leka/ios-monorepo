@@ -685,19 +685,19 @@
             }
         },
         "update.finished.launch_leka_app_button": {
-            "comment": "Launch Leka app button",
+            "comment": "Launch Leka App button",
             "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Launch My Leka Alpha \ud83d\ude80"
+                        "value": "Launch Leka App \ud83d\ude80"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Lancer Mon Leka Alpha \ud83d\ude80"
+                        "value": "Lancer Leka app \ud83d\ude80"
                     }
                 }
             }
