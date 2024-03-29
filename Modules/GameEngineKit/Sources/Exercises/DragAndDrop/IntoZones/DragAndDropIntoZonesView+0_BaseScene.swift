@@ -52,7 +52,6 @@ extension DragAndDropIntoZonesView {
 
             self.setFirstAnswerPosition()
             self.layoutDropZones()
-            self.getExpectedItems()
             self.layoutAnswers()
         }
 
