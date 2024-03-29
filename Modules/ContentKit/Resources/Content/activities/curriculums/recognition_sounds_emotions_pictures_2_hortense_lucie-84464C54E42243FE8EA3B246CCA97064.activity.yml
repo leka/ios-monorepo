@@ -1,0 +1,289 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+version: 1.0.0
+
+uuid: 84464C54E42243FE8EA3B246CCA97064
+name: recognition_sounds_emotions_pictures_2_hortense_lucie
+
+created_at: "2024-03-04T18:07:12.519229"
+last_edited_at: "2024-03-29T22:33:04.256189"
+status: published
+
+authors:
+  - leka
+
+skills:
+  - recognition
+  - recognition/basic_emotions
+  - sensory_interaction
+
+tags:
+  - emotions
+  - sounds
+  - Lucie
+  - Hortense
+
+hmi:
+  - tablet
+
+types:
+  - one_on_one
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: emotion_recognition-sounds-2_hortense-lucie-058a9152-bbdb-482e-9f43-e9dbe898ca37
+
+      title: Reconnaitre les sons des émotions avec 2 photos
+      subtitle: Lucie - Hortense
+
+      short_description: |
+        Identifier des émotions à partir de sons
+
+      description: |
+        L'activité consiste à reconnaître différentes émotions à partir de sons émis par le haut parleur.
+
+      instructions: |
+        - Encourager la personne accompagnée à toucher le haut-parleur à gauche pour entendre le son
+        - Encourager la personne accompagnée à toucher l'image correspondant à l'émotion demandée
+        - Lorsque la réponse est correcte, Leka lance un renforçateur
+
+  - locale: en_US
+    details:
+      icon: emotion_recognition-sounds-2_hortense-lucie-058a9152-bbdb-482e-9f43-e9dbe898ca37
+
+      title: Recognize the sounds of emotions with 2 pictures
+      subtitle: Lucie - Hortense
+
+      short_description: |
+        Identifying emotions from sounds
+
+      description: |
+        The activity involves recognizing different emotions from sounds emitted by the speaker.
+      instructions: |
+        - Encourage the care receiver to touch the speaker button on the left to hear the sound
+        - Encourage the care receiver to touch the image corresponding to the requested emotion
+        - When the answer is correct, Leka launches a reinforcer
+
+exercises_payload:
+  options:
+    shuffle_exercises: true
+    shuffle_groups: false
+
+  exercise_groups:
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Touche le haut-parleur. Quelle est cette émotion ?
+            - locale: en_US
+              value: Touch the speaker. What is this emotion?
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: audio
+              value: emotion_sound_adult_joy_lucie
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: emotion_picture_adult_joy_lucie
+                type: image
+                is_right_answer: true
+              - value: emotion_picture_adult_disgust_hortense
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche le haut-parleur. Quelle est cette émotion ?
+            - locale: en_US
+              value: Touch the speaker. What is this emotion?
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: audio
+              value: emotion_sound_adult_disgust_hortense
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: emotion_picture_adult_joy_lucie
+                type: image
+              - value: emotion_picture_adult_disgust_hortense
+                type: image
+                is_right_answer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche le haut-parleur. Quelle est cette émotion ?
+            - locale: en_US
+              value: Touch the speaker. What is this emotion?
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: audio
+              value: emotion_sound_adult_sad_hortense
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: emotion_picture_adult_sad_hortense
+                type: image
+                is_right_answer: true
+              - value: emotion_picture_adult_angry_lucie
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche le haut-parleur. Quelle est cette émotion ?
+            - locale: en_US
+              value: Touch the speaker. What is this emotion?
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: audio
+              value: emotion_sound_adult_fear_hortense
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: emotion_picture_adult_fear_hortense
+                type: image
+                is_right_answer: true
+              - value: emotion_picture_adult_joy_lucie
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche le haut-parleur. Quelle est cette émotion ?
+            - locale: en_US
+              value: Touch the speaker. What is this emotion?
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: audio
+              value: emotion_sound_adult_angry_lucie
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: emotion_picture_adult_angry_lucie
+                type: image
+                is_right_answer: true
+              - value: emotion_picture_adult_fear_hortense
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche le haut-parleur. Quelle est cette émotion ?
+            - locale: en_US
+              value: Touch the speaker. What is this emotion?
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: audio
+              value: emotion_sound_adult_joy_lucie
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: emotion_picture_adult_joy_lucie
+                type: image
+                is_right_answer: true
+              - value: emotion_picture_adult_disgust_hortense
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche le haut-parleur. Quelle est cette émotion ?
+            - locale: en_US
+              value: Touch the speaker. What is this emotion?
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: audio
+              value: emotion_sound_adult_disgust_hortense
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: emotion_picture_adult_joy_lucie
+                type: image
+              - value: emotion_picture_adult_disgust_hortense
+                type: image
+                is_right_answer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche le haut-parleur. Quelle est cette émotion ?
+            - locale: en_US
+              value: Touch the speaker. What is this emotion?
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: audio
+              value: emotion_sound_adult_sad_hortense
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: emotion_picture_adult_sad_hortense
+                type: image
+                is_right_answer: true
+              - value: emotion_picture_adult_angry_lucie
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche le haut-parleur. Quelle est cette émotion ?
+            - locale: en_US
+              value: Touch the speaker. What is this emotion?
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: audio
+              value: emotion_sound_adult_fear_hortense
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: emotion_picture_adult_fear_hortense
+                type: image
+                is_right_answer: true
+              - value: emotion_picture_adult_joy_lucie
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche le haut-parleur. Quelle est cette émotion ?
+            - locale: en_US
+              value: Touch the speaker. What is this emotion?
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: audio
+              value: emotion_sound_adult_angry_lucie
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: emotion_picture_adult_angry_lucie
+                type: image
+                is_right_answer: true
+              - value: emotion_picture_adult_fear_hortense
+                type: image
