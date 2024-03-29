@@ -19,8 +19,6 @@ public struct Exercise: Decodable {
 
         self.localizedInstructions = try? container.decode([LocalizedInstructions].self, forKey: .localizedInstructions)
 
-        log.debug("localizedInstructions: \(self.localizedInstructions)")
-
         if let localizedInstructions = self.localizedInstructions {
             let availableLocales = localizedInstructions.map(\.locale)
             log.debug("\(availableLocales)")
@@ -29,12 +27,7 @@ public struct Exercise: Decodable {
                 $0.language.languageCode == LocalizationKit.l10n.language
             }) ?? Locale(identifier: "en_US")
 
-            log.debug("Current Language: \(LocalizationKit.l10n.language)")
-            log.debug("currentLocale: \(currentLocale)")
-
             self.instructions = self.localizedInstructions?.first(where: { $0.locale == currentLocale })?.value
-            //            log.debug("instructions: \(self.instructions)")
-            log.debug("Selected Instructions: \(String(describing: self.instructions))")
         } else {
             self.instructions = nil
         }

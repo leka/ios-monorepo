@@ -9,7 +9,7 @@ import SwiftUI
 // MARK: - ActivityListView
 
 struct ActivityListView: View {
-    let activities: [Activity] = ContentKit.listSampleActivities() ?? []
+    let activities: [Activity] = ContentKit.activityList
 
     var body: some View {
         List {
