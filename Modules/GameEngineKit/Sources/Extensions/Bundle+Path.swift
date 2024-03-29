@@ -47,4 +47,33 @@ public extension Bundle {
 
         return nil
     }
+
+    static func url(forAudio audio: String, in bundle: Bundle? = nil) -> URL? {
+        let kAudioExtensions = [
+            ".activity.mp3",
+            ".activity.wav",
+            "mp3",
+            "wav",
+        ]
+
+        for audioExtension in kAudioExtensions {
+            if let url = ContentKitResources.bundle.url(forResource: audio, withExtension: audioExtension) {
+                return url
+            }
+
+            if let url = bundle?.url(forResource: audio, withExtension: audioExtension) {
+                return url
+            }
+
+            if let url = Bundle.module.url(forResource: audio, withExtension: audioExtension) {
+                return url
+            }
+
+            if let url = Bundle.main.url(forResource: audio, withExtension: audioExtension) {
+                return url
+            }
+        }
+
+        return nil
+    }
 }
