@@ -11,7 +11,13 @@ class DraggableImageAnswerNode: SKSpriteNode {
     init(choice: GameplayAssociateCategoriesChoiceModel, scale: CGFloat = 1, position: CGPoint) {
         self.id = choice.id
 
-        super.init(texture: SKTexture(image: UIImage(named: choice.choice.value)!), color: .clear, size: CGSize.zero)
+        if let path = Bundle.path(forImage: choice.choice.value) {
+            log.debug("Image found at path: \(path)")
+            super.init(texture: SKTexture(image: UIImage(named: path)!), color: .clear, size: CGSize.zero)
+        } else {
+            log.error("Image not found: \(choice.choice.value)")
+            super.init(texture: SKTexture(image: UIImage(named: choice.choice.value)!), color: .clear, size: CGSize.zero)
+        }
 
         let action = SKAction.setTexture(texture!, resize: true)
         self.run(action)
@@ -27,7 +33,13 @@ class DraggableImageAnswerNode: SKSpriteNode {
     init(choice: GameplayDragAndDropIntoZonesChoiceModel, scale: CGFloat = 1, position: CGPoint) {
         self.id = choice.id
 
-        super.init(texture: SKTexture(image: UIImage(named: choice.choice.value)!), color: .clear, size: CGSize.zero)
+        if let path = Bundle.path(forImage: choice.choice.value) {
+            log.debug("Image found at path: \(path)")
+            super.init(texture: SKTexture(image: UIImage(named: path)!), color: .clear, size: CGSize.zero)
+        } else {
+            log.error("Image not found: \(choice.choice.value)")
+            super.init(texture: SKTexture(image: UIImage(named: choice.choice.value)!), color: .clear, size: CGSize.zero)
+        }
 
         let action = SKAction.setTexture(texture!, resize: true)
         self.run(action)
