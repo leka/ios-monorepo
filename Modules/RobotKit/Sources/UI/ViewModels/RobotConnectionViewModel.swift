@@ -31,6 +31,10 @@ public class RobotConnectionViewModel: ObservableObject {
 
     public func scanForRobots() {
         log.info("🔵 BLE - Start scanning for robots")
+        // ? On first appear, scan is not working because it is called twice.
+        // ? Setting it to nil first fixes the issues.
+        // TODO: (@leka/dev-ios) review usage of nil here to fix scan
+        self.scanCancellable = nil
         self.scanCancellable = self.bleManager.scanForRobots()
             .receive(on: DispatchQueue.main)
             .sink { _ in
