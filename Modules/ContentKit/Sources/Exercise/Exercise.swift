@@ -4,7 +4,6 @@
 
 import Foundation
 import LocalizationKit
-import LogKit
 
 // MARK: - Exercise
 
@@ -21,7 +20,6 @@ public struct Exercise: Decodable {
 
         if let localizedInstructions = self.localizedInstructions {
             let availableLocales = localizedInstructions.map(\.locale)
-            log.debug("\(availableLocales)")
 
             let currentLocale = availableLocales.first(where: {
                 $0.language.languageCode == LocalizationKit.l10n.language
