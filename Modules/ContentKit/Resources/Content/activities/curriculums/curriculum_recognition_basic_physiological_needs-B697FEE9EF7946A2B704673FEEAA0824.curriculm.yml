@@ -37,7 +37,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon: # TO_DEFINE
+      icon: recognition_basic_physiological_needs.curriculum.icon
 
       title: Reconnaître les besoins physiologiques de base
       subtitle: Identifier et répondre aux besoins physiologiques
@@ -50,7 +50,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon: # TO_DEFINE
+      icon: recognition_basic_physiological_needs.curriculum.icon
 
       title: Recognize Basic Physiological Needs through Drawing
       subtitle: Identifying and Responding to Physiological States

@@ -30,7 +30,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon: color_bingo
+      icon: color_quest_6.activity.icon
 
       title: Loto des Couleurs
       subtitle: Apprendre et reconnaître les couleurs progressivement
@@ -43,7 +43,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon: color_bingo
+      icon: color_quest_6.activity.icon
 
       title: Color Bingo
       subtitle: Gradually learning and recognizing colors

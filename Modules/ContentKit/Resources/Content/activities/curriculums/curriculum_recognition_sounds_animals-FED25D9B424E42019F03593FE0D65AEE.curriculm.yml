@@ -34,7 +34,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon: # TO_DEFINE
+      icon: recognition_sounds_animals.curriculum.icon
 
       title: Reconnaissance des Sons des Animaux
       subtitle: Identifier les animaux à partir de leurs sons
@@ -52,7 +52,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon: # TO_DEFINE
+      icon: recognition_sounds_animals.curriculum.icon
 
       title: Recognition of Animal Sounds
       subtitle: Identifying Animals by Their Sounds

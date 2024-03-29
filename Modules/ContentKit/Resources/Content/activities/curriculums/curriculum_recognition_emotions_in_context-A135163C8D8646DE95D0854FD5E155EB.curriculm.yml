@@ -37,7 +37,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon: # TO_DEFINE
+      icon: recognition_emotions_in_context.curriculum.icon
 
       title: Reconnaissance des émotions dans un contexte
       subtitle: Décrypter et s'identifier aux émotions
@@ -50,7 +50,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon: # TO_DEFINE
+      icon: recognition_emotions_in_context.curriculum.icon
 
       title: Emotion Recognition in Context
       subtitle: Deciphering and Identifying with Emotions

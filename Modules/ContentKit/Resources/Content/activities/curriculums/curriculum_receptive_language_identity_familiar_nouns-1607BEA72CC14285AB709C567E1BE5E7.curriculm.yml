@@ -34,7 +34,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon: # TO_DEFINE
+      icon: icon_curriculum_receptive_language_identifying_common_words
 
       title: Identifier des mots courants
       subtitle: Reconnaissance des mots et leur compréhension
@@ -47,7 +47,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon: # TO_DEFINE
+      icon: icon_curriculum_receptive_language_identifying_common_words
 
       title: Identify familiar nouns
       subtitle: Word recognition and understanding

@@ -36,7 +36,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon: # TO_DEFINE
+      icon: Emotion_Recognition-Sounds
 
       title: Sons des émotions
       subtitle: Identifier les émotions à travers des sons
@@ -54,7 +54,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon: # TO_DEFINE
+      icon: Emotion_Recognition-Sounds
 
       title: Emotions sounds
       subtitle: Identifying Emotions Through Sounds

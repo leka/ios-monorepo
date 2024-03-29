@@ -38,7 +38,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon: # TO_DEFINE
+      icon: Emotion_Recognition_Pictures
 
       title: Reconnaissance des émotions à travers des photos
       subtitle: Comprendre les émotions à travers des expressions réelles
@@ -51,7 +51,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon: # TO_DEFINE
+      icon: Emotion_Recognition_Pictures
 
       title: Recognition of Emotions through Pictures
       subtitle: Understanding Emotions through Real Expressions
@@ -63,7 +63,7 @@ l10n:
         Through interactive activities displayed on the iPad screen, care receivers are encouraged to carefully observe pictures of the Leka team members expressing various emotions. The goal is to identify the displayed emotion and touch the corresponding image. These activities promote a better understanding and interpretation of emotions, thereby improving the care receivers' ability to express their own emotions and recognize those of others.
 
 
-activities: # {{💡TO_DEFINE}}
+activities:
 
 - recognition_emotions_pictures_1_hortense-418F229DD3384711BB241CC5E4F07C46
 - recognition_emotions_pictures_1_hugo-2046B91706984344AC8CDA8F3E630FE0

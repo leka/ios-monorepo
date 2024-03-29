@@ -31,7 +31,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon: # {{💡TO_DEFINE}}
+      icon: recognition_weather_and_temperatures.curriculum.icon
 
       title: Reconnaissance de la météo et des températures
       subtitle: Apprendre à identifier et à catégoriser la météo
@@ -44,7 +44,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon: categorization
+      icon: recognition_weather_and_temperatures.curriculum.icon
 
       title: Recognition of weather and temperatures
       subtitle: Learning to identify and categorize weather conditions

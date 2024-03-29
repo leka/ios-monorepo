@@ -31,7 +31,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon: # TO_DEFINE
+      icon: icon_curriculum_receptive_language_object_by_color
 
       title: Identifier des objets par couleur
       subtitle: Reconnaissance des couleurs
@@ -44,7 +44,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon: # TO_DEFINE
+      icon: icon_curriculum_receptive_language_object_by_color
 
       title: Identify Objects by Color
       subtitle: Color Recognition

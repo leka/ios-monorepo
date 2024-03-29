@@ -32,7 +32,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon: # TO_DEFINE
+      icon: recognition_sounds_musical_instruments.curriculum.icon
 
       title: Reconnaissance des sons d'instruments de musique
       subtitle: Identifier les instruments par leurs sons
@@ -50,7 +50,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon: # TO_DEFINE
+      icon: recognition_sounds_musical_instruments.curriculum.icon
 
       title: Recognition of musical instruments sounds
       subtitle: Identifying instruments by their sounds

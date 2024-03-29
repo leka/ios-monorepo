@@ -41,7 +41,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon: categorization
+      icon: icon_curriculum_categorization_basket
 
       title: Catégorisation
       subtitle: Apprendre à trier et à catégoriser
@@ -54,7 +54,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon: categorization
+      icon: icon_curriculum_categorization_basket
 
       title: Categorization
       subtitle: Learning to sort and categorize

@@ -39,7 +39,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon: # TO_DEFINE
+      icon: Emotion_Recognition_Generalization
 
       title: Généralisation des émotions à travers différents supports
       subtitle: Combiner dessins, photos et pictogrammes
@@ -52,7 +52,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon: # TO_DEFINE
+      icon: Emotion_Recognition_Generalization
 
       title: Emotion generalization across modalities
       subtitle: Combining Drawings, Pictures, and Pictograms
