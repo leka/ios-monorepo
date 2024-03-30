@@ -15,10 +15,9 @@ extension Navigation {
         case caregivers
         case carereceivers
 
-        #if DEVELOPER_MODE
-            case allActivities
-            case developerModeImageListPNG
-        #endif
+        // ? DEVELOPER_MODE
+        case allActivities
+        case developerModeImageListPNG
 
         // MARK: Internal
 

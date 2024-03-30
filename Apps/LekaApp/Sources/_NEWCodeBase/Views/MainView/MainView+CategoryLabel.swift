@@ -37,10 +37,6 @@ extension MainView {
                     self.title = String(l10n.MainView.Sidebar.CategoryLabel.remotes.characters)
                     self.systemImage = "gamecontroller"
 
-                case .allActivities:
-                    self.title = "All Activities"
-                    self.systemImage = "list.bullet"
-
                 case .caregivers:
                     self.title = String(l10n.MainView.Sidebar.CategoryLabel.caregivers.characters)
                     self.systemImage = "person.3.fill"
@@ -49,11 +45,13 @@ extension MainView {
                     self.title = String(l10n.MainView.Sidebar.CategoryLabel.carereceivers.characters)
                     self.systemImage = "figure.2.arms.open"
 
-                #if DEVELOPER_MODE
-                    case .developerModeImageListPNG:
-                        self.title = "PNG Image List"
-                        self.systemImage = "photo.circle"
-                #endif
+                case .allActivities:
+                    self.title = "All Activities"
+                    self.systemImage = "list.bullet"
+
+                case .developerModeImageListPNG:
+                    self.title = "PNG Image List"
+                    self.systemImage = "photo.circle"
             }
         }
 
