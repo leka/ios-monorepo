@@ -50,7 +50,6 @@ struct MainView: View {
                     CategoryLabel(category: .curriculums)
                     CategoryLabel(category: .activities)
                     CategoryLabel(category: .remotes)
-                    CategoryLabel(category: .sampleActivities)
                 }
 
                 if self.authManagerViewModel.userAuthenticationState == .loggedIn {
@@ -62,6 +61,7 @@ struct MainView: View {
 
                 #if DEVELOPER_MODE
                     Section("Developer Mode") {
+                        CategoryLabel(category: .sampleActivities)
                         CategoryLabel(category: .developerModeImageListPNG)
                     }
                 #endif
@@ -103,9 +103,6 @@ struct MainView: View {
                     case .remotes:
                         RemotesView()
 
-                    case .sampleActivities:
-                        SampleActivityListView()
-
                     case .caregivers:
                         CaregiverList()
 
@@ -113,6 +110,9 @@ struct MainView: View {
                         CarereceiverList()
 
                     #if DEVELOPER_MODE
+                        case .sampleActivities:
+                            SampleActivityListView()
+
                         case .developerModeImageListPNG:
                             DebugImageListView(images: ContentKit.listImagesPNG())
                                 .navigationTitle("PNG Image List")

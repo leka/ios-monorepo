@@ -11,11 +11,11 @@ extension Navigation {
         case curriculums
         case activities
         case remotes
-        case sampleActivities
         case caregivers
         case carereceivers
 
         #if DEVELOPER_MODE
+            case sampleActivities
             case developerModeImageListPNG
         #endif
 
