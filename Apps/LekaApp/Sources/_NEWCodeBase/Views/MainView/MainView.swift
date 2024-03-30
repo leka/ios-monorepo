@@ -43,8 +43,6 @@ struct MainView: View {
 
                 Section(String(l10n.MainView.Sidebar.sectionInformation.characters)) {
                     CategoryLabel(category: .home)
-                    CategoryLabel(category: .news)
-                    CategoryLabel(category: .resources)
                 }
 
                 Section(String(l10n.MainView.Sidebar.sectionContent.characters)) {
@@ -64,6 +62,8 @@ struct MainView: View {
                     Section("Developer Mode") {
                         CategoryLabel(category: .allActivities)
                         CategoryLabel(category: .developerModeImageListPNG)
+                        CategoryLabel(category: .news)
+                        CategoryLabel(category: .resources)
                     }
                 #endif
 
@@ -92,12 +92,6 @@ struct MainView: View {
                     case .home:
                         Text("Home")
 
-                    case .news:
-                        NewsView()
-
-                    case .resources:
-                        ResourcesView()
-
                     case .curriculums:
                         CurriculumsView()
 
@@ -113,12 +107,19 @@ struct MainView: View {
                     case .carereceivers:
                         CarereceiverList()
 
+                    // ? DEVELOPER_MODE
                     case .allActivities:
                         AllActivitiesView()
 
                     case .developerModeImageListPNG:
                         DebugImageListView(images: ContentKit.listImagesPNG())
                             .navigationTitle("PNG Image List")
+
+                    case .news:
+                        NewsView()
+
+                    case .resources:
+                        ResourcesView()
 
                     case .none:
                         Text("Select a category")
