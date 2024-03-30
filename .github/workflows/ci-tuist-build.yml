@@ -17,11 +17,15 @@ concurrency:
 
 env:
   TUIST_TURN_OFF_LINTERS: TRUE
+  TUIST_GENERATE_MODULES_AS_FRAMEWORKS_FOR_DEBUG: FALSE
 
 jobs:
   build:
     name: build
     runs-on: [self-hosted, iOS]
+    strategy:
+      matrix:
+        TUIST_DEVELOPER_MODE: [TRUE, FALSE]
 
     steps:
       - name: Checkout
@@ -36,12 +40,21 @@ jobs:
 
       - name: tuist fetch
         run: |
-          TUIST_TURN_OFF_LINTERS=TRUE tuist fetch
+          TUIST_TURN_OFF_LINTERS=${{ env.TUIST_TURN_OFF_LINTERS }} \
+          TUIST_GENERATE_MODULES_AS_FRAMEWORKS_FOR_DEBUG=${{ env.TUIST_GENERATE_MODULES_AS_FRAMEWORKS_FOR_DEBUG }} \
+          TUIST_DEVELOPER_MODE=${{ matrix.TUIST_DEVELOPER_MODE }} \
+          tuist fetch
 
       - name: tuist generate
         run: |
-          TUIST_TURN_OFF_LINTERS=TRUE tuist generate -n
+          TUIST_TURN_OFF_LINTERS=${{ env.TUIST_TURN_OFF_LINTERS }} \
+          TUIST_GENERATE_MODULES_AS_FRAMEWORKS_FOR_DEBUG=${{ env.TUIST_GENERATE_MODULES_AS_FRAMEWORKS_FOR_DEBUG }} \
+          TUIST_DEVELOPER_MODE=${{ matrix.TUIST_DEVELOPER_MODE }} \
+          tuist generate -n
 
       - name: tuist build
         run: |
+          TUIST_TURN_OFF_LINTERS=${{ env.TUIST_TURN_OFF_LINTERS }} \
+          TUIST_GENERATE_MODULES_AS_FRAMEWORKS_FOR_DEBUG=${{ env.TUIST_GENERATE_MODULES_AS_FRAMEWORKS_FOR_DEBUG }} \
+          TUIST_DEVELOPER_MODE=${{ matrix.TUIST_DEVELOPER_MODE }} \
           tuist build
