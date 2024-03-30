@@ -13,6 +13,10 @@ extension MainView {
             self.category = category
 
             switch category {
+                case .home:
+                    self.title = String(l10n.MainView.Sidebar.CategoryLabel.home.characters)
+                    self.systemImage = "house"
+
                 case .news:
                     self.title = String(l10n.MainView.Sidebar.CategoryLabel.news.characters)
                     self.systemImage = "lightbulb.max"

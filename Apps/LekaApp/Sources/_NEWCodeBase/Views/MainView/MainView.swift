@@ -42,6 +42,7 @@ struct MainView: View {
                 .listRowInsets(EdgeInsets(top: 0, leading: -8, bottom: -8, trailing: -8))
 
                 Section(String(l10n.MainView.Sidebar.sectionInformation.characters)) {
+                    CategoryLabel(category: .home)
                     CategoryLabel(category: .news)
                     CategoryLabel(category: .resources)
                 }
@@ -88,6 +89,9 @@ struct MainView: View {
         } detail: {
             NavigationStack(path: self.$navigation.path) {
                 switch self.navigation.selectedCategory {
+                    case .home:
+                        Text("Home")
+
                     case .news:
                         NewsView()
 

@@ -6,6 +6,7 @@ import SwiftUI
 
 extension Navigation {
     enum Category: Hashable, Identifiable, CaseIterable {
+        case home
         case news
         case resources
         case curriculums
