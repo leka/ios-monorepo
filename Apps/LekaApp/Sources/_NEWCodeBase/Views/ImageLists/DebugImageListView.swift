@@ -125,7 +125,7 @@ struct DebugImageListView: View {
 #Preview {
     NavigationSplitView {} detail: {
         NavigationStack {
-            DebugImageListView(images: ContentKit.listImagesPNG())
+            DebugImageListView(images: ContentKit.listRasterImages())
         }
     }
 }

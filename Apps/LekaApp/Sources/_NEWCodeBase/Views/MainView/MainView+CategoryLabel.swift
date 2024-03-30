@@ -49,8 +49,8 @@ extension MainView {
                     self.title = "All Activities"
                     self.systemImage = "list.bullet"
 
-                case .developerModeImageListPNG:
-                    self.title = "PNG Image List"
+                case .rasterImageList:
+                    self.title = "Raster Image List"
                     self.systemImage = "photo.circle"
             }
         }

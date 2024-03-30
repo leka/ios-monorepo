@@ -15,7 +15,7 @@ extension Navigation {
 
         // ? DEVELOPER_MODE
         case allActivities
-        case developerModeImageListPNG
+        case rasterImageList
         case news
         case resources
 
