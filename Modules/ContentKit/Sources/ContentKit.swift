@@ -13,7 +13,7 @@ let log = LogKit.createLoggerFor(module: "ContentKit")
 public enum ContentKit {
     // MARK: Public
 
-    public static let activityList: [Activity] = ContentKit.listSampleActivities() ?? []
+    public static let allActivities: [Activity] = ContentKit.listAllActivities() ?? []
     public static let curriculumList: [Curriculum] = ContentKit.listSampleCurriculums() ?? []
 
     public static func listImagesPNG() -> [String] {
@@ -52,7 +52,7 @@ public enum ContentKit {
         return curriculums.sorted { $0.name < $1.name }
     }
 
-    private static func listSampleActivities() -> [Activity]? {
+    private static func listAllActivities() -> [Activity]? {
         let bundle = Bundle.module
         let files = bundle.paths(forResourcesOfType: "activity.yml", inDirectory: nil)
 
@@ -76,6 +76,6 @@ public enum ContentKit {
             activities.append(activity)
         }
 
-        return activities.sorted { $0.name < $1.name }
+        return activities
     }
 }
