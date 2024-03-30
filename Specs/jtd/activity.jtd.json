@@ -193,7 +193,23 @@
         "$exercise/gameplay": {
             "enum": ["findTheRightAnswers", "associateCategories"]
         },
-        "$exercise/action": {},
+        "$exercise/action": {
+            "properties": {
+                "type": {
+                    "enum": ["ipad", "robot"]
+                },
+                "value": {
+                    "properties": {
+                        "type": {
+                            "enum": ["image", "audio", "color"]
+                        },
+                        "value": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
         "$exercise/payload": {}
     }
 }
