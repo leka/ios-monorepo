@@ -24,7 +24,7 @@ public enum ContentKit {
         files.append(contentsOf: bundle.paths(forResourcesOfType: "jpg", inDirectory: nil))
         files.append(contentsOf: bundle.paths(forResourcesOfType: "jpeg", inDirectory: nil))
 
-        return files
+        return files.sorted()
     }
 
     // MARK: Private
