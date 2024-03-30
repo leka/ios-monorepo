@@ -10,6 +10,7 @@ extension l10n {
     enum MainView {
         enum Sidebar {
             enum CategoryLabel {
+                static let home = LocalizedString("lekaapp.main_view.sidebar.category_label.home", value: "Home", comment: "The title of the category 'Home'")
                 static let news = LocalizedString("lekaapp.main_view.sidebar.category_label.news", value: "News", comment: "The title of the category 'News'")
                 static let resources = LocalizedString("lekaapp.main_view.sidebar.category_label.resources", value: "Resources", comment: "The title of the category 'Resources'")
                 static let curriculums = LocalizedString("lekaapp.main_view.sidebar.category_label.curriculums", value: "Curriculums", comment: "The title of the category 'Curriculums'")

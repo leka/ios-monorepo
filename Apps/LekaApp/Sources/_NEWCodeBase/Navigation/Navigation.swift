@@ -56,7 +56,7 @@ class Navigation: ObservableObject {
 
     @Published var navigateToAccountCreationProcess: Bool = false
 
-    var selectedCategory: Category? = .news {
+    var selectedCategory: Category? = .home {
         willSet {
             self.disableUICompletly = true
             // ? Note: early return to avoid reseting path
@@ -97,7 +97,7 @@ class Navigation: ObservableObject {
             .receive(on: DispatchQueue.main)
             .sink {
                 if case $0 = AuthManager.AuthenticationState.loggedOut {
-                    self.selectedCategory = .news
+                    self.selectedCategory = .home
                     if self.sheetContent == nil, self.fullScreenCoverContent == nil {
                         self.fullScreenCoverContent = .welcomeView
                     }
