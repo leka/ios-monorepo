@@ -15,7 +15,7 @@ extension Navigation {
         case carereceivers
 
         #if DEVELOPER_MODE
-            case sampleActivities
+            case allActivities
             case developerModeImageListPNG
         #endif
 

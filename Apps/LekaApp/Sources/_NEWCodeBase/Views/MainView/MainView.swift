@@ -61,7 +61,7 @@ struct MainView: View {
 
                 #if DEVELOPER_MODE
                     Section("Developer Mode") {
-                        CategoryLabel(category: .sampleActivities)
+                        CategoryLabel(category: .allActivities)
                         CategoryLabel(category: .developerModeImageListPNG)
                     }
                 #endif
@@ -110,8 +110,8 @@ struct MainView: View {
                         CarereceiverList()
 
                     #if DEVELOPER_MODE
-                        case .sampleActivities:
-                            SampleActivityListView()
+                        case .allActivities:
+                            AllActivitiesView()
 
                         case .developerModeImageListPNG:
                             DebugImageListView(images: ContentKit.listImagesPNG())
