@@ -7,8 +7,6 @@ import SwiftUI
 extension Navigation {
     enum Category: Hashable, Identifiable, CaseIterable {
         case home
-        case news
-        case resources
         case curriculums
         case activities
         case remotes
@@ -18,6 +16,8 @@ extension Navigation {
         // ? DEVELOPER_MODE
         case allActivities
         case developerModeImageListPNG
+        case news
+        case resources
 
         // MARK: Internal
 
