@@ -16,11 +16,24 @@ public enum ContentKit {
     public static let allActivities: [Activity] = ContentKit.listAllActivities() ?? []
     public static let curriculumList: [Curriculum] = ContentKit.listSampleCurriculums() ?? []
 
-    public static func listImagesPNG() -> [String] {
+    public static func listRasterImages() -> [String] {
         let bundle = Bundle.module
-        let files = bundle.paths(forResourcesOfType: "png", inDirectory: nil)
+        var files: [String] = []
 
-        return files
+        files.append(contentsOf: bundle.paths(forResourcesOfType: "png", inDirectory: nil))
+        files.append(contentsOf: bundle.paths(forResourcesOfType: "jpg", inDirectory: nil))
+        files.append(contentsOf: bundle.paths(forResourcesOfType: "jpeg", inDirectory: nil))
+
+        return files.sorted()
+    }
+
+    public static func listVectorImages() -> [String] {
+        let bundle = Bundle.module
+        var files: [String] = []
+
+        files.append(contentsOf: bundle.paths(forResourcesOfType: "svg", inDirectory: nil))
+
+        return files.sorted()
     }
 
     // MARK: Private

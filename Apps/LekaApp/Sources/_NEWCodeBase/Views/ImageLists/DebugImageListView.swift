@@ -27,13 +27,6 @@ class DebugImageListViewViewModel: ObservableObject {
         return components.last ?? ""
     }
 
-    func printImagesNames() {
-        for (index, image) in self.images.enumerated() {
-            print("image \(index + 1)")
-            print("name: \(image)")
-        }
-    }
-
     func setState(to state: GameplayChoiceState) {
         self.cellState = state
     }
@@ -61,26 +54,34 @@ struct DebugImageListView: View {
     // MARK: Internal
 
     var body: some View {
-        ScrollView {
-            LazyVGrid(columns: self.columns, spacing: 20) {
-                ForEach(self.viewModel.images, id: \.self) { imageName in
-                    VStack(spacing: 20) {
-                        ChoiceImageView(
-                            image: imageName,
-                            size: self.viewModel.cellSize,
-                            background: self.viewModel.cellBackgroundColor,
-                            state: self.viewModel.cellState
-                        )
+        Group {
+            if self.viewModel.images.isEmpty {
+                Text("No images")
+                    .font(.largeTitle)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+            } else {
+                ScrollView {
+                    LazyVGrid(columns: self.columns, spacing: 20) {
+                        ForEach(self.viewModel.images, id: \.self) { imageName in
+                            VStack(spacing: 20) {
+                                ChoiceImageView(
+                                    image: imageName,
+                                    size: self.viewModel.cellSize,
+                                    background: self.viewModel.cellBackgroundColor,
+                                    state: self.viewModel.cellState
+                                )
 
-                        Text(self.viewModel.getImageNameFromPath(path: imageName))
-                            .lineLimit(2, reservesSpace: true)
-                            .multilineTextAlignment(.center)
-                            .font(.caption)
+                                Text(self.viewModel.getImageNameFromPath(path: imageName))
+                                    .lineLimit(2, reservesSpace: true)
+                                    .multilineTextAlignment(.center)
+                                    .font(.caption)
+                            }
+                        }
                     }
+                    .frame(minWidth: 900)
+                    .padding()
                 }
             }
-            .frame(minWidth: 900)
-            .padding()
         }
         .background(.lkBackground)
         .toolbar {
@@ -110,9 +111,6 @@ struct DebugImageListView: View {
                 }
             }
         }
-        .onAppear {
-            self.viewModel.printImagesNames()
-        }
     }
 
     // MARK: Private
@@ -125,7 +123,7 @@ struct DebugImageListView: View {
 #Preview {
     NavigationSplitView {} detail: {
         NavigationStack {
-            DebugImageListView(images: ContentKit.listImagesPNG())
+            DebugImageListView(images: ContentKit.listRasterImages())
         }
     }
 }
