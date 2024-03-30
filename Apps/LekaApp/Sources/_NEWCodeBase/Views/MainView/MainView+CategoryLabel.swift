@@ -52,6 +52,10 @@ extension MainView {
                 case .rasterImageList:
                     self.title = "Raster Image List"
                     self.systemImage = "photo.circle"
+
+                case .vectorImageList:
+                    self.title = "Vector Image List"
+                    self.systemImage = "photo.circle.fill"
             }
         }
 

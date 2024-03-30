@@ -27,6 +27,15 @@ public enum ContentKit {
         return files.sorted()
     }
 
+    public static func listVectorImages() -> [String] {
+        let bundle = Bundle.module
+        var files: [String] = []
+
+        files.append(contentsOf: bundle.paths(forResourcesOfType: "svg", inDirectory: nil))
+
+        return files.sorted()
+    }
+
     // MARK: Private
 
     private static func listSampleCurriculums() -> [Curriculum]? {

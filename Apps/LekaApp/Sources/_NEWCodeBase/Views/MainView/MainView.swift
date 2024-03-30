@@ -62,6 +62,7 @@ struct MainView: View {
                     Section("Developer Mode") {
                         CategoryLabel(category: .allActivities)
                         CategoryLabel(category: .rasterImageList)
+                        CategoryLabel(category: .vectorImageList)
                         CategoryLabel(category: .news)
                         CategoryLabel(category: .resources)
                     }
@@ -114,6 +115,10 @@ struct MainView: View {
                     case .rasterImageList:
                         DebugImageListView(images: ContentKit.listRasterImages())
                             .navigationTitle("Raster Image List (.png, .jpg, .jpeg)")
+
+                    case .vectorImageList:
+                        DebugImageListView(images: ContentKit.listVectorImages())
+                            .navigationTitle("Vector Image List (.svg)")
 
                     case .news:
                         NewsView()

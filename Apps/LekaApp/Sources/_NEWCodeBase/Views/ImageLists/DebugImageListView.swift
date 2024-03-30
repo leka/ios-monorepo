@@ -54,26 +54,34 @@ struct DebugImageListView: View {
     // MARK: Internal
 
     var body: some View {
-        ScrollView {
-            LazyVGrid(columns: self.columns, spacing: 20) {
-                ForEach(self.viewModel.images, id: \.self) { imageName in
-                    VStack(spacing: 20) {
-                        ChoiceImageView(
-                            image: imageName,
-                            size: self.viewModel.cellSize,
-                            background: self.viewModel.cellBackgroundColor,
-                            state: self.viewModel.cellState
-                        )
+        Group {
+            if self.viewModel.images.isEmpty {
+                Text("No images")
+                    .font(.largeTitle)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+            } else {
+                ScrollView {
+                    LazyVGrid(columns: self.columns, spacing: 20) {
+                        ForEach(self.viewModel.images, id: \.self) { imageName in
+                            VStack(spacing: 20) {
+                                ChoiceImageView(
+                                    image: imageName,
+                                    size: self.viewModel.cellSize,
+                                    background: self.viewModel.cellBackgroundColor,
+                                    state: self.viewModel.cellState
+                                )
 
-                        Text(self.viewModel.getImageNameFromPath(path: imageName))
-                            .lineLimit(2, reservesSpace: true)
-                            .multilineTextAlignment(.center)
-                            .font(.caption)
+                                Text(self.viewModel.getImageNameFromPath(path: imageName))
+                                    .lineLimit(2, reservesSpace: true)
+                                    .multilineTextAlignment(.center)
+                                    .font(.caption)
+                            }
+                        }
                     }
+                    .frame(minWidth: 900)
+                    .padding()
                 }
             }
-            .frame(minWidth: 900)
-            .padding()
         }
         .background(.lkBackground)
         .toolbar {
