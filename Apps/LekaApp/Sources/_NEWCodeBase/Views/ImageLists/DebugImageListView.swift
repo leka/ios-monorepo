@@ -27,13 +27,6 @@ class DebugImageListViewViewModel: ObservableObject {
         return components.last ?? ""
     }
 
-    func printImagesNames() {
-        for (index, image) in self.images.enumerated() {
-            print("image \(index + 1)")
-            print("name: \(image)")
-        }
-    }
-
     func setState(to state: GameplayChoiceState) {
         self.cellState = state
     }
@@ -109,9 +102,6 @@ struct DebugImageListView: View {
                     Button("300") { self.viewModel.resizeWithAnimation(to: 300) }
                 }
             }
-        }
-        .onAppear {
-            self.viewModel.printImagesNames()
         }
     }
 
