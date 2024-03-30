@@ -24,6 +24,7 @@ jobs:
     name: build
     runs-on: [self-hosted, iOS]
     strategy:
+      fail-fast: false
       matrix:
         TUIST_DEVELOPER_MODE: [TRUE, FALSE]
 
