@@ -90,6 +90,14 @@ public class CaregiverManager {
         self.currentCaregiver.send(caregiver)
     }
 
+    public func setCurrentCaregiverByID(withID: String) {
+        self.currentCaregiver.send(self.caregiverList.value.first { $0.id == withID })
+    }
+
+    public func resetCurrentCaregiver() {
+        self.currentCaregiver.send(nil)
+    }
+
     public func resetData() {
         self.currentCaregiver.send(nil)
         self.caregiverList.send([])
