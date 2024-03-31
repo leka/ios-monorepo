@@ -139,25 +139,151 @@
             }
         },
         "$exercise": {
-            "properties": {
-                "instructions": {
-                    "ref": "$exercise/instructions",
-                    "nullable": true
+            "discriminator": "interface",
+            "mapping": {
+                "touchToSelect": {
+                    "properties": {
+                        "instructions": {
+                            "ref": "$exercise/instructions"
+                        },
+                        "gameplay": {
+                            "ref": "$exercise/gameplay"
+                        },
+                        "payload": {
+                            "ref": "$exercise/payload/touchToSelect"
+                        }
+                    }
                 },
-                "interface": {
-                    "ref": "$exercise/interface"
-                }
-            },
-            "optionalProperties": {
-                "gameplay": {
-                    "ref": "$exercise/gameplay",
-                    "nullable": true
+                "robotThenTouchToSelect": {
+                    "properties": {
+                        "instructions": {
+                            "ref": "$exercise/instructions"
+                        },
+                        "gameplay": {
+                            "ref": "$exercise/gameplay"
+                        },
+                        "action": {
+                            "ref": "$exercise/action"
+                        },
+                        "payload": {
+                            "ref": "$exercise/payload/touchToSelect"
+                        }
+                    }
                 },
-                "payload": {
-                    "ref": "$exercise/payload"
+                "listenThenTouchToSelect": {
+                    "properties": {
+                        "instructions": {
+                            "ref": "$exercise/instructions"
+                        },
+                        "gameplay": {
+                            "ref": "$exercise/gameplay"
+                        },
+                        "action": {
+                            "ref": "$exercise/action"
+                        },
+                        "payload": {
+                            "ref": "$exercise/payload/touchToSelect"
+                        }
+                    }
                 },
-                "action": {
-                    "ref": "$exercise/action"
+                "observeThenTouchToSelect": {
+                    "properties": {
+                        "instructions": {
+                            "ref": "$exercise/instructions"
+                        },
+                        "gameplay": {
+                            "ref": "$exercise/gameplay"
+                        },
+                        "action": {
+                            "ref": "$exercise/action"
+                        },
+                        "payload": {
+                            "ref": "$exercise/payload/touchToSelect"
+                        }
+                    }
+                },
+                "dragAndDropIntoZones": {
+                    "properties": {
+                        "instructions": {
+                            "ref": "$exercise/instructions"
+                        },
+                        "gameplay": {
+                            "ref": "$exercise/gameplay"
+                        },
+                        "payload": {
+                            "ref": "$exercise/payload/dragAndDropIntoZones"
+                        }
+                    }
+                },
+                "dragAndDropToAssociate": {
+                    "properties": {
+                        "instructions": {
+                            "ref": "$exercise/instructions"
+                        },
+
+                        "gameplay": {
+                            "ref": "$exercise/gameplay"
+                        },
+                        "payload": {
+                            "ref": "$exercise/payload/dragAndDropToAssociate"
+                        }
+                    }
+                },
+                "danceFreeze": {
+                    "properties": {
+                        "payload": {
+                            "ref": "$exercise/payload/danceFreeze"
+                        }
+                    }
+                },
+                "remoteStandard": {
+                    "properties": {
+                        "instructions": {
+                            "ref": "$exercise/instructions"
+                        }
+                    }
+                },
+                "remoteArrow": {
+                    "properties": {
+                        "instructions": {
+                            "ref": "$exercise/instructions"
+                        }
+                    }
+                },
+                "hideAndSeek": {
+                    "properties": {
+                        "instructions": {
+                            "ref": "$exercise/instructions"
+                        }
+                    }
+                },
+                "musicalInstruments": {
+                    "properties": {
+                        "instructions": {
+                            "ref": "$exercise/instructions"
+                        },
+
+                        "payload": {
+                            "ref": "$exercise/payload/musicalInstruments"
+                        }
+                    }
+                },
+                "melody": {
+                    "properties": {
+                        "instructions": {
+                            "ref": "$exercise/instructions"
+                        },
+                        "payload": {
+                            "ref": "$exercise/payload/melody"
+                        }
+                    }
+                },
+                "pairing": {
+                    "properties": {
+                        "instructions": {
+                            "ref": "$exercise/instructions"
+                        }
+                    }
                 }
             }
         },
@@ -193,7 +319,28 @@
         "$exercise/gameplay": {
             "enum": ["findTheRightAnswers", "associateCategories"]
         },
-        "$exercise/action": {},
-        "$exercise/payload": {}
+        "$exercise/action": {
+            "properties": {
+                "type": {
+                    "enum": ["ipad", "robot"]
+                },
+                "value": {
+                    "properties": {
+                        "type": {
+                            "enum": ["image", "audio", "color"]
+                        },
+                        "value": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "$exercise/payload/touchToSelect": {},
+        "$exercise/payload/dragAndDropIntoZones": {},
+        "$exercise/payload/dragAndDropToAssociate": {},
+        "$exercise/payload/danceFreeze": {},
+        "$exercise/payload/musicalInstruments": {},
+        "$exercise/payload/melody": {}
     }
 }

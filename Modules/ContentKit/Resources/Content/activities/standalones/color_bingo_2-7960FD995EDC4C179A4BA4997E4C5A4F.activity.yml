@@ -8,7 +8,7 @@ uuid: 7960FD995EDC4C179A4BA4997E4C5A4F
 name: color_bingo_2
 
 created_at: "2024-03-04T18:07:12.519092"
-last_edited_at: "2024-03-06T12:51:54.499454"
+last_edited_at: "2024-03-31T23:33:50.987548"
 status: published
 
 authors:
@@ -76,7 +76,6 @@ exercises_payload:
 
   exercise_groups:
     - group:
-
         - instructions:
             - locale: fr_FR
               value: Touche la couleur de Leka
@@ -166,7 +165,7 @@ exercises_payload:
               value: Touche la couleur de Leka
             - locale: en_US
               value: Touch the color of Leka
-          interface: touchToSelect
+          interface: robotThenTouchToSelect
           gameplay: findTheRightAnswers
           action:
             type: robot
@@ -187,7 +186,7 @@ exercises_payload:
               value: Touche la couleur de Leka
             - locale: en_US
               value: Touch the color of Leka
-          interface: touchToSelect
+          interface: robotThenTouchToSelect
           gameplay: findTheRightAnswers
           action:
             type: robot
@@ -208,7 +207,7 @@ exercises_payload:
               value: Touche la couleur de Leka
             - locale: en_US
               value: Touch the color of Leka
-          interface: touchToSelect
+          interface: robotThenTouchToSelect
           gameplay: findTheRightAnswers
           action:
             type: robot
@@ -229,7 +228,7 @@ exercises_payload:
               value: Touche la couleur de Leka
             - locale: en_US
               value: Touch the color of Leka
-          interface: touchToSelect
+          interface: robotThenTouchToSelect
           gameplay: findTheRightAnswers
           action:
             type: robot
@@ -250,7 +249,7 @@ exercises_payload:
               value: Touche la couleur de Leka
             - locale: en_US
               value: Touch the color of Leka
-          interface: touchToSelect
+          interface: robotThenTouchToSelect
           gameplay: findTheRightAnswers
           action:
             type: robot
@@ -271,7 +270,7 @@ exercises_payload:
               value: Touche la couleur de Leka
             - locale: en_US
               value: Touch the color of Leka
-          interface: touchToSelect
+          interface: robotThenTouchToSelect
           gameplay: findTheRightAnswers
           action:
             type: robot
@@ -292,7 +291,7 @@ exercises_payload:
               value: Touche la couleur de Leka
             - locale: en_US
               value: Touch the color of Leka
-          interface: touchToSelect
+          interface: robotThenTouchToSelect
           gameplay: findTheRightAnswers
           action:
             type: robot
