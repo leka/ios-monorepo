@@ -16,41 +16,41 @@
             "type": "string"
         },
         "status": {
-            "ref": "def:status"
+            "ref": "$status"
         },
         "authors": {
             "elements": {
-                "ref": "def:author"
+                "ref": "$author"
             }
         },
         "skills": {
             "elements": {
-                "ref": "def:skill"
+                "ref": "$skill"
             }
         },
         "hmi": {
             "elements": {
-                "ref": "def:hmi"
+                "ref": "$hmi"
             }
         },
         "types": {
             "elements": {
-                "ref": "def:type"
+                "ref": "$type"
             }
         },
         "tags": {
             "elements": {
-                "ref": "def:tag"
+                "ref": "$tag"
             }
         },
         "locales": {
             "elements": {
-                "ref": "def:locale"
+                "ref": "$locale"
             }
         },
         "l10n": {
             "elements": {
-                "ref": "def:l10n"
+                "ref": "$l10n"
             }
         },
         "exercises_payload": {
@@ -67,36 +67,36 @@
                 },
                 "exercise_groups": {
                     "elements": {
-                        "ref": "def:group"
+                        "ref": "$group"
                     }
                 }
             }
         }
     },
     "definitions": {
-        "def:author": {
+        "$author": {
             "enum": ["leka", "aurore_kiesler", "julie_tuil"]
         },
-        "def:hmi": {
+        "$hmi": {
             "enum": ["robot", "tablet", "magic_cards", "tablet_robot"]
         },
-        "def:locale": {
+        "$locale": {
             "enum": ["en_US", "fr_FR"]
         },
-        "def:status": {
+        "$status": {
             "enum": ["draft", "published"]
         },
-        "def:l10n": {
+        "$l10n": {
             "properties": {
                 "locale": {
-                    "ref": "def:locale"
+                    "ref": "$locale"
                 },
                 "details": {
-                    "ref": "def:l10n/details"
+                    "ref": "$l10n/details"
                 }
             }
         },
-        "def:l10n/details": {
+        "$l10n/details": {
             "properties": {
                 "icon": {
                     "type": "string"
@@ -120,178 +120,178 @@
                 }
             }
         },
-        "def:skill": {
+        "$skill": {
             "type": "string"
         },
-        "def:type": {
+        "$type": {
             "enum": ["one_on_one", "group"]
         },
-        "def:tag": {
+        "$tag": {
             "type": "string"
         },
-        "def:group": {
+        "$group": {
             "properties": {
                 "group": {
                     "elements": {
-                        "ref": "def:exercise"
+                        "ref": "$exercise"
                     }
                 }
             }
         },
-        "def:exercise": {
+        "$exercise": {
             "discriminator": "interface",
             "mapping": {
                 "touchToSelect": {
                     "properties": {
                         "instructions": {
-                            "ref": "def:exercise/instructions"
+                            "ref": "$exercise/instructions"
                         },
                         "gameplay": {
-                            "ref": "def:exercise/gameplay"
+                            "ref": "$exercise/gameplay"
                         },
                         "payload": {
-                            "ref": "def:exercise/payload/touchToSelect"
+                            "ref": "$exercise/payload/touchToSelect"
                         }
                     }
                 },
                 "robotThenTouchToSelect": {
                     "properties": {
                         "instructions": {
-                            "ref": "def:exercise/instructions"
+                            "ref": "$exercise/instructions"
                         },
                         "gameplay": {
-                            "ref": "def:exercise/gameplay"
+                            "ref": "$exercise/gameplay"
                         },
                         "action": {
-                            "ref": "def:exercise/action"
+                            "ref": "$exercise/action"
                         },
                         "payload": {
-                            "ref": "def:exercise/payload/touchToSelect"
+                            "ref": "$exercise/payload/touchToSelect"
                         }
                     }
                 },
                 "listenThenTouchToSelect": {
                     "properties": {
                         "instructions": {
-                            "ref": "def:exercise/instructions"
+                            "ref": "$exercise/instructions"
                         },
                         "gameplay": {
-                            "ref": "def:exercise/gameplay"
+                            "ref": "$exercise/gameplay"
                         },
                         "action": {
-                            "ref": "def:exercise/action"
+                            "ref": "$exercise/action"
                         },
                         "payload": {
-                            "ref": "def:exercise/payload/touchToSelect"
+                            "ref": "$exercise/payload/touchToSelect"
                         }
                     }
                 },
                 "observeThenTouchToSelect": {
                     "properties": {
                         "instructions": {
-                            "ref": "def:exercise/instructions"
+                            "ref": "$exercise/instructions"
                         },
                         "gameplay": {
-                            "ref": "def:exercise/gameplay"
+                            "ref": "$exercise/gameplay"
                         },
                         "action": {
-                            "ref": "def:exercise/action"
+                            "ref": "$exercise/action"
                         },
                         "payload": {
-                            "ref": "def:exercise/payload/touchToSelect"
+                            "ref": "$exercise/payload/touchToSelect"
                         }
                     }
                 },
                 "dragAndDropIntoZones": {
                     "properties": {
                         "instructions": {
-                            "ref": "def:exercise/instructions"
+                            "ref": "$exercise/instructions"
                         },
                         "gameplay": {
-                            "ref": "def:exercise/gameplay"
+                            "ref": "$exercise/gameplay"
                         },
                         "payload": {
-                            "ref": "def:exercise/payload/dragAndDropIntoZones"
+                            "ref": "$exercise/payload/dragAndDropIntoZones"
                         }
                     }
                 },
                 "dragAndDropToAssociate": {
                     "properties": {
                         "instructions": {
-                            "ref": "def:exercise/instructions"
+                            "ref": "$exercise/instructions"
                         },
 
                         "gameplay": {
-                            "ref": "def:exercise/gameplay"
+                            "ref": "$exercise/gameplay"
                         },
                         "payload": {
-                            "ref": "def:exercise/payload/dragAndDropToAssociate"
+                            "ref": "$exercise/payload/dragAndDropToAssociate"
                         }
                     }
                 },
                 "danceFreeze": {
                     "properties": {
                         "payload": {
-                            "ref": "def:exercise/payload/danceFreeze"
+                            "ref": "$exercise/payload/danceFreeze"
                         }
                     }
                 },
                 "remoteStandard": {
                     "properties": {
                         "instructions": {
-                            "ref": "def:exercise/instructions"
+                            "ref": "$exercise/instructions"
                         }
                     }
                 },
                 "remoteArrow": {
                     "properties": {
                         "instructions": {
-                            "ref": "def:exercise/instructions"
+                            "ref": "$exercise/instructions"
                         }
                     }
                 },
                 "hideAndSeek": {
                     "properties": {
                         "instructions": {
-                            "ref": "def:exercise/instructions"
+                            "ref": "$exercise/instructions"
                         }
                     }
                 },
                 "musicalInstruments": {
                     "properties": {
                         "instructions": {
-                            "ref": "def:exercise/instructions"
+                            "ref": "$exercise/instructions"
                         },
 
                         "payload": {
-                            "ref": "def:exercise/payload/musicalInstruments"
+                            "ref": "$exercise/payload/musicalInstruments"
                         }
                     }
                 },
                 "melody": {
                     "properties": {
                         "instructions": {
-                            "ref": "def:exercise/instructions"
+                            "ref": "$exercise/instructions"
                         },
                         "payload": {
-                            "ref": "def:exercise/payload/melody"
+                            "ref": "$exercise/payload/melody"
                         }
                     }
                 },
                 "pairing": {
                     "properties": {
                         "instructions": {
-                            "ref": "def:exercise/instructions"
+                            "ref": "$exercise/instructions"
                         }
                     }
                 }
             }
         },
-        "def:exercise/instructions": {
+        "$exercise/instructions": {
             "elements": {
                 "properties": {
                     "locale": {
-                        "ref": "def:locale"
+                        "ref": "$locale"
                     },
                     "value": {
                         "type": "string"
@@ -299,7 +299,7 @@
                 }
             }
         },
-        "def:exercise/interface": {
+        "$exercise/interface": {
             "enum": [
                 "touchToSelect",
                 "robotThenTouchToSelect",
@@ -316,10 +316,10 @@
                 "pairing"
             ]
         },
-        "def:exercise/gameplay": {
+        "$exercise/gameplay": {
             "enum": ["findTheRightAnswers", "associateCategories"]
         },
-        "def:exercise/action": {
+        "$exercise/action": {
             "properties": {
                 "type": {
                     "enum": ["ipad", "robot"]
@@ -336,11 +336,11 @@
                 }
             }
         },
-        "def:exercise/payload/touchToSelect": {},
-        "def:exercise/payload/dragAndDropIntoZones": {},
-        "def:exercise/payload/dragAndDropToAssociate": {},
-        "def:exercise/payload/danceFreeze": {},
-        "def:exercise/payload/musicalInstruments": {},
-        "def:exercise/payload/melody": {}
+        "$exercise/payload/touchToSelect": {},
+        "$exercise/payload/dragAndDropIntoZones": {},
+        "$exercise/payload/dragAndDropToAssociate": {},
+        "$exercise/payload/danceFreeze": {},
+        "$exercise/payload/musicalInstruments": {},
+        "$exercise/payload/melody": {}
     }
 }
