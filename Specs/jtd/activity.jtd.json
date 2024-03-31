@@ -16,41 +16,41 @@
             "type": "string"
         },
         "status": {
-            "ref": "$status"
+            "ref": "def:status"
         },
         "authors": {
             "elements": {
-                "ref": "$author"
+                "ref": "def:author"
             }
         },
         "skills": {
             "elements": {
-                "ref": "$skill"
+                "ref": "def:skill"
             }
         },
         "hmi": {
             "elements": {
-                "ref": "$hmi"
+                "ref": "def:hmi"
             }
         },
         "types": {
             "elements": {
-                "ref": "$type"
+                "ref": "def:type"
             }
         },
         "tags": {
             "elements": {
-                "ref": "$tag"
+                "ref": "def:tag"
             }
         },
         "locales": {
             "elements": {
-                "ref": "$locale"
+                "ref": "def:locale"
             }
         },
         "l10n": {
             "elements": {
-                "ref": "$l10n"
+                "ref": "def:l10n"
             }
         },
         "exercises_payload": {
@@ -67,36 +67,36 @@
                 },
                 "exercise_groups": {
                     "elements": {
-                        "ref": "$group"
+                        "ref": "def:group"
                     }
                 }
             }
         }
     },
     "definitions": {
-        "$author": {
+        "def:author": {
             "enum": ["leka", "aurore_kiesler", "julie_tuil"]
         },
-        "$hmi": {
+        "def:hmi": {
             "enum": ["robot", "tablet", "magic_cards", "tablet_robot"]
         },
-        "$locale": {
+        "def:locale": {
             "enum": ["en_US", "fr_FR"]
         },
-        "$status": {
+        "def:status": {
             "enum": ["draft", "published"]
         },
-        "$l10n": {
+        "def:l10n": {
             "properties": {
                 "locale": {
-                    "ref": "$locale"
+                    "ref": "def:locale"
                 },
                 "details": {
-                    "ref": "$l10n/details"
+                    "ref": "def:l10n/details"
                 }
             }
         },
-        "$l10n/details": {
+        "def:l10n/details": {
             "properties": {
                 "icon": {
                     "type": "string"
@@ -120,52 +120,52 @@
                 }
             }
         },
-        "$skill": {
+        "def:skill": {
             "type": "string"
         },
-        "$type": {
+        "def:type": {
             "enum": ["one_on_one", "group"]
         },
-        "$tag": {
+        "def:tag": {
             "type": "string"
         },
-        "$group": {
+        "def:group": {
             "properties": {
                 "group": {
                     "elements": {
-                        "ref": "$exercise"
+                        "ref": "def:exercise"
                     }
                 }
             }
         },
-        "$exercise": {
+        "def:exercise": {
             "properties": {
                 "instructions": {
-                    "ref": "$exercise/instructions",
+                    "ref": "def:exercise/instructions",
                     "nullable": true
                 },
                 "interface": {
-                    "ref": "$exercise/interface"
+                    "ref": "def:exercise/interface"
                 }
             },
             "optionalProperties": {
                 "gameplay": {
-                    "ref": "$exercise/gameplay",
+                    "ref": "def:exercise/gameplay",
                     "nullable": true
                 },
                 "payload": {
-                    "ref": "$exercise/payload"
+                    "ref": "def:exercise/payload"
                 },
                 "action": {
-                    "ref": "$exercise/action"
+                    "ref": "def:exercise/action"
                 }
             }
         },
-        "$exercise/instructions": {
+        "def:exercise/instructions": {
             "elements": {
                 "properties": {
                     "locale": {
-                        "ref": "$locale"
+                        "ref": "def:locale"
                     },
                     "value": {
                         "type": "string"
@@ -173,7 +173,7 @@
                 }
             }
         },
-        "$exercise/interface": {
+        "def:exercise/interface": {
             "enum": [
                 "touchToSelect",
                 "robotThenTouchToSelect",
@@ -190,10 +190,10 @@
                 "pairing"
             ]
         },
-        "$exercise/gameplay": {
+        "def:exercise/gameplay": {
             "enum": ["findTheRightAnswers", "associateCategories"]
         },
-        "$exercise/action": {
+        "def:exercise/action": {
             "properties": {
                 "type": {
                     "enum": ["ipad", "robot"]
@@ -210,6 +210,6 @@
                 }
             }
         },
-        "$exercise/payload": {}
+        "def:exercise/payload": {}
     }
 }
