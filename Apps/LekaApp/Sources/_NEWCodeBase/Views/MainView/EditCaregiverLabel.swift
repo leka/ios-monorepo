@@ -87,21 +87,51 @@ struct EditCaregiverLabel: View {
                 }
             }
         }
-        .onReceive(self.caregiverManagerViewModel.$currentCaregiver) { caregiverToEdit in
-            if self.navigation.sheetContent == nil, self.navigation.fullScreenCoverContent == nil {
-                if caregiverToEdit == nil {
-                    self.navigation.sheetContent = .caregiverPicker
+        .onAppear {
+            self.persitantDataManager.checkInactivity()
+        }
+        .onChange(of: self.scenePhase) { newPhase in
+            switch newPhase {
+                case .active:
+                    self.persitantDataManager.checkInactivity()
+                case .inactive,
+                     .background:
+                    self.persitantDataManager.updateLastActiveTimestamp()
+                    if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
+                        self.persitantDataManager.lastActiveCaregiverID = currentCaregiverID
+                    }
+                @unknown default:
+                    break
+            }
+        }
+        .onReceive(self.persitantDataManager.inactivityTimeoutPublisher) { isTimedOut in
+            if isTimedOut {
+                self.caregiverManager.resetCurrentCaregiver()
+                guard self.navigation.sheetContent == nil, self.navigation.fullScreenCoverContent == nil else {
+                    return
                 }
+                self.navigation.sheetContent = .caregiverPicker
+            } else {
+                guard let storedCaregiverID = self.persitantDataManager.lastActiveCaregiverID else {
+                    self.navigation.sheetContent = .caregiverPicker
+                    return
+                }
+                self.caregiverManager.setCurrentCaregiverByID(withID: storedCaregiverID)
             }
         }
     }
 
     // MARK: Private
 
+    @Environment(\.scenePhase) private var scenePhase
+
     @ObservedObject private var styleManager: StyleManager = .shared
     @ObservedObject private var navigation: Navigation = .shared
 
     @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
+
+    private var persitantDataManager: PersitantDataManager = .shared
+    private var caregiverManager: CaregiverManager = .shared
 }
 
 // MARK: - l10n.ChangeCaregiverProfile
