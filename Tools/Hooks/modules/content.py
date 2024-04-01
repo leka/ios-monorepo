@@ -9,6 +9,8 @@ import os
 import uuid
 from pathlib import Path
 from datetime import datetime, timedelta
+from typing import Any, Dict, List, Union
+
 
 import ruamel.yaml
 
@@ -22,6 +24,8 @@ CONTENTKIT_DIRECTORY = "Modules/ContentKit/Resources/Content"
 
 CREATED_AT_INDEX = 3
 LAST_EDITED_AT_INDEX = 4
+
+IMAGE_EXTENSIONS = [".png", ".jpg", ".jpeg", ".svg"]
 
 
 def is_uuid_same_as_filename(activity, filename):
@@ -208,3 +212,53 @@ def find_missing_activities(data):
             missing_activities.append(activity)
 
     return missing_activities
+
+
+def find_missing_exercise_assets(
+    data: Union[Dict, List], type_key: str = "type", value_key: str = "value"
+) -> List[Any]:
+    """
+    Recursively search through a nested data structure of lists and dictionaries
+    to find all values associated with a specified structure containing both `type`
+    and `value` keys.
+
+    Parameters:
+        data (Union[Dict, List]): The data to search through.
+        type_key (str): The key used to identify the type. Default is 'type'.
+        value_key (str): The key whose value is to be collected. Default is 'value'.
+
+    Returns:
+        List[Any]: A list of values associated with the specified structure.
+    """
+
+    search_path = Path(CONTENTKIT_DIRECTORY)
+
+    def is_asset_missing(asset_basename: str, image_extensions: List[str]) -> bool:
+        """Check if an asset is missing for all given extensions."""
+        for ext in image_extensions:
+            if list(search_path.rglob(f"{asset_basename}{ext}")):
+                return False
+        return True
+
+    def recursive_search(data, collected_results):
+        if not isinstance(data, (dict, list)):
+            return
+
+        if isinstance(data, dict):
+            if type_key in data and value_key in data and data[type_key] == "image":
+                asset_basename = data[value_key] + ".activity.asset"
+                if asset_basename not in collected_results and is_asset_missing(
+                    asset_basename, IMAGE_EXTENSIONS
+                ):
+                    collected_results.append(asset_basename)
+            else:
+                for value in data.values():
+                    recursive_search(value, collected_results)
+
+        elif isinstance(data, list):
+            for item in data:
+                recursive_search(item, collected_results)
+
+    missing_assets = []
+    recursive_search(data, missing_assets)
+    return missing_assets
