@@ -442,6 +442,17 @@
             }
         },
         "$exercise/payload/musicalInstruments": {},
-        "$exercise/payload/melody": {}
+        "$exercise/payload/melody": {
+            "properties": {
+                "instrument": {
+                    "enum": ["xylophone"]
+                },
+                "songs": {
+                    "elements": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
     }
 }
