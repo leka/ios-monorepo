@@ -336,7 +336,32 @@
                 }
             }
         },
-        "$exercise/payload/touchToSelect": {},
+        "$exercise/payload/touchToSelect": {
+            "properties": {
+                "choices": {
+                    "elements": {
+                        "properties": {
+                            "type": {
+                                "enum": ["color", "image", "sfsymbol", "emoji"]
+                            },
+                            "value": {
+                                "type": "string"
+                            }
+                        },
+                        "optionalProperties": {
+                            "is_right_answer": {
+                                "type": "boolean"
+                            }
+                        }
+                    }
+                }
+            },
+            "optionalProperties": {
+                "shuffle_choices": {
+                    "type": "boolean"
+                }
+            }
+        },
         "$exercise/payload/dragAndDropIntoZones": {},
         "$exercise/payload/dragAndDropToAssociate": {},
         "$exercise/payload/danceFreeze": {},
