@@ -8,7 +8,7 @@ uuid: C6ED67057F714AD1A4537072F4886B67
 name: recognition_sounds_emotions_pictures_4_hortense
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2024-04-01T11:35:36.199655"
+last_edited_at: "2024-04-02T13:38:42.797166"
 status: published
 
 authors:
@@ -97,9 +97,9 @@ exercises_payload:
                 is_right_answer: true
               - value: emotion_picture_adult_angry_hortense
                 type: image
-              - value: emotion_sound_adult_fear_hortense
+              - value: emotion_picture_adult_fear_hortense
                 type: image
-              - value: emotion_sound_adult_joy_hortense
+              - value: emotion_picture_adult_joy_hortense
                 type: image
 
         - instructions:
@@ -222,9 +222,9 @@ exercises_payload:
                 is_right_answer: true
               - value: emotion_picture_adult_angry_hortense
                 type: image
-              - value: emotion_sound_adult_fear_hortense
+              - value: emotion_picture_adult_fear_hortense
                 type: image
-              - value: emotion_sound_adult_joy_hortense
+              - value: emotion_picture_adult_joy_hortense
                 type: image
 
         - instructions:
