@@ -441,7 +441,16 @@
                 }
             }
         },
-        "$exercise/payload/musicalInstruments": {},
+        "$exercise/payload/musicalInstruments": {
+            "properties": {
+                "instrument": {
+                    "enum": ["xylophone"]
+                },
+                "scale": {
+                    "enum": ["majorHeptatonic", "majorPentatonic"]
+                }
+            }
+        },
         "$exercise/payload/melody": {
             "properties": {
                 "instrument": {
