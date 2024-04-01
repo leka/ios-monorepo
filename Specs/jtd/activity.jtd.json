@@ -362,7 +362,50 @@
                 }
             }
         },
-        "$exercise/payload/dragAndDropIntoZones": {},
+        "$exercise/payload/dragAndDropIntoZones": {
+            "properties": {
+                "dropZoneA": {
+                    "properties": {
+                        "type": {
+                            "enum": ["image"]
+                        },
+                        "value": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "choices": {
+                    "properties": {
+                        "type": {
+                            "enum": ["image"]
+                        },
+                        "value": {
+                            "type": "string"
+                        }
+                    },
+                    "optionalProperties": {
+                        "dropZone": {
+                            "enum": ["zoneA", "zoneB"]
+                        }
+                    }
+                }
+            },
+            "optionalProperties": {
+                "dropZoneB": {
+                    "properties": {
+                        "type": {
+                            "enum": ["image"]
+                        },
+                        "value": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "shuffle_choices": {
+                    "type": "boolean"
+                }
+            }
+        },
         "$exercise/payload/dragAndDropToAssociate": {},
         "$exercise/payload/danceFreeze": {},
         "$exercise/payload/musicalInstruments": {},
