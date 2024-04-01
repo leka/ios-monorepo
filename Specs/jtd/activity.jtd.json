@@ -432,7 +432,15 @@
                 }
             }
         },
-        "$exercise/payload/danceFreeze": {},
+        "$exercise/payload/danceFreeze": {
+            "properties": {
+                "songs": {
+                    "elements": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
         "$exercise/payload/musicalInstruments": {},
         "$exercise/payload/melody": {}
     }
