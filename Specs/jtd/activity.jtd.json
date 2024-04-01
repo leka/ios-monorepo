@@ -406,7 +406,32 @@
                 }
             }
         },
-        "$exercise/payload/dragAndDropToAssociate": {},
+        "$exercise/payload/dragAndDropToAssociate": {
+            "properties": {
+                "choices": {
+                    "elements": {
+                        "properties": {
+                            "type": {
+                                "enum": ["image"]
+                            },
+                            "value": {
+                                "type": "string"
+                            }
+                        },
+                        "optionalProperties": {
+                            "category": {
+                                "enum": ["catA", "catB", "catC"]
+                            }
+                        }
+                    }
+                }
+            },
+            "optionalProperties": {
+                "shuffle_choices": {
+                    "type": "boolean"
+                }
+            }
+        },
         "$exercise/payload/danceFreeze": {},
         "$exercise/payload/musicalInstruments": {},
         "$exercise/payload/melody": {}
