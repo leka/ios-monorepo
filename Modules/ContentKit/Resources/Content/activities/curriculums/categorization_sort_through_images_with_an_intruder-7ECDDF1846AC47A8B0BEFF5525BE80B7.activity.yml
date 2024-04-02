@@ -1,0 +1,259 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+version: 1.0.0
+
+uuid: 7ECDDF1846AC47A8B0BEFF5525BE80B7
+name: categorization_sort_through_images_with_an_intruder
+
+created_at: "2024-03-08T11:49:37.123525"
+last_edited_at: "2024-04-02T19:35:47.210903"
+status: published
+
+authors:
+  - leka
+
+skills:
+  - association
+  - association/sorting
+
+tags:
+  - vegetables
+  - fruits
+  - basket
+  - intruder
+
+hmi:
+  - tablet
+
+types:
+  - one_on_one
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: improving_categorization-put_in_the_basket
+
+      title: Trier avec un intrus
+      subtitle: null
+
+      short_description: |
+        Mets la même image dans le panier
+
+      description: |
+        La personne accompagnée doit associer l'image similaire à celle déjà présente dans le panier.
+
+      instructions: |
+        - Sur l'écran de l'iPad, une image est déjà dans le panier et deux autres sont à l'extérieur du panier
+        - Encourager la personne accompagnée à glisser puis déposer dans le panier la même image que celle qui est déjà dans le panier
+        - Quand la réponse est correct, Leka lance un renforçateur
+
+  - locale: en_US
+    details:
+      icon: improving_categorization-put_in_the_basket
+
+      title: Sort through images with an intruder
+      subtitle: null
+
+      short_description: |
+        Put the same image in the basket
+
+      description: |
+        The care receiver has to drag and drop into the basket the same image than the one already here.
+
+      instructions: |
+        - On the iPad screen, there is an image already into the basket and two images out of the basket
+        - Encourage the care receiver to drag and drop into the basket the same image as the one already in the basket
+        - When the answer is correct, Leka launches a reinforcer
+
+exercises_payload:
+  options:
+    shuffle_exercises: true
+    shuffle_groups: false
+
+  exercise_groups:
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Mets la même image dans le panier
+            - locale: en_US
+              value: Put the same image in the basket
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            dropZoneA:
+              value: basket
+              type: image
+            choices:
+              - value: pictograms-foods-fruits-banana_yellow-00FB
+                type: image
+                dropZone: zoneA
+              - value: pictograms-foods-fruits-apple_green-0100
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Mets la même image dans le panier
+            - locale: en_US
+              value: Put the same image in the basket
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            dropZoneA:
+              value: basket
+              type: image
+            choices:
+              - value: pictograms-foods-vegetables-potato_yellow_1-00E9
+                type: image
+              - value: pictograms-foods-fruits-apple_green-0100
+                type: image
+                dropZone: zoneA
+
+        - instructions:
+            - locale: fr_FR
+              value: Mets la même image dans le panier
+            - locale: en_US
+              value: Put the same image in the basket
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            dropZoneA:
+              value: basket
+              type: image
+            choices:
+              - value: pictograms-foods-fruits-banana_yellow-00FB
+                type: image
+              - value: pictograms-foods-vegetables-mushroom_white-00EF
+                type: image
+                dropZone: zoneA
+
+        - instructions:
+            - locale: fr_FR
+              value: Mets la même image dans le panier
+            - locale: en_US
+              value: Put the same image in the basket
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            dropZoneA:
+              value: basket
+              type: image
+            choices:
+              - value: pictograms-foods-vegetables-potato_yellow_1-00E9
+                type: image
+              - value: pictograms-foods-fruits-banana_yellow-00FB
+                type: image
+                dropZone: zoneA
+
+        - instructions:
+            - locale: fr_FR
+              value: Mets la même image dans le panier
+            - locale: en_US
+              value: Put the same image in the basket
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            dropZoneA:
+              value: basket
+              type: image
+            choices:
+              - value: pictograms-foods-vegetables-mushroom_brown-00F0
+                type: image
+                dropZone: zoneA
+              - value: pictograms-foods-vegetables-potato_yellow_1-00E9
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Mets la même image dans le panier
+            - locale: en_US
+              value: Put the same image in the basket
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            dropZoneA:
+              value: basket
+              type: image
+            choices:
+              - value: pictograms-foods-fruits-cherry_red-00FF
+                type: image
+                dropZone: zoneA
+              - value: pictograms-foods-vegetables-potato_yellow_1-00E9
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Mets la même image dans le panier
+            - locale: en_US
+              value: Put the same image in the basket
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            dropZoneA:
+              value: basket
+              type: image
+            choices:
+              - value: pictograms-foods-fruits-grape_purple-00FE
+                type: image
+              - value: pictograms-foods-vegetables-salad_green_1-00EA
+                type: image
+                dropZone: zoneA
+
+        - instructions:
+            - locale: fr_FR
+              value: Mets la même image dans le panier
+            - locale: en_US
+              value: Put the same image in the basket
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            dropZoneA:
+              value: basket
+              type: image
+            choices:
+              - value: pictograms-foods-vegetables-potato_yellow_1-00E9
+                type: image
+                dropZone: zoneA
+              - value: pictograms-foods-fruits-banana_yellow-00FB
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Mets la même image dans le panier
+            - locale: en_US
+              value: Put the same image in the basket
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            dropZoneA:
+              value: basket
+              type: image
+            choices:
+              - value: pictograms-foods-vegetables-carrot_orange-00E6
+                type: image
+                dropZone: zoneA
+              - value: pictograms-foods-vegetables-mushroom_gray-00EF
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Mets la même image dans le panier
+            - locale: en_US
+              value: Put the same image in the basket
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            dropZoneA:
+              value: basket
+              type: image
+            choices:
+              - value: pictograms-foods-vegetables-carrot_orange-00E6
+                type: image
+              - value: pictograms-foods-fruits-cherry_red-00FF
+                type: image
+                dropZone: zoneA
