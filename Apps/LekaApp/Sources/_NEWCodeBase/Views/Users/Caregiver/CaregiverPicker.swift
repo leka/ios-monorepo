@@ -59,8 +59,6 @@ struct CaregiverPicker: View {
             }
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
-                    self.styleManager.colorScheme = self.selectedCaregiver!.colorScheme
-                    self.styleManager.accentColor = self.selectedCaregiver!.colorTheme.color
                     self.caregiverManager.setCurrentCaregiver(to: self.selectedCaregiver!)
                     self.dismiss()
                 } label: {
@@ -81,7 +79,6 @@ struct CaregiverPicker: View {
 
     // MARK: Private
 
-    @ObservedObject private var styleManager: StyleManager = .shared
     @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
 
     @State private var selectedCaregiver: Caregiver?
