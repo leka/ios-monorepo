@@ -146,8 +146,8 @@
                 }
             }
         },
-        "contentkit.curriculum_list_view.button_label": {
-            "comment": "Discover button label of CurriculumListView ",
+        "contentkit.curriculum_grid_view.button_label": {
+            "comment": "Discover button label of CurriculumGridView ",
             "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {

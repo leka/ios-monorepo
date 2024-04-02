@@ -6,9 +6,9 @@ import DesignKit
 import LocalizationKit
 import SwiftUI
 
-// MARK: - CurriculumListView
+// MARK: - CurriculumGridView
 
-public struct CurriculumListView: View {
+public struct CurriculumGridView: View {
     // MARK: Lifecycle
 
     public init(curriculums: [Curriculum]? = nil, onActivitySelected: ((Activity) -> Void)?) {
@@ -42,11 +42,11 @@ public struct CurriculumListView: View {
                         NavigationLink(destination:
                             CurriculumDetailsView(curriculum: curriculum, onActivitySelected: self.onActivitySelected)
                         ) {
-                            Text(l10n.CurriculumListView.buttonLabel)
+                            Text(l10n.CurriculumGridView.buttonLabel)
                         }
                         .buttonStyle(.bordered)
                     }
-                    .frame(maxHeight: .infinity)
+                    .frame(minWidth: 200)
                 }
             }
         }
@@ -64,19 +64,19 @@ public struct CurriculumListView: View {
     @ObservedObject private var styleManager: StyleManager = .shared
 }
 
-// MARK: - l10n.CurriculumListView
+// MARK: - l10n.CurriculumGridView
 
 extension l10n {
-    enum CurriculumListView {
-        static let buttonLabel = LocalizedString("contentkit.curriculum_list_view.button_label",
+    enum CurriculumGridView {
+        static let buttonLabel = LocalizedString("contentkit.curriculum_grid_view.button_label",
                                                  value: "Discover",
-                                                 comment: "Discover button label of CurriculumListView ")
+                                                 comment: "Discover button label of CurriculumGridView ")
     }
 }
 
 #Preview {
     NavigationStack {
-        CurriculumListView(
+        CurriculumGridView(
             curriculums: ContentKit.curriculumList,
             onActivitySelected: { _ in
                 print("Activity Selected")

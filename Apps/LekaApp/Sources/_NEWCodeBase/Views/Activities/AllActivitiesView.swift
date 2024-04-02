@@ -19,7 +19,7 @@ struct AllActivitiesView: View {
 
     var body: some View {
         ScrollView(showsIndicators: true) {
-            ActivityListView(activities: self.activities, onStartActivity: { activity in
+            ActivityGridView(activities: self.activities, onStartActivity: { activity in
                 self.navigation.currentActivity = activity
                 self.navigation.fullScreenCoverContent = .activityView
             })
