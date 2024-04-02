@@ -88,7 +88,7 @@ def add_last_edited_at(data):
 def update_last_edited_at(data):
     """Update the last_edited_at field to the YAML file"""
     last_edited_at = datetime.fromisoformat(data["last_edited_at"])
-    now_minus_delta = datetime.fromisoformat(DATE_NOW_TIMESTAMP) - timedelta(minutes=1)
+    now_minus_delta = datetime.fromisoformat(DATE_NOW_TIMESTAMP) - timedelta(minutes=60)
 
     if last_edited_at < now_minus_delta:
         data["last_edited_at"] = DATE_NOW_TIMESTAMP
