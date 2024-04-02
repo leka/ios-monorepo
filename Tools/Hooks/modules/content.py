@@ -204,9 +204,7 @@ def find_missing_activities(data):
     for activity in activity_list:
         activity_filenmae = activity + ".activity.yml"
         matching_files = list(search_path.rglob(activity_filenmae))
-        print(f"Matching files: {matching_files}")
         if not matching_files:
-            print(f"Activity {activity_filenmae} not found")
             missing_activities.append(activity)
 
     return missing_activities
