@@ -45,7 +45,8 @@ extension GameplayFindTheRightAnswers where ChoiceModelType == GameplayDragAndDr
 
         if rightAnswers.isEmpty {
             let level = evaluateCompletionLevel(allowedTrials: allowedTrials, numberOfTrials: numberOfTrials)
-            state.send(.completed(level: level))
+            let completionData = ExerciseCompletionData(startTimestamp: nil, endTimestamp: Date())
+            state.send(.completed(level: level, data: completionData))
         }
     }
 }
