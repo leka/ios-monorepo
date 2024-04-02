@@ -80,9 +80,9 @@ exercises_payload:
     - group:
         - instructions:
             - locale: fr_FR
-              value: Mets la même image dans le panier
+              value: Mets la banane dans le panier
             - locale: en_US
-              value: Put the same image in the basket
+              value: Put the banana in the basket
           interface: dragAndDropIntoZones
           gameplay: findTheRightAnswers
           payload:
@@ -98,9 +98,9 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Mets la même image dans le panier
+              value: Mets la pomme dans le panier
             - locale: en_US
-              value: Put the same image in the basket
+              value: Put the apple in the basket
           interface: dragAndDropIntoZones
           gameplay: findTheRightAnswers
           payload:
@@ -116,9 +116,9 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Mets la même image dans le panier
+              value: Mets le champignon dans le panier
             - locale: en_US
-              value: Put the same image in the basket
+              value: Put the mushroom in the basket
           interface: dragAndDropIntoZones
           gameplay: findTheRightAnswers
           payload:
@@ -134,9 +134,9 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Mets la même image dans le panier
+              value: Mets la banane dans le panier
             - locale: en_US
-              value: Put the same image in the basket
+              value: Put the banana in the basket
           interface: dragAndDropIntoZones
           gameplay: findTheRightAnswers
           payload:
@@ -152,9 +152,9 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Mets la même image dans le panier
+              value: Mets le champignon dans le panier
             - locale: en_US
-              value: Put the same image in the basket
+              value: Put the mushroom in the basket
           interface: dragAndDropIntoZones
           gameplay: findTheRightAnswers
           payload:
@@ -170,9 +170,9 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Mets la même image dans le panier
+              value: Mets la cerise dans le panier
             - locale: en_US
-              value: Put the same image in the basket
+              value: Put the cherry in the basket
           interface: dragAndDropIntoZones
           gameplay: findTheRightAnswers
           payload:
@@ -188,9 +188,9 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Mets la même image dans le panier
+              value: Mets la salade dans le panier
             - locale: en_US
-              value: Put the same image in the basket
+              value: Put the salad in the basket
           interface: dragAndDropIntoZones
           gameplay: findTheRightAnswers
           payload:
@@ -206,9 +206,9 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Mets la même image dans le panier
+              value: Mets la patate dans le panier
             - locale: en_US
-              value: Put the same image in the basket
+              value: Put the potato in the basket
           interface: dragAndDropIntoZones
           gameplay: findTheRightAnswers
           payload:
@@ -224,9 +224,9 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Mets la même image dans le panier
+              value: Mets la carotte dans le panier
             - locale: en_US
-              value: Put the same image in the basket
+              value: Put the carrot in the basket
           interface: dragAndDropIntoZones
           gameplay: findTheRightAnswers
           payload:
@@ -242,9 +242,9 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Mets la même image dans le panier
+              value: Mets la cerise dans le panier
             - locale: en_US
-              value: Put the same image in the basket
+              value: Put the cherry in the basket
           interface: dragAndDropIntoZones
           gameplay: findTheRightAnswers
           payload:
