@@ -1,0 +1,266 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+version: 1.0.0
+
+uuid: FA8702A14D4E4792AEFB6158115C1AAD
+name: recognition_sounds_musical_instruments_drawings_1_image
+
+created_at: "2024-03-04T18:07:12.519229"
+last_edited_at: "2024-04-02T14:39:07.936156"
+status: published
+
+authors:
+  - leka
+
+skills:
+  - recognition
+  - sensory_interaction
+
+tags:
+  - musical_instruments
+  - sounds
+
+hmi:
+  - tablet
+
+types:
+  - one_on_one
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: activity_template_icon_name
+
+      title: Reconnaitre les sons des instruments avec 1 image
+      subtitle: null
+
+      short_description: |
+        Identifier des instruments à partir de sons
+
+      description: |
+        L'activité consiste à reconnaître différents instruments de musique à partir de sons émis par le haut parleur.
+
+      instructions: |
+        - Encourager la personne accompagnée à toucher le haut-parleur à gauche pour entendre le son
+        - Encourager la personne accompagnée à toucher l'instrument de musique correspondant au son
+        - Lorsque la réponse est correcte, Leka lance un renforçateur
+
+  - locale: en_US
+    details:
+      icon: activity_template_icon_name
+
+      title: Recognize musical instruments sounds with 1 image
+      subtitle: null
+
+      short_description: |
+        Identifying musical instruments from sounds
+
+      description: |
+        The activity involves recognizing different musical instruments from sounds emitted by the speaker.
+      instructions: |
+        - Encourage the care receiver to touch the speaker button on the left to hear the sound
+        - Encourage the care receiver to touch the musical instruments corresponding to the sound
+        - When the answer is correct, Leka launches a reinforcer
+
+exercises_payload:
+  options:
+    shuffle_exercises: true
+    shuffle_groups: false
+
+  exercise_groups:
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Touche le haut-parleur. Quel est cet instrument de musique ?
+            - locale: en_US
+              value: Touch the speaker. What is this musical instrument?
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: audio
+              value: sound_instrument_accordion
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: pictograms-objects-musical_instrument-accordion_orange-013A
+                type: image
+                is_right_answer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche le haut-parleur. Quel est cet instrument de musique ?
+            - locale: en_US
+              value: Touch the speaker. What is this musical instrument?
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: audio
+              value: sound_instrument_tambour
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: pictograms-objects-musical_instrument-drummer_brown-0139
+                type: image
+                is_right_answer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche le haut-parleur. Quel est cet instrument de musique ?
+            - locale: en_US
+              value: Touch the speaker. What is this musical instrument?
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: audio
+              value: sound_instrument_flute
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: pictograms-objects-musical_instrument-flute_brown-0136
+                type: image
+                is_right_answer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche le haut-parleur. Quel est cet instrument de musique ?
+            - locale: en_US
+              value: Touch the speaker. What is this musical instrument?
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: audio
+              value: sound_instrument_guitar
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: pictograms-objects-musical_instrument-guitar_brown-0134
+                type: image
+                is_right_answer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche le haut-parleur. Quel est cet instrument de musique ?
+            - locale: en_US
+              value: Touch the speaker. What is this musical instrument?
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: audio
+              value: sound_instrument_harp
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: pictograms-objects-musical_instrument-harp_brown-0135
+                type: image
+                is_right_answer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche le haut-parleur. Quel est cet instrument de musique ?
+            - locale: en_US
+              value: Touch the speaker. What is this musical instrument?
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: audio
+              value: sound_instrument_piano
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: pictograms-objects-musical_instrument-piano_gray-0138
+                type: image
+                is_right_answer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche le haut-parleur. Quel est cet instrument de musique ?
+            - locale: en_US
+              value: Touch the speaker. What is this musical instrument?
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: audio
+              value: sound_instrument_sax
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: pictograms-objects-musical_instrument-saxophone_yellow-013C
+                type: image
+                is_right_answer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche le haut-parleur. Quel est cet instrument de musique ?
+            - locale: en_US
+              value: Touch the speaker. What is this musical instrument?
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: audio
+              value: sound_instrument_violon
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: pictograms-objects-musical_instrument-violin_brown-013D
+                type: image
+                is_right_answer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche le haut-parleur. Quel est cet instrument de musique ?
+            - locale: en_US
+              value: Touch the speaker. What is this musical instrument?
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: audio
+              value: sound_instrument_xylophone
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: pictograms-objects-musical_instrument-xylophone_brown-0137
+                type: image
+                is_right_answer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche le haut-parleur. Quel est cet instrument de musique ?
+            - locale: en_US
+              value: Touch the speaker. What is this musical instrument?
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: audio
+              value: sound_instrument_drum
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: pictograms-objects-musical_instrument-drum
+                type: image
+                is_right_answer: true
