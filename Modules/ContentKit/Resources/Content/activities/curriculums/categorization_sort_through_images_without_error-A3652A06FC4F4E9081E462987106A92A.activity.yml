@@ -1,0 +1,238 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+version: 1.0.0
+
+uuid: A3652A06FC4F4E9081E462987106A92A
+name: categorization_sort_through_images_without_error
+
+created_at: "2024-03-08T11:49:37.123525"
+last_edited_at: "2024-04-02T19:35:47.210903"
+status: published
+
+authors:
+  - leka
+
+skills:
+  - association
+  - association/sorting
+
+tags:
+  - vegetables
+  - fruits
+  - basket
+
+hmi:
+  - tablet
+
+types:
+  - one_on_one
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: improving_categorization-put_in_the_basket
+
+      title: Trier sans erreur
+      subtitle: null
+
+      short_description: |
+        Mets la même image dans le panier
+
+      description: |
+        La personne accompagnée doit associer l'image similaire à celle déjà présente dans le panier.
+
+      instructions: |
+        - Sur l'écran de l'iPad, une image est déjà dans le panier et une autre est à l'extérieur du panier
+        - Encourager la personne accompagnée à glisser puis déposer l'image à l'extérieur dans le panier
+        - Une fois le panier rempli, Leka lance un renforçateur
+
+  - locale: en_US
+    details:
+      icon: improving_categorization-put_in_the_basket
+
+      title: Sort through images without error
+      subtitle: null
+
+      short_description: |
+        Put the same image in the basket
+
+      description: |
+        The care receiver has to drag and drop into the basket the same picture than the one already here.
+
+      instructions: |
+        - On the iPad screen, there is an image already into the basket and one image out of the basket
+        - Encourage the care receiver to drag and drop the image out of the basket in the basket
+        - Once the basket is full, Leka launches a reinforcer
+
+exercises_payload:
+  options:
+    shuffle_exercises: true
+    shuffle_groups: false
+
+  exercise_groups:
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Mets la cerise dans le panier
+            - locale: en_US
+              value: Put the cherry in the basket
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            dropZoneA:
+              value: basket
+              type: image
+            choices:
+              - value: pictograms-foods-fruits-cherry_red-00FF
+                type: image
+                dropZone: zoneA
+
+        - instructions:
+            - locale: fr_FR
+              value: Mets le raisin dans le panier
+            - locale: en_US
+              value: Put the grape in the basket
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            dropZoneA:
+              value: basket
+              type: image
+            choices:
+              - value: pictograms-foods-fruits-grape_purple-00FE
+                type: image
+                dropZone: zoneA
+
+        - instructions:
+            - locale: fr_FR
+              value: Mets la salade dans le panier
+            - locale: en_US
+              value: Put the salad in the basket
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            dropZoneA:
+              value: basket
+              type: image
+            choices:
+              - value: pictograms-foods-vegetables-salad_green_1-00EA
+                type: image
+                dropZone: zoneA
+
+        - instructions:
+            - locale: fr_FR
+              value: Mets la carotte dans le panier
+            - locale: en_US
+              value: Put the carrot in the basket
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            dropZoneA:
+              value: basket
+              type: image
+            choices:
+              - value: pictograms-foods-vegetables-carrot_orange-00E6
+                type: image
+                dropZone: zoneA
+
+        - instructions:
+            - locale: fr_FR
+              value: Mets le champignon dans le panier
+            - locale: en_US
+              value: Put the mushroom in the basket
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            dropZoneA:
+              value: basket
+              type: image
+            choices:
+              - value: pictograms-foods-vegetables-mushroom_white-00EF
+                type: image
+                dropZone: zoneA
+
+        - instructions:
+            - locale: fr_FR
+              value: Mets la cerise dans le panier
+            - locale: en_US
+              value: Put the cherry in the basket
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            dropZoneA:
+              value: basket
+              type: image
+            choices:
+              - value: pictograms-foods-fruits-cherry_red-00FF
+                type: image
+                dropZone: zoneA
+
+        - instructions:
+            - locale: fr_FR
+              value: Mets le raisin dans le panier
+            - locale: en_US
+              value: Put the grape in the basket
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            dropZoneA:
+              value: basket
+              type: image
+            choices:
+              - value: pictograms-foods-fruits-grape_purple-00FE
+                type: image
+                dropZone: zoneA
+
+        - instructions:
+            - locale: fr_FR
+              value: Mets la salade dans le panier
+            - locale: en_US
+              value: Put the salad in the basket
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            dropZoneA:
+              value: basket
+              type: image
+            choices:
+              - value: pictograms-foods-vegetables-salad_green_1-00EA
+                type: image
+                dropZone: zoneA
+
+        - instructions:
+            - locale: fr_FR
+              value: Mets la carotte dans le panier
+            - locale: en_US
+              value: Put the carrot in the basket
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            dropZoneA:
+              value: basket
+              type: image
+            choices:
+              - value: pictograms-foods-vegetables-carrot_orange-00E6
+                type: image
+                dropZone: zoneA
+
+        - instructions:
+            - locale: fr_FR
+              value: Mets le champignon dans le panier
+            - locale: en_US
+              value: Put the mushroom in the basket
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            dropZoneA:
+              value: basket
+              type: image
+            choices:
+              - value: pictograms-foods-vegetables-mushroom_white-00EF
+                type: image
+                dropZone: zoneA
