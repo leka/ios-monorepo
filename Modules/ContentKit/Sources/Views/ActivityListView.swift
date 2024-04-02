@@ -18,30 +18,35 @@ public struct ActivityListView: View {
     // MARK: Public
 
     public var body: some View {
-        LazyVGrid(columns: self.columns) {
+        LazyVStack(alignment: .leading, spacing: 20) {
             ForEach(self.activities) { activity in
                 NavigationLink(destination:
                     ActivityDetailsView(activity: activity, onStartActivity: self.onStartActivity)
                 ) {
-                    VStack(spacing: 15) {
+                    HStack(spacing: 30) {
                         Image(uiImage: activity.details.iconImage)
                             .resizable()
                             .scaledToFit()
                             .clipShape(Circle())
-                            .frame(width: 120)
+                            .frame(width: 100)
                             .overlay(
                                 Circle()
                                     .stroke(self.styleManager.accentColor!.opacity(0.2), lineWidth: 5)
                             )
 
-                        Text(activity.details.title)
-                            .font(.body.bold())
+                        VStack(alignment: .leading) {
+                            Text(activity.details.title)
+                                .font(.body.bold())
+                                .frame(alignment: .leading)
 
-                        Text(activity.details.subtitle ?? "")
-                            .font(.caption)
+                            Text(activity.details.subtitle ?? "")
+                                .font(.caption)
+                                .frame(alignment: .leading)
+                        }
+                        .padding(.vertical)
                     }
-                    .padding(.vertical)
                 }
+                .frame(maxHeight: 120)
             }
         }
         .padding()
