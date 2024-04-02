@@ -8,7 +8,7 @@ uuid: C21549498D584ECBBE713AD05B4225ED
 name: recognition_emotions_generalization_3_images_3_types
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2024-03-29T15:47:48.736937"
+last_edited_at: "2024-04-02T13:44:59.929039"
 status: published
 
 authors:
@@ -165,7 +165,7 @@ exercises_payload:
                 is_right_answer: true
               - value: emotion_picture_adult_disgust_hortense
                 type: image
-              - value: emotion_drawing_joy_louna
+              - value: emotion_drawing_child_joy_louna
                 type: image
 
         - instructions:
@@ -255,7 +255,7 @@ exercises_payload:
                 is_right_answer: true
               - value: emotion_picture_adult_disgust_hortense
                 type: image
-              - value: emotion_drawing_joy_louna
+              - value: emotion_drawing_child_joy_louna
                 type: image
 
         - instructions:
