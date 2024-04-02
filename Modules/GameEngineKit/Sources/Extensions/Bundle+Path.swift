@@ -50,8 +50,8 @@ public extension Bundle {
 
     static func url(forAudio audio: String, in bundle: Bundle? = nil) -> URL? {
         let kAudioExtensions = [
-            ".activity.mp3",
-            ".activity.wav",
+            ".activity.asset.mp3",
+            ".activity.asset.wav",
             "mp3",
             "wav",
         ]

@@ -27,6 +27,9 @@ struct ActionButtonListen: View {
             radius: self.audioPlayer.isPlaying ? 6 : 3, x: 0, y: 3
         )
         .animation(.spring(response: 0.3, dampingFraction: 0.45), value: self.audioPlayer.isPlaying)
+        .onDisappear {
+            self.audioPlayer.stop()
+        }
     }
 }
 
