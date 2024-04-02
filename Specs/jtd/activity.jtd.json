@@ -375,17 +375,19 @@
                     }
                 },
                 "choices": {
-                    "properties": {
-                        "type": {
-                            "enum": ["image"]
+                    "elements": {
+                        "properties": {
+                            "type": {
+                                "enum": ["image"]
+                            },
+                            "value": {
+                                "type": "string"
+                            }
                         },
-                        "value": {
-                            "type": "string"
-                        }
-                    },
-                    "optionalProperties": {
-                        "dropZone": {
-                            "enum": ["zoneA", "zoneB"]
+                        "optionalProperties": {
+                            "dropZone": {
+                                "enum": ["zoneA", "zoneB"]
+                            }
                         }
                     }
                 }

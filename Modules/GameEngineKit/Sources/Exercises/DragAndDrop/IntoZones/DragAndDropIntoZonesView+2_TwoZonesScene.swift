@@ -19,8 +19,20 @@ extension DragAndDropIntoZonesView {
             dropZoneNodeA.size = dropZoneSize
             dropZoneNodeB.size = dropZoneSize
 
-            dropZoneNodeA.texture = SKTexture(imageNamed: dropZoneA.details.value)
-            dropZoneNodeB.texture = SKTexture(imageNamed: unwrappedDropZoneB.details.value)
+            if let path = Bundle.path(forImage: dropZoneA.details.value) {
+                log.debug("Image found at path: \(path)")
+                dropZoneNodeA.texture = SKTexture(image: UIImage(named: path)!)
+            } else {
+                log.error("Image not found: \(dropZoneA.details.value)")
+                dropZoneNodeA.texture = SKTexture(imageNamed: dropZoneA.details.value)
+            }
+            if let path = Bundle.path(forImage: unwrappedDropZoneB.details.value) {
+                log.debug("Image found at path: \(path)")
+                dropZoneNodeB.texture = SKTexture(image: UIImage(named: path)!)
+            } else {
+                log.error("Image not found: \(unwrappedDropZoneB.details.value)")
+                dropZoneNodeB.texture = SKTexture(imageNamed: dropZoneA.details.value)
+            }
 
             let dropZonePosition = size.width / 4
             dropZoneNodeA.position = CGPoint(x: dropZonePosition, y: dropZoneSize.height * 5 / 7)

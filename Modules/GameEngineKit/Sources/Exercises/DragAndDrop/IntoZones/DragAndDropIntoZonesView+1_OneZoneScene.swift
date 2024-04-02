@@ -12,7 +12,14 @@ extension DragAndDropIntoZonesView {
             let dropZoneSize = CGSize(width: 380, height: 280)
 
             dropZoneNode.size = dropZoneSize
-            dropZoneNode.texture = SKTexture(imageNamed: dropZoneA.details.value)
+            if let path = Bundle.path(forImage: dropZoneA.details.value) {
+                log.debug("Image found at path: \(path)")
+                dropZoneNode.texture = SKTexture(image: UIImage(named: path)!)
+            } else {
+                log.error("Image not found: \(dropZoneA.details.value)")
+                dropZoneNode.texture = SKTexture(imageNamed: dropZoneA.details.value)
+            }
+
             dropZoneNode.position = CGPoint(x: size.width / 2, y: dropZoneSize.height / 2)
             dropZoneNode.name = dropZoneA.details.value
 
