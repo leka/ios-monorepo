@@ -25,8 +25,6 @@ CONTENTKIT_DIRECTORY = "Modules/ContentKit/Resources/Content"
 CREATED_AT_INDEX = 3
 LAST_EDITED_AT_INDEX = 4
 
-IMAGE_EXTENSIONS = [".png", ".jpg", ".jpeg", ".svg"]
-
 
 def is_uuid_same_as_filename(activity, filename):
     """Check if the UUID is the same as the filename"""
@@ -215,49 +213,89 @@ def find_missing_activities(data):
 
 
 def find_missing_exercise_assets(
-    data: Union[Dict, List], type_key: str = "type", value_key: str = "value"
-) -> List[Any]:
+    data: Union[Dict, List], assets_directory: str = CONTENTKIT_DIRECTORY
+) -> List[Dict[str, Any]]:
     """
-    Recursively search through a nested data structure of lists and dictionaries
-    to find all values associated with a specified structure containing both `type`
-    and `value` keys.
+    Recursively searches through a nested data structure of lists and dictionaries
+    to identify missing 'image' and 'audio' assets specified in actions and choices,
+    verifying their existence in the given assets directory. Additionally, records
+    whether each missing asset comes from an action or a choice.
 
     Parameters:
         data (Union[Dict, List]): The data to search through.
-        type_key (str): The key used to identify the type. Default is 'type'.
-        value_key (str): The key whose value is to be collected. Default is 'value'.
+        assets_directory (str): The directory to search for files.
 
     Returns:
-        List[Any]: A list of values associated with the specified structure.
+        List[Dict[str, Any]]: A list containing details of missing assets, including their source.
     """
 
-    search_path = Path(CONTENTKIT_DIRECTORY)
+    search_path = Path(assets_directory)
 
-    def is_asset_missing(asset_basename: str, image_extensions: List[str]) -> bool:
-        """Check if an asset is missing for all given extensions."""
-        for ext in image_extensions:
-            if list(search_path.rglob(f"{asset_basename}{ext}")):
+    def get_extensions_by_type(asset_type: str) -> List[str]:
+        """Returns the file extensions associated with a given asset type."""
+        return {"image": ["png", "jpg", "jpeg", "svg"], "audio": ["mp3", "wav"]}.get(
+            asset_type, []
+        )
+
+    def is_asset_missing(asset_basename: str, asset_type: str) -> bool:
+        """Checks if an asset with any of the given extensions does not exist."""
+        extensions = get_extensions_by_type(asset_type)
+        for ext in extensions:
+            if list(search_path.rglob(f"{asset_basename}.activity.asset.{ext}")):
                 return False
         return True
 
-    def recursive_search(data, collected_results):
-        if not isinstance(data, (dict, list)):
-            return
+    def check_and_add_missing_asset(
+        source: str,
+        asset_type: str,
+        asset_value: str,
+        collected_results: List[Dict[str, Any]],
+    ):
+        """Checks if an asset is missing and adds it to the results if so, including its source."""
+        if is_asset_missing(asset_value, asset_type):
+            missing_asset = {"source": source, "type": asset_type, "value": asset_value}
+            if missing_asset not in collected_results:
+                collected_results.append(missing_asset)
 
+    def recursive_search(data, collected_results, source="choice"):
+        """Recursively searches the data structure for missing assets, tracking their source."""
         if isinstance(data, dict):
-            if type_key in data and value_key in data and data[type_key] == "image":
-                asset_basename = data[value_key] + ".activity.asset"
-                if asset_basename not in collected_results and is_asset_missing(
-                    asset_basename, IMAGE_EXTENSIONS
+            # Direct 'type' and 'value' keys indicating a choice
+            if "type" in data and "value" in data and isinstance(data["value"], str):
+                if data["type"] in ["image"]:
+                    check_and_add_missing_asset(
+                        source,
+                        data["type"],
+                        data["value"],
+                        collected_results,
+                    )
+
+            # Special handling for actions
+            elif "action" in data:
+                action_data = data["action"]
+                if (
+                    isinstance(action_data, dict)
+                    and "value" in action_data
+                    and isinstance(action_data["value"], dict)
                 ):
-                    collected_results.append(asset_basename)
-            else:
-                for value in data.values():
-                    recursive_search(value, collected_results)
+                    value_data = action_data["value"]
+                    if value_data.get("type") in ["image", "audio"]:
+                        check_and_add_missing_asset(
+                            "action",
+                            value_data["type"],
+                            value_data["value"],
+                            collected_results,
+                        )
+
+            # Recursive search within dictionary values, preserving the source for choices
+            for key, value in data.items():
+                next_source = "action" if key == "action" else source
+                recursive_search(value, collected_results, next_source)
 
         elif isinstance(data, list):
+            # Recursive search within list items, preserving the source
             for item in data:
-                recursive_search(item, collected_results)
+                recursive_search(item, collected_results, source)
 
     missing_assets = []
     recursive_search(data, missing_assets)

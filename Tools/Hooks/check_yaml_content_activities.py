@@ -21,7 +21,6 @@ from modules.content import (
     find_string_values_starting_with_newline,
     find_empty_string_values,
     find_missing_exercise_assets,
-    IMAGE_EXTENSIONS,
 )
 from modules.utils import get_files, is_file_modified
 from modules.yaml import create_yaml_object, is_jtd_schema_compliant
@@ -112,7 +111,7 @@ def check_activity(filename):
         file_is_valid = False
         print(f"\n❌ The following assets do not exist in {filename}")
         for asset in missing_exercise_assets:
-            print(f"   - {asset} ({r'/'.join(IMAGE_EXTENSIONS)})")
+            print(f"   - {asset['source']} - {asset['type']} - {asset['value']}")
 
     return file_is_valid
 
