@@ -64,12 +64,18 @@ public struct ActivityListView: View {
 }
 
 #Preview {
-    NavigationStack {
-        ActivityListView(
-            activities: ContentKit.allActivities,
-            onStartActivity: { _ in
-                print("Activity Started")
+    NavigationSplitView {
+        Text("Sidebar")
+    } detail: {
+        NavigationStack {
+            ScrollView {
+                ActivityListView(
+                    activities: ContentKit.allActivities,
+                    onStartActivity: { _ in
+                        print("Activity Started")
+                    }
+                )
             }
-        )
+        }
     }
 }
