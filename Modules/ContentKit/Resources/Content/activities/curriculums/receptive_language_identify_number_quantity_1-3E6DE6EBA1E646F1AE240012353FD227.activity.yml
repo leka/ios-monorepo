@@ -1,0 +1,330 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+version: 1.0.0
+
+uuid: 3E6DE6EBA1E646F1AE240012353FD227
+name: receptive_language_identify_number_quantity_1
+
+created_at: "2024-03-08T11:49:37.123541"
+last_edited_at: "2024-04-03T14:16:39.542797"
+status: published
+
+authors:
+  - julie_tuil
+
+skills:
+  - communication
+  - communication/verbal_communication
+  - communication/verbal_communication/receptive_language
+  - communication/verbal_communication/receptive_language/oral_comprehension
+  - counting
+  - recognition
+  - recognition/numbers
+
+tags:
+  - one
+  - two
+  - three
+  - four
+  - digital_constellations
+
+hmi:
+  - tablet
+
+types:
+  - one_on_one
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: activity_template_icon_name
+
+      title: Identifier la quantité
+      subtitle: null
+
+      short_description: |
+        Touche l'objet/l'action demandé
+
+      description: |
+        La personne accompagnée doit répondre correctement à la question posée.
+
+      instructions: |
+        - Sur l'écran de l'iPad, toucher le haut-parleur pour que la personne accompagnée puisse entendre la consigne
+        - Encourager la personne accompagnée à toucher la bonne image
+        - Quand la réponse est correcte, Leka lance un renforçateur
+
+  - locale: en_US
+    details:
+      icon: activity_template_icon_name
+
+      title: Identify number quantity
+      subtitle: null
+
+      short_description: |
+        Touch the requested object/action
+
+      description: |
+        The care receiver has to answer the question asked.
+
+      instructions: |
+        - On the screen, touch the speaker button to make the care receiver hear the instruction
+        - Encourage the care receiver to click on the right picture
+        - When the care receiver touches the right picture then Leka launches a reinforcer
+
+exercises_payload:
+  options:
+    shuffle_exercises: true
+    shuffle_groups: true
+
+  exercise_groups:
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Touche 2
+            - locale: en_US
+              value: Touch 2
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: pictograms-quantity-apple_four
+                type: image
+              - value: pictograms-quantity-apple_two
+                type: image
+              - value: pictograms-quantity-apple_three
+                type: image
+              - value: pictograms-quantity-apple_two
+                type: image
+                is_right_answer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche 3
+            - locale: en_US
+              value: Touch 3
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: pictograms-quantity-apple_four
+                type: image
+              - value: pictograms-quantity-apple_two
+                type: image
+              - value: pictograms-quantity-apple_three
+                type: image
+                is_right_answer: true
+              - value: pictograms-quantity-apple_two
+                type: image
+
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Touche 1
+            - locale: en_US
+              value: Touch 1
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: pictograms-quantity-lego_four
+                type: image
+              - value: pictograms-quantity-lego_two
+                type: image
+              - value: pictograms-quantity-lego_one
+                type: image
+                is_right_answer: true
+              - value: pictograms-quantity-lego_three
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche 1
+            - locale: en_US
+              value: Touch 1
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: pictograms-quantity-lego_four
+                type: image
+              - value: pictograms-quantity-lego_two
+                type: image
+              - value: pictograms-quantity-lego_one
+                type: image
+                is_right_answer: true
+              - value: pictograms-quantity-lego_three
+                type: image
+
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Touche 4
+            - locale: en_US
+              value: Touch 4
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: pictograms-quantity-tshirt_one
+                type: image
+              - value: pictograms-quantity-tshirt_two
+                type: image
+              - value: pictograms-quantity-tshirt_three
+                type: image
+              - value: pictograms-quantity-tshirt_four
+                type: image
+                is_right_answer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche 3
+            - locale: en_US
+              value: Touch 3
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: pictograms-quantity-tshirt_one
+                type: image
+              - value: pictograms-quantity-tshirt_two
+                type: image
+              - value: pictograms-quantity-tshirt_three
+                type: image
+                is_right_answer: true
+              - value: pictograms-quantity-tshirt_four
+                type: image
+
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Touche 2
+            - locale: en_US
+              value: Touch 2
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: pictograms-quantity-rabbit_four
+                type: image
+              - value: pictograms-quantity-rabbit_three
+                type: image
+              - value: pictograms-quantity-rabbit_two
+                type: image
+                is_right_answer: true
+              - value: pictograms-quantity-rabbit_one
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche 1
+            - locale: en_US
+              value: Touch 1
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: pictograms-quantity-rabbit_four
+                type: image
+              - value: pictograms-quantity-rabbit_three
+                type: image
+              - value: pictograms-quantity-rabbit_two
+                type: image
+              - value: pictograms-quantity-rabbit_one
+                type: image
+                is_right_answer: true
+
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Touche 1
+            - locale: en_US
+              value: Touch 1
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: pictograms-quantity-book_four
+                type: image
+              - value: pictograms-quantity-book_three
+                type: image
+              - value: pictograms-quantity-book_two
+                type: image
+              - value: pictograms-quantity-book_one
+                type: image
+                is_right_answer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche 4
+            - locale: en_US
+              value: Touch 4
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: pictograms-quantity-book_four
+                type: image
+                is_right_answer: true
+              - value: pictograms-quantity-book_three
+                type: image
+              - value: pictograms-quantity-book_two
+                type: image
+              - value: pictograms-quantity-book_one
+                type: image
+
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Touche 1
+            - locale: en_US
+              value: Touch 1
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: pictograms-quantity-fork_one
+                type: image
+                is_right_answer: true
+              - value: pictograms-quantity-fork_two
+                type: image
+              - value: pictograms-quantity-fork_three
+                type: image
+              - value: pictograms-quantity-fork_four
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche 3
+            - locale: en_US
+              value: Touch 3
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: pictograms-quantity-fork_one
+                type: image
+              - value: pictograms-quantity-fork_two
+                type: image
+              - value: pictograms-quantity-fork_three
+                type: image
+                is_right_answer: true
+              - value: pictograms-quantity-fork_four
+                type: image
