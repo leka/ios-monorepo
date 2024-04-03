@@ -8,7 +8,7 @@ uuid: 7DBFAB2704EF4C0086BEC36BE0BC295E
 name: recognition_emotions_drawings_4_oscar
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2024-03-29T12:43:14.222817"
+last_edited_at: "2024-04-03T13:24:21.004686"
 status: published
 
 authors:
@@ -40,8 +40,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon:
-        emotion_recognition-drawings-4_images_1_types-oscar-e76730cc-585e-4a1f-8f75-37b9705e4ba8
+      icon: emotion_recognition-drawings-oscar
 
       title: Reconnaissance des émotions en dessins - Oscar #4
       subtitle: Oscar - 4
@@ -59,8 +58,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon:
-        emotion_recognition-drawings-4_images_1_types-oscar-e76730cc-585e-4a1f-8f75-37b9705e4ba8
+      icon: emotion_recognition-drawings-oscar
 
       title: Emotion recognition in drawings - Oscar #4
       subtitle: Oscar - 4

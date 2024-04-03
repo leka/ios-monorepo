@@ -8,7 +8,7 @@ uuid: 486C6B3EC7774FB4ADA8DDC8A8C4AC85
 name: recognition_emotions_drawings_2_hugo_moussa
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2024-04-02T13:44:59.921658"
+last_edited_at: "2024-04-03T13:24:21.001965"
 status: published
 
 authors:
@@ -41,8 +41,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon:
-        emotion_recognition-drawings-2_images_2_types-moussa_hugo-be811548-16ac-4564-886c-1cca7a6f7a67
+      icon: emotion_recognition-drawings-moussa_hugo
 
       title: Reconnaissance des émotions en dessins - Moussa et Hugo #2
       subtitle: Moussa - Hugo - 2
@@ -60,8 +59,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon:
-        emotion_recognition-drawings-2_images_2_types-moussa_hugo-be811548-16ac-4564-886c-1cca7a6f7a67
+      icon: emotion_recognition-drawings-moussa_hugo
 
       title: Emotion recognition with drawings - Moussa and Hugo #2
       subtitle: Moussa - Hugo - 2

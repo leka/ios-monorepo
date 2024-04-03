@@ -8,7 +8,7 @@ uuid: A5D3673F3D9643B29EF6F7C5CBAE73CA
 name: recognition_emotions_drawings_1_louna
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2024-03-29T12:43:14.225474"
+last_edited_at: "2024-04-03T13:24:21.001242"
 status: published
 
 authors:
@@ -40,8 +40,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon:
-        emotion_recognition-drawings-1_images_1_types-louna-4a1ea3ed-522c-4c2e-a414-1d52f01daeee
+      icon: emotion_recognition-drawings-louna
 
       title: Reconnaissance des émotions en dessins - Louna #1
       subtitle: Louna - 1
@@ -59,8 +58,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon:
-        emotion_recognition-drawings-1_images_1_types-louna-4a1ea3ed-522c-4c2e-a414-1d52f01daeee
+      icon: emotion_recognition-drawings-louna
 
       title: Emotion recognition with drawings - Louna #1
       subtitle: Louna - 1

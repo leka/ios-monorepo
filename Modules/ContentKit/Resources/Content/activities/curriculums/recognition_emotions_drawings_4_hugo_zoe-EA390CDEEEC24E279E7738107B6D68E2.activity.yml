@@ -8,7 +8,7 @@ uuid: EA390CDEEEC24E279E7738107B6D68E2
 name: recognition_emotions_drawings_4_hugo_zoe
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2024-03-29T12:43:14.226704"
+last_edited_at: "2024-04-03T13:24:21.002133"
 status: published
 
 authors:
@@ -41,8 +41,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon:
-        emotion_recognition-drawings-4_images_2_types-zoe_hugo-75a91020-efc0-4350-8b79-3371489fa764
+      icon: emotion_recognition-drawings-zoe_hugo
 
       title: Reconnaissance des émotions en dessins - Zoe et Hugo #4
       subtitle: Zoe - Hugo - 4
@@ -60,8 +59,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon:
-        emotion_recognition-drawings-4_images_2_types-zoe_hugo-75a91020-efc0-4350-8b79-3371489fa764
+      icon: emotion_recognition-drawings-zoe_hugo
 
       title: Emotion recognition in pictures - Zoe and Hugo #4
       subtitle: Zoe - Hugo - 4
