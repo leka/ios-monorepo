@@ -88,23 +88,23 @@ struct EditCaregiverLabel: View {
             }
         }
         .onAppear {
-            self.persitantDataManager.checkInactivity()
+            self.persistentDataManager.checkInactivity()
         }
         .onChange(of: self.scenePhase) { newPhase in
             switch newPhase {
                 case .active:
-                    self.persitantDataManager.checkInactivity()
+                    self.persistentDataManager.checkInactivity()
                 case .inactive,
                      .background:
-                    self.persitantDataManager.updateLastActiveTimestamp()
+                    self.persistentDataManager.updateLastActiveTimestamp()
                     if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
-                        self.persitantDataManager.lastActiveCaregiverID = currentCaregiverID
+                        self.persistentDataManager.lastActiveCaregiverID = currentCaregiverID
                     }
                 @unknown default:
                     break
             }
         }
-        .onReceive(self.persitantDataManager.inactivityTimeoutPublisher) { isTimedOut in
+        .onReceive(self.persistentDataManager.inactivityTimeoutPublisher) { isTimedOut in
             if isTimedOut {
                 self.caregiverManager.resetCurrentCaregiver()
                 guard self.navigation.sheetContent == nil, self.navigation.fullScreenCoverContent == nil else {
@@ -112,7 +112,7 @@ struct EditCaregiverLabel: View {
                 }
                 self.navigation.sheetContent = .caregiverPicker
             } else {
-                guard let storedCaregiverID = self.persitantDataManager.lastActiveCaregiverID else {
+                guard let storedCaregiverID = self.persistentDataManager.lastActiveCaregiverID else {
                     self.navigation.sheetContent = .caregiverPicker
                     return
                 }
@@ -130,7 +130,7 @@ struct EditCaregiverLabel: View {
 
     @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
 
-    private var persitantDataManager: PersitantDataManager = .shared
+    private var persistentDataManager: PersistentDataManager = .shared
     private var caregiverManager: CaregiverManager = .shared
 }
 

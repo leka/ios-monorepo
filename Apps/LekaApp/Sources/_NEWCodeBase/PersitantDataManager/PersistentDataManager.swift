@@ -5,10 +5,10 @@
 import Combine
 import SwiftUI
 
-class PersitantDataManager {
+class PersistentDataManager {
     // MARK: Internal
 
-    static let shared = PersitantDataManager()
+    static let shared = PersistentDataManager()
 
     @AppStorage("lastActiveTimestamp") var lastActiveTimestamp: Double = Date().timeIntervalSince1970
     @AppStorage("lastActiveCaregiverId") var lastActiveCaregiverID: String?
