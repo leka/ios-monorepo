@@ -116,7 +116,7 @@ struct EditCaregiverLabel: View {
                     self.navigation.sheetContent = .caregiverPicker
                     return
                 }
-                self.caregiverManager.setCurrentCaregiverByID(withID: storedCaregiverID)
+                self.caregiverManager.setCurrentCaregiver(byID: storedCaregiverID)
             }
         }
     }
