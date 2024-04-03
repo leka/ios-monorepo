@@ -28,24 +28,27 @@ public struct ActivityListView: View {
                             .resizable()
                             .scaledToFit()
                             .clipShape(Circle())
-                            .frame(width: 100)
+                            .frame(width: 50)
                             .overlay(
                                 Circle()
-                                    .stroke(self.styleManager.accentColor!.opacity(0.2), lineWidth: 5)
+                                    .stroke(self.styleManager.accentColor!, lineWidth: 1)
                             )
 
                         VStack(alignment: .leading) {
                             Text(activity.details.title)
-                                .font(.body.bold())
+                                .font(.headline)
                                 .frame(alignment: .leading)
 
-                            Text(activity.details.subtitle ?? "")
-                                .font(.caption)
-                                .frame(alignment: .leading)
+                            if let subtitle = activity.details.subtitle {
+                                Text(subtitle)
+                                    .font(.subheadline)
+                                    .frame(alignment: .leading)
+                            }
                         }
                         .padding(.vertical)
                     }
                 }
+                .buttonStyle(.plain)
                 .frame(maxHeight: 120)
             }
         }
