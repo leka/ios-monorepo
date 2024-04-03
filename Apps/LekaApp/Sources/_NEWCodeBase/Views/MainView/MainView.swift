@@ -182,9 +182,17 @@ struct MainView: View {
                 }
             }
         }
+        .onChange(of: self.caregiverManagerViewModel.currentCaregiver) { currentCaregiver in
+            if currentCaregiver != nil {
+                self.styleManager.colorScheme = self.caregiverManagerViewModel.currentCaregiver!.colorScheme
+                self.styleManager.accentColor = self.caregiverManagerViewModel.currentCaregiver!.colorTheme.color
+            }
+        }
     }
 
     // MARK: Private
+
+    @ObservedObject private var styleManager: StyleManager = .shared
 
     @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
 
