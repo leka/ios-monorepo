@@ -4,11 +4,11 @@
 
 version: 1.0.0
 
-uuid: AF9ACAC51F4240259050982EC15D0C7A
-name: receptive_language_identify_familiar_nouns_with_more_than_two_syllables
+uuid: 95108BC74D094434AFFC34C74D95AFBC
+name: receptive_language_identify_objects_by_color_with_two_components_1
 
 created_at: "2024-03-08T11:49:37.123541"
-last_edited_at: "2024-04-03T17:02:04.739159"
+last_edited_at: "2024-04-03T16:52:27.672781"
 status: published
 
 authors:
@@ -21,8 +21,7 @@ skills:
   - communication/verbal_communication/receptive_language/oral_comprehension
 
 tags:
-  - familiar_nouns
-  - syllables
+  - colors
 
 hmi:
   - tablet
@@ -39,7 +38,7 @@ l10n:
     details:
       icon: activity_template_icon_name
 
-      title: Identifier différents mots courants
+      title: Identifier des couleurs avec 2 objets #1
       subtitle: null
 
       short_description: |
@@ -57,7 +56,7 @@ l10n:
     details:
       icon: activity_template_icon_name
 
-      title: Identify familiar nouns
+      title: Identify colors with 2 components #1
       subtitle: null
 
       short_description: |
@@ -80,144 +79,161 @@ exercises_payload:
     - group:
         - instructions:
             - locale: fr_FR
-              value: Touche le ballon
+              value: Touche la maison rouge
             - locale: en_US
-              value: Touch the balloon
+              value: Touch the red house
           interface: touchToSelect
           gameplay: findTheRightAnswers
           payload:
             shuffle_choices: true
             choices:
+              - value: pictograms-objects-beach-balloon_yellow
+                type: image
+              - value: pictograms-objects-beach-balloon_red-00E0
+                type: image
+              - value: pictograms-object-house-red
+                type: image
+                is_right_answer: true
+              - value: pictograms-object-house-yellow
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche la balle rouge
+            - locale: en_US
+              value: Touch the red ball
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: pictograms-objects-beach-balloon_yellow
+                type: image
               - value: pictograms-objects-beach-balloon_red-00E0
                 type: image
                 is_right_answer: true
-              - value: pictograms-objects-school-pencil_yellow-012E
+              - value: pictograms-object-house-red
                 type: image
-              - value: pictograms-animals-forest-rabbit_gray-0061
-                type: image
-              - value: pictograms-clothes-suit_jacket_blue-0148
-                type: image
-              - value: pictograms-animals-savanna-tiger_orange-007B
-                type: image
-              - value: pictograms-foods-meals-birthday_cake-0173
+              - value: pictograms-object-house-yellow
                 type: image
 
         - instructions:
             - locale: fr_FR
-              value: Touche les chaussettes
+              value: Touche la maison jaune
             - locale: en_US
-              value: Touch the socks
+              value: Touch the yellow house
           interface: touchToSelect
           gameplay: findTheRightAnswers
           payload:
             shuffle_choices: true
             choices:
-              - value: pictograms-clothes-socks_yellow-014D
+              - value: pictograms-objects-beach-balloon_yellow
                 type: image
-                is_right_answer: true
-              - value: pictograms-objects-house-bedroom-chair_brown-01A8
+              - value: pictograms-objects-beach-balloon_red-00E0
                 type: image
-              - value: pictograms-objects-school-book_yellow-0131
+              - value: pictograms-object-house-red
                 type: image
-              - value: pictograms-objects-garden-bucket_green-00B0
-                type: image
-              - value: pictograms-transportation-plane_blue-0122
-                type: image
-              - value: pictograms-objects-garden-tree_green-00AD
-                type: image
-
-        - instructions:
-            - locale: fr_FR
-              value: Touche la maison
-            - locale: en_US
-              value: Touch the house
-          interface: touchToSelect
-          gameplay: findTheRightAnswers
-          payload:
-            shuffle_choices: true
-            choices:
-              - value: pictograms-animals-pets-dog_golden_retriever_brown-0052
-                type: image
-              - value: pictograms-transportation-car_blue-011F
-                type: image
-              - value: pictograms-objects-garden-flower_white
-                type: image
-              - value: pictograms-foods-fruits-banana_yellow-00FB
-                type: image
-              - value: pictograms-clothes-tshirt_blue-0157
-                type: image
-              - value: pictograms-object-house-blue
+              - value: pictograms-object-house-yellow
                 type: image
                 is_right_answer: true
 
         - instructions:
             - locale: fr_FR
-              value: Touche la carotte
+              value: Touche la balle jaune
             - locale: en_US
-              value: Touch the carrot
+              value: Touch the yellow ball
           interface: touchToSelect
           gameplay: findTheRightAnswers
           payload:
             shuffle_choices: true
             choices:
-              - value: pictograms-foods-vegetables-carrot_orange-00E6
+              - value: pictograms-objects-beach-balloon_yellow
                 type: image
                 is_right_answer: true
-              - value: pictograms-animals-savanna-giraffe_yellow-0081
+              - value: pictograms-objects-beach-balloon_red-00E0
                 type: image
-              - value: pictograms-objects-garden-slide_green-00AF
+              - value: pictograms-object-house-red
                 type: image
-              - value: pictograms-objects-bathroom-towel_blue-00C0
+              - value: pictograms-object-house-yellow
                 type: image
-              - value: pictograms-objects-beach-sun_yellow-00D7
+
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Touche la chaise verte
+            - locale: en_US
+              value: Touch the green chair
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: pictograms-objects-house-bedroom-chair_purple
                 type: image
-              - value: pictograms-objects-house-kitchen-spoon_gray-019B
+              - value: pictograms-objects-house-bedroom-chair_green
+                type: image
+                is_right_answer: true
+              - value: pictograms-foods-fruits-grape_purple-00FE
+                type: image
+              - value: pictograms-foods-fruits-grape_green
                 type: image
 
         - instructions:
             - locale: fr_FR
-              value: Touche le soleil
+              value: Touche le raisin violet
             - locale: en_US
-              value: Touch the sun
+              value: Touch the purple grape
           interface: touchToSelect
           gameplay: findTheRightAnswers
           payload:
             shuffle_choices: true
             choices:
-              - value: pictograms-transportation-car_blue-011F
+              - value: pictograms-objects-house-bedroom-chair_purple
                 type: image
-              - value: pictograms-objects-house-bedroom-bed_blue-01A5
+              - value: pictograms-objects-house-bedroom-chair_green
                 type: image
-              - value: pictograms-objects-house-kitchen-plate_pink-0199
-                type: image
-              - value: pictograms-objects-garden-swing_set_green-00B1
-                type: image
-              - value: pictograms-objects-beach-sun_yellow-00D7
+              - value: pictograms-foods-fruits-grape_purple-00FE
                 type: image
                 is_right_answer: true
-              - value: pictograms-foods-vegetables-tomato_red-00E2
+              - value: pictograms-foods-fruits-grape_green
                 type: image
 
         - instructions:
             - locale: fr_FR
-              value: Touche le cookie
+              value: Touche la chaise violette
             - locale: en_US
-              value: Touch the cookie
+              value: Touch the purple chair
           interface: touchToSelect
           gameplay: findTheRightAnswers
           payload:
             shuffle_choices: true
             choices:
-              - value: pictograms-foods-meals-cookie-0174
+              - value: pictograms-objects-house-bedroom-chair_purple
                 type: image
                 is_right_answer: true
-              - value: pictograms-clothes-shoes_baskets_white-013F
+              - value: pictograms-objects-house-bedroom-chair_green
                 type: image
-              - value: pictograms-animals-farm-horse_brown-006A
+              - value: pictograms-foods-fruits-grape_purple-00FE
                 type: image
-              - value: pictograms-objects-garden-swing_set_green-00B1
+              - value: pictograms-foods-fruits-grape_green
                 type: image
-              - value: pictograms-objects-bathroom-toothbrush_blue-00C5
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche le raisin vert
+            - locale: en_US
+              value: Touch the green grape
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: pictograms-objects-house-bedroom-chair_purple
                 type: image
-              - value: pictograms-weather-moon_white-0107
+              - value: pictograms-objects-house-bedroom-chair_green
                 type: image
+              - value: pictograms-foods-fruits-grape_purple-00FE
+                type: image
+              - value: pictograms-foods-fruits-grape_green
+                type: image
+                is_right_answer: true
