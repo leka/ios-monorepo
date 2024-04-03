@@ -25,6 +25,10 @@ extension SettingsDictionary {
             flags = flags.otherSwiftFlags("-D", "DEVELOPER_MODE")
         }
 
+        if Environment.isTestFlightBuild.getBoolean(default: false) {
+            flags = flags.otherSwiftFlags("-D", "TESTFLIGHT_BUILD")
+        }
+
         return flags
     }
 
