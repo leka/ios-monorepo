@@ -43,7 +43,7 @@ struct ActivitiesView: View {
                 .padding(.horizontal)
                 .padding()
 
-                ActivityListView(activities: ContentKit.allActivities, onStartActivity: { activity in
+                ActivityGridView(activities: ContentKit.allActivities, onStartActivity: { activity in
                     if self.authManagerViewModel.userAuthenticationState == .loggedIn {
                         self.navigation.sheetContent = .carereceiverPicker(activity: activity)
                     } else {

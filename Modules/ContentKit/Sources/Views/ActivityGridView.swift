@@ -5,9 +5,9 @@
 import DesignKit
 import SwiftUI
 
-// MARK: - ActivityListView
+// MARK: - ActivityGridView
 
-public struct ActivityListView: View {
+public struct ActivityGridView: View {
     // MARK: Lifecycle
 
     public init(activities: [Activity]? = nil, onStartActivity: ((Activity) -> Void)?) {
@@ -18,38 +18,32 @@ public struct ActivityListView: View {
     // MARK: Public
 
     public var body: some View {
-        LazyVStack(alignment: .leading, spacing: 20) {
+        LazyVGrid(columns: self.columns) {
             ForEach(self.activities) { activity in
                 NavigationLink(destination:
                     ActivityDetailsView(activity: activity, onStartActivity: self.onStartActivity)
                 ) {
-                    HStack(spacing: 30) {
+                    VStack(spacing: 15) {
                         Image(uiImage: activity.details.iconImage)
                             .resizable()
                             .scaledToFit()
                             .clipShape(Circle())
-                            .frame(width: 50)
+                            .frame(width: 120)
                             .overlay(
                                 Circle()
-                                    .stroke(self.styleManager.accentColor!, lineWidth: 1)
+                                    .stroke(self.styleManager.accentColor!.opacity(0.2), lineWidth: 5)
                             )
 
-                        VStack(alignment: .leading) {
-                            Text(activity.details.title)
-                                .font(.headline)
-                                .frame(alignment: .leading)
+                        Text(activity.details.title)
+                            .font(.body.bold())
 
-                            if let subtitle = activity.details.subtitle {
-                                Text(subtitle)
-                                    .font(.subheadline)
-                                    .frame(alignment: .leading)
-                            }
-                        }
-                        .padding(.vertical)
+                        Text(activity.details.subtitle ?? "")
+                            .font(.caption)
+
+                        Spacer()
                     }
+                    .padding(.vertical)
                 }
-                .buttonStyle(.plain)
-                .frame(maxHeight: 120)
             }
         }
         .padding()
@@ -67,18 +61,12 @@ public struct ActivityListView: View {
 }
 
 #Preview {
-    NavigationSplitView {
-        Text("Sidebar")
-    } detail: {
-        NavigationStack {
-            ScrollView {
-                ActivityListView(
-                    activities: ContentKit.allActivities,
-                    onStartActivity: { _ in
-                        print("Activity Started")
-                    }
-                )
+    NavigationStack {
+        ActivityGridView(
+            activities: ContentKit.allActivities,
+            onStartActivity: { _ in
+                print("Activity Started")
             }
-        }
+        )
     }
 }
