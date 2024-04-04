@@ -31,6 +31,7 @@ extension AccountCreationProcess {
             .frame(maxWidth: .infinity, alignment: .center)
             .onDisappear {
                 self.authManagerViewModel.userAction = .none
+                self.navigation.sheetContent = .caregiverPicker
                 // TODO: (@dev/team): might not be needed, could be remoded
                 self.navigation.fullScreenCoverContent = nil
                 self.navigation.navigateToAccountCreationProcess = false
