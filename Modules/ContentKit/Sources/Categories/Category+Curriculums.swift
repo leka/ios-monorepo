@@ -34,28 +34,15 @@ public struct CategoryCurriculums: CategoryProtocol {
         return info
     }
 
-    public var sections: [CategoryCurriculums.Section]
+    public var l10n: [Category.LocalizedDetails]
 
-    public var details: Category.Details {
-        self.details(in: LocalizationKit.l10n.language)
-    }
+    public var sections: [CategoryCurriculums.Section]
 
     // MARK: Private
 
     private enum CodingKeys: String, CodingKey {
         case l10n
         case content
-    }
-
-    private let l10n: [Category.LocalizedDetails]
-
-    private func details(in language: Locale.LanguageCode) -> Category.Details {
-        guard let details = self.l10n.first(where: { $0.language == language })?.details else {
-            log.error("No details found for language \(language)")
-            fatalError("💥 No details found for language \(language)")
-        }
-
-        return details
     }
 }
 

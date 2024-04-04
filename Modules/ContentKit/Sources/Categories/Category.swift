@@ -10,7 +10,24 @@ import LocalizationKit
 // MARK: - CategoryProtocol
 
 public protocol CategoryProtocol: Decodable {
+    var l10n: [Category.LocalizedDetails] { get }
     var details: Category.Details { get }
+    func details(in language: Locale.LanguageCode) -> Category.Details
+}
+
+public extension CategoryProtocol {
+    var details: Category.Details {
+        self.details(in: LocalizationKit.l10n.language)
+    }
+
+    func details(in language: Locale.LanguageCode) -> Category.Details {
+        guard let details = self.l10n.first(where: { $0.language == language })?.details else {
+            log.error("No details found for language \(language)")
+            fatalError("💥 No details found for language \(language)")
+        }
+
+        return details
+    }
 }
 
 // MARK: - Category

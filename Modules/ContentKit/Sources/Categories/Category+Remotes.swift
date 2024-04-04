@@ -3,7 +3,6 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import Foundation
-import LocalizationKit
 import Yams
 
 public struct CategoryRemotes: CategoryProtocol {
@@ -40,27 +39,14 @@ public struct CategoryRemotes: CategoryProtocol {
         return info
     }
 
-    public var activities: [Activity]
+    public var l10n: [Category.LocalizedDetails]
 
-    public var details: Category.Details {
-        self.details(in: LocalizationKit.l10n.language)
-    }
+    public var activities: [Activity]
 
     // MARK: Private
 
     private enum CodingKeys: String, CodingKey {
         case l10n
         case content
-    }
-
-    private let l10n: [Category.LocalizedDetails]
-
-    private func details(in language: Locale.LanguageCode) -> Category.Details {
-        guard let details = self.l10n.first(where: { $0.language == language })?.details else {
-            log.error("No details found for language \(language)")
-            fatalError("💥 No details found for language \(language)")
-        }
-
-        return details
     }
 }
