@@ -8,7 +8,7 @@ uuid: 030525AA798F4E0D8EDAFAF3939471F9
 name: recognition_weather_and_temperatures_weather_drawings_4_images
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2024-04-02T14:30:52.914852"
+last_edited_at: "2024-04-04T13:05:35.197364"
 status: published
 
 authors:
@@ -91,14 +91,14 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: pictograms-weather-snowgray-0108
+              - value: pictograms-weather-snow_gray-0108
                 type: image
-              - value: pictograms-weather-rainblue-010B
+              - value: pictograms-weather-rain_blue-010B
                 type: image
-              - value: pictograms-weather-sunyellow-0106
+              - value: pictograms-weather-sun_yellow-0106
                 type: image
                 is_right_answer: true
-              - value: pictograms-weather-cloudygray-010A
+              - value: pictograms-weather-cloudy_gray-010A
                 type: image
 
         - instructions:
@@ -116,14 +116,14 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: pictograms-weather-sunyellow-0106
+              - value: pictograms-weather-sun_yellow-0106
                 type: image
-              - value: pictograms-weather-snowgray-0108
+              - value: pictograms-weather-snow_gray-0108
                 type: image
               - value: pictograms-weather-wind-0109
                 type: image
                 is_right_answer: true
-              - value: pictograms-weather-stormgray-010D
+              - value: pictograms-weather-storm_gray-010D
                 type: image
 
         - instructions:
@@ -141,12 +141,12 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: pictograms-weather-snowgray-0108
+              - value: pictograms-weather-snow_gray-0108
                 type: image
-              - value: pictograms-weather-rainblue-010B
+              - value: pictograms-weather-rain_blue-010B
                 type: image
                 is_right_answer: true
-              - value: pictograms-weather-sunyellow-0106
+              - value: pictograms-weather-sun_yellow-0106
                 type: image
               - value: pictograms-weather-wind-0109
                 type: image
@@ -166,11 +166,11 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: pictograms-weather-snowgray-0108
+              - value: pictograms-weather-snow_gray-0108
                 type: image
-              - value: pictograms-weather-cloudygray-010A
+              - value: pictograms-weather-cloudy_gray-010A
                 type: image
-              - value: pictograms-weather-sunyellow-0106
+              - value: pictograms-weather-sun_yellow-0106
                 type: image
                 is_right_answer: true
               - value: pictograms-weather-rainbow
@@ -191,13 +191,13 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: pictograms-weather-stormgray-010D
+              - value: pictograms-weather-storm_gray-010D
                 type: image
               - value: pictograms-weather-wind-0109
                 type: image
-              - value: pictograms-weather-sunyellow-0106
+              - value: pictograms-weather-sun_yellow-0106
                 type: image
-              - value: pictograms-weather-rainblue-010B
+              - value: pictograms-weather-rain_blue-010B
                 type: image
                 is_right_answer: true
 
@@ -216,14 +216,14 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: pictograms-weather-snowgray-0108
+              - value: pictograms-weather-snow_gray-0108
                 type: image
                 is_right_answer: true
               - value: pictograms-weather-rainbow
                 type: image
-              - value: pictograms-weather-sunyellow-0106
+              - value: pictograms-weather-sun_yellow-0106
                 type: image
-              - value: pictograms-weather-rainblue-010B
+              - value: pictograms-weather-rain_blue-010B
                 type: image
 
         - instructions:
@@ -241,12 +241,12 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: pictograms-weather-snowgray-0108
+              - value: pictograms-weather-snow_gray-0108
                 type: image
                 is_right_answer: true
-              - value: pictograms-weather-rainblue-010B
+              - value: pictograms-weather-rain_blue-010B
                 type: image
-              - value: pictograms-weather-sunyellow-0106
+              - value: pictograms-weather-sun_yellow-0106
                 type: image
               - value: pictograms-weather-wind-0109
                 type: image
@@ -266,14 +266,14 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: pictograms-weather-sunyellow-0106
+              - value: pictograms-weather-sun_yellow-0106
                 type: image
-              - value: pictograms-weather-stormgray-010D
+              - value: pictograms-weather-storm_gray-010D
                 type: image
-              - value: pictograms-weather-cloudygray-010A
+              - value: pictograms-weather-cloudy_gray-010A
                 type: image
                 is_right_answer: true
-              - value: pictograms-weather-rainblue-010B
+              - value: pictograms-weather-rain_blue-010B
                 type: image
 
         - instructions:
@@ -291,12 +291,12 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: pictograms-weather-cloudygray-010A
+              - value: pictograms-weather-cloudy_gray-010A
                 type: image
               - value: pictograms-weather-rainbow
                 type: image
                 is_right_answer: true
-              - value: pictograms-weather-sunyellow-0106
+              - value: pictograms-weather-sun_yellow-0106
                 type: image
               - value: pictograms-weather-wind-0109
                 type: image
@@ -316,12 +316,12 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: pictograms-weather-stormgray-010D
+              - value: pictograms-weather-storm_gray-010D
                 type: image
                 is_right_answer: true
-              - value: pictograms-weather-snowgray-0108
+              - value: pictograms-weather-snow_gray-0108
                 type: image
-              - value: pictograms-weather-sunyellow-0106
+              - value: pictograms-weather-sun_yellow-0106
                 type: image
               - value: pictograms-weather-wind-0109
                 type: image

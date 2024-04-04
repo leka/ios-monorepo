@@ -8,7 +8,7 @@ uuid: 58A898C6E60742BD9ED7BDB2E5AEB265
 name: categorization_sort_through_images_without_help
 
 created_at: "2024-03-08T11:49:37.123541"
-last_edited_at: "2024-04-02T19:35:47.210887"
+last_edited_at: "2024-04-04T12:44:13.181223"
 status: published
 
 authors:
@@ -88,7 +88,7 @@ exercises_payload:
           payload:
             shuffle_choices: true
             dropZoneA:
-              value: basket
+              value: dropzone_basket
               type: image
             choices:
               - value: pictograms-foods-vegetables-carrot_orange-00E6
@@ -110,7 +110,7 @@ exercises_payload:
           payload:
             shuffle_choices: true
             dropZoneA:
-              value: basket
+              value: dropzone_basket
               type: image
             choices:
               - value: pictograms-foods-vegetables-potato_yellow_1-00E9
@@ -132,7 +132,7 @@ exercises_payload:
           payload:
             shuffle_choices: true
             dropZoneA:
-              value: basket
+              value: dropzone_basket
               type: image
             choices:
               - value: pictograms-foods-fruits-cherry_red-00FF
@@ -154,7 +154,7 @@ exercises_payload:
           payload:
             shuffle_choices: true
             dropZoneA:
-              value: basket
+              value: dropzone_basket
               type: image
             choices:
               - value: pictograms-foods-fruits-apple_red-0101
@@ -176,7 +176,7 @@ exercises_payload:
           payload:
             shuffle_choices: true
             dropZoneA:
-              value: basket
+              value: dropzone_basket
               type: image
             choices:
               - value: pictograms-foods-vegetables-mushroom_brown-00F0
@@ -198,7 +198,7 @@ exercises_payload:
           payload:
             shuffle_choices: true
             dropZoneA:
-              value: basket
+              value: dropzone_basket
               type: image
             choices:
               - value: pictograms-foods-vegetables-mushroom_white-00EF
@@ -220,7 +220,7 @@ exercises_payload:
           payload:
             shuffle_choices: true
             dropZoneA:
-              value: basket
+              value: dropzone_basket
               type: image
             choices:
               - value: pictograms-foods-vegetables-salad_green_1-00EA
@@ -242,7 +242,7 @@ exercises_payload:
           payload:
             shuffle_choices: true
             dropZoneA:
-              value: basket
+              value: dropzone_basket
               type: image
             choices:
               - value: pictograms-foods-vegetables-potato_yellow_1-00E9
@@ -264,7 +264,7 @@ exercises_payload:
           payload:
             shuffle_choices: true
             dropZoneA:
-              value: basket
+              value: dropzone_basket
               type: image
             choices:
               - value: pictograms-foods-vegetables-salad_green_1-00EA
@@ -286,7 +286,7 @@ exercises_payload:
           payload:
             shuffle_choices: true
             dropZoneA:
-              value: basket
+              value: dropzone_basket
               type: image
             choices:
               - value: pictograms-foods-fruits-apple_red-0101
