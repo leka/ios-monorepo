@@ -1,0 +1,78 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: E6A322DC7A6E48518CED2CA2D3D2A595
+name: curriculum_categorization
+
+status: published
+
+created_at: "2024-03-21T15:12:35.579066"
+last_edited_at: "2024-04-04T15:43:54.314056"
+authors:
+  - leka
+
+skills:
+  - association
+  - association/sorting
+  - association/matching
+
+tags:
+  - bedroom
+  - bathroom
+  - kitchen
+  - everyday_objects
+  - home_objects
+  - clothes
+  - socks
+  - pairing
+  - vegetables
+  - fruits
+  - basket
+  - intruder
+
+hmi:
+  - tablet
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: categorization
+
+      title: Catégorisation
+      subtitle: Apprendre à trier et à catégoriser
+
+      abstract: |
+        Ce curriculum vise à développer les compétences de tri et de catégorisation à travers une série d'activités interactives, conçues pour engager et améliorer la capacité de la personne accompagnée à classer et organiser des objets selon différentes catégories et critères.
+      description: |
+        Ce curriculum de catégorisation est conçu pour aider les personnes accompagnées à développer leurs compétences de tri et de catégorisation à travers une variété d'activités. De l'association d'objets à des espaces fonctionnels, à l'identification d'éléments intrus, et à des tâches conçues sans possibilité d'erreur, chaque activité est adaptée pour être réalisée avec une tablette, rendant l'apprentissage interactif et engageant.
+
+  - locale: en_US
+    details:
+      icon: categorization
+
+      title: Categorization
+      subtitle: Learning to sort and categorize
+
+      abstract: |
+        Aimed at developing sorting and categorization skills, this curriculum features a series of interactive activities designed to engage and enhance the care receiver's ability to classify and organize objects according to different categories and criteria.
+      description: |
+        This categorization curriculum is designed to assist care receivers in developing their sorting and categorization skills through a variety of activities. From associating objects with functional spaces, identifying intruder items, to error-free designed tasks, each activity is tailored for completion with a tablet, making learning interactive and engaging.
+
+activities:
+  - categorization_sort_through_categories_of_3_images-6BF36182A7FB47E18CA32EC21B02D5B3
+  - categorization_sort_through_3_categories_of_images-3B24E59C0019409397A0238553C4E39E
+  - categorization_sort_through_categories_of_2_images-1B6F2B9A59A64317884FD3F6C446262C
+  - categorization_sort_through_functional_category_without_error-4AD006AAD458451F848DA9D3C0D1D0AD
+  - categorization_sort_1_image_through_functional_category-DA072AA227724969AE41ECF7BDAA7F91
+  - categorization_sort_2_images_through_functional_category-F617D5D9F9D045A0B3D3FFE04FA85105
+  - categorization_sort_6_images_through_functional_category-DA01E28D686943C4869F6A3CB16FA89B
+  - categorization_sort_through_functional_category_with_an_intruder-DB5A88B225644ABC997B86FD0E025443
+  - categorization_sort_through_images_without_error-A3652A06FC4F4E9081E462987106A92A
+  - categorization_sort_through_images_with_an_intruder-7ECDDF1846AC47A8B0BEFF5525BE80B7
+  - categorization_sort_through_images_with_several_intruders-88013EBEBE2E4FA6B616CF0B393F2346
+  - categorization_sort_through_images_without_help-58A898C6E60742BD9ED7BDB2E5AEB265

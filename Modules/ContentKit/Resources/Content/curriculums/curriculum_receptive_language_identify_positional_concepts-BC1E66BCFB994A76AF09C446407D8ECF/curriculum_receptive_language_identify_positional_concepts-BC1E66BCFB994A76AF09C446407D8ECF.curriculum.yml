@@ -1,0 +1,57 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: BC1E66BCFB994A76AF09C446407D8ECF
+name: curriculum_receptive_language_identify_positional_concepts
+
+status: published
+
+created_at: "2024-03-21T15:12:35.579066"
+last_edited_at: "2024-04-04T15:43:54.314048"
+authors:
+  - julie_tuil
+
+skills:
+  - communication
+  - communication/verbal_communication
+  - communication/verbal_communication/receptive_language
+  - communication/verbal_communication/receptive_language/oral_comprehension
+  - spatial_understanding
+
+tags:
+  - positional concepts
+
+hmi:
+  - tablet
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: receptive_language-positions_and_quantities
+
+      title: Identifier les concepts positionnels
+      subtitle: Compréhension des prépositions et des relations spatiales
+
+      abstract: |
+        Ce curriculum vise à développer la compréhension du langage oral à travers l'identification des concepts positionnels. Les personnes accompagnées apprennent à répondre à des consignes indiquant des positions relatives, telles que sur, sous, et derrière, à travers des activités interactives sur l'écran de l'iPad.
+      description: |
+        "Identifier les concepts positionnels" engage les personnes accompagnées dans un apprentissage interactif focalisé sur la compréhension et l'application des prépositions et des relations spatiales. Les activités encouragent l'écoute attentive des instructions orales et la sélection de l'image correspondante, renforçant la capacité à interpréter et à répondre à des questions sur la position des objets. Chaque tâche est conçue pour défier et soutenir les personnes accompagnées dans leur compréhension des concepts spatiaux.
+  - locale: en_US
+    details:
+      icon: receptive_language-positions_and_quantities
+
+      title: Identify Positional Concepts
+      subtitle: Understanding Prepositions and Spatial Relationships
+
+      abstract: |
+        Aimed at enhancing oral language comprehension, this curriculum focuses on identifying positional concepts. Care receivers learn to respond to instructions indicating relative positions, such as on, under, and behind, through interactive activities on the iPad screen.
+      description: |
+        "Identify Positional Concepts" involves care receivers in an interactive learning process centered on understanding and applying prepositions and spatial relationships. Activities prompt attentive listening to oral instructions and selecting the matching image, reinforcing the ability to interpret and respond to questions about object positioning. Each task is designed to challenge and support care receivers in their grasp of spatial concepts.
+
+activities:
+  - receptive_language_identify_positional_concepts_1-1E85ED4F09A84B48904467AC40127824
