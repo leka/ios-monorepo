@@ -183,9 +183,15 @@ struct MainView: View {
             }
         }
         .onAppear {
+            guard self.authManagerViewModel.userAuthenticationState == .loggedIn else {
+                return
+            }
             self.persistentDataManager.checkInactivity()
         }
         .onChange(of: self.scenePhase) { newPhase in
+            guard self.authManagerViewModel.userAuthenticationState == .loggedIn else {
+                return
+            }
             switch newPhase {
                 case .active:
                     self.persistentDataManager.checkInactivity()
