@@ -15,7 +15,7 @@ extension DragAndDropIntoZonesView {
             let dropZoneNodeA = SKSpriteNode()
             let dropZoneNodeB = SKSpriteNode()
 
-            let dropZoneSize = CGSize(width: 410, height: 320)
+            let dropZoneSize = CGSize(width: 420, height: 315)
             dropZoneNodeA.size = dropZoneSize
             dropZoneNodeB.size = dropZoneSize
 
