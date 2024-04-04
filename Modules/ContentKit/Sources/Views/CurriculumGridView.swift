@@ -46,7 +46,7 @@ public struct CurriculumGridView: View {
                         }
                         .buttonStyle(.bordered)
                     }
-                    .frame(minWidth: 200)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
                 }
             }
         }
