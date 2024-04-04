@@ -9,7 +9,7 @@ extension DragAndDropIntoZonesView {
         override func layoutDropZones() {
             // TODO(@hugo): Add type declaration
             let dropZoneNode = SKSpriteNode()
-            let dropZoneSize = CGSize(width: 380, height: 280)
+            let dropZoneSize = CGSize(width: 420, height: 315)
 
             dropZoneNode.size = dropZoneSize
             if let path = Bundle.path(forImage: dropZoneA.details.value) {
