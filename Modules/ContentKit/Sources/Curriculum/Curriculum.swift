@@ -11,6 +11,14 @@ import UIKit
 public struct Curriculum: Decodable, Identifiable {
     // MARK: Lifecycle
 
+    public init?(id: String) {
+        if let curriculum = ContentKit.curriculumList.first(where: { $0.id == id }) {
+            self = curriculum
+        } else {
+            return nil
+        }
+    }
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
