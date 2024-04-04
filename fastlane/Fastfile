@@ -177,6 +177,9 @@ platform :ios do
       UI.header "Step: Generate, build & upload target: #{app}"
       Dir.chdir('..') do
         ENV['TUIST_TURN_OFF_LINTERS'] = 'TRUE'
+        ENV['TUIST_DEVELOPER_MODE'] = 'TRUE'
+        ENV['TUIST_TESTFLIGHT_BUILD'] = 'TRUE'
+        ENV['TUIST_PRODUCTION_BUILD'] = 'FALSE'
         system('tuist', 'generate', '-n', app.to_s)
       end
 
@@ -264,6 +267,8 @@ platform :ios do
     Dir.chdir('..') do
       ENV['TUIST_TURN_OFF_LINTERS'] = 'TRUE'
       ENV['TUIST_DEVELOPER_MODE'] = 'FALSE'
+      ENV['TUIST_TESTFLIGHT_BUILD'] = 'FALSE'
+      ENV['TUIST_PRODUCTION_BUILD'] = 'TRUE'
       system('tuist', 'generate', '-n', app.to_s)
     end
 
