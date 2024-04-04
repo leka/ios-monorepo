@@ -17,7 +17,25 @@ struct LekaApp: App {
     // MARK: Lifecycle
 
     init() {
-        FirebaseApp.configure()
+        #if PRODUCTION_BUILD
+            let googleServiceInfoPlistName = "GoogleServiceInfo+PROD"
+        #elseif TESTFLIGHT_BUILD
+            let googleServiceInfoPlistName = "GoogleServiceInfo+TESTFLIGHT"
+        #elseif DEVELOPER_MODE
+            let googleServiceInfoPlistName = "GoogleServiceInfo+DEV"
+        #else
+            let googleServiceInfoPlistName = "GoogleServiceInfo+NOT_FOUND"
+        #endif
+
+        guard let googleServiceInfoPlistPath = Bundle.main.path(forResource: googleServiceInfoPlistName, ofType: "plist"),
+              let options = FirebaseOptions(contentsOfFile: googleServiceInfoPlistPath)
+        else {
+            log.critical("\(googleServiceInfoPlistName).plist is missing!")
+            fatalError("\(googleServiceInfoPlistName).plist is missing!")
+        }
+
+        log.warning("Firebase options: \(options)")
+        FirebaseApp.configure(options: options)
     }
 
     // MARK: Internal
