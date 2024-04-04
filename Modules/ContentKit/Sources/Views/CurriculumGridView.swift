@@ -46,7 +46,7 @@ public struct CurriculumGridView: View {
                         }
                         .buttonStyle(.bordered)
                     }
-                    .frame(minWidth: 200)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
                 }
             }
         }
@@ -77,7 +77,7 @@ extension l10n {
 #Preview {
     NavigationStack {
         CurriculumGridView(
-            curriculums: ContentKit.curriculumList,
+            curriculums: ContentKit.allCurriculums,
             onActivitySelected: { _ in
                 print("Activity Selected")
             }

@@ -94,13 +94,13 @@ struct MainView: View {
                         Text("Home")
 
                     case .curriculums:
-                        CurriculumsView()
+                        CategoryCurriculumsView()
 
                     case .activities:
-                        ActivitiesView()
+                        CategoryActivitiesView()
 
                     case .remotes:
-                        RemotesView()
+                        CategoryRemotesView()
 
                     case .caregivers:
                         CaregiverList()

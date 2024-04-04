@@ -1,0 +1,19 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+l10n:
+  - locale: fr_FR
+    details:
+      title: Télécommandes
+      subtitle: Contrôle intuitif et ludique de notre robot Leka pour les personnes accompagnées.
+      description: Activez notre robot Leka avec des télécommandes simples et amusantes, idéales pour motiver avant ou après les séances de travail.
+  - locale: en_US
+    details:
+      title: Remotes
+      subtitle: Intuitive and playful control of our Leka robot for care receivers.
+      description: Operate our Leka robot with easy and engaging remotes, perfect for engaging and rewarding care receivers around work sessions.
+
+content:
+  - remote_colored_arrows-D91BDA161F8E455CA8A71881F1D2E923
+  - remote_standard-E85F0498A29047E893631397592CC444
