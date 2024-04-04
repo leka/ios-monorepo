@@ -9,7 +9,7 @@ import SwiftUI
 // MARK: - CurriculumListView
 
 struct CurriculumListView: View {
-    let activities: [Curriculum] = ContentKit.curriculumList
+    let activities: [Curriculum] = ContentKit.allCurriculums
 
     var body: some View {
         List {

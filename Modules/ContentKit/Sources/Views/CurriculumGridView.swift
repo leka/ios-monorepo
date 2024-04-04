@@ -77,7 +77,7 @@ extension l10n {
 #Preview {
     NavigationStack {
         CurriculumGridView(
-            curriculums: ContentKit.curriculumList,
+            curriculums: ContentKit.allCurriculums,
             onActivitySelected: { _ in
                 print("Activity Selected")
             }

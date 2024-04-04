@@ -14,7 +14,7 @@ public enum ContentKit {
     // MARK: Public
 
     public static let allActivities: [Activity] = ContentKit.listAllActivities() ?? []
-    public static let curriculumList: [Curriculum] = ContentKit.listSampleCurriculums() ?? []
+    public static let allCurriculums: [Curriculum] = ContentKit.listSampleCurriculums() ?? []
 
     public static func listRasterImages() -> [String] {
         let bundle = Bundle.module
