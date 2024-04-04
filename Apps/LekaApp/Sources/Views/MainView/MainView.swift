@@ -100,7 +100,7 @@ struct MainView: View {
                         CategoryActivitiesView()
 
                     case .remotes:
-                        RemotesView()
+                        CategoryRemotesView()
 
                     case .caregivers:
                         CaregiverList()
