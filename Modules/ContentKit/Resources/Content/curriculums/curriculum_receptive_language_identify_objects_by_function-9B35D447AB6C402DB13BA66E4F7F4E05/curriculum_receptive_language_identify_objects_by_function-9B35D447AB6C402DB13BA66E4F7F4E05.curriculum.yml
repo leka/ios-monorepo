@@ -1,0 +1,58 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: 9B35D447AB6C402DB13BA66E4F7F4E05
+name: curriculum_receptive_language_identify_objects_by_function
+
+status: published
+
+created_at: "2024-03-21T15:12:35.579066"
+last_edited_at: "2024-04-04T15:43:54.314051"
+authors:
+  - julie_tuil
+
+skills:
+  - communication
+  - communication/verbal_communication
+  - communication/verbal_communication/receptive_language
+  - communication/verbal_communication/receptive_language/oral_comprehension
+
+tags:
+  - object function
+
+hmi:
+  - tablet
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: receptive_language-identifying_objects_by_functionality
+
+      title: Identifier des objets par fonctionnalité
+      subtitle: Comprendre l'usage des objets
+
+      abstract: |
+        Destiné à améliorer la compréhension du langage oral, ce curriculum guide les personnes accompagnées dans la reconnaissance des objets selon leur fonction. Les activités interactives encouragent l'écoute et la sélection de l'image adéquate sur l'écran de l'iPad.
+      description: |
+        "Identifier des objets par fonctionnalité" implique les personnes accompagnées dans un processus d'apprentissage interactif, nécessitant une écoute attentive et une réponse aux questions sur la fonction des objets. Centré sur la compréhension de l'usage des objets, ce curriculum vise à renforcer la compréhension du langage oral et la capacité à suivre des instructions verbales. Les activités sont conçues pour engager les personnes accompagnées, les défiant de lier les objets à leurs fonctions spécifiques.
+
+  - locale: en_US
+    details:
+      icon: receptive_language-identifying_objects_by_functionality
+
+      title: Identify Objects by Function
+      subtitle: Understanding Object Usage
+
+      abstract: |
+        Aimed at enhancing oral language comprehension, this curriculum assists care receivers in recognizing objects based on their function. Interactive activities prompt listening to oral instructions and selecting the matching image on the iPad screen.
+      description: |
+        "Identify Objects by Function" engages care receivers in an interactive learning process, requiring attentive listening and responses to questions about object functions. Focused on understanding the usage of objects, this curriculum aims to improve oral language comprehension and the ability to follow verbal instructions. The activities are designed to engage care receivers, challenging them to associate objects with their specific functions.
+
+activities:
+  - receptive_language_identify_objects_by_function_1-DD1C6FE74232465DBB5B97378AEBB430
+  - receptive_language_identify_objects_by_function_2-6020D9253EE6497A85FA7DE73C1FAEC2

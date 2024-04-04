@@ -1,0 +1,58 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: 1607BEA72CC14285AB709C567E1BE5E7
+name: curriculum_receptive_language_identity_familiar_nouns
+
+status: published
+
+created_at: "2024-03-21T15:12:35.579066"
+last_edited_at: "2024-04-04T15:43:54.315625"
+authors:
+  - julie_tuil
+
+skills:
+  - communication
+  - communication/verbal_communication
+  - communication/verbal_communication/receptive_language
+  - communication/verbal_communication/receptive_language/oral_comprehension
+
+tags:
+  - familiar_nouns
+
+hmi:
+  - tablet
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: receptive_language-identifying_common_words
+
+      title: Identifier des mots courants
+      subtitle: Reconnaissance des mots et leur compréhension
+
+      abstract: |
+        Ce curriculum aide les personnes accompagnées à identifier des mots familiers, en utilisant des activités interactives sur l'écran de l'iPad. L'approche est structurée pour faciliter l'apprentissage du langage réceptif, commençant avec des mots courts et simples, et incluant également des mots plus longs et complexes.
+      description: |
+        "Identifier des mots courants" propose un apprentissage interactif qui guide les personnes accompagnées à reconnaître et à comprendre des mots familiers. L'accent est mis sur la longueur des mots, avec des mots à une syllabe (courts et simples) et des mots ayant plusieurs syllabes (plus longs et complexes), pour améliorer la compréhension du langage oral et encourager la capacité à suivre des instructions verbales dans un contexte engageant.
+
+  - locale: en_US
+    details:
+      icon: receptive_language-identifying_common_words
+
+      title: Identify familiar nouns
+      subtitle: Word recognition and understanding
+
+      abstract: |
+        This curriculum assists care receivers in identifying familiar nouns, utilizing interactive activities on the iPad screen. The structure is designed to facilitate receptive language learning, starting with short and simple words, and also including longer and more complex words.
+      description: |
+        "Identify Familiar Nouns" provides an interactive learning experience that guides care receivers in recognizing and understanding familiar words. The focus is on the length of words, with one-syllable words (short and simple) and words with multiple syllables (longer and complex), aiming to enhance oral language comprehension and encourage the ability to follow verbal instructions in an engaging context.
+activities:
+  - receptive_language_identify_familiar_nouns_with_one_syllable-49E3191F47824DEFA6011498A1B3A8AF
+  - receptive_language_identify_familiar_nouns_with_two_syllables-353CCBCBA81247389E1086B64912273F
+  - receptive_language_identify_familiar_nouns_with_more_than_two_syllables-AF9ACAC51F4240259050982EC15D0C7A
