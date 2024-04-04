@@ -8,7 +8,7 @@ uuid: 6BF36182A7FB47E18CA32EC21B02D5B3
 name: categorization_sort_through_categories_of_3_images
 
 created_at: "2024-03-08T11:49:37.123525"
-last_edited_at: "2024-04-02T19:35:47.210903"
+last_edited_at: "2024-04-04T12:44:13.199101"
 status: published
 
 authors:
@@ -154,7 +154,7 @@ exercises_payload:
               - value: pictograms-foods-vegetables-salad_green_3-00EC
                 type: image
                 category: catA
-              - value: pictograms-clothes-hat_green-0146
+              - value: pictograms-clothes-wool_cap_green-0146
                 type: image
                 category: catB
               - value: pictograms-clothes-hat_gray-014C
@@ -212,7 +212,7 @@ exercises_payload:
               - value: pictograms-foods-vegetables-salad_green_3-00EC
                 type: image
                 category: catA
-              - value: pictograms-clothes-hat_green-0146
+              - value: pictograms-clothes-wool_cap_green-0146
                 type: image
                 category: catB
               - value: pictograms-clothes-hat_gray-014C

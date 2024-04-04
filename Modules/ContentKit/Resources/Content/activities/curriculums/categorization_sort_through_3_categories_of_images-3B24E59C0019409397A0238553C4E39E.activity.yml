@@ -8,7 +8,7 @@ uuid: 3B24E59C0019409397A0238553C4E39E
 name: categorization_sort_through_3_categories_of_images
 
 created_at: "2024-03-08T11:49:37.123541"
-last_edited_at: "2024-04-02T19:35:47.210887"
+last_edited_at: "2024-04-04T12:44:13.171215"
 status: published
 
 authors:
@@ -302,7 +302,7 @@ exercises_payload:
               - value: pictograms-foods-fruits-apple_yellow-0102
                 type: image
                 category: catB
-              - value: pictograms-clothes-hat_green-0146
+              - value: pictograms-clothes-wool_cap_green-0146
                 type: image
                 category: catC
               - value: pictograms-clothes-ski_hat_red-015B

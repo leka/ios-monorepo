@@ -8,7 +8,7 @@ uuid: 1B6F2B9A59A64317884FD3F6C446262C
 name: categorization_sort_through_categories_of_2_images
 
 created_at: "2024-03-08T11:49:37.123532"
-last_edited_at: "2024-04-02T19:35:47.210902"
+last_edited_at: "2024-04-04T12:44:13.171215"
 status: published
 
 authors:
@@ -156,7 +156,7 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: pictograms-clothes-hat_green-0146
+              - value: pictograms-clothes-wool_cap_green-0146
                 type: image
                 category: catA
               - value: pictograms-clothes-hat_gray-014C
@@ -277,7 +277,7 @@ exercises_payload:
               - value: pictograms-clothes-pull_pink-0156
                 type: image
                 category: catA
-              - value: pictograms-clothes-hat_green-0146
+              - value: pictograms-clothes-wool_cap_green-0146
                 type: image
                 category: catB
               - value: pictograms-clothes-hat_gray-014C
@@ -300,7 +300,7 @@ exercises_payload:
               - value: pictograms-foods-fruits-cherry_pink
                 type: image
                 category: catA
-              - value: pictograms-clothes-hat_green-0146
+              - value: pictograms-clothes-wool_cap_green-0146
                 type: image
                 category: catB
               - value: pictograms-clothes-hat_gray-014C
