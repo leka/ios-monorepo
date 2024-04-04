@@ -97,7 +97,7 @@ struct MainView: View {
                         CurriculumsView()
 
                     case .activities:
-                        ActivitiesView()
+                        CategoryActivitiesView()
 
                     case .remotes:
                         RemotesView()
