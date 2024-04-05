@@ -30,11 +30,11 @@ repos:
       - id: forbid-submodules
       - id: mixed-line-ending
 
-  - repo: https://github.com/realm/SwiftLint
-    rev: 0.55.1
-    hooks:
-      - id: swiftlint
-        entry: swiftlint
+  # - repo: https://github.com/realm/SwiftLint
+  #   rev: 0.55.1
+  #   hooks:
+  #     - id: swiftlint
+  #       entry: swiftlint
 
   - repo: https://github.com/nicklockwood/SwiftFormat
     rev: 0.54.0
@@ -43,6 +43,13 @@ repos:
 
   - repo: local
     hooks:
+      - id: swiftlint_custom
+        name: SwiftLint
+        description: Check Swift files for issues with SwiftLint
+        entry: swiftlint
+        language: system
+        types: [swift]
+
       - id: check_xcstrings
         name: Check .xcstrings files for stale entries and unusual characters
         description: This hook checks .xcstrings files for stale entries and unusual characters

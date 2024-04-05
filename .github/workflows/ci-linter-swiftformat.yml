@@ -46,4 +46,10 @@ jobs:
       - name: Run swiftformat on ${{ matrix.files }}
         if: matrix.files == 'changed_files'
         run: |
-          swiftformat --lint --reporter github-actions-log $(git diff --name-only -r HEAD^1 HEAD --diff-filter=AMCR)
+          git diff origin/main --name-only --diff-filter=AMCR \
+          | grep -E "\.swift\$$"                              \
+          || echo "No files added nor modified!"
+
+          git diff origin/main --name-only --diff-filter=AMCR \
+            | grep -E "\.swift\$$"                            \
+            | xargs --no-run-if-empty swiftformat --lint --reporter github-actions-log
