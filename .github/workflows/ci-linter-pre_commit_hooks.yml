@@ -43,6 +43,7 @@ jobs:
 
       - name: Install tools
         run: |
+          eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
           brew bundle
           npm install -g
           pre-commit install
