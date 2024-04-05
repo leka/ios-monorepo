@@ -8,7 +8,7 @@ uuid: 651AD9E7F59249EFA3A48F23A78134A2
 name: color_bingo_5
 
 created_at: "2024-03-08T11:09:22.386406"
-last_edited_at: "2024-04-04T15:43:31.724381"
+last_edited_at: "2024-04-05T18:14:55.273568"
 status: published
 
 authors:
@@ -36,38 +36,40 @@ l10n:
   - locale: fr_FR
     details:
       icon: color_bingo_5
-
-      title: Loto des Couleurs 5
-      subtitle: null
-
+      title: Loto des Couleurs
+      subtitle: 5 Choix de Couleurs
       short_description: |
-        Touche la couleur de Leka
-
+        Toucher sur la tablette la même couleur que Leka
       description: |
-        Leka s'allume dans une couleur. La personne accompagnée doit toucher la même couleur sur l'écran de l'iPad.
+        Dans cette activité, Leka s'allume dans une couleur spécifique. Le but est de reconnaître cette couleur et de la toucher sur l'écran de l'iPad.
 
+        C'est une activité amusante et interactive qui aide à développer la reconnaissance des couleurs et la coordination œil-main.
+
+        Elle peut être utilisée à la fois pour l'apprentissage et le jeu. La personne accompagnée peut jouer seule ou avec un accompagnateur pour augmenter l'interaction sociale.
       instructions: |
-        - Leka s'allume dans une couleur
-        - Encourager la personne accompagnée à toucher la même couleur sur l'écran de l'iPad
-        - Lorsque la réponse est correct, Leka lance un renforçateur
+        - Sur l'iPad, touchez l'image de Leka
+        - Observez Leka s'illuminer dans une couleur spécifique
+        - Incitez la personne accompagnée à identifier et toucher la couleur correspondante sur l'écran de l'iPad
+        - En cas de réponse correcte, Leka initiera un renforçateur pour encourager la personne
 
   - locale: en_US
     details:
       icon: color_bingo_5
-
-      title: Color Bingo 5
-      subtitle: null
-
+      title: Color Bingo
+      subtitle: 5 Color Choices
       short_description: |
-        Touch the color of Leka
-
+        Touch the same color on the iPad screen as Leka
       description: |
-        Leka lights up in a color. The care receiver must touch the same color on the iPad screen.
+        In this activity, Leka illuminates in a specific color. The goal is to recognize this color and touch it on the iPad screen.
 
+        It is a fun and interactive activity that helps develop color recognition and hand-eye coordination.
+
+        It can be used for both learning and play. The care receiver can play alone or with a caregiver to increase social interaction.
       instructions: |
-        - Leka lights up in one color
-        - Encourage the care receiver to touch the same color on the iPad screen
-        - When the answer is correct, Leka launches a reinforcer
+        - On the iPad, touch Leka's image
+        - Observe Leka light up in a specific color
+        - Encourage the care receiver to identify and touch the corresponding color on the iPad screen
+        - In case of a correct answer, Leka will initiate a reinforcer to encourage the care receiver
 
 exercises_payload:
   options:
@@ -78,9 +80,11 @@ exercises_payload:
     - group:
         - instructions:
             - locale: fr_FR
-              value: Touche la couleur de Leka
+              value: |
+                De quelle couleur est Leka ?
             - locale: en_US
-              value: Touch the color of Leka
+              value: |
+                What color is Leka?
           interface: robotThenTouchToSelect
           gameplay: findTheRightAnswers
           action:
@@ -102,11 +106,14 @@ exercises_payload:
                 type: color
               - value: green
                 type: color
+
         - instructions:
             - locale: fr_FR
-              value: Touche la couleur de Leka
+              value: |
+                De quelle couleur est Leka ?
             - locale: en_US
-              value: Touch the color of Leka
+              value: |
+                What color is Leka?
           interface: robotThenTouchToSelect
           gameplay: findTheRightAnswers
           action:
@@ -128,11 +135,14 @@ exercises_payload:
                 type: color
               - value: yellow
                 type: color
+
         - instructions:
             - locale: fr_FR
-              value: Touche la couleur de Leka
+              value: |
+                De quelle couleur est Leka ?
             - locale: en_US
-              value: Touch the color of Leka
+              value: |
+                What color is Leka?
           interface: robotThenTouchToSelect
           gameplay: findTheRightAnswers
           action:
@@ -154,11 +164,14 @@ exercises_payload:
                 type: color
               - value: green
                 type: color
+
         - instructions:
             - locale: fr_FR
-              value: Touche la couleur de Leka
+              value: |
+                De quelle couleur est Leka ?
             - locale: en_US
-              value: Touch the color of Leka
+              value: |
+                What color is Leka?
           interface: robotThenTouchToSelect
           gameplay: findTheRightAnswers
           action:
@@ -180,11 +193,14 @@ exercises_payload:
                 type: color
               - value: yellow
                 type: color
+
         - instructions:
             - locale: fr_FR
-              value: Touche la couleur de Leka
+              value: |
+                De quelle couleur est Leka ?
             - locale: en_US
-              value: Touch the color of Leka
+              value: |
+                What color is Leka?
           interface: robotThenTouchToSelect
           gameplay: findTheRightAnswers
           action:
@@ -206,11 +222,14 @@ exercises_payload:
                 type: color
               - value: orange
                 type: color
+
         - instructions:
             - locale: fr_FR
-              value: Touche la couleur de Leka
+              value: |
+                De quelle couleur est Leka ?
             - locale: en_US
-              value: Touch the color of Leka
+              value: |
+                What color is Leka?
           interface: robotThenTouchToSelect
           gameplay: findTheRightAnswers
           action:
