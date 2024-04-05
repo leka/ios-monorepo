@@ -30,9 +30,12 @@ jobs:
           fetch-depth: 2
           lfs: false
 
+      - name: Setup brew
+        run: |
+          echo "/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin" >> $GITHUB_PATH
+
       - name: Install SwiftFormat
         run: |
-          eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
           brew update && brew bundle
 
       - name: Run swiftformat on ${{ matrix.files }}
