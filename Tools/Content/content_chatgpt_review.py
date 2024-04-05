@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 """
-This script is used to review modified activityor curriculum
+This script is used to review activities or curriculum
 YAML filesin a Git repository using OpenAI's GPT-4 model.
 """
 
@@ -146,7 +146,7 @@ def review_files_with_gpt(prompt_template, files):
                 response_text = response.choices[0].message.content.strip()
                 responses.append(
                     (
-                        f"## Activity Review {index + 1}\n\n"
+                        f"## Review {index + 1}\n\n"
                         "```\n"
                         f"{os.path.basename(file_path)}\n"
                         "```\n\n"

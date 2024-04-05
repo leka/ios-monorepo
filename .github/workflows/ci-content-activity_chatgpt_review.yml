@@ -33,7 +33,7 @@ jobs:
       - name: Review YAML files
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-        run: python Tools/Content/activity_chatgpt_review.py --content_type activity
+        run: python Tools/Content/content_chatgpt_review.py --content_type activity
 
       - name: Post Github comment
         id: post_github_comment
