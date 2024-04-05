@@ -33,8 +33,7 @@ jobs:
       - name: Install SwiftFormat
         run: |
           eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-          brew install swiftformat
-          swiftformat --version
+          brew update && brew bundle
 
       - name: Run swiftformat on ${{ matrix.files }}
         if: matrix.files == 'all_files'
