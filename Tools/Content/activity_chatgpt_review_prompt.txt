@@ -1,34 +1,33 @@
-Given a YAML file containing various activities designed for use in an iOS application by caregivers working with care receivers who have special needs, please analyze the content according to the following criteria and provide your feedback in a structured format similar to the provided example:
+You are tasked with reviewing a YAML file containing activities designed for an iOS application, targeted at caregivers working with individuals with special needs. Your goal is to analyze the content against specified criteria to enhance the activities' utility and engagement. Please organize your feedback according to the example provided, covering the following criteria:
 
-### Criteria for Analysis
+### Analysis Criteria
 
-1. **Content Quality and Suitability:** Assess if the activities are appropriate, engaging, and educational for the care receivers. Suggest improvements to make the activities more engaging or suitable for the care receivers, taking into account their special needs.
+1. **Overall Quality Rating:** Provide a global rating between 1 and 10 on the overall quality and comprehensibility for caregivers. Detail the rationale behind your rating and suggest a comprehensive improvement strategy across the assessed aspects.
 
-2. **Clarity and Readability for Caregivers:** Evaluate the clarity and readability of the activities' descriptions and titles for caregivers. Ensure the `title` and `subtitle` are correct and specific enough for each activity. Suggest more descriptive or compelling titles and descriptions where necessary. The `l10n/details` should be clear, concise, and provide context for the caregiver.
+2. **Clarity and Readability for Caregivers:** Assess the clarity and readability of activity descriptions and titles for caregivers. Ensure titles and subtitles accurately convey each activity's essence. Propose more compelling titles and descriptions where needed. Details under `l10n/details` should be concise, providing vital context.
 
-3. **Language and Grammar:** Check for any grammatical errors, spelling errors, typos or awkward phrasing in the content, descriptions, titles, and translations for caregivers. Provide corrections and recommendations for clearer language. Specifically, ensure that the `l10n/details/instructions` for caregivers are simple, straightforward, and clear.
+3. **Language and Grammar:** Check for grammatical errors, spelling mistakes, awkward phrasing, or typos in descriptions, titles, and caregiver translations. Provide correction suggestions for clearer communication, with a focus on simplicity and clarity in `l10n/details/instructions`.
 
-4. **Translation Accuracy and Cultural Sensitivity:** For activities translated into multiple languages, assess the accuracy of the translations and their cultural sensitivity, particularly for content intended for caregivers. Highlight any translations that may need revision or could be potentially insensitive or inappropriate in different cultural contexts.
+4. **Translation Accuracy and Cultural Sensitivity:** Evaluate the accuracy and cultural sensitivity of translations, especially regarding caregiver materials. Highlight translations needing adjustments or those that might be insensitive in different cultural contexts.
 
-5. **Engagement and Summary for Browsing:** Ensure that the `l10n/details/short_description` provides a one or two-sentence summary that is clear, informative, and engaging for caregivers browsing the app content.
+5. **Diff & Final Output:** Display the amended YAML content with your corrections in markdown code blocks, and then provide a diff to underscore the changes recommended.
 
-6. **Instructions for Care Receivers:** Review the `exercise_payload` instructions intended for care receivers. These must be simple, short, and easy to understand, tailored specifically for individuals aged 2 to 6. Do not suggest to add visual cues as they are already present when doing the activity.
+### Mandatory Guidelines
 
-7. **Overall Quality Rating:** Provide a global rating between 1 (the lowest) and 10 (the highest) on the quality of what's written, including how easily comprehensible it is for caregivers. Explain why you gave this rating and how the content can be improved across the aspects mentioned above.
+Follow these guidelines in your analysis:
 
-8. **Diff & Final Output:** Provide the whole YAML content modified with your suggestions and corrections in markdown code blocks. Then provide a diff of both files to highlight the changes you suggested.
+- In French, avoid "bénéficiaire de soins", "soignant", "soignante" and "enfant". Use "personne accompagnée" instead.
+- In French, you must use "renforçateur"
+- In English, avoid "child", "children". Use "care receiver".
+- In English, you must use "reinforcer"
 
-### Mandatory Rules and Constraints
+### Feedback Structure
 
-Please respect the following rules and constraints:
+Structure your feedback as follows:
 
-- Refrain from using "bénéficiaire de soins," "soignant," "soignante," "enfant," and "renforcement" in French. Always use "personne accompagnée" instead of "accompagné."
-- In English, avoid "child," "children," and "reinforcement" while keeping "reinforcer" and its French equivalent "renforçateur."
+- **Criterion Number and Name**: Concisely summarize your findings. If no feedback, simply state "No issues found."
+- **Suggestions for Improvement**: Offer detailed suggestions with specific examples where applicable. If no improvements are needed, state "No improvements suggested."
+- **Overall Rating and Justification**: Briefly explain your rating and provide a clear enhancement strategy.
+- **Brevity and Ease of Reading**: With hundreds of activities to review, aim for succinctness. Highlight key information using styling and/or emojis for easier reading. If there is nothing noteworthy, state "Nothing to add."
 
-### Structured Feedback Format
-
-Please structure your analysis and actionable feedback for each criterion as follows:
-
-- **Criterion Number and Name**: Brief description of findings.
-- **Suggestions for Improvement**: Detailed suggestions, including specific examples when applicable.
-- **Overall Rating and Justification**: Explain the reasoning behind the given rating and offer a concise plan for enhancing content quality.
+This structure aims to streamline your analysis, ensuring each point is addressed efficiently and effectively.
