@@ -1,5 +1,10 @@
 #!/usr/bin/python3
 
+"""
+This script is used to review modified activityor curriculum
+YAML filesin a Git repository using OpenAI's GPT-4 model.
+"""
+
 # Leka - iOS Monorepo
 # Copyright APF France handicap
 # SPDX-License-Identifier: Apache-2.0
@@ -11,6 +16,9 @@ import argparse
 import logging
 from openai import OpenAI
 
+# Define global variables
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+GITHUB_ENV_FILE = os.getenv("GITHUB_ENV")
 
 # Setup basic logging
 logging.basicConfig(
@@ -56,7 +64,7 @@ def read_file_content(file_path):
     Read and return the content of a file.
     """
     try:
-        with open(file_path, "r") as file:
+        with open(file_path, "r", encoding="utf8") as file:
             return file.read()
     except Exception as e:
         logging.error(f"Error reading file {file_path}: {e}")
@@ -80,7 +88,7 @@ def review_files_with_gpt(prompt_template, files):
                         {"role": "system", "content": prompt_template},
                         {"role": "user", "content": file_content},
                     ],
-                    max_tokens=2048,
+                    max_tokens=1024,
                     temperature=0.1,
                     top_p=1.0,
                     frequency_penalty=0.0,
@@ -95,12 +103,7 @@ def review_files_with_gpt(prompt_template, files):
 
 
 def main():
-    # Ensure necessary environment variables are set
-    global OPENAI_API_KEY
-    global GITHUB_ENV_FILE
-
-    OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
-    GITHUB_ENV_FILE = os.getenv("GITHUB_ENV")
+    """Main function"""
     if not OPENAI_API_KEY or not GITHUB_ENV_FILE:
         logging.error(
             "Missing required environment variables: OPENAI_API_KEY and/or GITHUB_ENV"
@@ -137,11 +140,15 @@ def main():
 
     # Append responses to the GITHUB_ENV file
     try:
-        with open(GITHUB_ENV_FILE, "a") as env:
+        with open(GITHUB_ENV_FILE, "a", encoding="utf8") as env:
             env.write(
-                f"CHATGPT_RESPONSES<<EOF_CHATGPT_RESPONSES\n{combined_responses}\nEOF_CHATGPT_RESPONSES\n\n"
+                (
+                    "CHATGPT_RESPONSES<<EOF_CHATGPT_RESPONSES\n"
+                    f"{combined_responses}\n"
+                    "EOF_CHATGPT_RESPONSES\n\n"
+                )
             )
-    except Exception as e:
+    except FileExistsError as e:
         logging.error(
             f"Error writing to GitHub environment file {GITHUB_ENV_FILE}: {e}"
         )
