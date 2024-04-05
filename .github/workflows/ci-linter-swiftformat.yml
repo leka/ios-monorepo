@@ -17,25 +17,20 @@ concurrency:
 jobs:
   swift_format:
     name: swiftformat
-    runs-on: [self-hosted, iOS]
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0 # Fetch all history for all branches and tags
-          lfs: true
+          fetch-depth: 1
+          lfs: false
 
-      - name: Setup mise
+      - name: Install SwiftFormat
         run: |
-          echo "$HOME/.local/share/mise/shims" >> $GITHUB_PATH
+          brew install swiftformat
+          swiftformat --version
 
       - name: Run swiftformat
         run: |
-          echo ""
-          echo "🏃‍♂️ Running swiftformat"
-
-          which swiftformat
-          swiftformat --version
-
           swiftformat --lint --reporter github-actions-log .
