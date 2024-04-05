@@ -18,6 +18,10 @@ jobs:
   swift_format:
     name: swiftformat
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        files: [changed_files, all_files]
 
     steps:
       - name: Checkout
@@ -31,6 +35,12 @@ jobs:
           brew install swiftformat
           swiftformat --version
 
-      - name: Run swiftformat
+      - name: Run swiftformat on ${{ matrix.files }}
+        if: matrix.files == 'all_files'
         run: |
           swiftformat --lint --reporter github-actions-log .
+
+      - name: Run swiftformat on ${{ matrix.files }}
+        if: matrix.files == 'changed_files'
+        run: |
+          swiftformat --lint --reporter github-actions-log $(git diff --name-only -r HEAD^1 HEAD --diff-filter=AMCR)
