@@ -6,3 +6,4 @@ ruamel.yaml==0.18.6
 Pygments==2.17.2
 openai
 gitpython
+pre-commit
