@@ -193,7 +193,7 @@ def main():
 
     # Read prompt template
     prompt_template_path = (
-        f"Tools/Content/{args.content_type}_chatgpt_review_prompt.txt"
+        f"Tools/Content/{args.content_type}_chatgpt_review_prompt.md"
     )
     prompt_template = read_file_content(prompt_template_path)
     if prompt_template is None:
