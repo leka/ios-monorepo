@@ -6,11 +6,12 @@ name: Content - Activity ChatGPT Review
 
 on:
   pull_request:
-    paths:
-      - "**/*.activity.yml"
+    types: [labeled]
 
 jobs:
   review_yaml:
+    name: Review YAML files
+    if: contains(github.event.label.name, 'content:review activities')
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -22,6 +23,7 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.x"
+          cache: "pip"
 
       - name: Install dependencies
         run: |
@@ -58,3 +60,19 @@ jobs:
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
+
+      - name: Remove label
+        if: always()
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            const { LABEL_NAME } = process.env
+            github.rest.issues.removeLabel({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              name: LABEL_NAME
+            })
+        env:
+          LABEL_NAME: ${{ github.event.label.name }}
