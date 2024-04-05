@@ -76,7 +76,7 @@ struct ExerciseInstructionsButton: View {
     @State var instructions: String
 
     var body: some View {
-        Button(self.instructions) {
+        Button(self.instructions.trimmingCharacters(in: .whitespacesAndNewlines)) {
             self.speaker.speak(sentence: self.instructions)
         }
         .buttonStyle(StepInstructions_ButtonStyle(isSpeaking: self.$speaker.isSpeaking))
