@@ -167,10 +167,10 @@ exercises_payload:
             choices:
               - value: pictograms-objects-bathroom-towel_blue-00C0
                 type: image
-                dropZone: zoneA
+                dropZone: zoneB
               - value: pictograms-objects-house-kitchen-cooking_pot-0190
                 type: image
-                dropZone: zoneB
+                dropZone: zoneA
               - value: pictograms-foods-meals-salad_mixed-0175
                 type: image
                 dropZone: zoneA
@@ -202,10 +202,10 @@ exercises_payload:
             choices:
               - value: pictograms-objects-bathroom-towel_blue-00C0
                 type: image
-                dropZone: zoneA
+                dropZone: zoneB
               - value: pictograms-objects-house-kitchen-cooking_pot-0190
                 type: image
-                dropZone: zoneB
+                dropZone: zoneA
               - value: pictograms-foods-meals-salad_mixed-0175
                 type: image
                 dropZone: zoneA
@@ -272,10 +272,10 @@ exercises_payload:
             choices:
               - value: pictograms-objects-bathroom-towel_blue-00C0
                 type: image
-                dropZone: zoneA
+                dropZone: zoneB
               - value: pictograms-objects-house-kitchen-cooking_pot-0190
                 type: image
-                dropZone: zoneB
+                dropZone: zoneA
               - value: pictograms-foods-meals-salad_mixed-0175
                 type: image
                 dropZone: zoneA
