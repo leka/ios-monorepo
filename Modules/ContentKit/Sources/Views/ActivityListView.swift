@@ -35,9 +35,11 @@ public struct ActivityListView: View {
                             )
 
                         VStack(alignment: .leading) {
-                            Text(activity.details.title)
-                                .font(.headline)
-                                .frame(alignment: .leading)
+                            HStack {
+                                Text(activity.details.title)
+                                    .font(.headline)
+                                    .frame(alignment: .leading)
+                            }
 
                             if let subtitle = activity.details.subtitle {
                                 Text(subtitle)
@@ -46,6 +48,17 @@ public struct ActivityListView: View {
                             }
                         }
                         .padding(.vertical)
+
+                        Spacer()
+
+                        if let templateIconUIImage = ContentKit.getTemplateIconUIImage(for: activity) {
+                            Image(uiImage: templateIconUIImage)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 50)
+                                .padding(.horizontal)
+                                .padding(.bottom)
+                        }
                     }
                 }
                 .buttonStyle(.plain)
