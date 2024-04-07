@@ -55,7 +55,7 @@ jobs:
         with:
           channel-id: "C9UGVSTGE"
           slack-message: |
-            *New ChatGPT Curriculum Review:*s
+            *New ChatGPT Curriculum Reviews*
             https://github.com/leka/ios-monorepo/pull/${{ env.PR_NUMBER }}#issuecomment-${{ steps.post_github_comment.outputs.created_comment_id }}
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
