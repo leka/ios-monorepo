@@ -2,7 +2,7 @@
 # Copyright APF France handicap
 # SPDX-License-Identifier: Apache-2.0
 
-name: Content - Activity ChatGPT Review
+name: Content - ChatGPT Activity Reviews
 
 on:
   pull_request:
@@ -33,7 +33,7 @@ jobs:
       - name: Review YAML files
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-        run: python Tools/Content/activity_chatgpt_review.py --content_type activity
+        run: python Tools/Content/content_chatgpt_review.py --content_type activity
 
       - name: Post Github comment
         id: post_github_comment
@@ -42,9 +42,9 @@ jobs:
         with:
           hide_and_recreate: true
           hide_classify: "OUTDATED"
-          header: content_activity_chatgpt_review
+          header: content_reviews_activity_chatgpt
           message: |
-            # Activity ChatGPT Review
+            # ChatGPT Activity Reviews
 
             ${{ env.CHATGPT_RESPONSES }}
 
@@ -55,7 +55,7 @@ jobs:
         with:
           channel-id: "C9UGVSTGE"
           slack-message: |
-            *New Activity ChatGPT Review:*
+            *New ChatGPT Activity Reviews*
             https://github.com/leka/ios-monorepo/pull/${{ env.PR_NUMBER }}#issuecomment-${{ steps.post_github_comment.outputs.created_comment_id }}
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
