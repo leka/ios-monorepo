@@ -8,7 +8,7 @@ name: curriculum_receptive_language_identify_positional_concepts
 status: published
 
 created_at: "2024-03-21T15:12:35.579066"
-last_edited_at: "2024-04-04T15:43:54.314048"
+last_edited_at: "2024-04-08T13:19:48.615099"
 authors:
   - julie_tuil
 
@@ -32,7 +32,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon: receptive_language-positions_and_quantities
+      icon: receptive_language_positions
 
       title: Identifier les concepts positionnels
       subtitle: Compréhension des prépositions et des relations spatiales
@@ -43,7 +43,7 @@ l10n:
         "Identifier les concepts positionnels" engage les personnes accompagnées dans un apprentissage interactif focalisé sur la compréhension et l'application des prépositions et des relations spatiales. Les activités encouragent l'écoute attentive des instructions orales et la sélection de l'image correspondante, renforçant la capacité à interpréter et à répondre à des questions sur la position des objets. Chaque tâche est conçue pour défier et soutenir les personnes accompagnées dans leur compréhension des concepts spatiaux.
   - locale: en_US
     details:
-      icon: receptive_language-positions_and_quantities
+      icon: receptive_language_positions
 
       title: Identify Positional Concepts
       subtitle: Understanding Prepositions and Spatial Relationships

@@ -8,7 +8,7 @@ uuid: 353CCBCBA81247389E1086B64912273F
 name: receptive_language_identify_familiar_nouns_with_two_syllables
 
 created_at: "2024-03-08T11:49:37.123541"
-last_edited_at: "2024-04-04T15:43:31.720924"
+last_edited_at: "2024-04-08T13:12:12.653343"
 status: published
 
 authors:
@@ -37,7 +37,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon: activity_template_icon_name
+      icon: receptive_language_identifying_common_words
 
       title: Identifier des mots courants de deux syllabes
       subtitle: null
@@ -55,7 +55,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon: activity_template_icon_name
+      icon: receptive_language_identifying_common_words
 
       title: Identify familiar nouns with two syllables
       subtitle: null

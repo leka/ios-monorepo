@@ -8,7 +8,7 @@ uuid: AB832F7004D44525B90654D553355E2B
 name: receptive_language_identify_ing_verbs_with_2_components
 
 created_at: "2024-03-08T11:49:37.123541"
-last_edited_at: "2024-04-04T15:43:31.722943"
+last_edited_at: "2024-04-08T13:12:12.658551"
 status: published
 
 authors:
@@ -36,7 +36,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon: activity_template_icon_name
+      icon: receptive_language_identifying_actions
 
       title: Identifier des actions avec 2 acteurs
       subtitle: null
@@ -54,7 +54,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon: activity_template_icon_name
+      icon: receptive_language_identifying_actions
 
       title: Identify -ing verbs with 2 components
       subtitle: null

@@ -32,7 +32,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon: receptive_language-positions_and_quantities
+      icon: receptive_language_quantities
 
       title: Identifier la quantité numérique
       subtitle: Comprendre et répondre aux quantités numériques
@@ -44,7 +44,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon: receptive_language-positions_and_quantities
+      icon: receptive_language_quantities
 
       title: Identify Number Quantity
       subtitle: Understanding and Responding to Number Quantities
