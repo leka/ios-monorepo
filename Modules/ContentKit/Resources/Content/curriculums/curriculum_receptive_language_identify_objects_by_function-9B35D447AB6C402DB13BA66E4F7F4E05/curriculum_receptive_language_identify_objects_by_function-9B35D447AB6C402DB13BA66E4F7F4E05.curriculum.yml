@@ -8,7 +8,7 @@ name: curriculum_receptive_language_identify_objects_by_function
 status: published
 
 created_at: "2024-03-21T15:12:35.579066"
-last_edited_at: "2024-04-08T13:19:48.615076"
+last_edited_at: "2024-04-08T17:22:13.795863"
 authors:
   - julie_tuil
 
@@ -31,27 +31,27 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon: receptive_language_identifying_objects_by_functionality
+      icon: receptive_language_identifying_objects_by_function
 
-      title: Identifier des objets par fonctionnalité
+      title: Identifier des objets par fonction
       subtitle: Comprendre l'usage des objets
 
       abstract: |
         Destiné à améliorer la compréhension du langage oral, ce curriculum guide les personnes accompagnées dans la reconnaissance des objets selon leur fonction. Les activités interactives encouragent l'écoute et la sélection de l'image adéquate sur l'écran de l'iPad.
       description: |
-        "Identifier des objets par fonctionnalité" implique les personnes accompagnées dans un processus d'apprentissage interactif, nécessitant une écoute attentive et une réponse aux questions sur la fonction des objets. Centré sur la compréhension de l'usage des objets, ce curriculum vise à renforcer la compréhension du langage oral et la capacité à suivre des instructions verbales. Les activités sont conçues pour engager les personnes accompagnées, les défiant de lier les objets à leurs fonctions spécifiques.
+        "Identifier des objets par fonction" implique les personnes accompagnées dans un processus d'apprentissage interactif, nécessitant une écoute attentive et une réponse aux questions sur la fonction des objets. Centré sur la compréhension de l'usage des objets, ce curriculum vise à renforcer la compréhension du langage oral et la capacité à suivre des instructions verbales. Les activités sont conçues pour engager les personnes accompagnées, les défiant de lier les objets à leurs fonctions spécifiques.
 
   - locale: en_US
     details:
-      icon: receptive_language_identifying_objects_by_functionality
+      icon: receptive_language_identifying_objects_by_function
 
-      title: Identify Objects by Function
-      subtitle: Understanding Object Usage
+      title: Identify bjects by function
+      subtitle: Understanding object usage
 
       abstract: |
-        Aimed at enhancing oral language comprehension, this curriculum assists care receivers in recognizing objects based on their function. Interactive activities prompt listening to oral instructions and selecting the matching image on the iPad screen.
+        Aimed at improving oral language comprehension, this curriculum guides care receivers in recognizing objects by their function. Interactive activities encourage attentive listening and selecting the appropriate image on the iPad screen.
       description: |
-        "Identify Objects by Function" engages care receivers in an interactive learning process, requiring attentive listening and responses to questions about object functions. Focused on understanding the usage of objects, this curriculum aims to improve oral language comprehension and the ability to follow verbal instructions. The activities are designed to engage care receivers, challenging them to associate objects with their specific functions.
+        "Identify bjects by function" engages care receivers in an interactive learning process, requiring attentive listening and responding to questions about object function. Focused on understanding object usage, this curriculum aims to strengthen oral language comprehension and the ability to follow verbal instructions. Activities are designed to engage care receivers, challenging them to link objects to their specific functions.
 
 activities:
   - receptive_language_identify_objects_by_function_1-DD1C6FE74232465DBB5B97378AEBB430
