@@ -10,11 +10,10 @@ extension DragAndDropIntoZonesView {
     class ViewModel: ObservableObject {
         // MARK: Lifecycle
 
-        init(choices: [DragAndDropIntoZones.Choice], shared: ExerciseSharedData? = nil) {
+        init(choices: [DragAndDropIntoZones.Choice], shuffle: Bool = false, shared: ExerciseSharedData? = nil) {
             let gameplayChoiceModel = choices.map { GameplayDragAndDropIntoZonesChoiceModel(choice: $0) }
-            self.choices = gameplayChoiceModel
-            self.gameplay = GameplayFindTheRightAnswers(
-                choices: gameplayChoiceModel)
+            self.choices = shuffle ? gameplayChoiceModel.shuffled() : gameplayChoiceModel
+            self.gameplay = GameplayFindTheRightAnswers(choices: gameplayChoiceModel)
             self.exercicesSharedData = shared ?? ExerciseSharedData()
 
             self.subscribeToGameplayDragAndDropChoicesUpdates()

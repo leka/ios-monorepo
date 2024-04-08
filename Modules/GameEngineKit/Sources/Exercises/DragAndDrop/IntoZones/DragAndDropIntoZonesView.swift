@@ -15,9 +15,9 @@ public struct DragAndDropIntoZonesView: View {
 
     public init(
         choices: [DragAndDropIntoZones.Choice], dropZoneA: DragAndDropIntoZones.DropZone.Details,
-        dropZoneB: DragAndDropIntoZones.DropZone.Details? = nil
+        dropZoneB: DragAndDropIntoZones.DropZone.Details? = nil, shuffle: Bool = false
     ) {
-        _viewModel = StateObject(wrappedValue: ViewModel(choices: choices))
+        _viewModel = StateObject(wrappedValue: ViewModel(choices: choices, shuffle: shuffle))
         self.dropZoneA = dropZoneA
         self.dropZoneB = dropZoneB
     }
@@ -29,7 +29,7 @@ public struct DragAndDropIntoZonesView: View {
         }
 
         _viewModel = StateObject(
-            wrappedValue: ViewModel(choices: payload.choices, shared: data))
+            wrappedValue: ViewModel(choices: payload.choices, shuffle: payload.shuffleChoices, shared: data))
 
         self.dropZoneA = payload.dropZoneA
         self.dropZoneB = payload.dropZoneB
