@@ -16,7 +16,7 @@ struct GameplayAssociateCategoriesChoiceModel: GameplayChoiceModelProtocol {
 }
 
 extension GameplayAssociateCategories where ChoiceModelType == GameplayAssociateCategoriesChoiceModel {
-    convenience init(choices: [GameplayAssociateCategoriesChoiceModel], shuffle _: Bool = false, allowedTrials: Int? = nil) {
+    convenience init(choices: [GameplayAssociateCategoriesChoiceModel], allowedTrials: Int? = nil) {
         self.init()
         self.choices.send(choices)
         state.send(.playing)

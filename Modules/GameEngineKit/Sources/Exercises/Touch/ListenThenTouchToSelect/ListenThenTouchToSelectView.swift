@@ -9,8 +9,8 @@ import SwiftUI
 public struct ListenThenTouchToSelectView: View {
     // MARK: Lifecycle
 
-    public init(choices: [TouchToSelect.Choice], audioRecording: AudioRecording) {
-        _viewModel = StateObject(wrappedValue: TouchToSelectViewViewModel(choices: choices))
+    public init(choices: [TouchToSelect.Choice], audioRecording: AudioRecording, shuffle: Bool = false) {
+        _viewModel = StateObject(wrappedValue: TouchToSelectViewViewModel(choices: choices, shuffle: shuffle))
         _audioPlayer = StateObject(wrappedValue: AudioPlayer(audioRecording: audioRecording))
     }
 
@@ -23,7 +23,7 @@ public struct ListenThenTouchToSelectView: View {
         }
 
         _viewModel = StateObject(
-            wrappedValue: TouchToSelectViewViewModel(choices: payload.choices, shared: data))
+            wrappedValue: TouchToSelectViewViewModel(choices: payload.choices, shuffle: payload.shuffleChoices, shared: data))
 
         let audioRecording = AudioRecording(name: name, file: name)
         _audioPlayer = StateObject(wrappedValue: AudioPlayer(audioRecording: audioRecording))

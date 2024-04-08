@@ -9,8 +9,8 @@ import SwiftUI
 public struct ObserveThenTouchToSelectView: View {
     // MARK: Lifecycle
 
-    public init(choices: [TouchToSelect.Choice], image: String) {
-        _viewModel = StateObject(wrappedValue: TouchToSelectViewViewModel(choices: choices))
+    public init(choices: [TouchToSelect.Choice], image: String, shuffle: Bool = false) {
+        _viewModel = StateObject(wrappedValue: TouchToSelectViewViewModel(choices: choices, shuffle: shuffle))
         self.image = image
     }
 
@@ -23,7 +23,7 @@ public struct ObserveThenTouchToSelectView: View {
         }
 
         _viewModel = StateObject(
-            wrappedValue: TouchToSelectViewViewModel(choices: payload.choices, shared: data))
+            wrappedValue: TouchToSelectViewViewModel(choices: payload.choices, shuffle: payload.shuffleChoices, shared: data))
 
         self.image = name
     }

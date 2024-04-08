@@ -17,7 +17,7 @@ extension DragAndDropToAssociateView {
         ) {
             let gameplayChoiceModel = choices.map { GameplayAssociateCategoriesChoiceModel(choice: $0) }
             self.choices = shuffle ? gameplayChoiceModel.shuffled() : gameplayChoiceModel
-            self.gameplay = GameplayAssociateCategories(choices: gameplayChoiceModel, shuffle: shuffle)
+            self.gameplay = GameplayAssociateCategories(choices: gameplayChoiceModel)
             self.exercicesSharedData = shared ?? ExerciseSharedData()
 
             self.subscribeToGameplayAssociateCategoriesChoicesUpdates()
