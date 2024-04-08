@@ -8,7 +8,7 @@ uuid: B60142FDD7DE4E9FBBA7E9E9BF1ECF08
 name: recognition_sounds_animals_drawings_4_images
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2024-04-04T15:43:31.735959"
+last_edited_at: "2024-04-08T13:12:12.658551"
 status: published
 
 authors:
@@ -36,7 +36,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon: activity_template_icon_name
+      icon: recognition_sounds_animals
 
       title: Reconnaitre les sons des animaux avec 4 images
       subtitle: null
@@ -54,7 +54,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon: activity_template_icon_name
+      icon: recognition_sounds_animals
 
       title: Recognize animal sounds with 4 images
       subtitle: null

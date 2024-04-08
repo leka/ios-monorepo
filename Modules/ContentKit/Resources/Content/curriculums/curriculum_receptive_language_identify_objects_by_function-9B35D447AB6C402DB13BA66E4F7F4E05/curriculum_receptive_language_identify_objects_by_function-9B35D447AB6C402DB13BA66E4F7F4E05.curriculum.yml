@@ -8,7 +8,7 @@ name: curriculum_receptive_language_identify_objects_by_function
 status: published
 
 created_at: "2024-03-21T15:12:35.579066"
-last_edited_at: "2024-04-04T15:43:54.314051"
+last_edited_at: "2024-04-08T13:19:48.615076"
 authors:
   - julie_tuil
 
@@ -31,7 +31,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon: receptive_language-identifying_objects_by_functionality
+      icon: receptive_language_identifying_objects_by_functionality
 
       title: Identifier des objets par fonctionnalité
       subtitle: Comprendre l'usage des objets
@@ -43,7 +43,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon: receptive_language-identifying_objects_by_functionality
+      icon: receptive_language_identifying_objects_by_functionality
 
       title: Identify Objects by Function
       subtitle: Understanding Object Usage

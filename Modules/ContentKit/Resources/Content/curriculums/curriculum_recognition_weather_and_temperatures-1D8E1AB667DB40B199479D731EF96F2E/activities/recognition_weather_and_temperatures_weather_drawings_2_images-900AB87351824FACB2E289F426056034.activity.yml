@@ -8,7 +8,7 @@ uuid: 900AB87351824FACB2E289F426056034
 name: recognition_weather_and_temperatures_weather_drawings_2_images
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2024-04-04T15:43:31.716407"
+last_edited_at: "2024-04-08T13:12:12.653512"
 status: published
 
 authors:
@@ -34,7 +34,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon: activity_template_icon_name
+      icon: recognition_weather_and_temperatures
 
       title: Reconnaissance de la météo
       subtitle: null
@@ -52,7 +52,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon: activity_template_icon_name
+      icon: recognition_weather_and_temperatures
 
       title: Weather Recognition
       subtitle: null

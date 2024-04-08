@@ -6,7 +6,7 @@ uuid: FED25D9B424E42019F03593FE0D65AEE
 name: curriculum_recognition_sounds_animals
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2024-04-04T15:43:54.314048"
+last_edited_at: "2024-04-08T13:19:48.615111"
 
 status: published
 
@@ -32,7 +32,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon: recognition_sounds-animals
+      icon: recognition_sounds_animals
 
       title: Reconnaissance des Sons des Animaux
       subtitle: Identifier les animaux à partir de leurs sons
@@ -44,7 +44,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon: recognition_sounds-animals
+      icon: recognition_sounds_animals
 
       title: Recognition of Animal Sounds
       subtitle: Identifying Animals by Their Sounds

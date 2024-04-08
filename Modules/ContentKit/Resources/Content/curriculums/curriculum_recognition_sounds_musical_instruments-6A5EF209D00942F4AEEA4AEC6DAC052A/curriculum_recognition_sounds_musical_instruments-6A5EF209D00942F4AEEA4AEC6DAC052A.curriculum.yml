@@ -6,7 +6,7 @@ uuid: 6A5EF209D00942F4AEEA4AEC6DAC052A
 name: curriculum_recognition_sounds_musical_instruments
 
 created_at: "2024-03-21T15:12:35.579066"
-last_edited_at: "2024-04-04T15:43:54.315625"
+last_edited_at: "2024-04-08T13:19:48.615111"
 
 status: published
 
@@ -31,7 +31,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon: recognition_sounds-musical_instruments
+      icon: recognition_sounds_musical_instruments
 
       title: Reconnaissance des sons d'instruments de musique
       subtitle: Identifier les instruments par leurs sons
@@ -43,7 +43,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon: recognition_sounds-musical_instruments
+      icon: recognition_sounds_musical_instruments
 
       title: Recognition of musical instruments sounds
       subtitle: Identifying instruments by their sounds
