@@ -71,6 +71,7 @@ content:
       - curriculum_receptive_language_identify_positional_concepts-BC1E66BCFB994A76AF09C446407D8ECF
       - curriculum_receptive_language_identity_familiar_nouns-1607BEA72CC14285AB709C567E1BE5E7
       - curriculum_receptive_language_ing_verbs-2B927C344CA94CD993DDB7AC4C7F46FD
+      - curriculum_receptive_language_identify_objects_by_color-506EA3B894AE46EBAE4BE4AFFC65233F
 
   - id: sound_recognition
     l10n:
