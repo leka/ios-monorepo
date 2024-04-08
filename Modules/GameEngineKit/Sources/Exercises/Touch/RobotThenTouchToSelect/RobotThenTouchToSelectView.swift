@@ -11,8 +11,8 @@ import SwiftUI
 public struct RobotThenTouchToSelectView: View {
     // MARK: Lifecycle
 
-    public init(choices: [TouchToSelect.Choice]) {
-        _viewModel = StateObject(wrappedValue: TouchToSelectViewViewModel(choices: choices))
+    public init(choices: [TouchToSelect.Choice], shuffle: Bool = false) {
+        _viewModel = StateObject(wrappedValue: TouchToSelectViewViewModel(choices: choices, shuffle: shuffle))
 
         self.actionType = .color("red")
     }
@@ -26,7 +26,7 @@ public struct RobotThenTouchToSelectView: View {
         }
 
         _viewModel = StateObject(
-            wrappedValue: TouchToSelectViewViewModel(choices: payload.choices, shared: data))
+            wrappedValue: TouchToSelectViewViewModel(choices: payload.choices, shuffle: payload.shuffleChoices, shared: data))
 
         self.actionType = actionType
 
