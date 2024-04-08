@@ -8,7 +8,7 @@ uuid: 88013EBEBE2E4FA6B616CF0B393F2346
 name: categorization_sort_through_images_with_several_intruders
 
 created_at: "2024-03-08T11:49:37.123541"
-last_edited_at: "2024-04-04T15:43:31.720924"
+last_edited_at: "2024-04-08T12:44:26.439991"
 status: published
 
 authors:
@@ -37,7 +37,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon: improving_categorization-put_in_the_basket
+      icon: categorization_sort_through_with_basket
 
       title: Trier avec plusieurs intrus
       subtitle: null
@@ -55,7 +55,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon: improving_categorization-put_in_the_basket
+      icon: categorization_sort_through_with_basket
 
       title: Sort through images with several intruders
       subtitle: null

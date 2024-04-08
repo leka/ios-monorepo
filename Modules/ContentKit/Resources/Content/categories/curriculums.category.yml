@@ -35,6 +35,23 @@ content:
       - curriculum_recognition_emotions_pictures-BA3CB88A6A6E49CB9AB83FA992BF852B
       - curriculum_recognition_sounds_emotions-2D48CCB418BF4808BCB16148C901C617
 
+  - id: categorization
+    l10n:
+      - locale: fr_FR
+        details:
+          title: Catégorisation
+          subtitle: Apprendre à trier et à catégoriser.
+          description: Découvrez des activités pour aider les personnes accompagnées à classer et organiser des objets selon différentes catégories et critères.
+      - locale: en_US
+        details:
+          title: Categorization
+          subtitle: Learning to sort and categorize.
+          description: Explore activities to help care receivers classifying and organizing objects according to different categories and criteria.
+    curriculums:
+      - curriculum_categorization_sort_through_with_basket-E6A322DC7A6E48518CED2CA2D3D2A595
+      - curriculum_categorization_sort_through-88C512E99B61485D93A7AD8C34ED6A76
+      - curriculum_categorization_sort_through_functional_category-64388748AF714B4880B8C7B6DD6D93F3
+
   - id: receptive_language
     l10n:
       - locale: fr_FR
@@ -85,7 +102,6 @@ content:
           subtitle: Varied activities for a fun and enriching experience.
           description: Explore varied activities for a fun and enriching experience, perfect for relaxation and enjoyment.
     curriculums:
-      - curriculum_categorization-E6A322DC7A6E48518CED2CA2D3D2A595
       - color_bingo-69760D1DA61849E3926E3A939BBEF0CE
       - curriculum_recognition_weather_and_temperatures-1D8E1AB667DB40B199479D731EF96F2E
       - curriculum_recognition_basic_physiological_needs-B697FEE9EF7946A2B704673FEEAA0824
