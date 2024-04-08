@@ -182,12 +182,12 @@ exercises_payload:
             choices:
               - value: pictograms-foods-meals-salad_mixed-0175
                 type: image
+                dropZone: zoneA
               - value: pictograms-objects-house-kitchen-tableware_gray-0194
                 type: image
                 dropZone: zoneA
               - value: pictograms-objects-bathroom-soap_bottle_pink-00C6
                 type: image
-                dropZone: zoneA
 
         - instructions:
             - locale: fr_FR

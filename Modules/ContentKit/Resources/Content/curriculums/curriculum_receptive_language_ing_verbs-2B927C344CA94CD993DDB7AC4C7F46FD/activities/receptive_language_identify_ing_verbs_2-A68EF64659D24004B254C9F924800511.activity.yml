@@ -150,7 +150,7 @@ exercises_payload:
               - value: pictograms-characters-boy_playing
                 type: image
                 is_right_answer: true
-              - value: pictograms-characters-boy_kicking
+              - value: pictograms-characters-boy_reading
                 type: image
               - value: pictograms-characters-boy_crying
                 type: image

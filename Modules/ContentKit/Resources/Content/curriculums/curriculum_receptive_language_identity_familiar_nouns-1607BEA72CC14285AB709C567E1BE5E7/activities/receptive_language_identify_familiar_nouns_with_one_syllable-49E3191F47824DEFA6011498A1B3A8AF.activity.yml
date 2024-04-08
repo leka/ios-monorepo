@@ -98,9 +98,9 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Touche le lait
+              value: Touche le chien
             - locale: en_US
-              value: Touch the milk
+              value: Touch the dog
           interface: touchToSelect
           gameplay: findTheRightAnswers
           payload:
@@ -108,11 +108,11 @@ exercises_payload:
             choices:
               - value: pictograms-foods-ingredients-milk_bottle-0165
                 type: image
-                is_right_answer: true
               - value: pictograms-foods-ingredients-salt_shaker-0166
                 type: image
               - value: pictograms-animals-pets-dog_golden_retriever_brown-0052
                 type: image
+                is_right_answer: true
 
         - instructions:
             - locale: fr_FR

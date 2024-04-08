@@ -100,7 +100,7 @@ exercises_payload:
                 type: image
               - value: pictograms-quantity-apple_three
                 type: image
-              - value: pictograms-quantity-apple_two
+              - value: pictograms-quantity-apple_one
                 type: image
                 is_right_answer: true
 
@@ -121,7 +121,7 @@ exercises_payload:
               - value: pictograms-quantity-apple_three
                 type: image
                 is_right_answer: true
-              - value: pictograms-quantity-apple_two
+              - value: pictograms-quantity-apple_one
                 type: image
 
     - group:

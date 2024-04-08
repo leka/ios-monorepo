@@ -120,9 +120,9 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Touche le chat derrière la chaise
+              value: Touche le chat à côté de la chaise
             - locale: en_US
-              value: Touch the cat behind the chair
+              value: Touch the cat next to the chair
           interface: touchToSelect
           gameplay: findTheRightAnswers
           payload:
