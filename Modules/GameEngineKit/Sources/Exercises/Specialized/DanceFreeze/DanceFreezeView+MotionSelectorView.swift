@@ -19,29 +19,51 @@ extension DanceFreezeView {
 
         var body: some View {
             VStack {
+                Text(l10n.DanceFreezeView.motionSelectionTitle)
+                    .font(.headline)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+
+                Divider()
+
                 HStack(spacing: 70) {
-                    VStack(spacing: 0) {
-                        MotionModeButtonStyle(
-                            image: GameEngineKitAsset.Exercises.DanceFreeze.iconMotionModeRotation.swiftUIImage,
-                            color: self.motion == .rotation ? .teal : .primary
-                        )
-                        Text(l10n.DanceFreezeView.rotationButtonLabel)
+                    HStack {
+                        Image(systemName: self.motion == .rotation ? "checkmark.circle.fill" : "circle")
+                            .imageScale(.large)
+                            .foregroundColor(
+                                self.motion == .rotation
+                                    ? self.styleManager.accentColor! : .primary
+                            )
+                        VStack(spacing: 0) {
+                            MotionModeButtonStyle(
+                                image: GameEngineKitAsset.Exercises.DanceFreeze.iconMotionModeRotation.swiftUIImage,
+                                color: self.motion == .rotation ? self.styleManager.accentColor! : .primary
+                            )
+                            Text(l10n.DanceFreezeView.rotationButtonLabel)
+                        }
                     }
-                    .foregroundStyle(self.motion == .rotation ? .teal : .primary)
+                    .foregroundStyle(self.motion == .rotation ? self.styleManager.accentColor! : .primary)
                     .onTapGesture {
                         withAnimation {
                             self.motion = .rotation
                         }
                     }
 
-                    VStack(spacing: 0) {
-                        MotionModeButtonStyle(
-                            image: GameEngineKitAsset.Exercises.DanceFreeze.iconMotionModeMovement.swiftUIImage,
-                            color: self.motion == .movement ? .teal : .primary
-                        )
-                        Text(l10n.DanceFreezeView.movementButtonLabel)
+                    HStack {
+                        Image(systemName: self.motion == .movement ? "checkmark.circle.fill" : "circle")
+                            .imageScale(.large)
+                            .foregroundColor(
+                                self.motion == .movement
+                                    ? self.styleManager.accentColor! : .primary
+                            )
+                        VStack(spacing: 0) {
+                            MotionModeButtonStyle(
+                                image: GameEngineKitAsset.Exercises.DanceFreeze.iconMotionModeMovement.swiftUIImage,
+                                color: self.motion == .movement ? self.styleManager.accentColor! : .primary
+                            )
+                            Text(l10n.DanceFreezeView.movementButtonLabel)
+                        }
                     }
-                    .foregroundStyle(self.motion == .movement ? .teal : .primary)
+                    .foregroundStyle(self.motion == .movement ? self.styleManager.accentColor! : .primary)
                     .onTapGesture {
                         withAnimation {
                             self.motion = .movement
@@ -56,6 +78,7 @@ extension DanceFreezeView {
         // MARK: Private
 
         @Binding private var motion: Motion
+        @ObservedObject private var styleManager: StyleManager = .shared
     }
 }
 

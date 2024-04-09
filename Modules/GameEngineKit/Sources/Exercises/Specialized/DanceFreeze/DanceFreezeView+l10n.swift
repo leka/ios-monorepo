@@ -16,6 +16,11 @@ extension l10n {
                                                          value: "Music selection",
                                                          comment: "DanceFreezeView music selection title")
 
+        static let motionSelectionTitle = LocalizedString("game_engine_kit.dance_freeze_view.motion_selection_title",
+                                                          bundle: GameEngineKitResources.bundle,
+                                                          value: "Motion type",
+                                                          comment: "DanceFreezeView motion selection title")
+
         static let rotationButtonLabel = LocalizedString("game_engine_kit.dance_freeze_view.rotation_button_label",
                                                          bundle: GameEngineKitResources.bundle,
                                                          value: "Rotation",

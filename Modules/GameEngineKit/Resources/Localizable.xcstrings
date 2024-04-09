@@ -146,6 +146,24 @@
                 }
             }
         },
+        "game_engine_kit.dance_freeze_view.motion_selection_title": {
+            "comment": "DanceFreezeView motion selection title",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Motion type"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Type de mouvement"
+                    }
+                }
+            }
+        },
         "game_engine_kit.dance_freeze_view.movement_button_label": {
             "comment": "DanceFreezeView movement button label",
             "extractionState": "extracted_with_value",
