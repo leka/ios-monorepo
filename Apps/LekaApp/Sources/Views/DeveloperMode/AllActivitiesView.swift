@@ -21,7 +21,7 @@ struct AllActivitiesView: View {
         ScrollView(showsIndicators: true) {
             ActivityGridView(activities: self.activities, onStartActivity: { activity in
                 self.navigation.currentActivity = activity
-                self.navigation.fullScreenCoverContent = .activityView
+                self.navigation.fullScreenCoverContent = .activityView(carereceiver: nil)
             })
         }
         .navigationTitle("All Activities")

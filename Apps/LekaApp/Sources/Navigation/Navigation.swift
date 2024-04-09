@@ -9,9 +9,9 @@ import SwiftUI
 
 // MARK: - FullScreenCoverContent
 
-enum FullScreenCoverContent: Identifiable {
+enum FullScreenCoverContent: Hashable, Identifiable {
     case welcomeView
-    case activityView
+    case activityView(carereceiver: Carereceiver? = nil)
 
     // MARK: Internal
 
