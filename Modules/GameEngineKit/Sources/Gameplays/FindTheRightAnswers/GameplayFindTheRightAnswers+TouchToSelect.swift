@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AccountKit
 import ContentKit
 import Foundation
 
@@ -45,7 +46,7 @@ extension GameplayFindTheRightAnswers where ChoiceModelType == GameplayTouchToSe
 
         if rightAnswers.isEmpty {
             let level = evaluateCompletionLevel(allowedTrials: allowedTrials, numberOfTrials: numberOfTrials)
-            let completionData = ExerciseCompletionData(startTimestamp: nil, endTimestamp: Date())
+            let completionData = ExerciseCompletionData()
             state.send(.completed(level: level, data: completionData))
         }
     }

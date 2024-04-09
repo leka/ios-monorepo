@@ -2,16 +2,8 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AccountKit
 import Foundation
-
-// MARK: - ExerciseCompletionData
-
-struct ExerciseCompletionData: Equatable {
-    var startTimestamp: Date?
-    var endTimestamp: Date?
-    var numberOfTrials: Int = 0
-    var numberOfAllowedTrials: Int = 0
-}
 
 // MARK: - ExerciseState
 

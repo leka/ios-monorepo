@@ -18,6 +18,7 @@ let project = Project.module(
         .project(target: "DesignKit", path: Path("../../Modules/DesignKit")),
         .project(target: "RobotKit", path: Path("../../Modules/RobotKit")),
         .project(target: "ContentKit", path: Path("../../Modules/ContentKit")),
+        .project(target: "AccountKit", path: Path("../../Modules/AccountKit")),
         .project(target: "LocalizationKit", path: Path("../../Modules/LocalizationKit")),
         .external(name: "SwiftUIJoystick"),
         .external(name: "AudioKit"),

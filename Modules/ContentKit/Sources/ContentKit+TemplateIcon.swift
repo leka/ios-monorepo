@@ -20,13 +20,13 @@ public extension ContentKit {
         let allChoiceCounts = activity.exercisePayload.exerciseGroups.flatMap { group in
             group.exercises.compactMap { exercise -> Int? in
                 if let payload = exercise.payload as? TouchToSelect.Payload {
-                    return payload.choices.count
+                    payload.choices.count
                 } else if let payload = exercise.payload as? DragAndDropIntoZones.Payload {
-                    return payload.choices.count
+                    payload.choices.count
                 } else if let payload = exercise.payload as? DragAndDropToAssociate.Payload {
-                    return payload.choices.count
+                    payload.choices.count
                 } else {
-                    return nil
+                    nil
                 }
             }
         }
