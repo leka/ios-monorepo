@@ -37,11 +37,11 @@ public class ActivityCompletionDataManager {
 
     // MARK: Internal
 
-    var rootOwnerCompletionData: AnyPublisher<[ExerciseCompletionData], Never> {
+    var rootOwnerCompletionData: AnyPublisher<[ActivityCompletionData], Never> {
         self.allRootOwnerActivityCompletionData.eraseToAnyPublisher()
     }
 
-    var carereceiverCompletionData: AnyPublisher<[ExerciseCompletionData], Never> {
+    var carereceiverCompletionData: AnyPublisher<[ActivityCompletionData], Never> {
         self.activityCompletionDataPerCarereceiver.eraseToAnyPublisher()
     }
 
@@ -51,8 +51,8 @@ public class ActivityCompletionDataManager {
 
     // MARK: Private
 
-    private var allRootOwnerActivityCompletionData = CurrentValueSubject<[ExerciseCompletionData], Never>([])
-    private var activityCompletionDataPerCarereceiver = CurrentValueSubject<[ExerciseCompletionData], Never>([])
+    private var allRootOwnerActivityCompletionData = CurrentValueSubject<[ActivityCompletionData], Never>([])
+    private var activityCompletionDataPerCarereceiver = CurrentValueSubject<[ActivityCompletionData], Never>([])
     private var fetchErrorSubject = PassthroughSubject<Error, Never>()
     private let dbOps = DatabaseOperations.shared
     private var cancellables = Set<AnyCancellable>()
