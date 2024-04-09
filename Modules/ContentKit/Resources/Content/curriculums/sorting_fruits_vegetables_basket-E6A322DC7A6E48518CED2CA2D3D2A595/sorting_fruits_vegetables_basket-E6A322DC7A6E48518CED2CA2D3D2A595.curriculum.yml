@@ -1,0 +1,63 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: E6A322DC7A6E48518CED2CA2D3D2A595
+name: sorting_fruits_vegetables_basket
+
+status: published
+
+created_at: "2024-03-21T15:12:35.579066"
+last_edited_at: "2024-04-10T15:38:58.769414"
+authors:
+  - leka
+
+skills:
+  - association
+  - association/sorting
+  - association/matching
+
+tags:
+  - pairing
+  - vegetables
+  - fruits
+  - basket
+  - intruder
+
+hmi:
+  - tablet
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: sorting_fruits_vegetables_basket
+      title: Trier les fruits et les légumes
+      subtitle: En les plaçant dans un panier
+      abstract: |
+        Concentré sur le tri et l'appariement, ce curriculum utilise des fruits et légumes pour développer la reconnaissance et la classification, enrichissant l'interaction avec le monde naturel.
+      description: |
+        Ce curriculum renforce la reconnaissance et le tri des fruits et légumes, guidant les participants à travers une aventure éducative. Ils exploreront la diversité et l'importance de ces aliments.
+
+        À travers des activités variées, les participants affinent leurs compétences d'observation et apprennent à distinguer et reconnaître les caractéristiques uniques des différents types de fruits et légumes.
+
+  - locale: en_US
+    details:
+      icon: sorting_fruits_vegetables_basket
+      title: Sorting fruits and vegetables
+      subtitle: By placing them in a basket
+      abstract: |
+        Focused on sorting and matching, this curriculum leverages fruits and vegetables to enhance recognition and classification, enriching interaction with the natural world.
+      description: |
+        This curriculum enhances the recognition and sorting of fruits and vegetables, taking participants on an educational journey. They will explore the diversity and importance of these foods.
+
+        Through a variety of activities, participants refine their observation skills and learn to distinguish and recognize the unique characteristics of different types of fruits and vegetables.
+
+activities:
+  - sorting_fruits_vegetables_basket_1_one_choice-A3652A06FC4F4E9081E462987106A92A
+  - sorting_fruits_vegetables_basket_2_two_choices_one_intruder-7ECDDF1846AC47A8B0BEFF5525BE80B7
+  - sorting_fruits_vegetables_basket_3_three_choices_multiple_intruders-88013EBEBE2E4FA6B616CF0B393F2346
+  - sorting_fruits_vegetables_basket_4_four_choices_same_images-58A898C6E60742BD9ED7BDB2E5AEB265
