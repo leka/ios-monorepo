@@ -16,7 +16,15 @@ public class ActivityCompletionDataManager {
     public static let shared = ActivityCompletionDataManager()
 
     public func initializeActivityCompletionDataListener() {
-        // TODO: (@macteuts) observe ActivityCompletiondata for the whole User (i.e. RootOwner, data for all owned profiles)
+        self.dbOps.observeAll(from: .activityCompletionData)
+            .sink(receiveCompletion: { [weak self] completion in
+                if case let .failure(error) = completion {
+                    self?.fetchErrorSubject.send(error)
+                }
+            }, receiveValue: { [weak self] fetchedData in
+                self?.allRootOwnerActivityCompletionData.send(fetchedData)
+            })
+            .store(in: &self.cancellables)
     }
 
     public func fetchActivityCompletionData(CarereceiverID _: String) {
