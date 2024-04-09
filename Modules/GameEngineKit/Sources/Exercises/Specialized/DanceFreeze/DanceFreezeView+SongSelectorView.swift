@@ -41,7 +41,7 @@ extension DanceFreezeView {
                                 .imageScale(.large)
                                 .foregroundColor(
                                     audioRecording == self.selectedAudioRecording
-                                        ? .green : .primary
+                                        ? self.styleManager.accentColor! : .primary
                                 )
                                 .onTapGesture {
                                     withAnimation {
@@ -56,6 +56,10 @@ extension DanceFreezeView {
             .padding(.vertical, 15)
             .padding(.horizontal, 40)
         }
+
+        // MARK: Private
+
+        @ObservedObject private var styleManager: StyleManager = .shared
     }
 }
 
