@@ -416,6 +416,24 @@
                 }
             }
         },
+        "game_engine_kit.melody_view.keyboard_selector_title": {
+            "comment": "MelodyView keyboard selection title",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Keyboard type"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Type de clavier"
+                    }
+                }
+            }
+        },
         "game_engine_kit.melody_view.play_button_label": {
             "comment": "MelodyView play button label",
             "extractionState": "extracted_with_value",

@@ -18,30 +18,54 @@ extension MelodyView {
         // MARK: Internal
 
         var body: some View {
-            HStack(spacing: 40) {
-                VStack(spacing: 0) {
-                    GameEngineKitAsset.Exercises.Melody.iconKeyboardPartial.swiftUIImage
-                        .resizable()
-                        .scaledToFit()
-                    Text(l10n.MelodyView.partialKeyboardLabel)
-                        .foregroundStyle(self.keyboard == .partial ? .black : .gray.opacity(0.4))
-                }
-                .onTapGesture {
-                    withAnimation {
-                        self.keyboard = .partial
-                    }
-                }
+            VStack {
+                Text(l10n.MelodyView.keyboardSelectionTitle)
+                    .font(.headline)
+                    .frame(maxWidth: .infinity, alignment: .leading)
 
-                VStack(spacing: 0) {
-                    GameEngineKitAsset.Exercises.Melody.iconKeyboardFull.swiftUIImage
-                        .resizable()
-                        .scaledToFit()
-                    Text(l10n.MelodyView.fullKeyboardLabel)
-                        .foregroundStyle(self.keyboard == .full ? .black : .gray.opacity(0.4))
-                }
-                .onTapGesture {
-                    withAnimation {
-                        self.keyboard = .full
+                Divider()
+
+                HStack(spacing: 40) {
+                    HStack {
+                        Image(systemName: self.keyboard == .partial ? "checkmark.circle.fill" : "circle")
+                            .imageScale(.large)
+                            .foregroundColor(
+                                self.keyboard == .partial
+                                    ? self.styleManager.accentColor! : .primary
+                            )
+                        VStack(spacing: 0) {
+                            GameEngineKitAsset.Exercises.Melody.iconKeyboardPartial.swiftUIImage
+                                .resizable()
+                                .scaledToFit()
+                            Text(l10n.MelodyView.partialKeyboardLabel)
+                                .foregroundStyle(self.keyboard == .partial ? self.styleManager.accentColor! : .primary)
+                        }
+                    }
+                    .onTapGesture {
+                        withAnimation {
+                            self.keyboard = .partial
+                        }
+                    }
+
+                    HStack {
+                        Image(systemName: self.keyboard == .full ? "checkmark.circle.fill" : "circle")
+                            .imageScale(.large)
+                            .foregroundColor(
+                                self.keyboard == .full
+                                    ? self.styleManager.accentColor! : .primary
+                            )
+                        VStack(spacing: 0) {
+                            GameEngineKitAsset.Exercises.Melody.iconKeyboardFull.swiftUIImage
+                                .resizable()
+                                .scaledToFit()
+                            Text(l10n.MelodyView.fullKeyboardLabel)
+                                .foregroundStyle(self.keyboard == .full ? self.styleManager.accentColor! : .primary)
+                        }
+                    }
+                    .onTapGesture {
+                        withAnimation {
+                            self.keyboard = .full
+                        }
                     }
                 }
             }
@@ -52,6 +76,7 @@ extension MelodyView {
         // MARK: Private
 
         @Binding private var keyboard: KeyboardType
+        @ObservedObject private var styleManager: StyleManager = .shared
     }
 }
 
