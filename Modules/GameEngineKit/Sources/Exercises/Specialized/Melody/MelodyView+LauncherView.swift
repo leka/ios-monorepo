@@ -19,7 +19,7 @@ extension MelodyView {
                     GameEngineKitAsset.Exercises.Melody.imageIllustration.swiftUIImage
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .padding(.trailing, 50)
+                        .padding(80)
 
                     VStack(spacing: 0) {
                         KeyboardModeView(keyboard: self.$keyboard)
@@ -27,7 +27,6 @@ extension MelodyView {
                         SongSelectorView(songs: self.songs, selectedMidiRecording: self.$selectedSong)
                     }
                 }
-                .padding(.horizontal, 100)
 
                 Button {
                     self.mode = .selectionConfirmed

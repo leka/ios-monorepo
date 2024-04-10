@@ -22,8 +22,8 @@ extension MelodyView {
         let songs: [MidiRecording]
 
         let columns = [
-            GridItem(.flexible()),
-            GridItem(.flexible()),
+            GridItem(.flexible(minimum: 160), spacing: 10, alignment: .topLeading),
+            GridItem(.flexible(minimum: 160), spacing: 10, alignment: .topLeading),
         ]
 
         var body: some View {
