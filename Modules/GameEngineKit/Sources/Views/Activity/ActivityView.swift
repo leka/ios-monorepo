@@ -294,7 +294,7 @@ public struct ActivityView: View {
                 RemoteStandard.MainView()
 
             case .remoteArrow:
-                RemoteArrowView()
+                RemoteArrowView(size: 200, xPosition: 180)
 
             case .hideAndSeek:
                 HideAndSeekView(

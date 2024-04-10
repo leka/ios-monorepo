@@ -47,18 +47,19 @@ extension RemoteArrowView {
         @State private var isPressed = false
 
         let arrow: Arrow
+        let size: CGFloat
         let onChanged: () -> Void
         let onReleased: () -> Void
 
         var body: some View {
             Circle()
                 .fill(.white)
-                .frame(width: 200, height: 200)
+                .frame(width: self.size, height: self.size)
                 .overlay {
                     Image(systemName: self.arrow.name)
                         .resizable()
                         .foregroundColor(self.arrow.color.screen)
-                        .frame(width: 80, height: 100)
+                        .frame(width: self.size / 2.5, height: self.size / 2)
                 }
                 .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: 0)
                 .scaleEffect(self.isPressed ? 0.95 : 1.0)
@@ -78,7 +79,7 @@ extension RemoteArrowView {
 }
 
 #Preview {
-    RemoteArrowView.ArrowButton(arrow: .counterclockwise) {
+    RemoteArrowView.ArrowButton(arrow: .counterclockwise, size: 200) {
         print("Button pressed")
     } onReleased: {
         print("Button released")
