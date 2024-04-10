@@ -6,6 +6,11 @@ import LocalizationKit
 
 extension l10n {
     enum MelodyView {
+        static let keyboardSelectionTitle = LocalizedString("game_engine_kit.melody_view.keyboard_selector_title",
+                                                            bundle: GameEngineKitResources.bundle,
+                                                            value: "Keyboard type",
+                                                            comment: "MelodyView keyboard selection title")
+
         static let musicSelectionTitle = LocalizedString("game_engine_kit.melody_view.song_selector_title",
                                                          bundle: GameEngineKitResources.bundle,
                                                          value: "Music selection",

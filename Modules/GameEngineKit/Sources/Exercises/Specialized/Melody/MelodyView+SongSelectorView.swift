@@ -22,8 +22,8 @@ extension MelodyView {
         let songs: [MidiRecording]
 
         let columns = [
-            GridItem(.flexible()),
-            GridItem(.flexible()),
+            GridItem(.flexible(minimum: 160), spacing: 10, alignment: .topLeading),
+            GridItem(.flexible(minimum: 160), spacing: 10, alignment: .topLeading),
         ]
 
         var body: some View {
@@ -41,7 +41,7 @@ extension MelodyView {
                                 .imageScale(.large)
                                 .foregroundColor(
                                     midiRecording == self.selectedMidiRecording
-                                        ? .green : .primary
+                                        ? self.styleManager.accentColor! : .primary
                                 )
                                 .onTapGesture {
                                     withAnimation {
@@ -56,6 +56,10 @@ extension MelodyView {
             .padding(.vertical, 15)
             .padding(.horizontal, 40)
         }
+
+        // MARK: Private
+
+        @ObservedObject private var styleManager: StyleManager = .shared
     }
 }
 
