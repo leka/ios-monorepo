@@ -45,7 +45,7 @@ enum RemoteStandard {
         }
     }
 
-    struct MainView: View {
+    struct JoystickCommand: View {
         // MARK: Internal
 
         var body: some View {
@@ -75,5 +75,5 @@ enum RemoteStandard {
 }
 
 #Preview {
-    RemoteStandard.MainView()
+    RemoteStandard.JoystickCommand()
 }
