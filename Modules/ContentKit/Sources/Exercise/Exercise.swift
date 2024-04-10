@@ -52,7 +52,8 @@ public struct Exercise: Decodable {
             case (.melody, .none):
                 self.payload = try container.decode(MidiRecordingPlayer.Payload.self, forKey: .payload)
 
-            case (.remoteStandard, .none),
+            case (.remoteStandardJoystick, .none),
+                 (.remoteStandardArrow, .none),
                  (.remoteArrow, .none),
                  (.hideAndSeek, .none),
                  (.pairing, .none):

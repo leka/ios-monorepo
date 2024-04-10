@@ -6,6 +6,8 @@ import SwiftUI
 
 extension RemoteArrowView {
     struct CircleLayout: Layout {
+        let xPosition: CGFloat
+
         func sizeThatFits(proposal: ProposedViewSize, subviews _: Subviews, cache _: inout ()) -> CGSize {
             proposal.replacingUnspecifiedDimensions()
         }
@@ -16,7 +18,7 @@ extension RemoteArrowView {
             let posY = bounds.midY
 
             for (index, subview) in subviews.enumerated() {
-                var point = CGPoint(x: 180, y: 0)
+                var point = CGPoint(x: self.xPosition, y: 0)
                     .applying(CGAffineTransform(rotationAngle: CGFloat(angle) * CGFloat(index - 1)))
 
                 point.x += posX
