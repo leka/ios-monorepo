@@ -4,6 +4,7 @@
 
 import Foundation
 import LocalizationKit
+import RobotKit
 import UIKit
 import Yams
 

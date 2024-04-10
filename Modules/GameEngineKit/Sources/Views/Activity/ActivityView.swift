@@ -16,8 +16,9 @@ import SwiftUI
 public struct ActivityView: View {
     // MARK: Lifecycle
 
-    public init(activity: Activity) {
+    public init(activity: Activity, reinforcer: Robot.Reinforcer = .rainbow) {
         self._viewModel = StateObject(wrappedValue: ActivityViewViewModel(activity: activity))
+        self.reinforcer = reinforcer
     }
 
     // MARK: Public
@@ -179,6 +180,7 @@ public struct ActivityView: View {
     @State private var isInfoSheetPresented: Bool = false
 
     private let robot = Robot.shared
+    private let reinforcer: Robot.Reinforcer
 
     @ViewBuilder
     private var endOfActivityScoreView: some View {
@@ -196,8 +198,7 @@ public struct ActivityView: View {
             speed: 0.2
         )
         .onAppear {
-            // TODO(@ladislas/@hugo): Use reinforcer children choice
-            self.robot.run(.fire)
+            self.robot.run(self.reinforcer)
         }
         .transition(
             .asymmetric(

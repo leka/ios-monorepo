@@ -65,7 +65,7 @@ struct CategoryCurriculumsView: View {
                                         self.navigation.sheetContent = .carereceiverPicker(activity: activity)
                                     } else {
                                         self.navigation.currentActivity = activity
-                                        self.navigation.fullScreenCoverContent = .activityView
+                                        self.navigation.fullScreenCoverContent = .activityView(carereceiver: nil)
                                     }
                                 })
 
