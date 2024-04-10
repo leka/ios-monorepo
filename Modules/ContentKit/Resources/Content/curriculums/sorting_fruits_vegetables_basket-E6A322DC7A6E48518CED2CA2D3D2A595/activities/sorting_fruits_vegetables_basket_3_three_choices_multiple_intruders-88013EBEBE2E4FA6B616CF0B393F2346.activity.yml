@@ -5,10 +5,10 @@
 version: 1.0.0
 
 uuid: 88013EBEBE2E4FA6B616CF0B393F2346
-name: categorization_sort_through_images_with_several_intruders
+name: sorting_fruits_vegetables_basket_3_three_choices_multiple_intruders
 
 created_at: "2024-03-08T11:49:37.123541"
-last_edited_at: "2024-04-08T12:44:26.439991"
+last_edited_at: "2024-04-10T12:21:12.923540"
 status: published
 
 authors:
@@ -37,39 +37,39 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon: categorization_sort_through_with_basket
+      icon: sorting_fruits_vegetables_basket
 
-      title: Trier avec plusieurs intrus
-      subtitle: null
+      title: Trier et placer les fruits et légumes dans le panier
+      subtitle: 3 choix, 1 bonne réponse et 2 intrus
 
       short_description: |
-        Mets la même image dans le panier
+        Identifiez et placez le bon fruit ou légume dans le panier
 
       description: |
-        La personne accompagnée doit associer l'image similaire à celle déjà présente dans le panier.
+        Sélectionnez le fruit ou le légume correct parmi les options présentées et évitez les intrus pour réussir l'exercice
 
       instructions: |
-        - Sur l'écran de l'iPad, une image est déjà dans le panier et quatre autres sont à l'extérieur du panier
-        - Encourager la personne accompagnée à glisser puis déposer dans le panier la même image que celle qui est déjà dans le panier
-        - Quand la réponse est correct, Leka lance un renforçateur
+        - Sur l'écran de l'iPad, trois images sont présentées à l'extérieur du panier : la bonne réponse et deux intrus.
+        - Encouragez la personne accompagnée à réfléchir et à choisir l'image correcte qui représente le fruit ou le légume demandé, puis à la glisser dans le panier.
+        - Pour chaque choix correct, félicitez le participant pendant que Leka lance un renforçateur pour célébrer la réussite.
 
   - locale: en_US
     details:
-      icon: categorization_sort_through_with_basket
+      icon: sorting_fruits_vegetables_basket
 
-      title: Sort through images with several intruders
-      subtitle: null
+      title: Sort and place fruits and vegetables in the basket
+      subtitle: 3 choices, 1 correct answer and 2 intruders
 
       short_description: |
-        Put the same image in the basket
+        Identify and place the correct fruit or vegetable in the basket
 
       description: |
-        The care receiver has to drag and drop into the basket the same image than the one already here.
+        Select the correct fruit or vegetable from the options presented, avoiding the intruders to successfully complete the exercise
 
       instructions: |
-        - On the iPad screen, there is an image already into the basket and four images out of the basket
-        - Encourage the care receiver to drag and drop into the basket the same image as the one already in the basket
-        - When the answer is correct, Leka launches a reinforcer
+        - On the iPad screen, three images are presented outside of the basket: the correct answer and two intruders.
+        - Encourage the participant to think and choose the correct image that represents the requested fruit or vegetable, then drag it into the basket.
+        - For each correct choice, congratulate the participant while Leka launches a reinforcer to celebrate the success.
 
 exercises_payload:
   options:
