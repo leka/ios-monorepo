@@ -236,7 +236,14 @@
                         }
                     }
                 },
-                "remoteStandard": {
+                "remoteStandardJoystick": {
+                    "properties": {
+                        "instructions": {
+                            "ref": "$exercise/instructions"
+                        }
+                    }
+                },
+                "remoteStandardArrow": {
                     "properties": {
                         "instructions": {
                             "ref": "$exercise/instructions"
@@ -308,7 +315,8 @@
                 "dragAndDropIntoZones",
                 "dragAndDropToAssociate",
                 "danceFreeze",
-                "remoteStandard",
+                "remoteStandardJoystick",
+                "remoteStandardArrow",
                 "remoteArrow",
                 "hideAndSeek",
                 "musicalInstruments",
