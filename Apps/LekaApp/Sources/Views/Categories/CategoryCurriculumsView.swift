@@ -25,14 +25,13 @@ struct CategoryCurriculumsView: View {
 
                     VStack(alignment: .leading) {
                         Text(self.category.details.subtitle)
-                            .font(.title)
+                            .font(.title2)
 
                         Text(self.category.details.description)
                             .foregroundStyle(.secondary)
                     }
                 }
                 .padding(.horizontal)
-                .padding(.bottom)
                 .padding(.bottom)
 
                 Spacer()
