@@ -71,20 +71,10 @@ jobs:
         run: |
           bundle exec fastlane beta_internal targets:LekaApp --verbose
 
-      - name: fastlane beta_internal LekaActivityUIExplorer
-        if: contains(github.event.label.name, 'LekaActivityUIExplorer')
-        run: |
-          bundle exec fastlane beta_internal targets:LekaActivityUIExplorer --verbose
-
       - name: fastlane beta_internal LekaUpdater
         if: contains(github.event.label.name, 'LekaUpdater')
         run: |
           bundle exec fastlane beta_internal targets:LekaUpdater --verbose
-
-      - name: fastlane beta_internal all
-        if: contains(github.event.label.name, 'all')
-        run: |
-          bundle exec fastlane beta_internal targets:all --verbose
 
       - name: Post Github comment
         if: ${{ success() }}

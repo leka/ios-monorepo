@@ -35,7 +35,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          fetch-depth: 1 # shallow clone
+          fetch-depth: 0
+          lfs: true
+
+      - name: Checkout base, head branches
+        run: |
+          git checkout ${{ env.BASE_REF }}
+          git checkout ${{ env.HEAD_REF }}
+        env:
+          BASE_REF: ${{ github.event.pull_request.base.ref }}
+          HEAD_REF: ${{ github.head_ref }}
 
       - name: Setup mise
         run: |
@@ -67,7 +76,7 @@ jobs:
         run: |
           bundle exec fastlane release target:LekaUpdater --verbose
 
-      - name: post message
+      - name: Post Github comment
         if: ${{ success() }}
         uses: marocchino/sticky-pull-request-comment@v2
         with:
@@ -75,17 +84,16 @@ jobs:
           hide_classify: "OUTDATED"
           header: release
           message: |
-            ## New AppStore Release available :rocket:
+            ${{ env.CHANGELOG_FOR_GITHUB }}
 
-            @leka/dev-ios
-
-            A new version has been uploaded to the App Store and is ready for review.
-
-            | <!-- -->    | <!-- -->                        |
-            |-------------|---------------------------------|
-            | **App**     | `${{ env.APP_NAME }}`           |
-            | **Version** | `${{ env.APP_VERSION_NUMBER }}` |
-            | **Build**   | `${{ env.APP_BUILD_NUMBER }}`   |
+      - name: Post to a Slack channel
+        id: slack
+        uses: slackapi/slack-github-action@v1.25.0
+        with:
+          channel-id: "C3SHVTYNP,C041YEWNVJS"
+          slack-message: ${{ env.CHANGELOG_FOR_SLACK }}
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
 
       - name: remove label
         if: always()
