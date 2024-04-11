@@ -18,7 +18,9 @@ struct LekaApp: App {
 
     init() {
         #if PRODUCTION_BUILD
-            let googleServiceInfoPlistName = "GoogleServiceInfo+PROD"
+            // TODO: (@ladislas) Use PROD db when app is stable
+            // let googleServiceInfoPlistName = "GoogleServiceInfo+PROD"
+            let googleServiceInfoPlistName = "GoogleServiceInfo+TESTFLIGHT"
         #elseif TESTFLIGHT_BUILD
             let googleServiceInfoPlistName = "GoogleServiceInfo+TESTFLIGHT"
         #elseif DEVELOPER_MODE
