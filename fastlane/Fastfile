@@ -209,7 +209,7 @@ platform :ios do
         pr_number = ENV.fetch('PR_NUMBER', `gh pr view --json number -q .number`.strip)
         last_commit_sha_to_int = last_git_commit[:abbreviated_commit_hash].to_i(16)
 
-        next_build_number = "#{next_build_number_major}.#{pr_number or '000'}.#{last_commit_sha_to_int}"
+        next_build_number = "#{next_build_number_major}.#{pr_number or '000'}.#{last_commit_sha_to_int}".slice(0, 18)
         version_number = get_version_number(xcodeproj: app_xcodeproj.to_s)
 
         UI.important "App: #{app} / Version number: #{version_number} / Build number: #{next_build_number}"
@@ -294,20 +294,20 @@ platform :ios do
       end
 
       latest_build_number = latest_testflight_build_number(app_identifier: app_id.to_s).to_s
-      next_build_number = latest_build_number.split('.').first.to_i + 1
+      next_build_number_major = latest_build_number.split('.').first.to_i + 1
       pr_number = ENV.fetch('PR_NUMBER', `gh pr view --json number -q .number`.strip)
       last_commit_sha_to_int = last_git_commit[:abbreviated_commit_hash].to_i(16)
 
-      build_number = "#{next_build_number}.#{pr_number or '000'}.#{last_commit_sha_to_int}"
+      next_build_number = "#{next_build_number_major}.#{pr_number or '000'}.#{last_commit_sha_to_int}".slice(0, 18)
       version_number = get_version_number(xcodeproj: app_xcodeproj.to_s)
 
-      UI.important "App: #{app} / Version number: #{version_number} / Build number: #{build_number}"
+      UI.important "App: #{app} / Version number: #{version_number} / Build number: #{next_build_number}"
       UI.important "Metadata path: #{ROOT_DIR}/fastlane/release/#{app}/metadata"
 
       # capture_screenshots # ? not working yet
 
       increment_build_number(
-        build_number: build_number,
+        build_number: next_build_number,
         xcodeproj: app_xcodeproj.to_s
       )
 
@@ -315,7 +315,7 @@ platform :ios do
         workspace: 'ios-monorepo.xcworkspace',
         scheme: app,
         output_directory: './.build',
-        output_name: "#{build_date}-#{app}-v#{version_number}-#{build_number}"
+        output_name: "#{build_date}-#{app}-v#{version_number}-#{next_build_number}"
       )
 
       upload_to_app_store(
