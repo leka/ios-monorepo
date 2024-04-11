@@ -1,0 +1,95 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+version: 1.0.0
+
+uuid: E85F0498A29047E893631397592CC444
+name: gamepad_joystick_color_pad
+
+created_at: "2024-03-04T18:07:12.519606"
+last_edited_at: "2024-04-11T10:09:07.867304"
+status: published
+
+authors:
+  - leka
+
+skills:
+  - sensory_interaction
+  - gross_motor_skills
+
+tags:
+  - robot_movements
+  - robot_colors
+
+hmi:
+  - tablet_robot
+
+types:
+  - one_on_one
+  - group
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: gamepad_joystick_color_pad
+
+      title: Joystick et Pavé de Couleurs
+      subtitle: null
+
+      short_description: |
+        Contrôlez Leka avec le joystick pour naviguer, changer de couleur ou activer le renforçateur de votre choix
+
+      description: |
+        La manette avec joystick offre des fonctionnalités complètes de contrôle du robot :
+
+        - Utilisez le joystick pour diriger le robot dans l'espace, permettant divers mouvements y compris des rotations
+        - Accédez aux 5 renforçateurs de Leka via des boutons dédiés pour activer les effets souhaités
+        - Employez le Pavé de Couleurs pour changer dynamiquement les couleurs du robot
+
+      instructions: |
+        - Pour déplacer Leka, utilisez le joystick situé en bas à gauche de l'écran pour permettre à Leka d'avancer, reculer ou tourner sur lui-même
+        - Pour activer différents renforçateurs, appuyez sur leurs icônes respectives sur le côté gauche de l'écran de l'iPad
+        - Pour modifier la couleur du robot, activez le pavé de couleurs en bas à droite de l'écran
+
+  - locale: en_US
+    details:
+      icon: gamepad_joystick_color_pad
+
+      title: Joystick and Color Pad
+      subtitle: null
+
+      short_description: |
+        Control Leka with the joystick to navigate, change color, or trigger the reinforcer of your choice
+
+      description: |
+        The joystick controller offers comprehensive control features for the robot:
+
+        - Use the joystick to direct the robot in space, allowing various movements including rotations
+        - Access Leka's 5 reinforcers via dedicated buttons to activate the desired effects
+        - Employ the color pad to dynamically change the robot's colors
+
+      instructions: |
+        - To navigate Leka, use the joystick located at the bottom left of the screen to allow Leka to move forward, backward, or spin
+        - To activate different reinforcers, press their respective icons on the left side of the iPad screen
+        - To change the color of the robot, activate the color pad at the bottom right of the screen
+
+exercises_payload:
+  options:
+    shuffle_exercises: false
+    shuffle_groups: false
+
+  exercise_groups:
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Contrôle Leka avec la télécommande, fais le se déplacer, changer
+                de couleur ou lance le renforçateur de ton choix
+            - locale: en_US
+              value: Control Leka with the remote control, make him move, change color
+                or throw the reinforcer of your choice
+          interface: gamepadJoyStickColorPad
