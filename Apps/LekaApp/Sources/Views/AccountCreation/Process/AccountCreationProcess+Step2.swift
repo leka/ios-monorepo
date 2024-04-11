@@ -42,9 +42,25 @@ extension AccountCreationProcess {
             .sheet(isPresented: self.$isCaregiverCreationPresented) {
                 NavigationStack {
                     CreateCaregiverView(onClose: {
-                        self.selectedTab = .carereceiverCreation
+                        withAnimation {
+                            self.selectedTab = .carereceiverCreation
+                        }
                     })
                     .navigationBarTitleDisplayMode(.inline)
+                    .interactiveDismissDisabled()
+                }
+            }
+            .toolbar {
+                ToolbarItemGroup(placement: .bottomBar) {
+                    Button {
+                        withAnimation {
+                            self.selectedTab = .carereceiverCreation
+                        }
+                    } label: {
+                        Text(l10n.AccountCreationProcess.Step2.skipButton)
+                    }
+
+                    Spacer()
                 }
             }
         }

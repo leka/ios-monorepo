@@ -90,6 +90,7 @@ struct CreateCaregiverView: View {
                         self.newCaregiver.avatar = Avatars.categories.first!.avatars.randomElement()!
                     }
                     self.viewModel.createCaregiver(caregiver: self.newCaregiver)
+                    self.isCaregiverCreated = true
                     withAnimation {
                         self.dismiss()
                     }
@@ -110,11 +111,16 @@ struct CreateCaregiverView: View {
                 }
             }
         }
-        .onDisappear { self.onClose?() }
+        .onDisappear {
+            if self.isCaregiverCreated {
+                self.onClose?()
+            }
+        }
     }
 
     // MARK: Private
 
+    @State private var isCaregiverCreated: Bool = false
     @StateObject private var viewModel = CreateCaregiverViewModel()
 
     @State private var newCaregiver = Caregiver()

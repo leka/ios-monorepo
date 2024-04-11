@@ -39,9 +39,25 @@ extension AccountCreationProcess {
             .sheet(isPresented: self.$isCarereceiverCreationPresented) {
                 NavigationStack {
                     CreateCarereceiverView(onClose: {
-                        self.selectedTab = .final
+                        withAnimation {
+                            self.selectedTab = .final
+                        }
                     })
                     .navigationBarTitleDisplayMode(.inline)
+                    .interactiveDismissDisabled()
+                }
+            }
+            .toolbar {
+                ToolbarItemGroup(placement: .bottomBar) {
+                    Button {
+                        withAnimation {
+                            self.selectedTab = .final
+                        }
+                    } label: {
+                        Text(l10n.AccountCreationProcess.Step3.skipButton)
+                    }
+
+                    Spacer()
                 }
             }
         }

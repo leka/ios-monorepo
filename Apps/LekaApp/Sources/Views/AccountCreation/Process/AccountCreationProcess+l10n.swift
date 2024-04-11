@@ -33,6 +33,8 @@ extension l10n {
             static let message = LocalizedString("lekaapp.account_creation_process.step_2.message", value: "First, let's create your profile as a caregiver.", comment: "Step 2 message")
 
             static let createButton = LocalizedString("lekaapp.account_creation_process.step_2.create_button", value: "Create", comment: "Step 2 create button")
+
+            static let skipButton = LocalizedString("lekaapp.account_creation_process.step_2.skip_button", value: "Skip this step", comment: "Step 2 skip button")
         }
 
         enum Step3 {
@@ -46,6 +48,8 @@ extension l10n {
                                                  comment: "Step 3 message")
 
             static let createButton = LocalizedString("lekaapp.account_creation_process.step_3.create_button", value: "Create", comment: "Step 3 create button")
+
+            static let skipButton = LocalizedString("lekaapp.account_creation_process.step_3.skip_button", value: "Skip this step", comment: "Step 3 skip button")
         }
 
         enum Step4 {
@@ -53,11 +57,7 @@ extension l10n {
 
             static let message = LocalizedString("lekaapp.account_creation_process.step_4.message",
                                                  value: """
-                                                     You have just completed:
-
-                                                     ✅ Your caregiver profile
-                                                     ✅ Your first care receiver profile
-
+                                                     You have just completed the onboarding!
                                                      You can now discover the Leka App and dive deep in our educational content!
                                                      """,
                                                  comment: "Step 4 message")

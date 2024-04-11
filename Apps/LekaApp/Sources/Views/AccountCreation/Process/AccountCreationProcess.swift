@@ -24,21 +24,28 @@ enum AccountCreationProcess {
         // MARK: Internal
 
         var body: some View {
-            TabView(selection: self.$selectedTab) {
-                Step1(selectedTab: self.$selectedTab)
-                    .tag(Step.intro)
-                Step2(selectedTab: self.$selectedTab)
-                    .tag(Step.caregiverCreation)
-                Step3(selectedTab: self.$selectedTab)
-                    .tag(Step.carereceiverCreation)
-                Step4()
-                    .tag(Step.final)
-            }
-            .tabViewStyle(.page)
-            .indexViewStyle(.page(backgroundDisplayMode: .always))
-            .toolbar {
-                ToolbarItem(placement: .principal) {
-                    NavigationTitle()
+            NavigationStack {
+                TabView(selection: self.$selectedTab) {
+                    Step1(selectedTab: self.$selectedTab)
+                        .tag(Step.intro)
+
+                    Step2(selectedTab: self.$selectedTab)
+                        .tag(Step.caregiverCreation)
+
+                    Step3(selectedTab: self.$selectedTab)
+                        .tag(Step.carereceiverCreation)
+                    Step4()
+                        .tag(Step.final)
+                }
+                .tabViewStyle(.page)
+                .indexViewStyle(.page(backgroundDisplayMode: .never))
+                .toolbar {
+                    ToolbarItem(placement: .principal) {
+                        NavigationTitle()
+                    }
+                }
+                .onAppear {
+                    UIScrollView.appearance().isScrollEnabled = false
                 }
             }
         }
