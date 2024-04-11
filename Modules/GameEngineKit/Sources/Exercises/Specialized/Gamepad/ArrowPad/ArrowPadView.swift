@@ -16,29 +16,37 @@ struct ArrowPadView: View {
                 self.robot.move(.forward(speed: 1))
                 self.robot.shine(.all(in: ArrowButton.Arrow.up.color))
             } onReleased: {
-                self.robot.stopMotion()
-                self.robot.stopLights()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    self.robot.stopMotion()
+                    self.robot.stopLights()
+                }
             }
             ArrowButton(arrow: .clockwise, size: self.size) {
                 self.robot.move(.spin(.clockwise, speed: 1))
                 self.robot.shine(.all(in: ArrowButton.Arrow.clockwise.color))
             } onReleased: {
-                self.robot.stopMotion()
-                self.robot.stopLights()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    self.robot.stopMotion()
+                    self.robot.stopLights()
+                }
             }
             ArrowButton(arrow: .down, size: self.size) {
                 self.robot.move(.backward(speed: 1))
                 self.robot.shine(.all(in: ArrowButton.Arrow.down.color))
             } onReleased: {
-                self.robot.stopMotion()
-                self.robot.stopLights()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    self.robot.stopMotion()
+                    self.robot.stopLights()
+                }
             }
             ArrowButton(arrow: .counterclockwise, size: self.size) {
                 self.robot.move(.spin(.counterclockwise, speed: 1))
                 self.robot.shine(.all(in: ArrowButton.Arrow.counterclockwise.color))
             } onReleased: {
-                self.robot.stopMotion()
-                self.robot.stopLights()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    self.robot.stopMotion()
+                    self.robot.stopLights()
+                }
             }
         }
     }
