@@ -215,6 +215,7 @@ platform :ios do
         UI.important "App: #{app} / Version number: #{version_number} / Build number: #{next_build_number}"
 
         testflight_changelog = generate_changelogs(
+          release_type: 'beta',
           target: app,
           version_number: version_number,
           latest_build_number: latest_build_number,
@@ -307,6 +308,7 @@ platform :ios do
       # capture_screenshots # ? not working yet
 
       generate_changelogs(
+        release_type: 'release',
         target: app,
         version_number: version_number,
         latest_build_number: latest_build_number,
@@ -355,6 +357,7 @@ platform :ios do
   lane :generate_changelogs do |options|
     UI.important options
 
+    release_type = options[:release_type]
     app_name = options[:target].to_s
     version_number = options[:version_number].to_s
     latest_build_number = options[:latest_build_number].to_s
@@ -408,7 +411,7 @@ platform :ios do
       UI.message 'Creating CHANGELOG_FOR_SLACK'
 
       CHANGELOG_FOR_SLACK = <<~EOF_CHANGELOG_FOR_SLACK
-        :test_tube: *New TestFlight Build - #{app_name}* :airplane:
+        #{release_type == 'beta' ? ":test_tube: *New TestFlight Build - #{app_name}* :airplane:" : ":bookmark: *New AppStore Release - #{app_name}* :rocket:"}
 
         New version of #{app_name} is available for testing on TestFlight. Please check the changelog and install the app on your device. :rocket:
 
@@ -432,9 +435,9 @@ platform :ios do
       UI.message 'Creating CHANGELOG_FOR_GITHUB'
 
       CHANGELOG_FOR_GITHUB = <<~EOF_CHANGELOG_FOR_GITHUB
-        ## :test_tube: New TestFlight Build - #{app_name} :airplane:
+        #{release_type == 'beta' ? "## :test_tube: New TestFlight Build - #{app_name} :airplane:" : "## :bookmark: New AppStore Release - #{app_name} :rocket:"}
 
-        New version of #{app_name} is available for testing on TestFlight. Please check the changelog and install the app on your device. :rocket:
+        New version of #{app_name} is available for testing. Please check the changelog and install the app on your device. :rocket:
 
         **App**: #{app_name}
         **Version**: #{version_number}
