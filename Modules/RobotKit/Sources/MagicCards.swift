@@ -75,8 +75,8 @@ public extension MagicCard {
     static let activity_magic_objects: MagicCard = .init(id: 0x001F)
     static let activity_dance_freeze: MagicCard = .init(id: 0x0020)
 
-    static let remote_standard: MagicCard = .init(id: 0x0021)
-    static let remote_colored_arrows: MagicCard = .init(id: 0x0022)
+    static let gamepad_joystick_color_pad: MagicCard = .init(id: 0x0021)
+    static let gamepad_arrow_pad_big: MagicCard = .init(id: 0x0022)
 
     static let reinforcer_1_blink_green: MagicCard = .init(id: 0x0023)
     static let reinforcer_2_spin_blink: MagicCard = .init(id: 0x0024)

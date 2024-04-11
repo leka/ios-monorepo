@@ -6,8 +6,8 @@ import DesignKit
 import RobotKit
 import SwiftUI
 
-extension RemoteStandard {
-    struct ArrowCommand: View {
+extension Gamepad {
+    struct ArrowPadColorPad: View {
         // MARK: Internal
 
         var body: some View {
@@ -15,7 +15,7 @@ extension RemoteStandard {
                 VStack(spacing: 200) {
                     Spacer()
 
-                    RemoteArrowView(size: 130, xPosition: 130)
+                    ArrowPadView(size: 130, xPosition: 130)
                 }
 
                 RadialLayout(firstButtonPosX: -120, firstButtonPosY: -200, angle: 90.0) {
@@ -35,5 +35,5 @@ extension RemoteStandard {
 }
 
 #Preview {
-    RemoteStandard.ArrowCommand()
+    Gamepad.ArrowPadColorPad()
 }

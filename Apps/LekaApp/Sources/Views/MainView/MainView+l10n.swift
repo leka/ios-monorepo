@@ -15,7 +15,7 @@ extension l10n {
                 static let resources = LocalizedString("lekaapp.main_view.sidebar.category_label.resources", value: "Resources", comment: "The title of the category 'Resources'")
                 static let curriculums = LocalizedString("lekaapp.main_view.sidebar.category_label.curriculums", value: "Curriculums", comment: "The title of the category 'Curriculums'")
                 static let activities = LocalizedString("lekaapp.main_view.sidebar.category_label.activities", value: "Activities", comment: "The title of the category 'Activities'")
-                static let remotes = LocalizedString("lekaapp.main_view.sidebar.category_label.remotes", value: "Remotes", comment: "The title of the category 'Remotes'")
+                static let gamepads = LocalizedString("lekaapp.main_view.sidebar.category_label.gamepads", value: "Gamepads", comment: "The title of the category 'Gamepads'")
                 static let stories = LocalizedString("lekaapp.main_view.sidebar.category_label.stories", value: "Stories", comment: "The title of the category 'Stories'")
                 static let caregivers = LocalizedString("lekaapp.main_view.sidebar.category_label.caregivers", value: "Caregivers", comment: "The title of the category 'Caregivers'")
                 static let carereceivers = LocalizedString("lekaapp.main_view.sidebar.category_label.carereceivers", value: "Care Receivers", comment: "The title of the category 'Care Receivers'")

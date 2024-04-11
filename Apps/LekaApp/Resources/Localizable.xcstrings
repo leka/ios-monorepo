@@ -1370,6 +1370,24 @@
                 }
             }
         },
+        "lekaapp.main_view.sidebar.category_label.gamepads": {
+            "comment": "The title of the category 'Gamepads'",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Gamepads"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Manettes"
+                    }
+                }
+            }
+        },
         "lekaapp.main_view.sidebar.category_label.home": {
             "comment": "The title of the category 'Home'",
             "extractionState": "extracted_with_value",
@@ -1402,24 +1420,6 @@
                     "stringUnit": {
                         "state": "translated",
                         "value": "Nouveaut\u00e9s"
-                    }
-                }
-            }
-        },
-        "lekaapp.main_view.sidebar.category_label.remotes": {
-            "comment": "The title of the category 'Remotes'",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Remotes"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "T\u00e9l\u00e9commandes"
                     }
                 }
             }

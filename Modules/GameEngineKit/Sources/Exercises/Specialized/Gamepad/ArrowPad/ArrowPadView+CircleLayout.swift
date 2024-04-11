@@ -4,7 +4,7 @@
 
 import SwiftUI
 
-extension RemoteArrowView {
+extension ArrowPadView {
     struct CircleLayout: Layout {
         let xPosition: CGFloat
 

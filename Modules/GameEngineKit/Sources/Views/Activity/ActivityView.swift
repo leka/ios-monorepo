@@ -290,14 +290,14 @@ public struct ActivityView: View {
                     data: self.viewModel.currentExerciseSharedData
                 )
 
-            case .remoteStandardJoystick:
-                RemoteStandard.JoystickCommand()
+            case .gamepadJoyStickColorPad:
+                Gamepad.Joystick()
 
-            case .remoteStandardArrow:
-                RemoteStandard.ArrowCommand()
+            case .gamepadArrowPadColorPad:
+                Gamepad.ArrowPadColorPad()
 
-            case .remoteArrow:
-                RemoteArrowView(size: 200, xPosition: 180)
+            case .gamepadArrowPad:
+                ArrowPadView(size: 200, xPosition: 180)
 
             case .hideAndSeek:
                 HideAndSeekView(
