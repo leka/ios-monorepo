@@ -42,6 +42,7 @@ extension AccountCreationProcess {
                         self.selectedTab = .final
                     })
                     .navigationBarTitleDisplayMode(.inline)
+                    .interactiveDismissDisabled()
                 }
             }
         }

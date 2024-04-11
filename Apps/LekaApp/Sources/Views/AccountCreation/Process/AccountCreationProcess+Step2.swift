@@ -45,6 +45,7 @@ extension AccountCreationProcess {
                         self.selectedTab = .carereceiverCreation
                     })
                     .navigationBarTitleDisplayMode(.inline)
+                    .interactiveDismissDisabled()
                 }
             }
         }
