@@ -48,6 +48,19 @@ extension AccountCreationProcess {
                     .interactiveDismissDisabled()
                 }
             }
+            .toolbar {
+                ToolbarItemGroup(placement: .bottomBar) {
+                    Button {
+                        withAnimation {
+                            self.selectedTab = .carereceiverCreation
+                        }
+                    } label: {
+                        Text(l10n.AccountCreationProcess.Step2.skipButton)
+                    }
+
+                    Spacer()
+                }
+            }
         }
 
         // MARK: Private

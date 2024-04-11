@@ -45,6 +45,19 @@ extension AccountCreationProcess {
                     .interactiveDismissDisabled()
                 }
             }
+            .toolbar {
+                ToolbarItemGroup(placement: .bottomBar) {
+                    Button {
+                        withAnimation {
+                            self.selectedTab = .final
+                        }
+                    } label: {
+                        Text(l10n.AccountCreationProcess.Step3.skipButton)
+                    }
+
+                    Spacer()
+                }
+            }
         }
 
         // MARK: Private
