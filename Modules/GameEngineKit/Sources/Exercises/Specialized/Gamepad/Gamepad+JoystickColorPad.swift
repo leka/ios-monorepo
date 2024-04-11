@@ -6,7 +6,7 @@ import DesignKit
 import RobotKit
 import SwiftUI
 
-enum RemoteStandard {
+enum Gamepad {
     enum DisplayMode: String, CaseIterable {
         case fullBelt
         case twoHalves
@@ -45,7 +45,7 @@ enum RemoteStandard {
         }
     }
 
-    struct JoystickCommand: View {
+    struct Joystick: View {
         // MARK: Internal
 
         var body: some View {
@@ -75,5 +75,5 @@ enum RemoteStandard {
 }
 
 #Preview {
-    RemoteStandard.JoystickCommand()
+    Gamepad.Joystick()
 }

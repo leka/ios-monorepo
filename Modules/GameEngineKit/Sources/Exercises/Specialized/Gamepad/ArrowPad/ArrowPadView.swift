@@ -5,7 +5,7 @@
 import RobotKit
 import SwiftUI
 
-struct RemoteArrowView: View {
+struct ArrowPadView: View {
     let robot = Robot.shared
     let size: CGFloat
     let xPosition: CGFloat
@@ -45,5 +45,5 @@ struct RemoteArrowView: View {
 }
 
 #Preview {
-    RemoteArrowView(size: 200, xPosition: 180)
+    ArrowPadView(size: 200, xPosition: 180)
 }

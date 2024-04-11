@@ -9,8 +9,8 @@ extension LedZoneSelectorView {
     struct ModeButton: View {
         // MARK: Internal
 
-        var mode: RemoteStandard.DisplayMode
-        @Binding var displayMode: RemoteStandard.DisplayMode
+        var mode: Gamepad.DisplayMode
+        @Binding var displayMode: Gamepad.DisplayMode
 
         var body: some View {
             Button {

@@ -13,9 +13,9 @@ public extension Exercise {
         case dragAndDropIntoZones
         case dragAndDropToAssociate
         case danceFreeze
-        case remoteStandardJoystick
-        case remoteStandardArrow
-        case remoteArrow
+        case gamepadJoyStickColorPad
+        case gamepadArrowPadColorPad
+        case gamepadArrowPad
         case hideAndSeek
         case musicalInstruments
         case melody

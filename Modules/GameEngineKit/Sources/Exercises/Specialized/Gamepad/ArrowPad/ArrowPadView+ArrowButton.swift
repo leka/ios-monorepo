@@ -7,7 +7,7 @@ import SwiftUI
 
 // swiftlint:disable identifier_name nesting
 
-extension RemoteArrowView {
+extension ArrowPadView {
     struct ArrowButton: View {
         enum Arrow {
             case up
@@ -79,7 +79,7 @@ extension RemoteArrowView {
 }
 
 #Preview {
-    RemoteArrowView.ArrowButton(arrow: .counterclockwise, size: 200) {
+    ArrowPadView.ArrowButton(arrow: .counterclockwise, size: 200) {
         print("Button pressed")
     } onReleased: {
         print("Button released")

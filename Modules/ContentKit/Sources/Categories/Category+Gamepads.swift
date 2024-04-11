@@ -5,7 +5,7 @@
 import Foundation
 import Yams
 
-public struct CategoryRemotes: CategoryProtocol {
+public struct CategoryGamepads: CategoryProtocol {
     // MARK: Lifecycle
 
     public init(from decoder: Decoder) throws {
@@ -25,8 +25,8 @@ public struct CategoryRemotes: CategoryProtocol {
 
     // MARK: Public
 
-    public static var shared: CategoryRemotes {
-        let path = ContentKitResources.bundle.path(forResource: "remotes", ofType: ".category.yml")
+    public static var shared: CategoryGamepads {
+        let path = ContentKitResources.bundle.path(forResource: "gamepads", ofType: ".category.yml")
         let data = try? String(contentsOfFile: path!, encoding: .utf8)
 
         guard let data else {
@@ -34,7 +34,7 @@ public struct CategoryRemotes: CategoryProtocol {
             fatalError("💥 Error reading file")
         }
 
-        let info = try! YAMLDecoder().decode(CategoryRemotes.self, from: data) // swiftlint:disable:this force_try
+        let info = try! YAMLDecoder().decode(CategoryGamepads.self, from: data) // swiftlint:disable:this force_try
 
         return info
     }

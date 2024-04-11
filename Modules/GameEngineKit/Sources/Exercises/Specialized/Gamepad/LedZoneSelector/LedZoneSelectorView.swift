@@ -10,7 +10,7 @@ import SwiftUI
 struct LedZoneSelectorView: View {
     // MARK: Internal
 
-    let displayMode: RemoteStandard.DisplayMode
+    let displayMode: Gamepad.DisplayMode
 
     var body: some View {
         ZStack {

@@ -10,7 +10,7 @@ import SwiftUI
 
 // MARK: - CategoryRemotesView
 
-struct CategoryRemotesView: View {
+struct CategoryGamepadsView: View {
     // MARK: Internal
 
     var body: some View {
@@ -48,7 +48,7 @@ struct CategoryRemotesView: View {
 
     // MARK: Private
 
-    private let category: CategoryRemotes = .shared
+    private let category: CategoryGamepads = .shared
 
     @ObservedObject private var styleManager: StyleManager = .shared
     @ObservedObject private var authManagerViewModel: AuthManagerViewModel = .shared
@@ -59,6 +59,6 @@ struct CategoryRemotesView: View {
     NavigationSplitView {
         Text("Sidebar")
     } detail: {
-        CategoryRemotesView()
+        CategoryGamepadsView()
     }
 }

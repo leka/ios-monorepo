@@ -48,7 +48,7 @@ struct MainView: View {
                 Section(String(l10n.MainView.Sidebar.sectionContent.characters)) {
                     CategoryLabel(category: .curriculums)
                     CategoryLabel(category: .activities)
-                    CategoryLabel(category: .remotes)
+                    CategoryLabel(category: .gamepads)
                 }
 
                 if self.authManagerViewModel.userAuthenticationState == .loggedIn {
@@ -99,8 +99,8 @@ struct MainView: View {
                     case .activities:
                         CategoryActivitiesView()
 
-                    case .remotes:
-                        CategoryRemotesView()
+                    case .gamepads:
+                        CategoryGamepadsView()
 
                     case .caregivers:
                         CaregiverList()
