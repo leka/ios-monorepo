@@ -39,7 +39,9 @@ extension AccountCreationProcess {
             .sheet(isPresented: self.$isCarereceiverCreationPresented) {
                 NavigationStack {
                     CreateCarereceiverView(onClose: {
-                        self.selectedTab = .final
+                        withAnimation {
+                            self.selectedTab = .final
+                        }
                     })
                     .navigationBarTitleDisplayMode(.inline)
                     .interactiveDismissDisabled()

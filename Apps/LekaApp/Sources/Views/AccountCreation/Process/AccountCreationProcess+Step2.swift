@@ -42,7 +42,9 @@ extension AccountCreationProcess {
             .sheet(isPresented: self.$isCaregiverCreationPresented) {
                 NavigationStack {
                     CreateCaregiverView(onClose: {
-                        self.selectedTab = .carereceiverCreation
+                        withAnimation {
+                            self.selectedTab = .carereceiverCreation
+                        }
                     })
                     .navigationBarTitleDisplayMode(.inline)
                     .interactiveDismissDisabled()

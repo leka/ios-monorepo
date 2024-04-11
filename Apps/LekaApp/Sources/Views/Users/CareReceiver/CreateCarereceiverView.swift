@@ -81,6 +81,7 @@ struct CreateCarereceiverView: View {
                     self.viewModel.createCarereceiver(carereceiver: self.newCarereceiver, onError: { error in
                         print(error.localizedDescription)
                     })
+                    self.isCarereceiverCreated = true
                     withAnimation {
                         self.dismiss()
                     }
@@ -101,11 +102,16 @@ struct CreateCarereceiverView: View {
                 }
             }
         }
-        .onDisappear { self.onClose?() }
+        .onDisappear {
+            if self.isCarereceiverCreated {
+                self.onClose?()
+            }
+        }
     }
 
     // MARK: Private
 
+    @State private var isCarereceiverCreated: Bool = false
     @StateObject private var viewModel = CreateCarereceiverViewModel()
 
     @State private var newCarereceiver = Carereceiver()
