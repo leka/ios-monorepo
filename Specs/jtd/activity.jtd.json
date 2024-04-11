@@ -236,21 +236,21 @@
                         }
                     }
                 },
-                "remoteStandardJoystick": {
+                "gamepadJoyStickColorPad": {
                     "properties": {
                         "instructions": {
                             "ref": "$exercise/instructions"
                         }
                     }
                 },
-                "remoteStandardArrow": {
+                "gamepadArrowPadColorPad": {
                     "properties": {
                         "instructions": {
                             "ref": "$exercise/instructions"
                         }
                     }
                 },
-                "remoteArrow": {
+                "gamepadArrowPad": {
                     "properties": {
                         "instructions": {
                             "ref": "$exercise/instructions"
@@ -315,9 +315,9 @@
                 "dragAndDropIntoZones",
                 "dragAndDropToAssociate",
                 "danceFreeze",
-                "remoteStandardJoystick",
-                "remoteStandardArrow",
-                "remoteArrow",
+                "gamepadJoyStickColorPad",
+                "gamepadArrowPadColorPad",
+                "gamepadArrowPad",
                 "hideAndSeek",
                 "musicalInstruments",
                 "melody",
