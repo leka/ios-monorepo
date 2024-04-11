@@ -506,6 +506,42 @@
                 }
             }
         },
+        "lekaapp.caregiver_creation.caregiver_placeholder_first_name": {
+            "comment": "Caregiver creation caregiver placeholder first name textfield",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "John"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Jean"
+                    }
+                }
+            }
+        },
+        "lekaapp.caregiver_creation.caregiver_placeholder_last_name": {
+            "comment": "Caregiver creation caregiver placeholder last name textfield",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Doe"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Dupont"
+                    }
+                }
+            }
+        },
         "lekaapp.caregiver_creation.close_button_label": {
             "comment": "Caregiver creation close button label",
             "extractionState": "extracted_with_value",

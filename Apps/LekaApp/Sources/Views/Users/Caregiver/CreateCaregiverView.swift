@@ -64,7 +64,7 @@ struct CreateCaregiverView: View {
 
                 Section {
                     LabeledContent(String(l10n.CaregiverCreation.caregiverFirstNameLabel.characters)) {
-                        TextField("", text: self.$newCaregiver.firstName)
+                        TextField("", text: self.$newCaregiver.firstName, prompt: self.placeholderFirstName)
                             .textContentType(.givenName)
                             .textInputAutocapitalization(.words)
                             .autocorrectionDisabled()
@@ -72,7 +72,7 @@ struct CreateCaregiverView: View {
                             .foregroundStyle(Color.secondary)
                     }
                     LabeledContent(String(l10n.CaregiverCreation.caregiverLastNameLabel.characters)) {
-                        TextField("", text: self.$newCaregiver.lastName)
+                        TextField("", text: self.$newCaregiver.lastName, prompt: self.placeholderLastName)
                             .textContentType(.familyName)
                             .textInputAutocapitalization(.words)
                             .autocorrectionDisabled()
@@ -121,6 +121,10 @@ struct CreateCaregiverView: View {
     @State private var isAvatarPickerPresented: Bool = false
     @State private var cancellables = Set<AnyCancellable>()
 
+    private var placeholderFirstName = Text(String(String(l10n.CaregiverCreation.caregiverPlaceholderFirstName.characters)))
+
+    private var placeholderLastName = Text(String(String(l10n.CaregiverCreation.caregiverPlaceholderLastName.characters)))
+
     private var avatarPickerButton: some View {
         Button {
             self.isAvatarPickerPresented = true
@@ -156,7 +160,11 @@ extension l10n {
 
         static let caregiverFirstNameLabel = LocalizedString("lekaapp.caregiver_creation.caregiver_first_name_label", value: "First name", comment: "Caregiver creation caregiver first name textfield label")
 
+        static let caregiverPlaceholderFirstName = LocalizedString("lekaapp.caregiver_creation.caregiver_placeholder_first_name", value: "John", comment: "Caregiver creation caregiver placeholder first name textfield")
+
         static let caregiverLastNameLabel = LocalizedString("lekaapp.caregiver_creation.caregiver_last_name_label", value: "Last name", comment: "Caregiver creation caregiver last name textfield label")
+
+        static let caregiverPlaceholderLastName = LocalizedString("lekaapp.caregiver_creation.caregiver_placeholder_last_name", value: "Doe", comment: "Caregiver creation caregiver placeholder last name textfield")
 
         static let professionLabel = LocalizedString("lekaapp.caregiver_creation.profession_label", value: "Profession(s)", comment: "Caregiver creation profession label above profession selection button")
 
