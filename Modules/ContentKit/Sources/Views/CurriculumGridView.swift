@@ -21,32 +21,33 @@ public struct CurriculumGridView: View {
     public var body: some View {
         LazyVGrid(columns: self.columns) {
             ForEach(self.curriculums) { curriculum in
-                GroupBox {
-                    VStack {
-                        Image(uiImage: curriculum.details.iconImage)
-                            .resizable()
-                            .scaledToFit()
-                            .clipShape(Circle())
-                            .frame(width: 150)
+                NavigationLink(destination:
+                    CurriculumDetailsView(curriculum: curriculum, onActivitySelected: self.onActivitySelected)
+                ) {
+                    GroupBox {
+                        VStack {
+                            Image(uiImage: curriculum.details.iconImage)
+                                .resizable()
+                                .scaledToFit()
+                                .clipShape(Circle())
+                                .frame(width: 150)
 
-                        Text(curriculum.details.title)
-                            .font(.headline)
-                            .multilineTextAlignment(.center)
+                            Text(curriculum.details.title)
+                                .font(.headline)
+                                .multilineTextAlignment(.center)
 
-                        Text(curriculum.details.subtitle ?? "")
-                            .font(.subheadline)
-                            .multilineTextAlignment(.center)
+                            Text(curriculum.details.subtitle ?? "")
+                                .font(.subheadline)
+                                .multilineTextAlignment(.center)
 
-                        Spacer()
+                            Spacer()
 
-                        NavigationLink(destination:
-                            CurriculumDetailsView(curriculum: curriculum, onActivitySelected: self.onActivitySelected)
-                        ) {
-                            Text(l10n.CurriculumGridView.buttonLabel)
+                            Button(String(l10n.CurriculumGridView.buttonLabel.characters)) {}
+                                .buttonStyle(.bordered)
+                                .allowsHitTesting(false)
                         }
-                        .buttonStyle(.bordered)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
                     }
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
                 }
             }
         }
