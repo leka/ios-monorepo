@@ -69,6 +69,7 @@ public struct CurriculumDetailsView: View {
                                 .font(.headline)
                             Text(skill.description)
                         }
+                        .padding()
                     })
                 }
 
@@ -90,6 +91,7 @@ public struct CurriculumDetailsView: View {
                                 .font(.headline)
                             Text(author.description)
                         }
+                        .padding()
                     })
                 }
             }
