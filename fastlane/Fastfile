@@ -209,7 +209,7 @@ platform :ios do
         pr_number = ENV.fetch('PR_NUMBER', `gh pr view --json number -q .number`.strip)
         last_commit_sha_to_int = last_git_commit[:abbreviated_commit_hash].to_i(16)
 
-        next_build_number = "#{next_build_number_major}.#{pr_number or '000'}.#{last_commit_sha_to_int}"
+        next_build_number = "#{next_build_number_major}.#{pr_number or '000'}.#{last_commit_sha_to_int}".slice(0, 18)
         version_number = get_version_number(xcodeproj: app_xcodeproj.to_s)
 
         UI.important "App: #{app} / Version number: #{version_number} / Build number: #{next_build_number}"
@@ -298,7 +298,7 @@ platform :ios do
       pr_number = ENV.fetch('PR_NUMBER', `gh pr view --json number -q .number`.strip)
       last_commit_sha_to_int = last_git_commit[:abbreviated_commit_hash].to_i(16)
 
-      next_build_number = "#{next_build_number_major}.#{pr_number or '000'}.#{last_commit_sha_to_int}"
+      next_build_number = "#{next_build_number_major}.#{pr_number or '000'}.#{last_commit_sha_to_int}".slice(0, 18)
       version_number = get_version_number(xcodeproj: app_xcodeproj.to_s)
 
       UI.important "App: #{app} / Version number: #{version_number} / Build number: #{next_build_number}"
