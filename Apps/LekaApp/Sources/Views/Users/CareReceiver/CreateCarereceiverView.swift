@@ -149,7 +149,7 @@ extension l10n {
 
         static let carereceiverNameLabel = LocalizedString("lekaapp.carereceiver_creation.carereceiver_name_label", value: "Username", comment: "Carereceiver creation carereceiver name textfield label")
 
-        static let carereceiverPlaceholderName = LocalizedString("lekaapp.carereceiver_creation.carereceiver_placeholder_name", value: "Little Apple", comment: "Carereceiver creation carereceiver placeholder name textfield")
+        static let carereceiverPlaceholderName = LocalizedString("lekaapp.carereceiver_creation.carereceiver_placeholder_name", value: "required", comment: "Carereceiver creation carereceiver placeholder name textfield")
 
         static let createProfileButtonLabel = LocalizedString("lekaapp.carereceiver_creation.create_profile_button_label", value: "Create profile", comment: "Carereceiver creation create profile button label")
 

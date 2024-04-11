@@ -160,11 +160,11 @@ extension l10n {
 
         static let caregiverFirstNameLabel = LocalizedString("lekaapp.caregiver_creation.caregiver_first_name_label", value: "First name", comment: "Caregiver creation caregiver first name textfield label")
 
-        static let caregiverPlaceholderFirstName = LocalizedString("lekaapp.caregiver_creation.caregiver_placeholder_first_name", value: "John", comment: "Caregiver creation caregiver placeholder first name textfield")
+        static let caregiverPlaceholderFirstName = LocalizedString("lekaapp.caregiver_creation.caregiver_placeholder_first_name", value: "required", comment: "Caregiver creation caregiver placeholder first name textfield")
 
         static let caregiverLastNameLabel = LocalizedString("lekaapp.caregiver_creation.caregiver_last_name_label", value: "Last name", comment: "Caregiver creation caregiver last name textfield label")
 
-        static let caregiverPlaceholderLastName = LocalizedString("lekaapp.caregiver_creation.caregiver_placeholder_last_name", value: "Doe", comment: "Caregiver creation caregiver placeholder last name textfield")
+        static let caregiverPlaceholderLastName = LocalizedString("lekaapp.caregiver_creation.caregiver_placeholder_last_name", value: "optional", comment: "Caregiver creation caregiver placeholder last name textfield")
 
         static let professionLabel = LocalizedString("lekaapp.caregiver_creation.profession_label", value: "Profession(s)", comment: "Caregiver creation profession label above profession selection button")
 

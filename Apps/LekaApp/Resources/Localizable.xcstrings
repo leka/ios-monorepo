@@ -513,13 +513,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "John"
+                        "value": "required"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Jean"
+                        "value": "obligatoire"
                     }
                 }
             }
@@ -531,13 +531,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Doe"
+                        "value": "optional"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Dupont"
+                        "value": "facultatif"
                     }
                 }
             }
@@ -873,13 +873,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Little Apple"
+                        "value": "required"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Paul Ochon"
+                        "value": "obligatoire"
                     }
                 }
             }
