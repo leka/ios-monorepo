@@ -65,7 +65,7 @@ struct CreateCarereceiverView: View {
 
                 Section {
                     LabeledContent(String(l10n.CarereceiverCreation.carereceiverNameLabel.characters)) {
-                        TextField("", text: self.$newCarereceiver.username)
+                        TextField("", text: self.$newCarereceiver.username, prompt: self.placeholderName)
                             .textContentType(.username)
                             .textInputAutocapitalization(.words)
                             .autocorrectionDisabled()
@@ -112,6 +112,8 @@ struct CreateCarereceiverView: View {
     @State private var isAvatarPickerPresented: Bool = false
     @State private var cancellables = Set<AnyCancellable>()
 
+    private var placeholderName = Text(String(String(l10n.CarereceiverCreation.carereceiverPlaceholderName.characters)))
+
     private var avatarPickerButton: some View {
         Button {
             self.isAvatarPickerPresented = true
@@ -146,6 +148,8 @@ extension l10n {
         static let avatarChoiceButton = LocalizedString("lekaapp.carereceiver_creation.avatar_choice_button", value: "Choose an avatar", comment: "Carereceiver creation avatar choice button label")
 
         static let carereceiverNameLabel = LocalizedString("lekaapp.carereceiver_creation.carereceiver_name_label", value: "Username", comment: "Carereceiver creation carereceiver name textfield label")
+
+        static let carereceiverPlaceholderName = LocalizedString("lekaapp.carereceiver_creation.carereceiver_placeholder_name", value: "Little Apple", comment: "Carereceiver creation carereceiver placeholder name textfield")
 
         static let createProfileButtonLabel = LocalizedString("lekaapp.carereceiver_creation.create_profile_button_label", value: "Create profile", comment: "Carereceiver creation create profile button label")
 

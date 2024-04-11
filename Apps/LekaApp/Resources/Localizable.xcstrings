@@ -866,6 +866,24 @@
                 }
             }
         },
+        "lekaapp.carereceiver_creation.carereceiver_placeholder_name": {
+            "comment": "Carereceiver creation carereceiver placeholder name textfield",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Little Apple"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Paul Ochon"
+                    }
+                }
+            }
+        },
         "lekaapp.carereceiver_creation.close_button_label": {
             "comment": "Carereceiver creation close button label",
             "extractionState": "extracted_with_value",
