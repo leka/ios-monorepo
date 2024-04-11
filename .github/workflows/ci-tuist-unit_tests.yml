@@ -8,8 +8,12 @@ on:
   push:
     branches:
       - main
+    paths:
+      - "**/*.swift"
   pull_request:
     types: [opened, synchronize, reopened]
+    paths:
+      - "**/*.swift"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}

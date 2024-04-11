@@ -7,6 +7,8 @@ name: Linter - SwiftFormat
 on:
   pull_request:
     types: [opened, synchronize, reopened]
+    paths:
+      - "**/*.swift"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
