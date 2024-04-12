@@ -506,6 +506,18 @@
                 }
             }
         },
+        "lekaapp.caregiver_creation.caregiver_birthdate_label": {
+            "comment": "Caregiver creation caregiver birthdate textfield label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Birthdate"
+                    }
+                }
+            }
+        },
         "lekaapp.caregiver_creation.caregiver_email_label": {
             "comment": "Caregiver creation caregiver email textfield label",
             "extractionState": "extracted_with_value",

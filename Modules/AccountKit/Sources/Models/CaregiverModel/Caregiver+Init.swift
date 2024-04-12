@@ -9,7 +9,7 @@ public extension Caregiver {
          rootOwnerUid: String = "",
          firstName: String = "",
          lastName: String = "",
-         birthdate: String = "",
+         birthdate: Date? = nil,
          email: String = "",
          avatar: String = "",
          professions: [String] = [],

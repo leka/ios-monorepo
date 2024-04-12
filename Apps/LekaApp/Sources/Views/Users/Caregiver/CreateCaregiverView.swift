@@ -90,6 +90,17 @@ struct CreateCaregiverView: View {
                 }
 
                 Section {
+                    DatePicker(
+                        String(l10n.CaregiverCreation.caregiverBirthdateLabel.characters),
+                        selection: self.$birthdate,
+                        displayedComponents: [.date]
+                    )
+                    .onChange(of: self.birthdate, perform: { _ in
+                        self.newCaregiver.birthdate = self.birthdate
+                    })
+                }
+
+                Section {
                     ProfessionListView(caregiver: self.$newCaregiver)
                 }
 
@@ -134,6 +145,7 @@ struct CreateCaregiverView: View {
     @State private var newCaregiver = Caregiver()
     @State private var isAvatarPickerPresented: Bool = false
     @State private var cancellables = Set<AnyCancellable>()
+    @State private var birthdate: Date = .now
 
     private var placeholderFirstName = Text(String(l10n.CaregiverCreation.caregiverPlaceholderFirstName.characters))
 
@@ -185,6 +197,8 @@ extension l10n {
         static let caregiverEmailLabel = LocalizedString("lekaapp.caregiver_creation.caregiver_email_label", value: "Email", comment: "Caregiver creation caregiver email textfield label")
 
         static let caregiverPlaceholderEmail = LocalizedString("lekaapp.caregiver_creation.caregiver_placeholder_email", value: "optional", comment: "Caregiver creation caregiver placeholder email textfield")
+
+        static let caregiverBirthdateLabel = LocalizedString("lekaapp.caregiver_creation.caregiver_birthdate_label", value: "Birthdate", comment: "Caregiver creation caregiver birthdate textfield label")
 
         static let professionLabel = LocalizedString("lekaapp.caregiver_creation.profession_label", value: "Profession(s)", comment: "Caregiver creation profession label above profession selection button")
 
