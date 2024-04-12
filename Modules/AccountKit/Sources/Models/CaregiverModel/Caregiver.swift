@@ -18,7 +18,7 @@ public struct Caregiver: AccountDocument, Hashable {
     public var rootOwnerUid: String
     public var firstName: String
     public var lastName: String
-    public var birthdate: String
+    public var birthdate: Date?
     public var email: String
     public var avatar: String
     public var professions: [String]

@@ -14,6 +14,7 @@ struct EditCaregiverView: View {
 
     init(caregiver: Caregiver) {
         self._viewModel = StateObject(wrappedValue: EditCaregiverViewViewModel(caregiver: caregiver))
+        self._birthdate = State(wrappedValue: caregiver.birthdate ?? Date.now)
     }
 
     // MARK: Internal
@@ -55,6 +56,17 @@ struct EditCaregiverView: View {
                 }
 
                 Section {
+                    DatePicker(
+                        String(l10n.CaregiverCreation.caregiverBirthdateLabel.characters),
+                        selection: self.$birthdate,
+                        displayedComponents: [.date]
+                    )
+                    .onChange(of: self.birthdate, perform: { _ in
+                        self.viewModel.caregiver.birthdate = self.birthdate
+                    })
+                }
+
+                Section {
                     ProfessionListView(caregiver: self.$viewModel.caregiver)
                 }
 
@@ -93,6 +105,7 @@ struct EditCaregiverView: View {
     @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
 
     @ObservedObject private var styleManager: StyleManager = .shared
+    @State private var birthdate: Date
 
     private var placeholderFirstName = Text(String(l10n.CaregiverCreation.caregiverPlaceholderFirstName.characters))
 
