@@ -32,6 +32,15 @@ public class AudioPlayer: NSObject, ObservableObject {
         self.didFinishPlaying = false
 
         do {
+            let session = AVAudioSession.sharedInstance()
+            try session.setCategory(.playback, mode: .default)
+            try session.setActive(true)
+        } catch {
+            log.critical("Could not set Audio Session. Error: \(error).")
+            fatalError("Could not set Audio Session. Error: \(error).")
+        }
+
+        do {
             if let url = Bundle.url(forAudio: audioRecording.file) {
                 log.debug("Audio found at url: \(url)")
                 self.player = try AVAudioPlayer(contentsOf: url)
@@ -43,7 +52,7 @@ public class AudioPlayer: NSObject, ObservableObject {
 
             self.player.delegate = self
         } catch {
-            print("ERROR - mp3 file not found - \(error)")
+            log.error("mp3 file not found - \(error)")
             return
         }
 
