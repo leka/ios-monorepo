@@ -75,6 +75,7 @@ struct SettingsView: View {
                     Button(role: .destructive) {
                         self.dismiss()
                         self.authManager.signOut()
+                        self.persistentDataManager.clearUserData()
                         self.reset()
                     } label: {
                         Text(l10n.SettingsView.AccountSection.LogOut.alertButtonLabel)
@@ -126,6 +127,7 @@ struct SettingsView: View {
     private let authManager = AuthManager.shared
     private let caregiverManager: CaregiverManager = .shared
     private let carereceiverManager: CarereceiverManager = .shared
+    private let persistentDataManager: PersistentDataManager = .shared
 
     @ObservedObject private var authManagerViewModel = AuthManagerViewModel.shared
     @ObservedObject private var styleManager: StyleManager = .shared
