@@ -24,10 +24,14 @@ class PersistentDataManager {
     func checkInactivity() {
         if Date().timeIntervalSince1970 - self.lastActiveTimestamp > self.inactivityThreshold {
             self.inactivityPeriodTimedOut.send(true)
-            self.resetPersistedprofile()
+            self.clearUserData()
         } else {
             self.inactivityPeriodTimedOut.send(false)
         }
+    }
+
+    func clearUserData() {
+        self.lastActiveCaregiverID = nil
     }
 
     // MARK: Private
@@ -38,8 +42,4 @@ class PersistentDataManager {
         private let inactivityThreshold: TimeInterval = 600
     #endif
     private var inactivityPeriodTimedOut = PassthroughSubject<Bool, Never>()
-
-    private func resetPersistedprofile() {
-        self.lastActiveCaregiverID = nil
-    }
 }
