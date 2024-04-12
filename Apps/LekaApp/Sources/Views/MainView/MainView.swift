@@ -205,6 +205,11 @@ struct MainView: View {
                     break
             }
         }
+        .onReceive(self.authManagerViewModel.$userAuthenticationState) { state in
+            if state == .loggedIn {
+                self.persistentDataManager.checkInactivity()
+            }
+        }
         .onReceive(self.persistentDataManager.inactivityTimeoutPublisher) { isTimedOut in
             if isTimedOut {
                 self.caregiverManager.resetCurrentCaregiver()
