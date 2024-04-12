@@ -30,6 +30,7 @@ struct ProfessionPicker: View {
         List(Professions.list, id: \.self, selection: self.$selectedProfessions) { profession in
             HStack {
                 Text(profession.name)
+                    .foregroundStyle(Color.primary)
                 Spacer()
                 Image(systemName: "info.circle")
                     .onTapGesture {
