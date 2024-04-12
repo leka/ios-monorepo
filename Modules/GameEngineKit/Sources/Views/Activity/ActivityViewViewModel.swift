@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AccountKit
 import Combine
 import ContentKit
 import SwiftUI
@@ -102,6 +103,10 @@ class ActivityViewViewModel: ObservableObject {
 
     var isLastExercise: Bool {
         self.activityManager.isLastExercise
+    }
+
+    var completedExercisesData: [ExerciseCompletionData] {
+        self.completedExercisesSharedData.compactMap(\.completionData)
     }
 
     func moveToNextExercise() {

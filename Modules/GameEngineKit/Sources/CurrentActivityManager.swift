@@ -27,7 +27,8 @@ public class CurrentActivityManager {
 
     public var currentGroupIndex: Int = 0
     public var currentExerciseIndexInCurrentGroup: Int = 0
-    public var exerciseCompletionData: [ExerciseSharedData] = []
+//    public var exerciseCompletionData: [ExerciseSharedData] = []
+    public var activityCompletionData: [ExerciseSharedData] = []
 
     public let activity: Activity
 

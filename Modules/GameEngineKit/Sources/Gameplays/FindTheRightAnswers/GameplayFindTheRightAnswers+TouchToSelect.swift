@@ -22,6 +22,7 @@ extension GameplayFindTheRightAnswers where ChoiceModelType == GameplayTouchToSe
         self.choices.send(shuffle ? choices.shuffled() : choices)
         rightAnswers = choices.filter(\.choice.isRightAnswer)
         state.send(.playing)
+        self.startTimestamp = Date()
 
         if let allowedTrials {
             self.allowedTrials = allowedTrials
@@ -46,7 +47,7 @@ extension GameplayFindTheRightAnswers where ChoiceModelType == GameplayTouchToSe
 
         if rightAnswers.isEmpty {
             let level = evaluateCompletionLevel(allowedTrials: allowedTrials, numberOfTrials: numberOfTrials)
-            let completionData = ExerciseCompletionData()
+            let completionData = ExerciseCompletionData(startTimestamp: self.startTimestamp, endTimestamp: Date())
             state.send(.completed(level: level, data: completionData))
         }
     }

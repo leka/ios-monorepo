@@ -20,7 +20,8 @@ extension GameplayAssociateCategories where ChoiceModelType == GameplayAssociate
     convenience init(choices: [GameplayAssociateCategoriesChoiceModel], allowedTrials: Int? = nil) {
         self.init()
         self.choices.send(choices)
-        state.send(.playing)
+        self.state.send(.playing)
+        self.startTimestamp = Date()
 
         if let allowedTrials {
             self.allowedTrials = allowedTrials
@@ -41,7 +42,7 @@ extension GameplayAssociateCategories where ChoiceModelType == GameplayAssociate
 
         if choices.value.allSatisfy({ $0.state == .rightAnswer }) {
             let level = evaluateCompletionLevel(allowedTrials: allowedTrials, numberOfTrials: numberOfTrials)
-            let completionData = ExerciseCompletionData()
+            let completionData = ExerciseCompletionData(startTimestamp: self.startTimestamp, endTimestamp: Date())
             state.send(.completed(level: level, data: completionData))
         }
     }

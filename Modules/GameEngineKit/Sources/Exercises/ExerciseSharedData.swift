@@ -27,12 +27,12 @@ public class ExerciseSharedData: ObservableObject {
     let exerciseIndex: Int
 
     var completionLevel: ExerciseState.CompletionLevel? {
-        guard case let .completed(level, data) = state else { return nil }
+        guard case let .completed(level, _) = state else { return nil }
         return level
     }
 
     var completionData: ExerciseCompletionData? {
-        guard case let .completed(level, data) = state else { return nil }
+        guard case let .completed(_, data) = state else { return nil }
         return data
     }
 

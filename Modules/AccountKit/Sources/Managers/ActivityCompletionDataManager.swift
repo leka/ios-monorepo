@@ -31,9 +31,22 @@ public class ActivityCompletionDataManager {
         // TODO: (@macteuts) fetch ActivityCompletionData for a specific profile (i.e. Carereceiver)
     }
 
-//    public func saveActivityCompletionData(data: [ExerciseCompletionData]) -> AnyPublisher<[ExerciseCompletionData], Error> {
-//        // TODO: (@macteuts) save ActivityCompletionData when an Activity completes
-//    }
+    public func saveActivityCompletionData(data: ActivityCompletionData) -> AnyPublisher<ActivityCompletionData, Error> {
+        self.dbOps.save(data: data, in: .activityCompletionData)
+            .flatMap { [weak self] completionData -> AnyPublisher<ActivityCompletionData, Error> in
+                guard self != nil else {
+                    return Fail(error: DatabaseError.customError("Unexpected Nil Value")).eraseToAnyPublisher()
+                }
+
+                return Just(completionData)
+                    .setFailureType(to: Error.self)
+                    .eraseToAnyPublisher()
+            }
+            .handleEvents(receiveOutput: { [weak self] _ in
+                self?.initializeActivityCompletionDataListener()
+            })
+            .eraseToAnyPublisher()
+    }
 
     // MARK: Internal
 

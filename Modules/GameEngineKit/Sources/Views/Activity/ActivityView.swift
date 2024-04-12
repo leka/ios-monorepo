@@ -4,6 +4,7 @@
 
 // swiftlint:disable cyclomatic_complexity void_function_in_ternary function_body_length
 
+import AccountKit
 import ContentKit
 import DesignKit
 import LocalizationKit
@@ -172,6 +173,9 @@ public struct ActivityView: View {
 
     // MARK: Private
 
+    @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
+    @StateObject private var carereceiverManagerViewModel = CarereceiverManagerViewModel()
+
     @State private var isAlertPresented: Bool = false
 
     @State private var opacity: Double = 1
@@ -181,6 +185,7 @@ public struct ActivityView: View {
 
     private let robot = Robot.shared
     private let reinforcer: Robot.Reinforcer
+    private let activityCompletionDataManager: ActivityCompletionDataManager = .shared
 
     @ViewBuilder
     private var endOfActivityScoreView: some View {
@@ -213,6 +218,14 @@ public struct ActivityView: View {
         Button(String(l10n.GameEngineKit.ActivityView.continueButton.characters)) {
             if self.viewModel.isLastExercise {
                 self.viewModel.scorePanelEnabled ? self.viewModel.moveToActivityEnd() : self.dismiss()
+                let activityCompletionData = ActivityCompletionData(
+                    caregiverID: self.caregiverManagerViewModel.currentCaregiver?.id ?? "No caregiver found",
+                    carereceiverID: self.carereceiverManagerViewModel.currentCarereceiver?.id ?? "No carereceiver found"
+                    // completedExercisesData: self.viewModel.completedExercisesData
+                )
+                print("1rst ex startTime:", self.viewModel.completedExercisesData.first?.endTimestamp ?? "no start time")
+                print("1rst ex endTime:", self.viewModel.completedExercisesData.first?.endTimestamp ?? "no end time")
+                self.activityCompletionDataManager.saveActivityCompletionData(data: activityCompletionData)
             } else {
                 self.viewModel.moveToNextExercise()
             }

@@ -22,6 +22,7 @@ extension GameplayFindTheRightAnswers where ChoiceModelType == GameplayDragAndDr
         self.choices.send(choices)
         rightAnswers = choices.filter { $0.choice.dropZone != .none }
         state.send(.playing)
+        self.startTimestamp = Date()
 
         if let allowedTrials {
             self.allowedTrials = allowedTrials
@@ -46,7 +47,7 @@ extension GameplayFindTheRightAnswers where ChoiceModelType == GameplayDragAndDr
 
         if rightAnswers.isEmpty {
             let level = evaluateCompletionLevel(allowedTrials: allowedTrials, numberOfTrials: numberOfTrials)
-            let completionData = ExerciseCompletionData()
+            let completionData = ExerciseCompletionData(startTimestamp: self.startTimestamp, endTimestamp: Date())
             state.send(.completed(level: level, data: completionData))
         }
     }

@@ -34,12 +34,14 @@ extension ActivityView {
                 HStack(spacing: 40) {
                     Button(String(l10n.SuccessFailureView.quitWithoutSavingButtonLabel.characters)) {
                         // TODO: (@mathieu) - Save undisplayable data in session
+                        // what are those??
                         UIApplication.shared.dismissAll(animated: true)
                     }
                     .buttonStyle(.bordered)
 
                     Button(String(l10n.SuccessFailureView.saveQuitButtonLabel.characters)) {
                         // TODO: (@mathieu) - Save displayable data in session
+                        // Same question...
                         UIApplication.shared.dismissAll(animated: true)
                     }
                     .buttonStyle(.borderedProminent)

@@ -8,7 +8,7 @@ public struct ExerciseCompletionData: Equatable {
     // MARK: Lifecycle
 
     public init(
-        startTimestamp: Date? = nil,
+        startTimestamp: Date? = Date(),
         endTimestamp: Date? = nil
     ) {
         self.startTimestamp = startTimestamp
