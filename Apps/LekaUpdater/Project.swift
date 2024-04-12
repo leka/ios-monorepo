@@ -7,9 +7,11 @@
 import ProjectDescription
 import ProjectDescriptionHelpers
 
+let kLekaUpdaterVersion = "1.4.1"
+
 let project = Project.app(
     name: "LekaUpdater",
-    version: "1.4.1",
+    version: kLekaUpdaterVersion,
     infoPlist: [
         "LEKA_OS_VERSION": "1.4.0",
         "UISupportedInterfaceOrientations": ["UIInterfaceOrientationPortrait"],
@@ -26,6 +28,9 @@ let project = Project.app(
         ],
         "LSApplicationQueriesSchemes": [
             "LekaApp", "com.googleusercontent.apps.224911845933-mv4tp4rstgjtvdqvbv5dl7defii1a7ic",
+        ],
+        "UIBackgroundModes": [
+            "bluetooth-central",
         ],
     ],
     dependencies: [

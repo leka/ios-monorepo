@@ -7,9 +7,11 @@
 import ProjectDescription
 import ProjectDescriptionHelpers
 
+let kLekaAppVersion = "1.0.0"
+
 let project = Project.app(
     name: "LekaApp",
-    version: "1.0.0",
+    version: kLekaAppVersion,
     infoPlist: [
         "LSApplicationCategoryType": "public.app-category.education",
         "CFBundleURLTypes": [
@@ -20,6 +22,10 @@ let project = Project.app(
             ],
         ],
         "LSApplicationQueriesSchemes": ["LekaUpdater"],
+        "UIBackgroundModes": [
+            "bluetooth-central",
+            "audio",
+        ],
     ],
     dependencies: [
         .project(target: "DesignKit", path: Path("../../Modules/DesignKit")),
