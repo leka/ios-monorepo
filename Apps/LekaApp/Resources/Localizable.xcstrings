@@ -506,6 +506,24 @@
                 }
             }
         },
+        "lekaapp.caregiver_creation.caregiver_email_label": {
+            "comment": "Caregiver creation caregiver email textfield label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Email"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Email"
+                    }
+                }
+            }
+        },
         "lekaapp.caregiver_creation.caregiver_first_name_label": {
             "comment": "Caregiver creation caregiver first name textfield label",
             "extractionState": "extracted_with_value",
@@ -538,6 +556,24 @@
                     "stringUnit": {
                         "state": "translated",
                         "value": "Nom"
+                    }
+                }
+            }
+        },
+        "lekaapp.caregiver_creation.caregiver_placeholder_email": {
+            "comment": "Caregiver creation caregiver placeholder email textfield",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "optional"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "facultatif"
                     }
                 }
             }

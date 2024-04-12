@@ -29,7 +29,7 @@ struct EditCaregiverView: View {
 
                 Section {
                     LabeledContent(String(l10n.CaregiverCreation.caregiverFirstNameLabel.characters)) {
-                        TextField("", text: self.$viewModel.caregiver.firstName)
+                        TextField("", text: self.$viewModel.caregiver.firstName, prompt: self.placeholderFirstName)
                             .textContentType(.givenName)
                             .textInputAutocapitalization(.words)
                             .autocorrectionDisabled()
@@ -37,9 +37,17 @@ struct EditCaregiverView: View {
                             .foregroundStyle(Color.secondary)
                     }
                     LabeledContent(String(l10n.CaregiverCreation.caregiverLastNameLabel.characters)) {
-                        TextField("", text: self.$viewModel.caregiver.lastName)
+                        TextField("", text: self.$viewModel.caregiver.lastName, prompt: self.placeholderLastName)
                             .textContentType(.familyName)
                             .textInputAutocapitalization(.words)
+                            .autocorrectionDisabled()
+                            .multilineTextAlignment(.trailing)
+                            .foregroundStyle(Color.secondary)
+                    }
+                    LabeledContent(String(l10n.CaregiverCreation.caregiverEmailLabel.characters)) {
+                        TextField("", text: self.$viewModel.caregiver.email, prompt: self.placeholderEmail)
+                            .textContentType(.emailAddress)
+                            .textInputAutocapitalization(.never)
                             .autocorrectionDisabled()
                             .multilineTextAlignment(.trailing)
                             .foregroundStyle(Color.secondary)
@@ -85,6 +93,12 @@ struct EditCaregiverView: View {
     @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
 
     @ObservedObject private var styleManager: StyleManager = .shared
+
+    private var placeholderFirstName = Text(String(l10n.CaregiverCreation.caregiverPlaceholderFirstName.characters))
+
+    private var placeholderLastName = Text(String(l10n.CaregiverCreation.caregiverPlaceholderLastName.characters))
+
+    private var placeholderEmail = Text(String(l10n.CaregiverCreation.caregiverPlaceholderEmail.characters))
 
     private var avatarPickerButton: some View {
         Button {
