@@ -114,15 +114,19 @@ struct SettingsView: View {
                     Button("Cancel", role: .cancel) {}
                     Button("Delete", role: .destructive) {
                         self.dismiss()
-                        // Delete account
-                        self.persistentDataManager.clearUserData()
-                        self.reset()
+                        self.authManager.deleteCurrentUser()
                     }
                 } message: {
                     Text(l10n.SettingsView.AccountSection.DeleteAccount.alertMessage)
                 }
             }
         }
+        .onReceive(self.authManagerViewModel.$userAuthenticationState, perform: { newState in
+            if newState == .loggedOut {
+                self.persistentDataManager.clearUserData()
+                self.reset()
+            }
+        })
         .navigationTitle(String(l10n.SettingsView.navigationTitle.characters))
         .sheet(isPresented: self.$isCaregiverpickerPresented) {
             NavigationStack {

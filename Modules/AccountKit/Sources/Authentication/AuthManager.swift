@@ -127,6 +127,23 @@ public class AuthManager {
         }
     }
 
+    public func deleteCurrentUser() {
+        self.auth.currentUser?.delete { [weak self] error in
+            if let error {
+                log.error("Account deletion failed: \(error.localizedDescription)")
+                let errorMessage = """
+                    We encountered an issue deleting your account. Please try again.
+                    If the problem persists, contact our support team for assistance.
+                    """
+
+                self?.authenticationError.send(AuthenticationError.custom(message: errorMessage))
+            } else {
+                log.info("Account deleted successfully.")
+                self?.authenticationState.send(.loggedOut)
+            }
+        }
+    }
+
     // MARK: Internal
 
     var authenticationErrorPublisher: AnyPublisher<Error, Never> {
