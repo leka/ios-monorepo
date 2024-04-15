@@ -11,6 +11,8 @@ import SwiftUI
 struct ReAuthenticationView: View {
     // MARK: Internal
 
+    @Environment(\.dismiss) var dismiss
+
     var body: some View {
         VStack(alignment: .center, spacing: 30) {
             VStack(spacing: 10) {
@@ -44,6 +46,7 @@ struct ReAuthenticationView: View {
         .onChange(of: self.authManagerViewModel.reAuthenticationSucceeded) { success in
             if success {
                 self.authManagerViewModel.userAction = .none
+                self.dismiss()
             }
         }
         .onDisappear {

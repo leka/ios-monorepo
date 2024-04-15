@@ -114,9 +114,9 @@ struct SettingsView: View {
                     Button("Cancel", role: .cancel) {}
                     Button("Delete", role: .destructive) {
                         self.dismiss()
-                        // Delete account + below
-                        // self.persistentDataManager.clearUserData()
-                        // self.reset()
+                        // Delete account
+                        self.persistentDataManager.clearUserData()
+                        self.reset()
                     }
                 } message: {
                     Text(l10n.SettingsView.AccountSection.DeleteAccount.alertMessage)
