@@ -16,26 +16,13 @@ struct CaregiverPicker: View {
 
     var body: some View {
         VStack {
-            if self.caregiverManagerViewModel.caregivers.isEmpty {
-                self.noCaregiverView
-            } else {
-                ScrollView(showsIndicators: false) {
-                    LazyVGrid(columns: self.columns, spacing: 40) {
-                        ForEach(self.caregiverManagerViewModel.caregivers, id: \.id) { caregiver in
-                            CaregiverAvatarCell(caregiver: caregiver, isSelected: self.selectedCaregiver?.id == caregiver.id)
-                                .frame(maxWidth: 125)
-                                .onTapGesture {
-                                    withAnimation(.default) {
-                                        if self.selectedCaregiver?.id == caregiver.id {
-                                            self.selectedCaregiver = nil
-                                        } else {
-                                            self.selectedCaregiver = caregiver
-                                        }
-                                    }
-                                }
-                        }
-                    }
-                }
+            switch self.caregiverManagerViewModel.caregivers.count {
+                case 0:
+                    self.noCaregiverView
+                case 1...4:
+                    self.oneToFourCaregiversView
+                default:
+                    self.fiveOrMoreCaregiversView
             }
         }
         .padding(.horizontal)
@@ -103,6 +90,44 @@ struct CaregiverPicker: View {
                 Text(l10n.CaregiverPicker.AddFirstCaregiver.buttonLabel)
             }
             .buttonStyle(.borderedProminent)
+        }
+    }
+
+    private var oneToFourCaregiversView: some View {
+        HStack(spacing: 40) {
+            ForEach(self.caregiverManagerViewModel.caregivers, id: \.id) { caregiver in
+                CaregiverAvatarCell(caregiver: caregiver, isSelected: self.selectedCaregiver?.id == caregiver.id)
+                    .frame(maxWidth: 125)
+                    .onTapGesture {
+                        withAnimation(.default) {
+                            if self.selectedCaregiver?.id == caregiver.id {
+                                self.selectedCaregiver = nil
+                            } else {
+                                self.selectedCaregiver = caregiver
+                            }
+                        }
+                    }
+            }
+        }
+    }
+
+    private var fiveOrMoreCaregiversView: some View {
+        ScrollView(showsIndicators: false) {
+            LazyVGrid(columns: self.columns, spacing: 40) {
+                ForEach(self.caregiverManagerViewModel.caregivers, id: \.id) { caregiver in
+                    CaregiverAvatarCell(caregiver: caregiver, isSelected: self.selectedCaregiver?.id == caregiver.id)
+                        .frame(maxWidth: 125)
+                        .onTapGesture {
+                            withAnimation(.default) {
+                                if self.selectedCaregiver?.id == caregiver.id {
+                                    self.selectedCaregiver = nil
+                                } else {
+                                    self.selectedCaregiver = caregiver
+                                }
+                            }
+                        }
+                }
+            }
         }
     }
 }

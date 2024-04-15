@@ -29,38 +29,13 @@ struct CarereceiverPicker: View {
 
     var body: some View {
         VStack {
-            if self.carereceiverManagerViewModel.carereceivers.isEmpty {
-                VStack {
-                    Text(l10n.CarereceiverPicker.CreateFirstCarereceiver.message)
-                        .font(.title2)
-                        .multilineTextAlignment(.center)
-
-                    Button {
-                        self.dismiss()
-                        self.navigation.selectedCategory = .carereceivers
-                    } label: {
-                        Text(l10n.CarereceiverPicker.CreateFirstCarereceiver.buttonLabel)
-                    }
-                    .buttonStyle(.borderedProminent)
-                }
-            } else {
-                ScrollView(showsIndicators: true) {
-                    LazyVGrid(columns: self.columns, spacing: 40) {
-                        ForEach(self.carereceiverManagerViewModel.carereceivers) { carereceiver in
-                            CarereceiverAvatarCell(carereceiver: carereceiver, isSelected: self.selectedCarereceiver == carereceiver)
-                                .onTapGesture {
-                                    withAnimation(.default) {
-                                        if self.selectedCarereceiver == carereceiver {
-                                            self.selectedCarereceiver = nil
-                                        } else {
-                                            self.selectedCarereceiver = carereceiver
-                                        }
-                                    }
-                                }
-                        }
-                    }
-                    .padding()
-                }
+            switch self.carereceiverManagerViewModel.carereceivers.count {
+                case 0:
+                    self.noCarereceiverView
+                case 1...4:
+                    self.oneToFourCarereceiversView
+                default:
+                    self.fiveOrMoreCarereceiversView
             }
         }
         .navigationTitle(String(l10n.CarereceiverPicker.title.characters))
@@ -125,6 +100,59 @@ struct CarereceiverPicker: View {
     @ObservedObject private var navigation: Navigation = .shared
     @State private var selectedCarereceiver: Carereceiver?
     @State private var action: ActionType?
+
+    private var noCarereceiverView: some View {
+        VStack {
+            Text(l10n.CarereceiverPicker.CreateFirstCarereceiver.message)
+                .font(.title2)
+                .multilineTextAlignment(.center)
+
+            Button {
+                self.dismiss()
+                self.navigation.selectedCategory = .carereceivers
+            } label: {
+                Text(l10n.CarereceiverPicker.CreateFirstCarereceiver.buttonLabel)
+            }
+            .buttonStyle(.borderedProminent)
+        }
+    }
+
+    private var oneToFourCarereceiversView: some View {
+        HStack(spacing: 40) {
+            ForEach(self.carereceiverManagerViewModel.carereceivers, id: \.id) { carereceiver in
+                CarereceiverAvatarCell(carereceiver: carereceiver, isSelected: self.selectedCarereceiver?.id == carereceiver.id)
+                    .frame(maxWidth: 125)
+                    .onTapGesture {
+                        withAnimation(.default) {
+                            if self.selectedCarereceiver?.id == carereceiver.id {
+                                self.selectedCarereceiver = nil
+                            } else {
+                                self.selectedCarereceiver = carereceiver
+                            }
+                        }
+                    }
+            }
+        }
+    }
+
+    private var fiveOrMoreCarereceiversView: some View {
+        ScrollView(showsIndicators: true) {
+            LazyVGrid(columns: self.columns, spacing: 40) {
+                ForEach(self.carereceiverManagerViewModel.carereceivers) { carereceiver in
+                    CarereceiverAvatarCell(carereceiver: carereceiver, isSelected: self.selectedCarereceiver == carereceiver)
+                        .onTapGesture {
+                            withAnimation(.default) {
+                                if self.selectedCarereceiver == carereceiver {
+                                    self.selectedCarereceiver = nil
+                                } else {
+                                    self.selectedCarereceiver = carereceiver
+                                }
+                            }
+                        }
+                }
+            }
+        }
+    }
 }
 
 // MARK: - l10n.CarereceiverPicker
