@@ -24,13 +24,15 @@ public class AuthManagerViewModel: ObservableObject {
     @Published public var userAuthenticationState: AuthManager.AuthenticationState = .unknown
     @Published public var userAction: AuthManager.UserAction?
     @Published public var userEmailIsVerified = false
+    @Published public var reAuthenticationSucceeded: Bool = false
 
     // MARK: - Alerts
 
     @Published public var errorMessage: String = ""
     @Published public var showErrorAlert = false
+    @Published public var showErrorMessage = false
     @Published public var actionRequestMessage: String = ""
-    @Published public var showactionRequestAlert = false
+    @Published public var showActionRequestAlert = false
     @Published public var isLoading: Bool = false
 
     public func resetErrorMessage() {
@@ -74,6 +76,13 @@ public class AuthManagerViewModel: ObservableObject {
                 self?.userEmailIsVerified = state
             }
             .store(in: &self.cancellables)
+
+        self.authManager.reAuthenticationStatePublisher
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] state in
+                self?.reAuthenticationSucceeded = state
+            }
+            .store(in: &self.cancellables)
     }
 
     private func handleAuthenticationStateChange(state: AuthManager.AuthenticationState) {
@@ -81,7 +90,7 @@ public class AuthManagerViewModel: ObservableObject {
             case .loggedIn:
                 if self.userAction == .none {
                     self.actionRequestMessage = String(l10n.AuthManagerViewModel.unverifiedEmailNotification.characters)
-                    self.showactionRequestAlert = true
+                    self.showActionRequestAlert = true
                 }
                 self.resetErrorMessage()
             case .loggedOut:
@@ -96,7 +105,7 @@ public class AuthManagerViewModel: ObservableObject {
         self.userEmailIsVerified = false
         self.errorMessage = ""
         self.actionRequestMessage = ""
-        self.showactionRequestAlert = false
+        self.showActionRequestAlert = false
         self.showErrorAlert = false
     }
 }

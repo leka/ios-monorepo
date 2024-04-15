@@ -102,6 +102,29 @@ public class AuthManager {
         }
     }
 
+    public func reAuthenticateCurrentUser(password: String) {
+        guard let email = self.currentUserEmail else {
+            let error = NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey: "No email found for the current user."])
+            self.authenticationError.send(AuthenticationError.custom(message: error.localizedDescription))
+            return
+        }
+
+        self.loadingStatePublisher.send(true)
+        let credential = EmailAuthProvider.credential(withEmail: email, password: password)
+        self.auth.currentUser?.reauthenticate(with: credential) { [weak self] _, error in
+            self?.loadingStatePublisher.send(false)
+            if let error {
+                log.error("Reauthentication failed: \(error.localizedDescription)")
+                let errorMessage = "Authentication failed. Please verify your password."
+                self?.authenticationError.send(AuthenticationError.custom(message: errorMessage))
+                self?.reAuthenticationState.send(false)
+            } else {
+                log.info("Reauthentication was successful. 🎉")
+                self?.reAuthenticationState.send(true)
+            }
+        }
+    }
+
     // MARK: Internal
 
     var authenticationErrorPublisher: AnyPublisher<Error, Never> {
@@ -116,12 +139,17 @@ public class AuthManager {
         self.loadingStatePublisher.eraseToAnyPublisher()
     }
 
+    var reAuthenticationStatePublisher: AnyPublisher<Bool, Never> {
+        self.reAuthenticationState.eraseToAnyPublisher()
+    }
+
     // MARK: Private
 
     private let authenticationState = CurrentValueSubject<AuthenticationState, Never>(.unknown)
     private let authenticationError = PassthroughSubject<Error, Never>()
     private let loadingStatePublisher = PassthroughSubject<Bool, Never>()
     private let emailVerificationState = PassthroughSubject<Bool, Never>()
+    private let reAuthenticationState = PassthroughSubject<Bool, Never>()
     private let auth = Auth.auth()
     private var cancellables = Set<AnyCancellable>()
 
