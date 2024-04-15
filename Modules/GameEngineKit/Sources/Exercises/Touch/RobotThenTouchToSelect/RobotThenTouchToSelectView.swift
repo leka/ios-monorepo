@@ -5,8 +5,11 @@
 import Combine
 import ContentKit
 import DesignKit
+import LocalizationKit
 import RobotKit
 import SwiftUI
+
+// MARK: - RobotThenTouchToSelectView
 
 public struct RobotThenTouchToSelectView: View {
     // MARK: Lifecycle
@@ -54,20 +57,23 @@ public struct RobotThenTouchToSelectView: View {
                     self.didSendCommandToRobot = true
                 }
             } label: {
-                Image(uiImage: DesignKitAsset.Images.robotFaceSimple.image)
-                    .resizable()
-                    .frame(width: 200, height: 200)
-                    .padding()
+                VStack {
+                    Image(uiImage: DesignKitAsset.Images.robotFaceSimple.image)
+                        .resizable()
+                        .frame(width: 200, height: 200)
+                        .padding()
+
+                    Button(String(l10n.RobotThenTouchToSelectView.buttonLabel.characters)) {}
+                        .font(.title)
+                        .opacity(self.didSendCommandToRobot ? 0.0 : 1.0)
+                        .buttonStyle(.bordered)
+                        .allowsHitTesting(false)
+                        .tint(nil)
+                }
             }
             .disabled(self.didSendCommandToRobot)
-            .scaleEffect(self.didSendCommandToRobot ? 1.0 : 0.8, anchor: .center)
-            .shadow(
-                color: .accentColor.opacity(0.2),
-                radius: self.didSendCommandToRobot ? 6 : 3,
-                x: 0,
-                y: 3
-            )
-            .animation(.spring(response: 1, dampingFraction: 0.45), value: self.didSendCommandToRobot)
+            .opacity(self.didSendCommandToRobot ? 0.3 : 1.0)
+            .scaleEffect(self.didSendCommandToRobot ? 0.95 : 1.0, anchor: .center)
             .padding(20)
 
             Divider()
@@ -84,6 +90,7 @@ public struct RobotThenTouchToSelectView: View {
                             self.viewModel.onChoiceTapped(choice: self.viewModel.choices[0])
                         }
                         .animation(.easeOut(duration: 0.3), value: self.didSendCommandToRobot)
+                        .grayscale(self.didSendCommandToRobot ? 0.0 : 1.0)
 
                 case .twoChoices:
                     TwoChoicesView(viewModel: self.viewModel, isTappable: self.didSendCommandToRobot)
@@ -91,6 +98,7 @@ public struct RobotThenTouchToSelectView: View {
                             self.viewModel.onChoiceTapped(choice: self.viewModel.choices[0])
                         }
                         .animation(.easeOut(duration: 0.3), value: self.didSendCommandToRobot)
+                        .grayscale(self.didSendCommandToRobot ? 0.0 : 1.0)
 
                 case .threeChoices:
                     ThreeChoicesView(viewModel: self.viewModel, isTappable: self.didSendCommandToRobot)
@@ -98,6 +106,7 @@ public struct RobotThenTouchToSelectView: View {
                             self.viewModel.onChoiceTapped(choice: self.viewModel.choices[0])
                         }
                         .animation(.easeOut(duration: 0.3), value: self.didSendCommandToRobot)
+                        .grayscale(self.didSendCommandToRobot ? 0.0 : 1.0)
 
                 case .fourChoices:
                     FourChoicesView(viewModel: self.viewModel, isTappable: self.didSendCommandToRobot)
@@ -105,6 +114,7 @@ public struct RobotThenTouchToSelectView: View {
                             self.viewModel.onChoiceTapped(choice: self.viewModel.choices[0])
                         }
                         .animation(.easeOut(duration: 0.3), value: self.didSendCommandToRobot)
+                        .grayscale(self.didSendCommandToRobot ? 0.0 : 1.0)
 
                 case .fiveChoices:
                     FiveChoicesView(viewModel: self.viewModel, isTappable: self.didSendCommandToRobot)
@@ -112,6 +122,7 @@ public struct RobotThenTouchToSelectView: View {
                             self.viewModel.onChoiceTapped(choice: self.viewModel.choices[0])
                         }
                         .animation(.easeOut(duration: 0.3), value: self.didSendCommandToRobot)
+                        .grayscale(self.didSendCommandToRobot ? 0.0 : 1.0)
 
                 case .sixChoices:
                     SixChoicesView(viewModel: self.viewModel, isTappable: self.didSendCommandToRobot)
@@ -119,6 +130,7 @@ public struct RobotThenTouchToSelectView: View {
                             self.viewModel.onChoiceTapped(choice: self.viewModel.choices[0])
                         }
                         .animation(.easeOut(duration: 0.3), value: self.didSendCommandToRobot)
+                        .grayscale(self.didSendCommandToRobot ? 0.0 : 1.0)
 
                 default:
                     ProgressView()
@@ -147,4 +159,15 @@ public struct RobotThenTouchToSelectView: View {
     @State private var didSendCommandToRobot = false
 
     private let actionType: Exercise.Action.ActionType
+}
+
+// MARK: - l10n.RobotThenTouchToSelectView
+
+extension l10n {
+    enum RobotThenTouchToSelectView {
+        static let buttonLabel = LocalizedString("game_engine_kit.robot_then_touch_to_select.button_label",
+                                                 bundle: GameEngineKitResources.bundle,
+                                                 value: "Tap Leka",
+                                                 comment: "Robot then touch to select button label")
+    }
 }
