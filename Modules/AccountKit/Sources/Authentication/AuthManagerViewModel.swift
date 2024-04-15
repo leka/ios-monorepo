@@ -111,6 +111,7 @@ public class AuthManagerViewModel: ObservableObject {
         self.actionRequestMessage = ""
         self.showActionRequestAlert = false
         self.showErrorAlert = false
+        self.showErrorMessage = false
     }
 }
 
