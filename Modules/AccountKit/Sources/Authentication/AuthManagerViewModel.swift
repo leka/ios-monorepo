@@ -62,7 +62,11 @@ public class AuthManagerViewModel: ObservableObject {
                 } else {
                     self?.errorMessage = error.localizedDescription
                 }
-                self?.showErrorAlert = true
+                if self?.userAction == .userIsSigningOut {
+                    self?.showErrorAlert = true
+                } else {
+                    self?.showErrorMessage = true
+                }
             }
             .store(in: &self.cancellables)
 

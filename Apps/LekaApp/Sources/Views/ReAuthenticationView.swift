@@ -48,13 +48,21 @@ struct ReAuthenticationView: View {
             .disabled(self.isConnectionDisabled || self.authManagerViewModel.isLoading)
             .buttonStyle(.borderedProminent)
         }
+        .onChange(of: self.authManagerViewModel.reAuthenticationSucceeded) { success in
+            if success {
+                self.authManagerViewModel.userAction = .none
+            }
+        }
+        .onDisappear {
+            self.authManagerViewModel.resetErrorMessage()
+        }
     }
 
     // MARK: Private
 
     @StateObject private var viewModel = ReAuthenticationViewViewModel()
     @ObservedObject private var authManagerViewModel: AuthManagerViewModel = .shared
-    @ObservedObject private var navigation: Navigation = .shared
+//    @ObservedObject private var navigation: Navigation = .shared
 
     private var authManager: AuthManager = .shared
 
@@ -64,7 +72,7 @@ struct ReAuthenticationView: View {
     }
 
     private func submitForm() {
-        // reauthenticate + delete if success
+        self.authManager.reAuthenticateCurrentUser(password: self.viewModel.password)
     }
 }
 

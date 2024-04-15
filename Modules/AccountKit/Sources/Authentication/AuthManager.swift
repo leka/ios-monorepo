@@ -28,6 +28,8 @@ public class AuthManager {
     public enum UserAction {
         case userIsSigningUp
         case userIsSigningIn
+        case userIsSigningOut
+        case userIsReAuthenticating
     }
 
     public static let shared = AuthManager()

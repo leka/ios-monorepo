@@ -66,6 +66,7 @@ struct SettingsView: View {
             Section {
                 Button {
                     self.showConfirmDisconnection = true
+                    self.authManagerViewModel.userAction = .userIsSigningOut
                 } label: {
                     Label(String(l10n.SettingsView.AccountSection.LogOut.buttonLabel.characters),
                           systemImage: "rectangle.portrait.and.arrow.forward")
@@ -87,18 +88,22 @@ struct SettingsView: View {
                 .alert(String(l10n.SettingsView.AccountSection.LogOut.errorAlertTitle.characters),
                        isPresented: self.$authManagerViewModel.showErrorAlert)
                 {
-                    Button("OK", role: .cancel) {}
+                    Button("OK", role: .cancel) {
+                        self.authManagerViewModel.userAction = .none
+                    }
                 } message: {
                     Text(l10n.SettingsView.AccountSection.LogOut.errorAlertMessage)
                 }
 
                 Button(role: .destructive) {
                     self.showReAuthenticate = true
+                    self.authManagerViewModel.userAction = .userIsReAuthenticating
                 } label: {
                     Label(String(l10n.SettingsView.AccountSection.DeleteAccount.buttonLabel.characters), systemImage: "trash")
                         .foregroundStyle(.red)
                 }
                 .sheet(isPresented: self.$showReAuthenticate) {
+                    self.authManagerViewModel.userAction = .none
                     self.showConfirmDeleteAccount = true
                 } content: {
                     ReAuthenticationView()
@@ -132,7 +137,6 @@ struct SettingsView: View {
                 }
             }
         }
-
         .preferredColorScheme(self.styleManager.colorScheme)
     }
 
