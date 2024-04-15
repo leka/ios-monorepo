@@ -16,6 +16,7 @@ struct SettingsView: View {
     @State private var showConfirmCredentialsChange: Bool = false
     @State private var showConfirmDisconnection: Bool = false
     @State private var showConfirmDeleteAccount: Bool = false
+    @State private var showReAuthenticate: Bool = false
     @State private var isCaregiverpickerPresented: Bool = false
 
     var body: some View {
@@ -92,15 +93,26 @@ struct SettingsView: View {
                 }
 
                 Button(role: .destructive) {
-                    self.showConfirmDeleteAccount = true
+                    self.showReAuthenticate = true
                 } label: {
                     Label(String(l10n.SettingsView.AccountSection.DeleteAccount.buttonLabel.characters), systemImage: "trash")
                         .foregroundStyle(.red)
                 }
+                .sheet(isPresented: self.$showReAuthenticate) {
+                    self.showConfirmDeleteAccount = true
+                } content: {
+                    ReAuthenticationView()
+                }
                 .alert(String(l10n.SettingsView.AccountSection.DeleteAccount.alertTitle.characters),
                        isPresented: self.$showConfirmDeleteAccount)
                 {
-                    Button("OK", role: .cancel) {}
+                    Button("Cancel", role: .cancel) {}
+                    Button("Delete", role: .destructive) {
+                        self.dismiss()
+                        // Delete account + below
+                        // self.persistentDataManager.clearUserData()
+                        // self.reset()
+                    }
                 } message: {
                     Text(l10n.SettingsView.AccountSection.DeleteAccount.alertMessage)
                 }
