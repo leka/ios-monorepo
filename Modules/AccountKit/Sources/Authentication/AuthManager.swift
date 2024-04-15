@@ -30,6 +30,7 @@ public class AuthManager {
         case userIsSigningIn
         case userIsSigningOut
         case userIsReAuthenticating
+        case userIsDeletingAccount
     }
 
     public static let shared = AuthManager()
@@ -135,7 +136,6 @@ public class AuthManager {
                     We encountered an issue deleting your account. Please try again.
                     If the problem persists, contact our support team for assistance.
                     """
-
                 self?.authenticationError.send(AuthenticationError.custom(message: errorMessage))
             } else {
                 log.info("Account deleted successfully.")

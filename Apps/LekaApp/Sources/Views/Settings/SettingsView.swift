@@ -85,15 +85,6 @@ struct SettingsView: View {
                 } message: {
                     Text(l10n.SettingsView.AccountSection.LogOut.alertMessage)
                 }
-                .alert(String(l10n.SettingsView.AccountSection.LogOut.errorAlertTitle.characters),
-                       isPresented: self.$authManagerViewModel.showErrorAlert)
-                {
-                    Button("OK", role: .cancel) {
-                        self.authManagerViewModel.userAction = .none
-                    }
-                } message: {
-                    Text(l10n.SettingsView.AccountSection.LogOut.errorAlertMessage)
-                }
 
                 Button(role: .destructive) {
                     self.showReAuthenticate = true
@@ -134,6 +125,15 @@ struct SettingsView: View {
                     .navigationBarTitleDisplayMode(.inline)
             }
         }
+        .alert(self.errorAlertTitle,
+               isPresented: self.$authManagerViewModel.showErrorAlert)
+        {
+            Button("OK", role: .cancel) {
+                self.authManagerViewModel.userAction = .none
+            }
+        } message: {
+            Text(self.errorAlertMessage)
+        }
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 Button(String(l10n.SettingsView.closeButtonLabel.characters)) {
@@ -157,6 +157,27 @@ struct SettingsView: View {
         self.carereceiverManager.resetData()
         self.styleManager.accentColor = DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor
         self.styleManager.colorScheme = .light
+    }
+
+    private var errorAlertTitle: String {
+        switch self.authManagerViewModel.userAction {
+            case .userIsDeletingAccount:
+                "Account Deletion Error"
+            default:
+                String(l10n.SettingsView.AccountSection.LogOut.errorAlertTitle.characters)
+        }
+    }
+
+    private var errorAlertMessage: String {
+        switch self.authManagerViewModel.userAction {
+            case .userIsDeletingAccount:
+                """
+                We encountered an issue deleting your account. Please try again.
+                If the problem persists, contact our support team for assistance.
+                """
+            default:
+                String(l10n.SettingsView.AccountSection.LogOut.errorAlertMessage.characters)
+        }
     }
 }
 

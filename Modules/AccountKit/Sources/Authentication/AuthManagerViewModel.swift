@@ -38,6 +38,7 @@ public class AuthManagerViewModel: ObservableObject {
     public func resetErrorMessage() {
         self.errorMessage = ""
         self.showErrorAlert = false
+        self.showErrorMessage = false
     }
 
     // MARK: Private
@@ -62,10 +63,12 @@ public class AuthManagerViewModel: ObservableObject {
                 } else {
                     self?.errorMessage = error.localizedDescription
                 }
-                if self?.userAction == .userIsSigningOut {
-                    self?.showErrorAlert = true
-                } else {
-                    self?.showErrorMessage = true
+                switch self?.userAction {
+                    case .userIsSigningOut,
+                         .userIsDeletingAccount:
+                        self?.showErrorAlert = true
+                    default:
+                        self?.showErrorMessage = true
                 }
             }
             .store(in: &self.cancellables)
