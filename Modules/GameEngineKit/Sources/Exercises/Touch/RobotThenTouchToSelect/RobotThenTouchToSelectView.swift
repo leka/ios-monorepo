@@ -73,13 +73,7 @@ public struct RobotThenTouchToSelectView: View {
             }
             .disabled(self.didSendCommandToRobot)
             .opacity(self.didSendCommandToRobot ? 0.3 : 1.0)
-            .scaleEffect(self.didSendCommandToRobot ? 0.8 : 1.0, anchor: .center)
-            .shadow(
-                color: .accentColor.opacity(0.2),
-                radius: self.didSendCommandToRobot ? 6 : 3,
-                x: 0,
-                y: 3
-            )
+            .scaleEffect(self.didSendCommandToRobot ? 0.95 : 1.0, anchor: .center)
             .padding(20)
 
             Divider()
