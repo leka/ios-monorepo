@@ -6,13 +6,6 @@ import AccountKit
 import LocalizationKit
 import SwiftUI
 
-// MARK: - ReAuthenticationViewViewModel
-
-class ReAuthenticationViewViewModel: ObservableObject {
-    @Published var password: String = ""
-    @Published var canDelete: Bool = false
-}
-
 // MARK: - ReAuthenticationView
 
 struct ReAuthenticationView: View {
@@ -30,7 +23,7 @@ struct ReAuthenticationView: View {
             }
 
             VStack {
-                TextFieldPassword(entry: self.$viewModel.password)
+                TextFieldPassword(entry: self.$password)
 
                 Text(l10n.ConnectionView.passwordForgottenButton)
                     .font(.footnote)
@@ -60,19 +53,19 @@ struct ReAuthenticationView: View {
 
     // MARK: Private
 
-    @StateObject private var viewModel = ReAuthenticationViewViewModel()
     @ObservedObject private var authManagerViewModel: AuthManagerViewModel = .shared
-//    @ObservedObject private var navigation: Navigation = .shared
+
+    @State private var password: String = ""
 
     private var authManager: AuthManager = .shared
 
     private var isConnectionDisabled: Bool {
         // TODO(@macteuts): Complete disabling conditions
-        self.viewModel.password.isEmpty
+        self.password.isEmpty
     }
 
     private func submitForm() {
-        self.authManager.reAuthenticateCurrentUser(password: self.viewModel.password)
+        self.authManager.reAuthenticateCurrentUser(password: self.password)
     }
 }
 
