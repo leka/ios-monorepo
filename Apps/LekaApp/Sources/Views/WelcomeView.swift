@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import AccountKit
+import AVKit
 import DesignKit
 import LocalizationKit
 import SwiftUI
@@ -14,19 +15,28 @@ struct WelcomeView: View {
 
     @Environment(\.dismiss) var dismiss
 
+    @State var player = AVPlayer(url: Bundle.main.url(forResource: "leka-loop", withExtension: "mp4")!)
+
     var body: some View {
-        VStack(spacing: 30) {
-            LekaLogo(height: 90)
+        ZStack {
+            VideoPlayer(player: self.player)
+                .allowsHitTesting(false)
+                .aspectRatio(contentMode: .fill)
+                .frame(height: 2000)
 
-            NavigationLink(String(l10n.WelcomeView.createAccountButton.characters)) {
-                AccountCreationView()
-            }
-            .buttonStyle(.borderedProminent)
+            VStack(spacing: 30) {
+                LekaLogo(height: 90)
 
-            NavigationLink(String(l10n.WelcomeView.loginButton.characters)) {
-                ConnectionView()
+                NavigationLink(String(l10n.WelcomeView.createAccountButton.characters)) {
+                    AccountCreationView()
+                }
+                .buttonStyle(.borderedProminent)
+
+                NavigationLink(String(l10n.WelcomeView.loginButton.characters)) {
+                    ConnectionView()
+                }
+                .buttonStyle(.bordered)
             }
-            .buttonStyle(.bordered)
         }
 //        .navigationDestination(isPresented: self.$navigation.navigateToAccountCreationProcess) {
         .fullScreenCover(isPresented: self.$navigation.navigateToAccountCreationProcess) {
@@ -42,6 +52,7 @@ struct WelcomeView: View {
         }
         .onAppear {
             self.authManagerViewModel.userAction = .none
+            self.setupVideo()
         }
     }
 
@@ -50,6 +61,16 @@ struct WelcomeView: View {
     @ObservedObject private var navigation: Navigation = .shared
     @ObservedObject private var authManagerViewModel = AuthManagerViewModel.shared
     @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
+
+    private func setupVideo() {
+        self.player.play()
+
+        // loop video
+        NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: self.player.currentItem, queue: nil) { _ in
+            self.player.seek(to: .zero)
+            self.player.play()
+        }
+    }
 }
 
 #Preview {
