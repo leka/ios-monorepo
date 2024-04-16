@@ -38,6 +38,7 @@ public struct ChoiceImageView: View {
                             self.overlayOpacity = 0.0
                         }
                     }
+                    .shadow(color: .black.opacity(0.1), radius: 4, x: 0, y: 4)
 
             case .rightAnswer:
                 self.circle
