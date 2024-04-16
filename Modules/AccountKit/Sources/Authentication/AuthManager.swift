@@ -107,8 +107,9 @@ public class AuthManager {
 
     public func reAuthenticateCurrentUser(password: String) {
         guard let email = self.currentUserEmail else {
-            let error = NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey: "No email found for the current user."])
-            self.authenticationError.send(AuthenticationError.custom(message: error.localizedDescription))
+            let errorMessage = String(l10n.AuthManager.reAuthenticationNoEmailFound.characters)
+            log.error("Reauthentication failed: No email found for the current user.")
+            self.authenticationError.send(AuthenticationError.custom(message: errorMessage))
             return
         }
 
@@ -118,7 +119,7 @@ public class AuthManager {
             self?.loadingStatePublisher.send(false)
             if let error {
                 log.error("Reauthentication failed: \(error.localizedDescription)")
-                let errorMessage = "Authentication failed. Please verify your password."
+                let errorMessage = String(l10n.AuthManager.reAuthenticationFailedError.characters)
                 self?.authenticationError.send(AuthenticationError.custom(message: errorMessage))
                 self?.reAuthenticationState.send(false)
             } else {
@@ -132,11 +133,7 @@ public class AuthManager {
         self.auth.currentUser?.delete { [weak self] error in
             if let error {
                 log.error("Account deletion failed: \(error.localizedDescription)")
-                let errorMessage = """
-                    We encountered an issue deleting your account. Please try again.
-                    If the problem persists, contact our support team for assistance.
-                    """
-                self?.authenticationError.send(AuthenticationError.custom(message: errorMessage))
+                self?.authenticationError.send(AuthenticationError.custom(message: error.localizedDescription))
             } else {
                 log.info("Account deleted successfully.")
                 self?.authenticationState.send(.loggedOut)

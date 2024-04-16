@@ -2,6 +2,42 @@
     "version": "1.0",
     "sourceLanguage": "en",
     "strings": {
+        "accountkit.auth_manager.re_authentication_failed_error": {
+            "comment": "ReAuthentication failure error message",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Authentication failed. Please verify your password."
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "\u00c9chec de l\u2019authentification. Veuillez v\u00e9rifier votre mot de passe."
+                    }
+                }
+            }
+        },
+        "accountkit.auth_manager.re_authentication_no_email-found": {
+            "comment": "ReAuthentication no email found error message",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "No email found for the current user."
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Aucun e-mail trouv\u00e9 pour l\u2019utilisateur actuel."
+                    }
+                }
+            }
+        },
         "accountkit.auth_manager.signin_failed_error": {
             "comment": "Sign-in failure error message",
             "extractionState": "extracted_with_value",
