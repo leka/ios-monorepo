@@ -115,6 +115,7 @@ public class AuthManagerViewModel: ObservableObject {
         self.showActionRequestAlert = false
         self.showErrorAlert = false
         self.showErrorMessage = false
+        self.reAuthenticationSucceeded = false
     }
 }
 

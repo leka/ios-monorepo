@@ -55,7 +55,6 @@ struct ReAuthenticationView: View {
         }
         .onChange(of: self.authManagerViewModel.reAuthenticationSucceeded) { success in
             if success {
-                self.authManagerViewModel.userAction = .none
                 self.dismiss()
             }
         }

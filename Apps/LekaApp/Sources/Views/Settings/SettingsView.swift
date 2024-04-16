@@ -94,8 +94,11 @@ struct SettingsView: View {
                         .foregroundStyle(.red)
                 }
                 .sheet(isPresented: self.$showReAuthenticate) {
-                    self.authManagerViewModel.userAction = .none
-                    self.showConfirmDeleteAccount = true
+                    if self.authManagerViewModel.reAuthenticationSucceeded {
+                        self.showConfirmDeleteAccount = true
+                    } else {
+                        self.authManagerViewModel.userAction = .none
+                    }
                 } content: {
                     ReAuthenticationView()
                 }
