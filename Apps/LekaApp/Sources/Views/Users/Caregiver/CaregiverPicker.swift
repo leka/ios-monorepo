@@ -54,15 +54,17 @@ struct CaregiverPicker: View {
                 .disabled(self.selectedCaregiver == nil)
             }
             ToolbarItemGroup(placement: .bottomBar) {
-                Spacer()
                 Button {
                     self.isCaregiverCreationPresented = true
                 } label: {
-                    Text(l10n.CaregiverPicker.createButtonLabel)
+                    Label(String(l10n.CaregiverPicker.createButtonLabel.characters), systemImage: "person.badge.plus")
+                        .labelStyle(.titleAndIcon)
+                        .font(.footnote)
                 }
                 .buttonStyle(.bordered)
-                .font(.footnote)
                 .tint(nil)
+
+                Spacer()
             }
         }
     }
