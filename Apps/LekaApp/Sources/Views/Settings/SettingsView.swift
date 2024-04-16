@@ -105,8 +105,14 @@ struct SettingsView: View {
                 .alert(String(l10n.SettingsView.AccountSection.DeleteAccount.alertTitle.characters),
                        isPresented: self.$showConfirmDeleteAccount)
                 {
-                    Button("Cancel", role: .cancel) {}
-                    Button("Delete", role: .destructive) {
+                    Button(
+                        String(l10n.SettingsView.AccountSection.DeleteAccount.alertCancelButtonLabel.characters),
+                        role: .cancel
+                    ) {}
+                    Button(
+                        String(l10n.SettingsView.AccountSection.DeleteAccount.alertDeleteButtonLabel.characters),
+                        role: .destructive
+                    ) {
                         self.dismiss()
                         self.authManager.deleteCurrentUser()
                     }
@@ -165,7 +171,7 @@ struct SettingsView: View {
     private var errorAlertTitle: String {
         switch self.authManagerViewModel.userAction {
             case .userIsDeletingAccount:
-                "Account Deletion Error"
+                String(l10n.SettingsView.AccountSection.DeleteAccount.errorAlertTitle.characters)
             default:
                 String(l10n.SettingsView.AccountSection.LogOut.errorAlertTitle.characters)
         }
@@ -174,10 +180,7 @@ struct SettingsView: View {
     private var errorAlertMessage: String {
         switch self.authManagerViewModel.userAction {
             case .userIsDeletingAccount:
-                """
-                We encountered an issue deleting your account. Please try again.
-                If the problem persists, contact our support team for assistance.
-                """
+                String(l10n.SettingsView.AccountSection.DeleteAccount.errorAlertMessage.characters)
             default:
                 String(l10n.SettingsView.AccountSection.LogOut.errorAlertMessage.characters)
         }
