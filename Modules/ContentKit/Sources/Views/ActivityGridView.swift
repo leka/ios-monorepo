@@ -23,7 +23,7 @@ public struct ActivityGridView: View {
                 NavigationLink(destination:
                     ActivityDetailsView(activity: activity, onStartActivity: self.onStartActivity)
                 ) {
-                    VStack(spacing: 15) {
+                    VStack {
                         Image(uiImage: activity.details.iconImage)
                             .resizable()
                             .scaledToFit()
@@ -33,12 +33,14 @@ public struct ActivityGridView: View {
                                 Circle()
                                     .stroke(self.styleManager.accentColor!.opacity(0.2), lineWidth: 5)
                             )
+                            .padding(.bottom, 15)
 
                         Text(activity.details.title)
-                            .font(.body.bold())
-
+                            .font(.headline)
+                            .foregroundStyle(Color.primary)
                         Text(activity.details.subtitle ?? "")
-                            .font(.caption)
+                            .font(.body)
+                            .foregroundStyle(Color.secondary)
 
                         Spacer()
                     }

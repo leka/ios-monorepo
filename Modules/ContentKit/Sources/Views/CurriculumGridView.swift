@@ -25,7 +25,7 @@ public struct CurriculumGridView: View {
                     CurriculumDetailsView(curriculum: curriculum, onActivitySelected: self.onActivitySelected)
                 ) {
                     GroupBox {
-                        VStack {
+                        VStack(spacing: 10) {
                             Image(uiImage: curriculum.details.iconImage)
                                 .resizable()
                                 .scaledToFit()
@@ -35,10 +35,12 @@ public struct CurriculumGridView: View {
                             Text(curriculum.details.title)
                                 .font(.headline)
                                 .multilineTextAlignment(.center)
+                                .foregroundStyle(Color.primary)
 
                             Text(curriculum.details.subtitle ?? "")
-                                .font(.subheadline)
+                                .font(.body)
                                 .multilineTextAlignment(.center)
+                                .foregroundStyle(Color.secondary)
 
                             Spacer()
 

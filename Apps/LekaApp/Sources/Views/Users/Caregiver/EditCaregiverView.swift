@@ -59,6 +59,7 @@ struct EditCaregiverView: View {
                     DatePicker(
                         String(l10n.CaregiverCreation.caregiverBirthdateLabel.characters),
                         selection: self.$birthdate,
+                        in: ...Date(),
                         displayedComponents: [.date]
                     )
                     .onChange(of: self.birthdate, perform: { _ in
