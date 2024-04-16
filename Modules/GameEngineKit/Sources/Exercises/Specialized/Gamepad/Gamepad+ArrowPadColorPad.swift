@@ -12,10 +12,12 @@ extension Gamepad {
 
         var body: some View {
             HStack(spacing: 150) {
-                VStack(spacing: 200) {
-                    Spacer()
+                RadialLayout(firstButtonPosX: -100, firstButtonPosY: -250, angle: 120.0) {
+                    ArrowPadView(size: 110, xPosition: 110)
 
-                    ArrowPadView(size: 130, xPosition: 130)
+                    ForEach(Robot.Reinforcer.allCases, id: \.self) { reinforcer in
+                        ReinforcerButton(reinforcer: reinforcer)
+                    }
                 }
 
                 RadialLayout(firstButtonPosX: -120, firstButtonPosY: -200, angle: 90.0) {
