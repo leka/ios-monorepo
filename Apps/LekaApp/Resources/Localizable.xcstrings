@@ -1802,6 +1802,78 @@
                 }
             }
         },
+        "lekaapp.re_authentication_view.connection_button": {
+            "comment": "ReAuthentication view connection button",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Connect"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Se connecter"
+                    }
+                }
+            }
+        },
+        "lekaapp.re_authentication_view.context_message": {
+            "comment": "ReAuthentication view context message",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Once you delete your account, there is no going back.\n\n**All your data will be deleted forever.**\nPlease be certain.\n\nYou need to re-authenticate using your password to delete your account."
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Une fois votre compte supprim\u00e9, vous ne pourrez plus revenir en arri\u00e8re.\n\n**Toutes vos donn\u00e9es seront perdues \u00e0 jamais.**\n*Veuillez en \u00eatre s\u00fbr.*\n\nVous devez vous r\u00e9-authentifier \u00e0 l'aide de votre mot de passe pour supprimer votre compte."
+                    }
+                }
+            }
+        },
+        "lekaapp.re_authentication_view.password_forgotten_button": {
+            "comment": "ReAuthentication view password forgotten button",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "[Forgot password?](https://leka.io)"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "[Mot de passe oubli\u00e9 ?](https://leka.io)"
+                    }
+                }
+            }
+        },
+        "lekaapp.re_authentication_view.title": {
+            "comment": "ReAuthentication view title",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Account Deletion"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Suppression de compte"
+                    }
+                }
+            }
+        },
         "lekaapp.reinforcer_picker.description": {
             "comment": "Reinforcer picker description",
             "extractionState": "extracted_with_value",
@@ -1946,26 +2018,62 @@
                 }
             }
         },
-        "lekaapp.settings_view.account_section.delete_account.alert_message": {
-            "comment": "Delete account alert message",
+        "lekaapp.settings_view.account_section.delete_account.alert_cancel_button_label": {
+            "comment": "Delete account cancel button label",
             "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "To delete your account, please contact our support team at\nsupport@leka.io\nWe're here to help you with the process and answer any questions you might have."
+                        "value": "Cancel"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Pour supprimer votre compte, veuillez contacter notre \u00e9quipe support \u00e0\nsupport@leka.io\nNous sommes l\u00e0 pour vous aider dans le processus et r\u00e9pondre \u00e0 toutes vos questions."
+                        "value": "Annuler"
+                    }
+                }
+            }
+        },
+        "lekaapp.settings_view.account_section.delete_account.alert_delete_button_label": {
+            "comment": "Delete account delete button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Delete"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Supprimer"
+                    }
+                }
+            }
+        },
+        "lekaapp.settings_view.account_section.delete_account.alert_message": {
+            "comment": "Account deletion alert message",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Are you certain you want to delete your account?\nThis action cannot be undone."
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "\u00cates-vous s\u00fbr(e) de vouloir supprimer votre compte ?\nCette action est irr\u00e9versible."
                     }
                 }
             }
         },
         "lekaapp.settings_view.account_section.delete_account.alert_title": {
-            "comment": "Delete account alert title",
+            "comment": "Account deletion alert title",
             "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
@@ -1996,6 +2104,42 @@
                     "stringUnit": {
                         "state": "translated",
                         "value": "Supprimer Le Compte"
+                    }
+                }
+            }
+        },
+        "lekaapp.settings_view.account_section.delete_account.error_alert_message": {
+            "comment": "Account deletion error alert message",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "We encountered an issue deleting your account. Please try again.\nIf the problem persists, contact our support team for assistance."
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Nous avons rencontr\u00e9 un probl\u00e8me lors de la suppression de votre compte. Veuillez r\u00e9essayer. \nSi le probl\u00e8me persiste, contactez notre \u00e9quipe d'assistance pour obtenir de l'aide."
+                    }
+                }
+            }
+        },
+        "lekaapp.settings_view.account_section.delete_account.error_alert_title": {
+            "comment": "Account deletion error alert title",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Account Deletion Error"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Erreur de suppression de compte"
                     }
                 }
             }

@@ -16,6 +16,7 @@ struct SettingsView: View {
     @State private var showConfirmCredentialsChange: Bool = false
     @State private var showConfirmDisconnection: Bool = false
     @State private var showConfirmDeleteAccount: Bool = false
+    @State private var showReAuthenticate: Bool = false
     @State private var isCaregiverpickerPresented: Bool = false
 
     var body: some View {
@@ -65,6 +66,7 @@ struct SettingsView: View {
             Section {
                 Button {
                     self.showConfirmDisconnection = true
+                    self.authManagerViewModel.userAction = .userIsSigningOut
                 } label: {
                     Label(String(l10n.SettingsView.AccountSection.LogOut.buttonLabel.characters),
                           systemImage: "rectangle.portrait.and.arrow.forward")
@@ -83,35 +85,63 @@ struct SettingsView: View {
                 } message: {
                     Text(l10n.SettingsView.AccountSection.LogOut.alertMessage)
                 }
-                .alert(String(l10n.SettingsView.AccountSection.LogOut.errorAlertTitle.characters),
-                       isPresented: self.$authManagerViewModel.showErrorAlert)
-                {
-                    Button("OK", role: .cancel) {}
-                } message: {
-                    Text(l10n.SettingsView.AccountSection.LogOut.errorAlertMessage)
-                }
 
                 Button(role: .destructive) {
-                    self.showConfirmDeleteAccount = true
+                    self.showReAuthenticate = true
+                    self.authManagerViewModel.userAction = .userIsReAuthenticating
                 } label: {
                     Label(String(l10n.SettingsView.AccountSection.DeleteAccount.buttonLabel.characters), systemImage: "trash")
                         .foregroundStyle(.red)
                 }
+                .sheet(isPresented: self.$showReAuthenticate) {
+                    if self.authManagerViewModel.reAuthenticationSucceeded {
+                        self.showConfirmDeleteAccount = true
+                    } else {
+                        self.authManagerViewModel.userAction = .none
+                    }
+                } content: {
+                    ReAuthenticationView()
+                }
                 .alert(String(l10n.SettingsView.AccountSection.DeleteAccount.alertTitle.characters),
                        isPresented: self.$showConfirmDeleteAccount)
                 {
-                    Button("OK", role: .cancel) {}
+                    Button(
+                        String(l10n.SettingsView.AccountSection.DeleteAccount.alertCancelButtonLabel.characters),
+                        role: .cancel
+                    ) {}
+                    Button(
+                        String(l10n.SettingsView.AccountSection.DeleteAccount.alertDeleteButtonLabel.characters),
+                        role: .destructive
+                    ) {
+                        self.dismiss()
+                        self.authManager.deleteCurrentUser()
+                    }
                 } message: {
                     Text(l10n.SettingsView.AccountSection.DeleteAccount.alertMessage)
                 }
             }
         }
+        .onReceive(self.authManagerViewModel.$userAuthenticationState, perform: { newState in
+            if newState == .loggedOut {
+                self.persistentDataManager.clearUserData()
+                self.reset()
+            }
+        })
         .navigationTitle(String(l10n.SettingsView.navigationTitle.characters))
         .sheet(isPresented: self.$isCaregiverpickerPresented) {
             NavigationStack {
                 CaregiverPicker()
                     .navigationBarTitleDisplayMode(.inline)
             }
+        }
+        .alert(self.errorAlertTitle,
+               isPresented: self.$authManagerViewModel.showErrorAlert)
+        {
+            Button("OK", role: .cancel) {
+                self.authManagerViewModel.userAction = .none
+            }
+        } message: {
+            Text(self.errorAlertMessage)
         }
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
@@ -120,7 +150,6 @@ struct SettingsView: View {
                 }
             }
         }
-
         .preferredColorScheme(self.styleManager.colorScheme)
     }
 
@@ -137,6 +166,24 @@ struct SettingsView: View {
         self.carereceiverManager.resetData()
         self.styleManager.accentColor = DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor
         self.styleManager.colorScheme = .light
+    }
+
+    private var errorAlertTitle: String {
+        switch self.authManagerViewModel.userAction {
+            case .userIsDeletingAccount:
+                String(l10n.SettingsView.AccountSection.DeleteAccount.errorAlertTitle.characters)
+            default:
+                String(l10n.SettingsView.AccountSection.LogOut.errorAlertTitle.characters)
+        }
+    }
+
+    private var errorAlertMessage: String {
+        switch self.authManagerViewModel.userAction {
+            case .userIsDeletingAccount:
+                String(l10n.SettingsView.AccountSection.DeleteAccount.errorAlertMessage.characters)
+            default:
+                String(l10n.SettingsView.AccountSection.LogOut.errorAlertMessage.characters)
+        }
     }
 }
 

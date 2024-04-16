@@ -28,6 +28,9 @@ public class AuthManager {
     public enum UserAction {
         case userIsSigningUp
         case userIsSigningIn
+        case userIsSigningOut
+        case userIsReAuthenticating
+        case userIsDeletingAccount
     }
 
     public static let shared = AuthManager()
@@ -102,6 +105,42 @@ public class AuthManager {
         }
     }
 
+    public func reAuthenticateCurrentUser(password: String) {
+        guard let email = self.currentUserEmail else {
+            let errorMessage = String(l10n.AuthManager.reAuthenticationNoEmailFound.characters)
+            log.error("Reauthentication failed: No email found for the current user.")
+            self.authenticationError.send(AuthenticationError.custom(message: errorMessage))
+            return
+        }
+
+        self.loadingStatePublisher.send(true)
+        let credential = EmailAuthProvider.credential(withEmail: email, password: password)
+        self.auth.currentUser?.reauthenticate(with: credential) { [weak self] _, error in
+            self?.loadingStatePublisher.send(false)
+            if let error {
+                log.error("Reauthentication failed: \(error.localizedDescription)")
+                let errorMessage = String(l10n.AuthManager.reAuthenticationFailedError.characters)
+                self?.authenticationError.send(AuthenticationError.custom(message: errorMessage))
+                self?.reAuthenticationState.send(false)
+            } else {
+                log.info("Reauthentication was successful. 🎉")
+                self?.reAuthenticationState.send(true)
+            }
+        }
+    }
+
+    public func deleteCurrentUser() {
+        self.auth.currentUser?.delete { [weak self] error in
+            if let error {
+                log.error("Account deletion failed: \(error.localizedDescription)")
+                self?.authenticationError.send(AuthenticationError.custom(message: error.localizedDescription))
+            } else {
+                log.info("Account deleted successfully.")
+                self?.authenticationState.send(.loggedOut)
+            }
+        }
+    }
+
     // MARK: Internal
 
     var authenticationErrorPublisher: AnyPublisher<Error, Never> {
@@ -116,12 +155,17 @@ public class AuthManager {
         self.loadingStatePublisher.eraseToAnyPublisher()
     }
 
+    var reAuthenticationStatePublisher: AnyPublisher<Bool, Never> {
+        self.reAuthenticationState.eraseToAnyPublisher()
+    }
+
     // MARK: Private
 
     private let authenticationState = CurrentValueSubject<AuthenticationState, Never>(.unknown)
     private let authenticationError = PassthroughSubject<Error, Never>()
     private let loadingStatePublisher = PassthroughSubject<Bool, Never>()
     private let emailVerificationState = PassthroughSubject<Bool, Never>()
+    private let reAuthenticationState = PassthroughSubject<Bool, Never>()
     private let auth = Auth.auth()
     private var cancellables = Set<AnyCancellable>()
 

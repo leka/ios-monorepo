@@ -32,7 +32,7 @@ struct ConnectionView: View {
 
                 Text(self.authManagerViewModel.errorMessage)
                     .font(.footnote)
-                    .foregroundStyle(self.authManagerViewModel.showErrorAlert ? .red : .clear)
+                    .foregroundStyle(self.authManagerViewModel.showErrorMessage ? .red : .clear)
             }
 
             VStack {

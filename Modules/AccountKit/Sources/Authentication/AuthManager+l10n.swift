@@ -25,5 +25,15 @@ extension l10n {
                                                         bundle: AccountKitResources.bundle,
                                                         value: "Failed to sign out. Please try again.",
                                                         comment: "Sign-out failure error message")
+
+        static let reAuthenticationFailedError = LocalizedString("accountkit.auth_manager.re_authentication_failed_error",
+                                                                 bundle: AccountKitResources.bundle,
+                                                                 value: "Authentication failed. Please verify your password.",
+                                                                 comment: "ReAuthentication failure error message")
+
+        static let reAuthenticationNoEmailFound = LocalizedString("accountkit.auth_manager.re_authentication_no_email-found",
+                                                                  bundle: AccountKitResources.bundle,
+                                                                  value: "No email found for the current user.",
+                                                                  comment: "ReAuthentication no email found error message")
     }
 }

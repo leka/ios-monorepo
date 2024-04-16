@@ -57,15 +57,27 @@ extension l10n {
             enum DeleteAccount {
                 static let buttonLabel = LocalizedString("lekaapp.settings_view.account_section.delete_account.button_label", value: "Delete Account", comment: "Delete account button label")
 
-                static let alertTitle = LocalizedString("lekaapp.settings_view.account_section.delete_account.alert_title", value: "Delete Account?", comment: "Delete account alert title")
+                static let alertTitle = LocalizedString("lekaapp.settings_view.account_section.delete_account.alert_title", value: "Delete Account?", comment: "Account deletion alert title")
 
                 static let alertMessage = LocalizedString("lekaapp.settings_view.account_section.delete_account.alert_message",
                                                           value: """
-                                                              To delete your account, please contact our support team at
-                                                              support@leka.io
-                                                              We're here to help you with the process and answer any questions you might have.
+                                                              Are you certain you want to delete your account?
+                                                              This action cannot be undone.
                                                               """,
-                                                          comment: "Delete account alert message")
+                                                          comment: "Account deletion alert message")
+
+                static let alertCancelButtonLabel = LocalizedString("lekaapp.settings_view.account_section.delete_account.alert_cancel_button_label", value: "Cancel", comment: "Delete account cancel button label")
+
+                static let alertDeleteButtonLabel = LocalizedString("lekaapp.settings_view.account_section.delete_account.alert_delete_button_label", value: "Delete", comment: "Delete account delete button label")
+
+                static let errorAlertTitle = LocalizedString("lekaapp.settings_view.account_section.delete_account.error_alert_title", value: "Account Deletion Error", comment: "Account deletion error alert title")
+
+                static let errorAlertMessage = LocalizedString("lekaapp.settings_view.account_section.delete_account.error_alert_message",
+                                                               value: """
+                                                                   We encountered an issue deleting your account. Please try again.
+                                                                   If the problem persists, contact our support team for assistance.
+                                                                   """,
+                                                               comment: "Account deletion error alert message")
             }
         }
 
