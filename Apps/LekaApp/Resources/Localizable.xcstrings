@@ -515,6 +515,12 @@
                         "state": "new",
                         "value": "Birthdate"
                     }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Date de naissance"
+                    }
                 }
             }
         },
