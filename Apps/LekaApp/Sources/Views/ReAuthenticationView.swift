@@ -16,8 +16,18 @@ struct ReAuthenticationView: View {
     var body: some View {
         VStack(alignment: .center, spacing: 30) {
             VStack(spacing: 10) {
-                Text("Password confirmation")
-                    .font(.title)
+                VStack(spacing: 40) {
+                    Text("Account Deletion")
+                        .font(.title)
+
+                    Text("""
+                        Once you delete your account, there is no going back. All your data will be deleted forever. Please be certain.
+                        You need to re-authenticate using your password to delete your account.
+                        """)
+                    .font(.body)
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal, 20)
+                }
 
                 Text(self.authManagerViewModel.errorMessage)
                     .font(.footnote)
