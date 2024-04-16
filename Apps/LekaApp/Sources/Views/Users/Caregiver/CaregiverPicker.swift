@@ -60,6 +60,9 @@ struct CaregiverPicker: View {
                 } label: {
                     Text(l10n.CaregiverPicker.createButtonLabel)
                 }
+                .buttonStyle(.bordered)
+                .font(.footnote)
+                .tint(nil)
             }
         }
     }
