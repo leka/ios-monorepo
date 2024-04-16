@@ -67,6 +67,7 @@ struct ChoiceEmojiView: View {
                 width: self.size,
                 height: self.size
             )
+            .shadow(color: .black.opacity(0.1), radius: 4, x: 0, y: 4)
     }
 
     var body: some View {
