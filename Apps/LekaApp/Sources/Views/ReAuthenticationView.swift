@@ -17,16 +17,13 @@ struct ReAuthenticationView: View {
         VStack(alignment: .center, spacing: 30) {
             VStack(spacing: 10) {
                 VStack(spacing: 40) {
-                    Text("Account Deletion")
+                    Text(l10n.ReAuthenticationView.title)
                         .font(.title)
 
-                    Text("""
-                        Once you delete your account, there is no going back. All your data will be deleted forever. Please be certain.
-                        You need to re-authenticate using your password to delete your account.
-                        """)
-                    .font(.body)
-                    .multilineTextAlignment(.center)
-                    .padding(.horizontal, 20)
+                    Text(l10n.ReAuthenticationView.contextMessage)
+                        .font(.body)
+                        .multilineTextAlignment(.center)
+                        .padding(.horizontal, 20)
                 }
 
                 Text(self.authManagerViewModel.errorMessage)
@@ -37,7 +34,7 @@ struct ReAuthenticationView: View {
             VStack {
                 TextFieldPassword(entry: self.$password)
 
-                Text(l10n.ConnectionView.passwordForgottenButton)
+                Text(l10n.ReAuthenticationView.passwordForgottenButton)
                     .font(.footnote)
                     .underline()
             }
@@ -47,7 +44,7 @@ struct ReAuthenticationView: View {
             Button {
                 self.submitForm()
             } label: {
-                Text(String(l10n.ConnectionView.connectionButton.characters))
+                Text(String(l10n.ReAuthenticationView.connectionButton.characters))
                     .loadingText(isLoading: self.authManagerViewModel.isLoading)
             }
             .disabled(self.isConnectionDisabled || self.authManagerViewModel.isLoading)
