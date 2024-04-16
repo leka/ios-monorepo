@@ -12,8 +12,8 @@ class GameplayFindTheRightAnswers<ChoiceModelType>: StatefulGameplayProtocol
     var choices: CurrentValueSubject<[ChoiceModelType], Never> = .init([])
     var rightAnswers: [ChoiceModelType] = []
     var state: CurrentValueSubject<ExerciseState, Never> = .init(.idle)
-    var numberOfTrials: Int = 0
-    var allowedTrials: Int = 0
+    var numberOfTrials = 0
+    var allowedTrials = 0
 
     func updateChoice(_ choice: ChoiceModelType, state: GameplayChoiceState) {
         guard let index = choices.value.firstIndex(where: { $0.id == choice.id }) else {

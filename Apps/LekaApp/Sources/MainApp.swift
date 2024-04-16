@@ -46,12 +46,57 @@ struct LekaApp: App {
 
     var body: some Scene {
         WindowGroup {
-            MainView()
-                .onAppear {
-                    self.styleManager.setDefaultColorScheme(self.colorScheme)
+            Group {
+                if self.showMainView {
+                    MainView()
+                        .onAppear {
+                            self.styleManager.setDefaultColorScheme(self.colorScheme)
+                        }
+                        .tint(self.styleManager.accentColor)
+                        .preferredColorScheme(self.styleManager.colorScheme)
+                        .transition(.opacity)
+                } else {
+                    LoadingView()
                 }
-                .tint(self.styleManager.accentColor)
-                .preferredColorScheme(self.styleManager.colorScheme)
+            }
+            .animation(.default, value: self.showMainView)
+            .onAppear {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                    self.showMainView = true
+                }
+            }
         }
     }
+
+    // MARK: Private
+
+    @State private var loaderOpacity: Double = 1.0
+    @State private var showMainView: Bool = false
+}
+
+// MARK: - LoadingView
+
+struct LoadingView: View {
+    var body: some View {
+        Color.white
+            .edgesIgnoringSafeArea(.all)
+            .overlay(
+                ZStack {
+                    Image("LekaLogo")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 200)
+                        .padding()
+
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle())
+                        .tint(.black)
+                        .padding(.top, 200)
+                }
+            )
+    }
+}
+
+#Preview {
+    LoadingView()
 }
