@@ -27,63 +27,75 @@ struct MainView: View {
 
     var body: some View {
         NavigationSplitView {
-            List(selection: self.$navigation.selectedCategory) {
-                if self.authManagerViewModel.userAuthenticationState == .loggedIn {
-                    EditCaregiverLabel()
-                } else {
-                    NoAccountConnectedLabel()
-                }
-
-                Button {
-                    self.navigation.sheetContent = .robotConnection
-                } label: {
-                    RobotConnectionLabel()
-                }
-                .listRowInsets(EdgeInsets(top: 0, leading: -8, bottom: -8, trailing: -8))
-
-                Section(String(l10n.MainView.Sidebar.sectionInformation.characters)) {
-                    CategoryLabel(category: .home)
-                }
-
-                Section(String(l10n.MainView.Sidebar.sectionContent.characters)) {
-                    CategoryLabel(category: .curriculums)
-                    CategoryLabel(category: .activities)
-                    CategoryLabel(category: .gamepads)
-                }
-
-                if self.authManagerViewModel.userAuthenticationState == .loggedIn {
-                    Section(String(l10n.MainView.Sidebar.sectionUsers.characters)) {
-                        CategoryLabel(category: .caregivers)
-                        CategoryLabel(category: .carereceivers)
+            ScrollViewReader { scrollViewProxy in
+                List(selection: self.$navigation.selectedCategory) {
+                    Group {
+                        if self.authManagerViewModel.userAuthenticationState == .loggedIn {
+                            EditCaregiverLabel()
+                        } else {
+                            NoAccountConnectedLabel()
+                        }
                     }
-                }
-
-                #if DEVELOPER_MODE
-                    Section("Developer Mode") {
-                        CategoryLabel(category: .allActivities)
-                        CategoryLabel(category: .rasterImageList)
-                        CategoryLabel(category: .vectorImageList)
-                        CategoryLabel(category: .news)
-                        CategoryLabel(category: .resources)
-                    }
-                #endif
-
-                VStack(alignment: .center, spacing: 20) {
-                    if self.authManagerViewModel.userAuthenticationState == .loggedIn {
-                        Button {
-                            self.navigation.sheetContent = .settings
-                        } label: {
-                            SettingsLabel()
+                    .id("caregiverLabel")
+                    .onReceive(self.authManagerViewModel.$userAuthenticationState) { state in
+                        if state == .loggedOut {
+                            withAnimation {
+                                scrollViewProxy.scrollTo("caregiverLabel", anchor: .top)
+                            }
                         }
                     }
 
-                    Text("My Leka App - Version \(Bundle.version!) (\(Bundle.buildNumber!))")
-                        .foregroundColor(.gray)
-                        .font(.caption2)
+                    Button {
+                        self.navigation.sheetContent = .robotConnection
+                    } label: {
+                        RobotConnectionLabel()
+                    }
+                    .listRowInsets(EdgeInsets(top: 0, leading: -8, bottom: -8, trailing: -8))
 
-                    LekaLogo(width: 50)
+                    Section(String(l10n.MainView.Sidebar.sectionInformation.characters)) {
+                        CategoryLabel(category: .home)
+                    }
+
+                    Section(String(l10n.MainView.Sidebar.sectionContent.characters)) {
+                        CategoryLabel(category: .curriculums)
+                        CategoryLabel(category: .activities)
+                        CategoryLabel(category: .gamepads)
+                    }
+
+                    if self.authManagerViewModel.userAuthenticationState == .loggedIn {
+                        Section(String(l10n.MainView.Sidebar.sectionUsers.characters)) {
+                            CategoryLabel(category: .caregivers)
+                            CategoryLabel(category: .carereceivers)
+                        }
+                    }
+
+                    #if DEVELOPER_MODE
+                        Section("Developer Mode") {
+                            CategoryLabel(category: .allActivities)
+                            CategoryLabel(category: .rasterImageList)
+                            CategoryLabel(category: .vectorImageList)
+                            CategoryLabel(category: .news)
+                            CategoryLabel(category: .resources)
+                        }
+                    #endif
+
+                    VStack(alignment: .center, spacing: 20) {
+                        if self.authManagerViewModel.userAuthenticationState == .loggedIn {
+                            Button {
+                                self.navigation.sheetContent = .settings
+                            } label: {
+                                SettingsLabel()
+                            }
+                        }
+
+                        Text("My Leka App - Version \(Bundle.version!) (\(Bundle.buildNumber!))")
+                            .foregroundColor(.gray)
+                            .font(.caption2)
+
+                        LekaLogo(width: 50)
+                    }
+                    .frame(maxWidth: .infinity)
                 }
-                .frame(maxWidth: .infinity)
             }
             // TODO: (@ladislas) remove if not necessary
             // .disabled(navigation.disableUICompletly)
@@ -133,7 +145,6 @@ struct MainView: View {
                 }
             }
         }
-        .id(self.authManagerViewModel.userAction)
         .fullScreenCover(item: self.$navigation.fullScreenCoverContent) {
             self.navigation.fullScreenCoverContent = nil
             self.navigation.currentActivity = nil
