@@ -6,13 +6,14 @@ import RobotKit
 import SwiftUI
 
 public extension Carereceiver {
-    init(uuid: String = "",
-         rootOwnerUid: String = "",
-         username: String = "",
-         avatar: String = "",
-         reinforcer: Robot.Reinforcer = .rainbow)
-    {
-        self.id = uuid
+    init(
+        id: String = "",
+        rootOwnerUid: String = "",
+        username: String = "",
+        avatar: String = "",
+        reinforcer: Robot.Reinforcer = .rainbow
+    ) {
+        self.id = id
         self.rootOwnerUid = rootOwnerUid
         self.username = username
         self.avatar = avatar
