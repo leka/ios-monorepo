@@ -5,17 +5,18 @@
 import SwiftUI
 
 public extension Caregiver {
-    init(id: String = "",
-         rootOwnerUid: String = "",
-         firstName: String = "",
-         lastName: String = "",
-         birthdate: Date? = nil,
-         email: String = "",
-         avatar: String = "",
-         professions: [String] = [],
-         colorScheme: ColorScheme = .light,
-         colorTheme: ColorTheme = .darkBlue)
-    {
+    init(
+        id: String = "",
+        rootOwnerUid: String = "",
+        firstName: String = "",
+        lastName: String = "",
+        birthdate: Date? = nil,
+        email: String = "",
+        avatar: String = "",
+        professions: [String] = [],
+        colorScheme: ColorScheme = .light,
+        colorTheme: ColorTheme = .darkBlue
+    ) {
         self.id = id
         self.rootOwnerUid = rootOwnerUid
         self.firstName = firstName

@@ -28,7 +28,7 @@ public struct Caregiver: AccountDocument, Hashable {
     // MARK: Internal
 
     enum CodingKeys: String, CodingKey {
-        case id
+        case id = "uuid"
         case rootOwnerUid = "root_owner_uid"
         case createdAt = "created_at"
         case lastEditedAt = "last_edited_at"
