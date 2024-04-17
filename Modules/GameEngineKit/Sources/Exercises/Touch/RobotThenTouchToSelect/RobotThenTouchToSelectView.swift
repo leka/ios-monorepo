@@ -46,7 +46,8 @@ public struct RobotThenTouchToSelectView: View {
                 switch self.actionType {
                     case let .color(value):
                         self.robot.shine(.all(in: .init(from: value)))
-                    case .audio,
+                    case .colorSequence,
+                         .audio,
                          .image,
                          .speech:
                         log.error("Action not available for robot: \(self.actionType)")

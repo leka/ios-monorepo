@@ -8,6 +8,7 @@ public extension Exercise {
     enum Interface: String, Codable {
         case touchToSelect
         case robotThenTouchToSelect
+        case robotThenTouchToSelectInRightOrder
         case listenThenTouchToSelect
         case observeThenTouchToSelect
         case dragAndDropIntoZones

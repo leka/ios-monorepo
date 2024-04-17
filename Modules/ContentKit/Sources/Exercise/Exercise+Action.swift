@@ -33,6 +33,12 @@ public extension Exercise {
                         case .speech:
                             let speech = try valueContainer.decode(String.self, forKey: .value)
                             self = .ipad(type: .speech(speech))
+                        default:
+                            throw DecodingError.dataCorruptedError(
+                                forKey: .type,
+                                in: valueContainer,
+                                debugDescription: "Unexpected type for iPadMedia"
+                            )
                     }
                 case "robot":
                     let valueType = try valueContainer.decode(ValueType.self, forKey: .type)
@@ -43,6 +49,9 @@ public extension Exercise {
                         case .color:
                             let color = try valueContainer.decode(String.self, forKey: .value)
                             self = .robot(type: .color(color))
+                        case .colorSequence:
+                            let colorSequence = try valueContainer.decode([String].self, forKey: .value)
+                            self = .robot(type: .colorSequence(colorSequence))
                         default:
                             throw DecodingError.dataCorruptedError(
                                 forKey: .type,
@@ -64,6 +73,7 @@ public extension Exercise {
 
         public enum ActionType: Codable {
             case color(String)
+            case colorSequence([String])
             case image(String)
             case audio(String)
             case speech(String)
@@ -71,6 +81,7 @@ public extension Exercise {
 
         public enum ValueType: String, Codable {
             case color
+            case colorSequence
             case image
             case audio
             case speech
@@ -96,6 +107,9 @@ public extension Exercise {
                         case let .speech(value):
                             try valueContainer.encode("speech", forKey: .type)
                             try valueContainer.encode(value, forKey: .value)
+                        default:
+                            log.error("Action not available for iPad")
+                            fatalError("💥 Action not available for iPad")
                     }
                 case let .robot(robotAction):
                     try container.encode("robot", forKey: .type)
@@ -106,6 +120,9 @@ public extension Exercise {
                             try valueContainer.encode(id, forKey: .value)
                         case let .color(value):
                             try valueContainer.encode("color", forKey: .type)
+                            try valueContainer.encode(value, forKey: .value)
+                        case let .colorSequence(value):
+                            try valueContainer.encode("colorSequence", forKey: .type)
                             try valueContainer.encode(value, forKey: .value)
                         case .audio:
                             log.error("Action Audio not available for robot ")

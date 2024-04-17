@@ -37,6 +37,9 @@ public struct Exercise: Decodable {
                  (.robotThenTouchToSelect, .findTheRightAnswers):
                 self.payload = try container.decode(TouchToSelect.Payload.self, forKey: .payload)
 
+            case (.robotThenTouchToSelectInRightOrder, .findTheRightAnswersInRightOrder):
+                self.payload = try container.decode(TouchToSelectInRightOrder.Payload.self, forKey: .payload)
+
             case (.dragAndDropIntoZones, .findTheRightAnswers):
                 self.payload = try container.decode(DragAndDropIntoZones.Payload.self, forKey: .payload)
 
