@@ -48,10 +48,13 @@ struct ConnectionView: View {
                             .font(.footnote)
                             .underline()
                     }
-                    .alert("Alert title", isPresented: self.$showForgotPassword) {
+                    .alert(
+                        String(l10n.ConnectionView.alertTitle.characters),
+                        isPresented: self.$showForgotPassword
+                    ) {
                         Button("OK", role: .cancel) {}
                     } message: {
-                        Text("Alert message")
+                        Text(l10n.ConnectionView.alertMessage)
                     }
                 }
             }
