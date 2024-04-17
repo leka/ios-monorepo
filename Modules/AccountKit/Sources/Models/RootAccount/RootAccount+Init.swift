@@ -5,10 +5,10 @@
 import SwiftUI
 
 public extension RootAccount {
-    init(id: String? = "",
+    init(uuid: String? = "",
          rootOwnerUid: String = "")
     {
-        self.id = id
+        self.id = uuid
         self.rootOwnerUid = rootOwnerUid
     }
 }
