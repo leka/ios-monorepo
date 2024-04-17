@@ -42,12 +42,12 @@ struct ReAuthenticationView: View {
                         .underline()
                 }
                 .alert(
-                    "Alert title",
+                    String(l10n.ReAuthenticationView.alertTitle.characters),
                     isPresented: self.$showForgotPassword
                 ) {
                     Button("OK", role: .cancel) {}
                 } message: {
-                    Text("Alert message")
+                    Text(l10n.ReAuthenticationView.alertMessage)
                 }
             }
             .disableAutocorrection(true)
