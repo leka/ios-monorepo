@@ -1,0 +1,220 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+version: 1.0.0
+
+uuid: B39DDA35800849F7A40F651E411D30CD
+name: super_simon
+
+created_at: "2024-03-04T18:07:12.518998"
+last_edited_at: "2024-04-05T18:14:55.273566"
+status: published
+
+authors:
+  - leka
+
+skills:
+  - recognition
+
+tags:
+  - colors
+
+hmi:
+  - tablet_robot
+
+types:
+  - one_on_one
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: super_simon
+      title: Super simon
+      subtitle: Super simon
+      short_description: |
+        Lorem ipsum
+      description: |
+        Lorem ipsum
+      instructions: |
+        - Lorem ipsum
+
+  - locale: en_US
+    details:
+      icon: super_simon
+      title: Super simon
+      subtitle: Super simon
+      short_description: |
+        Lorem ipsum
+      description: |
+        Lorem ipsum
+      instructions: |
+        - Lorem ipsum
+
+exercises_payload:
+  options:
+    shuffle_exercises: false
+    shuffle_groups: true
+
+  exercise_groups:
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: |
+                Quelle séquence?
+            - locale: en_US
+              value: |
+                What sequence?
+          interface: robotThenTouchToSelectInRightOrder
+          gameplay: findTheRightAnswersInRightOrder
+          action:
+            type: robot
+            value:
+              type: colorSequence
+              value: [red]
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: red
+                type: color
+                order: 1
+              - value: purple
+                type: color
+              - value: blue
+                type: color
+
+        - instructions:
+            - locale: fr_FR
+              value: |
+                Quelle séquence?
+            - locale: en_US
+              value: |
+                What sequence?
+          interface: robotThenTouchToSelectInRightOrder
+          gameplay: findTheRightAnswersInRightOrder
+          action:
+            type: robot
+            value:
+              type: colorSequence
+              value: [red, purple]
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: red
+                type: color
+                order: 1
+              - value: purple
+                type: color
+                order: 2
+              - value: blue
+                type: color
+
+        - instructions:
+            - locale: fr_FR
+              value: |
+                Quelle séquence?
+            - locale: en_US
+              value: |
+                What sequence?
+          interface: robotThenTouchToSelectInRightOrder
+          gameplay: findTheRightAnswersInRightOrder
+          action:
+            type: robot
+            value:
+              type: colorSequence
+              value: [red, purple, blue]
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: red
+                type: color
+                order: 1
+              - value: purple
+                type: color
+                order: 2
+              - value: blue
+                type: color
+                order: 3
+
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: |
+                Quelle séquence?
+            - locale: en_US
+              value: |
+                What sequence?
+          interface: robotThenTouchToSelectInRightOrder
+          gameplay: findTheRightAnswersInRightOrder
+          action:
+            type: robot
+            value:
+              type: colorSequence
+              value: [green]
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: green
+                type: color
+                order: 1
+              - value: purple
+                type: color
+              - value: yellow
+                type: color
+
+        - instructions:
+            - locale: fr_FR
+              value: |
+                Quelle séquence?
+            - locale: en_US
+              value: |
+                What sequence?
+          interface: robotThenTouchToSelectInRightOrder
+          gameplay: findTheRightAnswersInRightOrder
+          action:
+            type: robot
+            value:
+              type: colorSequence
+              value: [green, purple]
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: green
+                type: color
+                order: 1
+              - value: purple
+                type: color
+                order: 2
+              - value: yellow
+                type: color
+
+        - instructions:
+            - locale: fr_FR
+              value: |
+                Quelle séquence?
+            - locale: en_US
+              value: |
+                What sequence?
+          interface: robotThenTouchToSelectInRightOrder
+          gameplay: findTheRightAnswersInRightOrder
+          action:
+            type: robot
+            value:
+              type: colorSequence
+              value: [green, purple, yellow]
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: green
+                type: color
+                order: 1
+              - value: purple
+                type: color
+                order: 2
+              - value: yellow
+                type: color
+                order: 3

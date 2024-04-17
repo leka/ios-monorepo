@@ -170,6 +170,22 @@
                         }
                     }
                 },
+                "robotThenTouchToSelectInRightOrder": {
+                    "properties": {
+                        "instructions": {
+                            "ref": "$exercise/instructions"
+                        },
+                        "gameplay": {
+                            "ref": "$exercise/gameplay"
+                        },
+                        "action": {
+                            "ref": "$exercise/action"
+                        },
+                        "payload": {
+                            "ref": "$exercise/payload/touchToSelectInRightOrder"
+                        }
+                    }
+                },
                 "listenThenTouchToSelect": {
                     "properties": {
                         "instructions": {
@@ -310,6 +326,7 @@
             "enum": [
                 "touchToSelect",
                 "robotThenTouchToSelect",
+                "robotThenTouchToSelectInRightOrder",
                 "listenThenTouchToSelect",
                 "observeThenTouchToSelect",
                 "dragAndDropIntoZones",
@@ -325,7 +342,11 @@
             ]
         },
         "$exercise/gameplay": {
-            "enum": ["findTheRightAnswers", "associateCategories"]
+            "enum": [
+                "findTheRightAnswers",
+                "findTheRightAnswersInRightOrder",
+                "associateCategories"
+            ]
         },
         "$exercise/action": {
             "properties": {
@@ -335,7 +356,7 @@
                 "value": {
                     "properties": {
                         "type": {
-                            "enum": ["image", "audio", "color"]
+                            "enum": ["image", "audio", "color", "colorSequence"]
                         },
                         "value": {
                             "type": "string"
@@ -359,6 +380,32 @@
                         "optionalProperties": {
                             "is_right_answer": {
                                 "type": "boolean"
+                            }
+                        }
+                    }
+                }
+            },
+            "optionalProperties": {
+                "shuffle_choices": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "$exercise/payload/touchToSelectInRightOrder": {
+            "properties": {
+                "choices": {
+                    "elements": {
+                        "properties": {
+                            "type": {
+                                "enum": ["color", "image", "sfsymbol", "emoji"]
+                            },
+                            "value": {
+                                "type": "string"
+                            }
+                        },
+                        "optionalProperties": {
+                            "order": {
+                                "type": "int8"
                             }
                         }
                     }
