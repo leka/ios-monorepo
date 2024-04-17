@@ -11,7 +11,7 @@ import SwiftUI
 
 enum FullScreenCoverContent: Hashable, Identifiable {
     case welcomeView
-    case activityView(carereceiver: Carereceiver? = nil)
+    case activityView(carereceivers: [Carereceiver] = [])
 
     // MARK: Internal
 
