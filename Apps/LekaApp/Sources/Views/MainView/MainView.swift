@@ -142,8 +142,8 @@ struct MainView: View {
                 switch content {
                     case .welcomeView:
                         WelcomeView()
-                    case let .activityView(carereceiver):
-                        ActivityView(activity: self.navigation.currentActivity!, reinforcer: carereceiver?.reinforcer ?? .rainbow)
+                    case let .activityView(carereceivers):
+                        ActivityView(activity: self.navigation.currentActivity!, reinforcer: carereceivers.first?.reinforcer ?? .rainbow)
                 }
             }
         }
@@ -170,13 +170,13 @@ struct MainView: View {
                     case let .carereceiverPicker(activity):
                         CarereceiverPicker(onDismiss: {
                             // nothing to do
-                        }, onSelected: { carereceiver in
-                            self.carereceiverManager.setCurrentCarereceiver(to: carereceiver)
+                        }, onSelected: { carereceivers in
+                            self.carereceiverManager.setCurrentCarereceivers(to: carereceivers)
                             self.navigation.currentActivity = activity
-                            self.navigation.fullScreenCoverContent = .activityView(carereceiver: carereceiver)
+                            self.navigation.fullScreenCoverContent = .activityView(carereceivers: carereceivers)
                         }, onSkip: {
                             self.navigation.currentActivity = activity
-                            self.navigation.fullScreenCoverContent = .activityView(carereceiver: nil)
+                            self.navigation.fullScreenCoverContent = .activityView(carereceivers: [])
                         })
                         .navigationBarTitleDisplayMode(.inline)
                 }

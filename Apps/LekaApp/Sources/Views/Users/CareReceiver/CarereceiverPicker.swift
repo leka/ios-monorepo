@@ -12,7 +12,7 @@ import SwiftUI
 struct CarereceiverPicker: View {
     // MARK: Lifecycle
 
-    init(selected: Carereceiver? = nil, onDismiss: (() -> Void)? = nil, onSelected: ((Carereceiver) -> Void)? = nil, onSkip: (() -> Void)? = nil) {
+    init(selected: [Carereceiver] = [], onDismiss: (() -> Void)? = nil, onSelected: (([Carereceiver]) -> Void)? = nil, onSkip: (() -> Void)? = nil) {
         self.selectedCarereceiver = selected
         self.onDismiss = onDismiss
         self.onSelected = onSelected
@@ -24,7 +24,7 @@ struct CarereceiverPicker: View {
     @Environment(\.dismiss) var dismiss
 
     var onDismiss: (() -> Void)?
-    var onSelected: ((Carereceiver) -> Void)?
+    var onSelected: (([Carereceiver]) -> Void)?
     var onSkip: (() -> Void)?
 
     var body: some View {
@@ -55,7 +55,7 @@ struct CarereceiverPicker: View {
                 } label: {
                     Text(l10n.CarereceiverPicker.selectButtonLabel)
                 }
-                .disabled(self.selectedCarereceiver == nil)
+                .disabled(self.selectedCarereceiver.isEmpty)
             }
             ToolbarItemGroup(placement: .bottomBar) {
                 Button {
@@ -73,8 +73,8 @@ struct CarereceiverPicker: View {
                 case .dismiss:
                     self.onDismiss?()
                 case .select:
-                    if let selectedCarereceiver = self.selectedCarereceiver {
-                        self.onSelected?(selectedCarereceiver)
+                    if self.selectedCarereceiver.isNotEmpty {
+                        self.onSelected?(self.selectedCarereceiver)
                     }
                 case .skip:
                     self.onSkip?()
@@ -98,7 +98,7 @@ struct CarereceiverPicker: View {
 
     @StateObject private var carereceiverManagerViewModel = CarereceiverManagerViewModel()
     @ObservedObject private var navigation: Navigation = .shared
-    @State private var selectedCarereceiver: Carereceiver?
+    @State private var selectedCarereceiver: [Carereceiver]
     @State private var action: ActionType?
 
     private var noCarereceiverView: some View {
@@ -120,14 +120,15 @@ struct CarereceiverPicker: View {
     private var oneToFourCarereceiversView: some View {
         HStack(spacing: 40) {
             ForEach(self.carereceiverManagerViewModel.carereceivers, id: \.id) { carereceiver in
-                CarereceiverAvatarCell(carereceiver: carereceiver, isSelected: self.selectedCarereceiver?.id == carereceiver.id)
+                let isCarereceiverSelected = self.selectedCarereceiver.contains(where: { $0.id == carereceiver.id })
+                CarereceiverAvatarCell(carereceiver: carereceiver, isSelected: isCarereceiverSelected)
                     .frame(maxWidth: 125)
                     .onTapGesture {
                         withAnimation(.default) {
-                            if self.selectedCarereceiver?.id == carereceiver.id {
-                                self.selectedCarereceiver = nil
+                            if let carereceiverIndex = self.selectedCarereceiver.firstIndex(of: carereceiver) {
+                                _ = self.selectedCarereceiver.remove(at: carereceiverIndex)
                             } else {
-                                self.selectedCarereceiver = carereceiver
+                                self.selectedCarereceiver.append(carereceiver)
                             }
                         }
                     }
@@ -139,13 +140,14 @@ struct CarereceiverPicker: View {
         ScrollView(showsIndicators: true) {
             LazyVGrid(columns: self.columns, spacing: 40) {
                 ForEach(self.carereceiverManagerViewModel.carereceivers) { carereceiver in
-                    CarereceiverAvatarCell(carereceiver: carereceiver, isSelected: self.selectedCarereceiver == carereceiver)
+                    let isCarereceiverSelected = self.selectedCarereceiver.contains(where: { $0.id == carereceiver.id })
+                    CarereceiverAvatarCell(carereceiver: carereceiver, isSelected: isCarereceiverSelected)
                         .onTapGesture {
                             withAnimation(.default) {
-                                if self.selectedCarereceiver == carereceiver {
-                                    self.selectedCarereceiver = nil
+                                if let carereceiverIndex = self.selectedCarereceiver.firstIndex(of: carereceiver) {
+                                    _ = self.selectedCarereceiver.remove(at: carereceiverIndex)
                                 } else {
-                                    self.selectedCarereceiver = carereceiver
+                                    self.selectedCarereceiver.append(carereceiver)
                                 }
                             }
                         }

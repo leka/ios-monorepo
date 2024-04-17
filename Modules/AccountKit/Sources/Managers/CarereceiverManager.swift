@@ -27,18 +27,6 @@ public class CarereceiverManager {
             .store(in: &self.cancellables)
     }
 
-    public func fetchCarereceiver(documentID: String) {
-        self.dbOps.read(from: .carereceivers, documentID: documentID)
-            .sink(receiveCompletion: { [weak self] completion in
-                if case let .failure(error) = completion {
-                    self?.fetchErrorSubject.send(error)
-                }
-            }, receiveValue: { [weak self] fetchedCarereceiver in
-                self?.currentCarereceiver.send(fetchedCarereceiver)
-            })
-            .store(in: &self.cancellables)
-    }
-
     public func createCarereceiver(carereceiver: Carereceiver) -> AnyPublisher<Carereceiver, Error> {
         self.dbOps.create(data: carereceiver, in: .carereceivers)
             .flatMap { [weak self] createdCarereceiver -> AnyPublisher<Carereceiver, Error> in
@@ -81,12 +69,12 @@ public class CarereceiverManager {
             .store(in: &self.cancellables)
     }
 
-    public func setCurrentCarereceiver(to carereceiver: Carereceiver) {
-        self.currentCarereceiver.send(carereceiver)
+    public func setCurrentCarereceivers(to carereceivers: [Carereceiver]) {
+        self.currentCarereceivers.send(carereceivers)
     }
 
     public func resetData() {
-        self.currentCarereceiver.send(nil)
+        self.currentCarereceivers.send([])
         self.carereceiverList.send([])
         self.dbOps.clearAllListeners()
         self.cancellables.forEach { $0.cancel() }
@@ -99,8 +87,8 @@ public class CarereceiverManager {
         self.carereceiverList.eraseToAnyPublisher()
     }
 
-    var currentCarereceiverPublisher: AnyPublisher<Carereceiver?, Never> {
-        self.currentCarereceiver.eraseToAnyPublisher()
+    var currentCarereceiversPublisher: AnyPublisher<[Carereceiver], Never> {
+        self.currentCarereceivers.eraseToAnyPublisher()
     }
 
     var fetchErrorPublisher: AnyPublisher<Error, Never> {
@@ -110,7 +98,7 @@ public class CarereceiverManager {
     // MARK: Private
 
     private var carereceiverList = CurrentValueSubject<[Carereceiver], Never>([])
-    private var currentCarereceiver = CurrentValueSubject<Carereceiver?, Never>(nil)
+    private var currentCarereceivers = CurrentValueSubject<[Carereceiver], Never>([])
     private var fetchErrorSubject = PassthroughSubject<Error, Never>()
     private let dbOps = DatabaseOperations.shared
     private var cancellables = Set<AnyCancellable>()

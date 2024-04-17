@@ -15,7 +15,7 @@ public class CarereceiverManagerViewModel: ObservableObject {
     // MARK: Public
 
     @Published public var carereceivers: [Carereceiver] = []
-    @Published public var currentCarereceiver: Carereceiver?
+    @Published public var currentCarereceivers: [Carereceiver] = []
     @Published public var errorMessage: String = ""
     @Published public var showErrorAlert = false
 
@@ -32,10 +32,10 @@ public class CarereceiverManagerViewModel: ObservableObject {
             })
             .store(in: &self.cancellables)
 
-        self.carereceiverManager.currentCarereceiverPublisher
+        self.carereceiverManager.currentCarereceiversPublisher
             .receive(on: DispatchQueue.main)
-            .sink(receiveValue: { [weak self] fetchedCarereceiver in
-                self?.currentCarereceiver = fetchedCarereceiver
+            .sink(receiveValue: { [weak self] fetchedCarereceivers in
+                self?.currentCarereceivers = fetchedCarereceivers
             })
             .store(in: &self.cancellables)
 
