@@ -34,9 +34,21 @@ struct ReAuthenticationView: View {
             VStack {
                 TextFieldPassword(entry: self.$password)
 
-                Text(l10n.ReAuthenticationView.passwordForgottenButton)
-                    .font(.footnote)
-                    .underline()
+                Button(role: .destructive) {
+                    self.showForgotPassword = true
+                } label: {
+                    Text(l10n.ReAuthenticationView.passwordForgottenButton)
+                        .font(.footnote)
+                        .underline()
+                }
+                .alert(
+                    "Alert title",
+                    isPresented: self.$showForgotPassword
+                ) {
+                    Button("OK", role: .cancel) {}
+                } message: {
+                    Text("Alert message")
+                }
             }
             .disableAutocorrection(true)
             .frame(width: 350)
@@ -65,6 +77,7 @@ struct ReAuthenticationView: View {
     @ObservedObject private var authManagerViewModel: AuthManagerViewModel = .shared
 
     @State private var password: String = ""
+    @State private var showForgotPassword: Bool = false
 
     private var authManager: AuthManager = .shared
 
