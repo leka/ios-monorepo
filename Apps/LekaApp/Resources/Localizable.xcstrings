@@ -1244,6 +1244,42 @@
                 }
             }
         },
+        "lekaapp.connection_view.alert_message": {
+            "comment": "Forgot Password alert message",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "For security reasons, changes to your email or password need to be handled by our support team.\nPlease contact us at\nsupport@leka.io\nand we'll be happy to assist you with updating your account information."
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Pour des raisons de s\u00e9curit\u00e9, les modifications de l'e-mail ou du mot de passe doivent \u00eatre trait\u00e9es par notre \u00e9quipe support.\nVeuillez nous contacter \u00e0\nsupport@leka.io\net nous serons heureux de vous aider \u00e0 mettre \u00e0 jour les informations de votre compte."
+                    }
+                }
+            }
+        },
+        "lekaapp.connection_view.alert_title": {
+            "comment": "Forgot Password alert title",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Forgot Password?"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Mot de passe oubli\u00e9 ?"
+                    }
+                }
+            }
+        },
         "lekaapp.connection_view.connection_button": {
             "comment": "ConnectionView connection button",
             "extractionState": "extracted_with_value",
@@ -1269,13 +1305,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "[Forgot password?](https://leka.io)"
+                        "value": "Forgot password?"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "[Mot de passe oubli\u00e9 ?](https://leka.io)"
+                        "value": "Mot de passe oubli\u00e9 ?"
                     }
                 }
             }
@@ -1802,6 +1838,42 @@
                 }
             }
         },
+        "lekaapp.re_authentication_view.alert_message": {
+            "comment": "ReAuthentication view Forgot Password alert message",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "For security reasons, changes to your email or password need to be handled by our support team.\nPlease contact us at\nsupport@leka.io\nand we'll be happy to assist you with updating your account information."
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Pour des raisons de s\u00e9curit\u00e9, les modifications de l'e-mail ou du mot de passe doivent \u00eatre trait\u00e9es par notre \u00e9quipe support.\nVeuillez nous contacter \u00e0\nsupport@leka.io\net nous serons heureux de vous aider \u00e0 mettre \u00e0 jour les informations de votre compte."
+                    }
+                }
+            }
+        },
+        "lekaapp.re_authentication_view.alert_title": {
+            "comment": "ReAuthentication view Forgot Password alert title",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Forgot Password?"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Mot de passe oubli\u00e9 ?"
+                    }
+                }
+            }
+        },
         "lekaapp.re_authentication_view.connection_button": {
             "comment": "ReAuthentication view connection button",
             "extractionState": "extracted_with_value",
@@ -1845,13 +1917,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "[Forgot password?](https://leka.io)"
+                        "value": "Forgot password?"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "[Mot de passe oubli\u00e9 ?](https://leka.io)"
+                        "value": "Mot de passe oubli\u00e9 ?"
                     }
                 }
             }
