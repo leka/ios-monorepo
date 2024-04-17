@@ -41,9 +41,18 @@ struct ConnectionView: View {
                 VStack {
                     TextFieldPassword(entry: self.$viewModel.password)
 
-                    Text(l10n.ConnectionView.passwordForgottenButton)
-                        .font(.footnote)
-                        .underline()
+                    Button(role: .destructive) {
+                        self.showForgotPassword = true
+                    } label: {
+                        Text(l10n.ConnectionView.passwordForgottenButton)
+                            .font(.footnote)
+                            .underline()
+                    }
+                    .alert("Alert title", isPresented: self.$showForgotPassword) {
+                        Button("OK", role: .cancel) {}
+                    } message: {
+                        Text("Alert message")
+                    }
                 }
             }
             .disableAutocorrection(true)
@@ -80,6 +89,8 @@ struct ConnectionView: View {
     @StateObject private var viewModel = ConnectionViewViewModel()
     @ObservedObject private var authManagerViewModel: AuthManagerViewModel = .shared
     @ObservedObject private var navigation: Navigation = .shared
+
+    @State private var showForgotPassword: Bool = false
 
     private var authManager: AuthManager = .shared
     private var caregiverManager: CaregiverManager = .shared
