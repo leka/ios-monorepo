@@ -1827,7 +1827,7 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Once you delete your account, there is no going back.\n\n**All your data will be deleted forever.**\nPlease be certain.\n\nYou need to re-authenticate using your password to delete your account."
+                        "value": "Once you delete your account, there is no going back.\n\n**All your data will be lost forever.**\n*Please be certain.*\n\nYou need to re-authenticate using your password to delete your account."
                     }
                 },
                 "fr": {
