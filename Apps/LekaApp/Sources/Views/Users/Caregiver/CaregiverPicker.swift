@@ -16,14 +16,17 @@ struct CaregiverPicker: View {
 
     var body: some View {
         VStack {
-            switch self.caregiverManagerViewModel.caregivers.count {
-                case 0:
-                    self.noCaregiverView
-                case 1...4:
-                    self.oneToFourCaregiversView
-                default:
-                    self.fiveOrMoreCaregiversView
+            Group {
+                switch self.caregiverManagerViewModel.caregivers.count {
+                    case 0:
+                        self.noCaregiverView
+                    case 1...4:
+                        self.oneToFourCaregiversView
+                    default:
+                        self.fiveOrMoreCaregiversView
+                }
             }
+            .loadingIndicator(isLoading: self.caregiverManagerViewModel.isLoading)
         }
         .padding(.horizontal)
         .navigationTitle(String(l10n.CaregiverPicker.title.characters))
@@ -112,6 +115,7 @@ struct CaregiverPicker: View {
                             }
                         }
                     }
+                    .disabled(self.caregiverManagerViewModel.isLoading)
             }
         }
     }
@@ -131,6 +135,7 @@ struct CaregiverPicker: View {
                                 }
                             }
                         }
+                        .disabled(self.caregiverManagerViewModel.isLoading)
                 }
             }
         }

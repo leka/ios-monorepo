@@ -18,6 +18,7 @@ public class CaregiverManagerViewModel: ObservableObject {
     @Published public var currentCaregiver: Caregiver?
     @Published public var errorMessage: String = ""
     @Published public var showErrorAlert = false
+    @Published public var isLoading: Bool = false
 
     // MARK: Private
 
@@ -37,6 +38,13 @@ public class CaregiverManagerViewModel: ObservableObject {
             .sink(receiveValue: { [weak self] caregiver in
                 self?.currentCaregiver = caregiver
             })
+            .store(in: &self.cancellables)
+
+        self.caregiverManager.isLoadingPublisher
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] isLoading in
+                self?.isLoading = isLoading
+            }
             .store(in: &self.cancellables)
 
         self.caregiverManager.fetchErrorPublisher
