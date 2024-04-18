@@ -10,11 +10,20 @@ import SwiftUI
 // MARK: - CreateCarereceiverView
 
 struct CreateCarereceiverView: View {
+    // MARK: Lifecycle
+
+    init(onCancel: (() -> Void)? = nil, onCreated: ((Carereceiver) -> Void)? = nil) {
+        self.onCancel = onCancel
+        self.onCreated = onCreated
+    }
+
     // MARK: Internal
 
-    @Binding var isPresented: Bool
-    @State private var newCarereceiver = Carereceiver()
-    var onDismissAction: () -> Void
+    @Environment(\.dismiss) var dismiss
+    var onCancel: (() -> Void)?
+    var onCreated: ((Carereceiver) -> Void)?
+
+    var carereceiverManager: CarereceiverManager = .shared
 
     var body: some View {
         NavigationStack {
@@ -34,15 +43,13 @@ struct CreateCarereceiverView: View {
 
                     Button(String(l10n.CarereceiverCreation.registerProfilButton.characters)) {
                         withAnimation {
-                            self.isPresented.toggle()
-                            self.onDismissAction()
+                            self.action = .created
+                            self.dismiss()
                         }
                         if self.newCarereceiver.avatar.isEmpty {
-                            self.newCarereceiver.avatar = Avatars.categories.last!.avatars.randomElement()!
+                            self.newCarereceiver.avatar = Avatars.categories.first!.avatars.randomElement()!
                         }
-                        // TODO: (@team) : add the carereceiver profile to the account
-                        // TODO: (@team) : assign the carereceiver profile as the current selected one
-                        self.rootOwnerViewModel.mockCarereceiversSet.append(self.newCarereceiver)
+                        self.carereceiverManager.addCarereceiver(carereceiver: self.newCarereceiver)
                     }
                     .disabled(self.newCarereceiver.username.isEmpty)
                     .buttonStyle(.borderedProminent)
@@ -52,13 +59,41 @@ struct CreateCarereceiverView: View {
             }
             .navigationTitle(String(l10n.CarereceiverCreation.title.characters))
             .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button {
+                        self.action = .cancel
+                        self.dismiss()
+                    } label: {
+                        Image(systemName: "xmark.circle")
+                    }
+                }
+            }
+            .onDisappear {
+                switch self.action {
+                    case .cancel:
+                        self.onCancel?()
+                    case .created:
+                        self.onCreated?(self.newCarereceiver)
+                    case .none:
+                        break
+                }
+
+                self.action = nil
+            }
         }
     }
 
     // MARK: Private
 
-    @ObservedObject private var rootOwnerViewModel = RootOwnerViewModel.shared
+    private enum ActionType {
+        case cancel
+        case created
+    }
+
+    @State private var newCarereceiver = Carereceiver()
     @State private var isAvatarPickerPresented: Bool = false
+    @State private var action: ActionType?
 
     private var avatarPickerButton: some View {
         Button {
@@ -70,8 +105,13 @@ struct CreateCarereceiverView: View {
                     .font(.headline)
             }
         }
-        .navigationDestination(isPresented: self.$isAvatarPickerPresented) {
-            AvatarPicker(avatar: self.$newCarereceiver.avatar)
+        .sheet(isPresented: self.$isAvatarPickerPresented) {
+            NavigationStack {
+                AvatarPicker(selectedAvatar: self.newCarereceiver.avatar,
+                             onValidate: { avatar in
+                                 self.newCarereceiver.avatar = avatar
+                             })
+            }
         }
         .frame(maxWidth: .infinity, alignment: .center)
     }
@@ -96,7 +136,9 @@ extension l10n {
 // swiftlint:enable line_length
 
 #Preview {
-    CreateCarereceiverView(isPresented: .constant(true)) {
-        print("Carereceiver saved")
-    }
+    CreateCarereceiverView(onCancel: {
+        print("Care receiver creation canceled")
+    }, onCreated: {
+        print("Carereceiver \($0.username) created")
+    })
 }

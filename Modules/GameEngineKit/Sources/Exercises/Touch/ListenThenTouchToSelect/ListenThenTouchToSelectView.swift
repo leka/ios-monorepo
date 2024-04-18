@@ -89,7 +89,7 @@ public struct ListenThenTouchToSelectView: View {
                         .animation(.easeOut(duration: 0.3), value: self.audioPlayer.didFinishPlaying)
 
                 default:
-                    Text("❌ Interface not available for \(self.viewModel.choices.count) choices")
+                    ProgressView()
             }
 
             Spacer()

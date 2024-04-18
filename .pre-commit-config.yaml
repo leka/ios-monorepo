@@ -22,7 +22,7 @@ repos:
         args: ["--autofix", "--indent=4", "--top-keys=version,sourceLanguage"]
         types: [file]
         files: \.(json|xcstrings)$
-        exclude: '(.vscode/settings.json|\.jtd.json$|.*\.xcassets/.*|.*\.colorset/.*|.*Lottie.*)'
+        exclude: '(\.vscode/settings\.json|\.jtd\.json$|.*\.xcassets/.*|.*\.colorset/.*|\.animation\.lottie\.json$)'
       - id: check-added-large-files
       - id: check-executables-have-shebangs
       - id: check-shebang-scripts-are-executable
@@ -43,18 +43,10 @@ repos:
 
   - repo: local
     hooks:
-      - id: check_xcstrings_stale_entries
-        name: Check .xcstrings files for stale entries
-        description: This hook checks .xcstrings files for stale entries
-        entry: python3 Tools/Hooks/check_xcstrings_stale_entries.py
-        language: python
-        additional_dependencies: ["pygments"]
-        files: '.*\.xcstrings'
-
-      - id: check_xcstrings_unusual_terminators
-        name: Check .xcstrings files for unusual terminators
-        description: This hook checks .xcstrings files for unusual terminators
-        entry: python3 Tools/Hooks/check_xcstrings_unusual_terminators.py
+      - id: check_xcstrings
+        name: Check .xcstrings files for stale entries and unusual characters
+        description: This hook checks .xcstrings files for stale entries and unusual characters
+        entry: python3 Tools/Hooks/check_xcstrings.py
         language: python
         additional_dependencies: ["pygments"]
         files: '.*\.xcstrings'

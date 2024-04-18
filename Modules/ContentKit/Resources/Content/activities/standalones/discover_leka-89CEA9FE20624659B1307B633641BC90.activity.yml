@@ -1,0 +1,86 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+version: 1.0.0
+
+uuid: 89CEA9FE20624659B1307B633641BC90
+name: discover_leka
+
+created_at: "2024-03-01T14:00:38.160396"
+last_edited_at: "2024-03-06T12:51:54.499454"
+status: published
+
+authors:
+  - leka
+
+skills:
+  - familiarization_with_leka
+
+tags:
+  - pairing
+  - familiarization
+  - discover_leka
+
+hmi:
+  - robot
+
+types:
+  - one_on_one
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: discover_leka
+
+      title: Découvre Leka
+      subtitle: Familiarise toi avec Leka !
+
+      short_description: |
+        Découvrir Leka et ses stimulations sensorielles : lumières, vibrations, mouvements
+
+      description: |
+        *Découvrir Leka* est une activité interactive conçue pour que les personnes puissent se familiariser avec le robot et être à l'aise en sa présence. Au cours de l'activité, le robot exécute divers mouvements, émet des lumières, des vibrations et affiche des couleurs.
+
+      instructions: |
+        - Cliquez sur le bouton "Jouer" situé à gauche de l'écran de l'iPad.
+        - Encouragez la personne à focaliser son attention sur le robot.
+        - Appuyez sur le bouton "Pause" si nécessaire.
+        - Cliquez sur le bouton "Stop" lorsque vous souhaitez mettre fin à l'activité.
+
+  - locale: en_US
+    details:
+      icon: discover_leka
+
+      title: Discover Leka
+      subtitle: Get familiar with Leka!
+
+      short_description: |
+        Discover Leka and its sensory stimulations: lights, vibrations, movements
+
+      description: |
+        *Discover Leka* is an interactive activity designed to help care receivers become familiar with the robot and feel comfortable in its presence. Throughout the activity, the robot performs various movements, emits lights, vibrations, and displays colors.
+
+      instructions: |
+        - Press the "Play" button located on the left side of the iPad screen.
+        - Prompt the person to focus their attention on the robot.
+        - Tap the "Pause" button if necessary.
+        - Press the "Stop" button when you wish to end the activity.
+
+exercises_payload:
+  options:
+    shuffle_exercises: false
+    shuffle_groups: false
+
+  exercise_groups:
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Observe Leka
+            - locale: en_US
+              value: Observe Leka
+          interface: pairing

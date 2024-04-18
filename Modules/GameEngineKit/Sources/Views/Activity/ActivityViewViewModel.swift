@@ -74,13 +74,13 @@ class ActivityViewViewModel: ObservableObject {
         }.isEmpty
     }
 
-    var activityCompletionSuccessPercentage: Int {
-        let successfulExercises = self.successExercisesSharedData.count
-        let totalExercises = self.completedExercisesSharedData.filter {
+    var activityCompletionSuccessPercentage: Double {
+        let successfulExercises = Double(self.successExercisesSharedData.count)
+        let totalExercises = Double(self.completedExercisesSharedData.filter {
             $0.completionLevel != .nonApplicable
-        }.count
+        }.count)
 
-        return (successfulExercises / totalExercises) * 100
+        return (successfulExercises / totalExercises) * 100.0
     }
 
     var delayAfterReinforcerAnimation: Double {

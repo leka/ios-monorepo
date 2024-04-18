@@ -83,7 +83,7 @@ public struct ObserveThenTouchToSelectView: View {
                         .animation(.easeOut(duration: 0.3), value: self.imageWasTapped)
 
                 default:
-                    Text("❌ Interface not available for \(self.viewModel.choices.count) choices")
+                    ProgressView()
             }
 
             Spacer()

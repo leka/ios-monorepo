@@ -50,9 +50,9 @@ struct EditCarereceiverView: View {
                 }
                 ToolbarItem(placement: .topBarTrailing) {
                     Button(String(l10n.EditCarereceiverView.saveButtonLabel.characters)) {
-                        // TODO: (@mathieu) - Add Firestore logic
                         self.rootOwnerViewModel.isEditCarereceiverViewPresented = false
-                        self.rootOwnerViewModel.currentCarereceiver = self.modifiedCarereceiver
+                        self.carereceiverManager.updateCarereceiver(carereceiver: &self.modifiedCarereceiver)
+                        self.carereceiverManager.fetchAllCarereceivers()
                     }
                 }
             }
@@ -64,6 +64,8 @@ struct EditCarereceiverView: View {
     @ObservedObject private var rootOwnerViewModel: RootOwnerViewModel = .shared
     @State private var isAvatarPickerPresented: Bool = false
 
+    var carereceiverManager: CarereceiverManager = .shared
+
     private var avatarPickerButton: some View {
         Button {
             self.isAvatarPickerPresented = true
@@ -74,8 +76,13 @@ struct EditCarereceiverView: View {
                     .font(.headline)
             }
         }
-        .navigationDestination(isPresented: self.$isAvatarPickerPresented) {
-            AvatarPicker(avatar: self.$modifiedCarereceiver.avatar)
+        .sheet(isPresented: self.$isAvatarPickerPresented) {
+            NavigationStack {
+                AvatarPicker(selectedAvatar: self.modifiedCarereceiver.avatar,
+                             onValidate: { avatar in
+                                 self.modifiedCarereceiver.avatar = avatar
+                             })
+            }
         }
         .frame(maxWidth: .infinity, alignment: .center)
     }

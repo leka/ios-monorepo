@@ -35,15 +35,15 @@ extension DanceFreezeView {
                     }
                 }
                 .disabled(self.isAuto)
-                .onAppear {
-                    self.viewModel.onDanceFreezeToggle()
-                    if self.isAuto {
-                        self.randomSwitch()
-                    }
+            }
+            .onAppear {
+                self.viewModel.onDanceFreezeToggle()
+                if self.isAuto {
+                    self.randomSwitch()
                 }
-                .onDisappear {
-                    self.viewModel.completeDanceFreeze()
-                }
+            }
+            .onDisappear {
+                self.viewModel.completeDanceFreeze()
             }
         }
 

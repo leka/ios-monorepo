@@ -8,7 +8,7 @@ public class CaregiverManager {
     // MARK: Lifecycle
 
     private init() {
-        self.fetchAllCaregivers()
+        // Nothing to do
     }
 
     // MARK: Public
@@ -46,25 +46,12 @@ public class CaregiverManager {
                     self?.fetchErrorSubject.send(error)
                 }
             }, receiveValue: { _ in
-                // Nothing to do
+                self.fetchAllCaregivers()
             })
             .store(in: &self.cancellables)
     }
 
     public func updateCaregiver(caregiver: inout Caregiver) {
-        caregiver.lastEditedAt = nil
-        self.dbOps.update(data: caregiver, in: .caregivers)
-            .sink(receiveCompletion: { completion in
-                if case let .failure(error) = completion {
-                    self.fetchErrorSubject.send(error)
-                }
-            }, receiveValue: {
-                // Nothing to do
-            })
-            .store(in: &self.cancellables)
-    }
-
-    public func updateAndSelectCaregiver(caregiver: inout Caregiver) {
         caregiver.lastEditedAt = nil
         let documentID = caregiver.id!
         self.dbOps.update(data: caregiver, in: .caregivers)
@@ -88,6 +75,15 @@ public class CaregiverManager {
                 // Nothing to do
             })
             .store(in: &self.cancellables)
+    }
+
+    public func setCurrentCaregiver(to caregiver: Caregiver) {
+        self.currentCaregiver.send(caregiver)
+    }
+
+    public func resetData() {
+        self.currentCaregiver.send(nil)
+        self.caregiverList.send([])
     }
 
     // MARK: Internal

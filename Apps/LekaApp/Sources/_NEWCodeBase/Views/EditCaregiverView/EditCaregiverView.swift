@@ -24,18 +24,20 @@ struct EditCaregiverView: View {
                     }
 
                     Section {
-                        LabeledContent(String(l10n.CaregiverCreation.caregiverNameLabel.characters)) {
+                        LabeledContent(String(l10n.CaregiverCreation.caregiverFirstNameLabel.characters)) {
                             TextField("", text: self.$modifiedCaregiver.firstName)
                                 .multilineTextAlignment(.trailing)
+                                .foregroundStyle(Color.secondary)
                         }
-                        LabeledContent(String(l10n.CaregiverCreation.caregiverNameLabel.characters)) {
+                        LabeledContent(String(l10n.CaregiverCreation.caregiverLastNameLabel.characters)) {
                             TextField("", text: self.$modifiedCaregiver.lastName)
                                 .multilineTextAlignment(.trailing)
+                                .foregroundStyle(Color.secondary)
                         }
                     }
 
                     Section {
-                        self.professionNavigationLink
+                        self.professionPickerButton
                     }
 
                     Section {
@@ -51,15 +53,15 @@ struct EditCaregiverView: View {
                 ToolbarItem(placement: .topBarLeading) {
                     Button(String(l10n.EditCaregiverView.closeButtonLabel.characters)) {
                         self.rootOwnerViewModel.isEditCaregiverViewPresented = false
-                        self.styleManager.colorScheme = self.modifiedCaregiver.colorScheme
-                        self.styleManager.accentColor = self.modifiedCaregiver.colorTheme.color
+                        self.styleManager.colorScheme = self.caregiverManagerViewModel.currentCaregiver!.colorScheme
+                        self.styleManager.accentColor = self.caregiverManagerViewModel.currentCaregiver!.colorTheme.color
                     }
                 }
                 ToolbarItem(placement: .topBarTrailing) {
                     Button(String(l10n.EditCaregiverView.saveButtonLabel.characters)) {
-                        // TODO: (@mathieu) - Add Firestore logic
                         self.rootOwnerViewModel.isEditCaregiverViewPresented = false
-                        self.rootOwnerViewModel.currentCaregiver = self.modifiedCaregiver
+                        self.caregiverManager.updateCaregiver(caregiver: &self.modifiedCaregiver)
+                        self.caregiverManager.fetchAllCaregivers()
                     }
                 }
             }
@@ -71,7 +73,13 @@ struct EditCaregiverView: View {
 
     @ObservedObject private var rootOwnerViewModel: RootOwnerViewModel = .shared
     @ObservedObject private var styleManager: StyleManager = .shared
+
+    @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
+
     @State private var isAvatarPickerPresented: Bool = false
+    @State private var isProfessionPickerPresented: Bool = false
+
+    var caregiverManager: CaregiverManager = .shared
 
     private var avatarPickerButton: some View {
         Button {
@@ -83,19 +91,34 @@ struct EditCaregiverView: View {
                     .font(.headline)
             }
         }
-        .navigationDestination(isPresented: self.$isAvatarPickerPresented) {
-            AvatarPicker(avatar: self.$modifiedCaregiver.avatar)
+        .sheet(isPresented: self.$isAvatarPickerPresented) {
+            NavigationStack {
+                AvatarPicker(selectedAvatar: self.modifiedCaregiver.avatar,
+                             onValidate: { avatar in
+                                 self.modifiedCaregiver.avatar = avatar
+                             })
+            }
         }
         .frame(maxWidth: .infinity, alignment: .center)
     }
 
-    private var professionNavigationLink: some View {
+    private var professionPickerButton: some View {
         VStack(alignment: .leading) {
-            NavigationLink {
-                ProfessionPicker(caregiver: self.$modifiedCaregiver)
-            } label: {
-                Text(l10n.CaregiverCreation.professionLabel)
-                    .font(.body)
+            LabeledContent(String(l10n.CaregiverCreation.professionLabel.characters)) {
+                Button {
+                    self.isProfessionPickerPresented = true
+                } label: {
+                    Image(systemName: "plus")
+                }
+                .sheet(isPresented: self.$isProfessionPickerPresented) {
+                    NavigationStack {
+                        ProfessionPicker(selectedProfessionsIDs: self.modifiedCaregiver.professions,
+                                         onValidate: { professions in
+                                             self.modifiedCaregiver.professions = professions
+                                         })
+                                         .navigationBarTitleDisplayMode(.inline)
+                    }
+                }
             }
 
             if !self.modifiedCaregiver.professions.isEmpty {

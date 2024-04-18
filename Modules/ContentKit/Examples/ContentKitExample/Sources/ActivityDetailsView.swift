@@ -49,6 +49,8 @@ struct ActivityDetailsView: View {
             Section("Information") {
                 RowView(label: "UUID", value: self.activity.id)
                 RowView(label: "Name", value: self.activity.name)
+                RowView(label: "Created at", value: self.activity.createdAt.description)
+                RowView(label: "Last edited at", value: self.activity.lastEditedAt.description)
 
                 RowView(label: "Status", value: self.activity.status == .published ? "published" : "draft")
 

@@ -8,12 +8,19 @@ import SwiftUI
 
 extension DanceFreezeView {
     struct DanceView: View {
+        // MARK: Internal
+
         var body: some View {
             LottieView(
-                name: "dance", speed: 0.5,
+                animation: self.animation,
+                speed: 0.5,
                 loopMode: .loop
             )
         }
+
+        // MARK: Private
+
+        private let animation = LottieAnimation.named("dance_freeze_dance.animation.lottie", bundle: .module)!
     }
 }
 

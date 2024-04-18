@@ -10,11 +10,21 @@ import SwiftUI
 // MARK: - ProfessionPicker
 
 struct ProfessionPicker: View {
+    // MARK: Lifecycle
+
+    init(selectedProfessionsIDs: [String], onCancel: (() -> Void)? = nil, onValidate: (([String]) -> Void)? = nil) {
+        self.onCancel = onCancel
+        self.onValidate = onValidate
+        self.selectedProfessionsIDs = selectedProfessionsIDs
+    }
+
     // MARK: Internal
 
     @Environment(\.dismiss) var dismiss
-
-    @Binding var caregiver: Caregiver
+    @State var selectedProfessions: Set<Profession> = []
+    let selectedProfessionsIDs: [String]
+    let onCancel: (() -> Void)?
+    let onValidate: (([String]) -> Void)?
 
     var body: some View {
         List(Professions.list, id: \.self, selection: self.$selectedProfessions) { profession in
@@ -29,17 +39,24 @@ struct ProfessionPicker: View {
             }
         }
         .environment(\.editMode, Binding.constant(EditMode.active))
+        .navigationTitle(String(l10n.ProfessionPicker.title.characters))
         .onAppear {
-            let professions = self.caregiver.professions.compactMap { Professions.profession(for: $0) }
+            let professions = self.selectedProfessionsIDs.compactMap { Professions.profession(for: $0) }
             self.selectedProfessions = Set(professions)
         }
-        .navigationTitle(String(l10n.ProfessionPicker.title.characters))
         .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button {
+                    self.action = .cancel
+                    self.dismiss()
+                } label: {
+                    Image(systemName: "xmark.circle")
+                }
+            }
+
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
-                    // swiftformat:disable:next preferKeyPath
-                    let professionIDs = self.selectedProfessions.compactMap { $0.id }
-                    self.caregiver.professions = Array(professionIDs)
+                    self.action = .validate
                     self.dismiss()
                 } label: {
                     Label(String(l10n.ProfessionPicker.validateButton.characters), systemImage: "checkmark.circle")
@@ -56,12 +73,30 @@ struct ProfessionPicker: View {
                     .font(.title2)
             }
         })
+        .onDisappear {
+            switch self.action {
+                case .cancel:
+                    self.onCancel?()
+                case .validate:
+                    // swiftformat:disable:next preferKeyPath
+                    let professionIDs = self.selectedProfessions.compactMap { $0.id }
+                    self.onValidate?(Array(professionIDs))
+                case .none:
+                    break
+            }
+
+            self.action = nil
+        }
     }
 
     // MARK: Private
 
-    @State private var otherProfessionText: String = ""
-    @State private var selectedProfessions: Set<Profession> = []
+    private enum ActionType {
+        case cancel
+        case validate
+    }
+
+    @State private var action: ActionType?
     @State private var selectedProfessionForDetails: Profession?
 }
 
@@ -69,6 +104,9 @@ struct ProfessionPicker: View {
 
 #Preview {
     NavigationStack {
-        ProfessionPicker(caregiver: .constant(Caregiver()))
+        ProfessionPicker(selectedProfessionsIDs: Caregiver().professions,
+                         onValidate: {
+                             print("Selected professions: \($0)")
+                         })
     }
 }

@@ -121,7 +121,7 @@ public struct RobotThenTouchToSelectView: View {
                         .animation(.easeOut(duration: 0.3), value: self.didSendCommandToRobot)
 
                 default:
-                    EmptyView()
+                    ProgressView()
             }
 
             Spacer()

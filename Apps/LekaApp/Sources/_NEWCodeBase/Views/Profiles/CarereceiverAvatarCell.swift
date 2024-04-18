@@ -7,13 +7,17 @@ import DesignKit
 import SwiftUI
 
 struct CarereceiverAvatarCell: View {
+    // MARK: Lifecycle
+
+    init(carereceiver: Carereceiver, isSelected: Bool = false) {
+        self.carereceiver = carereceiver
+        self.isSelected = isSelected
+    }
+
     // MARK: Internal
 
-    private let strokeColor: Color = .init(light: UIColor.systemGray3, dark: UIColor.systemGray2)
-
-    @ObservedObject private var rootOwnerViewModel: RootOwnerViewModel = .shared
-
     let carereceiver: Carereceiver
+    var isSelected: Bool
 
     var body: some View {
         VStack(spacing: 10) {
@@ -24,13 +28,17 @@ struct CarereceiverAvatarCell: View {
                 .clipShape(Circle())
                 .overlay {
                     Circle()
+                        .stroke(self.styleManager.accentColor!, lineWidth: self.isSelected ? 5 : 0)
+                }
+                .overlay {
+                    Circle()
                         .strokeBorder(self.strokeColor, lineWidth: 2)
                         .background {
                             Circle()
                                 .fill(Color(uiColor: UIColor.systemGray6))
                         }
                         .overlay {
-                            Image(uiImage: self.rootOwnerViewModel.getReinforcerFor(index: self.carereceiver.reinforcer))
+                            Image(uiImage: self.carereceiver.reinforcer.image)
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .padding(5)
@@ -44,6 +52,12 @@ struct CarereceiverAvatarCell: View {
                 .font(.headline)
         }
     }
+
+    // MARK: Private
+
+    private let strokeColor: Color = .init(light: UIColor.systemGray3, dark: UIColor.systemGray2)
+    @ObservedObject private var rootOwnerViewModel: RootOwnerViewModel = .shared
+    @ObservedObject private var styleManager: StyleManager = .shared
 }
 
 #Preview {
@@ -51,7 +65,7 @@ struct CarereceiverAvatarCell: View {
         carereceiver: Carereceiver(
             username: "Chantal",
             avatar: Avatars.categories[2].avatars[4],
-            reinforcer: 2
+            reinforcer: .fire
         )
     )
 }

@@ -35,8 +35,7 @@ extension SettingsView {
                 Button(role: .destructive) {
                     self.rootOwnerViewModel.isSettingsViewPresented = false
                     self.authManager.signOut()
-                    self.styleManager.accentColor = DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor
-                    self.styleManager.colorScheme = .light
+                    self.reset()
                 } label: {
                     Text(l10n.SettingsView.AccountSection.LogOut.alertButtonLabel)
                 }
@@ -61,7 +60,17 @@ extension SettingsView {
         @ObservedObject private var rootOwnerViewModel: RootOwnerViewModel = .shared
         @ObservedObject private var styleManager: StyleManager = .shared
         @ObservedObject private var authManagerViewModel = AuthManagerViewModel.shared
+
+        private var caregiverManager: CaregiverManager = .shared
+        private var carereceiverManager: CarereceiverManager = .shared
         private var authManager = AuthManager.shared
+
+        private func reset() {
+            self.caregiverManager.resetData()
+            self.carereceiverManager.resetData()
+            self.styleManager.accentColor = DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor
+            self.styleManager.colorScheme = .light
+        }
     }
 }
 

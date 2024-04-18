@@ -25,7 +25,16 @@ public class AuthManager {
         case loggedIn
     }
 
+    public enum UserAction {
+        case userIsSigningUp
+        case userIsSigningIn
+    }
+
     public static let shared = AuthManager()
+
+    public var currentUserEmail: String? {
+        self.auth.currentUser?.email
+    }
 
     public func signUp(email: String, password: String) {
         self.auth.createUser(withEmail: email, password: password)
@@ -40,7 +49,7 @@ public class AuthManager {
                         self?.authenticationError.send(AuthenticationError.custom(message: errorMessage))
                 }
             }, receiveValue: { [weak self] result in
-                log.info("Company \(result.user.uid) signed-up successfully. 🎉")
+                log.info("User \(result.user.uid) signed-up successfully. 🎉")
                 self?.authenticationState.send(.loggedIn)
                 self?.sendEmailVerification()
             })

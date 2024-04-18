@@ -19,29 +19,32 @@ struct CaregiverPicker: View {
             VStack {
                 ScrollView(showsIndicators: false) {
                     LazyVGrid(columns: self.columns, spacing: 40) {
-                        ForEach(self.rootOwnerViewModel.mockCaregiversSet, id: \.id) { caregiver in
+                        ForEach(self.caregiverManagerViewModel.caregivers, id: \.id) { caregiver in
                             Button {
-                                // TODO: (@team) - Add caregiver selection logic w/ Firebase
                                 self.styleManager.colorScheme = caregiver.colorScheme
                                 self.styleManager.accentColor = caregiver.colorTheme.color
-                                self.authManagerViewModel.isUserLoggedOut = false
-                                self.rootOwnerViewModel.currentCaregiver = caregiver
+                                self.caregiverManager.setCurrentCaregiver(to: caregiver)
+
+                                if self.authManagerViewModel.userAction == .userIsSigningIn {
+                                    self.rootOwnerViewModel.isWelcomeViewPresented = false
+                                }
+                                self.rootOwnerViewModel.isCaregiverPickerPresented = false
                             } label: {
                                 CaregiverAvatarCell(caregiver: caregiver)
                                     .frame(maxWidth: 140)
                             }
                         }
                     }
-                    .padding()
                 }
+                .padding()
             }
             .padding(.horizontal, 50)
             .navigationTitle(String(l10n.CaregiverPicker.title.characters))
             .sheet(isPresented: self.$isCaregiverCreationPresented) {
-                CreateCaregiverView(isPresented: self.$isCaregiverCreationPresented) {}
+                CreateCaregiverView()
             }
             .toolbar {
-                if self.rootOwnerViewModel.currentCaregiver != nil {
+                if self.caregiverManagerViewModel.currentCaregiver != nil {
                     ToolbarItem(placement: .topBarLeading) {
                         Button {
                             self.dismiss()
@@ -63,14 +66,17 @@ struct CaregiverPicker: View {
 
     // MARK: Private
 
-    private let columns = Array(repeating: GridItem(), count: 4)
-
-    @ObservedObject private var rootOwnerViewModel: RootOwnerViewModel = .shared
     @ObservedObject private var authManagerViewModel: AuthManagerViewModel = .shared
+    @ObservedObject private var rootOwnerViewModel = RootOwnerViewModel.shared
     @ObservedObject private var styleManager: StyleManager = .shared
+
+    @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
 
     @State private var selected: String = ""
     @State private var isCaregiverCreationPresented: Bool = false
+
+    private var caregiverManager: CaregiverManager = .shared
+    private let columns = Array(repeating: GridItem(), count: 4)
 }
 
 // MARK: - l10n.CaregiverPicker

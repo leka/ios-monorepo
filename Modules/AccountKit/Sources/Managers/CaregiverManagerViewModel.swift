@@ -34,8 +34,8 @@ public class CaregiverManagerViewModel: ObservableObject {
 
         self.caregiverManager.currentCaregiverPublisher
             .receive(on: DispatchQueue.main)
-            .sink(receiveValue: { [weak self] fetchedCaregiver in
-                self?.currentCaregiver = fetchedCaregiver
+            .sink(receiveValue: { [weak self] caregiver in
+                self?.currentCaregiver = caregiver
             })
             .store(in: &self.cancellables)
 

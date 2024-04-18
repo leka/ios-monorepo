@@ -6,6 +6,8 @@ import Combine
 import Foundation
 import LocalizationKit
 
+// MARK: - AuthManagerViewModel
+
 public class AuthManagerViewModel: ObservableObject {
     // MARK: Lifecycle
 
@@ -20,7 +22,7 @@ public class AuthManagerViewModel: ObservableObject {
     // MARK: - User
 
     @Published public var userAuthenticationState: AuthManager.AuthenticationState = .unknown
-    @Published public var userIsSigningUp = false
+    @Published public var userAction: AuthManager.UserAction?
     @Published public var userEmailIsVerified = false
 
     // MARK: - Alerts
@@ -29,9 +31,11 @@ public class AuthManagerViewModel: ObservableObject {
     @Published public var showErrorAlert = false
     @Published public var actionRequestMessage: String = ""
     @Published public var showactionRequestAlert = false
-    @Published public var notificationMessage: String = ""
-    @Published public var showNotificationAlert = false
-    @Published public var isUserLoggedOut = false
+
+    public func resetErrorMessage() {
+        self.errorMessage = ""
+        self.showErrorAlert = false
+    }
 
     // MARK: Private
 
@@ -70,13 +74,11 @@ public class AuthManagerViewModel: ObservableObject {
     private func handleAuthenticationStateChange(state: AuthManager.AuthenticationState) {
         switch state {
             case .loggedIn:
-                if self.userIsSigningUp {
-                    self.notificationMessage = String(l10n.AuthManagerViewModel.successfulEmailVerification.characters)
-                    self.showNotificationAlert = true
-                } else if !self.userEmailIsVerified {
+                if self.userAction == .none {
                     self.actionRequestMessage = String(l10n.AuthManagerViewModel.unverifiedEmailNotification.characters)
                     self.showactionRequestAlert = true
                 }
+                self.resetErrorMessage()
             case .loggedOut:
                 self.resetState()
             case .unknown:
@@ -85,14 +87,26 @@ public class AuthManagerViewModel: ObservableObject {
     }
 
     private func resetState() {
-        self.userIsSigningUp = false
+        self.userAction = .none
         self.userEmailIsVerified = false
         self.errorMessage = ""
         self.actionRequestMessage = ""
         self.showactionRequestAlert = false
         self.showErrorAlert = false
-        self.notificationMessage = ""
-        self.showNotificationAlert = false
-        self.isUserLoggedOut = true
     }
 }
+
+// MARK: - l10n.AuthManagerViewModel
+
+// swiftlint:disable line_length
+
+extension l10n {
+    enum AuthManagerViewModel {
+        static let unverifiedEmailNotification = LocalizedString("accountkit.auth_manager_view_model.unverified_email_notification",
+                                                                 bundle: AccountKitResources.bundle,
+                                                                 value: "Your email hasn't been verified yet. Please verify your email to avoid losing your data.",
+                                                                 comment: "Unverified email notification message")
+    }
+}
+
+// swiftlint:enable line_length

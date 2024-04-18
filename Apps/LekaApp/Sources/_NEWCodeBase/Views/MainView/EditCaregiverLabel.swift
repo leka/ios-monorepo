@@ -13,11 +13,9 @@ import SwiftUI
 struct EditCaregiverLabel: View {
     // MARK: Internal
 
-    @Binding var isCaregiverPickerPresented: Bool
-
     var body: some View {
         VStack(alignment: .leading) {
-            if let caregiver = self.rootOwnerViewModel.currentCaregiver {
+            if let caregiver = self.caregiverManagerViewModel.currentCaregiver {
                 Button {
                     self.rootOwnerViewModel.isEditCaregiverViewPresented = true
                 } label: {
@@ -29,11 +27,16 @@ struct EditCaregiverLabel: View {
                             .clipShape(Circle())
                             .frame(maxWidth: 90)
                         VStack(alignment: .leading, spacing: 0) {
-                            Text("\(caregiver.firstName) \(caregiver.lastName)")
+                            Text(caregiver.firstName)
                                 .font(.title)
                                 .lineLimit(1)
                                 .truncationMode(.tail)
                                 .foregroundColor(.primary)
+                            Text(caregiver.lastName)
+                                .font(.caption)
+                                .lineLimit(1)
+                                .truncationMode(.tail)
+                                .foregroundColor(.secondary)
                             Text(l10n.EditCaregiverProfile.buttonLabel)
                                 .font(.footnote)
                                 .foregroundStyle(self.styleManager.accentColor!)
@@ -53,7 +56,7 @@ struct EditCaregiverLabel: View {
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Button("", systemImage: "person.2.gobackward") {
-                    self.isCaregiverPickerPresented = true
+                    self.rootOwnerViewModel.isCaregiverPickerPresented = true
                 }
             }
         }
@@ -63,6 +66,8 @@ struct EditCaregiverLabel: View {
 
     @ObservedObject private var styleManager: StyleManager = .shared
     @ObservedObject private var rootOwnerViewModel: RootOwnerViewModel = .shared
+
+    @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
 }
 
 // MARK: - l10n.ChangeCaregiverProfile
@@ -84,7 +89,7 @@ extension l10n {
 #Preview {
     NavigationSplitView(sidebar: {
         List {
-            EditCaregiverLabel(isCaregiverPickerPresented: .constant(false))
+            EditCaregiverLabel()
 
             Button {} label: {
                 RobotConnectionLabel()
@@ -100,8 +105,8 @@ extension l10n {
         EmptyView()
     })
     .onAppear {
-        let rootOwnerViewModel = RootOwnerViewModel.shared
-        rootOwnerViewModel.currentCaregiver = Caregiver(
+        let caregiverManagerViewModel = CaregiverManagerViewModel()
+        caregiverManagerViewModel.currentCaregiver = Caregiver(
             firstName: "Joe",
             lastName: "Bidjobba",
             avatar: Avatars.categories[0].avatars[2]

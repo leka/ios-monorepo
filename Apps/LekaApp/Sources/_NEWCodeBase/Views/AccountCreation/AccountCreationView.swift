@@ -50,11 +50,15 @@ struct AccountCreationView: View {
         }
         .onChange(of: self.authManagerViewModel.userAuthenticationState) { newValue in
             if newValue == .loggedIn {
-                self.authManagerViewModel.userIsSigningUp = true
+                self.rootAccountManager.createRootAccount(rootAccount: RootAccount())
                 self.isVerificationEmailAlertPresented = true
-            } else {
-                // display signup failed alert
             }
+        }
+        .onAppear {
+            self.authManagerViewModel.userAction = .userIsSigningUp
+        }
+        .onDisappear {
+            self.authManagerViewModel.resetErrorMessage()
         }
         .alert(isPresented: self.$isVerificationEmailAlertPresented) {
             Alert(title: Text(l10n.AccountCreationView.EmailVerificationAlert.title),
@@ -71,6 +75,7 @@ struct AccountCreationView: View {
     @StateObject private var viewModel = AccountCreationViewViewModel()
     @ObservedObject private var authManagerViewModel = AuthManagerViewModel.shared
     private var authManager = AuthManager.shared
+    private var rootAccountManager = RootAccountManager.shared
 
     private var isCreationDisabled: Bool {
         self.viewModel.email.isInvalidEmail() || self.viewModel.password.isInvalidPassword()

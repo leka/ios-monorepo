@@ -10,11 +10,20 @@ import SwiftUI
 // MARK: - CreateCaregiverView
 
 struct CreateCaregiverView: View {
+    // MARK: Lifecycle
+
+    init(onCancel: (() -> Void)? = nil, onCreated: ((Caregiver) -> Void)? = nil) {
+        self.onCancel = onCancel
+        self.onCreated = onCreated
+    }
+
     // MARK: Internal
 
-    @Binding var isPresented: Bool
-    @State private var newCaregiver = Caregiver()
-    var onDismissAction: () -> Void
+    @Environment(\.dismiss) var dismiss
+    var onCancel: (() -> Void)?
+    var onCreated: ((Caregiver) -> Void)?
+
+    var caregiverManager: CaregiverManager = .shared
 
     var body: some View {
         NavigationStack {
@@ -26,31 +35,31 @@ struct CreateCaregiverView: View {
                     }
 
                     Section {
-                        LabeledContent(String(l10n.CaregiverCreation.caregiverNameLabel.characters)) {
+                        LabeledContent(String(l10n.CaregiverCreation.caregiverFirstNameLabel.characters)) {
                             TextField("", text: self.$newCaregiver.firstName)
                                 .multilineTextAlignment(.trailing)
+                                .foregroundStyle(Color.secondary)
                         }
-                        LabeledContent(String(l10n.CaregiverCreation.caregiverNameLabel.characters)) {
+                        LabeledContent(String(l10n.CaregiverCreation.caregiverLastNameLabel.characters)) {
                             TextField("", text: self.$newCaregiver.lastName)
                                 .multilineTextAlignment(.trailing)
+                                .foregroundStyle(Color.secondary)
                         }
                     }
 
                     Section {
-                        self.professionNavigationLink
+                        self.professionPickerButton
                     }
 
                     Button(String(l10n.CaregiverCreation.registerProfilButton.characters)) {
                         withAnimation {
-                            self.isPresented.toggle()
-                            self.onDismissAction()
+                            self.action = .created
+                            self.dismiss()
                         }
                         if self.newCaregiver.avatar.isEmpty {
-                            self.newCaregiver.avatar = Avatars.categories.last!.avatars.randomElement()!
+                            self.newCaregiver.avatar = Avatars.categories.first!.avatars.randomElement()!
                         }
-                        // TODO: (@team) : add the caregiver profile to the account
-                        // TODO: (@team) : assign the caregiver profile as the current selected one
-                        self.rootOwnerViewModel.mockCaregiversSet.append(self.newCaregiver)
+                        self.caregiverManager.addCaregiver(caregiver: self.newCaregiver)
                     }
                     .disabled(self.newCaregiver.firstName.isEmpty)
                     .buttonStyle(.borderedProminent)
@@ -60,13 +69,43 @@ struct CreateCaregiverView: View {
             }
             .navigationTitle(String(l10n.CaregiverCreation.title.characters))
             .navigationBarTitleDisplayMode(.inline)
+            .interactiveDismissDisabled()
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button {
+                        self.action = .cancel
+                        self.dismiss()
+                    } label: {
+                        Image(systemName: "xmark.circle")
+                    }
+                }
+            }
+            .onDisappear {
+                switch self.action {
+                    case .cancel:
+                        self.onCancel?()
+                    case .created:
+                        self.onCreated?(self.newCaregiver)
+                    case .none:
+                        break
+                }
+
+                self.action = nil
+            }
         }
     }
 
     // MARK: Private
 
-    @ObservedObject private var rootOwnerViewModel = RootOwnerViewModel.shared
+    private enum ActionType {
+        case cancel
+        case created
+    }
+
+    @State private var newCaregiver = Caregiver()
     @State private var isAvatarPickerPresented: Bool = false
+    @State private var isProfessionPickerPresented: Bool = false
+    @State private var action: ActionType?
 
     private var avatarPickerButton: some View {
         Button {
@@ -78,19 +117,34 @@ struct CreateCaregiverView: View {
                     .font(.headline)
             }
         }
-        .navigationDestination(isPresented: self.$isAvatarPickerPresented) {
-            AvatarPicker(avatar: self.$newCaregiver.avatar)
+        .sheet(isPresented: self.$isAvatarPickerPresented) {
+            NavigationStack {
+                AvatarPicker(selectedAvatar: self.newCaregiver.avatar,
+                             onValidate: { avatar in
+                                 self.newCaregiver.avatar = avatar
+                             })
+            }
         }
         .frame(maxWidth: .infinity, alignment: .center)
     }
 
-    private var professionNavigationLink: some View {
+    private var professionPickerButton: some View {
         VStack(alignment: .leading) {
-            NavigationLink {
-                ProfessionPicker(caregiver: self.$newCaregiver)
-            } label: {
-                Text(l10n.CaregiverCreation.professionLabel)
-                    .font(.body)
+            LabeledContent(String(l10n.CaregiverCreation.professionLabel.characters)) {
+                Button {
+                    self.isProfessionPickerPresented = true
+                } label: {
+                    Image(systemName: "plus")
+                }
+                .sheet(isPresented: self.$isProfessionPickerPresented) {
+                    NavigationStack {
+                        ProfessionPicker(selectedProfessionsIDs: self.newCaregiver.professions,
+                                         onValidate: { professions in
+                                             self.newCaregiver.professions = professions
+                                         })
+                                         .navigationBarTitleDisplayMode(.inline)
+                    }
+                }
             }
 
             if !self.newCaregiver.professions.isEmpty {
@@ -113,7 +167,9 @@ extension l10n {
 
         static let avatarChoiceButton = LocalizedString("lekaapp.caregiver_creation.avatar_choice_button", value: "Choose an avatar", comment: "Caregiver creation avatar choice button label")
 
-        static let caregiverNameLabel = LocalizedString("lekaapp.caregiver_creation.caregiver_name_label", value: "Name", comment: "Caregiver creation caregiver name textfield label")
+        static let caregiverFirstNameLabel = LocalizedString("lekaapp.caregiver_creation.caregiver_first_name_label", value: "First name", comment: "Caregiver creation caregiver first name textfield label")
+
+        static let caregiverLastNameLabel = LocalizedString("lekaapp.caregiver_creation.caregiver_last_name_label", value: "Last name", comment: "Caregiver creation caregiver last name textfield label")
 
         static let professionLabel = LocalizedString("lekaapp.caregiver_creation.profession_label", value: "Profession(s)", comment: "Caregiver creation profession label above profession selection button")
 
@@ -126,7 +182,6 @@ extension l10n {
 // swiftlint:enable line_length
 
 #Preview {
-    CreateCaregiverView(isPresented: .constant(true)) {
-        print("Caregiver saved")
-    }
+    CreateCaregiverView(onCancel: { print("Creation canceled") },
+                        onCreated: { print("Caregiver \($0.firstName) created") })
 }

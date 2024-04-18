@@ -16,11 +16,11 @@ let package = Package(
         ),
         .package(
             url: "https://github.com/airbnb/lottie-ios",
-            exact: "4.3.4"
+            exact: "4.4.1"
         ),
         .package(
             url: "https://github.com/gonzalezreal/swift-markdown-ui",
-            exact: "2.2.0"
+            exact: "2.3.0"
         ),
         .package(
             url: "https://github.com/apple/swift-argument-parser",
@@ -28,7 +28,7 @@ let package = Package(
         ),
         .package(
             url: "https://github.com/StarryInternet/CombineCoreBluetooth",
-            exact: "0.7.1"
+            exact: "0.7.2"
         ),
         .package(
             url: "https://github.com/michael94ellis/SwiftUIJoystick",
@@ -40,7 +40,7 @@ let package = Package(
         ),
         .package(
             url: "https://github.com/apple/swift-log",
-            exact: "1.5.3"
+            exact: "1.5.4"
         ),
         .package(
             url: "https://github.com/mxcl/Version",

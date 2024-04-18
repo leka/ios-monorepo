@@ -6,14 +6,14 @@ import Lottie
 
 extension LottieAnimation {
     static var reinforcer: LottieAnimation {
-        LottieAnimation.named("reinforcer-spin-blink", bundle: .module)!
+        LottieAnimation.named("reinforcer_spin_blink.animation.lottie", bundle: .module)!
     }
 
     static var bravo: LottieAnimation {
-        LottieAnimation.named("bravo", bundle: .module)!
+        LottieAnimation.named("activity_end_success.animation.lottie", bundle: .module)!
     }
 
     static var tryAgain: LottieAnimation {
-        LottieAnimation.named("tryAgain", bundle: .module)!
+        LottieAnimation.named("activity_end_try_again.animation.lottie", bundle: .module)!
     }
 }

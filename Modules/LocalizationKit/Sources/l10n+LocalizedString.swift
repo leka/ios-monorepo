@@ -7,9 +7,20 @@ import Foundation
 // swift-format-ignore: AlwaysUseLowerCamelCase
 // swiftlint:disable identifier_name
 
+// ? LOCALIZED_STRING_MACRO_NAMES
+// ? See https://forums.developer.apple.com/forums/thread/736941
+// ? Format
+// ? func NSLocalizedString(
+// ?     _ key: String,
+// ?     tableName: String? = nil,
+// ?     bundle: Bundle = Bundle.main,
+// ?     value: String = "",
+// ?     comment: String
+// ? ) -> String
+
 public extension l10n {
     static func LocalizedString(
-        _ key: StaticString, value: String.LocalizationValue, bundle: Bundle? = nil, comment: StaticString, dsoHandle: UnsafeRawPointer = #dsohandle
+        _ key: StaticString, bundle: Bundle? = nil, value: String.LocalizationValue, comment: StaticString, dsoHandle: UnsafeRawPointer = #dsohandle
     )
         -> AttributedString
     {
@@ -31,12 +42,19 @@ public extension l10n {
     }
 
     static func LocalizedStringInterpolation(
-        _ key: StaticString, value: String.LocalizationValue, comment: StaticString
+        _ key: StaticString, bundle: Bundle? = nil, value: String.LocalizationValue, comment: StaticString, dsoHandle: UnsafeRawPointer = #dsohandle
     ) -> (
         (CVarArg...) -> AttributedString
     ) {
         func localizedArgsOnly(_ arguments: CVarArg...) -> AttributedString {
-            let format = String(localized: key, defaultValue: value, comment: comment)
+            var dlInformation = dl_info()
+            _ = dladdr(dsoHandle, &dlInformation)
+
+            let path = String(cString: dlInformation.dli_fname)
+            let url = URL(fileURLWithPath: path).deletingLastPathComponent()
+            let bundle = bundle ?? Bundle(url: url)
+
+            let format = String(localized: key, defaultValue: value, bundle: bundle, comment: comment)
             let string = String(format: format, arguments: arguments)
             let markdown =
                 (try? AttributedString(

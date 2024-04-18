@@ -17,4 +17,11 @@ enum ExerciseState: Equatable {
         case excellent
         case nonApplicable
     }
+
+    var isCompleted: Bool {
+        switch self {
+            case .completed: true
+            default: false
+        }
+    }
 }

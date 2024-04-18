@@ -19,6 +19,8 @@ public struct Activity: Decodable, Identifiable {
 
         self.uuid = try container.decode(String.self, forKey: .uuid)
         self.name = try container.decode(String.self, forKey: .name)
+        self.createdAt = try container.decode(Date.self, forKey: .createdAt)
+        self.lastEditedAt = try container.decode(Date.self, forKey: .lastEditedAt)
         self.status = try container.decode(Status.self, forKey: .status)
 
         self.authors = try container.decode([String].self, forKey: .authors)
@@ -38,6 +40,8 @@ public struct Activity: Decodable, Identifiable {
 
     public let uuid: String
     public let name: String
+    public let createdAt: Date
+    public let lastEditedAt: Date
     public let status: Status
 
     public let authors: [String] // TODO: (@ladislas) - implement authors
@@ -72,12 +76,14 @@ public struct Activity: Decodable, Identifiable {
     private enum CodingKeys: String, CodingKey {
         case uuid
         case name
+        case createdAt = "created_at"
+        case lastEditedAt = "last_edited_at"
+        case status
         case authors
         case skills
         case hmi
         case types
         case tags
-        case status
         case locales
         case l10n
         case exercicesPayload = "exercises_payload"

@@ -28,7 +28,7 @@ struct NoAccountConnectedLabel: View {
                 .multilineTextAlignment(.center)
 
             Button(String(l10n.NoAccountConnectedLabel.buttonLabel.characters)) {
-                self.authManagerViewModel.isUserLoggedOut = true
+                self.rootOwnerViewModel.isWelcomeViewPresented = true
             }
             .buttonStyle(.bordered)
         }
@@ -38,7 +38,7 @@ struct NoAccountConnectedLabel: View {
     // MARK: Private
 
     @ObservedObject private var styleManager: StyleManager = .shared
-    @ObservedObject private var authManagerViewModel = AuthManagerViewModel.shared
+    @ObservedObject var rootOwnerViewModel = RootOwnerViewModel.shared
 }
 
 // MARK: - l10n.NoAccountConnectedLabel

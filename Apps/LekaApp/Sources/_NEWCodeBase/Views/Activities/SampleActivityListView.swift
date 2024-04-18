@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AccountKit
 import ContentKit
 import GameEngineKit
 import SwiftUI
@@ -19,13 +20,24 @@ struct SampleActivityListView: View {
                         .toolbar {
                             ToolbarItem {
                                 Button {
-                                    self.navigation.currentActivity = activity
+                                    self.navigation.isCarereceiverPickerPresented = true
+                                    self.selectedActivity = activity
                                 } label: {
                                     Image(systemName: "play.circle")
                                     Text("Start activity")
                                 }
                                 .buttonStyle(.borderedProminent)
                                 .tint(.lkGreen)
+                                .sheet(isPresented: self.$navigation.isCarereceiverPickerPresented) {
+                                    CarereceiverPicker(onDismiss: {
+                                        // nothing to do
+                                    }, onSelected: { carereceiver in
+                                        self.carereceiverManager.setCurrentCarereceiver(to: carereceiver)
+                                        self.navigation.currentActivity = self.selectedActivity
+                                    }, onSkip: {
+                                        self.navigation.currentActivity = self.selectedActivity
+                                    })
+                                }
                             }
                         }
                 ) {
@@ -44,7 +56,13 @@ struct SampleActivityListView: View {
 
     // MARK: Private
 
-    private var navigation = Navigation.shared
+    @StateObject private var carereceiverManagerViewModel = CarereceiverManagerViewModel()
+
+    @ObservedObject private var navigation: Navigation = .shared
+
+    @State private var selectedActivity: Activity?
+
+    private var carereceiverManager: CarereceiverManager = .shared
 }
 
 #Preview {
