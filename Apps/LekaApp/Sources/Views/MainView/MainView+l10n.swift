@@ -19,6 +19,7 @@ extension l10n {
                 static let stories = LocalizedString("lekaapp.main_view.sidebar.category_label.stories", value: "Stories", comment: "The title of the category 'Stories'")
                 static let caregivers = LocalizedString("lekaapp.main_view.sidebar.category_label.caregivers", value: "Caregivers", comment: "The title of the category 'Caregivers'")
                 static let carereceivers = LocalizedString("lekaapp.main_view.sidebar.category_label.carereceivers", value: "Care Receivers", comment: "The title of the category 'Care Receivers'")
+                static let none = LocalizedString("lekaapp.main_view.sidebar.category_label.none", value: "Select a category", comment: "The title of the category 'none'")
             }
 
             static let navigationTitle = LocalizedString("lekaapp.main_view.sidebar.navigation_title", value: "Leka App", comment: "The title of the sidebar")

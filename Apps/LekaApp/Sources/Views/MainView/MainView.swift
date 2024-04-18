@@ -139,7 +139,7 @@ struct MainView: View {
                         ResourcesView()
 
                     case .none:
-                        Text("Select a category")
+                        Text(l10n.MainView.Sidebar.CategoryLabel.home)
                             .font(.largeTitle)
                             .bold()
                 }
