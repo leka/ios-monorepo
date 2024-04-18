@@ -1,0 +1,85 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: 95C42E189BC146BB844467A3BAFE8BC0
+name: curriculum_recognition_emotions_drawings
+
+created_at: "2024-03-21T15:12:35.579066"
+last_edited_at: "2024-04-08T13:19:48.615468"
+
+status: published
+
+authors:
+  - leka
+
+skills:
+  - recognition
+  - recognition/basic_emotions
+  - communication
+  - communication/verbal_communication
+  - communication/verbal_communication/receptive_language
+
+hmi:
+  - tablet
+
+tags:
+  - emotions
+  - drawings
+  - characters
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: emotion_recognition_drawings
+
+      title: Reconnaissance des émotions en dessins
+      subtitle: Comprendre les émotions à travers l'art
+
+      abstract: |
+        Ce curriculum est conçu pour aider les personnes accompagnées à identifier et à comprendre différentes émotions à travers des dessins de personnages. En se focalisant sur une variété de personnages et d'émotions, ce programme vise à renforcer la reconnaissance des émotions de base et la communication émotionnelle.
+      description: |
+        À travers une série d'activités interactives sur l'écran de l'iPad, les personnes accompagnées sont encouragées à observer attentivement des illustrations de personnages exprimant diverses émotions. L'objectif est d'identifier l'émotion représentée et de toucher l'image correspondante. Ces activités visent à promouvoir une meilleure compréhension des émotions, améliorant ainsi la capacité des personnes accompagnées à communiquer leurs propres émotions et à reconnaître celles des autres.
+  - locale: en_US
+    details:
+      icon: emotion_recognition_drawings
+
+      title: Recognition of Emotions through Drawing
+      subtitle: Understanding Emotions through Art
+
+      abstract: |
+        This curriculum is designed to assist care receivers in identifying and understanding different emotions through drawings of characters. Focusing on a variety of characters and emotions, this program aims to enhance basic emotion recognition and emotional communication.
+      description: |
+        Through a series of interactive activities on the iPad screen, care receivers are encouraged to carefully observe illustrations of characters expressing various emotions. The goal is to identify the emotion being portrayed and touch the corresponding image. These activities are intended to promote a better understanding of emotions, thereby improving the care receivers' ability to communicate their own emotions and recognize those of others.
+activities:
+  - recognition_emotions_drawings_1_hugo-D9663D6F1E9F4D228FDCD918317996A3
+  - recognition_emotions_drawings_1_louna-A5D3673F3D9643B29EF6F7C5CBAE73CA
+  - recognition_emotions_drawings_1_moussa-FDFB9C81374044D594DE430EB961E7DD
+  - recognition_emotions_drawings_1_oscar-E44983B555BC44659C91605315A12C29
+  - recognition_emotions_drawings_1_zoe-A703772398514DB298DDEF6435D787CD
+  - recognition_emotions_drawings_2_hugo-9459DB5E83F74AE88B86D9A961A9C331
+  - recognition_emotions_drawings_2_louna-85D74E8ED0CF4E18A29F5C7305CBEC7A
+  - recognition_emotions_drawings_2_moussa-E49EEAC175EA487F9BF2C767B46233DC
+  - recognition_emotions_drawings_2_oscar-4E509EEF60244D68BBAD610675BEEC5F
+  - recognition_emotions_drawings_2_zoe-B2E3C40835574DEC8F0FB6DBDF1B0E18
+  - recognition_emotions_drawings_4_hugo-5FC4C6B028834D5FB10092EB0A92BFFE
+  - recognition_emotions_drawings_4_louna-D48FACE8648F40D2B410A8123EAAFF63
+  - recognition_emotions_drawings_4_moussa-602ADEF84FE342D48A14F4FDEE1B721C
+  - recognition_emotions_drawings_4_oscar-7DBFAB2704EF4C0086BEC36BE0BC295E
+  - recognition_emotions_drawings_4_zoe-7AACD460ACBD49FA88BE66182C59833D
+  - recognition_emotions_drawings_4_hugo_louna_moussa_oscar_zoe-6A2E053D6A1D49DB8636421A50458B6F
+  - recognition_emotions_drawings_2_louna_oscar-731C7519652F44408307FBA3E8353E1E
+  - recognition_emotions_drawings_2_hugo_zoe-00DCB1EFAF0046BFA2421F4A71F44E98
+  - recognition_emotions_drawings_2_hugo_moussa-486C6B3EC7774FB4ADA8DDC8A8C4AC85
+  - recognition_emotions_drawings_2_louna_zoe-578CA01FC1464855A98A92943A472521
+  - recognition_emotions_drawings_2_oscar_hugo-A60A42C7CC1C4A2096B493D1214B7757
+  - recognition_emotions_drawings_4_louna_oscar-4D7B43FA50E74A6D9A1AA4C49AFC82C0
+  - recognition_emotions_drawings_4_hugo_zoe-EA390CDEEEC24E279E7738107B6D68E2
+  - recognition_emotions_drawings_4_oscar_hugo-FE48BA74BFB147DC8639C5056740BB7B
+  - recognition_emotions_drawings_4_louna_zoe-6467C269389743B0B4846CB900E9DC2A
+  - recognition_emotions_drawings_4_oscar_moussa-5F384AC5C4E8460BAF7361793051BF79
+  - recognition_emotions_drawings_4_all_characters-F0F6C98DA212464387B00DDD298D882A

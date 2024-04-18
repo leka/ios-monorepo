@@ -1,0 +1,64 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: 426C011BE6334BEC9A00F0BA8C646A6A # {{💡TO_DEFINE}}
+name: curriculum_template # {{💡TO_DEFINE}}
+
+status: published
+
+created_at: "2024-03-21T15:12:35.579066"
+last_edited_at: "2024-03-25T10:00:11.708216"
+authors: # {{💡TO_DEFINE}}
+  - leka
+
+skills: # {{💡TO_DEFINE}}
+  - recognition
+
+tags:
+  - tag_one
+  - tag_two
+  - tag_three
+
+hmi: # {{💡TO_DEFINE}}
+  - tablet
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: curriculum_template # {{💡TO_DEFINE}}
+
+      title: Sample 1 - Le titre/nom du curriculum # {{💡TO_DEFINE}}
+      subtitle: Le sous-titre du curriculum # {{💡TO_DEFINE}}
+
+      abstract: | # {{💡TO_DEFINE}}
+        Courte description du curriculum
+
+      description: | # {{💡TO_DEFINE}}
+        Longue description du curriculum
+
+        blablabla
+
+  - locale: en_US
+    details:
+      icon: curriculum_template # {{💡TO_DEFINE}}
+
+      title: Sample 1 - Curriculum title # {{💡TO_DEFINE}}
+      subtitle: Curriculum subtitle # {{💡TO_DEFINE}}
+
+      abstract: | # {{💡TO_DEFINE}}
+        Short description of the curriculum
+
+      description: | # {{💡TO_DEFINE}}
+        Long description of the curriculum
+
+        blablabla
+
+activities: # {{💡TO_DEFINE}}
+  - activity_template-0123456789ABCDEF0123456789ABCDEF
+  - sample_1-5A670B59EB214A6AA11AB39D64D63990
+  - sample_2-6102794F02D3423482E243BCBC7F8CA8

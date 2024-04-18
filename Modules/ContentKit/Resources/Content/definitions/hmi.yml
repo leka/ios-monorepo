@@ -1,0 +1,49 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+version: 1.0.0
+list:
+  - id: robot
+    l10n:
+      - locale: fr_FR
+        name: Robot seul
+        description: |
+          L'utilisateur interagit directement avec le robot.
+      - locale: en_US
+        name: Robot alone
+        description: |
+          The user interacts directly with the robot.
+
+  - id: magic_cards
+    l10n:
+      - locale: fr_FR
+        name: Robot et cartes magiques
+        description: |
+          L'utilisateur interagit avec le robot en utilisant les cartes magiques.
+      - locale: en_US
+        name: Robot and magic cards
+        description: |
+          The user interacts with the robot by using magic cards.
+
+  - id: tablet_robot
+    l10n:
+      - locale: fr_FR
+        name: iPad et robot
+        description: |
+          L'utilisateur interagit avec l'iPad, le robot agit en tant que support pour observer avant de répondre.
+      - locale: en_US
+        name: iPad and robot
+        description: |
+          The user interacts with the iPad, and the robot serves as support for observation before providing answers.
+
+  - id: tablet
+    l10n:
+      - locale: fr_FR
+        name: iPad (robot en renforçateur)
+        description: |
+          L'utilisateur interagit avec l'iPad, le robot agit en tant que renforçateur.
+      - locale: en_US
+        name: iPad (robot as reinforcer)
+        description: |
+          The user interacts with the iPad, and the robot serves as reinforcer.

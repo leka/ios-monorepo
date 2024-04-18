@@ -1,0 +1,172 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+--disable all
+--swiftversion 5.9
+
+# Enabled rules
+
+--enable acronyms
+--enable andOperator
+--enable anyObjectProtocol
+--enable applicationMain
+--enable assertionFailures
+--enable blankLineAfterImports
+
+--enable blankLinesAroundMark
+--lineaftermarks true
+
+--enable blankLinesAtEndOfScope
+--enable blankLinesAtStartOfScope
+--typeblanklines remove
+
+--enable blankLinesBetweenChainedFunctions
+--enable blankLinesBetweenScopes
+
+--enable blockComments
+
+--enable braces
+--allman false
+
+--enable conditionalAssignment
+
+--enable consecutiveBlankLines
+--enable consecutiveSpaces
+
+--enable duplicateImports
+
+--enable elseOnSameLine
+--elseposition same-line
+--guardelse auto
+
+--enable emptyBraces
+--emptybraces no-space
+
+--enable enumNamespaces
+--enumnamespaces always
+
+--enable extensionAccessControl
+--extensionacl on-extension
+
+--enable fileHeader
+--header Leka - iOS Monorepo\nCopyright APF France handicap\nSPDX-License-Identifier: Apache-2.0
+
+--enable genericExtensions
+
+--enable headerFileName
+
+--enable hoistAwait
+
+--enable hoistPatternLet
+--patternlet hoist
+
+--enable hoistTry
+
+--enable indent
+--indent 4
+--indentcase true
+--indentstrings true
+
+--enable initCoderUnavailable
+
+--enable isEmpty
+
+--enable leadingDelimiters
+
+--enable linebreakAtEndOfFile
+
+--enable markTypes
+
+--enable modifierOrder
+
+--enable numberFormatting
+--hexliteralcase uppercase
+--exponentcase lowercase
+
+--enable opaqueGenericParameters
+
+--enable organizeDeclarations
+
+--enable preferKeyPath
+
+--enable redundantBackticks
+--enable redundantBreak
+--enable redundantClosure
+--enable redundantExtensionACL
+--enable redundantFileprivate
+--enable redundantGet
+--enable redundantInit
+--enable redundantInternal
+--enable redundantLet
+--enable redundantLetError
+--enable redundantNilInit
+--enable redundantObjc
+--enable redundantOptionalBinding
+--enable redundantParens
+--enable redundantPattern
+--enable redundantRawValues
+--enable redundantReturn
+
+--enable redundantSelf
+--self insert
+
+--enable redundantStaticSelf
+--enable redundantType
+--enable redundantVoidReturnType
+
+--enable semicolons
+--enable sortDeclarations
+
+--enable sortImports
+--importgrouping testable-bottom
+
+--enable spaceAroundBraces
+--enable spaceAroundBrackets
+--enable spaceAroundComments
+--enable spaceAroundGenerics
+
+--enable spaceAroundOperators
+--ranges no-space
+
+--enable spaceAroundParens
+--enable spaceInsideBraces
+--enable spaceInsideBrackets
+--enable spaceInsideComments
+--enable spaceInsideGenerics
+--enable spaceInsideParens
+
+--enable strongifiedSelf
+
+--enable todos
+
+--enable trailingClosures
+--enable trailingCommas
+--enable trailingSpace
+
+--enable typeSugar
+
+--enable unusedArguments
+
+--enable void
+
+--enable wrap
+
+--enable wrapArguments
+--wraparguments preserve
+--wrapcollections preserve
+--wrapconditions after-first
+
+--enable wrapAttributes
+--enable wrapEnumCases
+--enable wrapMultilineStatementBraces
+--enable wrapSingleLineComments
+--enable wrapSwitchCases
+
+--enable yodaConditions
+
+# Disabled rules
+
+--disable blankLinesBetweenImports
+--disable docComments
+--disable sortSwitchCases

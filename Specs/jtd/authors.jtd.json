@@ -1,0 +1,59 @@
+{
+    "properties": {
+        "version": {
+            "type": "string"
+        },
+        "list": {
+            "elements": {
+                "ref": "$author"
+            }
+        }
+    },
+    "definitions": {
+        "$locale": {
+            "enum": ["en_US", "fr_FR"]
+        },
+        "$l10n": {
+            "properties": {
+                "locale": {
+                    "ref": "$locale"
+                },
+                "description": {
+                    "type": "string"
+                }
+            }
+        },
+        "$visibility": {
+            "enum": ["public", "private"]
+        },
+        "$author": {
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "visible": {
+                    "type": "boolean"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "website": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "professions": {
+                    "elements": {
+                        "type": "string"
+                    }
+                },
+                "l10n": {
+                    "elements": {
+                        "ref": "$l10n"
+                    }
+                }
+            }
+        }
+    }
+}

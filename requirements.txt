@@ -1,0 +1,8 @@
+# Leka - LekaOS
+# Copyright 2020 APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+ruamel.yaml==0.18.6
+Pygments==2.17.2
+openai
+gitpython

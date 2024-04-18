@@ -1,0 +1,72 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+---
+# MARK: - touchToSelect - findTheRightAnswers
+
+- instructions:
+    - locale: fr_FR
+      value: Touch le rond jaune
+    - locale: en_US
+      value: Touch the yellow circle
+  interface: touchToSelect
+  gameplay: findTheRightAnswers
+  payload:
+    shuffle_choices: true # true or false
+    choices:
+      - value: yellow
+        type: color # available types: color, emoji, sfsymbol, image
+      - value: red
+        type: color
+      - value: green
+        type: color
+        is_right_answer: true # more than one is possible, even all of the choices can be right
+      - value: blue
+        type: color
+
+---
+# MARK: - observeThenTouchToSelect - findTheRightAnswers
+
+- instructions:
+    - locale: fr_FR
+      value: Regarde et touche la même couleur
+    - locale: en_US
+      value: Observe and touch the same color
+  interface: observeThenTouchToSelect
+  gameplay: findTheRightAnswers
+  action:
+    type: ipad
+    value:
+      type: image
+      value: landscape_blue # name of the file
+  payload:
+    choices:
+      - value: blue
+        type: color
+        is_right_answer: true
+      - value: red
+        type: color
+
+---
+# MARK: - listenThenTouchToSelect - findTheRightAnswers
+
+- instructions:
+    - locale: fr_FR
+      value: Regarde et touche la même couleur
+    - locale: en_US
+      value: Observe and touch the same color
+  interface: listenThenTouchToSelect
+  gameplay: findTheRightAnswers
+  action:
+    type: ipad
+    value:
+      type: audio
+      value: sound_guitar # name of the file
+  payload:
+    choices:
+      - value: instruments_guitar_no_background
+        type: image
+        is_right_answer: true
+      - value: instruments_violin_no_background
+        type: image

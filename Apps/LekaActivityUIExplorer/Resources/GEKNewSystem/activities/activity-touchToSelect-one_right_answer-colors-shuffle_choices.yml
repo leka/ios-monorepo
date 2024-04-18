@@ -1,0 +1,73 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+id: 2b5a00d98d6542f4be825aa07a099ab3
+name: Touch To Select - One Right Answer - Colors - Shuffle choices
+description: L'objectif est de trouver la bonne couleur ou des les rassembler par famille
+image: activity_color_recognition_1
+sequence:
+  - exercises:
+      - instructions: Touche le jaune
+        interface: touchToSelect
+        gameplay: findTheRightAnswers
+        payload:
+          shuffle_choices: true
+          choices:
+            - value: yellow
+              type: color
+              isRightAnswer: true
+            - value: red
+              type: color
+            - value: green
+              type: color
+            - value: blue
+              type: color
+
+      - instructions: Touche le jaune
+        interface: touchToSelect
+        gameplay: findTheRightAnswers
+        payload:
+          shuffle_choices: true
+          choices:
+            - value: yellow
+              type: color
+              isRightAnswer: true
+            - value: red
+              type: color
+            - value: green
+              type: color
+            - value: blue
+              type: color
+
+      - instructions: Touche le jaune
+        interface: touchToSelect
+        gameplay: findTheRightAnswers
+        payload:
+          shuffle_choices: true
+          choices:
+            - value: yellow
+              type: color
+              isRightAnswer: true
+            - value: red
+              type: color
+            - value: green
+              type: color
+            - value: blue
+              type: color
+
+      - instructions: Touche le jaune
+        interface: touchToSelect
+        gameplay: findTheRightAnswers
+        payload:
+          shuffle_choices: true
+          choices:
+            - value: yellow
+              type: color
+              isRightAnswer: true
+            - value: red
+              type: color
+            - value: green
+              type: color
+            - value: blue
+              type: color

@@ -1,0 +1,41 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+name: Linter - SwiftFormat
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    paths:
+      - "**/*.swift"
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  swift_format:
+    name: swiftformat
+    runs-on: [self-hosted, iOS]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Fetch all history for all branches and tags
+          lfs: true
+
+      - name: Setup mise
+        run: |
+          echo "$HOME/.local/share/mise/shims" >> $GITHUB_PATH
+
+      - name: Run swiftformat
+        run: |
+          echo ""
+          echo "🏃‍♂️ Running swiftformat"
+
+          which swiftformat
+          swiftformat --version
+
+          swiftformat --lint --reporter github-actions-log .

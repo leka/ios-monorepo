@@ -1,0 +1,145 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+# ? See https://pre-commit.com for more information
+# ? See https://pre-commit.com/hooks.html for more hooks
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+        exclude_types: [json]
+        exclude: '(.*\.xcstrings|\.xcassets|\.svg)'
+      - id: check-yaml
+        exclude: exercise_templates.yml
+      - id: check-json
+        types: [file]
+        files: \.(json|xcstrings)$
+        exclude: '(.*\.xcassets/.*\.json$)'
+      - id: pretty-format-json
+        args: ["--autofix", "--indent=4", "--top-keys=version,sourceLanguage"]
+        types: [file]
+        files: \.(json|xcstrings)$
+        exclude: '(\.vscode/settings\.json|\.jtd\.json$|.*\.xcassets/.*|.*\.colorset/.*|\.animation\.lottie\.json$)'
+      - id: check-added-large-files
+      - id: check-executables-have-shebangs
+      - id: check-shebang-scripts-are-executable
+      - id: detect-private-key
+      - id: forbid-submodules
+      - id: mixed-line-ending
+
+  - repo: https://github.com/realm/SwiftLint
+    rev: 0.54.0
+    hooks:
+      - id: swiftlint
+        entry: swiftlint
+
+  - repo: https://github.com/nicklockwood/SwiftFormat
+    rev: 0.53.1
+    hooks:
+      - id: swiftformat
+
+  - repo: local
+    hooks:
+      - id: check_xcstrings
+        name: Check .xcstrings files for stale entries and unusual characters
+        description: This hook checks .xcstrings files for stale entries and unusual characters
+        entry: python3 Tools/Hooks/check_xcstrings.py
+        language: python
+        additional_dependencies: ["pygments"]
+        files: '.*\.xcstrings'
+
+      - id: check_yaml_definitions_avatars
+        name: Check avatars.yml
+        description: |
+          This hook checks avatars.yml for:
+            - non unique ids
+            - jtd schema validation
+            - filename and image consistency
+          It also formats the file
+        entry: python3 Tools/Hooks/check_yaml_definitions_avatars.py
+        language: python
+        additional_dependencies: ["ruamel.yaml"]
+        files: avatars.yml
+
+      - id: check_yaml_definitions_professions
+        name: Check professions.yml
+        description: |
+          This hook checks professions.yml for:
+            - non unique ids
+            - jtd schema validation
+          It also formats the file and sorts the entries
+        entry: python3 Tools/Hooks/check_yaml_definitions_professions.py
+        language: python
+        additional_dependencies: ["ruamel.yaml"]
+        files: professions.yml
+
+      - id: check_yaml_definitions_authors
+        name: Check authors.yml
+        description: |
+          This hook checks authors.yml for:
+            - non unique ids
+            - jtd schema validation
+          It also formats the file and sorts the entries
+        entry: python3 Tools/Hooks/check_yaml_definitions_authors.py
+        language: python
+        additional_dependencies: ["ruamel.yaml"]
+        files: authors.yml
+
+      - id: check_yaml_definitions_skills
+        name: Check skills.yml
+        description: |
+          This hook checks skills.yml for:
+            - non unique ids
+            - jtd schema validation
+          It also formats the file and sorts the entries
+        entry: python3 Tools/Hooks/check_yaml_definitions_skills.py
+        language: python
+        additional_dependencies: ["ruamel.yaml"]
+        files: skills.yml
+
+      - id: check_yaml_content_activities
+        name: Check activity.yml files
+        description: |
+          This hook checks activity.yml files for:
+            - uuid and filename consistency
+            - jtd schema validation
+        entry: python3 Tools/Hooks/check_yaml_content_activities.py
+        language: python
+        additional_dependencies: ["ruamel.yaml"]
+        files: .*\.activity\.yml
+        types: [yaml]
+
+      - id: check_yaml_content_activities_unique_uuid
+        name: Check activity.yml files for unique uuid
+        description: |
+          This hook checks activity.yml files for unique uuid
+        entry: python3 Tools/Hooks/check_yaml_content_activities_unique_uuid.py
+        language: python
+        files: .*\.activity\.yml
+        types: [yaml]
+        pass_filenames: false
+
+      - id: check_yaml_content_curriculums
+        name: Check curriculum.yml files
+        description: |
+          This hook checks curriculum.yml files for:
+            - uuid and filename consistency
+            - jtd schema validation
+        entry: python3 Tools/Hooks/check_yaml_content_curriculums.py
+        language: python
+        additional_dependencies: ["ruamel.yaml"]
+        files: .*\.curriculum\.yml
+        types: [yaml]
+
+      - id: check_yaml_content_curriculums_unique_uuid
+        name: Check curriculum.yml files for unique uuid
+        description: |
+          This hook checks curriculum.yml files for unique uuid
+        entry: python3 Tools/Hooks/check_yaml_content_curriculums_unique_uuid.py
+        language: python
+        files: .*\.curriculum\.yml
+        types: [yaml]
+        pass_filenames: false

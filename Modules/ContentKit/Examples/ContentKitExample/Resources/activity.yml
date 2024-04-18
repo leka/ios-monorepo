@@ -1,0 +1,144 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: 5A670B59EB214A6AA11AB39D64D63990
+name: contentkit-specs-jtd-tests-activity_good
+
+status: published
+
+authors:
+  - leka
+  - aurore_kiesler
+  - julie_tuil
+
+skills:
+  - spatial_understanding
+  - recognition/animals
+  - communication/non_verbal_communication/gestures
+
+tags:
+  - tag_one
+  - tag_two
+  - tag_three
+
+locales:
+  - en_US
+  - fr_FR
+
+hmi:
+  - robot
+  - magic_cards
+  - tablet_robot
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: name_of_the_activity-icon-fr_FR.svg
+
+      title: Le titre/nom de l'activité
+      subtitle: Le sous-titre de l'activité
+
+      description: |
+        Courte description de l'activité sur plusieurs lignes
+        Si besoin!
+        Et en markdown **simple** seulement
+
+      instructions: |
+        ## Longues instructions en markdown plus complexe si on veut
+
+        Lorem markdownum recepta avidum, missa de quam patientia, antris: cum defuit,
+        Titan repetemus nomine, ignare. Quod ad aura, et non quod vidisse utque ulla:
+
+        - Pro inposuit tibi orsa tum artes ferox
+        - Acmon plausu qua agrestum situs virgo in
+        - Vacuus a pendens rostro non si pharetrae
+        - Haeremusque quos auxiliaris coniunx
+        - Repulsa impediunt munera teneri fallebat
+        - Bracchia frustra telo Iovis faucibus casus
+
+  - locale: en_US
+    details:
+      icon: name_of_the_activity-icon-en_US.svg
+
+      title: The title/name of the activity
+      subtitle: The subtitle of the activity
+
+      description: |
+        Short description of the activity on several lines
+        If needed!
+        And in **simple** markdown only
+
+      instructions: |
+        ## Long instructions in more complex markdown if we want
+
+        Lorem markdownum recepta avidum, missa de quam patientia, antris: cum defuit,
+        Titan repetemus nomine, ignare. Quod ad aura, et non quod vidisse utque ulla:
+
+        - Pro inposuit tibi orsa tum artes ferox
+        - Acmon plausu qua agrestum situs virgo in
+        - Vacuus a pendens rostro non si pharetrae
+        - Haeremusque quos auxiliaris coniunx
+        - Repulsa impediunt munera teneri fallebat
+        - Bracchia frustra telo Iovis faucibus casus
+
+gameengine:
+  shuffle_exercises: true
+  shuffle_groups: true
+
+exercise_groups:
+  - group:
+      - instructions:
+          - locale: fr_FR
+            value: Place les instruments dans les bonnes familles d'instruments
+          - locale: en_US
+            value: Place the instruments in the right instrument families
+        interface: dragAndDropIntoZones
+        gameplay: findTheRightAnswers
+        payload: "placeholder payload"
+
+      - instructions:
+          - locale: fr_FR
+            value: Place les instruments dans les bonnes familles d'instruments
+          - locale: en_US
+            value: Place the instruments in the right instrument families
+        interface: dragAndDropIntoZones
+        gameplay: findTheRightAnswers
+        payload: "placeholder payload"
+
+      - instructions:
+          - locale: fr_FR
+            value: Place les instruments dans les bonnes familles d'instruments
+          - locale: en_US
+            value: Place the instruments in the right instrument families
+        interface: dragAndDropIntoZones
+        gameplay: findTheRightAnswers
+        payload: "placeholder payload"
+
+  - group:
+      - instructions:
+          - locale: fr_FR
+            value: Place les instruments dans les bonnes familles d'instruments
+          - locale: en_US
+            value: Place the instruments in the right instrument families
+        interface: dragAndDropIntoZones
+        gameplay: findTheRightAnswers
+        payload: "placeholder payload"
+
+      - instructions:
+          - locale: fr_FR
+            value: Place les instruments dans les bonnes familles d'instruments
+          - locale: en_US
+            value: Place the instruments in the right instrument families
+        interface: dragAndDropIntoZones
+        gameplay: findTheRightAnswers
+        payload: "placeholder payload"
+
+      - instructions:
+          - locale: fr_FR
+            value: Place les instruments dans les bonnes familles d'instruments
+          - locale: en_US
+            value: Place the instruments in the right instrument families
+        interface: dragAndDropIntoZones
+        gameplay: findTheRightAnswers
+        payload: "placeholder payload"

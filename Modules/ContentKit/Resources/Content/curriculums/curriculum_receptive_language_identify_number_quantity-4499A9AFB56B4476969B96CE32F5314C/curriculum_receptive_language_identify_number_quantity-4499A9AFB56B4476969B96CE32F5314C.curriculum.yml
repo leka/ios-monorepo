@@ -1,0 +1,58 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: 4499A9AFB56B4476969B96CE32F5314C
+name: curriculum_receptive_language_identify_number_quantity
+
+status: published
+
+created_at: "2024-03-21T15:12:35.579066"
+last_edited_at: "2024-04-08T12:44:29.442571"
+authors:
+  - julie_tuil
+
+skills:
+  - communication
+  - communication/verbal_communication
+  - communication/verbal_communication/receptive_language
+  - communication/verbal_communication/receptive_language/oral_comprehension
+
+tags:
+  - numbers
+  - quantity
+
+hmi:
+  - tablet
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: receptive_language_quantities
+
+      title: Identifier la quantité numérique
+      subtitle: Comprendre et répondre aux quantités numériques
+
+      abstract: |
+        Visant à renforcer la compréhension du langage oral concernant les nombres et les quantités, ce curriculum propose une activité interactive pour apprendre à identifier les quantités numériques de un à quatre.
+      description: |
+        Cette activité unique sur "Identifier la quantité numérique" encourage la personne accompagnée à écouter attentivement les instructions pour reconnaître la quantité numérique demandée, en choisissant l'image correspondante sur l'écran de l'iPad. L'introduction aux quantités de un à quatre a pour but de renforcer la compréhension des concepts numériques de base de manière ludique et interactive.
+
+  - locale: en_US
+    details:
+      icon: receptive_language_quantities
+
+      title: Identify Number Quantity
+      subtitle: Understanding and Responding to Number Quantities
+
+      abstract: |
+        Designed to bolster oral language comprehension regarding numbers and quantities, this curriculum introduces an interactive activity for learning to identify numerical quantities from one to four.
+      description: |
+        In the sole activity of "Identify Number Quantity," the care receiver is urged to listen to the oral instructions carefully to discern the requested numerical quantity, then select the matching image on the iPad screen. This venture into identifying quantities from one to four aims to enhance the understanding of basic numerical concepts in an engaging and interactive manner.
+
+activities:
+  - receptive_language_identify_number_quantity_1-3E6DE6EBA1E646F1AE240012353FD227
