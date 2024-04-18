@@ -1,0 +1,47 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+name: Tuist - Build
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  TUIST_TURN_OFF_LINTERS: TRUE
+
+jobs:
+  build:
+    name: build
+    runs-on: [self-hosted, iOS]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1 # shallow clone
+          lfs: true
+
+      - name: Setup mise
+        run: |
+          echo "$HOME/.local/share/mise/shims" >> $GITHUB_PATH
+
+      - name: tuist fetch
+        run: |
+          TUIST_TURN_OFF_LINTERS=TRUE tuist fetch
+
+      - name: tuist generate
+        run: |
+          TUIST_TURN_OFF_LINTERS=TRUE tuist generate -n
+
+      - name: tuist build
+        run: |
+          tuist build

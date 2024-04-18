@@ -1,0 +1,189 @@
+{
+    "properties": {
+        "version": {
+            "type": "string"
+        },
+        "uuid": {
+            "type": "string"
+        },
+        "name": {
+            "type": "string"
+        },
+        "status": {
+            "ref": "$status"
+        },
+        "authors": {
+            "elements": {
+                "ref": "$author"
+            }
+        },
+        "skills": {
+            "elements": {
+                "ref": "$skill"
+            }
+        },
+        "hmi": {
+            "elements": {
+                "ref": "$hmi"
+            }
+        },
+        "types": {
+            "elements": {
+                "ref": "$type"
+            }
+        },
+        "tags": {
+            "elements": {
+                "ref": "$tag"
+            }
+        },
+        "locales": {
+            "elements": {
+                "ref": "$locale"
+            }
+        },
+        "l10n": {
+            "elements": {
+                "ref": "$l10n"
+            }
+        },
+        "exercises_payload": {
+            "properties": {
+                "options": {
+                    "properties": {
+                        "shuffle_exercises": {
+                            "type": "boolean"
+                        },
+                        "shuffle_groups": {
+                            "type": "boolean"
+                        }
+                    }
+                },
+                "exercise_groups": {
+                    "elements": {
+                        "ref": "$group"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "$author": {
+            "enum": ["leka", "aurore_kiesler", "julie_tuil"]
+        },
+        "$hmi": {
+            "enum": ["robot", "tablet", "magic_cards", "tablet_robot"]
+        },
+        "$locale": {
+            "enum": ["en_US", "fr_FR"]
+        },
+        "$status": {
+            "enum": ["draft", "published"]
+        },
+        "$l10n": {
+            "properties": {
+                "locale": {
+                    "ref": "$locale"
+                },
+                "details": {
+                    "ref": "$l10n/details"
+                }
+            }
+        },
+        "$l10n/details": {
+            "properties": {
+                "icon": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "subtitle": {
+                    "type": "string",
+                    "nullable": true
+                },
+                "short_description": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "instructions": {
+                    "type": "string",
+                    "nullable": true
+                }
+            }
+        },
+        "$skill": {
+            "type": "string"
+        },
+        "$type": {
+            "enum": ["one_on_one", "group"]
+        },
+        "$tag": {
+            "type": "string"
+        },
+        "$group": {
+            "properties": {
+                "group": {
+                    "elements": {
+                        "ref": "$exercise"
+                    }
+                }
+            }
+        },
+        "$exercise": {
+            "properties": {
+                "instructions": {
+                    "ref": "$exercise/instructions",
+                    "nullable": true
+                },
+                "interface": {
+                    "ref": "$exercise/interface"
+                }
+            },
+            "optionalProperties": {
+                "gameplay": {
+                    "ref": "$exercise/gameplay",
+                    "nullable": true
+                },
+                "payload": {
+                    "ref": "$exercise/payload"
+                }
+            }
+        },
+        "$exercise/instructions": {
+            "elements": {
+                "properties": {
+                    "locale": {
+                        "ref": "$locale"
+                    },
+                    "value": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "$exercise/interface": {
+            "enum": [
+                "touchToSelect",
+                "robotThenTouchToSelect",
+                "listenThenTouchToSelect",
+                "observeThenTouchToSelect",
+                "dragAndDropIntoZones",
+                "dragAndDropToAssociate",
+                "danceFreeze",
+                "remoteStandard",
+                "remoteArrow",
+                "hideAndSeek",
+                "musicalInstruments",
+                "melody",
+                "pairing"
+            ]
+        },
+        "$exercise/gameplay": {
+            "enum": ["findTheRightAnswers", "associateCategories"]
+        },
+        "$exercise/payload": {}
+    }
+}

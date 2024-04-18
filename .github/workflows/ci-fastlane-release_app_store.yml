@@ -1,0 +1,84 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+name: Fastlane - Release to App Store
+
+on:
+  pull_request:
+    types: [labeled]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  TUIST_TURN_OFF_LINTERS: TRUE
+  APP_STORE_CONNECT_API_KEY_CONTENT_RELEASE_APP_STORE: ${{ secrets. APP_STORE_CONNECT_API_KEY_CONTENT_RELEASE_APP_STORE }}
+  APP_STORE_CONNECT_ISSUER_ID: ${{ secrets. APP_STORE_CONNECT_ISSUER_ID }}
+  APP_STORE_CONNECT_API_KEY_ID_RELEASE_APP_STORE: ${{ secrets. APP_STORE_CONNECT_API_KEY_ID_RELEASE_APP_STORE }}
+  FASTLANE_KEYCHAIN_PASSWORD: ${{ secrets.FASTLANE_KEYCHAIN_PASSWORD }}
+  MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+  MATCH_GIT_BASIC_AUTHORIZATION: ${{ secrets.MATCH_GIT_BASIC_AUTHORIZATION }}
+
+jobs:
+  release_app_store:
+    if: contains(github.event.label.name, 'fastlane:ras')
+    name: fastlane upload_to_app_store
+    runs-on: [self-hosted, iOS]
+
+    env:
+      PR_NUMBER: ${{ github.event.pull_request.number }}
+      FASTLANE_SKIP_UPDATE_CHECK: 1
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1 # shallow clone
+
+      - name: Setup mise
+        run: |
+          echo "$HOME/.local/share/mise/shims" >> $GITHUB_PATH
+
+      - name: bundle install
+        run: |
+          bundle install
+
+      - name: tuist fetch
+        run: |
+          tuist fetch
+
+      - name: fastlane helloworld
+        run: |
+          bundle exec fastlane helloworld
+
+      - name: fastlane sync_certificates
+        run: |
+          bundle exec fastlane sync_certificates release:true --verbose
+
+      - name: fastlane release LekaApp
+        if: contains(github.event.label.name, 'LekaApp')
+        run: |
+          bundle exec fastlane release target:LekaApp --verbose
+
+      - name: fastlane release LekaUpdater
+        if: contains(github.event.label.name, 'LekaUpdater')
+        run: |
+          bundle exec fastlane release target:LekaUpdater --verbose
+
+      - name: remove label
+        if: always()
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            const { LABEL_NAME } = process.env
+            github.rest.issues.removeLabel({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              name: LABEL_NAME
+            })
+        env:
+          LABEL_NAME: ${{ github.event.label.name }}

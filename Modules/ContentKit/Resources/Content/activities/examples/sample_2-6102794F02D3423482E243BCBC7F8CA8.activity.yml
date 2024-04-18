@@ -1,0 +1,293 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+version: 1.0.0
+
+uuid: 6102794F02D3423482E243BCBC7F8CA8
+name: sample_2
+
+status: published
+
+authors:
+  - leka
+  - aurore_kiesler
+  - julie_tuil
+
+skills:
+  - spatial_understanding
+  - recognition/animals
+  - communication/non_verbal_communication/gestures
+
+tags:
+  - tag_one
+  - tag_two
+  - tag_three
+
+hmi:
+  - robot
+  - magic_cards
+  - tablet_robot
+
+types:
+  - one_on_one
+  - group
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: sample_2
+
+      title: Activité d'exemple 2
+      subtitle: pour le développement
+
+      short_description: >
+        Nunc Corinthiaci anilem, rerum primo et ambos fata? Et Drya aliis abest, *adeunt
+        deprenduntur* vidi age: venit *cuncti*, aures. Sentit tale nubibus!
+
+      description: |
+        Lorem **markdownum arduus salve** sermone quanto fuit: ait nunc placitas precor
+        **Mercurium novi**: terra nec. Nullo si auctor tenentis **verbis**; sed ore.
+        Nisi sermone procul, et diu turbantes, opem nitidis, aera ad esse Pico refugit
+        iugulum? Gradus non verbis humana **rursus aeternum vincetis** gaudet inpia
+        puro, est.
+
+      instructions: |
+        ## Longues instructions en markdown plus complexe si on veut
+
+        Lorem markdownum recepta avidum, missa de quam patientia, antris: cum defuit,
+        Titan repetemus nomine, ignare. Quod ad aura, et non quod vidisse utque ulla:
+
+        - Pro inposuit tibi orsa tum artes ferox
+        - Acmon plausu qua agrestum situs virgo in
+        - Vacuus a pendens rostro non si pharetrae
+        - Haeremusque quos auxiliaris coniunx
+        - Repulsa impediunt munera teneri fallebat
+        - Bracchia frustra telo Iovis faucibus casus
+
+  - locale: en_US
+    details:
+      icon: sample_2
+
+      title: Sample activity 2
+      subtitle: for development
+
+      short_description: >
+        Nunc Corinthiaci anilem, rerum primo et ambos fata? Et Drya aliis abest, *adeunt
+        deprenduntur* vidi age: venit *cuncti*, aures. Sentit tale nubibus!
+
+      description: |
+        Lorem **markdownum arduus salve** sermone quanto fuit: ait nunc placitas precor
+        **Mercurium novi**: terra nec. Nullo si auctor tenentis **verbis**; sed ore.
+        Nisi sermone procul, et diu turbantes, opem nitidis, aera ad esse Pico refugit
+        iugulum? Gradus non verbis humana **rursus aeternum vincetis** gaudet inpia
+        puro, est.
+
+      instructions: |
+        ## Long instructions in markdown more complex if we want
+
+        Lorem markdownum recepta avidum, missa de quam patientia, antris: cum defuit,
+        Titan repetemus nomine, ignare. Quod ad aura, et non quod vidisse utque ulla:
+
+        - Pro inposuit tibi orsa tum artes ferox
+        - Acmon plausu qua agrestum situs virgo in
+        - Vacuus a pendens rostro non si pharetrae
+        - Haeremusque quos auxiliaris coniunx
+        - Repulsa impediunt munera teneri fallebat
+        - Bracchia frustra telo Iovis faucibus casus
+
+exercises_payload:
+  options:
+    shuffle_exercises: true
+    shuffle_groups: false
+
+  exercise_groups:
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Touch le rond jaune
+            - locale: en_US
+              value: Touch the yellow circle
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: yellow
+                type: color
+                is_right_answer: true
+              - value: red
+                type: color
+              - value: green
+                type: color
+              - value: blue
+                type: color
+
+        - instructions:
+            - locale: fr_FR
+              value: Touch les ronds verts et bleus
+            - locale: en_US
+              value: Touch the green and blue circles
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: yellow
+                type: color
+              - value: red
+                type: color
+              - value: green
+                type: color
+                is_right_answer: true
+              - value: blue
+                type: color
+                is_right_answer: true
+
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Touch la pastèque
+            - locale: en_US
+              value: Touch the watermelon
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: 🍉
+                type: emoji
+                is_right_answer: true
+              - value: 🍌
+                type: emoji
+              - value: 🍒
+                type: emoji
+              - value: 🥝
+                type: emoji
+
+        - instructions:
+            - locale: fr_FR
+              value: Touch le chat et le chien
+            - locale: en_US
+              value: Touch the cat and the dog
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: 🐱
+                type: emoji
+                is_right_answer: true
+              - value: 🐶
+                type: emoji
+                is_right_answer: true
+              - value: 🐷
+                type: emoji
+              - value: 🐹
+                type: emoji
+
+        - instructions:
+            - locale: fr_FR
+              value: Touch le marteau et la scie
+            - locale: en_US
+              value: Touch the hammer and the saw
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: 🔨
+                type: emoji
+                is_right_answer: true
+              - value: 🪚
+                type: emoji
+                is_right_answer: true
+              - value: 🪛
+                type: emoji
+              - value: 🪜
+                type: emoji
+
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Touch le carré
+            - locale: en_US
+              value: Touch the square
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: circle
+                type: sfsymbol
+              - value: square
+                type: sfsymbol
+                is_right_answer: true
+              - value: triangle
+                type: sfsymbol
+              - value: rhombus
+                type: sfsymbol
+
+        - instructions:
+            - locale: fr_FR
+              value: Touch la personne jouant au tennis
+            - locale: en_US
+              value: Touch the person playing tennis
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: figure.climbing
+                type: sfsymbol
+              - value: figure.tennis
+                type: sfsymbol
+                is_right_answer: true
+              - value: figure.pool.swim
+                type: sfsymbol
+              - value: figure.soccer
+                type: sfsymbol
+
+        - instructions:
+            - locale: fr_FR
+              value: Touch l'orage
+            - locale: en_US
+              value: Touch the storm
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: sun.max
+                type: sfsymbol
+              - value: cloud.sun
+                type: sfsymbol
+              - value: cloud.bolt.rain
+                type: sfsymbol
+                is_right_answer: true
+              - value: cloud.rain
+                type: sfsymbol
+
+        - instructions:
+            - locale: fr_FR
+              value: Touch le vélo
+            - locale: en_US
+              value: Touch the bike
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: bicycle
+                type: sfsymbol
+                is_right_answer: true
+              - value: car
+                type: sfsymbol
+              - value: airplane
+                type: sfsymbol
+              - value: sailboat
+                type: sfsymbol

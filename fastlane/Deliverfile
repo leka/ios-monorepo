@@ -1,0 +1,15 @@
+# frozen_string_literal: true
+
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+# If you want to have even more control, check out the documentation
+# https://docs.fastlane.tools/actions/deliver/
+
+username('apple.apf@leka.io') # your Apple ID user
+
+submit_for_review(false)
+automatic_release(false)
+
+languages(%w[en-US fr-FR])

@@ -1,0 +1,101 @@
+{
+    "properties": {
+        "uuid": {
+            "type": "string"
+        },
+        "name": {
+            "type": "string"
+        },
+        "status": {
+            "ref": "$status"
+        },
+        "authors": {
+            "elements": {
+                "ref": "$author"
+            }
+        },
+        "skills": {
+            "elements": {
+                "ref": "$skill"
+            }
+        },
+        "hmi": {
+            "elements": {
+                "ref": "$hmi"
+            }
+        },
+        "tags": {
+            "elements": {
+                "ref": "$tag"
+            }
+        },
+        "locales": {
+            "elements": {
+                "ref": "$locale"
+            }
+        },
+        "l10n": {
+            "elements": {
+                "ref": "$l10n"
+            }
+        },
+        "activities": {
+            "elements": {
+                "type": "string"
+            }
+        }
+    },
+    "definitions": {
+        "$author": {
+            "enum": [
+                "leka_at_apf_france_handicap",
+                "aurore_kiesler",
+                "julie_tuil"
+            ]
+        },
+        "$hmi": {
+            "enum": ["robot", "tablet", "magic_cards", "tablet_robot"]
+        },
+        "$status": {
+            "enum": ["draft", "published"]
+        },
+        "$locale": {
+            "enum": ["en_US", "fr_FR"]
+        },
+        "$l10n": {
+            "properties": {
+                "locale": {
+                    "ref": "$locale"
+                },
+                "details": {
+                    "ref": "$l10n/details"
+                }
+            }
+        },
+        "$l10n/details": {
+            "properties": {
+                "icon": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "subtitle": {
+                    "type": "string"
+                },
+                "abstract": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                }
+            }
+        },
+        "$skill": {
+            "type": "string"
+        },
+        "$tag": {
+            "type": "string"
+        }
+    }
+}

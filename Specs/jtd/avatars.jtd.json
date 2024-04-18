@@ -1,0 +1,47 @@
+{
+    "properties": {
+        "version": {
+            "type": "string"
+        },
+        "categories": {
+            "elements": {
+                "ref": "$category"
+            }
+        }
+    },
+    "definitions": {
+        "$locale": {
+            "enum": ["en_US", "fr_FR"]
+        },
+        "$l10n": {
+            "properties": {
+                "locale": {
+                    "ref": "$locale"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "$avatar": {
+            "type": "string"
+        },
+        "$category": {
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "l10n": {
+                    "elements": {
+                        "ref": "$l10n"
+                    }
+                },
+                "avatars": {
+                    "elements": {
+                        "ref": "$avatar"
+                    }
+                }
+            }
+        }
+    }
+}
