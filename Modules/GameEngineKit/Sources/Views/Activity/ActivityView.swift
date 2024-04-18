@@ -260,6 +260,12 @@ public struct ActivityView: View {
                     data: self.viewModel.currentExerciseSharedData
                 )
 
+            case .robotThenTouchToSelectInRightOrder:
+                RobotThenTouchToSelectInRightOrderView(
+                    exercise: self.viewModel.currentExercise,
+                    data: self.viewModel.currentExerciseSharedData
+                )
+
             case .listenThenTouchToSelect:
                 ListenThenTouchToSelectView(
                     exercise: self.viewModel.currentExercise,
