@@ -59,10 +59,10 @@ enum Gamepad {
                 }
 
                 RadialLayout(firstButtonPosX: -120, firstButtonPosY: -200, angle: 90.0) {
-                    LedZoneSelectorView(displayMode: self.displayMode)
+                    ColorPad(displayMode: self.displayMode, padState: self.$padState)
 
                     ForEach(DisplayMode.allCases, id: \.self) { mode in
-                        LedZoneSelectorView.ModeButton(mode: mode, displayMode: self.$displayMode)
+                        ColorPad.PadModeButton(mode: mode, displayMode: self.$displayMode, padState: self.$padState)
                     }
                 }
             }
@@ -71,6 +71,7 @@ enum Gamepad {
         // MARK: Private
 
         @State private var displayMode = DisplayMode.fullBelt
+        @State private var padState: ColorPad.PadState = .released
     }
 }
 

@@ -5,7 +5,7 @@
 import RobotKit
 import SwiftUI
 
-extension LedZoneSelectorView {
+extension ColorPad {
     struct LedZoneShape: Shape {
         let section: Robot.Lights
 
@@ -27,5 +27,5 @@ extension LedZoneSelectorView {
 }
 
 #Preview {
-    LedZoneSelectorView.LedZoneShape(section: .quarterBackLeft(in: .red))
+    ColorPad.LedZoneShape(section: .quarterBackLeft(in: .red))
 }

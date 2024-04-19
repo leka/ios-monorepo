@@ -2,20 +2,42 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import DesignKit
 import RobotKit
 import SwiftUI
 
-extension LedZoneSelectorView {
-    struct ModeButton: View {
+extension ColorPad {
+    enum PadState: Equatable {
+        case released
+        case fullyPressed
+
+        // MARK: Internal
+
+        mutating func toggle() {
+            if self == .released {
+                self = .fullyPressed
+            } else {
+                self = .released
+            }
+        }
+    }
+
+    struct PadModeButton: View {
         // MARK: Internal
 
         var mode: Gamepad.DisplayMode
         @Binding var displayMode: Gamepad.DisplayMode
+        @Binding var padState: PadState
 
         var body: some View {
             Button {
-                self.displayMode = self.mode
-                Robot.shared.blacken(.all)
+                if self.displayMode == self.mode {
+                    self.padState.toggle()
+                } else {
+                    self.padState = .released
+                    self.displayMode = self.mode
+                    Robot.shared.blacken(.all)
+                }
             } label: {
                 ZStack {
                     Circle()
@@ -26,7 +48,12 @@ extension LedZoneSelectorView {
                     self.earsSectionIcons
                 }
             }
-            .background(ModeFeedback(backgroundDimension: self.displayMode == self.mode ? 80 : 0))
+            .background(
+                Circle()
+                    .foregroundColor(DesignKitAsset.Colors.btnLightBlue.swiftUIColor)
+                    .frame(width: CGFloat(self.displayMode == self.mode ? 80 : 0),
+                           height: CGFloat(self.displayMode == self.mode ? 80 : 0))
+            )
         }
 
         // MARK: Private
@@ -64,5 +91,5 @@ extension LedZoneSelectorView {
 }
 
 #Preview {
-    LedZoneSelectorView.ModeButton(mode: .fullBelt, displayMode: .constant(.fullBelt))
+    ColorPad.PadModeButton(mode: .fullBelt, displayMode: .constant(.fullBelt), padState: .constant(.fullyPressed))
 }

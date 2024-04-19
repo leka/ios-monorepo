@@ -5,7 +5,7 @@
 import RobotKit
 import SwiftUI
 
-extension LedZoneSelectorView {
+extension ColorPad {
     struct BeltSectionIcon: View {
         // MARK: Internal
 
@@ -24,5 +24,5 @@ extension LedZoneSelectorView {
 }
 
 #Preview {
-    LedZoneSelectorView.BeltSectionIcon(section: .full(.belt, in: .red))
+    ColorPad.BeltSectionIcon(section: .full(.belt, in: .red))
 }

@@ -5,18 +5,14 @@
 import RobotKit
 import SwiftUI
 
-extension LedZoneSelectorView {
+extension ColorPad {
     struct EarButton: View {
-        // MARK: Lifecycle
-
-        init(selectedEar: Robot.Lights) {
-            self.selectedEar = selectedEar
-        }
-
         // MARK: Internal
 
         let selectedEar: Robot.Lights
         let robot = Robot.shared
+
+        @Binding var padState: PadState
 
         var body: some View {
             Circle()
@@ -29,23 +25,30 @@ extension LedZoneSelectorView {
                     } else {
                         self.robot.blacken(self.selectedEar)
                     }
-                    self.backgroundDimension = self.buttonPressed ? 65 : 0
                 }
                 .background(
                     Circle()
                         .foregroundColor(self.selectedEar.color.screen.opacity(0.5))
-                        .frame(width: CGFloat(self.backgroundDimension), height: CGFloat(self.backgroundDimension))
+                        .frame(width: CGFloat(self.buttonPressed ? 65 : 0), height: CGFloat(self.buttonPressed ? 65 : 0))
                 )
-                .animation(.easeInOut(duration: 0.2), value: self.backgroundDimension)
+                .animation(.easeInOut(duration: 0.2), value: self.buttonPressed ? 65 : 0)
+                .onChange(of: self.padState) { state in
+                    if state == .fullyPressed {
+                        self.buttonPressed = true
+                        self.robot.shine(self.selectedEar)
+                    } else {
+                        self.buttonPressed = false
+                        self.robot.blacken(self.selectedEar)
+                    }
+                }
         }
 
         // MARK: Private
 
-        @State private var buttonPressed = false
-        @State private var backgroundDimension = 0
+        @State private var buttonPressed: Bool = false
     }
 }
 
 #Preview {
-    LedZoneSelectorView.EarButton(selectedEar: .earRight(in: .blue))
+    ColorPad.EarButton(selectedEar: .earRight(in: .blue), padState: .constant(.fullyPressed))
 }

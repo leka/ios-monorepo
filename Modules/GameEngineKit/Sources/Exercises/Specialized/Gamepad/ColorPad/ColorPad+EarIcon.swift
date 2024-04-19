@@ -4,7 +4,7 @@
 
 import SwiftUI
 
-extension LedZoneSelectorView {
+extension ColorPad {
     struct EarIcon: View {
         var body: some View {
             Circle()
@@ -15,5 +15,5 @@ extension LedZoneSelectorView {
 }
 
 #Preview {
-    LedZoneSelectorView.EarIcon()
+    ColorPad.EarIcon()
 }

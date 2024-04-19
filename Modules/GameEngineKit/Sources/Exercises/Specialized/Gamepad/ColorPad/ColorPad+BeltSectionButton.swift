@@ -28,14 +28,16 @@ public extension Robot.Lights {
     }
 }
 
-// MARK: - LedZoneSelectorView.BeltSectionButton
+// MARK: - ColorPad.BeltSectionButton
 
-extension LedZoneSelectorView {
+extension ColorPad {
     struct BeltSectionButton: View {
         // MARK: Internal
 
         var section: Robot.Lights
         let robot = Robot.shared
+
+        @Binding var padState: PadState
 
         var body: some View {
             LedZoneShape(section: self.section)
@@ -48,14 +50,13 @@ extension LedZoneSelectorView {
                     } else {
                         self.robot.blacken(self.section)
                     }
-                    self.backgroundLineWidth = self.buttonPressed ? 25 : 0
                 }
                 .background(
                     LedZoneShape(section: self.section)
                         .stroke(
                             self.section.color.screen.opacity(0.3),
                             style: StrokeStyle(
-                                lineWidth: CGFloat(self.backgroundLineWidth),
+                                lineWidth: CGFloat(self.buttonPressed ? 25 : 0),
                                 lineCap: .round,
                                 lineJoin: .round,
                                 miterLimit: 10
@@ -63,16 +64,24 @@ extension LedZoneSelectorView {
                         )
                         .frame(width: 300, height: 300)
                 )
-                .animation(Animation.easeInOut(duration: 0.2), value: self.backgroundLineWidth)
+                .animation(Animation.easeInOut(duration: 0.2), value: self.buttonPressed ? 25 : 0)
+                .onChange(of: self.padState) { state in
+                    if state == .fullyPressed {
+                        self.buttonPressed = true
+                        self.robot.shine(self.section)
+                    } else {
+                        self.buttonPressed = false
+                        self.robot.blacken(self.section)
+                    }
+                }
         }
 
         // MARK: Private
 
-        @State private var buttonPressed = false
-        @State private var backgroundLineWidth = 0
+        @State private var buttonPressed: Bool = false
     }
 }
 
 #Preview {
-    LedZoneSelectorView.BeltSectionButton(section: .full(.belt, in: .red))
+    ColorPad.BeltSectionButton(section: .full(.belt, in: .red), padState: .constant(.released))
 }
