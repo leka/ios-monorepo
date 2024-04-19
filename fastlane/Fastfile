@@ -15,6 +15,8 @@ default_platform(:ios)
 ROOT_DIR = File.expand_path('..', Dir.pwd).to_s.freeze
 SIGNING_DIR = "#{ROOT_DIR}/Tuist/Signing"
 
+GIT_BASE_REF = ENV.fetch('BASE_REF', 'develop')
+
 RELEASE_BUNDLE_IDS = [
   'io.leka.apf.app.LekaApp',
   'io.leka.apf.app.LekaUpdater'
@@ -373,11 +375,11 @@ platform :ios do
 
     git_log_to_notes_script = "#{ROOT_DIR}/Tools/Scripts/git_log_to_notes.py"
 
-    git_log_main_pr_with_emojis, stderr_git_log_main_pr_with_emojis, status_git_log_main_pr_with_emojis =
+    git_log_base_head_with_emojis, stderr_git_log_base_head_with_emojis, status_git_log_base_head_with_emojis =
       Open3.capture3(
         'python3',
         git_log_to_notes_script,
-        '-f', 'main',
+        '-f', GIT_BASE_REF,
         '-l', commit_sha_pr_branch_head.to_s
       )
 
@@ -389,12 +391,12 @@ platform :ios do
         '-l', commit_sha_pr_branch_head.to_s
       )
 
-    git_log_main_pr_no_emojis, stderr_git_log_main_pr_no_emojis, status_git_log_main_pr_no_emojis =
+    git_log_base_head_no_emojis, stderr_git_log_base_head_no_emojis, status_git_log_base_head_no_emojis =
       Open3.capture3(
         'python3',
         git_log_to_notes_script,
         '-r',
-        '-f', 'main',
+        '-f', GIT_BASE_REF,
         '-l', commit_sha_pr_branch_head.to_s
       )
 
@@ -407,7 +409,7 @@ platform :ios do
         '-l', commit_sha_pr_branch_head.to_s
       )
 
-    if status_git_log_main_pr_with_emojis.success? && status_git_log_main_pr_no_emojis.success?
+    if status_git_log_base_head_with_emojis.success? && status_git_log_base_head_no_emojis.success?
       UI.message 'Creating CHANGELOG_FOR_SLACK'
 
       CHANGELOG_FOR_SLACK = <<~EOF_CHANGELOG_FOR_SLACK
@@ -420,9 +422,9 @@ platform :ios do
         *Build*: #{next_build_number} (#{commit_sha_pr_branch_head})
         *PR*: #{pr_number ? "https://github.com/leka/ios-monorepo/pull/#{pr_number}" : 'n/a'}
 
-        *Changes compared to `main`*:
+        *Changes compared to `#{GIT_BASE_REF}`*:
 
-        #{git_log_main_pr_with_emojis.rstrip.empty? ? '_Could not fetch the changes compared to `main`._' : git_log_main_pr_with_emojis.rstrip}
+        #{git_log_base_head_with_emojis.rstrip.empty? ? "_Could not fetch the changes compared to `#{GIT_BASE_REF}`._" : git_log_base_head_with_emojis.rstrip}
 
         *Changes compared to the last TestFlight build*:
 
@@ -444,9 +446,9 @@ platform :ios do
         **Build**: #{next_build_number} (#{commit_sha_pr_branch_head})
         **PR**: #{pr_number ? "https://github.com/leka/ios-monorepo/pull/#{pr_number}" : 'n/a'}
 
-        **Changes compared to `main`**:
+        **Changes compared to `#{GIT_BASE_REF}`**:
 
-        #{git_log_main_pr_with_emojis.rstrip.empty? ? '*Could not fetch the changes compared to `main`.*' : git_log_main_pr_with_emojis.rstrip}
+        #{git_log_base_head_with_emojis.rstrip.empty? ? "*Could not fetch the changes compared to `#{GIT_BASE_REF}`.*" : git_log_base_head_with_emojis.rstrip}
 
         **Changes compared to the last TestFlight build**:
 
@@ -463,9 +465,9 @@ platform :ios do
         Build: #{next_build_number} (#{commit_sha_pr_branch_head})
         PR: #{pr_number ? "https://github.com/leka/ios-monorepo/pull/#{pr_number}" : 'n/a'}
 
-        Changes compared to main:
+        Changes compared to #{GIT_BASE_REF}:
 
-        #{git_log_main_pr_no_emojis.rstrip.empty? ? 'Could not fetch the changes compared to `main`.' : git_log_main_pr_no_emojis.rstrip}
+        #{git_log_base_head_no_emojis.rstrip.empty? ? "Could not fetch the changes compared to `#{GIT_BASE_REF}`." : git_log_base_head_no_emojis.rstrip}
 
         Changes compared to the last TestFlight build:
 
@@ -476,8 +478,8 @@ platform :ios do
       UI.message "CHANGELOG_FOR_TEST_FLIGHT:\n#{CHANGELOG_FOR_TEST_FLIGHT}"
     else
       UI.error 'Could not fetch the changes'
-      UI.error stderr_git_log_main_pr_with_emojis
-      UI.error stderr_git_log_main_pr_no_emojis
+      UI.error stderr_git_log_base_head_with_emojis
+      UI.error stderr_git_log_base_head_no_emojis
     end
 
     if ENV['CI']
