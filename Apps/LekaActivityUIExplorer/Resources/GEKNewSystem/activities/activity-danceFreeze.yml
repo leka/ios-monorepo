@@ -1,0 +1,29 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+id: a552eb134d8f428db4179a345bfd7e66
+name: Dance Freeze
+description: L'objectif est de danser lorsque de la musique est jouée, et de s'arrêter à l'arrêt de la musique
+image: activity_color_recognition_1
+sequence:
+  - exercises:
+      - instructions:
+        interface: danceFreeze
+        payload:
+          instructions:
+            text_main_instructions: Danse avec Leka au rythme de la musique et fais la statue lorsqu'il s'arrête.
+            text_motion_selection: Sélection du mouvement
+            text_music_selection: Sélection de la musique
+            text_button_rotation: Rotation
+            text_button_movement: Déplacement
+            text_button_mode_manual: Jouer - Mode manuel
+            text_button_mode_auto: Jouer - Mode auto
+          songs:
+            - earlyBird
+            - emptyPage
+            - gigglySquirrel
+            - handsOn
+            - happyDays
+            - inTheGame
+            - littleByLittle

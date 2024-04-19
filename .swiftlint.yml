@@ -1,0 +1,64 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+opt_in_rules: []
+
+trailing_comma:
+  mandatory_comma: true
+
+type_name:
+  min_length: 4 # only warning
+  max_length: # warning and error
+    warning: 40
+    error: 50
+  allowed_symbols: ["_"] # these are allowed in type names
+  excluded:
+    - i18n
+    - l10n
+
+identifier_name:
+  min_length: # only min_length
+    error: 4 # only error
+  excluded:
+    - a
+    - app
+    - args
+    - b
+    - ble
+    - BLE
+    - cmd
+    - g
+    - i
+    - i18n
+    - id
+    - img
+    - key
+    - l10n
+    - lhs
+    - log
+    - new
+    - r
+    - red
+    - rgb
+    - rhs
+    - rx
+    - tx
+    - URL
+
+line_length:
+  warning: 150
+  ignores_urls: true
+  ignores_function_declarations: true
+  ignores_interpolated_strings: true
+
+disabled_rules:
+  - opening_brace
+  - switch_case_alignment
+  - closure_parameter_position
+
+excluded:
+  - Tuist/Dependencies
+  - ./*/Derived
+
+reporter: "emoji"

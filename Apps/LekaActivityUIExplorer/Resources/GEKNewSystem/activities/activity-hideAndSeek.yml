@@ -1,0 +1,22 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+id: 4843737a16e348c183551db21053cd8d
+name: Hide and Seek
+description: L'objectif est de trouver Leka, caché quelque part dans la pièce
+image: activity_color_recognition_1
+sequence:
+  - exercises:
+      - instructions:
+        interface: hideAndSeek
+        payload:
+          instructions:
+            text_main_instructions: Appuyer sur "OK" lorsque Leka est caché
+            text_sub_instructions: |
+              Incites la personne accompagnée à chercher Leka.
+              Tu peux lancer un renforçateur pour lui donner
+              un indice visuel et/ou sonore.
+              Appuies sur "TROUVÉ !" une fois le robot trouvé.
+            text_button_ok: OK
+            text_button_robot_found: Trouvé

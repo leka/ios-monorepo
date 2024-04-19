@@ -1,0 +1,15 @@
+{
+  "images" : [
+    {
+      "filename" : "reinforcer-4-glitters-static.svg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  },
+  "properties" : {
+    "preserves-vector-representation" : true
+  }
+}

@@ -1,0 +1,66 @@
+---
+title:
+  en_US: Recognize the sounds of emotions with 2 pictures
+  fr_FR: Reconnaitre les sons des émotions avec 2 photos
+short_title:
+  en_US: Ladislas
+  fr_FR: Ladislas
+uuid: 752f66df-8e15-4ef3-947e-d64d5d24f3a9
+
+type: listen_then_touch_to_select
+
+number_of_steps: 10
+random_steps: true
+number_of_images_per_step: 2
+random_image_position: true
+steps:
+  - instruction:
+      en_US: Touch the speaker. What is this emotion?
+      fr_FR: Touche le haut-parleur. Quelle est cette émotion ?
+    correct_answer: emotion_picture_adult_joy_ladislas
+    images:
+      - emotion_picture_adult_joy_ladislas
+      - emotion_picture_adult_sad_ladislas
+    sound: 
+      - emotion_sound_adult_joy_ladislas
+
+  - instruction:
+      en_US: Touch the speaker. What is this emotion?
+      fr_FR: Touche le haut-parleur. Quelle est cette émotion ?
+    correct_answer: emotion_picture_adult_sad_ladislas
+    images:
+      - emotion_picture_adult_sad_ladislas
+      - emotion_picture_adult_fear_ladislas
+    sound:
+      - emotion_sound_adult_sad_ladislas
+
+  - instruction:
+      en_US: Touch the speaker. What is this emotion?
+      fr_FR: Touche le haut-parleur. Quelle est cette émotion ?
+    correct_answer: emotion_picture_adult_disgust_ladislas
+    images:
+      - emotion_picture_adult_disgust_ladislas
+      - emotion_picture_adult_angry_ladislas
+    sound:
+      - emotion_sound_adult_disgust_ladislas
+
+  - instruction:
+      en_US: Touch the speaker. What is this emotion?
+      fr_FR: Touche le haut-parleur. Quelle est cette émotion ?
+    correct_answer: emotion_picture_adult_fear_ladislas
+    images:
+      - emotion_picture_adult_fear_ladislas
+      - emotion_picture_adult_joy_ladislas
+    sound:
+      - emotion_sound_adult_fear_ladislas
+
+  - instruction:
+      en_US: Touch the speaker. What is this emotion?
+      fr_FR: Touche le haut-parleur. Quelle est cette émotion ?
+    correct_answer: emotion_picture_adult_angry_ladislas
+    images:
+      - emotion_picture_adult_angry_ladislas
+      - emotion_picture_adult_fear_ladislas
+    sound:
+      - emotion_sound_adult_angry_ladislas
+

@@ -1,0 +1,904 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "connection.connect_button" : {
+      "comment" : "Connect button",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Connect"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se connecter"
+          }
+        }
+      }
+    },
+    "connection.continue_button" : {
+      "comment" : "Continue button",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Continue"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continuer"
+          }
+        }
+      }
+    },
+    "connection.disconnect_button" : {
+      "comment" : "Disconnect button",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Disconnect"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se déconnecter"
+          }
+        }
+      }
+    },
+    "connection.no_robots_found_text" : {
+      "comment" : "No robount found text",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "No robots found..."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aucun robot trouvé..."
+          }
+        }
+      }
+    },
+    "connection.robot_discovery_version" : {
+      "comment" : "Discovery version LekaOS v...",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "LekaOS v%@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LekaOS v%@"
+          }
+        }
+      }
+    },
+    "connection.search_button" : {
+      "comment" : "Search button",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Search"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rechercher"
+          }
+        }
+      }
+    },
+    "connection.search_invite_text" : {
+      "comment" : "Search invite text",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Press the Search button to find robots around you"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lancer une recherche pour trouver les robots autour de vous !"
+          }
+        }
+      }
+    },
+    "general.no" : {
+      "comment" : "No",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "No"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Non"
+          }
+        }
+      }
+    },
+    "general.yes" : {
+      "comment" : "Yes",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Yes"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oui"
+          }
+        }
+      }
+    },
+    "information.changelog_not_found_text" : {
+      "comment" : "Changelog not found text",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Changelog is not available"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La liste des changements n'est pas disponbile"
+          }
+        }
+      }
+    },
+    "information.changelog_section_title" : {
+      "comment" : "Changelog of latest firmware update",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Changelog"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Liste des changements apportés"
+          }
+        }
+      }
+    },
+    "information.robot.battery" : {
+      "comment" : "Connected robot battery level",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Battery: %@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Batterie : %@"
+          }
+        }
+      }
+    },
+    "information.robot.charging_status" : {
+      "comment" : "Connected robot charging status",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Charging: %@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En charge : %@"
+          }
+        }
+      }
+    },
+    "information.robot.serial_number" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Serial Number: %@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Numéro de série : %@"
+          }
+        }
+      }
+    },
+    "information.robot.version" : {
+      "comment" : "Connected robot version",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Version: %@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Version: %@"
+          }
+        }
+      }
+    },
+    "information.start_update_button" : {
+      "comment" : "Start update button",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Start robot update"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lancer la mise à jour du robot"
+          }
+        }
+      }
+    },
+    "information.status.alert.robot_not_in_charge" : {
+      "comment" : "Robot not in charge alert",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "⚠️ WARNING ⚡\nThe robot is no longer in charge"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠️ ATTENTION ⚡\nLe robot n'est plus en charge"
+          }
+        }
+      }
+    },
+    "information.status.alert.robot_not_in_charge_button" : {
+      "comment" : "Robot not in charge alert button",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Please put Leka back on its charging station and/or check it's plugged to a power outlet"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Veuillez reposer Leka sur sa base et/ou vérifier le branchement"
+          }
+        }
+      }
+    },
+    "information.status.robot_cannot_be_updated_text" : {
+      "comment" : "Robot cannot be updated text",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "⚠️ DEV 🚧\nUpdate process not recognized or not available\n(Error code: #0003)"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠️ DEV 🚧\nProcessus de mise à jour non reconnu ou inexistant\n(Code erreur #0003)"
+          }
+        }
+      }
+    },
+    "information.status.robot_is_up_to_date" : {
+      "comment" : "Robot is up to date text",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "🤖 Your robot is up-to-date! 🎉 You're all done 👌"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🤖 Votre robot est à jour ! 🎉 Vous n'avez rien à faire 👌"
+          }
+        }
+      }
+    },
+    "information.status.robot_update_available" : {
+      "comment" : "Robot firmware update available text",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "⬆️ New firmware update available 📦"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⬆️ Une mise à jour est disponible 📦"
+          }
+        }
+      }
+    },
+    "main.app_description" : {
+      "comment" : "Description of the application",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The app to update your Leka robots!"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L'application pour mettre à jour vos robots Leka !"
+          }
+        }
+      }
+    },
+    "main.app_name" : {
+      "comment" : "Name of the application",
+      "extractionState" : "translated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Leka Updater"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Leka Updater"
+          }
+        }
+      }
+    },
+    "toolbar.connection_button" : {
+      "comment" : "Connection toolbar button",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Connection"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Connexion"
+          }
+        }
+      }
+    },
+    "update.error" : {
+      "comment" : "Update error",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "An error has occurred"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Une erreur s'est produite"
+          }
+        }
+      }
+    },
+    "update.error_back_button" : {
+      "comment" : "Update error back button",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Return to robot connection page"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Revenir à la page de connexion"
+          }
+        }
+      }
+    },
+    "update.error_call_to_action" : {
+      "comment" : "Update error call to action",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Contact technical support"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contactez le support technique"
+          }
+        }
+      }
+    },
+    "update.error_description" : {
+      "comment" : "Update error description",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Unknown error"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erreur inconnue"
+          }
+        }
+      }
+    },
+    "update.error.failed_to_load_file" : {
+      "comment" : "Failed to load file",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Robot update file cannot be opened\n(Error code #0001)"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le fichier de mise à jour du robot ne peut pas être ouvert\n(Code erreur #0001)"
+          }
+        }
+      }
+    },
+    "update.error.failed_to_load_file_instructions" : {
+      "comment" : "Failed to load file instructions",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Please reinstall the app"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Veuillez réinstaller l'application"
+          }
+        }
+      }
+    },
+    "update.error.robot_not_up_to_date" : {
+      "comment" : "Robot not up to date",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Update failed\n(Error code #0002)"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Echec de la mise à jour\n(Code erreur #0002)"
+          }
+        }
+      }
+    },
+    "update.error.robot_not_up_to_date_instructions" : {
+      "comment" : "Robot not up to date instructions",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Reconnect the robot and restart the process"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reconnectez le robot et relancez le processus"
+          }
+        }
+      }
+    },
+    "update.error.robot_unexpected_disconnection" : {
+      "comment" : "Robot unexpected disconnection",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "The robot has been disconnected\n(Error code #0004)"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le robot s'est déconnecté de manière inattendue\n(Code erreur #0004)"
+          }
+        }
+      }
+    },
+    "update.error.robot_unexpected_disconnection_instructions" : {
+      "comment" : "Robot unexpected disconnection instructions",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Restart the robot using the \"Emergency stop\" card,\nreconnect the robot and restart the process"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Redémarrer le robot à l'aide de la carte \\\"Arrêt d'urgence\\\",\nreconnectez le robot et relancez le processus"
+          }
+        }
+      }
+    },
+    "update.error.unknown_error" : {
+      "comment" : "unknown error",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "An unknown error has occurred\n(Error code #0000)"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Une erreur inconnue s'est produite\n(Code erreur #0000)"
+          }
+        }
+      }
+    },
+    "update.error.unknown_error_instructions" : {
+      "comment" : "unknown error instructions",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Please contact technical support"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contactez le support technique"
+          }
+        }
+      }
+    },
+    "update.error.update_process_not_available" : {
+      "comment" : "Update process not available",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Update process not recognized or not available\n(Error code #0003)"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Processus de mise à jour non disponible ou inconnu\n(Code erreur #0003)"
+          }
+        }
+      }
+    },
+    "update.error.update_process_not_available_instructions" : {
+      "comment" : "Update process not available instructions",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Please contact technical support"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contactez le support technique"
+          }
+        }
+      }
+    },
+    "update.finished.launch_leka_app_button" : {
+      "comment" : "Launch Leka app button",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Launch My Leka Alpha 🚀"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lancer Mon Leka Alpha 🚀"
+          }
+        }
+      }
+    },
+    "update.finished.robot_updated_successfully" : {
+      "comment" : "Robot updated successfully",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Congrats! 🥳\nYour robot is now up-to-date 🎉"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bravo ! 🥳\nVotre robot est maintenant à jour 🎉"
+          }
+        }
+      }
+    },
+    "update.finished.update_another_robot_button" : {
+      "comment" : "Update another robot button",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Update another robot"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mettre à jour un autre robot"
+          }
+        }
+      }
+    },
+    "update.rebooting.subtitle" : {
+      "comment" : "Rebooting subtitle",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Your robot will reboot in a few minutes"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Votre robot redémarrera dans quelques minutes"
+          }
+        }
+      }
+    },
+    "update.rebooting.title" : {
+      "comment" : "Rebooting title",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "The update is being installed"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Installation de la mise à jour"
+          }
+        }
+      }
+    },
+    "update.requirements.charging_base_green_led_text" : {
+      "comment" : "Base green LED must be on",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "The charging LED is green indicating the correct positioning on the base"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La LED de charge est verte indiquant le bon positionnement sur la base"
+          }
+        }
+      }
+    },
+    "update.requirements.charging_base_plugged_text" : {
+      "comment" : "Base must be plugged",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "The robot is placed on its base and the base is connected to the mains"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le robot est posé sur son socle et le socle est branché au secteur"
+          }
+        }
+      }
+    },
+    "update.requirements.instructions_text" : {
+      "comment" : "Requirements before update",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "To start the update, make sure that:"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pour démarrer la mise à jour, assurez-vous que :"
+          }
+        }
+      }
+    },
+    "update.requirements.robot_battery_minimum_level_text" : {
+      "comment" : "Robot battery level must be at least 30%",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "The robot battery level is at least 30%"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le niveau de batterie du robot est d'au moins 30%"
+          }
+        }
+      }
+    },
+    "update.sending.instruction" : {
+      "comment" : "Sending instruction",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Do not unplug your robot\nDo not remove it from its charging station\nDo not close the app"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ne débranchez pas votre robot.\nNe le sortez pas de son socle de recharge.\nNe fermez pas l'application."
+          }
+        }
+      }
+    },
+    "update.sending.title" : {
+      "comment" : "Sending title",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Sending update to the robot"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Envoi de la mise à jour vers le robot"
+          }
+        }
+      }
+    },
+    "update.step_number" : {
+      "comment" : "Update step number",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Step %@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Étape %@"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

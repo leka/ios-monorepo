@@ -1,0 +1,93 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+id: 12e4a69e978640568fe86a67f5f5f601
+name: Touch To Select - One Right Answer - Colors
+description: L'objectif est de trouver la bonne couleur ou des les rassembler par famille
+image: activity_color_recognition_1
+sequence:
+  - exercises:
+      - instructions: Touche le bleu
+        interface: touchToSelect
+        gameplay: findTheRightAnswers
+        payload:
+          choices:
+            - value: blue
+              type: color
+              isRightAnswer: true
+
+      - instructions: Touche le vert
+        interface: touchToSelect
+        gameplay: findTheRightAnswers
+        payload:
+          choices:
+            - value: green
+              type: color
+              isRightAnswer: true
+            - value: blue
+              type: color
+
+      - instructions: Touche le rouge
+        interface: touchToSelect
+        gameplay: findTheRightAnswers
+        payload:
+          choices:
+            - value: red
+              type: color
+              isRightAnswer: true
+            - value: green
+              type: color
+            - value: blue
+              type: color
+
+      - instructions: Touche le jaune
+        interface: touchToSelect
+        gameplay: findTheRightAnswers
+        payload:
+          choices:
+            - value: yellow
+              type: color
+              isRightAnswer: true
+            - value: red
+              type: color
+            - value: green
+              type: color
+            - value: blue
+              type: color
+
+      - instructions: Touche le orange
+        interface: touchToSelect
+        gameplay: findTheRightAnswers
+        payload:
+          choices:
+            - value: orange
+              type: color
+              isRightAnswer: true
+            - value: yellow
+              type: color
+            - value: red
+              type: color
+            - value: green
+              type: color
+            - value: blue
+              type: color
+
+      - instructions: Touche le violet
+        interface: touchToSelect
+        gameplay: findTheRightAnswers
+        payload:
+          choices:
+            - value: purple
+              type: color
+              isRightAnswer: true
+            - value: orange
+              type: color
+            - value: yellow
+              type: color
+            - value: red
+              type: color
+            - value: green
+              type: color
+            - value: blue
+              type: color

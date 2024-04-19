@@ -1,0 +1,92 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+id: d82c2ee629034950a056433975fd41e8
+name: Medley
+description: Cette activité rassemble toutes les interfaces disponibles
+image: activity_color_recognition_1
+sequence:
+  - exercises:
+      - instructions: Exercice S1/E1
+        interface: touchToSelect
+        gameplay: findTheRightAnswers
+        payload:
+          choices:
+            - value: blue
+              type: color
+              isRightAnswer: true
+
+      - instructions: Exercice S1/E2
+        interface: touchToSelect
+        gameplay: findTheRightAnswers
+        payload:
+          choices:
+            - value: red
+              type: color
+              isRightAnswer: true
+
+      - instructions: Exercice S1/E3
+        interface: touchToSelect
+        gameplay: findTheRightAnswers
+        payload:
+          choices:
+            - value: green
+              type: color
+              isRightAnswer: true
+
+  - exercises:
+      - instructions: Exercice S2/E1
+        interface: touchToSelect
+        gameplay: findTheRightAnswers
+        payload:
+          choices:
+            - value: orange
+              type: color
+              isRightAnswer: true
+
+      - instructions: Exercice S2/E2
+        interface: touchToSelect
+        gameplay: findTheRightAnswers
+        payload:
+          choices:
+            - value: yellow
+              type: color
+              isRightAnswer: true
+
+      - instructions: Exercice S2/E3
+        interface: touchToSelect
+        gameplay: findTheRightAnswers
+        payload:
+          choices:
+            - value: purple
+              type: color
+              isRightAnswer: true
+
+  - exercises:
+      - instructions: Exercice S3/E1
+        interface: touchToSelect
+        gameplay: findTheRightAnswers
+        payload:
+          choices:
+            - value: lightBlue
+              type: color
+              isRightAnswer: true
+
+      - instructions: Exercice S3/E2
+        interface: touchToSelect
+        gameplay: findTheRightAnswers
+        payload:
+          choices:
+            - value: pink
+              type: color
+              isRightAnswer: true
+
+      - instructions: Exercice S3/E3
+        interface: touchToSelect
+        gameplay: findTheRightAnswers
+        payload:
+          choices:
+            - value: black
+              type: color
+              isRightAnswer: true
