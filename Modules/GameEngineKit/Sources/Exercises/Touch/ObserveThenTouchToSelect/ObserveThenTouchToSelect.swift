@@ -46,6 +46,7 @@ public struct ObserveThenTouchToSelectView: View {
                             self.viewModel.onChoiceTapped(choice: self.viewModel.choices[0])
                         }
                         .animation(.easeOut(duration: 0.3), value: self.imageWasTapped)
+                        .grayscale(self.imageWasTapped ? 0.0 : 1.0)
 
                 case .twoChoices:
                     TwoChoicesView(viewModel: self.viewModel, isTappable: self.imageWasTapped)
@@ -53,6 +54,7 @@ public struct ObserveThenTouchToSelectView: View {
                             self.viewModel.onChoiceTapped(choice: self.viewModel.choices[0])
                         }
                         .animation(.easeOut(duration: 0.3), value: self.imageWasTapped)
+                        .grayscale(self.imageWasTapped ? 0.0 : 1.0)
 
                 case .threeChoices:
                     ThreeChoicesView(viewModel: self.viewModel, isTappable: self.imageWasTapped)
@@ -60,6 +62,7 @@ public struct ObserveThenTouchToSelectView: View {
                             self.viewModel.onChoiceTapped(choice: self.viewModel.choices[0])
                         }
                         .animation(.easeOut(duration: 0.3), value: self.imageWasTapped)
+                        .grayscale(self.imageWasTapped ? 0.0 : 1.0)
 
                 case .fourChoices:
                     FourChoicesView(viewModel: self.viewModel, isTappable: self.imageWasTapped)
@@ -67,6 +70,7 @@ public struct ObserveThenTouchToSelectView: View {
                             self.viewModel.onChoiceTapped(choice: self.viewModel.choices[0])
                         }
                         .animation(.easeOut(duration: 0.3), value: self.imageWasTapped)
+                        .grayscale(self.imageWasTapped ? 0.0 : 1.0)
 
                 case .fiveChoices:
                     FiveChoicesView(viewModel: self.viewModel, isTappable: self.imageWasTapped)
@@ -74,6 +78,7 @@ public struct ObserveThenTouchToSelectView: View {
                             self.viewModel.onChoiceTapped(choice: self.viewModel.choices[0])
                         }
                         .animation(.easeOut(duration: 0.3), value: self.imageWasTapped)
+                        .grayscale(self.imageWasTapped ? 0.0 : 1.0)
 
                 case .sixChoices:
                     SixChoicesView(viewModel: self.viewModel, isTappable: self.imageWasTapped)
@@ -81,6 +86,7 @@ public struct ObserveThenTouchToSelectView: View {
                             self.viewModel.onChoiceTapped(choice: self.viewModel.choices[0])
                         }
                         .animation(.easeOut(duration: 0.3), value: self.imageWasTapped)
+                        .grayscale(self.imageWasTapped ? 0.0 : 1.0)
 
                 default:
                     ProgressView()

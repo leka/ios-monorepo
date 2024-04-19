@@ -67,19 +67,15 @@ struct ActionButtonObserve: View {
                 self.imageWasTapped = true
             }
         } label: {
-            VStack {
-                Image(systemName: "hand.tap")
-                    .resizable()
-                    .frame(width: 70, height: 70)
-                    .foregroundColor(.white)
-                Text(l10n.ActionButtonObserve.buttonLabel)
-                    .font(.title)
-                    .foregroundColor(.white)
-            }
-            .transition(.opacity)
-            .opacity(self.imageWasTapped ? 0 : 1)
-            .frame(width: 460, height: 460)
-            .contentShape(RoundedRectangle(cornerRadius: 10))
+            Button(String(l10n.ActionButtonObserve.buttonLabel.characters)) {}
+                .font(.title)
+                .foregroundColor(.white)
+                .buttonStyle(.borderedProminent)
+                .allowsHitTesting(false)
+                .transition(.opacity)
+                .opacity(self.imageWasTapped ? 0 : 1)
+                .frame(width: 460, height: 460)
+                .contentShape(RoundedRectangle(cornerRadius: 10))
         }
         .disabled(self.imageWasTapped)
         .background {
