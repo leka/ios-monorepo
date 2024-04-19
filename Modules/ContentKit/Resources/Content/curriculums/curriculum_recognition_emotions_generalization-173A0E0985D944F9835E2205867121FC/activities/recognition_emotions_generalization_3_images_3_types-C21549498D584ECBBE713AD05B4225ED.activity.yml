@@ -56,8 +56,8 @@ l10n:
       icon:
         emotion_recognition-generalization-3_images_3_types-3875e8e0-97b6-4655-a455-4d5d62f97aa7
 
-      title: Généralisation des émotions - 3 types - 3 images
-      subtitle: Généralisation - 3/3
+      title: Généralisation des émotions
+      subtitle: Généralisation - 3 types - 3 images
 
       short_description: |
         Touche l'émotion demandée
@@ -75,8 +75,8 @@ l10n:
       icon:
         emotion_recognition-generalization-3_images_3_types-3875e8e0-97b6-4655-a455-4d5d62f97aa7
 
-      title: Emotions generalization - 3 types - 3 images
-      subtitle: Generalisation - 3/3
+      title: Emotions generalization
+      subtitle: Generalisation - 3 types - 3 images
 
       short_description: |
         Touch the requested emotion

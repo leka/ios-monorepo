@@ -34,7 +34,7 @@ l10n:
     details:
       icon: recognition_sounds_animals
 
-      title: Reconnaissance des Sons des Animaux
+      title: Sons des animaux
       subtitle: Identifier les animaux à partir de leurs sons
 
       abstract: |
@@ -46,8 +46,8 @@ l10n:
     details:
       icon: recognition_sounds_animals
 
-      title: Recognition of Animal Sounds
-      subtitle: Identifying Animals by Their Sounds
+      title: Animal sounds
+      subtitle: Identifying animals by their sounds
 
       abstract: |
         This curriculum is designed to enhance the recognition of sounds made by different animals. Through interactive activities on the iPad screen, care receivers learn to match sounds to the corresponding animal image.

@@ -36,8 +36,8 @@ l10n:
     details:
       icon: recognition_weather_and_temperatures
 
-      title: Reconnaissance de la météo
-      subtitle: null
+      title: La météo en dessins
+      subtitle: 4 images
 
       short_description: |
         Observe le paysage à gauche. Quel temps fait-il ?
@@ -54,8 +54,8 @@ l10n:
     details:
       icon: recognition_weather_and_temperatures
 
-      title: Weather Recognition
-      subtitle: null
+      title: The weather in drawings
+      subtitle: 4 images
 
       short_description: |
         Look at the landscape on the left. What is the weather like?

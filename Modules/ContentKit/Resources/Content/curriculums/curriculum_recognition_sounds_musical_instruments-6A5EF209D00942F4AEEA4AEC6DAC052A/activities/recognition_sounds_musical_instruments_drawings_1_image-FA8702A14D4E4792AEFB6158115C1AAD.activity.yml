@@ -37,8 +37,8 @@ l10n:
     details:
       icon: recognition_sounds_musical_instruments
 
-      title: Reconnaitre les sons des instruments avec 1 image
-      subtitle: null
+      title: Sons des instruments de musique
+      subtitle: 1 image
 
       short_description: |
         Identifier des instruments à partir de sons
@@ -55,8 +55,8 @@ l10n:
     details:
       icon: recognition_sounds_musical_instruments
 
-      title: Recognize musical instruments sounds with 1 image
-      subtitle: null
+      title: Musical instruments sounds
+      subtitle: 1 image
 
       short_description: |
         Identifying musical instruments from sounds

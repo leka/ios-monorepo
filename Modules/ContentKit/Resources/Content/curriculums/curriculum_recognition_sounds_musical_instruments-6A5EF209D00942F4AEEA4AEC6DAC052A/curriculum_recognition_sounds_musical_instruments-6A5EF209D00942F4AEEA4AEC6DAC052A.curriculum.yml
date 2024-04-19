@@ -33,8 +33,8 @@ l10n:
     details:
       icon: recognition_sounds_musical_instruments
 
-      title: Reconnaissance des sons d'instruments de musique
-      subtitle: Identifier les instruments par leurs sons
+      title: Sons des instruments de musique
+      subtitle: Identifier les instruments de musique par leurs sons
 
       abstract: |
         Ce curriculum est conçu pour développer la reconnaissance des sons produits par différents instruments de musique. À travers des activités interactives sur l'écran de l'iPad, les personnes accompagnées apprennent à associer des sons à l'image correspondante de l'instrument.
@@ -45,8 +45,8 @@ l10n:
     details:
       icon: recognition_sounds_musical_instruments
 
-      title: Recognition of musical instruments sounds
-      subtitle: Identifying instruments by their sounds
+      title: Musical instruments sounds
+      subtitle: Identifying musical instruments by their sounds
 
       abstract: |
         This curriculum is aimed at enhancing the recognition of sounds produced by various musical instruments. Through interactive activities on the iPad screen, care receivers learn to match sounds to the corresponding instrument image.

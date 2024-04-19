@@ -33,7 +33,7 @@ l10n:
     details:
       icon: recognition_weather_and_temperatures
 
-      title: Reconnaissance de la météo et des températures
+      title: La météo et les températures en dessins
       subtitle: Apprendre à identifier et à catégoriser la météo
 
       abstract: |
@@ -44,7 +44,7 @@ l10n:
     details:
       icon: recognition_weather_and_temperatures
 
-      title: Recognition of weather and temperatures
+      title: Weather and temperatures in drawing
       subtitle: Learning to identify and categorize weather conditions
 
       abstract: |

@@ -39,8 +39,8 @@ l10n:
     details:
       icon: emotion_recognition-sounds-1_ladislas-d6144d9c-0bdd-4d65-86ed-a859c48c9de9
 
-      title: Reconnaitre les sons des émotions avec 1 photo
-      subtitle: Ladislas
+      title: Sons des émotions
+      subtitle: Ladislas - 1
 
       short_description: |
         Identifier des émotions à partir de sons
@@ -57,8 +57,8 @@ l10n:
     details:
       icon: emotion_recognition-sounds-1_ladislas-d6144d9c-0bdd-4d65-86ed-a859c48c9de9
 
-      title: Recognize the sounds of emotions with 1 picture
-      subtitle: Ladislas
+      title: Emotions sounds
+      subtitle: Ladislas - 1
 
       short_description: |
         Identifying emotions from sounds

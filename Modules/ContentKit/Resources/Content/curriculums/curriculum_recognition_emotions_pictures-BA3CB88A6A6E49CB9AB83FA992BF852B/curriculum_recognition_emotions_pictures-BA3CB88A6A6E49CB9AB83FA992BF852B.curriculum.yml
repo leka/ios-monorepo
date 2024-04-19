@@ -38,7 +38,7 @@ l10n:
     details:
       icon: emotion_recognition_pictures
 
-      title: Reconnaissance des émotions à travers des photos
+      title: Les émotions en photos
       subtitle: Comprendre les émotions à travers des expressions réelles
 
       abstract: |
@@ -49,7 +49,7 @@ l10n:
     details:
       icon: emotion_recognition_pictures
 
-      title: Recognition of Emotions through Pictures
+      title: Emotions in pictures
       subtitle: Understanding Emotions through Real Expressions
 
       abstract: |
