@@ -7,7 +7,14 @@
 import ProjectDescription
 import ProjectDescriptionHelpers
 
-let kLekaAppVersion = "1.0.0"
+let kLekaAppVersion: String = {
+    guard Environment.productionBuild.getBoolean(default: false) else {
+        return "999.999.999"
+    }
+
+    // ? App version
+    return "1.0.0"
+}()
 
 let project = Project.app(
     name: "LekaApp",
