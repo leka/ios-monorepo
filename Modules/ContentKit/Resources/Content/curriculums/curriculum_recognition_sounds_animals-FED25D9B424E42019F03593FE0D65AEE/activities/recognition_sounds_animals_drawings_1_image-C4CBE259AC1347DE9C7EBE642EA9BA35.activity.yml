@@ -38,8 +38,8 @@ l10n:
     details:
       icon: recognition_sounds_animals
 
-      title: Reconnaitre les sons des animaux avec 1 image
-      subtitle: null
+      title: Sons des animaux
+      subtitle: 1 image
 
       short_description: |
         Identifier des animaux à partir de sons
@@ -56,8 +56,8 @@ l10n:
     details:
       icon: recognition_sounds_animals
 
-      title: Recognize animal sounds with 1 image
-      subtitle: null
+      title: Animal sounds
+      subtitle: 1 image
 
       short_description: |
         Identifying animals from sounds

@@ -38,7 +38,7 @@ l10n:
     details:
       icon: emotion_recognition_pictograms
 
-      title: Reconnaissance des émotions à travers des pictogrammes
+      title: Les émotions en pictogrammes
       subtitle: Décoder les émotions avec Leka
 
       abstract: |
@@ -49,7 +49,7 @@ l10n:
     details:
       icon: emotion_recognition_pictograms
 
-      title: Recognizing Emotions Through Pictograms
+      title: Emotions in pictograms
       subtitle: Decoding Emotions with Leka
 
       abstract: |

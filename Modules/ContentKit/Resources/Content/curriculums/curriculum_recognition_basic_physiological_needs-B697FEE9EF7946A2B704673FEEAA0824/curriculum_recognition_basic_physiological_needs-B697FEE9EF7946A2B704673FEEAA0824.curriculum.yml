@@ -36,7 +36,7 @@ l10n:
     details:
       icon: recognition_basic_physiological_needs
 
-      title: Reconnaître les besoins physiologiques de base
+      title: Les besoins physiologiques primaires
       subtitle: Identifier et répondre aux besoins physiologiques
 
       abstract: |
@@ -47,8 +47,8 @@ l10n:
     details:
       icon: recognition_basic_physiological_needs
 
-      title: Recognize Basic Physiological Needs through Drawing
-      subtitle: Identifying and Responding to Physiological States
+      title: Primary physiological needs
+      subtitle: Identifying and responding to physiological states
 
       abstract: |
         This curriculum is designed to foster the recognition and understanding of basic physiological needs through illustrated representations. By observing the states of characters, care receivers learn to identify their essential needs such as hunger, thirst, and tiredness.

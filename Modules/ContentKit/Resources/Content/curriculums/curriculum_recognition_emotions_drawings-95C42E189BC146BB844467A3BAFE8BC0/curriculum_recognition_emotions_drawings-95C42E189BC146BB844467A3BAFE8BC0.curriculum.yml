@@ -37,8 +37,8 @@ l10n:
     details:
       icon: emotion_recognition_drawings
 
-      title: Reconnaissance des émotions en dessins
-      subtitle: Comprendre les émotions à travers l'art
+      title: Les émotions en dessins
+      subtitle: Comprendre les émotions à travers des dessins
 
       abstract: |
         Ce curriculum est conçu pour aider les personnes accompagnées à identifier et à comprendre différentes émotions à travers des dessins de personnages. En se focalisant sur une variété de personnages et d'émotions, ce programme vise à renforcer la reconnaissance des émotions de base et la communication émotionnelle.
@@ -48,8 +48,8 @@ l10n:
     details:
       icon: emotion_recognition_drawings
 
-      title: Recognition of Emotions through Drawing
-      subtitle: Understanding Emotions through Art
+      title: Emotions in drawings
+      subtitle: Understanding emotions through drawings
 
       abstract: |
         This curriculum is designed to assist care receivers in identifying and understanding different emotions through drawings of characters. Focusing on a variety of characters and emotions, this program aims to enhance basic emotion recognition and emotional communication.

@@ -40,8 +40,8 @@ l10n:
     details:
       icon: emotion_recognition-sounds-4_ladislas-lucie-9b06de79-d1db-492b-a5f0-3ef0cf4aaada
 
-      title: Reconnaitre les sons des émotions avec 4 photos
-      subtitle: Lucie - Ladislas
+      title: Sons des émotions
+      subtitle: Lucie - Ladislas - 4
 
       short_description: |
         Identifier des émotions à partir de sons
@@ -58,8 +58,8 @@ l10n:
     details:
       icon: emotion_recognition-sounds-4_ladislas-lucie-9b06de79-d1db-492b-a5f0-3ef0cf4aaada
 
-      title: Recognize the sounds of emotions with 4 pictures
-      subtitle: Lucie - Ladislas
+      title: Emotions sounds
+      subtitle: Lucie - Ladislas - 4
 
       short_description: |
         Identifying emotions from sounds

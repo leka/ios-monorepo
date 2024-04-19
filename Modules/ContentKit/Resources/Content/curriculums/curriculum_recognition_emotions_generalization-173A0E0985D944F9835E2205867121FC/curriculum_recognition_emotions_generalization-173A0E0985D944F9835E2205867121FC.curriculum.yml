@@ -39,7 +39,7 @@ l10n:
     details:
       icon: emotion_recognition_generalization
 
-      title: Généralisation des émotions à travers différents supports
+      title: Généralisation des émotions
       subtitle: Combiner dessins, photos et pictogrammes
 
       abstract: |

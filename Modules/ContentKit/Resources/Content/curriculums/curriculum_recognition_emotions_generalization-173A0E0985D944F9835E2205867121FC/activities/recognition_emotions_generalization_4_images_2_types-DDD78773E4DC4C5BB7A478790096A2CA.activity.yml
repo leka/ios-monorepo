@@ -56,8 +56,8 @@ l10n:
       icon:
         emotion_recognition-generalization-4_images_2_types-7c083f94-cc67-418c-8ed2-2b2da3102612
 
-      title: Généralisation des émotions - 2 types - 4 images
-      subtitle: Généralisation - 2/4
+      title: Généralisation des émotions
+      subtitle: Généralisation - 2 types - 4 images
 
       short_description: |
         Touche l'émotion demandée
@@ -75,8 +75,8 @@ l10n:
       icon:
         emotion_recognition-generalization-4_images_2_types-7c083f94-cc67-418c-8ed2-2b2da3102612
 
-      title: Emotions generalization - 2 types - 4 images
-      subtitle: Generalisation - 2/4
+      title: Emotions generalization
+      subtitle: Generalisation - 2 types - 4 images
 
       short_description: |
         Touch the requested emotion

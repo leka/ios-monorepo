@@ -344,9 +344,9 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Touche la tasse grise
+              value: Touche la tasse violette
             - locale: en_US
-              value: Touch the gray cup
+              value: Touch the purple cup
           interface: touchToSelect
           gameplay: findTheRightAnswers
           payload:

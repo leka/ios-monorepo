@@ -36,7 +36,7 @@ l10n:
     details:
       icon: recognition_emotions_in_context
 
-      title: Reconnaissance des émotions dans un contexte
+      title: Les émotions dans un contexte
       subtitle: Décrypter et s'identifier aux émotions
 
       abstract: |
@@ -48,7 +48,7 @@ l10n:
     details:
       icon: recognition_emotions_in_context
 
-      title: Emotion Recognition in Context
+      title: Emotions in context
       subtitle: Deciphering and Identifying with Emotions
 
       abstract: |

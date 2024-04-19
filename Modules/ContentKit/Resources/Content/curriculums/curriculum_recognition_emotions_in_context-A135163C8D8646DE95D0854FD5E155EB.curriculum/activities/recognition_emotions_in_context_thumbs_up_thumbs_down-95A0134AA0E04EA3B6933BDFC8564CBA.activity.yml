@@ -43,7 +43,7 @@ l10n:
     details:
       icon: recognition_emotions_in_context
 
-      title: Reconnaitre des émotions agréables et désagréables dans un contexte
+      title: Les émotions agréables et désagréables dans un contexte
       subtitle: null
 
       short_description: |
@@ -61,7 +61,7 @@ l10n:
     details:
       icon: recognition_emotions_in_context
 
-      title: Recognize pleasant and unpleasant emotions in context
+      title: Pleasant and unpleasant emotions in context
 
       subtitle: null
 

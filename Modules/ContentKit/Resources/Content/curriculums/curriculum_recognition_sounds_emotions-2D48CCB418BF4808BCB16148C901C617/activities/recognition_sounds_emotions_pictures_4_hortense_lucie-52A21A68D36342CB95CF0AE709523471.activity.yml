@@ -40,8 +40,8 @@ l10n:
     details:
       icon: emotion_recognition-sounds-4_hortense-lucie-47264ade-a7b7-4ddf-b1d0-38e7eb34fac2
 
-      title: Reconnaitre les sons des émotions avec 4 photos
-      subtitle: Lucie - Hortense
+      title: Sons des émotions
+      subtitle: Lucie - Hortense - 4
 
       short_description: |
         Identifier des émotions à partir de sons
@@ -58,8 +58,8 @@ l10n:
     details:
       icon: emotion_recognition-sounds-4_hortense-lucie-47264ade-a7b7-4ddf-b1d0-38e7eb34fac2
 
-      title: Recognize the sounds of emotions with 4 pictures
-      subtitle: Lucie - Hortense
+      title: Emotions sounds
+      subtitle: Lucie - Hortense - 4
 
       short_description: |
         Identifying emotions from sounds

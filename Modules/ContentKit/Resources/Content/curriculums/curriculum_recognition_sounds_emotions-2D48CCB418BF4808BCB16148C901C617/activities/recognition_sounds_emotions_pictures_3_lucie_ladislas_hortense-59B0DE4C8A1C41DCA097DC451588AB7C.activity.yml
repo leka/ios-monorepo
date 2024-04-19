@@ -42,8 +42,8 @@ l10n:
       icon:
         emotion_recognition-sounds-3_hortense-lucie-ladislas-85b0af03-cce2-4794-80b4-99f6f2b586c6
 
-      title: Reconnaitre les sons des émotions avec 3 photos
-      subtitle: Lucie - Hortense - Ladislas
+      title: Sons des émotions
+      subtitle: Lucie - Hortense - Ladislas - 3
 
       short_description: |
         Identifier des émotions à partir de sons
@@ -61,8 +61,8 @@ l10n:
       icon:
         emotion_recognition-sounds-3_hortense-lucie-ladislas-85b0af03-cce2-4794-80b4-99f6f2b586c6
 
-      title: Recognize the sounds of emotions with 3 pictures
-      subtitle: Lucie - Hortense - Ladislas
+      title: Emotions sounds
+      subtitle: Lucie - Hortense - Ladislas - 3
 
       short_description: |
         Identifying emotions from sounds

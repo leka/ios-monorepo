@@ -39,8 +39,8 @@ l10n:
     details:
       icon: emotion_recognition-sounds-1_lucie-125ff23b-2fc5-4e28-9eea-15833f014d1e
 
-      title: Reconnaitre les sons des émotions avec 1 photo
-      subtitle: Lucie
+      title: Sons des émotions
+      subtitle: Lucie - 1
 
       short_description: |
         Identifier des émotions à partir de sons
@@ -57,8 +57,8 @@ l10n:
     details:
       icon: emotion_recognition-sounds-1_lucie-125ff23b-2fc5-4e28-9eea-15833f014d1e
 
-      title: Recognize the sounds of emotions with 1 picture
-      subtitle: Lucie
+      title: Emotions sounds
+      subtitle: Lucie - 1
 
       short_description: |
         Identifying emotions from sounds

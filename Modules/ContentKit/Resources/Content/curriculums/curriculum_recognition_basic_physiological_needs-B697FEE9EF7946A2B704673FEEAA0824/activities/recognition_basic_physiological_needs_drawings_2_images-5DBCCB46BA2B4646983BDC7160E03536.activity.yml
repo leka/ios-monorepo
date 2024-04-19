@@ -41,7 +41,7 @@ l10n:
     details:
       icon: recognition_basic_physiological_needs
 
-      title: Reconnaitre les besoins physiologiques de base 2
+      title: Les besoins physiologiques primaires 2
       subtitle: Oscar
 
       short_description: |
@@ -59,7 +59,7 @@ l10n:
     details:
       icon: recognition_basic_physiological_needs
 
-      title: Recognizing basic physiological eeds 2
+      title: Primary physiological needs 2
       subtitle: Oscar
 
       short_description: |
