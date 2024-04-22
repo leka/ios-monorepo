@@ -1,0 +1,88 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+fr_FR:
+  navigation_title: Accueil
+  title: 🌟 Bienvenue dans la Nouvelle Application Leka ! 🌟
+  intro: >
+    Bonjour et bienvenue ! Nous sommes ravis de vous présenter la toute nouvelle application Leka,
+    spécialement conçue pour les aidants et les thérapeutes en éducation spécialisée.
+    Notre nouvelle interface a été pensée pour améliorer votre expérience de navigation,
+    vous permettant d'accéder plus facilement et d'utiliser nos curriculums et activités enrichis.
+    Chaque contenu inclut désormais une description détaillée des compétences développées,
+    vous aidant à aligner nos ressources avec les besoins des personnes que vous accompagnez.
+
+  features: |
+    **Caractéristiques Principales :**
+
+    - **🧭 Navigation Améliorée :** Interface UI/UX simplifiée pour une exploration du contenu sans effort.
+    - **📚 Contenu Enrichi :** Découvrez de nouveaux curriculums et activités captivantes conçues pour des besoins variés.
+    - **🤓 Informations Détaillées :** Descriptions de contenu améliorées, complètes avec les compétences et compétences développées.
+
+  coming_soon: |
+    L'application est pleinement opérationnelle et prête à soutenir vos efforts professionnels, bien que nous continuions à peaufiner l'expérience. Dans les semaines à venir, attendez-vous à voir :
+
+    - **🚸 Améliorations supplémentaires de l'UI/UX :** Rendant vos interactions encore plus fluides.
+    - **🔖 Aperçus de Contenu Détaillés :** Meilleurs titres, icônes et résumés.
+    - **🆕 Nouveau Contenu Éducatif :** Plus d'activités et de curriculums.
+
+  feedback: >
+    Votre avis est précieux pour nous ! Aidez-nous à améliorer votre expérience en partageant vos retours,
+    nouvelles idées d'activités ou les bugs que vous rencontrez. Cela ne prendra que quelques minutes
+    et vos suggestions contribueront directement à l'amélioration des futures versions de l'Application Leka.
+    Cliquez ci-dessous pour commencer. Vous pouvez aussi nous écrire à l'adresse suivante : **support@leka.io**
+
+  feedback_button: 📝💬💌📣 Partagez Vos Retours d'Expérience 📣💌💬📝
+  feedback_link: https://forms.gle/x82b2wd4DkctHeq77
+
+  under_development: |
+    Les fonctionnalités de suivi sont en cours de développement et seront disponibles dans les mois à venir.
+
+  thank_you: |
+    Merci pour votre dévouement à l'éducation spécialisée. Ensemble, nous pouvons avoir un impact significatif.
+
+    [La Team Leka](hello@leka.io)
+
+en_US:
+  navigation_title: Home
+
+  title: 🌟 Welcome to the New Leka App! 🌟
+
+  intro: >
+    Hello and welcome! We're thrilled to introduce the completely redesigned Leka App,
+    tailored specifically for special education caregivers and therapists. Our new interface is
+    crafted to enhance your navigation experience, making it easier than ever to access and utilize
+    our enriched curriculums and activities. Each piece of content now includes detailed descriptions
+    of the skills developed, helping you align our resources with your care receivers' needs seamlessly.
+
+  features: |
+    **Key Features:**
+
+    - **🧭 Enhanced Navigation:** Streamlined UI/UX for effortless content exploration.
+    - **📚 Expanded Content:** Discover new curriculums and engaging activities designed for diverse needs.
+    - **🤓 Comprehensive Details:** Improved content descriptions, complete with the skills and competencies fostered.
+
+  coming_soon: |
+    The app is fully operational and ready to support your professional endeavors, though we are continually refining the experience. Over the coming weeks, expect to see:
+
+    - **🔖 Detailed Content Insights:** Better titles, icons, and summaries.
+    - **🚸 Further UI/UX Enhancements:** Making your interactions even smoother.
+    - **🆕 New Educational Content:** More activities and curriculums.
+
+  feedback: >
+    Your insights are invaluable to us! Help us improve your experience bysharing your feedback,
+    new activity ideas, or any bugs you encounter. It will only take a few minutes, and your suggestions
+    will directly contribute to the enhancement of future versions of the Leka App. Click below to get started.
+    You can also write to us at the following address: **support@leka.io**
+
+  feedback_button: 📝💬💌📣 Share Your Feedback 📣💌💬📝
+  feedback_link: https://forms.gle/Ej2c2B8aBHgCc1WZA
+
+  under_development: |
+    Monitoring features are under development and will be available in the upcoming months.
+
+  thank_you: |
+    Thank you for your dedication to special education. Together, we can make a significant impact.
+
+    [The Leka Team](hello@leka.io)
