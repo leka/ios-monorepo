@@ -88,11 +88,10 @@ struct MainView: View {
                             }
                         }
 
-                        Text("My Leka App - Version \(Bundle.version!) (\(Bundle.buildNumber!))")
-                            .foregroundColor(.gray)
-                            .font(.caption2)
-
-                        LekaLogo(width: 50)
+                        LekaAppAsset.Assets.lekaLogoStripes.swiftUIImage
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height: 40)
                     }
                     .frame(maxWidth: .infinity)
                 }
