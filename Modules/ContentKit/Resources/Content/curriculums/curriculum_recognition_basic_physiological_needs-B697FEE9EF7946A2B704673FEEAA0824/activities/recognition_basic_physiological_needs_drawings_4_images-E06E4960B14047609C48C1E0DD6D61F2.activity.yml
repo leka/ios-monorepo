@@ -41,8 +41,8 @@ l10n:
     details:
       icon: recognition_basic_physiological_needs
 
-      title: Les besoins physiologiques primaires 3
-      subtitle: Oscar
+      title: Les besoins physiologiques primaires
+      subtitle:  4 images - Oscar
 
       short_description: |
         Regarde l'image de gauche. De quoi le personnage a-t-il besoin ?
@@ -59,8 +59,8 @@ l10n:
     details:
       icon: recognition_basic_physiological_needs
 
-      title: Primary physiological needs 3
-      subtitle: Oscar
+      title: Primary physiological needs
+      subtitle: 4 images - Oscar
 
       short_description: |
         Look at the image on the left. What does the character need?
