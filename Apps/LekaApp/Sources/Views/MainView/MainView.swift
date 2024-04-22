@@ -103,7 +103,7 @@ struct MainView: View {
             NavigationStack(path: self.$navigation.path) {
                 switch self.navigation.selectedCategory {
                     case .home:
-                        Text("Home")
+                        CategoryHome()
 
                     case .curriculums:
                         CategoryCurriculumsView()
