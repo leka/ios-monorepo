@@ -44,7 +44,7 @@ public struct CurriculumGridView: View {
 
                             Spacer()
 
-                            Button(String(l10n.CurriculumGridView.buttonLabel.characters)) {}
+                            Button(l10n.language == .french ? "Découvrir" : "Discover") {}
                                 .buttonStyle(.bordered)
                                 .allowsHitTesting(false)
                         }
