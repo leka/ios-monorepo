@@ -4,6 +4,7 @@
 
 import AccountKit
 import DesignKit
+import DeviceKit
 import LocalizationKit
 import SwiftUI
 
@@ -119,6 +120,17 @@ struct SettingsView: View {
                 } message: {
                     Text(l10n.SettingsView.AccountSection.DeleteAccount.alertMessage)
                 }
+            }
+
+            Section("Support") {
+                LabeledContent("Version", value: Bundle.version!)
+                    .font(.footnote)
+                LabeledContent("Build Number", value: Bundle.buildNumber!)
+                    .font(.footnote)
+                LabeledContent("iPad Model", value: Device.current.description)
+                    .font(.footnote)
+                LabeledContent("iOS Version", value: "\(UIDevice.current.systemName) \(UIDevice.current.systemVersion)")
+                    .font(.footnote)
             }
         }
         .onReceive(self.authManagerViewModel.$userAuthenticationState, perform: { newState in
