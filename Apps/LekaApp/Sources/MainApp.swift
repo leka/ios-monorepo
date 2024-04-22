@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import AccountKit
+import ContentKit
 import DesignKit
 import FirebaseCore
 import LogKit
@@ -59,6 +60,12 @@ struct LekaApp: App {
                         .transition(.opacity)
                 } else {
                     LoadingView()
+                        .onAppear {
+                            DispatchQueue.global().async {
+                                _ = ContentKit.allActivities
+                                _ = ContentKit.allCurriculums
+                            }
+                        }
                 }
             }
             .animation(.default, value: self.showMainView)
