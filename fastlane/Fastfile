@@ -207,26 +207,26 @@ platform :ios do
         end
 
         latest_build_number = latest_testflight_build_number(app_identifier: app_id.to_s).to_s
-        next_build_number_major = latest_build_number.split('.').first.to_i + 1
+        new_build_number_major = latest_build_number.split('.').first.to_i + 1
         pr_number = ENV.fetch('PR_NUMBER', `gh pr view --json number -q .number`.strip)
         last_commit_sha_to_int = last_git_commit[:abbreviated_commit_hash].to_i(16)
 
-        next_build_number = "#{next_build_number_major}.#{pr_number or '000'}.#{last_commit_sha_to_int}".slice(0, 18)
+        new_build_number = "#{new_build_number_major}.#{pr_number or '000'}.#{last_commit_sha_to_int}".slice(0, 18)
         version_number = get_version_number(xcodeproj: app_xcodeproj.to_s)
 
-        UI.important "App: #{app} / Version number: #{version_number} / Build number: #{next_build_number}"
+        UI.important "App: #{app} / Version number: #{version_number} / Build number: #{new_build_number}"
 
         testflight_changelog = generate_changelogs(
           release_type: 'beta',
           target: app,
           version_number: version_number,
           latest_build_number: latest_build_number,
-          next_build_number: next_build_number,
+          new_build_number: new_build_number,
           pr_number: pr_number
         )
 
         increment_build_number(
-          build_number: next_build_number,
+          build_number: new_build_number,
           xcodeproj: app_xcodeproj.to_s
         )
 
@@ -234,7 +234,7 @@ platform :ios do
           workspace: 'ios-monorepo.xcworkspace',
           scheme: app,
           output_directory: './.build',
-          output_name: "#{build_date}-#{app}-v#{version_number}-#{next_build_number}"
+          output_name: "#{build_date}-#{app}-v#{version_number}-#{new_build_number}"
         )
 
         upload_to_testflight(
@@ -297,14 +297,18 @@ platform :ios do
       end
 
       latest_build_number = latest_testflight_build_number(app_identifier: app_id.to_s).to_s
-      next_build_number_major = latest_build_number.split('.').first.to_i + 1
-      pr_number = ENV.fetch('PR_NUMBER', `gh pr view --json number -q .number`.strip)
+      new_build_number_major = latest_build_number.split('.').first.to_i + 1
+      pr_number = ENV.fetch('PR_NUMBER') do
+        `gh pr view --json number -q .number`.strip.tap do |output|
+          output.replace('000') if output.empty?
+        end
+      end
       last_commit_sha_to_int = last_git_commit[:abbreviated_commit_hash].to_i(16)
 
-      next_build_number = "#{next_build_number_major}.#{pr_number or '000'}.#{last_commit_sha_to_int}".slice(0, 18)
+      new_build_number = "#{new_build_number_major}.#{pr_number or '000'}.#{last_commit_sha_to_int}".slice(0, 18)
       version_number = get_version_number(xcodeproj: app_xcodeproj.to_s)
 
-      UI.important "App: #{app} / Version number: #{version_number} / Build number: #{next_build_number}"
+      UI.important "App: #{app} / Version number: #{version_number} / Build number: #{new_build_number}"
       UI.important "Metadata path: #{ROOT_DIR}/fastlane/release/#{app}/metadata"
 
       # capture_screenshots # ? not working yet
@@ -314,12 +318,12 @@ platform :ios do
         target: app,
         version_number: version_number,
         latest_build_number: latest_build_number,
-        next_build_number: next_build_number,
+        new_build_number: new_build_number,
         pr_number: pr_number
       )
 
       increment_build_number(
-        build_number: next_build_number,
+        build_number: new_build_number,
         xcodeproj: app_xcodeproj.to_s
       )
 
@@ -327,7 +331,7 @@ platform :ios do
         workspace: 'ios-monorepo.xcworkspace',
         scheme: app,
         output_directory: './.build',
-        output_name: "#{build_date}-#{app}-v#{version_number}-#{next_build_number}"
+        output_name: "#{build_date}-#{app}-v#{version_number}-#{new_build_number}"
       )
 
       upload_to_app_store(
@@ -363,53 +367,36 @@ platform :ios do
     app_name = options[:target].to_s
     version_number = options[:version_number].to_s
     latest_build_number = options[:latest_build_number].to_s
-    next_build_number = options[:next_build_number].to_s
+    new_build_number = options[:new_build_number].to_s
 
-    pr_number = options[:pr_number]
+    pr_number = options[:pr_number].to_s
 
-    commit_sha_pr_branch_head = last_git_commit[:abbreviated_commit_hash]
-    commit_sha_latest_test_flight_build = latest_build_number.split('.').last.to_i.to_s(16).rjust(8, '0')
+    test_flight_commit_sha = latest_build_number.split('.').last.to_i.to_s(16).rjust(8, '0')
+    head_commit_sha = last_git_commit[:abbreviated_commit_hash]
+    base_commit_sha = pr_number == '000' ? test_flight_commit_sha.to_s : GIT_BASE_REF
 
-    UI.message "commit_sha_pr_branch_head: #{commit_sha_pr_branch_head}"
-    UI.message "commit_sha_latest_test_flight_build: #{commit_sha_latest_test_flight_build}"
+    UI.message "head_commit_sha:        #{head_commit_sha}"
+    UI.message "base_commit_sha:        #{base_commit_sha}"
+    UI.message "test_flight_commit_sha: #{test_flight_commit_sha}"
 
     git_log_to_notes_script = "#{ROOT_DIR}/Tools/Scripts/git_log_to_notes.py"
 
-    git_log_base_head_with_emojis, stderr_git_log_base_head_with_emojis, status_git_log_base_head_with_emojis =
-      Open3.capture3(
-        'python3',
-        git_log_to_notes_script,
-        '-f', GIT_BASE_REF,
-        '-l', commit_sha_pr_branch_head.to_s
-      )
+    git_log_with_emojis, stderr_git_log_with_emojis, status_git_log_with_emojis = Open3.capture3(
+      'python3',
+      git_log_to_notes_script,
+      '-f', base_commit_sha.to_s,
+      '-l', head_commit_sha.to_s
+    )
 
-    git_log_latest_build_pr_branch_with_emojis, _, status_git_log_latest_build_pr_branch_with_emojis =
-      Open3.capture3(
-        'python3',
-        git_log_to_notes_script,
-        '-f', commit_sha_latest_test_flight_build.to_s,
-        '-l', commit_sha_pr_branch_head.to_s
-      )
+    git_log_no_emojis, stderr_git_log_no_emojis, status_git_log_no_emojis = Open3.capture3(
+      'python3',
+      git_log_to_notes_script,
+      '-r',
+      '-f', base_commit_sha.to_s,
+      '-l', head_commit_sha.to_s
+    )
 
-    git_log_base_head_no_emojis, stderr_git_log_base_head_no_emojis, status_git_log_base_head_no_emojis =
-      Open3.capture3(
-        'python3',
-        git_log_to_notes_script,
-        '-r',
-        '-f', GIT_BASE_REF,
-        '-l', commit_sha_pr_branch_head.to_s
-      )
-
-    git_log_latest_build_pr_branch_no_emojis, _, status_git_log_latest_build_pr_branch_no_emojis =
-      Open3.capture3(
-        'python3',
-        git_log_to_notes_script,
-        '-r',
-        '-f', commit_sha_latest_test_flight_build.to_s,
-        '-l', commit_sha_pr_branch_head.to_s
-      )
-
-    if status_git_log_base_head_with_emojis.success? && status_git_log_base_head_no_emojis.success?
+    if status_git_log_with_emojis.success? && status_git_log_no_emojis.success?
       UI.message 'Creating CHANGELOG_FOR_SLACK'
 
       CHANGELOG_FOR_SLACK = <<~EOF_CHANGELOG_FOR_SLACK
@@ -417,19 +404,18 @@ platform :ios do
 
         New version of #{app_name} is available for testing on TestFlight. Please check the changelog and install the app on your device. :rocket:
 
-        *App*: #{app_name}
-        *Version*: #{version_number}
-        *Build*: #{next_build_number} (#{commit_sha_pr_branch_head})
-        *PR*: #{pr_number ? "https://github.com/leka/ios-monorepo/pull/#{pr_number}" : 'n/a'}
+        *App*: `#{app_name}`
+        *Version*: `#{version_number}`
+        *Build*: `#{new_build_number}`
+        *Commit*: `#{head_commit_sha}` - https://github.com/leka/ios-monorepo/commit/#{head_commit_sha}
 
-        *Changes compared to `#{GIT_BASE_REF}`*:
+        *Changes compared to #{pr_number == '000' ? "latest TestFlight build `#{latest_testflight_build_number}`" : "`#{GIT_BASE_REF}` / `#{head_commit_sha}`"}*:
 
-        #{git_log_base_head_with_emojis.rstrip.empty? ? "_Could not fetch the changes compared to `#{GIT_BASE_REF}`._" : git_log_base_head_with_emojis.rstrip}
+        ```
+        python3 ./Tools/Scripts/git_log_to_notes.py -f #{base_commit_sha} -l #{head_commit_sha}
+        ```
 
-        *Changes compared to the last TestFlight build*:
-
-        #{status_git_log_latest_build_pr_branch_with_emojis.success? ? git_log_latest_build_pr_branch_with_emojis : '_Could not fetch the changes compared to the last TestFlight build. Commit may have been overwritten by force push._'}
-
+        #{git_log_with_emojis.rstrip.empty? ? '_Could not fetch the changes... Commits may have been overwritten by force push._' : git_log_with_emojis.rstrip}
       EOF_CHANGELOG_FOR_SLACK
 
       UI.message "CHANGELOG_FOR_SLACK:\n#{CHANGELOG_FOR_SLACK}"
@@ -442,18 +428,17 @@ platform :ios do
         New version of #{app_name} is available for testing. Please check the changelog and install the app on your device. :rocket:
 
         **App**: #{app_name}
-        **Version**: #{version_number}
-        **Build**: #{next_build_number} (#{commit_sha_pr_branch_head})
-        **PR**: #{pr_number ? "https://github.com/leka/ios-monorepo/pull/#{pr_number}" : 'n/a'}
+        **Version**: `#{version_number}`
+        **Build**: `#{new_build_number}`
+        **Commit**: #{head_commit_sha}
 
-        **Changes compared to `#{GIT_BASE_REF}`**:
+        ## Changes compared to #{pr_number == '000' ? "latest TestFlight build `#{latest_testflight_build_number}`" : "`#{GIT_BASE_REF}` / #{head_commit_sha}"}
 
-        #{git_log_base_head_with_emojis.rstrip.empty? ? "*Could not fetch the changes compared to `#{GIT_BASE_REF}`.*" : git_log_base_head_with_emojis.rstrip}
+        ```shell
+        python3 ./Tools/Scripts/git_log_to_notes.py -f #{base_commit_sha} -l #{head_commit_sha}
+        ```
 
-        **Changes compared to the last TestFlight build**:
-
-        #{status_git_log_latest_build_pr_branch_with_emojis.success? ? git_log_latest_build_pr_branch_with_emojis : '*Could not fetch the changes compared to the last TestFlight build. Commit may have been overwritten by force push.*'}
-
+        #{git_log_with_emojis.rstrip.empty? ? '*Could not fetch the changes... Commits may have been overwritten by force push.*' : git_log_with_emojis.rstrip}
       EOF_CHANGELOG_FOR_GITHUB
 
       UI.message "CHANGELOG_FOR_GITHUB:\n#{CHANGELOG_FOR_GITHUB}"
@@ -462,24 +447,19 @@ platform :ios do
 
       CHANGELOG_FOR_TEST_FLIGHT = <<~EOF_CHANGELOG_FOR_TEST_FLIGHT
         Version: #{version_number}
-        Build: #{next_build_number} (#{commit_sha_pr_branch_head})
-        PR: #{pr_number ? "https://github.com/leka/ios-monorepo/pull/#{pr_number}" : 'n/a'}
+        Build: #{new_build_number}
+        Commit: #{head_commit_sha} - https://github.com/leka/ios-monorepo/commit/#{head_commit_sha}
 
-        Changes compared to #{GIT_BASE_REF}:
+        Changes compared to #{pr_number == '000' ? "latest TestFlight build `#{latest_testflight_build_number}`" : "#{GIT_BASE_REF} / #{head_commit_sha}"}:
 
-        #{git_log_base_head_no_emojis.rstrip.empty? ? "Could not fetch the changes compared to `#{GIT_BASE_REF}`." : git_log_base_head_no_emojis.rstrip}
-
-        Changes compared to the last TestFlight build:
-
-        #{status_git_log_latest_build_pr_branch_no_emojis.success? ? git_log_latest_build_pr_branch_no_emojis : 'Could not fetch the changes compared to the last TestFlight build. Commit may have been overwritten by force push.'}
-
+        #{git_log_no_emojis.rstrip.empty? ? 'Could not fetch the changes... Commits may have been overwritten by force push.' : git_log_no_emojis.rstrip}
       EOF_CHANGELOG_FOR_TEST_FLIGHT
 
       UI.message "CHANGELOG_FOR_TEST_FLIGHT:\n#{CHANGELOG_FOR_TEST_FLIGHT}"
     else
       UI.error 'Could not fetch the changes'
-      UI.error stderr_git_log_base_head_with_emojis
-      UI.error stderr_git_log_base_head_no_emojis
+      UI.error stderr_git_log_with_emojis
+      UI.error stderr_git_log_no_emojis
     end
 
     if ENV['CI']
