@@ -25,16 +25,19 @@ extension l10n {
 
         static let passwordForgottenButton = LocalizedString("lekaapp.re_authentication_view.password_forgotten_button", value: "Forgot password?", comment: "ReAuthentication view password forgotten button")
 
-        static let alertTitle = LocalizedString("lekaapp.re_authentication_view.alert_title", value: "Forgot Password?", comment: "ReAuthentication view Forgot Password alert title")
+        static let confirmResetPasswordAlertTitle = LocalizedString("lekaapp.re_authentication_view.confirm_reset_password_alert_title", value: "Reset Password?", comment: "Confirm reset password alert title")
 
-        static let alertMessage = LocalizedString("lekaapp.re_authentication_view.alert_message",
-                                                  value: """
-                                                      For security reasons, changes to your email or password need to be handled by our support team.
-                                                      Please contact us at
-                                                      support@leka.io
-                                                      and we'll be happy to assist you with updating your account information.
-                                                      """,
-                                                  comment: "ReAuthentication view Forgot Password alert message")
+        static let confirmResetPasswordAlertMessage = LocalizedString(
+            "lekaapp.re_authentication_view.confirm_reset_password_alert_message",
+            value: """
+                Please confirm the resetting of your password by using the button below. You will then receive an email allowing you to enter a new one.
+                """,
+            comment: "Confirm reset password alert message"
+        )
+
+        static let resetPasswordButtonLabel = LocalizedString("lekaapp.re_authentication_view.reset_password_button_label", value: "Reset Password", comment: "Confirm Reset password button label")
+
+        static let cancelResetPasswordButtonLabel = LocalizedString("lekaapp.re_authentication_view.cancel_reset_password_button_label", value: "Cancel", comment: "Cancel Reset password button label")
     }
 }
 

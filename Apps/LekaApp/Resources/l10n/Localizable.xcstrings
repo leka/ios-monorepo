@@ -1856,38 +1856,56 @@
                 }
             }
         },
-        "lekaapp.re_authentication_view.alert_message": {
-            "comment": "ReAuthentication view Forgot Password alert message",
+        "lekaapp.re_authentication_view.cancel_reset_password_button_label": {
+            "comment": "Cancel Reset password button label",
             "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "For security reasons, changes to your email or password need to be handled by our support team.\nPlease contact us at\nsupport@leka.io\nand we'll be happy to assist you with updating your account information."
+                        "value": "Cancel"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Pour des raisons de s\u00e9curit\u00e9, les modifications de l'e-mail ou du mot de passe doivent \u00eatre trait\u00e9es par notre \u00e9quipe support.\nVeuillez nous contacter \u00e0\nsupport@leka.io\net nous serons heureux de vous aider \u00e0 mettre \u00e0 jour les informations de votre compte."
+                        "value": "Annuler"
                     }
                 }
             }
         },
-        "lekaapp.re_authentication_view.alert_title": {
-            "comment": "ReAuthentication view Forgot Password alert title",
+        "lekaapp.re_authentication_view.confirm_reset_password_alert_message": {
+            "comment": "Confirm reset password alert message",
             "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Forgot Password?"
+                        "value": "Please confirm the resetting of your password by using the button below. You will then receive an email allowing you to enter a new one."
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Mot de passe oubli\u00e9 ?"
+                        "value": "Veuillez confirmer la r\u00e9initialisation de votre mot de passe en utilisant le bouton ci-dessous. Vous recevrez alors un e-mail vous permettant d\u2019en saisir un nouveau."
+                    }
+                }
+            }
+        },
+        "lekaapp.re_authentication_view.confirm_reset_password_alert_title": {
+            "comment": "Confirm reset password alert title",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Reset Password?"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "R\u00e9initialiser le mot de passe ?"
                     }
                 }
             }
@@ -1942,6 +1960,24 @@
                     "stringUnit": {
                         "state": "translated",
                         "value": "Mot de passe oubli\u00e9 ?"
+                    }
+                }
+            }
+        },
+        "lekaapp.re_authentication_view.reset_password_button_label": {
+            "comment": "Confirm Reset password button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Reset Password"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "R\u00e9initialiser le mot de passe"
                     }
                 }
             }

@@ -119,11 +119,13 @@ struct SettingsView: View {
                             .foregroundStyle(.red)
                     }
                     .sheet(isPresented: self.$showReAuthenticate) {
-                        if self.authManagerViewModel.reAuthenticationSucceeded {
-                            self.showConfirmDeleteAccount = true
-                        } else {
-                            self.authManagerViewModel.userAction = .none
+                        guard self.authManagerViewModel.reAuthenticationSucceeded else {
+                            if self.authManagerViewModel.userAction == .userIsReAuthenticating {
+                                self.authManagerViewModel.userAction = .none
+                            }
+                            return
                         }
+                        self.showConfirmDeleteAccount = true
                     } content: {
                         ReAuthenticationView()
                     }
@@ -196,6 +198,12 @@ struct SettingsView: View {
             }
         }
         .preferredColorScheme(self.styleManager.colorScheme)
+        .onDisappear {
+            guard self.authManagerViewModel.errorMessage.isEmpty else {
+                self.authManagerViewModel.resetErrorMessage()
+                return
+            }
+        }
     }
 
     private let authManager = AuthManager.shared
