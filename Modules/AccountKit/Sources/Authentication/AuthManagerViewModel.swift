@@ -65,7 +65,8 @@ public class AuthManagerViewModel: ObservableObject {
                 }
                 switch self?.userAction {
                     case .userIsSigningOut,
-                         .userIsDeletingAccount:
+                         .userIsDeletingAccount,
+                         .userIsResettingPassword:
                         self?.showErrorAlert = true
                     default:
                         self?.showErrorMessage = true
@@ -88,6 +89,13 @@ public class AuthManagerViewModel: ObservableObject {
             .receive(on: DispatchQueue.main)
             .sink { [weak self] state in
                 self?.reAuthenticationSucceeded = state
+            }
+            .store(in: &self.cancellables)
+
+        self.authManager.passwordResetEmailPublisher
+            .receive(on: DispatchQueue.main)
+            .sink { _ in
+                // Nothing to do
             }
             .store(in: &self.cancellables)
     }
