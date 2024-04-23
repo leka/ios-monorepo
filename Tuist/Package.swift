@@ -12,11 +12,11 @@ let package = Package(
     dependencies: [
         .package(
             url: "https://github.com/jpsim/Yams",
-            exact: "5.0.6"
+            exact: "5.1.2"
         ),
         .package(
             url: "https://github.com/airbnb/lottie-ios",
-            exact: "4.4.1"
+            exact: "4.4.3"
         ),
         .package(
             url: "https://github.com/gonzalezreal/swift-markdown-ui",
