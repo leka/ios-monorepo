@@ -2234,6 +2234,24 @@
                 }
             }
         },
+        "lekaapp.settings_view.account_section.log_in_sign_up.button_label": {
+            "comment": "Log in / Sign up button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Log In / Sign Up"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Se Connecter / Cr\u00e9er un Compte"
+                    }
+                }
+            }
+        },
         "lekaapp.settings_view.account_section.log_out.alert_button_label": {
             "comment": "Log out alert button label",
             "extractionState": "extracted_with_value",

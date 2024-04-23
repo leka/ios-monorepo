@@ -80,19 +80,16 @@ struct MainView: View {
                     #endif
 
                     VStack(alignment: .center, spacing: 20) {
-                        if self.authManagerViewModel.userAuthenticationState == .loggedIn {
-                            Button {
-                                self.navigation.sheetContent = .settings
-                            } label: {
-                                SettingsLabel()
-                            }
+                        Button {
+                            self.navigation.sheetContent = .settings
+                        } label: {
+                            SettingsLabel()
                         }
 
-                        Text("My Leka App - Version \(Bundle.version!) (\(Bundle.buildNumber!))")
-                            .foregroundColor(.gray)
-                            .font(.caption2)
-
-                        LekaLogo(width: 50)
+                        LekaAppAsset.Assets.lekaLogoStripes.swiftUIImage
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height: 40)
                     }
                     .frame(maxWidth: .infinity)
                 }

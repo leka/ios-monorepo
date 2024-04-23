@@ -43,5 +43,6 @@ let project = Project.app(
         .external(name: "Yams"),
         .external(name: "MarkdownUI"),
         .external(name: "Fit"),
+        .external(name: "DeviceKit"),
     ]
 )

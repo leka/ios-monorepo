@@ -4,6 +4,7 @@
 
 import AccountKit
 import DesignKit
+import DeviceKit
 import LocalizationKit
 import SwiftUI
 
@@ -21,11 +22,13 @@ struct SettingsView: View {
 
     var body: some View {
         Form {
-            Section {
-                Button {
-                    self.isCaregiverpickerPresented = true
-                } label: {
-                    Label(String(l10n.SettingsView.ProfilesSection.buttonLabel.characters), systemImage: "person.2.gobackward")
+            if self.authManagerViewModel.userAuthenticationState == .loggedIn {
+                Section {
+                    Button {
+                        self.isCaregiverpickerPresented = true
+                    } label: {
+                        Label(String(l10n.SettingsView.ProfilesSection.buttonLabel.characters), systemImage: "person.2.gobackward")
+                    }
                 }
             }
 
@@ -39,86 +42,107 @@ struct SettingsView: View {
                 }
             }
 
-            Section {
-                LabeledContent {
-                    Text(self.authManager.currentUserEmail ?? "")
-                        .multilineTextAlignment(.trailing)
-                        .foregroundStyle(Color.secondary)
-                } label: {
-                    Text(l10n.SettingsView.CredentialsSection.emailLabel)
-                }
-            } footer: {
-                Button {
-                    self.showConfirmCredentialsChange = true
-                } label: {
-                    HStack {
-                        Spacer()
-                        Text(l10n.SettingsView.CredentialsSection.ChangeCredentials.buttonLabel)
-                            .font(.footnote)
+            if self.authManagerViewModel.userAuthenticationState == .loggedIn {
+                Section {
+                    LabeledContent {
+                        Text(self.authManager.currentUserEmail ?? "")
+                            .multilineTextAlignment(.trailing)
+                            .foregroundStyle(Color.secondary)
+                    } label: {
+                        Text(l10n.SettingsView.CredentialsSection.emailLabel)
                     }
-                }
-                .alert(String(l10n.SettingsView.CredentialsSection.ChangeCredentials.alertTitle.characters),
-                       isPresented: self.$showConfirmCredentialsChange) {} message: {
-                    Text(l10n.SettingsView.CredentialsSection.ChangeCredentials.alertMessage)
+                } footer: {
+                    Button {
+                        self.showConfirmCredentialsChange = true
+                    } label: {
+                        HStack {
+                            Spacer()
+                            Text(l10n.SettingsView.CredentialsSection.ChangeCredentials.buttonLabel)
+                                .font(.footnote)
+                        }
+                    }
+                    .alert(String(l10n.SettingsView.CredentialsSection.ChangeCredentials.alertTitle.characters),
+                           isPresented: self.$showConfirmCredentialsChange) {} message: {
+                        Text(l10n.SettingsView.CredentialsSection.ChangeCredentials.alertMessage)
+                    }
                 }
             }
 
             Section {
-                Button {
-                    self.showConfirmDisconnection = true
-                    self.authManagerViewModel.userAction = .userIsSigningOut
-                } label: {
-                    Label(String(l10n.SettingsView.AccountSection.LogOut.buttonLabel.characters),
-                          systemImage: "rectangle.portrait.and.arrow.forward")
-                }
-                .alert(String(l10n.SettingsView.AccountSection.LogOut.alertTitle.characters),
-                       isPresented: self.$showConfirmDisconnection)
-                {
-                    Button(role: .destructive) {
-                        self.dismiss()
-                        self.authManager.signOut()
-                        self.persistentDataManager.clearUserData()
-                        self.reset()
+                if self.authManagerViewModel.userAuthenticationState == .loggedIn {
+                    Button {
+                        self.showConfirmDisconnection = true
+                        self.authManagerViewModel.userAction = .userIsSigningOut
                     } label: {
-                        Text(l10n.SettingsView.AccountSection.LogOut.alertButtonLabel)
+                        Label(String(l10n.SettingsView.AccountSection.LogOut.buttonLabel.characters),
+                              systemImage: "rectangle.portrait.and.arrow.forward")
                     }
-                } message: {
-                    Text(l10n.SettingsView.AccountSection.LogOut.alertMessage)
-                }
+                    .alert(String(l10n.SettingsView.AccountSection.LogOut.alertTitle.characters),
+                           isPresented: self.$showConfirmDisconnection)
+                    {
+                        Button(role: .destructive) {
+                            self.dismiss()
+                            self.authManager.signOut()
+                            self.persistentDataManager.clearUserData()
+                            self.reset()
+                        } label: {
+                            Text(l10n.SettingsView.AccountSection.LogOut.alertButtonLabel)
+                        }
+                    } message: {
+                        Text(l10n.SettingsView.AccountSection.LogOut.alertMessage)
+                    }
 
-                Button(role: .destructive) {
-                    self.showReAuthenticate = true
-                    self.authManagerViewModel.userAction = .userIsReAuthenticating
-                } label: {
-                    Label(String(l10n.SettingsView.AccountSection.DeleteAccount.buttonLabel.characters), systemImage: "trash")
-                        .foregroundStyle(.red)
-                }
-                .sheet(isPresented: self.$showReAuthenticate) {
-                    if self.authManagerViewModel.reAuthenticationSucceeded {
-                        self.showConfirmDeleteAccount = true
-                    } else {
-                        self.authManagerViewModel.userAction = .none
+                    Button(role: .destructive) {
+                        self.showReAuthenticate = true
+                        self.authManagerViewModel.userAction = .userIsReAuthenticating
+                    } label: {
+                        Label(String(l10n.SettingsView.AccountSection.DeleteAccount.buttonLabel.characters), systemImage: "trash")
+                            .foregroundStyle(.red)
                     }
-                } content: {
-                    ReAuthenticationView()
-                }
-                .alert(String(l10n.SettingsView.AccountSection.DeleteAccount.alertTitle.characters),
-                       isPresented: self.$showConfirmDeleteAccount)
-                {
-                    Button(
-                        String(l10n.SettingsView.AccountSection.DeleteAccount.alertCancelButtonLabel.characters),
-                        role: .cancel
-                    ) {}
-                    Button(
-                        String(l10n.SettingsView.AccountSection.DeleteAccount.alertDeleteButtonLabel.characters),
-                        role: .destructive
-                    ) {
+                    .sheet(isPresented: self.$showReAuthenticate) {
+                        if self.authManagerViewModel.reAuthenticationSucceeded {
+                            self.showConfirmDeleteAccount = true
+                        } else {
+                            self.authManagerViewModel.userAction = .none
+                        }
+                    } content: {
+                        ReAuthenticationView()
+                    }
+                    .alert(String(l10n.SettingsView.AccountSection.DeleteAccount.alertTitle.characters),
+                           isPresented: self.$showConfirmDeleteAccount)
+                    {
+                        Button(
+                            String(l10n.SettingsView.AccountSection.DeleteAccount.alertCancelButtonLabel.characters),
+                            role: .cancel
+                        ) {}
+                        Button(
+                            String(l10n.SettingsView.AccountSection.DeleteAccount.alertDeleteButtonLabel.characters),
+                            role: .destructive
+                        ) {
+                            self.dismiss()
+                            self.authManager.deleteCurrentUser()
+                        }
+                    } message: {
+                        Text(l10n.SettingsView.AccountSection.DeleteAccount.alertMessage)
+                    }
+                } else {
+                    Button(String(l10n.SettingsView.AccountSection.LogInSignUp.buttonLabel.characters), systemImage: "person.fill") {
                         self.dismiss()
-                        self.authManager.deleteCurrentUser()
+                        self.authManagerViewModel.userAction = .userIsSigningIn
+                        self.navigation.fullScreenCoverContent = .welcomeView
                     }
-                } message: {
-                    Text(l10n.SettingsView.AccountSection.DeleteAccount.alertMessage)
                 }
+            }
+
+            Section("Support") {
+                LabeledContent("Version", value: Bundle.version!)
+                    .font(.footnote)
+                LabeledContent("Build Number", value: Bundle.buildNumber!)
+                    .font(.footnote)
+                LabeledContent("iPad Model", value: Device.current.description)
+                    .font(.footnote)
+                LabeledContent("iOS Version", value: "\(UIDevice.current.systemName) \(UIDevice.current.systemVersion)")
+                    .font(.footnote)
             }
         }
         .onReceive(self.authManagerViewModel.$userAuthenticationState, perform: { newState in
@@ -137,9 +161,7 @@ struct SettingsView: View {
         .alert(self.errorAlertTitle,
                isPresented: self.$authManagerViewModel.showErrorAlert)
         {
-            Button("OK", role: .cancel) {
-                self.authManagerViewModel.userAction = .none
-            }
+            Button("OK", role: .cancel) {}
         } message: {
             Text(self.errorAlertMessage)
         }
@@ -160,6 +182,7 @@ struct SettingsView: View {
 
     @ObservedObject private var authManagerViewModel = AuthManagerViewModel.shared
     @ObservedObject private var styleManager: StyleManager = .shared
+    @ObservedObject private var navigation = Navigation.shared
 
     private func reset() {
         self.caregiverManager.resetData()

@@ -79,6 +79,10 @@ extension l10n {
                                                                    """,
                                                                comment: "Account deletion error alert message")
             }
+
+            enum LogInSignUp {
+                static let buttonLabel = LocalizedString("lekaapp.settings_view.account_section.log_in_sign_up.button_label", value: "Log In / Sign Up", comment: "Log in / Sign up button label")
+            }
         }
 
         enum ProfilesSection {
