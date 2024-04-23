@@ -208,7 +208,11 @@ platform :ios do
 
         latest_build_number = latest_testflight_build_number(app_identifier: app_id.to_s).to_s
         new_build_number_major = latest_build_number.split('.').first.to_i + 1
-        pr_number = ENV.fetch('PR_NUMBER', `gh pr view --json number -q .number`.strip)
+        pr_number = ENV.fetch('PR_NUMBER') do
+          `gh pr view --json number -q .number`.strip.tap do |output|
+            output.replace('000') if output.empty?
+          end
+        end
         last_commit_sha_to_int = last_git_commit[:abbreviated_commit_hash].to_i(16)
 
         new_build_number = "#{new_build_number_major}.#{pr_number or '000'}.#{last_commit_sha_to_int}".slice(0, 18)

@@ -18,6 +18,7 @@ on:
       - "Modules/ContentKit/**"
       - "Tuist/Package.swift"
       - "Tuist/Package.resolved"
+      - "fastlane/Fastfile" # TODO: (@ladislas) remove this line after test
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
