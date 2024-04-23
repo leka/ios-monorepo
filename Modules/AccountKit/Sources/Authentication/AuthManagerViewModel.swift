@@ -33,6 +33,7 @@ public class AuthManagerViewModel: ObservableObject {
     @Published public var showErrorMessage = false
     @Published public var actionRequestMessage: String = ""
     @Published public var showActionRequestAlert = false
+    @Published public var resetPasswordSucceeded: Bool = false
     @Published public var isLoading: Bool = false
 
     public func resetErrorMessage() {
@@ -94,8 +95,8 @@ public class AuthManagerViewModel: ObservableObject {
 
         self.authManager.passwordResetEmailPublisher
             .receive(on: DispatchQueue.main)
-            .sink { _ in
-                // Nothing to do
+            .sink { [weak self] state in
+                self?.resetPasswordSucceeded = state
             }
             .store(in: &self.cancellables)
     }

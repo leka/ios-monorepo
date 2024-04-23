@@ -10,7 +10,7 @@ extension l10n {
     enum SettingsView {
         enum CredentialsSection {
             enum ChangeCredentials {
-                static let buttonLabel = LocalizedString("lekaapp.settings_view.credentials_section.change_credentials.button_label", value: "Contact Support for Email/Password Change", comment: "Change credentials button label")
+                static let buttonLabel = LocalizedString("lekaapp.settings_view.credentials_section.change_credentials.button_label", value: "Email/Password Change", comment: "Change credentials button label")
 
                 static let alertTitle = LocalizedString("lekaapp.settings_view.credentials_section.change_credentials.alert_title",
                                                         value: "Need to Update Your Credentials?",
@@ -18,12 +18,33 @@ extension l10n {
 
                 static let alertMessage = LocalizedString("lekaapp.settings_view.credentials_section.change_credentials.alert_message",
                                                           value: """
-                                                              For security reasons, changes to your email or password need to be handled by our support team.
+                                                              For security reasons, changing your email needs to be handled by our support team.
                                                               Please contact us at
                                                               support@leka.io
                                                               and we'll be happy to assist you with updating your account information.
+                                                              However, you can change your password using the button below. You will then receive an email allowing you to enter a new one.
                                                               """,
                                                           comment: "Change credentials alert message")
+
+                static let alertResetPasswordButtonLabel = LocalizedString("lekaapp.settings_view.credentials_section.change_credentials.reset_password_button_label", value: "Reset Password", comment: "Reset password button label")
+
+                static let errorAlertTitle = LocalizedString("lekaapp.settings_view.credentials_section.change_credentials.error_alert_title", value: "Password Reset Error", comment: "Password reset error alert title")
+
+                static let errorAlertMessage = LocalizedString("lekaapp.settings_view.credentials_section.change_credentials.error_alert_message",
+                                                               value: """
+                                                                   We encountered an issue sending you an e-mail to reset your password. Please try again.
+                                                                   If the problem persists, contact our support team for assistance.
+                                                                   """,
+                                                               comment: "Password reset error alert message")
+
+                static let resetPasswordSuccessAlertTitle = LocalizedString("lekaapp.settings_view.credentials_section.change_credentials.success_alert_title", value: "Password Reset", comment: "Password reset success alert title")
+
+                static let resetPasswordSuccessAlertMessage = LocalizedString("lekaapp.settings_view.credentials_section.change_credentials.success_alert_message",
+                                                                              value: """
+                                                                                  The e-mail to change your password was sent successfuly.
+                                                                                  Please check your inbox.
+                                                                                  """,
+                                                                              comment: "Password reset success alert message")
             }
 
             static let emailLabel = LocalizedString("lekaapp.settings_view.credentials_section.email_label", value: "Account Email", comment: "Account email address label")

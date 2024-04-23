@@ -137,8 +137,10 @@ public class AuthManager {
             if let error {
                 log.error("Failed to send password reset email: \(error.localizedDescription)")
                 self?.authenticationError.send(AuthenticationError.custom(message: error.localizedDescription))
+                self?.passwordResetEmail.send(false)
             } else {
                 log.info("Password reset email sent successfully.")
+                self?.passwordResetEmail.send(true)
             }
         }
     }

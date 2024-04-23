@@ -62,8 +62,27 @@ struct SettingsView: View {
                         }
                     }
                     .alert(String(l10n.SettingsView.CredentialsSection.ChangeCredentials.alertTitle.characters),
-                           isPresented: self.$showConfirmCredentialsChange) {} message: {
+                           isPresented: self.$showConfirmCredentialsChange)
+                    {
+                        Button(role: .destructive) {
+                            self.authManager.sendPasswordResetEmail(to: self.authManager.currentUserEmail ?? "")
+                            self.authManagerViewModel.userAction = .userIsResettingPassword
+                            self.showConfirmCredentialsChange = false
+                        } label: {
+                            Text(l10n.SettingsView.CredentialsSection.ChangeCredentials.alertResetPasswordButtonLabel)
+                        }
+                        Button("OK", role: .cancel) {}
+                    } message: {
                         Text(l10n.SettingsView.CredentialsSection.ChangeCredentials.alertMessage)
+                    }
+                    .alert(String(l10n.SettingsView.CredentialsSection.ChangeCredentials.resetPasswordSuccessAlertTitle.characters),
+                           isPresented: self.$authManagerViewModel.resetPasswordSucceeded)
+                    {
+                        Button("OK", role: .cancel) {
+                            self.authManagerViewModel.userAction = .none
+                        }
+                    } message: {
+                        Text(l10n.SettingsView.CredentialsSection.ChangeCredentials.resetPasswordSuccessAlertMessage)
                     }
                 }
             }
@@ -114,7 +133,9 @@ struct SettingsView: View {
                         Button(
                             String(l10n.SettingsView.AccountSection.DeleteAccount.alertCancelButtonLabel.characters),
                             role: .cancel
-                        ) {}
+                        ) {
+                            self.authManagerViewModel.userAction = .none
+                        }
                         Button(
                             String(l10n.SettingsView.AccountSection.DeleteAccount.alertDeleteButtonLabel.characters),
                             role: .destructive
@@ -161,7 +182,9 @@ struct SettingsView: View {
         .alert(self.errorAlertTitle,
                isPresented: self.$authManagerViewModel.showErrorAlert)
         {
-            Button("OK", role: .cancel) {}
+            Button("OK", role: .cancel) {
+                self.authManagerViewModel.userAction = .none
+            }
         } message: {
             Text(self.errorAlertMessage)
         }
@@ -195,6 +218,8 @@ struct SettingsView: View {
         switch self.authManagerViewModel.userAction {
             case .userIsDeletingAccount:
                 String(l10n.SettingsView.AccountSection.DeleteAccount.errorAlertTitle.characters)
+            case .userIsResettingPassword:
+                String(l10n.SettingsView.CredentialsSection.ChangeCredentials.errorAlertTitle.characters)
             default:
                 String(l10n.SettingsView.AccountSection.LogOut.errorAlertTitle.characters)
         }
@@ -204,6 +229,8 @@ struct SettingsView: View {
         switch self.authManagerViewModel.userAction {
             case .userIsDeletingAccount:
                 String(l10n.SettingsView.AccountSection.DeleteAccount.errorAlertMessage.characters)
+            case .userIsResettingPassword:
+                String(l10n.SettingsView.CredentialsSection.ChangeCredentials.errorAlertMessage.characters)
             default:
                 String(l10n.SettingsView.AccountSection.LogOut.errorAlertMessage.characters)
         }
