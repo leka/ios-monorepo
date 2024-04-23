@@ -10,7 +10,7 @@ class TouchToSelectInRightOrderViewViewModel: ObservableObject {
     // MARK: Lifecycle
 
     init(choices: [TouchToSelectInRightOrder.Choice], shuffle: Bool = false, shared: ExerciseSharedData? = nil) {
-        self.gameplay = GameplayFindTheRightAnswersInRightOrder(
+        self.gameplay = GameplayFindTheRightAnswers(
             choices: choices.map { GameplayTouchToSelectInRightOrderChoiceModel(choice: $0) }, shuffle: shuffle
         )
         self.exercicesSharedData = shared ?? ExerciseSharedData()
@@ -32,7 +32,7 @@ class TouchToSelectInRightOrderViewViewModel: ObservableObject {
 
     // MARK: Private
 
-    private let gameplay: GameplayFindTheRightAnswersInRightOrder<GameplayTouchToSelectInRightOrderChoiceModel>
+    private let gameplay: GameplayFindTheRightAnswers<GameplayTouchToSelectInRightOrderChoiceModel>
     private var cancellables: Set<AnyCancellable> = []
 
     private func subscribeToGameplaySelectionChoicesUpdates() {

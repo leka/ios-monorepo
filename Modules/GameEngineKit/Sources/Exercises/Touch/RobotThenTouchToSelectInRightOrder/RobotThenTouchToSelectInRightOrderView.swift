@@ -92,48 +92,8 @@ public struct RobotThenTouchToSelectInRightOrderView: View {
             Spacer()
 
             switch interface {
-                case .oneChoice:
-                    OneChoiceView(viewModel: self.viewModel, isTappable: self.didSendCommandToRobot)
-                        .onTapGestureIf(self.didSendCommandToRobot) {
-                            self.viewModel.onChoiceTapped(choice: self.viewModel.choices[0])
-                        }
-                        .animation(.easeOut(duration: 0.3), value: self.didSendCommandToRobot)
-                        .grayscale(self.didSendCommandToRobot ? 0.0 : 1.0)
-
-                case .twoChoices:
-                    TwoChoicesView(viewModel: self.viewModel, isTappable: self.didSendCommandToRobot)
-                        .onTapGestureIf(self.didSendCommandToRobot) {
-                            self.viewModel.onChoiceTapped(choice: self.viewModel.choices[0])
-                        }
-                        .animation(.easeOut(duration: 0.3), value: self.didSendCommandToRobot)
-                        .grayscale(self.didSendCommandToRobot ? 0.0 : 1.0)
-
                 case .threeChoices:
                     ThreeChoicesView(viewModel: self.viewModel, isTappable: self.didSendCommandToRobot)
-                        .onTapGestureIf(self.didSendCommandToRobot) {
-                            self.viewModel.onChoiceTapped(choice: self.viewModel.choices[0])
-                        }
-                        .animation(.easeOut(duration: 0.3), value: self.didSendCommandToRobot)
-                        .grayscale(self.didSendCommandToRobot ? 0.0 : 1.0)
-
-                case .fourChoices:
-                    FourChoicesView(viewModel: self.viewModel, isTappable: self.didSendCommandToRobot)
-                        .onTapGestureIf(self.didSendCommandToRobot) {
-                            self.viewModel.onChoiceTapped(choice: self.viewModel.choices[0])
-                        }
-                        .animation(.easeOut(duration: 0.3), value: self.didSendCommandToRobot)
-                        .grayscale(self.didSendCommandToRobot ? 0.0 : 1.0)
-
-                case .fiveChoices:
-                    FiveChoicesView(viewModel: self.viewModel, isTappable: self.didSendCommandToRobot)
-                        .onTapGestureIf(self.didSendCommandToRobot) {
-                            self.viewModel.onChoiceTapped(choice: self.viewModel.choices[0])
-                        }
-                        .animation(.easeOut(duration: 0.3), value: self.didSendCommandToRobot)
-                        .grayscale(self.didSendCommandToRobot ? 0.0 : 1.0)
-
-                case .sixChoices:
-                    SixChoicesView(viewModel: self.viewModel, isTappable: self.didSendCommandToRobot)
                         .onTapGestureIf(self.didSendCommandToRobot) {
                             self.viewModel.onChoiceTapped(choice: self.viewModel.choices[0])
                         }

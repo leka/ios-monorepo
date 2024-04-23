@@ -15,11 +15,11 @@ struct GameplayTouchToSelectInRightOrderChoiceModel: GameplayChoiceModelProtocol
     var state: GameplayChoiceState = .idle
 }
 
-extension GameplayFindTheRightAnswersInRightOrder where ChoiceModelType == GameplayTouchToSelectInRightOrderChoiceModel {
+extension GameplayFindTheRightAnswers where ChoiceModelType == GameplayTouchToSelectInRightOrderChoiceModel {
     convenience init(choices: [GameplayTouchToSelectInRightOrderChoiceModel], shuffle: Bool = false, allowedTrials: Int? = nil) {
         self.init()
         self.choices.send(shuffle ? choices.shuffled() : choices)
-        rightAnswersOrdered = choices.filter {
+        rightAnswers = choices.filter {
             $0.choice.order != -1
         }.sorted {
             $0.choice.order < $1.choice.order
@@ -35,22 +35,22 @@ extension GameplayFindTheRightAnswersInRightOrder where ChoiceModelType == Gamep
     }
 
     func process(_ choice: ChoiceModelType) {
-        guard rightAnswersOrdered.isNotEmpty else {
+        guard rightAnswers.isNotEmpty else {
             return
         }
 
         numberOfTrials += 1
 
-        if choice.id == rightAnswersOrdered.first?.id {
+        if choice.id == rightAnswers.first?.id {
             updateChoice(choice, state: .rightAnswer)
-            rightAnswersOrdered.removeFirst()
-        } else if rightAnswersOrdered.contains(where: { $0.id == choice.id }) {
+            rightAnswers.removeFirst()
+        } else if rightAnswers.contains(where: { $0.id == choice.id }) {
             updateChoice(choice, state: .idle)
         } else {
             updateChoice(choice, state: .wrongAnswer)
         }
 
-        if rightAnswersOrdered.isEmpty {
+        if rightAnswers.isEmpty {
             let level = evaluateCompletionLevel(allowedTrials: allowedTrials, numberOfTrials: numberOfTrials)
             state.send(.completed(level: level))
         }

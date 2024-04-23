@@ -70,7 +70,7 @@ exercises_payload:
               value: |
                 What sequence?
           interface: robotThenTouchToSelectInRightOrder
-          gameplay: findTheRightAnswersInRightOrder
+          gameplay: findTheRightAnswers
           action:
             type: robot
             value:
@@ -95,7 +95,7 @@ exercises_payload:
               value: |
                 What sequence?
           interface: robotThenTouchToSelectInRightOrder
-          gameplay: findTheRightAnswersInRightOrder
+          gameplay: findTheRightAnswers
           action:
             type: robot
             value:
@@ -121,7 +121,7 @@ exercises_payload:
               value: |
                 What sequence?
           interface: robotThenTouchToSelectInRightOrder
-          gameplay: findTheRightAnswersInRightOrder
+          gameplay: findTheRightAnswers
           action:
             type: robot
             value:
@@ -149,7 +149,7 @@ exercises_payload:
               value: |
                 What sequence?
           interface: robotThenTouchToSelectInRightOrder
-          gameplay: findTheRightAnswersInRightOrder
+          gameplay: findTheRightAnswers
           action:
             type: robot
             value:
@@ -174,7 +174,7 @@ exercises_payload:
               value: |
                 What sequence?
           interface: robotThenTouchToSelectInRightOrder
-          gameplay: findTheRightAnswersInRightOrder
+          gameplay: findTheRightAnswers
           action:
             type: robot
             value:
@@ -200,7 +200,7 @@ exercises_payload:
               value: |
                 What sequence?
           interface: robotThenTouchToSelectInRightOrder
-          gameplay: findTheRightAnswersInRightOrder
+          gameplay: findTheRightAnswers
           action:
             type: robot
             value:
