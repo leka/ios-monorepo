@@ -64,3 +64,5 @@ let package = Package(
         ),
     ]
 )
+
+// swiftformat:disable acronyms
