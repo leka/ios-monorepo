@@ -80,12 +80,10 @@ struct MainView: View {
                     #endif
 
                     VStack(alignment: .center, spacing: 20) {
-                        if self.authManagerViewModel.userAuthenticationState == .loggedIn {
-                            Button {
-                                self.navigation.sheetContent = .settings
-                            } label: {
-                                SettingsLabel()
-                            }
+                        Button {
+                            self.navigation.sheetContent = .settings
+                        } label: {
+                            SettingsLabel()
                         }
 
                         LekaAppAsset.Assets.lekaLogoStripes.swiftUIImage
