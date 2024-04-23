@@ -121,6 +121,21 @@ public class BLEManager {
 
     private var cancellables: Set<AnyCancellable> = []
 
+    private func retrieveConnectedRobots() {
+        guard self.centralManager.state == .poweredOn else {
+            return
+        }
+
+        let connectedPeripherals = self.centralManager.retrieveConnectedPeripherals(withServices: [BLESpecs.AdvertisingData.service])
+
+        guard connectedPeripherals.isEmpty == false else {
+            return
+        }
+
+        self.connectedRobotPeripheral = RobotPeripheral(peripheral: connectedPeripherals[0])
+        self.didConnect.send(self.connectedRobotPeripheral!)
+    }
+
     // MARK: - Private functions
 
     private func subscribeToDidConnect() {
@@ -143,6 +158,9 @@ public class BLEManager {
         self.centralManager.didUpdateState
             .sink { state in
                 self.state.send(state)
+                if state == .poweredOn {
+                    self.retrieveConnectedRobots()
+                }
                 if state == .poweredOff {
                     self.disconnect()
                 }
