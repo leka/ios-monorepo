@@ -16,8 +16,8 @@ on:
       - "Modules/**/*.swift"
       - "Modules/**/*.yml"
       - "Modules/ContentKit/**"
-      - "Tuist/Packages.swift"
-      - "Tuist/Packages.resolved"
+      - "Tuist/Package.swift"
+      - "Tuist/Package.resolved"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
