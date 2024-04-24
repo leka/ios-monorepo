@@ -276,8 +276,6 @@ platform :ios do
     UI.header 'Step: Set target to build'
     UI.important "The following targets will be built: #{app}"
 
-    build_date = Time.new.strftime('%Y_%m_%d')
-
     UI.header "Step: Generate, build & upload target: #{app}"
     Dir.chdir('..') do
       ENV['TUIST_TURN_OFF_LINTERS'] = 'TRUE'
@@ -308,9 +306,6 @@ platform :ios do
                ENV.fetch('FASTLANE_KEYCHAIN_PASSWORD', nil), 'io.leka.fastlane.keychain')
       end
 
-      latest_build_number = latest_testflight_build_number(app_identifier: app_id.to_s).to_s
-      new_build_number_major = latest_build_number.split('.').first.to_i + 1
-
       pr_number = lambda {
         if ENV['PR_NUMBER'] && !ENV['PR_NUMBER'].empty?
           pr_number = ENV['PR_NUMBER']
@@ -322,13 +317,16 @@ platform :ios do
         end
       }.call
 
-      last_commit_sha_to_int = last_git_commit[:abbreviated_commit_hash].to_i(16)
+      UI.header 'Step: Create verson and new build number'
 
-      # ? slice(0, 18) is to limit the build number to 18 characters
-      new_build_number = "#{new_build_number_major}.#{last_commit_sha_to_int}".slice(0, 18)
+      latest_build_number = latest_testflight_build_number(app_identifier: app_id.to_s).to_s
+      new_build_number = create_new_build_number(latest_build_number: latest_build_number)
       version_number = get_version_number(xcodeproj: app_xcodeproj.to_s)
+      build_date = Time.new.strftime('%Y_%m_%d')
 
-      UI.important "App: #{app} / Version number: #{version_number} / Build number: #{new_build_number}"
+      UI.important "Next release for: #{app}"
+      UI.important "Version number: #{version_number}"
+      UI.important "Build number: #{new_build_number}"
       UI.important "Metadata path: #{ROOT_DIR}/fastlane/release/#{app}/metadata"
 
       # capture_screenshots # ? not working yet
