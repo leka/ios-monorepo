@@ -173,8 +173,6 @@ platform :ios do
     end
     UI.important apps.to_s
 
-    build_date = Time.new.strftime('%Y_%m_%d')
-
     apps.each do |app|
       UI.header "Step: Generate, build & upload target: #{app}"
       Dir.chdir('..') do
@@ -206,26 +204,27 @@ platform :ios do
                  ENV.fetch('FASTLANE_KEYCHAIN_PASSWORD', nil), 'io.leka.fastlane.keychain')
         end
 
-        latest_build_number = latest_testflight_build_number(app_identifier: app_id.to_s).to_s
-        new_build_number_major = latest_build_number.split('.').first.to_i + 1
-
         pr_number = lambda {
           if ENV['PR_NUMBER'] && !ENV['PR_NUMBER'].empty?
             pr_number = ENV['PR_NUMBER']
           else
             `gh pr view --json number -q .number`.strip.tap do |output|
-              output.replace('000') if output.empty?
+              output.replace('NO_PR') if output.empty?
               pr_number = output
             end
           end
         }.call
 
-        last_commit_sha_to_int = last_git_commit[:abbreviated_commit_hash].to_i(16)
+        UI.header 'Step: Create verson and new build number'
 
-        new_build_number = "#{new_build_number_major}.#{pr_number or '000'}.#{last_commit_sha_to_int}".slice(0, 18)
+        latest_build_number = latest_testflight_build_number(app_identifier: app_id.to_s).to_s
+        new_build_number = create_new_build_number(latest_build_number: latest_build_number)
         version_number = get_version_number(xcodeproj: app_xcodeproj.to_s)
+        build_date = Time.new.strftime('%Y_%m_%d')
 
-        UI.important "App: #{app} / Version number: #{version_number} / Build number: #{new_build_number}"
+        UI.important "Next release for: #{app}"
+        UI.important "Version number: #{version_number}"
+        UI.important "Build number: #{new_build_number}"
 
         testflight_changelog = generate_changelogs(
           release_type: 'beta',
@@ -235,6 +234,8 @@ platform :ios do
           new_build_number: new_build_number,
           pr_number: pr_number
         )
+
+        UI.message testflight_changelog
 
         increment_build_number(
           build_number: new_build_number,
@@ -315,7 +316,7 @@ platform :ios do
           pr_number = ENV['PR_NUMBER']
         else
           `gh pr view --json number -q .number`.strip.tap do |output|
-            output.replace('000') if output.empty?
+            output.replace('NO_PR') if output.empty?
             pr_number = output
           end
         end
@@ -323,7 +324,8 @@ platform :ios do
 
       last_commit_sha_to_int = last_git_commit[:abbreviated_commit_hash].to_i(16)
 
-      new_build_number = "#{new_build_number_major}.#{pr_number or '000'}.#{last_commit_sha_to_int}".slice(0, 18)
+      # ? slice(0, 18) is to limit the build number to 18 characters
+      new_build_number = "#{new_build_number_major}.#{last_commit_sha_to_int}".slice(0, 18)
       version_number = get_version_number(xcodeproj: app_xcodeproj.to_s)
 
       UI.important "App: #{app} / Version number: #{version_number} / Build number: #{new_build_number}"
@@ -389,9 +391,10 @@ platform :ios do
 
     pr_number = options[:pr_number].to_s
 
-    test_flight_commit_sha = latest_build_number.split('.').last.to_i.to_s(16).rjust(8, '0')
-    head_commit_sha = last_git_commit[:abbreviated_commit_hash]
-    base_commit_sha = pr_number == '000' ? test_flight_commit_sha.to_s : GIT_BASE_REF
+    test_flight_commit_sha = build_number_to_commit_sha(build_number: latest_build_number)
+    head_commit_sha = build_number_to_commit_sha(build_number: new_build_number)
+
+    base_commit_sha = pr_number == 'NO_PR' ? test_flight_commit_sha.to_s : GIT_BASE_REF
 
     UI.message "head_commit_sha:        #{head_commit_sha}"
     UI.message "base_commit_sha:        #{base_commit_sha}"
@@ -415,95 +418,182 @@ platform :ios do
     )
 
     if status_git_log_with_emojis.success? && status_git_log_no_emojis.success?
-      UI.message 'Creating CHANGELOG_FOR_SLACK'
-
-      CHANGELOG_FOR_SLACK = <<~EOF_CHANGELOG_FOR_SLACK
-        #{release_type == 'beta' ? ":test_tube: *New TestFlight Build - #{app_name}* :airplane:" : ":bookmark: *New AppStore Release - #{app_name}* :rocket:"}
-
-        New version of #{app_name} is available for testing on TestFlight. Please check the changelog and install the app on your device. :rocket:
-
-        *App*: `#{app_name}`
-        *Version*: `#{version_number}`
-        *Build*: `#{new_build_number}`
-        *Commit*: `#{head_commit_sha}` - https://github.com/leka/ios-monorepo/commit/#{head_commit_sha}
-
-        *Changes compared to #{pr_number == '000' ? "latest TestFlight build `#{latest_testflight_build_number}`" : "`#{GIT_BASE_REF}` / `#{head_commit_sha}`"}*:
-
-        ```
-        python3 ./Tools/Scripts/git_log_to_notes.py -f #{base_commit_sha} -l #{head_commit_sha}
-        ```
-
-        #{git_log_with_emojis.rstrip.empty? ? '_Could not fetch the changes... Commits may have been overwritten by force push._' : git_log_with_emojis.rstrip}
-      EOF_CHANGELOG_FOR_SLACK
-
-      UI.message "CHANGELOG_FOR_SLACK:\n#{CHANGELOG_FOR_SLACK}"
-
-      UI.message 'Creating CHANGELOG_FOR_GITHUB'
-
-      CHANGELOG_FOR_GITHUB = <<~EOF_CHANGELOG_FOR_GITHUB
-        #{release_type == 'beta' ? "## :test_tube: New TestFlight Build - #{app_name} :airplane:" : "## :bookmark: New AppStore Release - #{app_name} :rocket:"}
-
-        New version of #{app_name} is available for testing. Please check the changelog and install the app on your device. :rocket:
-
-        **App**: #{app_name}
-        **Version**: `#{version_number}`
-        **Build**: `#{new_build_number}`
-        **Commit**: #{head_commit_sha}
-
-        ## Changes compared to #{pr_number == '000' ? "latest TestFlight build `#{latest_testflight_build_number}`" : "`#{GIT_BASE_REF}` / #{head_commit_sha}"}
-
-        ```shell
-        python3 ./Tools/Scripts/git_log_to_notes.py -f #{base_commit_sha} -l #{head_commit_sha}
-        ```
-
-        #{git_log_with_emojis.rstrip.empty? ? '*Could not fetch the changes... Commits may have been overwritten by force push.*' : git_log_with_emojis.rstrip}
-      EOF_CHANGELOG_FOR_GITHUB
-
-      UI.message "CHANGELOG_FOR_GITHUB:\n#{CHANGELOG_FOR_GITHUB}"
-
-      UI.message 'Creating CHANGELOG_FOR_TEST_FLIGHT'
-
-      CHANGELOG_FOR_TEST_FLIGHT = <<~EOF_CHANGELOG_FOR_TEST_FLIGHT
-        Version: #{version_number}
-        Build: #{new_build_number}
-        Commit: #{head_commit_sha} - https://github.com/leka/ios-monorepo/commit/#{head_commit_sha}
-
-        Changes compared to #{pr_number == '000' ? "latest TestFlight build `#{latest_testflight_build_number}`" : "#{GIT_BASE_REF} / #{head_commit_sha}"}:
-
-        #{git_log_no_emojis.rstrip.empty? ? 'Could not fetch the changes... Commits may have been overwritten by force push.' : git_log_no_emojis.rstrip}
-      EOF_CHANGELOG_FOR_TEST_FLIGHT
-
-      UI.message "CHANGELOG_FOR_TEST_FLIGHT:\n#{CHANGELOG_FOR_TEST_FLIGHT}"
+      UI.success 'Logs generated successfully'
     else
-      UI.error 'Could not fetch the changes'
-      UI.error stderr_git_log_with_emojis
-      UI.error stderr_git_log_no_emojis
+      UI.error 'Could not fetch the changes and generate the logs'
+      UI.error stderr_git_log_with_emojis.rstrip
+      UI.error stderr_git_log_no_emojis.rstrip
     end
 
+    git_log_for_slack = if git_log_with_emojis.rstrip.empty?
+                          '_Could not fetch the changes... Commits may have been overwritten by force push._'
+                        else
+                          git_log_with_emojis.rstrip
+                        end
+
+    git_log_for_github = if git_log_with_emojis.rstrip.empty?
+                           '*Could not fetch the changes... Commits may have been overwritten by force push.*'
+                         else
+                           git_log_with_emojis.rstrip
+                         end
+
+    git_log_for_test_flight = if git_log_no_emojis.rstrip.empty?
+                                'Could not fetch the changes... Commits may have been overwritten by force push.'
+                              else
+                                git_log_no_emojis.rstrip
+                              end
+
+    UI.message 'Creating CHANGELOG_FOR_SLACK'
+
+    changelog_for_slack = <<~EOF_CHANGELOG_FOR_SLACK
+      #{release_type == 'beta' ? ":test_tube: *New TestFlight Build - #{app_name}* :airplane:" : ":bookmark: *New AppStore Release - #{app_name}* :rocket:"}
+
+      New version of #{app_name} is available for testing on TestFlight. Please check the changelog and install the app on your device. :rocket:
+
+      *App*: `#{app_name}`
+      *Version*: `#{version_number}`
+      *Build*: `#{new_build_number}`
+      *Commit*: `#{head_commit_sha}` - https://github.com/leka/ios-monorepo/commit/#{head_commit_sha}
+      *PR*: #{pr_number == 'NO_PR' ? 'n/a' : "https://github.com/leka/ios-monorepo/pull/#{pr_number}"}
+
+      *Changes compared to #{pr_number == 'NO_PR' ? "latest TestFlight build `#{latest_build_number}`" : "`#{GIT_BASE_REF}` / `#{head_commit_sha}`"}*:
+
+      ```
+      python3 ./Tools/Scripts/git_log_to_notes.py -f #{base_commit_sha} -l #{head_commit_sha}
+      ```
+
+      #{git_log_for_slack}
+    EOF_CHANGELOG_FOR_SLACK
+
+    UI.message "CHANGELOG_FOR_SLACK:\n#{changelog_for_slack}"
+
+    UI.message 'Creating CHANGELOG_FOR_GITHUB'
+
+    changelog_for_github = <<~EOF_CHANGELOG_FOR_GITHUB
+      #{release_type == 'beta' ? "## :test_tube: New TestFlight Build - #{app_name} :airplane:" : "## :bookmark: New AppStore Release - #{app_name} :rocket:"}
+
+      New version of #{app_name} is available for testing. Please check the changelog and install the app on your device. :rocket:
+
+      **App**: #{app_name}
+      **Version**: `#{version_number}`
+      **Build**: `#{new_build_number}`
+      **Commit**: #{head_commit_sha}
+      **PR**: #{pr_number == 'NO_PR' ? 'n/a' : "https://github.com/leka/ios-monorepo/pull/#{pr_number}"}
+
+      ## Changes compared to #{pr_number == 'NO_PR' ? "latest TestFlight build `#{latest_build_number}`" : "`#{GIT_BASE_REF}` / #{head_commit_sha}"}
+
+      ```shell
+      python3 ./Tools/Scripts/git_log_to_notes.py -f #{base_commit_sha} -l #{head_commit_sha}
+      ```
+
+      #{git_log_for_github}
+    EOF_CHANGELOG_FOR_GITHUB
+
+    UI.message "CHANGELOG_FOR_GITHUB:\n#{changelog_for_github}"
+
+    UI.message 'Creating CHANGELOG_FOR_TEST_FLIGHT'
+
+    changelog_for_test_flight = <<~EOF_CHANGELOG_FOR_TEST_FLIGHT
+      Version: #{version_number}
+      Build: #{new_build_number}
+      Commit: #{head_commit_sha} - https://github.com/leka/ios-monorepo/commit/#{head_commit_sha}
+      PR: #{pr_number == 'NO_PR' ? 'n/a' : "https://github.com/leka/ios-monorepo/pull/#{pr_number}"}
+
+      Changes compared to #{pr_number == 'NO_PR' ? "latest TestFlight build `#{latest_build_number}`" : "#{GIT_BASE_REF} / #{head_commit_sha}"}:
+
+      #{git_log_for_test_flight}
+    EOF_CHANGELOG_FOR_TEST_FLIGHT
+
+    UI.message "CHANGELOG_FOR_TEST_FLIGHT:\n#{changelog_for_test_flight}"
+
     if ENV['CI']
+      UI.message 'Writing changelogs to GITHUB_ENV'
       File.write(
         ENV.fetch('GITHUB_ENV', nil).to_s,
         "CHANGELOG_FOR_SLACK<<EOF_CHANGELOG_FOR_SLACK\n" \
-        "#{CHANGELOG_FOR_SLACK}\n" \
+        "#{changelog_for_slack}\n" \
         "EOF_CHANGELOG_FOR_SLACK\n\n",
         mode: 'a'
       )
       File.write(
         ENV.fetch('GITHUB_ENV', nil).to_s,
         "CHANGELOG_FOR_GITHUB<<EOF_CHANGELOG_FOR_GITHUB\n" \
-        "#{CHANGELOG_FOR_GITHUB}\n" \
+        "#{changelog_for_github}\n" \
         "EOF_CHANGELOG_FOR_GITHUB\n\n",
         mode: 'a'
       )
       File.write(
         ENV.fetch('GITHUB_ENV', nil).to_s,
         "CHANGELOG_FOR_TEST_FLIGHT<<EOF_CHANGELOG_FOR_TEST_FLIGHT\n" \
-        "#{CHANGELOG_FOR_TEST_FLIGHT}\n" \
+        "#{changelog_for_test_flight}\n" \
         "EOF_CHANGELOG_FOR_TEST_FLIGHT\n\n",
         mode: 'a'
       )
     end
 
-    CHANGELOG_FOR_TEST_FLIGHT
+    changelog_for_test_flight
+  end
+
+  desc 'Convert commit hash to decimal representation of the first 11 hex characters'
+  lane :commit_sha_to_decimal do |options|
+    UI.user_error! 'A long_hash must be specified' if options[:long_hash].nil?
+
+    long_hash = options[:long_hash].to_s
+
+    UI.crash! 'Commit hash must be 40 characters' if long_hash.length < 40
+
+    short_hash = long_hash.slice(0, 11)
+    short_hash_decimal = short_hash.to_i(16).to_s
+
+    UI.message "Long hash:        #{long_hash}"
+    UI.message "Short hash:       #{short_hash}"
+    UI.message "Short hash (dec): #{short_hash_decimal}"
+
+    UI.crash! 'Short hash dec must be shorter than 13 characters' if short_hash_decimal.length > 13
+
+    control_hash = build_number_to_commit_sha(build_number: "1234.#{short_hash_decimal}")
+
+    UI.crash! 'Short hash and control hash are NOT equal' unless control_hash.to_s == short_hash.to_s
+
+    UI.success "Short hash (dec): #{short_hash_decimal}"
+    short_hash_decimal
+  end
+
+  desc 'Convert decimal representation of the first 11 hex characters to commit hash'
+  lane :build_number_to_commit_sha do |options|
+    UI.user_error! 'A build number must be specified' if options[:build_number].nil?
+
+    build_number = options[:build_number].to_s
+
+    short_hash_decimal = build_number.split('.').last
+
+    UI.crash! 'Short hash dec must be shorter than 13 characters' if short_hash_decimal.length > 13
+
+    short_hash = short_hash_decimal.to_i.to_s(16).rjust(11, '0')
+
+    UI.crash! 'Short hash must be shorter than 11 characters' if short_hash.length > 11
+
+    UI.success "Short hash (hex): #{short_hash}"
+    short_hash
+  end
+
+  desc 'Create new build number'
+  lane :create_new_build_number do |options|
+    UI.user_error! 'A build number must be specified' if options[:latest_build_number].nil?
+
+    latest_build_number = options[:latest_build_number].to_s
+
+    new_build_number_major = latest_build_number.split('.').first.to_i + 1
+
+    last_commit_sha = last_git_commit[:commit_hash]
+
+    short_commit_sha_dec = commit_sha_to_decimal(long_hash: last_commit_sha)
+
+    new_build_number = "#{new_build_number_major}.#{short_commit_sha_dec}"
+
+    UI.crash! 'Build number must be 18 characters max' if new_build_number.length > 18
+
+    UI.success "New build number: #{new_build_number}"
+    new_build_number
   end
 end
