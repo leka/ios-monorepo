@@ -71,6 +71,30 @@ Release new app version to App Store Connect
 
 Generate changelogs for TestFlight, Github and Slack
 
+### ios commit_sha_to_decimal
+
+```sh
+[bundle exec] fastlane ios commit_sha_to_decimal
+```
+
+Convert commit hash to decimal representation of the first 11 hex characters
+
+### ios build_number_to_commit_sha
+
+```sh
+[bundle exec] fastlane ios build_number_to_commit_sha
+```
+
+Convert decimal representation of the first 11 hex characters to commit hash
+
+### ios create_new_build_number
+
+```sh
+[bundle exec] fastlane ios create_new_build_number
+```
+
+Create new build number
+
 ----
 
 This README.md is auto-generated and will be re-generated every time [_fastlane_](https://fastlane.tools) is run.
