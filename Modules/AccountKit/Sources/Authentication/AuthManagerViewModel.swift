@@ -33,6 +33,7 @@ public class AuthManagerViewModel: ObservableObject {
     @Published public var showErrorMessage = false
     @Published public var actionRequestMessage: String = ""
     @Published public var showActionRequestAlert = false
+    @Published public var resetPasswordSucceeded: Bool = false
     @Published public var isLoading: Bool = false
 
     public func resetErrorMessage() {
@@ -65,7 +66,8 @@ public class AuthManagerViewModel: ObservableObject {
                 }
                 switch self?.userAction {
                     case .userIsSigningOut,
-                         .userIsDeletingAccount:
+                         .userIsDeletingAccount,
+                         .userIsResettingPassword:
                         self?.showErrorAlert = true
                     default:
                         self?.showErrorMessage = true
@@ -88,6 +90,13 @@ public class AuthManagerViewModel: ObservableObject {
             .receive(on: DispatchQueue.main)
             .sink { [weak self] state in
                 self?.reAuthenticationSucceeded = state
+            }
+            .store(in: &self.cancellables)
+
+        self.authManager.passwordResetEmailPublisher
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] state in
+                self?.resetPasswordSucceeded = state
             }
             .store(in: &self.cancellables)
     }

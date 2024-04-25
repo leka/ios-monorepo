@@ -34,20 +34,33 @@ struct ReAuthenticationView: View {
             VStack {
                 TextFieldPassword(entry: self.$password)
 
-                Button(role: .destructive) {
-                    self.showForgotPassword = true
+                Button {
+                    self.showConfirmResetPassword = true
+                    self.authManagerViewModel.userAction = .userIsResettingPassword
                 } label: {
                     Text(l10n.ReAuthenticationView.passwordForgottenButton)
                         .font(.footnote)
                         .underline()
                 }
-                .alert(
-                    String(l10n.ReAuthenticationView.alertTitle.characters),
-                    isPresented: self.$showForgotPassword
-                ) {
-                    Button("OK", role: .cancel) {}
+                .alert(String(l10n.ReAuthenticationView.confirmResetPasswordAlertTitle.characters),
+                       isPresented: self.$showConfirmResetPassword)
+                {
+                    Button(
+                        String(l10n.ReAuthenticationView.resetPasswordButtonLabel.characters),
+                        role: .destructive
+                    ) {
+                        self.authManager.sendPasswordResetEmail(to: self.authManager.currentUserEmail ?? "")
+                        self.showConfirmResetPassword = false
+                        self.dismiss()
+                    }
+                    Button(
+                        String(l10n.ReAuthenticationView.cancelResetPasswordButtonLabel.characters),
+                        role: .cancel
+                    ) {
+                        self.authManagerViewModel.userAction = .userIsReAuthenticating
+                    }
                 } message: {
-                    Text(l10n.ReAuthenticationView.alertMessage)
+                    Text(l10n.ReAuthenticationView.confirmResetPasswordAlertMessage)
                 }
             }
             .disableAutocorrection(true)
@@ -56,19 +69,17 @@ struct ReAuthenticationView: View {
             Button {
                 self.submitForm()
             } label: {
-                Text(String(l10n.ReAuthenticationView.connectionButton.characters))
+                Text(String(l10n.ReAuthenticationView.reauthAndDeleteAccountButton.characters))
                     .loadingIndicator(isLoading: self.authManagerViewModel.isLoading)
             }
             .disabled(self.isConnectionDisabled || self.authManagerViewModel.isLoading)
             .buttonStyle(.borderedProminent)
+            .tint(.red)
         }
         .onChange(of: self.authManagerViewModel.reAuthenticationSucceeded) { success in
             if success {
                 self.dismiss()
             }
-        }
-        .onDisappear {
-            self.authManagerViewModel.resetErrorMessage()
         }
     }
 
@@ -77,12 +88,11 @@ struct ReAuthenticationView: View {
     @ObservedObject private var authManagerViewModel: AuthManagerViewModel = .shared
 
     @State private var password: String = ""
-    @State private var showForgotPassword: Bool = false
+    @State private var showConfirmResetPassword: Bool = false
 
     private var authManager: AuthManager = .shared
 
     private var isConnectionDisabled: Bool {
-        // TODO(@macteuts): Complete disabling conditions
         self.password.isEmpty
     }
 
@@ -92,5 +102,8 @@ struct ReAuthenticationView: View {
 }
 
 #Preview {
-    ReAuthenticationView()
+    Text("Hello, World!")
+        .sheet(isPresented: .constant(true)) {
+            ReAuthenticationView()
+        }
 }

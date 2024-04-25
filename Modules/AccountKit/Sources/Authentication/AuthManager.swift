@@ -30,6 +30,7 @@ public class AuthManager {
         case userIsSigningIn
         case userIsSigningOut
         case userIsReAuthenticating
+        case userIsResettingPassword
         case userIsDeletingAccount
     }
 
@@ -129,6 +130,21 @@ public class AuthManager {
         }
     }
 
+    public func sendPasswordResetEmail(to email: String) {
+        self.loadingStatePublisher.send(true)
+        self.auth.sendPasswordReset(withEmail: email) { [weak self] error in
+            self?.loadingStatePublisher.send(false)
+            if let error {
+                log.error("Failed to send password reset email: \(error.localizedDescription)")
+                self?.authenticationError.send(AuthenticationError.custom(message: error.localizedDescription))
+                self?.passwordResetEmail.send(false)
+            } else {
+                log.info("Password reset email sent successfully.")
+                self?.passwordResetEmail.send(true)
+            }
+        }
+    }
+
     public func deleteCurrentUser() {
         self.auth.currentUser?.delete { [weak self] error in
             if let error {
@@ -159,6 +175,10 @@ public class AuthManager {
         self.reAuthenticationState.eraseToAnyPublisher()
     }
 
+    var passwordResetEmailPublisher: AnyPublisher<Bool, Never> {
+        self.passwordResetEmail.eraseToAnyPublisher()
+    }
+
     // MARK: Private
 
     private let authenticationState = CurrentValueSubject<AuthenticationState, Never>(.unknown)
@@ -166,6 +186,7 @@ public class AuthManager {
     private let loadingStatePublisher = PassthroughSubject<Bool, Never>()
     private let emailVerificationState = PassthroughSubject<Bool, Never>()
     private let reAuthenticationState = PassthroughSubject<Bool, Never>()
+    private let passwordResetEmail = PassthroughSubject<Bool, Never>()
     private let auth = Auth.auth()
     private var cancellables = Set<AnyCancellable>()
 

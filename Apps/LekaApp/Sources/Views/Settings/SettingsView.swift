@@ -42,31 +42,44 @@ struct SettingsView: View {
                 }
             }
 
-            if self.authManagerViewModel.userAuthenticationState == .loggedIn {
-                Section {
-                    LabeledContent {
-                        Text(self.authManager.currentUserEmail ?? "")
-                            .multilineTextAlignment(.trailing)
-                            .foregroundStyle(Color.secondary)
+//            if self.authManagerViewModel.userAuthenticationState == .loggedIn {
+            Section {
+                LabeledContent {
+                    Text(self.authManager.currentUserEmail ?? "")
+                        .multilineTextAlignment(.trailing)
+                        .foregroundStyle(Color.secondary)
+                } label: {
+                    Text(l10n.SettingsView.CredentialsSection.emailLabel)
+                }
+                Button(String(l10n.SettingsView.CredentialsSection.ChangeCredentials.buttonLabel.characters), systemImage: "lock") {
+                    self.showConfirmCredentialsChange = true
+                }
+                .alert(String(l10n.SettingsView.CredentialsSection.ChangeCredentials.alertTitle.characters),
+                       isPresented: self.$showConfirmCredentialsChange)
+                {
+                    Button(role: .destructive) {
+                        self.authManager.sendPasswordResetEmail(to: self.authManager.currentUserEmail ?? "")
+                        self.authManagerViewModel.userAction = .userIsResettingPassword
+                        self.showConfirmCredentialsChange = false
                     } label: {
-                        Text(l10n.SettingsView.CredentialsSection.emailLabel)
+                        Text(l10n.SettingsView.CredentialsSection.ChangeCredentials.alertChangePasswordButtonLabel)
                     }
-                } footer: {
-                    Button {
-                        self.showConfirmCredentialsChange = true
-                    } label: {
-                        HStack {
-                            Spacer()
-                            Text(l10n.SettingsView.CredentialsSection.ChangeCredentials.buttonLabel)
-                                .font(.footnote)
-                        }
+
+                    Button("Cancel", role: .cancel) {}
+                } message: {
+                    Text(l10n.SettingsView.CredentialsSection.ChangeCredentials.alertMessage)
+                }
+                .alert(String(l10n.SettingsView.CredentialsSection.ChangeCredentials.changePasswordSuccessAlertTitle.characters),
+                       isPresented: self.$authManagerViewModel.resetPasswordSucceeded)
+                {
+                    Button("OK", role: .cancel) {
+                        self.authManagerViewModel.userAction = .none
                     }
-                    .alert(String(l10n.SettingsView.CredentialsSection.ChangeCredentials.alertTitle.characters),
-                           isPresented: self.$showConfirmCredentialsChange) {} message: {
-                        Text(l10n.SettingsView.CredentialsSection.ChangeCredentials.alertMessage)
-                    }
+                } message: {
+                    Text(l10n.SettingsView.CredentialsSection.ChangeCredentials.changePasswordSuccessAlertMessage)
                 }
             }
+//            }
 
             Section {
                 if self.authManagerViewModel.userAuthenticationState == .loggedIn {
@@ -100,11 +113,13 @@ struct SettingsView: View {
                             .foregroundStyle(.red)
                     }
                     .sheet(isPresented: self.$showReAuthenticate) {
-                        if self.authManagerViewModel.reAuthenticationSucceeded {
-                            self.showConfirmDeleteAccount = true
-                        } else {
-                            self.authManagerViewModel.userAction = .none
+                        guard self.authManagerViewModel.reAuthenticationSucceeded else {
+                            if self.authManagerViewModel.userAction == .userIsReAuthenticating {
+                                self.authManagerViewModel.userAction = .none
+                            }
+                            return
                         }
+                        self.showConfirmDeleteAccount = true
                     } content: {
                         ReAuthenticationView()
                     }
@@ -114,7 +129,9 @@ struct SettingsView: View {
                         Button(
                             String(l10n.SettingsView.AccountSection.DeleteAccount.alertCancelButtonLabel.characters),
                             role: .cancel
-                        ) {}
+                        ) {
+                            self.authManagerViewModel.userAction = .none
+                        }
                         Button(
                             String(l10n.SettingsView.AccountSection.DeleteAccount.alertDeleteButtonLabel.characters),
                             role: .destructive
@@ -161,7 +178,9 @@ struct SettingsView: View {
         .alert(self.errorAlertTitle,
                isPresented: self.$authManagerViewModel.showErrorAlert)
         {
-            Button("OK", role: .cancel) {}
+            Button("OK", role: .cancel) {
+                self.authManagerViewModel.userAction = .none
+            }
         } message: {
             Text(self.errorAlertMessage)
         }
@@ -173,6 +192,12 @@ struct SettingsView: View {
             }
         }
         .preferredColorScheme(self.styleManager.colorScheme)
+        .onDisappear {
+            guard self.authManagerViewModel.errorMessage.isEmpty else {
+                self.authManagerViewModel.resetErrorMessage()
+                return
+            }
+        }
     }
 
     private let authManager = AuthManager.shared
@@ -195,6 +220,8 @@ struct SettingsView: View {
         switch self.authManagerViewModel.userAction {
             case .userIsDeletingAccount:
                 String(l10n.SettingsView.AccountSection.DeleteAccount.errorAlertTitle.characters)
+            case .userIsResettingPassword:
+                String(l10n.SettingsView.CredentialsSection.ChangeCredentials.errorAlertTitle.characters)
             default:
                 String(l10n.SettingsView.AccountSection.LogOut.errorAlertTitle.characters)
         }
@@ -204,6 +231,8 @@ struct SettingsView: View {
         switch self.authManagerViewModel.userAction {
             case .userIsDeletingAccount:
                 String(l10n.SettingsView.AccountSection.DeleteAccount.errorAlertMessage.characters)
+            case .userIsResettingPassword:
+                String(l10n.SettingsView.CredentialsSection.ChangeCredentials.errorAlertMessage.characters)
             default:
                 String(l10n.SettingsView.AccountSection.LogOut.errorAlertMessage.characters)
         }

@@ -17,6 +17,7 @@ import SwiftUI
 class ConnectionViewViewModel: ObservableObject {
     @Published var email: String = ""
     @Published var password: String = ""
+    @Published var forgotPasswordEmail: String = ""
 }
 
 // MARK: - ConnectionView
@@ -25,68 +26,68 @@ struct ConnectionView: View {
     // MARK: Internal
 
     var body: some View {
-        VStack(alignment: .center, spacing: 30) {
-            VStack(spacing: 10) {
-                Text(l10n.ConnectionView.title)
-                    .font(.title)
+        ZStack {
+            VStack(alignment: .center, spacing: 30) {
+                VStack(spacing: 10) {
+                    Text(l10n.ConnectionView.title)
+                        .font(.title)
 
-                Text(self.authManagerViewModel.errorMessage)
-                    .font(.footnote)
-                    .foregroundStyle(self.authManagerViewModel.showErrorMessage ? .red : .clear)
-            }
-
-            VStack {
-                TextFieldEmail(entry: self.$viewModel.email)
+                    Text(self.authManagerViewModel.errorMessage)
+                        .font(.footnote)
+                        .foregroundStyle(self.authManagerViewModel.showErrorMessage ? .red : .clear)
+                }
 
                 VStack {
-                    TextFieldPassword(entry: self.$viewModel.password)
+                    TextFieldEmail(entry: self.$viewModel.email)
 
-                    Button(role: .destructive) {
-                        self.showForgotPassword = true
-                    } label: {
-                        Text(l10n.ConnectionView.passwordForgottenButton)
-                            .font(.footnote)
-                            .underline()
-                    }
-                    .alert(
-                        String(l10n.ConnectionView.alertTitle.characters),
-                        isPresented: self.$showForgotPassword
-                    ) {
-                        Button("OK", role: .cancel) {}
-                    } message: {
-                        Text(l10n.ConnectionView.alertMessage)
+                    VStack {
+                        TextFieldPassword(entry: self.$viewModel.password)
+
+                        Button(role: .destructive) {
+                            self.showResetPassword = true
+                            self.authManagerViewModel.userAction = .userIsResettingPassword
+                        } label: {
+                            Text(l10n.ConnectionView.passwordForgottenButton)
+                                .font(.footnote)
+                                .underline()
+                        }
+                        .sheet(isPresented: self.$showResetPassword) {
+                            self.authManagerViewModel.userAction = .userIsSigningIn
+                        } content: {
+                            ForgotPasswordView(email: self.viewModel.email)
+                        }
                     }
                 }
-            }
-            .disableAutocorrection(true)
-            .frame(width: 350)
+                .disableAutocorrection(true)
+                .frame(width: 350)
 
-            Button {
-                self.submitForm()
-            } label: {
-                Text(String(l10n.ConnectionView.connectionButton.characters))
-                    .loadingIndicator(
-                        isLoading: self.authManagerViewModel.isLoading,
-                        forceWhiteTint: true
-                    )
+                Button {
+                    self.submitForm()
+                } label: {
+                    Text(String(l10n.ConnectionView.connectionButton.characters))
+                        .loadingIndicator(
+                            isLoading: self.authManagerViewModel.isLoading,
+                            forceWhiteTint: true
+                        )
+                }
+                .disabled(self.isConnectionDisabled || self.authManagerViewModel.isLoading)
+                .buttonStyle(.borderedProminent)
             }
-            .disabled(self.isConnectionDisabled || self.authManagerViewModel.isLoading)
-            .buttonStyle(.borderedProminent)
-        }
-        .onChange(of: self.authManagerViewModel.userAuthenticationState) { newValue in
-            if newValue == .loggedIn {
-                self.caregiverManager.initializeCaregiversListener()
-                self.carereceiverManager.initializeCarereceiversListener()
-                self.authManagerViewModel.userAction = .none
-                self.navigation.fullScreenCoverContent = nil
+            .onChange(of: self.authManagerViewModel.userAuthenticationState) { newValue in
+                if newValue == .loggedIn {
+                    self.caregiverManager.initializeCaregiversListener()
+                    self.carereceiverManager.initializeCarereceiversListener()
+                    self.authManagerViewModel.userAction = .none
+                    self.navigation.fullScreenCoverContent = nil
+                }
             }
-        }
-        .onAppear {
-            self.authManagerViewModel.userAction = .userIsSigningIn
-        }
-        .onDisappear {
-            self.authManagerViewModel.resetErrorMessage()
-            self.navigation.sheetContent = .caregiverPicker
+            .onAppear {
+                self.authManagerViewModel.userAction = .userIsSigningIn
+            }
+            .onDisappear {
+                self.authManagerViewModel.resetErrorMessage()
+                self.navigation.sheetContent = .caregiverPicker
+            }
         }
     }
 
@@ -96,7 +97,7 @@ struct ConnectionView: View {
     @ObservedObject private var authManagerViewModel: AuthManagerViewModel = .shared
     @ObservedObject private var navigation: Navigation = .shared
 
-    @State private var showForgotPassword: Bool = false
+    @State private var showResetPassword: Bool = false
 
     private var authManager: AuthManager = .shared
     private var caregiverManager: CaregiverManager = .shared
