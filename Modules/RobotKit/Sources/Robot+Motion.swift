@@ -152,6 +152,101 @@ public extension Robot {
             .sendCommand(output)
     }
 
+    func bootyShake() {
+        let actions = [
+            (0.1, { Robot.shared.move(.spin(.clockwise, speed: 0.5)) }),
+            (0.15, { Robot.shared.move(.spin(.counterclockwise, speed: 0.5)) }),
+            (0.1, { Robot.shared.move(.spin(.clockwise, speed: 0.5)) }),
+            (0.1, { Robot.shared.move(.spin(.counterclockwise, speed: 0.5)) }),
+            (0.0, { Robot.shared.stopMotion() }),
+        ]
+        var animationTime = 0.1
+
+        for (duration, action) in actions {
+            DispatchQueue.main.asyncAfter(deadline: .now() + animationTime) {
+                action()
+            }
+            animationTime += duration
+        }
+    }
+
+    func headNod() {
+        let actions = [
+            (0.2, { Robot.shared.move(.forward(speed: 0.3)) }),
+            (0.3, { Robot.shared.move(.backward(speed: 0.3)) }),
+            (0.2, { Robot.shared.move(.forward(speed: 0.3)) }),
+            (0.0, { Robot.shared.stopMotion() }),
+        ]
+        var animationTime = 0.1
+
+        for (duration, action) in actions {
+            DispatchQueue.main.asyncAfter(deadline: .now() + animationTime) {
+                action()
+            }
+            animationTime += duration
+        }
+    }
+
+    func dance() {
+        let motions = [
+            (1, Robot.Motion.spin(Robot.Motion.Rotation.clockwise, speed: 1)),
+            (0.5, Robot.Motion.stop),
+            (1.1, Robot.Motion.spin(Robot.Motion.Rotation.counterclockwise, speed: 1)),
+            (0.5, Robot.Motion.stop),
+            (0.2, Robot.Motion.spin(Robot.Motion.Rotation.clockwise, speed: 1)),
+            (0.2, Robot.Motion.spin(Robot.Motion.Rotation.counterclockwise, speed: 1)),
+            (0.2, Robot.Motion.spin(Robot.Motion.Rotation.clockwise, speed: 1)),
+            (0.2, Robot.Motion.spin(Robot.Motion.Rotation.counterclockwise, speed: 1)),
+            (0.2, Robot.Motion.spin(Robot.Motion.Rotation.clockwise, speed: 1)),
+            (0.2, Robot.Motion.spin(Robot.Motion.Rotation.counterclockwise, speed: 1)),
+            (0.2, Robot.Motion.spin(Robot.Motion.Rotation.clockwise, speed: 1)),
+            (0.1, Robot.Motion.spin(Robot.Motion.Rotation.counterclockwise, speed: 1)),
+        ]
+        var animationTime = 0.1
+
+        for (duration, motion) in motions {
+            DispatchQueue.main.asyncAfter(deadline: .now() + animationTime) {
+                Robot.shared.move(motion)
+            }
+            animationTime += duration
+        }
+    }
+
+    func randomMove() {
+        let rotation = [Robot.Motion.Rotation.counterclockwise, Robot.Motion.Rotation.clockwise]
+        let animations = [
+            [
+                (0.2, { Robot.shared.move(.forward(speed: 0.3)) }),
+                (0.3, { Robot.shared.move(.backward(speed: 0.3)) }),
+                (0.2, { Robot.shared.move(.forward(speed: 0.3)) }),
+                (0.0, { Robot.shared.stopMotion() }),
+            ],
+            [
+                (0.1, { Robot.shared.move(.spin(.clockwise, speed: 0.5)) }),
+                (0.15, { Robot.shared.move(.spin(.counterclockwise, speed: 0.5)) }),
+                (0.1, { Robot.shared.move(.spin(.clockwise, speed: 0.5)) }),
+                (0.1, { Robot.shared.move(.spin(.counterclockwise, speed: 0.5)) }),
+                (0.0, { Robot.shared.stopMotion() }),
+            ],
+            [
+                (0.3, { Robot.shared.move(.spin(rotation.randomElement()!, speed: 0.6)) }),
+                (0.0, { Robot.shared.stopMotion() }),
+            ],
+            [
+                (2.5, { Robot.shared.move(.spin(rotation.randomElement()!, speed: 0.6)) }),
+                (0.0, { Robot.shared.stopMotion() }),
+            ],
+        ]
+        var animationTime = 0.1
+
+        for (duration, action) in animations.randomElement()! {
+            DispatchQueue.main.asyncAfter(deadline: .now() + animationTime) {
+                action()
+            }
+            animationTime += duration
+        }
+    }
+
     func stopMotion() {
         log.trace("🤖 STOP 🛑 - Motion")
         self.move(.stop)
