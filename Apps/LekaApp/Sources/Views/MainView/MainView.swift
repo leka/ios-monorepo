@@ -59,6 +59,7 @@ struct MainView: View {
                     Section(String(l10n.MainView.Sidebar.sectionContent.characters)) {
                         CategoryLabel(category: .curriculums)
                         CategoryLabel(category: .activities)
+                        CategoryLabel(category: .stories)
                         CategoryLabel(category: .gamepads)
                     }
 
@@ -108,6 +109,9 @@ struct MainView: View {
                     case .activities:
                         CategoryActivitiesView()
 
+                    case .stories:
+                        CategoryStoriesView()
+
                     case .gamepads:
                         CategoryGamepadsView()
 
@@ -145,6 +149,7 @@ struct MainView: View {
         .fullScreenCover(item: self.$navigation.fullScreenCoverContent) {
             self.navigation.fullScreenCoverContent = nil
             self.navigation.currentActivity = nil
+            self.navigation.currentStory = nil
         } content: { content in
             NavigationStack {
                 switch content {
@@ -152,6 +157,8 @@ struct MainView: View {
                         WelcomeView()
                     case let .activityView(carereceivers):
                         ActivityView(activity: self.navigation.currentActivity!, reinforcer: carereceivers.first?.reinforcer ?? .rainbow)
+                    case let .storyView(carereceivers):
+                        StoryView(story: self.navigation.currentStory!)
                 }
             }
         }
@@ -175,16 +182,27 @@ struct MainView: View {
                     case .caregiverPicker:
                         CaregiverPicker()
                             .navigationBarTitleDisplayMode(.inline)
-                    case let .carereceiverPicker(activity):
+                    case let .carereceiverPicker(activity, story):
                         CarereceiverPicker(onDismiss: {
                             // nothing to do
                         }, onSelected: { carereceivers in
                             self.carereceiverManager.setCurrentCarereceivers(to: carereceivers)
                             self.navigation.currentActivity = activity
-                            self.navigation.fullScreenCoverContent = .activityView(carereceivers: carereceivers)
+                            self.navigation.currentStory = story
+                            if let activity = self.navigation.currentActivity {
+                                self.navigation.fullScreenCoverContent = .activityView(carereceivers: carereceivers)
+                            } else if let story = self.navigation.currentStory {
+                                self.navigation.fullScreenCoverContent = .storyView(carereceivers: carereceivers)
+                            }
+
                         }, onSkip: {
                             self.navigation.currentActivity = activity
-                            self.navigation.fullScreenCoverContent = .activityView(carereceivers: [])
+                            self.navigation.currentStory = story
+                            if let activity = self.navigation.currentActivity {
+                                self.navigation.fullScreenCoverContent = .activityView(carereceivers: [])
+                            } else if let story = self.navigation.currentStory {
+                                self.navigation.fullScreenCoverContent = .storyView(carereceivers: [])
+                            }
                         })
                         .navigationBarTitleDisplayMode(.inline)
                 }

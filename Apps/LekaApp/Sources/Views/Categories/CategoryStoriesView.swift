@@ -8,16 +8,16 @@ import DesignKit
 import LocalizationKit
 import SwiftUI
 
-// MARK: - CategoryRemotesView
+// MARK: - StoriesView
 
-struct CategoryGamepadsView: View {
+struct CategoryStoriesView: View {
     // MARK: Internal
 
     var body: some View {
         VStack {
             ScrollView(showsIndicators: true) {
                 HStack(alignment: .center, spacing: 30) {
-                    Image(systemName: "gamecontroller")
+                    Image(systemName: "dice")
                         .resizable()
                         .scaledToFit()
                         .frame(width: 80, height: 80)
@@ -33,12 +33,12 @@ struct CategoryGamepadsView: View {
                 }
                 .padding(.horizontal)
 
-                ActivityGridView(activities: self.category.activities, onStartActivity: { activity in
+                StoryGridView(stories: self.category.stories, onStartStory: { story in
                     if self.authManagerViewModel.userAuthenticationState == .loggedIn {
-                        self.navigation.sheetContent = .carereceiverPicker(activity: activity, story: nil)
+                        self.navigation.sheetContent = .carereceiverPicker(activity: nil, story: story)
                     } else {
-                        self.navigation.currentActivity = activity
-                        self.navigation.fullScreenCoverContent = .activityView(carereceivers: [])
+                        self.navigation.currentStory = story
+                        self.navigation.fullScreenCoverContent = .storyView(carereceivers: [])
                     }
                 })
             }
@@ -48,7 +48,7 @@ struct CategoryGamepadsView: View {
 
     // MARK: Private
 
-    private let category: CategoryGamepads = .shared
+    private let category: CategoryStories = .shared
 
     @ObservedObject private var styleManager: StyleManager = .shared
     @ObservedObject private var authManagerViewModel: AuthManagerViewModel = .shared
@@ -59,6 +59,6 @@ struct CategoryGamepadsView: View {
     NavigationSplitView {
         Text("Sidebar")
     } detail: {
-        CategoryGamepadsView()
+        CategoryStoriesView()
     }
 }
