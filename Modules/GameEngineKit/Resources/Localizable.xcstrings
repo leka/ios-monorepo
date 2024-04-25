@@ -739,6 +739,96 @@
                     }
                 }
             }
+        },
+        "story_view.quit_story_alert.cancel_button_label": {
+            "comment": "Quit story alert cancel button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Cancel"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Annuler"
+                    }
+                }
+            }
+        },
+        "story_view.quit_story_alert.message": {
+            "comment": "Quit story alert message",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Do you want to save your progress before quitting?"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Voulez-vous enregistrer vos r\u00e9sultats avant de fermer ?"
+                    }
+                }
+            }
+        },
+        "story_view.quit_story_alert.quit_without_saving_button_label": {
+            "comment": "Quit story alert quit without saving button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Quit Without Saving"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Quitter sans Enregistrer"
+                    }
+                }
+            }
+        },
+        "story_view.quit_story_alert.save_quit_button_label": {
+            "comment": "Quit story alert save and quit button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Save and Quit"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Enregistrer et Quitter"
+                    }
+                }
+            }
+        },
+        "story_view.quit_story_alert.title": {
+            "comment": "Quit story alert title",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Quit story?"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Quitter l'activit\u00e9 ?"
+                    }
+                }
+            }
         }
     }
 }
