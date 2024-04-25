@@ -17,7 +17,7 @@ public struct TouchToSelectView: View {
         guard let payload = exercise.payload as? TouchToSelect.Payload else {
             fatalError("Exercise payload is not .selection")
         }
-
+        exercise.gameplay == .findTheRightAnswers
         _viewModel = StateObject(
             wrappedValue: TouchToSelectViewViewModel(
                 choices: payload.choices, shuffle: payload.shuffleChoices, shared: data

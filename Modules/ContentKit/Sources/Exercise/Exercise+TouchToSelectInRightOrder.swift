@@ -4,7 +4,7 @@
 
 // swiftlint:disable nesting
 
-public enum TouchToSelectInRightOrder {
+public struct TouchToSelectInRightOrder {
     public struct Choice: Codable {
         // MARK: Lifecycle
 

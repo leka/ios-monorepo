@@ -19,10 +19,20 @@ class TouchToSelectViewViewModel: ObservableObject {
         self.subscribeToGameplayStateUpdates()
     }
 
+    init(choices: [TouchToSelectInRightOrder.Choice], shuffle: Bool = false, shared: ExerciseSharedData? = nil) {
+        self.gameplayInRightOrder = GameplayFindTheRightAnswers(
+            choices: choices.map { GameplayTouchToSelectInRightOrderChoiceModel(choice: $0) }, shuffle: shuffle
+        )
+        self.exercicesSharedData = shared ?? ExerciseSharedData()
+
+        self.subscribeToGameplaySelectionChoicesUpdates()
+        self.subscribeToGameplayStateUpdates()
+    }
+    
     // MARK: Public
 
     public func onChoiceTapped(choice: GameplayTouchToSelectChoiceModel) {
-        self.gameplay.process(choice)
+        self.gameplay?.process(choice)
     }
 
     // MARK: Internal
@@ -32,11 +42,12 @@ class TouchToSelectViewViewModel: ObservableObject {
 
     // MARK: Private
 
-    private let gameplay: GameplayFindTheRightAnswers<GameplayTouchToSelectChoiceModel>
+    private let gameplay: GameplayFindTheRightAnswers<GameplayTouchToSelectChoiceModel>?
+    private var gameplayInRightOrder: GameplayFindTheRightAnswers<GameplayTouchToSelectInRightOrderChoiceModel>?
     private var cancellables: Set<AnyCancellable> = []
 
     private func subscribeToGameplaySelectionChoicesUpdates() {
-        self.gameplay.choices
+        self.gameplay?.choices
             .receive(on: DispatchQueue.main)
             .sink {
                 self.choices = $0
@@ -45,7 +56,7 @@ class TouchToSelectViewViewModel: ObservableObject {
     }
 
     private func subscribeToGameplayStateUpdates() {
-        self.gameplay.state
+        self.gameplay?.state
             .receive(on: DispatchQueue.main)
             .sink {
                 self.exercicesSharedData.state = $0
