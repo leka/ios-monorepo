@@ -42,50 +42,44 @@ struct SettingsView: View {
                 }
             }
 
-            if self.authManagerViewModel.userAuthenticationState == .loggedIn {
-                Section {
-                    LabeledContent {
-                        Text(self.authManager.currentUserEmail ?? "")
-                            .multilineTextAlignment(.trailing)
-                            .foregroundStyle(Color.secondary)
+//            if self.authManagerViewModel.userAuthenticationState == .loggedIn {
+            Section {
+                LabeledContent {
+                    Text(self.authManager.currentUserEmail ?? "")
+                        .multilineTextAlignment(.trailing)
+                        .foregroundStyle(Color.secondary)
+                } label: {
+                    Text(l10n.SettingsView.CredentialsSection.emailLabel)
+                }
+                Button(String(l10n.SettingsView.CredentialsSection.ChangeCredentials.buttonLabel.characters), systemImage: "lock") {
+                    self.showConfirmCredentialsChange = true
+                }
+                .alert(String(l10n.SettingsView.CredentialsSection.ChangeCredentials.alertTitle.characters),
+                       isPresented: self.$showConfirmCredentialsChange)
+                {
+                    Button(role: .destructive) {
+                        self.authManager.sendPasswordResetEmail(to: self.authManager.currentUserEmail ?? "")
+                        self.authManagerViewModel.userAction = .userIsResettingPassword
+                        self.showConfirmCredentialsChange = false
                     } label: {
-                        Text(l10n.SettingsView.CredentialsSection.emailLabel)
+                        Text(l10n.SettingsView.CredentialsSection.ChangeCredentials.alertChangePasswordButtonLabel)
                     }
-                } footer: {
-                    Button {
-                        self.showConfirmCredentialsChange = true
-                    } label: {
-                        HStack {
-                            Spacer()
-                            Text(l10n.SettingsView.CredentialsSection.ChangeCredentials.buttonLabel)
-                                .font(.footnote)
-                        }
+
+                    Button("Cancel", role: .cancel) {}
+                } message: {
+                    Text(l10n.SettingsView.CredentialsSection.ChangeCredentials.alertMessage)
+                }
+                .alert(String(l10n.SettingsView.CredentialsSection.ChangeCredentials.changePasswordSuccessAlertTitle.characters),
+                       isPresented: self.$authManagerViewModel.resetPasswordSucceeded)
+                {
+                    Button("OK", role: .cancel) {
+                        self.authManagerViewModel.userAction = .none
                     }
-                    .alert(String(l10n.SettingsView.CredentialsSection.ChangeCredentials.alertTitle.characters),
-                           isPresented: self.$showConfirmCredentialsChange)
-                    {
-                        Button(role: .destructive) {
-                            self.authManager.sendPasswordResetEmail(to: self.authManager.currentUserEmail ?? "")
-                            self.authManagerViewModel.userAction = .userIsResettingPassword
-                            self.showConfirmCredentialsChange = false
-                        } label: {
-                            Text(l10n.SettingsView.CredentialsSection.ChangeCredentials.alertResetPasswordButtonLabel)
-                        }
-                        Button("OK", role: .cancel) {}
-                    } message: {
-                        Text(l10n.SettingsView.CredentialsSection.ChangeCredentials.alertMessage)
-                    }
-                    .alert(String(l10n.SettingsView.CredentialsSection.ChangeCredentials.resetPasswordSuccessAlertTitle.characters),
-                           isPresented: self.$authManagerViewModel.resetPasswordSucceeded)
-                    {
-                        Button("OK", role: .cancel) {
-                            self.authManagerViewModel.userAction = .none
-                        }
-                    } message: {
-                        Text(l10n.SettingsView.CredentialsSection.ChangeCredentials.resetPasswordSuccessAlertMessage)
-                    }
+                } message: {
+                    Text(l10n.SettingsView.CredentialsSection.ChangeCredentials.changePasswordSuccessAlertMessage)
                 }
             }
+//            }
 
             Section {
                 if self.authManagerViewModel.userAuthenticationState == .loggedIn {

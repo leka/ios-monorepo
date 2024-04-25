@@ -2007,13 +2007,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Please confirm the resetting of your password by using the button below. You will then receive an email allowing you to enter a new one."
+                        "value": "We will send you an e-mail with a link to reset your password.\nAre you sure you want to continue?"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Veuillez confirmer la r\u00e9initialisation de votre mot de passe en utilisant le bouton ci-dessous. Vous recevrez alors un e-mail vous permettant d\u2019en saisir un nouveau."
+                        "value": "Nous vous enverrons un e-mail avec un lien pour r\u00e9initialiser votre mot de passe.\nEs-tu sur de vouloir continuer?"
                     }
                 }
             }
@@ -2025,13 +2025,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Reset Password?"
+                        "value": "Are you sure you want to reset your password?"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "R\u00e9initialiser le mot de passe ?"
+                        "value": "\u00cates-vous s\u00fbr de vouloir r\u00e9initialiser votre mot de passe\u00a0?"
                     }
                 }
             }
@@ -2043,13 +2043,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Connect"
+                        "value": "Delete Account"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Se connecter"
+                        "value": "Supprimer le Compte"
                     }
                 }
             }
@@ -2061,13 +2061,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Once you delete your account, there is no going back.\n\n**All your data will be lost forever.**\n*Please be certain.*\n\nYou need to re-authenticate using your password to delete your account."
+                        "value": "Please enter your password to confirm that you want\nto permanently delete your account.\n\nOnce you delete your account, there is no going back.\n\n**All your data will be lost forever.**\n*Please be certain.*"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Une fois votre compte supprim\u00e9, vous ne pourrez plus revenir en arri\u00e8re.\n\n**Toutes vos donn\u00e9es seront perdues \u00e0 jamais.**\n*Veuillez en \u00eatre s\u00fbr.*\n\nVous devez vous r\u00e9-authentifier \u00e0 l'aide de votre mot de passe pour supprimer votre compte."
+                        "value": "Veuillez entrer votre mot de passe pour confirmer que vous souhaitez\nsupprimer d\u00e9finitivement votre compte.\n\nUne fois votre compte supprim\u00e9, vous ne pourrez plus revenir en arri\u00e8re.\n\n**Toutes vos donn\u00e9es seront perdues \u00e0 jamais.**\n*\u00cates-vous s\u00fbr(e) de vous ?*"
                     }
                 }
             }
@@ -2079,13 +2079,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Forgot password?"
+                        "value": "Forgot Password?"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Mot de passe oubli\u00e9 ?"
+                        "value": "Mot de Passe Oubli\u00e9 ?"
                     }
                 }
             }
@@ -2115,13 +2115,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Account Deletion"
+                        "value": "Confirm Account Deletion"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Suppression de compte"
+                        "value": "Confirmer la Suppression du Compte"
                     }
                 }
             }
@@ -2565,13 +2565,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "For security reasons, changing your email needs to be handled by our support team.\nPlease contact us at\nsupport@leka.io\nand we'll be happy to assist you with updating your account information.\nHowever, you can change your password using the button below. You will then receive an email allowing you to enter a new one."
+                        "value": "We will send you an e-mail with a link to change your password.\nAre you sure you want to continue?"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Pour des raisons de s\u00e9curit\u00e9, la modification de l'e-mail doit \u00eatre trait\u00e9e par notre \u00e9quipe support.\nVeuillez nous contacter \u00e0\nsupport@leka.io\net nous serons heureux de vous aider \u00e0 mettre \u00e0 jour les informations de votre compte.\nVous pouvez n\u00e9anmoins modifier votre mot de passe en utilisant le bouton ci-dessous. Vous recevrez alors un e-mail vous permettant d\u2019en saisir un nouveau."
+                        "value": "Nous vous enverrons un e-mail avec un lien pour modifier votre mot de passe.\nEs-tu sur de vouloir continuer?"
                     }
                 }
             }
@@ -2583,13 +2583,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Need to Update Your Credentials?"
+                        "value": "Are you sure you want to change your password?"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Besoin de mettre \u00e0 jour vos informations d'identification\u00a0?"
+                        "value": "\u00cates-vous s\u00fbr de vouloir changer votre mot de passe ?"
                     }
                 }
             }
@@ -2601,13 +2601,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Email/Password Change"
+                        "value": "Change Password"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Changement d'e-mail/mot de passe"
+                        "value": "Changer le Mot de Passe"
                     }
                 }
             }
@@ -2619,13 +2619,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "We encountered an issue sending you an e-mail to reset your password. Please try again.\nIf the problem persists, contact our support team for assistance."
+                        "value": "We encountered an issue while attempting to send the email.\nPlease try again later or contact support if the problem persists."
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Nous avons rencontr\u00e9 un probl\u00e8me lors de l'envoi d'un e-mail pour changer votre mot de passe. Veuillez r\u00e9essayer. \nSi le probl\u00e8me persiste, contactez notre \u00e9quipe d'assistance pour obtenir de l'aide."
+                        "value": "Nous avons rencontr\u00e9 un probl\u00e8me lors de l'envoi de l'e-mail. Veuillez r\u00e9essayer plus tard ou contacter le support si le probl\u00e8me persiste."
                     }
                 }
             }
@@ -2637,13 +2637,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Password Reset Error"
+                        "value": "Failed to Send Email"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Erreur de changement de Mot de passe"
+                        "value": "\u00c9chec de l'Envoi de l'Email"
                     }
                 }
             }
@@ -2655,13 +2655,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Reset Password"
+                        "value": "Change Password"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Changer de Mot de passe"
+                        "value": "Changer de Mot de Passe"
                     }
                 }
             }
@@ -2673,13 +2673,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "The e-mail to change your password was sent successfuly.\nPlease check your inbox."
+                        "value": "An email has been sent to your address with instructions to change your password.\nPlease check your inbox."
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "L'e-mail de changement de mot de passe a \u00e9t\u00e9 envoy\u00e9 avec succ\u00e8s.\nVeuillez v\u00e9rifier votre bo\u00eete de r\u00e9ception."
+                        "value": "Un email a \u00e9t\u00e9 envoy\u00e9 \u00e0 l'adresse indiqu\u00e9e. Veuillez cliquer sur le lien pour confirmer votre adresse e-mail."
                     }
                 }
             }
@@ -2691,13 +2691,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Password Reset"
+                        "value": "Email Sent"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Changement de Mot de passe"
+                        "value": "E-mail Envoy\u00e9"
                     }
                 }
             }

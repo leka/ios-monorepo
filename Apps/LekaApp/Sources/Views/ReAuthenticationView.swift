@@ -34,7 +34,7 @@ struct ReAuthenticationView: View {
             VStack {
                 TextFieldPassword(entry: self.$password)
 
-                Button(role: .destructive) {
+                Button {
                     self.showConfirmResetPassword = true
                     self.authManagerViewModel.userAction = .userIsResettingPassword
                 } label: {
@@ -69,11 +69,12 @@ struct ReAuthenticationView: View {
             Button {
                 self.submitForm()
             } label: {
-                Text(String(l10n.ReAuthenticationView.connectionButton.characters))
+                Text(String(l10n.ReAuthenticationView.reauthAndDeleteAccountButton.characters))
                     .loadingIndicator(isLoading: self.authManagerViewModel.isLoading)
             }
             .disabled(self.isConnectionDisabled || self.authManagerViewModel.isLoading)
             .buttonStyle(.borderedProminent)
+            .tint(.red)
         }
         .onChange(of: self.authManagerViewModel.reAuthenticationSucceeded) { success in
             if success {
@@ -101,5 +102,8 @@ struct ReAuthenticationView: View {
 }
 
 #Preview {
-    ReAuthenticationView()
+    Text("Hello, World!")
+        .sheet(isPresented: .constant(true)) {
+            ReAuthenticationView()
+        }
 }
