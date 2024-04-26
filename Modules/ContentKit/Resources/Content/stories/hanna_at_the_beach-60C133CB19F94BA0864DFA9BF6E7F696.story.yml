@@ -1,0 +1,423 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+version: 1.0.0
+
+uuid: 60C133CB19F94BA0864DFA9BF6E7F696
+name: hanna_at_the_beach
+
+created_at: "2024-03-31T23:33:50.987548"
+last_edited_at: "2024-03-31T23:33:50.987548"
+status: published
+
+authors:
+  - leka
+
+skills:
+  - familiarization_with_leka
+
+tags:
+  - pairing
+
+hmi:
+  - tablet
+
+types:
+  - one_on_one
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: beach
+      title: Hanna & Leka à la plage
+      subtitle:
+      short_description: |
+        Vivez une journée ensoleillée à la plage avec Hanna et Leka.
+      description: |
+        Rejoignez Hanna et son père pour une journée de jeux et de construction de châteaux de sable à la plage.
+      instructions: |
+        - Aidez Hanna à se préparer pour la plage.
+        - Construisez un château de sable avec Hanna et Leka.
+
+  - locale: en_US
+    details:
+      icon: beach
+      title: Hanna & Leka at the beach
+      subtitle:
+      short_description: |
+        Experience a sunny day at the beach with Hanna and Leka.
+      description: |
+        Join Hanna and her father for a day of play and sandcastle building at the beach.
+      instructions: |
+        - Help Hanna get ready for the beach.
+        - Build a sandcastle with Hanna and Leka.
+
+pages:
+  - background: hanna_beach_background
+    l10n:
+      - locale: fr_FR
+        items:
+          - type: image
+            payload:
+              image: hanna_on_the_beach
+              size: 800
+              text: Hanna et Leka à la plage
+      - locale: en_US
+        items:
+          - type: image
+            payload:
+              image: hanna_on_the_beach
+              size: 800
+              text: Hanna and Leka at the beach
+
+  - background: hanna_beach_background
+    l10n:
+      - locale: fr_FR
+        items:
+          - type: button_image
+            payload:
+              idle: hanna
+              pressed: hanna_pressed
+              text: Hanna
+          - type: text
+            payload:
+              text: son
+          - type: button_image
+            payload:
+              idle: nagib
+              pressed: nagib_pressed
+              text: Papa
+          - type: text
+            payload:
+              text: et
+          - type: button_image
+            payload:
+              idle: leka
+              pressed: leka_pressed
+              text: Leka
+              action:
+                type: robot
+                value: randomMove
+          - type: text
+            payload:
+              text: vont à la
+          - type: button_image
+            payload:
+              idle: beach
+              pressed: beach_pressed
+              text: plage.
+      - locale: en_US
+        items:
+          - type: button_image
+            payload:
+              idle: hanna
+              pressed: hanna_pressed
+              text: Hanna
+          - type: text
+            payload:
+              text: her
+          - type: button_image
+            payload:
+              idle: nagib
+              pressed: nagib_pressed
+              text: Father
+          - type: text
+            payload:
+              text: and
+          - type: button_image
+            payload:
+              idle: leka
+              pressed: leka_pressed
+              text: Leka
+              action:
+                type: robot
+                value: randomMove
+          - type: text
+            payload:
+              text: are going to the
+          - type: button_image
+            payload:
+              idle: beach
+              pressed: beach_pressed
+              text: beach.
+
+  - background: hanna_beach_background
+    l10n:
+      - locale: fr_FR
+        items:
+          - type: button_image
+            payload:
+              idle: nagib
+              pressed: nagib_pressed
+              text: Papa
+          - type: text
+            payload:
+              text: met de la
+          - type: button_image
+            payload:
+              idle: sun_cream
+              pressed: sun_cream_pressed
+              text: crème solaire
+          - type: text
+            payload:
+              text: à
+          - type: button_image
+            payload:
+              idle: hanna
+              pressed: hanna_pressed
+              text: Hanna
+      - locale: en_US
+        items:
+          - type: button_image
+            payload:
+              idle: nagib
+              pressed: nagib_pressed
+              text: Father
+          - type: text
+            payload:
+              text: put on some
+          - type: button_image
+            payload:
+              idle: sun_cream
+              pressed: sun_cream_pressed
+              text: sun cream
+          - type: text
+            payload:
+              text: to
+          - type: button_image
+            payload:
+              idle: hanna
+              pressed: hanna_pressed
+              text: Hanna
+
+  - background: hanna_beach_background
+    l10n:
+      - locale: fr_FR
+        items:
+          - type: button_image
+            payload:
+              idle: hanna
+              pressed: hanna_pressed
+              text: Hanna
+          - type: text
+            payload:
+              text: met ses
+          - type: button_image
+            payload:
+              idle: sun_glasses
+              pressed: sun_glasses_pressed
+              text: lunettes de soleil
+          - type: text
+            payload:
+              text: pour se protéger du
+          - type: button_image
+            payload:
+              idle: sun
+              pressed: sun_pressed
+              text: soleil.
+      - locale: en_US
+        items:
+          - type: button_image
+            payload:
+              idle: hanna
+              pressed: hanna_pressed
+              text: Hanna
+          - type: text
+            payload:
+              text: put her
+          - type: button_image
+            payload:
+              idle: sun_glasses
+              pressed: sun_glasses_pressed
+              text: sun glasses
+          - type: text
+            payload:
+              text: on to protect her from the
+          - type: button_image
+            payload:
+              idle: sun
+              pressed: sun_pressed
+              text: sun.
+
+  - background: hanna_beach_background
+    l10n:
+      - locale: fr_FR
+        items:
+          - type: button_image
+            payload:
+              idle: hanna
+              pressed: hanna_pressed
+              text: Hanna
+          - type: text
+            payload:
+              text: et
+          - type: button_image
+            payload:
+              idle: leka
+              pressed: leka_pressed
+              text: Leka
+              action:
+                type: robot
+                value: randomMove
+          - type: text
+            payload:
+              text: décide de faire un
+          - type: button_image
+            payload:
+              idle: sand_castle
+              pressed: sand_castle_pressed
+              text: château de sable.
+      - locale: en_US
+        items:
+          - type: button_image
+            payload:
+              idle: hanna
+              pressed: hanna_pressed
+              text: Hanna
+          - type: text
+            payload:
+              text: and
+          - type: button_image
+            payload:
+              idle: leka
+              pressed: leka_pressed
+              text: Leka
+              action:
+                type: robot
+                value: randomMove
+          - type: text
+            payload:
+              text: decided to build a
+          - type: button_image
+            payload:
+              idle: sand_castle
+              pressed: sand_castle_pressed
+              text: sand castle.
+
+  - background: hanna_beach_background
+    l10n:
+      - locale: fr_FR
+        items:
+          - type: button_image
+            payload:
+              idle: hanna
+              pressed: hanna_pressed
+              text: Hanna
+          - type: text
+            payload:
+              text: et
+          - type: button_image
+            payload:
+              idle: leka
+              pressed: leka_pressed
+              text: Leka
+              action:
+                type: robot
+                value: randomMove
+          - type: text
+            payload:
+              text: ont construit le plus beau
+          - type: button_image
+            payload:
+              idle: sand_castle
+              pressed: sand_castle_pressed
+              text: château de sable
+          - type: text
+            payload:
+              text: de toute la plage.
+      - locale: en_US
+        items:
+          - type: button_image
+            payload:
+              idle: hanna
+              pressed: hanna_pressed
+              text: Hanna
+          - type: text
+            payload:
+              text: and
+          - type: button_image
+            payload:
+              idle: leka
+              pressed: leka_pressed
+              text: Leka
+              action:
+                type: robot
+                value: randomMove
+          - type: text
+            payload:
+              text: build the most beautiful
+          - type: button_image
+            payload:
+              idle: sand_castle
+              pressed: sand_castle_pressed
+              text: sand castle
+          - type: text
+            payload:
+              text: of the whole beach.
+
+  - background: hanna_beach_background
+    l10n:
+      - locale: fr_FR
+        items:
+          - type: button_image
+            payload:
+              idle: hanna
+              pressed: hanna_pressed
+              text: Hanna
+          - type: text
+            payload:
+              text: et
+          - type: button_image
+            payload:
+              idle: leka
+              pressed: leka_pressed
+              text: Leka
+              action:
+                type: robot
+                value: randomMove
+          - type: text
+            payload:
+              text: se sont bien amusés.
+      - locale: en_US
+        items:
+          - type: button_image
+            payload:
+              idle: hanna
+              pressed: hanna_pressed
+              text: Hanna
+          - type: text
+            payload:
+              text: and
+          - type: button_image
+            payload:
+              idle: leka
+              pressed: leka_pressed
+              text: Leka
+              action:
+                type: robot
+                value: randomMove
+          - type: text
+            payload:
+              text: had a great fun.
+
+  - background: hanna_beach_background
+    l10n:
+      - locale: fr_FR
+        items:
+          - type: image
+            payload:
+              image: hanna_on_the_beach
+              size: 800
+              text: Fin
+      - locale: en_US
+        items:
+          - type: image
+            payload:
+              image: hanna_on_the_beach
+              size: 800
+              text: The end
