@@ -21,12 +21,16 @@ struct LekaApp: App {
         #if PRODUCTION_BUILD
             // TODO: (@ladislas) Use PROD db when app is stable
             // let googleServiceInfoPlistName = "GoogleServiceInfo+PROD"
-            let googleServiceInfoPlistName = "GoogleServiceInfo+TESTFLIGHT"
+            log.warning("PRODUCTION_BUILD")
+            let googleServiceInfoPlistName = "GoogleServiceInfo+PROD"
         #elseif TESTFLIGHT_BUILD
+            log.warning("TESTFLIGHT_BUILD")
             let googleServiceInfoPlistName = "GoogleServiceInfo+TESTFLIGHT"
         #elseif DEVELOPER_MODE
+            log.warning("DEVELOPER_MODE")
             let googleServiceInfoPlistName = "GoogleServiceInfo+DEV"
         #else
+            log.warning("NO BUILD CONFIGURATION")
             let googleServiceInfoPlistName = "GoogleServiceInfo+NOT_FOUND"
         #endif
 
@@ -37,6 +41,7 @@ struct LekaApp: App {
             fatalError("\(googleServiceInfoPlistName).plist is missing!")
         }
 
+        log.warning("Firebase: \(googleServiceInfoPlistName)")
         log.warning("Firebase options: \(options)")
         FirebaseApp.configure(options: options)
     }
