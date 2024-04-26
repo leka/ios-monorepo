@@ -1,0 +1,661 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+version: 1.0.0
+
+uuid: 5213404A073D47198A6B3B694396CB8B
+name: story_4
+
+created_at: "2024-03-31T23:33:50.987548"
+last_edited_at: "2024-03-31T23:33:50.987548"
+status: published
+
+authors:
+  - leka
+
+skills:
+  - familiarization_with_leka
+
+tags:
+  - pairing
+
+hmi:
+  - tablet
+
+types:
+  - one_on_one
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: kitchen
+      title: Hanna fait des crêpes
+      subtitle:
+      short_description: |
+        Rejoignez Hanna et Leka dans une aventure culinaire pour apprendre à faire des crêpes.
+      description: |
+        Une histoire engageante où Hanna et Leka vous guident à travers les étapes pour préparer des crêpes délicieuses.
+      instructions: |
+        - Suivez les instructions étape par étape pour aider Hanna et Leka à faire des crêpes.
+        - Interagissez avec les éléments pour une expérience plus immersive.
+
+  - locale: en_US
+    details:
+      icon: kitchen
+      title: Hanna cooks pancakes
+      subtitle:
+      short_description: |
+        Join Hanna and Leka in a culinary adventure to learn how to cook pancakes.
+      description: |
+        An engaging story where Hanna and Leka guide you through the steps to make delicious pancakes.
+      instructions: |
+        - Follow step-by-step instructions to help Hanna and Leka cook pancakes.
+        - Interact with elements for a more immersive experience.
+
+pages:
+  - background: pancakes_background
+    items:
+      - type: image
+        payload:
+          image: hanna_makes_pancakes
+          size: 800
+          text:
+            - locale: fr_FR
+              value: Hanna et Leka font des crêpes
+            - locale: en_US
+              value: Hanna and Leka cook pancakes
+
+  - background: pancakes_background
+    items:
+      - type: button
+        payload:
+          image: hanna
+          pressed: hanna_pressed
+          text:
+            - locale: fr_FR
+              value: Hanna
+            - locale: en_US
+              value: Hanna
+
+      - type: text
+        payload:
+          text:
+            - locale: fr_FR
+              value: et
+            - locale: en_US
+              value: and
+
+      - type: button
+        payload:
+          image: leka
+          pressed: leka_pressed
+          text:
+            - locale: fr_FR
+              value: Leka
+            - locale: en_US
+              value: Leka
+          action: bootyShake
+
+      - type: text
+        payload:
+          text:
+            - locale: fr_FR
+              value: ", ont envie de cuisiner aujourd’hui."
+            - locale: en_US
+              value: "want to cook today."
+
+  - background: pancakes_background
+    items:
+      - type: text
+        payload:
+          text:
+            - locale: fr_FR
+              value: Ils vont dans la
+            - locale: en_US
+              value: They go to the
+      - type: image
+        payload:
+          image: kitchen
+          size: 200
+          text:
+            - locale: fr_FR
+              value: cuisine
+            - locale: en_US
+              value: kitchen
+      - type: text
+        payload:
+          text:
+            - locale: fr_FR
+              value: pour faire des
+            - locale: en_US
+              value: to make
+      - type: button
+        payload:
+          image: pancakes
+          pressed: pancakes_pressed
+          text:
+            - locale: fr_FR
+              value: crêpes
+            - locale: en_US
+              value: pancakes
+      - type: text
+        payload:
+          text:
+            - locale: fr_FR
+              value: " !"
+            - locale: en_US
+              value: "!"
+
+  - background: pancakes_background
+    items:
+      - type: button
+        payload:
+          image: hanna
+          pressed: hanna_pressed
+          text:
+            - locale: fr_FR
+              value: Hanna
+            - locale: en_US
+              value: Hanna
+      - type: text
+        payload:
+          text:
+            - locale: fr_FR
+              value: sort un
+            - locale: en_US
+              value: takes out a
+      - type: button
+        payload:
+          image: bol
+          pressed: bol_pressed
+          text:
+            - locale: fr_FR
+              value: saladier
+            - locale: en_US
+              value: bowl
+      - type: text
+        payload:
+          text:
+            - locale: fr_FR
+              value: du placard et le pose sur la table.
+            - locale: en_US
+              value: from the cupboard and puts it on the table.
+
+  - background: pancakes_background
+    items:
+      - type: button
+        payload:
+          image: hanna
+          pressed: hanna_pressed
+          text:
+            - locale: fr_FR
+              value: Hanna
+            - locale: en_US
+              value: Hanna
+      - type: text
+        payload:
+          text:
+            - locale: fr_FR
+              value: met 250g de
+            - locale: en_US
+              value: puts 250g of
+      - type: button
+        payload:
+          image: flour
+          pressed: flour_pressed
+          text:
+            - locale: fr_FR
+              value: farine
+            - locale: en_US
+              value: flour
+      - type: text
+        payload:
+          text:
+            - locale: fr_FR
+              value: et une pincée de
+            - locale: en_US
+              value: and a pinch of
+      - type: button
+        payload:
+          image: salt
+          pressed: salt_pressed
+          text:
+            - locale: fr_FR
+              value: sel
+            - locale: en_US
+              value: salt
+      - type: text
+        payload:
+          text:
+            - locale: fr_FR
+              value: .
+            - locale: en_US
+              value: .
+
+  - background: pancakes_background
+    items:
+      - type: button
+        payload:
+          image: hanna
+          pressed: hanna_pressed
+          text:
+            - locale: fr_FR
+              value: Hanna
+            - locale: en_US
+              value: Hanna
+      - type: text
+        payload:
+          text:
+            - locale: fr_FR
+              value: met aussi 2
+            - locale: en_US
+              value: puts also 2
+      - type: button
+        payload:
+          image: spoon
+          pressed: spoon_pressed
+          text:
+            - locale: fr_FR
+              value: cuillères
+            - locale: en_US
+              value: tablespoons
+      - type: text
+        payload:
+          text:
+            - locale: fr_FR
+              value: à soupe de
+            - locale: en_US
+              value: of
+      - type: button
+        payload:
+          image: sugar
+          pressed: sugar_pressed
+          text:
+            - locale: fr_FR
+              value: sucre
+            - locale: en_US
+              value: sugar
+      - type: text
+        payload:
+          text:
+            - locale: fr_FR
+              value: .
+            - locale: en_US
+              value: .
+
+  - background: pancakes_background
+    items:
+      - type: button
+        payload:
+          image: hanna
+          pressed: hanna_pressed
+          text:
+            - locale: fr_FR
+              value: Hanna
+            - locale: en_US
+              value: Hanna
+      - type: text
+        payload:
+          text:
+            - locale: fr_FR
+              value: fait un puit dans le
+            - locale: en_US
+              value: makes a well in the
+      - type: button
+        payload:
+          image: bol
+          pressed: bol_pressed
+          text:
+            - locale: fr_FR
+              value: saladier
+            - locale: en_US
+              value: bowl
+      - type: text
+        payload:
+          text:
+            - locale: fr_FR
+              value: et casse les
+            - locale: en_US
+              value: and breaks the
+      - type: button
+        payload:
+          image: eggs
+          pressed: eggs_pressed
+          text:
+            - locale: fr_FR
+              value: 4 oeufs
+            - locale: en_US
+              value: 4 eggs
+      - type: text
+        payload:
+          text:
+            - locale: fr_FR
+              value: dedans.
+            - locale: en_US
+              value: inside.
+
+  - background: pancakes_background
+    items:
+      - type: button
+        payload:
+          image: hanna
+          pressed: hanna_pressed
+          text:
+            - locale: fr_FR
+              value: Hanna
+            - locale: en_US
+              value: Hanna
+      - type: text
+        payload:
+          text:
+            - locale: fr_FR
+              value: les bat un petit peu avec une
+            - locale: en_US
+              value: beats them a little with a
+      - type: button
+        payload:
+          image: fork
+          pressed: fork_pressed
+          text:
+            - locale: fr_FR
+              value: fourchette
+            - locale: en_US
+              value: fork
+      - type: text
+        payload:
+          text:
+            - locale: fr_FR
+              value: .
+            - locale: en_US
+              value: .
+
+  - background: pancakes_background
+    items:
+      - type: button
+        payload:
+          image: hanna
+          pressed: hanna_pressed
+          text:
+            - locale: fr_FR
+              value: Hanna
+            - locale: en_US
+              value: Hanna
+      - type: text
+        payload:
+          text:
+            - locale: fr_FR
+              value: mélange avec une
+            - locale: en_US
+              value: mixes with a
+      - type: button
+        payload:
+          image: wooden_spoon
+          pressed: wooden_spoon_pressed
+          text:
+            - locale: fr_FR
+              value: cuillère en bois
+            - locale: en_US
+              value: wooden spoon
+      - type: text
+        payload:
+          text:
+            - locale: fr_FR
+              value: la
+            - locale: en_US
+              value: the
+      - type: button
+        payload:
+          image: flour
+          pressed: flour_pressed
+          text:
+            - locale: fr_FR
+              value: farine
+            - locale: en_US
+              value: flour
+      - type: text
+        payload:
+          text:
+            - locale: fr_FR
+              value: et les
+            - locale: en_US
+              value: and the
+      - type: button
+        payload:
+          image: eggs
+          pressed: eggs_pressed
+          text:
+            - locale: fr_FR
+              value: oeufs
+            - locale: en_US
+              value: eggs
+      - type: text
+        payload:
+          text:
+            - locale: fr_FR
+              value: .
+            - locale: en_US
+              value: .
+
+  - background: pancakes_background
+    items:
+      - type: text
+        payload:
+          text:
+            - locale: fr_FR
+              value: Quand le mélange est épais,
+            - locale: en_US
+              value: When the mixture is thick
+      - type: button
+        payload:
+          image: hanna
+          pressed: hanna_pressed
+          text:
+            - locale: fr_FR
+              value: Hanna
+            - locale: en_US
+              value: Hanna
+      - type: text
+        payload:
+          text:
+            - locale: fr_FR
+              value: verse 1/2 litre de
+            - locale: en_US
+              value: pours 1/2 liter of
+      - type: button
+        payload:
+          image: milk
+          pressed: milk_pressed
+          text:
+            - locale: fr_FR
+              value: lait
+            - locale: en_US
+              value: milk
+
+  - background: pancakes_background
+    items:
+      - type: button
+        payload:
+          image: hanna
+          pressed: hanna_pressed
+          text:
+            - locale: fr_FR
+              value: Hanna
+            - locale: en_US
+              value: Hanna
+      - type: text
+        payload:
+          text:
+            - locale: fr_FR
+              value: "mélange jusqu'à ce qu'il n'y ait plus de grumeaux."
+            - locale: en_US
+              value: mixes until there are no more lumps.
+
+  - background: pancakes_background
+    items:
+      - type: button
+        payload:
+          image: hanna
+          pressed: hanna_pressed
+          text:
+            - locale: fr_FR
+              value: Hanna
+            - locale: en_US
+              value: Hanna
+      - type: text
+        payload:
+          text:
+            - locale: fr_FR
+              value: rajoute 50g de
+            - locale: en_US
+              value: adds 50g of
+      - type: button
+        payload:
+          image: butter
+          pressed: butter_pressed
+          text:
+            - locale: fr_FR
+              value: beurre
+            - locale: en_US
+              value: butter
+      - type: text
+        payload:
+          text:
+            - locale: fr_FR
+              value: que son
+            - locale: en_US
+              value: that her
+      - type: button
+        payload:
+          image: nagib
+          pressed: nagib_pressed
+          text:
+            - locale: fr_FR
+              value: Papa
+            - locale: en_US
+              value: Dad
+      - type: text
+        payload:
+          text:
+            - locale: fr_FR
+              value: a fait fondre.
+            - locale: en_US
+              value: has melted.
+
+  - background: pancakes_background
+    items:
+      - type: button
+        payload:
+          image: hanna
+          pressed: hanna_pressed
+          text:
+            - locale: fr_FR
+              value: Hanna
+            - locale: en_US
+              value: Hanna
+      - type: text
+        payload:
+          text:
+            - locale: fr_FR
+              value: mélange bien !
+            - locale: en_US
+              value: mixes well !
+
+  - background: pancakes_background
+    items:
+      - type: text
+        payload:
+          text:
+            - locale: fr_FR
+              value: La pâte est prête !
+            - locale: en_US
+              value: The batter is ready !
+      - type: button
+        payload:
+          image: nagib
+          pressed: nagib_pressed
+          text:
+            - locale: fr_FR
+              value: Papa
+            - locale: en_US
+              value: Daddy
+      - type: text
+        payload:
+          text:
+            - locale: fr_FR
+              value: n'a plus qu'à la faire cuire !
+            - locale: en_US
+              value: just has to cook it.
+
+  - background: pancakes_background
+    items:
+      - type: button
+        payload:
+          image: hanna
+          pressed: hanna_pressed
+          text:
+            - locale: fr_FR
+              value: Hanna
+            - locale: en_US
+              value: Hanna
+
+      - type: text
+        payload:
+          text:
+            - locale: fr_FR
+              value: et
+            - locale: en_US
+              value: and
+
+      - type: button
+        payload:
+          image: leka
+          pressed: leka_pressed
+          text:
+            - locale: fr_FR
+              value: Leka
+            - locale: en_US
+              value: Leka
+          action: reinforcer
+
+      - type: text
+        payload:
+          text:
+            - locale: fr_FR
+              value: "vont vraiment se régaler avec ces bonnes"
+            - locale: en_US
+              value: "will enjoy themselves with these delicious"
+
+      - type: button
+        payload:
+          image: pancakes
+          pressed: pancakes_pressed
+          text:
+            - locale: fr_FR
+              value: crêpes
+            - locale: en_US
+              value: pancakes
+
+      - type: text
+        payload:
+          text:
+            - locale: fr_FR
+              value: " !"
+            - locale: en_US
+              value: "!"
+
+  - background: pancakes_background
+    items:
+      - type: image
+        payload:
+          image: hanna_makes_pancakes
+          size: 800
+          text:
+            - locale: fr_FR
+              value: Fin
+            - locale: en_US
+              value: The end
