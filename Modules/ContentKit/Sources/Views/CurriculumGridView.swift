@@ -30,7 +30,7 @@ public struct CurriculumGridView: View {
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: 150)
-                                .clipShape(RoundedRectangle(cornerRadius: 8))
+                                .clipShape(RoundedRectangle(cornerRadius: 10 / 57 * 150))
 
                             Text(curriculum.details.title)
                                 .font(.headline)
