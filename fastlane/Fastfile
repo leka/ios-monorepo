@@ -567,9 +567,9 @@ platform :ios do
 
     UI.crash! 'Short hash dec must be shorter than 13 characters' if short_hash_decimal.length > 13
 
-    short_hash = short_hash_decimal.to_i.to_s(16).rjust(11, '0')
+    short_hash = short_hash_decimal.to_i.to_s(16).rjust(10, '0')
 
-    UI.crash! 'Short hash must be shorter than 11 characters' if short_hash.length > 11
+    UI.crash! 'Short hash must be shorter than 10 characters' if short_hash.length > 11
 
     UI.success "Short hash (hex): #{short_hash}"
     short_hash
