@@ -7,23 +7,29 @@ import LocalizationKit
 
 // MARK: - Page
 
+// swiftlint:disable nesting
+
 public struct Page: Decodable {
     // MARK: Lifecycle
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.background = try container.decode(String.self, forKey: .background)
-        self.items = try container.decode([Item].self, forKey: .items)
+        self.localizedPages = try container.decode([LocalizedPage].self, forKey: .localizedPages)
+        if let localizedPages = self.localizedPages {
+            let availableLocales = localizedPages.map(\.locale)
+
+            let currentLocale = availableLocales.first(where: {
+                $0.language.languageCode == LocalizationKit.l10n.language
+            }) ?? Locale(identifier: "en_US")
+
+            self.items = self.localizedPages?.first(where: { $0.locale == currentLocale })?.items ?? []
+        } else {
+            self.items = []
+        }
     }
 
     // MARK: Public
-
-    public enum ItemType: String, Decodable {
-        case image
-        case text
-        case button
-        case activityButton = "activity_button"
-    }
 
     public let background: String
     public let items: [Item]
@@ -32,7 +38,47 @@ public struct Page: Decodable {
 
     enum CodingKeys: String, CodingKey {
         case background
-        case items
+        case localizedPages = "l10n"
+    }
+
+    // MARK: Private
+
+    private let localizedPages: [LocalizedPage]?
+}
+
+// MARK: Page.ItemType
+
+public extension Page {
+    // MARK: Public
+
+    enum ItemType: String, Decodable {
+        case image
+        case text
+        case buttonImage = "button_image"
+    }
+}
+
+// MARK: Page.LocalizedPage
+
+public extension Page {
+    struct LocalizedPage: Decodable {
+        // MARK: Lifecycle
+
+        public init(from decoder: Decoder) throws {
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            self.locale = try Locale(identifier: container.decode(String.self, forKey: .locale))
+            self.items = try container.decode([Item].self, forKey: .items)
+        }
+
+        // MARK: Internal
+
+        enum CodingKeys: String, CodingKey {
+            case locale
+            case items
+        }
+
+        let locale: Locale
+        let items: [Item]
     }
 }
 
@@ -50,10 +96,8 @@ public extension Page {
                     self.payload = try container.decode(ImagePayload.self, forKey: .payload)
                 case .text:
                     self.payload = try container.decode(TextPayload.self, forKey: .payload)
-                case .button:
-                    self.payload = try container.decode(ButtonPayload.self, forKey: .payload)
-                case .activityButton:
-                    self.payload = try container.decode(ActivityButtonPayload.self, forKey: .payload)
+                case .buttonImage:
+                    self.payload = try container.decode(ButtonImagePayload.self, forKey: .payload)
             }
         }
 
@@ -87,3 +131,5 @@ extension Page.Item: Hashable {
         hasher.combine(self.id)
     }
 }
+
+// swiftlint:enable nesting

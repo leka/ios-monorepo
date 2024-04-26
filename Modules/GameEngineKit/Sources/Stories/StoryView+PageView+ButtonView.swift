@@ -7,7 +7,7 @@ import RobotKit
 import SVGView
 import SwiftUI
 
-extension ButtonPayload.ActionType {
+extension Page.Action.ActionType {
     // MARK: Internal
 
     func getAction() {
@@ -42,29 +42,27 @@ extension ButtonPayload.ActionType {
                     Robot.shared.stopMotion()
                     Robot.shared.stopLights()
                 }
-            case .none:
-                return
         }
     }
 }
 
-// MARK: - StoryView.PageView.ButtonView
+// MARK: - StoryView.PageView.ButtonImageView
 
 public extension StoryView.PageView {
-    struct ButtonView: View {
+    struct ButtonImageView: View {
         // MARK: Lifecycle
 
         public init(payload: PagePayloadProtocol) {
-            guard let payload = payload as? ButtonPayload else {
+            guard let payload = payload as? ButtonImagePayload else {
                 fatalError("💥 Story item is not ButtonPayload")
             }
 
-            if let path = Bundle.path(forImage: payload.image) {
+            if let path = Bundle.path(forImage: payload.idle) {
                 log.debug("Image found at path: \(path)")
-                self.image = path
+                self.idle = path
             } else {
-                log.error("Image not found: \(payload.image)")
-                self.image = payload.image
+                log.error("Image not found: \(payload.idle)")
+                self.idle = payload.idle
             }
             if let path = Bundle.path(forImage: payload.pressed) {
                 log.debug("Image found at path: \(path)")
@@ -82,8 +80,30 @@ public extension StoryView.PageView {
         public var body: some View {
             VStack {
                 Spacer()
-                MultiIconButton(image: self.image, pressed: self.pressed, action: self.action.getAction)
-                    .padding(.top, 100)
+                switch self.action {
+                    case let .activity(id):
+                        NavigationLink {
+                            ActivityView(activity: Activity(id: id)!)
+                        } label: {
+                            if self.idle.isRasterImageFile {
+                                Image(uiImage: UIImage(named: self.idle)!)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(maxWidth: 200)
+                                    .padding(.top, 100)
+                            } else if self.idle.isVectorImageFile {
+                                SVGView(contentsOf: URL(fileURLWithPath: self.idle))
+                                    .frame(maxWidth: 200)
+                                    .padding(.top, 100)
+                            }
+                        }
+                    case let .robot(actionType):
+                        MultiIconButton(image: self.idle, pressed: self.pressed, action: actionType.getAction)
+                            .padding(.top, 100)
+                    case .none:
+                        MultiIconButton(image: self.idle, pressed: self.pressed)
+                            .padding(.top, 100)
+                }
                 Spacer()
 
                 Text(self.text)
@@ -95,15 +115,15 @@ public extension StoryView.PageView {
 
         // MARK: Private
 
-        private let image: String
+        private let idle: String
         private let pressed: String
         private let text: String
-        private let action: ButtonPayload.ActionType
+        private let action: Page.Action
     }
 }
 
 #Preview {
     NavigationStack {
-        StoryView.PageView.ButtonView(payload: Story.mock.pages[1].items[1].payload)
+        StoryView.PageView.ButtonImageView(payload: Story.mock.pages[1].items[1].payload)
     }
 }

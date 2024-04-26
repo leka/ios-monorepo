@@ -44,10 +44,8 @@ public extension StoryView {
                                 ImageView(payload: item.payload)
                             case .text:
                                 TextView(payload: item.payload)
-                            case .button:
-                                ButtonView(payload: item.payload)
-                            case .activityButton:
-                                ActivityButtonView(payload: item.payload)
+                            case .buttonImage:
+                                ButtonImageView(payload: item.payload)
                         }
                     }
                 }

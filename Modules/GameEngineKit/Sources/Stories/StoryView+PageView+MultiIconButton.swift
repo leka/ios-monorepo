@@ -11,7 +11,7 @@ public extension StoryView.PageView {
     struct MultiIconButton: View {
         // MARK: Lifecycle
 
-        public init(image: String, pressed: String, action: @escaping (() -> Void)) {
+        public init(image: String, pressed: String, action: (() -> Void)? = nil) {
             self.image = image
             self.pressed = pressed
             self.action = action
@@ -47,7 +47,9 @@ public extension StoryView.PageView {
                 DragGesture(minimumDistance: 0)
                     .onChanged { _ in
                         self.isPressed = true
-                        self.action()
+                        if let action = self.action {
+                            action()
+                        }
                     }
                     .onEnded { _ in
                         self.isPressed = false
@@ -61,6 +63,6 @@ public extension StoryView.PageView {
 
         private let image: String
         private let pressed: String
-        private let action: () -> Void
+        private let action: (() -> Void)?
     }
 }
