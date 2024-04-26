@@ -29,8 +29,8 @@ public struct CurriculumGridView: View {
                             Image(uiImage: curriculum.details.iconImage)
                                 .resizable()
                                 .scaledToFit()
-                                .clipShape(Circle())
                                 .frame(width: 150)
+                                .clipShape(RoundedRectangle(cornerRadius: 8))
 
                             Text(curriculum.details.title)
                                 .font(.headline)
