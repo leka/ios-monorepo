@@ -29,7 +29,7 @@ public struct CurriculumDetailsView: View {
                             .resizable()
                             .scaledToFit()
                             .frame(width: 120, height: 120)
-                            .clipShape(Circle())
+                            .clipShape(RoundedRectangle(cornerRadius: 10 / 57 * 120))
 
                         VStack(alignment: .leading, spacing: 8) {
                             Text(self.curriculum.details.title)
