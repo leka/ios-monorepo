@@ -20,16 +20,9 @@ public struct StoryView: View {
     // MARK: Public
 
     public var body: some View {
-        ModelPages(self.viewModel.currentStory.pages,
-                   currentPage: self.$viewModel.currentPageIndex,
-                   transitionStyle: .pageCurl,
-                   hasControl: false)
-        { _, page in
-            PageView(page: page)
-//                .padding()
-        }
-//        Color.red
-//        .frame(maxWidth: .infinity)
+        Pages(pages: self.viewModel.currentStory.pages.compactMap {
+            PageView(page: $0)
+        })
         .ignoresSafeArea(.all)
         .navigationTitle(self.viewModel.currentStory.details.title)
         .navigationBarTitleDisplayMode(.inline)
