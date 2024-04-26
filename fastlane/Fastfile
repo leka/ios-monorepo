@@ -540,7 +540,7 @@ platform :ios do
 
     UI.crash! 'Commit hash must be 40 characters' if long_hash.length < 40
 
-    short_hash = long_hash.slice(0, 11)
+    short_hash = long_hash.slice(0, 10)
     short_hash_decimal = short_hash.to_i(16).to_s
 
     UI.message "Long hash:        #{long_hash}"
