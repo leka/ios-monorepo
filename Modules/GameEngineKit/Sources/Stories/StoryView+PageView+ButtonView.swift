@@ -78,8 +78,7 @@ public extension StoryView.PageView {
         // MARK: Public
 
         public var body: some View {
-            VStack {
-                Spacer()
+            VStack(spacing: 0) {
                 switch self.action {
                     case let .activity(id):
                         self.launchActivityButton(id: id)
@@ -90,18 +89,14 @@ public extension StoryView.PageView {
                             })
                     case let .robot(actionType):
                         PressableImageButton(idleImage: self.idle, pressedImage: self.pressed, action: actionType.getAction)
-                            .padding(.top, 100)
+
                     case .none:
                         PressableImageButton(idleImage: self.idle, pressedImage: self.pressed)
-                            .padding(.top, 100)
                 }
-
-                Spacer()
 
                 Text(self.text)
                     .font(Font(UIFont(name: "ChalkboardSE-Light", size: CGFloat(26)) ?? .systemFont(ofSize: 26)))
                     .foregroundStyle(.red)
-                    .padding(.bottom, 100)
             }
         }
 
@@ -122,14 +117,11 @@ public extension StoryView.PageView {
                     Image(uiImage: UIImage(named: self.idle)!)
                         .resizable()
                         .scaledToFit()
-                        .frame(maxWidth: 200)
-                        .padding(.top, 100)
                 } else if self.idle.isVectorImageFile {
                     SVGView(contentsOf: URL(fileURLWithPath: self.idle))
-                        .frame(maxWidth: 200)
-                        .padding(.top, 100)
                 }
             }
+            .frame(maxWidth: 180)
         }
     }
 }

@@ -37,7 +37,7 @@ public extension StoryView {
                         .ignoresSafeArea(.all)
                 }
 
-                HStack {
+                HStack(alignment: .firstTextBaseline) {
                     ForEach(self.items) { item in
                         switch item.type {
                             case .image:
@@ -62,6 +62,6 @@ public extension StoryView {
 
 #Preview {
     NavigationStack {
-        StoryView.PageView(page: Story.mock.pages[1])
+        StoryView.PageView(page: Story.mock.pages[2])
     }
 }

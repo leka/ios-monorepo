@@ -26,23 +26,20 @@ public extension StoryView.PageView {
                         Image(uiImage: UIImage(named: self.pressedImage)!)
                             .resizable()
                             .scaledToFit()
-                            .frame(maxWidth: 200)
                     } else if self.pressedImage.isVectorImageFile {
                         SVGView(contentsOf: URL(fileURLWithPath: self.pressedImage))
-                            .frame(maxWidth: 200)
                     }
                 } else {
                     if self.idleImage.isRasterImageFile {
                         Image(uiImage: UIImage(named: self.idleImage)!)
                             .resizable()
                             .scaledToFit()
-                            .frame(maxWidth: 200)
                     } else if self.idleImage.isVectorImageFile {
                         SVGView(contentsOf: URL(fileURLWithPath: self.idleImage))
-                            .frame(maxWidth: 200)
                     }
                 }
             }
+            .frame(maxWidth: 180)
             .gesture(
                 DragGesture(minimumDistance: 0)
                     .onChanged { _ in
