@@ -173,6 +173,13 @@ public extension Story {
                   action:
                     type: robot
                     value: randomMove
+              - type: button_image
+                payload:
+                  idle: colors
+                  text: couleur
+                  action:
+                    type: activity
+                    value: color_bingo_4-A7584D692B23422BB12683FA7BE393BE
           - locale: en_US
             items:
               - type: button_image
@@ -199,6 +206,13 @@ public extension Story {
                   action:
                     type: robot
                     value: randomMove
+              - type: button_image
+                payload:
+                  idle: colors
+                  text: couleur
+                  action:
+                    type: activity
+                    value: color_bingo_4-A7584D692B23422BB12683FA7BE393BE
 
       - background: hanna_and_leka_background
         l10n:
