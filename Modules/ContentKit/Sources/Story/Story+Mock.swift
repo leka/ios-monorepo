@@ -23,290 +23,289 @@ public extension Story {
     status: published
 
     authors:
-    - leka
+      - leka
 
     skills:
-    - familiarization_with_leka
+      - familiarization_with_leka
 
     hmi:
-    - tablet_robot
+      - tablet_robot
 
     types:
-    - one_on_one
+      - one_on_one
 
     tags:
-    - pairing
+      - pairing
 
     locales:
-    - en_US
-    - fr_FR
+      - en_US
+      - fr_FR
 
     l10n:
-    - locale: fr_FR
+      - locale: fr_FR
         details:
-        icon: hanna_and_leka
+          icon: hanna_and_leka
 
-        title: Hanna & Leka
-        subtitle:
+          title: Hanna & Leka
+          subtitle:
 
-        short_description: |
+          short_description: |
             Une aventure joyeuse de Hanna et Leka.
 
-        description: |
+          description: |
             Rejoignez Hanna et Leka pour une série d'aventures captivantes et interactives.
 
-        instructions: |
+          instructions: |
             - Participez aux jeux et découvrez avec Hanna et Leka.
             - Suivez les indices et aidez-les à résoudre des énigmes.
 
-    - locale: en_US
+      - locale: en_US
         details:
-        icon: hanna_and_leka
+          icon: hanna_and_leka
 
-        title: Hanna & Leka
-        subtitle:
+          title: Hanna & Leka
+          subtitle:
 
-        short_description: |
+          short_description: |
             A joyful adventure of Hanna and Leka.
 
-        description: |
+          description: |
             Join Hanna and Leka for a series of captivating and interactive adventures.
 
-        instructions: |
+          instructions: |
             - Engage in games and discover with Hanna and Leka.
             - Follow clues and help them solve puzzles.
 
     pages:
-    - background: hanna_and_leka_background
+      - background: hanna_and_leka_background
         l10n:
-        - locale: fr_FR
+          - locale: fr_FR
             items:
-            - type: image
+              - type: image
                 payload:
-                image: hanna_and_leka
-                size: 800
-                text: Hanna et Leka
-        - locale: en_US
+                  image: hanna_and_leka
+                  size: 800
+                  text: Hanna et Leka
+          - locale: en_US
             items:
-            - type: image
+              - type: image
                 payload:
-                image: hanna_and_leka
-                size: 800
-                text: Hanna and Leka
+                  image: hanna_and_leka
+                  size: 800
+                  text: Hanna and Leka
 
-    - background: hanna_and_leka_background
+      - background: hanna_and_leka_background
         l10n:
-        - locale: fr_FR
+          - locale: fr_FR
             items:
-            - type: text
+              - type: text
                 payload:
-                text: Chez
-            - type: button_image
+                  text: Chez
+              - type: button_image
                 payload:
-                idle: hanna
-                pressed: hanna_pressed
-                text: Hanna
-            - type: text
+                  idle: hanna
+                  pressed: hanna_pressed
+                  text: Hanna
+              - type: text
                 payload:
-                text: ", il y a un nouvel invité: c'est"
-            - type: button_image
+                  text: ", il y a un nouvel invité: c'est"
+              - type: button_image
                 payload:
-                idle: leka
-                pressed: leka_pressed
-                text: Leka
-                action:
+                  idle: leka
+                  pressed: leka_pressed
+                  text: Leka
+                  action:
                     type: robot
                     value: bootyShake
-            - type: text
+              - type: text
                 payload:
-                text: "!"
-        - locale: en_US
+                  text: "!"
+          - locale: en_US
             items:
-            - type: text
+              - type: text
                 payload:
-                text: At
-            - type: button_image
+                  text: At
+              - type: button_image
                 payload:
-                idle: hanna
-                pressed: hanna_pressed
-                text: Hanna
-            - type: text
+                  idle: hanna
+                  pressed: hanna_pressed
+                  text: Hanna
+              - type: text
                 payload:
-                text: "there is a new guest: It's"
-            - type: button_image
+                  text: "there is a new guest: It's"
+              - type: button_image
                 payload:
-                idle: leka
-                pressed: leka_pressed
-                text: Leka
-                action:
+                  idle: leka
+                  pressed: leka_pressed
+                  text: Leka
+                  action:
                     type: robot
                     value: bootyShake
-            - type: text
+              - type: text
                 payload:
-                text: "!"
+                  text: "!"
 
-    - background: hanna_and_leka_background
+      - background: hanna_and_leka_background
         l10n:
-        - locale: fr_FR
+          - locale: fr_FR
             items:
-            - type: button_image
+              - type: button_image
                 payload:
-                idle: hanna
-                pressed: hanna_pressed
-                text: Hanna
-            - type: text
+                  idle: hanna
+                  pressed: hanna_pressed
+                  text: Hanna
+              - type: text
                 payload:
-                text: et son
-            - type: button_image
+                  text: et son
+              - type: button_image
                 payload:
-                idle: nagib
-                pressed: nagib_pressed
-                text: Papa
-            - type: text
+                  idle: nagib
+                  pressed: nagib_pressed
+                  text: Papa
+              - type: text
                 payload:
-                text: jouent ensemble avec
-            - type: button_image
+                  text: jouent ensemble avec
+              - type: button_image
                 payload:
-                idle: leka
-                pressed: leka_pressed
-                text: Leka
-                action:
+                  idle: leka
+                  pressed: leka_pressed
+                  text: Leka
+                  action:
                     type: robot
                     value: randomMove
-        - locale: en_US
+          - locale: en_US
             items:
-            - type: button_image
+              - type: button_image
                 payload:
-                idle: hanna
-                pressed: hanna_pressed
-                text: Hanna
-            - type: text
+                  idle: hanna
+                  pressed: hanna_pressed
+                  text: Hanna
+              - type: text
                 payload:
-                text: and her
-            - type: button_image
+                  text: and her
+              - type: button_image
                 payload:
-                idle: nagib
-                pressed: nagib_pressed
-                text: Father
-            - type: text
+                  idle: nagib
+                  pressed: nagib_pressed
+                  text: Father
+              - type: text
                 payload:
-                text: are playing together with
-            - type: button_image
+                  text: are playing together with
+              - type: button_image
                 payload:
-                idle: leka
-                pressed: leka_pressed
-                text: Leka
-                action:
+                  idle: leka
+                  pressed: leka_pressed
+                  text: Leka
+                  action:
                     type: robot
                     value: randomMove
 
-    - background: hanna_and_leka_background
+      - background: hanna_and_leka_background
         l10n:
-        - locale: fr_FR
+          - locale: fr_FR
             items:
-            - type: text
+              - type: text
                 payload:
-                text: Leka
-            - type: button_image
+                  text: Leka
+              - type: button_image
                 payload:
-                idle: leka_rolls
-                text: roule
-                action:
+                  idle: leka_rolls
+                  text: roule
+                  action:
                     type: robot
                     value: spin
-            - type: text
+              - type: text
                 payload:
-                text: ", et fait de la"
-            - type: button_image
+                  text: ", et fait de la"
+              - type: button_image
                 payload:
-                idle: leka_lights
-                text: lumière
-                action:
+                  idle: leka_lights
+                  text: lumière
+                  action:
                     type: robot
                     value: yellow
-        - locale: en_US
+          - locale: en_US
             items:
-            - type: text
+              - type: text
                 payload:
-                text: Leka
-            - type: button_image
+                  text: Leka
+              - type: button_image
                 payload:
-                idle: leka_rolls
-                text: rolls
-                action:
-                    type: robot
-                    value: spin
-            - type: text
+                  idle: leka_rolls
+                  text: rolls
+                  action:
+                      type: robot
+                      value: spin
+              - type: text
                 payload:
-                text: "and do some"
-            - type: button_image
+                  text: "and do some"
+              - type: button_image
                 payload:
-                idle: leka_lights
-                text: lights
-                action:
+                  idle: leka_lights
+                  text: lights
+                  action:
                     type: robot
                     value: yellow
 
-    - background: hanna_and_leka_background
+      - background: hanna_and_leka_background
         l10n:
-        - locale: fr_FR
+          - locale: fr_FR
             items:
-            - type: button_image
+              - type: button_image
                 payload:
-                idle: hanna
-                pressed: hanna_pressed
-                text: Hanna
-            - type: text
+                  idle: hanna
+                  pressed: hanna_pressed
+                  text: Hanna
+              - type: text
                 payload:
-                text: "est fière, elle sait reconnaître la"
-            - type: button_image
+                  text: "est fière, elle sait reconnaître la"
+              - type: button_image
                 payload:
-                idle: colors
-                text: couleur
-                action:
+                  idle: colors
+                  text: couleur
+                  action:
                     type: activity
                     value: color_bingo_4-A7584D692B23422BB12683FA7BE393BE
-            - type: text
+              - type: text
                 payload:
-                text: de Leka
-        - locale: en_US
+                  text: de Leka
+          - locale: en_US
             items:
-            - type: button_image
+              - type: button_image
                 payload:
-                idle: hanna
-                pressed: hanna_pressed
-                text: Hanna
-            - type: text
+                  idle: hanna
+                  pressed: hanna_pressed
+                  text: Hanna
+              - type: text
                 payload:
-                text: "is proud she can recognize the"
-            - type: button_image
+                  text: "is proud she can recognize the"
+              - type: button_image
                 payload:
-                idle: colors
-                text: color
-                action:
+                  idle: colors
+                  text: color
+                  action:
                     type: activity
                     value: color_bingo_4-A7584D692B23422BB12683FA7BE393BE
-            - type: text
+              - type: text
                 payload:
-                text: of Leka
+                  text: of Leka
 
-    - background: hanna_and_leka_background
+      - background: hanna_and_leka_background
         l10n:
-        - locale: fr_FR
+          - locale: fr_FR
             items:
-            - type: image
+              - type: image
                 payload:
-                image: hanna_and_leka
-                size: 800
-                text: Fin
-        - locale: en_US
+                  image: hanna_and_leka
+                  size: 800
+                  text: Fin
+          - locale: en_US
             items:
-            - type: image
+              - type: image
                 payload:
-                image: hanna_and_leka
-                size: 800
-                text: The end
-
+                  image: hanna_and_leka
+                  size: 800
+                  text: The end
     """
     // swiftformat:enable all
 }
