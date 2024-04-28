@@ -9,6 +9,14 @@ import Foundation
 public extension Bundle {
     static func path(forImage image: String, in bundle: Bundle? = nil) -> String? {
         let kImageExtensions = [
+            ".story.asset.png",
+            ".story.asset.jpg",
+            ".story.asset.jpeg",
+            ".story.asset.svg",
+            ".story.icon.png",
+            ".story.icon.jpg",
+            ".story.icon.jpeg",
+            ".story.icon.svg",
             ".activity.asset.png",
             ".activity.asset.jpg",
             ".activity.asset.jpeg",

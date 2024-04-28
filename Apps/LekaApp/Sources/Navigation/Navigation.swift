@@ -12,6 +12,7 @@ import SwiftUI
 enum FullScreenCoverContent: Hashable, Identifiable {
     case welcomeView
     case activityView(carereceivers: [Carereceiver] = [])
+    case storyView(carereceivers: [Carereceiver] = [])
 
     // MARK: Internal
 
@@ -25,7 +26,7 @@ enum SheetContent: Hashable, Identifiable {
     case createCaregiver
     case editCaregiver
     case caregiverPicker
-    case carereceiverPicker(activity: Activity)
+    case carereceiverPicker(activity: Activity?, story: Story?)
     case settings
 
     // MARK: Internal
@@ -53,6 +54,7 @@ class Navigation: ObservableObject {
     @Published var fullScreenCoverContent: FullScreenCoverContent?
 
     @Published var currentActivity: Activity?
+    @Published var currentStory: Story?
 
     @Published var navigateToAccountCreationProcess: Bool = false
 

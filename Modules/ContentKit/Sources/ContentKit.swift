@@ -15,6 +15,7 @@ public enum ContentKit {
 
     public static let allActivities: [Activity] = ContentKit.listAllActivities() ?? []
     public static let allCurriculums: [Curriculum] = ContentKit.listSampleCurriculums() ?? []
+    public static let allStories: [Story] = ContentKit.listAllStories() ?? []
 
     public static func listRasterImages() -> [String] {
         let bundle = Bundle.module
@@ -90,5 +91,32 @@ public enum ContentKit {
         }
 
         return activities
+    }
+
+    private static func listAllStories() -> [Story]? {
+        let bundle = Bundle.module
+        let files = bundle.paths(forResourcesOfType: "story.yml", inDirectory: nil)
+
+        var stories: [Story] = []
+
+        for file in files {
+            let data = try? String(contentsOfFile: file, encoding: .utf8)
+
+            guard let data else {
+                log.error("Error reading file: \(file)")
+                continue
+            }
+
+            let story = try? YAMLDecoder().decode(Story.self, from: data)
+
+            guard let story else {
+                log.error("Error decoding file: \(file)")
+                continue
+            }
+
+            stories.append(story)
+        }
+
+        return stories
     }
 }

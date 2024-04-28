@@ -146,6 +146,78 @@
                 }
             }
         },
+        "content_kit.story_details_view.authors_section_title": {
+            "comment": "StoryDetailsView 'authors' section title",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Authors"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Auteurs"
+                    }
+                }
+            }
+        },
+        "content_kit.story_details_view.description_section_title": {
+            "comment": "StoryDetailsView 'description' section title",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Description"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Description"
+                    }
+                }
+            }
+        },
+        "content_kit.story_details_view.instructions_section_title": {
+            "comment": "StoryDetailsView 'instructions' section title",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Instructions"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Instructions"
+                    }
+                }
+            }
+        },
+        "content_kit.story_details_view.skills_section_title": {
+            "comment": "StoryDetailsView 'skills' section title",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Skills"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Comp\u00e9tences"
+                    }
+                }
+            }
+        },
         "contentkit.curriculum_grid_view.button_label": {
             "comment": "Discover button label of CurriculumGridView ",
             "extractionState": "extracted_with_value",
@@ -178,6 +250,24 @@
                     "stringUnit": {
                         "state": "translated",
                         "value": "Commencer l'activit\u00e9"
+                    }
+                }
+            }
+        },
+        "lekaapp.sample_story_list_view.start_story_button_label": {
+            "comment": "Start Story button label on Sample Story List view",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Start story"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "D\u00e9marrer l'histoire"
                     }
                 }
             }

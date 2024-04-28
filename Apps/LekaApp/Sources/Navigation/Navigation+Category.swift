@@ -9,6 +9,7 @@ extension Navigation {
         case home
         case curriculums
         case activities
+        case stories
         case gamepads
         case caregivers
         case carereceivers

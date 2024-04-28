@@ -2,6 +2,8 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import Foundation
+
 // swiftlint:disable identifier_name nesting cyclomatic_complexity
 
 public extension Robot {
@@ -298,6 +300,26 @@ public extension Robot {
             case let .range(start, end):
                 self.shine(.range(start: start, end: end, in: .black))
         }
+    }
+
+    func lightFrenzy() {
+        let colors: [Robot.Color] = [.red, .blue, .green, .yellow, .lightBlue, .purple, .orange, .pink]
+        var animationTime = 0.1
+
+        while animationTime < 4.5 {
+            DispatchQueue.main.asyncAfter(deadline: .now() + animationTime) {
+                Robot.shared.shine(self.getRandomLight(color: colors.randomElement()!))
+            }
+            animationTime += 0.2
+        }
+    }
+
+    private func getRandomLight(color: Robot.Color) -> Robot.Lights {
+        let lights: [Robot.Lights] = [
+            .earLeft(in: color), .earRight(in: color), .quarterBackLeft(in: color), .quarterBackRight(in: color),
+            .quarterFrontLeft(in: color), .quarterFrontRight(in: color),
+        ]
+        return lights.randomElement()!
     }
 
     func stopLights() {

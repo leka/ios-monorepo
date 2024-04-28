@@ -33,6 +33,10 @@ extension MainView {
                     self.title = String(l10n.MainView.Sidebar.CategoryLabel.activities.characters)
                     self.systemImage = "dice"
 
+                case .stories:
+                    self.title = String(l10n.MainView.Sidebar.CategoryLabel.stories.characters)
+                    self.systemImage = "text.book.closed"
+
                 case .gamepads:
                     self.title = String(l10n.MainView.Sidebar.CategoryLabel.gamepads.characters)
                     self.systemImage = "gamecontroller"
