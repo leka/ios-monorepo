@@ -69,6 +69,7 @@ jobs:
 
       - name: Upgrade bundle
         run: |
+          gem install bundler
           bundle update --bundler
 
       - name: tuist clean
