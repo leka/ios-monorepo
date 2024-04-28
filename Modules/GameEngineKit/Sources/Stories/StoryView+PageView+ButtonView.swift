@@ -82,21 +82,12 @@ public extension StoryView.PageView {
                 Spacer()
                 switch self.action {
                     case let .activity(id):
-                        NavigationLink {
-                            ActivityView(activity: Activity(id: id)!)
-                        } label: {
-                            if self.idle.isRasterImageFile {
-                                Image(uiImage: UIImage(named: self.idle)!)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(maxWidth: 200)
-                                    .padding(.top, 100)
-                            } else if self.idle.isVectorImageFile {
-                                SVGView(contentsOf: URL(fileURLWithPath: self.idle))
-                                    .frame(maxWidth: 200)
-                                    .padding(.top, 100)
-                            }
-                        }
+                        self.launchActivityButton(id: id)
+                            .fullScreenCover(isPresented: self.$launchActivity, content: {
+                                NavigationStack {
+                                    ActivityView(activity: ContentKit.allActivities.first(where: { $0.uuid == id })!)
+                                }
+                            })
                     case let .robot(actionType):
                         MultiIconButton(image: self.idle, pressed: self.pressed, action: actionType.getAction)
                             .padding(.top, 100)
@@ -104,6 +95,7 @@ public extension StoryView.PageView {
                         MultiIconButton(image: self.idle, pressed: self.pressed)
                             .padding(.top, 100)
                 }
+
                 Spacer()
 
                 Text(self.text)
@@ -115,15 +107,35 @@ public extension StoryView.PageView {
 
         // MARK: Private
 
+        @State private var launchActivity: Bool = false
+
         private let idle: String
         private let pressed: String
         private let text: String
         private let action: Page.Action
+
+        private func launchActivityButton(id _: String) -> some View {
+            Button {
+                self.launchActivity = true
+            } label: {
+                if self.idle.isRasterImageFile {
+                    Image(uiImage: UIImage(named: self.idle)!)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(maxWidth: 200)
+                        .padding(.top, 100)
+                } else if self.idle.isVectorImageFile {
+                    SVGView(contentsOf: URL(fileURLWithPath: self.idle))
+                        .frame(maxWidth: 200)
+                        .padding(.top, 100)
+                }
+            }
+        }
     }
 }
 
 #Preview {
     NavigationStack {
-        StoryView.PageView.ButtonImageView(payload: Story.mock.pages[1].items[1].payload)
+        StoryView.PageView(page: Story.mock.pages[1])
     }
 }
