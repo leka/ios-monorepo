@@ -8,12 +8,12 @@ import SVGView
 import SwiftUI
 
 public extension StoryView.PageView {
-    struct MultiIconButton: View {
+    struct PressableImageButton: View {
         // MARK: Lifecycle
 
-        public init(image: String, pressed: String, action: (() -> Void)? = nil) {
-            self.image = image
-            self.pressed = pressed
+        public init(idleImage: String, pressedImage: String, action: (() -> Void)? = nil) {
+            self.idleImage = idleImage
+            self.pressedImage = pressedImage
             self.action = action
         }
 
@@ -22,23 +22,23 @@ public extension StoryView.PageView {
         public var body: some View {
             VStack {
                 if self.isPressed {
-                    if self.pressed.isRasterImageFile {
-                        Image(uiImage: UIImage(named: self.pressed)!)
+                    if self.pressedImage.isRasterImageFile {
+                        Image(uiImage: UIImage(named: self.pressedImage)!)
                             .resizable()
                             .scaledToFit()
                             .frame(maxWidth: 200)
-                    } else if self.pressed.isVectorImageFile {
-                        SVGView(contentsOf: URL(fileURLWithPath: self.pressed))
+                    } else if self.pressedImage.isVectorImageFile {
+                        SVGView(contentsOf: URL(fileURLWithPath: self.pressedImage))
                             .frame(maxWidth: 200)
                     }
                 } else {
-                    if self.image.isRasterImageFile {
-                        Image(uiImage: UIImage(named: self.image)!)
+                    if self.idleImage.isRasterImageFile {
+                        Image(uiImage: UIImage(named: self.idleImage)!)
                             .resizable()
                             .scaledToFit()
                             .frame(maxWidth: 200)
-                    } else if self.image.isVectorImageFile {
-                        SVGView(contentsOf: URL(fileURLWithPath: self.image))
+                    } else if self.idleImage.isVectorImageFile {
+                        SVGView(contentsOf: URL(fileURLWithPath: self.idleImage))
                             .frame(maxWidth: 200)
                     }
                 }
@@ -61,8 +61,8 @@ public extension StoryView.PageView {
 
         @State private var isPressed = false
 
-        private let image: String
-        private let pressed: String
+        private let idleImage: String
+        private let pressedImage: String
         private let action: (() -> Void)?
     }
 }

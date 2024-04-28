@@ -89,10 +89,10 @@ public extension StoryView.PageView {
                                 }
                             })
                     case let .robot(actionType):
-                        MultiIconButton(image: self.idle, pressed: self.pressed, action: actionType.getAction)
+                        PressableImageButton(idleImage: self.idle, pressedImage: self.pressed, action: actionType.getAction)
                             .padding(.top, 100)
                     case .none:
-                        MultiIconButton(image: self.idle, pressed: self.pressed)
+                        PressableImageButton(idleImage: self.idle, pressedImage: self.pressed)
                             .padding(.top, 100)
                 }
 
