@@ -32,7 +32,7 @@ struct ConnectionView: View {
                     Text(l10n.ConnectionView.title)
                         .font(.title)
 
-                    Text(self.authManagerViewModel.errorMessage)
+                    Text(l10n.ConnectionView.signInFailedError)
                         .font(.footnote)
                         .foregroundStyle(self.authManagerViewModel.showErrorMessage ? .red : .clear)
                 }

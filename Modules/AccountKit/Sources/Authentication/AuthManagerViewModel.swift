@@ -28,7 +28,6 @@ public class AuthManagerViewModel: ObservableObject {
 
     // MARK: - Alerts
 
-    @Published public var errorMessage: String = ""
     @Published public var showErrorAlert = false
     @Published public var showErrorMessage = false
     @Published public var showActionRequestAlert = false
@@ -36,7 +35,6 @@ public class AuthManagerViewModel: ObservableObject {
     @Published public var isLoading: Bool = false
 
     public func resetErrorMessage() {
-        self.errorMessage = ""
         self.showErrorAlert = false
         self.showErrorMessage = false
     }
@@ -57,12 +55,7 @@ public class AuthManagerViewModel: ObservableObject {
 
         self.authManager.authenticationErrorPublisher
             .receive(on: DispatchQueue.main)
-            .sink { [weak self] error in
-                if let authError = error as? AuthManager.AuthenticationError {
-                    self?.errorMessage = authError.localizedDescription
-                } else {
-                    self?.errorMessage = error.localizedDescription
-                }
+            .sink { [weak self] _ in
                 switch self?.userAction {
                     case .userIsSigningOut,
                          .userIsDeletingAccount,
@@ -117,7 +110,6 @@ public class AuthManagerViewModel: ObservableObject {
     private func resetState() {
         self.userAction = .none
         self.userEmailIsVerified = false
-        self.errorMessage = ""
         self.showActionRequestAlert = false
         self.showErrorAlert = false
         self.showErrorMessage = false
