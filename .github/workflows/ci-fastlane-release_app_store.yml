@@ -52,6 +52,7 @@ jobs:
 
       - name: bundle install
         run: |
+          gem install bundler
           bundle install
 
       - name: tuist fetch
