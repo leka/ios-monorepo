@@ -6,6 +6,17 @@ import SpriteKit
 import SwiftUI
 
 extension SKSpriteNode {
+    func repositionInside(dropZone: SKSpriteNode) {
+        let dropZoneFrame = dropZone.frame
+
+        let newX = max(dropZoneFrame.minX + size.width / 2,
+                       min(position.x, dropZoneFrame.maxX - size.width / 2))
+        let newY = max(dropZoneFrame.minY + size.height / 3,
+                       min(position.y, dropZoneFrame.maxY - size.height / 3))
+
+        position = CGPoint(x: newX, y: newY)
+    }
+
     func fullyContains(bounds: CGRect) -> Bool {
         (position.x >= bounds.minX)
             && (position.y >= bounds.minY)

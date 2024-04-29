@@ -152,6 +152,11 @@ extension DragAndDropIntoZonesView {
         func goodAnswerBehavior(_ node: DraggableImageAnswerNode) {
             node.scaleForMax(sizeOf: self.biggerSide)
             node.zPosition = 10
+            if node.fullyContains(bounds: self.dropZoneA.node.frame) {
+                node.repositionInside(dropZone: self.dropZoneA.node)
+            } else if let dropZoneB, node.fullyContains(bounds: dropZoneB.node.frame) {
+                node.repositionInside(dropZone: dropZoneB.node)
+            }
             node.isDraggable = false
             self.onDropAction(node)
             if case .completed = self.viewModel.exercicesSharedData.state {
