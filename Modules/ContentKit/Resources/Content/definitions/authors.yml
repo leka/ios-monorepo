@@ -23,11 +23,31 @@ list:
           After 10 years at DASCA as a special educator, she joined the Leka team as our Leka Expert and Customer Manager.
           She is the one you should contact if you have any questions!
 
+  - id: hanna_and_nagib
+    visible: true
+    name: Hanna & Nagib
+    website: ""
+    email: ""
+    professions: []
+    l10n:
+      - locale: fr_FR
+        description: |
+          Hanna et son papa Nagib ont rejoint le projet Leka en 2015.
+          Ils ont été les premiers à tester le robot et à nous fournir des retours de leur utilisation.
+          Depuis, ils sont devenus des membres essentiels de la famille Leka et nous aident à perfectionner notre robot afin qu'il puisse aider d'autres enfants.
+          Hanna et Nagib ont particulièrement aidé à la création de l'histoire entre Hanna et Leka.
+
+      - locale: en_US
+        description: |
+          Hanna and her dad Nagib joined the Leka project in 2015.
+          They were the first to test the robot and provide invaluable feedback.
+          Since then, they have become integral members of the Leka family, helping us improve our robot to assist other children.
+          Hanna and Nagib have particularly helped create the story between Hanna and Leka.
   - id: julie_tuil
     visible: true
     name: Julie Tuil
     website: https://www.julietuil.com/
-    email: ''
+    email: ""
     professions:
       - speech_language_therapist
       - aba_therapist
