@@ -70,7 +70,7 @@ public class DatabaseOperations {
         .eraseToAnyPublisher()
     }
 
-    public func observeAll<T: AccountDocument>(from collection: DatabaseCollection) -> AnyPublisher<[T], Error> {
+    public func observeAll<T: Codable>(from collection: DatabaseCollection) -> AnyPublisher<[T], Error> {
         let subject = CurrentValueSubject<[T], Error>([])
 
         if let existingListener = listenerRegistrations[collection.rawValue] {
