@@ -6,18 +6,29 @@ import SpriteKit
 import SwiftUI
 
 extension SKSpriteNode {
+    func repositionInside(dropZone: SKSpriteNode) {
+        let dropZoneFrame = dropZone.frame
+
+        let newX = max(dropZoneFrame.minX + size.width / 2,
+                       min(position.x, dropZoneFrame.maxX - size.width / 2))
+        let newY = max(dropZoneFrame.minY + size.height / 3,
+                       min(position.y, dropZoneFrame.maxY - size.height / 3))
+
+        position = CGPoint(x: newX, y: newY)
+    }
+
     func fullyContains(bounds: CGRect) -> Bool {
-        (position.x - (size.width / 2) >= bounds.minX)
-            && (position.y - (size.height / 2) >= bounds.minY)
-            && (position.x + (size.width / 2) <= bounds.maxX)
-            && (position.y + (size.height / 2) <= bounds.maxY)
+        (position.x >= bounds.minX)
+            && (position.y >= bounds.minY)
+            && (position.x <= bounds.maxX)
+            && (position.y <= bounds.maxY)
     }
 
     func fullyContains(location: CGPoint, bounds: CGRect) -> Bool {
-        (location.x - (size.width / 3) >= bounds.minX)
-            && (location.y - (size.height / 3) >= bounds.minY)
-            && (location.x + (size.width / 3) <= bounds.maxX)
-            && (location.y + (size.height / 3) <= bounds.maxY)
+        (location.x >= bounds.minX)
+            && (location.y >= bounds.minY)
+            && (location.x <= bounds.maxX)
+            && (location.y <= bounds.maxY)
     }
 
     // make sure the bigger side of a node measures a max of 170 pts
