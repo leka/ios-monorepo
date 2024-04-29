@@ -143,3 +143,25 @@ repos:
         files: .*\.curriculum\.yml
         types: [yaml]
         pass_filenames: false
+
+      - id: check_yaml_content_stories
+        name: Check story.yml files
+        description: |
+          This hook checks story.yml files for:
+            - uuid and filename consistency
+            - jtd schema validation
+        entry: python3 Tools/Hooks/check_yaml_content_stories.py
+        language: python
+        additional_dependencies: ["ruamel.yaml"]
+        files: .*\.story\.yml
+        types: [yaml]
+
+      - id: check_yaml_content_stories_unique_uuid
+        name: Check story.yml files for unique uuid
+        description: |
+          This hook checks story.yml files for unique uuid
+        entry: python3 Tools/Hooks/check_yaml_content_stories_unique_uuid.py
+        language: python
+        files: .*\.story\.yml
+        types: [yaml]
+        pass_filenames: false

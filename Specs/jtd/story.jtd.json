@@ -1,0 +1,234 @@
+{
+    "properties": {
+        "version": {
+            "type": "string"
+        },
+        "uuid": {
+            "type": "string"
+        },
+        "name": {
+            "type": "string"
+        },
+        "created_at": {
+            "type": "string"
+        },
+        "last_edited_at": {
+            "type": "string"
+        },
+        "status": {
+            "ref": "$status"
+        },
+        "authors": {
+            "elements": {
+                "ref": "$author"
+            }
+        },
+        "skills": {
+            "elements": {
+                "ref": "$skill"
+            }
+        },
+        "hmi": {
+            "elements": {
+                "ref": "$hmi"
+            }
+        },
+        "types": {
+            "elements": {
+                "ref": "$type"
+            }
+        },
+        "tags": {
+            "elements": {
+                "ref": "$tag"
+            }
+        },
+        "locales": {
+            "elements": {
+                "ref": "$locale"
+            }
+        },
+        "l10n": {
+            "elements": {
+                "ref": "$l10n"
+            }
+        },
+        "pages": {
+            "elements": {
+                "ref": "$page"
+            }
+        }
+    },
+    "definitions": {
+        "$author": {
+            "enum": ["leka", "hanna_and_nagib"]
+        },
+        "$hmi": {
+            "enum": ["robot", "tablet", "magic_cards", "tablet_robot"]
+        },
+        "$locale": {
+            "enum": ["en_US", "fr_FR"]
+        },
+        "$status": {
+            "enum": ["draft", "published"]
+        },
+        "$l10n": {
+            "properties": {
+                "locale": {
+                    "ref": "$locale"
+                },
+                "details": {
+                    "ref": "$l10n/details"
+                }
+            }
+        },
+        "$l10n/details": {
+            "properties": {
+                "icon": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "subtitle": {
+                    "type": "string",
+                    "nullable": true
+                },
+                "short_description": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "instructions": {
+                    "type": "string",
+                    "nullable": true
+                }
+            }
+        },
+        "$skill": {
+            "type": "string"
+        },
+        "$type": {
+            "enum": ["one_on_one", "group"]
+        },
+        "$tag": {
+            "type": "string"
+        },
+        "$page": {
+            "properties": {
+                "background": {
+                    "type": "string"
+                },
+                "l10n": {
+                    "elements": {
+                        "ref": "$page/l10n"
+                    }
+                }
+            }
+        },
+        "$page/l10n": {
+            "properties": {
+                "locale": {
+                    "ref": "$locale"
+                },
+                "items": {
+                    "elements": {
+                        "ref": "$page/item"
+                    }
+                }
+            }
+        },
+        "$page/item": {
+            "discriminator": "type",
+            "mapping": {
+                "text": {
+                    "properties": {
+                        "payload": {
+                            "ref": "$page/item/text/payload"
+                        }
+                    }
+                },
+                "image": {
+                    "properties": {
+                        "payload": {
+                            "ref": "$page/item/image/payload"
+                        }
+                    }
+                },
+                "button_image": {
+                    "properties": {
+                        "payload": {
+                            "ref": "$page/item/button_image/payload"
+                        }
+                    }
+                }
+            }
+        },
+        "$page/item/text/payload": {
+            "properties": {
+                "text": {
+                    "type": "string"
+                }
+            }
+        },
+        "$page/item/image/payload": {
+            "properties": {
+                "image": {
+                    "type": "string"
+                },
+                "size": {
+                    "type": "uint32"
+                },
+                "text": {
+                    "type": "string"
+                }
+            }
+        },
+        "$page/item/button_image/payload": {
+            "properties": {
+                "idle": {
+                    "type": "string"
+                },
+                "text": {
+                    "type": "string"
+                }
+            },
+            "optionalProperties": {
+                "pressed": {
+                    "type": "string"
+                },
+                "action": {
+                    "ref": "$page/item/button_image/action"
+                }
+            }
+        },
+        "$page/item/button_image/action": {
+            "discriminator": "type",
+            "mapping": {
+                "robot": {
+                    "properties": {
+                        "value": {
+                            "enum": [
+                                "bootyShake",
+                                "randomColor",
+                                "randomMove",
+                                "reinforcer",
+                                "yellow",
+                                "spin",
+                                "dance"
+                            ]
+                        }
+                    }
+                },
+                "activity": {
+                    "properties": {
+                        "value": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
