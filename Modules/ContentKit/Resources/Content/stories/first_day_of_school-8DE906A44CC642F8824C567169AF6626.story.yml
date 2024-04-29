@@ -12,6 +12,7 @@ last_edited_at: "2024-03-31T23:33:50.987548"
 status: published
 
 authors:
+  - hanna_and_nagib
   - leka
 
 skills:
@@ -33,37 +34,41 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon: school
+      icon: first_day_of_school
 
-      title: 1er jour d'école
-      subtitle:
+      title: Premier Jour d'École
+      subtitle: Réveil et Préparation
 
       short_description: |
-        Suivez Hanna dans sa première journée excitante à l'école.
+        Vivez le matin du premier jour d'école de Hanna, de son réveil à son départ pour l'école.
 
       description: |
-        Découvrez la journée de Hanna, de la préparation le matin jusqu'à son arrivée à l'école.
+        Suivez Hanna dès son réveil, partagez son petit-déjeuner et aidez-la à préparer son sac avec Leka, avant que son papa ne la conduise à l'école.
+        Découvrez les moments précieux de préparation avant une grande étape dans sa vie.
 
       instructions: |
-        - Aidez Hanna à se préparer pour son premier jour d'école.
-        - Accompagnez-la à l'école et aidez-la à dire au revoir à son papa.
+        - **Explorez l'histoire** : Avancez dans l'histoire en touchant les flèches ou en balayant l'écran vers la droite. Revenez aux pages précédentes en balayant vers la gauche.
+        - **Interagissez avec les personnages** : Touchez les personnages pour les voir réagir et touchez Leka pour activer le robot.
+        - **Profitez des activités** : Participez aux activités liées à l'histoire pour enrichir l'apprentissage par le jeu.
 
   - locale: en_US
     details:
-      icon: school
+      icon: first_day_of_school
 
-      title: First School Day
-      subtitle:
+      title: First Day of School
+      subtitle: Waking Up and Getting Ready
 
       short_description: |
-        Follow Hanna on her exciting first day at school.
+        Experience the morning of Hanna's first day at school, from waking up to heading out.
 
       description: |
-        Experience Hanna's day from morning preparation to her arrival at school.
+        Follow Hanna from the moment she wakes up, share her breakfast, and help her prepare her bag with Leka, before her dad drives her to school.
+        Discover the precious moments of preparation before a major milestone in her life.
 
       instructions: |
-        - Help Hanna get ready for her first day of school.
-        - Join her on the journey to school and help her say goodbye to her dad.
+        - **Explore the story** : Move forward in the story by touching the arrows or swiping the screen to the right. Go back to previous pages by swiping to the left.
+        - **Interact with the characters** : Touch the characters to see them react and touch Leka to activate the robot.
+        - **Enjoy the activities** : Participate in the activities related to the story to enrich learning through play.
 
 pages:
   - background: school_background
@@ -74,14 +79,14 @@ pages:
             payload:
               image: hanna_and_leka
               size: 800
-              text: Premier jour d'école
+              text: Premier Jour d'École
       - locale: en_US
         items:
           - type: image
             payload:
               image: hanna_and_leka
               size: 800
-              text: First day at school
+              text: First Day of School
 
   - background: school_background
     l10n:
@@ -99,12 +104,15 @@ pages:
         items:
           - type: text
             payload:
-              text: Today it's the first day at school for
+              text: Today is
           - type: button_image
             payload:
               idle: hanna
               pressed: hanna_pressed
-              text: Hanna
+              text: Hanna's
+          - type: text
+            payload:
+              text: first day at school
 
   - background: school_background
     l10n:
@@ -162,7 +170,7 @@ pages:
               text: Hanna
           - type: text
             payload:
-              text: commence par boire du
+              text: boit du
           - type: button_image
             payload:
               idle: juice
@@ -170,7 +178,7 @@ pages:
               text: jus d'orange
           - type: text
             payload:
-              text: et manger des
+              text: et mange des
           - type: button_image
             payload:
               idle: waffle
@@ -185,7 +193,7 @@ pages:
               text: Hanna
           - type: text
             payload:
-              text: begins drinking
+              text: drinks
           - type: button_image
             payload:
               idle: juice
@@ -193,7 +201,7 @@ pages:
               text: orange juice
           - type: text
             payload:
-              text: and eating
+              text: and eats
           - type: button_image
             payload:
               idle: waffle
@@ -299,7 +307,7 @@ pages:
               text: crayon
           - type: text
             payload:
-              text: dedans.
+              text: dedans
       - locale: en_US
         items:
           - type: button_image
@@ -336,7 +344,7 @@ pages:
               text: pencil
           - type: text
             payload:
-              text: inside.
+              text: inside
 
   - background: school_background
     l10n:
@@ -404,7 +412,7 @@ pages:
             payload:
               idle: coat
               pressed: coat_pressed
-              text: manteau.
+              text: manteau
       - locale: en_US
         items:
           - type: text
@@ -430,7 +438,7 @@ pages:
             payload:
               idle: coat
               pressed: coat_pressed
-              text: coat.
+              text: coat
 
   - background: school_background
     l10n:
@@ -459,7 +467,7 @@ pages:
               text: voiture
           - type: text
             payload:
-              text: à l'école.
+              text: à l'école
       - locale: en_US
         items:
           - type: button_image
@@ -469,7 +477,7 @@ pages:
               text: Dad
           - type: text
             payload:
-              text: takes
+              text: drives
           - type: button_image
             payload:
               idle: hanna
@@ -477,15 +485,12 @@ pages:
               text: Hanna
           - type: text
             payload:
-              text: by
+              text: to school with his
           - type: button_image
             payload:
               idle: car
               pressed: car_pressed
               text: car
-          - type: text
-            payload:
-              text: to school.
 
   - background: school_background
     l10n:
@@ -506,7 +511,7 @@ pages:
             payload:
               idle: nagib
               pressed: nagib_pressed
-              text: papa.
+              text: papa
       - locale: en_US
         items:
           - type: text
@@ -524,7 +529,7 @@ pages:
             payload:
               idle: nagib
               pressed: nagib_pressed
-              text: dad.
+              text: dad
 
   - background: school_background
     l10n:
@@ -541,4 +546,4 @@ pages:
             payload:
               image: hanna_and_leka
               size: 800
-              text: The end
+              text: The End
