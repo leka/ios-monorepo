@@ -144,6 +144,31 @@ public class DatabaseOperations {
         .eraseToAnyPublisher()
     }
 
+    public func save<T: ActivityCompletionDataDocument>(data: T, in collection: DatabaseCollection) -> AnyPublisher<T, Error> {
+        Future<T, Error> { promise in
+            let docRef = self.database.collection(collection.rawValue).document()
+            var documentData = data
+            documentData.rootOwnerUid = Auth.auth().currentUser?.uid ?? ""
+            documentData.id = docRef.documentID
+
+            do {
+                try docRef.setData(from: documentData) { error in
+                    if let error {
+                        log.error("\(error.localizedDescription)")
+                        promise(.failure(DatabaseError.customError(error.localizedDescription)))
+                    } else {
+                        log.info("Document \(docRef.documentID) created successfully in \(collection). 🎉")
+                        promise(.success(documentData))
+                    }
+                }
+            } catch {
+                log.error("\(error.localizedDescription)")
+                promise(.failure(DatabaseError.encodeError))
+            }
+        }
+        .eraseToAnyPublisher()
+    }
+
     // MARK: Private
 
     private let database = Firestore.firestore()
