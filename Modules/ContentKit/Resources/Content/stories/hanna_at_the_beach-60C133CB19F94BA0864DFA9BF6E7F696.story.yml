@@ -33,29 +33,39 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon: beach
-      title: Hanna & Leka à la plage
-      subtitle:
+      icon: hanna_at_the_beach
+      title: Hanna & Leka à la Plage
+      subtitle: Un Jour de Soleil et de Sable
+
       short_description: |
-        Vivez une journée ensoleillée à la plage avec Hanna et Leka.
+        Profitez d'une journée ensoleillée à la plage avec Hanna et Leka, pleine de jeux et de découvertes.
+
       description: |
-        Rejoignez Hanna et son père pour une journée de jeux et de construction de châteaux de sable à la plage.
+        Rejoignez Hanna, son père, et Leka pour une journée mémorable à la plage.
+        Ensemble, ils appliquent de la crème solaire, construisent des châteaux de sable et s'amusent sous le soleil.
+
       instructions: |
-        - Aidez Hanna à se préparer pour la plage.
-        - Construisez un château de sable avec Hanna et Leka.
+        - **Explorez l'histoire** : Avancez dans l'histoire en touchant les flèches ou en balayant l'écran vers la droite. Revenez aux pages précédentes en balayant vers la gauche.
+        - **Interagissez avec les personnages** : Touchez les personnages pour les voir réagir et touchez Leka pour activer le robot.
+        - **Profitez des activités** : Participez aux activités liées à l'histoire pour enrichir l'apprentissage par le jeu.
 
   - locale: en_US
     details:
-      icon: beach
-      title: Hanna & Leka at the beach
-      subtitle:
+      icon: hanna_at_the_beach
+      title: Hanna & Leka at the Beach
+      subtitle: A Day of Sun and Sand
+
       short_description: |
-        Experience a sunny day at the beach with Hanna and Leka.
+        Enjoy a sunny day at the beach with Hanna and Leka, filled with games and discoveries.
+
       description: |
-        Join Hanna and her father for a day of play and sandcastle building at the beach.
+        Join Hanna, her father, and Leka for a memorable day at the beach.
+        Together, they apply sunscreen, build sandcastles, and have fun under the sun.
+
       instructions: |
-        - Help Hanna get ready for the beach.
-        - Build a sandcastle with Hanna and Leka.
+        - **Explore the story** : Move forward in the story by touching the arrows or swiping the screen to the right. Go back to previous pages by swiping to the left.
+        - **Interact with the characters** : Touch the characters to see them react and touch Leka to activate the robot.
+        - **Enjoy the activities** : Participate in the activities related to the story to enrich learning through play.
 
 pages:
   - background: hanna_beach_background
@@ -66,14 +76,14 @@ pages:
             payload:
               image: hanna_on_the_beach
               size: 800
-              text: Hanna et Leka à la plage
+              text: Hanna et Leka à la Plage
       - locale: en_US
         items:
           - type: image
             payload:
               image: hanna_on_the_beach
               size: 800
-              text: Hanna and Leka at the beach
+              text: Hanna and Leka at the Beach
 
   - background: hanna_beach_background
     l10n:
@@ -83,7 +93,7 @@ pages:
             payload:
               idle: hanna
               pressed: hanna_pressed
-              text: Hanna
+              text: Hanna,
           - type: text
             payload:
               text: son
@@ -110,14 +120,14 @@ pages:
             payload:
               idle: beach
               pressed: beach_pressed
-              text: plage.
+              text: plage
       - locale: en_US
         items:
           - type: button_image
             payload:
               idle: hanna
               pressed: hanna_pressed
-              text: Hanna
+              text: Hanna,
           - type: text
             payload:
               text: her
@@ -139,12 +149,12 @@ pages:
                 value: randomMove
           - type: text
             payload:
-              text: are going to the
+              text: go to the
           - type: button_image
             payload:
               idle: beach
               pressed: beach_pressed
-              text: beach.
+              text: beach
 
   - background: hanna_beach_background
     l10n:
@@ -160,8 +170,8 @@ pages:
               text: met de la
           - type: button_image
             payload:
-              idle: sun_cream
-              pressed: sun_cream_pressed
+              idle: sunscreen
+              pressed: sunscreen_pressed
               text: crème solaire
           - type: text
             payload:
@@ -177,18 +187,18 @@ pages:
             payload:
               idle: nagib
               pressed: nagib_pressed
-              text: Father
+              text: Dad
           - type: text
             payload:
-              text: put on some
+              text: puts
           - type: button_image
             payload:
-              idle: sun_cream
-              pressed: sun_cream_pressed
-              text: sun cream
+              idle: sunscreen
+              pressed: sunscreen_pressed
+              text: sunscreen
           - type: text
             payload:
-              text: to
+              text: "on"
           - type: button_image
             payload:
               idle: hanna
@@ -209,8 +219,8 @@ pages:
               text: met ses
           - type: button_image
             payload:
-              idle: sun_glasses
-              pressed: sun_glasses_pressed
+              idle: sunglasses
+              pressed: sunglasses_pressed
               text: lunettes de soleil
           - type: text
             payload:
@@ -219,7 +229,7 @@ pages:
             payload:
               idle: sun
               pressed: sun_pressed
-              text: soleil.
+              text: soleil
       - locale: en_US
         items:
           - type: button_image
@@ -229,20 +239,20 @@ pages:
               text: Hanna
           - type: text
             payload:
-              text: put her
+              text: puts on her
           - type: button_image
             payload:
-              idle: sun_glasses
-              pressed: sun_glasses_pressed
-              text: sun glasses
+              idle: sunglasses
+              pressed: sunglasses_pressed
+              text: sunglasses
           - type: text
             payload:
-              text: on to protect her from the
+              text: to protect her from the
           - type: button_image
             payload:
               idle: sun
               pressed: sun_pressed
-              text: sun.
+              text: sun
 
   - background: hanna_beach_background
     l10n:
@@ -266,12 +276,12 @@ pages:
                 value: randomMove
           - type: text
             payload:
-              text: décide de faire un
+              text: veulent faire un
           - type: button_image
             payload:
               idle: sand_castle
               pressed: sand_castle_pressed
-              text: château de sable.
+              text: château de sable
       - locale: en_US
         items:
           - type: button_image
@@ -292,7 +302,7 @@ pages:
                 value: randomMove
           - type: text
             payload:
-              text: decided to build a
+              text: want to build a
           - type: button_image
             payload:
               idle: sand_castle
@@ -321,7 +331,7 @@ pages:
                 value: randomMove
           - type: text
             payload:
-              text: ont construit le plus beau
+              text: construisent le plus beau
           - type: button_image
             payload:
               idle: sand_castle
@@ -329,7 +339,7 @@ pages:
               text: château de sable
           - type: text
             payload:
-              text: de toute la plage.
+              text: de la plage
       - locale: en_US
         items:
           - type: button_image
@@ -358,7 +368,7 @@ pages:
               text: sand castle
           - type: text
             payload:
-              text: of the whole beach.
+              text: of the beach
 
   - background: hanna_beach_background
     l10n:
@@ -382,7 +392,7 @@ pages:
                 value: randomMove
           - type: text
             payload:
-              text: se sont bien amusés.
+              text: se sont bien amusés
       - locale: en_US
         items:
           - type: button_image
@@ -403,7 +413,7 @@ pages:
                 value: randomMove
           - type: text
             payload:
-              text: had a great fun.
+              text: had a great fun
 
   - background: hanna_beach_background
     l10n:
@@ -420,4 +430,4 @@ pages:
             payload:
               image: hanna_on_the_beach
               size: 800
-              text: The end
+              text: The End

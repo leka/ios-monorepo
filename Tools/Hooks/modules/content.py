@@ -140,6 +140,8 @@ def find_missing_icons(data: str, of_type: str):
             icon_name = icon + ".activity"
         if of_type == "curriculum":
             icon_name = icon + ".curriculum"
+        if of_type == "story":
+            icon_name = icon + ".story"
         if find_icon(icon_name) is None:
             missing_icons.append(icon)
 

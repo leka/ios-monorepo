@@ -35,6 +35,8 @@ public extension StoryView {
                     SVGView(contentsOf: URL(fileURLWithPath: self.background))
                         .frame(width: .infinity)
                         .ignoresSafeArea(.all)
+                } else {
+                    Color.lkBackground
                 }
 
                 HStack(alignment: .firstTextBaseline) {
