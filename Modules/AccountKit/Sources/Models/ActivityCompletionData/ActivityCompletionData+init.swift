@@ -11,7 +11,8 @@ public extension ActivityCompletionData {
         caregiverID: String = "",
         carereceiverID: String = "",
         startTimestamp: Date?,
-        endTimestamp: Date?
+        endTimestamp: Date?,
+        completionData: [[ExerciseCompletionData]] = [[]]
     ) {
         self.id = id
         self.rootOwnerUid = rootOwnerUid
@@ -19,5 +20,6 @@ public extension ActivityCompletionData {
         self.carereceiverID = carereceiverID
         self.startTimestamp = startTimestamp
         self.endTimestamp = endTimestamp
+        self.completionData = completionData
     }
 }
