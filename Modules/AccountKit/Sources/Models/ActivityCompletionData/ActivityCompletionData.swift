@@ -5,20 +5,6 @@
 import FirebaseFirestore
 import SwiftUI
 
-// MARK: - ActivityCompletionDataDocument
-
-public protocol ActivityCompletionDataDocument: Codable, Identifiable {
-    var id: String? { get set }
-    var rootOwnerUid: String { get set }
-    var caregiverID: String { get set }
-    var carereceiverIDs: [String] { get set }
-    var startTimestamp: Date? { get set }
-    var endTimestamp: Date? { get set }
-    var completionData: String { get set }
-}
-
-// MARK: - ActivityCompletionData
-
 public struct ActivityCompletionData: Hashable, ActivityCompletionDataDocument {
     // MARK: Public
 

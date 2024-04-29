@@ -5,17 +5,6 @@
 import FirebaseFirestore
 import SwiftUI
 
-// MARK: - AccountDocument
-
-public protocol AccountDocument: Codable, Identifiable {
-    var id: String? { get set }
-    var rootOwnerUid: String { get set }
-    var createdAt: Date? { get set }
-    var lastEditedAt: Date? { get set }
-}
-
-// MARK: - RootAccount
-
 public struct RootAccount: AccountDocument {
     // MARK: Public
 
