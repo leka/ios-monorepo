@@ -5,13 +5,14 @@
 version: 1.0.0
 
 uuid: 5213404A073D47198A6B3B694396CB8B
-name: cook_pancakes
+name: hanna_makes_pancakes
 
 created_at: "2024-03-31T23:33:50.987548"
 last_edited_at: "2024-03-31T23:33:50.987548"
 status: published
 
 authors:
+  - hanna_and_nagib
   - leka
 
 skills:
@@ -33,29 +34,41 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon: kitchen
-      title: Hanna fait des crêpes
-      subtitle:
+      icon: hanna_makes_pancakes
+      title: Hanna Fait des Crêpes
+      subtitle: Une Vrai Recette Délicieuse
+
       short_description: |
-        Rejoignez Hanna et Leka dans une aventure culinaire pour apprendre à faire des crêpes.
+        Hanna et Leka se lancent dans une aventure culinaire pour apprendre à faire des crêpes.
+
       description: |
-        Une histoire engageante où Hanna et Leka vous guident à travers les étapes pour préparer des crêpes délicieuses.
+        Rejoignez Hanna et Leka dans leur cuisine magique pour une aventure culinaire exaltante où ils apprennent à faire des crêpes.
+
+        Découvrez les secrets pour concocter les crêpes parfaites, tout en s'amusant avec cette recette facile à suivre et des interactions engageantes.
+
       instructions: |
-        - Suivez les instructions étape par étape pour aider Hanna et Leka à faire des crêpes.
-        - Interagissez avec les éléments pour une expérience plus immersive.
+        - **Explorez l'histoire** : Avancez dans l'histoire en touchant les flèches ou en balayant l'écran vers la droite. Revenez aux pages précédentes en balayant vers la gauche.
+        - **Interagissez avec les personnages** : Touchez les personnages pour les voir réagir et touchez Leka pour activer le robot.
+        - **Profitez des activités** : Participez aux activités liées à l'histoire pour enrichir l'apprentissage par le jeu.
 
   - locale: en_US
     details:
-      icon: kitchen
-      title: Hanna cooks pancakes
-      subtitle:
+      icon: hanna_makes_pancakes
+      title: Hanna Makes Pancakes
+      subtitle: A Real Delicious Recipe
+
       short_description: |
-        Join Hanna and Leka in a culinary adventure to learn how to cook pancakes.
+        Hanna and Leka embark on a culinary adventure to learn how to make pancakes.
+
       description: |
-        An engaging story where Hanna and Leka guide you through the steps to make delicious pancakes.
+        Join Hanna and Leka in their magical kitchen for an exciting culinary adventure where they learn to make pancakes.
+
+        Discover the secrets to making the perfect pancakes while having fun with this easy-to-follow recipe and engaging interactions.
+
       instructions: |
-        - Follow step-by-step instructions to help Hanna and Leka cook pancakes.
-        - Interact with elements for a more immersive experience.
+        - **Explore the story** : Move forward in the story by touching the arrows or swiping the screen to the right. Go back to previous pages by swiping to the left.
+        - **Interact with the characters** : Touch the characters to see them react and touch Leka to activate the robot.
+        - **Enjoy the activities** : Participate in the activities related to the story to enrich learning through play.
 
 pages:
   - background: pancakes_background
@@ -66,14 +79,14 @@ pages:
             payload:
               image: hanna_makes_pancakes
               size: 800
-              text: Hanna et Leka font des crêpes
+              text: Hanna et Leka Font des Crêpes
       - locale: en_US
         items:
           - type: image
             payload:
               image: hanna_makes_pancakes
               size: 800
-              text: Hanna and Leka cook pancakes
+              text: Hanna and Leka Make Pancakes
 
   - background: pancakes_background
     l10n:
@@ -97,7 +110,7 @@ pages:
                 value: bootyShake
           - type: text
             payload:
-              text: ", ont envie de cuisiner aujourd’hui."
+              text: "ont envie de cuisiner aujourd'hui"
       - locale: en_US
         items:
           - type: button_image
@@ -118,7 +131,7 @@ pages:
                 value: bootyShake
           - type: text
             payload:
-              text: "want to cook today."
+              text: "want to cook today"
 
   - background: pancakes_background
     l10n:
@@ -142,7 +155,7 @@ pages:
               text: crêpes
           - type: text
             payload:
-              text: " !"
+              text: "!"
       - locale: en_US
         items:
           - type: text
@@ -184,7 +197,7 @@ pages:
               text: saladier
           - type: text
             payload:
-              text: du placard et le pose sur la table.
+              text: du placard et le pose sur la table
       - locale: en_US
         items:
           - type: button_image
@@ -202,7 +215,7 @@ pages:
               text: bowl
           - type: text
             payload:
-              text: from the cupboard and puts it on the table.
+              text: from the cupboard and puts it on the table
 
   - background: pancakes_background
     l10n:
@@ -215,12 +228,12 @@ pages:
               text: Hanna
           - type: text
             payload:
-              text: met 250g de
+              text: met
           - type: button_image
             payload:
               idle: flour
               pressed: flour_pressed
-              text: farine
+              text: 250g de farine
           - type: text
             payload:
               text: et une pincée de
@@ -229,9 +242,6 @@ pages:
               idle: salt
               pressed: salt_pressed
               text: sel
-          - type: text
-            payload:
-              text: .
       - locale: en_US
         items:
           - type: button_image
@@ -241,12 +251,12 @@ pages:
               text: Hanna
           - type: text
             payload:
-              text: puts 250g of
+              text: pours
           - type: button_image
             payload:
               idle: flour
               pressed: flour_pressed
-              text: flour
+              text: 250g of flour
           - type: text
             payload:
               text: and a pinch of
@@ -255,9 +265,6 @@ pages:
               idle: salt
               pressed: salt_pressed
               text: salt
-          - type: text
-            payload:
-              text: .
 
   - background: pancakes_background
     l10n:
@@ -270,12 +277,12 @@ pages:
               text: Hanna
           - type: text
             payload:
-              text: met aussi 2
+              text: met aussi
           - type: button_image
             payload:
               idle: spoon
               pressed: spoon_pressed
-              text: cuillères
+              text: 2 cuillères
           - type: text
             payload:
               text: à soupe de
@@ -284,9 +291,6 @@ pages:
               idle: sugar
               pressed: sugar_pressed
               text: sucre
-          - type: text
-            payload:
-              text: .
       - locale: en_US
         items:
           - type: button_image
@@ -296,12 +300,12 @@ pages:
               text: Hanna
           - type: text
             payload:
-              text: puts also 2
+              text: puts also
           - type: button_image
             payload:
               idle: spoon
               pressed: spoon_pressed
-              text: tablespoons
+              text: 2 tablespoons
           - type: text
             payload:
               text: of
@@ -310,9 +314,6 @@ pages:
               idle: sugar
               pressed: sugar_pressed
               text: sugar
-          - type: text
-            payload:
-              text: .
 
   - background: pancakes_background
     l10n:
@@ -341,7 +342,7 @@ pages:
               text: 4 oeufs
           - type: text
             payload:
-              text: dedans.
+              text: dedans
       - locale: en_US
         items:
           - type: button_image
@@ -367,7 +368,7 @@ pages:
               text: 4 eggs
           - type: text
             payload:
-              text: inside.
+              text: inside
 
   - background: pancakes_background
     l10n:
@@ -386,9 +387,6 @@ pages:
               idle: fork
               pressed: fork_pressed
               text: fourchette
-          - type: text
-            payload:
-              text: .
       - locale: en_US
         items:
           - type: button_image
@@ -404,9 +402,6 @@ pages:
               idle: fork
               pressed: fork_pressed
               text: fork
-          - type: text
-            payload:
-              text: .
 
   - background: pancakes_background
     l10n:
@@ -441,9 +436,6 @@ pages:
               idle: eggs
               pressed: eggs_pressed
               text: oeufs
-          - type: text
-            payload:
-              text: .
       - locale: en_US
         items:
           - type: button_image
@@ -453,7 +445,7 @@ pages:
               text: Hanna
           - type: text
             payload:
-              text: mixes with a
+              text: uses a
           - type: button_image
             payload:
               idle: wooden_spoon
@@ -461,7 +453,7 @@ pages:
               text: wooden spoon
           - type: text
             payload:
-              text: the
+              text: to mix the
           - type: button_image
             payload:
               idle: flour
@@ -475,9 +467,6 @@ pages:
               idle: eggs
               pressed: eggs_pressed
               text: eggs
-          - type: text
-            payload:
-              text: .
 
   - background: pancakes_background
     l10n:
@@ -485,7 +474,7 @@ pages:
         items:
           - type: text
             payload:
-              text: Quand le mélange est épais,
+              text: Quand le mélange s'épaissit,
           - type: button_image
             payload:
               idle: hanna
@@ -493,17 +482,17 @@ pages:
               text: Hanna
           - type: text
             payload:
-              text: verse 1/2 litre de
+              text: verse
           - type: button_image
             payload:
               idle: milk
               pressed: milk_pressed
-              text: lait
+              text: 1/2 litre de lait
       - locale: en_US
         items:
           - type: text
             payload:
-              text: When the mixture is thick
+              text: When the mixture thickens,
           - type: button_image
             payload:
               idle: hanna
@@ -511,12 +500,12 @@ pages:
               text: Hanna
           - type: text
             payload:
-              text: pours 1/2 liter of
+              text: pours
           - type: button_image
             payload:
               idle: milk
               pressed: milk_pressed
-              text: milk
+              text: 1/2 liter of milk
 
   - background: pancakes_background
     l10n:
@@ -529,7 +518,7 @@ pages:
               text: Hanna
           - type: text
             payload:
-              text: "mélange jusqu'à ce qu'il n'y ait plus de grumeaux."
+              text: "mélange jusqu'à ce qu'il n'y ait plus de grumeaux"
       - locale: en_US
         items:
           - type: button_image
@@ -539,7 +528,7 @@ pages:
               text: Hanna
           - type: text
             payload:
-              text: mixes until there are no more lumps.
+              text: mixes until there are no more lumps
 
   - background: pancakes_background
     l10n:
@@ -552,12 +541,12 @@ pages:
               text: Hanna
           - type: text
             payload:
-              text: rajoute 50g de
+              text: rajoute
           - type: button_image
             payload:
               idle: butter
               pressed: butter_pressed
-              text: beurre
+              text: 50g de beurre
           - type: text
             payload:
               text: que son
@@ -568,7 +557,7 @@ pages:
               text: Papa
           - type: text
             payload:
-              text: a fait fondre.
+              text: a fait fondre
       - locale: en_US
         items:
           - type: button_image
@@ -578,12 +567,12 @@ pages:
               text: Hanna
           - type: text
             payload:
-              text: adds 50g of
+              text: adds
           - type: button_image
             payload:
               idle: butter
               pressed: butter_pressed
-              text: butter
+              text: 50g of butter
           - type: text
             payload:
               text: that her
@@ -594,7 +583,7 @@ pages:
               text: Dad
           - type: text
             payload:
-              text: has melted.
+              text: has melted
 
   - background: pancakes_background
     l10n:
@@ -617,7 +606,7 @@ pages:
               text: Hanna
           - type: text
             payload:
-              text: mixes well !
+              text: mixes well!
 
   - background: pancakes_background
     l10n:
@@ -633,12 +622,12 @@ pages:
               text: Papa
           - type: text
             payload:
-              text: n'a plus qu'à la faire cuire !
+              text: n'a plus qu'à cuire les crêpes !
       - locale: en_US
         items:
           - type: text
             payload:
-              text: The batter is ready !
+              text: The batter is ready!
           - type: button_image
             payload:
               idle: nagib
@@ -646,7 +635,7 @@ pages:
               text: Daddy
           - type: text
             payload:
-              text: just has to cook it.
+              text: just has to cook the pancakes!
 
   - background: pancakes_background
     l10n:
@@ -670,7 +659,7 @@ pages:
                 value: reinforcer
           - type: text
             payload:
-              text: "vont vraiment se régaler avec ces bonnes"
+              text: "se régalent avec ces bonnes"
           - type: button_image
             payload:
               idle: pancakes
@@ -678,7 +667,7 @@ pages:
               text: crêpes
           - type: text
             payload:
-              text: " !"
+              text: "!"
       - locale: en_US
         items:
           - type: button_image
@@ -699,7 +688,7 @@ pages:
                 value: reinforcer
           - type: text
             payload:
-              text: "will enjoy themselves with these delicious"
+              text: "enjoy these good"
           - type: button_image
             payload:
               idle: pancakes
@@ -724,4 +713,4 @@ pages:
             payload:
               image: hanna_makes_pancakes
               size: 800
-              text: The end
+              text: The End
