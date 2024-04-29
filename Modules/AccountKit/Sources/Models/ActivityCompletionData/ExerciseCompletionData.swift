@@ -4,6 +4,8 @@
 
 import Foundation
 
+// MARK: - ExerciseCompletionData
+
 public struct ExerciseCompletionData: Equatable {
     // MARK: Lifecycle
 
@@ -19,4 +21,17 @@ public struct ExerciseCompletionData: Equatable {
 
     public var startTimestamp: Date?
     public var endTimestamp: Date?
+}
+
+// MARK: Hashable
+
+extension ExerciseCompletionData: Hashable {
+    public static func == (lhs: ExerciseCompletionData, rhs: ExerciseCompletionData) -> Bool {
+        lhs.startTimestamp == rhs.startTimestamp && lhs.endTimestamp == rhs.endTimestamp
+    }
+
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(self.startTimestamp)
+        hasher.combine(self.endTimestamp)
+    }
 }
