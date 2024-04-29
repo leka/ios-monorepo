@@ -25,7 +25,7 @@ struct AccountCreationView: View {
                 Text(l10n.AccountCreationView.createAccountTitle)
                     .font(.title)
 
-                Text(self.authManagerViewModel.errorMessage)
+                Text(l10n.AccountCreationView.signupFailedError)
                     .font(.footnote)
                     .foregroundStyle(self.authManagerViewModel.showErrorMessage ? .red : .clear)
             }

@@ -193,10 +193,7 @@ struct SettingsView: View {
         }
         .preferredColorScheme(self.styleManager.colorScheme)
         .onDisappear {
-            guard self.authManagerViewModel.errorMessage.isEmpty else {
-                self.authManagerViewModel.resetErrorMessage()
-                return
-            }
+            self.authManagerViewModel.resetErrorMessage()
         }
     }
 

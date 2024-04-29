@@ -28,6 +28,10 @@ extension l10n {
             comment: "ReAuthentication view context message"
         )
 
+        static let reAuthenticationFailedError = LocalizedString("lekaapp.re_authentication_view.re_authentication_failed_error",
+                                                                 value: "Authentication failed. Please verify your password.",
+                                                                 comment: "ReAuthentication failure error message")
+
         static let reauthAndDeleteAccountButton = LocalizedString(
             "lekaapp.re_authentication_view.connection_button",
             value: "Delete Account",

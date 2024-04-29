@@ -28,16 +28,13 @@ public class AuthManagerViewModel: ObservableObject {
 
     // MARK: - Alerts
 
-    @Published public var errorMessage: String = ""
     @Published public var showErrorAlert = false
     @Published public var showErrorMessage = false
-    @Published public var actionRequestMessage: String = ""
     @Published public var showActionRequestAlert = false
     @Published public var resetPasswordSucceeded: Bool = false
     @Published public var isLoading: Bool = false
 
     public func resetErrorMessage() {
-        self.errorMessage = ""
         self.showErrorAlert = false
         self.showErrorMessage = false
     }
@@ -58,12 +55,7 @@ public class AuthManagerViewModel: ObservableObject {
 
         self.authManager.authenticationErrorPublisher
             .receive(on: DispatchQueue.main)
-            .sink { [weak self] error in
-                if let authError = error as? AuthManager.AuthenticationError {
-                    self?.errorMessage = authError.localizedDescription
-                } else {
-                    self?.errorMessage = error.localizedDescription
-                }
+            .sink { [weak self] _ in
                 switch self?.userAction {
                     case .userIsSigningOut,
                          .userIsDeletingAccount,
@@ -105,7 +97,6 @@ public class AuthManagerViewModel: ObservableObject {
         switch state {
             case .loggedIn:
                 if self.userAction == .none {
-                    self.actionRequestMessage = String(l10n.AuthManagerViewModel.unverifiedEmailNotification.characters)
                     self.showActionRequestAlert = true
                 }
                 self.resetErrorMessage()
@@ -119,26 +110,9 @@ public class AuthManagerViewModel: ObservableObject {
     private func resetState() {
         self.userAction = .none
         self.userEmailIsVerified = false
-        self.errorMessage = ""
-        self.actionRequestMessage = ""
         self.showActionRequestAlert = false
         self.showErrorAlert = false
         self.showErrorMessage = false
         self.reAuthenticationSucceeded = false
     }
 }
-
-// MARK: - l10n.AuthManagerViewModel
-
-// swiftlint:disable line_length
-
-extension l10n {
-    enum AuthManagerViewModel {
-        static let unverifiedEmailNotification = LocalizedString("accountkit.auth_manager_view_model.unverified_email_notification",
-                                                                 bundle: AccountKitResources.bundle,
-                                                                 value: "Your email hasn't been verified yet. Please verify your email to avoid losing your data.",
-                                                                 comment: "Unverified email notification message")
-    }
-}
-
-// swiftlint:enable line_length

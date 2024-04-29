@@ -24,6 +24,10 @@ extension l10n {
                                                       and we'll be happy to assist you with updating your account information.
                                                       """,
                                                   comment: "Forgot Password alert message")
+
+        static let signInFailedError = LocalizedString("lekaapp.connection_view.signin_failed_error",
+                                                       value: "Sign-in failed. Please try again.",
+                                                       comment: "Sign-in failure error message")
     }
 }
 

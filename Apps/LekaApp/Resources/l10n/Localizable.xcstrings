@@ -434,6 +434,24 @@
                 }
             }
         },
+        "lekaapp.account_creation_view.signup_failed_error": {
+            "comment": "Sign-up failure error message",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Sign-up failed. Please try again later."
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Nous avons rencontr\u00e9 un probl\u00e8me lors de la cr\u00e9ation de votre compte. Veuillez r\u00e9essayer. "
+                    }
+                }
+            }
+        },
         "lekaapp.avatar_picker.close_button_label": {
             "comment": "Avatar picker close button label",
             "extractionState": "extracted_with_value",
@@ -1316,6 +1334,24 @@
                 }
             }
         },
+        "lekaapp.connection_view.signin_failed_error": {
+            "comment": "Sign-in failure error message",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Sign-in failed. Please try again."
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Nous avons rencontr\u00e9 un probl\u00e8me lors de la connexion \u00e0 votre compte. Veuillez r\u00e9essayer. "
+                    }
+                }
+            }
+        },
         "lekaapp.connection_view.title": {
             "comment": "ConnectionView title",
             "extractionState": "extracted_with_value",
@@ -2086,6 +2122,24 @@
                     "stringUnit": {
                         "state": "translated",
                         "value": "Mot de Passe Oubli\u00e9 ?"
+                    }
+                }
+            }
+        },
+        "lekaapp.re_authentication_view.re_authentication_failed_error": {
+            "comment": "ReAuthentication failure error message",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Authentication failed. Please verify your password."
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "L'authentification a \u00e9chou\u00e9. Veuillez v\u00e9rifier votre mot de passe."
                     }
                 }
             }

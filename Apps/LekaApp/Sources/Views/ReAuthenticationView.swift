@@ -26,7 +26,7 @@ struct ReAuthenticationView: View {
                         .padding(.horizontal, 20)
                 }
 
-                Text(self.authManagerViewModel.errorMessage)
+                Text(l10n.ReAuthenticationView.reAuthenticationFailedError)
                     .font(.footnote)
                     .foregroundStyle(self.authManagerViewModel.showErrorMessage ? .red : .clear)
             }

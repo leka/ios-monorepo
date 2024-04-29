@@ -6,7 +6,8 @@ import Combine
 import Firebase
 import FirebaseAuthCombineSwift
 import Foundation
-import LocalizationKit
+
+// import LocalizationKit
 
 public class AuthManager {
     // MARK: Lifecycle
@@ -55,8 +56,7 @@ public class AuthManager {
                         break
                     case let .failure(error):
                         log.error("\(error.localizedDescription)")
-                        let errorMessage = String(l10n.AuthManager.signupFailedError.characters)
-                        self?.authenticationError.send(AuthenticationError.custom(message: errorMessage))
+                        self?.authenticationError.send(error)
                 }
             }, receiveValue: { [weak self] result in
                 log.info("User \(result.user.uid) signed-up successfully. 🎉")
@@ -72,8 +72,7 @@ public class AuthManager {
             self?.loadingStatePublisher.send(false)
             if let error {
                 log.error("Sign-in failed: \(error.localizedDescription)")
-                let errorMessage = String(l10n.AuthManager.signInFailedError.characters)
-                self?.authenticationError.send(AuthenticationError.custom(message: errorMessage))
+                self?.authenticationError.send(error)
             } else if let user = authResult?.user {
                 log.info("User \(user.uid) signed-in successfully. 🎉")
                 self?.authenticationState.send(.loggedIn)
@@ -89,8 +88,7 @@ public class AuthManager {
             log.info("User was successfully signed out.")
         } catch {
             log.error("Sign out failed: \(error.localizedDescription)")
-            let errorMessage = String(l10n.AuthManager.signOutFailedError.characters)
-            self.authenticationError.send(AuthenticationError.custom(message: errorMessage))
+            self.authenticationError.send(error)
         }
     }
 
@@ -99,8 +97,7 @@ public class AuthManager {
         currentUser.sendEmailVerification { [weak self] error in
             if let error {
                 log.error("\(error.localizedDescription)")
-                let errorMessage = String(l10n.AuthManager.verificationEmailFailure.characters)
-                self?.authenticationError.send(AuthenticationError.custom(message: errorMessage))
+                self?.authenticationError.send(error)
                 return
             }
         }
@@ -108,8 +105,8 @@ public class AuthManager {
 
     public func reAuthenticateCurrentUser(password: String) {
         guard let email = self.currentUserEmail else {
-            let errorMessage = String(l10n.AuthManager.reAuthenticationNoEmailFound.characters)
-            log.error("Reauthentication failed: No email found for the current user.")
+            let errorMessage = "Reauthentication failed: No email found for the current user."
+            log.error("\(errorMessage)")
             self.authenticationError.send(AuthenticationError.custom(message: errorMessage))
             return
         }
@@ -120,8 +117,7 @@ public class AuthManager {
             self?.loadingStatePublisher.send(false)
             if let error {
                 log.error("Reauthentication failed: \(error.localizedDescription)")
-                let errorMessage = String(l10n.AuthManager.reAuthenticationFailedError.characters)
-                self?.authenticationError.send(AuthenticationError.custom(message: errorMessage))
+                self?.authenticationError.send(error)
                 self?.reAuthenticationState.send(false)
             } else {
                 log.info("Reauthentication was successful. 🎉")
@@ -136,7 +132,7 @@ public class AuthManager {
             self?.loadingStatePublisher.send(false)
             if let error {
                 log.error("Failed to send password reset email: \(error.localizedDescription)")
-                self?.authenticationError.send(AuthenticationError.custom(message: error.localizedDescription))
+                self?.authenticationError.send(error)
                 self?.passwordResetEmail.send(false)
             } else {
                 log.info("Password reset email sent successfully.")
@@ -149,7 +145,7 @@ public class AuthManager {
         self.auth.currentUser?.delete { [weak self] error in
             if let error {
                 log.error("Account deletion failed: \(error.localizedDescription)")
-                self?.authenticationError.send(AuthenticationError.custom(message: error.localizedDescription))
+                self?.authenticationError.send(error)
             } else {
                 log.info("Account deleted successfully.")
                 self?.authenticationState.send(.loggedOut)

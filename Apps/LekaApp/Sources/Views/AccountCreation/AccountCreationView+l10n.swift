@@ -21,6 +21,10 @@ extension l10n {
         static let createAccountTitle = LocalizedString("lekaapp.account_creation_view.create_account_title", value: "Create an account", comment: "Create account title on SignupView")
 
         static let connectionButton = LocalizedString("lekaapp.account_creation_view.connection_button", value: "Connection", comment: "Connection button on SignupView")
+
+        static let signupFailedError = LocalizedString("lekaapp.account_creation_view.signup_failed_error",
+                                                       value: "Sign-up failed. Please try again later.",
+                                                       comment: "Sign-up failure error message")
     }
 }
 
