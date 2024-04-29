@@ -223,7 +223,6 @@ extension DragAndDropIntoZonesView {
                 if let node = selectedNodes[touch] {
                     let bounds: CGRect = view!.bounds
                     if node.fullyContains(location: location, bounds: bounds) {
-                        node.run(SKAction.move(to: location, duration: 0.05).moveAnimation(.linear))
                         node.position = location
                     } else {
                         self.touchesEnded(touches, with: event)
