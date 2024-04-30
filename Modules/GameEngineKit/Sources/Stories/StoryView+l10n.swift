@@ -19,7 +19,6 @@ extension l10n {
                                                  bundle: GameEngineKitResources.bundle,
                                                  value: """
                                                      Are you sure you want to quit this activity?
-                                                     Any unsaved progress will be lost.
                                                      """,
                                                  comment: "Quit story alert message")
 

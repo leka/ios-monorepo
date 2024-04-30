@@ -567,13 +567,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Are you sure you want to quit this activity?\nAny unsaved progress will be lost."
+                        "value": "Are you sure you want to quit this activity?"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "\u00cates-vous s\u00fbr de vouloir quitter cette activit\u00e9 ? \nTout progr\u00e8s non sauvegard\u00e9 sera perdu."
+                        "value": "\u00cates-vous s\u00fbr de vouloir quitter cette activit\u00e9 ?"
                     }
                 }
             }
@@ -729,13 +729,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Are you sure you want to quit this activity?\nAny unsaved progress will be lost."
+                        "value": "Are you sure you want to quit this activity?"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "\u00cates-vous s\u00fbr de vouloir quitter cette histoire ? \nTout progr\u00e8s non sauvegard\u00e9 sera perdu."
+                        "value": "\u00cates-vous s\u00fbr de vouloir quitter cette histoire ?"
                     }
                 }
             }
