@@ -15,7 +15,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Touche pour révéler"
+                        "value": "Touche pour r\u00e9v\u00e9ler"
                     }
                 }
             }
@@ -27,13 +27,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "❌\nImage not found:\n%1$@"
+                        "value": "\u274c\nImage not found:\n%1$@"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "❌\nImage non reconnue :\n%1$@"
+                        "value": "\u274c\nImage non reconnue :\n%1$@"
                     }
                 }
             }
@@ -45,13 +45,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "❌\nText is not emoji:\n%1$@"
+                        "value": "\u274c\nText is not emoji:\n%1$@"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "❌\nCe texte n'est pas un émoji:\n%1$@"
+                        "value": "\u274c\nCe texte n'est pas un \u00e9moji:\n%1$@"
                     }
                 }
             }
@@ -63,13 +63,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "❌\nImage not found:\n%1$@"
+                        "value": "\u274c\nImage not found:\n%1$@"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "❌\nImage non reconnue:\n%1$@"
+                        "value": "\u274c\nImage non reconnue:\n%1$@"
                     }
                 }
             }
@@ -81,13 +81,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "❌\nSF Symbol not found:\n%1$@"
+                        "value": "\u274c\nSF Symbol not found:\n%1$@"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "❌\nSymbole non reconnu:\n%1$@"
+                        "value": "\u274c\nSymbole non reconnu:\n%1$@"
                     }
                 }
             }
@@ -123,7 +123,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Danse avec Leka au rythme de la musique et fais la statue lorsque elle s'arrête"
+                        "value": "Danse avec Leka au rythme de la musique et fais la statue lorsque elle s'arr\u00eate"
                     }
                 }
             }
@@ -177,7 +177,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Déplacement"
+                        "value": "D\u00e9placement"
                     }
                 }
             }
@@ -195,7 +195,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Sélection de la musique"
+                        "value": "S\u00e9lection de la musique"
                     }
                 }
             }
@@ -267,7 +267,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "\"Découvre Leka\" permet à la personne accompagnée de se familiariser à Leka\navant même d'entrer dans les apprentissages des Activités et des Parcours.\nLe robot va s'animer en faisant des pauses afin que\nla personne accompagnée puisse apprivoiser son nouveau compagnon !"
+                        "value": "\"D\u00e9couvre Leka\" permet \u00e0 la personne accompagn\u00e9e de se familiariser \u00e0 Leka\navant m\u00eame d'entrer dans les apprentissages des Activit\u00e9s et des Parcours.\nLe robot va s'animer en faisant des pauses afin que\nla personne accompagn\u00e9e puisse apprivoiser son nouveau compagnon !"
                     }
                 }
             }
@@ -303,7 +303,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Appuies sur OK lorsque Leka est caché"
+                        "value": "Appuies sur OK lorsque Leka est cach\u00e9"
                     }
                 }
             }
@@ -339,7 +339,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Trouvé !"
+                        "value": "Trouv\u00e9 !"
                     }
                 }
             }
@@ -357,7 +357,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Incites la personne accompagnée à chercher Leka.\nTu peux lancer un renforçateur pour lui donner un indice visuel et/ou sonore.\nAppuies sur \"TROUVÉ\" une fois le robot trouvé."
+                        "value": "Incites la personne accompagn\u00e9e \u00e0 chercher Leka.\nTu peux lancer un renfor\u00e7ateur pour lui donner un indice visuel et/ou sonore.\nAppuies sur \"TROUV\u00c9\" une fois le robot trouv\u00e9."
                     }
                 }
             }
@@ -465,7 +465,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Sélection de la musique"
+                        "value": "S\u00e9lection de la musique"
                     }
                 }
             }
@@ -495,13 +495,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "❌ ERROR\nChoice type not implemented"
+                        "value": "\u274c ERROR\nChoice type not implemented"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "❌ ERREUR\nType non implémenté"
+                        "value": "\u274c ERREUR\nType non impl\u00e9ment\u00e9"
                     }
                 }
             }
@@ -537,7 +537,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Revoir les réponses"
+                        "value": "Revoir les r\u00e9ponses"
                     }
                 }
             }
@@ -573,7 +573,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Êtes-vous sûr de vouloir quitter cette activité ? \nTout progrès non sauvegardé sera perdu."
+                        "value": "\u00cates-vous s\u00fbr de vouloir quitter cette activit\u00e9 ? \nTout progr\u00e8s non sauvegard\u00e9 sera perdu."
                     }
                 }
             }
@@ -609,7 +609,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Quitter l'activité ?"
+                        "value": "Quitter l'activit\u00e9 ?"
                     }
                 }
             }
@@ -650,6 +650,24 @@
                 }
             }
         },
+        "gameenginekit.success_failure_view.quit_button_label": {
+            "comment": "Success and Failure view quit button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Quit"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Quitter"
+                    }
+                }
+            }
+        },
         "gameenginekit.success_failure_view.success_cheering_label": {
             "comment": "Success and Failure view cheering label",
             "extractionState": "extracted_with_value",
@@ -663,7 +681,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Bien joué, tu as réussi l'activité !"
+                        "value": "Bien jou\u00e9, tu as r\u00e9ussi l'activit\u00e9 !"
                     }
                 }
             }
@@ -681,7 +699,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "%.0f%% de succès !"
+                        "value": "%.0f%% de succ\u00e8s !"
                     }
                 }
             }
@@ -711,73 +729,19 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Do you want to save your progress before quitting?"
+                        "value": "Are you sure you want to quit this activity?\nAny unsaved progress will be lost."
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Voulez-vous enregistrer vos résultats avant de fermer ?"
+                        "value": "\u00cates-vous s\u00fbr de vouloir quitter cette histoire ? \nTout progr\u00e8s non sauvegard\u00e9 sera perdu."
                     }
                 }
             }
         },
-        "story_view.quit_story_alert.quit_without_saving_button_label": {
-            "comment": "Quit story alert quit without saving button label",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Quit Without Saving"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Quitter sans Enregistrer"
-                    }
-                }
-            }
-        },
-        "story_view.quit_story_alert.save_quit_button_label": {
-            "comment": "Quit story alert save and quit button label",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Save and Quit"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Enregistrer et Quitter"
-                    }
-                }
-            }
-        },
-        "story_view.quit_story_alert.title": {
-            "comment": "Quit story alert title",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Quit story?"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Quitter l'activité ?"
-                    }
-                }
-            }
-        },
-        "gameenginekit.success_failure_view.quit_button_label": {
-            "comment": "Success and Failure view quit button label",
+        "story_view.quit_story_alert.quit_button_label": {
+            "comment": "Quit story alert quit button label",
             "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
@@ -790,6 +754,24 @@
                     "stringUnit": {
                         "state": "translated",
                         "value": "Quitter"
+                    }
+                }
+            }
+        },
+        "story_view.quit_story_alert.title": {
+            "comment": "Quit story alert title",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Leave story?"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Quitter l'histoire ?"
                     }
                 }
             }
