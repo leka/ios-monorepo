@@ -44,16 +44,12 @@ public struct StoryView: View {
             }
         }
         .alert(String(l10n.StoryView.QuitStoryAlert.title.characters), isPresented: self.$isAlertPresented) {
-            Button(String(l10n.StoryView.QuitStoryAlert.saveQuitButtonLabel.characters), action: {
-                // TODO: (@mathieu) - Save displayable data in session
-                self.dismiss()
-            })
-            Button(String(l10n.StoryView.QuitStoryAlert.quitWithoutSavingButtonLabel.characters), role: .destructive, action: {
-                // TODO: (@mathieu) - Save undisplayable data in session
-                self.dismiss()
-            })
             Button(String(l10n.StoryView.QuitStoryAlert.cancelButtonLabel.characters), role: .cancel, action: {
                 self.isAlertPresented = false
+            })
+            Button(String(l10n.StoryView.QuitStoryAlert.quitButtonLabel.characters), role: .destructive, action: {
+                // TODO: (@mathieu) - Save displayable data in session
+                self.dismiss()
             })
         } message: {
             Text(l10n.StoryView.QuitStoryAlert.message)

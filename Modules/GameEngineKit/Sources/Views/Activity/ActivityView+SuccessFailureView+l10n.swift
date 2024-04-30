@@ -25,15 +25,10 @@ extension l10n {
                                                           value: "Try again!",
                                                           comment: "Success and Failure view cheering label")
 
-        static let quitWithoutSavingButtonLabel = LocalizedString("gameenginekit.success_failure_view.quit_without_saving_button_label",
-                                                                  bundle: GameEngineKitResources.bundle,
-                                                                  value: "Quit without saving",
-                                                                  comment: "Success and Failure view quit without saving button label")
-
-        static let saveQuitButtonLabel = LocalizedString("gameenginekit.success_failure_view.save_quit_button_label",
-                                                         bundle: GameEngineKitResources.bundle,
-                                                         value: "Save",
-                                                         comment: "Success and Failure view save & quit button label")
+        static let quitButtonLabel = LocalizedString("gameenginekit.success_failure_view.quit_button_label",
+                                                     bundle: GameEngineKitResources.bundle,
+                                                     value: "Quit",
+                                                     comment: "Success and Failure view quit button label")
     }
 }
 

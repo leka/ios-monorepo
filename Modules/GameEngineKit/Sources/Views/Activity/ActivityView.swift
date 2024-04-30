@@ -133,16 +133,12 @@ public struct ActivityView: View {
             }
         }
         .alert(String(l10n.GameEngineKit.ActivityView.QuitActivityAlert.title.characters), isPresented: self.$isAlertPresented) {
-            Button(String(l10n.GameEngineKit.ActivityView.QuitActivityAlert.saveQuitButtonLabel.characters), action: {
-                // TODO: (@mathieu) - Save displayable data in session
-                self.dismiss()
-            })
-            Button(String(l10n.GameEngineKit.ActivityView.QuitActivityAlert.quitWithoutSavingButtonLabel.characters), role: .destructive, action: {
-                // TODO: (@mathieu) - Save undisplayable data in session
-                self.dismiss()
-            })
             Button(String(l10n.GameEngineKit.ActivityView.QuitActivityAlert.cancelButtonLabel.characters), role: .cancel, action: {
                 self.isAlertPresented = false
+            })
+            Button(String(l10n.GameEngineKit.ActivityView.QuitActivityAlert.quitButtonLabel.characters), role: .destructive, action: {
+                // TODO: (@mathieu) - Save displayable data in session
+                self.dismiss()
             })
         } message: {
             Text(l10n.GameEngineKit.ActivityView.QuitActivityAlert.message)
