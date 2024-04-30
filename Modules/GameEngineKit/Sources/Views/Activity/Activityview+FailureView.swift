@@ -31,19 +31,11 @@ extension ActivityView {
                 .frame(height: 500)
                 .padding(-100)
 
-                HStack(spacing: 40) {
-                    Button(String(l10n.SuccessFailureView.quitWithoutSavingButtonLabel.characters)) {
-                        // TODO: (@mathieu) - Save undisplayable data in session
-                        UIApplication.shared.dismissAll(animated: true)
-                    }
-                    .buttonStyle(.bordered)
-
-                    Button(String(l10n.SuccessFailureView.saveQuitButtonLabel.characters)) {
-                        // TODO: (@mathieu) - Save displayable data in session
-                        UIApplication.shared.dismissAll(animated: true)
-                    }
-                    .buttonStyle(.borderedProminent)
+                Button(String(l10n.SuccessFailureView.quitButtonLabel.characters)) {
+                    // TODO: (@mathieu) - Save displayable data in session
+                    UIApplication.shared.dismissAll(animated: true)
                 }
+                .buttonStyle(.borderedProminent)
             }
         }
     }
