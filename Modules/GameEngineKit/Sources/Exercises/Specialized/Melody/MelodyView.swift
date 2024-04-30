@@ -9,7 +9,7 @@ import SwiftUI
 public struct MelodyView: View {
     // MARK: Lifecycle
 
-    init(instrument: MIDIInstrument, songs: [MidiRecording]) {
+    init(instrument: MIDIInstrument, songs: [MidiRecordingPlayer.Song]) {
         self.instrument = instrument
         self.songs = songs
         self.selectedSong = songs.first!
@@ -67,15 +67,18 @@ public struct MelodyView: View {
 
     let data: ExerciseSharedData?
     let instrument: MIDIInstrument
-    let songs: [MidiRecording]
+    let songs: [MidiRecordingPlayer.Song]
 
     // MARK: Private
 
     @State private var mode = Stage.waitingForSelection
-    @State private var selectedSong: MidiRecording
+    @State private var selectedSong: MidiRecordingPlayer.Song
     @State private var keyboard: KeyboardType = .partial
 }
 
 #Preview {
-    MelodyView(instrument: .xylophone, songs: [MidiRecording(.underTheMoonlight)])
+    MelodyView(
+        instrument: .xylophone,
+        songs: [MidiRecordingPlayer.Song(song: "Under_The_Moonlight")]
+    )
 }

@@ -11,9 +11,9 @@ extension MelodyView {
     class ViewModel: Identifiable, ObservableObject {
         // MARK: Lifecycle
 
-        init(midiPlayer: MIDIPlayer, selectedSong: MidiRecording, shared: ExerciseSharedData? = nil) {
+        init(midiPlayer: MIDIPlayer, selectedSong: MidiRecordingPlayer.Song, shared: ExerciseSharedData? = nil) {
             self.midiPlayer = midiPlayer
-            self.defaultScale = selectedSong.scale
+            self.defaultScale = selectedSong.song.scale
             self.exercicesSharedData = shared ?? ExerciseSharedData()
             self.exercicesSharedData.state = .playing
             self.setMIDIRecording(midiRecording: selectedSong)
@@ -25,6 +25,7 @@ extension MelodyView {
         @Published public var progress: CGFloat = 0.0
         @Published public var isNotTappable: Bool = true
         @Published public var showModal: Bool = false
+        @Published public var finalBlur: Bool = false
         public var midiPlayer: MIDIPlayer
         public var scale: [MIDINoteNumber] = []
         public var currentNoteNumber: MIDINoteNumber = 0
@@ -34,8 +35,8 @@ extension MelodyView {
 
         // MARK: Internal
 
-        func setMIDIRecording(midiRecording: MidiRecording) {
-            let midiFile = Bundle.module.url(forResource: midiRecording.file, withExtension: "mid")!
+        func setMIDIRecording(midiRecording: MidiRecordingPlayer.Song) {
+            let midiFile = Bundle.module.url(forResource: midiRecording.audio, withExtension: "mid")!
             self.midiPlayer.loadMIDIFile(fileURL: midiFile, tempo: self.tempo)
             self.midiNotes = self.midiPlayer.getMidiNotes()
             self.octaveGap = self.getOctaveGap(self.midiNotes.first!.noteNumber)
@@ -82,6 +83,9 @@ extension MelodyView {
                     self.robot.stopLights()
 
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                        withAnimation {
+                            self.finalBlur = true
+                        }
                         self.midiPlayer.play()
 
                         DispatchQueue.main.asyncAfter(deadline: .now() + self.midiPlayer.getDuration()) {

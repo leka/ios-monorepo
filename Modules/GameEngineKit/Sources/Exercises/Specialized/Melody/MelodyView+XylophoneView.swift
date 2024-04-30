@@ -13,14 +13,14 @@ public extension MelodyView {
         // MARK: Lifecycle
 
         init(
-            instrument: MIDIInstrument, selectedSong: MidiRecording, keyboard: KeyboardType, data: ExerciseSharedData? = nil
+            instrument: MIDIInstrument, selectedSong: MidiRecordingPlayer.Song, keyboard: KeyboardType, data: ExerciseSharedData? = nil
         ) {
             self._viewModel = StateObject(
                 wrappedValue: ViewModel(
                     midiPlayer: MIDIPlayer(instrument: instrument), selectedSong: selectedSong, shared: data
                 ))
             self.keyboard = keyboard
-            self.scale = selectedSong.scale
+            self.scale = selectedSong.song.scale
         }
 
         // MARK: Public
@@ -57,7 +57,7 @@ public extension MelodyView {
                         }
                     }
                 }
-                .blur(radius: self.viewModel.showModal ? 10 : 0)
+                .blur(radius: self.viewModel.showModal || self.viewModel.finalBlur ? 10 : 0)
 
                 if self.viewModel.showModal {
                     Color.clear
@@ -79,7 +79,7 @@ public extension MelodyView {
             }
             .onDisappear {
                 self.viewModel.setMIDIRecording(
-                    midiRecording: MidiRecording(.none))
+                    midiRecording: MidiRecordingPlayer.Song(song: ""))
                 self.viewModel.midiPlayer.stop()
             }
         }
@@ -121,6 +121,8 @@ public extension MelodyView {
 
 #Preview {
     MelodyView.XylophoneView(
-        instrument: .xylophone, selectedSong: MidiRecording(.aGreenMouse), keyboard: .full
+        instrument: .xylophone,
+        selectedSong: MidiRecordingPlayer.Song(song: "Under_The_Moonlight"),
+        keyboard: .full
     )
 }

@@ -81,14 +81,7 @@ extension MelodyView {
 }
 
 #Preview {
-    let songs = [
-        MidiRecording(.aGreenMouse),
-        MidiRecording(.londonBridgeIsFallingDown),
-        MidiRecording(.twinkleTwinkleLittleStar),
-        MidiRecording(.underTheMoonlight),
-    ]
-
-    return MelodyView.KeyboardModeView(
+    MelodyView.KeyboardModeView(
         keyboard: .constant(.partial)
     )
 }

@@ -468,8 +468,40 @@
                 },
                 "songs": {
                     "elements": {
-                        "type": "string"
+                        "ref": "song"
                     }
+                }
+            }
+        },
+        "song": {
+            "properties": {
+                "audio": {
+                    "type": "string"
+                },
+                "labels": {
+                    "elements": {
+                        "ref": "label"
+                    }
+                }
+            }
+        },
+        "label": {
+            "properties": {
+                "locale": {
+                    "type": "string"
+                },
+                "value": {
+                    "ref": "localizedValues"
+                }
+            }
+        },
+        "localizedValues": {
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "icon": {
+                    "type": "string"
                 }
             }
         }
