@@ -8,10 +8,10 @@ import SwiftUI
 
 extension MelodyView {
     struct LauncherView: View {
-        @Binding var selectedSong: MidiRecording
+        @Binding var selectedSong: MidiRecordingPlayer.Song
         @Binding var mode: Stage
         @Binding var keyboard: KeyboardType
-        let songs: [MidiRecording]
+        let songs: [MidiRecordingPlayer.Song]
 
         var body: some View {
             VStack(spacing: 100) {
@@ -39,19 +39,14 @@ extension MelodyView {
 }
 
 #Preview {
-    let songs = [
-        MidiRecording(.underTheMoonlight),
-        MidiRecording(.aGreenMouse),
-        MidiRecording(.twinkleTwinkleLittleStar),
-        MidiRecording(.londonBridgeIsFallingDown),
-        MidiRecording(.ohTheCrocodiles),
-        MidiRecording(.happyBirthday),
-    ]
-
-    return MelodyView.LauncherView(
-        selectedSong: .constant(MidiRecording(.underTheMoonlight)),
+    MelodyView.LauncherView(
+        selectedSong: .constant(MidiRecordingPlayer.Song(song: "Under_The_Moonlight")),
         mode: .constant(.waitingForSelection),
         keyboard: .constant(.partial),
-        songs: songs
+        songs: [
+            MidiRecordingPlayer.Song(song: "Under_The_Moonlight"),
+            MidiRecordingPlayer.Song(song: "A_Green_Mouse"),
+            MidiRecordingPlayer.Song(song: "Twinkle_Twinkle_Little_Star"),
+        ]
     )
 }
