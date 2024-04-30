@@ -10,16 +10,17 @@ public struct TouchToSelectView: View {
     // MARK: Lifecycle
 
     public init(choices: [TouchToSelect.Choice], shuffle: Bool = false) {
-        _viewModel = StateObject(wrappedValue: TouchToSelectViewViewModel(choices: choices, shuffle: shuffle))
+        _viewModel = StateObject(wrappedValue: TouchToSelectViewViewModel(gameplayType: .findTheRightAnswers, choices: choices, shuffle: shuffle))
     }
 
     public init(exercise: Exercise, data: ExerciseSharedData? = nil) {
         guard let payload = exercise.payload as? TouchToSelect.Payload else {
             fatalError("Exercise payload is not .selection")
         }
-        exercise.gameplay == .findTheRightAnswers
+
         _viewModel = StateObject(
             wrappedValue: TouchToSelectViewViewModel(
+                gameplayType: exercise.gameplay ?? .findTheRightAnswers,
                 choices: payload.choices, shuffle: payload.shuffleChoices, shared: data
             ))
     }

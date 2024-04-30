@@ -34,11 +34,9 @@ public struct Exercise: Decodable {
             case (.touchToSelect, .findTheRightAnswers),
                  (.listenThenTouchToSelect, .findTheRightAnswers),
                  (.observeThenTouchToSelect, .findTheRightAnswers),
+                 (.robotThenTouchToSelect, .findTheRightAnswersInRightOrder),
                  (.robotThenTouchToSelect, .findTheRightAnswers):
                 self.payload = try container.decode(TouchToSelect.Payload.self, forKey: .payload)
-
-            case (.robotThenTouchToSelectInRightOrder, .findTheRightAnswers):
-                self.payload = try container.decode(TouchToSelectInRightOrder.Payload.self, forKey: .payload)
 
             case (.dragAndDropIntoZones, .findTheRightAnswers):
                 self.payload = try container.decode(DragAndDropIntoZones.Payload.self, forKey: .payload)

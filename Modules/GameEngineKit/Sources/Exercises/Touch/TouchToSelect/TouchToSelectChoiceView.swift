@@ -11,15 +11,11 @@ import SwiftUI
 struct TouchToSelectChoiceView: View {
     // MARK: Lifecycle
 
-    private init(choice: TouchToSelect.Choice, state: GameplayChoiceState, size: CGFloat, isTappable: Bool = true) {
+    init(choice: TouchToSelect.Choice, state: GameplayChoiceState, size: CGFloat, isTappable: Bool = true) {
         self.choice = choice
         self.state = state
         self.size = size
         self.isTappable = isTappable
-    }
-
-    init(choice: GameplayTouchToSelectChoiceModel, size: CGFloat, isTappable: Bool = true) {
-        self.init(choice: choice.choice, state: choice.state, size: size, isTappable: isTappable)
     }
 
     // MARK: Internal

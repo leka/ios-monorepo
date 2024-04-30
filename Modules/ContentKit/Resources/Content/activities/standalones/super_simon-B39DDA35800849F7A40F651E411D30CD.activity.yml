@@ -69,8 +69,8 @@ exercises_payload:
             - locale: en_US
               value: |
                 What sequence?
-          interface: robotThenTouchToSelectInRightOrder
-          gameplay: findTheRightAnswers
+          interface: robotThenTouchToSelect
+          gameplay: findTheRightAnswersInRightOrder
           action:
             type: robot
             value:
@@ -94,8 +94,8 @@ exercises_payload:
             - locale: en_US
               value: |
                 What sequence?
-          interface: robotThenTouchToSelectInRightOrder
-          gameplay: findTheRightAnswers
+          interface: robotThenTouchToSelect
+          gameplay: findTheRightAnswersInRightOrder
           action:
             type: robot
             value:
@@ -120,8 +120,8 @@ exercises_payload:
             - locale: en_US
               value: |
                 What sequence?
-          interface: robotThenTouchToSelectInRightOrder
-          gameplay: findTheRightAnswers
+          interface: robotThenTouchToSelect
+          gameplay: findTheRightAnswersInRightOrder
           action:
             type: robot
             value:
@@ -148,8 +148,8 @@ exercises_payload:
             - locale: en_US
               value: |
                 What sequence?
-          interface: robotThenTouchToSelectInRightOrder
-          gameplay: findTheRightAnswers
+          interface: robotThenTouchToSelect
+          gameplay: findTheRightAnswersInRightOrder
           action:
             type: robot
             value:
@@ -173,8 +173,8 @@ exercises_payload:
             - locale: en_US
               value: |
                 What sequence?
-          interface: robotThenTouchToSelectInRightOrder
-          gameplay: findTheRightAnswers
+          interface: robotThenTouchToSelect
+          gameplay: findTheRightAnswersInRightOrder
           action:
             type: robot
             value:
@@ -199,8 +199,8 @@ exercises_payload:
             - locale: en_US
               value: |
                 What sequence?
-          interface: robotThenTouchToSelectInRightOrder
-          gameplay: findTheRightAnswers
+          interface: robotThenTouchToSelect
+          gameplay: findTheRightAnswersInRightOrder
           action:
             type: robot
             value:

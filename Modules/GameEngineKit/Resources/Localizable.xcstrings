@@ -489,7 +489,7 @@
             }
         },
         "game_engine_kit.touch_to_select_choice_view.type_unknown_error": {
-            "comment": "TouchToSelectChoiceView type unknown error label\nTouchToSelectInRightOrderChoiceView type unknown error label",
+            "comment": "TouchToSelectChoiceView type unknown error label",
             "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {

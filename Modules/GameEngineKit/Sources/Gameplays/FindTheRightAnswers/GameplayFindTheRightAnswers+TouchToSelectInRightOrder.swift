@@ -8,7 +8,7 @@ import Foundation
 // MARK: - GameplayTouchToSelectInRightOrderChoiceModel
 
 struct GameplayTouchToSelectInRightOrderChoiceModel: GameplayChoiceModelProtocol {
-    typealias ChoiceType = TouchToSelectInRightOrder.Choice
+    typealias ChoiceType = TouchToSelect.Choice
 
     let id: String = UUID().uuidString
     let choice: ChoiceType

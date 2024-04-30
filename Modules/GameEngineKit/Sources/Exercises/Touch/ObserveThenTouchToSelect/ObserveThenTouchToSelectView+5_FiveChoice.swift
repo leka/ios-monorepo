@@ -16,7 +16,7 @@ extension ObserveThenTouchToSelectView {
             VStack(spacing: self.kVerticalSpacing) {
                 HStack(spacing: self.kHorizontalSpacing) {
                     ForEach(self.viewModel.choices[0...2]) { choice in
-                        TouchToSelectChoiceView(choice: choice, size: self.kAnswerSize, isTappable: self.isTappable)
+                        TouchToSelectChoiceView(choice: choice.choice, state: choice.state, size: self.kAnswerSize, isTappable: self.isTappable)
                             .onTapGesture {
                                 self.viewModel.onChoiceTapped(choice: choice)
                             }
@@ -25,7 +25,7 @@ extension ObserveThenTouchToSelectView {
 
                 HStack(spacing: self.kHorizontalSpacing) {
                     ForEach(self.viewModel.choices[3...4]) { choice in
-                        TouchToSelectChoiceView(choice: choice, size: self.kAnswerSize, isTappable: self.isTappable)
+                        TouchToSelectChoiceView(choice: choice.choice, state: choice.state, size: self.kAnswerSize, isTappable: self.isTappable)
                             .onTapGesture {
                                 self.viewModel.onChoiceTapped(choice: choice)
                             }

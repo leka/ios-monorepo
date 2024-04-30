@@ -25,7 +25,10 @@ class GameplayFindTheRightAnswers<ChoiceModelType>: StatefulGameplayProtocol
     func getNumberOfAllowedTrials(from table: GradingLUT) -> Int {
         let numberOfChoices = self.choices.value.count
         let numberOfRightAnswers = self.rightAnswers.count
+        log.info("numberOfRightAnswers: \(numberOfRightAnswers)")
 
         return table[numberOfChoices]![numberOfRightAnswers]!
     }
+
+    func process(choice _: ChoiceModelType) {}
 }

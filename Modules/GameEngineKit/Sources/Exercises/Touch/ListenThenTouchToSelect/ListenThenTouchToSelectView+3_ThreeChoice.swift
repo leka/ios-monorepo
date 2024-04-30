@@ -16,14 +16,14 @@ extension ListenThenTouchToSelectView {
             VStack(spacing: self.kVerticalSpacing) {
                 HStack(spacing: self.kHorizontalSpacing) {
                     ForEach(self.viewModel.choices[0...1]) { choice in
-                        TouchToSelectChoiceView(choice: choice, size: self.kAnswerSize, isTappable: self.isTappable)
+                        TouchToSelectChoiceView(choice: choice.choice, state: choice.state, size: self.kAnswerSize, isTappable: self.isTappable)
                             .onTapGesture {
                                 self.viewModel.onChoiceTapped(choice: choice)
                             }
                     }
                 }
 
-                TouchToSelectChoiceView(choice: self.viewModel.choices[2], size: self.kAnswerSize, isTappable: self.isTappable)
+                TouchToSelectChoiceView(choice: self.viewModel.choices[2].choice, state: self.viewModel.choices[2].state, size: self.kAnswerSize, isTappable: self.isTappable)
                     .onTapGesture {
                         self.viewModel.onChoiceTapped(choice: self.viewModel.choices[2])
                     }

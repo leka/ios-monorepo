@@ -12,10 +12,6 @@ public protocol ExercisePayloadProtocol: Codable {}
 
 extension TouchToSelect.Payload: ExercisePayloadProtocol {}
 
-// MARK: - TouchToSelectInRightOrder.Payload + ExercisePayloadProtocol
-
-extension TouchToSelectInRightOrder.Payload: ExercisePayloadProtocol {}
-
 // MARK: - DragAndDropIntoZones.Payload + ExercisePayloadProtocol
 
 extension DragAndDropIntoZones.Payload: ExercisePayloadProtocol {}
