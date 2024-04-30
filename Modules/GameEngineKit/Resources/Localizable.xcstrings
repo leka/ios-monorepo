@@ -567,49 +567,31 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Do you want to save your progress before quitting?"
+                        "value": "Are you sure you want to quit this activity?\nAny unsaved progress will be lost."
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Voulez-vous enregistrer vos r\u00e9sultats avant de fermer ?"
+                        "value": "\u00cates-vous s\u00fbr de vouloir quitter cette activit\u00e9 ? \nTout progr\u00e8s non sauvegard\u00e9 sera perdu."
                     }
                 }
             }
         },
-        "gameenginekit.activity_view.quit_activity_alert.quit_without_saving_button_label": {
-            "comment": "Quit activity alert quit without saving button label",
+        "gameenginekit.activity_view.quit_activity_alert.quit_button_label": {
+            "comment": "Quit activity alert quit button label",
             "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Quit Without Saving"
+                        "value": "Quit"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Quitter sans Enregistrer"
-                    }
-                }
-            }
-        },
-        "gameenginekit.activity_view.quit_activity_alert.save_quit_button_label": {
-            "comment": "Quit activity alert save and quit button label",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Save and Quit"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Enregistrer et Quitter"
+                        "value": "Quitter"
                     }
                 }
             }
@@ -621,7 +603,7 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Quit activity?"
+                        "value": "Leave activity?"
                     }
                 },
                 "fr": {

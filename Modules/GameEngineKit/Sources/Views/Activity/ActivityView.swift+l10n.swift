@@ -12,25 +12,21 @@ extension l10n {
             enum QuitActivityAlert {
                 static let title = LocalizedString("gameenginekit.activity_view.quit_activity_alert.title",
                                                    bundle: GameEngineKitResources.bundle,
-                                                   value: "Quit activity?",
+                                                   value: "Leave activity?",
                                                    comment: "Quit activity alert title")
 
                 static let message = LocalizedString("gameenginekit.activity_view.quit_activity_alert.message",
                                                      bundle: GameEngineKitResources.bundle,
                                                      value: """
-                                                         Do you want to save your progress before quitting?
+                                                         Are you sure you want to quit this activity?
+                                                         Any unsaved progress will be lost.
                                                          """,
                                                      comment: "Quit activity alert message")
 
-                static let quitWithoutSavingButtonLabel = LocalizedString("gameenginekit.activity_view.quit_activity_alert.quit_without_saving_button_label",
-                                                                          bundle: GameEngineKitResources.bundle,
-                                                                          value: "Quit Without Saving",
-                                                                          comment: "Quit activity alert quit without saving button label")
-
-                static let saveQuitButtonLabel = LocalizedString("gameenginekit.activity_view.quit_activity_alert.save_quit_button_label",
-                                                                 bundle: GameEngineKitResources.bundle,
-                                                                 value: "Save and Quit",
-                                                                 comment: "Quit activity alert save and quit button label")
+                static let quitButtonLabel = LocalizedString("gameenginekit.activity_view.quit_activity_alert.quit_button_label",
+                                                             bundle: GameEngineKitResources.bundle,
+                                                             value: "Quit",
+                                                             comment: "Quit activity alert quit button label")
 
                 static let cancelButtonLabel = LocalizedString("gameenginekit.activity_view.quit_activity_alert.cancel_button_label",
                                                                bundle: GameEngineKitResources.bundle,
