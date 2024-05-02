@@ -118,11 +118,11 @@ extension l10n {
                                            comment: "Carereceiver list title")
 
         static let subtitle = LocalizedString("lekaapp.carereceiver_list.subtitle",
-                                              value: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                                              value: "Detailed tracking and management of care receiver profiles.",
                                               comment: "Carereceiver list subtitle")
 
         static let description = LocalizedString("lekaapp.carereceiver_list.description",
-                                                 value: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+                                                 value: "Edit care receiver profiles, track their progress, and access activity history for tailored support and engagement.",
                                                  comment: "Carereceiver list description")
 
         static let createButtonLabel = LocalizedString("lekaapp.carereceiver_list.create_button_label",
