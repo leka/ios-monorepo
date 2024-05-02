@@ -783,13 +783,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+                        "value": "Access and modify the profiles of professionals and caregivers, view statistics and usage history."
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+                        "value": "Acc\u00e9dez et modifiez les profils des professionnels et accompagnants, visualisez les statistiques et l'historique d'utilisation."
                     }
                 }
             }
@@ -801,13 +801,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                        "value": "Manage profiles and track caregiver activities."
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                        "value": "G\u00e9rez les profils et suivez les activit\u00e9s des accompagnants."
                     }
                 }
             }
@@ -1107,13 +1107,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+                        "value": "Edit care receiver profiles, track their progress, and access activity history for tailored support and engagement."
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+                        "value": "Modifiez les profils des personnes accompagn\u00e9es, suivez leur progression et acc\u00e9dez \u00e0 l'historique de leur activit\u00e9 pour un suivi personnalis\u00e9."
                     }
                 }
             }
@@ -1125,13 +1125,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                        "value": "Detailed tracking and management of care receiver profiles."
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                        "value": "Suivi d\u00e9taill\u00e9 et gestion des profils des personnes accompagn\u00e9es."
                     }
                 }
             }
