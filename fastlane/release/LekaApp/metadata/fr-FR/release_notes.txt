@@ -20,20 +20,10 @@ Si vous rencontrez des problèmes ou avez besoin d'aide, contactez-nous à suppo
 
 ### Nouveau Contenu & Fonctionnalités
 
-- Les histoires sont désormais disponibles
-- Introduction de nouveaux icônes de programmes
-- Descriptions améliorées pour les activités et programmes (améliorations en cours)
-- Nouveaux contrôles de manette avec des flèches pour une meilleure navigation
-- Ajout d'icônes pour les mélodies pour améliorer l'interface utilisateur
-
-### Fonctionnalités Améliorées
-
-- Ajout des fonctionnalités de réinitialisation de mot de passe et d'oubli de mot de passe
-- Nouvel écran de chargement au lancement de l'application pour une expérience plus fluide
-- Vue des paramètres améliorée avec des informations système détaillées
-- Capacité de sélectionner plusieurs bénéficiaires au lancement d'une activité
+- Histoires - Amélioration des éléments visuels pour une meilleure expérience utilisateur.
+- Ajout d'icônes de chansons dans Mélodies et Dance Freeze pour une navigation et un engagement améliorés.
 
 ### Corrections de Bugs
 
-- Correction des erreurs de localisation et des fautes de frappe
-- Résolution des problèmes de récupération des robots déjà connectés
+- Suppression du texte de remplissage 'lorem ipsum' dans les catégories Accompagnants et Personnes Accompagnées.
+- Mise en œuvre de corrections de bugs mineurs et d'améliorations de performances pour renforcer la stabilité et l'ergonomie de l'application.
