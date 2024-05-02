@@ -9,7 +9,7 @@ import SwiftUI
 public struct DanceFreezeView: View {
     // MARK: Lifecycle
 
-    public init(songs: [AudioRecording]) {
+    public init(songs: [DanceFreeze.Song]) {
         self.songs = songs
         self.selectedAudioRecording = songs.first!
         self.data = nil
@@ -57,22 +57,20 @@ public struct DanceFreezeView: View {
     // MARK: Private
 
     private let data: ExerciseSharedData?
-    private let songs: [AudioRecording]
+    private let songs: [DanceFreeze.Song]
 
     @State private var mode = Stage.waitingForSelection
     @State private var motion: Motion = .rotation
-    @State private var selectedAudioRecording: AudioRecording
+    @State private var selectedAudioRecording: DanceFreeze.Song
 }
 
 #Preview {
-    let songs = [
-        AudioRecording(name: "Giggly Squirrel", file: "Giggly_Squirrel"),
-        AudioRecording(name: "Empty Page", file: "Empty_Page"),
-        AudioRecording(name: "Early Bird", file: "Early_Bird"),
-        AudioRecording(name: "Hands On", file: "Hands_On"),
-        AudioRecording(name: "In The Game", file: "In_The_Game"),
-        AudioRecording(name: "Little by Little", file: "Little_by_little"),
-    ]
-
-    return DanceFreezeView(songs: songs)
+    DanceFreezeView(songs: [
+        DanceFreeze.Song(song: "Giggly_Squirrel"),
+        DanceFreeze.Song(song: "Empty_Page"),
+        DanceFreeze.Song(song: "Early_Bird"),
+        DanceFreeze.Song(song: "Hands_On"),
+        DanceFreeze.Song(song: "In_The_Game"),
+        DanceFreeze.Song(song: "Little_by_little"),
+    ])
 }
