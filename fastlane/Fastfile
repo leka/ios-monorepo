@@ -358,6 +358,8 @@ platform :ios do
         metadata_path: "#{ROOT_DIR}/fastlane/release/#{app}/metadata",
         screenshots_path: "#{ROOT_DIR}/fastlane/release/#{app}/screenshots",
         reject_if_possible: true,
+        submit_for_review: true,
+        automatic_release: true,
         app_rating_config_path: "#{ROOT_DIR}/fastlane/release/#{app}/metadata/app_rating_config.json",
         submission_information: {
           export_compliance_uses_encryption: false,
