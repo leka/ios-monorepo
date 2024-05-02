@@ -8,7 +8,7 @@ uuid: 6E2F7D56726C419EA534C614F777D934
 name: dance_freeze
 
 created_at: "2024-03-01T14:00:38.160403"
-last_edited_at: "2024-03-31T23:33:50.987548"
+last_edited_at: "2024-05-02T17:36:24.396983"
 status: published
 
 authors:
@@ -84,10 +84,73 @@ exercises_payload:
         - interface: danceFreeze
           payload:
             songs:
-              - earlyBird
-              - emptyPage
-              - gigglySquirrel
-              - handsOn
-              - happyDays
-              - inTheGame
-              - littleByLittle
+              - audio: Early_Bird
+                labels:
+                  - locale: fr_FR
+                    value:
+                      name: Réveil Énergique
+                      icon: early_bird
+                  - locale: en_US
+                    value:
+                      name: Early Bird
+                      icon: early_bird
+              - audio: Empty_Page
+                labels:
+                  - locale: fr_FR
+                    value:
+                      name: Nouvelle Aventure
+                      icon: empty_page
+                  - locale: en_US
+                    value:
+                      name: Empty Page
+                      icon: empty_page
+              - audio: Giggly_Squirrel
+                labels:
+                  - locale: fr_FR
+                    value:
+                      name: Écureuil Rieur
+                      icon: giggly_squirrel
+                  - locale: en_US
+                    value:
+                      name: Giggly Squirrel
+                      icon: giggly_squirrel
+              - audio: Hands_On
+                labels:
+                  - locale: fr_FR
+                    value:
+                      name: En Avant la Créativité
+                      icon: hands_on
+                  - locale: en_US
+                    value:
+                      name: Hands On
+                      icon: hands_on
+              - audio: Happy_Days
+                labels:
+                  - locale: fr_FR
+                    value:
+                      name: Bonne Journée
+                      icon: happy_days
+                  - locale: en_US
+                    value:
+                      name: Happy Days
+                      icon: happy_days
+              - audio: In_The_Game
+                labels:
+                  - locale: fr_FR
+                    value:
+                      name: Course Folle
+                      icon: in_the_game
+                  - locale: en_US
+                    value:
+                      name: In The Game
+                      icon: in_the_game
+              - audio: Little_by_little
+                labels:
+                  - locale: fr_FR
+                    value:
+                      name: Petit à Petit
+                      icon: little_by_little
+                  - locale: en_US
+                    value:
+                      name: Little by Little
+                      icon: little_by_little

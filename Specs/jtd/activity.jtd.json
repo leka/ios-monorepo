@@ -446,7 +446,7 @@
             "properties": {
                 "songs": {
                     "elements": {
-                        "type": "string"
+                        "ref": "song"
                     }
                 }
             }
