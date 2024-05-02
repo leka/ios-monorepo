@@ -1,8 +1,39 @@
-## Quoi de neuf:
+Bienvenue dans la Nouvelle Application Leka !
 
-- **Interface révolutionnaire** : bénéficiez d'une interaction transparente avec le robot Leka grâce à une experience utilisateur entièrement repensée.
-- **Contenu éducatif amélioré** : plongez dans une bibliothèque élargie d'activités, de programmes et d'histoires, conçus pour un apprentissage inclusif.
-- **Profils utilisateur personnalisables** : personnalisez votre parcours avec des profils adaptables pour les professionnels et les personnes accompagnées, ce qui facilite le suivi des progrès.
-- **Technologie prête pour l'avenir** : une une infrastructure d'application robuste, garantissant la fiabilité, la conception conviviale et la préparation aux avancées futures.
+Découvrez les nouveautés de la dernière mise à jour :
+
+- Interface Révolutionnaire : Profitez d'une interaction sans faille avec le robot Leka grâce à une expérience utilisateur entièrement repensée.
+- Contenu Éducatif Amélioré : Plongez dans une bibliothèque élargie d'activités, de programmes et d'histoires conçus pour un apprentissage inclusif.
+- Profils Utilisateur Personnalisables : Personnalisez votre parcours avec des profils adaptables pour les professionnels et les personnes accompagnées, simplifiant le suivi des progrès.
+- Technologie Prête pour l'Avenir : Bénéficiez d'une infrastructure d'application robuste qui garantit fiabilité, conception conviviale et préparation aux avancées futures.
 
 Rejoignez-nous dans ce nouveau voyage avec Leka, où la technologie et l'éducation convergent pour créer des expériences éducatives percutantes.
+
+## Mises à Jour & Corrections
+
+/!\ Informations Importantes pour les Utilisateurs Alpha de Leka /!\
+
+- Transition de Compte : Votre compte, ainsi que tous les professionnels et personnes accompagnées, ont été transférés vers notre nouvelle base de données. Connectez-vous en utilisant votre email et mot de passe habituels.
+- Assistance Mot de Passe : Vous avez oublié votre mot de passe ? Réinitialisez-le facilement depuis la page de connexion.
+
+Si vous rencontrez des problèmes ou avez besoin d'aide, contactez-nous à support@leka.io
+
+### Nouveau Contenu & Fonctionnalités
+
+- Les histoires sont désormais disponibles
+- Introduction de nouveaux icônes de programmes
+- Descriptions améliorées pour les activités et programmes (améliorations en cours)
+- Nouveaux contrôles de manette avec des flèches pour une meilleure navigation
+- Ajout d'icônes pour les mélodies pour améliorer l'interface utilisateur
+
+### Fonctionnalités Améliorées
+
+- Ajout des fonctionnalités de réinitialisation de mot de passe et d'oubli de mot de passe
+- Nouvel écran de chargement au lancement de l'application pour une expérience plus fluide
+- Vue des paramètres améliorée avec des informations système détaillées
+- Capacité de sélectionner plusieurs bénéficiaires au lancement d'une activité
+
+### Corrections de Bugs
+
+- Correction des erreurs de localisation et des fautes de frappe
+- Résolution des problèmes de récupération des robots déjà connectés
