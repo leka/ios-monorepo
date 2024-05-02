@@ -8,9 +8,9 @@ import SwiftUI
 
 extension MelodyView {
     struct PlayerButton: View {
-        // MARK: Internal
-
         @Binding var showModal: Bool
+        @State var isMelodyPlaying: Bool
+
         let action: () -> Void
 
         var body: some View {
@@ -33,15 +33,11 @@ extension MelodyView {
                 .frame(width: 300)
             }
         }
-
-        // MARK: Private
-
-        @State private var isMelodyPlaying: Bool = false
     }
 }
 
 #Preview {
-    MelodyView.PlayerButton(showModal: .constant(true)) {
+    MelodyView.PlayerButton(showModal: .constant(true), isMelodyPlaying: false) {
         print("Play !")
     }
 }

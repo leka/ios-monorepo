@@ -25,7 +25,7 @@ extension MelodyView {
         @Published public var progress: CGFloat = 0.0
         @Published public var isNotTappable: Bool = true
         @Published public var showModal: Bool = false
-        @Published public var finalBlur: Bool = false
+        @Published public var isMelodyPlaying: Bool = false
         public var midiPlayer: MIDIPlayer
         public var scale: [MIDINoteNumber] = []
         public var currentNoteNumber: MIDINoteNumber = 0
@@ -84,12 +84,15 @@ extension MelodyView {
 
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                         withAnimation {
-                            self.finalBlur = true
+                            self.isMelodyPlaying = true
+                            self.showModal = true
                         }
                         self.midiPlayer.play()
 
                         DispatchQueue.main.asyncAfter(deadline: .now() + self.midiPlayer.getDuration()) {
                             self.exercicesSharedData.state = .completed(level: .nonApplicable)
+                            self.isMelodyPlaying = false
+                            self.showModal = false
                             self.robot.stopLights()
                             self.midiPlayer.stop()
                         }
