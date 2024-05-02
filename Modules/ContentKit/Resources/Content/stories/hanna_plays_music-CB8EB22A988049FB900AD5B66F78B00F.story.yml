@@ -8,7 +8,7 @@ uuid: CB8EB22A988049FB900AD5B66F78B00F
 name: hanna_plays_music
 
 created_at: "2024-03-31T23:33:50.987548"
-last_edited_at: "2024-03-31T23:33:50.987548"
+last_edited_at: "2024-05-02T14:52:48.958764"
 status: published
 
 authors:
@@ -75,24 +75,24 @@ l10n:
         - **Enjoy the activities** : Participate in the activities related to the story to enrich learning through play.
 
 pages:
-  - background: let_s_play_music_background
+  - background: living_room_background
     l10n:
       - locale: fr_FR
         items:
           - type: image
             payload:
               image: hanna_plays_piano
-              size: 800
+              size: 700
               text: En Avant la Musique
       - locale: en_US
         items:
           - type: image
             payload:
               image: hanna_plays_piano
-              size: 800
+              size: 700
               text: Let's Play Music
 
-  - background: let_s_play_music_background
+  - background: living_room_background
     l10n:
       - locale: fr_FR
         items:
@@ -137,7 +137,7 @@ pages:
                 type: robot
                 value: bootyShake
 
-  - background: let_s_play_music_background
+  - background: living_room_background
     l10n:
       - locale: fr_FR
         items:
@@ -174,7 +174,7 @@ pages:
                 type: activity
                 value: xylophone_pentatonic-7C1DDED6C6D44913B9A7D4EB4AEE8F6B
 
-  - background: let_s_play_music_background
+  - background: living_room_background
     l10n:
       - locale: fr_FR
         items:
@@ -233,7 +233,7 @@ pages:
                 type: activity
                 value: melody-CB995F829411449AB32E6B8A688E3DDB
 
-  - background: let_s_play_music_background
+  - background: living_room_background
     l10n:
       - locale: fr_FR
         items:
@@ -278,19 +278,19 @@ pages:
             payload:
               text: are real musicians!
 
-  - background: let_s_play_music_background
+  - background: living_room_background
     l10n:
       - locale: fr_FR
         items:
           - type: image
             payload:
               image: hanna_plays_piano
-              size: 800
+              size: 700
               text: Fin
       - locale: en_US
         items:
           - type: image
             payload:
               image: hanna_plays_piano
-              size: 800
+              size: 700
               text: The End
