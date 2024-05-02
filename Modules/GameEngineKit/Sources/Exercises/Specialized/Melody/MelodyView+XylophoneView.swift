@@ -57,7 +57,7 @@ public extension MelodyView {
                         }
                     }
                 }
-                .blur(radius: self.viewModel.showModal || self.viewModel.finalBlur ? 10 : 0)
+                .blur(radius: self.viewModel.showModal ? 10 : 0)
 
                 if self.viewModel.showModal {
                     Color.clear
@@ -69,7 +69,7 @@ public extension MelodyView {
                             self.viewModel.startActivity()
                         }
 
-                    PlayerButton(showModal: self.$viewModel.showModal) {
+                    PlayerButton(showModal: self.$viewModel.showModal, isMelodyPlaying: self.viewModel.isMelodyPlaying) {
                         self.viewModel.playMIDIRecording()
                     }
                 }
