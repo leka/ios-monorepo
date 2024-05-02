@@ -1,0 +1,77 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+version: 1.0.0
+list:
+  - id: aurore_kiesler
+    visible: true
+    name: Aurore Kiesler
+    website: https://www.autismes-aujourdhui.fr/
+    email: aurore@leka.io
+    professions:
+      - special_educator
+    l10n:
+      - locale: fr_FR
+        description: |
+          Aurore Kiesler est la présidente et membre fondateur de l'association Autisme Aujourd'hui, qui mène des actions pour sensibiliser au sujet de l'autisme, notamment à Strasbourg. Elle est également impliquée dans des ateliers utilisant la robotique pour soutenir les enfants atteints de troubles du spectre autistique (TSA).
+          Après 10 ans au DASCA en tant qu'éducatrice spécialisée, elle a rejoint l'équipe Leka en tant d'Experte Leka et Responsable Clientèle.
+          C'est elle que vous devez contacter si vous avez la moindre question!
+      - locale: en_US
+        description: |
+          Aurore Kiesler is the president and founding member of the association Autisme Aujourd'hui, which conducts actions to raise awareness about autism, particularly in Strasbourg. She is also involved in workshops using robotics to support children with Autism Spectrum Disorder (ASD).
+          After 10 years at DASCA as a special educator, she joined the Leka team as our Leka Expert and Customer Manager.
+          She is the one you should contact if you have any questions!
+
+  - id: hanna_and_nagib
+    visible: true
+    name: Hanna & Nagib
+    website: ""
+    email: ""
+    professions: []
+    l10n:
+      - locale: fr_FR
+        description: |
+          Hanna et son papa Nagib ont rejoint le projet Leka en 2015.
+          Ils ont été les premiers à tester le robot et à nous fournir des retours de leur utilisation.
+          Depuis, ils sont devenus des membres essentiels de la famille Leka et nous aident à perfectionner notre robot afin qu'il puisse aider d'autres enfants.
+          Hanna et Nagib ont particulièrement aidé à la création de l'histoire entre Hanna et Leka.
+
+      - locale: en_US
+        description: |
+          Hanna and her dad Nagib joined the Leka project in 2015.
+          They were the first to test the robot and provide invaluable feedback.
+          Since then, they have become integral members of the Leka family, helping us improve our robot to assist other children.
+          Hanna and Nagib have particularly helped create the story between Hanna and Leka.
+  - id: julie_tuil
+    visible: true
+    name: Julie Tuil
+    website: https://www.julietuil.com/
+    email: ""
+    professions:
+      - speech_language_therapist
+      - aba_therapist
+      - clinical_director
+    l10n:
+      - locale: fr_FR
+        description: |
+          Julie Tuil est une spécialiste de l'autisme en France avec plus de 20 ans d'expérience. Elle propose des formations et des programmes basés sur l'Analyse Appliquée du Comportement (ABA) pour soutenir les enfants autistes et leurs familles, en mettant l'accent sur l'amélioration de la communication et la gestion des comportements.
+      - locale: en_US
+        description: |
+          Julie Tuil is an autism specialist in France with over 20 years of experience. She offers training and programs based on Applied Behavior Analysis (ABA) to support autistic children and their families, focusing on enhancing communication and behavior management.
+
+  - id: leka
+    visible: true
+    name: Leka
+    website: https://leka.io
+    email: hello@leka.io
+    professions: []
+    l10n:
+      - locale: fr_FR
+        description: |
+          Leka est une entreprise qui développe un compagnon robotique éducatif destiné aux enfants atteints de troubles neurodéveloppementaux, tels que le trouble du spectre de l'autisme (TSA), les multiples handicaps et la trisomie. Ce robot vise à capter l'attention des enfants et à interagir avec eux pour favoriser leur curiosité et encourager des interactions fluides.
+          Leka a rejoint APF France handicap en 2019 pour continuer à développer des solutions innovantes pour les personnes en situation de handicap.
+      - locale: en_US
+        description: |
+          Leka is a company that develops an educational robotic companion for children with neurodevelopmental disorders, such as Autism Spectrum Disorder (ASD), multiple disabilities, and Down Syndrome. This robot aims to capture children's attention and interact with them to foster their curiosity and encourage smooth interactions.
+          Leka joined APF France handicap in 2019 to continue developing innovative solutions for people with disabilities.

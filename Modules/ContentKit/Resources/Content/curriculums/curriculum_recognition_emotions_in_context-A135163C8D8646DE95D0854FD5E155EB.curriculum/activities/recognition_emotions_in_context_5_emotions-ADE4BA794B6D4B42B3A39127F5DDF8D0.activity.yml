@@ -1,0 +1,353 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+version: 1.0.0
+
+uuid: ADE4BA794B6D4B42B3A39127F5DDF8D0
+name: recognition_emotions_in_context_5_emotions
+
+created_at: "2024-03-04T18:07:12.519229"
+last_edited_at: "2024-04-08T13:12:12.650390"
+status: published
+
+authors:
+  - leka
+
+skills:
+  - recognition
+  - recognition/basic_emotions
+  - empathy
+
+tags:
+  - emotions
+  - context
+  - empathy
+  - characters
+  - drawings
+
+
+hmi:
+  - tablet
+
+types:
+  - one_on_one
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: recognition_emotions_in_context
+
+      title: Les émotions dans un contexte
+      subtitle: null
+
+      short_description: |
+        Regarde l'image de gauche. Quelle est l'émotion du personnage ?
+
+      description: |
+        Dans cette activité, une image présente un personnage exprimant une émotion particulière dans un contexte. L'objectif est de déterminer l'émotion du personnage en appuyant sur l'émotion correspondante sur la droite.
+
+      instructions: |
+        - Encourager la personne accompagnée à observer attentivement l'image présentée
+        - Encourager la personne accompagnée à toucher l'émotion correspondante à celle du personnage.
+        - Lorsque la réponse est correct, Leka lance un renforçateur.
+
+  - locale: en_US
+    details:
+      icon: recognition_emotions_in_context
+
+      title: Emotions in context
+      subtitle: null
+
+      short_description: |
+        Look at the image on the left. What is the character's emotion?
+
+      description: |
+        In this activity, an image presents a character expressing a particular emotion in a context. The objective is to determine the emotion of the character by selecting the corresponding emotion on the right.
+
+      instructions: |
+        - Encourage the care receiver to carefully observe the presented image.
+        - Encourage the care receiver to touch the emotion corresponding to that of the character.
+        - When the answer is correct, Leka launches a reinforcer.
+
+exercises_payload:
+  options:
+    shuffle_exercises: true
+    shuffle_groups: false
+
+  exercise_groups:
+    - group:
+
+        - instructions:
+            - locale: fr_FR
+              value: Regarde l'image. Quelle est l'émotion du personnage ?
+            - locale: en_US
+              value: Look at the image. What is the character's emotion?
+          interface: observeThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: image
+              value: context_hugo_living_room
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: visages_emotion_drawing_child_angry_hugo
+                type: image
+              - value: visages_emotion_drawing_child_disgust_louna
+                type: image
+              - value: visages_emotion_drawing_child_fear_moussa
+                type: image
+              - value: visages_emotion_drawing_child_joy_oscar
+                type: image
+              - value: visages_emotion_drawing_child_sad_zoe
+                type: image
+                is_right_answer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Regarde l'image. Quelle est l'émotion du personnage ?
+            - locale: en_US
+              value: Look at the image. What is the character's emotion?
+          interface: observeThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: image
+              value: context_hugo_swimming_pool
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: visages_emotion_drawing_child_angry_hugo
+                type: image
+              - value: visages_emotion_drawing_child_disgust_louna
+                type: image
+              - value: visages_emotion_drawing_child_fear_moussa
+                type: image
+              - value: visages_emotion_drawing_child_joy_oscar
+                type: image
+                is_right_answer: true
+              - value: visages_emotion_drawing_child_sad_zoe
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Regarde l'image. Quelle est l'émotion du personnage ?
+            - locale: en_US
+              value: Look at the image. What is the character's emotion?
+          interface: observeThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: image
+              value: context_louna_beach
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: visages_emotion_drawing_child_angry_hugo
+                type: image
+              - value: visages_emotion_drawing_child_disgust_louna
+                type: image
+              - value: visages_emotion_drawing_child_fear_moussa
+                type: image
+              - value: visages_emotion_drawing_child_joy_oscar
+                type: image
+                is_right_answer: true
+              - value: visages_emotion_drawing_child_sad_zoe
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Regarde l'image. Quelle est l'émotion du personnage ?
+            - locale: en_US
+              value: Look at the image. What is the character's emotion?
+          interface: observeThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: image
+              value: context_louna_park
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: visages_emotion_drawing_child_angry_hugo
+                type: image
+              - value: visages_emotion_drawing_child_disgust_louna
+                type: image
+              - value: visages_emotion_drawing_child_fear_moussa
+                type: image
+                is_right_answer: true
+              - value: visages_emotion_drawing_child_joy_oscar
+                type: image
+              - value: visages_emotion_drawing_child_sad_zoe
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Regarde l'image. Quelle est l'émotion du personnage ?
+            - locale: en_US
+              value: Look at the image. What is the character's emotion?
+          interface: observeThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: image
+              value: context_moussa_cooking
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: visages_emotion_drawing_child_angry_hugo
+                type: image
+              - value: visages_emotion_drawing_child_disgust_louna
+                type: image
+              - value: visages_emotion_drawing_child_fear_moussa
+                type: image
+              - value: visages_emotion_drawing_child_joy_oscar
+                type: image
+                is_right_answer: true
+              - value: visages_emotion_drawing_child_sad_zoe
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Regarde l'image. Quelle est l'émotion du personnage ?
+            - locale: en_US
+              value: Look at the image. What is the character's emotion?
+          interface: observeThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: image
+              value: context_moussa_eating
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: visages_emotion_drawing_child_angry_hugo
+                type: image
+              - value: visages_emotion_drawing_child_disgust_louna
+                type: image
+                is_right_answer: true
+              - value: visages_emotion_drawing_child_fear_moussa
+                type: image
+              - value: visages_emotion_drawing_child_joy_oscar
+                type: image
+              - value: visages_emotion_drawing_child_sad_zoe
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Regarde l'image. Quelle est l'émotion du personnage ?
+            - locale: en_US
+              value: Look at the image. What is the character's emotion?
+          interface: observeThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: image
+              value: context_oscar_ice-cream_seller
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: visages_emotion_drawing_child_angry_hugo
+                type: image
+                is_right_answer: true
+              - value: visages_emotion_drawing_child_disgust_louna
+                type: image
+              - value: visages_emotion_drawing_child_fear_moussa
+                type: image
+              - value: visages_emotion_drawing_child_joy_oscar
+                type: image
+              - value: visages_emotion_drawing_child_sad_zoe
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Regarde l'image. Quelle est l'émotion du personnage ?
+            - locale: en_US
+              value: Look at the image. What is the character's emotion?
+          interface: observeThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: image
+              value: context_oscar_playground
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: visages_emotion_drawing_child_angry_hugo
+                type: image
+              - value: visages_emotion_drawing_child_disgust_louna
+                type: image
+              - value: visages_emotion_drawing_child_fear_moussa
+                type: image
+              - value: visages_emotion_drawing_child_joy_oscar
+                type: image
+              - value: visages_emotion_drawing_child_sad_zoe
+                type: image
+                is_right_answer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Regarde l'image. Quelle est l'émotion du personnage ?
+            - locale: en_US
+              value: Look at the image. What is the character's emotion?
+          interface: observeThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: image
+              value: context_zoe_bedroom
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: visages_emotion_drawing_child_angry_hugo
+                type: image
+              - value: visages_emotion_drawing_child_disgust_louna
+                type: image
+              - value: visages_emotion_drawing_child_fear_moussa
+                type: image
+              - value: visages_emotion_drawing_child_joy_oscar
+                type: image
+                is_right_answer: true
+              - value: visages_emotion_drawing_child_sad_zoe
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Regarde l'image. Quelle est l'émotion du personnage ?
+            - locale: en_US
+              value: Look at the image. What is the character's emotion?
+          interface: observeThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: image
+              value: context_zoe_kitchen
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: visages_emotion_drawing_child_angry_hugo
+                type: image
+              - value: visages_emotion_drawing_child_disgust_louna
+                type: image
+                is_right_answer: true
+              - value: visages_emotion_drawing_child_fear_moussa
+                type: image
+              - value: visages_emotion_drawing_child_joy_oscar
+                type: image
+              - value: visages_emotion_drawing_child_sad_zoe
+                type: image

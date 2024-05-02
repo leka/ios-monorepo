@@ -1,0 +1,61 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: B697FEE9EF7946A2B704673FEEAA0824
+name: curriculum_recognition_basic_physiological_needs
+
+status: published
+
+created_at: "2024-03-21T15:12:35.579066"
+last_edited_at: "2024-04-04T15:43:54.314051"
+authors:
+  - leka
+
+skills:
+  - recognition
+  - recognition/basic_physiological_needs
+  - self_regulation
+
+tags:
+  - characters
+  - drawings
+  - physiological_needs
+  - human_needs
+  - self_awareness
+
+hmi:
+  - tablet
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: recognition_basic_physiological_needs
+
+      title: Les besoins physiologiques primaires
+      subtitle: Identifier et répondre aux besoins physiologiques
+
+      abstract: |
+        Ce curriculum vise à développer la reconnaissance et la compréhension des besoins physiologiques de base à travers des représentations dessinées. En observant les états des personnages, les personnes accompagnées apprennent à identifier leurs besoins essentiels tels que la faim, la soif et la fatigue.
+      description: |
+        À travers des activités interactives présentées sur l'écran de l'iPad, les personnes accompagnées sont invitées à observer attentivement des images de personnages exprimant différents états physiologiques. L'objectif est de reconnaître l'état physique du personnage et de sélectionner l'image qui correspond au besoin fondamental exprimé. Cela inclut la reconnaissance des besoins de manger, de boire, de dormir, parmi d'autres. Les activités sont structurées pour encourager une compréhension profonde des signaux corporels et des réponses appropriées à ces besoins.
+  - locale: en_US
+    details:
+      icon: recognition_basic_physiological_needs
+
+      title: Primary physiological needs
+      subtitle: Identifying and responding to physiological states
+
+      abstract: |
+        This curriculum is designed to foster the recognition and understanding of basic physiological needs through illustrated representations. By observing the states of characters, care receivers learn to identify their essential needs such as hunger, thirst, and tiredness.
+      description: |
+        Through interactive activities displayed on the iPad screen, care receivers are encouraged to carefully observe images of characters expressing various physiological states. The goal is to recognize the physical state of the character and select the image that matches the fundamental need being expressed. This includes recognizing the needs to eat, drink, sleep, among others. The activities are structured to promote a deep understanding of bodily signals and appropriate responses to these needs.
+activities:
+
+  - recognition_basic_physiological_needs_drawings_1_image-11EFD2C711C14CEBACD244DC9201A0ED
+  - recognition_basic_physiological_needs_drawings_2_images-5DBCCB46BA2B4646983BDC7160E03536
+  - recognition_basic_physiological_needs_drawings_4_images-E06E4960B14047609C48C1E0DD6D61F2

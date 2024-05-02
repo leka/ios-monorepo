@@ -1,0 +1,15 @@
+{
+  "images" : [
+    {
+      "filename" : "avatars_boy-1c-138.svg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  },
+  "properties" : {
+    "preserves-vector-representation" : true
+  }
+}

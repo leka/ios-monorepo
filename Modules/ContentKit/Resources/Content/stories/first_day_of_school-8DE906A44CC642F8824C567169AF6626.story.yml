@@ -1,0 +1,549 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+version: 1.0.0
+
+uuid: 8DE906A44CC642F8824C567169AF6626
+name: first_day_of_school
+
+created_at: "2024-03-31T23:33:50.987548"
+last_edited_at: "2024-03-31T23:33:50.987548"
+status: published
+
+authors:
+  - hanna_and_nagib
+  - leka
+
+skills:
+  - familiarization_with_leka
+
+tags:
+  - pairing
+
+hmi:
+  - tablet
+
+types:
+  - one_on_one
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: first_day_of_school
+
+      title: Premier Jour d'École
+      subtitle: Réveil et Préparation
+
+      short_description: |
+        Vivez le matin du premier jour d'école de Hanna, de son réveil à son départ pour l'école.
+
+      description: |
+        Suivez Hanna dès son réveil, partagez son petit-déjeuner et aidez-la à préparer son sac avec Leka, avant que son papa ne la conduise à l'école.
+        Découvrez les moments précieux de préparation avant une grande étape dans sa vie.
+
+      instructions: |
+        - **Explorez l'histoire** : Avancez dans l'histoire en touchant les flèches ou en balayant l'écran vers la droite. Revenez aux pages précédentes en balayant vers la gauche.
+        - **Interagissez avec les personnages** : Touchez les personnages pour les voir réagir et touchez Leka pour activer le robot.
+        - **Profitez des activités** : Participez aux activités liées à l'histoire pour enrichir l'apprentissage par le jeu.
+
+  - locale: en_US
+    details:
+      icon: first_day_of_school
+
+      title: First Day of School
+      subtitle: Waking Up and Getting Ready
+
+      short_description: |
+        Experience the morning of Hanna's first day at school, from waking up to heading out.
+
+      description: |
+        Follow Hanna from the moment she wakes up, share her breakfast, and help her prepare her bag with Leka, before her dad drives her to school.
+        Discover the precious moments of preparation before a major milestone in her life.
+
+      instructions: |
+        - **Explore the story** : Move forward in the story by touching the arrows or swiping the screen to the right. Go back to previous pages by swiping to the left.
+        - **Interact with the characters** : Touch the characters to see them react and touch Leka to activate the robot.
+        - **Enjoy the activities** : Participate in the activities related to the story to enrich learning through play.
+
+pages:
+  - background: school_background
+    l10n:
+      - locale: fr_FR
+        items:
+          - type: image
+            payload:
+              image: hanna_and_leka
+              size: 800
+              text: Premier Jour d'École
+      - locale: en_US
+        items:
+          - type: image
+            payload:
+              image: hanna_and_leka
+              size: 800
+              text: First Day of School
+
+  - background: school_background
+    l10n:
+      - locale: fr_FR
+        items:
+          - type: text
+            payload:
+              text: Aujourd'hui c'est le premier jour d'école pour
+          - type: button_image
+            payload:
+              idle: hanna
+              pressed: hanna_pressed
+              text: Hanna
+      - locale: en_US
+        items:
+          - type: text
+            payload:
+              text: Today is
+          - type: button_image
+            payload:
+              idle: hanna
+              pressed: hanna_pressed
+              text: Hanna's
+          - type: text
+            payload:
+              text: first day at school
+
+  - background: school_background
+    l10n:
+      - locale: fr_FR
+        items:
+          - type: text
+            payload:
+              text: Le
+          - type: button_image
+            payload:
+              idle: sun
+              pressed: sun_pressed
+              text: soleil
+              action:
+                type: robot
+                value: yellow
+          - type: text
+            payload:
+              text: se lève et Hanna
+          - type: button_image
+            payload:
+              idle: bed
+              pressed: bed_pressed
+              text: se réveille
+      - locale: en_US
+        items:
+          - type: text
+            payload:
+              text: The
+          - type: button_image
+            payload:
+              idle: sun
+              pressed: sun_pressed
+              text: sun
+              action:
+                type: robot
+                value: yellow
+          - type: text
+            payload:
+              text: rises and Hanna
+          - type: button_image
+            payload:
+              idle: bed
+              pressed: bed_pressed
+              text: wakes up
+
+  - background: school_background
+    l10n:
+      - locale: fr_FR
+        items:
+          - type: button_image
+            payload:
+              idle: hanna
+              pressed: hanna_pressed
+              text: Hanna
+          - type: text
+            payload:
+              text: boit du
+          - type: button_image
+            payload:
+              idle: juice
+              pressed: juice_pressed
+              text: jus d'orange
+          - type: text
+            payload:
+              text: et mange des
+          - type: button_image
+            payload:
+              idle: waffle
+              pressed: waffle_pressed
+              text: gaufres.
+      - locale: en_US
+        items:
+          - type: button_image
+            payload:
+              idle: hanna
+              pressed: hanna_pressed
+              text: Hanna
+          - type: text
+            payload:
+              text: drinks
+          - type: button_image
+            payload:
+              idle: juice
+              pressed: juice_pressed
+              text: orange juice
+          - type: text
+            payload:
+              text: and eats
+          - type: button_image
+            payload:
+              idle: waffle
+              pressed: waffle_pressed
+              text: waffles.
+
+  - background: school_background
+    l10n:
+      - locale: fr_FR
+        items:
+          - type: text
+            payload:
+              text: Ensuite,
+          - type: button_image
+            payload:
+              idle: hanna
+              pressed: hanna_pressed
+              text: Hanna
+          - type: text
+            payload:
+              text: prépare son
+          - type: button_image
+            payload:
+              idle: backpack
+              pressed: backpack_pressed
+              text: cartable
+          - type: text
+            payload:
+              text: avec l'aide de
+          - type: button_image
+            payload:
+              idle: leka
+              pressed: leka_pressed
+              text: Leka
+              action:
+                type: robot
+                value: bootyShake
+      - locale: en_US
+        items:
+          - type: text
+            payload:
+              text: Then,
+          - type: button_image
+            payload:
+              idle: hanna
+              pressed: hanna_pressed
+              text: Hanna
+          - type: text
+            payload:
+              text: prepares her
+          - type: button_image
+            payload:
+              idle: backpack
+              pressed: backpack_pressed
+              text: schoolbag
+          - type: text
+            payload:
+              text: with the help of
+          - type: button_image
+            payload:
+              idle: leka
+              pressed: leka_pressed
+              text: Leka
+              action:
+                type: robot
+                value: bootyShake
+
+  - background: school_background
+    l10n:
+      - locale: fr_FR
+        items:
+          - type: button_image
+            payload:
+              idle: hanna
+              pressed: hanna_pressed
+              text: Hanna
+          - type: text
+            payload:
+              text: et
+          - type: button_image
+            payload:
+              idle: leka
+              pressed: leka_pressed
+              text: Leka
+              action:
+                type: robot
+                value: bootyShake
+          - type: text
+            payload:
+              text: mettent un
+          - type: button_image
+            payload:
+              idle: book
+              pressed: book_pressed
+              text: cahier
+          - type: text
+            payload:
+              text: et un
+          - type: button_image
+            payload:
+              idle: pencil
+              pressed: pencil_pressed
+              text: crayon
+          - type: text
+            payload:
+              text: dedans
+      - locale: en_US
+        items:
+          - type: button_image
+            payload:
+              idle: hanna
+              pressed: hanna_pressed
+              text: Hanna
+          - type: text
+            payload:
+              text: and
+          - type: button_image
+            payload:
+              idle: leka
+              pressed: leka_pressed
+              text: Leka
+              action:
+                type: robot
+                value: bootyShake
+          - type: text
+            payload:
+              text: put a
+          - type: button_image
+            payload:
+              idle: book
+              pressed: book_pressed
+              text: notebook
+          - type: text
+            payload:
+              text: and a
+          - type: button_image
+            payload:
+              idle: pencil
+              pressed: pencil_pressed
+              text: pencil
+          - type: text
+            payload:
+              text: inside
+
+  - background: school_background
+    l10n:
+      - locale: fr_FR
+        items:
+          - type: button_image
+            payload:
+              idle: hanna
+              pressed: hanna_pressed
+              text: Hanna
+          - type: text
+            payload:
+              text: peut maintenant jouer avec
+          - type: button_image
+            payload:
+              idle: leka
+              pressed: leka_pressed
+              text: Leka
+              action:
+                type: robot
+                value: bootyShake
+      - locale: en_US
+        items:
+          - type: button_image
+            payload:
+              idle: hanna
+              pressed: hanna_pressed
+              text: Hanna
+          - type: text
+            payload:
+              text: can now play with
+          - type: button_image
+            payload:
+              idle: leka
+              pressed: leka_pressed
+              text: Leka
+              action:
+                type: robot
+                value: bootyShake
+
+  - background: school_background
+    l10n:
+      - locale: fr_FR
+        items:
+          - type: text
+            payload:
+              text: "C'est l'heure de l'école !"
+          - type: button_image
+            payload:
+              idle: hanna
+              pressed: hanna_pressed
+              text: Hanna
+          - type: text
+            payload:
+              text: met ses
+          - type: button_image
+            payload:
+              idle: shoes
+              pressed: shoes_pressed
+              text: chaussures
+          - type: text
+            payload:
+              text: et son
+          - type: button_image
+            payload:
+              idle: coat
+              pressed: coat_pressed
+              text: manteau
+      - locale: en_US
+        items:
+          - type: text
+            payload:
+              text: "It's time to go!"
+          - type: button_image
+            payload:
+              idle: hanna
+              pressed: hanna_pressed
+              text: Hanna
+          - type: text
+            payload:
+              text: puts on her
+          - type: button_image
+            payload:
+              idle: shoes
+              pressed: shoes_pressed
+              text: shoes
+          - type: text
+            payload:
+              text: and her
+          - type: button_image
+            payload:
+              idle: coat
+              pressed: coat_pressed
+              text: coat
+
+  - background: school_background
+    l10n:
+      - locale: fr_FR
+        items:
+          - type: button_image
+            payload:
+              idle: nagib
+              pressed: nagib_pressed
+              text: Papa
+          - type: text
+            payload:
+              text: emmène
+          - type: button_image
+            payload:
+              idle: hanna
+              pressed: hanna_pressed
+              text: Hanna
+          - type: text
+            payload:
+              text: en
+          - type: button_image
+            payload:
+              idle: car
+              pressed: car_pressed
+              text: voiture
+          - type: text
+            payload:
+              text: à l'école
+      - locale: en_US
+        items:
+          - type: button_image
+            payload:
+              idle: nagib
+              pressed: nagib_pressed
+              text: Dad
+          - type: text
+            payload:
+              text: drives
+          - type: button_image
+            payload:
+              idle: hanna
+              pressed: hanna_pressed
+              text: Hanna
+          - type: text
+            payload:
+              text: to school with his
+          - type: button_image
+            payload:
+              idle: car
+              pressed: car_pressed
+              text: car
+
+  - background: school_background
+    l10n:
+      - locale: fr_FR
+        items:
+          - type: text
+            payload:
+              text: Une fois arrivée à l'école,
+          - type: button_image
+            payload:
+              idle: hanna
+              pressed: hanna_pressed
+              text: Hanna
+          - type: text
+            payload:
+              text: dit au revoir à
+          - type: button_image
+            payload:
+              idle: nagib
+              pressed: nagib_pressed
+              text: papa
+      - locale: en_US
+        items:
+          - type: text
+            payload:
+              text: Once at school,
+          - type: button_image
+            payload:
+              idle: hanna
+              pressed: hanna_pressed
+              text: Hanna
+          - type: text
+            payload:
+              text: says goodbye to
+          - type: button_image
+            payload:
+              idle: nagib
+              pressed: nagib_pressed
+              text: dad
+
+  - background: school_background
+    l10n:
+      - locale: fr_FR
+        items:
+          - type: image
+            payload:
+              image: hanna_and_leka
+              size: 800
+              text: Fin
+      - locale: en_US
+        items:
+          - type: image
+            payload:
+              image: hanna_and_leka
+              size: 800
+              text: The End

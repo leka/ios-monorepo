@@ -1,0 +1,240 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+version: 1.0.0
+
+uuid: 11EFD2C711C14CEBACD244DC9201A0ED
+name: recognition_basic_physiological_needs_drawings_1_image
+
+created_at: "2024-03-04T18:07:12.519229"
+last_edited_at: "2024-04-08T13:12:12.658551"
+status: published
+
+authors:
+  - leka
+
+skills:
+  - recognition
+  - recognition/basic_physiological_needs
+  - self_regulation
+
+tags:
+  - characters
+  - drawings
+  - physiological_needs
+  - human_needs
+  - self_awareness
+
+hmi:
+  - tablet
+
+types:
+  - one_on_one
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: recognition_basic_physiological_needs
+
+      title: Les besoins physiologiques primaires
+      subtitle: 1 image - Oscar
+
+      short_description: |
+        Regarde l'image de gauche. De quoi le personnage a-t-il besoin ?
+
+      description: |
+        Dans cette activité, une image présente un personnage exprimant un état physiologique (faim, soif, fatigue, etc.). A partir de l'état physiologique du personnage, l'objectif est de déterminer son besoin associé (besoin de manger, de boire, de dormir, etc.).
+
+      instructions: |
+        - Encourager la personne accompagnée à observer attentivement l'image présentée.
+        - Encourager la personne accompagnée à appuyer sur l'image correspondante au besoin du personnage.
+        - Lorsque la réponse est correct, Leka lance un renforçateur.
+
+  - locale: en_US
+    details:
+      icon: recognition_basic_physiological_needs
+
+      title: Primary physiological needs
+      subtitle: 1 image - Oscar
+
+      short_description: |
+        Look at the image on the left. What does the character need?
+
+      description: |
+        In this activity, an image presents a character expressing a physiological state (hunger, thirst, tiredness, etc.). Based on the character's physiological state, the objective is to determine the associated need (need to eat, drink, sleep, etc.).
+
+      instructions: |
+        - Encourage the care receiver to observe the presented image carefully.
+        - Encourage the care receiver to tap on the corresponding image of the character's need.
+        - When the response is correct, Leka provides reinforcement.
+
+exercises_payload:
+  options:
+    shuffle_exercises: true
+    shuffle_groups: false
+
+  exercise_groups:
+    - group:
+
+        - instructions:
+            - locale: fr_FR
+              value: Regarde l'image. De quoi le personnage a-t-il besoin ?
+            - locale: en_US
+              value: Look at the image. What does the character need?
+          interface: observeThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: image
+              value:
+                drawings-physiological_conditions_illustrations-physiological_conditions-oscar-hunger-01E1
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: pictograms-foods-meals-sandwich-0176
+                type: image
+                is_right_answer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Regarde l'image. De quoi le personnage a-t-il besoin ?
+            - locale: en_US
+              value: Look at the image. What does the character need?
+          interface: observeThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: image
+              value:
+                drawings-physiological_conditions_illustrations-physiological_conditions-oscar-thirst-01DF
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: pictograms-foods-meals-glass_iced_water-0171
+                type: image
+                is_right_answer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Regarde l'image. De quoi le personnage a-t-il besoin ?
+            - locale: en_US
+              value: Look at the image. What does the character need?
+          interface: observeThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: image
+              value:
+                drawings-physiological_conditions_illustrations-physiological_conditions-oscar_tiredness-01DE
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: pictograms-objects-house-bedroom-bed_blue-01A5
+                type: image
+                is_right_answer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Regarde l'image. De quoi le personnage a-t-il besoin ?
+            - locale: en_US
+              value: Look at the image. What does the character need?
+          interface: observeThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: image
+              value: drawings-physiological_conditions_ illustrations-physiological_conditions-oscar-urge_to_pee-01E2
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: pictograms-objects-bathroom-toilet_blue-00BD
+                type: image
+                is_right_answer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Regarde l'image. De quoi le personnage a-t-il besoin ?
+            - locale: en_US
+              value: Look at the image. What does the character need?
+          interface: observeThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: image
+              value:
+                drawings-physiological_conditions_illustrations-physiological_conditions-oscar-hunger-01E1
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: pictograms-foods-meals-sandwich-0176
+                type: image
+                is_right_answer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Regarde l'image. De quoi le personnage a-t-il besoin ?
+            - locale: en_US
+              value: Look at the image. What does the character need?
+          interface: observeThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: image
+              value:
+                drawings-physiological_conditions_illustrations-physiological_conditions-oscar-thirst-01DF
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: pictograms-foods-meals-glass_iced_water-0171
+                type: image
+                is_right_answer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Regarde l'image. De quoi le personnage a-t-il besoin ?
+            - locale: en_US
+              value: Look at the image. What does the character need?
+          interface: observeThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: image
+              value:
+                drawings-physiological_conditions_illustrations-physiological_conditions-oscar_tiredness-01DE
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: pictograms-objects-house-bedroom-bed_blue-01A5
+                type: image
+                is_right_answer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Regarde l'image. De quoi le personnage a-t-il besoin ?
+            - locale: en_US
+              value: Look at the image. What does the character need?
+          interface: observeThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: image
+              value: drawings-physiological_conditions_ illustrations-physiological_conditions-oscar-urge_to_pee-01E2
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: pictograms-objects-bathroom-toilet_blue-00BD
+                type: image
+                is_right_answer: true

@@ -1,0 +1,136 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+name: Fastlane - Internal Beta Release
+
+on:
+  pull_request:
+    types: [labeled]
+  push:
+    branches:
+      - develop
+    paths:
+      - "Apps/LekaApp/**/*.swift"
+      - "Apps/LekaApp/**/*.yml"
+      - "Modules/**/*.swift"
+      - "Modules/**/*.yml"
+      - "Modules/ContentKit/**"
+      - "Tuist/Package.swift"
+      - "Tuist/Package.resolved"
+      - "fastlane/Fastfile" # TODO: (@ladislas) remove this line after test
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  TUIST_TURN_OFF_LINTERS: TRUE
+  APP_STORE_CONNECT_API_KEY_CONTENT: ${{ secrets. APP_STORE_CONNECT_API_KEY_CONTENT }}
+  APP_STORE_CONNECT_ISSUER_ID: ${{ secrets. APP_STORE_CONNECT_ISSUER_ID }}
+  APP_STORE_CONNECT_API_KEY_ID: ${{ secrets. APP_STORE_CONNECT_API_KEY_ID }}
+  FASTLANE_KEYCHAIN_PASSWORD: ${{ secrets.FASTLANE_KEYCHAIN_PASSWORD }}
+  MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+  MATCH_GIT_BASIC_AUTHORIZATION: ${{ secrets.MATCH_GIT_BASIC_AUTHORIZATION }}
+
+jobs:
+  internal_beta_release:
+    name: fastlane release beta_internal
+    runs-on: [self-hosted, iOS]
+    if: (github.event_name == 'pull_request' && contains(github.event.label.name, 'fastlane:beta')) || (github.event_name == 'push')
+
+    env:
+      PR_NUMBER: ${{ github.event.pull_request.number }}
+      FASTLANE_SKIP_UPDATE_CHECK: 1
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          lfs: true
+
+      - name: Setup for Pull Request
+        if: github.event_name == 'pull_request' && contains(github.event.label.name, 'fastlane:beta')
+        run: |
+          git checkout ${{ env.BASE_REF }}
+          git checkout ${{ env.HEAD_REF }}
+        env:
+          BASE_REF: ${{ github.event.pull_request.base.ref }}
+          HEAD_REF: ${{ github.head_ref }}
+
+      - name: Setup mise
+        run: |
+          echo "$HOME/.local/share/mise/shims" >> $GITHUB_PATH
+
+      - name: bundle install
+        run: |
+          gem install bundler
+          bundle install
+
+      - name: tuist fetch
+        run: |
+          tuist fetch
+
+      - name: fastlane helloworld
+        run: |
+          bundle exec fastlane helloworld
+
+      - name: fastlane sync_certificates
+        run: |
+          bundle exec fastlane sync_certificates release:true --verbose
+
+      - name: fastlane beta_internal LekaApp
+        if: (github.event_name == 'pull_request' && contains(github.event.label.name, 'LekaApp')) || (github.event_name == 'push')
+        run: |
+          bundle exec fastlane beta_internal targets:LekaApp --verbose
+
+      - name: fastlane beta_internal LekaUpdater
+        if: github.event_name == 'pull_request' && contains(github.event.label.name, 'LekaUpdater')
+        run: |
+          bundle exec fastlane beta_internal targets:LekaUpdater --verbose
+
+      - name: Post Github comment
+        if: success() && github.event_name == 'pull_request' && contains(github.event.label.name, 'fastlane:beta')
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          hide_and_recreate: true
+          hide_classify: "OUTDATED"
+          header: testflight
+          message: |
+            ${{ env.CHANGELOG_FOR_GITHUB }}
+
+      - name: Post to a Slack channel
+        id: slack
+        if: ${{ env.CHANGELOG_FOR_SLACK != '' }}
+        uses: slackapi/slack-github-action@v1.25.0
+        with:
+          channel-id: "C3SHVTYNP,C041YEWNVJS"
+          slack-message: ${{ env.CHANGELOG_FOR_SLACK }}
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+
+      - name: remove label
+        if: always() && github.event_name == 'pull_request' && contains(github.event.label.name, 'fastlane:beta')
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            const { LABEL_NAME } = process.env;
+
+            const labels = await github.rest.issues.listLabelsOnIssue({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo
+            });
+
+            if (labels.data.some(label => label.name === LABEL_NAME)) {
+              await github.rest.issues.removeLabel({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                name: LABEL_NAME
+              });
+            }
+        env:
+          LABEL_NAME: ${{ github.event.label.name }}

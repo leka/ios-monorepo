@@ -1,0 +1,39 @@
+Welcome to the New Leka App!
+
+Explore what’s new in the latest update:
+
+- Revolutionary Interface: Enjoy seamless interaction with the Leka robot through a completely redesigned user experience.
+- Enhanced Educational Content: Dive into an expanded library of activities, curriculums, and stories designed for inclusive learning.
+- Customizable User Profiles: Personalize your journey with adaptable profiles for caregivers and their care receivers, simplifying progress tracking.
+- Future-Ready Technology: Benefit from a robust app infrastructure that ensures reliability, user-friendly design, and readiness for future advancements.
+
+Join us on this new journey with Leka, where technology and education converge to create impactful educational experiences.
+
+## Updates & Fixes
+
+/!\ Important Information for Leka Alpha Users /!\
+
+- Account Transition: Your account, along with all caregivers and care receivers, has been transferred to our new database. Log in using your regular email and password.
+- Password Assistance: Forgot your password? Easily reset it from the login page.
+
+If you encounter any issues or need help, contact us at support@leka.io
+
+### New Content & Features
+
+- Stories are now available
+- Introducing new curriculum icons
+- Enhanced descriptions for activities and curriculums (ongoing improvements)
+- New gamepad controls using arrows for better navigation
+- Added icons for melodies to enhance user interface
+
+### Improved Features
+
+- Added password reset and forgot password features
+- New loading screen on app launch for a smoother experience
+- Upgraded settings view with detailed system information
+- Ability to select multiple care receivers at activity launch
+
+### Bug Fixes
+
+- Corrected localization errors and typographical mistakes
+- Fixed issues with retrieving already connected robots

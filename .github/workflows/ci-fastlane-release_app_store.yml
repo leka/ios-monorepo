@@ -1,0 +1,113 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+name: Fastlane - Release to App Store
+
+on:
+  pull_request:
+    types: [labeled]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  TUIST_TURN_OFF_LINTERS: TRUE
+  APP_STORE_CONNECT_API_KEY_CONTENT_RELEASE_APP_STORE: ${{ secrets. APP_STORE_CONNECT_API_KEY_CONTENT_RELEASE_APP_STORE }}
+  APP_STORE_CONNECT_ISSUER_ID: ${{ secrets. APP_STORE_CONNECT_ISSUER_ID }}
+  APP_STORE_CONNECT_API_KEY_ID_RELEASE_APP_STORE: ${{ secrets. APP_STORE_CONNECT_API_KEY_ID_RELEASE_APP_STORE }}
+  FASTLANE_KEYCHAIN_PASSWORD: ${{ secrets.FASTLANE_KEYCHAIN_PASSWORD }}
+  MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+  MATCH_GIT_BASIC_AUTHORIZATION: ${{ secrets.MATCH_GIT_BASIC_AUTHORIZATION }}
+
+jobs:
+  release_app_store:
+    if: contains(github.event.label.name, 'fastlane:deliver')
+    name: fastlane upload_to_app_store
+    runs-on: [self-hosted, iOS]
+
+    env:
+      PR_NUMBER: ${{ github.event.pull_request.number }}
+      FASTLANE_SKIP_UPDATE_CHECK: 1
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          lfs: true
+
+      - name: Checkout base, head branches
+        run: |
+          git checkout ${{ env.BASE_REF }}
+          git checkout ${{ env.HEAD_REF }}
+        env:
+          BASE_REF: ${{ github.event.pull_request.base.ref }}
+          HEAD_REF: ${{ github.head_ref }}
+
+      - name: Setup mise
+        run: |
+          echo "$HOME/.local/share/mise/shims" >> $GITHUB_PATH
+
+      - name: bundle install
+        run: |
+          gem install bundler
+          bundle install
+
+      - name: tuist fetch
+        run: |
+          tuist fetch
+
+      - name: fastlane helloworld
+        run: |
+          bundle exec fastlane helloworld
+
+      - name: fastlane sync_certificates
+        run: |
+          bundle exec fastlane sync_certificates release:true --verbose
+
+      - name: fastlane release LekaApp
+        if: contains(github.event.label.name, 'LekaApp')
+        run: |
+          bundle exec fastlane release target:LekaApp --verbose
+
+      - name: fastlane release LekaUpdater
+        if: contains(github.event.label.name, 'LekaUpdater')
+        run: |
+          bundle exec fastlane release target:LekaUpdater --verbose
+
+      - name: Post Github comment
+        if: ${{ success() }}
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          hide_and_recreate: true
+          hide_classify: "OUTDATED"
+          header: release
+          message: |
+            ${{ env.CHANGELOG_FOR_GITHUB }}
+
+      - name: Post to a Slack channel
+        id: slack
+        uses: slackapi/slack-github-action@v1.25.0
+        with:
+          channel-id: "C3SHVTYNP,C041YEWNVJS"
+          slack-message: ${{ env.CHANGELOG_FOR_SLACK }}
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+
+      - name: remove label
+        if: always()
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            const { LABEL_NAME } = process.env
+            github.rest.issues.removeLabel({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              name: LABEL_NAME
+            })
+        env:
+          LABEL_NAME: ${{ github.event.label.name }}

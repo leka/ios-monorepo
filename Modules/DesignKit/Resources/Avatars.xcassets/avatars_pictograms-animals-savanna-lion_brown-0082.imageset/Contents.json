@@ -1,0 +1,15 @@
+{
+  "images" : [
+    {
+      "filename" : "avatars_pictograms-animals-savanna-lion_brown-0082.svg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  },
+  "properties" : {
+    "preserves-vector-representation" : true
+  }
+}

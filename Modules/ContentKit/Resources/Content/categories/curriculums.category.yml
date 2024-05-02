@@ -1,0 +1,108 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+l10n:
+  - locale: fr_FR
+    details:
+      title: Parcours
+      subtitle: Séquences d’activités ciblées pour un apprentissage approfondi et structuré.
+      description: Ensemble d’activités conçues par et pour les professionnels, pour un développement progressif allant de la reconnaissance des émotions à la catégorisation.
+  - locale: en_US
+    details:
+      title: Curriculums
+      subtitle: Targeted sequences of activities for structured, in-depth learning.
+      description: Curated groups of activities developed with caregivers for stepwise progression in areas like emotion recognition and language skills.
+
+content:
+  - id: emotion_recognition
+    l10n:
+      - locale: fr_FR
+        details:
+          title: Reconnaissance des émotions
+          subtitle: Apprendre à identifier et exprimer ses émotions.
+          description: Découvrez des activités pour aider les personnes accompagnées à reconnaître et exprimer leurs émotions, pour une meilleure communication et compréhension.
+      - locale: en_US
+        details:
+          title: Emotion Recognition
+          subtitle: Learn to identify and express emotions.
+          description: Explore activities to help care receivers recognize and express their emotions, for improved communication and understanding.
+    curriculums:
+      - curriculum_recognition_emotions_drawings-95C42E189BC146BB844467A3BAFE8BC0
+      - curriculum_recognition_emotions_generalization-173A0E0985D944F9835E2205867121FC
+      - curriculum_recognition_emotions_in_context-A135163C8D8646DE95D0854FD5E155EB
+      - curriculum_recognition_emotions_pictograms-3A9B0EB3A9CF4ABCB9B771B6047DF2D0
+      - curriculum_recognition_emotions_pictures-BA3CB88A6A6E49CB9AB83FA992BF852B
+      - curriculum_recognition_sounds_emotions-2D48CCB418BF4808BCB16148C901C617
+
+  - id: categorization
+    l10n:
+      - locale: fr_FR
+        details:
+          title: Catégorisation
+          subtitle: Apprendre à trier et à catégoriser.
+          description: Découvrez des activités pour aider les personnes accompagnées à classer et organiser des objets selon différentes catégories et critères.
+      - locale: en_US
+        details:
+          title: Categorization
+          subtitle: Learning to sort and categorize.
+          description: Explore activities to help care receivers classifying and organizing objects according to different categories and criteria.
+    curriculums:
+      - sorting_fruits_vegetables_basket-E6A322DC7A6E48518CED2CA2D3D2A595
+      - curriculum_categorization_sort_through-88C512E99B61485D93A7AD8C34ED6A76
+      - curriculum_categorization_sort_through_functional_category-64388748AF714B4880B8C7B6DD6D93F3
+
+  - id: receptive_language
+    l10n:
+      - locale: fr_FR
+        details:
+          title: Langage réceptif
+          subtitle: Comprendre et interpréter les mots et les phrases.
+          description: Découvrez des activités pour aider les personnes accompagnées à comprendre et interpréter les mots et les phrases, pour une meilleure communication et interaction.
+      - locale: en_US
+        details:
+          title: Receptive Language
+          subtitle: Understand and interpret words and phrases.
+          description: Explore activities to help care receivers understand and interpret words and phrases, for improved communication and interaction.
+    curriculums:
+      - curriculum_receptive_language_identify_number_quantity-4499A9AFB56B4476969B96CE32F5314C
+      - curriculum_receptive_language_identify_objects_by_function-9B35D447AB6C402DB13BA66E4F7F4E05
+      - curriculum_receptive_language_identify_opposites-5B73795D20984208AF07C4686089266E
+      - curriculum_receptive_language_identify_positional_concepts-BC1E66BCFB994A76AF09C446407D8ECF
+      - curriculum_receptive_language_identity_familiar_nouns-1607BEA72CC14285AB709C567E1BE5E7
+      - curriculum_receptive_language_ing_verbs-2B927C344CA94CD993DDB7AC4C7F46FD
+      - curriculum_receptive_language_identify_objects_by_color-506EA3B894AE46EBAE4BE4AFFC65233F
+
+  - id: sound_recognition
+    l10n:
+      - locale: fr_FR
+        details:
+          title: Reconnaissance des sons
+          subtitle: Identifier et associer les sons à des objets et des actions.
+          description: Découvrez des activités pour aider les personnes accompagnées à identifier et associer les sons à des objets et des actions, pour une meilleure compréhension et interaction.
+      - locale: en_US
+        details:
+          title: Sound Recognition
+          subtitle: Identify and associate sounds with objects and actions.
+          description: Explore activities to help care receivers identify and associate sounds with objects and actions, for improved understanding and interaction.
+    curriculums:
+      - curriculum_recognition_sounds_animals-FED25D9B424E42019F03593FE0D65AEE
+      - curriculum_recognition_sounds_musical_instruments-6A5EF209D00942F4AEEA4AEC6DAC052A
+      - curriculum_recognition_sounds_emotions-2D48CCB418BF4808BCB16148C901C617
+
+  - id: miscellaneous
+    l10n:
+      - locale: fr_FR
+        details:
+          title: Divers
+          subtitle: Activités variées pour une expérience ludique et enrichissante.
+          description: Découvrez des activités variées pour une expérience ludique et enrichissante, idéales pour se détendre et s'amuser.
+      - locale: en_US
+        details:
+          title: Miscellaneous
+          subtitle: Varied activities for a fun and enriching experience.
+          description: Explore varied activities for a fun and enriching experience, perfect for relaxation and enjoyment.
+    curriculums:
+      - color_bingo-69760D1DA61849E3926E3A939BBEF0CE
+      - curriculum_recognition_weather_and_temperatures-1D8E1AB667DB40B199479D731EF96F2E
+      - curriculum_recognition_basic_physiological_needs-B697FEE9EF7946A2B704673FEEAA0824

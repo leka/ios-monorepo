@@ -1,0 +1,90 @@
+{
+    "version": "1.0",
+    "sourceLanguage": "en",
+    "strings": {
+        "localized_string_NO_default": {
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "\ud83c\uddfa\ud83c\uddf8 ADDED localized_string_NO_default"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "\ud83c\uddeb\ud83c\uddf7 ADDED localized_string_NO_default"
+                    }
+                }
+            }
+        },
+        "localized_string_WITH_default": {
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "\u26f3 DEFAULT localized_string_WITH_default"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "\ud83c\uddeb\ud83c\uddf7 ADDED localized_string_WITH_default"
+                    }
+                }
+            }
+        },
+        "localized_string_interpolation": {
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "\u26f3 DEFAULT localized_string_interpolation - text: %1$@ - int: %2$lld - float: %3$f"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "\ud83c\uddeb\ud83c\uddf7 ADDED localized_string_interpolation - text: %1$@ - int: %2$lld - float: %3$f"
+                    }
+                }
+            }
+        },
+        "localized_string_interpolation_with_markdown": {
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "\u26f3 **DEFAULT** *localized_string_interpolation_with_markdown* - **text: %1$@** - *int: %2$lld* - ***float: %3$f***"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "\ud83c\uddeb\ud83c\uddf7 **DEFAULT** *localized_string_interpolation_with_markdown* - **text: %1$@** - *int: %2$lld* - ***float: %3$f***"
+                    }
+                }
+            }
+        },
+        "localized_string_with_markdown": {
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "\u26f3 **DEFAULT** *localized_string_with_markdown*"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "\ud83c\uddeb\ud83c\uddf7 **DEFAULT** *localized_string_with_markdown*"
+                    }
+                }
+            }
+        }
+    }
+}

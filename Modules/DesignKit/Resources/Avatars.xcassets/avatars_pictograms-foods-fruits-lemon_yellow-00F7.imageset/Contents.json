@@ -1,0 +1,15 @@
+{
+  "images" : [
+    {
+      "filename" : "avatars_pictograms-foods-fruits-lemon_yellow-00F7.svg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  },
+  "properties" : {
+    "preserves-vector-representation" : true
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "images" : [
+    {
+      "filename" : "avatars_pictograms-animals-farm-bird_yellow-0071.svg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  },
+  "properties" : {
+    "preserves-vector-representation" : true
+  }
+}

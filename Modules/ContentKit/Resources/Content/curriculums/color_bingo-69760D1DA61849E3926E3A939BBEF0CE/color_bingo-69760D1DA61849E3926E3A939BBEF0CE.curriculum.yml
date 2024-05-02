@@ -1,0 +1,65 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: 69760D1DA61849E3926E3A939BBEF0CE
+name: color_bingo
+
+status: published
+
+created_at: "2024-03-21T15:12:35.579066"
+last_edited_at: "2024-04-05T18:34:54.289431"
+authors:
+  - leka
+
+skills:
+  - recognition
+  - recognition/colors
+  - discrimination
+
+tags:
+  - colors
+
+hmi:
+  - tablet_robot
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: color_bingo
+      title: Loto des Couleurs
+      subtitle: Reconnaissance des couleurs entre Leka et la tablette
+      abstract: |
+        Leka s'allume dans une couleur. La personne accompagnée doit toucher la même couleur sur l'écran de l'iPad.
+      description: |
+        Dans ce jeu, Leka s'allume dans une couleur spécifique. Le but est de reconnaître cette couleur et de la toucher sur l'écran de l'iPad.
+
+        C'est une activité amusante et interactive qui aide à développer la reconnaissance des couleurs et la coordination œil-main.
+
+        Elle peut être utilisée à la fois pour l'apprentissage et le jeu. La personne accompagnée peut jouer seule ou avec un accompagnateur pour augmenter l'interaction sociale.
+
+  - locale: en_US
+    details:
+      icon: color_bingo
+      title: Color Bingo
+      subtitle: Color recognition between Leka and the tablet
+      abstract: |
+        Leka lights up in a color. The care receiver must touch the same color on the iPad screen.
+      description: |
+        In this game, Leka lights up in a specific color. The goal is to recognize this color and touch it on the iPad screen.
+
+        It is a fun and interactive activity that helps develop color recognition and hand-eye coordination.
+
+        It can be used for both learning and play. The care receiver can play alone or with a caregiver to increase social interaction.
+
+activities:
+  - color_bingo_1-CBBCDFA8DC8C462794904F6E5E0638AB
+  - color_bingo_2-7960FD995EDC4C179A4BA4997E4C5A4F
+  - color_bingo_3-E742B4AF67204DA68C08ADEC6126648E
+  - color_bingo_4-A7584D692B23422BB12683FA7BE393BE
+  - color_bingo_5-651AD9E7F59249EFA3A48F23A78134A2
+  - color_bingo_6-EFC7F64F51FD4D68863749C1C278BD1F

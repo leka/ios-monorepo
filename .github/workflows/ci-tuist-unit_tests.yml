@@ -1,0 +1,51 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+name: Tuist - Unit Tests
+
+on:
+  push:
+    branches:
+      - develop
+    paths:
+      - "**/*.swift"
+  pull_request:
+    types: [opened, synchronize, reopened]
+    paths:
+      - "**/*.swift"
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  TUIST_TURN_OFF_LINTERS: TRUE
+
+jobs:
+  unit_tests:
+    name: unit tests
+    runs-on: [self-hosted, iOS]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1 # shallow clone
+          lfs: true
+
+      - name: Setup mise
+        run: |
+          echo "$HOME/.local/share/mise/shims" >> $GITHUB_PATH
+
+      - name: tuist fetch
+        run: |
+          tuist fetch
+
+      - name: tuist generate
+        run: |
+          tuist generate -n
+
+      - name: tuist test
+        run: |
+          tuist test
