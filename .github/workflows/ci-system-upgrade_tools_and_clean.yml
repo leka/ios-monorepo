@@ -54,7 +54,7 @@ jobs:
           open -a Xcode
 
           echo "Accepting the license..."
-          sudo xcodebuild -license accept
+          echo $SUDO_PASSWORD | sudo -S xcodebuild -license accept
 
           echo "Installing Xcode command-line tools..."
           xcode-select --install
