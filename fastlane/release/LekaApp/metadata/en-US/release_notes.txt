@@ -20,20 +20,10 @@ If you encounter any issues or need help, contact us at support@leka.io
 
 ### New Content & Features
 
-- Stories are now available
-- Introducing new curriculum icons
-- Enhanced descriptions for activities and curriculums (ongoing improvements)
-- New gamepad controls using arrows for better navigation
-- Added icons for melodies to enhance user interface
-
-### Improved Features
-
-- Added password reset and forgot password features
-- New loading screen on app launch for a smoother experience
-- Upgraded settings view with detailed system information
-- Ability to select multiple care receivers at activity launch
+- Stories - Enhanced visual assets for a better user experience.
+- Added song icons to Melody and Dance Freeze for improved navigation and engagement.
 
 ### Bug Fixes
 
-- Corrected localization errors and typographical mistakes
-- Fixed issues with retrieving already connected robots
+- Removed placeholder 'lorem ipsum' text in Caregivers and Care Receivers categories.
+- Implemented minor bug fixes and performance improvements to enhance app stability and usability.
