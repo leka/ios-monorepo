@@ -80,6 +80,8 @@ jobs:
           echo "Quitting xcode"
           osascript -e 'tell application "Xcode" to quit'
 
+          echo ${{ secrets.SUDO_PASSWORD }} | sudo shutdown -r now
+
       - name: Tools' versions before
         run: |
           which mise
