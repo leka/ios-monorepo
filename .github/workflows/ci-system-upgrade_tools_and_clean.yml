@@ -35,7 +35,17 @@ jobs:
 
       - name: Install xcode iOS platform
         run: |
-          xcodebuild -downloadPlatform iOS
+          echo "Checking Xcode version..."
+          xcodebuild -version
+
+          echo "Listing available SDKs..."
+          xcodebuild -showsdks
+
+          echo "Listing available devices..."
+          xcrun xctrace list devices
+
+          echo "Checking Xcode selected command-line tools..."
+          xcode-select -p
 
       - name: Tools' versions before
         run: |
