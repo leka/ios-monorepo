@@ -33,6 +33,10 @@ jobs:
         run: |
           echo "$HOME/.local/share/mise/shims" >> $GITHUB_PATH
 
+      - name: Install xcode iOS platform
+        run: |
+          xcodebuild -downloadPlatform iOS
+
       - name: Tools' versions before
         run: |
           which mise
