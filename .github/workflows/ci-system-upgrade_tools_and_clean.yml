@@ -63,7 +63,7 @@ jobs:
           sleep 5
 
           echo "Accepting the license..."
-          echo $SUDO_PASSWORD | sudo -S xcodebuild -license accept
+          echo ${{ secrets.SUDO_PASSWORD }} | sudo -S xcodebuild -license accept
 
           sleep 5
 
