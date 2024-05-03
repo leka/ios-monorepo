@@ -47,6 +47,24 @@ jobs:
           echo "Checking Xcode selected command-line tools..."
           xcode-select -p
 
+          echo "Quitting xcode"
+          osascript -e 'tell application "Xcode" to quit'
+
+          echo "Opening Xcode to accept the license..."
+          open -a Xcode
+
+          echo "Accepting the license..."
+          sudo xcodebuild -license accept
+
+          echo "Installing Xcode command-line tools..."
+          xcode-select --install
+
+          echo "Checking Xcode selected command-line tools..."
+          xcode-select -p
+
+          echo "Quitting xcode"
+          osascript -e 'tell application "Xcode" to quit'
+
       - name: Tools' versions before
         run: |
           which mise
