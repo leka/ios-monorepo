@@ -9,7 +9,7 @@ extension DanceFreezeView {
     struct PlayerView: View {
         // MARK: Lifecycle
 
-        public init(selectedAudioRecording: AudioRecording, isAuto: Bool, motion: Motion, data: ExerciseSharedData? = nil) {
+        public init(selectedAudioRecording: DanceFreeze.Song, isAuto: Bool, motion: Motion, data: ExerciseSharedData? = nil) {
             self._viewModel = StateObject(wrappedValue: ViewModel(selectedAudioRecording: selectedAudioRecording, motion: motion, shared: data))
             self.isAuto = isAuto
             self.motion = motion
@@ -67,5 +67,5 @@ extension DanceFreezeView {
 }
 
 #Preview {
-    DanceFreezeView.PlayerView(selectedAudioRecording: AudioRecording(.earlyBird), isAuto: true, motion: .movement)
+    DanceFreezeView.PlayerView(selectedAudioRecording: DanceFreeze.Song(song: "Early_Bird"), isAuto: true, motion: .movement)
 }

@@ -37,7 +37,7 @@ extension MelodyView {
                 ScrollView {
                     LazyVGrid(columns: self.columns, alignment: .leading) {
                         ForEach(self.songs, id: \.self) { midiRecording in
-                            ListRowSong(image: midiRecording.labels.icon, text: midiRecording.labels.name)
+                            ListRowSong(midiRecording: midiRecording, isSelected: midiRecording == self.selectedMidiRecording)
                                 .foregroundColor(
                                     midiRecording == self.selectedMidiRecording
                                         ? self.styleManager.accentColor! : .primary
@@ -62,22 +62,27 @@ extension MelodyView {
     private struct ListRowSong: View {
         // MARK: Lifecycle
 
-        init(image: String, text: String) {
-            if let path = Bundle.path(forImage: image) {
+        init(midiRecording: MidiRecordingPlayer.Song, isSelected: Bool) {
+            if let path = Bundle.path(forImage: midiRecording.labels.icon) {
                 self.image = path
             } else {
-                self.image = image
+                self.image = midiRecording.labels.icon
             }
-            self.text = text
+            self.text = midiRecording.labels.name
+            self.isSelected = isSelected
         }
 
         // MARK: Internal
 
         let image: String
         let text: String
+        let isSelected: Bool
 
         var body: some View {
             HStack {
+                Image(systemName: self.isSelected ? "checkmark.circle.fill" : "circle")
+                    .imageScale(.large)
+
                 if self.image.isRasterImageFile {
                     Image(uiImage: UIImage(named: self.image)!)
                         .resizable()
@@ -87,9 +92,8 @@ extension MelodyView {
                         .scaledToFit()
                 }
                 Text(self.text)
-                    .font(.body.bold())
             }
-            .frame(maxHeight: 60)
+            .frame(maxHeight: 70)
         }
     }
 }

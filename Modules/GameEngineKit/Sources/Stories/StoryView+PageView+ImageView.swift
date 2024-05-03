@@ -29,25 +29,20 @@ public extension StoryView.PageView {
         // MARK: Public
 
         public var body: some View {
-            VStack {
-                Spacer()
+            VStack(spacing: 0) {
                 if self.image.isRasterImageFile {
                     Image(uiImage: UIImage(named: self.image)!)
                         .resizable()
                         .scaledToFit()
                         .frame(maxWidth: self.size)
-                        .padding(.top, 100)
                 } else if self.image.isVectorImageFile {
                     SVGView(contentsOf: URL(fileURLWithPath: self.image))
                         .frame(maxWidth: self.size)
-                        .padding(.top, 100)
                 }
-                Spacer()
 
                 Text(self.text)
                     .font(Font(UIFont(name: "ChalkboardSE-Light", size: CGFloat(26)) ?? .systemFont(ofSize: 26)))
                     .foregroundStyle(.red)
-                    .padding(.bottom, 100)
             }
         }
 

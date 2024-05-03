@@ -11,9 +11,9 @@ extension DanceFreezeView {
     class ViewModel: ObservableObject {
         // MARK: Lifecycle
 
-        init(selectedAudioRecording: AudioRecording, motion: Motion, shared: ExerciseSharedData? = nil) {
-            self.audioPlayer = AudioPlayer(audioRecording: selectedAudioRecording)
-            self.audioPlayer.setAudioPlayer(audioRecording: selectedAudioRecording)
+        init(selectedAudioRecording: DanceFreeze.Song, motion: Motion, shared: ExerciseSharedData? = nil) {
+            self.audioPlayer = AudioPlayer(audioRecording: selectedAudioRecording.audio)
+            self.audioPlayer.setAudioPlayer(audioRecording: selectedAudioRecording.audio)
             self.robotManager = RobotManager()
             self.motionMode = motion
 

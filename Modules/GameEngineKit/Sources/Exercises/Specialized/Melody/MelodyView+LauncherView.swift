@@ -14,7 +14,7 @@ extension MelodyView {
         let songs: [MidiRecordingPlayer.Song]
 
         var body: some View {
-            VStack(spacing: 100) {
+            VStack(spacing: 50) {
                 HStack(spacing: 30) {
                     GameEngineKitAsset.Exercises.Melody.imageIllustration.swiftUIImage
                         .resizable()

@@ -12,7 +12,7 @@ import Foundation
 public class AudioPlayer: NSObject, ObservableObject {
     // MARK: Lifecycle
 
-    public init(audioRecording: AudioRecording) {
+    public init(audioRecording: String) {
         super.init()
         self.setAudioPlayer(audioRecording: audioRecording)
         self.didFinishPlaying = false
@@ -27,7 +27,7 @@ public class AudioPlayer: NSObject, ObservableObject {
         self.player.isPlaying
     }
 
-    func setAudioPlayer(audioRecording: AudioRecording) {
+    func setAudioPlayer(audioRecording: String) {
         self.progress = 0.0
         self.didFinishPlaying = false
 
@@ -41,12 +41,12 @@ public class AudioPlayer: NSObject, ObservableObject {
         }
 
         do {
-            if let url = Bundle.url(forAudio: audioRecording.file) {
+            if let url = Bundle.url(forAudio: audioRecording) {
                 log.debug("Audio found at url: \(url)")
                 self.player = try AVAudioPlayer(contentsOf: url)
             } else {
-                log.error("Audio not found: \(audioRecording.file)")
-                let fileURL = Bundle.module.url(forResource: audioRecording.file, withExtension: "mp3")!
+                log.error("Audio not found: \(audioRecording)")
+                let fileURL = Bundle.module.url(forResource: audioRecording, withExtension: "mp3")!
                 self.player = try AVAudioPlayer(contentsOf: fileURL)
             }
 

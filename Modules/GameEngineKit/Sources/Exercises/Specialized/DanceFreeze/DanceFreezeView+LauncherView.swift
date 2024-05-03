@@ -10,21 +10,20 @@ extension DanceFreezeView {
     struct LauncherView: View {
         @Binding var mode: Stage
         @Binding var motion: Motion
-        @Binding var selectedAudioRecording: AudioRecording
-        let songs: [AudioRecording]
+        @Binding var selectedAudioRecording: DanceFreeze.Song
+        let songs: [DanceFreeze.Song]
 
         var body: some View {
-            VStack(spacing: 100) {
+            VStack(spacing: 50) {
                 Text(l10n.DanceFreezeView.instructions)
                     .font(.headline)
                     .padding(.top, 30)
 
                 HStack(spacing: 30) {
-                    VStack(spacing: 0) {
-                        GameEngineKitAsset.Exercises.DanceFreeze.imageIllustration.swiftUIImage
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                    }
+                    GameEngineKitAsset.Exercises.DanceFreeze.imageIllustration.swiftUIImage
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .padding(80)
 
                     VStack(spacing: 0) {
                         MotionSelectorView(motion: self.$motion)
@@ -35,7 +34,6 @@ extension DanceFreezeView {
                         )
                     }
                 }
-                .padding(.horizontal, 100)
 
                 HStack(spacing: 70) {
                     Button {
@@ -57,19 +55,17 @@ extension DanceFreezeView {
 }
 
 #Preview {
-    let songs = [
-        AudioRecording(name: "Giggly Squirrel", file: "Giggly_Squirrel"),
-        AudioRecording(name: "Empty Page", file: "Empty_Page"),
-        AudioRecording(name: "Early Bird", file: "Early_Bird"),
-        AudioRecording(name: "Hands On", file: "Hands_On"),
-        AudioRecording(name: "In The Game", file: "In_The_Game"),
-        AudioRecording(name: "Little by Little", file: "Little_by_little"),
-    ]
-
-    return DanceFreezeView.LauncherView(
+    DanceFreezeView.LauncherView(
         mode: .constant(.waitingForSelection),
         motion: .constant(.rotation),
-        selectedAudioRecording: .constant(AudioRecording(.gigglySquirrel)),
-        songs: songs
+        selectedAudioRecording: .constant(DanceFreeze.Song(song: "Empty_Page")),
+        songs: [
+            DanceFreeze.Song(song: "Giggly_Squirrel"),
+            DanceFreeze.Song(song: "Empty_Page"),
+            DanceFreeze.Song(song: "Early_Bird"),
+            DanceFreeze.Song(song: "Hands_On"),
+            DanceFreeze.Song(song: "In_The_Game"),
+            DanceFreeze.Song(song: "Little_by_little"),
+        ]
     )
 }
