@@ -67,11 +67,6 @@ jobs:
 
           sleep 5
 
-          echo "Installing Xcode command-line tools..."
-          xcode-select --install
-
-          sleep 5
-
           echo "Checking Xcode selected command-line tools..."
           xcode-select -p
 
