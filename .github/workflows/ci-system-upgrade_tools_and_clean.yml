@@ -50,17 +50,37 @@ jobs:
           echo "Quitting xcode"
           osascript -e 'tell application "Xcode" to quit'
 
+          sleep 5
+
           echo "Opening Xcode to accept the license..."
           open -a Xcode
+
+          sleep 5
+
+          echo "Quitting xcode"
+          osascript -e 'tell application "Xcode" to quit'
+
+          sleep 5
 
           echo "Accepting the license..."
           echo $SUDO_PASSWORD | sudo -S xcodebuild -license accept
 
+          sleep 5
+
           echo "Installing Xcode command-line tools..."
           xcode-select --install
 
+          sleep 5
+
           echo "Checking Xcode selected command-line tools..."
           xcode-select -p
+
+          sleep 5
+
+          echo "Opening Xcode to accept the license..."
+          open -a Xcode
+
+          sleep 5
 
           echo "Quitting xcode"
           osascript -e 'tell application "Xcode" to quit'
