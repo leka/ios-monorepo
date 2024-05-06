@@ -16,4 +16,18 @@ public extension ExerciseCompletionData {
         public var numberOfTrials: Int
         public var numberOfAllowedTrials: Int
     }
+
+    struct SuperSimonExercisePayload: Codable {
+        // MARK: Lifecycle
+
+        public init(numberOfTrials: Int, numberOfAllowedTrials: Int) {
+            self.numberOfTrials = numberOfTrials
+            self.numberOfAllowedTrials = numberOfAllowedTrials
+        }
+
+        // MARK: Public
+
+        public var numberOfTrials: Int
+        public var numberOfAllowedTrials: Int
+    }
 }
