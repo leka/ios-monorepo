@@ -58,6 +58,9 @@ public struct Exercise: Decodable {
             case (.melody, .none):
                 self.payload = try container.decode(MidiRecordingPlayer.Payload.self, forKey: .payload)
 
+            case (.superSimon, .none):
+                self.payload = try container.decode(SuperSimon.Payload.self, forKey: .payload)
+
             case (.gamepadJoyStickColorPad, .none),
                  (.gamepadArrowPadColorPad, .none),
                  (.gamepadArrowPad, .none),

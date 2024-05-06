@@ -19,6 +19,7 @@ public extension Exercise {
         case observeThenDragAndDropToAssociate
         case robotThenDragAndDropToAssociate
         case danceFreeze
+        case superSimon
         case gamepadJoyStickColorPad
         case gamepadArrowPadColorPad
         case gamepadArrowPad

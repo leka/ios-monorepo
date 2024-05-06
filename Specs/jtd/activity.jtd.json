@@ -387,6 +387,13 @@
                             "ref": "$exercise/instructions"
                         }
                     }
+                },
+                "superSimon": {
+                    "properties": {
+                        "payload": {
+                            "ref": "$exercise/payload/superSimon"
+                        }
+                    }
                 }
             }
         },
@@ -572,6 +579,13 @@
                     "elements": {
                         "ref": "song"
                     }
+                }
+            }
+        },
+        "$exercise/payload/superSimon": {
+            "properties": {
+                "level": {
+                    "enum": ["easy", "medium", "hard"]
                 }
             }
         },
