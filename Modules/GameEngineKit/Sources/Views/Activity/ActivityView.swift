@@ -262,6 +262,12 @@ public struct ActivityView: View {
                     data: self.viewModel.currentExerciseSharedData
                 )
 
+            case .superSimon:
+                SuperSimonView(
+                    exercise: self.viewModel.currentExercise,
+                    data: self.viewModel.currentExerciseSharedData
+                )
+
             case .listenThenTouchToSelect:
                 ListenThenTouchToSelectView(
                     exercise: self.viewModel.currentExercise,

@@ -488,6 +488,42 @@
                 }
             }
         },
+        "game_engine_kit.super_simon.button_label": {
+            "comment": "Super Simon button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Tap Leka"
+                    }
+                }
+            }
+        },
+        "game_engine_kit.super_simon.type_unknown_error": {
+            "comment": "Super Simon interface unknown error label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "\u274c ERROR\nInterface not implemented"
+                    }
+                }
+            }
+        },
+        "game_engine_kit.super_simon_choice_view.type_unknown_error": {
+            "comment": "SuperSimonChoiceView type unknown error label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "\u274c ERROR\nChoice type not implemented"
+                    }
+                }
+            }
+        },
         "game_engine_kit.touch_to_select_choice_view.type_unknown_error": {
             "comment": "TouchToSelectChoiceView type unknown error label",
             "extractionState": "extracted_with_value",
