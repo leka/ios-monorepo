@@ -20,10 +20,8 @@ If you encounter any issues or need help, contact us at support@leka.io
 
 ### New Content & Features
 
-- Stories - Enhanced visual assets for a better user experience.
-- Added song icons to Melody and Dance Freeze for improved navigation and engagement.
+- n/a
 
 ### Bug Fixes
 
-- Removed placeholder 'lorem ipsum' text in Caregivers and Care Receivers categories.
-- Implemented minor bug fixes and performance improvements to enhance app stability and usability.
+- Stories - fix some illustrations

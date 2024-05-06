@@ -20,10 +20,8 @@ Si vous rencontrez des problèmes ou avez besoin d'aide, contactez-nous à suppo
 
 ### Nouveau Contenu & Fonctionnalités
 
-- Histoires - Amélioration des éléments visuels pour une meilleure expérience utilisateur.
-- Ajout d'icônes de chansons dans Mélodies et Dance Freeze pour une navigation et un engagement améliorés.
+- n/a
 
 ### Corrections de Bugs
 
-- Suppression du texte de remplissage 'lorem ipsum' dans les catégories Accompagnants et Personnes Accompagnées.
-- Mise en œuvre de corrections de bugs mineurs et d'améliorations de performances pour renforcer la stabilité et l'ergonomie de l'application.
+- Histoires - Correction de cetaines illustrations
