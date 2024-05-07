@@ -16,7 +16,7 @@ struct GameplayTouchToSelectChoiceModel: GameplayChoiceModelProtocol {
     var state: GameplayChoiceState = .idle
 }
 
-extension GameplayFindTheRightAnswers where ChoiceModelType == GameplayTouchToSelectChoiceModel {
+extension GameplayFindTheRightAnswers {
     convenience init(choices: [GameplayTouchToSelectChoiceModel], shuffle: Bool = false, allowedTrials: Int? = nil) {
         self.init()
         self.choices.send(shuffle ? choices.shuffled() : choices)
@@ -31,7 +31,7 @@ extension GameplayFindTheRightAnswers where ChoiceModelType == GameplayTouchToSe
         }
     }
 
-    func process(_ choice: ChoiceModelType) {
+    func process(_ choice: GameplayTouchToSelectChoiceModel) {
         guard rightAnswers.isNotEmpty else {
             return
         }

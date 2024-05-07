@@ -16,7 +16,7 @@ struct GameplayAssociateCategoriesChoiceModel: GameplayChoiceModelProtocol {
     var state: GameplayChoiceState = .idle
 }
 
-extension GameplayAssociateCategories where ChoiceModelType == GameplayAssociateCategoriesChoiceModel {
+extension GameplayAssociateCategories {
     convenience init(choices: [GameplayAssociateCategoriesChoiceModel], allowedTrials: Int? = nil) {
         self.init()
         self.choices.send(choices)
@@ -30,7 +30,7 @@ extension GameplayAssociateCategories where ChoiceModelType == GameplayAssociate
         }
     }
 
-    func process(_ choice: ChoiceModelType, _ destination: ChoiceModelType) {
+    func process(_ choice: GameplayAssociateCategoriesChoiceModel, _ destination: GameplayAssociateCategoriesChoiceModel) {
         numberOfTrials += 1
 
         if choice.choice.category == destination.choice.category {

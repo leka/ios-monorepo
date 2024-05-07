@@ -16,7 +16,7 @@ struct GameplayDragAndDropIntoZonesChoiceModel: GameplayChoiceModelProtocol {
     var state: GameplayChoiceState = .idle
 }
 
-extension GameplayFindTheRightAnswers where ChoiceModelType == GameplayDragAndDropIntoZonesChoiceModel {
+extension GameplayFindTheRightAnswers {
     convenience init(choices: [GameplayDragAndDropIntoZonesChoiceModel], allowedTrials: Int? = nil) {
         self.init()
         self.choices.send(choices)
@@ -31,7 +31,7 @@ extension GameplayFindTheRightAnswers where ChoiceModelType == GameplayDragAndDr
         }
     }
 
-    func process(_ choice: ChoiceModelType, _ dropZone: DragAndDropIntoZones.DropZone) {
+    func process(_ choice: GameplayDragAndDropIntoZonesChoiceModel, _ dropZone: DragAndDropIntoZones.DropZone) {
         guard rightAnswers.isNotEmpty else {
             return
         }

@@ -6,16 +6,14 @@ import Combine
 import ContentKit
 import Foundation
 
-class GameplayAssociateCategories<ChoiceModelType>: StatefulGameplayProtocol
-    where ChoiceModelType: GameplayChoiceModelProtocol
-{
-    var choices: CurrentValueSubject<[GameplayAssociateCategoriesChoiceModel], Never> = .init([])
+class GameplayAssociateCategories: StatefulGameplayProtocol, ChoiceProviderGameplayProtocol {
+    var choices: CurrentValueSubject<[any GameplayChoiceModelProtocol], Never> = .init([])
     var state: CurrentValueSubject<ExerciseState, Never> = .init(.idle)
     var numberOfTrials = 0
     var allowedTrials = 0
     var startTimestamp: Date?
 
-    func updateChoice(_ choice: ChoiceModelType, state: GameplayChoiceState) {
+    func updateChoice(_ choice: any GameplayChoiceModelProtocol, state: GameplayChoiceState) {
         guard let index = choices.value.firstIndex(where: { $0.id == choice.id }) else {
             return
         }
@@ -31,7 +29,10 @@ class GameplayAssociateCategories<ChoiceModelType>: StatefulGameplayProtocol
 
     func getNumberOfAllowedTrials(from table: GradingLUT) -> Int {
         let numberOfChoices = self.choices.value.count
-        let numberOfRightAnswers = self.getNumberOfRightAnswers(choices: self.choices.value)
+        guard let choices = self.choices.value as? [GameplayAssociateCategoriesChoiceModel] else {
+            fatalError("Choice model incorrect")
+        }
+        let numberOfRightAnswers = self.getNumberOfRightAnswers(choices: choices)
 
         return table[numberOfChoices]![numberOfRightAnswers]!
     }

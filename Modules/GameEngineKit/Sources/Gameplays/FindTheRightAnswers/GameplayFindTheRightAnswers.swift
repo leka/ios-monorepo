@@ -6,17 +6,15 @@ import Combine
 import ContentKit
 import Foundation
 
-class GameplayFindTheRightAnswers<ChoiceModelType>: StatefulGameplayProtocol
-    where ChoiceModelType: GameplayChoiceModelProtocol
-{
-    var choices: CurrentValueSubject<[ChoiceModelType], Never> = .init([])
-    var rightAnswers: [ChoiceModelType] = []
+class GameplayFindTheRightAnswers: StatefulGameplayProtocol, ChoiceProviderGameplayProtocol {
+    var choices: CurrentValueSubject<[any GameplayChoiceModelProtocol], Never> = .init([])
+    var rightAnswers: [any GameplayChoiceModelProtocol] = []
     var state: CurrentValueSubject<ExerciseState, Never> = .init(.idle)
     var numberOfTrials = 0
     var allowedTrials = 0
     var startTimestamp: Date?
 
-    func updateChoice(_ choice: ChoiceModelType, state: GameplayChoiceState) {
+    func updateChoice(_ choice: any GameplayChoiceModelProtocol, state: GameplayChoiceState) {
         guard let index = choices.value.firstIndex(where: { $0.id == choice.id }) else {
             return
         }
