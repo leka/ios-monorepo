@@ -9,10 +9,17 @@ import SwiftUI
 class TouchToSelectViewViewModel: ObservableObject {
     // MARK: Lifecycle
 
-    init(choices: [TouchToSelect.Choice], shuffle: Bool = false, shared: ExerciseSharedData? = nil) {
-        self.gameplay = GameplayFindTheRightAnswers(
-            choices: choices.map { GameplayTouchToSelectChoiceModel(choice: $0) }, shuffle: shuffle
-        )
+    init(gameplayType: Exercise.Gameplay, choices: [TouchToSelect.Choice], shuffle: Bool = false, shared: ExerciseSharedData? = nil) {
+        switch gameplayType {
+            case .findTheRightAnswers:
+                self.gameplay = GameplayFindTheRightAnswers(
+                    choices: choices.map { GameplayTouchToSelectChoiceModel(choice: $0) },
+                    shuffle: shuffle
+                )
+            default:
+                fatalError("Gameplay type \(gameplayType) is not compatible with TTSViewModel")
+        }
+
         self.exercicesSharedData = shared ?? ExerciseSharedData()
 
         self.subscribeToGameplaySelectionChoicesUpdates()
@@ -21,25 +28,34 @@ class TouchToSelectViewViewModel: ObservableObject {
 
     // MARK: Public
 
-    public func onChoiceTapped(choice: GameplayTouchToSelectChoiceModel) {
-        self.gameplay.process(choice)
+    public func onChoiceTapped(choice: any GameplayChoiceModelProtocol) {
+        if let gameplay = self.gameplay as? GameplayFindTheRightAnswers {
+            guard let choice = choice as? GameplayTouchToSelectChoiceModel else {
+                fatalError("Choice model incorrect")
+            }
+            gameplay.process(choice)
+        } else {
+            fatalError("Gameplay not supported by TouchToSelectViewModel")
+        }
     }
 
     // MARK: Internal
 
-    @Published var choices: [GameplayTouchToSelectChoiceModel] = []
+    @Published var choices: [any GameplayChoiceModelProtocol] = []
     @ObservedObject var exercicesSharedData: ExerciseSharedData
 
     // MARK: Private
 
-    private let gameplay: GameplayFindTheRightAnswers<GameplayTouchToSelectChoiceModel>
+    private var gameplay: any StatefulGameplayProtocol & ChoiceProviderGameplayProtocol
     private var cancellables: Set<AnyCancellable> = []
 
     private func subscribeToGameplaySelectionChoicesUpdates() {
         self.gameplay.choices
             .receive(on: DispatchQueue.main)
             .sink {
-                self.choices = $0
+                if $0.isNotEmpty {
+                    self.choices = $0
+                }
             }
             .store(in: &self.cancellables)
     }

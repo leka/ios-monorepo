@@ -30,12 +30,12 @@ extension DragAndDropIntoZonesView {
 
         // MARK: Internal
 
-        @Published var choices: [GameplayDragAndDropIntoZonesChoiceModel] = []
+        @Published var choices: [any GameplayChoiceModelProtocol] = []
         @ObservedObject var exercicesSharedData: ExerciseSharedData
 
         // MARK: Private
 
-        private let gameplay: GameplayFindTheRightAnswers<GameplayDragAndDropIntoZonesChoiceModel>
+        private let gameplay: GameplayFindTheRightAnswers
         private var cancellables: Set<AnyCancellable> = []
 
         private func subscribeToGameplayDragAndDropChoicesUpdates() {

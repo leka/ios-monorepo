@@ -27,19 +27,25 @@ extension DragAndDropToAssociateView {
         // MARK: Public
 
         public func onChoiceTapped(
-            choice: GameplayAssociateCategoriesChoiceModel, destination: GameplayAssociateCategoriesChoiceModel
+            choice: any GameplayChoiceModelProtocol,
+            destination: any GameplayChoiceModelProtocol
         ) {
+            guard let choice = choice as? GameplayAssociateCategoriesChoiceModel,
+                  let destination = destination as? GameplayAssociateCategoriesChoiceModel
+            else {
+                fatalError("ChoiceModel incorrect")
+            }
             self.gameplay.process(choice, destination)
         }
 
         // MARK: Internal
 
-        @Published var choices: [GameplayAssociateCategoriesChoiceModel] = []
+        @Published var choices: [any GameplayChoiceModelProtocol] = []
         @ObservedObject var exercicesSharedData: ExerciseSharedData
 
         // MARK: Private
 
-        private let gameplay: GameplayAssociateCategories<GameplayAssociateCategoriesChoiceModel>
+        private let gameplay: GameplayAssociateCategories
         private var cancellables: Set<AnyCancellable> = []
 
         private func subscribeToGameplayAssociateCategoriesChoicesUpdates() {
