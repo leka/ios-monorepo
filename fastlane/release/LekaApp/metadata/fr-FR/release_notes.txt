@@ -24,4 +24,4 @@ Si vous rencontrez des problèmes ou avez besoin d'aide, contactez-nous à suppo
 
 ### Corrections de Bugs
 
-- Histoires - Correction de cetaines illustrations
+- Histoires - Suppression du texte de remplissage et remplacement par des définitions correctes.

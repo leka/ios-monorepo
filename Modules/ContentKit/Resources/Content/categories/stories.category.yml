@@ -6,14 +6,13 @@ l10n:
   - locale: fr_FR
     details:
       title: Histoires
-      subtitle: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
-      description: Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+      subtitle: Histoires interactives et ludiques qui vous entraînent dans les aventures de Hanna et Leka.
+      description: Une collection d'histoires captivantes et interactives remplies de couleurs, de musique et d'activités amusantes, stimulant la créativité et l'apprentissage des lecteurs.
   - locale: en_US
     details:
       title: Stories
-      subtitle: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
-      description: Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-
+      subtitle: Interactive and playful stories that immerse you in the adventures of Hanna and Leka.
+      description: A collection of captivating, interactive stories filled with colors, music, and fun activities that stimulate readers' creativity and learning.
 content:
   - hanna_meets_leka-FF7618528E194E8CB3A6950E08562D16
   - hanna_plays_music-CB8EB22A988049FB900AD5B66F78B00F

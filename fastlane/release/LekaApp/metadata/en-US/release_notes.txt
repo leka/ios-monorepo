@@ -24,4 +24,4 @@ If you encounter any issues or need help, contact us at support@leka.io
 
 ### Bug Fixes
 
-- Stories - fix some illustrations
+- Stories - Removed placeholder text and replaced it with accurate definitions.
