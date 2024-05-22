@@ -77,13 +77,16 @@ struct ActivityProgressBar: View {
     }
 
     private func progressBarMarkerColor(group: Int, exercise: Int) -> Color {
-        if let completedExerciseSharedData = self.viewModel.completedExercisesSharedData.first(where: {
-            $0.groupIndex == group
-                && $0.exerciseIndex == exercise
-        }) {
-            self.completionLevelToColor(level: completedExerciseSharedData.completionLevel)
-        } else {
-            .white
+        guard self.viewModel.completedExercisesSharedData.indices.contains(group) else {
+            return .white
         }
+
+        let groupData = self.viewModel.completedExercisesSharedData[group]
+        guard groupData.indices.contains(exercise) else {
+            return .white
+        }
+
+        let completedExerciseSharedData = groupData[exercise]
+        return self.completionLevelToColor(level: completedExerciseSharedData.completionLevel)
     }
 }
