@@ -295,6 +295,12 @@ public struct ActivityView: View {
                     data: self.viewModel.currentExerciseSharedData
                 )
 
+            case .observeThenDragAndDropIntoZones:
+                ObserveThenDragAndDropIntoZonesView(
+                    exercise: self.viewModel.currentExercise,
+                    data: self.viewModel.currentExerciseSharedData
+                )
+
             case .dragAndDropToAssociate:
                 DragAndDropToAssociateView(
                     exercise: self.viewModel.currentExercise,
@@ -303,6 +309,12 @@ public struct ActivityView: View {
 
             case .listenThenDragAndDropToAssociate:
                 ListenThenDragAndDropToAssociateView(
+                    exercise: self.viewModel.currentExercise,
+                    data: self.viewModel.currentExerciseSharedData
+                )
+
+            case .observeThenDragAndDropToAssociate:
+                ObserveThenDragAndDropToAssociateView(
                     exercise: self.viewModel.currentExercise,
                     data: self.viewModel.currentExerciseSharedData
                 )
