@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AccountKit
 import ContentKit
 import Foundation
 
@@ -19,8 +20,9 @@ extension GameplayFindTheRightAnswers where ChoiceModelType == GameplayDragAndDr
     convenience init(choices: [GameplayDragAndDropIntoZonesChoiceModel], allowedTrials: Int? = nil) {
         self.init()
         self.choices.send(choices)
-        rightAnswers = choices.filter { $0.choice.dropZone != .none }
-        state.send(.playing)
+        self.rightAnswers = choices.filter { $0.choice.dropZone != .none }
+        self.state.send(.playing)
+        self.startTimestamp = Date()
 
         if let allowedTrials {
             self.allowedTrials = allowedTrials
@@ -45,7 +47,13 @@ extension GameplayFindTheRightAnswers where ChoiceModelType == GameplayDragAndDr
 
         if rightAnswers.isEmpty {
             let level = evaluateCompletionLevel(allowedTrials: allowedTrials, numberOfTrials: numberOfTrials)
-            state.send(.completed(level: level))
+            let completionData = ExerciseCompletionData(
+                startTimestamp: self.startTimestamp,
+                endTimestamp: Date(),
+                numberOfTrials: self.numberOfTrials,
+                numberOfAllowedTrials: self.allowedTrials
+            )
+            state.send(.completed(level: level, data: completionData))
         }
     }
 }

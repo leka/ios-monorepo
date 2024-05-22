@@ -61,7 +61,7 @@ struct DiscoverLekaView: View {
             Spacer()
         }
         .onDisappear {
-            self.shared?.state = .completed(level: .nonApplicable)
+            self.shared?.state = .completed(level: .nonApplicable, data: nil)
             self.robotManager.stopPairing()
             self.isPlaying = false
             self.hasStarted = false
