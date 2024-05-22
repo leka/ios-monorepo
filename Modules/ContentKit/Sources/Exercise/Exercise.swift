@@ -38,11 +38,13 @@ public struct Exercise: Decodable {
                 self.payload = try container.decode(TouchToSelect.Payload.self, forKey: .payload)
 
             case (.dragAndDropIntoZones, .findTheRightAnswers),
-                 (.listenThenDragAndDropIntoZones, .findTheRightAnswers):
+                 (.listenThenDragAndDropIntoZones, .findTheRightAnswers),
+                 (.observeThenDragAndDropIntoZones, .findTheRightAnswers):
                 self.payload = try container.decode(DragAndDropIntoZones.Payload.self, forKey: .payload)
 
             case (.dragAndDropToAssociate, .associateCategories),
-                 (.listenThenDragAndDropToAssociate, .associateCategories):
+                 (.listenThenDragAndDropToAssociate, .associateCategories),
+                 (.observeThenDragAndDropToAssociate, .associateCategories):
                 self.payload = try container.decode(DragAndDropToAssociate.Payload.self, forKey: .payload)
 
             case (.danceFreeze, .none):
