@@ -75,16 +75,31 @@
     },
     "definitions": {
         "$author": {
-            "enum": ["leka", "aurore_kiesler", "julie_tuil"]
+            "enum": [
+                "leka",
+                "aurore_kiesler",
+                "julie_tuil"
+            ]
         },
         "$hmi": {
-            "enum": ["robot", "tablet", "magic_cards", "tablet_robot"]
+            "enum": [
+                "robot",
+                "tablet",
+                "magic_cards",
+                "tablet_robot"
+            ]
         },
         "$locale": {
-            "enum": ["en_US", "fr_FR"]
+            "enum": [
+                "en_US",
+                "fr_FR"
+            ]
         },
         "$status": {
-            "enum": ["draft", "published"]
+            "enum": [
+                "draft",
+                "published"
+            ]
         },
         "$l10n": {
             "properties": {
@@ -124,7 +139,10 @@
             "type": "string"
         },
         "$type": {
-            "enum": ["one_on_one", "group"]
+            "enum": [
+                "one_on_one",
+                "group"
+            ]
         },
         "$tag": {
             "type": "string"
@@ -268,7 +286,6 @@
                         "instructions": {
                             "ref": "$exercise/instructions"
                         },
-
                         "gameplay": {
                             "ref": "$exercise/gameplay"
                         },
@@ -365,7 +382,6 @@
                         "instructions": {
                             "ref": "$exercise/instructions"
                         },
-
                         "payload": {
                             "ref": "$exercise/payload/musicalInstruments"
                         }
@@ -434,22 +450,21 @@
             ]
         },
         "$exercise/gameplay": {
-            "enum": ["findTheRightAnswers", "associateCategories"]
+            "enum": [
+                "findTheRightAnswers",
+                "associateCategories"
+            ]
         },
         "$exercise/action": {
             "properties": {
                 "type": {
-                    "enum": ["ipad", "robot"]
+                    "enum": [
+                        "ipad",
+                        "robot"
+                    ]
                 },
                 "value": {
-                    "properties": {
-                        "type": {
-                            "enum": ["image", "audio", "color"]
-                        },
-                        "value": {
-                            "type": "string"
-                        }
-                    }
+                    "ref": "$exercice/action/properties/value"
                 }
             }
         },
@@ -459,7 +474,12 @@
                     "elements": {
                         "properties": {
                             "type": {
-                                "enum": ["color", "image", "sfsymbol", "emoji"]
+                                "enum": [
+                                    "color",
+                                    "image",
+                                    "sfsymbol",
+                                    "emoji"
+                                ]
                             },
                             "value": {
                                 "type": "string"
@@ -484,7 +504,9 @@
                 "dropZoneA": {
                     "properties": {
                         "type": {
-                            "enum": ["image"]
+                            "enum": [
+                                "image"
+                            ]
                         },
                         "value": {
                             "type": "string"
@@ -495,7 +517,9 @@
                     "elements": {
                         "properties": {
                             "type": {
-                                "enum": ["image"]
+                                "enum": [
+                                    "image"
+                                ]
                             },
                             "value": {
                                 "type": "string"
@@ -503,7 +527,10 @@
                         },
                         "optionalProperties": {
                             "dropZone": {
-                                "enum": ["zoneA", "zoneB"]
+                                "enum": [
+                                    "zoneA",
+                                    "zoneB"
+                                ]
                             }
                         }
                     }
@@ -513,7 +540,9 @@
                 "dropZoneB": {
                     "properties": {
                         "type": {
-                            "enum": ["image"]
+                            "enum": [
+                                "image"
+                            ]
                         },
                         "value": {
                             "type": "string"
@@ -531,7 +560,9 @@
                     "elements": {
                         "properties": {
                             "type": {
-                                "enum": ["image"]
+                                "enum": [
+                                    "image"
+                                ]
                             },
                             "value": {
                                 "type": "string"
@@ -539,7 +570,11 @@
                         },
                         "optionalProperties": {
                             "category": {
-                                "enum": ["catA", "catB", "catC"]
+                                "enum": [
+                                    "catA",
+                                    "catB",
+                                    "catC"
+                                ]
                             }
                         }
                     }
@@ -563,29 +598,29 @@
         "$exercise/payload/musicalInstruments": {
             "properties": {
                 "instrument": {
-                    "enum": ["xylophone"]
+                    "enum": [
+                        "xylophone"
+                    ]
                 },
                 "scale": {
-                    "enum": ["majorHeptatonic", "majorPentatonic"]
+                    "enum": [
+                        "majorHeptatonic",
+                        "majorPentatonic"
+                    ]
                 }
             }
         },
         "$exercise/payload/melody": {
             "properties": {
                 "instrument": {
-                    "enum": ["xylophone"]
+                    "enum": [
+                        "xylophone"
+                    ]
                 },
                 "songs": {
                     "elements": {
                         "ref": "song"
                     }
-                }
-            }
-        },
-        "$exercise/payload/superSimon": {
-            "properties": {
-                "level": {
-                    "enum": ["easy", "medium", "hard"]
                 }
             }
         },
@@ -620,6 +655,18 @@
                     "type": "string"
                 }
             }
-        }
+        },
+        "$exercise/payload/superSimon": {
+            "properties": {
+                "level": {
+                    "enum": [
+                        "easy",
+                        "medium",
+                        "hard"
+                    ]
+                }
+            }
+        },
+        "$exercice/action/properties/value": {}
     }
 }
