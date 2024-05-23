@@ -42,39 +42,8 @@ public struct RobotThenTouchToSelectView: View {
         let interface = Interface(rawValue: viewModel.choices.count)
 
         HStack(spacing: 0) {
-            Button {
-                switch self.actionType {
-                    case let .color(value):
-                        self.robot.shine(.all(in: .init(from: value)))
-                    case .audio,
-                         .image,
-                         .speech:
-                        log.error("Action not available for robot: \(self.actionType)")
-                        fatalError("💥 Action not available for robot: \(self.actionType)")
-                }
-
-                withAnimation {
-                    self.didSendCommandToRobot = true
-                }
-            } label: {
-                VStack {
-                    Image(uiImage: DesignKitAsset.Images.robotFaceSimple.image)
-                        .resizable()
-                        .frame(width: 200, height: 200)
-                        .padding()
-
-                    Button(String(l10n.RobotThenTouchToSelectView.buttonLabel.characters)) {}
-                        .font(.title)
-                        .opacity(self.didSendCommandToRobot ? 0.0 : 1.0)
-                        .buttonStyle(.bordered)
-                        .allowsHitTesting(false)
-                        .tint(nil)
-                }
-            }
-            .disabled(self.didSendCommandToRobot)
-            .opacity(self.didSendCommandToRobot ? 0.3 : 1.0)
-            .scaleEffect(self.didSendCommandToRobot ? 0.95 : 1.0, anchor: .center)
-            .padding(20)
+            ActionButtonRobot(actionType: self.actionType, robotWasTapped: self.$didSendCommandToRobot)
+                .padding(20)
 
             Divider()
                 .opacity(0.4)
@@ -159,15 +128,4 @@ public struct RobotThenTouchToSelectView: View {
     @State private var didSendCommandToRobot = false
 
     private let actionType: Exercise.Action.ActionType
-}
-
-// MARK: - l10n.RobotThenTouchToSelectView
-
-extension l10n {
-    enum RobotThenTouchToSelectView {
-        static let buttonLabel = LocalizedString("game_engine_kit.robot_then_touch_to_select.button_label",
-                                                 bundle: GameEngineKitResources.bundle,
-                                                 value: "Tap Leka",
-                                                 comment: "Robot then touch to select button label")
-    }
 }
