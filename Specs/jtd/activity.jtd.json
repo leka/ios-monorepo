@@ -247,6 +247,22 @@
                         }
                     }
                 },
+                "robotThenDragAndDropIntoZones": {
+                    "properties": {
+                        "instructions": {
+                            "ref": "$exercise/instructions"
+                        },
+                        "gameplay": {
+                            "ref": "$exercise/gameplay"
+                        },
+                        "action": {
+                            "ref": "$exercise/action"
+                        },
+                        "payload": {
+                            "ref": "$exercise/payload/dragAndDropIntoZones"
+                        }
+                    }
+                },
                 "dragAndDropToAssociate": {
                     "properties": {
                         "instructions": {
@@ -278,6 +294,22 @@
                     }
                 },
                 "observeThenDragAndDropToAssociate": {
+                    "properties": {
+                        "instructions": {
+                            "ref": "$exercise/instructions"
+                        },
+                        "gameplay": {
+                            "ref": "$exercise/gameplay"
+                        },
+                        "action": {
+                            "ref": "$exercise/action"
+                        },
+                        "payload": {
+                            "ref": "$exercise/payload/dragAndDropToAssociate"
+                        }
+                    }
+                },
+                "robotThenDragAndDropToAssociate": {
                     "properties": {
                         "instructions": {
                             "ref": "$exercise/instructions"
@@ -379,9 +411,11 @@
                 "dragAndDropIntoZones",
                 "listenThenDragAndDropIntoZones",
                 "observeThenDragAndDropIntoZones",
+                "robotThenDragAndDropIntoZones",
                 "dragAndDropToAssociate",
                 "listenThenDragAndDropToAssociate",
                 "observeThenDragAndDropToAssociate",
+                "robotThenDragAndDropToAssociate",
                 "danceFreeze",
                 "gamepadJoyStickColorPad",
                 "gamepadArrowPadColorPad",

@@ -39,12 +39,14 @@ public struct Exercise: Decodable {
 
             case (.dragAndDropIntoZones, .findTheRightAnswers),
                  (.listenThenDragAndDropIntoZones, .findTheRightAnswers),
-                 (.observeThenDragAndDropIntoZones, .findTheRightAnswers):
+                 (.observeThenDragAndDropIntoZones, .findTheRightAnswers),
+                 (.robotThenDragAndDropIntoZones, .findTheRightAnswers):
                 self.payload = try container.decode(DragAndDropIntoZones.Payload.self, forKey: .payload)
 
             case (.dragAndDropToAssociate, .associateCategories),
                  (.listenThenDragAndDropToAssociate, .associateCategories),
-                 (.observeThenDragAndDropToAssociate, .associateCategories):
+                 (.observeThenDragAndDropToAssociate, .associateCategories),
+                 (.robotThenDragAndDropToAssociate, .associateCategories):
                 self.payload = try container.decode(DragAndDropToAssociate.Payload.self, forKey: .payload)
 
             case (.danceFreeze, .none):
