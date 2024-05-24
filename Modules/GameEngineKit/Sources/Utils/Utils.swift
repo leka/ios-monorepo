@@ -24,6 +24,14 @@ func clamp<T: Comparable>(_ value: T, lower: T, upper: T) -> T {
     min(max(value, lower), upper)
 }
 
+public func getPath(for image: String) -> String? {
+    if let path = Bundle.path(forImage: image) {
+        log.debug("Image found at path: \(path)")
+        return path
+    }
+    return nil
+}
+
 extension View {
     func onTapGestureIf(_ condition: Bool, closure: @escaping () -> Void) -> some View {
         allowsHitTesting(condition)
