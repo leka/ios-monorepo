@@ -18,7 +18,7 @@ public class DatabaseOperations {
 
     public static let shared = DatabaseOperations()
 
-    public func create<T: AccountDocument>(data: T, in collection: DatabaseCollection) -> AnyPublisher<T, Error> {
+    public func create<T: DatabaseDocument>(data: T, in collection: DatabaseCollection) -> AnyPublisher<T, Error> {
         Future<T, Error> { promise in
             let docRef = self.database.collection(collection.rawValue).document()
             var documentData = data
@@ -43,7 +43,7 @@ public class DatabaseOperations {
         .eraseToAnyPublisher()
     }
 
-    public func read<T: AccountDocument>(from collection: DatabaseCollection, documentID: String) -> AnyPublisher<T, Error> {
+    public func read<T: DatabaseDocument>(from collection: DatabaseCollection, documentID: String) -> AnyPublisher<T, Error> {
         Future<T, Error> { promise in
             let docRef = self.database.collection(collection.rawValue).document(documentID)
             docRef.getDocument { document, error in
@@ -70,7 +70,7 @@ public class DatabaseOperations {
         .eraseToAnyPublisher()
     }
 
-    public func observeAll<T: AccountDocument>(from collection: DatabaseCollection) -> AnyPublisher<[T], Error> {
+    public func observeAll<T: DatabaseDocument>(from collection: DatabaseCollection) -> AnyPublisher<[T], Error> {
         let subject = CurrentValueSubject<[T], Error>([])
 
         if let existingListener = listenerRegistrations[collection.rawValue] {
@@ -105,7 +105,7 @@ public class DatabaseOperations {
         self.listenerRegistrations.removeAll()
     }
 
-    public func update(data: some AccountDocument, in collection: DatabaseCollection) -> AnyPublisher<Void, Error> {
+    public func update(data: some DatabaseDocument, in collection: DatabaseCollection) -> AnyPublisher<Void, Error> {
         Future<Void, Error> { promise in
             let docRef = self.database.collection(collection.rawValue).document(data.id!)
 
