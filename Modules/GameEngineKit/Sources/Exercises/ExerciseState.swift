@@ -2,10 +2,12 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AccountKit
+
 enum ExerciseState: Equatable {
     case idle
     case playing
-    case completed(level: CompletionLevel)
+    case completed(level: CompletionLevel, data: ExerciseCompletionData?)
 
     // MARK: Internal
 

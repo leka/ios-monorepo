@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AccountKit
 import Combine
 import ContentKit
 import SwiftUI
@@ -25,11 +26,13 @@ class ActivityViewViewModel: ObservableObject {
         self.currentExercise = self.activityManager.currentExercise
         self.currentExerciseInterface = self.activityManager.currentExercise.interface
 
+        self.completedExercisesSharedData = Array(repeating: [], count: self.activityManager.totalGroups)
+
         self.currentExerciseSharedData = ExerciseSharedData(
             groupIndex: self.activityManager.currentGroupIndex,
             exerciseIndex: self.activityManager.currentExerciseIndexInCurrentGroup
         )
-        self.completedExercisesSharedData.append(self.currentExerciseSharedData)
+        self.completedExercisesSharedData[self.currentGroupIndex].append(self.currentExerciseSharedData)
 
         self.subscribeToCurrentExerciseSharedDataUpdates()
     }
@@ -48,39 +51,42 @@ class ActivityViewViewModel: ObservableObject {
     @Published var currentExercise: Exercise
     @Published var currentExerciseInterface: Exercise.Interface
 
-    @Published var completedExercisesSharedData: [ExerciseSharedData] = []
+    @Published var completedExercisesSharedData: [[ExerciseSharedData]]
     @Published var currentExerciseSharedData: ExerciseSharedData
 
     @Published var isCurrentActivityCompleted: Bool = false
     @Published var isReinforcerAnimationVisible: Bool = false
     @Published var isReinforcerAnimationEnabled: Bool = true
 
-    var successExercisesSharedData: [ExerciseSharedData] {
-        self.completedExercisesSharedData.filter {
-            $0.completionLevel == .excellent
-                || $0.completionLevel == .good
+    var successExercisesSharedData: [[ExerciseSharedData]] {
+        self.completedExercisesSharedData.map { group in
+            group.filter {
+                $0.completionLevel == .excellent || $0.completionLevel == .good
+            }
         }
     }
 
     var didCompleteActivitySuccessfully: Bool {
         let minimalSuccessPercentage = 0.8
+        let successfulExercisesCount = self.successExercisesSharedData.flatMap { $0 }.count
+        let totalCompletedExercisesCount = self.completedExercisesSharedData.flatMap { $0 }.count
 
-        return Double(self.successExercisesSharedData.count) > (Double(self.completedExercisesSharedData.count) * minimalSuccessPercentage)
+        return Double(successfulExercisesCount) > (Double(totalCompletedExercisesCount) * minimalSuccessPercentage)
     }
 
     var scorePanelEnabled: Bool {
-        !self.completedExercisesSharedData.filter {
+        !self.completedExercisesSharedData.flatMap { $0 }.filter {
             $0.completionLevel != .nonApplicable
         }.isEmpty
     }
 
     var activityCompletionSuccessPercentage: Double {
-        let successfulExercises = Double(self.successExercisesSharedData.count)
-        let totalExercises = Double(self.completedExercisesSharedData.filter {
+        let successfulExercisesCount = Double(self.successExercisesSharedData.flatMap { $0 }.count)
+        let totalCompletedExercisesCount = Double(self.completedExercisesSharedData.flatMap { $0 }.filter {
             $0.completionLevel != .nonApplicable
         }.count)
 
-        return (successfulExercises / totalExercises) * 100.0
+        return (successfulExercisesCount / totalCompletedExercisesCount) * 100.0
     }
 
     var delayAfterReinforcerAnimation: Double {
@@ -104,6 +110,12 @@ class ActivityViewViewModel: ObservableObject {
         self.activityManager.isLastExercise
     }
 
+    var completedExercisesData: [[ExerciseCompletionData]] {
+        self.completedExercisesSharedData.map { group in
+            group.compactMap(\.completionData)
+        }
+    }
+
     func moveToNextExercise() {
         self.activityManager.moveToNextExercise()
         self.updateValues()
@@ -118,9 +130,25 @@ class ActivityViewViewModel: ObservableObject {
         self.isCurrentActivityCompleted = true
     }
 
+    func saveActivityCompletionData(data: ActivityCompletionData) {
+        self.activityCompletionDataManager.saveActivityCompletionData(data: data)
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                    case .finished:
+                        print("Activity Completion Data saved successfully.")
+                    case let .failure(error):
+                        print("Saving Activity Completion Data failed with error: \(error)")
+                }
+            }, receiveValue: { _ in
+                // Nothing to do
+            })
+            .store(in: &self.cancellables)
+    }
+
     // MARK: Private
 
     private let activityManager: CurrentActivityManager
+    private let activityCompletionDataManager: ActivityCompletionDataManager = .shared
 
     private var cancellables: Set<AnyCancellable> = []
 
@@ -135,7 +163,7 @@ class ActivityViewViewModel: ObservableObject {
             groupIndex: self.activityManager.currentGroupIndex,
             exerciseIndex: self.activityManager.currentExerciseIndexInCurrentGroup
         )
-        self.completedExercisesSharedData.append(self.currentExerciseSharedData)
+        self.completedExercisesSharedData[self.currentGroupIndex].append(self.currentExerciseSharedData)
 
         self.subscribeToCurrentExerciseSharedDataUpdates()
     }
