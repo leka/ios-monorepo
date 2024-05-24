@@ -45,13 +45,10 @@ struct ActionButtonObserve: View {
     // MARK: Lifecycle
 
     init(image: String, imageWasTapped: Binding<Bool>) {
-        if let path = Bundle.path(forImage: image) {
-            log.debug("Image found at path: \(path)")
-            self.image = path
-        } else {
-            log.error("Image not found: \(image)")
-            self.image = image
+        guard let image = getPath(for: image) else {
+            fatalError("Image not found")
         }
+        self.image = image
         self._imageWasTapped = imageWasTapped
     }
 

@@ -53,24 +53,15 @@ public extension StoryView.PageView {
         // MARK: Lifecycle
 
         public init(payload: PagePayloadProtocol) {
-            guard let payload = payload as? ButtonImagePayload else {
+            guard let payload = payload as? ButtonImagePayload,
+                  let idle = getPath(for: payload.idle),
+                  let pressed = getPath(for: payload.pressed)
+            else {
                 fatalError("💥 Story item is not ButtonPayload")
             }
 
-            if let path = Bundle.path(forImage: payload.idle) {
-                log.debug("Image found at path: \(path)")
-                self.idle = path
-            } else {
-                log.error("Image not found: \(payload.idle)")
-                self.idle = payload.idle
-            }
-            if let path = Bundle.path(forImage: payload.pressed) {
-                log.debug("Image found at path: \(path)")
-                self.pressed = path
-            } else {
-                log.error("Image not found: \(payload.pressed)")
-                self.pressed = payload.pressed
-            }
+            self.idle = idle
+            self.pressed = pressed
             self.text = payload.text
             self.action = payload.action
         }

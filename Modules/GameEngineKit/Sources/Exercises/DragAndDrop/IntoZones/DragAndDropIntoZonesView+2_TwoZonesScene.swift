@@ -19,20 +19,15 @@ extension DragAndDropIntoZonesView {
             dropZoneNodeA.size = dropZoneSize
             dropZoneNodeB.size = dropZoneSize
 
-            if let path = Bundle.path(forImage: dropZoneA.details.value) {
-                log.debug("Image found at path: \(path)")
-                dropZoneNodeA.texture = SKTexture(image: UIImage(named: path)!)
-            } else {
-                log.error("Image not found: \(dropZoneA.details.value)")
-                dropZoneNodeA.texture = SKTexture(imageNamed: dropZoneA.details.value)
+            guard let pathA = Bundle.path(forImage: dropZoneA.details.value) else {
+                fatalError("No path founded for dropzoneA asset")
             }
-            if let path = Bundle.path(forImage: unwrappedDropZoneB.details.value) {
-                log.debug("Image found at path: \(path)")
-                dropZoneNodeB.texture = SKTexture(image: UIImage(named: path)!)
-            } else {
-                log.error("Image not found: \(unwrappedDropZoneB.details.value)")
-                dropZoneNodeB.texture = SKTexture(imageNamed: dropZoneA.details.value)
+            guard let pathB = Bundle.path(forImage: unwrappedDropZoneB.details.value) else {
+                fatalError("No path founded for dropzoneB asset")
             }
+
+            dropZoneNodeA.texture = SKTexture(image: UIImage(named: pathA)!)
+            dropZoneNodeB.texture = SKTexture(image: UIImage(named: pathB)!)
 
             let dropZonePosition = size.width / 4
             dropZoneNodeA.position = CGPoint(x: dropZonePosition, y: dropZoneSize.height * 5 / 7)
