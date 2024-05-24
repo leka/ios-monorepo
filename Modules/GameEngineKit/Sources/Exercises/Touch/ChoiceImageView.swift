@@ -14,13 +14,10 @@ public struct ChoiceImageView: View {
     // MARK: Lifecycle
 
     public init(image: String, size: CGFloat, background: Color? = nil, state: GameplayChoiceState = .idle) {
-        if let path = Bundle.path(forImage: image) {
-            log.debug("Image found at path: \(path)")
-            self.image = path
-        } else {
-            log.error("Image not found: \(image)")
-            self.image = image
+        guard let image = getPath(for: image) else {
+            fatalError("Image not found")
         }
+        self.image = image
         self.size = size
         self.state = state
         self.background = background ?? self.choiceBackgroundColor
