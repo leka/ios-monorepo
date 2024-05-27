@@ -7,7 +7,7 @@ l10n:
     details:
       title: Activités
       subtitle: Activités indépendantes, captivantes et prêtes à l’emploi pour les personnes accompagnées.
-      description: Découvrez des activités clé en main comme Color Bingo, Dance Freeze et Hide And Seek, parfaites pour se détendre et s'amuser après le travail.
+      description: Découvrez des activités clé en main comme Color Bingo, Dance Freeze et Cache-Cache, parfaites pour se détendre et s'amuser après le travail.
   - locale: en_US
     details:
       title: Activities
@@ -17,7 +17,7 @@ l10n:
 content:
   - discover_leka-89CEA9FE20624659B1307B633641BC90
   - dance_freeze-6E2F7D56726C419EA534C614F777D934
-  - hideAndSeek-4BFA2AC3390E49248DD022E27008F118
+  - hide_and_seek-4BFA2AC3390E49248DD022E27008F118
   - color_bingo_1-CBBCDFA8DC8C462794904F6E5E0638AB
   - color_bingo_2-7960FD995EDC4C179A4BA4997E4C5A4F
   - color_bingo_3-E742B4AF67204DA68C08ADEC6126648E
