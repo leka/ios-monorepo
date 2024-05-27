@@ -20,8 +20,8 @@ Si vous rencontrez des problèmes ou avez besoin d'aide, contactez-nous à suppo
 
 ### Nouveau Contenu & Fonctionnalités
 
-- n/a
+- Mise à jour des dépendances
 
 ### Corrections de Bugs
 
-- Histoires - Suppression du texte de remplissage et remplacement par des définitions correctes.
+- Accueil - corrections de coquilles en français
