@@ -452,6 +452,7 @@
         "$exercise/gameplay": {
             "enum": [
                 "findTheRightAnswers",
+                "findTheRightAnswersInRightOrder",
                 "associateCategories"
             ]
         },

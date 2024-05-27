@@ -32,6 +32,7 @@ public struct Exercise: Decodable {
 
         switch (self.interface, self.gameplay) {
             case (.touchToSelect, .findTheRightAnswers),
+                 (.touchToSelect, .findTheRightAnswersInRightOrder),
                  (.listenThenTouchToSelect, .findTheRightAnswers),
                  (.observeThenTouchToSelect, .findTheRightAnswers),
                  (.robotThenTouchToSelect, .findTheRightAnswers):

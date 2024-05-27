@@ -16,6 +16,11 @@ class TouchToSelectViewViewModel: ObservableObject {
                     choices: choices.map { GameplayTouchToSelectChoiceModel(choice: $0) },
                     shuffle: shuffle
                 )
+            case .findTheRightAnswersInRightOrder:
+                self.gameplay = GameplayFindTheRightAnswersInRightOrder(
+                    choices: choices.map { GameplayTouchToSelectInRightOrderChoiceModel(choice: $0) },
+                    shuffle: shuffle
+                )
             default:
                 fatalError("Gameplay type \(gameplayType) is not compatible with TTSViewModel")
         }
@@ -31,6 +36,11 @@ class TouchToSelectViewViewModel: ObservableObject {
     public func onChoiceTapped(choice: any GameplayChoiceModelProtocol) {
         if let gameplay = self.gameplay as? GameplayFindTheRightAnswers {
             guard let choice = choice as? GameplayTouchToSelectChoiceModel else {
+                fatalError("Choice model incorrect")
+            }
+            gameplay.process(choice)
+        } else if let gameplay = self.gameplay as? GameplayFindTheRightAnswersInRightOrder {
+            guard let choice = choice as? GameplayTouchToSelectInRightOrderChoiceModel else {
                 fatalError("Choice model incorrect")
             }
             gameplay.process(choice)
