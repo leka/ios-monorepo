@@ -215,6 +215,22 @@
                         }
                     }
                 },
+                "listenThenDragAndDropIntoZones": {
+                    "properties": {
+                        "instructions": {
+                            "ref": "$exercise/instructions"
+                        },
+                        "gameplay": {
+                            "ref": "$exercise/gameplay"
+                        },
+                        "action": {
+                            "ref": "$exercise/action"
+                        },
+                        "payload": {
+                            "ref": "$exercise/payload/dragAndDropIntoZones"
+                        }
+                    }
+                },
                 "dragAndDropToAssociate": {
                     "properties": {
                         "instructions": {
@@ -223,6 +239,22 @@
 
                         "gameplay": {
                             "ref": "$exercise/gameplay"
+                        },
+                        "payload": {
+                            "ref": "$exercise/payload/dragAndDropToAssociate"
+                        }
+                    }
+                },
+                "listenThenDragAndDropToAssociate": {
+                    "properties": {
+                        "instructions": {
+                            "ref": "$exercise/instructions"
+                        },
+                        "gameplay": {
+                            "ref": "$exercise/gameplay"
+                        },
+                        "action": {
+                            "ref": "$exercise/action"
                         },
                         "payload": {
                             "ref": "$exercise/payload/dragAndDropToAssociate"
@@ -313,7 +345,9 @@
                 "listenThenTouchToSelect",
                 "observeThenTouchToSelect",
                 "dragAndDropIntoZones",
+                "listenThenDragAndDropIntoZones",
                 "dragAndDropToAssociate",
+                "listenThenDragAndDropToAssociate",
                 "danceFreeze",
                 "gamepadJoyStickColorPad",
                 "gamepadArrowPadColorPad",
