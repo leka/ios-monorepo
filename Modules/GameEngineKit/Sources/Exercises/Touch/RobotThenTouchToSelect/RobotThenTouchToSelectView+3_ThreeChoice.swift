@@ -15,7 +15,7 @@ extension RobotThenTouchToSelectView {
         var body: some View {
             VStack(spacing: self.kVerticalSpacing) {
                 HStack(spacing: self.kHorizontalSpacing) {
-                    ForEach(self.viewModel.choices[0...1]) { choice in
+                    ForEach(self.viewModel.choices[0...1], id: \.id) { choice in
                         TouchToSelectChoiceView(choice: choice, size: self.kAnswerSize, isTappable: self.isTappable)
                             .onTapGesture {
                                 self.viewModel.onChoiceTapped(choice: choice)

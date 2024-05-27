@@ -14,7 +14,7 @@ extension TouchToSelectView {
         var body: some View {
             VStack(spacing: self.kVerticalSpacing) {
                 HStack(spacing: self.kHorizontalSpacing) {
-                    ForEach(self.viewModel.choices[0...2]) { choice in
+                    ForEach(self.viewModel.choices[0...2], id: \.id) { choice in
                         TouchToSelectChoiceView(choice: choice, size: self.kAnswerSize)
                             .onTapGesture {
                                 self.viewModel.onChoiceTapped(choice: choice)
@@ -23,7 +23,7 @@ extension TouchToSelectView {
                 }
 
                 HStack(spacing: self.kHorizontalSpacing) {
-                    ForEach(self.viewModel.choices[3...5]) { choice in
+                    ForEach(self.viewModel.choices[3...5], id: \.id) { choice in
                         TouchToSelectChoiceView(choice: choice, size: self.kAnswerSize)
                             .onTapGesture {
                                 self.viewModel.onChoiceTapped(choice: choice)

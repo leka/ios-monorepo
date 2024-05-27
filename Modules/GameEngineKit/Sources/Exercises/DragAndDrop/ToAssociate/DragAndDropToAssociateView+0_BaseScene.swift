@@ -207,9 +207,13 @@ extension DragAndDropToAssociateView {
                 }
                 self.playedDestination = destinationNode
 
-                guard let destination = viewModel.choices.first(where: { $0.id == destinationNode.id })
+                guard let choices = viewModel.choices as? [GameplayDragAndDropIntoZonesChoiceModel] else {
+                    fatalError("ChoiceModel is not supported by  DragAndDropIntoZonesView")
+                }
+
+                guard let destination = choices.first(where: { $0.id == destinationNode.id })
                 else { return }
-                guard let choice = viewModel.choices.first(where: { $0.id == playedNode!.id })
+                guard let choice = choices.first(where: { $0.id == playedNode!.id })
                 else { return }
 
                 self.viewModel.onChoiceTapped(choice: choice, destination: destination)

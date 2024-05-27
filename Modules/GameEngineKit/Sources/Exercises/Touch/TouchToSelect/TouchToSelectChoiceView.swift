@@ -18,8 +18,11 @@ struct TouchToSelectChoiceView: View {
         self.isTappable = isTappable
     }
 
-    init(choice: GameplayTouchToSelectChoiceModel, size: CGFloat, isTappable: Bool = true) {
-        self.init(choice: choice.choice, state: choice.state, size: size, isTappable: isTappable)
+    init(choice: any GameplayChoiceModelProtocol, size: CGFloat, isTappable: Bool = true) {
+        guard let unwrappedChoice = choice.choice as? TouchToSelect.Choice else {
+            fatalError("Payload is not TouchToSelect")
+        }
+        self.init(choice: unwrappedChoice, state: choice.state, size: size, isTappable: isTappable)
     }
 
     // MARK: Internal

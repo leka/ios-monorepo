@@ -128,8 +128,11 @@ extension DragAndDropIntoZonesView {
         }
 
         func getExpectedItems() {
-            let index = self.viewModel.choices.firstIndex(where: { $0.choice.dropZone == .zoneA })!
-            let gameplayChoiceModel = self.viewModel.choices[index]
+            guard let choices = self.viewModel.choices as? [GameplayDragAndDropIntoZonesChoiceModel] else {
+                fatalError("Current ChoiceModel is not supported by DragAndZoneIntoZoneView")
+            }
+            let index = choices.firstIndex(where: { $0.choice.dropZone == .zoneA })!
+            let gameplayChoiceModel = choices[index]
             let expectedItem = gameplayChoiceModel.choice.value
             let expectedNode = SKSpriteNode()
 
@@ -242,9 +245,12 @@ extension DragAndDropIntoZonesView {
                 guard self.selectedNodes.keys.contains(touch) else {
                     break
                 }
+                guard let choices = viewModel.choices as? [GameplayDragAndDropIntoZonesChoiceModel] else {
+                    fatalError("ChoiceModel is not supported by  DragAndDropIntoZonesView")
+                }
                 self.playedNode = self.selectedNodes[touch]!
                 self.playedNode!.scaleForMax(sizeOf: self.biggerSide)
-                let gameplayChoiceModel = self.viewModel.choices.first(where: { $0.id == self.playedNode!.id })
+                let gameplayChoiceModel = choices.first(where: { $0.id == self.playedNode!.id })
 
                 if self.playedNode!.fullyContains(bounds: self.dropZoneA.node.frame) {
                     self.viewModel.onChoiceTapped(choice: gameplayChoiceModel!, dropZone: self.dropZoneA.zone)
@@ -273,7 +279,10 @@ extension DragAndDropIntoZonesView {
         private var cancellables: Set<AnyCancellable> = []
 
         private func disableWrongAnswer(_ node: DraggableImageAnswerNode) {
-            let gameplayChoiceModel = self.viewModel.choices.first(where: { $0.id == node.id })!
+            guard let choices = viewModel.choices as? [GameplayDragAndDropIntoZonesChoiceModel] else {
+                fatalError("ChoiceModel is not supported by  DragAndDropIntoZonesView")
+            }
+            let gameplayChoiceModel = choices.first(where: { $0.id == node.id })!
             if gameplayChoiceModel.choice.dropZone == nil {
                 node.colorBlendFactor = 0.4
                 node.isDraggable = false

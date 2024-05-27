@@ -16,7 +16,7 @@ public struct RobotThenTouchToSelectView: View {
     // MARK: Lifecycle
 
     public init(choices: [TouchToSelect.Choice], shuffle: Bool = false) {
-        _viewModel = StateObject(wrappedValue: TouchToSelectViewViewModel(choices: choices, shuffle: shuffle))
+        _viewModel = StateObject(wrappedValue: TouchToSelectViewViewModel(gameplayType: .findTheRightAnswers, choices: choices, shuffle: shuffle))
 
         self.actionType = .color("red")
     }
@@ -29,8 +29,12 @@ public struct RobotThenTouchToSelectView: View {
             fatalError("💥 Exercise payload is not .selection and/or Exercise does not contain robot action")
         }
 
+        guard let gameplay = exercise.gameplay else {
+            fatalError("Exercise gameplay is nil")
+        }
+
         _viewModel = StateObject(
-            wrappedValue: TouchToSelectViewViewModel(choices: payload.choices, shuffle: payload.shuffleChoices, shared: data))
+            wrappedValue: TouchToSelectViewViewModel(gameplayType: gameplay, choices: payload.choices, shuffle: payload.shuffleChoices, shared: data))
 
         self.actionType = actionType
 
