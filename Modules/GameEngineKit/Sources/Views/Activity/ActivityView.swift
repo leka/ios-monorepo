@@ -139,7 +139,7 @@ public struct ActivityView: View {
                 self.isAlertPresented = false
             })
             Button(String(l10n.GameEngineKit.ActivityView.QuitActivityAlert.quitButtonLabel.characters), role: .destructive, action: {
-                // TODO: (@mathieu) - Save displayable data in session
+                self.saveActivityCompletion()
                 self.dismiss()
             })
         } message: {
