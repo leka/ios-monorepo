@@ -4,7 +4,7 @@
 
 import Combine
 
-extension Publisher {
+public extension Publisher {
     /// Adds loading state management to any Publisher.
     /// - Parameters:
     ///   - loadingStatePublisher: The `PassthroughSubject` used to publish loading state changes.

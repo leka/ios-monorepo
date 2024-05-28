@@ -19,6 +19,7 @@ let project = Project.module(
         .project(target: "LogKit", path: Path("../../Modules/LogKit")),
         .project(target: "LocalizationKit", path: Path("../../Modules/LocalizationKit")),
         .project(target: "RobotKit", path: Path("../../Modules/RobotKit")),
+        .project(target: "UtilsKit", path: Path("../../Modules/UtilsKit")),
         .external(name: "FirebaseAnalytics"),
         .external(name: "FirebaseAuth"),
         .external(name: "FirebaseAuthCombine-Community"),

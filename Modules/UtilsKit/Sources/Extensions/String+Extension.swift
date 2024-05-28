@@ -4,7 +4,6 @@
 
 import Foundation
 
-// Check if email or password format is correct
 public extension String {
     func isValidEmail() -> Bool {
         let regex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
