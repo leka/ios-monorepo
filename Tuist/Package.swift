@@ -28,7 +28,7 @@ let package = Package(
         ),
         .package(
             url: "https://github.com/StarryInternet/CombineCoreBluetooth",
-            exact: "0.7.2"
+            exact: "0.8.0"
         ),
         .package(
             url: "https://github.com/michael94ellis/SwiftUIJoystick",
@@ -52,7 +52,7 @@ let package = Package(
         ),
         .package(
             url: "https://github.com/OlehKorchytskyi/Fit",
-            exact: "1.0.0"
+            exact: "1.0.1"
         ),
         .package(
             url: "https://github.com/exyte/SVGView",
@@ -60,7 +60,7 @@ let package = Package(
         ),
         .package(
             url: "https://github.com/devicekit/DeviceKit",
-            exact: "5.2.3"
+            exact: "5.3.0"
         ),
     ]
 )
