@@ -38,9 +38,9 @@ jobs:
         run: |
           echo "$HOME/.local/share/mise/shims" >> $GITHUB_PATH
 
-      - name: tuist fetch
+      - name: tuist install
         run: |
-          tuist fetch
+          tuist install
 
       - name: tuist generate
         run: |

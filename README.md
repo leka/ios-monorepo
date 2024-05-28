@@ -31,7 +31,7 @@ brew upgrade && brew install fastlane swiftlint swift-format
 fastlane sync_certificates
 
 # pull dependencies
-tuist fetch
+tuist install
 
 # generate all projects
 tuist generate

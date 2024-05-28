@@ -68,9 +68,9 @@ jobs:
           gem install bundler
           bundle install
 
-      - name: tuist fetch
+      - name: tuist install
         run: |
-          tuist fetch
+          tuist install
 
       - name: fastlane helloworld
         run: |

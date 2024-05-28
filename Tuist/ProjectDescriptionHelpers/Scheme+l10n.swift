@@ -8,19 +8,19 @@ import ProjectDescription
 
 public extension Scheme {
     static func l10nFR(name: String) -> Scheme {
-        Scheme(
+        Scheme.scheme(
             name: "\(name) 🇫🇷",
             shared: true,
-            buildAction: BuildAction(targets: ["\(name)"]),
+            buildAction: BuildAction.buildAction(targets: ["\(name)"]),
             runAction: RunAction.runAction(configuration: "Debug", options: .options(language: "fr"))
         )
     }
 
     static func l10nEN(name: String) -> Scheme {
-        Scheme(
+        Scheme.scheme(
             name: "\(name) 🇺🇸",
             shared: true,
-            buildAction: BuildAction(targets: ["\(name)"]),
+            buildAction: BuildAction.buildAction(targets: ["\(name)"]),
             runAction: RunAction.runAction(configuration: "Debug", options: .options(language: "en"))
         )
     }

@@ -22,15 +22,15 @@ extension SettingsDictionary {
         ]
 
         if Environment.developerMode.getBoolean(default: true) {
-            flags = flags.otherSwiftFlags("-D", "DEVELOPER_MODE")
+            flags = flags.otherSwiftFlags(["-D", "DEVELOPER_MODE"])
         }
 
         if Environment.testflightBuild.getBoolean(default: false) {
-            flags = flags.otherSwiftFlags("-D", "TESTFLIGHT_BUILD")
+            flags = flags.otherSwiftFlags(["-D", "TESTFLIGHT_BUILD"])
         }
 
         if Environment.productionBuild.getBoolean(default: false) {
-            flags = flags.otherSwiftFlags("-D", "PRODUCTION_BUILD")
+            flags = flags.otherSwiftFlags(["-D", "PRODUCTION_BUILD"])
         }
 
         return flags

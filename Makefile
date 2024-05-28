@@ -17,7 +17,7 @@ TEST_FLIGHT_APP_NAME ?= LekaApp
 
 fetch:
 	@echo "Fetching dependencies..."
-	@tuist fetch
+	@tuist install
 
 config:
 	@echo "Generating project..."
