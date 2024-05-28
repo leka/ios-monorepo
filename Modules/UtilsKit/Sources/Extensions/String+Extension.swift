@@ -10,6 +10,14 @@ public extension String {
         return String((0..<length).map { _ in letters.randomElement()! })
     }
 
+    var isRasterImageFile: Bool {
+        ["png", "jpg", "jpeg"].contains(self.pathExtension)
+    }
+
+    var isVectorImageFile: Bool {
+        self.pathExtension == "svg"
+    }
+
     var fileURL: URL {
         URL(fileURLWithPath: self)
     }
@@ -20,6 +28,14 @@ public extension String {
 
     var lastPathComponent: String {
         self.fileURL.lastPathComponent
+    }
+
+    func containsEmoji() -> Bool {
+        contains { $0.isEmoji }
+    }
+
+    func containsOnlyEmojis() -> Bool {
+        count > 0 && !contains { !$0.isEmoji }
     }
 
     var nilWhenEmpty: String? {
