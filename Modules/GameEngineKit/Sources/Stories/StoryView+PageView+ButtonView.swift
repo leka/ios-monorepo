@@ -54,8 +54,8 @@ public extension StoryView.PageView {
 
         public init(payload: PagePayloadProtocol) {
             guard let payload = payload as? ButtonImagePayload,
-                  let idle = getPath(for: payload.idle),
-                  let pressed = getPath(for: payload.pressed)
+                  let idle = Bundle.path(forImage: payload.idle),
+                  let pressed = Bundle.path(forImage: payload.pressed)
             else {
                 fatalError("💥 Story item is not ButtonPayload")
             }

@@ -3,7 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import Foundation
-import SwiftUI
+import UtilsKit
 
 public func convertJoystickPosToSpeed(position: CGPoint, maxValue: CGFloat) -> (
     leftSpeed: CGFloat, leftRight: CGFloat
@@ -18,39 +18,4 @@ public func convertJoystickPosToSpeed(position: CGPoint, maxValue: CGFloat) -> (
     let rightSpeedClamped = clamp(rightSpeed, lower: -1.0, upper: 1.0)
 
     return (leftSpeedClamped, rightSpeedClamped)
-}
-
-func clamp<T: Comparable>(_ value: T, lower: T, upper: T) -> T {
-    min(max(value, lower), upper)
-}
-
-public func getPath(for image: String) -> String? {
-    if let path = Bundle.path(forImage: image) {
-        log.debug("Image found at path: \(path)")
-        return path
-    }
-    return nil
-}
-
-extension View {
-    func onTapGestureIf(_ condition: Bool, closure: @escaping () -> Void) -> some View {
-        allowsHitTesting(condition)
-            .onTapGesture {
-                closure()
-            }
-    }
-}
-
-extension Shape {
-    func fill(
-        _ fillStyle: some ShapeStyle, strokeBorder strokeStyle: some ShapeStyle, lineWidth: CGFloat = 1
-    ) -> some View {
-        stroke(strokeStyle, lineWidth: lineWidth)
-            .background(self.fill(fillStyle))
-    }
-}
-
-// rotation animations
-func degreesToRadian(degrees: Double) -> Double {
-    Double(degrees / 180.0 * .pi)
 }

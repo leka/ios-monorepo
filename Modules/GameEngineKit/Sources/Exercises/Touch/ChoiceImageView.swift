@@ -14,7 +14,7 @@ public struct ChoiceImageView: View {
     // MARK: Lifecycle
 
     public init(image: String, size: CGFloat, background: Color? = nil, state: GameplayChoiceState = .idle) {
-        guard let image = getPath(for: image) else {
+        guard let image = Bundle.path(forImage: image) else {
             fatalError("Image not found")
         }
         self.image = image
@@ -126,17 +126,6 @@ public struct ChoiceImageView: View {
             .onAppear {
                 log.error("Image not found: \(self.image)")
             }
-    }
-}
-
-// TODO: (@ladislas) move to UtilsKit
-extension String {
-    var isRasterImageFile: Bool {
-        ["png", "jpg", "jpeg"].contains(self.pathExtension)
-    }
-
-    var isVectorImageFile: Bool {
-        self.pathExtension == "svg"
     }
 }
 

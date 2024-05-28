@@ -11,7 +11,7 @@ class DraggableImageAnswerNode: SKSpriteNode {
     init(choice: GameplayAssociateCategoriesChoiceModel, scale: CGFloat = 1, position: CGPoint) {
         self.id = choice.id
 
-        guard let path = getPath(for: choice.choice.value) else {
+        guard let path = Bundle.path(forImage: choice.choice.value) else {
             fatalError("Image not found")
         }
 
@@ -31,7 +31,7 @@ class DraggableImageAnswerNode: SKSpriteNode {
     init(choice: GameplayDragAndDropIntoZonesChoiceModel, scale: CGFloat = 1, position: CGPoint) {
         self.id = choice.id
 
-        guard let path = getPath(for: choice.choice.value) else {
+        guard let path = Bundle.path(forImage: choice.choice.value) else {
             fatalError("Image not found")
         }
 
