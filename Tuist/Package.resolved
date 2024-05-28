@@ -32,8 +32,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/StarryInternet/CombineCoreBluetooth",
       "state" : {
-        "revision" : "eaadfdbec3b553fec5b40c27d8d40847adb23d40",
-        "version" : "0.7.2"
+        "revision" : "72b672e3adfdb0af357bfcebd4ef185429076405",
+        "version" : "0.8.0"
       }
     },
     {
@@ -41,8 +41,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/devicekit/DeviceKit",
       "state" : {
-        "revision" : "97acf830fd0e0b719126e9450a51c95a91f66858",
-        "version" : "5.2.3"
+        "revision" : "65f18eb08eb6e03739e3591639d308620615a139",
+        "version" : "5.3.0"
       }
     },
     {
@@ -59,8 +59,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/OlehKorchytskyi/Fit",
       "state" : {
-        "revision" : "4532ba51e141c750bd52c73556043fdd8ca9e8d0",
-        "version" : "1.0.0"
+        "revision" : "e1dd56d34e46700dc3b76bc6d9a3ada54aa1e571",
+        "version" : "1.0.1"
       }
     },
     {
