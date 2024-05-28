@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AccountKit
 import ContentKit
 import SwiftUI
 
@@ -44,6 +45,16 @@ extension DanceFreezeView {
             }
             .onDisappear {
                 self.viewModel.completeDanceFreeze()
+                guard self.viewModel.didFinishPlaying else {
+                    return
+                }
+                self.saveActivityCompletion()
+            }
+            .onChange(of: self.viewModel.didFinishPlaying) { finished in
+                guard finished else {
+                    return
+                }
+                self.saveActivityCompletion()
             }
         }
 
@@ -63,6 +74,20 @@ extension DanceFreezeView {
         // MARK: Private
 
         @StateObject private var viewModel: ViewModel
+        @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
+        @StateObject private var carereceiverManagerViewModel = CarereceiverManagerViewModel()
+
+        private func saveActivityCompletion() {
+            let completionDataString = ActivityCompletionData.encodeCompletionData(from: self.viewModel.completedExerciseData)
+            let activityCompletionData = ActivityCompletionData(
+                caregiverID: self.caregiverManagerViewModel.currentCaregiver?.id ?? "No caregiver found",
+                carereceiverIDs: self.carereceiverManagerViewModel.currentCarereceivers.compactMap(\.id),
+                startTimestamp: self.viewModel.completedExerciseData.first?.first?.startTimestamp,
+                endTimestamp: self.viewModel.completedExerciseData.last?.last?.endTimestamp,
+                completionData: completionDataString
+            )
+            self.viewModel.saveActivityCompletionData(data: activityCompletionData)
+        }
     }
 }
 

@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AccountKit
 import Combine
 import ContentKit
 import RobotKit
@@ -20,6 +21,8 @@ extension DanceFreezeView {
             self.exercicesSharedData = shared ?? ExerciseSharedData()
             self.exercicesSharedData.state = .playing
 
+            self.startTimestamp = Date()
+
             self.subscribeToAudioPlayerProgress()
         }
 
@@ -27,9 +30,10 @@ extension DanceFreezeView {
 
         @Published public var progress: CGFloat = 0.0
         @Published public var isDancing: Bool = false
+        @Published public var didFinishPlaying: Bool = false
 
         public func onDanceFreezeToggle() {
-            guard self.progress < 1.0 else {
+            guard !self.audioPlayer.didFinishPlaying else {
                 self.completeDanceFreeze()
                 return
             }
@@ -48,20 +52,45 @@ extension DanceFreezeView {
         // MARK: Internal
 
         @ObservedObject var exercicesSharedData: ExerciseSharedData
+        var completedExerciseData: [[ExerciseCompletionData]] = []
 
         func completeDanceFreeze() {
             self.isDancing = false
-            self.exercicesSharedData.state = .completed(level: .nonApplicable, data: nil)
             self.robotManager.stopRobot()
             self.audioPlayer.stop()
+            self.didFinishPlaying = true
+
+            let completionData = ExerciseCompletionData(
+                startTimestamp: self.startTimestamp,
+                endTimestamp: Date()
+            )
+            self.exercicesSharedData.state = .completed(level: .nonApplicable, data: completionData)
+            self.completedExerciseData = [[completionData]]
+        }
+
+        func saveActivityCompletionData(data: ActivityCompletionData) {
+            self.activityCompletionDataManager.saveActivityCompletionData(data: data)
+                .sink(receiveCompletion: { completion in
+                    switch completion {
+                        case .finished:
+                            print("Activity Completion Data saved successfully.")
+                        case let .failure(error):
+                            print("Saving Activity Completion Data failed with error: \(error)")
+                    }
+                }, receiveValue: { _ in
+                    // Nothing to do
+                })
+                .store(in: &self.cancellables)
         }
 
         // MARK: Private
 
+        private let activityCompletionDataManager: ActivityCompletionDataManager = .shared
         private var robotManager: RobotManager
         private var audioPlayer: AudioPlayer
         private var motionMode: Motion = .rotation
         private var cancellables: Set<AnyCancellable> = []
+        private var startTimestamp: Date?
 
         private func subscribeToAudioPlayerProgress() {
             self.audioPlayer.$progress
