@@ -46,7 +46,7 @@ public extension Project {
         )
 
         let exampleTargets = examples.compactMap { example in
-            Target(
+            Target.target(
                 name: example.name,
                 destinations: destinations,
                 product: .app,
@@ -87,7 +87,7 @@ private func makeFrameworkTargets(
         product = .framework
     }
 
-    let module = Target(
+    let module = Target.target(
         name: name,
         destinations: destinations,
         product: product,
@@ -101,7 +101,7 @@ private func makeFrameworkTargets(
         settings: .settings(base: .extendingBase(with: settings))
     )
 
-    let tests = Target(
+    let tests = Target.target(
         name: "\(name)Tests",
         destinations: destinations,
         product: .unitTests,
