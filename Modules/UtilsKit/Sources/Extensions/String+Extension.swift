@@ -5,6 +5,18 @@
 import Foundation
 
 public extension String {
+    var fileURL: URL {
+        URL(fileURLWithPath: self)
+    }
+
+    var pathExtension: String {
+        self.fileURL.pathExtension
+    }
+
+    var lastPathComponent: String {
+        self.fileURL.lastPathComponent
+    }
+
     var nilWhenEmpty: String? {
         isEmpty ? nil : self
     }
