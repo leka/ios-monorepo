@@ -12,13 +12,10 @@ public extension StoryView {
         // MARK: Lifecycle
 
         public init(page: Page) {
-            if let path = Bundle.path(forImage: page.background) {
-                log.debug("Image found at path: \(path)")
-                self.background = path
-            } else {
-                log.error("Image not found: \(page.background)")
-                self.background = page.background
+            guard let image = getPath(for: page.background) else {
+                fatalError("Image not found")
             }
+            self.background = image
             self.items = page.items
         }
 

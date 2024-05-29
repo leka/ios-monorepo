@@ -18,7 +18,7 @@ public extension Project {
         dependencies: [TargetDependency] = [],
         schemes: [Scheme] = []
     ) -> Project {
-        let mainTarget = Target(
+        let mainTarget = Target.target(
             name: name,
             destinations: destinations,
             product: .app,
@@ -35,7 +35,7 @@ public extension Project {
             ]
         )
 
-        let testTarget = Target(
+        let testTarget = Target.target(
             name: "\(name)Tests",
             destinations: destinations,
             product: .unitTests,

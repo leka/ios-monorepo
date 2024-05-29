@@ -215,6 +215,54 @@
                         }
                     }
                 },
+                "listenThenDragAndDropIntoZones": {
+                    "properties": {
+                        "instructions": {
+                            "ref": "$exercise/instructions"
+                        },
+                        "gameplay": {
+                            "ref": "$exercise/gameplay"
+                        },
+                        "action": {
+                            "ref": "$exercise/action"
+                        },
+                        "payload": {
+                            "ref": "$exercise/payload/dragAndDropIntoZones"
+                        }
+                    }
+                },
+                "observeThenDragAndDropIntoZones": {
+                    "properties": {
+                        "instructions": {
+                            "ref": "$exercise/instructions"
+                        },
+                        "gameplay": {
+                            "ref": "$exercise/gameplay"
+                        },
+                        "action": {
+                            "ref": "$exercise/action"
+                        },
+                        "payload": {
+                            "ref": "$exercise/payload/dragAndDropIntoZones"
+                        }
+                    }
+                },
+                "robotThenDragAndDropIntoZones": {
+                    "properties": {
+                        "instructions": {
+                            "ref": "$exercise/instructions"
+                        },
+                        "gameplay": {
+                            "ref": "$exercise/gameplay"
+                        },
+                        "action": {
+                            "ref": "$exercise/action"
+                        },
+                        "payload": {
+                            "ref": "$exercise/payload/dragAndDropIntoZones"
+                        }
+                    }
+                },
                 "dragAndDropToAssociate": {
                     "properties": {
                         "instructions": {
@@ -223,6 +271,54 @@
 
                         "gameplay": {
                             "ref": "$exercise/gameplay"
+                        },
+                        "payload": {
+                            "ref": "$exercise/payload/dragAndDropToAssociate"
+                        }
+                    }
+                },
+                "listenThenDragAndDropToAssociate": {
+                    "properties": {
+                        "instructions": {
+                            "ref": "$exercise/instructions"
+                        },
+                        "gameplay": {
+                            "ref": "$exercise/gameplay"
+                        },
+                        "action": {
+                            "ref": "$exercise/action"
+                        },
+                        "payload": {
+                            "ref": "$exercise/payload/dragAndDropToAssociate"
+                        }
+                    }
+                },
+                "observeThenDragAndDropToAssociate": {
+                    "properties": {
+                        "instructions": {
+                            "ref": "$exercise/instructions"
+                        },
+                        "gameplay": {
+                            "ref": "$exercise/gameplay"
+                        },
+                        "action": {
+                            "ref": "$exercise/action"
+                        },
+                        "payload": {
+                            "ref": "$exercise/payload/dragAndDropToAssociate"
+                        }
+                    }
+                },
+                "robotThenDragAndDropToAssociate": {
+                    "properties": {
+                        "instructions": {
+                            "ref": "$exercise/instructions"
+                        },
+                        "gameplay": {
+                            "ref": "$exercise/gameplay"
+                        },
+                        "action": {
+                            "ref": "$exercise/action"
                         },
                         "payload": {
                             "ref": "$exercise/payload/dragAndDropToAssociate"
@@ -313,7 +409,13 @@
                 "listenThenTouchToSelect",
                 "observeThenTouchToSelect",
                 "dragAndDropIntoZones",
+                "listenThenDragAndDropIntoZones",
+                "observeThenDragAndDropIntoZones",
+                "robotThenDragAndDropIntoZones",
                 "dragAndDropToAssociate",
+                "listenThenDragAndDropToAssociate",
+                "observeThenDragAndDropToAssociate",
+                "robotThenDragAndDropToAssociate",
                 "danceFreeze",
                 "gamepadJoyStickColorPad",
                 "gamepadArrowPadColorPad",

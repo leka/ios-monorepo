@@ -11,7 +11,13 @@ public extension Exercise {
         case listenThenTouchToSelect
         case observeThenTouchToSelect
         case dragAndDropIntoZones
+        case listenThenDragAndDropIntoZones
+        case observeThenDragAndDropIntoZones
+        case robotThenDragAndDropIntoZones
         case dragAndDropToAssociate
+        case listenThenDragAndDropToAssociate
+        case observeThenDragAndDropToAssociate
+        case robotThenDragAndDropToAssociate
         case danceFreeze
         case gamepadJoyStickColorPad
         case gamepadArrowPadColorPad

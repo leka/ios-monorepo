@@ -20,8 +20,8 @@ If you encounter any issues or need help, contact us at support@leka.io
 
 ### New Content & Features
 
-- n/a
+- Upgrade dependencies
 
 ### Bug Fixes
 
-- Stories - Removed placeholder text and replaced it with accurate definitions.
+- Home page - fix typos in French

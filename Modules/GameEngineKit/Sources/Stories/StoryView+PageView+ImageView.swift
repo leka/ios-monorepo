@@ -12,16 +12,12 @@ public extension StoryView.PageView {
         // MARK: Lifecycle
 
         public init(payload: PagePayloadProtocol) {
-            guard let payload = payload as? ImagePayload else {
+            guard let payload = payload as? ImagePayload,
+                  let image = getPath(for: payload.image)
+            else {
                 fatalError("💥 Story item is not ImagePayload")
             }
-            if let path = Bundle.path(forImage: payload.image) {
-                log.debug("Image found at path: \(path)")
-                self.image = path
-            } else {
-                log.error("Image not found: \(payload.image)")
-                self.image = payload.image
-            }
+            self.image = image
             self.size = CGFloat(payload.size)
             self.text = payload.text
         }

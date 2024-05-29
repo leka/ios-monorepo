@@ -12,7 +12,7 @@ public extension Project {
         version _: String = "1.0.0",
         dependencies: [TargetDependency]
     ) -> Project {
-        let mainTarget = Target(
+        let mainTarget = Target.target(
             name: name,
             destinations: .macOS,
             product: .commandLineTool,

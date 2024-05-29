@@ -4,6 +4,8 @@
 
 // swiftlint:disable cyclomatic_complexity void_function_in_ternary function_body_length
 
+import AccountKit
+import Combine
 import ContentKit
 import DesignKit
 import LocalizationKit
@@ -168,6 +170,9 @@ public struct ActivityView: View {
 
     // MARK: Private
 
+    @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
+    @StateObject private var carereceiverManagerViewModel = CarereceiverManagerViewModel()
+
     @State private var isAlertPresented: Bool = false
 
     @State private var opacity: Double = 1
@@ -209,6 +214,16 @@ public struct ActivityView: View {
         Button(String(l10n.GameEngineKit.ActivityView.continueButton.characters)) {
             if self.viewModel.isLastExercise {
                 self.viewModel.scorePanelEnabled ? self.viewModel.moveToActivityEnd() : self.dismiss()
+
+                let completionDataString = ActivityCompletionData.encodeCompletionData(from: self.viewModel.completedExercisesData)
+                let activityCompletionData = ActivityCompletionData(
+                    caregiverID: self.caregiverManagerViewModel.currentCaregiver?.id ?? "No caregiver found",
+                    carereceiverIDs: self.carereceiverManagerViewModel.currentCarereceivers.compactMap(\.id),
+                    startTimestamp: self.viewModel.completedExercisesData.first?.first?.startTimestamp,
+                    endTimestamp: self.viewModel.completedExercisesData.last?.last?.endTimestamp,
+                    completionData: completionDataString
+                )
+                self.viewModel.saveActivityCompletionData(data: activityCompletionData)
             } else {
                 self.viewModel.moveToNextExercise()
             }
@@ -274,8 +289,44 @@ public struct ActivityView: View {
                     data: self.viewModel.currentExerciseSharedData
                 )
 
+            case .listenThenDragAndDropIntoZones:
+                ListenThenDragAndDropIntoZonesView(
+                    exercise: self.viewModel.currentExercise,
+                    data: self.viewModel.currentExerciseSharedData
+                )
+
+            case .observeThenDragAndDropIntoZones:
+                ObserveThenDragAndDropIntoZonesView(
+                    exercise: self.viewModel.currentExercise,
+                    data: self.viewModel.currentExerciseSharedData
+                )
+
+            case .robotThenDragAndDropIntoZones:
+                RobotThenDragAndDropIntoZonesView(
+                    exercise: self.viewModel.currentExercise,
+                    data: self.viewModel.currentExerciseSharedData
+                )
+
             case .dragAndDropToAssociate:
                 DragAndDropToAssociateView(
+                    exercise: self.viewModel.currentExercise,
+                    data: self.viewModel.currentExerciseSharedData
+                )
+
+            case .listenThenDragAndDropToAssociate:
+                ListenThenDragAndDropToAssociateView(
+                    exercise: self.viewModel.currentExercise,
+                    data: self.viewModel.currentExerciseSharedData
+                )
+
+            case .observeThenDragAndDropToAssociate:
+                ObserveThenDragAndDropToAssociateView(
+                    exercise: self.viewModel.currentExercise,
+                    data: self.viewModel.currentExerciseSharedData
+                )
+
+            case .robotThenDragAndDropToAssociate:
+                RobotThenDragAndDropToAssociateView(
                     exercise: self.viewModel.currentExercise,
                     data: self.viewModel.currentExerciseSharedData
                 )

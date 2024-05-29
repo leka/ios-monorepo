@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AccountKit
 import ContentKit
 import Foundation
 
@@ -19,7 +20,8 @@ extension GameplayAssociateCategories where ChoiceModelType == GameplayAssociate
     convenience init(choices: [GameplayAssociateCategoriesChoiceModel], allowedTrials: Int? = nil) {
         self.init()
         self.choices.send(choices)
-        state.send(.playing)
+        self.state.send(.playing)
+        self.startTimestamp = Date()
 
         if let allowedTrials {
             self.allowedTrials = allowedTrials
@@ -40,7 +42,13 @@ extension GameplayAssociateCategories where ChoiceModelType == GameplayAssociate
 
         if choices.value.allSatisfy({ $0.state == .rightAnswer }) {
             let level = evaluateCompletionLevel(allowedTrials: allowedTrials, numberOfTrials: numberOfTrials)
-            state.send(.completed(level: level))
+            let completionData = ExerciseCompletionData(
+                startTimestamp: self.startTimestamp,
+                endTimestamp: Date(),
+                numberOfTrials: self.numberOfTrials,
+                numberOfAllowedTrials: self.allowedTrials
+            )
+            state.send(.completed(level: level, data: completionData))
         }
     }
 }

@@ -43,12 +43,12 @@ jobs:
         run: |
           echo "$HOME/.local/share/mise/shims" >> $GITHUB_PATH
 
-      - name: tuist fetch
+      - name: tuist install
         run: |
           TUIST_TURN_OFF_LINTERS=${{ env.TUIST_TURN_OFF_LINTERS }} \
           TUIST_GENERATE_MODULES_AS_FRAMEWORKS_FOR_DEBUG=${{ env.TUIST_GENERATE_MODULES_AS_FRAMEWORKS_FOR_DEBUG }} \
           TUIST_DEVELOPER_MODE=${{ matrix.TUIST_DEVELOPER_MODE }} \
-          tuist fetch
+          tuist install
 
       - name: tuist generate
         run: |

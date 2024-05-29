@@ -8,7 +8,8 @@ import ProjectDescription
 
 extension SettingsDictionary {
     static var base: SettingsDictionary {
-        var flags: SettingsDictionary = [
+        var settings: SettingsDictionary = [
+            "DEVELOPMENT_TEAM": "GKQJXACKX7",
             "LOCALIZED_STRING_MACRO_NAMES": [
                 "NSLocalizedString",
                 "CFCopyLocalizedString",
@@ -22,18 +23,30 @@ extension SettingsDictionary {
         ]
 
         if Environment.developerMode.getBoolean(default: true) {
-            flags = flags.otherSwiftFlags("-D", "DEVELOPER_MODE")
+            settings = settings.otherSwiftFlags(["-D", "DEVELOPER_MODE"])
         }
 
         if Environment.testflightBuild.getBoolean(default: false) {
-            flags = flags.otherSwiftFlags("-D", "TESTFLIGHT_BUILD")
+            settings = settings.otherSwiftFlags(["-D", "TESTFLIGHT_BUILD"])
         }
 
         if Environment.productionBuild.getBoolean(default: false) {
-            flags = flags.otherSwiftFlags("-D", "PRODUCTION_BUILD")
+            settings = settings.otherSwiftFlags(["-D", "PRODUCTION_BUILD"])
         }
 
-        return flags
+        if Environment.fastlaneBuild.getBoolean(default: false) {
+            let app = Environment.fastlaneAppName.getString(default: "")
+
+            guard app != "" else {
+                fatalError("You must provide a certificate app name")
+            }
+
+            settings = settings.manualCodeSigning(identity: "Apple Distribution", provisioningProfileSpecifier: "match AppStore io.leka.apf.app.\(app)")
+        } else {
+            settings = settings.manualCodeSigning(provisioningProfileSpecifier: "match Development io.leka.apf.*")
+        }
+
+        return settings
     }
 
     static func extendingBase(with settings: SettingsDictionary) -> SettingsDictionary {

@@ -8,4 +8,5 @@ public enum DatabaseCollection: String {
     case rootAccounts = "ROOT_ACCOUNTS"
     case caregivers = "CAREGIVERS"
     case carereceivers = "CARE_RECEIVERS"
+    case activityCompletionData = "ACTIVITY_COMPLETION_DATA"
 }
