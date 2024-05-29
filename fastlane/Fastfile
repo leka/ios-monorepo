@@ -13,7 +13,6 @@ fastlane_require 'open3'
 default_platform(:ios)
 
 ROOT_DIR = File.expand_path('..', Dir.pwd).to_s.freeze
-SIGNING_DIR = "#{ROOT_DIR}/Tuist/Signing"
 
 GIT_BASE_REF = ENV.fetch('BASE_REF', 'develop')
 
@@ -27,83 +26,12 @@ DEVELOPMENT_WILDCARD_BUNDLE_ID = 'io.leka.apf.*'
 platform :ios do
   desc "Placeholder lane to make sure fastlane's working"
   lane :helloworld do
-    UI.important "Hello, Fastlane! (from #{Dir.pwd}, root: #{ROOT_DIR}, signing: #{SIGNING_DIR})"
-  end
-
-  desc 'Copy certificates for tuist'
-  lane :copy_certificates do |options|
-    UI.important 'Delete previous provisioning profiles'
-    system('rm', '-rf', "#{SIGNING_DIR}/{*.mobileprovision,*.p12*,*.cer*}")
-
-    UI.important 'Create development provisioning profile'
-    UI.message 'Generate json graph'
-
-    Dir.chdir('..') do
-      system('tuist', 'generate', '-n')
-      system(
-        'tuist graph ' \
-        '--format json ' \
-        '--skip-test-targets --skip-external-dependencies ' \
-        "--output-path #{SIGNING_DIR}/raw"
-      )
-    end
-
-    UI.message 'Parse json graph'
-    json = File.read("#{SIGNING_DIR}/raw/graph.json")
-    graph = JSON.parse(json)
-    all_apps = graph['projects'].values.flat_map do |project|
-      project['targets'].filter_map do |target|
-        target['name'] if target['product'] == 'app' || target['product'] == 'unit_tests'
-      end
-    end
-
-    UI.message 'Copy wildcard provisioning profile for each app'
-    all_apps.each do |app|
-      UI.message "App: #{app} --> Bundle ID: io.leka.apf.*"
-      system(
-        'cp -f ' \
-        "#{SIGNING_DIR}/raw/dev/Development_io.leka.apf.*.mobileprovision " \
-        "#{SIGNING_DIR}/#{app}.Debug.mobileprovision"
-      )
-    end
-
-    UI.important 'Copy development .cer & .p12 files'
-    dev_certs = Dir.entries("#{SIGNING_DIR}/raw/dev").select { |f| f.end_with?('cer') || f.end_with?('p12') }
-    dev_certs.each do |cert|
-      system("cp -f #{SIGNING_DIR}/raw/dev/#{cert} #{SIGNING_DIR}/#{cert}")
-    end
-
-    if options[:release]
-      UI.important 'Create release provisioning profile'
-      release_profiles = Dir.entries("#{SIGNING_DIR}/raw/release").select { |f| f.end_with?('mobileprovision') }
-      RELEASE_BUNDLE_IDS.each do |id|
-        name = id.delete_prefix('io.leka.apf.app.')
-        UI.message "App: #{name} --> Bundle ID: #{id}"
-        release_profiles.select { |profile| profile.include?(name) }.map do |profile|
-          UI.message "App: #{name} --> Profile: #{profile}"
-          if profile.include?('AppStore_')
-            system("cp -f #{SIGNING_DIR}/raw/release/#{profile} #{SIGNING_DIR}/#{name}.Release.mobileprovision")
-          end
-        end
-      end
-
-      UI.important 'Copy release .cer & .p12 files'
-      release_certs = Dir.entries("#{SIGNING_DIR}/raw/release").select do |f|
-        f.end_with?('cer') || f.end_with?('p12')
-      end
-      release_certs.each do |cert|
-        system("cp -f #{SIGNING_DIR}/raw/release/#{cert} #{SIGNING_DIR}/#{cert}")
-      end
-    end
-
-    UI.message 'List newly created certificates and profiles'
-    system("ls -la #{SIGNING_DIR}")
+    UI.important "Hello, Fastlane! (from #{Dir.pwd}, root: #{ROOT_DIR}"
   end
 
   desc 'Sync certificates'
   lane :sync_certificates do |options|
     UI.important 'Delete local provisioning profiles'
-    system("rm -rf #{SIGNING_DIR}")
 
     create_keychain(
       name: 'io.leka.fastlane.keychain',
@@ -116,7 +44,6 @@ platform :ios do
       type: 'development',
       app_identifier: DEVELOPMENT_WILDCARD_BUNDLE_ID,
       readonly: true,
-      output_path: "#{SIGNING_DIR}/raw/dev",
       keychain_name: 'io.leka.fastlane.keychain'
     )
 
@@ -125,12 +52,9 @@ platform :ios do
         type: 'appstore',
         app_identifier: RELEASE_BUNDLE_IDS,
         readonly: true,
-        output_path: "#{SIGNING_DIR}/raw/release",
         keychain_name: 'io.leka.fastlane.keychain'
       )
     end
-
-    copy_certificates options
   end
 
   desc 'Create certificates'
@@ -180,6 +104,8 @@ platform :ios do
         ENV['TUIST_DEVELOPER_MODE'] = 'TRUE'
         ENV['TUIST_TESTFLIGHT_BUILD'] = 'TRUE'
         ENV['TUIST_PRODUCTION_BUILD'] = 'FALSE'
+        ENV['TUIST_FASTLANE_BUILD'] = 'TRUE'
+        ENV['TUIST_FASTLANE_APP_NAME'] = app.to_s
         system('tuist', 'generate', '-n', app.to_s)
       end
 
@@ -243,6 +169,12 @@ platform :ios do
         )
 
         build_app(
+          export_method: 'app-store',
+          export_options: {
+            provisioningProfiles: {
+              "io.leka.apf.app.#{app}" => "match AppStore io.leka.apf.app.#{app}"
+            }
+          },
           workspace: 'ios-monorepo.xcworkspace',
           scheme: app,
           output_directory: './.build',
@@ -282,6 +214,8 @@ platform :ios do
       ENV['TUIST_DEVELOPER_MODE'] = 'FALSE'
       ENV['TUIST_TESTFLIGHT_BUILD'] = 'FALSE'
       ENV['TUIST_PRODUCTION_BUILD'] = 'TRUE'
+      ENV['TUIST_FASTLANE_BUILD'] = 'TRUE'
+      ENV['TUIST_FASTLANE_APP_NAME'] = app.to_s
       system('tuist', 'generate', '-n', app.to_s)
     end
 
@@ -346,6 +280,12 @@ platform :ios do
       )
 
       build_app(
+        export_method: 'app-store',
+        export_options: {
+          provisioningProfiles: {
+            "io.leka.apf.app.#{app}" => "match AppStore io.leka.apf.app.#{app}"
+          }
+        },
         workspace: 'ios-monorepo.xcworkspace',
         scheme: app,
         output_directory: './.build',

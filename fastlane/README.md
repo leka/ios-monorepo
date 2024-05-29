@@ -23,14 +23,6 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 Placeholder lane to make sure fastlane's working
 
-### ios copy_certificates
-
-```sh
-[bundle exec] fastlane ios copy_certificates
-```
-
-Copy certificates for tuist
-
 ### ios sync_certificates
 
 ```sh
