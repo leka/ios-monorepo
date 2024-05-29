@@ -21,6 +21,7 @@ let project = Project.module(
         .project(target: "LocalizationKit", path: Path("../../Modules/LocalizationKit")),
         .project(target: "LogKit", path: Path("../../Modules/LogKit")),
         .project(target: "DesignKit", path: Path("../../Modules/DesignKit")),
+        .project(target: "UtilsKit", path: Path("../../Modules/UtilsKit")),
         .external(name: "Version"),
         .external(name: "Yams"),
         .external(name: "MarkdownUI"),

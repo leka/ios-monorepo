@@ -4,7 +4,24 @@
 
 import XCTest
 
-@testable import BLEKit
+@testable import UtilsKit
+
+// MARK: - UInt16_Extension_Tests_Data
+
+final class UInt16_Extension_Tests_Data: XCTestCase {
+    func test_shouldReturnData() {
+        // Given
+        let value: UInt16 = 0xBEEF
+
+        // When
+
+        // Then
+        let expected = Data([0xBE, 0xEF])
+        let actual = value.data
+
+        XCTAssertEqual(expected, actual)
+    }
+}
 
 // MARK: - UInt16_Extension_Tests_highByte_lowByte
 
@@ -51,22 +68,5 @@ final class UInt16_Extension_Tests_highByte_lowByte: XCTestCase {
         let actualLow = value.lowByte
 
         XCTAssertEqual(expectedLow, actualLow)
-    }
-}
-
-// MARK: - UInt16_Extension_Tests_Data
-
-final class UInt16_Extension_Tests_Data: XCTestCase {
-    func test_shouldReturnData() {
-        // Given
-        let value: UInt16 = 0xBEEF
-
-        // When
-
-        // Then
-        let expected = Data([0xBE, 0xEF])
-        let actual = value.data
-
-        XCTAssertEqual(expected, actual)
     }
 }

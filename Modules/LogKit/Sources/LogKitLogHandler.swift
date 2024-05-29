@@ -5,25 +5,11 @@
 import Darwin
 import Foundation
 import Logging
+import UtilsKit
 
 // ? Note: taken from https://github.com/apple/swift-log/blob/main/Sources/Logging/Logging.swift
 
 // swiftlint:disable function_parameter_count
-
-// TODO: (@ladislas) move to UtilsKit
-public extension String {
-    var fileURL: URL {
-        URL(fileURLWithPath: self)
-    }
-
-    var pathExtension: String {
-        self.fileURL.pathExtension
-    }
-
-    var lastPathComponent: String {
-        self.fileURL.lastPathComponent
-    }
-}
 
 let systemStderr = Darwin.stderr
 let systemStdout = Darwin.stdout

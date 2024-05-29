@@ -5,7 +5,6 @@
 import ContentKit
 import Foundation
 
-// TODO: (@ladislas) move to UtilsKit
 public extension Bundle {
     static func path(forImage image: String, in bundle: Bundle? = nil) -> String? {
         let kImageExtensions = [

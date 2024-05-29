@@ -13,7 +13,7 @@ public extension StoryView.PageView {
 
         public init(payload: PagePayloadProtocol) {
             guard let payload = payload as? ImagePayload,
-                  let image = getPath(for: payload.image)
+                  let image = Bundle.path(forImage: payload.image)
             else {
                 fatalError("💥 Story item is not ImagePayload")
             }
