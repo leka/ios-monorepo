@@ -22,6 +22,7 @@ extension DanceFreezeView {
             self.exercicesSharedData.state = .playing
 
             self.startTimestamp = Date()
+            self.chosenSong = selectedAudioRecording.audio
 
             self.subscribeToAudioPlayerProgress()
         }
@@ -60,9 +61,13 @@ extension DanceFreezeView {
             self.audioPlayer.stop()
             self.didFinishPlaying = true
 
+            let completionPayload = ExerciseCompletionData.DanceFreezePayload(
+                chosenSong: self.chosenSong
+            ).encodeToString()
             let completionData = ExerciseCompletionData(
                 startTimestamp: self.startTimestamp,
-                endTimestamp: Date()
+                endTimestamp: Date(),
+                payload: completionPayload
             )
             self.exercicesSharedData.state = .completed(level: .nonApplicable, data: completionData)
             self.completedExerciseData = [[completionData]]
@@ -91,6 +96,7 @@ extension DanceFreezeView {
         private var motionMode: Motion = .rotation
         private var cancellables: Set<AnyCancellable> = []
         private var startTimestamp: Date?
+        private var chosenSong: String = ""
 
         private func subscribeToAudioPlayerProgress() {
             self.audioPlayer.$progress

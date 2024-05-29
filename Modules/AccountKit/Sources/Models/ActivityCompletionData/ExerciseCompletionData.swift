@@ -4,6 +4,14 @@
 
 import Foundation
 
+// MARK: - NewExerciseCompletionDate
+
+struct NewExerciseCompletionDate {
+    var startTimestamp: Date?
+    var endTimestamp: Date?
+    var payload: String
+}
+
 // MARK: - ExerciseCompletionData
 
 public struct ExerciseCompletionData: Equatable {

@@ -10,16 +10,18 @@ extension DanceFreezeView {
     struct PlayerView: View {
         // MARK: Lifecycle
 
-        public init(selectedAudioRecording: DanceFreeze.Song, isAuto: Bool, motion: Motion, data: ExerciseSharedData? = nil) {
+        public init(selectedAudioRecording: DanceFreeze.Song, isAuto: Bool, motion: Motion, data: ExerciseSharedData? = nil, start: Date?) {
             self._viewModel = StateObject(wrappedValue: ViewModel(selectedAudioRecording: selectedAudioRecording, motion: motion, shared: data))
             self.isAuto = isAuto
             self.motion = motion
+            self.start = start
         }
 
         // MARK: Internal
 
         let isAuto: Bool
         let motion: Motion
+        let start: Date?
 
         var body: some View {
             VStack {
@@ -78,12 +80,12 @@ extension DanceFreezeView {
         @StateObject private var carereceiverManagerViewModel = CarereceiverManagerViewModel()
 
         private func saveActivityCompletion() {
-            let completionDataString = ActivityCompletionData.encodeCompletionData(from: self.viewModel.completedExerciseData)
+            let completionDataString = self.viewModel.completedExerciseData.encodeToString()
             let activityCompletionData = ActivityCompletionData(
                 caregiverID: self.caregiverManagerViewModel.currentCaregiver?.id ?? "No caregiver found",
                 carereceiverIDs: self.carereceiverManagerViewModel.currentCarereceivers.compactMap(\.id),
-                startTimestamp: self.viewModel.completedExerciseData.first?.first?.startTimestamp,
-                endTimestamp: self.viewModel.completedExerciseData.last?.last?.endTimestamp,
+                startTimestamp: self.start,
+                endTimestamp: Date(),
                 completionData: completionDataString
             )
             self.viewModel.saveActivityCompletionData(data: activityCompletionData)
@@ -92,5 +94,5 @@ extension DanceFreezeView {
 }
 
 #Preview {
-    DanceFreezeView.PlayerView(selectedAudioRecording: DanceFreeze.Song(song: "Early_Bird"), isAuto: true, motion: .movement)
+    DanceFreezeView.PlayerView(selectedAudioRecording: DanceFreeze.Song(song: "Early_Bird"), isAuto: true, motion: .movement, start: Date())
 }

@@ -16,4 +16,16 @@ public extension ExerciseCompletionData {
         public var numberOfTrials: Int
         public var numberOfAllowedTrials: Int
     }
+
+    struct DanceFreezePayload: Codable {
+        // MARK: Lifecycle
+
+        public init(chosenSong: String) {
+            self.chosenSong = chosenSong
+        }
+
+        // MARK: Public
+
+        public var chosenSong: String
+    }
 }

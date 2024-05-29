@@ -23,6 +23,7 @@ public struct DanceFreezeView: View {
         self.songs = payload.songs
         self.selectedAudioRecording = self.songs.first!
         self.data = data
+        self.startTimestamp = Date()
     }
 
     // MARK: Public
@@ -35,9 +36,9 @@ public struct DanceFreezeView: View {
                              selectedAudioRecording: self.$selectedAudioRecording,
                              songs: self.songs)
             case .automaticMode:
-                PlayerView(selectedAudioRecording: self.selectedAudioRecording, isAuto: true, motion: self.motion)
+                PlayerView(selectedAudioRecording: self.selectedAudioRecording, isAuto: true, motion: self.motion, start: self.startTimestamp)
             case .manualMode:
-                PlayerView(selectedAudioRecording: self.selectedAudioRecording, isAuto: false, motion: self.motion)
+                PlayerView(selectedAudioRecording: self.selectedAudioRecording, isAuto: false, motion: self.motion, start: self.startTimestamp)
         }
     }
 
@@ -53,6 +54,8 @@ public struct DanceFreezeView: View {
         case rotation
         case movement
     }
+
+    var startTimestamp: Date?
 
     // MARK: Private
 
