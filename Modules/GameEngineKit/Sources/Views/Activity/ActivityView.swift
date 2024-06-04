@@ -363,7 +363,7 @@ public struct ActivityView: View {
     }
 
     private func saveActivityCompletion() {
-        let completionDataString = ActivityCompletionData.encodeCompletionData(from: self.viewModel.completedExercisesData)
+        let completionDataString = self.viewModel.completedExercisesData.encodeToString()
         let activityCompletionData = ActivityCompletionData(
             caregiverID: self.caregiverManagerViewModel.currentCaregiver?.id ?? "No caregiver found",
             carereceiverIDs: self.carereceiverManagerViewModel.currentCarereceivers.compactMap(\.id),
