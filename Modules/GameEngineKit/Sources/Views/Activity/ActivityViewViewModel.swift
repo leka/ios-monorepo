@@ -58,6 +58,10 @@ class ActivityViewViewModel: ObservableObject {
     @Published var isReinforcerAnimationVisible: Bool = false
     @Published var isReinforcerAnimationEnabled: Bool = true
 
+    var startTimestamp: Date? {
+        self.activityManager.startTimestamp
+    }
+
     var successExercisesSharedData: [[ExerciseSharedData]] {
         self.completedExercisesSharedData.map { group in
             group.filter {
