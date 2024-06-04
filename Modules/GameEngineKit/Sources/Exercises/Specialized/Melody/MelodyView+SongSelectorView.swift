@@ -63,7 +63,10 @@ extension MelodyView {
         // MARK: Lifecycle
 
         init(midiRecording: MidiRecordingPlayer.Song, isSelected: Bool) {
-            self.image = midiRecording.labels.icon
+            guard let image = Bundle.path(forImage: midiRecording.labels.icon) else {
+                fatalError("Image not found")
+            }
+            self.image = image
             self.text = midiRecording.labels.name
             self.isSelected = isSelected
         }
