@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import ContentKit
+import Foundation
 
 public class CurrentActivityManager {
     // MARK: Lifecycle
@@ -21,6 +22,7 @@ public class CurrentActivityManager {
         }
 
         self.activity = copyOfActivity
+        self.startTimestamp = Date()
     }
 
     // MARK: Public
@@ -29,6 +31,8 @@ public class CurrentActivityManager {
     public var currentExerciseIndexInCurrentGroup: Int = 0
 
     public let activity: Activity
+
+    public var startTimestamp: Date?
 
     public var totalGroups: Int {
         self.activity.exercisePayload.exerciseGroups.count

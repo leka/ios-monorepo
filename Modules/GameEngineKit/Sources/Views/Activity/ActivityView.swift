@@ -363,12 +363,12 @@ public struct ActivityView: View {
     }
 
     private func saveActivityCompletion() {
-        let completionDataString = ActivityCompletionData.encodeCompletionData(from: self.viewModel.completedExercisesData)
+        let completionDataString = self.viewModel.completedExercisesData.encodeToString()
         let activityCompletionData = ActivityCompletionData(
             caregiverID: self.caregiverManagerViewModel.currentCaregiver?.id ?? "No caregiver found",
             carereceiverIDs: self.carereceiverManagerViewModel.currentCarereceivers.compactMap(\.id),
-            startTimestamp: self.viewModel.completedExercisesData.first?.first?.startTimestamp,
-            endTimestamp: self.viewModel.completedExercisesData.last?.last?.endTimestamp,
+            startTimestamp: self.viewModel.startTimestamp,
+            endTimestamp: Date(),
             completionData: completionDataString
         )
         self.viewModel.saveActivityCompletionData(data: activityCompletionData)
