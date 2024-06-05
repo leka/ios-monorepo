@@ -31,9 +31,10 @@ extension DanceFreezeView {
 
         @Published public var progress: CGFloat = 0.0
         @Published public var isDancing: Bool = false
+        @Published public var didFinishPlaying: Bool = false
 
         public func onDanceFreezeToggle() {
-            guard self.progress < 1.0 else {
+            guard !self.audioPlayer.didFinishPlaying else {
                 self.completeDanceFreeze()
                 return
             }
@@ -58,6 +59,7 @@ extension DanceFreezeView {
             self.isDancing = false
             self.robotManager.stopRobot()
             self.audioPlayer.stop()
+            self.didFinishPlaying = true
 
             let completionPayload = ExerciseCompletionData.DanceFreezePayload(
                 chosenSong: self.chosenSong
