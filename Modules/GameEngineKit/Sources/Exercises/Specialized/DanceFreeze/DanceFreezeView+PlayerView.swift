@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AccountKit
 import ContentKit
 import SwiftUI
 
@@ -9,16 +10,18 @@ extension DanceFreezeView {
     struct PlayerView: View {
         // MARK: Lifecycle
 
-        public init(selectedAudioRecording: DanceFreeze.Song, isAuto: Bool, motion: Motion, data: ExerciseSharedData? = nil) {
+        public init(selectedAudioRecording: DanceFreeze.Song, isAuto: Bool, motion: Motion, data: ExerciseSharedData? = nil, start: Date?) {
             self._viewModel = StateObject(wrappedValue: ViewModel(selectedAudioRecording: selectedAudioRecording, motion: motion, shared: data))
             self.isAuto = isAuto
             self.motion = motion
+            self.activityStart = start
         }
 
         // MARK: Internal
 
         let isAuto: Bool
         let motion: Motion
+        let activityStart: Date?
 
         var body: some View {
             VStack {
@@ -67,5 +70,5 @@ extension DanceFreezeView {
 }
 
 #Preview {
-    DanceFreezeView.PlayerView(selectedAudioRecording: DanceFreeze.Song(song: "Early_Bird"), isAuto: true, motion: .movement)
+    DanceFreezeView.PlayerView(selectedAudioRecording: DanceFreeze.Song(song: "Early_Bird"), isAuto: true, motion: .movement, start: Date())
 }
