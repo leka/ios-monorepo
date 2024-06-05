@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AccountKit
 import Combine
 import ContentKit
 import RobotKit
@@ -19,6 +20,9 @@ extension DanceFreezeView {
 
             self.exercicesSharedData = shared ?? ExerciseSharedData()
             self.exercicesSharedData.state = .playing
+
+            self.startTimestamp = Date()
+            self.chosenSong = selectedAudioRecording.audio
 
             self.subscribeToAudioPlayerProgress()
         }
@@ -62,6 +66,8 @@ extension DanceFreezeView {
         private var audioPlayer: AudioPlayer
         private var motionMode: Motion = .rotation
         private var cancellables: Set<AnyCancellable> = []
+        private var startTimestamp: Date?
+        private var chosenSong: String = ""
 
         private func subscribeToAudioPlayerProgress() {
             self.audioPlayer.$progress
