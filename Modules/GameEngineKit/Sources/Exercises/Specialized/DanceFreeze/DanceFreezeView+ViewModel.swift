@@ -52,12 +52,38 @@ extension DanceFreezeView {
         // MARK: Internal
 
         @ObservedObject var exercicesSharedData: ExerciseSharedData
+        var completedExerciseData: [[ExerciseCompletionData]] = []
 
         func completeDanceFreeze() {
             self.isDancing = false
-            self.exercicesSharedData.state = .completed(level: .nonApplicable, data: nil)
             self.robotManager.stopRobot()
             self.audioPlayer.stop()
+
+            let completionPayload = ExerciseCompletionData.DanceFreezePayload(
+                chosenSong: self.chosenSong
+            ).encodeToString()
+            let completionData = ExerciseCompletionData(
+                startTimestamp: self.startTimestamp,
+                endTimestamp: Date(),
+                payload: completionPayload
+            )
+            self.exercicesSharedData.state = .completed(level: .nonApplicable, data: completionData)
+            self.completedExerciseData = [[completionData]]
+        }
+
+        func saveActivityCompletionData(data: ActivityCompletionData) {
+            self.activityCompletionDataManager.saveActivityCompletionData(data: data)
+                .sink(receiveCompletion: { completion in
+                    switch completion {
+                        case .finished:
+                            print("Activity Completion Data saved successfully.")
+                        case let .failure(error):
+                            print("Saving Activity Completion Data failed with error: \(error)")
+                    }
+                }, receiveValue: { _ in
+                    // Nothing to do
+                })
+                .store(in: &self.cancellables)
         }
 
         // MARK: Private
@@ -66,6 +92,7 @@ extension DanceFreezeView {
         private var audioPlayer: AudioPlayer
         private var motionMode: Motion = .rotation
         private var cancellables: Set<AnyCancellable> = []
+        private let activityCompletionDataManager: ActivityCompletionDataManager = .shared
         private var startTimestamp: Date?
         private var chosenSong: String = ""
 
