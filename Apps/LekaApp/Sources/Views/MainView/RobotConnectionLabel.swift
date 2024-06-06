@@ -15,6 +15,10 @@ struct RobotConnectionLabel: View {
     var body: some View {
         HStack(spacing: 10) {
             IconIndicator(isConnected: self.robotViewModel.isConnected)
+                .onTapGestureIf(self.robotViewModel.isConnected,
+                                closure: {
+                                    Robot.shared.randomLight()
+                                })
             self.buttonContent
             Spacer()
         }

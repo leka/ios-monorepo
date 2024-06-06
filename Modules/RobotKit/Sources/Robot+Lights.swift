@@ -314,6 +314,17 @@ public extension Robot {
         }
     }
 
+    func randomLight() {
+        let colors: [Robot.Color] = [.red, .blue, .green, .yellow, .lightBlue, .orange, .pink]
+        let animationTime = 2.0
+
+        Robot.shared.shine(.all(in: colors.randomElement()!))
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + animationTime) {
+            self.stopLights()
+        }
+    }
+
     private func getRandomLight(color: Robot.Color) -> Robot.Lights {
         let lights: [Robot.Lights] = [
             .earLeft(in: color), .earRight(in: color), .quarterBackLeft(in: color), .quarterBackRight(in: color),
