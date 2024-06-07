@@ -17,6 +17,10 @@ extension MainView {
                     self.title = String(l10n.MainView.Sidebar.CategoryLabel.home.characters)
                     self.systemImage = "house"
 
+                case .search:
+                    self.title = String(l10n.MainView.Sidebar.CategoryLabel.search.characters)
+                    self.systemImage = "magnifyingglass"
+
                 case .news:
                     self.title = String(l10n.MainView.Sidebar.CategoryLabel.news.characters)
                     self.systemImage = "lightbulb.max"

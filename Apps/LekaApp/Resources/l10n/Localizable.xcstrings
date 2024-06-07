@@ -1262,6 +1262,60 @@
                 }
             }
         },
+        "lekaapp.category_search_view.activity_suggestion": {
+            "comment": "Activity suggestion label when searching",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Activity: %@"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Activit\u00e9: %@"
+                    }
+                }
+            }
+        },
+        "lekaapp.category_search_view.skill_suggestion": {
+            "comment": "Skill suggestion label when searching",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Skill: %@"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Comp\u00e9tence: %@"
+                    }
+                }
+            }
+        },
+        "lekaapp.category_search_view.title": {
+            "comment": "Search title",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Search"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Recherche"
+                    }
+                }
+            }
+        },
         "lekaapp.connection_view.alert_message": {
             "comment": "Forgot Password alert message",
             "extractionState": "extracted_with_value",
@@ -1798,6 +1852,24 @@
                     "stringUnit": {
                         "state": "translated",
                         "value": "Ressources"
+                    }
+                }
+            }
+        },
+        "lekaapp.main_view.sidebar.category_label.search": {
+            "comment": "The title of the category 'Search'",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Search"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Recherche"
                     }
                 }
             }
