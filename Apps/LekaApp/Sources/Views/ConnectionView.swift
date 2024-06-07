@@ -86,7 +86,6 @@ struct ConnectionView: View {
             }
             .onDisappear {
                 self.authManagerViewModel.resetErrorMessage()
-                self.navigation.sheetContent = .caregiverPicker
             }
         }
     }
