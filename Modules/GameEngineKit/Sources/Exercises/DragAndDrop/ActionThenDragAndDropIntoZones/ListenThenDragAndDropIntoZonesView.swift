@@ -18,7 +18,7 @@ public struct ListenThenDragAndDropIntoZonesView: View {
         self.exercise = exercise
         self.exerciseSharedData = data
 
-        _audioPlayer = StateObject(wrappedValue: AudioPlayer(audioRecording: name))
+        _audioPlayer = StateObject(wrappedValue: AudioPlayerViewModel(player: AudioPlayer(audioRecording: name)))
     }
 
     // MARK: Public
@@ -39,9 +39,9 @@ public struct ListenThenDragAndDropIntoZonesView: View {
                 exercise: self.exercise,
                 data: self.exerciseSharedData
             )
-            .animation(.easeOut(duration: 0.3), value: self.audioPlayer.didFinishPlaying)
-            .grayscale(self.audioPlayer.didFinishPlaying ? 0.0 : 1.0)
-            .allowsHitTesting(self.audioPlayer.didFinishPlaying)
+            .animation(.easeOut(duration: 0.3), value: self.audioPlayer.state == .finishedPlaying)
+            .grayscale(self.audioPlayer.state == .finishedPlaying ? 0.0 : 1.0)
+            .allowsHitTesting(self.audioPlayer.state == .finishedPlaying)
 
             Spacer()
         }
@@ -51,5 +51,5 @@ public struct ListenThenDragAndDropIntoZonesView: View {
 
     private var exercise: Exercise
     private var exerciseSharedData: ExerciseSharedData?
-    @StateObject private var audioPlayer: AudioPlayer
+    @StateObject private var audioPlayer: AudioPlayerViewModel
 }

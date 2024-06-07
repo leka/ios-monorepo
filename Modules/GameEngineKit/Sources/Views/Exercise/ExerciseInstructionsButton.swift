@@ -2,84 +2,21 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
-import AVFoundation
 import DesignKit
-import LocalizationKit
 import SwiftUI
-
-// MARK: - SpeakerViewModel
-
-// TODO(@ladislas): refactor speech synth into own class
-class SpeakerViewModel: NSObject, ObservableObject, AVSpeechSynthesizerDelegate {
-    // MARK: Lifecycle
-
-    override init() {
-        super.init()
-        self.synthesizer.delegate = self
-    }
-
-    deinit {
-        synthesizer.delegate = nil
-    }
-
-    // MARK: Internal
-
-    @Published var isSpeaking = false
-
-    func speak(sentence: String) {
-        let voice = switch l10n.language {
-            case .french:
-                AVSpeechSynthesisVoice(language: "fr-FR")
-            case .english:
-                AVSpeechSynthesisVoice(language: "en-US")
-            default:
-                AVSpeechSynthesisVoice(language: "en-US")
-        }
-
-        var finalSentence: String {
-            if l10n.language == .french {
-                sentence.replacingOccurrences(of: "Leka", with: "Léka")
-            } else {
-                sentence
-            }
-        }
-
-        var utterance: AVSpeechUtterance {
-            let utterance = AVSpeechUtterance(string: finalSentence)
-            utterance.rate = 0.40
-            utterance.voice = voice
-            return utterance
-        }
-
-        self.synthesizer.speak(utterance)
-    }
-
-    // MARK: AVSpeechSynthesizerDelegate
-
-    func speechSynthesizer(_: AVSpeechSynthesizer, didStart _: AVSpeechUtterance) {
-        self.isSpeaking = true
-    }
-
-    func speechSynthesizer(_: AVSpeechSynthesizer, didFinish _: AVSpeechUtterance) {
-        self.isSpeaking = false
-    }
-
-    // MARK: Private
-
-    private var synthesizer = AVSpeechSynthesizer()
-}
 
 // MARK: - ExerciseInstructionsButton
 
 struct ExerciseInstructionsButton: View {
-    @StateObject var speaker = SpeakerViewModel()
+    @StateObject var speaker = AudioPlayerViewModel(player: SpeechSynthesizer())
     @State var instructions: String
 
     var body: some View {
         Button(self.instructions.trimmingCharacters(in: .whitespacesAndNewlines)) {
-            self.speaker.speak(sentence: self.instructions)
+            self.speaker.setAudioData(data: self.instructions)
+            self.speaker.play()
         }
-        .buttonStyle(StepInstructions_ButtonStyle(isSpeaking: self.$speaker.isSpeaking))
+        .buttonStyle(StepInstructions_ButtonStyle(state: self.speaker.state))
     }
 }
 
@@ -88,7 +25,7 @@ struct ExerciseInstructionsButton: View {
 struct StepInstructions_ButtonStyle: ButtonStyle {
     // MARK: Internal
 
-    @Binding var isSpeaking: Bool
+    let state: AudioPlayerState
 
     func makeBody(configuration: Self.Configuration) -> some View {
         HStack(spacing: 0) {
@@ -113,11 +50,11 @@ struct StepInstructions_ButtonStyle: ButtonStyle {
         )
         .shadow(
             color: .black.opacity(0.1),
-            radius: self.isSpeaking ? 0 : 4, x: 0, y: self.isSpeaking ? 1 : 4
+            radius: self.state == .playing ? 0 : 4, x: 0, y: self.state == .playing ? 1 : 4
         )
-        .scaleEffect(self.isSpeaking ? 0.98 : 1)
-        .disabled(self.isSpeaking)
-        .animation(.easeOut(duration: 0.2), value: self.isSpeaking)
+        .scaleEffect(self.state == .playing ? 0.98 : 1)
+        .disabled(self.state == .playing)
+        .animation(.easeOut(duration: 0.2), value: self.state == .playing)
     }
 
     // MARK: Private
@@ -129,7 +66,7 @@ struct StepInstructions_ButtonStyle: ButtonStyle {
                 gradient: Gradient(colors: [.black.opacity(0.1), .black.opacity(0.0), .black.opacity(0.0)]),
                 startPoint: .top, endPoint: .center
             )
-            .opacity(self.isSpeaking ? 1 : 0)
+            .opacity(self.state == .playing ? 1 : 0)
         }
     }
 
@@ -147,7 +84,7 @@ struct StepInstructions_ButtonStyle: ButtonStyle {
             ),
             lineWidth: 4
         )
-        .opacity(self.isSpeaking ? 0.5 : 0)
+        .opacity(self.state == .playing ? 0.5 : 0)
     }
 
     private var speachIndicator: some View {
@@ -158,7 +95,7 @@ struct StepInstructions_ButtonStyle: ButtonStyle {
                 .renderingMode(.template)
                 .aspectRatio(contentMode: .fit)
                 .foregroundColor(
-                    self.isSpeaking
+                    self.state == .playing
                         ? DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor : DesignKitAsset.Colors.darkGray.swiftUIColor
                 )
                 .padding(10)

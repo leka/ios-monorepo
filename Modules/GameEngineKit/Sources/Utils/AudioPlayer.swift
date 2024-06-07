@@ -9,27 +9,23 @@ import Foundation
 
 // MARK: - AudioPlayer
 
-public class AudioPlayer: NSObject, ObservableObject {
+public class AudioPlayer: NSObject, AudioPlayerProtocol {
     // MARK: Lifecycle
 
     public init(audioRecording: String) {
         super.init()
-        self.setAudioPlayer(audioRecording: audioRecording)
-        self.didFinishPlaying = false
+        self.setAudioData(data: audioRecording)
+        self.state.send(.idle)
     }
 
     // MARK: Internal
 
-    @Published var progress: CGFloat = 0.0
-    @Published var didFinishPlaying = false
+    var progress = CurrentValueSubject<CGFloat, Never>(0.0)
+    var state = CurrentValueSubject<AudioPlayerState, Never>(.idle)
 
-    var isPlaying: Bool {
-        self.player.isPlaying
-    }
-
-    func setAudioPlayer(audioRecording: String) {
-        self.progress = 0.0
-        self.didFinishPlaying = false
+    func setAudioData(data: String) {
+        self.progress.send(0.0)
+        self.state.send(.idle)
 
         do {
             let session = AVAudioSession.sharedInstance()
@@ -41,12 +37,12 @@ public class AudioPlayer: NSObject, ObservableObject {
         }
 
         do {
-            if let url = Bundle.url(forAudio: audioRecording) {
+            if let url = Bundle.url(forAudio: data) {
                 log.debug("Audio found at url: \(url)")
                 self.player = try AVAudioPlayer(contentsOf: url)
             } else {
-                log.error("Audio not found: \(audioRecording)")
-                let fileURL = Bundle.module.url(forResource: audioRecording, withExtension: "mp3")!
+                log.error("Audio not found: \(data)")
+                let fileURL = Bundle.module.url(forResource: data, withExtension: "mp3")!
                 self.player = try AVAudioPlayer(contentsOf: fileURL)
             }
 
@@ -64,10 +60,10 @@ public class AudioPlayer: NSObject, ObservableObject {
             .sink(receiveValue: { _ in
                 if let player = self.player {
                     let newProgress = CGFloat(player.currentTime / player.duration)
-                    if self.progress > newProgress {
-                        self.progress = 1.0
+                    if self.progress.value > newProgress {
+                        self.progress.send(1.0)
                     } else {
-                        self.progress = newProgress
+                        self.progress.send(newProgress)
                     }
                 }
             })
@@ -76,16 +72,17 @@ public class AudioPlayer: NSObject, ObservableObject {
 
     func play() {
         self.player.play()
-        self.didFinishPlaying = false
+        self.state.send(.playing)
     }
 
     func pause() {
         self.player.pause()
+        self.state.send(.idle)
     }
 
     func stop() {
         self.player.stop()
-        self.didFinishPlaying = true
+        self.state.send(.idle)
     }
 
     // MARK: Private
@@ -99,6 +96,6 @@ public class AudioPlayer: NSObject, ObservableObject {
 
 extension AudioPlayer: AVAudioPlayerDelegate {
     public func audioPlayerDidFinishPlaying(_: AVAudioPlayer, successfully _: Bool) {
-        self.didFinishPlaying = true
+        self.state.send(.finishedPlaying)
     }
 }
