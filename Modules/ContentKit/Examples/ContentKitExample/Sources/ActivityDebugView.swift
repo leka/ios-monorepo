@@ -83,7 +83,7 @@ struct ActivityDebugView: View {
 
                 DisclosureGroup("**Skills**") {
                     ForEach(self.activity.skills, id: \.self) { skill in
-                        let skill = Skills.skill(id: skill)!
+                        let skill = Skills.skill(id: skill.id)!
                         HStack {
                             Text(skill.name)
                             Button {
