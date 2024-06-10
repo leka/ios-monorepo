@@ -12,7 +12,7 @@ import SwiftUI
 struct CategorySearchView: View {
     // MARK: Internal
 
-    let activities: [Activity] = ContentKit.allActivities.sorted {
+    let activities: [Activity] = ContentKit.allPublishedActivities.sorted {
         $0.details.title.compare($1.details.title, locale: NSLocale.current) == .orderedAscending
     }
 
