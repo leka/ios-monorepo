@@ -12,6 +12,10 @@ public protocol ExercisePayloadProtocol: Codable {}
 
 extension TouchToSelect.Payload: ExercisePayloadProtocol {}
 
+// MARK: - SuperSimon.Payload + ExercisePayloadProtocol
+
+extension SuperSimon.Payload: ExercisePayloadProtocol {}
+
 // MARK: - DragAndDropIntoZones.Payload + ExercisePayloadProtocol
 
 extension DragAndDropIntoZones.Payload: ExercisePayloadProtocol {}
