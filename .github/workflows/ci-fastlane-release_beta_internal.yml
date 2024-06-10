@@ -65,7 +65,7 @@ jobs:
 
       - name: bundle install
         run: |
-          gem install bundler
+          gem install --force bundler
           bundle install
 
       - name: tuist install
