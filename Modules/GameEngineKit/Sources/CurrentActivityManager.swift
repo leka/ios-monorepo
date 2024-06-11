@@ -2,6 +2,8 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AccountKit
+import Combine
 import ContentKit
 import Foundation
 
@@ -71,5 +73,30 @@ public class CurrentActivityManager {
             self.currentGroupIndex -= 1
             self.currentExerciseIndexInCurrentGroup = self.activity.exercisePayload.exerciseGroups[self.currentGroupIndex].exercises.count - 1
         }
+    }
+
+    public func saveActivityCompletionData(completedExercisesData: [[ExerciseCompletionData]], caregiverID: String?, carereceiverIDs: [String]) -> AnyPublisher<Void, Error> {
+        let completionDataString = self.exerciseCompletionDataManager.encodeCompletionData(completedExercisesData)
+        let activityCompletionData = ActivityCompletionData(
+            caregiverID: caregiverID ?? "No caregiver found",
+            carereceiverIDs: carereceiverIDs,
+            startTimestamp: self.startTimestamp,
+            endTimestamp: Date(),
+            completionData: completionDataString
+        )
+        return self.saveActivityCompletionData(data: activityCompletionData)
+    }
+
+    // MARK: Private
+
+    // Private properties
+    private let activityCompletionDataManager: ActivityCompletionDataManager = .shared
+    private let exerciseCompletionDataManager: ExerciseCompletionDataManager = .shared
+    private var cancellables = Set<AnyCancellable>()
+
+    private func saveActivityCompletionData(data: ActivityCompletionData) -> AnyPublisher<Void, Error> {
+        self.activityCompletionDataManager.saveActivityCompletionData(data: data)
+            .map { _ in () }
+            .eraseToAnyPublisher()
     }
 }
