@@ -134,25 +134,29 @@ class ActivityViewViewModel: ObservableObject {
         self.isCurrentActivityCompleted = true
     }
 
-    func saveActivityCompletionData(data: ActivityCompletionData) {
-        self.activityCompletionDataManager.saveActivityCompletionData(data: data)
-            .sink(receiveCompletion: { completion in
-                switch completion {
-                    case .finished:
-                        print("Activity Completion Data saved successfully.")
-                    case let .failure(error):
-                        print("Saving Activity Completion Data failed with error: \(error)")
-                }
-            }, receiveValue: { _ in
-                // Nothing to do
-            })
-            .store(in: &self.cancellables)
+    func saveActivityCompletion(caregiverID: String?, carereceiverIDs: [String]) {
+        self.activityManager.saveActivityCompletionData(
+            completedExercisesData: self.completedExercisesData,
+            caregiverID: caregiverID,
+            carereceiverIDs: carereceiverIDs
+        )
+        .receive(on: DispatchQueue.main)
+        .sink(receiveCompletion: { completion in
+            switch completion {
+                case .finished:
+                    print("Activity Completion Data saved successfully.")
+                case let .failure(error):
+                    print("Saving Activity Completion Data failed with error: \(error)")
+            }
+        }, receiveValue: { _ in
+            // Nothing to do
+        })
+        .store(in: &self.cancellables)
     }
 
     // MARK: Private
 
     private let activityManager: CurrentActivityManager
-    private let activityCompletionDataManager: ActivityCompletionDataManager = .shared
 
     private var cancellables: Set<AnyCancellable> = []
 
