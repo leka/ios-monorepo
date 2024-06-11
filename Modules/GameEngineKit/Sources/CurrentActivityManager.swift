@@ -2,6 +2,8 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AccountKit
+import Combine
 import ContentKit
 import Foundation
 
@@ -72,4 +74,16 @@ public class CurrentActivityManager {
             self.currentExerciseIndexInCurrentGroup = self.activity.exercisePayload.exerciseGroups[self.currentGroupIndex].exercises.count - 1
         }
     }
+
+    public func saveActivityCompletion(activityCompletionData: ActivityCompletionData) -> AnyPublisher<Void, Error> {
+        self.activityCompletionDataManager.saveActivityCompletionData(data: activityCompletionData)
+            .map { _ in () }
+            .eraseToAnyPublisher()
+    }
+
+    // MARK: Private
+
+    // Private properties
+    private let activityCompletionDataManager: ActivityCompletionDataManager = .shared
+    private var cancellables = Set<AnyCancellable>()
 }
