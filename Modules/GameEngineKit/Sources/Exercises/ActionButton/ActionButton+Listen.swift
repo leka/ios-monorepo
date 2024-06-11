@@ -7,7 +7,7 @@ import DesignKit
 import SwiftUI
 
 struct ActionButtonListen: View {
-    @ObservedObject var audioPlayer: AudioPlayer
+    @ObservedObject var audioPlayer: AudioPlayerViewModel
 
     var body: some View {
         Button {
@@ -19,14 +19,14 @@ struct ActionButtonListen: View {
                 .padding(40)
         }
         .frame(width: 200)
-        .disabled(self.audioPlayer.isPlaying)
+        .disabled(self.audioPlayer.state == .playing)
         .buttonStyle(ActionButtonStyle(progress: self.audioPlayer.progress))
-        .scaleEffect(self.audioPlayer.isPlaying ? 1.0 : 0.8, anchor: .center)
+        .scaleEffect(self.audioPlayer.state == .playing ? 1.0 : 0.8, anchor: .center)
         .shadow(
             color: .accentColor.opacity(0.2),
-            radius: self.audioPlayer.isPlaying ? 6 : 3, x: 0, y: 3
+            radius: self.audioPlayer.state == .playing ? 6 : 3, x: 0, y: 3
         )
-        .animation(.spring(response: 0.3, dampingFraction: 0.45), value: self.audioPlayer.isPlaying)
+        .animation(.spring(response: 0.3, dampingFraction: 0.45), value: self.audioPlayer.state == .playing)
         .onDisappear {
             self.audioPlayer.stop()
         }
@@ -35,5 +35,5 @@ struct ActionButtonListen: View {
 
 #Preview {
     ActionButtonListen(
-        audioPlayer: AudioPlayer(audioRecording: "drums"))
+        audioPlayer: AudioPlayerViewModel(player: AudioPlayer(audioRecording: "drums")))
 }
