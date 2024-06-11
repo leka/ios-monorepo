@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AccountKit
 import Combine
 import ContentKit
 import RobotKit
@@ -19,6 +20,9 @@ extension DanceFreezeView {
 
             self.exercicesSharedData = shared ?? ExerciseSharedData()
             self.exercicesSharedData.state = .playing
+
+            self.startTimestamp = Date()
+            self.chosenSong = selectedAudioRecording.audio
 
             self.subscribeToAudioPlayerProgress()
         }
@@ -51,7 +55,18 @@ extension DanceFreezeView {
 
         func completeDanceFreeze() {
             self.isDancing = false
-            self.exercicesSharedData.state = .completed(level: .nonApplicable, data: nil)
+
+            let completionPayload = ExerciseCompletionData.DanceFreezePayload(
+                chosenSong: self.chosenSong
+            ).encodeToString()
+            let completionData = ExerciseCompletionData(
+                startTimestamp: self.startTimestamp,
+                endTimestamp: Date(),
+                payload: completionPayload
+            )
+            self.exercicesSharedData.state = .completed(level: .nonApplicable, data: completionData)
+//            self.exercicesSharedData.state.send(.completed(level: .nonApplicable, data: completionData))
+            print(completionPayload.debugDescription)
             self.robotManager.stopRobot()
             self.audioPlayer.stop()
         }
@@ -61,7 +76,10 @@ extension DanceFreezeView {
         private var robotManager: RobotManager
         private var audioPlayer: AudioPlayer
         private var motionMode: Motion = .rotation
+        private var startTimestamp: Date?
+        private var chosenSong: String = ""
         private var cancellables: Set<AnyCancellable> = []
+        private let activityCompletionDataManager: ActivityCompletionDataManager = .shared
 
         private func subscribeToAudioPlayerProgress() {
             self.audioPlayer.progress
