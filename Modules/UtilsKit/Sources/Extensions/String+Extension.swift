@@ -65,4 +65,8 @@ public extension String {
     func isInvalidPassword() -> Bool {
         !self.isValidPassword() || self.isEmpty
     }
+
+    func normalized() -> String {
+        self.folding(options: .diacriticInsensitive, locale: .current).lowercased()
+    }
 }
