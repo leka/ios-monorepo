@@ -22,7 +22,7 @@ repos:
         args: ["--autofix", "--indent=4", "--top-keys=version,sourceLanguage"]
         types: [file]
         files: \.(json|xcstrings)$
-        exclude: '(\.vscode/settings\.json|\.jtd\.json$|.*\.xcassets/.*|.*\.colorset/.*|\.animation\.lottie\.json$)'
+        exclude: '(\.vscode/settings\.json|\.jtd\.json$|.*\.xcassets/.*|.*\.colorset/.*|\.animation\.lottie\.json$|.*\.lock\.json)'
       - id: check-added-large-files
       - id: check-executables-have-shebangs
       - id: check-shebang-scripts-are-executable
