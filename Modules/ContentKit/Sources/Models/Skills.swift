@@ -19,12 +19,35 @@ public class Skills {
 
     // MARK: Public
 
-    public static var list: [Skill] {
+    public static var allSkillsList: [Skill] {
         shared.getAllSkills()
     }
 
+    public static var primarySkillsList: [Skill] {
+        shared.getMainSkills()
+    }
+
     public static func skill(id: String) -> Skill? {
-        self.list.first(where: { $0.id == id })
+        self.allSkillsList.first(where: { $0.id == id })
+    }
+
+    public static func getAllSubskills(for skill: Skill) -> [Skill] {
+        var allSubskills: [Skill] = [skill]
+
+        func getSubskills(for skill: Skill) -> [Skill] {
+            var allSubskills: [Skill] = []
+
+            for subskill in skill.subskills {
+                allSubskills.append(subskill)
+                allSubskills.append(contentsOf: getSubskills(for: subskill))
+            }
+
+            return allSubskills
+        }
+
+        allSubskills.append(contentsOf: getSubskills(for: skill))
+
+        return allSubskills
     }
 
     // MARK: Private
@@ -51,6 +74,16 @@ public class Skills {
             log.error("skills.yml not found")
             return SkillsContainer(list: [])
         }
+    }
+
+    private func getMainSkills() -> [Skill] {
+        var skills: [Skill] = []
+
+        for skill in self.container.list {
+            skills.append(skill)
+        }
+
+        return skills
     }
 
     private func getAllSkills() -> [Skill] {
@@ -128,5 +161,21 @@ public extension Skill {
         let locale: Locale
         let name: String
         let description: String
+    }
+}
+
+// MARK: Hashable
+
+extension Skill: Hashable {
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(self.id)
+    }
+}
+
+// MARK: Equatable
+
+extension Skill: Equatable {
+    public static func == (lhs: Skill, rhs: Skill) -> Bool {
+        lhs.id == rhs.id
     }
 }

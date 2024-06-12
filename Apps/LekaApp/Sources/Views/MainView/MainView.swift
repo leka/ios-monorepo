@@ -54,6 +54,7 @@ struct MainView: View {
 
                     Section(String(l10n.MainView.Sidebar.sectionInformation.characters)) {
                         CategoryLabel(category: .home)
+                        CategoryLabel(category: .search)
                     }
 
                     Section(String(l10n.MainView.Sidebar.sectionContent.characters)) {
@@ -102,6 +103,9 @@ struct MainView: View {
                 switch self.navigation.selectedCategory {
                     case .home:
                         CategoryHome()
+
+                    case .search:
+                        CategorySearchView()
 
                     case .curriculums:
                         CategoryCurriculumsView()
