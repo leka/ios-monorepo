@@ -8,7 +8,7 @@ uuid: 2AFAF1C1D3ED4602A9BBB8B06E51D59D
 name: recognition_sports_drawings_3_images
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2024-04-08T13:12:12.658551"
+last_edited_at: "2024-06-12T11:19:57.361194"
 status: published
 
 authors:
@@ -17,7 +17,6 @@ authors:
 skills:
   - recognition
   - recognition/sports
-
 
 tags:
   - characters
@@ -37,7 +36,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon:
+      icon: recognition_sports_touch
 
       title: Sports en dessins
       subtitle: 3 images
@@ -46,16 +45,16 @@ l10n:
         Regarde l'image de gauche. Quel équipement sportif correspond au personnage ?
 
       description: |
-        Dans cette activité, une image présente un personnage pratiquant un sport spécifique, mais il lui manque son équipement ou ses accessoires. L'objectif est de trouver le matériel qui manque au sportif et de l'associer au sport représenté.
+        Dans cette activité, une image montre un personnage pratiquant un sport spécifique, mais sans son équipement. L'objectif est de trouver le matériel manquant et de l'associer au sport représenté. Cela aidera la personne accompagnée à mieux comprendre les équipements sportifs et à développer ses capacités d'observation.
 
       instructions: |
         - Encouragez la personne accompagnée à observer attentivement l'image présentée, en notant que le matériel de sport du personnage n'est pas visible.
         - Encouragez la personne accompagnée à sélectionner les icônes correspondant à l'équipement ou aux accessoires qu'elle pense que le personnage utiliserait pour pratiquer son sport.
-        - Lorsque la réponse est correcte, Leka initiera un renforçateur pour encourager la personne.
+        - Lorsque la réponse est correcte, Leka initiera un renforçateur pour encourager la personne accompagnée.
 
   - locale: en_US
     details:
-      icon:
+      icon: recognition_sports_touch
 
       title: Sports in drawings
       subtitle: 3 images
@@ -64,12 +63,12 @@ l10n:
         Look at the image on the left. What sports equipment corresponds to the character?
 
       description: |
-        In this activity, an image presents a character engaged in a specific sport, but they are missing their equipment or accessories. The goal is to find the missing equipment for the character and match it with the depicted sport.
+        In this activity, an image shows a character engaged in a specific sport but missing their equipment. The goal is to find the missing equipment and match it with the depicted sport. This activity helps the care receiver understand different sports equipment and enhances their observation skills.
 
       instructions: |
         - Encourage the care receiver to carefully observe the presented image, noting that the character's sports equipment is not visible.
         - Encourage the care receiver to select the icons corresponding to the equipment or accessories they think the character would use to engage in their sport.
-        - When the response is correct, Leka will initiate positive reinforcement to encourage the individual.
+        - When the response is correct, Leka will initiate positive reinforcement to encourage the care receiver.
 
 exercises_payload:
   options:
@@ -78,10 +77,10 @@ exercises_payload:
 
   exercise_groups:
     - group:
-
         - instructions:
             - locale: fr_FR
-              value: Regarde l'image. Quel équipement sportif correspond au personnage ?
+              value: Regarde l'image. Quel équipement sportif correspond au personnage
+                ?
             - locale: en_US
               value: Look at the image. What sports equipment corresponds to the character?
           interface: observeThenTouchToSelect
@@ -90,22 +89,22 @@ exercises_payload:
             type: ipad
             value:
               type: image
-              value:
-                sport_basketball_player_man.activity.assets
+              value: sport_basketball_player_man
           payload:
             shuffle_choices: true
             choices:
-              - value: sport_accessory_basketball_hoop.assets
+              - value: sport_accessory_basketball_hoop
                 type: image
                 is_right_answer: true
-              - value: sport_accessory_tennis_racket.assets
+              - value: sport_accessory_tennis_racket
                 type: image
-              - value: sport_accessory_judo_kimono.assets
+              - value: sport_accessory_judo_kimono
                 type: image
 
         - instructions:
             - locale: fr_FR
-              value: Regarde l'image. Quel équipement sportif correspond au personnage ?
+              value: Regarde l'image. Quel équipement sportif correspond au personnage
+                ?
             - locale: en_US
               value: Look at the image. What sports equipment corresponds to the character?
           interface: observeThenTouchToSelect
@@ -114,22 +113,22 @@ exercises_payload:
             type: ipad
             value:
               type: image
-              value:
-                sport_dance_player_man.activity.assets
+              value: sport_dance_player_man
           payload:
             shuffle_choices: true
             choices:
-              - value: sport_accessory_dancing_slippers.assets
+              - value: sport_accessory_dancing_slippers
                 type: image
                 is_right_answer: true
-              - value: sport_accessory_bike.assets
+              - value: sport_accessory_bike
                 type: image
-              - value: sport_accessory_judo_kimono.assets
+              - value: sport_accessory_judo_kimono
                 type: image
 
         - instructions:
             - locale: fr_FR
-              value: Regarde l'image. Quel équipement sportif correspond au personnage ?
+              value: Regarde l'image. Quel équipement sportif correspond au personnage
+                ?
             - locale: en_US
               value: Look at the image. What sports equipment corresponds to the character?
           interface: observeThenTouchToSelect
@@ -138,22 +137,22 @@ exercises_payload:
             type: ipad
             value:
               type: image
-              value:
-                sport_riding_player_woman.activity.assets
+              value: sport_riding_player_woman
           payload:
             shuffle_choices: true
             choices:
-              - value: sport_accessory_riding_helmet_and_barrier.assets
+              - value: sport_accessory_riding_helmet_and_barrier
                 type: image
                 is_right_answer: true
-              - value: sport_accessory_dancing_slippers.assets
+              - value: sport_accessory_dancing_slippers
                 type: image
-              - value: sport_accessory_bike.assets
+              - value: sport_accessory_bike
                 type: image
 
         - instructions:
             - locale: fr_FR
-              value: Regarde l'image. Quel équipement sportif correspond au personnage ?
+              value: Regarde l'image. Quel équipement sportif correspond au personnage
+                ?
             - locale: en_US
               value: Look at the image. What sports equipment corresponds to the character?
           interface: observeThenTouchToSelect
@@ -162,22 +161,22 @@ exercises_payload:
             type: ipad
             value:
               type: image
-              value:
-                sport_rugby_player_woman.activity.assets
+              value: sport_rugby_player_woman
           payload:
             shuffle_choices: true
             choices:
-              - value: sport_accessory_rugby_ball.assets
+              - value: sport_accessory_rugby_ball
                 type: image
                 is_right_answer: true
-              - value: sport_accessory_football.assets
+              - value: sport_accessory_football
                 type: image
-              - value: sport_accessory_volleyball_and_net.assets
+              - value: sport_accessory_volleyball_and_net
                 type: image
 
         - instructions:
             - locale: fr_FR
-              value: Regarde l'image. Quel équipement sportif correspond au personnage ?
+              value: Regarde l'image. Quel équipement sportif correspond au personnage
+                ?
             - locale: en_US
               value: Look at the image. What sports equipment corresponds to the character?
           interface: observeThenTouchToSelect
@@ -186,22 +185,22 @@ exercises_payload:
             type: ipad
             value:
               type: image
-              value:
-                sport_swimming_player_woman.activity.assets
+              value: sport_swimming_player_woman
           payload:
             shuffle_choices: true
             choices:
-              - value: sport_accessory_swimming cap.assets
+              - value: sport_accessory_swimming_cap
                 type: image
                 is_right_answer: true
-              - value: sport_accessory_dancing_slippers.assets
+              - value: sport_accessory_dancing_slippers
                 type: image
-              - value: sport_accessory_judo_kimono.assets
+              - value: sport_accessory_judo_kimono
                 type: image
 
         - instructions:
             - locale: fr_FR
-              value: Regarde l'image. Quel équipement sportif correspond au personnage ?
+              value: Regarde l'image. Quel équipement sportif correspond au personnage
+                ?
             - locale: en_US
               value: Look at the image. What sports equipment corresponds to the character?
           interface: observeThenTouchToSelect
@@ -210,22 +209,22 @@ exercises_payload:
             type: ipad
             value:
               type: image
-              value:
-                sport_tennis_player_man.activity.assets
+              value: sport_tennis_player_man
           payload:
             shuffle_choices: true
             choices:
-              - value: sport_accessory_tennis_racket.assets
+              - value: sport_accessory_tennis_racket
                 type: image
                 is_right_answer: true
-              - value: sport_accessory_judo_kimono.assets
+              - value: sport_accessory_judo_kimono
                 type: image
-              - value: sport_accessory_football.assets
+              - value: sport_accessory_football
                 type: image
 
         - instructions:
             - locale: fr_FR
-              value: Regarde l'image. Quel équipement sportif correspond au personnage ?
+              value: Regarde l'image. Quel équipement sportif correspond au personnage
+                ?
             - locale: en_US
               value: Look at the image. What sports equipment corresponds to the character?
           interface: observeThenTouchToSelect
@@ -234,22 +233,22 @@ exercises_payload:
             type: ipad
             value:
               type: image
-              value:
-                sport_football_player_man.activity.assets
+              value: sport_football_player_man
           payload:
             shuffle_choices: true
             choices:
-              - value: sport_accessory_football.assets
+              - value: sport_accessory_football
                 type: image
                 is_right_answer: true
-              - value: sport_accessory_tennis_racket.assets
+              - value: sport_accessory_tennis_racket
                 type: image
-              - value: sport_accessory_judo_kimono.assets
+              - value: sport_accessory_judo_kimono
                 type: image
 
         - instructions:
             - locale: fr_FR
-              value: Regarde l'image. Quel équipement sportif correspond au personnage ?
+              value: Regarde l'image. Quel équipement sportif correspond au personnage
+                ?
             - locale: en_US
               value: Look at the image. What sports equipment corresponds to the character?
           interface: observeThenTouchToSelect
@@ -258,22 +257,22 @@ exercises_payload:
             type: ipad
             value:
               type: image
-              value:
-                sport_judo_player_man.activity
+              value: sport_judo_player_man
           payload:
             shuffle_choices: true
             choices:
-              - value: sport_accessory_judo_kimono.assets
+              - value: sport_accessory_judo_kimono
                 type: image
                 is_right_answer: true
-              - value: sport_accessory_volleyball_and_net.assets
+              - value: sport_accessory_volleyball_and_net
                 type: image
-              - value: sport_accessory_dancing_slippers.assets
+              - value: sport_accessory_dancing_slippers
                 type: image
 
         - instructions:
             - locale: fr_FR
-              value: Regarde l'image. Quel équipement sportif correspond au personnage ?
+              value: Regarde l'image. Quel équipement sportif correspond au personnage
+                ?
             - locale: en_US
               value: Look at the image. What sports equipment corresponds to the character?
           interface: observeThenTouchToSelect
@@ -282,22 +281,22 @@ exercises_payload:
             type: ipad
             value:
               type: image
-              value:
-                sport_volleyball_player_woman.activity.assets
+              value: sport_volleyball_player_woman
           payload:
             shuffle_choices: true
             choices:
-              - value: sport_accessory_volleyball_and_net.assets
+              - value: sport_accessory_volleyball_and_net
                 type: image
                 is_right_answer: true
-              - value: sport_accessory_bike.assets
+              - value: sport_accessory_bike
                 type: image
-              - value: sport_accessory_basketball_hoop.assets
+              - value: sport_accessory_basketball_hoop
                 type: image
 
         - instructions:
             - locale: fr_FR
-              value: Regarde l'image. Quel équipement sportif correspond au personnage ?
+              value: Regarde l'image. Quel équipement sportif correspond au personnage
+                ?
             - locale: en_US
               value: Look at the image. What sports equipment corresponds to the character?
           interface: observeThenTouchToSelect
@@ -306,15 +305,14 @@ exercises_payload:
             type: ipad
             value:
               type: image
-              value:
-                sport_cycling_player_woman.activity.assets
+              value: sport_cycling_player_woman
           payload:
             shuffle_choices: true
             choices:
-              - value: sport_accessory_bike.assets
+              - value: sport_accessory_bike
                 type: image
                 is_right_answer: true
-              - value: sport_accessory_swimming
+              - value: sport_accessory_swimming_cap
                 type: image
-              - value: sport_accessory_volleyball_and_net.assets
+              - value: sport_accessory_volleyball_and_net
                 type: image

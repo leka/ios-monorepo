@@ -737,6 +737,20 @@ list:
               identifier différents métiers (médecin, professeur, pompier, etc.)
         subskills: []
 
+      - id: recognition/sports
+        l10n:
+          - locale: en_US
+            name: Recognition of sports
+            description: >
+              The recognition of sports is the ability to see and identify
+              differents sports (football, dancing, cycling, etc.)
+          - locale: fr_FR
+            name: Reconnaissance des sports
+            description: >
+              La reconnaissance des sports est la capacité à voir et à
+              identifier différents sports (football, danse, cyclisme, etc.)
+        subskills: []
+
       - id: recognition/family_members
         l10n:
           - locale: en_US

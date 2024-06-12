@@ -4,8 +4,8 @@
 
 version: 1.0.0
 
-uuid:
-name: recognition_professions_drawings_6_images
+uuid: A1151E7887214352ABB0B12A9861870A
+name: recognition_professions_drawings_3_images
 
 created_at: "2024-03-04T18:07:12.519229"
 last_edited_at: "2024-04-08T13:12:12.658551"
@@ -36,10 +36,10 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon:
+      icon: recognition_professions_touch
 
       title: Les métiers en dessins
-      subtitle: 6 images
+      subtitle: 3 images
 
       short_description: |
         Regarde l'image de gauche. Quel équipement sportif correspond au personnage ?
@@ -54,10 +54,10 @@ l10n:
 
   - locale: en_US
     details:
-      icon:
+      icon: recognition_professions_touch
 
       title: Professions in drawings
-      subtitle: 6 images
+      subtitle: 3 images
 
       short_description: |
         Look at the image on the left. What sports equipment corresponds to the character?
@@ -88,22 +88,16 @@ exercises_payload:
             type: ipad
             value:
               type: image
-              value: sport_basketball_player_man.activity.assets
+              value: sport_basketball_player_man
           payload:
             shuffle_choices: true
             choices:
-              - value: sport_accessory_basketball_hoop.assets
+              - value: sport_accessory_basketball_hoop
                 type: image
                 is_right_answer: true
-              - value: sport_accessory_tennis_racket.assets
+              - value: sport_accessory_tennis_racket
                 type: image
-              - value: sport_accessory_judo_kimono.assets
-                type: image
-              - value: sport_accessory_football.assets
-                type: image
-              - value: sport_accessory_volleyball_and_net.assets
-                type: image
-              - value: sport_accessory_volleyball_and_net.assets
+              - value: sport_accessory_judo_kimono
                 type: image
 
         - instructions:
@@ -117,22 +111,16 @@ exercises_payload:
             type: ipad
             value:
               type: image
-              value: sport_dance_player_man.activity.assets
+              value: sport_dance_player_man
           payload:
             shuffle_choices: true
             choices:
-              - value: sport_accessory_dancing_slippers.assets
+              - value: sport_accessory_dancing_slippers
                 type: image
                 is_right_answer: true
-              - value: sport_accessory_bike.assets
+              - value: sport_accessory_bike
                 type: image
-              - value: sport_accessory_rugby_ball.assets
-                type: image
-              - value: sport_accessory_swimming
-                type: image
-              - value: sport_accessory_football.assets
-                type: image
-              - value: sport_accessory_volleyball_and_net.assets
+              - value: sport_accessory_judo_kimono
                 type: image
 
         - instructions:
@@ -146,22 +134,16 @@ exercises_payload:
             type: ipad
             value:
               type: image
-              value: sport_football_player_man.activity.assets
+              value: sport_riding_player_woman
           payload:
             shuffle_choices: true
             choices:
-              - value: sport_accessory_football.assets
+              - value: sport_accessory_riding_helmet_and_barrier
                 type: image
                 is_right_answer: true
-              - value: sport_accessory_tennis_racket.assets
+              - value: sport_accessory_dancing_slippers
                 type: image
-              - value: sport_accessory_judo_kimono.assets
-                type: image
-              - value: sport_accessory_riding_helmet_and_barrier.assets
-                type: image
-              - value: sport_accessory_volleyball_and_net.assets
-                type: image
-              - value: sport_accessory_volleyball_and_net.assets
+              - value: sport_accessory_bike
                 type: image
 
         - instructions:
@@ -175,22 +157,16 @@ exercises_payload:
             type: ipad
             value:
               type: image
-              value: sport_volleyball_player_woman.activity.assets
+              value: sport_rugby_player_woman
           payload:
             shuffle_choices: true
             choices:
-              - value: sport_accessory_volleyball_and_net.assets
+              - value: sport_accessory_rugby_ball
                 type: image
                 is_right_answer: true
-              - value: sport_accessory_bike.assets
+              - value: sport_accessory_football
                 type: image
-              - value: sport_accessory_rugby_ball.assets
-                type: image
-              - value: sport_accessory_swimming
-                type: image
-              - value: sport_accessory_football.assets
-                type: image
-              - value: sport_accessory_volleyball_and_net.assets
+              - value: sport_accessory_volleyball_and_net
                 type: image
 
         - instructions:
@@ -204,22 +180,16 @@ exercises_payload:
             type: ipad
             value:
               type: image
-              value: sport_swimming_player_woman.activity.assets
+              value: sport_swimming_player_woman
           payload:
             shuffle_choices: true
             choices:
-              - value: sport_accessory_swimming
+              - value: sport_accessory_swimming_cap
                 type: image
                 is_right_answer: true
-              - value: sport_accessory_tennis_racket.assets
+              - value: sport_accessory_dancing_slippers
                 type: image
-              - value: sport_accessory_judo_kimono.assets
-                type: image
-              - value: sport_accessory_riding_helmet_and_barrier.assets
-                type: image
-              - value: sport_accessory_volleyball_and_net.assets
-                type: image
-              - value: sport_accessory_volleyball_and_net.assets
+              - value: sport_accessory_judo_kimono
                 type: image
 
         - instructions:
@@ -233,22 +203,16 @@ exercises_payload:
             type: ipad
             value:
               type: image
-              value: sport_riding_player_woman.activity.assets
+              value: sport_tennis_player_man
           payload:
             shuffle_choices: true
             choices:
-              - value: sport_accessory_riding_helmet_and_barrier.assets
+              - value: sport_accessory_tennis_racket
                 type: image
                 is_right_answer: true
-              - value: sport_accessory_bike.assets
+              - value: sport_accessory_judo_kimono
                 type: image
-              - value: sport_accessory_rugby_ball.assets
-                type: image
-              - value: sport_accessory_swimming
-                type: image
-              - value: sport_accessory_football.assets
-                type: image
-              - value: sport_accessory_volleyball_and_net.assets
+              - value: sport_accessory_football
                 type: image
 
         - instructions:
@@ -262,22 +226,16 @@ exercises_payload:
             type: ipad
             value:
               type: image
-              value: sport_tennis_player_man.activity.assets
+              value: sport_football_player_man
           payload:
             shuffle_choices: true
             choices:
-              - value: sport_accessory_basketball_hoop.assets
-                type: image
-              - value: sport_accessory_tennis_racket.assets
+              - value: sport_accessory_football
                 type: image
                 is_right_answer: true
-              - value: sport_accessory_judo_kimono.assets
+              - value: sport_accessory_tennis_racket
                 type: image
-              - value: sport_accessory_riding_helmet_and_barrier.assets
-                type: image
-              - value: sport_accessory_volleyball_and_net.assets
-                type: image
-              - value: sport_accessory_volleyball_and_net.assets
+              - value: sport_accessory_judo_kimono
                 type: image
 
         - instructions:
@@ -291,22 +249,16 @@ exercises_payload:
             type: ipad
             value:
               type: image
-              value: sport_rugby_player_woman.activity.assets
+              value: sport_judo_player_man
           payload:
             shuffle_choices: true
             choices:
-              - value: sport_accessory_dancing_slippers.assets
-                type: image
-              - value: sport_accessory_bike.assets
-                type: image
-              - value: sport_accessory_rugby_ball.assets
+              - value: sport_accessory_judo_kimono
                 type: image
                 is_right_answer: true
-              - value: sport_accessory_swimming
+              - value: sport_accessory_volleyball_and_net
                 type: image
-              - value: sport_accessory_football.assets
-                type: image
-              - value: sport_accessory_volleyball_and_net.assets
+              - value: sport_accessory_dancing_slippers
                 type: image
 
         - instructions:
@@ -320,22 +272,16 @@ exercises_payload:
             type: ipad
             value:
               type: image
-              value: sport_judo_player_man.activity
+              value: sport_volleyball_player_woman
           payload:
             shuffle_choices: true
             choices:
-              - value: sport_accessory_basketball_hoop.assets
-                type: image
-              - value: sport_accessory_tennis_racket.assets
-                type: image
-              - value: sport_accessory_judo_kimono.assets
+              - value: sport_accessory_volleyball_and_net
                 type: image
                 is_right_answer: true
-              - value: sport_accessory_riding_helmet_and_barrier.assets
+              - value: sport_accessory_bike
                 type: image
-              - value: sport_accessory_volleyball_and_net.assets
-                type: image
-              - value: sport_accessory_volleyball_and_net.assets
+              - value: sport_accessory_basketball_hoop
                 type: image
 
         - instructions:
@@ -349,20 +295,14 @@ exercises_payload:
             type: ipad
             value:
               type: image
-              value: sport_cycling_player_woman.activity.assets
+              value: sport_cycling_player_woman
           payload:
             shuffle_choices: true
             choices:
-              - value: sport_accessory_dancing_slippers.assets
-                type: image
-              - value: sport_accessory_bike.assets
+              - value: sport_accessory_bike
                 type: image
                 is_right_answer: true
-              - value: sport_accessory_rugby_ball.assets
+              - value: sport_accessory_swimming_cap
                 type: image
-              - value: sport_accessory_swimming
-                type: image
-              - value: sport_accessory_football.assets
-                type: image
-              - value: sport_accessory_volleyball_and_net.assets
+              - value: sport_accessory_volleyball_and_net
                 type: image
