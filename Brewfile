@@ -1,5 +1,4 @@
 tap 'homebrew/bundle'
-tap 'tuist/tuist'
 brew 'jq'
 brew 'mise'
 brew 'swiftformat'
