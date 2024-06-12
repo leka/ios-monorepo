@@ -2,10 +2,10 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
-import Foundation
+import SwiftUI
 
-public extension String {
-    var nilWhenEmpty: String? {
-        isEmpty ? nil : self
+public extension Text {
+    init(markdown: String) {
+        self.init(.init(markdown))
     }
 }

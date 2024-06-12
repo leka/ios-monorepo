@@ -4,7 +4,7 @@
 
 import SwiftUI
 
-extension UIApplication {
+public extension UIApplication {
     var keyWindow: UIWindow? {
         // Get connected scenes
         self.connectedScenes

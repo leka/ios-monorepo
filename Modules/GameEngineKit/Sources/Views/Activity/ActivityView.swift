@@ -139,7 +139,7 @@ public struct ActivityView: View {
                 self.isAlertPresented = false
             })
             Button(String(l10n.GameEngineKit.ActivityView.QuitActivityAlert.quitButtonLabel.characters), role: .destructive, action: {
-                // TODO: (@mathieu) - Save displayable data in session
+                self.saveActivityCompletion()
                 self.dismiss()
             })
         } message: {
@@ -214,16 +214,7 @@ public struct ActivityView: View {
         Button(String(l10n.GameEngineKit.ActivityView.continueButton.characters)) {
             if self.viewModel.isLastExercise {
                 self.viewModel.scorePanelEnabled ? self.viewModel.moveToActivityEnd() : self.dismiss()
-
-                let completionDataString = ActivityCompletionData.encodeCompletionData(from: self.viewModel.completedExercisesData)
-                let activityCompletionData = ActivityCompletionData(
-                    caregiverID: self.caregiverManagerViewModel.currentCaregiver?.id ?? "No caregiver found",
-                    carereceiverIDs: self.carereceiverManagerViewModel.currentCarereceivers.compactMap(\.id),
-                    startTimestamp: self.viewModel.completedExercisesData.first?.first?.startTimestamp,
-                    endTimestamp: self.viewModel.completedExercisesData.last?.last?.endTimestamp,
-                    completionData: completionDataString
-                )
-                self.viewModel.saveActivityCompletionData(data: activityCompletionData)
+                self.saveActivityCompletion()
             } else {
                 self.viewModel.moveToNextExercise()
             }
@@ -267,6 +258,12 @@ public struct ActivityView: View {
 
             case .robotThenTouchToSelect:
                 RobotThenTouchToSelectView(
+                    exercise: self.viewModel.currentExercise,
+                    data: self.viewModel.currentExerciseSharedData
+                )
+
+            case .superSimon:
+                SuperSimonView(
                     exercise: self.viewModel.currentExercise,
                     data: self.viewModel.currentExerciseSharedData
                 )
@@ -369,6 +366,12 @@ public struct ActivityView: View {
                     data: self.viewModel.currentExerciseSharedData
                 )
         }
+    }
+
+    private func saveActivityCompletion() {
+        let caregiverID = self.caregiverManagerViewModel.currentCaregiver?.id
+        let carereceiverIDs = self.carereceiverManagerViewModel.currentCarereceivers.compactMap(\.id)
+        self.viewModel.saveActivityCompletion(caregiverID: caregiverID, carereceiverIDs: carereceiverIDs)
     }
 }
 

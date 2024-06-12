@@ -1,0 +1,72 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+version: 1.0.0
+
+uuid: B39DDA35800849F7A40F651E411D30CD
+name: super_simon_4_colors
+
+created_at: "2024-03-04T18:07:12.518998"
+last_edited_at: "2024-05-28T10:40:43.011791"
+status: published
+
+authors:
+  - leka
+
+skills:
+  - recognition
+  - recognition/colors
+
+tags:
+  - colors
+
+hmi:
+  - tablet_robot
+
+types:
+  - one_on_one
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: super_simon
+      title: Super Simon
+      subtitle: 4 Choix de Couleurs
+      short_description: |
+        Mémoriser et reproduire les séquences de couleurs de Leka sur la tablette
+      description: |
+        Dans cette activité, la personne accompagnée est invitée à mémoriser et à reproduire des séquences de couleurs de plus en plus complexes. Cette activité divertissante et stimulante est conçue pour développer la mémoire à court terme et la reconnaissance des couleurs.
+      instructions: |
+        - Encouragez la personne accompagnée à observer attentivement la séquence de couleurs jouée par Leka.
+        - Encouragez la personne accompagnée à reproduire la séquence en touchant les couleurs dans le même ordre sur l'écran de la tablette.
+        - En cas de réponse correcte, Leka initiera un renforçateur pour encourager la personne
+
+  - locale: en_US
+    details:
+      icon: super_simon
+      title: Super Simon
+      subtitle: 4 Color Choices
+      short_description: |
+        Memorize and reproduce Leka's color sequences on the tablet
+      description: |
+        In this activity, the care receiver is invited to memorize and reproduce increasingly complex color sequences. This entertaining and stimulating activity is designed to develop short-term memory and color recognition.
+      instructions: |
+        - Encourage the care receiver to carefully observe the color sequence displayed by Leka.
+        - Encourage the care receiver to reproduce the sequence by touching the colors in the same order on the tablet.
+        - In case of a correct answer, Leka will initiate a reinforcer to encourage the care receiver
+
+exercises_payload:
+  options:
+    shuffle_exercises: false
+    shuffle_groups: false
+
+  exercise_groups:
+    - group:
+        - interface: superSimon
+          payload:
+            level: medium

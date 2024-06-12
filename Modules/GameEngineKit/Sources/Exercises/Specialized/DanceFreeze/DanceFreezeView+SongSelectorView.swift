@@ -63,7 +63,7 @@ extension DanceFreezeView {
         // MARK: Lifecycle
 
         init(audioRecording: DanceFreeze.Song, isSelected: Bool) {
-            guard let image = getPath(for: audioRecording.labels.icon) else {
+            guard let image = Bundle.path(forImage: audioRecording.labels.icon) else {
                 fatalError("Image not found")
             }
             self.image = image

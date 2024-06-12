@@ -4,8 +4,44 @@
 
 import Foundation
 
-// Check if email or password format is correct
 public extension String {
+    static func random(length: Int) -> String {
+        let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        return String((0..<length).map { _ in letters.randomElement()! })
+    }
+
+    var isRasterImageFile: Bool {
+        ["png", "jpg", "jpeg"].contains(self.pathExtension)
+    }
+
+    var isVectorImageFile: Bool {
+        self.pathExtension == "svg"
+    }
+
+    var fileURL: URL {
+        URL(fileURLWithPath: self)
+    }
+
+    var pathExtension: String {
+        self.fileURL.pathExtension
+    }
+
+    var lastPathComponent: String {
+        self.fileURL.lastPathComponent
+    }
+
+    func containsEmoji() -> Bool {
+        contains { $0.isEmoji }
+    }
+
+    func containsOnlyEmojis() -> Bool {
+        count > 0 && !contains { !$0.isEmoji }
+    }
+
+    var nilWhenEmpty: String? {
+        isEmpty ? nil : self
+    }
+
     func isValidEmail() -> Bool {
         let regex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         let predicate = NSPredicate(format: "SELF MATCHES %@", regex)
@@ -28,5 +64,9 @@ public extension String {
 
     func isInvalidPassword() -> Bool {
         !self.isValidPassword() || self.isEmpty
+    }
+
+    func normalized() -> String {
+        self.folding(options: .diacriticInsensitive, locale: .current).lowercased()
     }
 }

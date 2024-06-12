@@ -8,6 +8,7 @@ import DesignKit
 import LocalizationKit
 import RobotKit
 import SwiftUI
+import UtilsKit
 
 // MARK: - RobotThenTouchToSelectView
 

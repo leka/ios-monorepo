@@ -20,8 +20,8 @@ If you encounter any issues or need help, contact us at support@leka.io
 
 ### New Content & Features
 
-- Upgrade dependencies
+- New Search Category: Added a new Search category to enhance content search functionality.
 
 ### Bug Fixes
 
-- Home page - fix typos in French
+- Minor Fixes and Improvements: Implemented small fixes and general improvements for better performance and stability.

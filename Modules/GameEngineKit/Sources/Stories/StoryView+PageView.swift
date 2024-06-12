@@ -12,7 +12,7 @@ public extension StoryView {
         // MARK: Lifecycle
 
         public init(page: Page) {
-            guard let image = getPath(for: page.background) else {
+            guard let image = Bundle.path(forImage: page.background) else {
                 fatalError("Image not found")
             }
             self.background = image

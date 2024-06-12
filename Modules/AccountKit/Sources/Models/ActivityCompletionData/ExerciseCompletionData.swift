@@ -12,32 +12,30 @@ public struct ExerciseCompletionData: Equatable {
     public init(
         startTimestamp: Date? = nil,
         endTimestamp: Date? = nil,
-        numberOfTrials: Int = 0,
-        numberOfAllowedTrials: Int = 0
+        payload: String = ""
     ) {
         self.startTimestamp = startTimestamp
         self.endTimestamp = endTimestamp
-        self.numberOfTrials = numberOfTrials
-        self.numberOfAllowedTrials = numberOfAllowedTrials
+        self.payload = payload
     }
 
     // MARK: Public
 
     public var startTimestamp: Date?
     public var endTimestamp: Date?
-    public var numberOfTrials: Int
-    public var numberOfAllowedTrials: Int
+    public var payload: String
 }
 
 // MARK: Hashable
 
 extension ExerciseCompletionData: Hashable {
     public static func == (lhs: ExerciseCompletionData, rhs: ExerciseCompletionData) -> Bool {
-        lhs.startTimestamp == rhs.startTimestamp && lhs.endTimestamp == rhs.endTimestamp
+        lhs.startTimestamp == rhs.startTimestamp && lhs.endTimestamp == rhs.endTimestamp && lhs.payload == rhs.payload
     }
 
     public func hash(into hasher: inout Hasher) {
         hasher.combine(self.startTimestamp)
         hasher.combine(self.endTimestamp)
+        hasher.combine(self.payload)
     }
 }

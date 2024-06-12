@@ -3,6 +3,9 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import Foundation
+import LocalizationKit
+
+// MARK: - Exercise.Action
 
 // swiftlint:disable nesting
 
@@ -31,8 +34,15 @@ public extension Exercise {
                             let audio = try valueContainer.decode(String.self, forKey: .value)
                             self = .ipad(type: .audio(audio))
                         case .speech:
-                            let speech = try valueContainer.decode(String.self, forKey: .value)
-                            self = .ipad(type: .speech(speech))
+                            let localizedSpeech = try valueContainer.decode([LocalizedSpeech].self, forKey: .value)
+
+                            let availableLocales = localizedSpeech.map(\.locale)
+                            let currentLocale = availableLocales.first(where: {
+                                $0.language.languageCode == LocalizationKit.l10n.language
+                            }) ?? Locale(identifier: "en_US")
+
+                            let speech = localizedSpeech.first(where: { $0.locale == currentLocale })?.utterance
+                            self = .ipad(type: .speech(speech!))
                     }
                 case "robot":
                     let valueType = try valueContainer.decode(ValueType.self, forKey: .type)
@@ -123,6 +133,25 @@ public extension Exercise {
             case type
             case value
         }
+    }
+}
+
+// MARK: - Exercise.LocalizedSpeech
+
+public extension Exercise {
+    struct LocalizedSpeech: Codable {
+        // MARK: Lifecycle
+
+        public init(from decoder: Decoder) throws {
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            self.locale = try Locale(identifier: container.decode(String.self, forKey: .locale))
+            self.utterance = try container.decode(String.self, forKey: .utterance)
+        }
+
+        // MARK: Internal
+
+        let locale: Locale
+        let utterance: String
     }
 }
 

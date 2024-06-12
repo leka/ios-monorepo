@@ -146,6 +146,96 @@
                 }
             }
         },
+        "content_kit.search_grid_view.activities_title": {
+            "comment": "SearchGridView 'activities' section title",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Activities"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Activit\u00e9s"
+                    }
+                }
+            }
+        },
+        "content_kit.search_grid_view.curriculums_title": {
+            "comment": "SearchGridView 'curriculums' section title",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Curriculums"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Parcours"
+                    }
+                }
+            }
+        },
+        "content_kit.search_grid_view.no_results": {
+            "comment": "SearchGridView 'see all' button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Oops! No results found."
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "D\u00e9sol\u00e9 ! Aucun r\u00e9sultat trouv\u00e9."
+                    }
+                }
+            }
+        },
+        "content_kit.search_grid_view.see_all_label": {
+            "comment": "SearchGridView 'see all' button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "See all"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Voir tout"
+                    }
+                }
+            }
+        },
+        "content_kit.search_grid_view.skills_title": {
+            "comment": "SearchGridView 'skills' section title",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Skills"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Comp\u00e9tences"
+                    }
+                }
+            }
+        },
         "content_kit.story_details_view.authors_section_title": {
             "comment": "StoryDetailsView 'authors' section title",
             "extractionState": "extracted_with_value",
@@ -268,6 +358,47 @@
                     "stringUnit": {
                         "state": "translated",
                         "value": "D\u00e9marrer l'histoire"
+                    }
+                }
+            }
+        },
+        "lekaapp.skills_grid_view.activity_count_label": {
+            "comment": "Activity count label of SkillsGridView",
+            "localizations": {
+                "en": {
+                    "variations": {
+                        "plural": {
+                            "one": {
+                                "stringUnit": {
+                                    "state": "translated",
+                                    "value": "%d activity"
+                                }
+                            },
+                            "other": {
+                                "stringUnit": {
+                                    "state": "translated",
+                                    "value": "%d activities"
+                                }
+                            }
+                        }
+                    }
+                },
+                "fr": {
+                    "variations": {
+                        "plural": {
+                            "one": {
+                                "stringUnit": {
+                                    "state": "translated",
+                                    "value": "%d activit\u00e9"
+                                }
+                            },
+                            "other": {
+                                "stringUnit": {
+                                    "state": "translated",
+                                    "value": "%d activit\u00e9s"
+                                }
+                            }
+                        }
                     }
                 }
             }

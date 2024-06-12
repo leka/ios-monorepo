@@ -13,7 +13,7 @@ extension DanceFreezeView {
 
         init(selectedAudioRecording: DanceFreeze.Song, motion: Motion, shared: ExerciseSharedData? = nil) {
             self.audioPlayer = AudioPlayer(audioRecording: selectedAudioRecording.audio)
-            self.audioPlayer.setAudioPlayer(audioRecording: selectedAudioRecording.audio)
+            self.audioPlayer.setAudioData(data: selectedAudioRecording.audio)
             self.robotManager = RobotManager()
             self.motionMode = motion
 
@@ -34,7 +34,7 @@ extension DanceFreezeView {
                 return
             }
 
-            if self.audioPlayer.isPlaying {
+            if self.audioPlayer.state.value == .playing {
                 self.audioPlayer.pause()
                 self.isDancing = false
                 self.robotManager.freeze()
@@ -64,7 +64,7 @@ extension DanceFreezeView {
         private var cancellables: Set<AnyCancellable> = []
 
         private func subscribeToAudioPlayerProgress() {
-            self.audioPlayer.$progress
+            self.audioPlayer.progress
                 .receive(on: DispatchQueue.main)
                 .sink { [weak self] in
                     guard let self else { return }

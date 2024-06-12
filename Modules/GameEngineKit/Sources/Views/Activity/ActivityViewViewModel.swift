@@ -58,6 +58,10 @@ class ActivityViewViewModel: ObservableObject {
     @Published var isReinforcerAnimationVisible: Bool = false
     @Published var isReinforcerAnimationEnabled: Bool = true
 
+    var startTimestamp: Date? {
+        self.activityManager.startTimestamp
+    }
+
     var successExercisesSharedData: [[ExerciseSharedData]] {
         self.completedExercisesSharedData.map { group in
             group.filter {
@@ -130,8 +134,18 @@ class ActivityViewViewModel: ObservableObject {
         self.isCurrentActivityCompleted = true
     }
 
-    func saveActivityCompletionData(data: ActivityCompletionData) {
-        self.activityCompletionDataManager.saveActivityCompletionData(data: data)
+    func saveActivityCompletion(caregiverID: String?, carereceiverIDs: [String]) {
+        let completionDataString = self.exerciseCompletionDataManager.encodeCompletionData(self.completedExercisesData)
+        let activityCompletionData = ActivityCompletionData(
+            caregiverID: caregiverID ?? "No caregiver found",
+            carereceiverIDs: carereceiverIDs,
+            startTimestamp: self.startTimestamp,
+            endTimestamp: Date(),
+            completionData: completionDataString
+        )
+
+        self.activityManager.saveActivityCompletion(activityCompletionData: activityCompletionData)
+            .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { completion in
                 switch completion {
                     case .finished:
@@ -148,7 +162,7 @@ class ActivityViewViewModel: ObservableObject {
     // MARK: Private
 
     private let activityManager: CurrentActivityManager
-    private let activityCompletionDataManager: ActivityCompletionDataManager = .shared
+    private let exerciseCompletionDataManager: ExerciseCompletionDataManager = .shared
 
     private var cancellables: Set<AnyCancellable> = []
 
