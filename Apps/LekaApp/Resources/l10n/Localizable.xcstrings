@@ -1262,56 +1262,20 @@
                 }
             }
         },
-        "lekaapp.category_search_view.activity_suggestion": {
-            "comment": "Activity suggestion label when searching",
+        "lekaapp.category_search_view.browse_skills_title": {
+            "comment": "Browse skills title",
             "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Activity: %@"
+                        "value": "Browse skills"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Activit\u00e9: %@"
-                    }
-                }
-            }
-        },
-        "lekaapp.category_search_view.skill_suggestion": {
-            "comment": "Skill suggestion label when searching",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Skill: %@"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Comp\u00e9tence: %@"
-                    }
-                }
-            }
-        },
-        "lekaapp.category_search_view.title": {
-            "comment": "Search title",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Search"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Recherche"
+                        "value": "Parcourir les comp\u00e9tences"
                     }
                 }
             }

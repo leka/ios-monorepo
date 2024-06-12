@@ -12,12 +12,6 @@ import SwiftUI
 struct CategorySearchView: View {
     // MARK: Internal
 
-    let activities: [Activity] = ContentKit.allPublishedActivities.sorted {
-        $0.details.title.compare($1.details.title, locale: NSLocale.current) == .orderedAscending
-    }
-
-    let skills: [Skill] = Skills.primarySkillsList
-
     var body: some View {
         Group {
             if self.searchText.isEmpty {
@@ -27,61 +21,60 @@ struct CategorySearchView: View {
                         self.navigation.fullScreenCoverContent = .activityView(carereceivers: [])
                     })
                 }
+                .navigationTitle(String(l10n.CategorySearchView.browseSkillstitle.characters))
+                .font(.title.bold())
             } else {
                 ScrollView(showsIndicators: true) {
-                    ActivityGridView(activities: self.searchResults, onStartActivity: { activity in
-                        self.navigation.currentActivity = activity
-                        self.navigation.fullScreenCoverContent = .activityView(carereceivers: [])
-                    })
+                    SearchGridView(activities: self.searchActivityResults,
+                                   skills: self.searchSkillsResults,
+                                   curriculums: self.searchCurriculumResults,
+                                   onStartActivity: { activity in
+                                       self.navigation.currentActivity = activity
+                                       self.navigation.fullScreenCoverContent = .activityView(carereceivers: [])
+                                   })
                 }
             }
         }
-        .searchable(text: self.$searchText, suggestions: {
-            ForEach(self.filteredActivitySuggestions, id: \.self) { suggestion in
-                Text(l10n.CategorySearchView.activitySuggestion(suggestion))
-                    .searchCompletion(suggestion)
-            }
-            ForEach(self.filteredSkillSuggestions, id: \.self) { suggestion in
-                Text(l10n.CategorySearchView.skillSuggestion(suggestion.name))
-                    .searchCompletion(suggestion.name)
-            }
-        })
-        .navigationTitle(String(l10n.CategorySearchView.title.characters))
+        .searchable(text: self.$searchText)
     }
 
-    var searchResults: [Activity] {
+    var searchActivityResults: [Activity] {
         if self.searchText.isEmpty {
             self.activities
         } else {
             self.activities.filter { activity in
-
-                activity.details.title.lowercased().contains(self.searchText.lowercased()) ||
-                    activity.skills.contains(where: { $0.name.lowercased().contains(self.searchText.lowercased()) })
+                activity.details.title.normalized().contains(self.searchText.normalized())
             }
         }
     }
 
-    var filteredActivitySuggestions: [String] {
-        guard !self.searchText.isEmpty else { return [] }
-        let suggestions = self.activities.filter { $0.details.title.lowercased().contains(self.searchText.lowercased()) }
-            .map(\.details.title)
-            .removingDuplicates()
-        return Array(suggestions[0..<min(3, suggestions.count)])
+    var searchSkillsResults: [Skill] {
+        if self.searchText.isEmpty {
+            self.skills
+        } else {
+            self.skills.filter { skill in
+                skill.name.normalized().contains(self.searchText.normalized())
+            }
+        }
     }
 
-    var filteredSkillSuggestions: [Skill] {
-        guard !self.searchText.isEmpty else { return [] }
-        let suggestions = Skills.allSkillsList.filter { skill in
-            (skill.name.lowercased().contains(self.searchText.lowercased()) &&
-                self.activities.filter { $0.skills.contains(where: { $0 == skill }) }.isNotEmpty)
+    var searchCurriculumResults: [Curriculum] {
+        if self.searchText.isEmpty {
+            self.curriculums
+        } else {
+            self.curriculums.filter { curriculum in
+                curriculum.name.normalized().contains(self.searchText.normalized())
+            }
         }
-        return Array(suggestions[0..<min(3, suggestions.count)])
     }
 
     // MARK: Private
 
+    private let activities: [Activity] = ContentKit.allPublishedActivities
+    private let curriculums: [Curriculum] = ContentKit.allCurriculums
+    private let skills: [Skill] = Skills.primarySkillsList
+
     @State private var searchText = ""
-    @ObservedObject private var styleManager: StyleManager = .shared
     @ObservedObject private var navigation: Navigation = .shared
 }
 
@@ -89,17 +82,9 @@ struct CategorySearchView: View {
 
 extension l10n {
     enum CategorySearchView {
-        static let title = LocalizedString("lekaapp.category_search_view.title",
-                                           value: "Search",
-                                           comment: "Search title")
-
-        static let activitySuggestion = LocalizedStringInterpolation("lekaapp.category_search_view.activity_suggestion",
-                                                                     value: "Activity: %@",
-                                                                     comment: "Activity suggestion label when searching")
-
-        static let skillSuggestion = LocalizedStringInterpolation("lekaapp.category_search_view.skill_suggestion",
-                                                                  value: "Skill: %@",
-                                                                  comment: "Skill suggestion label when searching")
+        static let browseSkillstitle = LocalizedString("lekaapp.category_search_view.browse_skills_title",
+                                                       value: "Browse skills",
+                                                       comment: "Browse skills title")
     }
 }
 
