@@ -17,7 +17,7 @@ repos:
       - id: check-json
         types: [file]
         files: \.(json|xcstrings)$
-        exclude: '(.*\.xcassets/.*\.json$)'
+        exclude: '(.*\.xcassets/.*\.json$|\.lock\.json)'
       - id: pretty-format-json
         args: ["--autofix", "--indent=4", "--top-keys=version,sourceLanguage"]
         types: [file]
