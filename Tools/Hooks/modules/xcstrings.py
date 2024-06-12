@@ -32,13 +32,25 @@ def find_unusual_characters(file_path):
         "\u2028",
     ]
 
+    def search_localizations(localizations, parent_key):
+        wrong_entries = []
+
+        if isinstance(localizations, dict):
+            for key, value in localizations.items():
+                if key == "stringUnit" and "value" in value:
+                    localized_string = value["value"]
+                    for character in characters_to_search:
+                        if character in localized_string:
+                            wrong_entries.append((parent_key, localized_string, character))
+                else:
+                    wrong_entries.extend(search_localizations(value, parent_key))
+
+        return wrong_entries
+
     wrong_entries = []
 
-    for key, value in data["strings"].items():
-        for _, localizations in value["localizations"].items():
-            localized_string = localizations["stringUnit"]["value"]
-            for character in characters_to_search:
-                if character in localized_string:
-                    wrong_entries.append((key, value, character))
+    for key, value in data.get("strings", {}).items():
+        localizations = value.get("localizations", {})
+        wrong_entries.extend(search_localizations(localizations, key))
 
     return wrong_entries
