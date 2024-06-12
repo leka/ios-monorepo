@@ -8,7 +8,7 @@ uuid: 2563A47CEA904434811B7881F715F98A
 name: recognition_professions_drawings_6_images
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2024-04-08T13:12:12.658551"
+last_edited_at: "2024-06-12T12:34:11.078958"
 status: published
 
 authors:
@@ -79,9 +79,9 @@ exercises_payload:
     - group:
         - instructions:
             - locale: fr_FR
-              value: Regarde l'image. Quel équipement sportif correspond au personnage ?
+              value: Regarde l'image de gauche. Quel objet correspond au métier du personnage ?
             - locale: en_US
-              value: Look at the image. What sports equipment corresponds to the character?
+              value: Look at the image on the left. What object corresponds to the character's profession?
           interface: observeThenTouchToSelect
           gameplay: findTheRightAnswers
           action:
@@ -108,9 +108,9 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Regarde l'image. Quel équipement sportif correspond au personnage ?
+              value: Regarde l'image de gauche. Quel objet correspond au métier du personnage ?
             - locale: en_US
-              value: Look at the image. What sports equipment corresponds to the character?
+              value: Look at the image on the left. What object corresponds to the character's profession?
           interface: observeThenTouchToSelect
           gameplay: findTheRightAnswers
           action:
@@ -137,9 +137,9 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Regarde l'image. Quel équipement sportif correspond au personnage ?
+              value: Regarde l'image de gauche. Quel objet correspond au métier du personnage ?
             - locale: en_US
-              value: Look at the image. What sports equipment corresponds to the character?
+              value: Look at the image on the left. What object corresponds to the character's profession?
           interface: observeThenTouchToSelect
           gameplay: findTheRightAnswers
           action:
@@ -166,9 +166,9 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Regarde l'image. Quel équipement sportif correspond au personnage ?
+              value: Regarde l'image de gauche. Quel objet correspond au métier du personnage ?
             - locale: en_US
-              value: Look at the image. What sports equipment corresponds to the character?
+              value: Look at the image on the left. What object corresponds to the character's profession?
           interface: observeThenTouchToSelect
           gameplay: findTheRightAnswers
           action:
@@ -195,9 +195,9 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Regarde l'image. Quel équipement sportif correspond au personnage ?
+              value: Regarde l'image de gauche. Quel objet correspond au métier du personnage ?
             - locale: en_US
-              value: Look at the image. What sports equipment corresponds to the character?
+              value: Look at the image on the left. What object corresponds to the character's profession?
           interface: observeThenTouchToSelect
           gameplay: findTheRightAnswers
           action:
@@ -224,9 +224,9 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Regarde l'image. Quel équipement sportif correspond au personnage ?
+              value: Regarde l'image de gauche. Quel objet correspond au métier du personnage ?
             - locale: en_US
-              value: Look at the image. What sports equipment corresponds to the character?
+              value: Look at the image on the left. What object corresponds to the character's profession?
           interface: observeThenTouchToSelect
           gameplay: findTheRightAnswers
           action:
@@ -253,9 +253,9 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Regarde l'image. Quel équipement sportif correspond au personnage ?
+              value: Regarde l'image de gauche. Quel objet correspond au métier du personnage ?
             - locale: en_US
-              value: Look at the image. What sports equipment corresponds to the character?
+              value: Look at the image on the left. What object corresponds to the character's profession?
           interface: observeThenTouchToSelect
           gameplay: findTheRightAnswers
           action:
@@ -282,9 +282,9 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Regarde l'image. Quel équipement sportif correspond au personnage ?
+              value: Regarde l'image de gauche. Quel objet correspond au métier du personnage ?
             - locale: en_US
-              value: Look at the image. What sports equipment corresponds to the character?
+              value: Look at the image on the left. What object corresponds to the character's profession?
           interface: observeThenTouchToSelect
           gameplay: findTheRightAnswers
           action:
@@ -311,9 +311,9 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Regarde l'image. Quel équipement sportif correspond au personnage ?
+              value: Regarde l'image de gauche. Quel objet correspond au métier du personnage ?
             - locale: en_US
-              value: Look at the image. What sports equipment corresponds to the character?
+              value: Look at the image on the left. What object corresponds to the character's profession?
           interface: observeThenTouchToSelect
           gameplay: findTheRightAnswers
           action:
@@ -340,9 +340,9 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Regarde l'image. Quel équipement sportif correspond au personnage ?
+              value: Regarde l'image de gauche. Quel objet correspond au métier du personnage ?
             - locale: en_US
-              value: Look at the image. What sports equipment corresponds to the character?
+              value: Look at the image on the left. What object corresponds to the character's profession?
           interface: observeThenTouchToSelect
           gameplay: findTheRightAnswers
           action:
