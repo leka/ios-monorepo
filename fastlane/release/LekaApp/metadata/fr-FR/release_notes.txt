@@ -20,8 +20,8 @@ Si vous rencontrez des problèmes ou avez besoin d'aide, contactez-nous à suppo
 
 ### Nouveau Contenu & Fonctionnalités
 
-- Mise à jour des dépendances
+- Nouvelle Catégorie de Recherche: Ajout d'une nouvelle catégorie de recherche pour améliorer la fonctionnalité de recherche de contenu.
 
 ### Corrections de Bugs
 
-- Accueil - corrections de coquilles en français
+- Petites Corrections et Améliorations: Mise en œuvre de petites corrections et améliorations générales pour de meilleures performances et stabilité.
