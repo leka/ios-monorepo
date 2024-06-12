@@ -45,11 +45,11 @@ l10n:
         Regarde l'image de gauche. Quel objet correspond au métier du personnage ?
 
       description: |
-        Dans cette activité, une image présente un personnage pratiquant un sport spécifique, mais il lui manque son équipement ou ses accessoires. L'objectif est de trouver le matériel qui manque au sportif et de l'associer au sport représenté.
+        Dans cette activité, une image présente un personnage exerçant une profession spécifique, mais il lui manque son équipement ou ses accessoires. L'objectif est de trouver le matériel qui manque au professionnel et de l'associer à la profession représentée.
 
       instructions: |
-        - Encouragez la personne accompagnée à observer attentivement l'image présentée, en notant que le matériel de sport du personnage n'est pas visible.
-        - Encouragez la personne accompagnée à sélectionner les icônes correspondant à l'équipement ou aux accessoires qu'elle pense que le personnage utiliserait pour pratiquer son sport.
+        - Encouragez la personne accompagnée à observer attentivement l'image présentée, en notant que l'équipement ou les accessoires du personnage ne sont pas visibles.
+        - Demandez à la personne accompagnée de sélectionner les icônes correspondant à l'équipement ou aux accessoires qu'elle pense que le personnage utiliserait pour exercer sa profession.
         - Lorsque la réponse est correcte, Leka initiera un renforçateur pour encourager la personne.
 
   - locale: en_US
@@ -60,14 +60,14 @@ l10n:
       subtitle: 1 image
 
       short_description: |
-        Look at the image on the left. What sports equipment corresponds to the character?
+        Look at the image on the left. What object corresponds to the character's profession?
 
       description: |
-        In this activity, an image presents a character engaged in a specific sport, but they are missing their equipment or accessories. The goal is to find the missing equipment for the character and match it with the depicted sport.
+        In this activity, an image presents a character engaged in a specific profession, but they are missing their equipment or accessories. The goal is to find the missing equipment for the character and match it with the depicted profession.
 
       instructions: |
-        - Encourage the care receiver to carefully observe the presented image, noting that the character's sports equipment is not visible.
-        - Encourage the care receiver to select the icons corresponding to the equipment or accessories they think the character would use to engage in their sport.
+        - Encourage the care receiver to carefully observe the presented image, noting that the character's equipment or accessories are not visible.
+        - Ask the care receiver to select the icons corresponding to the equipment or accessories they think the character would use to perform their profession.
         - When the response is correct, Leka will initiate positive reinforcement to encourage the individual.
 
 exercises_payload:
@@ -88,11 +88,11 @@ exercises_payload:
             type: ipad
             value:
               type: image
-              value: sport_basketball_player_man
+              value: profession_hairdresser_woman
           payload:
             shuffle_choices: true
             choices:
-              - value: sport_accessory_basketball_hoop
+              - value: profession_accessory_hair_dryer
                 type: image
                 is_right_answer: true
 
@@ -107,11 +107,11 @@ exercises_payload:
             type: ipad
             value:
               type: image
-              value: sport_dance_player_man
+              value: profession_waiter_woman
           payload:
             shuffle_choices: true
             choices:
-              - value: sport_accessory_dancing_slippers
+              - value: profession_accessory_accessories_tray
                 type: image
                 is_right_answer: true
 
@@ -126,11 +126,11 @@ exercises_payload:
             type: ipad
             value:
               type: image
-              value: sport_riding_player_woman
+              value: profession_veterinarian_man
           payload:
             shuffle_choices: true
             choices:
-              - value: sport_accessory_riding_helmet_and_barrier
+              - value: profession_accessory_cage
                 type: image
                 is_right_answer: true
 
@@ -145,11 +145,11 @@ exercises_payload:
             type: ipad
             value:
               type: image
-              value: sport_rugby_player_woman
+              value: profession_therapist_woman
           payload:
             shuffle_choices: true
             choices:
-              - value: sport_accessory_rugby_ball
+              - value: profession_accessory_hoops
                 type: image
                 is_right_answer: true
 
@@ -164,11 +164,11 @@ exercises_payload:
             type: ipad
             value:
               type: image
-              value: sport_swimming_player_woman
+              value: profession_police_officer_woman
           payload:
             shuffle_choices: true
             choices:
-              - value: sport_accessory_swimming_cap
+              - value: profession_accessory_police_car
                 type: image
                 is_right_answer: true
 
@@ -183,11 +183,11 @@ exercises_payload:
             type: ipad
             value:
               type: image
-              value: sport_tennis_player_man
+              value: profession_plumber_man
           payload:
             shuffle_choices: true
             choices:
-              - value: sport_accessory_tennis_racket
+              - value: profession_accessory_wrench
                 type: image
                 is_right_answer: true
 
@@ -202,11 +202,11 @@ exercises_payload:
             type: ipad
             value:
               type: image
-              value: sport_football_player_man
+              value: profession_gardener_man
           payload:
             shuffle_choices: true
             choices:
-              - value: sport_accessory_football
+              - value: profession_accessory_wheelbarrow
                 type: image
                 is_right_answer: true
 
@@ -221,11 +221,11 @@ exercises_payload:
             type: ipad
             value:
               type: image
-              value: sport_judo_player_man
+              value: profession_fireman_man
           payload:
             shuffle_choices: true
             choices:
-              - value: sport_accessory_judo_kimono
+              - value: profession_accessory_fire_truck
                 type: image
                 is_right_answer: true
 
@@ -240,11 +240,11 @@ exercises_payload:
             type: ipad
             value:
               type: image
-              value: sport_volleyball_player_woman
+              value: profession_doctor_woman
           payload:
             shuffle_choices: true
             choices:
-              - value: sport_accessory_volleyball_and_net
+              - value: profession_accessory_stethoscope
                 type: image
                 is_right_answer: true
 
@@ -259,10 +259,10 @@ exercises_payload:
             type: ipad
             value:
               type: image
-              value: sport_cycling_player_woman
+              value: profession_cook_man
           payload:
             shuffle_choices: true
             choices:
-              - value: sport_accessory_bike
+              - value: profession_accessory_knife
                 type: image
                 is_right_answer: true
