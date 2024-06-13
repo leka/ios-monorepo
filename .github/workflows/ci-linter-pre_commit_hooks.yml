@@ -50,6 +50,7 @@ jobs:
 
       - name: Install tools
         run: |
+          brew install swiftlint swiftformat --verbose
           npm install -g ajv-cli
           pre-commit install
           pre-commit autoupdate
