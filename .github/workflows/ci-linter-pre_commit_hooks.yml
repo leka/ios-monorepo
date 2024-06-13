@@ -38,6 +38,9 @@ jobs:
           python-version: "3.x"
           cache: "pip"
 
+      - name: Set up Swift
+        uses: swift-actions/setup-swift@v2
+
       - name: Install pre-commit
         run: |
           python -m pip install --upgrade pip
