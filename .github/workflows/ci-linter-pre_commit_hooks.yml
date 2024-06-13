@@ -47,7 +47,6 @@ jobs:
 
       - name: Install tools
         run: |
-          brew update && brew bundle
           npm install -g ajv-cli
           pre-commit install
           pre-commit autoupdate
