@@ -20,6 +20,10 @@ public enum ContentKit {
     public static let allCurriculums: [Curriculum] = ContentKit.listCurriculums() ?? []
     public static let allStories: [Story] = ContentKit.listAllStories() ?? []
 
+    public static var firstStepsResources: CategoryResources = loadResourceYAML(from: "resources_first_steps")
+    public static var videosResources: CategoryResources = loadResourceYAML(from: "resources_videos")
+    public static var deepDiveResources: CategoryResources = loadResourceYAML(from: "resources_deep_dive")
+
     public static func listRasterImages() -> [String] {
         let bundle = Bundle.module
         var files: [String] = []
@@ -127,5 +131,23 @@ public enum ContentKit {
         }
 
         return stories
+    }
+
+    private static func loadResourceYAML(from resourceName: String) -> CategoryResources {
+        let path = ContentKitResources.bundle.path(forResource: resourceName, ofType: ".category.yml")
+        let data = try? String(contentsOfFile: path!, encoding: .utf8)
+
+        guard let data else {
+            log.error("Error reading file")
+            fatalError("💥 Error reading file")
+        }
+
+        do {
+            let info = try YAMLDecoder().decode(CategoryResources.self, from: data)
+            return info
+        } catch {
+            log.error("Error decoding file with error:\n\(error)")
+            fatalError("💥 Error decoding file with error:\n\(error)")
+        }
     }
 }

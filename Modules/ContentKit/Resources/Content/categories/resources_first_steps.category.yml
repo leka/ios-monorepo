@@ -1,0 +1,106 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+l10n:
+  - locale: fr_FR
+    details:
+      title: Premiers Pas
+      subtitle: Les Ressources sont les supports que nous mettons à la disposion de l'ensemble des accompagnants.
+      description: Les Ressources donnent les clés d'une utilisation optimale de la solution Leka avec des supports pour organiser ses séances, des guides explicatifs de l'utilisation du robot et de l'application Leka app ainsi que d'autres astuces pour la bonne mise en place de Leka !
+  - locale: en_US
+    details:
+      title: First Steps
+      subtitle: Resources are the tools we provide to all caregivers.
+      description: Resources provide the keys to optimal use of the Leka solution with materials to organize sessions, explanatory guides on using the robot and the Leka app, and other tips for successful Leka implementation!
+content:
+  - resource:
+      - locale: fr_FR
+        details:
+          icon: book.and.wrench
+          title: Le guide d'utilisation
+          description: Le guide vous accompagne dans les premières étapes de mise en route de votre nouvelle solution Leka !
+          value: first_step_FR
+          type: file
+      - locale: en_US
+        details:
+          icon: book.and.wrench
+          title: User guide
+          description: The guide will help you through the first steps of setting up your new Leka solution!
+          value: first_step_EN
+          type: file
+  - resource:
+      - locale: fr_FR
+        details:
+          icon: battery.100percent.bolt
+          title: Le chargement de Leka
+          description: Découvrez la fiche de chargement de votre robot !
+          value: charging_FR
+          type: file
+#      - locale: en_US
+#        details:
+#          icon: battery.100percent.bolt
+#          title: Charging Leka
+#          description: Discover the charging sheet for your robot!
+#          value: charging_EN
+#          type: file
+  - resource:
+      - locale: fr_FR
+        details:
+          icon: battery.100percent.bolt
+          title: Le chargement de Leka
+          description: Lorem ipsum
+          value: https://www.youtube.com/watch?v=jpyS5MEiRQ0
+          type: video
+      - locale: en_US
+        details:
+          icon: battery.100percent.bolt
+          title: Charging Leka
+          description: Lorem ipsum
+          value: https://www.youtube.com/watch?v=jpyS5MEiRQ0
+          type: video
+  - resource:
+      - locale: fr_FR
+        details:
+          icon: book.pages
+          title: Les activités cartes magiques
+          description: Découvrez nos 10 fiches d'activités à réaliser avec les cartes magiques !
+          value: magic_cards_FR
+          type: file
+      - locale: en_US
+        details:
+          icon: book.pages
+          title: Magic cards activities
+          description: Discover our 10 activity sheets to do with the magic cards!
+          value: magic_cards_EN
+          type: file
+  - resource:
+      - locale: fr_FR
+        details:
+          icon: book.pages
+          title: Les activités cartes magiques
+          description: Lorem ipsum
+          value: https://www.youtube.com/watch?v=PyAK9tfBdfY
+          type: video
+      - locale: en_US
+        details:
+          icon: book.pages
+          title: Magic cards activities
+          description: Lorem ipsum
+          value: https://www.youtube.com/watch?v=PyAK9tfBdfY
+          type: video
+  - resource:
+      - locale: fr_FR
+        details:
+          icon: book.pages
+          title: Utilisation de la carte Stop
+          description: Découvrez les deux fonctionnalités de la carte Stop !
+          value: emergency_stop_FR
+          type: file
+#      - locale: en_US
+#        details:
+#          icon: book.pages
+#          title: Using the Stop card
+#          description: Discover the two features of the Stop card!
+#          value: emergency_stop_EN
+#          type: file
