@@ -1802,20 +1802,56 @@
                 }
             }
         },
-        "lekaapp.main_view.sidebar.category_label.resources": {
-            "comment": "The title of the category 'Resources'",
+        "lekaapp.main_view.sidebar.category_label.resources_deep_dive": {
+            "comment": "The title of the resources sub category 'DeepDive'",
             "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Resources"
+                        "value": "Deep Dive"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Ressources"
+                        "value": "Aller Plus Loin"
+                    }
+                }
+            }
+        },
+        "lekaapp.main_view.sidebar.category_label.resources_first_steps": {
+            "comment": "The title of the resources sub category 'First Steps'",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "First steps"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Premiers Pas"
+                    }
+                }
+            }
+        },
+        "lekaapp.main_view.sidebar.category_label.resources_video": {
+            "comment": "The title of the resources sub category 'Videos'",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Videos"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Vid\u00e9os"
                     }
                 }
             }
@@ -1924,6 +1960,24 @@
                     "stringUnit": {
                         "state": "translated",
                         "value": "Utilisateurs"
+                    }
+                }
+            }
+        },
+        "lekaapp.main_view.sidebar.section_resources": {
+            "comment": "The title of the section 'Resources'",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Resources"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Ressources"
                     }
                 }
             }
@@ -2248,60 +2302,6 @@
                     "stringUnit": {
                         "state": "translated",
                         "value": "Choix du renfor\u00e7ateur"
-                    }
-                }
-            }
-        },
-        "lekaapp.resources_view.description": {
-            "comment": "Resources description",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
-                    }
-                }
-            }
-        },
-        "lekaapp.resources_view.subtitle": {
-            "comment": "Resources subtitle",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-                    }
-                }
-            }
-        },
-        "lekaapp.resources_view.title": {
-            "comment": "Resources title",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Resources"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Ressources"
                     }
                 }
             }
