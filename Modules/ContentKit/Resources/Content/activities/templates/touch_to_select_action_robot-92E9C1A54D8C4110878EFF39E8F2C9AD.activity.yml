@@ -1,0 +1,93 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+version: 1.0.0
+
+uuid: 92E9C1A54D8C4110878EFF39E8F2C9AD
+name: touch_to_select_action_robot
+
+created_at: "2024-06-17T17:38:12.804177"
+last_edited_at: "2024-06-19T16:39:36.696279"
+
+status: template
+
+authors:
+  - leka
+
+skills: []
+
+tags:
+  - template
+
+hmi:
+  - tablet
+
+types:
+  - one_on_one
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: template_touch_to_select
+
+      title: Touch To Select
+      subtitle: Action - Robot
+
+      short_description: |
+        Lorem ipsum
+
+      description: |
+        Lorem ipsum
+
+      instructions: |
+        Lorem ipsum
+
+  - locale: en_US
+    details:
+      icon: template_touch_to_select
+
+      title: Touch To Select
+      subtitle: Action - Robot
+
+      short_description: |
+        Lorem ipsum
+
+      description: |
+        Lorem ipsum
+
+      instructions: |
+        Lorem ipsum
+
+exercises_payload:
+  options:
+    shuffle_exercises: false
+    shuffle_groups: false
+
+  exercise_groups:
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Touche l'objet de la même couleur que le robot
+            - locale: en_US
+              value: Tap the item with the same color as the robot
+          interface: robotThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: robot
+            value:
+              type: color
+              value: green
+          payload:
+            choices:
+              - value: pictograms-objects-school-book_green
+                type: image
+                is_right_answer: true
+              - value: pictograms-objects-school-book_blue
+                type: image
+              - value: pictograms-objects-school-book_red
+                type: image
