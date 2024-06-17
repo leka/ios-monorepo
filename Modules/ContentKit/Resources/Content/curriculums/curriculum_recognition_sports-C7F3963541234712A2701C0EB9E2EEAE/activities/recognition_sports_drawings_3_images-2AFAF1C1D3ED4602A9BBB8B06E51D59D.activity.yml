@@ -79,7 +79,8 @@ exercises_payload:
     - group:
         - instructions:
             - locale: fr_FR
-              value: Regarde l'image. Quel équipement sportif correspond au personnage
+              value:
+                Regarde l'image. Quel équipement sportif correspond au personnage
                 ?
             - locale: en_US
               value: Look at the image. What sports equipment corresponds to the character?
@@ -103,7 +104,8 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Regarde l'image. Quel équipement sportif correspond au personnage
+              value:
+                Regarde l'image. Quel équipement sportif correspond au personnage
                 ?
             - locale: en_US
               value: Look at the image. What sports equipment corresponds to the character?
@@ -120,14 +122,15 @@ exercises_payload:
               - value: sport_accessory_dancing_slippers
                 type: image
                 is_right_answer: true
-              - value: sport_accessory_bike
+              - value: sport_accessory_helmet
                 type: image
               - value: sport_accessory_judo_kimono
                 type: image
 
         - instructions:
             - locale: fr_FR
-              value: Regarde l'image. Quel équipement sportif correspond au personnage
+              value:
+                Regarde l'image. Quel équipement sportif correspond au personnage
                 ?
             - locale: en_US
               value: Look at the image. What sports equipment corresponds to the character?
@@ -146,12 +149,13 @@ exercises_payload:
                 is_right_answer: true
               - value: sport_accessory_dancing_slippers
                 type: image
-              - value: sport_accessory_bike
+              - value: sport_accessory_helmet
                 type: image
 
         - instructions:
             - locale: fr_FR
-              value: Regarde l'image. Quel équipement sportif correspond au personnage
+              value:
+                Regarde l'image. Quel équipement sportif correspond au personnage
                 ?
             - locale: en_US
               value: Look at the image. What sports equipment corresponds to the character?
@@ -175,7 +179,8 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Regarde l'image. Quel équipement sportif correspond au personnage
+              value:
+                Regarde l'image. Quel équipement sportif correspond au personnage
                 ?
             - locale: en_US
               value: Look at the image. What sports equipment corresponds to the character?
@@ -199,7 +204,8 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Regarde l'image. Quel équipement sportif correspond au personnage
+              value:
+                Regarde l'image. Quel équipement sportif correspond au personnage
                 ?
             - locale: en_US
               value: Look at the image. What sports equipment corresponds to the character?
@@ -223,7 +229,8 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Regarde l'image. Quel équipement sportif correspond au personnage
+              value:
+                Regarde l'image. Quel équipement sportif correspond au personnage
                 ?
             - locale: en_US
               value: Look at the image. What sports equipment corresponds to the character?
@@ -247,7 +254,8 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Regarde l'image. Quel équipement sportif correspond au personnage
+              value:
+                Regarde l'image. Quel équipement sportif correspond au personnage
                 ?
             - locale: en_US
               value: Look at the image. What sports equipment corresponds to the character?
@@ -271,7 +279,8 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Regarde l'image. Quel équipement sportif correspond au personnage
+              value:
+                Regarde l'image. Quel équipement sportif correspond au personnage
                 ?
             - locale: en_US
               value: Look at the image. What sports equipment corresponds to the character?
@@ -288,14 +297,15 @@ exercises_payload:
               - value: sport_accessory_volleyball_and_net
                 type: image
                 is_right_answer: true
-              - value: sport_accessory_bike
+              - value: sport_accessory_helmet
                 type: image
               - value: sport_accessory_basketball_hoop
                 type: image
 
         - instructions:
             - locale: fr_FR
-              value: Regarde l'image. Quel équipement sportif correspond au personnage
+              value:
+                Regarde l'image. Quel équipement sportif correspond au personnage
                 ?
             - locale: en_US
               value: Look at the image. What sports equipment corresponds to the character?
@@ -309,7 +319,7 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: sport_accessory_bike
+              - value: sport_accessory_helmet
                 type: image
                 is_right_answer: true
               - value: sport_accessory_swimming_cap

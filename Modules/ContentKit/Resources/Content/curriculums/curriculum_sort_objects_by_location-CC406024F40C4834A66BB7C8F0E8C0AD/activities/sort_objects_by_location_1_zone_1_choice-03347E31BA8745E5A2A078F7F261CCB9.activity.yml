@@ -1,0 +1,276 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+version: 1.0.0
+
+uuid: 03347E31BA8745E5A2A078F7F261CCB9
+name: sort_objects_by_location_1_zone_1_choice
+
+created_at: "2024-03-08T11:49:37.123525"
+last_edited_at: "2024-04-10T12:21:12.923540"
+status: published
+
+authors:
+  - leka
+
+skills:
+  - association
+  - association/sorting
+  - recognition
+  - recognition/places
+
+tags:
+  - lieux
+  - musée
+  - théâtre
+  - cinéma
+  - piscine
+  - école
+  - supermarché
+
+hmi:
+  - tablet
+
+types:
+  - one_on_one
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: recognition_public_places_drag
+
+      title: Trier et placer les objets dans les lieux publics
+      subtitle: 1 seul choix
+
+      short_description: |
+        Mettre le fruit ou le légume demandé dans le panier
+
+      description: |
+        La personne accompagnée doit glisser et déposer dans le panier le fruit ou le légume demandé
+
+      instructions: |
+        - Sur l'écran de l'iPad, une seule image est présentée à l'extérieur du panier. Cette image est celle que la personne accompagnée doit mettre dans le panier.
+        - Encouragez la personne accompagnée à glisser l'image dans le panier pour commencer à comprendre comment fonctionne l'activité.
+        - Après avoir placé l'image dans le panier, Leka offre un renforçateur pour célébrer cette première réussite et encourager l'apprentissage.
+
+  - locale: en_US
+    details:
+      icon: recognition_public_places_drag
+
+      title: Sort and place fruits and vegetables in the basket
+      subtitle: 1 choice
+
+      short_description: |
+        Put the requested fruit or vegetable in the basket
+
+      description: |
+        The care receiver must drag and drop the requested fruit or vegetable into the basket.
+
+      instructions: |
+        - On the iPad screen, only one image is displayed outside of the basket. This image is the one that the care receiver should place into the basket.
+        - Encourage the care receiver to drag the image into the basket to start understanding how the activity works.
+        - After placing the image in the basket, Leka provides a reinforcer to celebrate this initial success and encourage learning.
+
+exercises_payload:
+  options:
+    shuffle_exercises: true
+    shuffle_groups: false
+
+  exercise_groups:
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Place les objets au bon endroit
+            - locale: en_US
+              value: Put the objects in the right place
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            dropZoneA:
+              value: public_spaces_cinema
+              type: image
+            choices:
+              - value: public_spaces_accessory_seat
+                type: image
+                dropZone: zoneA
+
+        - instructions:
+            - locale: fr_FR
+              value: Place les objets au bon endroit
+            - locale: en_US
+              value: Put the objects in the right place
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            dropZoneA:
+              value: public_spaces_cinema
+              type: image
+            choices:
+              - value: public_spaces_accessory_popcorn
+                type: image
+                dropZone: zoneA
+
+        - instructions:
+            - locale: fr_FR
+              value: Place les objets au bon endroit
+            - locale: en_US
+              value: Put the objects in the right place
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            dropZoneA:
+              value: public_spaces_theater
+              type: image
+            choices:
+              - value: public_spaces_accessory_gloves
+                type: image
+                dropZone: zoneA
+
+        - instructions:
+            - locale: fr_FR
+              value: Place les objets au bon endroit
+            - locale: en_US
+              value: Put the objects in the right place
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            dropZoneA:
+              value: public_spaces_theater
+              type: image
+            choices:
+              - value: public_spaces_accessory_light
+                type: image
+                dropZone: zoneA
+
+        - instructions:
+            - locale: fr_FR
+              value: Place les objets au bon endroit
+            - locale: en_US
+              value: Put the objects in the right place
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            dropZoneA:
+              value: public_spaces_supermarket
+              type: image
+            choices:
+              - value: public_spaces_accessory_cart
+                type: image
+                dropZone: zoneA
+
+        - instructions:
+            - locale: fr_FR
+              value: Place les objets au bon endroit
+            - locale: en_US
+              value: Put the objects in the right place
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            dropZoneA:
+              value: public_spaces_supermarket
+              type: image
+            choices:
+              - value: public_spaces_accessory_milk
+                type: image
+                dropZone: zoneA
+
+        - instructions:
+            - locale: fr_FR
+              value: Place les objets au bon endroit
+            - locale: en_US
+              value: Put the objects in the right place
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            dropZoneA:
+              value: public_spaces_school
+              type: image
+            choices:
+              - value: public_spaces_accessory_pencil_case
+                type: image
+                dropZone: zoneA
+
+        - instructions:
+            - locale: fr_FR
+              value: Place les objets au bon endroit
+            - locale: en_US
+              value: Put the objects in the right place
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            dropZoneA:
+              value: public_spaces_school
+              type: image
+            choices:
+              - value: public_spaces_accessory_bag
+                type: image
+                dropZone: zoneA
+
+        - instructions:
+            - locale: fr_FR
+              value: Place les objets au bon endroit
+            - locale: en_US
+              value: Put the objects in the right place
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            dropZoneA:
+              value: public_spaces_museum
+              type: image
+            choices:
+              - value: public_spaces_accessory_guide_post
+                type: image
+                dropZone: zoneA
+
+        - instructions:
+            - locale: fr_FR
+              value: Place les objets au bon endroit
+            - locale: en_US
+              value: Put the objects in the right place
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            dropZoneA:
+              value: public_spaces_museum
+              type: image
+            choices:
+              - value: public_spaces_accessory_masterpiece
+                type: image
+                dropZone: zoneA
+
+        - instructions:
+            - locale: fr_FR
+              value: Place les objets au bon endroit
+            - locale: en_US
+              value: Put the objects in the right place
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            dropZoneA:
+              value: public_spaces_swimmingpool
+              type: image
+            choices:
+              - value: public_spaces_accessory_swimming_goggles
+                type: image
+                dropZone: zoneA
+
+        - instructions:
+            - locale: fr_FR
+              value: Place les objets au bon endroit
+            - locale: en_US
+              value: Put the objects in the right place
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            dropZoneA:
+              value: public_spaces_swimmingpool
+              type: image
+            choices:
+              - value: public_spaces_accessory_swimsuit
+                type: image
+                dropZone: zoneA

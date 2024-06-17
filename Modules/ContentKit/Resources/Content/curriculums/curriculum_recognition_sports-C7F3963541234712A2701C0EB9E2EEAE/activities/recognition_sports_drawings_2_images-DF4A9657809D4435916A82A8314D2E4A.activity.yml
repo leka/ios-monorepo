@@ -263,7 +263,7 @@ exercises_payload:
               - value: sport_accessory_volleyball_and_net
                 type: image
                 is_right_answer: true
-              - value: sport_accessory_bike
+              - value: sport_accessory_helmet
                 type: image
 
         - instructions:
@@ -281,7 +281,7 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: sport_accessory_bike
+              - value: sport_accessory_helmet
                 type: image
                 is_right_answer: true
               - value: sport_accessory_swimming_cap
