@@ -37,6 +37,7 @@ public enum BLESpecs {
             public static let screensaverEnable = CBUUID(string: "0x8369")
             public static let softReboot = CBUUID(string: "0x8382")
             public static let hardReboot = CBUUID(string: "0x7282")
+            public static let negotiatedMTU = CBUUID(data: Data("NEGOTIATED_MTU".utf8) + Data([0, 0]))
         }
 
         public static let service = CBUUID(string: "0x7779")
