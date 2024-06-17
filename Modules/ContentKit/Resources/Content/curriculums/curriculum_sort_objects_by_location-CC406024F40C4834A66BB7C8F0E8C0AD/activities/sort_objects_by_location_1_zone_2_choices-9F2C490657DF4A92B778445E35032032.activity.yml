@@ -4,8 +4,8 @@
 
 version: 1.0.0
 
-uuid: 7ECDDF1846AC47A8B0BEFF5525BE80B7
-name: sorting_fruits_vegetables_basket_2_two_choices_one_intruder
+uuid: 9F2C490657DF4A92B778445E35032032
+name: sort_objects_by_location_1_zone_2_choices
 
 created_at: "2024-03-08T11:49:37.123525"
 last_edited_at: "2024-04-10T12:21:12.923540"
@@ -17,12 +17,17 @@ authors:
 skills:
   - association
   - association/sorting
+  - recognition
+  - recognition/places
 
 tags:
-  - vegetables
-  - fruits
-  - basket
-  - intruder
+  - lieux
+  - musée
+  - théâtre
+  - cinéma
+  - piscine
+  - école
+  - supermarché
 
 hmi:
   - tablet
@@ -37,7 +42,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon: sorting_fruits_vegetables_basket
+      icon: recognition_public_places_drag
 
       title: Trier et placer les fruits et légumes dans le panier
       subtitle: 2 choix dont 1 intrus
@@ -55,7 +60,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon: sorting_fruits_vegetables_basket
+      icon: recognition_public_places_drag
 
       title: Sort and place fruits and vegetables in the basket
       subtitle: 2 choices with 1 intruder

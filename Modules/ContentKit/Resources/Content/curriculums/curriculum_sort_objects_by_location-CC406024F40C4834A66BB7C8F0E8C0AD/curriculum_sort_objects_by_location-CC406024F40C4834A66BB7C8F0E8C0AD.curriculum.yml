@@ -2,8 +2,8 @@
 # Copyright APF France handicap
 # SPDX-License-Identifier: Apache-2.0
 
-uuid: E6A322DC7A6E48518CED2CA2D3D2A595
-name: sorting_fruits_vegetables_basket
+uuid: CC406024F40C4834A66BB7C8F0E8C0AD
+name: curriculum_recognition_public_places
 
 status: published
 
@@ -15,14 +15,17 @@ authors:
 skills:
   - association
   - association/sorting
-  - association/matching
+  - recognition
+  - recognition/places
 
 tags:
-  - pairing
-  - vegetables
-  - fruits
-  - basket
-  - intruder
+  - lieux
+  - musée
+  - théâtre
+  - cinéma
+  - piscine
+  - école
+  - supermarché
 
 hmi:
   - tablet
@@ -34,8 +37,8 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon: sorting_fruits_vegetables_basket
-      title: Trier les fruits et les légumes
+      icon: recognition_public_places_drag
+      title: Reconnaitre des lieux publics
       subtitle: En les plaçant dans un panier
       abstract: |
         Concentré sur le tri et l'appariement, ce curriculum utilise des fruits et légumes pour développer la reconnaissance et la classification, enrichissant l'interaction avec le monde naturel.
@@ -46,7 +49,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon: sorting_fruits_vegetables_basket
+      icon: recognition_public_places_drag
       title: Sorting fruits and vegetables
       subtitle: By placing them in a basket
       abstract: |
@@ -57,7 +60,5 @@ l10n:
         Through a variety of activities, participants refine their observation skills and learn to distinguish and recognize the unique characteristics of different types of fruits and vegetables.
 
 activities:
-  - sorting_fruits_vegetables_basket_1_one_choice-A3652A06FC4F4E9081E462987106A92A
-  - sorting_fruits_vegetables_basket_2_two_choices_one_intruder-7ECDDF1846AC47A8B0BEFF5525BE80B7
-  - sorting_fruits_vegetables_basket_3_three_choices_multiple_intruders-88013EBEBE2E4FA6B616CF0B393F2346
-  - sorting_fruits_vegetables_basket_4_four_choices_same_images-58A898C6E60742BD9ED7BDB2E5AEB265
+  -
+  -
