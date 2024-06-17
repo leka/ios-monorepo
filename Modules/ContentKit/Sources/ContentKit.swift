@@ -15,7 +15,8 @@ public enum ContentKit {
 
     public static let allActivities: [Activity] = ContentKit.listAllActivities() ?? []
     public static let allPublishedActivities: [Activity] = ContentKit.listAllPublishedActivities() ?? []
-    public static let allCurriculums: [Curriculum] = ContentKit.listSampleCurriculums() ?? []
+    public static let allDraftActivities: [Activity] = ContentKit.listAllDraftActivities() ?? []
+    public static let allCurriculums: [Curriculum] = ContentKit.listCurriculums() ?? []
     public static let allStories: [Story] = ContentKit.listAllStories() ?? []
 
     public static func listRasterImages() -> [String] {
@@ -40,7 +41,7 @@ public enum ContentKit {
 
     // MARK: Private
 
-    private static func listSampleCurriculums() -> [Curriculum]? {
+    private static func listCurriculums() -> [Curriculum]? {
         let bundle = Bundle.module
         let files = bundle.paths(forResourcesOfType: "curriculum.yml", inDirectory: nil)
 
@@ -95,7 +96,11 @@ public enum ContentKit {
     }
 
     private static func listAllPublishedActivities() -> [Activity]? {
-        ContentKit.listAllActivities()?.filter { $0.status == .published }
+        self.allActivities.filter { $0.status == .published }
+    }
+
+    private static func listAllDraftActivities() -> [Activity]? {
+        self.allActivities.filter { $0.status == .draft }
     }
 
     private static func listAllStories() -> [Story]? {
