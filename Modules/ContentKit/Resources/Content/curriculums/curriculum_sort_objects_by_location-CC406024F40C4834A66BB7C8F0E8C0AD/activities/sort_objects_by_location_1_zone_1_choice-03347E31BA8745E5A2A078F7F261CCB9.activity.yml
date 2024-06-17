@@ -8,7 +8,7 @@ uuid: 03347E31BA8745E5A2A078F7F261CCB9
 name: sort_objects_by_location_1_zone_1_choice
 
 created_at: "2024-03-08T11:49:37.123525"
-last_edited_at: "2024-04-10T12:21:12.923540"
+last_edited_at: "2024-06-17T18:59:00.649248"
 status: published
 
 authors:
@@ -44,37 +44,37 @@ l10n:
     details:
       icon: recognition_public_places_drag
 
-      title: Trier et placer les fruits et légumes dans le panier
-      subtitle: 1 seul choix
+      title: Classer et placer les objets dans les lieux publics
+      subtitle: 1 lieu - 1 objet
 
       short_description: |
-        Mettre le fruit ou le légume demandé dans le panier
+        Placer les objets dans les bons endroits
 
       description: |
-        La personne accompagnée doit glisser et déposer dans le panier le fruit ou le légume demandé
+        La personne accompagnée doit glisser et déposer les objets demandés dans les lieux appropriés.
 
       instructions: |
-        - Sur l'écran de l'iPad, une seule image est présentée à l'extérieur du panier. Cette image est celle que la personne accompagnée doit mettre dans le panier.
-        - Encouragez la personne accompagnée à glisser l'image dans le panier pour commencer à comprendre comment fonctionne l'activité.
-        - Après avoir placé l'image dans le panier, Leka offre un renforçateur pour célébrer cette première réussite et encourager l'apprentissage.
+        - Sur l'écran de l'iPad, une ou plusieurs images sont présentées à l'extérieur des zones de dépôt. Chaque image représente un objet que la personne accompagnée doit placer dans le lieu approprié.
+        - Encouragez la personne accompagnée à glisser chaque image dans la zone correcte.
+        - Après avoir placé l'image correctement, Leka lance un renforçateur pour célébrer cette réussite et encourager l'apprentissage.
 
   - locale: en_US
     details:
       icon: recognition_public_places_drag
 
-      title: Sort and place fruits and vegetables in the basket
-      subtitle: 1 choice
+      title: Sort Objects by Location
+      subtitle: 1 place - 1 objet
 
       short_description: |
-        Put the requested fruit or vegetable in the basket
+        Place the objects in the right places
 
       description: |
-        The care receiver must drag and drop the requested fruit or vegetable into the basket.
+        The care receiver should drag and drop objects into the correct public places.
 
       instructions: |
-        - On the iPad screen, only one image is displayed outside of the basket. This image is the one that the care receiver should place into the basket.
-        - Encourage the care receiver to drag the image into the basket to start understanding how the activity works.
-        - After placing the image in the basket, Leka provides a reinforcer to celebrate this initial success and encourage learning.
+        - On the iPad screen, one or more images are displayed outside of the drop zones. Each image represents an object that the care receiver should place into the appropriate place.
+        - Encourage the care receiver to drag each image into the correct zone.
+        - After placing each image correctly, Leka provides a reinforcer to celebrate this success and encourage ongoing learning.
 
 exercises_payload:
   options:
