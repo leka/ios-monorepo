@@ -67,6 +67,7 @@ struct LekaApp: App {
                             DispatchQueue.global().async {
                                 _ = ContentKit.allActivities
                                 _ = ContentKit.allCurriculums
+                                _ = ContentKit.allStories
                             }
                         }
                 }
