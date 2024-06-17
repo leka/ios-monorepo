@@ -16,6 +16,7 @@ public enum ContentKit {
     public static let allActivities: [Activity] = ContentKit.listAllActivities() ?? []
     public static let allPublishedActivities: [Activity] = ContentKit.listAllPublishedActivities() ?? []
     public static let allDraftActivities: [Activity] = ContentKit.listAllDraftActivities() ?? []
+    public static let allTemplateActivities: [Activity] = ContentKit.listAllTemplateActivities() ?? []
     public static let allCurriculums: [Curriculum] = ContentKit.listCurriculums() ?? []
     public static let allStories: [Story] = ContentKit.listAllStories() ?? []
 
@@ -101,6 +102,10 @@ public enum ContentKit {
 
     private static func listAllDraftActivities() -> [Activity]? {
         self.allActivities.filter { $0.status == .draft }
+    }
+
+    private static func listAllTemplateActivities() -> [Activity]? {
+        self.allActivities.filter { $0.status == .template }
     }
 
     private static func listAllStories() -> [Story]? {

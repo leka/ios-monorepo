@@ -53,9 +53,17 @@ extension MainView {
                     self.title = String(l10n.MainView.Sidebar.CategoryLabel.carereceivers.characters)
                     self.systemImage = "figure.2.arms.open"
 
-                case .allActivities:
-                    self.title = "All Activities"
+                case .allPublishedActivities:
+                    self.title = "Published Activities"
                     self.systemImage = "list.bullet"
+
+                case .allDraftActivities:
+                    self.title = "Draft Activities"
+                    self.systemImage = "list.bullet.rectangle"
+
+                case .allTemplateActivities:
+                    self.title = "Template Activities"
+                    self.systemImage = "list.bullet.below.rectangle"
 
                 case .rasterImageList:
                     self.title = "Raster Image List"
