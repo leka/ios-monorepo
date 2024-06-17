@@ -101,7 +101,7 @@ exercises_payload:
                 type: image
               - value: sport_accessory_football
                 type: image
-              - value: sport_accessory_volleyball_and_net
+              - value: sport_accessory_dancing_slippers
                 type: image
               - value: sport_accessory_volleyball_and_net
                 type: image
@@ -161,7 +161,7 @@ exercises_payload:
                 type: image
               - value: sport_accessory_volleyball_and_net
                 type: image
-              - value: sport_accessory_volleyball_and_net
+              - value: sport_accessory_dancing_slippers
                 type: image
 
         - instructions:
@@ -190,7 +190,7 @@ exercises_payload:
                 type: image
               - value: sport_accessory_football
                 type: image
-              - value: sport_accessory_volleyball_and_net
+              - value: sport_accessory_dancing_slippers
                 type: image
 
         - instructions:
@@ -217,7 +217,7 @@ exercises_payload:
                 type: image
               - value: sport_accessory_riding_helmet_and_barrier
                 type: image
-              - value: sport_accessory_volleyball_and_net
+              - value: sport_accessory_rugby_ball
                 type: image
               - value: sport_accessory_volleyball_and_net
                 type: image
@@ -275,7 +275,7 @@ exercises_payload:
                 type: image
               - value: sport_accessory_riding_helmet_and_barrier
                 type: image
-              - value: sport_accessory_volleyball_and_net
+              - value: sport_accessory_dancing_slippers
                 type: image
               - value: sport_accessory_volleyball_and_net
                 type: image
@@ -333,7 +333,7 @@ exercises_payload:
                 is_right_answer: true
               - value: sport_accessory_riding_helmet_and_barrier
                 type: image
-              - value: sport_accessory_volleyball_and_net
+              - value: sport_accessory_dancing_slippers
                 type: image
               - value: sport_accessory_volleyball_and_net
                 type: image
