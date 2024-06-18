@@ -56,14 +56,12 @@ public enum ContentKit {
                 continue
             }
 
-            let curriculum = try? YAMLDecoder().decode(Curriculum.self, from: data)
-
-            guard let curriculum else {
-                log.error("Error decoding file: \(file)")
-                continue
+            do {
+                let curriculum = try YAMLDecoder().decode(Curriculum.self, from: data)
+                curriculums.append(curriculum)
+            } catch {
+                log.error("Error decoding file: \(file) with error:\n\(error)")
             }
-
-            curriculums.append(curriculum)
         }
 
         return curriculums.sorted { $0.name < $1.name }
@@ -83,14 +81,12 @@ public enum ContentKit {
                 continue
             }
 
-            let activity = try? YAMLDecoder().decode(Activity.self, from: data)
-
-            guard let activity else {
-                log.error("Error decoding file: \(file)")
-                continue
+            do {
+                let activity = try YAMLDecoder().decode(Activity.self, from: data)
+                activities.append(activity)
+            } catch {
+                log.error("Error decoding file: \(file) with error:\n\(error)")
             }
-
-            activities.append(activity)
         }
 
         return activities
@@ -122,14 +118,12 @@ public enum ContentKit {
                 continue
             }
 
-            let story = try? YAMLDecoder().decode(Story.self, from: data)
-
-            guard let story else {
-                log.error("Error decoding file: \(file)")
-                continue
+            do {
+                let story = try YAMLDecoder().decode(Story.self, from: data)
+                stories.append(story)
+            } catch {
+                log.error("Error decoding file: \(file) with error:\n\(error)")
             }
-
-            stories.append(story)
         }
 
         return stories
