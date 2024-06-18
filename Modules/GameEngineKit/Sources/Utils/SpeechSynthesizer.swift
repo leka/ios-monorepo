@@ -64,7 +64,9 @@ class SpeechSynthesizer: NSObject, AVSpeechSynthesizerDelegate, AudioPlayerProto
             return
         }
 
-        self.synthesizer.speak(self.utterance)
+        if !self.synthesizer.isSpeaking {
+            self.synthesizer.speak(self.utterance)
+        }
     }
 
     func pause() {
