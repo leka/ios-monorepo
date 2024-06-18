@@ -37,6 +37,21 @@ extension Robot {
         connectedPeripheral?.notifyingCharacteristics.insert(characteristic)
     }
 
+    func registerNegotiatedMTUNotificationCallback() {
+        let characteristic = CharacteristicModelNotifying(
+            characteristicUUID: BLESpecs.Monitoring.Characteristics.negotiatedMTU,
+            serviceUUID: BLESpecs.Monitoring.service,
+            onNotification: { data in
+                if let data {
+                    self.negotiatedMTU.send(Int(data.map { UInt16($0) }.reduce(0) { $0 << 8 + $1 }))
+                    log.trace("🤖 negotiated MTU: \(self.negotiatedMTU.value)")
+                }
+            }
+        )
+
+        connectedPeripheral?.notifyingCharacteristics.insert(characteristic)
+    }
+
     func registerOSVersionReadCallback() {
         let characteristic = CharacteristicModelReadOnly(
             characteristicUUID: BLESpecs.DeviceInformation.Characteristics.osVersion,
@@ -80,6 +95,21 @@ extension Robot {
                 if let value = data?.first {
                     self.isCharging.send(value == 1)
                     log.trace("🤖 isCharging: \(self.isCharging.value)")
+                }
+            }
+        )
+
+        connectedPeripheral?.readOnlyCharacteristics.insert(characteristic)
+    }
+
+    func registerNegotiatedMTUReadCallback() {
+        let characteristic = CharacteristicModelReadOnly(
+            characteristicUUID: BLESpecs.Monitoring.Characteristics.negotiatedMTU,
+            serviceUUID: BLESpecs.Monitoring.service,
+            onRead: { data in
+                if let data {
+                    self.negotiatedMTU.send(Int(data.map { UInt16($0) }.reduce(0) { $0 << 8 + $1 }))
+                    log.trace("🤖 negotiated MTU: \(self.negotiatedMTU.value)")
                 }
             }
         )
