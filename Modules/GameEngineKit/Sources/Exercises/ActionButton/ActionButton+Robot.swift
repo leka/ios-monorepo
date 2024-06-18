@@ -31,6 +31,8 @@ struct ActionButtonRobot: View {
                     Robot.shared.shine(.all(in: .init(from: value)))
                 case .audio,
                      .image,
+                     .emoji,
+                     .sfsymbol,
                      .speech:
                     log.error("Action not available for robot: \(self.actionType)")
                     fatalError("💥 Action not available for robot: \(self.actionType)")
