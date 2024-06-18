@@ -71,6 +71,7 @@ struct ActivityProgressBar: View {
                  .fail:
                 .red
             case .nonApplicable,
+                 .unfinished,
                  .none:
                 .gray
         }

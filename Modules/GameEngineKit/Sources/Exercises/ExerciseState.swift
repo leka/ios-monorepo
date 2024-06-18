@@ -17,6 +17,7 @@ enum ExerciseState: Equatable {
         case average
         case good
         case excellent
+        case unfinished // remove
         case nonApplicable
     }
 

@@ -139,6 +139,8 @@ public struct ActivityView: View {
                 self.isAlertPresented = false
             })
             Button(String(l10n.GameEngineKit.ActivityView.QuitActivityAlert.quitButtonLabel.characters), role: .destructive, action: {
+                self.viewModel.collectCurrentExerciseSharedData()
+                self.viewModel.updateUnfinishedExerciseState()
                 self.saveActivityCompletion()
                 self.dismiss()
             })

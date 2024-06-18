@@ -33,6 +33,7 @@ extension DanceFreezeView {
         @Published public var isDancing: Bool = false
 
         public func onDanceFreezeToggle() {
+            self.setCompletionData()
             guard self.progress < 1.0 else {
                 self.completeDanceFreeze()
                 return
@@ -55,7 +56,13 @@ extension DanceFreezeView {
 
         func completeDanceFreeze() {
             self.isDancing = false
+            self.setCompletionData()
+            self.setExerciseState()
+            self.robotManager.stopRobot()
+            self.audioPlayer.stop()
+        }
 
+        func setCompletionData() {
             let completionPayload = ExerciseCompletionData.DanceFreezePayload(
                 chosenSong: self.chosenSong
             ).encodeToString()
@@ -64,11 +71,24 @@ extension DanceFreezeView {
                 endTimestamp: Date(),
                 payload: completionPayload
             )
-            self.exercicesSharedData.state = .completed(level: .nonApplicable, data: completionData)
-//            self.exercicesSharedData.state.send(.completed(level: .nonApplicable, data: completionData))
-            print(completionPayload.debugDescription)
-            self.robotManager.stopRobot()
-            self.audioPlayer.stop()
+
+            self.exercicesSharedData.inProgressCompletiondata = completionData
+            print("completionData in dance freeze:", completionData)
+        }
+
+        func setExerciseState() {
+            var level: ExerciseState.CompletionLevel {
+                guard self.exercicesSharedData.state.isCompleted else {
+                    return .unfinished
+                }
+                return .nonApplicable
+            }
+
+            self.exercicesSharedData.state = .completed(
+                level: level,
+                data: self.exercicesSharedData.inProgressCompletiondata
+            )
+            print("DanceFreeze setExerciseState state: \(self.exercicesSharedData.state)")
         }
 
         // MARK: Private

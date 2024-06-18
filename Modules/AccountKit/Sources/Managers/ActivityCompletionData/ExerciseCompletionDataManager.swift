@@ -5,14 +5,14 @@
 import Combine
 import Foundation
 
-public class ExerciseCompletionDataManager {
+public class ExerciseCompletionDataManager2 {
     // MARK: Lifecycle
 
     private init() {}
 
     // MARK: Public
 
-    public static let shared = ExerciseCompletionDataManager()
+    public static let shared = ExerciseCompletionDataManager2()
 
     public func createCompletionData(startTimestamp: Date?, endTimestamp: Date?, payload: some Codable) -> ExerciseCompletionData {
         let encodedPayload = payload.encodeToString()

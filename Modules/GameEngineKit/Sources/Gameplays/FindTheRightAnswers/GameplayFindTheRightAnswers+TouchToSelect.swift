@@ -48,8 +48,8 @@ extension GameplayFindTheRightAnswers where ChoiceModelType == GameplayTouchToSe
         if rightAnswers.isEmpty {
             let level = evaluateCompletionLevel(allowedTrials: allowedTrials, numberOfTrials: numberOfTrials)
             let completionPayload = ExerciseCompletionData.StandardExercisePayload(
-                numberOfTrials: self.allowedTrials,
-                numberOfAllowedTrials: self.numberOfTrials
+                numberOfTrials: self.numberOfTrials,
+                numberOfAllowedTrials: self.allowedTrials
             ).encodeToString()
             let completionData = ExerciseCompletionData(
                 startTimestamp: self.startTimestamp,

@@ -32,7 +32,7 @@ class ActivityViewViewModel: ObservableObject {
             groupIndex: self.activityManager.currentGroupIndex,
             exerciseIndex: self.activityManager.currentExerciseIndexInCurrentGroup
         )
-        self.completedExercisesSharedData[self.currentGroupIndex].append(self.currentExerciseSharedData)
+//        self.completedExercisesSharedData[self.currentGroupIndex].append(self.currentExerciseSharedData)
 
         self.subscribeToCurrentExerciseSharedDataUpdates()
     }
@@ -58,9 +58,9 @@ class ActivityViewViewModel: ObservableObject {
     @Published var isReinforcerAnimationVisible: Bool = false
     @Published var isReinforcerAnimationEnabled: Bool = true
 
-    var startTimestamp: Date? {
-        self.activityManager.startTimestamp
-    }
+//    var startTimestamp: Date? {
+//        self.activityManager.startTimestamp
+//    }
 
     var successExercisesSharedData: [[ExerciseSharedData]] {
         self.completedExercisesSharedData.map { group in
@@ -121,6 +121,7 @@ class ActivityViewViewModel: ObservableObject {
     }
 
     func moveToNextExercise() {
+        self.collectCurrentExerciseSharedData()
         self.activityManager.moveToNextExercise()
         self.updateValues()
     }
@@ -131,7 +132,22 @@ class ActivityViewViewModel: ObservableObject {
     }
 
     func moveToActivityEnd() {
+        self.collectCurrentExerciseSharedData()
         self.isCurrentActivityCompleted = true
+    }
+
+    func collectCurrentExerciseSharedData() {
+        self.completedExercisesSharedData[self.currentGroupIndex].append(self.currentExerciseSharedData)
+        print("first group count", self.completedExercisesSharedData[0].count)
+    }
+
+    func updateUnfinishedExerciseState() {
+        self.currentExerciseSharedData.inProgressCompletiondata = self.currentExerciseSharedData.completionData
+        self.currentExerciseSharedData.state = .completed(
+            level: .unfinished,
+            data: self.currentExerciseSharedData.completionData
+        )
+        print("unfinished payload", self.currentExerciseSharedData.completionData?.payload ?? "empty")
     }
 
     func saveActivityCompletion(caregiverID: String?, carereceiverIDs: [String]) {
@@ -139,7 +155,7 @@ class ActivityViewViewModel: ObservableObject {
         let activityCompletionData = ActivityCompletionData(
             caregiverID: caregiverID ?? "No caregiver found",
             carereceiverIDs: carereceiverIDs,
-            startTimestamp: self.startTimestamp,
+            startTimestamp: self.activityManager.startTimestamp,
             endTimestamp: Date(),
             completionData: completionDataString
         )
@@ -149,6 +165,7 @@ class ActivityViewViewModel: ObservableObject {
             .sink(receiveCompletion: { completion in
                 switch completion {
                     case .finished:
+                        print("Saving ActivityCompletionData in AAVM ---***---: \(activityCompletionData)")
                         print("Activity Completion Data saved successfully.")
                     case let .failure(error):
                         print("Saving Activity Completion Data failed with error: \(error)")
@@ -158,6 +175,24 @@ class ActivityViewViewModel: ObservableObject {
             })
             .store(in: &self.cancellables)
     }
+
+//    func makeExercisesCompletionData() -> String {
+//        guard self.currentExerciseSharedData.state.isCompleted else {
+//            let completionPayload = ExerciseCompletionData.StandardExercisePayload(
+//                numberOfTrials: self.currentExercise.gameplay.numberOfTrials,
+//                numberOfAllowedTrials: self.allowedTrials
+//            ).encodeToString()
+//            let completionData = ExerciseCompletionData(
+//                startTimestamp: self.currentExerciseSharedData.startTimestamp,
+//                endTimestamp: Date(),
+//                payload: completionPayload
+//            )
+//            state.send(.completed(level: .unfinished, data: completionData))
+//            return
+//        }
+//        let completionDataString = self.exerciseCompletionDataManager.encodeCompletionData(self.completedExercisesData)
+//        return completionDataString
+//    }
 
     // MARK: Private
 
@@ -177,7 +212,6 @@ class ActivityViewViewModel: ObservableObject {
             groupIndex: self.activityManager.currentGroupIndex,
             exerciseIndex: self.activityManager.currentExerciseIndexInCurrentGroup
         )
-        self.completedExercisesSharedData[self.currentGroupIndex].append(self.currentExerciseSharedData)
 
         self.subscribeToCurrentExerciseSharedDataUpdates()
     }
@@ -186,6 +220,7 @@ class ActivityViewViewModel: ObservableObject {
         self.currentExerciseSharedData.objectWillChange
             .receive(on: DispatchQueue.main)
             .sink {
+                print("ActivityViewViewModel detected state change: \(self.currentExerciseSharedData.state)")
                 if self.isReinforcerAnimationEnabled, case .completed = self.currentExerciseSharedData.state {
                     self.isReinforcerAnimationVisible = true
                 } else {

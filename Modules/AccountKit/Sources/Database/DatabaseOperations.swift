@@ -32,6 +32,7 @@ public class DatabaseOperations {
                         promise(.failure(DatabaseError.customError(error.localizedDescription)))
                     } else {
                         log.info("Document \(docRef.documentID) created successfully in \(collection). 🎉")
+                        print("Data saved to Firestore: \(documentData)")
                         promise(.success(documentData))
                     }
                 }

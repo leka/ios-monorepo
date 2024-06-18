@@ -108,7 +108,6 @@ class GameplaySuperSimon: StatefulGameplayProtocol {
 
         if choice.id == self.currentColorSequence.value[self.sequenceIndex].id {
             self.sequenceIndex += 1
-
             self.workItem?.cancel()
 
             self.robot.shine(.all(in: .init(from: choice.color)))
@@ -123,8 +122,8 @@ class GameplaySuperSimon: StatefulGameplayProtocol {
         if self.sequenceIndex == self.completeColorSequence.count {
             let level = evaluateCompletionLevel(allowedTrials: allowedTrials, numberOfTrials: numberOfTrials)
             let completionPayload = ExerciseCompletionData.SuperSimonExercisePayload(
-                numberOfTrials: self.allowedTrials,
-                numberOfAllowedTrials: self.numberOfTrials
+                numberOfTrials: self.numberOfTrials,
+                numberOfAllowedTrials: self.allowedTrials
             ).encodeToString()
             let completionData = ExerciseCompletionData(
                 startTimestamp: self.startTimestamp,
