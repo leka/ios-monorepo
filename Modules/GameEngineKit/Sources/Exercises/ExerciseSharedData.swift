@@ -39,14 +39,14 @@ public class ExerciseSharedData: ObservableObject {
         return level
     }
 
-    var inProgressCompletiondata: ExerciseCompletionData? {
-        didSet {
-            print("inProgressCompletiondata:", self.inProgressCompletiondata ?? "empty")
-        }
-    }
+//    var inProgressCompletiondata: ExerciseCompletionData? {
+//        didSet {
+//            print("inProgressCompletiondata:", self.inProgressCompletiondata ?? "empty")
+//        }
+//    }
 
     var completionData: ExerciseCompletionData? {
-        guard case let .completed(_, data) = state else { return self.inProgressCompletiondata }
+        guard case let .completed(_, data) = state else { return nil }
         return data
     }
 

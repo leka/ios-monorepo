@@ -139,10 +139,12 @@ public struct ActivityView: View {
                 self.isAlertPresented = false
             })
             Button(String(l10n.GameEngineKit.ActivityView.QuitActivityAlert.quitButtonLabel.characters), role: .destructive, action: {
-                self.viewModel.collectCurrentExerciseSharedData()
-                self.viewModel.updateUnfinishedExerciseState()
-                self.saveActivityCompletion()
-                self.dismiss()
+                self.viewModel.currentExerciseSharedData.state = .saving
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    self.viewModel.collectCurrentExerciseSharedData()
+                    self.saveActivityCompletion()
+                    self.dismiss()
+                }
             })
         } message: {
             Text(l10n.GameEngineKit.ActivityView.QuitActivityAlert.message)
@@ -215,6 +217,7 @@ public struct ActivityView: View {
     private var continueButton: some View {
         Button(String(l10n.GameEngineKit.ActivityView.continueButton.characters)) {
             if self.viewModel.isLastExercise {
+                self.viewModel.collectCurrentExerciseSharedData()
                 self.viewModel.scorePanelEnabled ? self.viewModel.moveToActivityEnd() : self.dismiss()
                 self.saveActivityCompletion()
             } else {

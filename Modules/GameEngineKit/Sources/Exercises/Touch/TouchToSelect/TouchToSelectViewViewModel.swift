@@ -17,12 +17,26 @@ class TouchToSelectViewViewModel: ObservableObject {
 
         self.subscribeToGameplaySelectionChoicesUpdates()
         self.subscribeToGameplayStateUpdates()
+        self.subscribeToExercicesSharedDataState()
     }
 
     // MARK: Public
 
     public func onChoiceTapped(choice: GameplayTouchToSelectChoiceModel) {
         self.gameplay.process(choice)
+    }
+
+    public func subscribeToExercicesSharedDataState() {
+        self.exercicesSharedData.$state
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] state in
+                guard let self else { return }
+                if state == .saving {
+                    print("BEH Ecoute oui")
+                    self.gameplay.setCompletionData()
+                }
+            }
+            .store(in: &self.cancellables)
     }
 
     // MARK: Internal

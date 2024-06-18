@@ -132,22 +132,11 @@ class ActivityViewViewModel: ObservableObject {
     }
 
     func moveToActivityEnd() {
-        self.collectCurrentExerciseSharedData()
         self.isCurrentActivityCompleted = true
     }
 
     func collectCurrentExerciseSharedData() {
         self.completedExercisesSharedData[self.currentGroupIndex].append(self.currentExerciseSharedData)
-        print("first group count", self.completedExercisesSharedData[0].count)
-    }
-
-    func updateUnfinishedExerciseState() {
-        self.currentExerciseSharedData.inProgressCompletiondata = self.currentExerciseSharedData.completionData
-        self.currentExerciseSharedData.state = .completed(
-            level: .unfinished,
-            data: self.currentExerciseSharedData.completionData
-        )
-        print("unfinished payload", self.currentExerciseSharedData.completionData?.payload ?? "empty")
     }
 
     func saveActivityCompletion(caregiverID: String?, carereceiverIDs: [String]) {

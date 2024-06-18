@@ -7,6 +7,7 @@ import AccountKit
 enum ExerciseState: Equatable {
     case idle
     case playing
+    case saving
     case completed(level: CompletionLevel, data: ExerciseCompletionData?)
 
     // MARK: Internal
