@@ -87,6 +87,7 @@ public class AudioPlayer: NSObject, AudioPlayerProtocol {
     func stop() {
         self.player?.stop()
         self.state.send(.idle)
+        self.cancellables.removeAll()
     }
 
     // MARK: Private
