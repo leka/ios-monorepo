@@ -15,19 +15,24 @@ public struct ListenThenTouchToSelectView: View {
     }
 
     public init(exercise: Exercise, data: ExerciseSharedData? = nil) {
-        if let payload = exercise.payload as? TouchToSelect.Payload, case let .ipad(type: .audio(name)) = exercise.action {
-            _viewModel = StateObject(
-                wrappedValue: TouchToSelectViewViewModel(choices: payload.choices, shuffle: payload.shuffleChoices, shared: data))
+        guard let payload = exercise.payload as? TouchToSelect.Payload else {
+            log.error("Payload not recognized: \(String(describing: exercise.payload))")
+            fatalError("💥 Payload not recognized: \(String(describing: exercise.payload))")
+        }
 
-            _audioPlayer = StateObject(wrappedValue: AudioPlayerViewModel(player: AudioPlayer(audioRecording: name)))
-        } else if let payload = exercise.payload as? TouchToSelect.Payload, case let .ipad(type: .speech(name)) = exercise.action {
-            _viewModel = StateObject(
-                wrappedValue: TouchToSelectViewViewModel(choices: payload.choices, shuffle: payload.shuffleChoices, shared: data))
+        _viewModel = StateObject(
+            wrappedValue: TouchToSelectViewViewModel(choices: payload.choices, shuffle: payload.shuffleChoices, shared: data))
 
-            _audioPlayer = StateObject(wrappedValue: AudioPlayerViewModel(player: SpeechSynthesizer(sentence: name)))
-        } else {
-            log.error("Exercise payload is not .selection and/or Exercise does not contain iPad audio action")
-            fatalError("💥 Exercise payload is not .selection and/or Exercise does not contain iPad audio action")
+        switch exercise.action {
+            case let .ipad(type: .audio(name)):
+                log.debug("Audio name: \(name)")
+                _audioPlayer = StateObject(wrappedValue: AudioPlayerViewModel(player: AudioPlayer(audioRecording: name)))
+            case let .ipad(type: .speech(utterance)):
+                log.debug("Speech utterance: \(utterance)")
+                _audioPlayer = StateObject(wrappedValue: AudioPlayerViewModel(player: SpeechSynthesizer(sentence: utterance)))
+            default:
+                log.error("Action not recognized: \(String(describing: exercise.action))")
+                fatalError("💥 Action not recognized: \(String(describing: exercise.action))")
         }
     }
 
