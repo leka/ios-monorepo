@@ -35,9 +35,9 @@ public struct DanceFreezeView: View {
                              selectedAudioRecording: self.$selectedAudioRecording,
                              songs: self.songs)
             case .automaticMode:
-                PlayerView(selectedAudioRecording: self.selectedAudioRecording, isAuto: true, motion: self.motion)
+                PlayerView(selectedAudioRecording: self.selectedAudioRecording, isAuto: true, motion: self.motion, data: self.data)
             case .manualMode:
-                PlayerView(selectedAudioRecording: self.selectedAudioRecording, isAuto: false, motion: self.motion)
+                PlayerView(selectedAudioRecording: self.selectedAudioRecording, isAuto: false, motion: self.motion, data: self.data)
         }
     }
 

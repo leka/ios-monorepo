@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AccountKit
 import Combine
 import ContentKit
 import RobotKit
@@ -20,7 +21,11 @@ extension DanceFreezeView {
             self.exercicesSharedData = shared ?? ExerciseSharedData()
             self.exercicesSharedData.state = .playing
 
+            self.startTimestamp = Date()
+            self.chosenSong = selectedAudioRecording.audio
+
             self.subscribeToAudioPlayerProgress()
+            self.subscribeToExercicesSharedDataState()
         }
 
         // MARK: Public
@@ -45,15 +50,42 @@ extension DanceFreezeView {
             }
         }
 
+        public func subscribeToExercicesSharedDataState() {
+            self.exercicesSharedData.$state
+                .receive(on: DispatchQueue.main)
+                .sink { [weak self] state in
+                    guard let self else { return }
+                    if state == .saving {
+                        self.setCompletionData()
+                    }
+                }
+                .store(in: &self.cancellables)
+        }
+
         // MARK: Internal
 
         @ObservedObject var exercicesSharedData: ExerciseSharedData
 
         func completeDanceFreeze() {
-            self.isDancing = false
-            self.exercicesSharedData.state = .completed(level: .nonApplicable, data: nil)
-            self.robotManager.stopRobot()
             self.audioPlayer.stop()
+            self.isDancing = false
+            self.exercicesSharedData.state = .saving
+            self.robotManager.stopRobot()
+        }
+
+        func setCompletionData() {
+            let completionPayload = ExerciseCompletionData.DanceFreezePayload(
+                chosenSong: self.chosenSong
+            ).encodeToString()
+            let completionData = ExerciseCompletionData(
+                startTimestamp: self.startTimestamp,
+                endTimestamp: Date(),
+                payload: completionPayload
+            )
+            self.exercicesSharedData.state = .completed(
+                level: .nonApplicable,
+                data: completionData
+            )
         }
 
         // MARK: Private
@@ -61,7 +93,10 @@ extension DanceFreezeView {
         private var robotManager: RobotManager
         private var audioPlayer: AudioPlayer
         private var motionMode: Motion = .rotation
+        private var startTimestamp: Date?
+        private var chosenSong: String = ""
         private var cancellables: Set<AnyCancellable> = []
+        private let activityCompletionDataManager: ActivityCompletionDataManager = .shared
 
         private func subscribeToAudioPlayerProgress() {
             self.audioPlayer.progress
