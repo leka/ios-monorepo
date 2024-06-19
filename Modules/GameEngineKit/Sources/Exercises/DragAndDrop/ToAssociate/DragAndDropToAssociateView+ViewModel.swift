@@ -22,6 +22,7 @@ extension DragAndDropToAssociateView {
 
             self.subscribeToGameplayAssociateCategoriesChoicesUpdates()
             self.subscribeToGameplayStateUpdates()
+            self.subscribeToExercicesSharedDataState()
         }
 
         // MARK: Public
@@ -30,6 +31,18 @@ extension DragAndDropToAssociateView {
             choice: GameplayAssociateCategoriesChoiceModel, destination: GameplayAssociateCategoriesChoiceModel
         ) {
             self.gameplay.process(choice, destination)
+        }
+
+        public func subscribeToExercicesSharedDataState() {
+            self.exercicesSharedData.$state
+                .receive(on: DispatchQueue.main)
+                .sink { [weak self] state in
+                    guard let self else { return }
+                    if state == .saving {
+                        self.gameplay.setCompletionData()
+                    }
+                }
+                .store(in: &self.cancellables)
         }
 
         // MARK: Internal

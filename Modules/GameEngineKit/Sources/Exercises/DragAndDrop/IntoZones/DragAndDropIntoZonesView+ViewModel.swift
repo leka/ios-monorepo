@@ -18,6 +18,7 @@ extension DragAndDropIntoZonesView {
 
             self.subscribeToGameplayDragAndDropChoicesUpdates()
             self.subscribeToGameplayStateUpdates()
+            self.subscribeToExercicesSharedDataState()
         }
 
         // MARK: Public
@@ -26,6 +27,18 @@ extension DragAndDropIntoZonesView {
             choice: GameplayDragAndDropIntoZonesChoiceModel, dropZone: DragAndDropIntoZones.DropZone
         ) {
             self.gameplay.process(choice, dropZone)
+        }
+
+        public func subscribeToExercicesSharedDataState() {
+            self.exercicesSharedData.$state
+                .receive(on: DispatchQueue.main)
+                .sink { [weak self] state in
+                    guard let self else { return }
+                    if state == .saving {
+                        self.gameplay.setCompletionData()
+                    }
+                }
+                .store(in: &self.cancellables)
         }
 
         // MARK: Internal
