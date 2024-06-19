@@ -32,7 +32,7 @@ class ActivityViewViewModel: ObservableObject {
             groupIndex: self.activityManager.currentGroupIndex,
             exerciseIndex: self.activityManager.currentExerciseIndexInCurrentGroup
         )
-        self.completedExercisesSharedData[self.currentGroupIndex].append(self.currentExerciseSharedData)
+//        self.completedExercisesSharedData[self.currentGroupIndex].append(self.currentExerciseSharedData)
 
         self.subscribeToCurrentExerciseSharedDataUpdates()
     }
@@ -57,10 +57,6 @@ class ActivityViewViewModel: ObservableObject {
     @Published var isCurrentActivityCompleted: Bool = false
     @Published var isReinforcerAnimationVisible: Bool = false
     @Published var isReinforcerAnimationEnabled: Bool = true
-
-    var startTimestamp: Date? {
-        self.activityManager.startTimestamp
-    }
 
     var successExercisesSharedData: [[ExerciseSharedData]] {
         self.completedExercisesSharedData.map { group in
@@ -121,6 +117,7 @@ class ActivityViewViewModel: ObservableObject {
     }
 
     func moveToNextExercise() {
+        self.collectCurrentExerciseSharedData()
         self.activityManager.moveToNextExercise()
         self.updateValues()
     }
@@ -134,12 +131,16 @@ class ActivityViewViewModel: ObservableObject {
         self.isCurrentActivityCompleted = true
     }
 
+    func collectCurrentExerciseSharedData() {
+        self.completedExercisesSharedData[self.currentGroupIndex].append(self.currentExerciseSharedData)
+    }
+
     func saveActivityCompletion(caregiverID: String?, carereceiverIDs: [String]) {
         let completionDataString = self.exerciseCompletionDataManager.encodeCompletionData(self.completedExercisesData)
         let activityCompletionData = ActivityCompletionData(
             caregiverID: caregiverID ?? "No caregiver found",
             carereceiverIDs: carereceiverIDs,
-            startTimestamp: self.startTimestamp,
+            startTimestamp: self.activityManager.startTimestamp,
             endTimestamp: Date(),
             completionData: completionDataString
         )
@@ -177,7 +178,6 @@ class ActivityViewViewModel: ObservableObject {
             groupIndex: self.activityManager.currentGroupIndex,
             exerciseIndex: self.activityManager.currentExerciseIndexInCurrentGroup
         )
-        self.completedExercisesSharedData[self.currentGroupIndex].append(self.currentExerciseSharedData)
 
         self.subscribeToCurrentExerciseSharedDataUpdates()
     }
