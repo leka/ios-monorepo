@@ -18,6 +18,7 @@ class SuperSimonViewViewModel: ObservableObject {
         self.subscribeToGameplayStateUpdates()
 
         self.subscribeToGameplayGameStateUpdates()
+        self.subscribeToExercicesSharedDataState()
 
         self.enableChoices = false
     }
@@ -29,6 +30,18 @@ class SuperSimonViewViewModel: ObservableObject {
 
     public func onChoiceTapped(choice: GameplaySuperSimonChoiceModel) {
         self.gameplay.process(choice)
+    }
+
+    public func subscribeToExercicesSharedDataState() {
+        self.exercicesSharedData.$state
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] state in
+                guard let self else { return }
+                if state == .saving {
+                    self.gameplay.setCompletionData()
+                }
+            }
+            .store(in: &self.cancellables)
     }
 
     // MARK: Internal

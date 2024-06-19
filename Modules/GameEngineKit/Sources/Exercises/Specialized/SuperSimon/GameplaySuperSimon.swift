@@ -121,20 +121,24 @@ class GameplaySuperSimon: StatefulGameplayProtocol {
         }
 
         if self.sequenceIndex == self.completeColorSequence.count {
-            let level = evaluateCompletionLevel(allowedTrials: allowedTrials, numberOfTrials: numberOfTrials)
-            let completionPayload = ExerciseCompletionData.SuperSimonExercisePayload(
-                numberOfTrials: self.allowedTrials,
-                numberOfAllowedTrials: self.numberOfTrials
-            ).encodeToString()
-            let completionData = ExerciseCompletionData(
-                startTimestamp: self.startTimestamp,
-                endTimestamp: Date(),
-                payload: completionPayload
-            )
-            self.state.send(.completed(level: level, data: completionData))
+            self.state.send(.saving)
         } else if self.sequenceIndex == self.currentColorSequence.value.count {
             self.startNextSequence()
         }
+    }
+
+    func setCompletionData() {
+        let level = evaluateCompletionLevel(allowedTrials: allowedTrials, numberOfTrials: numberOfTrials)
+        let completionPayload = ExerciseCompletionData.StandardExercisePayload(
+            numberOfTrials: self.numberOfTrials,
+            numberOfAllowedTrials: self.allowedTrials
+        ).encodeToString()
+        let completionData = ExerciseCompletionData(
+            startTimestamp: self.startTimestamp,
+            endTimestamp: Date(),
+            payload: completionPayload
+        )
+        self.state.send(.completed(level: level, data: completionData))
     }
 
     func startNextSequence() {
