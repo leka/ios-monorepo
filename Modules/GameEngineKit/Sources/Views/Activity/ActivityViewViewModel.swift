@@ -117,7 +117,6 @@ class ActivityViewViewModel: ObservableObject {
     }
 
     func moveToNextExercise() {
-        self.collectCurrentExerciseSharedData()
         self.activityManager.moveToNextExercise()
         self.updateValues()
     }

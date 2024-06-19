@@ -69,6 +69,16 @@ public struct ActivityView: View {
                     }
                 }
             }
+            .onReceive(self.viewModel.currentExerciseSharedData.$state) { state in
+                if case .completed = state {
+                    self.viewModel.collectCurrentExerciseSharedData()
+                    if self.viewModel.isLastExercise || self.isQuitting {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                            self.saveActivityCompletion()
+                        }
+                    }
+                }
+            }
 
             if self.viewModel.isReinforcerAnimationVisible {
                 self.reinforcerAnimationView
@@ -139,12 +149,9 @@ public struct ActivityView: View {
                 self.isAlertPresented = false
             })
             Button(String(l10n.GameEngineKit.ActivityView.QuitActivityAlert.quitButtonLabel.characters), role: .destructive, action: {
+                self.isQuitting = true
                 self.viewModel.currentExerciseSharedData.state = .saving
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                    self.viewModel.collectCurrentExerciseSharedData()
-                    self.saveActivityCompletion()
-                    self.dismiss()
-                }
+                self.dismiss()
             })
         } message: {
             Text(l10n.GameEngineKit.ActivityView.QuitActivityAlert.message)
@@ -178,6 +185,7 @@ public struct ActivityView: View {
     @StateObject private var carereceiverManagerViewModel = CarereceiverManagerViewModel()
 
     @State private var isAlertPresented: Bool = false
+    @State private var isQuitting: Bool = false
 
     @State private var opacity: Double = 1
     @State private var blurRadius: CGFloat = 0
@@ -217,9 +225,7 @@ public struct ActivityView: View {
     private var continueButton: some View {
         Button(String(l10n.GameEngineKit.ActivityView.continueButton.characters)) {
             if self.viewModel.isLastExercise {
-                self.viewModel.collectCurrentExerciseSharedData()
                 self.viewModel.scorePanelEnabled ? self.viewModel.moveToActivityEnd() : self.dismiss()
-                self.saveActivityCompletion()
             } else {
                 self.viewModel.moveToNextExercise()
             }
