@@ -16,7 +16,8 @@ public struct ListenThenDragAndDropIntoZonesView: View {
         switch exercise.action {
             case let .ipad(type: .audio(name)):
                 log.debug("Audio name: \(name)")
-                _audioPlayer = StateObject(wrappedValue: AudioPlayerViewModel(player: AudioPlayer(audioRecording: name)))
+                AudioPlayer.shared.setAudioData(data: name)
+                _audioPlayer = StateObject(wrappedValue: AudioPlayerViewModel(player: AudioPlayer.shared))
             case let .ipad(type: .speech(utterance)):
                 log.debug("Speech utterance: \(utterance)")
                 _audioPlayer = StateObject(wrappedValue: AudioPlayerViewModel(player: SpeechSynthesizer(sentence: utterance)))

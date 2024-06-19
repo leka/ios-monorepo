@@ -11,7 +11,8 @@ public struct ListenThenTouchToSelectView: View {
 
     public init(choices: [TouchToSelect.Choice], audioRecording: String, shuffle: Bool = false) {
         _viewModel = StateObject(wrappedValue: TouchToSelectViewViewModel(choices: choices, shuffle: shuffle))
-        _audioPlayer = StateObject(wrappedValue: AudioPlayerViewModel(player: AudioPlayer(audioRecording: audioRecording)))
+        AudioPlayer.shared.setAudioData(data: audioRecording)
+        _audioPlayer = StateObject(wrappedValue: AudioPlayerViewModel(player: AudioPlayer.shared))
     }
 
     public init(exercise: Exercise, data: ExerciseSharedData? = nil) {
@@ -26,7 +27,8 @@ public struct ListenThenTouchToSelectView: View {
         switch exercise.action {
             case let .ipad(type: .audio(name)):
                 log.debug("Audio name: \(name)")
-                _audioPlayer = StateObject(wrappedValue: AudioPlayerViewModel(player: AudioPlayer(audioRecording: name)))
+                AudioPlayer.shared.setAudioData(data: name)
+                _audioPlayer = StateObject(wrappedValue: AudioPlayerViewModel(player: AudioPlayer.shared))
             case let .ipad(type: .speech(utterance)):
                 log.debug("Speech utterance: \(utterance)")
                 _audioPlayer = StateObject(wrappedValue: AudioPlayerViewModel(player: SpeechSynthesizer(sentence: utterance)))

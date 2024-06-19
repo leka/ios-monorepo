@@ -34,6 +34,7 @@ struct ActionButtonListen: View {
 }
 
 #Preview {
-    ActionButtonListen(
-        audioPlayer: AudioPlayerViewModel(player: AudioPlayer(audioRecording: "drums")))
+    let audioPlayer = AudioPlayer.shared
+    audioPlayer.setAudioData(data: "drums")
+    return ActionButtonListen(audioPlayer: AudioPlayerViewModel(player: audioPlayer))
 }
