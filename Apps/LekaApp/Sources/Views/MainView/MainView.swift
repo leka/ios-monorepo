@@ -73,7 +73,9 @@ struct MainView: View {
 
                     #if DEVELOPER_MODE
                         Section("Developer Mode") {
-                            CategoryLabel(category: .allActivities)
+                            CategoryLabel(category: .allTemplateActivities)
+                            CategoryLabel(category: .allDraftActivities)
+                            CategoryLabel(category: .allPublishedActivities)
                             CategoryLabel(category: .rasterImageList)
                             CategoryLabel(category: .vectorImageList)
                             CategoryLabel(category: .news)
@@ -126,8 +128,14 @@ struct MainView: View {
                         CarereceiverList()
 
                     // ? DEVELOPER_MODE
-                    case .allActivities:
-                        AllActivitiesView()
+                    case .allPublishedActivities:
+                        AllPublishedActivitiesView()
+
+                    case .allDraftActivities:
+                        AllDraftActivitiesView()
+
+                    case .allTemplateActivities:
+                        AllTemplateActivitiesView()
 
                     case .rasterImageList:
                         DebugImageListView(images: ContentKit.listRasterImages())

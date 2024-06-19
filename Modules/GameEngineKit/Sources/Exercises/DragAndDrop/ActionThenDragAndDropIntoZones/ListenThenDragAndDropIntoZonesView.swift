@@ -10,15 +10,20 @@ public struct ListenThenDragAndDropIntoZonesView: View {
     // MARK: Lifecycle
 
     public init(exercise: Exercise, data: ExerciseSharedData? = nil) {
-        guard case let .ipad(type: .audio(name)) = exercise.action else {
-            log.error("Exercise payload is not .dragAndDrop and/or Exercise does not contain iPad audio action")
-            fatalError("💥 Exercise payload is not .dragAndDrop and/or Exercise does not contain iPad audio action")
-        }
-
         self.exercise = exercise
         self.exerciseSharedData = data
 
-        _audioPlayer = StateObject(wrappedValue: AudioPlayerViewModel(player: AudioPlayer(audioRecording: name)))
+        switch exercise.action {
+            case let .ipad(type: .audio(name)):
+                log.debug("Audio name: \(name)")
+                _audioPlayer = StateObject(wrappedValue: AudioPlayerViewModel(player: AudioPlayer(audioRecording: name)))
+            case let .ipad(type: .speech(utterance)):
+                log.debug("Speech utterance: \(utterance)")
+                _audioPlayer = StateObject(wrappedValue: AudioPlayerViewModel(player: SpeechSynthesizer(sentence: utterance)))
+            default:
+                log.error("Action not recognized: \(String(describing: exercise.action))")
+                fatalError("💥 Action not recognized: \(String(describing: exercise.action))")
+        }
     }
 
     // MARK: Public

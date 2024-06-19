@@ -16,7 +16,9 @@ extension Navigation {
         case carereceivers
 
         // ? DEVELOPER_MODE
-        case allActivities
+        case allPublishedActivities
+        case allDraftActivities
+        case allTemplateActivities
         case rasterImageList
         case vectorImageList
         case news

@@ -10,10 +10,10 @@ import SwiftUI
 
 // MARK: - SampleActivityListView
 
-struct AllActivitiesView: View {
+struct AllDraftActivitiesView: View {
     // MARK: Internal
 
-    let activities: [Activity] = ContentKit.allActivities.sorted {
+    let activities: [Activity] = ContentKit.allDraftActivities.sorted {
         $0.details.title.compare($1.details.title, locale: NSLocale.current) == .orderedAscending
     }
 
@@ -24,7 +24,7 @@ struct AllActivitiesView: View {
                 self.navigation.fullScreenCoverContent = .activityView(carereceivers: [])
             })
         }
-        .navigationTitle("All Activities")
+        .navigationTitle("Draft Activities")
     }
 
     // MARK: Private
@@ -34,6 +34,6 @@ struct AllActivitiesView: View {
 
 #Preview {
     NavigationStack {
-        AllActivitiesView()
+        AllDraftActivitiesView()
     }
 }

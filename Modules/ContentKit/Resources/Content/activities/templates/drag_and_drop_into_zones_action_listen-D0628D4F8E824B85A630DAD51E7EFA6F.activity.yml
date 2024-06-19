@@ -1,0 +1,121 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+version: 1.0.0
+
+uuid: D0628D4F8E824B85A630DAD51E7EFA6F
+name: drag_and_drop_into_zones_action_listen
+
+created_at: "2024-06-17T17:38:12.804177"
+last_edited_at: "2024-06-19T16:39:36.696281"
+
+status: template
+
+authors:
+  - leka
+
+skills: []
+
+tags:
+  - template
+
+hmi:
+  - tablet
+
+types:
+  - one_on_one
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: template_drag_and_drop_into_zones
+
+      title: Drag And Drop Into Zones
+      subtitle: Action - Listen
+
+      short_description: |
+        Lorem ipsum
+
+      description: |
+        Lorem ipsum
+
+      instructions: |
+        Lorem ipsum
+
+  - locale: en_US
+    details:
+      icon: template_drag_and_drop_into_zones
+
+      title: Drag And Drop Into Zones
+      subtitle: Action - Listen
+
+      short_description: |
+        Lorem ipsum
+
+      description: |
+        Lorem ipsum
+
+      instructions: |
+        Lorem ipsum
+
+exercises_payload:
+  options:
+    shuffle_exercises: false
+    shuffle_groups: false
+
+  exercise_groups:
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et suis les instructions
+            - locale: en_US
+              value: Listen and follow instructions
+          interface: listenThenDragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "glisse la banane dans le panier"
+                - locale: en_US
+                  utterance: "drag and drop the banana into the basket"
+          payload:
+            dropZoneA:
+              value: dropzone_basket
+              type: image
+            choices:
+              - value: pictograms-foods-fruits-banana_yellow-00FB
+                type: image
+                dropZone: zoneA
+              - value: pictograms-foods-fruits-apple_green-0100
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et glisse l'animal dans le panier
+            - locale: en_US
+              value: Listen and drag and drop the animal into the basket
+          interface: listenThenDragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: audio
+              value: sound_animal_duck
+          payload:
+            dropZoneA:
+              value: dropzone_basket
+              type: image
+            choices:
+              - value: pictograms-animals-farm-duck_green-0075
+                type: image
+                dropZone: zoneA
+              - value: pictograms-animals-farm-cow_white-0070
+                type: image
