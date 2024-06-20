@@ -18,11 +18,9 @@ skills:
   - sensory_interaction
 
 tags:
-  - emotions
-  - sounds
-  - Ladislas
-  - Hortense
-  - Lucie
+  - ladislas
+  - hortense
+  - lucie
 
 hmi:
   - tablet

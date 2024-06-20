@@ -24,9 +24,12 @@ hmi:
   - tablet
 
 tags:
-  - emotions
-  - drawings
   - characters
+  - oscar
+  - zoe
+  - moussa
+  - louna
+  - hugo
 
 locales:
   - en_US

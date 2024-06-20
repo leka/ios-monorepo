@@ -22,11 +22,10 @@ skills:
   - spatial_understanding
 
 tags:
-  - prepositions
   - in
   - under
   - behind
-  - next to
+  - next_to
 
 hmi:
   - tablet

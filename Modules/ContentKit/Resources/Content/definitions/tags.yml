@@ -1,0 +1,641 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+version: 1.0.0
+list:
+  - id: colors
+    l10n:
+      - locale: en_US
+        name: Colors
+        description: >
+          Lorem ipsum
+      - locale: fr_FR
+        name: Couleurs
+        description: >
+          Lorem ipsum
+        subtags: []
+
+  - id: food
+    l10n:
+      - locale: en_US
+        name: Food
+        description: >
+          Lorem ipsum
+      - locale: fr_FR
+        name: Aliments
+        description: >
+          Lorem ipsum
+        subtags: []
+
+  - id: animals
+    l10n:
+      - locale: en_US
+        name: Animals
+        description: >
+          Lorem ipsum
+      - locale: fr_FR
+        name: Animaux
+        description: >
+          Lorem ipsum
+        subtags: []
+
+  - id: geometric_shapes
+    l10n:
+      - locale: en_US
+        name: Geometric shapes
+        description: >
+          Lorem ipsum
+      - locale: fr_FR
+        name: Formes géométriques
+        description: >
+          Lorem ipsum
+        subtags: []
+
+  - id: numbers
+    l10n:
+      - locale: en_US
+        name: Numbers
+        description: >
+          Lorem ipsum
+      - locale: fr_FR
+        name: Nombres
+        description: >
+          Lorem ipsum
+        subtags: []
+
+  - id: alphabet_letters
+    l10n:
+      - locale: en_US
+        name: Alphabet letters
+        description: >
+          Lorem ipsum
+      - locale: fr_FR
+        name: Lettres de l'alphabet
+        description: >
+          Lorem ipsum
+        subtags: []
+
+  - id: everyday_objects
+    l10n:
+      - locale: en_US
+        name: Everyday objects
+        description: >
+          Lorem ipsum
+      - locale: fr_FR
+        name: Objets de la vie quotidienne
+        description: >
+          Lorem ipsum
+        subtags: []
+
+  - id: basic_physiological_needs
+    l10n:
+      - locale: en_US
+        name: Basic physiological needs
+        description: >
+          Lorem ipsum
+      - locale: fr_FR
+        name: Besoins physiologiques de base
+        description: >
+          Lorem ipsum
+        subtags: []
+
+  - id: weather_elements
+    l10n:
+      - locale: en_US
+        name: Weather elements
+        description: >
+          Lorem ipsum
+      - locale: fr_FR
+        name: Éléments de la météo
+        description: >
+          Lorem ipsum
+        subtags: []
+
+  - id: body_parts
+    l10n:
+      - locale: en_US
+        name: Body parts
+        description: >
+          Lorem ipsum
+      - locale: fr_FR
+        name: Parties du corps
+        description: >
+          Lorem ipsum
+        subtags: []
+
+  - id: basic_emotions
+    l10n:
+      - locale: en_US
+        name: Basic emotions
+        description: >
+          Lorem ipsum
+      - locale: fr_FR
+        name: Emotions de base
+        description: >
+          Lorem ipsum
+        subtags: []
+
+  - id: places
+    l10n:
+      - locale: en_US
+        name: Places
+        description: >
+          Lorem ipsum
+      - locale: fr_FR
+        name: Lieux
+        description: >
+          Lorem ipsum
+        subtags: []
+
+  - id: professions
+    l10n:
+      - locale: en_US
+        name: Professions
+        description: >
+          Lorem ipsum
+      - locale: fr_FR
+        name: Métiers
+        description: >
+          Lorem ipsum
+        subtags: []
+
+  - id: family_members
+    l10n:
+      - locale: en_US
+        name: Family members
+        description: >
+          Lorem ipsum
+      - locale: fr_FR
+        name: Membres de la famille
+        description: >
+          Lorem ipsum
+        subtags: []
+
+  - id: bedroom
+    l10n:
+      - locale: en_US
+        name: Bedroom
+        description: >
+          Lorem ipsum
+      - locale: fr_FR
+        name: Chambre
+        description: >
+          Lorem ipsum
+        subtags: []
+
+  - id: bathroom
+    l10n:
+      - locale: en_US
+        name: Bathroom
+        description: >
+          Lorem ipsum
+      - locale: fr_FR
+        name: Salle de bain
+        description: >
+          Lorem ipsum
+        subtags: []
+
+  - id: kitchen
+    l10n:
+      - locale: en_US
+        name: Kitchen
+        description: >
+          Lorem ipsum
+      - locale: fr_FR
+        name: Cuisine
+        description: >
+          Lorem ipsum
+        subtags: []
+
+  - id: home_objects
+    l10n:
+      - locale: en_US
+        name: Home Objects
+        description: >
+          Lorem ipsum
+      - locale: fr_FR
+        name: Objets de la maison
+        description: >
+          Lorem ipsum
+        subtags: []
+
+  - id: clothes
+    l10n:
+      - locale: en_US
+        name: Clothes
+        description: >
+          Lorem ipsum
+      - locale: fr_FR
+        name: Vêtements
+        description: >
+          Lorem ipsum
+        subtags: []
+
+  - id: vegetables
+    l10n:
+      - locale: en_US
+        name: Vegetables
+        description: >
+          Lorem ipsum
+      - locale: fr_FR
+        name: Légumes
+        description: >
+          Lorem ipsum
+        subtags: []
+
+  - id: fruits
+    l10n:
+      - locale: en_US
+        name: Fruits
+        description: >
+          Lorem ipsum
+      - locale: fr_FR
+        name: Fruits
+        description: >
+          Lorem ipsum
+        subtags: []
+
+  - id: digital_constellations
+    l10n:
+      - locale: en_US
+        name: Digital Constellations
+        description: >
+          Lorem ipsum
+      - locale: fr_FR
+        name: Constellations numériques
+        description: >
+          Lorem ipsum
+        subtags: []
+
+  - id: quantity
+    l10n:
+      - locale: en_US
+        name: Quantity
+        description: >
+          Lorem ipsum
+      - locale: fr_FR
+        name: Quantité
+        description: >
+          Lorem ipsum
+        subtags: []
+
+  - id: dirty
+    l10n:
+      - locale: en_US
+        name: Dirty
+        description: >
+          Lorem ipsum
+      - locale: fr_FR
+        name: Sale
+        description: >
+          Lorem ipsum
+        subtags: []
+
+  - id: clean
+    l10n:
+      - locale: en_US
+        name: Clean
+        description: >
+          Lorem ipsum
+      - locale: fr_FR
+        name: Propre
+        description: >
+          Lorem ipsum
+        subtags: []
+
+  - id: hot
+    l10n:
+      - locale: en_US
+        name: Hot
+        description: >
+          Lorem ipsum
+      - locale: fr_FR
+        name: Chaud
+        description: >
+          Lorem ipsum
+        subtags: []
+
+  - id: cold
+    l10n:
+      - locale: en_US
+        name: Cold
+        description: >
+          Lorem ipsum
+      - locale: fr_FR
+        name: Froid
+        description: >
+          Lorem ipsum
+        subtags: []
+
+  - id: little
+    l10n:
+      - locale: en_US
+        name: Little
+        description: >
+          Lorem ipsum
+      - locale: fr_FR
+        name: Petit
+        description: >
+          Lorem ipsum
+        subtags: []
+
+  - id: big
+    l10n:
+      - locale: en_US
+        name: Big
+        description: >
+          Lorem ipsum
+      - locale: fr_FR
+        name: Grand
+        description: >
+          Lorem ipsum
+        subtags: []
+
+  - id: wet
+    l10n:
+      - locale: en_US
+        name: Wet
+        description: >
+          Lorem ipsum
+      - locale: fr_FR
+        name: Mouillé
+        description: >
+          Lorem ipsum
+        subtags: []
+
+  - id: dry
+    l10n:
+      - locale: en_US
+        name: Dry
+        description: >
+          Lorem ipsum
+      - locale: fr_FR
+        name: Sec
+        description: >
+          Lorem ipsum
+        subtags: []
+
+  - id: in
+    l10n:
+      - locale: en_US
+        name: In
+        description: >
+          Lorem ipsum
+      - locale: fr_FR
+        name: Dans
+        description: >
+          Lorem ipsum
+        subtags: []
+
+  - id: under
+    l10n:
+      - locale: en_US
+        name: Under
+        description: >
+          Lorem ipsum
+      - locale: fr_FR
+        name: Sous
+        description: >
+          Lorem ipsum
+        subtags: []
+
+  - id: behind
+    l10n:
+      - locale: en_US
+        name: Behind
+        description: >
+          Lorem ipsum
+      - locale: fr_FR
+        name: Derrière
+        description: >
+          Lorem ipsum
+        subtags: []
+
+  - id: next_to
+    l10n:
+      - locale: en_US
+        name: Next to
+        description: >
+          Lorem ipsum
+      - locale: fr_FR
+        name: À côté de
+        description: >
+          Lorem ipsum
+        subtags: []
+
+  - id: action_verbs
+    l10n:
+      - locale: en_US
+        name: Action Verbs
+        description: >
+          Lorem ipsum
+      - locale: fr_FR
+        name: Verbes d'action
+        description: >
+          Lorem ipsum
+        subtags: []
+
+  - id: characters
+    l10n:
+      - locale: en_US
+        name: Characters
+        description: >
+          Lorem ipsum
+      - locale: fr_FR
+        name: Personnages
+        description: >
+          Lorem ipsum
+        subtags: []
+
+  - id: hugo
+    l10n:
+      - locale: en_US
+        name: Hugo
+        description: >
+          Lorem ipsum
+      - locale: fr_FR
+        name: Hugo
+        description: >
+          Lorem ipsum
+        subtags: []
+
+  - id: louna
+    l10n:
+      - locale: en_US
+        name: Louna
+        description: >
+          Lorem ipsum
+      - locale: fr_FR
+        name: Louna
+        description: >
+          Lorem ipsum
+        subtags: []
+
+  - id: moussa
+    l10n:
+      - locale: en_US
+        name: Moussa
+        description: >
+          Lorem ipsum
+      - locale: fr_FR
+        name: Moussa
+        description: >
+          Lorem ipsum
+        subtags: []
+
+  - id: oscar
+    l10n:
+      - locale: en_US
+        name: Oscar
+        description: >
+          Lorem ipsum
+      - locale: fr_FR
+        name: Oscar
+        description: >
+          Lorem ipsum
+        subtags: []
+
+  - id: zoe
+    l10n:
+      - locale: en_US
+        name: Zoe
+        description: >
+          Lorem ipsum
+      - locale: fr_FR
+        name: Zoé
+        description: >
+          Lorem ipsum
+        subtags: []
+
+  - id: leka
+    l10n:
+      - locale: en_US
+        name: Leka
+        description: >
+          Lorem ipsum
+      - locale: fr_FR
+        name: Leka
+        description: >
+          Lorem ipsum
+        subtags: []
+
+  - id: ladislas
+    l10n:
+      - locale: en_US
+        name: Ladislas
+        description: >
+          Lorem ipsum
+      - locale: fr_FR
+        name: Ladislas
+        description: >
+          Lorem ipsum
+        subtags: []
+
+  - id: lucie
+    l10n:
+      - locale: en_US
+        name: Lucie
+        description: >
+          Lorem ipsum
+      - locale: fr_FR
+        name: Lucie
+        description: >
+          Lorem ipsum
+        subtags: []
+
+  - id: yann
+    l10n:
+      - locale: en_US
+        name: Yann
+        description: >
+          Lorem ipsum
+      - locale: fr_FR
+        name: Yann
+        description: >
+          Lorem ipsum
+        subtags: []
+
+  - id: hortense
+    l10n:
+      - locale: en_US
+        name: Hortense
+        description: >
+          Lorem ipsum
+      - locale: fr_FR
+        name: Hortense
+        description: >
+          Lorem ipsum
+        subtags: []
+
+  - id: thumbs_up
+    l10n:
+      - locale: en_US
+        name: Thumbs Up
+        description: >
+          Lorem ipsum
+      - locale: fr_FR
+        name: Pouce en l'air
+        description: >
+          Lorem ipsum
+        subtags: []
+
+  - id: thumbs_down
+    l10n:
+      - locale: en_US
+        name: Thumbs Down
+        description: >
+          Lorem ipsum
+      - locale: fr_FR
+        name: Pouce en bas
+        description: >
+          Lorem ipsum
+        subtags: []
+
+  - id: leka_team
+    l10n:
+      - locale: en_US
+        name: Leka Team
+        description: >
+          Lorem ipsum
+      - locale: fr_FR
+        name: Équipe Leka
+        description: >
+          Lorem ipsum
+        subtags: []
+
+  - id: musical_instruments
+    l10n:
+      - locale: en_US
+        name: Musical Instruments
+        description: >
+          Lorem ipsum
+      - locale: fr_FR
+        name: Instruments de musique
+        description: >
+          Lorem ipsum
+        subtags: []
+
+  - id: music
+    l10n:
+      - locale: en_US
+        name: Music
+        description: >
+          Lorem ipsum
+      - locale: fr_FR
+        name: Musique
+        description: >
+          Lorem ipsum
+        subtags: []
+
+  - id: standalone_activity
+    l10n:
+      - locale: en_US
+        name: Standalone Activity
+        description: >
+          Lorem ipsum
+      - locale: fr_FR
+        name: Activité autonome
+        description: >
+          Lorem ipsum
+        subtags: []

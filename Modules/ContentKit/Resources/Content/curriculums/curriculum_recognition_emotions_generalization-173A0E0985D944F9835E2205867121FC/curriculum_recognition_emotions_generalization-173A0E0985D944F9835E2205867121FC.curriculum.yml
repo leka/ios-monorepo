@@ -24,11 +24,18 @@ hmi:
   - tablet
 
 tags:
-  - emotions
-  - drawings
-  - pictures
-  - pictograms
-  - generalization
+  - characters
+  - leka
+  - hugo
+  - louna
+  - zoe
+  - moussa
+  - oscar
+  - ladislas
+  - lucie
+  - yann
+  - hortense
+  - hugo
 
 locales:
   - en_US
@@ -58,7 +65,6 @@ l10n:
       description: |
         Care receivers are exposed to interactive activities that incorporate drawings, pictures of the Leka team, and pictograms depicting emotions such as fear, anger, sadness, joy, and disgust. The goal is to recognize the emotions presented across these different visual supports and touch the corresponding image. This journey not only encourages a deeper understanding of emotions but also cognitive flexibility in recognizing these emotions across various contexts and presentations.
 activities:
-
   - recognition_emotions_generalization_3_images_2_types-699FB7EB68DD41F1BB24DB67B10CE60D
   - recognition_emotions_generalization_3_images_3_types-C21549498D584ECBBE713AD05B4225ED
   - recognition_emotions_generalization_4_images_2_types-DDD78773E4DC4C5BB7A478790096A2CA

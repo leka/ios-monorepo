@@ -22,11 +22,9 @@ skills:
   - communication/verbal_communication/receptive_language
 
 tags:
-  - emotions
-  - drawings
   - characters
-  - Hugo
-  - Oscar
+  - hugo
+  - oscar
 
 hmi:
   - tablet
@@ -41,8 +39,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon:
-        emotion_recognition-drawings-4_images_2_types-oscar_hugo-98dcf69e-570a-4abf-a227-22704dfa10b8
+      icon: emotion_recognition-drawings-4_images_2_types-oscar_hugo-98dcf69e-570a-4abf-a227-22704dfa10b8
 
       title: Les émotions en dessins
       subtitle: Hugo - Oscar - 4
@@ -60,8 +57,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon:
-        emotion_recognition-drawings-4_images_2_types-oscar_hugo-98dcf69e-570a-4abf-a227-22704dfa10b8
+      icon: emotion_recognition-drawings-4_images_2_types-oscar_hugo-98dcf69e-570a-4abf-a227-22704dfa10b8
 
       title: Emotions in drawings
       subtitle: Hugo - Oscar - 4

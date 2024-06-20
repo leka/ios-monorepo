@@ -22,13 +22,12 @@ skills:
   - communication/verbal_communication/receptive_language
 
 tags:
-  - emotions
-  - pictures
-  - Ladislas
-  - Hortense
-  - Yann
-  - Lucie
-  - Hugo
+  - ladislas
+  - hortense
+  - yann
+  - lucie
+  - hugo
+  - leka_team
 
 hmi:
   - tablet
@@ -43,8 +42,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon:
-        emotion_recognition-pictures-4_images_4_types-lucie_hortense_hugo_ladislas_yann-6dce5dd6-9bc8-4ae3-a6d1-24a531bda2bd
+      icon: emotion_recognition-pictures-4_images_4_types-lucie_hortense_hugo_ladislas_yann-6dce5dd6-9bc8-4ae3-a6d1-24a531bda2bd
 
       title: Les émotions en photos
       subtitle: Equipe Leka - 4
@@ -62,8 +60,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon:
-        emotion_recognition-pictures-4_images_4_types-lucie_hortense_hugo_ladislas_yann-6dce5dd6-9bc8-4ae3-a6d1-24a531bda2bd
+      icon: emotion_recognition-pictures-4_images_4_types-lucie_hortense_hugo_ladislas_yann-6dce5dd6-9bc8-4ae3-a6d1-24a531bda2bd
 
       title: Emotions in pictures
       subtitle: Leka team - 4

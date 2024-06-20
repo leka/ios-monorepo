@@ -22,10 +22,8 @@ skills:
   - communication/verbal_communication/receptive_language
 
 tags:
-  - emotions
-  - drawings
   - characters
-  - Moussa
+  - moussa
 
 hmi:
   - tablet
@@ -40,8 +38,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon:
-        emotion_recognition-drawings-1_images_1_types-moussa-6fc67415-3dcf-4e99-b987-2e8e80ee4e6a
+      icon: emotion_recognition-drawings-1_images_1_types-moussa-6fc67415-3dcf-4e99-b987-2e8e80ee4e6a
 
       title: Les émotions en dessins
       subtitle: Moussa - 1
@@ -59,8 +56,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon:
-        emotion_recognition-drawings-1_images_1_types-moussa-6fc67415-3dcf-4e99-b987-2e8e80ee4e6a
+      icon: emotion_recognition-drawings-1_images_1_types-moussa-6fc67415-3dcf-4e99-b987-2e8e80ee4e6a
 
       title: Emotions in drawings
       subtitle: Moussa - 1

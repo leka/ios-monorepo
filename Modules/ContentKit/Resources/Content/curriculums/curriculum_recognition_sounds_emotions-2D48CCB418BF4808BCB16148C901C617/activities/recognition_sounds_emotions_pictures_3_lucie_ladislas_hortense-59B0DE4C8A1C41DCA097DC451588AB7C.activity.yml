@@ -20,11 +20,9 @@ skills:
   - sensory_interaction
 
 tags:
-  - emotions
-  - sounds
-  - Lucie
-  - Hortense
-  - Ladislas
+  - lucie
+  - hortense
+  - ladislas
 
 hmi:
   - tablet
@@ -39,8 +37,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon:
-        emotion_recognition-sounds-3_hortense-lucie-ladislas-85b0af03-cce2-4794-80b4-99f6f2b586c6
+      icon: emotion_recognition-sounds-3_hortense-lucie-ladislas-85b0af03-cce2-4794-80b4-99f6f2b586c6
 
       title: Sons des émotions
       subtitle: Lucie - Hortense - Ladislas - 3
@@ -58,8 +55,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon:
-        emotion_recognition-sounds-3_hortense-lucie-ladislas-85b0af03-cce2-4794-80b4-99f6f2b586c6
+      icon: emotion_recognition-sounds-3_hortense-lucie-ladislas-85b0af03-cce2-4794-80b4-99f6f2b586c6
 
       title: Emotions sounds
       subtitle: Lucie - Hortense - Ladislas - 3

@@ -19,7 +19,7 @@ skills:
   - recognition/weather_elements
 
 tags:
-  - meteo
+  - weather_elements
 
 hmi:
   - tablet
@@ -75,7 +75,6 @@ exercises_payload:
 
   exercise_groups:
     - group:
-
         - instructions:
             - locale: fr_FR
               value: Regarde l'image. Quel temps fait-il ? ?

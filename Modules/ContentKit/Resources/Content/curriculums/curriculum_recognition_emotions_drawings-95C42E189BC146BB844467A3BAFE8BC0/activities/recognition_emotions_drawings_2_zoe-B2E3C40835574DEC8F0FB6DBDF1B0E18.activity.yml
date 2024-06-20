@@ -22,9 +22,7 @@ skills:
   - communication/verbal_communication/receptive_language
 
 tags:
-  - emotions
-  - drawings
-  - Zoe
+  - zoe
   - characters
 
 hmi:
@@ -40,8 +38,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon:
-        emotion_recognition-drawings-2_images_1_types-zoe-7b77ed81-845c-4a86-adee-66de91f51352
+      icon: emotion_recognition-drawings-2_images_1_types-zoe-7b77ed81-845c-4a86-adee-66de91f51352
 
       title: Les émotions en dessins
       subtitle: Zoe - 2
@@ -59,8 +56,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon:
-        emotion_recognition-drawings-2_images_1_types-zoe-7b77ed81-845c-4a86-adee-66de91f51352
+      icon: emotion_recognition-drawings-2_images_1_types-zoe-7b77ed81-845c-4a86-adee-66de91f51352
 
       title: Emotions in drawings
       subtitle: Zoe - 2

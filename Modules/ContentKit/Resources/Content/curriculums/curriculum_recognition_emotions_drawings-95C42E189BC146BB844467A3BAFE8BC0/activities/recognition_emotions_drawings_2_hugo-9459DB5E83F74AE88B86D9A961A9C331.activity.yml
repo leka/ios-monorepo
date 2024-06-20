@@ -22,9 +22,7 @@ skills:
   - communication/verbal_communication/receptive_language
 
 tags:
-  - emotions
-  - drawings
-  - Hugo
+  - hugo
   - characters
 
 hmi:
@@ -40,8 +38,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon:
-        emotion_recognition-drawings-2_images_1_types-hugo-3e2d5e0e-ba42-4a4b-8ce3-ce3855bfa207
+      icon: emotion_recognition-drawings-2_images_1_types-hugo-3e2d5e0e-ba42-4a4b-8ce3-ce3855bfa207
 
       title: Les émotions en dessins
       subtitle: Hugo - 2
@@ -59,8 +56,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon:
-        emotion_recognition-drawings-2_images_1_types-hugo-3e2d5e0e-ba42-4a4b-8ce3-ce3855bfa207
+      icon: emotion_recognition-drawings-2_images_1_types-hugo-3e2d5e0e-ba42-4a4b-8ce3-ce3855bfa207
 
       title: Emotions in drawings
       subtitle: Hugo - 2

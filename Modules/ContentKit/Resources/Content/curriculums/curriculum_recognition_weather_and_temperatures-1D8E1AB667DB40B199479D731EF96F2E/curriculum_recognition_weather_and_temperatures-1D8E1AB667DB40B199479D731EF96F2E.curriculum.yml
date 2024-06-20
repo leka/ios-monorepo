@@ -17,9 +17,7 @@ skills:
   - association
 
 tags:
-  - weather
-  - temperature
-  - climate
+  - weather_elements
 
 hmi:
   - tablet

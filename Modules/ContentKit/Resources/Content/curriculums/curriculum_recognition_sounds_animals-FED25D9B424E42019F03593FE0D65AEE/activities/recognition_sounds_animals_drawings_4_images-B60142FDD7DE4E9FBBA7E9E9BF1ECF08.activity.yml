@@ -21,7 +21,6 @@ skills:
 
 tags:
   - animals
-  - sounds
 
 hmi:
   - tablet
@@ -250,7 +249,6 @@ exercises_payload:
                 type: image
               - value: pictograms-animals-forest-bird_robin_red-005B
                 type: image
-
 
         - instructions:
             - locale: fr_FR

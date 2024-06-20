@@ -20,6 +20,7 @@ skills:
 
 tags:
   - colors
+  - standalone_activity
 
 hmi:
   - tablet_robot

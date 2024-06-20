@@ -22,9 +22,7 @@ skills:
   - communication/verbal_communication/receptive_language
 
 tags:
-  - emotions
-  - pictures
-  - Hortense
+  - hortense
 
 hmi:
   - tablet
@@ -39,8 +37,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon:
-        emotion_recognition-pictures-4_images_1_types-hortense-e64a56b0-0481-4688-b285-80fcf3020bba
+      icon: emotion_recognition-pictures-4_images_1_types-hortense-e64a56b0-0481-4688-b285-80fcf3020bba
 
       title: Les émotions en photos
       subtitle: Hortense - 4
@@ -58,8 +55,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon:
-        emotion_recognition-pictures-4_images_1_types-hortense-e64a56b0-0481-4688-b285-80fcf3020bba
+      icon: emotion_recognition-pictures-4_images_1_types-hortense-e64a56b0-0481-4688-b285-80fcf3020bba
 
       title: Emotions in pictures
       subtitle: Hortense - 4

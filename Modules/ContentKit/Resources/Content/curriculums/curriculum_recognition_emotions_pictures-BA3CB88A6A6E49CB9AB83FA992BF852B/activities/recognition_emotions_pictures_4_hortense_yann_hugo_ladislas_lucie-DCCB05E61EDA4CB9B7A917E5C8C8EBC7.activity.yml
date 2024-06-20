@@ -22,13 +22,11 @@ skills:
   - communication/verbal_communication/receptive_language
 
 tags:
-  - emotions
-  - pictures
-  - Ladislas
-  - Hortense
-  - Yann
-  - Lucie
-  - Hugo
+  - ladislas
+  - hortense
+  - yann
+  - lucie
+  - hugo
 
 hmi:
   - tablet
@@ -43,8 +41,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon:
-        emotion_recognition-pictures-4_images_1_types-ladislas_lucie_yann_hortense_hugo-46042e54-7d41-4c4c-a40a-0dad3b51b5b0
+      icon: emotion_recognition-pictures-4_images_1_types-ladislas_lucie_yann_hortense_hugo-46042e54-7d41-4c4c-a40a-0dad3b51b5b0
 
       title: Les émotions en photos
       subtitle: Ladislas - Lucie - Yann - Hortense - Hugo - 4
@@ -62,8 +59,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon:
-        emotion_recognition-pictures-4_images_1_types-ladislas_lucie_yann_hortense_hugo-46042e54-7d41-4c4c-a40a-0dad3b51b5b0
+      icon: emotion_recognition-pictures-4_images_1_types-ladislas_lucie_yann_hortense_hugo-46042e54-7d41-4c4c-a40a-0dad3b51b5b0
 
       title: Emotions in pictures
       subtitle: Ladislas - Lucie - Yann - Hortense - Hugo - 4

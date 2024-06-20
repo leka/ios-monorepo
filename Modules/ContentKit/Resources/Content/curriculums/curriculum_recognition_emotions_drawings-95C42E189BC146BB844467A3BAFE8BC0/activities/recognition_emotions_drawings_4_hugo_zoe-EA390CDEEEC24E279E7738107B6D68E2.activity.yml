@@ -22,11 +22,9 @@ skills:
   - communication/verbal_communication/receptive_language
 
 tags:
-  - emotions
-  - drawings
   - characters
-  - Zoe
-  - Hugo
+  - zoe
+  - hugo
 
 hmi:
   - tablet
@@ -41,8 +39,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon:
-        emotion_recognition-drawings-4_images_2_types-zoe_hugo-75a91020-efc0-4350-8b79-3371489fa764
+      icon: emotion_recognition-drawings-4_images_2_types-zoe_hugo-75a91020-efc0-4350-8b79-3371489fa764
 
       title: Les émotions en dessins
       subtitle: Zoe - Hugo - 4
@@ -60,8 +57,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon:
-        emotion_recognition-drawings-4_images_2_types-zoe_hugo-75a91020-efc0-4350-8b79-3371489fa764
+      icon: emotion_recognition-drawings-4_images_2_types-zoe_hugo-75a91020-efc0-4350-8b79-3371489fa764
 
       title: Emotions in drawings
       subtitle: Zoe - Hugo - 4

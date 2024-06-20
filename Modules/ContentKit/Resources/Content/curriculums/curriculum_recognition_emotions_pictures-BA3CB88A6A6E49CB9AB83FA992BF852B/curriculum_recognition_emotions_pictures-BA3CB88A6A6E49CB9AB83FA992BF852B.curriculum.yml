@@ -24,10 +24,12 @@ hmi:
   - tablet
 
 tags:
-  - emotions
-  - pictures
-  - real_people
-  - Leka_team
+  - ladislas
+  - hortense
+  - yann
+  - lucie
+  - hugo
+  - leka_team
 
 locales:
   - en_US

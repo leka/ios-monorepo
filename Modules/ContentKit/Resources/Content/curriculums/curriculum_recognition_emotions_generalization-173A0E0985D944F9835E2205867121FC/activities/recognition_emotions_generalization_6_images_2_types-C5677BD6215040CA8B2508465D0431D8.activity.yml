@@ -22,23 +22,18 @@ skills:
   - communication/verbal_communication/receptive_language
 
 tags:
-  - emotions
-  - generalization
   - characters
-  - pictures
-  - drawings
-  - pictograms
   - leka
-  - Hugo
-  - Louna
-  - Zoé
-  - Moussa
-  - Oscar
-  - Ladislas
-  - Lucie
-  - Yann
-  - Hortense
-  - Hugo
+  - hugo
+  - louna
+  - zoe
+  - moussa
+  - oscar
+  - ladislas
+  - lucie
+  - yann
+  - hortense
+  - hugo
 
 hmi:
   - tablet
@@ -53,8 +48,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon:
-        emotion_recognition-generalization-6_images_2_types-b7f10e00-5d59-48fa-8c30-fa9bbd3c738a
+      icon: emotion_recognition-generalization-6_images_2_types-b7f10e00-5d59-48fa-8c30-fa9bbd3c738a
 
       title: Généralisation des émotions
       subtitle: Généralisation - 2 types - 6 images
@@ -72,8 +66,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon:
-        emotion_recognition-generalization-6_images_2_types-b7f10e00-5d59-48fa-8c30-fa9bbd3c738a
+      icon: emotion_recognition-generalization-6_images_2_types-b7f10e00-5d59-48fa-8c30-fa9bbd3c738a
 
       title: Emotions generalization
       subtitle: Generalisation - 2 types - 6 images

@@ -22,8 +22,6 @@ skills:
   - communication/verbal_communication/receptive_language
 
 tags:
-  - emotions
-  - pictograms
   - leka
 
 hmi:
@@ -39,8 +37,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon:
-        emotion_recognition-pictograms-1_images_1_types-leka-b7018cde-3d47-4914-a36f-54b531d0ad7b
+      icon: emotion_recognition-pictograms-1_images_1_types-leka-b7018cde-3d47-4914-a36f-54b531d0ad7b
 
       title: Les émotions en pictogrammes
       subtitle: Leka - 1
@@ -58,8 +55,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon:
-        emotion_recognition-pictograms-1_images_1_types-leka-b7018cde-3d47-4914-a36f-54b531d0ad7b
+      icon: emotion_recognition-pictograms-1_images_1_types-leka-b7018cde-3d47-4914-a36f-54b531d0ad7b
 
       title: Emotions in pictograms
       subtitle: Leka - 1

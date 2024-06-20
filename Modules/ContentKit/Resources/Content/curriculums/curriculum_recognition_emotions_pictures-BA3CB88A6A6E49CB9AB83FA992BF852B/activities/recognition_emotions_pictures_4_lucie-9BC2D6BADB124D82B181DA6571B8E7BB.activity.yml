@@ -22,9 +22,7 @@ skills:
   - communication/verbal_communication/receptive_language
 
 tags:
-  - emotions
-  - pictures
-  - Lucie
+  - lucie
 
 hmi:
   - tablet
@@ -39,8 +37,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon:
-        emotion_recognition-pictures-4_images_1_types-lucie-540372bf-1e0d-4969-a49c-61d0bfb7b579
+      icon: emotion_recognition-pictures-4_images_1_types-lucie-540372bf-1e0d-4969-a49c-61d0bfb7b579
 
       title: Les émotions en photos
       subtitle: Lucie - 4
@@ -58,8 +55,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon:
-        emotion_recognition-pictures-4_images_1_types-lucie-540372bf-1e0d-4969-a49c-61d0bfb7b579
+      icon: emotion_recognition-pictures-4_images_1_types-lucie-540372bf-1e0d-4969-a49c-61d0bfb7b579
 
       title: Emotions in pictures
       subtitle: Lucie - 4

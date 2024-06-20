@@ -22,10 +22,8 @@ skills:
   - communication/verbal_communication/receptive_language
 
 tags:
-  - emotions
-  - drawings
   - characters
-  - Louna
+  - louna
 
 hmi:
   - tablet
@@ -40,8 +38,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon:
-        emotion_recognition-drawings-1_images_1_types-louna-4a1ea3ed-522c-4c2e-a414-1d52f01daeee
+      icon: emotion_recognition-drawings-1_images_1_types-louna-4a1ea3ed-522c-4c2e-a414-1d52f01daeee
 
       title: Les émotions en dessins
       subtitle: Louna - 1
@@ -59,8 +56,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon:
-        emotion_recognition-drawings-1_images_1_types-louna-4a1ea3ed-522c-4c2e-a414-1d52f01daeee
+      icon: emotion_recognition-drawings-1_images_1_types-louna-4a1ea3ed-522c-4c2e-a414-1d52f01daeee
 
       title: Emotions in drawings
       subtitle: Louna - 1

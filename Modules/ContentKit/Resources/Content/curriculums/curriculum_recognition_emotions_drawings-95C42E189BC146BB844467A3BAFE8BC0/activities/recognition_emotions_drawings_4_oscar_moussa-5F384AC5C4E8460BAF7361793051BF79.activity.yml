@@ -22,11 +22,9 @@ skills:
   - communication/verbal_communication/receptive_language
 
 tags:
-  - emotions
-  - drawings
   - characters
-  - Moussa
-  - Oscar
+  - moussa
+  - oscar
 
 hmi:
   - tablet
@@ -41,8 +39,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon:
-        emotion_recognition-drawings-4_images_2_types-oscar_moussa-2a3657f0-a247-4a9a-b0c7-0039a9d4da70
+      icon: emotion_recognition-drawings-4_images_2_types-oscar_moussa-2a3657f0-a247-4a9a-b0c7-0039a9d4da70
 
       title: Les émotions en dessins
       subtitle: Moussa - Oscar - 4
@@ -60,8 +57,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon:
-        emotion_recognition-drawings-4_images_2_types-oscar_moussa-2a3657f0-a247-4a9a-b0c7-0039a9d4da70
+      icon: emotion_recognition-drawings-4_images_2_types-oscar_moussa-2a3657f0-a247-4a9a-b0c7-0039a9d4da70
 
       title: Emotions in drawings
       subtitle: Moussa - Oscar - 4

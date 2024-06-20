@@ -30,7 +30,7 @@ types:
   - group
 
 tags:
-  - team_play
+  - standalone_activity
 
 locales:
   - en_US

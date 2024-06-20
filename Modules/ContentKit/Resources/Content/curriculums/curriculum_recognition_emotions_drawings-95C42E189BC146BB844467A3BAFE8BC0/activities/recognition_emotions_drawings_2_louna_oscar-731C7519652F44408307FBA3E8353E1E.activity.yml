@@ -22,11 +22,9 @@ skills:
   - communication/verbal_communication/receptive_language
 
 tags:
-  - emotions
-  - drawings
   - characters
-  - Oscar
-  - Louna
+  - oscar
+  - louna
 
 hmi:
   - tablet
@@ -41,8 +39,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon:
-        emotion_recognition-drawings-2_images_2_types-oscar_louna-a5b964de-26d8-47b2-9ae0-333e4ba97e83
+      icon: emotion_recognition-drawings-2_images_2_types-oscar_louna-a5b964de-26d8-47b2-9ae0-333e4ba97e83
 
       title: Les émotions en dessins
       subtitle: Oscar - Louna - 2
@@ -60,8 +57,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon:
-        emotion_recognition-drawings-2_images_2_types-oscar_louna-a5b964de-26d8-47b2-9ae0-333e4ba97e83
+      icon: emotion_recognition-drawings-2_images_2_types-oscar_louna-a5b964de-26d8-47b2-9ae0-333e4ba97e83
 
       title: Emotions in drawings
       subtitle: Oscar - Louna - 2

@@ -22,10 +22,8 @@ skills:
   - communication/verbal_communication/receptive_language
 
 tags:
-  - emotions
-  - pictures
-  - Lucie
-  - Ladislas
+  - lucie
+  - ladislas
 
 hmi:
   - tablet
@@ -40,8 +38,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon:
-        emotion_recognition-pictures-2_images_2_types-lucie_ladislas-b9988679-9d34-49ff-bda9-0802fe83efa9
+      icon: emotion_recognition-pictures-2_images_2_types-lucie_ladislas-b9988679-9d34-49ff-bda9-0802fe83efa9
 
       title: Les émotions en photos
       subtitle: Lucie - Ladislas - 2
@@ -59,8 +56,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon:
-        emotion_recognition-pictures-2_images_2_types-lucie_ladislas-b9988679-9d34-49ff-bda9-0802fe83efa9
+      icon: emotion_recognition-pictures-2_images_2_types-lucie_ladislas-b9988679-9d34-49ff-bda9-0802fe83efa9
 
       title: Emotions in pictures
       subtitle: Lucie - Ladislas - 2

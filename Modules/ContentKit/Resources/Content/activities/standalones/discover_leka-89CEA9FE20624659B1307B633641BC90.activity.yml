@@ -18,9 +18,7 @@ skills:
   - familiarization_with_leka
 
 tags:
-  - pairing
-  - familiarization
-  - discover_leka
+  - standalone_activity
 
 hmi:
   - robot

@@ -22,14 +22,12 @@ skills:
   - communication/verbal_communication/receptive_language
 
 tags:
-  - emotions
-  - drawings
   - characters
-  - Oscar
-  - Zoe
-  - Moussa
-  - Louna
-  - Hugo
+  - oscar
+  - zoe
+  - moussa
+  - louna
+  - hugo
 
 hmi:
   - tablet
@@ -44,8 +42,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon:
-        emotion_recognition-drawings-4_images_4_types-oscar_louna_moussa_zoe_hugo-9d4ab4af-a683-4f28-b8bd-727d65fa0bbd
+      icon: emotion_recognition-drawings-4_images_4_types-oscar_louna_moussa_zoe_hugo-9d4ab4af-a683-4f28-b8bd-727d65fa0bbd
 
       title: Les émotions en dessins
       subtitle: Equipe Leka - 4
@@ -63,8 +60,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon:
-        emotion_recognition-drawings-4_images_4_types-oscar_louna_moussa_zoe_hugo-9d4ab4af-a683-4f28-b8bd-727d65fa0bbd
+      icon: emotion_recognition-drawings-4_images_4_types-oscar_louna_moussa_zoe_hugo-9d4ab4af-a683-4f28-b8bd-727d65fa0bbd
 
       title: Emotions in drawings
       subtitle: Leka team - 4

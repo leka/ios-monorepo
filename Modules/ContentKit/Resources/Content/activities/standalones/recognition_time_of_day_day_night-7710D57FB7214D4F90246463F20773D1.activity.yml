@@ -20,8 +20,8 @@ skills:
   - time_and_temporality_understanding
 
 tags:
-  - meteo
-  - day_and_night
+  - weather_elements
+  - standalone_activity
 
 hmi:
   - tablet

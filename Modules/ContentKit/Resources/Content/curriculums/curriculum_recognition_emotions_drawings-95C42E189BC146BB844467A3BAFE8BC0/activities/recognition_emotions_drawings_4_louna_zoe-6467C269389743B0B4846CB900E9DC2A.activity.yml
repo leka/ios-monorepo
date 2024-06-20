@@ -22,11 +22,9 @@ skills:
   - communication/verbal_communication/receptive_language
 
 tags:
-  - emotions
-  - drawings
   - characters
-  - Zoe
-  - Louna
+  - zoe
+  - louna
 
 hmi:
   - tablet
@@ -41,8 +39,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon:
-        emotion_recognition-drawings-4_images_2_types-zoe_louna-2895687a-0515-4936-b60f-9e4b9669af95
+      icon: emotion_recognition-drawings-4_images_2_types-zoe_louna-2895687a-0515-4936-b60f-9e4b9669af95
 
       title: Les émotions en dessins
       subtitle: Zoe - Louna - 4
@@ -60,8 +57,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon:
-        emotion_recognition-drawings-4_images_2_types-zoe_louna-2895687a-0515-4936-b60f-9e4b9669af95
+      icon: emotion_recognition-drawings-4_images_2_types-zoe_louna-2895687a-0515-4936-b60f-9e4b9669af95
 
       title: Emotions in drawings
       subtitle: Zoe - Louna - 4

@@ -22,10 +22,8 @@ skills:
   - communication/verbal_communication/receptive_language
 
 tags:
-  - emotions
-  - pictures
-  - Hugo
-  - Ladislas
+  - hugo
+  - ladislas
 
 hmi:
   - tablet
@@ -40,8 +38,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon:
-        emotion_recognition-pictures-2_images_2_types-ladislas_hugo-4246413b-2fe4-4b53-aa0b-3b170f053eda
+      icon: emotion_recognition-pictures-2_images_2_types-ladislas_hugo-4246413b-2fe4-4b53-aa0b-3b170f053eda
 
       title: Les émotions en photos
       subtitle: Hugo - Ladislas - 2
@@ -59,8 +56,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon:
-        emotion_recognition-pictures-2_images_2_types-ladislas_hugo-4246413b-2fe4-4b53-aa0b-3b170f053eda
+      icon: emotion_recognition-pictures-2_images_2_types-ladislas_hugo-4246413b-2fe4-4b53-aa0b-3b170f053eda
 
       title: Emotions in pictures
       subtitle: Hugo - Ladislas - 2

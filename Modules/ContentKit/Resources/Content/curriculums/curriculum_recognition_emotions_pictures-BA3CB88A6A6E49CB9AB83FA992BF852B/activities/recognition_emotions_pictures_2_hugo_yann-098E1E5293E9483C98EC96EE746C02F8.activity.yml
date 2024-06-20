@@ -22,10 +22,8 @@ skills:
   - communication/verbal_communication/receptive_language
 
 tags:
-  - emotions
-  - pictures
-  - Hugo
-  - Yann
+  - hugo
+  - yann
 
 hmi:
   - tablet
@@ -40,8 +38,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon:
-        emotion_recognition-pictures-2_images_2_types-yann_hugo-4abe3280-bdb4-4b5b-b3f2-1dd8cddecdd7
+      icon: emotion_recognition-pictures-2_images_2_types-yann_hugo-4abe3280-bdb4-4b5b-b3f2-1dd8cddecdd7
 
       title: Les émotions en photos
       subtitle: Hugo - Yann - 2
@@ -59,8 +56,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon:
-        emotion_recognition-pictures-2_images_2_types-yann_hugo-4abe3280-bdb4-4b5b-b3f2-1dd8cddecdd7
+      icon: emotion_recognition-pictures-2_images_2_types-yann_hugo-4abe3280-bdb4-4b5b-b3f2-1dd8cddecdd7
 
       title: Emotions in pictures
       subtitle: hugo - Yann - 2

@@ -19,9 +19,7 @@ skills:
   - recognition/weather_elements
 
 tags:
-  - meteo
-  - temperature
-  - climat
+  - weather_elements
 
 hmi:
   - tablet
@@ -77,7 +75,6 @@ exercises_payload:
 
   exercise_groups:
     - group:
-
         - instructions:
             - locale: fr_FR
               value: Regarde l'image. Fait-il chaud ou froid ?

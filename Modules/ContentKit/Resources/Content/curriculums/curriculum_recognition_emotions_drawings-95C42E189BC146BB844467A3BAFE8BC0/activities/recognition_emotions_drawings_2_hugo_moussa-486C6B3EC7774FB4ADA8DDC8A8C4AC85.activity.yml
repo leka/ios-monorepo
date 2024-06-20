@@ -22,11 +22,9 @@ skills:
   - communication/verbal_communication/receptive_language
 
 tags:
-  - emotions
-  - drawings
   - characters
-  - Moussa
-  - Hugo
+  - moussa
+  - hugo
 
 hmi:
   - tablet
@@ -41,8 +39,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon:
-        emotion_recognition-drawings-2_images_2_types-moussa_hugo-be811548-16ac-4564-886c-1cca7a6f7a67
+      icon: emotion_recognition-drawings-2_images_2_types-moussa_hugo-be811548-16ac-4564-886c-1cca7a6f7a67
 
       title: Les émotions en dessins
       subtitle: Moussa - Hugo - 2
@@ -60,8 +57,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon:
-        emotion_recognition-drawings-2_images_2_types-moussa_hugo-be811548-16ac-4564-886c-1cca7a6f7a67
+      icon: emotion_recognition-drawings-2_images_2_types-moussa_hugo-be811548-16ac-4564-886c-1cca7a6f7a67
 
       title: Emotions in drawings
       subtitle: Moussa - Hugo - 2

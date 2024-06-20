@@ -20,12 +20,7 @@ skills:
   - empathy
 
 tags:
-  - emotions
-  - context
-  - empathy
   - characters
-  - drawings
-
 
 hmi:
   - tablet
@@ -81,7 +76,6 @@ exercises_payload:
 
   exercise_groups:
     - group:
-
         - instructions:
             - locale: fr_FR
               value: Regarde l'image. Quelle est l'émotion du personnage ?
