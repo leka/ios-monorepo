@@ -8,9 +8,11 @@ import SwiftUI
 
 struct ActionButtonListen: View {
     @ObservedObject var audioPlayer: AudioPlayerViewModel
+    let audioData: String
 
     var body: some View {
         Button {
+            self.audioPlayer.setAudioData(data: self.audioData)
             self.audioPlayer.play()
         } label: {
             Image(systemName: "speaker.2")
@@ -34,7 +36,5 @@ struct ActionButtonListen: View {
 }
 
 #Preview {
-    let audioPlayer = AudioPlayer.shared
-    audioPlayer.setAudioData(data: "drums")
-    return ActionButtonListen(audioPlayer: AudioPlayerViewModel(player: audioPlayer))
+    ActionButtonListen(audioPlayer: AudioPlayerViewModel(player: AudioPlayer.shared), audioData: "drums")
 }

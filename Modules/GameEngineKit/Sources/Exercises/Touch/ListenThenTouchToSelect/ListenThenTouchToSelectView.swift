@@ -11,7 +11,8 @@ public struct ListenThenTouchToSelectView: View {
 
     public init(choices: [TouchToSelect.Choice], audioRecording: String, shuffle: Bool = false) {
         _viewModel = StateObject(wrappedValue: TouchToSelectViewViewModel(choices: choices, shuffle: shuffle))
-        AudioPlayer.shared.setAudioData(data: audioRecording)
+        self.audioData = audioRecording
+        AudioPlayer.shared.setAudioData(data: self.audioData)
         _audioPlayer = StateObject(wrappedValue: AudioPlayerViewModel(player: AudioPlayer.shared))
     }
 
@@ -27,11 +28,13 @@ public struct ListenThenTouchToSelectView: View {
         switch exercise.action {
             case let .ipad(type: .audio(name)):
                 log.debug("Audio name: \(name)")
-                AudioPlayer.shared.setAudioData(data: name)
+                self.audioData = name
+                AudioPlayer.shared.setAudioData(data: self.audioData)
                 _audioPlayer = StateObject(wrappedValue: AudioPlayerViewModel(player: AudioPlayer.shared))
             case let .ipad(type: .speech(utterance)):
                 log.debug("Speech utterance: \(utterance)")
-                SpeechSynthesizer.shared.setAudioData(data: utterance)
+                self.audioData = utterance
+                SpeechSynthesizer.shared.setAudioData(data: self.audioData)
                 _audioPlayer = StateObject(wrappedValue: AudioPlayerViewModel(player: SpeechSynthesizer.shared))
             default:
                 log.error("Action not recognized: \(String(describing: exercise.action))")
@@ -45,7 +48,7 @@ public struct ListenThenTouchToSelectView: View {
         let interface = Interface(rawValue: viewModel.choices.count)
 
         HStack(spacing: 0) {
-            ActionButtonListen(audioPlayer: self.audioPlayer)
+            ActionButtonListen(audioPlayer: self.audioPlayer, audioData: self.audioData)
                 .padding(20)
 
             Divider()
@@ -127,4 +130,5 @@ public struct ListenThenTouchToSelectView: View {
 
     @StateObject private var viewModel: TouchToSelectViewViewModel
     @StateObject private var audioPlayer: AudioPlayerViewModel
+    private let audioData: String
 }
