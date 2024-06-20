@@ -16,10 +16,14 @@ public struct ListenThenDragAndDropToAssociateView: View {
         switch exercise.action {
             case let .ipad(type: .audio(name)):
                 log.debug("Audio name: \(name)")
-                _audioPlayer = StateObject(wrappedValue: AudioPlayerViewModel(player: AudioPlayer(audioRecording: name)))
+                self.audioData = name
+                AudioPlayer.shared.setAudioData(data: self.audioData)
+                _audioPlayer = StateObject(wrappedValue: AudioPlayerViewModel(player: AudioPlayer.shared))
             case let .ipad(type: .speech(utterance)):
                 log.debug("Speech utterance: \(utterance)")
-                _audioPlayer = StateObject(wrappedValue: AudioPlayerViewModel(player: SpeechSynthesizer(sentence: utterance)))
+                self.audioData = utterance
+                SpeechSynthesizer.shared.setAudioData(data: self.audioData)
+                _audioPlayer = StateObject(wrappedValue: AudioPlayerViewModel(player: SpeechSynthesizer.shared))
             default:
                 log.error("Action not recognized: \(String(describing: exercise.action))")
                 fatalError("💥 Action not recognized: \(String(describing: exercise.action))")
@@ -30,7 +34,7 @@ public struct ListenThenDragAndDropToAssociateView: View {
 
     public var body: some View {
         HStack(spacing: 0) {
-            ActionButtonListen(audioPlayer: self.audioPlayer)
+            ActionButtonListen(audioPlayer: self.audioPlayer, audioData: self.audioData)
                 .padding(20)
 
             Divider()
@@ -57,4 +61,5 @@ public struct ListenThenDragAndDropToAssociateView: View {
     private var exercise: Exercise
     private var exerciseSharedData: ExerciseSharedData?
     @StateObject private var audioPlayer: AudioPlayerViewModel
+    private let audioData: String
 }

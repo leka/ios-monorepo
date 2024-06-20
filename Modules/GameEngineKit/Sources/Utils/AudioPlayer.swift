@@ -12,11 +12,13 @@ import Foundation
 public class AudioPlayer: NSObject, AudioPlayerProtocol {
     // MARK: Lifecycle
 
-    public init(audioRecording: String) {
-        super.init()
-        self.setAudioData(data: audioRecording)
+    override private init() {
         self.state.send(.idle)
     }
+
+    // MARK: Public
+
+    public static var shared: AudioPlayer = .init()
 
     // MARK: Internal
 
@@ -24,6 +26,8 @@ public class AudioPlayer: NSObject, AudioPlayerProtocol {
     var state = CurrentValueSubject<AudioPlayerState, Never>(.idle)
 
     func setAudioData(data: String) {
+        self.stop()
+
         self.progress.send(0.0)
         self.state.send(.idle)
 
@@ -46,13 +50,13 @@ public class AudioPlayer: NSObject, AudioPlayerProtocol {
                 self.player = try AVAudioPlayer(contentsOf: fileURL)
             }
 
-            self.player.delegate = self
+            self.player?.delegate = self
         } catch {
             log.error("mp3 file not found - \(error)")
             return
         }
 
-        self.player.prepareToPlay()
+        self.player?.prepareToPlay()
 
         Timer.publish(every: 0.1, on: .main, in: .default)
             .autoconnect()
@@ -71,23 +75,24 @@ public class AudioPlayer: NSObject, AudioPlayerProtocol {
     }
 
     func play() {
-        self.player.play()
+        self.player?.play()
         self.state.send(.playing)
     }
 
     func pause() {
-        self.player.pause()
+        self.player?.pause()
         self.state.send(.idle)
     }
 
     func stop() {
-        self.player.stop()
+        self.player?.stop()
         self.state.send(.idle)
+        self.cancellables.removeAll()
     }
 
     // MARK: Private
 
-    private var player: AVAudioPlayer!
+    private var player: AVAudioPlayer?
 
     private var cancellables: Set<AnyCancellable> = []
 }
