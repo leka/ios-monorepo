@@ -26,5 +26,6 @@ let project = Project.module(
         .external(name: "Yams"),
         .external(name: "MarkdownUI"),
         .external(name: "Fit"),
+        .external(name: "YouTubePlayerKit"),
     ]
 )

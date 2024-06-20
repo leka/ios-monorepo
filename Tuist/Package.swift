@@ -62,6 +62,10 @@ let package = Package(
             url: "https://github.com/devicekit/DeviceKit",
             exact: "5.3.0"
         ),
+        .package(
+            url: "https://github.com/SvenTiigi/YouTubePlayerKit",
+            exact: "1.8.0"
+        ),
     ]
 )
 

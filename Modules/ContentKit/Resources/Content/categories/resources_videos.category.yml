@@ -1,0 +1,77 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+l10n:
+  - locale: fr_FR
+    details:
+      title: Vidéos
+      subtitle: Les Ressources sont les supports que nous mettons à la disposion de l'ensemble des accompagnants.
+      description: Les Ressources donnent les clés d'une utilisation optimale de la solution Leka avec des supports pour organiser ses séances, des guides explicatifs de l'utilisation du robot et de l'application Leka app ainsi que d'autres astuces pour la bonne mise en place de Leka !
+  - locale: en_US
+    details:
+      title: Videos
+      subtitle: Resources are the tools we provide to all caregivers.
+      description: Resources provide the keys to optimal use of the Leka solution with materials to organize sessions, explanatory guides on using the robot and the Leka app, and other tips for successful Leka implementation!
+
+content:
+  - resource:
+      - locale: fr_FR
+        details:
+          icon: book.pages
+          title: Le chargement de Leka
+          description: Lorem ipsum
+          value: https://www.youtube.com/watch?v=jpyS5MEiRQ0
+          type: video
+      - locale: en_US
+        details:
+          icon: book.pages
+          title: Charging Leka
+          description: Lorem ipsum
+          value: https://www.youtube.com/watch?v=jpyS5MEiRQ0
+          type: video
+  - resource:
+      - locale: fr_FR
+        details:
+          icon: book.pages
+          title: Les activités cartes magiques
+          description: Lorem ipsum
+          value: https://www.youtube.com/watch?v=PyAK9tfBdfY
+          type: video
+      - locale: en_US
+        details:
+          icon: book.pages
+          title: Magic cards activities
+          description: Lorem ipsum
+          value: https://www.youtube.com/watch?v=PyAK9tfBdfY
+          type: video
+  - resource:
+      - locale: fr_FR
+        details:
+          icon: book.pages
+          title: L'accès guidé
+          description: Lorem ipsum
+          value: https://www.youtube.com/watch?v=tUJaJ7WQq1I
+          type: video
+      - locale: en_US
+        details:
+          icon: book.pages
+          title: Guided access
+          description: Lorem ipsum
+          value: https://www.youtube.com/watch?v=tUJaJ7WQq1I
+          type: video
+  - resource:
+      - locale: fr_FR
+        details:
+          icon: book.pages
+          title: L'utilisation de la carte Stop
+          description: Lorem ipsum
+          value: https://www.youtube.com/watch?v=stLhi1QnUbY
+          type: video
+      - locale: en_US
+        details:
+          icon: book.pages
+          title: Using the Stop card
+          description: Lorem ipsum
+          value: https://www.youtube.com/watch?v=stLhi1QnUbY
+          type: video

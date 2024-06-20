@@ -1,0 +1,62 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+l10n:
+  - locale: fr_FR
+    details:
+      title: Aller Plus Loin
+      subtitle: Les Ressources sont les supports que nous mettons à la disposion de l'ensemble des accompagnants.
+      description: Les Ressources donnent les clés d'une utilisation optimale de la solution Leka avec des supports pour organiser ses séances, des guides explicatifs de l'utilisation du robot et de l'application Leka app ainsi que d'autres astuces pour la bonne mise en place de Leka !
+  - locale: en_US
+    details:
+      title: Deep Dive
+      subtitle: Resources are the tools we provide to all caregivers.
+      description: Resources provide the keys to optimal use of the Leka solution with materials to organize sessions, explanatory guides on using the robot and the Leka app, and other tips for successful Leka implementation!
+
+content:
+  - resource:
+      - locale: fr_FR
+        details:
+          icon: book.pages
+          title: L’organisation des cartes magiques
+          description: Découvrez le tutoriel pour réaliser des bandes velcro et organiser le rangement de vos cartes magiques par thèmes !
+          value: magic_card_holder_FR
+          type: file
+#      - locale: en_US
+#        details:
+#          icon: book.pages
+#          title: Organizing magic cards
+#          description: Discover the tutorial to make Velcro strips and organize the storage of your magic cards by theme!
+#          value: magic_card_holder_EN
+#          type: file
+  - resource:
+      - locale: fr_FR
+        details:
+          icon: book.pages
+          title: Le déroulé d'une séance
+          description: Découvrez les 7 étapes pour organiser le déroulement de votre séance avec Leka !
+          value: session_FR
+          type: file
+#      - locale: en_US
+#        details:
+#          icon: book.pages
+#          title: Session outline
+#          description: Discover the 7 steps to organize your session with Leka!
+#          value: session_EN
+#          type: file
+  - resource:
+      - locale: fr_FR
+        details:
+          icon: book.pages
+          title: Les déplacements avec Leka
+          description: Découvrez les 6 contenants inspirés par nos utilisateurs pour vous déplacer avec Leka !
+          value: moving_with_leka_FR
+          type: file
+#      - locale: en_US
+#        details:
+#          icon: book.pages
+#          title: Moving with Leka
+#          description: Discover the 6 containers inspired by our users to move with Leka!
+#          value: moving_with_leka_EN
+#          type: file

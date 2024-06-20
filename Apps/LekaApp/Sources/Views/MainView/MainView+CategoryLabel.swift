@@ -25,9 +25,17 @@ extension MainView {
                     self.title = String(l10n.MainView.Sidebar.CategoryLabel.news.characters)
                     self.systemImage = "lightbulb.max"
 
-                case .resources:
-                    self.title = String(l10n.MainView.Sidebar.CategoryLabel.resources.characters)
-                    self.systemImage = "book.and.wrench"
+                case .resourcesFirstSteps:
+                    self.title = String(l10n.MainView.Sidebar.CategoryLabel.resourcesFirstSteps.characters)
+                    self.systemImage = "shoeprints.fill"
+
+                case .resourcesVideo:
+                    self.title = String(l10n.MainView.Sidebar.CategoryLabel.resourcesVideo.characters)
+                    self.systemImage = "film"
+
+                case .resourcesDeepDive:
+                    self.title = String(l10n.MainView.Sidebar.CategoryLabel.resourcesDeepDive.characters)
+                    self.systemImage = "paperclip"
 
                 case .curriculums:
                     self.title = String(l10n.MainView.Sidebar.CategoryLabel.curriculums.characters)
