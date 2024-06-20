@@ -8,7 +8,7 @@ import SwiftUI
 // MARK: - ExerciseInstructionsButton
 
 struct ExerciseInstructionsButton: View {
-    @StateObject var speaker = AudioPlayerViewModel(player: SpeechSynthesizer())
+    @StateObject var speaker = AudioPlayerViewModel(player: SpeechSynthesizer.shared)
     @State var instructions: String
 
     var body: some View {

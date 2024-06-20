@@ -20,7 +20,8 @@ public struct ListenThenDragAndDropToAssociateView: View {
                 _audioPlayer = StateObject(wrappedValue: AudioPlayerViewModel(player: AudioPlayer.shared))
             case let .ipad(type: .speech(utterance)):
                 log.debug("Speech utterance: \(utterance)")
-                _audioPlayer = StateObject(wrappedValue: AudioPlayerViewModel(player: SpeechSynthesizer(sentence: utterance)))
+                SpeechSynthesizer.shared.setAudioData(data: utterance)
+                _audioPlayer = StateObject(wrappedValue: AudioPlayerViewModel(player: SpeechSynthesizer.shared))
             default:
                 log.error("Action not recognized: \(String(describing: exercise.action))")
                 fatalError("💥 Action not recognized: \(String(describing: exercise.action))")

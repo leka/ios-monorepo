@@ -13,20 +13,19 @@ import SwiftUI
 class SpeechSynthesizer: NSObject, AVSpeechSynthesizerDelegate, AudioPlayerProtocol {
     // MARK: Lifecycle
 
-    override init() {
+    override private init() {
         super.init()
         self.synthesizer.delegate = self
         self.state.send(.idle)
     }
 
-    convenience init(sentence: String) {
-        self.init()
-        self.setAudioData(data: sentence)
-    }
-
     deinit {
         synthesizer.delegate = nil
     }
+
+    // MARK: Public
+
+    public static var shared: SpeechSynthesizer = .init()
 
     // MARK: Internal
 
@@ -34,6 +33,8 @@ class SpeechSynthesizer: NSObject, AVSpeechSynthesizerDelegate, AudioPlayerProto
     var state = CurrentValueSubject<AudioPlayerState, Never>(.idle)
 
     func setAudioData(data: String) {
+        self.stop()
+
         self.state.send(.idle)
 
         switch l10n.language {
