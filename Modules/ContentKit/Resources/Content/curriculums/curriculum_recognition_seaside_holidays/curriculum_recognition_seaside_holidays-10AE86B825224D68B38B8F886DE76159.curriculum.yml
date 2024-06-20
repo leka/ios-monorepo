@@ -1,0 +1,56 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: 10AE86B825224D68B38B8F886DE76159
+name: curriculum_recognition_seaside_holidays
+
+created_at: "2024-06-17T17:38:12.804177"
+last_edited_at: "2024-06-19T16:39:36.696279"
+
+status: published
+
+authors:
+  - leka
+
+skills:
+  - recognition
+
+tags:
+  - seaside holidays
+  - vacances au bord de la mer
+
+hmi:
+  - tablet
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: icon-holidays
+
+      title: Les vacances au bord de la mer
+      subtitle: Reconnaissance des objets de vacances
+
+      abstract: |
+        Ce curriculum est conçu pour développer la reconnaissance des objets typiques des vacances au bord de la mer. À travers des activités interactives sur l'écran de l'iPad, les personnes accompagnées apprennent à associer des objets aux instructions audio correspondantes.
+      description: |
+        Chaque activité dans ce curriculum aide les personnes accompagnées à identifier des objets spécifiques liés aux vacances à la mer en écoutant des instructions audio. En appuyant sur l'icône du haut-parleur sur l'écran de l'iPad, elles entendent une instruction et doivent ensuite choisir parmi plusieurs images celle qui correspond à l'instruction entendue. L'approche pédagogique vise à enrichir la compréhension auditive tout en rendant l'apprentissage amusant et interactif.
+
+  - locale: en_US
+    details:
+      icon: icon-holidays
+
+      title: Seaside holidays
+      subtitle: Recognizing seaside objects
+
+      abstract: |
+        This curriculum is aimed at enhancing the recognition of typical seaside holiday objects. Through interactive activities on the iPad screen, care receivers learn to match objects to corresponding audio instructions.
+      description: |
+        Each activity within this curriculum is designed to assist care receivers in identifying specific objects related to seaside holidays by listening to audio instructions. By pressing the speaker icon on the iPad screen, they hear an instruction and must then choose from several images the one that matches the heard instruction. The educational approach aims to enrich auditory understanding while making learning fun and interactive.
+
+activities:
+  - recognition_seaside_holidays_1-E8B904158A0D48E785C398FEEB51F007
