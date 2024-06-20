@@ -36,26 +36,20 @@ class SpeechSynthesizer: NSObject, AVSpeechSynthesizerDelegate, AudioPlayerProto
     func setAudioData(data: String) {
         self.state.send(.idle)
 
-        let voice = switch l10n.language {
+        switch l10n.language {
             case .french:
-                AVSpeechSynthesisVoice(language: "fr-FR")
+                self.voice = AVSpeechSynthesisVoice(language: "fr-FR")
             case .english:
-                AVSpeechSynthesisVoice(language: "en-US")
+                self.voice = AVSpeechSynthesisVoice(language: "en-US")
             default:
-                AVSpeechSynthesisVoice(language: "en-US")
+                self.voice = AVSpeechSynthesisVoice(language: "en-US")
         }
 
-        var finalSentence: String {
-            if l10n.language == .french {
-                data.replacingOccurrences(of: "Leka", with: "Léka")
-            } else {
-                data
-            }
+        if l10n.language == .french {
+            self.finalSentence = data.replacingOccurrences(of: "Leka", with: "Léka")
+        } else {
+            self.finalSentence = data
         }
-
-        self.utterance = AVSpeechUtterance(string: finalSentence)
-        self.utterance.rate = 0.40
-        self.utterance.voice = voice
     }
 
     func play() {
@@ -64,7 +58,10 @@ class SpeechSynthesizer: NSObject, AVSpeechSynthesizerDelegate, AudioPlayerProto
             return
         }
 
-        self.synthesizer.speak(self.utterance)
+        let utterance = AVSpeechUtterance(string: self.finalSentence)
+        utterance.rate = 0.40
+        utterance.voice = self.voice
+        self.synthesizer.speak(utterance)
     }
 
     func pause() {
@@ -85,7 +82,9 @@ class SpeechSynthesizer: NSObject, AVSpeechSynthesizerDelegate, AudioPlayerProto
 
     // MARK: Private
 
-    private var utterance = AVSpeechUtterance()
-
     private var synthesizer = AVSpeechSynthesizer()
+
+    private var voice = AVSpeechSynthesisVoice(language: "en-US")
+
+    private var finalSentence: String = ""
 }
