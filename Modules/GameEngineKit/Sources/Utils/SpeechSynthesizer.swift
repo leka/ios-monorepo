@@ -48,6 +48,8 @@ class SpeechSynthesizer: NSObject, AVSpeechSynthesizerDelegate, AudioPlayerProto
 
         if l10n.language == .french {
             self.finalSentence = data.replacingOccurrences(of: "Leka", with: "Léka")
+            self.finalSentence = self.finalSentence.replacingOccurrences(of: "sent-il", with: "sentil")
+            self.finalSentence = self.finalSentence.replacingOccurrences(of: "sent-elle", with: "sentelle")
         } else {
             self.finalSentence = data
         }
