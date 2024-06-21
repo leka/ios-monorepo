@@ -8,7 +8,7 @@ uuid: 1032EA5E0C3D421F8AC806CAA8897D97
 name: recognition_sounds_musical_instruments_drawings_2_images
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2024-04-08T13:12:12.653287"
+last_edited_at: "2024-06-21T20:38:08.017940"
 status: published
 
 authors:
@@ -19,8 +19,7 @@ skills:
   - sensory_interaction
 
 tags:
-  - musical instruments
-  - sounds
+  - musical_instruments
 
 hmi:
   - tablet

@@ -8,7 +8,7 @@ uuid: 693C02F1EF354C9C9152A4D386C04984
 name: recognition_emotions_pictures_4_hugo_yann
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2024-04-04T15:43:31.724381"
+last_edited_at: "2024-06-21T20:38:08.017940"
 status: published
 
 authors:
@@ -22,9 +22,7 @@ skills:
   - communication/verbal_communication/receptive_language
 
 tags:
-  - emotions
-  - pictures
-  - Hugo
+  - hugo
   - yann
 
 hmi:
@@ -40,8 +38,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon:
-        emotion_recognition-pictures-4_images_2_types-hugo_yann-969bc9f7-da53-41ab-ba3a-6b9c5e6773cf
+      icon: emotion_recognition-pictures-4_images_2_types-hugo_yann-969bc9f7-da53-41ab-ba3a-6b9c5e6773cf
 
       title: Les émotions en photos
       subtitle: Hugo - Yann - 4
@@ -59,8 +56,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon:
-        emotion_recognition-pictures-4_images_2_types-hugo_yann-969bc9f7-da53-41ab-ba3a-6b9c5e6773cf
+      icon: emotion_recognition-pictures-4_images_2_types-hugo_yann-969bc9f7-da53-41ab-ba3a-6b9c5e6773cf
 
       title: Emotions in pictures
       subtitle: Hugo - Yann - 4

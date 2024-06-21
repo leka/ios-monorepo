@@ -8,7 +8,7 @@ name: curriculum_receptive_language_identify_opposites
 status: published
 
 created_at: "2024-03-21T15:12:35.579066"
-last_edited_at: "2024-04-08T13:19:48.615111"
+last_edited_at: "2024-06-21T20:38:22.559016"
 authors:
   - julie_tuil
 
@@ -19,7 +19,14 @@ skills:
   - communication/verbal_communication/receptive_language/oral_comprehension
 
 tags:
-  - opposites
+  - hot
+  - cold
+  - clean
+  - dirty
+  - little
+  - big
+  - wet
+  - dry
 
 hmi:
   - tablet

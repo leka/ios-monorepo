@@ -8,7 +8,7 @@ uuid: CB995F829411449AB32E6B8A688E3DDB
 name: melody
 
 created_at: "2024-03-04T18:07:12.519606"
-last_edited_at: "2024-04-30T20:26:38.126872"
+last_edited_at: "2024-06-21T20:42:29.160480"
 status: published
 
 authors:
@@ -25,7 +25,7 @@ skills:
 tags:
   - colors
   - music
-  - sounds
+  - standalone_activity
 
 hmi:
   - tablet_robot

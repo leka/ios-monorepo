@@ -8,7 +8,7 @@ uuid: 1B6F2B9A59A64317884FD3F6C446262C
 name: categorization_sort_through_categories_of_2_images
 
 created_at: "2024-03-08T11:49:37.123532"
-last_edited_at: "2024-04-08T12:44:26.439992"
+last_edited_at: "2024-06-21T20:38:08.024030"
 status: published
 
 authors:
@@ -20,8 +20,6 @@ skills:
 
 tags:
   - clothes
-  - socks
-  - pairing
 
 hmi:
   - tablet

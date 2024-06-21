@@ -8,7 +8,7 @@ uuid: 2046B91706984344AC8CDA8F3E630FE0
 name: recognition_emotions_pictures_1_hugo
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2024-04-04T15:43:31.716196"
+last_edited_at: "2024-06-21T20:38:08.017788"
 status: published
 
 authors:
@@ -22,9 +22,7 @@ skills:
   - communication/verbal_communication/receptive_language
 
 tags:
-  - emotions
-  - pictures
-  - Hugo
+  - hugo
 
 hmi:
   - tablet
@@ -39,8 +37,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon:
-        emotion_recognition-pictures-1_images_1_types-hugo-30e86d7d-b937-4721-9e5a-3a0d1e8a1ace
+      icon: emotion_recognition-pictures-1_images_1_types-hugo-30e86d7d-b937-4721-9e5a-3a0d1e8a1ace
 
       title: Les émotions en photos
       subtitle: Hugo - 1
@@ -58,8 +55,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon:
-        emotion_recognition-pictures-1_images_1_types-hugo-30e86d7d-b937-4721-9e5a-3a0d1e8a1ace
+      icon: emotion_recognition-pictures-1_images_1_types-hugo-30e86d7d-b937-4721-9e5a-3a0d1e8a1ace
 
       title: Emotions in pictures
       subtitle: Hugo - 1
