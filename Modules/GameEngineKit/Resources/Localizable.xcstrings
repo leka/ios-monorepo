@@ -38,6 +38,132 @@
                 }
             }
         },
+        "game_engine_kit.activity_view.continue_button": {
+            "comment": "The title of the continue button",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Continue"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Continuer"
+                    }
+                }
+            }
+        },
+        "game_engine_kit.activity_view.hide_reinforcer_to_show_answers_button": {
+            "comment": "The title of the hide reinforcer to show answers button",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Review answers"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Revoir les r\u00e9ponses"
+                    }
+                }
+            }
+        },
+        "game_engine_kit.activity_view.quit_activity_alert.cancel_button_label": {
+            "comment": "Quit activity alert cancel button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Cancel"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Annuler"
+                    }
+                }
+            }
+        },
+        "game_engine_kit.activity_view.quit_activity_alert.message": {
+            "comment": "Quit activity alert message",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Are you sure you want to quit this activity?"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "\u00cates-vous s\u00fbr de vouloir quitter cette activit\u00e9 ?"
+                    }
+                }
+            }
+        },
+        "game_engine_kit.activity_view.quit_activity_alert.quit_button_label": {
+            "comment": "Quit activity alert quit button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Quit"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Quitter"
+                    }
+                }
+            }
+        },
+        "game_engine_kit.activity_view.quit_activity_alert.title": {
+            "comment": "Quit activity alert title",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Leave activity?"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Quitter l'activit\u00e9 ?"
+                    }
+                }
+            }
+        },
+        "game_engine_kit.activity_view.toolbar.dismiss_button": {
+            "comment": "The title of the dismiss button",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Dismiss"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Annuler"
+                    }
+                }
+            }
+        },
         "game_engine_kit.choice_emoji_view.emoji_error": {
             "comment": "ChoiceEmojiView emoji error ",
             "extractionState": "extracted_with_value",
@@ -488,6 +614,150 @@
                 }
             }
         },
+        "game_engine_kit.story_view.quit_story_alert.cancel_button_label": {
+            "comment": "Quit story alert cancel button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Cancel"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Annuler"
+                    }
+                }
+            }
+        },
+        "game_engine_kit.story_view.quit_story_alert.message": {
+            "comment": "Quit story alert message",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Are you sure you want to quit this activity?"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "\u00cates-vous s\u00fbr de vouloir quitter cette activit\u00e9 ?"
+                    }
+                }
+            }
+        },
+        "game_engine_kit.story_view.quit_story_alert.quit_button_label": {
+            "comment": "Quit story alert quit button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Quit"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Quitter"
+                    }
+                }
+            }
+        },
+        "game_engine_kit.story_view.quit_story_alert.title": {
+            "comment": "Quit story alert title",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Leave story?"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Quitter l'histoire ?"
+                    }
+                }
+            }
+        },
+        "game_engine_kit.success_failure_view.failure_cheering_label": {
+            "comment": "Success and Failure view cheering label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Try again!"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Essaies encore !"
+                    }
+                }
+            }
+        },
+        "game_engine_kit.success_failure_view.quit_button_label": {
+            "comment": "Success and Failure view quit button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Quit"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Quitter"
+                    }
+                }
+            }
+        },
+        "game_engine_kit.success_failure_view.success_cheering_label": {
+            "comment": "Success and Failure view cheering label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Well done, you've succeeded this activity!"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Bien jou\u00e9, tu as r\u00e9ussi l'activit\u00e9 !"
+                    }
+                }
+            }
+        },
+        "game_engine_kit.success_failure_view.success_percentage_label": {
+            "comment": "Success and Failure view success percentage label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "%.0f%% of success!"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "%.0f%% de succ\u00e8s !"
+                    }
+                }
+            }
+        },
         "game_engine_kit.super_simon.button_label": {
             "comment": "Super Simon button label",
             "extractionState": "extracted_with_value",
@@ -556,276 +826,6 @@
                     "stringUnit": {
                         "state": "translated",
                         "value": "\u274c ERREUR\nType non impl\u00e9ment\u00e9"
-                    }
-                }
-            }
-        },
-        "gameenginekit.activity_view.continue_button": {
-            "comment": "The title of the continue button",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Continue"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Continuer"
-                    }
-                }
-            }
-        },
-        "gameenginekit.activity_view.hide_reinforcer_to_show_answers_button": {
-            "comment": "The title of the hide reinforcer to show answers button",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Review answers"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Revoir les r\u00e9ponses"
-                    }
-                }
-            }
-        },
-        "gameenginekit.activity_view.quit_activity_alert.cancel_button_label": {
-            "comment": "Quit activity alert cancel button label",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Cancel"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Annuler"
-                    }
-                }
-            }
-        },
-        "gameenginekit.activity_view.quit_activity_alert.message": {
-            "comment": "Quit activity alert message",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Are you sure you want to quit this activity?"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "\u00cates-vous s\u00fbr de vouloir quitter cette activit\u00e9 ?"
-                    }
-                }
-            }
-        },
-        "gameenginekit.activity_view.quit_activity_alert.quit_button_label": {
-            "comment": "Quit activity alert quit button label",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Quit"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Quitter"
-                    }
-                }
-            }
-        },
-        "gameenginekit.activity_view.quit_activity_alert.title": {
-            "comment": "Quit activity alert title",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Leave activity?"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Quitter l'activit\u00e9 ?"
-                    }
-                }
-            }
-        },
-        "gameenginekit.activity_view.toolbar.dismiss_button": {
-            "comment": "The title of the dismiss button",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Dismiss"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Annuler"
-                    }
-                }
-            }
-        },
-        "gameenginekit.success_failure_view.failure_cheering_label": {
-            "comment": "Success and Failure view cheering label",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Try again!"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Essaies encore !"
-                    }
-                }
-            }
-        },
-        "gameenginekit.success_failure_view.quit_button_label": {
-            "comment": "Success and Failure view quit button label",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Quit"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Quitter"
-                    }
-                }
-            }
-        },
-        "gameenginekit.success_failure_view.success_cheering_label": {
-            "comment": "Success and Failure view cheering label",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Well done, you've succeeded this activity!"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Bien jou\u00e9, tu as r\u00e9ussi l'activit\u00e9 !"
-                    }
-                }
-            }
-        },
-        "gameenginekit.success_failure_view.success_percentage_label": {
-            "comment": "Success and Failure view success percentage label",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "%.0f%% of success!"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "%.0f%% de succ\u00e8s !"
-                    }
-                }
-            }
-        },
-        "story_view.quit_story_alert.cancel_button_label": {
-            "comment": "Quit story alert cancel button label",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Cancel"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Annuler"
-                    }
-                }
-            }
-        },
-        "story_view.quit_story_alert.message": {
-            "comment": "Quit story alert message",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Are you sure you want to quit this activity?"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "\u00cates-vous s\u00fbr de vouloir quitter cette histoire ?"
-                    }
-                }
-            }
-        },
-        "story_view.quit_story_alert.quit_button_label": {
-            "comment": "Quit story alert quit button label",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Quit"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Quitter"
-                    }
-                }
-            }
-        },
-        "story_view.quit_story_alert.title": {
-            "comment": "Quit story alert title",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Leave story?"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Quitter l'histoire ?"
                     }
                 }
             }
