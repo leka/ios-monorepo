@@ -15,6 +15,7 @@ def create_yaml_object():
     """Create a YAML object"""
     yaml = ruamel.yaml.YAML(typ="rt")
     yaml.indent(mapping=2, sequence=4, offset=2)
+    yaml.width = 1024
     yaml.preserve_quotes = True
     yaml.representer.add_representer(
         type(None),
