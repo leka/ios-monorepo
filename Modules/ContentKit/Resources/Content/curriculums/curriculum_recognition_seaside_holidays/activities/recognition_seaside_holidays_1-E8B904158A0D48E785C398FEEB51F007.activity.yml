@@ -38,7 +38,7 @@ l10n:
       icon: recognition_seaside_holiday
 
       title: Les vacances au bord de la mer
-      subtitle: Ecoute et trouve l'objet !
+      subtitle: 1 image
 
       short_description: |
         Une activité amusante où la personne accompagnée apprend à reconnaître et à sélectionner des objets de vacances à la mer en écoutant des instructions audio.
@@ -55,7 +55,7 @@ l10n:
       icon: recognition_seaside_holiday
 
       title: Seaside holidays
-      subtitle: Listen and find the object!
+      subtitle: 1 image
 
       short_description: |
         A fun activity where the care receiver learns to recognize and select seaside objects by listening to audio instructions.
