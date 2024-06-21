@@ -1,0 +1,47 @@
+{
+    "properties": {
+        "version": {
+            "type": "string"
+        },
+        "list": {
+            "elements": {
+                "ref": "$tag"
+            }
+        }
+    },
+    "definitions": {
+        "$locale": {
+            "enum": ["en_US", "fr_FR"]
+        },
+        "$l10n": {
+            "properties": {
+                "locale": {
+                    "ref": "$locale"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                }
+            }
+        },
+        "$tag": {
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "l10n": {
+                    "elements": {
+                        "ref": "$l10n"
+                    }
+                },
+                "subtags": {
+                    "elements": {
+                        "ref": "$tag"
+                    }
+                }
+            }
+        }
+    }
+}

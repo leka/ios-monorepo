@@ -100,6 +100,18 @@ repos:
         additional_dependencies: ["ruamel.yaml"]
         files: skills.yml
 
+      - id: check_yaml_definitions_tags
+        name: Check tags.yml
+        description: |
+          This hook checks tags.yml for:
+            - non unique ids
+            - jtd schema validation
+          It also formats the file and sorts the entries
+        entry: python3 Tools/Hooks/check_yaml_definitions_tags.py
+        language: python
+        additional_dependencies: ["ruamel.yaml"]
+        files: tags.yml
+
       - id: check_yaml_content_activities
         name: Check activity.yml files
         description: |

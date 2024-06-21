@@ -14,7 +14,8 @@ from typing import Any, Dict, List, Union
 
 import ruamel.yaml
 
-from check_yaml_definitions_skills import get_all_skills  # pylint: disable=import-error
+from check_yaml_definitions_skills import get_all_skills
+from check_yaml_definitions_tags import get_all_tags  # pylint: disable=import-error
 
 DATE_NOW_TIMESTAMP = ruamel.yaml.scalarstring.DoubleQuotedScalarString(
     datetime.now().isoformat()
@@ -108,6 +109,19 @@ def find_missing_skills(skills):
             missing_skills.append(skill)
 
     return missing_skills
+
+
+def find_missing_tags(tags):
+    """Check if the tags exist in the tags.yml"""
+    tags_ids = get_all_tags()
+
+    missing_tags = []
+
+    for tag in tags:
+        if tag not in tags_ids:
+            missing_tags.append(tag)
+
+    return missing_tags
 
 
 def find_icon(icon):

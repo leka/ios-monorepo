@@ -17,6 +17,7 @@ from modules.content import (
     is_name_same_as_filename,
     is_uuid_valid,
     find_missing_skills,
+    find_missing_tags,
     find_missing_icons,
     find_string_values_starting_with_newline,
     find_empty_string_values,
@@ -88,6 +89,12 @@ def check_curriculum(filename):
         print(f"\n❌ The following skills do not exist in {filename}")
         for skill in missing_skills:
             print(f"   - {skill}")
+
+    if missing_tags := find_missing_tags(curriculum["tags"]):
+        file_is_valid = False
+        print(f"\n❌ The following tags do not exist in {filename}")
+        for tag in missing_tags:
+            print(f"   - {tag}")
 
     if missing_icons := find_missing_icons(curriculum, of_type="curriculum"):
         file_is_valid = False
