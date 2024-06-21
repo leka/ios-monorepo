@@ -146,6 +146,60 @@
                 }
             }
         },
+        "content_kit.curriculum_grid_view.button_label": {
+            "comment": "Discover button label of CurriculumGridView ",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Discover"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "D\u00e9couvrir"
+                    }
+                }
+            }
+        },
+        "content_kit.sample_activity_list_view.start_activity_button_label": {
+            "comment": "Start activity button label on Sample Activity List view",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Start activity"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "D\u00e9marrer l'activit\u00e9"
+                    }
+                }
+            }
+        },
+        "content_kit.sample_story_list_view.start_story_button_label": {
+            "comment": "Start Story button label on Sample Story List view",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Start story"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "D\u00e9marrer l'histoire"
+                    }
+                }
+            }
+        },
         "content_kit.search_grid_view.activities_title": {
             "comment": "SearchGridView 'activities' section title",
             "extractionState": "extracted_with_value",
@@ -236,6 +290,47 @@
                 }
             }
         },
+        "content_kit.skills_grid_view.activity_count_label": {
+            "comment": "Activity count label of SkillsGridView",
+            "localizations": {
+                "en": {
+                    "variations": {
+                        "plural": {
+                            "one": {
+                                "stringUnit": {
+                                    "state": "translated",
+                                    "value": "%d activity"
+                                }
+                            },
+                            "other": {
+                                "stringUnit": {
+                                    "state": "translated",
+                                    "value": "%d activities"
+                                }
+                            }
+                        }
+                    }
+                },
+                "fr": {
+                    "variations": {
+                        "plural": {
+                            "one": {
+                                "stringUnit": {
+                                    "state": "translated",
+                                    "value": "%d activit\u00e9"
+                                }
+                            },
+                            "other": {
+                                "stringUnit": {
+                                    "state": "translated",
+                                    "value": "%d activit\u00e9s"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "content_kit.story_details_view.authors_section_title": {
             "comment": "StoryDetailsView 'authors' section title",
             "extractionState": "extracted_with_value",
@@ -304,101 +399,6 @@
                     "stringUnit": {
                         "state": "translated",
                         "value": "Comp\u00e9tences"
-                    }
-                }
-            }
-        },
-        "contentkit.curriculum_grid_view.button_label": {
-            "comment": "Discover button label of CurriculumGridView ",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Discover"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "D\u00e9couvrir"
-                    }
-                }
-            }
-        },
-        "lekaapp.sample_activity_list_view.start_activity_button_label": {
-            "comment": "Start activity button label on Sample Activity List view",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Start activity"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Commencer l'activit\u00e9"
-                    }
-                }
-            }
-        },
-        "lekaapp.sample_story_list_view.start_story_button_label": {
-            "comment": "Start Story button label on Sample Story List view",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Start story"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "D\u00e9marrer l'histoire"
-                    }
-                }
-            }
-        },
-        "lekaapp.skills_grid_view.activity_count_label": {
-            "comment": "Activity count label of SkillsGridView",
-            "localizations": {
-                "en": {
-                    "variations": {
-                        "plural": {
-                            "one": {
-                                "stringUnit": {
-                                    "state": "translated",
-                                    "value": "%d activity"
-                                }
-                            },
-                            "other": {
-                                "stringUnit": {
-                                    "state": "translated",
-                                    "value": "%d activities"
-                                }
-                            }
-                        }
-                    }
-                },
-                "fr": {
-                    "variations": {
-                        "plural": {
-                            "one": {
-                                "stringUnit": {
-                                    "state": "translated",
-                                    "value": "%d activit\u00e9"
-                                }
-                            },
-                            "other": {
-                                "stringUnit": {
-                                    "state": "translated",
-                                    "value": "%d activit\u00e9s"
-                                }
-                            }
-                        }
                     }
                 }
             }

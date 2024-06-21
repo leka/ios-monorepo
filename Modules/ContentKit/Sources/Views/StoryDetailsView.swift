@@ -157,15 +157,15 @@ extension l10n {
                                                               value: "Instructions",
                                                               comment: "StoryDetailsView 'instructions' section title")
 
-        static let startStoryButtonLabel = LocalizedString("lekaapp.sample_story_list_view.start_story_button_label",
+        static let startStoryButtonLabel = LocalizedString("content_kit.sample_story_list_view.start_story_button_label",
                                                            bundle: ContentKitResources.bundle,
                                                            value: "Start story",
                                                            comment: "Start Story button label on Sample Story List view")
     }
 }
 
-// #Preview {
-//    NavigationStack {
-//        StoryDetailsView(story: Story.mock)
-//    }
-// }
+#Preview {
+    NavigationStack {
+        StoryDetailsView(story: Story.mock)
+    }
+}
