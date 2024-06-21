@@ -4,11 +4,11 @@
 
 version: 1.0.0
 
-uuid: E8B904158A0D48E785C398FEEB51F007
-name: recognition_seaside_holidays_1
+uuid: 9C76872851904E75B323FDF5EF2DCFDF
+name: recognition_seaside_holidays_2
 
 created_at: "2024-06-17T17:38:12.804177"
-last_edited_at: "2024-06-21T17:23:32.570167"
+last_edited_at: "2024-06-20T15:57:25.469674"
 
 status: draft
 
@@ -95,6 +95,8 @@ exercises_payload:
               - value: recognition_seaside_holiday_bucket
                 type: image
                 is_right_answer: true
+              - value: recognition_seaside_holiday_shell
+                type: image
 
         - instructions:
             - locale: fr_FR
@@ -117,6 +119,8 @@ exercises_payload:
               - value: recognition_seaside_holiday_cap
                 type: image
                 is_right_answer: true
+              - value: recognition_seaside_holiday_sunglasses
+                type: image
 
         - instructions:
             - locale: fr_FR
@@ -139,6 +143,8 @@ exercises_payload:
               - value: recognition_seaside_holiday_sand_castle
                 type: image
                 is_right_answer: true
+              - value: recognition_seaside_holiday_starfish
+                type: image
 
         - instructions:
             - locale: fr_FR
@@ -161,6 +167,8 @@ exercises_payload:
               - value: recognition_seaside_holiday_shell
                 type: image
                 is_right_answer: true
+              - value: recognition_seaside_holiday_swimsuit_girl
+                type: image
 
         - instructions:
             - locale: fr_FR
@@ -183,6 +191,8 @@ exercises_payload:
               - value: recognition_seaside_holiday_shovel
                 type: image
                 is_right_answer: true
+              - value: recognition_seaside_holiday_sun_cream
+                type: image
 
         - instructions:
             - locale: fr_FR
@@ -205,6 +215,8 @@ exercises_payload:
               - value: recognition_seaside_holiday_starfish
                 type: image
                 is_right_answer: true
+              - value: recognition_seaside_holiday_sand_castle
+                type: image
 
         - instructions:
             - locale: fr_FR
@@ -227,6 +239,8 @@ exercises_payload:
               - value: recognition_seaside_holiday_sun_cream
                 type: image
                 is_right_answer: true
+              - value: recognition_seaside_holiday_sunshade
+                type: image
 
         - instructions:
             - locale: fr_FR
@@ -249,6 +263,8 @@ exercises_payload:
               - value: recognition_seaside_holiday_sun
                 type: image
                 is_right_answer: true
+              - value: recognition_seaside_holiday_sunglasses
+                type: image
 
         - instructions:
             - locale: fr_FR
@@ -271,6 +287,8 @@ exercises_payload:
               - value: recognition_seaside_holiday_sunglasses
                 type: image
                 is_right_answer: true
+              - value: recognition_seaside_holiday_swimsuit_boy
+                type: image
 
         - instructions:
             - locale: fr_FR
@@ -293,6 +311,8 @@ exercises_payload:
               - value: recognition_seaside_holiday_sunshade
                 type: image
                 is_right_answer: true
+              - value: recognition_seaside_holiday_bucket
+                type: image
 
         - instructions:
             - locale: fr_FR
@@ -315,6 +335,8 @@ exercises_payload:
               - value: recognition_seaside_holiday_swimsuit_boy
                 type: image
                 is_right_answer: true
+              - value: recognition_seaside_holiday_shell
+                type: image
 
         - instructions:
             - locale: fr_FR
@@ -337,3 +359,5 @@ exercises_payload:
               - value: recognition_seaside_holiday_swimsuit_girl
                 type: image
                 is_right_answer: true
+              - value: recognition_seaside_holiday_sunglasses
+                type: image
