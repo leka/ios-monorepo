@@ -8,7 +8,7 @@ uuid: 6A2E053D6A1D49DB8636421A50458B6F
 name: recognition_emotions_drawings_4_hugo_louna_moussa_oscar_zoe
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2024-04-04T15:43:31.717795"
+last_edited_at: "2024-06-21T20:38:08.017940"
 status: published
 
 authors:
@@ -22,14 +22,12 @@ skills:
   - communication/verbal_communication/receptive_language
 
 tags:
-  - emotions
-  - drawings
   - characters
-  - Zoe
-  - Louna
-  - Moussa
-  - Oscar
-  - Hugo
+  - zoe
+  - louna
+  - moussa
+  - oscar
+  - hugo
 
 hmi:
   - tablet
@@ -44,8 +42,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon:
-        emotion_recognition-drawings-4_images_1_types-zoe_oscar_louna_moussa_hugo-e0c4103a-8ce5-4567-b460-579ad5cdc678
+      icon: emotion_recognition-drawings-4_images_1_types-zoe_oscar_louna_moussa_hugo-e0c4103a-8ce5-4567-b460-579ad5cdc678
 
       title: Les émotions en dessins
       subtitle: Oscar - Louna - Moussa - Zoe - Hugo - 4
@@ -63,8 +60,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon:
-        emotion_recognition-drawings-4_images_4_types-oscar_louna_moussa_zoe_hugo-9d4ab4af-a683-4f28-b8bd-727d65fa0bbd
+      icon: emotion_recognition-drawings-4_images_4_types-oscar_louna_moussa_zoe_hugo-9d4ab4af-a683-4f28-b8bd-727d65fa0bbd
 
       title: Emotions in drawings
       subtitle: oscar - louna - moussa - zoe - Hugo - 4

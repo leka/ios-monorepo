@@ -8,7 +8,7 @@ uuid: 4E509EEF60244D68BBAD610675BEEC5F
 name: recognition_emotions_drawings_2_oscar
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2024-04-04T15:43:31.735959"
+last_edited_at: "2024-06-21T20:38:08.017857"
 status: published
 
 authors:
@@ -22,9 +22,7 @@ skills:
   - communication/verbal_communication/receptive_language
 
 tags:
-  - emotions
-  - drawings
-  - Oscar
+  - oscar
   - characters
 
 hmi:
@@ -40,8 +38,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon:
-        emotion_recognition-drawings-2_images_1_types-oscar-192bf178-9c89-4ef0-bbe3-84e471a0ee4f
+      icon: emotion_recognition-drawings-2_images_1_types-oscar-192bf178-9c89-4ef0-bbe3-84e471a0ee4f
 
       title: Les émotions en dessins
       subtitle: Oscar - 2
@@ -59,8 +56,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon:
-        emotion_recognition-drawings-2_images_1_types-oscar-192bf178-9c89-4ef0-bbe3-84e471a0ee4f
+      icon: emotion_recognition-drawings-2_images_1_types-oscar-192bf178-9c89-4ef0-bbe3-84e471a0ee4f
 
       title: Emotions in drawings
       subtitle: Oscar - 2

@@ -8,7 +8,7 @@ uuid: 94C14E6AA18E4FCA995B00B91103FA79
 name: recognition_sounds_musical_instruments_drawings_5_images
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2024-04-08T13:12:12.652671"
+last_edited_at: "2024-06-21T20:38:08.018683"
 status: published
 
 authors:
@@ -20,7 +20,6 @@ skills:
 
 tags:
   - musical_instruments
-  - sounds
 
 hmi:
   - tablet

@@ -8,7 +8,7 @@ uuid: 9EFAAC01288F41C0ACACCA5094FAD8E7
 name: super_simon_6_colors
 
 created_at: "2024-05-14T18:05:12.518998"
-last_edited_at: "2024-05-28T10:40:42.964332"
+last_edited_at: "2024-06-21T20:42:29.163250"
 status: published
 
 authors:
@@ -20,6 +20,7 @@ skills:
 
 tags:
   - colors
+  - standalone_activity
 
 hmi:
   - tablet_robot

@@ -7,7 +7,7 @@ uuid: 65193102AE2947439ABB82D5891EDDBA
 name: xylophone_heptatonic
 
 created_at: "2024-03-01T14:00:38.160397"
-last_edited_at: "2024-03-06T12:51:54.499453"
+last_edited_at: "2024-06-21T20:42:29.160484"
 status: published
 
 authors:
@@ -19,6 +19,7 @@ skills:
 tags:
   - colors
   - music
+  - standalone_activity
 
 hmi:
   - tablet_robot
