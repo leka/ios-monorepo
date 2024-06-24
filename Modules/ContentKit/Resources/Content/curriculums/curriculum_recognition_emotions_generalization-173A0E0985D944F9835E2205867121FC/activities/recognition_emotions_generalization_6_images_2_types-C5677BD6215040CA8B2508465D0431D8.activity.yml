@@ -8,7 +8,7 @@ uuid: C5677BD6215040CA8B2508465D0431D8
 name: recognition_emotions_generalization_6_images_2_types
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2024-06-21T20:38:08.021118"
+last_edited_at: "2024-06-24T17:07:03.681262"
 status: published
 
 authors:
@@ -16,7 +16,6 @@ authors:
 
 skills:
   - recognition
-  - recognition/basic_emotions
   - communication
   - communication/verbal_communication
   - communication/verbal_communication/receptive_language

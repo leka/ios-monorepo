@@ -8,7 +8,7 @@ uuid: 900AB87351824FACB2E289F426056034
 name: recognition_weather_and_temperatures_weather_drawings_2_images
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2024-06-21T20:38:08.017788"
+last_edited_at: "2024-06-24T17:07:03.681845"
 status: published
 
 authors:
@@ -16,7 +16,6 @@ authors:
 
 skills:
   - recognition
-  - recognition/weather_elements
 
 tags:
   - weather_elements

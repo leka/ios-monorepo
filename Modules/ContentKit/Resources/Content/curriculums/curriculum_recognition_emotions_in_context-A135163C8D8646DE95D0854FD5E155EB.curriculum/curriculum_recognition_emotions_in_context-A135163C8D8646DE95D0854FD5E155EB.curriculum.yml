@@ -8,13 +8,12 @@ name: curriculum_recognition_emotions_in_context
 status: published
 
 created_at: "2024-03-21T15:12:35.579066"
-last_edited_at: "2024-06-21T20:24:32.109085"
+last_edited_at: "2024-06-24T16:39:48.842158"
 authors:
   - leka
 
 skills:
   - recognition
-  - recognition/basic_emotions
   - empathy
 
 tags:

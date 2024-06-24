@@ -8,7 +8,7 @@ uuid: E71DD6285FB84AFEA1DCD7DF434F6B34
 name: recognition_emotions_pictures_4_ladislas
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2024-06-21T20:38:08.018683"
+last_edited_at: "2024-06-24T17:07:03.681845"
 status: published
 
 authors:
@@ -16,7 +16,6 @@ authors:
 
 skills:
   - recognition
-  - recognition/basic_emotions
   - communication
   - communication/verbal_communication
   - communication/verbal_communication/receptive_language
