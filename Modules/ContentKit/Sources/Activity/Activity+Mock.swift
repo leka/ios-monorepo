@@ -30,7 +30,6 @@ public extension Activity {
 
     skills:
       - spatial_understanding
-      - recognition/animals
       - communication/non_verbal_communication/gestures
       - communication/verbal_communication/receptive_language
       - association
