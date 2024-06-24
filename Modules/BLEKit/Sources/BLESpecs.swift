@@ -53,11 +53,10 @@ public enum BLESpecs {
 
     public enum MagicCard {
         public enum Characteristics {
-            public static let id = CBUUID(data: Data("ID".utf8) + Data([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]))
-            public static let language = CBUUID(data: Data("Language".utf8) + Data([0, 0, 0, 0, 0, 0, 0, 0]))
+            public static let idLanguage = CBUUID(data: Data("ID+LANGUAGE".utf8) + Data([0, 0, 0, 0, 0]))
         }
 
-        public static let service = CBUUID(data: Data("Magic Card".utf8 + Data([0, 0, 0, 0, 0, 0])))
+        public static let service = CBUUID(data: Data("MAGIC_CARD".utf8 + Data([0, 0, 0, 0, 0, 0])))
     }
 
     public enum FileExchange {
