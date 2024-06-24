@@ -8,7 +8,7 @@ uuid: 00DCB1EFAF0046BFA2421F4A71F44E98
 name: recognition_emotions_drawings_2_hugo_zoe
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2024-04-04T15:43:31.717795"
+last_edited_at: "2024-06-24T13:13:14.939945"
 status: published
 
 authors:
@@ -16,7 +16,6 @@ authors:
 
 skills:
   - recognition
-  - recognition/basic_emotions
   - communication
   - communication/verbal_communication
   - communication/verbal_communication/receptive_language
@@ -41,8 +40,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon:
-        emotion_recognition-drawings-2_images_2_types-zoe_hugo-53c26de7-7201-46c6-a558-03daac584f7d
+      icon: emotion_recognition-drawings-2_images_2_types-zoe_hugo-53c26de7-7201-46c6-a558-03daac584f7d
 
       title: Les émotions en dessins
       subtitle: Hugo - Zoé - 2
@@ -60,8 +58,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon:
-        emotion_recognition-drawings-2_images_2_types-zoe_hugo-53c26de7-7201-46c6-a558-03daac584f7d
+      icon: emotion_recognition-drawings-2_images_2_types-zoe_hugo-53c26de7-7201-46c6-a558-03daac584f7d
 
       title: Emotions in drawings
       subtitle: Hugo - Zoe - 2

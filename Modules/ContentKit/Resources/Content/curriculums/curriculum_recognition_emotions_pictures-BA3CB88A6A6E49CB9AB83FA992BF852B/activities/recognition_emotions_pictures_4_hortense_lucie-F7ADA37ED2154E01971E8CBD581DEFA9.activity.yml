@@ -8,7 +8,7 @@ uuid: F7ADA37ED2154E01971E8CBD581DEFA9
 name: recognition_emotions_pictures_4_hortense_lucie
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2024-04-04T15:43:31.716196"
+last_edited_at: "2024-06-24T13:13:14.905424"
 status: published
 
 authors:
@@ -16,7 +16,6 @@ authors:
 
 skills:
   - recognition
-  - recognition/basic_emotions
   - communication
   - communication/verbal_communication
   - communication/verbal_communication/receptive_language
@@ -40,8 +39,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon:
-        emotion_recognition-pictures-4_images_2_types-hortense_lucie-721a6030-75f0-4731-8ded-2f1a5ba06e69
+      icon: emotion_recognition-pictures-4_images_2_types-hortense_lucie-721a6030-75f0-4731-8ded-2f1a5ba06e69
 
       title: Les émotions en photos
       subtitle: Hortense - Lucie - 4
@@ -59,8 +57,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon:
-        emotion_recognition-pictures-4_images_2_types-hortense_lucie-721a6030-75f0-4731-8ded-2f1a5ba06e69
+      icon: emotion_recognition-pictures-4_images_2_types-hortense_lucie-721a6030-75f0-4731-8ded-2f1a5ba06e69
 
       title: Emotions in pictures
       subtitle: Hortense - Lucie - 4

@@ -8,7 +8,7 @@ uuid: C5677BD6215040CA8B2508465D0431D8
 name: recognition_emotions_generalization_6_images_2_types
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2024-04-04T15:43:31.716205"
+last_edited_at: "2024-06-24T13:13:14.939945"
 status: published
 
 authors:
@@ -16,7 +16,6 @@ authors:
 
 skills:
   - recognition
-  - recognition/basic_emotions
   - communication
   - communication/verbal_communication
   - communication/verbal_communication/receptive_language
@@ -53,8 +52,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon:
-        emotion_recognition-generalization-6_images_2_types-b7f10e00-5d59-48fa-8c30-fa9bbd3c738a
+      icon: emotion_recognition-generalization-6_images_2_types-b7f10e00-5d59-48fa-8c30-fa9bbd3c738a
 
       title: Généralisation des émotions
       subtitle: Généralisation - 2 types - 6 images
@@ -72,8 +70,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon:
-        emotion_recognition-generalization-6_images_2_types-b7f10e00-5d59-48fa-8c30-fa9bbd3c738a
+      icon: emotion_recognition-generalization-6_images_2_types-b7f10e00-5d59-48fa-8c30-fa9bbd3c738a
 
       title: Emotions generalization
       subtitle: Generalisation - 2 types - 6 images

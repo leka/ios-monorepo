@@ -8,7 +8,7 @@ uuid: 7AACD460ACBD49FA88BE66182C59833D
 name: recognition_emotions_drawings_4_zoe
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2024-04-04T15:43:31.735959"
+last_edited_at: "2024-06-24T13:13:14.922957"
 status: published
 
 authors:
@@ -16,7 +16,6 @@ authors:
 
 skills:
   - recognition
-  - recognition/basic_emotions
   - communication
   - communication/verbal_communication
   - communication/verbal_communication/receptive_language
@@ -40,8 +39,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon:
-        emotion_recognition-drawings-4_images_1_types-zoe-f8bed230-1c22-4530-b7cf-775ab3f5342b
+      icon: emotion_recognition-drawings-4_images_1_types-zoe-f8bed230-1c22-4530-b7cf-775ab3f5342b
 
       title: Les émotions en dessins
       subtitle: Zoe - 4
@@ -59,8 +57,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon:
-        emotion_recognition-drawings-4_images_1_types-zoe-f8bed230-1c22-4530-b7cf-775ab3f5342b
+      icon: emotion_recognition-drawings-4_images_1_types-zoe-f8bed230-1c22-4530-b7cf-775ab3f5342b
 
       title: Emotions in drawings
       subtitle: Zoe - 4

@@ -8,7 +8,7 @@ uuid: 59B0DE4C8A1C41DCA097DC451588AB7C
 name: recognition_sounds_emotions_pictures_3_lucie_ladislas_hortense
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2024-04-04T15:43:31.720924"
+last_edited_at: "2024-06-24T13:13:14.904297"
 status: published
 
 authors:
@@ -16,7 +16,6 @@ authors:
 
 skills:
   - recognition
-  - recognition/basic_emotions
   - sensory_interaction
 
 tags:
@@ -39,8 +38,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon:
-        emotion_recognition-sounds-3_hortense-lucie-ladislas-85b0af03-cce2-4794-80b4-99f6f2b586c6
+      icon: emotion_recognition-sounds-3_hortense-lucie-ladislas-85b0af03-cce2-4794-80b4-99f6f2b586c6
 
       title: Sons des émotions
       subtitle: Lucie - Hortense - Ladislas - 3
@@ -58,8 +56,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon:
-        emotion_recognition-sounds-3_hortense-lucie-ladislas-85b0af03-cce2-4794-80b4-99f6f2b586c6
+      icon: emotion_recognition-sounds-3_hortense-lucie-ladislas-85b0af03-cce2-4794-80b4-99f6f2b586c6
 
       title: Emotions sounds
       subtitle: Lucie - Hortense - Ladislas - 3

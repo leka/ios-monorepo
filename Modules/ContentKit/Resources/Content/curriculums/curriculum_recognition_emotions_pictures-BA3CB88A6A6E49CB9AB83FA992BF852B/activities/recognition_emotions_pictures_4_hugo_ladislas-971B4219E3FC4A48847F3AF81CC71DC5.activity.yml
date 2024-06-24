@@ -8,7 +8,7 @@ uuid: 971B4219E3FC4A48847F3AF81CC71DC5
 name: recognition_emotions_pictures_4_hugo_ladislas
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2024-04-04T15:43:31.716205"
+last_edited_at: "2024-06-24T13:13:14.922957"
 status: published
 
 authors:
@@ -16,7 +16,6 @@ authors:
 
 skills:
   - recognition
-  - recognition/basic_emotions
   - communication
   - communication/verbal_communication
   - communication/verbal_communication/receptive_language
@@ -40,8 +39,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon:
-        emotion_recognition-pictures-4_images_2_types-hugo_ladislas-97938c8e-6f21-4fff-a24e-a51ae46baba6
+      icon: emotion_recognition-pictures-4_images_2_types-hugo_ladislas-97938c8e-6f21-4fff-a24e-a51ae46baba6
 
       title: Les émotions en photos
       subtitle: Hugo - Ladislas - 4
@@ -59,8 +57,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon:
-        emotion_recognition-pictures-4_images_2_types-hugo_ladislas-97938c8e-6f21-4fff-a24e-a51ae46baba6
+      icon: emotion_recognition-pictures-4_images_2_types-hugo_ladislas-97938c8e-6f21-4fff-a24e-a51ae46baba6
 
       title: Emotions in pictures
       subtitle: Hugo - Ladislas - 4
