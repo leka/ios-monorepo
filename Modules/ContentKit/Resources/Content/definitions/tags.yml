@@ -639,3 +639,27 @@ list:
         description: >
           Lorem ipsum
         subtags: []
+
+  - id: holidays
+    l10n:
+      - locale: en_US
+        name: Holidays
+        description: >
+          Lorem ipsum
+      - locale: fr_FR
+        name: Vacances
+        description: >
+          Lorem ipsum
+        subtags: []
+
+  - id: seaside
+    l10n:
+      - locale: en_US
+        name: Seaside
+        description: >
+          Lorem ipsum
+      - locale: fr_FR
+        name: Bord de mer
+        description: >
+          Lorem ipsum
+        subtags: []
