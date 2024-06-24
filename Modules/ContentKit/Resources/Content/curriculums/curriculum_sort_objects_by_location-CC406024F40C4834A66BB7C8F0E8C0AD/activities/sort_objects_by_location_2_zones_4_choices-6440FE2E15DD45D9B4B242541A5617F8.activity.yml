@@ -18,16 +18,9 @@ skills:
   - association
   - association/sorting
   - recognition
-  - recognition/places
 
 tags:
-  - lieux
-  - musée
-  - théâtre
-  - cinéma
-  - piscine
-  - école
-  - supermarché
+  - places
 
 hmi:
   - tablet
