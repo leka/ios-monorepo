@@ -663,3 +663,15 @@ list:
         description: >
           Lorem ipsum
         subtags: []
+
+  - id: sports
+    l10n:
+      - locale: en_US
+        name: Sports
+        description: >
+          Lorem ipsum
+      - locale: fr_FR
+        name: Sports
+        description: >
+          Lorem ipsum
+        subtags: []
