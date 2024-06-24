@@ -34,6 +34,8 @@ public class Robot {
     public var battery: CurrentValueSubject<Int, Never> = CurrentValueSubject(0)
     public var negotiatedMTU: CurrentValueSubject<Int, Never> = CurrentValueSubject(0)
 
+    public var magicCard: CurrentValueSubject<MagicCard, Never> = CurrentValueSubject(.none)
+
     // MARK: - Internal properties
 
     public var connectedPeripheral: RobotPeripheral? {
@@ -41,11 +43,13 @@ public class Robot {
             registerBatteryCharacteristicNotificationCallback()
             registerChargingStatusNotificationCallback()
             registerNegotiatedMTUNotificationCallback()
+            registerMagicCardsNotificationCallback()
 
             registerOSVersionReadCallback()
             registerSerialNumberReadCallback()
             registerChargingStatusReadCallback()
             registerNegotiatedMTUReadCallback()
+            registerMagicCardsReadCallback()
 
             self.connectedPeripheral?.discoverAndListenForUpdates()
             self.connectedPeripheral?.readReadOnlyCharacteristics()

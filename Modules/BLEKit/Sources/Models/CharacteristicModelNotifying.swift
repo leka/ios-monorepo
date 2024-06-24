@@ -51,12 +51,4 @@ public let kDefaultNotifyingCharacteristics: Set<CharacteristicModelNotifying> =
         characteristicUUID: BLESpecs.Monitoring.Characteristics.chargingStatus,
         serviceUUID: BLESpecs.Monitoring.service
     ),
-    CharacteristicModelNotifying(
-        characteristicUUID: BLESpecs.MagicCard.Characteristics.id,
-        serviceUUID: BLESpecs.MagicCard.service
-    ),
-    CharacteristicModelNotifying(
-        characteristicUUID: BLESpecs.MagicCard.Characteristics.language,
-        serviceUUID: BLESpecs.MagicCard.service
-    ),
 ]
