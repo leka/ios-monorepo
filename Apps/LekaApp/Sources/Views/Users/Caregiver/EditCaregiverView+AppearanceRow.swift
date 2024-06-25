@@ -28,6 +28,8 @@ extension EditCaregiverView {
                         self.caregiver.colorScheme = $0 ? .dark : .light
                     }
                 ))
+                // TODO: (@team) - Move to iOS17 support - Maybe add ToggleStyle to support accentColor
+                // .toggleStyle(SwitchToggleStyle(tint: self.styleManager.accentColor!))
             }
         }
 

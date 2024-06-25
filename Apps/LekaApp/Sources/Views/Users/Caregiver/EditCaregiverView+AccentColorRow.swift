@@ -42,6 +42,7 @@ extension EditCaregiverView {
             let isSelected: Bool
 
             var body: some View {
+                // TODO: (@team) - Move to iOS17 support - Remove useless VStack below
                 VStack {
                     Circle()
                         .fill(self.color)

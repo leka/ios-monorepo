@@ -10,7 +10,13 @@ import SwiftUI
 
 // MARK: - CreateCaregiverViewModel
 
-class CreateCaregiverViewModel: ObservableObject {
+// TODO: (@team) - Move to iOS17 support - Replace @ObservableObject/@ObservedObject with the new Observation Framework
+// import Observation
+// No more @Published vars
+// @State instead of @ObservedObject
+
+@Observable
+class CreateCaregiverViewModel /*: ObservableObject */ {
     // MARK: Internal
 
     var caregiverManager: CaregiverManager = .shared
@@ -96,6 +102,11 @@ struct CreateCaregiverView: View {
                         in: ...Date(),
                         displayedComponents: [.date]
                     )
+                    // [] TODO: (@team) - Move to iOS17 support - Update the use of .onChange() modifier.
+                    // See below
+                    // .onChange(of: birthdate) {
+                    //     self.newCaregiver.birthdate = self.birthdate
+                    // }
                     .onChange(of: self.birthdate, perform: { _ in
                         self.newCaregiver.birthdate = self.birthdate
                     })
@@ -141,7 +152,7 @@ struct CreateCaregiverView: View {
     // MARK: Private
 
     @State private var isCaregiverCreated: Bool = false
-    @StateObject private var viewModel = CreateCaregiverViewModel()
+    @State private var viewModel = CreateCaregiverViewModel()
 
     @State private var newCaregiver = Caregiver()
     @State private var isAvatarPickerPresented: Bool = false

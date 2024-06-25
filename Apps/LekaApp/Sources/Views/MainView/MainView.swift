@@ -214,9 +214,12 @@ struct MainView: View {
                             self.carereceiverManager.setCurrentCarereceivers(to: carereceivers)
                             self.navigation.currentActivity = activity
                             self.navigation.currentStory = story
-                            if let activity = self.navigation.currentActivity {
+                            // [] TODO: (@team) - Values below are defined but not used
+                            // replace with if let _ = ... or check against nil
+                            // see below
+                            if let _ = self.navigation.currentActivity {
                                 self.navigation.fullScreenCoverContent = .activityView(carereceivers: carereceivers)
-                            } else if let story = self.navigation.currentStory {
+                            } else if let _ = self.navigation.currentStory {
                                 self.navigation.fullScreenCoverContent = .storyView(carereceivers: carereceivers)
                             }
 
@@ -239,6 +242,7 @@ struct MainView: View {
             }
             self.persistentDataManager.checkInactivity()
         }
+        // [] TODO: (@team) - Move to iOS17 support - Update the use of .onChange() modifier.
         .onChange(of: self.scenePhase) { newPhase in
             guard self.authManagerViewModel.userAuthenticationState == .loggedIn else {
                 return
@@ -276,6 +280,7 @@ struct MainView: View {
                 self.caregiverManager.setCurrentCaregiver(byID: storedCaregiverID)
             }
         }
+        // [] TODO: (@team) - Move to iOS17 support - Update the use of .onChange() modifier.
         .onChange(of: self.caregiverManagerViewModel.currentCaregiver) { currentCaregiver in
             if currentCaregiver != nil {
                 self.styleManager.colorScheme = self.caregiverManagerViewModel.currentCaregiver!.colorScheme

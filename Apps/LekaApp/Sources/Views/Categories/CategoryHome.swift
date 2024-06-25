@@ -12,6 +12,7 @@ import Yams
 struct CategoryHome: View {
     // MARK: Lifecycle
 
+    // TODO: (@team) - do-catch within the init instead of try!
     init() {
         let fileURL = Bundle.main.url(forResource: "home", withExtension: "yml")!
         let decoder = YAMLDecoder()
