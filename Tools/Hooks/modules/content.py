@@ -279,11 +279,14 @@ def find_missing_exercise_assets(
                 action_data = data
                 if (
                     isinstance(action_data, dict)
+                    and "type" in action_data
+                    and isinstance(action_data["type"], str)
                     and "value" in action_data
                     and isinstance(action_data["value"], dict)
                 ):
+                    type_data = action_data["type"]
                     value_data = action_data["value"]
-                    if value_data.get("type") in ["image", "audio"]:
+                    if type_data == "ipad" and value_data.get("type") in ["image", "audio"]:
                         check_and_add_missing_asset(
                             "action",
                             value_data["type"],
