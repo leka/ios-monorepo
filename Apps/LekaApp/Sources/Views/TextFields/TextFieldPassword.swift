@@ -28,7 +28,6 @@ struct TextFieldPassword: View {
     // MARK: Internal
 
     @Binding var entry: String
-    @FocusState var focused: Focusable?
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
@@ -46,13 +45,13 @@ struct TextFieldPassword: View {
                 .textContentType(.password)
                 .textInputAutocapitalization(.never)
                 .autocorrectionDisabled()
-                .onReceive(Just(self.entry)) { newValue in
+                .focused(self.$focused)
+                .onChange(of: self.entry) { newValue in
                     self.entry = newValue.trimmingCharacters(in: .whitespaces)
                 }
-                .focused(self.$focused, equals: .password)
                 .overlay(
                     RoundedRectangle(cornerRadius: 8)
-                        .stroke(self.focused == .password ? .blue : .clear, lineWidth: 1)
+                        .stroke(self.focused ? .blue : .clear, lineWidth: 1)
                 )
 
                 Button("", systemImage: self.isSecured ? "eye" : "eye.slash") {
@@ -70,6 +69,8 @@ struct TextFieldPassword: View {
     }
 
     // MARK: Private
+
+    @FocusState private var focused: Bool
 
     @ObservedObject private var authManagerViewModel = AuthManagerViewModel.shared
     @State private var isSecured: Bool = true
