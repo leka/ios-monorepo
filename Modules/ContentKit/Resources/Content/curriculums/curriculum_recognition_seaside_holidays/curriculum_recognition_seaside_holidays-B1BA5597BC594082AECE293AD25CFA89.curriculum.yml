@@ -16,7 +16,7 @@ skills:
 
 tags:
   - holidays
-  - seaside
+  - sea
 
 hmi:
   - tablet
@@ -31,7 +31,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon: recognition_seaside_holiday
+      icon: recognition_seaside_holidays
       title: Découvrez les vacances au bord de la mer
       subtitle: Écoutez et trouvez l'objet !
       abstract: |
@@ -40,7 +40,7 @@ l10n:
         Plongez dans l'univers des vacances à la mer avec ce parcours interactif. La personne accompagnée appuie sur le bouton de haut-parleur pour écouter une instruction, puis doit toucher l'image correspondante sur l'écran. Ce parcours stimule la reconnaissance auditive et visuelle, ainsi que les capacités de compréhension et de réponse rapide. Par exemple, si l'instruction est "touche la pelle", la personne accompagnée doit trouver et toucher l'image d'une pelle parmi plusieurs options.
   - locale: en_US
     details:
-      icon: recognition_seaside_holiday
+      icon: recognition_seaside_holidays
       title: Explore Seaside Holidays
       subtitle: Listen and Find the Object!
       abstract: |

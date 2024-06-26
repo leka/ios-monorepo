@@ -20,7 +20,7 @@ skills:
 
 tags:
   - holidays
-  - seaside
+  - sea
 
 hmi:
   - tablet
@@ -35,7 +35,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon: recognition_seaside_holiday
+      icon: recognition_seaside_holidays
 
       title: Les vacances au bord de la mer
       subtitle: 5 images
@@ -52,7 +52,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon: recognition_seaside_holiday
+      icon: recognition_seaside_holidays
 
       title: Seaside holidays
       subtitle: 5 images
