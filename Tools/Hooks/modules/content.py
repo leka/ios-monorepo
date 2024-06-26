@@ -274,19 +274,9 @@ def find_missing_exercise_assets(
     def recursive_search(data, collected_results, source="choice"):
         """Recursively searches the data structure for missing assets, tracking their source."""
         if isinstance(data, dict):
-            # Direct 'type' and 'value' keys indicating a choice
-            if "type" in data and "value" in data and isinstance(data["value"], str):
-                if data["type"] in ["image"]:
-                    check_and_add_missing_asset(
-                        source,
-                        data["type"],
-                        data["value"],
-                        collected_results,
-                    )
-
             # Special handling for actions
-            elif "action" in data:
-                action_data = data["action"]
+            if source == "action" :
+                action_data = data
                 if (
                     isinstance(action_data, dict)
                     and "value" in action_data
@@ -300,6 +290,16 @@ def find_missing_exercise_assets(
                             value_data["value"],
                             collected_results,
                         )
+
+            # Direct 'type' and 'value' keys indicating a choice
+            elif "type" in data and "value" in data and isinstance(data["value"], str):
+                if data["type"] in ["image"]:
+                    check_and_add_missing_asset(
+                        source,
+                        data["type"],
+                        data["value"],
+                        collected_results,
+                    )
 
             # Recursive search within dictionary values, preserving the source for choices
             for key, value in data.items():
