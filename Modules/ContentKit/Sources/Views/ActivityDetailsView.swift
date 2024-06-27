@@ -156,7 +156,7 @@ extension l10n {
                                                               value: "Instructions",
                                                               comment: "ActivityDetailsView 'instructions' section title")
 
-        static let startActivityButtonLabel = LocalizedString("lekaapp.sample_activity_list_view.start_activity_button_label",
+        static let startActivityButtonLabel = LocalizedString("content_kit.sample_activity_list_view.start_activity_button_label",
                                                               bundle: ContentKitResources.bundle,
                                                               value: "Start activity",
                                                               comment: "Start activity button label on Sample Activity List view")

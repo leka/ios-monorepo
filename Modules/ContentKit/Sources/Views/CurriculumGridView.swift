@@ -44,7 +44,7 @@ public struct CurriculumGridView: View {
 
                             Spacer()
 
-                            Button(l10n.language == .french ? "Découvrir" : "Discover") {}
+                            Button(String(l10n.CurriculumGridView.buttonLabel.characters)) {}
                                 .buttonStyle(.bordered)
                                 .allowsHitTesting(false)
                         }
@@ -71,7 +71,8 @@ public struct CurriculumGridView: View {
 
 extension l10n {
     enum CurriculumGridView {
-        static let buttonLabel = LocalizedString("contentkit.curriculum_grid_view.button_label",
+        static let buttonLabel = LocalizedString("content_kit.curriculum_grid_view.button_label",
+                                                 bundle: ContentKitResources.bundle,
                                                  value: "Discover",
                                                  comment: "Discover button label of CurriculumGridView ")
     }
