@@ -1,0 +1,24 @@
+{
+    "properties": {
+        "version": {
+            "type": "string"
+        },
+        "list": {
+            "elements": {
+                "ref": "$robot_asset"
+            }
+        }
+    },
+    "definitions": {
+        "$robot_asset": {
+            "properties": {
+                "id": {
+                    "type": "uint16"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
